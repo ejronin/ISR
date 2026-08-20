@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "records": [
+    {
+      "shipping_id": "SHIP-PKG-001",
+      "date": "2026-03-02",
+      "metric": "Hormuz commercial disruption",
+      "value": "effective closure / record-high cost shock",
+      "baseline": "prewar normal traffic",
+      "notes": "Physical transit, commercial willingness and insurance treated separately.",
+      "source_ids": [
+        "SRC-887221921E34"
+      ],
+      "map_ref": "MAP-GEO-HORMUZ",
+      "interpretation_rule": "Tracked/AIS-visible commercial behavior is evidence of observed traffic, not proof of every physical transit. AIS-dark vessels remain a known limitation."
+    },
+    {
+      "shipping_id": "SHIP-PKG-002",
+      "date": "2026-03-13",
+      "metric": "Hormuz tracked traffic change",
+      "value": "~97% below pre-war",
+      "baseline": "prewar",
+      "notes": "Reuters report using UN-related data.",
+      "source_ids": [
+        "SRC-F8F12DF86B47"
+      ],
+      "map_ref": "MAP-GEO-HORMUZ",
+      "interpretation_rule": "Tracked/AIS-visible commercial behavior is evidence of observed traffic, not proof of every physical transit. AIS-dark vessels remain a known limitation."
+    },
+    {
+      "shipping_id": "SHIP-PKG-003",
+      "date": "2026-04-13",
+      "metric": "laden exits",
+      "value": 2,
+      "baseline": "~140 vessels/day prewar (all traffic, not identical metric)",
+      "notes": "The National/Kpler; not an apples-to-apples denominator, retained as reported.",
+      "source_ids": [
+        "SRC-84C62BAB5B65"
+      ],
+      "map_ref": null,
+      "interpretation_rule": "Tracked/AIS-visible commercial behavior is evidence of observed traffic, not proof of every physical transit. AIS-dark vessels remain a known limitation."
+    },
+    {
+      "shipping_id": "SHIP-PKG-004",
+      "date": null,
+      "metric": "ships observed by SynMax",
+      "value": "<60 total",
+      "baseline": "~120-140/day prewar",
+      "notes": "Reuters investigation; selective passage and checkpoints.",
+      "source_ids": [
+        "SRC-A71BC15C30DB"
+      ],
+      "map_ref": null,
+      "interpretation_rule": "Tracked/AIS-visible commercial behavior is evidence of observed traffic, not proof of every physical transit. AIS-dark vessels remain a known limitation."
+    },
+    {
+      "shipping_id": "SHIP-PKG-005",
+      "date": "2026-08-13",
+      "metric": "recent traffic",
+      "value": "8 vessels Tuesday; recent average ~12",
+      "baseline": "~130-140/day prewar",
+      "notes": "Reuters/Kpler.",
+      "source_ids": [
+        "SRC-A3FAF2999E6B"
+      ],
+      "map_ref": null,
+      "interpretation_rule": "Tracked/AIS-visible commercial behavior is evidence of observed traffic, not proof of every physical transit. AIS-dark vessels remain a known limitation."
+    },
+    {
+      "shipping_id": "SHIP-PKG-006",
+      "date": "2026-08-14",
+      "metric": "commodity vessel transits",
+      "value": "9 Thursday vs 5 Wednesday; Aug avg ~12",
+      "baseline": "prewar much higher",
+      "notes": "AIS-dark traffic excluded.",
+      "source_ids": [
+        "SRC-E229B42C1EB1"
+      ],
+      "map_ref": null,
+      "interpretation_rule": "Tracked/AIS-visible commercial behavior is evidence of observed traffic, not proof of every physical transit. AIS-dark vessels remain a known limitation."
+    },
+    {
+      "shipping_id": "SHIP-PKG-007",
+      "date": "2026-08-16",
+      "metric": "weekend commodity transits",
+      "value": "5 Saturday; 0 Sunday at snapshot",
+      "baseline": ">130/day prewar cited by Reuters",
+      "notes": "AIS-dark traffic excluded.",
+      "source_ids": [
+        "SRC-B3FFD2E97368"
+      ],
+      "map_ref": null,
+      "interpretation_rule": "Tracked/AIS-visible commercial behavior is evidence of observed traffic, not proof of every physical transit. AIS-dark vessels remain a known limitation."
+    },
+    {
+      "shipping_id": "SHIP-PKG-008",
+      "date": "2026-08-20",
+      "metric": "commodity vessel transits",
+      "value": "9 Wednesday; 9 Tuesday",
+      "baseline": "prewar much higher",
+      "notes": "AIS-dark traffic excluded. Bab el-Mandeb 27 Wednesday vs 32 Tuesday.",
+      "source_ids": [
+        "SRC-F342B5872062"
+      ],
+      "map_ref": null,
+      "interpretation_rule": "Tracked/AIS-visible commercial behavior is evidence of observed traffic, not proof of every physical transit. AIS-dark vessels remain a known limitation."
+    },
+    {
+      "shipping_id": "SHIP-REPO-20260709",
+      "date": "2026-07-09",
+      "metric": "Commercial transit",
+      "value": "near standstill / very small number of tankers",
+      "baseline": "prewar ~normal traffic",
+      "notes": "Current atlas E020. Exact vessel categories vary by provider.",
+      "source_ids": [
+        "SRC-75B726B1EA91",
+        "SRC-4E559726D514"
+      ],
+      "map_ref": "MAP-GEO-HORMUZ",
+      "interpretation_rule": "No exact count imported; keep qualitative."
+    },
+    {
+      "shipping_id": "SHIP-REPO-20260730",
+      "date": "2026-07-30",
+      "metric": "Qatar LNG transit",
+      "value": "1 QatarEnergy-controlled LNG tanker exited Hormuz",
+      "baseline": "first in nearly three weeks",
+      "notes": "Single high-value transit does not equal normalization.",
+      "source_ids": [
+        "SRC-4BAF1AD0125F"
+      ],
+      "map_ref": "MAP-GEO-HORMUZ",
+      "interpretation_rule": "Event-level transit only."
+    },
+    {
+      "shipping_id": "SHIP-REPO-20260812",
+      "date": "2026-08-12",
+      "metric": "Kpler-tracked Hormuz vessels",
+      "value": 8,
+      "baseline": "prewar much higher",
+      "notes": "Current atlas snapshot immediately preceding package Aug 14/16/20 metrics.",
+      "source_ids": [
+        "SRC-5EEA6488E035"
+      ],
+      "map_ref": "MAP-GEO-HORMUZ",
+      "interpretation_rule": "Provider/date-specific snapshot."
+    }
+  ]
+}

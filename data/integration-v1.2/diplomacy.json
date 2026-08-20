@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.0",
+  "records": [
+    {
+      "diplomacy_id": "DIP-INT-001",
+      "date": "2024-09-27",
+      "actors": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "position_change": "Formal two-phase transition from coalition military mission toward enduring bilateral security partnerships; Iraq phase deadline September 2025, Syria-support phase through September 2026 subject to conditions.",
+      "source_ids": [
+        "SRC-005D46FC622B",
+        "SRC-CEBE7CCFF600"
+      ],
+      "event_refs": [
+        "PRE-20240927-IRQ-001"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-INT-002",
+      "date": "2025-11-18",
+      "actors": [
+        "United States",
+        "Saudi Arabia"
+      ],
+      "position_change": "U.S.-Saudi Strategic Defense Agreement signed; U.S. describes itself as Saudi Arabia’s primary strategic partner while promoting greater Saudi burden-sharing.",
+      "source_ids": [
+        "SRC-569EA3D29954"
+      ],
+      "event_refs": [
+        "PRE-20251118-SAU-001"
+      ],
+      "agreement_refs": [
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-001",
+      "date": "2026-02-26",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "position_change": "Pre-war talks ended with progress but no deal; technical follow-up planned.",
+      "source_ids": [
+        "SRC-25DF3807300D"
+      ],
+      "event_refs": [
+        "PRE-20260226-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-002",
+      "date": "2026-03-24",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "position_change": "Iran reviewing U.S. 15-point proposal.",
+      "source_ids": [
+        "SRC-0F0B6070FCF6"
+      ],
+      "event_refs": [
+        "EV-20260324-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-003",
+      "date": "2026-03-26",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "position_change": "Temporary U.S. restraint on Iranian energy targets during proposal review.",
+      "source_ids": [
+        "SRC-28B0CE7F2B7E"
+      ],
+      "event_refs": [
+        "EV-20260326-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-004",
+      "date": "2026-04-08",
+      "actors": [
+        "United States",
+        "Iran",
+        "Pakistan"
+      ],
+      "position_change": "Two-week ceasefire; negotiations tied to Hormuz opening and broader settlement.",
+      "source_ids": [
+        "SRC-56C86C6E1D78",
+        "SRC-EE4B64925CA5"
+      ],
+      "event_refs": [
+        "EV-20260408-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-005",
+      "date": "2026-04-13",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "position_change": "Talks fail; U.S. blockade against Iranian ports begins.",
+      "source_ids": [
+        "SRC-40708A58524D",
+        "SRC-84C62BAB5B65"
+      ],
+      "event_refs": []
+    },
+    {
+      "diplomacy_id": "DIP-PKG-006",
+      "date": "2026-05-18",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "position_change": "U.S. seeks long-term enrichment halt/stockpile disposition; Iran seeks blockade relief, guarantees, reparations and Hormuz sovereignty.",
+      "source_ids": [
+        "SRC-F77A9718856E"
+      ],
+      "event_refs": [
+        "EV-20260518-001",
+        "EV-20260518-002"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-007",
+      "date": "2026-05-28",
+      "actors": [
+        "United States",
+        "Iran",
+        "mediators"
+      ],
+      "position_change": "Provisional 60-day framework reached pending approval.",
+      "source_ids": [
+        "SRC-0989970823E0"
+      ],
+      "event_refs": [
+        "EV-20260528-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-008",
+      "date": "2026-06-17",
+      "actors": [
+        "United States",
+        "Iran",
+        "Oman",
+        "regional partners"
+      ],
+      "position_change": "14-point interim MOU establishes 60-day final-deal window, blockade-removal schedule and toll-free passage period.",
+      "source_ids": [
+        "SRC-DF7B6D820D63",
+        "SRC-107ADCD0AB0C",
+        "SRC-3300B7672235"
+      ],
+      "event_refs": [
+        "EV-20260617-001"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRN-14POINT-MOU-2026"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-INT-003",
+      "date": "2026-06-26",
+      "actors": [
+        "United States",
+        "Israel",
+        "Lebanon"
+      ],
+      "position_change": "U.S.-mediated security framework signed in Washington linking Lebanese sovereign security control/verified disarmament to phased Israeli redeployment.",
+      "source_ids": [
+        "SRC-E27CBB0AD0BC",
+        "SRC-1531FAADFF52",
+        "SRC-D4268D5E43FB"
+      ],
+      "event_refs": [
+        "EV-20260626-001"
+      ],
+      "agreement_refs": [
+        "AGR-ISR-LBN-FRAMEWORK-2026"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-009",
+      "date": "2026-07-07",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "position_change": "Interim arrangement treated as failed/over following renewed attacks.",
+      "source_ids": [
+        "SRC-A2DF44867E0E",
+        "SRC-07FE627C1B90"
+      ],
+      "event_refs": []
+    },
+    {
+      "diplomacy_id": "DIP-INT-004",
+      "date": "2026-07-30",
+      "actors": [
+        "Saudi Arabia",
+        "14 supporting states"
+      ],
+      "position_change": "Saudi Arabia announces proposed Red Sea/Bab el-Mandeb maritime defense coalition; 14 states issue joint support statement. U.S. formal membership not established in reviewed high-quality evidence.",
+      "source_ids": [
+        "SRC-1F7AC92D882F"
+      ],
+      "event_refs": [
+        "EV-20260730-001"
+      ],
+      "agreement_refs": [
+        "AGR-SAUDI-MARITIME-COALITION-2026"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-010",
+      "date": "2026-08-05",
+      "actors": [
+        "United States",
+        "Iran",
+        "Oman"
+      ],
+      "position_change": "New Hormuz proposal exposes unresolved inspection/fee/control issues.",
+      "source_ids": [
+        "SRC-BFCDC2B49D89"
+      ],
+      "event_refs": [
+        "EV-20260805-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-INT-005",
+      "date": "2026-08-07",
+      "actors": [
+        "Saudi Arabia",
+        "Türkiye",
+        "Pakistan"
+      ],
+      "position_change": "Mecca Joint Defence Agreement signed; mutual-defense clause added without abrogating existing agreements with other states, per Turkish official reported by Reuters.",
+      "source_ids": [
+        "SRC-6261F62A2388",
+        "SRC-9396B216601A"
+      ],
+      "event_refs": [
+        "EV-20260807-002"
+      ],
+      "agreement_refs": [
+        "AGR-MECCA-JOINT-DEFENSE-2026"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-011",
+      "date": "2026-08-12",
+      "actors": [
+        "Pakistan",
+        "Iran",
+        "United States"
+      ],
+      "position_change": "Final mediation push before 60-day deadline; Iran restates conditions.",
+      "source_ids": [
+        "SRC-72E371C289C9"
+      ],
+      "event_refs": [
+        "EV-20260812-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-INT-006",
+      "date": "2026-08-13",
+      "actors": [
+        "United States",
+        "Israel",
+        "Lebanon",
+        "potential third-party verifiers"
+      ],
+      "position_change": "Hezbollah disarmament verification mechanism remains under U.S.-mediated negotiation; Lebanon denies a final four-country shortlist has been agreed.",
+      "source_ids": [
+        "SRC-BCB32C965F32",
+        "SRC-38F77594E6D5"
+      ],
+      "event_refs": [
+        "EV-20260812-002",
+        "EV-20260813-003"
+      ],
+      "agreement_refs": [
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026",
+        "AGR-ISR-LBN-FRAMEWORK-2026"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-012",
+      "date": "2026-08-17",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "position_change": "60-day negotiating window expires without final deal.",
+      "source_ids": [
+        "SRC-6C49C8F1ACDF"
+      ],
+      "event_refs": [
+        "EV-20260817-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-PKG-013",
+      "date": "2026-08-20",
+      "actors": [
+        "United States",
+        "Iran",
+        "China",
+        "trading partners"
+      ],
+      "position_change": "Washington shifts emphasis toward intensified economic isolation/secondary pressure.",
+      "source_ids": [
+        "SRC-6EB96703F633",
+        "SRC-7831E5A00A7B",
+        "SRC-AC40CCC92A43"
+      ],
+      "event_refs": []
+    }
+  ],
+  "key_chain": [
+    "2026-02-26 pre-war talks",
+    "2026-04-08 temporary ceasefire",
+    "2026-04-13 blockade after talks failed",
+    "2026-05-28 provisional terms",
+    "2026-06-15 signed-MOU reporting",
+    "2026-06-17 14-point framework published",
+    "2026-07-07 arrangement treated as over",
+    "2026-08-17 negotiating window expired",
+    "2026-08-20 economic-pressure escalation"
+  ],
+  "rule": "Keep negotiating proposal, agreed term, implementation, violation, collapse and later outcome as separate states."
+}

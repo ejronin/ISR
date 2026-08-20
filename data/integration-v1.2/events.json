@@ -1,0 +1,5545 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-20T15:59:00-04:00",
+  "events": [
+    {
+      "event_id": "PRE-20201118-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2020-11-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2020-11-18",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2020-11-18",
+      "valid_to": null,
+      "event_type": "C2_RESILIENCE",
+      "actors": [
+        "USAFCENT"
+      ],
+      "target": "Shaw AFB / Al Udeid Air Base",
+      "location": {
+        "name": "Shaw AFB / Al Udeid Air Base",
+        "country": "United States / Qatar",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-US-ALUDEID"
+      ],
+      "facility_refs": [
+        "US-ALUDEID"
+      ],
+      "claim_refs": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026"
+      ],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "USAFCENT publicly demonstrated distributed CAOC operations years before the 2026 war.",
+      "observed_fact": "Official Air Force reporting said CAOC functions could be performed from multiple locations and that operations at Al Udeid had been closed temporarily for renovation while day-to-day operations continued.",
+      "claimed_effect": "",
+      "verified_effect": "Distributed command-and-control architecture and procedures predated the 2026 war.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "This pre-war architecture became directly relevant when the Al Udeid CAOC was struck in 2026 and Epic Fury was run from Shaw.",
+      "source_refs": [
+        {
+          "source_id": "SRC-704574F8CB02",
+          "roles": [
+            "PREWAR_PLANNING",
+            "CONTINUITY_EVIDENCE"
+          ],
+          "legacy_source_id": "S072"
+        },
+        {
+          "source_id": "SRC-D129A9FA0378",
+          "roles": [
+            "HISTORICAL_CONTEXT"
+          ],
+          "legacy_source_id": "S073"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "PRE-20230808-IRQ-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2023-08-08",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2023-08-08",
+      "first_verified": "2023-08-08",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2023-08-08",
+      "valid_to": null,
+      "event_type": "SECURITY_TRANSITION_PLANNING",
+      "actors": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "target": "U.S.-Iraq security relationship",
+      "location": {
+        "name": "U.S.-Iraq security relationship",
+        "country": "United States / Iraq",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "U.S. and Iraq jointly commit to a Higher Military Commission to determine how the coalition mission will evolve.",
+      "observed_fact": "The joint security dialogue established a bilateral HMC process tied to ISIS threat, operating requirements and Iraqi force capability.",
+      "claimed_effect": "",
+      "verified_effect": "The causal planning chain for the later Iraq drawdown begins at least here—about two and a half years before the Iran war.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-6B8C48817118",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "PRE-20240125-IRQ-001",
+        "PRE-20240927-IRQ-001",
+        "PRE-20260117-IRQ-001"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "PRE_COORDINATED",
+      "current_status": "PRE_COORDINATED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20240125-IRQ-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2024-01-25",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2024-01-25",
+      "first_verified": "2024-01-25",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2024-01-25",
+      "valid_to": null,
+      "event_type": "SECURITY_TRANSITION_PLANNING",
+      "actors": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "target": "U.S.-Iraq Higher Military Commission",
+      "location": {
+        "name": "U.S.-Iraq Higher Military Commission",
+        "country": "United States / Iraq",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "The U.S.-Iraq Higher Military Commission begins its working process.",
+      "observed_fact": "DoD said the HMC implemented the August 2023 commitment and would enable transition to an enduring bilateral security partnership; a background briefing said the launch was long-planned and proceeding despite militia attacks, not because of them.",
+      "claimed_effect": "",
+      "verified_effect": "The drawdown/transition mechanism was active more than two years before the Iran war.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-209378A46AAC",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ]
+        },
+        {
+          "source_id": "SRC-E6B1159781EB",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "COUNTEREVIDENCE"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "PRE-20240927-IRQ-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "PRE-20230808-IRQ-001"
+      ],
+      "status_at_event": "PRE_COORDINATED",
+      "current_status": "PRE_COORDINATED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20240927-IRQ-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2024-09-27",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2024-09-27",
+      "first_verified": "2024-09-27",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2024-09-27",
+      "valid_to": null,
+      "event_type": "BILATERAL_TRANSITION_AGREEMENT",
+      "actors": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "target": "Iraq / coalition military mission",
+      "location": {
+        "name": "Iraq / coalition military mission",
+        "country": "Iraq",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Washington and Baghdad formally announce the two-phase transition timeline for the coalition military mission.",
+      "observed_fact": "The joint statement set the Iraq coalition mission to conclude no later than September 2025, with coalition support for Syria continuing from Iraq through September 2026 subject to conditions and consultation; implementation steps had begun.",
+      "claimed_effect": "",
+      "verified_effect": "This is the controlling pre-war formalization date for later Iraq drawdown events.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-005D46FC622B",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ]
+        },
+        {
+          "source_id": "SRC-CEBE7CCFF600",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "PRE-20260117-IRQ-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "PRE-20230808-IRQ-001",
+        "PRE-20240125-IRQ-001"
+      ],
+      "status_at_event": "FORMALIZED_PREWAR",
+      "current_status": "FORMALIZED_PREWAR",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20251118-SAU-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2025-11-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2025-11-18",
+      "first_verified": "2025-11-18",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2025-11-18",
+      "valid_to": null,
+      "event_type": "BILATERAL_DEFENSE_AGREEMENT",
+      "actors": [
+        "United States",
+        "Saudi Arabia"
+      ],
+      "target": "U.S.-Saudi Strategic Defense Agreement",
+      "location": {
+        "name": "U.S.-Saudi Strategic Defense Agreement",
+        "country": "United States / Saudi Arabia",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "United States and Saudi Arabia sign the Strategic Defense Agreement before the Iran war.",
+      "observed_fact": "White House fact sheet says the SDA deepened the long-standing defense partnership, increased Saudi burden-sharing and affirmed the United States as Saudi Arabia’s primary strategic partner.",
+      "claimed_effect": "",
+      "verified_effect": "Later Saudi-led Mecca and maritime arrangements must be displayed alongside this still-relevant pre-war U.S.-Saudi defense context rather than automatically labeled abandonment.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-569EA3D29954",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "DIPLOMATIC_POSITION",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260730-001",
+        "EV-20260807-002"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "SIGNED_PREWAR",
+      "current_status": "SIGNED_PREWAR",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025"
+      ]
+    },
+    {
+      "event_id": "PRE-20260113-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-01-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-01-13",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-01-13",
+      "valid_to": null,
+      "event_type": "AIR_DEFENSE_C2",
+      "actors": [
+        "U.S. Central Command",
+        "regional partners"
+      ],
+      "target": "Al Udeid Air Base",
+      "location": {
+        "name": "Al Udeid Air Base",
+        "country": "Qatar",
+        "lat": null,
+        "lon": null,
+        "precision": "base"
+      },
+      "map_refs": [
+        "MAP-US-ALUDEID"
+      ],
+      "facility_refs": [
+        "US-ALUDEID"
+      ],
+      "claim_refs": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "A multinational Middle East air-defense coordination cell opened inside Al Udeid’s CAOC before the war.",
+      "observed_fact": "CENTCOM announced a regional air-defense operations cell at Al Udeid, showing the facility’s pre-war C2 role and recent investment.",
+      "claimed_effect": "",
+      "verified_effect": "The CAOC was an active multinational regional C2 node before hostilities.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-4818F69C326D",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING"
+          ],
+          "legacy_source_id": "S075"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "PRE-20260114-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-01-14",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-01-14",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-01-14",
+      "valid_to": null,
+      "event_type": "FORCE_PROTECTION",
+      "actors": [
+        "United States"
+      ],
+      "target": "Al Udeid Air Base",
+      "location": {
+        "name": "Al Udeid Air Base",
+        "country": "Qatar",
+        "lat": null,
+        "lon": null,
+        "precision": "base"
+      },
+      "map_refs": [
+        "MAP-US-ALUDEID"
+      ],
+      "facility_refs": [
+        "US-ALUDEID"
+      ],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Some personnel were advised to leave Al Udeid amid escalating tensions before the war.",
+      "observed_fact": "Diplomatic sources told Reuters some personnel were advised to depart.",
+      "claimed_effect": "",
+      "verified_effect": "Pre-war force-protection adjustment occurred before Feb. 28.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-0561D46C2441",
+          "roles": [
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ],
+          "legacy_source_id": "S074"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "PRE-20260117-IRQ-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-01-17",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-01-17",
+      "first_verified": "2026-01-17",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-01-17",
+      "valid_to": null,
+      "event_type": "BASE_HANDOVER",
+      "actors": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "target": "Ain al-Asad Air Base",
+      "location": {
+        "name": "Ain al-Asad Air Base",
+        "country": "Iraq",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [
+        "MAP-US-AINASAD"
+      ],
+      "facility_refs": [
+        "US-AINASAD"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Iraq assumes full control of Ain al-Asad after U.S. forces depart under the pre-war U.S.-Iraq transition.",
+      "observed_fact": "Reuters confirmed the handover and explicitly tied it to the Washington-Baghdad understanding reached in 2024.",
+      "claimed_effect": "",
+      "verified_effect": "Execution of a previously formalized bilateral drawdown. Classification: PRE-COORDINATED DRAWDOWN — NOT RETREAT.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-29FAB9A69690",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "LATER_OUTCOME",
+            "PREWAR_PLANNING"
+          ]
+        },
+        {
+          "source_id": "SRC-005D46FC622B",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [
+        "PRE-20230808-IRQ-001",
+        "PRE-20240125-IRQ-001",
+        "PRE-20240927-IRQ-001"
+      ],
+      "status_at_event": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "current_status": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260207-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-02-07",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-07",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-07",
+      "valid_to": null,
+      "event_type": "FORCE_POSTURE",
+      "actors": [
+        "United States",
+        "USS Abraham Lincoln Carrier Strike Group"
+      ],
+      "target": "Arabian Sea",
+      "location": {
+        "name": "Arabian Sea",
+        "country": "International waters",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "USS Abraham Lincoln was already in the Arabian Sea on a scheduled deployment three weeks before the war began.",
+      "observed_fact": "CENTCOM described the carrier as transiting the Arabian Sea during a scheduled deployment; it had left homeport in November and reached the Middle East in January.",
+      "claimed_effect": "",
+      "verified_effect": "Carrier presence preceded the Feb. 28 war and was not initiated by it.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "The deployment was later extended by combat requirements and in August the Navy described the return home as a planned rotation.",
+      "source_refs": [
+        {
+          "source_id": "SRC-E277CF2E03A3",
+          "roles": [
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ],
+          "legacy_source_id": "S001"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "PRE-20260212-SYR-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-02-12",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-12",
+      "first_verified": "2026-02-12",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-12",
+      "valid_to": null,
+      "event_type": "BASE_HANDOVER",
+      "actors": [
+        "United States",
+        "Syrian government"
+      ],
+      "target": "al-Tanf garrison",
+      "location": {
+        "name": "al-Tanf garrison",
+        "country": "Syria",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [
+        "MAP-US-TANF"
+      ],
+      "facility_refs": [
+        "US-TANF"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "U.S. completes al-Tanf withdrawal and hands the base to Syrian government forces after U.S.-Syrian coordination.",
+      "observed_fact": "Reuters and CENTCOM reporting established the coordinated handover, prior Pentagon base-consolidation planning, and linkage to a Washington-brokered SDF integration deal.",
+      "claimed_effect": "",
+      "verified_effect": "The base was vacated sixteen days before the Iran war. Classification: PRE-COORDINATED DRAWDOWN — NOT RETREAT.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-566F047CEA46",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "PREWAR_PLANNING",
+            "LATER_OUTCOME"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "PRE-20260215-SYR-001",
+        "PRE-20260218-SYR-001",
+        "PRE-20260223-SYR-001"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "current_status": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260215-SYR-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-02-15",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-15",
+      "first_verified": "2026-02-15",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-15",
+      "valid_to": null,
+      "event_type": "BASE_HANDOVER",
+      "actors": [
+        "United States",
+        "Syrian government"
+      ],
+      "target": "Shaddadi military base",
+      "location": {
+        "name": "Shaddadi military base",
+        "country": "Syria",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Syrian forces take control of Shaddadi after coordination with the United States.",
+      "observed_fact": "Reuters reported the handover as part of the pre-war U.S. consolidation and transition after the Washington-brokered SDF integration arrangement.",
+      "claimed_effect": "",
+      "verified_effect": "Classification: PRE-COORDINATED DRAWDOWN — NOT RETREAT.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-3B7FE42A1FF2",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "PREWAR_PLANNING"
+          ]
+        },
+        {
+          "source_id": "SRC-566F047CEA46",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "PREWAR_PLANNING",
+            "LATER_OUTCOME"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [
+        "PRE-20260212-SYR-001"
+      ],
+      "status_at_event": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "current_status": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260218-SYR-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-02-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-18",
+      "first_verified": "2026-02-18",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-18",
+      "valid_to": null,
+      "event_type": "THEATER_DRAWDOWN_POLICY",
+      "actors": [
+        "United States",
+        "Syrian government"
+      ],
+      "target": "U.S. force posture in Syria",
+      "location": {
+        "name": "U.S. force posture in Syria",
+        "country": "Syria",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "A senior U.S. official publicly characterizes the Syria reduction as a deliberate and conditions-based transition.",
+      "observed_fact": "Reuters reported some U.S. troops departing Syria and tied the reduced need for U.S. forces to the Syrian government taking a larger role against ISIS.",
+      "claimed_effect": "",
+      "verified_effect": "The policy rationale was public ten days before the Iran war began; it is direct counterevidence to an Iran-caused-retreat chronology.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-64BB58499062",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "PREWAR_PLANNING"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "PRE-20260223-SYR-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "PRE-20260212-SYR-001",
+        "PRE-20260215-SYR-001"
+      ],
+      "status_at_event": "DELIBERATE_CONDITIONS_BASED_PREWAR",
+      "current_status": "DELIBERATE_CONDITIONS_BASED_PREWAR",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260223-SYR-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-02-23",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-23",
+      "first_verified": "2026-02-23",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-23",
+      "valid_to": null,
+      "event_type": "BASE_DRAWDOWN",
+      "actors": [
+        "United States",
+        "Syrian government"
+      ],
+      "target": "Qasrak / Hasakah main U.S. base",
+      "location": {
+        "name": "Qasrak / Hasakah main U.S. base",
+        "country": "Syria",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [
+        "MAP-US-QASRAK"
+      ],
+      "facility_refs": [
+        "US-QASRAK"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "U.S. begins withdrawing from Qasrak, its main northeast Syria base, five days before the Iran war.",
+      "observed_fact": "Reuters observed the drawdown and again quoted a senior U.S. official describing the Syria force reduction as a deliberate and conditions-based transition as Damascus assumed more counter-ISIS responsibility.",
+      "claimed_effect": "",
+      "verified_effect": "Classification: PRE-COORDINATED / CONDITIONS-BASED DRAWDOWN — NOT RETREAT.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-8C302F9CD6F7",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "PREWAR_PLANNING"
+          ]
+        },
+        {
+          "source_id": "SRC-64BB58499062",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "PREWAR_PLANNING"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [
+        "PRE-20260212-SYR-001",
+        "PRE-20260215-SYR-001",
+        "PRE-20260218-SYR-001"
+      ],
+      "status_at_event": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "current_status": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260226-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-02-26",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-26",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-26",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Geneva",
+      "location": {
+        "name": "Geneva",
+        "country": "Switzerland",
+        "lat": null,
+        "lon": null,
+        "precision": "city"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Pre-war nuclear talks ended with reported progress but no agreement.",
+      "observed_fact": "Reuters reported progress and planned technical follow-up, but no final deal.",
+      "claimed_effect": "",
+      "verified_effect": "A live negotiating track existed immediately before the war.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "Hostilities began two days later.",
+      "source_refs": [
+        {
+          "source_id": "SRC-25DF3807300D",
+          "roles": [
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S002"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "PRE-20260227-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "PRE-WAR CONTEXT",
+      "event_date": "2026-02-27",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-27",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-27",
+      "valid_to": null,
+      "event_type": "INFORMATION_ENVIRONMENT",
+      "actors": [
+        "United States"
+      ],
+      "target": "Washington",
+      "location": {
+        "name": "Washington",
+        "country": "United States",
+        "lat": null,
+        "lon": null,
+        "precision": "country"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "HIGH",
+      "summary": "A public claim about an imminent Iranian long-range missile threat was reported as unsupported by U.S. intelligence.",
+      "observed_fact": "Reuters cited U.S. intelligence sources and a 2025 DIA assessment inconsistent with the public timetable claimed.",
+      "claimed_effect": "Iran was close to an intercontinental missile threat to the United States.",
+      "verified_effect": "The public threat-timeline claim lacked support from the U.S. intelligence cited by Reuters.",
+      "counterevidence": "U.S. intelligence sources and the cited DIA assessment did not support that timetable.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F820228892CB",
+          "roles": [
+            "COUNTEREVIDENCE",
+            "PREWAR_PLANNING"
+          ],
+          "legacy_source_id": "S003"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260228-001",
+      "legacy_repo_event_refs": [
+        "E001"
+      ],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "MILITARY_OPERATION",
+      "actors": [
+        "United States",
+        "Israel",
+        "Iran"
+      ],
+      "target": "Iran / regional theater",
+      "location": {
+        "name": "Iran / regional theater",
+        "country": "Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-IRAN-FIRST-STRIKE-2026",
+        "CASE-EPIC-FURY-OBJECTIVES-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "The United States and Israel opened major strikes on Iran; Iran retaliated regionally.",
+      "observed_fact": "Reuters and Al Jazeera reported the opening attacks, death of Supreme Leader Ali Khamenei, and Iranian retaliatory launches toward Israel and bases hosting U.S. forces.",
+      "claimed_effect": "Iranian authorities/IRGC announced broad retaliatory attacks and restrictions affecting Hormuz.",
+      "verified_effect": "Large-scale hostilities began and regional retaliation followed.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "The conflict expanded into a prolonged military, maritime, economic and diplomatic confrontation.",
+      "source_refs": [
+        {
+          "source_id": "SRC-87167CE9136F",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION"
+          ],
+          "legacy_source_id": "S004"
+        },
+        {
+          "source_id": "SRC-F0035CD212FD",
+          "roles": [
+            "REGIONAL_CORROBORATION"
+          ],
+          "legacy_source_id": "S078"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260302-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "PRE-20260226-001",
+        "PRE-20260227-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        },
+        {
+          "date": "2026-08-20",
+          "change": "Existing atlas E001 stored 01:15 ET. That minute-level value is not carried into the canonical backfill because the new source set does not establish it and other public timing references are not reconciled. Keep DATE_ONLY pending a dedicated timing audit."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260302-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "INTELLIGENCE_DISCLOSURE",
+      "actors": [
+        "U.S. Department of Defense",
+        "U.S. Congress"
+      ],
+      "target": "Washington",
+      "location": {
+        "name": "Washington",
+        "country": "United States",
+        "lat": null,
+        "lon": null,
+        "precision": "country"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-IRAN-FIRST-STRIKE-2026"
+      ],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Pentagon briefing reportedly said there was no intelligence Iran planned to attack U.S. forces first.",
+      "observed_fact": "Sources briefed on the classified presentation told Reuters no such preemptive Iranian attack plan was identified.",
+      "claimed_effect": "",
+      "verified_effect": "Reuters documented the briefing account; the underlying classified material is not public.",
+      "counterevidence": "This cuts directly against any factual claim that the opening U.S. strike was a response to a known Iranian plan to strike U.S. forces first.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-E79574E72235",
+          "roles": [
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S005"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260228-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "PRE-20260227-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260302-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "MARITIME_DISRUPTION",
+      "actors": [
+        "commercial shipping",
+        "Iran",
+        "regional navies"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Hormuz shipping and war-risk costs collapsed from normal conditions immediately after the opening attacks.",
+      "observed_fact": "Reuters documented severe traffic disruption and surging transport/insurance costs.",
+      "claimed_effect": "",
+      "verified_effect": "Commercial willingness and insurability deteriorated sharply even where physical passage remained possible.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "Very low traffic persisted for months with intermittent military/approved transits.",
+      "source_refs": [
+        {
+          "source_id": "SRC-887221921E34",
+          "roles": [
+            "SHIPPING_DATA",
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S006"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260310-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-10",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-10",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-10",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "Qatar",
+        "United States"
+      ],
+      "target": "Doha",
+      "location": {
+        "name": "Doha",
+        "country": "Qatar",
+        "lat": null,
+        "lon": null,
+        "precision": "country"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Qatar sought to strengthen its U.S. security partnership after Iranian strikes.",
+      "observed_fact": "Reuters reported Qatari efforts after attacks that included Al Udeid.",
+      "claimed_effect": "",
+      "verified_effect": "The regional security relationship continued after the strikes rather than visibly collapsing.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-7160505543FE",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "LATER_OUTCOME"
+          ],
+          "legacy_source_id": "S007"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260313-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-13",
+      "first_verified": "2026-03-13",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-13",
+      "valid_to": null,
+      "event_type": "MARITIME_DISRUPTION",
+      "actors": [
+        "Iran",
+        "commercial shipping"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Tracked Hormuz traffic had fallen by roughly 97% from pre-war levels.",
+      "observed_fact": "Reuters quantified the collapse using shipping data and described Iran’s chokepoint leverage strategy.",
+      "claimed_effect": "",
+      "verified_effect": "Normal commercial throughput had not been restored.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F8F12DF86B47",
+          "roles": [
+            "SHIPPING_DATA",
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S008"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260316-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-16",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-16",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-16",
+      "valid_to": null,
+      "event_type": "COALITION_POSTURE",
+      "actors": [
+        "United States",
+        "Japan",
+        "Australia",
+        "other allies"
+      ],
+      "target": "Strait of Hormuz / allied capitals",
+      "location": {
+        "name": "Strait of Hormuz / allied capitals",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Several U.S. allies declined or avoided committing warships to a Hormuz escort effort.",
+      "observed_fact": "Reuters reported public refusals/no-plan statements by allied governments.",
+      "claimed_effect": "",
+      "verified_effect": "Washington did not obtain the broad escort participation it sought at that point.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-13C29898FA62",
+          "roles": [
+            "FORCE_POSTURE",
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S009"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260317-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-17",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-17",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-17",
+      "valid_to": null,
+      "event_type": "EXTERNAL_SUPPORT_CLAIM",
+      "actors": [
+        "Russia",
+        "Iran"
+      ],
+      "target": "Iran / Russia",
+      "location": {
+        "name": "Iran / Russia",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "LOW",
+      "summary": "A report alleged Russia was sharing satellite imagery and drone technology with Iran.",
+      "observed_fact": "Reuters relayed a Wall Street Journal report and stated it could not independently verify it.",
+      "claimed_effect": "Russia was providing imagery and drone-related assistance.",
+      "verified_effect": "Claim provenance is established; material effect remains unresolved in this source set.",
+      "counterevidence": "No independent Reuters verification in the cited report.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-61F0DD052207",
+          "roles": [
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S010"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260320-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-20",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-20",
+      "valid_to": null,
+      "event_type": "FORCE_POSTURE",
+      "actors": [
+        "United States",
+        "USS Boxer Amphibious Ready Group",
+        "Marine Expeditionary Unit"
+      ],
+      "target": "Middle East theater",
+      "location": {
+        "name": "Middle East theater",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "The United States accelerated additional troop and amphibious reinforcement to the Middle East.",
+      "observed_fact": "Reuters reported USS Boxer/MEU movement roughly three weeks early and a U.S. regional force level above 50,000.",
+      "claimed_effect": "",
+      "verified_effect": "This was reinforcement, not drawdown.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "Carrier and amphibious rotations continued as the conflict lengthened.",
+      "source_refs": [
+        {
+          "source_id": "SRC-777D501C321D",
+          "roles": [
+            "FORCE_POSTURE"
+          ],
+          "legacy_source_id": "S011"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260320-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-20",
+      "first_verified": "2026-03-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-20",
+      "valid_to": null,
+      "event_type": "ENERGY_INFRASTRUCTURE",
+      "actors": [
+        "Israel",
+        "Iran",
+        "Gulf states"
+      ],
+      "target": "Persian Gulf region",
+      "location": {
+        "name": "Persian Gulf region",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-FAC-QAT-LNG-SYSTEM"
+      ],
+      "facility_refs": [
+        "FAC-QAT-LNG-SYSTEM"
+      ],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Attacks expanded to major Iranian and Gulf energy infrastructure.",
+      "observed_fact": "Reuters documented the South Pars/Asaluyeh strike and Iranian retaliation affecting Gulf energy facilities; QatarEnergy described large LNG capacity damage and long repair timelines.",
+      "claimed_effect": "",
+      "verified_effect": "Physical and export-capacity damage was substantial at multiple fixed energy sites.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "Regional LNG and oil-flow constraints became persistent economic effects.",
+      "source_refs": [
+        {
+          "source_id": "SRC-4E85BD9B8182",
+          "roles": [
+            "BDA",
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S012"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260322-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-22",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-22",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-22",
+      "valid_to": null,
+      "event_type": "ESCALATION_THREAT",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Iran / Gulf region",
+      "location": {
+        "name": "Iran / Gulf region",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "HIGH",
+      "summary": "Washington threatened Iranian power plants; Iran threatened regional energy, IT and desalination targets in response.",
+      "observed_fact": "Reuters recorded both sides’ public threat statements.",
+      "claimed_effect": "Escalatory infrastructure targeting would follow if Hormuz remained blocked or Iran was attacked.",
+      "verified_effect": "Threats were made; later infrastructure attacks require separate event-level confirmation.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-77D13A92FD64",
+          "roles": [
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S013"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260323-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-23",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-23",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-23",
+      "valid_to": null,
+      "event_type": "MARITIME_THREAT",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Persian Gulf",
+      "location": {
+        "name": "Persian Gulf",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "HIGH",
+      "summary": "Iran threatened mine laying and a fuller Gulf closure if coastal sites were attacked.",
+      "observed_fact": "Reuters recorded the Iranian statement.",
+      "claimed_effect": "Iran could escalate from selective denial to mine-based closure.",
+      "verified_effect": "Threat provenance verified; mine deployment not established by this source alone.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-355C149D77E4",
+          "roles": [
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S014"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260324-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-24",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-24",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Multiple",
+      "location": {
+        "name": "Multiple",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Iran was reviewing a U.S. 15-point proposal as the oil disruption accumulated.",
+      "observed_fact": "Reuters reported the proposal review and large cumulative supply losses.",
+      "claimed_effect": "",
+      "verified_effect": "A negotiating channel remained active despite continuing hostilities.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-0F0B6070FCF6",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S015"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260326-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-26",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-26",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-26",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Iran / Washington",
+      "location": {
+        "name": "Iran / Washington",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "The U.S. announced a temporary pause on attacks against Iranian energy plants while a ceasefire proposal was under review.",
+      "observed_fact": "Reuters documented the pause and Iran’s criticism of the proposal as one-sided.",
+      "claimed_effect": "",
+      "verified_effect": "A time-bounded restraint measure was publicly announced.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-28B0CE7F2B7E",
+          "roles": [
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S016"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260328-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-28",
+      "first_verified": "2026-03-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-28",
+      "valid_to": null,
+      "event_type": "REGIONAL_EXPANSION",
+      "actors": [
+        "Houthis",
+        "United States",
+        "Israel"
+      ],
+      "target": "Yemen / Middle East theater",
+      "location": {
+        "name": "Yemen / Middle East theater",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "The Houthis entered the war while U.S. Marines arrived in the region.",
+      "observed_fact": "Reuters and AP separately reported Houthi attacks and the regional force expansion.",
+      "claimed_effect": "",
+      "verified_effect": "Conflict participation expanded geographically and U.S. reinforcement continued.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-90DA8D027955",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION"
+          ],
+          "legacy_source_id": "S017"
+        },
+        {
+          "source_id": "SRC-F0CD832C6472",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION"
+          ],
+          "legacy_source_id": "S018"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260328-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-28",
+      "first_verified": "2026-03-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-28",
+      "valid_to": null,
+      "event_type": "FACILITY_DAMAGE",
+      "actors": [
+        "Israel / United States",
+        "Iran"
+      ],
+      "target": "Khondab heavy-water facility",
+      "location": {
+        "name": "Khondab heavy-water facility",
+        "country": "Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "site"
+      },
+      "map_refs": [
+        "MAP-FAC-IRN-KHONDAB-HEAVY-WATER"
+      ],
+      "facility_refs": [
+        "FAC-IRN-KHONDAB-HEAVY-WATER"
+      ],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "IAEA reporting said the Khondab heavy-water facility was severely damaged and no longer operational.",
+      "observed_fact": "Reuters cited the IAEA assessment and noted no declared nuclear material at the site.",
+      "claimed_effect": "",
+      "verified_effect": "Severe physical damage and functional loss were reported by the nuclear watchdog.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-90DA8D027955",
+          "roles": [
+            "BDA"
+          ],
+          "legacy_source_id": "S017"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260328-003",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-28",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-28",
+      "valid_to": null,
+      "event_type": "CAMPAIGN_ASSESSMENT",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Iran conflict theater",
+      "location": {
+        "name": "Iran conflict theater",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "MODERATE",
+      "summary": "One-month reporting found several stated U.S. objectives remained unresolved and Iran retained strike capacity.",
+      "observed_fact": "AP and Reuters analyses documented continuing Iranian missile/drone capability and hard strategic choices.",
+      "claimed_effect": "",
+      "verified_effect": "Major military damage had occurred, but key political/maritime objectives remained unsettled.",
+      "counterevidence": "This is counterevidence to broad claims that all core war objectives were already conclusively achieved by late March.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-4D79B1712E0D",
+          "roles": [
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S019"
+        },
+        {
+          "source_id": "SRC-A56F4E9B7A5C",
+          "roles": [
+            "LATER_OUTCOME"
+          ],
+          "legacy_source_id": "S020"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260331-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-03-31",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-31",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-31",
+      "valid_to": null,
+      "event_type": "POLICY_REPORT",
+      "actors": [
+        "United States"
+      ],
+      "target": "Washington",
+      "location": {
+        "name": "Washington",
+        "country": "United States",
+        "lat": null,
+        "lon": null,
+        "precision": "country"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "LOW",
+      "summary": "WSJ-reported U.S. deliberations suggested the war might end without first restoring Hormuz.",
+      "observed_fact": "Reuters relayed the report but could not independently verify it.",
+      "claimed_effect": "Trump was willing to end the campaign without reopening Hormuz.",
+      "verified_effect": "Claim provenance only.",
+      "counterevidence": "Reuters could not independently confirm the private deliberation.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-0A8D55737F6E",
+          "roles": [
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S021"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260408-001",
+      "legacy_repo_event_refs": [
+        "E010"
+      ],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-04-08",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-08",
+      "first_verified": "2026-04-08",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-08",
+      "valid_to": null,
+      "event_type": "CEASEFIRE",
+      "actors": [
+        "United States",
+        "Iran",
+        "Pakistan"
+      ],
+      "target": "Islamabad / regional theater",
+      "location": {
+        "name": "Islamabad / regional theater",
+        "country": "Pakistan",
+        "lat": null,
+        "lon": null,
+        "precision": "city"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Pakistan-mediated diplomacy produced a temporary two-week ceasefire.",
+      "observed_fact": "Reuters and Arab News independently documented the truce and its linkage to negotiations and temporary Hormuz reopening.",
+      "claimed_effect": "",
+      "verified_effect": "A temporary ceasefire was agreed; details and scope were immediately contested in places.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "Talks failed to produce a final deal and U.S. blockade operations followed on Apr. 13.",
+      "source_refs": [
+        {
+          "source_id": "SRC-56C86C6E1D78",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION"
+          ],
+          "legacy_source_id": "S022"
+        },
+        {
+          "source_id": "SRC-EE4B64925CA5",
+          "roles": [
+            "REGIONAL_CORROBORATION"
+          ],
+          "legacy_source_id": "S079"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260413-001",
+        "EV-20260415-001"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260413-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-04-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-13",
+      "first_verified": "2026-04-13",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-13",
+      "valid_to": null,
+      "event_type": "NAVAL_BLOCKADE",
+      "actors": [
+        "United States",
+        "Iran",
+        "commercial shipping"
+      ],
+      "target": "Iranian ports / Strait of Hormuz",
+      "location": {
+        "name": "Iranian ports / Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "The United States began a blockade aimed at vessels entering or leaving Iranian ports after talks failed.",
+      "observed_fact": "Reuters and The National separately documented the start, while regional shipping data showed only two laden exits that day and continued insurer/shipowner caution.",
+      "claimed_effect": "",
+      "verified_effect": "The U.S. policy targeted Iranian port access; it was not equivalent to universally blocking non-Iranian Hormuz transit.",
+      "counterevidence": "Commercial traffic remained far below normal despite the U.S. action, so blockade policy did not itself restore freedom of navigation.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-40708A58524D",
+          "roles": [
+            "FORCE_POSTURE",
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S023"
+        },
+        {
+          "source_id": "SRC-84C62BAB5B65",
+          "roles": [
+            "REGIONAL_CORROBORATION",
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S080"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260420-001",
+        "EV-20260423-001",
+        "EV-20260504-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "EV-20260408-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260415-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-04-15",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-15",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-15",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "United States",
+        "Iran",
+        "Pakistan"
+      ],
+      "target": "Washington / Islamabad",
+      "location": {
+        "name": "Washington / Islamabad",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Parties disputed who had sought the ceasefire while discussing another negotiating round.",
+      "observed_fact": "Reuters documented the White House denial and possible Pakistan-hosted follow-up.",
+      "claimed_effect": "",
+      "verified_effect": "The diplomatic track persisted, but narrative ownership of the ceasefire was contested.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-543806914EAF",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S024"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260420-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-04-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-20",
+      "first_verified": "2026-04-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-20",
+      "valid_to": null,
+      "event_type": "MARITIME_INTERDICTION",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Gulf of Oman / Iranian trade routes",
+      "location": {
+        "name": "Gulf of Oman / Iranian trade routes",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "U.S. forces seized/boarded an Iranian cargo vessel during the ceasefire period.",
+      "observed_fact": "Reuters documented the action and Iranian linkage of talks to blockade relief.",
+      "claimed_effect": "",
+      "verified_effect": "Maritime coercion continued despite the temporary truce framework.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "Iran seized two container ships days later.",
+      "source_refs": [
+        {
+          "source_id": "SRC-F54E8612EADA",
+          "roles": [
+            "SHIPPING_DATA",
+            "LATER_OUTCOME"
+          ],
+          "legacy_source_id": "S025"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260423-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-04-23",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-23",
+      "first_verified": "2026-04-23",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-23",
+      "valid_to": null,
+      "event_type": "VESSEL_SEIZURE",
+      "actors": [
+        "Iran",
+        "commercial shipping"
+      ],
+      "target": "Iranian waters / Gulf",
+      "location": {
+        "name": "Iranian waters / Gulf",
+        "country": "Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Iran seized two container ships after the earlier U.S. cargo seizure.",
+      "observed_fact": "Reuters documented the seizures and concern for crews.",
+      "claimed_effect": "",
+      "verified_effect": "Reciprocal maritime interdiction became an established feature of the conflict.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-1FCEC1114E60",
+          "roles": [
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S026"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260429-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-04-29",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-29",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-29",
+      "valid_to": null,
+      "event_type": "CHINA_IRAN_TRADE",
+      "actors": [
+        "China",
+        "Iran"
+      ],
+      "target": "China / maritime oil trade",
+      "location": {
+        "name": "China / maritime oil trade",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Chinese independent refiners continued buying Iranian crude despite the conflict and blockade lag.",
+      "observed_fact": "Reuters reported March imports around a record 1.8 million bpd by Vortexa estimates and large volumes already at sea.",
+      "claimed_effect": "",
+      "verified_effect": "China continued to provide a market for Iranian oil; this did not prove unlimited economic cushioning.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "By August, Chinese state shippers were avoiding the chokepoints and using alternative transfer arrangements.",
+      "source_refs": [
+        {
+          "source_id": "SRC-572AFBAA0B04",
+          "roles": [
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S027"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260430-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-04-30",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-30",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-30",
+      "valid_to": null,
+      "event_type": "ECONOMIC_CONTINUITY",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Iran",
+      "location": {
+        "name": "Iran",
+        "country": "Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Iran’s economy was under severe strain but had not immediately collapsed.",
+      "observed_fact": "Reuters reported continued banking, retail activity and alternative land/Caspian trade despite major pressure.",
+      "claimed_effect": "",
+      "verified_effect": "Economic degradation was severe, but core domestic functions still operated.",
+      "counterevidence": "Counterevidence to claims of immediate economic-system collapse.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-234390A3E087",
+          "roles": [
+            "ECONOMIC_DATA",
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S028"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260430-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-04-30",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-30",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-30",
+      "valid_to": null,
+      "event_type": "COALITION_DIPLOMACY",
+      "actors": [
+        "United States",
+        "allies",
+        "Iran"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Washington sought international help to reopen Hormuz while Iran warned against renewed attacks.",
+      "observed_fact": "Reuters documented coalition outreach and escalation warnings.",
+      "claimed_effect": "",
+      "verified_effect": "Freedom-of-navigation restoration remained an unresolved coalition problem two months into the war.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-DDB039D3C975",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "FORCE_POSTURE"
+          ],
+          "legacy_source_id": "S029"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260504-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-04",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-04",
+      "first_verified": "2026-05-04",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-04",
+      "valid_to": null,
+      "event_type": "MARITIME_OPERATION",
+      "actors": [
+        "United States",
+        "commercial shipping"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Project Freedom began/was emphasized, but commercial shipping remained largely at a standstill.",
+      "observed_fact": "Reuters found little immediate commercial response despite U.S. pledges and military activity.",
+      "claimed_effect": "",
+      "verified_effect": "Commercial normalization had not followed the military initiative.",
+      "counterevidence": "Military ability to transit did not prove commercial trust, insurance availability or normal throughput.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-631C96DF41A7",
+          "roles": [
+            "SHIPPING_DATA",
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S030"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260515-001",
+        "EV-20260520-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "EV-20260413-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260504-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-04",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-04",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-04",
+      "valid_to": null,
+      "event_type": "INFORMATION_ENVIRONMENT",
+      "actors": [
+        "Iran",
+        "United States"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "LOW",
+      "summary": "Iranian media claimed a U.S. warship was hit by missiles and turned back.",
+      "observed_fact": "Reuters recorded the claim from Fars/state sources.",
+      "claimed_effect": "A U.S. warship was struck twice and forced to retreat.",
+      "verified_effect": "Claim origin verified; underlying effect remains unverified.",
+      "counterevidence": "No independent corroboration of the claimed combat effect in the cited record.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-D1D26F5E9AA2",
+          "roles": [
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S031"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260505-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-05",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-05",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-05",
+      "valid_to": null,
+      "event_type": "CAMPAIGN_TRANSITION",
+      "actors": [
+        "United States"
+      ],
+      "target": "Middle East theater",
+      "location": {
+        "name": "Middle East theater",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-EPIC-FURY-OBJECTIVES-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "MODERATE",
+      "summary": "Secretary Rubio said Operation Epic Fury had concluded and Project Freedom was a separate defensive operation.",
+      "observed_fact": "Reuters recorded Rubio’s characterization and acknowledged unresolved enriched-uranium issues.",
+      "claimed_effect": "Epic Fury objectives had been achieved.",
+      "verified_effect": "The U.S. government formally changed the campaign framing; this did not end the wider conflict.",
+      "counterevidence": "Subsequent Iranian attacks, retained capabilities and unresolved political/maritime objectives complicate a broad effect claim.",
+      "continuity_evidence": "",
+      "later_outcome": "Combat and blockade cycles resumed repeatedly.",
+      "source_refs": [
+        {
+          "source_id": "SRC-EF1D932D8488",
+          "roles": [
+            "OFFICIAL_STATEMENT"
+          ],
+          "legacy_source_id": "S032"
+        },
+        {
+          "source_id": "SRC-4D79B1712E0D",
+          "roles": [
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S019"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260515-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-15",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-15",
+      "first_verified": "2026-05-15",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-15",
+      "valid_to": null,
+      "event_type": "HORMUZ_TRANSIT_POLICY",
+      "actors": [
+        "Iran",
+        "commercial shipping"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Iran stated that most vessels could transit if they coordinated with its navy, except designated enemies.",
+      "observed_fact": "Reuters documented Foreign Minister Araghchi’s formulation.",
+      "claimed_effect": "",
+      "verified_effect": "Iran was describing selective/permissioned passage rather than universal physical closure.",
+      "counterevidence": "Selective passage does not equal normal freedom of navigation or commercial confidence.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-569997F08351",
+          "roles": [
+            "SHIPPING_DATA",
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S033"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260517-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-17",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-17",
+      "first_verified": "2026-06-03",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-17",
+      "valid_to": null,
+      "event_type": "NUCLEAR_FACILITY_ATTACK",
+      "actors": [
+        "Iran",
+        "United Arab Emirates"
+      ],
+      "target": "Barakah Nuclear Power Plant perimeter",
+      "location": {
+        "name": "Barakah Nuclear Power Plant perimeter",
+        "country": "United Arab Emirates",
+        "lat": null,
+        "lon": null,
+        "precision": "site"
+      },
+      "map_refs": [
+        "MAP-FAC-UAE-BARAKAH"
+      ],
+      "facility_refs": [
+        "FAC-UAE-BARAKAH"
+      ],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "An Iranian drone strike hit an electrical generator outside Barakah’s inner perimeter; one reactor automatically shut down.",
+      "observed_fact": "CRS, using Gulf-state reporting, documented the generator hit and broader scale of Iranian missile/drone attacks on GCC states.",
+      "claimed_effect": "",
+      "verified_effect": "A fixed electrical component outside the inner perimeter was hit; no evidence in the cited record of radiological release or destruction of the entire plant.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-E7CF466D7C4C",
+          "roles": [
+            "BDA"
+          ],
+          "legacy_source_id": "S037"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260526-001"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260518-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-18",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-18",
+      "valid_to": null,
+      "event_type": "BARGAINING_GAP",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Multiple",
+      "location": {
+        "name": "Multiple",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Negotiating positions remained far apart on nuclear restrictions, blockade relief, guarantees, reparations and Hormuz.",
+      "observed_fact": "Reuters set out both sides’ stated positions.",
+      "claimed_effect": "",
+      "verified_effect": "The diplomatic gap was substantive, not merely procedural.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F77A9718856E",
+          "roles": [
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S034"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260518-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-18",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-18",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "Pakistan",
+        "United States",
+        "Iran"
+      ],
+      "target": "Islamabad / Washington",
+      "location": {
+        "name": "Islamabad / Washington",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "MODERATE",
+      "summary": "Pakistan delivered a revised Iranian proposal; Trump said a planned U.S. attack was paused.",
+      "observed_fact": "Reuters documented the proposal but could not establish whether the claimed attack preparations existed.",
+      "claimed_effect": "A scheduled U.S. attack was canceled/paused because of the proposal.",
+      "verified_effect": "Proposal transfer verified; claimed causal effect on a specific attack remains unresolved.",
+      "counterevidence": "Reuters could not determine that such operational preparations had existed.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-8606F9274324",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S035"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260520-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-20",
+      "first_verified": "2026-05-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-20",
+      "valid_to": null,
+      "event_type": "HORMUZ_CONTROL_SYSTEM",
+      "actors": [
+        "Iran",
+        "commercial shipping",
+        "regional governments"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Iran developed a tiered passage system using checkpoints, state arrangements and selective transit approvals.",
+      "observed_fact": "Reuters investigation found fewer than 60 ships over Apr. 18-May 6 versus roughly 120-140 per day pre-war and documented island/checkpoint mechanisms.",
+      "claimed_effect": "Iran had full control and was charging/approving passage under a new regime.",
+      "verified_effect": "Iran exercised meaningful sea-denial/permission leverage, but normal commercial throughput was not restored.",
+      "counterevidence": "Some fee claims were not independently verified; very low traffic also reflected insurer/operator unwillingness and AIS-dark uncertainty.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A71BC15C30DB",
+          "roles": [
+            "SHIPPING_DATA",
+            "TECHNICAL_ANALYSIS"
+          ],
+          "legacy_source_id": "S036"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260526-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-26",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-26",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-26",
+      "valid_to": null,
+      "event_type": "UN_ACTION",
+      "actors": [
+        "United Nations Security Council",
+        "United Arab Emirates"
+      ],
+      "target": "New York",
+      "location": {
+        "name": "New York",
+        "country": "United States",
+        "lat": null,
+        "lon": null,
+        "precision": "city"
+      },
+      "map_refs": [
+        "MAP-FAC-UAE-BARAKAH"
+      ],
+      "facility_refs": [
+        "FAC-UAE-BARAKAH"
+      ],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "UN Security Council condemned the Barakah attack without attributing responsibility.",
+      "observed_fact": "Reuters documented the resolution/statement and the UAE attribution claim.",
+      "claimed_effect": "",
+      "verified_effect": "Attack condemnation is confirmed; attribution remains separately evidentiary.",
+      "counterevidence": "UNSC condemnation did not itself verify attribution to a specific launch actor.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-4FAD801FF49E",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S038"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260528-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-28",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-28",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "United States",
+        "Iran",
+        "mediators"
+      ],
+      "target": "Multiple",
+      "location": {
+        "name": "Multiple",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Negotiators reached provisional 60-day ceasefire and shipping terms, pending leadership approval, while strikes continued.",
+      "observed_fact": "Reuters documented provisional terms and continued exchange of strikes.",
+      "claimed_effect": "",
+      "verified_effect": "A framework existed but was not yet a durable implemented settlement.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "An interim MOU was signed in mid-June, then unraveled in early July.",
+      "source_refs": [
+        {
+          "source_id": "SRC-0989970823E0",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "LATER_OUTCOME"
+          ],
+          "legacy_source_id": "S039"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260528-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-05-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-28",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-28",
+      "valid_to": null,
+      "event_type": "SANCTIONS_AND_STRIKES",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Iran / Gulf",
+      "location": {
+        "name": "Iran / Gulf",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Fresh strike claims and U.S. sanctions on the Persian Gulf Strait Authority showed the conflict remained active.",
+      "observed_fact": "Reuters market reporting captured the simultaneous military/economic pressure.",
+      "claimed_effect": "",
+      "verified_effect": "Negotiation optimism had not terminated coercive measures.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-2C560C3002FC",
+          "roles": [
+            "ECONOMIC_DATA",
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S040"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260601-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-06-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-01",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-01",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "Iran",
+        "United States"
+      ],
+      "target": "Multiple",
+      "location": {
+        "name": "Multiple",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "MODERATE",
+      "summary": "Iran sought a limited interim deal to relieve economic pressure and buy negotiating time.",
+      "observed_fact": "Reuters reported proposals involving a pause, waivers and release/use of assets.",
+      "claimed_effect": "",
+      "verified_effect": "Iranian bargaining priorities increasingly included immediate economic relief.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-8E5FBD1AE0C0",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S041"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260603-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-06-03",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-03",
+      "first_verified": "2026-06-03",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-03",
+      "valid_to": null,
+      "event_type": "FACILITY_DAMAGE",
+      "actors": [
+        "Iran",
+        "Kuwait"
+      ],
+      "target": "Kuwait International Airport",
+      "location": {
+        "name": "Kuwait International Airport",
+        "country": "Kuwait",
+        "lat": null,
+        "lon": null,
+        "precision": "site"
+      },
+      "map_refs": [
+        "MAP-FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT"
+      ],
+      "facility_refs": [
+        "FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT"
+      ],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "An Iranian drone/missile attack damaged Kuwait International Airport and killed one person.",
+      "observed_fact": "Reuters documented severe terminal damage while Terminal 4 flight operations resumed/continued via diversion.",
+      "claimed_effect": "",
+      "verified_effect": "Airport damage and casualty confirmed in regional/state reporting carried by Reuters.",
+      "counterevidence": "",
+      "continuity_evidence": "Terminal 4 operation is affirmative evidence the entire airport system did not cease all function.",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-66667A45F235",
+          "roles": [
+            "BDA",
+            "CONTINUITY_EVIDENCE"
+          ],
+          "legacy_source_id": "S042"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260615-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-06-15",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-15",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-15",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Multiple",
+      "location": {
+        "name": "Multiple",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "U.S. officials said an interim memorandum had been signed and Hormuz traffic would be restored gradually.",
+      "observed_fact": "Reuters documented the official U.S. account ahead of release of the detailed text.",
+      "claimed_effect": "",
+      "verified_effect": "Interim framework moved from draft diplomacy toward formal commitment.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-3713FD1F35CD",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S043"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260617-001",
+        "EV-20260707-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "EV-20260528-001",
+        "EV-20260601-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260617-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-06-17",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-17",
+      "first_verified": "2026-06-17",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-17",
+      "valid_to": null,
+      "event_type": "INTERIM_AGREEMENT",
+      "actors": [
+        "United States",
+        "Iran",
+        "Oman",
+        "regional partners"
+      ],
+      "target": "Multiple",
+      "location": {
+        "name": "Multiple",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "The 14-point interim U.S.-Iran framework was published/reported in detail.",
+      "observed_fact": "Reuters and The National independently published terms covering end of operations, U.S. blockade removal, 60 days of toll-free safe passage, Oman dialogue on future Strait administration, sanctions/assets and nuclear provisions.",
+      "claimed_effect": "",
+      "verified_effect": "Core text and signed-agreement reporting are strongly corroborated across factual-spine and regional sources.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "The framework unraveled within weeks amid conflicting interpretations and renewed attacks.",
+      "source_refs": [
+        {
+          "source_id": "SRC-DF7B6D820D63",
+          "roles": [
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S044"
+        },
+        {
+          "source_id": "SRC-107ADCD0AB0C",
+          "roles": [
+            "OFFICIAL_STATEMENT"
+          ],
+          "legacy_source_id": "S045"
+        },
+        {
+          "source_id": "SRC-3300B7672235",
+          "roles": [
+            "REGIONAL_CORROBORATION"
+          ],
+          "legacy_source_id": "S081"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260707-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "EV-20260615-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260626-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-06-26",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-26",
+      "first_verified": "2026-06-26",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-26",
+      "valid_to": null,
+      "event_type": "SECURITY_FRAMEWORK",
+      "actors": [
+        "United States",
+        "Israel",
+        "Lebanon"
+      ],
+      "target": "Israel-Lebanon security framework",
+      "location": {
+        "name": "Israel-Lebanon security framework",
+        "country": "United States / Israel / Lebanon",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Israel and Lebanon sign a U.S.-mediated security framework in Washington.",
+      "observed_fact": "Reuters and regional reporting document the U.S.-brokered signing and a framework linking Lebanese state security control/verified disarmament to Israeli redeployment, with continued U.S. implementation involvement.",
+      "claimed_effect": "",
+      "verified_effect": "This is a U.S.-brokered trilateral implementation track; it is not evidence of U.S. abandonment.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-E27CBB0AD0BC",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "DIPLOMATIC_POSITION",
+            "LATER_OUTCOME"
+          ]
+        },
+        {
+          "source_id": "SRC-1531FAADFF52",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "TECHNICAL_ANALYSIS",
+            "DIPLOMATIC_POSITION"
+          ]
+        },
+        {
+          "source_id": "SRC-D4268D5E43FB",
+          "roles": [
+            "REGIONAL_CORROBORATION",
+            "DIPLOMATIC_POSITION",
+            "LATER_OUTCOME"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260812-002",
+        "EV-20260813-003"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "SIGNED_IMPLEMENTATION_CONTESTED",
+      "current_status": "SIGNED_IMPLEMENTATION_CONTESTED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-ISR-LBN-FRAMEWORK-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260630-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-06-30",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-30",
+      "first_verified": "2026-06-30",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-30",
+      "valid_to": null,
+      "event_type": "LNG_MARKET_EFFECT",
+      "actors": [
+        "Qatar",
+        "global LNG market"
+      ],
+      "target": "Persian Gulf / global LNG trade",
+      "location": {
+        "name": "Persian Gulf / global LNG trade",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "MODERATE",
+      "summary": "Industry reporting quantified major LNG trade loss from the Hormuz disruption.",
+      "observed_fact": "Reuters reported Shell’s estimate that roughly 20% of monthly global LNG supply had been shut off by the disruption.",
+      "claimed_effect": "",
+      "verified_effect": "The chokepoint crisis had a measurable global LNG supply effect.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-AF45CA5FA4C9",
+          "roles": [
+            "ECONOMIC_DATA",
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S046"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260707-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-07-07",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-07",
+      "first_verified": "2026-07-17",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-07",
+      "valid_to": null,
+      "event_type": "CEASEFIRE_COLLAPSE",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Iran conflict theater",
+      "location": {
+        "name": "Iran conflict theater",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "The June interim arrangement was publicly treated as over after renewed attacks.",
+      "observed_fact": "Reuters reported Trump saying the deal was over and new U.S. strikes/market effects.",
+      "claimed_effect": "",
+      "verified_effect": "The interim framework failed to prevent renewed hostilities.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "By July 17 regional reporting described the MOU itself as a focus of conflict.",
+      "source_refs": [
+        {
+          "source_id": "SRC-A2DF44867E0E",
+          "roles": [
+            "LATER_OUTCOME"
+          ],
+          "legacy_source_id": "S047"
+        },
+        {
+          "source_id": "SRC-07FE627C1B90",
+          "roles": [
+            "REGIONAL_CORROBORATION"
+          ],
+          "legacy_source_id": "S082"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260711-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "EV-20260615-001",
+        "EV-20260617-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260709-001",
+      "legacy_repo_event_refs": [
+        "E019",
+        "E020"
+      ],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-07-09",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-09",
+      "first_verified": "2026-07-09",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-09",
+      "valid_to": null,
+      "event_type": "REGIONAL_BASE_ATTACKS",
+      "actors": [
+        "Iran",
+        "United States"
+      ],
+      "target": "Kuwait / Qatar / Bahrain / Jordan",
+      "location": {
+        "name": "Kuwait / Qatar / Bahrain / Jordan",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "MODERATE",
+      "summary": "Iran reported attacks on U.S. military infrastructure across Gulf states and Jordan; U.S. forces reported a large strike response.",
+      "observed_fact": "Reuters documented both sides’ operational claims and competing Hormuz-throughput metrics.",
+      "claimed_effect": "Iran said it struck U.S. military targets; IRGC said traffic was about half pre-war under its supervision; CENTCOM cited hundreds of vessels facilitated since early May.",
+      "verified_effect": "Large-scale renewed exchanges occurred; competing throughput claims use different time windows/definitions and should not be merged.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-05EC0662B7EC",
+          "roles": [
+            "CLAIM_ORIGIN",
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S048"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260711-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-07-11",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-11",
+      "first_verified": "2026-07-11",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-11",
+      "valid_to": null,
+      "event_type": "HORMUZ_CLOSURE_CLAIM",
+      "actors": [
+        "IRGC Navy",
+        "commercial shipping"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "HIGH",
+      "summary": "IRGC Navy publicly declared the Strait closed until further notice.",
+      "observed_fact": "Reuters documented the formal statement after a warning-shot incident.",
+      "claimed_effect": "The Strait was closed until further notice.",
+      "verified_effect": "Iranian closure policy/claim is verified; degree of physical enforcement varied.",
+      "counterevidence": "Later tracked vessel transits demonstrate that “closed” did not mean physically impassable to every vessel at all times.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-27B4F9BD222C",
+          "roles": [
+            "CLAIM_ORIGIN",
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S049"
+        },
+        {
+          "source_id": "SRC-F342B5872062",
+          "roles": [
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S064"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260814-001",
+        "EV-20260816-001",
+        "EV-20260818-001",
+        "EV-20260820-001"
+      ],
+      "preceding_or_relevant_precursor": [
+        "EV-20260707-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260720-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-07-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-20",
+      "first_verified": "2026-07-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-20",
+      "valid_to": null,
+      "event_type": "MARITIME_THREAT",
+      "actors": [
+        "Houthis",
+        "Saudi Arabia"
+      ],
+      "target": "Red Sea / Bab el-Mandeb",
+      "location": {
+        "name": "Red Sea / Bab el-Mandeb",
+        "country": "Yemen / Saudi Arabia",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "HIGH",
+      "summary": "Houthis declared a naval blockade against Saudi Arabia.",
+      "observed_fact": "Reuters recorded the declaration.",
+      "claimed_effect": "Houthi forces would impose a maritime blockade on Saudi Arabia.",
+      "verified_effect": "Declaration verified; actual degree of blockade effectiveness requires separate shipping data.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A28F817FCF49",
+          "roles": [
+            "CLAIM_ORIGIN",
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S050"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260730-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-07-30",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-30",
+      "first_verified": "2026-07-30",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-30",
+      "valid_to": null,
+      "event_type": "REGIONAL_SECURITY_ALIGNMENT",
+      "actors": [
+        "Saudi Arabia",
+        "14 supporting states"
+      ],
+      "target": "Red Sea / Bab el-Mandeb maritime defense coalition proposal",
+      "location": {
+        "name": "Red Sea / Bab el-Mandeb maritime defense coalition proposal",
+        "country": "Saudi Arabia / Red Sea region",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Saudi Arabia unveils a proposed multinational maritime-defense coalition backed by a 14-state joint statement.",
+      "observed_fact": "Reuters reported 43 countries and the EU attended the meeting and 14 states formally supported the proposed Saudi-led coalition.",
+      "claimed_effect": "",
+      "verified_effect": "Evidence of regional burden-sharing and coalition-building. U.S. formal membership is not established by the reviewed high-quality source; the event does not itself prove abandonment of U.S. security ties.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-1F7AC92D882F",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "DIPLOMATIC_POSITION",
+            "FORCE_POSTURE",
+            "REGIONAL_CORROBORATION"
+          ]
+        },
+        {
+          "source_id": "SRC-569EA3D29954",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "DIPLOMATIC_POSITION",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260807-002"
+      ],
+      "preceding_or_relevant_precursor": [
+        "PRE-20251118-SAU-001"
+      ],
+      "status_at_event": "PROPOSED_WITH_14_STATE_SUPPORT",
+      "current_status": "PROPOSED_WITH_14_STATE_SUPPORT",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-SAUDI-MARITIME-COALITION-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260805-001",
+      "legacy_repo_event_refs": [
+        "E051"
+      ],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-05",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-05",
+      "first_verified": "2026-08-05",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-05",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "United States",
+        "Iran",
+        "Oman"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "A new Hormuz proposal exposed unresolved differences over inspections, fees and control.",
+      "observed_fact": "Reuters documented Iran/U.S./Oman positions and noted the June deal had unraveled within about three weeks.",
+      "claimed_effect": "",
+      "verified_effect": "The principal dispute had shifted from whether passage was possible to who administered/conditioned it and on what terms.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-BFCDC2B49D89",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S051"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260807-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-07",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-07",
+      "first_verified": "2026-08-07",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-07",
+      "valid_to": null,
+      "event_type": "MUTUAL_DEFENSE_AGREEMENT",
+      "actors": [
+        "Saudi Arabia",
+        "Türkiye",
+        "Pakistan"
+      ],
+      "target": "Mecca Joint Defence Agreement",
+      "location": {
+        "name": "Mecca Joint Defence Agreement",
+        "country": "Saudi Arabia / Türkiye / Pakistan",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Saudi Arabia, Türkiye and Pakistan sign the Mecca Joint Defence Agreement.",
+      "observed_fact": "Reuters reported the mutual-defense provision, extended pre-signing negotiations, U.S.-ally status of all three, and a Turkish official’s statement that the pact did not abrogate existing agreements with other states.",
+      "claimed_effect": "",
+      "verified_effect": "An additional regional defense layer. It is not, without separate evidence, proof that the signatories abandoned existing U.S. security relationships.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-6261F62A2388",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "DIPLOMATIC_POSITION",
+            "FORCE_POSTURE",
+            "LATER_OUTCOME"
+          ]
+        },
+        {
+          "source_id": "SRC-9396B216601A",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "DIPLOMATIC_POSITION",
+            "LATER_OUTCOME"
+          ]
+        },
+        {
+          "source_id": "SRC-569EA3D29954",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "PREWAR_PLANNING",
+            "DIPLOMATIC_POSITION",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [
+        "PRE-20251118-SAU-001",
+        "EV-20260730-001"
+      ],
+      "status_at_event": "SIGNED",
+      "current_status": "SIGNED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-MECCA-JOINT-DEFENSE-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260812-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-12",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-12",
+      "first_verified": "2026-08-12",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-12",
+      "valid_to": null,
+      "event_type": "DIPLOMACY",
+      "actors": [
+        "Pakistan",
+        "Iran",
+        "United States"
+      ],
+      "target": "Pakistan / Iran / United States",
+      "location": {
+        "name": "Pakistan / Iran / United States",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "MODERATE",
+      "summary": "Pakistan made a final mediation push before the 60-day negotiating window expired.",
+      "observed_fact": "The National documented the deadline and Iran’s conditions tying Hormuz reopening to end of war/blockade, frozen assets and regional ceasefires.",
+      "claimed_effect": "",
+      "verified_effect": "Regional mediation remained active immediately before the deadline.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-72E371C289C9",
+          "roles": [
+            "REGIONAL_CORROBORATION",
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S087"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260812-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-12",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-12",
+      "first_verified": "2026-08-12",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-12",
+      "valid_to": null,
+      "event_type": "VERIFICATION_MECHANISM_PROPOSAL",
+      "actors": [
+        "United States",
+        "Israel",
+        "Lebanon"
+      ],
+      "target": "Proposed Hezbollah disarmament verification mechanism",
+      "location": {
+        "name": "Proposed Hezbollah disarmament verification mechanism",
+        "country": "Lebanon / Rome talks",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "U.S.-mediated talks consider four countries as possible contributors to a Hezbollah disarmament verification mechanism.",
+      "observed_fact": "Reuters identified Britain, Italy, Switzerland and Indonesia as possible contributors but also reported composition negotiations were ongoing.",
+      "claimed_effect": "",
+      "verified_effect": "The four countries were candidates, not a constituted panel. Current status was further narrowed by Lebanon’s Aug. 13 denial of an agreed shortlist.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-BCB32C965F32",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "DIPLOMATIC_POSITION",
+            "LATER_OUTCOME"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260813-003"
+      ],
+      "preceding_or_relevant_precursor": [
+        "EV-20260626-001"
+      ],
+      "status_at_event": "PROPOSED",
+      "current_status": "PROPOSED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260812-003",
+      "legacy_repo_event_refs": [
+        "US-ERBIL"
+      ],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-12",
+      "event_time": "Drawdown began about three weeks before Aug. 12; exact day not established",
+      "event_time_precision": "APPROXIMATE_LATE_JULY_REPORTED_RETROSPECTIVELY",
+      "physical_event_time_text": "Late July 2026; AP Aug. 12: about three weeks earlier",
+      "physical_event_time_precision": "APPROXIMATE_RELATIVE_DATE",
+      "timezone": null,
+      "first_reported": "2026-08-12",
+      "first_verified": "2026-08-12",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07 (approximate; do not render as exact day)",
+      "valid_to": null,
+      "event_type": "FORCE_POSTURE_REPORT",
+      "actors": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "target": "Erbil / remaining coalition presence in Iraq",
+      "location": {
+        "name": "Erbil military/airport coalition area",
+        "country": "Iraq",
+        "lat": 36.24,
+        "lon": 43.96,
+        "precision": "existing_atlas_coarse_point"
+      },
+      "map_refs": [
+        "MAP-US-ERBIL"
+      ],
+      "facility_refs": [
+        "US-ERBIL"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "AP reports the Erbil drawdown is underway and remains tied to the 2024 U.S.-Iraq transition, with Sept. 30, 2026 still the final departure target.",
+      "observed_fact": "Two Kurdish officials told AP U.S. troop/equipment drawdown from Erbil began about three weeks earlier; U.S. and Iraqi officials confirmed the Sept. 30 endpoint.",
+      "claimed_effect": "Iran-aligned narratives can portray the wartime movement as a retreat caused by attacks.",
+      "verified_effect": "The movement is execution of a withdrawal/transition architecture formalized by Washington and Baghdad in 2024.",
+      "counterevidence": "Erbil did face attacks during the war, so local force protection may affect implementation. That does not establish those attacks originated the governing drawdown plan.",
+      "continuity_evidence": "The 2024 agreement explicitly preserved coalition support for Syria from Iraq through September 2026 and transitioned toward bilateral security arrangements.",
+      "later_outcome": "Final departure scheduled for Sept. 30, 2026 at the Aug. 12 reporting point.",
+      "source_refs": [
+        {
+          "source_id": "SRC-80791B854E19",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "LATER_OUTCOME"
+          ]
+        },
+        {
+          "source_id": "SRC-005D46FC622B",
+          "roles": [
+            "PREWAR_PLANNING",
+            "OFFICIAL_STATEMENT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [
+        "PRE-20230808-IRQ-001",
+        "PRE-20240125-IRQ-001",
+        "PRE-20240927-IRQ-001",
+        "PRE-20260117-IRQ-001"
+      ],
+      "status_at_event": "PRE_COORDINATED_DRAWDOWN_IN_EXECUTION",
+      "current_status": "PRE_COORDINATED_DRAWDOWN_IN_EXECUTION",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added with approximate physical start preserved separately from Aug. 12 public verification date; no invented exact late-July date."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260813-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-13",
+      "first_verified": "2026-08-13",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-13",
+      "valid_to": null,
+      "event_type": "NAVAL_BLOCKADE",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Iranian ports / Strait of Hormuz",
+      "location": {
+        "name": "Iranian ports / Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "The U.S. said it could sustain the naval blockade indefinitely by rotating forces as oil-supply shortfalls deepened.",
+      "observed_fact": "Reuters reported that assertion and Kpler traffic of eight vessels Tuesday with a recent average near 12, versus roughly 130-140 prewar.",
+      "claimed_effect": "",
+      "verified_effect": "U.S. blockade persistence and continued low public traffic were supported; “indefinitely” is a capability claim, not a demonstrated future duration.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A3FAF2999E6B",
+          "roles": [
+            "FORCE_POSTURE",
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S052"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260813-002",
+      "legacy_repo_event_refs": [
+        "E059"
+      ],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-13",
+      "first_verified": "2026-08-13",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-13",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "United Arab Emirates",
+        "ADNOC",
+        "Iran"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Two ADNOC vessels were attacked; the UAE blamed Iran, which had not accepted responsibility at publication.",
+      "observed_fact": "AP and The National reported vessel damage/no injuries and the UAE attribution.",
+      "claimed_effect": "UAE said Iran/IRGC was responsible.",
+      "verified_effect": "The attacks and vessel damage are corroborated; attribution remains a claim requiring separate evidence.",
+      "counterevidence": "Attribution was not independently established by the cited physical evidence.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-4E7A15C9F5B0",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "BDA"
+          ],
+          "legacy_source_id": "S054"
+        },
+        {
+          "source_id": "SRC-7F8C51C69FF9",
+          "roles": [
+            "REGIONAL_CORROBORATION",
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S086"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260813-003",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-13",
+      "first_verified": "2026-08-13",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-13",
+      "valid_to": null,
+      "event_type": "VERIFICATION_MECHANISM_STATUS",
+      "actors": [
+        "United States",
+        "Lebanon",
+        "Israel"
+      ],
+      "target": "Proposed Hezbollah disarmament verification mechanism",
+      "location": {
+        "name": "Proposed Hezbollah disarmament verification mechanism",
+        "country": "Lebanon / United States",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Lebanon denies that a final four-country verification shortlist has been agreed; talks with the United States continue.",
+      "observed_fact": "Reuters reported the Lebanese denial and said the U.S. State Department confirmed Rome discussions on third-party verification but did not confirm a final country list.",
+      "claimed_effect": "",
+      "verified_effect": "Current status: U.S.-mediated mechanism remains proposed; no final four-state panel should be displayed.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-38F77594E6D5",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "COUNTEREVIDENCE",
+            "DIPLOMATIC_POSITION"
+          ]
+        },
+        {
+          "source_id": "SRC-BCB32C965F32",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "DIPLOMATIC_POSITION",
+            "LATER_OUTCOME"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [
+        "EV-20260626-001",
+        "EV-20260812-002"
+      ],
+      "status_at_event": "PROPOSED_NO_FINAL_LIST",
+      "current_status": "PROPOSED_NO_FINAL_LIST",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added during alignment/drawdown causality revision; date precision limited to source-supported day."
+        }
+      ],
+      "agreement_refs": [
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260814-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-14",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-14",
+      "first_verified": "2026-08-14",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-14",
+      "valid_to": null,
+      "event_type": "SHIPPING_DATA",
+      "actors": [
+        "commercial shipping"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Hormuz traffic remained capped at a small fraction of pre-war levels.",
+      "observed_fact": "Reuters/Kpler counted nine commodity transits Thursday versus five Wednesday, with August averaging about 12; transponder-off vessels were not counted.",
+      "claimed_effect": "",
+      "verified_effect": "Normal commercial throughput was not restored.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-E229B42C1EB1",
+          "roles": [
+            "SHIPPING_DATA"
+          ],
+          "legacy_source_id": "S055"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260814-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-14",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-14",
+      "first_verified": "2026-08-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-14",
+      "valid_to": null,
+      "event_type": "FORCE_POSTURE",
+      "actors": [
+        "United States",
+        "USS Abraham Lincoln Carrier Strike Group"
+      ],
+      "target": "Middle East theater",
+      "location": {
+        "name": "Middle East theater",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "The Navy announced Lincoln would return home as part of a planned rotation after an extended combat deployment.",
+      "observed_fact": "Acting Secretary of the Navy said the carrier had been extended because the mission demanded it and would return as part of a planned rotation.",
+      "claimed_effect": "Opposing narratives described the departure as retreat/expulsion.",
+      "verified_effect": "Return-home movement is a rotation after extension; the war materially lengthened/stressed the deployment.",
+      "counterevidence": "Pre-war scheduled deployment record and incoming George Washington replacement cut against a simple retreat characterization.",
+      "continuity_evidence": "",
+      "later_outcome": "George Washington arrived by Aug. 20 to relieve Lincoln while George H.W. Bush also remained in theater.",
+      "source_refs": [
+        {
+          "source_id": "SRC-57864B8610ED",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "FORCE_POSTURE"
+          ],
+          "legacy_source_id": "S057"
+        },
+        {
+          "source_id": "SRC-E277CF2E03A3",
+          "roles": [
+            "PREWAR_PLANNING"
+          ],
+          "legacy_source_id": "S001"
+        },
+        {
+          "source_id": "SRC-17A8BAFE71BD",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION"
+          ],
+          "legacy_source_id": "S069"
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260820-003"
+      ],
+      "preceding_or_relevant_precursor": [
+        "PRE-20260207-001"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260816-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-16",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-16",
+      "first_verified": "2026-08-16",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-16",
+      "valid_to": null,
+      "event_type": "SHIPPING_DATA",
+      "actors": [
+        "commercial shipping"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Tracked commodity-vessel traffic fell to five Saturday and zero Sunday at Reuters’ snapshot after tanker attacks.",
+      "observed_fact": "Kpler data showed a sharp weekend slowdown; AIS-dark vessels could be missing.",
+      "claimed_effect": "",
+      "verified_effect": "Publicly tracked traffic remained extremely low and volatile.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-B3FFD2E97368",
+          "roles": [
+            "SHIPPING_DATA",
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S058"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260817-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-17",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-17",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-17",
+      "valid_to": null,
+      "event_type": "DIPLOMATIC_DEADLINE",
+      "actors": [
+        "Iran",
+        "United States"
+      ],
+      "target": "Strait of Hormuz / diplomatic channels",
+      "location": {
+        "name": "Strait of Hormuz / diplomatic channels",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "The 60-day negotiating window expired without a final deal; Iran threatened a more offensive Hormuz posture.",
+      "observed_fact": "Reuters reported the expiry and Iranian warning while Washington ruled out extension.",
+      "claimed_effect": "",
+      "verified_effect": "The June framework did not produce a final settlement within the planned window.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-6C49C8F1ACDF",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "CLAIM_ORIGIN"
+          ],
+          "legacy_source_id": "S059"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260817-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-17",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-17",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-17",
+      "valid_to": null,
+      "event_type": "ECONOMIC_STRAIN",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Iran",
+      "location": {
+        "name": "Iran",
+        "country": "Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Iranian inflation and food-price pressure had reached extreme levels.",
+      "observed_fact": "Reuters reported July inflation around 66% and food inflation around 128%.",
+      "claimed_effect": "",
+      "verified_effect": "Severe domestic price pressure is documented; causal attribution should distinguish war, sanctions, blockade and pre-existing weaknesses.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-62CEDAA21545",
+          "roles": [
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S060"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260818-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-18",
+      "first_verified": "2026-08-18",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-18",
+      "valid_to": null,
+      "event_type": "HORMUZ_NARRATIVE",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Iran / Oman",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Washington said the Strait was open and no talks were under way; Tehran said it remained shut pending compliance with June terms.",
+      "observed_fact": "Reuters documented the contradictory claims alongside single-digit tracked traffic.",
+      "claimed_effect": "",
+      "verified_effect": "Physical transit occurred for some ships while normal freedom-of-navigation/commercial confidence remained absent.",
+      "counterevidence": "Neither side’s binary “open/closed” rhetoric fully describes selective physical passage plus very low commercial throughput.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-6254D39BE9DA",
+          "roles": [
+            "SHIPPING_DATA",
+            "DIPLOMATIC_POSITION"
+          ],
+          "legacy_source_id": "S061"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260818-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-18",
+      "first_verified": "2026-08-18",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-18",
+      "valid_to": null,
+      "event_type": "CHINA_SHIPPING_ADAPTATION",
+      "actors": [
+        "China",
+        "COSCO",
+        "China Merchants Energy Shipping"
+      ],
+      "target": "Outside Persian Gulf / Middle East sea lanes",
+      "location": {
+        "name": "Outside Persian Gulf / Middle East sea lanes",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Chinese state shippers increasingly avoided Hormuz/Bab el-Mandeb and used tanker positioning/ship-to-ship transfers outside the Gulf.",
+      "observed_fact": "Reuters documented the change beginning in late July.",
+      "claimed_effect": "",
+      "verified_effect": "Observable Chinese commercial behavior favored risk avoidance/diversification rather than simply underwriting normal Iranian/Gulf transit.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-54EDDA09EBC7",
+          "roles": [
+            "SHIPPING_DATA",
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S062"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260819-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-19",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-19",
+      "first_verified": "2026-08-19",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-19",
+      "valid_to": null,
+      "event_type": "ECONOMIC_DIPLOMACY",
+      "actors": [
+        "United Arab Emirates",
+        "Iran"
+      ],
+      "target": "UAE / Iran",
+      "location": {
+        "name": "UAE / Iran",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "The UAE halted financial/economic dealings with Iran after alleging Iranian ballistic missiles targeted maritime traffic.",
+      "observed_fact": "Reuters documented the UAE measure and Iran’s denial of the missile allegation.",
+      "claimed_effect": "UAE attributed the triggering missile threat to Iran.",
+      "verified_effect": "The UAE economic action itself occurred and materially tightened Iran’s regional financial access.",
+      "counterevidence": "Iran denied the allegation; attribution requires independent evidence.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-6C0B7AB1ADB0",
+          "roles": [
+            "ECONOMIC_DATA",
+            "REGIONAL_CORROBORATION"
+          ],
+          "legacy_source_id": "S063"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260820-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-20",
+      "first_verified": "2026-08-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-20",
+      "valid_to": null,
+      "event_type": "SHIPPING_DATA",
+      "actors": [
+        "commercial shipping"
+      ],
+      "target": "Strait of Hormuz / Bab el-Mandeb",
+      "location": {
+        "name": "Strait of Hormuz / Bab el-Mandeb",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Hormuz tracked commodity-vessel traffic was unchanged at nine Tuesday and nine Wednesday; Bab el-Mandeb fell to 27 Wednesday from 32 Tuesday.",
+      "observed_fact": "Reuters reported Kpler data and explicitly warned that transponder-off traffic is excluded.",
+      "claimed_effect": "",
+      "verified_effect": "Tracked traffic remained extremely low and did not show a rebound at the Aug. 20 cutoff.",
+      "counterevidence": "AIS-dark traffic prevents treating tracked counts as a complete physical-vessel census.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F342B5872062",
+          "roles": [
+            "SHIPPING_DATA",
+            "COUNTEREVIDENCE"
+          ],
+          "legacy_source_id": "S064"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260820-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-20",
+      "first_verified": "2026-08-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-20",
+      "valid_to": null,
+      "event_type": "SANCTIONS_ESCALATION",
+      "actors": [
+        "United States",
+        "Iran",
+        "China",
+        "Iran trading partners"
+      ],
+      "target": "Washington / global trade",
+      "location": {
+        "name": "Washington / global trade",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Washington announced a new escalation of economic pressure on Iran and threatened consequences for countries providing a lifeline.",
+      "observed_fact": "Reuters and The National reported Treasury’s “toughest” sanctions language and a planned Monday briefing for details.",
+      "claimed_effect": "The measures would be historically severe and isolate Iran’s external trade.",
+      "verified_effect": "Policy escalation and threat are verified; implementation/effect remain prospective.",
+      "counterevidence": "At the 15:59 ET cutoff, detailed implementing measures were not yet public; impact therefore cannot be verified yet.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-6EB96703F633",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S066"
+        },
+        {
+          "source_id": "SRC-7831E5A00A7B",
+          "roles": [
+            "OFFICIAL_STATEMENT"
+          ],
+          "legacy_source_id": "S067"
+        },
+        {
+          "source_id": "SRC-AC40CCC92A43",
+          "roles": [
+            "REGIONAL_CORROBORATION"
+          ],
+          "legacy_source_id": "S083"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260820-003",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-20",
+      "first_verified": "2026-08-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-20",
+      "valid_to": null,
+      "event_type": "CARRIER_ROTATION",
+      "actors": [
+        "United States",
+        "USS George Washington",
+        "USS Abraham Lincoln",
+        "USS George H.W. Bush"
+      ],
+      "target": "Middle East theater",
+      "location": {
+        "name": "Middle East theater",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "evidence_status": "SUPPORTED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "USS George Washington arrived to relieve USS Abraham Lincoln while another U.S. carrier remained in theater.",
+      "observed_fact": "AP reported George Washington’s arrival and relief mission; Navy had already described Lincoln’s return as a planned rotation.",
+      "claimed_effect": "Lincoln’s departure represented a U.S. carrier retreat caused by Iran.",
+      "verified_effect": "This is best recorded as a rotation/replacement event; war stress/extension is also real.",
+      "counterevidence": "A replacement carrier arrived, a second U.S. carrier remained, and Lincoln’s deployment predated the war and was extended by combat.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-17A8BAFE71BD",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "CONTINUITY_EVIDENCE"
+          ],
+          "legacy_source_id": "S069"
+        },
+        {
+          "source_id": "SRC-57864B8610ED",
+          "roles": [
+            "OFFICIAL_STATEMENT"
+          ],
+          "legacy_source_id": "S057"
+        },
+        {
+          "source_id": "SRC-E277CF2E03A3",
+          "roles": [
+            "PREWAR_PLANNING"
+          ],
+          "legacy_source_id": "S001"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [
+        "PRE-20260207-001",
+        "EV-20260814-002"
+      ],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260820-004",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-20",
+      "first_verified": null,
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-20",
+      "valid_to": null,
+      "event_type": "ECONOMIC_DATA",
+      "actors": [
+        "global oil market"
+      ],
+      "target": "Global oil market",
+      "location": {
+        "name": "Global oil market",
+        "country": "Multiple",
+        "lat": null,
+        "lon": null,
+        "precision": "region"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Oil prices remained elevated as markets assessed war and negotiation risk.",
+      "observed_fact": "Reuters reported Brent and WTI around multi-week highs at the article snapshot.",
+      "claimed_effect": "",
+      "verified_effect": "Market risk remained elevated; price movement alone does not establish a single cause.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-CAC4D4DF4A81",
+          "roles": [
+            "ECONOMIC_DATA"
+          ],
+          "legacy_source_id": "S065"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260820-005",
+      "legacy_repo_event_refs": [],
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-20",
+      "first_verified": "2026-08-20",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-20",
+      "valid_to": null,
+      "event_type": "IRAN_OIL_EXPORT_CLAIM",
+      "actors": [
+        "Iran",
+        "Central Bank of Iran"
+      ],
+      "target": "Iran",
+      "location": {
+        "name": "Iran",
+        "country": "Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CLAIM_OR_ASSESSMENT_RECORDED",
+      "confidence": "MODERATE",
+      "summary": "Iran’s central bank governor said oil exports had fallen to zero and foreign-exchange access was severely constrained.",
+      "observed_fact": "The National reported the governor’s statement.",
+      "claimed_effect": "Current Iranian oil exports were zero.",
+      "verified_effect": "The statement and severe constraint are verified as official Iranian messaging; the zero-export figure remains to be independently corroborated.",
+      "counterevidence": "This is a senior Iranian official statement, not an independent vessel/loadings census; Kpler/Vortexa confirmation was not located in this cutoff package.",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-329DD7E492A8",
+          "roles": [
+            "CLAIM_ORIGIN",
+            "REGIONAL_CORROBORATION"
+          ],
+          "legacy_source_id": "S084"
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    }
+  ]
+}

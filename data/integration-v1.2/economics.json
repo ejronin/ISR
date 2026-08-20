@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+  "records": [
+    {
+      "economic_id": "ECO-PKG-001",
+      "date": "2026-03-20",
+      "topic": "Gulf energy infrastructure",
+      "finding": "Attacks caused material LNG/oil infrastructure losses, including Qatar export-capacity degradation.",
+      "causation_note": "Direct physical attack linkage documented.",
+      "source_ids": [
+        "SRC-4E85BD9B8182"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
+    },
+    {
+      "economic_id": "ECO-PKG-002",
+      "date": "2026-04-29",
+      "topic": "China-Iran oil trade",
+      "finding": "Chinese independent refiners continued purchases; March volume around record levels by Vortexa estimates.",
+      "causation_note": "Shows partial economic cushioning, not proof sanctions/blockade ineffective.",
+      "source_ids": [
+        "SRC-572AFBAA0B04"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
+    },
+    {
+      "economic_id": "ECO-PKG-003",
+      "date": "2026-04-30",
+      "topic": "Iran domestic economy",
+      "finding": "Severe strain but banks, supermarkets and alternative trade still functioning.",
+      "causation_note": "War, blockade, sanctions and pre-existing conditions overlap.",
+      "source_ids": [
+        "SRC-234390A3E087"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
+    },
+    {
+      "economic_id": "ECO-PKG-004",
+      "date": "2026-08-17",
+      "topic": "Iran inflation",
+      "finding": "July headline inflation ~66%, food ~128% in Reuters reporting.",
+      "causation_note": "Do not attribute the entire movement to one policy without econometric evidence.",
+      "source_ids": [
+        "SRC-62CEDAA21545"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
+    },
+    {
+      "economic_id": "ECO-PKG-005",
+      "date": "2026-08-20",
+      "topic": "U.S. sanctions escalation",
+      "finding": "Treasury announced forthcoming exceptionally severe sanctions; details pending Monday.",
+      "causation_note": "Policy announcement verified; effects prospective at cutoff.",
+      "source_ids": [
+        "SRC-6EB96703F633",
+        "SRC-7831E5A00A7B",
+        "SRC-AC40CCC92A43"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
+    },
+    {
+      "economic_id": "ECO-PKG-006",
+      "date": "2026-08-20",
+      "topic": "Iran oil export official claim",
+      "finding": "Central bank governor said oil exports were currently zero.",
+      "causation_note": "Official Iranian statement; independent shipping confirmation not yet located.",
+      "source_ids": [
+        "SRC-329DD7E492A8"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
+    }
+  ],
+  "forecast_context": {
+    "metric": "2026 real GDP growth forecast (%)",
+    "note": "Forecast trajectory, not realized GDP or direct military cost.",
+    "rows": [
+      {
+        "country": "Saudi Arabia",
+        "prewar": 4.3,
+        "current": 1.4,
+        "delta": -2.9,
+        "source_ids": [
+          "SRC-3C8236B21AC0",
+          "SRC-B6BD666BCD4C"
+        ]
+      },
+      {
+        "country": "Oman",
+        "prewar": 2.8,
+        "current": 3.1,
+        "delta": 0.3,
+        "source_ids": [
+          "SRC-3C8236B21AC0",
+          "SRC-B6BD666BCD4C"
+        ]
+      },
+      {
+        "country": "United Arab Emirates",
+        "prewar": 5.0,
+        "current": -0.5,
+        "delta": -5.5,
+        "source_ids": [
+          "SRC-3C8236B21AC0",
+          "SRC-B6BD666BCD4C"
+        ]
+      },
+      {
+        "country": "Bahrain",
+        "prewar": 2.9,
+        "current": -5.1,
+        "delta": -8.0,
+        "source_ids": [
+          "SRC-3C8236B21AC0",
+          "SRC-B6BD666BCD4C"
+        ]
+      },
+      {
+        "country": "Kuwait",
+        "prewar": 3.4,
+        "current": -8.1,
+        "delta": -11.5,
+        "source_ids": [
+          "SRC-3C8236B21AC0",
+          "SRC-B6BD666BCD4C"
+        ]
+      },
+      {
+        "country": "Qatar",
+        "prewar": 4.9,
+        "current": -8.1,
+        "delta": -13.0,
+        "source_ids": [
+          "SRC-3C8236B21AC0",
+          "SRC-B6BD666BCD4C"
+        ]
+      },
+      {
+        "country": "Iran",
+        "prewar": 1.1,
+        "current": -5.4,
+        "delta": -6.5,
+        "source_ids": [
+          "SRC-2AD36D488E7F",
+          "SRC-AA1020760411"
+        ]
+      }
+    ]
+  },
+  "separation_rule": "Do not combine sanctions, lost exports, port/route disruption, insurance, trade effects or GDP forecasts with weapons/material cost."
+}

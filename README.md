@@ -122,7 +122,7 @@ This package now contains a GitHub Pages-ready modularized v2.9 baseline:
 - `css/app.css` — extracted dashboard styles plus mobile reliability fixes
 - `js/navigation.js` — panel navigation, share controls and snapshot browser enhancement
 - `js/app.js` — dynamic rendering and progressive map initialization
-- `data/core.json` — public metadata, balance score and coalition/alignment reference data
+- `data/core.json` — public metadata plus legacy/deprecated balance fields and coalition/alignment reference data
 - `data/events.json` — canonical events, strategic milestones and bargaining records
 - `data/facilities.json` / `data/strikes.json` — physical-damage and strike-effect ledgers
 - `data/losses.json` — asset and casualty loss records
@@ -139,3 +139,17 @@ The evidence panels are present in the HTML before JavaScript runs. If the struc
 ### Mobile behavior
 
 The prior v2.9 CSS hid the map below 850 px. This migration removes that regression: the map remains a dedicated mobile mode, primary navigation becomes horizontally scrollable with ~44 px tap targets, and the loss dashboard reflows without page-level horizontal scrolling.
+
+## Historical-ledger v1.2 integration
+
+The live atlas consumes the authoritative package under `data/integration-v1.2/` in addition to preserving the v2.9 datasets for legacy panels and snapshot continuity. The integration adds:
+
+- 83 canonical event records: 15 pre-war context records and 68 wartime events;
+- AS OF and KNOWN BY timeline modes without fabricated time precision;
+- stable facility/map identities with event-to-map and map-to-event links;
+- explicit force-posture and agreement records, including pre-coordinated drawdowns;
+- like-for-like casualty accounting and separate material-loss, munitions, repair and wider-economic scopes;
+- canonical `SRC-*` source lineage, revision history and unresolved collection gaps;
+- repository and package-level validation in CI.
+
+Large authoritative JSON files are marked `linguist-generated` so GitHub collapses them in the default PR view; their manifest hashes and cross-file references remain validation-enforced.

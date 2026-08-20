@@ -1,14 +1,21 @@
 (async function bootstrapAtlas(){
-  let DATA;
+  let DATA, LEDGER;
   try {
     const dataFiles=['core.json','events.json','facilities.json','strikes.json','losses.json','claims.json','sources.json','economics.json','routes.json','missiles.json','influence-networks.json'];
-    const payloads=await Promise.all(dataFiles.map(async file=>{
-      const response=await fetch('./data/'+file,{cache:'no-store'});
-      if(!response.ok) throw new Error(`${file} request failed: ${response.status}`);
+    const ledgerFiles=['manifest.json','events.json','timeline.json','daily-coverage.json','facilities.json','map-links.json','movements.json','agreements.json','claims.json','casualties.json','material-losses.json','munitions-expenditure.json','cost-model.json','economics.json','shipping.json','diplomacy.json','attrition-series.json','bda-overlays.json','sources.json','source-role-map.json','revision-history.json','unresolved.json','collection-requests.json','domain-assessments.json'];
+    const fetchJson=async path=>{
+      const response=await fetch(path,{cache:'no-store'});
+      if(!response.ok) throw new Error(`${path} request failed: ${response.status}`);
       return response.json();
-    }));
+    };
+    const [payloads,ledgerPayloads]=await Promise.all([
+      Promise.all(dataFiles.map(file=>fetchJson('./data/'+file))),
+      Promise.all(ledgerFiles.map(file=>fetchJson('./data/integration-v1.2/'+file)))
+    ]);
     DATA=Object.assign({},...payloads);
+    LEDGER=Object.fromEntries(ledgerFiles.map((file,index)=>[file.replace(/\.json$/,''),ledgerPayloads[index]]));
     window.ATLAS_DATA=DATA;
+    window.ATLAS_LEDGER=LEDGER;
   } catch (dataError) {
     console.warn('Structured atlas data could not be loaded. Embedded static evidence remains readable.', dataError);
     const mapEl = document.getElementById('map');
@@ -19,6 +26,20 @@
   }
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function srcLinks(arr){return (arr||[]).map(x=>`<a target="_blank" rel="noopener" href="${esc(x[1])}">${esc(x[0])}</a>`).join(' ')}
+const sourceById=new Map((LEDGER.sources.sources||[]).map(source=>[source.source_id,source]));
+const eventById=new Map((LEDGER.events.events||[]).map(event=>[event.event_id,event]));
+const mapLinkById=new Map((LEDGER['map-links'].links||[]).map(link=>[link.map_ref,link]));
+const canonicalFacilityById=new Map((LEDGER.facilities.facilities||[]).map(facility=>[facility.facility_id,facility]));
+function canonicalSourceLinks(refs){
+  return (refs||[]).map(ref=>{
+    const id=typeof ref==='string'?ref:ref.source_id;
+    const source=sourceById.get(id);
+    if(!source)return `<span class="source-missing">${esc(id)} — unresolved source reference</span>`;
+    const roles=typeof ref==='string'?source.source_roles:(ref.roles||source.source_roles);
+    const roleText=(roles||[]).length?` <small>${esc((roles||[]).join(' · '))}</small>`:'';
+    return `<a target="_blank" rel="noopener" href="${esc(source.url)}" title="${esc(source.title||source.proof_note||'')}">${esc(source.outlet||id)}${roleText}</a>`;
+  }).join(' ');
+}
 window.pan=function(){return false;};
 let map=null;
 window.atlasMap=null;
@@ -36,9 +57,37 @@ function addMarker(group,id,lat,lon,txt,color,shape,popup){const mk=L.marker([la
 function facilityPopup(p){let assets=[...(p.critical_assets_reported||[]),...(p.noncritical_or_soft_assets_reported||[])];return `<h3>${esc(p.name)}</h3><b>Verification:</b> ${esc(p.verification_grade||p.damage_evidence_status)}<br><b>Functional severity:</b> ${esc(p.impact_grade||p.operational_effect_status)}<br><b>Purpose:</b> ${esc(p.purpose||p.role)}<br><b>Verified physical damage:</b> ${assets.length?assets.map(esc).join('; '):'No verified component list in current ledger.'}<br><b>Operational effect:</b> ${esc(p.effect||p.note)}<br><b>What is not proved:</b> ${esc(p.continuity||p.current_presence_status||'')}<div>${srcLinks((p.source_urls||[]).map(u=>[sourceNameFromUrl(u),u]))}</div>`}
 function strikePopup(p){return `<h3>${esc(p.name)}</h3><b>Date:</b> ${esc(p.event_date||p.date||'')}<br><b>Evidence:</b> ${esc(p.verification||p.status||'')}<br>${p.tally?'<b>Tally/effect:</b> '+esc(p.tally)+'<br>':''}<b>Target/effect:</b> ${esc(p.target_type||p.note||'')}<br>${p.network_relevance?'<b>Network relevance:</b> '+esc(p.network_relevance)+'<br>':''}${p.note&&p.target_type?'<b>Context:</b> '+esc(p.note):''}<div>${srcLinks(p.sources||(p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div>`}
 function claimPopup(p){return `<h3>${esc(p.name)}</h3><b>Verdict:</b> ${esc(p.verdict)}<br><b>Claim:</b> ${esc(p.claim)}<br><b>Finding:</b> ${esc(p.finding)}<div>${srcLinks(p.sources)}</div>`}
+function historyLinkList(ids){
+  return (ids||[]).map(id=>{
+    const event=eventById.get(id);
+    return event?`<button class="popup-event-link" type="button" onclick="focusLedgerEvent('${esc(id)}')">${esc(event.event_date)} · ${esc(event.summary)}</button>`:`<span>${esc(id)}</span>`;
+  }).join('');
+}
+function canonicalFacilityPopup(facility,link){
+  const damage=(facility&&facility.verified_physical_damage||[]).join('; ');
+  const effect=(facility&&facility.verified_functional_effect||[]).join('; ');
+  return `<h3>${esc((facility&&facility.name)||link.name)}</h3>${facility?`<b>Canonical status:</b> ${esc(facility.current_status)}<br><b>Verified damage:</b> ${esc(damage||'No verified physical-damage statement in this record.')}<br><b>Verified effect:</b> ${esc(effect||'No verified functional-effect statement in this record.')}<br><b>Assessment:</b> ${esc(facility.assessment||'')}`:''}<div class="popup-history"><b>Historical ledger</b>${historyLinkList(link.related_event_ids)}</div>`;
+}
+function mapLinkPopup(link){
+  const facility=link.facility_ref?canonicalFacilityById.get(link.facility_ref):null;
+  return facility?canonicalFacilityPopup(facility,link):`<h3>${esc(link.name)}</h3><b>Stable map identity:</b> ${esc(link.map_ref)}<div class="popup-history"><b>Historical ledger</b>${historyLinkList(link.related_event_ids)}</div>`;
+}
 
 // Facilities
 let g=L.layerGroup(); groups['Iran damage → U.S.-linked sites']=g; DATA.facilities.forEach(p=>{let color='#8b98a9',txt='US';if(p.damage_evidence_status==='VERIFIED_DAMAGE')color='#ff5a5f';if(p.operational_effect_status==='SUBFACILITY_INOPERABLE')color='#111827';if(p.operational_effect_status==='HQ_FUNCTION_RELOCATED')color='#c084fc';if(p.damage_evidence_status==='NO_REPORTED_DAMAGE_FOUND_IN_REVIEWED_SOURCE_SET')color='#43d17a';if(p.damage_evidence_status==='DAMAGE_CLAIM_UNVERIFIED')color='#ffb84d';addMarker(g,p.id,p.lat,p.lon,txt,color,'square',facilityPopup(p))});g.addTo(map);
+// Stable historical entities. Existing facility markers are enriched in place;
+// only coordinate-backed new entities receive a new point marker.
+let historyLayer=L.layerGroup(); groups['Historical ledger entities']=historyLayer;
+(LEDGER['map-links'].links||[]).forEach(link=>{
+  let marker=link.facility_ref?allMarkers[link.facility_ref]:null;
+  if(marker){
+    marker.bindPopup(mapLinkPopup(link),{maxWidth:380});
+  }else if(link.lat!=null&&link.lon!=null){
+    marker=addMarker(historyLayer,link.facility_ref||link.map_ref,link.lat,link.lon,'H','#2fb8c6','circle',mapLinkPopup(link));
+  }
+  if(marker)allMarkers[link.map_ref]=marker;
+});
+historyLayer.addTo(map);
 // U.S. strike effects
 let s=L.layerGroup(); groups['U.S. / coalition strike effects']=s;DATA.strikes.forEach(p=>{let lat=p.lat,lon=p.lon;if(lat==null||lon==null)return;addMarker(s,p.id,lat,lon,'US','#111827','diamond',strikePopup(p))});s.addTo(map);
 // Founding 14
@@ -115,15 +164,27 @@ function claimClass(t){
  return 'ev-high';
 }
 function renderBalance(){
- let b=DATA.balance;let rows=b.domains.map(d=>`<div class="domain"><span>${esc(d[0])}</span><span class="u">${d[1]>0?'+':''}${d[1]}</span><span class="i">${d[2]>0?'+':''}${d[2]}</span></div>`).join('');
- document.getElementById('balance').innerHTML=`<div class="balance-top"><div><div class="score us">+${b.coalitionComposite}</div><div class="v">U.S./aligned coalition</div></div><div style="font-size:20px;color:#6c8097">vs</div><div><div class="score ir">${b.iranComposite}</div><div class="v">Iran/aligned state forces</div></div></div><div style="font-size:9.5px;color:#9cb0ca;margin:8px 0">${esc(b.note)}</div><div class="domain" style="font-weight:900;color:#c7d9ec"><span>Domain</span><span>US+</span><span>IRN</span></div>${rows}<div class="method-note">This is the project's analytic index, not a government or third-party score. It is included to summarize relative military/political leverage and is kept separate from the underlying evidence.</div>`
+ const domains=LEDGER['domain-assessments'].domains||[];
+ const rows=domains.map(d=>`<article class="domain-assessment"><div class="domain-assessment-head"><b>${esc(d.domain)}</b><span class="pill ev-med">${esc(d.current_advantage)}</span><span class="pill impact">${esc(d.confidence)} CONFIDENCE</span></div><p>${esc(d.assessment)}</p><small>${esc(d.trend)}</small></article>`).join('');
+ document.getElementById('balance').innerHTML=`<div class="callout"><strong>Domain assessment only:</strong> ${esc(LEDGER['domain-assessments'].rule)}</div><div class="domain-assessment-grid">${rows}</div>`;
 }
 try{renderBalance();}catch(e){console.warn("renderBalance failed; using embedded static fallback",e);}
 
 function renderFacilities(filter=''){
  const f=filter.toLowerCase();
- const rows=DATA.facilities.filter(x=>(x.name+' '+x.host+' '+x.role+' '+x.damage_evidence_status+' '+x.operational_effect_status+' '+(x.impact_grade||'')+' '+(x.effect||'')).toLowerCase().includes(f));
- document.getElementById('facilityList').innerHTML=rows.map(x=>`<div class="item facility-card" onclick="pan('${x.id}')">
+ const legacy=DATA.facilities.filter(x=>!canonicalFacilityById.has(x.id)).map(x=>({kind:'legacy',record:x,id:x.id}));
+ const canonical=(LEDGER.facilities.facilities||[]).map(x=>({kind:'canonical',record:x,id:x.facility_id}));
+ const rows=legacy.concat(canonical).filter(row=>JSON.stringify(row.record).toLowerCase().includes(f));
+ document.getElementById('facilityList').innerHTML=`<div class="callout"><strong>Identity rule:</strong> ${esc(LEDGER.facilities.preservation_rule)} Canonical additions and updates: ${canonical.length}; preserved repository facilities: ${legacy.length}.</div>`+rows.map(row=>{
+   const x=row.record;
+   if(row.kind==='canonical'){
+     const mapRef=x.map_ref||'';
+     const damage=(x.verified_physical_damage||[]).join('; ')||'No verified physical-damage statement in this record.';
+     const effect=(x.verified_functional_effect||[]).join('; ')||'No verified functional-effect statement in this record.';
+     const continuity=(x.continued_operation_evidence||[]).join('; ')||'No continuity evidence recorded.';
+     return `<div class="item facility-card" onclick="pan('${esc(mapRef||x.facility_id)}')"><div class="date">${esc(x.country)} • ${esc(x.facility_id)} • ${esc(x.integration_action)}</div><h3>${esc(x.name)}</h3><div><span class="pill ${verificationClass(x.current_status)}">${esc(x.current_status)}</span></div><p><b>Verified physical damage:</b> ${esc(damage)}</p><p><b>Verified functional effect:</b> ${esc(effect)}</p><p><b>Continuity:</b> ${esc(continuity)}</p><p><b>Assessment:</b> ${esc(x.assessment)}</p><div class="sources">${canonicalSourceLinks(x.source_ids)}</div></div>`;
+   }
+   return `<div class="item facility-card" onclick="pan('${x.id}')">
    <div class="date">${esc(x.host||'')} • last reviewed ${esc(x.last_reviewed||'')}</div>
    <h3>${esc(x.name)}</h3>
    <div><span class="pill ${verificationClass(x.verification_grade)}">${esc(x.verification_grade||x.damage_evidence_status)}</span><span class="pill impact">${esc(x.impact_grade||x.operational_effect_status)}</span></div>
@@ -132,7 +193,8 @@ function renderFacilities(filter=''){
    <p><b>Operational effect:</b> ${esc(x.effect||x.note||'')}</p>
    <p><b>What remained / what is not proved:</b> ${esc(x.continuity||x.current_presence_status||'')}</p>
    <div class="sources">${srcLinks(namedUrlLinks(x.source_urls))}</div>
- </div>`).join('')
+ </div>`;
+ }).join('')
 }
 try{renderFacilities();}catch(e){console.warn("renderFacilities failed; using embedded static fallback",e);}
 document.getElementById('facilitySearch').oninput=e=>renderFacilities(e.target.value);
@@ -154,50 +216,61 @@ function renderStrikeEffects(filter=''){
 try{renderStrikeEffects();}catch(e){console.warn("renderStrikeEffects failed; using embedded static fallback",e);}
 document.getElementById('strikeSearch').oninput=e=>renderStrikeEffects(e.target.value);
 
-function timelineKey(x){const m=(x.date||x.sort||'').match(/\d{4}-\d{2}-\d{2}/);return m?m[0]:'9999-12-31'}
-function combinedTimeline(filter=''){
- const f=filter.toLowerCase();
- let items=[];
- DATA.fullLedger.forEach(x=>items.push({kind:'KINETIC / INCIDENT',date:x.date,sort:x.date,title:`${x.attacker} → ${x.target||x.defender}`,body:x,search:Object.values(x).join(' ')}));
- DATA.strategicMilestones.forEach(x=>items.push({kind:x.cat==='CLAIM CHECK'?'STRATEGIC CLAIM CHECK':(x.cat||'STRATEGIC'),date:x.date,sort:timelineKey(x),title:x.title,body:x,search:Object.values(x).join(' ')}));
- DATA.demands.forEach(x=>items.push({kind:'BARGAINING / DEMAND',date:x.date,sort:x.sort,title:x.title,body:x,search:Object.values(x).join(' ')}));
- DATA.claims.forEach(x=>items.push({kind:'CLAIM CHECK',date:x.date,sort:timelineKey(x),title:x.name,body:x,search:Object.values(x).join(' ')}));
- items=items.filter(x=>(x.kind+' '+x.date+' '+x.title+' '+x.search).toLowerCase().includes(f));
- items.sort((a,b)=>a.sort.localeCompare(b.sort)||a.kind.localeCompare(b.kind));
- return items;
+function ensureTimelineControls(){
+ const search=document.getElementById('timelineSearch');
+ if(!search||document.getElementById('timelineControls'))return;
+ const controls=document.createElement('div');
+ controls.id='timelineControls';
+ controls.className='ledger-controls';
+ controls.innerHTML=`<label>View<select id="timelineMode"><option value="as-of">AS OF — event chronology</option><option value="known-by">KNOWN BY — evidence availability</option></select></label><label>Cutoff<input id="timelineCutoff" type="date" min="2020-11-18" max="2026-08-20" value="2026-08-20"></label><label>Record class<select id="timelineClass"><option value="all">All 83 records</option><option value="prewar">Pre-war context (15)</option><option value="wartime">Wartime events (68)</option></select></label><output id="timelineCount" aria-live="polite"></output>`;
+ search.parentNode.insertBefore(controls,search);
+ controls.querySelectorAll('select,input').forEach(el=>el.addEventListener('change',()=>renderTimeline(search.value)));
+}
+function ledgerTimeline(filter=''){
+ const mode=document.getElementById('timelineMode')?.value||'as-of';
+ const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-20';
+ const klass=document.getElementById('timelineClass')?.value||'all';
+ const needle=filter.toLowerCase().trim();
+ return (LEDGER.events.events||[]).filter(event=>{
+   const relevantDate=mode==='known-by'?(event.first_reported||event.first_verified):event.event_date;
+   if(!relevantDate||relevantDate.slice(0,10)>cutoff)return false;
+   if(klass==='prewar'&&event.record_class!=='PRE-WAR CONTEXT')return false;
+   if(klass==='wartime'&&event.record_class!=='WARTIME_EVENT')return false;
+   return !needle||JSON.stringify(event).toLowerCase().includes(needle);
+ }).sort((a,b)=>{
+   const aKey=mode==='known-by'?(a.first_reported||a.first_verified||a.event_date):a.event_date;
+   const bKey=mode==='known-by'?(b.first_reported||b.first_verified||b.event_date):b.event_date;
+   return aKey.localeCompare(bKey)||a.event_id.localeCompare(b.event_id);
+ });
 }
 function renderTimeline(filter=''){
- const items=combinedTimeline(filter);
- let h=`<div class="callout"><strong>Coverage:</strong> the canonical engagement ledger starts on <b>${DATA.publicMeta.timeline_start}</b>. Bargaining entries and claim checks are interleaved by date so demands, concessions, reversals and disputed damage claims can be read alongside military events. Actor claims are not promoted to confirmed effects.</div>`;
- h+=items.map(it=>{
-   if(it.kind==='BARGAINING / DEMAND'){
-     const x=it.body;
-     return `<div class="item demand-card"><div class="date">${esc(x.date)} • BARGAINING / DEMAND</div><h3>${esc(x.title)}</h3>
-       <div><span class="pill bargain">${esc(x.status)}</span><span class="pill ${verificationClass(x.evidence)}">${esc(x.evidence)}</span></div>
-       <p><b>Position / demand:</b> ${esc(x.position)}</p><p><b>Response:</b> ${esc(x.response)}</p><p><b>How the position changed:</b> ${esc(x.change)}</p><p><b>Outcome:</b> ${esc(x.outcome)}</p>
-       <div class="sources">${srcLinks(x.src)}</div></div>`;
-   }
-   if(it.kind==='CLAIM CHECK'){
-     const x=it.body;
-     return `<div class="item claim-timeline"><div class="date">${esc(x.date)} • CLAIM CHECK</div><h3>${esc(x.name)}</h3>
-       <div><span class="pill ${claimClass(x.verdict)}">${esc(x.verdict)}</span></div>
-       <p><b>Claim:</b> ${esc(x.claim)}</p><p><b>Evidence finding:</b> ${esc(x.finding)}</p>
-       <div class="sources">${srcLinks(x.sources)}</div></div>`;
-   }
-   if(it.kind==='KINETIC / INCIDENT'){
-     const x=it.body;
-     return `<div class="item"><div class="date">${esc(x.date)} ${esc(x.time)} • ${esc(x.id)} • KINETIC / INCIDENT</div><h3>${esc(it.title)}</h3>
-       <div><span class="pill ${verificationClass(x.evidence)}">${esc(x.evidence)}</span></div>
-       <p><b>Target / event:</b> ${esc(x.category)}${x.weapon?' • '+esc(x.weapon):''}</p>
-       ${x.confirmed?`<p><b>Observed / confirmed:</b> ${esc(x.confirmed)}</p>`:''}${x.claimed?`<p><b>Actor claim:</b> ${esc(x.claimed)}</p>`:''}
-       <p><b>Operational significance:</b> ${esc(x.significance)}</p>${x.notes?`<p><b>Qualification:</b> ${esc(x.notes)}</p>`:''}
-       <div class="sources">${srcLinks(x.src)}</div></div>`;
-   }
-   const x=it.body;
-   return `<div class="item"><div class="date">${esc(x.date)} • ${esc(it.kind)}</div><h3>${esc(x.title)}</h3><p>${esc(x.body)}</p><div class="sources">${srcLinks(x.src)}</div></div>`;
+ ensureTimelineControls();
+ const items=ledgerTimeline(filter);
+ const mode=document.getElementById('timelineMode')?.value||'as-of';
+ const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-20';
+ const count=document.getElementById('timelineCount');
+ if(count)count.value=`${items.length} shown`;
+ let h=`<div class="callout"><strong>Canonical historical ledger:</strong> 83 records — 15 pre-war context records and 68 wartime events. <b>AS OF</b> follows when an event occurred; <b>KNOWN BY</b> follows when public evidence first entered the record. Current adjudications remain visible in both modes. Date-only records never receive a fabricated time.</div><div class="ledger-view-note">${mode==='known-by'?'Evidence known by':'Events as of'} <b>${esc(cutoff)}</b></div>`;
+ h+=items.map(event=>{
+   const when=event.event_time?`${event.event_date} ${event.event_time}${event.timezone?' '+event.timezone:''}`:event.event_date;
+   const mapRef=(event.map_refs||[]).find(ref=>allMarkers[ref])||(event.facility_refs||[]).find(ref=>allMarkers[ref]);
+   const mapButton=mapRef?`<button class="ledger-map-button" type="button" onclick="panLedgerEvent('${esc(event.event_id)}')">Show linked map entity</button>`:'';
+   return `<article class="item ledger-event" id="ledger-event-${esc(event.event_id)}"><div class="date">${esc(when)} • ${esc(event.event_time_precision)} • ${esc(event.record_class)} • ${esc(event.event_id)}</div><h3>${esc(event.summary)}</h3><div><span class="pill ${verificationClass(event.evidence_status)}">${esc(event.evidence_status)}</span><span class="pill impact">${esc(event.confidence)} CONFIDENCE</span><span class="pill">${esc(event.event_type)}</span></div><p><b>Actors / target:</b> ${esc((event.actors||[]).join(', '))} → ${esc(event.target||'')}</p>${event.observed_fact?`<p><b>Observed fact:</b> ${esc(event.observed_fact)}</p>`:''}${event.claimed_effect?`<p><b>Claimed effect:</b> ${esc(event.claimed_effect)}</p>`:''}${event.verified_effect?`<p><b>Verified effect:</b> ${esc(event.verified_effect)}</p>`:''}${event.counterevidence?`<p><b>Counterevidence:</b> ${esc(event.counterevidence)}</p>`:''}${event.continuity_evidence?`<p><b>Continuity:</b> ${esc(event.continuity_evidence)}</p>`:''}${event.later_outcome?`<p><b>Later outcome:</b> ${esc(event.later_outcome)}</p>`:''}<div class="ledger-dates"><span>First reported: ${esc(event.first_reported||'UNRESOLVED')}</span><span>First verified: ${esc(event.first_verified||'UNRESOLVED')}</span><span>Valid from: ${esc(event.valid_from||event.event_date)}${event.valid_to?' to '+esc(event.valid_to):''}</span></div>${mapButton}<div class="sources">${canonicalSourceLinks(event.source_refs)}</div></article>`;
  }).join('');
  document.getElementById('timelineList').innerHTML=h;
 }
+window.panLedgerEvent=function(id){
+ const event=eventById.get(id);if(!event)return false;
+ const ref=(event.map_refs||[]).find(x=>allMarkers[x])||(event.facility_refs||[]).find(x=>allMarkers[x]);
+ return ref?window.pan(ref):false;
+};
+window.focusLedgerEvent=function(id){
+ const tab=document.querySelector('.tab[data-tab="timeline"]');
+ if(typeof showAtlasPanel==='function')showAtlasPanel('timeline',tab);
+ const search=document.getElementById('timelineSearch');
+ if(search){search.value=id;renderTimeline(id);}
+ document.getElementById(`ledger-event-${id}`)?.scrollIntoView({behavior:'smooth',block:'start'});
+};
 try{renderTimeline();}catch(e){console.warn("renderTimeline failed; using embedded static fallback",e);}
 document.getElementById('timelineSearch').oninput=e=>renderTimeline(e.target.value);
 
@@ -209,18 +282,18 @@ try{renderCSIS();}catch(e){console.warn("renderCSIS failed; using embedded stati
 
 function renderLosses(filter=''){
  const f=filter.toLowerCase();
- const a=DATA.assetLosses.filter(x=>(Object.values(x).join(' ')).toLowerCase().includes(f));
- const c=DATA.casualties.filter(x=>(Object.values(x).join(' ')).toLowerCase().includes(f));
- let h=`<div class="callout"><strong>Aggregation rule:</strong> cumulative casualty snapshots are not added to event-level rows. Claimed, visually confirmed and independently confirmed asset quantities remain separate.</div>`;
- h+=`<div class="section-title">Asset-loss ledger</div>`;
- h+=a.map(x=>`<div class="item"><div class="date">${esc(x.date)} • ${esc(x.id)} • ${esc(x.evidence)}</div><h3>${esc(x.actor)} → ${esc(x.country)}: ${esc(x.model||x.type)}</h3>
- <p><b>Damage / disposition:</b> ${esc(x.damage)} / ${esc(x.disposition)} • ${esc(x.location)}</p>
- <p><b>Quantities:</b> claimed ${esc(x.claimed??'—')} • visually confirmed ${esc(x.visual??'—')} • independently confirmed ${esc(x.independent??'—')} • assessed probable ${esc(x.probable??'—')}</p>
- <p><b>Cause:</b> ${esc(x.cause)}${x.notes?'<br><b>Qualification:</b> '+esc(x.notes):''}</p><div class="sources">${srcLinks(x.src)}</div></div>`).join('');
- h+=`<div class="section-title">Casualty records and snapshots</div>`;
- h+=c.map(x=>`<div class="item"><div class="date">${esc(x.date)} • ${esc(x.id)} • ${esc(x.evidence)}</div><h3>${esc(x.country)} — ${esc(x.scope)}</h3>
- <p><b>Confirmed:</b> killed ${esc(x.killed??'—')} • wounded ${esc(x.wounded??'—')} • missing ${esc(x.missing??'—')} ${x.estimatedKilled!=null?'• estimated killed '+esc(x.estimatedKilled):''}</p>
- <p><b>Aggregation:</b> ${esc(x.aggregation)}${x.notes?'<br><b>Qualification:</b> '+esc(x.notes):''}</p><div class="sources">${srcLinks(x.src)}</div></div>`).join('');
+ const casualties=(LEDGER.casualties.records||[]).filter(x=>JSON.stringify(x).toLowerCase().includes(f));
+ const material=(LEDGER['material-losses'].records||[]).filter(x=>JSON.stringify(x).toLowerCase().includes(f));
+ const munitions=(LEDGER['munitions-expenditure'].records||[]).filter(x=>JSON.stringify(x).toLowerCase().includes(f));
+ const us=LEDGER['cost-model'].us_coalition.ui_fields;
+ let h=`<div class="callout"><strong>Like-for-like accounting:</strong> ${esc(LEDGER.casualties.display_policy.rule)} Material loss, munitions expenditure, repair/reconstitution, and wider economic effects remain separate. UNPRICED does not mean zero.</div>`;
+ h+=`<div class="ledger-cost-grid"><div><b>U.S. material loss/damage</b><strong>$5.8–$12.9B</strong><small>${esc(us.material_loss_damage_cost.label)}</small></div><div><b>U.S. munitions expended</b><strong>$26.1B</strong><small>${esc(us.munitions_expended_cost.label)}</small></div><div><b>Iran material loss</b><strong>UNPRICED</strong><small>No defensible replacement/repair price basis in the reviewed set.</small></div><div><b>Complete Aug. 20 military total</b><strong>UNRESOLVED</strong><small>${esc(us.current_aug20_total.display)}</small></div></div>`;
+ h+=`<div class="section-title">Casualty records — same-category comparison only</div>`;
+ h+=casualties.map(x=>`<div class="item"><div class="date">${esc(x.event_date)} • ${esc(x.casualty_id)} • ${esc(x.evidence_status)}</div><h3>${esc(x.country)} — ${esc(x.display_category)}</h3><p><b>Supported record:</b> killed ${esc(x.killed??'—')} • wounded ${esc(x.wounded??'—')} • missing ${esc(x.missing??'—')}</p><p><b>Cause / aggregation:</b> ${esc(x.cause_type)} • ${esc(x.aggregation_type)}</p>${x.notes?`<p><b>Qualification:</b> ${esc(x.notes)}</p>`:''}<div class="sources">${canonicalSourceLinks(x.source_ids)}</div></div>`).join('');
+ h+=`<div class="callout"><strong>Leadership gap:</strong> ${esc(LEDGER.casualties.leadership_gap)} The legacy total of 11 remains quarantined from canonical comparison until itemized.</div><div class="section-title">Durable material losses</div>`;
+ h+=material.map(x=>`<div class="item"><div class="date">${esc(x.event_date)} • ${esc(x.loss_id)} • ${esc(x.confidence)} CONFIDENCE</div><h3>${esc(x.owner)} — ${esc(x.item)}</h3><p><b>Disposition:</b> ${esc(x.quantity)} × ${esc(x.status)} / ${esc(x.disposition)}</p><p><b>Accounting:</b> ${esc(x.accounting_category)} • cost ${esc(x.cost_status)}</p>${x.note?`<p><b>Qualification:</b> ${esc(x.note)}</p>`:''}<div class="sources">${canonicalSourceLinks(x.source_ids)}</div></div>`).join('');
+ h+=`<div class="section-title">Munitions expenditure — launch remains expenditure</div>`;
+ h+=munitions.map(x=>`<div class="item"><div class="date">${esc(x.period_start)} to ${esc(x.period_end)} • ${esc(x.expenditure_id)}</div><h3>${esc(x.actor)} — ${esc(x.munition)}</h3><p><b>Expended:</b> ${esc(x.quantity_qualifier||'')}${esc(x.quantity??'UNRESOLVED')} • ${esc(x.evidence_type)}</p><p><b>Status / cost:</b> ${esc(x.status)} • ${esc(x.cost_status)}</p>${x.note?`<p><b>Qualification:</b> ${esc(x.note)}</p>`:''}<div class="sources">${canonicalSourceLinks(x.source_ids)}</div></div>`).join('');
  document.getElementById('lossList').innerHTML=h;
 }
 try{renderLosses();}catch(e){console.warn("renderLosses failed; using embedded static fallback",e);}
@@ -229,17 +302,39 @@ document.getElementById('lossSearch').oninput=e=>renderLosses(e.target.value);
 function cls(v){return String(v||'').replace(/[^A-Z0-9]+/g,'_')}
 function renderClaims(filter=''){
  let f=filter.toLowerCase();
- document.getElementById('claimList').innerHTML=DATA.claims.filter(x=>(x.date+' '+x.name+' '+x.verdict+' '+x.claim+' '+x.finding).toLowerCase().includes(f)).map(x=>`<div class="item" onclick="pan('${x.id}')"><div class="date">${esc(x.date)}</div><h3><span class="badge ${cls(x.verdict)}">${esc(x.verdict)}</span>${esc(x.name)}</h3><p><b>Claim:</b> ${esc(x.claim)}<br><b>Finding:</b> ${esc(x.finding)}</p><div class="sources">${srcLinks(x.sources)}</div></div>`).join('')
+ const rows=(LEDGER.claims.claims||[]).filter(x=>JSON.stringify(x).toLowerCase().includes(f));
+ document.getElementById('claimList').innerHTML=`<div class="callout"><strong>Case-file rule:</strong> Claims are adjudicated through chronology, supporting evidence, counterevidence, continuity, and explicit change conditions—not a binary narrative score.</div>`+rows.map(x=>{const mapRef=(x.map_refs||[]).find(ref=>allMarkers[ref])||(x.facility_refs||[]).find(ref=>allMarkers[ref]);return `<article class="item claim-timeline"${mapRef?` onclick="pan('${esc(mapRef)}')"`:''}><div class="date">${esc(x.earliest_known_origin||'ORIGIN UNRESOLVED')} • ${esc(x.case_id)}</div><h3><span class="badge ${cls(x.current_verdict)}">${esc(x.current_verdict)}</span>${esc(x.claim)}</h3><p><b>What happened:</b> ${esc(x.what_actually_happened)}</p>${(x.evidence_supporting_claim||[]).length?`<p><b>Supporting evidence:</b> ${esc(x.evidence_supporting_claim.join(', '))}</p>`:''}${(x.counterevidence||[]).length?`<p><b>Counterevidence:</b> ${esc(x.counterevidence.join(', '))}</p>`:''}${(x.unresolved_questions||[]).length?`<p><b>Unresolved:</b> ${esc(x.unresolved_questions.join(' '))}</p>`:''}<p><b>What would change the assessment:</b> ${esc((x.what_would_change_assessment||[]).join(' '))}</p><div class="sources">${canonicalSourceLinks(x.source_ids)}</div></article>`}).join('')
 }
 try{renderClaims();}catch(e){console.warn("renderClaims failed; using embedded static fallback",e);}
 document.getElementById('claimSearch').oninput=e=>renderClaims(e.target.value);
 
 function renderSources(){
- let out='<div class="callout"><strong>Source architecture:</strong> wire services and independent imagery are used for factual verification; official/belligerent sources establish what an actor claims or acknowledges; regional/Eastern sources are used for local reporting, official statements and cross-checking. Where independent corroboration is absent, the item remains labeled unverified.</div>';
- for(const [k,arr] of Object.entries(DATA.sources)){out+=`<div class="section-title">${esc(k)}</div>`+arr.map(x=>`<div class="item"><h3>${esc(x[0])}</h3><div class="sources"><a target="_blank" rel="noopener" href="${esc(x[1])}">open source</a></div></div>`).join('')}
+ const sources=LEDGER.sources.sources||[];
+ let out=`<div class="callout"><strong>Canonical source namespace:</strong> ${esc(LEDGER.sources.id_rule)} This ledger contains ${sources.length} source records with explicit proof roles and record lineage.</div>`;
+ const grouped=Object.groupBy?Object.groupBy(sources,x=>x.quality||'UNRATED'):sources.reduce((acc,x)=>{(acc[x.quality||'UNRATED']??=[]).push(x);return acc},{});
+ for(const [quality,rows] of Object.entries(grouped).sort()){out+=`<div class="section-title">Quality ${esc(quality)}</div>`+rows.map(x=>`<article class="item source-record"><div class="date">${esc(x.source_id)} • ${esc(x.publication_date||'DATE UNRESOLVED')}</div><h3>${esc(x.outlet)} — ${esc(x.title||'Untitled source')}</h3><p><b>Roles:</b> ${esc((x.source_roles||[]).join(' · '))}</p><p><b>Proof note:</b> ${esc(x.proof_note||'')}</p><p><b>Lineage:</b> ${esc(x.lineage||x.source_origin||'')}</p><div class="sources"><a target="_blank" rel="noopener" href="${esc(x.url)}">open source</a></div></article>`).join('')}
  document.getElementById('sourceList').innerHTML=out
 }
 try{renderSources();}catch(e){console.warn("renderSources failed; using embedded static fallback",e);}
+
+function renderHistoricalModel(){
+ const summary=document.getElementById('historicalSummary');
+ if(!summary)return;
+ const counts=LEDGER.manifest.counts||{};
+ const coverage=LEDGER['daily-coverage'].coverage||[];
+ const quietMarkers=coverage.filter(x=>x.collection_status==='NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET').length;
+ summary.innerHTML=`<div class="ledger-summary-grid"><div><b>${esc(counts.events)}</b><span>historical events</span></div><div><b>${esc(counts.prewar_events)}</b><span>pre-war context</span></div><div><b>${esc(counts.wartime_events)}</b><span>wartime events</span></div><div><b>${esc(coverage.length)}</b><span>daily coverage markers</span></div><div><b>${esc(counts.sources)}</b><span>canonical sources</span></div><div><b>${esc(counts.revision_records)}</b><span>documented revisions</span></div></div><div class="callout"><strong>Coverage rule:</strong> ${quietMarkers} daily markers record that no standalone verified event was found in the current source set. They are collection-state markers—not evidence that nothing happened.</div>`;
+ document.getElementById('movementList').innerHTML=(LEDGER.movements.movements||[]).map(x=>`<article class="item"><div class="date">${esc(x.date)} • ${esc(x.movement_id)}</div><h3>${esc(x.unit_or_asset)}</h3><div><span class="pill bargain">${esc(x.display_label)}</span><span class="pill impact">${esc(x.force_posture_classification)}</span></div><p><b>Movement:</b> ${esc(x.from)} → ${esc(x.to)}</p><p><b>Decision / execution:</b> ${esc(x.decision_date||'UNRESOLVED')} / ${esc(x.actual_execution_date||x.execution_date||'UNRESOLVED')}</p><p><b>War-change assessment:</b> ${esc(x.war_change_assessment||x.assessment_notes)}</p><p><b>Causation:</b> ${esc((x.causation_language||[]).join(' '))}</p><div class="sources">${canonicalSourceLinks(x.source_refs)}</div></article>`).join('');
+ document.getElementById('agreementList').innerHTML=(LEDGER.agreements.records||[]).map(x=>{
+   const relationship=x.replaces_us_linked_arrangement?'REPLACES U.S.-LINKED ARRANGEMENT':x.supplements_us_linked_arrangement?'SUPPLEMENTS U.S.-LINKED ARRANGEMENT':x.coexists_with_us_linked_arrangement?'COEXISTS WITH U.S.-LINKED ARRANGEMENT':'NO DEMONSTRATED EFFECT ON U.S.-LINKED ARRANGEMENT';
+   return `<article class="item"><div class="date">${esc(x.origin_date||'ORIGIN UNRESOLVED')} • ${esc(x.agreement_id)}</div><h3>${esc(x.name)}</h3><div><span class="pill ${verificationClass(x.status)}">${esc(x.status)}</span><span class="pill impact">${esc(relationship)}</span></div><p><b>Parties:</b> ${esc((x.parties||[]).join(' · '))}</p><p><b>U.S. role:</b> ${esc(x.us_role)}${(x.us_role_categories||[]).length?' — '+esc(x.us_role_categories.join(' · ')):''}</p><p><b>Assessment:</b> ${esc(x.current_assessment)}</p><p><b>What it does not prove:</b> ${esc(x.what_it_does_not_prove)}</p><div class="sources">${canonicalSourceLinks(x.source_ids)}</div></article>`;
+ }).join('');
+ const gaps=LEDGER.unresolved.items||[];
+ document.getElementById('gapList').innerHTML=`<div class="callout"><strong>Open collection remains visible:</strong> ${gaps.length} unresolved items are retained as explicit gaps; no unknown is converted to zero or fact.</div>`+gaps.map(x=>`<article class="item"><div class="date">${esc(x.priority)} PRIORITY • ${esc(x.unresolved_id)} • ${esc(x.status)}</div><h3>${esc(x.topic)}</h3><p><b>Question:</b> ${esc(x.question)}</p><p><b>Why it matters:</b> ${esc(x.why_it_matters)}</p><p><b>Next collection:</b> ${esc((x.next_collection||[]).join(' · '))}</p></article>`).join('');
+ const revisions=LEDGER['revision-history'].revisions||[];
+ document.getElementById('revisionList').innerHTML=revisions.map(x=>`<article class="item"><div class="date">${esc(x.date)} • ${esc(x.revision_id)} • ${esc(x.action)}</div><h3>${esc(x.record)}</h3><p>${esc(x.change)}</p>${x.reason?`<p><b>Reason:</b> ${esc(x.reason)}</p>`:''}</article>`).join('');
+}
+try{renderHistoricalModel();}catch(e){console.warn('renderHistoricalModel failed',e);}
 
 
 function fallbackFilter(inputId,listId){

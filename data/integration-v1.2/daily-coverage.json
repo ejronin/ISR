@@ -1,0 +1,1512 @@
+{
+  "schema_version": "1.0",
+  "coverage": [
+    {
+      "date": "2026-02-28",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260228-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-01",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-02",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260302-001",
+        "EV-20260302-002"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-03",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-04",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-05",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-06",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-07",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-08",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-09",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-10",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260310-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-11",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-12",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-13",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260313-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-14",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-15",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-16",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260316-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-17",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260317-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-18",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-19",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-20",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260320-001",
+        "EV-20260320-002"
+      ],
+      "movement_ids": [
+        "MOV-20260320-001",
+        "MOV-20260320-002"
+      ],
+      "note": null
+    },
+    {
+      "date": "2026-03-21",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-22",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260322-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-23",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260323-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-24",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260324-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-25",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-26",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260326-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-27",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-28",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260328-001",
+        "EV-20260328-002",
+        "EV-20260328-003"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-03-29",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-30",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-03-31",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260331-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-04-01",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-02",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-03",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-04",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-05",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-06",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-07",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-08",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260408-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-04-09",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-10",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-11",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-12",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-13",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260413-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-04-14",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-15",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260415-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-04-16",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-17",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-18",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-19",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-20",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260420-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-04-21",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-22",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-23",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260423-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-04-24",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-25",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-26",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-27",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-28",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-04-29",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260429-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-04-30",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260430-001",
+        "EV-20260430-002"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-01",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-02",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-03",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-04",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260504-001",
+        "EV-20260504-002"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-05",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260505-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-06",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-07",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-08",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-09",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-10",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-11",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-12",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-13",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-14",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-15",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260515-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-16",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-17",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260517-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-18",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260518-001",
+        "EV-20260518-002"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-19",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-20",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260520-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-21",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-22",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-23",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-24",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-25",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-26",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260526-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-27",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-28",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260528-001",
+        "EV-20260528-002"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-05-29",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-30",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-05-31",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-01",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260601-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-06-02",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-03",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260603-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-06-04",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-05",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-06",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-07",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-08",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-09",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-10",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-11",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-12",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-13",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-14",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-15",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260615-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-06-16",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-17",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260617-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-06-18",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-19",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-20",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-21",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-22",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-23",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-24",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-25",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-26",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-27",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-28",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-29",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-06-30",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260630-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-07-01",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-02",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-03",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-04",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-05",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-06",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-07",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260707-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-07-08",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-09",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260709-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-07-10",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-11",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260711-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-07-12",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-13",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-14",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-15",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-16",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-17",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-18",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-19",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-20",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260720-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-07-21",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-22",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-23",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-24",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-25",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-26",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-27",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-28",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-29",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-30",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-07-31",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-01",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-02",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-03",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-04",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-05",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260805-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-08-06",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-07",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-08",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-09",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-10",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-11",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-12",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260812-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-08-13",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260813-001",
+        "EV-20260813-002"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-08-14",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260814-001",
+        "EV-20260814-002"
+      ],
+      "movement_ids": [
+        "MOV-20260814-001"
+      ],
+      "note": null
+    },
+    {
+      "date": "2026-08-15",
+      "collection_status": "NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [],
+      "movement_ids": [],
+      "note": "A quiet collection marker means no standalone verified event was identified in the current source set. It does not prove no activity occurred."
+    },
+    {
+      "date": "2026-08-16",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260816-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-08-17",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260817-001",
+        "EV-20260817-002"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-08-18",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260818-001",
+        "EV-20260818-002"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-08-19",
+      "collection_status": "EVENTS_IDENTIFIED",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260819-001"
+      ],
+      "movement_ids": [],
+      "note": null
+    },
+    {
+      "date": "2026-08-20",
+      "collection_status": "PARTIAL_DAY",
+      "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
+      "event_ids": [
+        "EV-20260820-001",
+        "EV-20260820-002",
+        "EV-20260820-003",
+        "EV-20260820-004",
+        "EV-20260820-005"
+      ],
+      "movement_ids": [
+        "MOV-20260820-001"
+      ],
+      "note": null
+    }
+  ]
+}

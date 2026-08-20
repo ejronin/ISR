@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "rule": "Only source-supported event points, lower bounds, or cumulative snapshots. No interpolation across quiet/unknown days.",
+  "series": {
+    "us_coalition_military_kia": [
+      {
+        "date": "2026-07-20",
+        "value": 17,
+        "value_type": "CUMULATIVE_SNAPSHOT_LOWER_BOUND",
+        "source_ids": [
+          "SRC-877766ED3824"
+        ]
+      },
+      {
+        "date": "2026-07-22",
+        "value": 18,
+        "value_type": "CUMULATIVE_SNAPSHOT",
+        "source_ids": [
+          "SRC-691C9B6A352A"
+        ]
+      }
+    ],
+    "iran_aligned_military_kia": [
+      {
+        "date": "2026-03-04",
+        "value": 87,
+        "value_type": "CONFIRMED_EVENT_MINIMUM_IRIS_DENA_ONLY",
+        "source_ids": [
+          "SRC-B106A3769146",
+          "SRC-C092F7F591FC"
+        ],
+        "note": "Not a national military cumulative total."
+      }
+    ],
+    "senior_command_losses_by_side": [],
+    "us_coalition_durable_destroyed": [
+      {
+        "date": "2026-03-12",
+        "value": 1,
+        "unit": "aircraft",
+        "value_type": "EVENT",
+        "loss_ids": [
+          "MAT-USA-KC135-20260312"
+        ]
+      },
+      {
+        "date": "2026-07-01",
+        "value": 1,
+        "unit": "helicopter",
+        "value_type": "EVENT",
+        "loss_ids": [
+          "MAT-USA-HELO-20260701"
+        ]
+      }
+    ],
+    "iran_aligned_durable_destroyed": [
+      {
+        "date": "2026-03-04",
+        "value": 1,
+        "unit": "frigate",
+        "value_type": "EVENT",
+        "loss_ids": [
+          "MAT-IRN-DENA-20260304"
+        ]
+      }
+    ],
+    "iran_aligned_munitions_expenditure": [
+      {
+        "date": "2026-03-04",
+        "value": 2000,
+        "qualifier": ">",
+        "munition": "UAS",
+        "value_type": "CUMULATIVE_LOWER_BOUND_FIRST_100H",
+        "expenditure_id": "MUN-IRN-FIRST100H-UAS"
+      },
+      {
+        "date": "2026-03-04",
+        "value": 500,
+        "qualifier": ">",
+        "munition": "ballistic_missile",
+        "value_type": "CUMULATIVE_LOWER_BOUND_FIRST_100H",
+        "expenditure_id": "MUN-IRN-FIRST100H-BM"
+      }
+    ],
+    "us_coalition_munitions_expenditure": [
+      {
+        "date": "2026-03-27",
+        "value": 850,
+        "qualifier": ">",
+        "munition": "Tomahawk",
+        "value_type": "CUMULATIVE_LOWER_BOUND",
+        "expenditure_id": "MUN-USA-TOMAHAWK-4WK"
+      },
+      {
+        "date": "2026-04-21",
+        "value": 1000,
+        "qualifier": ">",
+        "munition": "Tomahawk",
+        "value_type": "CUMULATIVE_LOWER_BOUND_SUPERSEDES_PRIOR",
+        "expenditure_id": "MUN-USA-TOMAHAWK-CEASEFIRE"
+      },
+      {
+        "date": "2026-06-23",
+        "value": 13629,
+        "qualifier": "=",
+        "munition": "strike_munitions_aggregate",
+        "value_type": "CUMULATIVE_REPORTED",
+        "expenditure_id": "MUN-USA-STRIKE-MUNITIONS-BY-JUN23"
+      }
+    ],
+    "direct_military_cost_us": [
+      {
+        "date": "2026-06-23",
+        "low": 34000000000,
+        "high": 42000000000,
+        "currency": "USD",
+        "value_type": "ANALYTICAL_INCREMENTAL_DOD_ESTIMATE",
+        "cost_id": "COST-USA-CSIS-20260623"
+      },
+      {
+        "date": "2026-07-21",
+        "low": 37500000000,
+        "high": 37500000000,
+        "currency": "USD",
+        "value_type": "OFFICIAL_FIGURE_WITH_PROJECTED_COMPONENT",
+        "cost_id": "COST-USA-PENTAGON-20260721"
+      }
+    ],
+    "direct_military_cost_iran": []
+  },
+  "gaps": [
+    "No itemized Iranian national military-KIA series.",
+    "No itemized senior-command casualty series.",
+    "No complete Aug. 20 U.S. or Iranian direct-military-cost series.",
+    "Verified durable equipment damage exists at multiple facilities but quantities are often not exact enough for daily numeric summation."
+  ]
+}

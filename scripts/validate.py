@@ -10,8 +10,11 @@ REQUIRED_FILES = [
     'assets/social-preview.png','data/core.json','data/events.json','data/facilities.json',
     'data/strikes.json','data/losses.json','data/claims.json','data/influence-networks.json',
     'data/economics.json','data/routes.json','data/missiles.json','data/sources.json','data/snapshots.json',
+    'data/integration-v1.2/manifest.json','data/integration-v1.2/events.json',
+    'data/integration-v1.2/timeline.json','data/integration-v1.2/sources.json',
+    'data/integration-v1.2/validate-package.py','scripts/validate_integration.py',
 ]
-REQUIRED_PANELS = {'intro','snapshot','timeline','losses','facilities','strikes','imagery','csis','economy','arctic','claims','sources','history'}
+REQUIRED_PANELS = {'intro','snapshot','timeline','historical','losses','facilities','strikes','imagery','csis','economy','arctic','claims','sources','history'}
 
 class AtlasParser(HTMLParser):
     def __init__(self):
@@ -62,7 +65,7 @@ def main():
         if p.meta.get(k)!=v: failures += fail(f'{k} expected {v!r}, got {p.meta.get(k)!r}')
     canonical=[x.get('href') for x in p.links if 'canonical' in x.get('rel','').split()]
     if canonical!=['https://ejronin.github.io/ISR/']: failures += fail(f'canonical link invalid: {canonical}')
-    for f in sorted((ROOT/'data').glob('*.json')):
+    for f in sorted((ROOT/'data').rglob('*.json')):
         try: json.loads(f.read_text(encoding='utf-8'))
         except Exception as e: failures += fail(f'invalid JSON {f.relative_to(ROOT)}: {e}')
     # validate social PNG dimensions from IHDR without external packages

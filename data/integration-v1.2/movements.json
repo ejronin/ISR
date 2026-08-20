@@ -1,0 +1,698 @@
+{
+  "schema_version": "1.2",
+  "movements": [
+    {
+      "adjudication_rule": "A movement planned, agreed, or materially in execution before the Iran war is not labeled RETREAT unless evidence shows the pre-existing plan was superseded by an unplanned enemy-forced withdrawal.",
+      "movement_id": "MOV-20260117-IRQ-AINASAD",
+      "date": "2026-01-17",
+      "actor": "United States / Republic of Iraq",
+      "unit_or_asset": "U.S. forces at Ain al-Asad Air Base",
+      "movement_type": "PRE_COORDINATED_BASE_HANDOVER",
+      "from": "Ain al-Asad Air Base",
+      "to": "Iraqi full control / U.S.-Iraq bilateral security posture",
+      "decision_date": "2024-09-27",
+      "planning_origin_date": "2023-08-08",
+      "announcement_date": "2024-09-27",
+      "execution_date": "2026-01-17",
+      "coordination_parties": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "coordination_country": "Iraq",
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ],
+      "reported_reason": "Execution of jointly planned transition from coalition military mission toward enduring bilateral security partnership after HMC review.",
+      "prewar_plan_evidence": [
+        "SRC-6B8C48817118",
+        "SRC-005D46FC622B",
+        "SRC-CEBE7CCFF600"
+      ],
+      "war_related_evidence": [],
+      "subsequent_activity": [
+        "Iraq assumed full control before the Iran war; U.S.-Iraq bilateral security relationship continued."
+      ],
+      "classification": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "assessment_notes": "Formal U.S.-Iraq transition timeline predates the Iran war by roughly 17 months; Ain al-Asad handover predates it by 42 days. Iran cannot be assigned as the causal reason absent evidence the bilateral plan was superseded by Iranian coercion.",
+      "source_refs": [
+        {
+          "source_id": "SRC-005D46FC622B",
+          "roles": [
+            "PREWAR_PLANNING",
+            "OFFICIAL_STATEMENT"
+          ]
+        },
+        {
+          "source_id": "SRC-29FAB9A69690",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "LATER_OUTCOME"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "time_precision": "DATE_ONLY",
+      "force_posture_classification": "BILATERALLY_AGREED_WITHDRAWAL",
+      "display_label": "PRE-COORDINATED DRAWDOWN — NOT A RETREAT",
+      "host_country": "Iraq",
+      "governments_or_parties": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "discussions_began_date": "2023-08-08",
+      "agreement_reached_date": "2024-09-27",
+      "agreement_formalized_date": "2024-09-27",
+      "implementation_schedule_established_date": "2024-09-27",
+      "planned_execution_window": "Phase-one Iraq transition established before the war; Ain al-Asad handover executed January 17, 2026.",
+      "war_change_assessment": "NO_REVIEWED_EVIDENCE_WAR_CHANGED_PLAN; EXECUTION PRECEDED WAR",
+      "causation_language": [
+        "The drawdown was negotiated and scheduled before the Iran war. The movement is therefore classified as a pre-coordinated drawdown, not a retreat.",
+        "No reviewed evidence shows Iranian wartime pressure originated the decision."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "2026-01-17",
+      "subsequent_broader_force_posture_activity": [
+        "Iraq assumed full control before the Iran war; U.S.-Iraq bilateral security relationship continued."
+      ],
+      "later_plan_change_evidence": []
+    },
+    {
+      "movement_id": "MOV-20260207-001",
+      "date": "2026-02-07",
+      "actor": "United States",
+      "unit_or_asset": "USS Abraham Lincoln Carrier Strike Group",
+      "movement_type": "DEPLOYMENT",
+      "from": "Indo-Pacific / prior deployment area",
+      "to": "Middle East / Arabian Sea",
+      "decision_date": null,
+      "announcement_date": "2026-02-07",
+      "execution_date": "2026-01 (arrival in Middle East; exact day not used)",
+      "reported_reason": "Scheduled deployment supporting maritime security and stability",
+      "prewar_plan_evidence": [
+        "S001"
+      ],
+      "war_related_evidence": [],
+      "subsequent_activity": [
+        "Deployment extended due combat mission; Navy later reported 10,000+ sorties and planned rotation home."
+      ],
+      "assessment_notes": "Presence was established before Feb. 28. Do not recode August departure as a war-caused initial withdrawal; the extension itself was war-related.",
+      "source_refs": [
+        {
+          "source_id": "SRC-E277CF2E03A3",
+          "roles": [
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ]
+        },
+        {
+          "source_id": "SRC-57864B8610ED",
+          "roles": [
+            "LATER_OUTCOME"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "time_precision": "DATE_ONLY_OR_REPORTED_MONTH_AS_ORIGINALLY_STATED",
+      "adjudication_rule": "Movement is not recoded as retreat unless evidence establishes an unplanned withdrawal caused by enemy action.",
+      "classification": "PREWAR_SCHEDULED_DEPLOYMENT",
+      "force_posture_classification": "PREWAR_SCHEDULED_DEPLOYMENT",
+      "display_label": "PRE-WAR SCHEDULED DEPLOYMENT",
+      "host_country": null,
+      "governments_or_parties": [
+        "United States"
+      ],
+      "discussions_began_date": null,
+      "agreement_reached_date": null,
+      "agreement_formalized_date": null,
+      "implementation_schedule_established_date": null,
+      "planned_execution_window": "Scheduled deployment; Middle East presence established before February 28, 2026.",
+      "war_change_assessment": "WAR LATER EXTENDED DEPLOYMENT; DOES NOT RETROACTIVELY CHANGE PRE-WAR DEPLOYMENT ORIGIN",
+      "causation_language": [
+        "The carrier presence was established by a scheduled deployment before the Iran war. The later combat extension is recorded separately."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "2026-01 (arrival in Middle East; exact day not used)",
+      "subsequent_broader_force_posture_activity": [
+        "Deployment extended due combat mission; Navy later reported 10,000+ sorties and planned rotation home."
+      ],
+      "later_plan_change_evidence": []
+    },
+    {
+      "adjudication_rule": "A movement planned, agreed, or materially in execution before the Iran war is not labeled RETREAT unless evidence shows the pre-existing plan was superseded by an unplanned enemy-forced withdrawal.",
+      "movement_id": "MOV-20260212-SYR-TANF",
+      "date": "2026-02-12",
+      "actor": "United States / Syrian government",
+      "unit_or_asset": "U.S. forces at al-Tanf",
+      "movement_type": "PRE_COORDINATED_BASE_HANDOVER",
+      "from": "al-Tanf garrison",
+      "to": "Syrian government control; U.S. forces relocated from site",
+      "decision_date": null,
+      "planning_origin_date": "2025",
+      "announcement_date": null,
+      "execution_date": "2026-02-12",
+      "coordination_parties": [
+        "United States",
+        "Syrian government / authorities"
+      ],
+      "coordination_country": "Syria",
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ],
+      "reported_reason": "Pentagon base consolidation and transition of counter-ISIS responsibility amid strengthening U.S.-Syrian ties; handover coordinated between Syrian and U.S. authorities.",
+      "prewar_plan_evidence": [
+        "SRC-566F047CEA46"
+      ],
+      "war_related_evidence": [],
+      "subsequent_activity": [
+        "Shaddadi handover and broader Syria drawdown followed before the Iran war."
+      ],
+      "classification": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "assessment_notes": "Al-Tanf was handed over 16 days before the Iran war. Exact initial Pentagon consolidation announcement date is not established in this package and is not invented.",
+      "source_refs": [
+        {
+          "source_id": "SRC-566F047CEA46",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "time_precision": "DATE_ONLY",
+      "force_posture_classification": "FORCE_POSTURE_CONSOLIDATION",
+      "display_label": "FORCE-POSTURE CONSOLIDATION — NOT A RETREAT",
+      "host_country": "Syria",
+      "governments_or_parties": [
+        "United States",
+        "Syrian government / authorities"
+      ],
+      "discussions_began_date": "2025",
+      "agreement_reached_date": null,
+      "agreement_formalized_date": null,
+      "implementation_schedule_established_date": null,
+      "planned_execution_window": "Pentagon consolidation plan announced in 2025; al-Tanf handover executed February 12, 2026. Exact original schedule date unresolved.",
+      "war_change_assessment": "NO_REVIEWED_EVIDENCE_WAR_CHANGED_PLAN; EXECUTION PRECEDED WAR",
+      "causation_language": [
+        "The force-posture transition was established and executing before the Iran war. The movement is therefore classified as force-posture consolidation, not a retreat.",
+        "No reviewed evidence shows Iranian wartime pressure originated the decision."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "2026-02-12",
+      "subsequent_broader_force_posture_activity": [
+        "Shaddadi handover and broader Syria drawdown followed before the Iran war."
+      ],
+      "later_plan_change_evidence": []
+    },
+    {
+      "adjudication_rule": "A movement planned, agreed, or materially in execution before the Iran war is not labeled RETREAT unless evidence shows the pre-existing plan was superseded by an unplanned enemy-forced withdrawal.",
+      "movement_id": "MOV-20260215-SYR-SHADDADI",
+      "date": "2026-02-15",
+      "actor": "United States / Syrian government",
+      "unit_or_asset": "U.S. forces at Shaddadi",
+      "movement_type": "PRE_COORDINATED_BASE_HANDOVER",
+      "from": "Shaddadi military base",
+      "to": "Syrian government control",
+      "decision_date": null,
+      "planning_origin_date": "2025",
+      "announcement_date": null,
+      "execution_date": "2026-02-15",
+      "coordination_parties": [
+        "United States",
+        "Syrian government / authorities"
+      ],
+      "coordination_country": "Syria",
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ],
+      "reported_reason": "Coordinated U.S.-Syrian base handover within pre-war consolidation / partner-led counter-ISIS transition.",
+      "prewar_plan_evidence": [
+        "SRC-3B7FE42A1FF2",
+        "SRC-566F047CEA46"
+      ],
+      "war_related_evidence": [],
+      "subsequent_activity": [
+        "The broader drawdown was publicly called deliberate and conditions-based before Feb. 28."
+      ],
+      "classification": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "assessment_notes": "Handover predates the Iran war by 13 days and was reported as coordinated with the Syrian government.",
+      "source_refs": [
+        {
+          "source_id": "SRC-3B7FE42A1FF2",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "PREWAR_PLANNING"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "time_precision": "DATE_ONLY",
+      "force_posture_classification": "FORCE_POSTURE_CONSOLIDATION",
+      "display_label": "FORCE-POSTURE CONSOLIDATION — NOT A RETREAT",
+      "host_country": "Syria",
+      "governments_or_parties": [
+        "United States",
+        "Syrian government / authorities"
+      ],
+      "discussions_began_date": "2025",
+      "agreement_reached_date": null,
+      "agreement_formalized_date": null,
+      "implementation_schedule_established_date": null,
+      "planned_execution_window": "Pentagon consolidation plan announced in 2025; Shaddadi handover executed February 15, 2026. Exact original schedule date unresolved.",
+      "war_change_assessment": "NO_REVIEWED_EVIDENCE_WAR_CHANGED_PLAN; EXECUTION PRECEDED WAR",
+      "causation_language": [
+        "The force-posture transition was established and executing before the Iran war. The movement is therefore classified as force-posture consolidation, not a retreat.",
+        "No reviewed evidence shows Iranian wartime pressure originated the decision."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "2026-02-15",
+      "subsequent_broader_force_posture_activity": [
+        "The broader drawdown was publicly called deliberate and conditions-based before Feb. 28."
+      ],
+      "later_plan_change_evidence": []
+    },
+    {
+      "adjudication_rule": "A movement planned, agreed, or materially in execution before the Iran war is not labeled RETREAT unless evidence shows the pre-existing plan was superseded by an unplanned enemy-forced withdrawal.",
+      "movement_id": "MOV-20260223-SYR-QASRAK",
+      "date": "2026-02-23",
+      "actor": "United States",
+      "unit_or_asset": "U.S. forces/equipment at Qasrak main northeast Syria base",
+      "movement_type": "PREWAR_CONDITIONS_BASED_DRAWDOWN",
+      "from": "Qasrak / Hasakah",
+      "to": "Consolidated/reduced Syria posture",
+      "decision_date": null,
+      "planning_origin_date": "2025",
+      "announcement_date": "2026-02-18",
+      "execution_date": "2026-02-23",
+      "coordination_parties": [
+        "United States",
+        "Syrian government context / partner transition"
+      ],
+      "coordination_country": "Syria",
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ],
+      "reported_reason": "Deliberate and conditions-based transition as Syrian government assumed more counter-ISIS responsibility.",
+      "prewar_plan_evidence": [
+        "SRC-64BB58499062",
+        "SRC-8C302F9CD6F7"
+      ],
+      "war_related_evidence": [],
+      "subsequent_activity": [
+        "Withdrawal began five days before the Iran war."
+      ],
+      "classification": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "assessment_notes": "Chronology directly defeats an attribution to the Iran war as the initiating cause: public execution began before the war.",
+      "source_refs": [
+        {
+          "source_id": "SRC-8C302F9CD6F7",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "PREWAR_PLANNING"
+          ]
+        },
+        {
+          "source_id": "SRC-64BB58499062",
+          "roles": [
+            "PREWAR_PLANNING",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "time_precision": "DATE_ONLY",
+      "force_posture_classification": "FORCE_POSTURE_CONSOLIDATION",
+      "display_label": "PRE-COORDINATED DRAWDOWN — NOT A RETREAT",
+      "host_country": "Syria",
+      "governments_or_parties": [
+        "United States",
+        "Syrian government context / partner transition"
+      ],
+      "discussions_began_date": "2025",
+      "agreement_reached_date": null,
+      "agreement_formalized_date": null,
+      "implementation_schedule_established_date": "2026-02-18",
+      "planned_execution_window": "Publicly described as deliberate and conditions-based by February 18; drawdown began February 23, 2026.",
+      "war_change_assessment": "NO_REVIEWED_EVIDENCE_WAR_CHANGED_PLAN; EXECUTION BEGAN BEFORE WAR",
+      "causation_language": [
+        "The drawdown was established and began before the Iran war. The movement is therefore classified as a pre-coordinated drawdown, not a retreat.",
+        "No reviewed evidence shows Iranian wartime pressure originated the decision."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "2026-02-23",
+      "subsequent_broader_force_posture_activity": [
+        "Withdrawal began five days before the Iran war."
+      ],
+      "later_plan_change_evidence": []
+    },
+    {
+      "movement_id": "MOV-20260320-001",
+      "date": "2026-03-20",
+      "actor": "United States",
+      "unit_or_asset": "USS Boxer Amphibious Ready Group / Marine Expeditionary Unit",
+      "movement_type": "REINFORCEMENT",
+      "from": "U.S. West Coast",
+      "to": "Middle East theater",
+      "decision_date": null,
+      "announcement_date": "2026-03-20",
+      "execution_date": "2026-03 (accelerated by ~3 weeks)",
+      "reported_reason": "Regional reinforcement during Iran war",
+      "prewar_plan_evidence": [],
+      "war_related_evidence": [
+        "S011"
+      ],
+      "subsequent_activity": [],
+      "assessment_notes": "Clear reinforcement event. No precise current location retained.",
+      "source_refs": [
+        {
+          "source_id": "SRC-777D501C321D",
+          "roles": [
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [],
+      "time_precision": "DATE_ONLY_OR_REPORTED_MONTH_AS_ORIGINALLY_STATED",
+      "adjudication_rule": "Movement is not recoded as retreat unless evidence establishes an unplanned withdrawal caused by enemy action.",
+      "classification": "WAR_REINFORCEMENT",
+      "force_posture_classification": "WAR_REINFORCEMENT",
+      "display_label": "WAR-DRIVEN REINFORCEMENT",
+      "host_country": null,
+      "governments_or_parties": [
+        "United States"
+      ],
+      "discussions_began_date": null,
+      "agreement_reached_date": null,
+      "agreement_formalized_date": null,
+      "implementation_schedule_established_date": null,
+      "planned_execution_window": "Deployment accelerated by roughly three weeks during the war.",
+      "war_change_assessment": "WAR ACCELERATED DEPLOYMENT",
+      "causation_language": [
+        "This is a wartime reinforcement, not a drawdown."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "2026-03 (accelerated by ~3 weeks)",
+      "subsequent_broader_force_posture_activity": [],
+      "later_plan_change_evidence": [
+        "S011"
+      ]
+    },
+    {
+      "movement_id": "MOV-20260320-002",
+      "date": "2026-03-20",
+      "actor": "United States",
+      "unit_or_asset": "USS George H.W. Bush / USS Gerald R. Ford",
+      "movement_type": "ROTATION",
+      "from": "Carrier maintenance/repair and prior operating areas",
+      "to": "Middle East theater / relief sequence",
+      "decision_date": null,
+      "announcement_date": "2026-03-20",
+      "execution_date": null,
+      "reported_reason": "Carrier replacement/rotation amid sustained operations",
+      "prewar_plan_evidence": [],
+      "war_related_evidence": [
+        "S011"
+      ],
+      "subsequent_activity": [
+        "George H.W. Bush remained in the Middle East when George Washington arrived Aug. 20."
+      ],
+      "assessment_notes": "Record as rotation/replacement, not simple withdrawal.",
+      "source_refs": [
+        {
+          "source_id": "SRC-777D501C321D",
+          "roles": [
+            "FORCE_POSTURE"
+          ]
+        },
+        {
+          "source_id": "SRC-17A8BAFE71BD",
+          "roles": [
+            "LATER_OUTCOME"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [],
+      "time_precision": "DATE_ONLY_OR_REPORTED_MONTH_AS_ORIGINALLY_STATED",
+      "adjudication_rule": "Movement is not recoded as retreat unless evidence establishes an unplanned withdrawal caused by enemy action.",
+      "classification": "ROTATION_REPLACEMENT",
+      "force_posture_classification": "ROTATION_REPLACEMENT",
+      "display_label": "CARRIER ROTATION / REPLACEMENT",
+      "host_country": null,
+      "governments_or_parties": [
+        "United States"
+      ],
+      "discussions_began_date": null,
+      "agreement_reached_date": null,
+      "agreement_formalized_date": null,
+      "implementation_schedule_established_date": null,
+      "planned_execution_window": "Carrier replacement/rotation during sustained operations; exact decision schedule not established in package.",
+      "war_change_assessment": "WARTIME ROTATION; NO BASIS TO LABEL SIMPLE WITHDRAWAL",
+      "causation_language": [
+        "Record as rotation/replacement. The package does not establish a pre-war decision date for this specific rotation."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": null,
+      "subsequent_broader_force_posture_activity": [
+        "George H.W. Bush remained in the Middle East when George Washington arrived Aug. 20."
+      ],
+      "later_plan_change_evidence": [
+        "S011"
+      ]
+    },
+    {
+      "movement_id": "MOV-202607-IRQ-ERBIL",
+      "date": "2026-07",
+      "actor": "United States / Republic of Iraq",
+      "unit_or_asset": "Remaining U.S. troops and military equipment in Erbil / Iraqi Kurdistan",
+      "movement_type": "PRE_COORDINATED_THEATER_DRAWDOWN_EXECUTION",
+      "from": "Erbil / Iraqi Kurdistan",
+      "to": "Final coalition-mission departure / successor bilateral security relationship",
+      "decision_date": "2024-09-27",
+      "planning_origin_date": "2023-08-08",
+      "announcement_date": "2024-09-27",
+      "execution_date": "Late July 2026 — exact day not established; AP on Aug. 12 said drawdown began about three weeks earlier",
+      "reported_on": "2026-08-12",
+      "coordination_parties": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "coordination_country": "Iraq",
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ],
+      "reported_reason": "Final phase of the U.S.-Iraq transition agreed in 2024; remaining Iraq-based support for counter-ISIS operations in Syria was scheduled through September 2026 subject to conditions/consultations.",
+      "prewar_plan_evidence": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ],
+      "war_related_evidence": [
+        "SRC-80791B854E19"
+      ],
+      "subsequent_activity": [
+        "U.S. and Iraqi officials reaffirmed Sept. 30, 2026 as the final coalition-mission departure date."
+      ],
+      "classification": "PRE_COORDINATED_DRAWDOWN_NOT_RETREAT",
+      "assessment_notes": "Execution occurred during the Iran war and after attacks on Erbil, so wartime pressure may be relevant to local force-protection choices. But the governing withdrawal endpoint and transition architecture were formalized in 2024; the drawdown cannot be attributed to Iran as its originating cause without evidence the 2024 plan was superseded.",
+      "source_refs": [
+        {
+          "source_id": "SRC-80791B854E19",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "FORCE_POSTURE",
+            "LATER_OUTCOME"
+          ]
+        },
+        {
+          "source_id": "SRC-005D46FC622B",
+          "roles": [
+            "PREWAR_PLANNING",
+            "OFFICIAL_STATEMENT"
+          ]
+        }
+      ],
+      "map_ref": "MAP-US-ERBIL",
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "time_precision": "MONTH_ONLY / REPORTED_AS_ABOUT_THREE_WEEKS_BEFORE_2026-08-12",
+      "adjudication_rule": "Wartime execution of a pre-war bilateral drawdown plan is not recoded as retreat merely because hostile attacks occurred during execution; a causal change to the plan must be evidenced.",
+      "force_posture_classification": "BILATERALLY_AGREED_WITHDRAWAL",
+      "display_label": "PRE-COORDINATED DRAWDOWN / WARTIME EXECUTION — NOT A RETREAT",
+      "host_country": "Iraq",
+      "governments_or_parties": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "discussions_began_date": "2023-08-08",
+      "agreement_reached_date": "2024-09-27",
+      "agreement_formalized_date": "2024-09-27",
+      "implementation_schedule_established_date": "2024-09-27",
+      "planned_execution_window": "Final coalition-mission phase scheduled through September 30, 2026, subject to conditions/consultations; physical Erbil drawdown began in late July 2026, exact day unresolved.",
+      "war_change_assessment": "WARTIME EXECUTION; POSSIBLE LOCAL FORCE-PROTECTION EFFECTS, BUT NO REVIEWED EVIDENCE THE 2024 GOVERNING PLAN WAS SUPERSEDED OR ORIGINATED BY IRAN",
+      "causation_language": [
+        "The drawdown was negotiated and scheduled before the Iran war. The movement is therefore classified as a pre-coordinated drawdown, not a retreat.",
+        "No reviewed evidence shows Iranian wartime pressure originated the decision.",
+        "Execution occurred during the war; any later acceleration, expansion, delay, or local force-protection change must be recorded separately if supported."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "Late July 2026 — exact day not established; AP on Aug. 12 said drawdown began about three weeks earlier",
+      "subsequent_broader_force_posture_activity": [
+        "U.S. and Iraqi officials reaffirmed Sept. 30, 2026 as the final coalition-mission departure date."
+      ],
+      "later_plan_change_evidence": [
+        "SRC-80791B854E19"
+      ]
+    },
+    {
+      "movement_id": "MOV-20260814-001",
+      "date": "2026-08-14",
+      "actor": "United States",
+      "unit_or_asset": "USS Abraham Lincoln Carrier Strike Group",
+      "movement_type": "ROTATION",
+      "from": "Middle East theater",
+      "to": "Homeport return route (exact current location omitted)",
+      "decision_date": null,
+      "announcement_date": "2026-08-14",
+      "execution_date": "2026-08 (relief under way by Aug. 20)",
+      "reported_reason": "Planned rotation after deployment extended by combat mission",
+      "prewar_plan_evidence": [
+        "S001"
+      ],
+      "war_related_evidence": [
+        "S057"
+      ],
+      "subsequent_activity": [
+        "George Washington arrived to relieve Lincoln.",
+        "George H.W. Bush also remained in theater."
+      ],
+      "assessment_notes": "The movement is a planned rotation after a war-driven extension. A “retreat” label erases both the pre-war deployment chronology and replacement presence.",
+      "source_refs": [
+        {
+          "source_id": "SRC-57864B8610ED",
+          "roles": [
+            "OFFICIAL_STATEMENT",
+            "FORCE_POSTURE"
+          ]
+        },
+        {
+          "source_id": "SRC-E277CF2E03A3",
+          "roles": [
+            "PREWAR_PLANNING"
+          ]
+        },
+        {
+          "source_id": "SRC-17A8BAFE71BD",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "time_precision": "DATE_ONLY_OR_REPORTED_MONTH_AS_ORIGINALLY_STATED",
+      "adjudication_rule": "Movement is not recoded as retreat unless evidence establishes an unplanned withdrawal caused by enemy action.",
+      "classification": "PLANNED_ROTATION_NOT_RETREAT",
+      "force_posture_classification": "PLANNED_ROTATION_NOT_RETREAT",
+      "display_label": "PLANNED ROTATION — NOT A RETREAT",
+      "host_country": null,
+      "governments_or_parties": [
+        "United States"
+      ],
+      "discussions_began_date": null,
+      "agreement_reached_date": null,
+      "agreement_formalized_date": null,
+      "implementation_schedule_established_date": null,
+      "planned_execution_window": "Relief under way by August 20 after a combat-driven extension; exact internal Navy scheduling decision date unresolved.",
+      "war_change_assessment": "WAR EXTENDED LINCOLN DEPLOYMENT; REPLACEMENT PRESENCE CONFIRMED",
+      "causation_language": [
+        "The departure is classified as a planned rotation after a war-driven extension, not a retreat.",
+        "The package does not claim the specific relief decision was established before the war because that date is unresolved."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "2026-08 (relief under way by Aug. 20)",
+      "subsequent_broader_force_posture_activity": [
+        "George Washington arrived to relieve Lincoln.",
+        "George H.W. Bush also remained in theater."
+      ],
+      "later_plan_change_evidence": [
+        "S057"
+      ]
+    },
+    {
+      "movement_id": "MOV-20260820-001",
+      "date": "2026-08-20",
+      "actor": "United States",
+      "unit_or_asset": "USS George Washington Carrier Strike Group",
+      "movement_type": "REDEPLOYMENT",
+      "from": "Asia-based force posture",
+      "to": "Middle East theater (regional precision only)",
+      "decision_date": null,
+      "announcement_date": "2026-08-20",
+      "execution_date": "2026-08-19 (CENTCOM arrival reported by AP on Aug. 20)",
+      "reported_reason": "Relieve USS Abraham Lincoln",
+      "prewar_plan_evidence": [],
+      "war_related_evidence": [
+        "S069"
+      ],
+      "subsequent_activity": [],
+      "assessment_notes": "Replacement/continuity event. No exact ship coordinates or targeting-quality details retained.",
+      "source_refs": [
+        {
+          "source_id": "SRC-17A8BAFE71BD",
+          "roles": [
+            "INDEPENDENT_CONFIRMATION",
+            "CONTINUITY_EVIDENCE"
+          ]
+        }
+      ],
+      "map_ref": null,
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "time_precision": "DATE_ONLY_OR_REPORTED_MONTH_AS_ORIGINALLY_STATED",
+      "adjudication_rule": "Movement is not recoded as retreat unless evidence establishes an unplanned withdrawal caused by enemy action.",
+      "classification": "REDEPLOYMENT_FOR_RELIEF",
+      "force_posture_classification": "REDEPLOYMENT_FOR_RELIEF",
+      "display_label": "SCHEDULED REDEPLOYMENT / RELIEF",
+      "host_country": null,
+      "governments_or_parties": [
+        "United States"
+      ],
+      "discussions_began_date": null,
+      "agreement_reached_date": null,
+      "agreement_formalized_date": null,
+      "implementation_schedule_established_date": null,
+      "planned_execution_window": "George Washington arrived to relieve Abraham Lincoln; exact internal order date not established.",
+      "war_change_assessment": "CONTINUITY / REPLACEMENT EVENT",
+      "causation_language": [
+        "This movement demonstrates replacement/continuity and must be linked to the Lincoln rotation."
+      ],
+      "iran_war_start_date": "2026-02-28",
+      "actual_execution_date": "2026-08-19 (CENTCOM arrival reported by AP on Aug. 20)",
+      "subsequent_broader_force_posture_activity": [],
+      "later_plan_change_evidence": [
+        "S069"
+      ]
+    }
+  ],
+  "force_posture_rule": "A drawdown, rotation, redeployment, or withdrawal whose governing decision, bilateral agreement, implementation schedule, or formal execution plan was established before 2026-02-28 must be classified by documented force-posture type and must not be labeled retreat. Later war-driven changes are recorded separately."
+}

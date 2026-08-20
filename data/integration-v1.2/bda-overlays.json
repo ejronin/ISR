@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "overlays": [
+    {
+      "overlay_id": "BDA-US-ALUDEID",
+      "facility_ref": "US-ALUDEID",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-3826CE7F7FBB",
+        "SRC-551A9C2DB97C",
+        "SRC-B6B934C693E0"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Commercial satellite/public imagery supports structure-level comparison; CAOC damage independently described. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-US-NSA-BHR",
+      "facility_ref": "US-NSA-BHR",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-551A9C2DB97C",
+        "SRC-B6B934C693E0"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Current atlas records satellite-observed radome/SATCOM damage and HQ relocation. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-US-ARIFJAN",
+      "facility_ref": "US-ARIFJAN",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Current atlas records imagery-supported communications/radome damage. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-US-ALISALEM",
+      "facility_ref": "US-ALISALEM",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Current atlas records >12 structures damaged and >=4 aircraft shelters in imagery review. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-US-BUEHRING",
+      "facility_ref": "US-BUEHRING",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Power-plant hit and additional imagery-reviewed damage. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-US-ALDHAFRA",
+      "facility_ref": "US-ALDHAFRA",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-B6B934C693E0",
+        "SRC-551A9C2DB97C"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Multiple hangars visibly damaged; contents unresolved. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-US-PRINCESULTAN",
+      "facility_ref": "US-PRINCESULTAN",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-B6B934C693E0",
+        "SRC-551A9C2DB97C"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Imagery/reporting supports aircraft and base-structure damage. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-US-MUWAFFAQ",
+      "facility_ref": "US-MUWAFFAQ",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Imagery review supports THAAD radar/equipment damage. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-US-ISA",
+      "facility_ref": "US-ISA",
+      "candidate_confidence": "HIGH",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "STRUCTURE_LEVEL_REPORTING_EXISTS_BUT_MACHINE_POLYGONS_NOT_IN_PACKAGE",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Imagery review supports Patriot-equipment damage. No machine-readable footprint/damage polygons were supplied. Do not create polygons or percentages from prose."
+    },
+    {
+      "overlay_id": "BDA-FAC-UAE-BARAKAH",
+      "facility_ref": "FAC-UAE-BARAKAH",
+      "candidate_confidence": "NOT_READY",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "INSUFFICIENT_FOR_TO_SCALE_OVERLAY",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Damage is verified but the integration package does not contain machine-readable imagery/footprints for the struck generator."
+    },
+    {
+      "overlay_id": "BDA-FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT",
+      "facility_ref": "FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT",
+      "candidate_confidence": "NOT_READY",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "INSUFFICIENT_FOR_TO_SCALE_OVERLAY",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Terminal damage is verified; no machine-readable damage footprint supplied."
+    },
+    {
+      "overlay_id": "BDA-FAC-IRN-KHONDAB-HEAVY-WATER",
+      "facility_ref": "FAC-IRN-KHONDAB-HEAVY-WATER",
+      "candidate_confidence": "NOT_READY",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "INSUFFICIENT_FOR_TO_SCALE_OVERLAY",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "IAEA functional-loss reporting is strong; no machine-readable footprint/damage polygon supplied."
+    },
+    {
+      "overlay_id": "BDA-FAC-QAT-LNG-SYSTEM",
+      "facility_ref": "FAC-QAT-LNG-SYSTEM",
+      "candidate_confidence": "NOT_READY",
+      "facility_footprint_source": null,
+      "damage_imagery_source_ids": [],
+      "imagery_date": null,
+      "damaged_structures": null,
+      "geographic_precision": "INSUFFICIENT_FOR_TO_SCALE_OVERLAY",
+      "affected_area_calculation_supported": false,
+      "affected_area_percent": null,
+      "limitations": "Record is system-level and does not identify one exact damaged subfacility footprint."
+    }
+  ]
+}

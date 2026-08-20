@@ -1,0 +1,313 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "unresolved_id": "GAP-001",
+      "priority": "HIGH",
+      "topic": "Al Udeid CAOC strike chronology",
+      "question": "What exact date/time did the CAOC take the disabling hits, and which other base mission systems were degraded?",
+      "why_it_matters": "Separates a verified C2-node loss from unsupported whole-base shutdown claims.",
+      "related_records": [
+        "FAC-QAT-AL-UDEID",
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "Qatar MoD releases",
+        "CENTCOM/AFCENT statements",
+        "commercial satellite time series",
+        "later repair/reconstruction reporting"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-002",
+      "priority": "HIGH",
+      "topic": "Al Udeid reconstitution",
+      "question": "Did/when did the Al Udeid CAOC return to service?",
+      "why_it_matters": "Needed for degradation duration and reconstitution timeline.",
+      "related_records": [
+        "FAC-QAT-AL-UDEID"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "AFCENT releases",
+        "budget/reconstruction documents",
+        "later imagery"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-003",
+      "priority": "HIGH",
+      "topic": "Hormuz actual traffic",
+      "question": "How many vessels crossed with AIS/transponders off on each day?",
+      "why_it_matters": "Public tracked counts understate total physical transits and can bias “open/closed” claims.",
+      "related_records": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "Kpler/LSEG/Vortexa/SynMax cross-checks",
+        "port-arrival data",
+        "insurer/operator statements"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-004",
+      "priority": "HIGH",
+      "topic": "Iranian port throughput",
+      "question": "Daily arrivals/departures and actual landed/exported cargo at Iranian ports from Feb. 28 onward.",
+      "why_it_matters": "Transit through Hormuz is not the same as successful Iranian import/export.",
+      "related_records": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "port calls",
+        "customs",
+        "Kpler/Vortexa",
+        "Chinese customs",
+        "terminal statements"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-005",
+      "priority": "MODERATE",
+      "topic": "Barakah repair/restart",
+      "question": "When was the damaged electrical system repaired and the affected reactor returned to normal status?",
+      "why_it_matters": "Required for facility continuity/reconstitution timeline.",
+      "related_records": [
+        "FAC-UAE-BARAKAH"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "ENEC/FANR updates",
+        "IAEA operating data",
+        "UAE official releases"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-006",
+      "priority": "MODERATE",
+      "topic": "Aug. 13 ADNOC attack attribution",
+      "question": "Is there independent technical evidence tying the drones to Iran?",
+      "why_it_matters": "Attack occurrence is corroborated; attribution remains primarily UAE claim in this package.",
+      "related_records": [
+        "EV-20260813-002"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "wreckage/forensics",
+        "UKMTO/JMIC",
+        "satellite/ISR disclosures"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-007",
+      "priority": "MODERATE",
+      "topic": "May 4 U.S. warship strike claim",
+      "question": "Was a U.S. warship actually hit by Iranian missiles and forced back?",
+      "why_it_matters": "High-amplification claim lacks independent confirmation in the collected record.",
+      "related_records": [
+        "EV-20260504-002"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "US Navy damage reports",
+        "imagery/port repair evidence",
+        "independent video/geolocation"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-008",
+      "priority": "MODERATE",
+      "topic": "Russian material support",
+      "question": "What independently verified Russian imagery, drone or dual-use support reached Iran and when?",
+      "why_it_matters": "Separates rhetorical alignment from material enablement.",
+      "related_records": [
+        "EV-20260317-001"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "sanctions/designations",
+        "commercial imagery",
+        "export records",
+        "official disclosures"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-009",
+      "priority": "HIGH",
+      "topic": "Aug. 20 sanctions implementation",
+      "question": "What exact entities, instruments, countries and secondary-sanctions mechanisms will Treasury announce?",
+      "why_it_matters": "At cutoff, rhetoric/policy intent is verified but operational economic effect cannot yet be scored.",
+      "related_records": [
+        "EV-20260820-002"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "Treasury/OFAC Monday briefing and releases",
+        "China/India/UAE responses",
+        "shipping/FX data"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-010",
+      "priority": "HIGH",
+      "topic": "Daily-source enrichment",
+      "question": "Quiet/interstitial dates need additional primary and regional source sweeps even where no standalone event is currently identified.",
+      "why_it_matters": "A full-calendar index prevents skipped days but does not imply equal evidentiary depth on every date.",
+      "related_records": [
+        "daily-index.json"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "regional archives by day",
+        "official military daily releases",
+        "port/market daily series",
+        "state media claim archives"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-011",
+      "priority": "MODERATE",
+      "topic": "Iran oil exports Aug. 20",
+      "question": "Does independent Kpler/Vortexa/LSEG/Chinese customs data corroborate the Iranian central-bank governor’s statement that exports are zero?",
+      "why_it_matters": "The statement is primary claim provenance but not independent measurement.",
+      "related_records": [
+        "EV-20260820-005"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "Kpler",
+        "Vortexa",
+        "LSEG",
+        "Chinese customs/teapot refinery intake"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-012",
+      "priority": "HIGH",
+      "topic": "Legacy 11-leader casualty total",
+      "question": "Which 11 people make up the current UI leadership count, by name, role/rank, date, and source?",
+      "why_it_matters": "The current display compares a leadership-only Iranian number against an all-service U.S. military KIA number, producing a false like-for-like visual.",
+      "related_records": [],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "Itemize each leader/commander from existing atlas source chain and split senior military vs political/state leadership."
+      ]
+    },
+    {
+      "unresolved_id": "GAP-013",
+      "priority": "HIGH",
+      "topic": "U.S. 18 KIA event-level reconciliation",
+      "question": "Can all 18 U.S. military deaths in the July 22 cumulative snapshot be tied to event date, hostile/non-hostile cause and final status?",
+      "why_it_matters": "Daily attrition and AS OF views need event/death dates; current additive rows do not fully reconstruct the 18.",
+      "related_records": [
+        "C017"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "DOD/CENTCOM casualty releases",
+        "AP/Reuters event reconstructions"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-014",
+      "priority": "HIGH",
+      "topic": "Current Aug. 20 direct military cost",
+      "question": "What is the defensible U.S. and Iranian direct military cost through Aug. 20 after the renewed July/August fighting?",
+      "why_it_matters": "June CSIS and July Pentagon figures have different scopes and neither is a clean Aug. 20 final total.",
+      "related_records": [
+        "COST-USA-CSIS-20260623",
+        "COST-USA-PENTAGON-20260721"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "Updated DOD supplemental/execution data",
+        "CSIS/CRS update",
+        "item-level Iranian procurement/replacement proxies"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-015",
+      "priority": "MEDIUM",
+      "topic": "Opening strike exact time",
+      "question": "What exact first-strike time can be independently supported, and in which timezone?",
+      "why_it_matters": "Current atlas E001 stored 01:15 ET, while the historical package intentionally retained date-only precision. An hour-level timeline must not inherit an unsupported minute.",
+      "related_records": [
+        "EV-20260228-001"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "CENTCOM operation chronology",
+        "official White House/DOD release timestamps",
+        "multiple independent contemporaneous reports"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-016",
+      "priority": "MEDIUM",
+      "topic": "U.S. lost/damaged aircraft itemization",
+      "question": "Import the CRS/CSIS itemized aircraft/equipment table and classify each as destroyed, damaged, repaired, retired/non-replaced, or unresolved.",
+      "why_it_matters": "CSIS prices U.S. equipment loss/damage at $1.8B-$3.5B, but current structured atlas lacks the full item list needed for material-loss history.",
+      "related_records": [],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "CRS aircraft loss list",
+        "CSIS Table 4",
+        "DOD service-specific mishap/damage releases"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-017",
+      "priority": "MEDIUM",
+      "topic": "U.S. formal role in July 30 Saudi maritime coalition meeting",
+      "question": "Was the United States formally represented as an observer/participant at the July 30, 2026 Saudi maritime-defense coalition meeting, and if so in what status?",
+      "why_it_matters": "Prevents both false U.S.-membership claims and false “regional break from the U.S.” claims. Reuters establishes 43-country/EU attendance but not the complete attendance/status roster in the reviewed excerpt.",
+      "related_records": [
+        "AGR-SAUDI-MARITIME-COALITION-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "EV-20260730-001"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "Saudi Ministry of Defense full attendee communiqué",
+        "Saudi Press Agency complete meeting release",
+        "U.S. State Department / DoD readout for July 30 meeting"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-018",
+      "priority": "LOW",
+      "topic": "Syria base-consolidation original 2025 announcement",
+      "question": "What exact 2025 Pentagon announcement first set the Syria basing-consolidation plan referenced by CENTCOM/Reuters in February 2026?",
+      "why_it_matters": "Would improve the origin-date precision for the Syria drawdown chain; existing evidence already establishes coordinated pre-war execution and conditions-based rationale.",
+      "related_records": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026",
+        "MOV-20260212-SYR-TANF",
+        "MOV-20260223-SYR-QASRAK"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "2025 DoD Syria force-posture releases",
+        "CENTCOM 2025 basing-consolidation statements"
+      ]
+    },
+    {
+      "unresolved_id": "GAP-019",
+      "priority": "LOW",
+      "topic": "Primary June 26 Israel-Lebanon framework text",
+      "question": "Obtain and archive the exact State Department-published June 26, 2026 Israel-Lebanon framework text/signature block if a stable primary URL is available.",
+      "why_it_matters": "Reuters and regional reporting establish the agreement and U.S. role, but retaining the primary instrument would improve clause-level auditability.",
+      "related_records": [
+        "AGR-ISR-LBN-FRAMEWORK-2026",
+        "EV-20260626-001"
+      ],
+      "status": "OPEN_COLLECTION_GAP",
+      "next_collection": [
+        "State Department June 26 framework text",
+        "State Department signing readout / annexes"
+      ]
+    }
+  ]
+}

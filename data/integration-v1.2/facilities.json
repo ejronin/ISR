@@ -1,0 +1,314 @@
+{
+  "schema_version": "1.0",
+  "facilities": [
+    {
+      "facility_id": "US-ALUDEID",
+      "legacy_ids": {
+        "collection": "FAC-QAT-AL-UDEID",
+        "repo": "US-ALUDEID"
+      },
+      "integration_action": "UPDATE_EXISTING",
+      "name": "Al Udeid Air Base / Combined Air Operations Center",
+      "country": "Qatar",
+      "map_ref": "MAP-US-ALUDEID",
+      "location": {
+        "lat": 25.12,
+        "lon": 51.31,
+        "precision": "COARSE_EXISTING_ATLAS_POINT",
+        "coordinate_source": "existing ejronin/ISR data/facilities.json"
+      },
+      "damage_events": [
+        {
+          "attack_date": null,
+          "date_range": "2026-02-28 through early/mid-March 2026",
+          "note": "Air & Space Forces reports multiple Iranian missiles hit the CAOC in the early weeks; Bellingcat imagery comparison Feb. 22-Mar. 14 shows damage at Al Udeid. Exact CAOC strike date unresolved."
+        }
+      ],
+      "verified_physical_damage": [
+        "Multiple missile strikes severely damaged the Combined Air Operations Center; satellite imagery shows additional visible building damage at the base."
+      ],
+      "verified_functional_effect": [
+        "CAOC rendered inoperable."
+      ],
+      "degradation_evidence": [
+        "Loss of a major forward regional air-operations C2 node."
+      ],
+      "continued_operation_evidence": [
+        "Air & Space Forces: CAOC was not in use at the time and attacks did not interfere with Operation Epic Fury or later limited strikes.",
+        "Campaign directed from Shaw AFB from the start.",
+        "Pre-war Air Force records demonstrate deliberate distributed CAOC operation between Al Udeid and Shaw."
+      ],
+      "repair_evidence": [],
+      "reconstitution_evidence": [],
+      "last_confirmed_operating_date": null,
+      "last_confirmed_degraded_date": "2026-06-05 (CAOC described as inoperable in reporting)",
+      "status_at_event": null,
+      "current_status": "CAOC_INOPERABLE_AS_LAST_VERIFIED; WHOLE_BASE_INCAPACITY_NOT_SUPPORTED",
+      "assessment": "Verified CAOC knockout is not evidence that the entire base stopped operating. Whole-base functional status requires separate runway/logistics/comms/air-defense continuity data.",
+      "what_would_change_assessment": [
+        "Independent evidence that runway/air operations/logistics/base-wide communications ceased for a defined period.",
+        "Dated evidence that the CAOC returned to service or was reconstituted elsewhere on the installation."
+      ],
+      "source_ids": [
+        "SRC-7538CF574DDF",
+        "SRC-3826CE7F7FBB",
+        "SRC-704574F8CB02",
+        "SRC-D129A9FA0378",
+        "SRC-0561D46C2441",
+        "SRC-4818F69C326D",
+        "SRC-551A9C2DB97C",
+        "SRC-EF8EDACF7DA3"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Integrated from historical backfill and reconciled against current atlas."
+        },
+        {
+          "date": "2026-08-20",
+          "change": "Preserve current atlas facility identity US-ALUDEID. Enrich with pre-war distributed-C2 context. Do not assign the CAOC disabling effect to a specific March strike date until the exact chronology is verified."
+        }
+      ]
+    },
+    {
+      "facility_id": "FAC-UAE-BARAKAH",
+      "legacy_ids": {
+        "collection": "FAC-UAE-BARAKAH",
+        "repo": null
+      },
+      "integration_action": "ADD_NEW",
+      "name": "Barakah Nuclear Power Plant",
+      "country": "United Arab Emirates",
+      "map_ref": "MAP-FAC-UAE-BARAKAH",
+      "location": {
+        "lat": 23.967777777777776,
+        "lon": 52.23166666666667,
+        "precision": "FACILITY_REFERENCE_POINT",
+        "coordinate_source": "SRC-5581A889C78E"
+      },
+      "damage_events": [
+        {
+          "attack_date": "2026-05-17",
+          "note": "CRS reports one of three Iranian drones hit an electrical generator outside the plant\u2019s inner perimeter."
+        }
+      ],
+      "verified_physical_damage": [
+        "Electrical generator outside inner perimeter hit."
+      ],
+      "verified_functional_effect": [
+        "One reactor automatically shut down according to the CRS synthesis."
+      ],
+      "degradation_evidence": [
+        "Electrical support-system damage and reactor shutdown."
+      ],
+      "continued_operation_evidence": [
+        "No cited evidence of radiological release or destruction of the entire multi-unit facility."
+      ],
+      "repair_evidence": [],
+      "reconstitution_evidence": [],
+      "last_confirmed_operating_date": null,
+      "last_confirmed_degraded_date": "2026-05-17",
+      "status_at_event": null,
+      "current_status": "ONE_REACTOR_AUTOMATIC_SHUTDOWN_REPORTED; WHOLE_PLANT_DESTRUCTION_NOT_SUPPORTED; RESTART_STATUS_UNRESOLVED",
+      "assessment": "UNSC later condemned the attack without independently attributing responsibility. Current reactor/repaired-generator status remains a gap in this package.",
+      "what_would_change_assessment": [
+        "Operator/regulator evidence establishing reactor restart date, prolonged outage, or additional plant damage."
+      ],
+      "source_ids": [
+        "SRC-E7CF466D7C4C",
+        "SRC-4FAD801FF49E"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Integrated from historical backfill and reconciled against current atlas."
+        }
+      ]
+    },
+    {
+      "facility_id": "FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT",
+      "legacy_ids": {
+        "collection": "FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT",
+        "repo": null
+      },
+      "integration_action": "ADD_NEW",
+      "name": "Kuwait International Airport",
+      "country": "Kuwait",
+      "map_ref": "MAP-FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT",
+      "location": {
+        "lat": 29.221904444444444,
+        "lon": 47.96608972222222,
+        "precision": "AIRPORT_STATION_REFERENCE_POINT",
+        "coordinate_source": "SRC-4A733BFAC693"
+      },
+      "damage_events": [
+        {
+          "attack_date": "2026-06-03",
+          "note": "Iranian drone/missile attack reported by Reuters from state/regional sources."
+        }
+      ],
+      "verified_physical_damage": [
+        "Severe terminal damage."
+      ],
+      "verified_functional_effect": [
+        "Flight disruption and terminal degradation; one fatality reported."
+      ],
+      "degradation_evidence": [
+        "Terminal damage and operational diversion."
+      ],
+      "continued_operation_evidence": [
+        "Terminal 4 flights resumed/continued, affirmative evidence against total airport shutdown."
+      ],
+      "repair_evidence": [],
+      "reconstitution_evidence": [],
+      "last_confirmed_operating_date": "2026-06-03 (Terminal 4 activity reported)",
+      "last_confirmed_degraded_date": "2026-06-03",
+      "status_at_event": null,
+      "current_status": "TERMINAL_DAMAGE_VERIFIED; TERMINAL_4_CONTINUITY_REPORTED; WHOLE_AIRPORT_SHUTDOWN_NOT_SUPPORTED",
+      "assessment": "Damage did not equal complete loss of airport function.",
+      "what_would_change_assessment": [
+        "Airport authority operating logs establishing broader outage duration or later repair completion."
+      ],
+      "source_ids": [
+        "SRC-66667A45F235"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Integrated from historical backfill and reconciled against current atlas."
+        }
+      ]
+    },
+    {
+      "facility_id": "FAC-IRN-KHONDAB-HEAVY-WATER",
+      "legacy_ids": {
+        "collection": "FAC-IRN-KHONDAB-HEAVY-WATER",
+        "repo": null
+      },
+      "integration_action": "ADD_NEW",
+      "name": "Khondab heavy-water facility",
+      "country": "Iran",
+      "map_ref": "MAP-FAC-IRN-KHONDAB-HEAVY-WATER",
+      "location": {
+        "lat": null,
+        "lon": null,
+        "precision": "FACILITY_NAME_ONLY",
+        "coordinate_source": null
+      },
+      "damage_events": [
+        {
+          "attack_date": null,
+          "date_range": "by 2026-03-28",
+          "note": "IAEA assessment reported by Reuters on Mar. 28."
+        }
+      ],
+      "verified_physical_damage": [
+        "Severe damage reported."
+      ],
+      "verified_functional_effect": [
+        "IAEA said facility was no longer operational."
+      ],
+      "degradation_evidence": [
+        "Functional loss of facility."
+      ],
+      "continued_operation_evidence": [],
+      "repair_evidence": [],
+      "reconstitution_evidence": [],
+      "last_confirmed_operating_date": null,
+      "last_confirmed_degraded_date": "2026-03-28",
+      "status_at_event": null,
+      "current_status": "SEVERE_DAMAGE_AND_INOPERABLE_AS_REPORTED_BY_IAEA; REPAIR_STATUS_UNRESOLVED",
+      "assessment": "No declared nuclear material was reported at the site in the cited account. Repair/reconstitution status unresolved.",
+      "what_would_change_assessment": [
+        "IAEA or independently verified imagery showing repair/restart."
+      ],
+      "source_ids": [
+        "SRC-90DA8D027955"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Integrated from historical backfill and reconciled against current atlas."
+        }
+      ]
+    },
+    {
+      "facility_id": "FAC-QAT-LNG-SYSTEM",
+      "legacy_ids": {
+        "collection": "FAC-QAT-LNG-SYSTEM",
+        "repo": null
+      },
+      "integration_action": "ADD_NEW",
+      "name": "Qatar LNG export infrastructure (system-level record)",
+      "country": "Qatar",
+      "map_ref": "MAP-FAC-QAT-LNG-SYSTEM",
+      "location": {
+        "lat": null,
+        "lon": null,
+        "precision": "SYSTEM_LEVEL_NO_SINGLE_POINT",
+        "coordinate_source": null
+      },
+      "damage_events": [
+        {
+          "attack_date": "2026-03-18",
+          "note": "Reuters March 20 reporting describes damage following regional energy-site escalation."
+        }
+      ],
+      "verified_physical_damage": [
+        "Damage to Qatar LNG export infrastructure sufficient to reduce export capacity materially."
+      ],
+      "verified_functional_effect": [
+        "QatarEnergy CEO said roughly one-sixth of export capacity affected; repair estimate cited as 3-5 years for damaged capacity."
+      ],
+      "degradation_evidence": [
+        "Substantial LNG export-capacity loss."
+      ],
+      "continued_operation_evidence": [
+        "The report describes partial capacity loss, not total Qatar LNG-system shutdown."
+      ],
+      "repair_evidence": [
+        "Long-duration repair forecast announced."
+      ],
+      "reconstitution_evidence": [],
+      "last_confirmed_operating_date": "2026-03-20 (remaining system capacity implied operational)",
+      "last_confirmed_degraded_date": "2026-03-20",
+      "status_at_event": null,
+      "current_status": "PARTIAL_EXPORT_CAPACITY_DAMAGE; SYSTEM-WIDE SHUTDOWN_NOT_SUPPORTED",
+      "assessment": "System-level record avoids inventing exact sub-facility attribution beyond the cited reporting.",
+      "what_would_change_assessment": [
+        "Dated subfacility-level repair/restart data and exact affected export-train identification."
+      ],
+      "source_ids": [
+        "SRC-4E85BD9B8182",
+        "SRC-AF45CA5FA4C9"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Integrated from historical backfill and reconciled against current atlas."
+        }
+      ]
+    }
+  ],
+  "repo_records_to_preserve": [
+    "US-NSA-BHR",
+    "US-ARIFJAN",
+    "US-ALISALEM",
+    "US-BUEHRING",
+    "US-SHUAIBA-TOC",
+    "US-CAMPDOHA",
+    "US-BUBIYAN",
+    "US-ALDHAFRA",
+    "US-JEBELALI",
+    "US-ERBIL",
+    "US-AINASAD",
+    "US-PRINCESULTAN",
+    "US-MUWAFFAQ",
+    "US-INCIRLIK",
+    "US-ISA",
+    "US-RMELAN",
+    "US-QASRAK",
+    "US-TANF"
+  ],
+  "preservation_rule": "Existing facility records not explicitly superseded here remain in the live atlas. Do not duplicate them under new IDs."
+}

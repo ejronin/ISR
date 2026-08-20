@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "rule": "Domain assessment only. No combined war score and no arithmetic aggregation across casualties, commanders, money, equipment, territory, or munitions.",
+  "domains": [
+    {
+      "domain": "Air / long-range strike",
+      "current_advantage": "U.S./COALITION",
+      "trend": "ADVANTAGE_PERSISTS",
+      "confidence": "HIGH",
+      "supporting_evidence": [
+        "EV-20260328-003",
+        "EV-20260505-001"
+      ],
+      "contrary_evidence": [
+        "Iran retained strike capability and later regional attacks continued."
+      ],
+      "assessment": "U.S./coalition retained the ability to generate sustained long-range strikes. Continued Iranian attacks show strike superiority did not equal opponent paralysis."
+    },
+    {
+      "domain": "C2ISR / targeting",
+      "current_advantage": "U.S./COALITION",
+      "trend": "ADVANTAGE_PERSISTS_WITH_LOCAL_DAMAGE",
+      "confidence": "HIGH",
+      "supporting_evidence": [
+        "PRE-20201118-001",
+        "PRE-20260113-001"
+      ],
+      "contrary_evidence": [
+        "US-ALUDEID CAOC was rendered inoperable; Iran achieved precise damage at several regional sites."
+      ],
+      "assessment": "Distributed U.S. C2 architecture preserved campaign command despite loss of a major forward node. Iran still demonstrated useful target-quality data and precision at some fixed sites."
+    },
+    {
+      "domain": "Air / missile defense",
+      "current_advantage": "U.S./COALITION",
+      "trend": "ATTRITED",
+      "confidence": "MODERATE",
+      "supporting_evidence": [
+        "High reported interception rates in current atlas/CSIS baseline."
+      ],
+      "contrary_evidence": [
+        "Verified base damage, THAAD/Patriot equipment damage, U.S. casualties, and depleted interceptor inventories."
+      ],
+      "assessment": "Defenses prevented much larger damage but were not impermeable and incurred meaningful inventory/equipment costs."
+    },
+    {
+      "domain": "Maritime control / sea denial",
+      "current_advantage": "SPLIT",
+      "trend": "CONTESTED",
+      "confidence": "HIGH",
+      "supporting_evidence": [
+        "EV-20260413-001",
+        "EV-20260813-001"
+      ],
+      "contrary_evidence": [
+        "EV-20260313-001",
+        "EV-20260520-001",
+        "EV-20260816-001",
+        "EV-20260820-001"
+      ],
+      "assessment": "U.S. naval forces retained interdiction/strike capacity. Iran retained enough coercive leverage, risk generation and routing influence to suppress normal commercial Hormuz traffic. Neither maps cleanly to absolute 'control'."
+    },
+    {
+      "domain": "Missile / drone capability",
+      "current_advantage": "MIXED",
+      "trend": "IRAN_VOLUME_DOWN_BUT_DISRUPTIVE_CAPABILITY_SURVIVES",
+      "confidence": "MODERATE",
+      "supporting_evidence": [
+        "MUN-IRN-FIRST100H-UAS",
+        "MUN-IRN-FIRST100H-BM"
+      ],
+      "contrary_evidence": [
+        "Later lower launch tempo, but July/August attacks and threats continued."
+      ],
+      "assessment": "Iran expended very large opening inventories and suffered substantial attrition pressure, yet retained enough launch capacity for continued coercive and lethal effects."
+    },
+    {
+      "domain": "Force preservation",
+      "current_advantage": "UNRESOLVED",
+      "trend": "BOTH_SIDES_ABSORBING_COSTS",
+      "confidence": "LOW",
+      "supporting_evidence": [],
+      "contrary_evidence": [
+        "U.S. carrier deployments extended/rotated; Iranian durable loss ledger remains incomplete."
+      ],
+      "assessment": "Current evidence is insufficient for a clean side-by-side force-preservation verdict without itemized Iranian and U.S. durable-loss inventories."
+    },
+    {
+      "domain": "Alliance / diplomatic position",
+      "current_advantage": "U.S./REGIONAL_PARTNERS",
+      "trend": "REGIONAL_ALIGNMENT_HARDENED",
+      "confidence": "MODERATE",
+      "supporting_evidence": [
+        "EV-20260310-001",
+        "EV-20260819-001"
+      ],
+      "contrary_evidence": [
+        "Some allies declined Hormuz escort participation; mediators continued engagement with Iran."
+      ],
+      "assessment": "Iranian pressure did not consistently fracture regional alignment and at times drove closer security/economic coordination, though partner willingness to join specific military missions varied."
+    },
+    {
+      "domain": "Economic sustainability",
+      "current_advantage": "UNRESOLVED",
+      "trend": "IRAN_SEVERE_STRAIN_GCC_GLOBAL_COSTS_ALSO_MATERIAL",
+      "confidence": "MODERATE",
+      "supporting_evidence": [
+        "EV-20260817-002",
+        "EV-20260430-001"
+      ],
+      "contrary_evidence": [
+        "Chinese crude purchases and alternative trade channels showed continuity; GCC growth forecasts were also heavily damaged by Hormuz disruption."
+      ],
+      "assessment": "Iran faced severe inflation, export and FX pressure, but broader Gulf/global economic damage was also substantial. Do not reduce this to a single side score."
+    }
+  ]
+}
