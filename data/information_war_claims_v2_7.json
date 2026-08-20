@@ -1,0 +1,276 @@
+[
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "MAR 1–12",
+    "platform": "X / Facebook / Douyin",
+    "media_type": "AI + recycled video",
+    "claim": "“Iran sank or badly damaged USS Abraham Lincoln.”",
+    "reach": "One X version exceeded 8 million views by Mar. 2.",
+    "assessment": "Iranian military/social accounts claimed the carrier had been hit. PolitiFact and AFP found the viral videos were AI-generated or old footage; CENTCOM denied a strike. The carrier remained operational months later and continued supporting operations.",
+    "sources": [
+      {
+        "label": "PolitiFact",
+        "url": "https://politifact.com/factchecks/2026/mar/02/social-media/uss-abraham-lincoln-fire-missile-iran/"
+      },
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.A2JQ2G3"
+      },
+      {
+        "label": "AFP — old/AI clips",
+        "url": "https://factcheck.afp.com/doc.afp.com.A2LM9CQ"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "MISLEADING",
+      "AI"
+    ],
+    "verdict": "FALSE IMAGE / REAL DAMAGE POSSIBLE",
+    "date_window": "MAR 3–9",
+    "platform": "Facebook / Instagram / X",
+    "media_type": "AI image",
+    "claim": "Burning image supposedly shows the U.S. AN/FPS-132 radar in Qatar destroyed.",
+    "reach": "",
+    "assessment": "AFP found the dramatic image was AI-generated and circulated before the reported strike. Separate Planet Labs imagery did show marks consistent with possible impact at the real radar site. Verdict: the viral image is false; the broader proposition that the radar site was hit is not simply dismissed.",
+    "sources": [
+      {
+        "label": "AFP fact check + satellite comparison",
+        "url": "https://factcheck.afp.com/doc.afp.com.A2B239E"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "MAR 5–6",
+    "platform": "X / Facebook",
+    "media_type": "AI image",
+    "claim": "“U.S. Delta Force troops were captured by the IRGC.”",
+    "reach": "",
+    "assessment": "AFP found Gemini watermarks/SynthID and multiple visual anomalies. The images were synthetic; no such captured Delta Force unit was documented.",
+    "sources": [
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.A2A33ZQ"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "MAR 6–13",
+    "platform": "Facebook",
+    "media_type": "Fake satellite image",
+    "claim": "“U.S.-Israeli pilots were fooled into bombing painted aircraft decoys.”",
+    "reach": "",
+    "assessment": "AFP found the purported satellite images were AI-generated. This is a useful example of synthetic “BDA” designed to create a tactical humiliation narrative.",
+    "sources": [
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.A2ZE3T3"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "MAR 7–11",
+    "platform": "X / Facebook / Threads",
+    "media_type": "AI image",
+    "claim": "“Iran shot down a U.S. B-2 bomber and captured the entire crew.”",
+    "reach": "",
+    "assessment": "Full Fact and other forensic checks found the image fabricated; among other defects, it showed three U.S. crew even though a B-2 normally carries two. ISD also identified this as a false Verified4War narrative.",
+    "sources": [
+      {
+        "label": "Full Fact",
+        "url": "https://fullfact.org/conflict/fake-B-2-shot-down-image/"
+      },
+      {
+        "label": "ISD",
+        "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE"
+    ],
+    "verdict": "FALSE",
+    "date_window": "MAR 10–24",
+    "platform": "Facebook / X / state-media amplification",
+    "media_type": "",
+    "claim": "“Benjamin Netanyahu was killed / his later appearances were AI coverups.”",
+    "reach": "ISD: Verified4War death narrative produced >43M views; top post 16.5M.",
+    "assessment": "Reuters verified Netanyahu appearing publicly at a Mar. 19 press conference; AFP separately debunked altered/low-quality clips used to claim his videos were AI-generated coverups.",
+    "sources": [
+      {
+        "label": "Reuters Fact Check",
+        "url": "https://www.reuters.com/fact-check/netanyahus-press-conference-dispels-death-rumours-2026-03-24/"
+      },
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.A4M24T3"
+      },
+      {
+        "label": "ISD reach data",
+        "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "MAR 17–APR 7",
+    "platform": "Facebook / TikTok / X",
+    "media_type": "AI video",
+    "claim": "“Close-up video shows missiles hitting a U.S. base in Qatar.”",
+    "reach": "",
+    "assessment": "AFP found the video synthetic and noted no reports of the supposed base shown in the clip. This is distinct from the fact that real U.S. facilities in Qatar were struck during the war.",
+    "sources": [
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.A6JQ7G3"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "MAR 20–APR 3",
+    "platform": "Facebook / TikTok / X",
+    "media_type": "AI video",
+    "claim": "“What mainstream media won't show you: the U.S. base in Kuwait is under siege.”",
+    "reach": "",
+    "assessment": "AFP found the viral base-bombardment video was AI-generated. Real U.S. facilities in Kuwait suffered verified Iranian damage, but this specific footage was not evidence of it.",
+    "sources": [
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.A66A663"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE"
+    ],
+    "verdict": "FALSE VIDEO",
+    "date_window": "APR 3",
+    "platform": "X",
+    "media_type": "Video-game footage",
+    "claim": "“Video shows an IRGC missile downing a U.S. F-15 over Qeshm.”",
+    "reach": "",
+    "assessment": "AFP traced the clip to military-simulation gameplay posted on Feb. 28. This does not erase the separate, real April U.S. F-15 loss/rescue event; it means the viral video was not footage of that event.",
+    "sources": [
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.A6PG7WE"
+      },
+      {
+        "label": "Reuters — real F-15 loss/rescue context",
+        "url": "https://www.reuters.com/world/middle-east/us-rescues-airman-whose-f-15-was-downed-iran-us-officials-say-2026-04-05/"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "MAY 11–18",
+    "platform": "Weibo / social platforms",
+    "media_type": "AI + old Iraq-war imagery",
+    "claim": "“Video shows a U.S. A-10 damaged/captured after an Iranian strike.”",
+    "reach": "",
+    "assessment": "AFP found the clip partly repurposed a 2003 Iraq-war image and contained synthetic visual inconsistencies.",
+    "sources": [
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.B2U99ZR"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "JUN 11–19",
+    "platform": "Facebook",
+    "media_type": "AI video",
+    "claim": "“Iran used a $150 weapon to shoot down a billion-dollar U.S. helicopter.”",
+    "reach": "",
+    "assessment": "AFP found the clip was AI-generated. The framing is built to maximize cost-exchange humiliation, but the visual used as proof was fabricated.",
+    "sources": [
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.B6VD463"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  },
+  {
+    "status_tags": [
+      "FALSE",
+      "AI"
+    ],
+    "verdict": "FALSE",
+    "date_window": "JUL 17–31",
+    "platform": "Facebook",
+    "media_type": "AI image from prewar video",
+    "claim": "“Iran destroyed the major U.S. command-and-control center for Gulf operations.”",
+    "reach": "",
+    "assessment": "AFP traced the burning-building image to an AI-generated video created nearly a year before the war. The claim should not be confused with real Iranian damage to named U.S. C2 facilities such as the Al Udeid CAOC.",
+    "sources": [
+      {
+        "label": "AFP",
+        "url": "https://factcheck.afp.com/doc.afp.com.C3NE663"
+      }
+    ],
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55"
+  }
+]
