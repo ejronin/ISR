@@ -1,0 +1,705 @@
+{
+  "facilities": [
+    {
+      "id": "US-NSA-BHR",
+      "name": "Naval Support Activity Bahrain / Fifth Fleet HQ area",
+      "lat": 26.23,
+      "lon": 50.58,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Bahrain",
+      "facility_class": "BASE",
+      "role": "U.S. Navy Fifth Fleet headquarters/support complex.",
+      "current_presence_status": "U.S. presence established; HQ function relocated to MacDill after extensive damage.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "HQ_FUNCTION_RELOCATED",
+      "attack_dates": [
+        "2026-03-01_or_earlier",
+        "additional_damage_by_2026-03-06"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-01",
+        "2026-03-06"
+      ],
+      "critical_assets_reported": [
+        "2 radomes reported destroyed in March 1 imagery",
+        "satellite communications dish hit",
+        "headquarters function affected enough to relocate"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {
+        "minimum_identifiable_critical_items": 3,
+        "additional_buildings": "at least 2 reported damaged/destroyed in AP imagery"
+      },
+      "note": "Washington Post called damage extensive and reported the headquarters relocated to MacDill; no claim that every local function ceased.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://apnews.com/article/iran-us-war-satellite-photos-damage-uae-bahrain-4b5edabf4c8cc89a56150ca4f1b7c06f",
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+        "https://www.reuters.com/world/middle-east/us-military-facilities-middle-east-2026-02-28/"
+      ],
+      "verification_grade": "HIGH — satellite/independent reporting + multiple outlets",
+      "impact_grade": "MAJOR SUBFACILITY / COMMAND SETBACK",
+      "purpose": "Fifth Fleet headquarters, communications and regional naval command/support.",
+      "effect": "Two radomes and a SATCOM dish were reported destroyed or hit, and the headquarters function was relocated to MacDill. This is a substantive command-and-communications loss at the affected node.",
+      "continuity": "Public evidence does not show that all local NSA Bahrain functions ceased. HQ relocation is not the same as destruction of the entire installation."
+    },
+    {
+      "id": "US-ALUDEID",
+      "name": "Al Udeid Air Base",
+      "lat": 25.12,
+      "lon": 51.31,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Qatar",
+      "facility_class": "BASE",
+      "role": "Major U.S. regional air base and forward command/air-operations hub.",
+      "current_presence_status": "U.S. presence established in 2026.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "SUBFACILITY_INOPERABLE",
+      "attack_dates": [
+        "2026-03-01_or_earlier",
+        "2026-03-03_reported_restrike"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-01"
+      ],
+      "critical_assets_reported": [
+        "satellite communications sites hit",
+        "Combined Air Operations Center later reported inoperable"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {
+        "satellite_communications_sites": "at least 2 documented by Washington Post"
+      },
+      "note": "CAOC inoperable does not equal whole-base inoperable. No whole-base shutdown is asserted.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://apnews.com/article/iran-us-war-satellite-photos-damage-uae-bahrain-4b5edabf4c8cc89a56150ca4f1b7c06f",
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+        "https://www.reuters.com/world/middle-east/us-military-facilities-middle-east-2026-02-28/"
+      ],
+      "verification_grade": "HIGH — satellite/independent reporting",
+      "impact_grade": "MAJOR SUBFACILITY LOSS",
+      "purpose": "Major regional air base; forward air-operations command and communications hub.",
+      "effect": "SATCOM sites were hit and the Combined Air Operations Center was later reported inoperable. That directly affects command-and-control at a key regional node.",
+      "continuity": "The evidence establishes loss of a named command subfacility, not loss of the entire air base. No reviewed source reports Al Udeid as wholly unusable."
+    },
+    {
+      "id": "US-ARIFJAN",
+      "name": "Camp Arifjan",
+      "lat": 28.93,
+      "lon": 48.16,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Kuwait",
+      "facility_class": "BASE",
+      "role": "U.S. Army regional headquarters/logistics hub.",
+      "current_presence_status": "U.S. troop positions reported there again in July 2026.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [
+        "2026-03-01_or_earlier",
+        "2026-07-18_reported_IRGC_attack",
+        "2026-07-24_reported_IRANIAN_claim"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-01"
+      ],
+      "critical_assets_reported": [
+        "communications equipment destroyed",
+        "radome damaged/destroyed"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Damage verified; no reviewed source reports whole-base shutdown. July attack claims are not treated as independently verified damage without corroboration.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.washingtonpost.com/investigations/2026/03/04/troops-killed-kuwait-base-iran-attack/",
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+        "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/",
+        "https://www.reuters.com/business/energy/kuwaits-kpc-signs-16-billion-lease-and-leaseback-deal-with-blackstone-kkr-brookfield-2026-07-25/"
+      ],
+      "verification_grade": "HIGH — independent satellite/reporting",
+      "impact_grade": "MODERATE / SIGNIFICANT LOCAL DEGRADATION",
+      "purpose": "U.S. Army regional headquarters and logistics hub.",
+      "effect": "Communications equipment and a radome were damaged or destroyed. That can reduce communications capacity and local resilience.",
+      "continuity": "Later public reporting again placed U.S. troops at Camp Arifjan. No reviewed source reports whole-site shutdown."
+    },
+    {
+      "id": "US-ALISALEM",
+      "name": "Ali Al Salem Air Base",
+      "lat": 29.35,
+      "lon": 47.52,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Kuwait",
+      "facility_class": "BASE",
+      "role": "U.S. Air Force operating location.",
+      "current_presence_status": "U.S. presence publicly established in 2026.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [
+        "2026-03-01_or_earlier",
+        "2026-07-18_reported_IRGC_attack"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-01"
+      ],
+      "critical_assets_reported": [
+        "Patriot air-defense equipment damaged",
+        "radome damaged/destroyed"
+      ],
+      "noncritical_or_soft_assets_reported": [
+        "troop living quarters reported damaged"
+      ],
+      "public_damage_counts": {
+        "structures_damaged": "more than 12 visible in March 1 satellite review",
+        "aircraft_shelters_damaged": "at least 4"
+      },
+      "note": "Public imagery also showed likely military-storage structures destroyed. No reviewed source reports whole-base shutdown.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.washingtonpost.com/investigations/2026/03/04/troops-killed-kuwait-base-iran-attack/",
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+        "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/"
+      ],
+      "verification_grade": "HIGH — satellite imagery + independent reporting",
+      "impact_grade": "SIGNIFICANT LOCAL DAMAGE",
+      "purpose": "U.S. Air Force operating location with air-defense and aircraft-support functions.",
+      "effect": "More than a dozen structures were reported damaged, including at least four aircraft shelters; Patriot equipment and a radome were also damaged. This is substantive localized damage.",
+      "continuity": "No reviewed source reports that the air base as a whole stopped operating."
+    },
+    {
+      "id": "US-BUEHRING",
+      "name": "Camp Buehring",
+      "lat": 29.7,
+      "lon": 47.72,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Kuwait",
+      "facility_class": "BASE",
+      "role": "U.S. Army staging/logistics facility.",
+      "current_presence_status": "U.S. presence publicly established in 2026.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [
+        "2026-03-01"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-01",
+        "through_2026-04-14_WaPo_review"
+      ],
+      "critical_assets_reported": [
+        "power plant hit"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "A Shahed-style drone was shown striking the installation March 1; later imagery review verified additional damage. No whole-site shutdown found in reviewed sources.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.washingtonpost.com/investigations/2026/03/04/troops-killed-kuwait-base-iran-attack/",
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/"
+      ],
+      "verification_grade": "HIGH — imagery/reporting",
+      "impact_grade": "MODERATE SETBACK",
+      "purpose": "Army staging and logistics facility.",
+      "effect": "A power plant was hit and later imagery verified additional damage. Power loss can disrupt local operations until redundancy or repair restores service.",
+      "continuity": "No reviewed source reports whole-site shutdown."
+    },
+    {
+      "id": "US-SHUAIBA-TOC",
+      "name": "Port Shuaiba U.S. tactical operations center",
+      "lat": 29.04,
+      "lon": 48.16,
+      "actor": "USA",
+      "type": "us_access_site",
+      "host": "Kuwait",
+      "facility_class": "OUTPOST",
+      "role": "U.S. logistics/tactical operations center inside civilian Port Shuaiba.",
+      "current_presence_status": "Destroyed in March strike; not treated as an intact working facility afterward without later evidence.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "SUBFACILITY_INOPERABLE",
+      "attack_dates": [
+        "2026-03-01"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-01",
+        "2026-03-02_satellite_image_review"
+      ],
+      "critical_assets_reported": [
+        "tactical operations center destroyed"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {
+        "operations_centers_destroyed": 1,
+        "US_fatalities": 6
+      },
+      "note": "This was not Camp Arifjan. The destroyed TOC was a separate port outpost more than 10 miles from the main Army base.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.washingtonpost.com/investigations/2026/03/04/troops-killed-kuwait-base-iran-attack/"
+      ],
+      "verification_grade": "HIGH — independent imagery/reporting",
+      "impact_grade": "DECISIVE LOCAL NODE LOSS",
+      "purpose": "A separate U.S. tactical operations/logistics node inside Port Shuaiba.",
+      "effect": "The tactical operations center was destroyed and six U.S. personnel were killed. At this specific outpost, the attack achieved a severe and permanent local effect.",
+      "continuity": "This was not Camp Arifjan. Destroying this outpost does not establish destruction of the larger regional Army base network."
+    },
+    {
+      "id": "US-CAMPDOHA",
+      "name": "Camp Doha / reported U.S. troop position",
+      "lat": 29.36,
+      "lon": 47.74,
+      "actor": "USA",
+      "type": "us_access_site",
+      "host": "Kuwait",
+      "facility_class": "REPORTED_POSITION",
+      "role": "Location identified in July reporting as a U.S. troop position.",
+      "current_presence_status": "U.S. troop position reported July 25; exact footprint and permanence not established here.",
+      "damage_evidence_status": "DAMAGE_CLAIM_UNVERIFIED",
+      "operational_effect_status": "CURRENT_PRESENCE_REPORTED_OPERATIONAL_EFFECT_NOT_PUBLIC",
+      "attack_dates": [
+        "2026-07-24_reported_Iranian_claim"
+      ],
+      "damage_evidence_dates": [],
+      "critical_assets_reported": [],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Iran said it attacked U.S. troop positions here; current baseline does not convert that claim into verified damage.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.reuters.com/business/energy/kuwaits-kpc-signs-16-billion-lease-and-leaseback-deal-with-blackstone-kkr-brookfield-2026-07-25/"
+      ],
+      "verification_grade": "LOW — Iranian attack/damage claim not independently corroborated",
+      "impact_grade": "UNVERIFIED — DO NOT SCORE AS A LOSS",
+      "purpose": "Reported U.S. troop position.",
+      "effect": "Iran claimed an attack. The reviewed record does not establish physical damage or operational loss.",
+      "continuity": "Current presence was reported; operational effect is not public."
+    },
+    {
+      "id": "US-BUBIYAN",
+      "name": "Bubiyan Island / reported relocated U.S. position",
+      "lat": 29.75,
+      "lon": 48.37,
+      "actor": "USA",
+      "type": "us_access_site",
+      "host": "Kuwait",
+      "facility_class": "TEMPORARY_RELOCATED_POSITION",
+      "role": "Reported location of U.S. forces/equipment relocated from Camp Arifjan.",
+      "current_presence_status": "Iranian military spokesperson said U.S. forces had relocated here by April; treat presence as reported, not permanent-base status.",
+      "damage_evidence_status": "DAMAGE_CLAIM_UNVERIFIED",
+      "operational_effect_status": "CURRENT_PRESENCE_REPORTED_OPERATIONAL_EFFECT_NOT_PUBLIC",
+      "attack_dates": [
+        "2026-04-06_reported_attack"
+      ],
+      "damage_evidence_dates": [],
+      "critical_assets_reported": [
+        "satellite equipment and munitions were claimed targets by Iran"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Coarse island-level marker only. Iranian claim is not equivalent to independent damage verification.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iran-struck-us-forces-relocated-kuwaits-bubiyan-island-military-spokesperson-2026-04-06/"
+      ],
+      "verification_grade": "LOW — actor claim, coarse location",
+      "impact_grade": "UNVERIFIED — DO NOT SCORE AS A LOSS",
+      "purpose": "Reported temporary/relocated U.S. position on Bubiyan Island.",
+      "effect": "Iran claimed it struck relocated U.S. forces/equipment. Independent damage confirmation is absent in the reviewed source set.",
+      "continuity": "Presence itself was reported; damage and functional effect remain unresolved."
+    },
+    {
+      "id": "US-ALDHAFRA",
+      "name": "Al Dhafra Air Base",
+      "lat": 24.25,
+      "lon": 54.55,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "United Arab Emirates",
+      "facility_class": "BASE",
+      "role": "UAE base hosting U.S. air/ISR operations.",
+      "current_presence_status": "U.S. presence publicly established; no whole-base shutdown found in reviewed sources.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [
+        "by_2026-03-15"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-15"
+      ],
+      "critical_assets_reported": [
+        "hangar complex damage; contents unknown"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {
+        "hangars": "multiple: one shredded by fire, adjacent hangar roof damage, additional NW hangar-area damage"
+      },
+      "note": "Damage verified by commercial imagery. No reviewed source establishes whole-base shutdown.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://apnews.com/article/iran-us-war-satellite-photos-damage-uae-bahrain-4b5edabf4c8cc89a56150ca4f1b7c06f",
+        "https://www.reuters.com/world/middle-east/us-military-facilities-middle-east-2026-02-28/"
+      ],
+      "verification_grade": "HIGH — commercial satellite imagery + independent reporting",
+      "impact_grade": "MODERATE / SIGNIFICANT LOCAL DAMAGE",
+      "purpose": "UAE air base hosting U.S. air and ISR operations.",
+      "effect": "Multiple hangars were damaged; one showed severe fire damage. Contents were not publicly established, so aircraft/equipment loss cannot be assumed.",
+      "continuity": "No reviewed source reports whole-base shutdown."
+    },
+    {
+      "id": "US-JEBELALI",
+      "name": "Jebel Ali Port — U.S. Navy logistics/access node",
+      "lat": 25.01,
+      "lon": 55.06,
+      "actor": "USA",
+      "type": "us_access_site",
+      "host": "United Arab Emirates",
+      "facility_class": "ACCESS_SITE",
+      "role": "Major U.S. Navy port of call; not a formal U.S. base.",
+      "current_presence_status": "Access/logistics role publicly established.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [
+        "2026-02-28_to_2026-03-01"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-01"
+      ],
+      "critical_assets_reported": [
+        "port area used by U.S. naval vessels was hit/burning; exact U.S.-specific asset damage not established"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Map keeps this separate from Al Dhafra because it is a naval access/logistics node, not a formal U.S. base.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.washingtonpost.com/investigations/2026/03/04/troops-killed-kuwait-base-iran-attack/",
+        "https://www.reuters.com/world/middle-east/us-military-facilities-middle-east-2026-02-28/"
+      ],
+      "verification_grade": "MEDIUM-HIGH — physical port-area damage reported; U.S.-specific asset damage unresolved",
+      "impact_grade": "LIMITED / UNCERTAIN U.S.-SPECIFIC EFFECT",
+      "purpose": "Major U.S. Navy logistics/access port; not a formal U.S. base.",
+      "effect": "The port area used by U.S. naval vessels was hit and burning. Public evidence does not isolate a destroyed U.S. naval asset.",
+      "continuity": "A port-area strike is operationally relevant, but it is not evidence that a U.S. base was destroyed."
+    },
+    {
+      "id": "US-ERBIL",
+      "name": "Erbil military/airport coalition area",
+      "lat": 36.24,
+      "lon": 43.96,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Iraq",
+      "facility_class": "BASE",
+      "role": "Remaining U.S./coalition presence in Iraqi Kurdistan during 2026 drawdown.",
+      "current_presence_status": "Still had U.S. presence in August; drawdown of troops/equipment began in late July with full Iraq departure planned by Sept. 30.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "DRAWDOWN_IN_PROGRESS",
+      "attack_dates": [
+        "2026-02-28",
+        "2026-03-01",
+        "subsequent_attacks_reported"
+      ],
+      "damage_evidence_dates": [
+        "2026-02-28_to_2026-03-01"
+      ],
+      "critical_assets_reported": [
+        "military/airport complex hit; specific U.S. asset count not cleanly isolated in reviewed sources"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Do not treat Erbil as a stable long-term U.S. base: AP reported the 2026 Iraq drawdown was underway and final withdrawal planned by Sept. 30.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.washingtonpost.com/investigations/2026/03/04/troops-killed-kuwait-base-iran-attack/",
+        "https://apnews.com/article/iraq-us-withdrawal-7d050ff17a0c52298207bd9e60851fcd"
+      ],
+      "verification_grade": "HIGH for attack/damage; posture status independently reported",
+      "impact_grade": "DAMAGE CONFIRMED; CURRENT POSTURE DRIVEN BY SEPARATE DRAWDOWN",
+      "purpose": "Coalition military/airport operating area in Iraqi Kurdistan.",
+      "effect": "The military/airport complex was hit, but a clean U.S.-specific asset-loss count is not available in the reviewed evidence.",
+      "continuity": "The later U.S. drawdown was already a broader policy/posture process; the map does not attribute that withdrawal to this strike without evidence."
+    },
+    {
+      "id": "US-AINASAD",
+      "name": "Ain al-Asad Air Base (historical U.S. presence)",
+      "lat": 33.8,
+      "lon": 42.44,
+      "actor": "USA",
+      "type": "us_access_site",
+      "host": "Iraq",
+      "facility_class": "WITHDRAWN_BASE",
+      "role": "Former U.S./coalition base in western Iraq.",
+      "current_presence_status": "U.S. forces fully withdrew by Jan. 17, 2026; not an active U.S. base for this war baseline.",
+      "damage_evidence_status": "NOT_APPLICABLE_WITHDRAWN",
+      "operational_effect_status": "WITHDRAWN_NOT_ACTIVE_US_BASE",
+      "attack_dates": [],
+      "damage_evidence_dates": [
+        "2026-01-17_withdrawal_confirmed"
+      ],
+      "critical_assets_reported": [],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "v1.2 incorrectly treated this as a current U.S. base. v1.3 fixes that error.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iraq-takes-full-control-air-base-after-us-withdrawal-defence-ministry-says-2026-01-17/"
+      ],
+      "verification_grade": "HIGH — withdrawal independently confirmed",
+      "impact_grade": "NOT A 2026 WAR LOSS",
+      "purpose": "Former U.S./coalition base in western Iraq.",
+      "effect": "No current-war U.S. base loss is scored here because U.S. forces had already withdrawn by January 17, 2026.",
+      "continuity": "Any later claim that Iran destroyed an active U.S. base at Ain al-Asad is chronologically false for this war baseline."
+    },
+    {
+      "id": "US-PRINCESULTAN",
+      "name": "Prince Sultan Air Base",
+      "lat": 24.1,
+      "lon": 47.58,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Saudi Arabia",
+      "facility_class": "BASE",
+      "role": "Saudi base hosting U.S. air and air/missile-defense forces.",
+      "current_presence_status": "U.S. presence remained reported during July alerts/attacks.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [
+        "2026-03-01_or_earlier",
+        "2026-03-27",
+        "2026-07-18_threat/attack_reporting"
+      ],
+      "damage_evidence_dates": [
+        "2026-03-15",
+        "2026-03-27"
+      ],
+      "critical_assets_reported": [
+        "E-3 Sentry command-and-control aircraft damaged/destroyed in public imagery review",
+        "refueling aircraft damaged",
+        "U.S. personnel wounded"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {
+        "US_troops_wounded_Mar27": "at least 10",
+        "seriously_wounded": "2",
+        "refueling_aircraft": "several damaged"
+      },
+      "note": "No reviewed source reports whole-base shutdown despite significant asset damage.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://apnews.com/article/iran-us-war-satellite-photos-damage-uae-bahrain-4b5edabf4c8cc89a56150ca4f1b7c06f",
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+        "https://apnews.com/article/d9a0bead802c195ff6aedf4cd3c3782d",
+        "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/"
+      ],
+      "verification_grade": "HIGH — imagery + independent reporting",
+      "impact_grade": "MAJOR ASSET DAMAGE, BASE REMAINED IN USE",
+      "purpose": "Air operations, command-and-control, aerial refueling and air/missile defense.",
+      "effect": "Public imagery/reporting identified an E-3 Sentry command-and-control aircraft, refueling aircraft damage, and wounded U.S. personnel. These are substantive losses because they affect sensing/C2 and sortie support.",
+      "continuity": "Later reporting still described U.S. presence at Prince Sultan; no whole-base shutdown was reported."
+    },
+    {
+      "id": "US-MUWAFFAQ",
+      "name": "Muwaffaq al-Salti / Azraq Air Base",
+      "lat": 31.83,
+      "lon": 36.78,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Jordan",
+      "facility_class": "BASE",
+      "role": "Jordanian base hosting U.S. Air Forces Central elements.",
+      "current_presence_status": "U.S. presence/targeting reported in July 2026.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [
+        "damage_during_Feb28-Apr14_imagery_window",
+        "2026-07-18_reported_attack"
+      ],
+      "damage_evidence_dates": [
+        "through_2026-04-14_WaPo_review"
+      ],
+      "critical_assets_reported": [
+        "THAAD radar/equipment damaged"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Exact first damage date was not publicly pinned in the reviewed source set; damage itself is verified. July Iranian aircraft-destruction claims remain unverified unless separately corroborated.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+        "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/",
+        "https://www.reuters.com/world/middle-east/us-military-facilities-middle-east-2026-02-28/"
+      ],
+      "verification_grade": "HIGH for THAAD equipment damage; exact first-damage date uncertain",
+      "impact_grade": "SUBSTANTIVE AIR-DEFENSE NODE DEGRADATION",
+      "purpose": "Jordanian air base hosting U.S. forces and high-end missile-defense equipment.",
+      "effect": "THAAD radar/equipment damage degrades one layer of ballistic-missile defense and can create a replacement bottleneck.",
+      "continuity": "A damaged THAAD component is not equivalent to the air base being destroyed."
+    },
+    {
+      "id": "US-INCIRLIK",
+      "name": "Incirlik Air Base",
+      "lat": 37.0,
+      "lon": 35.43,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Türkiye",
+      "facility_class": "BASE",
+      "role": "Joint Turkish-U.S./NATO operating base; 39th Air Base Wing.",
+      "current_presence_status": "Operational U.S. wing activity publicly documented in July 2026.",
+      "damage_evidence_status": "NO_REPORTED_DAMAGE_FOUND_IN_REVIEWED_SOURCE_SET",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [],
+      "damage_evidence_dates": [
+        "2026-07-08_USAF_change_of_command_activity"
+      ],
+      "critical_assets_reported": [],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Reuters found no credible report that Incirlik was hit in the March incident. U.S. Air Force documented a 39th ABW change of command at Incirlik on July 8.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.reuters.com/fact-check/video-shows-report-clashes-syria-not-strike-us-base-turkey-2026-03-10/",
+        "https://www.reuters.com/world/middle-east/explosion-heard-overnight-near-turkish-military-base-hosting-us-troops-2026-03-13/",
+        "https://www.incirlik.af.mil/News/"
+      ],
+      "verification_grade": "HIGH for absence of a credible strike report in reviewed set + later USAF activity",
+      "impact_grade": "NO VERIFIED WAR DAMAGE",
+      "purpose": "Joint Turkish-U.S./NATO operating base.",
+      "effect": "No credible reviewed report establishes Iranian war damage at Incirlik.",
+      "continuity": "U.S. Air Force wing activity was publicly documented there in July."
+    },
+    {
+      "id": "US-ISA",
+      "name": "Sheikh Isa Air Base",
+      "lat": 25.92,
+      "lon": 50.59,
+      "actor": "USA",
+      "type": "us_base",
+      "host": "Bahrain",
+      "facility_class": "BASE",
+      "role": "Bahraini air base associated with U.S. aircraft/air-defense operations.",
+      "current_presence_status": "U.S. combat aircraft presence was alleged/reported again in July targeting claims.",
+      "damage_evidence_status": "VERIFIED_DAMAGE",
+      "operational_effect_status": "NO_WHOLE_SITE_SHUTDOWN_REPORTED",
+      "attack_dates": [
+        "damage_during_Feb28-Apr14_imagery_window",
+        "2026-07-18_reported_attack"
+      ],
+      "damage_evidence_dates": [
+        "through_2026-04-14_WaPo_review"
+      ],
+      "critical_assets_reported": [
+        "Patriot missile-defense equipment damaged"
+      ],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Exact first damage date not cleanly pinned in the current source set; damage is verified by satellite review.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+        "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/"
+      ],
+      "verification_grade": "HIGH — independent satellite review",
+      "impact_grade": "MODERATE AIR-DEFENSE DEGRADATION",
+      "purpose": "Bahraini air base associated with U.S. aircraft and Patriot air-defense operations.",
+      "effect": "Patriot equipment was damaged. This removes or degrades part of a defensive layer, but no whole-base shutdown was reported.",
+      "continuity": "Operational continuity beyond the damaged equipment is not fully public."
+    },
+    {
+      "id": "US-RMELAN",
+      "name": "Rmelan / Kharab al-Jir U.S. base area",
+      "lat": 37.04,
+      "lon": 42.02,
+      "actor": "USA",
+      "type": "us_access_site",
+      "host": "Syria",
+      "facility_class": "BASE_DRAWDOWN",
+      "role": "Remaining U.S.-led coalition base reported in northeast Syria during February drawdown.",
+      "current_presence_status": "Retained as of Feb. 23 Reuters reporting; broader U.S. Syria withdrawal was underway. Current Aug. 14 presence not independently refreshed in this baseline.",
+      "damage_evidence_status": "NO_REPORTED_DAMAGE_FOUND_IN_REVIEWED_SOURCE_SET",
+      "operational_effect_status": "DRAWDOWN_IN_PROGRESS",
+      "attack_dates": [],
+      "damage_evidence_dates": [
+        "2026-02-23_presence_report"
+      ],
+      "critical_assets_reported": [],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Not marked simply 'active': this is a dated presence observation inside a rapidly changing drawdown.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/us-military-begins-withdrawing-main-base-northeast-syria-syrian-sources-say-2026-02-23/"
+      ],
+      "verification_grade": "MEDIUM-HIGH — dated Reuters posture report",
+      "impact_grade": "NO VERIFIED WAR DAMAGE; DRAWDOWN STATUS",
+      "purpose": "Coalition base area in northeast Syria.",
+      "effect": "No reviewed war-damage report. The important change is drawdown/withdrawal posture, not verified Iranian destruction.",
+      "continuity": "August presence was not fully refreshed in the baseline; do not convert uncertainty into a combat loss."
+    },
+    {
+      "id": "US-QASRAK",
+      "name": "Qasrak / Hasakah former main U.S. base area",
+      "lat": 36.57,
+      "lon": 40.75,
+      "actor": "USA",
+      "type": "us_access_site",
+      "host": "Syria",
+      "facility_class": "BASE_DRAWDOWN",
+      "role": "Former largest U.S. base in northeast Syria.",
+      "current_presence_status": "Withdrawal began Feb. 23, 2026.",
+      "damage_evidence_status": "NO_REPORTED_DAMAGE_FOUND_IN_REVIEWED_SOURCE_SET",
+      "operational_effect_status": "DRAWDOWN_IN_PROGRESS",
+      "attack_dates": [],
+      "damage_evidence_dates": [
+        "2026-02-23_withdrawal_began"
+      ],
+      "critical_assets_reported": [],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Historical/drawdown marker, not a confident working-base marker.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/us-military-begins-withdrawing-main-base-northeast-syria-syrian-sources-say-2026-02-23/"
+      ],
+      "verification_grade": "HIGH for drawdown; no verified damage found",
+      "impact_grade": "NO VERIFIED WAR DAMAGE; DRAWDOWN STATUS",
+      "purpose": "Former main U.S. base area in northeast Syria.",
+      "effect": "Withdrawal began in February. No verified Iranian destruction is recorded.",
+      "continuity": "It should not be displayed as an intact permanent base or as a base Iran destroyed."
+    },
+    {
+      "id": "US-TANF",
+      "name": "al-Tanf garrison (former U.S. base)",
+      "lat": 33.51,
+      "lon": 38.68,
+      "actor": "USA",
+      "type": "us_access_site",
+      "host": "Syria",
+      "facility_class": "WITHDRAWN_BASE",
+      "role": "Former U.S. garrison at Syria-Jordan-Iraq tri-border.",
+      "current_presence_status": "U.S. withdrawal completed Feb. 12, 2026.",
+      "damage_evidence_status": "NOT_APPLICABLE_WITHDRAWN",
+      "operational_effect_status": "WITHDRAWN_NOT_ACTIVE_US_BASE",
+      "attack_dates": [],
+      "damage_evidence_dates": [
+        "2026-02-12_withdrawal_confirmed"
+      ],
+      "critical_assets_reported": [],
+      "noncritical_or_soft_assets_reported": [],
+      "public_damage_counts": {},
+      "note": "Iran claimed a July 17 strike on a U.S. command center here, but Reuters reported the U.S. had already withdrawn and a Syrian source said the base itself was not hit.",
+      "last_reviewed": "2026-08-14",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/syria-says-it-has-taken-control-al-tanf-base-vacated-by-us-troops-2026-02-12/"
+      ],
+      "verification_grade": "HIGH — withdrawal independently confirmed",
+      "impact_grade": "NOT A 2026 WAR LOSS",
+      "purpose": "Former U.S. garrison at the Syria–Jordan–Iraq tri-border.",
+      "effect": "The United States had withdrawn by February 12, before the war began.",
+      "continuity": "Later Iranian claims of striking a U.S. command center there do not establish destruction of an active U.S. base."
+    }
+  ]
+}

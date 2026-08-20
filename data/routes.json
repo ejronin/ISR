@@ -1,0 +1,196 @@
+{
+  "arcticRoutes": [
+    {
+      "id": "ARCTIC-CN-EU-CONTAINER",
+      "name": "China–Europe Northern Sea Route container corridor (schematic)",
+      "type": "container",
+      "status": "REGULAR 2026 SERVICE ANNOUNCED / SEASONAL",
+      "note": "Sea Legend regular China–Europe container service via Russia's Northern Sea Route. Rosatom said seven Chinese transit vessels had permits and weekly sailings were planned during the navigation season. Exact vessel tracks vary with ice and permissions.",
+      "coords": [
+        [
+          29.87,
+          121.54
+        ],
+        [
+          37.0,
+          128.0
+        ],
+        [
+          48.0,
+          145.0
+        ],
+        [
+          60.0,
+          165.0
+        ],
+        [
+          69.7,
+          170.3
+        ],
+        [
+          72.0,
+          145.0
+        ],
+        [
+          74.0,
+          115.0
+        ],
+        [
+          73.5,
+          85.0
+        ],
+        [
+          71.3,
+          72.1
+        ],
+        [
+          70.5,
+          50.0
+        ],
+        [
+          69.0,
+          33.1
+        ],
+        [
+          62.0,
+          12.0
+        ],
+        [
+          55.0,
+          2.0
+        ],
+        [
+          51.96,
+          1.35
+        ]
+      ],
+      "nodes": [
+        [
+          "Ningbo-Zhoushan, China",
+          29.87,
+          121.54
+        ],
+        [
+          "Pevek / Chukotka gateway",
+          69.7,
+          170.3
+        ],
+        [
+          "Tiksi sector",
+          71.6,
+          128.9
+        ],
+        [
+          "Sabetta / Yamal sector",
+          71.27,
+          72.07
+        ],
+        [
+          "Murmansk / Barents gateway",
+          68.97,
+          33.07
+        ],
+        [
+          "Felixstowe, UK",
+          51.96,
+          1.35
+        ]
+      ],
+      "src": [
+        [
+          "Reuters syndication — Aug. 7, 2026",
+          "https://www.internazionale.it/ultime-notizie-reuters/2026/08/07/rosatom-says-seven-chinese-vessels-will-sail-to-europe-via-russias-arctic-route"
+        ],
+        [
+          "Rosatom NSR General Administration",
+          "https://nsr.rosatom.ru/en/company/object-of-activity-and-functions-of-nsra/"
+        ],
+        [
+          "Rosatom NSR navigation rules",
+          "https://nsr.rosatom.ru/en/official-information/rules-of-navigation-in-the-water-area-of-the-northern-sea-route/"
+        ]
+      ]
+    },
+    {
+      "id": "ARCTIC-RU-CN-OIL",
+      "name": "Russia–China Arctic crude corridor (schematic)",
+      "type": "energy",
+      "status": "ACTIVE 2026 SEASON",
+      "note": "Reuters reported seven crude cargoes totaling about 6 million barrels already heading to Asia via the NSR by Aug. 11, with China the principal destination. This is an energy-diversification route around European inspection risk and can also buffer some Gulf disruption for China.",
+      "coords": [
+        [
+          69.0,
+          33.1
+        ],
+        [
+          71.0,
+          50.0
+        ],
+        [
+          73.0,
+          80.0
+        ],
+        [
+          74.0,
+          115.0
+        ],
+        [
+          72.0,
+          145.0
+        ],
+        [
+          69.7,
+          170.3
+        ],
+        [
+          60.0,
+          165.0
+        ],
+        [
+          48.0,
+          145.0
+        ],
+        [
+          36.0,
+          130.0
+        ],
+        [
+          31.2,
+          121.5
+        ]
+      ],
+      "nodes": [
+        [
+          "Barents / western Russian loading system",
+          69.0,
+          33.1
+        ],
+        [
+          "Northern Sea Route",
+          73.0,
+          90.0
+        ],
+        [
+          "Chukotka gateway",
+          69.7,
+          170.3
+        ],
+        [
+          "East China import ports (schematic Shanghai endpoint)",
+          31.2,
+          121.5
+        ]
+      ],
+      "src": [
+        [
+          "Reuters — Aug. 11, 2026",
+          "https://www.reuters.com/business/energy/russias-oil-exports-asia-via-arctic-route-start-strongly-sources-say-data-shows-2026-08-11/"
+        ],
+        [
+          "Rosatom NSR administration",
+          "https://nsr.rosatom.ru/en/company/object-of-activity-and-functions-of-nsra/"
+        ]
+      ]
+    }
+  ]
+}

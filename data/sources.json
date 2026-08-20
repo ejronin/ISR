@@ -1,0 +1,200 @@
+{
+  "sources": {
+    "western": [
+      [
+        "Washington Post — satellite BDA of U.S. sites",
+        "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/"
+      ],
+      [
+        "AP — Iran-war misinformation fact check",
+        "https://apnews.com/article/fact-check-iran-war-khamenei-misrepresented-images-787b6a21a4fef4cc32ccca9bc59980f0"
+      ],
+      [
+        "Reuters — Red Sea coalition",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ],
+      [
+        "Reuters — Mecca defense pact",
+        "https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/"
+      ],
+      [
+        "Reuters — Lebanon verification candidates",
+        "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/"
+      ],
+      [
+        "Reuters — Aug. 16 Hormuz traffic",
+        "https://www.reuters.com/world/middle-east/shipping-via-hormuz-strait-slows-after-tanker-attacks-data-shows-2026-08-16/"
+      ],
+      [
+        "Reuters — Aug. 17 offensive posture",
+        "https://www.reuters.com/world/middle-east/iran-threatens-go-offensive-strait-hormuz-if-diplomacy-with-us-fails-2026-08-17/"
+      ],
+      [
+        "Reuters — Aug. 18 no talks / Hormuz",
+        "https://www.reuters.com/world/middle-east/trump-says-no-talks-planned-with-iran-tehran-says-strait-hormuz-still-shut-2026-08-18/"
+      ],
+      [
+        "Reuters — Aug. 19 UAE embargo",
+        "https://www.reuters.com/world/middle-east/uaes-financial-embargo-iran-after-missile-threat-puts-rivalry-back-spotlight-2026-08-19/"
+      ],
+      [
+        "Reuters — Aug. 19 Hormuz traffic",
+        "https://www.reuters.com/world/middle-east/hormuz-traffic-slows-uncertainty-over-waterway-persists-2026-08-19/"
+      ],
+      [
+        "Associated Press — Aug. 19 UAE/Iran",
+        "https://apnews.com/article/iran-united-arab-emirates-trade-august-19-2026-47c95fe382c49289ab0419310b6d8057"
+      ]
+    ],
+    "regional": [
+      [
+        "Arab News / AFP — AI fake satellite image",
+        "https://www.arabnews.com/node/2635797/media"
+      ],
+      [
+        "Arab News / Saudi MoD — false June 8 Prince Sultan report",
+        "https://www.arabnews.com/node/2646337/saudi-arabia"
+      ],
+      [
+        "Arab News / Kuwait reporting — airport attribution dispute",
+        "https://www.arabnews.com/node/2645832/middle-east"
+      ],
+      [
+        "The National — Iranian '18 targets' claim not independently confirmed",
+        "https://www.thenationalnews.com/news/mena/2026/06/11/us-strikes-iran-for-second-night-as-tehran-hits-back-at-american-bases/"
+      ],
+      [
+        "Al Jazeera — Mecca pact explainer",
+        "https://www.aljazeera.com/news/2026/8/7/turkiye-saudi-arabi-pakistan-sign-joint-defence-agreement-whats-in-it"
+      ],
+      [
+        "Saudi Press Agency — founding coalition roster",
+        "https://www.spa.gov.sa/en/w2644909"
+      ],
+      [
+        "IRNA — direct Iranian official/IRGC claim provenance",
+        "https://en.irna.ir/subject/86118537/US-Israeli-invasion-of-Iran"
+      ],
+      [
+        "Press TV — direct Iranian state-media claim provenance",
+        "https://www.presstv.ir/"
+      ],
+      [
+        "Tehran Times — Iranian state-aligned narrative / claim context",
+        "https://www.tehrantimes.com/"
+      ],
+      [
+        "Reuters — China container service via NSR (syndicated)",
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/08/07/rosatom-says-seven-chinese-vessels-will-sail-to-europe-via-russias-arctic-route"
+      ],
+      [
+        "Reuters — Russian crude to China/Asia via NSR",
+        "https://www.reuters.com/business/energy/russias-oil-exports-asia-via-arctic-route-start-strongly-sources-say-data-shows-2026-08-11/"
+      ]
+    ],
+    "official": [
+      [
+        "CENTCOM — public releases",
+        "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/"
+      ],
+      [
+        "CENTCOM — Operation Epic Fury",
+        "https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/"
+      ],
+      [
+        "Rosatom Northern Sea Route Administration",
+        "https://nsr.rosatom.ru/en/company/object-of-activity-and-functions-of-nsra/"
+      ],
+      [
+        "Rosatom NSR Navigation Rules",
+        "https://nsr.rosatom.ru/en/official-information/rules-of-navigation-in-the-water-area-of-the-northern-sea-route/"
+      ]
+    ],
+    "csis": [
+      [
+        "CSIS — Assessing the Air Campaign After Three Weeks",
+        "https://www.csis.org/analysis/assessing-air-campaign-after-three-weeks-iran-war-numbers"
+      ],
+      [
+        "CSIS — Unpacking Iran's Drone Campaign in the Gulf",
+        "https://www.csis.org/analysis/unpacking-irans-drone-campaign-gulf-early-lessons-future-drone-warfare"
+      ],
+      [
+        "CSIS — Last Rounds? Status of Key Munitions",
+        "https://www.csis.org/analysis/last-rounds-status-key-munitions-iran-war-ceasefire"
+      ],
+      [
+        "CSIS — The War May Be Ending. What Did Epic Fury Cost?",
+        "https://www.csis.org/analysis/war-may-be-ending-what-did-epic-fury-cost"
+      ],
+      [
+        "CSIS Missile Threat — Shahab-3",
+        "https://missilethreat.csis.org/missile/shahab-3/"
+      ]
+    ],
+    "bargaining": [
+      [
+        "Reuters — non-hostile Hormuz passage, Mar. 24",
+        "https://www.reuters.com/world/middle-east/iran-says-non-hostile-ships-can-transit-strait-hormuz-ft-reports-2026-03-24/"
+      ],
+      [
+        "Reuters — rejected Iranian proposal, May 2",
+        "https://www.reuters.com/world/middle-east/iranian-proposal-rejected-by-trump-would-open-strait-before-nuclear-talks-iran-2026-05-02/"
+      ],
+      [
+        "Reuters — Iran's broader May 20 offer",
+        "https://www.reuters.com/world/asia-pacific/tankers-exit-hormuz-trump-vance-talk-up-iran-deal-prospects-2026-05-20/"
+      ],
+      [
+        "Reuters — 14-point MOU, Jun. 17",
+        "https://www.reuters.com/world/middle-east/14-point-draft-us-iran-deal-2026-06-17/"
+      ],
+      [
+        "Reuters — MOU collapse reconstruction, Jul. 13",
+        "https://www.reuters.com/world/why-has-iran-us-ceasefire-memorandum-frayed-2026-07-13/"
+      ],
+      [
+        "Reuters — Iranian temporary route plan, Jul. 28",
+        "https://www.reuters.com/world/middle-east/iran-proposes-temporary-hormuz-plan-giving-itself-greater-control-over-transit-2026-07-28/"
+      ],
+      [
+        "Reuters — route coordinates, Aug. 5",
+        "https://www.reuters.com/world/middle-east/iran-oman-reach-understanding-coordinates-route-through-hormuz-iran-ministry-2026-08-05/"
+      ],
+      [
+        "Reuters — Iran/U.S. compensation demands, Aug. 9",
+        "https://www.reuters.com/world/middle-east/iran-ties-hormuz-reopening-us-concessions-several-demands-2026-08-09/"
+      ],
+      [
+        "Reuters — no progress reviving MOU, Aug. 12",
+        "https://www.reuters.com/world/asia-pacific/iran-says-no-progress-reviving-interim-peace-deal-with-us-2026-08-12/"
+      ],
+      [
+        "Al Jazeera — parties' Hormuz positions, Aug. 5",
+        "https://www.aljazeera.com/news/2026/8/5/iran-oman-us-close-to-hormuz-deal-what-do-they-all-want"
+      ]
+    ],
+    "economy": [
+      [
+        "Reuters — GCC July 2026 economic poll",
+        "https://www.reuters.com/world/middle-east/most-gulf-area-economies-face-deeper-downturns-this-year-hormuz-disruption-2026-07-16/"
+      ],
+      [
+        "Reuters — GCC April 2026 economic poll",
+        "https://www.reuters.com/business/energy/gulf-economies-head-worst-crisis-since-pandemic-war-roils-energy-lifeline-2026-04-27/"
+      ],
+      [
+        "IMF — January 2026 WEO Update",
+        "https://www.elibrary.imf.org/display/book/9798229032339/CH001.xml"
+      ],
+      [
+        "IMF — July 2026 WEO Update",
+        "https://www.elibrary.imf.org/abstract/book/9798229047999/CH001.xml"
+      ],
+      [
+        "IMF — Iran country data",
+        "https://www.imf.org/en/countries/irn"
+      ]
+    ]
+  }
+}

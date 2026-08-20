@@ -1,0 +1,130 @@
+{
+  "economicOutlook": {
+    "metric": "2026 real GDP growth forecast (%)",
+    "as_of": "Latest cross-country war-era comparison available by 2026-08-19",
+    "note": "GCC January pre-war and July current estimates are Reuters poll medians. Iran January and July estimates are IMF WEO updates. This shows forecast trajectory, not realized GDP and not economic size.",
+    "rows": [
+      {
+        "country": "Saudi Arabia",
+        "prewar": 4.3,
+        "current": 1.4,
+        "delta": -2.9,
+        "src": [
+          [
+            "Reuters Apr. 27 (Jan baseline)",
+            "https://www.reuters.com/business/energy/gulf-economies-head-worst-crisis-since-pandemic-war-roils-energy-lifeline-2026-04-27/"
+          ],
+          [
+            "Reuters Jul. 16",
+            "https://www.reuters.com/world/middle-east/most-gulf-area-economies-face-deeper-downturns-this-year-hormuz-disruption-2026-07-16/"
+          ]
+        ]
+      },
+      {
+        "country": "Oman",
+        "prewar": 2.8,
+        "current": 3.1,
+        "delta": 0.3,
+        "src": [
+          [
+            "Reuters Apr. 27",
+            "https://www.reuters.com/business/energy/gulf-economies-head-worst-crisis-since-pandemic-war-roils-energy-lifeline-2026-04-27/"
+          ],
+          [
+            "Reuters Jul. 16",
+            "https://www.reuters.com/world/middle-east/most-gulf-area-economies-face-deeper-downturns-this-year-hormuz-disruption-2026-07-16/"
+          ]
+        ]
+      },
+      {
+        "country": "United Arab Emirates",
+        "prewar": 5.0,
+        "current": -0.5,
+        "delta": -5.5,
+        "src": [
+          [
+            "Reuters Apr. 27",
+            "https://www.reuters.com/business/energy/gulf-economies-head-worst-crisis-since-pandemic-war-roils-energy-lifeline-2026-04-27/"
+          ],
+          [
+            "Reuters Jul. 16",
+            "https://www.reuters.com/world/middle-east/most-gulf-area-economies-face-deeper-downturns-this-year-hormuz-disruption-2026-07-16/"
+          ]
+        ]
+      },
+      {
+        "country": "Bahrain",
+        "prewar": 2.9,
+        "current": -5.1,
+        "delta": -8.0,
+        "src": [
+          [
+            "Reuters Apr. 27",
+            "https://www.reuters.com/business/energy/gulf-economies-head-worst-crisis-since-pandemic-war-roils-energy-lifeline-2026-04-27/"
+          ],
+          [
+            "Reuters Jul. 16",
+            "https://www.reuters.com/world/middle-east/most-gulf-area-economies-face-deeper-downturns-this-year-hormuz-disruption-2026-07-16/"
+          ]
+        ]
+      },
+      {
+        "country": "Kuwait",
+        "prewar": 3.4,
+        "current": -8.1,
+        "delta": -11.5,
+        "src": [
+          [
+            "Reuters Apr. 27",
+            "https://www.reuters.com/business/energy/gulf-economies-head-worst-crisis-since-pandemic-war-roils-energy-lifeline-2026-04-27/"
+          ],
+          [
+            "Reuters Jul. 16",
+            "https://www.reuters.com/world/middle-east/most-gulf-area-economies-face-deeper-downturns-this-year-hormuz-disruption-2026-07-16/"
+          ]
+        ]
+      },
+      {
+        "country": "Qatar",
+        "prewar": 4.9,
+        "current": -8.1,
+        "delta": -13.0,
+        "src": [
+          [
+            "Reuters Apr. 27",
+            "https://www.reuters.com/business/energy/gulf-economies-head-worst-crisis-since-pandemic-war-roils-energy-lifeline-2026-04-27/"
+          ],
+          [
+            "Reuters Jul. 16",
+            "https://www.reuters.com/world/middle-east/most-gulf-area-economies-face-deeper-downturns-this-year-hormuz-disruption-2026-07-16/"
+          ]
+        ]
+      },
+      {
+        "country": "Iran",
+        "prewar": 1.1,
+        "current": -5.4,
+        "delta": -6.5,
+        "src": [
+          [
+            "IMF Jan. 2026 WEO Update",
+            "https://www.elibrary.imf.org/display/book/9798229032339/CH001.xml"
+          ],
+          [
+            "IMF Jul. 2026 WEO Update",
+            "https://www.elibrary.imf.org/abstract/book/9798229047999/CH001.xml"
+          ],
+          [
+            "IMF Iran country page",
+            "https://www.imf.org/en/countries/irn"
+          ]
+        ]
+      }
+    ],
+    "context": [
+      "Reuters' July poll linked the GCC downgrades primarily to the ability to ship hydrocarbons through Hormuz rather than to oil prices alone.",
+      "Saudi Arabia and Oman were the only GCC economies still expected to grow in the July poll, reflecting Saudi's East–West pipeline and Oman's export terminals outside Hormuz.",
+      "IMF's July update projected Iran contracting 5.4% in 2026; its Iran country page listed consumer-price inflation at 68.9%."
+    ]
+  }
+}

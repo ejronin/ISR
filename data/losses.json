@@ -1,0 +1,922 @@
+{
+  "assetLosses": [
+    {
+      "id": "A001",
+      "date": "2026-03-04",
+      "actor": "United States",
+      "country": "Iran",
+      "service": "Iranian Navy",
+      "category": "Naval vessel",
+      "type": "Frigate",
+      "model": "IRIS Dena",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Destroyed",
+      "disposition": "Sunk",
+      "location": "Off Galle, Sri Lanka",
+      "cause": "U.S. submarine torpedo attack",
+      "evidence": "Confirmed",
+      "notes": "Casualty count separately reconciled in C008.",
+      "src": [
+        [
+          "S004 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/sri-lanka-rescues-30-people-board-distressed-iranian-ship-foreign-minister-says-2026-03-04/"
+        ],
+        [
+          "S005 — Associated Press",
+          "https://apnews.com/article/69191dde43154c5176a8aeacc9128748"
+        ],
+        [
+          "S006 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/iranian-army-says-least-104-killed-us-attack-iranian-warship-last-week-2026-03-08/"
+        ]
+      ]
+    },
+    {
+      "id": "A002",
+      "date": "2026-03-16",
+      "actor": "United States",
+      "country": "Iran",
+      "service": "Iranian Navy / IRGC Navy",
+      "category": "Naval vessels",
+      "type": "Mixed ships, submarines and small craft",
+      "model": "Grouped aggregate",
+      "claimed": 100,
+      "visual": null,
+      "independent": null,
+      "probable": null,
+      "damage": "Destroyed or damaged",
+      "disposition": "Mixed",
+      "location": "Iranian and regional waters",
+      "cause": "Cumulative U.S. air/naval campaign",
+      "evidence": "Claimed by U.S.; not independently reconciled",
+      "notes": "Do not treat 100+ as visually confirmed destruction.",
+      "src": [
+        [
+          "S002 — U.S. Central Command",
+          "https://media.defense.gov/2026/Mar/16/2003899496/-1/-1/1/OPERATION-EPIC-FURY-FACT-SHEET.PDF"
+        ]
+      ]
+    },
+    {
+      "id": "A003",
+      "date": "2026-03-12",
+      "actor": "Unknown / accident under investigation",
+      "country": "United States",
+      "service": "U.S. Air Force",
+      "category": "Aircraft",
+      "type": "Aerial refueling aircraft",
+      "model": "KC-135",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Destroyed",
+      "disposition": "Crashed",
+      "location": "Iraq",
+      "cause": "Aircraft loss while supporting operations",
+      "evidence": "Confirmed",
+      "notes": "Cause classification not established in baseline.",
+      "src": [
+        [
+          "S001 — U.S. Central Command",
+          "https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/"
+        ],
+        [
+          "S026 — Associated Press",
+          "https://abcnews.com/US/wireStory/us-military-death-toll-iran-war-rises-14-134728938"
+        ]
+      ]
+    },
+    {
+      "id": "A004",
+      "date": "2026-07-01",
+      "actor": "Non-hostile incident",
+      "country": "United States",
+      "service": "U.S. Navy",
+      "category": "Helicopter",
+      "type": "Naval helicopter",
+      "model": "Model not captured",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Destroyed or lost",
+      "disposition": "Crashed / emergency landing",
+      "location": "Arabian Sea",
+      "cause": "Aviation mishap",
+      "evidence": "Confirmed non-hostile",
+      "notes": "One pilot killed; three sailors rescued.",
+      "src": [
+        [
+          "S026 — Associated Press",
+          "https://abcnews.com/US/wireStory/us-military-death-toll-iran-war-rises-14-134728938"
+        ]
+      ]
+    },
+    {
+      "id": "A005",
+      "date": "2026-07-07",
+      "actor": "United States",
+      "country": "Iran",
+      "service": "IRGC Navy",
+      "category": "Patrol craft",
+      "type": "Small boats",
+      "model": "Grouped small-boat force",
+      "claimed": 60,
+      "visual": null,
+      "independent": null,
+      "probable": null,
+      "damage": "Struck; destruction not established",
+      "disposition": "Damaged/unknown",
+      "location": "Strait of Hormuz region",
+      "cause": "U.S. strikes after attacks on commercial ships",
+      "evidence": "Official U.S. claim; BDA unverified",
+      "notes": "AP reported 'over 60' small boats targeted, not necessarily destroyed.",
+      "src": [
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ]
+      ]
+    },
+    {
+      "id": "A006",
+      "date": "2026-07-12",
+      "actor": "United States",
+      "country": "Iran",
+      "service": "Iranian military",
+      "category": "Air defense/radar/missile/maritime sites",
+      "type": "Grouped fixed and mobile sites",
+      "model": "Multiple",
+      "claimed": null,
+      "visual": null,
+      "independent": null,
+      "probable": null,
+      "damage": "Struck",
+      "disposition": "Unknown",
+      "location": "Multiple Iranian coastal locations",
+      "cause": "Precision strikes including one-way sea drones",
+      "evidence": "Confirmed attacks; effects unverified",
+      "notes": "Grouped July 12-17 target categories. No exact destroyed count entered.",
+      "src": [
+        [
+          "S018 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4541002/centcom-completes-another-wave-of-strikes-against-iran/"
+        ],
+        [
+          "S019 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4544409/us-forces-complete-new-strikes-on-iranian-military-targets/"
+        ],
+        [
+          "S021 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4546775/centcom-completes-more-strikes-against-iran/"
+        ],
+        [
+          "S022 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4546816/latest-wave-of-us-strikes-against-iran-completed/"
+        ],
+        [
+          "S023 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4548433/us-successfully-completes-new-strikes-in-iran/"
+        ],
+        [
+          "S024 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549624/centcom-finishes-latest-wave-of-strikes-against-iran/"
+        ]
+      ]
+    },
+    {
+      "id": "A007",
+      "date": "2026-06-18",
+      "actor": "United States",
+      "country": "Iran / commercial operators",
+      "service": "Maritime blockade targets",
+      "category": "Merchant vessels",
+      "type": "Non-compliant ships",
+      "model": "Grouped",
+      "claimed": 9,
+      "visual": null,
+      "independent": null,
+      "probable": null,
+      "damage": "Disabled",
+      "disposition": "Disabled",
+      "location": "Gulf of Oman / Hormuz approaches",
+      "cause": "U.S. blockade enforcement April 13-June 18",
+      "evidence": "Official U.S. claim",
+      "notes": "Separate from 140 redirected vessels and 50+ humanitarian passes.",
+      "src": [
+        [
+          "S020 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4542098/us-forces-to-resume-naval-blockade-against-iran/"
+        ]
+      ]
+    },
+    {
+      "id": "A008",
+      "date": "2026-06-25",
+      "actor": "Iran / attributed",
+      "country": "Commercial operator",
+      "service": "Merchant marine",
+      "category": "Merchant vessel",
+      "type": "Cargo ship",
+      "model": "M/V Ever Lovely",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Damaged",
+      "disposition": "Minor damage",
+      "location": "Strait of Hormuz",
+      "cause": "One-way attack drone",
+      "evidence": "Physical attack confirmed; attribution likely",
+      "notes": "No casualties or major damage reported.",
+      "src": [
+        [
+          "S014 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4528341/us-strikes-iran-in-response-to-attack-on-commercial-vessel/"
+        ],
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ]
+      ]
+    },
+    {
+      "id": "A009",
+      "date": "2026-06-27",
+      "actor": "Iran / attributed",
+      "country": "Commercial operator",
+      "service": "Merchant marine",
+      "category": "Tanker",
+      "type": "Crude tanker",
+      "model": "M/T Kiku",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Damaged",
+      "disposition": "Hit",
+      "location": "Strait of Hormuz",
+      "cause": "Missile/drone attack",
+      "evidence": "Physical attack confirmed; attribution likely",
+      "notes": "Carried about 2 million barrels of crude.",
+      "src": [
+        [
+          "S015 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4528488/us-forces-conduct-additional-strikes-after-irans-latest-commercial-ship-attack/"
+        ],
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ]
+      ]
+    },
+    {
+      "id": "A010",
+      "date": "2026-07-17",
+      "actor": "Iran",
+      "country": "United States",
+      "service": "U.S. regional forces",
+      "category": "Aircraft and radar",
+      "type": "Unspecified",
+      "model": "Iranian claim",
+      "claimed": null,
+      "visual": null,
+      "independent": null,
+      "probable": null,
+      "damage": "Claimed destroyed",
+      "disposition": "Unknown",
+      "location": "Jordan, Kuwait, Bahrain and other sites",
+      "cause": "Ballistic missile/drone attacks",
+      "evidence": "Claimed but unverified",
+      "notes": "No independent imagery or U.S. acknowledgment supporting claimed destroyed aircraft/radars.",
+      "src": [
+        [
+          "S029 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/"
+        ]
+      ]
+    },
+    {
+      "id": "A011",
+      "date": "2026-07-29",
+      "actor": "Unknown / disputed",
+      "country": "Commercial operator",
+      "service": "Merchant marine",
+      "category": "Tanker / port asset",
+      "type": "Gas storage tanker",
+      "model": "Damietta incident",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Damaged",
+      "disposition": "Fire / physical damage",
+      "location": "Damietta, Egypt",
+      "cause": "Drone/projectile incident; attribution initially unclear",
+      "evidence": "Physical damage confirmed; attribution unresolved",
+      "notes": "Do not assign Iranian/Houthi responsibility without corroboration.",
+      "src": [
+        [
+          "S050 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/us-saudis-attack-iran-backed-groups-iraq-threatening-intensify-conflict-2026-07-29/"
+        ]
+      ]
+    },
+    {
+      "id": "A012",
+      "date": "2026-08-04",
+      "actor": "Unknown",
+      "country": "Commercial operator",
+      "service": "Merchant marine",
+      "category": "Merchant vessel",
+      "type": "Dry-bulk / commercial ship",
+      "model": "Name not established in current project source excerpt",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Damaged",
+      "disposition": "Abandoned after strike",
+      "location": "Near Strait of Hormuz",
+      "cause": "Unknown projectile / attack",
+      "evidence": "Physical attack reported; attribution unresolved",
+      "notes": "Crew abandonment and missing-seafarer reporting should be kept separate from attacker attribution.",
+      "src": [
+        [
+          "S057 — Reuters",
+          "https://www.reuters.com/world/middle-east/status-us-iran-talks-uncertain-ship-struck-hormuz-2026-08-04/"
+        ]
+      ]
+    },
+    {
+      "id": "A013",
+      "date": "2026-08-09",
+      "actor": "Houthis / attributed",
+      "country": "Saudi Aramco",
+      "service": "Energy infrastructure",
+      "category": "Refinery / oil facility",
+      "type": "Refinery",
+      "model": "Jizan/Jazan facility",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Damaged",
+      "disposition": "Fire extinguished",
+      "location": "Jizan, Saudi Arabia",
+      "cause": "Drone attack",
+      "evidence": "Physical fire/damage reported",
+      "notes": "Facility was already shut since late July; no casualties reported.",
+      "src": [
+        [
+          "S065 — Reuters",
+          "https://www.reuters.com/business/energy/fire-extinguished-aramco-facility-jizan-saudi-arabia-says-2026-08-09/"
+        ]
+      ]
+    },
+    {
+      "id": "A014",
+      "date": "2026-08-11",
+      "actor": "Houthis",
+      "country": "Egyptian-owned commercial operator",
+      "service": "Merchant marine",
+      "category": "Cargo ship",
+      "type": "Small cargo vessel",
+      "model": "Tihamah",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Damaged",
+      "disposition": "Crew lost control after attack",
+      "location": "Bab el-Mandeb near Perim Island, Yemen",
+      "cause": "Unknown projectile / Houthi attack",
+      "evidence": "High; vessel visually corroborated",
+      "notes": "Four crew and two rescuers killed; casualty record C021.",
+      "src": [
+        [
+          "S069 — Reuters",
+          "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/"
+        ]
+      ]
+    },
+    {
+      "id": "A015",
+      "date": "2026-08-11",
+      "actor": "United States",
+      "country": "Commercial operator",
+      "service": "Merchant marine",
+      "category": "Container ship",
+      "type": "Panama-flagged container ship",
+      "model": "Vela Nova",
+      "claimed": 1,
+      "visual": 1,
+      "independent": 1,
+      "probable": 1,
+      "damage": "Disabled",
+      "disposition": "Steering gear disabled",
+      "location": "Gulf of Oman off Pakistan",
+      "cause": "Two AGM-114 Hellfire missiles from U.S. Navy MH-60",
+      "evidence": "Confirmed U.S. action",
+      "notes": "CENTCOM said vessel ignored repeated blockade warnings; do not equate disabling with sinking.",
+      "src": [
+        [
+          "S069 — Reuters",
+          "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/"
+        ]
+      ]
+    }
+  ],
+  "casualties": [
+    {
+      "id": "C001",
+      "date": "2026-03-01",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "Joint force",
+      "scope": "Initial Iranian attacks; event date approximate",
+      "killed": 6,
+      "wounded": 0,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed; later aggregate",
+      "aggregation": "Additive event",
+      "notes": "Six personnel killed in Kuwait-area command/port attack according to later AP reconstruction; early CENTCOM total was four by March 2.",
+      "src": [
+        [
+          "S007 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4418924/operation-epic-fury-update/"
+        ],
+        [
+          "S026 — Associated Press",
+          "https://abcnews.com/US/wireStory/us-military-death-toll-iran-war-rises-14-134728938"
+        ]
+      ]
+    },
+    {
+      "id": "C002",
+      "date": "2026-03-01",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "U.S. Army",
+      "scope": "Prince Sultan Air Base attack; later death",
+      "killed": 1,
+      "wounded": 0,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed",
+      "aggregation": "Additive event",
+      "notes": "One service member later died from wounds sustained in the March 1 attack; exact death date not captured in baseline.",
+      "src": [
+        [
+          "S026 — Associated Press",
+          "https://abcnews.com/US/wireStory/us-military-death-toll-iran-war-rises-14-134728938"
+        ]
+      ]
+    },
+    {
+      "id": "C003",
+      "date": "2026-03-12",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "U.S. Air Force",
+      "scope": "KC-135 crash supporting operations",
+      "killed": 6,
+      "wounded": 0,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed",
+      "aggregation": "Additive event",
+      "notes": "All six crew confirmed dead. Incident classification/causation should remain separate from hostile-fire losses.",
+      "src": [
+        [
+          "S001 — U.S. Central Command",
+          "https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/"
+        ],
+        [
+          "S026 — Associated Press",
+          "https://abcnews.com/US/wireStory/us-military-death-toll-iran-war-rises-14-134728938"
+        ]
+      ]
+    },
+    {
+      "id": "C004",
+      "date": "2026-07-01",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "U.S. Navy",
+      "scope": "Helicopter crash in Arabian Sea",
+      "killed": 1,
+      "wounded": 0,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed non-hostile",
+      "aggregation": "Additive event",
+      "notes": "Navy initially reported emergency landing with no indication of hostile action.",
+      "src": [
+        [
+          "S026 — Associated Press",
+          "https://abcnews.com/US/wireStory/us-military-death-toll-iran-war-rises-14-134728938"
+        ]
+      ]
+    },
+    {
+      "id": "C005",
+      "date": "2026-07-17",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "Joint force",
+      "scope": "Iranian missile/drone attack in Jordan",
+      "killed": 2,
+      "wounded": 4,
+      "missing": 1,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed",
+      "aggregation": "Additive event",
+      "notes": "Four medically evacuated and discharged; other minor injuries returned to duty. One service member MIA.",
+      "src": [
+        [
+          "S025 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549635/centcom-statement-on-recently-fallen-missing-us-service-members/"
+        ],
+        [
+          "S029 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/"
+        ]
+      ]
+    },
+    {
+      "id": "C006",
+      "date": "2026-07-13",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "Joint force",
+      "scope": "Cumulative wounded snapshot through July 13",
+      "killed": null,
+      "wounded": 414,
+      "missing": null,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed aggregate",
+      "aggregation": "Cumulative snapshot — not additive",
+      "notes": "Majority reportedly traumatic brain injuries. Do not add to event-level wounded rows.",
+      "src": [
+        [
+          "S026 — Associated Press",
+          "https://abcnews.com/US/wireStory/us-military-death-toll-iran-war-rises-14-134728938"
+        ]
+      ]
+    },
+    {
+      "id": "C007",
+      "date": "2026-04-10",
+      "country": "Iran",
+      "org": "National aggregate",
+      "force": "Military/civilian mixed",
+      "scope": "HRANA cumulative snapshot through April 10",
+      "killed": null,
+      "wounded": null,
+      "missing": null,
+      "estimatedKilled": 3636,
+      "estimatedWounded": null,
+      "evidence": "Likely; source-reported aggregate",
+      "aggregation": "Cumulative snapshot — not additive",
+      "notes": "HRANA reported 3,636 killed, including 1,701 civilians and 254 children. Reuters did not independently verify.",
+      "src": [
+        [
+          "S008 — Reuters",
+          "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/"
+        ]
+      ]
+    },
+    {
+      "id": "C008",
+      "date": "2026-03-04",
+      "country": "Iran",
+      "org": "Iranian Navy",
+      "force": "IRIS Dena crew",
+      "scope": "Sinking of IRIS Dena",
+      "killed": 87,
+      "wounded": 32,
+      "missing": 0,
+      "estimatedKilled": 104,
+      "estimatedWounded": null,
+      "evidence": "Confirmed sinking; casualty total disputed",
+      "aggregation": "Additive event; use 87 confirmed / 104 claimed ceiling",
+      "notes": "87 bodies physically recovered; Iran claimed 104 killed and 32 wounded.",
+      "src": [
+        [
+          "S004 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/sri-lanka-rescues-30-people-board-distressed-iranian-ship-foreign-minister-says-2026-03-04/"
+        ],
+        [
+          "S005 — Associated Press",
+          "https://apnews.com/article/69191dde43154c5176a8aeacc9128748"
+        ],
+        [
+          "S006 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/iranian-army-says-least-104-killed-us-attack-iranian-warship-last-week-2026-03-08/"
+        ]
+      ]
+    },
+    {
+      "id": "C009",
+      "date": "2026-04-10",
+      "country": "Lebanon",
+      "org": "National aggregate",
+      "force": "Civilian/military mixed",
+      "scope": "Deaths from Israeli strikes since March 2, snapshot April 10",
+      "killed": null,
+      "wounded": null,
+      "missing": null,
+      "estimatedKilled": 1830,
+      "estimatedWounded": null,
+      "evidence": "Likely; authority-reported aggregate",
+      "aggregation": "Cumulative snapshot — not additive",
+      "notes": "Lebanese authority total; potential overlap with Hezbollah deaths unresolved.",
+      "src": [
+        [
+          "S008 — Reuters",
+          "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/"
+        ]
+      ]
+    },
+    {
+      "id": "C010",
+      "date": "2026-04-10",
+      "country": "Lebanon",
+      "org": "Hezbollah",
+      "force": "Armed wing",
+      "scope": "Hezbollah fighter losses, snapshot April 10",
+      "killed": null,
+      "wounded": null,
+      "missing": null,
+      "estimatedKilled": 400,
+      "estimatedWounded": null,
+      "evidence": "Likely; two-source estimate",
+      "aggregation": "Cumulative snapshot — possible overlap",
+      "notes": "Reuters sources familiar with Hezbollah's count; unclear whether included in national total.",
+      "src": [
+        [
+          "S008 — Reuters",
+          "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/"
+        ]
+      ]
+    },
+    {
+      "id": "C011",
+      "date": "2026-04-10",
+      "country": "Iraq",
+      "org": "National aggregate",
+      "force": "Security/civilian/proxy mixed",
+      "scope": "Conflict deaths snapshot April 10",
+      "killed": null,
+      "wounded": null,
+      "missing": null,
+      "estimatedKilled": 117,
+      "estimatedWounded": null,
+      "evidence": "Likely; Iraqi authorities",
+      "aggregation": "Cumulative snapshot — not additive",
+      "notes": "Includes civilians, PMF, Peshmerga, police and army.",
+      "src": [
+        [
+          "S008 — Reuters",
+          "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/"
+        ]
+      ]
+    },
+    {
+      "id": "C012",
+      "date": "2026-04-10",
+      "country": "Israel",
+      "org": "National aggregate",
+      "force": "Civilian and IDF",
+      "scope": "Iran/Lebanon front snapshot April 10",
+      "killed": 35,
+      "wounded": null,
+      "missing": null,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Likely / official and emergency-service figures",
+      "aggregation": "Cumulative snapshot — not additive",
+      "notes": "23 killed by missiles in Israel plus 12 Israeli soldiers killed in southern Lebanon.",
+      "src": [
+        [
+          "S008 — Reuters",
+          "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/"
+        ]
+      ]
+    },
+    {
+      "id": "C013",
+      "date": "2026-03-28",
+      "country": "Gulf states",
+      "org": "Regional aggregate",
+      "force": "Civilian/military mixed",
+      "scope": "Regional deaths snapshot March 28",
+      "killed": null,
+      "wounded": null,
+      "missing": null,
+      "estimatedKilled": 20,
+      "estimatedWounded": null,
+      "evidence": "Probable aggregate",
+      "aggregation": "Cumulative snapshot — not additive",
+      "notes": "AP regional snapshot; country-level reconciliation outstanding.",
+      "src": [
+        [
+          "S009 — Associated Press",
+          "https://apnews.com/article/iran-us-israel-trump-lebanon-march-28-2026-0f919596403d2f851196451f4532717e"
+        ]
+      ]
+    },
+    {
+      "id": "C014",
+      "date": "2026-07-08",
+      "country": "Iran",
+      "org": "National aggregate",
+      "force": "Civilian/military mixed",
+      "scope": "Deaths since renewed hostilities, Iranian statement July 18",
+      "killed": null,
+      "wounded": null,
+      "missing": null,
+      "estimatedKilled": 50,
+      "estimatedWounded": 500,
+      "evidence": "Claimed; not independently verified",
+      "aggregation": "Cumulative snapshot — not additive",
+      "notes": "Iran said at least 50 killed and more than 500 wounded since hostilities resumed.",
+      "src": [
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ]
+      ]
+    },
+    {
+      "id": "C015",
+      "date": "2026-07-18",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "Joint force",
+      "scope": "Cumulative wounded lower-bound snapshot through July 18",
+      "killed": null,
+      "wounded": 420,
+      "missing": null,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed lower bound; Reuters reports more than 420",
+      "aggregation": "Cumulative snapshot — supersedes C006; not additive",
+      "notes": null,
+      "src": [
+        [
+          "S029 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/"
+        ]
+      ]
+    },
+    {
+      "id": "C016",
+      "date": "2026-07-20",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "Joint force",
+      "scope": "Cumulative conflict snapshot through July 20",
+      "killed": 17,
+      "wounded": 430,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed lower-bound snapshot",
+      "aggregation": "Cumulative snapshot — superseded by C017; not additive",
+      "notes": "Reuters reported 17 U.S. service members killed and more than 430 wounded; value 430 stored as lower bound.",
+      "src": [
+        [
+          "S039 — Reuters",
+          "https://www.reuters.com/world/middle-east/us-launches-iran-strikes-ninth-day-another-american-confirmed-killed-2026-07-20/"
+        ]
+      ]
+    },
+    {
+      "id": "C017",
+      "date": "2026-07-22",
+      "country": "United States",
+      "org": "Department of Defense",
+      "force": "Joint force",
+      "scope": "Cumulative conflict snapshot through July 22",
+      "killed": 18,
+      "wounded": 430,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Confirmed cumulative snapshot",
+      "aggregation": "Cumulative snapshot — supersedes C016 and C015; not additive",
+      "notes": "Reuters reported 18 U.S. service members killed and roughly/more than 430 wounded. No current MIA was reported in the later casualty snapshot.",
+      "src": [
+        [
+          "S041 — Reuters",
+          "https://www.reuters.com/world/middle-east/us-military-says-it-has-ended-its-latest-strikes-iran-2026-07-22/"
+        ],
+        [
+          "S042 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-war-drains-us-blood-treasure-2026-07-22/"
+        ]
+      ]
+    },
+    {
+      "id": "C018",
+      "date": "2026-08-06",
+      "country": "Saudi Arabia",
+      "org": "Civilian population",
+      "force": "Civilian",
+      "scope": "Najran attacks / regional escalation",
+      "killed": 0,
+      "wounded": 11,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Reported by Saudi/Reuters",
+      "aggregation": "Additive event",
+      "notes": "Eleven civilians reported wounded in Houthi attacks in Najran; no deaths in this record.",
+      "src": [
+        [
+          "S062 — Reuters",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-expects-imminent-attacks-north-south-senior-official-says-2026-08-06/"
+        ]
+      ]
+    },
+    {
+      "id": "C019",
+      "date": "2026-08-06",
+      "country": "Yemen",
+      "org": "Government-aligned forces",
+      "force": "Military",
+      "scope": "Fighting associated with Houthi escalation",
+      "killed": 17,
+      "wounded": 0,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Reported by Yemeni/Saudi sources via Reuters",
+      "aggregation": "Additive event",
+      "notes": "Seventeen pro-government troops reported killed; theater-level attribution and exact engagements should be cross-checked if later revised.",
+      "src": [
+        [
+          "S062 — Reuters",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-expects-imminent-attacks-north-south-senior-official-says-2026-08-06/"
+        ]
+      ]
+    },
+    {
+      "id": "C020",
+      "date": "2026-08-09",
+      "country": "Yemen",
+      "org": "Government / civilian",
+      "force": "Military and civilian",
+      "scope": "Mocha port-city Houthi attack",
+      "killed": 7,
+      "wounded": 30,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "Reported by Yemeni military/government sources via Reuters",
+      "aggregation": "Additive event",
+      "notes": "Four armed-forces personnel and three civilians reported killed; 30 wounded.",
+      "src": [
+        [
+          "S066 — Reuters",
+          "https://www.reuters.com/world/middle-east/yemens-houthis-resume-attacks-mocha-port-city-yemeni-military-spokesperson-says-2026-08-09/"
+        ]
+      ]
+    },
+    {
+      "id": "C021",
+      "date": "2026-08-11",
+      "country": "Pakistan / Yemen / Indonesia",
+      "org": "Merchant crew and National Resistance Forces",
+      "force": "Civilian crew / rescuers",
+      "scope": "Tihamah attack in Bab el-Mandeb",
+      "killed": 6,
+      "wounded": 10,
+      "missing": 0,
+      "estimatedKilled": null,
+      "estimatedWounded": null,
+      "evidence": "High; vessel visually corroborated, casualty reports from authorities",
+      "aggregation": "Additive event",
+      "notes": "Four crew killed (three Pakistani, one Indonesian) plus two Yemeni rescuers; 10 injured reported.",
+      "src": [
+        [
+          "S069 — Reuters",
+          "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/"
+        ]
+      ]
+    }
+  ]
+}

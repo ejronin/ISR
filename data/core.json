@@ -1,0 +1,399 @@
+{
+  "publicMeta": {
+    "version": "2.6",
+    "cutoff": "2026-08-19 21:55 ET",
+    "timeline_start": "2026-02-28",
+    "method": "Physical damage, operational effect, actor claim and analytic significance are separate fields. Unverified claims remain unverified. Assessment labels describe functional consequence, not moral or political judgment. Routes marked schematic represent published corridors, not live AIS tracks or tactical movement.",
+    "claim_check_count": 12,
+    "supplemental_osint_through": "2026-08-19 21:55 ET",
+    "ui_version": "2.9",
+    "engineering_migration": "2026-08-20"
+  },
+  "balance": {
+    "date": "2026-08-16 project assessment",
+    "coalitionComposite": 3.0,
+    "iranComposite": -1.25,
+    "note": "Project analytic model, not an objective war score. Current ledger: U.S./aligned coalition 3.0 composite; Iran/aligned state forces -1.25. Coalition advantage is strongest in air/long-range strike and C2ISR; Iran's strongest leverage remains maritime disruption/sea denial.",
+    "domains": [
+      [
+        "Air / long-range strike",
+        5,
+        -4
+      ],
+      [
+        "C2ISR / targeting",
+        5,
+        -2
+      ],
+      [
+        "Air / missile defense",
+        3,
+        -3
+      ],
+      [
+        "Maritime control / sea denial",
+        2,
+        2
+      ],
+      [
+        "Missile / drone capability",
+        1,
+        1
+      ],
+      [
+        "Alliance / diplomatic position",
+        4,
+        -2
+      ]
+    ]
+  },
+  "coalition14": [
+    {
+      "id": "MMDA-KSA",
+      "name": "Saudi Arabia",
+      "city": "Riyadh",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "actor": "KSA",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Absolute monarchy; GCC; major U.S. security partner.",
+      "religious_context": "Sunni-majority; Islam is central to state identity.",
+      "role": "Founding and leading state; hosts coalition command/HQ; Saudi rear admiral appointed commander.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-KWT",
+      "name": "Kuwait",
+      "city": "Kuwait City",
+      "lat": 29.3759,
+      "lon": 47.9774,
+      "actor": "KWT",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Constitutional hereditary emirate; GCC; U.S. security partner.",
+      "religious_context": "Muslim-majority; Sunni majority with a substantial Shia minority.",
+      "role": "Founding signatory/member; maritime-security contributor.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-BHR",
+      "name": "Bahrain",
+      "city": "Manama",
+      "lat": 26.2235,
+      "lon": 50.5876,
+      "actor": "BHR",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Hereditary constitutional monarchy; GCC; close U.S. security partner.",
+      "religious_context": "Muslim-majority; Shia-majority citizen population under a Sunni ruling family.",
+      "role": "Founding signatory/member; Gulf maritime-security participant.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-QAT",
+      "name": "Qatar",
+      "city": "Doha",
+      "lat": 25.2854,
+      "lon": 51.531,
+      "actor": "QAT",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Hereditary emirate; GCC; major U.S. security partner and mediator.",
+      "religious_context": "Sunni Muslim-majority.",
+      "role": "Founding signatory/member; diplomatic and maritime-security role.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-PAK",
+      "name": "Pakistan",
+      "city": "Islamabad",
+      "lat": 33.6844,
+      "lon": 73.0479,
+      "actor": "PAK",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Federal parliamentary Islamic republic; defense partner of Saudi Arabia and Türkiye.",
+      "religious_context": "Sunni Muslim-majority with a significant Shia minority.",
+      "role": "Founding signatory/member; slated to provide the coalition first deputy commander.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-TUR",
+      "name": "Türkiye",
+      "city": "Ankara",
+      "lat": 39.9334,
+      "lon": 32.8597,
+      "actor": "TUR",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Presidential republic; NATO member; regional defense-industrial power.",
+      "religious_context": "Constitutionally secular; population overwhelmingly Muslim, mostly Sunni.",
+      "role": "Founding signatory/member; naval, defense-industrial and planning contributor.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-EGY",
+      "name": "Egypt",
+      "city": "Cairo",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "actor": "EGY",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Presidential republic; major Arab state; U.S. security partner.",
+      "religious_context": "Sunni Muslim-majority with a large Coptic Christian minority.",
+      "role": "Founding signatory/member; Red Sea/Suez strategic stakeholder.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-JOR",
+      "name": "Jordan",
+      "city": "Amman",
+      "lat": 31.9539,
+      "lon": 35.9106,
+      "actor": "JOR",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Constitutional monarchy; close U.S. security partner.",
+      "religious_context": "Sunni Muslim-majority with Christian minorities.",
+      "role": "Founding signatory/member; regional security and air-defense stakeholder.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-YEM",
+      "name": "Yemen (PLC)",
+      "city": "Aden",
+      "lat": 12.7855,
+      "lon": 45.0187,
+      "actor": "YEM",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Internationally recognized Presidential Leadership Council; opposed to Houthi control of Sanaa.",
+      "religious_context": "Substantial Shafi’i Sunni and Zaidi Shia communities.",
+      "role": "Founding signatory/member; Arabian-side Bab el-Mandeb stakeholder and anti-Houthi government actor.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-BGD",
+      "name": "Bangladesh",
+      "city": "Dhaka",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "actor": "BGD",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Parliamentary republic; OIC member.",
+      "religious_context": "Sunni Muslim-majority with Hindu and other minorities.",
+      "role": "Founding signatory/member; supporting maritime-security coalition.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-NGA",
+      "name": "Nigeria",
+      "city": "Abuja",
+      "lat": 9.0765,
+      "lon": 7.3986,
+      "actor": "NGA",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Federal presidential republic; major African state.",
+      "religious_context": "Religiously mixed, with large Muslim and Christian populations.",
+      "role": "Listed by Saudi Press Agency among the July 30 founding signatories; current accession roster requires reconciliation with later reporting.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-SDN",
+      "name": "Sudan",
+      "city": "Port Sudan",
+      "lat": 19.6158,
+      "lon": 37.2164,
+      "actor": "SDN",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Wartime state; SAF-aligned authorities operate from Port Sudan while civil war continues.",
+      "religious_context": "Predominantly Sunni Muslim.",
+      "role": "Founding signatory/member; Red Sea littoral state.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-DJI",
+      "name": "Djibouti",
+      "city": "Djibouti City",
+      "lat": 11.5721,
+      "lon": 43.1456,
+      "actor": "DJI",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Presidential republic; hosts multiple foreign military presences.",
+      "religious_context": "Sunni Muslim-majority.",
+      "role": "Founding signatory/member; immediate Bab el-Mandeb/Horn maritime stakeholder.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    },
+    {
+      "id": "MMDA-SOM",
+      "name": "Somalia",
+      "city": "Mogadishu",
+      "lat": 2.0469,
+      "lon": 45.3182,
+      "actor": "SOM",
+      "type": "ghost_member",
+      "confidence": "CONFIRMED_FOUNDING_SIGNATORY",
+      "ghost": true,
+      "political_context": "Federal republic; internationally recognized federal government.",
+      "religious_context": "Sunni Muslim-majority.",
+      "role": "Founding signatory/member; Gulf of Aden/Horn maritime stakeholder.",
+      "source_urls": [
+        "https://www.spa.gov.sa/en/w2644909",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+      ]
+    }
+  ],
+  "mecca": [
+    {
+      "name": "Saudi Arabia — Mecca pact",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "actor": "KSA"
+    },
+    {
+      "name": "Türkiye — Mecca pact",
+      "lat": 39.9334,
+      "lon": 32.8597,
+      "actor": "TUR"
+    },
+    {
+      "name": "Pakistan — Mecca pact",
+      "lat": 33.6844,
+      "lon": 73.0479,
+      "actor": "PAK"
+    }
+  ],
+  "verifiers": [
+    {
+      "id": "LBN-VERIFY-GBR",
+      "name": "United Kingdom",
+      "city": "London",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "actor": "GBR",
+      "type": "ghost_verifier",
+      "confidence": "PROPOSED_UNCONFIRMED",
+      "ghost": true,
+      "political_context": "Constitutional monarchy; NATO member; UN Security Council permanent member.",
+      "religious_context": "Religiously plural and highly secular; Christian historical heritage.",
+      "role": "Proposed contributor to a third-party Hezbollah-disarmament verification mechanism.",
+      "source_urls": [
+        "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/",
+        "https://www.reuters.com/world/asia-pacific/lebanon-has-not-agreed-shortlist-countries-that-could-verify-hezbollahs-disarmament-official-says-2026-08-13/"
+      ]
+    },
+    {
+      "id": "LBN-VERIFY-ITA",
+      "name": "Italy",
+      "city": "Rome",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "actor": "ITA",
+      "type": "ghost_verifier",
+      "confidence": "PROPOSED_UNCONFIRMED",
+      "ghost": true,
+      "political_context": "Parliamentary republic; NATO and EU member.",
+      "religious_context": "Religiously plural/secular; historically Catholic-majority.",
+      "role": "Proposed contributor to a third-party Hezbollah-disarmament verification mechanism.",
+      "source_urls": [
+        "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/",
+        "https://www.reuters.com/world/asia-pacific/lebanon-has-not-agreed-shortlist-countries-that-could-verify-hezbollahs-disarmament-official-says-2026-08-13/"
+      ]
+    },
+    {
+      "id": "LBN-VERIFY-CHE",
+      "name": "Switzerland",
+      "city": "Bern",
+      "lat": 46.948,
+      "lon": 7.4474,
+      "actor": "CHE",
+      "type": "ghost_verifier",
+      "confidence": "PROPOSED_UNCONFIRMED",
+      "ghost": true,
+      "political_context": "Federal republic; militarily neutral/non-NATO.",
+      "religious_context": "Religiously mixed and increasingly secular; major Catholic and Protestant communities.",
+      "role": "Proposed contributor to a third-party Hezbollah-disarmament verification mechanism.",
+      "source_urls": [
+        "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/",
+        "https://www.reuters.com/world/asia-pacific/lebanon-has-not-agreed-shortlist-countries-that-could-verify-hezbollahs-disarmament-official-says-2026-08-13/"
+      ]
+    },
+    {
+      "id": "LBN-VERIFY-IDN",
+      "name": "Indonesia",
+      "city": "Jakarta",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "actor": "IDN",
+      "type": "ghost_verifier",
+      "confidence": "PROPOSED_UNCONFIRMED",
+      "ghost": true,
+      "political_context": "Presidential republic; ASEAN and OIC member.",
+      "religious_context": "Muslim-majority, predominantly Sunni; constitution recognizes multiple religions.",
+      "role": "Proposed contributor to a third-party Hezbollah-disarmament verification mechanism.",
+      "source_urls": [
+        "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/",
+        "https://www.reuters.com/world/asia-pacific/lebanon-has-not-agreed-shortlist-countries-that-could-verify-hezbollahs-disarmament-official-says-2026-08-13/"
+      ]
+    }
+  ],
+  "fullLedgerCount": 63
+}
