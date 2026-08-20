@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-20T15:59:00-04:00",
+  "rules": [
+    "Military material loss/damage cost, munitions expenditure, repair/reconstitution, and wider economic effects are separate.",
+    "Do not sum overlapping aggregate and item-level estimates.",
+    "UNPRICED means the evidence set lacks a defensible price basis; it does not mean zero."
+  ],
+  "us_coalition": {
+    "current_total_status": "NO_DEFENSIBLE_COMPLETE_AUG20_TOTAL",
+    "estimates": [
+      {
+        "cost_id": "COST-USA-CSIS-20260623",
+        "as_of": "2026-06-23",
+        "scope": "Incremental U.S. Department of Defense cost attributable to war, through the earlier campaign/ceasefire period",
+        "low": 34000000000,
+        "high": 42000000000,
+        "currency": "USD",
+        "price_year": 2026,
+        "confidence": "MODERATE",
+        "source_id": "SRC-C4FF4F823E1F",
+        "price_basis": "CSIS analytical estimate using incremental budget-cost methodology",
+        "warning": "Predates renewed July fighting; do not present as Aug. 20 cumulative cost."
+      },
+      {
+        "cost_id": "COST-USA-PENTAGON-20260721",
+        "as_of": "2026-07-21",
+        "scope": "Pentagon war-cost figure reported by Reuters",
+        "low": 37500000000,
+        "high": 37500000000,
+        "currency": "USD",
+        "price_year": 2026,
+        "confidence": "HIGH_FOR_OFFICIAL_FIGURE_LOW_FOR_ACTUAL_TO_DATE_INTERPRETATION",
+        "source_id": "SRC-20978ADE1FA1",
+        "price_basis": "Pentagon estimate reported by Reuters",
+        "warning": "Reuters reported that the figure included current and projected costs through Sept. 30. Do not label it clean actual-to-date spending."
+      }
+    ],
+    "category_breakout_from_csis_20260623": [
+      {
+        "category": "MUNITIONS_MATERIAL_EXPENDED",
+        "low": 26100000000,
+        "high": 26100000000,
+        "currency": "USD",
+        "source_id": "SRC-C4FF4F823E1F",
+        "notes": "Largest component; replacement-cost methodology for expended munitions."
+      },
+      {
+        "category": "DURABLE_EQUIPMENT_LOST_OR_DAMAGED",
+        "low": 1800000000,
+        "high": 3500000000,
+        "currency": "USD",
+        "source_id": "SRC-C4FF4F823E1F",
+        "notes": "Mixed lost/damaged equipment. Source does not let this integration cleanly split permanent loss vs repair."
+      },
+      {
+        "category": "BASE_FIXED_INFRASTRUCTURE_DAMAGE",
+        "low": 4000000000,
+        "high": 9400000000,
+        "currency": "USD",
+        "source_id": "SRC-C4FF4F823E1F",
+        "notes": "Aggregate base/fixed-infrastructure damage estimate; item-level repair/reconstitution not separately priced."
+      },
+      {
+        "category": "DEPLOYMENT_REDEPLOYMENT_INCREMENTAL",
+        "low": 170000000,
+        "high": 170000000,
+        "currency": "USD",
+        "source_id": "SRC-C4FF4F823E1F"
+      },
+      {
+        "category": "HIGHER_OPERATIONAL_TEMPO_INCREMENTAL",
+        "low": 750000000,
+        "high": 750000000,
+        "currency": "USD",
+        "source_id": "SRC-C4FF4F823E1F"
+      },
+      {
+        "category": "OTHER_DOD_INCREMENTAL_FUEL_SECURITY",
+        "low": 1500000000,
+        "high": 1500000000,
+        "currency": "USD",
+        "source_id": "SRC-C4FF4F823E1F"
+      }
+    ],
+    "ui_fields": {
+      "material_loss_damage_cost": {
+        "low": 5800000000,
+        "high": 12900000000,
+        "currency": "USD",
+        "derived_from": [
+          "DURABLE_EQUIPMENT_LOST_OR_DAMAGED",
+          "BASE_FIXED_INFRASTRUCTURE_DAMAGE"
+        ],
+        "label": "U.S. material loss/damage cost (earlier CSIS estimate)"
+      },
+      "munitions_expended_cost": {
+        "low": 26100000000,
+        "high": 26100000000,
+        "currency": "USD",
+        "label": "U.S. munitions/material expended cost (earlier CSIS estimate)"
+      },
+      "repair_reconstitution_cost": {
+        "status": "NOT_SEPARATELY_SUPPORTED",
+        "display": "UNPRICED / embedded in aggregate damage estimates"
+      },
+      "current_aug20_total": {
+        "status": "UNRESOLVED",
+        "display": "No defensible complete Aug. 20 total in reviewed evidence"
+      }
+    }
+  },
+  "iran_aligned": {
+    "current_total_status": "UNPRICED",
+    "ui_fields": {
+      "material_loss_cost": {
+        "status": "UNPRICED",
+        "reason": "No defensible procurement/replacement/repair price basis was supplied for the verified Iranian material losses in this package."
+      },
+      "material_damage_cost": {
+        "status": "UNPRICED"
+      },
+      "inventory_destroyed_before_use_cost": {
+        "status": "UNPRICED_AND_QUANTITY_UNVERIFIED"
+      },
+      "munitions_expended_cost": {
+        "status": "UNPRICED",
+        "reason": "Launch volumes are supportable in some periods; unit-price bases are not."
+      },
+      "repair_reconstitution_cost": {
+        "status": "UNPRICED"
+      }
+    }
+  },
+  "wider_economic_effect_pointer": "economics.json"
+}

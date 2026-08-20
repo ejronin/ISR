@@ -1,0 +1,164 @@
+{
+  "package_name": "ISR-Atlas-Integration-20260820-1701-v1.2",
+  "schema_version": "1.2",
+  "created_at": "2026-08-20T17:01:00-04:00",
+  "collection_cutoff": "2026-08-20T15:59:00-04:00",
+  "input_revision": {
+    "filename": "ISR-Atlas-Integration-20260820-1641(2).zip",
+    "role": "AUTHORITATIVE_REVISION_1_1_BASELINE",
+    "full_osint_recollection": "NOT_PERFORMED"
+  },
+  "repository_reconciled": {
+    "repository": "ejronin/ISR",
+    "branch": "main",
+    "commit_sha": "8cd97cf409b56060a1806ccf52fe9850e883df79",
+    "write_actions": "NONE"
+  },
+  "integration_scope": "Revision 1.2 consistency repair. Preserves revision-1.1 drawdown/agreement/alignment evidence, normalizes force-posture metadata, regenerates prose from final JSON, and adds automated count/ID-inventory validation.",
+  "source_identity_rule": "Canonical SRC-* IDs remain authoritative; legacy S### namespaces are aliases only. Source lineage and source-role assignments are preserved.",
+  "force_posture_rule": "Pre-war governing decisions/agreements/schedules/plans are classified by documented force-posture type and are not labeled retreat. Later wartime changes are recorded separately.",
+  "counts": {
+    "events": 83,
+    "prewar_events": 15,
+    "wartime_events": 68,
+    "timeline_records": 83,
+    "daily_coverage_days": 174,
+    "facilities_integrated": 5,
+    "repo_facilities_to_preserve": 18,
+    "claims": 6,
+    "movements": 10,
+    "agreements": 8,
+    "casualty_records": 23,
+    "material_loss_records": 12,
+    "munition_expenditure_records": 9,
+    "shipping_records": 11,
+    "economic_backfill_records": 6,
+    "diplomacy_records": 19,
+    "sources": 135,
+    "unresolved_items": 19,
+    "collection_requests": 19,
+    "bda_overlay_candidates": 13,
+    "revision_records": 23
+  },
+  "validation": {
+    "json_parse_errors": [],
+    "cross_file_validator": "validate-package.py",
+    "expected_status": "PASS",
+    "status": "PASS",
+    "validated_at": "2026-08-20T17:01:00-04:00",
+    "checks": [
+      "JSON record counts equal manifest counts",
+      "integration-summary AUTO_COUNTS equals JSON counts",
+      "CODEX AUTO_COUNTS equals JSON counts",
+      "CODEX AUTO-ID-INVENTORY blocks exactly equal final JSON IDs",
+      "duplicate IDs rejected",
+      "canonical source/agreement references checked"
+    ]
+  },
+  "files": {
+    "CODEX-INSTRUCTIONS.md": {
+      "bytes": 34474,
+      "sha256": "79cc509e0fc1b76f286399c4b615dda5d2994e75e40ea5780338b3fa8024fc6f"
+    },
+    "agreements.json": {
+      "bytes": 26960,
+      "sha256": "3a700e876cdf1eb89b0b770b2ba99d1329280940e40ab40a2950e5e2969ebeda"
+    },
+    "attrition-series.json": {
+      "bytes": 3819,
+      "sha256": "36c1ef9ea26dd00c146a22ae3790ae21fdf9fd8281a7cb4c077a49609dba5b9c"
+    },
+    "bda-overlays.json": {
+      "bytes": 8763,
+      "sha256": "4ee80eb1a5884c62fd2548b1d3827f6cb0d9e366e05b39b67544899de5a8e3ce"
+    },
+    "casualties.json": {
+      "bytes": 20820,
+      "sha256": "30353eaeadd22e542148b893ee3e85c8394a1e249f4977c9f25a0f8ddb3d67ef"
+    },
+    "claims.json": {
+      "bytes": 20646,
+      "sha256": "117a3aaaa5a757e2874b5b8c1134924661c94d0467578740429c6dcf2899c254"
+    },
+    "collection-requests.json": {
+      "bytes": 13799,
+      "sha256": "ee3572231a19a13f622fe84acfd9e82cd6b691f48fd86c1f38c10f06e9c27d7e"
+    },
+    "cost-model.json": {
+      "bytes": 4951,
+      "sha256": "365572c51eb1fcd0b4f17303d40616da359ecd0628573a16567aaf859ba3d695"
+    },
+    "daily-coverage.json": {
+      "bytes": 61155,
+      "sha256": "02aa5eca231bda966b2790397b29e1dffb162a645e0b62a6b71c3e7b420f62c0"
+    },
+    "diplomacy.json": {
+      "bytes": 9236,
+      "sha256": "5835db3d3d7ef15a1f785ef6eb74b8c24325528d300010c3898d2226a6bb5fba"
+    },
+    "domain-assessments.json": {
+      "bytes": 5021,
+      "sha256": "f72b8cfa18af423abf01b3779750a17c58da1ec5405ec1e3945b9af8d39295fc"
+    },
+    "economics.json": {
+      "bytes": 4775,
+      "sha256": "ab1080b3d34e4961419efe8382dc775b53f45faf9e6bff2879e6b4663521af5b"
+    },
+    "events.json": {
+      "bytes": 189085,
+      "sha256": "b08ba2d91a20c8ec073cbafce354762643184617179619d776592f2c43cf2af9"
+    },
+    "facilities.json": {
+      "bytes": 11912,
+      "sha256": "818f47c13f0f26e37b395fc07f670ef78847c7c9d968752014f6239380c88f40"
+    },
+    "integration-summary.md": {
+      "bytes": 11777,
+      "sha256": "23de3084ecfc5e6fb9c2f247d8738449bb7722c27791720780beb4250f8c685f"
+    },
+    "map-links.json": {
+      "bytes": 5980,
+      "sha256": "aa52960252ea0c91cfc419c38a12fdbd0c21c37b03bbade15de8c54603dda1b9"
+    },
+    "material-losses.json": {
+      "bytes": 9348,
+      "sha256": "a4bb6164817b1759d2f5c84b391d83cb256adb2e83edd394e0f8cbf1f0a42f70"
+    },
+    "movements.json": {
+      "bytes": 31044,
+      "sha256": "9f07b6f35e19df110f019eee5e27c684be29807902f0128dedacf11d2be10356"
+    },
+    "munitions-expenditure.json": {
+      "bytes": 5968,
+      "sha256": "2cb94fcea9a701c62f7a18882827db2c93211dfc43323dea7bdd2d1f7e9775bc"
+    },
+    "revision-history.json": {
+      "bytes": 9035,
+      "sha256": "ae14c13430b90c7fe5639120ec9803db339f6a2bf878df6c05ed879ab194b0b7"
+    },
+    "shipping.json": {
+      "bytes": 5815,
+      "sha256": "28c4dd37a5c356c9b0e7681a78b90403e76b00fd3e9307ed08843c9376eb6d3c"
+    },
+    "source-role-map.json": {
+      "bytes": 11935,
+      "sha256": "63f4f7828a027557d23efa2b67bf243d5917ec37738f99e46694d905307ced54"
+    },
+    "sources.json": {
+      "bytes": 125929,
+      "sha256": "b46bf418f60ac90c7a7b0076d95b43acf83f8bca377bd83f85e71ccdd4fc7010"
+    },
+    "timeline.json": {
+      "bytes": 61161,
+      "sha256": "a14f7f0c9b9cfea488dbf9bcf1ce4d5dc3507b78054468d46e377373073ea173"
+    },
+    "unresolved.json": {
+      "bytes": 12620,
+      "sha256": "ca103ebd1ef5a2a51d0095c04755b5706a0e404959859f65a8e61c612663d244"
+    },
+    "validate-package.py": {
+      "bytes": 5477,
+      "sha256": "aac774bf27d9cfa47e8210a17ee0752ff3f9f024600f91cd28f342b7af6ae804"
+    }
+  }
+}

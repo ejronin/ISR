@@ -1,0 +1,2069 @@
+{
+  "schema_version": "1.0",
+  "design_note": "Timeline supports full-war/month/week/day/hour filtering. hour_bucket remains null unless a source supports an hour. Do not fabricate hour values.",
+  "records": [
+    {
+      "event_id": "PRE-20201118-001",
+      "date": "2020-11-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2020,
+      "month": "2020-11",
+      "iso_week": "2020-W47",
+      "day": "2020-11-18",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "C2_RESILIENCE",
+      "summary": "USAFCENT publicly demonstrated distributed CAOC operations years before the 2026 war.",
+      "map_refs": [
+        "MAP-US-ALUDEID"
+      ],
+      "facility_refs": [
+        "US-ALUDEID"
+      ],
+      "claim_refs": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026"
+      ],
+      "first_reported": "2020-11-18",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-704574F8CB02",
+        "SRC-D129A9FA0378"
+      ]
+    },
+    {
+      "event_id": "PRE-20230808-IRQ-001",
+      "date": "2023-08-08",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2023,
+      "month": "2023-08",
+      "iso_week": "2023-W32",
+      "day": "2023-08-08",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "SECURITY_TRANSITION_PLANNING",
+      "summary": "U.S. and Iraq jointly commit to a Higher Military Commission to determine how the coalition mission will evolve.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2023-08-08",
+      "first_verified": "2023-08-08",
+      "source_ids": [
+        "SRC-6B8C48817118"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20240125-IRQ-001",
+      "date": "2024-01-25",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2024,
+      "month": "2024-01",
+      "iso_week": "2024-W04",
+      "day": "2024-01-25",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "SECURITY_TRANSITION_PLANNING",
+      "summary": "The U.S.-Iraq Higher Military Commission begins its working process.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2024-01-25",
+      "first_verified": "2024-01-25",
+      "source_ids": [
+        "SRC-209378A46AAC",
+        "SRC-E6B1159781EB"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20240927-IRQ-001",
+      "date": "2024-09-27",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2024,
+      "month": "2024-09",
+      "iso_week": "2024-W39",
+      "day": "2024-09-27",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "BILATERAL_TRANSITION_AGREEMENT",
+      "summary": "Washington and Baghdad formally announce the two-phase transition timeline for the coalition military mission.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2024-09-27",
+      "first_verified": "2024-09-27",
+      "source_ids": [
+        "SRC-005D46FC622B",
+        "SRC-CEBE7CCFF600"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20251118-SAU-001",
+      "date": "2025-11-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2025,
+      "month": "2025-11",
+      "iso_week": "2025-W47",
+      "day": "2025-11-18",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "BILATERAL_DEFENSE_AGREEMENT",
+      "summary": "United States and Saudi Arabia sign the Strategic Defense Agreement before the Iran war.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2025-11-18",
+      "first_verified": "2025-11-18",
+      "source_ids": [
+        "SRC-569EA3D29954"
+      ],
+      "agreement_refs": [
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025"
+      ]
+    },
+    {
+      "event_id": "PRE-20260113-001",
+      "date": "2026-01-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-01",
+      "iso_week": "2026-W03",
+      "day": "2026-01-13",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "AIR_DEFENSE_C2",
+      "summary": "A multinational Middle East air-defense coordination cell opened inside Al Udeid’s CAOC before the war.",
+      "map_refs": [
+        "MAP-US-ALUDEID"
+      ],
+      "facility_refs": [
+        "US-ALUDEID"
+      ],
+      "claim_refs": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026"
+      ],
+      "first_reported": "2026-01-13",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-4818F69C326D"
+      ]
+    },
+    {
+      "event_id": "PRE-20260114-001",
+      "date": "2026-01-14",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-01",
+      "iso_week": "2026-W03",
+      "day": "2026-01-14",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "FORCE_PROTECTION",
+      "summary": "Some personnel were advised to leave Al Udeid amid escalating tensions before the war.",
+      "map_refs": [
+        "MAP-US-ALUDEID"
+      ],
+      "facility_refs": [
+        "US-ALUDEID"
+      ],
+      "claim_refs": [],
+      "first_reported": "2026-01-14",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-0561D46C2441"
+      ]
+    },
+    {
+      "event_id": "PRE-20260117-IRQ-001",
+      "date": "2026-01-17",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-01",
+      "iso_week": "2026-W03",
+      "day": "2026-01-17",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "BASE_HANDOVER",
+      "summary": "Iraq assumes full control of Ain al-Asad after U.S. forces depart under the pre-war U.S.-Iraq transition.",
+      "map_refs": [
+        "MAP-US-AINASAD"
+      ],
+      "facility_refs": [
+        "US-AINASAD"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-01-17",
+      "first_verified": "2026-01-17",
+      "source_ids": [
+        "SRC-29FAB9A69690",
+        "SRC-005D46FC622B"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260207-001",
+      "date": "2026-02-07",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W06",
+      "day": "2026-02-07",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "FORCE_POSTURE",
+      "summary": "USS Abraham Lincoln was already in the Arabian Sea on a scheduled deployment three weeks before the war began.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "first_reported": "2026-02-07",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-E277CF2E03A3"
+      ]
+    },
+    {
+      "event_id": "PRE-20260212-SYR-001",
+      "date": "2026-02-12",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W07",
+      "day": "2026-02-12",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "BASE_HANDOVER",
+      "summary": "U.S. completes al-Tanf withdrawal and hands the base to Syrian government forces after U.S.-Syrian coordination.",
+      "map_refs": [
+        "MAP-US-TANF"
+      ],
+      "facility_refs": [
+        "US-TANF"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-02-12",
+      "first_verified": "2026-02-12",
+      "source_ids": [
+        "SRC-566F047CEA46"
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260215-SYR-001",
+      "date": "2026-02-15",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W07",
+      "day": "2026-02-15",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "BASE_HANDOVER",
+      "summary": "Syrian forces take control of Shaddadi after coordination with the United States.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-02-15",
+      "first_verified": "2026-02-15",
+      "source_ids": [
+        "SRC-3B7FE42A1FF2",
+        "SRC-566F047CEA46"
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260218-SYR-001",
+      "date": "2026-02-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W08",
+      "day": "2026-02-18",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "THEATER_DRAWDOWN_POLICY",
+      "summary": "A senior U.S. official publicly characterizes the Syria reduction as a deliberate and conditions-based transition.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-02-18",
+      "first_verified": "2026-02-18",
+      "source_ids": [
+        "SRC-64BB58499062"
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260223-SYR-001",
+      "date": "2026-02-23",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-23",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "BASE_DRAWDOWN",
+      "summary": "U.S. begins withdrawing from Qasrak, its main northeast Syria base, five days before the Iran war.",
+      "map_refs": [
+        "MAP-US-QASRAK"
+      ],
+      "facility_refs": [
+        "US-QASRAK"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-02-23",
+      "first_verified": "2026-02-23",
+      "source_ids": [
+        "SRC-8C302F9CD6F7",
+        "SRC-64BB58499062"
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "event_id": "PRE-20260226-001",
+      "date": "2026-02-26",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-26",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "DIPLOMACY",
+      "summary": "Pre-war nuclear talks ended with reported progress but no agreement.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-26",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-25DF3807300D"
+      ]
+    },
+    {
+      "event_id": "PRE-20260227-001",
+      "date": "2026-02-27",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-27",
+      "hour_bucket": null,
+      "record_class": "PRE-WAR CONTEXT",
+      "event_type": "INFORMATION_ENVIRONMENT",
+      "summary": "A public claim about an imminent Iranian long-range missile threat was reported as unsupported by U.S. intelligence.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-27",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-F820228892CB"
+      ]
+    },
+    {
+      "event_id": "EV-20260228-001",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MILITARY_OPERATION",
+      "summary": "The United States and Israel opened major strikes on Iran; Iran retaliated regionally.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-IRAN-FIRST-STRIKE-2026",
+        "CASE-EPIC-FURY-OBJECTIVES-2026"
+      ],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        "SRC-87167CE9136F",
+        "SRC-F0035CD212FD"
+      ]
+    },
+    {
+      "event_id": "EV-20260302-001",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "INTELLIGENCE_DISCLOSURE",
+      "summary": "Pentagon briefing reportedly said there was no intelligence Iran planned to attack U.S. forces first.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-IRAN-FIRST-STRIKE-2026"
+      ],
+      "first_reported": "2026-03-02",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-E79574E72235"
+      ]
+    },
+    {
+      "event_id": "EV-20260302-002",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MARITIME_DISRUPTION",
+      "summary": "Hormuz shipping and war-risk costs collapsed from normal conditions immediately after the opening attacks.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        "SRC-887221921E34"
+      ]
+    },
+    {
+      "event_id": "EV-20260310-001",
+      "date": "2026-03-10",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-10",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "Qatar sought to strengthen its U.S. security partnership after Iranian strikes.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-10",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-7160505543FE"
+      ]
+    },
+    {
+      "event_id": "EV-20260313-001",
+      "date": "2026-03-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-13",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MARITIME_DISRUPTION",
+      "summary": "Tracked Hormuz traffic had fallen by roughly 97% from pre-war levels.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-13",
+      "first_verified": "2026-03-13",
+      "source_ids": [
+        "SRC-F8F12DF86B47"
+      ]
+    },
+    {
+      "event_id": "EV-20260316-001",
+      "date": "2026-03-16",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-16",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "COALITION_POSTURE",
+      "summary": "Several U.S. allies declined or avoided committing warships to a Hormuz escort effort.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-16",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-13C29898FA62"
+      ]
+    },
+    {
+      "event_id": "EV-20260317-001",
+      "date": "2026-03-17",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-17",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "EXTERNAL_SUPPORT_CLAIM",
+      "summary": "A report alleged Russia was sharing satellite imagery and drone technology with Iran.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-17",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-61F0DD052207"
+      ]
+    },
+    {
+      "event_id": "EV-20260320-001",
+      "date": "2026-03-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "FORCE_POSTURE",
+      "summary": "The United States accelerated additional troop and amphibious reinforcement to the Middle East.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-20",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-777D501C321D"
+      ]
+    },
+    {
+      "event_id": "EV-20260320-002",
+      "date": "2026-03-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "ENERGY_INFRASTRUCTURE",
+      "summary": "Attacks expanded to major Iranian and Gulf energy infrastructure.",
+      "map_refs": [
+        "MAP-FAC-QAT-LNG-SYSTEM"
+      ],
+      "facility_refs": [
+        "FAC-QAT-LNG-SYSTEM"
+      ],
+      "claim_refs": [],
+      "first_reported": "2026-03-20",
+      "first_verified": "2026-03-20",
+      "source_ids": [
+        "SRC-4E85BD9B8182"
+      ]
+    },
+    {
+      "event_id": "EV-20260322-001",
+      "date": "2026-03-22",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-22",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "ESCALATION_THREAT",
+      "summary": "Washington threatened Iranian power plants; Iran threatened regional energy, IT and desalination targets in response.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-22",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-77D13A92FD64"
+      ]
+    },
+    {
+      "event_id": "EV-20260323-001",
+      "date": "2026-03-23",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W13",
+      "day": "2026-03-23",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MARITIME_THREAT",
+      "summary": "Iran threatened mine laying and a fuller Gulf closure if coastal sites were attacked.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-23",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-355C149D77E4"
+      ]
+    },
+    {
+      "event_id": "EV-20260324-001",
+      "date": "2026-03-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W13",
+      "day": "2026-03-24",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "Iran was reviewing a U.S. 15-point proposal as the oil disruption accumulated.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-24",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-0F0B6070FCF6"
+      ]
+    },
+    {
+      "event_id": "EV-20260326-001",
+      "date": "2026-03-26",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W13",
+      "day": "2026-03-26",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "The U.S. announced a temporary pause on attacks against Iranian energy plants while a ceasefire proposal was under review.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-26",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-28B0CE7F2B7E"
+      ]
+    },
+    {
+      "event_id": "EV-20260328-001",
+      "date": "2026-03-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W13",
+      "day": "2026-03-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "REGIONAL_EXPANSION",
+      "summary": "The Houthis entered the war while U.S. Marines arrived in the region.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-28",
+      "first_verified": "2026-03-28",
+      "source_ids": [
+        "SRC-90DA8D027955",
+        "SRC-F0CD832C6472"
+      ]
+    },
+    {
+      "event_id": "EV-20260328-002",
+      "date": "2026-03-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W13",
+      "day": "2026-03-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "FACILITY_DAMAGE",
+      "summary": "IAEA reporting said the Khondab heavy-water facility was severely damaged and no longer operational.",
+      "map_refs": [
+        "MAP-FAC-IRN-KHONDAB-HEAVY-WATER"
+      ],
+      "facility_refs": [
+        "FAC-IRN-KHONDAB-HEAVY-WATER"
+      ],
+      "claim_refs": [],
+      "first_reported": "2026-03-28",
+      "first_verified": "2026-03-28",
+      "source_ids": [
+        "SRC-90DA8D027955"
+      ]
+    },
+    {
+      "event_id": "EV-20260328-003",
+      "date": "2026-03-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W13",
+      "day": "2026-03-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "CAMPAIGN_ASSESSMENT",
+      "summary": "One-month reporting found several stated U.S. objectives remained unresolved and Iran retained strike capacity.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-28",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-4D79B1712E0D",
+        "SRC-A56F4E9B7A5C"
+      ]
+    },
+    {
+      "event_id": "EV-20260331-001",
+      "date": "2026-03-31",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W14",
+      "day": "2026-03-31",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "POLICY_REPORT",
+      "summary": "WSJ-reported U.S. deliberations suggested the war might end without first restoring Hormuz.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-31",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-0A8D55737F6E"
+      ]
+    },
+    {
+      "event_id": "EV-20260408-001",
+      "date": "2026-04-08",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W15",
+      "day": "2026-04-08",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "CEASEFIRE",
+      "summary": "Pakistan-mediated diplomacy produced a temporary two-week ceasefire.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-08",
+      "first_verified": "2026-04-08",
+      "source_ids": [
+        "SRC-56C86C6E1D78",
+        "SRC-EE4B64925CA5"
+      ]
+    },
+    {
+      "event_id": "EV-20260413-001",
+      "date": "2026-04-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W16",
+      "day": "2026-04-13",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "NAVAL_BLOCKADE",
+      "summary": "The United States began a blockade aimed at vessels entering or leaving Iranian ports after talks failed.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-13",
+      "first_verified": "2026-04-13",
+      "source_ids": [
+        "SRC-40708A58524D",
+        "SRC-84C62BAB5B65"
+      ]
+    },
+    {
+      "event_id": "EV-20260415-001",
+      "date": "2026-04-15",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W16",
+      "day": "2026-04-15",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "Parties disputed who had sought the ceasefire while discussing another negotiating round.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-15",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-543806914EAF"
+      ]
+    },
+    {
+      "event_id": "EV-20260420-001",
+      "date": "2026-04-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W17",
+      "day": "2026-04-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MARITIME_INTERDICTION",
+      "summary": "U.S. forces seized/boarded an Iranian cargo vessel during the ceasefire period.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-20",
+      "first_verified": "2026-04-20",
+      "source_ids": [
+        "SRC-F54E8612EADA"
+      ]
+    },
+    {
+      "event_id": "EV-20260423-001",
+      "date": "2026-04-23",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W17",
+      "day": "2026-04-23",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "VESSEL_SEIZURE",
+      "summary": "Iran seized two container ships after the earlier U.S. cargo seizure.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-23",
+      "first_verified": "2026-04-23",
+      "source_ids": [
+        "SRC-1FCEC1114E60"
+      ]
+    },
+    {
+      "event_id": "EV-20260429-001",
+      "date": "2026-04-29",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W18",
+      "day": "2026-04-29",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "CHINA_IRAN_TRADE",
+      "summary": "Chinese independent refiners continued buying Iranian crude despite the conflict and blockade lag.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-29",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-572AFBAA0B04"
+      ]
+    },
+    {
+      "event_id": "EV-20260430-001",
+      "date": "2026-04-30",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W18",
+      "day": "2026-04-30",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "ECONOMIC_CONTINUITY",
+      "summary": "Iran’s economy was under severe strain but had not immediately collapsed.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-30",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-234390A3E087"
+      ]
+    },
+    {
+      "event_id": "EV-20260430-002",
+      "date": "2026-04-30",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W18",
+      "day": "2026-04-30",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "COALITION_DIPLOMACY",
+      "summary": "Washington sought international help to reopen Hormuz while Iran warned against renewed attacks.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-30",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-DDB039D3C975"
+      ]
+    },
+    {
+      "event_id": "EV-20260504-001",
+      "date": "2026-05-04",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W19",
+      "day": "2026-05-04",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MARITIME_OPERATION",
+      "summary": "Project Freedom began/was emphasized, but commercial shipping remained largely at a standstill.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-04",
+      "first_verified": "2026-05-04",
+      "source_ids": [
+        "SRC-631C96DF41A7"
+      ]
+    },
+    {
+      "event_id": "EV-20260504-002",
+      "date": "2026-05-04",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W19",
+      "day": "2026-05-04",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "INFORMATION_ENVIRONMENT",
+      "summary": "Iranian media claimed a U.S. warship was hit by missiles and turned back.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-04",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-D1D26F5E9AA2"
+      ]
+    },
+    {
+      "event_id": "EV-20260505-001",
+      "date": "2026-05-05",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W19",
+      "day": "2026-05-05",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "CAMPAIGN_TRANSITION",
+      "summary": "Secretary Rubio said Operation Epic Fury had concluded and Project Freedom was a separate defensive operation.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-EPIC-FURY-OBJECTIVES-2026"
+      ],
+      "first_reported": "2026-05-05",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-EF1D932D8488",
+        "SRC-4D79B1712E0D"
+      ]
+    },
+    {
+      "event_id": "EV-20260515-001",
+      "date": "2026-05-15",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W20",
+      "day": "2026-05-15",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "HORMUZ_TRANSIT_POLICY",
+      "summary": "Iran stated that most vessels could transit if they coordinated with its navy, except designated enemies.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-15",
+      "first_verified": "2026-05-15",
+      "source_ids": [
+        "SRC-569997F08351"
+      ]
+    },
+    {
+      "event_id": "EV-20260517-001",
+      "date": "2026-05-17",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W20",
+      "day": "2026-05-17",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "NUCLEAR_FACILITY_ATTACK",
+      "summary": "An Iranian drone strike hit an electrical generator outside Barakah’s inner perimeter; one reactor automatically shut down.",
+      "map_refs": [
+        "MAP-FAC-UAE-BARAKAH"
+      ],
+      "facility_refs": [
+        "FAC-UAE-BARAKAH"
+      ],
+      "claim_refs": [],
+      "first_reported": "2026-05-17",
+      "first_verified": "2026-06-03",
+      "source_ids": [
+        "SRC-E7CF466D7C4C"
+      ]
+    },
+    {
+      "event_id": "EV-20260518-001",
+      "date": "2026-05-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W21",
+      "day": "2026-05-18",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "BARGAINING_GAP",
+      "summary": "Negotiating positions remained far apart on nuclear restrictions, blockade relief, guarantees, reparations and Hormuz.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-18",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-F77A9718856E"
+      ]
+    },
+    {
+      "event_id": "EV-20260518-002",
+      "date": "2026-05-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W21",
+      "day": "2026-05-18",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "Pakistan delivered a revised Iranian proposal; Trump said a planned U.S. attack was paused.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-18",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-8606F9274324"
+      ]
+    },
+    {
+      "event_id": "EV-20260520-001",
+      "date": "2026-05-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W21",
+      "day": "2026-05-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "HORMUZ_CONTROL_SYSTEM",
+      "summary": "Iran developed a tiered passage system using checkpoints, state arrangements and selective transit approvals.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-20",
+      "first_verified": "2026-05-20",
+      "source_ids": [
+        "SRC-A71BC15C30DB"
+      ]
+    },
+    {
+      "event_id": "EV-20260526-001",
+      "date": "2026-05-26",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W22",
+      "day": "2026-05-26",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "UN_ACTION",
+      "summary": "UN Security Council condemned the Barakah attack without attributing responsibility.",
+      "map_refs": [
+        "MAP-FAC-UAE-BARAKAH"
+      ],
+      "facility_refs": [
+        "FAC-UAE-BARAKAH"
+      ],
+      "claim_refs": [],
+      "first_reported": "2026-05-26",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-4FAD801FF49E"
+      ]
+    },
+    {
+      "event_id": "EV-20260528-001",
+      "date": "2026-05-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W22",
+      "day": "2026-05-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "Negotiators reached provisional 60-day ceasefire and shipping terms, pending leadership approval, while strikes continued.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-28",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-0989970823E0"
+      ]
+    },
+    {
+      "event_id": "EV-20260528-002",
+      "date": "2026-05-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W22",
+      "day": "2026-05-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "SANCTIONS_AND_STRIKES",
+      "summary": "Fresh strike claims and U.S. sanctions on the Persian Gulf Strait Authority showed the conflict remained active.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-28",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-2C560C3002FC"
+      ]
+    },
+    {
+      "event_id": "EV-20260601-001",
+      "date": "2026-06-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W23",
+      "day": "2026-06-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "Iran sought a limited interim deal to relieve economic pressure and buy negotiating time.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-06-01",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-8E5FBD1AE0C0"
+      ]
+    },
+    {
+      "event_id": "EV-20260603-001",
+      "date": "2026-06-03",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W23",
+      "day": "2026-06-03",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "FACILITY_DAMAGE",
+      "summary": "An Iranian drone/missile attack damaged Kuwait International Airport and killed one person.",
+      "map_refs": [
+        "MAP-FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT"
+      ],
+      "facility_refs": [
+        "FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT"
+      ],
+      "claim_refs": [],
+      "first_reported": "2026-06-03",
+      "first_verified": "2026-06-03",
+      "source_ids": [
+        "SRC-66667A45F235"
+      ]
+    },
+    {
+      "event_id": "EV-20260615-001",
+      "date": "2026-06-15",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W25",
+      "day": "2026-06-15",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "U.S. officials said an interim memorandum had been signed and Hormuz traffic would be restored gradually.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-06-15",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-3713FD1F35CD"
+      ]
+    },
+    {
+      "event_id": "EV-20260617-001",
+      "date": "2026-06-17",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W25",
+      "day": "2026-06-17",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "INTERIM_AGREEMENT",
+      "summary": "The 14-point interim U.S.-Iran framework was published/reported in detail.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-06-17",
+      "first_verified": "2026-06-17",
+      "source_ids": [
+        "SRC-DF7B6D820D63",
+        "SRC-107ADCD0AB0C",
+        "SRC-3300B7672235"
+      ]
+    },
+    {
+      "event_id": "EV-20260626-001",
+      "date": "2026-06-26",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W26",
+      "day": "2026-06-26",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "SECURITY_FRAMEWORK",
+      "summary": "Israel and Lebanon sign a U.S.-mediated security framework in Washington.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-06-26",
+      "first_verified": "2026-06-26",
+      "source_ids": [
+        "SRC-E27CBB0AD0BC",
+        "SRC-1531FAADFF52",
+        "SRC-D4268D5E43FB"
+      ],
+      "agreement_refs": [
+        "AGR-ISR-LBN-FRAMEWORK-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260630-001",
+      "date": "2026-06-30",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W27",
+      "day": "2026-06-30",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "LNG_MARKET_EFFECT",
+      "summary": "Industry reporting quantified major LNG trade loss from the Hormuz disruption.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-06-30",
+      "first_verified": "2026-06-30",
+      "source_ids": [
+        "SRC-AF45CA5FA4C9"
+      ]
+    },
+    {
+      "event_id": "EV-20260707-001",
+      "date": "2026-07-07",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W28",
+      "day": "2026-07-07",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "CEASEFIRE_COLLAPSE",
+      "summary": "The June interim arrangement was publicly treated as over after renewed attacks.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-07-07",
+      "first_verified": "2026-07-17",
+      "source_ids": [
+        "SRC-A2DF44867E0E",
+        "SRC-07FE627C1B90"
+      ]
+    },
+    {
+      "event_id": "EV-20260709-001",
+      "date": "2026-07-09",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W28",
+      "day": "2026-07-09",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "REGIONAL_BASE_ATTACKS",
+      "summary": "Iran reported attacks on U.S. military infrastructure across Gulf states and Jordan; U.S. forces reported a large strike response.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-07-09",
+      "first_verified": "2026-07-09",
+      "source_ids": [
+        "SRC-05EC0662B7EC"
+      ]
+    },
+    {
+      "event_id": "EV-20260711-001",
+      "date": "2026-07-11",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W28",
+      "day": "2026-07-11",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "HORMUZ_CLOSURE_CLAIM",
+      "summary": "IRGC Navy publicly declared the Strait closed until further notice.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "first_reported": "2026-07-11",
+      "first_verified": "2026-07-11",
+      "source_ids": [
+        "SRC-27B4F9BD222C",
+        "SRC-F342B5872062"
+      ]
+    },
+    {
+      "event_id": "EV-20260720-001",
+      "date": "2026-07-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W30",
+      "day": "2026-07-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MARITIME_THREAT",
+      "summary": "Houthis declared a naval blockade against Saudi Arabia.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-07-20",
+      "first_verified": "2026-07-20",
+      "source_ids": [
+        "SRC-A28F817FCF49"
+      ]
+    },
+    {
+      "event_id": "EV-20260730-001",
+      "date": "2026-07-30",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W31",
+      "day": "2026-07-30",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "REGIONAL_SECURITY_ALIGNMENT",
+      "summary": "Saudi Arabia unveils a proposed multinational maritime-defense coalition backed by a 14-state joint statement.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-07-30",
+      "first_verified": "2026-07-30",
+      "source_ids": [
+        "SRC-1F7AC92D882F",
+        "SRC-569EA3D29954"
+      ],
+      "agreement_refs": [
+        "AGR-SAUDI-MARITIME-COALITION-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260805-001",
+      "date": "2026-08-05",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W32",
+      "day": "2026-08-05",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "A new Hormuz proposal exposed unresolved differences over inspections, fees and control.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-05",
+      "first_verified": "2026-08-05",
+      "source_ids": [
+        "SRC-BFCDC2B49D89"
+      ]
+    },
+    {
+      "event_id": "EV-20260807-002",
+      "date": "2026-08-07",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W32",
+      "day": "2026-08-07",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MUTUAL_DEFENSE_AGREEMENT",
+      "summary": "Saudi Arabia, Türkiye and Pakistan sign the Mecca Joint Defence Agreement.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-08-07",
+      "first_verified": "2026-08-07",
+      "source_ids": [
+        "SRC-6261F62A2388",
+        "SRC-9396B216601A",
+        "SRC-569EA3D29954"
+      ],
+      "agreement_refs": [
+        "AGR-MECCA-JOINT-DEFENSE-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260812-001",
+      "date": "2026-08-12",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-12",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMACY",
+      "summary": "Pakistan made a final mediation push before the 60-day negotiating window expired.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-12",
+      "first_verified": "2026-08-12",
+      "source_ids": [
+        "SRC-72E371C289C9"
+      ]
+    },
+    {
+      "event_id": "EV-20260812-002",
+      "date": "2026-08-12",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-12",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "VERIFICATION_MECHANISM_PROPOSAL",
+      "summary": "U.S.-mediated talks consider four countries as possible contributors to a Hezbollah disarmament verification mechanism.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-08-12",
+      "first_verified": "2026-08-12",
+      "source_ids": [
+        "SRC-BCB32C965F32"
+      ],
+      "agreement_refs": [
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260812-003",
+      "date": "2026-08-12",
+      "time": "Physical movement began approximately late July; exact day unresolved",
+      "time_precision": "KNOWN_BY_DATE_WITH_APPROXIMATE_EVENT_TIME",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-12",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "FORCE_POSTURE_REPORT",
+      "summary": "AP reports the Erbil drawdown is underway under the pre-war 2024 U.S.-Iraq transition; Sept. 30, 2026 remains the planned endpoint.",
+      "map_refs": [
+        "MAP-US-ERBIL"
+      ],
+      "facility_refs": [
+        "US-ERBIL"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ],
+      "first_reported": "2026-08-12",
+      "first_verified": "2026-08-12",
+      "physical_event_time_text": "Late July 2026 (approximate; AP Aug. 12 said about three weeks earlier)",
+      "source_ids": [
+        "SRC-80791B854E19",
+        "SRC-005D46FC622B"
+      ]
+    },
+    {
+      "event_id": "EV-20260813-001",
+      "date": "2026-08-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-13",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "NAVAL_BLOCKADE",
+      "summary": "The U.S. said it could sustain the naval blockade indefinitely by rotating forces as oil-supply shortfalls deepened.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-13",
+      "first_verified": "2026-08-13",
+      "source_ids": [
+        "SRC-A3FAF2999E6B"
+      ]
+    },
+    {
+      "event_id": "EV-20260813-002",
+      "date": "2026-08-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-13",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Two ADNOC vessels were attacked; the UAE blamed Iran, which had not accepted responsibility at publication.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-13",
+      "first_verified": "2026-08-13",
+      "source_ids": [
+        "SRC-4E7A15C9F5B0",
+        "SRC-7F8C51C69FF9"
+      ]
+    },
+    {
+      "event_id": "EV-20260813-003",
+      "date": "2026-08-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-13",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "VERIFICATION_MECHANISM_STATUS",
+      "summary": "Lebanon denies that a final four-country verification shortlist has been agreed; talks with the United States continue.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "first_reported": "2026-08-13",
+      "first_verified": "2026-08-13",
+      "source_ids": [
+        "SRC-38F77594E6D5",
+        "SRC-BCB32C965F32"
+      ],
+      "agreement_refs": [
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026"
+      ]
+    },
+    {
+      "event_id": "EV-20260814-001",
+      "date": "2026-08-14",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-14",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "SHIPPING_DATA",
+      "summary": "Hormuz traffic remained capped at a small fraction of pre-war levels.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "first_reported": "2026-08-14",
+      "first_verified": "2026-08-14",
+      "source_ids": [
+        "SRC-E229B42C1EB1"
+      ]
+    },
+    {
+      "event_id": "EV-20260814-002",
+      "date": "2026-08-14",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-14",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "FORCE_POSTURE",
+      "summary": "The Navy announced Lincoln would return home as part of a planned rotation after an extended combat deployment.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "first_reported": "2026-08-14",
+      "first_verified": "2026-08-20",
+      "source_ids": [
+        "SRC-57864B8610ED",
+        "SRC-E277CF2E03A3",
+        "SRC-17A8BAFE71BD"
+      ]
+    },
+    {
+      "event_id": "EV-20260816-001",
+      "date": "2026-08-16",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W33",
+      "day": "2026-08-16",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "SHIPPING_DATA",
+      "summary": "Tracked commodity-vessel traffic fell to five Saturday and zero Sunday at Reuters’ snapshot after tanker attacks.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "first_reported": "2026-08-16",
+      "first_verified": "2026-08-16",
+      "source_ids": [
+        "SRC-B3FFD2E97368"
+      ]
+    },
+    {
+      "event_id": "EV-20260817-001",
+      "date": "2026-08-17",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-17",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMATIC_DEADLINE",
+      "summary": "The 60-day negotiating window expired without a final deal; Iran threatened a more offensive Hormuz posture.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-17",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-6C49C8F1ACDF"
+      ]
+    },
+    {
+      "event_id": "EV-20260817-002",
+      "date": "2026-08-17",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-17",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "ECONOMIC_STRAIN",
+      "summary": "Iranian inflation and food-price pressure had reached extreme levels.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-17",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-62CEDAA21545"
+      ]
+    },
+    {
+      "event_id": "EV-20260818-001",
+      "date": "2026-08-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-18",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "HORMUZ_NARRATIVE",
+      "summary": "Washington said the Strait was open and no talks were under way; Tehran said it remained shut pending compliance with June terms.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "first_reported": "2026-08-18",
+      "first_verified": "2026-08-18",
+      "source_ids": [
+        "SRC-6254D39BE9DA"
+      ]
+    },
+    {
+      "event_id": "EV-20260818-002",
+      "date": "2026-08-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-18",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "CHINA_SHIPPING_ADAPTATION",
+      "summary": "Chinese state shippers increasingly avoided Hormuz/Bab el-Mandeb and used tanker positioning/ship-to-ship transfers outside the Gulf.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-18",
+      "first_verified": "2026-08-18",
+      "source_ids": [
+        "SRC-54EDDA09EBC7"
+      ]
+    },
+    {
+      "event_id": "EV-20260819-001",
+      "date": "2026-08-19",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-19",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "ECONOMIC_DIPLOMACY",
+      "summary": "The UAE halted financial/economic dealings with Iran after alleging Iranian ballistic missiles targeted maritime traffic.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-19",
+      "first_verified": "2026-08-19",
+      "source_ids": [
+        "SRC-6C0B7AB1ADB0"
+      ]
+    },
+    {
+      "event_id": "EV-20260820-001",
+      "date": "2026-08-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "SHIPPING_DATA",
+      "summary": "Hormuz tracked commodity-vessel traffic was unchanged at nine Tuesday and nine Wednesday; Bab el-Mandeb fell to 27 Wednesday from 32 Tuesday.",
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ],
+      "first_reported": "2026-08-20",
+      "first_verified": "2026-08-20",
+      "source_ids": [
+        "SRC-F342B5872062"
+      ]
+    },
+    {
+      "event_id": "EV-20260820-002",
+      "date": "2026-08-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "SANCTIONS_ESCALATION",
+      "summary": "Washington announced a new escalation of economic pressure on Iran and threatened consequences for countries providing a lifeline.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-20",
+      "first_verified": "2026-08-20",
+      "source_ids": [
+        "SRC-6EB96703F633",
+        "SRC-7831E5A00A7B",
+        "SRC-AC40CCC92A43"
+      ]
+    },
+    {
+      "event_id": "EV-20260820-003",
+      "date": "2026-08-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "CARRIER_ROTATION",
+      "summary": "USS George Washington arrived to relieve USS Abraham Lincoln while another U.S. carrier remained in theater.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026"
+      ],
+      "first_reported": "2026-08-20",
+      "first_verified": "2026-08-20",
+      "source_ids": [
+        "SRC-17A8BAFE71BD",
+        "SRC-57864B8610ED",
+        "SRC-E277CF2E03A3"
+      ]
+    },
+    {
+      "event_id": "EV-20260820-004",
+      "date": "2026-08-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "ECONOMIC_DATA",
+      "summary": "Oil prices remained elevated as markets assessed war and negotiation risk.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-20",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-CAC4D4DF4A81"
+      ]
+    },
+    {
+      "event_id": "EV-20260820-005",
+      "date": "2026-08-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "IRAN_OIL_EXPORT_CLAIM",
+      "summary": "Iran’s central bank governor said oil exports had fallen to zero and foreign-exchange access was severely constrained.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-20",
+      "first_verified": "2026-08-20",
+      "source_ids": [
+        "SRC-329DD7E492A8"
+      ]
+    }
+  ]
+}

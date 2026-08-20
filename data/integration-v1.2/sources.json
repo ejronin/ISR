@@ -1,0 +1,3227 @@
+{
+  "schema_version": "1.0",
+  "id_rule": "Canonical source IDs are URL-derived hashes. Legacy S### values are aliases only and MUST NOT be joined across datasets because the current atlas and backfill package used colliding S-number namespaces.",
+  "sources": [
+    {
+      "source_id": "SRC-005D46FC622B",
+      "legacy_ids": {},
+      "url": "https://2021-2025.state.gov/joint-statement-announcing-the-timeline-for-the-end-of-the-military-mission-of-the-global-coalition-to-defeat-isis-in-iraq/",
+      "outlet": "U.S. Department of State (archived)",
+      "title": "Joint Statement Announcing the Timeline for the End of the Military Mission of the Global Coalition to Defeat ISIS in Iraq",
+      "publication_date": "2024-09-27",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "PREWAR_PLANNING",
+        "FORCE_POSTURE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-001",
+        "EV-20260812-003",
+        "MOV-20260117-IRQ-AINASAD",
+        "MOV-202607-IRQ-ERBIL",
+        "PRE-20240927-IRQ-001",
+        "PRE-20260117-IRQ-001"
+      ],
+      "proof_note": "Primary joint U.S.-Iraq statement formally sets a two-phase transition: coalition mission in Iraq ends no later than September 2025 while coalition support against ISIS in Syria from Iraq continues to September 2026 subject to conditions/consultations; practical implementation steps had begun.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-0561D46C2441",
+      "legacy_ids": {
+        "collection": "S074"
+      },
+      "url": "https://www.reuters.com/world/middle-east/some-personnel-were-advised-leave-us-military-base-qatar-diplomats-tell-reuters-2026-01-14/",
+      "outlet": "Reuters",
+      "title": "Some personnel advised to leave US military base in Qatar, diplomats say",
+      "publication_date": "2026-01-14",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "PREWAR_PLANNING",
+        "FORCE_POSTURE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+        "FAC-QAT-AL-UDEID",
+        "PRE-20260114-001"
+      ],
+      "proof_note": "Pre-war force-protection signal at Al Udeid amid rising tensions.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-05EC0662B7EC",
+      "legacy_ids": {
+        "collection": "S048"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-says-it-hits-us-military-targets-gulf-prepares-bury-slain-leader-2026-07-09/",
+      "outlet": "Reuters",
+      "title": "Iran says it hits US military targets in Gulf",
+      "publication_date": "2026-07-09",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "CLAIM_ORIGIN",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-EPIC-FURY-OBJECTIVES-2026",
+        "EV-20260709-001"
+      ],
+      "proof_note": "Documents Iranian attacks on U.S. military infrastructure and U.S. strike response; preserves competing U.S./Iran claims on Hormuz throughput and control.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-07FE627C1B90",
+      "legacy_ids": {
+        "collection": "S082"
+      },
+      "url": "https://www.thenationalnews.com/news/mena/2026/07/17/us-iran-deal-promised-60-days-of-calm-instead-it-provoked-more-conflict/",
+      "outlet": "The National",
+      "title": "US-Iran memorandum promised 60 days of calm - it became focus of conflict instead",
+      "publication_date": "2026-07-17",
+      "publication_time": null,
+      "author": "Vanessa Ghanem",
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "LATER_OUTCOME",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-009",
+        "EV-20260707-001"
+      ],
+      "proof_note": "Regional forward trace: by one month after signature, conflicting Hormuz interpretations had become a major source of renewed confrontation.",
+      "lineage": "The National original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-0989970823E0",
+      "legacy_ids": {
+        "collection": "S039"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-us-trade-air-strikes-after-trump-dismisses-report-hormuz-deal-2026-05-28/",
+      "outlet": "Reuters",
+      "title": "Iran, US trade air strikes as provisional Hormuz deal awaits approval",
+      "publication_date": "2026-05-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "LATER_OUTCOME",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-007",
+        "EV-20260528-001"
+      ],
+      "proof_note": "Reports negotiators reached provisional 60-day ceasefire/shipping terms pending leadership approval while strikes continued.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-0A8D55737F6E",
+      "legacy_ids": {
+        "collection": "S021"
+      },
+      "url": "https://www.reuters.com/world/us/trump-tells-aides-he-is-willing-end-iran-war-without-reopening-hormuz-wsj-2026-03-31/",
+      "outlet": "Reuters",
+      "title": "Trump tells aides he is willing to end Iran war without reopening Hormuz, WSJ reports",
+      "publication_date": "2026-03-31",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "EV-20260331-001"
+      ],
+      "proof_note": "Records a WSJ report about U.S. end-state flexibility; Reuters could not independently verify.",
+      "lineage": "Reuters report of WSJ; not independent corroboration",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-0F0B6070FCF6",
+      "legacy_ids": {
+        "collection": "S015"
+      },
+      "url": "https://www.reuters.com/business/energy/us-oil-prices-fall-prospect-middle-east-ceasefire-easing-supply-disruption-2026-03-24/",
+      "outlet": "Reuters",
+      "title": "Oil prices fall on prospect of Middle East ceasefire easing supply disruption",
+      "publication_date": "2026-03-24",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-002",
+        "EV-20260324-001"
+      ],
+      "proof_note": "Reports Iran reviewing a U.S. 15-point proposal and quantifies large cumulative oil-supply disruption.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-107ADCD0AB0C",
+      "legacy_ids": {
+        "collection": "S045"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-mou-was-signed-wednesday-by-trump-iran-president-us-official-says-2026-06-17/",
+      "outlet": "Reuters",
+      "title": "Iran MOU was signed by Trump and Iranian president, US official says",
+      "publication_date": "2026-06-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "AGR-US-IRN-14POINT-MOU-2026",
+        "DIP-PKG-008",
+        "EV-20260617-001"
+      ],
+      "proof_note": "Records U.S. official confirmation of presidential signatures and agreement status.",
+      "lineage": "Reuters original reporting of official statement",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-13C29898FA62",
+      "legacy_ids": {
+        "collection": "S009"
+      },
+      "url": "https://www.reuters.com/business/energy/trump-demands-others-help-secure-strait-hormuz-japan-australia-say-no-plans-send-2026-03-16/",
+      "outlet": "Reuters",
+      "title": "Trump demands others help secure Strait of Hormuz; allies say no plans to send warships",
+      "publication_date": "2026-03-16",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "FORCE_POSTURE",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260316-001"
+      ],
+      "proof_note": "Documents multiple allied governments declining or avoiding naval escort commitments requested by Washington.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-14B6DC8A760C",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.csis.org/analysis/last-rounds-status-key-munitions-iran-war-ceasefire",
+      "outlet": "Center for Strategic and International Studies (CSIS)",
+      "title": "Last Rounds? Status of Key Munitions at the Iran War Ceasefire",
+      "publication_date": "2026-04-21",
+      "publication_time": null,
+      "author": "Mark F. Cancian; Chris H. Park",
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "MUNITIONS_EXPENDITURE"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "CSIS reported Tomahawk expenditure had risen above 1,000 by the ceasefire based on press reporting; it assessed depleted but not exhausted U.S. missile inventories.",
+      "lineage": "CSIS analysis using DOD and press reporting",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-1531FAADFF52",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/whats-deal-between-israel-lebanon-2026-06-29/",
+      "outlet": "Reuters",
+      "title": "What’s in the deal between Israel and Lebanon?",
+      "publication_date": "2026-06-29",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "TECHNICAL_ANALYSIS",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-ISR-LBN-FRAMEWORK-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-003",
+        "EV-20260626-001"
+      ],
+      "proof_note": "Explains the U.S.-mediated framework: phased/pilot-zone Lebanese security assumption, verified Hezbollah disarmament linkage, Israeli redeployment, and U.S.-involved coordination/implementation.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-17A8BAFE71BD",
+      "legacy_ids": {
+        "collection": "S069"
+      },
+      "url": "https://apnews.com/article/aircraft-carrier-washington-lincoln-iran-war-trump-10ddf7b55104e0eeec2e9213e1021b98",
+      "outlet": "Associated Press",
+      "title": "US aircraft carrier arrives in Middle East, relieving long-deployed USS Lincoln",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": "Ben Finley; Konstantin Toropin",
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "FORCE_POSTURE",
+        "CONTINUITY_EVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026",
+        "EV-20260814-002",
+        "EV-20260820-003",
+        "MOV-20260320-002",
+        "MOV-20260814-001",
+        "MOV-20260820-001"
+      ],
+      "proof_note": "AP independently reports George Washington arrival to relieve Lincoln; Washington joins George H.W. Bush, showing replacement/continuity rather than disappearance of carrier presence.",
+      "lineage": "AP original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-1F7AC92D882F",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/",
+      "outlet": "Reuters",
+      "title": "Saudi Arabia unveils plans for multinational maritime defence coalition",
+      "publication_date": "2026-07-30",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "DIPLOMATIC_POSITION",
+        "FORCE_POSTURE",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-SAUDI-MARITIME-COALITION-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-004",
+        "EV-20260730-001"
+      ],
+      "proof_note": "Confirms Saudi-led proposed maritime defense coalition; representatives from 43 countries and the EU attended, and 14 countries issued a joint statement supporting the proposed coalition. It does not establish the United States as one of the 14 formal supporters.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-1FCEC1114E60",
+      "legacy_ids": {
+        "collection": "S026"
+      },
+      "url": "https://www.reuters.com/world/europe/iran-takes-seized-ships-port-countries-seek-info-seafarers-safety-2026-04-23/",
+      "outlet": "Reuters",
+      "title": "Iran takes seized ships to port as countries seek information on seafarers",
+      "publication_date": "2026-04-23",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260423-001"
+      ],
+      "proof_note": "Documents Iranian seizure of two container ships after U.S. seizure of an Iranian cargo vessel; includes diversion/turnaround and limited Iranian export data.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-209378A46AAC",
+      "legacy_ids": {},
+      "url": "https://www.defense.gov/News/Releases/Release/article/3655790/statement-by-secretary-of-defense-lloyd-j-austin-iii-on-the-start-of-working-gr/",
+      "outlet": "U.S. Department of Defense",
+      "title": "Statement on the Start of Working Group Meetings of the U.S.-Iraq Higher Military Commission",
+      "publication_date": "2024-01-25",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "PREWAR_PLANNING",
+        "FORCE_POSTURE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "PRE-20240125-IRQ-001"
+      ],
+      "proof_note": "Primary DoD statement that the U.S. and Government of Iraq began the HMC process committed to in August 2023, expressly to enable transition to an enduring bilateral security partnership.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-20978ADE1FA1",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/us-war-iran-has-cost-375-billion-so-far-pentagon-says-2026-07-21/",
+      "outlet": "Reuters",
+      "title": "War in Iran has cost the US $37.5 billion so far, Pentagon says",
+      "publication_date": "2026-07-21",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "ECONOMIC_DATA",
+        "COST_MODEL"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Reuters reported a Pentagon $37.5B war-cost figure. The reported figure included current and projected costs through Sept. 30, so it is not a clean actual-to-date expenditure total.",
+      "lineage": "Reuters original reporting of Pentagon estimate",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-234390A3E087",
+      "legacy_ids": {
+        "collection": "S028"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iranian-economic-collapse-may-come-too-late-trump-2026-04-30/",
+      "outlet": "Reuters",
+      "title": "Iranian economic collapse may come too late for Trump",
+      "publication_date": "2026-04-30",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "COUNTEREVIDENCE",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260430-001"
+      ],
+      "proof_note": "Finds severe economic strain but continued banking, retail and alternative trade, countering claims of immediate state/economic collapse.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-25DF3807300D",
+      "legacy_ids": {
+        "collection": "S002"
+      },
+      "url": "https://www.reuters.com/world/middle-east/us-iran-nuclear-talks-resume-geneva-against-backdrop-military-threat-2026-02-26/",
+      "outlet": "Reuters",
+      "title": "US-Iran nuclear talks end in Geneva with progress but no deal",
+      "publication_date": "2026-02-26",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "DIPLOMATIC_POSITION",
+        "PREWAR_PLANNING"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-US-IRAN-FIRST-STRIKE-2026",
+        "DIP-PKG-001",
+        "PRE-20260226-001"
+      ],
+      "proof_note": "Documents the last major pre-war negotiating round, significant progress, no final agreement, and planned technical follow-up.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-27B4F9BD222C",
+      "legacy_ids": {
+        "collection": "S049"
+      },
+      "url": "https://www.reuters.com/world/middle-east/irans-irgc-navy-says-strait-hormuz-closed-until-further-notice-state-media-2026-07-11/",
+      "outlet": "Reuters",
+      "title": "IRGC Navy says Strait of Hormuz closed until further notice",
+      "publication_date": "2026-07-11",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260711-001"
+      ],
+      "proof_note": "Records formal IRGC Navy closure claim following a warning-shot incident.",
+      "lineage": "Reuters report of Iranian state media",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-28B0CE7F2B7E",
+      "legacy_ids": {
+        "collection": "S016"
+      },
+      "url": "https://www.reuters.com/world/asia-pacific/iran-says-it-is-reviewing-us-ceasefire-plan-no-talks-trump-says-tehran-leaders-2026-03-26/",
+      "outlet": "Reuters",
+      "title": "Iran says it is reviewing US ceasefire plan",
+      "publication_date": "2026-03-26",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-003",
+        "EV-20260326-001"
+      ],
+      "proof_note": "Documents a temporary U.S. pause on attacks against Iranian energy plants and Iran’s statement that the proposal was one-sided.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-29FAB9A69690",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/iraq-takes-full-control-air-base-after-us-withdrawal-defence-ministry-says-2026-01-17/",
+      "outlet": "Reuters",
+      "title": "Iraq takes full control of air base after US withdrawal, defence ministry says",
+      "publication_date": "2026-01-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "FORCE_POSTURE",
+        "LATER_OUTCOME",
+        "PREWAR_PLANNING"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "MOV-20260117-IRQ-AINASAD",
+        "PRE-20260117-IRQ-001"
+      ],
+      "proof_note": "Independent confirmation that Iraq assumed full control of Ain al-Asad after U.S. withdrawal; Reuters ties the departure to the Washington-Baghdad understanding reached in 2024 to transition from coalition presence to a bilateral security relationship.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-2AD36D488E7F",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.elibrary.imf.org/display/book/9798229032339/CH001.xml",
+      "outlet": "IMF",
+      "title": "IMF January 2026 WEO Update",
+      "publication_date": "2026-01-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Current atlas source for Iran pre-war 2026 growth forecast baseline.",
+      "lineage": "primary official/IMF",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-2C560C3002FC",
+      "legacy_ids": {
+        "collection": "S040"
+      },
+      "url": "https://www.reuters.com/world/china/global-markets-view-europe-2026-05-28/",
+      "outlet": "Reuters",
+      "title": "Global markets view: Iran tension remains despite deal hopes",
+      "publication_date": "2026-05-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "EV-20260528-002"
+      ],
+      "proof_note": "Market context noting fresh Iranian attack claims and U.S. sanctions on the Persian Gulf Strait Authority; useful as secondary chronology.",
+      "lineage": "Reuters market commentary",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-301D4457A5A8",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/",
+      "outlet": "Reuters",
+      "title": "How many people have been killed in the U.S.-Israel war with Iran?",
+      "publication_date": "2026-04-07",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for multi-country cumulative casualty snapshots; several values are authority/NGO estimates and not independently verified.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-329DD7E492A8",
+      "legacy_ids": {
+        "collection": "S084"
+      },
+      "url": "https://www.thenationalnews.com/news/2026/08/20/iran-central-bank-chief-says-oil-exports-have-fallen-to-zero/",
+      "outlet": "The National",
+      "title": "Iran central bank chief says oil exports have fallen to zero",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": "David Vujanovic",
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "ECONOMIC_DATA",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260820-005"
+      ],
+      "proof_note": "Reports Iran central bank governor’s statement that current oil exports were zero and foreign-exchange access severely constrained; statement is actor-origin evidence, not independent tanker measurement.",
+      "lineage": "The National original reporting of Iranian official",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-3300B7672235",
+      "legacy_ids": {
+        "collection": "S081"
+      },
+      "url": "https://www.thenationalnews.com/news/us/2026/06/17/whats-in-the-iran-deal/",
+      "outlet": "The National",
+      "title": "Full text of the 14-point plan to end the US-Iran war",
+      "publication_date": "2026-06-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "AGR-US-IRN-14POINT-MOU-2026",
+        "DIP-PKG-008",
+        "EV-20260617-001"
+      ],
+      "proof_note": "Independent regional publication of the 14-point framework, including blockade removal, toll-free safe passage for 60 days and Oman dialogue on future administration.",
+      "lineage": "The National original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-355C149D77E4",
+      "legacy_ids": {
+        "collection": "S014"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-says-coastal-attack-will-lead-full-gulf-closure-mine-laying-2026-03-23/",
+      "outlet": "Reuters",
+      "title": "Iran says coastal attack will lead to full Gulf closure and mine laying",
+      "publication_date": "2026-03-23",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260323-001"
+      ],
+      "proof_note": "Records Iran’s threat to lay mines and fully close Gulf access if its coast was attacked.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-3713FD1F35CD",
+      "legacy_ids": {
+        "collection": "S043"
+      },
+      "url": "https://www.reuters.com/world/middle-east/trump-vance-irans-parliament-speaker-signed-mou-2026-06-15/",
+      "outlet": "Reuters",
+      "title": "US officials say Trump, Vance and Iran parliament speaker signed MOU",
+      "publication_date": "2026-06-15",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260615-001"
+      ],
+      "proof_note": "Records U.S. officials’ statement that an interim MOU had been signed and traffic should gradually recover.",
+      "lineage": "Reuters original reporting of U.S. officials",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-3826CE7F7FBB",
+      "legacy_ids": {
+        "collection": "S071"
+      },
+      "url": "https://www.bellingcat.com/resources/2026/04/07/tool-damage-assessment-destruction-sentinel-satellite-imagery-iran-us-gulf/",
+      "outlet": "Bellingcat",
+      "title": "When Satellite Imagery Goes Dark: New Tool Shows Damage in Iran and the Gulf",
+      "publication_date": "2026-04-07",
+      "publication_time": null,
+      "author": "Logan Williams et al.",
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BDA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+        "FAC-QAT-AL-UDEID"
+      ],
+      "proof_note": "Sentinel comparison Feb. 22-Mar. 14 shows visible damage at Al Udeid; Qatar MoD acknowledgment of at least one early-March ballistic-missile strike cited.",
+      "lineage": "independent technical/imagery analysis",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-38F77594E6D5",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/lebanon-has-not-agreed-shortlist-countries-that-could-verify-hezbollahs-2026-08-13/",
+      "outlet": "Reuters",
+      "title": "Lebanon has not agreed to shortlist of countries that could verify Hezbollah’s disarmament, official says",
+      "publication_date": "2026-08-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-006",
+        "EV-20260813-003"
+      ],
+      "proof_note": "Corrective/current-status evidence: Lebanese official denied an agreed shortlist and said discussions with the United States were continuing; the State Department confirmed Rome talks addressed third-party verification but did not confirm a final country list.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-3B7FE42A1FF2",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/syrian-army-says-it-took-control-shaddadi-base-after-coordination-with-us-agency-2026-02-15/",
+      "outlet": "Reuters",
+      "title": "Syrian army says it took control of Shaddadi base after coordination with US, agency says",
+      "publication_date": "2026-02-15",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "FORCE_POSTURE",
+        "PREWAR_PLANNING"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "MOV-20260215-SYR-SHADDADI",
+        "PRE-20260215-SYR-001"
+      ],
+      "proof_note": "Reports Syrian army control of Shaddadi after coordination with the United States, within the same pre-war U.S.-Syria transition following the Washington-brokered SDF integration arrangement.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-3C8236B21AC0",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/business/energy/gulf-economies-head-worst-crisis-since-pandemic-war-roils-energy-lifeline-2026-04-27/",
+      "outlet": "Reuters",
+      "title": "Gulf economies head for worst crisis since pandemic as war roils energy lifeline",
+      "publication_date": "2026-04-27",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for GCC prewar/early-war forecast baseline used in July forecast comparison.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-40708A58524D",
+      "legacy_ids": {
+        "collection": "S023"
+      },
+      "url": "https://www.reuters.com/world/asia-pacific/us-blockade-iran-will-be-major-military-endeavor-experts-say-2026-04-13/",
+      "outlet": "Reuters",
+      "title": "US blockade of Iran will be major military endeavor, experts say",
+      "publication_date": "2026-04-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "FORCE_POSTURE",
+        "SHIPPING_DATA",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "DIP-PKG-005",
+        "EV-20260413-001"
+      ],
+      "proof_note": "Documents start of U.S. blockade against ships entering/leaving Iranian ports after talks failed, distinct from blocking all non-Iranian Hormuz traffic.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-4818F69C326D",
+      "legacy_ids": {
+        "collection": "S075"
+      },
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4376614/us-regional-partners-open-new-air-defense-operations-cell-in-qatar/",
+      "outlet": "U.S. Central Command",
+      "title": "US, regional partners open new air defense operations cell in Qatar",
+      "publication_date": "2026-01-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "PREWAR_PLANNING",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+        "FAC-QAT-AL-UDEID",
+        "PRE-20260113-001"
+      ],
+      "proof_note": "Primary record that a multinational Middle East air-defense coordination cell opened inside Al Udeid’s CAOC immediately before the war.",
+      "lineage": "primary",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-4A733BFAC693",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.met.gov.kw/Climate/climate.php?lang=eng",
+      "outlet": "Kuwait Meteorological Center",
+      "title": "Kuwait Meteorological Center climate station coordinates",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "GEOLOCATION_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Official station table gives a Kuwait Airport reference point. Used only as facility-level map geolocation, not as impact coordinates.",
+      "lineage": "primary official",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-4BAF1AD0125F",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/qatarenergy-controlled-lng-tanker-exits-hormuz-first-nearly-three-weeks-2026-07-30/",
+      "outlet": "Reuters",
+      "title": "QatarEnergy-controlled LNG tanker exits Hormuz for first time in nearly three weeks",
+      "publication_date": "2026-07-30",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for one LNG tanker transit; not evidence of normalized traffic.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-4D79B1712E0D",
+      "legacy_ids": {
+        "collection": "S019"
+      },
+      "url": "https://apnews.com/article/1a32141f5ca2104af78625b3aa277421",
+      "outlet": "Associated Press",
+      "title": "One month into Iran war, key US objectives remain unresolved",
+      "publication_date": "2026-03-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "COUNTEREVIDENCE",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-EPIC-FURY-OBJECTIVES-2026",
+        "EV-20260328-003",
+        "EV-20260505-001"
+      ],
+      "proof_note": "Assesses one-month outcomes and notes continued Iranian missile/drone capability and shifting or unresolved U.S. objectives.",
+      "lineage": "AP original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-4E559726D514",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/",
+      "outlet": "Reuters",
+      "title": "Strait of Hormuz transits drop as U.S.-Iran attacks escalate",
+      "publication_date": "2026-07-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for July Hormuz transit suppression.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-4E7A15C9F5B0",
+      "legacy_ids": {
+        "collection": "S054"
+      },
+      "url": "https://apnews.com/article/e8565c608ac5283ec8103c85df924b13",
+      "outlet": "Associated Press",
+      "title": "Two ADNOC tankers attacked by drones in Strait of Hormuz",
+      "publication_date": "2026-08-14",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "BDA",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260813-002"
+      ],
+      "proof_note": "Independent reporting that two ADNOC tankers were hit/damaged; UAE blamed Iran; no casualties reported.",
+      "lineage": "AP original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-4E85BD9B8182",
+      "legacy_ids": {
+        "collection": "S012"
+      },
+      "url": "https://www.reuters.com/world/iran/attacks-major-oil-gas-sites-middle-east-2026-03-20/",
+      "outlet": "Reuters",
+      "title": "Attacks hit major oil and gas sites across Middle East",
+      "publication_date": "2026-03-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "ECONOMIC_DATA",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260320-002",
+        "FAC-QAT-LNG-SYSTEM"
+      ],
+      "proof_note": "Documents the March 18 South Pars/Asaluyeh strike and subsequent attacks on Gulf energy infrastructure, including major Qatar LNG damage estimates.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-4FAD801FF49E",
+      "legacy_ids": {
+        "collection": "S038"
+      },
+      "url": "https://www.reuters.com/world/china/un-security-council-condemns-attack-uae-nuclear-plant-2026-05-26/",
+      "outlet": "Reuters",
+      "title": "UN Security Council condemns attack on UAE nuclear plant",
+      "publication_date": "2026-05-26",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "BDA",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260526-001",
+        "FAC-UAE-BARAKAH"
+      ],
+      "proof_note": "Documents UNSC condemnation of Barakah attack without attributing responsibility, preserving attribution uncertainty.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-543806914EAF",
+      "legacy_ids": {
+        "collection": "S024"
+      },
+      "url": "https://www.reuters.com/world/asia-pacific/white-house-denies-us-requested-ceasefire-says-new-talks-may-happen-pakistan-2026-04-15/",
+      "outlet": "Reuters",
+      "title": "White House denies US requested ceasefire; new talks may happen in Pakistan",
+      "publication_date": "2026-04-15",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260415-001"
+      ],
+      "proof_note": "Documents competing accounts of who sought the ceasefire and possible second-round talks.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-54EDDA09EBC7",
+      "legacy_ids": {
+        "collection": "S062"
+      },
+      "url": "https://www.reuters.com/business/energy/chinas-state-shippers-deploy-oil-tankers-outside-gulf-avoid-chokepoints-sources-say-2026-08-18/",
+      "outlet": "Reuters",
+      "title": "China state shippers deploy tankers outside Gulf to avoid chokepoints",
+      "publication_date": "2026-08-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "ECONOMIC_DATA",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260818-002"
+      ],
+      "proof_note": "Documents COSCO/CMES avoidance of Hormuz and Bab el-Mandeb and use of ship-to-ship transfer outside the Gulf, evidence of commercial rerouting rather than normalization.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-551A9C2DB97C",
+      "legacy_ids": {
+        "collection": "S076"
+      },
+      "url": "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/",
+      "outlet": "Washington Post",
+      "title": "Satellite images reveal damage to US bases across Middle East",
+      "publication_date": "2026-05-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BDA",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+        "FAC-QAT-AL-UDEID"
+      ],
+      "proof_note": "Independent satellite-imagery reporting on damage at U.S. regional bases, including communications-related damage at Al Udeid.",
+      "lineage": "independent investigation",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-5581A889C78E",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.wikidata.org/wiki/Q17624806",
+      "outlet": "Wikidata",
+      "title": "Barakah nuclear power plant coordinate record",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "GEOLOCATION_ONLY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Open-data coordinate reference for the Barakah plant. Used only for facility-level map placement, not BDA or impact geometry.",
+      "lineage": "open-data aggregation",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-566F047CEA46",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/syria-says-it-has-taken-control-al-tanf-base-vacated-by-us-troops-2026-02-12/",
+      "outlet": "Reuters",
+      "title": "In milestone, US pulls out of strategic Syria base and hands it over to Damascus",
+      "publication_date": "2026-02-12",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "FORCE_POSTURE",
+        "PREWAR_PLANNING",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "MOV-20260212-SYR-TANF",
+        "PRE-20260212-SYR-001",
+        "PRE-20260215-SYR-001"
+      ],
+      "proof_note": "Independent confirmation that U.S. forces completed al-Tanf withdrawal and Syrian forces took control following coordination between Syrian and U.S. authorities; Reuters also records prior Pentagon consolidation plans and a Washington-brokered SDF integration deal.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-569997F08351",
+      "legacy_ids": {
+        "collection": "S033"
+      },
+      "url": "https://www.reuters.com/world/china/iran-has-no-trust-us-will-negotiate-only-if-it-is-serious-araqchi-says-2026-05-15/",
+      "outlet": "Reuters",
+      "title": "Iran has no trust in US, will negotiate only if serious, Araghchi says",
+      "publication_date": "2026-05-15",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260515-001"
+      ],
+      "proof_note": "Records Iran’s stated transit regime: most ships could pass if they coordinated with Iranian naval authorities, except designated enemies.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-569EA3D29954",
+      "legacy_ids": {},
+      "url": "https://www.whitehouse.gov/fact-sheets/2025/11/fact-sheet-president-donald-j-trump-solidifies-economic-and-defense-partnership-with-the-kingdom-of-saudi-arabia/",
+      "outlet": "The White House",
+      "title": "Fact Sheet: President Donald J. Trump Solidifies Economic and Defense Partnership with the Kingdom of Saudi Arabia",
+      "publication_date": "2025-11-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "PREWAR_PLANNING",
+        "DIPLOMATIC_POSITION",
+        "FORCE_POSTURE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-MECCA-JOINT-DEFENSE-2026",
+        "AGR-SAUDI-MARITIME-COALITION-2026",
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-002",
+        "EV-20260730-001",
+        "EV-20260807-002",
+        "PRE-20251118-SAU-001"
+      ],
+      "proof_note": "Primary U.S. source documenting the signed U.S.-Saudi Strategic Defense Agreement, regional burden-sharing, and the U.S. statement that Saudi Arabia viewed the United States as its primary strategic partner.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-56C86C6E1D78",
+      "legacy_ids": {
+        "collection": "S022"
+      },
+      "url": "https://www.reuters.com/world/asia-pacific/talks-were-almost-dead-pakistans-last-ditch-effort-secure-iran-war-truce-2026-04-08/",
+      "outlet": "Reuters",
+      "title": "Pakistan’s last-ditch effort secures Iran war truce",
+      "publication_date": "2026-04-08",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-004",
+        "EV-20260408-001"
+      ],
+      "proof_note": "Documents Pakistan-mediated temporary ceasefire and core Iranian demands including Hormuz, nuclear energy and security arrangements.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-572AFBAA0B04",
+      "legacy_ids": {
+        "collection": "S027"
+      },
+      "url": "https://www.reuters.com/business/energy/chinas-iranian-oil-buying-curbed-by-margins-traders-say-2026-04-29/",
+      "outlet": "Reuters",
+      "title": "China’s Iranian oil buying curbed by margins, traders say",
+      "publication_date": "2026-04-29",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260429-001"
+      ],
+      "proof_note": "Documents continued Chinese purchases and record March Iranian crude flows to independent refiners, plus large volumes already at sea.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-57864B8610ED",
+      "legacy_ids": {
+        "collection": "S057"
+      },
+      "url": "https://www.navy.mil/Press-Office/Statements/display-statement/Article/4574706/statement-from-acting-secretary-cao/",
+      "outlet": "United States Navy",
+      "title": "Statement from Acting Secretary Cao",
+      "publication_date": "2026-08-14",
+      "publication_time": null,
+      "author": "Hung Cao",
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "FORCE_POSTURE",
+        "CONTINUITY_EVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026",
+        "EV-20260814-002",
+        "EV-20260820-003",
+        "MOV-20260207-001",
+        "MOV-20260814-001"
+      ],
+      "proof_note": "Official Navy statement: Lincoln will return home as part of a planned rotation; deployment was extended because the mission demanded it; claims 10,000+ sorties and 266 deployed days.",
+      "lineage": "primary",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-583001F87534",
+      "legacy_ids": {
+        "collection": "S085"
+      },
+      "url": "https://www.arabnews.com/node/2655346/amp",
+      "outlet": "Arab News",
+      "title": "Bessent says US will impose toughest ever sanctions on Iran, urges allies and China to cooperate",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Regional syndication of Reuters Aug. 20 sanctions reporting; useful for reach but not independent corroboration.",
+      "lineage": "Reuters syndication; do not double-count",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-5EEA6488E035",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-one-week-low-amid-hostilities-2026-08-12/",
+      "outlet": "Reuters",
+      "title": "Hormuz shipping traffic falls to one-week low amid hostilities",
+      "publication_date": "2026-08-12",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for eight Kpler-tracked vessels on Aug. 12.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-61F0DD052207",
+      "legacy_ids": {
+        "collection": "S010"
+      },
+      "url": "https://www.reuters.com/world/middle-east/russia-is-sharing-satellite-imagery-drone-technology-with-iran-wsj-reports-2026-03-17/",
+      "outlet": "Reuters",
+      "title": "Russia is sharing satellite imagery and drone technology with Iran, WSJ reports",
+      "publication_date": "2026-03-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "EV-20260317-001"
+      ],
+      "proof_note": "Records the WSJ-sourced allegation of Russian support; Reuters said it could not independently verify the report.",
+      "lineage": "Reuters report of WSJ; not independent corroboration",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-6254D39BE9DA",
+      "legacy_ids": {
+        "collection": "S061"
+      },
+      "url": "https://www.reuters.com/world/middle-east/trump-says-no-talks-planned-with-iran-tehran-says-strait-hormuz-still-shut-2026-08-18/",
+      "outlet": "Reuters",
+      "title": "Trump says no talks planned with Iran; Tehran says Hormuz still shut",
+      "publication_date": "2026-08-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "SHIPPING_DATA",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260818-001"
+      ],
+      "proof_note": "Records directly conflicting U.S. and Iranian claims about talks and whether Hormuz is open; public tracked traffic remained in single digits.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-6261F62A2388",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/",
+      "outlet": "Reuters",
+      "title": "Saudi Arabia, Turkey, Pakistan pledge mutual defence as Middle East turmoil escalates",
+      "publication_date": "2026-08-07",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "DIPLOMATIC_POSITION",
+        "FORCE_POSTURE",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-MECCA-JOINT-DEFENSE-2026",
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-005",
+        "EV-20260807-002"
+      ],
+      "proof_note": "Confirms the Mecca Joint Defence Agreement among Saudi Arabia, Türkiye and Pakistan after nearly a year of negotiations; a Turkish official said it was defensive and did not abrogate existing agreements with other states. Reuters identifies all three as U.S. allies.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-62CEDAA21545",
+      "legacy_ids": {
+        "collection": "S060"
+      },
+      "url": "https://www.reuters.com/world/middle-east/battered-by-war-irans-rulers-wary-more-economic-pain-unrest-if-us-tightens-2026-08-17/",
+      "outlet": "Reuters",
+      "title": "Battered by war, Iran’s rulers wary of more economic pain and unrest",
+      "publication_date": "2026-08-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260817-002"
+      ],
+      "proof_note": "Reports July inflation around 66% and food inflation around 128%, documenting severe but not automatically terminal economic strain.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-631C96DF41A7",
+      "legacy_ids": {
+        "collection": "S030"
+      },
+      "url": "https://www.reuters.com/world/middle-east/most-strait-hormuz-shipping-standstill-despite-latest-us-pledge-2026-05-04/",
+      "outlet": "Reuters",
+      "title": "Most Strait of Hormuz shipping at standstill despite latest US pledge",
+      "publication_date": "2026-05-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "CONTINUITY_EVIDENCE",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-EPIC-FURY-OBJECTIVES-2026",
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260504-001"
+      ],
+      "proof_note": "Documents start of Project Freedom context while commercial shipping remained largely stalled, showing military passage did not equal restored commercial confidence.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-64BB58499062",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/us-withdrawing-all-forces-syria-wsj-reports-2026-02-18/",
+      "outlet": "Reuters",
+      "title": "Some US troops departing Syria, official says",
+      "publication_date": "2026-02-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "FORCE_POSTURE",
+        "PREWAR_PLANNING"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "MOV-20260223-SYR-QASRAK",
+        "PRE-20260218-SYR-001",
+        "PRE-20260223-SYR-001"
+      ],
+      "proof_note": "Senior U.S. official described the Syria force reduction as a deliberate and conditions-based transition tied to the Syrian government assuming more counter-ISIS responsibility, ten days before the Iran war began.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-66667A45F235",
+      "legacy_ids": {
+        "collection": "S042"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-drone-missile-attack-hits-kuwait-airport-state-news-agency-says-2026-06-03/",
+      "outlet": "Reuters",
+      "title": "Iran drone and missile attack hits Kuwait airport, state news agency says",
+      "publication_date": "2026-06-03",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "REGIONAL_CORROBORATION",
+        "CONTINUITY_EVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260603-001",
+        "FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT"
+      ],
+      "proof_note": "Documents one fatality and severe terminal damage at Kuwait International Airport while Terminal 4 flight activity provided continuity evidence.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-691C9B6A352A",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-war-drains-us-blood-treasure-2026-07-22/",
+      "outlet": "Reuters",
+      "title": "Iran war drains U.S. blood and treasure",
+      "publication_date": "2026-07-22",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for cumulative U.S. casualty snapshot: 18 service members killed and roughly/more than 430 wounded by July 22.",
+      "lineage": "Reuters original reporting",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-6B8C48817118",
+      "legacy_ids": {},
+      "url": "https://www.defense.gov/News/Releases/Release/Article/3487344/us-iraq-joint-security-cooperation-dialogue-joint-statement/",
+      "outlet": "U.S. Department of Defense",
+      "title": "U.S.-Iraq Joint Security Cooperation Dialogue Joint Statement",
+      "publication_date": "2023-08-08",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "PREWAR_PLANNING",
+        "FORCE_POSTURE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "PRE-20230808-IRQ-001"
+      ],
+      "proof_note": "Primary U.S.-Iraq joint statement: both governments committed to a Higher Military Commission to determine how the Coalition military mission would evolve according to ISIS threat, operational/environmental requirements, and Iraqi force capability. It also states U.S. forces were in Iraq at the Iraqi government’s invitation.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-6C0B7AB1ADB0",
+      "legacy_ids": {
+        "collection": "S063"
+      },
+      "url": "https://www.reuters.com/world/middle-east/uaes-financial-embargo-iran-after-missile-threat-puts-rivalry-back-spotlight-2026-08-19/",
+      "outlet": "Reuters",
+      "title": "UAE financial embargo on Iran after missile threat puts rivalry back in spotlight",
+      "publication_date": "2026-08-19",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "REGIONAL_CORROBORATION",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260819-001"
+      ],
+      "proof_note": "Documents UAE halt to financial/economic dealings after alleging Iranian ballistic missiles targeted maritime traffic; Iran denied the allegation.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-6C49C8F1ACDF",
+      "legacy_ids": {
+        "collection": "S059"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-threatens-go-offensive-strait-hormuz-if-diplomacy-with-us-fails-2026-08-17/",
+      "outlet": "Reuters",
+      "title": "Iran threatens to go offensive in Strait of Hormuz if diplomacy fails",
+      "publication_date": "2026-08-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "DIPLOMATIC_POSITION",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-012",
+        "EV-20260817-001"
+      ],
+      "proof_note": "Records expiry of the 60-day negotiating window and Iranian threat of a more offensive maritime posture.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-6EB96703F633",
+      "legacy_ids": {
+        "collection": "S066"
+      },
+      "url": "https://www.reuters.com/world/middle-east/trump-warns-economic-consequences-any-country-that-supports-iran-2026-08-20/",
+      "outlet": "Reuters",
+      "title": "Trump warns of economic consequences for any country that supports Iran",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "ECONOMIC_DATA",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-013",
+        "EV-20260820-002"
+      ],
+      "proof_note": "Records Trump threatening economic consequences for countries providing Iran a lifeline and Treasury promising exceptionally severe sanctions.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-704574F8CB02",
+      "legacy_ids": {
+        "collection": "S072"
+      },
+      "url": "https://www.acc.af.mil/News/Article-Display/Article/2419162/usafcent-upgrades-caoc-while-demonstrating-distributed-operations/",
+      "outlet": "Air Combat Command",
+      "title": "USAFCENT upgrades CAOC while demonstrating distributed operations",
+      "publication_date": "2020-11-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "PREWAR_PLANNING",
+        "CONTINUITY_EVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+        "FAC-QAT-AL-UDEID",
+        "PRE-20201118-001"
+      ],
+      "proof_note": "Official pre-war evidence that USAFCENT had already operated CAOC functions from Shaw and designed distributed C2 to avoid dependence on one facility.",
+      "lineage": "primary historical",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-7160505543FE",
+      "legacy_ids": {
+        "collection": "S007"
+      },
+      "url": "https://www.reuters.com/world/middle-east/qatar-wants-bolster-security-partnership-with-us-after-irans-strikes-2026-03-10/",
+      "outlet": "Reuters",
+      "title": "Qatar wants to bolster security partnership with US after Iran strikes",
+      "publication_date": "2026-03-10",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "DIPLOMATIC_POSITION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260310-001"
+      ],
+      "proof_note": "Shows Qatar sought stronger U.S. security cooperation after Iranian strikes on facilities including Al Udeid.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-72E371C289C9",
+      "legacy_ids": {
+        "collection": "S087"
+      },
+      "url": "https://www.thenationalnews.com/news/gulf/2026/08/12/pakistan-makes-final-truce-push-as-us-iran-deadline-looms/",
+      "outlet": "The National",
+      "title": "Pakistan in final truce push as US-Iran deadline looms",
+      "publication_date": "2026-08-12",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-011",
+        "EV-20260812-001"
+      ],
+      "proof_note": "Regional forward trace of final mediation push before the 60-day window expired and Iran’s stated conditions for reopening Hormuz.",
+      "lineage": "The National original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-7538CF574DDF",
+      "legacy_ids": {
+        "collection": "S070"
+      },
+      "url": "https://www.airandspaceforces.com/us-air-operations-center-qatar-severely-damaged-iran/",
+      "outlet": "Air & Space Forces Magazine",
+      "title": "Iran Severely Damaged US Air Ops Center in Qatar Soon After War Began",
+      "publication_date": "2026-06-05",
+      "publication_time": null,
+      "author": "Chris Gordon",
+      "source_roles": [
+        "BDA",
+        "CONTINUITY_EVIDENCE",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+        "FAC-QAT-AL-UDEID"
+      ],
+      "proof_note": "Senior U.S. official/other informed sources: multiple missiles rendered Al Udeid CAOC inoperable; facility was not in use, no injuries; air campaign and later strikes continued from Shaw.",
+      "lineage": "specialized independent reporting",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-75B726B1EA91",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c",
+      "outlet": "Associated Press",
+      "title": "AP Iran war escalation and Hormuz shipping report",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for Hormuz disruption and commercial-ship attack context.",
+      "lineage": "Associated Press source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-777D501C321D",
+      "legacy_ids": {
+        "collection": "S011"
+      },
+      "url": "https://www.reuters.com/world/us-deploy-thousands-additional-troops-middle-east-officials-say-2026-03-20/",
+      "outlet": "Reuters",
+      "title": "US to deploy thousands of additional troops to Middle East, officials say",
+      "publication_date": "2026-03-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "FORCE_POSTURE",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260320-001",
+        "MOV-20260320-001",
+        "MOV-20260320-002"
+      ],
+      "proof_note": "Documents USS Boxer/MEU reinforcement accelerated by about three weeks and broader U.S. force posture, while noting no decision for ground combat in Iran.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-77D13A92FD64",
+      "legacy_ids": {
+        "collection": "S013"
+      },
+      "url": "https://www.reuters.com/world/middle-east/trump-threatens-iran-with-power-plant-strikes-over-hormuz-blockade-2026-03-22/",
+      "outlet": "Reuters",
+      "title": "Trump threatens Iran with power plant strikes over Hormuz blockade",
+      "publication_date": "2026-03-22",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260322-001"
+      ],
+      "proof_note": "Records U.S. threat to strike Iranian power infrastructure and Iran’s threatened response against regional energy, IT and desalination systems.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-7831E5A00A7B",
+      "legacy_ids": {
+        "collection": "S067"
+      },
+      "url": "https://www.reuters.com/world/middle-east/us-treasury-secretary-bessent-hold-press-conference-iran-on-monday-2026-08-20/",
+      "outlet": "Reuters",
+      "title": "Bessent says US will impose toughest ever sanctions on Iran, urges China to cooperate",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "ECONOMIC_DATA",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-013",
+        "EV-20260820-002"
+      ],
+      "proof_note": "Records Bessent’s sanctions announcement and focus on China as the dominant buyer of exported Iranian oil; detailed measures were still pending at cutoff.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-7F8C51C69FF9",
+      "legacy_ids": {
+        "collection": "S086"
+      },
+      "url": "https://www.thenationalnews.com/news/uae/2026/08/13/uae-condemns-attack-on-two-adnoc-ships-in-strait-of-hormuz/",
+      "outlet": "The National",
+      "title": "UAE condemns attack on two ADNOC ships in Strait of Hormuz",
+      "publication_date": "2026-08-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "SHIPPING_DATA",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260813-002"
+      ],
+      "proof_note": "Regional account of ADNOC/UAE statements: two vessels attacked, no injuries, UAE blamed Iran while Iran had not accepted responsibility at publication.",
+      "lineage": "The National original reporting of UAE official claim",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-80791B854E19",
+      "legacy_ids": {},
+      "url": "https://apnews.com/article/7d050ff17a0c52298207bd9e60851fcd",
+      "outlet": "Associated Press",
+      "title": "Officials say US forces on track to complete Iraq pullout by Sept. 30",
+      "publication_date": "2026-08-12",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "FORCE_POSTURE",
+        "LATER_OUTCOME",
+        "PREWAR_PLANNING"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "EV-20260812-003",
+        "MOV-202607-IRQ-ERBIL"
+      ],
+      "proof_note": "AP reports the remaining U.S. Iraq withdrawal remains on track for Sept. 30, 2026 under the 2024 Washington-Baghdad agreement; Kurdish officials said personnel/equipment drawdown from Erbil had begun about three weeks earlier.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-824548DBBB68",
+      "legacy_ids": {
+        "collection": "S068"
+      },
+      "url": "https://www.reuters.com/business/energy/trump-threatens-isolate-iran-who-are-its-trading-partners-2026-08-20/",
+      "outlet": "Reuters",
+      "title": "Trump threatens to isolate Iran: who are its trading partners?",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Provides trade-partner context relevant to the proposed secondary economic pressure campaign.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-84C62BAB5B65",
+      "legacy_ids": {
+        "collection": "S080"
+      },
+      "url": "https://www.thenationalnews.com/business/energy/2026/04/13/risks-to-shipping-high-as-us-begins-strait-of-hormuz-blockade/",
+      "outlet": "The National",
+      "title": "Risks to shipping high as US begins Strait of Hormuz blockade",
+      "publication_date": "2026-04-13",
+      "publication_time": null,
+      "author": "Fareed Rahman",
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "SHIPPING_DATA",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "DIP-PKG-005",
+        "EV-20260413-001"
+      ],
+      "proof_note": "Regional corroboration: two laden exits on Apr. 13 versus about 140 daily pre-war; shipowners still assessed transit as unsafe/insurable risk despite policy changes.",
+      "lineage": "The National original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-8606F9274324",
+      "legacy_ids": {
+        "collection": "S035"
+      },
+      "url": "https://www.reuters.com/world/asia-pacific/pakistan-hands-us-revised-iranian-proposal-ending-war-2026-05-18/",
+      "outlet": "Reuters",
+      "title": "Pakistan hands US revised Iranian proposal for ending war",
+      "publication_date": "2026-05-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260518-002"
+      ],
+      "proof_note": "Records revised proposal and Trump’s claim that a planned U.S. attack was paused; Reuters could not determine whether preparations for the claimed attack existed.",
+      "lineage": "Reuters original; attack-preparation claim unverified",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-87167CE9136F",
+      "legacy_ids": {
+        "collection": "S004"
+      },
+      "url": "https://www.reuters.com/business/aerospace-defense/israel-us-launch-strikes-iran-2026-02-28/",
+      "outlet": "Reuters",
+      "title": "Israel, US launch strikes on Iran",
+      "publication_date": "2026-02-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-US-IRAN-FIRST-STRIKE-2026",
+        "EV-20260228-001"
+      ],
+      "proof_note": "Factual spine for the opening U.S.-Israeli strikes, death of Ali Khamenei, Iranian retaliation and early Hormuz restriction claims.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-877766ED3824",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/us-launches-iran-strikes-ninth-day-another-american-confirmed-killed-2026-07-20/",
+      "outlet": "Reuters",
+      "title": "U.S. launches Iran strikes for ninth day as another American confirmed killed",
+      "publication_date": "2026-07-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for 17 U.S. KIA / >430 WIA cumulative snapshot.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-887221921E34",
+      "legacy_ids": {
+        "collection": "S006"
+      },
+      "url": "https://www.reuters.com/world/middle-east/middle-east-oil-shipping-costs-surge-all-time-high-us-iran-conflict-intensifies-2026-03-02/",
+      "outlet": "Reuters",
+      "title": "Middle East oil shipping costs surge as US-Iran conflict intensifies",
+      "publication_date": "2026-03-02",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "ECONOMIC_DATA",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260302-002"
+      ],
+      "proof_note": "Documents effective closure conditions and record/highly elevated freight and war-risk costs immediately after the war began.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-8C302F9CD6F7",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/us-military-begins-withdrawing-main-base-northeast-syria-syrian-sources-say-2026-02-23/",
+      "outlet": "Reuters",
+      "title": "US military begins withdrawing from main base in northeast Syria, Syrian sources say",
+      "publication_date": "2026-02-23",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "FORCE_POSTURE",
+        "PREWAR_PLANNING"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "MOV-20260223-SYR-QASRAK",
+        "PRE-20260223-SYR-001"
+      ],
+      "proof_note": "Independent reporting of the Qasrak drawdown five days before the Iran war; a senior U.S. official called the Syria reduction a deliberate and conditions-based transition as Damascus assumed greater counter-ISIS responsibility.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-8E5FBD1AE0C0",
+      "legacy_ids": {
+        "collection": "S041"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-eyes-limited-us-deal-relieve-economic-strain-buy-time-2026-06-01/",
+      "outlet": "Reuters",
+      "title": "Iran eyes limited US deal to relieve economic strain and buy time",
+      "publication_date": "2026-06-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260601-001"
+      ],
+      "proof_note": "Reports Iranian interest in a limited interim arrangement involving hostilities pause, waivers, assets and economic relief.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-90DA8D027955",
+      "legacy_ids": {
+        "collection": "S017"
+      },
+      "url": "https://www.reuters.com/world/asia-pacific/yemens-houthis-enter-iran-war-with-attacks-israel-while-us-marines-arrive-region-2026-03-28/",
+      "outlet": "Reuters",
+      "title": "Houthis enter Iran war as US Marines arrive in region",
+      "publication_date": "2026-03-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "FORCE_POSTURE",
+        "BDA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260328-001",
+        "EV-20260328-002",
+        "FAC-IRN-KHONDAB-HEAVY-WATER"
+      ],
+      "proof_note": "Documents Houthi entry, U.S. Marine arrival, intensive Israeli strike activity, and IAEA assessment of severe Khondab damage.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-9396B216601A",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/turkey-pakistan-saudi-arabia-defence-pact-technically-same-natos-article-5-2026-08-08/",
+      "outlet": "Reuters",
+      "title": "Turkey, Pakistan, Saudi Arabia defence pact technically same as NATO Article 5, Turkish minister says",
+      "publication_date": "2026-08-08",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "DIPLOMATIC_POSITION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-MECCA-JOINT-DEFENSE-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-005",
+        "EV-20260807-002"
+      ],
+      "proof_note": "Follow-up reporting: Turkish foreign minister said the pact was not directed at Iran, had been under development for two years and eight months, and did not seek to replace existing alliances.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-96170CB468F4",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/",
+      "outlet": "Reuters",
+      "title": "Iran renews attacks on Gulf states after another night of U.S. strikes",
+      "publication_date": "2026-07-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for July 17-18 U.S. casualties and regional attack reporting.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-9EB7D0DCB798",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/",
+      "outlet": "Reuters",
+      "title": "Fatal attacks on ships in Red Sea/Gulf",
+      "publication_date": "2026-08-11",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for Tihamah casualties and U.S. disabling of Vela Nova.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-A1739E70EEDC",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/saudi-arabia-expects-imminent-attacks-north-south-senior-official-says-2026-08-06/",
+      "outlet": "Reuters",
+      "title": "Saudi Arabia expects imminent attacks from north and south, senior official says",
+      "publication_date": "2026-08-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for Saudi civilian wounded and Yemen pro-government troop losses in related escalation.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-A28F817FCF49",
+      "legacy_ids": {
+        "collection": "S050"
+      },
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-declare-naval-blockade-against-saudi-arabia-statement-2026-07-20/",
+      "outlet": "Reuters",
+      "title": "Yemen’s Houthis declare naval blockade against Saudi Arabia",
+      "publication_date": "2026-07-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260720-001"
+      ],
+      "proof_note": "Records Houthi declaration expanding maritime pressure to Saudi Arabia.",
+      "lineage": "Reuters original reporting of Houthi statement",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-A2DF44867E0E",
+      "legacy_ids": {
+        "collection": "S047"
+      },
+      "url": "https://www.reuters.com/business/energy/us-oil-prices-jump-after-us-military-launches-strikes-against-iran-2026-07-07/",
+      "outlet": "Reuters",
+      "title": "US oil prices jump after military launches strikes against Iran",
+      "publication_date": "2026-07-07",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "LATER_OUTCOME",
+        "ECONOMIC_DATA",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-EPIC-FURY-OBJECTIVES-2026",
+        "DIP-PKG-009",
+        "EV-20260707-001"
+      ],
+      "proof_note": "Records Trump declaring the June interim arrangement over after renewed Iranian attacks and resumption/escalation of strikes.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-A3FAF2999E6B",
+      "legacy_ids": {
+        "collection": "S052"
+      },
+      "url": "https://www.reuters.com/world/middle-east/us-eyes-indefinite-iran-naval-blockade-oil-supply-shortfall-deepens-2026-08-13/",
+      "outlet": "Reuters",
+      "title": "US eyes indefinite Iran naval blockade as oil supply shortfall deepens",
+      "publication_date": "2026-08-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "FORCE_POSTURE",
+        "SHIPPING_DATA",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260813-001"
+      ],
+      "proof_note": "Reports U.S. statement that blockade can be sustained by rotations and Kpler traffic far below pre-war levels.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-A56F4E9B7A5C",
+      "legacy_ids": {
+        "collection": "S020"
+      },
+      "url": "https://www.reuters.com/world/middle-east/one-month-into-iran-war-only-hard-choices-trump-2026-03-28/",
+      "outlet": "Reuters",
+      "title": "One month into Iran war, only hard choices for Trump",
+      "publication_date": "2026-03-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-EPIC-FURY-OBJECTIVES-2026",
+        "EV-20260328-003"
+      ],
+      "proof_note": "Independent analysis of operational and political choices at the one-month mark.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-A71BC15C30DB",
+      "legacy_ids": {
+        "collection": "S036"
+      },
+      "url": "https://www.reuters.com/investigations/iran-is-consolidating-control-hormuz-with-island-checkpoints-diplomatic-deals-2026-05-20/",
+      "outlet": "Reuters",
+      "title": "Iran is consolidating control of Hormuz with island checkpoints and diplomatic deals",
+      "publication_date": "2026-05-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "TECHNICAL_ANALYSIS",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260520-001"
+      ],
+      "proof_note": "Deep investigation of conditional/tiered passage, checkpoints, state-to-state arrangements and very low traffic versus pre-war baselines; some claimed fees remain unverified.",
+      "lineage": "Reuters investigation",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-AA1020760411",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.elibrary.imf.org/abstract/book/9798229047999/CH001.xml",
+      "outlet": "IMF",
+      "title": "IMF July 2026 WEO Update",
+      "publication_date": "2026-07-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Current atlas source for Iran July 2026 growth forecast.",
+      "lineage": "primary official/IMF",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-AB2381268A40",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549635/centcom-statement-on-recently-fallen-missing-us-service-members/",
+      "outlet": "U.S. Central Command",
+      "title": "CENTCOM statement on recently fallen/missing U.S. service members",
+      "publication_date": "2026-07-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "CASUALTY_CONFIRMATION"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Primary U.S. military statement on two KIA, one MIA, and medically evacuated personnel after the Jordan attack.",
+      "lineage": "primary official",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-AC40CCC92A43",
+      "legacy_ids": {
+        "collection": "S083"
+      },
+      "url": "https://www.thenationalnews.com/news/us/2026/08/20/bessent-iran-sanctions/",
+      "outlet": "The National",
+      "title": "Bessent vows to isolate Iran’s economy as US increases pressure on allies",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": "Kyle Fitzgerald",
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "ECONOMIC_DATA",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-013",
+        "EV-20260820-002"
+      ],
+      "proof_note": "Regional corroboration of Treasury’s Aug. 20 sanctions escalation; details deferred to a Monday press conference.",
+      "lineage": "The National original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-AF45CA5FA4C9",
+      "legacy_ids": {
+        "collection": "S046"
+      },
+      "url": "https://www.reuters.com/business/energy/shell-expects-65-rise-global-lng-demand-by-2050-2026-06-30/",
+      "outlet": "Reuters",
+      "title": "Shell says Hormuz disruption shut off major share of monthly global LNG supply",
+      "publication_date": "2026-06-30",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "SHIPPING_DATA",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260630-001",
+        "FAC-QAT-LNG-SYSTEM"
+      ],
+      "proof_note": "Quantifies LNG-market consequence of Hormuz disruption, including approximately one-fifth of monthly global LNG supply affected.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-B106A3769146",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/asia-pacific/sri-lanka-rescues-30-people-board-distressed-iranian-ship-foreign-minister-says-2026-03-04/",
+      "outlet": "Reuters",
+      "title": "Sri Lanka rescue reporting on IRIS Dena",
+      "publication_date": "2026-03-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "CASUALTY_CONFIRMATION",
+        "BDA"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for the confirmed sinking of IRIS Dena and recovery/rescue reporting.",
+      "lineage": "Reuters original reporting",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-B3FFD2E97368",
+      "legacy_ids": {
+        "collection": "S058"
+      },
+      "url": "https://www.reuters.com/world/middle-east/shipping-via-hormuz-strait-slows-after-tanker-attacks-data-shows-2026-08-16/",
+      "outlet": "Reuters",
+      "title": "Shipping via Hormuz slows after tanker attacks, data shows",
+      "publication_date": "2026-08-16",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260816-001"
+      ],
+      "proof_note": "Kpler reports five commodity vessels Saturday and none Sunday at snapshot, with AIS-dark caveat; remains far below prewar traffic.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-B6B934C693E0",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://apnews.com/article/iran-us-war-satellite-photos-damage-uae-bahrain-4b5edabf4c8cc89a56150ca4f1b7c06f",
+      "outlet": "Associated Press",
+      "title": "AP satellite-photo review of damage at U.S.-linked Gulf bases",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BDA",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for physical damage at multiple U.S.-linked Gulf facilities.",
+      "lineage": "AP original reporting",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-B6BD666BCD4C",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/most-gulf-area-economies-face-deeper-downturns-this-year-hormuz-disruption-2026-07-16/",
+      "outlet": "Reuters",
+      "title": "Most Gulf area economies face deeper downturns this year on Hormuz disruption",
+      "publication_date": "2026-07-16",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for July 2026 Reuters poll median GDP forecasts for GCC economies.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-B73D6749ACAD",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://abcnews.com/US/wireStory/us-military-death-toll-iran-war-rises-14-134728938",
+      "outlet": "Associated Press via ABC News",
+      "title": "AP/ABC News U.S. military death-toll reconstruction",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source used to reconstruct U.S. event-level deaths and non-hostile operational losses earlier in the war.",
+      "lineage": "Associated Press syndication via ABC News",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-BB3EED5C3240",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://apnews.com/article/iran-us-israel-trump-lebanon-march-28-2026-0f919596403d2f851196451f4532717e",
+      "outlet": "Associated Press",
+      "title": "AP regional war update, March 28",
+      "publication_date": "2026-03-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for a Gulf-state regional casualty snapshot and Prince Sultan/Houthi reporting.",
+      "lineage": "Associated Press source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-BCB32C965F32",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/",
+      "outlet": "Reuters",
+      "title": "UK, Italy among states considered to verify Hezbollah disarmament, sources say",
+      "publication_date": "2026-08-12",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "DIPLOMATIC_POSITION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-006",
+        "EV-20260812-002",
+        "EV-20260813-003"
+      ],
+      "proof_note": "Reported Britain, Italy, Switzerland and Indonesia as potential contributors to a proposed verification mechanism arising from U.S.-mediated Rome talks; reporting itself said composition negotiations were ongoing and no final agreement had been reached.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-BD807ACB7FF3",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.csis.org/analysis/850-tomahawks-launched-operation-epic-fury-most-fired-single-campaign",
+      "outlet": "Center for Strategic and International Studies (CSIS)",
+      "title": "The 850 Tomahawks Launched in Operation Epic Fury Is the Most Fired in a Single Campaign",
+      "publication_date": "2026-03-27",
+      "publication_time": null,
+      "author": "Mark F. Cancian; Chris H. Park",
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "MUNITIONS_EXPENDITURE",
+        "COST_MODEL"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "CSIS cited reporting that more than 850 Tomahawks were fired in the first four weeks and used a $3.6M per-shot figure from then-current Navy budget documents.",
+      "lineage": "CSIS analysis using Washington Post reporting and Navy budget documents",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-BFCDC2B49D89",
+      "legacy_ids": {
+        "collection": "S051"
+      },
+      "url": "https://www.reuters.com/world/middle-east/deal-reopen-hormuz-2026-08-05/",
+      "outlet": "Reuters",
+      "title": "Proposed deal to reopen Hormuz exposes gaps over inspections and fees",
+      "publication_date": "2026-08-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "SHIPPING_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-010",
+        "EV-20260805-001"
+      ],
+      "proof_note": "Documents proposed control/inspection/fee arrangements and notes the June 17 deal had unraveled within roughly three weeks.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-C092F7F591FC",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://apnews.com/article/69191dde43154c5176a8aeacc9128748",
+      "outlet": "Associated Press",
+      "title": "Associated Press reporting on IRIS Dena sinking",
+      "publication_date": "2026-03-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "CASUALTY_CONFIRMATION",
+        "BDA"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Independent confirmation used by the current atlas for IRIS Dena's sinking and casualties.",
+      "lineage": "AP original reporting",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-C4FF4F823E1F",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.csis.org/analysis/war-may-be-ending-what-did-epic-fury-cost",
+      "outlet": "Center for Strategic and International Studies (CSIS)",
+      "title": "The War May Be Ending. What Did Epic Fury Cost?",
+      "publication_date": "2026-06-23",
+      "publication_time": null,
+      "author": "Mark F. Cancian; Chris H. Park",
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "ECONOMIC_DATA",
+        "MUNITIONS_EXPENDITURE",
+        "COST_MODEL"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Analytical estimate of incremental U.S. DoD war costs: $34B-$42B; $26.1B munitions; $1.8B-$3.5B equipment losses/damage; $4.0B-$9.4B base/fixed-infrastructure damage; 13,629 strike munitions by the ceasefire. Estimate predates renewed July fighting.",
+      "lineage": "independent analytical estimate",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-CAC4D4DF4A81",
+      "legacy_ids": {
+        "collection": "S065"
+      },
+      "url": "https://www.reuters.com/business/energy/oil-prices-steady-investors-assess-us-iran-war-outlook-2026-08-20/",
+      "outlet": "Reuters",
+      "title": "Oil prices steady as investors assess US-Iran war outlook",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260820-004"
+      ],
+      "proof_note": "Current-day oil-price snapshot and market reaction to war/negotiation uncertainty.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-CEBE7CCFF600",
+      "legacy_ids": {},
+      "url": "https://www.defense.gov/News/News-Stories/Article/Article/3920032/inherent-resolve-mission-in-iraq-and-syria-transitioning/",
+      "outlet": "U.S. Department of Defense",
+      "title": "Inherent Resolve Mission in Iraq and Syria Transitioning",
+      "publication_date": "2024-09-27",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "PREWAR_PLANNING",
+        "FORCE_POSTURE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-001",
+        "PRE-20240927-IRQ-001"
+      ],
+      "proof_note": "DoD explains the jointly decided two-phase transition plan and says coalition forces would withdraw from mutually determined locations while the relationship transitions to long-term bilateral security partnerships.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-D129A9FA0378",
+      "legacy_ids": {
+        "collection": "S073"
+      },
+      "url": "https://www.centcom.mil/MEDIA/NEWS-ARTICLES/News-Article-View/Article/1976249/command-and-control-of-afcent-from-shaw-not-caoc/",
+      "outlet": "U.S. Central Command",
+      "title": "Command and control of AFCENT from Shaw, not CAOC",
+      "publication_date": "2019-10-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "PREWAR_PLANNING"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+        "FAC-QAT-AL-UDEID",
+        "PRE-20201118-001"
+      ],
+      "proof_note": "Official record of a 24-hour transfer of AFCENT command-and-control functions from Al Udeid to Shaw, demonstrating pre-war distributed operations.",
+      "lineage": "primary historical",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-D1D26F5E9AA2",
+      "legacy_ids": {
+        "collection": "S031"
+      },
+      "url": "https://www.reuters.com/world/middle-east/irans-fars-news-agency-reports-incident-with-us-warship-strait-hormuz-2026-05-04/",
+      "outlet": "Reuters",
+      "title": "Iran’s Fars reports incident with US warship in Strait of Hormuz",
+      "publication_date": "2026-05-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260504-002"
+      ],
+      "proof_note": "Records Iranian claim that a U.S. warship was struck and turned back; article does not independently verify the claimed combat effect.",
+      "lineage": "Reuters report of Iranian state-aligned claim",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-D4268D5E43FB",
+      "legacy_ids": {},
+      "url": "https://www.aljazeera.com/features/2026/6/27/israel-lebanon-deal-ties-ceasefire-to-hezbollah-disarmament-will-it-work",
+      "outlet": "Al Jazeera",
+      "title": "Israel-Lebanon deal ties ceasefire to Hezbollah disarmament: Will it work?",
+      "publication_date": "2026-06-27",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "DIPLOMATIC_POSITION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "AGR-ISR-LBN-FRAMEWORK-2026",
+        "DIP-INT-003",
+        "EV-20260626-001"
+      ],
+      "proof_note": "Regional corroboration that four days of Washington talks were brokered by the U.S.; identifies the State Department signing ceremony and the sequenced framework linking Lebanese sovereign control/verified disarmament to Israeli redeployment.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-D6F67C3C1DA1",
+      "legacy_ids": {
+        "collection": "S056"
+      },
+      "url": "https://www.reuters.com/world/middle-east/us-warns-iran-it-will-step-up-economic-pressure-two-more-ships-attacked-hormuz-2026-08-14/",
+      "outlet": "Reuters",
+      "title": "US warns Iran it will step up economic pressure as ships attacked in Hormuz",
+      "publication_date": "2026-08-14",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "SHIPPING_DATA",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Connects new tanker attacks with U.S. economic-pressure warnings while preserving uncertainty around responsibility where relevant.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-DBD040C6756B",
+      "legacy_ids": {
+        "collection": "S053"
+      },
+      "url": "https://www.reuters.com/world/middle-east/bessent-says-us-apply-measures-never-seen-iran-2026-08-13/",
+      "outlet": "Reuters",
+      "title": "Bessent says US to apply measures never seen on Iran",
+      "publication_date": "2026-08-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Records Treasury signaling a new phase of economic isolation combined with the naval blockade.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-DDB039D3C975",
+      "legacy_ids": {
+        "collection": "S029"
+      },
+      "url": "https://www.reuters.com/business/energy/us-seeks-international-help-reopen-strait-hormuz-crude-prices-surge-2026-04-30/",
+      "outlet": "Reuters",
+      "title": "US seeks international help to reopen Strait of Hormuz",
+      "publication_date": "2026-04-30",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "DIPLOMATIC_POSITION",
+        "FORCE_POSTURE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260430-002"
+      ],
+      "proof_note": "Documents U.S. coalition/escort outreach and Iran’s threat of renewed retaliation.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-DF7B6D820D63",
+      "legacy_ids": {
+        "collection": "S044"
+      },
+      "url": "https://www.reuters.com/world/middle-east/14-point-draft-us-iran-deal-2026-06-17/",
+      "outlet": "Reuters",
+      "title": "Text of 14-point draft US-Iran deal",
+      "publication_date": "2026-06-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "AGR-US-IRN-14POINT-MOU-2026",
+        "DIP-PKG-008",
+        "EV-20260617-001"
+      ],
+      "proof_note": "Provides the detailed 14-point interim framework covering end of operations, blockade removal, Hormuz passage, sanctions, assets, nuclear terms and monitoring.",
+      "lineage": "Reuters obtained/reported text",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-DFF12FB2C9ED",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-resume-attacks-mocha-port-city-yemeni-military-spokesperson-says-2026-08-09/",
+      "outlet": "Reuters",
+      "title": "Yemen's Houthis resume attacks on Mocha port city",
+      "publication_date": "2026-08-09",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CASUALTY_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Current atlas source for Mocha casualty split: four armed-forces personnel and three civilians killed, 30 wounded.",
+      "lineage": "Reuters source used by current atlas",
+      "source_origin": "existing_atlas"
+    },
+    {
+      "source_id": "SRC-E229B42C1EB1",
+      "legacy_ids": {
+        "collection": "S055"
+      },
+      "url": "https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-capped-amid-competing-claims-us-iran-2026-08-14/",
+      "outlet": "Reuters",
+      "title": "Hormuz shipping traffic capped amid competing US-Iran claims",
+      "publication_date": "2026-08-14",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260814-001"
+      ],
+      "proof_note": "Kpler snapshot: nine commodity transits Thursday vs five Wednesday, August average about 12; notes AIS-dark movements may be missing.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-E277CF2E03A3",
+      "legacy_ids": {
+        "collection": "S001"
+      },
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4399887/centcom-commander-visits-aircraft-carrier-in-arabian-sea/",
+      "outlet": "U.S. Central Command",
+      "title": "CENTCOM Commander Visits Aircraft Carrier in Arabian Sea",
+      "publication_date": "2026-02-07",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "PREWAR_PLANNING",
+        "FORCE_POSTURE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CASE-US-CARRIER-RETREAT-GULF-2026",
+        "EV-20260814-002",
+        "EV-20260820-003",
+        "MOV-20260207-001",
+        "MOV-20260814-001",
+        "PRE-20260207-001"
+      ],
+      "proof_note": "Primary U.S. military record: Abraham Lincoln was in the Arabian Sea on a scheduled deployment before the war; departed homeport in November and reached Middle East in January.",
+      "lineage": "primary",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-E27CBB0AD0BC",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/israel-drops-leaflets-over-south-lebanon-town-ordering-residents-leave-2026-06-26/",
+      "outlet": "Reuters",
+      "title": "Israel, Lebanon sign initial agreement after US-mediated talks",
+      "publication_date": "2026-06-26",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "DIPLOMATIC_POSITION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-ISR-LBN-FRAMEWORK-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "DIP-INT-003",
+        "EV-20260626-001"
+      ],
+      "proof_note": "Confirms a U.S.-mediated Israel-Lebanon framework signed in Washington, with U.S. involvement in implementation including a Military Coordination Group and U.S. humanitarian support.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-E6B1159781EB",
+      "legacy_ids": {},
+      "url": "https://www.defense.gov/News/Transcripts/Transcript/Article/3656654/senior-defense-military-and-state-department-officials-hold-a-us-iraq-higher-mi/",
+      "outlet": "U.S. Department of Defense",
+      "title": "U.S.-Iraq Higher Military Commission Background Briefing",
+      "publication_date": "2024-01-25",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "PREWAR_PLANNING",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+        "PRE-20240125-IRQ-001"
+      ],
+      "proof_note": "Primary briefing states the HMC launch was long-planned from the August 2023 U.S.-Iraq commitment and was proceeding despite militia attacks, not because of them; officials described it as a jointly determined future force-presence process.",
+      "lineage": "supplemental integration research",
+      "source_origin": "supplemental_integration_research_2026-08-20"
+    },
+    {
+      "source_id": "SRC-E79574E72235",
+      "legacy_ids": {
+        "collection": "S005"
+      },
+      "url": "https://www.reuters.com/world/us/pentagon-tells-congress-no-sign-that-iran-was-going-attack-us-first-sources-say-2026-03-02/",
+      "outlet": "Reuters",
+      "title": "Pentagon tells Congress no sign Iran was going to attack US first, sources say",
+      "publication_date": "2026-03-02",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-US-IRAN-FIRST-STRIKE-2026",
+        "EV-20260302-001"
+      ],
+      "proof_note": "Reports a classified congressional briefing was told there was no intelligence showing Iran planned to attack U.S. forces first.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-E7CF466D7C4C",
+      "legacy_ids": {
+        "collection": "S037"
+      },
+      "url": "https://www.everycrsreport.com/files/2026-06-03_R48971_a456a73ab9da287746f46a13f7363d7d9e0386dd.pdf",
+      "outlet": "Congressional Research Service",
+      "title": "The Arab Gulf States, the Iran Conflict, and U.S. Relations: In Brief",
+      "publication_date": "2026-06-03",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "TECHNICAL_ANALYSIS",
+        "BDA",
+        "CASUALTY_CONFIRMATION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "EV-20260517-001",
+        "FAC-UAE-BARAKAH"
+      ],
+      "proof_note": "Government research snapshot: >6,700 Iranian drones/missiles directed at GCC states from Feb. 28-May 17; May 17 Barakah generator hit outside inner perimeter; broad interception and casualty context.",
+      "lineage": "primary government research synthesis",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-EE4B64925CA5",
+      "legacy_ids": {
+        "collection": "S079"
+      },
+      "url": "https://www.arabnews.com/node/2639171/pakistan",
+      "outlet": "Arab News",
+      "title": "Hope rises for Islamabad talks as Pakistan-mediated efforts lead to two-week US-Iran ceasefire",
+      "publication_date": "2026-04-08",
+      "publication_time": null,
+      "author": "Hasaan Ali Khan",
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-004",
+        "EV-20260408-001"
+      ],
+      "proof_note": "Regional/Pakistani corroboration of the Pakistan-mediated two-week ceasefire and linkage to temporary Hormuz reopening.",
+      "lineage": "Arab News original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-EF1D932D8488",
+      "legacy_ids": {
+        "collection": "S032"
+      },
+      "url": "https://www.reuters.com/world/china/ten-civilian-sailors-have-died-strait-hormuz-rubio-says-2026-05-05/",
+      "outlet": "Reuters",
+      "title": "Ten civilian sailors have died in Strait of Hormuz, Rubio says",
+      "publication_date": "2026-05-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "SHIPPING_DATA",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-EPIC-FURY-OBJECTIVES-2026",
+        "EV-20260505-001"
+      ],
+      "proof_note": "Records Rubio’s statement that Epic Fury had concluded and Project Freedom was a separate defensive operation, while enriched uranium remained an unresolved issue.",
+      "lineage": "Reuters original reporting of official statement",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-EF8EDACF7DA3",
+      "legacy_ids": {
+        "collection": "S077"
+      },
+      "url": "https://www.aljazeera.com/amp/features/2026/6/8/satellite-images-show-destruction-of-the-us-israel-war-on-iran",
+      "outlet": "Al Jazeera",
+      "title": "Satellite images show destruction from US-Israel war on Iran",
+      "publication_date": "2026-06-08",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "SATELLITE_IMAGERY",
+        "BDA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+        "FAC-QAT-AL-UDEID"
+      ],
+      "proof_note": "Regional imagery analysis covering multiple fixed sites including Al Udeid and providing non-U.S. corroboration of visible damage.",
+      "lineage": "Al Jazeera original/technical compilation",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-F0035CD212FD",
+      "legacy_ids": {
+        "collection": "S078"
+      },
+      "url": "https://www.aljazeera.com/news/liveblog/2026/2/28/live-israel-launches-attacks-on-iran-multiple-explosions-heard-in-tehran",
+      "outlet": "Al Jazeera",
+      "title": "US, Israel attack Iran live: Khamenei killed, Tehran launches attacks",
+      "publication_date": "2026-02-28",
+      "publication_time": null,
+      "author": "Multiple live-blog reporters",
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260228-001"
+      ],
+      "proof_note": "Regional contemporaneous reporting of opening strikes, Khamenei’s death and Iranian retaliation claims.",
+      "lineage": "Al Jazeera original/live",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-F0CD832C6472",
+      "legacy_ids": {
+        "collection": "S018"
+      },
+      "url": "https://apnews.com/article/0f919596403d2f851196451f4532717e",
+      "outlet": "Associated Press",
+      "title": "Yemen’s Houthis enter Iran war with attacks on Israel",
+      "publication_date": "2026-03-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260328-001"
+      ],
+      "proof_note": "Independent factual-spine corroboration of Houthi entry into the conflict.",
+      "lineage": "AP original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-F342B5872062",
+      "legacy_ids": {
+        "collection": "S064"
+      },
+      "url": "https://www.reuters.com/world/middle-east/hormuz-shipping-unchanged-amid-us-iran-stalemate-data-shows-2026-08-20/",
+      "outlet": "Reuters",
+      "title": "Hormuz shipping unchanged amid US-Iran stalemate, data shows",
+      "publication_date": "2026-08-20",
+      "publication_time": null,
+      "author": "Jeslyn Lerh",
+      "source_roles": [
+        "SHIPPING_DATA",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260711-001",
+        "EV-20260820-001"
+      ],
+      "proof_note": "Kpler: nine commodity vessels crossed on both Tuesday and Wednesday; Bab el-Mandeb fell to 27 Wednesday from 32 Tuesday; AIS-dark traffic excluded.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-F54E8612EADA",
+      "legacy_ids": {
+        "collection": "S025"
+      },
+      "url": "https://www.reuters.com/world/asia-pacific/world-weighs-fate-mideast-ceasefire-after-us-seizes-iranian-cargo-ship-2026-04-20/",
+      "outlet": "Reuters",
+      "title": "World weighs fate of Middle East ceasefire after US seizes Iranian cargo ship",
+      "publication_date": "2026-04-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "DIPLOMATIC_POSITION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260420-001"
+      ],
+      "proof_note": "Documents U.S. seizure/boarding and Iran’s linkage of further talks to blockade relief.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-F77A9718856E",
+      "legacy_ids": {
+        "collection": "S034"
+      },
+      "url": "https://www.reuters.com/world/middle-east/no-deal-no-exit-how-us-iran-standoff-risks-fresh-conflict-2026-05-18/",
+      "outlet": "Reuters",
+      "title": "No deal, no exit: how US-Iran standoff risks fresh conflict",
+      "publication_date": "2026-05-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "DIP-PKG-006",
+        "EV-20260518-001"
+      ],
+      "proof_note": "Sets out the bargaining gap: U.S. nuclear demands versus Iranian demands for blockade relief, guarantees, reparations and Hormuz sovereignty.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-F820228892CB",
+      "legacy_ids": {
+        "collection": "S003"
+      },
+      "url": "https://www.reuters.com/business/aerospace-defense/urgent-trump-iranian-missile-claim-unsupported-by-us-intelligence-say-sources-2026-02-27/",
+      "outlet": "Reuters",
+      "title": "Trump Iranian missile claim unsupported by US intelligence, sources say",
+      "publication_date": "2026-02-27",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE",
+        "PREWAR_PLANNING"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-US-IRAN-FIRST-STRIKE-2026",
+        "PRE-20260227-001"
+      ],
+      "proof_note": "Reports U.S. intelligence did not support a public claim that Iran was close to an intercontinental missile threat; cites a 2025 DIA timeline extending much later.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-F8F12DF86B47",
+      "legacy_ids": {
+        "collection": "S008"
+      },
+      "url": "https://www.reuters.com/world/middle-east/iran-unleashes-oil-shock-blunt-us-firepower-2026-03-13/",
+      "outlet": "Reuters",
+      "title": "Iran unleashes oil shock to blunt US firepower",
+      "publication_date": "2026-03-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026",
+        "EV-20260313-001"
+      ],
+      "proof_note": "Reports roughly 97% fall in Hormuz traffic from pre-war levels using UN-related shipping data and explains Iran’s established chokepoint leverage strategy.",
+      "lineage": "Reuters original",
+      "source_origin": "collection_package"
+    },
+    {
+      "source_id": "SRC-F9C4A35EE811",
+      "legacy_ids": {
+        "collection": null
+      },
+      "url": "https://www.csis.org/analysis/37-billion-estimated-cost-epic-furys-first-100-hours",
+      "outlet": "Center for Strategic and International Studies (CSIS)",
+      "title": "$3.7 Billion: Estimated Cost of Epic Fury's First 100 Hours",
+      "publication_date": "2026-03-04",
+      "publication_time": null,
+      "author": "Mark F. Cancian; Chris H. Park",
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "MUNITIONS_EXPENDITURE",
+        "COST_MODEL"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "CSIS estimated first-100-hour costs and reported lower-bound Iranian launch volume of more than 2,000 UAS and more than 500 ballistic missiles.",
+      "lineage": "CSIS analytical estimate using DOD and partner reporting",
+      "source_origin": "supplemental_integration_or_existing_atlas"
+    }
+  ]
+}

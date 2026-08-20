@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0",
+  "accounting_rule": "Durable destroyed, durable damaged, inventory destroyed before use, and munitions expended are separate. Claims/target counts are excluded from verified attrition.",
+  "records": [
+    {
+      "loss_id": "MAT-IRN-DENA-20260304",
+      "legacy_repo_id": "A001",
+      "side": "IRAN/ALIGNED",
+      "owner": "Iran",
+      "service": "Iranian Navy",
+      "event_date": "2026-03-04",
+      "accounting_category": "DURABLE_MATERIAL_DESTROYED",
+      "item": "IRIS Dena frigate",
+      "quantity": 1,
+      "status": "DESTROYED",
+      "disposition": "Sunk",
+      "facility_ref": null,
+      "event_ref": "E004",
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-B106A3769146",
+        "SRC-C092F7F591FC"
+      ],
+      "cost_status": "UNPRICED",
+      "note": "Hard independently confirmed durable naval loss."
+    },
+    {
+      "loss_id": "MAT-USA-KC135-20260312",
+      "legacy_repo_id": "A003",
+      "side": "U.S./COALITION",
+      "owner": "United States",
+      "service": "U.S. Air Force",
+      "event_date": "2026-03-12",
+      "accounting_category": "DURABLE_MATERIAL_DESTROYED",
+      "item": "KC-135 aerial refueling aircraft",
+      "quantity": 1,
+      "status": "DESTROYED",
+      "disposition": "Crashed",
+      "facility_ref": null,
+      "event_ref": null,
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-B73D6749ACAD"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_EQUIPMENT_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Confirmed operational loss; cause not classified as hostile in current atlas."
+    },
+    {
+      "loss_id": "MAT-USA-HELO-20260701",
+      "legacy_repo_id": "A004",
+      "side": "U.S./COALITION",
+      "owner": "United States",
+      "service": "U.S. Navy",
+      "event_date": "2026-07-01",
+      "accounting_category": "DURABLE_MATERIAL_DESTROYED",
+      "item": "Naval helicopter (model unresolved)",
+      "quantity": 1,
+      "status": "DESTROYED_OR_LOST",
+      "disposition": "Crashed/emergency landing",
+      "facility_ref": null,
+      "event_ref": null,
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-B73D6749ACAD"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_EQUIPMENT_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Confirmed non-hostile operational loss."
+    },
+    {
+      "loss_id": "MAT-USA-ALUDEID-CAOC-2026",
+      "legacy_repo_id": null,
+      "side": "U.S./COALITION",
+      "owner": "United States/Qatar",
+      "service": "AFCENT",
+      "event_date": null,
+      "event_date_range": "2026-02-28/2026-03-14",
+      "accounting_category": "DURABLE_MATERIAL_DAMAGED",
+      "item": "Al Udeid CAOC buildings/mission systems",
+      "quantity": null,
+      "status": "SEVERELY_DAMAGED_CAOC_INOPERABLE",
+      "facility_ref": "US-ALUDEID",
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-7538CF574DDF",
+        "SRC-3826CE7F7FBB",
+        "SRC-551A9C2DB97C"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_BASE_DAMAGE_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Exact structure/equipment inventory and disabling strike date unresolved. Do not convert to whole-base loss."
+    },
+    {
+      "loss_id": "MAT-USA-NSA-BHR-RADOMES",
+      "legacy_repo_id": null,
+      "side": "U.S./COALITION",
+      "owner": "United States",
+      "service": "U.S. Navy",
+      "event_date": "2026-03-01",
+      "accounting_category": "DURABLE_MATERIAL_DESTROYED",
+      "item": "NSA Bahrain radomes",
+      "quantity": 2,
+      "status": "REPORTED_DESTROYED",
+      "facility_ref": "US-NSA-BHR",
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-551A9C2DB97C",
+        "SRC-B6B934C693E0"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_BASE_DAMAGE_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Current atlas reports two radomes destroyed; a SATCOM dish was also hit. This is subfacility loss, not total installation loss."
+    },
+    {
+      "loss_id": "MAT-USA-ARIFJAN-COMMS",
+      "legacy_repo_id": null,
+      "side": "U.S./COALITION",
+      "owner": "United States",
+      "service": "U.S. Army",
+      "event_date": "2026-03-01",
+      "accounting_category": "DURABLE_MATERIAL_DAMAGED",
+      "item": "Camp Arifjan communications equipment/radome",
+      "quantity": null,
+      "status": "COMMUNICATIONS_EQUIPMENT_DESTROYED_RADOME_DAMAGED_OR_DESTROYED",
+      "facility_ref": "US-ARIFJAN",
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_BASE_DAMAGE_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Exact quantities not available; later U.S. troop presence confirms site-level continuity."
+    },
+    {
+      "loss_id": "MAT-USA-ALISALEM-AD",
+      "legacy_repo_id": null,
+      "side": "U.S./COALITION",
+      "owner": "United States/Kuwait",
+      "service": "Air defense",
+      "event_date": "2026-03-01",
+      "accounting_category": "DURABLE_MATERIAL_DAMAGED",
+      "item": "Patriot equipment and radome at Ali Al Salem",
+      "quantity": null,
+      "status": "DAMAGED",
+      "facility_ref": "US-ALISALEM",
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_BASE_DAMAGE_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Current atlas also records >12 structures damaged and >=4 aircraft shelters; exact durable equipment count unresolved."
+    },
+    {
+      "loss_id": "MAT-USA-PRINCESULTAN-AIRCRAFT",
+      "legacy_repo_id": null,
+      "side": "U.S./COALITION",
+      "owner": "United States/Saudi Arabia",
+      "service": "U.S. Air Force",
+      "event_date": "2026-03-27",
+      "accounting_category": "DURABLE_MATERIAL_DAMAGED",
+      "item": "E-3 Sentry and aerial-refueling aircraft at Prince Sultan Air Base",
+      "quantity": null,
+      "status": "E3_DAMAGED_OR_DESTROYED_UNRESOLVED; SEVERAL_REFUELERS_DAMAGED",
+      "facility_ref": "US-PRINCESULTAN",
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-551A9C2DB97C",
+        "SRC-B6B934C693E0"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_EQUIPMENT_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Do not convert 'damaged/destroyed' wording to a destroyed-aircraft count without item-level BDA."
+    },
+    {
+      "loss_id": "MAT-USA-MUWAFFAQ-THAAD",
+      "legacy_repo_id": null,
+      "side": "U.S./COALITION",
+      "owner": "United States/Jordan",
+      "service": "Missile defense",
+      "event_date": null,
+      "event_date_range": "2026-02-28/2026-04-14",
+      "accounting_category": "DURABLE_MATERIAL_DAMAGED",
+      "item": "THAAD radar/equipment",
+      "quantity": null,
+      "status": "DAMAGED",
+      "facility_ref": "US-MUWAFFAQ",
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_EQUIPMENT_OR_BASE_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Exact first-damage date unresolved; whole air base remained a separate question."
+    },
+    {
+      "loss_id": "MAT-USA-SHEIKHISA-PATRIOT",
+      "legacy_repo_id": null,
+      "side": "U.S./COALITION",
+      "owner": "United States/Bahrain",
+      "service": "Missile defense",
+      "event_date": null,
+      "event_date_range": "2026-02-28/2026-04-14",
+      "accounting_category": "DURABLE_MATERIAL_DAMAGED",
+      "item": "Patriot equipment at Sheikh Isa Air Base",
+      "quantity": null,
+      "status": "DAMAGED",
+      "facility_ref": "US-ISA",
+      "confidence": "HIGH",
+      "source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "cost_status": "INCLUDED_IN_AGGREGATE_CSIS_BASE_DAMAGE_RANGE_NOT_ITEM_PRICED_HERE",
+      "note": "Exact first-damage date unresolved."
+    },
+    {
+      "loss_id": "MAT-CLAIM-IRN-100-VESSELS",
+      "legacy_repo_id": "A002",
+      "side": "IRAN/ALIGNED",
+      "owner": "Iran",
+      "service": "Iranian/IRGC Navy",
+      "event_date": "2026-03-16",
+      "accounting_category": "DURABLE_MATERIAL_DESTROYED_OR_DAMAGED_CLAIM",
+      "item": "Mixed ships/submarines/small craft",
+      "quantity": 100,
+      "quantity_qualifier": "100+",
+      "status": "OFFICIAL_US_CLAIM_NOT_RECONCILED",
+      "confidence": "LOW_FOR_LOSS_COUNT",
+      "source_ids": [],
+      "cost_status": "UNPRICED",
+      "exclude_from_verified_attrition": true,
+      "note": "Scale-of-effort claim only. Do not count 100 as destroyed."
+    },
+    {
+      "loss_id": "MAT-CLAIM-IRGC-SMALLBOATS-20260707",
+      "legacy_repo_id": "A005",
+      "side": "IRAN/ALIGNED",
+      "owner": "Iran",
+      "service": "IRGC Navy",
+      "event_date": "2026-07-07",
+      "accounting_category": "TARGETS_STRUCK_NOT_VERIFIED_LOSSES",
+      "item": "IRGC small boats",
+      "quantity": 60,
+      "quantity_qualifier": "60+ targeted",
+      "status": "TARGETED; DESTRUCTION_NOT_ESTABLISHED",
+      "confidence": "LOW_FOR_LOSS_COUNT",
+      "source_ids": [],
+      "cost_status": "UNPRICED",
+      "exclude_from_verified_attrition": true,
+      "note": "Target count is not a loss count."
+    }
+  ],
+  "verified_inventory_destroyed_before_use": [],
+  "inventory_destroyed_before_use_note": "No quantity in the reviewed package/current atlas could be responsibly entered as verified pre-launch missile/drone/ammunition inventory destruction. U.S. target claims against storage sites remain target/effect claims unless BDA is added."
+}

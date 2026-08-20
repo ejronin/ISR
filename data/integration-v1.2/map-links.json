@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0",
+  "links": [
+    {
+      "map_ref": "MAP-US-ALUDEID",
+      "entity_type": "FACILITY",
+      "facility_ref": "US-ALUDEID",
+      "name": "Al Udeid Air Base / Combined Air Operations Center",
+      "lat": 25.12,
+      "lon": 51.31,
+      "geographic_precision": "COARSE_EXISTING_ATLAS_POINT",
+      "coordinate_source": "existing ejronin/ISR data/facilities.json",
+      "related_event_ids": [
+        "PRE-20201118-001",
+        "PRE-20260113-001",
+        "PRE-20260114-001"
+      ],
+      "related_claim_ids": [
+        "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026"
+      ]
+    },
+    {
+      "map_ref": "MAP-FAC-UAE-BARAKAH",
+      "entity_type": "FACILITY",
+      "facility_ref": "FAC-UAE-BARAKAH",
+      "name": "Barakah Nuclear Power Plant",
+      "lat": 23.967777777777776,
+      "lon": 52.23166666666667,
+      "geographic_precision": "FACILITY_REFERENCE_POINT",
+      "coordinate_source": "SRC-5581A889C78E",
+      "related_event_ids": [
+        "EV-20260517-001",
+        "EV-20260526-001"
+      ],
+      "related_claim_ids": []
+    },
+    {
+      "map_ref": "MAP-FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT",
+      "entity_type": "FACILITY",
+      "facility_ref": "FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT",
+      "name": "Kuwait International Airport",
+      "lat": 29.221904444444444,
+      "lon": 47.96608972222222,
+      "geographic_precision": "AIRPORT_STATION_REFERENCE_POINT",
+      "coordinate_source": "SRC-4A733BFAC693",
+      "related_event_ids": [
+        "EV-20260603-001"
+      ],
+      "related_claim_ids": []
+    },
+    {
+      "map_ref": "MAP-FAC-IRN-KHONDAB-HEAVY-WATER",
+      "entity_type": "FACILITY",
+      "facility_ref": "FAC-IRN-KHONDAB-HEAVY-WATER",
+      "name": "Khondab heavy-water facility",
+      "lat": null,
+      "lon": null,
+      "geographic_precision": "FACILITY_NAME_ONLY",
+      "coordinate_source": null,
+      "related_event_ids": [
+        "EV-20260328-002"
+      ],
+      "related_claim_ids": []
+    },
+    {
+      "map_ref": "MAP-FAC-QAT-LNG-SYSTEM",
+      "entity_type": "FACILITY",
+      "facility_ref": "FAC-QAT-LNG-SYSTEM",
+      "name": "Qatar LNG export infrastructure (system-level record)",
+      "lat": null,
+      "lon": null,
+      "geographic_precision": "SYSTEM_LEVEL_NO_SINGLE_POINT",
+      "coordinate_source": null,
+      "related_event_ids": [
+        "EV-20260320-002"
+      ],
+      "related_claim_ids": []
+    },
+    {
+      "map_ref": "MAP-GEO-HORMUZ",
+      "entity_type": "GEOGRAPHIC_FEATURE",
+      "name": "Strait of Hormuz",
+      "lat": 26.56,
+      "lon": 56.25,
+      "geographic_precision": "SCHEMATIC_EXISTING_ATLAS_REFERENCE_POINT",
+      "coordinate_source": "existing ejronin/ISR claim/timeline map reference; not an impact coordinate",
+      "related_event_ids": [
+        "EV-20260302-002",
+        "EV-20260313-001",
+        "EV-20260316-001",
+        "EV-20260323-001",
+        "EV-20260331-001",
+        "EV-20260408-001",
+        "EV-20260413-001",
+        "EV-20260420-001",
+        "EV-20260423-001",
+        "EV-20260430-002",
+        "EV-20260504-001",
+        "EV-20260515-001",
+        "EV-20260518-001",
+        "EV-20260520-001",
+        "EV-20260615-001",
+        "EV-20260630-001",
+        "EV-20260709-001",
+        "EV-20260711-001",
+        "EV-20260720-001",
+        "EV-20260805-001",
+        "EV-20260812-001",
+        "EV-20260813-001",
+        "EV-20260814-001",
+        "EV-20260816-001",
+        "EV-20260817-001",
+        "EV-20260818-001",
+        "EV-20260818-002",
+        "EV-20260820-001"
+      ],
+      "related_claim_ids": [
+        "CASE-HORMUZ-OPEN-CLOSED-2026"
+      ]
+    },
+    {
+      "map_ref": "MAP-US-AINASAD",
+      "entity_type": "FACILITY",
+      "facility_ref": "US-AINASAD",
+      "name": "Ain al-Asad Air Base (historical U.S. presence)",
+      "lat": 33.8,
+      "lon": 42.44,
+      "geographic_precision": "COARSE_EXISTING_ATLAS_POINT",
+      "coordinate_source": "existing ejronin/ISR data/facilities.json",
+      "related_event_ids": [
+        "PRE-20260117-IRQ-001"
+      ],
+      "related_claim_ids": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    },
+    {
+      "map_ref": "MAP-US-TANF",
+      "entity_type": "FACILITY",
+      "facility_ref": "US-TANF",
+      "name": "al-Tanf garrison (former U.S. base)",
+      "lat": 33.51,
+      "lon": 38.68,
+      "geographic_precision": "COARSE_EXISTING_ATLAS_POINT",
+      "coordinate_source": "existing ejronin/ISR data/facilities.json",
+      "related_event_ids": [
+        "PRE-20260212-SYR-001"
+      ],
+      "related_claim_ids": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "map_ref": "MAP-US-QASRAK",
+      "entity_type": "FACILITY",
+      "facility_ref": "US-QASRAK",
+      "name": "Qasrak / Hasakah former main U.S. base area",
+      "lat": 36.57,
+      "lon": 40.75,
+      "geographic_precision": "COARSE_EXISTING_ATLAS_POINT",
+      "coordinate_source": "existing ejronin/ISR data/facilities.json",
+      "related_event_ids": [
+        "PRE-20260223-SYR-001"
+      ],
+      "related_claim_ids": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "agreement_refs": [
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026"
+      ]
+    },
+    {
+      "map_ref": "MAP-US-ERBIL",
+      "entity_type": "FACILITY",
+      "facility_ref": "US-ERBIL",
+      "name": "Erbil military/airport coalition area",
+      "lat": 36.24,
+      "lon": 43.96,
+      "geographic_precision": "COARSE_EXISTING_ATLAS_POINT",
+      "coordinate_source": "existing ejronin/ISR data/facilities.json",
+      "related_event_ids": [
+        "EV-20260812-003"
+      ],
+      "related_claim_ids": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026"
+      ]
+    }
+  ]
+}

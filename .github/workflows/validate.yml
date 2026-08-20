@@ -18,3 +18,7 @@ jobs:
           node-version: '22'
       - name: Validate static atlas
         run: python scripts/validate.py
+      - name: Validate historical-ledger integration
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_integration.py

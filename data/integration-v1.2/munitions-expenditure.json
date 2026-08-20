@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "rule": "A missile/drone intentionally launched is an inventory expenditure whether it hits, misses, or is intercepted. Event-level rows may overlap cumulative aggregates and are explicitly flagged.",
+  "records": [
+    {
+      "expenditure_id": "MUN-IRN-FIRST100H-UAS",
+      "side": "IRAN/ALIGNED",
+      "actor": "Iran",
+      "period_start": "2026-02-28",
+      "period_end": "2026-03-04",
+      "munition": "UAS / one-way drones",
+      "quantity": 2000,
+      "quantity_qualifier": ">",
+      "evidence_type": "CUMULATIVE_LOWER_BOUND",
+      "status": "EXPENDED_ON_LAUNCH",
+      "source_ids": [
+        "SRC-F9C4A35EE811"
+      ],
+      "cost_status": "UNPRICED",
+      "note": "More than 2,000 UAS launched in roughly first 100 hours. Launch is an inventory expenditure regardless of interception/impact."
+    },
+    {
+      "expenditure_id": "MUN-IRN-FIRST100H-BM",
+      "side": "IRAN/ALIGNED",
+      "actor": "Iran",
+      "period_start": "2026-02-28",
+      "period_end": "2026-03-04",
+      "munition": "Ballistic missiles",
+      "quantity": 500,
+      "quantity_qualifier": ">",
+      "evidence_type": "CUMULATIVE_LOWER_BOUND",
+      "status": "EXPENDED_ON_LAUNCH",
+      "source_ids": [
+        "SRC-F9C4A35EE811"
+      ],
+      "cost_status": "UNPRICED",
+      "note": "More than 500 ballistic missiles launched in roughly first 100 hours."
+    },
+    {
+      "expenditure_id": "MUN-USA-TOMAHAWK-4WK",
+      "side": "U.S./COALITION",
+      "actor": "United States",
+      "period_start": "2026-02-28",
+      "period_end": "2026-03-27",
+      "munition": "Tomahawk",
+      "quantity": 850,
+      "quantity_qualifier": ">",
+      "evidence_type": "REPORTED_CUMULATIVE_LOWER_BOUND",
+      "status": "EXPENDED",
+      "source_ids": [
+        "SRC-BD807ACB7FF3"
+      ],
+      "unit_cost_low": 3600000,
+      "unit_cost_high": 3600000,
+      "currency": "USD",
+      "price_year": 2026,
+      "price_basis": "CSIS cites latest Navy budget documents",
+      "cost_low": 3060000000,
+      "cost_high": 3060000000,
+      "note": "This record is a subset of later U.S. munitions aggregates. Do not sum again into the $26.1B CSIS munitions category."
+    },
+    {
+      "expenditure_id": "MUN-USA-TOMAHAWK-CEASEFIRE",
+      "side": "U.S./COALITION",
+      "actor": "United States",
+      "period_start": "2026-02-28",
+      "period_end": "2026-04-21",
+      "munition": "Tomahawk",
+      "quantity": 1000,
+      "quantity_qualifier": ">",
+      "evidence_type": "REPORTED_CUMULATIVE_LOWER_BOUND",
+      "status": "EXPENDED",
+      "source_ids": [
+        "SRC-14B6DC8A760C"
+      ],
+      "cost_status": "INCLUDED_IN_CSIS_MUNITIONS_AGGREGATE",
+      "supersedes": "MUN-USA-TOMAHAWK-4WK",
+      "note": "Updated reporting said >1,000 by ceasefire; exact date boundary/reporting update Apr24. Do not add 850 + 1000."
+    },
+    {
+      "expenditure_id": "MUN-USA-STRIKE-MUNITIONS-BY-JUN23",
+      "side": "U.S./COALITION",
+      "actor": "United States",
+      "period_start": "2026-02-28",
+      "period_end": "2026-06-23",
+      "munition": "Strike munitions (aggregate)",
+      "quantity": 13629,
+      "quantity_qualifier": "=",
+      "evidence_type": "OFFICIAL_CUMULATIVE_REPORTED_BY_CSIS",
+      "status": "EXPENDED",
+      "source_ids": [
+        "SRC-C4FF4F823E1F"
+      ],
+      "cost_low": 26100000000,
+      "cost_high": 26100000000,
+      "currency": "USD",
+      "price_year": 2026,
+      "price_basis": "CSIS model across ground-attack and air-defense munitions; category cost, not simple quantity \u00d7 unit price",
+      "note": "Do not treat 13,629 strike munitions as all U.S. munitions; air-defense expenditures are also material but not captured by this single count."
+    },
+    {
+      "expenditure_id": "MUN-USA-TOMAHAWK-20260610",
+      "side": "U.S./COALITION",
+      "actor": "United States",
+      "event_date": "2026-06-10",
+      "munition": "Tomahawk",
+      "quantity": 49,
+      "quantity_qualifier": "=",
+      "evidence_type": "REPORTED_EVENT",
+      "status": "EXPENDED",
+      "source_ids": [
+        "SRC-C4FF4F823E1F"
+      ],
+      "cost_status": "INCLUDED_IN_PARENT_AGGREGATE",
+      "overlap_parent": "MUN-USA-STRIKE-MUNITIONS-BY-JUN23",
+      "note": "CSIS specifically notes 49 Tomahawks fired June 10. Do not add to aggregate again."
+    },
+    {
+      "expenditure_id": "MUN-IRN-PSAB-20260327-BM",
+      "side": "IRAN/ALIGNED",
+      "actor": "Iran",
+      "event_date": "2026-03-27",
+      "munition": "Ballistic missiles",
+      "quantity": 6,
+      "quantity_qualifier": "=",
+      "evidence_type": "EVENT_LEVEL_REPORTED",
+      "status": "EXPENDED_ON_LAUNCH",
+      "source_ids": [
+        "SRC-BB3EED5C3240"
+      ],
+      "cost_status": "UNPRICED",
+      "overlap_parent": "MUN-IRN-FIRST100H-BM",
+      "note": "Current atlas event reports 6 ballistic missiles in Prince Sultan attack; timing is outside/near opening aggregate boundary, keep event link and avoid automatic sum without date-window audit."
+    },
+    {
+      "expenditure_id": "MUN-IRN-PSAB-20260327-UAS",
+      "side": "IRAN/ALIGNED",
+      "actor": "Iran",
+      "event_date": "2026-03-27",
+      "munition": "Drones",
+      "quantity": 29,
+      "quantity_qualifier": "=",
+      "evidence_type": "EVENT_LEVEL_REPORTED",
+      "status": "EXPENDED_ON_LAUNCH",
+      "source_ids": [
+        "SRC-BB3EED5C3240"
+      ],
+      "cost_status": "UNPRICED",
+      "note": "Event-level launch count; impact count not assumed."
+    },
+    {
+      "expenditure_id": "MUN-USA-VELANOVA-20260811",
+      "side": "U.S./COALITION",
+      "actor": "United States",
+      "event_date": "2026-08-11",
+      "munition": "AGM-114 Hellfire",
+      "quantity": 2,
+      "quantity_qualifier": "=",
+      "evidence_type": "CONFIRMED_EVENT",
+      "status": "EXPENDED",
+      "source_ids": [
+        "SRC-9EB7D0DCB798"
+      ],
+      "cost_status": "UNPRICED",
+      "note": "Two Hellfires fired to disable Vela Nova steering."
+    }
+  ]
+}

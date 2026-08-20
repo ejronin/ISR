@@ -1,0 +1,540 @@
+{
+  "schema_version": "1.2",
+  "design_rule": "Agreements and security mechanisms are causal-context records. They must show parties, U.S. role, timing, status, and what the arrangement does and does not prove. Formation of an additional regional mechanism is not automatically abandonment of the United States.",
+  "records": [
+    {
+      "agreement_id": "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+      "name": "U.S.-Iraq coalition-mission transition / enduring bilateral security partnership",
+      "agreement_type": "BILATERAL_SECURITY_TRANSITION",
+      "status": "FORMALIZED_AND_IMPLEMENTING",
+      "origin_date": "2023-08-08",
+      "origin_date_precision": "DATE_ONLY",
+      "signed_or_formalized_date": "2024-09-27",
+      "implementation_start": "2024-09-27",
+      "parties": [
+        "United States",
+        "Republic of Iraq"
+      ],
+      "coordination_with_country": [
+        "Iraq"
+      ],
+      "host_or_mediator": null,
+      "us_role": "PARTY_AND_SECURITY_PARTNER",
+      "iran_role": "NONE_IN_AGREEMENT",
+      "relevant_drawdown_or_event_refs": [
+        "PRE-20230808-IRQ-001",
+        "PRE-20240125-IRQ-001",
+        "PRE-20240927-IRQ-001",
+        "PRE-20260117-IRQ-001",
+        "EV-20260812-003"
+      ],
+      "relevant_movement_refs": [
+        "MOV-20260117-IRQ-AINASAD",
+        "MOV-202607-IRQ-ERBIL"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "prewar_context": "The process was jointly initiated in August 2023, worked through the bilateral Higher Military Commission in 2024, and formally given a two-phase timeline on September 27, 2024—well before the February 28, 2026 Iran war.",
+      "what_it_proves": "Ain al-Asad and the broader Iraq posture change belonged to a pre-coordinated U.S.-Iraq transition from the coalition military mission to bilateral security partnerships. The formal timeline predates the Iran war by about 17 months.",
+      "what_it_does_not_prove": "It does not prove every later tactical movement was unaffected by wartime conditions. It does not support describing the pre-established drawdown itself as a retreat caused by Iran.",
+      "current_assessment": "PRE-COORDINATED BILATERAL TRANSITION — NOT IRAN-CAUSED RETREAT",
+      "source_ids": [
+        "SRC-6B8C48817118",
+        "SRC-209378A46AAC",
+        "SRC-E6B1159781EB",
+        "SRC-005D46FC622B",
+        "SRC-CEBE7CCFF600",
+        "SRC-29FAB9A69690",
+        "SRC-80791B854E19"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added at user direction to make pre-war coordination, counterpart government, and causal chronology explicit."
+        }
+      ],
+      "related_agreement_refs": [],
+      "negotiation_or_origin_date": "2023-08-08",
+      "formalization_or_signature_date": "2024-09-27",
+      "effective_date": "2024-09-27",
+      "war_status": "PRE_WAR",
+      "us_role_categories": [
+        "SIGNATORY",
+        "SUPPORTER"
+      ],
+      "relationship_to_us_linked_security_structure": "REPLACES_COALITION_MISSION_WITH_US_LINKED_BILATERAL_SECURITY_RELATIONSHIP",
+      "replaces_us_linked_arrangement": true,
+      "supplements_us_linked_arrangement": false,
+      "coexists_with_us_linked_arrangement": false,
+      "no_demonstrated_effect_on_us_linked_arrangement": false,
+      "regional_corroboration_source_ids": [],
+      "iranian_characterization": "See linked abandonment/alignment claim case; no separate characterization is inferred beyond final evidence.",
+      "abandonment_counterevidence": "It does not prove every later tactical movement was unaffected by wartime conditions. It does not support describing the pre-established drawdown itself as a retreat caused by Iran."
+    },
+    {
+      "agreement_id": "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026",
+      "name": "U.S.-Syria base consolidation and partner-led counter-ISIS transition",
+      "agreement_type": "COORDINATED_FORCE_POSTURE_TRANSITION",
+      "status": "IMPLEMENTING_PREWAR",
+      "origin_date": "2025",
+      "origin_date_precision": "YEAR_ONLY",
+      "signed_or_formalized_date": null,
+      "implementation_start": "2026-02-12",
+      "parties": [
+        "United States",
+        "Syrian government / authorities"
+      ],
+      "coordination_with_country": [
+        "Syria"
+      ],
+      "host_or_mediator": "United States also brokered SDF integration into Syrian central institutions",
+      "us_role": "PARTY_TO_COORDINATED_HANDOVERS_AND_BROKER_OF_SDF_INTEGRATION",
+      "iran_role": "NONE_IN_COORDINATION_RECORD",
+      "relevant_drawdown_or_event_refs": [
+        "PRE-20260212-SYR-001",
+        "PRE-20260215-SYR-001",
+        "PRE-20260218-SYR-001",
+        "PRE-20260223-SYR-001"
+      ],
+      "relevant_movement_refs": [
+        "MOV-20260212-SYR-TANF",
+        "MOV-20260215-SYR-SHADDADI",
+        "MOV-20260223-SYR-QASRAK"
+      ],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "prewar_context": "CENTCOM said Pentagon plans to consolidate Syria basing locations had been announced the prior year. Al-Tanf and Shaddadi were handed to Syrian forces after coordination with U.S. authorities; the broader drawdown was publicly described as deliberate and conditions-based before the Iran war.",
+      "what_it_proves": "The Syria drawdown was already being executed through U.S.-Syrian coordination and a change in counter-ISIS responsibility before February 28, 2026.",
+      "what_it_does_not_prove": "The reviewed evidence does not establish a single signed bilateral document fixing every base-closure date. It therefore must not be presented with invented signature precision. It also does not support attributing the pre-war withdrawals to Iranian wartime coercion.",
+      "current_assessment": "PRE-WAR CONDITIONS-BASED TRANSITION — NOT IRAN-CAUSED RETREAT",
+      "source_ids": [
+        "SRC-566F047CEA46",
+        "SRC-3B7FE42A1FF2",
+        "SRC-64BB58499062",
+        "SRC-8C302F9CD6F7"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added with precision limits: coordinated execution is established; a single formal signature date is not."
+        }
+      ],
+      "related_agreement_refs": [],
+      "negotiation_or_origin_date": "2025",
+      "formalization_or_signature_date": null,
+      "effective_date": "2026-02-12",
+      "war_status": "PRE_WAR",
+      "us_role_categories": [
+        "FACILITATOR",
+        "SUPPORTER"
+      ],
+      "relationship_to_us_linked_security_structure": "FORCE_POSTURE_TRANSITION_WITH_US_COORDINATION; NO_DEMONSTRATED_US_ABANDONMENT",
+      "replaces_us_linked_arrangement": false,
+      "supplements_us_linked_arrangement": false,
+      "coexists_with_us_linked_arrangement": false,
+      "no_demonstrated_effect_on_us_linked_arrangement": false,
+      "regional_corroboration_source_ids": [],
+      "iranian_characterization": "See linked abandonment/alignment claim case; no separate characterization is inferred beyond final evidence.",
+      "abandonment_counterevidence": "The reviewed evidence does not establish a single signed bilateral document fixing every base-closure date. It therefore must not be presented with invented signature precision. It also does not support attributing the pre-war withdrawals to Iranian wartime coercion."
+    },
+    {
+      "agreement_id": "AGR-US-SAU-STRATEGIC-DEFENSE-2025",
+      "name": "U.S.-Saudi Strategic Defense Agreement",
+      "agreement_type": "BILATERAL_STRATEGIC_DEFENSE",
+      "status": "SIGNED",
+      "origin_date": "2025-11-18",
+      "origin_date_precision": "DATE_ONLY",
+      "signed_or_formalized_date": "2025-11-18",
+      "implementation_start": "2025-11-18",
+      "parties": [
+        "United States",
+        "Saudi Arabia"
+      ],
+      "coordination_with_country": [
+        "Saudi Arabia"
+      ],
+      "host_or_mediator": null,
+      "us_role": "PARTY_PRIMARY_STRATEGIC_PARTNER",
+      "iran_role": "NONE_IN_AGREEMENT",
+      "relevant_drawdown_or_event_refs": [
+        "PRE-20251118-SAU-001",
+        "EV-20260807-002",
+        "EV-20260730-001"
+      ],
+      "relevant_movement_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "prewar_context": "Signed more than three months before the Iran war. The White House described the SDA as strengthening the 80+ year defense partnership, increasing Saudi burden-sharing, and affirming the United States as the Kingdom’s primary strategic partner.",
+      "what_it_proves": "Saudi regional security initiatives in 2026 occurred against an existing formal U.S.-Saudi strategic defense relationship, not in a vacuum.",
+      "what_it_does_not_prove": "It does not mean Saudi Arabia cannot diversify security relationships or question U.S. reliability. It does mean a claim of formal U.S. abandonment requires evidence of termination/supersession, not merely formation of an additional Saudi-led pact.",
+      "current_assessment": "SIGNED PRE-WAR U.S.-SAUDI DEFENSE CONTEXT; MECCA REPORTED NOT TO ABROGATE EXISTING AGREEMENTS",
+      "source_ids": [
+        "SRC-569EA3D29954",
+        "SRC-6261F62A2388"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added as pre-war bilateral context for later Saudi-led arrangements."
+        }
+      ],
+      "related_agreement_refs": [
+        "AGR-MECCA-JOINT-DEFENSE-2026",
+        "AGR-SAUDI-MARITIME-COALITION-2026"
+      ],
+      "negotiation_or_origin_date": "2025-11-18",
+      "formalization_or_signature_date": "2025-11-18",
+      "effective_date": "2025-11-18",
+      "war_status": "PRE_WAR",
+      "us_role_categories": [
+        "SIGNATORY"
+      ],
+      "relationship_to_us_linked_security_structure": "BASELINE_US_LINKED_ARRANGEMENT",
+      "replaces_us_linked_arrangement": false,
+      "supplements_us_linked_arrangement": false,
+      "coexists_with_us_linked_arrangement": false,
+      "no_demonstrated_effect_on_us_linked_arrangement": false,
+      "regional_corroboration_source_ids": [],
+      "iranian_characterization": "See linked abandonment/alignment claim case; no separate characterization is inferred beyond final evidence.",
+      "abandonment_counterevidence": "It does not mean Saudi Arabia cannot diversify security relationships or question U.S. reliability. It does mean a claim of formal U.S. abandonment requires evidence of termination/supersession, not merely formation of an additional Saudi-led pact."
+    },
+    {
+      "agreement_id": "AGR-US-IRN-14POINT-MOU-2026",
+      "name": "U.S.-Iran 14-point interim memorandum / Hormuz framework",
+      "agreement_type": "BILATERAL_INTERIM_WAR_SETTLEMENT",
+      "status": "SIGNED_THEN_FRACTURED",
+      "origin_date": "2026-06-17",
+      "origin_date_precision": "DATE_ONLY",
+      "signed_or_formalized_date": "2026-06-17",
+      "implementation_start": "2026-06-18",
+      "parties": [
+        "United States",
+        "Iran"
+      ],
+      "coordination_with_country": [
+        "Oman / mediators and regional partners"
+      ],
+      "host_or_mediator": "Oman and other regional mediators",
+      "us_role": "PARTY",
+      "iran_role": "PARTY",
+      "relevant_drawdown_or_event_refs": [
+        "EV-20260617-001"
+      ],
+      "relevant_movement_refs": [],
+      "claim_refs": [],
+      "prewar_context": "Not pre-war; included here so major security arrangements use one linked schema rather than being hidden only in narrative diplomacy records.",
+      "what_it_proves": "The United States was directly party to the interim framework governing ceasefire and Hormuz-related sequencing.",
+      "what_it_does_not_prove": "Later breakdown does not retroactively erase the agreement or convert every subsequent regional action into abandonment by a U.S. partner.",
+      "current_assessment": "SIGNED INTERIM FRAMEWORK; LATER IMPLEMENTATION FRACTURED",
+      "source_ids": [
+        "SRC-DF7B6D820D63",
+        "SRC-107ADCD0AB0C",
+        "SRC-3300B7672235"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Promoted existing DIP-PKG-008 into agreement-link schema; no change to evidence verdict."
+        }
+      ],
+      "related_agreement_refs": [
+        "AGR-ISR-LBN-FRAMEWORK-2026"
+      ],
+      "negotiation_or_origin_date": "2026-06-17",
+      "formalization_or_signature_date": "2026-06-17",
+      "effective_date": "2026-06-18",
+      "war_status": "WARTIME",
+      "us_role_categories": [
+        "SIGNATORY"
+      ],
+      "relationship_to_us_linked_security_structure": "NO_DEMONSTRATED_REPLACEMENT_OF_US_ALLIANCE_STRUCTURES",
+      "replaces_us_linked_arrangement": false,
+      "supplements_us_linked_arrangement": false,
+      "coexists_with_us_linked_arrangement": false,
+      "no_demonstrated_effect_on_us_linked_arrangement": true,
+      "regional_corroboration_source_ids": [
+        "SRC-3300B7672235"
+      ],
+      "iranian_characterization": null,
+      "abandonment_counterevidence": "Later breakdown does not retroactively erase the agreement or convert every subsequent regional action into abandonment by a U.S. partner."
+    },
+    {
+      "agreement_id": "AGR-ISR-LBN-FRAMEWORK-2026",
+      "name": "Israel-Lebanon June 2026 U.S.-mediated security framework",
+      "agreement_type": "TRILATERAL_MEDIATED_SECURITY_FRAMEWORK",
+      "status": "SIGNED_AND_IMPLEMENTATION_CONTESTED",
+      "origin_date": "2026-06-26",
+      "origin_date_precision": "DATE_ONLY",
+      "signed_or_formalized_date": "2026-06-26",
+      "implementation_start": "2026-06-26",
+      "parties": [
+        "Israel",
+        "Lebanon"
+      ],
+      "coordination_with_country": [
+        "United States"
+      ],
+      "host_or_mediator": "United States / Washington, D.C.",
+      "us_role": "BROKER_MEDIATOR_SIGNING_PARTICIPANT_AND_IMPLEMENTATION_PARTNER",
+      "iran_role": "NOT_A_PARTY",
+      "relevant_drawdown_or_event_refs": [
+        "EV-20260626-001",
+        "EV-20260812-002",
+        "EV-20260813-003"
+      ],
+      "relevant_movement_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "prewar_context": "The framework followed U.S.-mediated talks in Washington and was signed at the State Department. It ties Lebanese state security control and verified disarmament of non-state armed groups to Israeli redeployment/withdrawal steps.",
+      "what_it_proves": "The Israel-Lebanon implementation track was U.S.-brokered and continued to involve U.S. mediation and coordination. It is not evidence that Lebanon or Israel simply abandoned Washington as a security actor.",
+      "what_it_does_not_prove": "Hezbollah was not a signatory and rejected the framework. Signing does not prove the disarmament conditions will be successfully implemented or that Israel has completed withdrawal.",
+      "current_assessment": "U.S.-BROKERED FRAMEWORK — IMPLEMENTATION ACTIVE BUT CONTESTED",
+      "source_ids": [
+        "SRC-E27CBB0AD0BC",
+        "SRC-1531FAADFF52",
+        "SRC-D4268D5E43FB"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added explicit U.S. broker/implementation role and linked verification follow-on."
+        }
+      ],
+      "related_agreement_refs": [
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026",
+        "AGR-US-IRN-14POINT-MOU-2026"
+      ],
+      "negotiation_or_origin_date": "2026-06-26",
+      "formalization_or_signature_date": "2026-06-26",
+      "effective_date": "2026-06-26",
+      "war_status": "WARTIME",
+      "us_role_categories": [
+        "BROKER",
+        "FACILITATOR",
+        "SUPPORTER"
+      ],
+      "relationship_to_us_linked_security_structure": "US_LINKED_ARRANGEMENT_ITSELF",
+      "replaces_us_linked_arrangement": false,
+      "supplements_us_linked_arrangement": false,
+      "coexists_with_us_linked_arrangement": false,
+      "no_demonstrated_effect_on_us_linked_arrangement": false,
+      "regional_corroboration_source_ids": [
+        "SRC-D4268D5E43FB"
+      ],
+      "iranian_characterization": null,
+      "abandonment_counterevidence": "Hezbollah was not a signatory and rejected the framework. Signing does not prove the disarmament conditions will be successfully implemented or that Israel has completed withdrawal."
+    },
+    {
+      "agreement_id": "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026",
+      "name": "Proposed third-party Hezbollah disarmament verification mechanism",
+      "agreement_type": "PROPOSED_VERIFICATION_MECHANISM",
+      "status": "PROPOSED_NO_FINAL_COUNTRY_LIST_AS_OF_2026-08-13",
+      "origin_date": "2026-08",
+      "origin_date_precision": "MONTH_ONLY",
+      "signed_or_formalized_date": null,
+      "implementation_start": null,
+      "parties": [
+        "Israel",
+        "Lebanon",
+        "United States (mediator)"
+      ],
+      "coordination_with_country": [
+        "United Kingdom (potential)",
+        "Italy (potential)",
+        "Switzerland (potential)",
+        "Indonesia (potential)"
+      ],
+      "host_or_mediator": "United States; Rome talks",
+      "us_role": "MEDIATOR_AND_IMPLEMENTATION_NEGOTIATOR",
+      "iran_role": "NOT_A_PARTY",
+      "relevant_drawdown_or_event_refs": [
+        "EV-20260812-002",
+        "EV-20260813-003"
+      ],
+      "relevant_movement_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "prewar_context": "Follow-on implementation concept to the June 26 U.S.-mediated Israel-Lebanon framework.",
+      "what_it_proves": "Third-party verification was under active U.S.-mediated negotiation. Britain, Italy, Switzerland and Indonesia were discussed as possible contributors.",
+      "what_it_does_not_prove": "As of August 13, Lebanon denied that a final shortlist had been agreed and the U.S. State Department did not confirm a final composition. The four states must not be displayed as a constituted panel.",
+      "current_assessment": "PROPOSED / U.S.-MEDIATED — FOUR COUNTRIES ARE CANDIDATES, NOT A FINAL PANEL",
+      "source_ids": [
+        "SRC-BCB32C965F32",
+        "SRC-38F77594E6D5"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Aug. 12 shortlist reporting superseded for current-status purposes by Aug. 13 Lebanese denial/no-final-agreement reporting; both retained as revision evidence."
+        }
+      ],
+      "related_agreement_refs": [
+        "AGR-ISR-LBN-FRAMEWORK-2026"
+      ],
+      "negotiation_or_origin_date": "2026-08",
+      "formalization_or_signature_date": null,
+      "effective_date": null,
+      "war_status": "WARTIME",
+      "us_role_categories": [
+        "BROKER",
+        "FACILITATOR"
+      ],
+      "relationship_to_us_linked_security_structure": "SUPPLEMENTS_US_BROKERED_ISRAEL_LEBANON_FRAMEWORK",
+      "replaces_us_linked_arrangement": false,
+      "supplements_us_linked_arrangement": true,
+      "coexists_with_us_linked_arrangement": false,
+      "no_demonstrated_effect_on_us_linked_arrangement": false,
+      "regional_corroboration_source_ids": [],
+      "iranian_characterization": null,
+      "abandonment_counterevidence": "As of August 13, Lebanon denied that a final shortlist had been agreed and the U.S. State Department did not confirm a final composition. The four states must not be displayed as a constituted panel."
+    },
+    {
+      "agreement_id": "AGR-SAUDI-MARITIME-COALITION-2026",
+      "name": "Saudi-led 14-state proposed maritime defense coalition",
+      "agreement_type": "MULTILATERAL_MARITIME_SECURITY_COALITION",
+      "status": "ANNOUNCED_PROPOSAL_WITH_14_STATE_JOINT_SUPPORT",
+      "origin_date": "2026-07-30",
+      "origin_date_precision": "DATE_ONLY",
+      "signed_or_formalized_date": null,
+      "implementation_start": null,
+      "parties": [
+        "Saudi Arabia",
+        "Bahrain",
+        "Kuwait",
+        "Qatar",
+        "Jordan",
+        "Yemen (internationally recognized government)",
+        "Egypt",
+        "Sudan",
+        "Djibouti",
+        "Somalia",
+        "Nigeria",
+        "Türkiye",
+        "Pakistan",
+        "Bangladesh"
+      ],
+      "coordination_with_country": [
+        "14 supporting states; meeting included representatives from 43 countries and the European Union"
+      ],
+      "host_or_mediator": "Saudi Arabia",
+      "us_role": "NOT_ESTABLISHED_AS_ONE_OF_14_SUPPORTING_STATES; FORMAL MEMBER STATUS NOT SUPPORTED BY REVIEWED HIGH-QUALITY SOURCE",
+      "iran_role": "NOT_A_PARTY; HOUTHI/IRAN-WAR SHIPPING THREAT IS CONTEXT",
+      "relevant_drawdown_or_event_refs": [
+        "EV-20260730-001",
+        "EV-20260807-002"
+      ],
+      "relevant_movement_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "prewar_context": "Saudi Arabia entered the war with an existing U.S.-Saudi Strategic Defense Agreement. The maritime initiative followed Houthi attacks and a declared Houthi blockade against Saudi Arabia.",
+      "what_it_proves": "Regional states were building an additional Saudi-led maritime security mechanism to protect Red Sea/Bab el-Mandeb shipping. Fourteen states supported the proposal in a joint statement.",
+      "what_it_does_not_prove": "The reviewed Reuters source does not establish the United States as one of the 14 supporters or as a formal member. Nor does formation of a regional burden-sharing mechanism by itself prove repudiation of existing U.S. security relationships.",
+      "current_assessment": "REGIONAL BURDEN-SHARING / ALIGNMENT; U.S. FORMAL ROLE IN THIS COALITION UNRESOLVED",
+      "source_ids": [
+        "SRC-1F7AC92D882F",
+        "SRC-569EA3D29954"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added with explicit U.S.-role uncertainty; do not infer formal U.S. membership or anti-U.S. rupture."
+        }
+      ],
+      "related_agreement_refs": [
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025",
+        "AGR-MECCA-JOINT-DEFENSE-2026"
+      ],
+      "announcement_date": "2026-07-30",
+      "joint_support_statement_date": "2026-07-30",
+      "negotiation_or_origin_date": "2026-07-30",
+      "formalization_or_signature_date": null,
+      "effective_date": null,
+      "war_status": "WARTIME",
+      "us_role_categories": [
+        "NO_DOCUMENTED_ROLE"
+      ],
+      "relationship_to_us_linked_security_structure": "ADDITIONAL_REGIONAL_LAYER; NO_DEMONSTRATED_REPLACEMENT_OF_EXISTING_US_LINKED_RELATIONSHIPS",
+      "replaces_us_linked_arrangement": false,
+      "supplements_us_linked_arrangement": true,
+      "coexists_with_us_linked_arrangement": true,
+      "no_demonstrated_effect_on_us_linked_arrangement": false,
+      "regional_corroboration_source_ids": [
+        "SRC-1F7AC92D882F"
+      ],
+      "iranian_characterization": "See linked abandonment/alignment claim case; no separate characterization is inferred beyond final evidence.",
+      "abandonment_counterevidence": "The reviewed Reuters source does not establish the United States as one of the 14 supporters or as a formal member. Nor does formation of a regional burden-sharing mechanism by itself prove repudiation of existing U.S. security relationships."
+    },
+    {
+      "agreement_id": "AGR-MECCA-JOINT-DEFENSE-2026",
+      "name": "Mecca Joint Defence Agreement",
+      "agreement_type": "TRILATERAL_MUTUAL_DEFENSE",
+      "status": "SIGNED",
+      "origin_date": "2025-2026",
+      "origin_date_precision": "REUTERS_REPORTS_NEARLY_ONE_YEAR_OF_NEGOTIATIONS; LATER_TURKISH_ACCOUNT_SAYS_2Y8M",
+      "signed_or_formalized_date": "2026-08-07",
+      "implementation_start": "2026-08-07",
+      "parties": [
+        "Saudi Arabia",
+        "Türkiye",
+        "Pakistan"
+      ],
+      "coordination_with_country": [
+        "Saudi Arabia",
+        "Türkiye",
+        "Pakistan"
+      ],
+      "host_or_mediator": "Saudi Arabia / Mecca",
+      "us_role": "NOT_A_PARTY; ALL_THREE ARE U.S. ALLIES/PARTNERS; EXISTING AGREEMENTS EXPRESSLY NOT ABROGATED",
+      "iran_role": "NOT_A_PARTY; AGREEMENT PUBLICLY DESCRIBED AS NOT TARGETING IRAN",
+      "relevant_drawdown_or_event_refs": [
+        "PRE-20251118-SAU-001",
+        "EV-20260807-002"
+      ],
+      "relevant_movement_refs": [],
+      "claim_refs": [
+        "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026"
+      ],
+      "prewar_context": "Reuters reported the pact followed extended negotiations that began well before its August signing. Saudi Arabia already had a signed U.S.-Saudi Strategic Defense Agreement; Türkiye remained a NATO member; Pakistan maintained its own security ties with Washington and Riyadh.",
+      "what_it_proves": "The three states created an additional mutual-defense structure. Reuters explicitly reports a Turkish official saying the pact did not abrogate existing agreements with other states.",
+      "what_it_does_not_prove": "It does not by itself establish abandonment of the United States, termination of NATO, or termination of the U.S.-Saudi Strategic Defense Agreement. Separate evidence would be required for those claims.",
+      "current_assessment": "ADDITIONAL REGIONAL DEFENSE LAYER — NOT EVIDENCE OF U.S. ABANDONMENT BY ITSELF",
+      "source_ids": [
+        "SRC-6261F62A2388",
+        "SRC-9396B216601A",
+        "SRC-569EA3D29954"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Added with explicit non-abrogation and U.S.-relationship context."
+        }
+      ],
+      "related_agreement_refs": [
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025",
+        "AGR-SAUDI-MARITIME-COALITION-2026"
+      ],
+      "negotiation_or_origin_date": "2025-2026",
+      "formalization_or_signature_date": "2026-08-07",
+      "effective_date": "2026-08-07",
+      "war_status": "NEGOTIATED_PREWAR_AND_WARTIME; SIGNED_WARTIME",
+      "us_role_categories": [
+        "NO_DOCUMENTED_ROLE"
+      ],
+      "relationship_to_us_linked_security_structure": "COEXISTS_WITH_EXISTING_RELATIONSHIPS; REUTERS-REPORTED NON_ABROGATION",
+      "replaces_us_linked_arrangement": false,
+      "supplements_us_linked_arrangement": false,
+      "coexists_with_us_linked_arrangement": true,
+      "no_demonstrated_effect_on_us_linked_arrangement": false,
+      "regional_corroboration_source_ids": [],
+      "iranian_characterization": "See linked abandonment/alignment claim case; no separate characterization is inferred beyond final evidence.",
+      "abandonment_counterevidence": "It does not by itself establish abandonment of the United States, termination of NATO, or termination of the U.S.-Saudi Strategic Defense Agreement. Separate evidence would be required for those claims."
+    }
+  ],
+  "alignment_rule": "Additional regional agreements do not by themselves prove abandonment of the United States, and U.S. involvement somewhere does not by itself prove U.S. primacy. Display the documented relationship, role, chronology, and replacement/supplement/coexistence status."
+}

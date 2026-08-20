@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.2",
+  "revisions": [
+    {
+      "revision_id": "REV-001",
+      "date": "2026-08-20",
+      "record": "SOURCE_NAMESPACE",
+      "action": "MIGRATE",
+      "change": "Replace ambiguous S### joins with URL-derived canonical SRC-* IDs. Preserve legacy source IDs as aliases only.",
+      "reason": "Current repo and backfill package independently reuse S001, S002, etc. Equality of old source IDs does not mean same source."
+    },
+    {
+      "revision_id": "REV-002",
+      "date": "2026-08-20",
+      "record": "US-ALUDEID",
+      "action": "UPDATE",
+      "change": "Keep existing facility ID. Add pre-war distributed-CAOC context, explicit CAOC functional loss, continuity evidence, and unresolved reconstitution. Do not duplicate as FAC-QAT-AL-UDEID.",
+      "reason": "Evidence supports CAOC severe damage/inoperability but does not establish whole-base incapacity."
+    },
+    {
+      "revision_id": "REV-003",
+      "date": "2026-08-20",
+      "record": "CL-ALUDEID",
+      "action": "SUPERSEDE",
+      "superseded_by": "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+      "change": "Replace short card with full case file while preserving CL-ALUDEID alias."
+    },
+    {
+      "revision_id": "REV-004",
+      "date": "2026-08-20",
+      "record": "CL-HORMUZ-CONTROL",
+      "action": "SUPERSEDE",
+      "superseded_by": "CASE-HORMUZ-OPEN-CLOSED-2026",
+      "change": "Replace absolute-control framing with separate physical-transit, commercial-normalization, Iranian coercion/permissions, U.S. interdiction and insurance/willingness axes."
+    },
+    {
+      "revision_id": "REV-005",
+      "date": "2026-08-20",
+      "record": "CL-LINCOLN",
+      "action": "PRESERVE_AND_LINK",
+      "change": "Keep existing hit/sinking claim card. Add separate CASE-US-CARRIER-RETREAT-GULF-2026 for rotation/retreat narrative.",
+      "reason": "Different claims require different evidence chains."
+    },
+    {
+      "revision_id": "REV-006",
+      "date": "2026-08-20",
+      "record": "EV-20260228-001 / legacy E001",
+      "action": "TIME_PRECISION_DOWNGRADE",
+      "change": "Canonical backfill retains date-only timing. Do not copy legacy E001 01:15 ET into hour-level timeline until independently reconciled.",
+      "reason": "New package does not support minute precision and timing references are not reconciled."
+    },
+    {
+      "revision_id": "REV-007",
+      "date": "2026-08-20",
+      "record": "June interim agreement chain",
+      "action": "SPLIT_CHRONOLOGY",
+      "change": "Keep Jun. 15 signed-MOU reporting, Jun. 17 publication/detail of 14-point framework, and Jun. 18 shipping-resumption observation as distinct events.",
+      "reason": "Decision/agreement/reporting/physical implementation are separate time concepts."
+    },
+    {
+      "revision_id": "REV-008",
+      "date": "2026-08-20",
+      "record": "EV-20260413-001",
+      "action": "CLARIFY_SCOPE",
+      "change": "Code Apr. 13 U.S. blockade as aimed at vessels entering/leaving Iranian ports, not as proof of universal physical closure of Hormuz."
+    },
+    {
+      "revision_id": "REV-009",
+      "date": "2026-08-20",
+      "record": "EV-20260505-001",
+      "action": "CLARIFY_SCOPE",
+      "change": "Treat Epic Fury conclusion/objectives-achieved language as official campaign-phase assessment; later war activity remains counterevidence to broader 'core conflict resolved' interpretation."
+    },
+    {
+      "revision_id": "REV-010",
+      "date": "2026-08-20",
+      "record": "EV-20260711-001",
+      "action": "CLARIFY_SCOPE",
+      "change": "Treat IRGC 'Strait closed' declaration as a verified declaration/claim. Later physical transits prevent coding the waterway as literally impassable."
+    },
+    {
+      "revision_id": "REV-011",
+      "date": "2026-08-20",
+      "record": "EV-20260814-002 / MOV-20260814-001",
+      "action": "ADJUDICATE",
+      "change": "Carrier departure is planned rotation after war-driven extension; not evidence by itself of Iranian-forced retreat. George Washington relief on Aug. 20 is later outcome."
+    },
+    {
+      "revision_id": "REV-012",
+      "date": "2026-08-20",
+      "record": "casualty display",
+      "action": "RESTRUCTURE",
+      "change": "Remove unlike-category side-by-side comparison. 18 U.S. service-member KIA cannot be directly compared to an Iranian senior-leader count. Unknown values remain null."
+    },
+    {
+      "revision_id": "REV-013",
+      "date": "2026-08-20",
+      "record": "legacy UI leader total 11",
+      "action": "QUARANTINE_FROM_CANONICAL_COMPARISON",
+      "change": "Do not present the 11 figure as a verified canonical leadership total until itemized by person/category/source. Preserve as legacy/audit value only."
+    },
+    {
+      "revision_id": "REV-014",
+      "date": "2026-08-20",
+      "record": "data/core.json balance composites",
+      "action": "DEPRECATE_PRIMARY_DISPLAY",
+      "change": "Do not use coalitionComposite/iranComposite or any +/− 'war score' as the canonical balance. Preserve evidence as domain assessments only."
+    },
+    {
+      "revision_id": "REV-015",
+      "date": "2026-08-20",
+      "record": "military cost",
+      "action": "SCOPE",
+      "change": "Use dated estimates with scope. CSIS Jun. 23 $34B-$42B predates renewed July fighting; Pentagon Jul. 21 $37.5B includes projected costs through Sept. 30. Neither is an Aug. 20 final actual total."
+    },
+    {
+      "revision_id": "REV-016",
+      "date": "2026-08-20",
+      "record": "daily-index",
+      "action": "PRESERVE_AS_COVERAGE_NOT_EVENT",
+      "change": "Quiet-day collection markers stay in daily-coverage.json and never become 'no activity' facts."
+    },
+    {
+      "revision_id": "REV-017",
+      "date": "2026-08-20",
+      "record": "ALIGNMENT_CAUSALITY",
+      "action": "ADD",
+      "change": "Added agreements.json and linked drawdown/alignment chronology so U.S. role, counterpart country, agreement status, and causal dates are explicit.",
+      "reason": "User requested that pre-coordinated drawdowns and regional alignments not be misrepresented as Iran-caused retreat or abandonment."
+    },
+    {
+      "revision_id": "REV-018",
+      "date": "2026-08-20",
+      "record": "IRAQ_DRAWDOWN",
+      "action": "ADJUDICATE",
+      "change": "Classified Ain al-Asad as PRE-COORDINATED DRAWDOWN — NOT RETREAT; added Aug 2023 HMC origin, Jan 2024 launch, Sept 27 2024 formal timeline, and Jan 17 2026 execution.",
+      "reason": "Primary U.S.-Iraq documents establish bilateral planning/formalization long before the Feb. 28 2026 war."
+    },
+    {
+      "revision_id": "REV-019",
+      "date": "2026-08-20",
+      "record": "SYRIA_DRAWDOWN",
+      "action": "ADJUDICATE",
+      "change": "Classified al-Tanf, Shaddadi and Qasrak movements as pre-war coordinated/conditions-based drawdown, not Iran-caused retreat.",
+      "reason": "Reuters/CENTCOM establish U.S.-Syrian coordination and deliberate conditions-based transition before the war; exact original 2025 consolidation announcement remains a collection gap."
+    },
+    {
+      "revision_id": "REV-020",
+      "date": "2026-08-20",
+      "record": "REGIONAL_ALIGNMENT",
+      "action": "ADJUDICATE",
+      "change": "Linked U.S.-Saudi SDA, Mecca pact, 14-state maritime coalition, Israel-Lebanon framework and Hezbollah verification proposal with explicit U.S. role/status.",
+      "reason": "A new regional mechanism cannot be equated to U.S. abandonment without evidence existing relationships were terminated or superseded."
+    },
+    {
+      "revision_id": "REV-021",
+      "date": "2026-08-20",
+      "record": "HEZBOLLAH_VERIFICATION",
+      "action": "REVISE",
+      "change": "Current status set to PROPOSED / NO FINAL FOUR-STATE PANEL as of Aug. 13; retained Aug. 12 shortlist reporting as historical evidence.",
+      "reason": "Reuters Aug. 13 reported Lebanese denial of an agreed shortlist and continuing U.S.-mediated talks."
+    },
+    {
+      "revision_id": "REV-022",
+      "date": "2026-08-20",
+      "record": "ERBIL_DRAWDOWN",
+      "action": "ADJUDICATE",
+      "change": "Linked wartime Erbil drawdown to the 2024 U.S.-Iraq transition and Sept. 30, 2026 endpoint; physical start kept approximate rather than inventing a late-July date.",
+      "reason": "Wartime execution could otherwise be misread as Iran-caused retreat despite the pre-war bilateral plan."
+    },
+    {
+      "revision_id": "REV-023",
+      "date": "2026-08-20",
+      "record": "PACKAGE_REVISION_1_2",
+      "action": "CONSISTENCY_REPAIR_AND_SCHEMA_NORMALIZATION",
+      "change": "Regenerated manifest, integration summary and Codex instructions from final JSON; added normalized force-posture fields and agreement/alignment relationship fields without changing substantive evidentiary verdicts; added automated cross-file count and ID-inventory validation.",
+      "reason": "Correct stale revision-1.0 prose/counts while preserving revision-1.1 drawdown/agreement work and enforcing the user-specified force-posture classification rule."
+    }
+  ]
+}

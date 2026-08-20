@@ -1,0 +1,474 @@
+{
+  "schema_version": "1.0",
+  "claims": [
+    {
+      "case_id": "CASE-US-IRAN-FIRST-STRIKE-2026",
+      "legacy_repo_ids": [],
+      "integration_action": "ADD_NEW",
+      "claim": "The opening U.S. attack was necessary because U.S. intelligence showed Iran was about to attack U.S. forces first.",
+      "claimant": "Various U.S. public justifications / derivative narratives",
+      "earliest_known_origin": "2026-02-28",
+      "claim_origin_url": null,
+      "current_verdict": "UNVERIFIED",
+      "confidence": "HIGH",
+      "what_actually_happened": "The war began Feb. 28 after unresolved pre-war talks. Reuters reported on Mar. 2 that a Pentagon briefing told Congress there was no intelligence Iran planned to attack U.S. forces first.",
+      "evidence_supporting_claim": [],
+      "counterevidence": [
+        "PRE-20260227-001",
+        "EV-20260302-001"
+      ],
+      "continuity_evidence": [],
+      "prewar_context": [
+        "PRE-20260226-001",
+        "PRE-20260227-001"
+      ],
+      "chronology": [
+        "PRE-20260226-001",
+        "PRE-20260227-001",
+        "EV-20260228-001",
+        "EV-20260302-001"
+      ],
+      "later_outcome": [],
+      "unresolved_questions": [
+        "Whether classified intelligence not described in public reporting contained a different threat assessment.",
+        "Precise legal rationale is outside this evidence collector’s adjudication."
+      ],
+      "what_would_change_assessment": [
+        "Declassified/official intelligence showing an identified Iranian plan and timing to attack U.S. forces before Feb. 28."
+      ],
+      "source_ids": [
+        "SRC-25DF3807300D",
+        "SRC-F820228892CB",
+        "SRC-87167CE9136F",
+        "SRC-E79574E72235"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Initial backfill case created."
+        },
+        {
+          "date": "2026-08-20",
+          "change": "Reconciled against current atlas. New case. Verdict applies to public evidence, not inaccessible classified holdings."
+        }
+      ],
+      "display_rule": "CASE_FILE_NOT_BINARY_SCORE",
+      "facility_refs": [],
+      "map_refs": []
+    },
+    {
+      "case_id": "CASE-US-CARRIER-RETREAT-GULF-2026",
+      "legacy_repo_ids": [],
+      "integration_action": "ADD_NEW",
+      "claim": "USS Abraham Lincoln’s August departure proves the United States retreated from the Gulf because Iran forced the carrier out.",
+      "claimant": "Viral/partisan conflict narratives",
+      "earliest_known_origin": "2026-08 (exact origin unresolved)",
+      "claim_origin_url": null,
+      "current_verdict": "MISLEADING",
+      "confidence": "HIGH",
+      "what_actually_happened": "Lincoln was already in the Arabian Sea on a scheduled deployment before the war. The deployment was extended by combat requirements. The Navy called the return a planned rotation, and George Washington arrived to relieve Lincoln while George H.W. Bush remained in theater.",
+      "evidence_supporting_claim": [
+        "The war materially extended the deployment and imposed significant operational/personnel strain (S057, S069)."
+      ],
+      "counterevidence": [
+        "PRE-20260207-001",
+        "EV-20260814-002",
+        "EV-20260820-003"
+      ],
+      "continuity_evidence": [
+        "George Washington replacement arrival; George H.W. Bush also in theater."
+      ],
+      "prewar_context": [
+        "PRE-20260207-001"
+      ],
+      "chronology": [
+        "PRE-20260207-001",
+        "EV-20260814-002",
+        "EV-20260820-003"
+      ],
+      "later_outcome": [
+        "Replacement carrier presence confirmed by Aug. 20."
+      ],
+      "unresolved_questions": [
+        "Exact internal Navy scheduling decision date for George Washington relief was not located in this source set."
+      ],
+      "what_would_change_assessment": [
+        "Official orders or credible reporting showing Lincoln was ordered out without replacement because U.S. forces could no longer operate in theater."
+      ],
+      "source_ids": [
+        "SRC-E277CF2E03A3",
+        "SRC-57864B8610ED",
+        "SRC-17A8BAFE71BD"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Initial backfill case created."
+        },
+        {
+          "date": "2026-08-20",
+          "change": "Reconciled against current atlas. Do not merge with CL-LINCOLN. CL-LINCOLN concerns hit/sinking claims; this case concerns whether rotation/departure proves retreat."
+        }
+      ],
+      "display_rule": "CASE_FILE_NOT_BINARY_SCORE",
+      "facility_refs": [],
+      "map_refs": []
+    },
+    {
+      "case_id": "CASE-HORMUZ-OPEN-CLOSED-2026",
+      "legacy_repo_ids": [
+        "CL-HORMUZ-CONTROL"
+      ],
+      "integration_action": "SUPERSEDE_AND_EXPAND",
+      "claim": "The Strait of Hormuz is either fully open under U.S. control or fully closed under Iranian control.",
+      "claimant": "Competing U.S., Iranian and derivative narratives",
+      "earliest_known_origin": "2026-02-28",
+      "claim_origin_url": null,
+      "current_verdict": "CONTESTED",
+      "confidence": "HIGH",
+      "what_actually_happened": "Physical transit never mapped cleanly to either binary description. Public tracking repeatedly showed some vessels passing, often under Iranian coordination/permissions, while aggregate commercial traffic remained a small fraction of normal and some vessels sailed AIS-dark. Insurance, operator willingness, port access and U.S. blockade of Iranian ports were separate constraints.",
+      "evidence_supporting_claim": [
+        "Iran exercised meaningful permission/sea-denial leverage and declared closure (EV-20260515-001, EV-20260520-001, EV-20260711-001).",
+        "U.S. military transits/blockade enforcement demonstrated U.S. capability to operate in the waterway."
+      ],
+      "counterevidence": [
+        "EV-20260504-001",
+        "EV-20260814-001",
+        "EV-20260816-001",
+        "EV-20260818-001",
+        "EV-20260820-001"
+      ],
+      "continuity_evidence": [
+        "Some physical transit continued; commercial normalization did not."
+      ],
+      "prewar_context": [],
+      "chronology": [
+        "EV-20260302-002",
+        "EV-20260313-001",
+        "EV-20260413-001",
+        "EV-20260504-001",
+        "EV-20260515-001",
+        "EV-20260520-001",
+        "EV-20260617-001",
+        "EV-20260711-001",
+        "EV-20260818-001",
+        "EV-20260820-001"
+      ],
+      "later_outcome": [
+        "As of Aug. 20, Kpler counted nine commodity vessels on both Tuesday and Wednesday, still far below pre-war traffic."
+      ],
+      "unresolved_questions": [
+        "True total traffic including AIS-dark vessels.",
+        "Day-level Iranian permission/inspection records.",
+        "War-risk insurance availability by carrier/operator and day.",
+        "Exact share of transits to Iranian versus GCC ports."
+      ],
+      "what_would_change_assessment": [
+        "Sustained near-prewar commercial traffic without permission/toll restrictions and normal insurance would support “open”; verified cessation of all physical passage would support “closed” in the literal sense."
+      ],
+      "source_ids": [
+        "SRC-887221921E34",
+        "SRC-F8F12DF86B47",
+        "SRC-40708A58524D",
+        "SRC-631C96DF41A7",
+        "SRC-569997F08351",
+        "SRC-A71BC15C30DB",
+        "SRC-27B4F9BD222C",
+        "SRC-E229B42C1EB1",
+        "SRC-B3FFD2E97368",
+        "SRC-6254D39BE9DA",
+        "SRC-F342B5872062",
+        "SRC-84C62BAB5B65"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Initial backfill case created."
+        },
+        {
+          "date": "2026-08-20",
+          "change": "Reconciled against current atlas. Replace/expand the absolute-control card with a multi-axis case file."
+        }
+      ],
+      "display_rule": "CASE_FILE_NOT_BINARY_SCORE",
+      "assessment_axes": {
+        "physical_transit": "SOME_TRANSIT_CONTINUES",
+        "commercial_normalization": "NOT_NORMALIZED",
+        "iranian_permission_coercion": "MATERIAL",
+        "us_blockade_interdiction": "MATERIAL",
+        "insurance_commercial_willingness": "SEVERELY_DEGRADED",
+        "legal_sovereignty_control": "NOT_ADJUDICATED_BY_THIS_LEDGER"
+      },
+      "map_refs": [
+        "MAP-GEO-HORMUZ"
+      ]
+    },
+    {
+      "case_id": "CASE-EPIC-FURY-OBJECTIVES-2026",
+      "legacy_repo_ids": [],
+      "integration_action": "ADD_NEW",
+      "claim": "By May 5, Operation Epic Fury had achieved its objectives in a way that resolved the core Iran conflict problems.",
+      "claimant": "U.S. Secretary of State Marco Rubio / derivative narratives",
+      "earliest_known_origin": "2026-05-05",
+      "claim_origin_url": "https://www.reuters.com/world/china/ten-civilian-sailors-have-died-strait-hormuz-rubio-says-2026-05-05/",
+      "current_verdict": "CONTESTED",
+      "confidence": "MODERATE",
+      "what_actually_happened": "Rubio publicly described Epic Fury as concluded and objectives achieved, while the U.S. simultaneously began/continued Project Freedom. Iran retained missile/drone capability, enriched-uranium questions remained, Hormuz traffic stayed depressed, and later attacks/strike cycles resumed.",
+      "evidence_supporting_claim": [
+        "U.S. official assertion recorded in S032; extensive strike activity and military damage are well established."
+      ],
+      "counterevidence": [
+        "EV-20260328-003",
+        "EV-20260504-001",
+        "EV-20260707-001",
+        "EV-20260709-001"
+      ],
+      "continuity_evidence": [
+        "Iran continued regional strike and maritime coercive capability after May 5."
+      ],
+      "prewar_context": [],
+      "chronology": [
+        "EV-20260328-003",
+        "EV-20260504-001",
+        "EV-20260505-001",
+        "EV-20260707-001",
+        "EV-20260709-001"
+      ],
+      "later_outcome": [
+        "The conflict and blockade cycles continued into August."
+      ],
+      "unresolved_questions": [
+        "Precise classified mission objectives and internal criteria for “achieved.”"
+      ],
+      "what_would_change_assessment": [
+        "Declassified objective list and measures of effectiveness showing each stated military objective met, distinguished from political/maritime end-state goals."
+      ],
+      "source_ids": [
+        "SRC-4D79B1712E0D",
+        "SRC-A56F4E9B7A5C",
+        "SRC-631C96DF41A7",
+        "SRC-EF1D932D8488",
+        "SRC-A2DF44867E0E",
+        "SRC-05EC0662B7EC"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Initial backfill case created."
+        },
+        {
+          "date": "2026-08-20",
+          "change": "Reconciled against current atlas. New case. Treat official objective-achievement language as an official assessment, not self-verifying outcome evidence."
+        }
+      ],
+      "display_rule": "CASE_FILE_NOT_BINARY_SCORE",
+      "facility_refs": [],
+      "map_refs": []
+    },
+    {
+      "case_id": "CASE-AL-UDEID-WHOLE-BASE-INOPERABLE-2026",
+      "legacy_repo_ids": [
+        "CL-ALUDEID"
+      ],
+      "integration_action": "SUPERSEDE_AND_EXPAND",
+      "claim": "Iran’s strike rendered the entire Al Udeid Air Base inoperable and stopped U.S. regional air operations.",
+      "claimant": "Derivative conflict narratives based on verified CAOC damage",
+      "earliest_known_origin": "2026-06 (exact origin unresolved)",
+      "claim_origin_url": null,
+      "current_verdict": "REAL EVENT / EXAGGERATED EFFECT",
+      "confidence": "HIGH",
+      "what_actually_happened": "Multiple Iranian missiles struck the Combined Air Operations Center and rendered that CAOC inoperable. Satellite imagery independently supports physical damage at Al Udeid. The CAOC was not in use during the attack; the air campaign was directed from Shaw from the start, and reporting says the strike did not interfere with Epic Fury or later limited strikes. That verifies a major C2-node loss, not a whole-base shutdown.",
+      "evidence_supporting_claim": [
+        "S070: CAOC rendered inoperable.",
+        "S071/S076/S077: independent imagery/reporting shows physical damage at Al Udeid."
+      ],
+      "counterevidence": [
+        "S070: air campaign and later strikes continued; CAOC was not in use.",
+        "S072/S073: Shaw/distributed operations were deliberately established years earlier."
+      ],
+      "continuity_evidence": [
+        "Epic Fury and later airstrikes continued from Shaw; pre-existing distributed architecture avoided a single-point C2 failure."
+      ],
+      "prewar_context": [
+        "PRE-20201118-001",
+        "PRE-20260113-001",
+        "PRE-20260114-001"
+      ],
+      "chronology": [
+        "PRE-20201118-001",
+        "PRE-20260113-001",
+        "PRE-20260114-001",
+        "EV-20260228-001"
+      ],
+      "later_outcome": [
+        "As of the June 5 reporting, rebuilding/future posture remained under discussion; a CAOC reconstitution date was not found."
+      ],
+      "unresolved_questions": [
+        "Exact strike date(s) on the CAOC within the early weeks of war.",
+        "Extent of damage to other Al Udeid mission systems and their restoration dates.",
+        "Whether/when the Al Udeid CAOC itself returned to service."
+      ],
+      "what_would_change_assessment": [
+        "Verified evidence that runway, logistics, base defense, communications and other essential functions all ceased for a material period would support a whole-base knockout claim."
+      ],
+      "source_ids": [
+        "SRC-7538CF574DDF",
+        "SRC-3826CE7F7FBB",
+        "SRC-704574F8CB02",
+        "SRC-D129A9FA0378",
+        "SRC-0561D46C2441",
+        "SRC-4818F69C326D",
+        "SRC-551A9C2DB97C",
+        "SRC-EF8EDACF7DA3"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Initial backfill case created."
+        },
+        {
+          "date": "2026-08-20",
+          "change": "Reconciled against current atlas. Replace the binary card with the full case file; preserve CL-ALUDEID as an alias/audit reference."
+        }
+      ],
+      "display_rule": "CASE_FILE_NOT_BINARY_SCORE",
+      "facility_refs": [
+        "US-ALUDEID"
+      ],
+      "map_refs": [
+        "MAP-US-ALUDEID"
+      ]
+    },
+    {
+      "case_id": "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+      "legacy_repo_ids": [],
+      "integration_action": "ADD_NEW",
+      "claim": "Pre-war U.S. drawdowns in Iraq/Syria and later Saudi/Arab regional security arrangements show Iran forced the United States to retreat and that U.S. partners abandoned Washington.",
+      "claimant": "Iranian / Iran-aligned narrative variants and derivative social-media claims",
+      "earliest_known_origin": null,
+      "claim_origin_url": null,
+      "current_verdict": "OVERBROAD — CAUSATION NOT SUPPORTED",
+      "confidence": "HIGH",
+      "what_actually_happened": "Several frequently cited “withdrawals” were negotiated, formalized or already executing before the Feb. 28 Iran war. Iraq’s transition was jointly initiated in 2023 and formally scheduled by the U.S. and Iraqi governments on Sept. 27, 2024. Ain al-Asad was handed to Iraq Jan. 17, 2026. In Syria, al-Tanf and Shaddadi were handed over through U.S.-Syrian coordination and the Qasrak drawdown began before Feb. 28; U.S. officials called the theater reduction deliberate and conditions-based. Later Saudi-led arrangements did show greater regional burden-sharing and security diversification, but Mecca did not abrogate existing agreements and Saudi Arabia had signed a U.S.-Saudi Strategic Defense Agreement before the war. The Israel-Lebanon framework and follow-on Hezbollah verification talks were themselves U.S.-brokered/mediated. AP further reported in August that the wartime Erbil drawdown remained on the Sept. 30, 2026 endpoint under the 2024 Washington-Baghdad agreement; its exact late-July start day was not public.",
+      "evidence_supporting_claim": [
+        "Reuters analysis noted questions over U.S. reliability and a growing regional desire for locally driven security architecture during the war. Regional states have created additional defense mechanisms, which is real evidence of diversification and burden-sharing."
+      ],
+      "counterevidence": [
+        "PRE-20230808-IRQ-001",
+        "PRE-20240125-IRQ-001",
+        "PRE-20240927-IRQ-001",
+        "PRE-20260117-IRQ-001",
+        "PRE-20260212-SYR-001",
+        "PRE-20260215-SYR-001",
+        "PRE-20260218-SYR-001",
+        "PRE-20260223-SYR-001",
+        "PRE-20251118-SAU-001",
+        "EV-20260626-001",
+        "EV-20260730-001",
+        "EV-20260807-002",
+        "EV-20260813-003"
+      ],
+      "continuity_evidence": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025",
+        "AGR-ISR-LBN-FRAMEWORK-2026"
+      ],
+      "prewar_context": [
+        "PRE-20230808-IRQ-001",
+        "PRE-20240125-IRQ-001",
+        "PRE-20240927-IRQ-001",
+        "PRE-20251118-SAU-001",
+        "PRE-20260117-IRQ-001",
+        "PRE-20260212-SYR-001",
+        "PRE-20260215-SYR-001",
+        "PRE-20260218-SYR-001",
+        "PRE-20260223-SYR-001"
+      ],
+      "chronology": [
+        "PRE-20230808-IRQ-001",
+        "PRE-20240125-IRQ-001",
+        "PRE-20240927-IRQ-001",
+        "PRE-20251118-SAU-001",
+        "PRE-20260117-IRQ-001",
+        "PRE-20260212-SYR-001",
+        "PRE-20260215-SYR-001",
+        "PRE-20260218-SYR-001",
+        "PRE-20260223-SYR-001",
+        "EV-20260626-001",
+        "EV-20260730-001",
+        "EV-20260807-002",
+        "EV-20260812-002",
+        "EV-20260813-003",
+        "EV-20260812-003"
+      ],
+      "later_outcome": [
+        "Mecca pact signed Aug. 7 without abrogating existing agreements; U.S.-mediated Lebanon verification negotiations continued in August."
+      ],
+      "unresolved_questions": [
+        "Whether the United States had a formal observer/participant role at the July 30 Saudi maritime coalition meeting; reviewed Reuters reporting establishes 43-country/EU attendance but does not identify every attendee.",
+        "Whether wartime pressure accelerated specific post-Feb. 28 force-posture changes beyond the pre-war Iraq/Syria plans. Those require event-specific evidence and cannot be inferred from sequence alone."
+      ],
+      "what_would_change_assessment": [
+        "Primary evidence showing a pre-war drawdown plan was cancelled or materially superseded and a new withdrawal was ordered specifically because of Iranian wartime action.",
+        "Formal termination/suspension of the U.S.-Saudi Strategic Defense Agreement or other existing U.S. security relationship tied to the new regional pacts."
+      ],
+      "source_ids": [
+        "SRC-6B8C48817118",
+        "SRC-209378A46AAC",
+        "SRC-E6B1159781EB",
+        "SRC-005D46FC622B",
+        "SRC-CEBE7CCFF600",
+        "SRC-29FAB9A69690",
+        "SRC-566F047CEA46",
+        "SRC-3B7FE42A1FF2",
+        "SRC-64BB58499062",
+        "SRC-8C302F9CD6F7",
+        "SRC-569EA3D29954",
+        "SRC-6261F62A2388",
+        "SRC-9396B216601A",
+        "SRC-1F7AC92D882F",
+        "SRC-E27CBB0AD0BC",
+        "SRC-1531FAADFF52",
+        "SRC-BCB32C965F32",
+        "SRC-38F77594E6D5",
+        "SRC-80791B854E19"
+      ],
+      "revision_history": [
+        {
+          "date": "2026-08-20",
+          "change": "Created to adjudicate Iran-caused-retreat / U.S.-abandonment narrative using agreement and drawdown chronology. Evidence of regional diversification is retained rather than hidden."
+        }
+      ],
+      "display_rule": "CASE_FILE_NOT_BINARY_SCORE; show subcases with agreement badges and causal dates",
+      "facility_refs": [
+        "US-AINASAD",
+        "US-TANF",
+        "US-QASRAK",
+        "US-ERBIL"
+      ],
+      "map_refs": [],
+      "agreement_refs": [
+        "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
+        "AGR-US-SYR-BASE-CONSOLIDATION-2025-2026",
+        "AGR-US-SAU-STRATEGIC-DEFENSE-2025",
+        "AGR-ISR-LBN-FRAMEWORK-2026",
+        "AGR-LBN-HEZBOLLAH-VERIFY-PROP-2026",
+        "AGR-SAUDI-MARITIME-COALITION-2026",
+        "AGR-MECCA-JOINT-DEFENSE-2026"
+      ]
+    }
+  ],
+  "repo_claims_to_preserve": [
+    "CL-QATAR-AI",
+    "CL-LINCOLN",
+    "CL-FIGHTER-VIDEO",
+    "CL-PSAB-JUN8",
+    "CL-KWI-PATRIOT",
+    "CL-TANF",
+    "CL-18TARGETS",
+    "CL-200-US-DEAD",
+    "CL-IRGC-ASSET-LIST",
+    "CL-ERBIL-ALL"
+  ],
+  "preservation_rule": "Preserve adverse evidence and existing unrelated claim cards. Do not merge distinct narratives merely because they concern the same place or platform."
+}
