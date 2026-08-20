@@ -44,7 +44,10 @@ def main() -> int:
     require(vendor.get("version") == "1.9.4", "vendored Leaflet version mismatch", errors)
     for relative, expected in vendor.get("sha256", {}).items():
         candidate = ROOT / "vendor/leaflet" / relative
-        actual = hashlib.sha256(candidate.read_bytes()).hexdigest() if candidate.is_file() else None
+        data = candidate.read_bytes() if candidate.is_file() else None
+        if data is not None and candidate.suffix.lower() in {".css", ".js", ".md", ".txt", ""}:
+            data = data.replace(b"\r\n", b"\n")
+        actual = hashlib.sha256(data).hexdigest() if data is not None else None
         require(actual == expected, f"vendored Leaflet hash mismatch: {relative}", errors)
     for label in ("Overview", "Operations", "Effects", "Information", "Evidence"):
         require(f">{label}<" in html, f"primary area missing: {label}", errors)
