@@ -1,0 +1,43 @@
+{
+  "influenceNetworks": {
+    "version": "2.7",
+    "last_reviewed_et": "2026-08-19 21:55",
+    "source": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+    "networks": [
+      {
+        "name": "BRICS4CLICKS",
+        "sampled_accounts": 23,
+        "views_min": 772000000,
+        "likes_min": 14000000,
+        "reposts_approx": 3000000,
+        "posts_approx": 900,
+        "in_network_repost_share_pct": 82,
+        "username_changed_share_pct": 80,
+        "notes": [
+          "ISD found clear coordination",
+          "Nearly two-thirds purchased X Premium after February",
+          "ISD found no further evidence the network was state-backed"
+        ]
+      },
+      {
+        "name": "Verified4War",
+        "sampled_accounts": 18,
+        "views_min": 370000000,
+        "likes_min": 1500000,
+        "reposts_approx": 410000,
+        "posts_approx": 2000,
+        "in_network_repost_share_pct": 91,
+        "blue_check_feb_mar_share_pct": 82,
+        "central_account": "Times of Iran News",
+        "central_account_view_share_pct": 40,
+        "central_account_like_share_pct": 35,
+        "central_account_repost_share_pct": 27,
+        "central_account_name_changes": 69,
+        "notes": [
+          "ISD found clear coordination",
+          "ISD found no further evidence the network was state-backed"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,520 @@
+{
+  "claims": [
+    {
+      "id": "CL-QATAR-AI",
+      "date": "2026-03-09",
+      "name": "“Qatar base radar completely destroyed” image",
+      "lat": 25.12,
+      "lon": 51.31,
+      "verdict": "FALSE",
+      "claim": "A state-aligned Iranian outlet circulated a before/after satellite image claiming completely destroyed U.S. radar equipment at a Qatar base.",
+      "finding": "The image was AI-manipulated; researchers traced it to an older Google Earth image of a U.S. base in Bahrain. This does NOT mean Al Udeid escaped real damage—other imagery confirms real damage there.",
+      "sources": [
+        [
+          "Arab News / AFP",
+          "https://www.arabnews.com/node/2635797/media"
+        ],
+        [
+          "Washington Post imagery review",
+          "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/"
+        ]
+      ]
+    },
+    {
+      "id": "CL-LINCOLN",
+      "date": "2026-02-28 onward",
+      "name": "USS Abraham Lincoln hit / sinking",
+      "lat": 20.5,
+      "lon": 63.0,
+      "verdict": "FALSE",
+      "claim": "Iranian leadership and circulating images claimed the carrier was struck or sinking.",
+      "finding": "AP fact-check: CENTCOM said it was not hit and the missiles did not come close; many circulating images were old. On Aug. 16 the carrier was still supporting the war and blockade after more than 240 uninterrupted days at sea.",
+      "sources": [
+        [
+          "Press TV — Iranian claim source",
+          "https://www.presstv.ir/Detail/2026/03/05/765006/US-aircraft-carrier-flees-after-precision-strike-by-IRGC-drones-in-Sea-of-Oman"
+        ],
+        [
+          "AP fact check",
+          "https://apnews.com/article/fact-check-iran-war-khamenei-misrepresented-images-787b6a21a4fef4cc32ccca9bc59980f0"
+        ],
+        [
+          "AP Aug. 16 operational update",
+          "https://apnews.com/article/iran-us-israel-lebanon-gaza-uss-lincoln-august-16-2026-98f43f920c102080a3526981cf0dd7b8"
+        ],
+        [
+          "Al Jazeera opening-day report",
+          "https://www.aljazeera.com/news/liveblog/2026/2/28/live-israel-launches-attacks-on-iran-multiple-explosions-heard-in-tehran"
+        ]
+      ]
+    },
+    {
+      "id": "CL-FIGHTER-VIDEO",
+      "date": "2026-03",
+      "name": "Video of U.S. fighter shot down in Iran",
+      "lat": 32.4,
+      "lon": 53.7,
+      "verdict": "FALSE",
+      "claim": "Viral video was presented as an Iranian shoot-down of a U.S. fighter.",
+      "finding": "AP traced it to a military video game posted in November 2025. Separate real U.S. F-15E losses in Kuwait were friendly-fire incidents, not this video.",
+      "sources": [
+        [
+          "AP fact check",
+          "https://apnews.com/article/fact-check-iran-war-khamenei-misrepresented-images-787b6a21a4fef4cc32ccca9bc59980f0"
+        ]
+      ]
+    },
+    {
+      "id": "CL-PSAB-JUN8",
+      "date": "2026-06-08",
+      "name": "Prince Sultan Air Base attacked on June 8",
+      "lat": 24.1,
+      "lon": 47.58,
+      "verdict": "FALSE_FOR_THIS_EVENT",
+      "claim": "Reports said Prince Sultan Air Base had been targeted that morning.",
+      "finding": "Saudi Arabia's Ministry of Defense said the reports were untrue; the warning followed a Yemen-launched missile that failed and fell near the Saudi-Yemeni border. This does NOT erase real Prince Sultan damage from other Iranian attacks in March.",
+      "sources": [
+        [
+          "Arab News / Saudi MoD",
+          "https://www.arabnews.com/node/2646337/saudi-arabia"
+        ]
+      ]
+    },
+    {
+      "id": "CL-KWI-PATRIOT",
+      "date": "2026-06-03",
+      "name": "U.S. Patriot caused Kuwait airport destruction",
+      "lat": 29.2266,
+      "lon": 47.9689,
+      "verdict": "FALSE / HOST-NATION CONTRADICTION",
+      "claim": "IRGC/Tasnim said Kuwait International Airport terminal damage was caused by a U.S. Patriot interceptor error.",
+      "finding": "Kuwait said Iranian attacks hit the airport, killed one person and damaged vital infrastructure; the U.S. also denied the Patriot claim. Flights later resumed from Terminal 4 after damage assessment.",
+      "sources": [
+        [
+          "Arab News / agencies",
+          "https://www.arabnews.com/node/2645832/middle-east"
+        ],
+        [
+          "The National / Kuwait reporting",
+          "https://www.thenationalnews.com/news/gulf/2026/06/03/fresh-iran-strikes-on-bahrain-and-kuwait-test-failing-talks/"
+        ]
+      ]
+    },
+    {
+      "id": "CL-TANF",
+      "date": "2026-07-17",
+      "name": "Iranian strike on a U.S. command center at al-Tanf",
+      "lat": 33.51,
+      "lon": 38.68,
+      "verdict": "FALSE_AS_CURRENT_US_BASE_CLAIM",
+      "claim": "Iran claimed a strike on a U.S. command center at al-Tanf.",
+      "finding": "The U.S. had completed its withdrawal from al-Tanf on Feb. 12. The project map retains it only as a historical withdrawn marker; a Syrian source said the base itself was not hit.",
+      "sources": [
+        [
+          "Reuters withdrawal",
+          "https://www.reuters.com/world/middle-east/syria-says-it-has-taken-control-al-tanf-base-vacated-by-us-troops-2026-02-12/"
+        ]
+      ]
+    },
+    {
+      "id": "CL-ALUDEID",
+      "date": "2026-03 onward",
+      "name": "“Al Udeid was destroyed”",
+      "lat": 25.12,
+      "lon": 51.31,
+      "verdict": "REAL_DAMAGE — OVERSTATED_AS_WHOLE_BASE_LOSS",
+      "claim": "Social-media shorthand treats damage at Al Udeid as proof the entire base was destroyed or unusable.",
+      "finding": "Real damage is verified. Satellite communications sites were hit and the CAOC was later reported inoperable. The evidence does not establish whole-base destruction; the map therefore marks a subfacility loss, not a dead base.",
+      "sources": [
+        [
+          "Washington Post satellite review",
+          "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/"
+        ],
+        [
+          "Al Jazeera regional reporting",
+          "https://www.aljazeera.com/news/2026/3/29/iran-hits-us-awacs-air-tankers-what-else-has-it-targeted-in-past-month"
+        ]
+      ]
+    },
+    {
+      "id": "CL-18TARGETS",
+      "date": "2026-06-11",
+      "name": "18 U.S. military targets hit in Kuwait/Bahrain + Erbil",
+      "lat": 29.3,
+      "lon": 47.8,
+      "verdict": "UNVERIFIED — NOT A CONFIRMED LOSS TALLY",
+      "claim": "IRGC claimed strikes on 18 American military targets in Kuwait and Bahrain plus Erbil.",
+      "finding": "The National reported the claims were not independently confirmed; Jordan separately said missiles toward Azraq were intercepted with no casualties or damage. Treat launch/target claims as claims until BDA exists.",
+      "sources": [
+        [
+          "Press TV — IRGC claim source",
+          "https://www.presstv.ir/Detail/2026/06/11/770279/IRGC--Iran-stronger-than-ever%2C-fingers-on-the-trigger-for-decisive-response-to-any-enemy-aggression"
+        ],
+        [
+          "The National",
+          "https://www.thenationalnews.com/news/mena/2026/06/11/us-strikes-iran-for-second-night-as-tehran-hits-back-at-american-bases/"
+        ]
+      ]
+    },
+    {
+      "id": "CL-HORMUZ-CONTROL",
+      "date": "2026-08-13 to 2026-08-16",
+      "name": "“Iran fully controls Hormuz” / “U.S. fully controls Hormuz”",
+      "lat": 26.56,
+      "lon": 56.25,
+      "verdict": "BOTH ABSOLUTE CLAIMS OVERSTATE THE RECORD",
+      "claim": "Both Tehran and Washington have used maximal language about control of the Strait.",
+      "finding": "Iran plainly exerts severe coercive control over commercial behavior, but the U.S. still enforces a naval blockade and some vessels transit. By Aug. 16 Kpler counted five commodity transits Saturday and none Sunday. This is contested sea denial, not uncontested ownership by either side.",
+      "sources": [
+        [
+          "Reuters Aug. 13 competing claims",
+          "https://www.reuters.com/world/iran-says-strait-hormuz-is-under-its-control-fars-news-reports-2026-08-13/"
+        ],
+        [
+          "Reuters Aug. 16 shipping data",
+          "https://www.reuters.com/world/middle-east/shipping-via-hormuz-strait-slows-after-tanker-attacks-data-shows-2026-08-16/"
+        ]
+      ]
+    },
+    {
+      "id": "CL-200-US-DEAD",
+      "date": "2026-07-26",
+      "name": "IRGC claim: more than 200 U.S. soldiers killed after the June MOU",
+      "lat": 32.0,
+      "lon": 51.0,
+      "verdict": "FALSE AGAINST THE PUBLIC CASUALTY RECORD",
+      "claim": "IRGC spokesperson Hossein Mohebi said U.S. fatalities after the alleged violation of the Islamabad MOU had exceeded 200.",
+      "finding": "The public casualty record is nowhere close to that figure. Reuters reported 18 U.S. service members killed in the entire war as of July 22, with more than 430 wounded. Later Pentagon/AP accounting added renewed-fighting casualties but did not reveal anything remotely approaching 200 U.S. deaths. The Iranian claim is therefore contradicted by the independently reported public record.",
+      "sources": [
+        [
+          "IRNA — IRGC claim source",
+          "https://en.irna.ir/news/86219333/IRGC-spokesperson-US-death-toll-following-violation-of-Islamabad"
+        ],
+        [
+          "Reuters — U.S. casualty snapshot, Jul. 22",
+          "https://www.reuters.com/world/middle-east/iran-war-drains-us-blood-treasure-2026-07-22/"
+        ],
+        [
+          "AP — later Pentagon casualty accounting",
+          "https://apnews.com/article/612099f7e3eda9c28625e8bfe7c5c6dd"
+        ]
+      ]
+    },
+    {
+      "id": "CL-IRGC-ASSET-LIST",
+      "date": "2026-07-26",
+      "name": "IRGC aggregate claim: dozens of U.S. aircraft, drones, launchers and air-defense systems destroyed/damaged",
+      "lat": 27.5,
+      "lon": 49.0,
+      "verdict": "PARTLY CONSISTENT WITH REAL DAMAGE — AGGREGATE TALLY UNVERIFIED",
+      "claim": "IRGC published a detailed 15-day list including 11 fighter aircraft/helicopters, 17 drones, eight aerial-refueling aircraft, Patriot complexes, HIMARS platforms, command centers and other assets allegedly destroyed or damaged.",
+      "finding": "Independent satellite reporting confirms that Iran did inflict real damage on U.S. bases, air-defense equipment, aircraft and communications facilities. It does not independently validate the IRGC aggregate inventory or its specific aircraft/equipment counts. The correct public label is therefore real damage with an unverified claimed tally—not “all false,” and not a confirmed loss ledger.",
+      "sources": [
+        [
+          "IRNA — IRGC claimed asset list",
+          "https://en.irna.ir/news/86219475/IRGC-releases-list-of-US-military-assets-heavily-damaged-in-Iranian"
+        ],
+        [
+          "Washington Post — independent satellite BDA",
+          "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/"
+        ]
+      ]
+    },
+    {
+      "id": "CL-ERBIL-ALL",
+      "date": "2026-07-26",
+      "name": "Iranian Army claim: nearly all U.S. infrastructure in Erbil destroyed",
+      "lat": 36.24,
+      "lon": 43.96,
+      "verdict": "UNVERIFIED / OVERSTATED BY LATER OPERATING RECORD",
+      "claim": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed.",
+      "finding": "Erbil suffered real attacks and damage, but public reporting continued to place U.S. troops and equipment there during the later Iraq drawdown. No reviewed independent BDA establishes destruction of nearly all U.S. infrastructure. The claim is therefore not supported at the stated scale.",
+      "sources": [
+        [
+          "IRNA — Iranian Army claim source",
+          "https://en.irna.ir/news/86219451/Nearly-all-US-infrastructure-in-Erbil-destroyed-Iran-s-Army"
+        ],
+        [
+          "AP — continuing U.S. presence and later drawdown",
+          "https://apnews.com/article/7d050ff17a0c52298207bd9e60851fcd"
+        ]
+      ]
+    }
+  ],
+  "informationWarClaims": [
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "MAR 1–12",
+      "platform": "X / Facebook / Douyin",
+      "media_type": "AI + recycled video",
+      "claim": "“Iran sank or badly damaged USS Abraham Lincoln.”",
+      "reach": "One X version exceeded 8 million views by Mar. 2.",
+      "assessment": "Iranian military/social accounts claimed the carrier had been hit. PolitiFact and AFP found the viral videos were AI-generated or old footage; CENTCOM denied a strike. The carrier remained operational months later and continued supporting operations.",
+      "sources": [
+        {
+          "label": "PolitiFact",
+          "url": "https://politifact.com/factchecks/2026/mar/02/social-media/uss-abraham-lincoln-fire-missile-iran/"
+        },
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.A2JQ2G3"
+        },
+        {
+          "label": "AFP — old/AI clips",
+          "url": "https://factcheck.afp.com/doc.afp.com.A2LM9CQ"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "MISLEADING",
+        "AI"
+      ],
+      "verdict": "FALSE IMAGE / REAL DAMAGE POSSIBLE",
+      "date_window": "MAR 3–9",
+      "platform": "Facebook / Instagram / X",
+      "media_type": "AI image",
+      "claim": "Burning image supposedly shows the U.S. AN/FPS-132 radar in Qatar destroyed.",
+      "reach": "",
+      "assessment": "AFP found the dramatic image was AI-generated and circulated before the reported strike. Separate Planet Labs imagery did show marks consistent with possible impact at the real radar site. Verdict: the viral image is false; the broader proposition that the radar site was hit is not simply dismissed.",
+      "sources": [
+        {
+          "label": "AFP fact check + satellite comparison",
+          "url": "https://factcheck.afp.com/doc.afp.com.A2B239E"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "MAR 5–6",
+      "platform": "X / Facebook",
+      "media_type": "AI image",
+      "claim": "“U.S. Delta Force troops were captured by the IRGC.”",
+      "reach": "",
+      "assessment": "AFP found Gemini watermarks/SynthID and multiple visual anomalies. The images were synthetic; no such captured Delta Force unit was documented.",
+      "sources": [
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.A2A33ZQ"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "MAR 6–13",
+      "platform": "Facebook",
+      "media_type": "Fake satellite image",
+      "claim": "“U.S.-Israeli pilots were fooled into bombing painted aircraft decoys.”",
+      "reach": "",
+      "assessment": "AFP found the purported satellite images were AI-generated. This is a useful example of synthetic “BDA” designed to create a tactical humiliation narrative.",
+      "sources": [
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.A2ZE3T3"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "MAR 7–11",
+      "platform": "X / Facebook / Threads",
+      "media_type": "AI image",
+      "claim": "“Iran shot down a U.S. B-2 bomber and captured the entire crew.”",
+      "reach": "",
+      "assessment": "Full Fact and other forensic checks found the image fabricated; among other defects, it showed three U.S. crew even though a B-2 normally carries two. ISD also identified this as a false Verified4War narrative.",
+      "sources": [
+        {
+          "label": "Full Fact",
+          "url": "https://fullfact.org/conflict/fake-B-2-shot-down-image/"
+        },
+        {
+          "label": "ISD",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE"
+      ],
+      "verdict": "FALSE",
+      "date_window": "MAR 10–24",
+      "platform": "Facebook / X / state-media amplification",
+      "media_type": "",
+      "claim": "“Benjamin Netanyahu was killed / his later appearances were AI coverups.”",
+      "reach": "ISD: Verified4War death narrative produced >43M views; top post 16.5M.",
+      "assessment": "Reuters verified Netanyahu appearing publicly at a Mar. 19 press conference; AFP separately debunked altered/low-quality clips used to claim his videos were AI-generated coverups.",
+      "sources": [
+        {
+          "label": "Reuters Fact Check",
+          "url": "https://www.reuters.com/fact-check/netanyahus-press-conference-dispels-death-rumours-2026-03-24/"
+        },
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.A4M24T3"
+        },
+        {
+          "label": "ISD reach data",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "MAR 17–APR 7",
+      "platform": "Facebook / TikTok / X",
+      "media_type": "AI video",
+      "claim": "“Close-up video shows missiles hitting a U.S. base in Qatar.”",
+      "reach": "",
+      "assessment": "AFP found the video synthetic and noted no reports of the supposed base shown in the clip. This is distinct from the fact that real U.S. facilities in Qatar were struck during the war.",
+      "sources": [
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.A6JQ7G3"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "MAR 20–APR 3",
+      "platform": "Facebook / TikTok / X",
+      "media_type": "AI video",
+      "claim": "“What mainstream media won't show you: the U.S. base in Kuwait is under siege.”",
+      "reach": "",
+      "assessment": "AFP found the viral base-bombardment video was AI-generated. Real U.S. facilities in Kuwait suffered verified Iranian damage, but this specific footage was not evidence of it.",
+      "sources": [
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.A66A663"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE"
+      ],
+      "verdict": "FALSE VIDEO",
+      "date_window": "APR 3",
+      "platform": "X",
+      "media_type": "Video-game footage",
+      "claim": "“Video shows an IRGC missile downing a U.S. F-15 over Qeshm.”",
+      "reach": "",
+      "assessment": "AFP traced the clip to military-simulation gameplay posted on Feb. 28. This does not erase the separate, real April U.S. F-15 loss/rescue event; it means the viral video was not footage of that event.",
+      "sources": [
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.A6PG7WE"
+        },
+        {
+          "label": "Reuters — real F-15 loss/rescue context",
+          "url": "https://www.reuters.com/world/middle-east/us-rescues-airman-whose-f-15-was-downed-iran-us-officials-say-2026-04-05/"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "MAY 11–18",
+      "platform": "Weibo / social platforms",
+      "media_type": "AI + old Iraq-war imagery",
+      "claim": "“Video shows a U.S. A-10 damaged/captured after an Iranian strike.”",
+      "reach": "",
+      "assessment": "AFP found the clip partly repurposed a 2003 Iraq-war image and contained synthetic visual inconsistencies.",
+      "sources": [
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.B2U99ZR"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "JUN 11–19",
+      "platform": "Facebook",
+      "media_type": "AI video",
+      "claim": "“Iran used a $150 weapon to shoot down a billion-dollar U.S. helicopter.”",
+      "reach": "",
+      "assessment": "AFP found the clip was AI-generated. The framing is built to maximize cost-exchange humiliation, but the visual used as proof was fabricated.",
+      "sources": [
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.B6VD463"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    },
+    {
+      "status_tags": [
+        "FALSE",
+        "AI"
+      ],
+      "verdict": "FALSE",
+      "date_window": "JUL 17–31",
+      "platform": "Facebook",
+      "media_type": "AI image from prewar video",
+      "claim": "“Iran destroyed the major U.S. command-and-control center for Gulf operations.”",
+      "reach": "",
+      "assessment": "AFP traced the burning-building image to an AI-generated video created nearly a year before the war. The claim should not be confused with real Iranian damage to named U.S. C2 facilities such as the Al Udeid CAOC.",
+      "sources": [
+        {
+          "label": "AFP",
+          "url": "https://factcheck.afp.com/doc.afp.com.C3NE663"
+        }
+      ],
+      "version": "2.7",
+      "last_reviewed_et": "2026-08-19 21:55"
+    }
+  ]
+}

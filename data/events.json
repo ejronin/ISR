@@ -1,0 +1,2885 @@
+{
+  "fullLedger": [
+    {
+      "id": "E001",
+      "date": "2026-02-28",
+      "time": "01:15 ET",
+      "attacker": "United States and Israel",
+      "defender": "Iran",
+      "launch": "Regional / Iran",
+      "target": "Tehran and nationwide",
+      "category": "Leadership; C2; missile; air defense",
+      "weapon": "Air and missile strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Operation Epic Fury commenced; Ali Khamenei killed and compound heavily bombed.",
+      "claimed": "",
+      "significance": "Opening strike killed supreme leader and senior personnel. Decapitation shock; immediate command succession challenge; did not terminate Iranian retaliation.",
+      "evidence": "Confirmed operation and leadership death; full damage inventory incomplete",
+      "source_ids": "S001;S003",
+      "notes": "Day 1. Launch counts and successful impacts not independently reconciled.",
+      "src": [
+        [
+          "S001 — U.S. Central Command",
+          "https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY/"
+        ],
+        [
+          "S003 — Associated Press",
+          "https://apnews.com/article/iran-us-explosion-tehran-c2f11247d8a66e36929266f2c557a54c"
+        ]
+      ]
+    },
+    {
+      "id": "E002",
+      "date": "2026-03-01",
+      "time": "Approx.",
+      "attacker": "Iran",
+      "defender": "United States / GCC / Israel",
+      "launch": "Iran",
+      "target": "Kuwait, UAE, Israel and other Gulf locations",
+      "category": "Bases; ports; civilian infrastructure",
+      "weapon": "Ballistic missiles and drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Retaliatory regional attacks; Jebel Ali port disruption reported.",
+      "claimed": "",
+      "significance": "Iran demonstrated surviving regional strike capability. Expanded war geography and imposed air/maritime disruption.",
+      "evidence": "Likely; event effects vary by location",
+      "source_ids": "S007;S027",
+      "notes": "Some reported interceptions and impact claims remain unreconciled.",
+      "src": [
+        [
+          "S007 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4418924/operation-epic-fury-update/"
+        ],
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ]
+      ]
+    },
+    {
+      "id": "E011",
+      "date": "2026-03-01",
+      "time": "March-April period",
+      "attacker": "Iranian authorities",
+      "defender": "Domestic information environment",
+      "launch": "Iran",
+      "target": "Nationwide",
+      "category": "Internet and communications",
+      "weapon": "Centralized null-routing",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Network researchers measured 96.5%-97.4% of visible Iranian prefixes null-routed during shutdown.",
+      "claimed": "",
+      "significance": "Reduced public reporting and civilian communications; preserved selected exemptions. Complicated open-source BDA; does not itself prove military C2 failure.",
+      "evidence": "Measured; academic preprint",
+      "source_ids": "S034",
+      "notes": "Event date marks conflict-period shutdown; study covers a broader interval.",
+      "src": [
+        [
+          "S034 — Ali Sadeghi Jahromi; Jason Jaskolka",
+          "https://arxiv.org/abs/2605.00187"
+        ]
+      ]
+    },
+    {
+      "id": "E003",
+      "date": "2026-03-02",
+      "time": "By 07:30 ET",
+      "attacker": "Iran",
+      "defender": "United States",
+      "launch": "Iran",
+      "target": "Regional U.S. positions",
+      "category": "Personnel / bases",
+      "weapon": "Missiles and drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "CENTCOM reported four U.S. KIA by March 2.",
+      "claimed": "",
+      "significance": "Demonstrated ability to inflict personnel losses despite coalition defenses. Raised force-protection burden.",
+      "evidence": "Confirmed U.S. casualties; engagement details incomplete",
+      "source_ids": "S007",
+      "notes": "",
+      "src": [
+        [
+          "S007 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4418924/operation-epic-fury-update/"
+        ]
+      ]
+    },
+    {
+      "id": "E004",
+      "date": "2026-03-04",
+      "time": "Early local",
+      "attacker": "United States",
+      "defender": "Iranian Navy",
+      "launch": "Submarine in Indian Ocean",
+      "target": "Off Galle, Sri Lanka",
+      "category": "Naval warship",
+      "weapon": "Heavyweight torpedo",
+      "launched": "",
+      "impacting": 1,
+      "confirmed": "IRIS Dena sunk; 87 bodies recovered, 32 rescued; Iran later claimed 104 dead.",
+      "claimed": "",
+      "significance": "Eliminated a frigate and demonstrated global-range naval pursuit. Expanded maritime battlespace beyond CENTCOM's immediate waters.",
+      "evidence": "Confirmed sinking; casualty total disputed",
+      "source_ids": "S004;S005;S006",
+      "notes": "Do not combine 87 recovered bodies and 104 claimed dead as separate casualties.",
+      "src": [
+        [
+          "S004 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/sri-lanka-rescues-30-people-board-distressed-iranian-ship-foreign-minister-says-2026-03-04/"
+        ],
+        [
+          "S005 — Associated Press",
+          "https://apnews.com/article/69191dde43154c5176a8aeacc9128748"
+        ],
+        [
+          "S006 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/iranian-army-says-least-104-killed-us-attack-iranian-warship-last-week-2026-03-08/"
+        ]
+      ]
+    },
+    {
+      "id": "E005",
+      "date": "2026-03-12",
+      "time": "Approx.",
+      "attacker": "Hezbollah / IRGC / Iraqi militias",
+      "defender": "Israel / U.S. interests",
+      "launch": "Lebanon, Iran, Iraq",
+      "target": "Israel and Iraq",
+      "category": "Regional bases and population centers",
+      "weapon": "Rockets, missiles and drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "First reported simultaneous Hezbollah-IRGC barrage; Iraqi militia tempo rose.",
+      "claimed": "",
+      "significance": "Opened/expanded multi-front pressure. Forced dispersion of air defense and strike assets.",
+      "evidence": "Likely; based on Reuters multi-source reporting",
+      "source_ids": "S010",
+      "notes": "Reported 200 Hezbollah missiles; Israeli impact count not independently reconciled.",
+      "src": [
+        [
+          "S010 — Reuters",
+          "https://www.reuters.com/world/middle-east/irans-shiite-allies-step-up-strikes-despite-weakened-hand-2026-03-12/"
+        ]
+      ]
+    },
+    {
+      "id": "E007",
+      "date": "2026-03-14",
+      "time": "Public statement",
+      "attacker": "Hamas",
+      "defender": "Iran / regional states",
+      "launch": "Gaza",
+      "target": "Political domain",
+      "category": "Political signaling",
+      "weapon": "Statement",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Hamas urged Iran not to target neighboring countries while backing Iranian self-defense.",
+      "claimed": "",
+      "significance": "Signaled proxy concern over regional backlash. Evidence of imperfect alignment within Iran-linked network.",
+      "evidence": "Confirmed statement",
+      "source_ids": "S011",
+      "notes": "Political signal, not operational break.",
+      "src": [
+        [
+          "S011 — Reuters",
+          "https://www.reuters.com/world/middle-east/hamas-calls-iran-not-target-neighboring-countries-affirms-its-right-self-defence-2026-03-14/"
+        ]
+      ]
+    },
+    {
+      "id": "E006",
+      "date": "2026-03-16",
+      "time": "As of date",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Iran",
+      "category": "Cumulative campaign target set",
+      "weapon": "Air/naval strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "CENTCOM claimed 7,000+ targets, 6,500+ combat flights and 100+ Iranian vessels damaged/destroyed.",
+      "claimed": "",
+      "significance": "High sortie tempo and broad target access. Strong coalition air/C2ISR advantage, but damage claims require independent reconciliation.",
+      "evidence": "Official claim; partially corroborated, aggregate BDA incomplete",
+      "source_ids": "S002",
+      "notes": "Not a single engagement; cumulative campaign snapshot.",
+      "src": [
+        [
+          "S002 — U.S. Central Command",
+          "https://media.defense.gov/2026/Mar/16/2003899496/-1/-1/1/OPERATION-EPIC-FURY-FACT-SHEET.PDF"
+        ]
+      ]
+    },
+    {
+      "id": "E008",
+      "date": "2026-03-27",
+      "time": "Approx.",
+      "attacker": "Iran",
+      "defender": "United States",
+      "launch": "Iran",
+      "target": "Prince Sultan Air Base, Saudi Arabia",
+      "category": "Air base and personnel",
+      "weapon": "6 ballistic missiles; 29 drones",
+      "launched": 35,
+      "impacting": "",
+      "confirmed": "At least 15 U.S. troops injured, five seriously, per AP sources.",
+      "claimed": "",
+      "significance": "Penetrated or stressed layered defenses at a major base. Demonstrated persistent Iranian strike capacity and cumulative force-protection costs.",
+      "evidence": "Likely; casualty and launch details from AP sources",
+      "source_ids": "S009",
+      "notes": "Do not treat all launches as impacts.",
+      "src": [
+        [
+          "S009 — Associated Press",
+          "https://apnews.com/article/iran-us-israel-trump-lebanon-march-28-2026-0f919596403d2f851196451f4532717e"
+        ]
+      ]
+    },
+    {
+      "id": "E009",
+      "date": "2026-03-28",
+      "time": "Approx.",
+      "attacker": "Houthis",
+      "defender": "Israel",
+      "launch": "Yemen",
+      "target": "Israel",
+      "category": "Military sites claimed",
+      "weapon": "Ballistic missiles",
+      "launched": 2,
+      "impacting": "",
+      "confirmed": "Houthis claimed first two missile launches of the war toward Israel.",
+      "claimed": "",
+      "significance": "Added Bab el-Mandeb/Red Sea escalation risk. Expanded proxy participation; actual military effect limited/uncertain.",
+      "evidence": "Confirmed claim; impact/effect unverified",
+      "source_ids": "S009",
+      "notes": "First acknowledged Houthi entry into this conflict.",
+      "src": [
+        [
+          "S009 — Associated Press",
+          "https://apnews.com/article/iran-us-israel-trump-lebanon-march-28-2026-0f919596403d2f851196451f4532717e"
+        ]
+      ]
+    },
+    {
+      "id": "E010",
+      "date": "2026-04-08",
+      "time": "Approx.",
+      "attacker": "United States and Iran",
+      "defender": "Mutual",
+      "launch": "Diplomatic",
+      "target": "Regional",
+      "category": "Ceasefire",
+      "weapon": "Political agreement",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Two-week ceasefire largely halted major hostilities.",
+      "claimed": "",
+      "significance": "Operational tempo fell sharply. Demonstrated both sides retained escalation control, temporarily.",
+      "evidence": "Confirmed broad cessation; violations and exact terms varied",
+      "source_ids": "S008",
+      "notes": "Phase boundary, not a military engagement.",
+      "src": [
+        [
+          "S008 — Reuters",
+          "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/"
+        ]
+      ]
+    },
+    {
+      "id": "E012",
+      "date": "2026-05-13",
+      "time": "Reporting date",
+      "attacker": "Israel",
+      "defender": "Hamas / Gaza",
+      "launch": "Israel",
+      "target": "Gaza",
+      "category": "Militant targets",
+      "weapon": "Air and ground operations",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Israel increased attacks in Gaza during the Iran-war lull.",
+      "claimed": "",
+      "significance": "Operational resources shifted back toward Gaza. Shows Israel treated the Iran ceasefire as an opportunity to reallocate effort.",
+      "evidence": "Confirmed reporting",
+      "source_ids": "S012",
+      "notes": "Separate campaign, but relevant to force allocation.",
+      "src": [
+        [
+          "S012 — Reuters",
+          "https://www.reuters.com/world/middle-east/israel-steps-up-attacks-gaza-since-iran-truce-military-says-hamas-rearming-2026-05-13/"
+        ]
+      ]
+    },
+    {
+      "id": "E013",
+      "date": "2026-06-18",
+      "time": "Approx.",
+      "attacker": "United States and Iran",
+      "defender": "Mutual",
+      "launch": "Diplomatic / maritime",
+      "target": "Strait of Hormuz",
+      "category": "Interim agreement and traffic reopening",
+      "weapon": "Political agreement",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Interim agreement released; MarineTraffic showed vessels resuming transit.",
+      "claimed": "",
+      "significance": "Temporarily restored shipping confidence and paused blockade. Reduced immediate economic pressure but left sovereignty and routing ambiguity unresolved.",
+      "evidence": "Confirmed",
+      "source_ids": "S013;S016",
+      "notes": "MOU implementation later broke down.",
+      "src": [
+        [
+          "S013 — Reuters",
+          "https://www.reuters.com/video/watch/idRW021518062026RP1/"
+        ],
+        [
+          "S016 — Reuters",
+          "https://www.reuters.com/world/middle-east/mediators-set-up-de-escalation-channels-ahead-us-iran-talks-source-says-2026-06-29/"
+        ]
+      ]
+    },
+    {
+      "id": "E014",
+      "date": "2026-06-25",
+      "time": "Approx.",
+      "attacker": "Iran / attributed",
+      "defender": "Commercial shipping",
+      "launch": "Iranian side of Strait",
+      "target": "Strait of Hormuz",
+      "category": "M/V Ever Lovely",
+      "weapon": "One-way attack drone",
+      "launched": 1,
+      "impacting": 1,
+      "confirmed": "Cargo vessel struck; no casualties or major damage reported.",
+      "claimed": "",
+      "significance": "Tested alternative routing and MOU enforcement. Triggered renewed U.S. strikes and unraveling of agreement.",
+      "evidence": "Likely attribution; physical attack confirmed",
+      "source_ids": "S014;S027",
+      "notes": "Attribution based on U.S./AP reporting.",
+      "src": [
+        [
+          "S014 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4528341/us-strikes-iran-in-response-to-attack-on-commercial-vessel/"
+        ],
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ]
+      ]
+    },
+    {
+      "id": "E015",
+      "date": "2026-06-26",
+      "time": "Approx.",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Iranian coast",
+      "category": "Missile/drone storage and coastal radar",
+      "weapon": "Air/missile strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "U.S. retaliatory strikes after Ever Lovely attack.",
+      "claimed": "",
+      "significance": "Degraded selected coastal sensor and strike nodes if BDA accurate. Restarted kinetic enforcement cycle.",
+      "evidence": "Confirmed U.S. action; damage not independently verified",
+      "source_ids": "S014",
+      "notes": "Target effects remain official claims.",
+      "src": [
+        [
+          "S014 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4528341/us-strikes-iran-in-response-to-attack-on-commercial-vessel/"
+        ]
+      ]
+    },
+    {
+      "id": "E016",
+      "date": "2026-06-27",
+      "time": "04:30 ET attack; later response",
+      "attacker": "Iran / attributed; United States response",
+      "defender": "Commercial tanker / Iran",
+      "launch": "Strait and Iran",
+      "target": "Strait; Iranian coast",
+      "category": "M/T Kiku; surveillance, AD, drone storage, minelayer sites",
+      "weapon": "Drone/missile attack and U.S. precision strikes",
+      "launched": "",
+      "impacting": 1,
+      "confirmed": "Tanker carrying about 2 million barrels hit; U.S. conducted additional strikes.",
+      "claimed": "",
+      "significance": "Shipping risk rose; U.S. targeted minelaying and coastal kill-chain functions. Further eroded MOU and widened targets.",
+      "evidence": "Likely/confirmed actions; BDA incomplete",
+      "source_ids": "S015;S027",
+      "notes": "Separate attack and response combined in one escalation-chain record.",
+      "src": [
+        [
+          "S015 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4528488/us-forces-conduct-additional-strikes-after-irans-latest-commercial-ship-attack/"
+        ],
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ]
+      ]
+    },
+    {
+      "id": "E017",
+      "date": "2026-06-29",
+      "time": "Reporting date",
+      "attacker": "Qatar / Pakistan mediators",
+      "defender": "United States and Iran",
+      "launch": "Diplomatic",
+      "target": "Doha",
+      "category": "De-escalation channels",
+      "weapon": "Indirect talks",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Mediators prepared indirect talks; MOU implementation remained stalled.",
+      "claimed": "",
+      "significance": "Created a channel but no durable enforcement mechanism. Diplomacy lagged battlefield events.",
+      "evidence": "Confirmed",
+      "source_ids": "S016",
+      "notes": "No direct U.S.-Iran meeting confirmed.",
+      "src": [
+        [
+          "S016 — Reuters",
+          "https://www.reuters.com/world/middle-east/mediators-set-up-de-escalation-channels-ahead-us-iran-talks-source-says-2026-06-29/"
+        ]
+      ]
+    },
+    {
+      "id": "E018",
+      "date": "2026-07-07",
+      "time": "Approx.",
+      "attacker": "Iran / attributed; United States response",
+      "defender": "Commercial shipping / Iran",
+      "launch": "Strait / regional",
+      "target": "Strait of Hormuz and Iran",
+      "category": "Three commercial ships; IRGC boats, radar and air defense",
+      "weapon": "Missiles/drones; U.S. strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Three ships attacked; U.S. said it struck air defense, radars and more than 60 IRGC small boats.",
+      "claimed": "",
+      "significance": "Iran imposed maritime costs; U.S. degraded local boat force if claims accurate. MOU effectively collapsed and sanctions relief was reversed.",
+      "evidence": "Likely; U.S. damage totals unverified",
+      "source_ids": "S027;S035",
+      "notes": "Hamas political restructuring occurred in parallel but was not operationally linked.",
+      "src": [
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ],
+        [
+          "S035 — Reuters",
+          "https://www.reuters.com/world/middle-east/hamas-dissolves-gaza-government-presses-progress-stalled-peace-plan-2026-07-06/"
+        ]
+      ]
+    },
+    {
+      "id": "E019",
+      "date": "2026-07-08",
+      "time": "Approx.",
+      "attacker": "United States and Iran",
+      "defender": "Mutual / GCC hosts",
+      "launch": "Regional",
+      "target": "Iran and Gulf bases",
+      "category": "Military sites and regional bases",
+      "weapon": "Airstrikes, missiles and drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "U.S. and Iran resumed broad exchanges; U.S. president said interim deal was over.",
+      "claimed": "",
+      "significance": "Campaign returned to sustained escalation. GCC exposure and oil-price pressure increased.",
+      "evidence": "Confirmed broad exchange; specific damage contested",
+      "source_ids": "S027",
+      "notes": "Multiple claim streams; preserve claim/effect separation.",
+      "src": [
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ]
+      ]
+    },
+    {
+      "id": "E020",
+      "date": "2026-07-09",
+      "time": "Daily shipping data",
+      "attacker": "Iran / maritime threat",
+      "defender": "Commercial shipping",
+      "launch": "Strait",
+      "target": "Strait of Hormuz",
+      "category": "Commercial transit",
+      "weapon": "Threats and attacks",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Shipping fell near standstill; only a very small number of tankers transited.",
+      "claimed": "",
+      "significance": "Iran retained effective sea-denial leverage despite U.S. superiority. Economic effect exceeded the tactical damage caused by individual attacks.",
+      "evidence": "Highly likely; tracking data",
+      "source_ids": "S027;S028",
+      "notes": "Exact vessel categories vary by data provider.",
+      "src": [
+        [
+          "S027 — Associated Press",
+          "https://apnews.com/article/iran-us-war-escalation-shipping-strait-hormuz-179973cfe1fb3fa1b7ea7b816648ad9c"
+        ],
+        [
+          "S028 — Reuters",
+          "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/"
+        ]
+      ]
+    },
+    {
+      "id": "E021",
+      "date": "2026-07-11",
+      "time": "Diplomatic",
+      "attacker": "Oman / Qatar / Pakistan",
+      "defender": "United States and Iran",
+      "launch": "Diplomatic",
+      "target": "Oman / regional",
+      "category": "Hormuz access",
+      "weapon": "Indirect talks",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Talks continued despite declared end of ceasefire; Oman discussed safe-passage mechanisms.",
+      "claimed": "",
+      "significance": "Kept an escalation off-ramp open. Core dispute narrowed to who controls routing and whether tolls/approval apply.",
+      "evidence": "Confirmed",
+      "source_ids": "S017",
+      "notes": "No evidence of a new binding arrangement.",
+      "src": [
+        [
+          "S017 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/trump-says-us-iran-agree-continue-talks-ceasefire-over-2026-07-11/"
+        ]
+      ]
+    },
+    {
+      "id": "E022",
+      "date": "2026-07-12",
+      "time": "During day",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Multiple Iranian coastal sites",
+      "category": "Air defense, radar, missiles, drones, small boats",
+      "weapon": "Fighters, warships, one-way aerial and sea drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "U.S. struck dozens of targets and used one-way attack sea drones for the first time.",
+      "claimed": "",
+      "significance": "Expanded kill-chain options and low-cost massed strike capacity. Material U.S. C2ISR and force-integration advantage; effects still require BDA.",
+      "evidence": "Confirmed employment; damage unverified",
+      "source_ids": "S018",
+      "notes": "First acknowledged U.S. use of one-way attack sea drones.",
+      "src": [
+        [
+          "S018 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4541002/centcom-completes-another-wave-of-strikes-against-iran/"
+        ]
+      ]
+    },
+    {
+      "id": "E023",
+      "date": "2026-07-13",
+      "time": "17:15-22:15 ET approx.",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Bushehr, Chah Bahar, Jask, Konarak, Abu Musa, Bandar Abbas",
+      "category": "Coastal defense, missile/drone and maritime capability",
+      "weapon": "Precision strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Five-hour wave across six locations.",
+      "claimed": "",
+      "significance": "Sustained geographic coverage and rapid retargeting. Pressure concentrated on Hormuz kill chain.",
+      "evidence": "Confirmed U.S. operation; effect uncertain",
+      "source_ids": "S019",
+      "notes": "50,000+ U.S. personnel reported in region.",
+      "src": [
+        [
+          "S019 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4544409/us-forces-complete-new-strikes-on-iranian-military-targets/"
+        ]
+      ]
+    },
+    {
+      "id": "E024",
+      "date": "2026-07-13",
+      "time": "Public announcement",
+      "attacker": "United States",
+      "defender": "Iranian maritime traffic",
+      "launch": "Regional",
+      "target": "Iranian ports/coasts",
+      "category": "Naval blockade",
+      "weapon": "Maritime interdiction",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "CENTCOM announced blockade resumption effective July 14 at 16:00 ET.",
+      "claimed": "",
+      "significance": "Raised economic pressure and risk of ship boarding/disabling. Escalated from escort/strike response to sustained coercive interdiction.",
+      "evidence": "Confirmed U.S. policy",
+      "source_ids": "S020",
+      "notes": "International legal status not assessed in this operational workbook.",
+      "src": [
+        [
+          "S020 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4542098/us-forces-to-resume-naval-blockade-against-iran/"
+        ]
+      ]
+    },
+    {
+      "id": "E025",
+      "date": "2026-07-13",
+      "time": "Approx.",
+      "attacker": "Houthis",
+      "defender": "Saudi Arabia",
+      "launch": "Yemen",
+      "target": "Abha International Airport",
+      "category": "Airport",
+      "weapon": "Missiles and drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Houthis attacked Abha after Saudi strikes on Sanaa airport; no casualties reported.",
+      "claimed": "",
+      "significance": "Broke years of relative Saudi-Houthi calm. Raised risk that the Red Sea alternative route will also be threatened.",
+      "evidence": "Confirmed attacks; damage limited",
+      "source_ids": "S032",
+      "notes": "Proxy action has its own Yemen drivers as well as Iran alignment.",
+      "src": [
+        [
+          "S032 — Associated Press",
+          "https://apnews.com/article/7bddae3006304df8bf7f89e980006b33"
+        ]
+      ]
+    },
+    {
+      "id": "E026",
+      "date": "2026-07-14",
+      "time": "15:00-22:00 ET approx.",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Hormuz and Iranian coastal areas",
+      "category": "Missile/drone sites, naval and coastal defense",
+      "weapon": "Fighters, drones, naval precision munitions",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Seven-hour wave hit dozens of military targets; blockade resumed at 16:00 ET.",
+      "claimed": "",
+      "significance": "Further attrited coastal force and sensors if BDA accurate. U.S. tactical initiative increased; commercial traffic nevertheless remained suppressed.",
+      "evidence": "Confirmed U.S. operation; effects unverified",
+      "source_ids": "S021",
+      "notes": "Dozens is not converted to a fabricated exact count.",
+      "src": [
+        [
+          "S021 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4546775/centcom-completes-more-strikes-against-iran/"
+        ]
+      ]
+    },
+    {
+      "id": "E027",
+      "date": "2026-07-15",
+      "time": "Two waves",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Bandar Abbas; Greater Tunb",
+      "category": "Command, air defense, missiles/drones, coastal surveillance and cruise missiles",
+      "weapon": "Precision strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Morning Greater Tunb strike and evening multi-location wave.",
+      "claimed": "",
+      "significance": "Target set broadened toward command and surveillance nodes. Aims to break Iran's maritime find-fix-track-engage chain.",
+      "evidence": "Confirmed U.S. operation; effects unverified",
+      "source_ids": "S022",
+      "notes": "No independent BDA available.",
+      "src": [
+        [
+          "S022 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4546816/latest-wave-of-us-strikes-against-iran-completed/"
+        ]
+      ]
+    },
+    {
+      "id": "E028",
+      "date": "2026-07-16",
+      "time": "Ended 21:40 ET",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Iranian coastal areas",
+      "category": "Surveillance, air defense, logistics and maritime capability",
+      "weapon": "Fighters, drones and warships",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Sixth consecutive night; dozens of targets hit according to CENTCOM.",
+      "claimed": "",
+      "significance": "Sustained sortie generation and target renewal. Iranian C2 and logistics under cumulative pressure, but attacks continued.",
+      "evidence": "Confirmed U.S. operation; effects unverified",
+      "source_ids": "S023",
+      "notes": "Continued Iranian attacks demonstrate surviving kill chains.",
+      "src": [
+        [
+          "S023 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4548433/us-successfully-completes-new-strikes-in-iran/"
+        ]
+      ]
+    },
+    {
+      "id": "E032",
+      "date": "2026-07-16",
+      "time": "Source reporting date",
+      "attacker": "Iran / Houthis",
+      "defender": "Regional shipping / Saudi Arabia",
+      "launch": "Iran/Yemen",
+      "target": "Bab el-Mandeb / Red Sea",
+      "category": "Shipping and energy infrastructure",
+      "weapon": "Conditional proxy escalation",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Sources reported Iranian request that Houthis close the Red Sea gateway if U.S. attacks Iran's power network.",
+      "claimed": "",
+      "significance": "No closure confirmed; coordination signal raises warning level. Potential two-chokepoint crisis would sharply increase global shipping costs.",
+      "evidence": "Plausible / sourced but not yet executed",
+      "source_ids": "S031",
+      "notes": "Condition watch: attacks on Iranian power network and Houthi anti-ship deployments.",
+      "src": [
+        [
+          "S031 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-tells-houthis-close-red-sea-gateway-if-us-hits-power-network-sources-say-2026-07-16/"
+        ]
+      ]
+    },
+    {
+      "id": "E029",
+      "date": "2026-07-17",
+      "time": "Ended 21:30 ET",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Iran",
+      "category": "Surveillance, logistics, underground storage and maritime capability",
+      "weapon": "Fighters, drones and warships",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Seventh consecutive night of strikes.",
+      "claimed": "",
+      "significance": "Maintained pressure on sensors, sustainment and protected storage. No evidence yet of command paralysis or termination of Iranian attacks.",
+      "evidence": "Confirmed U.S. operation; effects unverified",
+      "source_ids": "S024",
+      "notes": "Temporary silence would not prove paralysis.",
+      "src": [
+        [
+          "S024 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549624/centcom-finishes-latest-wave-of-strikes-against-iran/"
+        ]
+      ]
+    },
+    {
+      "id": "E030",
+      "date": "2026-07-17",
+      "time": "Approx.",
+      "attacker": "Iran",
+      "defender": "United States and partners",
+      "launch": "Iran",
+      "target": "Jordan, Kuwait, Bahrain and other regional sites",
+      "category": "Bases, radar, aircraft and infrastructure",
+      "weapon": "Ballistic missiles and drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Two U.S. service members killed in Jordan, one missing, four medically evacuated; Iran claimed wider base damage.",
+      "claimed": "",
+      "significance": "Confirmed penetration/effect in Jordan; other Iranian damage claims unverified. Demonstrated that Iran retains target-quality data and can generate lethal salvos after a week of strikes.",
+      "evidence": "Confirmed U.S. casualties; wider claims disputed",
+      "source_ids": "S025;S029",
+      "notes": "Do not treat claimed destroyed aircraft/radars as confirmed without imagery or U.S. acknowledgment.",
+      "src": [
+        [
+          "S025 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549635/centcom-statement-on-recently-fallen-missing-us-service-members/"
+        ],
+        [
+          "S029 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/"
+        ]
+      ]
+    },
+    {
+      "id": "E031",
+      "date": "2026-07-18",
+      "time": "Current reporting day",
+      "attacker": "United States and Iran",
+      "defender": "Mutual",
+      "launch": "Regional",
+      "target": "Iran and Gulf states",
+      "category": "Military and selected infrastructure targets",
+      "weapon": "Airstrikes, missiles and drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Conflict remained in sustained escalation; oil rose more than 4%; Mojtaba Khamenei rejected U.S. credibility.",
+      "claimed": "",
+      "significance": "Operational exchanges continued with no durable truce. Political positions hardened while indirect negotiation channels remained possible.",
+      "evidence": "Confirmed broad state; individual damage claims vary",
+      "source_ids": "S029;S030",
+      "notes": "As-of 18:49 America/New_York.",
+      "src": [
+        [
+          "S029 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-renews-attacks-gulf-states-after-another-night-us-strikes-2026-07-18/"
+        ],
+        [
+          "S030 — Reuters",
+          "https://www.reuters.com/world/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-is-worthless-2026-07-18/"
+        ]
+      ]
+    },
+    {
+      "id": "E033",
+      "date": "2026-07-18",
+      "time": "Approx.",
+      "attacker": "Israel",
+      "defender": "Hezbollah",
+      "launch": "Israel/Lebanon",
+      "target": "Near Tebnit, southern Lebanon",
+      "category": "Drone cell",
+      "weapon": "Airstrike",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Israel said it struck Hezbollah fighters operating a drone near Israeli troops.",
+      "claimed": "",
+      "significance": "Local tactical suppression of drone team if claim accurate. Ceasefire remains fragile; no evidence this event changes regional balance by itself.",
+      "evidence": "Claimed by Israeli military; no Hezbollah response",
+      "source_ids": "S033",
+      "notes": "Separate Israel-Lebanon front.",
+      "src": [
+        [
+          "S033 — Reuters",
+          "https://www.reuters.com/world/middle-east/israeli-military-says-it-struck-hezbollah-fighters-after-drone-spotted-southern-2026-07-18/"
+        ]
+      ]
+    },
+    {
+      "id": "E034",
+      "date": "2026-07-19",
+      "time": "Evening / update",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Iranian command, air-defense, coastal surveillance, maritime and missile/drone sites",
+      "category": "C2; air defense; maritime; launch infrastructure",
+      "weapon": "Air and precision strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "CENTCOM completed a ninth consecutive evening of strikes; remains were found in the search for the service member missing after the July 17 Jordan attack.",
+      "claimed": "",
+      "significance": "Sustained strike tempo after U.S. fatalities; target set remained focused on Iran's strike-generation and Hormuz systems.",
+      "evidence": "Confirmed U.S. operation; casualty identification was pending at initial update",
+      "source_ids": "S037;S038",
+      "notes": "Do not infer independently confirmed destruction from target counts.",
+      "src": [
+        [
+          "S037 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549648/centcom-update-on-recently-fallen-us-service-members/"
+        ],
+        [
+          "S038 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549657/centcom-ends-weekend-wave-of-strikes-against-iran/"
+        ]
+      ]
+    },
+    {
+      "id": "E035",
+      "date": "2026-07-20",
+      "time": "Day / evening",
+      "attacker": "Houthis; United States; Iran",
+      "defender": "Saudi Arabia; Iran; U.S./regional forces",
+      "launch": "Yemen; regional",
+      "target": "Red Sea/Saudi shipping; Iran; Gulf bases",
+      "category": "Maritime blockade threat; military targets; bases",
+      "weapon": "Missiles, drones and U.S. air strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Houthis announced a Saudi naval blockade as U.S.-Iran exchanges continued; U.S. death toll reached 17 in Reuters reporting.",
+      "claimed": "",
+      "significance": "Opened a second-chokepoint pressure campaign and increased Saudi force-protection burden while U.S. punitive strikes continued.",
+      "evidence": "Houthi blockade declared; individual impact claims vary",
+      "source_ids": "S039",
+      "notes": "Declaration of blockade is not equivalent to physical closure.",
+      "src": [
+        [
+          "S039 — Reuters",
+          "https://www.reuters.com/world/middle-east/us-launches-iran-strikes-ninth-day-another-american-confirmed-killed-2026-07-20/"
+        ]
+      ]
+    },
+    {
+      "id": "E036",
+      "date": "2026-07-21",
+      "time": "Approx. five-hour wave",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Iran",
+      "category": "Maritime coercion enablers; missile/drone systems; command/support",
+      "weapon": "Air/missile strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "U.S. military completed a 10th successive night of strikes intended to degrade Iranian attacks and Hormuz coercion.",
+      "claimed": "",
+      "significance": "Coalition retained operational initiative and continued attacking the system supporting Iranian sea denial.",
+      "evidence": "Confirmed U.S. operation; effects incomplete",
+      "source_ids": "S040",
+      "notes": "Strike count and destroyed-system count not independently reconciled.",
+      "src": [
+        [
+          "S040 — Reuters",
+          "https://www.reuters.com/world/middle-east/us-military-completes-its-latest-strikes-iran-marking-10th-successive-night-2026-07-21/"
+        ]
+      ]
+    },
+    {
+      "id": "E037",
+      "date": "2026-07-22",
+      "time": "Night / reporting day",
+      "attacker": "United States; Iran",
+      "defender": "Iran; U.S./regional forces",
+      "launch": "Regional",
+      "target": "Iran and Gulf bases",
+      "category": "Military targets; bases",
+      "weapon": "Airstrikes, missiles and drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "U.S. completed an 11th night of strikes; Reuters reported total U.S. military deaths had risen to 18 and roughly 430 wounded.",
+      "claimed": "",
+      "significance": "Attritional exchange continued despite rising U.S. casualties and costs; no evidence of Iranian command paralysis.",
+      "evidence": "Confirmed broad exchange; casualty snapshot high confidence",
+      "source_ids": "S041;S042",
+      "notes": "Cumulative casualty snapshot is non-additive.",
+      "src": [
+        [
+          "S041 — Reuters",
+          "https://www.reuters.com/world/middle-east/us-military-says-it-has-ended-its-latest-strikes-iran-2026-07-22/"
+        ],
+        [
+          "S042 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-war-drains-us-blood-treasure-2026-07-22/"
+        ]
+      ]
+    },
+    {
+      "id": "E038",
+      "date": "2026-07-23",
+      "time": "Night / day",
+      "attacker": "United States; Houthis",
+      "defender": "Iran; Saudi shipping",
+      "launch": "Regional / Yemen",
+      "target": "Iran; Red Sea approaches",
+      "category": "Military sites; tankers/shipping",
+      "weapon": "Airstrikes; missiles/drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "U.S. completed a 12th straight night of strikes while Houthi pressure on Saudi shipping increased.",
+      "claimed": "",
+      "significance": "Two-front maritime risk strengthened; Iran-aligned actors sought to impose costs beyond Hormuz.",
+      "evidence": "U.S. strikes confirmed; Houthi impact claims require case-by-case corroboration",
+      "source_ids": "S043;S044",
+      "notes": "Separate launch claims from verified vessel damage.",
+      "src": [
+        [
+          "S043 — Reuters",
+          "https://www.reuters.com/world/middle-east/us-military-completes-12th-straight-night-strikes-iran-2026-07-23/"
+        ],
+        [
+          "S044 — Reuters",
+          "https://www.reuters.com/world/middle-east/trump-vows-punish-iran-houthis-attacks-red-sea-2026-07-24/"
+        ]
+      ]
+    },
+    {
+      "id": "E039",
+      "date": "2026-07-24",
+      "time": "Night",
+      "attacker": "United States",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Iran",
+      "category": "Maritime; surveillance; missile/drone; air defense",
+      "weapon": "Air and precision strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "U.S. completed a 13th consecutive night of strikes against Iranian military target sets.",
+      "claimed": "",
+      "significance": "Longest renewed strike run sustained U.S. tempo control but did not reopen Hormuz.",
+      "evidence": "Confirmed U.S. operation; effects incomplete",
+      "source_ids": "S044",
+      "notes": "Reuters/CENTCOM timing spans late July 23 into July 24 local/reporting periods.",
+      "src": [
+        [
+          "S044 — Reuters",
+          "https://www.reuters.com/world/middle-east/trump-vows-punish-iran-houthis-attacks-red-sea-2026-07-24/"
+        ]
+      ]
+    },
+    {
+      "id": "E040",
+      "date": "2026-07-25",
+      "time": "Overnight / day",
+      "attacker": "Houthis; United States",
+      "defender": "Saudi Arabia; Iran",
+      "launch": "Yemen / regional",
+      "target": "Saudi Red Sea oil sites; Iran",
+      "category": "Energy infrastructure; campaign posture",
+      "weapon": "Missiles/drones; operational pause",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Houthis attacked Saudi oil installations while the U.S. did not strike Iran for the first night in roughly two weeks.",
+      "claimed": "",
+      "significance": "Escalation shifted toward proxy/Red Sea pressure as Washington introduced an operational pause without lifting its blockade.",
+      "evidence": "Houthi attacks reported; U.S. pause confirmed",
+      "source_ids": "S044",
+      "notes": "A pause in strikes is not a ceasefire or force withdrawal.",
+      "src": [
+        [
+          "S044 — Reuters",
+          "https://www.reuters.com/world/middle-east/trump-vows-punish-iran-houthis-attacks-red-sea-2026-07-24/"
+        ]
+      ]
+    },
+    {
+      "id": "E041",
+      "date": "2026-07-26",
+      "time": "Reporting day",
+      "attacker": "Iran; United States",
+      "defender": "Mutual",
+      "launch": "Regional",
+      "target": "Gulf / Iran",
+      "category": "Campaign posture; blockade",
+      "weapon": "Conditional cessation / naval blockade",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Iran signaled it would halt attacks while the U.S. strike pause held; CENTCOM said the naval blockade remained in effect.",
+      "claimed": "",
+      "significance": "Created a bounded pause but left the maritime coercion/enforcement dispute unresolved.",
+      "evidence": "Publicly reported posture; no durable settlement",
+      "source_ids": "S045",
+      "notes": "Operational quiet did not resolve Hormuz control.",
+      "src": [
+        [
+          "S045 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/iran-war-spreads-red-sea-caspian-gulf-quiet-us-forgoes-strikes-2026-07-25/"
+        ]
+      ]
+    },
+    {
+      "id": "E042",
+      "date": "2026-07-27",
+      "time": "Day",
+      "attacker": "Iran; United States; regional mediators",
+      "defender": "Mutual / regional partners",
+      "launch": "Regional",
+      "target": "Gulf states and diplomatic channels",
+      "category": "Drones; indirect diplomacy",
+      "weapon": "Drone attacks and shuttle diplomacy",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Trump described talks positively while Tehran denied seeking direct talks; Saudi, Jordanian and Iraqi authorities reported additional drone activity.",
+      "claimed": "",
+      "significance": "Diplomatic ambiguity coexisted with continuing coercive signaling; Iran had not converted attacks into coalition separation.",
+      "evidence": "Mixed confirmed/claimed; talks characterization disputed",
+      "source_ids": "S046",
+      "notes": "Distinguish direct talks from indirect mediation.",
+      "src": [
+        [
+          "S046 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-says-it-still-controls-strait-not-seeking-talks-after-trump-halts-bombing-2026-07-27/"
+        ]
+      ]
+    },
+    {
+      "id": "E043",
+      "date": "2026-07-28",
+      "time": "Day",
+      "attacker": "Oman/Gulf states; Iran; United States/Saudi Arabia",
+      "defender": "Negotiating parties; Iran-backed Iraqi groups",
+      "launch": "Oman/Hormuz; Iraq",
+      "target": "Hormuz routing/fees; militia logistics/weapons sites",
+      "category": "Maritime settlement; proxy infrastructure",
+      "weapon": "Diplomatic proposal; air strikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Oman/Gulf states advanced a voluntary-fee maritime plan; Iran countered with a temporary route giving itself greater control; U.S.-Saudi forces struck Iran-backed sites in Iraq.",
+      "claimed": "",
+      "significance": "Settlement bargaining sharpened while regional partners demonstrated willingness to strike proxy support infrastructure.",
+      "evidence": "Proposals confirmed as negotiating positions; U.S.-Saudi operation confirmed",
+      "source_ids": "S047;S048;S049",
+      "notes": "Do not record proposed Iranian control as an agreed legal right.",
+      "src": [
+        [
+          "S047 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/gulf-states-back-plan-let-iran-collect-voluntary-fees-use-hormuz-2026-07-28/"
+        ],
+        [
+          "S048 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-proposes-temporary-hormuz-plan-giving-itself-greater-control-over-transit-2026-07-28/"
+        ],
+        [
+          "S049 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4558191/us-saudi-forces-strike-iran-backed-terrorist-sites-in-iraq/"
+        ]
+      ]
+    },
+    {
+      "id": "E044",
+      "date": "2026-07-29",
+      "time": "Day / night",
+      "attacker": "United States; Saudi Arabia; Iran / aligned actors",
+      "defender": "Iran; Iran-backed Iraqi groups; regional shipping",
+      "launch": "Iran/Iraq/Egypt/Gulf",
+      "target": "IRGC targets; Iraqi militia sites; commercial tanker/port",
+      "category": "Military sites; shipping",
+      "weapon": "Air strikes; missiles/drones",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "U.S. and Saudi strikes expanded against Iran-backed targets in Iraq; CENTCOM struck IRGC targets after attempted Iranian attacks; a gas tanker at Egypt's Damietta port was damaged in an incident of initially unclear attribution.",
+      "claimed": "",
+      "significance": "Regionalized the campaign and showed coalition willingness to attack proxy logistics while maritime incidents persisted.",
+      "evidence": "U.S./Saudi operations confirmed; tanker attribution initially uncertain",
+      "source_ids": "S050;S052",
+      "notes": "Chinese MANPADS reporting emerged separately and is logged as prospective, disputed resupply.",
+      "src": [
+        [
+          "S050 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/us-saudis-attack-iran-backed-groups-iraq-threatening-intensify-conflict-2026-07-29/"
+        ],
+        [
+          "S052 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4559495/us-strikes-irgc-targets-after-attempted-iranian-attacks/"
+        ]
+      ]
+    },
+    {
+      "id": "E045",
+      "date": "2026-07-30",
+      "time": "Day",
+      "attacker": "United States; Saudi Arabia / regional partners",
+      "defender": "Iran",
+      "launch": "Regional",
+      "target": "Iran; Hormuz; regional maritime security",
+      "category": "IRGC targets; LNG transit; maritime coalition",
+      "weapon": "Air strikes; protected commercial transit; coalition formation",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "A renewed U.S. strike wave hit dozens of IRGC targets; a QatarEnergy-controlled LNG tanker exited Hormuz for the first time in nearly three weeks; Saudi Arabia announced a multinational maritime-defense coalition.",
+      "claimed": "",
+      "significance": "Military pressure and coalition-building increased while isolated high-value commercial transits resumed.",
+      "evidence": "U.S. operation and LNG transit confirmed; coalition plan announced",
+      "source_ids": "S052;S053;S054",
+      "notes": "Single LNG transit does not equal normalization.",
+      "src": [
+        [
+          "S052 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4559495/us-strikes-irgc-targets-after-attempted-iranian-attacks/"
+        ],
+        [
+          "S053 — Reuters",
+          "https://www.reuters.com/world/middle-east/qatarenergy-controlled-lng-tanker-exits-hormuz-first-nearly-three-weeks-2026-07-30/"
+        ],
+        [
+          "S054 — Reuters",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+        ]
+      ]
+    },
+    {
+      "id": "E046",
+      "date": "2026-07-31",
+      "time": "Day",
+      "attacker": "Iran / IRGC; commercial shipping",
+      "defender": "Commercial vessels",
+      "launch": "Hormuz",
+      "target": "Strait of Hormuz",
+      "category": "Merchant shipping",
+      "weapon": "Interdiction / claimed attacks",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "IRGC said two ships were hit and four turned back; limited commercial vessels continued to transit. No new U.S. strike on Iran was publicly announced overnight.",
+      "claimed": "",
+      "significance": "Iran continued to impose risk and route selection effects without demonstrating full physical control of all traffic.",
+      "evidence": "Some shipping movements confirmed; Iranian attack claims not fully corroborated",
+      "source_ids": "S055",
+      "notes": "Commercial hesitation may exceed Iran's demonstrated kinetic control.",
+      "src": [
+        [
+          "S055 — Reuters",
+          "https://www.reuters.com/business/energy/oil-price-rises-after-iran-says-it-stops-ships-hormuz-2026-07-31/"
+        ]
+      ]
+    },
+    {
+      "id": "E047",
+      "date": "2026-08-01",
+      "time": "Day",
+      "attacker": "United States; Iran/Oman; unknown maritime attacker",
+      "defender": "Mutual / commercial shipping",
+      "launch": "Regional",
+      "target": "Iran; Hormuz/Oman approaches",
+      "category": "Strike posture; route talks; tanker",
+      "weapon": "Operational hold; diplomacy; projectile strike",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Trump held/cancelled a planned strike subject to rapid diplomatic progress; Iran-Oman route talks were described as advanced, while a tanker off Oman suffered engine-room damage from an unknown projectile.",
+      "claimed": "",
+      "significance": "Washington preserved coercive threat while giving mediation space; maritime danger remained real despite negotiation optimism.",
+      "evidence": "Strike hold publicly reported; tanker damage confirmed, attribution unresolved",
+      "source_ids": "S056;S057",
+      "notes": "Do not infer Iranian responsibility for the tanker without corroboration.",
+      "src": [
+        [
+          "S056 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/trump-says-iran-talks-take-place-monday-sets-no-deadline-deal-2026-08-02/"
+        ],
+        [
+          "S057 — Reuters",
+          "https://www.reuters.com/world/middle-east/status-us-iran-talks-uncertain-ship-struck-hormuz-2026-08-04/"
+        ]
+      ]
+    },
+    {
+      "id": "E048",
+      "date": "2026-08-02",
+      "time": "Day",
+      "attacker": "United States; Iran; Oman",
+      "defender": "Negotiating parties",
+      "launch": "Regional",
+      "target": "Diplomatic channels / Hormuz",
+      "category": "Indirect negotiations",
+      "weapon": "Shuttle diplomacy",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Trump said talks with Iran would take place while Tehran insisted it was only negotiating with Oman over Hormuz.",
+      "claimed": "",
+      "significance": "The dispute became partly semantic: substantive U.S.-Iran bargaining continued through mediators without acknowledged direct bilateral talks.",
+      "evidence": "Diplomatic positions confirmed",
+      "source_ids": "S056",
+      "notes": "Indirect negotiation should not be mislabeled as direct meetings.",
+      "src": [
+        [
+          "S056 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/trump-says-iran-talks-take-place-monday-sets-no-deadline-deal-2026-08-02/"
+        ]
+      ]
+    },
+    {
+      "id": "E049",
+      "date": "2026-08-03",
+      "time": "Reporting day",
+      "attacker": "Iran; United States; mediators",
+      "defender": "Mutual",
+      "launch": "Regional",
+      "target": "Hormuz / diplomatic channels",
+      "category": "Coercive bargaining",
+      "weapon": "Threats, blockade, indirect diplomacy",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "No major new direct strike wave was publicly confirmed; both sides continued coercive bargaining over Hormuz and ceasefire terms.",
+      "claimed": "",
+      "significance": "Operational pause lengthened while the maritime dispute became the principal bargaining arena.",
+      "evidence": "No new CENTCOM Iran strike release; broader posture based on contemporaneous reporting",
+      "source_ids": "S056;S076",
+      "notes": "Absence of a public release does not prove absence of all operations.",
+      "src": [
+        [
+          "S056 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/trump-says-iran-talks-take-place-monday-sets-no-deadline-deal-2026-08-02/"
+        ],
+        [
+          "S076 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/"
+        ]
+      ]
+    },
+    {
+      "id": "E050",
+      "date": "2026-08-04",
+      "time": "Day",
+      "attacker": "Unknown maritime attacker; mediators; United States",
+      "defender": "Commercial shipping / negotiating parties",
+      "launch": "Hormuz / United States",
+      "target": "Strait of Hormuz; U.S. munitions posture",
+      "category": "Merchant vessel; readiness",
+      "weapon": "Projectile strike; mediation; stockpile disclosure",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Another commercial ship was struck near Hormuz as mediators reported progress; Reuters also reported severe depletion of some U.S. land-launched long-range precision missiles.",
+      "claimed": "",
+      "significance": "Shipping risk remained the hard constraint on settlement; U.S. strike options persisted but standoff-inventory opportunity costs increased.",
+      "evidence": "Vessel strike confirmed; attribution unresolved; stockpile report sourced to anonymous officials",
+      "source_ids": "S057;S058",
+      "notes": "Do not equate ATACMS/PrSM depletion with inability to conduct air/naval strikes.",
+      "src": [
+        [
+          "S057 — Reuters",
+          "https://www.reuters.com/world/middle-east/status-us-iran-talks-uncertain-ship-struck-hormuz-2026-08-04/"
+        ],
+        [
+          "S058 — Reuters",
+          "https://www.reuters.com/world/us-has-used-virtually-all-its-long-range-precision-missiles-during-iran-war-2026-08-04/"
+        ]
+      ]
+    },
+    {
+      "id": "E051",
+      "date": "2026-08-05",
+      "time": "Day",
+      "attacker": "Iran; Oman; United States / Gulf states",
+      "defender": "Negotiating parties",
+      "launch": "Hormuz / Gulf",
+      "target": "Hormuz route; Gulf critical infrastructure",
+      "category": "Maritime control proposal; coercive threat",
+      "weapon": "Diplomacy / threat",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Reuters reported a proposed arrangement giving Iran control over inbound Hormuz traffic; Iran and Oman reported agreement on route coordinates; Tehran warned Gulf states that renewed U.S. attacks could bring strikes on critical infrastructure.",
+      "claimed": "",
+      "significance": "Iran sought institutional maritime leverage while using infrastructure threats to push Gulf states toward restraining Washington.",
+      "evidence": "Proposal/coordinates/threats confirmed as reported; no final settlement",
+      "source_ids": "S059;S060;S061",
+      "notes": "Threatened capability should be separated from demonstrated accuracy and surviving salvo capacity.",
+      "src": [
+        [
+          "S059 — Reuters",
+          "https://www.reuters.com/world/middle-east/us-iran-having-very-good-discussions-trump-says-2026-08-05/"
+        ],
+        [
+          "S060 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-oman-reach-understanding-coordinates-route-through-hormuz-iran-ministry-2026-08-05/"
+        ],
+        [
+          "S061 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-threatens-hit-gulf-states-if-us-launches-new-strikes-2026-08-05/"
+        ]
+      ]
+    },
+    {
+      "id": "E052",
+      "date": "2026-08-06",
+      "time": "Day",
+      "attacker": "Saudi Arabia; Iran / aligned proxies",
+      "defender": "Regional",
+      "launch": "Saudi Arabia / Yemen / Iraq / Hormuz",
+      "target": "Regional defense; maritime rules",
+      "category": "Intelligence warning; draft legislation",
+      "weapon": "Force protection / political-legal escalation",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Saudi Arabia warned of possible coordinated Houthi and Iraqi-militia attacks; an Iranian parliamentary committee reviewed a draft to bar or heavily penalize hostile shipping.",
+      "claimed": "",
+      "significance": "Iranian coercion generated counter-mobilization while Tehran attempted to formalize exclusionary maritime leverage.",
+      "evidence": "Saudi warning and draft-bill reporting confirmed; forecast attacks not yet proven at announcement",
+      "source_ids": "S062;S063",
+      "notes": "Draft legislation is not enacted law.",
+      "src": [
+        [
+          "S062 — Reuters",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-expects-imminent-attacks-north-south-senior-official-says-2026-08-06/"
+        ],
+        [
+          "S063 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/"
+        ]
+      ]
+    },
+    {
+      "id": "E053",
+      "date": "2026-08-07",
+      "time": "Day",
+      "attacker": "Saudi Arabia; Pakistan; Turkey",
+      "defender": "Regional deterrence",
+      "launch": "Saudi Arabia",
+      "target": "Regional defense architecture",
+      "category": "Mutual defense pact",
+      "weapon": "Diplomatic-military alignment",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Saudi Arabia, Pakistan and Turkey signed a mutual-defense pact treating an armed attack on one as an attack on all.",
+      "claimed": "",
+      "significance": "Major counter-alignment response to regional missile/proxy risk; reduces credibility of Iranian coercion as a coalition-splitting strategy.",
+      "evidence": "Formal pact reported",
+      "source_ids": "S063",
+      "notes": "Turkey's inclusion was not anticipated in the user's earlier Saudi-Pakistan expectation.",
+      "src": [
+        [
+          "S063 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/"
+        ]
+      ]
+    },
+    {
+      "id": "E054",
+      "date": "2026-08-08",
+      "time": "Day",
+      "attacker": "Iran; United States",
+      "defender": "Mutual",
+      "launch": "Hormuz",
+      "target": "Strait of Hormuz",
+      "category": "Blockade / route settlement",
+      "weapon": "Diplomacy and blockade enforcement",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Iran said the Oman route deal was close but would not itself reopen Hormuz; U.S. blockade figures showed continued humanitarian passes, turn-backs, disablements and boardings.",
+      "claimed": "",
+      "significance": "Technical route progress did not resolve the political-security bargain or restore normal commerce.",
+      "evidence": "Public statements and blockade statistics reported",
+      "source_ids": "S064",
+      "notes": "Routing agreement is distinct from unrestricted passage.",
+      "src": [
+        [
+          "S064 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-says-deal-strait-hormuz-is-close-will-not-open-waterway-by-itself-2026-08-08/"
+        ]
+      ]
+    },
+    {
+      "id": "E055",
+      "date": "2026-08-09",
+      "time": "Day",
+      "attacker": "Iran; United States; Houthis",
+      "defender": "Mutual / Saudi Arabia / Yemen",
+      "launch": "Hormuz / Saudi Arabia / Yemen",
+      "target": "Settlement demands; Jizan refinery; Mocha",
+      "category": "Diplomatic conditions; energy/port attacks",
+      "weapon": "Threats/diplomacy; drones/missiles",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Iran tied reopening to U.S. concessions as Trump raised reparations; Houthis struck or claimed strikes on Jizan and Mocha, producing limited infrastructure effects and casualties.",
+      "claimed": "",
+      "significance": "Negotiating positions hardened while proxies demonstrated continuing disruptive capacity but not strategic precision dominance.",
+      "evidence": "Jizan fire and Mocha casualties reported; settlement demands confirmed",
+      "source_ids": "S065;S066;S067",
+      "notes": "Jizan refinery was already shut, limiting immediate production impact.",
+      "src": [
+        [
+          "S065 — Reuters",
+          "https://www.reuters.com/business/energy/fire-extinguished-aramco-facility-jizan-saudi-arabia-says-2026-08-09/"
+        ],
+        [
+          "S066 — Reuters",
+          "https://www.reuters.com/world/middle-east/yemens-houthis-resume-attacks-mocha-port-city-yemeni-military-spokesperson-says-2026-08-09/"
+        ],
+        [
+          "S067 — Reuters",
+          "https://www.reuters.com/world/middle-east/iran-ties-hormuz-reopening-us-concessions-several-demands-2026-08-09/"
+        ]
+      ]
+    },
+    {
+      "id": "E056",
+      "date": "2026-08-10",
+      "time": "Day",
+      "attacker": "Iran; commercial shipping",
+      "defender": "Regional",
+      "launch": "Hormuz",
+      "target": "Strait of Hormuz",
+      "category": "Traffic / diplomatic posture",
+      "weapon": "Restricted transit / rhetoric",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Hormuz traffic remained at single-digit levels around the period while Iran rejected the idea that the Saudi-Pakistan-Turkey pact should frighten it and maintained its negotiating conditions.",
+      "claimed": "",
+      "significance": "Commercial behavior continued to show that neither side had normalized the waterway; regional alignment pressure persisted.",
+      "evidence": "Shipping data high confidence; diplomatic posture public",
+      "source_ids": "S068;S063",
+      "notes": "Traffic counts depend on tracking provider and reporting day.",
+      "src": [
+        [
+          "S068 — Reuters",
+          "https://www.reuters.com/world/gulf-shipping-traffic-via-strait-hormuz-falls-six-vessels-2026-08-11/"
+        ],
+        [
+          "S063 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/"
+        ]
+      ]
+    },
+    {
+      "id": "E057",
+      "date": "2026-08-11",
+      "time": "Day",
+      "attacker": "Houthis; United States",
+      "defender": "Commercial shipping / blockade violator",
+      "launch": "Bab el-Mandeb; Gulf of Oman",
+      "target": "Tihamah; Vela Nova",
+      "category": "Merchant shipping",
+      "weapon": "Projectile attacks; two Hellfire missiles",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Houthis attacked the Egyptian-owned Tihamah, killing four crew and two rescuers; a U.S. Navy MH-60 fired two Hellfires that disabled Vela Nova's steering after blockade warnings.",
+      "claimed": "",
+      "significance": "Both chokepoints saw direct coercive enforcement/attack activity; Houthi shipping violence became fatal while U.S. blockade enforcement remained active.",
+      "evidence": "Tihamah visually corroborated; U.S. action acknowledged",
+      "source_ids": "S069",
+      "notes": "Houthi claim about Saudi military cargo was not independently established.",
+      "src": [
+        [
+          "S069 — Reuters",
+          "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/"
+        ]
+      ]
+    },
+    {
+      "id": "E058",
+      "date": "2026-08-12",
+      "time": "Current reporting day",
+      "attacker": "Iran; United States; regional actors",
+      "defender": "Mutual / commercial shipping",
+      "launch": "Regional",
+      "target": "Hormuz / negotiation channels",
+      "category": "Ceasefire settlement; shipping; alliance/economic effects",
+      "weapon": "Diplomacy, blockade, restricted shipping",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "A senior Iranian source said there had been no progress reviving the interim deal; Hormuz traffic fell to eight Kpler-tracked vessels Tuesday, and CENTCOM still had no new public Iran-strike release after July 29.",
+      "claimed": "",
+      "significance": "Conflict remains militarily contained relative to July's strike tempo but strategically unresolved; Iran retains shipping-disruption leverage while coalition alignment has strengthened.",
+      "evidence": "High-confidence wire/shipping data; public-release absence noted",
+      "source_ids": "S070;S071;S072;S076",
+      "notes": "Trump's claim of total U.S. control should be judged against actual traffic and Iranian route usage, not rhetoric alone.",
+      "src": [
+        [
+          "S070 — Reuters",
+          "https://www.reuters.com/world/asia-pacific/iran-says-no-progress-reviving-interim-peace-deal-with-us-2026-08-12/"
+        ],
+        [
+          "S071 — Reuters",
+          "https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-one-week-low-amid-hostilities-2026-08-12/"
+        ],
+        [
+          "S072 — Reuters",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-bets-defensive-alliances-to-deter-slide-into-war-2026-08-12/"
+        ],
+        [
+          "S076 — U.S. Central Command",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/"
+        ]
+      ]
+    },
+    {
+      "id": "E059",
+      "date": "2026-08-13",
+      "time": "Evening",
+      "attacker": "Unknown; UAE attributes Iran/IRGC",
+      "defender": "UAE / ADNOC",
+      "launch": "Unknown",
+      "target": "Strait of Hormuz",
+      "category": "Commercial shipping / energy logistics",
+      "weapon": "Unspecified",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Two ADNOC vessels attacked; no injuries reported.",
+      "claimed": "",
+      "significance": "Repeated pressure on UAE-linked maritime logistics; command/technical attribution unresolved publicly.",
+      "evidence": "Attack reported; attribution actor claim",
+      "source_ids": "S079",
+      "notes": "Do not collapse UAE attribution into independent technical confirmation.",
+      "src": [
+        [
+          "S079 — Reuters",
+          "https://www.reuters.com/world/middle-east/uae-says-iran-attacked-two-adnoc-vessels-strait-hormuz-no-injuries-2026-08-13/"
+        ]
+      ]
+    },
+    {
+      "id": "E060",
+      "date": "2026-08-14",
+      "time": "Day",
+      "attacker": "Houthis",
+      "defender": "Yemen government / Saudi-linked interests",
+      "launch": "Yemen",
+      "target": "Mocha; Najran claim",
+      "category": "Port / maritime logistics; claimed energy target",
+      "weapon": "Ballistic missiles; claimed drone",
+      "launched": 6,
+      "impacting": "",
+      "confirmed": "Yemen government said six ballistic missiles struck Mocha, killing at least four; Houthi-run media claimed a drone targeted Aramco in Najran.",
+      "claimed": "",
+      "significance": "Escalating Red Sea/Yemen pressure; Najran claim unconfirmed at initial reporting.",
+      "evidence": "Mocha event reported; target rationale/ Najran impact contested",
+      "source_ids": "S082",
+      "notes": "Separate Mocha confirmed effects from Houthi target claims and unconfirmed Najran claim.",
+      "src": [
+        [
+          "S082 — Reuters",
+          "https://www.reuters.com/world/middle-east/yemens-mocha-port-halts-operations-after-houthi-attacks-port-director-says-2026-08-15/"
+        ]
+      ]
+    },
+    {
+      "id": "E061",
+      "date": "2026-08-14",
+      "time": "Friday evening (exact public minute unavailable)",
+      "attacker": "Unknown; UAE attributes Iran",
+      "defender": "UAE / ADNOC",
+      "launch": "Unknown",
+      "target": "Strait of Hormuz",
+      "category": "Commercial shipping / energy logistics",
+      "weapon": "Unknown projectile / unspecified",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "One ADNOC vessel attacked; no injuries. UKMTO separately reported a bulk carrier struck in the hull by an unknown projectile.",
+      "claimed": "",
+      "significance": "Third ADNOC incident in less than a week; strengthens repeated-target pattern but does not establish firing morphology.",
+      "evidence": "Event confirmed in reporting; attribution actor claim; possible incident overlap unresolved",
+      "source_ids": "S081",
+      "notes": "Event time and possible identity with UKMTO report remain imprecise.",
+      "src": [
+        [
+          "S081 — Reuters",
+          "https://www.reuters.com/world/middle-east/uaes-adnoc-says-one-its-vessels-came-under-attack-while-transiting-hormuz-2026-08-14/"
+        ]
+      ]
+    },
+    {
+      "id": "E062",
+      "date": "2026-08-15",
+      "time": "Cumulative update",
+      "attacker": "Houthis",
+      "defender": "Yemen government-aligned Mocha port",
+      "launch": "Yemen",
+      "target": "Mocha",
+      "category": "Port / maritime logistics",
+      "weapon": "Missiles",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Port director said more than 25 missiles hit Mocha over recent days; seven killed; ~$16m losses; commercial and maritime operations suspended.",
+      "claimed": "",
+      "significance": "Operational effect escalated from damage/casualties to logistics-node shutdown near Bab el-Mandeb.",
+      "evidence": "Port-director report via Reuters; Houthi rationale remains actor claim",
+      "source_ids": "S082",
+      "notes": "Cumulative count spans multiple days; do not assign all missiles to Aug. 15.",
+      "src": [
+        [
+          "S082 — Reuters",
+          "https://www.reuters.com/world/middle-east/yemens-mocha-port-halts-operations-after-houthi-attacks-port-director-says-2026-08-15/"
+        ]
+      ]
+    },
+    {
+      "id": "E063",
+      "date": "2026-08-15",
+      "time": "Dawn / morning",
+      "attacker": "Israel",
+      "defender": "Hezbollah / Lebanon",
+      "launch": "Israel / air operations",
+      "target": "Southern Lebanon including Ansar area",
+      "category": "Claimed Hezbollah personnel/sites; civilian structures/casualties",
+      "weapon": "Airstrikes",
+      "launched": "",
+      "impacting": "",
+      "confirmed": "Lebanese health ministry reported at least 11 killed in southern Lebanon strikes.",
+      "claimed": "",
+      "significance": "Deadliest flare-up since June truce increased pressure on disarmament/withdrawal framework and verification mechanism.",
+      "evidence": "Strike/casualty reporting high confidence; target identity and embedding claims require separate evidence",
+      "source_ids": "S085;S086",
+      "notes": "Do not infer human-shield use from civilian casualties alone.",
+      "src": [
+        [
+          "S085 — Reuters",
+          "https://www.reuters.com/world/middle-east/israeli-strikes-kill-nine-south-lebanon-state-news-reports-2026-08-15/"
+        ],
+        [
+          "S086 — Associated Press",
+          "https://apnews.com/article/1124fd2bd0b7ed76b0e97683dddbcaad"
+        ]
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-02-28",
+      "cat": "US/ISR STRIKE",
+      "title": "War opens with U.S.-Israeli strikes on Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "body": "Opening strikes hit Iranian leadership/military targets; Iran begins regional retaliation. Iranian state media confirmed Supreme Leader Ali Khamenei's death.",
+      "src": [
+        [
+          "AP",
+          "https://apnews.com/article/iran-us-explosion-tehran-c2f11247d8a66e36929266f2c557a54c"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-01",
+      "cat": "IRAN DAMAGE",
+      "title": "Iranian attacks hit multiple U.S.-linked sites across Gulf",
+      "lat": 26.0,
+      "lon": 50.8,
+      "body": "Real damage begins accumulating at Bahrain, Qatar, Kuwait, UAE and Saudi sites. Later satellite review verifies a much larger damage footprint than early U.S. disclosures.",
+      "src": [
+        [
+          "Washington Post",
+          "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-04",
+      "cat": "US STRIKE",
+      "title": "IRIS Dena sunk by U.S. submarine",
+      "lat": 6.03,
+      "lon": 80.22,
+      "body": "Hard confirmed naval loss: frigate sunk off Sri Lanka; 87 bodies recovered, while Iran later said 104 were killed.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/asia-pacific/sri-lanka-rescues-30-people-board-distressed-iranian-ship-foreign-minister-says-2026-03-04/"
+        ],
+        [
+          "AP",
+          "https://apnews.com/article/69191dde43154c5176a8aeacc9128748"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-09",
+      "cat": "CLAIM CHECK",
+      "title": "AI fake used to claim completely destroyed U.S. radar in Qatar",
+      "lat": 25.12,
+      "lon": 51.31,
+      "body": "The specific image was fake even though real Iranian damage to U.S. bases was substantial.",
+      "src": [
+        [
+          "Arab News / AFP",
+          "https://www.arabnews.com/node/2635797/media"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-16",
+      "cat": "US STRIKE",
+      "title": "U.S. reports massive campaign scale",
+      "lat": 32.0,
+      "lon": 53.0,
+      "body": "CENTCOM reported 7,000+ targets, 6,500+ combat flights and 100+ Iranian vessels damaged/destroyed. Aggregate BDA remains a belligerent claim, not an independently reconciled loss tally.",
+      "src": [
+        [
+          "CENTCOM",
+          "https://media.defense.gov/2026/Mar/16/2003899496/-1/-1/1/OPERATION-EPIC-FURY-FACT-SHEET.PDF"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-27",
+      "cat": "IRAN DAMAGE",
+      "title": "Prince Sultan penetration causes U.S. casualties and aircraft damage",
+      "lat": 24.1,
+      "lon": 47.58,
+      "body": "Iran demonstrates it can still penetrate layered defenses and impose real costs. Later map evidence distinguishes asset damage from whole-base failure.",
+      "src": [
+        [
+          "AP",
+          "https://apnews.com/article/d9a0bead802c195ff6aedf4cd3c3782d"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-08",
+      "cat": "DIPLOMACY",
+      "title": "Two-week ceasefire sharply reduces major hostilities",
+      "lat": 25.2,
+      "lon": 55.0,
+      "body": "A pause demonstrates both sides retained escalation control; it did not settle Hormuz governance.",
+      "src": [
+        [
+          "Reuters casualty/war compilation",
+          "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "cat": "US BLOCKADE",
+      "title": "First U.S. blockade-enforcement phase begins",
+      "lat": 25.5,
+      "lon": 57.0,
+      "body": "U.S. blockade enforcement later reports ships redirected, disabled or boarded. Iranian maritime leverage remains real despite U.S. sea-control capacity.",
+      "src": [
+        [
+          "CENTCOM releases",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-03",
+      "cat": "CLAIM CHECK",
+      "title": "Kuwait airport hit; Iran blames Patriot, Kuwait blames Iranian attack",
+      "lat": 29.2266,
+      "lon": 47.9689,
+      "body": "Kuwait reported one killed and significant terminal damage from Iranian attacks; the Patriot-caused-damage narrative was rejected.",
+      "src": [
+        [
+          "Arab News",
+          "https://www.arabnews.com/node/2645832/middle-east"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "cat": "US STRIKE",
+      "title": "U.S. hits Iranian air-defense, ground-control and surveillance radar near Hormuz",
+      "lat": 26.7,
+      "lon": 56.2,
+      "body": "The target set attacks the sensor/control layer supporting Iranian sea denial. Radar loss is a layer degradation, not proof the entire Iranian network vanished.",
+      "src": [
+        [
+          "CENTCOM",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4512968/us-completes-strikes-in-response-to-irans-attack-on-apache/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "cat": "DIPLOMACY",
+      "title": "Interim U.S.-Iran agreement seeks ceasefire and Hormuz reopening",
+      "lat": 30.3753,
+      "lon": 69.3451,
+      "body": "The 14-point framework creates a temporary political off-ramp but leaves sequencing and enforcement vulnerable.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/14-point-draft-us-iran-deal-2026-06-17/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-18",
+      "cat": "MARITIME",
+      "title": "Shipping resumes after interim agreement",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "Traffic restoration proves Iran can trade coercive control for concessions, but the reopening later collapses.",
+      "src": [
+        [
+          "Reuters / MarineTraffic",
+          "https://www.reuters.com/video/watch/idRW021518062026RP1/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "cat": "MARITIME",
+      "title": "M/V Ever Lovely attacked in Hormuz",
+      "lat": 26.4,
+      "lon": 56.4,
+      "body": "Physical damage confirmed; attribution assessed likely Iran. U.S. responds with strikes.",
+      "src": [
+        [
+          "CENTCOM",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4528341/us-strikes-iran-in-response-to-attack-on-mv-ever-lovely/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "cat": "US STRIKE",
+      "title": "Renewed U.S. strike cycle and collapse of the interim truce",
+      "lat": 27.18,
+      "lon": 56.27,
+      "body": "The war re-enters sustained strike-counterstrike; Hormuz traffic remains severely depressed.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/ship-hit-hormuz-millions-march-ayatollah-iran-says-no-talks-unless-trump-halts-2026-07-07/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-12 to 2026-07-24",
+      "cat": "US STRIKE",
+      "title": "Thirteen consecutive U.S. strike nights",
+      "lat": 30.0,
+      "lon": 55.0,
+      "body": "Repeated target renewal shows U.S. air/C2ISR initiative remained intact even while Iran continued retaliatory salvos and Hormuz disruption.",
+      "src": [
+        [
+          "Reuters Jul. 22",
+          "https://www.reuters.com/world/middle-east/us-military-says-it-has-ended-its-latest-strikes-iran-2026-07-22/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "cat": "IRAN DAMAGE",
+      "title": "Iranian attack in Jordan kills U.S. personnel",
+      "lat": 31.83,
+      "lon": 36.78,
+      "body": "Real Iranian precision/casualty effect: U.S. deaths and evacuations demonstrate Iran is dangerous, not impotent. This still does not equate to regional strike dominance.",
+      "src": [
+        [
+          "CENTCOM",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549635/centcom-statement-on-iranian-attack/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-20",
+      "cat": "RED SEA",
+      "title": "Houthis announce naval blockade against Saudi Arabia",
+      "lat": 12.58,
+      "lon": 43.33,
+      "body": "The proxy front expands into a second chokepoint and increases Saudi shipping risk.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/houthi-red-sea-threat-would-challenge-stretched-us-military-2026-07-22/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-29",
+      "cat": "ALIGNMENT",
+      "title": "U.S.-Saudi strikes hit Iran-aligned groups in Iraq",
+      "lat": 33.3,
+      "lon": 44.4,
+      "body": "Saudi Arabia crosses into public kinetic retaliation alongside the U.S.—evidence of counter-alignment, not Gulf bandwagoning with Iran.",
+      "src": [
+        [
+          "Al Jazeera",
+          "https://www.aljazeera.com/news/2026/7/29/iran-hits-us-in-jordan-us-saudi-strikes-on-iraq-is-war-spreading"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-30",
+      "cat": "ALIGNMENT",
+      "title": "Saudi-led Red Sea maritime coalition announced",
+      "lat": 21.4858,
+      "lon": 39.1925,
+      "body": "Fourteen countries support a coalition aimed at protecting Red Sea/Bab el-Mandeb shipping after Houthi attacks. Oman and UAE were not in the initial 14-country statement.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+        ],
+        [
+          "Saudi Press Agency",
+          "https://www.spa.gov.sa/en/w2644909"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-30",
+      "cat": "MARITIME",
+      "title": "QatarEnergy-controlled LNG tanker exits Hormuz",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "A high-value transit succeeds after nearly three weeks. It is an exception, not normalization—and it is incompatible with literal claims that nothing can pass without Iranian success in stopping it.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/business/energy/oil-prices-slip-tankers-continue-ply-middle-east-conflict-zones-2026-07-30/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-07",
+      "cat": "ALIGNMENT",
+      "title": "Saudi Arabia, Türkiye and Pakistan sign Mecca Joint Defence Agreement",
+      "lat": 21.3891,
+      "lon": 39.8579,
+      "body": "An armed attack on one is to be treated as an attack on all, though the pact does not specify automatic military commitments. The three are U.S. allies, but the pact also reflects regional desire for greater autonomy.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/"
+        ],
+        [
+          "Al Jazeera",
+          "https://www.aljazeera.com/news/2026/8/7/turkiye-saudi-arabi-pakistan-sign-joint-defence-agreement-whats-in-it"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-12 to 2026-08-13",
+      "cat": "LEBANON",
+      "title": "Four states discussed as possible Hezbollah-disarmament verifiers — not finalized",
+      "lat": 33.8938,
+      "lon": 35.5018,
+      "body": "Britain, Italy, Switzerland and Indonesia were reported as candidates in U.S.-mediated talks. A Lebanese official then denied that Beirut had agreed to a shortlist. The map keeps them ghosted/proposed.",
+      "src": [
+        [
+          "Reuters Aug. 12",
+          "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/"
+        ],
+        [
+          "Reuters Aug. 13 correction/context",
+          "https://www.reuters.com/world/asia-pacific/lebanon-has-not-agreed-shortlist-countries-that-could-verify-hezbollahs-2026-08-13/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-13",
+      "cat": "MARITIME",
+      "title": "U.S. says blockade can be sustained; Iran claims Hormuz control",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "Both sides retain coercive leverage. Absolute 'total control' rhetoric from either side outruns the observed mixed reality.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/us-eyes-indefinite-iran-naval-blockade-oil-supply-shortfall-deepens-2026-08-13/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "cat": "IRAN / MARITIME",
+      "title": "UAE attributes attacks on ADNOC vessels to Iran",
+      "lat": 26.55,
+      "lon": 56.35,
+      "body": "Commercial risk rises again; the U.S. reinforces blockade/economic pressure while Iran continues to use Hormuz access as bargaining leverage.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/us-warns-iran-it-will-step-up-economic-pressure-two-more-ships-attacked-hormuz-2026-08-14/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "cat": "CLAIM CHECK",
+      "title": "USS Lincoln still operational; CENTCOM commander visits carrier",
+      "lat": 20.5,
+      "lon": 63.0,
+      "body": "The carrier has spent more than 240 uninterrupted days at sea and continues supporting the Iran war and blockade. Whatever else one thinks of the campaign, 'Iran sank/destroyed the carrier' is dead.",
+      "src": [
+        [
+          "AP",
+          "https://apnews.com/article/iran-us-israel-lebanon-gaza-uss-lincoln-august-16-2026-98f43f920c102080a3526981cf0dd7b8"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "cat": "MARITIME",
+      "title": "Hormuz traffic nearly stops over weekend",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "Kpler recorded five commodity transits Saturday and none Sunday, versus 31 the prior weekend. Iran's maritime coercion is a major strategic success area even while the coalition keeps air/C2ISR and strike advantages.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/shipping-via-hormuz-strait-slows-after-tanker-attacks-data-shows-2026-08-16/"
+        ]
+      ]
+    }
+  ],
+  "strategicMilestones": [
+    {
+      "date": "2026-02-28",
+      "cat": "US/ISR STRIKE",
+      "title": "War opens with U.S.-Israeli strikes on Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "body": "Opening strikes hit Iranian leadership/military targets; Iran begins regional retaliation. Iranian state media confirmed Supreme Leader Ali Khamenei's death.",
+      "src": [
+        [
+          "AP",
+          "https://apnews.com/article/iran-us-explosion-tehran-c2f11247d8a66e36929266f2c557a54c"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-01",
+      "cat": "IRAN DAMAGE",
+      "title": "Iranian attacks hit multiple U.S.-linked sites across Gulf",
+      "lat": 26.0,
+      "lon": 50.8,
+      "body": "Real damage begins accumulating at Bahrain, Qatar, Kuwait, UAE and Saudi sites. Later satellite review verifies a much larger damage footprint than early U.S. disclosures.",
+      "src": [
+        [
+          "Washington Post",
+          "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-04",
+      "cat": "US STRIKE",
+      "title": "IRIS Dena sunk by U.S. submarine",
+      "lat": 6.03,
+      "lon": 80.22,
+      "body": "Hard confirmed naval loss: frigate sunk off Sri Lanka; 87 bodies recovered, while Iran later said 104 were killed.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/asia-pacific/sri-lanka-rescues-30-people-board-distressed-iranian-ship-foreign-minister-says-2026-03-04/"
+        ],
+        [
+          "AP",
+          "https://apnews.com/article/69191dde43154c5176a8aeacc9128748"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-09",
+      "cat": "CLAIM CHECK",
+      "title": "AI fake used to claim completely destroyed U.S. radar in Qatar",
+      "lat": 25.12,
+      "lon": 51.31,
+      "body": "The specific image was fake even though real Iranian damage to U.S. bases was substantial.",
+      "src": [
+        [
+          "Arab News / AFP",
+          "https://www.arabnews.com/node/2635797/media"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-16",
+      "cat": "US STRIKE",
+      "title": "U.S. reports massive campaign scale",
+      "lat": 32.0,
+      "lon": 53.0,
+      "body": "CENTCOM reported 7,000+ targets, 6,500+ combat flights and 100+ Iranian vessels damaged/destroyed. Aggregate BDA remains a belligerent claim, not an independently reconciled loss tally.",
+      "src": [
+        [
+          "CENTCOM",
+          "https://media.defense.gov/2026/Mar/16/2003899496/-1/-1/1/OPERATION-EPIC-FURY-FACT-SHEET.PDF"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-27",
+      "cat": "IRAN DAMAGE",
+      "title": "Prince Sultan penetration causes U.S. casualties and aircraft damage",
+      "lat": 24.1,
+      "lon": 47.58,
+      "body": "Iran demonstrates it can still penetrate layered defenses and impose real costs. Later map evidence distinguishes asset damage from whole-base failure.",
+      "src": [
+        [
+          "AP",
+          "https://apnews.com/article/d9a0bead802c195ff6aedf4cd3c3782d"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-08",
+      "cat": "DIPLOMACY",
+      "title": "Two-week ceasefire sharply reduces major hostilities",
+      "lat": 25.2,
+      "lon": 55.0,
+      "body": "A pause demonstrates both sides retained escalation control; it did not settle Hormuz governance.",
+      "src": [
+        [
+          "Reuters casualty/war compilation",
+          "https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-04-07/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "cat": "US BLOCKADE",
+      "title": "First U.S. blockade-enforcement phase begins",
+      "lat": 25.5,
+      "lon": 57.0,
+      "body": "U.S. blockade enforcement later reports ships redirected, disabled or boarded. Iranian maritime leverage remains real despite U.S. sea-control capacity.",
+      "src": [
+        [
+          "CENTCOM releases",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-03",
+      "cat": "CLAIM CHECK",
+      "title": "Kuwait airport hit; Iran blames Patriot, Kuwait blames Iranian attack",
+      "lat": 29.2266,
+      "lon": 47.9689,
+      "body": "Kuwait reported one killed and significant terminal damage from Iranian attacks; the Patriot-caused-damage narrative was rejected.",
+      "src": [
+        [
+          "Arab News",
+          "https://www.arabnews.com/node/2645832/middle-east"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "cat": "US STRIKE",
+      "title": "U.S. hits Iranian air-defense, ground-control and surveillance radar near Hormuz",
+      "lat": 26.7,
+      "lon": 56.2,
+      "body": "The target set attacks the sensor/control layer supporting Iranian sea denial. Radar loss is a layer degradation, not proof the entire Iranian network vanished.",
+      "src": [
+        [
+          "CENTCOM",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4512968/us-completes-strikes-in-response-to-irans-attack-on-apache/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "cat": "DIPLOMACY",
+      "title": "Interim U.S.-Iran agreement seeks ceasefire and Hormuz reopening",
+      "lat": 30.3753,
+      "lon": 69.3451,
+      "body": "The 14-point framework creates a temporary political off-ramp but leaves sequencing and enforcement vulnerable.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/14-point-draft-us-iran-deal-2026-06-17/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-18",
+      "cat": "MARITIME",
+      "title": "Shipping resumes after interim agreement",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "Traffic restoration proves Iran can trade coercive control for concessions, but the reopening later collapses.",
+      "src": [
+        [
+          "Reuters / MarineTraffic",
+          "https://www.reuters.com/video/watch/idRW021518062026RP1/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "cat": "MARITIME",
+      "title": "M/V Ever Lovely attacked in Hormuz",
+      "lat": 26.4,
+      "lon": 56.4,
+      "body": "Physical damage confirmed; attribution assessed likely Iran. U.S. responds with strikes.",
+      "src": [
+        [
+          "CENTCOM",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4528341/us-strikes-iran-in-response-to-attack-on-mv-ever-lovely/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "cat": "US STRIKE",
+      "title": "Renewed U.S. strike cycle and collapse of the interim truce",
+      "lat": 27.18,
+      "lon": 56.27,
+      "body": "The war re-enters sustained strike-counterstrike; Hormuz traffic remains severely depressed.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/ship-hit-hormuz-millions-march-ayatollah-iran-says-no-talks-unless-trump-halts-2026-07-07/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-12 to 2026-07-24",
+      "cat": "US STRIKE",
+      "title": "Thirteen consecutive U.S. strike nights",
+      "lat": 30.0,
+      "lon": 55.0,
+      "body": "Repeated target renewal shows U.S. air/C2ISR initiative remained intact even while Iran continued retaliatory salvos and Hormuz disruption.",
+      "src": [
+        [
+          "Reuters Jul. 22",
+          "https://www.reuters.com/world/middle-east/us-military-says-it-has-ended-its-latest-strikes-iran-2026-07-22/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "cat": "IRAN DAMAGE",
+      "title": "Iranian attack in Jordan kills U.S. personnel",
+      "lat": 31.83,
+      "lon": 36.78,
+      "body": "Real Iranian precision/casualty effect: U.S. deaths and evacuations demonstrate Iran is dangerous, not impotent. This still does not equate to regional strike dominance.",
+      "src": [
+        [
+          "CENTCOM",
+          "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4549635/centcom-statement-on-iranian-attack/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-20",
+      "cat": "RED SEA",
+      "title": "Houthis announce naval blockade against Saudi Arabia",
+      "lat": 12.58,
+      "lon": 43.33,
+      "body": "The proxy front expands into a second chokepoint and increases Saudi shipping risk.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/houthi-red-sea-threat-would-challenge-stretched-us-military-2026-07-22/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-29",
+      "cat": "ALIGNMENT",
+      "title": "U.S.-Saudi strikes hit Iran-aligned groups in Iraq",
+      "lat": 33.3,
+      "lon": 44.4,
+      "body": "Saudi Arabia crosses into public kinetic retaliation alongside the U.S.—evidence of counter-alignment, not Gulf bandwagoning with Iran.",
+      "src": [
+        [
+          "Al Jazeera",
+          "https://www.aljazeera.com/news/2026/7/29/iran-hits-us-in-jordan-us-saudi-strikes-on-iraq-is-war-spreading"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-30",
+      "cat": "ALIGNMENT",
+      "title": "Saudi-led Red Sea maritime coalition announced",
+      "lat": 21.4858,
+      "lon": 39.1925,
+      "body": "Fourteen countries support a coalition aimed at protecting Red Sea/Bab el-Mandeb shipping after Houthi attacks. Oman and UAE were not in the initial 14-country statement.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/"
+        ],
+        [
+          "Saudi Press Agency",
+          "https://www.spa.gov.sa/en/w2644909"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-30",
+      "cat": "MARITIME",
+      "title": "QatarEnergy-controlled LNG tanker exits Hormuz",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "A high-value transit succeeds after nearly three weeks. It is an exception, not normalization—and it is incompatible with literal claims that nothing can pass without Iranian success in stopping it.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/business/energy/oil-prices-slip-tankers-continue-ply-middle-east-conflict-zones-2026-07-30/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-07",
+      "cat": "ALIGNMENT",
+      "title": "Saudi Arabia, Türkiye and Pakistan sign Mecca Joint Defence Agreement",
+      "lat": 21.3891,
+      "lon": 39.8579,
+      "body": "An armed attack on one is to be treated as an attack on all, though the pact does not specify automatic military commitments. The three are U.S. allies, but the pact also reflects regional desire for greater autonomy.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/"
+        ],
+        [
+          "Al Jazeera",
+          "https://www.aljazeera.com/news/2026/8/7/turkiye-saudi-arabi-pakistan-sign-joint-defence-agreement-whats-in-it"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-12 to 2026-08-13",
+      "cat": "LEBANON",
+      "title": "Four states discussed as possible Hezbollah-disarmament verifiers — not finalized",
+      "lat": 33.8938,
+      "lon": 35.5018,
+      "body": "Britain, Italy, Switzerland and Indonesia were reported as candidates in U.S.-mediated talks. A Lebanese official then denied that Beirut had agreed to a shortlist. The map keeps them ghosted/proposed.",
+      "src": [
+        [
+          "Reuters Aug. 12",
+          "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/"
+        ],
+        [
+          "Reuters Aug. 13 correction/context",
+          "https://www.reuters.com/world/asia-pacific/lebanon-has-not-agreed-shortlist-countries-that-could-verify-hezbollahs-2026-08-13/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-13",
+      "cat": "MARITIME",
+      "title": "U.S. says blockade can be sustained; Iran claims Hormuz control",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "Both sides retain coercive leverage. Absolute 'total control' rhetoric from either side outruns the observed mixed reality.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/us-eyes-indefinite-iran-naval-blockade-oil-supply-shortfall-deepens-2026-08-13/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "cat": "IRAN / MARITIME",
+      "title": "UAE attributes attacks on ADNOC vessels to Iran",
+      "lat": 26.55,
+      "lon": 56.35,
+      "body": "Commercial risk rises again; the U.S. reinforces blockade/economic pressure while Iran continues to use Hormuz access as bargaining leverage.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/us-warns-iran-it-will-step-up-economic-pressure-two-more-ships-attacked-hormuz-2026-08-14/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "cat": "CLAIM CHECK",
+      "title": "USS Lincoln still operational; CENTCOM commander visits carrier",
+      "lat": 20.5,
+      "lon": 63.0,
+      "body": "The carrier has spent more than 240 uninterrupted days at sea and continues supporting the Iran war and blockade. Whatever else one thinks of the campaign, 'Iran sank/destroyed the carrier' is dead.",
+      "src": [
+        [
+          "AP",
+          "https://apnews.com/article/iran-us-israel-lebanon-gaza-uss-lincoln-august-16-2026-98f43f920c102080a3526981cf0dd7b8"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "cat": "MARITIME",
+      "title": "Hormuz traffic nearly stops over weekend",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "Kpler recorded five commodity transits Saturday and none Sunday, versus 31 the prior weekend. Iran's maritime coercion is a major strategic success area even while the coalition keeps air/C2ISR and strike advantages.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/shipping-via-hormuz-strait-slows-after-tanker-attacks-data-shows-2026-08-16/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "cat": "DIPLOMACY / POSTURE",
+      "title": "60-day U.S.–Iran deal window expires; Iran says it will shift to a 'fully offensive' posture",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "body": "The June memorandum's 60-day window elapsed without a final agreement. A senior Iranian official told Reuters that Tehran would shift from a defensive posture to a 'fully offensive' stance because diplomacy had stalled. This was a declared posture change, not by itself proof that a new strike had occurred.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/iran-threatens-go-offensive-strait-hormuz-if-diplomacy-with-us-fails-2026-08-17/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "cat": "BARGAINING / HORMUZ",
+      "title": "Iran restates reopening conditions after MOU window expires; U.S. says no talks are scheduled",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "Iran's top negotiator said Hormuz would remain shut until the U.S. lifted the port blockade and oil sanctions, released frozen Iranian assets, and ended military threats and operations. Trump said no talks were taking place or scheduled and said the U.S. blockade remained in force.",
+      "src": [
+        [
+          "Reuters — conditions",
+          "https://www.reuters.com/world/middle-east/hormuz-strait-remain-shut-until-us-meets-interim-deal-conditions-iran-says-2026-08-18/"
+        ],
+        [
+          "Reuters — no talks / shipping",
+          "https://www.reuters.com/world/middle-east/trump-says-no-talks-planned-with-iran-tehran-says-strait-hormuz-still-shut-2026-08-18/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "cat": "MARITIME INCIDENT",
+      "title": "Commercial vessel struck while exiting Hormuz; engine-room damage and a crew casualty reported",
+      "lat": 26.45,
+      "lon": 56.65,
+      "body": "UKMTO reported a vessel struck by an unknown projectile while sailing out through the strait, causing engine-room damage and a crew casualty. Attribution was unresolved in the reviewed public reporting; the Omani Coast Guard assisted the crew.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/trump-says-no-talks-planned-with-iran-tehran-says-strait-hormuz-still-shut-2026-08-18/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "cat": "UAE / MISSILE CLAIM",
+      "title": "UAE reports two ballistic missiles launched from Iran toward maritime traffic; Iran denies responsibility",
+      "lat": 24.45,
+      "lon": 54.38,
+      "body": "The UAE Defense Ministry said two ballistic missiles launched from Iran targeted maritime traffic and fell into the sea. Iran's Foreign Ministry rejected the accusation as baseless. The event is therefore displayed as a host-government attribution with an explicit Iranian denial, not as independently proven Iranian impact damage.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/trump-says-no-talks-planned-with-iran-tehran-says-strait-hormuz-still-shut-2026-08-18/"
+        ],
+        [
+          "Associated Press",
+          "https://apnews.com/article/iran-united-arab-emirates-trade-august-19-2026-47c95fe382c49289ab0419310b6d8057"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "cat": "ECONOMIC / ALIGNMENT",
+      "title": "UAE suspends all trade, commercial exchanges and financial transactions with Iran",
+      "lat": 24.4539,
+      "lon": 54.3773,
+      "body": "Abu Dhabi imposed an indefinite economic and financial embargo after the missile alert. The UAE had been a major re-export gateway for Iranian trade; AP cited WTO data showing the UAE supplied more than 30% of Iran's imports by value before the war. This materially increases Iran's economic isolation while also imposing costs on UAE business links.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/uaes-financial-embargo-iran-after-missile-threat-puts-rivalry-back-spotlight-2026-08-19/"
+        ],
+        [
+          "Associated Press",
+          "https://apnews.com/article/iran-united-arab-emirates-trade-august-19-2026-47c95fe382c49289ab0419310b6d8057"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "cat": "MARITIME",
+      "title": "Hormuz traffic remains far below normal despite competing U.S. and Iranian control claims",
+      "lat": 26.56,
+      "lon": 56.25,
+      "body": "Kpler recorded six commodity vessels transiting on Tuesday, down from nine Monday and below the recent average of eleven per day. Major Chinese shippers were avoiding Hormuz and Bab el-Mandeb. The operational picture remains partial passage under severe coercive friction, not literal total closure or normal reopening.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/world/middle-east/hormuz-traffic-slows-uncertainty-over-waterway-persists-2026-08-19/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-07",
+      "cat": "ARCTIC / CHINA",
+      "title": "Rosatom says seven Chinese vessels permitted for Europe transit via Northern Sea Route",
+      "lat": 71.0,
+      "lon": 95.0,
+      "body": "Rosatom said seven Chinese transit vessels had permits to sail to Europe via Russia's Northern Sea Route. Sea Legend planned a regular container service with weekly sailings during the navigation season. The route is a seasonal strategic bypass of Suez/Red Sea chokepoints, not a replacement for Gulf energy routes.",
+      "src": [
+        [
+          "Reuters syndication / Rosatom statement",
+          "https://www.internazionale.it/ultime-notizie-reuters/2026/08/07/rosatom-says-seven-chinese-vessels-will-sail-to-europe-via-russias-arctic-route"
+        ],
+        [
+          "Rosatom NSR administration",
+          "https://nsr.rosatom.ru/en/company/object-of-activity-and-functions-of-nsra/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-11",
+      "cat": "ARCTIC / ENERGY",
+      "title": "Russian crude shipments to China/Asia via Arctic route accelerate",
+      "lat": 72.0,
+      "lon": 80.0,
+      "body": "Reuters reported seven crude cargoes carrying about 6 million barrels already heading to Asia via the Northern Sea Route in the 2026 season. China was identified as the principal destination; the route cuts roughly two weeks compared with the traditional Suez route and gains value when Hormuz and Black Sea logistics are disrupted.",
+      "src": [
+        [
+          "Reuters",
+          "https://www.reuters.com/business/energy/russias-oil-exports-asia-via-arctic-route-start-strongly-sources-say-data-shows-2026-08-11/"
+        ]
+      ]
+    }
+  ],
+  "demands": [
+    {
+      "date": "2026-03-02",
+      "sort": "2026-03-02",
+      "title": "Initial Hormuz position: effective closure and threat against unauthorized passage",
+      "actor": "Iran",
+      "status": "MAXIMAL OPENING POSITION",
+      "position": "Iran treated the strait as closed to adversary-linked traffic and warned that vessels attempting passage could be attacked.",
+      "response": "Commercial traffic largely stopped and the U.S. Navy said escorts were not yet feasible because of the threat environment.",
+      "change": "Within weeks, Tehran moved from blanket closure rhetoric to a selective-passage formula for ships it classified as non-hostile.",
+      "outcome": "NOT ACCEPTED AS A GENERAL INTERNATIONAL RULE; EFFECTIVE COERCIVE CLOSURE IN PRACTICE",
+      "evidence": "HIGH for the stated Iranian position and observed traffic disruption; legal authority disputed.",
+      "src": [
+        [
+          "Al Jazeera — Iranian closure threat / March 2 context",
+          "https://www.aljazeera.com/economy/2026/3/16/strait-of-hormuz-which-countriess-ships-has-iran-allowed-safe-passage-to"
+        ],
+        [
+          "Reuters — U.S. Navy said escorts not possible amid closure",
+          "https://www.reuters.com/world/middle-east/us-navy-tells-shipping-industry-hormuz-escorts-not-possible-now-2026-03-10/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-12 to 2026-03-24",
+      "sort": "2026-03-12",
+      "title": "Iran narrows the closure: passage allowed with Iranian coordination for 'non-hostile' ships",
+      "actor": "Iran",
+      "status": "PARTIAL WALKBACK / CONDITIONAL OPENING",
+      "position": "Ships had to coordinate with Iranian naval authorities. Tehran later said non-hostile or non-enemy-linked vessels could receive safe passage.",
+      "response": "The distinction was reported by Reuters and regional media, but most commercial operators still viewed the strait as unsafe and traffic remained far below normal.",
+      "change": "This replaced the early blanket-closure threat with selective permission. Iran still claimed a gatekeeping role, but no longer treated every commercial transit as prohibited.",
+      "outcome": "PARTIAL OPERATIONAL CONCESSION; IRAN RETAINED CLAIMED AUTHORIZATION POWER",
+      "evidence": "HIGH — Reuters plus Iranian/regionally reported official statements.",
+      "src": [
+        [
+          "Reuters — ships must coordinate with Iran's navy, Mar. 12",
+          "https://www.reuters.com/world/ships-must-coordinate-with-irans-navy-pass-through-strait-hormuz-foreign-2026-03-12/"
+        ],
+        [
+          "Reuters — open to all except enemy-linked ships, Mar. 22",
+          "https://www.reuters.com/world/middle-east/iran-says-hormuz-open-all-enemy-linked-ships-amid-us-threat-2026-03-22/"
+        ],
+        [
+          "Reuters — UN/IMO note on non-hostile vessels, Mar. 24",
+          "https://www.reuters.com/world/middle-east/iran-says-non-hostile-ships-can-transit-strait-hormuz-ft-reports-2026-03-24/"
+        ],
+        [
+          "Al Jazeera — safe-passage formulation",
+          "https://www.aljazeera.com/economy/2026/3/25/iran-says-non-hostile-ships-can-pass-safely-through-strait-of-hormuz"
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-09 to 2026-04-17",
+      "sort": "2026-04-09",
+      "title": "Ceasefire-phase opening: capped/temporary Hormuz passage rather than unrestricted control",
+      "actor": "Iran / United States",
+      "status": "TEMPORARY PARTIAL IMPLEMENTATION",
+      "position": "Iran reportedly accepted limited passage under the ceasefire and later temporarily reopened the strait for commercial traffic while retaining coordination rules and excluding hostile/military vessels.",
+      "response": "The U.S. naval blockade remained a central Iranian objection. Tehran warned it could close the strait again if the blockade continued.",
+      "change": "The practical position moved from closure toward time-limited and numerically restricted passage, but not unconditional freedom of navigation.",
+      "outcome": "PARTIALLY IMPLEMENTED; NOT A DURABLE REOPENING",
+      "evidence": "MEDIUM-HIGH — Reuters, with the 15-vessel cap attributed to an unnamed Iranian source via TASS.",
+      "src": [
+        [
+          "Reuters — reported 15-vessel daily limit, Apr. 9",
+          "https://www.reuters.com/world/middle-east/iran-let-no-more-than-15-vessels-day-pass-strait-hormuz-tass-cites-senior-2026-04-09/"
+        ],
+        [
+          "Reuters — temporary reopening and blockade condition, Apr. 17",
+          "https://www.reuters.com/world/asia-pacific/trump-says-iran-war-should-end-soon-both-sides-may-meet-weekend-2026-04-17/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "sort": "2026-05-02",
+      "title": "Iran offers to reopen Hormuz before nuclear talks; U.S. rejects the package",
+      "actor": "Iran",
+      "status": "REJECTED PROPOSAL",
+      "position": "Iran proposed ending hostilities and the competing blockades, reopening Hormuz first, and then negotiating nuclear limits tied to sanctions relief and recognition of peaceful enrichment.",
+      "response": "President Trump rejected the proposal as containing unacceptable terms and continued to demand a firmer nuclear commitment.",
+      "change": "Iran separated immediate maritime de-escalation from later nuclear bargaining, a narrower sequencing approach than making all issues a precondition for any opening.",
+      "outcome": "NOT ACCEPTED",
+      "evidence": "HIGH — Reuters citing a senior Iranian official and U.S. response.",
+      "src": [
+        [
+          "Reuters — rejected Iranian proposal, May 2",
+          "https://www.reuters.com/world/middle-east/iranian-proposal-rejected-by-trump-would-open-strait-before-nuclear-talks-iran-2026-05-02/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-20",
+      "sort": "2026-05-20",
+      "title": "Iran's broader offer repeats high-end demands: control, compensation, sanctions relief, assets and U.S. withdrawal",
+      "actor": "Iran",
+      "status": "BROAD DEMAND PACKAGE — NOT ACCEPTED",
+      "position": "Reuters reported Iran's new offer largely repeated demands for control of Hormuz, compensation for war damage, lifting sanctions, release of frozen assets and withdrawal of U.S. troops.",
+      "response": "The terms had previously been rejected by Trump; negotiations continued through intermediaries rather than producing acceptance.",
+      "change": "No material U.S. acceptance of the maximal package was reported at this stage.",
+      "outcome": "NOT ACCEPTED AS PRESENTED",
+      "evidence": "HIGH — Reuters.",
+      "src": [
+        [
+          "Reuters — Iran's May offer and listed demands",
+          "https://www.reuters.com/world/asia-pacific/tankers-exit-hormuz-trump-vance-talk-up-iran-deal-prospects-2026-05-20/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-15 to 2026-06-22",
+      "sort": "2026-06-15",
+      "title": "June MOU: Iran accepts toll-free Hormuz passage for 60 days and defers administration to later talks",
+      "actor": "Iran / United States",
+      "status": "MAJOR TEMPORARY COMPROMISE",
+      "position": "The 14-point Islamabad MOU called for ceasefire, safe passage, sanctions relief, frozen-asset release and wider negotiations. A U.S. official said Iran accepted toll-free passage for 60 days and later discussion of administration with Oman and Gulf states.",
+      "response": "The United States began implementing economic relief, including a 60-day sanctions waiver. Shipping started to recover under temporary arrangements.",
+      "change": "This was the clearest walkback from earlier demands for unilateral Iranian control or tolls: temporary passage was toll-free and final administration was deferred to multilateral negotiation.",
+      "outcome": "PARTIALLY IMPLEMENTED, THEN COLLAPSED",
+      "evidence": "HIGH — Reuters document reporting plus later implementation reporting.",
+      "src": [
+        [
+          "Reuters — 14-point MOU text/summary, Jun. 17",
+          "https://www.reuters.com/world/middle-east/14-point-draft-us-iran-deal-2026-06-17/"
+        ],
+        [
+          "Reuters — toll-free passage and sequencing, Jun. 17",
+          "https://www.reuters.com/world/europe/us-official-says-parties-can-still-walk-away-iran-deal-sequencing-will-be-key-2026-06-17/"
+        ],
+        [
+          "Reuters — U.S. sanctions waiver begins, Jun. 22",
+          "https://www.reuters.com/world/asia-pacific/us-iran-talks-go-into-day-2-after-trump-threats-hormuz-closure-2026-06-22/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-07 to 2026-07-14",
+      "sort": "2026-07-07",
+      "title": "June compromises unravel: U.S. declares ceasefire 'over'; Iran later suspends the MOU",
+      "actor": "Iran / United States",
+      "status": "AGREEMENT COLLAPSE / MUTUAL REVERSAL",
+      "position": "The June MOU depended on sequencing: Hormuz reopening, blockade relief, sanctions/asset steps and broader talks.",
+      "response": "Trump declared the ceasefire over on July 7. Iran later declared the agreement suspended, while each side accused the other of failing to perform key obligations.",
+      "change": "Temporary Iranian toll-free passage and U.S. economic relief did not become durable concessions. Restrictions, blockade pressure and strike exchanges returned.",
+      "outcome": "COLLAPSED; PRIOR CONCESSIONS UNWOUND",
+      "evidence": "HIGH — Reuters reconstruction of the MOU's failure.",
+      "src": [
+        [
+          "Reuters — why the MOU frayed, Jul. 13",
+          "https://www.reuters.com/world/why-has-iran-us-ceasefire-memorandum-frayed-2026-07-13/"
+        ],
+        [
+          "Reuters — Aug. 12 retrospective on July collapse",
+          "https://www.reuters.com/world/asia-pacific/iran-says-no-progress-reviving-interim-peace-deal-with-us-2026-08-12/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-07-28",
+      "sort": "2026-07-28",
+      "title": "Post-MOU bargaining: Iran seeks greater route control; Oman counters with regional management and voluntary fees",
+      "actor": "Iran / Oman",
+      "status": "COMPETING PROPOSALS",
+      "position": "Iran proposed a temporary routing arrangement that would place more inbound/outbound traffic in Iranian waters and increase Iranian control.",
+      "response": "Oman's alternative emphasized regional management and voluntary fees rather than unilateral Iranian control or compulsory tolls.",
+      "change": "Iran returned to a control-centered demand after the MOU collapse, but the demand was now framed inside a negotiated route mechanism rather than pure blanket closure.",
+      "outcome": "NO FINAL AGREEMENT",
+      "evidence": "HIGH — Reuters; Iranian proposal also publicly described by Iranian officials.",
+      "src": [
+        [
+          "Reuters — Iranian temporary route proposal, Jul. 28",
+          "https://www.reuters.com/world/middle-east/iran-proposes-temporary-hormuz-plan-giving-itself-greater-control-over-transit-2026-07-28/"
+        ],
+        [
+          "Reuters — Omani regional-management/voluntary-fee counterproposal",
+          "https://www.reuters.com/world/middle-east/can-iran-charge-fees-ships-transit-strait-hormuz-2026-07-28/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-05",
+      "sort": "2026-08-05",
+      "title": "Iran and Oman agree route coordinates, but authority, fees and security terms remain unresolved",
+      "actor": "Iran / Oman / United States",
+      "status": "TECHNICAL COMPROMISE, POLITICAL TERMS OPEN",
+      "position": "Iran and Oman reached an understanding on geographic coordinates for a route. A separate proposed deal could give Iran control over inbound traffic.",
+      "response": "The technical route did not itself reopen normal shipping. Fees, outbound inspection/coordination, enforcement and U.S. obligations remained disputed.",
+      "change": "The dispute narrowed from whether a route could exist to who would control and monetize it and what security guarantees would accompany it.",
+      "outcome": "PARTIAL TECHNICAL AGREEMENT ONLY",
+      "evidence": "HIGH — Reuters plus regional reporting.",
+      "src": [
+        [
+          "Reuters — route coordinates, Aug. 5",
+          "https://www.reuters.com/world/middle-east/iran-oman-reach-understanding-coordinates-route-through-hormuz-iran-ministry-2026-08-05/"
+        ],
+        [
+          "Reuters — proposed inbound Iranian control, Aug. 5",
+          "https://www.reuters.com/world/middle-east/us-iran-having-very-good-discussions-trump-says-2026-08-05/"
+        ],
+        [
+          "Al Jazeera — parties' stated positions, Aug. 5",
+          "https://www.aljazeera.com/news/2026/8/5/iran-oman-us-close-to-hormuz-deal-what-do-they-all-want"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-09 to 2026-08-12",
+      "sort": "2026-08-09",
+      "title": "Iran adds sanctions relief, compensation and an end to military threats/war as reopening conditions; U.S. counters with reparations",
+      "actor": "Iran / United States",
+      "status": "HARDENED IMPASSE",
+      "position": "Iran said reopening required U.S. concessions including sanctions relief, compensation and other security/economic conditions; by Aug. 11 an Iranian security official also cited ending the war and unfreezing assets.",
+      "response": "Trump countered with his own reparations demand. Reuters reported no progress reviving the June deal by Aug. 12.",
+      "change": "Instead of accepting a route agreement as sufficient, Tehran explicitly made the route subordinate to a broader compensation/sanctions/security package.",
+      "outcome": "DEMANDS NOT MET; STRAIT REMAINED HIGHLY RESTRICTED",
+      "evidence": "HIGH for stated positions; compensation amounts/other undisclosed conditions remain incomplete.",
+      "src": [
+        [
+          "Reuters — Iranian and U.S. compensation demands, Aug. 9",
+          "https://www.reuters.com/world/middle-east/iran-ties-hormuz-reopening-us-concessions-several-demands-2026-08-09/"
+        ],
+        [
+          "Reuters — Iranian security council conditions, Aug. 11",
+          "https://www.reuters.com/world/middle-east/hormuz-strait-remain-closed-unless-us-meets-irans-conditions-iranian-security-2026-08-11/"
+        ],
+        [
+          "Reuters — no progress reviving MOU, Aug. 12",
+          "https://www.reuters.com/world/asia-pacific/iran-says-no-progress-reviving-interim-peace-deal-with-us-2026-08-12/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-13 to 2026-08-14",
+      "sort": "2026-08-13",
+      "title": "Control claims harden again while the U.S. says its blockade can continue indefinitely",
+      "actor": "Iran / United States",
+      "status": "NO MUTUAL ACCEPTANCE",
+      "position": "Iranian officials again described Hormuz as under Iranian control and said vessels required authorization.",
+      "response": "The U.S. said it could sustain its naval blockade indefinitely and announced more economic pressure. Commercial traffic remained far below pre-war levels.",
+      "change": "The bargaining channel did not erase either side's coercive position; both reverted to leverage while keeping diplomacy available.",
+      "outcome": "ONGOING IMPASSE",
+      "evidence": "HIGH for official positions and observed shipping suppression; neither side's absolute 'total control' claim matches the mixed operational record.",
+      "src": [
+        [
+          "Reuters — competing Hormuz control claims, Aug. 13",
+          "https://www.reuters.com/world/iran-says-strait-hormuz-is-under-its-control-fars-news-reports-2026-08-13/"
+        ],
+        [
+          "Reuters — U.S. says blockade sustainable indefinitely, Aug. 13",
+          "https://www.reuters.com/world/middle-east/us-eyes-indefinite-iran-naval-blockade-oil-supply-shortfall-deepens-2026-08-13/"
+        ],
+        [
+          "Reuters — traffic slows further and attacks continue, Aug. 14",
+          "https://www.reuters.com/world/middle-east/us-warns-iran-it-will-step-up-economic-pressure-two-more-ships-attacked-hormuz-2026-08-14/"
+        ]
+      ]
+    },
+    {
+      "date": "2026-08-17 to 2026-08-19",
+      "sort": "2026-08-17",
+      "title": "June 60-day deadline expires; Iran reasserts full sanctions/blockade/asset conditions rather than extending the MOU",
+      "actor": "Iran / United States",
+      "status": "MOU DEADLINE EXPIRED — HARDENED IMPASSE",
+      "position": "Iran said Hormuz would remain shut until the U.S. ended the port blockade, lifted oil sanctions, released frozen Iranian assets, and ended threats and military operations on all fronts.",
+      "response": "Trump said the MOU would not be extended, said no talks were taking place or scheduled, and said the U.S. blockade remained in force.",
+      "change": "The June compromise had temporarily accepted toll-free passage and deferred final control questions. By the expiration of the 60-day window, Tehran had returned to making reopening conditional on a broad package of U.S. economic and military concessions.",
+      "outcome": "NO EXTENSION; NO FINAL DEAL; STRAIT TRAFFIC REMAINED SEVERELY SUPPRESSED",
+      "evidence": "HIGH for stated positions and observed traffic; attribution for individual maritime attacks remains event-specific.",
+      "src": [
+        [
+          "Reuters — Aug. 18 conditions",
+          "https://www.reuters.com/world/middle-east/hormuz-strait-remain-shut-until-us-meets-interim-deal-conditions-iran-says-2026-08-18/"
+        ],
+        [
+          "Reuters — no talks / MOU expired",
+          "https://www.reuters.com/world/middle-east/trump-says-no-talks-planned-with-iran-tehran-says-strait-hormuz-still-shut-2026-08-18/"
+        ],
+        [
+          "Reuters — Aug. 19 shipping",
+          "https://www.reuters.com/world/middle-east/hormuz-traffic-slows-uncertainty-over-waterway-persists-2026-08-19/"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "csisMetrics": [
+    {
+      "metric": ">2,500 launched",
+      "period": "First 100 hours",
+      "meaning": "CSIS/DOD reported more than 2,000 Iranian UAS and more than 500 ballistic missiles launched by roughly the first 100 hours.",
+      "interpretation": "Minimum combined launch count: 2,000 + 500 = 2,500. Because both figures are lower bounds, the true total was higher.",
+      "src": [
+        [
+          "CSIS — first 100 hours",
+          "https://www.csis.org/analysis/37-billion-estimated-cost-epic-furys-first-100-hours"
+        ],
+        [
+          "CSIS — three-week assessment",
+          "https://www.csis.org/analysis/assessing-air-campaign-after-three-weeks-iran-war-numbers"
+        ]
+      ]
+    },
+    {
+      "metric": ">600/day opening tempo",
+      "period": "Derived from first 100 hours",
+      "meaning": "Using 2,000 UAS and 500 ballistic missiles over 100 hours as lower-bound denominators gives about 480 UAS/day and 120 ballistic missiles/day.",
+      "interpretation": "20 UAS/hour + 5 ballistic missiles/hour = 25 attackers/hour, or about 600/day. This is a lower-bound average, not a claim that every day was uniform.",
+      "src": [
+        [
+          "CSIS — first 100 hours",
+          "https://www.csis.org/analysis/37-billion-estimated-cost-epic-furys-first-100-hours"
+        ]
+      ]
+    },
+    {
+      "metric": "1,800 reported intercepts",
+      "period": "Partner reports through Mar. 3",
+      "meaning": "CSIS reported Gulf partners collectively claimed about 1,300 drone interceptions and 500 cruise/ballistic-missile interceptions by March 3.",
+      "interpretation": "1,300 + 500 = 1,800 reported defensive successes. CSIS cautioned this likely overstates actual kills, and the date/categories do not align cleanly with the March 4 launch denominator, so this number must not simply be subtracted from 2,500.",
+      "src": [
+        [
+          "CSIS — first 100 hours",
+          "https://www.csis.org/analysis/37-billion-estimated-cost-epic-furys-first-100-hours"
+        ]
+      ]
+    },
+    {
+      "metric": "94.7% UAS / 97.5% ballistic",
+      "period": "UAE Days 2–10, derived",
+      "meaning": "Arithmetic mean of the nine UAE daily rates in CSIS Table 2: UAS 94.7%; ballistic missiles 97.5%. Median rates were 94.4% and 100%, respectively.",
+      "interpretation": "These are unweighted averages of reported daily defense-success percentages. CSIS notes the UAE rate includes projectiles not intercepted because they were deemed not a threat, so it is not a pure shoot-down rate.",
+      "src": [
+        [
+          "CSIS — Table 2 / three-week assessment",
+          "https://www.csis.org/analysis/assessing-air-campaign-after-three-weeks-iran-war-numbers"
+        ]
+      ]
+    },
+    {
+      "metric": "8 sent / 8 intercepted / 0 leaked",
+      "period": "UAE cruise missiles, first 10 days",
+      "meaning": "CSIS reported the UAE detected eight cruise missiles in the first ten days and reported all eight shot down.",
+      "interpretation": "For this small, specific sample: 8 detected, 8 intercepted, 0 known penetrations. This does not generalize to all Iranian missile families.",
+      "src": [
+        [
+          "CSIS — three-week assessment",
+          "https://www.csis.org/analysis/assessing-air-campaign-after-three-weeks-iran-war-numbers"
+        ]
+      ]
+    },
+    {
+      "metric": "1,668 detected vs UAE",
+      "period": "Mar. 1–8",
+      "meaning": "CSIS counted 1,422 drones plus 246 missiles detected against the UAE.",
+      "interpretation": "1,422 / 1,668 = 85.3% drones; 246 / 1,668 = 14.7% missiles; average detected volume was about 208.5 attackers/day across the eight-day window.",
+      "src": [
+        [
+          "CSIS — Gulf drone campaign",
+          "https://www.csis.org/analysis/unpacking-irans-drone-campaign-gulf-early-lessons-future-drone-warfare"
+        ]
+      ]
+    },
+    {
+      "metric": "≈3,033 recorded attacks",
+      "period": "Dataset scale, inferred",
+      "meaning": "CSIS said the UAE’s 1,668 detections were roughly 55% of all recorded strikes in that dataset.",
+      "interpretation": "1,668 / 0.55 ≈ 3,033 total recorded attacks. Because 55% was stated approximately, 3,033 is an approximate back-calculation, not an exact CSIS count.",
+      "src": [
+        [
+          "CSIS — Gulf drone campaign",
+          "https://www.csis.org/analysis/unpacking-irans-drone-campaign-gulf-early-lessons-future-drone-warfare"
+        ]
+      ]
+    },
+    {
+      "metric": "≈94/day by Day 6/11",
+      "period": "Derived tempo after 83% / 90% decline",
+      "meaning": "CSIS/DOD said UAS launch rates were down 83% and ballistic-missile rates down 90% by Day 6 and remained at those reductions on Day 11.",
+      "interpretation": "Applying those reductions to the lower-bound opening average: UAS ≈ 480×0.17 = 81.6/day; ballistic ≈120×0.10 = 12/day; combined ≈93.6/day. This is a normalized arithmetic illustration, not an observed Day-6 count.",
+      "src": [
+        [
+          "CSIS — three-week assessment",
+          "https://www.csis.org/analysis/assessing-air-campaign-after-three-weeks-iran-war-numbers"
+        ],
+        [
+          "CSIS — munitions status",
+          "https://www.csis.org/analysis/last-rounds-status-key-munitions-iran-war-ceasefire"
+        ]
+      ]
+    },
+    {
+      "metric": "≈36/day by Day 14",
+      "period": "Derived tempo after 95% / 90% decline",
+      "meaning": "CSIS/DOD reported UAS launch capacity/rate down 95% and ballistic missiles down 90% by Day 14.",
+      "interpretation": "Using the same opening lower-bound average: UAS ≈24/day; ballistic ≈12/day; combined ≈36/day — about 94% below the lower-bound opening combined average.",
+      "src": [
+        [
+          "CSIS — three-week assessment",
+          "https://www.csis.org/analysis/assessing-air-campaign-after-three-weeks-iran-war-numbers"
+        ]
+      ]
+    },
+    {
+      "metric": "Up to ~90% intercepted",
+      "period": "Campaign retrospective",
+      "meaning": "CSIS later assessed that coalition defenses intercepted up to about 90% of Iranian missile/drone attackers.",
+      "interpretation": "At exactly 90%, leakage is 10%. Applied only as an illustration to the minimum 2,500 opening attackers, that would be roughly 250 not intercepted. CSIS does not publish a reconciled projectile-level count proving 250 actual leaks.",
+      "src": [
+        [
+          "CSIS — June cost assessment",
+          "https://www.csis.org/analysis/war-may-be-ending-what-did-epic-fury-cost"
+        ]
+      ]
+    },
+    {
+      "metric": "≈10% potential-impact envelope at 90% interception",
+      "period": "First-100-hour volume, derived",
+      "meaning": "Applying CSIS's upper-end 90% coalition interception figure to the minimum >2,500 opening launch baseline yields about 250 attackers outside the intercepted share, or roughly 10% of that modeled baseline.",
+      "interpretation": "This is a scenario estimate, not a counted hit total or a universal ceiling. CSIS imagery nevertheless found the penetrations visible at examined U.S. facilities were precise, with no obvious random-crater miss pattern, and most struck facilities were unusable afterward.",
+      "src": [
+        [
+          "CSIS — first 100 hours",
+          "https://www.csis.org/analysis/37-billion-estimated-cost-epic-furys-first-100-hours"
+        ],
+        [
+          "CSIS — June cost assessment",
+          "https://www.csis.org/analysis/war-may-be-ending-what-did-epic-fury-cost"
+        ]
+      ]
+    },
+    {
+      "metric": "≈90% failed to penetrate under 90% scenario",
+      "period": "First-100-hour volume, derived",
+      "meaning": "At a modeled 90% coalition interception rate, about 2,250 of the minimum 2,500 opening attackers would be stopped before defended-target penetration.",
+      "interpretation": "This is an operational failure-to-penetrate rate, not a mechanical reliability rate. It is calculated directly from CSIS's launch-volume and interception figures.",
+      "src": [
+        [
+          "CSIS — first 100 hours",
+          "https://www.csis.org/analysis/37-billion-estimated-cost-epic-furys-first-100-hours"
+        ],
+        [
+          "CSIS — June cost assessment",
+          "https://www.csis.org/analysis/war-may-be-ending-what-did-epic-fury-cost"
+        ]
+      ]
+    }
+  ]
+}
