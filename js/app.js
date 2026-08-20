@@ -24,8 +24,12 @@
     }
     return;
   }
-function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function srcLinks(arr){return (arr||[]).map(x=>`<a target="_blank" rel="noopener" href="${esc(x[1])}">${esc(x[0])}</a>`).join(' ')}
+const Safe=window.AtlasSafe;
+const Temporal=window.AtlasTemporal;
+const Costing=window.AtlasCosting;
+if(!Safe||!Temporal||!Costing)throw new Error('Required local safety modules are unavailable.');
+const esc=Safe.escapeHtml;
+const srcLinks=Safe.sourceLinks;
 const sourceById=new Map((LEDGER.sources.sources||[]).map(source=>[source.source_id,source]));
 const eventById=new Map((LEDGER.events.events||[]).map(event=>[event.event_id,event]));
 const mapLinkById=new Map((LEDGER['map-links'].links||[]).map(link=>[link.map_ref,link]));
@@ -37,7 +41,7 @@ function canonicalSourceLinks(refs){
     if(!source)return `<span class="source-missing">${esc(id)} — unresolved source reference</span>`;
     const roles=typeof ref==='string'?source.source_roles:(ref.roles||source.source_roles);
     const roleText=(roles||[]).length?` <small>${esc((roles||[]).join(' · '))}</small>`:'';
-    return `<a target="_blank" rel="noopener" href="${esc(source.url)}" title="${esc(source.title||source.proof_note||'')}">${esc(source.outlet||id)}${roleText}</a>`;
+    return Safe.externalLink(`${source.outlet||id}${(roles||[]).length?' — '+(roles||[]).join(' · '):''}`,source.url,source.title||source.proof_note||'');
   }).join(' ');
 }
 window.pan=function(){return false;};
@@ -50,17 +54,16 @@ if(!window.L) throw new Error('Leaflet map library was blocked or unavailable.')
 map=L.map('map',{zoomControl:true}).setView([27.5,51.5],4);
 window.atlasMap=map;
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(map);
-function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function srcLinks(arr){return (arr||[]).map(x=>`<a target="_blank" rel="noopener" href="${esc(x[1])}">${esc(x[0])}</a>`).join(' ')}
-function icon(text,color,shape='circle'){return L.divIcon({className:'',html:`<div class="pin ${shape}">${shape==='diamond'?'<span>'+esc(text)+'</span>':esc(text)}</div>`.replace('class="pin','style="background:'+color+'" class="pin'),iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-13]})}
-function addMarker(group,id,lat,lon,txt,color,shape,popup){const mk=L.marker([lat,lon],{icon:icon(txt,color,shape)}).bindPopup(popup,{maxWidth:360});mk.addTo(group);allMarkers[id]=mk;return mk}
+const iconAssets={facility:'assets/icons/facility.svg',strike:'assets/icons/strike.svg',claim:'assets/icons/claim.svg',historical:'assets/icons/historical.svg',agreement:'assets/icons/agreement.svg',current:'assets/icons/current.svg'};
+function icon(kind,color,shape='circle'){const asset=iconAssets[kind]||iconAssets.current;return L.divIcon({className:'atlas-marker-host',html:`<div class="pin ${shape}" style="--marker-color:${esc(color)}"><img src="${asset}" alt=""/></div>`,iconSize:[34,34],iconAnchor:[17,17],popupAnchor:[0,-15]})}
+function addMarker(group,id,lat,lon,kind,color,shape,popup){const mk=L.marker([lat,lon],{icon:icon(kind,color,shape)}).bindPopup(popup,{maxWidth:380});mk.addTo(group);allMarkers[id]=mk;return mk}
 function facilityPopup(p){let assets=[...(p.critical_assets_reported||[]),...(p.noncritical_or_soft_assets_reported||[])];return `<h3>${esc(p.name)}</h3><b>Verification:</b> ${esc(p.verification_grade||p.damage_evidence_status)}<br><b>Functional severity:</b> ${esc(p.impact_grade||p.operational_effect_status)}<br><b>Purpose:</b> ${esc(p.purpose||p.role)}<br><b>Verified physical damage:</b> ${assets.length?assets.map(esc).join('; '):'No verified component list in current ledger.'}<br><b>Operational effect:</b> ${esc(p.effect||p.note)}<br><b>What is not proved:</b> ${esc(p.continuity||p.current_presence_status||'')}<div>${srcLinks((p.source_urls||[]).map(u=>[sourceNameFromUrl(u),u]))}</div>`}
 function strikePopup(p){return `<h3>${esc(p.name)}</h3><b>Date:</b> ${esc(p.event_date||p.date||'')}<br><b>Evidence:</b> ${esc(p.verification||p.status||'')}<br>${p.tally?'<b>Tally/effect:</b> '+esc(p.tally)+'<br>':''}<b>Target/effect:</b> ${esc(p.target_type||p.note||'')}<br>${p.network_relevance?'<b>Network relevance:</b> '+esc(p.network_relevance)+'<br>':''}${p.note&&p.target_type?'<b>Context:</b> '+esc(p.note):''}<div>${srcLinks(p.sources||(p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div>`}
 function claimPopup(p){return `<h3>${esc(p.name)}</h3><b>Verdict:</b> ${esc(p.verdict)}<br><b>Claim:</b> ${esc(p.claim)}<br><b>Finding:</b> ${esc(p.finding)}<div>${srcLinks(p.sources)}</div>`}
 function historyLinkList(ids){
   return (ids||[]).map(id=>{
     const event=eventById.get(id);
-    return event?`<button class="popup-event-link" type="button" onclick="focusLedgerEvent('${esc(id)}')">${esc(event.event_date)} · ${esc(event.summary)}</button>`:`<span>${esc(id)}</span>`;
+    return event?`<button class="popup-event-link" type="button" data-event-id="${esc(id)}">${esc(event.event_date)} · ${esc(event.summary)}</button>`:`<span>${esc(id)}</span>`;
   }).join('');
 }
 function canonicalFacilityPopup(facility,link){
@@ -74,63 +77,82 @@ function mapLinkPopup(link){
 }
 
 // Facilities
-let g=L.layerGroup(); groups['Iran damage → U.S.-linked sites']=g; DATA.facilities.forEach(p=>{let color='#8b98a9',txt='US';if(p.damage_evidence_status==='VERIFIED_DAMAGE')color='#ff5a5f';if(p.operational_effect_status==='SUBFACILITY_INOPERABLE')color='#111827';if(p.operational_effect_status==='HQ_FUNCTION_RELOCATED')color='#c084fc';if(p.damage_evidence_status==='NO_REPORTED_DAMAGE_FOUND_IN_REVIEWED_SOURCE_SET')color='#43d17a';if(p.damage_evidence_status==='DAMAGE_CLAIM_UNVERIFIED')color='#ffb84d';addMarker(g,p.id,p.lat,p.lon,txt,color,'square',facilityPopup(p))});g.addTo(map);
+let g=L.layerGroup(); groups['Canonical facilities']=g; DATA.facilities.forEach(p=>{let color='#8b98a9';if(p.damage_evidence_status==='VERIFIED_DAMAGE')color='#ff5a5f';if(p.operational_effect_status==='SUBFACILITY_INOPERABLE')color='#111827';if(p.operational_effect_status==='HQ_FUNCTION_RELOCATED')color='#c084fc';if(p.damage_evidence_status==='NO_REPORTED_DAMAGE_FOUND_IN_REVIEWED_SOURCE_SET')color='#43d17a';if(p.damage_evidence_status==='DAMAGE_CLAIM_UNVERIFIED')color='#ffb84d';addMarker(g,p.id,p.lat,p.lon,'facility',color,'square',facilityPopup(p))});g.addTo(map);
 // Stable historical entities. Existing facility markers are enriched in place;
 // only coordinate-backed new entities receive a new point marker.
-let historyLayer=L.layerGroup(); groups['Historical ledger entities']=historyLayer;
+let historyLayer=L.layerGroup(); groups['Historical / posture entities']=historyLayer;
 (LEDGER['map-links'].links||[]).forEach(link=>{
   let marker=link.facility_ref?allMarkers[link.facility_ref]:null;
   if(marker){
     marker.bindPopup(mapLinkPopup(link),{maxWidth:380});
   }else if(link.lat!=null&&link.lon!=null){
-    marker=addMarker(historyLayer,link.facility_ref||link.map_ref,link.lat,link.lon,'H','#2fb8c6','circle',mapLinkPopup(link));
+    marker=addMarker(historyLayer,link.facility_ref||link.map_ref,link.lat,link.lon,'historical','#2fb8c6','circle',mapLinkPopup(link));
   }
   if(marker)allMarkers[link.map_ref]=marker;
 });
-historyLayer.addTo(map);
+// Source-supported BDA coverage halos. These are availability indicators, not fabricated damage polygons.
+let bda=L.layerGroup();groups['Satellite BDA coverage']=bda;
+(LEDGER['bda-overlays'].overlays||[]).filter(overlay=>overlay.candidate_confidence==='HIGH').forEach(overlay=>{
+ const base=allMarkers[overlay.facility_ref];if(!base)return;
+ const halo=L.circleMarker(base.getLatLng(),{radius:18,color:'#54d9e8',weight:3,opacity:.95,fill:false,dashArray:'5 4'}).bindPopup(`<h3>${esc(overlay.overlay_id)}</h3><b>IMAGERY-LINKED / NO MACHINE POLYGON</b><br>${esc(overlay.limitations)}<div>${canonicalSourceLinks(overlay.damage_imagery_source_ids)}</div>`,{maxWidth:380});
+ halo.addTo(bda);allMarkers[overlay.overlay_id]=halo;
+});
 // U.S. strike effects
-let s=L.layerGroup(); groups['U.S. / coalition strike effects']=s;DATA.strikes.forEach(p=>{let lat=p.lat,lon=p.lon;if(lat==null||lon==null)return;addMarker(s,p.id,lat,lon,'US','#111827','diamond',strikePopup(p))});s.addTo(map);
+let s=L.layerGroup(); groups['Strike effects']=s;DATA.strikes.forEach(p=>{let lat=p.lat,lon=p.lon;if(lat==null||lon==null)return;addMarker(s,p.id,lat,lon,'strike','#111827','diamond',strikePopup(p))});s.addTo(map);
 // Founding 14
-let c=L.layerGroup();groups['Red Sea coalition — founding 14']=c;DATA.coalition14.forEach(p=>addMarker(c,p.id,p.lat,p.lon,p.actor||'14','#54d9e8','circle',`<h3>${esc(p.name)}</h3><b>Founding 14 support statement</b><br>${esc(p.role)}<br><small>${esc(p.political_context||'')}</small><div>${srcLinks((p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div>`));
+let c=L.layerGroup();groups['Regional alignment']=c;DATA.coalition14.forEach(p=>addMarker(c,p.id,p.lat,p.lon,'agreement','#54d9e8','circle',`<h3>${esc(p.name)}</h3><b>Founding 14 support statement</b><br>${esc(p.role)}<br><small>${esc(p.political_context||'')}</small><div>${srcLinks((p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div>`));
 // Mecca pact
-let mp=L.layerGroup();groups['Mecca defense pact — 3 states']=mp;DATA.mecca.forEach((p,i)=>addMarker(mp,'MECCA-'+i,p.lat,p.lon,p.actor,'#22b7c7','circle',`<h3>${esc(p.name)}</h3>Saudi Arabia, Türkiye and Pakistan signed a mutual-defense pact Aug. 7. An armed attack on one is to be regarded as an attack on all, but the published statement did not specify automatic operational commitments.<div>${srcLinks([['Reuters','https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/'],['Al Jazeera','https://www.aljazeera.com/news/2026/8/7/turkiye-saudi-arabi-pakistan-sign-joint-defence-agreement-whats-in-it']])}</div>`));
+let mp=L.layerGroup();groups['Defense agreements']=mp;DATA.mecca.forEach((p,i)=>addMarker(mp,'MECCA-'+i,p.lat,p.lon,'agreement','#22b7c7','circle',`<h3>${esc(p.name)}</h3>Saudi Arabia, Türkiye and Pakistan signed a mutual-defense pact Aug. 7. An armed attack on one is to be regarded as an attack on all, but the published statement did not specify automatic operational commitments.<div>${srcLinks([['Reuters','https://www.reuters.com/world/asia-pacific/saudi-arabia-turkey-pakistan-sign-joint-defence-deal-amid-regional-turmoil-2026-08-07/'],['Al Jazeera','https://www.aljazeera.com/news/2026/8/7/turkiye-saudi-arabi-pakistan-sign-joint-defence-agreement-whats-in-it']])}</div>`));
 // Lebanon verifier candidates
-let v=L.layerGroup();groups['Lebanon verifier candidates — proposed']=v;DATA.verifiers.forEach(p=>addMarker(v,p.id,p.lat,p.lon,p.actor,'#c084fc','circle',`<h3>${esc(p.name)}</h3><b>PROPOSED / NOT FINALIZED</b><br>${esc(p.role)}<br>Lebanese official later denied Beirut had agreed to a shortlist; treat this as a candidate mechanism, not a settled deployment.<div>${srcLinks((p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div>`));
+let v=L.layerGroup();groups['Verifier candidates']=v;DATA.verifiers.forEach(p=>addMarker(v,p.id,p.lat,p.lon,'agreement','#c084fc','circle',`<h3>${esc(p.name)}</h3><b>PROPOSED / NOT FINALIZED</b><br>${esc(p.role)}<br>Lebanese official later denied Beirut had agreed to a shortlist; treat this as a candidate mechanism, not a settled deployment.<div>${srcLinks((p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div>`));
 
 
 // Current OSINT update layer — Aug. 17-19, 2026
-let cur=L.layerGroup();groups['Current OSINT — Aug. 17–19']=cur;
+let cur=L.layerGroup();groups['Current reviewed events']=cur;
 (DATA.strategicMilestones||[]).filter(function(x){return String(x.date||'').slice(0,10)>='2026-08-17' && x.lat!=null && x.lon!=null;}).forEach(function(x,i){
   const cat=String(x.cat||'');
   const color=cat.includes('ECONOMIC')?'#ffb84d':cat.includes('MARITIME')?'#54d9e8':cat.includes('MISSILE')?'#ff5a5f':'#c084fc';
-  addMarker(cur,'CUR-'+i,x.lat,x.lon,'NEW',color,'circle',`<h3>${esc(x.title)}</h3><b>${esc(x.date)} • ${esc(x.cat||'CURRENT OSINT')}</b><br>${esc(x.body||'')}<div>${srcLinks(x.src||[])}</div>`);
+  addMarker(cur,'CUR-'+i,x.lat,x.lon,'current',color,'circle',`<h3>${esc(x.title)}</h3><b>${esc(x.date)} • ${esc(x.cat||'CURRENT OSINT')}</b><br>${esc(x.body||'')}<div>${srcLinks(x.src||[])}</div>`);
 });
-cur.addTo(map);
 
 // China / Arctic routes — published corridors, schematic geometry (not live AIS tracks)
-let ar=L.featureGroup();groups['China / Arctic routes — schematic']=ar;
+let ar=L.featureGroup();groups['Trade routes — SCHEMATIC']=ar;
+(function(){
+  const audited={
+    'ARCTIC-CN-EU-CONTAINER':[[29.87,121.54],[30.0,123.5],[33.8,129.2],[40.0,134.0],[45.7,142.2],[51.5,151.0],[60.0,165.0],[69.7,170.3],[72.0,145.0],[74.0,115.0],[73.5,85.0],[71.3,72.1],[70.5,50.0],[69.0,33.1],[62.0,12.0],[55.0,2.0],[51.96,1.35]],
+    'ARCTIC-RU-CN-OIL':[[69.0,33.1],[71.0,50.0],[73.0,80.0],[74.0,115.0],[72.0,145.0],[69.7,170.3],[60.0,165.0],[51.5,151.0],[45.7,142.2],[40.0,134.0],[33.8,129.2],[30.0,123.5],[31.2,121.5]]
+  };
 (DATA.arcticRoutes||[]).forEach(function(r){
   const color=r.type==='energy'?'#c084fc':'#54d9e8';
-  L.polyline(r.coords,{color:color,weight:4,opacity:.82,dashArray:r.type==='energy'?'8 7':null}).addTo(ar)
-   .bindPopup(`<h3>${esc(r.name)}</h3><b>${esc(r.status)}</b><br>${esc(r.note)}<div>${srcLinks(r.src)}</div>`);
+  L.polyline(audited[r.id]||r.coords,{color:color,weight:4,opacity:.82,dashArray:r.type==='energy'?'8 7':null}).addTo(ar)
+   .bindPopup(`<h3>${esc(r.name)}</h3><b>SCHEMATIC • ${esc(r.status)}</b><br>${esc(r.note)}<div>${srcLinks(r.src)}</div>`);
   (r.nodes||[]).forEach(function(n,i){
     L.circleMarker([n[1],n[2]],{radius:5,color:'#07111f',weight:2,fillColor:color,fillOpacity:.95}).addTo(ar)
       .bindPopup(`<h3>${esc(n[0])}</h3>${esc(r.name)}<br><small>Schematic corridor node; exact voyages vary.</small><div>${srcLinks(r.src)}</div>`);
   });
 });
+}());
 
 // Claims
-let q=L.layerGroup();groups['Claim checks']=q;DATA.claims.forEach(p=>addMarker(q,p.id,p.lat,p.lon,'!', '#ffb84d','circle',claimPopup(p)));q.addTo(map);
+let q=L.layerGroup();groups['Geolinked claims']=q;DATA.claims.forEach(p=>addMarker(q,p.id,p.lat,p.lon,'claim', '#ffb84d','circle',claimPopup(p)));
 
-// toolbar
-const tb=document.getElementById('toolbar');Object.entries(groups).forEach(([name,layer],idx)=>{const b=document.createElement('button');b.className='layerbtn '+(map.hasLayer(layer)?'on':'');b.textContent=name;b.onclick=()=>{if(map.hasLayer(layer)){map.removeLayer(layer);b.classList.remove('on')}else{layer.addTo(map);b.classList.add('on');if(name.includes('Arctic') && typeof layer.getBounds==='function' && layer.getBounds().isValid()){map.fitBounds(layer.getBounds(),{padding:[24,24],maxZoom:3});}}};tb.appendChild(b)});
+// Analysis navigation owns the map state; this compact control is an expert override.
+const viewLayers={snapshot:['Canonical facilities','Strike effects','Current reviewed events'],timeline:['Canonical facilities','Strike effects','Historical / posture entities'],facilities:['Canonical facilities'],strikes:['Strike effects'],imagery:['Canonical facilities','Satellite BDA coverage'],csis:['Strike effects'],losses:['Canonical facilities','Strike effects'],economy:[],arctic:['Trade routes — SCHEMATIC'],claims:['Geolinked claims'],infowar:['Geolinked claims'],historical:['Historical / posture entities','Regional alignment','Defense agreements','Verifier candidates'],sources:[],intro:[],history:[]};
+const viewCenters={snapshot:[[27.5,51.5],4],facilities:[[27.0,50.0],5],strikes:[[31.5,52.0],5],imagery:[[26.5,50.0],5],csis:[[31.5,52.0],5],losses:[[28.0,51.0],4],economy:[[25.5,51.0],4],claims:[[27.5,51.5],4],infowar:[[27.5,51.5],4],historical:[[29.0,48.0],4],sources:[[27.5,51.5],4],intro:[[27.5,51.5],4],history:[[27.5,51.5],4]};
+function refreshLayerButtons(){document.querySelectorAll('[data-layer-name]').forEach(button=>button.classList.toggle('on',map.hasLayer(groups[button.dataset.layerName])));}
+window.configureAtlasMap=function(viewId){Object.values(groups).forEach(layer=>{if(map.hasLayer(layer))map.removeLayer(layer);});(viewLayers[viewId]||viewLayers.snapshot).forEach(name=>groups[name]?.addTo(map));if(viewId!=='timeline')document.querySelectorAll('.atlas-marker-host.timeline-member,.atlas-marker-host.selected-marker').forEach(el=>el.classList.remove('timeline-member','selected-marker'));refreshLayerButtons();if(viewId==='arctic'&&ar.getBounds().isValid())map.fitBounds(ar.getBounds(),{padding:[24,24],maxZoom:3});else if(viewId!=='timeline'&&viewCenters[viewId])map.setView(viewCenters[viewId][0],viewCenters[viewId][1]);};
+const tb=document.getElementById('toolbar');
+if(tb){const details=document.createElement('details');details.className='layer-control';const summary=document.createElement('summary');summary.textContent='Map layers';details.appendChild(summary);const body=document.createElement('div');body.className='layer-control-body';Object.entries(groups).forEach(([name,layer])=>{const b=document.createElement('button');b.type='button';b.className='layerbtn';b.dataset.layerName=name;b.textContent=name;b.addEventListener('click',()=>{map.hasLayer(layer)?map.removeLayer(layer):layer.addTo(map);refreshLayerButtons();});body.appendChild(b);});details.appendChild(body);tb.appendChild(details);}
+window.configureAtlasMap('snapshot');
 
-window.pan=function(id){const m=allMarkers[id];if(m && map){map.setView(m.getLatLng(),Math.max(map.getZoom(),6));m.openPopup();return true;}return false;};
+let selectedMarker=null;
+function selectMarker(marker){if(selectedMarker?.getElement())selectedMarker.getElement().classList.remove('selected-marker');selectedMarker=marker;if(marker?.getElement())marker.getElement().classList.add('selected-marker');}
+window.pan=function(id){const m=allMarkers[id];if(m && map){Object.values(groups).forEach(layer=>{if(layer.hasLayer&&layer.hasLayer(m)&&!map.hasLayer(layer))layer.addTo(map);});map.setView(m.getLatLng(),Math.max(map.getZoom(),6));m.openPopup();selectMarker(m);refreshLayerButtons();return true;}return false;};
 }catch(mapError){
   console.warn('Map initialization failed; evidence panels remain available.', mapError);
   const mapEl=document.getElementById('map');
   if(mapEl){
-    mapEl.innerHTML='<div style="height:100%;display:flex;align-items:center;justify-content:center;padding:28px;background:#0b1728;color:#dceaff;font:14px/1.5 system-ui;text-align:center"><div><b>Interactive basemap unavailable in this browser session.</b><br><span style="color:#9cb0ca">The evidence tabs, timeline, source links, BDA, loss ledger and claim checks still work. If this is a local file in Brave, Shields may be blocking the Leaflet CDN. Hosting the page or allowing the CDN restores the map.</span></div></div>';
+    mapEl.innerHTML='<div style="height:100%;display:flex;align-items:center;justify-content:center;padding:28px;background:#0b1728;color:#dceaff;font:14px/1.5 system-ui;text-align:center"><div><b>Interactive basemap unavailable in this browser session.</b><br><span style="color:#9cb0ca">The evidence tabs, timeline, source links, BDA, loss ledger and claim checks still work. Verify that the complete local Leaflet runtime and map assets were included in this deployment.</span></div></div>';
   }
 }
 
@@ -170,6 +192,20 @@ function renderBalance(){
 }
 try{renderBalance();}catch(e){console.warn("renderBalance failed; using embedded static fallback",e);}
 
+function renderCurrentPicture(){
+ const target=document.getElementById('currentPictureBlocks');if(!target)return;
+ const domains=LEDGER['domain-assessments'].domains||[];
+ const byName=name=>domains.find(row=>row.domain===name)||{};
+ const blocks=[
+  ['OPERATIONAL REACH',byName('Air / long-range strike')],
+  ['C2ISR / FUNCTIONAL CONTINUITY',byName('C2ISR / targeting')],
+  ['MARITIME LEVERAGE',byName('Maritime control / sea denial')],
+  ['ALLIANCE / DIPLOMATIC POSITION',byName('Alliance / diplomatic position')]
+ ];
+ target.innerHTML=`<div class="current-picture-label">CURRENT ASSESSMENT — reviewed through ${esc(LEDGER.manifest.collection_cutoff)} • no composite war score</div>`+blocks.map(([label,row])=>`<article class="current-picture-block"><b>${esc(label)}</b><div><span class="pill ev-med">${esc(row.current_advantage||'UNRESOLVED')}</span><span class="pill impact">${esc(row.confidence||'UNRESOLVED')} CONFIDENCE</span></div><p>${esc(row.assessment||'Assessment unresolved in the current ledger.')}</p><small>${esc(row.trend||'')}</small></article>`).join('');
+}
+try{renderCurrentPicture();}catch(e){console.warn('renderCurrentPicture failed',e);}
+
 function renderFacilities(filter=''){
  const f=filter.toLowerCase();
  const legacy=DATA.facilities.filter(x=>!canonicalFacilityById.has(x.id)).map(x=>({kind:'legacy',record:x,id:x.id}));
@@ -182,27 +218,26 @@ function renderFacilities(filter=''){
      const damage=(x.verified_physical_damage||[]).join('; ')||'No verified physical-damage statement in this record.';
      const effect=(x.verified_functional_effect||[]).join('; ')||'No verified functional-effect statement in this record.';
      const continuity=(x.continued_operation_evidence||[]).join('; ')||'No continuity evidence recorded.';
-     return `<div class="item facility-card" onclick="pan('${esc(mapRef||x.facility_id)}')"><div class="date">${esc(x.country)} • ${esc(x.facility_id)} • ${esc(x.integration_action)}</div><h3>${esc(x.name)}</h3><div><span class="pill ${verificationClass(x.current_status)}">${esc(x.current_status)}</span></div><p><b>Verified physical damage:</b> ${esc(damage)}</p><p><b>Verified functional effect:</b> ${esc(effect)}</p><p><b>Continuity:</b> ${esc(continuity)}</p><p><b>Assessment:</b> ${esc(x.assessment)}</p><div class="sources">${canonicalSourceLinks(x.source_ids)}</div></div>`;
+     return `<article class="item facility-card" data-map-ref="${esc(mapRef||x.facility_id)}"><div class="date">${esc(x.country)} • ${esc(x.facility_id)} • ${esc(x.integration_action)}</div><h3>${esc(x.name)}</h3><div><span class="pill ${verificationClass(x.current_status)}">${esc(x.current_status)}</span></div><div class="facility-block-grid"><section><b>PHYSICAL DAMAGE</b><p>${esc(damage)}</p></section><section><b>FUNCTIONAL EFFECT</b><p>${esc(effect)}</p></section><section><b>CONTINUITY</b><p>${esc(continuity)}</p></section><section><b>ASSESSMENT</b><p>${esc(x.assessment)}</p></section></div><button class="ledger-map-button" type="button" data-map-ref="${esc(mapRef||x.facility_id)}">Locate on map</button><div class="sources">${canonicalSourceLinks(x.source_ids)}</div></article>`;
    }
-   return `<div class="item facility-card" onclick="pan('${x.id}')">
+   return `<article class="item facility-card" data-map-ref="${esc(x.id)}">
    <div class="date">${esc(x.host||'')} • last reviewed ${esc(x.last_reviewed||'')}</div>
    <h3>${esc(x.name)}</h3>
    <div><span class="pill ${verificationClass(x.verification_grade)}">${esc(x.verification_grade||x.damage_evidence_status)}</span><span class="pill impact">${esc(x.impact_grade||x.operational_effect_status)}</span></div>
    <p><b>Purpose:</b> ${esc(x.purpose||x.role||'')}</p>
-   <p><b>Verified physical damage:</b> ${esc((x.critical_assets_reported||[]).concat(x.noncritical_or_soft_assets_reported||[]).join('; ')||'No verified component list in the current ledger.')}</p>
-   <p><b>Operational effect:</b> ${esc(x.effect||x.note||'')}</p>
-   <p><b>What remained / what is not proved:</b> ${esc(x.continuity||x.current_presence_status||'')}</p>
+   <div class="facility-block-grid"><section><b>PHYSICAL DAMAGE</b><p>${esc((x.critical_assets_reported||[]).concat(x.noncritical_or_soft_assets_reported||[]).join('; ')||'No verified component list in the current ledger.')}</p></section><section><b>FUNCTIONAL EFFECT</b><p>${esc(x.effect||x.note||'')}</p></section><section><b>CONTINUITY</b><p>${esc(x.continuity||x.current_presence_status||'')}</p></section><section><b>ASSESSMENT</b><p>${esc(x.impact_grade||x.operational_effect_status||'UNRESOLVED')}</p></section></div>
+   <button class="ledger-map-button" type="button" data-map-ref="${esc(x.id)}">Locate on map</button>
    <div class="sources">${srcLinks(namedUrlLinks(x.source_urls))}</div>
- </div>`;
+ </article>`;
  }).join('')
 }
 try{renderFacilities();}catch(e){console.warn("renderFacilities failed; using embedded static fallback",e);}
-document.getElementById('facilitySearch').oninput=e=>renderFacilities(e.target.value);
+document.getElementById('facilitySearch').addEventListener('input',e=>renderFacilities(e.target.value));
 
 function renderStrikeEffects(filter=''){
  const f=filter.toLowerCase();
  const rows=DATA.strikes.filter(x=>(x.name+' '+(x.event_date||x.date||'')+' '+(x.verification||x.status||'')+' '+(x.impact_grade||'')+' '+(x.purpose||'')+' '+(x.effect||x.note||'')).toLowerCase().includes(f));
- document.getElementById('strikeList').innerHTML=rows.map(x=>`<div class="item" onclick="pan('${x.id}')">
+ document.getElementById('strikeList').innerHTML=rows.map(x=>`<article class="item" data-map-ref="${esc(x.id)}">
   <div class="date">${esc(x.event_date||x.date||'')} • ${esc(x.verification||x.status||'')}</div>
   <h3>${esc(x.name)}</h3>
   <div><span class="pill ${verificationClass(x.verification||x.status)}">${esc(x.verification||x.status||'')}</span><span class="pill impact">${esc(x.impact_grade||'')}</span></div>
@@ -211,10 +246,10 @@ function renderStrikeEffects(filter=''){
   <p><b>Operational effect:</b> ${esc(x.effect||x.note||'')}</p>
   ${x.network_relevance?`<p><b>Network context:</b> ${esc(x.network_relevance)}</p>`:''}
   <div class="sources">${srcLinks(x.sources||namedUrlLinks(x.source_urls))}</div>
- </div>`).join('')
+ </article>`).join('')
 }
 try{renderStrikeEffects();}catch(e){console.warn("renderStrikeEffects failed; using embedded static fallback",e);}
-document.getElementById('strikeSearch').oninput=e=>renderStrikeEffects(e.target.value);
+document.getElementById('strikeSearch').addEventListener('input',e=>renderStrikeEffects(e.target.value));
 
 function ensureTimelineControls(){
  const search=document.getElementById('timelineSearch');
@@ -222,42 +257,81 @@ function ensureTimelineControls(){
  const controls=document.createElement('div');
  controls.id='timelineControls';
  controls.className='ledger-controls';
- controls.innerHTML=`<label>View<select id="timelineMode"><option value="as-of">AS OF — event chronology</option><option value="known-by">KNOWN BY — evidence availability</option></select></label><label>Cutoff<input id="timelineCutoff" type="date" min="2020-11-18" max="2026-08-20" value="2026-08-20"></label><label>Record class<select id="timelineClass"><option value="all">All 83 records</option><option value="prewar">Pre-war context (15)</option><option value="wartime">Wartime events (68)</option></select></label><output id="timelineCount" aria-live="polite"></output>`;
+ controls.innerHTML=`<label>Temporal mode<select id="timelineMode"><option value="as-of">AS OF</option><option value="known-by">KNOWN BY</option></select></label><label>Cutoff<input id="timelineCutoff" type="date" min="2020-11-18" max="2026-08-20" value="2026-08-20"></label><label>Zoom<select id="timelineGranularity"><option value="war">War</option><option value="month">Month</option><option value="week">Week</option><option value="day">Day</option><option value="hour">Hour — source-supported only</option></select></label><label>Record class<select id="timelineClass"><option value="all">All 83</option><option value="prewar">Pre-war 15</option><option value="wartime">Wartime 68</option></select></label><output id="timelineCount" aria-live="polite"></output>`;
  search.parentNode.insertBefore(controls,search);
  controls.querySelectorAll('select,input').forEach(el=>el.addEventListener('change',()=>renderTimeline(search.value)));
 }
+const timelineRecordById=new Map((LEDGER.timeline.records||[]).map(row=>[row.event_id,row]));
 function ledgerTimeline(filter=''){
  const mode=document.getElementById('timelineMode')?.value||'as-of';
  const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-20';
  const klass=document.getElementById('timelineClass')?.value||'all';
+ const granularity=document.getElementById('timelineGranularity')?.value||'war';
  const needle=filter.toLowerCase().trim();
- return (LEDGER.events.events||[]).filter(event=>{
-   const relevantDate=mode==='known-by'?(event.first_reported||event.first_verified):event.event_date;
-   if(!relevantDate||relevantDate.slice(0,10)>cutoff)return false;
+ let rows=(LEDGER.events.events||[]).filter(event=>{
+   const visible=mode==='known-by'?Temporal.knownByState(event,cutoff,sourceById).visible:Temporal.asOfVisible(event,cutoff);
+   if(!visible)return false;
    if(klass==='prewar'&&event.record_class!=='PRE-WAR CONTEXT')return false;
    if(klass==='wartime'&&event.record_class!=='WARTIME_EVENT')return false;
    return !needle||JSON.stringify(event).toLowerCase().includes(needle);
- }).sort((a,b)=>{
+ });
+ const selectedRecords=Temporal.filterByGranularity(rows.map(event=>timelineRecordById.get(event.event_id)).filter(Boolean),granularity,cutoff);
+ const selectedIds=new Set(selectedRecords.map(row=>row.event_id));
+ rows=rows.filter(event=>selectedIds.has(event.event_id));
+ return rows.sort((a,b)=>{
    const aKey=mode==='known-by'?(a.first_reported||a.first_verified||a.event_date):a.event_date;
    const bKey=mode==='known-by'?(b.first_reported||b.first_verified||b.event_date):b.event_date;
    return aKey.localeCompare(bKey)||a.event_id.localeCompare(b.event_id);
  });
+}
+function eventMapRefs(event){return [...(event.map_refs||[]),...(event.facility_refs||[])].filter(ref=>allMarkers[ref]);}
+function syncTimelineMap(events){
+ if(!map)return;
+ window.configureAtlasMap('timeline');
+ const markers=[...new Set(events.flatMap(event=>eventMapRefs(event)).map(ref=>allMarkers[ref]).filter(Boolean))];
+ document.querySelectorAll('.atlas-marker-host').forEach(el=>el.classList.remove('timeline-member'));
+ markers.forEach(marker=>marker.getElement()?.classList.add('timeline-member'));
+ if(markers.length===1){selectMarker(markers[0]);map.setView(markers[0].getLatLng(),Math.max(map.getZoom(),6));markers[0].openPopup();}
+ if(markers.length>1){const bounds=L.latLngBounds(markers.map(marker=>marker.getLatLng()));if(bounds.isValid())map.fitBounds(bounds,{padding:[48,48],maxZoom:7});}
+}
+function railBucket(event,granularity){const row=timelineRecordById.get(event.event_id)||{};if(granularity==='war')return row.month||event.event_date.slice(0,7);if(granularity==='month')return row.iso_week||row.day;if(granularity==='week')return row.day;if(granularity==='hour')return row.hour_bucket||'TIME UNRESOLVED';return event.event_id;}
+function renderTimelineRail(items){
+ const granularity=document.getElementById('timelineGranularity')?.value||'war';
+ const buckets=new Map();items.forEach(event=>{const key=railBucket(event,granularity);if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(event);});
+ const rail=document.getElementById('timelineRail');if(!rail)return;
+ rail.innerHTML=[...buckets.entries()].map(([key,events])=>`<button type="button" class="timeline-tick${events.length>1?' cluster':''}" data-event-ids="${esc(events.map(event=>event.event_id).join(','))}" aria-label="${esc(key)}: ${events.length} event${events.length===1?'':'s'}"><span>${esc(key)}</span><b>${events.length}</b></button>`).join('')||'<div class="timeline-empty">No records in this source-supported window.</div>';
+ rail.querySelectorAll('.timeline-tick').forEach(button=>button.addEventListener('click',()=>{
+   rail.querySelectorAll('.timeline-tick').forEach(tick=>tick.classList.remove('selected'));button.classList.add('selected');
+   const ids=button.dataset.eventIds.split(',');const selected=ids.map(id=>eventById.get(id)).filter(Boolean);
+   document.querySelectorAll('.ledger-event').forEach(card=>card.classList.toggle('temporal-dimmed',!ids.includes(card.dataset.eventId)));
+   syncTimelineMap(selected);if(ids.length===1)document.getElementById(`ledger-event-${ids[0]}`)?.scrollIntoView({behavior:'smooth',block:'nearest'});
+ }));
 }
 function renderTimeline(filter=''){
  ensureTimelineControls();
  const items=ledgerTimeline(filter);
  const mode=document.getElementById('timelineMode')?.value||'as-of';
  const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-20';
+ const granularity=document.getElementById('timelineGranularity')?.value||'war';
+ const hour=document.querySelector('#timelineGranularity option[value="hour"]');
+ const allTimeline=LEDGER.timeline.records||[];const hourSupported=Temporal.supportsHour(allTimeline);
+ if(hour){hour.disabled=!hourSupported;if(!hourSupported&&granularity==='hour'){document.getElementById('timelineGranularity').value='day';return renderTimeline(filter);}}
  const count=document.getElementById('timelineCount');
  if(count)count.value=`${items.length} shown`;
- let h=`<div class="callout"><strong>Canonical historical ledger:</strong> 83 records — 15 pre-war context records and 68 wartime events. <b>AS OF</b> follows when an event occurred; <b>KNOWN BY</b> follows when public evidence first entered the record. Current adjudications remain visible in both modes. Date-only records never receive a fabricated time.</div><div class="ledger-view-note">${mode==='known-by'?'Evidence known by':'Events as of'} <b>${esc(cutoff)}</b></div>`;
+ let h=`<div class="ledger-view-note">${mode==='known-by'?'Evidence known by':'Events as of'} <b>${esc(cutoff)}</b> • ${esc(granularity.toUpperCase())} window</div><div class="timeline-rail" id="timelineRail" aria-label="Spatial-temporal event rail"></div><details class="temporal-integrity"><summary>Temporal integrity rules</summary><p><b>AS OF</b> follows occurrence and labels current adjudication through the ledger cutoff. <b>KNOWN BY</b> shows only records and dated sources available by the chosen cutoff; later adjudication stays suppressed unless explicitly opened. Date-only records never receive a fabricated time.${!hourSupported?' Hour zoom is disabled because no canonical event has a source-supported hour bucket.':''}</p></details>`;
  h+=items.map(event=>{
    const when=event.event_time?`${event.event_date} ${event.event_time}${event.timezone?' '+event.timezone:''}`:event.event_date;
    const mapRef=(event.map_refs||[]).find(ref=>allMarkers[ref])||(event.facility_refs||[]).find(ref=>allMarkers[ref]);
-   const mapButton=mapRef?`<button class="ledger-map-button" type="button" onclick="panLedgerEvent('${esc(event.event_id)}')">Show linked map entity</button>`:'';
-   return `<article class="item ledger-event" id="ledger-event-${esc(event.event_id)}"><div class="date">${esc(when)} • ${esc(event.event_time_precision)} • ${esc(event.record_class)} • ${esc(event.event_id)}</div><h3>${esc(event.summary)}</h3><div><span class="pill ${verificationClass(event.evidence_status)}">${esc(event.evidence_status)}</span><span class="pill impact">${esc(event.confidence)} CONFIDENCE</span><span class="pill">${esc(event.event_type)}</span></div><p><b>Actors / target:</b> ${esc((event.actors||[]).join(', '))} → ${esc(event.target||'')}</p>${event.observed_fact?`<p><b>Observed fact:</b> ${esc(event.observed_fact)}</p>`:''}${event.claimed_effect?`<p><b>Claimed effect:</b> ${esc(event.claimed_effect)}</p>`:''}${event.verified_effect?`<p><b>Verified effect:</b> ${esc(event.verified_effect)}</p>`:''}${event.counterevidence?`<p><b>Counterevidence:</b> ${esc(event.counterevidence)}</p>`:''}${event.continuity_evidence?`<p><b>Continuity:</b> ${esc(event.continuity_evidence)}</p>`:''}${event.later_outcome?`<p><b>Later outcome:</b> ${esc(event.later_outcome)}</p>`:''}<div class="ledger-dates"><span>First reported: ${esc(event.first_reported||'UNRESOLVED')}</span><span>First verified: ${esc(event.first_verified||'UNRESOLVED')}</span><span>Valid from: ${esc(event.valid_from||event.event_date)}${event.valid_to?' to '+esc(event.valid_to):''}</span></div>${mapButton}<div class="sources">${canonicalSourceLinks(event.source_refs)}</div></article>`;
+   const mapButton=mapRef?`<button class="ledger-map-button" type="button" data-map-ref="${esc(mapRef)}">Show linked map entity</button>`:'';
+   if(mode==='known-by'){
+     const state=Temporal.knownByState(event,cutoff,sourceById);
+     const current=`<details class="current-adjudication"><summary>View current adjudication</summary><div class="current-label">CURRENT ASSESSMENT — reviewed through ${esc(LEDGER.manifest.collection_cutoff)}</div><h4>${esc(event.summary)}</h4>${event.observed_fact?`<p><b>Observed fact:</b> ${esc(event.observed_fact)}</p>`:''}${event.claimed_effect?`<p><b>Claimed effect:</b> ${esc(event.claimed_effect)}</p>`:''}${event.verified_effect?`<p><b>Verified effect:</b> ${esc(event.verified_effect)}</p>`:''}${event.counterevidence?`<p><b>Counterevidence:</b> ${esc(event.counterevidence)}</p>`:''}${event.continuity_evidence?`<p><b>Continuity:</b> ${esc(event.continuity_evidence)}</p>`:''}${event.later_outcome?`<p><b>Later outcome:</b> ${esc(event.later_outcome)}</p>`:''}</details>`;
+     return `<article class="item ledger-event" id="ledger-event-${esc(event.event_id)}" data-event-id="${esc(event.event_id)}"><div class="date">KNOWN BY ${esc(cutoff)} • ${esc(event.record_class)} • ${esc(event.event_id)}</div><h3>Historical evidence state for ${esc(event.event_id)}</h3><div><span class="pill ${state.verifiedByCutoff?'ev-high':'ev-med'}">${esc(state.badge)}</span><span class="pill">${esc(event.event_type)}</span></div><p><b>Actors / target metadata:</b> ${esc((event.actors||[]).join(', '))} → ${esc(event.target||'')}</p><p><b>State at cutoff:</b> First reported ${esc(event.first_reported)}${state.verifiedByCutoff?`; verification was available by ${esc(event.first_verified)}`:'; verification was not yet available in the dated public record'}.</p>${mapButton}<div class="sources">${canonicalSourceLinks(state.sources)}</div>${current}</article>`;
+   }
+   return `<article class="item ledger-event" id="ledger-event-${esc(event.event_id)}" data-event-id="${esc(event.event_id)}"><div class="date">${esc(when)} • ${esc(event.event_time_precision)} • ${esc(event.record_class)} • ${esc(event.event_id)}</div><h3>${esc(event.summary)}</h3><div class="current-label">CURRENT ASSESSMENT — reviewed through ${esc(LEDGER.manifest.collection_cutoff)}</div><div><span class="pill ${verificationClass(event.evidence_status)}">${esc(event.evidence_status)}</span><span class="pill impact">${esc(event.confidence)} CONFIDENCE</span><span class="pill">${esc(event.event_type)}</span></div><p><b>Actors / target:</b> ${esc((event.actors||[]).join(', '))} → ${esc(event.target||'')}</p>${event.observed_fact?`<p><b>Observed fact:</b> ${esc(event.observed_fact)}</p>`:''}${event.claimed_effect?`<p><b>Claimed effect:</b> ${esc(event.claimed_effect)}</p>`:''}${event.verified_effect?`<p><b>Verified effect:</b> ${esc(event.verified_effect)}</p>`:''}${event.counterevidence?`<p><b>Counterevidence:</b> ${esc(event.counterevidence)}</p>`:''}${event.continuity_evidence?`<p><b>Continuity:</b> ${esc(event.continuity_evidence)}</p>`:''}${event.later_outcome?`<p><b>Later outcome:</b> ${esc(event.later_outcome)}</p>`:''}<div class="ledger-dates"><span>First reported: ${esc(event.first_reported||'UNRESOLVED')}</span><span>First verified: ${esc(event.first_verified||'UNRESOLVED')}</span><span>Valid from: ${esc(event.valid_from||event.event_date)}${event.valid_to?' to '+esc(event.valid_to):''}</span></div>${mapButton}<div class="sources">${canonicalSourceLinks(event.source_refs)}</div></article>`;
  }).join('');
  document.getElementById('timelineList').innerHTML=h;
+ renderTimelineRail(items);syncTimelineMap(items);
 }
 window.panLedgerEvent=function(id){
  const event=eventById.get(id);if(!event)return false;
@@ -265,14 +339,13 @@ window.panLedgerEvent=function(id){
  return ref?window.pan(ref):false;
 };
 window.focusLedgerEvent=function(id){
- const tab=document.querySelector('.tab[data-tab="timeline"]');
- if(typeof showAtlasPanel==='function')showAtlasPanel('timeline',tab);
+ if(typeof showAtlasPanel==='function')showAtlasPanel('timeline');
  const search=document.getElementById('timelineSearch');
  if(search){search.value=id;renderTimeline(id);}
  document.getElementById(`ledger-event-${id}`)?.scrollIntoView({behavior:'smooth',block:'start'});
 };
 try{renderTimeline();}catch(e){console.warn("renderTimeline failed; using embedded static fallback",e);}
-document.getElementById('timelineSearch').oninput=e=>renderTimeline(e.target.value);
+document.getElementById('timelineSearch').addEventListener('input',e=>renderTimeline(e.target.value));
 
 function renderCSIS(){
  const cards=DATA.csisMetrics.map(x=>`<div class="metric-card"><div class="metric-num">${esc(x.metric)}</div><div class="metric-period">${esc(x.period)}</div><p>${esc(x.meaning)}</p><p class="interpret"><b>What it means:</b> ${esc(x.interpretation)}</p><div class="sources">${srcLinks(x.src)}</div></div>`).join('');
@@ -286,8 +359,14 @@ function renderLosses(filter=''){
  const material=(LEDGER['material-losses'].records||[]).filter(x=>JSON.stringify(x).toLowerCase().includes(f));
  const munitions=(LEDGER['munitions-expenditure'].records||[]).filter(x=>JSON.stringify(x).toLowerCase().includes(f));
  const us=LEDGER['cost-model'].us_coalition.ui_fields;
+ const allMunitions=LEDGER['munitions-expenditure'].records||[];
+ const tomahawkCount=allMunitions.find(x=>x.expenditure_id==='MUN-USA-TOMAHAWK-CEASEFIRE');
+ const tomahawkBasis=allMunitions.find(x=>x.expenditure_id==='MUN-USA-TOMAHAWK-4WK');
+ const tomahawkEstimate=Costing.calculate({...tomahawkCount,currency:tomahawkBasis?.currency},tomahawkBasis);
+ const iranOpeningUas=allMunitions.find(x=>x.expenditure_id==='MUN-IRN-FIRST100H-UAS');
+ const iranOpeningBm=allMunitions.find(x=>x.expenditure_id==='MUN-IRN-FIRST100H-BM');
  let h=`<div class="callout"><strong>Like-for-like accounting:</strong> ${esc(LEDGER.casualties.display_policy.rule)} Material loss, munitions expenditure, repair/reconstitution, and wider economic effects remain separate. UNPRICED does not mean zero.</div>`;
- h+=`<div class="ledger-cost-grid"><div><b>U.S. material loss/damage</b><strong>$5.8–$12.9B</strong><small>${esc(us.material_loss_damage_cost.label)}</small></div><div><b>U.S. munitions expended</b><strong>$26.1B</strong><small>${esc(us.munitions_expended_cost.label)}</small></div><div><b>Iran material loss</b><strong>UNPRICED</strong><small>No defensible replacement/repair price basis in the reviewed set.</small></div><div><b>Complete Aug. 20 military total</b><strong>UNRESOLVED</strong><small>${esc(us.current_aug20_total.display)}</small></div></div>`;
+ h+=`<div class="accounting-matrix" aria-label="Symmetric direct-military accounting"><article class="cost-cell us"><b>U.S./COALITION • MATERIAL</b><strong>$5.8–$12.9B</strong><span class="cost-label">CALCULATED RANGE</span><small>$1.8–$3.5B durable equipment + $4.0–$9.4B fixed infrastructure. Earlier CSIS category estimates; do not add overlapping item rows.</small><div class="sources">${canonicalSourceLinks(['SRC-C4FF4F823E1F'])}</div></article><article class="cost-cell iran"><b>IRAN/ALIGNED • MATERIAL</b><strong>UNPRICED REMAINDER</strong><span class="cost-label">SUPPORTED QUANTITY / NO COMPATIBLE PRICE BASIS</span><small>One confirmed frigate loss is retained, but the existing corpus supplies no defensible compatible procurement, replacement, or repair basis. Unknowns are not zero.</small><div class="sources">${canonicalSourceLinks(['SRC-B106A3769146','SRC-C092F7F591FC'])}</div></article><article class="cost-cell us"><b>U.S./COALITION • MUNITIONS</b><strong>$26.1B</strong><span class="cost-label">SOURCE-REPORTED MODEL</span><small>CSIS aggregate through June 23. Cross-record check: ${tomahawkEstimate?`${esc(tomahawkCount.quantity_qualifier)}${esc(tomahawkCount.quantity)} Tomahawks × ${Costing.formatUsd(tomahawkBasis.unit_cost_low)} = ${esc(tomahawkEstimate.qualifier)}${Costing.formatUsd(tomahawkEstimate.low)} CALCULATED LOWER BOUND`: 'UNRESOLVED'}; this is a subset and is not added again.</small><div class="sources">${canonicalSourceLinks(['SRC-C4FF4F823E1F','SRC-14B6DC8A760C'])}</div></article><article class="cost-cell iran"><b>IRAN/ALIGNED • MUNITIONS</b><strong>UNPRICED REMAINDER</strong><span class="cost-label">SOURCE-REPORTED LOWER-BOUND QUANTITY</span><small>${esc(iranOpeningUas.quantity_qualifier)}${esc(iranOpeningUas.quantity)} UAS + ${esc(iranOpeningBm.quantity_qualifier)}${esc(iranOpeningBm.quantity)} ballistic missiles in the opening 100 hours. No compatible unit-cost basis exists in the current corpus, so no dollar estimate is fabricated.</small><div class="sources">${canonicalSourceLinks(['SRC-F9C4A35EE811'])}</div></article></div><div class="callout"><strong>Complete Aug. 20 total: UNRESOLVED.</strong> ${esc(us.current_aug20_total.display)} Calculated components are labeled and never combined across overlapping scopes.</div>`;
  h+=`<div class="section-title">Casualty records — same-category comparison only</div>`;
  h+=casualties.map(x=>`<div class="item"><div class="date">${esc(x.event_date)} • ${esc(x.casualty_id)} • ${esc(x.evidence_status)}</div><h3>${esc(x.country)} — ${esc(x.display_category)}</h3><p><b>Supported record:</b> killed ${esc(x.killed??'—')} • wounded ${esc(x.wounded??'—')} • missing ${esc(x.missing??'—')}</p><p><b>Cause / aggregation:</b> ${esc(x.cause_type)} • ${esc(x.aggregation_type)}</p>${x.notes?`<p><b>Qualification:</b> ${esc(x.notes)}</p>`:''}<div class="sources">${canonicalSourceLinks(x.source_ids)}</div></div>`).join('');
  h+=`<div class="callout"><strong>Leadership gap:</strong> ${esc(LEDGER.casualties.leadership_gap)} The legacy total of 11 remains quarantined from canonical comparison until itemized.</div><div class="section-title">Durable material losses</div>`;
@@ -297,22 +376,22 @@ function renderLosses(filter=''){
  document.getElementById('lossList').innerHTML=h;
 }
 try{renderLosses();}catch(e){console.warn("renderLosses failed; using embedded static fallback",e);}
-document.getElementById('lossSearch').oninput=e=>renderLosses(e.target.value);
+document.getElementById('lossSearch').addEventListener('input',e=>renderLosses(e.target.value));
 
 function cls(v){return String(v||'').replace(/[^A-Z0-9]+/g,'_')}
 function renderClaims(filter=''){
  let f=filter.toLowerCase();
  const rows=(LEDGER.claims.claims||[]).filter(x=>JSON.stringify(x).toLowerCase().includes(f));
- document.getElementById('claimList').innerHTML=`<div class="callout"><strong>Case-file rule:</strong> Claims are adjudicated through chronology, supporting evidence, counterevidence, continuity, and explicit change conditions—not a binary narrative score.</div>`+rows.map(x=>{const mapRef=(x.map_refs||[]).find(ref=>allMarkers[ref])||(x.facility_refs||[]).find(ref=>allMarkers[ref]);return `<article class="item claim-timeline"${mapRef?` onclick="pan('${esc(mapRef)}')"`:''}><div class="date">${esc(x.earliest_known_origin||'ORIGIN UNRESOLVED')} • ${esc(x.case_id)}</div><h3><span class="badge ${cls(x.current_verdict)}">${esc(x.current_verdict)}</span>${esc(x.claim)}</h3><p><b>What happened:</b> ${esc(x.what_actually_happened)}</p>${(x.evidence_supporting_claim||[]).length?`<p><b>Supporting evidence:</b> ${esc(x.evidence_supporting_claim.join(', '))}</p>`:''}${(x.counterevidence||[]).length?`<p><b>Counterevidence:</b> ${esc(x.counterevidence.join(', '))}</p>`:''}${(x.unresolved_questions||[]).length?`<p><b>Unresolved:</b> ${esc(x.unresolved_questions.join(' '))}</p>`:''}<p><b>What would change the assessment:</b> ${esc((x.what_would_change_assessment||[]).join(' '))}</p><div class="sources">${canonicalSourceLinks(x.source_ids)}</div></article>`}).join('')
+ document.getElementById('claimList').innerHTML=`<div class="callout"><strong>Case-file rule:</strong> Claims are adjudicated through chronology, supporting evidence, counterevidence, continuity, and explicit change conditions—not a binary narrative score.</div>`+rows.map(x=>{const mapRef=(x.map_refs||[]).find(ref=>allMarkers[ref])||(x.facility_refs||[]).find(ref=>allMarkers[ref]);return `<article class="item claim-timeline"${mapRef?` data-map-ref="${esc(mapRef)}"`:''}><div class="date">${esc(x.earliest_known_origin||'ORIGIN UNRESOLVED')} • ${esc(x.case_id)}</div><h3><span class="badge ${cls(x.current_verdict)}">${esc(x.current_verdict)}</span>${esc(x.claim)}</h3><p><b>What happened:</b> ${esc(x.what_actually_happened)}</p>${(x.evidence_supporting_claim||[]).length?`<p><b>Supporting evidence:</b> ${esc(x.evidence_supporting_claim.join(', '))}</p>`:''}${(x.counterevidence||[]).length?`<p><b>Counterevidence:</b> ${esc(x.counterevidence.join(', '))}</p>`:''}${(x.unresolved_questions||[]).length?`<p><b>Unresolved:</b> ${esc(x.unresolved_questions.join(' '))}</p>`:''}<p><b>What would change the assessment:</b> ${esc((x.what_would_change_assessment||[]).join(' '))}</p><div class="sources">${canonicalSourceLinks(x.source_ids)}</div></article>`}).join('')
 }
 try{renderClaims();}catch(e){console.warn("renderClaims failed; using embedded static fallback",e);}
-document.getElementById('claimSearch').oninput=e=>renderClaims(e.target.value);
+document.getElementById('claimSearch').addEventListener('input',e=>renderClaims(e.target.value));
 
 function renderSources(){
  const sources=LEDGER.sources.sources||[];
  let out=`<div class="callout"><strong>Canonical source namespace:</strong> ${esc(LEDGER.sources.id_rule)} This ledger contains ${sources.length} source records with explicit proof roles and record lineage.</div>`;
  const grouped=Object.groupBy?Object.groupBy(sources,x=>x.quality||'UNRATED'):sources.reduce((acc,x)=>{(acc[x.quality||'UNRATED']??=[]).push(x);return acc},{});
- for(const [quality,rows] of Object.entries(grouped).sort()){out+=`<div class="section-title">Quality ${esc(quality)}</div>`+rows.map(x=>`<article class="item source-record"><div class="date">${esc(x.source_id)} • ${esc(x.publication_date||'DATE UNRESOLVED')}</div><h3>${esc(x.outlet)} — ${esc(x.title||'Untitled source')}</h3><p><b>Roles:</b> ${esc((x.source_roles||[]).join(' · '))}</p><p><b>Proof note:</b> ${esc(x.proof_note||'')}</p><p><b>Lineage:</b> ${esc(x.lineage||x.source_origin||'')}</p><div class="sources"><a target="_blank" rel="noopener" href="${esc(x.url)}">open source</a></div></article>`).join('')}
+ for(const [quality,rows] of Object.entries(grouped).sort()){out+=`<div class="section-title">Quality ${esc(quality)}</div>`+rows.map(x=>`<article class="item source-record"><div class="date">${esc(x.source_id)} • ${esc(x.publication_date||'DATE UNRESOLVED')}</div><h3>${esc(x.outlet)} — ${esc(x.title||'Untitled source')}</h3><p><b>Roles:</b> ${esc((x.source_roles||[]).join(' · '))}</p><p><b>Proof note:</b> ${esc(x.proof_note||'')}</p><p><b>Lineage:</b> ${esc(x.lineage||x.source_origin||'')}</p><div class="sources">${Safe.externalLink('open source',x.url,x.title||'')}</div></article>`).join('')}
  document.getElementById('sourceList').innerHTML=out
 }
 try{renderSources();}catch(e){console.warn("renderSources failed; using embedded static fallback",e);}

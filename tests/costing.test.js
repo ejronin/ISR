@@ -1,0 +1,13 @@
+'use strict';
+const assert = require('node:assert/strict');
+const costing = require('../js/costing.js');
+const quantity = { munition: 'Tomahawk', quantity: 1000, quantity_qualifier: '>', currency: 'USD' };
+const basis = { munition: 'Tomahawk', unit_cost_low: 3600000, unit_cost_high: 3600000, currency: 'USD' };
+const estimate = costing.calculate(quantity, basis);
+assert.equal(estimate.low, 3600000000);
+assert.equal(estimate.high, 3600000000);
+assert.equal(estimate.qualifier, '>');
+assert.equal(costing.calculate({ ...quantity, munition: 'Ballistic missiles' }, basis), null, 'incompatible munitions cannot be joined');
+assert.equal(costing.calculate({ munition: 'Tomahawk', quantity: null }, basis), null, 'unknown quantity is not zero');
+assert.equal(costing.formatUsd(3600000000), '$3.6B');
+console.log('costing: explicit compatible cross-record joins passed');
