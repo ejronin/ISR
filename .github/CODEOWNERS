@@ -1,0 +1,7 @@
+/data/integration-v1.2/ @ejronin
+/js/ @ejronin
+/css/ @ejronin
+/index.html @ejronin
+/.github/workflows/ @ejronin
+/scripts/validate*.py @ejronin
+/tests/ @ejronin

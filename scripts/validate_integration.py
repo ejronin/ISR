@@ -87,11 +87,12 @@ def main() -> int:
 
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-    check('id="historical"' in html and 'data-tab="historical"' in html,
+    navigation = (ROOT / "js" / "navigation.js").read_text(encoding="utf-8")
+    check('id="historical"' in html and "['historical', 'Historical model']" in navigation,
           "historical model panel/tab is not wired", failures)
     check("timelineMode" in app and "known-by" in app and "LEDGER.events.events" in app,
           "AS OF / KNOWN BY canonical timeline is not wired", failures)
-    check("Historical ledger entities" in app and "allMarkers[link.map_ref]" in app,
+    check("Historical / posture entities" in app and "allMarkers[link.map_ref]" in app,
           "stable map/timeline reverse linkage is not wired", failures)
     check("coalitionComposite" not in app and "+3.0" not in html and "-1.25" not in html,
           "deprecated composite war score remains in primary display", failures)

@@ -1,0 +1,32 @@
+{
+  "authoritative_json_sha256": {
+    "agreements.json": "3a700e876cdf1eb89b0b770b2ba99d1329280940e40ab40a2950e5e2969ebeda",
+    "attrition-series.json": "36c1ef9ea26dd00c146a22ae3790ae21fdf9fd8281a7cb4c077a49609dba5b9c",
+    "bda-overlays.json": "4ee80eb1a5884c62fd2548b1d3827f6cb0d9e366e05b39b67544899de5a8e3ce",
+    "casualties.json": "30353eaeadd22e542148b893ee3e85c8394a1e249f4977c9f25a0f8ddb3d67ef",
+    "claims.json": "117a3aaaa5a757e2874b5b8c1134924661c94d0467578740429c6dcf2899c254",
+    "collection-requests.json": "ee3572231a19a13f622fe84acfd9e82cd6b691f48fd86c1f38c10f06e9c27d7e",
+    "cost-model.json": "365572c51eb1fcd0b4f17303d40616da359ecd0628573a16567aaf859ba3d695",
+    "daily-coverage.json": "02aa5eca231bda966b2790397b29e1dffb162a645e0b62a6b71c3e7b420f62c0",
+    "diplomacy.json": "5835db3d3d7ef15a1f785ef6eb74b8c24325528d300010c3898d2226a6bb5fba",
+    "domain-assessments.json": "f72b8cfa18af423abf01b3779750a17c58da1ec5405ec1e3945b9af8d39295fc",
+    "economics.json": "ab1080b3d34e4961419efe8382dc775b53f45faf9e6bff2879e6b4663521af5b",
+    "events.json": "b08ba2d91a20c8ec073cbafce354762643184617179619d776592f2c43cf2af9",
+    "facilities.json": "818f47c13f0f26e37b395fc07f670ef78847c7c9d968752014f6239380c88f40",
+    "manifest.json": "c2aa2cb5c281cfe391fdf908b3ffc656e521987876d24955c3345e64f13fbd88",
+    "map-links.json": "aa52960252ea0c91cfc419c38a12fdbd0c21c37b03bbade15de8c54603dda1b9",
+    "material-losses.json": "a4bb6164817b1759d2f5c84b391d83cb256adb2e83edd394e0f8cbf1f0a42f70",
+    "movements.json": "9f07b6f35e19df110f019eee5e27c684be29807902f0128dedacf11d2be10356",
+    "munitions-expenditure.json": "2cb94fcea9a701c62f7a18882827db2c93211dfc43323dea7bdd2d1f7e9775bc",
+    "revision-history.json": "ae14c13430b90c7fe5639120ec9803db339f6a2bf878df6c05ed879ab194b0b7",
+    "shipping.json": "28c4dd37a5c356c9b0e7681a78b90403e76b00fd3e9307ed08843c9376eb6d3c",
+    "source-role-map.json": "63f4f7828a027557d23efa2b67bf243d5917ec37738f99e46694d905307ced54",
+    "sources.json": "b46bf418f60ac90c7a7b0076d95b43acf83f8bca377bd83f85e71ccdd4fc7010",
+    "timeline.json": "a14f7f0c9b9cfea488dbf9bcf1ce4d5dc3507b78054468d46e377373073ea173",
+    "unresolved.json": "ca103ebd1ef5a2a51d0095c04755b5706a0e404959859f65a8e61c612663d244"
+  },
+  "canonical_url": "https://ejronin.github.io/ISR/",
+  "collection_cutoff": "2026-08-20T15:59:00-04:00",
+  "commit_sha": "SOURCE_CHECKOUT",
+  "ledger_version": "integration-v1.2"
+}
