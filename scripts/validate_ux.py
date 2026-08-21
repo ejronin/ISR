@@ -55,9 +55,22 @@ def main() -> int:
     require("CURRENT ASSESSMENT — reviewed through" in scripts, "current-adjudication cutoff label missing", errors)
     require("REPORTED / NOT VERIFIED BY CUTOFF" in (ROOT / "js/temporal.js").read_text(encoding="utf-8"), "KNOWN BY badge missing", errors)
     require("timeline-rail" in scripts and "timelineGranularity" in scripts, "temporal controller missing", errors)
+    require("timelineContext" in scripts and "contextMatches" in scripts, "timeline context filter missing", errors)
     require("configureAtlasMap" in scripts and "viewLayers" in scripts, "analysis/map state synchronization missing", errors)
     require("SCHEMATIC" in scripts and "audited" in scripts, "route-geometry audit mapping/label missing", errors)
     require("accounting-matrix" in scripts and "CALCULATED RANGE" in scripts, "symmetric calculated accounting missing", errors)
+    require((ROOT / "js/presentation.js").is_file(), "central public-label formatter missing", errors)
+    require("formatTextNodes" in scripts and "formatLabel" in scripts, "public-label formatting pass missing", errors)
+    require((ROOT / "assets/icons/imagery.svg").is_file(), "locally vendored imagery eye icon missing", errors)
+    require("IMAGERY AVAILABLE" in scripts and "Imagery limitations" in scripts, "BDA popup state separation missing", errors)
+    require("component-state" in scripts and "physical-badge" in scripts and "evidence-badge" in scripts, "component/evidence status separation missing", errors)
+    for group in ("Operations", "Evidence", "Posture", "Routes", "Claims"):
+        require(f"['{group}'" in scripts, f"grouped expert layer section missing: {group}", errors)
+    require('id="lossStage"' not in html, "legacy v2.9 loss stage remains active", errors)
+    require("PUBLIC RELEASE v2.9" not in html, "legacy v2.9 dashboard release label remains active", errors)
+    require("loss-mode" not in scripts and "loss-mode" not in (ROOT / "css/app.css").read_text(encoding="utf-8"), "legacy loss-mode switching remains active", errors)
+    require("Military KIA" in scripts and "Military WIA" in scripts and "Military MIA" in scripts, "like-for-like casualty categories missing", errors)
+    require("Legacy leadership audit note" in scripts and "not a plotted canonical loss event" in scripts, "legacy leadership value is not quarantined as an audit note", errors)
     require("javascript:" not in html.lower(), "javascript URL found in HTML", errors)
     audit = LinkAudit()
     audit.feed(html)
@@ -70,7 +83,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("UX/security validation passed: navigation, temporal state, synchronized map, CSP, local runtime, safe links, and build identity")
+    print("UX/security validation passed: presentation grammar, canonical accounting, temporal state, synchronized map, grouped layers, CSP, local runtime, safe links, and build identity")
     return 0
 
 

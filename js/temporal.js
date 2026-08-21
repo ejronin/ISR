@@ -79,5 +79,21 @@
     return records;
   }
 
-  return { day, isAvailable, sourceAvailable, knownByState, knownByProjection, asOfVisible, currentAssessmentLabel, hourBucket, supportsHour, filterByGranularity };
+  function contextMatches(event, context) {
+    if (!event || !context || context === 'all') return true;
+    const type = String(event.event_type || '').toUpperCase();
+    const record = JSON.stringify(event).toUpperCase();
+    if (context === 'loss') {
+      if (event.record_class === 'PRE-WAR CONTEXT') return false;
+      if (/CASUALT|FACILITY_DAMAGE|MATERIAL_LOSS|EQUIPMENT_LOSS|ATTRITION|MUNITIONS_EXPENDITURE/.test(type)) return true;
+      const directNarrative = [event.summary, event.observed_fact, event.claimed_effect, event.verified_effect, event.target].filter(Boolean).join(' ').toUpperCase();
+      return /MILITARY_OPERATION|STRIKE|ATTACK/.test(type) && /KILLED|WOUNDED|MISSING|\bLOSS|LOST|DESTROY|SUNK|INOPERABLE/.test(directNarrative);
+    }
+    if (context === 'strike') return /STRIKE|ATTACK|KINETIC|MILITARY_OPERATION|REGIONAL_BASE_ATTACKS|SANCTIONS_AND_STRIKES/.test(type) || /\bSTRIKE|\bATTACK/.test(record);
+    if (context === 'facility') return (event.facility_refs || []).length > 0 || /FACILITY|BASE_ATTACK|NUCLEAR_FACILITY/.test(type) || /\bBDA\b|IMAGERY/.test(record);
+    if (context === 'posture') return /POSTURE|BASE_HANDOVER|WITHDRAW|AGREEMENT|SECURITY_(?:TRANSITION|FRAMEWORK)|FORCE_PROTECTION|C2_RESILIENCE|COALITION_POSTURE/.test(type) || event.record_class === 'PRE-WAR CONTEXT';
+    return false;
+  }
+
+  return { day, isAvailable, sourceAvailable, knownByState, knownByProjection, asOfVisible, currentAssessmentLabel, hourBucket, supportsHour, filterByGranularity, contextMatches };
 }));

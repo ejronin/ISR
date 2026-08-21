@@ -35,8 +35,9 @@ jobs:
         run: python scripts/validate_ux.py
       - name: Scan tracked files and Git metadata for privacy regressions
         run: python scripts/privacy_scan.py
-      - name: Run deterministic temporal, costing, and hostile-input tests
+      - name: Run deterministic presentation, temporal, costing, and hostile-input tests
         run: |
+          node tests/presentation.test.js
           node tests/temporal-state.test.js
           node tests/security-rendering.test.js
           node tests/costing.test.js
