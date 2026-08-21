@@ -1,0 +1,37 @@
+{
+  "records": [
+    {
+      "id": "QAT-APR-001",
+      "date": "2026-04-06",
+      "initiator": "Iranian Foreign Minister Abbas Araghchi",
+      "recipient": "Qatar PM/FM Sheikh Mohammed bin Abdulrahman Al Thani",
+      "facts": "Official Qatar readout says Araghchi called. Qatar condemned continued Iranian targeting of Qatar/region and urged comprehensive diplomatic solution.",
+      "interpretation": "DIRECT_QATAR_IRAN_CONTACT_CONFIRMED; do not rewrite as Qatar initiating outreach.",
+      "sources": [
+        "SRC-1185C28B7D9A"
+      ]
+    },
+    {
+      "id": "QAT-APR-002",
+      "date": "2026-04-13",
+      "initiator": "Iranian Foreign Minister Abbas Araghchi",
+      "recipient": "Qatar PM/FM",
+      "facts": "Official Qatar readout says Araghchi called; both stressed maintaining U.S.-Iran ceasefire. Qatar emphasized mediation, open maritime routes and freedom of navigation.",
+      "interpretation": "CONTACT_PLUS_MEDIATION; evidence against a simple Qatar-break-with-US narrative.",
+      "sources": [
+        "SRC-7920A7C9C230"
+      ]
+    },
+    {
+      "id": "QAT-APR-003",
+      "date": "2026-04-26",
+      "initiator": "Iranian Foreign Minister Abbas Araghchi",
+      "recipient": "Qatar PM/FM",
+      "facts": "Official Qatar readout says Araghchi called; parties discussed peace/security, mediation, sea lanes and freedom of navigation.",
+      "interpretation": "CONTINUED_DIRECT_CONTACT; initiator remains Iran in the published readout.",
+      "sources": [
+        "SRC-6FEC9305D8FE"
+      ]
+    }
+  ]
+}

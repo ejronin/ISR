@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-20T22:30:00-04:00",
+  "rule": "State the strongest conclusion supported by the evidence while preserving proposition boundaries and residual uncertainty.",
+  "assessments": [
+    {
+      "assessment_id": "PUB-NAVY-001",
+      "text": "Iran's conventional navy suffered catastrophic losses; this does not mean every IRGC small craft was destroyed.",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "basis": [
+        "CSIS open-source/satellite assessment documents near-total conventional surface-fleet loss.",
+        "AP reports more than 90% of the regular navy lost while noting Revolutionary Guard small attack boats remained."
+      ],
+      "sources": [
+        "SRC-29B47381EC59",
+        "SRC-CAD44890437C"
+      ]
+    },
+    {
+      "assessment_id": "PUB-ALUDEID-001",
+      "text": "The CAOC was knocked out. Al Udeid was not.",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "basis": [
+        "Multiple Iranian missiles rendered the CAOC inoperable.",
+        "The air campaign continued through preplanned distributed command at Shaw; the record does not establish whole-base incapacity."
+      ],
+      "sources": [
+        "SRC-7538CF574DDF",
+        "SRC-551A9C2DB97C"
+      ]
+    },
+    {
+      "assessment_id": "PUB-F15E-001",
+      "text": "Iran shot down the F-15E. The subsequent personnel-recovery mission succeeded. Claims that it was actually a uranium-seizure raid remain unsupported.",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "basis": [
+        "Canonical chain corrects the initial F-35 identification to F-15E.",
+        "Both crew were recovered; disabled recovery aircraft were destroyed by U.S. forces to prevent capture.",
+        "A separate uranium contingency existed, but no operation-specific evidence links it to the rescue."
+      ],
+      "sources": [
+        "SRC-7471ECB26165",
+        "SRC-5C8E18A6126E",
+        "SRC-03F069A69AAF",
+        "SRC-98A42AC97EEA"
+      ]
+    }
+  ]
+}

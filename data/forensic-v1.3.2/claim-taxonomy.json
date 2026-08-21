@@ -1,0 +1,113 @@
+{
+  "allowed_dispositions": [
+    "CONFIRMED",
+    "MOSTLY_CONFIRMED",
+    "PARTLY_CONFIRMED",
+    "UNSUBSTANTIATED",
+    "MISLEADING",
+    "FALSE_ATTRIBUTION",
+    "CONTRADICTED",
+    "FALSE",
+    "RETRACTED",
+    "CORRECTED",
+    "NARRATIVE_SUBSTITUTION",
+    "UNRESOLVED"
+  ],
+  "rule": "Taxonomy describes morphology; final_disposition must use only the controlled disposition vocabulary.",
+  "patterns": [
+    {
+      "taxonomy": "INVENTED_EVENT",
+      "definition": "Claimed event itself is established not to have occurred.",
+      "preferred_dispositions": [
+        "FALSE"
+      ]
+    },
+    {
+      "taxonomy": "FALSE_ATTRIBUTION",
+      "definition": "Real event/loss occurred, but the claimed actor or mechanism is wrong.",
+      "preferred_dispositions": [
+        "FALSE_ATTRIBUTION"
+      ]
+    },
+    {
+      "taxonomy": "INFLATED_RESULT",
+      "definition": "Real hit/contact/effect is escalated into destruction, mission kill, or larger outcome not supported by evidence.",
+      "preferred_dispositions": [
+        "MISLEADING",
+        "CONTRADICTED"
+      ]
+    },
+    {
+      "taxonomy": "LOSS_DENIAL",
+      "definition": "A material loss is denied or omitted despite physical evidence; requires a specific denial before use.",
+      "preferred_dispositions": [
+        "CONTRADICTED",
+        "FALSE"
+      ]
+    },
+    {
+      "taxonomy": "NARRATIVE_SUBSTITUTION",
+      "definition": "An earlier explanation is replaced by another explanation while preserving the same political/operational conclusion.",
+      "preferred_dispositions": [
+        "NARRATIVE_SUBSTITUTION"
+      ]
+    },
+    {
+      "taxonomy": "FALSE_FLAG_SUBSTITUTION",
+      "definition": "An inconvenient incident is attributed to an adversary deception/false flag after or instead of direct responsibility.",
+      "preferred_dispositions": [
+        "UNSUBSTANTIATED",
+        "NARRATIVE_SUBSTITUTION"
+      ]
+    },
+    {
+      "taxonomy": "UNSUPPORTED_VICTORY_CLAIM",
+      "definition": "Spectacular operational result lacks evidence sufficient to establish it.",
+      "preferred_dispositions": [
+        "UNSUBSTANTIATED"
+      ]
+    },
+    {
+      "taxonomy": "REAL_TACTICAL_VICTORY_OVERLEVERAGED",
+      "definition": "A genuine tactical success is used to support a larger destruction/strategic conclusion that evidence does not establish.",
+      "preferred_dispositions": [
+        "PARTLY_CONFIRMED",
+        "MISLEADING",
+        "CONTRADICTED"
+      ]
+    },
+    {
+      "taxonomy": "ADMISSION_LATENCY",
+      "definition": "Physical loss is confirmed later; delay alone is not a lie without a specific contradictory claim.",
+      "preferred_dispositions": [
+        "CONFIRMED",
+        "UNRESOLVED"
+      ]
+    }
+  ],
+  "estimative_judgment": {
+    "analytic_likelihood_values": [
+      "ALMOST_CERTAIN",
+      "VERY_LIKELY",
+      "LIKELY",
+      "ROUGHLY_EVEN",
+      "UNLIKELY",
+      "VERY_UNLIKELY",
+      "REMOTE"
+    ],
+    "analytic_confidence_values": [
+      "HIGH",
+      "MODERATE",
+      "LOW"
+    ],
+    "rule": "Controlled disposition and estimative judgment are separate fields. A proposition can be MOSTLY_CONFIRMED with residual uncertainty. UNRESOLVED is reserved for cases where the evidence does not materially favor one live explanation.",
+    "required_fields": [
+      "analytic_likelihood",
+      "analytic_confidence",
+      "inference_basis",
+      "credible_alternatives",
+      "evidence_that_would_change_assessment"
+    ]
+  },
+  "unresolved_rule": "Use UNRESOLVED only when the evidence does not materially favor one live explanation. Do not use it merely because the assessment depends on reasonable inference or lacks a single dispositive source."
+}

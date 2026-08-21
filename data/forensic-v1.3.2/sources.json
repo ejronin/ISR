@@ -1,0 +1,2831 @@
+{
+  "sources": [
+    {
+      "source_id": "SRC-0030C941D433",
+      "legacy_ids": {},
+      "url": "https://registry.opendata.aws/nasa-operal2rtc-s1v1",
+      "outlet": "AWS Registry / NASA OPERA",
+      "title": "OPERA Radiometric Terrain Corrected Sentinel-1 SAR Backscatter",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "NASA-managed Sentinel-1 RTC derivative; CC BY 4.0; controlled AWS credentials required.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-00821B01F6B1",
+      "legacy_ids": {},
+      "url": "https://registry.opendata.aws/iceye-opendata",
+      "outlet": "AWS Registry of Open Data / ICEYE",
+      "title": "ICEYE Synthetic Aperture Radar (SAR) Open Dataset",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Curated public SAR imagery, CC BY 4.0.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-0091C751FF2A",
+      "legacy_ids": {},
+      "url": "https://www.usgs.gov/landsat-missions/landsat-data-access",
+      "outlet": "USGS",
+      "title": "Landsat Data Access",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Official Landsat discovery/access; suitable for broad context and large damage signatures.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-00FF7E1E6EA4",
+      "legacy_ids": {},
+      "url": "https://leadstories.com/hoax-alert/2026/04/fact-check-fake-image-shows-captured-american-in-iran-wearing-authentic-us-military-uniform.html",
+      "outlet": "Lead Stories",
+      "title": "Fact Check: Fake image shows captured American in Iran",
+      "publication_date": "2026-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DEBUNK",
+        "MEDIA_FORENSICS"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Identifies circulated captured-pilot image as AI-generated.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-03F069A69AAF",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/09/766530/what-happened-isfahan-us-pilot-rescue-mission-search-uranium",
+      "outlet": "Press TV",
+      "title": "What happened in Isfahan? A US pilot rescue mission or search for uranium?",
+      "publication_date": "2026-04-09",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "pilot-rescue-timeline.json",
+        "claim-audits.json"
+      ],
+      "proof_note": "Iranian state-aligned narrative extending rescue-loss and uranium-heist claims; useful as claim provenance, not independent confirmation.",
+      "lineage": "STATE_ALIGNED_CLAIM_SOURCE",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-040789CFC9C0",
+      "legacy_ids": {},
+      "url": "https://www.washingtonpost.com/investigations/2026/03/02/us-fighter-jets-crash-kuwait-iran-f15",
+      "outlet": "Washington Post",
+      "title": "Video analysis of U.S. F-15 losses over Kuwait",
+      "publication_date": "2026-03-02",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Video verification supports Kuwaiti friendly-fire attribution for at least one aircraft.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-0452986B8755",
+      "legacy_ids": {},
+      "url": "https://umbra.space/open-data",
+      "outlet": "Umbra",
+      "title": "Open Data Program",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "High-resolution SAR open-data program and licensing.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-083C057F9F6B",
+      "legacy_ids": {},
+      "url": "https://www.iranintl.com/en/202608150747",
+      "outlet": "Iran International",
+      "title": "Iranian official claims three pilots captured alive; Qatar denies",
+      "publication_date": "2026-08-15",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Reports Bagherzadeh claim that three named pilots were captured alive; Qatar denies.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-08F854FB61B7",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/us-can-only-confirm-about-third-irans-missile-arsenal-destroyed-sources-say-2026-03-27/",
+      "outlet": "Reuters",
+      "title": "U.S. can only confirm about a third of Iran's missile arsenal destroyed, sources say",
+      "publication_date": "2026-03-27",
+      "publication_time": null,
+      "author": "Phil Stewart, Idrees Ali, Jonathan Landay and Erin Banco",
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "TECHNICAL_ANALYSIS",
+        "BDA",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json"
+      ],
+      "proof_note": "Reports U.S. intelligence certainty on roughly one-third of Iran missile arsenal destroyed, another third damaged/destroyed/buried, similar drone assessment, 92% of large naval vessels sunk per CENTCOM, and >335 launchers neutralized per Israeli officials.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-0AD1D2E747EC",
+      "legacy_ids": {},
+      "url": "https://www.csis.org/analysis/calculating-cost-effectiveness-russias-drone-strikes",
+      "outlet": "CSIS",
+      "title": "Calculating the Cost-Effectiveness of Russia's Drone Strikes",
+      "publication_date": "2025-02-19",
+      "publication_time": null,
+      "author": "Neil Hollenbeck et al.",
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json"
+      ],
+      "proof_note": "Uses approximately $35,000 as a central Shahed-type UAV unit-cost estimate and discusses $20k-$80k source range.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-0C0023C8A3BF",
+      "legacy_ids": {},
+      "url": "https://english.news.cn/20260406/6146c0f1827343b393a80518f3e65b56/c.html",
+      "outlet": "Xinhua",
+      "title": "Iran raises possibility U.S. rescue was deception to steal uranium",
+      "publication_date": "2026-04-06",
+      "publication_time": "22:24 (publisher display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Reports Baghaei speculative wording: possibility should not be overlooked / could have been deception operation.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-1185C28B7D9A",
+      "legacy_ids": {},
+      "url": "https://mofa.gov.qa/en/qatar/latest-articles/latest-news/details/2026/04/06/prime-minister-and-minister-of-foreign-affairs-receives-phone-call-from-iran%27s-foreign-minister",
+      "outlet": "Qatar Ministry of Foreign Affairs",
+      "title": "Prime Minister and Minister of Foreign Affairs Receives Phone Call from Iran’s Foreign Minister",
+      "publication_date": "2026-04-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "qatar-iran-april-contacts.json"
+      ],
+      "proof_note": "Iranian FM called Qatar PM/FM; Qatar condemned Iranian targeting and urged diplomacy.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-12AF87A440B4",
+      "legacy_ids": {},
+      "url": "https://www.7atc.army.mil/Media-News/Video/dvpmoduleid/4969/videoid/1014441",
+      "outlet": "U.S. Army / CENTCOM",
+      "title": "CENTCOM Corsair strike video at Bandar Abbas",
+      "publication_date": "2026-07-12",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "BDA"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "imagery-index.json",
+        "damage-observations.json"
+      ],
+      "proof_note": "Official U.S. strike video of unmanned surface vessels attacking Iranian submarine/maintenance infrastructure.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-1393F5EA63DF",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/us-confirms-death-iranian-irgc-naval-commander-2026-03-26",
+      "outlet": "Reuters",
+      "title": "U.S. confirms death of IRGC Navy commander Tangsiri",
+      "publication_date": "2026-03-26",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "External death claim; useful for admission-latency chronology.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-13A00984DC6B",
+      "legacy_ids": {},
+      "url": "https://www.csis.org/analysis/air-superiority-twenty-first-century-lessons-iran-and-ukraine",
+      "outlet": "CSIS",
+      "title": "Air Superiority in the Twenty-First Century: Lessons from Iran and Ukraine",
+      "publication_date": "2025-10-10",
+      "publication_time": null,
+      "author": "Alexander Palmer and Kendall Ward",
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "FORCE_POSTURE",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Provides prewar Iranian air-defense composition: at least 10 S-200, 32 S-300 long-range systems, about 50 Mersad, at least 250 FM-80 and 29 Tor, plus unknown indigenous medium-range systems.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-1441BB878149",
+      "legacy_ids": {},
+      "url": "https://www.tasnimnews.ir/en/news/2026/03/15/3540997/source-us-or-israel-behind-attack-on-erbil-s-lanaz-refinery",
+      "outlet": "Tasnim News Agency",
+      "title": "Source: US or Israel Behind Attack on Erbil’s Lanaz Refinery",
+      "publication_date": "2026-03-15",
+      "publication_time": "10:00 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Unnamed military source alleges U.S./Israeli false-flag responsibility for Lanaz refinery and Kuwait civilian-airport radar attacks; claimant authority remains explicitly downgraded.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-1447993730D6",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/21/765634/silence-of-stealth-how-iran-shatteredinvincibility-us-f35-fighter-jet",
+      "outlet": "Press TV",
+      "title": "Silence of the stealth: How Iran shattered the 'invincibility' of US F-35 fighter jet",
+      "publication_date": "2026-03-21",
+      "publication_time": "08:22 (source display); updated 09:07",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "State-media feature escalates a real F-35 combat hit into a downing/destruction narrative while independent reporting supports damage and emergency landing.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-14E3846F6349",
+      "legacy_ids": {},
+      "url": "https://news.usni.org/wp-content/uploads/2017/03/Iran-022217SP.pdf",
+      "outlet": "Office of Naval Intelligence via USNI News",
+      "title": "Iranian Naval Forces: A Tale of Two Navies",
+      "publication_date": "2017-02-01",
+      "publication_time": null,
+      "author": "Office of Naval Intelligence",
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "TECHNICAL_ANALYSIS",
+        "FORCE_POSTURE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Documents IRGCN use of large numbers of standard Ashoora small boats fitted with mine rails, supporting treatment of the 30+ mine-laying vessels as small-craft equivalents rather than purpose-built large minelayers.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-18B8DD710B5A",
+      "legacy_ids": {},
+      "url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529692/military-source-says-israel-conducts-false-flag-attack-on-aramco",
+      "outlet": "Tasnim News Agency",
+      "title": "Military Source Says Israel Conducts “False Flag” Attack on Aramco",
+      "publication_date": "2026-03-02",
+      "publication_time": "21:34 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Unnamed informed military source attributes the Aramco attack to Israel; not equivalent to a formal IRGC communique.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-195296C296FD",
+      "legacy_ids": {},
+      "url": "https://history.state.gov/historicaldocuments/frus1969-76v27/d61",
+      "outlet": "U.S. Department of State, Office of the Historian",
+      "title": "Iran’s Purchase of F-14 Airplanes",
+      "publication_date": "1974-06-11",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "COST_MODEL",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "80 Iranian F-14s brought U.S. almost $1.8B, missiles excluded; ~$22.5M nominal average per aircraft.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-1C01A03ABB4C",
+      "legacy_ids": {},
+      "url": "https://www.bls.gov/cpi/tables/historical-cpi-u-201710.pdf",
+      "outlet": "U.S. Bureau of Labor Statistics",
+      "title": "Historical CPI-U",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "COST_MODEL"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "Historical annual CPI-U averages: 1970 38.8; 1972 41.8; 1974 49.3; 1992 140.3.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-1C1165CBCAC7",
+      "legacy_ids": {},
+      "url": "https://www.usni.org/magazines/proceedings/2026/july/video-3-lethal-us-drones-attack-iranian-sub-port-facility",
+      "outlet": "USNI Proceedings",
+      "title": "Video: 3 lethal U.S. drones attack Iranian sub port facility",
+      "publication_date": "2026-07-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Corroborating report on official U.S. strike video.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-1F07B15CD0B3",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/06/07/770023/Ramat-David-airbase-origin-of-attacks-on-Lebanon-hit-by-ballistic-missiles-IRGC",
+      "outlet": "Press TV",
+      "title": "Ramat David airbase hit by ballistic missiles: IRGC",
+      "publication_date": "2026-06-07",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "claim-audits.json",
+        "ceasefire-causality.json"
+      ],
+      "proof_note": "IRGC statement says ballistic-missile strike was retaliation for Israeli attacks in Lebanon.",
+      "lineage": "STATE_ALIGNED_CLAIM_SOURCE",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-2867CB793392",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/03/766276/Trump%E2%80%99s-%E2%80%98no-strategy%E2%80%99-war-downgraded-to-a-hunt-for-pilots-in-Iran--parliament-speaker",
+      "outlet": "Press TV",
+      "title": "Qalibaf commentary repeating F-35 identification",
+      "publication_date": "2026-04-03",
+      "publication_time": "19:14 (source display; updated 19:23)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Senior Iranian official publicly repeated the F-35 identification before the later correction.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-28754AD45AC2",
+      "legacy_ids": {},
+      "url": "https://www.airway.com.br/brasil-ficou-perto-de-comprar-cacas-mig-21-feitos-na-china/",
+      "outlet": "Airway",
+      "title": "Brasil ficou perto de comprar caças MIG-21 feitos na China",
+      "publication_date": "2019-03-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Reports a historical Chinese F-7M offer implying roughly $5M per aircraft including associated package elements; used only as a low-end legacy-fighter cost anchor.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-29B47381EC59",
+      "legacy_ids": {},
+      "url": "https://www.csis.org/analysis/preventing-irans-military-reconstitution",
+      "outlet": "CSIS",
+      "title": "Preventing Iran’s Military Reconstitution",
+      "publication_date": "2026-06-23",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "MATERIAL_LOSS",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "cost-methodology.md",
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "research-log.md"
+      ],
+      "proof_note": "CSIS June 2026 report: notes 6,770 combined Iranian drone/missile launches as of April 1, then separately states Iran expended an estimated 60% of drones and 30% of missile inventory 'during the conflict.' Because the report is published after the June 15 halt and does not tie those depletion percentages specifically to the Mar. 31 launch cutoff, they are retained as conflict-wide context and are not used to partition the Mar. 31 6,770-launch munitions model.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-2E51203B3913",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/turkey-says-nato-defences-downed-fourth-inbound-iranian-missile-2026-03-30",
+      "outlet": "Reuters",
+      "title": "Turkey says NATO defences downed fourth inbound Iranian missile",
+      "publication_date": "2026-03-30",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Reports Turkish/NATO attribution of four intercepted ballistic missiles to Iran since war start.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-2FFDAFCBBFBB",
+      "legacy_ids": {},
+      "url": "https://www.altair.com.pl/ukraina-sprzedaje-su-24m-za-1-3-ceny",
+      "outlet": "Altair",
+      "title": "Ukraina sprzedaje Su-24M za 1/3 ceny",
+      "publication_date": "2008-07-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Reports expert market estimate of approximately $5M-$7M for a refurbished 1986 Su-24M in 2008, while noting transaction uncertainty; used as a low historical anchor only.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-3300E710B6AC",
+      "legacy_ids": {},
+      "url": "https://www.janes.com/defence-intelligence-insights/defence-news/air/iran-conflict-2026-iranian-f-5-pilots-claim-credit-for-kuwaiti-friendly-fire-shootdowns",
+      "outlet": "Janes",
+      "title": "Iran conflict 2026: Iranian F-5 pilots claim credit for Kuwaiti friendly fire shootdowns",
+      "publication_date": "2026-06-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "claim-audits.json",
+        "aviation-reconciliation.json"
+      ],
+      "proof_note": "Three Iranian F-5 pilots interviewed alive on state TV; their claimed causal role in Kuwaiti friendly-fire F-15E losses remains unproven.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-34FA605EE6AB",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/death-toll-iranian-warship-dena-rises-87-after-torpedo-attack-2026-03-05",
+      "outlet": "Reuters",
+      "title": "Death toll from Iranian warship Dena rises after torpedo attack",
+      "publication_date": "2026-03-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "CASUALTY_CONFIRMATION",
+        "MATERIAL_LOSS"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Follow-up on Dena loss/admission timeline.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-35FB02E8E973",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/kuwait-intercepts-hostile-drones-third-day-iran-retaliatory-strikes-2026-03-02",
+      "outlet": "Reuters",
+      "title": "Kuwait intercepts hostile drones; U.S. F-15 losses attributed to Kuwaiti friendly fire",
+      "publication_date": "2026-03-02",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "CENTCOM said Kuwaiti air defenses mistakenly downed three U.S. F-15s; six crew survived.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-3826CE7F7FBB",
+      "legacy_ids": {
+        "collection": "S071"
+      },
+      "url": "https://www.bellingcat.com/resources/2026/04/07/tool-damage-assessment-destruction-sentinel-satellite-imagery-iran-us-gulf/",
+      "outlet": "Bellingcat",
+      "title": "When Satellite Imagery Goes Dark: New Tool Shows Damage in Iran and the Gulf",
+      "publication_date": "2026-04-07",
+      "publication_time": null,
+      "author": "Logan Williams et al.",
+      "source_roles": [
+        "BDA",
+        "SATELLITE_IMAGERY",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "imagery-index.json",
+        "iran-war-cost-estimate.json",
+        "damage-observations.json"
+      ],
+      "proof_note": "Sentinel-1 damage-proxy methodology and Sentinel-2 pre/post examples; exact Al Udeid warehouse coordinate.",
+      "lineage": "independent technical/imagery analysis",
+      "source_origin": "BASELINE_V1_2_REUSED"
+    },
+    {
+      "source_id": "SRC-3838B34DAF75",
+      "legacy_ids": {},
+      "url": "https://history.state.gov/historicaldocuments/frus1969-76ve04/d234",
+      "outlet": "U.S. Department of State, Office of the Historian",
+      "title": "Enhance Plus / Iranian F-5A valuation",
+      "publication_date": "1972-11-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "COST_MODEL",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "32 F-5A grant aircraft cost $24.9M, average $778k; historical variant proxy only.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-3969BF66615A",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/07/765079/Iran-says-82-US-or-Israeli-drones-shot-down-since-war-began",
+      "outlet": "Press TV",
+      "title": "Iranian Army says 82 American and Israeli drones shot down since war began",
+      "publication_date": "2026-03-07",
+      "publication_time": "14:30 (source display); updated 21:43",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Early aggregate aircraft/UAV kill total requiring itemized reconciliation.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-3BE40AD42842",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/20/765601/Qalibaf-Iran-strike-on-US-F-35-signals-collapse-of-order",
+      "outlet": "Press TV",
+      "title": "Qalibaf: Iran strike on U.S. F-35 signals collapse of order",
+      "publication_date": "2026-03-20",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Uses a real reported F-35 combat hit/emergency landing as basis for destruction/downing rhetoric.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-419684EA4E28",
+      "legacy_ids": {},
+      "url": "https://documentation.dataspace.copernicus.eu/Applications/Browser.html",
+      "outlet": "Copernicus Data Space Ecosystem",
+      "title": "Copernicus Browser documentation",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Official discovery/viewing workflow for Sentinel imagery.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-42F3F44BC6EE",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/much-irans-near-bomb-grade-uranium-likely-be-isfahan-iaeas-grossi-says-2026-03-09/",
+      "outlet": "Reuters",
+      "title": "Much of Iran's near-bomb-grade uranium likely to be in Isfahan, IAEA's Grossi says",
+      "publication_date": "2026-03-09",
+      "publication_time": null,
+      "author": "Francois Murphy",
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "TECHNICAL_ANALYSIS",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iranian-claim-evolution.json"
+      ],
+      "proof_note": "IAEA chief says a little over 200 kg of 60%-enriched uranium had been at Isfahan and likely remained there; no observed movement.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-42FE75392B8C",
+      "legacy_ids": {},
+      "url": "https://assets.recordedfuture.com/insikt-report-pdfs/2024/TA-IR-2024-0801.pdf",
+      "outlet": "Recorded Future / Insikt Group",
+      "title": "Production and Proliferation: The Risks of the Burgeoning Iranian Drone Industry",
+      "publication_date": "2024-08-01",
+      "publication_time": null,
+      "author": "Insikt Group",
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Reports leaked production-contract economics: approximately $193k per Shahed-136 in a 6,000-unit export/technology-transfer deal, with total contract about $1.75B; used only as an upper export-sale analogue, not domestic marginal production cost.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-45DF00C2C20E",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/06/08/770088/Iran-disrupted-ceasefire-paper-violations-ground",
+      "outlet": "Press TV",
+      "title": "Iran disrupted ceasefire on paper over violations on ground",
+      "publication_date": "2026-06-08",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Iranian leadership framing of June escalation and ceasefire scope/violations.",
+      "lineage": "STATE_ALIGNED_CLAIM_SOURCE",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-481DC6A8E2DB",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/06/766419/how-iran-air-defences-turned-april3-blackest-day-us-military-aviation-history",
+      "outlet": "Press TV",
+      "title": "Misidentification and clarification: from F-35 to F-15E",
+      "publication_date": "2026-04-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CORRECTION",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Iranian state media explicitly describes the original F-35 identification as a misidentification and identifies debris as F-15E.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-48A3540B2747",
+      "legacy_ids": {},
+      "url": "https://jinsa.org/wp-content/uploads/2025/07/Cost-Estimates-During-the-U.S.-Israel-Iran-War-07-21-25.pdf",
+      "outlet": "JINSA",
+      "title": "Missile and Interceptor Cost Estimates During the U.S.-Israel-Iran War",
+      "publication_date": "2025-07-21",
+      "publication_time": null,
+      "author": "Ari Cicurel",
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "ECONOMIC_DATA",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "Analyst cost model for Iranian MRBMs; uses Emad ~$250k, Ghadr ~$5M and Khorramshahr-4 ~$8M and publishes low/medium/high mix scenarios.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-48D30EB0A3C7",
+      "legacy_ids": {},
+      "url": "https://theaviationist.com/2026/04/11/early-warning-radar-al-udeid-damage/",
+      "outlet": "The Aviationist",
+      "title": "New Images Provide Clearest View Yet of Damage to U.S.-made AN/FPS-132 Early Warning Radar in Qatar",
+      "publication_date": "2026-04-11",
+      "publication_time": null,
+      "author": "David Cenciotti",
+      "source_roles": [
+        "BDA",
+        "SATELLITE_IMAGERY",
+        "TECHNICAL_ANALYSIS",
+        "CONTINUITY_EVIDENCE"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "facility-claim-audits.json",
+        "iranian-claim-evolution.json",
+        "public-assessments.json"
+      ],
+      "proof_note": "Planet imagery and later photographs show the AN/FPS-132 radar was hit and physically damaged, including burnt components; repairability/current operational status remains uncertain.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-4A25C20F8AFD",
+      "legacy_ids": {},
+      "url": "https://www.wsj.com/livecoverage/iran-war-news-2026/card/loss-of-jet-follows-weeks-of-war-without-a-u-s-plane-downed-over-iran-45M5qykkmOiathjdCrSt",
+      "outlet": "Wall Street Journal",
+      "title": "U.S. F-35 damaged in combat and landed safely",
+      "publication_date": "2026-03",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Reports F-35A damage and emergency landing; pilot stable; does not support destruction.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-4B82C94340A2",
+      "legacy_ids": {},
+      "url": "https://www.navalnews.com/naval-news/2026/03/italys-drass-will-provide-six-new-generation-compact-submarines-in-addition-to-sdvs-to-indonesia/",
+      "outlet": "Naval News",
+      "title": "Italy’s DRASS will provide six new-generation compact submarines in addition to SDVs to Indonesia",
+      "publication_date": "2026-03-04",
+      "publication_time": null,
+      "author": "Luca Peruzzi",
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "Compact-submarine replacement analogue: first two boats plus support/training about $480M; six-boat program plus training/logistics about $1.4B.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-4B96F4B7634C",
+      "legacy_ids": {},
+      "url": "https://www.investing.com/news/commodities-news/us-official-denies-claim-us-aircraft-destroyed-in-irans-bushehr-4715719",
+      "outlet": "Investing.com / Reuters syndication",
+      "title": "U.S. official denies claim aircraft destroyed in Bushehr",
+      "publication_date": "2026-05-29",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "COUNTEREVIDENCE",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Reports CENTCOM statement all U.S. aircraft accounted for and none shot down.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-4E13486C67AC",
+      "legacy_ids": {},
+      "url": "https://www.asafm.army.mil/Portals/72/Documents/BudgetMaterial/2023/Base%20Budget/Procurement/MSLS_ARMY.pdf",
+      "outlet": "U.S. Department of the Army",
+      "title": "FY 2023 Missile Procurement, Army — HIMARS launcher cost exhibit",
+      "publication_date": "2022-03-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Official procurement exhibit gives FY2023 HIMARS launcher recurring unit cost about $5.625M and gross system unit cost about $6.77M; used only as a modern high-capability TEL/launcher analogue.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-4E31F2F07926",
+      "legacy_ids": {},
+      "url": "https://gulfnews.com/business/energy/fal-oil-faces-forced-sale-of-tanker-1.1075245",
+      "outlet": "Gulf News / Bloomberg",
+      "title": "FAL Oil faces forced sale of tanker",
+      "publication_date": "2012-09-14",
+      "publication_time": null,
+      "author": "Bloomberg",
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Reports a $62.4M 2010 loan refinancing construction of two Aframax tankers and 2010 fair-market value of $56M-$58M for one vessel; used as merchant-hull anchor for converted Iranian AFSB/power-projection ships.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-526EE786BDCD",
+      "legacy_ids": {},
+      "url": "https://ng.investing.com/currencies/usd-irr-historical-data",
+      "outlet": "Investing.com",
+      "title": "USD/IRR historical data",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "COST_MODEL",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Aug 19 2026 displayed USD/IRR 1,374,600; used only as sensitivity proxy, not an official or free-market truth.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-551A9C2DB97C",
+      "legacy_ids": {},
+      "url": "https://www.washingtonpost.com/investigations/2026/05/06/iran-us-bases-satellite-images",
+      "outlet": "Washington Post",
+      "title": "Satellite imagery documents damage at U.S. bases across Gulf",
+      "publication_date": "2026-05-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "SATELLITE_IMAGERY",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Documents structures/equipment damaged or destroyed at multiple bases; useful for facility proposition audit.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-59F8B0ECCEC9",
+      "legacy_ids": {},
+      "url": "https://www.tasnimnews.ir/en/Archive/1192/datetime/2026-04-03",
+      "outlet": "Tasnim News Agency",
+      "title": "April 3, 2026 archive",
+      "publication_date": "2026-04-03",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Preserves sequence of possible-capture and rescue-failure stories.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-5B3CA5C34B02",
+      "legacy_ids": {},
+      "url": "https://missilethreat.csis.org/missile/shahed-131-and-136/",
+      "outlet": "CSIS Missile Threat",
+      "title": "Shahed-131 and -136",
+      "publication_date": "2026-06-02",
+      "publication_time": null,
+      "author": "Missile Defense Project",
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "Analyst cost range for Shahed-131/136 of approximately $20,000-$50,000 per UAV.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-5B933FF9C911",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/qatar-denies-detaining-iranian-pilots-says-it-found-remains-one-2026-08-15",
+      "outlet": "Reuters",
+      "title": "Qatar denies detaining Iranian pilots, says it found remains of one",
+      "publication_date": "2026-08-15",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "aviation-reconciliation.json"
+      ],
+      "proof_note": "Qatar denied detaining pilots and said remains of one pilot were found; Qatar contacted Iran about return.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-5BC8070E8CD9",
+      "legacy_ids": {},
+      "url": "https://leadstories.com/hoax-alert/2026/04/fact-check-video-does-not-show-american-f15-pilot-captured-by-iran-in-april-2026.html",
+      "outlet": "Lead Stories",
+      "title": "Fact Check: Video does not show American F-15 pilot captured by Iran in April 2026",
+      "publication_date": "2026-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DEBUNK",
+        "MEDIA_FORENSICS"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Traces circulated captured-pilot footage to 1991 David Eberly captivity in Iraq.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-5C8E18A6126E",
+      "legacy_ids": {},
+      "url": "https://apnews.com/article/fde473d07fb59e871a71cd2ad2ffe4fe",
+      "outlet": "Associated Press",
+      "title": "A mountain hideout and aircraft under fire: US carries out daring rescue of service member in Iran",
+      "publication_date": "2026-04-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "pilot-rescue-timeline.json",
+        "claim-audits.json"
+      ],
+      "proof_note": "Independent reconstruction; both aviators rescued; Iranian fire hit helicopters; transport losses were U.S. self-destruction after malfunction.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-5ED97C0F939B",
+      "legacy_ids": {},
+      "url": "https://en.defence-ua.com/news/russia_starts_supplying_yak_130_to_iran_what_kind_of_aircraft_it_is_and_its_purpose-7830.html",
+      "outlet": "Defense Express",
+      "title": "Russia Starts Supplying Yak-130 to Iran: What Kind of Aircraft It is and Its Purpose",
+      "publication_date": "2023-09-02",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Reports declared Yak-130 export price around $15M and domestic Russian price around $7M; used as a bounded aircraft-cost anchor.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-60B8CB78C1E5",
+      "legacy_ids": {},
+      "url": "https://apnews.com/article/ba738b9fb8803f28313a19df8bbcac19",
+      "outlet": "Associated Press",
+      "title": "Qatar rejects Iranian claim it secretly holds Iranian pilots",
+      "publication_date": "2026-08-15",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Preserves Iran claim and Qatar response, including Qatar account of one recovered body and April invitation.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-60BA56B2A294",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/28/767702/Iranian-Air-Force-conducted-sorties-to-strike-US-bases-in-Iraq%2C-Kuwait%2C-Qatar--Army",
+      "outlet": "Press TV",
+      "title": "Iran's Air Force conducted sorties to strike US bases in Iraq, Kuwait, Qatar early in war: Army",
+      "publication_date": "2026-04-28",
+      "publication_time": "16:26 (source display); updated 16:34",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Article quotes Army spokesman saying more than 170 enemy aircraft were hit, including 16 fighter jets; “hit” is preserved as a different metric from “downed.”",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-6801FFDD232B",
+      "legacy_ids": {},
+      "url": "https://factcheck.afp.com/doc.afp.com.A2LM9CQ",
+      "outlet": "AFP Fact Check",
+      "title": "AI-generated clip and old video shared in false posts about Iran striking USS Abraham Lincoln",
+      "publication_date": "2026-03-12",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DEBUNK",
+        "MEDIA_FORENSICS"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "AFP identifies one clip as AI-generated and another as old footage; use as visual-media debunk, not proof of official Iranian authorship.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-6843BB957E02",
+      "legacy_ids": {},
+      "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-march-1-2026",
+      "outlet": "Critical Threats Project / ISW",
+      "title": "Iran Update Evening Special Report, March 1, 2026",
+      "publication_date": "2026-03-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "MATERIAL_LOSS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "claim-audits.json",
+        "aviation-reconciliation.json",
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "Reports Israeli destruction of one Iranian F-4 and two F-5 aircraft preparing to take off at Tabriz.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-684F77C6EB10",
+      "legacy_ids": {},
+      "url": "https://www.usgs.gov/tools/earthexplorer",
+      "outlet": "USGS",
+      "title": "EarthExplorer",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Official USGS imagery discovery/download portal.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-68993464F927",
+      "legacy_ids": {},
+      "url": "https://www.washingtonpost.com/national-security/2026/04/01/trump-commando-plan-seize-iran-uranium",
+      "outlet": "Washington Post",
+      "title": "Risky commando plan to seize Iran’s uranium came at Trump’s request",
+      "publication_date": "2026-04-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BACKGROUND_ONLY",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "claim-audits.json"
+      ],
+      "proof_note": "Separate U.S. contingency plan to seize uranium; complex multi-week operation; not evidence rescue mission executed it.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-694207959BE5",
+      "legacy_ids": {},
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4451965/us-continues-strikes-into-iran-after-successful-rescue-of-f-15e-aircrew",
+      "outlet": "U.S. Central Command",
+      "title": "U.S. Continues Strikes into Iran after Successful Rescue of F-15E Aircrew",
+      "publication_date": "2026-04-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "CENTCOM says two U.S. service members were recovered in separate search-and-rescue missions.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-6C64F6A3D5B7",
+      "legacy_ids": {},
+      "url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529455/number-of-downed-us-warplanes-rises-to-3",
+      "outlet": "Tasnim News Agency",
+      "title": "Number of Downed US Warplanes Rises to 3",
+      "publication_date": "2026-03-02",
+      "publication_time": "16:14 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Khatam al-Anbiya claim taking credit for all three U.S. fighter losses in Kuwait.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-6ED7510CE93D",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/yemeni-military-targets-sanaa-airport-runway-stop-iranian-plane-landing-defence-2026-07-13",
+      "outlet": "Reuters",
+      "title": "Houthis fire missiles at Saudi Arabia, breaking years of calm",
+      "publication_date": "2026-07-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "yemen-mahan-chain.json"
+      ],
+      "proof_note": "Yemeni government claimed runway strike intended to prevent Iranian plane landing; Houthis blamed Saudi Arabia; Saudi communication office initially did not comment.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-6FEC9305D8FE",
+      "legacy_ids": {},
+      "url": "https://mofa.gov.qa/en/qatar/latest-articles/latest-news/details/2026/04/26/prime-minister-and-minister-of-foreign-affairs-receives-phone-call-from-iran%27s-foreign-minister",
+      "outlet": "Qatar Ministry of Foreign Affairs",
+      "title": "Prime Minister and Minister of Foreign Affairs Receives Phone Call from Iran’s Foreign Minister",
+      "publication_date": "2026-04-26",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "qatar-iran-april-contacts.json"
+      ],
+      "proof_note": "Iranian FM called; mediation, peace, and freedom of navigation discussed.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-704B05BC4EF9",
+      "legacy_ids": {},
+      "url": "https://www.calibredefence.co.uk/us-centcom-marks-first-operational-use-of-corsair-sea-drones-against-iran",
+      "outlet": "Calibre Defence",
+      "title": "US CENTCOM marks first operational use of Corsair sea drones against Iran",
+      "publication_date": "2026-07-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "GEOLOCATION_ONLY",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "imagery-index.json",
+        "damage-observations.json"
+      ],
+      "proof_note": "Third-party geolocation of July 12 Bandar Abbas strike point: 27°08′26.46″N 56°12′41.29″E.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-733C755F8DC0",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/31/766133/Iran-warns-of-new-false-flag-attacks-denies-reports-of-missile-strike-on-Turkey",
+      "outlet": "Press TV",
+      "title": "Iran warns of new false-flag attacks, denies reports of missile strike on Turkey",
+      "publication_date": "2026-03-31",
+      "publication_time": "15:17 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Araqchi calls reports of an Iranian launch toward Turkey baseless and warns of repeated false-flag operations by “enemies”; the source does not specifically identify Israel as the actor in this statement.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-739B61482DE5",
+      "legacy_ids": {},
+      "url": "https://www.aa.com.tr/en/middle-east/iran-raises-suspicion-of-uranium-theft-plot-after-clashes-with-us-forces/3895088",
+      "outlet": "Anadolu Agency",
+      "title": "Iran raises suspicion of uranium theft plot after clashes with US forces",
+      "publication_date": "2026-04-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "pilot-rescue-timeline.json",
+        "claim-audits.json"
+      ],
+      "proof_note": "Quotes Iran MFA spokesman presenting uranium-theft theory as a possibility, not demonstrated fact.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-744CF2CF4573",
+      "legacy_ids": {},
+      "url": "https://factcheck.afp.com/doc.afp.com.A2AL99E",
+      "outlet": "AFP Fact Check",
+      "title": "Video does not prove Iranian strike on U.S. destroyer; footage is RIMPAC 2022",
+      "publication_date": "2026-03",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DEBUNK",
+        "MEDIA_FORENSICS"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Traces viral proof footage to decommissioned ship sinking during RIMPAC 2022.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-7471ECB26165",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/business/aerospace-defense/how-perilous-us-rescue-mission-iran-nearly-went-off-course-2026-04-05",
+      "outlet": "Reuters",
+      "title": "How a perilous US rescue mission in Iran nearly went off course",
+      "publication_date": "2026-04-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE",
+        "MATERIAL_LOSS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "pilot-rescue-timeline.json",
+        "claim-audits.json"
+      ],
+      "proof_note": "Detailed reconstruction: two MC-130s disabled mechanically; U.S. destroyed disabled aircraft; rescue force extracted; Black Hawks were hit but escaped.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-7538CF574DDF",
+      "legacy_ids": {},
+      "url": "https://www.airandspaceforces.com/us-air-operations-center-qatar-severely-damaged-iran/",
+      "outlet": "Air & Space Forces Magazine",
+      "title": "Iran Severely Damaged US Air Ops Center in Qatar Soon After War Began",
+      "publication_date": "2026-06-05",
+      "publication_time": null,
+      "author": "Chris Gordon",
+      "source_roles": [
+        "BDA",
+        "CONTINUITY_EVIDENCE",
+        "LATER_OUTCOME",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "facility-claim-audits.json",
+        "iranian-claim-evolution.json",
+        "public-assessments.json"
+      ],
+      "proof_note": "Reports multiple Iranian missiles rendered the Al Udeid CAOC inoperable; air campaign continued because command had been shifted to Shaw before hostilities.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-760441289A12",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/04/764950/IRGC-says-dismantled-US-radar-in-Qatar-attacked-destroyer-in-Indian-Ocean",
+      "outlet": "Press TV",
+      "title": "IRGC says it attacked U.S. destroyer and supply ship in Indian Ocean",
+      "publication_date": "2026-03-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "IRGC claim of Qadr/Talaeiyeh missile hits and large fires ~650 km from Iran.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-77EEF3BA2193",
+      "legacy_ids": {},
+      "url": "https://www.shaw.af.mil/News/Article-Display/Article/213298/team-shaw-welcomes-third-army/",
+      "outlet": "U.S. Air Force / Shaw AFB",
+      "title": "Team Shaw welcomes Third Army",
+      "publication_date": "2011-05-25",
+      "publication_time": null,
+      "author": "20th Fighter Wing Public Affairs / Third Army Public Affairs",
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Official source describes Patton Hall as a $100M, 320,000-square-foot command-and-control headquarters supporting up to 1,500 personnel; used as a high-end physical C2 facility analogue.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-7920A7C9C230",
+      "legacy_ids": {},
+      "url": "https://mofa.gov.qa/en/qatar/latest-articles/latest-news/details/2026/04/13/prime-minister-and-minister-of-foreign-affairs-receives-call-from-iran-fm",
+      "outlet": "Qatar Ministry of Foreign Affairs",
+      "title": "Prime Minister and Minister of Foreign Affairs Receives Call from Iran FM",
+      "publication_date": "2026-04-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "qatar-iran-april-contacts.json"
+      ],
+      "proof_note": "Iranian FM called; both stressed maintaining U.S.-Iran ceasefire; Qatar urged mediation and open maritime routes.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-79DFD5D661A7",
+      "legacy_ids": {},
+      "url": "https://registry.opendata.aws/capella_opendata",
+      "outlet": "AWS Registry of Open Data / Capella Space",
+      "title": "Capella Space Synthetic Aperture Radar (SAR) Open Dataset",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Public SAR dataset, CC BY 4.0.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-7ABCD4FF1258",
+      "legacy_ids": {},
+      "url": "https://www.fema.gov/sites/default/files/2020-07/fema_publication_321_policy_digest_01_01_08.pdf",
+      "outlet": "FEMA",
+      "title": "Public Assistance Policy Digest — Repair or Replacement 50% Rule",
+      "publication_date": "2008-01-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Defines the 50% repair/replacement rule for facilities; used as an engineering severity anchor for repair/reconstitution scenarios.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-7CDC817909BB",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/iran-says-several-enemy-flying-objects-destroyed-during-us-pilot-rescue-mission-2026-04-05",
+      "outlet": "Reuters",
+      "title": "Iran says several enemy aircraft destroyed during US pilot rescue mission",
+      "publication_date": "2026-04-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "pilot-rescue-timeline.json",
+        "claim-audits.json"
+      ],
+      "proof_note": "Records Iranian claim of two C-130s/two Black Hawks destroyed and Reuters inability to verify at publication; confirms second airman recovered.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-7E2DE3FC127A",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/07/766446/press-tv-exclusive-us-suffered-strategic-defeat-failed-isfshan-operation",
+      "outlet": "Press TV",
+      "title": "Press TV Exclusive: U.S. suffered strategic defeat in failed Isfahan operation",
+      "publication_date": "2026-04-07",
+      "publication_time": "11:24 (source display; updated 13:25)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "State-media narrative escalates from possibility to assertion that operation was not a rescue and targeted an Isfahan nuclear facility.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-7EC6E3912A73",
+      "legacy_ids": {},
+      "url": "https://www.asafm.army.mil/Portals/72/Documents/BudgetMaterial/2025/Base%20Budget/Military%20Construction/Regular%20Army%20Military%20Construction%20Army%2C%20Army%20Family%20Housing%20and%20Homeowners%20Assistance.pdf",
+      "outlet": "U.S. Department of the Army",
+      "title": "FY 2025 Military Construction — McAlester AAP Ammunition Demolition Shop",
+      "publication_date": "2024-03-08",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Official MILCON project prices a specialized 30,000 sq ft ammunition-process facility at $74M plus $21.742M installed equipment from other appropriations; used as an industrial-line replacement analogue, not a like-for-like Iranian factory quote.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-81A981954F88",
+      "legacy_ids": {},
+      "url": "https://www.navalnews.com/naval-news/2025/04/lithuanian-navy-procures-two-fast-attack-crafts-armed-with-spike-nlos/",
+      "outlet": "Naval News",
+      "title": "Lithuanian Navy Procures Two Fast Attack Crafts Armed with SPIKE NLOS",
+      "publication_date": "2025-04-08",
+      "publication_time": null,
+      "author": "Naval News Staff",
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "Fast-attack craft capability analogue: €22M contract for two missile-armed multi-role attack boats.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-82BAC5BDEA6C",
+      "legacy_ids": {},
+      "url": "https://history.state.gov/historicaldocuments/frus1969-76ve04/d103",
+      "outlet": "U.S. Department of State, Office of the Historian",
+      "title": "F-4s for Iran",
+      "publication_date": "1970-12-07",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "COST_MODEL",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "Iranian F-4E estimated flyaway unit price $3.71M before Dec 31 1970, $3.84M after.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-82DCB357724B",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/13/765340/Iran-dismisses-reports-of-missile-launch-towards-Turkey",
+      "outlet": "Press TV",
+      "title": "Iran dismisses reports of missile launch towards Turkey",
+      "publication_date": "2026-03-13",
+      "publication_time": "18:54 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Iranian embassy denial following further intercept reporting.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-833C85C5A4D4",
+      "legacy_ids": {},
+      "url": "https://www.hrw.org/news/2026/07/28/strikes-endangering-civilians-in-yemen-and-saudi-arabia",
+      "outlet": "Human Rights Watch",
+      "title": "Strikes Endangering Civilians in Yemen and Saudi Arabia",
+      "publication_date": "2026-07-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "INDEPENDENT_CONFIRMATION",
+        "BDA"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "yemen-mahan-chain.json"
+      ],
+      "proof_note": "Satellite analysis: Yemeni government forces in coalition with Saudi Arabia used at least five munitions; three hit Sanaa airport runway; intended to stop Mahan flight per Yemeni government.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-88034182D581",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/15/765383/US-made-copy-of-Shahed-drone-used-to-stage-false-flag-attacks-on-region-Iran-Armed-Forces",
+      "outlet": "Press TV",
+      "title": "US-made copy of Shahed drone used to stage false-flag attacks on region: Iran Armed Forces",
+      "publication_date": "2026-03-15",
+      "publication_time": "00:42 (source display); updated 01:07",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Press TV renders a Khatam al-Anbiya statement alleging U.S./Israeli deployment of a Shahed-136 copy called Lucas in regional false-flag attacks.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-88F5D65E4AC0",
+      "legacy_ids": {},
+      "url": "https://www.washingtonpost.com/archive/politics/2006/04/22/russia-rejects-us-appeal-on-iran-span-classbankheaddisputed-sale-of-missile-system-to-proceed-moscow-saysspan/b4ef9446-573e-46b7-8e0c-1b2d86bef85b/",
+      "outlet": "The Washington Post",
+      "title": "Russia Rejects U.S. Appeal on Iran",
+      "publication_date": "2006-04-21",
+      "publication_time": null,
+      "author": "Bradley Graham",
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Reports 29 Tor-M1 systems for Iran under a $700 million Russian contract; cost anchor for short-range air-defense equipment.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-95219D950347",
+      "legacy_ids": {},
+      "url": "https://leadstories.com/hoax-alert/2026/04/fact-check-image-does-not-show-american-f15-crewmember-after-rescue-from-iran.html",
+      "outlet": "Lead Stories",
+      "title": "Fact Check: Image Does NOT Show American F-15 Crew Member After Rescue From Iran -- It’s AI-Generated",
+      "publication_date": "2026-04-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DEBUNK",
+        "MEDIA_FORENSICS"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "AI-image forensic context; not attributed to an official Iranian claimant.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-96222C18BBBB",
+      "legacy_ids": {},
+      "url": "https://registry.opendata.aws/umbra-open-data",
+      "outlet": "AWS Registry of Open Data / Umbra",
+      "title": "Umbra Synthetic Aperture Radar (SAR) Open Data",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SATELLITE_IMAGERY",
+        "BACKGROUND_ONLY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Open SAR archive; no account required for S3 listing; CC BY 4.0.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-98738E8E4940",
+      "legacy_ids": {},
+      "url": "https://www.washingtonpost.com/investigations/2026/03/13/iran-damage-map-satellite-imagery",
+      "outlet": "Washington Post",
+      "title": "Satellite imagery maps structural damage across Iran",
+      "publication_date": "2026-03-13",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "SATELLITE_IMAGERY"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Broad Sentinel-derived structural damage analysis; useful full-scope context.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-98A42AC97EEA",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/iran-stored-highly-enriched-uranium-underground-site-iaea-report-says-2026-02-27/",
+      "outlet": "Reuters",
+      "title": "IAEA report says Iran stored highly enriched uranium at Isfahan tunnel complex",
+      "publication_date": "2026-02-27",
+      "publication_time": null,
+      "author": "Francois Murphy",
+      "source_roles": [
+        "PREWAR_PLANNING",
+        "INDEPENDENT_CONFIRMATION",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iranian-claim-evolution.json"
+      ],
+      "proof_note": "IAEA report confirms uranium enriched to 20% and 60% had been stored at the Isfahan tunnel complex immediately before the war.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-9AD0DC8629DD",
+      "legacy_ids": {},
+      "url": "https://www.tasnimnews.ir/en/news/2026/04/03/3555907/us-effort-to-recover-downed-fighter-pilot-fails",
+      "outlet": "Tasnim News Agency",
+      "title": "US Effort to Recover Downed Fighter Pilot Fails",
+      "publication_date": "2026-04-03",
+      "publication_time": "15:18 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Headline states failure; body temporally qualifies that efforts had so far been futile.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-9AD88556FB4C",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/03/766244/Another-advanced-US-je",
+      "outlet": "Press TV",
+      "title": "Iran downs two advanced US jets, including second F-35",
+      "publication_date": "2026-04-03",
+      "publication_time": "05:46 (source display; updated 07:01)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Press TV reports IRGC/Khatam identification of downed jet as F-35; later corrected by Iranian state media.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-9DECDDEFF7BE",
+      "legacy_ids": {},
+      "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+      "outlet": "European Central Bank",
+      "title": "Euro foreign exchange reference rates",
+      "publication_date": "2026-08-18",
+      "publication_time": null,
+      "author": "European Central Bank",
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-war-cost-estimate.json",
+        "iran-loss-envelopes.json"
+      ],
+      "proof_note": "ECB reference rate used for cost-normalization sensitivity: EUR 1 = USD 1.1576 on Aug. 18, 2026, the latest reference retrieved during this pass.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-9E2E8200E299",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/irans-state-tv-says-us-aircraft-destroyed-irans-bushehr-no-confirmation-us-2026-05-28",
+      "outlet": "Reuters",
+      "title": "Iran state TV says U.S. aircraft destroyed near Bushehr; no U.S. confirmation",
+      "publication_date": "2026-05-28",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Preserves Iranian state/local claim while noting lack of U.S. confirmation.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-A139BB200FD8",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/19/767161/Myth-of-stealth-fighters-over-Iranian-hunter-of-US-F-35-jet",
+      "outlet": "Press TV",
+      "title": "‘Myth of US stealth fighters over’: Iranian hunter of US F-35 jet declares",
+      "publication_date": "2026-04-19",
+      "publication_time": "11:10 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Officer describes the F-35 as downed and says “We completely destroyed a Lockheed Martin technology”; record does not paraphrase that quote into stronger physical-destruction wording than the source supports.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-A1D1012045C0",
+      "legacy_ids": {},
+      "url": "https://media.defense.gov/2020/sep/09/2002493541/-1/-1/1/dodig-2020-123.pdf",
+      "outlet": "Department of Defense Inspector General",
+      "title": "Audit of the F-35 Program Office’s Beyond Economical Repair Process for Parts",
+      "publication_date": "2020-09-09",
+      "publication_time": null,
+      "author": "DoD Inspector General",
+      "source_roles": [
+        "TECHNICAL_ANALYSIS",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Documents beyond-economical-repair thresholds including DCMA/Air Force 75%, Navy 85%, Marine Corps 65%; used to bound repair-vs-replacement severity, not to claim Iranian maintenance policy.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-ADD074EC62A4",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/06/14/770448/Resistance-will-not-be-cornered-Ghalibaf-warns-Israel",
+      "outlet": "Press TV",
+      "title": "Resistance will not be cornered, Ghalibaf warns Israel",
+      "publication_date": "2026-06-14",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "claim-audits.json",
+        "ceasefire-causality.json"
+      ],
+      "proof_note": "Iranian state-aligned account explicitly notes April ceasefire did not explicitly cover Lebanon while Iran treated attacks on resistance forces as breaches.",
+      "lineage": "STATE_ALIGNED_CLAIM_SOURCE",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-AF8FAEEE34BC",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/25/765847/IRGC-air-defense-units-shoot-down-hostile-drone-over-southern-Iran",
+      "outlet": "Press TV",
+      "title": "IRGC air defense units shoot down hostile drone over southern Iran",
+      "publication_date": "2026-03-25",
+      "publication_time": "16:45 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Article includes the aggregate assertion that hostile drones destroyed since the war began had surpassed 130.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-B106A3769146",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/sri-lanka-rescues-30-people-board-distressed-iranian-ship-foreign-minister-says-2026-03-04",
+      "outlet": "Reuters",
+      "title": "Sri Lanka rescues survivors from Iranian naval vessel Dena",
+      "publication_date": "2026-03-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "MATERIAL_LOSS"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Physical-loss evidence for Dena and rescue of survivors.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-B3BDC6765429",
+      "legacy_ids": {},
+      "url": "https://haftshahraria.com/articles/%D8%A8%D8%B1%D8%A2%D9%88%D8%B1%D8%AF-%D9%87%D8%B2%DB%8C%D9%86%D9%87-%D8%B3%D8%A7%D8%AE%D8%AA-%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86",
+      "outlet": "Haft Shahr Aria Consulting Engineers",
+      "title": "1405 building construction cost estimates",
+      "publication_date": null,
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "COST_MODEL",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Iran-local structural construction benchmark; simple workshop/warehouse 23.851m toman/m², crisis hall 33.024m, higher-specialty categories up to 66.051m; excludes specialized equipment.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-B4933A0EA8F4",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/iran-confirms-death-revolutionary-guards-navy-commander-tangsiri-statement-says-2026-03-30",
+      "outlet": "Reuters",
+      "title": "Iran confirms death of IRGC Navy commander Tangsiri",
+      "publication_date": "2026-03-30",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Iranian confirmation four days after external announcement; no interim denial inferred.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-C00E5B404A2B",
+      "legacy_ids": {},
+      "url": "https://www.bellingcat.com/news/2026/04/24/make-iran-ungovernable-tracking-efforts-to-destroy-irans-police-infrastructure/",
+      "outlet": "Bellingcat",
+      "title": "“Make Iran Ungovernable” – Tracking Efforts To Destroy Iran’s Police Infrastructure",
+      "publication_date": "2026-04-24",
+      "publication_time": null,
+      "author": "Jake Godin",
+      "source_roles": [
+        "BDA",
+        "INDEPENDENT_CONFIRMATION",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Open-source investigation identified at least 80 damaged/destroyed police/security facilities, including 29 command centers or headquarters incidents, using satellite imagery, geolocation and verified media. Provides quantity/severity context for physical C2/security-site modeling.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-C4AE952EE037",
+      "legacy_ids": {},
+      "url": "https://www.bls.gov/news.release/archives/cpi_08122026.htm",
+      "outlet": "U.S. Bureau of Labor Statistics",
+      "title": "Consumer Price Index News Release - July 2026",
+      "publication_date": "2026-08-12",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "COST_MODEL"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "July 2026 CPI-U all-items index 333.918 (1982-84=100).",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-C595BD8471E7",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/iran-flew-irgc-commanders-missile-gear-yemens-houthis-sources-say-2026-07-23",
+      "outlet": "Reuters",
+      "title": "Iran flew IRGC commanders, missile gear to Yemen’s Houthis, sources say",
+      "publication_date": "2026-07-23",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "CLAIM_ORIGIN",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "yemen-mahan-chain.json"
+      ],
+      "proof_note": "Four-source report on July 13 Mahan flight, alleged IRGC personnel/components/gold; records Iranian/Houthi denials.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-C623D3244404",
+      "legacy_ids": {},
+      "url": "https://apnews.com/article/4b5edabf4c8cc89a56150ca4f1b7c06f",
+      "outlet": "Associated Press",
+      "title": "Satellite imagery shows damage at U.S. Gulf bases after Iranian strikes",
+      "publication_date": "2026-03",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "SATELLITE_IMAGERY",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Independent facility-level imagery analysis; supports real damage while requiring claim-by-claim equipment attribution.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-C7C20E33BFCA",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/us-rescues-airman-whose-f-15-was-downed-iran-us-officials-say-2026-04-05",
+      "outlet": "Reuters",
+      "title": "U.S. rescues second airman whose F-15E was downed in Iran",
+      "publication_date": "2026-04-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Independent contemporaneous confirmation that second airman was recovered; no U.S. personnel reported captured.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-C9D560A79D68",
+      "legacy_ids": {},
+      "url": "https://www.twz.com/air/iranian-f-14-tomcats-meet-their-doom-in-israeli-airstrikes",
+      "outlet": "The War Zone",
+      "title": "Iranian F-14 Tomcats Meet Their Doom In Israeli Airstrikes",
+      "publication_date": "2026-03-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "SATELLITE_IMAGERY",
+        "MATERIAL_LOSS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "imagery-index.json",
+        "aviation-reconciliation.json",
+        "iran-war-cost-estimate.json",
+        "damage-observations.json",
+        "iran-loss-envelopes.json"
+      ],
+      "proof_note": "Commercial-imagery review; also cites U.S. strikes on Iranian F-5s at Ahvaz.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-CAD44890437C",
+      "legacy_ids": {},
+      "url": "https://apnews.com/article/iran-war-us-military-targets-israel-71c389bc3f308e7d00acce7adc74f528",
+      "outlet": "Associated Press",
+      "title": "By the numbers: US thrashed military targets in Iran, but some capabilities remain",
+      "publication_date": "2026-04-10",
+      "publication_time": null,
+      "author": "Konstantin Toropin",
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "BDA",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "public-assessments.json"
+      ],
+      "proof_note": "Reports U.S. campaign-level damage claims while explicitly distinguishing attacked/destroyed targets from remaining Iranian capability; useful for navy, air-defense and industrial envelopes.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-CB6893671B1F",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/05/766340/Humiliating-defeat-Iran-destroys-US-flying-objects-during-pilot-rescue-mission",
+      "outlet": "Press TV",
+      "title": "Humiliating defeat: Iran destroys U.S. flying objects during pilot rescue mission",
+      "publication_date": "2026-04-05",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Khatam spokesman claims two C-130s and two Black Hawks destroyed and rescue brought to complete failure.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-CC18DEA75017",
+      "legacy_ids": {},
+      "url": "https://tasnimnews.ir/en/news/2026/03/10/3537163/no-projectiles-fired-from-iran-toward-turkey-araqchi",
+      "outlet": "Tasnim News Agency",
+      "title": "No Projectiles Fired from Iran toward Turkey: Araqchi",
+      "publication_date": "2026-03-10",
+      "publication_time": "15:03 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Foreign minister repeats categorical denial.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-CC1AA98E096D",
+      "legacy_ids": {},
+      "url": "https://www.iranintl.com/en/202604047103",
+      "outlet": "Iran International",
+      "title": "Provincial IRGC denies second F-15 crewman was captured",
+      "publication_date": "2026-04-04",
+      "publication_time": "11:23 GMT+1 (publisher display)",
+      "author": null,
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "CORRECTION"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Reports provincial IRGC denial that the second pilot was captured/detained.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-CF8587C77F8D",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/iran-says-qatar-delaying-probe-into-fate-iranian-pilots-tasnim-news-agency-2026-08-16",
+      "outlet": "Reuters",
+      "title": "Iran disputes Qatar, Kuwait accounts of captured Iranian personnel",
+      "publication_date": "2026-08-16",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "aviation-reconciliation.json"
+      ],
+      "proof_note": "Records Iran-Qatar dispute over missing Su-24 crews and proposed fact-finding.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-D1FD47FA9FE4",
+      "legacy_ids": {},
+      "url": "https://m.aa.com.tr/en/middle-east/iran-maintains-missile-drone-strike-pace-despite-us-claims-of-degraded-capabilities/3888357",
+      "outlet": "Anadolu Agency",
+      "title": "Iran maintains missile, drone strike pace despite US claims of degraded capabilities",
+      "publication_date": "2026-04-01",
+      "publication_time": null,
+      "author": "Can Efesoy and Tuğba Altun",
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json"
+      ],
+      "proof_note": "Compiled Gulf ministry, INSS and OSINT data place combined Iranian missile/UAV launches at 6,770 from Feb. 28 through Mar. 31; methodology is mixed-source and therefore used as a bounded aggregate, not item-level proof. The same article cites INSS data for 600 missiles and 765 drones directed at Israel.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-D43AA8AD0AEE",
+      "legacy_ids": {},
+      "url": "https://www.washingtonpost.com/archive/politics/1992/10/30/us-sought-saudi-aid-on-iran-subs/69d21836-5135-4dd6-a00a-8b3fc8192ed1",
+      "outlet": "Washington Post",
+      "title": "U.S. Sought Saudi Aid on Iran Subs",
+      "publication_date": "1992-10-29",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "COST_MODEL",
+        "HISTORICAL_CONTEXT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "U.S. intelligence estimate: Iran agreed to pay $600M for two Kilo-class submarines (~$300M each nominal 1992).",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-D590DE3075A0",
+      "legacy_ids": {},
+      "url": "https://tasnimnews.ir/en/news/2026/04/01/3554024/iran-rejects-claims-of-missile-launch-toward-turkey",
+      "outlet": "Tasnim News Agency",
+      "title": "Iran Rejects Claims of Missile Launch Toward Turkey",
+      "publication_date": "2026-04-01",
+      "publication_time": "09:31 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Tasnim repeats Araqchi’s denial and warning about possible false-flag operations; does not specifically say Israel fired the Turkey missile.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-D602E88FB9CB",
+      "legacy_ids": {},
+      "url": "https://apnews.com/article/28d80744e192ae0d5cce73a5a08af906",
+      "outlet": "Associated Press",
+      "title": "Israel says Iran launched missiles at it in first such bombardment since fragile ceasefire",
+      "publication_date": "2026-06-07",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "CLAIM_ORIGIN",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "claim-audits.json",
+        "ceasefire-causality.json"
+      ],
+      "proof_note": "Iranian state broadcaster confirmed first direct Iran-to-Israel missile barrage since April; it followed an Israeli strike on Beirut and Iran described retaliation.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-D678D7C35944",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/business/aerospace-defense/how-hard-would-it-be-stop-irans-missile-threat-2026-03-20/",
+      "outlet": "Reuters",
+      "title": "How hard would it be to stop Iran's missile threat?",
+      "publication_date": "2026-03-20",
+      "publication_time": null,
+      "author": "Reuters",
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json"
+      ],
+      "proof_note": "Provides pre-war ballistic-missile stockpile range of roughly 2,500 to 6,000 and operational-continuity context.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-D86835557005",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/03/05/764974/Iran-rejects-claim-missile-launch-into-Turkey",
+      "outlet": "Press TV",
+      "title": "Iran rejects claim missile launched into Turkey",
+      "publication_date": "2026-03-05",
+      "publication_time": "07:44 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Reports Iranian Armed Forces categorical denial that Iran fired a missile toward Turkey.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-D8EEF03F1475",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/us-destroys-six-iranian-small-boats-shoots-down-missiles-drones-us-admiral-says-2026-05-04",
+      "outlet": "Reuters",
+      "title": "U.S. says it destroyed six Iranian small boats; Iran denies losses",
+      "publication_date": "2026-05-04",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "CLAIM_ORIGIN",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [],
+      "proof_note": "Preserves both U.S. destruction claim and Iranian denial; article alone does not independently resolve hull losses.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-DB900429D8BC",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/05/26/769312/Iran-targeted-210-enemy-aircraft-US-Israel-40-days-war",
+      "outlet": "Press TV",
+      "title": "Technology achieved amid war enabled Iran to down 210 enemy aircraft: Defense Ministry",
+      "publication_date": "2026-05-26",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Headline uses “down 210”; body language includes “target around 210.” The audit preserves this metric inconsistency instead of treating 210 as a clean shootdown total.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-DC2397DD86A5",
+      "legacy_ids": {},
+      "url": "https://www.afrc.af.mil/Portals/87/documents/Wing%20Documents/FACT%20SHEET%20-%20C-130%20Hercules.pdf",
+      "outlet": "U.S. Air Force Reserve Command",
+      "title": "C-130 Hercules Fact Sheet",
+      "publication_date": "2018-04-01",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Official fact sheet lists then-dollar unit costs of $11.9M C-130E, $30.1M C-130H and $75.5M C-130J; provides range anchors for Iranian C-130 replacement-equivalent modeling.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-DEF105F2E818",
+      "legacy_ids": {},
+      "url": "https://www.navalnews.com/naval-news/2021/01/egyptian-navy-commissions-first-locally-built-el-fateh-class-corvette/",
+      "outlet": "Naval News",
+      "title": "Egyptian Navy Commissions First Locally Built El Fateh-class Corvette",
+      "publication_date": "2021-01-07",
+      "publication_time": null,
+      "author": "Nathan Gain",
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json"
+      ],
+      "proof_note": "Contemporary surface-combatant cost analogue: four 2,600-ton Gowind 2500 corvettes cost €1.0B platform-only and €1.5-1.7B including weapons packages.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-E2C1F6A340BA",
+      "legacy_ids": {},
+      "url": "https://home.treasury.gov/news/press-releases/jy2295",
+      "outlet": "U.S. Department of the Treasury",
+      "title": "Treasury Targets Networks Facilitating Illicit Trade and UAV Transfers on Behalf of Iranian Military",
+      "publication_date": "2024-04-25",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "States Iran and Russia financed/produced Iranian-designed one-way attack UAVs at Alabuga under a $1.75B contract; national-scale production-capability analogue, not pure factory CAPEX.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-E3DAD827ACAF",
+      "legacy_ids": {},
+      "url": "https://apnews.com/article/7d8cfb6d0fd400abdc71f8c9d67408fe",
+      "outlet": "Associated Press",
+      "title": "Risky rescue of US crew downed in Iran relied on dozens of aircraft and subterfuge",
+      "publication_date": "2026-04-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "INDEPENDENT_CONFIRMATION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "pilot-rescue-timeline.json",
+        "claim-audits.json"
+      ],
+      "proof_note": "Follow-up details on rescue timeline and aircraft under fire.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-E5E5CAFD91F0",
+      "legacy_ids": {},
+      "url": "https://www.tasnimnews.ir/en/news/2026/03/15/3541317/enemies-using-copies-of-iranian-drone-to-attack-regional-countries-spokesman-warns",
+      "outlet": "Tasnim News Agency",
+      "title": "Enemies Using Copies of Iranian Drone to Attack Regional Countries, Spokesman Warns",
+      "publication_date": "2026-03-15",
+      "publication_time": "14:05 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Verified Tasnim rendering of the Khatam al-Anbiya Shahed/Lucas false-flag allegation; replaces an unrelated draft URL.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-E67D759B3385",
+      "legacy_ids": {},
+      "url": "https://documents1.worldbank.org/curated/en/305631468083329684/pdf/560320PAD0P1121C0dislcosed081181101.pdf",
+      "outlet": "World Bank",
+      "title": "Karachi Port Improvement Project — Reconstruction of Berths 15 to 17A",
+      "publication_date": "2010-08-18",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Engineering analogue: $112.6M component for reconstruction of 922m of quay wall/berths including civil works, supervision, contingencies, fees and taxes; used to bound naval quay reconstruction.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-EC7108BA23BE",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/which-key-iranian-figures-have-been-killed-us-israeli-strikes-2026-04-06/",
+      "outlet": "Reuters",
+      "title": "Which key Iranian figures have been killed in US-Israeli strikes?",
+      "publication_date": "2026-04-06",
+      "publication_time": null,
+      "author": "Jana Choukeir and Reuters Dubai newsroom",
+      "source_roles": [
+        "CASUALTY_CONFIRMATION",
+        "INDEPENDENT_CONFIRMATION",
+        "LATER_OUTCOME"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-leadership-casualties.json"
+      ],
+      "proof_note": "Itemizes senior Iranian political, state, military and security figures killed through early April, with Iranian-media and Israeli/U.S. attribution where specified.",
+      "lineage": "DIRECT",
+      "source_origin": "SUPERSEDING_DOCTRINE_RESEARCH_20260820"
+    },
+    {
+      "source_id": "SRC-ED28D2A9BDC4",
+      "legacy_ids": {},
+      "url": "https://www.twz.com/land/iranian-submarine-sunk-by-atacms-short-range-ballistic-missile",
+      "outlet": "The War Zone",
+      "title": "Iranian Submarine Sunk By ATACMS Short Range Ballistic Missile",
+      "publication_date": "2026-03-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "MATERIAL_LOSS",
+        "SATELLITE_IMAGERY"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "imagery-index.json",
+        "iran-war-cost-estimate.json",
+        "damage-observations.json"
+      ],
+      "proof_note": "Planet imagery review shows one Iranian Kilo-class submarine sunk at Bandar Abbas by March 4; U.S. ATACMS attribution context.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-ED911664A654",
+      "legacy_ids": {},
+      "url": "https://mofa.gov.qa/en/qatar/latest-articles/latest-news/details/2026/03/03/qatar-sends-2nd-identical-message-to-un--unsc-concerning-iranian-attack-on-its-territory",
+      "outlet": "Qatar Ministry of Foreign Affairs",
+      "title": "Qatar Sends 2nd Identical Message to UN, UNSC Concerning Iranian Attack on Its Territory",
+      "publication_date": "2026-03-03",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "MATERIAL_LOSS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "claim-audits.json",
+        "aviation-reconciliation.json"
+      ],
+      "proof_note": "Official Qatar record: Qatar Amiri Air Force shot down two Iranian Su-24s.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-F4B26C97E520",
+      "legacy_ids": {},
+      "url": "https://tass.com/defense/868633",
+      "outlet": "TASS",
+      "title": "Iran confirms delivery of first batch of Russia’s S-300 air defense missile systems",
+      "publication_date": "2016-04-11",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "ECONOMIC_DATA"
+      ],
+      "quality": "C",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "iran-war-cost-estimate.json",
+        "cost-methodology.md"
+      ],
+      "proof_note": "Reports the historical Russia-Iran contract for five S-300 battalions/systems worth more than $800 million; used only as a procurement-cost anchor, not as independent wartime BDA.",
+      "lineage": "DIRECT",
+      "source_origin": "COST_COMPLETION_PASS_20260820"
+    },
+    {
+      "source_id": "SRC-F8AA5DA10F47",
+      "legacy_ids": {},
+      "url": "https://www.tasnimnews.ir/en/news/2026/04/03/3555882/reports-suggest-possible-capture-of-us-pilot-after-warplane-downed-in-iran",
+      "outlet": "Tasnim News Agency",
+      "title": "Reports Suggest Possible Capture of US Pilot after Warplane Downed in Iran",
+      "publication_date": "2026-04-03",
+      "publication_time": "14:50 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Hedged semi-official report: pilot may have been captured / some sources said likely. Not an official firm IRGC capture statement.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-FA7CDDD722C0",
+      "legacy_ids": {},
+      "url": "https://bsky.app/profile/vcdgf555.bsky.social/post/3mge4i5ne6s2e",
+      "outlet": "Evergreen Intel",
+      "title": "Geolocation of destruction of F-27s and F-5s at Ahvaz",
+      "publication_date": "2026-03-06",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "BDA",
+        "GEOLOCATION_ONLY",
+        "SATELLITE_IMAGERY"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "imagery-index.json",
+        "aviation-reconciliation.json",
+        "iran-war-cost-estimate.json",
+        "damage-observations.json"
+      ],
+      "proof_note": "OSINT geolocation: 31.33563, 48.76275; correlated with CENTCOM strike footage.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_RESEARCH"
+    },
+    {
+      "source_id": "SRC-FADB5E0A4585",
+      "legacy_ids": {},
+      "url": "https://leadstories.com/hoax-alert/2026/04/fact-check-video-does-not-show-iran-shooting-down-us-f15-fighter-jet.html",
+      "outlet": "Lead Stories",
+      "title": "Fact Check: Fake Video Does NOT Show Actual Images of Iran Shooting Down U.S. F-15 Fighter Jet",
+      "publication_date": "2026-04-03",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DEBUNK",
+        "MEDIA_FORENSICS"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Identifies unrelated/game imagery circulated as shootdown evidence.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-FBB8378A0876",
+      "legacy_ids": {},
+      "url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529288/iran-downs-us-fighter-jet-in-first-such-incident-in-27-years",
+      "outlet": "Tasnim News Agency",
+      "title": "Iran Downs US Fighter Jet in First Such Incident in 27 Years",
+      "publication_date": "2026-03-02",
+      "publication_time": "14:00 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN"
+      ],
+      "quality": "C",
+      "records_supported": [],
+      "proof_note": "Tasnim attributes the Kuwait F-15 loss to Iranian action; later U.S./Kuwaiti reporting attributes the three losses to Kuwaiti friendly fire.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-FDAC11893E4C",
+      "legacy_ids": {},
+      "url": "https://www.presstv.ir/Detail/2026/04/18/767116/Iran-commander-air-defense-forces-shot-down-enemy-drones-YS-Israwlu-aggression-",
+      "outlet": "Press TV",
+      "title": "Iran downed 170 US and Israeli drones during war: commander",
+      "publication_date": "2026-04-18",
+      "publication_time": "15:47 (source display)",
+      "author": null,
+      "source_roles": [
+        "CLAIM_ORIGIN",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [],
+      "proof_note": "Later aggregate UAV kill total.",
+      "lineage": "DIRECT",
+      "source_origin": "FORENSIC_ADDON_CLAIM_EVOLUTION"
+    },
+    {
+      "source_id": "SRC-964B4BFA5400",
+      "legacy_ids": {},
+      "url": "https://www.wam.ae/en/article/bzhbpg8-uae-air-defences-engage-eight-ballistic-missiles",
+      "outlet": "Emirates News Agency (WAM)",
+      "title": "UAE air defences engage eight ballistic missiles, four cruise missiles, 36 UAVs",
+      "publication_date": "2026-03-31",
+      "publication_time": null,
+      "author": "Emirates News Agency / UAE Ministry of Defence",
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "REGIONAL_CORROBORATION",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "cost-methodology.md",
+        "research-log.md"
+      ],
+      "proof_note": "Carries UAE Ministry of Defence cumulative counts through Mar. 31: 433 ballistic missiles, 19 cruise missiles and 1,977 UAVs engaged since the start of Iranian attacks. Provides date-compatible missile/UAS composition for 2,429 UAE-directed launches.",
+      "lineage": "DIRECT_OFFICIAL_RELAY",
+      "source_origin": "V1.3.2_ANALYTICAL_CORRECTION_20260821"
+    },
+    {
+      "source_id": "SRC-3F2CDE66C029",
+      "legacy_ids": {},
+      "url": "https://qna.org.qa/en/news/news-details?date=31%2F03%2F2026&id=bahrain-says-intercepted-182-missiles-400-drones-since-start-of-iranian-attacks",
+      "outlet": "Qatar News Agency",
+      "title": "Bahrain Says Intercepted 182 Missiles, 400 Drones Since Start of Iranian Attacks",
+      "publication_date": "2026-03-31",
+      "publication_time": null,
+      "author": "Qatar News Agency, citing Bahrain Defence Force",
+      "source_roles": [
+        "OFFICIAL_STATEMENT",
+        "REGIONAL_CORROBORATION",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "iran-loss-envelopes.json",
+        "cost-methodology.md",
+        "research-log.md"
+      ],
+      "proof_note": "Relays Bahrain Defence Force cumulative Mar. 31 count of 182 missiles and 400 drones. Used as a date-compatible composition input for the all-region 6,770-launch model.",
+      "lineage": "DIRECT_OFFICIAL_RELAY",
+      "source_origin": "V1.3.2_ANALYTICAL_CORRECTION_20260821"
+    }
+  ]
+}

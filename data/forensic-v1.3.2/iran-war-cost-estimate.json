@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.3.2",
+  "as_of": "2026-08-21T00:40:00-04:00",
+  "currency": "USD unless noted",
+  "methodology": "Detailed support ledger for the authoritative standing material-loss and separate munitions-expenditure envelopes in iran-loss-envelopes.json. Direct contracts are preferred; where unavailable, contemporary capability analogues, composition scenarios and defensible damage-severity assumptions are permitted with assumptions exposed. Hypothetical future repair/reconstitution spending is outside canonical current-loss accounting.",
+  "asset_records": [
+    {
+      "id": "COST-IRN-KILO-001",
+      "asset": "Kilo-class submarine",
+      "qty_confirmed": 1,
+      "loss_status": "DESTROYED/SUNK — high confidence for one boat",
+      "attribution": "UNITED_STATES",
+      "historical_basis_year": 1992,
+      "historical_unit_usd_low": 300000000,
+      "historical_unit_usd_high": 300000000,
+      "basis_note": "Washington Post cited U.S. intelligence estimate of $600M for two submarines.",
+      "cpi_2026_usd_low": 714008553,
+      "cpi_2026_usd_high": 714008553,
+      "replacement_cost_status": "CPI_PURCHASING_POWER_PROXY_NOT_MODERN_REPLACEMENT",
+      "sources": [
+        "SRC-D43AA8AD0AEE",
+        "SRC-ED28D2A9BDC4"
+      ],
+      "estimate_status": "CALCULATED",
+      "estimate_low_usd": 714008553,
+      "estimate_central_usd": 714008553,
+      "estimate_high_usd": 714008553,
+      "method": "Historical acquisition cost adjusted to 2026 CPI; purchasing-power proxy, not a current Kilo replacement quote.",
+      "estimate_confidence": "MODERATE",
+      "exclusions": [
+        "Modern shipyard, weapons, support, sanctions and replacement-lead-time premiums."
+      ]
+    },
+    {
+      "id": "COST-IRN-F14-001",
+      "asset": "F-14 Tomcat",
+      "qty_confirmed": 2,
+      "qty_probable_high": 3,
+      "loss_status": "At least two, likely three destroyed at Isfahan in commercial imagery review",
+      "attribution": "ISRAEL",
+      "historical_basis_year": 1974,
+      "historical_unit_usd_low": 22500000,
+      "historical_unit_usd_high": 22500000,
+      "basis_note": "$1.8B for 80 Iranian F-14s, missiles excluded; simple average $22.5M.",
+      "cpi_2026_unit_proxy_usd": 152396653,
+      "cpi_2026_confirmed_2_usd": 304793306,
+      "cpi_2026_probable_3_usd": 457189959,
+      "replacement_cost_status": "CPI_PURCHASING_POWER_PROXY; no like-for-like replacement exists",
+      "sources": [
+        "SRC-195296C296FD",
+        "SRC-C9D560A79D68"
+      ],
+      "estimate_status": "CALCULATED",
+      "estimate_low_usd": 304793306,
+      "estimate_central_usd": 457189959,
+      "estimate_high_usd": 457189959,
+      "method": "Historical F-14 acquisition cost adjusted to 2026 CPI; floor uses two observed losses, central/high use three probable losses.",
+      "estimate_confidence": "MODERATE",
+      "exclusions": [
+        "Irreplaceability/obsolescence premium, spares scarcity and restoration costs."
+      ]
+    },
+    {
+      "id": "COST-IRN-F4-001",
+      "asset": "F-4E Phantom II",
+      "qty_confirmed": 1,
+      "loss_status": "Destroyed at Tabriz in Israeli strike report",
+      "attribution": "ISRAEL",
+      "historical_basis_year": 1970,
+      "historical_unit_usd_low": 3710000,
+      "historical_unit_usd_high": 3840000,
+      "basis_note": "State Department FMS estimated flyaway price range around Dec 1970.",
+      "cpi_2026_usd_low": 31928757,
+      "cpi_2026_usd_high": 33047555,
+      "replacement_cost_status": "CPI_PURCHASING_POWER_PROXY; not current replacement cost",
+      "sources": [
+        "SRC-82BAC5BDEA6C",
+        "SRC-6843BB957E02"
+      ],
+      "estimate_status": "CALCULATED",
+      "estimate_low_usd": 31928757,
+      "estimate_central_usd": 32488156,
+      "estimate_high_usd": 33047555,
+      "method": "Historical acquisition cost adjusted to 2026 CPI.",
+      "estimate_confidence": "MODERATE",
+      "exclusions": [
+        "Modern capability replacement and sustainment scarcity."
+      ]
+    },
+    {
+      "id": "COST-IRN-F5-PROXY",
+      "asset": "F-5 family — bounded legacy-fighter proxy",
+      "qty_confirmed": 2,
+      "loss_status": "Two F-5 aircraft reported destroyed at Tabriz; exact variant/operational status uncertainty is handled by range rather than deferring price",
+      "attribution": "ISRAEL",
+      "historical_basis_year": 1972,
+      "historical_unit_usd_low": 778000,
+      "historical_unit_usd_high": 778000,
+      "basis_note": "Historical Iranian F-5A grant average. 2026 destroyed aircraft may be other F-5 variants and some parked airframes may have been non-operational.",
+      "cpi_2026_unit_proxy_usd": 6215029,
+      "replacement_cost_status": "BOUNDED_LEGACY_CAPABILITY_PROXY",
+      "sources": [
+        "SRC-3838B34DAF75",
+        "SRC-FA7CDDD722C0"
+      ],
+      "estimate_status": "CALCULATED",
+      "research_requirement": null,
+      "estimate_low_usd": 12430058,
+      "estimate_central_usd": 20000000,
+      "estimate_high_usd": 30000000,
+      "estimate_confidence": "LOW",
+      "exclusions": [
+        "Unknown exact F-5 variant",
+        "modern fighter replacement premium",
+        "Ahvaz F-5/F-27 parked-aircraft bucket beyond the two Tabriz F-5s"
+      ],
+      "method": "Two-aircraft scenario. Low uses existing CPI-adjusted historical Iranian F-5A proxy ($6.215M each); central/high use $10M/$15M legacy-fighter capability bands to cover variant and condition uncertainty."
+    }
+  ],
+  "infrastructure_records": [
+    {
+      "id": "INFRA-COST-001",
+      "site": "Bandar Abbas naval base/shipyard",
+      "physical_damage": "Major vessel losses plus base/shipyard damage and blocked berths documented in CSIS imagery analysis.",
+      "cost_status": "CALCULATED_SCENARIO",
+      "method": "Civil/port/shipyard shell and utilities proxy. World Bank quay reconstruction benchmark and Iran-local shell rates bound civil works; specialty shipyard machinery is excluded to INDUSTRIAL_PRODUCTION.",
+      "sources": [
+        "SRC-29B47381EC59",
+        "SRC-ED28D2A9BDC4",
+        "SRC-E67D759B3385",
+        "SRC-B3BDC6765429"
+      ],
+      "estimate_low_usd": 75000000,
+      "estimate_central_usd": 200000000,
+      "estimate_high_usd": 500000000,
+      "estimate_confidence": "LOW",
+      "additivity": "ADDITIVE_FIXED_CIVIL_ONLY",
+      "exclusions": [
+        "naval hulls",
+        "shipyard machinery",
+        "salvage"
+      ]
+    },
+    {
+      "id": "INFRA-COST-002",
+      "site": "Bushehr naval facilities",
+      "physical_damage": "CSIS reports roughly 40% of harbor basin destroyed and much of the primary quay damaged/destroyed.",
+      "cost_status": "CALCULATED_SCENARIO",
+      "method": "Port civil-work analogue. Karachi Port project reconstructed 922m of quay/berths for $112.6M in 2010 project terms; range expands around that anchor for basin damage, utilities and wartime reconstruction uncertainty.",
+      "sources": [
+        "SRC-29B47381EC59",
+        "SRC-E67D759B3385"
+      ],
+      "estimate_low_usd": 60000000,
+      "estimate_central_usd": 150000000,
+      "estimate_high_usd": 350000000,
+      "estimate_confidence": "LOW",
+      "additivity": "ADDITIVE_FIXED_CIVIL_ONLY",
+      "exclusions": [
+        "dredging beyond bounded allowance",
+        "ships",
+        "weapons",
+        "mission systems"
+      ]
+    },
+    {
+      "id": "INFRA-COST-003",
+      "site": "Khojir and other missile/UAS production building shells",
+      "physical_damage": "Open imagery and campaign reporting show major structural damage at multiple weapon-production sites.",
+      "cost_status": "CALCULATED_SCENARIO",
+      "method": "Structural shell/civil-only class proxy using Iran-local public construction rates and multi-site damage; specialized machinery/tooling is separately modeled in INDUSTRIAL_PRODUCTION.",
+      "sources": [
+        "SRC-3826CE7F7FBB",
+        "SRC-29B47381EC59",
+        "SRC-B3BDC6765429"
+      ],
+      "estimate_low_usd": 100000000,
+      "estimate_central_usd": 350000000,
+      "estimate_high_usd": 1000000000,
+      "estimate_confidence": "LOW",
+      "additivity": "ADDITIVE_FIXED_CIVIL_ONLY",
+      "exclusions": [
+        "specialized production machinery",
+        "stockpiles",
+        "tunnels beyond portal/utilities bucket"
+      ]
+    },
+    {
+      "id": "INFRA-COST-004",
+      "site": "Fath Air Base / Valiasr / Ashura and other airbase/security shells",
+      "physical_damage": "Open Sentinel/Bellingcat comparisons document damaged/destroyed structures across airbase/security facilities.",
+      "cost_status": "CALCULATED_SCENARIO",
+      "method": "Building-shell/runway/hangar/utilities class proxy, not site-by-site quantity survey. Bellingcat incident set and Iran-local shell rates bound the aggregate.",
+      "sources": [
+        "SRC-3826CE7F7FBB",
+        "SRC-C00E5B404A2B",
+        "SRC-B3BDC6765429"
+      ],
+      "estimate_low_usd": 160000000,
+      "estimate_central_usd": 440000000,
+      "estimate_high_usd": 1308000000,
+      "estimate_confidence": "LOW",
+      "additivity": "ADDITIVE_FIXED_CIVIL_ONLY",
+      "exclusions": [
+        "C2 mission systems",
+        "aircraft",
+        "industrial machinery"
+      ]
+    }
+  ],
+  "construction_shell_model": {
+    "local_basis": "Iran 1405 public/government-style project benchmark from Haft Shahr Aria; excludes specialized equipment",
+    "toman_per_m2": {
+      "simple_workshop_warehouse": 23851000,
+      "crisis_hall_simple": 33024000,
+      "higher_specialty_reference_low": 38526000,
+      "higher_specialty_reference_high": 66051000
+    },
+    "fx_sensitivity_reference": {
+      "date": "2026-08-19",
+      "irr_per_usd": 1374600,
+      "toman_per_usd": 137460,
+      "source": "SRC-526EE786BDCD",
+      "warning": "Exchange-rate source is indicative and the Iranian wartime currency is distorted; do not present converted shell costs as audited replacement cost."
+    },
+    "approx_usd_per_m2_at_reference_fx": {
+      "simple_workshop_warehouse": 174,
+      "crisis_hall_simple": 240,
+      "higher_specialty_reference_low": 280,
+      "higher_specialty_reference_high": 481
+    },
+    "use_rule": "If a damage polygon or defensible destroyed floor/footprint area is available, multiply area by the appropriate shell-only rate and present as STRUCTURAL_SHELL_ONLY. Do not add missile-production machinery, classified electronics, stockpiles, tunnels, utilities or remediation without separate evidence."
+  },
+  "explicit_exclusions": [
+    "Human casualties, including leadership deaths, are not monetized.",
+    "Macroeconomic losses, GDP, oil revenue, sanctions, trade disruption and opportunity costs.",
+    "Civilian/private property not captured in military fixed-site models.",
+    "Strategic value, deterrence value, sanctions-induced procurement premium and time-to-reconstitute are not converted into dollars.",
+    "Munitions expenditure is reported separately from destroyed material inventory.",
+    "Hypothetical future repair/reconstitution or capability-restoration spending."
+  ],
+  "sources": [
+    "SRC-C4AE952EE037",
+    "SRC-1C01A03ABB4C"
+  ],
+  "capability_replacement_analogues": [
+    {
+      "id": "ANLG-SURFACE-GOWIND",
+      "description": "Modern 2,600-ton Gowind 2500 surface combatant",
+      "source_contract_basis_eur_per_ship": {
+        "platform_only": 250000000,
+        "full_program_low": 375000000,
+        "full_program_high": 425000000
+      },
+      "fx_reference": {
+        "eur_usd": 1.1576,
+        "date": "2026-08-18",
+        "source": "SRC-9DECDDEFF7BE"
+      },
+      "usd_normalized_per_ship": {
+        "platform_only": 289400000,
+        "full_program_low": 434100000,
+        "full_program_high": 491980000
+      },
+      "source": "SRC-DEF105F2E818",
+      "use_rule": "Upper-capability analogue for Iranian frigate/corvette replacement; not a direct valuation of older Iranian hulls. Iranian corvette bands below the Gowind analogue are explicit analyst discounts, not sourced contract prices."
+    },
+    {
+      "id": "ANLG-FAST-ATTACK",
+      "description": "Modern missile-armed fast multi-role attack craft",
+      "source_contract_basis_eur_per_ship": 11000000,
+      "fx_reference": {
+        "eur_usd": 1.1576,
+        "date": "2026-08-18",
+        "source": "SRC-9DECDDEFF7BE"
+      },
+      "usd_normalized_source_unit": 12733600,
+      "central_usd_analyst_band": 25000000,
+      "high_usd_analyst_band": 50000000,
+      "source": "SRC-81A981954F88",
+      "use_rule": "Capability analogue only; Iranian FAC classes vary substantially. Central/high are analyst bands to cover larger combat systems and are not source contract prices."
+    },
+    {
+      "id": "ANLG-COMPACT-SUB",
+      "description": "Modern compact/midget attack submarine",
+      "low_usd_equivalent_basis": "$50M analyst conservative lower capability band below the new-build compact-submarine program analogue",
+      "central_usd_equivalent_basis": "$100M analyst midpoint between SDV-type and new compact attack submarine",
+      "high_usd_equivalent_basis": "~$233M program-average for six DRASS DGK compact submarines with training/logistics",
+      "source": "SRC-4B82C94340A2",
+      "use_rule": "Use for non-Kilo coastal/midget submarine envelope only; $50M low and $100M central are explicit analyst bands below the ~$233M program-average high analogue; excludes the separately priced Kilo."
+    },
+    {
+      "id": "ANLG-SHAHED",
+      "description": "Shahed-131/136 one-way attack UAV",
+      "low_usd_equivalent_basis": "$20,000",
+      "central_usd_equivalent_basis": "$35,000",
+      "high_usd_equivalent_basis": "$50,000",
+      "source": "SRC-5B3CA5C34B02",
+      "use_rule": "Use only for Shahed-class/simple one-way attack UAVs, not jet-powered or larger UAVs."
+    },
+    {
+      "id": "ANLG-IRAN-MRBM",
+      "description": "Iranian medium-range ballistic missile mix",
+      "low_usd_equivalent_basis": "$250,000 Emad",
+      "central_usd_equivalent_basis": "$3,000,000 analyst blended central assumption",
+      "high_usd_equivalent_basis": "$8,000,000 Khorramshahr-4",
+      "source": "SRC-48A3540B2747",
+      "use_rule": "Broad mix range. Exclude unidentified higher-cost systems from central; disclose mix uncertainty."
+    },
+    {
+      "id": "ANLG-AIRDEF-S300-IRAN",
+      "description": "Iran S-300 procurement anchor",
+      "historical_basis": "Five battalions/systems worth >$800M; >$160M each nominal contract floor",
+      "source": "SRC-F4B26C97E520",
+      "use_rule": "Historical Iran-specific floor; central/high apply analyst current-capability bands rather than treating nominal 2007 dollars as current replacement quote."
+    },
+    {
+      "id": "ANLG-AIRDEF-TOR-IRAN",
+      "description": "Iran Tor-M1 procurement anchor",
+      "historical_basis": "29 systems under $700M contract, about $24.1M each nominal",
+      "source": "SRC-88F5D65E4AC0",
+      "use_rule": "Iran-specific historical floor; central/high bands cover inflation/current replacement and integration uncertainty."
+    },
+    {
+      "id": "ANLG-TEL-HIMARS",
+      "description": "Modern mobile missile-launcher analogue",
+      "historical_basis": "FY2023 recurring launcher unit cost ~$5.625M; gross weapon-system unit cost ~$6.77M",
+      "source": "SRC-4E13486C67AC",
+      "use_rule": "Upper-capability anchor only. Iranian ballistic TELs are modeled at $2M/$4M/$6M to avoid importing full U.S. system cost."
+    },
+    {
+      "id": "ANLG-C2-PATTON-HALL",
+      "description": "Large command-and-control headquarters analogue",
+      "historical_basis": "$100M, 320,000 sq ft C2 headquarters supporting up to 1,500 personnel",
+      "source": "SRC-77EEF3BA2193",
+      "use_rule": "High-end physical C2 analogue. C2 category prices mission-system/secure fitout only so building shell is not double-counted."
+    },
+    {
+      "id": "ANLG-PORT-QUAY",
+      "description": "Quay/berth civil reconstruction analogue",
+      "historical_basis": "$112.6M for 922m of quay/berth reconstruction at Karachi Port, 2010 project terms",
+      "source": "SRC-E67D759B3385",
+      "use_rule": "Bounds civil/port reconstruction; not Iranian labor-rate or wartime-specific quote."
+    },
+    {
+      "id": "ANLG-INDUSTRIAL-MCAL",
+      "description": "Specialized ammunition-process facility analogue",
+      "historical_basis": "$74M FY2025 MILCON facility plus $21.742M installed equipment other appropriation",
+      "source": "SRC-7EC6E3912A73",
+      "use_rule": "Process-line/machinery capability benchmark; Iranian line-equivalent scenarios are deliberately broad and shells are priced separately."
+    }
+  ],
+  "legacy_superseded_subset_snapshot": {
+    "status": "LEGACY_PARTIAL_SUBSET_ARCHIVAL_BACKWARD_COMPATIBILITY_ONLY",
+    "purpose": "Lineage/backward compatibility only. These values predate the completed category envelopes and are not a current floor, subtotal, estimate, or total.",
+    "legacy_values": {
+      "scope": "One U.S.-attributed Kilo loss + two confirmed/three probable Israeli-attributed F-14 losses + one Israeli-attributed F-4 loss. This is a tiny mixed-attribution subset, not Iran’s total war loss.",
+      "confirmed_low_2026_cpi_proxy_usd": 1050730616,
+      "probable_high_2026_cpi_proxy_usd": 1204246067,
+      "confirmed_low_billions": 1.051,
+      "probable_high_billions": 1.204,
+      "status": "LEGACY_PARTIAL_SUBSET_ARCHIVAL_BACKWARD_COMPATIBILITY_ONLY",
+      "warning": "Do not use this legacy subset as any current Iran cost figure. Use iran-loss-envelopes.json for authoritative standing material-loss and munitions-expenditure envelopes."
+    },
+    "authoritative_replacement": "iran-loss-envelopes.json -> aggregate_material_loss_summary",
+    "hard_rule": "Downstream implementation must not surface, sum, label or infer the legacy $1.051B-$1.204B range as a current total, floor, subtotal, central estimate, or upper envelope.",
+    "display_label": "LEGACY PARTIAL SUBSET — ARCHIVAL / BACKWARD-COMPATIBILITY ONLY"
+  },
+  "authoritative_current_cost_summary": {
+    "source_file": "iran-loss-envelopes.json",
+    "standing_material_loss": {
+      "low_label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+      "low_usd": 7296811473,
+      "central_label": "CENTRAL MODELED ESTIMATE",
+      "central_usd": 19622936668,
+      "high_label": "ASSESSED UPPER ENVELOPE",
+      "high_usd": 57395962730
+    },
+    "munitions_expenditure_separate": {
+      "scope_id": "ALL_REGION_THROUGH_2026-03-31_6770_COMBINED_MISSILE_UAS_LAUNCHES",
+      "low_usd": 419220000,
+      "central_usd": 5897135000,
+      "high_usd": 18512200000,
+      "narrower_israel_only_itemized_subset_low_case_usd": 165300000,
+      "narrower_subset_rule": "Archive/lineage analytical subset only; not the low bound of the all-region munitions envelope."
+    },
+    "combined_total_status": "NOT_CALCULATED_UNLESS_EXPLICIT_ACCOUNTING_SCOPE_AND_OVERLAP_TEST_DEFINED"
+  }
+}

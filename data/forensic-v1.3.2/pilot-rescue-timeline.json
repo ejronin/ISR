@@ -1,0 +1,200 @@
+{
+  "records": [
+    {
+      "id": "PR-001",
+      "date": "2026-04-03",
+      "sequence": 1,
+      "event": "A U.S. F-15E was downed over Iran; both crew ejected.",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-481DC6A8E2DB",
+        "SRC-694207959BE5"
+      ],
+      "claim_ids": [
+        "IR-CLM-0001",
+        "IR-CLM-0003"
+      ]
+    },
+    {
+      "id": "PR-002",
+      "date": "2026-04-03",
+      "sequence": 2,
+      "event": "Iranian reporting initially identified the aircraft as an F-35.",
+      "status": "FALSE_AIRCRAFT_TYPE; LATER_CORRECTED",
+      "source_ids": [
+        "SRC-9AD88556FB4C",
+        "SRC-2867CB793392",
+        "SRC-481DC6A8E2DB"
+      ],
+      "claim_ids": [
+        "IR-CLM-0001",
+        "IR-CLM-0002",
+        "IR-CLM-0003"
+      ]
+    },
+    {
+      "id": "PR-003",
+      "date": "2026-04-03",
+      "sequence": 3,
+      "event": "Tasnim reported the missing airman may have been captured, citing sources.",
+      "status": "HEDGED / UNSUBSTANTIATED",
+      "source_ids": [
+        "SRC-F8AA5DA10F47"
+      ],
+      "claim_ids": [
+        "IR-CLM-0004"
+      ]
+    },
+    {
+      "id": "PR-004",
+      "date": "2026-04-03",
+      "sequence": 4,
+      "event": "Tasnim headlined that a U.S. recovery effort had failed while its text said efforts had so far been futile.",
+      "status": "PREMATURE / LATER CONTRADICTED BY OUTCOME",
+      "source_ids": [
+        "SRC-9AD0DC8629DD",
+        "SRC-59F8B0ECCEC9"
+      ],
+      "claim_ids": [
+        "IR-CLM-0005"
+      ]
+    },
+    {
+      "id": "PR-005",
+      "date": "2026-04-03/04",
+      "sequence": 5,
+      "event": "Iranian fire hit two U.S. rescue helicopters during the search.",
+      "status": "CONFIRMED CONTACT; NOT EQUIVALENT TO SHOOTDOWN",
+      "source_ids": [
+        "SRC-7471ECB26165"
+      ],
+      "claim_ids": [
+        "IR-CLM-0007",
+        "IR-CLM-0008"
+      ]
+    },
+    {
+      "id": "PR-006",
+      "date": "2026-04-04",
+      "sequence": 6,
+      "event": "Provincial IRGC denied the second F-15E crewman was captured or detained.",
+      "status": "IRANIAN INTERNAL CORRECTION / CONTRADICTION",
+      "source_ids": [
+        "SRC-CC1AA98E096D"
+      ],
+      "claim_ids": [
+        "IR-CLM-0006"
+      ]
+    },
+    {
+      "id": "PR-007",
+      "date": "2026-04-04/05",
+      "sequence": 7,
+      "event": "Two MC-130s became disabled; U.S. personnel later destroyed disabled aircraft/equipment rather than leave sensitive systems behind.",
+      "status": "CONFIRMED BY INDEPENDENT RECONSTRUCTION",
+      "source_ids": [
+        "SRC-7471ECB26165"
+      ],
+      "claim_ids": [
+        "IR-CLM-0007",
+        "IR-CLM-0008"
+      ]
+    },
+    {
+      "id": "PR-008",
+      "date": "2026-04-05",
+      "sequence": 8,
+      "event": "Iran claimed its forces destroyed two C-130-family aircraft and two Black Hawks and brought the rescue to complete failure.",
+      "status": "REAL LOSSES; FALSE ATTRIBUTION / OUTCOME CONTRADICTED",
+      "source_ids": [
+        "SRC-CB6893671B1F",
+        "SRC-7CDC817909BB"
+      ],
+      "claim_ids": [
+        "IR-CLM-0007",
+        "IR-CLM-0008"
+      ]
+    },
+    {
+      "id": "PR-009",
+      "date": "2026-04-05",
+      "sequence": 9,
+      "event": "U.S. and independent reporting confirmed both F-15E crew members had been recovered in separate rescue efforts.",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-694207959BE5",
+        "SRC-C7C20E33BFCA"
+      ],
+      "claim_ids": [
+        "IR-CLM-0005",
+        "IR-CLM-0007"
+      ]
+    },
+    {
+      "id": "PR-010",
+      "date": "2026-04-06",
+      "sequence": 10,
+      "event": "Press TV explicitly corrected the aircraft identity from F-35 to F-15E.",
+      "status": "CORRECTED",
+      "source_ids": [
+        "SRC-481DC6A8E2DB"
+      ],
+      "claim_ids": [
+        "IR-CLM-0003"
+      ]
+    },
+    {
+      "id": "PR-011",
+      "date": "2026-04-06",
+      "sequence": 11,
+      "event": "Foreign Ministry spokesman Baghaei speculated that the operation could have been a deception connected to stealing enriched uranium.",
+      "status": "SPECULATIVE / UNSUBSTANTIATED",
+      "source_ids": [
+        "SRC-0C0023C8A3BF"
+      ],
+      "claim_ids": [
+        "IR-CLM-0009"
+      ]
+    },
+    {
+      "id": "PR-012",
+      "date": "2026-04-07",
+      "sequence": 12,
+      "event": "Press TV escalated the speculative possibility into a claim that the operation was not a rescue and targeted an Isfahan nuclear facility.",
+      "status": "NARRATIVE SUBSTITUTION / UNSUBSTANTIATED",
+      "source_ids": [
+        "SRC-7E2DE3FC127A"
+      ],
+      "claim_ids": [
+        "IR-CLM-0010"
+      ]
+    },
+    {
+      "id": "PR-013",
+      "date": "2026-04-09",
+      "sequence": 13,
+      "event": "Press TV continued the alternative uranium-search / nuclear-operation explanation after the recovery outcome was public.",
+      "status": "NARRATIVE SUBSTITUTION",
+      "source_ids": [
+        "SRC-03F069A69AAF"
+      ],
+      "claim_ids": [
+        "IR-CLM-0011"
+      ]
+    },
+    {
+      "id": "PR-014",
+      "date": "2026-04",
+      "sequence": 14,
+      "event": "Fake visual “proof” circulated around the capture/shootdown narrative, including recycled 1991 footage and AI-generated images.",
+      "status": "FALSE MEDIA; ORIGIN NOT ASSUMED OFFICIAL",
+      "source_ids": [
+        "SRC-5BC8070E8CD9",
+        "SRC-00FF7E1E6EA4",
+        "SRC-FADB5E0A4585"
+      ],
+      "claim_ids": []
+    }
+  ],
+  "method_rule": "Chronology distinguishes provisional reporting from final mission outcome and separates Iranian kinetic contact from causal responsibility for U.S.-destroyed denial wreckage."
+}

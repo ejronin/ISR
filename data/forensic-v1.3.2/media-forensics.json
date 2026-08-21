@@ -1,0 +1,136 @@
+{
+  "records": [
+    {
+      "media_id": "MED-001",
+      "date": "2026-04",
+      "description": "Video circulated as captured U.S. F-15 pilot in Iran.",
+      "claimed_meaning": "Captured American pilot after April F-15E shootdown.",
+      "finding": "Footage is from 1991 and shows U.S. aviator David Eberly after capture by Iraq.",
+      "disposition": "FALSE",
+      "source_ids": [
+        "SRC-5BC8070E8CD9"
+      ],
+      "official_iranian_origin_established": false,
+      "note": "Use as propagation evidence unless a direct official Iranian post is archived.",
+      "analytic_likelihood": "REMOTE",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Footage is from 1991 and shows U.S. aviator David Eberly after capture by Iraq."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ]
+    },
+    {
+      "media_id": "MED-002",
+      "date": "2026-04",
+      "description": "Image circulated as captured American airman in Iran.",
+      "claimed_meaning": "Photographic proof of prisoner.",
+      "finding": "Fact-check identified image as AI-generated.",
+      "disposition": "FALSE",
+      "source_ids": [
+        "SRC-00FF7E1E6EA4"
+      ],
+      "official_iranian_origin_established": false,
+      "note": "Do not attribute to IRGC absent provenance.",
+      "analytic_likelihood": "REMOTE",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Fact-check identified image as AI-generated."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ]
+    },
+    {
+      "media_id": "MED-003",
+      "date": "2026-04-05",
+      "description": "Image circulated as rescued U.S. airman.",
+      "claimed_meaning": "Visual proof connected to rescue narrative.",
+      "finding": "Lead Stories found the circulated rescued-airman image was AI-generated; it is excluded from factual rescue evidence.",
+      "disposition": "FALSE",
+      "source_ids": [
+        "SRC-95219D950347"
+      ],
+      "official_iranian_origin_established": false,
+      "note": "Included to prevent polluted visual evidence in either direction.",
+      "analytic_likelihood": "REMOTE",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Lead Stories found the circulated rescued-airman image was AI-generated; it is excluded from factual rescue evidence."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ]
+    },
+    {
+      "media_id": "MED-004",
+      "date": "2026-04-03",
+      "description": "Video circulated as F-15 shootdown over Iran.",
+      "claimed_meaning": "Video proof of tactical aircraft shootdown.",
+      "finding": "Lead Stories traced the circulated “shootdown” clip to pre-existing/simulated visual material rather than the claimed April event.",
+      "disposition": "FALSE",
+      "source_ids": [
+        "SRC-FADB5E0A4585"
+      ],
+      "official_iranian_origin_established": false,
+      "note": "The actual F-15E loss is real; this specific visual evidence is false.",
+      "analytic_likelihood": "REMOTE",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Lead Stories traced the circulated “shootdown” clip to pre-existing/simulated visual material rather than the claimed April event."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ]
+    },
+    {
+      "media_id": "MED-005",
+      "date": "2026-03",
+      "description": "Video circulated as proof Iran struck a U.S. destroyer in the Indian Ocean.",
+      "claimed_meaning": "Ship visibly hit/burning after Iranian missile strike.",
+      "finding": "AFP traced footage to a decommissioned U.S. ship sunk during RIMPAC 2022.",
+      "disposition": "FALSE",
+      "source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "official_iranian_origin_established": false,
+      "note": "False media does not by itself falsify every interpretation of the official strike claim; that claim remains UNSUBSTANTIATED.",
+      "analytic_likelihood": "REMOTE",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "AFP traced footage to a decommissioned U.S. ship sunk during RIMPAC 2022."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ]
+    },
+    {
+      "media_id": "MED-006",
+      "date": "2026-03-12",
+      "description": "AI/unrelated imagery circulated as USS Abraham Lincoln strike evidence.",
+      "claimed_meaning": "Carrier hit/damaged by Iran.",
+      "finding": "AFP identified one circulated Lincoln-damage clip as AI-generated and another as old footage unrelated to the claimed 2026 strike.",
+      "disposition": "FALSE",
+      "source_ids": [
+        "SRC-6801FFDD232B"
+      ],
+      "official_iranian_origin_established": false,
+      "note": "Preserve separately from any official carrier claim.",
+      "analytic_likelihood": "REMOTE",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "AFP identified one circulated Lincoln-damage clip as AI-generated and another as old footage unrelated to the claimed 2026 strike."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ]
+    }
+  ]
+}

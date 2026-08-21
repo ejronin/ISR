@@ -1,2 +1,4 @@
 data/integration-v1.2/*.json linguist-generated=true
 data/integration-v1.2/* whitespace=-trailing-space
+data/forensic-v1.3.2/* linguist-generated=true
+data/forensic-v1.3.2/* whitespace=-trailing-space
