@@ -1,0 +1,335 @@
+{
+  "version": "1.3.3-rationale-reconstruction-1",
+  "as_of": "2026-08-21",
+  "case_id": "CASE-US-EPIC-FURY-WAR-RATIONALES-2026",
+  "title": "Why the United States said it entered the war",
+  "subtitle": "Multiple rationales were advanced before and after Feb. 28. Their evidentiary support is not equal.",
+  "scope_note": "This reconstructs stated rationales, factual predicates, military objectives and political outcomes. It does not adjudicate the ultimate legality, morality, wisdom or desirability of the war.",
+  "chronology_note": "Do not retroactively treat later formalized objectives as though every formulation was stated in identical form before the opening attack. Reuters reported that public framing shifted during the opening days.",
+  "groups": [
+    {
+      "id": "first-strike-intelligence",
+      "order": 1,
+      "title": "Iran was about to attack U.S. forces first",
+      "rationale_type": "TRIGGER / INTELLIGENCE PREDICATE",
+      "overall_status": "FALSE",
+      "summary": "The specific proposition that U.S. intelligence showed Iran planned to initiate an attack on U.S. forces before Feb. 28 is contradicted by the reported Pentagon briefing to Congress.",
+      "propositions": [
+        {
+          "proposition": "U.S. intelligence showed Iran intended to attack U.S. forces first before the Feb. 28 U.S.-Israeli attack.",
+          "status": "FALSE",
+          "basis": "Reuters reported that administration officials told congressional staff there was no intelligence suggesting Iran planned to attack U.S. forces first."
+        },
+        {
+          "proposition": "Iranian missiles and proxy forces posed threats to U.S. interests in the region.",
+          "status": "SUPPORTED",
+          "basis": "The same congressional briefings reportedly emphasized missile and proxy threats, while distinguishing those threats from intelligence of an Iranian first strike."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "Reuters",
+          "date": "2026-03-02",
+          "title": "Pentagon tells Congress no sign that Iran was going to attack US first, sources say",
+          "url": "https://www.reuters.com/world/us/pentagon-tells-congress-no-sign-that-iran-was-going-attack-us-first-sources-say-2026-03-02/"
+        }
+      ]
+    },
+    {
+      "id": "israel-strike-retaliation",
+      "order": 2,
+      "title": "Israel was going to strike; Iran was expected to retaliate against U.S. forces",
+      "rationale_type": "PREEMPTION / FORCE-PROTECTION RATIONALE",
+      "overall_status": "SUPPORTED",
+      "summary": "Administration officials separately argued that Israel intended to strike and that Iran would retaliate against U.S. forces, so Washington joined the attack to reduce expected U.S. casualties. This is not the same proposition as an Iranian plan to attack the United States first.",
+      "propositions": [
+        {
+          "proposition": "The administration publicly advanced this expected-retaliation rationale.",
+          "status": "CONFIRMED",
+          "basis": "Reuters documented the administration's explanation that Israeli action and expected Iranian retaliation informed the U.S. decision."
+        },
+        {
+          "proposition": "Expected Iranian retaliation after an Israeli/U.S. attack proves Iran planned a prewar first strike on U.S. forces.",
+          "status": "FALSE",
+          "basis": "The propositions have different causal and temporal predicates; subsequent retaliation cannot establish a pre-attack Iranian first-strike plan."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "Reuters",
+          "date": "2026-03-02",
+          "title": "Trump seeks to justify Iran war, but stated objectives shift",
+          "url": "https://www.reuters.com/world/trump-says-he-ordered-iran-strikes-thwart-tehrans-missile-program-2026-03-02/"
+        },
+        {
+          "outlet": "Reuters",
+          "date": "2026-03-03",
+          "title": "Trump's Republicans defend Iran strikes as Democrats push war-powers vote",
+          "url": "https://www.reuters.com/world/middle-east/trumps-republicans-defend-iran-strikes-democrats-push-war-powers-vote-2026-03-03/"
+        }
+      ]
+    },
+    {
+      "id": "nuclear",
+      "order": 3,
+      "title": "Prevent Iran from acquiring a nuclear weapon",
+      "rationale_type": "STRATEGIC RATIONALE / POLICY OBJECTIVE",
+      "overall_status": "MIXED",
+      "summary": "Preventing an Iranian nuclear weapon was repeatedly stated as a core U.S. objective. That policy objective must be kept separate from stronger factual claims that Iran was already building a weapon or that a nuclear weapon was imminent on Feb. 28.",
+      "propositions": [
+        {
+          "proposition": "Preventing Iran from obtaining a nuclear weapon was a stated U.S. objective.",
+          "status": "CONFIRMED",
+          "basis": "Trump and the White House repeatedly identified nuclear denial as a central objective."
+        },
+        {
+          "proposition": "Iran possessed a substantial enrichment and nuclear program.",
+          "status": "CONFIRMED",
+          "basis": "The existence and scale of Iran's nuclear and enrichment infrastructure were independently established before the war."
+        },
+        {
+          "proposition": "Iran faced an imminent, demonstrated nuclear-weapon completion event on Feb. 28.",
+          "status": "UNRESOLVED / OVERSTATED AS PUBLICLY SHOWN",
+          "basis": "The public rationale used imminence language, but imminence is a distinct factual predicate requiring intelligence evidence beyond the existence of enrichment capability."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "White House",
+          "date": "2026-03-01",
+          "title": "Peace Through Strength: President Trump Launches Operation Epic Fury to Crush Iranian Regime, End Nuclear Threat",
+          "url": "https://www.whitehouse.gov/releases/2026/03/peace-through-strength-president-trump-launches-operation-epic-fury-to-crush-iranian-regime-end-nuclear-threat/"
+        },
+        {
+          "outlet": "Reuters",
+          "date": "2026-03-01",
+          "title": "Why is the US attacking Iran?",
+          "url": "https://www.reuters.com/business/media-telecom/why-is-us-attacking-iran-2026-03-01/"
+        }
+      ]
+    },
+    {
+      "id": "missiles",
+      "order": 4,
+      "title": "Iran's ballistic-missile arsenal and production capacity",
+      "rationale_type": "MILITARY THREAT / OPERATIONAL OBJECTIVE",
+      "overall_status": "MIXED",
+      "summary": "Iran's regional missile capability was real and destroying its arsenal, launchers and production base became an explicit military objective. The separate claim that Iranian missiles would soon be able to strike the U.S. homeland was not supported by the U.S. intelligence described by Reuters.",
+      "propositions": [
+        {
+          "proposition": "Iran possessed a large missile capability threatening regional U.S. forces and partners.",
+          "status": "SUPPORTED",
+          "basis": "Iran's deployed missile forces, regional range and subsequent wartime use establish the broad regional capability."
+        },
+        {
+          "proposition": "Destroying Iran's missile arsenal, launchers and production capacity was an explicit U.S. military objective.",
+          "status": "CONFIRMED",
+          "basis": "Trump, Pentagon leaders and subsequent White House releases repeatedly stated this objective."
+        },
+        {
+          "proposition": "Iran was on track to soon field a missile capable of striking the United States.",
+          "status": "FALSE / UNSUPPORTED BY REPORTED U.S. INTELLIGENCE",
+          "basis": "Reuters reported that U.S. intelligence did not support Trump's claim; the cited DIA assessment placed a militarily viable Iranian ICBM much later."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "Reuters",
+          "date": "2026-02-27",
+          "title": "Trump Iranian missile claim unsupported by U.S. intelligence, say sources",
+          "url": "https://www.reuters.com/business/aerospace-defense/urgent-trump-iranian-missile-claim-unsupported-by-us-intelligence-say-sources-2026-02-27/"
+        },
+        {
+          "outlet": "White House",
+          "date": "2026-03-12",
+          "title": "Operation Epic Fury: Decisive American Power to Crush Iran's Terror Regime",
+          "url": "https://www.whitehouse.gov/releases/2026/03/operation-epic-fury-decisive-american-power-to-crush-irans-terror-regime/"
+        }
+      ]
+    },
+    {
+      "id": "naval",
+      "order": 5,
+      "title": "Iranian naval and maritime power",
+      "rationale_type": "OPERATIONAL OBJECTIVE / MARITIME THREAT",
+      "overall_status": "SUPPORTED",
+      "summary": "Destroying or degrading Iran's navy was an explicit campaign objective, and Iran possessed meaningful anti-ship and sea-denial capability. That does not by itself prove that maritime capability was the immediate legal or intelligence trigger for the Feb. 28 attack.",
+      "propositions": [
+        {
+          "proposition": "Destroying Iran's navy was an explicit U.S. military objective.",
+          "status": "CONFIRMED",
+          "basis": "It was repeatedly stated by Trump, Rubio, Hegseth, Caine and the White House."
+        },
+        {
+          "proposition": "Iran possessed material capability to threaten shipping and regional naval operations.",
+          "status": "SUPPORTED",
+          "basis": "Prewar force structure and wartime Hormuz/anti-shipping behavior support the capability proposition."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "White House",
+          "date": "2026-03-12",
+          "title": "Operation Epic Fury: Decisive American Power to Crush Iran's Terror Regime",
+          "url": "https://www.whitehouse.gov/releases/2026/03/operation-epic-fury-decisive-american-power-to-crush-irans-terror-regime/"
+        }
+      ]
+    },
+    {
+      "id": "proxies",
+      "order": 6,
+      "title": "Iranian support for proxies and armed groups",
+      "rationale_type": "STRATEGIC RATIONALE / OPERATIONAL OBJECTIVE",
+      "overall_status": "SUPPORTED WITH LIMIT",
+      "summary": "Iran's long-standing support for regional armed groups was a real and repeatedly cited rationale. Historical support does not itself establish an imminent proxy attack on Feb. 28.",
+      "propositions": [
+        {
+          "proposition": "Iran historically armed, funded or supported regional proxy/partner armed groups.",
+          "status": "CONFIRMED",
+          "basis": "The relationship is extensively documented and was a stated U.S. grievance."
+        },
+        {
+          "proposition": "Severing Iran's ability to arm, fund and direct proxies was a stated campaign objective.",
+          "status": "CONFIRMED",
+          "basis": "White House campaign statements explicitly included proxy support."
+        },
+        {
+          "proposition": "An imminent proxy attack was established as the immediate Feb. 28 trigger.",
+          "status": "UNRESOLVED",
+          "basis": "A general proxy threat and an identified imminent attack are different propositions."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "White House",
+          "date": "2026-03-01",
+          "title": "Peace Through Strength: President Trump Launches Operation Epic Fury to Crush Iranian Regime, End Nuclear Threat",
+          "url": "https://www.whitehouse.gov/releases/2026/03/peace-through-strength-president-trump-launches-operation-epic-fury-to-crush-iranian-regime-end-nuclear-threat/"
+        }
+      ]
+    },
+    {
+      "id": "historical-aggression",
+      "order": 7,
+      "title": "Long-standing Iranian attacks and regional destabilization",
+      "rationale_type": "BACKGROUND STRATEGIC RATIONALE",
+      "overall_status": "SUPPORTED AS BACKGROUND",
+      "summary": "The administration invoked decades of Iranian attacks, sponsorship of armed groups and harm to Americans. Those historical grievances can be factual background without constituting evidence of an imminent Feb. 28 attack.",
+      "propositions": [
+        {
+          "proposition": "The administration cited decades of Iranian aggression and attacks on Americans as part of its case.",
+          "status": "CONFIRMED",
+          "basis": "Opening White House messaging explicitly invoked a 47-year record of aggression and attacks."
+        },
+        {
+          "proposition": "Historical aggression alone establishes the immediate necessity of the Feb. 28 attack.",
+          "status": "NOT ESTABLISHED",
+          "basis": "Historical background and an immediate trigger are analytically separate."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "White House",
+          "date": "2026-03-01",
+          "title": "Peace Through Strength: President Trump Launches Operation Epic Fury to Crush Iranian Regime, End Nuclear Threat",
+          "url": "https://www.whitehouse.gov/releases/2026/03/peace-through-strength-president-trump-launches-operation-epic-fury-to-crush-iranian-regime-end-nuclear-threat/"
+        }
+      ]
+    },
+    {
+      "id": "diplomacy-exhausted",
+      "order": 8,
+      "title": "Diplomacy had failed or been exhausted",
+      "rationale_type": "DIPLOMATIC NECESSITY CLAIM",
+      "overall_status": "PARTLY TRUE / EXHAUSTION NOT SUPPORTED",
+      "summary": "No agreement existed before Feb. 28 and major disagreements remained. But Reuters reported progress at the Feb. 26 Geneva talks and expectations of further rounds and technical discussions, so 'no deal' should not be converted into 'diplomacy was exhausted.'",
+      "propositions": [
+        {
+          "proposition": "The Feb. 26 talks ended without a final agreement.",
+          "status": "CONFIRMED",
+          "basis": "Reuters reported no deal."
+        },
+        {
+          "proposition": "Serious disagreements remained over nuclear and other security issues.",
+          "status": "SUPPORTED",
+          "basis": "The negotiating record showed major unresolved issues."
+        },
+        {
+          "proposition": "The negotiating process had been exhausted and no meaningful diplomatic path remained before Feb. 28.",
+          "status": "NOT SUPPORTED",
+          "basis": "Oman described significant progress and further talks/technical discussions were expected."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "Reuters",
+          "date": "2026-02-26",
+          "title": "US-Iran talks end with no deal but potential signs of progress",
+          "url": "https://www.reuters.com/world/middle-east/us-iran-nuclear-talks-resume-geneva-against-backdrop-military-threat-2026-02-26/"
+        }
+      ]
+    },
+    {
+      "id": "regime-change",
+      "order": 9,
+      "title": "Regime change or an Iranian popular overthrow",
+      "rationale_type": "POLITICAL OUTCOME / PRESIDENTIAL RHETORIC",
+      "overall_status": "RHETORIC CONFIRMED; FORMAL OBJECTIVE NOT ESTABLISHED",
+      "summary": "Trump urged Iranians to rise up and discussed political transition, while other administration officials described regime change as incidental or not the military objective. The rhetoric belongs in the record without being silently converted into a formal campaign objective.",
+      "propositions": [
+        {
+          "proposition": "Presidential rhetoric encouraged Iranians to overthrow or replace the government.",
+          "status": "CONFIRMED",
+          "basis": "Reuters documented Trump's calls for Iranians to rise up and his discussion of political transition."
+        },
+        {
+          "proposition": "Regime change was consistently defined as a formal military objective from the opening of the operation.",
+          "status": "NOT ESTABLISHED",
+          "basis": "Other senior officials characterized regime change as incidental while enumerating missiles, navy, proxies and nuclear denial as core objectives."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "Reuters",
+          "date": "2026-03-02",
+          "title": "Trump seeks to justify Iran war, but stated objectives shift",
+          "url": "https://www.reuters.com/world/trump-says-he-ordered-iran-strikes-thwart-tehrans-missile-program-2026-03-02/"
+        },
+        {
+          "outlet": "White House",
+          "date": "2026-03-12",
+          "title": "Operation Epic Fury: Decisive American Power to Crush Iran's Terror Regime",
+          "url": "https://www.whitehouse.gov/releases/2026/03/operation-epic-fury-decisive-american-power-to-crush-irans-terror-regime/"
+        }
+      ]
+    },
+    {
+      "id": "repression-human-rights",
+      "order": 10,
+      "title": "Iranian domestic repression and human-rights conduct",
+      "rationale_type": "BACKGROUND POLITICAL RATIONALE",
+      "overall_status": "STATED BACKGROUND RATIONALE",
+      "summary": "The White House cited Iranian repression and harm to protesters as part of the broader political case against the regime. This should remain a background rationale unless evidence ties it to a defined immediate military trigger.",
+      "propositions": [
+        {
+          "proposition": "Iranian repression and human-rights conduct were cited in opening U.S. messaging.",
+          "status": "CONFIRMED",
+          "basis": "The March 1 White House release included domestic repression among the administration's stated grievances."
+        },
+        {
+          "proposition": "Domestic repression was separately identified as the immediate operational trigger for Feb. 28.",
+          "status": "NOT ESTABLISHED",
+          "basis": "The public record reviewed here treats it as background/political rationale rather than a discrete military objective."
+        }
+      ],
+      "sources": [
+        {
+          "outlet": "White House",
+          "date": "2026-03-01",
+          "title": "Peace Through Strength: President Trump Launches Operation Epic Fury to Crush Iranian Regime, End Nuclear Threat",
+          "url": "https://www.whitehouse.gov/releases/2026/03/peace-through-strength-president-trump-launches-operation-epic-fury-to-crush-iranian-regime-end-nuclear-threat/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": "1.3.3-asset-display-1",
+  "version": "1.3.3-asset-display-2",
   "as_of": "2026-08-21",
   "doctrine": "Headline counts show the exact proposition supported: lost/damaged, neutralized, targeted, or claimed are not interchangeable. UNCONTESTED means not materially disputed or contradicted in the reviewed record; it does not mean independently verified.",
   "iran": {
@@ -71,6 +71,41 @@
         "public_status": "SUPPORTED",
         "scope": "canonical itemized minimum",
         "dynamic": "leadership"
+      },
+      {
+        "id": "naval_total",
+        "label": "Naval hulls / craft",
+        "headline": "58+",
+        "subheadline": "evidence-supported conventional naval floor",
+        "public_status": "SUPPORTED",
+        "scope": "5 frigates + 6 corvettes + 3 fast attack craft + 12 submarines + 2 AFSB/power-projection hulls + 30+ mine-laying small craft",
+        "components": [
+          [
+            "Frigates",
+            5
+          ],
+          [
+            "Corvettes",
+            6
+          ],
+          [
+            "Fast attack craft",
+            3
+          ],
+          [
+            "Submarines",
+            12
+          ],
+          [
+            "AFSB / power-projection hulls",
+            2
+          ],
+          [
+            "Mine-laying small craft",
+            30
+          ]
+        ],
+        "note": "The 58+ floor is a readable sum of the accepted v1.3.2 class quantities. The 30+ small-craft category remains open-ended."
       },
       {
         "id": "submarines",
