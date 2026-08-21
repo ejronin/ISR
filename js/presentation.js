@@ -38,11 +38,12 @@
     if (/VERIFIED|CONFIRMED|HIGH|SATELLITE|INDEPENDENT/.test(text)) return 'verified';
     if (/SUPPORTED|PROBABLE|LIKELY|MEDIUM|CORROBORAT/.test(text)) return 'supported';
     if (/REPORTED|OFFICIAL|AUTHORITY|SOURCE/.test(text)) return 'reported';
-    return 'supported';
+    return 'neutral';
   }
 
   function evidenceLabel(value) {
-    return evidenceState(value).toUpperCase();
+    const state = evidenceState(value);
+    return state === 'neutral' ? 'UNRESOLVED' : state.toUpperCase();
   }
 
   function physicalState(value) {
