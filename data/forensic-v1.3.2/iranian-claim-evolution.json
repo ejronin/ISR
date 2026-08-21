@@ -1,0 +1,2890 @@
+{
+  "schema_version": "1.0",
+  "authority_rule": "Claim-level audit; state media is evidence of what was published/attributed, not automatic proof of factual truth. Separate event existence, cause, effect, and outcome.",
+  "claims": [
+    {
+      "claim_id": "IR-CLM-0001",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260403-F15E",
+      "claim_date": "2026-04-03",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "05:46; updated 07:01",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "IRGC / Khatam al-Anbiya Central Headquarters as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iranian air defenses downed a Lakenheath F-35 in central Iran.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/03/766244/Another-advanced-US-je",
+      "source_id": "SRC-9AD88556FB4C",
+      "archived_snapshot_url": null,
+      "article_publication_time": "05:46; updated 07:01",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "A U.S. tactical aircraft was downed over Iran.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Subsequent U.S./independent reporting and Iranian correction establish an F-15E loss.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Subsequent U.S./independent reporting and Iranian correction establish an F-15E loss."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "EFFECT",
+          "proposition": "The downed aircraft was an F-35.",
+          "disposition": "FALSE",
+          "confidence": "HIGH",
+          "basis": "Iranian state media later explicitly corrected the type to F-15E based on debris.",
+          "analytic_likelihood": "REMOTE",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Iranian state media later explicitly corrected the type to F-15E based on debris."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-481DC6A8E2DB",
+        "SRC-694207959BE5"
+      ],
+      "contradiction_type": "AIRCRAFT_TYPE_MISIDENTIFICATION",
+      "subsequent_iranian_revision": "Press TV later explicitly described the F-35 identification as a misidentification and identified an F-15E.",
+      "previous_claim_id": null,
+      "next_replacement_claim_id": "IR-CLM-0003",
+      "final_disposition": [
+        "FALSE"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Do not turn the type-identification error into denial of the genuine F-15E shootdown.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "inflated_or_mistaken_identification"
+      ],
+      "analytic_likelihood": "REMOTE",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Subsequent U.S./independent reporting and Iranian correction establish an F-15E loss.",
+        "Iranian state media later explicitly corrected the type to F-15E based on debris."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0002",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260403-F15E",
+      "claim_date": "2026-04-03",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "19:14; updated 19:23",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Mohammad Bagher Qalibaf, Speaker of Parliament, as reported by Press TV",
+      "claimant_type": "SENIOR_POLITICAL_OFFICIAL",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Qalibaf publicly mocked the U.S. on the premise that another F-35 had been downed.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/03/766276/Trump%E2%80%99s-%E2%80%98no-strategy%E2%80%99-war-downgraded-to-a-hunt-for-pilots-in-Iran--parliament-speaker",
+      "source_id": "SRC-2867CB793392",
+      "archived_snapshot_url": null,
+      "article_publication_time": "19:14; updated 19:23",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EFFECT",
+          "proposition": "The U.S. loss being discussed was an F-35.",
+          "disposition": "FALSE",
+          "confidence": "HIGH",
+          "basis": "The later Iranian correction identifies the aircraft as F-15E.",
+          "analytic_likelihood": "REMOTE",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The later Iranian correction identifies the aircraft as F-15E."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-481DC6A8E2DB"
+      ],
+      "contradiction_type": "REPETITION_OF_MISIDENTIFICATION",
+      "subsequent_iranian_revision": "Superseded by Iranian state-media F-15E correction.",
+      "previous_claim_id": "IR-CLM-0001",
+      "next_replacement_claim_id": "IR-CLM-0003",
+      "final_disposition": [
+        "FALSE"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "senior_official_amplification"
+      ],
+      "analytic_likelihood": "REMOTE",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The later Iranian correction identifies the aircraft as F-15E."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0003",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260403-F15E",
+      "claim_date": "2026-04-06",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Press TV",
+      "claimant_type": "STATE_MEDIA_CORRECTION",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Press TV states the F-35 identification was a misidentification and debris showed an F-15E.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/06/766419/how-iran-air-defences-turned-april3-blackest-day-us-military-aviation-history",
+      "source_id": "SRC-481DC6A8E2DB",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "The initial Iranian aircraft-type identification was wrong.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Press TV explicitly labels the earlier identification a misidentification.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Press TV explicitly labels the earlier identification a misidentification."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "EFFECT",
+          "proposition": "The downed aircraft was an F-15E.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Matches U.S./independent reporting.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Matches U.S./independent reporting."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-694207959BE5"
+      ],
+      "contradiction_type": "SELF_CORRECTION",
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0001",
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "CORRECTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "An important Iranian-source correction; retain visibly in the UI.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "correction"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Press TV explicitly labels the earlier identification a misidentification.",
+        "Matches U.S./independent reporting."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0004",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260403-CSAR",
+      "claim_date": "2026-04-03",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "14:50",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Tasnim News Agency citing unnamed sources",
+      "claimant_type": "SEMIOFFICIAL_MEDIA_UNNAMED_SOURCES",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Reports suggested the missing American pilot may have been captured.",
+      "original_source_url": "https://www.tasnimnews.ir/en/news/2026/04/03/3555882/reports-suggest-possible-capture-of-us-pilot-after-warplane-downed-in-iran",
+      "source_id": "SRC-F8AA5DA10F47",
+      "archived_snapshot_url": null,
+      "article_publication_time": "14:50",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "One F-15E crew member was missing/evading after ejection.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "U.S. rescue timeline confirms one airman remained unrecovered.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "U.S. rescue timeline confirms one airman remained unrecovered."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "The missing airman had been captured by Iran.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "HIGH",
+          "basis": "The item is explicitly hedged; later provincial IRGC denial and U.S. recovery conflict with capture narrative.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "The item is explicitly hedged; later provincial IRGC denial and U.S. recovery conflict with capture narrative."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-CC1AA98E096D",
+        "SRC-694207959BE5",
+        "SRC-C7C20E33BFCA"
+      ],
+      "contradiction_type": "HEDGED_CAPTURE_REPORT",
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": "IR-CLM-0005",
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Do not rewrite “may have been captured” as an official confirmed-capture claim.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "unsupported_victory_claim"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "U.S. rescue timeline confirms one airman remained unrecovered.",
+        "The item is explicitly hedged; later provincial IRGC denial and U.S. recovery conflict with capture narrative."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0005",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260403-CSAR",
+      "claim_date": "2026-04-03",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "15:18",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Tasnim News Agency",
+      "claimant_type": "SEMIOFFICIAL_MEDIA",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Tasnim headlined that the U.S. effort to recover the pilot failed; the body said efforts had so far been futile.",
+      "original_source_url": "https://www.tasnimnews.ir/en/news/2026/04/03/3555907/us-effort-to-recover-downed-fighter-pilot-fails",
+      "source_id": "SRC-9AD0DC8629DD",
+      "archived_snapshot_url": null,
+      "article_publication_time": "15:18",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "OUTCOME",
+          "proposition": "By publication time, recovery efforts had not yet recovered the second airman.",
+          "disposition": "PARTLY_CONFIRMED",
+          "confidence": "MEDIUM",
+          "basis": "Chronology supports an ongoing difficult search.",
+          "analytic_likelihood": "LIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Chronology supports an ongoing difficult search."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "The overall rescue mission ultimately failed.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Both crew members were subsequently recovered.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Both crew members were subsequently recovered."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-694207959BE5",
+        "SRC-C7C20E33BFCA"
+      ],
+      "contradiction_type": "PREMATURE_FINALITY",
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0004",
+      "next_replacement_claim_id": "IR-CLM-0006",
+      "final_disposition": [
+        "MISLEADING",
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Headline is stronger than the temporally qualified body. Preserve both.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "premature_victory_claim"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Chronology supports an ongoing difficult search.",
+        "Both crew members were subsequently recovered."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0006",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260404-CSAR",
+      "claim_date": "2026-04-04",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "11:23 GMT+1 publisher display",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Provincial IRGC, as reported by Iran International",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "The provincial IRGC denied that the second F-15E crewman was in Iranian custody.",
+      "original_source_url": "https://www.iranintl.com/en/202604047103",
+      "source_id": "SRC-CC1AA98E096D",
+      "archived_snapshot_url": null,
+      "article_publication_time": "11:23 GMT+1 publisher display",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "OUTCOME",
+          "proposition": "Iran had captured/detained the second crewman.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "The provincial IRGC denial and subsequent recovery both cut against the capture story.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The provincial IRGC denial and subsequent recovery both cut against the capture story."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-694207959BE5",
+        "SRC-C7C20E33BFCA"
+      ],
+      "contradiction_type": "INTERNAL_IRANIAN_CONTRADICTION",
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0004",
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "CORRECTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "A correction/denial inside the Iranian claim ecosystem; do not omit it.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "correction",
+        "internal_contradiction"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The provincial IRGC denial and subsequent recovery both cut against the capture story."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0007",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260405-CSAR",
+      "claim_date": "2026-04-05",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Khatam al-Anbiya Central Headquarters spokesman, as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iranian forces destroyed rescue aircraft and brought the rescue operation to complete failure.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/05/766340/Humiliating-defeat-Iran-destroys-US-flying-objects-during-pilot-rescue-mission",
+      "source_id": "SRC-CB6893671B1F",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "U.S. rescue aircraft/equipment were lost inside Iran.",
+          "disposition": "PARTLY_CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Reuters reconstruction confirms major U.S. equipment losses.",
+          "analytic_likelihood": "LIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Reuters reconstruction confirms major U.S. equipment losses."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "CAUSE",
+          "proposition": "Iranian fire caused all of the destroyed MC-130/helicopter wreckage claimed by Iran.",
+          "disposition": "FALSE_ATTRIBUTION",
+          "confidence": "HIGH",
+          "basis": "Reuters reports Iranian fire hit two helicopters, but disabled MC-130s and additional helicopters were destroyed by U.S. personnel.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Reuters reports Iranian fire hit two helicopters, but disabled MC-130s and additional helicopters were destroyed by U.S. personnel."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "The personnel-recovery mission failed.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Both F-15E crew members were recovered.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Both F-15E crew members were recovered."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-694207959BE5",
+        "SRC-C7C20E33BFCA",
+        "SRC-7471ECB26165"
+      ],
+      "contradiction_type": "REAL_LOSSES_FALSE_CAUSATION_AND_OUTCOME",
+      "subsequent_iranian_revision": "Subsequent Iranian/state-media narrative shifted toward a nuclear-facility/uranium explanation.",
+      "previous_claim_id": null,
+      "next_replacement_claim_id": "IR-CLM-0009",
+      "final_disposition": [
+        "FALSE_ATTRIBUTION",
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Real wreckage and real Iranian fire are not disputed; causal attribution and mission outcome are.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_attribution",
+        "real_tactical_effect_overleveraged"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Reuters reconstruction confirms major U.S. equipment losses.",
+        "Reuters reports Iranian fire hit two helicopters, but disabled MC-130s and additional helicopters were destroyed by U.S. personnel.",
+        "Both F-15E crew members were recovered."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0008",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260405-CSAR",
+      "claim_date": "2026-04-05",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian Armed Forces / Khatam al-Anbiya claim preserved by Reuters",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language wire paraphrase",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran said its forces destroyed multiple U.S. rescue aircraft during the operation.",
+      "original_source_url": "https://www.reuters.com/world/middle-east/iran-says-several-enemy-flying-objects-destroyed-during-us-pilot-rescue-mission-2026-04-05",
+      "source_id": "SRC-7CDC817909BB",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Multiple U.S. rescue aircraft/equipment were lost or damaged.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Independent reconstruction confirms real equipment losses and helicopter hits.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Independent reconstruction confirms real equipment losses and helicopter hits."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "CAUSE",
+          "proposition": "Iranian kinetic action destroyed all major aircraft Iran claimed as kills.",
+          "disposition": "FALSE_ATTRIBUTION",
+          "confidence": "HIGH",
+          "basis": "Independent reconstruction attributes major disabled-aircraft destruction to U.S. denial action; Iranian fire hit two helicopters.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Independent reconstruction attributes major disabled-aircraft destruction to U.S. denial action; Iranian fire hit two helicopters."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [
+        "Operational statement; visible wreckage/claimed engagements."
+      ],
+      "contemporaneous_independent_evidence": [
+        "SRC-7471ECB26165"
+      ],
+      "later_evidence": [
+        "SRC-694207959BE5",
+        "SRC-C7C20E33BFCA"
+      ],
+      "contradiction_type": "CAUSATION_OF_LOSSES",
+      "subsequent_iranian_revision": "Narrative later emphasized alleged nuclear/uranium objective rather than only personnel rescue.",
+      "previous_claim_id": "IR-CLM-0007",
+      "next_replacement_claim_id": "IR-CLM-0009",
+      "final_disposition": [
+        "FALSE_ATTRIBUTION"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Do not say Iran invented wreckage. The dispute is which losses Iranian action actually caused.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_attribution"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Independent reconstruction confirms real equipment losses and helicopter hits.",
+        "Independent reconstruction attributes major disabled-aircraft destruction to U.S. denial action; Iranian fire hit two helicopters."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0009",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260406-URANIUM",
+      "claim_date": "2026-04-06",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "22:24",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Esmail Baghaei, Iranian Foreign Ministry spokesman, as reported by Xinhua",
+      "claimant_type": "FOREIGN_MINISTRY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Baghaei said the possibility the operation was a deception to steal enriched uranium should not be overlooked.",
+      "original_source_url": "https://english.news.cn/20260406/6146c0f1827343b393a80518f3e65b56/c.html",
+      "source_id": "SRC-0C0023C8A3BF",
+      "archived_snapshot_url": null,
+      "article_publication_time": "22:24",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "The observed rescue package was actually a uranium-seizure operation.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "HIGH",
+          "basis": "The statement is explicitly speculative and supplies no operation-specific physical evidence.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The statement is explicitly speculative and supplies no operation-specific physical evidence."
+          ],
+          "credible_alternatives": [
+            "A separate uranium-seizure contingency existed, but no evidence currently links it operationally to this rescue package."
+          ],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Iran possessed enriched uranium at/associated with Isfahan.",
+          "disposition": "MOSTLY_CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "IAEA reporting immediately before the war confirmed 20% and 60% enriched uranium had been stored at Isfahan; Grossi later assessed a little over 200 kg of 60% material had been there and likely remained.",
+          "analytic_likelihood": "VERY_LIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "IAEA report confirmed storage at Isfahan immediately before the war.",
+            "IAEA Director General later said the widespread assessment was that the material remained and no movement had been observed."
+          ],
+          "credible_alternatives": [
+            "Some or all material could have been moved without publicly detectable indicators; IAEA lacked post-strike site access."
+          ],
+          "evidence_that_would_change_assessment": [
+            "IAEA inspection or reliable imagery/transport evidence showing the material was removed or destroyed before the operation."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-7E2DE3FC127A",
+        "SRC-68993464F927",
+        "SRC-98A42AC97EEA",
+        "SRC-42F3F44BC6EE"
+      ],
+      "contradiction_type": "SPECULATIVE_CAUSAL_ALLEGATION",
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0008",
+      "next_replacement_claim_id": "IR-CLM-0010",
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Preserve “could have been” / “possibility” wording. Do not harden it retroactively.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "narrative_pivot",
+        "unsupported_victory_claim"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The uranium-seizure framing originated as an explicitly speculative possibility.",
+        "The observed operational package and later U.S./independent reporting describe a personnel-recovery mission.",
+        "IAEA evidence supports uranium presence at Isfahan, but that fact does not link the uranium to the rescue mission."
+      ],
+      "credible_alternatives": [
+        "A covert secondary objective is theoretically possible, but no operation-specific evidence currently supports it."
+      ],
+      "evidence_that_would_change_assessment": [
+        "Mission orders, participant testimony, imagery or recovered documentation establishing a uranium-recovery task inside the April 3-5 operation."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0010",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260407-URANIUM",
+      "claim_date": "2026-04-07",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "11:24; updated 13:25",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Press TV",
+      "claimant_type": "STATE_MEDIA",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Press TV asserted the operation had no connection to pilot rescue and really targeted an Isfahan nuclear facility.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/07/766446/press-tv-exclusive-us-suffered-strategic-defeat-failed-isfshan-operation",
+      "source_id": "SRC-7E2DE3FC127A",
+      "archived_snapshot_url": null,
+      "article_publication_time": "11:24; updated 13:25",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "The primary purpose of the observed operation was not personnel recovery but a nuclear-facility raid.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "HIGH",
+          "basis": "No reviewed operation-specific evidence shows nuclear-response/excavation/material-handling package; successful aircrew recovery is independently documented.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "No reviewed operation-specific evidence shows nuclear-response/excavation/material-handling package; successful aircrew recovery is independently documented."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "Iran defeated a nuclear-site raid rather than a rescue operation.",
+          "disposition": "NARRATIVE_SUBSTITUTION",
+          "confidence": "HIGH",
+          "basis": "The asserted mission identity changed after recovery and loss-mechanism evidence weakened the earlier complete-rescue-failure story.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "The asserted mission identity changed after recovery and loss-mechanism evidence weakened the earlier complete-rescue-failure story."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-68993464F927",
+        "SRC-481DC6A8E2DB"
+      ],
+      "contradiction_type": "OUTCOME_PRESERVING_NARRATIVE_SUBSTITUTION",
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0009",
+      "next_replacement_claim_id": "IR-CLM-0011",
+      "final_disposition": [
+        "NARRATIVE_SUBSTITUTION",
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Separate background fact of a real U.S. uranium-seizure contingency from proof that this rescue was that operation.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "narrative_substitution",
+        "outcome_preserving"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "No reviewed operation-specific evidence shows nuclear-response/excavation/material-handling package; successful aircrew recovery is independently documented.",
+        "The asserted mission identity changed after recovery and loss-mechanism evidence weakened the earlier complete-rescue-failure story."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0011",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "event_id": "ADD-EVT-20260409-URANIUM",
+      "claim_date": "2026-04-09",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Press TV",
+      "claimant_type": "STATE_MEDIA",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Press TV questioned the rescue explanation and advanced a uranium-search / alternative-mission theory.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/09/766530/what-happened-isfahan-us-pilot-rescue-mission-search-uranium",
+      "source_id": "SRC-03F069A69AAF",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "The rescue account was a cover for a uranium-related mission.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "HIGH",
+          "basis": "No operation-specific nuclear-handling evidence identified in reviewed sources.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "No operation-specific nuclear-handling evidence identified in reviewed sources."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "Alternative uranium explanation preserves the conclusion that Iran defeated the operation.",
+          "disposition": "NARRATIVE_SUBSTITUTION",
+          "confidence": "HIGH",
+          "basis": "Follows successful personnel recovery and reconstruction of U.S. self-destruction of disabled assets.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Follows successful personnel recovery and reconstruction of U.S. self-destruction of disabled assets."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-68993464F927"
+      ],
+      "contradiction_type": "MISSION_IDENTITY_SUBSTITUTION",
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0010",
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "NARRATIVE_SUBSTITUTION",
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Article contains some acknowledgments compatible with ground destruction; preserve those rather than flattening it into a wholly false article.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "narrative_substitution",
+        "outcome_preserving"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "No operation-specific nuclear-handling evidence identified in reviewed sources.",
+        "Follows successful personnel recovery and reconstruction of U.S. self-destruction of disabled assets."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0101",
+      "chain_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "event_id": "ADD-EVT-20260302-KUWAIT-F15",
+      "claim_date": "2026-03-02",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "14:00",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Tasnim / Iranian military reporting",
+      "claimant_type": "SEMIOFFICIAL_MEDIA",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran claimed responsibility for downing a U.S. F-15 during the Kuwait fighting.",
+      "original_source_url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529288/iran-downs-us-fighter-jet-in-first-such-incident-in-27-years",
+      "source_id": "SRC-FBB8378A0876",
+      "archived_snapshot_url": null,
+      "article_publication_time": "14:00",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "A U.S. F-15 was lost over Kuwait.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "U.S./Kuwaiti and independent reporting confirm F-15 losses.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "U.S./Kuwaiti and independent reporting confirm F-15 losses."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "CAUSE",
+          "proposition": "Iranian action caused that F-15 loss.",
+          "disposition": "FALSE_ATTRIBUTION",
+          "confidence": "HIGH",
+          "basis": "CENTCOM attributed the losses to Kuwaiti friendly fire; independently verified video supports that mechanism for at least one.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "CENTCOM attributed the losses to Kuwaiti friendly fire; independently verified video supports that mechanism for at least one."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-35FB02E8E973",
+        "SRC-040789CFC9C0"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": "IR-CLM-0102",
+      "final_disposition": [
+        "FALSE_ATTRIBUTION"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_attribution"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "U.S./Kuwaiti and independent reporting confirm F-15 losses.",
+        "CENTCOM attributed the losses to Kuwaiti friendly fire; independently verified video supports that mechanism for at least one."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0102",
+      "chain_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "event_id": "ADD-EVT-20260302-KUWAIT-F15",
+      "claim_date": "2026-03-02",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "16:14",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Khatam al-Anbiya Central Headquarters as reported by Tasnim",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran claimed three U.S. F-15 fighter jets were downed by Iranian action.",
+      "original_source_url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529455/number-of-downed-us-warplanes-rises-to-3",
+      "source_id": "SRC-6C64F6A3D5B7",
+      "archived_snapshot_url": null,
+      "article_publication_time": "16:14",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Three U.S. F-15s were lost.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "The three losses are independently acknowledged.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The three losses are independently acknowledged."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "CAUSE",
+          "proposition": "Iran downed all three aircraft.",
+          "disposition": "FALSE_ATTRIBUTION",
+          "confidence": "HIGH",
+          "basis": "CENTCOM says Kuwaiti air defenses mistakenly downed them; all six crew survived.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "CENTCOM says Kuwaiti air defenses mistakenly downed them; all six crew survived."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-35FB02E8E973",
+        "SRC-040789CFC9C0"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0101",
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "FALSE_ATTRIBUTION"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_attribution",
+        "claim_escalation"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The three losses are independently acknowledged.",
+        "CENTCOM says Kuwaiti air defenses mistakenly downed them; all six crew survived."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0201",
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "event_id": "ADD-EVT-20260305-TURKEY",
+      "claim_date": "2026-03-05",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "07:44",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Iranian Armed Forces as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran said no Iranian missile had been fired toward Turkey.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/05/764974/Iran-rejects-claim-missile-launch-into-Turkey",
+      "source_id": "SRC-D86835557005",
+      "archived_snapshot_url": null,
+      "article_publication_time": "07:44",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "Iran was not the origin of missiles intercepted toward Turkey.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Turkish/NATO reporting later attributed four ballistic missiles fired from Iran; this pass does not independently geolocate launch points.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Turkish/NATO reporting later attributed four ballistic missiles fired from Iran; this pass does not independently geolocate launch points."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-2E51203B3913"
+      ],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": "IR-CLM-0202",
+      "final_disposition": [
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "denial"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Turkish/NATO reporting later attributed four ballistic missiles fired from Iran; this pass does not independently geolocate launch points."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0202",
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "event_id": "ADD-EVT-20260310-TURKEY",
+      "claim_date": "2026-03-10",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "15:03",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Abbas Araqchi, Iranian Foreign Minister",
+      "claimant_type": "FOREIGN_MINISTRY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Araqchi said no projectiles had been fired from Iran toward Turkey.",
+      "original_source_url": "https://tasnimnews.ir/en/news/2026/03/10/3537163/no-projectiles-fired-from-iran-toward-turkey-araqchi",
+      "source_id": "SRC-CC18DEA75017",
+      "archived_snapshot_url": null,
+      "article_publication_time": "15:03",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "No projectile toward Turkey originated from Iran.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Repeated Turkish/NATO attribution later conflicts with categorical denial.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Repeated Turkish/NATO attribution later conflicts with categorical denial."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-2E51203B3913"
+      ],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0201",
+      "next_replacement_claim_id": "IR-CLM-0203",
+      "final_disposition": [
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "denial",
+        "senior_official_amplification"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Repeated Turkish/NATO attribution later conflicts with categorical denial."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0203",
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "event_id": "ADD-EVT-20260313-TURKEY",
+      "claim_date": "2026-03-13",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "18:54",
+      "timestamp_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "claimant": "Iranian Embassy / Iranian official messaging as reported by Press TV",
+      "claimant_type": "OFFICIAL_DIPLOMATIC",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran again dismissed reports that it launched missiles toward Turkey.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/13/765340/Iran-dismisses-reports-of-missile-launch-towards-Turkey",
+      "source_id": "SRC-82DCB357724B",
+      "archived_snapshot_url": null,
+      "article_publication_time": "18:54",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "Iran did not launch the relevant inbound missiles.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Turkish/NATO attribution remains contrary evidence.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Turkish/NATO attribution remains contrary evidence."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-2E51203B3913"
+      ],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0202",
+      "next_replacement_claim_id": "IR-CLM-0204",
+      "final_disposition": [
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "denial"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Turkish/NATO attribution remains contrary evidence."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0204",
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "event_id": "ADD-EVT-20260331-TURKEY",
+      "claim_date": "2026-03-31",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "15:17",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Abbas Araqchi as reported by Press TV",
+      "claimant_type": "FOREIGN_MINISTRY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Araqchi said reports that Iran fired a missile toward Turkey were completely baseless and warned of repeated false-flag operations by enemies of regional peace and friendship.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/31/766133/Iran-warns-of-new-false-flag-attacks-denies-reports-of-missile-strike-on-Turkey",
+      "source_id": "SRC-733C755F8DC0",
+      "archived_snapshot_url": null,
+      "article_publication_time": "15:17",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "A false-flag operation by unspecified “enemies” caused or manufactured the incident attributed to Iran.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "HIGH",
+          "basis": "No independently verified evidence in this targeted audit establishes that false-flag mechanism; this specific source does not name Israel as the actor.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "No independently verified evidence in this targeted audit establishes that false-flag mechanism; this specific source does not name Israel as the actor."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "The false-flag explanation replaces the earlier categorical no-Iran-launch explanation after contrary attribution accumulated.",
+          "disposition": "NARRATIVE_SUBSTITUTION",
+          "confidence": "MEDIUM",
+          "basis": "Chronological narrative shift is observable; motive is not inferred.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Chronological narrative shift is observable; motive is not inferred."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-2E51203B3913"
+      ],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0203",
+      "next_replacement_claim_id": "IR-CLM-0205",
+      "final_disposition": [
+        "NARRATIVE_SUBSTITUTION",
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_flag_substitution",
+        "narrative_substitution"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "No independently verified evidence in this targeted audit establishes that false-flag mechanism; this specific source does not name Israel as the actor.",
+        "Chronological narrative shift is observable; motive is not inferred."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0205",
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "event_id": "ADD-EVT-20260401-TURKEY",
+      "claim_date": "2026-04-01",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "09:31",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Abbas Araqchi as reported by Tasnim",
+      "claimant_type": "FOREIGN_MINISTRY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Tasnim repeated Araqchi’s categorical denial of an Iranian missile launch toward Turkey and his warning that false-flag operations could recur.",
+      "original_source_url": "https://tasnimnews.ir/en/news/2026/04/01/3554024/iran-rejects-claims-of-missile-launch-toward-turkey",
+      "source_id": "SRC-D590DE3075A0",
+      "archived_snapshot_url": null,
+      "article_publication_time": "09:31",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "A false-flag operation by unspecified enemies explains the incident attributed to Iran.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "HIGH",
+          "basis": "No independently verified evidence in this pass establishes the asserted false-flag mechanism; Tasnim’s text does not specifically attribute this Turkey incident to Israel.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "No independently verified evidence in this pass establishes the asserted false-flag mechanism; Tasnim’s text does not specifically attribute this Turkey incident to Israel."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0204",
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "UNSUBSTANTIATED",
+        "NARRATIVE_SUBSTITUTION"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_flag_substitution"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "No independently verified evidence in this pass establishes the asserted false-flag mechanism; Tasnim’s text does not specifically attribute this Turkey incident to Israel."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0301",
+      "chain_id": "CH-F35-MAR19",
+      "event_id": "ADD-EVT-20260319-F35",
+      "claim_date": "2026-03-20",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "10:13",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Mohammad Bagher Qalibaf / IRGC claims as reported by Press TV",
+      "claimant_type": "SENIOR_POLITICAL_OFFICIAL",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran presented an F-35 combat hit as a shootdown/destruction and strategic demonstration.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/20/765601/Qalibaf-Iran-strike-on-US-F-35-signals-collapse-of-order",
+      "source_id": "SRC-3BE40AD42842",
+      "archived_snapshot_url": null,
+      "article_publication_time": "10:13",
+      "article_update_time": "10:16",
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Iranian action apparently hit/damaged an F-35A.",
+          "disposition": "MOSTLY_CONFIRMED",
+          "confidence": "MEDIUM",
+          "basis": "Independent reporting describes combat damage and an emergency landing.",
+          "analytic_likelihood": "VERY_LIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Independent reporting describes combat damage and an emergency landing."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "EFFECT",
+          "proposition": "The F-35 was destroyed or shot down.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Independent reporting says the aircraft landed safely; pilot survived.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Independent reporting says the aircraft landed safely; pilot survived."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "The incident by itself demonstrated collapse of the opposing military order.",
+          "disposition": "MISLEADING",
+          "confidence": "MEDIUM",
+          "basis": "A real tactical success does not establish the broader strategic conclusion.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "A real tactical success does not establish the broader strategic conclusion."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-4A25C20F8AFD"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": "IR-CLM-0302",
+      "final_disposition": [
+        "MISLEADING",
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "real_tactical_victory_overleveraged",
+        "inflated_result"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Independent reporting describes combat damage and an emergency landing.",
+        "Independent reporting says the aircraft landed safely; pilot survived.",
+        "A real tactical success does not establish the broader strategic conclusion."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0302",
+      "chain_id": "CH-F35-MAR19",
+      "event_id": "ADD-EVT-20260319-F35",
+      "claim_date": "2026-03-21",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "08:22",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Press TV",
+      "claimant_type": "STATE_MEDIA",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Press TV described the March 19 engagement as Iran having “downed” the F-35 and as shattering the aircraft’s claimed invincibility.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/21/765634/silence-of-stealth-how-iran-shatteredinvincibility-us-f35-fighter-jet",
+      "source_id": "SRC-1447993730D6",
+      "archived_snapshot_url": null,
+      "article_publication_time": "08:22",
+      "article_update_time": "09:07",
+      "factual_propositions": [
+        {
+          "axis": "EFFECT",
+          "proposition": "The F-35 was downed/lost rather than damaged and recovered.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Independent reporting supports combat damage followed by an emergency landing, not loss of the aircraft.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Independent reporting supports combat damage followed by an emergency landing, not loss of the aircraft."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-4A25C20F8AFD"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0301",
+      "next_replacement_claim_id": "IR-CLM-0303",
+      "final_disposition": [
+        "CONTRADICTED",
+        "MISLEADING"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "inflated_result"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Independent reporting supports combat damage followed by an emergency landing, not loss of the aircraft."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0303",
+      "chain_id": "CH-F35-MAR19",
+      "event_id": "ADD-EVT-20260319-F35",
+      "claim_date": "2026-04-19",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "11:10",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian military officer as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Press TV described the officer as the “hunter” who downed the F-35; the officer said, “We completely destroyed a Lockheed Martin technology.”",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/19/767161/Myth-of-stealth-fighters-over-Iranian-hunter-of-US-F-35-jet",
+      "source_id": "SRC-A139BB200FD8",
+      "archived_snapshot_url": null,
+      "article_publication_time": "11:10",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EFFECT",
+          "proposition": "The F-35 was downed/lost as the article framing states.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Available independent reporting shows combat damage and an emergency landing, not loss. The officer’s “Lockheed Martin technology” phrase is not silently rewritten as a literal wreckage claim.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Available independent reporting shows combat damage and an emergency landing, not loss. The officer’s “Lockheed Martin technology” phrase is not silently rewritten as a literal wreckage claim."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-4A25C20F8AFD"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0302",
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "inflated_result",
+        "persistence_after_counterevidence"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Available independent reporting shows combat damage and an emergency landing, not loss. The officer’s “Lockheed Martin technology” phrase is not silently rewritten as a literal wreckage claim."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0401",
+      "chain_id": "CH-PROJECT-FREEDOM-BOATS",
+      "event_id": "ADD-EVT-20260504-BOATS",
+      "claim_date": "2026-05-04",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian government/military response as preserved by Reuters",
+      "claimant_type": "OFFICIAL_OR_STATE_RESPONSE",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran denied that six Iranian small boats had been sunk during Project Freedom.",
+      "original_source_url": "https://www.reuters.com/world/middle-east/us-destroys-six-iranian-small-boats-shoots-down-missiles-drones-us-admiral-says-2026-05-04",
+      "source_id": "SRC-D8EEF03F1475",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Six Iranian small boats were destroyed.",
+          "disposition": "PARTLY_CONFIRMED",
+          "confidence": "MODERATE",
+          "basis": "The destruction claim comes from the U.S. military as the direct participant and is preserved by Reuters; Iran denied it. No independent hull-by-hull imagery or ORBAT reconciliation was found in this pass, so the exact six-boat count remains short of full confirmation.",
+          "analytic_likelihood": "LIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Direct-participant U.S. military claim reported contemporaneously by Reuters.",
+            "The claim is specific in quantity and event window.",
+            "Iranian denial is counterevidence but is not independently corroborated."
+          ],
+          "credible_alternatives": [
+            "Fewer than six boats were destroyed; some targets were damaged or misclassified rather than sunk."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Hull-identifiable imagery, wreckage, casualty records, or post-event ORBAT showing six losses or materially fewer losses."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-D8EEF03F1475"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "PARTLY_CONFIRMED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "High-priority physical-evidence gap. Do not resolve by source preference alone.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "loss_denial_candidate"
+      ],
+      "analytic_likelihood": "LIKELY",
+      "analytic_confidence": "MODERATE",
+      "inference_basis": [
+        "U.S. claim exists, Iran denies it, and this targeted pass lacks hull-ID/satellite/ORBAT confirmation sufficient to adjudicate."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0501",
+      "chain_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "event_id": "ADD-EVT-20260304-INDIAN-OCEAN",
+      "claim_date": "2026-03-04",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "IRGC as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "The IRGC said missiles hit a U.S. destroyer and refueling vessel about 650 km from Iran, causing large fires.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/04/764950/IRGC-says-dismantled-US-radar-in-Qatar-attacked-destroyer-in-Indian-Ocean",
+      "source_id": "SRC-760441289A12",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Iran launched an engagement against U.S. naval vessels in the claimed area.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "MEDIUM",
+          "basis": "No independently identified target/vessel track in this pass.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "No independently identified target/vessel track in this pass."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "EFFECT",
+          "proposition": "The destroyer and refueling vessel were hit and suffered extensive deck fires.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "HIGH",
+          "basis": "No independently confirmed corresponding U.S. warship damage identified in reviewed evidence.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "No independently confirmed corresponding U.S. warship damage identified in reviewed evidence."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [
+        "IRGC operational statement."
+      ],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-744CF2CF4573"
+      ],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "The demonstrably fake viral video is separate from the official claim unless provenance links it to the IRGC.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "unsupported_victory_claim"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "No independently identified target/vessel track in this pass.",
+        "No independently confirmed corresponding U.S. warship damage identified in reviewed evidence."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0601",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "event_id": "ADD-EVT-20260307-AIR-KILLS",
+      "claim_date": "2026-03-07",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "14:30",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian Army as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran said it had downed 82 U.S. and Israeli drones.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/07/765079/Iran-says-82-US-or-Israeli-drones-shot-down-since-war-began",
+      "source_id": "SRC-3969BF66615A",
+      "archived_snapshot_url": null,
+      "article_publication_time": "14:30",
+      "article_update_time": "21:43",
+      "factual_propositions": [
+        {
+          "axis": "EFFECT",
+          "proposition": "The aggregate of 82 downed drones is accurate without duplication or ground-loss mixing.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "MODERATE",
+          "basis": "Iran genuinely caused substantial MQ-9 losses; itemized serial/wreckage reconciliation remains incomplete. The increasing aggregate is not accompanied by an itemized, independently reconciled loss ledger, so the exact total is not supported even though genuine UAV losses occurred.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Iran genuinely caused substantial MQ-9 losses; itemized serial/wreckage reconciliation remains incomplete."
+          ],
+          "credible_alternatives": [
+            "The aggregate may include duplicate claims, ground losses, damaged aircraft, decoys, or mixed platform categories."
+          ],
+          "evidence_that_would_change_assessment": [
+            "An itemized list reconciled to serials, wreckage, operator loss records, and ground-vs-airborne losses."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": "IR-CLM-0602",
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "aggregate_kill_ledger"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "MODERATE",
+      "inference_basis": [
+        "Iran genuinely caused substantial MQ-9 losses; itemized serial/wreckage reconciliation remains incomplete."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0602",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "event_id": "ADD-EVT-20260325-AIR-KILLS",
+      "claim_date": "2026-03-25",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "16:45",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "IRGC/Iranian military as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran said more than 130 enemy drones had been downed.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/25/765847/IRGC-air-defense-units-shoot-down-hostile-drone-over-southern-Iran",
+      "source_id": "SRC-AF8FAEEE34BC",
+      "archived_snapshot_url": null,
+      "article_publication_time": "16:45",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EFFECT",
+          "proposition": "The >130 downed-drone aggregate is accurate and non-duplicative.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "MODERATE",
+          "basis": "Requires itemized reconciliation; genuine UAV losses prevent blanket debunking. The increasing aggregate is not accompanied by an itemized, independently reconciled loss ledger, so the exact total is not supported even though genuine UAV losses occurred.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Requires itemized reconciliation; genuine UAV losses prevent blanket debunking."
+          ],
+          "credible_alternatives": [
+            "The aggregate may include duplicate claims, ground losses, damaged aircraft, decoys, or mixed platform categories."
+          ],
+          "evidence_that_would_change_assessment": [
+            "An itemized list reconciled to serials, wreckage, operator loss records, and ground-vs-airborne losses."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0601",
+      "next_replacement_claim_id": "IR-CLM-0603",
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "aggregate_kill_ledger"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "MODERATE",
+      "inference_basis": [
+        "Requires itemized reconciliation; genuine UAV losses prevent blanket debunking."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0603",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "event_id": "ADD-EVT-20260418-AIR-KILLS",
+      "claim_date": "2026-04-18",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "15:47",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian military as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran said 170 enemy drones had been downed.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/18/767116/Iran-commander-air-defense-forces-shot-down-enemy-drones-YS-Israwlu-aggression-",
+      "source_id": "SRC-FDAC11893E4C",
+      "archived_snapshot_url": null,
+      "article_publication_time": "15:47",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EFFECT",
+          "proposition": "The 170-drone aggregate is accurate and non-duplicative.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "MODERATE",
+          "basis": "Serial/hull evidence and airborne-vs-ground losses not fully reconciled. The increasing aggregate is not accompanied by an itemized, independently reconciled loss ledger, so the exact total is not supported even though genuine UAV losses occurred.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Serial/hull evidence and airborne-vs-ground losses not fully reconciled."
+          ],
+          "credible_alternatives": [
+            "The aggregate may include duplicate claims, ground losses, damaged aircraft, decoys, or mixed platform categories."
+          ],
+          "evidence_that_would_change_assessment": [
+            "An itemized list reconciled to serials, wreckage, operator loss records, and ground-vs-airborne losses."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0602",
+      "next_replacement_claim_id": "IR-CLM-0604",
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "aggregate_kill_ledger"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "MODERATE",
+      "inference_basis": [
+        "Serial/hull evidence and airborne-vs-ground losses not fully reconciled."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0604",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "event_id": "ADD-EVT-20260428-AIR-KILLS",
+      "claim_date": "2026-04-28",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "16:26",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian Army spokesman as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran said more than 170 enemy aircraft had been hit, including 16 fighter jets.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/04/28/767702/Iranian-Air-Force-conducted-sorties-to-strike-US-bases-in-Iraq%2C-Kuwait%2C-Qatar--Army",
+      "source_id": "SRC-60BA56B2A294",
+      "archived_snapshot_url": null,
+      "article_publication_time": "16:26",
+      "article_update_time": "16:34",
+      "factual_propositions": [
+        {
+          "axis": "EFFECT",
+          "proposition": "At least 16 enemy fighters were actually destroyed/downed.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "The claim uses “hit” while the proposition tested is destruction/downing. The available loss record does not support 16 destroyed/downed fighters, and known friendly-fire/ground-loss events cannot be reclassified as Iranian air-to-air or air-defense kills without evidence.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The fighter component requires aircraft-by-aircraft reconciliation; “hit” is not equivalent to destroyed."
+          ],
+          "credible_alternatives": [
+            "Some of the 16 may refer to aircraft damaged or targeted rather than destroyed."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Aircraft-by-aircraft loss records or imagery supporting at least 16 combat fighter losses attributable to Iranian action."
+          ]
+        },
+        {
+          "axis": "EFFECT",
+          "proposition": "The aggregate “aircraft hit” number is comparable to earlier “drones downed” totals.",
+          "disposition": "MISLEADING",
+          "confidence": "HIGH",
+          "basis": "The metric/category changes, so the series cannot be treated as a single cumulative shootdown total without normalization.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The metric/category changes, so the series cannot be treated as a single cumulative shootdown total without normalization."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0603",
+      "next_replacement_claim_id": "IR-CLM-0605",
+      "final_disposition": [
+        "CONTRADICTED",
+        "MISLEADING"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "aggregate_kill_ledger",
+        "metric_shift"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The fighter component requires aircraft-by-aircraft reconciliation; “hit” is not equivalent to destroyed.",
+        "The metric/category changes, so the series cannot be treated as a single cumulative shootdown total without normalization."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0605",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "event_id": "ADD-EVT-20260526-AIR-KILLS",
+      "claim_date": "2026-05-26",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian military as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Press TV’s headline says technology enabled Iran to “down 210 enemy aircraft,” while the body attributes language that Iran could “target around 210 enemy aircraft.”",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/05/26/769312/Iran-targeted-210-enemy-aircraft-US-Israel-40-days-war",
+      "source_id": "SRC-DB900429D8BC",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EFFECT",
+          "proposition": "The 210 figure is a clean count of confirmed aircraft downed/lost.",
+          "disposition": "MISLEADING",
+          "confidence": "HIGH",
+          "basis": "The same article shifts between “down” in the headline and “target around” in the body; targeted is not equivalent to hit, destroyed, or downed.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The same article shifts between “down” in the headline and “target around” in the body; targeted is not equivalent to hit, destroyed, or downed."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0604",
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "MISLEADING"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "aggregate_kill_ledger",
+        "metric_shift"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The same article shifts between “down” in the headline and “target around” in the body; targeted is not equivalent to hit, destroyed, or downed."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0701",
+      "chain_id": "CH-QATAR-PILOTS",
+      "event_id": "ADD-EVT-20260815-QATAR-PILOTS",
+      "claim_date": "2026-08-15",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian official Bagherzadeh as reported by regional/international media",
+      "claimant_type": "IRANIAN_OFFICIAL",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran asserted that three missing Iranian pilots had been captured alive and were secretly held by Qatar.",
+      "original_source_url": "https://www.iranintl.com/en/202608150747",
+      "source_id": "SRC-083C057F9F6B",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Iranian aircraft/aircrew were lost or went missing in the Qatar engagements.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "The underlying aviation losses are independently established.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The underlying aviation losses are independently established."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "Three missing pilots were alive and secretly detained by Qatar.",
+          "disposition": "CONTRADICTED",
+          "confidence": "HIGH",
+          "basis": "Qatar denied holding pilots, said one pilot’s remains were recovered, and described an April invitation to Iran to review the search.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Qatar denied holding pilots, said one pilot’s remains were recovered, and described an April invitation to Iran to review the search."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "OUTCOME",
+          "proposition": "Qatar refused Iran access to investigate from the outset.",
+          "disposition": "CONTRADICTED",
+          "confidence": "MEDIUM",
+          "basis": "Qatar says it invited Iran in April and received no response; independent access to all exchanges remains incomplete.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Qatar says it invited Iran in April and received no response; independent access to all exchanges remains incomplete."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-60B8CB78C1E5",
+        "SRC-5B933FF9C911"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "UNSUBSTANTIATED",
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Not proved false as to every missing individual; disposition is contradiction/unsubstantiated, with April invitation prominently preserved.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "late_narrative_mutation"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The underlying aviation losses are independently established.",
+        "Qatar denied holding pilots, said one pilot’s remains were recovered, and described an April invitation to Iran to review the search.",
+        "Qatar says it invited Iran in April and received no response; independent access to all exchanges remains incomplete."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0702",
+      "chain_id": "CH-QATAR-PILOTS",
+      "event_id": "ADD-EVT-20260816-QATAR-PILOTS",
+      "claim_date": "2026-08-16",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian authorities / Tasnim reporting",
+      "claimant_type": "OFFICIAL_OR_SEMIOFFICIAL",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran subsequently accused Qatar of delaying or obstructing clarification of the pilots’ fate.",
+      "original_source_url": "https://www.iranintl.com/en/202608150747",
+      "source_id": "SRC-083C057F9F6B",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "OUTCOME",
+          "proposition": "Qatar alone caused the investigative delay.",
+          "disposition": "MISLEADING",
+          "confidence": "MODERATE",
+          "basis": "Qatar had publicly documented an April invitation for Iranian participation/clarification; the complete diplomatic record is not public, but attributing the delay solely to Qatar omits material counterevidence.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Qatar’s documented April invitation is counterevidence; complete diplomatic correspondence is not public."
+          ],
+          "credible_alternatives": [
+            "Private Qatari actions not publicly documented could have contributed to delay."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Complete diplomatic correspondence showing Iran promptly accepted and Qatar then obstructed access or information."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-CF8587C77F8D",
+        "SRC-60B8CB78C1E5"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": "IR-CLM-0701",
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "MISLEADING"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "narrative_evolution"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "MODERATE",
+      "inference_basis": [
+        "Qatar’s documented April invitation is counterevidence; complete diplomatic correspondence is not public."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0801",
+      "chain_id": "CH-BUSHEHR-AIRCRAFT",
+      "event_id": "ADD-EVT-20260528-BUSHEHR",
+      "claim_date": "2026-05-28",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian state TV / Jam local official as preserved by Reuters",
+      "claimant_type": "STATE_MEDIA_AND_LOCAL_OFFICIAL",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iranian reporting said a U.S. aircraft had been destroyed near Bushehr/Jam.",
+      "original_source_url": "https://www.reuters.com/world/middle-east/irans-state-tv-says-us-aircraft-destroyed-irans-bushehr-no-confirmation-us-2026-05-28",
+      "source_id": "SRC-9E2E8200E299",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "A U.S. aircraft was destroyed in the reported area/time.",
+          "disposition": "CONTRADICTED",
+          "confidence": "MEDIUM",
+          "basis": "CENTCOM said all U.S. aircraft were accounted for; no independently verified wreckage/serial identified in this targeted pass.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "CENTCOM said all U.S. aircraft were accounted for; no independently verified wreckage/serial identified in this targeted pass."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [
+        "SRC-4B96F4B7634C"
+      ],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "CONTRADICTED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Because real MQ-9 losses occurred elsewhere, exact date/location reconciliation matters.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "unsupported_victory_claim"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "CENTCOM said all U.S. aircraft were accounted for; no independently verified wreckage/serial identified in this targeted pass."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-0901",
+      "chain_id": "CH-ALUDEID-BDA",
+      "event_id": "ADD-EVT-20260304-ALUDEID",
+      "claim_date": "2026-03-04",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "IRGC as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "The IRGC claimed a major U.S. radar at Al Udeid had been dismantled/destroyed.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/04/764950/IRGC-says-dismantled-US-radar-in-Qatar-attacked-destroyer-in-Indian-Ocean",
+      "source_id": "SRC-760441289A12",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Al Udeid was struck and sustained serious damage.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Independent satellite/BDA evidence confirms material damage.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Independent satellite/BDA evidence confirms material damage."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "axis": "PHYSICAL_EFFECT",
+          "proposition": "The AN/FPS-132 early-warning radar was struck and physically damaged.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Planet imagery and later photographs identify the AN/FPS-132 site and show impact signatures, burnt components and wiring.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Geolocated Planet imagery of the radar site after the strike.",
+            "Later photographs show physical damage and burned internal components."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "Verified evidence that the post-strike imagery/photos depict a different installation or pre-existing damage."
+          ]
+        },
+        {
+          "axis": "FUNCTIONAL_EFFECT",
+          "proposition": "The AN/FPS-132 suffered at least a temporary material loss of function or serious degradation.",
+          "disposition": "MOSTLY_CONFIRMED",
+          "confidence": "MODERATE",
+          "basis": "Visible internal burning and component damage strongly imply meaningful functional degradation; no authoritative public statement establishes the precise outage duration or degraded-mode capability.",
+          "analytic_likelihood": "VERY_LIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Burnt internal components and wiring at a fixed phased-array radar are inconsistent with a purely cosmetic strike.",
+            "The damage was significant enough to be visible in post-strike imagery."
+          ],
+          "credible_alternatives": [
+            "Redundant electronics or unaffected array faces may have preserved partial operation."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Operational logs or official technical reporting showing uninterrupted full-capability operation."
+          ]
+        },
+        {
+          "axis": "FUNCTIONAL_EFFECT",
+          "proposition": "The AN/FPS-132 was permanently destroyed beyond economical repair.",
+          "disposition": "UNRESOLVED",
+          "confidence": "LOW",
+          "basis": "Available imagery establishes damage, not terminal repairability. Public reporting explicitly says repairability and current operating status could not be determined.",
+          "analytic_likelihood": "ROUGHLY_EVEN",
+          "analytic_confidence": "LOW",
+          "inference_basis": [
+            "Damage is substantial but incomplete technical inspection data are public."
+          ],
+          "credible_alternatives": [
+            "Repair/replacement of damaged modules restored the system.",
+            "Damage was terminal and replacement is required."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Repair contract, return-to-service reporting, dismantlement/replacement imagery, or official terminal-loss assessment."
+          ]
+        },
+        {
+          "axis": "FUNCTIONAL_EFFECT",
+          "proposition": "The Al Udeid Combined Air Operations Center was rendered inoperable by Iranian missile strikes.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Air & Space Forces Magazine reports multiple missiles hit the CAOC and rendered it inoperable, based on a senior U.S. official and other informed sources.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Multiple informed U.S. sources describe direct hits and inoperability.",
+            "The facility had already been evacuated/shifted before hostilities."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "Credible technical evidence showing the CAOC remained operational after the strikes."
+          ]
+        },
+        {
+          "axis": "OPERATIONAL_OUTCOME",
+          "proposition": "The whole Al Udeid Air Base was rendered inoperable.",
+          "disposition": "MISLEADING",
+          "confidence": "HIGH",
+          "basis": "A major C2 node was knocked out, but the broader base was not shown to be wholly inoperable; combat air command continued through preplanned distributed C2 at Shaw.",
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "The CAOC loss is specifically documented, not a whole-base shutdown.",
+            "Epic Fury and subsequent strikes continued under distributed command."
+          ],
+          "credible_alternatives": [
+            "Other base functions may have suffered temporary localized outages not fully public."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Evidence that flightline, logistics, base support and all major mission functions simultaneously ceased for a material period."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-C623D3244404",
+        "SRC-551A9C2DB97C",
+        "SRC-3826CE7F7FBB",
+        "SRC-48D30EB0A3C7",
+        "SRC-7538CF574DDF"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "PARTLY_CONFIRMED",
+        "MOSTLY_CONFIRMED",
+        "UNRESOLVED",
+        "MISLEADING"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Strongest public wording: the radar was hit and damaged; the CAOC was knocked out. Al Udeid as a whole was not.",
+      "related_map_objects_events": [
+        "US-ALUDEID"
+      ],
+      "taxonomy_tags": [
+        "facility_bda",
+        "inflated_result"
+      ],
+      "analytic_likelihood": "VERY_LIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Independent satellite/BDA evidence confirms material damage.",
+        "Facility-level damage is real; exact equipment identity/terminal state requires source-to-imagery correlation.",
+        "Baseline evidence supports CAOC/subfacility impacts, not whole-base incapacity."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-1001",
+      "chain_id": "CH-FALSE-FLAG-REGIONAL",
+      "event_id": "ADD-EVT-20260302-ARAMCO",
+      "claim_date": "2026-03-02",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "21:34",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Unnamed military source quoted by Tasnim",
+      "claimant_type": "SEMIOFFICIAL_MEDIA_UNNAMED_SOURCE",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "An informed military source told Tasnim that Israel carried out the Aramco attack as a false-flag operation.",
+      "original_source_url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529692/military-source-says-israel-conducts-false-flag-attack-on-aramco",
+      "source_id": "SRC-18B8DD710B5A",
+      "archived_snapshot_url": null,
+      "article_publication_time": "21:34",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "The Aramco incident was a U.S./Israeli false flag.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "MEDIUM",
+          "basis": "No independent proof of the asserted covert attribution in this targeted pass.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "No independent proof of the asserted covert attribution in this targeted pass."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Do not label this “IRGC official statement” unless provenance is upgraded.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_flag_substitution"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "No independent proof of the asserted covert attribution in this targeted pass."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-1002",
+      "chain_id": "CH-FALSE-FLAG-REGIONAL",
+      "event_id": "ADD-EVT-20260315-LANAZ-KUWAIT",
+      "claim_date": "2026-03-15",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "10:00",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Unnamed source quoted by Tasnim",
+      "claimant_type": "SEMIOFFICIAL_MEDIA_UNNAMED_SOURCE",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "An unnamed source attributed Erbil refinery and Kuwait radar attacks to U.S./Israeli deception.",
+      "original_source_url": "https://www.tasnimnews.ir/en/news/2026/03/15/3540997/source-us-or-israel-behind-attack-on-erbil-s-lanaz-refinery",
+      "source_id": "SRC-1441BB878149",
+      "archived_snapshot_url": null,
+      "article_publication_time": "10:00",
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "The cited attacks were U.S./Israeli false flags.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "MEDIUM",
+          "basis": "No independently verified causation in the targeted audit.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "No independently verified causation in the targeted audit."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Claim-propagation evidence only unless claimant identity is established.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_flag_substitution"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "No independently verified causation in the targeted audit."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-1003",
+      "chain_id": "CH-FALSE-FLAG-REGIONAL",
+      "event_id": "ADD-EVT-20260315-LUCAS",
+      "claim_date": "2026-03-15",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": "00:42",
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Khatam al-Anbiya Central Headquarters as reported by Press TV",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran said a U.S.-made Shahed-type clone was used to stage regional false-flag attacks.",
+      "original_source_url": "https://www.presstv.ir/Detail/2026/03/15/765383/US-made-copy-of-Shahed-drone-used-to-stage-false-flag-attacks-on-region-Iran-Armed-Forces",
+      "source_id": "SRC-88034182D581",
+      "archived_snapshot_url": null,
+      "article_publication_time": "00:42",
+      "article_update_time": "01:07",
+      "factual_propositions": [
+        {
+          "axis": "CAUSE",
+          "proposition": "A U.S.-made clone was operationally used for the claimed false-flag attacks.",
+          "disposition": "UNSUBSTANTIATED",
+          "confidence": "MEDIUM",
+          "basis": "Technical existence of lookalike systems does not establish use in the specific incidents without forensic linkage.",
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Technical existence of lookalike systems does not establish use in the specific incidents without forensic linkage."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "false_flag_substitution"
+      ],
+      "claim_origin_corroboration": [
+        "SRC-E5E5CAFD91F0"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Technical existence of lookalike systems does not establish use in the specific incidents without forensic linkage."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-1101",
+      "chain_id": "CH-DENA-ADMISSION",
+      "event_id": "ADD-EVT-20260305-DENA",
+      "claim_date": "2026-03-05",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "Iranian authorities / memorialization context, corroborated by Reuters",
+      "claimant_type": "OFFICIAL_ACKNOWLEDGMENT",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran ultimately acknowledged and memorialized the loss of IRIS Dena and its crew.",
+      "original_source_url": "https://www.reuters.com/world/asia-pacific/death-toll-iranian-warship-dena-rises-87-after-torpedo-attack-2026-03-05",
+      "source_id": "SRC-34FA605EE6AB",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "IRIS Dena was lost.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Physical rescue/casualty evidence and later Iranian acknowledgment align.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Physical rescue/casualty evidence and later Iranian acknowledgment align."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-B106A3769146",
+        "SRC-34FA605EE6AB"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "CONFIRMED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Use for time-to-admission/reframing, not as fabricated-claim example. No blanket “Iran denied all ship losses” inference.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "admission_latency"
+      ],
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Physical rescue/casualty evidence and later Iranian acknowledgment align."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    },
+    {
+      "claim_id": "IR-CLM-1201",
+      "chain_id": "CH-TANGSIRI-ADMISSION",
+      "event_id": "ADD-EVT-20260330-TANGSIRI",
+      "claim_date": "2026-03-30",
+      "timestamp_utc": null,
+      "timestamp_local": null,
+      "source_display_timestamp": null,
+      "timestamp_precision": "DATE_ONLY",
+      "claimant": "IRGC / Iranian official statement as reported by Reuters",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "original_language": "English-language publication/translation",
+      "original_language_text": null,
+      "exact_translated_claim": "Iran confirmed IRGC Navy commander Alireza Tangsiri had died after severe injuries.",
+      "original_source_url": "https://www.reuters.com/world/middle-east/iran-confirms-death-revolutionary-guards-navy-commander-tangsiri-statement-says-2026-03-30",
+      "source_id": "SRC-B4933A0EA8F4",
+      "archived_snapshot_url": null,
+      "article_publication_time": null,
+      "article_update_time": null,
+      "factual_propositions": [
+        {
+          "axis": "EVENT_EXISTENCE",
+          "proposition": "Tangsiri died from wartime injuries.",
+          "disposition": "CONFIRMED",
+          "confidence": "HIGH",
+          "basis": "Iranian confirmation follows earlier external announcement.",
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Iranian confirmation follows earlier external announcement."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "evidence_offered_by_claimant": [],
+      "contemporaneous_independent_evidence": [
+        "SRC-1393F5EA63DF",
+        "SRC-B4933A0EA8F4"
+      ],
+      "later_evidence": [],
+      "contradiction_type": null,
+      "subsequent_iranian_revision": null,
+      "previous_claim_id": null,
+      "next_replacement_claim_id": null,
+      "final_disposition": [
+        "CONFIRMED"
+      ],
+      "confidence": "HIGH",
+      "analyst_note": "Four-day confirmation lag is observable. Do not call it a lie unless an explicit interim Iranian denial is found.",
+      "related_map_objects_events": [],
+      "taxonomy_tags": [
+        "admission_latency"
+      ],
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "Iranian confirmation follows earlier external announcement."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New primary or independent evidence that materially changes one or more factual propositions."
+      ]
+    }
+  ]
+}

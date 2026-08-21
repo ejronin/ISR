@@ -1,0 +1,151 @@
+{
+  "records": [
+    {
+      "observation_id": "BDA-IMG-OPEN-001",
+      "target": "Iran and Gulf conflict-wide damage proxy",
+      "country": "REGIONAL",
+      "attribution": "MIXED_US_ISRAEL_IRAN",
+      "observation": "Statistical structural-change proxy over Iran and Gulf; useful for triage, not definitive BDA.",
+      "damage_confidence": "PROXY_ONLY",
+      "location_confidence": "HIGH",
+      "coordinate": null,
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ]
+    },
+    {
+      "observation_id": "BDA-IMG-IRN-VALIASR-001",
+      "target": "IRGC Valiasr Barracks, Tehran",
+      "country": "Iran",
+      "attribution": "US_ISRAEL_COMBINED_CAMPAIGN; strike-level attribution unresolved in this add-on",
+      "observation": "Bellingcat reports clear indications of structural damage in Sentinel-2, with matching Sentinel-1 change signal.",
+      "damage_confidence": "HIGH_FOR_VISIBLE_STRUCTURAL_DAMAGE",
+      "location_confidence": "HIGH_BY_SITE_IDENTIFICATION",
+      "coordinate": null,
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ]
+    },
+    {
+      "observation_id": "BDA-IMG-IRN-ASHURA-001",
+      "target": "IRGC Ashura Garrison, Isfahan",
+      "country": "Iran",
+      "attribution": "US_ISRAEL_COMBINED_CAMPAIGN; strike-level attribution unresolved",
+      "observation": "Large damage/change signature corroborated in open optical imagery.",
+      "damage_confidence": "HIGH_FOR_VISIBLE_STRUCTURAL_DAMAGE",
+      "location_confidence": "MEDIUM",
+      "coordinate": {
+        "lat": 32.66512,
+        "lon": 51.346729,
+        "precision": "COMPLEX_REFERENCE_POINT_LOW_CONFIDENCE_PUBLIC_MAP"
+      },
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ]
+    },
+    {
+      "observation_id": "BDA-IMG-IRN-FATH-001",
+      "target": "Fath Air Base, Karaj",
+      "country": "Iran",
+      "attribution": "US_ISRAEL_COMBINED_CAMPAIGN; exact strike attribution unresolved",
+      "observation": "Damage to multiple large buildings on north side of base.",
+      "damage_confidence": "HIGH_FOR_VISIBLE_STRUCTURAL_DAMAGE",
+      "location_confidence": "HIGH",
+      "coordinate": {
+        "lat": 35.717222,
+        "lon": 50.935278,
+        "precision": "AIRFIELD_REFERENCE_POINT"
+      },
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ]
+    },
+    {
+      "observation_id": "BDA-IMG-IRN-KHOJIR-001",
+      "target": "Khojir missile production complex",
+      "country": "Iran",
+      "attribution": "US_ISRAEL_COMBINED_CAMPAIGN; exact impact attribution unresolved",
+      "observation": "Large damage clusters on eastern and western sides near reported propellant-production areas.",
+      "damage_confidence": "HIGH_FOR_LARGE_CHANGE; function-specific loss requires separate BDA",
+      "location_confidence": "MEDIUM_HIGH",
+      "coordinate": {
+        "lat": 35.69365,
+        "lon": 51.61119,
+        "precision": "COMPLEX_REFERENCE_POINT_FROM_PREWAR_PUBLIC_GEOLOCATION"
+      },
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ]
+    },
+    {
+      "observation_id": "BDA-IMG-QAT-ALUDEID-001",
+      "target": "Al Udeid Air Base warehouse",
+      "country": "Qatar",
+      "attribution": "IRAN",
+      "observation": "Large blackened area on warehouse roof at the same point as damage-proxy signal.",
+      "damage_confidence": "HIGH_FOR_WAREHOUSE_DAMAGE_NOT_WHOLE_BASE",
+      "location_confidence": "HIGH",
+      "coordinate": {
+        "lat": 25.115647,
+        "lon": 51.333125,
+        "precision": "EXACT_GEOLOCATED_DAMAGE_POINT"
+      },
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ]
+    },
+    {
+      "observation_id": "BDA-IMG-IRN-AHVAZ-F5-001",
+      "target": "Qasem Soleimani / Ahvaz International Airport aircraft parking area",
+      "country": "Iran",
+      "attribution": "UNITED_STATES",
+      "observation": "F-5/F-27 aircraft destruction geolocated to this point; runway cratered by March 5. Operational status of every parked airframe is not established.",
+      "damage_confidence": "HIGH_FOR_AIRFRAME_DESTRUCTION; OPERATIONAL_VALUE_UNRESOLVED",
+      "location_confidence": "HIGH",
+      "coordinate": {
+        "lat": 31.33563,
+        "lon": 48.76275,
+        "precision": "EXACT_OSINT_GEOLOCATED_STRIKE_POINT"
+      },
+      "sources": [
+        "SRC-FA7CDDD722C0",
+        "SRC-C9D560A79D68"
+      ]
+    },
+    {
+      "observation_id": "BDA-IMG-IRN-BANDARABBAS-KILO-001",
+      "target": "Bandar Abbas naval base — Kilo submarine berth",
+      "country": "Iran",
+      "attribution": "UNITED_STATES",
+      "observation": "One Kilo-class submarine visible/untouched March 2 and assessed sunk by March 4; U.S. leadership stated an ATACMS sank a submarine.",
+      "damage_confidence": "HIGH_FOR_ONE_KILO_LOSS",
+      "location_confidence": "MEDIUM_HIGH",
+      "coordinate": {
+        "lat": 27.1431,
+        "lon": 56.2128,
+        "precision": "FACILITY_SUBMARINE_BERTH_AREA_APPROXIMATE"
+      },
+      "sources": [
+        "SRC-ED28D2A9BDC4"
+      ]
+    },
+    {
+      "observation_id": "BDA-IMG-IRN-BANDARABBAS-CORSAIR-001",
+      "target": "Bandar Abbas submarine/maintenance dock — July 12 Corsair strike",
+      "country": "Iran",
+      "attribution": "UNITED_STATES",
+      "observation": "Three U.S. lethal unmanned surface vessels attacked a submarine-port/maintenance facility; exact damage extent requires post-strike imagery.",
+      "damage_confidence": "STRIKE_CONFIRMED_DAMAGE_EXTENT_UNRESOLVED",
+      "location_confidence": "MEDIUM_HIGH",
+      "coordinate": {
+        "lat": 27.140683,
+        "lon": 56.211469,
+        "precision": "THIRD_PARTY_GEOLOCATED_STRIKE_POINT"
+      },
+      "sources": [
+        "SRC-12AF87A440B4",
+        "SRC-704B05BC4EF9"
+      ]
+    }
+  ]
+}

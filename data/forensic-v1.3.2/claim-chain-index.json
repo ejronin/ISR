@@ -1,0 +1,158 @@
+{
+  "chains": [
+    {
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "label": "F-15E identification → pilot capture/rescue → loss attribution → Isfahan/uranium narrative",
+      "assessment": "OUTCOME-PRESERVING NARRATIVE SUBSTITUTION",
+      "claim_ids": [
+        "IR-CLM-0001",
+        "IR-CLM-0002",
+        "IR-CLM-0004",
+        "IR-CLM-0005",
+        "IR-CLM-0006",
+        "IR-CLM-0007",
+        "IR-CLM-0008",
+        "IR-CLM-0003",
+        "IR-CLM-0009",
+        "IR-CLM-0010",
+        "IR-CLM-0011"
+      ],
+      "start_date": "2026-04-03",
+      "end_date": "2026-04-09"
+    },
+    {
+      "chain_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "label": "Iranian attribution of three U.S. F-15 losses later attributed to Kuwaiti friendly fire",
+      "assessment": "FALSE ATTRIBUTION",
+      "claim_ids": [
+        "IR-CLM-0101",
+        "IR-CLM-0102"
+      ],
+      "start_date": "2026-03-02",
+      "end_date": "2026-03-02"
+    },
+    {
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "label": "Turkey missile denials → contrary NATO/Turkey attribution → false-flag explanation",
+      "assessment": "DENIAL / NARRATIVE SUBSTITUTION",
+      "claim_ids": [
+        "IR-CLM-0201",
+        "IR-CLM-0202",
+        "IR-CLM-0203",
+        "IR-CLM-0204",
+        "IR-CLM-0205"
+      ],
+      "start_date": "2026-03-05",
+      "end_date": "2026-04-01"
+    },
+    {
+      "chain_id": "CH-F35-MAR19",
+      "label": "Real F-35 combat damage → destruction/downing narrative",
+      "assessment": "REAL TACTICAL SUCCESS → INFLATED RESULT",
+      "claim_ids": [
+        "IR-CLM-0301",
+        "IR-CLM-0302",
+        "IR-CLM-0303"
+      ],
+      "start_date": "2026-03-20",
+      "end_date": "2026-04-19"
+    },
+    {
+      "chain_id": "CH-PROJECT-FREEDOM-BOATS",
+      "label": "U.S. six-boat destruction claim vs Iranian denial",
+      "assessment": "PARTLY CONFIRMED; PHYSICAL LOSS AUDIT OPEN",
+      "claim_ids": [
+        "IR-CLM-0401"
+      ],
+      "start_date": "2026-05-04",
+      "end_date": "2026-05-04"
+    },
+    {
+      "chain_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "label": "IRGC destroyer/supply-ship strike claim and separate fake proof footage",
+      "assessment": "UNSUBSTANTIATED CLAIM + FALSE MEDIA EVIDENCE",
+      "claim_ids": [
+        "IR-CLM-0501"
+      ],
+      "start_date": "2026-03-04",
+      "end_date": "2026-03-04"
+    },
+    {
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "label": "82 → 130 → 170 → 210 aircraft/UAV claim series with changing metrics",
+      "assessment": "UNRESOLVED AGGREGATE / METRIC SHIFT",
+      "claim_ids": [
+        "IR-CLM-0601",
+        "IR-CLM-0602",
+        "IR-CLM-0603",
+        "IR-CLM-0604",
+        "IR-CLM-0605"
+      ],
+      "start_date": "2026-03-07",
+      "end_date": "2026-05-26"
+    },
+    {
+      "chain_id": "CH-QATAR-PILOTS",
+      "label": "Missing Iranian pilots → late secret-prisoner claim → Qatar April-invitation counterchronology",
+      "assessment": "UNSUBSTANTIATED / CONTRADICTED",
+      "claim_ids": [
+        "IR-CLM-0701",
+        "IR-CLM-0702"
+      ],
+      "start_date": "2026-08-15",
+      "end_date": "2026-08-16"
+    },
+    {
+      "chain_id": "CH-BUSHEHR-AIRCRAFT",
+      "label": "Bushehr/Jam U.S.-aircraft destruction claim",
+      "assessment": "CONTRADICTED; EXACT LOSS AUDIT OPEN",
+      "claim_ids": [
+        "IR-CLM-0801"
+      ],
+      "start_date": "2026-05-28",
+      "end_date": "2026-05-28"
+    },
+    {
+      "chain_id": "CH-ALUDEID-BDA",
+      "label": "Real Al Udeid damage → exact equipment / whole-base effect propositions",
+      "assessment": "PARTLY CONFIRMED / FACILITY-LEVEL BDA",
+      "claim_ids": [
+        "IR-CLM-0901"
+      ],
+      "start_date": "2026-03-04",
+      "end_date": "2026-03-04"
+    },
+    {
+      "chain_id": "CH-FALSE-FLAG-REGIONAL",
+      "label": "Regional false-flag attributions with differing claimant authority",
+      "assessment": "UNSUBSTANTIATED PATTERN",
+      "claim_ids": [
+        "IR-CLM-1001",
+        "IR-CLM-1002",
+        "IR-CLM-1003"
+      ],
+      "start_date": "2026-03-02",
+      "end_date": "2026-03-15"
+    },
+    {
+      "chain_id": "CH-DENA-ADMISSION",
+      "label": "IRIS Dena physical loss and acknowledgment",
+      "assessment": "ADMISSION LATENCY — NOT A LIE CASE",
+      "claim_ids": [
+        "IR-CLM-1101"
+      ],
+      "start_date": "2026-03-05",
+      "end_date": "2026-03-05"
+    },
+    {
+      "chain_id": "CH-TANGSIRI-ADMISSION",
+      "label": "Tangsiri external announcement → Iranian confirmation",
+      "assessment": "ADMISSION LATENCY — DENIAL NOT FOUND",
+      "claim_ids": [
+        "IR-CLM-1201"
+      ],
+      "start_date": "2026-03-30",
+      "end_date": "2026-03-30"
+    }
+  ]
+}

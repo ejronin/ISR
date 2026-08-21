@@ -1,0 +1,1305 @@
+{
+  "nodes": [
+    {
+      "id": "N-RESCUE",
+      "type": "EVENT",
+      "label": "April 3-5 U.S. F-15E crew rescue",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "N-IRGC-RESCUE-CLAIM",
+      "type": "CLAIM",
+      "label": "Iran: rescue aircraft destroyed / rescue failure narrative",
+      "status": "PARTLY_TRUE_MISLEADING"
+    },
+    {
+      "id": "N-URANIUM-CLAIM",
+      "type": "CLAIM",
+      "label": "Iran: rescue may have been uranium theft operation",
+      "status": "UNSUPPORTED"
+    },
+    {
+      "id": "N-URANIUM-PLAN",
+      "type": "EVENT",
+      "label": "Separate U.S. uranium-seizure contingency plan",
+      "status": "CONFIRMED_PLAN_NOT_EXECUTION"
+    },
+    {
+      "id": "N-F5-BUEHRING",
+      "type": "EVENT",
+      "label": "Iranian F-5 Camp Buehring mission claim",
+      "status": "CLAIMED_MISSION; CAUSATION_UNPROVEN"
+    },
+    {
+      "id": "N-F5-TABRIZ",
+      "type": "EVENT",
+      "label": "Two F-5 + one F-4 destroyed at Tabriz",
+      "status": "REPORTED"
+    },
+    {
+      "id": "N-SU24-QATAR",
+      "type": "EVENT",
+      "label": "Qatar shoots down two Iranian Su-24s",
+      "status": "CONFIRMED_BY_QATAR"
+    },
+    {
+      "id": "N-F5-AHVAZ",
+      "type": "EVENT",
+      "label": "U.S. strikes F-5s at Ahvaz",
+      "status": "CONFIRMED/GEOLOCATED"
+    },
+    {
+      "id": "N-QATAR-APR",
+      "type": "EVENT",
+      "label": "April Iran-Qatar diplomatic calls",
+      "status": "CONFIRMED_OFFICIAL"
+    },
+    {
+      "id": "N-YEMEN-FLIGHT",
+      "type": "EVENT",
+      "label": "July 13 Mahan flight Tehran→Yemen",
+      "status": "CONFIRMED_FLIGHT; CARGO/PERSONNEL_MULTISOURCE_CLAIM"
+    },
+    {
+      "id": "N-SANAA-STRIKE",
+      "type": "EVENT",
+      "label": "Sanaa airport runway strike to prevent Mahan landing",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "N-IRGC-YEMEN",
+      "type": "CLAIM",
+      "label": "IRGC commanders/advisers + missile/drone components on flight",
+      "status": "MULTISOURCE_REPORTED_WITH_DENIAL"
+    },
+    {
+      "id": "N-BEIRUT-JUN7",
+      "type": "EVENT",
+      "label": "Israel strikes Beirut southern suburbs",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "N-IRAN-JUN7",
+      "type": "EVENT",
+      "label": "Iran launches missiles at Israel",
+      "status": "CONFIRMED_FIRST_DIRECT_SINCE_APRIL"
+    },
+    {
+      "id": "N-CEASEFIRE-SCOPE",
+      "type": "CLAIM",
+      "label": "Whether Lebanon was inside April ceasefire scope",
+      "status": "CONTESTED"
+    },
+    {
+      "id": "N-FIRST-VIOLATOR",
+      "type": "CLAIM",
+      "label": "Iran was first to violate entire April ceasefire",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "N-OPEN-IMAGERY",
+      "type": "EVIDENCE",
+      "label": "Sentinel/Landsat/Umbra/ICEYE/Capella public imagery",
+      "status": "DISCOVERY_AND_CORROBORATION_LAYER"
+    },
+    {
+      "id": "N-COST-SUBSET",
+      "type": "COST_ESTIMATE",
+      "label": "Partial priced Iranian asset-loss subset",
+      "status": "~$1.05B confirmed-low to ~$1.92B probable-high CPI proxy"
+    },
+    {
+      "id": "SRCNODE-SRC-3826CE7F7FBB",
+      "type": "SOURCE",
+      "label": "Bellingcat: When Satellite Imagery Goes Dark: New Tool Shows Damage in Iran and the Gulf",
+      "status": "B"
+    },
+    {
+      "id": "SRCNODE-SRC-96222C18BBBB",
+      "type": "SOURCE",
+      "label": "AWS Registry of Open Data / Umbra: Umbra Synthetic Aperture Radar (SAR) Open Data",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-0452986B8755",
+      "type": "SOURCE",
+      "label": "Umbra: Open Data Program",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-00821B01F6B1",
+      "type": "SOURCE",
+      "label": "AWS Registry of Open Data / ICEYE: ICEYE Synthetic Aperture Radar (SAR) Open Dataset",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-79DFD5D661A7",
+      "type": "SOURCE",
+      "label": "AWS Registry of Open Data / Capella Space: Capella Space Synthetic Aperture Radar (SAR) Open Dataset",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-419684EA4E28",
+      "type": "SOURCE",
+      "label": "Copernicus Data Space Ecosystem: Copernicus Browser documentation",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-0091C751FF2A",
+      "type": "SOURCE",
+      "label": "USGS: Landsat Data Access",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-684F77C6EB10",
+      "type": "SOURCE",
+      "label": "USGS: EarthExplorer",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-0030C941D433",
+      "type": "SOURCE",
+      "label": "AWS Registry / NASA OPERA: OPERA Radiometric Terrain Corrected Sentinel-1 SAR Backscatter",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-FA7CDDD722C0",
+      "type": "SOURCE",
+      "label": "Evergreen Intel: Geolocation of destruction of F-27s and F-5s at Ahvaz",
+      "status": "B"
+    },
+    {
+      "id": "SRCNODE-SRC-C9D560A79D68",
+      "type": "SOURCE",
+      "label": "The War Zone: Iranian F-14 Tomcats Meet Their Doom In Israeli Airstrikes",
+      "status": "B"
+    },
+    {
+      "id": "SRCNODE-SRC-12AF87A440B4",
+      "type": "SOURCE",
+      "label": "U.S. Army / CENTCOM: CENTCOM Corsair strike video at Bandar Abbas",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-704B05BC4EF9",
+      "type": "SOURCE",
+      "label": "Calibre Defence: US CENTCOM marks first operational use of Corsair sea drones against Iran",
+      "status": "B"
+    },
+    {
+      "id": "SRCNODE-SRC-1C1165CBCAC7",
+      "type": "SOURCE",
+      "label": "USNI Proceedings: Video: 3 lethal U.S. drones attack Iranian sub port facility",
+      "status": "B"
+    },
+    {
+      "id": "SRCNODE-SRC-ED28D2A9BDC4",
+      "type": "SOURCE",
+      "label": "The War Zone: Iranian Submarine Sunk By ATACMS Short Range Ballistic Missile",
+      "status": "B"
+    },
+    {
+      "id": "SRCNODE-SRC-29B47381EC59",
+      "type": "SOURCE",
+      "label": "CSIS: Preventing Iran’s Military Reconstitution",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-98738E8E4940",
+      "type": "SOURCE",
+      "label": "Washington Post: Satellite imagery maps structural damage across Iran",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-7CDC817909BB",
+      "type": "SOURCE",
+      "label": "Reuters: Iran says several enemy aircraft destroyed during US pilot rescue mission",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-7471ECB26165",
+      "type": "SOURCE",
+      "label": "Reuters: How a perilous US rescue mission in Iran nearly went off course",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-5C8E18A6126E",
+      "type": "SOURCE",
+      "label": "Associated Press: A mountain hideout and aircraft under fire: US carries out daring rescue of service member in Iran",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-E3DAD827ACAF",
+      "type": "SOURCE",
+      "label": "Associated Press: Risky rescue of US crew downed in Iran relied on dozens of aircraft and subterfuge",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-68993464F927",
+      "type": "SOURCE",
+      "label": "Washington Post: Risky commando plan to seize Iran’s uranium came at Trump’s request",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-739B61482DE5",
+      "type": "SOURCE",
+      "label": "Anadolu Agency: Iran raises suspicion of uranium theft plot after clashes with US forces",
+      "status": "B"
+    },
+    {
+      "id": "SRCNODE-SRC-03F069A69AAF",
+      "type": "SOURCE",
+      "label": "Press TV: What happened in Isfahan? A US pilot rescue mission or search for uranium?",
+      "status": "C"
+    },
+    {
+      "id": "SRCNODE-SRC-3300E710B6AC",
+      "type": "SOURCE",
+      "label": "Janes: Iran conflict 2026: Iranian F-5 pilots claim credit for Kuwaiti friendly fire shootdowns",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-6843BB957E02",
+      "type": "SOURCE",
+      "label": "Critical Threats Project / ISW: Iran Update Evening Special Report, March 1, 2026",
+      "status": "B"
+    },
+    {
+      "id": "SRCNODE-SRC-ED911664A654",
+      "type": "SOURCE",
+      "label": "Qatar Ministry of Foreign Affairs: Qatar Sends 2nd Identical Message to UN, UNSC Concerning Iranian Attack on Its Territory",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-5B933FF9C911",
+      "type": "SOURCE",
+      "label": "Reuters: Qatar denies detaining Iranian pilots, says it found remains of one",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-CF8587C77F8D",
+      "type": "SOURCE",
+      "label": "Reuters: Iran disputes Qatar, Kuwait accounts of captured Iranian personnel",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-1185C28B7D9A",
+      "type": "SOURCE",
+      "label": "Qatar Ministry of Foreign Affairs: Prime Minister and Minister of Foreign Affairs Receives Phone Call from Iran’s Foreign Minister",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-7920A7C9C230",
+      "type": "SOURCE",
+      "label": "Qatar Ministry of Foreign Affairs: Prime Minister and Minister of Foreign Affairs Receives Call from Iran FM",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-6FEC9305D8FE",
+      "type": "SOURCE",
+      "label": "Qatar Ministry of Foreign Affairs: Prime Minister and Minister of Foreign Affairs Receives Phone Call from Iran’s Foreign Minister",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-C595BD8471E7",
+      "type": "SOURCE",
+      "label": "Reuters: Iran flew IRGC commanders, missile gear to Yemen’s Houthis, sources say",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-6ED7510CE93D",
+      "type": "SOURCE",
+      "label": "Reuters: Houthis fire missiles at Saudi Arabia, breaking years of calm",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-833C85C5A4D4",
+      "type": "SOURCE",
+      "label": "Human Rights Watch: Strikes Endangering Civilians in Yemen and Saudi Arabia",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-D602E88FB9CB",
+      "type": "SOURCE",
+      "label": "Associated Press: Israel says Iran launched missiles at it in first such bombardment since fragile ceasefire",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-1F07B15CD0B3",
+      "type": "SOURCE",
+      "label": "Press TV: Ramat David airbase hit by ballistic missiles: IRGC",
+      "status": "C"
+    },
+    {
+      "id": "SRCNODE-SRC-45DF00C2C20E",
+      "type": "SOURCE",
+      "label": "Press TV: Iran disrupted ceasefire on paper over violations on ground",
+      "status": "C"
+    },
+    {
+      "id": "SRCNODE-SRC-ADD074EC62A4",
+      "type": "SOURCE",
+      "label": "Press TV: Resistance will not be cornered, Ghalibaf warns Israel",
+      "status": "C"
+    },
+    {
+      "id": "SRCNODE-SRC-C4AE952EE037",
+      "type": "SOURCE",
+      "label": "U.S. Bureau of Labor Statistics: Consumer Price Index News Release - July 2026",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-1C01A03ABB4C",
+      "type": "SOURCE",
+      "label": "U.S. Bureau of Labor Statistics: Historical CPI-U",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-195296C296FD",
+      "type": "SOURCE",
+      "label": "U.S. Department of State, Office of the Historian: Iran’s Purchase of F-14 Airplanes",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-82BAC5BDEA6C",
+      "type": "SOURCE",
+      "label": "U.S. Department of State, Office of the Historian: F-4s for Iran",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-3838B34DAF75",
+      "type": "SOURCE",
+      "label": "U.S. Department of State, Office of the Historian: Enhance Plus / Iranian F-5A valuation",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-D43AA8AD0AEE",
+      "type": "SOURCE",
+      "label": "Washington Post: U.S. Sought Saudi Aid on Iran Subs",
+      "status": "A"
+    },
+    {
+      "id": "SRCNODE-SRC-B3BDC6765429",
+      "type": "SOURCE",
+      "label": "Haft Shahr Aria Consulting Engineers: 1405 building construction cost estimates",
+      "status": "C"
+    },
+    {
+      "id": "SRCNODE-SRC-526EE786BDCD",
+      "type": "SOURCE",
+      "label": "Investing.com: USD/IRR historical data",
+      "status": "C"
+    },
+    {
+      "id": "N-CH-F15E-CSAR-URANIUM",
+      "type": "CLAIM_CHAIN",
+      "label": "F-15E identification → pilot capture/rescue → loss attribution → Isfahan/uranium narrative",
+      "status": "OUTCOME-PRESERVING NARRATIVE SUBSTITUTION"
+    },
+    {
+      "id": "N-IR-CLM-0001",
+      "type": "CLAIM",
+      "label": "Iranian air defenses downed a Lakenheath F-35 in central Iran.",
+      "status": "FALSE",
+      "claim_id": "IR-CLM-0001"
+    },
+    {
+      "id": "N-IR-CLM-0002",
+      "type": "CLAIM",
+      "label": "Qalibaf publicly mocked the U.S. on the premise that another F-35 had been downed.",
+      "status": "FALSE",
+      "claim_id": "IR-CLM-0002"
+    },
+    {
+      "id": "N-IR-CLM-0004",
+      "type": "CLAIM",
+      "label": "Reports suggested the missing American pilot may have been captured.",
+      "status": "UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-0004"
+    },
+    {
+      "id": "N-IR-CLM-0005",
+      "type": "CLAIM",
+      "label": "Tasnim headlined that the U.S. effort to recover the pilot failed; the body said efforts had so far been futile.",
+      "status": "MISLEADING / CONTRADICTED",
+      "claim_id": "IR-CLM-0005"
+    },
+    {
+      "id": "N-IR-CLM-0006",
+      "type": "CLAIM",
+      "label": "The provincial IRGC denied that the second F-15E crewman was in Iranian custody.",
+      "status": "CORRECTED",
+      "claim_id": "IR-CLM-0006"
+    },
+    {
+      "id": "N-IR-CLM-0007",
+      "type": "CLAIM",
+      "label": "Iranian forces destroyed rescue aircraft and brought the rescue operation to complete failure.",
+      "status": "FALSE_ATTRIBUTION / CONTRADICTED",
+      "claim_id": "IR-CLM-0007"
+    },
+    {
+      "id": "N-IR-CLM-0008",
+      "type": "CLAIM",
+      "label": "Iran said its forces destroyed multiple U.S. rescue aircraft during the operation.",
+      "status": "FALSE_ATTRIBUTION",
+      "claim_id": "IR-CLM-0008"
+    },
+    {
+      "id": "N-IR-CLM-0003",
+      "type": "CLAIM",
+      "label": "Press TV states the F-35 identification was a misidentification and debris showed an F-15E.",
+      "status": "CORRECTED",
+      "claim_id": "IR-CLM-0003"
+    },
+    {
+      "id": "N-IR-CLM-0009",
+      "type": "CLAIM",
+      "label": "Baghaei said the possibility the operation was a deception to steal enriched uranium should not be overlooked.",
+      "status": "UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-0009"
+    },
+    {
+      "id": "N-IR-CLM-0010",
+      "type": "CLAIM",
+      "label": "Press TV asserted the operation had no connection to pilot rescue and really targeted an Isfahan nuclear facility.",
+      "status": "NARRATIVE_SUBSTITUTION / UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-0010"
+    },
+    {
+      "id": "N-IR-CLM-0011",
+      "type": "CLAIM",
+      "label": "Press TV questioned the rescue explanation and advanced a uranium-search / alternative-mission theory.",
+      "status": "NARRATIVE_SUBSTITUTION / UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-0011"
+    },
+    {
+      "id": "N-CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "type": "CLAIM_CHAIN",
+      "label": "Iranian attribution of three U.S. F-15 losses later attributed to Kuwaiti friendly fire",
+      "status": "FALSE ATTRIBUTION"
+    },
+    {
+      "id": "N-IR-CLM-0101",
+      "type": "CLAIM",
+      "label": "Iran claimed responsibility for downing a U.S. F-15 during the Kuwait fighting.",
+      "status": "FALSE_ATTRIBUTION",
+      "claim_id": "IR-CLM-0101"
+    },
+    {
+      "id": "N-IR-CLM-0102",
+      "type": "CLAIM",
+      "label": "Iran claimed three U.S. F-15 fighter jets were downed by Iranian action.",
+      "status": "FALSE_ATTRIBUTION",
+      "claim_id": "IR-CLM-0102"
+    },
+    {
+      "id": "N-CH-TURKEY-MISSILE-DENIAL",
+      "type": "CLAIM_CHAIN",
+      "label": "Turkey missile denials → contrary NATO/Turkey attribution → false-flag explanation",
+      "status": "DENIAL / NARRATIVE SUBSTITUTION"
+    },
+    {
+      "id": "N-IR-CLM-0201",
+      "type": "CLAIM",
+      "label": "Iran said no Iranian missile had been fired toward Turkey.",
+      "status": "CONTRADICTED",
+      "claim_id": "IR-CLM-0201"
+    },
+    {
+      "id": "N-IR-CLM-0202",
+      "type": "CLAIM",
+      "label": "Araqchi said no projectiles had been fired from Iran toward Turkey.",
+      "status": "CONTRADICTED",
+      "claim_id": "IR-CLM-0202"
+    },
+    {
+      "id": "N-IR-CLM-0203",
+      "type": "CLAIM",
+      "label": "Iran again dismissed reports that it launched missiles toward Turkey.",
+      "status": "CONTRADICTED",
+      "claim_id": "IR-CLM-0203"
+    },
+    {
+      "id": "N-IR-CLM-0204",
+      "type": "CLAIM",
+      "label": "Araqchi attributed attacks on Turkey to an Israeli false-flag operation.",
+      "status": "NARRATIVE_SUBSTITUTION / UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-0204"
+    },
+    {
+      "id": "N-IR-CLM-0205",
+      "type": "CLAIM",
+      "label": "Araqchi repeated that Israel was behind false-flag attacks on Turkey.",
+      "status": "UNSUBSTANTIATED / NARRATIVE_SUBSTITUTION",
+      "claim_id": "IR-CLM-0205"
+    },
+    {
+      "id": "N-CH-F35-MAR19",
+      "type": "CLAIM_CHAIN",
+      "label": "Real F-35 combat damage → destruction/downing narrative",
+      "status": "REAL TACTICAL SUCCESS → INFLATED RESULT"
+    },
+    {
+      "id": "N-IR-CLM-0301",
+      "type": "CLAIM",
+      "label": "Iran presented an F-35 combat hit as a shootdown/destruction and strategic demonstration.",
+      "status": "MISLEADING / CONTRADICTED",
+      "claim_id": "IR-CLM-0301"
+    },
+    {
+      "id": "N-IR-CLM-0302",
+      "type": "CLAIM",
+      "label": "Press TV characterized the damaged F-35 as a historic first destruction.",
+      "status": "CONTRADICTED / MISLEADING",
+      "claim_id": "IR-CLM-0302"
+    },
+    {
+      "id": "N-IR-CLM-0303",
+      "type": "CLAIM",
+      "label": "An Iranian officer later said the F-35 was completely destroyed.",
+      "status": "CONTRADICTED",
+      "claim_id": "IR-CLM-0303"
+    },
+    {
+      "id": "N-CH-PROJECT-FREEDOM-BOATS",
+      "type": "CLAIM_CHAIN",
+      "label": "U.S. six-boat destruction claim vs Iranian denial",
+      "status": "UNRESOLVED PHYSICAL LOSS AUDIT"
+    },
+    {
+      "id": "N-IR-CLM-0401",
+      "type": "CLAIM",
+      "label": "Iran denied that six Iranian small boats had been sunk during Project Freedom.",
+      "status": "UNRESOLVED",
+      "claim_id": "IR-CLM-0401"
+    },
+    {
+      "id": "N-CH-INDIAN-OCEAN-DESTROYER",
+      "type": "CLAIM_CHAIN",
+      "label": "IRGC destroyer/supply-ship strike claim and separate fake proof footage",
+      "status": "UNSUBSTANTIATED CLAIM + FALSE MEDIA EVIDENCE"
+    },
+    {
+      "id": "N-IR-CLM-0501",
+      "type": "CLAIM",
+      "label": "The IRGC said missiles hit a U.S. destroyer and refueling vessel about 650 km from Iran, causing large fires.",
+      "status": "UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-0501"
+    },
+    {
+      "id": "N-CH-AIRCRAFT-KILL-AGGREGATES",
+      "type": "CLAIM_CHAIN",
+      "label": "82 → 130 → 170 → 210 aircraft/UAV claim series with changing metrics",
+      "status": "UNRESOLVED AGGREGATE / METRIC SHIFT"
+    },
+    {
+      "id": "N-IR-CLM-0601",
+      "type": "CLAIM",
+      "label": "Iran said it had downed 82 U.S. and Israeli drones.",
+      "status": "UNRESOLVED",
+      "claim_id": "IR-CLM-0601"
+    },
+    {
+      "id": "N-IR-CLM-0602",
+      "type": "CLAIM",
+      "label": "Iran said more than 130 enemy drones had been downed.",
+      "status": "UNRESOLVED",
+      "claim_id": "IR-CLM-0602"
+    },
+    {
+      "id": "N-IR-CLM-0603",
+      "type": "CLAIM",
+      "label": "Iran said 170 enemy drones had been downed.",
+      "status": "UNRESOLVED",
+      "claim_id": "IR-CLM-0603"
+    },
+    {
+      "id": "N-IR-CLM-0604",
+      "type": "CLAIM",
+      "label": "Iran said more than 170 enemy aircraft had been hit, including 16 fighter jets.",
+      "status": "UNRESOLVED / MISLEADING",
+      "claim_id": "IR-CLM-0604"
+    },
+    {
+      "id": "N-IR-CLM-0605",
+      "type": "CLAIM",
+      "label": "Iran said about 210 enemy aircraft had been targeted.",
+      "status": "MISLEADING / UNRESOLVED",
+      "claim_id": "IR-CLM-0605"
+    },
+    {
+      "id": "N-CH-QATAR-PILOTS",
+      "type": "CLAIM_CHAIN",
+      "label": "Missing Iranian pilots → late secret-prisoner claim → Qatar April-invitation counterchronology",
+      "status": "UNSUBSTANTIATED / CONTRADICTED"
+    },
+    {
+      "id": "N-IR-CLM-0701",
+      "type": "CLAIM",
+      "label": "Iran asserted that three missing Iranian pilots had been captured alive and were secretly held by Qatar.",
+      "status": "UNSUBSTANTIATED / CONTRADICTED",
+      "claim_id": "IR-CLM-0701"
+    },
+    {
+      "id": "N-IR-CLM-0702",
+      "type": "CLAIM",
+      "label": "Iran subsequently accused Qatar of delaying or obstructing clarification of the pilots’ fate.",
+      "status": "UNRESOLVED",
+      "claim_id": "IR-CLM-0702"
+    },
+    {
+      "id": "N-CH-BUSHEHR-AIRCRAFT",
+      "type": "CLAIM_CHAIN",
+      "label": "Bushehr/Jam U.S.-aircraft destruction claim",
+      "status": "CONTRADICTED; EXACT LOSS AUDIT OPEN"
+    },
+    {
+      "id": "N-IR-CLM-0801",
+      "type": "CLAIM",
+      "label": "Iranian reporting said a U.S. aircraft had been destroyed near Bushehr/Jam.",
+      "status": "CONTRADICTED",
+      "claim_id": "IR-CLM-0801"
+    },
+    {
+      "id": "N-CH-ALUDEID-BDA",
+      "type": "CLAIM_CHAIN",
+      "label": "Real Al Udeid damage → exact equipment / whole-base effect propositions",
+      "status": "PARTLY CONFIRMED / FACILITY-LEVEL BDA"
+    },
+    {
+      "id": "N-IR-CLM-0901",
+      "type": "CLAIM",
+      "label": "The IRGC claimed a major U.S. radar at Al Udeid had been dismantled/destroyed.",
+      "status": "PARTLY_CONFIRMED / UNRESOLVED / MISLEADING",
+      "claim_id": "IR-CLM-0901"
+    },
+    {
+      "id": "N-CH-FALSE-FLAG-REGIONAL",
+      "type": "CLAIM_CHAIN",
+      "label": "Regional false-flag attributions with differing claimant authority",
+      "status": "UNSUBSTANTIATED PATTERN"
+    },
+    {
+      "id": "N-IR-CLM-1001",
+      "type": "CLAIM",
+      "label": "An unnamed source attributed the Saudi Aramco attack to a U.S./Israeli false-flag operation.",
+      "status": "UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-1001"
+    },
+    {
+      "id": "N-IR-CLM-1002",
+      "type": "CLAIM",
+      "label": "An unnamed source attributed Erbil refinery and Kuwait radar attacks to U.S./Israeli deception.",
+      "status": "UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-1002"
+    },
+    {
+      "id": "N-IR-CLM-1003",
+      "type": "CLAIM",
+      "label": "Iran said a U.S.-made Shahed-type clone was used to stage regional false-flag attacks.",
+      "status": "UNSUBSTANTIATED",
+      "claim_id": "IR-CLM-1003"
+    },
+    {
+      "id": "N-CH-DENA-ADMISSION",
+      "type": "CLAIM_CHAIN",
+      "label": "IRIS Dena physical loss and acknowledgment",
+      "status": "ADMISSION LATENCY — NOT A LIE CASE"
+    },
+    {
+      "id": "N-IR-CLM-1101",
+      "type": "CLAIM",
+      "label": "Iran ultimately acknowledged and memorialized the loss of IRIS Dena and its crew.",
+      "status": "CONFIRMED",
+      "claim_id": "IR-CLM-1101"
+    },
+    {
+      "id": "N-CH-TANGSIRI-ADMISSION",
+      "type": "CLAIM_CHAIN",
+      "label": "Tangsiri external announcement → Iranian confirmation",
+      "status": "ADMISSION LATENCY — DENIAL NOT FOUND"
+    },
+    {
+      "id": "N-IR-CLM-1201",
+      "type": "CLAIM",
+      "label": "Iran confirmed IRGC Navy commander Alireza Tangsiri had died after severe injuries.",
+      "status": "CONFIRMED",
+      "claim_id": "IR-CLM-1201"
+    }
+  ],
+  "edges": [
+    {
+      "from": "N-IRGC-RESCUE-CLAIM",
+      "to": "N-RESCUE",
+      "relation": "PARTIALLY_CORROBORATED_BY",
+      "note": "Iranian fire hit helicopters and U.S. aircraft were lost, but rescue succeeded and transport loss mechanism differed."
+    },
+    {
+      "from": "N-URANIUM-PLAN",
+      "to": "N-URANIUM-CLAIM",
+      "relation": "CONTEXT_FOR",
+      "note": "Existence of a contingency plan makes the allegation narratively plausible but does not prove execution."
+    },
+    {
+      "from": "N-URANIUM-PLAN",
+      "to": "N-URANIUM-CLAIM",
+      "relation": "CANNOT_ESTABLISH_CAUSATION",
+      "note": "Documented contingency plan and documented rescue are distinct operations in reviewed evidence."
+    },
+    {
+      "from": "N-F5-TABRIZ",
+      "to": "N-F5-BUEHRING",
+      "relation": "SEPARATE_INCIDENT_FROM",
+      "note": "Aircraft losses at Tabriz do not establish fate of Camp Buehring pilots."
+    },
+    {
+      "from": "N-SU24-QATAR",
+      "to": "N-F5-BUEHRING",
+      "relation": "LIKELY_CONFLATED_WITH",
+      "note": "Qatar shootdowns were Su-24s, not F-5s."
+    },
+    {
+      "from": "N-F5-AHVAZ",
+      "to": "N-F5-BUEHRING",
+      "relation": "LIKELY_CONFLATED_WITH",
+      "note": "U.S. ground strikes on other F-5s are separate from claimed March 1 mission crew."
+    },
+    {
+      "from": "N-SANAA-STRIKE",
+      "to": "N-YEMEN-FLIGHT",
+      "relation": "TRIGGERED_BY_STATED_PURPOSE",
+      "note": "Yemeni government said strike intended to prevent Iranian/Mahan flight landing."
+    },
+    {
+      "from": "N-IRGC-YEMEN",
+      "to": "N-YEMEN-FLIGHT",
+      "relation": "CLAIMED_CARGO_AND_PASSENGERS",
+      "note": "Reuters multisource report; Iran/Houthi deny military role."
+    },
+    {
+      "from": "N-BEIRUT-JUN7",
+      "to": "N-IRAN-JUN7",
+      "relation": "PRECEDES",
+      "note": "Iran/IRGC explicitly described missile launch as retaliation."
+    },
+    {
+      "from": "N-CEASEFIRE-SCOPE",
+      "to": "N-FIRST-VIOLATOR",
+      "relation": "PREVENTS_SIMPLE_CAUSAL_LABEL",
+      "note": "If Lebanon scope was disputed, first direct Iran-Israel fire is not identical to first violation of the entire ceasefire."
+    },
+    {
+      "from": "N-IRAN-JUN7",
+      "to": "N-FIRST-VIOLATOR",
+      "relation": "PARTIALLY_CORROBORATES",
+      "note": "Confirms Iran fired first direct Iran→Israel barrage since April, not necessarily first overall ceasefire violation."
+    },
+    {
+      "from": "N-OPEN-IMAGERY",
+      "to": "N-COST-SUBSET",
+      "relation": "CONTEXT_FOR",
+      "note": "Imagery supports asset/damage enumeration; cost values require independent acquisition/rebuild bases."
+    },
+    {
+      "from": "SRCNODE-SRC-7471ECB26165",
+      "to": "N-RESCUE",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-5C8E18A6126E",
+      "to": "N-RESCUE",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-739B61482DE5",
+      "to": "N-URANIUM-CLAIM",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-03F069A69AAF",
+      "to": "N-URANIUM-CLAIM",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-68993464F927",
+      "to": "N-URANIUM-PLAN",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-3300E710B6AC",
+      "to": "N-F5-BUEHRING",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-ED911664A654",
+      "to": "N-SU24-QATAR",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-C595BD8471E7",
+      "to": "N-YEMEN-FLIGHT",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-833C85C5A4D4",
+      "to": "N-SANAA-STRIKE",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-D602E88FB9CB",
+      "to": "N-IRAN-JUN7",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-ADD074EC62A4",
+      "to": "N-CEASEFIRE-SCOPE",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-3826CE7F7FBB",
+      "to": "N-OPEN-IMAGERY",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-96222C18BBBB",
+      "to": "N-OPEN-IMAGERY",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-195296C296FD",
+      "to": "N-COST-SUBSET",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-82BAC5BDEA6C",
+      "to": "N-COST-SUBSET",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "SRCNODE-SRC-D43AA8AD0AEE",
+      "to": "N-COST-SUBSET",
+      "relation": "SUPPORTS_OR_DOCUMENTS",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0001",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0002",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0001",
+      "to": "N-IR-CLM-0002",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0004",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0002",
+      "to": "N-IR-CLM-0004",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0005",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0004",
+      "to": "N-IR-CLM-0005",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0006",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0005",
+      "to": "N-IR-CLM-0006",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0007",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0006",
+      "to": "N-IR-CLM-0007",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0008",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0007",
+      "to": "N-IR-CLM-0008",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0003",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0008",
+      "to": "N-IR-CLM-0003",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0009",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0003",
+      "to": "N-IR-CLM-0009",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0010",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0009",
+      "to": "N-IR-CLM-0010",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0011",
+      "to": "N-CH-F15E-CSAR-URANIUM",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0010",
+      "to": "N-IR-CLM-0011",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0101",
+      "to": "N-CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0102",
+      "to": "N-CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0101",
+      "to": "N-IR-CLM-0102",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0201",
+      "to": "N-CH-TURKEY-MISSILE-DENIAL",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0202",
+      "to": "N-CH-TURKEY-MISSILE-DENIAL",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0201",
+      "to": "N-IR-CLM-0202",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0203",
+      "to": "N-CH-TURKEY-MISSILE-DENIAL",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0202",
+      "to": "N-IR-CLM-0203",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0204",
+      "to": "N-CH-TURKEY-MISSILE-DENIAL",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0203",
+      "to": "N-IR-CLM-0204",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0205",
+      "to": "N-CH-TURKEY-MISSILE-DENIAL",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0204",
+      "to": "N-IR-CLM-0205",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0301",
+      "to": "N-CH-F35-MAR19",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0302",
+      "to": "N-CH-F35-MAR19",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0301",
+      "to": "N-IR-CLM-0302",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0303",
+      "to": "N-CH-F35-MAR19",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0302",
+      "to": "N-IR-CLM-0303",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0401",
+      "to": "N-CH-PROJECT-FREEDOM-BOATS",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0501",
+      "to": "N-CH-INDIAN-OCEAN-DESTROYER",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0601",
+      "to": "N-CH-AIRCRAFT-KILL-AGGREGATES",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0602",
+      "to": "N-CH-AIRCRAFT-KILL-AGGREGATES",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0601",
+      "to": "N-IR-CLM-0602",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0603",
+      "to": "N-CH-AIRCRAFT-KILL-AGGREGATES",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0602",
+      "to": "N-IR-CLM-0603",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0604",
+      "to": "N-CH-AIRCRAFT-KILL-AGGREGATES",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0603",
+      "to": "N-IR-CLM-0604",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0605",
+      "to": "N-CH-AIRCRAFT-KILL-AGGREGATES",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0604",
+      "to": "N-IR-CLM-0605",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0701",
+      "to": "N-CH-QATAR-PILOTS",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0702",
+      "to": "N-CH-QATAR-PILOTS",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0701",
+      "to": "N-IR-CLM-0702",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-0801",
+      "to": "N-CH-BUSHEHR-AIRCRAFT",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0901",
+      "to": "N-CH-ALUDEID-BDA",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-1001",
+      "to": "N-CH-FALSE-FLAG-REGIONAL",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-1002",
+      "to": "N-CH-FALSE-FLAG-REGIONAL",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-1001",
+      "to": "N-IR-CLM-1002",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-1003",
+      "to": "N-CH-FALSE-FLAG-REGIONAL",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-1002",
+      "to": "N-IR-CLM-1003",
+      "relation": "CHRONOLOGICALLY_PRECEDES",
+      "note": "Ordered claim evolution; does not imply causal motive."
+    },
+    {
+      "from": "N-IR-CLM-1101",
+      "to": "N-CH-DENA-ADMISSION",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-1201",
+      "to": "N-CH-TANGSIRI-ADMISSION",
+      "relation": "MEMBER_OF_CHAIN",
+      "note": null
+    },
+    {
+      "from": "N-IR-CLM-0001",
+      "to": "N-IR-CLM-0003",
+      "relation": "CORRECTED_BY",
+      "note": "Iranian state media correction changes F-35 identification to F-15E."
+    },
+    {
+      "from": "N-IR-CLM-0005",
+      "to": "N-IR-CLM-0009",
+      "relation": "WEAKENED_BEFORE",
+      "note": "Successful recovery precedes uranium mission-identity pivot."
+    },
+    {
+      "from": "N-IR-CLM-0008",
+      "to": "N-IR-CLM-0010",
+      "relation": "NARRATIVE_SHIFTS_TO",
+      "note": "Loss/mission-failure framing shifts toward nuclear-raid identity."
+    },
+    {
+      "from": "N-IR-CLM-0203",
+      "to": "N-IR-CLM-0204",
+      "relation": "NARRATIVE_SHIFTS_TO",
+      "note": "Categorical no-launch denial is followed by false-flag explanation."
+    },
+    {
+      "from": "N-IR-CLM-0301",
+      "to": "N-IR-CLM-0302",
+      "relation": "TACTICAL_SUCCESS_INFLATED_TO",
+      "note": "Damage/hit is converted into destruction framing."
+    }
+  ],
+  "rules": [
+    "A true unrelated event is not counterevidence.",
+    "Chronology alone is not causation.",
+    "A claim-source is not independent corroboration of its own claim.",
+    "Location confidence and damage confidence are separate.",
+    "Public commercial imagery may corroborate but is not redistributable by default.",
+    "Claim-chain nodes use controlled dispositions; morphology tags are descriptive and do not replace dispositions."
+  ]
+}

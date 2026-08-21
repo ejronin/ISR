@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0",
+  "records": [
+    {
+      "id": "IMG-OPEN-001",
+      "target": "Iran and Gulf conflict-wide damage proxy",
+      "country": "REGIONAL",
+      "lat": null,
+      "lon": null,
+      "coordinate_precision": "REGIONAL_LAYER",
+      "attribution": "MIXED_US_ISRAEL_IRAN",
+      "sensor_provider": "Copernicus Sentinel-1 SAR via Bellingcat PWTT",
+      "access_class": "OPEN_RAW_DATA_AND_PUBLIC_TOOL",
+      "pre_date": "2025-02-28/2026-02-27 reference year",
+      "post_date": "rolling from 2026-02-28",
+      "visible_finding": "Statistical structural-change proxy over Iran and Gulf; useful for triage, not definitive BDA.",
+      "location_confidence": "HIGH",
+      "damage_confidence": "PROXY_ONLY",
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ],
+      "redistribution": "Underlying Sentinel data is open; Bellingcat rendered graphics remain link-only unless separately licensed."
+    },
+    {
+      "id": "IMG-IRN-VALIASR-001",
+      "target": "IRGC Valiasr Barracks, Tehran",
+      "country": "Iran",
+      "lat": null,
+      "lon": null,
+      "coordinate_precision": "COORDINATE_UNRESOLVED",
+      "attribution": "US_ISRAEL_COMBINED_CAMPAIGN; strike-level attribution unresolved in this add-on",
+      "sensor_provider": "Sentinel-1 SAR + Sentinel-2 optical",
+      "access_class": "OPEN_RAW_DATA",
+      "pre_date": "2026-02-20",
+      "post_date": "2026-03-17",
+      "visible_finding": "Bellingcat reports clear indications of structural damage in Sentinel-2, with matching Sentinel-1 change signal.",
+      "location_confidence": "HIGH_BY_SITE_IDENTIFICATION",
+      "damage_confidence": "HIGH_FOR_VISIBLE_STRUCTURAL_DAMAGE",
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ],
+      "redistribution": "Retrieve original Sentinel scenes from Copernicus for redistributable derivatives."
+    },
+    {
+      "id": "IMG-IRN-ASHURA-001",
+      "target": "IRGC Ashura Garrison, Isfahan",
+      "country": "Iran",
+      "lat": 32.66512,
+      "lon": 51.346729,
+      "coordinate_precision": "COMPLEX_REFERENCE_POINT_LOW_CONFIDENCE_PUBLIC_MAP",
+      "attribution": "US_ISRAEL_COMBINED_CAMPAIGN; strike-level attribution unresolved",
+      "sensor_provider": "Sentinel-1 SAR + Sentinel-2 optical",
+      "access_class": "OPEN_RAW_DATA",
+      "pre_date": "2026-02-20",
+      "post_date": "2026-03-17",
+      "visible_finding": "Large damage/change signature corroborated in open optical imagery.",
+      "location_confidence": "MEDIUM",
+      "damage_confidence": "HIGH_FOR_VISIBLE_STRUCTURAL_DAMAGE",
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ],
+      "redistribution": "Use coordinate as complex reference only; confirm against EO scene before publishing a pin."
+    },
+    {
+      "id": "IMG-IRN-FATH-001",
+      "target": "Fath Air Base, Karaj",
+      "country": "Iran",
+      "lat": 35.717222,
+      "lon": 50.935278,
+      "coordinate_precision": "AIRFIELD_REFERENCE_POINT",
+      "attribution": "US_ISRAEL_COMBINED_CAMPAIGN; exact strike attribution unresolved",
+      "sensor_provider": "Sentinel-1 SAR + Sentinel-2 optical",
+      "access_class": "OPEN_RAW_DATA",
+      "pre_date": "2026-02-20",
+      "post_date": "2026-03-17",
+      "visible_finding": "Damage to multiple large buildings on north side of base.",
+      "location_confidence": "HIGH",
+      "damage_confidence": "HIGH_FOR_VISIBLE_STRUCTURAL_DAMAGE",
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ],
+      "redistribution": "Retrieve Sentinel imagery; airfield coordinate is not an impact coordinate."
+    },
+    {
+      "id": "IMG-IRN-KHOJIR-001",
+      "target": "Khojir missile production complex",
+      "country": "Iran",
+      "lat": 35.69365,
+      "lon": 51.61119,
+      "coordinate_precision": "COMPLEX_REFERENCE_POINT_FROM_PREWAR_PUBLIC_GEOLOCATION",
+      "attribution": "US_ISRAEL_COMBINED_CAMPAIGN; exact impact attribution unresolved",
+      "sensor_provider": "Sentinel-1 SAR + Sentinel-2 optical",
+      "access_class": "OPEN_RAW_DATA",
+      "pre_date": "2026-02-20",
+      "post_date": "2026-03-17",
+      "visible_finding": "Large damage clusters on eastern and western sides near reported propellant-production areas.",
+      "location_confidence": "MEDIUM_HIGH",
+      "damage_confidence": "HIGH_FOR_LARGE_CHANGE; function-specific loss requires separate BDA",
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ],
+      "redistribution": "Reference point locates the complex, not a specific 2026 impact."
+    },
+    {
+      "id": "IMG-QAT-ALUDEID-001",
+      "target": "Al Udeid Air Base warehouse",
+      "country": "Qatar",
+      "lat": 25.115647,
+      "lon": 51.333125,
+      "coordinate_precision": "EXACT_GEOLOCATED_DAMAGE_POINT",
+      "attribution": "IRAN",
+      "sensor_provider": "Sentinel-1 SAR + Sentinel-2 optical",
+      "access_class": "OPEN_RAW_DATA",
+      "pre_date": "2026-02-22",
+      "post_date": "2026-03-14",
+      "visible_finding": "Large blackened area on warehouse roof at the same point as damage-proxy signal.",
+      "location_confidence": "HIGH",
+      "damage_confidence": "HIGH_FOR_WAREHOUSE_DAMAGE_NOT_WHOLE_BASE",
+      "sources": [
+        "SRC-3826CE7F7FBB"
+      ],
+      "redistribution": "Open Sentinel scenes may be republished with attribution; do not generalize warehouse damage to whole-base incapacity."
+    },
+    {
+      "id": "IMG-IRN-AHVAZ-F5-001",
+      "target": "Qasem Soleimani / Ahvaz International Airport aircraft parking area",
+      "country": "Iran",
+      "lat": 31.33563,
+      "lon": 48.76275,
+      "coordinate_precision": "EXACT_OSINT_GEOLOCATED_STRIKE_POINT",
+      "attribution": "UNITED_STATES",
+      "sensor_provider": "CENTCOM strike video + public satellite/geolocation comparison",
+      "access_class": "PUBLIC_OFFICIAL_VIDEO_PLUS_LINKED_IMAGERY",
+      "pre_date": "2026-02-28 aircraft placement noted",
+      "post_date": "2026-03-05/06",
+      "visible_finding": "F-5/F-27 aircraft destruction geolocated to this point; runway cratered by March 5. Operational status of every parked airframe is not established.",
+      "location_confidence": "HIGH",
+      "damage_confidence": "HIGH_FOR_AIRFRAME_DESTRUCTION; OPERATIONAL_VALUE_UNRESOLVED",
+      "sources": [
+        "SRC-FA7CDDD722C0",
+        "SRC-C9D560A79D68"
+      ],
+      "redistribution": "CENTCOM footage public; third-party/commercial satellite imagery link-only unless separately licensed."
+    },
+    {
+      "id": "IMG-IRN-BANDARABBAS-KILO-001",
+      "target": "Bandar Abbas naval base — Kilo submarine berth",
+      "country": "Iran",
+      "lat": 27.1431,
+      "lon": 56.2128,
+      "coordinate_precision": "FACILITY_SUBMARINE_BERTH_AREA_APPROXIMATE",
+      "attribution": "UNITED_STATES",
+      "sensor_provider": "Planet commercial imagery reviewed by TWZ + U.S. official strike statements",
+      "access_class": "PUBLICLY_VIEWABLE_COMMERCIAL_LINK_ONLY",
+      "pre_date": "2026-03-02",
+      "post_date": "2026-03-04",
+      "visible_finding": "One Kilo-class submarine visible/untouched March 2 and assessed sunk by March 4; U.S. leadership stated an ATACMS sank a submarine.",
+      "location_confidence": "MEDIUM_HIGH",
+      "damage_confidence": "HIGH_FOR_ONE_KILO_LOSS",
+      "sources": [
+        "SRC-ED28D2A9BDC4"
+      ],
+      "redistribution": "Do not copy Planet imagery; link source. Use open Sentinel/Umbra scenes for independent broad corroboration if available."
+    },
+    {
+      "id": "IMG-IRN-BANDARABBAS-CORSAIR-001",
+      "target": "Bandar Abbas submarine/maintenance dock — July 12 Corsair strike",
+      "country": "Iran",
+      "lat": 27.140683,
+      "lon": 56.211469,
+      "coordinate_precision": "THIRD_PARTY_GEOLOCATED_STRIKE_POINT",
+      "attribution": "UNITED_STATES",
+      "sensor_provider": "Official CENTCOM video; third-party geolocation",
+      "access_class": "PUBLIC_OFFICIAL_VIDEO",
+      "pre_date": null,
+      "post_date": "2026-07-12",
+      "visible_finding": "Three U.S. lethal unmanned surface vessels attacked a submarine-port/maintenance facility; exact damage extent requires post-strike imagery.",
+      "location_confidence": "MEDIUM_HIGH",
+      "damage_confidence": "STRIKE_CONFIRMED_DAMAGE_EXTENT_UNRESOLVED",
+      "sources": [
+        "SRC-12AF87A440B4",
+        "SRC-704B05BC4EF9"
+      ],
+      "redistribution": "Official video can be linked/embedded subject to U.S. government media terms; coordinate from third-party geolocation should be labeled accordingly."
+    }
+  ],
+  "note": "Coordinates distinguish impact points from facility/reference points. A coordinate is not proof of damage."
+}

@@ -1,0 +1,265 @@
+{
+  "records": [
+    {
+      "facility_audit_id": "FAC-AUD-001",
+      "facility_id": "US-ALUDEID",
+      "facility_name": "Al Udeid Air Base",
+      "claim_ids": [
+        "IR-CLM-0901"
+      ],
+      "propositions": [
+        {
+          "question": "Was Al Udeid struck?",
+          "axis": "EVENT_EXISTENCE",
+          "disposition": "CONFIRMED",
+          "basis_sources": [
+            "SRC-C623D3244404",
+            "SRC-551A9C2DB97C",
+            "SRC-3826CE7F7FBB"
+          ],
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Independent satellite/BDA evidence documents strike damage."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "None short of evidence that the imagery was mislocated or predated the attack."
+          ]
+        },
+        {
+          "question": "Was the AN/FPS-132 early-warning radar physically hit and damaged?",
+          "axis": "PHYSICAL_EFFECT",
+          "disposition": "CONFIRMED",
+          "basis_sources": [
+            "SRC-48D30EB0A3C7"
+          ],
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Planet imagery and later photographs identify physical damage to the radar, including burned components."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "Contrary geolocation or pre-strike imagery demonstrating the damage predated the attack."
+          ]
+        },
+        {
+          "question": "Was the AN/FPS-132 materially degraded or temporarily knocked out?",
+          "axis": "FUNCTIONAL_EFFECT",
+          "disposition": "MOSTLY_CONFIRMED",
+          "basis_sources": [
+            "SRC-48D30EB0A3C7"
+          ],
+          "analytic_likelihood": "VERY_LIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Burned electronics/wiring are strong circumstantial evidence of functional degradation."
+          ],
+          "credible_alternatives": [
+            "Partial or redundant operation may have continued."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Technical logs showing uninterrupted full-capability operation."
+          ]
+        },
+        {
+          "question": "Was the AN/FPS-132 permanently destroyed beyond repair?",
+          "axis": "FUNCTIONAL_EFFECT",
+          "disposition": "UNRESOLVED",
+          "basis_sources": [
+            "SRC-48D30EB0A3C7"
+          ],
+          "analytic_likelihood": "ROUGHLY_EVEN",
+          "analytic_confidence": "LOW",
+          "inference_basis": [
+            "Public imagery cannot establish repair economics or eventual restoration."
+          ],
+          "credible_alternatives": [
+            "Repair/reconstitution restored service.",
+            "Damage was terminal and full replacement is required."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Return-to-service reporting, repair contract, replacement procurement, or authoritative terminal-loss assessment."
+          ]
+        },
+        {
+          "question": "Was the Al Udeid CAOC rendered inoperable?",
+          "axis": "FUNCTIONAL_EFFECT",
+          "disposition": "CONFIRMED",
+          "basis_sources": [
+            "SRC-7538CF574DDF"
+          ],
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Multiple Iranian missile hits were reported to have rendered the CAOC inoperable."
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "Credible post-strike operational logs showing the Qatar CAOC remained functioning."
+          ]
+        },
+        {
+          "question": "Was the whole Al Udeid Air Base rendered inoperable?",
+          "axis": "OPERATIONAL_OUTCOME",
+          "disposition": "MISLEADING",
+          "basis_sources": [
+            "SRC-551A9C2DB97C",
+            "SRC-7538CF574DDF"
+          ],
+          "analytic_likelihood": "VERY_UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Documented CAOC loss does not equal whole-base mission kill.",
+            "The air campaign continued through distributed C2 already shifted to Shaw."
+          ],
+          "credible_alternatives": [
+            "Other localized base functions could have been degraded."
+          ],
+          "evidence_that_would_change_assessment": [
+            "Evidence of simultaneous cessation of flightline, logistics and all major base functions for a material period."
+          ]
+        }
+      ],
+      "map_coordinate": {
+        "lat": 25.115647,
+        "lon": 51.333125,
+        "coordinate_type": "EXACT_GEOLOCATED_DAMAGE_POINT",
+        "note": "Open Sentinel comparison point for damaged warehouse/structure; not necessarily the claimed radar itself."
+      }
+    },
+    {
+      "facility_audit_id": "FAC-AUD-002",
+      "facility_id": "US-ALISALEM",
+      "facility_name": "Ali Al Salem Air Base",
+      "claim_ids": [],
+      "propositions": [
+        {
+          "question": "Did Iranian attacks damage the installation?",
+          "disposition": "CONFIRMED",
+          "basis_sources": [
+            "SRC-551A9C2DB97C",
+            "SRC-C623D3244404"
+          ],
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Did Iranian attacks damage the installation?"
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "question": "Were every claimed fighter hangar/fuel-storage loss and exact equipment kill independently proven?",
+          "disposition": "UNSUBSTANTIATED",
+          "basis_sources": [
+            "SRC-551A9C2DB97C"
+          ],
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Facility damage is independently verified, but the record does not prove every claimed fighter-hangar, fuel-storage and exact equipment loss."
+          ],
+          "credible_alternatives": [
+            "Some claimed subcomponents may have been damaged without being independently resolved."
+          ],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "map_coordinate": null
+    },
+    {
+      "facility_audit_id": "FAC-AUD-003",
+      "facility_id": "US-NSA-BHR",
+      "facility_name": "Naval Support Activity Bahrain / Fifth Fleet headquarters",
+      "claim_ids": [],
+      "propositions": [
+        {
+          "question": "Was material strike damage present?",
+          "disposition": "CONFIRMED",
+          "basis_sources": [
+            "SRC-C623D3244404",
+            "SRC-551A9C2DB97C"
+          ],
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Was material strike damage present?"
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "question": "Do real damaged structures prove every Iranian C2/fuel/storage destruction claim?",
+          "disposition": "MISLEADING",
+          "basis_sources": [
+            "SRC-C623D3244404",
+            "SRC-551A9C2DB97C"
+          ],
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Do real damaged structures prove every Iranian C2/fuel/storage destruction claim?"
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "map_coordinate": null
+    },
+    {
+      "facility_audit_id": "FAC-AUD-004",
+      "facility_id": "US-ALDHAFRA",
+      "facility_name": "Al Dhafra Air Base",
+      "claim_ids": [],
+      "propositions": [
+        {
+          "question": "Was the base struck/damaged during Iranian attacks?",
+          "disposition": "CONFIRMED",
+          "basis_sources": [
+            "SRC-C623D3244404",
+            "SRC-551A9C2DB97C"
+          ],
+          "analytic_likelihood": "ALMOST_CERTAIN",
+          "analytic_confidence": "HIGH",
+          "inference_basis": [
+            "Was the base struck/damaged during Iranian attacks?"
+          ],
+          "credible_alternatives": [],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        },
+        {
+          "question": "Does that establish all claimed platform/fuel/radar mission kills?",
+          "disposition": "UNSUBSTANTIATED",
+          "basis_sources": [
+            "SRC-551A9C2DB97C"
+          ],
+          "analytic_likelihood": "UNLIKELY",
+          "analytic_confidence": "MODERATE",
+          "inference_basis": [
+            "Base damage is real; exact platform/fuel/radar mission kills require component-level evidence not present."
+          ],
+          "credible_alternatives": [
+            "Some subcomponent kills may later be independently confirmed."
+          ],
+          "evidence_that_would_change_assessment": [
+            "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+          ]
+        }
+      ],
+      "map_coordinate": null
+    }
+  ],
+  "rule": "Separate event existence, attribution, physical effect, functional effect and operational outcome. Infer when evidence converges, but reserve UNRESOLVED for genuinely balanced live explanations."
+}

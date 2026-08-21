@@ -1,0 +1,76 @@
+{
+  "package_version": "1.3.2-analytical-final",
+  "authoritative_package": "ISR-Atlas-Forensic-Addon",
+  "baseline_dependency": {
+    "artifact_id": "ISR-Atlas-Integration-20260820-1701",
+    "version": "1.2",
+    "role": "historical integration baseline only; current authoritative add-on version is 1.3.2 analytical-final"
+  },
+  "baseline_authority_rule": "The baseline remains authoritative outside the narrow topics adjudicated here. This add-on supplements rather than replaces baseline JSON. If an add-on record conflicts with baseline on one of the specifically audited topics, flag for human review; do not silently overwrite.",
+  "authorities": {
+    "material_loss": {
+      "file": "iran-loss-envelopes.json",
+      "path": "aggregate_material_loss_summary",
+      "status": "AUTHORITATIVE",
+      "scope": "standing durable/material physical loss and damage as of analytical cutoff; temporary burial/inaccessibility is not automatically full replacement-equivalent loss; unsupported destroyed-UAS airframe counts are excluded",
+      "labels": {
+        "low": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+        "central": "CENTRAL MODELED ESTIMATE",
+        "high": "ASSESSED UPPER ENVELOPE"
+      }
+    },
+    "munitions_expenditure": {
+      "file": "iran-loss-envelopes.json",
+      "category": "MUNITIONS_EXPENDITURE",
+      "status": "AUTHORITATIVE_SEPARATE_ACCOUNTING_PRODUCT",
+      "scope_id": "ALL_REGION_THROUGH_2026-03-31_6770_COMBINED_MISSILE_UAS_LAUNCHES",
+      "rule": "Authoritative separate accounting product. All bounds use the same Feb. 28–Mar. 31, 2026 6,770-launch scope and a date-compatible composition derivation from UAE, Bahrain and Israel itemized splits. Do not substitute later conflict-wide depletion percentages for this cutoff."
+    },
+    "leadership_records": {
+      "file": "iran-leadership-casualties.json",
+      "status": "AUTHORITATIVE",
+      "rule": "Preserve person-level records and political/state versus military/security categorization; aggregate only as a derivation."
+    },
+    "propositions_claims": {
+      "file": "iranian-claim-evolution.json",
+      "status": "AUTHORITATIVE",
+      "supporting_files": [
+        "claim-chain-index.json",
+        "claim-taxonomy.json",
+        "facility-claim-audits.json",
+        "public-assessments.json"
+      ]
+    },
+    "source_namespace": {
+      "file": "sources.json",
+      "id_prefix": "SRC-",
+      "status": "AUTHORITATIVE",
+      "count": 136
+    }
+  },
+  "legacy_archive_only": [
+    {
+      "file": "iran-war-cost-estimate.json",
+      "path": "legacy_superseded_subset_snapshot",
+      "label": "LEGACY PARTIAL SUBSET — ARCHIVAL / BACKWARD-COMPATIBILITY ONLY",
+      "rule": "Never use as headline, current total, current floor, subtotal, central estimate, or upper envelope."
+    }
+  ],
+  "source_files_for_other_accepted_topics": {
+    "claim-audits.json": "claims.json",
+    "imagery-index.json": "bda-overlays.json + map-linked evidence",
+    "strike-geolocations.geojson": "map layer",
+    "qatar-iran-april-contacts.json": "diplomacy.json",
+    "yemen-mahan-chain.json": "events.json + diplomacy/security graph",
+    "ceasefire-causality.json": "events/claims timeline",
+    "aviation-reconciliation.json": "material losses + claims",
+    "iranian-claim-evolution.json": "claims.json as canonical proposition-level add-on records",
+    "claim-chain-index.json": "claim-evolution timeline",
+    "claim-taxonomy.json": "do not replace canonical disposition vocabulary",
+    "media-forensics.json": "false/recycled/AI visual-evidence layer",
+    "facility-claim-audits.json": "facility BDA proposition cards",
+    "ENGINEER-RESEARCH-PROMPT.md": "research completeness specification for the remaining day-by-day Iranian corpus"
+  },
+  "superseding_doctrine": "ANALYTICAL-DOCTRINE.md",
+  "implementation_rule": "Keep controlled disposition and estimative judgment separate. Use the completed bounded estimates in the authoritative current-loss files. PENDING_ESTIMATE is an active-research state only and is not a release-side answer for categories modeled in this package."
+}

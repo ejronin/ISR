@@ -1,0 +1,118 @@
+{
+  "records": [
+    {
+      "gap_id": "ADD-GAP-001",
+      "topic": "Open imagery exact scene IDs",
+      "question": "Retrieve exact Sentinel-1/Sentinel-2 scene/granule IDs for each listed target/date pair and generate redistributable crops from the original open data.",
+      "priority": "HIGH",
+      "why_open": "This environment can identify public archives and date/location recipes but cannot download the provider archives directly.",
+      "stop_condition": "Scene IDs, acquisition timestamps, cloud cover and checksum/source metadata captured for each target."
+    },
+    {
+      "gap_id": "ADD-GAP-002",
+      "topic": "Valiasr exact coordinate",
+      "question": "Geolocate the exact Bellingcat Valiasr damage area from open Sentinel/OSM rather than pinning a generic barracks name.",
+      "priority": "MEDIUM",
+      "why_open": "No sufficiently trustworthy exact coordinate found in targeted audit.",
+      "stop_condition": "Independent geolocation matches pre/post imagery and map features."
+    },
+    {
+      "gap_id": "ADD-GAP-005",
+      "topic": "Exact live-TV ceasefire admission",
+      "question": "Locate an archived IRIB/state-TV video/transcript, if it exists, in which an identifiable Iranian official explicitly says Iran fired first or broke the April ceasefire first.",
+      "priority": "MEDIUM",
+      "why_open": "Targeted audit found state-broadcaster confirmation of launches and IRGC retaliation statements, but not the claimed exact admission/interview.",
+      "stop_condition": "Primary video/transcript with timestamp, speaker, original-language phrase and independent translation.",
+      "description": " Current analytical disposition is UNSUBSTANTIATED; recovering the primary clip could change that assessment."
+    },
+    {
+      "gap_id": "ADD-GAP-006",
+      "topic": "Camp Buehring F-5 mission independent corroboration",
+      "question": "Determine whether independent radar, imagery, debris, base BDA or U.S./Kuwaiti after-action evidence confirms the Iranian F-5 strike details beyond the pilots’ later state-TV account.",
+      "priority": "MEDIUM",
+      "why_open": "CENTCOM confirms active combat involving Iranian aircraft but not all mission details or claimed causal mechanism for friendly fire.",
+      "stop_condition": "Independent evidence identifies aircraft, route/attack or effects.",
+      "description": " Current claim that the three Camp Buehring mission pilots were killed is CONTRADICTED by their later appearance alive; independent mission corroboration remains useful for attribution, not casualty status."
+    },
+    {
+      "gap_id": "ADD-GAP-007",
+      "topic": "Mahan July 13 passenger/cargo manifest",
+      "question": "Find independent documentary or imagery evidence for alleged 10-21 IRGC personnel, missile/drone components and gold on July 13 Mahan flight.",
+      "priority": "MEDIUM",
+      "why_open": "Reuters has strong multisource reporting but Iran/Houthi deny the military cargo/personnel.",
+      "stop_condition": "Manifest, imagery, named passenger confirmation, cargo records or multiple independent non-derived sources."
+    },
+    {
+      "gap_id": "ADD-GAP-008",
+      "topic": "Full-war Iranian claim corpus completeness",
+      "question": "Run the user-specified one-calendar-day-at-a-time Iranian-source corpus audit from 2026-02-28 through collection date; current add-on contains prioritized high-value chains, not a representation that every daily claim has been captured.",
+      "priority": "HIGH",
+      "why_open": "Targeted add-on deliberately did not redo the full OSINT collection.",
+      "stop_condition": "Every day checked across required Iranian source corpus; material claim IDs assigned or explicit no-material-claim marker."
+    },
+    {
+      "gap_id": "ADD-GAP-009",
+      "topic": "Exact publication timezone / archived snapshots",
+      "question": "Obtain archived snapshots and explicit timezone metadata for state/semi-official pages where only publisher display times are currently available.",
+      "priority": "MEDIUM",
+      "why_open": "No fake conversion from a display clock to UTC/local without a documented timezone.",
+      "stop_condition": "Archive URL + original publication/update timestamp + timezone provenance captured."
+    },
+    {
+      "gap_id": "ADD-GAP-010",
+      "topic": "Iran aggregate aircraft-kill reconciliation",
+      "question": "Build aircraft/UAV serial-by-serial ledger against 82→130→170→210 Iranian aggregate claims; detect duplicates and separate airborne shootdowns, ground destruction, hits, and targeted-only records.",
+      "priority": "HIGH",
+      "why_open": "Iran genuinely caused significant UAV losses, so blanket debunking would be analytically wrong.",
+      "stop_condition": "Every claimed aggregate decomposed into itemized confirmed/probable/unverified rows with duplication controls."
+    },
+    {
+      "gap_id": "ADD-GAP-011",
+      "topic": "Project Freedom six small boats",
+      "question": "Resolve six-boat destruction claim using CENTCOM imagery/video, satellite imagery, hull IDs, Iranian pre/post ORBAT and later unit appearances.",
+      "priority": "HIGH",
+      "why_open": "Current evidence is U.S. claim versus Iranian denial.",
+      "stop_condition": "At least vessel/hull-level physical evidence sufficient to confirm, contradict, or narrow each loss."
+    },
+    {
+      "gap_id": "ADD-GAP-012",
+      "topic": "Indian Ocean destroyer target identity",
+      "question": "Identify the destroyer/refueling vessel claimed hit on March 4, reconstruct tracks and post-event condition.",
+      "priority": "HIGH",
+      "why_open": "Official IRGC claim is distinct from demonstrably recycled RIMPAC proof video.",
+      "stop_condition": "Target identity/location and post-event condition established from primary/independent evidence."
+    },
+    {
+      "gap_id": "ADD-GAP-013",
+      "topic": "Tangsiri interim denial search",
+      "question": "Search Iranian official/state-media record March 26-30 for an explicit denial of Tangsiri death before Iranian confirmation.",
+      "priority": "MEDIUM",
+      "why_open": "A four-day confirmation lag alone is not evidence of lying.",
+      "stop_condition": "Explicit denial found and archived, or day-by-day source sweep documented with no denial located."
+    },
+    {
+      "gap_id": "ADD-GAP-014",
+      "topic": "Bushehr/Jam aircraft claim physical audit",
+      "question": "Seek independent wreckage, serial, imagery, ISR/BDA-platform flight track, and exact local-site chronology for May 28-29 Bushehr/Jam claim.",
+      "priority": "HIGH",
+      "why_open": "CENTCOM denial conflicts with Iranian reporting, while unrelated real MQ-9 losses make date/location precision essential.",
+      "stop_condition": "Specific platform and loss/no-loss outcome resolved independently."
+    },
+    {
+      "gap_id": "ADD-GAP-015",
+      "topic": "Facility claim-origin and exact equipment audit",
+      "question": "For Al Minhad, Ali Al Salem, Fifth Fleet/Bahrain, Al Udeid and other base claims, pair earliest exact Iranian proposition with satellite/equipment-level BDA.",
+      "priority": "HIGH",
+      "why_open": "Real base damage does not automatically validate exact equipment or mission-kill assertions.",
+      "stop_condition": "Each claim split into hit/equipment/damage/mission-kill/whole-site propositions and geolocated where possible."
+    },
+    {
+      "gap_id": "ADD-GAP-016",
+      "topic": "Viral media official-origin provenance",
+      "question": "Determine whether false/recycled/AI media artifacts were posted or endorsed by official Iranian entities versus only propagated by unaffiliated accounts.",
+      "priority": "MEDIUM",
+      "why_open": "Do not impute anonymous social propaganda to IRGC/state institutions.",
+      "stop_condition": "Original uploader/provenance chain archived or official-origin field remains false/unknown."
+    }
+  ]
+}

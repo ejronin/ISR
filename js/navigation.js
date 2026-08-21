@@ -10,7 +10,8 @@
   };
   const panelGroup = Object.fromEntries(Object.entries(groups).flatMap(([group, rows]) => rows.map(([id]) => [id, group])));
 
-  function activatePanel(id, focusButton) {
+  let restoringState = false;
+  function activatePanel(id, focusButton, options) {
     const target = document.getElementById(id);
     if (!target) return false;
     document.querySelectorAll('.panel').forEach(panel => {
@@ -35,13 +36,16 @@
       button.tabIndex = selected ? 0 : -1;
     });
     window.atlasActiveView = id;
+    if (!restoringState && options?.writeState !== false && window.AtlasState?.set) {
+      window.AtlasState.set({ activeView: id, activePrimaryGroup: group }, { source: 'navigation' });
+    }
     if (typeof window.configureAtlasMap === 'function') window.configureAtlasMap(id);
     if (id === 'timeline' && typeof window.refreshAtlasTimelineMap === 'function') window.refreshAtlasTimelineMap();
     try { if (window.atlasMap) window.setTimeout(() => window.atlasMap.invalidateSize(), 40); } catch (error) { /* optional map */ }
     return true;
   }
 
-  function renderSecondary(group, activeId) {
+  function renderSecondary(group, activeId, options) {
     const nav = document.getElementById('secondaryNav');
     if (!nav || !groups[group]) return;
     nav.textContent = '';
@@ -52,13 +56,13 @@
       document.getElementById(id)?.setAttribute('aria-labelledby', button.id);
       nav.appendChild(button);
     });
-    activatePanel(activeId && panelGroup[activeId] === group ? activeId : groups[group][0][0]);
+    activatePanel(activeId && panelGroup[activeId] === group ? activeId : groups[group][0][0], false, options);
   }
 
-  window.showAtlasPanel = function showAtlasPanel(id) {
+  window.showAtlasPanel = function showAtlasPanel(id, options) {
     const group = panelGroup[id] || 'overview';
-    if (!document.querySelector(`.secondary-tab[data-tab="${id}"]`)) renderSecondary(group, id);
-    return activatePanel(id);
+    if (!document.querySelector(`.secondary-tab[data-tab="${id}"]`)) { renderSecondary(group, id, options); return true; }
+    return activatePanel(id, false, options);
   };
 
   function handleRovingKeys(event) {
@@ -78,9 +82,10 @@
 
   async function copyCanonicalLink() {
     try {
-      if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(canonicalUrl);
+      const stateUrl = window.AtlasState?.url ? window.AtlasState.url(canonicalUrl) : canonicalUrl;
+      if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(stateUrl);
       else {
-        const input = document.createElement('input'); input.value = canonicalUrl; input.setAttribute('readonly', ''); input.className = 'clipboard-fallback';
+        const input = document.createElement('input'); input.value = stateUrl; input.setAttribute('readonly', ''); input.className = 'clipboard-fallback';
         document.body.appendChild(input); input.select(); document.execCommand('copy'); input.remove();
       }
       setShareStatus('Link copied');
@@ -126,7 +131,18 @@
       const eventTarget = event.target.closest('[data-event-id]'); if (eventTarget && window.focusLedgerEvent) window.focusLedgerEvent(eventTarget.dataset.eventId);
     });
     document.getElementById('copyLinkButton')?.addEventListener('click', copyCanonicalLink);
-    renderSecondary('overview', 'snapshot'); loadSnapshots(); loadBuildInfo();
+    const initial = window.AtlasState?.get?.() || { activePrimaryGroup: 'overview', activeView: 'snapshot' };
+    restoringState = true;
+    try { renderSecondary(initial.activePrimaryGroup, initial.activeView, { writeState: false }); } finally { restoringState = false; }
+    loadSnapshots(); loadBuildInfo();
+    window.AtlasState?.subscribe?.((state, source) => {
+      if (!['popstate', 'history', 'restore'].includes(source)) return;
+      restoringState = true;
+      try {
+        if (!document.querySelector(`.secondary-tab[data-tab="${state.activeView}"]`)) renderSecondary(state.activePrimaryGroup, state.activeView);
+        activatePanel(state.activeView, false, { writeState: false });
+      } finally { restoringState = false; }
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wireShell); else wireShell();

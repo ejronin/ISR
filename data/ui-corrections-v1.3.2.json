@@ -1,0 +1,13 @@
+{
+  "version": "1.3.2-ui-correction-1",
+  "approved_at": "2026-08-21",
+  "records": [
+    {
+      "record_type": "CLAIM_VERDICT_DISPLAY",
+      "record_id": "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
+      "display_verdict": "FALSE — CAUSATION NOT SUPPORTED",
+      "reason": "The cited withdrawals were negotiated, formalized, or already executing before the Feb. 28 war, and the agreed drawdown timeline did not change. Later questions about U.S. reliability or interest in regional security architecture do not establish causation for actions already in play.",
+      "authority": "User-approved addendum; display-layer correction preserving the immutable integration-v1.2 evidence record."
+    }
+  ]
+}

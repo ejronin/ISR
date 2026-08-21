@@ -1,0 +1,138 @@
+{
+  "claims": [
+    {
+      "claim_id": "CASE-PILOT-RESCUE-IRGC-LOSSES",
+      "claim": "Iranian forces destroyed two U.S. transport aircraft and two Black Hawks during a failed pilot-rescue mission.",
+      "supported": "Iranian fire hit rescue helicopters; U.S. aircraft were lost inside Iran.",
+      "not_supported": "The rescue did not fail; both F-15E crew were recovered. Reuters reports the two disabled MC-130s and additional helicopters were destroyed by U.S. forces after mechanical/operational problems to prevent capture. The reviewed evidence does not support Iran-caused destruction of all claimed aircraft.",
+      "sources_for_claim": [
+        "SRC-7CDC817909BB"
+      ],
+      "counterevidence": [
+        "SRC-7471ECB26165",
+        "SRC-5C8E18A6126E"
+      ],
+      "legacy_verdict_alias": "PARTLY_TRUE_CONTACT_AND_LOSSES__MISLEADING_CAUSE_AND_OUTCOME",
+      "canonical_claim_ids": [
+        "IR-CLM-0004",
+        "IR-CLM-0005",
+        "IR-CLM-0006",
+        "IR-CLM-0007",
+        "IR-CLM-0008"
+      ],
+      "final_disposition": [
+        "PARTLY_CONFIRMED",
+        "FALSE_ATTRIBUTION",
+        "CONTRADICTED"
+      ],
+      "analytic_likelihood": "LIKELY",
+      "analytic_confidence": "MODERATE",
+      "inference_basis": [
+        "Iranian fire hit rescue helicopters; U.S. aircraft were lost inside Iran. The rescue did not fail; both F-15E crew were recovered. Reuters reports the two disabled MC-130s and additional helicopters were destroyed by U.S. forces after mechanical/operational problems to prevent capture. The reviewed evidence does not support Iran-caused destruction of all claimed aircraft."
+      ],
+      "credible_alternatives": [],
+      "evidence_that_would_change_assessment": [
+        "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+      ]
+    },
+    {
+      "claim_id": "CASE-URANIUM-HEIST-RESCUE",
+      "claim": "The April rescue operation was actually a U.S. mission to steal Iran’s enriched uranium.",
+      "supported": "The U.S. military had separately drafted, at Trump’s request, a contingency plan to seize Iranian enriched uranium.",
+      "not_supported": "No reviewed evidence connects that contingency plan operationally to the April 3-5 rescue. The public contingency concept described by the Washington Post would require excavation, nuclear specialists, major logistics, and potentially weeks/months—substantially different from the documented personnel-recovery mission.",
+      "sources_for_claim": [
+        "SRC-739B61482DE5",
+        "SRC-03F069A69AAF"
+      ],
+      "context_not_proof": [
+        "SRC-68993464F927"
+      ],
+      "counterevidence": [
+        "SRC-7471ECB26165",
+        "SRC-E3DAD827ACAF"
+      ],
+      "legacy_verdict_alias": "UNSUPPORTED_CAUSAL_CLAIM__SEPARATE_REAL_CONTINGENCY_PLAN_EXISTS",
+      "canonical_claim_ids": [
+        "IR-CLM-0009",
+        "IR-CLM-0010",
+        "IR-CLM-0011"
+      ],
+      "final_disposition": [
+        "UNSUBSTANTIATED",
+        "NARRATIVE_SUBSTITUTION"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The U.S. military had separately drafted, at Trump’s request, a contingency plan to seize Iranian enriched uranium. No reviewed evidence connects that contingency plan operationally to the April 3-5 rescue. The public contingency concept described by the Washington Post would require excavation, nuclear specialists, major logistics, and potentially weeks/months—substantially different from the documented personnel-recovery mission."
+      ],
+      "credible_alternatives": [
+        "A covert secondary objective is theoretically possible, but no operation-specific evidence supports it."
+      ],
+      "evidence_that_would_change_assessment": [
+        "New independent physical evidence, primary records, or later operational behavior materially inconsistent with the present inference."
+      ]
+    },
+    {
+      "claim_id": "CASE-F5-PILOTS-SHOT-DOWN",
+      "claim": "The Iranian F-5 pilots associated with the Camp Buehring mission were shot down/killed.",
+      "supported": "Iran did lose F-5 aircraft in separate strikes during the war.",
+      "not_supported": "The three pilots claiming the Camp Buehring mission appeared alive in an Iranian state-TV interview on June 17. Separate events include Israeli destruction of F-5/F-4 aircraft at Tabriz, U.S. destruction of other F-5s at Ahvaz, and Qatar shooting down two Iranian Su-24s.",
+      "sources_for_claim": [],
+      "counterevidence": [
+        "SRC-3300E710B6AC",
+        "SRC-6843BB957E02",
+        "SRC-ED911664A654"
+      ],
+      "legacy_verdict_alias": "LIKELY_CONFLATION__NOT_SUPPORTED",
+      "canonical_claim_ids": [],
+      "final_disposition": [
+        "CONTRADICTED"
+      ],
+      "analytic_likelihood": "VERY_UNLIKELY",
+      "analytic_confidence": "HIGH",
+      "inference_basis": [
+        "The three pilots publicly identified as the Camp Buehring mission participants appeared alive on Iranian state TV on June 17.",
+        "Separate Iranian F-5 losses do not establish deaths of those named mission participants."
+      ],
+      "credible_alternatives": [
+        "A different F-5 crew could have been killed in a separate event, but that would not validate the claim about these three pilots."
+      ],
+      "evidence_that_would_change_assessment": [
+        "Verified casualty records showing one of the three interviewed pilots was not the person claimed or that the interview was misidentified/fabricated."
+      ]
+    },
+    {
+      "claim_id": "CASE-JUNE7-CEASEFIRE-FIRST-FIRE",
+      "claim": "Iran admitted on live TV that it was the side that broke the April ceasefire by firing first.",
+      "supported": "Iranian state broadcaster confirmed the June 7 launches; they were the first direct Iran-to-Israel missile bombardment since the April ceasefire. IRGC publicly described the strike as retaliation.",
+      "not_supported": "The reviewed evidence does not establish a specific live-TV interview admitting Iran was first to violate every term of the April ceasefire. The June 7 Iranian strike followed an Israeli strike in Beirut. Iran treated attacks on Lebanon/resistance forces as ceasefire violations, while a later Iranian account itself acknowledged Lebanon was not explicitly covered. Scope was contested.",
+      "sources_for_claim": [
+        "SRC-D602E88FB9CB",
+        "SRC-1F07B15CD0B3"
+      ],
+      "counterevidence": [
+        "SRC-ADD074EC62A4"
+      ],
+      "legacy_verdict_alias": "SEQUENCE_PARTLY_CONFIRMED__GLOBAL_FIRST_VIOLATION_CLAIM_NOT_ESTABLISHED",
+      "canonical_claim_ids": [],
+      "final_disposition": [
+        "UNSUBSTANTIATED"
+      ],
+      "analytic_likelihood": "UNLIKELY",
+      "analytic_confidence": "MODERATE",
+      "inference_basis": [
+        "Iranian state media confirms the June 7 launches and their retaliatory framing.",
+        "The exact claimed live-TV admission has not been recovered.",
+        "An Israeli strike in Beirut preceded the Iranian launch and ceasefire scope regarding Lebanon was disputed."
+      ],
+      "credible_alternatives": [
+        "A still-unrecovered interview may contain narrower wording that was later paraphrased as an admission."
+      ],
+      "evidence_that_would_change_assessment": [
+        "Primary video/transcript containing an explicit Iranian admission that its June 7 action was the first violation of the governing ceasefire terms."
+      ]
+    }
+  ],
+  "method_rule": "Summary layer only. Canonical adjudication is iranian-claim-evolution.json; final_disposition values use controlled vocabulary. Superseding doctrine: each consequential case also carries a separate estimative judgment; UNRESOLVED is used only when live explanations remain roughly balanced."
+}

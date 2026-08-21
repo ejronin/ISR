@@ -1,0 +1,1575 @@
+{
+  "schema_version": "1.2",
+  "as_of": "2026-08-21T00:40:00-04:00",
+  "doctrine": "Canonical current-loss accounting covers standing material loss/damage as of the analytical cutoff. Eight material-loss categories use bounded procurement, capability-analogue, composition, or severity models. MUNITIONS_EXPENDITURE is a separate accounting product for weapons intentionally expended on launch. Hypothetical future repair/reconstitution spending is excluded from canonical current-loss accounting.",
+  "double_counting_rule": "Material-loss aggregate sums only the eight categories explicitly marked ADDITIVE_TO_MATERIAL_LOSS_TOTAL and constructed to exclude cross-category components. MUNITIONS_EXPENDITURE remains separate. Destroyed inventory before use and intentionally expended weapons are not merged without item-level deconfliction.",
+  "categories": [
+    {
+      "category": "NAVAL_LOSSES",
+      "cost_model_range_usd": {
+        "low": 3322209353,
+        "central": 5218258553,
+        "high": 8160725216
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "CSIS observed-loss floor extended to 2 power-projection/AFSB hulls and 30 mine-laying small craft.",
+          "estimated_cost_usd": 3322209353,
+          "analytic_likelihood": "VERY_LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Component build-up. Existing frigate/corvette/FAC/submarine analogues are retained. AFSB hulls are anchored to a $56M-$58M 2010 Aframax market value and apply explicit conversion/mission-system premiums. ONI shows Ashoora mine-layers are standard small boats with mine rails, so they are modeled as small-craft rather than full-size minelayers.",
+          "source_ids": [
+            "SRC-29B47381EC59",
+            "SRC-DEF105F2E818",
+            "SRC-81A981954F88",
+            "SRC-4B82C94340A2",
+            "SRC-D43AA8AD0AEE",
+            "SRC-4E31F2F07926",
+            "SRC-14E3846F6349"
+          ],
+          "exclusions": [
+            "Support ships not itemized by class",
+            "salvage/harbor clearance",
+            "ports/shipyards",
+            "onboard weapons already embedded in full-program combatant analogues where applicable"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "frigates": {
+              "quantity": 5,
+              "unit_usd": 289400000,
+              "subtotal_usd": 1447000000
+            },
+            "corvettes": {
+              "quantity": 6,
+              "unit_usd": 75000000,
+              "subtotal_usd": 450000000
+            },
+            "fast_attack_craft": {
+              "quantity": 3,
+              "unit_usd": 12733600,
+              "subtotal_usd": 38200800
+            },
+            "kilo_submarines": {
+              "quantity": 1,
+              "unit_usd": 714008553,
+              "subtotal_usd": 714008553
+            },
+            "other_submarines": {
+              "quantity": 11,
+              "unit_usd": 50000000,
+              "subtotal_usd": 550000000
+            },
+            "power_projection_afsb": {
+              "quantity": 2,
+              "unit_usd": 60000000,
+              "subtotal_usd": 120000000
+            },
+            "mine_laying_small_craft": {
+              "quantity": 30,
+              "unit_usd": 100000,
+              "subtotal_usd": 3000000
+            }
+          }
+        },
+        {
+          "label": "CENTRAL MODELED ESTIMATE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Same observed CSIS classes; 35 mine-laying small-craft equivalents used to cover the 30+ count.",
+          "estimated_cost_usd": 5218258553,
+          "analytic_likelihood": "VERY_LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Component build-up. Existing frigate/corvette/FAC/submarine analogues are retained. AFSB hulls are anchored to a $56M-$58M 2010 Aframax market value and apply explicit conversion/mission-system premiums. ONI shows Ashoora mine-layers are standard small boats with mine rails, so they are modeled as small-craft rather than full-size minelayers.",
+          "source_ids": [
+            "SRC-29B47381EC59",
+            "SRC-DEF105F2E818",
+            "SRC-81A981954F88",
+            "SRC-4B82C94340A2",
+            "SRC-D43AA8AD0AEE",
+            "SRC-4E31F2F07926",
+            "SRC-14E3846F6349"
+          ],
+          "exclusions": [
+            "Support ships not itemized by class",
+            "salvage/harbor clearance",
+            "ports/shipyards",
+            "onboard weapons already embedded in full-program combatant analogues where applicable"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "frigates": {
+              "quantity": 5,
+              "unit_usd": 434100000,
+              "subtotal_usd": 2170500000
+            },
+            "corvettes": {
+              "quantity": 6,
+              "unit_usd": 150000000,
+              "subtotal_usd": 900000000
+            },
+            "fast_attack_craft": {
+              "quantity": 3,
+              "unit_usd": 25000000,
+              "subtotal_usd": 75000000
+            },
+            "kilo_submarines": {
+              "quantity": 1,
+              "unit_usd": 714008553,
+              "subtotal_usd": 714008553
+            },
+            "other_submarines": {
+              "quantity": 11,
+              "unit_usd": 100000000,
+              "subtotal_usd": 1100000000
+            },
+            "power_projection_afsb": {
+              "quantity": 2,
+              "unit_usd": 125000000,
+              "subtotal_usd": 250000000
+            },
+            "mine_laying_small_craft": {
+              "quantity": 35,
+              "unit_usd": 250000,
+              "subtotal_usd": 8750000
+            }
+          }
+        },
+        {
+          "label": "ASSESSED UPPER ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "High capability-replacement scenario for same documented classes; 45 small-craft equivalents bounds the open-ended 30+ count.",
+          "estimated_cost_usd": 8160725216,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Component build-up. Existing frigate/corvette/FAC/submarine analogues are retained. AFSB hulls are anchored to a $56M-$58M 2010 Aframax market value and apply explicit conversion/mission-system premiums. ONI shows Ashoora mine-layers are standard small boats with mine rails, so they are modeled as small-craft rather than full-size minelayers.",
+          "source_ids": [
+            "SRC-29B47381EC59",
+            "SRC-DEF105F2E818",
+            "SRC-81A981954F88",
+            "SRC-4B82C94340A2",
+            "SRC-D43AA8AD0AEE",
+            "SRC-4E31F2F07926",
+            "SRC-14E3846F6349"
+          ],
+          "exclusions": [
+            "Support ships not itemized by class",
+            "salvage/harbor clearance",
+            "ports/shipyards",
+            "onboard weapons already embedded in full-program combatant analogues where applicable"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "frigates": {
+              "quantity": 5,
+              "unit_usd": 491980000,
+              "subtotal_usd": 2459900000
+            },
+            "corvettes": {
+              "quantity": 6,
+              "unit_usd": 289400000,
+              "subtotal_usd": 1736400000
+            },
+            "fast_attack_craft": {
+              "quantity": 3,
+              "unit_usd": 50000000,
+              "subtotal_usd": 150000000
+            },
+            "kilo_submarines": {
+              "quantity": 1,
+              "unit_usd": 714008553,
+              "subtotal_usd": 714008553
+            },
+            "other_submarines": {
+              "quantity": 11,
+              "unit_usd": 233333333,
+              "subtotal_usd": 2566666663
+            },
+            "power_projection_afsb": {
+              "quantity": 2,
+              "unit_usd": 250000000,
+              "subtotal_usd": 500000000
+            },
+            "mine_laying_small_craft": {
+              "quantity": 45,
+              "unit_usd": 750000,
+              "subtotal_usd": 33750000
+            }
+          }
+        }
+      ],
+      "pending_components": [],
+      "model_status": "COMPLETE_BOUNDED_PROXY",
+      "overlap_notes": [
+        "Port/shipyard civil damage is in FIXED_INFRASTRUCTURE, not here.",
+        "Salvage/clearance is excluded from hull replacement; future restoration spending is outside canonical current-loss accounting."
+      ]
+    },
+    {
+      "category": "AIRCRAFT",
+      "cost_model_range_usd": {
+        "low": 514352121,
+        "central": 818678115,
+        "high": 1036237514
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Observed/independently reported aircraft set using 2 F-14 floor plus fixed losses documented in imagery/reporting.",
+          "estimated_cost_usd": 514352121,
+          "analytic_likelihood": "VERY_LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Historical acquisition/CPI proxies retained for F-14/F-4/F-5. TWZ/Vantor provides the 10 F-7, Il-76, two C-130, two Su-22, two Su-24 and Yak-130 loss set. F-7 uses a historical export-order anchor; Su-24 uses a historical secondary-market/refurbished anchor; C-130 uses official USAF type-cost range; Yak-130 uses declared export price. Il-76 and Su-22 use explicit analyst bands centered on comparable legacy transport/strike-aircraft burden.",
+          "source_ids": [
+            "SRC-195296C296FD",
+            "SRC-82BAC5BDEA6C",
+            "SRC-C9D560A79D68",
+            "SRC-6843BB957E02",
+            "SRC-28754AD45AC2",
+            "SRC-2FFDAFCBBFBB",
+            "SRC-5ED97C0F939B",
+            "SRC-DC2397DD86A5"
+          ],
+          "exclusions": [
+            "Unknown additional F-5/F-27 parked-aircraft losses at Ahvaz beyond the two Tabriz F-5s",
+            "aircraft spares/support equipment",
+            "replacement by modern fighters",
+            "aircrew casualties"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "F14": {
+              "quantity": 2,
+              "unit_usd": 152396653,
+              "subtotal_usd": 304793306
+            },
+            "F4": {
+              "quantity": 1,
+              "unit_usd": 31928757,
+              "subtotal_usd": 31928757
+            },
+            "F5": {
+              "quantity": 2,
+              "unit_usd": 6215029,
+              "subtotal_usd": 12430058
+            },
+            "F7": {
+              "quantity": 10,
+              "unit_usd": 5000000,
+              "subtotal_usd": 50000000
+            },
+            "Su24": {
+              "quantity": 2,
+              "unit_usd": 5000000,
+              "subtotal_usd": 10000000
+            },
+            "Su22": {
+              "quantity": 2,
+              "unit_usd": 5000000,
+              "subtotal_usd": 10000000
+            },
+            "Yak130": {
+              "quantity": 1,
+              "unit_usd": 15000000,
+              "subtotal_usd": 15000000
+            },
+            "Il76": {
+              "quantity": 1,
+              "unit_usd": 20000000,
+              "subtotal_usd": 20000000
+            },
+            "C130": {
+              "quantity": 2,
+              "unit_usd": 30100000,
+              "subtotal_usd": 60200000
+            }
+          }
+        },
+        {
+          "label": "CENTRAL MODELED ESTIMATE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Probable third F-14 plus same independently reported additional aircraft; central legacy/capability analogues.",
+          "estimated_cost_usd": 818678115,
+          "analytic_likelihood": "VERY_LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Historical acquisition/CPI proxies retained for F-14/F-4/F-5. TWZ/Vantor provides the 10 F-7, Il-76, two C-130, two Su-22, two Su-24 and Yak-130 loss set. F-7 uses a historical export-order anchor; Su-24 uses a historical secondary-market/refurbished anchor; C-130 uses official USAF type-cost range; Yak-130 uses declared export price. Il-76 and Su-22 use explicit analyst bands centered on comparable legacy transport/strike-aircraft burden.",
+          "source_ids": [
+            "SRC-195296C296FD",
+            "SRC-82BAC5BDEA6C",
+            "SRC-C9D560A79D68",
+            "SRC-6843BB957E02",
+            "SRC-28754AD45AC2",
+            "SRC-2FFDAFCBBFBB",
+            "SRC-5ED97C0F939B",
+            "SRC-DC2397DD86A5"
+          ],
+          "exclusions": [
+            "Unknown additional F-5/F-27 parked-aircraft losses at Ahvaz beyond the two Tabriz F-5s",
+            "aircraft spares/support equipment",
+            "replacement by modern fighters",
+            "aircrew casualties"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "F14": {
+              "quantity": 3,
+              "unit_usd": 152396653,
+              "subtotal_usd": 457189959
+            },
+            "F4": {
+              "quantity": 1,
+              "unit_usd": 32488156,
+              "subtotal_usd": 32488156
+            },
+            "F5": {
+              "quantity": 2,
+              "unit_usd": 10000000,
+              "subtotal_usd": 20000000
+            },
+            "F7": {
+              "quantity": 10,
+              "unit_usd": 10000000,
+              "subtotal_usd": 100000000
+            },
+            "Su24": {
+              "quantity": 2,
+              "unit_usd": 12000000,
+              "subtotal_usd": 24000000
+            },
+            "Su22": {
+              "quantity": 2,
+              "unit_usd": 10000000,
+              "subtotal_usd": 20000000
+            },
+            "Yak130": {
+              "quantity": 1,
+              "unit_usd": 15000000,
+              "subtotal_usd": 15000000
+            },
+            "Il76": {
+              "quantity": 1,
+              "unit_usd": 50000000,
+              "subtotal_usd": 50000000
+            },
+            "C130": {
+              "quantity": 2,
+              "unit_usd": 50000000,
+              "subtotal_usd": 100000000
+            }
+          }
+        },
+        {
+          "label": "ASSESSED UPPER ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "High-value analogue for same reported aircraft set; does not assume every parked aircraft nationwide was operational.",
+          "estimated_cost_usd": 1036237514,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Historical acquisition/CPI proxies retained for F-14/F-4/F-5. TWZ/Vantor provides the 10 F-7, Il-76, two C-130, two Su-22, two Su-24 and Yak-130 loss set. F-7 uses a historical export-order anchor; Su-24 uses a historical secondary-market/refurbished anchor; C-130 uses official USAF type-cost range; Yak-130 uses declared export price. Il-76 and Su-22 use explicit analyst bands centered on comparable legacy transport/strike-aircraft burden.",
+          "source_ids": [
+            "SRC-195296C296FD",
+            "SRC-82BAC5BDEA6C",
+            "SRC-C9D560A79D68",
+            "SRC-6843BB957E02",
+            "SRC-28754AD45AC2",
+            "SRC-2FFDAFCBBFBB",
+            "SRC-5ED97C0F939B",
+            "SRC-DC2397DD86A5"
+          ],
+          "exclusions": [
+            "Unknown additional F-5/F-27 parked-aircraft losses at Ahvaz beyond the two Tabriz F-5s",
+            "aircraft spares/support equipment",
+            "replacement by modern fighters",
+            "aircrew casualties"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "F14": {
+              "quantity": 3,
+              "unit_usd": 152396653,
+              "subtotal_usd": 457189959
+            },
+            "F4": {
+              "quantity": 1,
+              "unit_usd": 33047555,
+              "subtotal_usd": 33047555
+            },
+            "F5": {
+              "quantity": 2,
+              "unit_usd": 15000000,
+              "subtotal_usd": 30000000
+            },
+            "F7": {
+              "quantity": 10,
+              "unit_usd": 15000000,
+              "subtotal_usd": 150000000
+            },
+            "Su24": {
+              "quantity": 2,
+              "unit_usd": 25000000,
+              "subtotal_usd": 50000000
+            },
+            "Su22": {
+              "quantity": 2,
+              "unit_usd": 20000000,
+              "subtotal_usd": 40000000
+            },
+            "Yak130": {
+              "quantity": 1,
+              "unit_usd": 25000000,
+              "subtotal_usd": 25000000
+            },
+            "Il76": {
+              "quantity": 1,
+              "unit_usd": 100000000,
+              "subtotal_usd": 100000000
+            },
+            "C130": {
+              "quantity": 2,
+              "unit_usd": 75500000,
+              "subtotal_usd": 151000000
+            }
+          }
+        }
+      ],
+      "pending_components": [],
+      "model_status": "COMPLETE_BOUNDED_PROXY",
+      "overlap_notes": [
+        "Airbase buildings/runways are FIXED_INFRASTRUCTURE, not aircraft."
+      ]
+    },
+    {
+      "category": "AIR_DEFENSE_RADAR",
+      "cost_model_range_usd": {
+        "low": 1839999999,
+        "central": 3688000000,
+        "high": 9171000000
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Known prewar system mix multiplied by an 80% destruction-equivalent campaign floor; indigenous unknown-count families excluded.",
+          "estimated_cost_usd": 1839999999,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Iran-specific procurement anchors are used where public (five S-300 battalions >$800M; 29 Tor-M1 for $700M). CSIS supplies prewar system counts. Legacy/indigenous systems lacking contracts use explicit capability bands below/around modern imported systems. The 80% campaign destruction assessment is applied as a terminal-equivalent fraction, not as proof that 80% of every named family was destroyed.",
+          "source_ids": [
+            "SRC-CAD44890437C",
+            "SRC-13A00984DC6B",
+            "SRC-F4B26C97E520",
+            "SRC-88F5D65E4AC0"
+          ],
+          "exclusions": [
+            "SAM missile reload stocks",
+            "crew casualties",
+            "C2 buildings priced elsewhere",
+            "ballistic-missile TELs priced in LAUNCHERS"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "S300_battalion_equiv": {
+              "quantity": 5,
+              "unit_usd": 160000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 640000000
+            },
+            "Tor_M1": {
+              "quantity": 29,
+              "unit_usd": 24137931,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 559999999
+            },
+            "FM80_system_equiv": {
+              "quantity": 250,
+              "unit_usd": 2000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 400000000
+            },
+            "Mersad_system_equiv": {
+              "quantity": 50,
+              "unit_usd": 5000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 200000000
+            },
+            "S200_system_equiv": {
+              "quantity": 10,
+              "unit_usd": 5000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 40000000
+            }
+          }
+        },
+        {
+          "label": "CENTRAL MODELED ESTIMATE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Known systems plus 30 indigenous mid-range system equivalents; 80% destruction-equivalent.",
+          "estimated_cost_usd": 3688000000,
+          "analytic_likelihood": "VERY_LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Iran-specific procurement anchors are used where public (five S-300 battalions >$800M; 29 Tor-M1 for $700M). CSIS supplies prewar system counts. Legacy/indigenous systems lacking contracts use explicit capability bands below/around modern imported systems. The 80% campaign destruction assessment is applied as a terminal-equivalent fraction, not as proof that 80% of every named family was destroyed.",
+          "source_ids": [
+            "SRC-CAD44890437C",
+            "SRC-13A00984DC6B",
+            "SRC-F4B26C97E520",
+            "SRC-88F5D65E4AC0"
+          ],
+          "exclusions": [
+            "SAM missile reload stocks",
+            "crew casualties",
+            "C2 buildings priced elsewhere",
+            "ballistic-missile TELs priced in LAUNCHERS"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "S300_battalion_equiv": {
+              "quantity": 5,
+              "unit_usd": 250000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 1000000000
+            },
+            "Tor_M1": {
+              "quantity": 29,
+              "unit_usd": 40000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 928000000
+            },
+            "FM80_system_equiv": {
+              "quantity": 250,
+              "unit_usd": 4000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 800000000
+            },
+            "Mersad_system_equiv": {
+              "quantity": 50,
+              "unit_usd": 10000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 400000000
+            },
+            "S200_system_equiv": {
+              "quantity": 10,
+              "unit_usd": 10000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 80000000
+            },
+            "indigenous_midrange_system_equiv": {
+              "quantity": 30,
+              "unit_usd": 20000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 480000000
+            }
+          }
+        },
+        {
+          "label": "ASSESSED UPPER ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Known systems plus 60 indigenous mid-range and 20 fixed radar equivalents; 90% severity to bound campaign-level claims.",
+          "estimated_cost_usd": 9171000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Iran-specific procurement anchors are used where public (five S-300 battalions >$800M; 29 Tor-M1 for $700M). CSIS supplies prewar system counts. Legacy/indigenous systems lacking contracts use explicit capability bands below/around modern imported systems. The 80% campaign destruction assessment is applied as a terminal-equivalent fraction, not as proof that 80% of every named family was destroyed.",
+          "source_ids": [
+            "SRC-CAD44890437C",
+            "SRC-13A00984DC6B",
+            "SRC-F4B26C97E520",
+            "SRC-88F5D65E4AC0"
+          ],
+          "exclusions": [
+            "SAM missile reload stocks",
+            "crew casualties",
+            "C2 buildings priced elsewhere",
+            "ballistic-missile TELs priced in LAUNCHERS"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "S300_battalion_equiv": {
+              "quantity": 5,
+              "unit_usd": 350000000,
+              "severity_or_terminal_equivalent": 0.9,
+              "subtotal_usd": 1575000000
+            },
+            "Tor_M1": {
+              "quantity": 29,
+              "unit_usd": 60000000,
+              "severity_or_terminal_equivalent": 0.9,
+              "subtotal_usd": 1566000000
+            },
+            "FM80_system_equiv": {
+              "quantity": 250,
+              "unit_usd": 8000000,
+              "severity_or_terminal_equivalent": 0.9,
+              "subtotal_usd": 1800000000
+            },
+            "Mersad_system_equiv": {
+              "quantity": 50,
+              "unit_usd": 20000000,
+              "severity_or_terminal_equivalent": 0.9,
+              "subtotal_usd": 900000000
+            },
+            "S200_system_equiv": {
+              "quantity": 10,
+              "unit_usd": 20000000,
+              "severity_or_terminal_equivalent": 0.9,
+              "subtotal_usd": 180000000
+            },
+            "indigenous_midrange_system_equiv": {
+              "quantity": 60,
+              "unit_usd": 50000000,
+              "severity_or_terminal_equivalent": 0.9,
+              "subtotal_usd": 2700000000
+            },
+            "fixed_surveillance_radar_equiv": {
+              "quantity": 20,
+              "unit_usd": 25000000,
+              "severity_or_terminal_equivalent": 0.9,
+              "subtotal_usd": 450000000
+            }
+          }
+        }
+      ],
+      "pending_components": [],
+      "model_status": "COMPLETE_BOUNDED_PROXY",
+      "overlap_notes": [
+        "Air-defense launchers/radars are included here. LAUNCHERS below is ballistic-missile TELs only.",
+        "Fixed building shells are not included."
+      ]
+    },
+    {
+      "category": "LAUNCHERS",
+      "cost_model_range_usd": {
+        "low": 402000000,
+        "central": 1072000000,
+        "high": 2010000000
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": ">335 launchers neutralized; conservative 60% terminal-equivalent share.",
+          "estimated_cost_usd": 402000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Reuters reports Israeli officials said >335 missile launchers were neutralized. Exact Iranian TEL families and recoverability are unknown, so the model uses $2M/$4M/$6M per TEL-equivalent. The $6M upper is anchored to the U.S. Army FY2023 HIMARS launcher recurring cost (~$5.625M) as a modern mobile-launcher capability analogue; low/central explicitly discount for simpler Iranian platforms.",
+          "source_ids": [
+            "SRC-08F854FB61B7",
+            "SRC-4E13486C67AC"
+          ],
+          "exclusions": [
+            "reload vehicles",
+            "transloaders",
+            "missile inventory",
+            "air-defense launchers"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "ballistic_missile_TEL_equivalent": {
+              "quantity": 335,
+              "unit_usd": 2000000,
+              "severity_or_terminal_equivalent": 0.6,
+              "subtotal_usd": 402000000
+            }
+          }
+        },
+        {
+          "label": "CENTRAL MODELED ESTIMATE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": ">335 launchers neutralized; 80% terminal-equivalent central share.",
+          "estimated_cost_usd": 1072000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Reuters reports Israeli officials said >335 missile launchers were neutralized. Exact Iranian TEL families and recoverability are unknown, so the model uses $2M/$4M/$6M per TEL-equivalent. The $6M upper is anchored to the U.S. Army FY2023 HIMARS launcher recurring cost (~$5.625M) as a modern mobile-launcher capability analogue; low/central explicitly discount for simpler Iranian platforms.",
+          "source_ids": [
+            "SRC-08F854FB61B7",
+            "SRC-4E13486C67AC"
+          ],
+          "exclusions": [
+            "reload vehicles",
+            "transloaders",
+            "missile inventory",
+            "air-defense launchers"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "ballistic_missile_TEL_equivalent": {
+              "quantity": 335,
+              "unit_usd": 4000000,
+              "severity_or_terminal_equivalent": 0.8,
+              "subtotal_usd": 1072000000
+            }
+          }
+        },
+        {
+          "label": "ASSESSED UPPER ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Treats 335 as fully replacement-equivalent at a unit band slightly above the FY2023 HIMARS recurring launcher cost.",
+          "estimated_cost_usd": 2010000000,
+          "analytic_likelihood": "ROUGHLY_EVEN",
+          "confidence": "LOW",
+          "methodology": "Reuters reports Israeli officials said >335 missile launchers were neutralized. Exact Iranian TEL families and recoverability are unknown, so the model uses $2M/$4M/$6M per TEL-equivalent. The $6M upper is anchored to the U.S. Army FY2023 HIMARS launcher recurring cost (~$5.625M) as a modern mobile-launcher capability analogue; low/central explicitly discount for simpler Iranian platforms.",
+          "source_ids": [
+            "SRC-08F854FB61B7",
+            "SRC-4E13486C67AC"
+          ],
+          "exclusions": [
+            "reload vehicles",
+            "transloaders",
+            "missile inventory",
+            "air-defense launchers"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "ballistic_missile_TEL_equivalent": {
+              "quantity": 335,
+              "unit_usd": 6000000,
+              "severity_or_terminal_equivalent": 1.0,
+              "subtotal_usd": 2010000000
+            }
+          }
+        }
+      ],
+      "pending_components": [],
+      "model_status": "COMPLETE_BOUNDED_PROXY",
+      "overlap_notes": [
+        "This category is ballistic-missile TELs only; SAM launchers remain inside AIR_DEFENSE_RADAR."
+      ]
+    },
+    {
+      "category": "MISSILE_UAS_INVENTORY",
+      "cost_model_range_usd": {
+        "low": 208250000,
+        "central": 4251000000,
+        "high": 24000000000
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Lowest prewar missile-stock estimate (2,500) × one-third certainly destroyed ≈ 833 missiles. No additive destroyed-UAS airframe quantity is modeled because Reuters describes roughly one-third of drone capability destroyed, not an itemized physical airframe inventory.",
+          "estimated_cost_usd": 208250000,
+          "analytic_likelihood": "VERY_LIKELY",
+          "confidence": "LOW",
+          "methodology": "Reuters reports U.S. intelligence certainty that about one-third of Iran's missile arsenal was destroyed. Reuters separately describes another third as mixed status—damaged, destroyed, or buried/inaccessible—and says some buried or damaged missiles may be recoverable. Low and central therefore count only the certainly-destroyed one-third. The upper envelope counts the certainly-destroyed one-third plus a 50% replacement-equivalent severity factor on the ambiguous second third; this 50% is an explicit analyst midpoint for a mixed physical-damage/inaccessibility tranche and is not a claim that half the missiles are known destroyed. Temporary inaccessibility is never valued at 100% replacement loss. Reuters' separate 'one-third of drone capability destroyed' assessment is not converted into an airframe quantity; destroyed UAS inventory receives no separate additive dollar line absent a defensible physical count.",
+          "source_ids": [
+            "SRC-D678D7C35944",
+            "SRC-08F854FB61B7",
+            "SRC-48A3540B2747"
+          ],
+          "exclusions": [
+            "UAS physical-airframe inventory quantity not separately priced because the available assessment is capability-based rather than an itemized prewar airframe inventory.",
+            "Temporary missile inaccessibility/burial without demonstrated physical damage.",
+            "Expended missiles/UAS counted separately in MUNITIONS_EXPENDITURE.",
+            "Production machinery and facility damage counted separately in INDUSTRIAL_PRODUCTION/FIXED_INFRASTRUCTURE."
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "missile_inventory_physical_loss_damage_equivalent": {
+              "quantity_equivalent": 833,
+              "unit_usd": 250000,
+              "subtotal_usd": 208250000
+            }
+          }
+        },
+        {
+          "label": "CENTRAL MODELED ESTIMATE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Midpoint prewar missile stock (4,250) × one-third certainly destroyed ≈ 1,417 missiles. No additive destroyed-UAS airframe quantity is modeled because a physical airframe count cannot be defensibly separated from broader drone-capability and production-facility loss.",
+          "estimated_cost_usd": 4251000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Reuters reports U.S. intelligence certainty that about one-third of Iran's missile arsenal was destroyed. Reuters separately describes another third as mixed status—damaged, destroyed, or buried/inaccessible—and says some buried or damaged missiles may be recoverable. Low and central therefore count only the certainly-destroyed one-third. The upper envelope counts the certainly-destroyed one-third plus a 50% replacement-equivalent severity factor on the ambiguous second third; this 50% is an explicit analyst midpoint for a mixed physical-damage/inaccessibility tranche and is not a claim that half the missiles are known destroyed. Temporary inaccessibility is never valued at 100% replacement loss. Reuters' separate 'one-third of drone capability destroyed' assessment is not converted into an airframe quantity; destroyed UAS inventory receives no separate additive dollar line absent a defensible physical count.",
+          "source_ids": [
+            "SRC-D678D7C35944",
+            "SRC-08F854FB61B7",
+            "SRC-48A3540B2747"
+          ],
+          "exclusions": [
+            "UAS physical-airframe inventory quantity not separately priced because the available assessment is capability-based rather than an itemized prewar airframe inventory.",
+            "Temporary missile inaccessibility/burial without demonstrated physical damage.",
+            "Expended missiles/UAS counted separately in MUNITIONS_EXPENDITURE.",
+            "Production machinery and facility damage counted separately in INDUSTRIAL_PRODUCTION/FIXED_INFRASTRUCTURE."
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "missile_inventory_physical_loss_damage_equivalent": {
+              "quantity_equivalent": 1417,
+              "unit_usd": 3000000,
+              "subtotal_usd": 4251000000
+            }
+          }
+        },
+        {
+          "label": "ASSESSED UPPER ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Upper prewar stock (6,000). One-third (2,000) is treated as certainly destroyed. A second one-third is Reuters' mixed-status tranche (damaged, destroyed, or buried/inaccessible); only 50% of that tranche is counted as replacement-equivalent physical loss/damage (1,000 missile-equivalents). The remaining ambiguous/inaccessible half is tracked as degraded/inaccessible capability and excluded from material-loss dollars.",
+          "estimated_cost_usd": 24000000000,
+          "analytic_likelihood": "ROUGHLY_EVEN",
+          "confidence": "LOW",
+          "methodology": "Reuters reports U.S. intelligence certainty that about one-third of Iran's missile arsenal was destroyed. Reuters separately describes another third as mixed status—damaged, destroyed, or buried/inaccessible—and says some buried or damaged missiles may be recoverable. Low and central therefore count only the certainly-destroyed one-third. The upper envelope counts the certainly-destroyed one-third plus a 50% replacement-equivalent severity factor on the ambiguous second third; this 50% is an explicit analyst midpoint for a mixed physical-damage/inaccessibility tranche and is not a claim that half the missiles are known destroyed. Temporary inaccessibility is never valued at 100% replacement loss. Reuters' separate 'one-third of drone capability destroyed' assessment is not converted into an airframe quantity; destroyed UAS inventory receives no separate additive dollar line absent a defensible physical count.",
+          "source_ids": [
+            "SRC-D678D7C35944",
+            "SRC-08F854FB61B7",
+            "SRC-48A3540B2747"
+          ],
+          "exclusions": [
+            "UAS physical-airframe inventory quantity not separately priced because the available assessment is capability-based rather than an itemized prewar airframe inventory.",
+            "Temporary missile inaccessibility/burial without demonstrated physical damage.",
+            "Expended missiles/UAS counted separately in MUNITIONS_EXPENDITURE.",
+            "Production machinery and facility damage counted separately in INDUSTRIAL_PRODUCTION/FIXED_INFRASTRUCTURE."
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "missile_inventory_physical_loss_damage_equivalent": {
+              "quantity_equivalent": 3000,
+              "unit_usd": 8000000,
+              "subtotal_usd": 24000000000
+            }
+          }
+        }
+      ],
+      "pending_components": [],
+      "model_status": "COMPLETE_BOUNDED_PROXY_UAS_PHYSICAL_QUANTITY_EXCLUDED",
+      "overlap_notes": [
+        "Destroyed missile inventory only is additive here; intentionally expended missiles/UAS remain in MUNITIONS_EXPENDITURE.",
+        "UAS capability degradation is retained analytically but no physical airframe quantity is monetized absent a defensible inventory derivation.",
+        "Industrial-production/facility losses are separate and must not be used as a proxy count for destroyed UAS airframes."
+      ],
+      "missile_physical_loss_scope": {
+        "source": "SRC-08F854FB61B7",
+        "prewar_stock_range_source": "SRC-D678D7C35944",
+        "certain_destroyed_fraction": 0.3333333333333333,
+        "ambiguous_second_third_status": "damaged_destroyed_or_buried_inaccessible",
+        "upper_case_ambiguous_tranche_damage_equivalent_fraction": 0.5,
+        "upper_case_reason": "Reuters says the second third mixes physical damage/destruction with burial/inaccessibility and that some buried/damaged missiles may be recoverable. A 50% replacement-equivalent severity factor prevents automatic 100% loss treatment while preserving a bounded physical-damage allowance.",
+        "inaccessible_only_full_loss_fraction": 0.0,
+        "non_additive_degraded_or_inaccessible_share": "Any ambiguous share not represented by the 50% damage-equivalent factor remains capability degradation/inaccessibility, not standing material loss."
+      },
+      "uas_physical_inventory_treatment": {
+        "status": "EXCLUDED_FROM_ADDITIVE_MATERIAL_DOLLARS_NO_DEFENSIBLE_PHYSICAL_AIRFRAME_COUNT",
+        "source": "SRC-08F854FB61B7",
+        "assessment": "Reuters reports some degree of intelligence certainty that roughly one-third of Iranian drone capability had been destroyed.",
+        "reason": "The source is capability-based, not an itemized prewar physical-airframe inventory. Converting it to 1,500/3,000/4,500 destroyed airframes would manufacture quantity precision and risks overlap with INDUSTRIAL_PRODUCTION damage.",
+        "material_loss_usd": 0,
+        "overlap_control": "Do not monetize a destroyed-UAS airframe inventory unless a separately sourced physical prewar inventory and destroyed-airframe derivation are added and deconflicted from industrial-production/facility losses."
+      }
+    },
+    {
+      "category": "COMMAND_C2",
+      "cost_model_range_usd": {
+        "low": 105000000,
+        "central": 585000000,
+        "high": 1660000000
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Prices mission-system/secure-fitout equivalents for a conservative subset of verified command/HQ incidents.",
+          "estimated_cost_usd": 105000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "MODERATE",
+          "methodology": "Bellingcat verified 29 command-center/HQ incidents in the police/security infrastructure set; CSIS separately documents military/naval C2 damage. Patton Hall ($100M complete C2 HQ) is used as a high-end facility analogue. To avoid overlap with FIXED_INFRASTRUCTURE, this category prices only secure communications, operations-room, mission-system and specialized fitout equivalents, not building shells.",
+          "source_ids": [
+            "SRC-C00E5B404A2B",
+            "SRC-77EEF3BA2193",
+            "SRC-29B47381EC59",
+            "SRC-EC7108BA23BE"
+          ],
+          "exclusions": [
+            "building shells",
+            "leadership casualties",
+            "air-defense radars",
+            "industrial-control equipment"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "ordinary_C2_fitout": {
+              "quantity": 8,
+              "unit_usd": 10000000,
+              "subtotal_usd": 80000000
+            },
+            "high_level_hardened_C2_fitout": {
+              "quantity": 1,
+              "unit_usd": 25000000,
+              "subtotal_usd": 25000000
+            }
+          }
+        },
+        {
+          "label": "CENTRAL MODELED ESTIMATE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Prices mission-system/secure-fitout equivalents for 18 ordinary and 3 high-level/hardened nodes.",
+          "estimated_cost_usd": 585000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Bellingcat verified 29 command-center/HQ incidents in the police/security infrastructure set; CSIS separately documents military/naval C2 damage. Patton Hall ($100M complete C2 HQ) is used as a high-end facility analogue. To avoid overlap with FIXED_INFRASTRUCTURE, this category prices only secure communications, operations-room, mission-system and specialized fitout equivalents, not building shells.",
+          "source_ids": [
+            "SRC-C00E5B404A2B",
+            "SRC-77EEF3BA2193",
+            "SRC-29B47381EC59",
+            "SRC-EC7108BA23BE"
+          ],
+          "exclusions": [
+            "building shells",
+            "leadership casualties",
+            "air-defense radars",
+            "industrial-control equipment"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "ordinary_C2_fitout": {
+              "quantity": 18,
+              "unit_usd": 20000000,
+              "subtotal_usd": 360000000
+            },
+            "high_level_hardened_C2_fitout": {
+              "quantity": 3,
+              "unit_usd": 75000000,
+              "subtotal_usd": 225000000
+            }
+          }
+        },
+        {
+          "label": "ASSESSED UPPER ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Uses all 29 Bellingcat command/HQ incidents as ordinary C2 fitout equivalents plus five high-level/hardened equivalents to bound broader military C2 losses.",
+          "estimated_cost_usd": 1660000000,
+          "analytic_likelihood": "ROUGHLY_EVEN",
+          "confidence": "LOW",
+          "methodology": "Bellingcat verified 29 command-center/HQ incidents in the police/security infrastructure set; CSIS separately documents military/naval C2 damage. Patton Hall ($100M complete C2 HQ) is used as a high-end facility analogue. To avoid overlap with FIXED_INFRASTRUCTURE, this category prices only secure communications, operations-room, mission-system and specialized fitout equivalents, not building shells.",
+          "source_ids": [
+            "SRC-C00E5B404A2B",
+            "SRC-77EEF3BA2193",
+            "SRC-29B47381EC59",
+            "SRC-EC7108BA23BE"
+          ],
+          "exclusions": [
+            "building shells",
+            "leadership casualties",
+            "air-defense radars",
+            "industrial-control equipment"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "ordinary_C2_fitout": {
+              "quantity": 29,
+              "unit_usd": 40000000,
+              "subtotal_usd": 1160000000
+            },
+            "high_level_hardened_C2_fitout": {
+              "quantity": 5,
+              "unit_usd": 100000000,
+              "subtotal_usd": 500000000
+            }
+          }
+        }
+      ],
+      "pending_components": [],
+      "model_status": "COMPLETE_BOUNDED_PROXY",
+      "overlap_notes": [
+        "Building shell/civil works are excluded and priced in FIXED_INFRASTRUCTURE.",
+        "Human casualties are not monetized."
+      ]
+    },
+    {
+      "category": "FIXED_INFRASTRUCTURE",
+      "cost_model_range_usd": {
+        "low": 445000000,
+        "central": 1490000000,
+        "high": 4358000000
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Civil/structural floor across documented naval-port, airbase/security, industrial-shell and hardened-site damage.",
+          "estimated_cost_usd": 445000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Class-based civil/reconstruction build-up. World Bank Karachi project provides a 922m quay-wall reconstruction analogue ($112.6M in 2010 project terms). Iran-local public construction rates in iran-war-cost-estimate.json constrain ordinary shell costs. CSIS documents major damage at Bandar Abbas, Bushehr, Anzali, Chabahar/Konarak and weapons-production sites. Values are scenario classes because exact damage polygons are incomplete.",
+          "source_ids": [
+            "SRC-29B47381EC59",
+            "SRC-3826CE7F7FBB",
+            "SRC-B3BDC6765429",
+            "SRC-E67D759B3385",
+            "SRC-C00E5B404A2B"
+          ],
+          "exclusions": [
+            "industrial machinery/tooling",
+            "C2 mission systems",
+            "naval hulls",
+            "dredging beyond explicitly bounded port-work scenarios",
+            "civilian/private property"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "Bushehr_port_quay_civil": {
+              "quantity": 1,
+              "unit_usd": 60000000,
+              "subtotal_usd": 60000000
+            },
+            "Bandar_Abbas_base_shipyard_civil": {
+              "quantity": 1,
+              "unit_usd": 75000000,
+              "subtotal_usd": 75000000
+            },
+            "Anzali_Chabahar_Konarak_civil": {
+              "quantity": 1,
+              "unit_usd": 50000000,
+              "subtotal_usd": 50000000
+            },
+            "security_admin_airbase_shells": {
+              "quantity": 1,
+              "unit_usd": 60000000,
+              "subtotal_usd": 60000000
+            },
+            "runway_hangar_utilities": {
+              "quantity": 1,
+              "unit_usd": 50000000,
+              "subtotal_usd": 50000000
+            },
+            "industrial_weapon_building_shells": {
+              "quantity": 1,
+              "unit_usd": 100000000,
+              "subtotal_usd": 100000000
+            },
+            "bunker_tunnel_portal_utilities": {
+              "quantity": 1,
+              "unit_usd": 50000000,
+              "subtotal_usd": 50000000
+            }
+          }
+        },
+        {
+          "label": "CENTRAL MODELED ESTIMATE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Central reconstruction mix with port/quay, buildings, runway/hangar/utilities and hardened-site civil works.",
+          "estimated_cost_usd": 1490000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Class-based civil/reconstruction build-up. World Bank Karachi project provides a 922m quay-wall reconstruction analogue ($112.6M in 2010 project terms). Iran-local public construction rates in iran-war-cost-estimate.json constrain ordinary shell costs. CSIS documents major damage at Bandar Abbas, Bushehr, Anzali, Chabahar/Konarak and weapons-production sites. Values are scenario classes because exact damage polygons are incomplete.",
+          "source_ids": [
+            "SRC-29B47381EC59",
+            "SRC-3826CE7F7FBB",
+            "SRC-B3BDC6765429",
+            "SRC-E67D759B3385",
+            "SRC-C00E5B404A2B"
+          ],
+          "exclusions": [
+            "industrial machinery/tooling",
+            "C2 mission systems",
+            "naval hulls",
+            "dredging beyond explicitly bounded port-work scenarios",
+            "civilian/private property"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "Bushehr_port_quay_civil": {
+              "quantity": 1,
+              "unit_usd": 150000000,
+              "subtotal_usd": 150000000
+            },
+            "Bandar_Abbas_base_shipyard_civil": {
+              "quantity": 1,
+              "unit_usd": 200000000,
+              "subtotal_usd": 200000000
+            },
+            "Anzali_Chabahar_Konarak_civil": {
+              "quantity": 1,
+              "unit_usd": 150000000,
+              "subtotal_usd": 150000000
+            },
+            "security_admin_airbase_shells": {
+              "quantity": 1,
+              "unit_usd": 240000000,
+              "subtotal_usd": 240000000
+            },
+            "runway_hangar_utilities": {
+              "quantity": 1,
+              "unit_usd": 200000000,
+              "subtotal_usd": 200000000
+            },
+            "industrial_weapon_building_shells": {
+              "quantity": 1,
+              "unit_usd": 350000000,
+              "subtotal_usd": 350000000
+            },
+            "bunker_tunnel_portal_utilities": {
+              "quantity": 1,
+              "unit_usd": 200000000,
+              "subtotal_usd": 200000000
+            }
+          }
+        },
+        {
+          "label": "ASSESSED UPPER ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "High civil/structural envelope for widespread terminal damage, without machinery or mission systems.",
+          "estimated_cost_usd": 4358000000,
+          "analytic_likelihood": "ROUGHLY_EVEN",
+          "confidence": "LOW",
+          "methodology": "Class-based civil/reconstruction build-up. World Bank Karachi project provides a 922m quay-wall reconstruction analogue ($112.6M in 2010 project terms). Iran-local public construction rates in iran-war-cost-estimate.json constrain ordinary shell costs. CSIS documents major damage at Bandar Abbas, Bushehr, Anzali, Chabahar/Konarak and weapons-production sites. Values are scenario classes because exact damage polygons are incomplete.",
+          "source_ids": [
+            "SRC-29B47381EC59",
+            "SRC-3826CE7F7FBB",
+            "SRC-B3BDC6765429",
+            "SRC-E67D759B3385",
+            "SRC-C00E5B404A2B"
+          ],
+          "exclusions": [
+            "industrial machinery/tooling",
+            "C2 mission systems",
+            "naval hulls",
+            "dredging beyond explicitly bounded port-work scenarios",
+            "civilian/private property"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "Bushehr_port_quay_civil": {
+              "quantity": 1,
+              "unit_usd": 350000000,
+              "subtotal_usd": 350000000
+            },
+            "Bandar_Abbas_base_shipyard_civil": {
+              "quantity": 1,
+              "unit_usd": 500000000,
+              "subtotal_usd": 500000000
+            },
+            "Anzali_Chabahar_Konarak_civil": {
+              "quantity": 1,
+              "unit_usd": 400000000,
+              "subtotal_usd": 400000000
+            },
+            "security_admin_airbase_shells": {
+              "quantity": 1,
+              "unit_usd": 708000000,
+              "subtotal_usd": 708000000
+            },
+            "runway_hangar_utilities": {
+              "quantity": 1,
+              "unit_usd": 600000000,
+              "subtotal_usd": 600000000
+            },
+            "industrial_weapon_building_shells": {
+              "quantity": 1,
+              "unit_usd": 1000000000,
+              "subtotal_usd": 1000000000
+            },
+            "bunker_tunnel_portal_utilities": {
+              "quantity": 1,
+              "unit_usd": 800000000,
+              "subtotal_usd": 800000000
+            }
+          }
+        }
+      ],
+      "pending_components": [],
+      "model_status": "COMPLETE_BOUNDED_PROXY",
+      "overlap_notes": [
+        "Industrial machinery is excluded and priced in INDUSTRIAL_PRODUCTION.",
+        "C2 mission systems are excluded and priced in COMMAND_C2."
+      ]
+    },
+    {
+      "category": "INDUSTRIAL_PRODUCTION",
+      "cost_model_range_usd": {
+        "low": 460000000,
+        "central": 2500000000,
+        "high": 7000000000
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "12 terminal-equivalent specialized production lines plus limited shipyard specialty-equipment burden.",
+          "estimated_cost_usd": 460000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "CENTCOM/Reuters and AP report broad attacks on missile, drone, naval production and shipyards; CSIS imagery confirms damage to aboveground weapon-production sites. U.S. Army McAlester provides an engineering benchmark of $74M for a specialized ammunition-process facility plus $21.742M installed equipment; line-equivalent bands are discounted/expanded around that benchmark for Iranian plant complexity. The $1.75B Alabuga Iran-Russia UAV-production contract is used only as a national-scale upper-context check because it includes technology transfer, financing and thousands of UAVs, not pure CAPEX.",
+          "source_ids": [
+            "SRC-08F854FB61B7",
+            "SRC-CAD44890437C",
+            "SRC-29B47381EC59",
+            "SRC-7EC6E3912A73",
+            "SRC-E2C1F6A340BA"
+          ],
+          "exclusions": [
+            "building shells",
+            "finished missile/UAS stockpiles",
+            "naval hulls",
+            "lost production/revenue",
+            "labor and macroeconomic effects"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "terminal_equivalent_specialized_lines": {
+              "quantity": 12,
+              "unit_usd": 30000000,
+              "subtotal_usd": 360000000
+            },
+            "shipyard_specialty_equipment": {
+              "quantity": 1,
+              "unit_usd": 100000000,
+              "subtotal_usd": 100000000
+            }
+          }
+        },
+        {
+          "label": "CENTRAL MODELED ESTIMATE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "25 line-equivalents plus major shipyard specialty-equipment loss/replacement.",
+          "estimated_cost_usd": 2500000000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "CENTCOM/Reuters and AP report broad attacks on missile, drone, naval production and shipyards; CSIS imagery confirms damage to aboveground weapon-production sites. U.S. Army McAlester provides an engineering benchmark of $74M for a specialized ammunition-process facility plus $21.742M installed equipment; line-equivalent bands are discounted/expanded around that benchmark for Iranian plant complexity. The $1.75B Alabuga Iran-Russia UAV-production contract is used only as a national-scale upper-context check because it includes technology transfer, financing and thousands of UAVs, not pure CAPEX.",
+          "source_ids": [
+            "SRC-08F854FB61B7",
+            "SRC-CAD44890437C",
+            "SRC-29B47381EC59",
+            "SRC-7EC6E3912A73",
+            "SRC-E2C1F6A340BA"
+          ],
+          "exclusions": [
+            "building shells",
+            "finished missile/UAS stockpiles",
+            "naval hulls",
+            "lost production/revenue",
+            "labor and macroeconomic effects"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "terminal_equivalent_specialized_lines": {
+              "quantity": 25,
+              "unit_usd": 80000000,
+              "subtotal_usd": 2000000000
+            },
+            "shipyard_specialty_equipment": {
+              "quantity": 1,
+              "unit_usd": 500000000,
+              "subtotal_usd": 500000000
+            }
+          }
+        },
+        {
+          "label": "ASSESSED UPPER ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "40 line-equivalents plus $1B shipyard specialty-equipment upper burden.",
+          "estimated_cost_usd": 7000000000,
+          "analytic_likelihood": "ROUGHLY_EVEN",
+          "confidence": "LOW",
+          "methodology": "CENTCOM/Reuters and AP report broad attacks on missile, drone, naval production and shipyards; CSIS imagery confirms damage to aboveground weapon-production sites. U.S. Army McAlester provides an engineering benchmark of $74M for a specialized ammunition-process facility plus $21.742M installed equipment; line-equivalent bands are discounted/expanded around that benchmark for Iranian plant complexity. The $1.75B Alabuga Iran-Russia UAV-production contract is used only as a national-scale upper-context check because it includes technology transfer, financing and thousands of UAVs, not pure CAPEX.",
+          "source_ids": [
+            "SRC-08F854FB61B7",
+            "SRC-CAD44890437C",
+            "SRC-29B47381EC59",
+            "SRC-7EC6E3912A73",
+            "SRC-E2C1F6A340BA"
+          ],
+          "exclusions": [
+            "building shells",
+            "finished missile/UAS stockpiles",
+            "naval hulls",
+            "lost production/revenue",
+            "labor and macroeconomic effects"
+          ],
+          "research_requirement": null,
+          "additivity": "ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "calculation_components_usd": {
+            "terminal_equivalent_specialized_lines": {
+              "quantity": 40,
+              "unit_usd": 150000000,
+              "subtotal_usd": 6000000000
+            },
+            "shipyard_specialty_equipment": {
+              "quantity": 1,
+              "unit_usd": 1000000000,
+              "subtotal_usd": 1000000000
+            }
+          }
+        }
+      ],
+      "pending_components": [],
+      "model_status": "COMPLETE_BOUNDED_PROXY",
+      "overlap_notes": [
+        "Building shells are excluded and priced in FIXED_INFRASTRUCTURE.",
+        "Finished weapons inventory is excluded and priced in MISSILE_UAS_INVENTORY."
+      ]
+    },
+    {
+      "category": "MUNITIONS_EXPENDITURE",
+      "cost_model_range_usd": {
+        "all_region_model_low": 419220000,
+        "all_region_model_central": 5897135000,
+        "all_region_model_high": 18512200000
+      },
+      "envelopes": [
+        {
+          "label": "CONSERVATIVE ALL-REGION EXPENDITURE FLOOR",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Common all-region Feb. 28–Mar. 31 scope: 6,770 combined launches. Composition case uses 1,234 missiles and 5,536 UAS; see category composition_derivation.",
+          "estimated_cost_usd": 419220000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Date-compatible itemized composition floor: 1,234 missiles are directly classified across UAE, Bahrain and Israel; all 2,394 otherwise-unclassified launches are treated as lower-cost UAS for the conservative cost floor.",
+          "source_ids": [
+            "SRC-D1FD47FA9FE4",
+            "SRC-964B4BFA5400",
+            "SRC-3F2CDE66C029",
+            "SRC-48A3540B2747",
+            "SRC-0AD1D2E747EC",
+            "SRC-5B3CA5C34B02"
+          ],
+          "exclusions": [
+            "Post-Mar.31 expenditure",
+            "Cruise-missile mix not separately decomposed",
+            "Jet UAVs",
+            "Launch/support/maintenance costs."
+          ],
+          "research_requirement": null,
+          "additivity": "SEPARATE_EXPENDITURE_STREAM_NOT_ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "scope_id": "ALL_REGION_THROUGH_2026-03-31_6770_COMBINED_MISSILE_UAS_LAUNCHES",
+          "calculation_components_usd": {
+            "missiles": {
+              "quantity": 1234,
+              "unit_usd": 250000,
+              "subtotal_usd": 308500000
+            },
+            "uas": {
+              "quantity": 5536,
+              "unit_usd": 20000,
+              "subtotal_usd": 110720000
+            }
+          },
+          "composition_case_id": "COMP-LOW-ITEMIZED-MISSILE-FLOOR",
+          "temporal_scope_compatibility": "COMPATIBLE_WITH_2026-02-28_THROUGH_2026-03-31_LAUNCH_SCOPE"
+        },
+        {
+          "label": "CENTRAL MODELED ALL-REGION EXPENDITURE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Common all-region Feb. 28–Mar. 31 scope: 6,770 combined launches. Composition case uses 1,909 missiles and 4,861 UAS; see category composition_derivation.",
+          "estimated_cost_usd": 5897135000,
+          "analytic_likelihood": "LIKELY",
+          "confidence": "LOW",
+          "methodology": "Date-compatible composition model: apply the pooled missile share in the contemporaneously itemized UAE+Bahrain+Israel sample (1,234 / 4,376 = 28.20%) to the 2,394 unclassified launches, yielding 1,909 missiles and 4,861 UAS.",
+          "source_ids": [
+            "SRC-D1FD47FA9FE4",
+            "SRC-964B4BFA5400",
+            "SRC-3F2CDE66C029",
+            "SRC-48A3540B2747",
+            "SRC-0AD1D2E747EC",
+            "SRC-5B3CA5C34B02"
+          ],
+          "exclusions": [
+            "Post-Mar.31 expenditure",
+            "Cruise-missile mix",
+            "Jet UAVs",
+            "Launch/support/maintenance costs."
+          ],
+          "research_requirement": null,
+          "additivity": "SEPARATE_EXPENDITURE_STREAM_NOT_ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "scope_id": "ALL_REGION_THROUGH_2026-03-31_6770_COMBINED_MISSILE_UAS_LAUNCHES",
+          "calculation_components_usd": {
+            "missiles": {
+              "quantity": 1909,
+              "unit_usd": 3000000,
+              "subtotal_usd": 5727000000
+            },
+            "uas": {
+              "quantity": 4861,
+              "unit_usd": 35000,
+              "subtotal_usd": 170135000
+            }
+          },
+          "composition_case_id": "COMP-CENTRAL-POOLED-ITEMIZED-SHARE",
+          "temporal_scope_compatibility": "COMPATIBLE_WITH_2026-02-28_THROUGH_2026-03-31_LAUNCH_SCOPE"
+        },
+        {
+          "label": "ASSESSED UPPER ALL-REGION EXPENDITURE ENVELOPE",
+          "estimate_status": "CALCULATED",
+          "quantity_basis": "Common all-region Feb. 28–Mar. 31 scope: 6,770 combined launches. Composition case uses 2,286 missiles and 4,484 UAS; see category composition_derivation.",
+          "estimated_cost_usd": 18512200000,
+          "analytic_likelihood": "ROUGHLY_EVEN",
+          "confidence": "LOW",
+          "methodology": "Date-compatible upper composition model: apply the highest missile share among the itemized contemporaneous theaters (Israel: 600 / 1,365 = 43.96%) to the 2,394 unclassified launches, yielding 2,286 missiles and 4,484 UAS. This is an upper composition scenario, not a claim that every unclassified theater matched Israel.",
+          "source_ids": [
+            "SRC-D1FD47FA9FE4",
+            "SRC-964B4BFA5400",
+            "SRC-3F2CDE66C029",
+            "SRC-48A3540B2747",
+            "SRC-0AD1D2E747EC",
+            "SRC-5B3CA5C34B02"
+          ],
+          "exclusions": [
+            "Potential higher-cost Fattah systems omitted",
+            "Potential cheaper SRBMs would lower total."
+          ],
+          "research_requirement": null,
+          "additivity": "SEPARATE_EXPENDITURE_STREAM_NOT_ADDITIVE_TO_MATERIAL_LOSS_TOTAL",
+          "scope_id": "ALL_REGION_THROUGH_2026-03-31_6770_COMBINED_MISSILE_UAS_LAUNCHES",
+          "calculation_components_usd": {
+            "missiles": {
+              "quantity": 2286,
+              "unit_usd": 8000000,
+              "subtotal_usd": 18288000000
+            },
+            "uas": {
+              "quantity": 4484,
+              "unit_usd": 50000,
+              "subtotal_usd": 224200000
+            }
+          },
+          "composition_case_id": "COMP-HIGH-ISRAEL-MISSILE-SHARE",
+          "temporal_scope_compatibility": "COMPATIBLE_WITH_2026-02-28_THROUGH_2026-03-31_LAUNCH_SCOPE"
+        }
+      ],
+      "warning": "All three canonical bounds use the same all-region Feb. 28–Mar. 31, 2026 scope of 6,770 combined launches. Composition is derived from date-compatible itemized UAE, Bahrain and Israel missile/UAS splits; the later CSIS 30% missile / 60% drone conflict-wide depletion estimate is context only and is not used to partition the Mar. 31 launch total. The $165.3M Israel-only itemized subset remains a narrower lineage subset, not the all-region low bound.",
+      "model_status": "COMPLETE_BOUNDED_PROXY",
+      "pending_components": [],
+      "overlap_notes": [
+        "Do not merge intentionally expended missile/UAS values with destroyed-inventory quantities for the same item without item-level deconfliction.",
+        "This category is reported separately from standing material loss/damage."
+      ],
+      "narrower_itemized_subset": {
+        "label": "ISRAEL-ONLY ITEMIZED SUBSET — NARROWER SCOPE, NOT AN ALL-REGION LOW BOUND",
+        "scope": "More directly itemized Israel-directed subset in compiled reporting: 600 ballistic missiles + 765 drones.",
+        "estimated_cost_usd_low_case": 165300000,
+        "note": "Retained for direct/itemized lineage only. It is not the low bound of the all-region munitions-expenditure envelope.",
+        "source_ids": [
+          "SRC-D1FD47FA9FE4",
+          "SRC-48A3540B2747",
+          "SRC-5B3CA5C34B02"
+        ]
+      },
+      "composition_derivation": {
+        "scope_id": "ALL_REGION_THROUGH_2026-03-31_6770_COMBINED_MISSILE_UAS_LAUNCHES",
+        "scope_start": "2026-02-28",
+        "scope_end": "2026-03-31",
+        "combined_launch_total": 6770,
+        "combined_total_source": "SRC-D1FD47FA9FE4",
+        "date_compatible_itemized_inputs": [
+          {
+            "theater": "UAE",
+            "missiles": 452,
+            "uas": 1977,
+            "total": 2429,
+            "source": "SRC-964B4BFA5400",
+            "note": "433 ballistic + 19 cruise missiles; 1,977 UAVs through Mar. 31."
+          },
+          {
+            "theater": "Bahrain",
+            "missiles": 182,
+            "uas": 400,
+            "total": 582,
+            "source": "SRC-3F2CDE66C029",
+            "note": "BDF cumulative count through Mar. 31."
+          },
+          {
+            "theater": "Israel",
+            "missiles": 600,
+            "uas": 765,
+            "total": 1365,
+            "source": "SRC-D1FD47FA9FE4",
+            "note": "INSS split reported by Anadolu in the same Apr. 1 compilation."
+          }
+        ],
+        "itemized_sample": {
+          "missiles": 1234,
+          "uas": 3142,
+          "total": 4376,
+          "missile_share": 0.2819926873857404
+        },
+        "unclassified_launches": 2394,
+        "cases": {
+          "COMP-LOW-ITEMIZED-MISSILE-FLOOR": {
+            "missiles": 1234,
+            "uas": 5536,
+            "formula": "Known itemized missiles (1,234); treat all 2,394 unclassified launches as UAS for conservative cost floor."
+          },
+          "COMP-CENTRAL-POOLED-ITEMIZED-SHARE": {
+            "missiles": 1909,
+            "uas": 4861,
+            "formula": "1,234 + round(2,394 × (1,234 / 4,376)) = 1,909 missiles; remainder UAS."
+          },
+          "COMP-HIGH-ISRAEL-MISSILE-SHARE": {
+            "missiles": 2286,
+            "uas": 4484,
+            "formula": "1,234 + round(2,394 × (600 / 1,365)) = 2,286 missiles; remainder UAS. Israel is the highest missile-share itemized theater among the contemporaneous inputs."
+          }
+        },
+        "excluded_stock_depletion_partition": {
+          "source": "SRC-29B47381EC59",
+          "csis_statement": "CSIS states Iran expended an estimated 30% of missile inventory and 60% of drones during the conflict.",
+          "temporal_compatibility": "NOT_USED_FOR_MAR31_PARTITION",
+          "reason": "The June report is conflict-wide and published after the June 15 halt; it does not establish that the 30%/60% depletion percentages apply specifically to the Feb. 28–Mar. 31 6,770-launch cutoff."
+        }
+      }
+    }
+  ],
+  "aggregate_total_status": "CALCULATED_BOUNDED_MATERIAL_LOSS_ENVELOPE",
+  "aggregate_material_loss_summary": {
+    "currency": "USD; mixed 2026 purchasing-power/capability-loss proxies as documented per category",
+    "accounting_scope": "Standing material lost, destroyed, or damaged as of the analytical cutoff. Hypothetical future repair/reconstitution spending is excluded.",
+    "additive_categories": [
+      "NAVAL_LOSSES",
+      "AIRCRAFT",
+      "AIR_DEFENSE_RADAR",
+      "LAUNCHERS",
+      "MISSILE_UAS_INVENTORY",
+      "COMMAND_C2",
+      "FIXED_INFRASTRUCTURE",
+      "INDUSTRIAL_PRODUCTION"
+    ],
+    "conservative_evidence_supported_floor_usd": 7296811473,
+    "central_modeled_estimate_usd": 19622936668,
+    "assessed_upper_envelope_usd": 57395962730,
+    "material_loss_range_usd": {
+      "low": 7296811473,
+      "central": 19622936668,
+      "high": 57395962730
+    },
+    "labels": {
+      "low": "CONSERVATIVE EVIDENCE-SUPPORTED FLOOR",
+      "central": "CENTRAL MODELED ESTIMATE",
+      "high": "ASSESSED UPPER ENVELOPE"
+    },
+    "munitions_expenditure_separate_usd": {
+      "low": 419220000,
+      "central": 5897135000,
+      "high": 18512200000,
+      "scope_id": "ALL_REGION_THROUGH_2026-03-31_6770_COMBINED_MISSILE_UAS_LAUNCHES"
+    },
+    "do_not_sum": [
+      "MUNITIONS_EXPENDITURE with standing material loss without an explicitly defined combined accounting scope and item-level overlap test",
+      "destroyed missile/UAS inventory with intentionally expended weapons where item identity or stock flow is not deconflicted",
+      "human casualties",
+      "macroeconomic/trade/sanctions effects",
+      "hypothetical future repair/reconstitution or capability-replacement spending"
+    ],
+    "confidence": "LOW_TO_MODERATE",
+    "interpretation": "The low value is a conservative evidence-supported floor, not a claim that every input is imagery-confirmed. The central figure is the preferred modeled standing material-loss estimate. The upper figure is a deliberately broad upper envelope. The missile/UAS inventory category now excludes temporary inaccessibility as full loss and does not monetize an unsupported destroyed-UAS airframe count."
+  }
+}

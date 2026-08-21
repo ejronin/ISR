@@ -1,0 +1,49 @@
+{
+  "records": [
+    {
+      "id": "CF-001",
+      "date": "2026-04",
+      "event": "U.S.-Iran ceasefire begins; exact legal/political scope relevant to Lebanon remained contested.",
+      "status": "BASELINE_CONTEXT",
+      "sources": []
+    },
+    {
+      "id": "CF-002",
+      "date": "2026-06-07",
+      "event": "Israel struck Beirut southern suburbs despite U.S. request to stand down.",
+      "status": "CONFIRMED_BY_AP",
+      "sources": [
+        "SRC-D602E88FB9CB"
+      ]
+    },
+    {
+      "id": "CF-003",
+      "date": "2026-06-07",
+      "event": "Iran launched ballistic missiles at Israel, first direct Iran-to-Israel bombardment since April; Iranian state broadcaster confirmed launches.",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC-D602E88FB9CB"
+      ]
+    },
+    {
+      "id": "CF-004",
+      "date": "2026-06-07",
+      "event": "IRGC described Ramat David strike as retaliation for Israeli attacks in Lebanon.",
+      "status": "IRGC_OFFICIAL_CHARACTERIZATION",
+      "sources": [
+        "SRC-1F07B15CD0B3"
+      ]
+    },
+    {
+      "id": "CF-005",
+      "date": "2026-06-14",
+      "event": "Iranian state-aligned account acknowledged April ceasefire did not explicitly cover Lebanon while reiterating Tehran treated attacks on resistance forces as truce breaches.",
+      "status": "IMPORTANT_SCOPE_COUNTEREVIDENCE",
+      "sources": [
+        "SRC-ADD074EC62A4"
+      ]
+    }
+  ],
+  "verdict": "FIRST_DIRECT_IRAN_TO_ISRAEL_FIRE_SINCE_APRIL_CONFIRMED; FIRST_VIOLATION_OF_ENTIRE_CEASEFIRE_NOT_ESTABLISHED",
+  "live_tv_note": "No sufficiently verified exact live-TV interview admitting Iran was the first violator was found in this targeted audit. The stronger, verifiable record is AP reporting that Iran state broadcaster confirmed launches plus the IRGC statement describing retaliation."
+}

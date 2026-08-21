@@ -1,0 +1,50 @@
+{
+  "records": [
+    {
+      "id": "YEM-001",
+      "date": "2026-07-03",
+      "fact": "Mahan Air carried about 200 people, including senior Houthi officials, women and children, to Iran for Ayatollah Khamenei funeral according to Reuters source chain.",
+      "status": "REPORTED_BY_REUTERS",
+      "sources": [
+        "SRC-C595BD8471E7"
+      ]
+    },
+    {
+      "id": "YEM-002",
+      "date": "2026-07-13",
+      "fact": "Yemen internationally recognized government claimed strikes on Sanaa airport runway to prevent an Iranian/Mahan aircraft from landing; Houthis blamed Saudi Arabia. Saudi communication office did not immediately comment in Reuters report.",
+      "status": "AIRPORT_STRIKE_AND_STATED_PURPOSE_CONFIRMED; immediate Saudi unilateral attribution not established by that Reuters story",
+      "sources": [
+        "SRC-6ED7510CE93D"
+      ]
+    },
+    {
+      "id": "YEM-003",
+      "date": "2026-07-13",
+      "fact": "Mahan flight diverted from Sanaa to Hodeidah after runway attack.",
+      "status": "CONFIRMED_BY_REUTERS_CHAIN",
+      "sources": [
+        "SRC-C595BD8471E7"
+      ]
+    },
+    {
+      "id": "YEM-004",
+      "date": "2026-07-23",
+      "fact": "Four Reuters sources—including two Iranian sources, Yemen information minister and regional analyst—said July 13 Mahan flight carried 10-21 IRGC personnel including commanders/advisers plus missile/drone components; one analyst also reported gold. Iran/Houthis denied military aid/personnel and said flight repatriated delegation/patients.",
+      "status": "MULTISOURCE_REPORT_WITH_OFFICIAL_DENIAL; not treated as independently visually proven cargo manifest",
+      "sources": [
+        "SRC-C595BD8471E7"
+      ]
+    },
+    {
+      "id": "YEM-005",
+      "date": "2026-07-28",
+      "fact": "HRW satellite analysis assessed Yemeni government forces in coalition with Saudi Arabia attacked Sanaa airport with at least five munitions, three hitting the only working runway; stated purpose was to prevent Mahan landing.",
+      "status": "SATELLITE_CORROBORATED_STRIKE; coalition relationship supported; exact platform/crew attribution unresolved",
+      "sources": [
+        "SRC-833C85C5A4D4"
+      ]
+    }
+  ],
+  "adjudication": "Do not compress this into Saudi Arabia admitted bombing the airport to stop IRGC commanders. The defensible chain is Yemeni-government claimed strike + Saudi coalition relationship + later multisource Reuters allegation about IRGC passengers/cargo + Iranian/Houthi denial."
+}

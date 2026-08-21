@@ -347,12 +347,10 @@
       "claimant": "Iranian / Iran-aligned narrative variants and derivative social-media claims",
       "earliest_known_origin": null,
       "claim_origin_url": null,
-      "current_verdict": "OVERBROAD — CAUSATION NOT SUPPORTED",
+      "current_verdict": "FALSE — CAUSATION NOT SUPPORTED",
       "confidence": "HIGH",
-      "what_actually_happened": "Several frequently cited “withdrawals” were negotiated, formalized or already executing before the Feb. 28 Iran war. Iraq’s transition was jointly initiated in 2023 and formally scheduled by the U.S. and Iraqi governments on Sept. 27, 2024. Ain al-Asad was handed to Iraq Jan. 17, 2026. In Syria, al-Tanf and Shaddadi were handed over through U.S.-Syrian coordination and the Qasrak drawdown began before Feb. 28; U.S. officials called the theater reduction deliberate and conditions-based. Later Saudi-led arrangements did show greater regional burden-sharing and security diversification, but Mecca did not abrogate existing agreements and Saudi Arabia had signed a U.S.-Saudi Strategic Defense Agreement before the war. The Israel-Lebanon framework and follow-on Hezbollah verification talks were themselves U.S.-brokered/mediated. AP further reported in August that the wartime Erbil drawdown remained on the Sept. 30, 2026 endpoint under the 2024 Washington-Baghdad agreement; its exact late-July start day was not public.",
-      "evidence_supporting_claim": [
-        "Reuters analysis noted questions over U.S. reliability and a growing regional desire for locally driven security architecture during the war. Regional states have created additional defense mechanisms, which is real evidence of diversification and burden-sharing."
-      ],
+      "what_actually_happened": "Several frequently cited “withdrawals” were negotiated, formalized or already executing before the Feb. 28 Iran war. Iraq’s transition was jointly initiated in 2023 and formally scheduled by the U.S. and Iraqi governments on Sept. 27, 2024. Ain al-Asad was handed to Iraq Jan. 17, 2026. In Syria, al-Tanf and Shaddadi were handed over through U.S.-Syrian coordination and the Qasrak drawdown began before Feb. 28; U.S. officials called the theater reduction deliberate and conditions-based. Later Saudi-led arrangements did show greater regional burden-sharing and security diversification, but Mecca did not abrogate existing agreements and Saudi Arabia had signed a U.S.-Saudi Strategic Defense Agreement before the war. The Israel-Lebanon framework and follow-on Hezbollah verification talks were themselves U.S.-brokered/mediated. AP further reported in August that the wartime Erbil drawdown remained on the Sept. 30, 2026 endpoint under the 2024 Washington-Baghdad agreement; its exact late-July start day was not public. Later questions about U.S. reliability and interest in regional security architecture do not establish causation for drawdowns already in execution and did not alter their agreed timeline.",
+      "evidence_supporting_claim": [],
       "counterevidence": [
         "PRE-20230808-IRQ-001",
         "PRE-20240125-IRQ-001",
@@ -437,6 +435,10 @@
         {
           "date": "2026-08-20",
           "change": "Created to adjudicate Iran-caused-retreat / U.S.-abandonment narrative using agreement and drawdown chronology. Evidence of regional diversification is retained rather than hidden."
+        },
+        {
+          "date": "2026-08-21",
+          "change": "Verdict corrected to FALSE — CAUSATION NOT SUPPORTED. Questions about U.S. reliability and later regional diversification are not evidence that Iran caused drawdowns negotiated and executing before the war; the agreed drawdown timeline did not change."
         }
       ],
       "display_rule": "CASE_FILE_NOT_BINARY_SCORE; show subcases with agreement badges and causal dates",

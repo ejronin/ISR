@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "assessment": "The F-5-pilot story is best treated as a conflation of at least four distinct aviation events.",
+  "records": [
+    {
+      "id": "AV-001",
+      "date": "2026-03-01",
+      "aircraft": "F-5 (2) + F-4 (1)",
+      "event": "Israeli forces reported destroying two Iranian F-5s and one F-4 preparing to take off at Tabriz.",
+      "actor": "Israel",
+      "crew_status": "Not established here; aircraft-loss record does not prove Camp Buehring crews were aboard.",
+      "sources": [
+        "SRC-6843BB957E02"
+      ]
+    },
+    {
+      "id": "AV-002",
+      "date": "2026-03-01",
+      "aircraft": "F-5 (two aircraft claimed by Iran)",
+      "event": "Three Iranian pilots later claimed they flew a very-low-level strike on Camp Buehring, Kuwait; they claimed their raid contributed to Kuwaiti friendly-fire shootdowns of three U.S. F-15Es.",
+      "actor": "Iran",
+      "crew_status": "All three claimants appeared alive in June 17 state-TV interview. Specific causal claim for F-15 losses remains unproven; CENTCOM confirmed Kuwaiti friendly fire during active combat involving Iranian aircraft/missiles/drones.",
+      "sources": [
+        "SRC-3300E710B6AC"
+      ]
+    },
+    {
+      "id": "AV-003",
+      "date": "2026-03-02",
+      "aircraft": "Su-24 (2)",
+      "event": "Qatar announced its air force shot down two Iranian Su-24s entering/approaching Qatari territory.",
+      "actor": "Qatar",
+      "crew_status": "By Aug 15 Qatar said remains of one pilot had been recovered and denied detaining Iranian pilots; Iran disputed the account and sought a fact-finding process.",
+      "sources": [
+        "SRC-ED911664A654",
+        "SRC-5B933FF9C911",
+        "SRC-CF8587C77F8D"
+      ]
+    },
+    {
+      "id": "AV-004",
+      "date": "2026-03-05/06",
+      "aircraft": "F-5 and F-27/Fokker-family parked aircraft",
+      "event": "CENTCOM strike footage/OSINT geolocation identified destruction at Ahvaz/Qasem Soleimani International Airport, 31.33563, 48.76275.",
+      "actor": "United States",
+      "crew_status": "Ground aircraft; no pilot-loss inference. Operational status of every parked airframe is not established by the reviewed evidence.",
+      "sources": [
+        "SRC-FA7CDDD722C0",
+        "SRC-C9D560A79D68"
+      ]
+    }
+  ]
+}

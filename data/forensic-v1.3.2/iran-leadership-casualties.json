@@ -1,0 +1,206 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-20T22:30:00-04:00",
+  "scope": "Canonical itemized senior Iranian leadership casualties established in this targeted forensic pass. This is a minimum list, not a claim that no additional senior deaths occurred.",
+  "categories": [
+    "SENIOR_POLITICAL_STATE",
+    "SENIOR_MILITARY_SECURITY"
+  ],
+  "canonical_itemized_minimum": 11,
+  "records": [
+    {
+      "leadership_id": "LEAD-IRN-20260228-ALI-KHAMENEI",
+      "name": "Ali Khamenei",
+      "category": "SENIOR_POLITICAL_STATE",
+      "role_at_death": "Supreme Leader",
+      "death_date": "2026-02-28",
+      "date_precision": "DAY",
+      "death_status": "CONFIRMED",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Killed in U.S.-Israeli strike; Iranian state media later confirmed death.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260228-ALI-SHAMKHANI",
+      "name": "Ali Shamkhani",
+      "category": "SENIOR_POLITICAL_STATE",
+      "role_at_death": "Senior adviser to the Supreme Leader; security/nuclear policymaker",
+      "death_date": "2026-02-28",
+      "date_precision": "DAY",
+      "death_status": "CONFIRMED",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Killed in U.S.-Israeli strikes in Tehran.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260317-ALI-LARIJANI",
+      "name": "Ali Larijani",
+      "category": "SENIOR_POLITICAL_STATE",
+      "role_at_death": "Secretary, Supreme National Security Council",
+      "death_date": "2026-03-17",
+      "date_precision": "DAY",
+      "death_status": "CONFIRMED",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Iranian media/SNSC confirmed death after strike in Pardis.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260318-ESMAIL-KHATIB",
+      "name": "Esmail Khatib",
+      "category": "SENIOR_POLITICAL_STATE",
+      "role_at_death": "Intelligence Minister",
+      "death_date": "2026-03-18",
+      "date_precision": "DAY",
+      "death_status": "MOSTLY_CONFIRMED",
+      "analytic_likelihood": "VERY_LIKELY",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Reuters reports death in Israeli strike; senior cabinet/state-security casualty.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260228-MOHAMMAD-PAKPOUR",
+      "name": "Mohammad Pakpour",
+      "category": "SENIOR_MILITARY_SECURITY",
+      "role_at_death": "IRGC Commander-in-Chief",
+      "death_date": "2026-02-28",
+      "date_precision": "DAY",
+      "death_status": "CONFIRMED",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Iranian state media reported death in opening strikes.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260228-AZIZ-NASIRZADEH",
+      "name": "Aziz Nasirzadeh",
+      "category": "SENIOR_MILITARY_SECURITY",
+      "role_at_death": "Defense Minister; career Air Force officer",
+      "death_date": "2026-02-28",
+      "date_precision": "DAY",
+      "death_status": "MOSTLY_CONFIRMED",
+      "analytic_likelihood": "VERY_LIKELY",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Reuters reports death in opening leadership strike.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260228-ABDOLRAHIM-MOUSAVI",
+      "name": "Abdolrahim Mousavi",
+      "category": "SENIOR_MILITARY_SECURITY",
+      "role_at_death": "Chief of Staff, Iranian Armed Forces",
+      "death_date": "2026-02-28",
+      "date_precision": "DAY",
+      "death_status": "CONFIRMED",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Iranian media reported death during senior-leadership meeting strike.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260317-GHOLAMREZA-SOLEIMANI",
+      "name": "Gholamreza Soleimani",
+      "category": "SENIOR_MILITARY_SECURITY",
+      "role_at_death": "Basij Commander",
+      "death_date": "2026-03-17",
+      "date_precision": "DAY",
+      "death_status": "CONFIRMED",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Iranian state media reported death in U.S.-Israeli strikes.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260326-BEHNAM-REZAEI",
+      "name": "Behnam Rezaei",
+      "category": "SENIOR_MILITARY_SECURITY",
+      "role_at_death": "IRGC Navy Intelligence Chief",
+      "death_date": "2026-03-26",
+      "date_precision": "DAY",
+      "death_status": "MOSTLY_CONFIRMED",
+      "analytic_likelihood": "VERY_LIKELY",
+      "analytic_confidence": "MODERATE",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Israeli military reported death in Bandar Abbas; Reuters preserves the claim. Independent Iranian confirmation not located in this pass.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-20260326-ALIREZA-TANGSIRI",
+      "name": "Alireza Tangsiri",
+      "category": "SENIOR_MILITARY_SECURITY",
+      "role_at_death": "IRGC Navy Commander",
+      "death_date": "2026-03-26",
+      "date_precision": "DAY",
+      "death_status": "CONFIRMED",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Israeli/U.S. reporting was followed by Iranian confirmation that he died of wounds after the strike.",
+      "sources": [
+        "SRC-EC7108BA23BE",
+        "SRC-1393F5EA63DF",
+        "SRC-B4933A0EA8F4"
+      ],
+      "notes": ""
+    },
+    {
+      "leadership_id": "LEAD-IRN-202604-MAJID-KHADEMI",
+      "name": "Majid Khademi",
+      "category": "SENIOR_MILITARY_SECURITY",
+      "role_at_death": "IRGC Intelligence Chief",
+      "death_date": "2026-04",
+      "date_precision": "MONTH",
+      "death_status": "MOSTLY_CONFIRMED",
+      "analytic_likelihood": "VERY_LIKELY",
+      "analytic_confidence": "HIGH",
+      "attribution": "U.S./Israeli strike or strike effects as specified in cited reporting",
+      "confirmation_basis": "Reuters reports Iranian and Israeli statements confirming death in an Israeli airstrike in Tehran in April.",
+      "sources": [
+        "SRC-EC7108BA23BE"
+      ],
+      "notes": ""
+    }
+  ],
+  "legacy_aggregate_reconciliation": {
+    "status": "PENDING_BASELINE_RECONCILIATION",
+    "instruction": "Compare the baseline aggregate against these person-level records. Do not suppress an individually supported death because a legacy aggregate was not itemized."
+  },
+  "collection_requirement": "Continue person-level search from April 7 through Aug. 20 for additional senior political/state and military/security deaths; reconcile names, dates, roles and confirmation lineage before changing the minimum."
+}
