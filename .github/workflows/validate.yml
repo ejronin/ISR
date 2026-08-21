@@ -41,3 +41,8 @@ jobs:
           node tests/temporal-state.test.js
           node tests/security-rendering.test.js
           node tests/costing.test.js
+          node tests/forensic-v1.3.2.test.js
+      - name: Validate forensic v1.3.2 analytical package
+        env:
+          PYTHONUTF8: '1'
+        run: python data/forensic-v1.3.2/validate-addon.py

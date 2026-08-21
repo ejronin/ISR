@@ -16,6 +16,7 @@
     LEDGER=Object.fromEntries(ledgerFiles.map((file,index)=>[file.replace(/\.json$/,''),ledgerPayloads[index]]));
     window.ATLAS_DATA=DATA;
     window.ATLAS_LEDGER=LEDGER;
+    window.dispatchEvent(new CustomEvent('atlasdataready'));
   } catch (dataError) {
     console.warn('Structured atlas data could not be loaded. Embedded static evidence remains readable.', dataError);
     const mapEl = document.getElementById('map');
@@ -34,7 +35,9 @@ const label=Presentation.formatLabel;
 const escLabel=value=>esc(label(value));
 const srcLinks=Safe.sourceLinks;
 const sourceById=new Map((LEDGER.sources.sources||[]).map(source=>[source.source_id,source]));
+window.registerAtlasSources=function registerAtlasSources(sources){(sources||[]).forEach(source=>sourceById.set(source.source_id,source));};
 const eventById=new Map((LEDGER.events.events||[]).map(event=>[event.event_id,event]));
+window.registerAtlasEvents=function registerAtlasEvents(events){(events||[]).forEach(event=>eventById.set(event.event_id,event));};
 const mapLinkById=new Map((LEDGER['map-links'].links||[]).map(link=>[link.map_ref,link]));
 const canonicalFacilityById=new Map((LEDGER.facilities.facilities||[]).map(facility=>[facility.facility_id,facility]));
 function canonicalSourceLinks(refs){
@@ -48,7 +51,7 @@ function canonicalSourceLinks(refs){
   }).join(' ');
 }
 function evidenceBadge(value){const state=Presentation.evidenceState(value);return `<span class="evidence-badge evidence-${state}">${esc(Presentation.evidenceLabel(value))}</span>`;}
-function physicalBadge(value){const state=Presentation.physicalState(value);return `<span class="physical-badge physical-${state}">${esc(Presentation.physicalLabel(state))}</span>`;}
+function physicalBadge(value){const state=Presentation.physicalState(value);return `<span class="physical-badge physical-${state}">${esc(Presentation.physicalLabelForValue?.(value)||Presentation.physicalLabel(state))}</span>`;}
 function physicalColor(state){return ({lost:'#ef5961',degraded:'#f2b84b',operational:'#42c77a',neutral:'#7f8d9d'})[state]||'#7f8d9d';}
 function physicalComponent(text,labelText){const state=Presentation.physicalState(text);return `<li class="component-state component-${state}">${physicalBadge(text)}${labelText?`<b>${esc(labelText)}</b>`:''}<span>${escLabel(text)}</span></li>`;}
 function componentList(values,emptyText){const rows=(values||[]).filter(Boolean);return `<ul class="component-list">${rows.length?rows.map(value=>physicalComponent(value)).join(''):physicalComponent(emptyText||'Status unresolved.')}</ul>`;}
@@ -65,8 +68,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,att
  const iconAssets={facility:'assets/icons/facility.svg',strike:'assets/icons/strike.svg',claim:'assets/icons/claim.svg',historical:'assets/icons/historical.svg',agreement:'assets/icons/agreement.svg',current:'assets/icons/current.svg',imagery:'assets/icons/imagery.svg'};
  function icon(kind,color,shape='circle',evidence='supported'){const asset=iconAssets[kind]||iconAssets.current;return L.divIcon({className:`atlas-marker-host evidence-marker-${evidence}`,html:`<div class="pin ${shape}" style="--marker-color:${esc(color)}"><img src="${asset}" alt=""/></div>`,iconSize:[34,34],iconAnchor:[17,17],popupAnchor:[0,-15]})}
  function addMarker(group,id,lat,lon,kind,color,shape,popup,title,evidence='supported'){const markerLabel=title||id;const mk=L.marker([lat,lon],{icon:icon(kind,color,shape,evidence),title:markerLabel,alt:markerLabel,keyboard:true}).bindPopup(popup,{maxWidth:380});mk.addTo(group);allMarkers[id]=mk;return mk}
- function legacyFacilityPhysicalState(p){const assets=[...(p.critical_assets_reported||[]),...(p.noncritical_or_soft_assets_reported||[])];const states=assets.map(Presentation.physicalState);if(states.includes('lost'))return 'lost';if(states.includes('degraded'))return 'degraded';if(Presentation.physicalState(p.continuity||p.current_presence_status)==='operational')return 'operational';return 'neutral';}
- function canonicalFacilityPhysicalState(p){const states=[...(p.verified_physical_damage||[]),...(p.verified_functional_effect||[])].map(Presentation.physicalState);if(states.includes('lost'))return 'lost';if(states.includes('degraded'))return 'degraded';if((p.continued_operation_evidence||[]).some(value=>Presentation.physicalState(value)==='operational'))return 'operational';return 'neutral';}
+ function legacyFacilityPhysicalState(p){const assets=[...(p.critical_assets_reported||[]),...(p.noncritical_or_soft_assets_reported||[])];const states=assets.map(Presentation.physicalState);if(states.includes('lost')||states.includes('degraded'))return 'degraded';if(Presentation.physicalState(p.continuity||p.current_presence_status)==='operational')return 'operational';return 'neutral';}
+ function canonicalFacilityPhysicalState(p){return Presentation.facilityEntityState?.(p)||'neutral';}
  function facilityPopup(p){const assets=[...(p.critical_assets_reported||[]),...(p.noncritical_or_soft_assets_reported||[])];const evidence=p.verification_grade||p.damage_evidence_status;return `<div class="atlas-popup"><h3>${esc(p.name)}</h3><div class="popup-badges">${evidenceBadge(evidence)}</div><p><b>Purpose</b>${esc(p.purpose||p.role||'Purpose unresolved.')}</p><section><b>Component physical state</b>${componentList(assets,'No verified component list in the current ledger.')}</section><section><b>Functional effect</b>${componentList([p.effect||p.note||'Functional effect unresolved.'])}</section><section><b>Continuity</b>${componentList([p.continuity||p.current_presence_status||'Continuity unresolved.'])}</section><div class="sources">${srcLinks((p.source_urls||[]).map(u=>[sourceNameFromUrl(u),u]))}</div></div>`}
  function strikePopup(p){const evidence=p.verification||p.status||'SUPPORTED';return `<div class="atlas-popup"><h3>${esc(p.name)}</h3><div class="popup-badges">${evidenceBadge(evidence)}</div><p><b>Date</b>${esc(p.event_date||p.date||'Date unresolved.')}</p>${p.tally?`<p><b>Tally / effect</b>${esc(p.tally)}</p>`:''}<p><b>Target / effect</b>${esc(p.target_type||p.note||'')}</p>${p.network_relevance?`<p><b>Network relevance</b>${esc(p.network_relevance)}</p>`:''}${p.note&&p.target_type?`<p><b>Context</b>${esc(p.note)}</p>`:''}<div class="sources">${srcLinks(p.sources||(p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div></div>`}
  function claimPopup(p){return `<div class="atlas-popup"><h3>${esc(p.name)}</h3><div class="popup-badges">${evidenceBadge(p.verdict)}</div><p><b>Claim</b>${esc(p.claim)}</p><p><b>Finding</b>${esc(p.finding)}</p><div class="sources">${srcLinks(p.sources)}</div></div>`}
@@ -161,15 +164,15 @@ let q=L.layerGroup();groups['Geolinked claims']=q;DATA.claims.forEach(p=>addMark
 // Analysis navigation owns the map state; this compact control is an expert override.
 const viewLayers={snapshot:['Sites','Strike effects','Current events'],timeline:['Sites','Strike effects','Historical events'],facilities:['Sites'],strikes:['Strike effects'],imagery:['Sites','BDA imagery'],csis:['Strike effects'],losses:['Sites','Strike effects'],economy:[],arctic:['Trade / logistics routes'],claims:['Geolinked claims'],infowar:['Geolinked claims'],historical:['Historical events','Force posture','Agreements / alignment','Verification mechanisms'],sources:[],intro:[],history:[]};
 const viewCenters={snapshot:[[27.5,51.5],4],facilities:[[27.0,50.0],5],strikes:[[31.5,52.0],5],imagery:[[26.5,50.0],5],csis:[[31.5,52.0],5],losses:[[28.0,51.0],4],economy:[[25.5,51.0],4],claims:[[27.5,51.5],4],infowar:[[27.5,51.5],4],historical:[[29.0,48.0],4],sources:[[27.5,51.5],4],intro:[[27.5,51.5],4],history:[[27.5,51.5],4]};
-function refreshLayerButtons(){document.querySelectorAll('[data-layer-name]').forEach(button=>button.classList.toggle('on',map.hasLayer(groups[button.dataset.layerName])));}
-window.configureAtlasMap=function(viewId){map.closePopup();Object.values(groups).forEach(layer=>{if(map.hasLayer(layer))map.removeLayer(layer);});(viewLayers[viewId]||viewLayers.snapshot).forEach(name=>groups[name]?.addTo(map));if(viewId!=='timeline')document.querySelectorAll('.atlas-marker-host.timeline-member,.atlas-marker-host.timeline-hidden,.atlas-marker-host.selected-marker').forEach(el=>el.classList.remove('timeline-member','timeline-hidden','selected-marker'));refreshLayerButtons();if(viewId==='arctic'&&ar.getBounds().isValid())map.fitBounds(ar.getBounds(),{padding:[24,24],maxZoom:3});else if(viewId!=='timeline'&&viewCenters[viewId])map.setView(viewCenters[viewId][0],viewCenters[viewId][1]);};
+function refreshLayerButtons(){let active=0;document.querySelectorAll('[data-layer-name]').forEach(button=>{const on=map.hasLayer(groups[button.dataset.layerName]);button.classList.toggle('on',on);button.setAttribute('aria-pressed',String(on));if(on)active+=1;});const summary=document.querySelector('.layer-control summary');if(summary)summary.textContent=`Map layers · ${active} active`;}
+window.configureAtlasMap=function(viewId){map.closePopup();Object.values(groups).forEach(layer=>{if(map.hasLayer(layer))map.removeLayer(layer);});const active=new Set(viewLayers[viewId]||viewLayers.snapshot);const overrides=window.AtlasState?.get?.().manualLayerOverrides||{};Object.entries(overrides).forEach(([name,on])=>on?active.add(name):active.delete(name));active.forEach(name=>groups[name]?.addTo(map));if(viewId!=='timeline')document.querySelectorAll('.atlas-marker-host.timeline-member,.atlas-marker-host.timeline-hidden,.atlas-marker-host.selected-marker').forEach(el=>el.classList.remove('timeline-member','timeline-hidden','selected-marker'));refreshLayerButtons();if(viewId==='arctic'&&ar.getBounds().isValid())map.fitBounds(ar.getBounds(),{padding:[24,24],maxZoom:3});else if(viewId!=='timeline'&&viewCenters[viewId])map.setView(viewCenters[viewId][0],viewCenters[viewId][1]);};
 const tb=document.getElementById('toolbar');
-if(tb){const sections=[['Operations',[['Sites','Sites'],['Strike effects','Strike effects'],['Current events','Current events']]],['Evidence',[['BDA imagery','BDA imagery'],['Historical events','Historical events']]],['Posture',[['Force posture','Force posture'],['Agreements / alignment','Agreements / alignment'],['Verification mechanisms','Verification mechanisms']]],['Routes',[['Trade / logistics routes','Trade / logistics routes — SCHEMATIC']]],['Claims',[['Geolinked claims','Geolinked claims']]]];const details=document.createElement('details');details.className='layer-control';const summary=document.createElement('summary');summary.textContent='Map layers';details.appendChild(summary);const body=document.createElement('div');body.className='layer-control-body';sections.forEach(([heading,rows])=>{const section=document.createElement('section');section.className='layer-control-group';const title=document.createElement('h3');title.textContent=heading;section.appendChild(title);rows.forEach(([name,display])=>{const layer=groups[name];const button=document.createElement('button');button.type='button';button.className='layerbtn';button.dataset.layerName=name;button.textContent=display;button.addEventListener('click',()=>{map.hasLayer(layer)?map.removeLayer(layer):layer.addTo(map);refreshLayerButtons();});section.appendChild(button);});body.appendChild(section);});details.appendChild(body);tb.appendChild(details);}
+if(tb){const sections=[['Operations',[['Sites','Sites'],['Strike effects','Strike effects'],['Current events','Current events']]],['Evidence',[['BDA imagery','BDA imagery'],['Historical events','Historical events']]],['Posture',[['Force posture','Force posture'],['Agreements / alignment','Agreements / alignment'],['Verification mechanisms','Verification mechanisms']]],['Routes',[['Trade / logistics routes','Trade / logistics routes — SCHEMATIC']]],['Claims',[['Geolinked claims','Geolinked claims']]]];const details=document.createElement('details');details.className='layer-control';const summary=document.createElement('summary');summary.textContent='Map layers';details.appendChild(summary);const body=document.createElement('div');body.className='layer-control-body';sections.forEach(([heading,rows])=>{const section=document.createElement('section');section.className='layer-control-group';const title=document.createElement('h3');title.textContent=heading;section.appendChild(title);rows.forEach(([name,display])=>{const layer=groups[name];const button=document.createElement('button');button.type='button';button.className='layerbtn';button.dataset.layerName=name;button.textContent=display;button.addEventListener('click',()=>{const on=!map.hasLayer(layer);on?layer.addTo(map):map.removeLayer(layer);const state=window.AtlasState?.get?.();if(state)window.AtlasState.set({manualLayerOverrides:{...state.manualLayerOverrides,[name]:on}},{source:'layer-override'});refreshLayerButtons();});section.appendChild(button);});body.appendChild(section);});const reset=document.createElement('button');reset.type='button';reset.className='layer-reset';reset.textContent='Reset to analytical view';reset.addEventListener('click',()=>{const state=window.AtlasState?.get?.();if(state)window.AtlasState.set({manualLayerOverrides:{}},{source:'layer-reset'});window.configureAtlasMap(window.atlasActiveView||'snapshot');});body.appendChild(reset);details.appendChild(body);tb.appendChild(details);}
 window.configureAtlasMap('snapshot');
 
 let selectedMarker=null;
 function selectMarker(marker){if(selectedMarker?.getElement())selectedMarker.getElement().classList.remove('selected-marker');selectedMarker=marker;if(marker?.getElement())marker.getElement().classList.add('selected-marker');}
-window.pan=function(id){const m=allMarkers[id];if(m && map){Object.values(groups).forEach(layer=>{if(layer.hasLayer&&layer.hasLayer(m)&&!map.hasLayer(layer))layer.addTo(map);});map.setView(m.getLatLng(),Math.max(map.getZoom(),6));m.openPopup();selectMarker(m);refreshLayerButtons();return true;}return false;};
+window.pan=function(id){const m=allMarkers[id];if(m && map){Object.values(groups).forEach(layer=>{if(layer.hasLayer&&layer.hasLayer(m)&&!map.hasLayer(layer))layer.addTo(map);});if(!map.getBounds().pad(-.15).contains(m.getLatLng()))map.panTo(m.getLatLng());if(map.getZoom()<6)map.setZoom(6);m.openPopup();selectMarker(m);refreshLayerButtons();return true;}return false;};
 }catch(mapError){
   console.warn('Map initialization failed; evidence panels remain available.', mapError);
   const mapEl=document.getElementById('map');
@@ -282,16 +285,19 @@ function ensureTimelineControls(){
  controls.className='ledger-controls';
  controls.innerHTML=`<label>Temporal mode<select id="timelineMode"><option value="as-of">AS OF</option><option value="known-by">KNOWN BY</option></select></label><label>Cutoff<input id="timelineCutoff" type="date" min="2020-11-18" max="2026-08-20" value="2026-08-20"></label><label>Zoom<select id="timelineGranularity"><option value="war">War</option><option value="month">Month</option><option value="week">Week</option><option value="day">Day</option><option value="hour">Hour — source-supported only</option></select></label><label>Context<select id="timelineContext"><option value="all">All events</option><option value="loss">Loss events</option><option value="strike">Strike events</option><option value="facility">Facility / BDA events</option><option value="posture">Force-posture events</option></select></label><output id="timelineCount" aria-live="polite"></output>`;
  search.parentNode.insertBefore(controls,search);
- controls.querySelectorAll('select,input').forEach(el=>el.addEventListener('change',()=>renderTimeline(search.value)));
+ const state=window.AtlasState?.get?.();
+ if(state){document.getElementById('timelineMode').value=state.temporalMode;document.getElementById('timelineCutoff').value=state.timeCutoff;document.getElementById('timelineGranularity').value=state.temporalGranularity;document.getElementById('timelineContext').value=state.timelineContext;}
+ controls.querySelectorAll('select,input').forEach(control=>control.addEventListener('change',()=>{window.AtlasState?.set?.({temporalMode:document.getElementById('timelineMode').value,timeCutoff:document.getElementById('timelineCutoff').value,temporalGranularity:document.getElementById('timelineGranularity').value,timelineContext:document.getElementById('timelineContext').value},{source:'temporal-controls'});renderTimeline(search.value);}));
 }
 const timelineRecordById=new Map((LEDGER.timeline.records||[]).map(row=>[row.event_id,row]));
+window.registerAtlasEvents=function registerAtlasEvents(events){(events||[]).forEach(event=>{eventById.set(event.event_id,event);if(!timelineRecordById.has(event.event_id)){const day=String(event.event_date||'').slice(0,10);const date=new Date(`${day}T00:00:00Z`);const first=new Date(Date.UTC(date.getUTCFullYear(),0,1));const isoWeek=Math.ceil((((date-first)/86400000)+first.getUTCDay()+1)/7);timelineRecordById.set(event.event_id,{event_id:event.event_id,day,month:day.slice(0,7),iso_week:`${date.getUTCFullYear()}-W${String(isoWeek).padStart(2,'0')}`,hour_bucket:null});}});};
 function ledgerTimeline(filter=''){
  const mode=document.getElementById('timelineMode')?.value||'as-of';
  const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-20';
  const context=document.getElementById('timelineContext')?.value||'all';
  const granularity=document.getElementById('timelineGranularity')?.value||'war';
  const needle=filter.toLowerCase().trim();
- let rows=(LEDGER.events.events||[]).filter(event=>{
+ let rows=(window.ATLAS_TEMPORAL_INDEX||LEDGER.events.events||[]).filter(event=>{
    const visible=mode==='known-by'?Temporal.knownByState(event,cutoff,sourceById).visible:Temporal.asOfVisible(event,cutoff);
    if(!visible)return false;
    if(!Temporal.contextMatches(event,context))return false;
@@ -318,7 +324,7 @@ function syncTimelineMap(events){
  markers.forEach(marker=>marker.getElement()?.classList.remove('timeline-hidden'));
  markers.forEach(marker=>marker.getElement()?.classList.add('timeline-member'));
  if(markers.length===1){selectMarker(markers[0]);map.setView(markers[0].getLatLng(),Math.max(map.getZoom(),6));if(events.length===1)markers[0].openPopup();}
- if(markers.length>1){const bounds=L.latLngBounds(markers.map(marker=>marker.getLatLng()));if(bounds.isValid())map.fitBounds(bounds,{padding:[48,48],maxZoom:7});}
+ if(markers.length>1){const bounds=L.latLngBounds(markers.map(marker=>marker.getLatLng()));if(bounds.isValid()&&!map.getBounds().contains(bounds))map.fitBounds(bounds,{padding:[48,48],maxZoom:7});}
 }
 window.refreshAtlasTimelineMap=function(){syncTimelineMap(ledgerTimeline(document.getElementById('timelineSearch')?.value||''));};
 function railBucket(event,granularity){const row=timelineRecordById.get(event.event_id)||{};if(granularity==='war')return row.month||event.event_date.slice(0,7);if(granularity==='month')return row.iso_week||row.day;if(granularity==='week')return row.day;if(granularity==='hour')return row.hour_bucket||'TIME UNRESOLVED';return event.event_id;}
@@ -330,6 +336,7 @@ function renderTimelineRail(items){
  rail.querySelectorAll('.timeline-tick').forEach(button=>button.addEventListener('click',()=>{
    rail.querySelectorAll('.timeline-tick').forEach(tick=>tick.classList.remove('selected'));button.classList.add('selected');
    const ids=button.dataset.eventIds.split(',');const selected=ids.map(id=>eventById.get(id)).filter(Boolean);
+   window.AtlasState?.set?.({selectedRecord:{type:ids.length>1?'event-cluster':'event',id:ids.join('+')}},{source:'timeline-selection'});
    document.querySelectorAll('.ledger-event').forEach(card=>card.classList.toggle('temporal-dimmed',!ids.includes(card.dataset.eventId)));
    syncTimelineMap(selected);if(ids.length===1)document.getElementById(`ledger-event-${ids[0]}`)?.scrollIntoView({behavior:'smooth',block:'nearest'});
  }));
@@ -361,6 +368,7 @@ function renderTimeline(filter=''){
  Presentation.formatTextNodes(document.getElementById('timelineList'));
  renderTimelineRail(items);syncTimelineMap(items);
 }
+window.renderAtlasTimeline=renderTimeline;
 window.panLedgerEvent=function(id){
  const event=eventById.get(id);if(!event)return false;
  const ref=(event.map_refs||[]).find(x=>allMarkers[x])||(event.facility_refs||[]).find(x=>allMarkers[x]);
