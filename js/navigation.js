@@ -147,3 +147,4 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wireShell); else wireShell();
 }());
+(()=>{const s=document.createElement('script');s.src='./js/casualty-dashboard-hotfix.js?v=20260821a';s.defer=true;document.head.appendChild(s);}());
