@@ -311,7 +311,7 @@ function syncTimelineMap(events){
  if(!map)return;
  document.querySelectorAll('.atlas-marker-host').forEach(el=>el.classList.remove('timeline-member','timeline-hidden'));
  if(window.atlasActiveView!=='timeline')return;
- window.configureAtlasMap('timeline');
+ // Navigation establishes the analytical layer set once; timeline updates preserve expert overrides.
  if(document.getElementById('timelineContext')?.value==='posture')groups['Force posture']?.addTo(map);
  const markers=[...new Set(events.flatMap(event=>eventMapRefs(event)).map(ref=>allMarkers[ref]).filter(Boolean))];
  document.querySelectorAll('.atlas-marker-host').forEach(el=>el.classList.add('timeline-hidden'));

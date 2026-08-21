@@ -57,6 +57,7 @@ def main() -> int:
     require("timeline-rail" in scripts and "timelineGranularity" in scripts, "temporal controller missing", errors)
     require("timelineContext" in scripts and "contextMatches" in scripts, "timeline context filter missing", errors)
     require("configureAtlasMap" in scripts and "viewLayers" in scripts, "analysis/map state synchronization missing", errors)
+    require("timeline updates preserve expert overrides" in scripts, "timeline sync must preserve manual expert layer overrides", errors)
     require("SCHEMATIC" in scripts and "audited" in scripts, "route-geometry audit mapping/label missing", errors)
     require("accounting-matrix" in scripts and "CALCULATED RANGE" in scripts, "symmetric calculated accounting missing", errors)
     require((ROOT / "js/presentation.js").is_file(), "central public-label formatter missing", errors)
