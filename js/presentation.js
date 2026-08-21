@@ -6,9 +6,11 @@
   'use strict';
 
   const EXACT_LABELS = {
-    REPORTED_NOT_INDEPENDENTLY_VERIFIED: 'REPORTED — NOT INDEPENDENTLY VERIFIED',
-    SOURCE_REPORTED_NOT_INDEPENDENTLY_VERIFIED: 'SOURCE-REPORTED — NOT INDEPENDENTLY VERIFIED',
-    IRANIAN_STATEMENT_NOT_INDEPENDENTLY_VERIFIED: 'IRANIAN STATEMENT — NOT INDEPENDENTLY VERIFIED',
+    UNVERIFIED: 'UNCONTESTED',
+    REPORTED_NOT_INDEPENDENTLY_VERIFIED: 'UNCONTESTED',
+    SOURCE_REPORTED_NOT_INDEPENDENTLY_VERIFIED: 'UNCONTESTED',
+    IRANIAN_STATEMENT_NOT_INDEPENDENTLY_VERIFIED: 'UNCONTESTED',
+    ACTOR_CLAIM: 'UNCONTESTED CLAIM',
     CONFIRMED_SINKING_CASUALTY_TOTAL_DISPUTED: 'SINKING CONFIRMED — CASUALTY TOTAL CONTESTED',
     NOT_ACCEPTED_AS_CANONICAL_TOTAL_YET: 'NOT ACCEPTED AS A CANONICAL TOTAL',
     NO_REPORTED_DAMAGE_FOUND_IN_REVIEWED_SOURCE_SET: 'NO REPORTED DAMAGE FOUND IN THE REVIEWED SOURCE SET',
@@ -31,6 +33,8 @@
     if (!text) return '';
     return text
       .replace(/\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b/g, formatMachineToken)
+      .replace(/\bUNVERIFIED\b/g, 'UNCONTESTED')
+      .replace(/\bUnverified\b/g, 'Uncontested')
       .replace(/\s*;\s*/g, ' • ')
       .replace(/\s{2,}/g, ' ')
       .trim();
@@ -39,7 +43,8 @@
   function evidenceState(value) {
     const text = String(value || '').toUpperCase();
     if (/CONTESTED|DISPUTED|CONTRADICT|MIXED/.test(text)) return 'contested';
-    if (/UNVERIFIED|NOT_INDEPENDENT|ACTOR_CLAIM|CLAIMED|INSUFFICIENT/.test(text)) return 'unverified';
+    if (/UNVERIFIED|NOT_INDEPENDENT|ACTOR_CLAIM|CLAIMED/.test(text)) return 'unverified';
+    if (/INSUFFICIENT/.test(text)) return 'neutral';
     if (/VERIFIED|CONFIRMED|HIGH|SATELLITE|INDEPENDENT/.test(text)) return 'verified';
     if (/SUPPORTED|PROBABLE|LIKELY|MEDIUM|CORROBORAT/.test(text)) return 'supported';
     if (/REPORTED|OFFICIAL|AUTHORITY|SOURCE/.test(text)) return 'reported';
@@ -48,6 +53,7 @@
 
   function evidenceLabel(value) {
     const state = evidenceState(value);
+    if (state === 'unverified') return 'UNCONTESTED';
     return state === 'neutral' ? 'UNRESOLVED' : state.toUpperCase();
   }
 
@@ -101,12 +107,32 @@
     while ((node = walker.nextNode())) {
       const parent = node.parentElement;
       if (!parent || /^(SCRIPT|STYLE|TEXTAREA|CODE|PRE)$/.test(parent.tagName)) continue;
-      if (!/\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b/.test(node.nodeValue || '')) continue;
-      const next = formatLabel(node.nodeValue);
-      if (next !== node.nodeValue) { node.nodeValue = next; changed += 1; }
+      const original = node.nodeValue || '';
+      let next = original;
+      if (/\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b/.test(next)) next = formatLabel(next);
+      next = next.replace(/\bUNVERIFIED\b/g, 'UNCONTESTED').replace(/\bUnverified\b/g, 'Uncontested');
+      if (next !== original) { node.nodeValue = next; changed += 1; }
     }
     return changed;
   }
 
   return { formatLabel, evidenceState, evidenceLabel, physicalState, physicalLabel, physicalLabelForValue, facilityEntityState, formatTextNodes };
 }));
+
+/* v1.3.3 presentation/bootstrap correction.
+   Machine evidence records are untouched. Public generic UNVERIFIED presentation becomes
+   UNCONTESTED unless the underlying record is explicitly contested/disputed/contradicted. */
+(function loadCasualtyDashboardCorrection(root) {
+  if (!root || root.__ISR_V133_LOADER__) return;
+  root.__ISR_V133_LOADER__ = true;
+  const boot = () => {
+    if (document.querySelector('script[data-isr-v133-hotfix]')) return;
+    const script = document.createElement('script');
+    script.src = './js/casualty-dashboard-hotfix.js?v=20260821c';
+    script.defer = true;
+    script.dataset.isrV133Hotfix = 'true';
+    document.head.appendChild(script);
+  };
+  if (document.readyState === 'complete') boot();
+  else root.addEventListener('load', boot, { once: true });
+}(typeof window !== 'undefined' ? window : null));
