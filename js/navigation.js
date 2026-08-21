@@ -41,6 +41,7 @@
     }
     if (typeof window.configureAtlasMap === 'function') window.configureAtlasMap(id);
     if (id === 'timeline' && typeof window.refreshAtlasTimelineMap === 'function') window.refreshAtlasTimelineMap();
+    window.ISRRebuild133?.syncWorkspace?.();
     try { if (window.atlasMap) window.setTimeout(() => window.atlasMap.invalidateSize(), 40); } catch (error) { /* optional map */ }
     return true;
   }
@@ -147,4 +148,14 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wireShell); else wireShell();
 }());
-(()=>{const s=document.createElement('script');s.src='./js/casualty-dashboard-hotfix.js?v=20260821a';s.defer=true;document.head.appendChild(s);}());
+
+/* v1.3.3 integrated recovery extension. Single loader only; the former hotfix observer is retired. */
+(function loadISRRebuild133() {
+  if (window.__ISR_REBUILD_LOADER_133__) return;
+  window.__ISR_REBUILD_LOADER_133__ = true;
+  const script = document.createElement('script');
+  script.src = './js/rebuild-v1.3.3.js?v=20260821-rebuild4';
+  script.async = false;
+  script.dataset.isrRebuild133 = 'true';
+  document.head.appendChild(script);
+}());

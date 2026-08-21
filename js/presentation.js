@@ -6,6 +6,7 @@
   'use strict';
 
   const EXACT_LABELS = {
+    UNCONTESTED: 'UNCONTESTED',
     UNVERIFIED: 'UNCONTESTED',
     REPORTED_NOT_INDEPENDENTLY_VERIFIED: 'UNCONTESTED',
     SOURCE_REPORTED_NOT_INDEPENDENTLY_VERIFIED: 'UNCONTESTED',
@@ -33,6 +34,8 @@
     if (!text) return '';
     return text
       .replace(/\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b/g, formatMachineToken)
+      .replace(/\b(?:SOURCE\s+)?REPORTED\s+NOT\s+INDEPENDENTLY\s+VERIFIED\b/gi, 'UNCONTESTED')
+      .replace(/\bIRANIAN\s+STATEMENT\s+NOT\s+INDEPENDENTLY\s+VERIFIED\b/gi, 'UNCONTESTED')
       .replace(/\bUNVERIFIED\b/g, 'UNCONTESTED')
       .replace(/\bUnverified\b/g, 'Uncontested')
       .replace(/\s*;\s*/g, ' • ')
@@ -42,7 +45,8 @@
 
   function evidenceState(value) {
     const text = String(value || '').toUpperCase();
-    if (/CONTESTED|DISPUTED|CONTRADICT|MIXED/.test(text)) return 'contested';
+    if (/\bUNCONTESTED\b/.test(text)) return 'unverified';
+    if (/(?:^|\b)(?:CONTESTED|DISPUTED|CONTRADICTED?|MIXED)(?:\b|$)/.test(text)) return 'contested';
     if (/UNVERIFIED|NOT_INDEPENDENT|ACTOR_CLAIM|CLAIMED/.test(text)) return 'unverified';
     if (/INSUFFICIENT/.test(text)) return 'neutral';
     if (/VERIFIED|CONFIRMED|HIGH|SATELLITE|INDEPENDENT/.test(text)) return 'verified';
@@ -110,7 +114,11 @@
       const original = node.nodeValue || '';
       let next = original;
       if (/\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b/.test(next)) next = formatLabel(next);
-      next = next.replace(/\bUNVERIFIED\b/g, 'UNCONTESTED').replace(/\bUnverified\b/g, 'Uncontested');
+      next = next
+        .replace(/\b(?:Source\s+)?Reported\s+Not\s+Independently\s+Verified\b/gi, 'UNCONTESTED')
+        .replace(/\bIranian\s+Statement\s+Not\s+Independently\s+Verified\b/gi, 'UNCONTESTED')
+        .replace(/\bUNVERIFIED\b/g, 'UNCONTESTED')
+        .replace(/\bUnverified\b/g, 'Uncontested');
       if (next !== original) { node.nodeValue = next; changed += 1; }
     }
     return changed;
@@ -118,21 +126,3 @@
 
   return { formatLabel, evidenceState, evidenceLabel, physicalState, physicalLabel, physicalLabelForValue, facilityEntityState, formatTextNodes };
 }));
-
-/* v1.3.3 presentation/bootstrap correction.
-   Machine evidence records are untouched. Public generic UNVERIFIED presentation becomes
-   UNCONTESTED unless the underlying record is explicitly contested/disputed/contradicted. */
-(function loadCasualtyDashboardCorrection(root) {
-  if (!root || root.__ISR_V133_LOADER__) return;
-  root.__ISR_V133_LOADER__ = true;
-  const boot = () => {
-    if (document.querySelector('script[data-isr-v133-hotfix]')) return;
-    const script = document.createElement('script');
-    script.src = './js/casualty-dashboard-hotfix.js?v=20260821c';
-    script.defer = true;
-    script.dataset.isrV133Hotfix = 'true';
-    document.head.appendChild(script);
-  };
-  if (document.readyState === 'complete') boot();
-  else root.addEventListener('load', boot, { once: true });
-}(typeof window !== 'undefined' ? window : null));
