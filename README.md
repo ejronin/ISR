@@ -67,6 +67,7 @@ python scripts/validate.py
 python scripts/validate_integration.py
 python scripts/validate_ux.py
 node tests/temporal-state.test.js
+node tests/presentation.test.js
 node tests/security-rendering.test.js
 node tests/costing.test.js
 ```

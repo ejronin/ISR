@@ -22,5 +22,10 @@ cases.push(() => assert.equal(Object.hasOwn(temporal.knownByProjection(event, '2
 cases.push(() => assert.equal(temporal.currentAssessmentLabel('2026-08-20T15:59:00-04:00'), 'CURRENT ASSESSMENT — reviewed through 2026-08-20T15:59:00-04:00', '6 AS OF current adjudication: labeled'));
 cases.push(() => assert.equal(temporal.hourBucket({ day: '2026-03-01', hour_bucket: null }), null, '7 date-only record: no fabricated hour'));
 cases.push(() => assert.equal(temporal.supportsHour([{ hour_bucket: null }, { hour_bucket: '' }]), false, '8 unsupported hour window: disabled/empty'));
+cases.push(() => assert.equal(temporal.contextMatches({ event_type: 'FACILITY_DAMAGE', facility_refs: ['FAC-1'] }, 'facility'), true, '9 facility context: canonical facility event included'));
+cases.push(() => assert.equal(temporal.contextMatches({ event_type: 'FORCE_POSTURE', record_class: 'WARTIME_EVENT' }, 'posture'), true, '10 posture context: posture event included'));
+cases.push(() => assert.equal(temporal.contextMatches({ event_type: 'DIPLOMACY', summary: 'No loss event' }, 'strike'), false, '11 strike context: unrelated diplomacy excluded'));
+cases.push(() => assert.equal(temporal.contextMatches({ event_type: 'C2_RESILIENCE', record_class: 'PRE-WAR CONTEXT', later_outcome: 'CAOC was struck' }, 'loss'), false, '12 loss context: later-outcome keyword does not leak a pre-war record'));
+cases.push(() => assert.equal(temporal.contextMatches({ event_type: 'FACILITY_DAMAGE', record_class: 'WARTIME_EVENT', verified_effect: 'Facility damaged' }, 'loss'), true, '13 loss context: direct facility-damage event included'));
 cases.forEach(run => run());
-console.log('temporal-state: 8 required deterministic cases passed');
+console.log('temporal-state: 13 deterministic temporal and context-filter cases passed');

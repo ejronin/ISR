@@ -34,10 +34,10 @@
       button.setAttribute('aria-selected', String(selected));
       button.tabIndex = selected ? 0 : -1;
     });
-    const app = document.getElementById('app');
-    if (app) app.classList.toggle('loss-mode', id === 'losses');
+    window.atlasActiveView = id;
     if (typeof window.configureAtlasMap === 'function') window.configureAtlasMap(id);
-    try { if (id !== 'losses' && window.atlasMap) window.setTimeout(() => window.atlasMap.invalidateSize(), 40); } catch (error) { /* optional map */ }
+    if (id === 'timeline' && typeof window.refreshAtlasTimelineMap === 'function') window.refreshAtlasTimelineMap();
+    try { if (window.atlasMap) window.setTimeout(() => window.atlasMap.invalidateSize(), 40); } catch (error) { /* optional map */ }
     return true;
   }
 

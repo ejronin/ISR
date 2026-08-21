@@ -9,3 +9,13 @@ Leaflet 1.9.4 is vendored under `vendor/leaflet/` so the atlas does not execute 
 - License: BSD-2-Clause
 
 OpenStreetMap raster tiles are still requested at runtime as map imagery and carry the required on-map attribution. They are not an executable dependency.
+
+## Lucide eye icon
+
+The locally vendored BDA imagery symbol at `assets/icons/imagery.svg` is the Lucide `eye` icon at commit `33a44aa8b0b43d9b0ed14eb08860a1b5550a1573`.
+
+- Project: https://lucide.dev/
+- Source: https://github.com/lucide-icons/lucide/blob/33a44aa8b0b43d9b0ed14eb08860a1b5550a1573/icons/eye.svg
+- License: ISC
+
+Copyright (c) 2026 Lucide Icons and Contributors. Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is granted, provided that the copyright notice and permission notice appear in all copies. The software is provided “as is” without warranty.
