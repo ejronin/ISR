@@ -1,0 +1,190 @@
+{
+  "version": "1.3.3-asset-display-1",
+  "as_of": "2026-08-21",
+  "doctrine": "Headline counts show the exact proposition supported: lost/damaged, neutralized, targeted, or claimed are not interchangeable. UNCONTESTED means not materially disputed or contradicted in the reviewed record; it does not mean independently verified.",
+  "iran": {
+    "headline_categories": [
+      {
+        "id": "aircraft",
+        "label": "Aircraft",
+        "headline": "23+",
+        "subheadline": "evidence-supported floor · 24 central modeled",
+        "public_status": "SUPPORTED",
+        "scope": "standing aircraft lost/destroyed in accepted v1.3.2 model",
+        "components": [
+          [
+            "F-14",
+            2
+          ],
+          [
+            "F-4",
+            1
+          ],
+          [
+            "F-5",
+            2
+          ],
+          [
+            "F-7",
+            10
+          ],
+          [
+            "Su-24",
+            2
+          ],
+          [
+            "Su-22",
+            2
+          ],
+          [
+            "Yak-130",
+            1
+          ],
+          [
+            "Il-76",
+            1
+          ],
+          [
+            "C-130",
+            2
+          ]
+        ],
+        "note": "The central model adds a probable third F-14; the headline keeps the lower observed/evidence-supported floor visible first."
+      },
+      {
+        "id": "launchers",
+        "label": "Missile launchers",
+        "headline": "335+",
+        "subheadline": "neutralized reported",
+        "public_status": "UNCONTESTED",
+        "scope": "neutralized; not automatically equivalent to destroyed",
+        "source_ids": [
+          "SRC-08F854FB61B7"
+        ],
+        "note": "Reuters reported Israeli officials saying more than 335 launchers were neutralized. The reviewed Iranian record does not materially dispute this count."
+      },
+      {
+        "id": "leaders",
+        "label": "Senior leaders",
+        "headline": "11",
+        "subheadline": "itemized political/state + military/security",
+        "public_status": "SUPPORTED",
+        "scope": "canonical itemized minimum",
+        "dynamic": "leadership"
+      },
+      {
+        "id": "submarines",
+        "label": "Submarines",
+        "headline": "12",
+        "subheadline": "accepted naval-loss floor",
+        "public_status": "SUPPORTED",
+        "scope": "standing naval hull losses",
+        "components": [
+          [
+            "Kilo-class submarines",
+            1
+          ],
+          [
+            "Other submarines",
+            11
+          ]
+        ]
+      },
+      {
+        "id": "surface",
+        "label": "Major surface combatants",
+        "headline": "11",
+        "subheadline": "5 frigates + 6 corvettes",
+        "public_status": "SUPPORTED",
+        "scope": "standing naval hull losses",
+        "components": [
+          [
+            "Frigates",
+            5
+          ],
+          [
+            "Corvettes",
+            6
+          ]
+        ]
+      },
+      {
+        "id": "fac",
+        "label": "Fast attack craft",
+        "headline": "3",
+        "subheadline": "accepted naval-loss floor",
+        "public_status": "SUPPORTED",
+        "scope": "standing naval hull losses",
+        "components": [
+          [
+            "Fast attack craft",
+            3
+          ]
+        ]
+      },
+      {
+        "id": "afsb",
+        "label": "AFSB / power-projection hulls",
+        "headline": "2",
+        "subheadline": "accepted naval-loss floor",
+        "public_status": "SUPPORTED",
+        "scope": "afloat staging / support hulls",
+        "components": [
+          [
+            "Power-projection / AFSB hulls",
+            2
+          ]
+        ]
+      },
+      {
+        "id": "smallcraft",
+        "label": "Mine-laying small craft",
+        "headline": "30+",
+        "subheadline": "evidence-supported floor",
+        "public_status": "SUPPORTED",
+        "scope": "small craft; not major surface combatants",
+        "components": [
+          [
+            "Mine-laying small craft",
+            30
+          ]
+        ]
+      },
+      {
+        "id": "missile_inventory",
+        "label": "Missile inventory lost / damaged",
+        "headline": "833 / 1,417 / 3,000 eq.",
+        "subheadline": "low / central / upper material-loss scenarios",
+        "public_status": "SUPPORTED MODEL",
+        "scope": "standing inventory before use; separate from missiles intentionally launched",
+        "source_ids": [
+          "SRC-08F854FB61B7"
+        ],
+        "components": [
+          [
+            "Low: certainly destroyed floor",
+            833
+          ],
+          [
+            "Central: certainly destroyed modeled",
+            1417
+          ],
+          [
+            "Upper: replacement-equivalent physical loss/damage",
+            3000
+          ]
+        ],
+        "note": "Upper case includes 2,000 certainly destroyed plus 1,000 replacement-equivalent physical damage from the ambiguous second third. Inaccessible-only inventory is excluded from material-loss dollars."
+      }
+    ]
+  },
+  "specific_ledger_policy": {
+    "source": "data/integration-v1.2/material-losses.json",
+    "show_both_sides": true,
+    "include_claim_rows": true,
+    "labels": {
+      "TARGETED; DESTRUCTION_NOT_ESTABLISHED": "UNCONTESTED TARGET COUNT · DESTRUCTION UNRESOLVED",
+      "OFFICIAL_US_CLAIM_NOT_RECONCILED": "UNCONTESTED U.S. CLAIM · LOSS COUNT NOT RECONCILED"
+    }
+  }
+}
