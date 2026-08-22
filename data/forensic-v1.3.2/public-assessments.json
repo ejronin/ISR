@@ -47,6 +47,102 @@
         "SRC-03F069A69AAF",
         "SRC-98A42AC97EEA"
       ]
+    },
+    {
+      "assessment_id": "PUB-LEADERSHIP-001",
+      "text": "Iran suffered severe senior-leadership disruption, including the Supreme Leader and multiple senior security-command figures; the state nevertheless continued to function and replace leadership.",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "basis": [
+        "The accepted itemized leadership ledger contains a canonical minimum of 11 individually identified senior political/state and military/security deaths.",
+        "Later Iranian diplomacy and military activity demonstrate state and command continuity after the losses."
+      ],
+      "supporting_record_refs": [
+        "forensic-v1.3.2:iran-leadership-casualties.json",
+        "asset-display-v1.3.3:leaders"
+      ],
+      "sources": []
+    },
+    {
+      "assessment_id": "PUB-CONVENTIONAL-ATTRITION-001",
+      "text": "Iran's conventional force was severely attrited across aircraft, launchers, air defense/radar and naval assets; surviving missile/UAS capacity means this was degradation, not disarmament.",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "analytic_confidence": "HIGH",
+      "basis": [
+        "Accepted floors include 23+ aircraft and 58+ naval losses.",
+        "335+ launchers are reported neutralized; neutralized is not silently converted to destroyed.",
+        "Standing missile-inventory modeling retains the accepted 833 / 1,417 / 3,000 replacement-equivalent scenarios and separates physical loss/damage from temporary inaccessibility."
+      ],
+      "supporting_record_refs": [
+        "asset-display-v1.3.3:aircraft",
+        "asset-display-v1.3.3:launchers",
+        "asset-display-v1.3.3:naval_total",
+        "forensic-v1.3.2:iran-loss-envelopes.json"
+      ],
+      "sources": []
+    },
+    {
+      "assessment_id": "PUB-DIPLOMATIC-001",
+      "text": "Iran retained mediation channels and bargaining relevance but did not convert pressure into a durable final settlement; several regional security relationships hardened rather than fracturing.",
+      "analytic_likelihood": "LIKELY",
+      "analytic_confidence": "MODERATE",
+      "basis": [
+        "Omani, Pakistani and other mediation channels remained active.",
+        "Repeated interim arrangements did not produce a durable final settlement by the canonical cutoff.",
+        "Regional alignment records show increased security coordination while preserving partner disagreement over specific U.S. proposals."
+      ],
+      "supporting_record_refs": [
+        "integration-v1.2:diplomacy.json",
+        "domain-assessments:Alliance / diplomatic position"
+      ],
+      "sources": []
+    },
+    {
+      "assessment_id": "PUB-FORCE-PRESERVATION-001",
+      "text": "On force preservation, the current public record favors the U.S./coalition: Iran absorbed substantially deeper durable conventional-force attrition while coalition campaign-generating capacity remained broadly intact.",
+      "analytic_likelihood": "LIKELY",
+      "analytic_confidence": "MODERATE",
+      "basis": [
+        "Iranian standing-loss categories now provide enough itemized depth for a comparative assessment.",
+        "U.S./coalition losses and local facility damage were material, including the Al Udeid CAOC loss, but did not produce equivalent theater-wide conventional-force attrition.",
+        "Iran retained consequential missile/UAS, small-craft and Hormuz coercive capability, limiting any stronger claim."
+      ],
+      "supporting_record_refs": [
+        "domain-assessments:Force preservation",
+        "forensic-v1.3.2:iran-loss-envelopes.json",
+        "PUB-ALUDEID-001"
+      ],
+      "sources": []
+    },
+    {
+      "assessment_id": "PUB-HORMUZ-001",
+      "text": "Iran retained high de facto Hormuz coercive and sea-denial leverage, but that did not become recognized exclusive sovereignty or an accepted compulsory toll regime.",
+      "analytic_likelihood": "VERY_LIKELY",
+      "analytic_confidence": "HIGH",
+      "basis": [
+        "Canonical shipping and maritime records show sustained suppression of normal commercial traffic and meaningful selective-routing leverage.",
+        "The evidence distinguishes practical gatekeeping from legal sovereignty and durable monetizable rent."
+      ],
+      "supporting_record_refs": [
+        "domain-assessments:Maritime control / sea denial",
+        "integration-v1.2:shipping.json"
+      ],
+      "sources": []
+    },
+    {
+      "assessment_id": "PUB-REGIONAL-ALIGNMENT-001",
+      "text": "Iranian pressure did not consistently fracture regional alignment and in several cases accelerated security, economic and route-diversification coordination, although partners did not uniformly join every U.S. military initiative.",
+      "analytic_likelihood": "LIKELY",
+      "analytic_confidence": "MODERATE",
+      "basis": [
+        "Regional coalition, defense and economic records show harder coordination in response to maritime and missile risk.",
+        "Oman and other mediators continued engagement with Iran, and participation in proposed navigation missions remained uneven."
+      ],
+      "supporting_record_refs": [
+        "domain-assessments:Alliance / diplomatic position",
+        "integration-v1.2:diplomacy.json"
+      ],
+      "sources": []
     }
   ]
 }

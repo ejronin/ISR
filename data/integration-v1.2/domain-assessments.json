@@ -76,14 +76,21 @@
     },
     {
       "domain": "Force preservation",
-      "current_advantage": "UNRESOLVED",
-      "trend": "BOTH_SIDES_ABSORBING_COSTS",
-      "confidence": "LOW",
-      "supporting_evidence": [],
-      "contrary_evidence": [
-        "U.S. carrier deployments extended/rotated; Iranian durable loss ledger remains incomplete."
+      "current_advantage": "U.S./COALITION",
+      "trend": "IRAN_CONVENTIONAL_FORCE_SEVERELY_ATTRITED_CAPABILITY_SURVIVES",
+      "confidence": "MODERATE",
+      "supporting_evidence": [
+        "PUB-NAVY-001",
+        "asset-display-v1.3.3:aircraft",
+        "asset-display-v1.3.3:launchers",
+        "forensic-v1.3.2:iran-loss-envelopes.json",
+        "PUB-ALUDEID-001"
       ],
-      "assessment": "Current evidence is insufficient for a clean side-by-side force-preservation verdict without itemized Iranian and U.S. durable-loss inventories."
+      "contrary_evidence": [
+        "U.S. carrier deployments extended/rotated; Iranian durable loss ledger remains incomplete.",
+        "Iran retained missile/UAS launch capacity, IRGC small craft, coercive Hormuz leverage and the ability to impose lethal/local effects on U.S. and partner forces."
+      ],
+      "assessment": "The public record now supports a comparative force-preservation judgment: Iran's conventional force absorbed substantially deeper durable attrition while U.S./coalition campaign-generating capacity remained broadly intact. This is not a claim that Iran was disarmed or strategically incapable; surviving missile/UAS, small-craft and Hormuz coercive capabilities remained consequential."
     },
     {
       "domain": "Alliance / diplomatic position",
