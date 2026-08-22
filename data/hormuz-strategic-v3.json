@@ -1,0 +1,1920 @@
+{
+  "schema_version": "1.0",
+  "source_reference": "Hormuz Strategic Leverage Map 20260822 v3.html",
+  "integration_status": "SEPARATE_LATER_DOMAIN_ASSESSMENT",
+  "canonical_ledger_advanced": false,
+  "cutoff": "2026-08-22 10:54 ET",
+  "version": "2026.08.22-v3",
+  "evidence_rules": [
+    "Actor claim is not confirmation.",
+    "Geographic precision follows source precision; coarse stays coarse.",
+    "De facto routing power is not international legal sovereignty.",
+    "A ship attack proves an incident, not attribution unless independently supported.",
+    "Concession scores and leverage scores are analyst-derived and visibly labeled.",
+    "Historical steps are preserved; later evidence does not rewrite earlier public knowledge."
+  ],
+  "summary_metrics": {
+    "cutoff": "2026-08-22 10:54 ET",
+    "iran_coercive_hormuz_leverage_0_10": 8.5,
+    "iran_institutionalized_control_0_10": 1.5,
+    "iran_oil_exports_aug_mbd_reported": 0.534,
+    "iran_oil_exports_2025_avg_mbd_reported": 1.4,
+    "iran_export_drop_pct_derived": 61.9,
+    "hormuz_commodity_ships_aug20_reported": 7,
+    "vlcc_or_lng_in_aug20_seven": 0,
+    "lebanon_structural_kneecap_0_10": 8,
+    "lebanon_realized_kneecap_0_10": 5,
+    "scoring_note": "Bipolar markers are analyst placements anchored to documented positions. They measure retreat from each side’s own substantive negotiating pole, not morality, blame, or treaty value. Current markers distinguish recognized/legal outcomes from de facto coercion where necessary.",
+    "iran_monetizable_hormuz_leverage_0_10": 1.5,
+    "hormuz_global_systemic_importance_0_10": 9.0,
+    "long_run_iran_hormuz_leverage_trend": "DOWN"
+  },
+  "mou_position_tracks": [
+    {
+      "clause": 1,
+      "topic": "War termination / Lebanon",
+      "scorable": true,
+      "confidence": "MEDIUM-HIGH",
+      "iran_max": "Stop U.S./Israeli operations on all fronts; use the Iran–U.S. settlement to obtain Israeli withdrawal while preserving Hezbollah as an armed Iranian-aligned lever.",
+      "us_max": "End Iranian/proxy hostilities and restore Lebanese state monopoly over security, ultimately removing Hezbollah as an autonomous armed force.",
+      "mou": "Immediate and permanent termination of military operations on all fronts, explicitly including Lebanon; mutual non-aggression and protection of Lebanese sovereignty. No Hezbollah-disarmament requirement and no explicit Israeli-withdrawal timetable.",
+      "analysis": "The signed clause was materially closer to Tehran’s immediate preference: it stopped fighting in Lebanon without conditioning relief on Hezbollah disarmament. That gain was then displaced by Lebanon itself, which rejected Tehran negotiating on its behalf and entered a separate U.S.-mediated framework making Lebanese Army control and Hezbollah/non-state disarmament central to Israeli withdrawal.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_HEZ_JUN16",
+        "R_LEB_JUN23_STATE",
+        "R_LEB_JUN26_FRAME",
+        "R_LEB_JUN27_REJECT"
+      ],
+      "position": 25,
+      "iran_position_attrition": 2.5,
+      "us_position_attrition": 7.5,
+      "later_marker": {
+        "label": "Current Lebanon security track",
+        "position": 82,
+        "text": "The operative state-to-state framework now conditions further Israeli withdrawal on Lebanese Army deployment and Hezbollah/non-state disarmament. Implementation remains incomplete; Hezbollah is still armed."
+      },
+      "current_status": "IRAN’S ORIGINAL BARGAINING OWNERSHIP OF LEBANON: LOST; HEZBOLLAH DISARMAMENT: NOT YET REALIZED",
+      "frontload": "Immediate ceasefire value favored Iran; the later Lebanon track reversed the strategic direction."
+    },
+    {
+      "clause": 2,
+      "topic": "Mutual sovereignty / non-interference",
+      "scorable": true,
+      "confidence": "MEDIUM",
+      "iran_max": "End U.S. coercive interference, regime pressure and military intrusion into Iranian internal affairs.",
+      "us_max": "End Iranian interference through armed partners, coercive maritime activity and attacks on U.S. partners.",
+      "mou": "Both sides undertake to respect sovereignty and territorial integrity and refrain from interference in each other’s internal affairs.",
+      "analysis": "Symmetric text. It did not define proxy warfare, blockade enforcement, maritime coercion or allied military activity, so both sides later claimed the other had violated the principle.",
+      "sources": [
+        "R_MOU_TEXT"
+      ],
+      "position": 50,
+      "iran_position_attrition": 5.0,
+      "us_position_attrition": 5.0,
+      "current_status": "NO FUNCTIONING MUTUAL NON-INTERFERENCE REGIME"
+    },
+    {
+      "clause": 3,
+      "topic": "60-day final-deal deadline",
+      "scorable": false,
+      "confidence": "HIGH",
+      "iran_max": "Secure immediate relief and use the 60-day period to negotiate unresolved nuclear, sanctions and maritime terms.",
+      "us_max": "Use a short deadline to convert the ceasefire into a final nuclear/security settlement.",
+      "mou": "Final deal within 60 days, extendable only by mutual consent.",
+      "analysis": "Procedural rather than a clean bargaining continuum. The deadline expired August 17 without a final agreement.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_AUG17_OFFENSIVE",
+        "AP_AUG17"
+      ],
+      "current_status": "EXPIRED WITHOUT FINAL DEAL"
+    },
+    {
+      "clause": 4,
+      "topic": "U.S. naval blockade / force proximity",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Immediate end of the U.S. blockade and removal of U.S. forces from Iran’s proximity; harder-line voices wanted a broader U.S. regional withdrawal.",
+      "us_max": "Keep the blockade and nearby force posture as coercive leverage until a final maritime/nuclear settlement.",
+      "mou": "Washington begins blockade removal immediately, fully ends it within 30 days, and after a final deal removes U.S. forces from Iran’s proximity within another 30 days.",
+      "analysis": "One of Tehran’s strongest paper wins. Washington surrendered an active pressure instrument before the final deal and promised a later force pullback if final terms were reached.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_MOU_SEQ",
+        "R_JUL13",
+        "R_JUL14"
+      ],
+      "position": 18,
+      "iran_position_attrition": 1.8,
+      "us_position_attrition": 8.2,
+      "later_marker": {
+        "label": "Current coercive posture",
+        "position": 95,
+        "text": "The U.S. reimposed the maritime blockade in July; the promised post-final-deal force withdrawal never triggered."
+      },
+      "current_status": "IRAN’S BLOCKADE-RELIEF GAIN: REVERSED",
+      "frontload": "Blockade relief was front-loaded; force withdrawal was deferred until after a final deal."
+    },
+    {
+      "clause": "5A",
+      "topic": "Hormuz — legal sovereignty / recognized control",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Iranian hardline pole: convert wartime dominance into recognized Iranian control or dominant authority over the strait.",
+      "us_max": "No unilateral Iranian sovereignty over an international strait; passage governed by international law and the rights of both coastal states.",
+      "mou": "Iran provides safe passage; future administration and maritime services are to be negotiated with Oman and other Gulf littoral states in line with international law and coastal-state rights.",
+      "analysis": "The MoU did not grant Iran sovereignty over the strait. The future-administration language is explicitly multilateral and future-tense. Oman is a coastal sovereign; the recognized TSS was jointly proposed by Iran and Oman. Iran’s later statement that it “no longer recognized” the TSS is evidence of an attempted post-MoU change, not proof that the MoU had already transferred exclusive authority.",
+      "sources": [
+        "R_MOU_TEXT",
+        "IMO_HORMUZ_ROUTE",
+        "IMO_LEGAL_APR27",
+        "R_JUL10_NO_SOV",
+        "R_JUL28_TSS"
+      ],
+      "position": 78,
+      "iran_position_attrition": 7.8,
+      "us_position_attrition": 2.2,
+      "later_marker": {
+        "label": "Current recognized/legal outcome",
+        "position": 92,
+        "text": "IMO bodies reject unilateral Iranian sovereignty/control and compulsory tolls. No durable international instrument recognizes exclusive Iranian control."
+      },
+      "current_status": "EXCLUSIVE/DOMINANT LEGAL CONTROL: NOT OBTAINED",
+      "frontload": "Tehran retained the right to negotiate a future role, not a grant of sovereignty."
+    },
+    {
+      "clause": "5B",
+      "topic": "Hormuz — operational routing / gatekeeping",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Iran determines which vessels may pass and through which routes, converting security control into practical gatekeeping.",
+      "us_max": "Normal non-discriminatory traffic through internationally recognized routing without an Iranian permission system.",
+      "mou": "Iran is tasked to “make arrangements” for safe passage, remove obstacles and de-mine; future administration is deferred to talks with Oman and other littoral states.",
+      "analysis": "Operationally this was more favorable to Iran than the legal-control track: Tehran had an implementation role and used it to create coordination rules. But the text did not say ships outside Tehran’s chosen route forfeited protection. The safe-passage obligation covered commercial passage through the strait, and future route/governance rules were still to be negotiated.",
+      "sources": [
+        "R_MOU_TEXT",
+        "TASNIM_JUN19_GUIDELINES",
+        "R_JUN25_SHIP",
+        "AP_JUN25_SHIP"
+      ],
+      "position": 40,
+      "iran_position_attrition": 4.0,
+      "us_position_attrition": 6.0,
+      "later_marker": {
+        "label": "Current de facto position — NOT legal recognition",
+        "position": 15,
+        "text": "Iran now exercises strong practical gatekeeping, including selective permissions for Iraqi tankers and threats against unauthorized traffic. This is coercive fact on the water, not internationally recognized sovereignty."
+      },
+      "current_status": "DE FACTO GATEKEEPING: HIGH; LEGAL CONVERSION: LOW",
+      "frontload": "Iran gained implementation influence but not exclusive authority."
+    },
+    {
+      "clause": "5C",
+      "topic": "Hormuz — fees / economic rent",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Iran may charge transit, insurance or maritime-service fees and turn the chokepoint into recurring revenue/leverage.",
+      "us_max": "No compulsory Iranian toll or fee for international transit.",
+      "mou": "No charge for 60 days only; future maritime services are left to later regional talks.",
+      "analysis": "This split the difference more than the sovereignty question. Tehran surrendered immediate monetization but preserved the ability to argue later for paid services. Washington secured a no-charge interim but did not get permanent zero-fee language in the MoU.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_TRUMP_MAY21",
+        "R_TRUMP_JUN20_NOTOLLS",
+        "R_AUG06_INDUSTRY",
+        "IMO_COUNCIL_JUL"
+      ],
+      "position": 60,
+      "iran_position_attrition": 6.0,
+      "us_position_attrition": 4.0,
+      "later_marker": {
+        "label": "Current recognized economic outcome",
+        "position": 92,
+        "text": "Iran seeks 5–7% cargo-value fees; Oman discussed ~3%; Washington wants zero. IMO says passage must remain free of tolls/charges. No accepted compulsory Iranian fee regime exists."
+      },
+      "current_status": "DURABLE MONETIZABLE TOLL RIGHT: NOT OBTAINED",
+      "frontload": "Iran gave up immediate fees; the hoped-for later fee regime never became accepted."
+    },
+    {
+      "clause": 6,
+      "topic": "Reconstruction / economic development",
+      "scorable": true,
+      "confidence": "MEDIUM-HIGH",
+      "iran_max": "Large-scale reconstruction/economic recovery funded or enabled by the U.S. and regional partners.",
+      "us_max": "Maintain economic coercion and avoid financing Iranian recovery absent a comprehensive settlement.",
+      "mou": "U.S. and regional partners undertake to develop a mutually agreed reconstruction/economic-development plan of at least $300 billion; implementation mechanism to be finalized in the final deal.",
+      "analysis": "A major Iranian paper gain, but contingent. It was not legal reparations and did not become an implemented fund before the agreement collapsed.",
+      "sources": [
+        "R_MOU_TEXT",
+        "TASNIM_JUN06_DEMANDS"
+      ],
+      "position": 12,
+      "iran_position_attrition": 1.2,
+      "us_position_attrition": 8.8,
+      "later_marker": {
+        "label": "Current realized value",
+        "position": 98,
+        "text": "No final deal, no implemented $300B mechanism; U.S. policy has returned to blockade/sanctions rather than reconstruction."
+      },
+      "current_status": "PROMISED RECONSTRUCTION PACKAGE: LOST / NEVER REALIZED",
+      "frontload": "Large value was deferred to final-deal implementation, not cash delivered at signature."
+    },
+    {
+      "clause": 7,
+      "topic": "Termination of sanctions",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Broad termination of U.S., U.N. and related restrictions and normalization of Iran’s economic status.",
+      "us_max": "Retain sanctions until Iran accepts final nuclear, maritime and regional constraints.",
+      "mou": "Washington undertakes to terminate sanctions on an agreed schedule as part of the final deal.",
+      "analysis": "Iran won a commitment to negotiate comprehensive relief, but it remained tied to a final agreement. That distinction became decisive after the MoU failed.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_AUG22_SANCTIONS"
+      ],
+      "position": 25,
+      "iran_position_attrition": 2.5,
+      "us_position_attrition": 7.5,
+      "later_marker": {
+        "label": "Current sanctions posture",
+        "position": 97,
+        "text": "Washington is preparing substantially tougher sanctions; comprehensive termination never occurred."
+      },
+      "current_status": "COMPREHENSIVE SANCTIONS TERMINATION: LOST / NEVER REALIZED",
+      "frontload": "Deferred final-deal benefit."
+    },
+    {
+      "clause": 8,
+      "topic": "Nuclear weapon, stockpile and enrichment",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Avoid major irreversible nuclear concessions up front; retain enrichment as an unresolved sovereign right and keep the stockpile in Iran for on-site treatment.",
+      "us_max": "No nuclear weapon; eliminate highly enriched stock and, in the stronger U.S. negotiating position, end enrichment or dismantle the program under enforceable inspection.",
+      "mou": "Iran reaffirms no nuclear weapons; stockpiled enriched material must be resolved with on-site downblending under IAEA supervision as the minimum; enrichment rules are deferred to the final deal.",
+      "analysis": "Red-team correction: this clause landed closer to Tehran than the previous graphic showed. Iran accepted a non-weapons and stockpile-management obligation, but Washington did not get immediate removal of the stockpile, zero enrichment or a completed inspection/enrichment framework. The hardest U.S. objective was postponed until after economic relief began.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_APR11_US_DEMANDS",
+        "R_TRUMP_MAY21",
+        "R_MOU_GAPS"
+      ],
+      "position": 33,
+      "iran_position_attrition": 3.3,
+      "us_position_attrition": 6.7,
+      "current_status": "FINAL NUCLEAR TERMS: NEVER REACHED",
+      "frontload": "Iran’s immediate nuclear concession was mainly a freeze/non-weapons commitment; the deeper rollback was deferred."
+    },
+    {
+      "clause": 9,
+      "topic": "Interim status quo: nuclear, sanctions and U.S. deployments",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "No new sanctions or additional U.S. forces during negotiations; preserve Iran’s current nuclear position while relief starts.",
+      "us_max": "Freeze Iran’s nuclear program and prevent military escalation while retaining enough leverage to reach a final deal.",
+      "mou": "Iran maintains nuclear status quo; U.S. imposes no new sanctions and deploys no additional forces pending final deal.",
+      "analysis": "Reciprocal freeze, modestly favorable to Iran because Washington constrained two pressure tools while Iran froze rather than rolled back its program.",
+      "sources": [
+        "R_MOU_TEXT"
+      ],
+      "position": 45,
+      "iran_position_attrition": 4.5,
+      "us_position_attrition": 5.5,
+      "current_status": "INTERIM STATUS-QUO BARGAIN: COLLAPSED"
+    },
+    {
+      "clause": 10,
+      "topic": "Immediate Iranian oil-export waivers",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Resume oil exports and associated banking, insurance and transport immediately.",
+      "us_max": "Keep oil sanctions in place as leverage until a final settlement.",
+      "mou": "Treasury waivers begin immediately and continue until sanctions termination.",
+      "analysis": "One of the clearest front-loaded Iranian gains. Reuters confirmed Treasury issued the general authorization on June 22.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_JUN22_OIL_WAIVER",
+        "R_JUL07"
+      ],
+      "position": 10,
+      "iran_position_attrition": 1.0,
+      "us_position_attrition": 9.0,
+      "later_marker": {
+        "label": "Current oil-sanctions outcome",
+        "position": 100,
+        "text": "The waiver was revoked in July; the reimposed blockade and sanctions have sharply reduced Iranian oil availability to Chinese buyers."
+      },
+      "current_status": "OIL-WAIVER GAIN: REVERSED",
+      "frontload": "Front-loaded and actually implemented before reversal."
+    },
+    {
+      "clause": 11,
+      "topic": "Frozen / restricted Iranian assets",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Restore broadly usable access to frozen/restricted Iranian funds with Tehran able to designate beneficiaries.",
+      "us_max": "Keep assets restricted or phase access tightly as bargaining leverage.",
+      "mou": "Washington undertakes to make funds fully available for use, with procedures agreed during negotiations and necessary licenses issued.",
+      "analysis": "Strong Iran-favorable paper language. Implementation remained procedurally contested and did not mature into the broad durable access the clause promised.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_AUG18_CONDITIONS"
+      ],
+      "position": 12,
+      "iran_position_attrition": 1.2,
+      "us_position_attrition": 8.8,
+      "later_marker": {
+        "label": "Current asset-access outcome",
+        "position": 95,
+        "text": "Iran is again demanding release of frozen assets as a condition for reopening; broad durable access was not secured."
+      },
+      "current_status": "FULL ASSET-USABILITY COMMITMENT: NOT REALIZED / LOST",
+      "frontload": "Paper promise was immediate in principle, but procedures still had to be agreed."
+    },
+    {
+      "clause": 12,
+      "topic": "Implementation monitoring mechanism",
+      "scorable": false,
+      "confidence": "HIGH",
+      "iran_max": "A mechanism that records U.S. performance and makes relief commitments harder to reverse without attribution.",
+      "us_max": "A mechanism that records Iranian compliance and supports enforcement.",
+      "mou": "Executive mechanism to monitor implementation of the MoU and future final deal.",
+      "analysis": "Procedural and mutually useful. No durable compliance architecture survived the collapse.",
+      "sources": [
+        "R_MOU_TEXT"
+      ],
+      "current_status": "NO DURABLE MONITORING REGIME"
+    },
+    {
+      "clause": 13,
+      "topic": "Sequencing / performance before final-deal talks",
+      "scorable": true,
+      "confidence": "HIGH",
+      "iran_max": "Concrete U.S. relief first—ceasefire/blockade relief, Hormuz implementation, oil waiver and asset access—before Tehran bargains away the remaining nuclear and sanctions positions.",
+      "us_max": "Iran makes the core nuclear/maritime concessions first while Washington preserves pressure until a final package is secured.",
+      "mou": "Negotiations on remaining final-deal clauses begin only after implementation starts and continues on clauses 1, 4, 5, 10 and 11.",
+      "analysis": "Structurally favorable to Iran: Washington had to start giving back high-value economic/military pressure before Iran had settled the hardest nuclear issues. Iran also had to begin ceasefire and safe-passage performance, so it was not one-sided.",
+      "sources": [
+        "R_MOU_TEXT",
+        "CENTCOM_JUN20",
+        "R_JUN22_OIL_WAIVER"
+      ],
+      "position": 30,
+      "iran_position_attrition": 3.0,
+      "us_position_attrition": 7.0,
+      "current_status": "SEQUENCING ADVANTAGE DISAPPEARED WITH COLLAPSE",
+      "frontload": "This front-loaded U.S. performance is a major reason the interim agreement was favorable to Iran despite Tehran not obtaining full Hormuz control."
+    },
+    {
+      "clause": 14,
+      "topic": "Binding U.N. Security Council endorsement",
+      "scorable": true,
+      "confidence": "MEDIUM",
+      "iran_max": "Internationalize the final bargain so sanctions relief/security commitments are harder for Washington to reverse unilaterally.",
+      "us_max": "Preserve unilateral enforcement freedom and avoid being locked into relief if Iranian compliance fails.",
+      "mou": "Final deal to be endorsed by a binding U.N. Security Council resolution.",
+      "analysis": "Somewhat Iran-favorable institutionally, while also binding Iran. It never reached implementation because there was no final deal.",
+      "sources": [
+        "R_MOU_TEXT"
+      ],
+      "position": 35,
+      "iran_position_attrition": 3.5,
+      "us_position_attrition": 6.5,
+      "current_status": "UNSC ENDORSEMENT: NEVER OCCURRED"
+    }
+  ],
+  "sequence": [
+    {
+      "date": "2026-02-28",
+      "track": "MAIN",
+      "title": "Iran converts geography into de facto sea-denial leverage",
+      "iran_move": "Following U.S.-Israeli attacks, Iran effectively shuts or severely restricts Hormuz traffic and forces shipping-risk decisions around its directives.",
+      "washington_response": "Military pressure and later a naval blockade seek to reopen commerce and deny Iranian sovereignty claims.",
+      "result": "WORKED TACTICALLY. Iran demonstrated it could impose major economic costs and sharply reduce traffic, but no international legal recognition of unilateral control followed.",
+      "coercive": 9.0,
+      "converted": 2.0,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG07_TRAFFIC",
+        "R_AUG22_IRAQ"
+      ]
+    },
+    {
+      "date": "2026-05-27",
+      "track": "MAIN",
+      "title": "Draft framework begins trading blockade relief for shipping restoration",
+      "iran_move": "Iranian state TV describes a framework in which Iran would restore commercial traffic while retaining a future management role alongside Oman.",
+      "washington_response": "U.S. negotiators use blockade relief and future force posture as inducements while retaining nuclear and compliance demands.",
+      "result": "PARTIAL DIPLOMATIC GAIN. Iranian management was now a negotiating subject, not a recognized right.",
+      "coercive": 8.5,
+      "converted": 5.0,
+      "verification": "MEDIUM-HIGH",
+      "sources": [
+        "R_MAY_DRAFT"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "track": "MAIN",
+      "title": "14-point Islamabad MoU creates the 60-day bargain",
+      "iran_move": "Accept no-charge safe passage for 60 days, nuclear no-weapon pledge, on-site downblending/IAEA path and broader talks.",
+      "washington_response": "Promise blockade removal, oil waivers, frozen-asset access process, sanctions-termination negotiations, ≥$300B reconstruction plan and eventual force pullback after a final deal.",
+      "result": "BIG PAPER EXCHANGE. Iran traded immediate maritime coercion and nuclear constraints for unusually large promised U.S. economic/military relief. Core control questions were deferred.",
+      "coercive": 7.0,
+      "converted": 6.5,
+      "verification": "VERY HIGH",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_MOU_SEQ"
+      ]
+    },
+    {
+      "date": "2026-06-22",
+      "track": "MAIN",
+      "title": "U.S. implements a visible economic concession",
+      "iran_move": "Commercial reopening and negotiation process continue under MoU.",
+      "washington_response": "Treasury issues an oil-sales license/waiver contemplated by the interim arrangement.",
+      "result": "WORKED FOR IRAN, TEMPORARILY. A promised relief mechanism became real, but remained reversible.",
+      "coercive": 6.5,
+      "converted": 7.0,
+      "verification": "HIGH",
+      "sources": [
+        "R_JUL07"
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "track": "MAIN",
+      "title": "M/V Ever Lovely strike tests alternative routing and enforcement",
+      "iran_move": "A commercial vessel using a contested route is struck by a one-way drone; U.S./AP reporting attributed the event to Iran.",
+      "washington_response": "U.S. retaliates against coastal radar and missile/drone storage.",
+      "result": "TACTICAL COERCION, STRATEGIC SELF-DAMAGE. The attack reinforced Iran’s ability to punish routing it rejected but weakened the MoU’s value as a path to sanctions/blockade relief.",
+      "coercive": 7.5,
+      "converted": 5.5,
+      "verification": "HIGH EVENT / ATTRIBUTION LIKELY",
+      "sources": [
+        "R_JUN27"
+      ]
+    },
+    {
+      "date": "2026-06-27",
+      "track": "MAIN",
+      "title": "M/T Kiku attack and U.S. retaliation deepen the enforcement dispute",
+      "iran_move": "A large tanker is hit; Iran and the U.S. exchange further attacks and threats.",
+      "washington_response": "U.S. strikes surveillance, air-defense, drone-storage and minelaying-related targets; parties agree to another pause and talks.",
+      "result": "NO DURABLE WIN. Iran keeps risk leverage; Washington shows it will answer ship attacks by degrading the maritime kill chain.",
+      "coercive": 7.7,
+      "converted": 5.0,
+      "verification": "HIGH",
+      "sources": [
+        "R_JUN27"
+      ]
+    },
+    {
+      "date": "2026-06-26",
+      "track": "LEBANON",
+      "title": "Lebanon-Israel framework adds a condition absent from the MoU",
+      "iran_move": "Iran/Hezbollah had treated the MoU’s all-front ceasefire as protection for the Lebanon front and pressed for Israeli withdrawal.",
+      "washington_response": "U.S.-mediated Lebanon-Israel framework ties phased Israeli withdrawal to verified disarmament of Hezbollah/non-state armed groups and Lebanese army deployment.",
+      "result": "STRUCTURAL KNEECAP TO IRANIAN PROXY LEVERAGE. The all-front ceasefire becomes linked to dismantling the principal Iranian armed instrument in Lebanon.",
+      "coercive": 7.5,
+      "converted": 4.8,
+      "verification": "HIGH",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_LEB_JUN05",
+        "R_LEB_JUN26"
+      ]
+    },
+    {
+      "date": "2026-06-27",
+      "track": "LEBANON",
+      "title": "Hezbollah rejects the framework as surrender",
+      "iran_move": "Hezbollah refuses disarmament and argues Washington had already pledged an end to hostilities under the wider MoU.",
+      "washington_response": "U.S./Israel/Lebanon continue the separate framework; implementation shifts to phased state-control and verification concepts.",
+      "result": "IMPLEMENTATION FRICTION LIMITS THE KNEECAP. Iran loses structural bargaining space, but Hezbollah remains armed and capable of obstruction.",
+      "coercive": 7.5,
+      "converted": 4.7,
+      "verification": "HIGH",
+      "sources": [
+        "R_LEB_JUN27"
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "track": "MAIN",
+      "title": "Three tanker attacks trigger the practical collapse of the MoU",
+      "iran_move": "Ships pass without Tehran’s approval and are attacked; Iranian officials insist Washington must recognize a new order in Hormuz.",
+      "washington_response": "U.S. strikes 80+ targets including 60+ IRGC small boats and revokes the oil-sales concession. Trump says the interim deal is over.",
+      "result": "COERCION PRESERVED, RELIEF LOST. Iran demonstrates it can punish shipping, but sacrifices the most concrete economic benefit already implemented under the MoU.",
+      "coercive": 8.2,
+      "converted": 4.0,
+      "verification": "HIGH",
+      "sources": [
+        "R_JUL07"
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "track": "MAIN",
+      "title": "Competing “guardian” claims and U.S. blockade resumption",
+      "iran_move": "IRGC says offending supertankers were hit for ignoring warnings; Iran claims permanent guardianship of the strait.",
+      "washington_response": "Trump says U.S. will be “guardian” and proposes a 20% cargo reimbursement fee while reinstating blockade against Iranian shipping; IMO says mandatory tolls lack legal basis.",
+      "result": "LEGAL/OPTICS STALEMATE. Both sides claim administration; neither gains international legal validation. U.S. blockade directly targets Iran’s export revenue.",
+      "coercive": 8.0,
+      "converted": 3.5,
+      "verification": "VERY HIGH",
+      "sources": [
+        "R_JUL13"
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "track": "MAIN",
+      "title": "Washington drops its own 20% toll proposal",
+      "iran_move": "Iran continues insisting it controls routing and rejects a U.S. role.",
+      "washington_response": "After Gulf consultations Trump abandons the 20% fee idea, replacing it with proposed investment deals; blockade on Iranian cargo remains.",
+      "result": "U.S. WALKBACK ON TOLL THEATER, NOT ON FREE-PASSAGE PRINCIPLE. This removes a weak U.S. parallel claim while preserving pressure on Iran.",
+      "coercive": 8.0,
+      "converted": 3.6,
+      "verification": "HIGH",
+      "sources": [
+        "R_JUL14"
+      ]
+    },
+    {
+      "date": "2026-07-28",
+      "track": "OMAN",
+      "title": "Oman offers a face-saving regional management model",
+      "iran_move": "Iran insists the strait cannot return to pre-war status and wants oversight/services.",
+      "washington_response": "Oman/Gulf proposal rejects sole Iranian control and mandatory tolls but allows voluntary contributions for navigation, environment, SAR and related services.",
+      "result": "PARTIAL IRANIAN CONCEPTUAL GAIN. “Services” enters a legitimate framework, but payment is voluntary and control is regional, not unilateral.",
+      "coercive": 7.8,
+      "converted": 4.7,
+      "verification": "HIGH",
+      "sources": [
+        "R_JUL28"
+      ]
+    },
+    {
+      "date": "2026-07-29",
+      "track": "LEBANON",
+      "title": "Lebanon pilot zones show leverage loss is real but incomplete",
+      "iran_move": "Hezbollah refuses disarmament and can raise domestic friction against state enforcement.",
+      "washington_response": "Lebanese army/pilot-zone process begins under U.S. framework, but displacement, Israeli presence and verification gaps slow implementation.",
+      "result": "REALIZED KNEECAP BELOW STRUCTURAL POTENTIAL. The mechanism is active, but Hezbollah has not been neutralized.",
+      "coercive": 7.7,
+      "converted": 4.5,
+      "verification": "HIGH",
+      "sources": [
+        "R_LEB_JUL29"
+      ]
+    },
+    {
+      "date": "2026-08-03",
+      "track": "OMAN",
+      "title": "Tehran separates Oman technical talks from U.S. diplomacy",
+      "iran_move": "Iran says there are no current U.S. talks; it is discussing a temporary safe passage with Oman and says that alone cannot reopen Hormuz.",
+      "washington_response": "U.S. continues insisting any broader arrangement must secure free access and reject unilateral Iranian control.",
+      "result": "IRAN PRESERVES OPTICS, NOT SETTLEMENT. Oman can solve route mechanics but cannot deliver sanctions/blockade concessions by itself.",
+      "coercive": 8.0,
+      "converted": 4.5,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG03"
+      ]
+    },
+    {
+      "date": "2026-08-05",
+      "track": "OMAN",
+      "title": "Proposed inbound Iranian control becomes the high-water mark",
+      "iran_move": "Proposed arrangement gives Tehran intervention/control over inbound Gulf traffic; Iran seeks 5–7% fees.",
+      "washington_response": "Washington rejects Iranian control and cargo fees; Oman floats roughly 3%/service concepts. Outbound inspection/clearance remains unresolved.",
+      "result": "MAJOR NEGOTIATING GAIN, NOT AN AGREEMENT. Iran gets regional actors to discuss inbound control, but the U.S. does not accept it.",
+      "coercive": 8.6,
+      "converted": 6.0,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG05"
+      ]
+    },
+    {
+      "date": "2026-08-06",
+      "track": "OMAN",
+      "title": "Commercial reality checks the proposed Iran-Oman arrangement",
+      "iran_move": "Iran/Oman route design continues.",
+      "washington_response": "Shipping/insurance sources say sanctions and restrictive clauses make payments and the proposed system difficult to operate.",
+      "result": "PRACTICAL LIMIT ON STRATEGIC CONVERSION. A paper route that owners/insurers cannot use does not reopen trade.",
+      "coercive": 8.4,
+      "converted": 5.1,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG06_INDUSTRY",
+        "R_AUG07_TRAFFIC"
+      ]
+    },
+    {
+      "date": "2026-08-06",
+      "track": "PARLIAMENT",
+      "title": "Iran begins domestic legal institutionalization of control claims",
+      "iran_move": "Parliamentary committee reviews a bill to bar U.S., Israeli and other “hostile” vessels and fine violators up to 20% of cargo value.",
+      "washington_response": "No international recognition; U.S./Gulf position remains that compulsory restrictions/fees cannot be imposed unilaterally.",
+      "result": "DOMESTIC INSTITUTIONALIZATION, NOT EXTERNAL LEGITIMACY. Useful for Iranian enforcement doctrine; weak as international legal proof.",
+      "coercive": 8.4,
+      "converted": 4.8,
+      "verification": "MEDIUM-HIGH",
+      "sources": [
+        "R_PARL_AUG06",
+        "PRESSTV_AUG07"
+      ]
+    },
+    {
+      "date": "2026-08-08",
+      "track": "MAIN",
+      "title": "Iran expands the price of reopening",
+      "iran_move": "Iranian security leadership adds an end to sanctions, war compensation, U.S. military withdrawal/cessation of threats and recognition of changed Hormuz conditions. UAE reports another ship attack.",
+      "washington_response": "U.S. rejects Iranian control; Gulf backlash increases.",
+      "result": "MAXIMALIZATION RAISES LEVERAGE REQUIREMENT. Iran’s bargaining position becomes harder to satisfy and ship attacks impose costs on states Tehran needs as intermediaries.",
+      "coercive": 8.6,
+      "converted": 4.0,
+      "verification": "HIGH",
+      "sources": [
+        "AP_AUG08"
+      ]
+    },
+    {
+      "date": "2026-08-09",
+      "track": "MAIN",
+      "title": "Washington adds a counter-reparations demand",
+      "iran_move": "Tehran says it will not reopen or restart U.S. talks without sanctions relief, compensation and an end to threats.",
+      "washington_response": "Trump demands compensation from Iran for people killed or badly wounded; no direct talks are active.",
+      "result": "DEMAND STACKING. The negotiation moves farther from the June exchange and closer to mutual punitive claims.",
+      "coercive": 8.3,
+      "converted": 3.5,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG09"
+      ]
+    },
+    {
+      "date": "2026-08-10",
+      "track": "PARLIAMENT",
+      "title": "Iran advances a permanent Hormuz-management bill",
+      "iran_move": "Committees advance provisions restricting hostile vessels and considering fees for maritime services, security and monitoring; objective is a long-term legal framework rather than temporary wartime practice.",
+      "washington_response": "External parties continue to reject unilateral toll/control claims; bill remains domestic and not final law.",
+      "result": "WORKS AS INTERNAL DOCTRINE, NOT INTERNATIONAL SETTLEMENT. It may make future Iranian walkback politically harder.",
+      "coercive": 8.4,
+      "converted": 3.6,
+      "verification": "MEDIUM",
+      "sources": [
+        "IRANINTL_AUG10",
+        "R_PARL_AUG06"
+      ]
+    },
+    {
+      "date": "2026-08-12",
+      "track": "LEBANON",
+      "title": "Third-party Hezbollah verification moves onto the table",
+      "iran_move": "Iran continues political support for Hezbollah; Hezbollah rejects disarmament.",
+      "washington_response": "U.S.-mediated talks consider Britain, Italy, Switzerland and Indonesia as potential contributors to verification/inspection arrangements.",
+      "result": "PROXY LEVERAGE PRESSURE BROADENS BEYOND ISRAEL. A multinational verification mechanism would make Hezbollah rearmament harder to conceal if implemented.",
+      "coercive": 8.3,
+      "converted": 3.4,
+      "verification": "HIGH PROPOSAL / NOT FINALIZED",
+      "sources": [
+        "R_LEB_AUG12",
+        "R_LEB_AUG13_DENIAL"
+      ]
+    },
+    {
+      "date": "2026-08-13",
+      "track": "LEBANON",
+      "title": "Verification shortlist claim is corrected; core disarmament linkage survives",
+      "iran_move": "Hezbollah continues to resist disarmament while Iran retains rhetorical support.",
+      "washington_response": "Lebanon denies an agreed country shortlist, but confirms third-party verification discussions; Israel says withdrawal remains tied to Hezbollah disarmament.",
+      "result": "NO CLEAN IMPLEMENTATION WIN, BUT THE STRUCTURAL KNEECAP REMAINS. The external mechanism is unsettled; the disarmament-for-withdrawal architecture is still active.",
+      "coercive": 8.3,
+      "converted": 3.3,
+      "verification": "HIGH",
+      "sources": [
+        "R_LEB_AUG13_DENIAL",
+        "R_LEB_AUG13"
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "track": "MARITIME",
+      "title": "Third ADNOC vessel attack hardens UAE opposition",
+      "iran_move": "A third ADNOC vessel is attacked in the Hormuz area; UAE publicly attributes the incident to Iran, while independent attribution remains less complete.",
+      "washington_response": "UAE demands an end to attacks; regional security alignment hardens.",
+      "result": "TACTICAL DENIAL, REGIONAL BACKLASH. Shipping risk rises, but Iran damages its relationship with a major commercial bridge and potential mediator.",
+      "coercive": 8.5,
+      "converted": 3.0,
+      "verification": "EVENT HIGH / ATTRIBUTION ACTOR-CLAIM",
+      "sources": [
+        "R_AUG19_UAE"
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "track": "MAIN",
+      "title": "60-day MoU deadline expires with no final deal",
+      "iran_move": "Iran threatens a “fully offensive” posture and says force may be used to break the U.S. blockade if diplomacy fails.",
+      "washington_response": "Trump refuses to extend the June arrangement and says Iran will not make the deal he considers necessary; he also threatens Oman over interference.",
+      "result": "FORMAL BARGAINING WINDOW FAILS. Iran still has strong sea-denial leverage but far less prospect of converting it into the June economic package.",
+      "coercive": 8.6,
+      "converted": 2.6,
+      "verification": "VERY HIGH",
+      "sources": [
+        "R_AUG17_OFFENSIVE",
+        "AP_AUG17"
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "track": "MAIN",
+      "title": "Tehran tries to revive June obligations without reviving June restraints",
+      "iran_move": "Qalibaf says Hormuz stays shut until the U.S. ends the blockade, lifts oil sanctions, releases frozen assets, and ends threats/operations.",
+      "washington_response": "Trump says there are no current/planned talks and no extension.",
+      "result": "SELECTIVE MOU INVOCATION. Iran invokes U.S. relief clauses after the deal’s collapse; Washington rejects the premise.",
+      "coercive": 8.6,
+      "converted": 2.5,
+      "verification": "VERY HIGH",
+      "sources": [
+        "R_AUG18_CONDITIONS",
+        "R_AUG18_NOTALKS"
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "track": "MARITIME",
+      "title": "Major Chinese state shippers route around the chokepoints",
+      "iran_move": "Persistent risk keeps Hormuz/Bab el-Mandeb unsafe for routine large-scale operation.",
+      "washington_response": "Chinese firms shift to ship-to-ship transfers outside the Gulf and alternative loading patterns.",
+      "result": "COERCION WORKS, BUT ADAPTATION ERODES MARGINAL VALUE. The longer closure lasts, the more commerce reorganizes around it.",
+      "coercive": 8.5,
+      "converted": 2.4,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG18_CHINA_SHIP"
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "track": "REGIONAL",
+      "title": "UAE suspends financial and economic dealings with Iran",
+      "iran_move": "Iran denies targeting maritime routes but retains coercive Hormuz posture.",
+      "washington_response": "UAE imposes an economic/financial embargo after missiles it says were launched from Iran and repeated attacks on ADNOC vessels.",
+      "result": "STRATEGIC BACKLASH. Iran’s pressure campaign imposes costs but also burns a major regional financial/commercial relationship.",
+      "coercive": 8.3,
+      "converted": 2.2,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG19_UAE"
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "track": "LEBANON",
+      "title": "Washington attacks Iran’s Lebanon leverage financially",
+      "iran_move": "Iran/Hezbollah maintain the relationship despite the disarmament framework.",
+      "washington_response": "U.S. redesignates/sanctions Hezbollah for service to the Iranian regime and targets a cash-smuggling network.",
+      "result": "ADDITIONAL PROXY-LEVERAGE ATTRITION. This does not disarm Hezbollah, but raises the cost of sustaining it as a regional instrument.",
+      "coercive": 8.2,
+      "converted": 2.1,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG20_HEZ"
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "track": "MAIN",
+      "title": "Washington pivots from June relief to expanded economic warfare",
+      "iran_move": "Iran rejects sanctions pressure and threatens military response.",
+      "washington_response": "Treasury announces a forthcoming “toughest sanctions” package and secondary-pressure strategy.",
+      "result": "JUNE ECONOMIC BARGAIN REVERSED. The direction of travel is now harsher sanctions, not relief/reconstruction.",
+      "coercive": 8.1,
+      "converted": 2.0,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG20_IRAN_SANCTIONS"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "track": "MARITIME",
+      "title": "Traffic remains single-digit while an allied navigation coalition forms",
+      "iran_move": "Iran retains de facto ability to make ordinary commercial passage unattractive or dependent on special arrangements.",
+      "washington_response": "Kpler records seven commodity transits with no VLCC/LNG; interested NATO members coordinate contributions while France/UK lead a roughly dozen-country safe-passage concept outside NATO.",
+      "result": "DUAL EFFECT. Iran still controls risk; international counter-coordination grows specifically to prevent that leverage becoming permanent governance.",
+      "coercive": 8.1,
+      "converted": 2.0,
+      "verification": "VERY HIGH",
+      "sources": [
+        "R_AUG21_TRAFFIC",
+        "R_AUG21_NATO"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "track": "ECONOMIC",
+      "title": "U.S. blockade materially constrains Iran’s own oil leverage",
+      "iran_move": "Iran uses Hormuz closure as leverage while seeking continued oil sales to China.",
+      "washington_response": "Blockade cuts available Iranian cargoes; Reuters/Kpler report August shipments around 534k bpd versus 1.4m bpd 2025 average.",
+      "result": "COUNTER-COERCION BITES. Iran can deny/shape traffic, but the U.S. can simultaneously choke Iran’s principal hard-currency export channel.",
+      "coercive": 8.0,
+      "converted": 1.9,
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG21_CHINA_OIL"
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "track": "MAIN",
+      "title": "Iran grants special permission to Iraqi oil tankers",
+      "iran_move": "After repeated Iraqi requests, Tehran grants selected Iraqi tankers permission to pass Hormuz.",
+      "washington_response": "U.S. blockade and sanctions pressure remain; Iraq simultaneously pursues Ceyhan, Baniyas and Aqaba alternatives.",
+      "result": "STRONG DE FACTO CONTROL SIGNAL, WEAK LEGAL CONVERSION. Selective permission demonstrates practical gatekeeping while motivating neighbors to reduce dependence on the strait.",
+      "coercive": 8.3,
+      "converted": 2.5,
+      "verification": "VERY HIGH",
+      "sources": [
+        "R_AUG22_IRAQ",
+        "R_AUG22_SANCTIONS"
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "track": "REGIONAL",
+      "title": "Regional actors accelerate alternatives to permanent Hormuz dependence",
+      "iran_move": "Iran continues selective permission and closure policy.",
+      "washington_response": "France/Saudi Arabia discuss energy/logistics alternatives and infrastructure workarounds; Iraq expands non-Hormuz export options.",
+      "result": "LONG-RUN LEVERAGE EROSION RISK. Every bypass, pipeline, STS hub or alternative port reduces the future value of closing Hormuz.",
+      "coercive": 8.2,
+      "converted": 2.4,
+      "verification": "HIGH",
+      "sources": [
+        "AP_AUG22_ALT",
+        "R_AUG22_IRAQ"
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "id": "OMAN",
+      "title": "Oman / maritime-administration branch",
+      "structural_score": 7,
+      "realized_score": 4,
+      "summary": "Iran successfully moved the argument from “no Iranian role” to active discussion of routes, administration and legitimate maritime services. It did not secure U.S. acceptance of unilateral control or compulsory fees, and industry sanctions/insurance constraints prevented a workable reopening.",
+      "worked": [
+        "Future administration dialogue was written into the June MoU.",
+        "Oman/Gulf states accepted the concept of paid maritime services if voluntary.",
+        "By Aug. 5 regional proposals contemplated Iranian control/intervention over inbound traffic.",
+        "Route coordinates/map reportedly reached substantial Iran-Oman agreement."
+      ],
+      "failed": [
+        "U.S. repeatedly rejected Iranian control and mandatory fees.",
+        "Shipping/insurance sources said the proposed payment/control regime was not easily workable.",
+        "The Oman branch could not deliver U.S. sanctions/blockade concessions by itself.",
+        "By Aug. 17 the 60-day deal expired; the strait remained restricted."
+      ],
+      "sources": [
+        "R_MOU_TEXT",
+        "R_JUL28",
+        "R_AUG05",
+        "R_AUG06_INDUSTRY",
+        "R_AUG17_OFFENSIVE"
+      ]
+    },
+    {
+      "id": "LEBANON",
+      "title": "Lebanon / Hezbollah proxy-leverage branch",
+      "structural_score": 8,
+      "realized_score": 5,
+      "summary": "The June MoU protected an all-front ceasefire including Lebanon but did not itself order Hezbollah disarmament. Nine days later, the separate U.S.-mediated Israel-Lebanon framework tied Israeli withdrawal to verified disarmament of Hezbollah/non-state armed groups and Lebanese state control. That structurally attacks a core Iranian proxy asset, but implementation remains incomplete because Hezbollah refuses and verification is unsettled.",
+      "worked": [
+        "Iran initially got Lebanon included in the all-front MoU ceasefire language.",
+        "Hezbollah remains armed and capable of obstructing implementation.",
+        "Verification arrangements and Israeli withdrawal remain contested."
+      ],
+      "failed": [
+        "The separate June 26 framework converted “end fighting in Lebanon” into “Israeli withdrawal conditional on verified non-state disarmament.”",
+        "Lebanese army pilot zones began shifting sovereignty functions away from Hezbollah.",
+        "Third-party verification is being negotiated, even though the reported country shortlist was later denied.",
+        "U.S. sanctions on Aug. 20 targeted Hezbollah specifically for ties to Iran/IRGC-QF."
+      ],
+      "sources": [
+        "R_MOU_TEXT",
+        "R_LEB_JUN26",
+        "R_LEB_JUN27",
+        "R_LEB_JUL29",
+        "R_LEB_AUG12",
+        "R_LEB_AUG13_DENIAL",
+        "R_LEB_AUG13",
+        "R_AUG20_HEZ"
+      ]
+    },
+    {
+      "id": "PARLIAMENT",
+      "title": "Iranian parliament / domestic-law branch",
+      "structural_score": 7,
+      "realized_score": 2,
+      "summary": "Parliament is trying to convert wartime routing practices into a durable domestic legal doctrine covering hostile-vessel exclusion, fines and maritime-service charges. That can harden Iranian internal policy and provide an enforcement mandate, but it does not create international recognition and may make later compromise harder.",
+      "worked": [
+        "Moves temporary wartime practice into a proposed long-term legal framework.",
+        "Creates a domestic basis for selective transit rules, services and penalties."
+      ],
+      "failed": [
+        "Draft/committee provisions are not yet final law.",
+        "Domestic legislation cannot by itself alter international transit rights.",
+        "External states, IMO principles and insurers continue to reject unilateral compulsory tolls/control."
+      ],
+      "sources": [
+        "R_PARL_AUG06",
+        "IRANINTL_AUG10",
+        "PRESSTV_AUG07",
+        "R_JUL13"
+      ]
+    },
+    {
+      "id": "BACKLASH",
+      "title": "Regional / commercial counter-leverage branch",
+      "structural_score": 8,
+      "realized_score": 7,
+      "summary": "Ship attacks and prolonged closure are accelerating countermeasures that erode the long-run monopoly value of Hormuz coercion: UAE/Saudi bypass investment, multinational navigation planning, outside-Gulf loading, Iraq diversification and international rejection of compulsory tolls. This does NOT make Hormuz unimportant; existing alternatives cannot replace most prewar flow.",
+      "worked": [
+        "Iran still imposes very high insurance, routing, timing and macroeconomic costs.",
+        "Commercial traffic remains far below normal and Iranian selective permissions have practical value."
+      ],
+      "failed": [
+        "IMO and outside powers reject unilateral legal control/tolls.",
+        "Saudi/UAE bypass systems are operating at high rates and expanding.",
+        "France/UK and interested NATO members are organizing freedom-of-navigation options.",
+        "China and Gulf exporters are expanding ship-to-ship and outside-Gulf loading workarounds.",
+        "Iraq is pursuing Ceyhan, Baniyas and Aqaba alternatives."
+      ],
+      "sources": [
+        "R_AUG19_UAE",
+        "R_AUG21_NATO",
+        "R_AUG18_CHINA_SHIP",
+        "R_AUG22_IRAQ",
+        "AP_AUG22_ALT",
+        "IEA_HORMUZ",
+        "R_MAR17_BYPASS",
+        "R_MAY15_UAE_PIPE",
+        "R_JUL07_SAUDI_PIPE",
+        "IMO_COUNCIL_JUL"
+      ]
+    }
+  ],
+  "current_board_delta": [
+    {
+      "date": "2026-08-17",
+      "category": "DIPLOMACY / POSTURE",
+      "title": "60-day MoU window expires; U.S. refuses extension; Iran threatens offensive posture",
+      "location": "Tehran / Washington / Hormuz",
+      "lat": 26.5667,
+      "lon": 56.25,
+      "precision": "STRAIT/REGIONAL",
+      "effect": "Negotiation window closes without final deal; coercion returns as primary instrument.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG17_OFFENSIVE",
+        "AP_AUG17"
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "category": "HORMUZ / DEMANDS",
+      "title": "Iran conditions reopening on June relief clauses",
+      "location": "Tehran / Strait of Hormuz",
+      "lat": 26.5667,
+      "lon": 56.25,
+      "precision": "STRAIT/REGIONAL",
+      "effect": "Qalibaf demands blockade end, oil-sanctions relief, frozen-asset access, and end of threats/operations; U.S. says no talks.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG18_CONDITIONS",
+        "R_AUG18_NOTALKS"
+      ]
+    },
+    {
+      "date": "2026-08-18",
+      "category": "SHIPPING ADAPTATION",
+      "title": "Chinese state shippers avoid Hormuz and Bab el-Mandeb",
+      "location": "Fujairah / Oman approaches",
+      "lat": 25.1,
+      "lon": 56.35,
+      "precision": "COARSE LOGISTICS AREA",
+      "effect": "More STS transfers and alternative loading reduce direct exposure to chokepoint risk.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG18_CHINA_SHIP"
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "category": "REGIONAL ECONOMIC",
+      "title": "UAE suspends financial/economic transactions with Iran",
+      "location": "Abu Dhabi",
+      "lat": 24.4539,
+      "lon": 54.3773,
+      "precision": "POLITICAL NODE",
+      "effect": "Major regional backlash after missiles attributed by UAE and repeated attacks on ADNOC vessels.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG19_UAE"
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "category": "LEBANON / SANCTIONS",
+      "title": "U.S. targets Hezbollah financial network and Iranian-command ties",
+      "location": "Beirut / regional finance",
+      "lat": 33.8938,
+      "lon": 35.5018,
+      "precision": "POLITICAL NODE",
+      "effect": "Raises cost of sustaining Hezbollah as Iranian strategic instrument; does not equal disarmament.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG20_HEZ"
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "category": "ECONOMIC PRESSURE",
+      "title": "U.S. announces forthcoming severe Iran sanctions",
+      "location": "Washington / Tehran",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "precision": "POLITICAL NODE",
+      "effect": "Policy direction is opposite the June sanctions-relief bargain; details due after cutoff.",
+      "verification": "HIGH / ANNOUNCED",
+      "sources": [
+        "R_AUG20_IRAN_SANCTIONS",
+        "R_AUG22_SANCTIONS"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "category": "HORMUZ TRAFFIC",
+      "title": "Seven commodity ships transit; no VLCC or LNG tanker",
+      "location": "Strait of Hormuz",
+      "lat": 26.5667,
+      "lon": 56.25,
+      "precision": "STRAIT",
+      "effect": "Traffic remains single-digit and far below pre-war flow; transponder-off vessels are not captured.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG21_TRAFFIC"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "category": "MARITIME COALITION",
+      "title": "Interested NATO allies coordinate navigation contributions outside NATO mission",
+      "location": "Europe / Hormuz",
+      "lat": 50.8503,
+      "lon": 4.3517,
+      "precision": "INSTITUTIONAL NODE",
+      "effect": "France/UK-led roughly dozen-country safe-passage planning grows; designed to prevent unilateral Hormuz governance from becoming permanent.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG21_NATO"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "category": "IRAN OIL EXPORTS",
+      "title": "Blockade cuts Iranian oil supply to Chinese buyers",
+      "location": "Iran / China export chain",
+      "lat": 29.25,
+      "lon": 50.32,
+      "precision": "COARSE EXPORT SYSTEM",
+      "effect": "Reuters reports Aug exports around 534k bpd vs 1.4m bpd 2025 average: roughly 62% lower, derived.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG21_CHINA_OIL"
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "category": "SELECTIVE PASSAGE",
+      "title": "Iran grants special permission to Iraqi oil tankers",
+      "location": "Strait of Hormuz / Iraq",
+      "lat": 26.5667,
+      "lon": 56.25,
+      "precision": "STRAIT/REGIONAL",
+      "effect": "Strong de facto gatekeeping evidence. Iraq simultaneously pursues Ceyhan, Baniyas and Aqaba alternatives.",
+      "verification": "VERY HIGH",
+      "sources": [
+        "R_AUG22_IRAQ"
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "category": "COUNTER-LEVERAGE",
+      "title": "France/Saudi Arabia discuss Hormuz alternatives and energy/logistics task force",
+      "location": "Paris / Saudi Arabia",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "precision": "POLITICAL NODE",
+      "effect": "Long-run bypass planning can reduce future strategic value of closing Hormuz.",
+      "verification": "HIGH",
+      "sources": [
+        "AP_AUG22_ALT"
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "category": "STRATEGIC LOGISTICS",
+      "title": "South Korea tests commercial Arctic route; China/Russia regular-service plans continue",
+      "location": "Arctic / Eurasian trade corridor",
+      "lat": null,
+      "lon": null,
+      "precision": "GLOBAL CORRIDOR / NOT MAPPED AS TACTICAL ROUTE",
+      "effect": "Evidence of broader chokepoint diversification. Relevant to long-run logistics resilience, but not a direct substitute for Gulf oil/LNG flows through Hormuz.",
+      "verification": "HIGH",
+      "sources": [
+        "R_AUG22_KOREA_ARCTIC",
+        "R_AUG07_CHINA_ARCTIC"
+      ]
+    }
+  ],
+  "non_mou_demands": {
+    "iran": [
+      {
+        "demand": "Legal/war reparations or compensation for U.S./Israeli damage.",
+        "why_absent": "The MoU promised a ≥$300B reconstruction/development plan, but did not characterize that money as legal reparations or admit liability.",
+        "sources": [
+          "TASNIM_JUN06_DEMANDS",
+          "R_MOU_TEXT"
+        ]
+      },
+      {
+        "demand": "Exclusive or dominant Iranian control of Hormuz, including unilateral route authority and later compulsory fees.",
+        "why_absent": "Clause 5 gave Iran temporary safe-passage responsibilities but placed future administration in dialogue with Oman and other littoral states under international law; it did not award sole control.",
+        "sources": [
+          "AJ_HARDLINERS_JUN16",
+          "FT_PAYDARI_MAY27",
+          "TASNIM_JUN15_HORMUZ",
+          "R_MOU_TEXT"
+        ]
+      },
+      {
+        "demand": "Expulsion of U.S. forces from the wider region.",
+        "why_absent": "The text only promises removal from Iran’s proximity after a final deal, not a wholesale U.S. departure from the Middle East.",
+        "sources": [
+          "AJ_HARDLINERS_JUN16",
+          "R_MOU_TEXT"
+        ]
+      },
+      {
+        "demand": "Israeli withdrawal from Lebanon as a concrete U.S.-Iran deal term while preserving Hezbollah’s armed position.",
+        "why_absent": "The MoU protects Lebanon and stops fighting but contains no explicit Israeli-withdrawal timetable and no clause preserving Hezbollah’s weapons. The issue was pushed into a separate Lebanon-Israel track.",
+        "sources": [
+          "R_HEZ_JUN16",
+          "R_MOU_TEXT",
+          "R_LEB_JUN23_STATE"
+        ]
+      },
+      {
+        "demand": "Keep Iranian missile and conventional defense capabilities outside negotiations.",
+        "why_absent": "The MoU simply does not regulate them. Iranian officials explicitly described missile/defense capabilities as out of scope.",
+        "sources": [
+          "TASNIM_JUN18_SCOPE",
+          "R_MOU_TEXT"
+        ]
+      }
+    ],
+    "us": [
+      {
+        "demand": "No Iranian tolls in Hormuz on a permanent basis, not merely during the 60-day interim.",
+        "why_absent": "The MoU only says no charge for 60 days and defers future maritime services/administration. Trump publicly insisted afterward that there should be no Iranian toll later either.",
+        "sources": [
+          "R_TRUMP_MAY21",
+          "R_TRUMP_JUN20_NOTOLLS",
+          "R_MOU_TEXT"
+        ]
+      },
+      {
+        "demand": "Physical removal/destruction of Iran’s highly enriched uranium stockpile.",
+        "why_absent": "The MoU accepted on-site downblending under IAEA supervision as the minimum method rather than requiring Washington to take the material.",
+        "sources": [
+          "R_TRUMP_MAY21",
+          "R_MOU_TEXT"
+        ]
+      },
+      {
+        "demand": "Halt uranium enrichment / zero-enrichment outcome.",
+        "why_absent": "Earlier U.S. demands included halting enrichment, but the MoU deferred the enrichment framework to the final deal.",
+        "sources": [
+          "R_APR11_US_DEMANDS",
+          "R_MOU_TEXT"
+        ]
+      },
+      {
+        "demand": "Reduce or terminate Iranian support for regional proxy groups.",
+        "why_absent": "Earlier U.S. talks raised proxy support; the June MoU stops military operations and references non-interference but contains no explicit proxy-disarmament architecture.",
+        "sources": [
+          "R_APR11_US_DEMANDS",
+          "R_MOU_TEXT"
+        ]
+      },
+      {
+        "demand": "Hezbollah disarmament as a condition for Lebanon security/Israeli withdrawal.",
+        "why_absent": "That term was absent from the U.S.-Iran MoU and appeared instead in the separate June 26 Lebanon-Israel framework.",
+        "sources": [
+          "R_LEB_JUN26_FRAME",
+          "R_MOU_TEXT"
+        ]
+      }
+    ]
+  },
+  "lebanon_reversal": {
+    "title": "Lebanon: from apparent Iranian protection clause to proxy-leverage reversal",
+    "structural_kneecap": 8,
+    "realized_kneecap": 5,
+    "steps": [
+      {
+        "date": "2026-06-16/17",
+        "stage": "Iran/Hezbollah expectation",
+        "text": "Hezbollah publicly expected Tehran to use the U.S.-Iran process to secure Israeli withdrawal. Clause 1 of the MoU halted fighting in Lebanon and protected Lebanese sovereignty without requiring Hezbollah to disarm.",
+        "sources": [
+          "R_HEZ_JUN16",
+          "R_MOU_TEXT"
+        ]
+      },
+      {
+        "date": "2026-06-23",
+        "stage": "Lebanese state pushback",
+        "text": "Lebanese leaders insisted Iran could not negotiate on Lebanon’s behalf. Reuters reported the MoU had initially weakened the Lebanese state; President Joseph Aoun simultaneously demanded complete Israeli withdrawal and an end to foreign tutelage—an apparent reference to Tehran.",
+        "sources": [
+          "R_LEB_JUN23_STATE"
+        ]
+      },
+      {
+        "date": "2026-06-26",
+        "stage": "Separate Lebanon-Israel framework",
+        "text": "Lebanon and Israel signed a U.S.-mediated framework that tied additional Israeli withdrawal to Lebanese Army deployment and dismantling/disarming Hezbollah. The question therefore moved from ‘Iran secures Lebanon through its U.S. bargain’ toward ‘Lebanese sovereignty is restored by removing the armed proxy from the security architecture.’",
+        "sources": [
+          "R_LEB_JUN26_FRAME"
+        ]
+      },
+      {
+        "date": "2026-06-27",
+        "stage": "Hezbollah rejects the outcome",
+        "text": "Hezbollah called the framework surrender/null and void, precisely because Israeli withdrawal was now linked to its disarmament rather than guaranteed through Tehran’s reading of the MoU.",
+        "sources": [
+          "R_LEB_JUN27_REJECT"
+        ]
+      },
+      {
+        "date": "2026-07-21 onward",
+        "stage": "State-control track persists",
+        "text": "Aoun continued pursuing Israeli withdrawal through a state-led process and presented a proposal to dismantle Hezbollah’s arsenal. Implementation remains incomplete and potentially destabilizing, so the strategic kneecap is larger than the realized one.",
+        "sources": [
+          "R_LEB_JUL21_AOUN"
+        ]
+      }
+    ],
+    "assessment": "Analytical judgment: this was a significant strategic reversal for Iran. Tehran initially sought to make Lebanon part of its own bargain with Washington, potentially preserving Hezbollah while obtaining an Israeli pullback. Lebanon rejected that external tutelage and negotiated directly. The resulting framework made Hezbollah’s disarmament—not its preservation—the price of restoring Lebanese sovereignty and Israeli withdrawal. That attacks the utility of Iran’s most important Levantine coercive instrument. It is not a completed defeat because Hezbollah remains armed and implementation is contested."
+  },
+  "agreement_balance": {
+    "headline": "The signed MoU was immediately favorable to Iran on economics and pressure relief, but it did not grant Tehran the permanent Hormuz sovereignty/rent system hardliners wanted. After Iran’s initial kinetic breach and the ensuing collapse, most of Tehran’s front-loaded economic gains were reversed while its de facto ability to disrupt Hormuz survived.",
+    "iran_gained_at_signature": [
+      "Immediate U.S. blockade removal process and promise of later force withdrawal after a final deal.",
+      "Immediate oil-export authorization and broad commitment to sanctions termination.",
+      "Paper commitment to make frozen/restricted assets usable.",
+      "At least $300B reconstruction/economic-development plan promised if a final deal was reached.",
+      "Nuclear hard questions—especially enrichment—deferred while relief began.",
+      "Lebanon included in the all-front ceasefire without a Hezbollah-disarmament clause."
+    ],
+    "iran_did_not_get": [
+      "Exclusive or dominant legal sovereignty over Hormuz.",
+      "Exclusive route-setting authority recognized by Oman, IMO, Gulf states or Washington.",
+      "A permanent compulsory toll/fee right.",
+      "War reparations as a legal admission of U.S./Israeli liability.",
+      "A guaranteed Israeli withdrawal that preserved Hezbollah as an autonomous armed force.",
+      "Removal of U.S. forces from the wider Middle East."
+    ],
+    "iran_lost_after_collapse": [
+      "The oil waiver was revoked.",
+      "The U.S. maritime blockade was reimposed.",
+      "Comprehensive sanctions termination never happened; Washington is moving toward tougher sanctions.",
+      "The $300B reconstruction mechanism never became an implemented final-deal vehicle.",
+      "Broad usable access to frozen assets was not secured; Iran is again demanding it.",
+      "Lebanon moved into a separate sovereignty/disarmament framework outside Tehran’s control."
+    ],
+    "us_gained_at_signature": [
+      "Iranian commitment to safe commercial passage during the interim.",
+      "No recognized Iranian sovereign monopoly over Hormuz.",
+      "No-charge passage for 60 days.",
+      "Iranian non-nuclear-weapons reaffirmation, nuclear status-quo freeze and eventual stockpile disposition/downblending framework.",
+      "A 60-day path toward a final deal and monitoring/UNSC structure."
+    ],
+    "us_did_not_get": [
+      "Immediate zero enrichment or dismantlement of Iran’s nuclear program.",
+      "Immediate removal of the enriched stockpile from Iran.",
+      "A durable final nuclear agreement.",
+      "Permanent free navigation through Hormuz.",
+      "Explicit missile-program/proxy constraints in the MoU itself."
+    ],
+    "current_reality": [
+      "Iran still has high short-term coercive leverage: traffic remains severely depressed and selective permission matters.",
+      "Iran has low recognized/monetizable leverage: IMO and major outside powers reject unilateral sovereignty and compulsory tolls.",
+      "Hormuz itself is NOT strategically irrelevant. It remains a major global energy chokepoint; existing bypass capacity replaces only a minority of prewar flow.",
+      "What is eroding is Iran’s ability to turn disruption into durable economic rent or uncontested bargaining ownership. Gulf pipelines, eastern UAE ports, STS loading, Iraq diversification and multinational freedom-of-navigation planning are all hedges against future Iranian coercion."
+    ]
+  },
+  "hormuz_reality_check": {
+    "title": "Current reality: Hormuz is still globally important; Iran’s exclusive economic leverage is what is eroding",
+    "assessment": "Do not say coalition action has “stripped Hormuz of importance.” That is not supported. The strait remains a critical global energy chokepoint and current disruption is still moving prices and suppressing traffic. The defensible conclusion is narrower: Iran has proven high short-term coercive power, but every prolonged closure creates infrastructure, legal, commercial and military responses that reduce Tehran’s future ability to monetize or monopolize that power.",
+    "metrics": [
+      {
+        "label": "Prewar oil dependence",
+        "value": "~20 mb/d",
+        "note": "IEA says nearly 20 mb/d of oil was exported via Hormuz in 2025."
+      },
+      {
+        "label": "Existing alternative capacity",
+        "value": "~3.5–5.5 mb/d",
+        "note": "IEA estimate of available Saudi/UAE crude export capacity outside Hormuz; not enough to replace the strait."
+      },
+      {
+        "label": "Latest cited commodity-ship count",
+        "value": "7",
+        "note": "Kpler/Reuters Aug. 21: seven commodity ships on Thursday; no VLCC or LNG tanker in that count."
+      },
+      {
+        "label": "Iran Aug oil shipments to China",
+        "value": "534k bpd",
+        "note": "Reuters/Kpler; down from 1.4m bpd average in 2025 (~61.9% lower, derived)."
+      }
+    ],
+    "erosion_mechanisms": [
+      {
+        "mechanism": "International legal rejection",
+        "effect": "IMO Council rejects unilateral sovereignty/control and compulsory tolls; this blocks conversion of coercion into accepted rent.",
+        "sources": [
+          "IMO_COUNCIL_JUL",
+          "R_JUL10_NO_SOV"
+        ]
+      },
+      {
+        "mechanism": "Saudi Red Sea bypass",
+        "effect": "East-West pipeline can move ~5 mb/d for export; Saudi Arabia is considering up to ~2 mb/d additional capacity and talks with neighbors.",
+        "sources": [
+          "R_JUL07_SAUDI_PIPE",
+          "R_MAR17_BYPASS"
+        ]
+      },
+      {
+        "mechanism": "UAE Fujairah bypass",
+        "effect": "Existing Habshan–Fujairah pipeline is ~1.8 mb/d and a new pipeline is being accelerated to expand capacity in 2027.",
+        "sources": [
+          "R_MAY15_UAE_PIPE",
+          "R_MAR17_BYPASS"
+        ]
+      },
+      {
+        "mechanism": "Iraq route diversification",
+        "effect": "Iraq is pursuing Ceyhan, Baniyas and Aqaba alternatives while still requesting Iranian permission for some current tankers.",
+        "sources": [
+          "R_AUG22_IRAQ"
+        ]
+      },
+      {
+        "mechanism": "Commercial adaptation",
+        "effect": "Chinese state shippers are avoiding Hormuz/Bab el-Mandeb and using ship-to-ship loading outside the Gulf, reducing direct exposure.",
+        "sources": [
+          "R_AUG18_CHINA_SHIP"
+        ]
+      },
+      {
+        "mechanism": "Multinational navigation planning",
+        "effect": "France/UK are organizing roughly a dozen-country safe-passage coalition; NATO structures are facilitating contributions without making it a NATO mission.",
+        "sources": [
+          "R_AUG21_NATO"
+        ]
+      },
+      {
+        "mechanism": "Broader chokepoint diversification",
+        "effect": "China/Russia and now South Korea are expanding Arctic-route experiments. This is a strategic logistics hedge, not a substitute for Hormuz energy flows.",
+        "sources": [
+          "R_AUG07_CHINA_ARCTIC",
+          "R_AUG22_KOREA_ARCTIC"
+        ]
+      }
+    ],
+    "bottom_line": "Iran can still close, threaten, delay and selectively permit enough traffic to impose very large costs. It cannot presently turn that fact into uncontested legal sovereignty or a durable toll system, and the longer coercion persists, the more capital and coalition behavior is directed toward reducing future dependence on Iranian-controlled passage."
+  },
+  "sources": {
+    "R_MOU_TEXT": {
+      "label": "Reuters — 14-point Islamabad Memorandum of Understanding",
+      "url": "https://www.reuters.com/world/middle-east/14-point-draft-us-iran-deal-2026-06-17/",
+      "date": "2026-06-17",
+      "grade": "A",
+      "role": "Primary text reproduced by major wire; controls MoU terms."
+    },
+    "R_MOU_SEQ": {
+      "label": "Reuters — U.S. official says sequencing is key",
+      "url": "https://www.reuters.com/world/europe/us-official-says-parties-can-still-walk-away-iran-deal-sequencing-will-be-key-2026-06-17/",
+      "date": "2026-06-17",
+      "grade": "A",
+      "role": "U.S. negotiating interpretation of sequencing and walk-away risk."
+    },
+    "R_MOU_GAPS": {
+      "label": "Reuters — unresolved issues in final U.S.-Iran deal",
+      "url": "https://www.reuters.com/world/middle-east/what-challenges-could-stand-way-final-us-iran-deal-2026-06-17/",
+      "date": "2026-06-17",
+      "grade": "A",
+      "role": "Public record of pre/final-deal gaps: enrichment, stockpile, inspections, sanctions, Hormuz."
+    },
+    "APP_MOU_TEXT": {
+      "label": "American Presidency Project — Islamabad MoU text",
+      "url": "https://www.presidency.ucsb.edu/documents/islamabad-memorandum-understanding-between-the-united-states-america-and-the-islamic",
+      "date": "2026-06-17",
+      "grade": "A",
+      "role": "Published agreement text; APP labels its hosted document draft, so use with Reuters text reporting. Clauses 4–5 define blockade removal, safe passage and future Oman dialogue without granting unilateral Iranian route authority."
+    },
+    "R_JUN25_SHIP": {
+      "label": "Reuters — Ever Lovely struck near Oman after Iranian route warning",
+      "url": "https://www.reuters.com/world/middle-east/oil-back-pre-war-levels-hormuz-traffic-rebounds-us-tries-reassure-gulf-allies-2026-06-25/",
+      "date": "2026-06-25",
+      "grade": "A",
+      "role": "First reported post-MoU ship attack sequence; records Iranian insistence on designated routes and the Ever Lovely strike near Oman."
+    },
+    "AP_JUN25_SHIP": {
+      "label": "AP — Ever Lovely attack and Iranian warning against non-Iranian route",
+      "url": "https://apnews.com/article/862164c2aecbdc376dea434198eaf75f",
+      "date": "2026-06-25",
+      "grade": "A",
+      "role": "Independent major-wire account: Iran threatened vessels using the Oman/IMO route without Tehran permission; Ever Lovely was struck near Oman; U.S. attributed the drone to IRGC."
+    },
+    "CENTCOM_JUN26": {
+      "label": "CENTCOM — U.S. strikes Iran after Ever Lovely attack",
+      "url": "https://www.dvidshub.net/news/568726/us-strikes-iran-response-attack-commercial-vessel",
+      "date": "2026-06-26",
+      "grade": "A",
+      "role": "Primary U.S. actor-source establishing Washington’s stated trigger and retaliatory sequence; useful for what the U.S. claimed, corroborated by independent reporting."
+    },
+    "R_MAY_DRAFT": {
+      "label": "Reuters — Iranian state TV draft framework",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-draft-us-deal-would-reopen-hormuz-shipping-end-naval-blockade-2026-05-27/",
+      "date": "2026-05-27",
+      "grade": "B",
+      "role": "Iranian-side draft framing; useful for public Iranian priorities but not final text."
+    },
+    "R_JUN27": {
+      "label": "Reuters — fresh strikes after tanker hit; pause and renewed talks",
+      "url": "https://www.reuters.com/world/asia-pacific/us-carries-out-fresh-strikes-against-iran-after-tanker-struck-hormuz-escalating-2026-06-27/",
+      "date": "2026-06-27",
+      "grade": "A",
+      "role": "MOU implementation failure sequence after commercial-ship attacks."
+    },
+    "R_JUL07": {
+      "label": "Reuters — U.S. strikes and oil-license revocation after three tanker attacks",
+      "url": "https://www.reuters.com/world/middle-east/ship-hit-hormuz-millions-march-ayatollah-iran-says-no-talks-unless-trump-halts-2026-07-07/",
+      "date": "2026-07-07",
+      "grade": "A",
+      "role": "Key collapse point; shipping attacks, U.S. strike response, sanctions relief reversal."
+    },
+    "R_JUL13": {
+      "label": "Reuters — renewed strikes, Iranian blockade, U.S. 20% “guardian” fee proposal",
+      "url": "https://www.reuters.com/world/middle-east/iran-escalates-attacks-us-bases-gulf-states-warns-more-incidents-strait-2026-07-13/",
+      "date": "2026-07-13",
+      "grade": "A",
+      "role": "Competing claims to administer Hormuz; includes IMO rejection of mandatory tolls."
+    },
+    "R_JUL14": {
+      "label": "Reuters — U.S. drops 20% fee idea, keeps Iranian blockade",
+      "url": "https://www.reuters.com/world/us/trump-says-us-will-take-investment-deals-with-gulf-states-instead-fee-using-2026-07-14/",
+      "date": "2026-07-14",
+      "grade": "A",
+      "role": "Washington backs away from its own toll proposal after regional consultations."
+    },
+    "R_JUL28": {
+      "label": "Reuters — Oman proposes regional Hormuz management with voluntary fees",
+      "url": "https://www.reuters.com/world/middle-east/oman-presented-regional-mechanism-hormuz-iran-source-says-2026-07-28/",
+      "date": "2026-07-28",
+      "grade": "A",
+      "role": "Oman/Gulf branch: voluntary service contributions, no sole Iranian control."
+    },
+    "R_AUG03": {
+      "label": "Reuters — Iran says no current U.S. talks; Oman safe-passage talks continue",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-no-current-talks-with-us-2026-08-03/",
+      "date": "2026-08-03",
+      "grade": "A",
+      "role": "Separates Oman technical channel from direct U.S.-Iran talks."
+    },
+    "R_AUG05": {
+      "label": "Reuters — proposed Hormuz deal could give Iran inbound control",
+      "url": "https://www.reuters.com/world/middle-east/deal-reopen-hormuz-2026-08-05/",
+      "date": "2026-08-05",
+      "grade": "A",
+      "role": "High-water mark of proposed Iranian routing control; fees and inspection remained unresolved."
+    },
+    "R_AUG06_INDUSTRY": {
+      "label": "Reuters via Kitco — shipping industry says Iran-Oman proposal not readily workable",
+      "url": "https://www.kitco.com/news/off-the-wire/2026-08-06/proposed-hormuz-passage-deal-not-feasible-shipping-industry-sources",
+      "date": "2026-08-06",
+      "grade": "B",
+      "role": "Commercial feasibility check: sanctions and insurance limit any fee/control arrangement."
+    },
+    "R_AUG07_TRAFFIC": {
+      "label": "Reuters — Hormuz vessel traffic dwindles during Iran-Oman talks",
+      "url": "https://www.reuters.com/business/energy/vessel-traffic-through-hormuz-dwindles-this-week-markets-watch-iran-oman-talks-2026-08-07/",
+      "date": "2026-08-07",
+      "grade": "A",
+      "role": "Kpler traffic baseline during negotiations; demonstrates practical risk response."
+    },
+    "R_AUG09": {
+      "label": "Reuters — Iran and U.S. trade compensation demands; reopening hopes fade",
+      "url": "https://www.reuters.com/business/energy/oil-rises-uncertainty-continues-over-reopening-strait-2026-08-09/",
+      "date": "2026-08-09",
+      "grade": "A",
+      "role": "Back-and-forth demands: Iran compensation/sanctions/threats; U.S. counter-reparations."
+    },
+    "R_AUG17_OFFENSIVE": {
+      "label": "Reuters — Iran threatens offensive posture; U.S. refuses MoU extension",
+      "url": "https://www.reuters.com/world/middle-east/iran-threatens-go-offensive-strait-hormuz-if-diplomacy-with-us-fails-2026-08-17/",
+      "date": "2026-08-17",
+      "grade": "A",
+      "role": "60-day deadline expiry and transition from bargaining window to renewed coercion."
+    },
+    "R_AUG18_CONDITIONS": {
+      "label": "Reuters — Qalibaf says Hormuz stays shut until June conditions met",
+      "url": "https://www.reuters.com/world/middle-east/hormuz-strait-remain-shut-until-us-meets-interim-deal-conditions-iran-says-2026-08-18/",
+      "date": "2026-08-18",
+      "grade": "A",
+      "role": "Current Iranian demands: end blockade, oil sanctions, frozen-asset restrictions, threats/operations."
+    },
+    "R_AUG18_NOTALKS": {
+      "label": "Reuters — Trump says no talks; Iran says Hormuz still shut",
+      "url": "https://www.reuters.com/world/middle-east/trump-says-no-talks-planned-with-iran-tehran-says-strait-hormuz-still-shut-2026-08-18/",
+      "date": "2026-08-18",
+      "grade": "A",
+      "role": "Confirms no active bilateral negotiation and single-digit traffic."
+    },
+    "R_AUG18_CHINA_SHIP": {
+      "label": "Reuters — Chinese state shippers avoid Hormuz/Bab el-Mandeb",
+      "url": "https://www.reuters.com/business/energy/chinas-state-shippers-deploy-oil-tankers-outside-gulf-avoid-chokepoints-sources-2026-08-18/",
+      "date": "2026-08-18",
+      "grade": "A",
+      "role": "Adaptation signal: ship-to-ship transfers outside Gulf reduce exposure to chokepoint coercion."
+    },
+    "R_AUG19_UAE": {
+      "label": "Reuters — UAE suspends financial/economic transactions with Iran",
+      "url": "https://www.reuters.com/world/middle-east/uaes-financial-embargo-iran-after-missile-threat-puts-rivalry-back-spotlight-2026-08-19/",
+      "date": "2026-08-19",
+      "grade": "A",
+      "role": "Regional backlash after missiles attributed by UAE and repeated ADNOC vessel attacks."
+    },
+    "R_AUG20_HEZ": {
+      "label": "Reuters — U.S. sanctions Hezbollah, emphasizing Iranian-command ties",
+      "url": "https://www.reuters.com/world/middle-east/us-targets-hezbollah-with-fresh-sanctions-emphasizes-ties-iranian-government-2026-08-20/",
+      "date": "2026-08-20",
+      "grade": "A",
+      "role": "Current pressure on Iran’s Lebanon proxy network."
+    },
+    "R_AUG20_IRAN_SANCTIONS": {
+      "label": "Reuters — U.S. announces “toughest sanctions” package for Iran",
+      "url": "https://www.reuters.com/world/middle-east/trump-warns-economic-consequences-any-country-that-supports-iran-2026-08-20/",
+      "date": "2026-08-20",
+      "grade": "A",
+      "role": "Washington shifts pressure from failed MoU relief toward expanded economic warfare."
+    },
+    "R_AUG21_TRAFFIC": {
+      "label": "Reuters — seven commodity ships through Hormuz; no VLCC/LNG",
+      "url": "https://www.reuters.com/world/middle-east/hormuz-ship-crossings-hover-single-digits-data-shows-2026-08-21/",
+      "date": "2026-08-21",
+      "grade": "A",
+      "role": "Current Kpler traffic state; transponder-off caveat retained."
+    },
+    "R_AUG21_NATO": {
+      "label": "Reuters — interested NATO members coordinate possible freedom-of-navigation contributions",
+      "url": "https://www.reuters.com/world/middle-east/nato-members-discuss-strait-hormuz-options-without-alliance-involvement-2026-08-21/",
+      "date": "2026-08-21",
+      "grade": "A",
+      "role": "Counter-leverage branch; not a NATO mission, France/UK leading ~dozen-country effort."
+    },
+    "R_AUG21_CHINA_OIL": {
+      "label": "Reuters — U.S. blockade cuts Iranian oil offers to China",
+      "url": "https://www.reuters.com/business/energy/iranian-oil-offers-chinese-buyers-fall-us-blockade-bites-sources-say-2026-08-21/",
+      "date": "2026-08-21",
+      "grade": "A",
+      "role": "Counter-pressure: Iran Aug exports 534k bpd vs 1.4m bpd 2025 average."
+    },
+    "R_AUG22_IRAQ": {
+      "label": "Reuters — Iran grants special Hormuz permission to Iraqi tankers",
+      "url": "https://www.reuters.com/business/energy/iran-grants-permission-number-iraqi-oil-tankers-pass-through-hormuz-2026-08-22/",
+      "date": "2026-08-22",
+      "grade": "A",
+      "role": "Strong evidence of de facto selective permission regime; not international legal recognition."
+    },
+    "R_AUG22_SANCTIONS": {
+      "label": "Reuters — U.S.-Iran hostile rhetoric ahead of new sanctions",
+      "url": "https://www.reuters.com/world/middle-east/us-iran-keep-up-hostile-rhetoric-ahead-new-sanctions-2026-08-22/",
+      "date": "2026-08-22",
+      "grade": "A",
+      "role": "Current strategic posture; Iran divided between diplomacy and resistance; blockade and low traffic persist."
+    },
+    "AP_AUG08": {
+      "label": "AP — Iran adds sanctions, compensation and withdrawal demands; UAE says vessel targeted",
+      "url": "https://apnews.com/article/feb75871fb82c44b3f7fd0ee02bb24b4",
+      "date": "2026-08-08",
+      "grade": "A",
+      "role": "Independent major-wire record of expanded Iranian demands and regional backlash."
+    },
+    "AP_AUG17": {
+      "label": "AP — Iran-Oman effort and U.S. threat toward Oman",
+      "url": "https://apnews.com/article/53ae10812e472a4e5bb228b9f318a5fc",
+      "date": "2026-08-17",
+      "grade": "A",
+      "role": "Oman branch at 60-day deadline."
+    },
+    "AP_AUG22_ALT": {
+      "label": "AP — France/Saudi Arabia discuss alternatives to Hormuz and energy/logistics task force",
+      "url": "https://apnews.com/article/467d9b2970e0b9855ac9a68ef90c8e75",
+      "date": "2026-08-22",
+      "grade": "A",
+      "role": "Longer-term counter-leverage: infrastructure and routing alternatives to Hormuz."
+    },
+    "R_LEB_JUN05": {
+      "label": "Reuters — Iran links wider peace to Lebanon ceasefire and Israeli withdrawal",
+      "url": "https://www.reuters.com/world/middle-east/iran-declares-support-hezbollah-with-wider-peace-deal-doubt-2026-06-05/",
+      "date": "2026-06-05",
+      "grade": "A",
+      "role": "Public Iranian priority before MoU: protect Lebanon/Hezbollah front and require Israeli withdrawal."
+    },
+    "R_LEB_JUN26": {
+      "label": "Reuters — Israel and Lebanon sign U.S.-mediated framework",
+      "url": "https://www.investing.com/news/commodities-news/israel-lebanon-expected-to-sign-framework-deal-after-usmediated-talks-4763289",
+      "date": "2026-06-26",
+      "grade": "B",
+      "role": "Reuters mirror; framework ties Israeli withdrawal to verified disarmament and Lebanese state control."
+    },
+    "R_LEB_JUN27": {
+      "label": "Reuters — Hezbollah rejects Lebanon-Israel agreement as surrender",
+      "url": "https://www.investing.com/news/commodities-news/hezbollah-rejects-usbrokered-israellebanon-security-deal-as-surrender-4764038",
+      "date": "2026-06-27",
+      "grade": "B",
+      "role": "Hezbollah reaction; highlights divergence from Iran’s reading of June MoU."
+    },
+    "R_LEB_JUL29": {
+      "label": "Reuters — pilot-zone implementation exposes difficulties",
+      "url": "https://www.reuters.com/world/middle-east/first-test-us-backed-pilot-zones-south-lebanon-lays-bare-difficulties-2026-07-29/",
+      "date": "2026-07-29",
+      "grade": "A",
+      "role": "Implementation reality: structural pressure exists, but disarmament remains incomplete."
+    },
+    "R_LEB_AUG12": {
+      "label": "Reuters — third-party verification candidates discussed",
+      "url": "https://www.reuters.com/world/asia-pacific/uk-italy-among-states-considered-verify-hezbollah-disarmament-sources-say-2026-08-12/",
+      "date": "2026-08-12",
+      "grade": "A",
+      "role": "Potential external verification layer for Hezbollah disarmament."
+    },
+    "R_LEB_AUG13_DENIAL": {
+      "label": "Reuters — Lebanon denies agreed shortlist, confirms verification talks continue",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/08/13/lebanon-has-not-agreed-to-shortlist-countries-that-could-verify-hezbollah-s-disarmament-official-says",
+      "date": "2026-08-13",
+      "grade": "B",
+      "role": "Corrects overstatement: shortlist not agreed; third-party verification remains under discussion."
+    },
+    "R_LEB_AUG13": {
+      "label": "Reuters — Israel ties withdrawal to Hezbollah disarmament",
+      "url": "https://www.reuters.com/world/middle-east/after-us-criticism-israel-ties-lebanon-withdrawal-hezbollah-disarmament-2026-08-13/",
+      "date": "2026-08-13",
+      "grade": "A",
+      "role": "Current framework logic; Israel remains until disarmament, U.S. presses implementation."
+    },
+    "R_PARL_AUG06": {
+      "label": "Reuters — Iranian committee reviews bill barring hostile ships and fines up to 20%",
+      "url": "https://malaysia.news.yahoo.com/iranian-parliamentary-committee-reviews-draft-165548028.html",
+      "date": "2026-08-06",
+      "grade": "B",
+      "role": "Reuters mirror; domestic legal-institutionalization attempt, not enacted international law."
+    },
+    "IRANINTL_AUG10": {
+      "label": "Iran International citing ICANA — parliament advances Hormuz security bill",
+      "url": "https://www.iranintl.com/en/202608102970",
+      "date": "2026-08-10",
+      "grade": "C",
+      "role": "Regional opposition outlet citing parliament’s official agency; use for bill status, cross-check with Reuters/Fars."
+    },
+    "PRESSTV_AUG07": {
+      "label": "Press TV — preliminary 11-article Hormuz bill",
+      "url": "https://www.presstv.co.uk/Detail/2026/08/07/773885/Iran-parliament-weighs-bill-to-regulate-transit-through-Strait-of-Hormuz",
+      "date": "2026-08-07",
+      "grade": "C",
+      "role": "Iranian state-media description of domestic bill; actor-source, not independent verification."
+    },
+    "AJ_HARDLINERS_JUN16": {
+      "label": "Al Jazeera — Iranian hardliners: Hormuz control, future fees, U.S. troop expulsion as red lines",
+      "url": "https://www.aljazeera.com/news/2026/6/16/hardliners-and-moderates-what-do-irans-factions-think-of-deal-with-us",
+      "date": "2026-06-16",
+      "grade": "B",
+      "role": "Documents the hardline/maximalist Iranian camp: maintain control of Hormuz, later impose transit/environmental-service fees, avoid major nuclear concessions and eventually expel U.S. troops."
+    },
+    "FT_PAYDARI_MAY27": {
+      "label": "Financial Times — Paydari hardliners call Hormuz control and nuclear program red lines",
+      "url": "https://www.ft.com/content/8245ea80-059f-44d2-8e72-8fe1308dd18b",
+      "date": "2026-05-27",
+      "grade": "B",
+      "role": "Independent reporting on influential ultra-hardliners pressing negotiators for maximalist terms, including continued Iranian control of Hormuz and no nuclear-program concessions."
+    },
+    "TASNIM_JUN06_DEMANDS": {
+      "label": "Tasnim — Iranian pre-MoU demands: blockade, sanctions, assets, Lebanon, reparations",
+      "url": "https://www.tasnimnews.ir/en/news/2026/06/06/3609506/release-of-half-of-iran-s-frozen-assets-a-must-upon-any-understanding-with-us/amp",
+      "date": "2026-06-06",
+      "grade": "C",
+      "role": "Iranian actor-source for Tehran’s stated negotiating demands. Useful for what Iran demanded, not independent proof of U.S. acceptance."
+    },
+    "TASNIM_JUN15_HORMUZ": {
+      "label": "Tasnim — Hormuz clause disputed to final minutes; Iran says 60-day fee exemption only",
+      "url": "https://www.tasnimnews.ir/en/news/2026/06/15/3617830/disagreements-over-strait-of-hormuz-clause-in-iran-us-mou-persisted-until-final-minutes-source",
+      "date": "2026-06-15",
+      "grade": "C",
+      "role": "Iranian actor-source says Tehran sought the maritime-administration language, intended fees after 60 days, and rejected an immediate simultaneous reopening demanded by Trump."
+    },
+    "TASNIM_JUN19_GUIDELINES": {
+      "label": "Tasnim — Iran issues route-coordination rules after MoU",
+      "url": "https://www.tasnimnews.ir/en/news/2026/06/19/3621373/iran-issues-strait-of-hormuz-transit-guidelines-following-islamabad-mou",
+      "date": "2026-06-19",
+      "grade": "C",
+      "role": "Shows Tehran’s operational interpretation: prior route/schedule coordination, 48-hour requests and no fees during the 60-day period."
+    },
+    "TASNIM_JUN26_COORD": {
+      "label": "Tasnim — Iran says safe passage outside its coordination is not guaranteed",
+      "url": "https://www.tasnimnews.ir/en/news/2026/06/26/3626530/no-safe-passage-guarantee-in-hormuz-strait-without-iran-s-coordination-deputy-fm/amp",
+      "date": "2026-06-26",
+      "grade": "C",
+      "role": "Iranian actor-source documenting Tehran’s post-MoU maximal reading of route authority; does not itself prove that the published MoU granted exclusive route-setting power."
+    },
+    "R_TRUMP_MAY21": {
+      "label": "Reuters Connect — Trump: Hormuz should be open, free and toll-free; U.S. wants Iran’s highly enriched uranium",
+      "url": "https://www.reutersconnect.com/item/trump-says-us-doesnt-want-tolls-on-strait-will-retrieve-uranium-from-iran/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1ZBMjYyNjIxMDUyMDI2UlAx",
+      "date": "2026-05-21",
+      "grade": "A",
+      "role": "Primary U.S. public maximal position before the MoU on Hormuz and enriched uranium, carried by Reuters."
+    },
+    "R_TRUMP_JUN20_NOTOLLS": {
+      "label": "Reuters — Trump says no Hormuz tolls after the 60-day period either",
+      "url": "https://www.investing.com/news/commodities-news/trump-says-no-toll-on-strait-of-hormuz-unless-us-imposes-one-4751631",
+      "date": "2026-06-20",
+      "grade": "B",
+      "role": "Reuters report of Washington’s interpretation after signing: no Iranian toll after the interim period."
+    },
+    "R_HEZ_JUN16": {
+      "label": "Reuters — Hezbollah expects Iran to pursue Israeli withdrawal through final U.S.-Iran deal",
+      "url": "https://www.reuters.com/world/middle-east/hezbollah-says-iran-has-pledged-pursue-israeli-withdrawal-lebanon-us-2026-06-16/",
+      "date": "2026-06-16",
+      "grade": "A",
+      "role": "Documents Iran/Hezbollah expectation that Lebanon would remain part of the U.S.-Iran bargaining track and that Israeli withdrawal would be pursued in the final deal."
+    },
+    "R_LEB_JUN23_STATE": {
+      "label": "Reuters — Lebanon says Tehran cannot negotiate for it; Aoun rejects foreign tutelage",
+      "url": "https://www.reuters.com/world/middle-east/new-lebanon-israel-talks-begin-shadow-us-iran-deal-2026-06-23/",
+      "date": "2026-06-23",
+      "grade": "A",
+      "role": "Documents Lebanese state resistance to Tehran negotiating on Lebanon’s behalf, and Aoun’s demand for both Israeli withdrawal and an end to foreign tutelage."
+    },
+    "R_LEB_JUN26_FRAME": {
+      "label": "Reuters — Israel and Lebanon sign framework tying withdrawal to Hezbollah disarmament",
+      "url": "https://www.investing.com/news/commodities-news/israel-lebanon-expected-to-sign-framework-deal-after-usmediated-talks-4763289",
+      "date": "2026-06-26",
+      "grade": "B",
+      "role": "Reuters text via mirror. Framework shifts the Lebanon bargain toward Lebanese Army deployment and Hezbollah disarmament as conditions for further Israeli withdrawal."
+    },
+    "R_LEB_JUN27_REJECT": {
+      "label": "Reuters — Hezbollah rejects Lebanon-Israel framework as “surrender”",
+      "url": "https://www.reuters.com/world/middle-east/israeli-drone-strike-hits-southern-lebanon-day-after-security-deal-2026-06-27/",
+      "date": "2026-06-27",
+      "grade": "A",
+      "role": "Hezbollah’s reaction confirms the framework cut directly against its preferred reading of the Iran-U.S. MoU."
+    },
+    "R_LEB_JUL21_AOUN": {
+      "label": "Reuters — Aoun presents plan to dismantle Hezbollah arsenal and secure Israeli withdrawal",
+      "url": "https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-21/",
+      "date": "2026-07-21",
+      "grade": "A",
+      "role": "Shows the Lebanese state continuing on a sovereignty/disarmament track rather than accepting Iran as Lebanon’s negotiator."
+    },
+    "TASNIM_JUN18_SCOPE": {
+      "label": "Tasnim — Iranian officials say defense and missile capabilities remain outside negotiations",
+      "url": "https://tasnimnews.ir/en/news/2026/06/18/3620280/iranian-president-signs-islamabad-mou-with-us",
+      "date": "2026-06-18",
+      "grade": "C",
+      "role": "Iranian actor-source for Tehran’s declared scope limitation; supports identifying missile/defense constraints as absent from the MoU."
+    },
+    "R_APR11_US_DEMANDS": {
+      "label": "Reuters — April talks: U.S. demands included halting enrichment and cutting proxy support",
+      "url": "https://www.reuters.com/world/asia-pacific/us-iran-talks-pause-now-disagreements-remain-2026-04-11/",
+      "date": "2026-04-11",
+      "grade": "A",
+      "role": "Earlier U.S. maximal negotiating position relevant to what did not make the June MoU: halt enrichment and reduce support for regional proxy groups."
+    },
+    "CENTCOM_JUN20": {
+      "label": "CENTCOM — 55 merchant ships / >17m barrels through Hormuz after MoU",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4522490/commercial-vessels-flow-through-open-strait-of-hormuz/",
+      "date": "2026-06-20",
+      "grade": "A",
+      "role": "Primary U.S. operational source showing commercial traffic recovery before the initial post-MoU ship attack."
+    },
+    "R_JUN22_OIL_WAIVER": {
+      "label": "Reuters — U.S. Treasury issues 60-day authorization for Iranian oil sales",
+      "url": "https://www.reuters.com/business/energy/us-issues-iran-related-general-license-oil-sales-2026-06-22/",
+      "date": "2026-06-22",
+      "grade": "A",
+      "role": "Independent confirmation that Washington began implementing the immediate oil-relief clause before the June 25 Ever Lovely attack."
+    },
+    "CENTCOM_JUN27": {
+      "label": "CENTCOM — additional strikes after M/T Kiku attack",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4528488/us-forces-conduct-additional-strikes-after-irans-latest-commercial-ship-attack/",
+      "date": "2026-06-27",
+      "grade": "A",
+      "role": "Primary U.S. attribution and response sequence after the second post-MoU commercial-vessel attack."
+    },
+    "IMO_HORMUZ_ROUTE": {
+      "label": "IMO — Strait of Hormuz shipping route / jointly proposed TSS",
+      "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx",
+      "date": "2026-08-19",
+      "grade": "A",
+      "role": "Primary international maritime source: current TSS was proposed by Iran and Oman and adopted by IMO in 1968."
+    },
+    "IMO_LEGAL_APR27": {
+      "label": "IMO to UN Security Council — straits cannot be closed; no tolls/fees/discrimination",
+      "url": "https://www.imo.org/en/mediacentre/secretarygeneral/pages/un%20security%20council%20high-level%20open%20debate-27%20april.aspx",
+      "date": "2026-04-27",
+      "grade": "A",
+      "role": "Primary international maritime statement of the legal principles the IMO applies to Hormuz."
+    },
+    "IMO_COUNCIL_JUL": {
+      "label": "IMO Council — unimpeded transit, recognized TSS, free of tolls/charges",
+      "url": "https://www.imo.org/en/mediacentre/pressbriefings/pages/imo-council-reaffirms-commitment-to-protecting-vital-shipping-lanes.aspx",
+      "date": "2026-07-10",
+      "grade": "A",
+      "role": "Primary IMO governing-council position after Iran’s post-MoU control claims."
+    },
+    "R_JUL10_NO_SOV": {
+      "label": "Reuters — IMO Council rejects recognition of Iranian sovereignty/control entity",
+      "url": "https://www.reuters.com/world/middle-east/countries-must-reject-iran-efforts-control-hormuz-un-agency-document-says-2026-07-10/",
+      "date": "2026-07-10",
+      "grade": "A",
+      "role": "Independent report that the IMO Council rejected Iran’s unilateral sovereignty/control claim over international transit."
+    },
+    "R_JUL28_TSS": {
+      "label": "Reuters — Iran says it no longer recognizes TSS, seeks greater share of routes",
+      "url": "https://www.reuters.com/world/middle-east/iran-proposes-temporary-hormuz-plan-giving-itself-greater-control-over-transit-2026-07-28/",
+      "date": "2026-07-28",
+      "grade": "A",
+      "role": "Iranian official acknowledgement that the established TSS lies largely in Omani waters and that Tehran was attempting to replace it after the MoU."
+    },
+    "IEA_HORMUZ": {
+      "label": "IEA — Strait of Hormuz and alternative-route capacity",
+      "url": "https://www.iea.org/about/oil-security-and-emergency-response/strait-of-hormuz",
+      "date": "2026-08-22",
+      "grade": "A",
+      "role": "Primary energy-security reference: nearly 20 mb/d exported through Hormuz in 2025; only about 3.5–5.5 mb/d of available bypass capacity estimated."
+    },
+    "R_MAR17_BYPASS": {
+      "label": "Reuters Graphics — Gulf producers shift volumes to Saudi/UAE Hormuz-bypass pipelines",
+      "url": "https://www.reuters.com/graphics/IRAN-CRISIS/MAPS/znpnmelervl/2026-03-17/gulf-oil-producers-scramble-to-bypass-hormuz-as-iran-locks-down-the-strait/",
+      "date": "2026-03-17",
+      "grade": "A",
+      "role": "Independent shipping/IEA/Kpler-based evidence of actual wartime use of Saudi and UAE bypass infrastructure."
+    },
+    "R_MAY15_UAE_PIPE": {
+      "label": "Reuters — UAE fast-tracks additional Fujairah export pipeline",
+      "url": "https://www.reuters.com/business/energy/uae-accelerate-oil-pipeline-project-help-bypass-hormuz-2026-05-15/",
+      "date": "2026-05-15",
+      "grade": "A",
+      "role": "Evidence that Hormuz coercion accelerated permanent UAE bypass investment; new capacity expected in 2027."
+    },
+    "R_JUL07_SAUDI_PIPE": {
+      "label": "Reuters — Saudi Arabia considers adding up to 2m bpd Red Sea pipeline capacity",
+      "url": "https://www.reuters.com/business/energy/saudi-arabia-considers-expansion-oil-pipeline-red-sea-sources-say-2026-07-07/",
+      "date": "2026-07-07",
+      "grade": "A",
+      "role": "Evidence that Hormuz disruption is prompting Saudi/Kuwaiti/Bahraini/Qatari long-run bypass planning."
+    },
+    "R_AUG22_KOREA_ARCTIC": {
+      "label": "Reuters — South Korea tests commercial Northern Sea Route to Europe",
+      "url": "https://www.reuters.com/world/china/south-korea-ship-test-arctic-commercial-route-amid-western-concerns-2026-08-22/",
+      "date": "2026-08-22",
+      "grade": "A",
+      "role": "Broader chokepoint-diversification signal. Not a direct substitute for Hormuz energy flows."
+    },
+    "R_AUG07_CHINA_ARCTIC": {
+      "label": "Reuters — seven Chinese vessels permitted for Europe via Russia’s Northern Sea Route",
+      "url": "https://www.reuters.com/world/china/rosatom-says-seven-chinese-vessels-will-sail-europe-via-russias-arctic-route-2026-08-07/",
+      "date": "2026-08-07",
+      "grade": "A",
+      "role": "China/Russia strategic logistics diversification; relevant as long-run chokepoint hedging, not as a replacement for Gulf oil transit."
+    }
+  }
+}

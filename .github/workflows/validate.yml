@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
+      - name: Build exhaustive source registry
+        run: python scripts/build_source_registry.py --root .
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration
@@ -42,7 +44,12 @@ jobs:
           node tests/security-rendering.test.js
           node tests/costing.test.js
           node tests/forensic-v1.3.2.test.js
+          node tests/full-scope-20260822.test.js
       - name: Validate forensic v1.3.2 analytical package
         env:
           PYTHONUTF8: '1'
         run: python data/forensic-v1.3.2/validate-addon.py
+      - name: Validate full-scope design and analytical locks
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_full_scope.py

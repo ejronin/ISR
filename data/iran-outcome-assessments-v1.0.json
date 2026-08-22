@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "title": "Iran outcome assessments",
+  "purpose": "Plain-language synthesis layer derived from accepted canonical/forensic records. It does not replace those records.",
+  "review_cutoff": "2026-08-20T15:59:00-04:00",
+  "rules": [
+    "No composite war score.",
+    "Every outcome states both what Iran lost and what capability remained.",
+    "Tactical success does not automatically establish operational or strategic success.",
+    "Use only existing canonical map/event references; do not create new targeting-quality coordinates.",
+    "Current assessment must rank above superseded, legacy, or source-article records in public search."
+  ],
+  "outcomes": [
+    {
+      "id": "IRN-OUTCOME-TACTICAL",
+      "level": "TACTICAL",
+      "label": "Tactical",
+      "headline": "Real Iranian tactical successes coexisted with heavy tactical attrition.",
+      "strongest_supported_conclusion": "Iran retained the ability to impose real tactical losses and achieved verified successes, including the F-15E shootdown and damage at multiple U.S.-linked sites. At the same time, Iran lost substantial aircraft, launchers, air-defense/radar capacity and other tactical assets.",
+      "what_iran_lost": "Substantial aircraft, launchers, air-defense/radar capacity and local combat systems; many high-profile victory claims were later corrected, contradicted or narrowed.",
+      "what_iran_retained": "Missile/UAS strike capability, the ability to damage fixed regional targets, and the ability to produce genuine U.S./coalition tactical losses.",
+      "what_this_does_not_prove": "Iranian tactical successes do not establish coalition paralysis, collapse of U.S. air superiority, or strategic victory.",
+      "analytic_likelihood": "VERY_LIKELY",
+      "confidence": "HIGH",
+      "trend": "IRAN_CAPABILITY_ATTRITED_BUT_NOT_SUPPRESSED",
+      "supporting_record_refs": [
+        "PUB-F15E-001",
+        "CH-F15E-CSAR-URANIUM",
+        "CH-F35-MAR19",
+        "asset-display-v1.3.3:aircraft",
+        "asset-display-v1.3.3:launchers"
+      ],
+      "contrary_or_limiting_refs": [
+        "domain-assessments:Missile / drone capability",
+        "domain-assessments:Air / missile defense"
+      ],
+      "map_policy": "Filter to already geocoded tactical-loss and strike-effect records. Do not add coordinates for mobile launchers or units."
+    },
+    {
+      "id": "IRN-OUTCOME-MILITARY",
+      "level": "MILITARY_OPERATIONAL",
+      "label": "Military / operational",
+      "headline": "Iran's conventional military position was severely degraded, not eliminated.",
+      "strongest_supported_conclusion": "Iran suffered catastrophic conventional naval losses and severe attrition across aircraft, launchers, air defense/radar, command/C2, fixed infrastructure and standing missile inventory. Surviving missile/UAS capacity and IRGC small craft prevent an assessment of military elimination.",
+      "what_iran_lost": "58+ naval hulls/craft in the evidence-supported floor, 23+ aircraft in the evidence-supported floor, 335+ launchers reported neutralized, major air-defense/radar losses, senior command losses, and substantial standing missile-inventory physical loss/damage.",
+      "what_iran_retained": "Meaningful missile/UAS strike capacity, surviving IRGC small craft, portions of the air-defense network, and enough military capacity to continue coercive and lethal operations.",
+      "what_this_does_not_prove": "It does not mean every Iranian vessel, launcher, aircraft, air-defense system or missile was destroyed.",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "confidence": "HIGH",
+      "trend": "SEVERE_CONVENTIONAL_FORCE_DEGRADATION_WITH_SURVIVING_STRIKE_CAPACITY",
+      "supporting_record_refs": [
+        "PUB-NAVY-001",
+        "asset-display-v1.3.3:naval_total",
+        "asset-display-v1.3.3:aircraft",
+        "asset-display-v1.3.3:launchers",
+        "asset-display-v1.3.3:missile_inventory",
+        "forensic-v1.3.2:iran-loss-envelopes.json"
+      ],
+      "contrary_or_limiting_refs": [
+        "domain-assessments:Missile / drone capability",
+        "domain-assessments:Maritime control / sea denial"
+      ],
+      "map_policy": "Show existing naval, air, fixed-site, C2 and infrastructure loss events. Keep mobile-system geography coarse or absent."
+    },
+    {
+      "id": "IRN-OUTCOME-POLITICAL",
+      "level": "POLITICAL",
+      "label": "Political",
+      "headline": "Iran suffered extraordinary senior leadership losses while the state continued to function.",
+      "strongest_supported_conclusion": "The conflict removed a canonical minimum of 11 individually identified senior Iranian political/state and military/security leaders, including the Supreme Leader and multiple top security-command figures. This is severe leadership disruption; it is not evidence that the Iranian state ceased functioning.",
+      "what_iran_lost": "Senior political/state and military/security leadership continuity, including the Supreme Leader, senior national-security leadership, intelligence leadership and top military commanders.",
+      "what_iran_retained": "A functioning state apparatus, replacement leadership, continued diplomacy and the ability to direct military operations.",
+      "what_this_does_not_prove": "Leadership decapitation does not by itself establish regime collapse, loss of national command authority, or domestic political capitulation.",
+      "analytic_likelihood": "ALMOST_CERTAIN",
+      "confidence": "HIGH",
+      "trend": "SEVERE_LEADERSHIP_DISRUPTION_WITH_STATE_CONTINUITY",
+      "supporting_record_refs": [
+        "forensic-v1.3.2:iran-leadership-casualties.json",
+        "asset-display-v1.3.3:leaders"
+      ],
+      "contrary_or_limiting_refs": [
+        "integration-v1.2:diplomacy.json"
+      ],
+      "map_policy": "Use existing event/map references only. If a leadership record has no public map reference, show it in the evidence rail without inventing a pin."
+    },
+    {
+      "id": "IRN-OUTCOME-DIPLOMATIC",
+      "level": "DIPLOMATIC",
+      "label": "Diplomatic",
+      "headline": "Iran retained negotiating channels but failed to secure a durable settlement and faced harder regional alignment.",
+      "strongest_supported_conclusion": "Iran remained diplomatically engaged through mediators and temporary arrangements, but repeated negotiating windows failed to produce a durable final settlement. Regional security coordination hardened rather than consistently fracturing under Iranian pressure.",
+      "what_iran_lost": "Diplomatic leverage sufficient to convert battlefield/Hormuz pressure into a durable final agreement on its preferred terms; the regional environment also moved toward greater security coordination among several states.",
+      "what_iran_retained": "Omani/Pakistani and other mediation channels, bargaining relevance, continued external economic relationships, and the ability to make Hormuz control and sanctions relief central negotiating issues.",
+      "what_this_does_not_prove": "Iran was not totally diplomatically isolated, and regional partners did not uniformly support every U.S. military proposal.",
+      "analytic_likelihood": "LIKELY",
+      "confidence": "MODERATE",
+      "trend": "REGIONAL_ALIGNMENT_HARDENED_WHILE_MEDIATION_PERSISTED",
+      "supporting_record_refs": [
+        "integration-v1.2:diplomacy.json",
+        "domain-assessments:Alliance / diplomatic position",
+        "EV-20260730-001",
+        "EV-20260807-002",
+        "EV-20260817-001"
+      ],
+      "contrary_or_limiting_refs": [
+        "integration-v1.2:diplomacy.json:DIP-PKG-004",
+        "integration-v1.2:diplomacy.json:DIP-PKG-008",
+        "integration-v1.2:diplomacy.json:DIP-PKG-011"
+      ],
+      "map_policy": "Use country-level or existing agreement/event map references. Do not imply formal alliance membership beyond the canonical agreement record."
+    },
+    {
+      "id": "IRN-OUTCOME-STRATEGIC",
+      "level": "STRATEGIC",
+      "label": "Strategic",
+      "headline": "Iran's strategic position degraded sharply, but its strongest coercive lever survived.",
+      "strongest_supported_conclusion": "U.S./coalition long-range strike and distributed C2 advantages persisted while Iran's conventional force base and leadership were heavily degraded. Iran nevertheless retained substantial Hormuz coercive leverage and enough missile/UAS capability to continue imposing regional cost.",
+      "what_iran_lost": "A large share of conventional-force depth, senior leadership continuity, portions of air-defense and strike infrastructure, and the ability to prevent sustained coalition long-range strike operations.",
+      "what_iran_retained": "Hormuz sea-denial/coercive leverage, residual missile/UAS strike capacity, bargaining relevance and the ability to impose economic and operational costs.",
+      "what_this_does_not_prove": "Strategic degradation is not strategic elimination. Low commercial traffic through Hormuz does not by itself prove uncontested Iranian sea control, and coalition strike superiority does not mean Iran became incapable of retaliation.",
+      "analytic_likelihood": "LIKELY",
+      "confidence": "MODERATE",
+      "trend": "IRAN_STRATEGIC_POSITION_DEGRADED_BUT_COERCIVE_LEVERS_SURVIVE",
+      "supporting_record_refs": [
+        "domain-assessments:Air / long-range strike",
+        "domain-assessments:C2ISR / targeting",
+        "domain-assessments:Maritime control / sea denial",
+        "PUB-NAVY-001",
+        "integration-v1.2:shipping.json",
+        "integration-v1.2:diplomacy.json"
+      ],
+      "contrary_or_limiting_refs": [
+        "domain-assessments:Maritime control / sea denial",
+        "domain-assessments:Missile / drone capability"
+      ],
+      "map_policy": "Emphasize Hormuz, existing blockade/interdiction records, fixed C2 nodes and existing regional routes. Never map current mobile military positions."
+    }
+  ]
+}

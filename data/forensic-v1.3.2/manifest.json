@@ -46,7 +46,7 @@
     "graph_edges": 94,
     "leadership_records": 11,
     "loss_envelope_categories": 9,
-    "public_assessments": 3,
+    "public_assessments": 9,
     "material_loss_categories": 8,
     "munitions_expenditure_categories": 1
   },
@@ -207,8 +207,8 @@
     },
     {
       "name": "public-assessments.json",
-      "bytes": 2108,
-      "sha256": "b230f3d49c48b09643b19f908a03bc7f66131911b95222a70e6e760a04c4af28"
+      "bytes": 7406,
+      "sha256": "d0ec70df1f6006b86abd0ce177310b64ec38201f6a9ea92486dd61c39c080c84"
     },
     {
       "name": "qatar-iran-april-contacts.json",
@@ -264,5 +264,6 @@
     "Mar.31 all-region munitions composition now derives from date-compatible UAE/Bahrain/Israel itemized splits; later CSIS conflict-wide 30% missile/60% drone depletion percentages are context only.",
     "Separate munitions expenditure recalculated to $0.419220B / $5.897135B / $18.512200B.",
     "Source namespace now 136; accepted 14 gaps/14 requests and 11 leadership records unchanged."
-  ]
+  ],
+  "full_scope_integration_note": "2026-08-22 full-scope integration extends public-assessments.json with higher-level outcome/force-preservation/Hormuz/regional assessments; other accepted v1.3.2 forensic authorities remain unchanged."
 }

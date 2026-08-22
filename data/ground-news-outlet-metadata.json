@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-08-22",
+  "methodology": "Ground News publisher metadata only. Bias/factuality never changes Atlas evidence grade. Unlisted outlets are NOT_RATED or NOT_APPLICABLE.",
+  "profiles": {
+    "Reuters": {"status":"RATED","bias_raw":"CENTER","bias_bucket_3":"CENTER","factuality":"Very High","profile_url":"https://ground.news/interest/reuters_fa2539","country":"United Kingdom","region":"EUROPE"},
+    "Associated Press": {"status":"RATED","bias_raw":"LEAN LEFT","bias_bucket_3":"LEFT","factuality":"High","profile_url":"https://ground.news/interest/associated-press-news","country":"United States","region":"NORTH_AMERICA"},
+    "AP": {"alias_of":"Associated Press"},
+    "The Washington Post": {"status":"RATED","bias_raw":"LEAN LEFT","bias_bucket_3":"LEFT","factuality":"High","profile_url":"https://ground.news/interest/the-washington-post","country":"United States","region":"NORTH_AMERICA"},
+    "Washington Post": {"alias_of":"The Washington Post"},
+    "Al Jazeera": {"status":"RATED","bias_raw":"LEAN LEFT","bias_bucket_3":"LEFT","factuality":"High","profile_url":"https://ground.news/interest/al-jazeera_1a2e2c","country":"Qatar","region":"MIDDLE_EAST_NORTH_AFRICA"},
+    "BBC News": {"status":"RATED","bias_raw":"CENTER","bias_bucket_3":"CENTER","factuality":"Very High","profile_url":"https://ground.news/interest/bbc-news_bf95f4","country":"United Kingdom","region":"EUROPE"},
+    "The National": {"status":"RATED","bias_raw":"CENTER","bias_bucket_3":"CENTER","factuality":"High","profile_url":"https://ground.news/interest/the-national_7f9810","country":"United Arab Emirates","region":"MIDDLE_EAST_NORTH_AFRICA"}
+  }
+}

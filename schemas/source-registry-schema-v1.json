@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ISR Source Registry v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "outlet_profiles",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "outlet_profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "outlet_profile_id",
+          "display_name",
+          "region",
+          "outlet_type",
+          "ground_news"
+        ],
+        "properties": {
+          "outlet_profile_id": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "region": {
+            "enum": [
+              "NORTH_AMERICA",
+              "LATIN_AMERICA_CARIBBEAN",
+              "EUROPE",
+              "MIDDLE_EAST_NORTH_AFRICA",
+              "SUB_SAHARAN_AFRICA",
+              "SOUTH_ASIA",
+              "EAST_ASIA",
+              "SOUTHEAST_ASIA",
+              "CENTRAL_ASIA_CAUCASUS",
+              "OCEANIA",
+              "GLOBAL_INTERNATIONAL"
+            ]
+          },
+          "outlet_type": {
+            "type": "string"
+          },
+          "state_affiliation": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ownership_note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ground_news": {
+            "type": "object",
+            "required": [
+              "status",
+              "checked_at"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "RATED",
+                  "NOT_RATED",
+                  "NOT_APPLICABLE"
+                ]
+              },
+              "bias_raw": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "FAR LEFT",
+                  "LEFT",
+                  "LEAN LEFT",
+                  "CENTER",
+                  "LEAN RIGHT",
+                  "RIGHT",
+                  "FAR RIGHT",
+                  null
+                ]
+              },
+              "bias_bucket_3": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "LEFT",
+                  "CENTER",
+                  "RIGHT",
+                  null
+                ]
+              },
+              "factuality": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "profile_url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "checked_at": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "outlet_profile_id",
+          "url"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "outlet_profile_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "publication_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "quality": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lineage": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "records_supported": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
