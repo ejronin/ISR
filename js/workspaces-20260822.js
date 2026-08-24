@@ -2,8 +2,8 @@
 (function ISRAug22Workspaces(){
   if(window.__ISR_AUG22_WORKSPACES__) return;
   window.__ISR_AUG22_WORKSPACES__=true;
-  const CANONICAL='2026-08-22';
-  const CANONICAL_DISPLAY='2026-08-22 13:59 ET';
+  const CANONICAL='2026-08-24';
+  const CANONICAL_DISPLAY='2026-08-24 14:14 ET';
   const OUTCOME_DISPLAY='2026-08-20 15:59 ET';
   const MOU_DISPLAY='2026-08-22 10:54 ET';
   const GN_SCALE=['FAR LEFT','LEFT','LEAN LEFT','CENTER','LEAN RIGHT','RIGHT','FAR RIGHT'];
@@ -24,9 +24,9 @@
 
   function setCanonicalLabels(){
     const stamp=document.querySelector('.review-stamp');
-    if(stamp) stamp.textContent=`Canonical evidence reviewed through ${CANONICAL_DISPLAY}`;
+    if(stamp) stamp.textContent=`Current chronology reviewed through ${CANONICAL_DISPLAY} · historical ledger locked through 2026-08-22 13:59 ET`;
     const strip=document.querySelector('#timeline .isr-current-strip span');
-    if(strip) strip.textContent=`Canonical chronology through ${CANONICAL_DISPLAY}`;
+    if(strip) strip.textContent=`Current chronology through ${CANONICAL_DISPLAY} · 98 locked historical + 10 current overlay`;
   }
 
   function peerForState(){
@@ -73,7 +73,7 @@
     if(shell.classList.contains('isr-workspace-enhanced')){applyVisualZoom();return;}
     shell.classList.add('isr-workspace-enhanced');
     const strip=shell.querySelector('.isr-current-strip');
-    const help=el('details','isr-timeline-help');const sum=add(help,'summary','','How to use');add(help,'p','',`AS OF asks what was physically/operationally true by a date. KNOWN BY asks what public evidence had established by then. WAR / MONTH / WEEK / DAY / HOUR changes analytical filtering. FIT / 1× / 2× / 4× / 8× changes only the visual width of the chronology. Drag or horizontally scroll the ruler at higher visual scales. Canonical evidence currently runs through ${CANONICAL_DISPLAY}.`);strip?.after(help);
+    const help=el('details','isr-timeline-help');const sum=add(help,'summary','','How to use');add(help,'p','',`AS OF asks what was physically/operationally true by a date. KNOWN BY asks what public evidence had established by then. WAR / MONTH / WEEK / DAY / HOUR changes analytical filtering. FIT / 1× / 2× / 4× / 8× changes only the visual width of the chronology. Drag or horizontally scroll the ruler at higher visual scales. Current chronology runs through ${CANONICAL_DISPLAY}; the integration-v1.2 historical ledger remains locked through 2026-08-22 13:59 ET.`);strip?.after(help);
     const bar=el('div','isr-timeline-workbar');
     const status=add(bar,'div','isr-timeline-prefetch','Chronology prefetched');status.setAttribute('aria-live','polite');
     const dateNav=add(bar,'div','isr-date-nav');
@@ -122,7 +122,7 @@ function shiftDay(n){const state=window.AtlasState?.get?.();if(!state?.timeCutof
     const input=document.getElementById('isrWorkspaceDate');if(input)input.value=state.timeCutoff||CANONICAL;
     const actors=(state.activeFilters||[]).filter(x=>x.startsWith('actor:')).map(x=>x.slice(6));const q=document.getElementById('isrTimelineSearch')?.value?.trim();
     const summary=document.getElementById('isrTimelineActiveSummary');if(summary)summary.textContent=`${label(state.temporalMode||'as-of')} · ${state.timeCutoff||CANONICAL} · ${label(state.timelineContext||'all')} · ${actors.length?actors.join(', '):'all actors'}${q?` · search: ${q}`:''}`;
-    const count=(window.ATLAS_TEMPORAL_INDEX||[]).length;const status=document.querySelector('.isr-timeline-prefetch');if(status)status.textContent=`Canonical chronology prefetched · ${count} indexed records`;
+    const count=(window.ATLAS_TEMPORAL_INDEX||[]).length;const currentCount=(window.ATLAS_LEDGER?.events?.events||[]).length+(window.ATLAS_CURRENT_UPDATE?.events||[]).length;const status=document.querySelector('.isr-timeline-prefetch');if(status)status.textContent=`Current chronology prefetched · ${currentCount} event records${count>currentCount?` · ${count-currentCount} evidence annotations`:''}`;
     const sel=document.getElementById('isrTimelineSelectedConfirm'),id=state.selectedRecord?.type==='event'?state.selectedRecord.id:null;const rec=id?(window.ATLAS_TEMPORAL_INDEX||[]).find(x=>x.event_id===id):null;
     if(sel){if(!rec)sel.textContent='No chronology record selected.';else{const mapped=Boolean((rec.map_refs||[]).length||(rec.facility_refs||[]).length);sel.textContent=`Selected ${rec.event_date||'date unresolved'} · ${rec.summary||id} · ${mapped?'confirmed on shared canonical map':'no canonical map reference'}`;}}
     const mapCard=document.getElementById('isrTimelineMapCard');if(mapCard){const b=mapCard.querySelector('b'),s=mapCard.querySelector('span');if(!rec){if(b)b.textContent='No event selected';if(s)s.textContent='Select a timeline dot or event card to inspect it on the shared map.';}else{if(b)b.textContent=rec.event_date||'Date unresolved';if(s)s.textContent=rec.summary||id;}}

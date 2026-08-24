@@ -78,7 +78,7 @@
     const events=window.ATLAS_LEDGER?.events?.events||[]; const refs=[]; (o.supporting_record_refs||[]).forEach(id=>{const e=events.find(x=>x.event_id===id);if(e)refs.push(...(e.map_refs||[]),...(e.facility_refs||[]));}); return [...new Set(refs)].filter(Boolean);
   }
 
-  function sourceMap(){const m=new Map();(window.ATLAS_LEDGER?.sources?.sources||[]).forEach(s=>m.set(s.source_id,s));(window.ATLAS_FORENSIC?.sources?.sources||[]).forEach(s=>m.set(s.source_id,s));return m}
+  function sourceMap(){const m=new Map();(window.ATLAS_LEDGER?.sources?.sources||[]).forEach(s=>m.set(s.source_id,s));(window.ATLAS_FORENSIC?.sources?.sources||[]).forEach(s=>m.set(s.source_id,s));(window.ATLAS_CURRENT_UPDATE?.sources||[]).forEach(s=>m.set(s.source_id,s));return m}
   function normalizedTimelineRecords(){
     const records=(window.ATLAS_TEMPORAL_INDEX||[]).map(r=>({...r}));
     records.forEach(r=>{const d=String(r.event_date||r.claim_date||r.death_date||r.first_reported||'').slice(0,10);r.day=d;r.month=d.slice(0,7);if(d){const dt=new Date(`${d}T12:00:00Z`); const target=new Date(dt);target.setUTCDate(dt.getUTCDate()+4-(dt.getUTCDay()||7));const y0=new Date(Date.UTC(target.getUTCFullYear(),0,1));r.iso_week=`${target.getUTCFullYear()}-W${String(Math.ceil((((target-y0)/86400000)+1)/7)).padStart(2,'0')}`;} });

@@ -8,6 +8,7 @@ A public, source-linked OSINT atlas for the 2026 Iran conflict. The project sepa
 
 - current operational assessment without a composite “war score”;
 - 98 canonical historical-ledger records, including 15 pre-war context records;
+- 108 current chronology records through 2026-08-24 14:14 ET (98 locked historical + 10 append-only current overlay);
 - U.S./coalition facilities, strike effects, satellite BDA, and missile/drone metrics;
 - casualties, durable material loss, munitions expenditure, and economic effects as separate accounting scopes;
 - bargaining, force posture, agreements, regional alignment, and trade routes;
@@ -43,7 +44,7 @@ Direct-military accounting is symmetric across U.S./coalition and Iran/aligned m
 - `css/`, `js/` — local presentation, navigation, map, temporal, safety, and costing modules
 - `assets/icons/` — local map icon grammar
 - `vendor/leaflet/` — pinned Leaflet 1.9.4 runtime
-- `data/` — legacy UI data plus the authoritative `integration-v1.2/` ledger
+- `data/` — legacy UI data plus the authoritative locked `integration-v1.2/` ledger and append-only `current-update-20260824/` current overlay
 - `snapshots/` — immutable dated public boards
 - `scripts/`, `tests/` — structural, integration, temporal, costing, and hostile-input checks
 - `docs/` — methodology, migration, validation, and historical engineering notes

@@ -1,0 +1,227 @@
+{
+  "schema_version": "1.0",
+  "design_note": "Append-only Aug. 24 current-overlay timeline. Date-only event precision is preserved; source publication timestamps are not repurposed as event times.",
+  "as_of": "2026-08-24T14:14:00-04:00",
+  "records": [
+    {
+      "event_id": "CUR-20260823-001",
+      "date": "2026-08-23",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-23",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "SANCTIONS_RESPONSE",
+      "summary": "Araqchi rejects planned U.S. sanctions while still calling for a negotiated solution on terms Iran describes as respectful.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-23",
+      "first_verified": "2026-08-23",
+      "source_ids": [
+        "SRC-DF5FAE990B74"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-001",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "HORMUZ_TRANSIT_ENFORCEMENT",
+      "summary": "Iran's new strait authority blacklists 45 tankers and threatens fines, detention and cargo confiscation for alleged rule violations.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "source_ids": [
+        "SRC-3654DF2A6113"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-002",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "SHIPPING_TRAFFIC_UPDATE",
+      "summary": "Visible Hormuz traffic remains sharply depressed: 4 commodity transits Sunday after 13 Saturday and 16 Friday, with AIS-off caveats.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "source_ids": [
+        "SRC-D667C4F6F47F"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-003",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "SANCTIONS_DIPLOMACY",
+      "summary": "China says it will protect its rights and warns that sanctions and pressure do not help resolve the Iran conflict.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "source_ids": [
+        "SRC-7DBD5E47A6BC"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-004",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "HORMUZ_DIPLOMACY_SCHEDULED",
+      "summary": "Iran announces Oman's foreign minister will visit Tehran Tuesday to continue Strait of Hormuz talks.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-B413D0B32610"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-005",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "MEDIATION_VISIT",
+      "summary": "Pakistan's army chief Asim Munir arrives in Tehran with Pakistan describing the visit as part of regional peace and stability efforts.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "source_ids": [
+        "SRC-BB412D3385DF"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-006",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "MEDIATION_SIGNAL",
+      "summary": "Pakistani sources say Trump called Munir before the Tehran trip and asked Pakistan to use its influence to bring Iran back to negotiations.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": null,
+      "source_ids": [
+        "SRC-BB412D3385DF"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-007",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "TRADE_DISRUPTION",
+      "summary": "Indian exporters report additional Iran-trade disruption from the UAE halt and tightening U.S. sanctions pressure.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "source_ids": [
+        "SRC-2C482D135C1B"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-008",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "A tanker is attacked west of Yanbu; Bahri confirms one of its vessels was attacked while the Houthis claim responsibility.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "source_ids": [
+        "SRC-DE9E3EFD6572"
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-009",
+      "date": "2026-08-24",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-08",
+      "iso_week": "2026-W35",
+      "day": "2026-08-24",
+      "hour_bucket": null,
+      "record_class": "CURRENT UPDATE",
+      "event_type": "SANCTIONS_ACTION",
+      "summary": "Treasury imposes nearly 60 Iran-related designations and threatens broader secondary sanctions, while withholding immediate country-wide penalties.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "source_ids": [
+        "SRC-BF55B0FCC76D"
+      ]
+    }
+  ]
+}

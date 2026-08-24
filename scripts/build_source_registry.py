@@ -93,7 +93,7 @@ def ground_for(name: str, metadata: dict, checked: str):
     return {"status":status,"bias_raw":None,"bias_bucket_3":None,"factuality":None,"profile_url":None,"checked_at":checked,"methodology_note":"Ground News publication-level rating; not an article rating or proof of neutrality."}
 
 def load_sources(root: Path):
-    namespaces = [root/"data/integration-v1.2/sources.json", root/"data/forensic-v1.3.2/sources.json"]
+    namespaces = [root/"data/integration-v1.2/sources.json", root/"data/forensic-v1.3.2/sources.json", root/"data/current-update-20260824/sources.json"]
     merged = {}
     for path in namespaces:
         if not path.exists(): continue
@@ -135,7 +135,7 @@ def build(root: Path):
             "publication_date":src.get("publication_date"),"source_roles":src.get("source_roles") or [],"quality":src.get("quality"),
             "lineage":src.get("lineage"),"records_supported":src.get("records_supported") or []
         })
-    registry={"schema_version":"1.0","generated_at":checked,"methodology":{"ground_news":"Publisher context only; ratings do not alter evidence grade.","authoritative_namespaces":["data/integration-v1.2/sources.json","data/forensic-v1.3.2/sources.json"]},"outlet_profiles":sorted(profiles.values(),key=lambda x:(x["region"],x.get("country") or "",x["display_name"])),"sources":sorted(output,key=lambda x:x["source_id"])}
+    registry={"schema_version":"1.0","generated_at":checked,"methodology":{"ground_news":"Publisher context only; ratings do not alter evidence grade.","authoritative_namespaces":["data/integration-v1.2/sources.json","data/forensic-v1.3.2/sources.json","data/current-update-20260824/sources.json"]},"outlet_profiles":sorted(profiles.values(),key=lambda x:(x["region"],x.get("country") or "",x["display_name"])),"sources":sorted(output,key=lambda x:x["source_id"])}
     return registry
 
 def write(root: Path, registry: dict):

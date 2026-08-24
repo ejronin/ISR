@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0",
+  "id_rule": "Canonical overlay source IDs are SHA-1(url without trailing slash), first 12 uppercase hex, prefixed SRC-. This matches integration-v1.2 source identity practice.",
+  "as_of": "2026-08-24T14:14:00-04:00",
+  "sources": [
+    {
+      "source_id": "SRC-DF5FAE990B74",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/iran-says-new-sanctions-threatened-by-desperate-us-will-fail-2026-08-23/",
+      "outlet": "Reuters",
+      "title": "Iran says new sanctions threatened by 'desperate' US will fail",
+      "publication_date": "2026-08-23",
+      "publication_time": "2026-08-23T12:25:19Z",
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "SANCTIONS_RESPONSE",
+        "NEGOTIATION_SIGNAL"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260823-001"
+      ],
+      "proof_note": "Iranian foreign minister's public response to planned U.S. sanctions; supports attributed Iranian position, not independent validation of its claims.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    },
+    {
+      "source_id": "SRC-3654DF2A6113",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/iran-warns-vessels-violating-hormuz-transit-rules-fines-detention-2026-08-24/",
+      "outlet": "Reuters",
+      "title": "Iran threatens 45 tankers with fines, confiscation in Hormuz escalation",
+      "publication_date": "2026-08-24",
+      "publication_time": "2026-08-24T07:23:29Z",
+      "author": null,
+      "source_roles": [
+        "SHIPPING_POLICY",
+        "HORMUZ",
+        "ACTOR_STATEMENT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260824-001"
+      ],
+      "proof_note": "Reports the Persian Gulf Strait Authority's published 45-vessel list and stated penalties; the legal validity of unilateral Iranian transit rules is not inferred.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    },
+    {
+      "source_id": "SRC-D667C4F6F47F",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/business/energy/fewer-than-20-ships-transit-key-strait-hormuz-over-weekend-data-shows-2026-08-24/",
+      "outlet": "Reuters",
+      "title": "Fewer than 20 ships transit key Strait of Hormuz over weekend, data shows",
+      "publication_date": "2026-08-24",
+      "publication_time": "2026-08-24T02:42:48Z",
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "HORMUZ",
+        "TRAFFIC_BASELINE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260824-002"
+      ],
+      "proof_note": "Kpler/UKMTO traffic counts and AIS caveat; visible-AIS counts do not represent all transits.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    },
+    {
+      "source_id": "SRC-7DBD5E47A6BC",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/china/china-vows-protect-its-rights-us-readies-iran-sanction-2026-08-24/",
+      "outlet": "Reuters",
+      "title": "China vows to protect its rights as US readies Iran sanction",
+      "publication_date": "2026-08-24",
+      "publication_time": "2026-08-24T07:47:37Z",
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "SANCTIONS_RESPONSE",
+        "CHINA"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260824-003"
+      ],
+      "proof_note": "Chinese Foreign Ministry response to prospective U.S. Iran sanctions; establishes Beijing's stated position.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    },
+    {
+      "source_id": "SRC-B413D0B32610",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/oman-foreign-minister-visit-tehran-tuesday-iranian-foreign-ministry-says-2026-08-24/",
+      "outlet": "Reuters",
+      "title": "Oman foreign minister to visit Tehran on Tuesday, Iranian foreign ministry says",
+      "publication_date": "2026-08-24",
+      "publication_time": "2026-08-24T04:42:56Z",
+      "author": null,
+      "source_roles": [
+        "DIPLOMACY",
+        "HORMUZ_NEGOTIATION",
+        "SCHEDULED_VISIT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260824-004"
+      ],
+      "proof_note": "Iranian Foreign Ministry announcement that Oman's foreign minister is scheduled to visit Tehran Tuesday to continue Hormuz talks; visit completion is not asserted.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    },
+    {
+      "source_id": "SRC-BB412D3385DF",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/asia-pacific/pakistans-munir-spoke-trump-ahead-tehran-visit-sources-say-2026-08-24/",
+      "outlet": "Reuters",
+      "title": "Pakistan's Munir spoke to Trump ahead of Tehran visit, sources say",
+      "publication_date": "2026-08-24",
+      "publication_time": "2026-08-24T08:35:39Z",
+      "author": null,
+      "source_roles": [
+        "DIPLOMACY",
+        "MEDIATION",
+        "PAKISTAN",
+        "US_IRAN_NEGOTIATION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260824-005",
+        "CUR-20260824-006"
+      ],
+      "proof_note": "Pakistan military confirmation of Munir's Tehran arrival plus source-reported Trump-Munir call and U.S. request; call substance remains source-reported unless officially confirmed.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    },
+    {
+      "source_id": "SRC-2C482D135C1B",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/india/indias-iran-exports-set-fall-further-due-dubai-halt-us-sanctions-2026-08-24/",
+      "outlet": "Reuters",
+      "title": "India's Iran exports set to fall further due to Dubai halt, U.S. sanctions",
+      "publication_date": "2026-08-24",
+      "publication_time": "2026-08-24T12:50:53Z",
+      "author": null,
+      "source_roles": [
+        "ECONOMICS",
+        "TRADE",
+        "SANCTIONS_EFFECT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260824-007"
+      ],
+      "proof_note": "Indian exporter and trade-source evidence on payment, routing, freight and insurance disruption linked to UAE trade suspension and new U.S. pressure.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    },
+    {
+      "source_id": "SRC-DE9E3EFD6572",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-ship-off-saudi-arabias-yanbu-no-saudi-2026-08-24/",
+      "outlet": "Reuters",
+      "title": "Yemen's Houthis say they attacked ship off Saudi Arabia's Yanbu",
+      "publication_date": "2026-08-24",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "MARITIME_ATTACK",
+        "RED_SEA",
+        "CLAIM_ORIGIN",
+        "CORROBORATION"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260824-008"
+      ],
+      "proof_note": "UKMTO/Bahri reporting supports that a tanker was attacked and damaged near Yanbu; Houthi responsibility remains an attributed claim unless independently established.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    },
+    {
+      "source_id": "SRC-BF55B0FCC76D",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/us-treasury-broaden-scope-secondary-sanctions-iran-source-says-2026-08-24/",
+      "outlet": "Reuters",
+      "title": "US threatens countries doing business with Iran, but holds off on penalties for now",
+      "publication_date": "2026-08-24",
+      "publication_time": "2026-08-24T12:40:07Z",
+      "author": null,
+      "source_roles": [
+        "SANCTIONS",
+        "US_POLICY",
+        "ECONOMIC_PRESSURE"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "CUR-20260824-009"
+      ],
+      "proof_note": "Reports Treasury's Aug. 24 sanctions action, 60 designated individuals/entities/vessels, five targeted sectors, and the distinction between announced secondary-sanctions expansion and penalties not yet imposed on named countries.",
+      "lineage": "Aug. 24 current-overlay collection",
+      "source_origin": "current_update_2026-08-24"
+    }
+  ]
+}
