@@ -9,7 +9,7 @@
     activePrimaryGroup: 'overview',
     activeView: 'snapshot',
     selectedRecord: null,
-    timeCutoff: '2026-08-20',
+    timeCutoff: '2026-08-22',
     temporalMode: 'as-of',
     temporalGranularity: 'war',
     timelineContext: 'all',

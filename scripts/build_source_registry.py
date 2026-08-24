@@ -42,7 +42,10 @@ OUTLET_OVERRIDES = {
     "International Energy Agency":(None,"GLOBAL_INTERNATIONAL","INTERNATIONAL_ORGANIZATION",None),
     "CSIS":("United States","NORTH_AMERICA","THINK_TANK",None),
     "NASA":("United States","NORTH_AMERICA","TECHNICAL_GOVERNMENT",None),
-    "USGS":("United States","NORTH_AMERICA","TECHNICAL_GOVERNMENT",None)
+    "USGS":("United States","NORTH_AMERICA","TECHNICAL_GOVERNMENT",None),
+    "World Bank":(None,"GLOBAL_INTERNATIONAL","INTERNATIONAL_ORGANIZATION",None),
+    "Bulgarian News Agency":("Bulgaria","EUROPE","NEWS_AGENCY",None),
+    "Arab News":("Saudi Arabia","MIDDLE_EAST_NORTH_AFRICA","NEWSPAPER",None)
 }
 ALIASES = {"AP":"Associated Press","Washington Post":"The Washington Post"}
 OFFICIAL_RE = re.compile(r"\b(ministry|department|command|military|navy|air force|army|government|presidency|parliament|treasury|white house|centcom|nato|united nations|imo|iaea|iea)\b", re.I)
@@ -72,7 +75,7 @@ def classify(name: str, url: str):
         return (None,"GLOBAL_INTERNATIONAL","OFFICIAL_OR_TECHNICAL",None)
     if STATE_MEDIA_RE.search(key): return (None,"GLOBAL_INTERNATIONAL","STATE_MEDIA","State/state-aligned actor source")
     country = None; region = "GLOBAL_INTERNATIONAL"
-    cc = {".qa":"Qatar",".ae":"United Arab Emirates",".sa":"Saudi Arabia",".ir":"Iran",".pk":"Pakistan",".tr":"Türkiye",".uk":"United Kingdom",".au":"Australia",".cn":"China",".jp":"Japan"}
+    cc = {".qa":"Qatar",".ae":"United Arab Emirates",".sa":"Saudi Arabia",".ir":"Iran",".pk":"Pakistan",".tr":"Türkiye",".uk":"United Kingdom",".au":"Australia",".cn":"China",".jp":"Japan",".bg":"Bulgaria"}
     for suffix,c in cc.items():
         if host.endswith(suffix): country=c; region=REGIONS.get(c.upper(),region); break
     kind = "NEWS_OUTLET" if any(x in host for x in ["news","reuters","apnews","bbc","aljazeera","washingtonpost"]) else "PUBLISHER_OR_TECHNICAL_SOURCE"
@@ -83,11 +86,11 @@ def ground_for(name: str, metadata: dict, checked: str):
     if raw and raw.get("alias_of"):
         raw = metadata.get("profiles",{}).get(raw["alias_of"])
     if raw:
-        return {k:raw.get(k) for k in ["status","bias_raw","bias_bucket_3","factuality","profile_url"]} | {"checked_at":checked}
+        return {k:raw.get(k) for k in ["status","bias_raw","bias_bucket_3","factuality","profile_url"]} | {"checked_at":checked,"methodology_note":"Ground News publication-level rating; not an article rating or proof of neutrality."}
     # Official, technical and actor institutions are not forced into a political-rating field.
     _,_,kind,_ = classify(name,"")
     status = "NOT_APPLICABLE" if kind.startswith("OFFICIAL") or kind in {"INTERNATIONAL_ORGANIZATION","THINK_TANK","TECHNICAL_GOVERNMENT"} else "NOT_RATED"
-    return {"status":status,"bias_raw":None,"bias_bucket_3":None,"factuality":None,"profile_url":None,"checked_at":checked}
+    return {"status":status,"bias_raw":None,"bias_bucket_3":None,"factuality":None,"profile_url":None,"checked_at":checked,"methodology_note":"Ground News publication-level rating; not an article rating or proof of neutrality."}
 
 def load_sources(root: Path):
     namespaces = [root/"data/integration-v1.2/sources.json", root/"data/forensic-v1.3.2/sources.json"]

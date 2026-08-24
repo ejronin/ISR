@@ -75,6 +75,42 @@
       ],
       "accounting_domain": "WIDER_ECONOMIC_EFFECT",
       "do_not_add_to_military_cost": true
+    },
+    {
+      "economic_id": "ECO-UPD-20260821-CHINA-OIL",
+      "date": "2026-08-21",
+      "topic": "Iran-China oil supply under blockade pressure",
+      "finding": "Reuters reported Iranian crude supply to China around 534,000 bpd so far in August versus about 1.4m bpd average in 2025, with lower floating stocks, reduced Sep/Oct offers and Chinese buyer substitution.",
+      "causation_note": "Supports severe supply contraction and commercial adaptation; does not establish China abandoned Iran.",
+      "source_ids": [
+        "SRC-9016A9DDF69F"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
+    },
+    {
+      "economic_id": "ECO-UPD-20260821-LEBANON",
+      "date": "2026-08-21",
+      "topic": "Lebanon macroeconomic outlook",
+      "finding": "World Bank projected 2026 GDP contraction of 6.4% and inflation around 17.5%, saying renewed conflict derailed fragile recovery.",
+      "causation_note": "Use World Bank conflict assessment; do not assign the entire macroeconomic contraction specifically to Iran or Hezbollah.",
+      "source_ids": [
+        "SRC-3077D3E08CBE"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
+    },
+    {
+      "economic_id": "ECO-UPD-20260822-SANCTIONS",
+      "date": "2026-08-22",
+      "topic": "Prospective U.S. Iran sanctions",
+      "finding": "Treasury said detailed measures were scheduled for Aug. 24 and discussed China in pressure/cooperation framing.",
+      "causation_note": "ANNOUNCED / SCHEDULED at cutoff; not enacted and no realized effect booked.",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ],
+      "accounting_domain": "WIDER_ECONOMIC_EFFECT",
+      "do_not_add_to_military_cost": true
     }
   ],
   "forecast_context": {

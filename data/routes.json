@@ -192,5 +192,82 @@
         ]
       ]
     }
+  ],
+  "proposedStrategicRoutes": [
+    {
+      "id": "IRQ-CEYHAN-DIVERSIFICATION",
+      "name": "Iraq–Türkiye Ceyhan export diversification corridor (existing infrastructure, schematic)",
+      "type": "energy",
+      "status": "EXISTING_INFRASTRUCTURE / DIVERSIFICATION_TRACK",
+      "operational_state": "EXISTING_INFRASTRUCTURE; CURRENT_FLOW_NOT_INFERRED_FROM_THIS_UPDATE",
+      "render_style": "SOLID",
+      "note": "Existing Iraq–Türkiye export corridor retained as an operational/infrastructure alternative class. This update records Iraqi diversification intent; it does not invent current throughput.",
+      "coords": [
+        [
+          35.47,
+          44.39
+        ],
+        [
+          36.85,
+          35.92
+        ]
+      ],
+      "source_ids": [
+        "SRC-B7E80EBD97E4"
+      ]
+    },
+    {
+      "id": "IRQ-BANIYAS-PROPOSED",
+      "name": "Iraq–Syria/Baniyas crude pipeline concept (schematic)",
+      "type": "energy",
+      "status": "PROPOSED / NON_OPERATIONAL_AT_CUTOFF",
+      "operational_state": "PROPOSED",
+      "render_style": "DASHED",
+      "note": "Reuters described a prospective Syria-Iraq/Baniyas route as years away and roughly $15B scale. Schematic logistics geometry only.",
+      "coords": [
+        [
+          33.31,
+          44.37
+        ],
+        [
+          34.75,
+          36.72
+        ],
+        [
+          35.18,
+          35.95
+        ]
+      ],
+      "source_ids": [
+        "SRC-B7E80EBD97E4",
+        "SRC-1168EB0594C5"
+      ]
+    },
+    {
+      "id": "IRQ-AQABA-PROPOSED",
+      "name": "Iraq–Aqaba export pipeline concept (schematic)",
+      "type": "energy",
+      "status": "PROPOSED / NON_OPERATIONAL_AT_CUTOFF",
+      "operational_state": "PROPOSED",
+      "render_style": "DASHED",
+      "note": "Iraq cited Aqaba among diversification options. This is planning context, not an operating route or verified current flow.",
+      "coords": [
+        [
+          30.5,
+          47.81
+        ],
+        [
+          31.2,
+          43.9
+        ],
+        [
+          29.53,
+          35.01
+        ]
+      ],
+      "source_ids": [
+        "SRC-B7E80EBD97E4"
+      ]
+    }
   ]
 }

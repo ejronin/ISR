@@ -1946,6 +1946,28 @@
       ]
     },
     {
+      "event_id": "EV-20260819-002",
+      "date": "2026-08-19",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-19",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MARITIME_SECURITY_COORDINATION",
+      "summary": "Interested Allied states coordinate possible national freedom-of-navigation contributions for Hormuz; this is not a NATO mission.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "source_ids": [
+        "SRC-5F06A28B79E7"
+      ]
+    },
+    {
       "event_id": "EV-20260820-001",
       "date": "2026-08-20",
       "time": null,
@@ -2063,6 +2085,318 @@
       "first_verified": "2026-08-20",
       "source_ids": [
         "SRC-329DD7E492A8"
+      ]
+    },
+    {
+      "event_id": "EV-20260820-006",
+      "date": "2026-08-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "HORMUZ_TRAFFIC_OBSERVATION",
+      "summary": "Kpler/Reuters records seven Aug. 20 commodity-vessel transits; no VLCC or LNG tanker in the observed seven.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "source_ids": [
+        "SRC-C869142454CE"
+      ]
+    },
+    {
+      "event_id": "EV-20260820-007",
+      "date": "2026-08-20",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-20",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "HORMUZ_TRAFFIC_OBSERVATION",
+      "summary": "Later Reuters reporting gives a four-commodity-ship observation for the same Thursday period; discrepancy remains unresolved.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ]
+    },
+    {
+      "event_id": "EV-20260821-001",
+      "date": "2026-08-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "ECONOMIC_ENERGY_EFFECT",
+      "summary": "U.S. blockade pressure sharply reduces Iranian crude availability to Chinese buyers while market adaptation continues.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "source_ids": [
+        "SRC-9016A9DDF69F"
+      ]
+    },
+    {
+      "event_id": "EV-20260821-002",
+      "date": "2026-08-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMATIC_ECONOMIC_POSITION",
+      "summary": "Qalibaf advocates deeper Iran-Iraq economic ties and national-currency trade to reduce sanctions/dollar exposure.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "source_ids": [
+        "SRC-F33E9E8FE450"
+      ]
+    },
+    {
+      "event_id": "EV-20260821-003",
+      "date": "2026-08-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "STRATEGIC_LOGISTICS_DIVERSIFICATION",
+      "summary": "Iraq pursues higher production and multiple export-route hedges, including Ceyhan and proposed Baniyas/Aqaba options.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "source_ids": [
+        "SRC-B7E80EBD97E4",
+        "SRC-1168EB0594C5"
+      ]
+    },
+    {
+      "event_id": "EV-20260821-004",
+      "date": "2026-08-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMATIC_CONTACT",
+      "summary": "Oman and Iran discuss suitable conditions for renewed dialogue and continued practical Hormuz navigation understandings.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "source_ids": [
+        "SRC-E5297E5894E1"
+      ]
+    },
+    {
+      "event_id": "EV-20260821-005",
+      "date": "2026-08-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "FORCE_POSTURE_ROTATION",
+      "summary": "Two U.S. KC-135 tanker aircraft depart Bezmer after a temporary, pre-authorized deployment; causation by Iranian pressure is not established.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "source_ids": [
+        "SRC-087E077D488F",
+        "SRC-D5E73D346BF5",
+        "SRC-03092951A37F",
+        "SRC-32D26981B604"
+      ]
+    },
+    {
+      "event_id": "EV-20260821-006",
+      "date": "2026-08-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "ECONOMIC_IMPACT",
+      "summary": "World Bank says renewed conflict derailed Lebanon’s fragile recovery, projecting 2026 contraction and high inflation.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "source_ids": [
+        "SRC-3077D3E08CBE"
+      ]
+    },
+    {
+      "event_id": "EV-20260821-007",
+      "date": "2026-08-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "POLITICAL_POSITION",
+      "summary": "Pezeshkian says the war should end now while framing termination as compatible with Iranian strength, dignity and victory.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ]
+    },
+    {
+      "event_id": "EV-20260822-001",
+      "date": "2026-08-22",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-22",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "SELECTIVE_PASSAGE_PERMISSION",
+      "summary": "Iran grants special Hormuz passage permission to some Iraqi oil tankers after repeated Iraqi requests.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "source_ids": [
+        "SRC-980086328C21"
+      ]
+    },
+    {
+      "event_id": "EV-20260822-002",
+      "date": "2026-08-22",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-22",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "COUNTER_LEVERAGE_LOGISTICS",
+      "summary": "France and Saudi Arabia discuss Hormuz alternatives and an energy/logistics task-force track.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "source_ids": [
+        "SRC-C5F2E7065110"
+      ]
+    },
+    {
+      "event_id": "EV-20260822-004",
+      "date": "2026-08-22",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-22",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "MILITARY_POSTURE_CLAIM",
+      "summary": "Iranian Armed Forces chief threatens severe retaliation and authorities claim improved missile-production quantity/quality.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ]
+    },
+    {
+      "event_id": "EV-20260822-005",
+      "date": "2026-08-22",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-22",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "DIPLOMATIC_CLAIM",
+      "summary": "Qalibaf says Iran received numerous messages from neighboring states about regional security/economic arrangements; counterparties are unidentified.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ]
+    },
+    {
+      "event_id": "EV-20260822-006",
+      "date": "2026-08-22",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": "2026",
+      "month": "2026-08",
+      "iso_week": "2026-W34",
+      "day": "2026-08-22",
+      "hour_bucket": null,
+      "record_class": "WARTIME_EVENT",
+      "event_type": "SANCTIONS_ANNOUNCEMENT",
+      "summary": "U.S. says details of a severe new Iran sanctions package are scheduled for Aug. 24; measures are not yet enacted at cutoff.",
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "source_ids": [
+        "SRC-283DBF8D4872"
       ]
     }
   ]

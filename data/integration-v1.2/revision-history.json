@@ -175,6 +175,14 @@
       "action": "CONSISTENCY_REPAIR_AND_SCHEMA_NORMALIZATION",
       "change": "Regenerated manifest, integration summary and Codex instructions from final JSON; added normalized force-posture fields and agreement/alignment relationship fields without changing substantive evidentiary verdicts; added automated cross-file count and ID-inventory validation.",
       "reason": "Correct stale revision-1.0 prose/counts while preserving revision-1.1 drawdown/agreement work and enforcing the user-specified force-posture classification rule."
+    },
+    {
+      "revision_id": "REV-024",
+      "date": "2026-08-22",
+      "record": "AUG21_22_CANONICAL_EVIDENCE_ADVANCE",
+      "action": "APPEND_ONLY_ADVANCE",
+      "change": "Advanced canonical factual chronology through 2026-08-22 13:59 ET with 15 new event records, preserving prior event/source/timeline records and explicit count discrepancies. Outcome synthesis and MOU analytical prose retain their independent review cutoffs.",
+      "reason": "Promote verified Aug. 21-22 facts from later analytical/source holdings into the canonical ledger without back-propagating later knowledge or reopening accepted adjudications."
     }
   ]
 }

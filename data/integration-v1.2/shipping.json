@@ -144,6 +144,32 @@
       ],
       "map_ref": "MAP-GEO-HORMUZ",
       "interpretation_rule": "Provider/date-specific snapshot."
+    },
+    {
+      "shipping_id": "SHIP-UPD-20260820-KPLER",
+      "date": "2026-08-20",
+      "metric": "commodity vessel transits observed for Thursday Aug. 20",
+      "value": 7,
+      "baseline": "Pre-war traffic materially higher; AIS-dark movements may not be captured.",
+      "notes": "Reuters/Kpler Aug. 21: four inbound, three outbound; no VLCC or LNG tanker among the seven; one large LPG/gas carrier exited. Preserve separately from later Reuters four-vessel observation.",
+      "source_ids": [
+        "SRC-C869142454CE"
+      ],
+      "map_ref": "MAP-GEO-HORMUZ",
+      "interpretation_rule": "OBSERVED_COUNT_NOT_COMPLETE_CENSUS; DO_NOT_OVERWRITE_CONFLICTING_LATER_COUNT"
+    },
+    {
+      "shipping_id": "SHIP-UPD-20260820-REUTERS-AUG22",
+      "date": "2026-08-20",
+      "metric": "later Reuters commodity vessel observation for same Thursday period",
+      "value": 4,
+      "baseline": "Conflicts with Aug. 21 Reuters/Kpler seven-vessel observation.",
+      "notes": "Later Aug. 22 report stated four commodity ships for Thursday. Both observations are retained; discrepancy unresolved.",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ],
+      "map_ref": "MAP-GEO-HORMUZ",
+      "interpretation_rule": "COUNT_DISCREPANCY_UNRESOLVED; PRESERVE_BOTH_OBSERVATIONS"
     }
   ]
 }

@@ -327,6 +327,149 @@
         "SRC-AC40CCC92A43"
       ],
       "event_refs": []
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260819-NATO-HORMUZ",
+      "date": "2026-08-19",
+      "actors": [
+        "interested NATO member states",
+        "France",
+        "United Kingdom"
+      ],
+      "position_change": "Interested Allied states coordinate possible national freedom-of-navigation contributions for Hormuz; explicitly not a NATO mission.",
+      "source_ids": [
+        "SRC-5F06A28B79E7"
+      ],
+      "event_refs": [
+        "EV-20260819-002"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260821-QALIBAF-IRAQ",
+      "date": "2026-08-21",
+      "actors": [
+        "Iran",
+        "Iraq",
+        "Mohammad Bagher Qalibaf"
+      ],
+      "position_change": "Qalibaf proposes deeper bilateral economic ties and national-currency trade; Iraqi acceptance not established.",
+      "source_ids": [
+        "SRC-F33E9E8FE450"
+      ],
+      "event_refs": [
+        "EV-20260821-002"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260821-IRAQ-SAUDI-OPEC",
+      "date": "2026-08-21",
+      "actors": [
+        "Iraq",
+        "Saudi Arabia",
+        "OPEC"
+      ],
+      "position_change": "Iraq seeks production growth and Saudi/OPEC support while diversifying export options via Ceyhan and proposed Baniyas/Aqaba routes.",
+      "source_ids": [
+        "SRC-B7E80EBD97E4",
+        "SRC-1168EB0594C5"
+      ],
+      "event_refs": [
+        "EV-20260821-003"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260821-OMAN-IRAN",
+      "date": "2026-08-21",
+      "actors": [
+        "Oman",
+        "Iran",
+        "Badr Albusaidi",
+        "Abbas Araghchi"
+      ],
+      "position_change": "Foreign ministers discuss conditions for resumed dialogue and continued Hormuz navigation understandings; ACTIVE / UNRESOLVED, no final agreement or recognition of unilateral Iranian control.",
+      "source_ids": [
+        "SRC-E5297E5894E1"
+      ],
+      "event_refs": [
+        "EV-20260821-004"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260822-IRAQ-HORMUZ",
+      "date": "2026-08-22",
+      "actors": [
+        "Iran",
+        "Iraq"
+      ],
+      "position_change": "Iran grants selective passage permission to some Iraqi tankers after repeated Iraqi requests; de facto gatekeeping is not treated as internationally recognized legal sovereignty.",
+      "source_ids": [
+        "SRC-980086328C21"
+      ],
+      "event_refs": [
+        "EV-20260822-001"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260822-FR-SAUDI",
+      "date": "2026-08-22",
+      "actors": [
+        "France",
+        "Saudi Arabia"
+      ],
+      "position_change": "France and Saudi Arabia discuss energy/logistics alternatives to reduce Hormuz exposure, distinguishing existing infrastructure from proposals and feasibility work.",
+      "source_ids": [
+        "SRC-C5F2E7065110"
+      ],
+      "event_refs": [
+        "EV-20260822-002"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260822-PEZESHKIAN",
+      "date": "2026-08-22",
+      "actors": [
+        "Iran",
+        "Masoud Pezeshkian"
+      ],
+      "position_change": "Pezeshkian argues war should end while retaining strength/dignity/victory framing; attributed political position, not proof of imminent settlement or regime consensus.",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ],
+      "event_refs": [
+        "EV-20260821-007"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260822-QALIBAF-REGIONAL",
+      "date": "2026-08-22",
+      "actors": [
+        "Iran",
+        "Mohammad Bagher Qalibaf",
+        "unnamed neighboring states"
+      ],
+      "position_change": "Qalibaf claims numerous messages from neighboring states about regional security/economic arrangements; counterparties unidentified and no named-state acceptance inferred.",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ],
+      "event_refs": [
+        "EV-20260822-005"
+      ]
+    },
+    {
+      "diplomacy_id": "DIP-UPD-20260822-SANCTIONS",
+      "date": "2026-08-22",
+      "actors": [
+        "United States",
+        "Iran",
+        "China"
+      ],
+      "position_change": "U.S. sanctions package details scheduled for Aug. 24; Iran condemns prospective secondary sanctions. Status remains ANNOUNCED / SCHEDULED, not enacted.",
+      "source_ids": [
+        "SRC-283DBF8D4872"
+      ],
+      "event_refs": [
+        "EV-20260822-006"
+      ]
     }
   ],
   "key_chain": [

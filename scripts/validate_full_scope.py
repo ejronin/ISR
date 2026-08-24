@@ -30,7 +30,9 @@ def main():
     attr=next(x for x in pubs['assessments'] if x['assessment_id']=='PUB-CONVENTIONAL-ATTRITION-001'); req('neutralized' in ' '.join(attr['basis']).lower(),'335 launcher wording must remain neutralized')
     hz=load('data/hormuz-strategic-v3.json')
     req(hz['cutoff']=='2026-08-22 10:54 ET','Hormuz v3 cutoff mismatch')
-    req(hz['integration_status']=='SEPARATE_LATER_DOMAIN_ASSESSMENT' and hz['canonical_ledger_advanced'] is False,'Hormuz must stay visibly separate unless canonical ledger advances')
+    req(hz['integration_status']=='ANALYTICAL_VIEW_WITH_PROMOTED_CANONICAL_FACTS' and hz['canonical_ledger_advanced'] is True,'Hormuz integration status must reflect promoted canonical facts')
+    req(hz.get('canonical_ledger_cutoff')=='2026-08-22 13:59 ET','Hormuz canonical-ledger cutoff mismatch')
+    req('mou_breach_assessment' in hz and 'mou_concession_matrix' in hz,'full MOU analytical experience was not restored')
     req('map_points' not in hz and 'routes' not in hz,'Hormuz overlay must not import standalone coordinates into a second map database')
     sm=hz['summary_metrics']; req(sm['iran_coercive_hormuz_leverage_0_10']>sm['iran_institutionalized_control_0_10'],'de facto/legal Hormuz distinction lost')
     index=(ROOT/'index.html').read_text(encoding='utf-8') if (ROOT/'index.html').exists() else ''

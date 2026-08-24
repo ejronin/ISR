@@ -1,11 +1,18 @@
 # ISR Atlas Integration Summary — Revision 1.2
 
-**Collection cutoff:** 2026-08-20 15:59 America/New_York  
+**Collection cutoff:** 2026-08-22 13:59 America/New_York  
 **Revision 1.2 package built:** 2026-08-20 17:01 America/New_York  
 **Repository reviewed:** `ejronin/ISR` (`main`, previously reconciled at `8cd97cf409b56060a1806ccf52fe9850e883df79`)  
 **Publishing:** none. No GitHub changes were made.
 
-<!-- AUTO_COUNTS:events=83;prewar_events=15;wartime_events=68;timeline_records=83;daily_coverage_days=174;facilities_integrated=5;repo_facilities_to_preserve=18;claims=6;movements=10;agreements=8;casualty_records=23;material_loss_records=12;munition_expenditure_records=9;shipping_records=11;economic_backfill_records=6;diplomacy_records=19;sources=135;unresolved_items=19;collection_requests=19;bda_overlay_candidates=13;revision_records=23 -->
+<!-- AUTO_COUNTS:events=98;prewar_events=15;wartime_events=83;timeline_records=98;daily_coverage_days=176;facilities_integrated=5;repo_facilities_to_preserve=18;claims=6;movements=10;agreements=8;casualty_records=23;material_loss_records=12;munition_expenditure_records=9;shipping_records=13;economic_backfill_records=9;diplomacy_records=28;sources=150;unresolved_items=19;collection_requests=19;bda_overlay_candidates=13;revision_records=24 -->
+
+## Aug. 22 canonical append-only advancement
+
+The canonical factual chronology is advanced through **2026-08-22 13:59 ET** by an append-only update. The original Revision 1.2 Aug. 20 records remain lineage-locked; new facts are appended, later corrections/count conflicts are linked rather than overwritten, and older chronology is not rewritten with later knowledge.
+
+The five-level outcome synthesis remains reviewed through **2026-08-20 15:59 ET** unless separately re-reviewed. The MOU/Hormuz analytical prose remains reviewed through **2026-08-22 10:54 ET**. Those analytical cutoffs are intentionally independent of the newer canonical evidence cutoff.
+
 
 ## Bottom line
 
@@ -15,22 +22,22 @@ The package keeps the evidence doctrine already established: source lineage matt
 
 ## Authoritative record counts
 
-- **83 events:** **15 pre-war** context records and **68 wartime** records.
-- **83** timeline records and **174** calendar-day coverage markers.
+- **98 events:** **15 pre-war** context records and **83 wartime** records.
+- **98** timeline records and **174** calendar-day coverage markers.
 - **5** integrated facility records, plus **18** existing repo facility identities explicitly preserved.
 - **6** full claim case files.
 - **10** force-posture movement records.
 - **8** agreement/security-mechanism records.
-- **19** diplomacy records.
+- **28** diplomacy records.
 - **23** normalized casualty records/components/snapshots.
 - **12** material-loss/damage records.
 - **9** munitions-expenditure records.
-- **11** shipping observations.
-- **6** backfill economic records, with existing forecast context preserved separately.
-- **135** canonical sources.
+- **13** shipping observations.
+- **9** backfill economic records, with existing forecast context preserved separately.
+- **150** canonical sources.
 - **19** unresolved gaps and **19** targeted collection requests.
 - **13** BDA overlay candidates/records.
-- **23** revision-history records.
+- **24** revision-history records.
 
 ## Force-posture classification rule
 

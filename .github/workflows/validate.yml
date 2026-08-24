@@ -45,6 +45,7 @@ jobs:
           node tests/costing.test.js
           node tests/forensic-v1.3.2.test.js
           node tests/full-scope-20260822.test.js
+          node tests/aug22-update.test.js
       - name: Validate forensic v1.3.2 analytical package
         env:
           PYTHONUTF8: '1'
@@ -53,3 +54,7 @@ jobs:
         env:
           PYTHONUTF8: '1'
         run: python scripts/validate_full_scope.py
+      - name: Validate Aug. 22 canonical/workspace update
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_aug22_update.py
