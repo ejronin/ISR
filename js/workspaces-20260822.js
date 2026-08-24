@@ -13,6 +13,13 @@
   const safeUrl=v=>{try{const u=new URL(v,location.href);return /^https?:$/.test(u.protocol)?u.href:null}catch(_){return null}};
   const fetchJson=async p=>{const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw new Error(`${p}: ${r.status}`);return r.json();};
   const waitFor=(fn,ms=12000)=>new Promise((resolve,reject)=>{const s=Date.now();(function tick(){const v=fn();if(v)return resolve(v);if(Date.now()-s>ms)return reject(new Error('Aug22 workspace dependency timeout'));setTimeout(tick,50);}())});
+  const earliestTimelineDate=()=>{
+    const dates=(window.ATLAS_TEMPORAL_INDEX||[])
+      .map(x=>x.event_date)
+      .filter(Boolean)
+      .sort();
+    return dates[0]||'2026-02-28';
+  };
   let full=null, registry=null, mou=null, routes=null, peerNav=null, visualZoom='FIT', lastAtlasView='snapshot', routeGroup=null;
 
   function setCanonicalLabels(){
@@ -64,7 +71,7 @@
     const status=add(bar,'div','isr-timeline-prefetch','Chronology prefetched');status.setAttribute('aria-live','polite');
     const dateNav=add(bar,'div','isr-date-nav');
     const prev=add(dateNav,'button','','← Day');prev.type='button';prev.onclick=()=>shiftDay(-1);
-    const input=add(dateNav,'input');input.type='date';input.id='isrWorkspaceDate';input.min='2026-02-28';input.max=CANONICAL;input.onchange=()=>{if(input.value)window.AtlasState?.set?.({timeCutoff:input.value},{source:'timeline-date-input'});};
+    const input=add(dateNav,'input');input.type='date';input.id='isrWorkspaceDate';input.min=earliestTimelineDate();input.max=CANONICAL;input.onchange=()=>{if(input.value)window.AtlasState?.set?.({timeCutoff:input.value},{source:'timeline-date-input'});};
     const next=add(dateNav,'button','','Day →');next.type='button';next.onclick=()=>shiftDay(1);
     const current=add(dateNav,'button','','Current');current.type='button';current.onclick=()=>window.AtlasState?.set?.({timeCutoff:CANONICAL},{source:'timeline-current'});
     const vz=add(bar,'div','isr-visual-zoom');add(vz,'span','','Visual scale');['FIT','1×','2×','4×','8×'].forEach(x=>{const b=add(vz,'button','',x);b.type='button';b.dataset.visualZoom=x;b.onclick=()=>setVisualZoom(x);});
@@ -77,7 +84,8 @@
     const search=document.getElementById('isrTimelineSearch');search?.addEventListener('input',()=>setTimeout(updateTimelineEnhancements,0));
     applyVisualZoom();updateTimelineEnhancements();
   }
-  function shiftDay(n){const state=window.AtlasState?.get?.();if(!state?.timeCutoff)return;const d=new Date(`${state.timeCutoff}T12:00:00Z`);d.setUTCDate(d.getUTCDate()+n);let v=d.toISOString().slice(0,10);if(v<'2026-02-28')v='2026-02-28';if(v>CANONICAL)v=CANONICAL;window.AtlasState.set({timeCutoff:v},{source:'timeline-day-step'});}
+function shiftDay(n){const state=window.AtlasState?.get?.();if(!state?.timeCutoff)return;const d=new Date(`${state.timeCutoff}T12:00:00Z`);d.setUTCDate(d.getUTCDate()+n);let v=d.toISOString().slice(0,10);const min=earliestTimelineDate();if(v<min)v=min;if(v>CANONICAL)v=CANONICAL;window.AtlasState.set({timeCutoff:v},{source:'timeline-day-step'});}
+
   function resetTimeline(){
     const state=window.AtlasState?.get?.()||{};const other=(state.activeFilters||[]).filter(x=>!x.startsWith('actor:'));
     const q=document.getElementById('isrTimelineSearch');if(q)q.value='';visualZoom='FIT';
