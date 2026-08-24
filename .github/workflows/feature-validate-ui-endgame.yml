@@ -1,0 +1,114 @@
+name: Feature validation — UI Endgame Mermaid R1
+
+on:
+  push:
+    branches: [ui-endgame-mermaid-r1]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feature-ui-endgame-mermaid-r1
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Assemble staged Endgame controller and CSS
+        shell: bash
+        run: |
+          set -euo pipefail
+          if compgen -G 'staging/endgame-r1.part*' > /dev/null; then
+            cat $(find staging -maxdepth 1 -name 'endgame-r1.part*' | sort -V) > js/endgame-adjudication-r1.js
+          fi
+          if compgen -G 'staging/endgame-css.part*' > /dev/null; then
+            cat $(find staging -maxdepth 1 -name 'endgame-css.part*' | sort -V) > css/endgame-adjudication-r1.css
+          fi
+      - name: Vendor pinned Mermaid 11.6.0 if needed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! -f vendor/mermaid/mermaid.min.js ]]; then
+            rm -rf .tmp-mermaid
+            mkdir -p .tmp-mermaid vendor/mermaid
+            cd .tmp-mermaid
+            npm pack mermaid@11.6.0 --silent
+            tar -xzf mermaid-11.6.0.tgz
+            cp package/dist/mermaid.min.js ../vendor/mermaid/mermaid.min.js
+            cp package/LICENSE ../vendor/mermaid/LICENSE
+            cd ..
+            SHA="$(sha256sum vendor/mermaid/mermaid.min.js | awk '{print $1}')"
+            printf '{\n  "name": "mermaid",\n  "version": "11.6.0",\n  "license": "MIT",\n  "runtime_file": "mermaid.min.js",\n  "sha256": "%s",\n  "source": "npm package mermaid@11.6.0"\n}\n' "$SHA" > vendor/mermaid/VERSION.json
+          fi
+      - name: Commit generated self-hosted assets to feature branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f staging/endgame-r1.part* staging/endgame-css.part* || true
+          git add js/endgame-adjudication-r1.js css/endgame-adjudication-r1.css vendor/mermaid staging || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Assemble Endgame R1 and vendor Mermaid 11.6.0"
+            git push origin HEAD:ui-endgame-mermaid-r1
+          fi
+      - name: Build exhaustive source registry
+        run: python scripts/build_source_registry.py --root .
+      - name: Run standing regression suite
+        env:
+          PYTHONUTF8: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/validate_aug24_counts.py
+          python scripts/validate.py
+          python scripts/validate_integration.py
+          python scripts/validate_ux.py
+          python scripts/privacy_scan.py
+          node tests/presentation.test.js
+          node tests/temporal-state.test.js
+          node tests/security-rendering.test.js
+          node tests/costing.test.js
+          node tests/forensic-v1.3.2.test.js
+          node tests/full-scope-20260822.test.js
+          node tests/aug22-update.test.js
+          node tests/endgame-page.test.js
+          node tests/public-ux-20260823.test.js
+          node tests/aug24-current-update.test.js
+          node tests/ui-endgame-mermaid-r1.test.js
+          python scripts/validate_endgame_page.py
+          python scripts/validate_ui_endgame_mermaid_r1.py
+          python scripts/validate_public_ux_20260823.py
+          python data/forensic-v1.3.2/validate-addon.py
+          python scripts/validate_full_scope.py
+          python scripts/validate_aug22_update.py
+          python scripts/validate_aug24_counts.py
+          git diff --check d9c2d862dd117544edf7fa9400920b160135220e HEAD
+      - name: Install Chromium for visual QA
+        run: npx --yes playwright@1.55.0 install --with-deps chromium
+      - name: Run required viewport and interaction QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa-artifacts
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/isr-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          sleep 2
+          npx --yes @playwright/test@1.55.0 test tests/visual-qa-r1.spec.js --reporter=line
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-endgame-mermaid-r1-visual-qa
+          path: qa-artifacts/
+          if-no-files-found: warn
