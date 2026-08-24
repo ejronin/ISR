@@ -1,0 +1,613 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-24T14:14:00-04:00",
+  "layer": "APPEND_ONLY_CURRENT_OVERLAY",
+  "events": [
+    {
+      "event_id": "CUR-20260823-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-23",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-23",
+      "first_verified": "2026-08-23",
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-23",
+      "valid_to": null,
+      "event_type": "SANCTIONS_RESPONSE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Planned U.S. sanctions",
+      "location": {
+        "name": "Planned U.S. sanctions",
+        "country": "Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "ATTRIBUTED_ACTOR_POSITION",
+      "confidence": "HIGH",
+      "summary": "Araqchi rejects planned U.S. sanctions while still calling for a negotiated solution on terms Iran describes as respectful.",
+      "observed_fact": "Reuters reported Foreign Minister Abbas Araqchi dismissing the planned sanctions as a sign of U.S. desperation and saying Washington should speak to Iran respectfully to reach a solution.",
+      "claimed_effect": "",
+      "verified_effect": "Public Iranian diplomatic position is established; whether sanctions will fail is not independently verified.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-DF5FAE990B74",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "SANCTIONS_RESPONSE",
+            "NEGOTIATION_SIGNAL"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-001",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "HORMUZ_TRANSIT_ENFORCEMENT",
+      "actors": [
+        "Iran",
+        "Persian Gulf Strait Authority"
+      ],
+      "target": "45 named tankers / Strait of Hormuz",
+      "location": {
+        "name": "45 named tankers / Strait of Hormuz",
+        "country": "Iran / Strait of Hormuz",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "Iran's new strait authority blacklists 45 tankers and threatens fines, detention and cargo confiscation for alleged rule violations.",
+      "observed_fact": "Reuters reported a published 45-vessel non-compliance list and stated penalties, including possible action against ships conducting transfers with listed vessels.",
+      "claimed_effect": "",
+      "verified_effect": "The enforcement threat and blacklist are verified as Iranian policy announcements; international legal recognition of the asserted transit regime is not established.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-3654DF2A6113",
+          "roles": [
+            "SHIPPING_POLICY",
+            "HORMUZ",
+            "ACTOR_STATEMENT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-002",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "SHIPPING_TRAFFIC_UPDATE",
+      "actors": [
+        "Commercial shipping",
+        "Kpler",
+        "UKMTO"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": "Strait of Hormuz",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Visible Hormuz traffic remains sharply depressed: 4 commodity transits Sunday after 13 Saturday and 16 Friday, with AIS-off caveats.",
+      "observed_fact": "Reuters cited Kpler initial data of 4 Sunday transits and 13 Saturday versus 16 Friday; UKMTO said AIS-detected traffic remained about 90% below pre-conflict baselines.",
+      "claimed_effect": "",
+      "verified_effect": "The reported visible-AIS traffic depression is supported; exact total physical transits remain uncertain because some vessels switch off transponders.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-D667C4F6F47F",
+          "roles": [
+            "SHIPPING_DATA",
+            "HORMUZ",
+            "TRAFFIC_BASELINE"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-003",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "SANCTIONS_DIPLOMACY",
+      "actors": [
+        "China"
+      ],
+      "target": "Prospective U.S. secondary sanctions on Iran trade",
+      "location": {
+        "name": "Prospective U.S. secondary sanctions on Iran trade",
+        "country": "China",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "STATEMENT_OR_POLICY_CONFIRMED",
+      "confidence": "HIGH",
+      "summary": "China says it will protect its rights and warns that sanctions and pressure do not help resolve the Iran conflict.",
+      "observed_fact": "Reuters reported Chinese Foreign Ministry spokesperson Lin Jian saying Beijing would watch developments, protect its rights and urge restraint.",
+      "claimed_effect": "",
+      "verified_effect": "China's stated policy position is confirmed; no specific retaliatory economic measure was announced in the cited report.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-7DBD5E47A6BC",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "SANCTIONS_RESPONSE",
+            "CHINA"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-004",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": null,
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "HORMUZ_DIPLOMACY_SCHEDULED",
+      "actors": [
+        "Oman",
+        "Iran"
+      ],
+      "target": "Oman-Iran Strait of Hormuz talks",
+      "location": {
+        "name": "Oman-Iran Strait of Hormuz talks",
+        "country": "Oman / Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "ANNOUNCED_SCHEDULED",
+      "confidence": "HIGH",
+      "summary": "Iran announces Oman's foreign minister will visit Tehran Tuesday to continue Strait of Hormuz talks.",
+      "observed_fact": "Iranian Foreign Ministry spokesperson Esmaeil Baghaei announced Sayyid Badr Albusaidi's planned Tuesday visit for continued Hormuz discussions.",
+      "claimed_effect": "",
+      "verified_effect": "The visit is scheduled, not completed, at the Aug. 24 14:14 ET cutoff.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-B413D0B32610",
+          "roles": [
+            "DIPLOMACY",
+            "HORMUZ_NEGOTIATION",
+            "SCHEDULED_VISIT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "SCHEDULED",
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-005",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "MEDIATION_VISIT",
+      "actors": [
+        "Pakistan",
+        "Iran"
+      ],
+      "target": "Asim Munir Tehran visit",
+      "location": {
+        "name": "Asim Munir Tehran visit",
+        "country": "Pakistan / Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CONFIRMED_EVENT",
+      "confidence": "HIGH",
+      "summary": "Pakistan's army chief Asim Munir arrives in Tehran with Pakistan describing the visit as part of regional peace and stability efforts.",
+      "observed_fact": "Reuters reported Pakistan's military confirmation that Munir arrived in Tehran accompanied by Interior Minister Mohsin Naqvi.",
+      "claimed_effect": "",
+      "verified_effect": "The visit itself is confirmed; its diplomatic outcome remained unresolved at cutoff.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-BB412D3385DF",
+          "roles": [
+            "DIPLOMACY",
+            "MEDIATION",
+            "PAKISTAN",
+            "US_IRAN_NEGOTIATION"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-006",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": null,
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "MEDIATION_SIGNAL",
+      "actors": [
+        "United States",
+        "Pakistan",
+        "Iran"
+      ],
+      "target": "U.S.-Pakistan mediation channel",
+      "location": {
+        "name": "U.S.-Pakistan mediation channel",
+        "country": "United States / Pakistan / Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SOURCE_REPORTED_WITH_LIMITATIONS",
+      "confidence": "MEDIUM_HIGH",
+      "summary": "Pakistani sources say Trump called Munir before the Tehran trip and asked Pakistan to use its influence to bring Iran back to negotiations.",
+      "observed_fact": "Reuters cited three Pakistani sources on the Trump-Munir call; one described the main U.S. request as using Pakistani influence to return Iran to negotiations. The White House had not publicly detailed the substance in the cited report.",
+      "claimed_effect": "",
+      "verified_effect": "The call is source-reported and the described U.S. request is attributed to Pakistani sources; it is not upgraded to an official U.S. statement.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-BB412D3385DF",
+          "roles": [
+            "DIPLOMACY",
+            "MEDIATION",
+            "PAKISTAN",
+            "US_IRAN_NEGOTIATION"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-007",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "TRADE_DISRUPTION",
+      "actors": [
+        "India",
+        "Iran",
+        "United Arab Emirates",
+        "United States"
+      ],
+      "target": "India-Iran trade routes and payment channels",
+      "location": {
+        "name": "India-Iran trade routes and payment channels",
+        "country": "India / UAE / Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Indian exporters report additional Iran-trade disruption from the UAE halt and tightening U.S. sanctions pressure.",
+      "observed_fact": "Reuters reported that Indian rice, tea and pharmaceutical exporters expected payment, routing, freight and insurance problems because much trade had used Dubai-based channels; UAE trade with Iran had already been suspended.",
+      "claimed_effect": "",
+      "verified_effect": "The reported commercial disruption and exporter expectations are supported; this record does not convert forecasts of future export decline into realized loss.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-2C482D135C1B",
+          "roles": [
+            "ECONOMICS",
+            "TRADE",
+            "SANCTIONS_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-008",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Yemen Houthis",
+        "Saudi Arabia",
+        "Bahri"
+      ],
+      "target": "Tanker west of Yanbu",
+      "location": {
+        "name": "Tanker west of Yanbu",
+        "country": "Saudi Arabia / Red Sea",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "ATTACK_CONFIRMED_ATTRIBUTION_CLAIMED",
+      "confidence": "HIGH",
+      "summary": "A tanker is attacked west of Yanbu; Bahri confirms one of its vessels was attacked while the Houthis claim responsibility.",
+      "observed_fact": "Reuters reported UKMTO information that a projectile struck a tanker and caused a main-deck fire, while Saudi national carrier Bahri confirmed one of its vessels had been attacked.",
+      "claimed_effect": "",
+      "verified_effect": "The attack is independently supported; Houthi responsibility remains an attributed claim in this overlay.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-DE9E3EFD6572",
+          "roles": [
+            "MARITIME_ATTACK",
+            "RED_SEA",
+            "CLAIM_ORIGIN",
+            "CORROBORATION"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    },
+    {
+      "event_id": "CUR-20260824-009",
+      "legacy_repo_event_refs": [],
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-24",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-24",
+      "first_verified": "2026-08-24",
+      "publication_time_precision": "SOURCE_TIMESTAMP_WHERE_AVAILABLE",
+      "valid_from": "2026-08-24",
+      "valid_to": null,
+      "event_type": "SANCTIONS_ACTION",
+      "actors": [
+        "United States",
+        "Iran"
+      ],
+      "target": "Iran-linked financial and commercial networks",
+      "location": {
+        "name": "Iran-linked financial and commercial networks",
+        "country": "United States / Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "country_or_theater"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "CONFIRMED_ACTION_WITH_PROSPECTIVE_COMPONENT",
+      "confidence": "HIGH",
+      "summary": "Treasury imposes nearly 60 Iran-related designations and threatens broader secondary sanctions, while withholding immediate country-wide penalties.",
+      "observed_fact": "Reuters reported Treasury sanctions on nearly 60 individuals, entities and vessels and warnings focused on digital assets, technology, gold, aviation and shipping; Bessent did not identify countries that would immediately receive broader penalties.",
+      "claimed_effect": "",
+      "verified_effect": "The Aug. 24 designation action is confirmed. Prospective broader country penalties remain threatened/conditional rather than enacted in this record.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-BF55B0FCC76D",
+          "roles": [
+            "SANCTIONS",
+            "US_POLICY",
+            "ECONOMIC_PRESSURE"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-24",
+          "change": "Added in append-only Aug. 24 current overlay; historical integration-v1.2 ledger remains unchanged."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1376 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-22",
+  "outlet_profiles": [
+    {
+      "outlet_profile_id": "OUTLET-4B1E7DD7BAD7",
+      "display_name": "Xinhua",
+      "aliases": [],
+      "country": "China",
+      "region": "EAST_ASIA",
+      "outlet_type": "NEWS_OUTLET",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-09909245C5DE",
+      "display_name": "Bulgarian News Agency",
+      "aliases": [],
+      "country": "Bulgaria",
+      "region": "EUROPE",
+      "outlet_type": "NEWS_AGENCY",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-F64C1A998ED0",
+      "display_name": "Anadolu Agency",
+      "aliases": [],
+      "country": "Türkiye",
+      "region": "EUROPE",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-0091F2D6C75F",
+      "display_name": "Calibre Defence",
+      "aliases": [],
+      "country": "United Kingdom",
+      "region": "EUROPE",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "display_name": "Reuters",
+      "aliases": [],
+      "country": "United Kingdom",
+      "region": "EUROPE",
+      "outlet_type": "WIRE_SERVICE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "RATED",
+        "bias_raw": "CENTER",
+        "bias_bucket_3": "CENTER",
+        "factuality": "Very High",
+        "profile_url": "https://ground.news/interest/reuters_fa2539",
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-C8070CD309F8",
+      "display_name": "AFP Fact Check",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-F64912F9C404",
+      "display_name": "AWS Registry / NASA OPERA",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-BDA13920ED11",
+      "display_name": "AWS Registry of Open Data / Capella Space",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-4A3C929C9106",
+      "display_name": "AWS Registry of Open Data / ICEYE",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-9C08FBF4D989",
+      "display_name": "AWS Registry of Open Data / Umbra",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-E8828C0131D4",
+      "display_name": "Air & Space Forces Magazine",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-82E5A6211D59",
+      "display_name": "Air Combat Command",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-FC4D4A57A368",
+      "display_name": "Airway",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-6BFBAAC71E1C",
+      "display_name": "Altair",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-23AED8EED38E",
+      "display_name": "Associated Press via ABC News",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "NEWS_OUTLET",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-256FB806488B",
+      "display_name": "Bellingcat",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-6381D05A5E85",
+      "display_name": "CSIS Missile Threat",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-7F64C89EC90F",
+      "display_name": "Center for Strategic and International Studies (CSIS)",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-C9D74CA9FECD",
+      "display_name": "Congressional Research Service",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-9BBBAF6B29C3",
+      "display_name": "Copernicus Data Space Ecosystem",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-46F594BEF004",
+      "display_name": "Critical Threats Project / ISW",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-C414E2FCF8A9",
+      "display_name": "Defense Express",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-5BF94C7247EB",
+      "display_name": "Department of Defense Inspector General",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-F7157A064063",
+      "display_name": "European Central Bank",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-35ADE2FDED04",
+      "display_name": "Evergreen Intel",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-0DB254895C54",
+      "display_name": "FEMA",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-59E47C2365B9",
+      "display_name": "Gulf News / Bloomberg",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "NEWS_OUTLET",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-DD341FE52EBA",
+      "display_name": "Haft Shahr Aria Consulting Engineers",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-95979EBFCF64",
+      "display_name": "Human Rights Watch",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-8588B8C524E3",
+      "display_name": "IMF",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-EDD8CA9B3CC2",
+      "display_name": "Investing.com",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-9EED82C537B5",
+      "display_name": "Investing.com / Reuters syndication",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-A51B5D59B93F",
+      "display_name": "Iran International",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "BROADCASTER",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-F740328D37D2",
+      "display_name": "JINSA",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-82107841640D",
+      "display_name": "Janes",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-E47A7645C862",
+      "display_name": "Kuwait Meteorological Center",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-08D885F02A20",
+      "display_name": "Lead Stories",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-E87C470D2388",
+      "display_name": "Naval News",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "NEWS_OUTLET",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-CB3434AB0416",
+      "display_name": "Office of Naval Intelligence via USNI News",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "NEWS_OUTLET",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-5FF27381AB8C",
+      "display_name": "Qatar Ministry of Foreign Affairs",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-FC69AE8D85A2",
+      "display_name": "Recorded Future / Insikt Group",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-A62F13D02946",
+      "display_name": "TASS",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-AA437F617622",
+      "display_name": "Tasnim News Agency",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "STATE_MEDIA",
+      "state_affiliation": "State/state-aligned actor source",
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-A2B2A18ED7CF",
+      "display_name": "The Aviationist",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-A58014E022AF",
+      "display_name": "The War Zone",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-000D03CA0E07",
+      "display_name": "The White House",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-ABB53D22F576",
+      "display_name": "U.S. Air Force / Shaw AFB",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-C518C74A02D8",
+      "display_name": "U.S. Air Force Reserve Command",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-AB4BB595E328",
+      "display_name": "U.S. Army / CENTCOM",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-53ACA6C188B8",
+      "display_name": "U.S. Bureau of Labor Statistics",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-BB18A28A3443",
+      "display_name": "U.S. Department of State, Office of the Historian",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-47634209A0F9",
+      "display_name": "U.S. Department of the Army",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-C67DF0E10B6A",
+      "display_name": "U.S. Department of the Treasury",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-DF403C8BB70A",
+      "display_name": "USNI Proceedings",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-A2659B7E6B80",
+      "display_name": "Umbra",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-C4274FD3FC5D",
+      "display_name": "United States Navy",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-FA6BAA95414B",
+      "display_name": "Wall Street Journal",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-93768342590E",
+      "display_name": "Wikidata",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-EC80EBA460F5",
+      "display_name": "World Bank",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "INTERNATIONAL_ORGANIZATION",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-7B62913B395D",
+      "display_name": "Press TV",
+      "aliases": [],
+      "country": "Iran",
+      "region": "MIDDLE_EAST_NORTH_AFRICA",
+      "outlet_type": "STATE_MEDIA",
+      "state_affiliation": "Iranian state media",
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-A33112BE53D4",
+      "display_name": "Al Jazeera",
+      "aliases": [],
+      "country": "Qatar",
+      "region": "MIDDLE_EAST_NORTH_AFRICA",
+      "outlet_type": "BROADCASTER",
+      "state_affiliation": "Qatari state-funded",
+      "ownership_note": null,
+      "ground_news": {
+        "status": "RATED",
+        "bias_raw": "LEAN LEFT",
+        "bias_bucket_3": "LEFT",
+        "factuality": "High",
+        "profile_url": "https://ground.news/interest/al-jazeera_1a2e2c",
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-7EE27F376969",
+      "display_name": "Qatar News Agency",
+      "aliases": [],
+      "country": "Qatar",
+      "region": "MIDDLE_EAST_NORTH_AFRICA",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-3CDF7DE1DEF8",
+      "display_name": "Arab News",
+      "aliases": [],
+      "country": "Saudi Arabia",
+      "region": "MIDDLE_EAST_NORTH_AFRICA",
+      "outlet_type": "NEWSPAPER",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-BD01CECEA435",
+      "display_name": "Emirates News Agency (WAM)",
+      "aliases": [],
+      "country": "United Arab Emirates",
+      "region": "MIDDLE_EAST_NORTH_AFRICA",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-6F6CE80A78C7",
+      "display_name": "The National",
+      "aliases": [],
+      "country": "United Arab Emirates",
+      "region": "MIDDLE_EAST_NORTH_AFRICA",
+      "outlet_type": "NEWSPAPER",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "RATED",
+        "bias_raw": "CENTER",
+        "bias_bucket_3": "CENTER",
+        "factuality": "High",
+        "profile_url": "https://ground.news/interest/the-national_7f9810",
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-89FF63CE8DF8",
+      "display_name": "Associated Press",
+      "aliases": [],
+      "country": "United States",
+      "region": "NORTH_AMERICA",
+      "outlet_type": "WIRE_SERVICE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "RATED",
+        "bias_raw": "LEAN LEFT",
+        "bias_bucket_3": "LEFT",
+        "factuality": "High",
+        "profile_url": "https://ground.news/interest/associated-press-news",
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-BA8751ED6C4F",
+      "display_name": "CSIS",
+      "aliases": [],
+      "country": "United States",
+      "region": "NORTH_AMERICA",
+      "outlet_type": "THINK_TANK",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-5AB376D8ECBA",
+      "display_name": "The Washington Post",
+      "aliases": [
+        "Washington Post"
+      ],
+      "country": "United States",
+      "region": "NORTH_AMERICA",
+      "outlet_type": "NEWSPAPER",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "RATED",
+        "bias_raw": "LEAN LEFT",
+        "bias_bucket_3": "LEFT",
+        "factuality": "High",
+        "profile_url": "https://ground.news/interest/the-washington-post",
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-939785E7D945",
+      "display_name": "U.S. Central Command",
+      "aliases": [],
+      "country": "United States",
+      "region": "NORTH_AMERICA",
+      "outlet_type": "OFFICIAL_MILITARY",
+      "state_affiliation": "U.S. government",
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-6664765973D6",
+      "display_name": "U.S. Department of Defense",
+      "aliases": [],
+      "country": "United States",
+      "region": "NORTH_AMERICA",
+      "outlet_type": "OFFICIAL_GOVERNMENT",
+      "state_affiliation": "U.S. government",
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-2DEF72C3D2FC",
+      "display_name": "U.S. Department of State (archived)",
+      "aliases": [],
+      "country": "United States",
+      "region": "NORTH_AMERICA",
+      "outlet_type": "OFFICIAL_GOVERNMENT",
+      "state_affiliation": "U.S. government",
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-2803E1E76B74",
+      "display_name": "USGS",
+      "aliases": [],
+      "country": "United States",
+      "region": "NORTH_AMERICA",
+      "outlet_type": "TECHNICAL_GOVERNMENT",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    }
+  ]
+}

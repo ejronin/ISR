@@ -27,6 +27,10 @@ jobs:
           node-version: '22'
       - name: Build exhaustive source registry
         run: python scripts/build_source_registry.py --root .
+      - name: Validate Aug. 24 count synchronization after source build
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_aug24_counts.py
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration
@@ -48,6 +52,7 @@ jobs:
           node tests/aug22-update.test.js
           node tests/endgame-page.test.js
           node tests/public-ux-20260823.test.js
+          node tests/aug24-current-update.test.js
       - name: Validate ENDGAME analytical page
         env:
           PYTHONUTF8: '1'
@@ -68,3 +73,7 @@ jobs:
         env:
           PYTHONUTF8: '1'
         run: python scripts/validate_aug22_update.py
+      - name: Validate Aug. 24 count synchronization after full regression suite
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_aug24_counts.py
