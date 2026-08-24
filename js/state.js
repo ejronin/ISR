@@ -21,7 +21,7 @@
   });
 
   const VIEW_GROUPS = Object.freeze({
-    snapshot: 'overview', timeline: 'overview', facilities: 'operations', strikes: 'operations', imagery: 'operations', csis: 'operations',
+    snapshot: 'overview', timeline: 'overview', endgame: 'overview', facilities: 'operations', strikes: 'operations', imagery: 'operations', csis: 'operations',
     losses: 'effects', economy: 'effects', arctic: 'effects', claims: 'information', infowar: 'information',
     sources: 'evidence', intro: 'evidence', historical: 'evidence', history: 'evidence'
   });

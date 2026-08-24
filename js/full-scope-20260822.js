@@ -14,7 +14,7 @@
   const fetchJson=async path=>{const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw new Error(`${path}: ${r.status}`);return r.json();};
   const safeUrl=value=>{try{const u=new URL(value,location.href);return /^https?:$/.test(u.protocol)?u.href:null}catch(_){return null}};
   const label=value=>String(value||'').replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-  let outcomes=null, registry=null, hormuz=null, authorityIndex=[];
+  let outcomes=null, registry=null, hormuz=null, outcomeEvidence=null, authorityIndex=[];
   let app=null, side=null, mapwrap=null, mapHomeParent=null, timelineState={scrollTop:0,selected:null};
   let evidenceDrawer=null, authorityPalette=null, mobileMapSheet=null, mobileMapLaunch=null, hormuzOverlay=null;
   let mobileMapContext={view:'timeline',scrollTop:0};
@@ -28,12 +28,13 @@
   function invalidateMap(){setTimeout(()=>window.atlasMap?.invalidateSize?.(),50)}
   function applyLayout(view){
     if(!app||!mapwrap)return;
-    app.classList.remove('isr-dashboard-layout','isr-map-primary-layout','isr-imagery-layout','isr-timeline-layout');
+    app.classList.remove('isr-dashboard-layout','isr-map-primary-layout','isr-imagery-layout','isr-timeline-layout','isr-atlas-map-only');
     if(view==='timeline'){
       app.classList.add('isr-timeline-layout'); const slot=document.querySelector('.isr-timeline-map-slot'); if(slot&&innerWidth>850&&mapwrap.parentElement!==slot)slot.appendChild(mapwrap);
     }else{
       restoreMapHome();
-      if(MAP_PRIMARY_VIEWS.has(view))app.classList.add('isr-map-primary-layout');
+      if(view==='facilities')app.classList.add('isr-atlas-map-only');
+      else if(MAP_PRIMARY_VIEWS.has(view))app.classList.add('isr-map-primary-layout');
       else if(view==='imagery')app.classList.add('isr-imagery-layout');
       else app.classList.add('isr-dashboard-layout');
     }
@@ -50,8 +51,12 @@
   function openEvidence(title,record){
     if(!evidenceDrawer)return; evidenceDrawer.querySelector('.isr-evidence-title').textContent=title||'Evidence'; const body=evidenceDrawer.querySelector('.isr-evidence-body'); body.replaceChildren();
     const dl=add(body,'dl'); Object.entries(record||{}).filter(([k,v])=>v!=null&&v!==''&&!['url','sources'].includes(k)).slice(0,22).forEach(([k,v])=>{add(dl,'dt','',label(k));add(dl,'dd','',Core.textOf(v));});
-    const refs=record?.supporting_record_refs||record?.sources||record?.source_ids||record?.source_refs||[]; if(refs.length){add(body,'div','section-title','Evidence references');refs.forEach(ref=>add(body,'div','srcchip',typeof ref==='string'?ref:ref.source_id));}
-    const u=safeUrl(record?.url||record?.original_source_url); if(u){const a=add(body,'a','outbound-source-link','Open publisher');a.href=u;a.target='_blank';a.rel='noopener noreferrer';}
+    const sourceIndex=sourceMap();const links=[];const seen=new Set();
+    const pushLink=s=>{if(!s)return;const u=safeUrl(s.url);if(!u||seen.has(u))return;seen.add(u);links.push({url:u,outlet:s.outlet||'Source',title:s.title||s.label||s.outlet||'Open source',note:s.note||s.proof_note||''});};
+    const directRefs=[...(record?.sources||[]),...(record?.source_ids||[]),...(record?.source_refs||[])];directRefs.forEach(ref=>{const id=typeof ref==='string'?ref:ref?.source_id;if(id)pushLink(sourceIndex.get(id));});
+    (outcomeEvidence?.[record?.id]||[]).forEach(pushLink);const directUrl=safeUrl(record?.url||record?.original_source_url);if(directUrl&&!seen.has(directUrl)&&new URL(directUrl).origin!==location.origin)pushLink({url:directUrl,outlet:'Publisher',title:record?.title||title});
+    if(links.length){add(body,'div','section-title','News and source links');const list=add(body,'div','isr-evidence-source-list');links.forEach(s=>{const a=add(list,'a','isr-evidence-source');a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';add(a,'b','',`${s.outlet}: ${s.title}`);if(s.note)add(a,'span','',s.note);});}else add(body,'div','isr-evidence-source-note','No public news/source URL is attached to this display record yet. Internal record IDs are intentionally not shown as evidence links.');
+    /* public evidence links are rendered above from source records; no self-referential publisher fallback */
     evidenceDrawer.hidden=false;
   }
 
@@ -180,7 +185,7 @@
   async function init(){
     await waitFor(()=>window.ATLAS_LEDGER&&window.ATLAS_FORENSIC&&window.AtlasState&&window.AtlasTemporal&&document.getElementById('map'));
     app=document.getElementById('app');side=document.querySelector('.side');mapwrap=document.getElementById('map').parentElement;mapHomeParent=mapwrap.parentElement;
-    [outcomes,registry,hormuz]=await Promise.all([fetchJson('./data/iran-outcome-assessments-v1.0.json'),fetchJson('./data/source-registry.json').catch(()=>null),fetchJson('./data/hormuz-strategic-v3.json')]);
+    [outcomes,registry,hormuz,outcomeEvidence]=await Promise.all([fetchJson('./data/iran-outcome-assessments-v1.0.json'),fetchJson('./data/source-registry.json').catch(()=>null),fetchJson('./data/hormuz-strategic-v3.json'),fetchJson('./data/outcome-evidence-links-20260823.json')]);
     authorityIndex=Core.buildAuthorityIndex({outcomes,forensic:window.ATLAS_FORENSIC,ledger:window.ATLAS_LEDGER,legacy:window.ATLAS_DATA});
     window.ISRFullScope20260822={authorityIndex,refreshTimeline,openHormuz,closeHormuz,applyLayout,rankSearch:(q,l)=>Core.rankSearch(authorityIndex,q,l)};
     setReviewLabels();buildEvidenceDrawer();buildMobileMapSheet();renderOutcomes();renderTimeline();renderClaimChallenge();if(registry)renderSources();buildAuthoritySearch();buildHormuzOverlay();observePanels();

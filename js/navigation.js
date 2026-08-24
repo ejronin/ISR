@@ -2,7 +2,7 @@
 (function atlasShell() {
   const canonicalUrl = 'https://ejronin.github.io/ISR/';
   const groups = {
-    overview: [['snapshot', 'Current picture'], ['timeline', 'Timeline']],
+    overview: [['snapshot', 'Current picture'], ['timeline', 'Timeline'], ['endgame', 'Endgame (so far)']],
     operations: [['facilities', 'U.S. sites'], ['strikes', 'U.S. strike effects'], ['imagery', 'Satellite BDA'], ['csis', 'Missiles / drones']],
     effects: [['losses', 'Verified losses'], ['economy', 'GCC / Iran economy'], ['arctic', 'China Arctic routes']],
     information: [['claims', 'Claim checks'], ['infowar', 'Information war']],
@@ -120,7 +120,34 @@
     } catch (error) { target.textContent = 'Build verification metadata is unavailable in this session.'; }
   }
 
+  function ensureEndgamePanel() {
+    const content = document.querySelector('.content');
+    if (!content) return;
+    if (!document.getElementById('endgame')) {
+      const panel = document.createElement('section');
+      panel.className = 'panel';
+      panel.id = 'endgame';
+      panel.innerHTML = '<div class="callout"><strong>ENDGAME (So far)</strong><br>Loading the source-linked endgame audit…</div>';
+      content.appendChild(panel);
+    }
+    if (!document.querySelector('link[data-atlas-endgame]')) {
+      const style = document.createElement('link');
+      style.rel = 'stylesheet';
+      style.href = './css/endgame-20260823.css?v=20260823';
+      style.dataset.atlasEndgame = 'true';
+      document.head.appendChild(style);
+    }
+    if (!document.querySelector('script[data-atlas-endgame]')) {
+      const script = document.createElement('script');
+      script.src = './js/endgame-20260823.js?v=20260823';
+      script.async = false;
+      script.dataset.atlasEndgame = 'true';
+      document.head.appendChild(script);
+    }
+  }
+
   function wireShell() {
+    ensureEndgamePanel();
     const primary = document.getElementById('primaryNav'); const secondary = document.getElementById('secondaryNav');
     document.querySelectorAll('.primary-tab').forEach(button => button.setAttribute('aria-controls', 'secondaryNav'));
     primary?.addEventListener('click', event => { const button = event.target.closest('.primary-tab'); if (button) renderSecondary(button.dataset.group); });
