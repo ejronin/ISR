@@ -1,13 +1,15 @@
 {
   "publicMeta": {
     "version": "2.6",
-    "cutoff": "2026-08-19 21:55 ET",
+    "cutoff": "2026-08-22 13:59 ET",
     "timeline_start": "2026-02-28",
     "method": "Physical damage, operational effect, actor claim and analytic significance are separate fields. Unverified claims remain unverified. Assessment labels describe functional consequence, not moral or political judgment. Routes marked schematic represent published corridors, not live AIS tracks or tactical movement.",
     "claim_check_count": 12,
-    "supplemental_osint_through": "2026-08-19 21:55 ET",
+    "supplemental_osint_through": "2026-08-22 13:59 ET",
     "ui_version": "2.9",
-    "engineering_migration": "2026-08-20"
+    "engineering_migration": "2026-08-20",
+    "canonical_evidence_cutoff": "2026-08-22 13:59 ET",
+    "outcome_assessment_cutoff": "2026-08-20 15:59 ET"
   },
   "balance": {
     "date": "2026-08-16 project assessment",

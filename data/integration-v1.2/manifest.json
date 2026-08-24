@@ -2,7 +2,7 @@
   "package_name": "ISR-Atlas-Integration-20260820-1701-v1.2",
   "schema_version": "1.2",
   "created_at": "2026-08-20T17:01:00-04:00",
-  "collection_cutoff": "2026-08-20T15:59:00-04:00",
+  "collection_cutoff": "2026-08-22T13:59:00-04:00",
   "input_revision": {
     "filename": "ISR-Atlas-Integration-20260820-1641(2).zip",
     "role": "AUTHORITATIVE_REVISION_1_1_BASELINE",
@@ -18,11 +18,11 @@
   "source_identity_rule": "Canonical SRC-* IDs remain authoritative; legacy S### namespaces are aliases only. Source lineage and source-role assignments are preserved.",
   "force_posture_rule": "Pre-war governing decisions/agreements/schedules/plans are classified by documented force-posture type and are not labeled retreat. Later wartime changes are recorded separately.",
   "counts": {
-    "events": 83,
+    "events": 98,
     "prewar_events": 15,
-    "wartime_events": 68,
-    "timeline_records": 83,
-    "daily_coverage_days": 174,
+    "wartime_events": 83,
+    "timeline_records": 98,
+    "daily_coverage_days": 176,
     "facilities_integrated": 5,
     "repo_facilities_to_preserve": 18,
     "claims": 6,
@@ -31,14 +31,14 @@
     "casualty_records": 23,
     "material_loss_records": 12,
     "munition_expenditure_records": 9,
-    "shipping_records": 11,
-    "economic_backfill_records": 6,
-    "diplomacy_records": 19,
-    "sources": 135,
+    "shipping_records": 13,
+    "economic_backfill_records": 9,
+    "diplomacy_records": 28,
+    "sources": 150,
     "unresolved_items": 19,
     "collection_requests": 19,
     "bda_overlay_candidates": 13,
-    "revision_records": 23
+    "revision_records": 24
   },
   "validation": {
     "json_parse_errors": [],
@@ -57,108 +57,113 @@
   },
   "files": {
     "CODEX-INSTRUCTIONS.md": {
-      "bytes": 34474,
-      "sha256": "79cc509e0fc1b76f286399c4b615dda5d2994e75e40ea5780338b3fa8024fc6f"
+      "bytes": 37327,
+      "sha256": "5a1c6102fce95ada2e02f4bc9836ff73f52341fab06fdfd76993304db65cd85d"
     },
     "agreements.json": {
-      "bytes": 26960,
-      "sha256": "3a700e876cdf1eb89b0b770b2ba99d1329280940e40ab40a2950e5e2969ebeda"
+      "bytes": 27500,
+      "sha256": "3c990ab7dcbd621800635b591b44468014fa5f088eedcacebb97fad271b12ccb"
     },
     "attrition-series.json": {
-      "bytes": 3819,
-      "sha256": "36c1ef9ea26dd00c146a22ae3790ae21fdf9fd8281a7cb4c077a49609dba5b9c"
+      "bytes": 3955,
+      "sha256": "ffa63139c53e1a7f1da85c23de54b063cd5a3ca48604f0ddf27d2cbf56495610"
     },
     "bda-overlays.json": {
-      "bytes": 8763,
-      "sha256": "4ee80eb1a5884c62fd2548b1d3827f6cb0d9e366e05b39b67544899de5a8e3ce"
+      "bytes": 8959,
+      "sha256": "79021cc0ce95ead46a7966140a0774c6ed21ba86edd326aaa42aef838ef0b4ae"
     },
     "casualties.json": {
-      "bytes": 20820,
-      "sha256": "30353eaeadd22e542148b893ee3e85c8394a1e249f4977c9f25a0f8ddb3d67ef"
+      "bytes": 21417,
+      "sha256": "02a8b228de5fcd3a95f62a56f36ca3f7c32fb6ae67e9782b89fe1af66c26d9a6"
     },
     "claims.json": {
-      "bytes": 20879,
-      "sha256": "9398442f1aa19eac13a9c3f6eba774092a8f4035c27bb5e2f3b2bdc5091d257a"
+      "bytes": 21355,
+      "sha256": "9e9eb38abca8ccaa1382d15959f45cda05caa332558d2279ee69eafd73a9b2e6"
     },
     "collection-requests.json": {
-      "bytes": 13799,
-      "sha256": "ee3572231a19a13f622fe84acfd9e82cd6b691f48fd86c1f38c10f06e9c27d7e"
+      "bytes": 14093,
+      "sha256": "805e8cf90326b06deeba6f42b4b382e7044569ead8c52d99bc5176a2ca7b1f8e"
     },
     "cost-model.json": {
-      "bytes": 4951,
-      "sha256": "365572c51eb1fcd0b4f17303d40616da359ecd0628573a16567aaf859ba3d695"
+      "bytes": 5086,
+      "sha256": "e92918bcca4b35020dec2d0f78945c6a77aa3b318a4ecf73553ca241b08112a9"
     },
     "daily-coverage.json": {
-      "bytes": 61155,
-      "sha256": "02aa5eca231bda966b2790397b29e1dffb162a645e0b62a6b71c3e7b420f62c0"
+      "bytes": 62343,
+      "sha256": "997bde5bc8a4419ab7843f32b5badf67d85ee68f8b6ae6167c74fc87d38eda72"
     },
     "diplomacy.json": {
-      "bytes": 9236,
-      "sha256": "5835db3d3d7ef15a1f785ef6eb74b8c24325528d300010c3898d2226a6bb5fba"
+      "bytes": 13595,
+      "sha256": "2e702651b30ab22c447dd387f93f189b0542d1cfb3c924ba6c9af2d722e6190a"
     },
     "domain-assessments.json": {
-      "bytes": 5021,
-      "sha256": "f72b8cfa18af423abf01b3779750a17c58da1ec5405ec1e3945b9af8d39295fc"
+      "bytes": 5671,
+      "sha256": "8ce18fd0fcf19ff5e5705d1fd3d0e0c083581282da130cb0f9046df515aa03b5"
     },
     "economics.json": {
-      "bytes": 4775,
-      "sha256": "ab1080b3d34e4961419efe8382dc775b53f45faf9e6bff2879e6b4663521af5b"
+      "bytes": 6556,
+      "sha256": "d64d82a59a6a1ad682a6c97708eead585a4bee86e29140f521cd06985031fccf"
     },
     "events.json": {
-      "bytes": 189085,
-      "sha256": "b08ba2d91a20c8ec073cbafce354762643184617179619d776592f2c43cf2af9"
+      "bytes": 222476,
+      "sha256": "46f0195ed96c22112066ad884e882340bdda5cee07583421cc28f8e9a58c6a5b"
     },
     "facilities.json": {
-      "bytes": 11912,
-      "sha256": "818f47c13f0f26e37b395fc07f670ef78847c7c9d968752014f6239380c88f40"
+      "bytes": 12225,
+      "sha256": "1d73139fb71ebb1153bab71a6a34e22d004cd100d0258633f44d00ccc7714669"
     },
     "integration-summary.md": {
-      "bytes": 11777,
-      "sha256": "23de3084ecfc5e6fb9c2f247d8738449bb7722c27791720780beb4250f8c685f"
+      "bytes": 12438,
+      "sha256": "83c0a2005024b0113c078dcae65c46ef72c143e0e3be131980a604a74ab2304a"
     },
     "map-links.json": {
-      "bytes": 5980,
-      "sha256": "aa52960252ea0c91cfc419c38a12fdbd0c21c37b03bbade15de8c54603dda1b9"
+      "bytes": 6178,
+      "sha256": "e649b293999d5a37358836abaf3b7ed2ddd590a0a6674fa0fed50301f646559a"
     },
     "material-losses.json": {
-      "bytes": 9348,
-      "sha256": "a4bb6164817b1759d2f5c84b391d83cb256adb2e83edd394e0f8cbf1f0a42f70"
+      "bytes": 9595,
+      "sha256": "c9ce2ca819d37bf211581ac53b01eea2642f746f0d914102862eecc69cc0e860"
     },
     "movements.json": {
-      "bytes": 31044,
-      "sha256": "9f07b6f35e19df110f019eee5e27c684be29807902f0128dedacf11d2be10356"
+      "bytes": 31742,
+      "sha256": "052c6f834bee4e9f5255cd5f5eac8425ce7b8cee4b9516a7a754072333d4637c"
     },
     "munitions-expenditure.json": {
-      "bytes": 5968,
-      "sha256": "2cb94fcea9a701c62f7a18882827db2c93211dfc43323dea7bdd2d1f7e9775bc"
+      "bytes": 6135,
+      "sha256": "f45db41c54ee332f7bdcbdf86767705b07338416cdf7d0aecf06b86faddce1a2"
     },
     "revision-history.json": {
-      "bytes": 9035,
-      "sha256": "ae14c13430b90c7fe5639120ec9803db339f6a2bf878df6c05ed879ab194b0b7"
+      "bytes": 9673,
+      "sha256": "99ff36a6a24331ddf06cba486402913ac168d1246bd6302fe5c6a5a1dead4214"
     },
     "shipping.json": {
-      "bytes": 5815,
-      "sha256": "28c4dd37a5c356c9b0e7681a78b90403e76b00fd3e9307ed08843c9376eb6d3c"
+      "bytes": 7107,
+      "sha256": "f0aef1da39bd4a98aa94965ed2177b701122ec0bd3bcaa2216dfd1fbe943ac37"
     },
     "source-role-map.json": {
-      "bytes": 11935,
-      "sha256": "63f4f7828a027557d23efa2b67bf243d5917ec37738f99e46694d905307ced54"
+      "bytes": 13001,
+      "sha256": "cf038ca018181a6d6644c5883d8c7c36d17754f9e0ac642ee37c0f69f60cb351"
     },
     "sources.json": {
-      "bytes": 125929,
-      "sha256": "b46bf418f60ac90c7a7b0076d95b43acf83f8bca377bd83f85e71ccdd4fc7010"
+      "bytes": 139523,
+      "sha256": "6f2dc54b044cf4cd255e8ae7f43198f1cc0ad503764f2cf8319127804f2f6e05"
     },
     "timeline.json": {
-      "bytes": 61161,
-      "sha256": "a14f7f0c9b9cfea488dbf9bcf1ce4d5dc3507b78054468d46e377373073ea173"
+      "bytes": 71782,
+      "sha256": "4b8b2dbc07ce8e0b301ef76ab4fe1745ed09bf69cfb0aee1e8f11f68011518c7"
     },
     "unresolved.json": {
-      "bytes": 12620,
-      "sha256": "ca103ebd1ef5a2a51d0095c04755b5706a0e404959859f65a8e61c612663d244"
+      "bytes": 12933,
+      "sha256": "d33ac9da4ba5f3c342f0b480bc8381d4d602c5ca123ececc26216b3f0d3cae93"
     },
     "validate-package.py": {
-      "bytes": 5477,
-      "sha256": "aac774bf27d9cfa47e8210a17ee0752ff3f9f024600f91cd28f342b7af6ae804"
+      "bytes": 5598,
+      "sha256": "cb28990e33300f879d163d8ac13e7991c587012c0e08ff7a9a94234d4272b764"
+    },
+    "aug22-update-lineage.json": {
+      "bytes": 27948,
+      "sha256": "27ead4c3f81585b29d844f2b9fa5619f9add1784101854d5a6e13e3d865c433f"
     }
-  }
+  },
+  "aug22_update_note": "Append-only factual chronology advanced through Aug. 22 13:59 ET. Outcome synthesis remains reviewed through Aug. 20 15:59 ET; MOU/Hormuz analytical prose remains reviewed through Aug. 22 10:54 ET."
 }

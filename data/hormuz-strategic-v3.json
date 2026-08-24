@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "source_reference": "Hormuz Strategic Leverage Map 20260822 v3.html",
-  "integration_status": "SEPARATE_LATER_DOMAIN_ASSESSMENT",
-  "canonical_ledger_advanced": false,
+  "integration_status": "ANALYTICAL_VIEW_WITH_PROMOTED_CANONICAL_FACTS",
+  "canonical_ledger_advanced": true,
   "cutoff": "2026-08-22 10:54 ET",
   "version": "2026.08.22-v3",
   "evidence_rules": [
@@ -1916,5 +1916,145 @@
       "grade": "A",
       "role": "China/Russia strategic logistics diversification; relevant as long-run chokepoint hedging, not as a replacement for Gulf oil transit."
     }
-  }
+  },
+  "title": "Hormuz Strategic Leverage Map — MoU to Current Standing",
+  "purpose": "Evidence-led bargaining and leverage overlay: compares each signed MoU provision with the strongest documented negotiating poles, shows immediate strategic value, records what was later lost/reversed, and tracks the current Hormuz/Lebanon/Oman position without converting coercive control into legal sovereignty.",
+  "mou_concession_matrix": [
+    {
+      "topic": "War termination / Lebanon",
+      "iran_priority": "End U.S./Israeli military operations on all fronts, with Lebanon explicitly covered; Iranian public positions also pressed for an Israeli withdrawal from Lebanon.",
+      "us_priority": "Immediate cessation of attacks and a framework that restored sovereignty/non-interference; Washington also wanted the broader war frozen while final terms were negotiated.",
+      "agreed": "Immediate and permanent termination of military operations on all fronts, including Lebanon; mutual non-aggression and respect for sovereignty.",
+      "us_concession": 6,
+      "iran_concession": 5,
+      "status": "BROKE DOWN REGIONALLY",
+      "why": "Both sides gave up active kinetic options on paper. Lebanon was included without an explicit Hezbollah-disarmament clause in the MoU itself.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_LEB_JUN05"
+      ]
+    },
+    {
+      "topic": "Naval blockade / U.S. force posture",
+      "iran_priority": "End the U.S. blockade and remove U.S. forces from Iran’s immediate proximity.",
+      "us_priority": "Use blockade relief as leverage for restored commercial passage and a final settlement rather than concede permanent Iranian closure.",
+      "agreed": "U.S. to begin lifting the blockade immediately and end it within 30 days; after a final deal, U.S. forces to move away from Iran’s proximity within 30 days.",
+      "us_concession": 9,
+      "iran_concession": 2,
+      "status": "PARTIALLY IMPLEMENTED, THEN REVERSED",
+      "why": "This was a major U.S. military/economic concession in the interim text. The blockade was later re-imposed after shipping attacks.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_JUL07",
+        "R_JUL13"
+      ]
+    },
+    {
+      "topic": "Hormuz passage, control and fees",
+      "iran_priority": "Preserve a recognized management role in the Strait with Oman and avoid returning permanently to the pre-war status quo.",
+      "us_priority": "Restore safe international transit with no compulsory Iranian toll or unilateral control.",
+      "agreed": "Iran to use best efforts to provide safe passage with no charge for 60 days and restore traffic; future administration/services to be discussed with Oman and Gulf littoral states under international law.",
+      "us_concession": 5,
+      "iran_concession": 8,
+      "status": "CORE FAILURE POINT",
+      "why": "Iran temporarily accepted no-charge passage; Washington accepted a formal future-administration dialogue instead of writing Iran out of the post-war mechanism.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_MOU_SEQ",
+        "R_MOU_GAPS"
+      ]
+    },
+    {
+      "topic": "Reconstruction / economic development",
+      "iran_priority": "Large-scale post-war reconstruction financing and economic recovery.",
+      "us_priority": "Use reconstruction as an incentive tied to a final settlement and regional burden-sharing.",
+      "agreed": "U.S. and regional partners to develop a mutually agreed plan of at least $300 billion, with implementation mechanism due in the final deal.",
+      "us_concession": 10,
+      "iran_concession": 0,
+      "status": "PROMISED, NOT REALIZED",
+      "why": "Very large promised economic benefit to Iran, but conditional on a final deal that never materialized.",
+      "sources": [
+        "R_MOU_TEXT"
+      ]
+    },
+    {
+      "topic": "Sanctions, oil sales and frozen assets",
+      "iran_priority": "End sanctions, resume oil exports, and regain usable access to frozen/restricted funds.",
+      "us_priority": "Sequence relief against compliance and preserve leverage over the final deal.",
+      "agreed": "Immediate oil-export waivers; procedures to make frozen funds usable; negotiated schedule toward terminating sanctions, including unilateral U.S. measures.",
+      "us_concession": 10,
+      "iran_concession": 1,
+      "status": "PARTIALLY IMPLEMENTED, THEN REVERSED",
+      "why": "The U.S. delivered a temporary oil-license concession, then revoked it after July shipping attacks. Full sanctions termination and asset release did not mature.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_JUL07"
+      ]
+    },
+    {
+      "topic": "Nuclear stockpile / enrichment",
+      "iran_priority": "Avoid surrendering all enrichment rights or shipping the stockpile abroad; favor on-site treatment and a later enrichment framework.",
+      "us_priority": "Prevent a nuclear weapon, dispose of near-weapons-grade stock, constrain enrichment, and restore meaningful IAEA oversight.",
+      "agreed": "Iran reaffirmed no nuclear weapons; stockpiled enriched material to be resolved with at least on-site downblending under IAEA supervision; future enrichment framework deferred to final deal.",
+      "us_concession": 5,
+      "iran_concession": 8,
+      "status": "FINAL TERMS NEVER REACHED",
+      "why": "Iran accepted a material stockpile/verification obligation. Washington accepted downblending as the minimum and deferred zero-enrichment demands.",
+      "sources": [
+        "R_MOU_TEXT",
+        "R_MOU_GAPS"
+      ]
+    },
+    {
+      "topic": "Interim status quo / escalation controls",
+      "iran_priority": "No new sanctions or additional U.S. force deployments while talks continued.",
+      "us_priority": "Freeze Iran’s nuclear program and stop kinetic escalation while negotiations proceeded.",
+      "agreed": "Iran to maintain nuclear status quo; U.S. to impose no new sanctions and deploy no additional forces pending a final deal.",
+      "us_concession": 6,
+      "iran_concession": 4,
+      "status": "FAILED WITH ESCALATION",
+      "why": "The clause was meant to prevent either side from using the 60-day period to improve its position. Both sides later resumed coercive measures.",
+      "sources": [
+        "R_MOU_TEXT"
+      ]
+    },
+    {
+      "topic": "Monitoring / binding finalization",
+      "iran_priority": "A durable mechanism that made U.S. relief commitments harder to reverse.",
+      "us_priority": "A compliance mechanism and enforceable final structure rather than an informal ceasefire.",
+      "agreed": "Executive monitoring mechanism; final deal to be endorsed by a binding U.N. Security Council resolution.",
+      "us_concession": 4,
+      "iran_concession": 4,
+      "status": "NOT REACHED",
+      "why": "Institutionalization would constrain both sides, but the final agreement and compliance machinery never matured.",
+      "sources": [
+        "R_MOU_TEXT"
+      ]
+    }
+  ],
+  "mou_breach_assessment": {
+    "title": "Initial MoU breakdown — performance record, Iranian trigger claim, and what the text actually allowed",
+    "primary_initial_violator": "Iran — strongest public evidence supports the first clear post-MoU kinetic breach",
+    "confidence": "HIGH on sequence and safe-passage conflict; MEDIUM-HIGH on attribution because public evidence includes U.S. official/CENTCOM attribution rather than a released multinational forensic report",
+    "analytical_note": "This does not mean Washington had perfectly completed every economic implementation detail. It means the first documented post-MoU kinetic break in the sequence was an Iran-attributed attack on a commercial ship after Washington had already begun implementing major relief provisions.",
+    "us_implementation_before_breach": "Before June 25, Washington said the naval blockade had been lifted, commercial traffic had materially resumed, and Treasury issued a 60-day Iranian oil-sales authorization on June 22. Full frozen-asset implementation remained disputed/unfinished, so the record does not support saying every U.S. obligation was complete.",
+    "tehran_claimed_trigger": "Tehran asserted that ships using routes it had not designated were unauthorized and outside its safe-passage guarantee. The Ever Lovely was hit near Oman after Iran warned vessels against using unapproved routes.",
+    "why_tehran_reading_fails": "Clause 5 did not grant current exclusive sovereignty or sole route-setting authority. It required Iran to provide safe commercial passage, then separately said FUTURE administration/services would be defined through dialogue with Oman and other Gulf littoral states under international law and coastal-state rights. The existing TSS was jointly proposed by Iran and Oman. Iran’s own deputy foreign minister later said Tehran “no longer recognized” that TSS because it lay mostly in Omani waters—language that describes an attempted policy change, not an authority already bestowed by the MoU. No U.S.–Iran bilateral agreement could erase Oman’s sovereign role or grant Iran exclusive sovereignty over Omani waters.",
+    "public_record_reality": "Evergreen said Ever Lovely was struck close to Oman while on a UKMTO-recommended route. Two U.S. officials attributed the attack to Iran; CENTCOM later said an Iranian one-way attack drone hit the vessel. That action is in direct tension with Iran’s paragraph-5 safe-passage obligation, which contains no carve-out saying commercial vessels lose protection if they use a route Tehran unilaterally dislikes.",
+    "washington_response": "CENTCOM struck Iranian missile/drone storage and coastal radar on June 26 in response. After Iran was given an opportunity to stop, CENTCOM says an Iranian one-way drone hit M/T Kiku on June 27, prompting additional U.S. strikes.",
+    "bottom_line": "Iran bears the strongest evidence-based case for the initial kinetic breach of the June MoU. The deeper structural cause was a real unresolved issue—future Hormuz governance—but Tehran tried to convert that unresolved future negotiation into immediate exclusive route authority that the signed text did not grant.",
+    "sources": [
+      "R_MOU_TEXT",
+      "CENTCOM_JUN20",
+      "R_JUN22_OIL_WAIVER",
+      "R_JUN25_SHIP",
+      "AP_JUN25_SHIP",
+      "CENTCOM_JUN26",
+      "CENTCOM_JUN27",
+      "IMO_HORMUZ_ROUTE",
+      "IMO_LEGAL_APR27",
+      "R_JUL28_TSS"
+    ]
+  },
+  "canonical_ledger_cutoff": "2026-08-22 13:59 ET"
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "as_of": "2026-08-20T15:59:00-04:00",
+  "as_of": "2026-08-22T13:59:00-04:00",
   "events": [
     {
       "event_id": "PRE-20201118-001",
@@ -5538,6 +5538,918 @@
         {
           "date": "2026-08-20",
           "change": "Normalized from historical backfill package; time precision preserved as date-only because package did not support a reported hour."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260819-002",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-19",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-19",
+      "valid_to": null,
+      "event_type": "MARITIME_SECURITY_COORDINATION",
+      "actors": [
+        "NATO SACEUR",
+        "France",
+        "United Kingdom",
+        "interested Allied states"
+      ],
+      "target": "Strait of Hormuz / Allied coordination",
+      "location": {
+        "name": "Strait of Hormuz / Allied coordination",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED",
+      "confidence": "HIGH",
+      "summary": "Interested Allied states coordinate possible national freedom-of-navigation contributions for Hormuz; this is not a NATO mission.",
+      "observed_fact": "SACEUR convened chiefs of defence from interested Allied states to coordinate possible national contributions supporting freedom of navigation. France and Britain were leading a broader multinational effort involving roughly a dozen interested countries.",
+      "claimed_effect": null,
+      "verified_effect": "Coordination among interested states is established; alliance-level NATO mission participation is not.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-5F06A28B79E7",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ACTIVE / NOT_NATO_MISSION",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260820-006",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-20",
+      "valid_to": null,
+      "event_type": "HORMUZ_TRAFFIC_OBSERVATION",
+      "actors": [
+        "commercial shipping",
+        "Kpler"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED_OBSERVATION",
+      "confidence": "HIGH",
+      "summary": "Kpler/Reuters records seven Aug. 20 commodity-vessel transits; no VLCC or LNG tanker in the observed seven.",
+      "observed_fact": "Seven commodity vessels were observed transiting Thursday Aug. 20: four inbound and three outbound. One large LPG/gas carrier exited. No VLCC or LNG tanker was observed in that set. AIS/transponder-off movements may be absent from public tracking.",
+      "claimed_effect": null,
+      "verified_effect": "This is a reported observation, not a complete census of AIS-dark traffic.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-C869142454CE",
+          "roles": [
+            "SHIPPING_DATA"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260820-007"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ACTIVE / COUNT_DISCREPANCY_WITH_LATER_REPORT",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260820-007",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-20",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-20",
+      "valid_to": null,
+      "event_type": "HORMUZ_TRAFFIC_OBSERVATION",
+      "actors": [
+        "commercial shipping",
+        "Reuters"
+      ],
+      "target": "Strait of Hormuz",
+      "location": {
+        "name": "Strait of Hormuz",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED_REPORT / COUNT_UNRESOLVED",
+      "confidence": "HIGH",
+      "summary": "Later Reuters reporting gives a four-commodity-ship observation for the same Thursday period; discrepancy remains unresolved.",
+      "observed_fact": "A later Aug. 22 Reuters report stated four commodity ships crossed on Thursday, conflicting with the Aug. 21 Reuters/Kpler observation of seven for Thursday.",
+      "claimed_effect": null,
+      "verified_effect": "Both published observations are preserved. The ledger does not silently overwrite the earlier count or pretend the discrepancy has been resolved.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-283DBF8D4872",
+          "roles": [
+            "SHIPPING_DATA"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260820-006"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ACTIVE / UNRESOLVED_COUNT_DISCREPANCY",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260821-001",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-21",
+      "valid_to": null,
+      "event_type": "ECONOMIC_ENERGY_EFFECT",
+      "actors": [
+        "Iran",
+        "China",
+        "commercial oil market"
+      ],
+      "target": "Iran-China oil trade",
+      "location": {
+        "name": "Iran-China oil trade",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED",
+      "confidence": "HIGH",
+      "summary": "U.S. blockade pressure sharply reduces Iranian crude availability to Chinese buyers while market adaptation continues.",
+      "observed_fact": "Reuters reported Iranian crude supply to China around 534,000 bpd so far in August versus about 1.4 million bpd average in 2025; floating Iranian crude fell roughly 105m to 80m barrels, about 30m in Asian waters; Sep/Oct offers were reduced, pricing tightened and some refiners sought alternatives including Brazil and Iraq.",
+      "claimed_effect": null,
+      "verified_effect": "Severe supply contraction and substitution behavior are supported; this does not establish that China abandoned Iranian crude or diplomatic ties.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-9016A9DDF69F",
+          "roles": [
+            "ECONOMIC_DATA",
+            "SHIPPING_DATA"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ACTIVE_RECORD",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260821-002",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-21",
+      "valid_to": null,
+      "event_type": "DIPLOMATIC_ECONOMIC_POSITION",
+      "actors": [
+        "Iran",
+        "Iraq",
+        "Mohammad Bagher Qalibaf"
+      ],
+      "target": "Baghdad / Iran-Iraq economic relations",
+      "location": {
+        "name": "Baghdad / Iran-Iraq economic relations",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "ATTRIBUTED_POSITION",
+      "confidence": "HIGH",
+      "summary": "Qalibaf advocates deeper Iran-Iraq economic ties and national-currency trade to reduce sanctions/dollar exposure.",
+      "observed_fact": "Qalibaf called for stronger bilateral economic ties and use of national currencies.",
+      "claimed_effect": "Iranian proposal framed as reducing the effect of U.S. sanctions and dollar dependence.",
+      "verified_effect": "The Iranian proposal is established. Iraqi acceptance or implementation is not established by this source.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-F33E9E8FE450",
+          "roles": [
+            "DIPLOMATIC_POSITION"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ATTRIBUTED_IRANIAN_POSITION / COUNTERPART_ACCEPTANCE_NOT_ESTABLISHED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260821-003",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-21",
+      "valid_to": null,
+      "event_type": "STRATEGIC_LOGISTICS_DIVERSIFICATION",
+      "actors": [
+        "Iraq",
+        "Saudi Arabia",
+        "OPEC"
+      ],
+      "target": "Iraq oil export system",
+      "location": {
+        "name": "Iraq oil export system",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED_PLAN / MIXED_OPERATIONAL_STATUS",
+      "confidence": "HIGH",
+      "summary": "Iraq pursues higher production and multiple export-route hedges, including Ceyhan and proposed Baniyas/Aqaba options.",
+      "observed_fact": "Iraq said it aims for 8-10 million bpd within six years from roughly 4 million bpd pre-war, sent oil/finance officials to Saudi Arabia seeking OPEC support, and discussed diversification via Ceyhan, Baniyas and Aqaba. Reuters separately reported a new Syria-Iraq crude pipeline remained years away and around $15B scale.",
+      "claimed_effect": null,
+      "verified_effect": "Diversification planning is established; proposed Baniyas/Aqaba infrastructure is not coded as operational, and this is not a finding that Iranian crude would be exported through Iraq.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-B7E80EBD97E4",
+          "roles": [
+            "ECONOMIC_DATA",
+            "DIPLOMATIC_POSITION"
+          ]
+        },
+        {
+          "source_id": "SRC-1168EB0594C5",
+          "roles": [
+            "HISTORICAL_CONTEXT",
+            "TECHNICAL_ANALYSIS"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ACTIVE_DIVERSIFICATION / PROPOSED_ROUTES_DISTINGUISHED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260821-004",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-21",
+      "valid_to": null,
+      "event_type": "DIPLOMATIC_CONTACT",
+      "actors": [
+        "Oman",
+        "Iran",
+        "Badr Albusaidi",
+        "Abbas Araghchi"
+      ],
+      "target": "Oman-Iran diplomatic channel",
+      "location": {
+        "name": "Oman-Iran diplomatic channel",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED_CONTACT",
+      "confidence": "HIGH",
+      "summary": "Oman and Iran discuss suitable conditions for renewed dialogue and continued practical Hormuz navigation understandings.",
+      "observed_fact": "The foreign ministers discussed regional developments, conditions for resuming dialogue/negotiations and navigation in the Strait of Hormuz, stressing continued talks toward understandings supporting free/smooth navigation and regional security.",
+      "claimed_effect": null,
+      "verified_effect": "The channel is active. No final U.S.-Iran settlement, compulsory Iranian toll right or Omani recognition of unilateral Iranian control is established.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-E5297E5894E1",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "REGIONAL_CORROBORATION"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ACTIVE / UNRESOLVED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260821-005",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-21",
+      "valid_to": null,
+      "event_type": "FORCE_POSTURE_ROTATION",
+      "actors": [
+        "United States",
+        "Bulgaria"
+      ],
+      "target": "Bezmer temporary KC-135 deployment",
+      "location": {
+        "name": "Bulgaria / Bezmer deployment context",
+        "country": "Bulgaria",
+        "lat": null,
+        "lon": null,
+        "precision": "COUNTRY/BASE-NAME_ONLY_NO_NEW_COORDINATE"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED",
+      "confidence": "HIGH",
+      "summary": "Two U.S. KC-135 tanker aircraft depart Bezmer after a temporary, pre-authorized deployment; causation by Iranian pressure is not established.",
+      "observed_fact": "Bulgarian officials said the tanker aircraft departed Friday Aug. 21. The deployment had been authorized July 22 for a temporary window and coordinated with Washington; Bulgarian officials described the flights as training over allied countries and said they had no information indicating a direct national-security threat.",
+      "claimed_effect": null,
+      "verified_effect": "Departure is verified. The evidence does not establish that Iran expelled the aircraft, forced a NATO retreat or caused an emergency withdrawal.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-087E077D488F",
+          "roles": [
+            "FORCE_POSTURE",
+            "INDEPENDENT_CONFIRMATION"
+          ]
+        },
+        {
+          "source_id": "SRC-D5E73D346BF5",
+          "roles": [
+            "FORCE_POSTURE",
+            "REGIONAL_CORROBORATION"
+          ]
+        },
+        {
+          "source_id": "SRC-03092951A37F",
+          "roles": [
+            "FORCE_POSTURE",
+            "REGIONAL_CORROBORATION"
+          ]
+        },
+        {
+          "source_id": "SRC-32D26981B604",
+          "roles": [
+            "HISTORICAL_CONTEXT",
+            "FORCE_POSTURE"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "COMPLETED_TEMPORARY_DEPLOYMENT / COERCIVE_CAUSATION_NOT_ESTABLISHED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260821-006",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-21",
+      "first_verified": "2026-08-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-21",
+      "valid_to": null,
+      "event_type": "ECONOMIC_IMPACT",
+      "actors": [
+        "Lebanon",
+        "World Bank"
+      ],
+      "target": "Lebanon economy",
+      "location": {
+        "name": "Lebanon economy",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED",
+      "confidence": "HIGH",
+      "summary": "World Bank says renewed conflict derailed Lebanon’s fragile recovery, projecting 2026 contraction and high inflation.",
+      "observed_fact": "World Bank projected 2026 GDP contraction of 6.4% and inflation around 17.5%, saying renewed conflict reversed fragile stabilization/recovery.",
+      "claimed_effect": null,
+      "verified_effect": "The macroeconomic deterioration is supported. The record does not attribute the entire contraction specifically to Iran or Hezbollah.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-3077D3E08CBE",
+          "roles": [
+            "ECONOMIC_DATA",
+            "OFFICIAL_STATEMENT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ACTIVE_RECORD",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260821-007",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-21",
+      "valid_to": null,
+      "event_type": "POLITICAL_POSITION",
+      "actors": [
+        "Iran",
+        "Masoud Pezeshkian"
+      ],
+      "target": "Iranian war-termination messaging",
+      "location": {
+        "name": "Iranian war-termination messaging",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "ATTRIBUTED_POSITION",
+      "confidence": "HIGH",
+      "summary": "Pezeshkian says the war should end now while framing termination as compatible with Iranian strength, dignity and victory.",
+      "observed_fact": "Pezeshkian publicly argued that the war should end and that Iran could end it without surrendering a narrative of strength, dignity or victory.",
+      "claimed_effect": null,
+      "verified_effect": "This is an attributed presidential political position. It does not establish surrender, an imminent agreement or regime-wide consensus.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-283DBF8D4872",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "CLAIM_ORIGIN"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ATTRIBUTED_IRANIAN_POLITICAL_POSITION",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260822-001",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-22",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-22",
+      "valid_to": null,
+      "event_type": "SELECTIVE_PASSAGE_PERMISSION",
+      "actors": [
+        "Iran",
+        "Iraq"
+      ],
+      "target": "Strait of Hormuz / Iraqi oil tankers",
+      "location": {
+        "name": "Strait of Hormuz / Iraqi oil tankers",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED",
+      "confidence": "VERY_HIGH",
+      "summary": "Iran grants special Hormuz passage permission to some Iraqi oil tankers after repeated Iraqi requests.",
+      "observed_fact": "Reuters reported Iran granted permission for a number of Iraqi oil tankers to transit after repeated Iraqi requests, following Qalibaf’s Baghdad engagement.",
+      "claimed_effect": null,
+      "verified_effect": "This is strong evidence of de facto selective gatekeeping/permission in current practice. It is not evidence of internationally recognized Iranian sovereignty or a lawful compulsory toll regime.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-980086328C21",
+          "roles": [
+            "SHIPPING_DATA",
+            "DIPLOMATIC_POSITION"
+          ]
+        }
+      ],
+      "related_event_ids": [
+        "EV-20260821-002"
+      ],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "VERIFIED_DE_FACTO_SELECTIVE_PASSAGE / LEGAL_SOVEREIGNTY_NOT_ESTABLISHED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260822-002",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-22",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-22",
+      "valid_to": null,
+      "event_type": "COUNTER_LEVERAGE_LOGISTICS",
+      "actors": [
+        "France",
+        "Saudi Arabia"
+      ],
+      "target": "France-Saudi energy/logistics coordination",
+      "location": {
+        "name": "France-Saudi energy/logistics coordination",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED_DISCUSSION",
+      "confidence": "HIGH",
+      "summary": "France and Saudi Arabia discuss Hormuz alternatives and an energy/logistics task-force track.",
+      "observed_fact": "AP reported discussions covering Omani ports outside direct Hormuz exposure, pipeline expansion and energy/logistics alternatives.",
+      "claimed_effect": null,
+      "verified_effect": "Alternative-route planning and task-force work are established; proposed infrastructure and feasibility concepts are not represented as already operational.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-C5F2E7065110",
+          "roles": [
+            "REGIONAL_CORROBORATION",
+            "ECONOMIC_DATA",
+            "DIPLOMATIC_POSITION"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ACTIVE_PLANNING / PROPOSED_AND_EXISTING_ASSETS_DISTINGUISHED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260822-004",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-22",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-22",
+      "valid_to": null,
+      "event_type": "MILITARY_POSTURE_CLAIM",
+      "actors": [
+        "Iran",
+        "Ali Abdollahi",
+        "Iranian Armed Forces"
+      ],
+      "target": "Iran / ballistic-missile production claim",
+      "location": {
+        "name": "Iran / underground missile-production facility (not precisely mapped)",
+        "country": "Iran",
+        "lat": null,
+        "lon": null,
+        "precision": "COUNTRY_ONLY_SAFETY"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "ATTRIBUTED_CLAIM",
+      "confidence": "MODERATE",
+      "summary": "Iranian Armed Forces chief threatens severe retaliation and authorities claim improved missile-production quantity/quality.",
+      "observed_fact": "Ali Abdollahi threatened severe military retaliation against new threats and appeared at an underground ballistic-missile production facility. Iranian authorities said missile-production quality and quantity had improved.",
+      "claimed_effect": "Iran claims missile-production quantity and quality improved.",
+      "verified_effect": "The threat and production-improvement claim are attributed Iranian statements. The ledger does not independently verify production output and introduces no precise underground-facility coordinates.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-283DBF8D4872",
+          "roles": [
+            "CLAIM_ORIGIN",
+            "DIPLOMATIC_POSITION"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ATTRIBUTED_IRANIAN_THREAT_AND_PRODUCTION_CLAIM",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260822-005",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-22",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-22",
+      "valid_to": null,
+      "event_type": "DIPLOMATIC_CLAIM",
+      "actors": [
+        "Iran",
+        "Mohammad Bagher Qalibaf",
+        "unnamed neighboring states"
+      ],
+      "target": "Iran / regional security-economic arrangements claim",
+      "location": {
+        "name": "Iran / regional security-economic arrangements claim",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "ATTRIBUTED_CLAIM",
+      "confidence": "MODERATE",
+      "summary": "Qalibaf says Iran received numerous messages from neighboring states about regional security/economic arrangements; counterparties are unidentified.",
+      "observed_fact": "Qalibaf said Iran had received numerous messages from neighboring states and advocated a regional order independent of Washington.",
+      "claimed_effect": "Iranian claim of regional interest in security/economic arrangements.",
+      "verified_effect": "The statement is preserved as an attributed Iranian claim. It is not evidence that Saudi Arabia, UAE, GCC states, Oman, Iraq, Qatar or other named counterparts accepted an Iranian-led architecture absent their own confirmation.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-283DBF8D4872",
+          "roles": [
+            "CLAIM_ORIGIN",
+            "DIPLOMATIC_POSITION"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ACTIVE_RECORD",
+      "current_status": "ATTRIBUTED_IRANIAN_CLAIM / COUNTERPARTIES_UNIDENTIFIED",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
+        }
+      ]
+    },
+    {
+      "event_id": "EV-20260822-006",
+      "record_class": "WARTIME_EVENT",
+      "event_date": "2026-08-22",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-22",
+      "first_verified": "2026-08-22",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-22",
+      "valid_to": null,
+      "event_type": "SANCTIONS_ANNOUNCEMENT",
+      "actors": [
+        "United States",
+        "Iran",
+        "China"
+      ],
+      "target": "Prospective U.S. Iran sanctions",
+      "location": {
+        "name": "Prospective U.S. Iran sanctions",
+        "country": null,
+        "lat": null,
+        "lon": null,
+        "precision": "REGIONAL_OR_UNMAPPED"
+      },
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "VERIFIED_ANNOUNCEMENT",
+      "confidence": "HIGH",
+      "summary": "U.S. says details of a severe new Iran sanctions package are scheduled for Aug. 24; measures are not yet enacted at cutoff.",
+      "observed_fact": "Treasury Secretary Scott Bessent said details of the new sanctions package were scheduled for Monday Aug. 24 and highlighted China in discussing international economic pressure. Iran condemned the prospective secondary-sanctions approach.",
+      "claimed_effect": null,
+      "verified_effect": "Policy direction and schedule are verified. Final sanctions mechanics and effects are prospective and not populated before Treasury publication.",
+      "counterevidence": [],
+      "continuity_evidence": [],
+      "later_outcome": [],
+      "source_refs": [
+        {
+          "source_id": "SRC-283DBF8D4872",
+          "roles": [
+            "DIPLOMATIC_POSITION",
+            "ECONOMIC_DATA"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "ANNOUNCED / SCHEDULED",
+      "current_status": "ANNOUNCED / SCHEDULED / NOT_ENACTED_AT_CUTOFF",
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-22",
+          "change": "Added in append-only Aug. 22 canonical update."
         }
       ]
     }

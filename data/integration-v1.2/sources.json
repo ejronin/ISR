@@ -3222,6 +3222,337 @@
       "proof_note": "CSIS estimated first-100-hour costs and reported lower-bound Iranian launch volume of more than 2,000 UAS and more than 500 ballistic missiles.",
       "lineage": "CSIS analytical estimate using DOD and partner reporting",
       "source_origin": "supplemental_integration_or_existing_atlas"
+    },
+    {
+      "source_id": "SRC-087E077D488F",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/business/aerospace-defense/two-us-tanker-aircraft-leave-bulgaria-month-after-deployment-upset-iran-2026-08-22",
+      "outlet": "Reuters",
+      "title": "Two U.S. tanker aircraft leave Bulgaria a month after deployment upset Iran",
+      "publication_date": "2026-08-22",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "FORCE_POSTURE",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-005"
+      ],
+      "proof_note": "Reuters reports two U.S. tanker aircraft departed Bulgaria on Aug. 21 after a temporary deployment; do not infer Iranian coercive causation from timing alone.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-C869142454CE",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/world/middle-east/hormuz-ship-crossings-hover-single-digits-data-shows-2026-08-21/",
+      "outlet": "Reuters",
+      "title": "Hormuz ship crossings hover in single digits, data shows",
+      "publication_date": "2026-08-21",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260820-006"
+      ],
+      "proof_note": "Kpler/Reuters observation: seven commodity vessels on Thursday Aug. 20, four inbound and three outbound, no VLCC or LNG tanker in that observed set; AIS-dark traffic caveat applies.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-5F06A28B79E7",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/world/middle-east/nato-members-discuss-strait-hormuz-options-without-alliance-involvement-2026-08-21/",
+      "outlet": "Reuters",
+      "title": "NATO members discuss Strait of Hormuz options without alliance involvement",
+      "publication_date": "2026-08-21",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "FORCE_POSTURE",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260819-002"
+      ],
+      "proof_note": "Interested Allied states coordinated possible national freedom-of-navigation contributions; reporting explicitly says this was not a NATO mission.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-9016A9DDF69F",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/business/energy/iranian-oil-offers-chinese-buyers-fall-us-blockade-bites-sources-say-2026-08-21/",
+      "outlet": "Reuters",
+      "title": "Iranian oil offers to Chinese buyers fall as U.S. blockade bites, sources say",
+      "publication_date": "2026-08-21",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "SHIPPING_DATA",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-001"
+      ],
+      "proof_note": "Supports Aug. Iranian crude supply to China near 534,000 bpd versus about 1.4m bpd in 2025, lower floating stocks and buyer substitution behavior; does not establish China abandoned Iran.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-980086328C21",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/business/energy/iran-grants-permission-number-iraqi-oil-tankers-pass-through-hormuz-2026-08-22/",
+      "outlet": "Reuters",
+      "title": "Iran grants permission for a number of Iraqi oil tankers to pass through Hormuz",
+      "publication_date": "2026-08-22",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "SHIPPING_DATA",
+        "DIPLOMATIC_POSITION",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260822-001"
+      ],
+      "proof_note": "Supports verified de facto selective passage permission for some Iraqi tankers after repeated Iraqi requests; this does not establish internationally recognized Iranian legal sovereignty over the strait.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-C5F2E7065110",
+      "legacy_ids": [],
+      "url": "https://apnews.com/article/467d9b2970e0b9855ac9a68ef90c8e75",
+      "outlet": "Associated Press",
+      "title": "France and Saudi Arabia discuss alternatives to Hormuz and an energy/logistics task force",
+      "publication_date": "2026-08-22",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "REGIONAL_CORROBORATION",
+        "ECONOMIC_DATA",
+        "DIPLOMATIC_POSITION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260822-002"
+      ],
+      "proof_note": "Supports discussion of Omani loading/port options outside direct Hormuz exposure, pipeline expansion and longer-run logistics alternatives; proposals are not coded as operational infrastructure.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-283DBF8D4872",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/world/middle-east/us-iran-keep-up-hostile-rhetoric-ahead-new-sanctions-2026-08-22/",
+      "outlet": "Reuters",
+      "title": "U.S., Iran keep up hostile rhetoric ahead of new sanctions",
+      "publication_date": "2026-08-22",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "ECONOMIC_DATA",
+        "CLAIM_ORIGIN",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260820-007",
+        "EV-20260821-007",
+        "EV-20260822-004",
+        "EV-20260822-005",
+        "EV-20260822-006"
+      ],
+      "proof_note": "Supports Aug. 24 sanctions package being announced/scheduled rather than enacted at cutoff; also records Iranian political/military messages and a later Reuters four-vessel observation for Thursday Aug. 20.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-F33E9E8FE450",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/world/middle-east/iran-says-tehran-must-overcome-unjust-sanctions-us-ramps-up-economic-pressure-2026-08-21",
+      "outlet": "Reuters",
+      "title": "Iran says Tehran must overcome unjust sanctions as U.S. ramps up economic pressure",
+      "publication_date": "2026-08-21",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-002"
+      ],
+      "proof_note": "Records Qalibaf advocating deeper Iran-Iraq economic links and national-currency trade; this is an Iranian proposal and is not coded as Iraqi acceptance.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-B7E80EBD97E4",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/business/energy/iraq-aims-boost-oil-output-8-10-million-bpd-six-years-2026-08-21",
+      "outlet": "Reuters",
+      "title": "Iraq aims to boost oil output to 8-10 million bpd in six years",
+      "publication_date": "2026-08-21",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "DIPLOMATIC_POSITION",
+        "INDEPENDENT_CONFIRMATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-003"
+      ],
+      "proof_note": "Supports Iraqi production target, Saudi/OPEC engagement and export-route diversification via Ceyhan and proposed Baniyas/Aqaba options.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-1168EB0594C5",
+      "legacy_ids": [],
+      "url": "https://www.reuters.com/business/energy/new-syria-iraq-crude-pipeline-still-years-away-sources-say-2026-08-17",
+      "outlet": "Reuters",
+      "title": "New Syria-Iraq crude pipeline still years away, sources say",
+      "publication_date": "2026-08-17",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "HISTORICAL_CONTEXT",
+        "ECONOMIC_DATA",
+        "TECHNICAL_ANALYSIS"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-003"
+      ],
+      "proof_note": "Supports prospective Syria-Iraq/Baniyas route being multi-year and roughly $15B scale; it is not an operating route at the Aug. 22 cutoff.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-3077D3E08CBE",
+      "legacy_ids": [],
+      "url": "https://www.worldbank.org/en/news/press-release/2026/08/21/renewed-conflict-derails-lebanon-s-fragile-economic-recovery",
+      "outlet": "World Bank",
+      "title": "Renewed conflict derails Lebanon’s fragile economic recovery",
+      "publication_date": "2026-08-21",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "ECONOMIC_DATA",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "A",
+      "records_supported": [
+        "EV-20260821-006"
+      ],
+      "proof_note": "World Bank projects 2026 Lebanon GDP contraction of 6.4% and inflation around 17.5%, attributing renewed deterioration to conflict; record does not assign the entire contraction to Iran or Hezbollah.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-D5E73D346BF5",
+      "legacy_ids": [],
+      "url": "https://www.bta.bg/en/news/world/1190068-us-tanker-aircraft-left-bezmer-and-departed-bulgaria-on-friday-defence-minister",
+      "outlet": "Bulgarian News Agency",
+      "title": "US tanker aircraft left Bezmer and departed Bulgaria on Friday, defence minister says",
+      "publication_date": "2026-08-22",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "FORCE_POSTURE",
+        "REGIONAL_CORROBORATION",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-005"
+      ],
+      "proof_note": "Bulgarian defence minister says the tanker aircraft departed Aug. 21; deployment was coordinated with Washington and flights were training over allied countries.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-03092951A37F",
+      "legacy_ids": [],
+      "url": "https://www.bta.bg/en/news/world/1188391-defence-minister-rules-out-direct-national-security-risk-for-bulgaria-after-repo",
+      "outlet": "Bulgarian News Agency",
+      "title": "Defence minister rules out direct national security risk for Bulgaria after reports of possible Iranian threat",
+      "publication_date": "2026-08-19",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "FORCE_POSTURE",
+        "REGIONAL_CORROBORATION",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-005"
+      ],
+      "proof_note": "Bulgarian defence minister said intelligence indicated no direct threat to national security or sites hosting U.S. aircraft; protective measures do not prove attack intent.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-32D26981B604",
+      "legacy_ids": [],
+      "url": "https://www.bta.bg/en/news/bulgaria/1171975-parliament-authorizes-deployment-of-us-aircraft-military-personnel-at-bezmer-ai",
+      "outlet": "Bulgarian News Agency",
+      "title": "Parliament authorizes deployment of U.S. aircraft and military personnel at Bezmer Air Base",
+      "publication_date": "2026-07-22",
+      "publication_time": null,
+      "author": null,
+      "source_roles": [
+        "FORCE_POSTURE",
+        "HISTORICAL_CONTEXT",
+        "OFFICIAL_STATEMENT"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-005"
+      ],
+      "proof_note": "Establishes preexisting temporary authorization window for KC-135 aircraft and personnel at Bezmer, supporting planned-deployment context for the Aug. 21 departure.",
+      "lineage": "DIRECT",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
+    },
+    {
+      "source_id": "SRC-E5297E5894E1",
+      "legacy_ids": [],
+      "url": "https://www.arabnews.com/node/2655445/middle-east",
+      "outlet": "Arab News",
+      "title": "Iran, Oman discuss resuming talks and Hormuz navigation",
+      "publication_date": "2026-08-21",
+      "publication_time": null,
+      "author": "Arab News / Reuters",
+      "source_roles": [
+        "DIPLOMATIC_POSITION",
+        "REGIONAL_CORROBORATION"
+      ],
+      "quality": "B",
+      "records_supported": [
+        "EV-20260821-004"
+      ],
+      "proof_note": "Reuters-supported regional report citing Oman state news agency: foreign ministers discussed conditions for renewed dialogue and continued Hormuz navigation understandings; no final agreement or Iranian legal control is established.",
+      "lineage": "SYNDICATED_REUTERS",
+      "source_origin": "AUG22_CANONICAL_UPDATE"
     }
-  ]
+  ],
+  "as_of": "2026-08-22T13:59:00-04:00"
 }

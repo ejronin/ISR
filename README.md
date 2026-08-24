@@ -7,7 +7,7 @@ A public, source-linked OSINT atlas for the 2026 Iran conflict. The project sepa
 ## What the atlas covers
 
 - current operational assessment without a composite “war score”;
-- 83 canonical historical-ledger records, including 15 pre-war context records;
+- 98 canonical historical-ledger records, including 15 pre-war context records;
 - U.S./coalition facilities, strike effects, satellite BDA, and missile/drone metrics;
 - casualties, durable material loss, munitions expenditure, and economic effects as separate accounting scopes;
 - bargaining, force posture, agreements, regional alignment, and trade routes;

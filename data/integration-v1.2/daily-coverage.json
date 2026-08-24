@@ -1487,10 +1487,11 @@
       "collection_status": "EVENTS_IDENTIFIED",
       "coverage_grade": "INITIAL_BACKFILL_SOURCE_SET",
       "event_ids": [
-        "EV-20260819-001"
+        "EV-20260819-001",
+        "EV-20260819-002"
       ],
       "movement_ids": [],
-      "note": null
+      "note": "Aug. 22 append-only evidence advancement linked."
     },
     {
       "date": "2026-08-20",
@@ -1501,12 +1502,44 @@
         "EV-20260820-002",
         "EV-20260820-003",
         "EV-20260820-004",
-        "EV-20260820-005"
+        "EV-20260820-005",
+        "EV-20260820-006",
+        "EV-20260820-007"
       ],
       "movement_ids": [
         "MOV-20260820-001"
       ],
-      "note": null
+      "note": "Aug. 22 append-only evidence advancement linked."
+    },
+    {
+      "date": "2026-08-21",
+      "collection_status": "COLLECTED_THROUGH_CUTOFF",
+      "coverage_grade": "AUG22_APPEND_ONLY_UPDATE",
+      "event_ids": [
+        "EV-20260821-001",
+        "EV-20260821-002",
+        "EV-20260821-003",
+        "EV-20260821-004",
+        "EV-20260821-005",
+        "EV-20260821-006",
+        "EV-20260821-007"
+      ],
+      "movement_ids": [],
+      "note": "Canonical factual evidence advanced through Aug. 22 13:59 ET; actor claims and proposals retain their stated evidence status."
+    },
+    {
+      "date": "2026-08-22",
+      "collection_status": "COLLECTED_THROUGH_CUTOFF",
+      "coverage_grade": "AUG22_APPEND_ONLY_UPDATE",
+      "event_ids": [
+        "EV-20260822-001",
+        "EV-20260822-002",
+        "EV-20260822-004",
+        "EV-20260822-005",
+        "EV-20260822-006"
+      ],
+      "movement_ids": [],
+      "note": "Canonical factual evidence advanced through Aug. 22 13:59 ET; actor claims and proposals retain their stated evidence status."
     }
   ]
 }

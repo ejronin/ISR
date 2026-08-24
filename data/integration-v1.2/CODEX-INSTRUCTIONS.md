@@ -2,7 +2,14 @@
 
 Use this package as the adjudicated evidence/decision layer for `ejronin/ISR`. **Do not research the war, reinterpret evidentiary verdicts, fabricate missing values, or publish/push.** Inspect the current repository before implementation, preserve current functionality unless this package explicitly changes it, and show the user the resulting diff/blockers before any commit or push.
 
-<!-- AUTO_COUNTS:events=83;prewar_events=15;wartime_events=68;timeline_records=83;daily_coverage_days=174;facilities_integrated=5;repo_facilities_to_preserve=18;claims=6;movements=10;agreements=8;casualty_records=23;material_loss_records=12;munition_expenditure_records=9;shipping_records=11;economic_backfill_records=6;diplomacy_records=19;sources=135;unresolved_items=19;collection_requests=19;bda_overlay_candidates=13;revision_records=23 -->
+<!-- AUTO_COUNTS:events=98;prewar_events=15;wartime_events=83;timeline_records=98;daily_coverage_days=176;facilities_integrated=5;repo_facilities_to_preserve=18;claims=6;movements=10;agreements=8;casualty_records=23;material_loss_records=12;munition_expenditure_records=9;shipping_records=13;economic_backfill_records=9;diplomacy_records=28;sources=150;unresolved_items=19;collection_requests=19;bda_overlay_candidates=13;revision_records=24 -->
+
+## Aug. 22 canonical append-only advancement
+
+The canonical factual chronology is advanced through **2026-08-22 13:59 ET** by an append-only update. The original Revision 1.2 Aug. 20 records remain lineage-locked; new facts are appended, later corrections/count conflicts are linked rather than overwritten, and older chronology is not rewritten with later knowledge.
+
+The five-level outcome synthesis remains reviewed through **2026-08-20 15:59 ET** unless separately re-reviewed. The MOU/Hormuz analytical prose remains reviewed through **2026-08-22 10:54 ET**. Those analytical cutoffs are intentionally independent of the newer canonical evidence cutoff.
+
 
 ## 1. Authority and migration order
 
@@ -28,12 +35,12 @@ When migrating an existing repo source, match the canonical URL. If no canonical
 
 ## 3. Canonical counts — must remain synchronized
 
-- Events: **83** = **15 pre-war + 68 wartime**.
+- Events: **98** = **15 pre-war + 83 wartime**.
 - Movements: **10**.
 - Agreements/mechanisms: **8**.
-- Diplomacy records: **19**.
+- Diplomacy records: **28**.
 - Claim cases: **6**.
-- Sources: **135**.
+- Sources: **150**.
 - Unresolved gaps / collection requests: **19 / 19**.
 
 Do not hand-edit these counts. They are checked by `validate-package.py`.
@@ -60,7 +67,7 @@ Import **every** event in `events.json` into the active canonical ledger. Histor
 - `PRE-20260226-001`
 - `PRE-20260227-001`
 
-### Complete wartime event inventory (68)
+### Complete wartime event inventory (83)
 
 - `EV-20260228-001`
 - `EV-20260302-001`
@@ -130,6 +137,21 @@ Import **every** event in `events.json` into the active canonical ledger. Histor
 - `EV-20260820-003`
 - `EV-20260820-004`
 - `EV-20260820-005`
+- `EV-20260819-002`
+- `EV-20260820-006`
+- `EV-20260820-007`
+- `EV-20260821-001`
+- `EV-20260821-002`
+- `EV-20260821-003`
+- `EV-20260821-004`
+- `EV-20260821-005`
+- `EV-20260821-006`
+- `EV-20260821-007`
+- `EV-20260822-001`
+- `EV-20260822-002`
+- `EV-20260822-004`
+- `EV-20260822-005`
+- `EV-20260822-006`
 
 <!-- BEGIN AUTO-ID-INVENTORY events -->
 - `PRE-20201118-001`
@@ -215,6 +237,21 @@ Import **every** event in `events.json` into the active canonical ledger. Histor
 - `EV-20260820-003`
 - `EV-20260820-004`
 - `EV-20260820-005`
+- `EV-20260819-002`
+- `EV-20260820-006`
+- `EV-20260820-007`
+- `EV-20260821-001`
+- `EV-20260821-002`
+- `EV-20260821-003`
+- `EV-20260821-004`
+- `EV-20260821-005`
+- `EV-20260821-006`
+- `EV-20260821-007`
+- `EV-20260822-001`
+- `EV-20260822-002`
+- `EV-20260822-004`
+- `EV-20260822-005`
+- `EV-20260822-006`
 <!-- END AUTO-ID-INVENTORY events -->
 
 `daily-coverage.json` is collection coverage, **not** an event source. A quiet-day marker means no standalone verified event was found in that pass; it does not mean no activity occurred.
@@ -483,6 +520,8 @@ Keep physical transit, tracked/AIS observations, Iranian permission/coercion, co
 - `SHIP-REPO-20260709`
 - `SHIP-REPO-20260730`
 - `SHIP-REPO-20260812`
+- `SHIP-UPD-20260820-KPLER`
+- `SHIP-UPD-20260820-REUTERS-AUG22`
 <!-- END AUTO-ID-INVENTORY shipping -->
 
 ## 14. Diplomacy
@@ -511,6 +550,15 @@ Import all diplomacy records and retain `agreement_refs`/`event_refs`.
 - `DIP-INT-006`
 - `DIP-PKG-012`
 - `DIP-PKG-013`
+- `DIP-UPD-20260819-NATO-HORMUZ`
+- `DIP-UPD-20260821-QALIBAF-IRAQ`
+- `DIP-UPD-20260821-IRAQ-SAUDI-OPEC`
+- `DIP-UPD-20260821-OMAN-IRAN`
+- `DIP-UPD-20260822-IRAQ-HORMUZ`
+- `DIP-UPD-20260822-FR-SAUDI`
+- `DIP-UPD-20260822-PEZESHKIAN`
+- `DIP-UPD-20260822-QALIBAF-REGIONAL`
+- `DIP-UPD-20260822-SANCTIONS`
 <!-- END AUTO-ID-INVENTORY diplomacy -->
 
 ## 15. BDA overlays
@@ -729,6 +777,21 @@ The canonical source count is **135**. Source IDs must remain unique and URL lin
 - `SRC-F820228892CB`
 - `SRC-F8F12DF86B47`
 - `SRC-F9C4A35EE811`
+- `SRC-087E077D488F`
+- `SRC-C869142454CE`
+- `SRC-5F06A28B79E7`
+- `SRC-9016A9DDF69F`
+- `SRC-980086328C21`
+- `SRC-C5F2E7065110`
+- `SRC-283DBF8D4872`
+- `SRC-F33E9E8FE450`
+- `SRC-B7E80EBD97E4`
+- `SRC-1168EB0594C5`
+- `SRC-3077D3E08CBE`
+- `SRC-D5E73D346BF5`
+- `SRC-03092951A37F`
+- `SRC-32D26981B604`
+- `SRC-E5297E5894E1`
 <!-- END AUTO-ID-INVENTORY sources -->
 
 ## 19. Acceptance tests
@@ -845,6 +908,21 @@ The following inventory blocks are authoritative mirrors of final JSON and are v
 - `EV-20260820-003`
 - `EV-20260820-004`
 - `EV-20260820-005`
+- `EV-20260819-002`
+- `EV-20260820-006`
+- `EV-20260820-007`
+- `EV-20260821-001`
+- `EV-20260821-002`
+- `EV-20260821-003`
+- `EV-20260821-004`
+- `EV-20260821-005`
+- `EV-20260821-006`
+- `EV-20260821-007`
+- `EV-20260822-001`
+- `EV-20260822-002`
+- `EV-20260822-004`
+- `EV-20260822-005`
+- `EV-20260822-006`
 <!-- END AUTO-ID-INVENTORY events -->
 
 <!-- BEGIN AUTO-ID-INVENTORY movements -->
@@ -900,6 +978,15 @@ The following inventory blocks are authoritative mirrors of final JSON and are v
 - `DIP-INT-006`
 - `DIP-PKG-012`
 - `DIP-PKG-013`
+- `DIP-UPD-20260819-NATO-HORMUZ`
+- `DIP-UPD-20260821-QALIBAF-IRAQ`
+- `DIP-UPD-20260821-IRAQ-SAUDI-OPEC`
+- `DIP-UPD-20260821-OMAN-IRAN`
+- `DIP-UPD-20260822-IRAQ-HORMUZ`
+- `DIP-UPD-20260822-FR-SAUDI`
+- `DIP-UPD-20260822-PEZESHKIAN`
+- `DIP-UPD-20260822-QALIBAF-REGIONAL`
+- `DIP-UPD-20260822-SANCTIONS`
 <!-- END AUTO-ID-INVENTORY diplomacy -->
 
 <!-- BEGIN AUTO-ID-INVENTORY unresolved -->
@@ -1082,6 +1169,21 @@ The following inventory blocks are authoritative mirrors of final JSON and are v
 - `SRC-F820228892CB`
 - `SRC-F8F12DF86B47`
 - `SRC-F9C4A35EE811`
+- `SRC-087E077D488F`
+- `SRC-C869142454CE`
+- `SRC-5F06A28B79E7`
+- `SRC-9016A9DDF69F`
+- `SRC-980086328C21`
+- `SRC-C5F2E7065110`
+- `SRC-283DBF8D4872`
+- `SRC-F33E9E8FE450`
+- `SRC-B7E80EBD97E4`
+- `SRC-1168EB0594C5`
+- `SRC-3077D3E08CBE`
+- `SRC-D5E73D346BF5`
+- `SRC-03092951A37F`
+- `SRC-32D26981B604`
+- `SRC-E5297E5894E1`
 <!-- END AUTO-ID-INVENTORY sources -->
 
 Do not ask Codex to research or decide what the evidence means. Implement the stored verdicts, caveats, source lineage, temporal precision, agreement causality, and force-posture classifications exactly.

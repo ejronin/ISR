@@ -54,12 +54,12 @@ def main() -> int:
     revisions = load("revision-history.json")["revisions"]
     unresolved = load("unresolved.json")["items"]
 
-    check(len(events) == 83, "canonical event count must be 83", failures)
-    check(len(timeline) == 83, "timeline index count must be 83", failures)
+    check(len(events) == 98, "canonical event count must be 98", failures)
+    check(len(timeline) == 98, "timeline index count must be 98", failures)
     check(sum(x["record_class"] == "PRE-WAR CONTEXT" for x in events) == 15,
           "pre-war event count must be 15", failures)
-    check(sum(x["record_class"] == "WARTIME_EVENT" for x in events) == 68,
-          "wartime event count must be 68", failures)
+    check(sum(x["record_class"] == "WARTIME_EVENT" for x in events) == 83,
+          "wartime event count must be 83", failures)
     opening = next(x for x in events if x["event_id"] == "EV-20260228-001")
     check(opening["event_time"] is None and opening["event_time_precision"] == "DATE_ONLY",
           "opening event must remain date-only", failures)
@@ -82,7 +82,7 @@ def main() -> int:
           "material-loss / munitions record counts changed", failures)
     check(cost["iran_aligned"]["current_total_status"] == "UNPRICED",
           "Iran military material cost must remain UNPRICED", failures)
-    check(len(revisions) == 23 and len(unresolved) == 19,
+    check(len(revisions) == 24 and len(unresolved) == 19,
           "revision or unresolved inventory changed", failures)
 
     html = (ROOT / "index.html").read_text(encoding="utf-8")
