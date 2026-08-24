@@ -1,0 +1,14 @@
+/* Aug. 23 public-facing UX corrections: map-first Atlas, readable labels, real evidence links. */
+#app.isr-atlas-map-only{display:flex!important;flex-direction:column;height:100vh;overflow:hidden}
+#app.isr-atlas-map-only>.side{position:relative;z-index:1600;display:block!important;flex:0 0 auto;width:100%!important;max-width:none!important;height:auto!important;border-right:0!important;background:#07111f}
+#app.isr-atlas-map-only>.side>*:not(.head):not(.isr-workspace-nav){display:none!important}
+#app.isr-atlas-map-only>.mapwrap{display:block!important;position:relative!important;flex:1 1 auto;width:100%!important;min-width:0!important;min-height:0!important;height:auto!important}
+#app.isr-atlas-map-only>.mapwrap #map{height:100%!important;min-height:0!important}
+#app.isr-atlas-map-only .isr-workspace-nav{margin:0;padding:7px 9px;background:#07111f;border-bottom:1px solid #29425e}
+#app.isr-atlas-map-only .head{padding-bottom:5px}
+.isr-current-map-badge{position:absolute;z-index:1250;left:12px;bottom:14px;max-width:min(520px,calc(100% - 24px));border:1px solid #466884;background:rgba(7,17,31,.94);border-radius:9px;padding:7px 9px;box-shadow:0 2px 14px #0007;color:#dbe9f6;pointer-events:none}
+.isr-current-map-badge[hidden]{display:none!important}.isr-current-map-badge b{display:block;font-size:9px;letter-spacing:.06em;color:#fff}.isr-current-map-badge span{display:block;font-size:9px;line-height:1.4;color:#b8c9da;margin-top:2px}
+.isr-evidence-source-list{display:grid;gap:6px;margin-top:7px}.isr-evidence-source{display:block;border:1px solid #2d4a65;background:#0b1a2c;border-radius:8px;padding:8px;color:#dcecff;text-decoration:none}.isr-evidence-source:hover{border-color:#5c87ad;background:#10243a}.isr-evidence-source b{display:block;font-size:10px;line-height:1.35}.isr-evidence-source span{display:block;font-size:8.5px;line-height:1.35;color:#9eb3c7;margin-top:2px}.isr-evidence-source-note{font-size:9px;line-height:1.45;color:#9eb3c7;margin-top:5px}
+.isr-evidence-drawer dt{font-size:8.5px!important;letter-spacing:.05em!important;color:#91a9c0!important}.isr-evidence-drawer dd{font-size:10.5px!important;line-height:1.5!important;color:#d7e3ef!important;margin-bottom:7px!important}
+.isr-outcome-card h3{font-size:13px!important}.isr-outcome-section span{font-size:10.2px!important;line-height:1.48!important}.isr-event-card p{font-size:10px!important;line-height:1.48!important}
+@media(max-width:850px){#app.isr-atlas-map-only .head-copy .sub{display:none}.isr-current-map-badge{left:8px;right:8px;bottom:8px;max-width:none}}

@@ -46,6 +46,16 @@ jobs:
           node tests/forensic-v1.3.2.test.js
           node tests/full-scope-20260822.test.js
           node tests/aug22-update.test.js
+          node tests/endgame-page.test.js
+          node tests/public-ux-20260823.test.js
+      - name: Validate ENDGAME analytical page
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_endgame_page.py
+      - name: Validate Aug. 23 public UX
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_public_ux_20260823.py
       - name: Validate forensic v1.3.2 analytical package
         env:
           PYTHONUTF8: '1'

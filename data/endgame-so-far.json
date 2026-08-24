@@ -1,0 +1,567 @@
+{
+  "meta": {
+    "page_id": "endgame",
+    "title": "ENDGAME (So far)",
+    "subtitle": "Pressure architecture → original victory conditions → observable strain → narrative contraction → settlement test",
+    "reviewed_through": "2026-08-23",
+    "analytical_lock": "Iranian survival is an observed fact, not an original victory condition. Current victory claims are tested against the concrete conditions Iran previously described as the minimum acceptable outcome.",
+    "base_commit": "542e2cd59c491a1ab5e2b4cb5aa54a17c1dea9db"
+  },
+  "sources": [
+    {
+      "id": "PT-20260306-CRUSH",
+      "date": "2026-03-06",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "Actor / state-media rhetoric",
+      "title": "'We will crush you': Iran Armed Forces warn Iraqi Kurdistan against cooperation with US, Israel",
+      "url": "https://www.presstv.ir/Detail/2026/03/06/765052/Iran-Israel-United-States-warning-Kurdistan-Region-war",
+      "note": "Early coercive wartime language. The warning was directed at Iraqi Kurdistan authorities cooperating with Washington/Tel Aviv; use as posture evidence, not as a standalone formal war aim."
+    },
+    {
+      "id": "PT-20260317-EXISTENTIAL",
+      "date": "2026-03-17",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "Iranian official framing",
+      "title": "Qalibaf: We did not expect attacks on Iran to originate from southern neighbors",
+      "url": "https://www.presstv.ir/Detail/2026/03/17/765472/Qalibaf-We-did-not-expect-attacks-on-Iran-to-originate-from-southern-neighbors",
+      "note": "Qalibaf explicitly described Iran as compelled to defend itself 'in an existential war.'"
+    },
+    {
+      "id": "PT-20260421-STRENGTH",
+      "date": "2026-04-21",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "State-media strategic analysis",
+      "title": "Never again: Why Iran denies concessions and negotiates from position of strength",
+      "url": "https://www.presstv.ir/doc/Detail/2026/04/21/767305/never-again-why-iran-denies-concessions-negotiates-position-strength",
+      "note": "Presented missile, nuclear and defense capabilities as non-negotiable and framed Iran as the battlefield victor dictating terms."
+    },
+    {
+      "id": "PT-20260517-EXISTENTIAL-RESIST",
+      "date": "2026-05-17",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "State-media strategic analysis",
+      "title": "Empire in freefall: Desperate sabre-rattling against Iran shows US has completely lost the plot",
+      "url": "https://www.presstv.ir/Detail/2026/05/17/768793/empire-freefall-desperate-sabrerattling-against-iran-shows-us-completely-lost-plot",
+      "note": "Explicitly argued that the war was an existential threat to Iran and therefore required existential resistance; concessions would invite more aggression."
+    },
+    {
+      "id": "PT-20260521-DECISIVE",
+      "date": "2026-05-21",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "State-media strategic analysis",
+      "title": "With strategic upper hand, Iran conditions nuclear talks on war's definitive end – on its terms",
+      "url": "https://www.presstv.ir/Detail/2026/05/21/769030/with-strategic-upper-hand-iran-conditions-nuclear-talks-war-definitive-end-iranian-terms",
+      "note": "Said the war must be recorded as a decisive, substantive Iranian victory rather than symbolic survival."
+    },
+    {
+      "id": "PT-20260522-MINIMUM",
+      "date": "2026-05-22",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "State-media victory-condition statement",
+      "title": "The logic of victory: Iran's principled terms for end to imposed war define a new strategic reality",
+      "url": "https://www.presstv.ir/Detail/2026/05/22/769087/logic-victory-iran-principled-terms-ending-imposed-war-define-strategic-reality",
+      "note": "Called damages/compensation, asset return, U.S. withdrawal, blockade termination, protection of allies, sanctions relief and a signed settlement the minimum acceptable outcome; treated Hormuz sovereignty/tolls as a prize already won."
+    },
+    {
+      "id": "PT-20260527-REDLINES",
+      "date": "2026-05-27",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "State-media strategic red lines",
+      "title": "Lessons of war: Strait of Hormuz control and nuclear sovereignty define Iran's inviolable red lines today",
+      "url": "https://www.presstv.ir/Detail/2026/05/27/769383/lessons-war-strait-hormuz-nuclear-sovereignty-define-iran-redlines-today",
+      "note": "Described nuclear industry, absolute Hormuz sovereignty, defensive/asymmetric capabilities and the Axis of Resistance as existential capital and non-negotiable."
+    },
+    {
+      "id": "PT-20260607-FEES",
+      "date": "2026-06-07",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "Iranian reported implementation claim",
+      "title": "Ships paying up to $2 million under new maritime services plan in Hormuz: Report",
+      "url": "https://www.presstv.ir/Detail/2026/06/07/770002/Vessels-pay--1-5%E2%80%932-million-under-new-Strait-of-Hormuz-services-plan",
+      "note": "Reported $1.5–2 million average maritime-services payments under an Iranian arrangement."
+    },
+    {
+      "id": "PT-20260616-AREF",
+      "date": "2026-06-16",
+      "outlet": "Press TV",
+      "side": "Iranian",
+      "role": "Iranian official statement",
+      "title": "Iran's VP: Tehran will maintain control of Strait of Hormuz",
+      "url": "https://www.presstv.ir/Detail/2026/06/16/770566/Iran-VP-Tehran-maintain-control-Strait-of-Hormuz-vessels-cost-of-service-safe-navigation-MoU",
+      "note": "Aref said Hormuz belongs to Iran, management would remain Iran's responsibility, and vessels should contribute to service costs."
+    },
+    {
+      "id": "RTR-20260817-UNREST",
+      "date": "2026-08-17",
+      "outlet": "Reuters",
+      "side": "Independent",
+      "role": "Independent factual spine",
+      "title": "Battered by war, Iran's rulers wary of more economic pain and unrest if US tightens pressure",
+      "url": "https://www.reuters.com/world/middle-east/battered-by-war-irans-rulers-wary-more-economic-pain-unrest-if-us-tightens-2026-08-17/",
+      "note": "Reported leadership concern over additional economic pain and unrest; July inflation about 66% and food prices about 128% year-over-year."
+    },
+    {
+      "id": "RTR-20260818-HORMUZ",
+      "date": "2026-08-18",
+      "outlet": "Reuters",
+      "side": "Independent",
+      "role": "Independent market / shipping evidence",
+      "title": "Oil market starts pricing in a prolonged Hormuz crisis",
+      "url": "https://www.reuters.com/commentary/reuters-open-interest/oil-market-starts-pricing-prolonged-hormuz-crisis-2026-08-18/",
+      "note": "Estimated Hormuz oil flows around 2 million bpd versus roughly 18 million bpd pre-war; documents Iran's real reciprocal leverage and global cost."
+    },
+    {
+      "id": "RTR-20260820-SANCTIONS",
+      "date": "2026-08-20",
+      "outlet": "Reuters",
+      "side": "Independent",
+      "role": "Independent pressure evidence",
+      "title": "US will impose 'toughest sanctions in history' on Iran, Bessent says",
+      "url": "https://www.reuters.com/world/middle-east/trump-warns-economic-consequences-any-country-that-supports-iran-2026-08-20/",
+      "note": "Bessent described a maximum economic-pressure phase designed to work with the naval blockade and extend pressure to Iran's trading partners."
+    },
+    {
+      "id": "RTR-20260820-ENERGY",
+      "date": "2026-08-20",
+      "outlet": "Reuters",
+      "side": "Independent",
+      "role": "Independent counter-cost evidence",
+      "title": "The Iran war energy crisis is just getting started",
+      "url": "https://www.reuters.com/commentary/reuters-open-interest/iran-war-energy-crisis-is-just-getting-started-2026-08-20/",
+      "note": "Documents refining losses, freight stress, depleted inventories and broader energy inflation — evidence that Iranian counter-pressure is not cost-free for the other side."
+    },
+    {
+      "id": "RTR-20260821-OILCHINA",
+      "date": "2026-08-21",
+      "outlet": "Reuters",
+      "side": "Independent",
+      "role": "Independent export-pressure evidence",
+      "title": "Iranian oil offers to Chinese buyers fall as US blockade bites, sources say",
+      "url": "https://www.reuters.com/business/energy/iranian-oil-offers-chinese-buyers-fall-us-blockade-bites-sources-say-2026-08-21/",
+      "note": "Reported August Iranian shipments at about 534,000 bpd versus a 2025 average of 1.4 million bpd, with fewer offers and Chinese refiners seeking alternatives."
+    },
+    {
+      "id": "RTR-20260821-QALIBAF",
+      "date": "2026-08-21",
+      "outlet": "Reuters",
+      "side": "Independent",
+      "role": "Independent report of Iranian official statement",
+      "title": "Iran says Tehran must overcome 'unjust sanctions' as US ramps up economic pressure",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-tehran-must-overcome-unjust-sanctions-us-ramps-up-economic-pressure-2026-08-21/",
+      "note": "Qalibaf linked economic activity, growth and domestic production to national endurance while arguing Iran must overcome the sanctions campaign."
+    },
+    {
+      "id": "IRANWIRE-20260821-HEMMATI",
+      "date": "2026-08-21",
+      "outlet": "IranWire",
+      "side": "Iranian media",
+      "role": "Iranian-media report of official statement",
+      "title": "Iran's Oil Exports Drop to Zero, Central Bank Governor Confirms",
+      "url": "https://iranwire.com/en/news/156562-irans-oil-exports-drop-to-zero-central-bank-governor-confirms/",
+      "note": "Reported Hemmati's Aug. 19 televised admission that oil exports had halted and revenue/foreign-reserve constraints were biting."
+    },
+    {
+      "id": "IRANWIRE-20260821-PEZESHKIAN",
+      "date": "2026-08-21",
+      "outlet": "IranWire",
+      "side": "Iranian media",
+      "role": "Iranian-media report of presidential statement",
+      "title": "Iran's Pezeshkian Calls for End to War with US",
+      "url": "https://iranwire.com/en/news/156586-irans-pezeshkian-calls-for-end-to-war-with-us/",
+      "note": "Reported Pezeshkian's argument that Iran should end the war while it can still describe itself as acting from 'power and dignity.'"
+    },
+    {
+      "id": "RTR-20260823-IRAN-DEFIANT",
+      "date": "2026-08-23",
+      "outlet": "Reuters",
+      "side": "Independent",
+      "role": "Independent current-state evidence",
+      "title": "Iran says new sanctions threatened by 'desperate' US will fail",
+      "url": "https://www.reuters.com/world/asia-pacific/iran-says-new-sanctions-threatened-by-desperate-us-will-fail-2026-08-23/",
+      "note": "Shows the counter-case remains alive: Araqchi calls new sanctions desperation, Iran remains defiant and Hormuz leverage remains substantial."
+    },
+    {
+      "id": "RTR-20260823-DDAY",
+      "date": "2026-08-23",
+      "outlet": "Reuters",
+      "side": "Independent",
+      "role": "Independent current pressure evidence",
+      "title": "US vows 'economic D-Day' as Iran threatens to halt all oil exports",
+      "url": "https://www.reuters.com/business/energy/iran-says-it-discovered-over-75-trillion-cubic-feet-gas-2026-08-23/",
+      "note": "Captures the current pressure/counter-pressure escalation: broader U.S. financial offensive and Iranian threat to stop Gulf oil exports."
+    }
+  ],
+  "pressure_system": [
+    {
+      "id": "pressure-kinetic",
+      "date": "2026-02-28",
+      "label": "Kinetic attrition",
+      "action": "U.S./Israeli strikes on leadership, C2, air defense, missile/UAS capacity and infrastructure.",
+      "intended_effect": "Reduce Iranian warfighting capacity, increase replacement/reconstruction cost and narrow military options.",
+      "evidence_for": "Substantial infrastructure and military damage is independently documented elsewhere in Atlas.",
+      "counter_evidence": "Iran retained missile/UAS capacity and the ability to impose maritime and regional costs.",
+      "source_ids": []
+    },
+    {
+      "id": "pressure-maritime",
+      "date": "2026-04-01",
+      "label": "Maritime / export denial",
+      "action": "Naval counter-blockade of Iranian ports and shipping; pressure moves from freedom-of-navigation rhetoric toward denying Iranian export/import utility.",
+      "intended_effect": "Remove oil revenue and reduce the practical value of controlling who may transit Hormuz.",
+      "evidence_for": "Iranian oil through Hormuz ceased; Reuters later measured a sharp fall in Iranian shipments and Chinese buyers seeking alternatives.",
+      "counter_evidence": "Hormuz traffic itself remained severely depressed, preserving major Iranian reciprocal leverage.",
+      "source_ids": [
+        "RTR-20260818-HORMUZ",
+        "RTR-20260821-OILCHINA"
+      ]
+    },
+    {
+      "id": "pressure-economic",
+      "date": "2026-08-20",
+      "label": "Partner / financial isolation",
+      "action": "Washington announces the next sanctions phase as a campaign against Iran and states/firms sustaining Iranian trade.",
+      "intended_effect": "Constrain foreign exchange, make circumvention riskier, and force Tehran to choose settlement over a worsening economic trajectory.",
+      "evidence_for": "Hemmati acknowledges export and reserve constraints; Qalibaf ties economic circulation to endurance; Reuters reports unrest concerns.",
+      "counter_evidence": "China rejects unilateral sanctions, Iran remains politically defiant, and Tehran continues to threaten wider energy denial.",
+      "source_ids": [
+        "RTR-20260820-SANCTIONS",
+        "RTR-20260817-UNREST",
+        "IRANWIRE-20260821-HEMMATI",
+        "RTR-20260821-QALIBAF",
+        "RTR-20260823-IRAN-DEFIANT"
+      ]
+    },
+    {
+      "id": "pressure-adaptation",
+      "date": "2026-08-18",
+      "label": "Commercial adaptation erodes monopoly value",
+      "action": "Regional exporters, buyers and carriers adapt around the Strait where possible: offshore transfers, alternative crude, rerouting and reduced willingness to depend on Iranian permission.",
+      "intended_effect": "Make the statement 'Iran controls transit' less equivalent to 'Iran controls the economic outcome.'",
+      "evidence_for": "Reuters reports Saudi offshore-transfer activity and Chinese buyers sourcing alternatives; Iranian exports are heavily constrained.",
+      "counter_evidence": "Alternative routes cannot fully replace Hormuz; global oil/refining/freight costs remain severe.",
+      "source_ids": [
+        "RTR-20260818-HORMUZ",
+        "RTR-20260821-OILCHINA",
+        "RTR-20260820-ENERGY"
+      ]
+    }
+  ],
+  "original_claims": [
+    {
+      "date": "2026-03-06",
+      "phase": "COERCIVE OPENING",
+      "headline": "'We will crush you'",
+      "meaning": "Early wartime posture was punitive and dominance-oriented. This is rhetoric evidence, not by itself a formal victory condition.",
+      "source_ids": [
+        "PT-20260306-CRUSH"
+      ]
+    },
+    {
+      "date": "2026-03-17",
+      "phase": "EXISTENTIAL WAR",
+      "headline": "War framed as existential",
+      "meaning": "Qalibaf explicitly described Iran as compelled to defend itself 'in an existential war.' The frame is national survival plus deterrence against recurrence, not simply enduring until talks.",
+      "source_ids": [
+        "PT-20260317-EXISTENTIAL",
+        "PT-20260517-EXISTENTIAL-RESIST"
+      ]
+    },
+    {
+      "date": "2026-04-21",
+      "phase": "VICTOR DICTATES",
+      "headline": "No concessions; negotiate from victory",
+      "meaning": "Missile, nuclear and defense assets were presented as non-negotiable and the victor was said to dictate terms.",
+      "source_ids": [
+        "PT-20260421-STRENGTH"
+      ]
+    },
+    {
+      "date": "2026-05-21",
+      "phase": "SUBSTANTIVE VICTORY",
+      "headline": "Victory must be decisive and recorded in the settlement",
+      "meaning": "Press TV's strategic analysis explicitly rejected symbolic victory and said the end state must record Iranian conditions as substantive facts.",
+      "source_ids": [
+        "PT-20260521-DECISIVE"
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "phase": "MINIMUM ACCEPTABLE OUTCOME",
+      "headline": "Concrete minimum terms",
+      "meaning": "Compensation, asset return, U.S. withdrawal, blockade termination, protection of allies, sanctions relief and a signed end-of-war agreement were called the minimum acceptable outcome. Hormuz control/fees were treated as a prize already won.",
+      "source_ids": [
+        "PT-20260522-MINIMUM",
+        "PT-20260607-FEES",
+        "PT-20260616-AREF"
+      ]
+    },
+    {
+      "date": "2026-05-27",
+      "phase": "LOCKED RED LINES",
+      "headline": "Hormuz + nuclear + defense + Axis are non-negotiable",
+      "meaning": "Iranian strategic analysis called these four pillars existential capital that could not be traded for temporary relief.",
+      "source_ids": [
+        "PT-20260527-REDLINES"
+      ]
+    }
+  ],
+  "victory_ledger": [
+    {
+      "condition": "War damages / reparations paid",
+      "origin": "May 22 minimum acceptable outcome",
+      "status": "UNRESOLVED / NOT SHOWN",
+      "assessment": "No current public evidence in this package establishes payment of the demanded war damages or reparations.",
+      "source_ids": [
+        "PT-20260522-MINIMUM"
+      ]
+    },
+    {
+      "condition": "Frozen / blocked Iranian assets returned",
+      "origin": "Apr. 21 / May 22 victory terms",
+      "status": "NOT ACHIEVED SO FAR",
+      "assessment": "Hemmati's Aug. 19 remarks, as reported by Iranian media, describe continued restrictions on access to foreign reserves rather than completed restoration.",
+      "source_ids": [
+        "PT-20260421-STRENGTH",
+        "PT-20260522-MINIMUM",
+        "IRANWIRE-20260821-HEMMATI"
+      ]
+    },
+    {
+      "condition": "U.S. naval blockade terminated",
+      "origin": "May 22 minimum acceptable outcome",
+      "status": "NOT ACHIEVED SO FAR",
+      "assessment": "The blockade resumed and is now central to the current pressure system; oil offers and shipments remain heavily constrained.",
+      "source_ids": [
+        "PT-20260522-MINIMUM",
+        "RTR-20260821-OILCHINA",
+        "RTR-20260820-SANCTIONS"
+      ]
+    },
+    {
+      "condition": "Full / verifiable sanctions relief",
+      "origin": "Apr. 21 / May 22 victory terms",
+      "status": "MOVING OPPOSITE",
+      "assessment": "Washington is escalating toward a broader sanctions campaign, not implementing comprehensive relief.",
+      "source_ids": [
+        "PT-20260421-STRENGTH",
+        "PT-20260522-MINIMUM",
+        "RTR-20260820-SANCTIONS",
+        "RTR-20260823-DDAY"
+      ]
+    },
+    {
+      "condition": "U.S. withdrawal from bases surrounding Iran",
+      "origin": "May 22 minimum acceptable outcome",
+      "status": "NOT SHOWN",
+      "assessment": "No evidence in the reviewed package establishes the demanded regional U.S. withdrawal.",
+      "source_ids": [
+        "PT-20260522-MINIMUM"
+      ]
+    },
+    {
+      "condition": "Protection / non-aggression toward Axis allies",
+      "origin": "May 22 minimum acceptable outcome; May 27 red line",
+      "status": "NOT ESTABLISHED",
+      "assessment": "No durable settlement guarantee protecting the Axis of Resistance is established in the reviewed public record.",
+      "source_ids": [
+        "PT-20260522-MINIMUM",
+        "PT-20260527-REDLINES"
+      ]
+    },
+    {
+      "condition": "Permanent Iranian Hormuz sovereignty / management / fees",
+      "origin": "May 22 victory claim; June 7/16 implementation claims",
+      "status": "LEVERAGE REAL / RIGHT NOT SETTLED",
+      "assessment": "Iran can still impose severe disruption and selective passage costs. That demonstrates coercive leverage. It does not by itself establish internationally recognized permanent Iranian regulatory or rent authority over the entire strait.",
+      "source_ids": [
+        "PT-20260522-MINIMUM",
+        "PT-20260607-FEES",
+        "PT-20260616-AREF",
+        "RTR-20260818-HORMUZ"
+      ]
+    },
+    {
+      "condition": "No concessions on nuclear, missiles, defense or regional architecture",
+      "origin": "Apr. 21 / May 27 red lines",
+      "status": "FINAL BARGAIN UNRESOLVED",
+      "assessment": "Iran continues to state the position, but whether it survives the settlement cannot be scored before the final bargain.",
+      "source_ids": [
+        "PT-20260421-STRENGTH",
+        "PT-20260527-REDLINES"
+      ]
+    }
+  ],
+  "strain_evidence": [
+    {
+      "date": "2026-08-17",
+      "type": "PRESSURE EFFECT",
+      "headline": "Leadership fear of economic pain and unrest",
+      "detail": "Reuters reports concern that additional U.S. pressure could worsen living conditions and trigger renewed unrest; July inflation was about 66% and food prices about 128% higher year-over-year.",
+      "source_ids": [
+        "RTR-20260817-UNREST"
+      ]
+    },
+    {
+      "date": "2026-08-19",
+      "type": "IRANIAN ADMISSION",
+      "headline": "Oil exports halted; reserve access constrained",
+      "detail": "Hemmati's televised remarks acknowledge that Iran is not exporting oil and distinguish Iran from neighbors by its constrained access to foreign reserves.",
+      "source_ids": [
+        "IRANWIRE-20260821-HEMMATI"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "type": "IRANIAN ADMISSION",
+      "headline": "Economic endurance becomes a national-security condition",
+      "detail": "Qalibaf links survival to people not going hungry and to financial activity, economic growth and domestic production.",
+      "source_ids": [
+        "RTR-20260821-QALIBAF"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "type": "ENDGAME SIGNAL",
+      "headline": "End the war while 'power and dignity' can still be claimed",
+      "detail": "Pezeshkian argues for ending the war now while framing Iran as retaining power and dignity — a materially narrower end-state argument than the May victory ledger.",
+      "source_ids": [
+        "IRANWIRE-20260821-PEZESHKIAN"
+      ]
+    }
+  ],
+  "counter_evidence": [
+    {
+      "date": "2026-08-18",
+      "type": "IRANIAN LEVERAGE",
+      "headline": "Hormuz denial remains strategically consequential",
+      "detail": "Reuters estimates flows through Hormuz around 2 million bpd versus roughly 18 million bpd pre-war. Iran has therefore imposed a large real cost even while its own ports/export economy are constrained.",
+      "source_ids": [
+        "RTR-20260818-HORMUZ"
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "type": "RECIPROCAL COST",
+      "headline": "Energy shock broadens beyond Iran",
+      "detail": "Refining losses, freight stress, low inventories and route disruption keep the energy crisis alive; coercion is not one-way.",
+      "source_ids": [
+        "RTR-20260820-ENERGY"
+      ]
+    },
+    {
+      "date": "2026-08-23",
+      "type": "POLITICAL RESISTANCE",
+      "headline": "Tehran still rejects the pressure thesis publicly",
+      "detail": "Araqchi calls the threatened sanctions a sign of U.S. desperation and says they will fail. This is counter-evidence to any claim that economic pain has already produced political capitulation.",
+      "source_ids": [
+        "RTR-20260823-IRAN-DEFIANT"
+      ]
+    }
+  ],
+  "rhetorical_contraction": [
+    {
+      "date": "2026-03-06",
+      "label": "COERCIVE DOMINANCE",
+      "claim": "Crush collaborators/opponents; impose punishment.",
+      "source_ids": [
+        "PT-20260306-CRUSH"
+      ]
+    },
+    {
+      "date": "2026-03-17",
+      "label": "EXISTENTIAL / DETERRENCE",
+      "claim": "Defend in an existential war; continue until recurrence is prevented.",
+      "source_ids": [
+        "PT-20260317-EXISTENTIAL",
+        "PT-20260517-EXISTENTIAL-RESIST"
+      ]
+    },
+    {
+      "date": "2026-04-21",
+      "label": "VICTOR DICTATES",
+      "claim": "No concessions; negotiate from victory.",
+      "source_ids": [
+        "PT-20260421-STRENGTH"
+      ]
+    },
+    {
+      "date": "2026-05-21",
+      "label": "SUBSTANTIVE VICTORY",
+      "claim": "Settlement must record a decisive Iranian victory in facts and clauses.",
+      "source_ids": [
+        "PT-20260521-DECISIVE"
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "label": "MAXIMAL END STATE",
+      "claim": "Reparations + assets + U.S. withdrawal + blockade end + sanctions relief + Axis protection + Hormuz gain.",
+      "source_ids": [
+        "PT-20260522-MINIMUM"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "label": "HORMUZ INSTITUTIONALIZATION",
+      "claim": "Convert wartime leverage into durable Iranian management/service-fee authority.",
+      "source_ids": [
+        "PT-20260607-FEES",
+        "PT-20260616-AREF"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "label": "REDUCED ENDGAME FRAME",
+      "claim": "End now while Iran can claim 'power and dignity'; survival and reciprocal pain become central proof points.",
+      "source_ids": [
+        "IRANWIRE-20260821-PEZESHKIAN"
+      ]
+    }
+  ],
+  "endgame_test": {
+    "observed": [
+      "Iran survived as a state and retains meaningful military capability.",
+      "Iran imposed severe Hormuz, shipping and energy costs.",
+      "Iran is under serious export, foreign-exchange and domestic economic pressure.",
+      "Iranian officials now acknowledge endurance constraints more openly."
+    ],
+    "does_not_follow": [
+      "Survival alone does not satisfy the original victory conditions.",
+      "Hurting the opponent does not establish that Iran achieved the concrete minimum terms it previously demanded.",
+      "The existence of negotiations does not prove Iran negotiated from the stronger position.",
+      "Removal of a pressure instrument is not automatically a wartime gain if relief is exchanged for new Iranian concessions."
+    ],
+    "would_validate": [
+      "Comprehensive blockade/sanctions relief plus actual access to assets.",
+      "No major new Iranian concessions on previously declared red lines.",
+      "Durable net gains beyond restoration of the pre-pressure status quo.",
+      "Recognized and durable Hormuz authority/fees if Iran continues to treat that as a victory condition.",
+      "Concrete implementation of substantial portions of the May 21–22 victory ledger."
+    ]
+  },
+  "live_discriminators": [
+    {
+      "label": "WASHINGTON END-STATE FRAMING",
+      "question": "Does Washington explicitly require a new bargain broader than restoration of the expired MoU — nuclear plus wider Iranian concessions — or accept a return to the June framework?",
+      "status": "LIVE / UNRESOLVED"
+    },
+    {
+      "label": "SAUDI / TÜRKİYE / PAKISTAN ARCHITECTURE",
+      "question": "Do Riyadh and Ankara independently confirm, qualify or reject claims that Iran could enter the defense architecture, and on what terms?",
+      "status": "LIVE / UNRESOLVED"
+    },
+    {
+      "label": "HORMUZ AUTHORITY",
+      "question": "Does any final arrangement recognize Iranian compulsory management/toll authority, or only navigation coordination / voluntary services without sovereign rent extraction?",
+      "status": "LIVE / UNRESOLVED"
+    }
+  ]
+}

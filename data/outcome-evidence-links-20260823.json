@@ -1,0 +1,96 @@
+{
+  "IRN-OUTCOME-TACTICAL": [
+    {
+      "outlet": "Reuters",
+      "title": "How a perilous US rescue mission in Iran nearly went off course",
+      "url": "https://www.reuters.com/business/aerospace-defense/how-perilous-us-rescue-mission-iran-nearly-went-off-course-2026-04-05",
+      "note": "Independent reporting on the downed U.S. aircraft crew and the successful recovery mission."
+    },
+    {
+      "outlet": "Associated Press",
+      "title": "A mountain hideout and aircraft under fire: US carries out daring rescue of service member in Iran",
+      "url": "https://apnews.com/article/fde473d07fb59e871a71cd2ad2ffe4fe",
+      "note": "Independent reporting on the personnel recovery and aircraft losses during the rescue."
+    },
+    {
+      "outlet": "Reuters",
+      "title": "U.S. can only confirm about a third of Iran's missile arsenal destroyed, sources say",
+      "url": "https://www.reuters.com/world/middle-east/us-can-only-confirm-about-third-irans-missile-arsenal-destroyed-sources-say-2026-03-27/",
+      "note": "Independent reporting on launcher, missile, drone and naval losses while preserving uncertainty about what remained."
+    }
+  ],
+  "IRN-OUTCOME-MILITARY": [
+    {
+      "outlet": "Reuters",
+      "title": "U.S. can only confirm about a third of Iran's missile arsenal destroyed, sources say",
+      "url": "https://www.reuters.com/world/middle-east/us-can-only-confirm-about-third-irans-missile-arsenal-destroyed-sources-say-2026-03-27/",
+      "note": "Key independent source for missile-inventory uncertainty, launchers neutralized and naval-loss reporting."
+    },
+    {
+      "outlet": "Associated Press",
+      "title": "By the numbers: US thrashed military targets in Iran, but some capabilities remain",
+      "url": "https://apnews.com/article/iran-war-us-military-targets-israel-71c389bc3f308e7d00acce7adc74f528",
+      "note": "Independent summary of severe Iranian military losses while noting surviving capabilities."
+    },
+    {
+      "outlet": "CSIS",
+      "title": "Preventing Iran’s Military Reconstitution",
+      "url": "https://www.csis.org/analysis/preventing-irans-military-reconstitution",
+      "note": "Open-source and satellite-based analysis of the scale of conventional-force losses and reconstitution problem."
+    }
+  ],
+  "IRN-OUTCOME-POLITICAL": [
+    {
+      "outlet": "Reuters",
+      "title": "Which key Iranian figures have been killed in US-Israeli strikes?",
+      "url": "https://www.reuters.com/world/middle-east/which-key-iranian-figures-have-been-killed-us-israeli-strikes-2026-04-06/",
+      "note": "Independent itemized reporting on senior political, intelligence and military leadership deaths."
+    },
+    {
+      "outlet": "Reuters",
+      "title": "U.S. confirms death of IRGC Navy commander Tangsiri",
+      "url": "https://www.reuters.com/world/middle-east/us-confirms-death-iranian-irgc-naval-commander-2026-03-26",
+      "note": "Independent reporting on one of the senior command losses included in the leadership ledger."
+    }
+  ],
+  "IRN-OUTCOME-DIPLOMATIC": [
+    {
+      "outlet": "Reuters",
+      "title": "Iran threatens to go on offensive in Strait of Hormuz if diplomacy with US fails",
+      "url": "https://www.reuters.com/world/middle-east/iran-threatens-go-offensive-strait-hormuz-if-diplomacy-with-us-fails-2026-08-17/",
+      "note": "Records the expiry of the 60-day negotiating window without a final settlement."
+    },
+    {
+      "outlet": "Reuters",
+      "title": "Iran MOU was signed by Trump and Iranian president, US official says",
+      "url": "https://www.reuters.com/world/middle-east/iran-mou-was-signed-wednesday-by-trump-iran-president-us-official-says-2026-06-17/",
+      "note": "Independent reporting confirming the interim MOU and its negotiating framework."
+    },
+    {
+      "outlet": "Reuters",
+      "title": "Saudi Arabia unveils plans for multinational maritime defence coalition",
+      "url": "https://www.reuters.com/world/middle-east/saudi-arabia-unveils-plans-multinational-maritime-defence-coalition-2026-07-30/",
+      "note": "Independent evidence of harder regional security coordination during the war."
+    }
+  ],
+  "IRN-OUTCOME-STRATEGIC": [
+    {
+      "outlet": "Reuters",
+      "title": "Oil market starts pricing in a prolonged Hormuz crisis",
+      "url": "https://www.reuters.com/commentary/reuters-open-interest/oil-market-starts-pricing-prolonged-hormuz-crisis-2026-08-18/",
+      "note": "Documents the continuing economic and shipping impact of Iran's real Hormuz leverage."
+    },
+    {
+      "outlet": "Reuters",
+      "title": "US will impose 'toughest sanctions in history' on Iran, Bessent says",
+      "url": "https://www.reuters.com/world/middle-east/trump-warns-economic-consequences-any-country-that-supports-iran-2026-08-20/",
+      "note": "Independent reporting on the intensified U.S. economic-pressure strategy."
+    },
+    {
+      "outlet": "Reuters",
+      "title": "The Iran war energy crisis is just getting started",
+      "url": "https://www.reuters.com/commentary/reuters-open-interest/iran-war-energy-crisis-is-just-getting-started-2026-08-20/",
+      "note": "Independent evidence that Iran's counter-pressure continues to impose substantial costs beyond Iran."
+    }
+  ]
+}

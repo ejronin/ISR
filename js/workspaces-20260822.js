@@ -20,7 +20,7 @@
       .sort();
     return dates[0]||'2026-02-28';
   };
-  let full=null, registry=null, mou=null, routes=null, peerNav=null, visualZoom='FIT', lastAtlasView='snapshot', routeGroup=null;
+  let full=null, registry=null, mou=null, routes=null, peerNav=null, visualZoom='FIT', lastAnalysisView='snapshot', routeGroup=null, plainObserver=null;
 
   function setCanonicalLabels(){
     const stamp=document.querySelector('.review-stamp');
@@ -34,11 +34,12 @@
     const v=window.AtlasState?.get?.().activeView;
     if(v==='timeline')return'TIMELINE';
     if(v==='sources')return'SOURCES';
-    return'ATLAS';
+    if(v==='facilities')return'ATLAS';
+    return'ANALYSIS';
   }
   function setPeerActive(name){
     document.querySelectorAll('[data-peer-workspace]').forEach(b=>{const on=b.dataset.peerWorkspace===name;b.classList.toggle('active',on);b.setAttribute('aria-current',on?'page':'false');});
-    const atlasNav=document.querySelector('.analysis-nav');if(atlasNav)atlasNav.hidden=name!=='ATLAS';
+    const analysisNav=document.querySelector('.analysis-nav');if(analysisNav)analysisNav.hidden=name!=='ANALYSIS';
   }
   function leaveMou(){if(document.querySelector('.isr-hormuz-overlay:not([hidden])'))full?.closeHormuz?.();}
   function activatePeer(name){
@@ -49,14 +50,20 @@
       window.showAtlasPanel?.('timeline');setTimeout(()=>{enhanceTimeline();updateTimelineEnhancements();},0);
     }else if(name==='SOURCES'){
       window.showAtlasPanel?.('sources');setTimeout(enhanceSources,0);
-    }else window.showAtlasPanel?.(lastAtlasView||'snapshot');
+    }else if(name==='ANALYSIS'){
+      window.showAtlasPanel?.(lastAnalysisView||'snapshot');
+    }else{
+      window.showAtlasPanel?.('facilities');
+      window.AtlasState?.set?.({selectedRecord:null},{source:'atlas-current-map'});
+      setTimeout(ensureCurrentMapBadge,0);
+    }
     setPeerActive(name);
   }
   function buildPeerNav(){
     if(document.querySelector('.isr-workspace-nav'))return;
     const old=document.querySelector('.analysis-nav');if(!old)return;
     peerNav=el('nav','isr-workspace-nav');peerNav.setAttribute('aria-label','Primary workspace');
-    ['ATLAS','TIMELINE','MOU','SOURCES'].forEach(name=>{const b=add(peerNav,'button','',name);b.type='button';b.dataset.peerWorkspace=name;b.onclick=()=>activatePeer(name);});
+    ['ATLAS','TIMELINE','ANALYSIS','MOU','SOURCES'].forEach(name=>{const b=add(peerNav,'button','',name);b.type='button';b.dataset.peerWorkspace=name;b.onclick=()=>activatePeer(name);});
     old.parentElement.insertBefore(peerNav,old);setPeerActive(peerForState());
   }
 
@@ -158,7 +165,7 @@ function shiftDay(n){const state=window.AtlasState?.get?.();if(!state?.timeCutof
     buildOverlayPeerNav(overlay);
   }
   function switchMouTab(body,id){body.querySelectorAll('[data-mou-tab]').forEach(b=>b.classList.toggle('active',b.dataset.mouTab===id));body.querySelectorAll('[data-mou-panel]').forEach(p=>p.classList.toggle('active',p.dataset.mouPanel===id));}
-  function buildOverlayPeerNav(overlay){let nav=overlay.querySelector('.isr-overlay-peer-nav');if(nav)return;const top=overlay.querySelector('.isr-hormuz-topbar');nav=el('nav','isr-overlay-peer-nav');['ATLAS','TIMELINE','MOU','SOURCES'].forEach(name=>{const b=add(nav,'button',name==='MOU'?'active':'',name);b.type='button';b.dataset.peerWorkspace=name;b.onclick=()=>activatePeer(name);});top?.insertBefore(nav,top.querySelector('.isr-return-map'));}
+  function buildOverlayPeerNav(overlay){let nav=overlay.querySelector('.isr-overlay-peer-nav');if(nav)return;const top=overlay.querySelector('.isr-hormuz-topbar');nav=el('nav','isr-overlay-peer-nav');['ATLAS','TIMELINE','ANALYSIS','MOU','SOURCES'].forEach(name=>{const b=add(nav,'button',name==='MOU'?'active':'',name);b.type='button';b.dataset.peerWorkspace=name;b.onclick=()=>activatePeer(name);});top?.insertBefore(nav,top.querySelector('.isr-return-map'));}
   function renderMouOverview(p){const ab=mou.agreement_balance||{};clearAndTitle(p,'What the signed MOU did — and what survived its collapse',ab.headline||mou.purpose);const grid=add(p,'div','isr-mou-grid');bulletList(grid,'Iran gained at signature',ab.iran_gained_at_signature);bulletList(grid,'Iran did not obtain',ab.iran_did_not_get);bulletList(grid,'Iran later lost / had reversed',ab.iran_lost_after_collapse);bulletList(grid,'Washington gained at signature',ab.us_gained_at_signature);bulletList(grid,'Washington did not obtain',ab.us_did_not_get);bulletList(p,'Current reality',ab.current_reality);}
   function renderMouBreach(p){const b=mou.mou_breach_assessment||{};clearAndTitle(p,b.title||'Initial MOU breakdown',b.analytical_note);const lead=add(p,'article','isr-mou-emphasis');add(lead,'div','eyebrow','PRIMARY INITIAL VIOLATOR · ANALYTICAL JUDGMENT');add(lead,'h3','',b.primary_initial_violator||'Unresolved');add(lead,'p','',b.confidence||'');[['U.S. implementation before breach',b.us_implementation_before_breach],['Tehran’s claimed trigger',b.tehran_claimed_trigger],['What the text actually allowed',b.why_tehran_reading_fails],['Public-record reality',b.public_record_reality],['Washington response',b.washington_response],['Bottom line',b.bottom_line]].forEach(([h,t])=>{if(!t)return;const c=add(p,'article','isr-hormuz-card');add(c,'h3','',h);add(c,'p','',t);});sourceLinks(p,b.sources);}
   function renderMouMatrix(p){clearAndTitle(p,'Bargaining matrix','Each row separates Iran’s priority, Washington’s priority, the signed compromise and what happened afterward. Concession scores are domain-specific analyst aids, not morality or a war score.');(mou.mou_concession_matrix||[]).forEach(x=>{const c=add(p,'article','isr-mou-matrix-card');add(c,'h3','',x.topic);const g=add(c,'div','isr-mou-matrix-grid');[['Iran priority',x.iran_priority],['U.S. priority',x.us_priority],['Agreed text/result',x.agreed],['Why/status',`${x.status||''}${x.why?` — ${x.why}`:''}`]].forEach(([h,t])=>{const d=add(g,'div');add(d,'b','',h);add(d,'p','',t||'—');});add(c,'small','',`Iran concession aid ${x.iran_concession}/10 · U.S. concession aid ${x.us_concession}/10`);sourceLinks(c,x.sources);});}
@@ -176,22 +183,70 @@ function shiftDay(n){const state=window.AtlasState?.get?.();if(!state?.timeCutof
   }
   function syncStrategicRoutes(state){if(!routeGroup||!window.atlasMap)return;if(state.activeView==='arctic'){if(!window.atlasMap.hasLayer(routeGroup))routeGroup.addTo(window.atlasMap);}else if(window.atlasMap.hasLayer(routeGroup))window.atlasMap.removeLayer(routeGroup);}
 
+  function ensureCurrentMapBadge(){
+    const mapwrap=document.getElementById('map')?.parentElement;if(!mapwrap)return;
+    let badge=mapwrap.querySelector('.isr-current-map-badge');
+    if(!badge){badge=add(mapwrap,'div','isr-current-map-badge');add(badge,'b','','CURRENT MAP · latest verified state');add(badge,'span','','This map always shows the newest accepted map records. Timeline cutoffs do not roll the Atlas map backward. Use Map layers to explore sites, strike effects, imagery and agreements.');}
+    badge.hidden=peerForState()!=='ATLAS';
+  }
+
+  const PLAIN_EXACT=new Map([
+    ['SYNTHESIS · DERIVED FROM ACCEPTED RECORDS','BOTTOM LINE · BASED ON VERIFIED RECORDS'],
+    ['CURRENT CONCLUSION','WHAT THE EVIDENCE SUPPORTS'],
+    ['DOES NOT PROVE','WHAT THIS DOES NOT MEAN'],
+    ['EVIDENCE DETAIL','WHY WE SAY THIS'],
+    ['Open evidence','See sources'],
+    ['Operational reach','Ability to strike at distance'],
+    ['C2ISR / functional continuity','Command and intelligence systems still working'],
+    ['Maritime leverage','Pressure through Hormuz and shipping'],
+    ['Alliance / diplomatic position','Regional and diplomatic position'],
+    ['Current domain assessments','Current situation by area'],
+    ['Functional-damage scale used here','How damage is described here'],
+    ['Visual verification','Photos and satellite evidence'],
+    ['Regional alignment indicators','Regional cooperation and alliances'],
+    ['ALMOST_CERTAIN','Almost certain'],['VERY_LIKELY','Very likely'],['LIKELY','Likely'],['MODERATE','Moderate'],['HIGH','High'],
+    ['IRAN_CAPABILITY_ATTRITED_BUT_NOT_SUPPRESSED','Iran was weakened but still able to fight'],
+    ['SEVERE_CONVENTIONAL_FORCE_DEGRADATION_WITH_SURVIVING_STRIKE_CAPACITY','Conventional forces badly weakened; strike capability remains'],
+    ['SEVERE_LEADERSHIP_DISRUPTION_WITH_STATE_CONTINUITY','Major leadership losses; government still functioning'],
+    ['REGIONAL_ALIGNMENT_HARDENED_WHILE_MEDIATION_PERSISTED','Regional coordination hardened while talks continued'],
+    ['IRAN_STRATEGIC_POSITION_DEGRADED_BUT_COERCIVE_LEVERS_SURVIVE','Strategic position weakened; major pressure tools remain']
+  ]);
+  const PLAIN_REPLACE=[
+    [/\bC2ISR\b/g,'command, surveillance and intelligence'],[/\bC2\b/g,'command and control'],[/\bUAS\b/g,'drones'],[/\bBDA\b/g,'damage assessment'],
+    [/\bforce posture\b/gi,'force positioning'],[/\bfunctional continuity\b/gi,'ability to keep operating'],[/\bfunctional effect\b/gi,'what stopped working'],
+    [/\battrition\b/gi,'losses'],[/\battrited\b/gi,'worn down'],[/\bdegradation\b/gi,'weakening'],[/\bdegraded\b/gi,'weakened'],
+    [/\bsea-denial\b/gi,'ability to keep ships out'],[/\bcoercive leverage\b/gi,'pressure'],[/\bcoercive\b/gi,'pressure-based'],[/\bkinetic\b/gi,'military'],
+    [/\bcapitulation\b/gi,'giving in'],[/\bdecapitation\b/gi,'senior leadership losses'],[/\binstitutionalized\b/gi,'formally established'],
+    [/\btheater-wide\b/gi,'region-wide'],[/\bcampaign-generating capacity\b/gi,'ability to keep military operations going']
+  ];
+  function plainText(value){let s=String(value||'');if(PLAIN_EXACT.has(s.trim()))return PLAIN_EXACT.get(s.trim());if(/^[A-Z0-9_+\-/ ]{5,}$/.test(s.trim())&&s.includes('_'))s=label(s);PLAIN_REPLACE.forEach(([r,v])=>{s=s.replace(r,v)});return s;}
+  function humanizeVisibleText(root){
+    if(!root||!document.createTreeWalker)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];let n;while((n=walker.nextNode()))nodes.push(n);
+    nodes.forEach(node=>{const p=node.parentElement;if(!p||p.closest('a,code,pre,.sources,.isr-source-row,.eg-source-index,.srcchip,.isr-ground-gauge'))return;const before=node.nodeValue;if(!before||!before.trim())return;const after=plainText(before);if(after!==before)node.nodeValue=after;});
+  }
+  function installPlainLanguage(){
+    humanizeVisibleText(document.body);if(plainObserver)return;plainObserver=new MutationObserver(muts=>{muts.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)humanizeVisibleText(n);else if(n.nodeType===3&&n.parentElement)humanizeVisibleText(n.parentElement)}));});plainObserver.observe(document.body,{childList:true,subtree:true});
+  }
+
+  function ensurePublicUxCss(){if(document.querySelector('link[data-public-ux]'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='./css/public-ux-20260823.css?v=20260823';link.dataset.publicUx='true';document.head.appendChild(link);}
+
   function stateSync(state){
-    if(!['timeline','sources'].includes(state.activeView))lastAtlasView=state.activeView||lastAtlasView;
+    if(!['timeline','sources','facilities'].includes(state.activeView))lastAnalysisView=state.activeView||lastAnalysisView;
     const peer=peerForState();setCanonicalLabels();setPeerActive(peer);
-    if(peer==='ATLAS'&&state.activeView==='snapshot')full?.applyLayout?.('facilities');
-    if(state.activeView==='timeline'){setTimeout(()=>{enhanceTimeline();updateTimelineEnhancements();},0);}if(state.activeView==='sources')setTimeout(enhanceSources,0);if(peer==='MOU')setTimeout(rebuildMOU,0);syncStrategicRoutes(state);
+    if(peer==='ATLAS')setTimeout(ensureCurrentMapBadge,0);
+    if(state.activeView==='timeline'){setTimeout(()=>{enhanceTimeline();updateTimelineEnhancements();},0);}if(state.activeView==='sources')setTimeout(enhanceSources,0);if(peer==='MOU')setTimeout(rebuildMOU,0);syncStrategicRoutes(state);setTimeout(()=>humanizeVisibleText(document.body),0);
   }
 
   async function init(){
     await waitFor(()=>window.ISRFullScope20260822&&window.AtlasState&&document.querySelector('.analysis-nav'));
     full=window.ISRFullScope20260822;
     [registry,mou]=await Promise.all([fetchJson('./data/source-registry.json').catch(()=>null),fetchJson('./data/hormuz-strategic-v3.json')]);
-    buildPeerNav();setCanonicalLabels();enhanceTimeline();bindSourceRefresh();enhanceSources();await loadStrategicRoutes();
+    ensurePublicUxCss();buildPeerNav();setCanonicalLabels();enhanceTimeline();bindSourceRefresh();enhanceSources();await loadStrategicRoutes();installPlainLanguage();
     const launch=document.querySelector('.isr-hormuz-launch');if(launch){launch.textContent='Open MOU workspace';launch.addEventListener('click',()=>setTimeout(()=>{rebuildMOU();setPeerActive('MOU');},0));}
     const ret=document.querySelector('.isr-return-map');ret?.addEventListener('click',()=>setTimeout(()=>setPeerActive('ATLAS'),0));
     window.AtlasState.subscribe(stateSync);stateSync(window.AtlasState.get());
-    window.ISRAug22Workspaces={activatePeer,enhanceTimeline,enhanceSources,rebuildMOU,setVisualZoom};
+    const params=new URLSearchParams(location.search);if(!params.has('view')&&window.AtlasState.get().activeView==='snapshot')setTimeout(()=>activatePeer('ATLAS'),0);
+    window.ISRAug22Workspaces={activatePeer,enhanceTimeline,enhanceSources,rebuildMOU,setVisualZoom,humanizeVisibleText};
   }
   const start=()=>init().catch(e=>console.warn('ISR Aug. 22 workspace enhancement failed; base atlas remains usable.',e));
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
