@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
           rm -f staging/endgame-r1.part* staging/endgame-css.part* || true
           git add js/endgame-adjudication-r1.js css/endgame-adjudication-r1.css vendor/mermaid staging || true
           if ! git diff --cached --quiet; then
@@ -64,6 +64,12 @@ jobs:
           fi
       - name: Build exhaustive source registry
         run: python scripts/build_source_registry.py --root .
+      - name: Identify privacy-gate file paths without exposing values
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "email-like tracked files:"
+          git grep -Il -E '[[:alnum:]_.%+-]+@[[:alnum:].-]+\.[[:alpha:]]{2,}' -- ':!scripts/privacy_scan.py' || true
       - name: Run standing regression suite
         env:
           PYTHONUTF8: '1'
