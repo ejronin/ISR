@@ -81,14 +81,15 @@ Verified alternative-provider records are stored in:
 
 `data/media-bias-provider-metadata.json`
 
-Current real fallback/additional examples include:
+Current real fallback/additional examples are limited to outlets actually present in the Atlas registry:
 
-- AFP / Agence France-Presse — Ad Fontes Media;
-- Reuters — AllSides additional context;
-- BBC News — AllSides additional context;
-- Bellingcat — Ad Fontes Media.
+- AFP / Agence France-Presse — Ad Fontes Media fallback;
+- Reuters — AllSides additional context alongside Ground News;
+- Bellingcat — Ad Fontes Media fallback.
 
 AFP is also a deliberate negative-control case: AllSides lists AFP as `Not Rated`. That must never render as `Center` and must not suppress the separately verified Ad Fontes record.
+
+Do not seed provider records for outlets that are not currently present in the Atlas registry merely to demonstrate a provider integration.
 
 ## Provider separation
 
@@ -126,13 +127,15 @@ Run the existing source build first:
 python scripts/build_source_registry.py --root .
 ```
 
-Then apply the additive provider context:
+Then apply the additive provider context when a generated enriched registry artifact is needed:
 
 ```bash
 python scripts/enrich_source_bias_context.py --root .
 ```
 
 The enrichment step preserves the existing `ground_news` object and adds `media_bias_context` to generated outlet profiles.
+
+The live Sources UI also reads the verified provider metadata directly, so GitHub Pages does not depend on a server-side enrichment service.
 
 Preferred compact display logic:
 
@@ -158,7 +161,7 @@ Run:
 python scripts/validate_analysis_contracts.py
 ```
 
-On the standalone source-context branch, the gate validates:
+The combined gate validates:
 
 - 98 historical records;
 - 10 current-overlay records;
@@ -166,15 +169,16 @@ On the standalone source-context branch, the gate validates:
 - verified alternative-provider metadata and HTTPS provider provenance;
 - AFP Ad Fontes fallback;
 - Bellingcat Ad Fontes fallback;
+- Reuters multi-provider context without replacing Ground News;
 - AFP/AllSides `NOT_RATED` negative control;
-- existing Ground News Reuters metadata remains independently intact.
-
-After this branch is combined with the engineer branch, the same gate additionally validates the engineer-owned `data/endgame-adjudication-v1.json`, including:
-
+- existing Ground News Reuters metadata remains independently intact;
 - terminal-state enum integrity;
 - expired/non-controlling MoU state and new-bargain rule;
 - frozen-assets linkage to MoU Clause 11;
 - legal/operational/fee Hormuz branch separation;
-- operational gatekeeping cannot silently become legal sovereignty or fee authority.
+- operational gatekeeping cannot silently become legal sovereignty or fee authority;
+- Ground News seven-position semantic/color hooks;
+- named AllSides and Ad Fontes rendering paths;
+- source-bias JS/CSS modules are actually loaded by the Atlas UI.
 
-The engineer's existing Endgame/Mermaid validators remain authoritative for rendering, schema, accessibility, and browser behavior.
+The existing Endgame/Mermaid validators remain authoritative for rendering, schema, accessibility, and browser behavior.
