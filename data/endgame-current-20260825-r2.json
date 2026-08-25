@@ -1,6 +1,6 @@
 {
-  "version": "2026.08.25-r2",
-  "evidence_cutoff": "2026-08-25 13:35 ET",
+  "version": "2026.08.25-r3",
+  "evidence_cutoff": "2026-08-25 18:18 ET",
   "sources": {
     "S24": {
       "id": "S24",
@@ -33,6 +33,46 @@
       "supports": "Pakistan said its Tehran mission made significant progress on preventing escalation, reopening Hormuz, ending the conflict and reaching a negotiated settlement after Munir had spoken with Trump.",
       "url": "https://www.reuters.com/world/asia-pacific/pakistan-iran-made-significant-progress-talks-conflict-minister-says-2026-08-25/",
       "quality": "HIGH for PAKISTANI OFFICIAL READOUT"
+    },
+    "S28": {
+      "id": "S28",
+      "publisher": "Associated Press",
+      "date": "2026-08-25",
+      "supports": "Growing gasoline queues in Tehran and discussion of reducing heavy fuel subsidies show economic pressure reaching household consumption; AP also reports continuing official defiance and no broad protest wave at publication.",
+      "url": "https://apnews.com/article/41ac797399040746c2caa76a409ae580",
+      "quality": "HIGH; household/queue observations do not by themselves prove political capitulation or imminent unrest"
+    },
+    "S29": {
+      "id": "S29",
+      "publisher": "Reuters",
+      "date": "2026-08-25",
+      "supports": "Brent settled at $88.58 and WTI at $82.36, both down more than 3%, as traders treated sanctions and diplomatic movement as less threatening to physical supply than renewed major conflict.",
+      "url": "https://www.reuters.com/business/energy/oil-prices-steady-investors-weigh-impact-expanded-us-sanctions-against-iran-2026-08-25/",
+      "quality": "HIGH; market pricing is a risk signal, not proof of Iranian intent or capability"
+    },
+    "S30": {
+      "id": "S30",
+      "publisher": "Reuters",
+      "date": "2026-08-25",
+      "supports": "The U.S. began returning diplomatic staff to Middle East missions and scaling back some emergency measures after Iran-war evacuations, indicating a lower assessed immediate escalation risk while not eliminating the possibility of renewed conflict.",
+      "url": "https://www.reuters.com/world/middle-east/us-prepares-send-diplomats-back-middle-east-embassies-after-iran-war-evacuations-2026-08-25/",
+      "quality": "HIGH; posture signal, not proof that Iran has abandoned kinetic options"
+    },
+    "S31": {
+      "id": "S31",
+      "publisher": "Reuters",
+      "date": "2026-08-25",
+      "supports": "The expanded U.S. sanctions campaign reaches counterparties and sectors including shipping, aviation, technology, gold and digital assets, while nearly 60 Iran-linked persons, entities and vessels were newly targeted.",
+      "url": "https://www.reuters.com/world/middle-east/whats-included-new-us-sanctions-campaign-pressure-irans-economy-2026-08-25/",
+      "quality": "HIGH"
+    },
+    "S32": {
+      "id": "S32",
+      "publisher": "Associated Press",
+      "date": "2026-08-25",
+      "supports": "Iranian officials described a temporary Hormuz routing proposal under which inbound Gulf traffic would pass through Iranian territorial waters while Iran and Oman continue 30-60 days of negotiations toward a permanent route and administration.",
+      "url": "https://apnews.com/article/1a4fa2e3812c458a25a561b38dc89f09",
+      "quality": "HIGH; shows a meaningful temporary Iranian operational role without establishing unilateral permanent authority"
     }
   },
   "status_overrides": {
@@ -40,17 +80,43 @@
     "Hormuz leverage": "STILL POWERFUL / JOINT CORRIDOR PATH NOW CONCRETE",
     "Unilateral Hormuz administration": "NOT VALIDATED / JOINT OMAN-LITTORAL FRAMEWORK ADVANCING",
     "Pakistan / Oman negotiations": "ACTIVE / CONCRETE MARITIME FRAMEWORK PRODUCED",
-    "Kinetic escalation": "OPEN / HIGH COST / NO PUBLIC PREPARATION SURGE",
-    "U.S. secondary-sanctions cure period": "ACTIVE / POTENTIAL BARGAINING LEVER"
+    "Kinetic escalation": "AVAILABLE / COERCIVE CREDIBILITY NOT STRENGTHENING",
+    "U.S. secondary-sanctions cure period": "ACTIVE / COUNTERPARTY PRESSURE BROADENING"
   },
+  "three_angle_status": [
+    {
+      "angle": "NEGOTIATE / 'FROM STRENGTH'",
+      "status": "POSITION WEAKENING",
+      "state": "weakening",
+      "assessment": "Tehran is trying to preserve the story that Washington must back down first. But Iran is already validating Pakistan's mediation and accepting a joint Oman implementation process before the old U.S. concessions have been restored.",
+      "why": "Relative to Iran's own prior stated terms, this is a retreat: the old MOU is not controlling, unilateral Hormuz authority has not been recognized, and Tehran is working through a new reciprocal framework under pressure. That is capitulation relative to its preferred negotiating position, even if it is packaged domestically as reciprocity or 'negotiating from strength.' It is not unconditional national surrender.",
+      "source_ids": ["S24", "S25", "S27", "S32"]
+    },
+    {
+      "angle": "ENDURE / WAIT IT OUT",
+      "status": "POSITION WEAKENING",
+      "state": "weakening",
+      "assessment": "Iran can still endure, but the cost of doing so is rising while the hoped-for economic insulation from partners is not visibly improving.",
+      "why": "Fuel queues and subsidy pressure are becoming visible at household level, U.S. sanctions are broadening toward counterparties, and earlier evidence already showed Chinese commercial de-risking and UAE financial/trade rupture. Survival remains possible; bargaining room is narrowing.",
+      "source_ids": ["S28", "S31", "S14", "S15", "S16"]
+    },
+    {
+      "angle": "ESCALATE / MAKE IT HURT",
+      "status": "OPTION SAME / LEVERAGE WEAKENING",
+      "state": "same_to_weaker",
+      "assessment": "Iran retains the ability to threaten or impose costs, but current observable indicators do not show that this option is becoming more effective or more credible.",
+      "why": "Threat rhetoric remains high, yet no public preparation surge has appeared; oil prices fell sharply rather than adding a larger Iran-war premium, and Washington is reducing some regional embassy emergency measures. That does not prove Iran cannot strike. It does show that current threats are not producing stronger external fear or visible U.S. defensive reaction.",
+      "source_ids": ["S24", "S29", "S30"]
+    }
+  ],
   "paragraph5_update": {
     "title": "Aug. 25 behavioral confirmation — what Iran accepted with Oman",
-    "text": "Iran and Oman are now discussing a temporary joint corridor, joint mine-clearing, a permanent corridor, future administration, traffic management and maritime/security services, with consultations involving other Gulf littoral states and reference to international law. That is behaviorally consistent with Paragraph 5's shared/future-governance structure. It does not validate the later claim that Paragraph 5 had already granted Iran unilateral permanent control or a compulsory transit-toll right.",
-    "source_ids": ["S25", "S01"]
+    "text": "Iran and Oman are now discussing a temporary joint corridor, joint mine-clearing, a permanent corridor, future administration, traffic management and maritime/security services, with consultations involving other Gulf littoral states and reference to international law. Iranian officials also describe a temporary routing design that preserves a meaningful Iranian operational role for inbound traffic. That is behaviorally consistent with Paragraph 5's shared/future-governance structure. It does not validate the later claim that Paragraph 5 had already granted Iran unilateral permanent control or a compulsory transit-toll right.",
+    "source_ids": ["S25", "S32", "S01"]
   },
   "mou_now": {
-    "text": "The June MOU remains expired and non-controlling. What changed on Aug. 25 is that Iran and Oman moved from discussing a possible successor mechanism to a concrete phased maritime framework. The emerging structure reuses recognizable Paragraph 5 concepts — joint navigation, mine-clearing, future administration, services, littoral-state consultation and international law — but it is a new post-collapse negotiation, not proof that the old MOU has been restored. Tehran can still try to frame a successor bargain as Washington returning to prior commitments; the observable record is that Iran is negotiating new implementation terms after the old bargain failed.",
-    "source_ids": ["S01", "S06", "S24", "S25", "S26", "S27"]
+    "text": "The June MOU remains expired and non-controlling. What changed on Aug. 25 is that Iran and Oman moved from discussing a possible successor mechanism to a concrete phased maritime framework. The emerging structure reuses recognizable Paragraph 5 concepts — joint navigation, mine-clearing, future administration, services, littoral-state consultation and international law — while also preserving a meaningful temporary Iranian operational role. It is still a new post-collapse negotiation, not restoration of the old bargain. Tehran's political task is increasingly to describe a retreat from its preferred terms as proof that it did not capitulate. Relative to its prior demand that Washington reverse course first and restore the old MOU, however, Iran is already negotiating and accepting a shared implementation process before those benefits have returned. That is substantive capitulation from its prior bargaining position, not unconditional surrender of the Iranian state.",
+    "source_ids": ["S01", "S06", "S24", "S25", "S27", "S32"]
   },
   "node_evidence": [
     {
@@ -72,16 +138,16 @@
     {
       "node_id": "M14",
       "classification": "SYNTHESIS",
-      "claim": "Iran is trying to preserve a narrative of negotiating from strength while its behavior shows it is negotiating a new post-collapse mechanism rather than enforcing the old MOU as controlling law.",
-      "source_ids": ["S06", "S24", "S25"],
+      "claim": "Iran is trying to preserve a narrative of negotiating from strength while its behavior shows a retreat from its prior preferred terms into a new post-collapse mechanism.",
+      "source_ids": ["S06", "S24", "S25", "S32"],
       "confidence": "Medium-high",
-      "editorial_note": "Narrative purpose is an inference; the old MOU's non-controlling status and new framework are observable."
+      "editorial_note": "Call this capitulation relative to Iran's prior bargaining position, not unconditional surrender. Narrative purpose remains an inference; the changed terms and negotiating behavior are observable."
     },
     {
       "node_id": "H9",
       "classification": "FACT / JOINT DIPLOMATIC FRAMEWORK",
       "claim": "Iran and Oman moved the joint-corridor path from hypothetical to a concrete phased framework.",
-      "source_ids": ["S25"],
+      "source_ids": ["S25", "S32"],
       "confidence": "High",
       "editorial_note": "The framework is not yet a final permanent navigation agreement."
     },
@@ -105,9 +171,9 @@
       "node_id": "H13",
       "classification": "FACT + TEXTUAL COMPARISON",
       "claim": "The Aug. 25 Oman-Iran framework again describes joint/future administration, littoral-state consultation and international law rather than recognition of unilateral permanent Iranian transit authority.",
-      "source_ids": ["S01", "S25"],
+      "source_ids": ["S01", "S25", "S32"],
       "confidence": "High",
-      "editorial_note": "Absence of unilateral recognition in the joint framework does not itself resolve every future fee or service question."
+      "editorial_note": "Iran retains a meaningful temporary operational role; that is not the same as recognition of exclusive permanent authority."
     },
     {
       "node_id": "Q0",
@@ -129,17 +195,17 @@
       "node_id": "Q2",
       "classification": "FACT / OBSERVED BEHAVIOR",
       "claim": "Iran's observable diplomatic behavior is engagement: Pakistan mediation was publicly validated and Oman produced a concrete maritime framework.",
-      "source_ids": ["S24", "S25", "S27"],
+      "source_ids": ["S24", "S25", "S27", "S32"],
       "confidence": "High",
       "editorial_note": "Behavior does not prove a final settlement has been accepted."
     },
     {
       "node_id": "Q3",
       "classification": "SYNTHESIS",
-      "claim": "The clearest current distinction is defiant public framing versus practical negotiation over sequencing and implementation.",
-      "source_ids": ["S24", "S25", "S27"],
+      "claim": "The clearest current distinction is defiant public framing versus practical retreat into mediated negotiation and shared implementation.",
+      "source_ids": ["S24", "S25", "S27", "S32"],
       "confidence": "Medium-high",
-      "editorial_note": "Use plain language: Iran is still talking tough while working through an exit mechanism."
+      "editorial_note": "Plain language: Iran is trying to show it did not capitulate, while the process itself shows concession from its previous terms."
     },
     {
       "node_id": "Q4",
@@ -150,12 +216,36 @@
       "editorial_note": "Reuters reported no immediate White House or State Department confirmation; show this as a mediated claim, not an agreed U.S. commitment."
     },
     {
+      "node_id": "A1",
+      "classification": "SYNTHESIS",
+      "claim": "Negotiating position is weakening relative to Iran's own prior terms.",
+      "source_ids": ["S24", "S25", "S27", "S32"],
+      "confidence": "Medium-high",
+      "editorial_note": "Iran can win face-saving concessions while still having retreated from its previous demand that Washington restore the old bargain first."
+    },
+    {
+      "node_id": "A2",
+      "classification": "FACT + SYNTHESIS",
+      "claim": "The wait-it-out position is weakening as household stress and counterparty sanctions exposure rise.",
+      "source_ids": ["S28", "S31", "S14", "S15", "S16"],
+      "confidence": "High on underlying facts; medium-high on strategic direction",
+      "editorial_note": "Do not equate economic pain with automatic regime collapse. The narrower claim is reduced bargaining room."
+    },
+    {
+      "node_id": "A3",
+      "classification": "SYNTHESIS",
+      "claim": "Kinetic coercion remains available, but current coercive credibility is not strengthening.",
+      "source_ids": ["S24", "S29", "S30"],
+      "confidence": "Medium",
+      "editorial_note": "Falling oil risk premium and easing U.S. embassy precautions are external behavior signals, not proof that Iranian capability is gone."
+    },
+    {
       "node_id": "NARROW",
       "classification": "SYNTHESIS",
-      "claim": "Iran still retains coercive capacity, but the lower-cost path that is actually advancing is mediated negotiation rather than unilateral restoration of its old terms.",
-      "source_ids": ["S24", "S25", "S26", "S27"],
+      "claim": "All three Iranian paths remain available, but none is improving Tehran's bargaining position: negotiation now requires retreat from prior terms, endurance is becoming costlier, and coercive threats are not generating stronger external fear.",
+      "source_ids": ["S24", "S25", "S28", "S29", "S30", "S31", "S32"],
       "confidence": "Medium-high",
-      "editorial_note": "Update if Iran abandons the framework, military preparation surges, or Washington rejects the mediated sequence."
+      "editorial_note": "Update if Washington grants major front-loaded relief, Iranian economic channels recover, or verified military preparation/coalition fragmentation changes the board."
     }
   ]
 }
