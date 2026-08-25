@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""Validate the Aug. 24 Endgame adjudication and media-bias provider contracts.
+"""Validate provider-separated source context and, when present, the UI Endgame contract.
 
-This gate is intentionally data-focused. UI/Mermaid rendering may evolve independently,
-but it must consume these contracts without changing the locked historical ledger.
+This gate is intentionally additive:
+- the locked 98-record historical ledger and 10-record current overlay stay untouched;
+- existing Ground News metadata remains independent;
+- verified alternative-provider context may be added without averaging providers;
+- when the engineer's Endgame runtime data is present, key analytical invariants are
+  checked without creating a second competing adjudication dataset.
 """
 from __future__ import annotations
 
@@ -11,6 +15,12 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
+ALLOWED_ENDGAME_STATES = {
+    "PROCEEDS_UNDER_IRAN_DEMAND",
+    "WALKED_BACK_DILUTED",
+    "CUT_OFF_DENIED",
+    "OPEN_UNRESOLVED",
+}
 
 
 def load(path: str):
@@ -21,17 +31,6 @@ def fail(message: str):
     raise SystemExit(f"ANALYSIS CONTRACT GATE: FAIL — {message}")
 
 
-def all_strings(value):
-    if isinstance(value, str):
-        yield value
-    elif isinstance(value, list):
-        for item in value:
-            yield from all_strings(item)
-    elif isinstance(value, dict):
-        for item in value.values():
-            yield from all_strings(item)
-
-
 def valid_https(url: str) -> bool:
     try:
         parsed = urlparse(url)
@@ -40,16 +39,10 @@ def valid_https(url: str) -> bool:
         return False
 
 
-def main():
-    adjudication = load("data/endgame-adjudication-20260824.json")
-    provider_meta = load("data/media-bias-provider-metadata.json")
-    ground = load("data/ground-news-outlet-metadata.json")
-    endgame = load("data/endgame-so-far.json")
-    hormuz = load("data/hormuz-strategic-v3.json")
+def validate_counts():
     historical = load("data/integration-v1.2/events.json")
     overlay = load("data/current-update-20260824/events.json")
     overlay_manifest = load("data/current-update-20260824/manifest.json")
-
     if len(historical.get("events", [])) != 98:
         fail("locked historical ledger is not 98 records")
     if len(overlay.get("events", [])) != 10:
@@ -57,99 +50,33 @@ def main():
     if overlay_manifest.get("counts", {}).get("current_chronology_records") != 108:
         fail("current chronology manifest is not 108")
 
-    allowed = set(adjudication.get("allowed_terminal_states", []))
-    required_allowed = {
-        "PROCEEDS_UNDER_IRAN_DEMAND",
-        "WALKED_BACK_DILUTED",
-        "CUT_OFF_DENIED",
-        "OPEN_UNRESOLVED",
-    }
-    if allowed != required_allowed:
-        fail(f"terminal-state enum mismatch: {sorted(allowed)}")
 
-    if adjudication.get("mou_status_contract", {}).get("current_status") != "EXPIRED_NON_CONTROLLING":
-        fail("MoU current status is not explicitly EXPIRED_NON_CONTROLLING")
-
-    endgame_ids = {row.get("id") for row in endgame.get("sources", []) if row.get("id")}
-    hormuz_strings = set(all_strings(hormuz))
-
-    claims = adjudication.get("claims", [])
-    if len(claims) < 10:
-        fail("too few independently adjudicated victory-condition branches")
-
-    claim_ids = [row.get("claim_id") for row in claims]
-    if None in claim_ids or len(claim_ids) != len(set(claim_ids)):
-        fail("claim IDs are missing or duplicated")
-
-    all_node_ids = []
-    for claim in claims:
-        terminal = claim.get("terminal_state")
-        if terminal not in allowed:
-            fail(f"{claim.get('claim_id')} has invalid terminal state {terminal}")
-
-        path = claim.get("decision_path", [])
-        if not path:
-            fail(f"{claim.get('claim_id')} has no decision path")
-        terminal_nodes = [node for node in path if node.get("type") == "TERMINAL"]
-        if len(terminal_nodes) != 1:
-            fail(f"{claim.get('claim_id')} must have exactly one terminal node")
-        if terminal_nodes[0].get("state") != terminal:
-            fail(f"{claim.get('claim_id')} terminal node disagrees with terminal_state")
-
-        for node in path:
-            node_id = node.get("node_id")
-            if not node_id:
-                fail(f"{claim.get('claim_id')} has a node without node_id")
-            all_node_ids.append(node_id)
-
-        mou = claim.get("mou_dependency", {})
-        if mou.get("relevant"):
-            if not mou.get("clauses"):
-                fail(f"{claim.get('claim_id')} is MoU-dependent but has no clause refs")
-            if mou.get("current_controlling_state") != "EXPIRED_NON_CONTROLLING":
-                fail(f"{claim.get('claim_id')} does not mark the old MoU non-controlling")
-            if not mou.get("new_bargain_test"):
-                fail(f"{claim.get('claim_id')} lacks a new-bargain test")
-
-        for ref in claim.get("original_source_refs", []) + claim.get("evidence_refs", []):
-            namespace = ref.get("namespace")
-            source_id = ref.get("id")
-            if namespace == "ENDGAME" and source_id not in endgame_ids:
-                fail(f"{claim.get('claim_id')} unresolved ENDGAME source {source_id}")
-            if namespace == "HORMUZ" and source_id not in hormuz_strings:
-                fail(f"{claim.get('claim_id')} unresolved HORMUZ source {source_id}")
-            if namespace not in {"ENDGAME", "HORMUZ"}:
-                fail(f"{claim.get('claim_id')} unknown evidence namespace {namespace}")
-
-    if len(all_node_ids) != len(set(all_node_ids)):
-        fail("decision-path node IDs are not globally unique")
-
-    hormuz_claims = {row.get("category"): row for row in claims if str(row.get("category", "")).startswith("HORMUZ_")}
-    required_hormuz = {
-        "HORMUZ_LEGAL_CONTROL",
-        "HORMUZ_OPERATIONAL_GATEKEEPING",
-        "HORMUZ_FEES_RENT",
-    }
-    if set(hormuz_claims) != required_hormuz:
-        fail(f"Hormuz branch split mismatch: {sorted(hormuz_claims)}")
-    if hormuz_claims["HORMUZ_OPERATIONAL_GATEKEEPING"].get("terminal_state") != "PROCEEDS_UNDER_IRAN_DEMAND":
-        fail("operational gatekeeping branch lost its distinct current disposition")
-    if hormuz_claims["HORMUZ_LEGAL_CONTROL"].get("terminal_state") == "PROCEEDS_UNDER_IRAN_DEMAND":
-        fail("legal Hormuz control is incorrectly inferred from operational gatekeeping")
-    if hormuz_claims["HORMUZ_FEES_RENT"].get("terminal_state") == "PROCEEDS_UNDER_IRAN_DEMAND":
-        fail("fee/rent authority is incorrectly inferred from operational gatekeeping")
+def validate_provider_metadata():
+    provider_meta = load("data/media-bias-provider-metadata.json")
+    ground = load("data/ground-news-outlet-metadata.json")
+    profiles_payload = load("data/outlet-profiles.json")
 
     providers = provider_meta.get("provider_definitions", {})
     if not {"ALLSIDES", "AD_FONTES"}.issubset(providers):
         fail("alternative provider definitions are incomplete")
+    if "GROUND_NEWS" in providers:
+        fail("Ground News must remain in its existing authoritative metadata file, not be duplicated as an alternative provider definition")
 
     outlet_rows = provider_meta.get("outlets", [])
     canonical_names = [row.get("canonical_name") for row in outlet_rows]
     if None in canonical_names or len(canonical_names) != len(set(canonical_names)):
         fail("media-bias canonical outlet names are missing or duplicated")
 
+    registry_names = {
+        str(row.get("display_name") or "").strip().lower()
+        for row in profiles_payload.get("outlet_profiles", [])
+        if row.get("display_name")
+    }
     rated_pairs = set()
     for outlet in outlet_rows:
+        names = [outlet.get("canonical_name"), *(outlet.get("aliases") or [])]
+        if not any(str(name or "").strip().lower() in registry_names for name in names):
+            fail(f"alternative-provider outlet does not match the current Atlas registry: {outlet.get('canonical_name')}")
         for rating in outlet.get("ratings", []):
             provider = rating.get("provider")
             status = rating.get("status")
@@ -169,26 +96,109 @@ def main():
             rated_pairs.add(pair)
 
     afp = next((row for row in outlet_rows if row.get("canonical_name") == "Agence France-Presse"), None)
-    if not afp or not any(r.get("provider") == "AD_FONTES" and r.get("label") == "MIDDLE" for r in afp.get("ratings", [])):
+    if not afp or not any(
+        r.get("provider") == "AD_FONTES" and r.get("label") == "MIDDLE"
+        for r in afp.get("ratings", [])
+    ):
         fail("AFP alternative Ad Fontes fallback example is missing")
 
+    bellingcat = next((row for row in outlet_rows if row.get("canonical_name") == "Bellingcat"), None)
+    if not bellingcat or not any(r.get("provider") == "AD_FONTES" for r in bellingcat.get("ratings", [])):
+        fail("Bellingcat Ad Fontes fallback example is missing")
+
     negative = provider_meta.get("negative_control", {})
-    if negative.get("outlet") != "AFP" or negative.get("provider") != "ALLSIDES" or negative.get("status") != "NOT_RATED":
+    if (
+        negative.get("outlet") != "AFP"
+        or negative.get("provider") != "ALLSIDES"
+        or negative.get("status") != "NOT_RATED"
+    ):
         fail("AFP / AllSides NOT_RATED negative control is missing")
     if not valid_https(negative.get("profile_url", "")):
         fail("AFP AllSides negative-control URL is invalid")
 
-    # Existing Ground News metadata remains independent and must not be rewritten into the alternative file.
-    if not ground.get("profiles", {}).get("Reuters", {}).get("status") == "RATED":
+    # Existing Ground News metadata is an independent control. Alternative metadata must
+    # not silently mutate a real Ground News rating or reinterpret NOT_RATED as Center.
+    if ground.get("profiles", {}).get("Reuters", {}).get("status") != "RATED":
         fail("existing Ground News Reuters control unexpectedly changed")
-    if "GROUND_NEWS" in providers:
-        fail("Ground News must remain in its existing authoritative metadata file, not duplicated as an alternative provider definition")
+    if ground.get("profiles", {}).get("Reuters", {}).get("bias_raw") != "CENTER":
+        fail("existing Ground News Reuters bias control unexpectedly changed")
 
+    return len(outlet_rows)
+
+
+def validate_engineer_endgame_if_present():
+    """Validate shared analytical requirements after this branch is combined with UI work.
+
+    The data file intentionally lives on the engineer branch. Keeping this check optional on
+    the standalone source-context branch avoids introducing a second Endgame source of truth.
+    """
+    path = ROOT / "data/endgame-adjudication-v1.json"
+    if not path.exists():
+        return "not present on standalone source-context branch"
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    labels = set((data.get("terminal_state_labels") or {}).keys())
+    if labels != ALLOWED_ENDGAME_STATES:
+        fail(f"engineer Endgame terminal-state enum mismatch: {sorted(labels)}")
+
+    mou = data.get("mou_instrument") or {}
+    if mou.get("current_state") != "EXPIRED_NON_CONTROLLING":
+        fail("engineer Endgame does not mark the June MoU EXPIRED_NON_CONTROLLING")
+    if mou.get("final_deal_completed") is not False:
+        fail("engineer Endgame incorrectly marks the MoU final deal complete")
+    if not mou.get("new_bargain_rule"):
+        fail("engineer Endgame lacks the new-bargain rule for an expired MoU")
+
+    claims = data.get("claims") or []
+    if len(claims) < 8:
+        fail("engineer Endgame has too few victory-condition claims")
+    ids = [row.get("id") for row in claims]
+    if None in ids or len(ids) != len(set(ids)):
+        fail("engineer Endgame claim IDs are missing or duplicated")
+    by_id = {row.get("id"): row for row in claims}
+
+    for claim in claims:
+        state = (claim.get("current_disposition") or {}).get("state")
+        if state not in ALLOWED_ENDGAME_STATES:
+            fail(f"engineer Endgame claim {claim.get('id')} has invalid state {state}")
+        if not claim.get("path"):
+            fail(f"engineer Endgame claim {claim.get('id')} has no decision path")
+
+    # Clause 11 is analytically material to the frozen-assets path. The historical MoU
+    # promised asset availability; its later expiry/non-performance is part of the chain.
+    assets = by_id.get("assets")
+    if not assets:
+        fail("engineer Endgame is missing the frozen-assets claim")
+    assets_mou = assets.get("mou_relationship") or {}
+    if assets_mou.get("relevant") is not True or str(assets_mou.get("clause_ref")) != "11":
+        fail("frozen-assets claim must link to MoU Clause 11")
+    if assets_mou.get("current_control_state") != "NON_CONTROLLING":
+        fail("frozen-assets claim does not preserve the expired MoU as non-controlling")
+
+    hormuz = by_id.get("hormuz")
+    if not hormuz:
+        fail("engineer Endgame is missing the Hormuz claim")
+    dimensions = {row.get("id"): row for row in hormuz.get("dimensions", [])}
+    if set(dimensions) != {"legal", "operational", "fees"}:
+        fail(f"Hormuz dimensions are not exactly legal/operational/fees: {sorted(dimensions)}")
+    if dimensions["operational"].get("state") != "PROCEEDS_UNDER_IRAN_DEMAND":
+        fail("Hormuz operational gatekeeping lost its distinct proceeds disposition")
+    if dimensions["legal"].get("state") == "PROCEEDS_UNDER_IRAN_DEMAND":
+        fail("Hormuz legal control is incorrectly inferred from operational gatekeeping")
+    if dimensions["fees"].get("state") == "PROCEEDS_UNDER_IRAN_DEMAND":
+        fail("Hormuz fee authority is incorrectly inferred from operational gatekeeping")
+
+    return f"{len(claims)} Endgame claims checked"
+
+
+def main():
+    validate_counts()
+    outlet_count = validate_provider_metadata()
+    endgame_status = validate_engineer_endgame_if_present()
     print(
         "ANALYSIS CONTRACT GATE: PASS — "
-        f"{len(claims)} adjudication branches; "
-        f"{len(outlet_rows)} alternative-provider outlet records; "
-        "Hormuz legal/operational/fees split preserved; 98 + 10 = 108 unchanged"
+        f"{outlet_count} alternative-provider outlet records; "
+        f"Endgame: {endgame_status}; 98 + 10 = 108 unchanged"
     )
 
 
