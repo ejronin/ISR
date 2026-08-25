@@ -9,6 +9,8 @@ def req(ok,msg):
 routes=json.loads((ROOT/'data/oil-routes-r1.json').read_text(encoding='utf-8'))
 js=(ROOT/'js/final-mermaid-oil-routes-r1.js').read_text(encoding='utf-8')
 css=(ROOT/'css/final-mermaid-oil-routes-r1.css').read_text(encoding='utf-8')
+auto=(ROOT/'js/mermaid-autofit-r2.js').read_text(encoding='utf-8')
+autocss=(ROOT/'css/mermaid-autofit-r2.css').read_text(encoding='utf-8')
 loader=(ROOT/'js/endgame-20260823.js').read_text(encoding='utf-8')
 
 req(routes.get('schema_version')=='1.0','oil route schema version')
@@ -39,7 +41,13 @@ req("function setText(el,text){if(el&&el.textContent!==text)el.textContent=text;
 req('function scheduleRelabel()' in js and 'new MutationObserver(scheduleRelabel)' in js,'route relabel observer must be coalesced')
 req("layerBtn.textContent='Oil Routes — SCHEMATIC'" not in js,'observer callback must not unconditionally rewrite layer text')
 req('function fitOilRouteBounds()' in js and 'ATLAS_DATA?.arcticRoutes' in js,'Oil Routes view must fit legacy Arctic plus supplemental corridor bounds')
+
+for marker in ["HOSTS=['#egMermaidHost','#eg3CausalHost']",'new ResizeObserver','function fitVisible(host,svg','window.ISRTrueMermaidFitR1?.fit?.(host)','fittedSvg.set(host,svg)','click a node to review its evidence and details']:
+    req(marker in auto,f'auto-fit marker {marker}')
+req('r.width>=240&&r.height>=220' in auto,'auto-fit must wait for a visible, laid-out viewport')
+req('mermaid-autofit-r2.js' in loader and 'mermaid-autofit-r2.css' in loader,'auto-fit R2 assets must be loaded')
+req('.isr-mermaid-help' in autocss and '#egMermaidHost,#eg3CausalHost' in autocss,'auto-fit guidance and both hosts must be styled')
 req('final-mermaid-oil-routes-r1.js' in loader,'loader JS entry')
 req('final-mermaid-oil-routes-r1.css' in loader,'loader CSS entry')
 req('#egMermaidHost' in css and '#eg3CausalHost' in css,'both Mermaid hosts styled')
-print('final-mermaid-oil-routes-r1: PASS — true FIT, rerender refit, idempotent observer, and combined Oil Routes bounds gated')
+print('final-mermaid-oil-routes-r1: PASS — true FIT, visible auto-fit on both charts, interaction guidance, idempotent observers, and combined Oil Routes bounds gated')
