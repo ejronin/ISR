@@ -1,0 +1,356 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-24T14:14:00-04:00",
+  "analytical_basis": "Iranian contemporaneous victory conditions are the baseline. Survival, reciprocal damage, or the existence of negotiations does not retroactively redefine those conditions.",
+  "allowed_terminal_states": [
+    "PROCEEDS_UNDER_IRAN_DEMAND",
+    "WALKED_BACK_DILUTED",
+    "CUT_OFF_DENIED",
+    "OPEN_UNRESOLVED"
+  ],
+  "mou_status_contract": {
+    "historical_instrument": "June 17, 2026 interim MoU",
+    "final_deal_deadline": "2026-08-17",
+    "current_status": "EXPIRED_NON_CONTROLLING",
+    "rule": "A later Iranian proposal to return to or revive the MoU is a bargaining position, not proof that the expired instrument remains controlling. A new bargain may independently revive the same substantive term and must then be scored as a new instrument."
+  },
+  "display_rules": [
+    "No composite war score.",
+    "Each original condition is adjudicated independently.",
+    "A temporary or paper MoU gain is distinct from durable implementation.",
+    "If an MoU-dependent path failed to mature into a final deal, the expired instrument cannot itself satisfy a current claim.",
+    "Hormuz legal control, operational gatekeeping, and monetizable fees are separate adjudication branches.",
+    "OPEN_UNRESOLVED is mandatory where the public record does not support a stronger terminal state."
+  ],
+  "claims": [
+    {
+      "claim_id": "EG-REP-001",
+      "category": "REPARATIONS",
+      "label": "War damages / reparations paid",
+      "original_condition": "Iran's May minimum acceptable outcome demanded damages or compensation for the war.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["6"],
+        "historical_effect": "The MoU substituted a contingent reconstruction/economic-development plan of at least $300B for a direct reparations framework. That was a materially narrower form than legal war damages and remained contingent on a final deal.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "A new controlling settlement would need to establish actual compensation/reconstruction implementation before this condition can progress."
+      },
+      "decision_path": [
+        {"node_id": "EG-REP-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "War damages / compensation demanded"},
+        {"node_id": "EG-REP-MOU", "type": "MOU_TERM", "label": "Clause 6 offered contingent reconstruction, not paid reparations", "state": "DILUTED_SUBSTITUTE"},
+        {"node_id": "EG-REP-EXP", "type": "MOU_STATUS", "label": "MoU expired without final deal", "state": "EXPIRED_NON_CONTROLLING"},
+        {"node_id": "EG-REP-OBS", "type": "OBSERVABLE_STATE", "label": "No implemented reparations or $300B mechanism established in the reviewed record"},
+        {"node_id": "EG-REP-END", "type": "TERMINAL", "label": "CUT OFF / DENIED", "state": "CUT_OFF_DENIED"}
+      ],
+      "terminal_state": "CUT_OFF_DENIED",
+      "rationale": "The original compensation demand was not realized. The narrower reconstruction promise never matured into an implemented final-deal mechanism.",
+      "evidence_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"},
+        {"namespace": "HORMUZ", "id": "R_MOU_TEXT"}
+      ]
+    },
+    {
+      "claim_id": "EG-ASSET-001",
+      "category": "ASSET_ACCESS",
+      "label": "Frozen / restricted Iranian assets returned",
+      "original_condition": "Iran demanded broad access to frozen or restricted assets.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260421-STRENGTH"},
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["11"],
+        "historical_effect": "Clause 11 contained strong Iran-favorable paper language on making funds available, but procedures remained unresolved and broad durable access was not realized.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "Actual usable access under a new controlling bargain is required; renewed demands for release are evidence the original condition remains unsatisfied."
+      },
+      "decision_path": [
+        {"node_id": "EG-ASSET-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "Restore usable access to frozen/restricted assets"},
+        {"node_id": "EG-ASSET-MOU", "type": "MOU_TERM", "label": "Clause 11 promised broad availability subject to procedures", "state": "PAPER_ACCEPTANCE"},
+        {"node_id": "EG-ASSET-EXP", "type": "MOU_STATUS", "label": "MoU expired / non-controlling", "state": "EXPIRED_NON_CONTROLLING"},
+        {"node_id": "EG-ASSET-OBS", "type": "OBSERVABLE_STATE", "label": "Iran again demands asset release; broad durable access not established"},
+        {"node_id": "EG-ASSET-END", "type": "TERMINAL", "label": "CUT OFF / DENIED", "state": "CUT_OFF_DENIED"}
+      ],
+      "terminal_state": "CUT_OFF_DENIED",
+      "rationale": "The MoU contained a favorable promise, but the current record does not show the promised broad durable access surviving the agreement's collapse.",
+      "evidence_refs": [
+        {"namespace": "ENDGAME", "id": "IRANWIRE-20260821-HEMMATI"},
+        {"namespace": "HORMUZ", "id": "R_MOU_TEXT"},
+        {"namespace": "HORMUZ", "id": "R_AUG18_CONDITIONS"}
+      ]
+    },
+    {
+      "claim_id": "EG-BLOCKADE-001",
+      "category": "BLOCKADE",
+      "label": "U.S. naval blockade terminated",
+      "original_condition": "Iran's minimum acceptable outcome required termination of the U.S. naval blockade and later force withdrawal from Iran's proximity.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["4"],
+        "historical_effect": "Clause 4 was a major Iran-favorable paper and temporary implementation gain: blockade removal was front-loaded, while later force withdrawal depended on a final deal.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "A new agreement must independently terminate the reimposed blockade for the condition to proceed again."
+      },
+      "decision_path": [
+        {"node_id": "EG-BLOCKADE-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "End U.S. blockade"},
+        {"node_id": "EG-BLOCKADE-MOU", "type": "MOU_TERM", "label": "Clause 4 accepted blockade removal", "state": "HISTORICALLY_ACCEPTED"},
+        {"node_id": "EG-BLOCKADE-IMPLEMENT", "type": "IMPLEMENTATION", "label": "Relief began under the interim arrangement", "state": "TEMPORARY_IMPLEMENTATION"},
+        {"node_id": "EG-BLOCKADE-EXP", "type": "MOU_STATUS", "label": "Final deal not reached; MoU expired", "state": "EXPIRED_NON_CONTROLLING"},
+        {"node_id": "EG-BLOCKADE-REV", "type": "OBSERVABLE_STATE", "label": "Blockade reimposed and used as current pressure", "state": "REVERSED"},
+        {"node_id": "EG-BLOCKADE-END", "type": "TERMINAL", "label": "CUT OFF / DENIED", "state": "CUT_OFF_DENIED"}
+      ],
+      "terminal_state": "CUT_OFF_DENIED",
+      "rationale": "Iran obtained temporary blockade relief, but the gain was reversed and the expired MoU no longer supplies a controlling basis for current relief.",
+      "evidence_refs": [
+        {"namespace": "ENDGAME", "id": "RTR-20260821-OILCHINA"},
+        {"namespace": "ENDGAME", "id": "RTR-20260820-SANCTIONS"},
+        {"namespace": "HORMUZ", "id": "R_MOU_TEXT"},
+        {"namespace": "HORMUZ", "id": "R_MOU_SEQ"}
+      ]
+    },
+    {
+      "claim_id": "EG-SANCTIONS-001",
+      "category": "SANCTIONS_RELIEF",
+      "label": "Full / verifiable sanctions relief",
+      "original_condition": "Iran described broad sanctions relief and economic normalization as part of the minimum acceptable outcome.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260421-STRENGTH"},
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["7", "9", "10"],
+        "historical_effect": "The MoU promised comprehensive termination in a final deal, froze new sanctions during the interim, and front-loaded oil waivers. The broad termination never matured and the oil waiver was later reversed.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "A new controlling settlement must produce actual broad relief; prospective negotiation language alone does not satisfy the original condition."
+      },
+      "decision_path": [
+        {"node_id": "EG-SANCTIONS-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "Broad sanctions relief / normalization"},
+        {"node_id": "EG-SANCTIONS-MOU", "type": "MOU_TERM", "label": "Clauses 7/9/10 promised later termination and interim relief", "state": "PARTIAL_PAPER_ACCEPTANCE"},
+        {"node_id": "EG-SANCTIONS-REV", "type": "OBSERVABLE_STATE", "label": "Waivers reversed; Washington escalates sanctions pressure", "state": "MOVING_OPPOSITE"},
+        {"node_id": "EG-SANCTIONS-EXP", "type": "MOU_STATUS", "label": "Expired MoU cannot independently restore relief", "state": "EXPIRED_NON_CONTROLLING"},
+        {"node_id": "EG-SANCTIONS-END", "type": "TERMINAL", "label": "CUT OFF / DENIED", "state": "CUT_OFF_DENIED"}
+      ],
+      "terminal_state": "CUT_OFF_DENIED",
+      "rationale": "Current policy is moving in the opposite direction from the original broad-relief condition.",
+      "evidence_refs": [
+        {"namespace": "ENDGAME", "id": "RTR-20260820-SANCTIONS"},
+        {"namespace": "ENDGAME", "id": "RTR-20260823-DDAY"},
+        {"namespace": "HORMUZ", "id": "R_AUG22_SANCTIONS"}
+      ]
+    },
+    {
+      "claim_id": "EG-WITHDRAW-001",
+      "category": "US_FORCE_WITHDRAWAL",
+      "label": "U.S. withdrawal from bases / proximity around Iran",
+      "original_condition": "Iran demanded U.S. withdrawal from regional positions surrounding Iran.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["4"],
+        "historical_effect": "Clause 4 promised removal of U.S. forces from Iran's proximity only after a final deal. The trigger condition was never reached.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "A new agreement and observable withdrawal would be required to move this claim forward."
+      },
+      "decision_path": [
+        {"node_id": "EG-WITHDRAW-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "U.S. regional/proximity withdrawal"},
+        {"node_id": "EG-WITHDRAW-MOU", "type": "MOU_TERM", "label": "Future withdrawal promised only after final deal", "state": "CONTINGENT_ACCEPTANCE"},
+        {"node_id": "EG-WITHDRAW-EXP", "type": "MOU_STATUS", "label": "Final deal never triggered withdrawal; MoU expired", "state": "EXPIRED_NON_CONTROLLING"},
+        {"node_id": "EG-WITHDRAW-OBS", "type": "OBSERVABLE_STATE", "label": "Demanded withdrawal not established in the reviewed record"},
+        {"node_id": "EG-WITHDRAW-END", "type": "TERMINAL", "label": "CUT OFF / DENIED", "state": "CUT_OFF_DENIED"}
+      ],
+      "terminal_state": "CUT_OFF_DENIED",
+      "rationale": "The only documented MoU pathway was contingent on a final deal that never occurred; the required withdrawal did not become operative.",
+      "evidence_refs": [
+        {"namespace": "HORMUZ", "id": "R_MOU_TEXT"},
+        {"namespace": "HORMUZ", "id": "R_JUL13"}
+      ]
+    },
+    {
+      "claim_id": "EG-AXIS-001",
+      "category": "AXIS_PROTECTION",
+      "label": "Protection / non-aggression toward Axis allies",
+      "original_condition": "Iran's May minimum terms and May red-line framing sought protection of aligned regional actors and preservation of the Axis as strategic capital.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"},
+        {"namespace": "ENDGAME", "id": "PT-20260527-REDLINES"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["1"],
+        "historical_effect": "The MoU's immediate Lebanon ceasefire language was relatively favorable to Tehran because it did not condition relief on Hezbollah disarmament. Lebanon then rejected Tehran bargaining on its behalf and moved into a separate state-centered framework tied to Lebanese Army control and non-state disarmament.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "A durable settlement preserving the original Iranian protection condition would have to survive the separate Lebanon sovereignty/disarmament track."
+      },
+      "decision_path": [
+        {"node_id": "EG-AXIS-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "Protect aligned actors / preserve Axis position"},
+        {"node_id": "EG-AXIS-MOU", "type": "MOU_TERM", "label": "Clause 1 initially stopped fighting without Hezbollah-disarmament condition", "state": "TEMPORARY_FAVORABLE_TERM"},
+        {"node_id": "EG-AXIS-LEBANON", "type": "COUNTERPARTY_RESPONSE", "label": "Lebanon asserted sovereignty and separate state-centered security track", "state": "STRATEGIC_NARROWING"},
+        {"node_id": "EG-AXIS-END", "type": "TERMINAL", "label": "WALKED BACK / DILUTED", "state": "WALKED_BACK_DILUTED"}
+      ],
+      "terminal_state": "WALKED_BACK_DILUTED",
+      "rationale": "The original broad protection position did not survive intact; the operative Lebanon framework narrowed Iran's bargaining ownership even though Hezbollah disarmament was not yet fully realized.",
+      "evidence_refs": [
+        {"namespace": "HORMUZ", "id": "R_LEB_JUN23_STATE"},
+        {"namespace": "HORMUZ", "id": "R_LEB_JUN26_FRAME"},
+        {"namespace": "HORMUZ", "id": "R_LEB_JUN27_REJECT"}
+      ]
+    },
+    {
+      "claim_id": "EG-HORMUZ-LEGAL",
+      "category": "HORMUZ_LEGAL_CONTROL",
+      "label": "Hormuz legal sovereignty / recognized control",
+      "original_condition": "Iranian hardline framing sought to convert wartime leverage into recognized Iranian sovereignty or dominant legal authority over the strait.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"},
+        {"namespace": "ENDGAME", "id": "PT-20260527-REDLINES"},
+        {"namespace": "ENDGAME", "id": "PT-20260616-AREF"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["5A"],
+        "historical_effect": "The MoU did not grant exclusive Iranian sovereignty; future administration was multilateral, future-tense, and tied to international law and coastal-state rights.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "Only a new internationally recognized controlling arrangement could satisfy this legal branch."
+      },
+      "decision_path": [
+        {"node_id": "EG-HL-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "Recognized Iranian legal control / sovereignty"},
+        {"node_id": "EG-HL-MOU", "type": "MOU_TERM", "label": "Clause 5A deferred administration to multilateral talks", "state": "NOT_GRANTED"},
+        {"node_id": "EG-HL-OBS", "type": "OBSERVABLE_STATE", "label": "No durable international instrument recognizes exclusive Iranian control", "state": "NOT_OBTAINED"},
+        {"node_id": "EG-HL-END", "type": "TERMINAL", "label": "CUT OFF / DENIED", "state": "CUT_OFF_DENIED"}
+      ],
+      "terminal_state": "CUT_OFF_DENIED",
+      "rationale": "Operational coercion is real but has not converted into recognized legal sovereignty over the strait.",
+      "evidence_refs": [
+        {"namespace": "HORMUZ", "id": "IMO_HORMUZ_ROUTE"},
+        {"namespace": "HORMUZ", "id": "IMO_LEGAL_APR27"},
+        {"namespace": "HORMUZ", "id": "R_JUL10_NO_SOV"}
+      ]
+    },
+    {
+      "claim_id": "EG-HORMUZ-OPS",
+      "category": "HORMUZ_OPERATIONAL_GATEKEEPING",
+      "label": "Hormuz operational routing / gatekeeping",
+      "original_condition": "Iran sought practical authority to determine routes, permissions, and passage conditions through the strait.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260616-AREF"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["5B"],
+        "historical_effect": "The MoU gave Iran a real safe-passage implementation role without granting exclusive legal authority.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "Operational facts may continue independently of the expired MoU; score legal recognition separately."
+      },
+      "decision_path": [
+        {"node_id": "EG-HO-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "Practical route / permission gatekeeping"},
+        {"node_id": "EG-HO-MOU", "type": "MOU_TERM", "label": "Clause 5B assigned Iran safe-passage implementation functions", "state": "PARTIAL_ACCEPTANCE"},
+        {"node_id": "EG-HO-OBS", "type": "OBSERVABLE_STATE", "label": "Iran currently exercises strong de facto selective gatekeeping", "state": "MATERIALLY_PROCEEDING"},
+        {"node_id": "EG-HO-CAVEAT", "type": "LEGAL_CAVEAT", "label": "De facto gatekeeping is not recognized sovereignty"},
+        {"node_id": "EG-HO-END", "type": "TERMINAL", "label": "PROCEEDS UNDER IRAN DEMAND", "state": "PROCEEDS_UNDER_IRAN_DEMAND"}
+      ],
+      "terminal_state": "PROCEEDS_UNDER_IRAN_DEMAND",
+      "rationale": "On this narrowly defined operational branch, observable gatekeeping substantially aligns with Iran's desired practical role. This verdict must never be reused as a legal-sovereignty verdict.",
+      "evidence_refs": [
+        {"namespace": "HORMUZ", "id": "TASNIM_JUN19_GUIDELINES"},
+        {"namespace": "HORMUZ", "id": "R_JUN25_SHIP"}
+      ]
+    },
+    {
+      "claim_id": "EG-HORMUZ-FEES",
+      "category": "HORMUZ_FEES_RENT",
+      "label": "Hormuz compulsory fees / economic rent authority",
+      "original_condition": "Iran sought recurring toll, insurance, or maritime-service fee authority tied to passage through Hormuz.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260607-FEES"},
+        {"namespace": "ENDGAME", "id": "PT-20260616-AREF"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["5C"],
+        "historical_effect": "The MoU imposed a 60-day no-charge period and left later maritime services to future regional negotiations; it did not establish a durable compulsory Iranian toll right.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "A new accepted regime would need to establish monetizable fee authority; unilateral demands or coercive collection do not equal recognized entitlement."
+      },
+      "decision_path": [
+        {"node_id": "EG-HF-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "Durable Iranian fee / rent authority"},
+        {"node_id": "EG-HF-MOU", "type": "MOU_TERM", "label": "Clause 5C barred charges for 60 days and deferred later services", "state": "DEFERRED_NOT_GRANTED"},
+        {"node_id": "EG-HF-OBS", "type": "OBSERVABLE_STATE", "label": "No accepted compulsory Iranian fee regime exists", "state": "NOT_OBTAINED"},
+        {"node_id": "EG-HF-END", "type": "TERMINAL", "label": "CUT OFF / DENIED", "state": "CUT_OFF_DENIED"}
+      ],
+      "terminal_state": "CUT_OFF_DENIED",
+      "rationale": "Iran retains coercive leverage but has not converted it into an accepted durable toll or rent right.",
+      "evidence_refs": [
+        {"namespace": "HORMUZ", "id": "R_AUG06_INDUSTRY"},
+        {"namespace": "HORMUZ", "id": "IMO_COUNCIL_JUL"}
+      ]
+    },
+    {
+      "claim_id": "EG-REDLINES-001",
+      "category": "NO_CONCESSIONS_RED_LINES",
+      "label": "No concessions on nuclear, missile, defense, or regional architecture red lines",
+      "original_condition": "Iranian strategic framing treated nuclear, missile/defense capacity, and regional architecture as non-negotiable strategic capital.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260421-STRENGTH"},
+        {"namespace": "ENDGAME", "id": "PT-20260527-REDLINES"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["8", "9", "13"],
+        "historical_effect": "The interim MoU deferred the hardest enrichment and final nuclear/security terms while imposing a freeze/non-weapons obligation. The final bargain that would reveal whether the red lines survive was never reached.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "Score only when a new final bargain shows whether the original red lines were preserved, diluted, or conceded."
+      },
+      "decision_path": [
+        {"node_id": "EG-RED-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "Preserve declared strategic red lines"},
+        {"node_id": "EG-RED-MOU", "type": "MOU_TERM", "label": "Hardest final terms deferred; interim freeze obligations accepted", "state": "DEFERRED_FINAL_TEST"},
+        {"node_id": "EG-RED-EXP", "type": "MOU_STATUS", "label": "Final bargain never reached", "state": "EXPIRED_NON_CONTROLLING"},
+        {"node_id": "EG-RED-END", "type": "TERMINAL", "label": "OPEN / UNRESOLVED", "state": "OPEN_UNRESOLVED"}
+      ],
+      "terminal_state": "OPEN_UNRESOLVED",
+      "rationale": "The decisive test is the final bargain. Current rhetoric alone cannot establish whether the original non-negotiable red lines ultimately survive.",
+      "evidence_refs": [
+        {"namespace": "HORMUZ", "id": "R_MOU_GAPS"},
+        {"namespace": "HORMUZ", "id": "R_APR11_US_DEMANDS"}
+      ]
+    },
+    {
+      "claim_id": "EG-FINAL-DEAL-001",
+      "category": "SIGNED_END_OF_WAR_SETTLEMENT",
+      "label": "Signed durable settlement recording substantive Iranian victory conditions",
+      "original_condition": "Iranian May framing said victory had to be substantive and recorded in a settlement rather than reduced to symbolic survival.",
+      "original_source_refs": [
+        {"namespace": "ENDGAME", "id": "PT-20260521-DECISIVE"},
+        {"namespace": "ENDGAME", "id": "PT-20260522-MINIMUM"}
+      ],
+      "mou_dependency": {
+        "relevant": true,
+        "clauses": ["3"],
+        "historical_effect": "The MoU required a final deal within 60 days, extendable only by mutual consent. The deadline expired without a final agreement.",
+        "current_controlling_state": "EXPIRED_NON_CONTROLLING",
+        "new_bargain_test": "Only a new signed controlling settlement can satisfy this condition now."
+      },
+      "decision_path": [
+        {"node_id": "EG-FINAL-ORIGIN", "type": "ORIGINAL_DEMAND", "label": "Substantive victory recorded in durable settlement"},
+        {"node_id": "EG-FINAL-MOU", "type": "MOU_TERM", "label": "Clause 3 set 60-day final-deal deadline", "state": "PROCEDURAL_PATH"},
+        {"node_id": "EG-FINAL-EXP", "type": "MOU_STATUS", "label": "Deadline expired August 17 without final deal", "state": "EXPIRED_NON_CONTROLLING"},
+        {"node_id": "EG-FINAL-END", "type": "TERMINAL", "label": "CUT OFF / DENIED", "state": "CUT_OFF_DENIED"}
+      ],
+      "terminal_state": "CUT_OFF_DENIED",
+      "rationale": "The required final settlement did not materialize within the MoU pathway. Future negotiations can create a new path but cannot retroactively make the expired interim instrument a completed final deal.",
+      "evidence_refs": [
+        {"namespace": "HORMUZ", "id": "R_AUG17_OFFENSIVE"},
+        {"namespace": "HORMUZ", "id": "AP_AUG17"}
+      ]
+    }
+  ]
+}
