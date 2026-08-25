@@ -107,8 +107,12 @@ jobs:
           python scripts/validate_aug22_update.py
           python scripts/validate_aug24_counts.py
           git diff --check d9c2d862dd117544edf7fa9400920b160135220e HEAD
-      - name: Install Chromium for visual QA
-        run: npx --yes playwright@1.55.0 install --with-deps chromium
+      - name: Install Playwright test runner and Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --package-lock=false @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
       - name: Run required viewport and interaction QA
         shell: bash
         run: |
@@ -118,7 +122,7 @@ jobs:
           SERVER_PID=$!
           trap 'kill $SERVER_PID || true' EXIT
           sleep 2
-          npx --yes @playwright/test@1.55.0 test tests/visual-qa-r1.spec.js --reporter=line
+          npx playwright test tests/visual-qa-r1.spec.js --reporter=line
       - uses: actions/upload-artifact@v4
         if: always()
         with:
