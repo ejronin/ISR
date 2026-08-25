@@ -16,97 +16,85 @@ const shortStage=(c,s)=>{
  if(s?.kind==='ORIGINAL_CONDITION')x=c.short_label;
  return mlab(x);
 };
-const shape=(id,label,cls,kind)=>{
+const blockShape=(id,label,kind)=>{
  const q=mlab(label);
- if(kind==='ORIGINAL_CONDITION')return `${id}(["${q}"]):::${cls}`;
- if(/^MOU_/.test(kind))return `${id}[["${q}"]]:::${cls}`;
- if(/OBSERVABLE|CURRENT_POSITION/.test(kind))return `${id}(["${q}"]):::${cls}`;
- return `${id}["${q}"]:::${cls}`;
+ if(kind==='ORIGINAL_CONDITION')return `${id}(["${q}"])`;
+ if(/OBSERVABLE|CURRENT_POSITION/.test(kind))return `${id}("${q}")`;
+ return `${id}["${q}"]`;
 };
-const spacer=id=>`${id}[" "]:::spacer`;
 
 function build(modelIn){
  model=modelIn;
  const maxSteps=Math.max(...model.claims.map(c=>(c.path||[]).length));
- const phaseCount=maxSteps+2, decisionIndex=maxSteps, outcomeIndex=maxSteps+1;
- const phaseDefs=Array.from({length:phaseCount},()=>[]),phaseIds=Array.from({length:phaseCount},()=>[]);
- const edges=[],M=new Map(),P=new Map();
- const phaseLabel=i=>i===0?'1 · ORIGINAL CONDITION':i<maxSteps?`${i+1} · EVIDENCE STEP ${i}`:i===decisionIndex?'BUNDLED-CLAIM TEST':`CURRENT DISPOSITION`;
+ const cols=maxSteps+2,decisionCol=maxSteps,outcomeCol=maxSteps+1;
+ const L=['block-beta',`columns ${cols}`],M=new Map(),classIds={header:[],original:[],mou:[],expired:[],response:[],observed:[],stage:[],junction:[],good:[],bad:[],open:[],amber:[]},edges=[];
+ const headers=[];
+ for(let i=0;i<cols;i++){
+   const id=nid('r2','hdr',i),label=i===0?'ORIGINAL CONDITION':i<maxSteps?`EVIDENCE STEP ${i}`:i===decisionCol?'BUNDLED-CLAIM TEST':'CURRENT DISPOSITION';
+   headers.push(`${id}["${label}"]`);classIds.header.push(id);
+ }
+ L.push(...headers);
 
  model.claims.forEach((c,row)=>{
    const real=[];
    for(let i=0;i<maxSteps;i++){
      const st=(c.path||[])[i];
      if(st){
-       const id=nid('r2',c.id,st.id);
-       phaseDefs[i].push(shape(id,shortStage(c,st),stageClass(st.kind),st.kind));
-       phaseIds[i].push(id);real.push({id,stage:st});M.set(id,{claim:c.id,stage:st,row,phase:i});
-     }else{
-       const id=nid('r2','sp',c.id,i);phaseDefs[i].push(spacer(id));phaseIds[i].push(id);
-     }
+       const id=nid('r2',c.id,st.id),cls=stageClass(st.kind);
+       L.push(blockShape(id,shortStage(c,st),st.kind));classIds[cls].push(id);real.push({id,stage:st});M.set(id,{claim:c.id,stage:st,row,col:i});
+     }else L.push('space');
    }
-   for(let i=1;i<real.length;i++)edges.push(`${real[i-1].id} -->|${edgeLabel(real[i].stage.kind)}| ${real[i].id}`);
+   for(let i=1;i<real.length;i++)edges.push(`${real[i-1].id}-- "${edgeLabel(real[i].stage.kind)}" -->${real[i].id}`);
    const last=real.at(-1)?.id;
    if(c.dimensions?.length){
-     const split=nid('r2',c.id,'dimensions');
-     phaseDefs[decisionIndex].push(`${split}(("THREE SEPARATE HORMUZ TESTS")):::junction`);phaseIds[decisionIndex].push(split);M.set(split,{claim:c.id,row,phase:decisionIndex});
-     if(last)edges.push(`${last} -->|separate tests| ${split}`);
-     c.dimensions.forEach(d=>{
-       const id=nid('r2',c.id,'dim',d.id);
-       phaseDefs[outcomeIndex].push(`${id}{{"${mlab(d.label)} · ${mlab(state(d.state))}"}}:::${outcomeClass(d.state)}`);phaseIds[outcomeIndex].push(id);M.set(id,{claim:c.id,dim:d,row,phase:outcomeIndex});edges.push(`${split} ==> ${id}`);
-     });
+     const split=nid('r2',c.id,'dimensions');L.push(`${split}(("THREE SEPARATE HORMUZ TESTS"))`);classIds.junction.push(split);M.set(split,{claim:c.id,row,col:decisionCol});if(last)edges.push(`${last}-- "separate tests" -->${split}`);
+     const group=nid('r2',c.id,'outcomes');L.push(`block:${group}`,'columns 1');
+     c.dimensions.forEach(d=>{const id=nid('r2',c.id,'dim',d.id);L.push(`${id}{{"${mlab(d.label)} · ${mlab(state(d.state))}"}}`);classIds[outcomeClass(d.state)].push(id);M.set(id,{claim:c.id,dim:d,row,col:outcomeCol});edges.push(`${split} --> ${id}`)});
+     L.push('end');
    }else{
-     const ds=nid('r2','decision',c.id);phaseDefs[decisionIndex].push(spacer(ds));phaseIds[decisionIndex].push(ds);
-     const id=nid('r2',c.id,'terminal');phaseDefs[outcomeIndex].push(`${id}{{"${mlab(state(c.current_disposition.state))}"}}:::${outcomeClass(c.current_disposition.state)}`);phaseIds[outcomeIndex].push(id);M.set(id,{claim:c.id,terminal:true,row,phase:outcomeIndex});
-     if(last)edges.push(`${last} ==> ${id}`);
+     L.push('space');
+     const id=nid('r2',c.id,'terminal'),cls=outcomeClass(c.current_disposition.state);L.push(`${id}{{"${mlab(state(c.current_disposition.state))}"}}`);classIds[cls].push(id);M.set(id,{claim:c.id,terminal:true,row,col:outcomeCol});if(last)edges.push(`${last} --> ${id}`);
    }
  });
 
- const L=[
-  'flowchart LR',
+ L.push(...edges,
+  'classDef header fill:#07111c,stroke:#304b65,color:#b9cee2,stroke-width:1px;',
   'classDef original fill:#3b2f18,stroke:#e7b85a,color:#fff7e4,stroke-width:2px;',
-  'classDef mou fill:#231a35,stroke:#c29cff,color:#f4ebff,stroke-width:1.8px;',
-  'classDef expired fill:#3a1c28,stroke:#d67b8a,color:#ffe8ec,stroke-width:1.8px;',
-  'classDef response fill:#0d2238,stroke:#6f9dcc,color:#edf6ff,stroke-width:1.4px;',
-  'classDef observed fill:#0b2a33,stroke:#63cfe6,color:#e9fbff,stroke-width:1.6px;',
-  'classDef stage fill:#102238,stroke:#527aa1,color:#eaf2ff;',
-  'classDef junction fill:#172538,stroke:#8ca4bc,color:#edf5ff,stroke-width:1.8px;',
-  'classDef good fill:#102b21,stroke:#68d99c,color:#e8fff1,stroke-width:2.4px;',
-  'classDef bad fill:#351a21,stroke:#e46f73,color:#fff0f2,stroke-width:2.4px;',
-  'classDef open fill:#243247,stroke:#90a9c4,color:#f0f6ff,stroke-width:2.4px;',
-  'classDef amber fill:#3d3216,stroke:#e7b85a,color:#fff4d8,stroke-width:2.4px;',
-  'classDef spacer fill:transparent,stroke:transparent,color:transparent,stroke-width:0px;'
- ];
- phaseDefs.forEach((defs,i)=>{
-   const id=nid('phase',i);L.push(`subgraph ${id}["${phaseLabel(i)}"]`,'direction TB',...defs);
-   if(phaseIds[i].length>1)L.push(phaseIds[i].join(' ~~~ '));
-   L.push('end');P.set(id,{index:i,label:phaseLabel(i)});
- });
- L.push(...edges);
- return {definition:L.join('\n'),nodeMeta:M,phaseMeta:P,maxSteps};
+  'classDef mou fill:#231a35,stroke:#c29cff,color:#f4ebff,stroke-width:2px;',
+  'classDef expired fill:#3a1c28,stroke:#d67b8a,color:#ffe8ec,stroke-width:2px;',
+  'classDef response fill:#0d2238,stroke:#6f9dcc,color:#edf6ff,stroke-width:1.5px;',
+  'classDef observed fill:#0b2a33,stroke:#63cfe6,color:#e9fbff,stroke-width:1.7px;',
+  'classDef stage fill:#102238,stroke:#527aa1,color:#eaf2ff,stroke-width:1.4px;',
+  'classDef junction fill:#172538,stroke:#8ca4bc,color:#edf5ff,stroke-width:2px;',
+  'classDef good fill:#102b21,stroke:#68d99c,color:#e8fff1,stroke-width:2.5px;',
+  'classDef bad fill:#351a21,stroke:#e46f73,color:#fff0f2,stroke-width:2.5px;',
+  'classDef open fill:#243247,stroke:#90a9c4,color:#f0f6ff,stroke-width:2.5px;',
+  'classDef amber fill:#3d3216,stroke:#e7b85a,color:#fff4d8,stroke-width:2.5px;'
+ );
+ Object.entries(classIds).forEach(([cls,ids])=>{if(ids.length)L.push(`class ${ids.join(',')} ${cls}`)});
+ return {definition:L.join('\n'),nodeMeta:M,cols,maxSteps};
 }
 
-function node(svg,id){return $$('g.node',svg).find(n=>n.id===id||n.id.startsWith(`flowchart-${id}-`)||n.id.includes(`-${id}-`))}
-function cluster(svg,id){return $$('g.cluster',svg).find(n=>n.id===id||n.id.includes(id))}
+function graphItem(svg,id){
+ const all=$$('[id]',svg),raw=all.find(n=>n.id===id)||all.find(n=>n.id.includes(id));if(!raw)return null;
+ return raw.matches('g')?raw:raw.closest('g')||raw;
+}
 function selectedClaim(){return $('#endgame .eg-ledger.selected')?.dataset.claimId||model?.claims?.[0]?.id}
 function installKey(){
  const panel=$('#endgame .eg-graph-panel');if(!panel)return;
  const title=$('.eg-inline-head h3',panel);if(title)title.textContent='Strategic adjudication matrix · read left → right';
  if($('.eg-r2-map-note',panel))return;
  const note=document.createElement('div');note.className='eg-r2-map-note';
- note.textContent='Rows are the eight original Iranian victory conditions; columns preserve the evidence sequence. Gold = original condition · purple = MoU/paper term · blue/cyan = later evidence or implementation · terminal color = current disposition.';
+ note.textContent='Each row is one original Iranian victory condition. Columns preserve the evidence sequence instead of allowing automatic graph layout to rearrange it. Gold = original condition · purple = MoU/paper term · blue/cyan = later evidence · terminal color = current disposition.';
  $('.eg-inline-head',panel)?.after(note);
 }
 function centerSelected(host,svg,claimId){
  if(showAll)return;
  requestAnimationFrame(()=>{
-   const active=$$(`g.node[data-claim-id="${CSS.escape(claimId)}"]`,svg);
-   if(!active.length)return;
-   const boxes=active.map(n=>{try{return n.getBBox()}catch{return null}}).filter(Boolean);
-   if(!boxes.length)return;
-   const minY=Math.min(...boxes.map(b=>b.y)),maxY=Math.max(...boxes.map(b=>b.y+b.height)),vb=svg.viewBox?.baseVal,rect=svg.getBoundingClientRect();
-   if(!vb?.height||!rect.height)return;
-   const cy=((minY+maxY)/2-vb.y)*(rect.height/vb.height);host.scrollTop=Math.max(0,cy-host.clientHeight/2);
+   const active=$$(`[data-claim-id="${CSS.escape(claimId)}"]`,svg);if(!active.length)return;
+   const rects=active.map(n=>n.getBoundingClientRect()).filter(b=>b.width&&b.height);if(!rects.length)return;
+   const hostRect=host.getBoundingClientRect(),cy=(Math.min(...rects.map(b=>b.top))+Math.max(...rects.map(b=>b.bottom)))/2-hostRect.top+host.scrollTop;
+   host.scrollTop=Math.max(0,cy-host.clientHeight/2);
  });
 }
 
@@ -114,14 +102,13 @@ async function render(){
  const host=$('#egMermaidHost');if(!host||!model||!window.mermaid)return;if(host.dataset.topologyR2==='rendering')return;
  host.dataset.topologyR2='rendering';const graph=build(model),claimId=selectedClaim();
  try{
-   window.mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'dark',htmlLabels:false,flowchart:{htmlLabels:false,useMaxWidth:false,curve:'linear',nodeSpacing:24,rankSpacing:56}});
+   window.mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'dark',htmlLabels:false,block:{padding:8}});
    const r=await window.mermaid.render(`isrEndgameTopologyR2_${++seq}`,graph.definition);if(!document.contains(host))return;
    host.replaceChildren();const canvas=document.createElement('div');canvas.className='eg-graph-canvas eg-r2-canvas';canvas.innerHTML=r.svg;host.append(canvas);r.bindFunctions?.(canvas);
    const svg=$('svg',canvas);if(!svg)throw Error('no svg');svg.removeAttribute('style');svg.setAttribute('role','img');svg.setAttribute('aria-labelledby','egR2GraphTitle egR2GraphDesc');
-   const ns='http://www.w3.org/2000/svg',title=document.createElementNS(ns,'title'),desc=document.createElementNS(ns,'desc');title.id='egR2GraphTitle';title.textContent='Strategic adjudication matrix of original Iranian victory conditions';desc.id='egR2GraphDesc';desc.textContent='Eight claim rows read left to right across evidence-step columns to current disposition. Hormuz forks at the end into separate legal, operational, and fee tests.';svg.prepend(desc);svg.prepend(title);
-   graph.phaseMeta.forEach((meta,id)=>{const g=cluster(svg,id);if(!g)return;g.dataset.phaseIndex=meta.index;g.dataset.phaseLabel=meta.label});
-   graph.nodeMeta.forEach((meta,id)=>{const n=node(svg,id);if(!n)return;n.dataset.claimId=meta.claim;n.dataset.stageKind=meta.stage?.kind||meta.dim?.id||'terminal';n.classList.toggle('eg-r2-node-dim',!showAll&&meta.claim!==claimId);n.classList.toggle('eg-r2-node-active',!showAll&&meta.claim===claimId);n.tabIndex=0;n.setAttribute('role','button');n.setAttribute('aria-label',`${model.claims.find(x=>x.id===meta.claim)?.short_label}: ${meta.stage?.label||meta.dim?.label||state(model.claims.find(x=>x.id===meta.claim)?.current_disposition?.state)}`);const go=e=>{if(e.type==='keydown'&&!['Enter',' '].includes(e.key))return;e.preventDefault();showAll=false;window.ISREndgameAdjudicationR1?.pick?.(meta.claim,true)};n.onclick=go;n.onkeydown=go});
-   host.dataset.graphSource='structured-adjudication-topology-r2';host.dataset.topologyR2='ready';installKey();centerSelected(host,svg,claimId);
+   const ns='http://www.w3.org/2000/svg',title=document.createElementNS(ns,'title'),desc=document.createElementNS(ns,'desc');title.id='egR2GraphTitle';title.textContent='Strategic adjudication matrix of original Iranian victory conditions';desc.id='egR2GraphDesc';desc.textContent='Eight fixed claim rows read left to right across evidence-step columns to current disposition. Hormuz branches in its terminal cell into separate legal, operational, and fee tests.';svg.prepend(desc);svg.prepend(title);
+   graph.nodeMeta.forEach((meta,id)=>{const n=graphItem(svg,id);if(!n)return;n.dataset.claimId=meta.claim;n.dataset.stageKind=meta.stage?.kind||meta.dim?.id||'terminal';n.classList.toggle('eg-r2-node-dim',!showAll&&meta.claim!==claimId);n.classList.toggle('eg-r2-node-active',!showAll&&meta.claim===claimId);n.tabIndex=0;n.setAttribute('role','button');n.setAttribute('aria-label',`${model.claims.find(x=>x.id===meta.claim)?.short_label}: ${meta.stage?.label||meta.dim?.label||state(model.claims.find(x=>x.id===meta.claim)?.current_disposition?.state)}`);const go=e=>{if(e.type==='keydown'&&!['Enter',' '].includes(e.key))return;e.preventDefault();showAll=false;window.ISREndgameAdjudicationR1?.pick?.(meta.claim,true)};n.onclick=go;n.onkeydown=go});
+   host.dataset.graphSource='structured-adjudication-topology-r2';host.dataset.topologyR2='ready';host.dataset.topologyEngine='mermaid-block-grid';installKey();centerSelected(host,svg,claimId);
  }catch(e){console.error('Endgame topology R2 render failed',e);host.dataset.topologyR2='failed'}
 }
 function schedule(){if(pending)return;pending=true;setTimeout(()=>{pending=false;render()},45)}
