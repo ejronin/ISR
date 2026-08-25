@@ -8,14 +8,16 @@
     ['./css/source-bias-r1.css?v=20260824-r1','source-bias'],
     ['./css/endgame-mermaid-r2.css?v=20260824-r2','mermaid-r2'],
     ['./css/endgame-public-view-r1.css?v=20260824-r1','public-view-r1'],
-    ['./css/final-mermaid-oil-routes-r1.css?v=20260825-r1','final-mermaid-oil-routes-r1']
+    ['./css/final-mermaid-oil-routes-r1.css?v=20260825-r1','final-mermaid-oil-routes-r1'],
+    ['./css/mermaid-autofit-r2.css?v=20260825-r2','mermaid-autofit-r2']
   ];
   const scripts=[
     ['./js/endgame-adjudication-r1.js?v=20260824-r1','controller'],
     ['./js/source-bias-r1.js?v=20260825-r2-hotfix','source-bias'],
     ['./js/endgame-mermaid-r2.js?v=20260824-r2','mermaid-r2'],
     ['./js/endgame-public-view-r1.js?v=20260824-r1','public-view-r1'],
-    ['./js/final-mermaid-oil-routes-r1.js?v=20260825-r1-hotfix1','final-mermaid-oil-routes-r1']
+    ['./js/final-mermaid-oil-routes-r1.js?v=20260825-r1-hotfix1','final-mermaid-oil-routes-r1'],
+    ['./js/mermaid-autofit-r2.js?v=20260825-r2','mermaid-autofit-r2']
   ];
   styles.forEach(([href,key])=>{
     if(document.querySelector(`link[data-endgame-r1="${key}"]`))return;
