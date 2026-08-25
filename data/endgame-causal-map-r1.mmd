@@ -1,0 +1,211 @@
+flowchart TD
+
+%% =========================================================
+%% ENDGAME — HUMAN CAUSAL MAP
+%% Solid arrow = observed chronology / causal relationship
+%% Dotted arrow = contradiction / tension / failed assumption
+%% Source IDs in boxes map to NODE_EVIDENCE_MATRIX.csv
+%% =========================================================
+
+START["IRAN WANTED:<br/>survival, regional leverage, economic room,<br/>and an end state it could present as victory"]
+
+%% --- MOU ---
+subgraph MOU["MOU / THE OLD BARGAIN"]
+  M0["IRAN GOT:<br/>blockade relief, oil waivers, frozen-asset access,<br/>sanctions pathway, reconstruction promise<br/>[S01]"]
+  M1["IRAN OWED:<br/>toll-free safe passage for 60 days,<br/>demining, restored traffic, and talks with Oman/<br/>other littoral states on future administration<br/>[S01]"]
+  M2["WHAT IRAN LATER DID/SAID:<br/>ships using routes not coordinated with Tehran<br/>faced risk; Tehran resisted U.S. interference<br/>in management of the Strait<br/>[S04]"]
+  M3["WHAT HAPPENED:<br/>three commercial vessels were hit;<br/>U.S. initial assessment pointed to Iran;<br/>Qatar blamed Iran for LNG-tanker attack<br/>[S04]"]
+  M4["THE PROBLEM:<br/>route-control + attacks were difficult to square<br/>with immediate toll-free safe passage under ¶5<br/>[S01,S04]"]
+  M5["U.S. RESPONSE:<br/>strikes on Iranian maritime/strike capability<br/>+ oil-waiver revocation<br/>[S04]"]
+  M6["IRAN'S COUNTER-CLAIM:<br/>U.S. force, threats and withdrawn relief<br/>violated the agreement<br/>[S04,S06]"]
+  M7["RESULT:<br/>MOU functionally dies Jul 7–8;<br/>U.S. calls it over, Iran later suspends it<br/>[S05,S06]"]
+  M8["IRAN NOW WANTS:<br/>old MOU treated as negotiating baseline<br/>[S06,S19]"]
+  M9["THE CONTRADICTION:<br/>the bargain becomes more attractive to Tehran<br/>after its alternatives worsen"]
+  M10["DEAD END:<br/>pure restoration of the old MOU<br/>has not been achieved"]
+  M11["OPEN PATH:<br/>reuse parts of the bargain in a new deal<br/>with tighter milestones and verification"]
+end
+
+START --> M0
+START --> M1
+M0 --> M1
+M1 --> M2
+M2 --> M3
+M3 --> M4
+M4 --> M5
+M5 --> M6
+M6 --> M7
+M4 --> M7
+M7 --> M8
+M8 --> M9
+M9 --> M10
+M9 --> M11
+
+M2 -. "¶5 explicitly names Oman + other littoral states" .-> M1
+
+%% --- REGIONAL INCLUSION ---
+subgraph REG["REGIONAL INCLUSION / THE COALITION PROBLEM"]
+  R0["IRAN WANTED:<br/>to be treated as a necessary regional-security actor"]
+  R1["IRAN DID:<br/>use threats, Gulf pressure and maritime coercion<br/>to raise the cost of excluding Tehran<br/>[S18]"]
+  R2["INTENDED OUTCOME:<br/>neighbors conclude they must include Iran"]
+  R3["WHAT HAPPENED:<br/>Saudi Arabia, Türkiye and Pakistan<br/>formed a mutual-defense pact<br/>[S07]"]
+  R4["WHAT ELSE HAPPENED:<br/>Saudi Arabia pushed a broader Red Sea<br/>maritime-defense coalition amid Houthi pressure<br/>[S11]"]
+  R5["IRAN'S PUBLIC POSITION:<br/>Tehran said the Mecca pact could be positive<br/>if it was inclusive<br/>[S08]"]
+  R6["IRAN-LINKED CLAIM:<br/>Iran had been invited to join<br/>[S10 — actor claim]"]
+  R7["OFFICIAL IRANIAN CORRECTION:<br/>no formal invitation was received<br/>[S09]"]
+  R8["THE PROBLEM:<br/>Iran sought inclusion in security structures<br/>whose rationale was strengthened by the threats<br/>Iran and aligned actors were creating"]
+  R9["DEAD END FOR NOW:<br/>Iran has not secured Mecca-pact membership"]
+  R10["OPEN POSSIBILITY:<br/>Iran could still seek a future regional arrangement,<br/>but on terms acceptable to the existing members"]
+  R11["YEMEN SIGNAL:<br/>internationally recognized Yemen government<br/>welcomed the Mecca pact and cited maritime threats<br/>[S12]"]
+end
+
+START --> R0
+R0 --> R1
+R1 --> R2
+R1 --> R3
+R1 --> R4
+R3 --> R5
+R4 --> R5
+R5 --> R6
+R6 --> R7
+R7 --> R8
+R3 --> R8
+R4 --> R8
+R8 --> R9
+R8 --> R10
+R3 --> R11
+R11 --> R8
+R2 -. "intended result not achieved" .-> R9
+
+%% --- HORMUZ ---
+subgraph HORMUZ["HORMUZ / MAKE THE STRAIT MATTER"]
+  H0["IRAN WANTED:<br/>Hormuz to remain unavoidable leverage"]
+  H1["IRAN DID:<br/>restrict traffic and insist on Iranian coordination/<br/>permission for safe passage<br/>[S04,S17]"]
+  H2["INTENDED OUTCOME:<br/>other states must negotiate with Iran<br/>because commerce cannot move without it"]
+  H3["WHAT HAPPENED:<br/>regional actors invested in Red Sea security,<br/>alternative routes and maritime protection<br/>[S11,S18]"]
+  H4["THE PROBLEM:<br/>the more dangerous Hormuz became,<br/>the more everyone invested in needing it less"]
+  H5["IRAN DOUBLED DOWN:<br/>new Strait authority, 45-vessel blacklist,<br/>fines/detention/confiscation threats<br/>[S17]"]
+  H6["IRAN ALSO SEEKS:<br/>charges / monetization for maritime services<br/>and administrative recognition"]
+  H7["THE CONTRADICTION:<br/>Iran says it wants cooperative regional security<br/>while asserting increasingly unilateral control"]
+  H8["¶5 REALITY:<br/>future administration/services were explicitly<br/>to be discussed with Oman + Gulf littoral states<br/>[S01]"]
+  H9["OPEN PATH:<br/>Oman-linked negotiated services / administration<br/>consistent with an agreed successor framework"]
+  H10["CONTESTED PATH:<br/>unilateral permission / compulsory transit regime"]
+end
+
+START --> H0
+H0 --> H1
+H1 --> H2
+H1 --> H3
+H3 --> H4
+H4 --> H5
+H5 --> H6
+H6 --> H7
+H7 -. "collides with" .-> H8
+H8 --> H9
+H8 --> H10
+H9 --> M11
+H10 --> M10
+
+%% --- ECONOMY / CHINA ---
+subgraph ECON["ECONOMY / 'WE CAN SURVIVE THIS'"]
+  E0["IRANIAN CLAIM:<br/>decades of sanctions did not defeat Iran<br/>[S13]"]
+  E1["IRANIAN / ALIGNED CLAIM:<br/>alternative currencies and partners reduce<br/>the importance of the dollar system"]
+  E2["WASHINGTON CHANGED THE TARGET:<br/>secondary sanctions threaten the banks,<br/>shippers, refiners and intermediaries helping Iran<br/>[S13]"]
+  E3["WASHINGTON GAVE A CURE PERIOD:<br/>counterparties can change behavior before<br/>the harshest penalties are imposed<br/>[S13]"]
+  E4["CHINA — WHAT IT SAYS:<br/>Beijing opposes unilateral U.S. sanctions"]
+  E5["CHINA — WHAT COMMERCIAL ACTORS DO:<br/>Iranian crude arrivals fell;<br/>major state refiners stayed cautious;<br/>buyers sought alternatives<br/>[S14,S15]"]
+  E6["UAE — WHAT HAPPENED:<br/>trade/commercial/financial dealings with Iran<br/>were suspended after a missile dispute<br/>[S16]"]
+  E7["THE PROBLEM:<br/>Iran can survive while still losing bargaining power,<br/>trade channels and willing counterparties"]
+  E8["THE CONTRADICTION:<br/>the dollar can be called irrelevant rhetorically<br/>while counterparties behave as though dollar-system<br/>risk matters a great deal"]
+  E9["OPEN TEST:<br/>do major counterparties quietly de-risk<br/>during the U.S. cure period?"]
+  E10["IF YES:<br/>Iran's economic room narrows further"]
+  E11["IF NO:<br/>Washington must decide whether to sanction<br/>major foreign financial institutions"]
+end
+
+START --> E0
+START --> E1
+E0 --> E2
+E1 --> E2
+E2 --> E3
+E3 --> E4
+E3 --> E5
+E3 --> E6
+E4 --> E5
+E5 --> E7
+E6 --> E7
+E1 -. "tested against behavior" .-> E8
+E5 --> E8
+E6 --> E8
+E7 --> E9
+E9 --> E10
+E9 --> E11
+
+%% --- PROXY / RED SEA ---
+subgraph PROXY["PROXY / RED SEA PRESSURE"]
+  P0["IRAN WANTED:<br/>regional partners to create leverage<br/>and keep pressure away from Iran itself"]
+  P1["REALITY:<br/>Hamas / Hezbollah were degraded while<br/>Houthis remained an active pressure tool"]
+  P2["HOUTHI PRESSURE:<br/>Red Sea actions threaten Saudi alternatives<br/>to Hormuz and raise shipping costs<br/>[S18]"]
+  P3["WHAT THAT DOES FOR IRAN:<br/>keeps pressure on routes that would otherwise<br/>reduce Hormuz leverage"]
+  P4["WHAT IT ALSO DOES:<br/>gives Saudi/GCC states another reason<br/>to integrate maritime and defense policy<br/>[S11]"]
+  P5["THE PROBLEM:<br/>the same pressure that helps Iran tactically<br/>can strengthen the coalition strategically"]
+  P6["ATTRIBUTION LIMIT:<br/>strategic complementarity does NOT by itself prove<br/>Iran ordered a specific Houthi attack"]
+end
+
+START --> P0
+P0 --> P1
+P1 --> P2
+P2 --> P3
+P2 --> P4
+P3 --> H0
+P4 --> R4
+P4 --> P5
+P5 --> R8
+P2 --> P6
+
+%% --- PUBLIC / DOMESTIC ---
+subgraph PUBLIC["DOMESTIC COST / PUBLIC LEGITIMACY"]
+  D0["IRANIAN SECURITY CASE:<br/>missiles, proxies and resistance protect Iran"]
+  D1["WHAT CITIZENS EXPERIENCED:<br/>war reached Iran directly;<br/>trade/infrastructure/economy were badly damaged<br/>[S21,S22]"]
+  D2["PUBLIC SIGNAL:<br/>51% disagreed missiles increased security;<br/>47% opposed closing Hormuz;<br/>59% opposed nuclear weapons<br/>[S20]"]
+  D3["IMPORTANT LIMIT:<br/>Iranians can blame their own government<br/>and foreign attackers at the same time"]
+  D4["THE LEGITIMACY QUESTION:<br/>did the strategy buy security,<br/>or did it increase the eventual cost?"]
+end
+
+D0 --> D1
+D1 --> D2
+D2 --> D4
+D1 --> D3
+D3 --> D4
+
+%% --- CONVERGENCE ---
+NARROW["WHAT ALL THESE BRANCHES HAVE IN COMMON:<br/>Iran still has ways to impose pain,<br/>but fewer low-cost ways to improve its position"]
+
+M10 --> NARROW
+R9 --> NARROW
+H10 --> NARROW
+E10 --> NARROW
+P5 --> NARROW
+D4 --> NARROW
+
+CHOICE{"WHAT DOES TEHRAN DO NEXT?"}
+NARROW --> CHOICE
+
+C1["TAKE A TIGHTER DEAL:<br/>accept verification, milestones and fewer ambiguities"]
+C2["WAIT IT OUT:<br/>absorb economic damage and hope partners resist Washington"]
+C3["MAKE IT HURT:<br/>use Hormuz, aligned actors or renewed kinetics"]
+
+CHOICE --> C1
+CHOICE --> C2
+CHOICE --> C3
+
+C1 --> M11
+C2 --> E9
+
+K1["INTENDED KINETIC EFFECT:<br/>raise the cost to regional states / Washington"]
+K2["KINETIC RISK:<br/>prove the coalition against Iran was necessary"]
+K3["SECOND RISK:<br/>a weak attack can look like dwindling capability;<br/>a strong attack risks a devastating response"]
+C3 --> K1
+C3 --> K2
+C3 --> K3
+K2 --> R8
+K2 --> NARROW
+K3 --> NARROW
