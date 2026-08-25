@@ -1,7 +1,7 @@
 /* ENDGAME Mermaid topology R2 — deterministic block-grid adjudication matrix. */
 #endgame .eg-r2-map-note{
-  margin:-2px 0 7px;padding:5px 7px;border:1px solid #243d55;border-radius:6px;background:#071421;
-  color:#93abc2;font-size:7.8px;line-height:1.35;letter-spacing:.015em
+  margin:-2px 0 7px;padding:6px 8px;border:1px solid #243d55;border-radius:6px;background:#071421;
+  color:#9cb4ca;font-size:8.2px;line-height:1.4;letter-spacing:.015em
 }
 #endgame .eg-graph-viewport{
   height:clamp(500px,64vh,790px);background:
@@ -10,24 +10,24 @@
     repeating-linear-gradient(90deg,transparent 0 74px,#17304918 75px)
 }
 #endgame .eg-r2-canvas{padding:14px 18px 22px;min-width:100%;width:max-content}
-#endgame .eg-r2-canvas svg{display:block;max-width:none!important;min-width:2100px;height:auto!important}
+#endgame .eg-r2-canvas svg{display:block;max-width:none!important;min-width:2400px;height:auto!important}
 #endgame .eg-r2-canvas text,
 #endgame .eg-r2-canvas .label,
-#endgame .eg-r2-canvas .nodeLabel{font-size:9.5px!important;line-height:1.15!important;font-weight:720!important}
+#endgame .eg-r2-canvas .nodeLabel{font-size:11px!important;line-height:1.2!important;font-weight:760!important}
 #endgame .eg-r2-canvas .edgeLabel,
-#endgame .eg-r2-canvas .edgeLabel span{font-size:7.3px!important;color:#8ea9c2!important;background:#07111c!important}
+#endgame .eg-r2-canvas .edgeLabel span{font-size:8px!important;color:#9ab0c5!important;background:#07111c!important;font-weight:700!important}
 #endgame .eg-r2-canvas .edgeLabel rect{fill:#07111c!important;opacity:.96!important;rx:4px;ry:4px}
 #endgame .eg-r2-canvas [data-claim-id]{cursor:pointer;transition:opacity .14s ease,filter .14s ease}
 #endgame .eg-r2-canvas .eg-r2-node-dim{opacity:.09!important;filter:saturate(.3)}
-#endgame .eg-r2-canvas .eg-r2-node-active{opacity:1!important;filter:drop-shadow(0 0 6px #72b9ff78)}
+#endgame .eg-r2-canvas .eg-r2-node-active{opacity:1!important;filter:drop-shadow(0 0 7px #72b9ff86)}
 #endgame .eg-r2-canvas .eg-r2-node-active rect,
 #endgame .eg-r2-canvas .eg-r2-node-active polygon,
-#endgame .eg-r2-canvas .eg-r2-node-active path{stroke-width:2.6px!important}
+#endgame .eg-r2-canvas .eg-r2-node-active path{stroke-width:2.7px!important}
 #endgame .eg-r2-canvas [data-claim-id]:focus-visible{outline:2px solid #fff;outline-offset:3px}
 @media(max-width:850px){
   #endgame .eg-graph-viewport{height:520px;min-height:420px}
-  #endgame .eg-r2-canvas svg{min-width:2000px}
-  #endgame .eg-r2-map-note{font-size:7.4px}
+  #endgame .eg-r2-canvas svg{min-width:2250px}
+  #endgame .eg-r2-map-note{font-size:7.8px}
 }
 @media(prefers-reduced-motion:reduce){
   #endgame .eg-r2-canvas [data-claim-id]{transition:none!important}
