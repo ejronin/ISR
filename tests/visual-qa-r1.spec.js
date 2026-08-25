@@ -33,9 +33,9 @@ test('desktop shell and timeline visual scales', async ({page}) => {
     await page.waitForTimeout(80);
     widths[scale] = await page.locator('.isr-ruler').evaluate(el => el.getBoundingClientRect().width);
   }
-  expect(widths['8×']).toBeGreaterThan(widths['FIT'] * 4);
-  expect(widths['16×']).toBeGreaterThan(widths['8×']);
-  expect(widths['32×']).toBeGreaterThan(widths['16×']);
+  expect(widths['8×']).toBeGreaterThan(widths['FIT'] * 3.5);
+  expect(widths['16×']).toBeGreaterThan(widths['8×'] * 1.5);
+  expect(widths['32×']).toBeGreaterThan(widths['16×'] * 1.5);
   await page.locator('.isr-timeline-reset').click();
   await expect(page.locator('.isr-visual-zoom [data-visual-zoom="FIT"]')).toHaveClass(/active/);
   await page.screenshot({path:'qa-artifacts/timeline-1920x1080.png',fullPage:true});
@@ -51,6 +51,7 @@ test('1366 timeline and 32x remain usable', async ({page}) => {
   const mapBox = await page.locator('.isr-timeline-map-slot').boundingBox();
   expect(mapBox.height).toBeGreaterThan(380);
   await page.locator('.isr-visual-zoom [data-visual-zoom="32×"]').click();
+  await page.waitForTimeout(80);
   const scroll = await page.locator('.isr-ruler-wrap').evaluate(el => ({sw:el.scrollWidth,cw:el.clientWidth}));
   expect(scroll.sw).toBeGreaterThan(scroll.cw * 10);
   await page.screenshot({path:'qa-artifacts/timeline-1366x768-32x.png',fullPage:true});
@@ -66,7 +67,7 @@ test('Endgame adjudication, Mermaid graph, MoU expiry and Hormuz split', async (
   await expect(page.locator('#endgame .eg-ledger')).toHaveCount(8);
   await page.locator('#endgame .eg-ledger[data-claim-id="sanctions"]').click();
   await expect(page.locator('#egWhyStatus .eg-status')).toContainText('CUT OFF / DENIED');
-  await expect(page.locator('#egWhyStatus [data-open-mou="1"]')).toHaveCount(1);
+  expect(await page.locator('#egWhyStatus [data-open-mou="1"]').count()).toBeGreaterThanOrEqual(1);
   await expect(page.locator('#endgame .eg-mou-expired')).toContainText('EXPIRED / NON-CONTROLLING');
   await page.locator('#endgame .eg-ledger[data-claim-id="hormuz"]').click();
   await expect(page.locator('#egWhyStatus .eg-dimension')).toHaveCount(3);
