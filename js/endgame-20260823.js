@@ -6,12 +6,14 @@
     ['./css/endgame-adjudication-r1.css?v=20260824-r1','style'],
     ['./css/timeline-height-r1.css?v=20260824-r1','timeline-height'],
     ['./css/source-bias-r1.css?v=20260824-r1','source-bias'],
-    ['./css/endgame-mermaid-r2.css?v=20260824-r2','mermaid-r2']
+    ['./css/endgame-mermaid-r2.css?v=20260824-r2','mermaid-r2'],
+    ['./css/endgame-public-view-r1.css?v=20260824-r1','public-view-r1']
   ];
   const scripts=[
     ['./js/endgame-adjudication-r1.js?v=20260824-r1','controller'],
     ['./js/source-bias-r1.js?v=20260824-r1','source-bias'],
-    ['./js/endgame-mermaid-r2.js?v=20260824-r2','mermaid-r2']
+    ['./js/endgame-mermaid-r2.js?v=20260824-r2','mermaid-r2'],
+    ['./js/endgame-public-view-r1.js?v=20260824-r1','public-view-r1']
   ];
   styles.forEach(([href,key])=>{
     if(document.querySelector(`link[data-endgame-r1="${key}"]`))return;
