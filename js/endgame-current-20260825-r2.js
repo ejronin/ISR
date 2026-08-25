@@ -65,7 +65,7 @@
     live=await J(LIVE);
     for(let i=0;i<80;i++){if(window.ISREndgamePublicViewR1?.model?.()&&$('#endgame .eg3-shell'))break;await sleep(75);}
     await apply();
-    const root=$('#endgame');if(root){observer=new MutationObserver(()=>{clearTimeout(observer._t);observer._t=setTimeout(()=>apply(),60);});observer.observe(root,{childList:true,subtree:true});}
+    const root=$('#endgame');if(root){observer=new MutationObserver(()=>{clearTimeout(observer._t);observer._t=setTimeout(()=>apply(),60);});observer.observe(root,{childList:true});}
     window.ISREndgameCurrentR2={apply,live:()=>live};
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>init().catch(console.error),{once:true});else init().catch(console.error);
