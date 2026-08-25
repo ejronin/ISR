@@ -15,7 +15,7 @@
     ['./js/source-bias-r1.js?v=20260824-r1','source-bias'],
     ['./js/endgame-mermaid-r2.js?v=20260824-r2','mermaid-r2'],
     ['./js/endgame-public-view-r1.js?v=20260824-r1','public-view-r1'],
-    ['./js/final-mermaid-oil-routes-r1.js?v=20260825-r1','final-mermaid-oil-routes-r1']
+    ['./js/final-mermaid-oil-routes-r1.js?v=20260825-r1-hotfix1','final-mermaid-oil-routes-r1']
   ];
   styles.forEach(([href,key])=>{
     if(document.querySelector(`link[data-endgame-r1="${key}"]`))return;
