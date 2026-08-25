@@ -1,4 +1,5 @@
-/* R1 timeline viewport recovery: prevent the shared map from flex-shrinking back to legacy vh sizing. */
+/* R1 shell/timeline recovery: keep one evidence search and prevent legacy flex shrink. */
+.isr-compact-shell-r1 .global-search-button:not(.isr-authority-launch){display:none!important}
 .isr-compact-shell-r1 #timeline .isr-timeline-map-slot{
   height:clamp(300px,calc(100vh - 315px),720px)!important;
   min-height:280px!important;
