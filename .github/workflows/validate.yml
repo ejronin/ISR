@@ -66,6 +66,12 @@ jobs:
         env:
           PYTHONUTF8: '1'
         run: python scripts/validate_endgame_public_view_r1.py
+      - name: Validate final Mermaid fit and Oil Routes R1
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          node --check js/final-mermaid-oil-routes-r1.js
+          python scripts/validate_final_mermaid_oil_routes_r1.py
       - name: Validate Endgame/source analytical guardrails
         env:
           PYTHONUTF8: '1'
