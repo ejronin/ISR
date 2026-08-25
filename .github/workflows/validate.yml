@@ -54,6 +54,7 @@ jobs:
           node tests/public-ux-20260823.test.js
           node tests/aug24-current-update.test.js
           node tests/ui-endgame-mermaid-r1.test.js
+          node tests/endgame-topology-r2.test.js
       - name: Validate ENDGAME analytical page
         env:
           PYTHONUTF8: '1'
