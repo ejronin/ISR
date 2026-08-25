@@ -62,6 +62,10 @@ jobs:
         env:
           PYTHONUTF8: '1'
         run: python scripts/validate_ui_endgame_mermaid_r1.py
+      - name: Validate ENDGAME / MOU / Public View R1
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_endgame_public_view_r1.py
       - name: Validate Endgame/source analytical guardrails
         env:
           PYTHONUTF8: '1'
