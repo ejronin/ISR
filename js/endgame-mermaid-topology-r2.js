@@ -140,7 +140,7 @@ function wire(){
    if(t.closest('#endgame .eg-graph-controls')&&/^Show all$/i.test(t.textContent.trim())){showAll=true;schedule();return}
    if(t.closest('#endgame .eg-ledger-panel')&&/^Show all paths$/i.test(t.textContent.trim())){showAll=true;schedule()}
  },true);
- obs=new MutationObserver(schedule);obs.observe(document.body,{childList:true,subtree:true});
+ obs=new MutationObserver(ms=>{const host=$('#egMermaidHost');if(!host)return;const selfStable=host.dataset.topologyR2==='ready'&&host.querySelector('.eg-r2-canvas')&&ms.every(m=>host.contains(m.target));if(!selfStable)schedule()});obs.observe(document.body,{childList:true,subtree:true});
 }
 async function init(){
  model=await J('./data/endgame-adjudication-v1.json?v=20260824-r1');
