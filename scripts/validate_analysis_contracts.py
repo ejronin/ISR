@@ -5,8 +5,8 @@ This gate is intentionally additive:
 - the locked 98-record historical ledger and 10-record current overlay stay untouched;
 - existing Ground News metadata remains independent;
 - verified alternative-provider context may be added without averaging providers;
-- when the engineer's Endgame runtime data is present, key analytical invariants are
-  checked without creating a second competing adjudication dataset.
+- when the engineer's UI/Endgame runtime is present, key analytical and display-contract
+  invariants are checked without creating a second competing adjudication dataset.
 """
 from __future__ import annotations
 
@@ -21,6 +21,15 @@ ALLOWED_ENDGAME_STATES = {
     "CUT_OFF_DENIED",
     "OPEN_UNRESOLVED",
 }
+GROUND_POSITIONS = (
+    "FAR LEFT",
+    "LEFT",
+    "LEAN LEFT",
+    "CENTER",
+    "LEAN RIGHT",
+    "RIGHT",
+    "FAR RIGHT",
+)
 
 
 def load(path: str):
@@ -127,11 +136,7 @@ def validate_provider_metadata():
 
 
 def validate_engineer_endgame_if_present():
-    """Validate shared analytical requirements after this branch is combined with UI work.
-
-    The data file intentionally lives on the engineer branch. Keeping this check optional on
-    the standalone source-context branch avoids introducing a second Endgame source of truth.
-    """
+    """Validate shared analytical requirements after this branch is combined with UI work."""
     path = ROOT / "data/endgame-adjudication-v1.json"
     if not path.exists():
         return "not present on standalone source-context branch"
@@ -191,14 +196,78 @@ def validate_engineer_endgame_if_present():
     return f"{len(claims)} Endgame claims checked"
 
 
+def validate_engineer_bias_ui_if_present():
+    """Block a combined merge if alternative-provider data exists but the UI ignores it.
+
+    The exact visual palette belongs to the UI engineer, but the combined implementation must
+    expose semantic hooks that permit seven distinct Ground News positions rather than one
+    neutral strip, and it must actually read the enriched multi-provider context.
+    """
+    view_path = ROOT / "js/endgame-adjudication-r1.js"
+    css_path = ROOT / "css/endgame-adjudication-r1.css"
+    if not view_path.exists() or not css_path.exists():
+        return "not present on standalone source-context branch"
+
+    view = view_path.read_text(encoding="utf-8")
+    css = css_path.read_text(encoding="utf-8")
+    compact = "".join(view.split())
+
+    if "media_bias_context" not in view:
+        fail("engineer source UI does not consume enriched media_bias_context; AllSides/Ad Fontes fallbacks would never render")
+    if not ("ALLSIDES" in view or "provider" in view.lower()):
+        fail("engineer source UI does not expose named alternative bias providers")
+
+    # A semantic per-position hook is required. It may be a data attribute or generated class;
+    # the validator deliberately does not prescribe the exact color values.
+    semantic_hook = any(
+        token in compact
+        for token in (
+            "dataset.biasPosition=",
+            "dataset.bias=",
+            "data-bias-position",
+            "bias-${",
+            "bias_",
+        )
+    )
+    if not semantic_hook:
+        fail("Ground News seven-position scale has no per-position semantic hook for distinct bias coloring")
+
+    # Require the CSS to reference more than the generic/selected ground-scale states. This
+    # prevents shipping the current all-neutral scale while still allowing the engineer to
+    # choose data attributes, classes, or CSS variables.
+    bias_css_signals = sum(
+        css.lower().count(token)
+        for token in (
+            "far-left",
+            "far_left",
+            "lean-left",
+            "lean_left",
+            "center",
+            "lean-right",
+            "lean_right",
+            "far-right",
+            "far_right",
+            "data-bias",
+        )
+    )
+    if bias_css_signals < 5:
+        fail("Ground News political-bias positions are not given distinct provider-specific CSS treatment")
+
+    if "NOT_RATED" in view and "CENTER" in view and "media_bias_context" not in view:
+        fail("unrated source path risks conflating NOT_RATED with CENTER")
+
+    return "alternative providers + seven-position color hooks checked"
+
+
 def main():
     validate_counts()
     outlet_count = validate_provider_metadata()
     endgame_status = validate_engineer_endgame_if_present()
+    bias_ui_status = validate_engineer_bias_ui_if_present()
     print(
         "ANALYSIS CONTRACT GATE: PASS — "
         f"{outlet_count} alternative-provider outlet records; "
-        f"Endgame: {endgame_status}; 98 + 10 = 108 unchanged"
+        f"Endgame: {endgame_status}; Bias UI: {bias_ui_status}; 98 + 10 = 108 unchanged"
     )
 
 
