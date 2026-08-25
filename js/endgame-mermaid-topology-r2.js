@@ -18,7 +18,6 @@ const shortStage=(c,s)=>{
 };
 const blockShape=(id,label,kind)=>{
  const q=mlab(label);
- if(kind==='ORIGINAL_CONDITION')return `${id}(["${q}"])`;
  if(/OBSERVABLE|CURRENT_POSITION/.test(kind))return `${id}("${q}")`;
  return `${id}["${q}"]`;
 };
@@ -88,13 +87,13 @@ function installKey(){
  note.textContent='Each row is one original Iranian victory condition. Columns preserve the evidence sequence instead of allowing automatic graph layout to rearrange it. Gold = original condition · purple = MoU/paper term · blue/cyan = later evidence · terminal color = current disposition.';
  $('.eg-inline-head',panel)?.after(note);
 }
-function centerSelected(host,svg,claimId){
- if(showAll)return;
+function positionViewport(host,claimId){
  requestAnimationFrame(()=>{
-   const active=$$(`[data-claim-id="${CSS.escape(claimId)}"]`,svg);if(!active.length)return;
-   const rects=active.map(n=>n.getBoundingClientRect()).filter(b=>b.width&&b.height);if(!rects.length)return;
-   const hostRect=host.getBoundingClientRect(),cy=(Math.min(...rects.map(b=>b.top))+Math.max(...rects.map(b=>b.bottom)))/2-hostRect.top+host.scrollTop;
-   host.scrollTop=Math.max(0,cy-host.clientHeight/2);
+   if(showAll){host.scrollTo({left:0,top:0,behavior:'auto'});return}
+   const row=Math.max(0,model.claims.findIndex(c=>c.id===claimId));
+   const rowCenter=((row+.5)/model.claims.length)*host.scrollHeight;
+   host.scrollTop=Math.max(0,rowCenter-host.clientHeight/2);
+   host.scrollLeft=Math.max(0,host.scrollWidth-host.clientWidth);
  });
 }
 
@@ -108,7 +107,7 @@ async function render(){
    const svg=$('svg',canvas);if(!svg)throw Error('no svg');svg.removeAttribute('style');svg.setAttribute('role','img');svg.setAttribute('aria-labelledby','egR2GraphTitle egR2GraphDesc');
    const ns='http://www.w3.org/2000/svg',title=document.createElementNS(ns,'title'),desc=document.createElementNS(ns,'desc');title.id='egR2GraphTitle';title.textContent='Strategic adjudication matrix of original Iranian victory conditions';desc.id='egR2GraphDesc';desc.textContent='Eight fixed claim rows read left to right across evidence-step columns to current disposition. Hormuz branches in its terminal cell into separate legal, operational, and fee tests.';svg.prepend(desc);svg.prepend(title);
    graph.nodeMeta.forEach((meta,id)=>{const n=graphItem(svg,id);if(!n)return;n.dataset.claimId=meta.claim;n.dataset.stageKind=meta.stage?.kind||meta.dim?.id||'terminal';n.classList.toggle('eg-r2-node-dim',!showAll&&meta.claim!==claimId);n.classList.toggle('eg-r2-node-active',!showAll&&meta.claim===claimId);n.tabIndex=0;n.setAttribute('role','button');n.setAttribute('aria-label',`${model.claims.find(x=>x.id===meta.claim)?.short_label}: ${meta.stage?.label||meta.dim?.label||state(model.claims.find(x=>x.id===meta.claim)?.current_disposition?.state)}`);const go=e=>{if(e.type==='keydown'&&!['Enter',' '].includes(e.key))return;e.preventDefault();showAll=false;window.ISREndgameAdjudicationR1?.pick?.(meta.claim,true)};n.onclick=go;n.onkeydown=go});
-   host.dataset.graphSource='structured-adjudication-topology-r2';host.dataset.topologyR2='ready';host.dataset.topologyEngine='mermaid-block-grid';installKey();centerSelected(host,svg,claimId);
+   host.dataset.graphSource='structured-adjudication-topology-r2';host.dataset.topologyR2='ready';host.dataset.topologyEngine='mermaid-block-grid';installKey();positionViewport(host,claimId);
  }catch(e){console.error('Endgame topology R2 render failed',e);host.dataset.topologyR2='failed'}
 }
 function schedule(){if(pending)return;pending=true;setTimeout(()=>{pending=false;render()},45)}
