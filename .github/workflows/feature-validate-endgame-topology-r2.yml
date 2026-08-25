@@ -1,0 +1,82 @@
+name: Feature validation — Endgame Mermaid Topology R2
+
+on:
+  push:
+    branches: [endgame-mermaid-topology-r2]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: feature-endgame-mermaid-topology-r2
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Build exhaustive source registry
+        run: python scripts/build_source_registry.py --root .
+      - name: Run standing regression suite
+        env:
+          PYTHONUTF8: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/validate_aug24_counts.py
+          python scripts/validate.py
+          python scripts/validate_integration.py
+          python scripts/validate_ux.py
+          python scripts/privacy_scan.py
+          node tests/presentation.test.js
+          node tests/temporal-state.test.js
+          node tests/security-rendering.test.js
+          node tests/costing.test.js
+          node tests/forensic-v1.3.2.test.js
+          node tests/full-scope-20260822.test.js
+          node tests/aug22-update.test.js
+          node tests/endgame-page.test.js
+          node tests/public-ux-20260823.test.js
+          node tests/aug24-current-update.test.js
+          node tests/ui-endgame-mermaid-r1.test.js
+          node tests/endgame-topology-r2.test.js
+          python scripts/validate_endgame_page.py
+          python scripts/validate_ui_endgame_mermaid_r1.py
+          python scripts/validate_analysis_contracts.py
+          python scripts/validate_public_ux_20260823.py
+          python data/forensic-v1.3.2/validate-addon.py
+          python scripts/validate_full_scope.py
+          python scripts/validate_aug22_update.py
+          python scripts/validate_aug24_counts.py
+          git diff --check 27c87d9bc699af3f2f49329af32ebf6c95b806ed HEAD
+      - name: Install Playwright and Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --package-lock=false @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Run topology browser QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa-artifacts
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/isr-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          sleep 2
+          npx playwright test tests/visual-qa-topology-r2.spec.js --reporter=line
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: endgame-mermaid-topology-r2-qa
+          path: qa-artifacts/
+          if-no-files-found: warn
