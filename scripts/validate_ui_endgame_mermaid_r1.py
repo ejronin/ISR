@@ -25,6 +25,7 @@ loader = (ROOT / "js/endgame-20260823.js").read_text(encoding="utf-8")
 view = (ROOT / "js/endgame-adjudication-r1.js").read_text(encoding="utf-8")
 css = (ROOT / "css/endgame-adjudication-r1.css").read_text(encoding="utf-8")
 workflow = (ROOT / ".github/workflows/validate.yml").read_text(encoding="utf-8")
+view_compact = "".join(view.split())
 
 def records(data):
     if isinstance(data, list):
@@ -96,8 +97,8 @@ assert "vendor/mermaid/mermaid.min.js" in view
 assert "endgame-adjudication-r1.js" in loader
 assert "endgame-adjudication-r1.css" in loader
 assert "cdn.jsdelivr" not in view.lower() and "unpkg.com" not in view.lower()
-assert "securityLevel: 'strict'" in view
-assert "htmlLabels: false" in view
+assert "securityLevel:'strict'" in view_compact
+assert "htmlLabels:false" in view_compact
 assert "buildMermaidGraph(adj)" in view
 assert "dataset.graphSource='structured-adjudication'" in view
 for display in adj["terminal_state_labels"].values():
