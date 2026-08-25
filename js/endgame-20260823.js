@@ -7,16 +7,20 @@
     ['./css/timeline-height-r1.css?v=20260824-r1','timeline-height'],
     ['./css/source-bias-r1.css?v=20260824-r1','source-bias']
   ];
-  const js='./js/endgame-adjudication-r1.js?v=20260824-r1';
+  const scripts=[
+    ['./js/endgame-adjudication-r1.js?v=20260824-r1','controller'],
+    ['./js/source-bias-r1.js?v=20260824-r1','source-bias']
+  ];
   styles.forEach(([href,key])=>{
     if(document.querySelector(`link[data-endgame-r1="${key}"]`))return;
     const link=document.createElement('link');
     link.rel='stylesheet';link.href=href;link.dataset.endgameR1=key;
     document.head.append(link);
   });
-  if(!document.querySelector('script[data-endgame-r1]')){
+  scripts.forEach(([src,key])=>{
+    if(document.querySelector(`script[data-endgame-r1="${key}"]`))return;
     const script=document.createElement('script');
-    script.src=js;script.async=false;script.dataset.endgameR1='controller';
+    script.src=src;script.async=false;script.dataset.endgameR1=key;
     document.head.append(script);
-  }
+  });
 }());
