@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Validate provider-separated source context and, when present, the UI Endgame contract.
+"""Validate provider-separated source context and the UI Endgame analytical contract.
 
 This gate is intentionally additive:
 - the locked 98-record historical ledger and 10-record current overlay stay untouched;
 - existing Ground News metadata remains independent;
 - verified alternative-provider context may be added without averaging providers;
-- when the engineer's UI/Endgame runtime is present, key analytical and display-contract
-  invariants are checked without creating a second competing adjudication dataset.
+- the approved UI remains structurally separate from the analytical/source guardrails.
 """
 from __future__ import annotations
 
@@ -21,15 +20,6 @@ ALLOWED_ENDGAME_STATES = {
     "CUT_OFF_DENIED",
     "OPEN_UNRESOLVED",
 }
-GROUND_POSITIONS = (
-    "FAR LEFT",
-    "LEFT",
-    "LEAN LEFT",
-    "CENTER",
-    "LEAN RIGHT",
-    "RIGHT",
-    "FAR RIGHT",
-)
 
 
 def load(path: str):
@@ -125,8 +115,6 @@ def validate_provider_metadata():
     if not valid_https(negative.get("profile_url", "")):
         fail("AFP AllSides negative-control URL is invalid")
 
-    # Existing Ground News metadata is an independent control. Alternative metadata must
-    # not silently mutate a real Ground News rating or reinterpret NOT_RATED as Center.
     if ground.get("profiles", {}).get("Reuters", {}).get("status") != "RATED":
         fail("existing Ground News Reuters control unexpectedly changed")
     if ground.get("profiles", {}).get("Reuters", {}).get("bias_raw") != "CENTER":
@@ -135,54 +123,52 @@ def validate_provider_metadata():
     return len(outlet_rows)
 
 
-def validate_engineer_endgame_if_present():
-    """Validate shared analytical requirements after this branch is combined with UI work."""
-    path = ROOT / "data/endgame-adjudication-v1.json"
-    if not path.exists():
-        return "not present on standalone source-context branch"
-
-    data = json.loads(path.read_text(encoding="utf-8"))
+def validate_endgame():
+    data = load("data/endgame-adjudication-v1.json")
     labels = set((data.get("terminal_state_labels") or {}).keys())
     if labels != ALLOWED_ENDGAME_STATES:
-        fail(f"engineer Endgame terminal-state enum mismatch: {sorted(labels)}")
+        fail(f"Endgame terminal-state enum mismatch: {sorted(labels)}")
 
     mou = data.get("mou_instrument") or {}
     if mou.get("current_state") != "EXPIRED_NON_CONTROLLING":
-        fail("engineer Endgame does not mark the June MoU EXPIRED_NON_CONTROLLING")
+        fail("Endgame does not mark the June MoU EXPIRED_NON_CONTROLLING")
     if mou.get("final_deal_completed") is not False:
-        fail("engineer Endgame incorrectly marks the MoU final deal complete")
+        fail("Endgame incorrectly marks the MoU final deal complete")
     if not mou.get("new_bargain_rule"):
-        fail("engineer Endgame lacks the new-bargain rule for an expired MoU")
+        fail("Endgame lacks the new-bargain rule for an expired MoU")
 
     claims = data.get("claims") or []
     if len(claims) < 8:
-        fail("engineer Endgame has too few victory-condition claims")
+        fail("Endgame has too few victory-condition claims")
     ids = [row.get("id") for row in claims]
     if None in ids or len(ids) != len(set(ids)):
-        fail("engineer Endgame claim IDs are missing or duplicated")
+        fail("Endgame claim IDs are missing or duplicated")
     by_id = {row.get("id"): row for row in claims}
 
     for claim in claims:
         state = (claim.get("current_disposition") or {}).get("state")
         if state not in ALLOWED_ENDGAME_STATES:
-            fail(f"engineer Endgame claim {claim.get('id')} has invalid state {state}")
+            fail(f"Endgame claim {claim.get('id')} has invalid state {state}")
         if not claim.get("path"):
-            fail(f"engineer Endgame claim {claim.get('id')} has no decision path")
+            fail(f"Endgame claim {claim.get('id')} has no decision path")
 
-    # Clause 11 is analytically material to the frozen-assets path. The historical MoU
-    # promised asset availability; its later expiry/non-performance is part of the chain.
     assets = by_id.get("assets")
     if not assets:
-        fail("engineer Endgame is missing the frozen-assets claim")
+        fail("Endgame is missing the frozen-assets claim")
     assets_mou = assets.get("mou_relationship") or {}
     if assets_mou.get("relevant") is not True or str(assets_mou.get("clause_ref")) != "11":
         fail("frozen-assets claim must link to MoU Clause 11")
     if assets_mou.get("current_control_state") != "NON_CONTROLLING":
         fail("frozen-assets claim does not preserve the expired MoU as non-controlling")
+    asset_path_text = " ".join(
+        f"{row.get('label', '')} {row.get('detail', '')}" for row in assets.get("path", [])
+    ).upper()
+    if "CLAUSE 11" not in asset_path_text or "EXPIRED" not in asset_path_text:
+        fail("frozen-assets path must visibly traverse Clause 11 and MoU expiry")
 
     hormuz = by_id.get("hormuz")
     if not hormuz:
-        fail("engineer Endgame is missing the Hormuz claim")
+        fail("Endgame is missing the Hormuz claim")
     dimensions = {row.get("id"): row for row in hormuz.get("dimensions", [])}
     if set(dimensions) != {"legal", "operational", "fees"}:
         fail(f"Hormuz dimensions are not exactly legal/operational/fees: {sorted(dimensions)}")
@@ -196,29 +182,25 @@ def validate_engineer_endgame_if_present():
     return f"{len(claims)} Endgame claims checked"
 
 
-def validate_engineer_bias_ui_if_present():
-    """Block a combined merge if alternative-provider data exists but the UI ignores it.
-
-    The exact visual palette belongs to the UI engineer, but the combined implementation must
-    expose semantic hooks that permit seven distinct Ground News positions rather than one
-    neutral strip, and it must actually read the enriched multi-provider context.
-    """
-    view_path = ROOT / "js/endgame-adjudication-r1.js"
-    css_path = ROOT / "css/endgame-adjudication-r1.css"
-    if not view_path.exists() or not css_path.exists():
-        return "not present on standalone source-context branch"
-
-    view = view_path.read_text(encoding="utf-8")
-    css = css_path.read_text(encoding="utf-8")
+def validate_bias_ui():
+    base_view = (ROOT / "js/endgame-adjudication-r1.js").read_text(encoding="utf-8")
+    bias_view = (ROOT / "js/source-bias-r1.js").read_text(encoding="utf-8")
+    base_css = (ROOT / "css/endgame-adjudication-r1.css").read_text(encoding="utf-8")
+    bias_css = (ROOT / "css/source-bias-r1.css").read_text(encoding="utf-8")
+    loader = (ROOT / "js/endgame-20260823.js").read_text(encoding="utf-8")
+    view = base_view + "\n" + bias_view
+    css = base_css + "\n" + bias_css
     compact = "".join(view.split())
 
     if "media_bias_context" not in view:
-        fail("engineer source UI does not consume enriched media_bias_context; AllSides/Ad Fontes fallbacks would never render")
-    if not ("ALLSIDES" in view or "provider" in view.lower()):
-        fail("engineer source UI does not expose named alternative bias providers")
+        fail("source UI does not consume provider-separated media_bias_context")
+    if "ALLSIDES" not in view or "AD_FONTES" not in view:
+        fail("source UI does not expose both named alternative bias providers")
+    if "media-bias-provider-metadata.json" not in bias_view:
+        fail("source UI does not load verified alternative-provider metadata")
+    if "source-bias-r1.js" not in loader or "source-bias-r1.css" not in loader:
+        fail("source-bias JS/CSS modules are not loaded by the Endgame/UI loader")
 
-    # A semantic per-position hook is required. It may be a data attribute or generated class;
-    # the validator deliberately does not prescribe the exact color values.
     semantic_hook = any(
         token in compact
         for token in (
@@ -230,40 +212,27 @@ def validate_engineer_bias_ui_if_present():
         )
     )
     if not semantic_hook:
-        fail("Ground News seven-position scale has no per-position semantic hook for distinct bias coloring")
+        fail("bias scales have no per-position semantic hook for distinct coloring")
 
-    # Require the CSS to reference more than the generic/selected ground-scale states. This
-    # prevents shipping the current all-neutral scale while still allowing the engineer to
-    # choose data attributes, classes, or CSS variables.
-    bias_css_signals = sum(
-        css.lower().count(token)
-        for token in (
-            "far-left",
-            "far_left",
-            "lean-left",
-            "lean_left",
-            "center",
-            "lean-right",
-            "lean_right",
-            "far-right",
-            "far_right",
-            "data-bias",
-        )
-    )
-    if bias_css_signals < 5:
-        fail("Ground News political-bias positions are not given distinct provider-specific CSS treatment")
+    for position in ("FAR-LEFT", "LEFT", "LEAN-LEFT", "CENTER", "LEAN-RIGHT", "RIGHT", "FAR-RIGHT"):
+        if f'data-bias-position="{position}"' not in bias_css:
+            fail(f"Ground News bias CSS is missing distinct treatment for {position}")
 
-    if "NOT_RATED" in view and "CENTER" in view and "media_bias_context" not in view:
-        fail("unrated source path risks conflating NOT_RATED with CENTER")
+    if 'data-bias-provider="ALLSIDES"' not in bias_css:
+        fail("AllSides provider-specific scale styling is missing")
+    if "isr-adfontes-meter" not in bias_css or "AD_FONTES" not in bias_view:
+        fail("Ad Fontes provider-native bias display is missing")
+    if "NOT RATED is never interpreted as CENTER" not in bias_view:
+        fail("unrated-to-Center negative-control language is missing")
 
-    return "alternative providers + seven-position color hooks checked"
+    return "Ground News colors + AllSides/Ad Fontes fallbacks checked"
 
 
 def main():
     validate_counts()
     outlet_count = validate_provider_metadata()
-    endgame_status = validate_engineer_endgame_if_present()
-    bias_ui_status = validate_engineer_bias_ui_if_present()
+    endgame_status = validate_endgame()
+    bias_ui_status = validate_bias_ui()
     print(
         "ANALYSIS CONTRACT GATE: PASS — "
         f"{outlet_count} alternative-provider outlet records; "
