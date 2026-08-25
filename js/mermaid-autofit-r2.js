@@ -4,7 +4,7 @@
   const HOSTS=['#egMermaidHost','#eg3CausalHost'];
   const fittedSvg=new WeakMap();
   const observedHosts=new WeakSet();
-  let queued=false;
+  let queued=false,rootObserver=null;
 
   function visible(host){
     if(!host||!host.isConnected)return false;
@@ -55,11 +55,20 @@
   }
   function run(){queued=false;HOSTS.forEach(sel=>inspect($(sel)));}
   function schedule(){if(queued)return;queued=true;requestAnimationFrame(run);}
-  function watch(){
+  function observeEndgame(){
+    const root=$('#endgame');
+    if(!root)return false;
+    rootObserver?.disconnect();
+    rootObserver=new MutationObserver(schedule);
+    rootObserver.observe(root,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','class']});
     schedule();
-    const root=$('#endgame')||document.body;
-    const mo=new MutationObserver(schedule);
-    mo.observe(root,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','class','style']});
+    return true;
+  }
+  function watch(){
+    if(!observeEndgame()){
+      const bootstrap=new MutationObserver(()=>{if(observeEndgame())bootstrap.disconnect();});
+      bootstrap.observe(document.documentElement,{childList:true,subtree:true});
+    }
     addEventListener('resize',schedule,{passive:true});
     addEventListener('hashchange',()=>setTimeout(schedule,0));
     document.addEventListener('click',e=>{
