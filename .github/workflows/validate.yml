@@ -53,10 +53,19 @@ jobs:
           node tests/endgame-page.test.js
           node tests/public-ux-20260823.test.js
           node tests/aug24-current-update.test.js
+          node tests/ui-endgame-mermaid-r1.test.js
       - name: Validate ENDGAME analytical page
         env:
           PYTHONUTF8: '1'
         run: python scripts/validate_endgame_page.py
+      - name: Validate compact shell, Mermaid adjudication and source context
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_ui_endgame_mermaid_r1.py
+      - name: Validate Endgame/source analytical guardrails
+        env:
+          PYTHONUTF8: '1'
+        run: python scripts/validate_analysis_contracts.py
       - name: Validate Aug. 23 public UX
         env:
           PYTHONUTF8: '1'

@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-08-24",
+  "methodology": {
+    "purpose": "Third-party publisher-level political/media-bias context. These ratings never alter Atlas proposition-level evidence grade.",
+    "provider_separation": "Provider methodologies are not normalized, averaged, or converted into a universal Atlas bias score.",
+    "display_rule": "Always identify the provider with its native rating. If no verified third-party rating is stored, display NO INDEPENDENT POLITICAL-BIAS RATING LOCATED. For official/technical sources where political-bias scoring is not meaningful, display NOT APPLICABLE.",
+    "ground_news_compatibility": "Existing data/ground-news-outlet-metadata.json remains authoritative for Ground News fields. This file adds alternative-provider records and multi-provider display context without rewriting Ground News metadata."
+  },
+  "provider_definitions": {
+    "ALLSIDES": {
+      "display_name": "AllSides",
+      "native_scale": "LEFT / LEAN LEFT / CENTER / LEAN RIGHT / RIGHT",
+      "rating_scope_note": "Publisher-level media-bias context; rating scope is provider-defined and must be shown with the provider name."
+    },
+    "AD_FONTES": {
+      "display_name": "Ad Fontes Media",
+      "native_scale": "Numeric bias score on -42 to +42 plus provider category; separate 0-64 reliability score",
+      "rating_scope_note": "Publisher-level bias and reliability context. Ad Fontes reliability is not an Atlas evidence grade."
+    }
+  },
+  "outlets": [
+    {
+      "canonical_name": "Agence France-Presse",
+      "aliases": ["AFP", "AFP Fact Check"],
+      "ratings": [
+        {
+          "provider": "AD_FONTES",
+          "status": "RATED",
+          "label": "MIDDLE",
+          "bias_score": -2.4,
+          "reliability_label": "Reliable, Analysis/Fact Reporting",
+          "reliability_score": 47.15,
+          "profile_url": "https://adfontesmedia.com/agence-france-presse-bias-reliability/",
+          "checked_at": "2026-08-24",
+          "notes": "Use as the alternative-provider example when Ground News has no rating. AllSides currently lists AFP as Not Rated; do not treat that as a Center rating."
+        }
+      ]
+    },
+    {
+      "canonical_name": "Reuters",
+      "aliases": ["Reuters Fact Check"],
+      "ratings": [
+        {
+          "provider": "ALLSIDES",
+          "status": "RATED",
+          "label": "CENTER",
+          "bias_score": -0.78,
+          "confidence": "HIGH",
+          "profile_url": "https://www.allsides.com/news-source/reuters-media-bias",
+          "checked_at": "2026-08-24",
+          "notes": "Additional provider context only. Existing Ground News metadata remains independently displayed and is not replaced."
+        }
+      ]
+    },
+    {
+      "canonical_name": "Bellingcat",
+      "aliases": [],
+      "ratings": [
+        {
+          "provider": "AD_FONTES",
+          "status": "RATED",
+          "label": "MIDDLE",
+          "bias_score": -2.83,
+          "reliability_label": "Reliable, Fact Reporting",
+          "reliability_score": 48.39,
+          "profile_url": "https://adfontesmedia.com/bellingcat-bias-and-reliability/",
+          "checked_at": "2026-08-24",
+          "notes": "Display because the canonical Bellingcat outlet is present in the generated Atlas source registry."
+        }
+      ]
+    }
+  ],
+  "negative_control": {
+    "outlet": "AFP",
+    "provider": "ALLSIDES",
+    "status": "NOT_RATED",
+    "profile_url": "https://www.allsides.com/news-source/afp-media-bias",
+    "rule": "A provider's NOT_RATED result must never render as CENTER and does not override a verified rating from a different named provider."
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ISR Endgame Adjudication v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "page_id",
+    "terminal_state_labels",
+    "mou_instrument",
+    "claims"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "page_id": {
+      "const": "endgame-adjudication"
+    },
+    "reviewed_through": {
+      "type": "string"
+    },
+    "analytical_lock": {
+      "type": "string"
+    },
+    "terminal_state_labels": {
+      "type": "object",
+      "required": [
+        "PROCEEDS_UNDER_IRAN_DEMAND",
+        "WALKED_BACK_DILUTED",
+        "CUT_OFF_DENIED",
+        "OPEN_UNRESOLVED"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "PROCEEDS_UNDER_IRAN_DEMAND": {"type": "string"},
+        "WALKED_BACK_DILUTED": {"type": "string"},
+        "CUT_OFF_DENIED": {"type": "string"},
+        "OPEN_UNRESOLVED": {"type": "string"}
+      }
+    },
+    "mou_instrument": {
+      "type": "object",
+      "required": [
+        "instrument_id",
+        "current_state",
+        "display_state",
+        "final_deal_completed",
+        "new_bargain_rule",
+        "source_refs"
+      ]
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "ledger_condition",
+          "short_label",
+          "current_disposition",
+          "mou_relationship",
+          "path"
+        ],
+        "properties": {
+          "id": {"type": "string"},
+          "ledger_condition": {"type": "string"},
+          "short_label": {"type": "string"},
+          "current_disposition": {
+            "type": "object",
+            "required": ["state", "reasoning"],
+            "properties": {
+              "state": {
+                "enum": [
+                  "PROCEEDS_UNDER_IRAN_DEMAND",
+                  "WALKED_BACK_DILUTED",
+                  "CUT_OFF_DENIED",
+                  "OPEN_UNRESOLVED"
+                ]
+              },
+              "reasoning": {"type": "string"}
+            }
+          },
+          "mou_relationship": {
+            "type": "object",
+            "required": [
+              "relevant",
+              "dependent",
+              "applicability",
+              "current_control_state",
+              "final_deal_required",
+              "final_deal_completed"
+            ],
+            "properties": {
+              "relevant": {"type": "boolean"},
+              "dependent": {"type": "boolean"},
+              "applicability": {"type": "string"},
+              "current_control_state": {"type": "string"},
+              "final_deal_required": {"type": "boolean"},
+              "final_deal_completed": {"type": "boolean"},
+              "term_present": {"type": ["boolean", "null"]},
+              "clause_ref": {"type": ["string", "null"]},
+              "relationship": {"type": "string"}
+            }
+          },
+          "path": {
+            "type": "array",
+            "minItems": 2,
+            "items": {"$ref": "#/$defs/stage"}
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "label", "state", "reasoning", "source_refs"],
+              "properties": {
+                "id": {"type": "string"},
+                "label": {"type": "string"},
+                "state": {
+                  "enum": [
+                    "PROCEEDS_UNDER_IRAN_DEMAND",
+                    "WALKED_BACK_DILUTED",
+                    "CUT_OFF_DENIED",
+                    "OPEN_UNRESOLVED"
+                  ]
+                },
+                "reasoning": {"type": "string"},
+                "source_refs": {
+                  "type": "array",
+                  "items": {"$ref": "#/$defs/sourceRef"}
+                },
+                "mou_ref": {"$ref": "#/$defs/mouRef"}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "required": ["scope", "id"],
+      "properties": {
+        "scope": {"enum": ["endgame", "hormuz", "registry"]},
+        "id": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "mouRef": {
+      "type": "object",
+      "required": ["tab"],
+      "properties": {
+        "tab": {"type": "string"},
+        "clause": {"type": "string"}
+      }
+    },
+    "stage": {
+      "type": "object",
+      "required": ["id", "kind", "label", "detail", "source_refs"],
+      "properties": {
+        "id": {"type": "string"},
+        "kind": {"type": "string"},
+        "label": {"type": "string"},
+        "detail": {"type": "string"},
+        "source_refs": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/sourceRef"}
+        },
+        "mou_ref": {"$ref": "#/$defs/mouRef"}
+      }
+    }
+  }
+}

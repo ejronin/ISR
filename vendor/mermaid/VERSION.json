@@ -1,0 +1,8 @@
+{
+  "name": "mermaid",
+  "version": "11.6.0",
+  "license": "MIT",
+  "runtime_file": "mermaid.min.js",
+  "sha256": "c2a496e5230276f435b4aee61fcccc75170b2aac9a0fecab100605473c8e5c8f",
+  "source": "npm package mermaid@11.6.0; trailing whitespace normalized only"
+}
