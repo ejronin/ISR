@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -24,4 +26,4 @@ jobs:
           grep -q "structured-adjudication-r2" js/endgame-mermaid-r2.js
           grep -q "MIXED DIMENSIONS" js/endgame-mermaid-r2.js
           grep -q "curve:'basis'" js/endgame-mermaid-r2.js
-          git diff --check HEAD~4 HEAD
+          git diff --check 27c87d9bc699af3f2f49329af32ebf6c95b806ed HEAD
