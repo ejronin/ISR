@@ -29,7 +29,7 @@ for r in items:
     for label,url in r['sources']:
         req(url.startswith('https://'),f"{r['id']} source must be https")
 
-for marker in ['#egMermaidHost','#eg3CausalHost','MIN_SCALE=.04','function fit(host)','Oil Routes — SCHEMATIC','Trade / logistics routes','REDSEA','RAIL']:
+for marker in ['#egMermaidHost','#eg3CausalHost','MIN_SCALE=.04','function fit(host)','Oil Routes — SCHEMATIC','Trade / logistics routes','oil-routes-r1.json']:
     req(marker in js,f'JS marker {marker}')
 req("button(controls,'FIT'" in js,'FIT control must be wired')
 req("button(controls,'−'" in js and "button(controls,'+'" in js,'zoom controls must be wired')
