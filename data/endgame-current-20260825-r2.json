@@ -1,0 +1,161 @@
+{
+  "version": "2026.08.25-r2",
+  "evidence_cutoff": "2026-08-25 13:35 ET",
+  "sources": {
+    "S24": {
+      "id": "S24",
+      "publisher": "Reuters",
+      "date": "2026-08-25",
+      "supports": "Iran expressed general willingness to resume talks through Pakistani mediation; an Iranian presidential-office official said Munir's visit produced valuable diplomatic achievements; a Pakistani government source said Pakistan told Tehran the U.S. would reverse the new sanctions before or during renewed talks. Reuters notes there was no immediate White House or State Department confirmation of that sanctions-reversal message.",
+      "url": "https://www.reuters.com/world/china/iran-vows-retaliate-after-us-widens-sanctions-2026-08-25/",
+      "quality": "HIGH; U.S.-sanctions reversal element is PAKISTANI-SOURCE CLAIM"
+    },
+    "S25": {
+      "id": "S25",
+      "publisher": "Financial Times",
+      "date": "2026-08-25",
+      "supports": "Iran and Oman announced progress toward an interim Hormuz framework: a temporary joint navigation corridor, joint mine-clearing, continued technical negotiations on a permanent corridor and future administration, traffic management, navigational/security services, consultation with Gulf littoral states, and adherence to international law.",
+      "url": "https://www.ft.com/content/b3e4d264-55f0-485e-8e1a-0ba0cbe006b6",
+      "quality": "HIGH; reports JOINT OMAN-IRAN STATEMENT"
+    },
+    "S26": {
+      "id": "S26",
+      "publisher": "Reuters",
+      "date": "2026-08-25",
+      "supports": "Trump said all mines had been detonated or removed from international waters of the Strait of Hormuz and warned that vessels laying new mines would be destroyed. Reuters separately reported Hormuz oil transits remained far below pre-war levels.",
+      "url": "https://www.reuters.com/world/trump-says-strait-hormuz-has-been-demined-warns-iran-not-plant-more-2026-08-25/",
+      "quality": "HIGH for FACT OF U.S. PRESIDENTIAL CLAIM; mine-clearance completeness remains a U.S. claim unless independently verified"
+    },
+    "S27": {
+      "id": "S27",
+      "publisher": "Reuters",
+      "date": "2026-08-25",
+      "supports": "Pakistan said its Tehran mission made significant progress on preventing escalation, reopening Hormuz, ending the conflict and reaching a negotiated settlement after Munir had spoken with Trump.",
+      "url": "https://www.reuters.com/world/asia-pacific/pakistan-iran-made-significant-progress-talks-conflict-minister-says-2026-08-25/",
+      "quality": "HIGH for PAKISTANI OFFICIAL READOUT"
+    }
+  },
+  "status_overrides": {
+    "MOU restoration": "OLD VERSION DEAD / SUCCESSOR MARITIME TERMS NOW BEING NEGOTIATED",
+    "Hormuz leverage": "STILL POWERFUL / JOINT CORRIDOR PATH NOW CONCRETE",
+    "Unilateral Hormuz administration": "NOT VALIDATED / JOINT OMAN-LITTORAL FRAMEWORK ADVANCING",
+    "Pakistan / Oman negotiations": "ACTIVE / CONCRETE MARITIME FRAMEWORK PRODUCED",
+    "Kinetic escalation": "OPEN / HIGH COST / NO PUBLIC PREPARATION SURGE",
+    "U.S. secondary-sanctions cure period": "ACTIVE / POTENTIAL BARGAINING LEVER"
+  },
+  "paragraph5_update": {
+    "title": "Aug. 25 behavioral confirmation — what Iran accepted with Oman",
+    "text": "Iran and Oman are now discussing a temporary joint corridor, joint mine-clearing, a permanent corridor, future administration, traffic management and maritime/security services, with consultations involving other Gulf littoral states and reference to international law. That is behaviorally consistent with Paragraph 5's shared/future-governance structure. It does not validate the later claim that Paragraph 5 had already granted Iran unilateral permanent control or a compulsory transit-toll right.",
+    "source_ids": ["S25", "S01"]
+  },
+  "mou_now": {
+    "text": "The June MOU remains expired and non-controlling. What changed on Aug. 25 is that Iran and Oman moved from discussing a possible successor mechanism to a concrete phased maritime framework. The emerging structure reuses recognizable Paragraph 5 concepts — joint navigation, mine-clearing, future administration, services, littoral-state consultation and international law — but it is a new post-collapse negotiation, not proof that the old MOU has been restored. Tehran can still try to frame a successor bargain as Washington returning to prior commitments; the observable record is that Iran is negotiating new implementation terms after the old bargain failed.",
+    "source_ids": ["S01", "S06", "S24", "S25", "S26", "S27"]
+  },
+  "node_evidence": [
+    {
+      "node_id": "M12",
+      "classification": "ACTOR POSITION + MEDIATED CLAIM",
+      "claim": "Iran publicly says coercion should stop while mediated reporting says Tehran is willing to resume talks if sequencing produces a visible U.S. move.",
+      "source_ids": ["S24"],
+      "confidence": "High on statements; medium on unconfirmed U.S. sanctions-reversal message",
+      "editorial_note": "Keep the Pakistani-source account of U.S. sanctions reversal separate from confirmed U.S. policy."
+    },
+    {
+      "node_id": "M13",
+      "classification": "FACT / OBSERVED DIPLOMATIC BEHAVIOR",
+      "claim": "Iran validated Pakistan's mediation and then accepted a phased Oman maritime framework.",
+      "source_ids": ["S24", "S25", "S27"],
+      "confidence": "High",
+      "editorial_note": "This is stronger than rhetoric because both mediator and Iranian/Omani behavior moved."
+    },
+    {
+      "node_id": "M14",
+      "classification": "SYNTHESIS",
+      "claim": "Iran is trying to preserve a narrative of negotiating from strength while its behavior shows it is negotiating a new post-collapse mechanism rather than enforcing the old MOU as controlling law.",
+      "source_ids": ["S06", "S24", "S25"],
+      "confidence": "Medium-high",
+      "editorial_note": "Narrative purpose is an inference; the old MOU's non-controlling status and new framework are observable."
+    },
+    {
+      "node_id": "H9",
+      "classification": "FACT / JOINT DIPLOMATIC FRAMEWORK",
+      "claim": "Iran and Oman moved the joint-corridor path from hypothetical to a concrete phased framework.",
+      "source_ids": ["S25"],
+      "confidence": "High",
+      "editorial_note": "The framework is not yet a final permanent navigation agreement."
+    },
+    {
+      "node_id": "H11",
+      "classification": "U.S. PRESIDENTIAL CLAIM",
+      "claim": "Trump says U.S. forces cleared all mines from international waters of Hormuz and will destroy new minelayers.",
+      "source_ids": ["S26"],
+      "confidence": "High for fact of statement; independent completeness verification not established",
+      "editorial_note": "Do not convert the presidential claim into independently verified total demining."
+    },
+    {
+      "node_id": "H12",
+      "classification": "INFERENCE",
+      "claim": "If the international lane is substantially clear, Iran's leverage increasingly comes from its ability to impose risk and contest rules rather than exclusive possession of a mine-clearing solution.",
+      "source_ids": ["S25", "S26"],
+      "confidence": "Medium",
+      "editorial_note": "Conditional on the practical extent of U.S. mine clearance; shipping remains heavily depressed."
+    },
+    {
+      "node_id": "H13",
+      "classification": "FACT + TEXTUAL COMPARISON",
+      "claim": "The Aug. 25 Oman-Iran framework again describes joint/future administration, littoral-state consultation and international law rather than recognition of unilateral permanent Iranian transit authority.",
+      "source_ids": ["S01", "S25"],
+      "confidence": "High",
+      "editorial_note": "Absence of unilateral recognition in the joint framework does not itself resolve every future fee or service question."
+    },
+    {
+      "node_id": "Q0",
+      "classification": "ACTOR POSITION",
+      "claim": "Iran's public line says U.S. coercion must stop and Washington must change course.",
+      "source_ids": ["S24"],
+      "confidence": "High",
+      "editorial_note": "Fact of Iranian public position."
+    },
+    {
+      "node_id": "Q1",
+      "classification": "ACTOR THREAT",
+      "claim": "Iranian officials simultaneously keep coercive retaliation against U.S. interests and energy chokepoints on the table.",
+      "source_ids": ["S24"],
+      "confidence": "High",
+      "editorial_note": "Threat language is not evidence of an operational decision to strike."
+    },
+    {
+      "node_id": "Q2",
+      "classification": "FACT / OBSERVED BEHAVIOR",
+      "claim": "Iran's observable diplomatic behavior is engagement: Pakistan mediation was publicly validated and Oman produced a concrete maritime framework.",
+      "source_ids": ["S24", "S25", "S27"],
+      "confidence": "High",
+      "editorial_note": "Behavior does not prove a final settlement has been accepted."
+    },
+    {
+      "node_id": "Q3",
+      "classification": "SYNTHESIS",
+      "claim": "The clearest current distinction is defiant public framing versus practical negotiation over sequencing and implementation.",
+      "source_ids": ["S24", "S25", "S27"],
+      "confidence": "Medium-high",
+      "editorial_note": "Use plain language: Iran is still talking tough while working through an exit mechanism."
+    },
+    {
+      "node_id": "Q4",
+      "classification": "MEDIATED CLAIM / OPEN PATH",
+      "claim": "A Pakistani source says Washington's new sanctions could be reversed before or during renewed talks, giving Tehran a possible way to say Washington moved first.",
+      "source_ids": ["S24"],
+      "confidence": "Medium",
+      "editorial_note": "Reuters reported no immediate White House or State Department confirmation; show this as a mediated claim, not an agreed U.S. commitment."
+    },
+    {
+      "node_id": "NARROW",
+      "classification": "SYNTHESIS",
+      "claim": "Iran still retains coercive capacity, but the lower-cost path that is actually advancing is mediated negotiation rather than unilateral restoration of its old terms.",
+      "source_ids": ["S24", "S25", "S26", "S27"],
+      "confidence": "Medium-high",
+      "editorial_note": "Update if Iran abandons the framework, military preparation surges, or Washington rejects the mediated sequence."
+    }
+  ]
+}
