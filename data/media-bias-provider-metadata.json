@@ -54,22 +54,6 @@
       ]
     },
     {
-      "canonical_name": "BBC News",
-      "aliases": ["BBC"],
-      "ratings": [
-        {
-          "provider": "ALLSIDES",
-          "status": "RATED",
-          "label": "CENTER",
-          "bias_score": -0.8,
-          "confidence": "MEDIUM",
-          "profile_url": "https://www.allsides.com/news-source/bbc-news-media-bias",
-          "checked_at": "2026-08-24",
-          "notes": "AllSides states this rating applies to BBC online written news, not television/radio content."
-        }
-      ]
-    },
-    {
       "canonical_name": "Bellingcat",
       "aliases": [],
       "ratings": [
@@ -82,7 +66,7 @@
           "reliability_score": 48.39,
           "profile_url": "https://adfontesmedia.com/bellingcat-bias-and-reliability/",
           "checked_at": "2026-08-24",
-          "notes": "Only display if the canonical Bellingcat outlet exists in the generated Atlas source registry."
+          "notes": "Display because the canonical Bellingcat outlet is present in the generated Atlas source registry."
         }
       ]
     }
