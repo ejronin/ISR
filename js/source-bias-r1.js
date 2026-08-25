@@ -93,7 +93,7 @@
     const profiles=new Map((registry.outlet_profiles||[]).map(p=>[p.display_name,p]));
     $$('.isr-outlet-card',root).forEach(card=>{
       const name=$('.isr-outlet-head strong',card)?.textContent?.trim(),profile=profiles.get(name);if(!profile)return;
-      const box=$('.isr-gn',card);if(!box)return;
+      const box=$('.isr-gn',card);if(!box||box.dataset.biasR1==='provider-separated')return;
       renderBias(box,profile);box.dataset.biasR1='provider-separated';
     });
   }
