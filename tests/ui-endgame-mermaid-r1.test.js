@@ -33,8 +33,8 @@ assert.equal(data.mou_instrument.display_state, 'EXPIRED / NON-CONTROLLING');
 assert.match(data.mou_instrument.new_bargain_rule, /later agreement may independently revive/i);
 
 assert.match(view, /buildMermaidGraph\(adj\)/);
-assert.match(view, /securityLevel: 'strict'/);
-assert.match(view, /htmlLabels: false/);
+assert.match(view, /securityLevel\s*:\s*'strict'/);
+assert.match(view, /htmlLabels\s*:\s*false/);
 assert.match(view, /vendor\/mermaid\/mermaid\.min\.js/);
 assert.doesNotMatch(view, /cdn\.jsdelivr|unpkg\.com/i);
 assert.match(view, /\['16×','32×'\]/);
