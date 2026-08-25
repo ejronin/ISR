@@ -1,5 +1,11 @@
-/* R1 shell/timeline recovery: keep one evidence search and prevent legacy flex shrink. */
+/* R1 shell/timeline recovery: keep one evidence search, native ruler scrolling, and full desktop map height. */
 .isr-compact-shell-r1 .global-search-button:not(.isr-authority-launch){display:none!important}
+.isr-compact-shell-r1 #timeline .isr-ruler-wrap{
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  overscroll-behavior-x:contain;
+  scrollbar-width:thin;
+}
 .isr-compact-shell-r1 #timeline .isr-timeline-map-slot{
   height:clamp(300px,calc(100vh - 315px),720px)!important;
   min-height:280px!important;
