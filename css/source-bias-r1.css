@@ -1,0 +1,117 @@
+/* Provider-specific political/media-bias context. This is publisher context only;
+   it is deliberately distinct from Atlas evidence-grade/status coloring. */
+
+.isr-ground-scale[data-bias-provider="GROUND_NEWS"],
+.isr-ground-scale[data-bias-provider="ALLSIDES"]{
+  gap:2px;
+}
+
+.isr-ground-scale span[data-bias-position]{
+  color:#dbe8f5;
+  border-width:1px;
+  border-style:solid;
+  transition:border-color .12s ease,box-shadow .12s ease,filter .12s ease;
+}
+
+/* Cool = left, neutral = center, warm = right. Text labels remain authoritative. */
+.isr-ground-scale span[data-bias-position="FAR-LEFT"]{background:#17345f;border-color:#2e5e9b;color:#e2efff}
+.isr-ground-scale span[data-bias-position="LEFT"]{background:#1c4773;border-color:#3978ad;color:#e5f2ff}
+.isr-ground-scale span[data-bias-position="LEAN-LEFT"]{background:#28566f;border-color:#4f879f;color:#e8f5ff}
+.isr-ground-scale span[data-bias-position="CENTER"]{background:#3d4652;border-color:#6f7b89;color:#f1f4f7}
+.isr-ground-scale span[data-bias-position="LEAN-RIGHT"]{background:#69522c;border-color:#9b7740;color:#fff1d5}
+.isr-ground-scale span[data-bias-position="RIGHT"]{background:#743d2d;border-color:#a85d46;color:#ffe6dc}
+.isr-ground-scale span[data-bias-position="FAR-RIGHT"]{background:#6e2931;border-color:#a84b58;color:#ffe1e5}
+
+.isr-ground-scale span[data-bias-position].selected{
+  border:2px solid #fff!important;
+  color:#fff!important;
+  box-shadow:0 0 0 2px #0a1622,0 0 0 3px #a8d4ff!important;
+  filter:brightness(1.12);
+  font-weight:950;
+}
+
+.isr-bias-provider-note{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  flex-wrap:wrap;
+  font-size:7px;
+  line-height:1.3;
+  color:#91a9c0;
+}
+
+.isr-bias-secondary{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+  align-items:center;
+  padding-top:3px;
+  border-top:1px solid #243b50;
+}
+
+.isr-bias-secondary-label{
+  color:#849ab0;
+  font-size:6.8px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+.isr-provider-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  min-height:21px;
+  padding:2px 5px;
+  border:1px solid #3b536b;
+  border-radius:5px;
+  background:#0d1d2c;
+  color:#dce8f4;
+  font-size:6.8px;
+  font-weight:800;
+  text-decoration:none;
+}
+.isr-provider-chip:hover{border-color:#6e91b1;background:#12283d}
+.isr-provider-chip[data-provider="ALLSIDES"]{border-color:#556f8b}
+.isr-provider-chip[data-provider="AD_FONTES"]{border-color:#6b6489}
+
+.isr-adfontes-wrap{display:grid;gap:4px}
+.isr-adfontes-meter{
+  --bias-pos:50%;
+  position:relative;
+  height:22px;
+  border:1px solid #40566d;
+  border-radius:5px;
+  background:linear-gradient(90deg,#1c4773 0%,#28566f 32%,#3d4652 50%,#69522c 68%,#743d2d 100%);
+  overflow:hidden;
+}
+.isr-adfontes-meter::after{
+  content:'';
+  position:absolute;
+  top:2px;
+  bottom:2px;
+  left:var(--bias-pos);
+  width:3px;
+  transform:translateX(-50%);
+  background:#fff;
+  box-shadow:0 0 0 1px #07121d,0 0 5px #fff8;
+}
+.isr-adfontes-axis{
+  display:flex;
+  justify-content:space-between;
+  gap:6px;
+  font-size:6.4px;
+  color:#8399af;
+}
+
+.isr-bias-reliability{
+  font-size:7px;
+  line-height:1.3;
+  color:#a9bacc;
+}
+
+@media(max-width:680px){
+  .isr-ground-scale span{font-size:5.3px!important;min-width:38px}
+  .isr-ground-scale{overflow-x:auto;grid-template-columns:repeat(7,minmax(42px,1fr))!important}
+  .isr-ground-scale[data-bias-provider="ALLSIDES"]{grid-template-columns:repeat(5,minmax(50px,1fr))!important}
+}
