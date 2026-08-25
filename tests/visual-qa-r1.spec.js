@@ -1,5 +1,4 @@
 const { test, expect } = require('@playwright/test');
-const fs = require('node:fs');
 
 async function openAtlas(page, viewport) {
   await page.setViewportSize(viewport);
@@ -56,14 +55,17 @@ test('1366 timeline and 32x remain usable', async ({page}) => {
   await page.screenshot({path:'qa-artifacts/timeline-1366x768-32x.png',fullPage:true});
 });
 
-test('Endgame adjudication, MoU expiry and Hormuz split', async ({page}) => {
+test('Endgame adjudication, Mermaid graph, MoU expiry and Hormuz split', async ({page}) => {
   await openAtlas(page, {width:1920,height:1080});
   await page.locator('[data-peer-workspace="ANALYSIS"]').click();
   await page.evaluate(() => window.showAtlasPanel('endgame'));
   await page.waitForSelector('#endgame.eg-r1');
+  await expect(page.locator('#egMermaidHost')).toHaveAttribute('data-graph-source','structured-adjudication');
+  await expect(page.locator('#egMermaidHost svg')).toHaveCount(1);
   await expect(page.locator('#endgame .eg-ledger')).toHaveCount(8);
   await page.locator('#endgame .eg-ledger[data-claim-id="sanctions"]').click();
   await expect(page.locator('#egWhyStatus .eg-status')).toContainText('CUT OFF / DENIED');
+  await expect(page.locator('#egWhyStatus [data-open-mou="1"]')).toHaveCount(1);
   await expect(page.locator('#endgame .eg-mou-expired')).toContainText('EXPIRED / NON-CONTROLLING');
   await page.locator('#endgame .eg-ledger[data-claim-id="hormuz"]').click();
   await expect(page.locator('#egWhyStatus .eg-dimension')).toHaveCount(3);
@@ -83,6 +85,10 @@ test('source context and mobile stacking', async ({page}) => {
   await expect(reuters).toContainText('GROUND NEWS · CENTER · VERY HIGH FACTUALITY');
   const unrated = page.locator('.isr-outlet-card').filter({hasText:'Xinhua'}).first();
   if (await unrated.count()) await expect(unrated).toContainText('NO INDEPENDENT POLITICAL-BIAS RATING LOCATED');
+  const stateMedia = page.locator('.isr-outlet-card').filter({hasText:'Press TV'}).first();
+  if (await stateMedia.count()) await expect(stateMedia).toContainText('Provenance: STATE MEDIA');
+  const imagery = page.locator('.isr-outlet-card').filter({hasText:'AWS Registry / NASA OPERA'}).first();
+  if (await imagery.count()) await expect(imagery).toContainText('Provenance: SATELLITE / IMAGERY');
   await page.locator('[data-peer-workspace="ANALYSIS"]').click();
   await page.evaluate(() => window.showAtlasPanel('endgame'));
   await page.waitForSelector('#endgame.eg-r1');
