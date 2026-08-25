@@ -19,6 +19,7 @@ test('desktop shell and timeline visual scales', async ({page}) => {
   await expect(page.locator('.kpis')).toBeHidden();
   await expect(page.locator('.isr-chronology-context')).toContainText('108 current chronology · 98 locked historical');
   await expect(page.locator('[data-global-evidence-search="true"]:visible')).toHaveCount(1);
+  await expect(page.locator('.global-search-button:visible')).toHaveCount(1);
 
   await page.locator('[data-peer-workspace="TIMELINE"]').click();
   await page.waitForSelector('.isr-timeline-map-slot');
