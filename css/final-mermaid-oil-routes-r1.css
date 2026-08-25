@@ -1,0 +1,10 @@
+/* Final Mermaid fit + Oil Routes patch R1 */
+#egMermaidHost,#eg3CausalHost{position:relative;cursor:grab;overscroll-behavior:contain}
+#egMermaidHost.dragging,#eg3CausalHost.dragging{cursor:grabbing;user-select:none}
+#egMermaidHost .eg-graph-canvas,#eg3CausalHost .eg3-causal-canvas{transform-origin:0 0!important;transition:transform .12s ease;will-change:transform}
+.eg3-causal-controls{display:flex;justify-content:flex-end;gap:.35rem;align-items:center;margin:.35rem 0 .45rem}
+.eg3-causal-controls .eg-small-btn,.eg3-causal-controls .eg3-graph-btn{border:1px solid #3a5a78;background:#102840;color:#dceaff;border-radius:.42rem;min-height:2rem;padding:.35rem .65rem;font-size:.74rem;font-weight:850;cursor:pointer}
+.eg3-causal-controls button:focus-visible{outline:2px solid #a8d4ff;outline-offset:2px}
+#egMermaidHost[data-mermaid-scale],#eg3CausalHost[data-mermaid-scale]{scrollbar-gutter:stable}
+.oil-route-popup .route-label{font-size:.7rem;font-weight:900;letter-spacing:.04em;color:#9edce7;margin:.2rem 0 .35rem}
+@media(prefers-reduced-motion:reduce){#egMermaidHost .eg-graph-canvas,#eg3CausalHost .eg3-causal-canvas{transition:none}}
