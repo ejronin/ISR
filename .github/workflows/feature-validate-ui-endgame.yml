@@ -34,7 +34,7 @@ jobs:
           if compgen -G 'staging/endgame-css.part*' > /dev/null; then
             cat $(find staging -maxdepth 1 -name 'endgame-css.part*' | sort -V) > css/endgame-adjudication-r1.css
           fi
-      - name: Vendor pinned Mermaid 11.6.0 if needed
+      - name: Vendor pinned Mermaid 11.6.0 and normalize whitespace
         shell: bash
         run: |
           set -euo pipefail
@@ -47,9 +47,15 @@ jobs:
             cp package/dist/mermaid.min.js ../vendor/mermaid/mermaid.min.js
             cp package/LICENSE ../vendor/mermaid/LICENSE
             cd ..
-            SHA="$(sha256sum vendor/mermaid/mermaid.min.js | awk '{print $1}')"
-            printf '{\n  "name": "mermaid",\n  "version": "11.6.0",\n  "license": "MIT",\n  "runtime_file": "mermaid.min.js",\n  "sha256": "%s",\n  "source": "npm package mermaid@11.6.0"\n}\n' "$SHA" > vendor/mermaid/VERSION.json
           fi
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('vendor/mermaid/mermaid.min.js')
+          text = p.read_text(encoding='utf-8')
+          p.write_text('\n'.join(line.rstrip(' \t') for line in text.splitlines()) + ('\n' if text.endswith('\n') else ''), encoding='utf-8')
+          PY
+          SHA="$(sha256sum vendor/mermaid/mermaid.min.js | awk '{print $1}')"
+          printf '{\n  "name": "mermaid",\n  "version": "11.6.0",\n  "license": "MIT",\n  "runtime_file": "mermaid.min.js",\n  "sha256": "%s",\n  "source": "npm package mermaid@11.6.0; trailing whitespace normalized only"\n}\n' "$SHA" > vendor/mermaid/VERSION.json
       - name: Commit generated self-hosted assets to feature branch
         shell: bash
         run: |
@@ -57,9 +63,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
           rm -f staging/endgame-r1.part* staging/endgame-css.part* || true
-          git add js/endgame-adjudication-r1.js css/endgame-adjudication-r1.css vendor/mermaid staging || true
+          git add js/endgame-adjudication-r1.js css/endgame-adjudication-r1.css vendor/mermaid || true
+          if [[ -d staging ]]; then git add -A staging; fi
           if ! git diff --cached --quiet; then
-            git commit -m "Assemble Endgame R1 and vendor Mermaid 11.6.0"
+            git commit -m "Normalize vendored Mermaid 11.6.0 bundle"
             git push origin HEAD:ui-endgame-mermaid-r1
           fi
       - name: Build exhaustive source registry
