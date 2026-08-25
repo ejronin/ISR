@@ -1,23 +1,24 @@
-# Endgame / MoU / Source-Context Contract — 2026-08-24
+# Endgame / MoU / Source-Context Integration Contract — 2026-08-24
 
-This document is the integration contract for the UI/Endgame/Mermaid pass.
+This document records the analytical handoff for the approved UI/Endgame/Mermaid pass.
 
 ## Locked invariants
 
 - `data/integration-v1.2/events.json` remains the immutable 98-record historical ledger.
 - `data/current-update-20260824/events.json` remains the 10-record append-only current overlay.
 - Current chronology remains `98 + 10 = 108` through 2026-08-24 14:14 ET.
-- UI work must not silently advance the Aug. 22 historical, MoU/Hormuz, or Aug. 20 outcome analytical locks.
+- UI work must not silently advance the Aug. 22 historical/MoU locks or the Aug. 20 outcome lock.
 
-## Endgame adjudication source
+## One Endgame source of truth
 
-Use:
+The engineer branch owns the runtime adjudication model:
 
-`data/endgame-adjudication-20260824.json`
+- `schemas/endgame-adjudication-v1.json`
+- `data/endgame-adjudication-v1.json`
 
-as the machine-readable decision-path contract for the Endgame flowchart.
+Do **not** create a second competing Endgame JSON dataset.
 
-The Mermaid graph is a visualization of this data. It is not the analytical source of truth.
+The Mermaid graph and accessible ledger must derive from the same structured adjudication model. The graph is a visualization, not the analytical source of truth.
 
 Allowed terminal states are exactly:
 
@@ -26,66 +27,87 @@ Allowed terminal states are exactly:
 - `CUT_OFF_DENIED`
 - `OPEN_UNRESOLVED`
 
-Do not create a composite war score or an aggregate victory percentage.
+No composite war score or aggregate victory percentage.
 
-### MoU handling
+## Required Endgame analytical rules
 
-The June 17 interim MoU is modeled as a historical instrument whose 60-day final-deal deadline expired on August 17 without a final agreement.
+### MoU status
 
-Current contract state:
+The June 2026 interim MoU is a historical instrument. Its 60-day final-deal deadline expired August 17 without a final agreement.
+
+Current state:
 
 `EXPIRED_NON_CONTROLLING`
 
-An Iranian proposal to return to, restore, or invoke the old MoU is a bargaining position. It is not proof that the expired instrument remains controlling.
+Iran citing, restoring, or falling back on the old MoU is a bargaining position. It is not proof the expired instrument remains controlling.
 
-A new agreement may independently revive the same substantive term. In that case the new instrument is evaluated separately.
+A new agreement may independently revive the same substantive term. That later agreement must be evaluated as a new controlling bargain.
 
-### Hormuz handling
+### Frozen assets must link to Clause 11
 
-Never collapse the following into a single `Iran controls Hormuz` verdict:
+The frozen/restricted-assets Endgame path is MoU-relevant.
+
+Clause 11 promised broad asset availability subject to implementation procedures. The promise did not mature into durable broad access before the MoU failed.
+
+Therefore the runtime Endgame model must not mark the assets claim as `mou_relationship.relevant = false` or omit Clause 11.
+
+Required relationship:
+
+- MoU relevant: yes;
+- clause: `11`;
+- historical effect: strong Iran-favorable paper promise;
+- current old-instrument state: non-controlling / expired;
+- observable outcome: broad durable access not established.
+
+### Hormuz remains three-dimensional
+
+Never collapse `Iran controls Hormuz` into one binary verdict.
+
+Preserve separately:
 
 1. legal / recognized sovereignty or control;
 2. de facto operational routing / gatekeeping;
 3. monetizable fee / economic-rent authority.
 
-The current adjudication contract intentionally gives the operational branch a different disposition from the legal and fee branches.
+The operational branch may proceed under Iran's narrow practical demand while the legal and fee branches remain denied. That distinction must survive every UI representation.
 
 ## Media-bias provider data
 
-Existing Ground News metadata remains in:
+Existing Ground News metadata remains authoritative in:
 
 `data/ground-news-outlet-metadata.json`
 
-Verified alternative-provider records are in:
+Verified alternative-provider records are stored in:
 
 `data/media-bias-provider-metadata.json`
 
-The alternative-provider file currently seeds real examples for:
+Current real fallback/additional examples include:
 
 - AFP / Agence France-Presse — Ad Fontes Media;
 - Reuters — AllSides additional context;
 - BBC News — AllSides additional context;
-- Bellingcat — Ad Fontes Media when that canonical outlet is present in the registry.
+- Bellingcat — Ad Fontes Media.
 
-AFP is also a deliberate negative-control case: AllSides lists AFP as `Not Rated`. That must never render as `Center` and must not suppress the separately verified Ad Fontes rating.
+AFP is also a deliberate negative-control case: AllSides lists AFP as `Not Rated`. That must never render as `Center` and must not suppress the separately verified Ad Fontes record.
 
 ## Provider separation
 
-Never average or normalize Ground News, AllSides, and Ad Fontes into a single hidden Atlas political-bias score.
+Never average or normalize Ground News, AllSides, and Ad Fontes into one hidden Atlas political-bias score.
 
-Always identify the provider with the rating.
+Always identify the provider with its native rating.
 
 Political/media-bias context is publisher-level context only. It never changes proposition-level Atlas evidence grade.
 
-## Source provenance
+## Source provenance remains separate
 
-Atlas provenance remains separate from political bias. Preserve source roles such as:
+Atlas provenance/source role remains independent of political bias. Preserve useful classes such as:
 
 - wire service;
 - independent news;
 - state media;
 - official government;
 - military / official;
+- regional news;
 - think tank / research;
 - academic;
 - OSINT / technical;
@@ -94,7 +116,7 @@ Atlas provenance remains separate from political bias. Preserve source roles suc
 - social / actor claim;
 - international organization.
 
-State affiliation / ownership notes should be shown when supported.
+State affiliation or ownership notes should be shown when supported.
 
 ## Generated registry enrichment
 
@@ -110,21 +132,21 @@ Then apply the additive provider context:
 python scripts/enrich_source_bias_context.py --root .
 ```
 
-The enrichment step preserves the existing `ground_news` object and adds `media_bias_context` to outlet profiles.
+The enrichment step preserves the existing `ground_news` object and adds `media_bias_context` to generated outlet profiles.
 
-Preferred display logic is:
+Preferred compact display logic:
 
 1. Ground News when actually rated;
 2. AllSides when Ground News is not rated and a verified AllSides record exists;
 3. Ad Fontes when neither above is rated and a verified Ad Fontes record exists.
 
-All stored verified ratings remain inspectable even when one provider is preferred for the compact UI.
+All stored verified ratings remain inspectable even when one provider is preferred for compact display.
 
-If no verified external rating is stored, render:
+If no verified external rating is stored, display:
 
 `NO INDEPENDENT POLITICAL-BIAS RATING LOCATED`
 
-For official/technical source classes where a political-bias rating is not meaningful, render:
+For official/technical source classes where political-bias scoring is not meaningful, display:
 
 `NOT APPLICABLE`
 
@@ -136,26 +158,23 @@ Run:
 python scripts/validate_analysis_contracts.py
 ```
 
-The contract validator checks:
+On the standalone source-context branch, the gate validates:
 
 - 98 historical records;
 - 10 current-overlay records;
 - 108 current chronology;
-- terminal-state enum integrity;
-- one terminal state per claim path;
-- MoU-dependent paths explicitly marked `EXPIRED_NON_CONTROLLING`;
-- new-bargain test present for MoU-dependent claims;
-- Endgame/Hormuz source references resolve into the existing analytical datasets;
-- legal/operational/fee Hormuz branches remain distinct;
-- alternative bias providers are named and have HTTPS provenance URLs;
-- AFP provides a real non-Ground-News Ad Fontes fallback example;
-- AFP/AllSides `NOT_RATED` remains a negative control;
+- verified alternative-provider metadata and HTTPS provider provenance;
+- AFP Ad Fontes fallback;
+- Bellingcat Ad Fontes fallback;
+- AFP/AllSides `NOT_RATED` negative control;
 - existing Ground News Reuters metadata remains independently intact.
 
-## UI integration expectation
+After this branch is combined with the engineer branch, the same gate additionally validates the engineer-owned `data/endgame-adjudication-v1.json`, including:
 
-The engineer should consume these contracts rather than duplicate analytical verdicts in hard-coded HTML/JS strings.
+- terminal-state enum integrity;
+- expired/non-controlling MoU state and new-bargain rule;
+- frozen-assets linkage to MoU Clause 11;
+- legal/operational/fee Hormuz branch separation;
+- operational gatekeeping cannot silently become legal sovereignty or fee authority.
 
-A selected Endgame claim should highlight the relevant decision path and expose its evidence trail. The accessible ledger must present the same terminal state as the graph.
-
-Any future evidence update that changes a verdict should update structured adjudication data first; the graph and ledger should then derive from that data.
+The engineer's existing Endgame/Mermaid validators remain authoritative for rendering, schema, accessibility, and browser behavior.
