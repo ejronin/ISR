@@ -1,0 +1,6 @@
+/* Mermaid auto-fit R2 — load-time centering + interaction guidance */
+#egMermaidHost,#eg3CausalHost{width:100%;min-width:0}
+.eg3-causal-layout>*{min-width:0}
+.eg3-causal-viewport{width:100%;min-width:0}
+.isr-mermaid-help{display:flex;align-items:center;min-height:2rem;margin:.2rem 0 .45rem;padding:.4rem .6rem;border:1px solid #29445f;border-radius:.45rem;background:#0b1a2c;color:#b9c9d9;font-size:.72rem;line-height:1.4}
+@media(max-width:800px){.isr-mermaid-help{font-size:.7rem}.eg3-causal-layout{grid-template-columns:minmax(0,1fr)!important}}
