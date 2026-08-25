@@ -1,0 +1,13 @@
+/* R1 timeline viewport recovery: prevent the shared map from flex-shrinking back to legacy vh sizing. */
+.isr-compact-shell-r1 #timeline .isr-timeline-map-slot{
+  height:clamp(300px,calc(100vh - 315px),720px)!important;
+  min-height:280px!important;
+  flex:0 0 clamp(300px,calc(100vh - 315px),720px)!important;
+}
+@media(max-width:850px){
+  .isr-compact-shell-r1 #timeline .isr-timeline-map-slot{
+    height:min(44vh,430px)!important;
+    min-height:260px!important;
+    flex:0 0 auto!important;
+  }
+}
