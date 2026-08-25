@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "title": "Oil Routes — supplemental strategic route overlays",
+  "geometry_policy": "All geometry is schematic and follows named, source-supported corridor nodes. It is not live AIS, exact track alignment, pipeline alignment, or targeting-quality data.",
+  "routes": [
+    {
+      "id": "REDSEA-SUEZ-MARITIME",
+      "name": "Red Sea / Suez energy shipping corridor",
+      "mode": "maritime",
+      "status": "ACTIVE CORRIDOR · DEGRADED / CONTESTED IN 2026",
+      "note": "Schematic Red Sea axis between Bab el-Mandeb and Suez. The corridor remains a major energy route, but 2026 traffic is affected by Houthi attacks, blockade threats and rerouting. This line does not represent a live vessel track.",
+      "coords": [[12.5833,43.3333],[29.9667,32.5500]],
+      "nodes": [
+        ["Bab el-Mandeb",12.5833,43.3333],
+        ["Suez / southern canal approach",29.9667,32.5500]
+      ],
+      "sources": [
+        ["U.S. EIA — Red Sea attacks increase shipping times and freight rates","https://www.energy.gov/documents/062-eia-red-sea-attacks-increase-shipping-times-and-freight-ratespdf"],
+        ["Reuters — Hormuz and Bab el-Mandeb traffic update, Aug. 24, 2026","https://www.reuters.com/business/energy/fewer-than-20-ships-transit-key-strait-hormuz-over-weekend-data-shows-2026-08-24/"]
+      ]
+    },
+    {
+      "id": "REDSEA-SAUDI-EAST-WEST",
+      "name": "Saudi East–West crude pipeline to Yanbu",
+      "mode": "pipeline",
+      "status": "OPERATIONAL HORMUZ-BYPASS CORRIDOR",
+      "note": "Schematic endpoint-to-endpoint representation of Saudi Arabia's existing East–West crude pipeline from the Abqaiq oil region to the Red Sea export system at Yanbu. It is not the surveyed pipeline alignment.",
+      "coords": [[25.9350,49.6661],[24.0883,38.0582]],
+      "nodes": [
+        ["Abqaiq oil region",25.9350,49.6661],
+        ["Yanbu",24.0883,38.0582]
+      ],
+      "sources": [
+        ["Reuters — Saudi Arabia considers East–West pipeline expansion, July 7, 2026","https://www.reuters.com/business/energy/saudi-arabia-considers-expansion-oil-pipeline-red-sea-sources-say-2026-07-07/"],
+        ["U.S. EIA — World Oil Transit Chokepoints","https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/wotc.pdf"]
+      ]
+    },
+    {
+      "id": "RAIL-CN-IR-APRIN",
+      "name": "China–Iran rail corridor to Aprin",
+      "mode": "rail",
+      "status": "OPERATIONAL TWO-WAY FREIGHT CORRIDOR",
+      "note": "Schematic rail corridor using source-supported nodes for the China–Kazakhstan–Turkmenistan–Iran route. The line shows strategic connectivity, not exact rail geometry or train position.",
+      "coords": [[34.2583,108.9286],[45.1703,82.5703],[43.3389,52.8556],[39.2444,55.5264],[37.4298,54.6144],[36.8467,54.4300],[35.5822,51.2217]],
+      "nodes": [
+        ["Xi'an",34.2583,108.9286],
+        ["Alashankou rail gateway",45.1703,82.5703],
+        ["Zhanaozen / Uzen corridor node",43.3389,52.8556],
+        ["Bereket rail junction",39.2444,55.5264],
+        ["Incheh Borun rail gateway",37.4298,54.6144],
+        ["Gorgan",36.8467,54.4300],
+        ["Aprin Railway Station",35.5822,51.2217]
+      ],
+      "sources": [
+        ["Aprin Dry Port — Iran–China two-way freight train service launched","https://www.aprindryport.com/news/view/APRIN-china-train"],
+        ["Aprin / IRNA — China–Iran–Europe rail corridor and Kazakhstan–Turkmenistan routing","https://www.aprindryport.com/news/view/iran-fast-secure-gateway-freight-transport-china-europe"],
+        ["UNECE — Kazakhstan–Turkmenistan–Iran rail corridor","https://unece.org/sites/default/files/2025-04/1.%20Sandeep%20Jain.pdf"]
+      ]
+    },
+    {
+      "id": "RAIL-RU-IR-APRIN",
+      "name": "Russia–Iran eastern INSTC rail corridor to Aprin",
+      "mode": "rail",
+      "status": "OPERATIONAL SCHEDULED FREIGHT CORRIDOR",
+      "note": "Schematic eastern INSTC route used by scheduled Russia–Iran freight via Kazakhstan, Turkmenistan and Incheh Borun. The line follows named corridor nodes and is not exact track geometry or a live train position.",
+      "coords": [[55.7506,37.6175],[46.3500,48.0350],[43.3389,52.8556],[39.2444,55.5264],[37.4298,54.6144],[36.8467,54.4300],[35.5822,51.2217]],
+      "nodes": [
+        ["Moscow",55.7506,37.6175],
+        ["Astrakhan",46.3500,48.0350],
+        ["Zhanaozen / Uzen corridor node",43.3389,52.8556],
+        ["Bereket rail junction",39.2444,55.5264],
+        ["Incheh Borun rail gateway",37.4298,54.6144],
+        ["Gorgan",36.8467,54.4300],
+        ["Aprin Railway Station",35.5822,51.2217]
+      ],
+      "sources": [
+        ["Aprin Dry Port — first scheduled freight train from Russia arrives at Aprin","https://www.aprindryport.com/news/view/first-scheduled-freight-train-russia-aprin"],
+        ["N.Trans Lab — eastern branch of the International North–South Transport Corridor","https://index1520.com/upload/medialibrary/dfe/yi0ikrx2vy47e1bnf19wclcmp8i1w2pu/INSTC_EN.pdf"],
+        ["UNECE — Kazakhstan–Turkmenistan–Iran rail corridor","https://unece.org/sites/default/files/2025-04/1.%20Sandeep%20Jain.pdf"]
+      ]
+    }
+  ],
+  "coordinate_sources": [
+    ["Xi'an — GeoNames","https://www.geonames.org/search.html?q=%27Xi%27An+China%27"],
+    ["Alashankou — Wikidata","https://www.wikidata.org/wiki/Q5247247"],
+    ["Zhanaozen — Wikidata","https://www.wikidata.org/wiki/Q1000852"],
+    ["Bereket — Wikidata","https://www.wikidata.org/wiki/Q2578541"],
+    ["Incheh Borun rail station — OpenStreetMap/Wikidata","https://www.openstreetmap.org/node/4025966922"],
+    ["Gorgan — Wikidata","https://www.wikidata.org/wiki/Q188155"],
+    ["Aprin Railway Station — Wikidata / RAI reference","https://www.wikidata.org/wiki/Q85168812"],
+    ["Moscow — Wikidata","https://www.wikidata.org/wiki/Q649"],
+    ["Astrakhan — Wikidata","https://www.wikidata.org/wiki/Q3927"],
+    ["Abqaiq — Wikidata","https://www.wikidata.org/wiki/Q27177"],
+    ["Yanbu — Wikidata","https://www.wikidata.org/wiki/Q466027"]
+  ]
+}
