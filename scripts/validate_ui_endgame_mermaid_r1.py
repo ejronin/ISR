@@ -127,8 +127,8 @@ assert "CENTER" not in source_context["political_bias"]["unrated_display"]
 assert "aria-labelledby" in view
 assert "egGraphTitle" in view and "egGraphDesc" in view
 assert "tabIndex=0" in view
-assert "prefers-reduced-motion" in view
-assert "safeUrl" in view
+assert "prefers-reduced-motion" in css
+assert "constsafe=" in view_compact and "/^https?:$/" in view_compact
 assert "noopener noreferrer" in view
 
 assert "validate_ui_endgame_mermaid_r1.py" in workflow
