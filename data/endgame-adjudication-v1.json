@@ -1,1 +1,580 @@
-{"schema_version":"1.0","page_id":"endgame-adjudication","reviewed_through":"2026-08-24","analytical_lock":"Survival is an observed fact. Survival was not the original victory condition. Original Iranian victory conditions remain the baseline unless a new controlling bargain actually satisfies them.","terminal_state_labels":{"PROCEEDS_UNDER_IRAN_DEMAND":"PROCEEDS UNDER IRAN DEMAND","WALKED_BACK_DILUTED":"WALKED BACK / DILUTED","CUT_OFF_DENIED":"CUT OFF / DENIED","OPEN_UNRESOLVED":"OPEN / UNRESOLVED"},"mou_instrument":{"instrument_id":"JUNE_2026_MOU","display_name":"June 2026 U.S.–Iran MoU","final_deal_deadline_days":60,"deadline_expired_on":"2026-08-17","final_deal_completed":false,"current_state":"EXPIRED_NON_CONTROLLING","display_state":"EXPIRED / NON-CONTROLLING","new_bargain_rule":"A later agreement may independently revive the same substantive term. That later agreement must be evaluated as a new controlling bargain; Iran citing the expired MoU does not by itself revive it.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_AUG17_OFFENSIVE"},{"scope":"hormuz","id":"AP_AUG17"}]},"claims":[{"id":"reparations","ledger_condition":"War damages / reparations paid","short_label":"War damages / reparations","current_disposition":{"state":"OPEN_UNRESOLVED","reasoning":"The original demand remains unsatisfied in the reviewed record. The June MoU discussed a reconstruction plan, not a completed reparations payment, and the final-deal mechanism never became controlling."},"mou_relationship":{"instrument_id":"JUNE_2026_MOU","applicability":"EXPIRED_NON_CONTROLLING","current_control_state":"NON_CONTROLLING","final_deal_required":true,"final_deal_completed":false,"relevant":true,"dependent":false,"term_present":false,"clause_ref":"6","relationship":"Clause 6 promised a future reconstruction/economic-development plan; the existing Hormuz analysis explicitly distinguishes that contingent plan from legal reparations."},"path":[{"id":"original","kind":"ORIGINAL_CONDITION","label":"Original demand: war damages / reparations paid","detail":"May 22 minimum acceptable outcome.","source_refs":[{"scope":"endgame","id":"PT-20260522-MINIMUM"}]},{"id":"mou","kind":"MOU_RELATIONSHIP","label":"June MoU: reconstruction plan, not reparations paid","detail":"Clause 6 was contingent on final-deal implementation.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"}],"mou_ref":{"tab":"clauses","clause":"6"}},{"id":"deadline","kind":"MOU_STATUS","label":"Final deal required; 60-day deadline expired","detail":"Clause 3 expired August 17 without a final agreement.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_AUG17_OFFENSIVE"},{"scope":"hormuz","id":"AP_AUG17"}],"mou_ref":{"tab":"clauses","clause":"3"}},{"id":"observable","kind":"OBSERVABLE_IMPLEMENTATION","label":"No implemented reparations payment established","detail":"The accepted Endgame ledger records no payment in the reviewed package.","source_refs":[{"scope":"endgame","id":"PT-20260522-MINIMUM"}]}]},{"id":"assets","ledger_condition":"Frozen / blocked Iranian assets returned","short_label":"Frozen / blocked assets returned","current_disposition":{"state":"CUT_OFF_DENIED","reasoning":"The current evidence runs opposite the original condition: Iranian reporting describes continued restrictions on access to foreign reserves rather than completed restoration."},"mou_relationship":{"instrument_id":"JUNE_2026_MOU","applicability":"EXPIRED_NON_CONTROLLING","current_control_state":"NON_CONTROLLING","final_deal_required":true,"final_deal_completed":false,"relevant":false,"dependent":false,"term_present":false,"clause_ref":null,"relationship":"No separate controlling MoU entitlement is used to score this claim."},"path":[{"id":"original","kind":"ORIGINAL_CONDITION","label":"Original demand: frozen / blocked assets returned","detail":"April-May victory terms.","source_refs":[{"scope":"endgame","id":"PT-20260421-STRENGTH"},{"scope":"endgame","id":"PT-20260522-MINIMUM"}]},{"id":"later","kind":"LATER_IRANIAN_POSITION","label":"Later Iranian evidence: reserve access remains constrained","detail":"Hemmati's remarks describe continued foreign-reserve constraints.","source_refs":[{"scope":"endgame","id":"IRANWIRE-20260821-HEMMATI"}]},{"id":"observable","kind":"OBSERVABLE_IMPLEMENTATION","label":"Completed asset restoration not established","detail":"The observable record does not show the demanded return completed.","source_refs":[{"scope":"endgame","id":"IRANWIRE-20260821-HEMMATI"}]}]},{"id":"blockade","ledger_condition":"U.S. naval blockade terminated","short_label":"U.S. naval blockade terminated","current_disposition":{"state":"CUT_OFF_DENIED","reasoning":"Clause 4 created a strong paper/temporary Iranian gain, but the blockade was reimposed before a final deal. The expired MoU is non-controlling; later evidence shows the blockade again central to U.S. pressure."},"mou_relationship":{"instrument_id":"JUNE_2026_MOU","applicability":"EXPIRED_NON_CONTROLLING","current_control_state":"NON_CONTROLLING","final_deal_required":true,"final_deal_completed":false,"relevant":true,"dependent":true,"term_present":true,"clause_ref":"4","relationship":"Clause 4 began blockade removal immediately, but the gain was later reversed and the promised post-final-deal force withdrawal never triggered."},"path":[{"id":"original","kind":"ORIGINAL_CONDITION","label":"Original demand: terminate U.S. naval blockade","detail":"May 22 minimum acceptable outcome.","source_refs":[{"scope":"endgame","id":"PT-20260522-MINIMUM"}]},{"id":"mou","kind":"MOU_RELATIONSHIP","label":"June MoU Clause 4: blockade removal promised","detail":"A front-loaded paper gain for Tehran.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_MOU_SEQ"}],"mou_ref":{"tab":"clauses","clause":"4"}},{"id":"implementation","kind":"MOU_IMPLEMENTATION","label":"Temporary implementation did not survive","detail":"The accepted Hormuz analysis records the blockade relief gain as reversed.","source_refs":[{"scope":"hormuz","id":"R_JUL13"},{"scope":"hormuz","id":"R_JUL14"}],"mou_ref":{"tab":"clauses","clause":"4"}},{"id":"expiry","kind":"MOU_STATUS","label":"MoU expired / non-controlling","detail":"No final deal by the 60-day deadline.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_AUG17_OFFENSIVE"},{"scope":"hormuz","id":"AP_AUG17"}],"mou_ref":{"tab":"clauses","clause":"3"}},{"id":"later","kind":"LATER_COUNTERPARTY_POSITION","label":"Blockade again used as coercive pressure","detail":"Current Endgame evidence describes resumed maritime/export denial.","source_refs":[{"scope":"endgame","id":"RTR-20260821-OILCHINA"},{"scope":"endgame","id":"RTR-20260820-SANCTIONS"}]}]},{"id":"sanctions","ledger_condition":"Full / verifiable sanctions relief","short_label":"Full / verifiable sanctions relief","current_disposition":{"state":"CUT_OFF_DENIED","reasoning":"Clause 7 tied sanctions termination to a final agreement. No final deal occurred, the MoU is non-controlling, and Washington is escalating rather than implementing comprehensive relief."},"mou_relationship":{"instrument_id":"JUNE_2026_MOU","applicability":"EXPIRED_NON_CONTROLLING","current_control_state":"NON_CONTROLLING","final_deal_required":true,"final_deal_completed":false,"relevant":true,"dependent":true,"term_present":true,"clause_ref":"7","relationship":"Clause 7 committed Washington to an agreed sanctions-termination schedule as part of the final deal; it never became an implemented final-deal benefit."},"path":[{"id":"original","kind":"ORIGINAL_CONDITION","label":"Original demand: full / verifiable sanctions relief","detail":"April-May victory terms.","source_refs":[{"scope":"endgame","id":"PT-20260421-STRENGTH"},{"scope":"endgame","id":"PT-20260522-MINIMUM"}]},{"id":"mou","kind":"MOU_RELATIONSHIP","label":"June MoU Clause 7: relief tied to final deal","detail":"Commitment existed on paper; implementation was deferred.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"}],"mou_ref":{"tab":"clauses","clause":"7"}},{"id":"expiry","kind":"MOU_STATUS","label":"Final deal not completed; MoU non-controlling","detail":"The 60-day final-deal deadline expired without agreement.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_AUG17_OFFENSIVE"},{"scope":"hormuz","id":"AP_AUG17"}],"mou_ref":{"tab":"clauses","clause":"3"}},{"id":"later","kind":"LATER_COUNTERPARTY_POSITION","label":"Washington moves toward tougher sanctions","detail":"Current evidence shows escalation, not comprehensive termination.","source_refs":[{"scope":"endgame","id":"RTR-20260820-SANCTIONS"},{"scope":"endgame","id":"RTR-20260823-DDAY"}]}]},{"id":"withdrawal","ledger_condition":"U.S. withdrawal from bases surrounding Iran","short_label":"U.S. regional withdrawal","current_disposition":{"state":"CUT_OFF_DENIED","reasoning":"Clause 4 deferred a narrower force-withdrawal promise until after a final deal. The trigger never occurred; the broader original demand for withdrawal from surrounding bases is not shown as achieved."},"mou_relationship":{"instrument_id":"JUNE_2026_MOU","applicability":"EXPIRED_NON_CONTROLLING","current_control_state":"NON_CONTROLLING","final_deal_required":true,"final_deal_completed":false,"relevant":true,"dependent":true,"term_present":true,"clause_ref":"4","relationship":"The MoU promised removal of U.S. forces from Iran's proximity only after a final deal, narrower than the broader original demand."},"path":[{"id":"original","kind":"ORIGINAL_CONDITION","label":"Original demand: U.S. withdrawal from bases surrounding Iran","detail":"May 22 minimum acceptable outcome.","source_refs":[{"scope":"endgame","id":"PT-20260522-MINIMUM"}]},{"id":"mou","kind":"MOU_RELATIONSHIP","label":"June MoU Clause 4: narrower, deferred force pullback","detail":"Withdrawal from Iran's proximity was conditioned on a final deal.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"}],"mou_ref":{"tab":"clauses","clause":"4"}},{"id":"expiry","kind":"MOU_STATUS","label":"Final-deal trigger never occurred","detail":"The deadline expired without a final agreement.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_AUG17_OFFENSIVE"},{"scope":"hormuz","id":"AP_AUG17"}],"mou_ref":{"tab":"clauses","clause":"3"}},{"id":"observable","kind":"OBSERVABLE_IMPLEMENTATION","label":"Demanded regional withdrawal not established","detail":"No accepted evidence in the Endgame package shows the broader withdrawal completed.","source_refs":[{"scope":"endgame","id":"PT-20260522-MINIMUM"}]}]},{"id":"axis","ledger_condition":"Protection / non-aggression toward Axis allies","short_label":"Protection / non-aggression for Axis allies","current_disposition":{"state":"WALKED_BACK_DILUTED","reasoning":"The June MoU provided a Lebanon ceasefire/non-aggression term favorable to Tehran's immediate preference, but it did not create a durable Axis-wide protection guarantee. Lebanon's later state-to-state security track materially narrowed and reversed Tehran's bargaining ownership."},"mou_relationship":{"instrument_id":"JUNE_2026_MOU","applicability":"EXPIRED_NON_CONTROLLING","current_control_state":"NON_CONTROLLING","final_deal_required":true,"final_deal_completed":false,"relevant":true,"dependent":true,"term_present":true,"clause_ref":"1","relationship":"Clause 1 addressed Lebanon, not a blanket Axis-wide guarantee. Its strategic value was later displaced by Lebanon's separate state-security track."},"path":[{"id":"original","kind":"ORIGINAL_CONDITION","label":"Original demand: protect regional allies / Axis red line","detail":"May 22 minimum outcome and May 27 red line.","source_refs":[{"scope":"endgame","id":"PT-20260522-MINIMUM"},{"scope":"endgame","id":"PT-20260527-REDLINES"}]},{"id":"mou","kind":"MOU_RELATIONSHIP","label":"June MoU Clause 1: Lebanon ceasefire / non-aggression","detail":"A narrower term than the original Axis-wide condition.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"}],"mou_ref":{"tab":"clauses","clause":"1"}},{"id":"later","kind":"LATER_COUNTERPARTY_POSITION","label":"Lebanon state track displaced Tehran's bargaining ownership","detail":"The accepted Hormuz analysis records the strategic direction as reversed while implementation remains incomplete.","source_refs":[{"scope":"hormuz","id":"R_LEB_JUN23_STATE"},{"scope":"hormuz","id":"R_LEB_JUN26_FRAME"},{"scope":"hormuz","id":"R_LEB_JUN27_REJECT"}],"mou_ref":{"tab":"lebanon"}},{"id":"observable","kind":"OBSERVABLE_IMPLEMENTATION","label":"No durable Axis-wide settlement guarantee established","detail":"The original condition is broader than what survived.","source_refs":[{"scope":"endgame","id":"PT-20260522-MINIMUM"},{"scope":"endgame","id":"PT-20260527-REDLINES"}]}]},{"id":"hormuz","ledger_condition":"Permanent Iranian Hormuz sovereignty / management / fees","short_label":"Permanent Hormuz sovereignty / management / fees","current_disposition":{"state":"OPEN_UNRESOLVED","reasoning":"The original bundled claim cannot be scored as one binary proposition. Legal recognition, de facto routing/gatekeeping, and monetizable fee authority have different current outcomes and are adjudicated separately."},"mou_relationship":{"instrument_id":"JUNE_2026_MOU","applicability":"EXPIRED_NON_CONTROLLING","current_control_state":"NON_CONTROLLING","final_deal_required":true,"final_deal_completed":false,"relevant":true,"dependent":true,"term_present":true,"clause_ref":"5A/5B/5C","relationship":"The June MoU split Hormuz into legal/control, operational routing, and fee/service questions; none can be inferred from the others."},"path":[{"id":"original","kind":"ORIGINAL_CONDITION","label":"Original bundled demand: Hormuz sovereignty, management and fees","detail":"May-June Iranian framing treated control/fees as a durable prize.","source_refs":[{"scope":"endgame","id":"PT-20260522-MINIMUM"},{"scope":"endgame","id":"PT-20260607-FEES"},{"scope":"endgame","id":"PT-20260616-AREF"}]},{"id":"mou","kind":"MOU_RELATIONSHIP","label":"June MoU separates legal control, routing and fees","detail":"Clauses 5A/5B/5C preserve three different questions.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"}],"mou_ref":{"tab":"clauses","clause":"5A"}},{"id":"expiry","kind":"MOU_STATUS","label":"MoU expired / non-controlling","detail":"A later new bargain could independently revive a substantive term, but the old instrument does not control now.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_AUG17_OFFENSIVE"},{"scope":"hormuz","id":"AP_AUG17"}],"mou_ref":{"tab":"clauses","clause":"3"}}],"dimensions":[{"id":"legal","label":"LEGAL / RECOGNIZED SOVEREIGNTY OR CONTROL","state":"CUT_OFF_DENIED","reasoning":"The MoU did not grant unilateral Iranian sovereignty; the accepted Hormuz analysis records exclusive/dominant legal control as not obtained.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"IMO_HORMUZ_ROUTE"},{"scope":"hormuz","id":"IMO_LEGAL_APR27"},{"scope":"hormuz","id":"R_JUL10_NO_SOV"},{"scope":"hormuz","id":"R_JUL28_TSS"}],"mou_ref":{"tab":"clauses","clause":"5A"}},{"id":"operational","label":"DE FACTO OPERATIONAL ROUTING / GATEKEEPING","state":"PROCEEDS_UNDER_IRAN_DEMAND","reasoning":"Iran retains strong practical gatekeeping and selective-routing leverage. This is a de facto operational finding only, not legal recognition.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"TASNIM_JUN19_GUIDELINES"},{"scope":"hormuz","id":"R_JUN25_SHIP"},{"scope":"hormuz","id":"AP_JUN25_SHIP"}],"mou_ref":{"tab":"clauses","clause":"5B"}},{"id":"fees","label":"MONETIZABLE FEES / ECONOMIC RENT AUTHORITY","state":"CUT_OFF_DENIED","reasoning":"Temporary/reported service payments do not establish a durable compulsory toll right; the accepted Hormuz analysis records no accepted compulsory Iranian fee regime.","source_refs":[{"scope":"endgame","id":"PT-20260607-FEES"},{"scope":"endgame","id":"PT-20260616-AREF"},{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_AUG06_INDUSTRY"},{"scope":"hormuz","id":"IMO_COUNCIL_JUL"}],"mou_ref":{"tab":"clauses","clause":"5C"}}]},{"id":"redlines","ledger_condition":"No concessions on nuclear, missiles, defense or regional architecture","short_label":"No concessions on nuclear / missiles / defense / regional architecture","current_disposition":{"state":"OPEN_UNRESOLVED","reasoning":"Iran still states the red-line position, but the final bargain has not been completed. The June MoU deferred key nuclear/enrichment questions and is now non-controlling."},"mou_relationship":{"instrument_id":"JUNE_2026_MOU","applicability":"EXPIRED_NON_CONTROLLING","current_control_state":"NON_CONTROLLING","final_deal_required":true,"final_deal_completed":false,"relevant":true,"dependent":false,"term_present":null,"clause_ref":"8","relationship":"The MoU addressed nuclear weapon/stockpile obligations while deferring enrichment rules to the final deal; it did not conclusively adjudicate the entire later red-line bundle."},"path":[{"id":"original","kind":"ORIGINAL_CONDITION","label":"Original red line: no concessions on core strategic architecture","detail":"April 21 / May 27 framing.","source_refs":[{"scope":"endgame","id":"PT-20260421-STRENGTH"},{"scope":"endgame","id":"PT-20260527-REDLINES"}]},{"id":"mou","kind":"MOU_RELATIONSHIP","label":"June MoU Clause 8 deferred key nuclear/enrichment terms","detail":"The hardest final nuclear terms remained for a final agreement.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_APR11_US_DEMANDS"},{"scope":"hormuz","id":"R_MOU_GAPS"}],"mou_ref":{"tab":"clauses","clause":"8"}},{"id":"expiry","kind":"MOU_STATUS","label":"No final bargain completed","detail":"The old MoU is expired / non-controlling.","source_refs":[{"scope":"hormuz","id":"R_MOU_TEXT"},{"scope":"hormuz","id":"R_AUG17_OFFENSIVE"},{"scope":"hormuz","id":"AP_AUG17"}],"mou_ref":{"tab":"clauses","clause":"3"}},{"id":"current","kind":"CURRENT_POSITION","label":"Final red-line disposition remains unresolved","detail":"The current Endgame ledger cannot score this before a new controlling bargain exists.","source_refs":[{"scope":"endgame","id":"PT-20260421-STRENGTH"},{"scope":"endgame","id":"PT-20260527-REDLINES"}]}]}]}
+{
+  "schema_version": "1.0",
+  "page_id": "endgame-adjudication",
+  "reviewed_through": "2026-08-24",
+  "analytical_lock": "Survival is an observed fact. Survival was not the original victory condition. Original Iranian victory conditions remain the baseline unless a new controlling bargain actually satisfies them.",
+  "terminal_state_labels": {
+    "PROCEEDS_UNDER_IRAN_DEMAND": "PROCEEDS UNDER IRAN DEMAND",
+    "WALKED_BACK_DILUTED": "WALKED BACK / DILUTED",
+    "CUT_OFF_DENIED": "CUT OFF / DENIED",
+    "OPEN_UNRESOLVED": "OPEN / UNRESOLVED"
+  },
+  "mou_instrument": {
+    "instrument_id": "JUNE_2026_MOU",
+    "display_name": "June 2026 U.S.–Iran MoU",
+    "final_deal_deadline_days": 60,
+    "deadline_expired_on": "2026-08-17",
+    "final_deal_completed": false,
+    "current_state": "EXPIRED_NON_CONTROLLING",
+    "display_state": "EXPIRED / NON-CONTROLLING",
+    "new_bargain_rule": "A later agreement may independently revive the same substantive term. That later agreement must be evaluated as a new controlling bargain; Iran citing the expired MoU does not by itself revive it.",
+    "source_refs": [
+      {"scope": "hormuz", "id": "R_MOU_TEXT"},
+      {"scope": "hormuz", "id": "R_AUG17_OFFENSIVE"},
+      {"scope": "hormuz", "id": "AP_AUG17"}
+    ]
+  },
+  "claims": [
+    {
+      "id": "reparations",
+      "ledger_condition": "War damages / reparations paid",
+      "short_label": "War damages / reparations",
+      "current_disposition": {
+        "state": "OPEN_UNRESOLVED",
+        "reasoning": "The original demand remains unsatisfied in the reviewed record. The June MoU discussed a reconstruction plan, not a completed reparations payment, and the final-deal mechanism never became controlling."
+      },
+      "mou_relationship": {
+        "instrument_id": "JUNE_2026_MOU",
+        "applicability": "EXPIRED_NON_CONTROLLING",
+        "current_control_state": "NON_CONTROLLING",
+        "final_deal_required": true,
+        "final_deal_completed": false,
+        "relevant": true,
+        "dependent": false,
+        "term_present": false,
+        "clause_ref": "6",
+        "relationship": "Clause 6 promised a future reconstruction/economic-development plan; the existing Hormuz analysis explicitly distinguishes that contingent plan from legal reparations."
+      },
+      "path": [
+        {
+          "id": "original",
+          "kind": "ORIGINAL_CONDITION",
+          "label": "Original demand: war damages / reparations paid",
+          "detail": "May 22 minimum acceptable outcome.",
+          "source_refs": [{"scope": "endgame", "id": "PT-20260522-MINIMUM"}]
+        },
+        {
+          "id": "mou",
+          "kind": "MOU_RELATIONSHIP",
+          "label": "June MoU: reconstruction plan, not reparations paid",
+          "detail": "Clause 6 was contingent on final-deal implementation.",
+          "source_refs": [{"scope": "hormuz", "id": "R_MOU_TEXT"}],
+          "mou_ref": {"tab": "clauses", "clause": "6"}
+        },
+        {
+          "id": "deadline",
+          "kind": "MOU_STATUS",
+          "label": "Final deal required; 60-day deadline expired",
+          "detail": "Clause 3 expired August 17 without a final agreement.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_AUG17_OFFENSIVE"},
+            {"scope": "hormuz", "id": "AP_AUG17"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "3"}
+        },
+        {
+          "id": "observable",
+          "kind": "OBSERVABLE_IMPLEMENTATION",
+          "label": "No implemented reparations payment established",
+          "detail": "The accepted Endgame ledger records no payment in the reviewed package.",
+          "source_refs": [{"scope": "endgame", "id": "PT-20260522-MINIMUM"}]
+        }
+      ]
+    },
+    {
+      "id": "assets",
+      "ledger_condition": "Frozen / blocked Iranian assets returned",
+      "short_label": "Frozen / blocked assets returned",
+      "current_disposition": {
+        "state": "CUT_OFF_DENIED",
+        "reasoning": "Clause 11 created a strong paper promise of asset availability, but the procedures never matured into broad durable access. The MoU expired and current Iranian reporting still describes constrained access to foreign reserves."
+      },
+      "mou_relationship": {
+        "instrument_id": "JUNE_2026_MOU",
+        "applicability": "EXPIRED_NON_CONTROLLING",
+        "current_control_state": "NON_CONTROLLING",
+        "final_deal_required": true,
+        "final_deal_completed": false,
+        "relevant": true,
+        "dependent": true,
+        "term_present": true,
+        "clause_ref": "11",
+        "relationship": "Clause 11 promised to make frozen/restricted Iranian funds available subject to procedures. That was a favorable paper term, but the MoU expired without a final deal and broad durable access was not realized."
+      },
+      "path": [
+        {
+          "id": "original",
+          "kind": "ORIGINAL_CONDITION",
+          "label": "Original demand: frozen / blocked assets returned",
+          "detail": "April–May victory terms required usable access to restricted assets.",
+          "source_refs": [
+            {"scope": "endgame", "id": "PT-20260421-STRENGTH"},
+            {"scope": "endgame", "id": "PT-20260522-MINIMUM"}
+          ]
+        },
+        {
+          "id": "mou",
+          "kind": "MOU_RELATIONSHIP",
+          "label": "June MoU Clause 11: asset availability promised",
+          "detail": "Washington undertook to make funds available, with procedures and licenses to be worked out during negotiations.",
+          "source_refs": [{"scope": "hormuz", "id": "R_MOU_TEXT"}],
+          "mou_ref": {"tab": "clauses", "clause": "11"}
+        },
+        {
+          "id": "expiry",
+          "kind": "MOU_STATUS",
+          "label": "MoU expired / non-controlling before durable access matured",
+          "detail": "No final agreement was completed by the 60-day deadline; the old instrument cannot itself satisfy the current claim.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_AUG17_OFFENSIVE"},
+            {"scope": "hormuz", "id": "AP_AUG17"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "3"}
+        },
+        {
+          "id": "later",
+          "kind": "LATER_IRANIAN_POSITION",
+          "label": "Later Iranian evidence: reserve access remains constrained",
+          "detail": "Hemmati's remarks describe continued foreign-reserve constraints; Iran also continued to demand implementation of the old relief terms.",
+          "source_refs": [
+            {"scope": "endgame", "id": "IRANWIRE-20260821-HEMMATI"},
+            {"scope": "hormuz", "id": "R_AUG18_CONDITIONS"}
+          ]
+        },
+        {
+          "id": "observable",
+          "kind": "OBSERVABLE_IMPLEMENTATION",
+          "label": "Completed broad asset restoration not established",
+          "detail": "The reviewed record does not show the Clause 11 promise surviving as a controlling, fully implemented asset-access regime.",
+          "source_refs": [
+            {"scope": "endgame", "id": "IRANWIRE-20260821-HEMMATI"},
+            {"scope": "hormuz", "id": "R_AUG18_CONDITIONS"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blockade",
+      "ledger_condition": "U.S. naval blockade terminated",
+      "short_label": "U.S. naval blockade terminated",
+      "current_disposition": {
+        "state": "CUT_OFF_DENIED",
+        "reasoning": "Clause 4 created a strong paper/temporary Iranian gain, but the blockade was reimposed before a final deal. The expired MoU is non-controlling; later evidence shows the blockade again central to U.S. pressure."
+      },
+      "mou_relationship": {
+        "instrument_id": "JUNE_2026_MOU",
+        "applicability": "EXPIRED_NON_CONTROLLING",
+        "current_control_state": "NON_CONTROLLING",
+        "final_deal_required": true,
+        "final_deal_completed": false,
+        "relevant": true,
+        "dependent": true,
+        "term_present": true,
+        "clause_ref": "4",
+        "relationship": "Clause 4 began blockade removal immediately, but the gain was later reversed and the promised post-final-deal force withdrawal never triggered."
+      },
+      "path": [
+        {
+          "id": "original",
+          "kind": "ORIGINAL_CONDITION",
+          "label": "Original demand: terminate U.S. naval blockade",
+          "detail": "May 22 minimum acceptable outcome.",
+          "source_refs": [{"scope": "endgame", "id": "PT-20260522-MINIMUM"}]
+        },
+        {
+          "id": "mou",
+          "kind": "MOU_RELATIONSHIP",
+          "label": "June MoU Clause 4: blockade removal promised",
+          "detail": "A front-loaded paper gain for Tehran.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_MOU_SEQ"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "4"}
+        },
+        {
+          "id": "implementation",
+          "kind": "MOU_IMPLEMENTATION",
+          "label": "Temporary implementation did not survive",
+          "detail": "The accepted Hormuz analysis records the blockade relief gain as reversed.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_JUL13"},
+            {"scope": "hormuz", "id": "R_JUL14"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "4"}
+        },
+        {
+          "id": "expiry",
+          "kind": "MOU_STATUS",
+          "label": "MoU expired / non-controlling",
+          "detail": "No final deal by the 60-day deadline.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_AUG17_OFFENSIVE"},
+            {"scope": "hormuz", "id": "AP_AUG17"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "3"}
+        },
+        {
+          "id": "later",
+          "kind": "LATER_COUNTERPARTY_POSITION",
+          "label": "Blockade again used as coercive pressure",
+          "detail": "Current Endgame evidence describes resumed maritime/export denial.",
+          "source_refs": [
+            {"scope": "endgame", "id": "RTR-20260821-OILCHINA"},
+            {"scope": "endgame", "id": "RTR-20260820-SANCTIONS"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sanctions",
+      "ledger_condition": "Full / verifiable sanctions relief",
+      "short_label": "Full / verifiable sanctions relief",
+      "current_disposition": {
+        "state": "CUT_OFF_DENIED",
+        "reasoning": "Clause 7 tied sanctions termination to a final agreement. No final deal occurred, the MoU is non-controlling, and Washington is escalating rather than implementing comprehensive relief."
+      },
+      "mou_relationship": {
+        "instrument_id": "JUNE_2026_MOU",
+        "applicability": "EXPIRED_NON_CONTROLLING",
+        "current_control_state": "NON_CONTROLLING",
+        "final_deal_required": true,
+        "final_deal_completed": false,
+        "relevant": true,
+        "dependent": true,
+        "term_present": true,
+        "clause_ref": "7",
+        "relationship": "Clause 7 committed Washington to an agreed sanctions-termination schedule as part of the final deal; it never became an implemented final-deal benefit."
+      },
+      "path": [
+        {
+          "id": "original",
+          "kind": "ORIGINAL_CONDITION",
+          "label": "Original demand: full / verifiable sanctions relief",
+          "detail": "April–May victory terms.",
+          "source_refs": [
+            {"scope": "endgame", "id": "PT-20260421-STRENGTH"},
+            {"scope": "endgame", "id": "PT-20260522-MINIMUM"}
+          ]
+        },
+        {
+          "id": "mou",
+          "kind": "MOU_RELATIONSHIP",
+          "label": "June MoU Clause 7: relief tied to final deal",
+          "detail": "Commitment existed on paper; implementation was deferred.",
+          "source_refs": [{"scope": "hormuz", "id": "R_MOU_TEXT"}],
+          "mou_ref": {"tab": "clauses", "clause": "7"}
+        },
+        {
+          "id": "expiry",
+          "kind": "MOU_STATUS",
+          "label": "Final deal not completed; MoU non-controlling",
+          "detail": "The 60-day final-deal deadline expired without agreement.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_AUG17_OFFENSIVE"},
+            {"scope": "hormuz", "id": "AP_AUG17"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "3"}
+        },
+        {
+          "id": "later",
+          "kind": "LATER_COUNTERPARTY_POSITION",
+          "label": "Washington moves toward tougher sanctions",
+          "detail": "Current evidence shows escalation, not comprehensive termination.",
+          "source_refs": [
+            {"scope": "endgame", "id": "RTR-20260820-SANCTIONS"},
+            {"scope": "endgame", "id": "RTR-20260823-DDAY"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "withdrawal",
+      "ledger_condition": "U.S. withdrawal from bases surrounding Iran",
+      "short_label": "U.S. regional withdrawal",
+      "current_disposition": {
+        "state": "CUT_OFF_DENIED",
+        "reasoning": "Clause 4 deferred a narrower force-withdrawal promise until after a final deal. The trigger never occurred; the broader original demand for withdrawal from surrounding bases is not shown as achieved."
+      },
+      "mou_relationship": {
+        "instrument_id": "JUNE_2026_MOU",
+        "applicability": "EXPIRED_NON_CONTROLLING",
+        "current_control_state": "NON_CONTROLLING",
+        "final_deal_required": true,
+        "final_deal_completed": false,
+        "relevant": true,
+        "dependent": true,
+        "term_present": true,
+        "clause_ref": "4",
+        "relationship": "The MoU promised removal of U.S. forces from Iran's proximity only after a final deal, narrower than the broader original demand."
+      },
+      "path": [
+        {
+          "id": "original",
+          "kind": "ORIGINAL_CONDITION",
+          "label": "Original demand: U.S. withdrawal from bases surrounding Iran",
+          "detail": "May 22 minimum acceptable outcome.",
+          "source_refs": [{"scope": "endgame", "id": "PT-20260522-MINIMUM"}]
+        },
+        {
+          "id": "mou",
+          "kind": "MOU_RELATIONSHIP",
+          "label": "June MoU Clause 4: narrower, deferred force pullback",
+          "detail": "Withdrawal from Iran's proximity was conditioned on a final deal.",
+          "source_refs": [{"scope": "hormuz", "id": "R_MOU_TEXT"}],
+          "mou_ref": {"tab": "clauses", "clause": "4"}
+        },
+        {
+          "id": "expiry",
+          "kind": "MOU_STATUS",
+          "label": "Final-deal trigger never occurred",
+          "detail": "The deadline expired without a final agreement.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_AUG17_OFFENSIVE"},
+            {"scope": "hormuz", "id": "AP_AUG17"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "3"}
+        },
+        {
+          "id": "observable",
+          "kind": "OBSERVABLE_IMPLEMENTATION",
+          "label": "Demanded regional withdrawal not established",
+          "detail": "No accepted evidence in the Endgame package shows the broader withdrawal completed.",
+          "source_refs": [{"scope": "endgame", "id": "PT-20260522-MINIMUM"}]
+        }
+      ]
+    },
+    {
+      "id": "axis",
+      "ledger_condition": "Protection / non-aggression toward Axis allies",
+      "short_label": "Protection / non-aggression for Axis allies",
+      "current_disposition": {
+        "state": "WALKED_BACK_DILUTED",
+        "reasoning": "The June MoU provided a Lebanon ceasefire/non-aggression term favorable to Tehran's immediate preference, but it did not create a durable Axis-wide protection guarantee. Lebanon's later state-to-state security track materially narrowed and reversed Tehran's bargaining ownership."
+      },
+      "mou_relationship": {
+        "instrument_id": "JUNE_2026_MOU",
+        "applicability": "EXPIRED_NON_CONTROLLING",
+        "current_control_state": "NON_CONTROLLING",
+        "final_deal_required": true,
+        "final_deal_completed": false,
+        "relevant": true,
+        "dependent": true,
+        "term_present": true,
+        "clause_ref": "1",
+        "relationship": "Clause 1 addressed Lebanon, not a blanket Axis-wide guarantee. Its strategic value was later displaced by Lebanon's separate state-security track."
+      },
+      "path": [
+        {
+          "id": "original",
+          "kind": "ORIGINAL_CONDITION",
+          "label": "Original demand: protect regional allies / Axis red line",
+          "detail": "May 22 minimum outcome and May 27 red line.",
+          "source_refs": [
+            {"scope": "endgame", "id": "PT-20260522-MINIMUM"},
+            {"scope": "endgame", "id": "PT-20260527-REDLINES"}
+          ]
+        },
+        {
+          "id": "mou",
+          "kind": "MOU_RELATIONSHIP",
+          "label": "June MoU Clause 1: Lebanon ceasefire / non-aggression",
+          "detail": "A narrower term than the original Axis-wide condition.",
+          "source_refs": [{"scope": "hormuz", "id": "R_MOU_TEXT"}],
+          "mou_ref": {"tab": "clauses", "clause": "1"}
+        },
+        {
+          "id": "later",
+          "kind": "LATER_COUNTERPARTY_POSITION",
+          "label": "Lebanon state track displaced Tehran's bargaining ownership",
+          "detail": "The accepted Hormuz analysis records the strategic direction as reversed while implementation remains incomplete.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_LEB_JUN23_STATE"},
+            {"scope": "hormuz", "id": "R_LEB_JUN26_FRAME"},
+            {"scope": "hormuz", "id": "R_LEB_JUN27_REJECT"}
+          ],
+          "mou_ref": {"tab": "lebanon"}
+        },
+        {
+          "id": "observable",
+          "kind": "OBSERVABLE_IMPLEMENTATION",
+          "label": "No durable Axis-wide settlement guarantee established",
+          "detail": "The original condition is broader than what survived.",
+          "source_refs": [
+            {"scope": "endgame", "id": "PT-20260522-MINIMUM"},
+            {"scope": "endgame", "id": "PT-20260527-REDLINES"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hormuz",
+      "ledger_condition": "Permanent Iranian Hormuz sovereignty / management / fees",
+      "short_label": "Permanent Hormuz sovereignty / management / fees",
+      "current_disposition": {
+        "state": "OPEN_UNRESOLVED",
+        "reasoning": "The original bundled claim cannot be scored as one binary proposition. Legal recognition, de facto routing/gatekeeping, and monetizable fee authority have different current outcomes and are adjudicated separately."
+      },
+      "mou_relationship": {
+        "instrument_id": "JUNE_2026_MOU",
+        "applicability": "EXPIRED_NON_CONTROLLING",
+        "current_control_state": "NON_CONTROLLING",
+        "final_deal_required": true,
+        "final_deal_completed": false,
+        "relevant": true,
+        "dependent": true,
+        "term_present": true,
+        "clause_ref": "5A/5B/5C",
+        "relationship": "The June MoU split Hormuz into legal/control, operational routing, and fee/service questions; none can be inferred from the others."
+      },
+      "path": [
+        {
+          "id": "original",
+          "kind": "ORIGINAL_CONDITION",
+          "label": "Original bundled demand: Hormuz sovereignty, management and fees",
+          "detail": "May–June Iranian framing treated control/fees as a durable prize.",
+          "source_refs": [
+            {"scope": "endgame", "id": "PT-20260522-MINIMUM"},
+            {"scope": "endgame", "id": "PT-20260607-FEES"},
+            {"scope": "endgame", "id": "PT-20260616-AREF"}
+          ]
+        },
+        {
+          "id": "mou",
+          "kind": "MOU_RELATIONSHIP",
+          "label": "June MoU separates legal control, routing and fees",
+          "detail": "Clauses 5A/5B/5C preserve three different questions.",
+          "source_refs": [{"scope": "hormuz", "id": "R_MOU_TEXT"}],
+          "mou_ref": {"tab": "clauses", "clause": "5A"}
+        },
+        {
+          "id": "expiry",
+          "kind": "MOU_STATUS",
+          "label": "MoU expired / non-controlling",
+          "detail": "A later new bargain could independently revive a substantive term, but the old instrument does not control now.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_AUG17_OFFENSIVE"},
+            {"scope": "hormuz", "id": "AP_AUG17"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "3"}
+        }
+      ],
+      "dimensions": [
+        {
+          "id": "legal",
+          "label": "LEGAL / RECOGNIZED SOVEREIGNTY OR CONTROL",
+          "state": "CUT_OFF_DENIED",
+          "reasoning": "The MoU did not grant unilateral Iranian sovereignty; the accepted Hormuz analysis records exclusive/dominant legal control as not obtained.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "IMO_HORMUZ_ROUTE"},
+            {"scope": "hormuz", "id": "IMO_LEGAL_APR27"},
+            {"scope": "hormuz", "id": "R_JUL10_NO_SOV"},
+            {"scope": "hormuz", "id": "R_JUL28_TSS"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "5A"}
+        },
+        {
+          "id": "operational",
+          "label": "DE FACTO OPERATIONAL ROUTING / GATEKEEPING",
+          "state": "PROCEEDS_UNDER_IRAN_DEMAND",
+          "reasoning": "Iran retains strong practical gatekeeping and selective-routing leverage. This is a de facto operational finding only, not legal recognition.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "TASNIM_JUN19_GUIDELINES"},
+            {"scope": "hormuz", "id": "R_JUN25_SHIP"},
+            {"scope": "hormuz", "id": "AP_JUN25_SHIP"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "5B"}
+        },
+        {
+          "id": "fees",
+          "label": "MONETIZABLE FEES / ECONOMIC RENT AUTHORITY",
+          "state": "CUT_OFF_DENIED",
+          "reasoning": "Temporary/reported service payments do not establish a durable compulsory toll right; the accepted Hormuz analysis records no accepted compulsory Iranian fee regime.",
+          "source_refs": [
+            {"scope": "endgame", "id": "PT-20260607-FEES"},
+            {"scope": "endgame", "id": "PT-20260616-AREF"},
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_AUG06_INDUSTRY"},
+            {"scope": "hormuz", "id": "IMO_COUNCIL_JUL"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "5C"}
+        }
+      ]
+    },
+    {
+      "id": "redlines",
+      "ledger_condition": "No concessions on nuclear, missiles, defense or regional architecture",
+      "short_label": "No concessions on nuclear / missiles / defense / regional architecture",
+      "current_disposition": {
+        "state": "OPEN_UNRESOLVED",
+        "reasoning": "Iran still states the red-line position, but the final bargain has not been completed. The June MoU deferred key nuclear/enrichment questions and is now non-controlling."
+      },
+      "mou_relationship": {
+        "instrument_id": "JUNE_2026_MOU",
+        "applicability": "EXPIRED_NON_CONTROLLING",
+        "current_control_state": "NON_CONTROLLING",
+        "final_deal_required": true,
+        "final_deal_completed": false,
+        "relevant": true,
+        "dependent": false,
+        "term_present": null,
+        "clause_ref": "8",
+        "relationship": "The MoU addressed nuclear weapon/stockpile obligations while deferring enrichment rules to the final deal; it did not conclusively adjudicate the entire later red-line bundle."
+      },
+      "path": [
+        {
+          "id": "original",
+          "kind": "ORIGINAL_CONDITION",
+          "label": "Original red line: no concessions on core strategic architecture",
+          "detail": "April 21 / May 27 framing.",
+          "source_refs": [
+            {"scope": "endgame", "id": "PT-20260421-STRENGTH"},
+            {"scope": "endgame", "id": "PT-20260527-REDLINES"}
+          ]
+        },
+        {
+          "id": "mou",
+          "kind": "MOU_RELATIONSHIP",
+          "label": "June MoU Clause 8 deferred key nuclear/enrichment terms",
+          "detail": "The hardest final nuclear terms remained for a final agreement.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_APR11_US_DEMANDS"},
+            {"scope": "hormuz", "id": "R_MOU_GAPS"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "8"}
+        },
+        {
+          "id": "expiry",
+          "kind": "MOU_STATUS",
+          "label": "No final bargain completed",
+          "detail": "The old MoU is expired / non-controlling.",
+          "source_refs": [
+            {"scope": "hormuz", "id": "R_MOU_TEXT"},
+            {"scope": "hormuz", "id": "R_AUG17_OFFENSIVE"},
+            {"scope": "hormuz", "id": "AP_AUG17"}
+          ],
+          "mou_ref": {"tab": "clauses", "clause": "3"}
+        },
+        {
+          "id": "current",
+          "kind": "CURRENT_POSITION",
+          "label": "Final red-line disposition remains unresolved",
+          "detail": "The current Endgame ledger cannot score this before a new controlling bargain exists.",
+          "source_refs": [
+            {"scope": "endgame", "id": "PT-20260421-STRENGTH"},
+            {"scope": "endgame", "id": "PT-20260527-REDLINES"}
+          ]
+        }
+      ]
+    }
+  ]
+}
