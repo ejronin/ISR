@@ -39,7 +39,19 @@ def records(data):
 assert len(records(historical)) == 98, "locked integration-v1.2 event count changed"
 assert len(records(overlay)) == 10, "Aug. 24 overlay event count changed"
 assert len(records(historical)) + len(records(overlay)) == 108
-assert len(registry["sources"]) == 291, "generated source registry count changed"
+
+# Registry size is allowed to grow as append-only current source namespaces are added.
+# Validate exact namespace union instead of freezing a stale magic number.
+registry_ids = {s["source_id"] for s in registry["sources"]}
+assert len(registry_ids) == len(registry["sources"]), "generated source registry contains duplicate IDs"
+namespace_ids = set()
+for rel in registry.get("methodology", {}).get("authoritative_namespaces", []):
+    path = ROOT / rel
+    if not path.exists():
+        continue
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    namespace_ids |= {s.get("source_id") for s in payload.get("sources", []) if s.get("source_id")}
+assert registry_ids == namespace_ids, "generated source registry does not equal authoritative namespace union"
 
 changed_locked = subprocess.run(
     ["git", "diff", "--name-only", BASE_SHA, "HEAD", "--", "data/integration-v1.2"],
@@ -51,7 +63,6 @@ assert set(adj["terminal_state_labels"]) == ALLOWED
 assert len(adj["claims"]) >= 8
 endgame_ids = {s["id"] for s in endgame["sources"]}
 hormuz_ids = set(hormuz["sources"])
-registry_ids = {s["source_id"] for s in registry["sources"]}
 scope_ids = {"endgame": endgame_ids, "hormuz": hormuz_ids, "registry": registry_ids}
 
 def validate_refs(refs, context):
@@ -135,4 +146,4 @@ assert "validate_ui_endgame_mermaid_r1.py" in workflow
 assert "ui-endgame-mermaid-r1.test.js" in workflow
 
 subprocess.run(["git", "diff", "--check", BASE_SHA, "HEAD"], cwd=ROOT, check=True)
-print("validate-ui-endgame-mermaid-r1: PASS (98 + 10 = 108; 291 sources; 8 claim paths; 3 Hormuz dimensions)")
+print(f"validate-ui-endgame-mermaid-r1: PASS (98 + 10 = 108 frozen Aug.24 base; {len(registry_ids)} current sources; 8 claim paths; 3 Hormuz dimensions)")
