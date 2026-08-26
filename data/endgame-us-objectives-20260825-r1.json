@@ -1,22 +1,29 @@
 {
-  "version": "2026.08.25-us-objectives-r1",
-  "title": "What the United States said it was trying to achieve",
-  "dek": "Score U.S. performance against documented objectives, not against an invented requirement to destroy Iran as a state.",
+  "version": "2026.08.25-objectives-r2",
+  "title": "Objective scoreboard · what each side actually achieved",
+  "dek": "Grade documented objectives against observable outcomes. Later, easier Iranian goals do not erase earlier harder ones: a verified retreat is shown as a downgrade from the original benchmark.",
+  "scale": [
+    {"score":0,"label":"FAILED / OPPOSITE","meaning":"The objective is not achieved and the observable position is at or moving away from it."},
+    {"score":1,"label":"WEAK","meaning":"Some residual leverage or pieces remain, but the objective itself is mostly unmet."},
+    {"score":2,"label":"PARTIAL / OPEN","meaning":"Material elements are achieved or preserved, but the objective is incomplete or the controlling end state remains unresolved."},
+    {"score":3,"label":"SUBSTANTIAL","meaning":"Most of the objective is supported by evidence, although important limits remain."},
+    {"score":4,"label":"ACHIEVED / CONTROLLING","meaning":"The objective is implemented or independently supported as the controlling current outcome."}
+  ],
   "sources": {
     "US1": {
       "publisher": "The White House",
       "date": "2026-04-01",
       "title": "President Trump’s Clear and Unchanging Objectives Drive Decisive Success Against Iranian Regime",
       "url": "https://www.whitehouse.gov/releases/2026/04/president-trumps-clear-and-unchanging-objectives-drive-decisive-success-against-iranian-regime/",
-      "supports": "The White House repeatedly defined Operation Epic Fury objectives as destroying or severely degrading Iran's ballistic missiles and production capacity, navy/power projection, proxy support, and denying Iran a nuclear weapon. The same White House compilation quotes Vice President Vance saying what happens to the regime is incidental to the President's primary objective of preventing an Iranian nuclear bomb.",
-      "quality": "PRIMARY / OFFICIAL-ACTOR; use to define stated U.S. objectives, not to independently verify claimed battlefield success"
+      "supports": "Defines wartime U.S. objectives as destroying or severely degrading Iran's ballistic missiles and production capacity, navy/power projection, proxy support, and denying Iran a nuclear weapon. The compilation quotes Vice President Vance saying the regime's fate is incidental to the primary nuclear-denial objective.",
+      "quality": "PRIMARY / OFFICIAL-ACTOR; defines stated objectives, not independent proof of success"
     },
     "US2": {
       "publisher": "The White House",
       "date": "2025-02-04",
       "title": "National Security Presidential Memorandum/NSPM-2",
       "url": "https://www.whitehouse.gov/presidential-actions/2025/02/national-security-presidential-memorandum-nspm-2/",
-      "supports": "Formal U.S. policy: deny Iran a nuclear weapon and ICBMs; neutralize its regional aggression; disrupt, degrade or deprive the IRGC and surrogates of resources; counter missile and asymmetric/conventional weapons capabilities; apply maximum economic pressure.",
+      "supports": "Formal U.S. policy: deny Iran a nuclear weapon and ICBMs; neutralize regional aggression; disrupt, degrade or deprive the IRGC and surrogates of resources; counter missile and asymmetric/conventional capabilities; apply maximum economic pressure.",
       "quality": "PRIMARY / FORMAL POLICY"
     },
     "US3": {
@@ -24,51 +31,203 @@
       "date": "2026-06-19",
       "title": "President Trump’s Iran Agreement Is America First in Action",
       "url": "https://www.whitehouse.gov/releases/2026/06/president-trumps-iran-agreement-is-america-first-in-action/",
-      "supports": "The administration presented the June agreement as serving U.S. objectives by preventing an Iranian nuclear weapon and reopening the Strait of Hormuz to free navigation, rather than by destroying or occupying Iran.",
-      "quality": "PRIMARY / OFFICIAL-ACTOR; agreement-characterization source"
+      "supports": "The administration presented the June agreement as serving U.S. objectives by preventing an Iranian nuclear weapon and reopening Hormuz to free navigation, rather than by destroying or occupying Iran.",
+      "quality": "PRIMARY / OFFICIAL-ACTOR; defines objective and agreement framing"
     },
     "US4": {
       "publisher": "The White House",
       "date": "2026-08-24",
       "title": "Operation Economic Outcast: Total Isolation of the Iranian Regime",
       "url": "https://www.whitehouse.gov/releases/2026/08/operation-economic-outcast-total-isolation-of-the-iranian-regime/",
-      "supports": "The current economic phase states its objective as severing economic lifelines sustaining the Iranian regime and its threat networks until Tehran is isolated and financially broken. This is coercive economic pressure, not a stated requirement to eliminate Iran as a state.",
+      "supports": "Defines the current economic phase as severing economic lifelines sustaining the Iranian regime and its threat networks until Tehran is isolated and financially broken.",
       "quality": "PRIMARY / OFFICIAL-ACTOR; defines current economic objective"
+    },
+    "IR1": {
+      "publisher": "Press TV",
+      "date": "2026-04-21",
+      "title": "Never again: Why Iran denies concessions and negotiates from position of strength",
+      "url": "https://www.presstv.ir/doc/Detail/2026/04/21/767305/never-again-why-iran-denies-concessions-negotiates-position-strength",
+      "supports": "Presented missile, nuclear and defense capabilities as non-negotiable and framed Iran as the battlefield victor that would dictate terms rather than concede under pressure.",
+      "quality": "IRANIAN STATE-MEDIA STRATEGIC POSITION"
+    },
+    "IR2": {
+      "publisher": "Press TV",
+      "date": "2026-05-21",
+      "title": "With strategic upper hand, Iran conditions nuclear talks on war's definitive end – on its terms",
+      "url": "https://www.presstv.ir/Detail/2026/05/21/769030/with-strategic-upper-hand-iran-conditions-nuclear-talks-war-definitive-end-iranian-terms",
+      "supports": "Said the end state must record a decisive, substantive Iranian victory rather than symbolic survival.",
+      "quality": "IRANIAN STATE-MEDIA STRATEGIC POSITION"
+    },
+    "IR3": {
+      "publisher": "Press TV",
+      "date": "2026-05-22",
+      "title": "The logic of victory: Iran's principled terms for end to imposed war define a new strategic reality",
+      "url": "https://www.presstv.ir/Detail/2026/05/22/769087/logic-victory-iran-principled-terms-ending-imposed-war-define-strategic-reality",
+      "supports": "Called compensation, asset return, U.S. withdrawal, blockade termination, protection of allies, sanctions relief and a signed settlement the minimum acceptable outcome; treated Hormuz sovereignty/tolls as a prize already won.",
+      "quality": "IRANIAN STATE-MEDIA VICTORY-CONDITION STATEMENT"
+    },
+    "IR4": {
+      "publisher": "Press TV",
+      "date": "2026-05-27",
+      "title": "Lessons of war: Strait of Hormuz control and nuclear sovereignty define Iran's inviolable red lines today",
+      "url": "https://www.presstv.ir/Detail/2026/05/27/769383/lessons-war-strait-hormuz-control-nuclear-sovereignty-define-iran-redlines-today",
+      "supports": "Described nuclear industry, absolute Hormuz sovereignty, defensive/asymmetric capabilities and the Axis of Resistance as non-negotiable strategic capital.",
+      "quality": "IRANIAN STATE-MEDIA RED-LINE STATEMENT"
+    },
+    "IR5": {
+      "publisher": "Press TV",
+      "date": "2026-06-16",
+      "title": "Iran's VP: Tehran will maintain control of Strait of Hormuz",
+      "url": "https://www.presstv.ir/Detail/2026/06/16/770566/Iran-VP-Tehran-maintain-control-Strait-of-Hormuz-vessels-cost-of-service-safe-navigation-MoU",
+      "supports": "Aref said management of Hormuz would remain Iran's responsibility and vessels should contribute to service costs.",
+      "quality": "IRANIAN OFFICIAL POSITION VIA STATE MEDIA"
+    },
+    "IR6": {
+      "publisher": "IranWire",
+      "date": "2026-08-21",
+      "title": "Iran's Pezeshkian Calls for End to War with US",
+      "url": "https://iranwire.com/en/news/156586-irans-pezeshkian-calls-for-end-to-war-with-us/",
+      "supports": "Reported Pezeshkian arguing Iran should end the war while it could still describe itself as acting from power and dignity — a materially narrower end-state formulation than the May victory ledger.",
+      "quality": "IRANIAN-MEDIA REPORT OF PRESIDENTIAL STATEMENT"
+    },
+    "IR7": {
+      "publisher": "IranWire",
+      "date": "2026-08-21",
+      "title": "Iran's Oil Exports Drop to Zero, Central Bank Governor Confirms",
+      "url": "https://iranwire.com/en/news/156562-irans-oil-exports-drop-to-zero-central-bank-governor-confirms/",
+      "supports": "Reported Hemmati's televised admission that oil exports had halted and access to foreign reserves remained constrained.",
+      "quality": "IRANIAN-MEDIA REPORT OF OFFICIAL STATEMENT"
     }
   },
-  "documented_objectives": [
+  "us_objectives": [
     {
       "objective": "Deny Iran a nuclear weapon",
-      "status": "CONTINUOUS CORE OBJECTIVE",
-      "explanation": "This appears consistently in formal policy, wartime mission statements and the June settlement framework. Final adjudication remains tied to the nuclear end state, inspections and any successor agreement.",
-      "source_ids": ["US1", "US2", "US3"]
+      "score": 2,
+      "status": "PARTIAL / OPEN",
+      "assessment": "Iran accepted a no-nuclear-weapon commitment and an IAEA-linked stockpile/downblending mechanism in the June framework, but that instrument collapsed and no final controlling nuclear settlement is yet established. The objective is not failed, but it is not complete.",
+      "source_ids": ["US1","US2","US3","S01","S06"]
     },
     {
       "objective": "Break offensive military power projection",
-      "status": "EXPLICIT MILITARY OBJECTIVE",
-      "explanation": "Washington explicitly targeted ballistic missiles, missile/drone production, launch infrastructure, the navy and the broader defense-industrial base that supported regional power projection. Battlefield claims of complete destruction must still be checked against independent BDA elsewhere in Atlas.",
-      "source_ids": ["US1", "US2"]
+      "score": 3,
+      "status": "SUBSTANTIAL / INCOMPLETE",
+      "assessment": "Iran retains missiles, drones and coercive options, so this cannot be scored as total destruction. But the independent current record describes a much narrower Iranian escalation menu after sustained attacks on launch, naval and strike infrastructure. Residual capability prevents a 4/4; the observable degradation supports a strong partial result.",
+      "source_ids": ["US1","US2","S04","S18"]
     },
     {
       "objective": "Reduce Iran's ability to arm and sustain proxies",
-      "status": "EXPLICIT / PARTIAL END STATE",
-      "explanation": "Formal policy and wartime statements aimed to disrupt or sever Iranian support to proxy and aligned forces. This is not the same as requiring every aligned actor to disappear; the board should grade the actual degradation of Iran's ability to fund, arm and direct them.",
-      "source_ids": ["US1", "US2"]
+      "score": 2,
+      "status": "PARTIAL",
+      "assessment": "Iran's regional network has lost freedom and depth, and the regional response has become more coordinated, but Houthi pressure remains operationally relevant and specific tactical control cannot be assumed. The objective is materially advanced, not completed.",
+      "source_ids": ["US1","US2","S07","S11","S18"]
     },
     {
       "objective": "Restore usable navigation through Hormuz",
-      "status": "EXPLICIT SETTLEMENT OBJECTIVE",
-      "explanation": "The administration explicitly presented free navigation through Hormuz as a U.S. objective in the June agreement. The current Oman-Iran joint corridor process and U.S. demining claims belong under this metric, not under a requirement for Iranian state destruction.",
-      "source_ids": ["US3"]
+      "score": 2,
+      "status": "PARTIAL / IMPROVING",
+      "assessment": "The Oman-Iran temporary joint-corridor framework and U.S. mine-clearance activity move toward this objective, but traffic remains far below normal and a permanent navigation regime is not yet controlling. This is progress, not completion.",
+      "source_ids": ["US3","S23","S25","S26","S32"]
     },
     {
-      "objective": "Use economic isolation to narrow Tehran's remaining options",
-      "status": "ACTIVE CURRENT OBJECTIVE",
-      "explanation": "The August phase explicitly seeks to sever financial and commercial lifelines that sustain the regime's threat capacity and force a worse choice set on Tehran.",
-      "source_ids": ["US2", "US4"]
+      "objective": "Use economic isolation to narrow Tehran's options",
+      "score": 3,
+      "status": "SUBSTANTIAL / ACTIVE",
+      "assessment": "Iranian crude flows and offers have fallen, major counterparties are de-risking, domestic fuel stress is visible, and sanctions have broadened toward third-country facilitators. Iran still has trading partners and has not been economically broken, so the objective remains active rather than complete.",
+      "source_ids": ["US2","US4","S14","S15","S28","S31","IR7"]
     }
   ],
-  "not_documented_as_required_victory_conditions": [
+  "iran_objectives": [
+    {
+      "objective": "War damages / reparations paid",
+      "origin": "May 22 minimum acceptable outcome",
+      "score": 0,
+      "status": "FAILED / NOT SHOWN",
+      "assessment": "No implemented reparations payment is established. The June MOU discussed reconstruction rather than completed reparations, and the successor maritime process does not restore this demand.",
+      "source_ids": ["IR3","S01","S25"]
+    },
+    {
+      "objective": "Frozen / blocked Iranian assets returned",
+      "origin": "April–May victory terms",
+      "score": 0,
+      "status": "FAILED / NOT IMPLEMENTED",
+      "assessment": "The June MOU contained a favorable asset-access promise, but it did not mature into durable broad access before collapse. Iranian reporting still describes constrained access to foreign reserves.",
+      "source_ids": ["IR1","IR3","S01","S06","IR7"]
+    },
+    {
+      "objective": "U.S. naval blockade terminated",
+      "origin": "May 22 minimum acceptable outcome",
+      "score": 0,
+      "status": "FAILED / REVERSED",
+      "assessment": "Iran briefly received blockade relief under the June MOU, but that gain was reversed. The blockade and export-denial architecture remain central to current U.S. pressure.",
+      "source_ids": ["IR3","S01","S06","S15","S31"]
+    },
+    {
+      "objective": "Full / verifiable sanctions relief",
+      "origin": "April–May victory terms",
+      "score": 0,
+      "status": "MOVING OPPOSITE",
+      "assessment": "Comprehensive relief did not become controlling. Washington is broadening sanctions and third-country pressure while Tehran negotiates under that pressure.",
+      "source_ids": ["IR1","IR3","S24","S31"]
+    },
+    {
+      "objective": "U.S. withdrawal from bases surrounding Iran",
+      "origin": "May 22 minimum acceptable outcome",
+      "score": 0,
+      "status": "NOT ACHIEVED",
+      "assessment": "No controlling settlement or observable force posture establishes the broad regional U.S. withdrawal Tehran demanded. The June MOU's narrower post-final-deal withdrawal trigger never matured.",
+      "source_ids": ["IR3","S01","S06"]
+    },
+    {
+      "objective": "Protection / non-aggression toward Axis allies",
+      "origin": "May 22 minimum acceptable outcome / May 27 red line",
+      "score": 1,
+      "status": "WEAK / MOSTLY UNMET",
+      "assessment": "Aligned actors remain, so the network has not disappeared. But no durable settlement guarantee protecting the Axis is established, and the regional security architecture has moved toward constraining rather than protecting Iran-aligned pressure networks.",
+      "source_ids": ["IR3","IR4","S07","S11","S18"]
+    },
+    {
+      "objective": "Permanent Iranian Hormuz sovereignty / management / fees",
+      "origin": "May–June victory and implementation claims",
+      "score": 1,
+      "status": "LEVERAGE REAL / OBJECTIVE RETREATED",
+      "assessment": "Iran retains meaningful coercive and temporary operational leverage. But the Aug. 25 mechanism is joint with Oman, contemplates littoral-state consultation and international law, and does not recognize unilateral permanent Iranian control or a compulsory transit-toll right.",
+      "source_ids": ["IR3","IR4","IR5","S25","S32"]
+    },
+    {
+      "objective": "No concessions on nuclear, missiles, defense or regional architecture",
+      "origin": "April 21 / May 27 red lines",
+      "score": 2,
+      "status": "PARTIAL / ALREADY SOFTENING",
+      "assessment": "The final nuclear and missile bargain remains unresolved, so this cannot be scored as a full failure. But Iran has already accepted mediated sequencing and a shared Hormuz architecture inconsistent with the earlier all-or-nothing claim that the regional/security pillars would not be traded under pressure.",
+      "source_ids": ["IR1","IR4","S24","S25","S27","S32"]
+    }
+  ],
+  "iran_walkbacks": [
+    {
+      "date": "2026-05-21/22",
+      "type": "ORIGINAL BENCHMARK",
+      "from": "Decisive substantive victory recorded in the settlement; concrete minimum terms including reparations, assets, U.S. withdrawal, blockade termination, sanctions relief, Axis protection and Hormuz gains.",
+      "to": "Baseline for later comparison.",
+      "source_ids": ["IR2","IR3"]
+    },
+    {
+      "date": "2026-08-21",
+      "type": "VERIFIED OBJECTIVE DOWNGRADE",
+      "from": "Settlement must record decisive victory and satisfy the May minimum ledger.",
+      "to": "End the war while Iran can still describe itself as retaining 'power and dignity.'",
+      "assessment": "This is a narrower success criterion. It does not erase the earlier benchmark; Atlas records it as a walk-back from the original objective set.",
+      "source_ids": ["IR2","IR3","IR6"]
+    },
+    {
+      "date": "2026-08-25",
+      "type": "BEHAVIORAL RETREAT · NOT A FORMAL NEW OBJECTIVE",
+      "from": "Washington must reverse coercion / restore the old bargain first; Iran claimed unilateral or dominant Hormuz authority as a strategic gain.",
+      "to": "Iran validates Pakistani mediation and accepts a joint Oman maritime framework before the old economic package is restored.",
+      "assessment": "The changed behavior is observable even if Tehran does not formally announce a new objective. It is therefore shown as retreat from the earlier bargaining position, not silently promoted to an equal replacement objective.",
+      "source_ids": ["IR5","S24","S25","S27","S32"]
+    }
+  ],
+  "not_documented_as_required_us_victory_conditions": [
     "Destroy Iran as a country",
     "Occupy Iran",
     "Dissolve the Iranian state",
@@ -77,9 +236,9 @@
     "Eliminate every remaining Iranian coercive capability"
   ],
   "semantic_test": {
-    "title": "Do not change the scoreboard after the fact",
-    "text": "The claim 'Iran still exists, therefore the United States failed' only works if destroying Iran was actually a U.S. victory condition. The official objective record does not establish that. Once unrelated conditions are admitted, the exercise becomes meaningless: one could just as arbitrarily ask whether Iran is prosperous, whether its economy is healthy, or whether every Iranian weapon disappeared. Those may describe Iran's condition, but they are not automatically mission objectives. Atlas grades each side against the objectives it actually stated and the outcomes its behavior produced.",
-    "source_ids": ["US1", "US2", "US3", "US4"]
+    "title": "Do not change either side's scoreboard after the fact",
+    "text": "Iran's survival does not prove U.S. failure unless destroying Iran was a documented U.S. objective. Conversely, a later Iranian shift from 'decisive victory on our terms' to 'end the war with power and dignity' cannot be used to erase the earlier, harder Iranian victory conditions. Atlas keeps the original benchmark visible and marks verified retreats as downgrades.",
+    "source_ids": ["US1","US2","US3","IR2","IR3","IR6"]
   },
-  "precision_note": "Official U.S. sources are authoritative for what Washington said its objectives were. They are not independent proof that Washington achieved them. Achievement is adjudicated using the broader Atlas evidence record."
+  "precision_note": "The 0–4 scores are ordinal evidence grades, not percentages and not claims of mathematical precision. Official sources define stated objectives; they do not self-certify success. Outcomes are graded against the broader independent Atlas record. No composite winner score is calculated because the objectives are not equally weighted."
 }
