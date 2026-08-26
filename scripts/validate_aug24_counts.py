@@ -18,6 +18,8 @@ SOURCE_NAMESPACES = [
     "data/current-update-20260824/sources.json",
     "data/current-update-20260825/sources.json",
     "data/current-update-20260825-late/sources.json",
+    "data/current-update-20260826/sources.json",
+    "data/wiki-map-reconciliation-20260826/sources.json",
 ]
 
 def fail(message):

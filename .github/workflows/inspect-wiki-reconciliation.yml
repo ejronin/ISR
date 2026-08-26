@@ -1,0 +1,32 @@
+name: Inspect Wikipedia reconciliation
+
+on:
+  push:
+    branches:
+      - wiki-regional-reconciliation-finish-20260826
+  pull_request:
+    paths:
+      - 'data/wiki-map-reconciliation-20260826/**'
+      - 'js/wiki-map-reconciliation-20260826.js'
+      - 'scripts/inspect_wiki_reconciliation.py'
+      - 'scripts/materialize_wiki_reconciliation.py'
+      - 'scripts/validate_wiki_reconciliation.py'
+      - '.github/workflows/inspect-wiki-reconciliation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect compressed reconciliation payload
+        run: python scripts/inspect_wiki_reconciliation.py
+      - name: Materialize normal JSON reconciliation products
+        run: python scripts/materialize_wiki_reconciliation.py
+      - name: Validate evidence, coverage, chronology and ship-loss rules
+        run: python scripts/validate_wiki_reconciliation.py

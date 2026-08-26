@@ -88,6 +88,15 @@
     if (grid?.nextSibling) panel.insertBefore(box, grid.nextSibling); else panel.prepend(box);
   }
 
+  function loadHistoricalReconciliation(){
+    if(document.querySelector('script[data-historical-reconciliation-20260826]')) return;
+    const script=document.createElement('script');
+    script.src='./js/wiki-map-reconciliation-20260826.js?v=20260826-r2';
+    script.async=false;
+    script.dataset.historicalReconciliation20260826='1';
+    document.head.append(script);
+  }
+
   async function init(){
     await waitFor(() => (window.ATLAS_TEMPORAL_INDEX || []).length >= EXPECTED_PRIOR && window.ATLAS_CURRENT_UPDATE_20260825_LATE && window.registerAtlasEvents && window.registerAtlasSources);
     const [manifest,events,timeline,sources] = await Promise.all([
@@ -103,7 +112,7 @@
     window.dispatchEvent(new CustomEvent('atlascurrentready20260826', { detail:{ count:EXPECTED_CURRENT, cutoff:CUTOFF } }));
   }
 
-  const start = () => init().catch(error => console.warn('Aug. 26 current overlay unavailable; prior chronology remains usable.', error));
+  const start = () => init().then(loadHistoricalReconciliation).catch(error => console.warn('Aug. 26 current overlay unavailable; prior chronology remains usable.', error));
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once:true });
   else start();
 }());

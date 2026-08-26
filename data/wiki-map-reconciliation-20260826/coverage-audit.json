@@ -1,0 +1,1282 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-26",
+  "methodology": "Wikipedia regional attack and ship lists are discovery/coverage indexes only. Atlas cites vetted underlying sources; weak, circular, contradictory, claim-only, and near-miss entries are not promoted to confirmed physical strikes or durable losses.",
+  "accepted_or_corrected": [
+    {
+      "candidate": "Tel Aviv residential area",
+      "event_date": "2026-02-28",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-TELAVIV",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-F8F0F13C7150"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Beit Shemesh",
+      "event_date": "2026-03-01",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-BEITSHEMESH",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-25CB60A3ED30"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Northern Israel",
+      "event_date": "2026-03-13",
+      "category": "ROCKET_OR_MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260313-NORTHISRAEL",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-11F2DDFC000A"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Eilat",
+      "event_date": "2026-03-14",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260314-EILAT",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-330B28666CDE"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Old City of Jerusalem",
+      "event_date": "2026-03-16",
+      "category": "MISSILE_INTERCEPTION_DEBRIS",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260316-JERUSALEM",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-D8F23C89D294"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Dimona",
+      "event_date": "2026-03-21",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260321-DIMONA",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-A1B3E76C6CC9"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Arad",
+      "event_date": "2026-03-21",
+      "category": "MISSILE_STRIKE",
+      "disposition": "SOURCE_CONFLICT_CORRECTED",
+      "atlas_event_id": "WIKI-20260321-ARAD",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-A1B3E76C6CC9"
+      ],
+      "reason": "Wikipedia snapshot casualty figure conflicted with its underlying contemporaneous source; Atlas records 71 injured."
+    },
+    {
+      "candidate": "Central Israel / Tel Aviv area",
+      "event_date": "2026-03-22",
+      "category": "CLUSTER_MUNITION_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260322-CENTRALISRAEL",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-9816195E468E"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Tel Aviv building",
+      "event_date": "2026-03-28",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260328-TELAVIV",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-4940F8627D00"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "U.S. Fifth Fleet / NSA Bahrain",
+      "event_date": "2026-02-28",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-BHR5FLEET",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-351DB33C9E1C"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Mina Salman Port",
+      "event_date": "2026-03-02",
+      "category": "STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260302-MINASALMAN",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-69856BC3D07D"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Bapco Sitra refinery",
+      "event_date": "2026-03-09",
+      "category": "DRONE_OR_MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260309-SITRA",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-5133006E29A1"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Port Shuaiba U.S. logistics site",
+      "event_date": "2026-03-01",
+      "category": "DRONE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-SHUAIBA",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-AE2215AEF832"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "U.S. Embassy Kuwait City",
+      "event_date": "2026-03-02",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260302-KWTEMB",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-AE2215AEF832"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Abu Dhabi residential area",
+      "event_date": "2026-02-28",
+      "category": "INTERCEPTION_DEBRIS",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-ABUDHABI",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-C44035E78D67",
+          "outlet": "Washington Post",
+          "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+          "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Fairmont The Palm, Dubai",
+      "event_date": "2026-02-28",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-FAIRMONT",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-C44035E78D67",
+          "outlet": "Washington Post",
+          "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+          "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Al Minhad Air Base",
+      "event_date": "2026-03-02",
+      "category": "AIR_BASE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260302-ALMINHAD",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-8BF5DA8426B2"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "AWS UAE data center",
+      "event_date": "2026-03-02",
+      "category": "INFRASTRUCTURE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260302-AWSUAE",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-BBE3712CD37E"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Port of Jebel Ali",
+      "event_date": "2026-03-01",
+      "category": "PORT_STRIKE_OR_DAMAGE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-JEBELALI",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-C83A52109F9D"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Erbil International Airport / U.S. Consulate area",
+      "event_date": "2026-02-28",
+      "category": "MISSILE_DRONE_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-ERBIL",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-B3B9C353A9D2"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Victory Base / Baghdad International Airport",
+      "event_date": "2026-03-02",
+      "category": "DRONE_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260302-VICTORYBASE",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-F1EFC5719A4C"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "U.S. Embassy Riyadh",
+      "event_date": "2026-03-03",
+      "category": "DRONE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260303-RIYADEMB",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-2EA95127B111",
+        "SRC-AE2215AEF832"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Prince Sultan Air Base",
+      "event_date": "2026-03-01",
+      "category": "INTERCEPTED_MISSILE_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-PRINCESULTAN",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-A5815BB09BDD"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "King Khalid International Airport",
+      "event_date": "2026-03-01",
+      "category": "INTERCEPTED_MISSILE_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-KINGKHALID",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-A5815BB09BDD"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "SAMREF refinery, Yanbu",
+      "event_date": "2026-03-19",
+      "category": "DRONE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260319-SAMREF",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-A18378E042B3"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Ras Laffan Industrial City / QatarEnergy LNG",
+      "event_date": "2026-03-18",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260318-RASLAFFAN",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-5133006E29A1"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Mina al-Ahmadi and Mina Abdullah refineries",
+      "event_date": "2026-03-19",
+      "category": "DRONE_STRIKES",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260319-KWTREFINERIES",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-5133006E29A1"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Turkish airspace / Hatay",
+      "event_date": "2026-03-04",
+      "category": "BALLISTIC_MISSILE_INTERCEPTION",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260304-TURKEY",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-2AB9F7EAB381"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Gaziantep",
+      "event_date": "2026-03-09",
+      "category": "BALLISTIC_MISSILE_INTERCEPTION",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260309-GAZIANTEP",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-8A7095F066CF"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Near Incirlik Air Base",
+      "event_date": "2026-03-13",
+      "category": "BALLISTIC_MISSILE_INTERCEPTION",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260313-INCIRLIK",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-97B3782FD3F8"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Nakhchivan airport / Shakarabad",
+      "event_date": "2026-03-05",
+      "category": "DRONE_IMPACTS",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260305-NAKHCHIVAN",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-F73E20CD020C"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Beit Awwa",
+      "event_date": "2026-03-18",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260318-BEITAWWA",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        "SRC-43786DAB5413"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Skylight tanker",
+      "event_date": "2026-03-01",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-SKYLIGHT",
+      "atlas_loss_id": "MAT-SHIP-SKYLIGHT",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "MKD Vyom tanker",
+      "event_date": "2026-03-01",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-MKDVYOM",
+      "atlas_loss_id": "MAT-SHIP-MKDVYOM",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Hercules Star tanker",
+      "event_date": "2026-03-01",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-HERCULES",
+      "atlas_loss_id": "MAT-SHIP-HERCULES",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Stena Imperative products tanker",
+      "event_date": "2026-03-02",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-STENA",
+      "atlas_loss_id": "MAT-SHIP-STENA",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Libra Trader crude tanker",
+      "event_date": "2026-03-03",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-LIBRATRADER",
+      "atlas_loss_id": "MAT-SHIP-LIBRATRADER",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Gold Oak bulk carrier",
+      "event_date": "2026-03-03",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-GOLDOAK",
+      "atlas_loss_id": "MAT-SHIP-GOLDOAK",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Safeen Prestige container ship",
+      "event_date": "2026-03-04",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-SAFEENPRESTIGE",
+      "atlas_loss_id": "MAT-SHIP-SAFEENPRESTIGE",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Sonangol Namibe crude tanker",
+      "event_date": "2026-03-05",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-SONANGOL",
+      "atlas_loss_id": "MAT-SHIP-SONANGOL",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Tug assisting Safeen Prestige",
+      "event_date": "2026-03-06",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-TUG-MUSSAFAH",
+      "atlas_loss_id": "MAT-SHIP-TUG-MUSSAFAH",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Louise P / vessel north of Jubail",
+      "event_date": "2026-03-07",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-LOUISEP",
+      "atlas_loss_id": "MAT-SHIP-LOUISEP",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Mayuree Naree bulk carrier",
+      "event_date": "2026-03-11",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-MAYUREE",
+      "atlas_loss_id": "MAT-SHIP-MAYUREE",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "One Majesty container ship",
+      "event_date": "2026-03-11",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-ONEMAJESTY",
+      "atlas_loss_id": "MAT-SHIP-ONEMAJESTY",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Star Gwyneth bulk carrier",
+      "event_date": "2026-03-11",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-STARGWYNETH",
+      "atlas_loss_id": "MAT-SHIP-STARGWYNETH",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Safesea Vishnu tanker",
+      "event_date": "2026-03-11",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-SAFESEAVISHNU",
+      "atlas_loss_id": "MAT-SHIP-SAFESEAVISHNU",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Zefyros tanker",
+      "event_date": "2026-03-11",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-ZEFYROS",
+      "atlas_loss_id": "MAT-SHIP-ZEFYROS",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Source Blessing container ship",
+      "event_date": "2026-03-12",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-SOURCEBLESSING",
+      "atlas_loss_id": "MAT-SHIP-SOURCEBLESSING",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Gas Al Ahmadiah LPG tanker",
+      "event_date": "2026-03-17",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-GASALAHMADIAH",
+      "atlas_loss_id": "MAT-SHIP-GASALAHMADIAH",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Halul 50 offshore vessel",
+      "event_date": "2026-03-19",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-HALUL50",
+      "atlas_loss_id": "MAT-SHIP-HALUL50",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Al Salmi crude tanker",
+      "event_date": "2026-03-30",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-AL-SALMI",
+      "atlas_loss_id": "MAT-SHIP-AL-SALMI",
+      "underlying_source_ids": [
+        "SRC-C5B26E2C83F4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Iranian-flagged cargo vessel",
+      "event_date": "2026-04-19",
+      "category": "MARITIME_BLOCKADE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260419-TOUSKA",
+      "atlas_loss_id": "MAT-WIKI-20260419-TOUSKA",
+      "underlying_source_ids": [
+        "SRC-F9AD70C05327"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Iranian-flagged tanker",
+      "event_date": "2026-05-06",
+      "category": "MARITIME_BLOCKADE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260506-HASNA",
+      "atlas_loss_id": "MAT-WIKI-20260506-HASNA",
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-4B554E439A4A",
+          "outlet": "USCENTCOM",
+          "title": "U.S. Forces Disable Vessel in Gulf of Oman Attempting to Violate Blockade",
+          "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4479004/us-forces-disable-vessel-in-gulf-of-oman-attempting-to-violate-blockade/",
+          "publication_date": "2026-05-06",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Iranian-flagged tanker",
+      "event_date": "2026-05-08",
+      "category": "MARITIME_BLOCKADE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260508-SEASTARIII",
+      "atlas_loss_id": "MAT-WIKI-20260508-SEASTARIII",
+      "underlying_source_ids": [
+        "SRC-0E7A334F8A2A"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Iranian-flagged tanker",
+      "event_date": "2026-05-08",
+      "category": "MARITIME_BLOCKADE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260508-SEVDA",
+      "atlas_loss_id": "MAT-WIKI-20260508-SEVDA",
+      "underlying_source_ids": [
+        "SRC-0E7A334F8A2A"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Gambia-flagged commercial vessel",
+      "event_date": "2026-05-29",
+      "category": "MARITIME_BLOCKADE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260529-LIANSTAR",
+      "atlas_loss_id": "MAT-WIKI-20260529-LIANSTAR",
+      "underlying_source_ids": [
+        "SRC-BF66F38A274F"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Botswana-flagged tanker",
+      "event_date": "2026-06-02",
+      "category": "MARITIME_BLOCKADE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260602-LEXIE",
+      "atlas_loss_id": "MAT-WIKI-20260602-LEXIE",
+      "underlying_source_ids": [
+        "SRC-F9DF83972317"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Palau-flagged tanker",
+      "event_date": "2026-06-08",
+      "category": "MARITIME_BLOCKADE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260608-MARIVEX",
+      "atlas_loss_id": "MAT-WIKI-20260608-MARIVEX",
+      "underlying_source_ids": [
+        "SRC-F074C4DA31A4"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "MT Settebello",
+      "event_date": "2026-06-10",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260610-SETTEBELLO",
+      "atlas_loss_id": "MAT-WIKI-20260610-SETTEBELLO",
+      "underlying_source_ids": [
+        "SRC-CF91257C0AC2"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Chabahar pier",
+      "event_date": "2026-02-28",
+      "category": "NAVAL_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-JAMARAN",
+      "atlas_loss_id": "MAT-WIKI-20260228-JAMARAN",
+      "underlying_source_ids": [
+        "SRC-A2912FAC4A18"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Konarak naval base",
+      "event_date": "2026-02-28",
+      "category": "NAVAL_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-BAYANDOR",
+      "atlas_loss_id": "MAT-WIKI-20260228-BAYANDOR",
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-6843BB957E02",
+          "outlet": "Critical Threats Project / ISW",
+          "title": "Iran Update Evening Special Report, March 1, 2026",
+          "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-march-1-2026",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_OSINT_ANALYSIS",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Konarak naval base",
+      "event_date": "2026-02-28",
+      "category": "NAVAL_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-NAGHDI",
+      "atlas_loss_id": "MAT-WIKI-20260228-NAGHDI",
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-6843BB957E02",
+          "outlet": "Critical Threats Project / ISW",
+          "title": "Iran Update Evening Special Report, March 1, 2026",
+          "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-march-1-2026",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_OSINT_ANALYSIS",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Bandar Abbas naval base",
+      "event_date": "2026-03-02",
+      "category": "NAVAL_STRIKE",
+      "disposition": "SOURCE_CONFLICT_CORRECTED",
+      "atlas_event_id": "WIKI-20260302-MAKRAN",
+      "atlas_loss_id": "MAT-WIKI-20260302-MAKRAN",
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-7C416B910C6E",
+          "outlet": "USNI News",
+          "title": "Iranian Naval Forces are Major Target in Operation Epic Fury Strikes",
+          "url": "https://news.usni.org/2026/03/02/iranian-naval-forces-are-major-target-in-operation-epic-fury-strikes",
+          "publication_date": "2026-03-02",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_SPECIALIST_REPORTING",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Wikipedia/secondary summaries described destruction; reliable reviewed evidence supports strike/fire/damage, not confirmed sinking."
+    },
+    {
+      "candidate": "Bandar Abbas naval base",
+      "event_date": "2026-02-28",
+      "category": "NAVAL_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-SHAHIDBAGHERI",
+      "atlas_loss_id": "MAT-WIKI-20260228-SHAHIDBAGHERI",
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-7C416B910C6E",
+          "outlet": "USNI News",
+          "title": "Iranian Naval Forces are Major Target in Operation Epic Fury Strikes",
+          "url": "https://news.usni.org/2026/03/02/iranian-naval-forces-are-major-target-in-operation-epic-fury-strikes",
+          "publication_date": "2026-03-02",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_SPECIALIST_REPORTING",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Crowne Plaza Hotel, Manama",
+      "event_date": "2026-03-01",
+      "category": "DRONE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-CROWNEPLAZA",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-D571336DF718",
+          "outlet": "Airwars / U.S. Embassy Manama",
+          "title": "Crowne Plaza Hotel Manama strike assessment",
+          "url": "https://airwars.org/incidents/irbh260301j-march-1-2026",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "CORROBORATED_OSINT_AGGREGATION",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Etihad Towers",
+      "event_date": "2026-03-01",
+      "category": "INTERCEPT_DEBRIS",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-ETIHADTOWERS",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-82CB62CA99D5",
+          "outlet": "Emirates News Agency (WAM)",
+          "title": "Debris from drones intercepted by air defence systems falls on façade of one of Etihad Towers buildings",
+          "url": "https://www.wam.ae/en/article/byzgp55-debris-from-drones-intercepted-air-defence-systems",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Al Salam naval base warehouse",
+      "event_date": "2026-03-01",
+      "category": "DRONE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-ALSALAM",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-5A20B2D03812",
+          "outlet": "Emirates News Agency (WAM)",
+          "title": "Ministry of Defence responds to targeting of Al Salam military base",
+          "url": "https://www.wam.ae/en/article/byzgpj8-ministry-defence-responds-targeting-salam-military",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Jordanian territory / Amman and other governorates",
+      "event_date": "2026-02-28",
+      "category": "INTERCEPTED_MISSILE_DRONE_WAVE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260228-AMMAN",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-328CF1F87DC5",
+          "outlet": "Jordan Times",
+          "title": "JAF intercepts 49 drones, ballistic missiles, ensures no casualties",
+          "url": "https://jordantimes.com/news/local/jaf-intercepts-49-drones-ballistic-missiles-ensures-no-casualties",
+          "publication_date": "2026-02-28",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Yehud construction site",
+      "event_date": "2026-03-09",
+      "category": "MISSILE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260309-YEHUD",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-FFE00BDC5BDE",
+          "outlet": "Times of Israel",
+          "title": "Second person dies as a result of Iranian cluster bomb strike yesterday",
+          "url": "https://www.timesofisrael.com/liveblog_entry/death-of-second-victim-is-confirmed-in-iranian-missile-strike-yesterday/",
+          "publication_date": "2026-03-10",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Ras Tanura refinery",
+      "event_date": "2026-03-02",
+      "category": "DRONE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260302-RASTANURA",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-65FC65F4C81E",
+          "outlet": "Reuters",
+          "title": "Ras Tanura refinery struck by drone; Reuters-verified aftermath",
+          "url": "https://www.reutersconnect.com/item/smoke-billows-from-saudi-aramcos-ras-tanura-oil-refinery-after-a-reported-iranian-drone-strike/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1JDMkJXSkFUS1UyWQ",
+          "publication_date": "2026-03-02",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Bahrain International Airport",
+      "event_date": "2026-03-01",
+      "category": "DRONE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-BHRAIRPORT",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-16289E10CF8B",
+          "outlet": "Xinhua",
+          "title": "Bahrain says international airport targeted by drone, no casualties reported",
+          "url": "https://english.news.cn/20260301/20a60c3e5558426f8ae6cb9b2d73a4dc/c.html",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "STATE_NEWS_CITING_BAHRAIN_INTERIOR_MINISTRY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Burj Al Arab",
+      "event_date": "2026-03-01",
+      "category": "INTERCEPT_DEBRIS",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-BURJALARAB",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-02466B4C454D",
+          "outlet": "Reuters",
+          "title": "Dubai airport and Burj Al Arab damaged in Iranian strikes",
+          "url": "https://www.reuters.com/world/middle-east/missile-debris-panic-buying-jolt-dubais-aura-calm-after-iran-attack-2026-03-01/",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Port of Duqm",
+      "event_date": "2026-03-01",
+      "category": "DRONE_STRIKE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "WIKI-20260301-DUQM",
+      "atlas_loss_id": null,
+      "underlying_source_ids": [
+        {
+          "source_id": "SRC-C44035E78D67",
+          "outlet": "Washington Post",
+          "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+          "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "JV Innovation tanker near Mina Saqr",
+      "event_date": "2026-05-04",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-JVINNOVATION",
+      "atlas_loss_id": "MAT-SHIP-JVINNOVATION",
+      "underlying_source_ids": [
+        "SRC-EC86B7B61B78"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "MSV Haji Ali dhow off Oman",
+      "event_date": "2026-05-13",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-HAJIALI",
+      "atlas_loss_id": "MAT-SHIP-HAJIALI",
+      "underlying_source_ids": [
+        "SRC-D56EA3603AB6"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Olympic Life tanker off Muscat",
+      "event_date": "2026-05-26",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-OLYMPICLIFE",
+      "atlas_loss_id": "MAT-SHIP-OLYMPICLIFE",
+      "underlying_source_ids": [
+        "SRC-7C60593278F2"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Hui Chuan floating armoury",
+      "event_date": "2026-05-14",
+      "category": "MARITIME_SEIZURE",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-HUICHUAN",
+      "atlas_loss_id": "MAT-SHIP-HUICHUAN",
+      "underlying_source_ids": [
+        "SRC-E64ED5CE389D"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Al Rekayyat LNG tanker",
+      "event_date": "2026-07-06",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-ALREKAYYAT",
+      "atlas_loss_id": "MAT-SHIP-ALREKAYYAT",
+      "underlying_source_ids": [
+        "SRC-1DB72555A64F",
+        "SRC-FF3DDA1F64DA"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Wedyan crude tanker",
+      "event_date": "2026-07-07",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-WEDYAN",
+      "atlas_loss_id": "MAT-SHIP-WEDYAN",
+      "underlying_source_ids": [
+        "SRC-B026DA8C0073",
+        "SRC-FF3DDA1F64DA"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "Cyprus Prosperity tanker",
+      "event_date": "2026-07-07",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-CYPRUSPROSPERITY",
+      "atlas_loss_id": "MAT-SHIP-CYPRUSPROSPERITY",
+      "underlying_source_ids": [
+        "SRC-FF3DDA1F64DA"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    },
+    {
+      "candidate": "GFS Galaxy container ship",
+      "event_date": "2026-07-12",
+      "category": "MARITIME_ATTACK",
+      "disposition": "ACCEPTED_NEW",
+      "atlas_event_id": "SHIP-GFSGALAXY",
+      "atlas_loss_id": "MAT-SHIP-GFSGALAXY",
+      "underlying_source_ids": [
+        "SRC-FD363054B86E"
+      ],
+      "reason": "Underlying source met project evidentiary standards; Wikipedia served only as discovery/coverage index."
+    }
+  ],
+  "deduped_rejected_or_unresolved": [
+    {
+      "candidate": "Al Udeid Air Base attacks",
+      "disposition": "DEDUPED_EXISTING",
+      "reason": "Already represented in canonical events/facility/material-loss records; no duplicate added."
+    },
+    {
+      "candidate": "Ali Al Salem Air Base damage",
+      "disposition": "DEDUPED_EXISTING",
+      "reason": "Already represented in canonical material-loss/facility evidence; no duplicate loss added."
+    },
+    {
+      "candidate": "IRIS Dena",
+      "disposition": "DEDUPED_EXISTING",
+      "reason": "Canonical high-confidence sinking already exists."
+    },
+    {
+      "candidate": "Bandar Abbas Kilo-class submarine loss",
+      "disposition": "DEDUPED_EXISTING",
+      "reason": "Promoted in PR #39 with imagery-supported BDA; no duplicate added."
+    },
+    {
+      "candidate": "USS Abraham Lincoln claimed Iranian hit",
+      "disposition": "CONTESTED_NOT_LOSS",
+      "reason": "IRGC claim contested by CENTCOM and operational continuity; not entered as durable U.S. loss."
+    },
+    {
+      "candidate": "Tel Aviv March 5 LiveUAMap-only pin",
+      "disposition": "REJECTED_WEAK_SOURCE",
+      "reason": "Discovery entry lacked independently reliable underlying sourcing sufficient for Atlas admission."
+    },
+    {
+      "candidate": "Lebanon-to-northern-Israel March 5 LiveUAMap-only pin",
+      "disposition": "REJECTED_WEAK_SOURCE",
+      "reason": "Discovery entry lacked independently reliable underlying sourcing sufficient for Atlas admission."
+    },
+    {
+      "candidate": "Bahrain all-governorates generic pin",
+      "disposition": "REJECTED_WEAK_SOURCE",
+      "reason": "Overbroad/weakly sourced map entry not converted into a physical strike record."
+    },
+    {
+      "candidate": "Doha March 5 generic pin",
+      "disposition": "REJECTED_WEAK_SOURCE",
+      "reason": "Weak/insufficient underlying sourcing for a discrete physical impact."
+    },
+    {
+      "candidate": "Camp de la Paix strike pin",
+      "disposition": "REJECTED_WEAK_SOURCE",
+      "reason": "Reviewed underlying citation chain did not meet project standard."
+    },
+    {
+      "candidate": "Al Dhafra target claim",
+      "disposition": "CLAIM_ONLY_NOT_PHYSICAL_HIT",
+      "reason": "Targeting/attempt claim alone does not establish physical impact or durable loss."
+    },
+    {
+      "candidate": "Erbil/Eastern Jordan internally conflicting TASS row",
+      "disposition": "REJECTED_SOURCE_CONFLICT",
+      "reason": "Location/event description was internally inconsistent and not independently resolved."
+    },
+    {
+      "candidate": "RAF Akrotiri March 1 missiles",
+      "disposition": "CONTESTED_NOT_PINNED",
+      "reason": "Conflicting UK/Cyprus accounts; no precise physical strike record created."
+    },
+    {
+      "candidate": "IRIS Alborz destroyed claim",
+      "disposition": "UNRESOLVED_NOT_LOSS",
+      "reason": "Reviewed evidence did not independently establish destruction; no durable-loss entry."
+    },
+    {
+      "candidate": "IRIS Sahand / Sabalan attack claims",
+      "disposition": "UNRESOLVED_NOT_LOSS",
+      "reason": "Insufficient item-level evidence for verified damage/destruction."
+    },
+    {
+      "candidate": "Ocean Electra near miss",
+      "disposition": "NO_DURABLE_LOSS",
+      "reason": "Near miss without supported physical damage; excluded from durable-loss ledger."
+    },
+    {
+      "candidate": "MSC Grace near miss",
+      "disposition": "NO_DURABLE_LOSS",
+      "reason": "Near miss without supported physical damage; excluded from durable-loss ledger."
+    },
+    {
+      "candidate": "Haiphong Express claimed ballistic-missile hit",
+      "disposition": "CLAIM_ONLY_UNRESOLVED",
+      "reason": "IRGC attribution/effect claim not independently established to durable-loss standard."
+    }
+  ]
+}

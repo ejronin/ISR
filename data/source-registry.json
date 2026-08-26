@@ -6,7 +6,11 @@
     "authoritative_namespaces": [
       "data/integration-v1.2/sources.json",
       "data/forensic-v1.3.2/sources.json",
-      "data/current-update-20260824/sources.json"
+      "data/current-update-20260824/sources.json",
+      "data/current-update-20260825/sources.json",
+      "data/current-update-20260825-late/sources.json",
+      "data/current-update-20260826/sources.json",
+      "data/wiki-map-reconciliation-20260826/sources.json"
     ]
   },
   "outlet_profiles": [
@@ -63,6 +67,46 @@
         "bias_bucket_3": null,
         "factuality": null,
         "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-7AB68641F6A6",
+      "display_name": "Argus Media",
+      "aliases": [],
+      "country": "United Kingdom",
+      "region": "EUROPE",
+      "outlet_type": "SPECIALIST_MARKET_NEWS",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-FAB6650C2F5D",
+      "display_name": "BBC News",
+      "aliases": [
+        "BBC Verify"
+      ],
+      "country": "United Kingdom",
+      "region": "EUROPE",
+      "outlet_type": "PUBLIC_BROADCASTER",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "RATED",
+        "bias_raw": "CENTER",
+        "bias_bucket_3": "CENTER",
+        "factuality": "Very High",
+        "profile_url": "https://ground.news/interest/bbc-news_bf95f4",
         "checked_at": "2026-08-22",
         "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
       }
@@ -239,6 +283,25 @@
       }
     },
     {
+      "outlet_profile_id": "OUTLET-001299630C23",
+      "display_name": "Airwars / U.S. Embassy Manama",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
       "outlet_profile_id": "OUTLET-FC4D4A57A368",
       "display_name": "Airway",
       "aliases": [],
@@ -298,6 +361,25 @@
     {
       "outlet_profile_id": "OUTLET-256FB806488B",
       "display_name": "Bellingcat",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-4AA08612A8F6",
+      "display_name": "CNN",
       "aliases": [],
       "country": null,
       "region": "GLOBAL_INTERNATIONAL",
@@ -505,8 +587,65 @@
       }
     },
     {
+      "outlet_profile_id": "OUTLET-ECF172F4E83B",
+      "display_name": "Financial Times",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-F501D77EF06B",
+      "display_name": "German Navy Shipping Centre",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "OFFICIAL_OR_TECHNICAL",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
       "outlet_profile_id": "OUTLET-59E47C2365B9",
       "display_name": "Gulf News / Bloomberg",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "NEWS_OUTLET",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-B88A8CDFDD65",
+      "display_name": "Gulf News / UKMTO",
       "aliases": [],
       "country": null,
       "region": "GLOBAL_INTERNATIONAL",
@@ -572,6 +711,25 @@
       "ownership_note": null,
       "ground_news": {
         "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-9AD6E1491722",
+      "display_name": "IMO",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "INTERNATIONAL_ORGANIZATION",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_APPLICABLE",
         "bias_raw": null,
         "bias_bucket_3": null,
         "factuality": null,
@@ -676,6 +834,44 @@
       }
     },
     {
+      "outlet_profile_id": "OUTLET-C3247A603C70",
+      "display_name": "Jordan Times",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-02FA3B65DCB8",
+      "display_name": "Kurdistan24",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
       "outlet_profile_id": "OUTLET-E47A7645C862",
       "display_name": "Kuwait Meteorological Center",
       "aliases": [],
@@ -697,6 +893,25 @@
     {
       "outlet_profile_id": "OUTLET-08D885F02A20",
       "display_name": "Lead Stories",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-2FC4C98A86E8",
+      "display_name": "Lloyd's List",
       "aliases": [],
       "country": null,
       "region": "GLOBAL_INTERNATIONAL",
@@ -847,6 +1062,44 @@
       }
     },
     {
+      "outlet_profile_id": "OUTLET-AD280132006E",
+      "display_name": "The Guardian",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-5AEE5DCA94D7",
+      "display_name": "The Jerusalem Post",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
       "outlet_profile_id": "OUTLET-A58014E022AF",
       "display_name": "The War Zone",
       "aliases": [],
@@ -876,6 +1129,44 @@
       "ownership_note": null,
       "ground_news": {
         "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-239CE2BFE52B",
+      "display_name": "Times of Israel",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-C4C1D4F2A07B",
+      "display_name": "Trend News Agency",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
         "bias_raw": null,
         "bias_bucket_3": null,
         "factuality": null,
@@ -1009,6 +1300,44 @@
       "ownership_note": null,
       "ground_news": {
         "status": "NOT_APPLICABLE",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-56330056E34B",
+      "display_name": "USCENTCOM",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
+      "outlet_profile_id": "OUTLET-ED6CADA19277",
+      "display_name": "USNI News",
+      "aliases": [],
+      "country": null,
+      "region": "GLOBAL_INTERNATIONAL",
+      "outlet_type": "NEWS_OUTLET",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
         "bias_raw": null,
         "bias_bucket_3": null,
         "factuality": null,
@@ -1208,6 +1537,25 @@
       }
     },
     {
+      "outlet_profile_id": "OUTLET-5D9833A6A0AC",
+      "display_name": "Saudi Press Agency",
+      "aliases": [],
+      "country": "Saudi Arabia",
+      "region": "MIDDLE_EAST_NORTH_AFRICA",
+      "outlet_type": "STATE_NEWS_AGENCY",
+      "state_affiliation": "Saudi official",
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
+    },
+    {
       "outlet_profile_id": "OUTLET-BD01CECEA435",
       "display_name": "Emirates News Agency (WAM)",
       "aliases": [],
@@ -1379,6 +1727,25 @@
         "checked_at": "2026-08-22",
         "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
       }
+    },
+    {
+      "outlet_profile_id": "OUTLET-CAC2F23C508C",
+      "display_name": "ABC News Australia",
+      "aliases": [],
+      "country": "Australia",
+      "region": "OCEANIA",
+      "outlet_type": "PUBLISHER_OR_TECHNICAL_SOURCE",
+      "state_affiliation": null,
+      "ownership_note": null,
+      "ground_news": {
+        "status": "NOT_RATED",
+        "bias_raw": null,
+        "bias_bucket_3": null,
+        "factuality": null,
+        "profile_url": null,
+        "checked_at": "2026-08-22",
+        "methodology_note": "Ground News publication-level rating; not an article rating or proof of neutrality."
+      }
     }
   ],
   "sources": [
@@ -1460,6 +1827,20 @@
       ],
       "quality": "B",
       "lineage": "DIRECT",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-02466B4C454D",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Dubai airport and Burj Al Arab damaged in Iranian strikes",
+      "url": "https://www.reuters.com/world/middle-east/missile-debris-panic-buying-jolt-dubais-aura-calm-after-iran-attack-2026-03-01/",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
       "records_supported": []
     },
     {
@@ -1692,6 +2073,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-0E7A334F8A2A",
+      "outlet_profile_id": "OUTLET-56330056E34B",
+      "title": "U.S. Disables 2 More Vessels Violating Blockade in Gulf of Oman",
+      "url": "https://www.centcom.mil/MEDIA/PRESS-RELEASES/Press-Release-View/Article/4480820/us-disables-2-more-vessels-violating-blockade-in-gulf-of-oman/",
+      "publication_date": "2026-05-08",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-0F0B6070FCF6",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Oil prices fall on prospect of Middle East ceasefire easing supply disruption",
@@ -1758,6 +2153,20 @@
       "records_supported": [
         "qatar-iran-april-contacts.json"
       ]
+    },
+    {
+      "source_id": "SRC-11F2DDFC000A",
+      "outlet_profile_id": "OUTLET-5AEE5DCA94D7",
+      "title": "Two wounded as Hezbollah continues attacks on Israel",
+      "url": "https://www.jpost.com/israel-news/defense-news/article-889842",
+      "publication_date": "2026-03-13",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-12AF87A440B4",
@@ -1906,6 +2315,20 @@
       ]
     },
     {
+      "source_id": "SRC-16289E10CF8B",
+      "outlet_profile_id": "OUTLET-4B1E7DD7BAD7",
+      "title": "Bahrain says international airport targeted by drone, no casualties reported",
+      "url": "https://english.news.cn/20260301/20a60c3e5558426f8ae6cb9b2d73a4dc/c.html",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "STATE_NEWS_CITING_BAHRAIN_INTERIOR_MINISTRY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-17A8BAFE71BD",
       "outlet_profile_id": "OUTLET-89FF63CE8DF8",
       "title": "US aircraft carrier arrives in Middle East, relieving long-deployed USS Lincoln",
@@ -1984,6 +2407,37 @@
       ],
       "quality": "B",
       "lineage": "DIRECT",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-1C8748E51940",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "US starts returning staff to Middle East missions after Iran war evacuations, sources say",
+      "url": "https://www.reuters.com/world/middle-east/us-prepares-send-diplomats-back-middle-east-embassies-after-iran-war-evacuations-2026-08-25/",
+      "publication_date": "2026-08-25",
+      "source_roles": [
+        "US_POSTURE",
+        "DIPLOMATIC_SECURITY",
+        "ESCALATION_RISK"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 25 current-overlay collection",
+      "records_supported": [
+        "CUR-20260825-004"
+      ]
+    },
+    {
+      "source_id": "SRC-1DB72555A64F",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Qatari LNG tanker awaits salvage off Oman after projectile strike",
+      "url": "https://www.reuters.com/business/energy/damaged-qatari-lng-tanker-awaits-salvage-after-strike-near-hormuz-2026-07-08/",
+      "publication_date": "2026-07-08",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
       "records_supported": []
     },
     {
@@ -2090,6 +2544,20 @@
       "records_supported": [
         "EV-20260430-001"
       ]
+    },
+    {
+      "source_id": "SRC-25CB60A3ED30",
+      "outlet_profile_id": "OUTLET-89FF63CE8DF8",
+      "title": "Rescuers dig through rubble after deadly strike on Israeli synagogue",
+      "url": "https://apnews.com/live/us-israel-strikes-iran-khamenei-03-01-2026",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-25DF3807300D",
@@ -2239,6 +2707,20 @@
       ]
     },
     {
+      "source_id": "SRC-2AB9F7EAB381",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Turkey says NATO defences destroyed Iran missile, risking war expansion",
+      "url": "https://www.reuters.com/world/middle-east/turkey-says-nato-defences-destroyed-missile-fired-iran-over-mediterranean-2026-03-04/",
+      "publication_date": "2026-03-04",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-2AD36D488E7F",
       "outlet_profile_id": "OUTLET-8588B8C524E3",
       "title": "IMF January 2026 WEO Update",
@@ -2300,6 +2782,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-2EA95127B111",
+      "outlet_profile_id": "OUTLET-5D9833A6A0AC",
+      "title": "Defense Ministry Spokesperson: US Embassy in Riyadh Targeted by Two Drones",
+      "url": "https://spa.gov.sa/en/N2527031",
+      "publication_date": "2026-03-03",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-2FFDAFCBBFBB",
       "outlet_profile_id": "OUTLET-6BFBAAC71E1C",
       "title": "Ukraina sprzedaje Su-24M za 1/3 ceny",
@@ -2345,6 +2841,56 @@
       "records_supported": [
         "EV-20260821-006"
       ]
+    },
+    {
+      "source_id": "SRC-30A8A4F82072",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Trump says Strait of Hormuz has been demined, warns Iran not to plant more",
+      "url": "https://www.reuters.com/world/trump-says-strait-hormuz-has-been-demined-warns-iran-not-plant-more-2026-08-25/",
+      "publication_date": "2026-08-25",
+      "source_roles": [
+        "US_POLICY",
+        "MINE_CLEARANCE_CLAIM",
+        "HORMUZ",
+        "ESCALATION_WARNING"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 25 current-overlay collection",
+      "records_supported": [
+        "CUR-20260825-003"
+      ]
+    },
+    {
+      "source_id": "SRC-3181EBC6368E",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Iran and Oman reach agreements on share of Hormuz and revenues, Revolutionary Guards say",
+      "url": "https://www.reuters.com/world/asia-pacific/iran-oman-reach-agreements-share-hormuz-revenues-revolutionary-guards-say-2026-08-26/",
+      "publication_date": "2026-08-26",
+      "source_roles": [
+        "DIPLOMACY",
+        "HORMUZ_NEGOTIATION",
+        "IRANIAN_ACTOR_CLAIM",
+        "REVENUE_CONTROL"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 26 current-overlay collection",
+      "records_supported": [
+        "CUR-20260826-001"
+      ]
+    },
+    {
+      "source_id": "SRC-328CF1F87DC5",
+      "outlet_profile_id": "OUTLET-C3247A603C70",
+      "title": "JAF intercepts 49 drones, ballistic missiles, ensures no casualties",
+      "url": "https://jordantimes.com/news/local/jaf-intercepts-49-drones-ballistic-missiles-ensures-no-casualties",
+      "publication_date": "2026-02-28",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
     },
     {
       "source_id": "SRC-329DD7E492A8",
@@ -2416,6 +2962,20 @@
       ]
     },
     {
+      "source_id": "SRC-330B28666CDE",
+      "outlet_profile_id": "OUTLET-5AEE5DCA94D7",
+      "title": "Teen injured after Iran pummels Israel with missiles",
+      "url": "https://www.jpost.com/israel-news/defense-news/article-889905",
+      "publication_date": "2026-03-14",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-34FA605EE6AB",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Death toll from Iranian warship Dena rises after torpedo attack",
@@ -2428,6 +2988,20 @@
       ],
       "quality": "A",
       "lineage": "DIRECT",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-351DB33C9E1C",
+      "outlet_profile_id": "OUTLET-4AA08612A8F6",
+      "title": "Videos show smoke rising near US Navy facility in Bahrain",
+      "url": "https://www.cnn.com/2026/02/28/middleeast/bahrain-us-navy-facility-smoke-intl",
+      "publication_date": "2026-02-28",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
       "records_supported": []
     },
     {
@@ -2461,6 +3035,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-35FDE058E0B7",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Tracking Iranian attacks on civilian ships in the Gulf",
+      "url": "https://www.reuters.com/graphics/IRAN-CRISIS/MAPS/znpnmelervl/2026-03-12/tracking-iranian-attacks-on-civilian-ships-in-the-gulf/",
+      "publication_date": "2026-03-12",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-3654DF2A6113",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Iran threatens 45 tankers with fines, confiscation in Hormuz escalation",
@@ -2491,6 +3079,25 @@
       "lineage": "Reuters original reporting of U.S. officials",
       "records_supported": [
         "EV-20260615-001"
+      ]
+    },
+    {
+      "source_id": "SRC-37C7375E3AB5",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Iran and Oman discuss temporary Hormuz corridor as impasse with US drags on",
+      "url": "https://www.reuters.com/world/china/iran-oman-discuss-temporary-hormuz-corridor-impasse-with-us-drags-2026-08-25/",
+      "publication_date": "2026-08-25",
+      "source_roles": [
+        "DIPLOMACY",
+        "HORMUZ_NEGOTIATION",
+        "JOINT_FRAMEWORK",
+        "INFORMATION_ENVIRONMENT"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 25 current-overlay collection",
+      "records_supported": [
+        "CUR-20260825-002",
+        "CUR-20260825-007"
       ]
     },
     {
@@ -2696,6 +3303,20 @@
       ]
     },
     {
+      "source_id": "SRC-43786DAB5413",
+      "outlet_profile_id": "OUTLET-239CE2BFE52B",
+      "title": "Death toll in Iranian missile strike that hit West Bank Palestinian town rises to four",
+      "url": "https://www.timesofisrael.com/liveblog_entry/death-toll-in-iranian-missile-strike-that-hit-west-bank-palestinian-town-rises-to-four/",
+      "publication_date": "2026-03-18",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-45DF00C2C20E",
       "outlet_profile_id": "OUTLET-7B62913B395D",
       "title": "Iran disrupted ceasefire on paper over violations on ground",
@@ -2780,6 +3401,20 @@
       ]
     },
     {
+      "source_id": "SRC-4940F8627D00",
+      "outlet_profile_id": "OUTLET-239CE2BFE52B",
+      "title": "One killed, several wounded in Iranian ballistic missile attack on central Israel",
+      "url": "https://www.timesofisrael.com/one-killed-several-wounded-in-iranian-ballistic-missile-attack-on-central-israel/",
+      "publication_date": "2026-03-28",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-4A25C20F8AFD",
       "outlet_profile_id": "OUTLET-FA6BAA95414B",
       "title": "U.S. F-35 damaged in combat and landed safely",
@@ -2804,6 +3439,20 @@
       ],
       "quality": "A",
       "lineage": "primary official",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-4B554E439A4A",
+      "outlet_profile_id": "OUTLET-56330056E34B",
+      "title": "U.S. Forces Disable Vessel in Gulf of Oman Attempting to Violate Blockade",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4479004/us-forces-disable-vessel-in-gulf-of-oman-attempting-to-violate-blockade/",
+      "publication_date": "2026-05-06",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
       "records_supported": []
     },
     {
@@ -2971,6 +3620,20 @@
         "EV-20260526-001",
         "FAC-UAE-BARAKAH"
       ]
+    },
+    {
+      "source_id": "SRC-5133006E29A1",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "US-Israeli war with Iran causes major oil, gas disruptions",
+      "url": "https://www.reuters.com/business/energy/us-israeli-war-iran-causes-major-oil-gas-disruptions-2026-03-18/",
+      "publication_date": "2026-03-19",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-526EE786BDCD",
@@ -3195,6 +3858,20 @@
       ],
       "quality": "C",
       "lineage": "DIRECT",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-5A20B2D03812",
+      "outlet_profile_id": "OUTLET-BD01CECEA435",
+      "title": "Ministry of Defence responds to targeting of Al Salam military base",
+      "url": "https://www.wam.ae/en/article/byzgpj8-ministry-defence-responds-targeting-salam-military",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
       "records_supported": []
     },
     {
@@ -3450,6 +4127,20 @@
       ]
     },
     {
+      "source_id": "SRC-65FC65F4C81E",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Ras Tanura refinery struck by drone; Reuters-verified aftermath",
+      "url": "https://www.reutersconnect.com/item/smoke-billows-from-saudi-aramcos-ras-tanura-oil-refinery-after-a-reported-iranian-drone-strike/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1JDMkJXSkFUS1UyWQ",
+      "publication_date": "2026-03-02",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-66667A45F235",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Iran drone and missile attack hits Kuwait airport, state news agency says",
@@ -3558,6 +4249,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-69856BC3D07D",
+      "outlet_profile_id": "OUTLET-A33112BE53D4",
+      "title": "Iranian attack sets off fire near Bahrain's Mina Salman Port",
+      "url": "https://www.aljazeera.com/news/2026/3/2/iranian-attack-sets-off-fire-near-bahrains-mina-salman-port",
+      "publication_date": "2026-03-02",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-6B8C48817118",
       "outlet_profile_id": "OUTLET-6664765973D6",
       "title": "U.S.-Iraq Joint Security Cooperation Dialogue Joint Statement",
@@ -3574,6 +4279,23 @@
         "AGR-US-IRQ-SECURITY-TRANSITION-2023-2026",
         "CASE-US-REGIONAL-ABANDONMENT-NARRATIVE-2026",
         "PRE-20230808-IRQ-001"
+      ]
+    },
+    {
+      "source_id": "SRC-6BA36760A9C0",
+      "outlet_profile_id": "OUTLET-B88A8CDFDD65",
+      "title": "'Unknown projectile' hits oil tanker off Oman: UKMTO",
+      "url": "https://gulfnews.com/business/energy/unknown-projectile-hits-oil-tanker-off-oman-ukmto-1.500651171",
+      "publication_date": "2026-08-25",
+      "source_roles": [
+        "MARITIME_ATTACK",
+        "UKMTO_REPORT",
+        "ATTRIBUTION_LIMIT"
+      ],
+      "quality": "B / PRIMARY-AGENCY REPORT RELAY",
+      "lineage": "Aug. 25 current-overlay collection",
+      "records_supported": [
+        "CUR-20260824-010"
       ]
     },
     {
@@ -3854,6 +4576,24 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-763A4080E2A6",
+      "outlet_profile_id": "OUTLET-89FF63CE8DF8",
+      "title": "Iran warns of military ship ban in Hormuz under potential deal with Oman, and other Middle East news",
+      "url": "https://apnews.com/article/cb19bc3f0b467db591edbef52d0db273",
+      "publication_date": "2026-08-26",
+      "source_roles": [
+        "DIPLOMACY",
+        "HORMUZ_NEGOTIATION",
+        "IRANIAN_POSITION",
+        "COUNTEREVIDENCE"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 26 current-overlay collection",
+      "records_supported": [
+        "CUR-20260826-001"
+      ]
+    },
+    {
       "source_id": "SRC-777D501C321D",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "US to deploy thousands of additional troops to Middle East, officials say",
@@ -3970,6 +4710,34 @@
         "iran-war-cost-estimate.json",
         "cost-methodology.md"
       ]
+    },
+    {
+      "source_id": "SRC-7C416B910C6E",
+      "outlet_profile_id": "OUTLET-ED6CADA19277",
+      "title": "Iranian Naval Forces are Major Target in Operation Epic Fury Strikes",
+      "url": "https://news.usni.org/2026/03/02/iranian-naval-forces-are-major-target-in-operation-epic-fury-strikes",
+      "publication_date": "2026-03-02",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH_QUALITY_SPECIALIST_REPORTING",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-7C60593278F2",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Tanker reports external explosion off Oman coast, crew safe, UKMTO says",
+      "url": "https://www.reuters.com/world/middle-east/tanker-reports-external-explosion-off-oman-coast-crew-safe-ukmto-says-2026-05-26/",
+      "publication_date": "2026-05-26",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
     },
     {
       "source_id": "SRC-7CDC817909BB",
@@ -4123,6 +4891,20 @@
       ]
     },
     {
+      "source_id": "SRC-82CB62CA99D5",
+      "outlet_profile_id": "OUTLET-BD01CECEA435",
+      "title": "Debris from drones intercepted by air defence systems falls on façade of one of Etihad Towers buildings",
+      "url": "https://www.wam.ae/en/article/byzgp55-debris-from-drones-intercepted-air-defence-systems",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-82DCB357724B",
       "outlet_profile_id": "OUTLET-7B62913B395D",
       "title": "Iran dismisses reports of missile launch towards Turkey",
@@ -4269,6 +5051,34 @@
       ]
     },
     {
+      "source_id": "SRC-8A7095F066CF",
+      "outlet_profile_id": "OUTLET-F64C1A998ED0",
+      "title": "Ballistic missile fired from Iran toward Türkiye neutralized by NATO defense systems",
+      "url": "https://www.aa.com.tr/en/turkiye/ballistic-missile-fired-from-iran-toward-turkiye-neutralized-by-nato-defense-systems-in-east-mediterranean/3856390",
+      "publication_date": "2026-03-09",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-8BF5DA8426B2",
+      "outlet_profile_id": "OUTLET-CAC2F23C508C",
+      "title": "ADF personnel are safe after air base strike near Dubai",
+      "url": "https://www.abc.net.au/news/2026-03-03/adf-personnel-safe-after-dubai-air-base-strike/106408590",
+      "publication_date": "2026-03-03",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-8C302F9CD6F7",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "US military begins withdrawing from main base in northeast Syria, Syrian sources say",
@@ -4302,6 +5112,42 @@
       "lineage": "Reuters original",
       "records_supported": [
         "EV-20260601-001"
+      ]
+    },
+    {
+      "source_id": "SRC-8E8198554033",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Gulf markets mixed as oil slides, investors assess Iran diplomacy",
+      "url": "https://www.reuters.com/world/middle-east/gulf-stocks-muted-oil-declines-pakistan-mediated-iran-talks-focus-2026-08-26/",
+      "publication_date": "2026-08-26",
+      "source_roles": [
+        "ENERGY_LOGISTICS",
+        "QATAR",
+        "HORMUZ_BYPASS",
+        "MARKET_ADAPTATION"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 26 current-overlay collection",
+      "records_supported": [
+        "CUR-20260826-003"
+      ]
+    },
+    {
+      "source_id": "SRC-8F55E805772A",
+      "outlet_profile_id": "OUTLET-7AB68641F6A6",
+      "title": "Outbound Hormuz transits drop to zero: Update",
+      "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2869533-outbound-hormuz-transits-drop-to-zero-update",
+      "publication_date": "2026-08-25",
+      "source_roles": [
+        "SHIPPING_DATA",
+        "HORMUZ",
+        "TRAFFIC_BASELINE",
+        "WINDWARD"
+      ],
+      "quality": "B / SPECIALIST MARITIME-MARKET REPORTING",
+      "lineage": "Late Aug. 25 current-overlay collection",
+      "records_supported": [
+        "CUR-20260825-008"
       ]
     },
     {
@@ -4422,6 +5268,20 @@
       ]
     },
     {
+      "source_id": "SRC-97B3782FD3F8",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Turkey says NATO defences intercepted third missile from Iran",
+      "url": "https://www.reuters.com/world/middle-east/turkey-says-nato-defences-intercepted-third-missile-iran-asks-tehran-clarify-2026-03-13/",
+      "publication_date": "2026-03-13",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-980086328C21",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Iran grants permission for a number of Iraqi oil tankers to pass through Hormuz",
@@ -4437,6 +5297,20 @@
       "records_supported": [
         "EV-20260822-001"
       ]
+    },
+    {
+      "source_id": "SRC-9816195E468E",
+      "outlet_profile_id": "OUTLET-239CE2BFE52B",
+      "title": "15 injured, one seriously, as Iranian cluster munitions impact in central Israel",
+      "url": "https://www.timesofisrael.com/15-injured-one-seriously-as-iranian-cluster-munitions-impact-in-central-israel/",
+      "publication_date": "2026-03-22",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-98738E8E4940",
@@ -4569,6 +5443,34 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-A18378E042B3",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Saudi Aramco-Exxon refinery SAMREF in Saudi Arabia's Yanbu targeted",
+      "url": "https://www.reuters.com/business/energy/saudi-red-sea-port-yanbu-targeted-aerial-attack-minimal-impact-source-says-2026-03-19/",
+      "publication_date": "2026-03-19",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-A1B3E76C6CC9",
+      "outlet_profile_id": "OUTLET-AD280132006E",
+      "title": "About 200 injured in Iranian missile strikes near nuclear facility in Israel",
+      "url": "https://www.theguardian.com/world/2026/mar/21/wounded-iranian-missile-strikes-southern-israel",
+      "publication_date": "2026-03-21",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-A1D1012045C0",
       "outlet_profile_id": "OUTLET-5BF94C7247EB",
       "title": "Audit of the F-35 Program Office’s Beyond Economical Repair Process for Parts",
@@ -4601,6 +5503,20 @@
       "records_supported": [
         "EV-20260720-001"
       ]
+    },
+    {
+      "source_id": "SRC-A2912FAC4A18",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "US says it sinks Iranian warship",
+      "url": "https://www.reuters.com/world/middle-east/us-says-it-sinks-iranian-warship-2026-03-01/",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-A2DF44867E0E",
@@ -4656,6 +5572,20 @@
       ]
     },
     {
+      "source_id": "SRC-A5815BB09BDD",
+      "outlet_profile_id": "OUTLET-A33112BE53D4",
+      "title": "Saudi Arabia intercepts missile attacks on airport, military base",
+      "url": "https://www.aljazeera.com/news/liveblog/2026/2/28/live-israel-launches-attacks-on-iran-multiple-explosions-heard-in-tehran?update=4351683",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-A71BC15C30DB",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Iran is consolidating control of Hormuz with island checkpoints and diplomatic deals",
@@ -4672,6 +5602,20 @@
         "CASE-HORMUZ-OPEN-CLOSED-2026",
         "EV-20260520-001"
       ]
+    },
+    {
+      "source_id": "SRC-A8EB1181A989",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Iranian army says at least 104 killed in US attack on Iranian warship last week",
+      "url": "https://www.reuters.com/world/middle-east/iranian-army-says-least-104-killed-us-attack-iranian-warship-last-week-2026-03-08/",
+      "publication_date": "2026-03-08",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-AA1020760411",
@@ -4736,6 +5680,20 @@
       ]
     },
     {
+      "source_id": "SRC-AE2215AEF832",
+      "outlet_profile_id": "OUTLET-89FF63CE8DF8",
+      "title": "Iranian drones strike U.S. Embassy in Saudi Arabia as war widens",
+      "url": "https://www.pbs.org/newshour/world/iranian-drones-strike-u-s-embassy-in-saudi-arabia-as-war-widens/",
+      "publication_date": "2026-03-03",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-AF45CA5FA4C9",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Shell says Hormuz disruption shut off major share of monthly global LNG supply",
@@ -4768,6 +5726,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-B026DA8C0073",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Saudi-flagged crude oil tanker damaged near Hormuz after LNG tanker hit, sources say",
+      "url": "https://www.reuters.com/world/middle-east/saudi-flagged-crude-oil-tanker-damaged-near-hormuz-after-lng-tanker-hit-sources-2026-07-07/",
+      "publication_date": "2026-07-07",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-B106A3769146",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Sri Lanka rescue reporting on IRIS Dena",
@@ -4780,6 +5752,20 @@
       ],
       "quality": "B",
       "lineage": "Reuters original reporting",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-B3B9C353A9D2",
+      "outlet_profile_id": "OUTLET-02FA3B65DCB8",
+      "title": "Drones Shot Down Over Erbil Near U.S. Consulate",
+      "url": "https://www.kurdistan24.net/en/story/896852/slug",
+      "publication_date": "2026-02-28",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
       "records_supported": []
     },
     {
@@ -4904,6 +5890,24 @@
       ]
     },
     {
+      "source_id": "SRC-BAB107F65372",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "US oil prices extend losses on hopes of Iran-Oman talks on Strait of Hormuz",
+      "url": "https://www.reuters.com/world/asia-pacific/us-oil-prices-extend-losses-hopes-iran-oman-talks-strait-hormuz-2026-08-25/",
+      "publication_date": "2026-08-25",
+      "source_roles": [
+        "ECONOMICS",
+        "OIL_PRICE",
+        "MARKET_RISK",
+        "HORMUZ"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 25 current-overlay collection",
+      "records_supported": [
+        "CUR-20260825-006"
+      ]
+    },
+    {
       "source_id": "SRC-BB3EED5C3240",
       "outlet_profile_id": "OUTLET-89FF63CE8DF8",
       "title": "AP regional war update, March 28",
@@ -4934,6 +5938,20 @@
         "CUR-20260824-005",
         "CUR-20260824-006"
       ]
+    },
+    {
+      "source_id": "SRC-BBE3712CD37E",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Amazon's cloud unit reports fire after objects hit UAE data center",
+      "url": "https://www.reuters.com/world/middle-east/amazons-cloud-unit-reports-fire-after-objects-hit-uae-data-center-2026-03-01/",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-BCB32C965F32",
@@ -4989,6 +6007,20 @@
       ]
     },
     {
+      "source_id": "SRC-BF66F38A274F",
+      "outlet_profile_id": "OUTLET-56330056E34B",
+      "title": "U.S. Forces Disable Non-Compliant Vessel in Gulf of Oman",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4504816/us-forces-disable-non-compliant-vessel-in-gulf-of-oman-to-prevent-blockade-viol/",
+      "publication_date": "2026-05-30",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-BFCDC2B49D89",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Proposed deal to reopen Hormuz exposes gaps over inspections and fees",
@@ -5040,6 +6072,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-C44035E78D67",
+      "outlet_profile_id": "OUTLET-5AB376D8ECBA",
+      "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+      "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-C4AE952EE037",
       "outlet_profile_id": "OUTLET-53ACA6C188B8",
       "title": "Consumer Price Index News Release - July 2026",
@@ -5072,6 +6118,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-C545F048BDC8",
+      "outlet_profile_id": "OUTLET-FAB6650C2F5D",
+      "title": "Satellite images show Iranian navy and nuclear sites hit by US-Israeli strikes",
+      "url": "https://www.bbc.co.uk/news/articles/cdxzzkkkwjqo",
+      "publication_date": "2026-03-03",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "BDA"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-C595BD8471E7",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Iran flew IRGC commanders, missile gear to Yemen’s Houthis, sources say",
@@ -5087,6 +6147,20 @@
       "records_supported": [
         "yemen-mahan-chain.json"
       ]
+    },
+    {
+      "source_id": "SRC-C5B26E2C83F4",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "How many ships have been attacked in the Gulf since start of Iran war?",
+      "url": "https://www.reuters.com/world/asia-pacific/how-many-ships-have-been-attacked-gulf-since-start-iran-war-2026-03-31/",
+      "publication_date": "2026-03-31",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-C5F2E7065110",
@@ -5135,6 +6209,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-C83A52109F9D",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Israel hits Tehran again after killing Khamenei, leadership council takes over",
+      "url": "https://www.reuters.com/world/middle-east/more-strikes-aimed-iran-after-us-israeli-assault-kills-supreme-leader-2026-03-01/",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-C869142454CE",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Hormuz ship crossings hover in single digits, data shows",
@@ -5148,6 +6236,24 @@
       "lineage": "DIRECT",
       "records_supported": [
         "EV-20260820-006"
+      ]
+    },
+    {
+      "source_id": "SRC-C9D1E6602309",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Pakistan and Iran made 'significant progress' in talks on conflict, minister says",
+      "url": "https://www.reuters.com/world/asia-pacific/pakistan-iran-made-significant-progress-talks-conflict-minister-says-2026-08-25/",
+      "publication_date": "2026-08-25",
+      "source_roles": [
+        "DIPLOMACY",
+        "MEDIATION",
+        "PAKISTAN",
+        "US_IRAN_NEGOTIATION"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 25 current-overlay collection",
+      "records_supported": [
+        "CUR-20260825-001"
       ]
     },
     {
@@ -5283,6 +6389,20 @@
       ]
     },
     {
+      "source_id": "SRC-CF91257C0AC2",
+      "outlet_profile_id": "OUTLET-9AD6E1491722",
+      "title": "Statement on the attack on tanker MT Settebello",
+      "url": "https://www.imo.org/en/mediacentre/pressbriefings/pages/imo-statement-on-settebello-attack.aspx",
+      "publication_date": "2026-06-11",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-D129A9FA0378",
       "outlet_profile_id": "OUTLET-939785E7D945",
       "title": "Command and control of AFCENT from Shaw, not CAOC",
@@ -5365,6 +6485,34 @@
       "records_supported": [
         "iran-war-cost-estimate.json"
       ]
+    },
+    {
+      "source_id": "SRC-D56EA3603AB6",
+      "outlet_profile_id": "OUTLET-A51B5D59B93F",
+      "title": "Indian vessel sinks after suspected drone attack as Araghchi visits Delhi",
+      "url": "https://www.iranintl.com/en/202605144477",
+      "publication_date": "2026-05-14",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "SECONDARY_WITH_OFFICIAL_AND_MARITIME_SOURCING",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-D571336DF718",
+      "outlet_profile_id": "OUTLET-001299630C23",
+      "title": "Crowne Plaza Hotel Manama strike assessment",
+      "url": "https://airwars.org/incidents/irbh260301j-march-1-2026",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "CORROBORATED_OSINT_AGGREGATION",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
     },
     {
       "source_id": "SRC-D590DE3075A0",
@@ -5491,6 +6639,38 @@
       "quality": "A",
       "lineage": "DIRECT",
       "records_supported": []
+    },
+    {
+      "source_id": "SRC-D8F23C89D294",
+      "outlet_profile_id": "OUTLET-5AEE5DCA94D7",
+      "title": "Iranian fire near Temple Mount, Western Wall sparks condemnation",
+      "url": "https://www.jpost.com/israel-news/article-890246",
+      "publication_date": "2026-03-17",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-D9C58B927697",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Some oil companies to avoid ships on Iran blacklist, sources say",
+      "url": "https://www.reuters.com/business/energy/some-oil-companies-avoid-ships-iran-blacklist-sources-say-2026-08-26/",
+      "publication_date": "2026-08-26",
+      "source_roles": [
+        "MARITIME_COERCION",
+        "SHIPPING",
+        "ENERGY_MARKETS",
+        "BLACKLIST"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 26 current-overlay collection",
+      "records_supported": [
+        "CUR-20260826-002"
+      ]
     },
     {
       "source_id": "SRC-DB900429D8BC",
@@ -5764,6 +6944,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-E64ED5CE389D",
+      "outlet_profile_id": "OUTLET-ECF172F4E83B",
+      "title": "Vessel seized off UAE coast and heading for Iran",
+      "url": "https://www.ft.com/content/794e619a-1b45-4d15-83fb-15299ac7de06",
+      "publication_date": "2026-05-14",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-E67D759B3385",
       "outlet_profile_id": "OUTLET-EC80EBA460F5",
       "title": "Karachi Port Improvement Project — Reconstruction of Berths 15 to 17A",
@@ -5851,6 +7045,38 @@
       "lineage": "DIRECT",
       "records_supported": [
         "iran-leadership-casualties.json"
+      ]
+    },
+    {
+      "source_id": "SRC-EC86B7B61B78",
+      "outlet_profile_id": "OUTLET-F501D77EF06B",
+      "title": "Strait of Hormuz security brief — May 7, 2026",
+      "url": "https://table.media/assets/documents/20260507_security_brief_soh.pdf",
+      "publication_date": "2026-05-07",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "OFFICIAL_OR_TECHNICAL",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-ECD75822A202",
+      "outlet_profile_id": "OUTLET-234330834C41",
+      "title": "Gulf ship traffic via Strait of Hormuz hovers below 10-day average, data shows",
+      "url": "https://www.reuters.com/business/energy/gulf-ship-traffic-via-strait-hormuz-hovers-below-10-day-average-data-shows-2026-08-26/",
+      "publication_date": "2026-08-26",
+      "source_roles": [
+        "SHIPPING_DATA",
+        "HORMUZ",
+        "TRAFFIC_BASELINE",
+        "KPLER"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 26 current-overlay collection",
+      "records_supported": [
+        "CUR-20260825-009"
       ]
     },
     {
@@ -5959,6 +7185,20 @@
       ]
     },
     {
+      "source_id": "SRC-F074C4DA31A4",
+      "outlet_profile_id": "OUTLET-56330056E34B",
+      "title": "U.S. Forces Disable Non-Compliant Oil Tanker in Gulf of Oman",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4511257/us-forces-disable-non-compliant-oil-tanker-in-gulf-of-oman/",
+      "publication_date": "2026-06-08",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-F0CD832C6472",
       "outlet_profile_id": "OUTLET-89FF63CE8DF8",
       "title": "Yemen’s Houthis enter Iran war with attacks on Israel",
@@ -5973,6 +7213,20 @@
       "records_supported": [
         "EV-20260328-001"
       ]
+    },
+    {
+      "source_id": "SRC-F1EFC5719A4C",
+      "outlet_profile_id": "OUTLET-A33112BE53D4",
+      "title": "US, Israel attack Iran updates: Trump says war to last 4-5 weeks",
+      "url": "https://www.aljazeera.com/news/liveblog/2026/3/2/us-israel-attack-iran-live",
+      "publication_date": "2026-03-02",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
     },
     {
       "source_id": "SRC-F33E9E8FE450",
@@ -6044,6 +7298,20 @@
       ]
     },
     {
+      "source_id": "SRC-F73E20CD020C",
+      "outlet_profile_id": "OUTLET-C4C1D4F2A07B",
+      "title": "Official Baku issues statement on Iran's attack on Nakhchivan",
+      "url": "https://www.trend.az/azerbaijan/society/4161114.html",
+      "publication_date": "2026-03-05",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-F77A9718856E",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "No deal, no exit: how US-Iran standoff risks fresh conflict",
@@ -6093,6 +7361,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-F8F0F13C7150",
+      "outlet_profile_id": "OUTLET-239CE2BFE52B",
+      "title": "Woman killed, dozens injured as Iranian missile strikes Tel Aviv residential block",
+      "url": "https://www.timesofisrael.com/woman-killed-dozens-injured-as-iranian-missile-strikes-tel-aviv-residential-block/",
+      "publication_date": "2026-03-01",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "MEDIUM_HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-F8F12DF86B47",
       "outlet_profile_id": "OUTLET-234330834C41",
       "title": "Iran unleashes oil shock to blunt US firepower",
@@ -6111,6 +7393,20 @@
       ]
     },
     {
+      "source_id": "SRC-F9AD70C05327",
+      "outlet_profile_id": "OUTLET-56330056E34B",
+      "title": "U.S. Forces Disable Vessel Attempting to Enter Iranian Port, Violate Blockade",
+      "url": "https://www.centcom.mil/MEDIA/PRESS-RELEASES/Press-Release-View/Article/4464037/us-forces-disable-vessel-attempting-to-enter-iranian-port-violate-blockade/",
+      "publication_date": "2026-04-19",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-F9C4A35EE811",
       "outlet_profile_id": "OUTLET-7F64C89EC90F",
       "title": "$3.7 Billion: Estimated Cost of Epic Fury's First 100 Hours",
@@ -6123,6 +7419,20 @@
       ],
       "quality": "B",
       "lineage": "CSIS analytical estimate using DOD and partner reporting",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-F9DF83972317",
+      "outlet_profile_id": "OUTLET-56330056E34B",
+      "title": "CENTCOM Disables Non-Compliant Vessel in Arabian Gulf",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4506969/centcom-disables-non-compliant-vessel-in-arabian-gulf/",
+      "publication_date": "2026-06-02",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "HIGH",
+      "lineage": "Wikipedia coverage-reconciliation underlying source; Wikipedia itself is discovery only.",
       "records_supported": []
     },
     {
@@ -6143,6 +7453,24 @@
         "aviation-reconciliation.json",
         "iran-war-cost-estimate.json",
         "damage-observations.json"
+      ]
+    },
+    {
+      "source_id": "SRC-FAA3703B1237",
+      "outlet_profile_id": "OUTLET-89FF63CE8DF8",
+      "title": "Iran's gas lines are growing, but there's no sign so far that its leaders will bow to US sanctions",
+      "url": "https://apnews.com/article/41ac797399040746c2caa76a409ae580",
+      "publication_date": "2026-08-25",
+      "source_roles": [
+        "ECONOMICS",
+        "DOMESTIC_PRESSURE",
+        "FUEL",
+        "SANCTIONS_EFFECT"
+      ],
+      "quality": "A",
+      "lineage": "Aug. 25 current-overlay collection",
+      "records_supported": [
+        "CUR-20260825-005"
       ]
     },
     {
@@ -6173,6 +7501,20 @@
       "records_supported": []
     },
     {
+      "source_id": "SRC-FD363054B86E",
+      "outlet_profile_id": "OUTLET-2FC4C98A86E8",
+      "title": "Strait of Hormuz conflict escalates as latest Iran strike leaves boxship on fire",
+      "url": "https://www.lloydslist.com/LL1157811/Strait-of-Hormuz-conflict-escalates-as-latest-Iran-strike-leaves-boxship-on-fire",
+      "publication_date": "2026-07-12",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "SPECIALIST_HIGH",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
       "source_id": "SRC-FDAC11893E4C",
       "outlet_profile_id": "OUTLET-7B62913B395D",
       "title": "Iran downed 170 US and Israeli drones during war: commander",
@@ -6184,6 +7526,34 @@
       ],
       "quality": "B",
       "lineage": "DIRECT",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-FF3DDA1F64DA",
+      "outlet_profile_id": "OUTLET-939785E7D945",
+      "title": "U.S. Forces Complete New Round of Retaliatory Strikes Against Iran",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4535772/us-forces-complete-new-round-of-retaliatory-strikes-against-iran/",
+      "publication_date": "2026-07-07",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "OFFICIAL_PRIMARY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+      "records_supported": []
+    },
+    {
+      "source_id": "SRC-FFE00BDC5BDE",
+      "outlet_profile_id": "OUTLET-239CE2BFE52B",
+      "title": "Second person dies as a result of Iranian cluster bomb strike yesterday",
+      "url": "https://www.timesofisrael.com/liveblog_entry/death-of-second-victim-is-confirmed-in-iranian-missile-strike-yesterday/",
+      "publication_date": "2026-03-10",
+      "source_roles": [
+        "EVENT_EXISTENCE",
+        "ATTRIBUTION_OR_EFFECT"
+      ],
+      "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+      "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
       "records_supported": []
     }
   ]

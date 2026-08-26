@@ -1,0 +1,31 @@
+{
+  "package_name": "ISR-WIKIPEDIA-REGIONAL-COVERAGE-RECONCILIATION-20260826",
+  "schema_version": "1.0",
+  "created_at": "2026-08-26T16:30:00-04:00",
+  "collection_cutoff": "2026-08-26T16:30:00-04:00",
+  "role": "HISTORICAL_COVERAGE_RECONCILIATION",
+  "discovery_basis": [
+    "Wikipedia List of attacks during the 2026 Iran war",
+    "Wikipedia List of ships attacked during the 2026 Iran war"
+  ],
+  "evidence_rule": "Wikipedia is discovery only. Accepted records cite vetted underlying reporting or official/technical evidence; weak/circular/claim-only rows are rejected or retained as unresolved in coverage-audit.json.",
+  "format_rule": "No presentation, layout, navigation, CSS, or public wording changes. Data and chronology only.",
+  "counts": {
+    "accepted_or_corrected_events": 81,
+    "strike_markers": 81,
+    "material_loss_records": 40,
+    "sources": 56,
+    "coverage_candidates_documented": 99,
+    "prior_runtime_chronology": 121,
+    "reconciled_runtime_chronology": 202
+  },
+  "rules": [
+    "Claim != fact",
+    "Coordinate != BDA",
+    "Targeted != hit",
+    "Hit != destroyed",
+    "Unknown is not zero",
+    "Near miss without physical damage is not a durable loss",
+    "Actor attribution remains source-bounded"
+  ]
+}

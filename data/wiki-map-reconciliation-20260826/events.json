@@ -1,0 +1,5021 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-26T16:30:00-04:00",
+  "layer": "HISTORICAL_COVERAGE_RECONCILIATION",
+  "discovery_basis": [
+    "Wikipedia List of attacks during the 2026 Iran war",
+    "Wikipedia List of ships attacked during the 2026 Iran war"
+  ],
+  "evidence_rule": "Wikipedia is discovery only. Accepted records cite vetted underlying reporting or official/technical evidence; weak/circular/claim-only rows are rejected or retained as unresolved in coverage-audit.json.",
+  "events": [
+    {
+      "event_id": "WIKI-20260228-TELAVIV",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Tel Aviv residential area",
+      "location": {
+        "name": "Tel Aviv residential area",
+        "country": "Israel",
+        "lat": 32.0853,
+        "lon": 34.7818,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-TELAVIV"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian ballistic missile strike hit a Tel Aviv residential block.",
+      "observed_fact": "One woman was killed and 27 people were injured; Israeli Home Front Command assessed a complete Iranian ballistic missile struck beside an apartment building.",
+      "claimed_effect": "",
+      "verified_effect": "Residential damage and casualties independently reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F8F0F13C7150",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-BEITSHEMESH",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Beit Shemesh",
+      "location": {
+        "name": "Beit Shemesh",
+        "country": "Israel",
+        "lat": 31.7514,
+        "lon": 34.9885,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-BEITSHEMESH"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian missile breached defenses and struck Beit Shemesh.",
+      "observed_fact": "AP documented a deadly strike on a synagogue/homes.",
+      "claimed_effect": "",
+      "verified_effect": "Nine deaths and dozens of injuries were reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-25CB60A3ED30",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260313-NORTHISRAEL",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-13",
+      "first_verified": "2026-03-13",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-13",
+      "valid_to": null,
+      "event_type": "ROCKET_OR_MISSILE_STRIKE",
+      "actors": [
+        "Hezbollah"
+      ],
+      "target": "Northern Israel",
+      "location": {
+        "name": "Northern Israel",
+        "country": "Israel",
+        "lat": 32.9,
+        "lon": 35.3,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260313-NORTHISRAEL"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Hezbollah continued attacks into northern Israel.",
+      "observed_fact": "The Jerusalem Post reported casualties from continuing Hezbollah attacks.",
+      "claimed_effect": "",
+      "verified_effect": "At least two wounded in the cited report; exact pin is regional.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-11F2DDFC000A",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260314-EILAT",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-14",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-14",
+      "first_verified": "2026-03-14",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-14",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Eilat",
+      "location": {
+        "name": "Eilat",
+        "country": "Israel",
+        "lat": 29.5577,
+        "lon": 34.9519,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260314-EILAT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Iranian missile attack affected Eilat.",
+      "observed_fact": "Local Israeli reporting documented injuries during the missile attack.",
+      "claimed_effect": "",
+      "verified_effect": "Two injuries reported; exact impact point not independently geolocated here.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-330B28666CDE",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260316-JERUSALEM",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-16",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-16",
+      "first_verified": "2026-03-16",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-16",
+      "valid_to": null,
+      "event_type": "MISSILE_INTERCEPTION_DEBRIS",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Old City of Jerusalem",
+      "location": {
+        "name": "Old City of Jerusalem",
+        "country": "Israel",
+        "lat": 31.778,
+        "lon": 35.235,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260316-JERUSALEM"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Missile/interceptor fragments fell around Jerusalem's Old City after Iranian fire.",
+      "observed_fact": "Fragments were reported near multiple religious sites.",
+      "claimed_effect": "",
+      "verified_effect": "No casualties reported; this is debris/spillover, not a confirmed direct impact at each listed site.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-D8F23C89D294",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260321-DIMONA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-21",
+      "first_verified": "2026-03-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-21",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Dimona",
+      "location": {
+        "name": "Dimona",
+        "country": "Israel",
+        "lat": 31.069,
+        "lon": 35.033,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260321-DIMONA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian missile strike hit the Dimona area.",
+      "observed_fact": "Guardian reporting documented a major Iranian missile strike in southern Israel.",
+      "claimed_effect": "",
+      "verified_effect": "Dozens were injured; proximity to nuclear infrastructure does not establish that the nuclear site itself was hit.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A1B3E76C6CC9",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260321-ARAD",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-21",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-21",
+      "first_verified": "2026-03-21",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-21",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Arad",
+      "location": {
+        "name": "Arad",
+        "country": "Israel",
+        "lat": 31.2589,
+        "lon": 35.2128,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260321-ARAD"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian missile strike hit Arad.",
+      "observed_fact": "Contemporaneous Israeli reporting recorded 71 injured, not the 115 shown in the Wikipedia table snapshot.",
+      "claimed_effect": "",
+      "verified_effect": "Casualty figure normalized to source-supported 71; direct-city strike retained.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A1B3E76C6CC9",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ],
+      "analytical_note": "Wikipedia snapshot listed 115 injured, but its cited contemporaneous source reported 71; Atlas follows underlying source."
+    },
+    {
+      "event_id": "WIKI-20260322-CENTRALISRAEL",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-22",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-22",
+      "first_verified": "2026-03-22",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-22",
+      "valid_to": null,
+      "event_type": "CLUSTER_MUNITION_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Central Israel / Tel Aviv area",
+      "location": {
+        "name": "Central Israel / Tel Aviv area",
+        "country": "Israel",
+        "lat": 32.05,
+        "lon": 34.78,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260322-CENTRALISRAEL"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian cluster munitions impacted central Israel.",
+      "observed_fact": "Fifteen injuries were reported after Iranian cluster munitions impacted central Israel.",
+      "claimed_effect": "",
+      "verified_effect": "Civilian casualty event confirmed in source; exact submunition footprint is not mapped.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-9816195E468E",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260328-TELAVIV",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-28",
+      "first_verified": "2026-03-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-28",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Tel Aviv building",
+      "location": {
+        "name": "Tel Aviv building",
+        "country": "Israel",
+        "lat": 32.0853,
+        "lon": 34.7818,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260328-TELAVIV"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian ballistic missile struck central Tel Aviv.",
+      "observed_fact": "One person was killed and others wounded.",
+      "claimed_effect": "",
+      "verified_effect": "Direct impact and casualties reported; pin is city-reference level.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-4940F8627D00",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-BHR5FLEET",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "U.S. Fifth Fleet / NSA Bahrain",
+      "location": {
+        "name": "U.S. Fifth Fleet / NSA Bahrain",
+        "country": "Bahrain",
+        "lat": 26.2097,
+        "lon": 50.6095,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-BHR5FLEET"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian attack targeted the U.S. Navy Fifth Fleet headquarters in Bahrain.",
+      "observed_fact": "AP/CNN reporting supported attack occurrence and smoke near the U.S. Navy facility.",
+      "claimed_effect": "",
+      "verified_effect": "Facility/subfacility damage is separately tracked in canonical material-loss records.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-351DB33C9E1C",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-MINASALMAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Mina Salman Port",
+      "location": {
+        "name": "Mina Salman Port",
+        "country": "Bahrain",
+        "lat": 26.204,
+        "lon": 50.594,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260302-MINASALMAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian strike caused a fire near Mina Salman Port.",
+      "observed_fact": "Al Jazeera documented the attack/fire.",
+      "claimed_effect": "",
+      "verified_effect": "Local fire effect supported; broader port shutdown not inferred.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-69856BC3D07D",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260309-SITRA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-09",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-09",
+      "first_verified": "2026-03-09",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-09",
+      "valid_to": null,
+      "event_type": "DRONE_OR_MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Bapco Sitra refinery",
+      "location": {
+        "name": "Bapco Sitra refinery",
+        "country": "Bahrain",
+        "lat": 26.154,
+        "lon": 50.615,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260309-SITRA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Attack on Bahrain's Sitra refinery contributed to Bapco force majeure.",
+      "observed_fact": "Reuters later summarized the refinery attack and force majeure.",
+      "claimed_effect": "",
+      "verified_effect": "Refinery disruption supported; exact weapon/effect footprint unresolved.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-5133006E29A1",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-SHUAIBA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Port Shuaiba U.S. logistics site",
+      "location": {
+        "name": "Port Shuaiba U.S. logistics site",
+        "country": "Kuwait",
+        "lat": 29.04,
+        "lon": 48.162,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-SHUAIBA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian drone strike hit a U.S. tactical operations site at Shuaiba port.",
+      "observed_fact": "Associated Press reporting documented the deaths of six U.S. service members; later reporting established the attack mechanism.",
+      "claimed_effect": "",
+      "verified_effect": "Six U.S. service members killed; durable loss details remain in the loss ledger where independently supportable.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-AE2215AEF832",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-KWTEMB",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "U.S. Embassy Kuwait City",
+      "location": {
+        "name": "U.S. Embassy Kuwait City",
+        "country": "Kuwait",
+        "lat": 29.331,
+        "lon": 48.063,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260302-KWTEMB"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian strike hit the U.S. Embassy in Kuwait.",
+      "observed_fact": "AP reporting on the following day's regional attacks noted the Kuwait embassy attack and closure.",
+      "claimed_effect": "",
+      "verified_effect": "Embassy attack/closure supported; exact structural damage not quantified here.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-AE2215AEF832",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-ABUDHABI",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "INTERCEPTION_DEBRIS",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Abu Dhabi residential area",
+      "location": {
+        "name": "Abu Dhabi residential area",
+        "country": "United Arab Emirates",
+        "lat": 24.4539,
+        "lon": 54.3773,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-ABUDHABI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Debris from interception of Iranian attacks fell in Abu Dhabi.",
+      "observed_fact": "Regional reporting documented one death from interceptor debris.",
+      "claimed_effect": "",
+      "verified_effect": "Casualty from defensive-interception debris; not recorded as a direct Iranian impact at the residential pin.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-C44035E78D67",
+            "outlet": "Washington Post",
+            "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+            "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-FAIRMONT",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Fairmont The Palm, Dubai",
+      "location": {
+        "name": "Fairmont The Palm, Dubai",
+        "country": "United Arab Emirates",
+        "lat": 25.1107,
+        "lon": 55.1388,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-FAIRMONT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian strike caused a fire at Fairmont The Palm.",
+      "observed_fact": "BBC reporting documented retaliatory Iranian strikes across Gulf targets and the Dubai hotel fire.",
+      "claimed_effect": "",
+      "verified_effect": "Hotel fire and injuries supported; exact munition impact point not independently geolocated here.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-C44035E78D67",
+            "outlet": "Washington Post",
+            "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+            "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-ALMINHAD",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "AIR_BASE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Al Minhad Air Base",
+      "location": {
+        "name": "Al Minhad Air Base",
+        "country": "United Arab Emirates",
+        "lat": 25.0268,
+        "lon": 55.3662,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260302-ALMINHAD"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Strike affected Al Minhad Air Base near Dubai.",
+      "observed_fact": "ABC Australia reported the air-base strike and that Australian personnel were safe.",
+      "claimed_effect": "",
+      "verified_effect": "Strike occurrence supported; exact damage to base systems unresolved.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-8BF5DA8426B2",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-AWSUAE",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "INFRASTRUCTURE_STRIKE",
+      "actors": [
+        "Unknown / objects during Iranian attack wave"
+      ],
+      "target": "AWS UAE data center",
+      "location": {
+        "name": "AWS UAE data center",
+        "country": "United Arab Emirates",
+        "lat": 25.0,
+        "lon": 55.3,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260302-AWSUAE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Objects struck an AWS data center in the UAE, causing fire and power loss.",
+      "observed_fact": "Amazon and Reuters documented objects striking the site and a temporary availability-zone outage.",
+      "claimed_effect": "",
+      "verified_effect": "Physical impact and outage supported; precise attacker/munition attribution remains unresolved.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-BBE3712CD37E",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-JEBELALI",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "PORT_STRIKE_OR_DAMAGE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Port of Jebel Ali",
+      "location": {
+        "name": "Port of Jebel Ali",
+        "country": "United Arab Emirates",
+        "lat": 25.011,
+        "lon": 55.061,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-JEBELALI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Regional Iranian attack wave affected Jebel Ali/Dubai infrastructure.",
+      "observed_fact": "Reuters reporting on March 1 documented continued Iranian retaliatory strikes and Gulf damage.",
+      "claimed_effect": "",
+      "verified_effect": "Event retained at port-reference precision; exact local BDA remains bounded.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C83A52109F9D",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-ERBIL",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "MISSILE_DRONE_ATTACK",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Erbil International Airport / U.S. Consulate area",
+      "location": {
+        "name": "Erbil International Airport / U.S. Consulate area",
+        "country": "Iraq",
+        "lat": 36.2376,
+        "lon": 43.9632,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-ERBIL"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Iranian aerial attacks targeted Erbil infrastructure hosting U.S. personnel.",
+      "observed_fact": "Kurdistan24 reported drones intercepted near the U.S. consulate and airport.",
+      "claimed_effect": "",
+      "verified_effect": "Attack/interception occurrence supported by local reporting; no direct-hit claim added without stronger evidence.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-B3B9C353A9D2",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-VICTORYBASE",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "DRONE_ATTACK",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Victory Base / Baghdad International Airport",
+      "location": {
+        "name": "Victory Base / Baghdad International Airport",
+        "country": "Iraq",
+        "lat": 33.2625,
+        "lon": 44.2346,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260302-VICTORYBASE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Two drones targeted Victory Base near Baghdad airport; one reportedly struck.",
+      "observed_fact": "Al Jazeera live reporting carried the regional attack report.",
+      "claimed_effect": "",
+      "verified_effect": "One reported impact retained as supported-with-limitations, not precision BDA.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F1EFC5719A4C",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260303-RIYADEMB",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-03",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-03",
+      "first_verified": "2026-03-03",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-03",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "U.S. Embassy Riyadh",
+      "location": {
+        "name": "U.S. Embassy Riyadh",
+        "country": "Saudi Arabia",
+        "lat": 24.6904,
+        "lon": 46.6241,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260303-RIYADEMB"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Two drones targeted the U.S. Embassy in Riyadh.",
+      "observed_fact": "Saudi Defense Ministry said the attack caused a limited fire and minor material damage; AP corroborated.",
+      "claimed_effect": "",
+      "verified_effect": "Embassy damage confirmed at limited/minor level; no broader compound-destruction inference.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-2EA95127B111",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        },
+        {
+          "source_id": "SRC-AE2215AEF832",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-PRINCESULTAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "INTERCEPTED_MISSILE_ATTACK",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Prince Sultan Air Base",
+      "location": {
+        "name": "Prince Sultan Air Base",
+        "country": "Saudi Arabia",
+        "lat": 24.0627,
+        "lon": 47.5805,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-PRINCESULTAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Saudi defenses intercepted missiles attempting to target Prince Sultan Air Base.",
+      "observed_fact": "Saudi reporting carried by Al Jazeera documented the attempted attack/interceptions.",
+      "claimed_effect": "",
+      "verified_effect": "Attempted attack is confirmed; no impact at the base inferred from interception.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A5815BB09BDD",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-KINGKHALID",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "INTERCEPTED_MISSILE_ATTACK",
+      "actors": [
+        "Iran"
+      ],
+      "target": "King Khalid International Airport",
+      "location": {
+        "name": "King Khalid International Airport",
+        "country": "Saudi Arabia",
+        "lat": 24.9576,
+        "lon": 46.6988,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-KINGKHALID"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Saudi defenses intercepted missiles attempting to target King Khalid International Airport.",
+      "observed_fact": "Saudi reporting carried by Al Jazeera documented the attempted attack/interceptions.",
+      "claimed_effect": "",
+      "verified_effect": "Attempted attack is confirmed; no airport impact inferred from interception.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A5815BB09BDD",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260319-SAMREF",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-19",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-19",
+      "first_verified": "2026-03-19",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-19",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "SAMREF refinery, Yanbu",
+      "location": {
+        "name": "SAMREF refinery, Yanbu",
+        "country": "Saudi Arabia",
+        "lat": 24.05,
+        "lon": 38.22,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260319-SAMREF"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Drone attack targeted the Saudi Aramco-Exxon SAMREF refinery at Yanbu.",
+      "observed_fact": "Reuters reported the refinery was targeted and loadings were briefly affected.",
+      "claimed_effect": "",
+      "verified_effect": "Refinery attack/disruption supported; damage extent bounded to reporting.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A18378E042B3",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260318-RASLAFFAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-18",
+      "first_verified": "2026-03-18",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-18",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Ras Laffan Industrial City / QatarEnergy LNG",
+      "location": {
+        "name": "Ras Laffan Industrial City / QatarEnergy LNG",
+        "country": "Qatar",
+        "lat": 25.906,
+        "lon": 51.55,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260318-RASLAFFAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian missiles struck Ras Laffan energy facilities.",
+      "observed_fact": "Reuters documented extensive damage and a 17% reduction in Qatar LNG export capacity.",
+      "claimed_effect": "",
+      "verified_effect": "Major energy infrastructure damage supported; individual structure footprint not mapped.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-5133006E29A1",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260319-KWTREFINERIES",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-19",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-19",
+      "first_verified": "2026-03-19",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-19",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKES",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Mina al-Ahmadi and Mina Abdullah refineries",
+      "location": {
+        "name": "Mina al-Ahmadi and Mina Abdullah refineries",
+        "country": "Kuwait",
+        "lat": 29.08,
+        "lon": 48.15,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260319-KWTREFINERIES"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian drones hit operational units at two Kuwaiti refineries.",
+      "observed_fact": "Reuters documented fires at Mina al-Ahmadi and Mina Abdullah.",
+      "claimed_effect": "",
+      "verified_effect": "Operational-unit hits and fires supported; no whole-refinery destruction inference.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-5133006E29A1",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260304-TURKEY",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-04",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-04",
+      "first_verified": "2026-03-04",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-04",
+      "valid_to": null,
+      "event_type": "BALLISTIC_MISSILE_INTERCEPTION",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Turkish airspace / Hatay",
+      "location": {
+        "name": "Turkish airspace / Hatay",
+        "country": "Turkey",
+        "lat": 36.4,
+        "lon": 36.2,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260304-TURKEY"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "NATO air defenses intercepted a ballistic missile Turkey said was fired from Iran.",
+      "observed_fact": "Reuters reported the missile crossed Iraq/Syria and was destroyed before impact; Iran had not yet commented.",
+      "claimed_effect": "",
+      "verified_effect": "Interception confirmed; intended target remained unclear.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-2AB9F7EAB381",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260309-GAZIANTEP",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-09",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-09",
+      "first_verified": "2026-03-09",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-09",
+      "valid_to": null,
+      "event_type": "BALLISTIC_MISSILE_INTERCEPTION",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Gaziantep",
+      "location": {
+        "name": "Gaziantep",
+        "country": "Turkey",
+        "lat": 37.0662,
+        "lon": 37.3833,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260309-GAZIANTEP"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A ballistic missile fired from Iran toward Türkiye was neutralized by NATO defenses.",
+      "observed_fact": "Turkish Defense Ministry reporting carried by Anadolu documented the interception.",
+      "claimed_effect": "",
+      "verified_effect": "Interception confirmed; no casualties reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-8A7095F066CF",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260313-INCIRLIK",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-13",
+      "first_verified": "2026-03-13",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-13",
+      "valid_to": null,
+      "event_type": "BALLISTIC_MISSILE_INTERCEPTION",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Near Incirlik Air Base",
+      "location": {
+        "name": "Near Incirlik Air Base",
+        "country": "Turkey",
+        "lat": 37.0021,
+        "lon": 35.4259,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260313-INCIRLIK"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "NATO defenses intercepted a third missile Turkey said came from Iran near Incirlik.",
+      "observed_fact": "Reuters reported the interception and Ankara's request for clarification from Tehran.",
+      "claimed_effect": "",
+      "verified_effect": "Interception confirmed; exact intended target unresolved.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-97B3782FD3F8",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260305-NAKHCHIVAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-05",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-05",
+      "first_verified": "2026-03-05",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-05",
+      "valid_to": null,
+      "event_type": "DRONE_IMPACTS",
+      "actors": [
+        "Iran (alleged by Azerbaijan)"
+      ],
+      "target": "Nakhchivan airport / Shakarabad",
+      "location": {
+        "name": "Nakhchivan airport / Shakarabad",
+        "country": "Azerbaijan",
+        "lat": 39.1888,
+        "lon": 45.4584,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260305-NAKHCHIVAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Azerbaijan said drones linked to Iran fell at Nakhchivan airport and near Shakarabad.",
+      "observed_fact": "Official Baku statement reported two drone incidents and injuries.",
+      "claimed_effect": "",
+      "verified_effect": "Event existence supported by official Azerbaijani reporting; Iranian responsibility retained as allegation rather than independently proven.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F73E20CD020C",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260318-BEITAWWA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-18",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-18",
+      "first_verified": "2026-03-18",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-18",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Beit Awwa",
+      "location": {
+        "name": "Beit Awwa",
+        "country": "West Bank",
+        "lat": 31.507,
+        "lon": 34.949,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260318-BEITAWWA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian missile struck Beit Awwa near Hebron.",
+      "observed_fact": "Later reporting raised the death toll to four.",
+      "claimed_effect": "",
+      "verified_effect": "Four deaths supported by updated source; exact casualty breakdown from earlier reports superseded.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-43786DAB5413",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-SKYLIGHT",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Skylight tanker",
+      "location": {
+        "name": "Skylight tanker",
+        "country": "Palau / commercial",
+        "lat": 26.75,
+        "lon": 56.35,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-SKYLIGHT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Skylight was attacked in the Strait of Hormuz north of Oman; crew evacuated.",
+      "observed_fact": "Skylight was attacked in the Strait of Hormuz north of Oman; crew evacuated.",
+      "claimed_effect": "",
+      "verified_effect": "Vessel attacked; casualty details vary across later reporting, so durable damage is recorded without fixing a death count.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-MKDVYOM",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "MKD Vyom tanker",
+      "location": {
+        "name": "MKD Vyom tanker",
+        "country": "Marshall Islands / commercial",
+        "lat": 24.4,
+        "lon": 58.3,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-MKDVYOM"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "MKD Vyom was hit by a projectile off Oman; a crew member was killed.",
+      "observed_fact": "MKD Vyom was hit by a projectile off Oman; a crew member was killed.",
+      "claimed_effect": "",
+      "verified_effect": "Projectile damage and one fatality independently reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-HERCULES",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Hercules Star tanker",
+      "location": {
+        "name": "Hercules Star tanker",
+        "country": "Gibraltar / commercial",
+        "lat": 26.35,
+        "lon": 55.75,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-HERCULES"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Hercules Star was struck by a projectile northwest of Mina Saqr; fire was extinguished.",
+      "observed_fact": "Hercules Star was struck by a projectile northwest of Mina Saqr; fire was extinguished.",
+      "claimed_effect": "",
+      "verified_effect": "Projectile damage and onboard fire reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-STENA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Stena Imperative products tanker",
+      "location": {
+        "name": "Stena Imperative products tanker",
+        "country": "United States / commercial",
+        "lat": 26.15,
+        "lon": 50.62,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-STENA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Stena Imperative was struck by two projectiles in Bahrain port; fire broke out and crew evacuated.",
+      "observed_fact": "Stena Imperative was struck by two projectiles in Bahrain port; fire broke out and crew evacuated.",
+      "claimed_effect": "",
+      "verified_effect": "Durable damage/fire confirmed; one shipyard-worker fatality belongs to the incident context, not necessarily ship crew.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-LIBRATRADER",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-03",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-03",
+      "first_verified": "2026-03-03",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-03",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Libra Trader crude tanker",
+      "location": {
+        "name": "Libra Trader crude tanker",
+        "country": "Marshall Islands / commercial",
+        "lat": 25.2,
+        "lon": 56.45,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-LIBRATRADER"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Libra Trader sustained minor damage off Fujairah.",
+      "observed_fact": "Libra Trader sustained minor damage off Fujairah.",
+      "claimed_effect": "",
+      "verified_effect": "Minor durable damage reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-GOLDOAK",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-03",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-03",
+      "first_verified": "2026-03-03",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-03",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Gold Oak bulk carrier",
+      "location": {
+        "name": "Gold Oak bulk carrier",
+        "country": "Panama / commercial",
+        "lat": 25.2,
+        "lon": 56.45,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-GOLDOAK"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Gold Oak sustained minor damage off Fujairah.",
+      "observed_fact": "Gold Oak sustained minor damage off Fujairah.",
+      "claimed_effect": "",
+      "verified_effect": "Minor durable damage reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-SAFEENPRESTIGE",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-04",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-04",
+      "first_verified": "2026-03-04",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-04",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Safeen Prestige container ship",
+      "location": {
+        "name": "Safeen Prestige container ship",
+        "country": "Commercial",
+        "lat": 26.7,
+        "lon": 56.4,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-SAFEENPRESTIGE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Safeen Prestige was struck near Oman, causing an engine-room fire and crew abandonment.",
+      "observed_fact": "Safeen Prestige was struck near Oman, causing an engine-room fire and crew abandonment.",
+      "claimed_effect": "",
+      "verified_effect": "Engine-room damage and abandonment reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-SONANGOL",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-05",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-05",
+      "first_verified": "2026-03-05",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-05",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Iran assessed by Iraqi port-security sources"
+      ],
+      "target": "Sonangol Namibe crude tanker",
+      "location": {
+        "name": "Sonangol Namibe crude tanker",
+        "country": "Commercial",
+        "lat": 30.0,
+        "lon": 47.95,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-SONANGOL"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Sonangol Namibe was hit by a blast near Iraq's Khor al-Zubair port; initial assessments cited an Iranian explosive boat.",
+      "observed_fact": "Sonangol Namibe was hit by a blast near Iraq's Khor al-Zubair port; initial assessments cited an Iranian explosive boat.",
+      "claimed_effect": "",
+      "verified_effect": "Hull damage reported; explosive-boat attribution described as an initial assessment.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-TUG-MUSSAFAH",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-06",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-06",
+      "first_verified": "2026-03-06",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-06",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Tug assisting Safeen Prestige",
+      "location": {
+        "name": "Tug assisting Safeen Prestige",
+        "country": "Commercial",
+        "lat": 26.7,
+        "lon": 56.4,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-TUG-MUSSAFAH"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A tug was hit by projectiles while assisting Safeen Prestige in the Strait of Hormuz.",
+      "observed_fact": "A tug was hit by projectiles while assisting Safeen Prestige in the Strait of Hormuz.",
+      "claimed_effect": "",
+      "verified_effect": "Tug was struck; separate later reporting placed fatalities in this incident.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-LOUISEP",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-07",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-07",
+      "first_verified": "2026-03-07",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-07",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Louise P / vessel north of Jubail",
+      "location": {
+        "name": "Louise P / vessel north of Jubail",
+        "country": "Commercial",
+        "lat": 27.2,
+        "lon": 49.6,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-LOUISEP"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "UKMTO reported a possible drone attack north of Jubail and evacuation of most crew.",
+      "observed_fact": "UKMTO reported a possible drone attack north of Jubail and evacuation of most crew.",
+      "claimed_effect": "",
+      "verified_effect": "Possible drone attack; attribution remained unconfirmed.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-MAYUREE",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-11",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-11",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Mayuree Naree bulk carrier",
+      "location": {
+        "name": "Mayuree Naree bulk carrier",
+        "country": "Thailand / commercial",
+        "lat": 26.75,
+        "lon": 56.35,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-MAYUREE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Mayuree Naree was hit by a projectile north of Oman; engine-room fire prompted evacuation.",
+      "observed_fact": "Mayuree Naree was hit by a projectile north of Oman; engine-room fire prompted evacuation.",
+      "claimed_effect": "",
+      "verified_effect": "Projectile damage and fire confirmed; attacker attribution was reported by IRGC separately.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-ONEMAJESTY",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-11",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-11",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "One Majesty container ship",
+      "location": {
+        "name": "One Majesty container ship",
+        "country": "Japan / commercial",
+        "lat": 26.3,
+        "lon": 55.9,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-ONEMAJESTY"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "One Majesty sustained minor damage from a projectile northwest of Ras Al Khaimah.",
+      "observed_fact": "One Majesty sustained minor damage from a projectile northwest of Ras Al Khaimah.",
+      "claimed_effect": "",
+      "verified_effect": "Minor durable damage reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-STARGWYNETH",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-11",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-11",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Star Gwyneth bulk carrier",
+      "location": {
+        "name": "Star Gwyneth bulk carrier",
+        "country": "Marshall Islands / commercial",
+        "lat": 25.8,
+        "lon": 55.6,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-STARGWYNETH"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Star Gwyneth was hit above the waterline northwest of Dubai.",
+      "observed_fact": "Star Gwyneth was hit above the waterline northwest of Dubai.",
+      "claimed_effect": "",
+      "verified_effect": "Limited hull damage reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-SAFESEAVISHNU",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-11",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-11",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Safesea Vishnu tanker",
+      "location": {
+        "name": "Safesea Vishnu tanker",
+        "country": "Marshall Islands / U.S.-owned commercial",
+        "lat": 29.5,
+        "lon": 48.7,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-SAFESEAVISHNU"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Safesea Vishnu was attacked near Iraq and caught fire; one foreign crew member was killed.",
+      "observed_fact": "Safesea Vishnu was attacked near Iraq and caught fire; one foreign crew member was killed.",
+      "claimed_effect": "",
+      "verified_effect": "Durable damage/fire and one fatality reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-ZEFYROS",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-11",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-11",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Zefyros tanker",
+      "location": {
+        "name": "Zefyros tanker",
+        "country": "Commercial",
+        "lat": 29.5,
+        "lon": 48.7,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-ZEFYROS"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Zefyros was attacked near Iraq alongside Safesea Vishnu.",
+      "observed_fact": "Zefyros was attacked near Iraq alongside Safesea Vishnu.",
+      "claimed_effect": "",
+      "verified_effect": "Attack reported; precise weapon attribution unresolved.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-SOURCEBLESSING",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-12",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-12",
+      "first_verified": "2026-03-12",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-12",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Source Blessing container ship",
+      "location": {
+        "name": "Source Blessing container ship",
+        "country": "Liberia / commercial",
+        "lat": 25.2,
+        "lon": 55.1,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-SOURCEBLESSING"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Projectile fragments struck Source Blessing north of Jebel Ali; fire was extinguished.",
+      "observed_fact": "Projectile fragments struck Source Blessing north of Jebel Ali; fire was extinguished.",
+      "claimed_effect": "",
+      "verified_effect": "Minor damage/fire reported; crew safe.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-GASALAHMADIAH",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-17",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-17",
+      "first_verified": "2026-03-17",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-17",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Gas Al Ahmadiah LPG tanker",
+      "location": {
+        "name": "Gas Al Ahmadiah LPG tanker",
+        "country": "Kuwait / commercial",
+        "lat": 25.2,
+        "lon": 56.6,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-GASALAHMADIAH"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A projectile struck Gas Al Ahmadiah east of Fujairah.",
+      "observed_fact": "A projectile struck Gas Al Ahmadiah east of Fujairah.",
+      "claimed_effect": "",
+      "verified_effect": "Minor structural damage reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-HALUL50",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-19",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-19",
+      "first_verified": "2026-03-19",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-19",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "Halul 50 offshore vessel",
+      "location": {
+        "name": "Halul 50 offshore vessel",
+        "country": "Qatar / commercial",
+        "lat": 25.95,
+        "lon": 51.7,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-HALUL50"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A vessel east of Ras Laffan was struck by debris/projectile amid Iranian attacks on the energy complex.",
+      "observed_fact": "A vessel east of Ras Laffan was struck by debris/projectile amid Iranian attacks on the energy complex.",
+      "claimed_effect": "",
+      "verified_effect": "Ship impact reported; exact mechanism described differently across maritime reporting.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-AL-SALMI",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-30",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-30",
+      "first_verified": "2026-03-30",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-30",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Al Salmi crude tanker",
+      "location": {
+        "name": "Al Salmi crude tanker",
+        "country": "Kuwait / commercial",
+        "lat": 25.2,
+        "lon": 55.2,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-AL-SALMI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Al Salmi was hit at anchorage off Dubai during an Iranian attack; a fire broke out.",
+      "observed_fact": "Al Salmi was hit at anchorage off Dubai during an Iranian attack; a fire broke out.",
+      "claimed_effect": "",
+      "verified_effect": "Hull damage and fire confirmed; no oil leak or crew injuries reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-C5B26E2C83F4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260419-TOUSKA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-04-19",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-04-19",
+      "first_verified": "2026-04-19",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-04-19",
+      "valid_to": null,
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Iranian-flagged cargo vessel",
+      "location": {
+        "name": "Iranian-flagged cargo vessel",
+        "country": "Arabian Sea",
+        "lat": 20.0,
+        "lon": 62.0,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260419-TOUSKA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "U.S. forces disabled Touska's propulsion and Marines boarded and seized the vessel.",
+      "observed_fact": "USS Spruance disabled propulsion after repeated warnings; Marines then boarded and seized the vessel.",
+      "claimed_effect": "",
+      "verified_effect": "U.S. blockade enforcement disabled and seized a commercial vessel.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F9AD70C05327",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260506-HASNA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-05-06",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-06",
+      "first_verified": "2026-05-06",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-06",
+      "valid_to": null,
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Iranian-flagged tanker",
+      "location": {
+        "name": "Iranian-flagged tanker",
+        "country": "Gulf of Oman",
+        "lat": 24.5,
+        "lon": 58.8,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260506-HASNA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A U.S. Navy F/A-18 disabled Hasna's rudder during blockade enforcement.",
+      "observed_fact": "CENTCOM said an F/A-18 fired 20mm rounds into the rudder after repeated warnings.",
+      "claimed_effect": "",
+      "verified_effect": "Rudder disabled; vessel no longer transited toward Iran.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-4B554E439A4A",
+            "outlet": "USCENTCOM",
+            "title": "U.S. Forces Disable Vessel in Gulf of Oman Attempting to Violate Blockade",
+            "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4479004/us-forces-disable-vessel-in-gulf-of-oman-attempting-to-violate-blockade/",
+            "publication_date": "2026-05-06",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260508-SEASTARIII",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-05-08",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-08",
+      "first_verified": "2026-05-08",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-08",
+      "valid_to": null,
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Iranian-flagged tanker",
+      "location": {
+        "name": "Iranian-flagged tanker",
+        "country": "Gulf of Oman",
+        "lat": 24.5,
+        "lon": 58.8,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260508-SEASTARIII"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A U.S. Navy F/A-18 disabled Sea Star III during blockade enforcement.",
+      "observed_fact": "CENTCOM said precision munitions struck the tanker smokestack.",
+      "claimed_effect": "",
+      "verified_effect": "Vessel disabled and prevented from entering Iran.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-0E7A334F8A2A",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260508-SEVDA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-05-08",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-08",
+      "first_verified": "2026-05-08",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-08",
+      "valid_to": null,
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Iranian-flagged tanker",
+      "location": {
+        "name": "Iranian-flagged tanker",
+        "country": "Gulf of Oman",
+        "lat": 24.4,
+        "lon": 58.6,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260508-SEVDA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A U.S. Navy F/A-18 disabled Sevda during blockade enforcement.",
+      "observed_fact": "CENTCOM said precision munitions struck the tanker smokestack.",
+      "claimed_effect": "",
+      "verified_effect": "Vessel disabled and prevented from entering Iran.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-0E7A334F8A2A",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260529-LIANSTAR",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-05-29",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-29",
+      "first_verified": "2026-05-29",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-29",
+      "valid_to": null,
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Gambia-flagged commercial vessel",
+      "location": {
+        "name": "Gambia-flagged commercial vessel",
+        "country": "Gulf of Oman",
+        "lat": 24.8,
+        "lon": 58.6,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260529-LIANSTAR"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A U.S. aircraft disabled Lian Star with a Hellfire missile during blockade enforcement.",
+      "observed_fact": "CENTCOM said a Hellfire struck the engine room after more than 20 warnings.",
+      "claimed_effect": "",
+      "verified_effect": "Engine room struck; vessel disabled.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-BF66F38A274F",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260602-LEXIE",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-06-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-02",
+      "first_verified": "2026-06-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-02",
+      "valid_to": null,
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Botswana-flagged tanker",
+      "location": {
+        "name": "Botswana-flagged tanker",
+        "country": "Arabian Gulf",
+        "lat": 26.0,
+        "lon": 52.5,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260602-LEXIE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A U.S. aircraft disabled Lexie with a Hellfire missile during blockade enforcement.",
+      "observed_fact": "CENTCOM said a Hellfire struck the engine room after repeated warnings.",
+      "claimed_effect": "",
+      "verified_effect": "Engine room struck; vessel disabled.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F9DF83972317",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260608-MARIVEX",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-06-08",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-08",
+      "first_verified": "2026-06-08",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-08",
+      "valid_to": null,
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Palau-flagged tanker",
+      "location": {
+        "name": "Palau-flagged tanker",
+        "country": "Gulf of Oman",
+        "lat": 24.7,
+        "lon": 58.7,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260608-MARIVEX"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A U.S. Navy F/A-18 disabled Marivex during blockade enforcement.",
+      "observed_fact": "CENTCOM said a precision munition struck engineering and steering spaces.",
+      "claimed_effect": "",
+      "verified_effect": "Engineering/steering spaces struck; vessel disabled.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-F074C4DA31A4",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260610-SETTEBELLO",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-06-10",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-06-10",
+      "first_verified": "2026-06-10",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-06-10",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown"
+      ],
+      "target": "MT Settebello",
+      "location": {
+        "name": "MT Settebello",
+        "country": "off Oman / Strait of Hormuz",
+        "lat": 25.8,
+        "lon": 56.6,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260610-SETTEBELLO"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "MT Settebello was hit by a projectile near the Strait of Hormuz, causing a fire and three seafarer deaths.",
+      "observed_fact": "IMO confirmed the attack, onboard fire, and three fatalities; it called for a transparent investigation.",
+      "claimed_effect": "",
+      "verified_effect": "Vessel damaged by projectile strike; three seafarers killed.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-CF91257C0AC2",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-JAMARAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "NAVAL_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Chabahar pier",
+      "location": {
+        "name": "Chabahar pier",
+        "country": "Iran",
+        "lat": 25.3,
+        "lon": 60.63,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-JAMARAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "U.S. Central Command said it sank the Iranian Jamaran-class warship at a Chabahar pier.",
+      "observed_fact": "Reuters reported the CENTCOM sinking claim; later open-source reporting treated Jamaran as destroyed.",
+      "claimed_effect": "",
+      "verified_effect": "SUNK",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-A2912FAC4A18",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-BAYANDOR",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "NAVAL_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Konarak naval base",
+      "location": {
+        "name": "Konarak naval base",
+        "country": "Iran",
+        "lat": 25.44,
+        "lon": 60.38,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-BAYANDOR"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Satellite imagery analysis assessed IRIS Bayandor sunk at Konarak during opening strikes.",
+      "observed_fact": "CTP/ISW reported commercial satellite imagery showing Bayandor sunk alongside Naghdi.",
+      "claimed_effect": "",
+      "verified_effect": "SUNK",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-6843BB957E02",
+            "outlet": "Critical Threats Project / ISW",
+            "title": "Iran Update Evening Special Report, March 1, 2026",
+            "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-march-1-2026",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "HIGH_QUALITY_OSINT_ANALYSIS",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-NAGHDI",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "NAVAL_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Konarak naval base",
+      "location": {
+        "name": "Konarak naval base",
+        "country": "Iran",
+        "lat": 25.44,
+        "lon": 60.38,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-NAGHDI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Satellite imagery analysis assessed IRIS Naghdi sunk at Konarak during opening strikes.",
+      "observed_fact": "CTP/ISW reported commercial satellite imagery showing Naghdi sunk alongside Bayandor.",
+      "claimed_effect": "",
+      "verified_effect": "SUNK",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-6843BB957E02",
+            "outlet": "Critical Threats Project / ISW",
+            "title": "Iran Update Evening Special Report, March 1, 2026",
+            "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-march-1-2026",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "HIGH_QUALITY_OSINT_ANALYSIS",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-MAKRAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "NAVAL_STRIKE",
+      "actors": [
+        "United States / Israel attribution unresolved at strike level"
+      ],
+      "target": "Bandar Abbas naval base",
+      "location": {
+        "name": "Bandar Abbas naval base",
+        "country": "Iran",
+        "lat": 27.14,
+        "lon": 56.21,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260302-MAKRAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Satellite imagery showed IRINS Makran struck and burning at Bandar Abbas.",
+      "observed_fact": "USNI reported satellite imagery showing Makran struck at the pier; the reviewed evidence supports damage, not a defensible destroyed-vessel disposition.",
+      "claimed_effect": "",
+      "verified_effect": "STRUCK_AND_BURNING",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-7C416B910C6E",
+            "outlet": "USNI News",
+            "title": "Iranian Naval Forces are Major Target in Operation Epic Fury Strikes",
+            "url": "https://news.usni.org/2026/03/02/iranian-naval-forces-are-major-target-in-operation-epic-fury-strikes",
+            "publication_date": "2026-03-02",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "HIGH_QUALITY_SPECIALIST_REPORTING",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-SHAHIDBAGHERI",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "NAVAL_STRIKE",
+      "actors": [
+        "United States"
+      ],
+      "target": "Bandar Abbas naval base",
+      "location": {
+        "name": "Bandar Abbas naval base",
+        "country": "Iran",
+        "lat": 27.14,
+        "lon": 56.21,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-SHAHIDBAGHERI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "U.S. forces struck Iranian drone carrier IRIS Shahid Bagheri at Bandar Abbas.",
+      "observed_fact": "USNI reported the strike; public reporting cited claims of sinking, but independent sinking confirmation was not established in the reviewed evidence.",
+      "claimed_effect": "",
+      "verified_effect": "STRUCK",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-7C416B910C6E",
+            "outlet": "USNI News",
+            "title": "Iranian Naval Forces are Major Target in Operation Epic Fury Strikes",
+            "url": "https://news.usni.org/2026/03/02/iranian-naval-forces-are-major-target-in-operation-epic-fury-strikes",
+            "publication_date": "2026-03-02",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "HIGH_QUALITY_SPECIALIST_REPORTING",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-CROWNEPLAZA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKE",
+      "actors": [
+        "Iran alleged / assessed"
+      ],
+      "target": "Crowne Plaza Hotel, Manama",
+      "location": {
+        "name": "Crowne Plaza Hotel, Manama",
+        "country": "Bahrain",
+        "lat": 26.243714,
+        "lon": 50.590353,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-CROWNEPLAZA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "Crowne Plaza Hotel in Manama was struck during the Iranian retaliatory campaign.",
+      "observed_fact": "Airwars preserved a U.S. Embassy Manama notice confirming the hotel was struck and injuries occurred; attribution to Iran is assessed rather than independently proven by the physical hit alone.",
+      "claimed_effect": "",
+      "verified_effect": "Hotel damage and injuries supported; exact weapon attribution retained as assessed.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-D571336DF718",
+            "outlet": "Airwars / U.S. Embassy Manama",
+            "title": "Crowne Plaza Hotel Manama strike assessment",
+            "url": "https://airwars.org/incidents/irbh260301j-march-1-2026",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "CORROBORATED_OSINT_AGGREGATION",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-ETIHADTOWERS",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "INTERCEPT_DEBRIS",
+      "actors": [
+        "Iran / intercepted drone"
+      ],
+      "target": "Etihad Towers",
+      "location": {
+        "name": "Etihad Towers",
+        "country": "United Arab Emirates",
+        "lat": 24.458,
+        "lon": 54.321,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-ETIHADTOWERS"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Debris from an intercepted drone struck Etihad Towers in Abu Dhabi.",
+      "observed_fact": "WAM reported drone debris hit a building façade, injuring a woman and child and causing minor material damage.",
+      "claimed_effect": "",
+      "verified_effect": "Minor injuries and material damage from interception debris; not recorded as a direct successful strike.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-82CB62CA99D5",
+            "outlet": "Emirates News Agency (WAM)",
+            "title": "Debris from drones intercepted by air defence systems falls on façade of one of Etihad Towers buildings",
+            "url": "https://www.wam.ae/en/article/byzgp55-debris-from-drones-intercepted-air-defence-systems",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-ALSALAM",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Al Salam naval base warehouse",
+      "location": {
+        "name": "Al Salam naval base warehouse",
+        "country": "United Arab Emirates",
+        "lat": 24.45,
+        "lon": 54.65,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-ALSALAM"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Two Iranian drones targeted a warehouse at Al Salam naval base in Abu Dhabi.",
+      "observed_fact": "UAE Ministry of Defence said the drones caused a fire in two containers storing general materials, with no casualties.",
+      "claimed_effect": "",
+      "verified_effect": "Localized warehouse/container fire; no whole-base degradation inferred.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-5A20B2D03812",
+            "outlet": "Emirates News Agency (WAM)",
+            "title": "Ministry of Defence responds to targeting of Al Salam military base",
+            "url": "https://www.wam.ae/en/article/byzgpj8-ministry-defence-responds-targeting-salam-military",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-AMMAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-02-28",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-02-28",
+      "valid_to": null,
+      "event_type": "INTERCEPTED_MISSILE_DRONE_WAVE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Jordanian territory / Amman and other governorates",
+      "location": {
+        "name": "Jordanian territory / Amman and other governorates",
+        "country": "Jordan",
+        "lat": 31.95,
+        "lon": 35.93,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260228-AMMAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Jordan intercepted Iranian missiles and drones targeting its territory; falling debris caused material damage.",
+      "observed_fact": "Jordan Times reported JAF dealt with 49 drones/ballistic missiles, including 13 ballistic-missile interceptions; authorities handled 54 debris reports with no casualties.",
+      "claimed_effect": "",
+      "verified_effect": "Material damage from interceptions/debris; no direct successful target hit is inferred.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-328CF1F87DC5",
+            "outlet": "Jordan Times",
+            "title": "JAF intercepts 49 drones, ballistic missiles, ensures no casualties",
+            "url": "https://jordantimes.com/news/local/jaf-intercepts-49-drones-ballistic-missiles-ensures-no-casualties",
+            "publication_date": "2026-02-28",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260309-YEHUD",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-09",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-09",
+      "first_verified": "2026-03-09",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-09",
+      "valid_to": null,
+      "event_type": "MISSILE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Yehud construction site",
+      "location": {
+        "name": "Yehud construction site",
+        "country": "Israel",
+        "lat": 32.03,
+        "lon": 34.89,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260309-YEHUD"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Iranian cluster-warhead ballistic missile struck a construction site in Yehud.",
+      "observed_fact": "Times of Israel reported two deaths after the March 9 strike and two serious injuries initially.",
+      "claimed_effect": "",
+      "verified_effect": "Fatalities and strike location supported; cluster-munition attribution reported by Israeli responders/media.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-FFE00BDC5BDE",
+            "outlet": "Times of Israel",
+            "title": "Second person dies as a result of Iranian cluster bomb strike yesterday",
+            "url": "https://www.timesofisrael.com/liveblog_entry/death-of-second-victim-is-confirmed-in-iranian-missile-strike-yesterday/",
+            "publication_date": "2026-03-10",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-RASTANURA",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-02",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-02",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Ras Tanura refinery",
+      "location": {
+        "name": "Ras Tanura refinery",
+        "country": "Saudi Arabia",
+        "lat": 26.692,
+        "lon": 50.097,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260302-RASTANURA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "A drone strike hit Saudi Aramco's Ras Tanura refinery and prompted a shutdown.",
+      "observed_fact": "Reuters-verified imagery showed heavy smoke at the refinery after the reported Iranian drone strike; location/date were independently verified against site layout and Aramco statement.",
+      "claimed_effect": "",
+      "verified_effect": "Refinery shut as a precaution after the strike; do not infer export-terminal destruction.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-65FC65F4C81E",
+            "outlet": "Reuters",
+            "title": "Ras Tanura refinery struck by drone; Reuters-verified aftermath",
+            "url": "https://www.reutersconnect.com/item/smoke-billows-from-saudi-aramcos-ras-tanura-oil-refinery-after-a-reported-iranian-drone-strike/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1JDMkJXSkFUS1UyWQ",
+            "publication_date": "2026-03-02",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-BHRAIRPORT",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKE",
+      "actors": [
+        "Iran / attribution by regional authorities"
+      ],
+      "target": "Bahrain International Airport",
+      "location": {
+        "name": "Bahrain International Airport",
+        "country": "Bahrain",
+        "lat": 26.2708,
+        "lon": 50.6336,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-BHRAIRPORT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Bahrain International Airport was targeted by a drone and sustained damage.",
+      "observed_fact": "Xinhua cited Bahrain's Interior Ministry saying the airport was targeted by a drone, causing damage but no casualties.",
+      "claimed_effect": "",
+      "verified_effect": "Airport damage confirmed by Bahraini authorities; exact weapon origin/impact point not independently geolocated here.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-16289E10CF8B",
+            "outlet": "Xinhua",
+            "title": "Bahrain says international airport targeted by drone, no casualties reported",
+            "url": "https://english.news.cn/20260301/20a60c3e5558426f8ae6cb9b2d73a4dc/c.html",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "STATE_NEWS_CITING_BAHRAIN_INTERIOR_MINISTRY",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-BURJALARAB",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "INTERCEPT_DEBRIS",
+      "actors": [
+        "Iran / intercepted drone"
+      ],
+      "target": "Burj Al Arab",
+      "location": {
+        "name": "Burj Al Arab",
+        "country": "United Arab Emirates",
+        "lat": 25.1412,
+        "lon": 55.1853,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-BURJALARAB"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Debris from an intercepted drone caused a minor fire on the Burj Al Arab facade.",
+      "observed_fact": "Reuters reported Dubai authorities confirmed intercepted-drone debris caused a minor fire.",
+      "claimed_effect": "",
+      "verified_effect": "Minor exterior damage from interception debris; not a direct missile impact.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-02466B4C454D",
+            "outlet": "Reuters",
+            "title": "Dubai airport and Burj Al Arab damaged in Iranian strikes",
+            "url": "https://www.reuters.com/world/middle-east/missile-debris-panic-buying-jolt-dubais-aura-calm-after-iran-attack-2026-03-01/",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-DUQM",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-03-01",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-03-01",
+      "valid_to": null,
+      "event_type": "DRONE_STRIKE",
+      "actors": [
+        "Iran"
+      ],
+      "target": "Port of Duqm",
+      "location": {
+        "name": "Port of Duqm",
+        "country": "Oman",
+        "lat": 19.67,
+        "lon": 57.71,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-WIKI-20260301-DUQM"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Drone strikes hit Port of Duqm during Iran's regional retaliatory campaign.",
+      "observed_fact": "Washington Post visual verification reported attacks on Duqm among verified regional port strikes; contemporary regional reporting recorded one worker injured.",
+      "claimed_effect": "",
+      "verified_effect": "Port strike supported; exact damage footprint remains bounded.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": {
+            "source_id": "SRC-C44035E78D67",
+            "outlet": "Washington Post",
+            "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+            "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+            "publication_date": "2026-03-01",
+            "source_roles": [
+              "EVENT_EXISTENCE",
+              "ATTRIBUTION_OR_EFFECT"
+            ],
+            "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+            "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+            "records_supported": []
+          },
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-JVINNOVATION",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-05-04",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-04",
+      "first_verified": "2026-05-04",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-04",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown attacker"
+      ],
+      "target": "JV Innovation tanker near Mina Saqr",
+      "location": {
+        "name": "JV Innovation tanker near Mina Saqr",
+        "country": "United Arab Emirates",
+        "lat": 25.98,
+        "lon": 56.05,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-JVINNOVATION"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "JV Innovation was struck by an unidentified munition near Mina Saqr.",
+      "observed_fact": "A German Navy shipping security brief recorded the tanker hit by an unknown projectile.",
+      "claimed_effect": "",
+      "verified_effect": "Hull/deck damage and fire reported; attacker unresolved.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-EC86B7B61B78",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map/ship coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-HAJIALI",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-05-13",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-13",
+      "first_verified": "2026-05-13",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-13",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown attacker"
+      ],
+      "target": "MSV Haji Ali dhow off Oman",
+      "location": {
+        "name": "MSV Haji Ali dhow off Oman",
+        "country": "Oman / Gulf of Oman",
+        "lat": 24.5,
+        "lon": 57.0,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-HAJIALI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Haji Ali caught fire and sank after a suspected drone or missile attack off Oman.",
+      "observed_fact": "Indian authorities and maritime-risk reporting identified the sinking; the attacker was not established.",
+      "claimed_effect": "",
+      "verified_effect": "Vessel sank; all 14 crew rescued.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-D56EA3603AB6",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map/ship coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-OLYMPICLIFE",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-05-26",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-26",
+      "first_verified": "2026-05-26",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-26",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Unknown attacker"
+      ],
+      "target": "Olympic Life tanker off Muscat",
+      "location": {
+        "name": "Olympic Life tanker off Muscat",
+        "country": "Oman / Gulf of Oman",
+        "lat": 23.6,
+        "lon": 59.5,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-OLYMPICLIFE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Olympic Life suffered an external explosion near the waterline off Muscat.",
+      "observed_fact": "Reuters reported UKMTO and vessel-manager confirmation; cause was unknown.",
+      "claimed_effect": "",
+      "verified_effect": "Bunker tank damaged with contained fuel leak; vessel remained stable and operational.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-7C60593278F2",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map/ship coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-HUICHUAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-05-14",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-05-14",
+      "first_verified": "2026-05-14",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-05-14",
+      "valid_to": null,
+      "event_type": "MARITIME_SEIZURE",
+      "actors": [
+        "Iranian military personnel (reported)"
+      ],
+      "target": "Hui Chuan floating armoury",
+      "location": {
+        "name": "Hui Chuan floating armoury",
+        "country": "Gulf of Oman",
+        "lat": 25.5,
+        "lon": 56.8,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-HUICHUAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Hui Chuan was seized near the UAE and taken toward Iranian waters.",
+      "observed_fact": "FT/BBC-linked maritime monitoring identified the Honduras-flagged vessel and reported Iranian seizure.",
+      "claimed_effect": "",
+      "verified_effect": "Vessel captured/seized; cargo/use not independently established.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-E64ED5CE389D",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map/ship coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-ALREKAYYAT",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-07-06",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-06",
+      "first_verified": "2026-07-06",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-06",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Iran (assessed/reported)"
+      ],
+      "target": "Al Rekayyat LNG tanker",
+      "location": {
+        "name": "Al Rekayyat LNG tanker",
+        "country": "Strait of Hormuz / Oman side",
+        "lat": 26.1,
+        "lon": 56.35,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-ALREKAYYAT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Al Rekayyat was struck while transiting the Omani side of Hormuz.",
+      "observed_fact": "Reuters reported a projectile/drone hit and serious engine-room fire; Qatar condemned Iran and CENTCOM later identified it among Iranian attacks.",
+      "claimed_effect": "",
+      "verified_effect": "Major damage; crew evacuated; LNG cargo remained intact.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-1DB72555A64F",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        },
+        {
+          "source_id": "SRC-FF3DDA1F64DA",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map/ship coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-WEDYAN",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-07-07",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-07",
+      "first_verified": "2026-07-07",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-07",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Iran (U.S. attribution; cause separately unresolved in initial reporting)"
+      ],
+      "target": "Wedyan crude tanker",
+      "location": {
+        "name": "Wedyan crude tanker",
+        "country": "Strait of Hormuz / Oman side",
+        "lat": 26.1,
+        "lon": 56.35,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-WEDYAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "Wedyan was damaged during the July 6–7 Hormuz attacks.",
+      "observed_fact": "Reuters and owner reporting confirmed vessel damage; CENTCOM attributed the three-ship attack series to Iran.",
+      "claimed_effect": "",
+      "verified_effect": "Damage occurred but vessel remained seaworthy and cargo secure.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-B026DA8C0073",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        },
+        {
+          "source_id": "SRC-FF3DDA1F64DA",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map/ship coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-CYPRUSPROSPERITY",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-07-07",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-07",
+      "first_verified": "2026-07-07",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-07",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Iran (U.S. attribution)"
+      ],
+      "target": "Cyprus Prosperity tanker",
+      "location": {
+        "name": "Cyprus Prosperity tanker",
+        "country": "Strait of Hormuz",
+        "lat": 26.2,
+        "lon": 56.4,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-CYPRUSPROSPERITY"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "MODERATE",
+      "summary": "CENTCOM identified Cyprus Prosperity as one of three commercial vessels attacked by Iran.",
+      "observed_fact": "Official U.S. release named the Liberia-flagged tanker in the July attack series.",
+      "claimed_effect": "",
+      "verified_effect": "Physical damage is reported at campaign level; exact ship-specific BDA remains limited.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-FF3DDA1F64DA",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map/ship coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-GFSGALAXY",
+      "record_class": "WARTIME EVENT",
+      "event_date": "2026-07-12",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-07-12",
+      "first_verified": "2026-07-12",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-07-12",
+      "valid_to": null,
+      "event_type": "MARITIME_ATTACK",
+      "actors": [
+        "Iran (reported/attributed)"
+      ],
+      "target": "GFS Galaxy container ship",
+      "location": {
+        "name": "GFS Galaxy container ship",
+        "country": "Strait of Hormuz",
+        "lat": 26.5,
+        "lon": 56.4,
+        "precision": "CITY_OR_FACILITY_REFERENCE"
+      },
+      "map_refs": [
+        "MAP-SHIP-GFSGALAXY"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATIONS",
+      "confidence": "HIGH",
+      "summary": "GFS Galaxy was hit in Hormuz and abandoned after engine-room damage.",
+      "observed_fact": "Specialist maritime reporting identified an Iranian attack that left the vessel on fire; later traffic reporting corroborated the incident.",
+      "claimed_effect": "",
+      "verified_effect": "Engine-room damage disabled the ship; crew abandoned vessel; one fatality reported.",
+      "counterevidence": "",
+      "continuity_evidence": "",
+      "later_outcome": "",
+      "source_refs": [
+        {
+          "source_id": "SRC-FD363054B86E",
+          "roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ]
+        }
+      ],
+      "related_event_ids": [],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": null,
+      "current_status": null,
+      "superseded_by": null,
+      "revision_history": [
+        {
+          "date": "2026-08-26",
+          "change": "Added by Wikipedia-map/ship coverage reconciliation after underlying-source review; Wikipedia used only as discovery checklist."
+        }
+      ]
+    }
+  ]
+}
