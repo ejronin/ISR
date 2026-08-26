@@ -1,30 +1,51 @@
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-js = (root / 'js' / 'workspace-ux-plain-language-r1.js').read_text(encoding='utf-8')
-css = (root / 'css' / 'workspace-ux-plain-language-r1.css').read_text(encoding='utf-8')
-loader = (root / 'js' / 'endgame-20260823.js').read_text(encoding='utf-8')
+js = (root / 'js' / 'public-record-ui-r2.js').read_text(encoding='utf-8')
+css = (root / 'css' / 'public-record-ui-r2.css').read_text(encoding='utf-8')
+loader = (root / 'js' / 'navigation.js').read_text(encoding='utf-8')
+endgame_loader = (root / 'js' / 'endgame-20260823.js').read_text(encoding='utf-8')
+state = (root / 'js' / 'state.js').read_text(encoding='utf-8')
 
 required_js = [
-    'Pick the question you want answered',
-    'Timeline basics',
-    'Timeline zoom',
-    'How to read this page',
-    'Publisher bias · Ground News',
-    'Oil routes',
-    'CURRENT MAP · latest accepted state',
-    'use Timeline to look backward',
+    'The war record at a glance',
+    'Advanced timeline tools',
+    'Advanced source filters',
+    'Copy record link',
+    'NOT INDEPENDENTLY VERIFIED',
+    'How the objective score is calculated',
 ]
 for marker in required_js:
-    assert marker in js, f'missing UX marker: {marker}'
+    assert marker in js, f'missing public-record UX marker: {marker}'
 
-assert './data/' not in js, 'workspace UX must not load analytical data'
-assert 'fetch(' not in js, 'workspace UX must not fetch or replace analytical data'
-assert 'MutationObserver' not in js, 'workspace UX must remain event-driven and avoid global DOM observers'
-assert 'workspace-ux-plain-language-r1.css' in loader
-assert 'workspace-ux-plain-language-r1.js' in loader
+assert './data/' not in js, 'public-record UX must not load analytical data'
+assert 'fetch(' not in js, 'public-record UX must not fetch or replace analytical data'
+assert 'MutationObserver' not in js, 'public-record UX must remain event-driven and avoid global DOM observers'
+assert 'public-record-ui-r2.css' in loader
+assert 'public-record-ui-r2.js' in loader
+assert 'workspace-ux-plain-language-r1.css' not in endgame_loader
+assert 'workspace-ux-plain-language-r1.js' not in endgame_loader
 
-for marker in ['.isr-workspace-guide', '.isr-source-guide-grid', '.isr-timeline-help p', '.isr-ground-title']:
-    assert marker in css, f'missing CSS marker: {marker}'
+for marker in [
+    '.isr-workspace-nav{display:none!important}',
+    '.kpis{display:none!important}',
+    '.pr2-overview-intro',
+    '.pr2-source-filters',
+    '.pr2-timeline-tools',
+    '--pr-confirmed:',
+    '--pr-claimed:',
+    '--pr-disputed:',
+    '--pr-unresolved:',
+]:
+    assert marker in css, f'missing public-record CSS marker: {marker}'
 
-print('workspace-ux-plain-language-r1: presentation-only Atlas/Timeline/Analysis/Sources UX contract passed')
+for marker in [
+    "losses: 'consequences'",
+    "'diplomacy-hub': 'diplomacy'",
+    "endgame: 'diplomacy'",
+    "claims: 'claims'",
+    "'analytic-record': 'sources'",
+]:
+    assert marker in state, f'public navigation/state mismatch: {marker}'
+
+print('public-record-ui-r2: dark, color-semantic, presentation-only public historical-record UX contract passed')
