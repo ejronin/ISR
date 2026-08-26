@@ -20,7 +20,7 @@
     ['./js/final-mermaid-oil-routes-r1.js?v=20260825-r1-hotfix1','final-mermaid-oil-routes-r1'],
     ['./js/mermaid-autofit-r2.js?v=20260825-r2','mermaid-autofit-r2'],
     ['./js/endgame-current-20260825-r2.js?v=20260825-r3','current-20260825-r2'],
-    ['./js/endgame-three-angles-20260825-r3.js?v=20260825-r4','three-angles-20260825-r3']
+    ['./js/endgame-three-angles-20260825-r3.js?v=20260825-r5','three-angles-20260825-r3']
   ];
   styles.forEach(([href,key])=>{
     if(document.querySelector(`link[data-endgame-r1="${key}"]`))return;
