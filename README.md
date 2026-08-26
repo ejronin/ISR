@@ -8,10 +8,11 @@ A public, source-linked OSINT atlas for the 2026 Iran conflict. The project sepa
 
 - current operational assessment without a composite “war score”;
 - 98 canonical historical-ledger records, including 15 pre-war context records;
-- 108 current chronology records through 2026-08-24 14:14 ET (98 locked historical + 10 append-only current overlay);
+- 117 current chronology records through 2026-08-25 21:32 ET (98 locked historical + 10 Aug. 24 overlay + 8 Aug. 25 overlay + 1 late Aug. 25 shipping update);
 - U.S./coalition facilities, strike effects, satellite BDA, and missile/drone metrics;
 - casualties, durable material loss, munitions expenditure, and economic effects as separate accounting scopes;
 - bargaining, force posture, agreements, regional alignment, and trade routes;
+- schematic oil-route mapping that now distinguishes the degraded Iran→China crude chain from Russian and non-sanctioned Gulf substitute-supply lanes;
 - claim checks, information-environment analysis, sources, revisions, and unresolved collection gaps;
 - immutable historical HTML snapshots.
 
@@ -35,6 +36,7 @@ War, month, week, day, and hour zoom are supported. Hour zoom remains disabled u
 - Unknown is not zero.
 - Geographic precision follows public evidence.
 - Schematic routes are transportation-domain approximations, not live AIS tracks or exact operational routes.
+- Source-specific vessel counts remain source-specific; they are not silently converted into exact total physical traffic.
 
 Direct-military accounting is symmetric across U.S./coalition and Iran/aligned material and munitions. `SOURCE-REPORTED`, `CALCULATED`, `CALCULATED RANGE`, `ESTIMATED`, `UNPRICED REMAINDER`, and `UNRESOLVED` are distinct states. A calculated estimate requires a supported quantity and compatible price basis; the two may come from different existing records when the join is explicit and auditable. Overlapping aggregates are never added twice.
 
@@ -44,7 +46,8 @@ Direct-military accounting is symmetric across U.S./coalition and Iran/aligned m
 - `css/`, `js/` — local presentation, navigation, map, temporal, safety, and costing modules
 - `assets/icons/` — local map icon grammar
 - `vendor/leaflet/` — pinned Leaflet 1.9.4 runtime
-- `data/` — legacy UI data plus the authoritative locked `integration-v1.2/` ledger and append-only `current-update-20260824/` current overlay
+- `data/` — legacy UI data plus the authoritative locked `integration-v1.2/` ledger and append-only Aug. 24/Aug. 25 current overlays
+- `data/china-oil-sourcing-shift-r1.json` — source-linked schematic China crude-sourcing transition layer used by the Oil Routes map
 - `snapshots/` — immutable dated public boards
 - `scripts/`, `tests/` — structural, integration, temporal, costing, and hostile-input checks
 - `docs/` — methodology, migration, validation, and historical engineering notes
@@ -67,6 +70,9 @@ Run the release checks:
 python scripts/validate.py
 python scripts/validate_integration.py
 python scripts/validate_ux.py
+python scripts/validate_aug25_late.py
+node --check js/current-update-20260825-late.js
+node --check js/china-oil-sourcing-shift-r1.js
 node tests/temporal-state.test.js
 node tests/presentation.test.js
 node tests/security-rendering.test.js
@@ -83,4 +89,4 @@ See [`SECURITY.md`](SECURITY.md) for vulnerability reporting and the static-site
 
 ## Limitations
 
-The atlas reflects the reviewed public record through the displayed cutoff, not classified knowledge or a complete loss inventory. Source availability, publication lag, unresolved time precision, incomplete BDA, and inconsistent official accounting constrain comparisons. Absence from the current source set is not proof that an event did not occur.
+The atlas reflects the reviewed public record through the displayed cutoff, not classified knowledge or a complete loss inventory. Source availability, publication lag, unresolved time precision, incomplete BDA, inconsistent official accounting, and AIS-dark shipping constrain comparisons. Absence from the current source set is not proof that an event did not occur.
