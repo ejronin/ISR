@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "design_note": "Append-only late Aug. 25 current-overlay timeline. Source-specific ship-tracking counts are preserved as reported and are not silently converted into exact total physical traffic.",
+  "as_of": "2026-08-25T21:32:55-04:00",
+  "records": [
+    {"event_id":"CUR-20260825-008","date":"2026-08-25","time":null,"time_precision":"DATE_ONLY","year":2026,"month":"2026-08","iso_week":"2026-W35","day":"2026-08-25","hour_bucket":null,"record_class":"CURRENT UPDATE","event_type":"SHIPPING_TRAFFIC_UPDATE","summary":"Windward data reported no outbound Hormuz transits in the prior 24 hours, four inbound vessels on Aug. 24, and overall traffic around 3% of prewar levels.","map_refs":[],"facility_refs":[],"claim_refs":[],"first_reported":"2026-08-25","first_verified":"2026-08-25","source_ids":["SRC-8F55E805772A"]}
+  ]
+}
