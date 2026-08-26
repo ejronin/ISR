@@ -41,7 +41,7 @@ jobs:
         run: python scripts/validate_ux.py
       - name: Scan tracked files and Git metadata for privacy regressions
         run: python scripts/privacy_scan.py
-      - name: Run deterministic presentation, temporal, costing, and hostile-input tests
+      - name: Run deterministic presentation, temporal, costing, hostile-input, and public-IA tests
         run: |
           node tests/presentation.test.js
           node tests/temporal-state.test.js
@@ -52,6 +52,7 @@ jobs:
           node tests/aug22-update.test.js
           node tests/endgame-page.test.js
           node tests/public-ux-20260823.test.js
+          node tests/public-record-ia-20260826.test.js
           node tests/aug24-current-update.test.js
           node tests/ui-endgame-mermaid-r1.test.js
       - name: Validate ENDGAME analytical page
