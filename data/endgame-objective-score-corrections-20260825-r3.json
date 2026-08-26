@@ -1,0 +1,63 @@
+{
+  "version": "2026.08.25-objective-score-corrections-r3",
+  "method_note": "Grade each objective against the threshold it actually states. Do not use eradication as the denominator for a reduction, degradation, severance, or denial objective. If the current record does not establish an adjudicable end state, leave the objective UNSCORED rather than forcing it onto the 0–4 scale.",
+  "sources": {
+    "US_PROXY_OBJ": {
+      "publisher": "The White House",
+      "date": "2026-04-01",
+      "title": "President Trump’s Clear and Unchanging Objectives Drive Decisive Success Against Iranian Regime",
+      "url": "https://www.whitehouse.gov/releases/2026/04/president-trumps-clear-and-unchanging-objectives-drive-decisive-success-against-iranian-regime/",
+      "supports": "Defines the proxy objective as severing Iranian support and preventing Tehran from continuing to arm, fund and direct proxy forces. It does not define success as the physical disappearance of every aligned organization.",
+      "quality": "PRIMARY / OFFICIAL-ACTOR; defines objective threshold, not independent proof of success"
+    },
+    "R_HEZ_0820": {
+      "publisher": "Reuters",
+      "date": "2026-08-20",
+      "title": "US hits Hezbollah with fresh sanctions, emphasizing ties to Iranian government",
+      "url": "https://www.reuters.com/world/middle-east/us-targets-hezbollah-with-fresh-sanctions-emphasizes-ties-iranian-government-2026-08-20/",
+      "supports": "Hezbollah remains tied to Iran, so complete severance cannot yet be established. Its continued existence is not itself a failure of a degradation/severance objective.",
+      "quality": "HIGH / INDEPENDENT REPORTING"
+    },
+    "R_HEZ_DISARM_0807": {
+      "publisher": "Reuters",
+      "date": "2026-08-07",
+      "title": "Lebanon, Israel agree shortlist of countries that could send troops to verify Hezbollah disarmament",
+      "url": "https://www.reuters.com/world/middle-east/lebanon-israel-agree-shortlist-countries-that-could-send-troops-verify-hezbollah-2026-08-07/",
+      "supports": "A U.S.-brokered Lebanon-Israel framework links Israeli withdrawal to verified Hezbollah disarmament. Hezbollah refuses disarmament, showing residual capability, but its strategic operating environment is substantially more constrained than before the war.",
+      "quality": "HIGH / INDEPENDENT REPORTING"
+    },
+    "R_HAMAS_0819": {
+      "publisher": "Reuters",
+      "date": "2026-08-19",
+      "title": "US provides $206 million for Gaza force despite deadlocked peace plan",
+      "url": "https://www.reuters.com/world/middle-east/us-provide-206-million-gaza-peacekeeping-force-letters-show-2026-08-19/",
+      "supports": "Hamas remains armed but has accepted a roadmap involving phased disarmament, while implementation remains contested. This supports major degradation without establishing elimination.",
+      "quality": "HIGH / INDEPENDENT REPORTING"
+    },
+    "R_HOUTHI_0820": {
+      "publisher": "Reuters",
+      "date": "2026-08-20",
+      "title": "Yemen's Houthis say they attacked Najran airport, Aramco facilities in Saudi Arabia",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-say-they-attacked-najran-airport-aramco-facilities-saudi-arabia-2026-08-20/",
+      "supports": "The Houthis remain operational. Their continued ability to act does not by itself prove that Iran retains the prewar ability to arm, fund and tactically direct them; tactical Iranian tasking remains unproven in the Atlas record.",
+      "quality": "HIGH / INDEPENDENT REPORTING"
+    }
+  },
+  "us_overrides": [
+    {
+      "match": "Deny Iran a nuclear weapon",
+      "score": null,
+      "status": "UNSCORED / NOT YET ADJUDICABLE",
+      "assessment": "The nuclear objective remains active, but the current successor/endgame process has not produced substantive nuclear talks or a controlling nuclear bargain, and this board does not yet contain a sufficiently fresh independent technical finding that establishes the nuclear end state. Historical June-MOU language is not scored as current achievement. Score this lane when IAEA/technical evidence or a controlling nuclear agreement makes the outcome adjudicable.",
+      "source_ids": ["US1", "US2", "US3"]
+    },
+    {
+      "match": "Reduce Iran's ability to arm and sustain proxies",
+      "objective": "Sever / degrade Iran's support for proxy networks",
+      "score": 3,
+      "status": "SUBSTANTIAL",
+      "assessment": "The stated U.S. threshold was severing/degrading Iranian support and preventing Tehran from continuing to arm, fund and direct proxy forces — not eradicating every proxy organization. Hezbollah remains tied to Iran and refuses disarmament, which blocks a 4/4, but it is operating under a U.S.-brokered disarmament framework and a much more constrained regional environment. Hamas remains armed but has accepted a phased-disarmament roadmap. The Houthis remain operational, but their survival is not clean evidence that Iran retains its prewar arm/fund/direct relationship, and specific Iranian tactical tasking remains unproven. On the objective actually stated, the public record supports substantial severance/degradation: 3/4.",
+      "source_ids": ["US_PROXY_OBJ", "US2", "R_HEZ_0820", "R_HEZ_DISARM_0807", "R_HAMAS_0819", "R_HOUTHI_0820"]
+    }
+  ]
+}
