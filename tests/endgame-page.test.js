@@ -43,13 +43,22 @@ assert.match(iranRedline.assessment, /No nuclear concession yet is not evidence/
 
 const h11 = hormuzAug26.node_evidence.find(x => x.node_id === 'H11');
 const h15 = hormuzAug26.node_evidence.find(x => x.node_id === 'H15');
+const h16 = hormuzAug26.node_evidence.find(x => x.node_id === 'H16');
 assert.ok(h11);
 assert.match(h11.classification, /CONTESTED ACTOR CLAIMS/i);
 assert.match(h11.claim, /Washington says.*cleared mines.*Iran publicly rejects/i);
 assert.equal(h15, undefined);
 assert.doesNotMatch(JSON.stringify(hormuzAug26), /silence-based|did not remain silent/i);
+assert.ok(h16);
+assert.match(h16.classification, /HISTORICAL FACT \+ CONSTRAINT CONTEXT/i);
+assert.match(h16.claim, /publicly identified mined\/hazardous Strait geometry/i);
+assert.match(h16.claim, /mine-laying vessels and mine-storage facilities/i);
+assert.match(hormuzAug26.sources.S36.supports, /area-level map/i);
+assert.match(hormuzAug26.sources.S36.supports, /not.*mine-by-mine coordinate ledger/i);
+assert.match(hormuzAug26.sources.S37.supports, /16 Iranian mine-laying vessels/i);
+assert.match(hormuzAug26.hormuz_update.text, /informational exclusivity|wholly dependent on Iran/i);
 assert.match(hormuzAug26.hormuz_update.text, /physical completeness.*independently unresolved/i);
-assert.match(hormuzAug26.status_overrides['Hormuz leverage'], /MINE-CLEARANCE CLAIM CONTESTED/i);
+assert.match(hormuzAug26.status_overrides['Hormuz leverage'], /INFORMATIONAL EXCLUSIVITY DEGRADED/i);
 assert.match(currentView, /endgame-current-20260826-r1\.json/);
 assert.match(currentView, /CONTESTED CLAIMS · AUG\. 26/);
 assert.match(currentView, /mergeSupplement/);
@@ -102,4 +111,4 @@ assert.match(scoreboardCss, /eg25-tally-summary/);
 assert.match(scoreboardCss, /eg25-tally-metrics/);
 assert.match(css, /#endgame/);
 
-console.log('endgame-page: Atlas view, dynamic objective tally, Hormuz demining claim correction, cutoff behavior, victory-condition ledger, Iran scoring caveats and evidence trail passed');
+console.log('endgame-page: Atlas view, dynamic objective tally, Hormuz demining claim correction and historical mine-map/minelayer context, cutoff behavior, victory-condition ledger, Iran scoring caveats and evidence trail passed');
