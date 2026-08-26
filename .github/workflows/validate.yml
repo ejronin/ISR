@@ -81,6 +81,13 @@ jobs:
           node --check js/navigation.js
           node --check js/state.js
           python scripts/validate_workspace_ux_plain_language_r1.py
+      - name: Validate site-wide status, actor identity and government-source marker R1
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          node --check js/status-identity-r1.js
+          node --check js/source-bias-r1.js
+          python scripts/validate_status_identity_r1.py
       - name: Validate final Mermaid fit and Oil Routes R1
         env:
           PYTHONUTF8: '1'

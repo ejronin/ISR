@@ -6,6 +6,7 @@
     ['./css/endgame-adjudication-r1.css?v=20260824-r1','style'],
     ['./css/timeline-height-r1.css?v=20260824-r1','timeline-height'],
     ['./css/source-bias-r1.css?v=20260824-r1','source-bias'],
+    ['./css/status-identity-r1.css?v=20260826-r1','status-identity-r1'],
     ['./css/endgame-mermaid-r2.css?v=20260824-r2','mermaid-r2'],
     ['./css/endgame-public-view-r1.css?v=20260824-r1','public-view-r1'],
     ['./css/final-mermaid-oil-routes-r1.css?v=20260825-r1','final-mermaid-oil-routes-r1'],
@@ -16,7 +17,8 @@
   ];
   const scripts=[
     ['./js/endgame-adjudication-r1.js?v=20260824-r1','controller'],
-    ['./js/source-bias-r1.js?v=20260825-r2-hotfix','source-bias'],
+    ['./js/source-bias-r1.js?v=20260826-r3','source-bias'],
+    ['./js/status-identity-r1.js?v=20260826-r1','status-identity-r1'],
     ['./js/endgame-mermaid-r2.js?v=20260824-r2','mermaid-r2'],
     ['./js/endgame-public-view-r1.js?v=20260824-r1','public-view-r1'],
     ['./js/final-mermaid-oil-routes-r1.js?v=20260825-r1-hotfix1','final-mermaid-oil-routes-r1'],

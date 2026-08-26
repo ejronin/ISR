@@ -1,0 +1,81 @@
+/* Status / identity R1 — presentation only. Actor identity uses flags; condition uses color + text. */
+:root{
+  --sir-loss:#e45d66;
+  --sir-loss-bg:#3a171c;
+  --sir-damage:#f09a4b;
+  --sir-damage-bg:#3c2814;
+  --sir-operational:#55c987;
+  --sir-operational-bg:#123524;
+  --sir-unresolved:#e4b64f;
+  --sir-unresolved-bg:#3c3115;
+  --sir-government:#f1cf68;
+}
+
+/* Condition/status color is independent of actor identity. */
+.sir-condition-loss{
+  color:#ffe2e4!important;
+  background:var(--sir-loss-bg)!important;
+  border-color:var(--sir-loss)!important;
+  --state-color:var(--sir-loss)!important;
+}
+.sir-condition-damage{
+  color:#ffe3c3!important;
+  background:var(--sir-damage-bg)!important;
+  border-color:var(--sir-damage)!important;
+  --state-color:var(--sir-damage)!important;
+}
+.sir-condition-operational{
+  color:#d9ffe8!important;
+  background:var(--sir-operational-bg)!important;
+  border-color:var(--sir-operational)!important;
+  --state-color:var(--sir-operational)!important;
+}
+.sir-condition-unresolved{
+  color:#ffe7a8!important;
+  background:var(--sir-unresolved-bg)!important;
+  border-color:var(--sir-unresolved)!important;
+}
+
+/* Existing canonical physical-state components follow the same public vocabulary. */
+.physical-lost{--state-color:var(--sir-loss)!important}
+.physical-degraded{--state-color:var(--sir-damage)!important}
+.physical-operational{--state-color:var(--sir-operational)!important}
+
+/* Actor flags are deliberately neutral: the flag identifies the actor; status colors describe condition. */
+[data-actor-flag-r1="1"]{unicode-bidi:isolate;}
+
+/* Sources: the star is a provenance cue, not an evidence-grade cue. */
+.isr-gov-source-star{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:6px;
+  color:var(--sir-government);
+  font-size:.92em;
+  line-height:1;
+  vertical-align:baseline;
+  text-shadow:0 0 10px rgba(241,207,104,.18);
+}
+.isr-gov-source-star:focus-visible{outline:2px solid var(--sir-government);outline-offset:2px;border-radius:3px}
+.sir-source-star-key{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:10px;
+  padding:5px 8px;
+  border:1px solid rgba(241,207,104,.38);
+  border-radius:999px;
+  color:#f5dda0;
+  background:#2d2816;
+  font-size:11px;
+  font-weight:750;
+  letter-spacing:.015em;
+}
+
+/* The loss view should scan at a glance without turning quantity uncertainty into a loss claim. */
+#losses .sir-condition-unresolved:not(.pill):not(.badge):not(.physical-badge){
+  display:inline-flex;
+  border:1px solid var(--sir-unresolved);
+  border-radius:999px;
+  padding:2px 6px;
+}

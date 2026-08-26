@@ -19,6 +19,29 @@
     return (outletRatingRow(profile)?.ratings||[]).filter(r=>r.status==='RATED'&&safe(r.profile_url));
   }
 
+  /* Government-source star is provenance only. It never changes evidence grade or political-bias context. */
+  function officialGovernmentProfile(profile){
+    const type=String(profile?.outlet_type||'').toUpperCase();
+    const affiliation=String(profile?.state_affiliation||'').toUpperCase();
+    const ownership=String(profile?.ownership_note||'').toUpperCase();
+    return /OFFICIAL|GOVERNMENT|MILITARY|STATE_MEDIA|STATE MEDIA/.test(type) ||
+      /OFFICIAL|GOVERNMENT|MILITARY|STATE[- ]?(?:OWNED|AFFILIATED|CONTROLLED)|PUBLIC AUTHORITY/.test(affiliation) ||
+      /OFFICIAL GOVERNMENT|GOVERNMENT[- ]OWNED|STATE[- ]OWNED|STATE MEDIA|GOVERNMENT AGENCY|MILITARY COMMAND/.test(ownership);
+  }
+
+  function markOfficialGovernment(card,profile){
+    const head=$('.isr-outlet-head',card),name=$('strong',head);if(!head||!name)return;
+    let star=$('.isr-gov-source-star',head);
+    if(!officialGovernmentProfile(profile)){star?.remove();card.classList.remove('isr-gov-source');return;}
+    card.classList.add('isr-gov-source');
+    if(star)return;
+    star=E('span','isr-gov-source-star','★');
+    star.setAttribute('role','img');
+    star.setAttribute('aria-label','Official government source or outlet');
+    star.title='Official government source / outlet';
+    name.insertAdjacentElement('afterend',star);
+  }
+
   function positionScale(parent,provider,labels,selected){
     const scale=A(parent,'div','isr-ground-scale');
     scale.dataset.biasProvider=provider;
@@ -93,6 +116,7 @@
     const profiles=new Map((registry.outlet_profiles||[]).map(p=>[p.display_name,p]));
     $$('.isr-outlet-card',root).forEach(card=>{
       const name=$('.isr-outlet-head strong',card)?.textContent?.trim(),profile=profiles.get(name);if(!profile)return;
+      markOfficialGovernment(card,profile);
       const box=$('.isr-gn',card);if(!box||box.dataset.biasR1==='provider-separated')return;
       renderBias(box,profile);box.dataset.biasR1='provider-separated';
     });
@@ -110,7 +134,7 @@
       J('./data/media-bias-provider-metadata.json?v=20260824-r1')
     ]);
     apply();observe();window.AtlasState?.subscribe?.(s=>{if(s.activeView==='sources')setTimeout(apply,90)});
-    window.ISRSourceBiasR1={apply,media_bias_context};
+    window.ISRSourceBiasR1={apply,media_bias_context,officialGovernmentProfile};
   }
 
   init().catch(e=>console.error('source-bias-r1',e));
