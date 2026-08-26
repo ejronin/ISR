@@ -12,6 +12,7 @@
   const COUNTRY_FLAGS=new Map([
     ['united states','us'],['united states of america','us'],['u.s.','us'],['usa','us'],
     ['united kingdom','gb'],['uk','gb'],['great britain','gb'],
+    ['australia','au'],['bulgaria','bg'],
     ['iran','ir'],['israel','il'],['saudi arabia','sa'],['pakistan','pk'],['china','cn'],['russia','ru'],['oman','om'],
     ['turkey','tr'],['türkiye','tr'],['lebanon','lb'],['united arab emirates','ae'],['uae','ae'],
     ['bahrain','bh'],['qatar','qa'],['kuwait','kw'],['iraq','iq'],['jordan','jo'],['yemen','ye']
