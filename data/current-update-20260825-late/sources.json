@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id_rule": "Canonical overlay source IDs are SHA-1(url without trailing slash), first 12 uppercase hex, prefixed SRC-.",
+  "as_of": "2026-08-25T21:32:55-04:00",
+  "sources": [
+    {
+      "source_id": "SRC-8F55E805772A",
+      "legacy_ids": {},
+      "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2869533-outbound-hormuz-transits-drop-to-zero-update",
+      "outlet": "Argus Media",
+      "title": "Outbound Hormuz transits drop to zero: Update",
+      "publication_date": "2026-08-25",
+      "publication_time": null,
+      "author": null,
+      "source_roles": ["SHIPPING_DATA", "HORMUZ", "TRAFFIC_BASELINE", "WINDWARD"],
+      "quality": "B / SPECIALIST MARITIME-MARKET REPORTING",
+      "records_supported": ["CUR-20260825-008"],
+      "proof_note": "Reports Windward's source-specific vessel counts: no outbound transits in the prior 24 hours, four inbound vessels on Aug. 24, and traffic around 3% of prewar levels. Atlas preserves the provider/methodology boundary and does not convert the sample into exact total physical traffic.",
+      "lineage": "Late Aug. 25 current-overlay collection",
+      "source_origin": "current_update_2026-08-25_late"
+    }
+  ]
+}

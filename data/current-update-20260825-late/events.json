@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-25T21:32:55-04:00",
+  "layer": "APPEND_ONLY_CURRENT_OVERLAY",
+  "events": [
+    {
+      "event_id": "CUR-20260825-008",
+      "record_class": "CURRENT UPDATE",
+      "event_date": "2026-08-25",
+      "event_time": null,
+      "event_time_precision": "DATE_ONLY",
+      "timezone": null,
+      "first_reported": "2026-08-25",
+      "first_verified": "2026-08-25",
+      "publication_time_precision": "DATE_ONLY",
+      "valid_from": "2026-08-25",
+      "valid_to": null,
+      "event_type": "SHIPPING_TRAFFIC_UPDATE",
+      "actors": ["Commercial shipping", "Windward"],
+      "target": "Strait of Hormuz traffic",
+      "location": {"name": "Strait of Hormuz", "country": "Strait of Hormuz", "lat": 26.56, "lon": 56.25, "precision": "theater"},
+      "map_refs": [],
+      "facility_refs": [],
+      "claim_refs": [],
+      "evidence_status": "SPECIALIST_SHIPPING_DATA",
+      "confidence": "HIGH_FOR_REPORTED_TRACKING_SAMPLE",
+      "summary": "Windward data reported no outbound Hormuz transits in the prior 24 hours, four inbound vessels on Aug. 24, and overall traffic around 3% of prewar levels.",
+      "observed_fact": "Argus reported Windward data showing zero outbound vessels over the prior 24 hours and four inbound vessels on Aug. 24: three using the northern lane and one tanker using the southern lane.",
+      "claimed_effect": "",
+      "verified_effect": "The source-specific tracking sample supports continued near-shutdown of visible commercial traffic despite the Iran-Oman corridor framework.",
+      "counterevidence": "Different tracking providers and AIS visibility can produce different transit counts; this record does not claim zero total physical vessel movement.",
+      "continuity_evidence": "Extends the Aug. 24 Atlas traffic record showing visible Hormuz traffic remained roughly 90% below pre-conflict baselines.",
+      "later_outcome": "",
+      "source_refs": [{"source_id": "SRC-8F55E805772A", "roles": ["SHIPPING_DATA", "HORMUZ", "TRAFFIC_BASELINE", "WINDWARD"]}],
+      "related_event_ids": ["CUR-20260824-002", "CUR-20260825-002"],
+      "preceding_or_relevant_precursor": [],
+      "status_at_event": "NEAR-SHUTDOWN",
+      "current_status": "TRAFFIC REMAINS SEVERELY DEPRESSED",
+      "superseded_by": null,
+      "revision_history": [{"date": "2026-08-25", "change": "Added as a late Aug. 25 append-only traffic update after the 21:14 ET overlay cutoff."}]
+    }
+  ]
+}

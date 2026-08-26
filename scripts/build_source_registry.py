@@ -45,11 +45,20 @@ OUTLET_OVERRIDES = {
     "USGS":("United States","NORTH_AMERICA","TECHNICAL_GOVERNMENT",None),
     "World Bank":(None,"GLOBAL_INTERNATIONAL","INTERNATIONAL_ORGANIZATION",None),
     "Bulgarian News Agency":("Bulgaria","EUROPE","NEWS_AGENCY",None),
-    "Arab News":("Saudi Arabia","MIDDLE_EAST_NORTH_AFRICA","NEWSPAPER",None)
+    "Arab News":("Saudi Arabia","MIDDLE_EAST_NORTH_AFRICA","NEWSPAPER",None),
+    "Argus Media":("United Kingdom","EUROPE","SPECIALIST_MARKET_NEWS",None)
 }
 ALIASES = {"AP":"Associated Press","Washington Post":"The Washington Post"}
 OFFICIAL_RE = re.compile(r"\b(ministry|department|command|military|navy|air force|army|government|presidency|parliament|treasury|white house|centcom|nato|united nations|imo|iaea|iea)\b", re.I)
 STATE_MEDIA_RE = re.compile(r"\b(press tv|irna|tasnim|tehran times|spa|saudi press agency)\b", re.I)
+
+SOURCE_NAMESPACES = [
+    "data/integration-v1.2/sources.json",
+    "data/forensic-v1.3.2/sources.json",
+    "data/current-update-20260824/sources.json",
+    "data/current-update-20260825/sources.json",
+    "data/current-update-20260825-late/sources.json",
+]
 
 def canonical_outlet(name: str, url: str = '') -> str:
     name = re.sub(r"\s+", " ", (name or "Unknown outlet").strip())
@@ -60,7 +69,8 @@ def canonical_outlet(name: str, url: str = '') -> str:
         'www.washingtonpost.com':'The Washington Post','washingtonpost.com':'The Washington Post',
         'www.aljazeera.com':'Al Jazeera','aljazeera.com':'Al Jazeera',
         'www.bbc.com':'BBC News','bbc.com':'BBC News','www.bbc.co.uk':'BBC News','bbc.co.uk':'BBC News',
-        'www.thenationalnews.com':'The National','thenationalnews.com':'The National'
+        'www.thenationalnews.com':'The National','thenationalnews.com':'The National',
+        'www.argusmedia.com':'Argus Media','argusmedia.com':'Argus Media'
     }
     return direct.get(host, ALIASES.get(name, name))
 
@@ -87,26 +97,28 @@ def ground_for(name: str, metadata: dict, checked: str):
         raw = metadata.get("profiles",{}).get(raw["alias_of"])
     if raw:
         return {k:raw.get(k) for k in ["status","bias_raw","bias_bucket_3","factuality","profile_url"]} | {"checked_at":checked,"methodology_note":"Ground News publication-level rating; not an article rating or proof of neutrality."}
-    # Official, technical and actor institutions are not forced into a political-rating field.
     _,_,kind,_ = classify(name,"")
     status = "NOT_APPLICABLE" if kind.startswith("OFFICIAL") or kind in {"INTERNATIONAL_ORGANIZATION","THINK_TANK","TECHNICAL_GOVERNMENT"} else "NOT_RATED"
     return {"status":status,"bias_raw":None,"bias_bucket_3":None,"factuality":None,"profile_url":None,"checked_at":checked,"methodology_note":"Ground News publication-level rating; not an article rating or proof of neutrality."}
 
 def load_sources(root: Path):
-    namespaces = [root/"data/integration-v1.2/sources.json", root/"data/forensic-v1.3.2/sources.json", root/"data/current-update-20260824/sources.json"]
     merged = {}
-    for path in namespaces:
-        if not path.exists(): continue
-        payload=json.loads(path.read_text(encoding="utf-8"))
+    for rel in SOURCE_NAMESPACES:
+        path = root / rel
+        if not path.exists():
+            continue
+        payload = json.loads(path.read_text(encoding="utf-8"))
         for src in payload.get("sources",[]):
-            sid=src.get("source_id")
-            if not sid: continue
+            sid = src.get("source_id")
+            if not sid:
+                continue
             if sid in merged:
-                # Same canonical source may appear in both namespaces. Preserve richer fields without changing quality.
-                old=merged[sid]
+                old = merged[sid]
                 for k,v in src.items():
-                    if old.get(k) in (None,"",[]) and v not in (None,"",[]): old[k]=v
-            else: merged[sid]=dict(src)
+                    if old.get(k) in (None,"",[]) and v not in (None,"",[]):
+                        old[k] = v
+            else:
+                merged[sid] = dict(src)
     return list(merged.values())
 
 def build(root: Path):
@@ -122,20 +134,29 @@ def build(root: Path):
         if pid not in profiles:
             country,region,kind,state=classify(outlet,src.get("url") or "")
             gn=ground_for(outlet,meta,checked)
-            # A real Ground News profile may supply a more specific location classification.
             gnraw=meta.get("profiles",{}).get(outlet)
             if gnraw:
                 country=gnraw.get("country",country); region=gnraw.get("region",region)
             profiles[pid]={"outlet_profile_id":pid,"display_name":outlet,"aliases":sorted({src.get("outlet") or outlet} - {outlet}),"country":country,"region":region,"outlet_type":kind,"state_affiliation":state,"ownership_note":None,"ground_news":gn}
         else:
             alias=src.get("outlet")
-            if alias and alias != outlet and alias not in profiles[pid]["aliases"]: profiles[pid]["aliases"].append(alias)
+            if alias and alias != outlet and alias not in profiles[pid]["aliases"]:
+                profiles[pid]["aliases"].append(alias)
         output.append({
             "source_id":src["source_id"],"outlet_profile_id":pid,"title":src.get("title"),"url":src.get("url") or "",
             "publication_date":src.get("publication_date"),"source_roles":src.get("source_roles") or [],"quality":src.get("quality"),
             "lineage":src.get("lineage"),"records_supported":src.get("records_supported") or []
         })
-    registry={"schema_version":"1.0","generated_at":checked,"methodology":{"ground_news":"Publisher context only; ratings do not alter evidence grade.","authoritative_namespaces":["data/integration-v1.2/sources.json","data/forensic-v1.3.2/sources.json","data/current-update-20260824/sources.json"]},"outlet_profiles":sorted(profiles.values(),key=lambda x:(x["region"],x.get("country") or "",x["display_name"])),"sources":sorted(output,key=lambda x:x["source_id"])}
+    registry={
+        "schema_version":"1.0",
+        "generated_at":checked,
+        "methodology":{
+            "ground_news":"Publisher context only; ratings do not alter evidence grade.",
+            "authoritative_namespaces":SOURCE_NAMESPACES
+        },
+        "outlet_profiles":sorted(profiles.values(),key=lambda x:(x["region"],x.get("country") or "",x["display_name"])),
+        "sources":sorted(output,key=lambda x:x["source_id"])
+    }
     return registry
 
 def write(root: Path, registry: dict):
