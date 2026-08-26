@@ -1,4 +1,4 @@
-/* Status / identity R1 — presentation only. Actor identity uses flags; condition uses color + text. */
+/* Status / identity R1 — presentation only. Actor identity uses local SVG flags; condition uses color + text. */
 :root{
   --sir-loss:#e45d66;
   --sir-loss-bg:#3a171c;
@@ -43,6 +43,19 @@
 
 /* Actor flags are deliberately neutral: the flag identifies the actor; status colors describe condition. */
 [data-actor-flag-r1="1"]{unicode-bidi:isolate;}
+.sir-actor-flag-icon{
+  display:inline-block;
+  width:1.34em;
+  height:1em;
+  min-width:18px;
+  min-height:13px;
+  object-fit:cover;
+  vertical-align:-.12em;
+  margin-right:.36em;
+  border-radius:2px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.22),0 1px 3px rgba(0,0,0,.26);
+}
+button>.sir-actor-flag-icon,.isr-actor-chip>.sir-actor-flag-icon{vertical-align:-.16em;}
 
 /* Sources: the star is a provenance cue, not an evidence-grade cue. */
 .isr-gov-source-star{
