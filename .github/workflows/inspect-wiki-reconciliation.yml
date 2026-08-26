@@ -9,6 +9,8 @@ on:
       - 'data/wiki-map-reconciliation-20260826/**'
       - 'js/wiki-map-reconciliation-20260826.js'
       - 'scripts/inspect_wiki_reconciliation.py'
+      - 'scripts/materialize_wiki_reconciliation.py'
+      - 'scripts/validate_wiki_reconciliation.py'
       - '.github/workflows/inspect-wiki-reconciliation.yml'
 
 permissions:
@@ -24,3 +26,7 @@ jobs:
           python-version: '3.12'
       - name: Inspect compressed reconciliation payload
         run: python scripts/inspect_wiki_reconciliation.py
+      - name: Materialize normal JSON reconciliation products
+        run: python scripts/materialize_wiki_reconciliation.py
+      - name: Validate evidence, coverage, chronology and ship-loss rules
+        run: python scripts/validate_wiki_reconciliation.py
