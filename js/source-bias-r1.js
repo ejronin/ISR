@@ -93,7 +93,7 @@
     const score=Number(rating.bias_score),bounded=Number.isFinite(score)?Math.max(-42,Math.min(42,score)):0;
     meter.style.setProperty('--bias-pos',`${((bounded+42)/84)*100}%`);
     meter.dataset.biasProvider='AD_FONTES';meter.dataset.biasPosition=POS(rating.label);
-    const axis=A(wrap,'div','isr-adfontes-axis');A(axis,'span','','-42 LEFT');A(axis,'',`${bounded.toFixed(2)} · ${String(rating.label).toUpperCase()}`);A(axis,'span','', '+42 RIGHT');
+    const axis=A(wrap,'div','isr-adfontes-axis');A(axis,'span','','-42 LEFT');A(axis,'span','',`${bounded.toFixed(2)} · ${String(rating.label).toUpperCase()}`);A(axis,'span','', '+42 RIGHT');
     if(rating.reliability_label||rating.reliability_score!=null){A(parent,'div','isr-bias-reliability',`Reliability: ${rating.reliability_label||'provider rated'}${rating.reliability_score!=null?` · ${rating.reliability_score}`:''}`)}
     providerLink(parent,rating,'Ad Fontes publisher profile ↗');
     A(parent,'small','','Ad Fontes bias/reliability are provider-native publisher context. They do not change Atlas evidence grade.');
