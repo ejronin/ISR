@@ -18,7 +18,7 @@
   ];
   const scripts=[
     ['./js/endgame-adjudication-r1.js?v=20260824-r1','controller'],
-    ['./js/source-bias-r1.js?v=20260826-r3','source-bias'],
+    ['./js/source-bias-r1.js?v=20260826-r4','source-bias'],
     ['./js/status-identity-r1.js?v=20260826-r2-svg','status-identity-r1'],
     ['./js/endgame-mermaid-r2.js?v=20260824-r2','mermaid-r2'],
     ['./js/endgame-public-view-r1.js?v=20260824-r1','public-view-r1'],
