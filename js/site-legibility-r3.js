@@ -79,11 +79,11 @@
     P.applyFreshnessDisplay?.(document,window);
   }
 
-  function refresh(){window.ISRStatusIdentityR1?.refresh?.();window.ISRSourceBiasR1?.apply?.();normalizePublicPresentation();decorateActorLabels();decoratePopups();markOfficialSources();normalizePublicPresentation();}
+  function refresh(){window.ISRStatusIdentityR1?.refresh?.();window.ISRSourceBiasR1?.apply?.();window.ISRPublicRecordUIR2?.normalizeLegacyEvidencePresentation?.();normalizePublicPresentation();decorateActorLabels();decoratePopups();markOfficialSources();normalizePublicPresentation();}
   function schedule(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;refresh();});}
   function observe(root){if(!root||root.dataset.pr3Observe==='1')return;root.dataset.pr3Observe='1';new MutationObserver(schedule).observe(root,{childList:true,subtree:true});}
   function bind(){
-    /* These late-render roots genuinely need observation because chronology overlays, source directory and Leaflet popups are injected asynchronously. */
+    /* These late-render roots genuinely need observation because chronology overlays, source directory, legacy evidence cards and Leaflet popups are injected asynchronously. */
     observe($('.content'));observe($('.analysis-nav'));observe($('.leaflet-popup-pane'));
     document.addEventListener('click',e=>{if(e.target.closest('.primary-nav,.secondary-nav,#sources,#losses,#claims,.leaflet-popup,.layer-control'))[0,90,240].forEach(ms=>setTimeout(schedule,ms));},true);
     ['atlasstatechange','atlasdataready','atlascurrentready20260824','atlascurrentready20260825','atlascurrentready20260825late','atlascurrentready20260826','atlaswikireconready20260826'].forEach(name=>window.addEventListener(name,schedule));
