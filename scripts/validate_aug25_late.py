@@ -55,7 +55,8 @@ for route in routes:
     for _, url in route['sources']:
         req(url.startswith('https://'), f"{route['id']} https source")
 
-for marker in ['Trade / logistics routes','degraded_legacy','expanded_substitute','hormuz_exposed_substitute','not a live vessel position']:
+for marker in ['Trade / logistics routes','degraded_legacy','expanded_substitute','not a live vessel position']:
     req(marker in mapjs, f'map JS marker {marker}')
+req("return { color:'#38bdf8'" in mapjs, 'default renderer style for additional substitute classes')
 
 print('aug25-late: PASS — 117-record chronology, methodology-bounded Hormuz update, and China crude sourcing-shift map layer')
