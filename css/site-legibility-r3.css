@@ -1,0 +1,177 @@
+/* Site legibility R3 — readable multi-entry popups, clearer source hierarchy and loss analysis. Presentation only. */
+
+/* Leaflet popups: stop compressing multi-entry evidence into a narrow column. */
+.leaflet-popup-content-wrapper{
+  max-width:min(560px,calc(100vw - 44px))!important;
+  border-radius:13px!important;
+}
+.leaflet-popup-content{
+  width:min(500px,calc(100vw - 78px))!important;
+  max-width:none!important;
+  max-height:min(68vh,680px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  scrollbar-gutter:stable;
+  margin:15px 16px!important;
+  font-size:13px!important;
+  line-height:1.5!important;
+}
+.atlas-popup.pr3-readable-popup h3,
+.leaflet-popup-content .atlas-popup h3{
+  margin:0 0 6px!important;
+  font-size:17px!important;
+  line-height:1.25!important;
+  color:#17212b!important;
+}
+.pr3-popup-actor{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  width:max-content;
+  max-width:100%;
+  margin:0 0 10px;
+  padding:4px 7px;
+  border:1px solid #c6d4de;
+  border-radius:7px;
+  background:#eef4f7;
+  color:#243746;
+  font-size:11.5px;
+  font-weight:750;
+}
+.pr3-popup-actor .sir-actor-flag-icon{width:25px;height:17px;min-width:25px;margin:0;vertical-align:middle}
+.pr3-popup-actor small{font-size:10px;font-weight:600;color:#607281;padding-left:3px}
+.leaflet-popup-content .atlas-popup .popup-badges{margin:4px 0 9px}
+.leaflet-popup-content .atlas-popup section{
+  border-top:1px solid #adc1cf!important;
+  padding-top:10px!important;
+  margin-top:10px!important;
+}
+.leaflet-popup-content .atlas-popup section>b,
+.leaflet-popup-content .atlas-popup p>b{
+  display:block!important;
+  margin:0 0 5px!important;
+  color:#248a9b!important;
+  font-size:10px!important;
+  line-height:1.25!important;
+  letter-spacing:.065em!important;
+  text-transform:uppercase!important;
+}
+.leaflet-popup-content .atlas-popup p{
+  margin:5px 0 9px!important;
+  color:#354754!important;
+  font-size:12.5px!important;
+  line-height:1.5!important;
+}
+.leaflet-popup-content .atlas-popup .component-list{display:grid!important;gap:8px!important;margin:7px 0 0!important}
+.leaflet-popup-content .atlas-popup .component-state{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:7px!important;
+  align-items:start!important;
+  padding:9px 10px!important;
+  border-left-width:4px!important;
+  border-radius:0 7px 7px 0!important;
+  min-width:0!important;
+}
+.leaflet-popup-content .atlas-popup .component-state .physical-badge{
+  grid-row:auto!important;
+  justify-self:start!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  font-size:9.5px!important;
+  line-height:1.3!important;
+  padding:4px 7px!important;
+}
+.leaflet-popup-content .atlas-popup .component-state>b{font-size:11.5px!important;line-height:1.35!important}
+.leaflet-popup-content .atlas-popup .component-state>span:last-child{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  color:#d1dce6!important;
+  font-size:12.5px!important;
+  line-height:1.48!important;
+  overflow-wrap:break-word!important;
+  word-break:normal!important;
+}
+.leaflet-popup-content .atlas-popup .sources{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:5px!important;
+  margin-top:11px!important;
+  padding-top:9px!important;
+  border-top:1px solid #b8c8d3!important;
+}
+.leaflet-popup-content .atlas-popup .sources a,
+.leaflet-popup-content .atlas-popup .srcchip{
+  margin:0!important;
+  padding:5px 7px!important;
+  font-size:10.5px!important;
+  line-height:1.25!important;
+}
+.leaflet-popup-content .popup-history{margin-top:11px;padding-top:9px;border-top:1px solid #b8c8d3}.leaflet-popup-content .popup-event-link{font-size:11px!important;line-height:1.4!important;padding:7px!important}
+
+/* Keep map chrome readable without stealing vertical space from the map. */
+.public-record-r2 #app.isr-atlas-map-only .global-search-button{min-height:42px!important;font-size:12px!important}
+.public-record-r2 #app.isr-atlas-map-only .primary-tab,
+.public-record-r2 #app.isr-atlas-map-only .secondary-tab{font-size:13px!important;min-height:38px!important}
+.public-record-r2 #app.isr-atlas-map-only .layerbtn{font-size:11px!important;line-height:1.25!important}
+
+/* Sources: the evidence list should lead; publisher context should support it. */
+#sources .isr-region{margin:15px 0 21px!important}
+#sources .isr-region>h2{font-size:17px!important;line-height:1.3!important;margin-bottom:10px!important;padding-bottom:7px!important}
+#sources .isr-country>h3{font-size:13.5px!important;line-height:1.3!important;margin:13px 0 7px!important}
+#sources .isr-outlet-card{margin:8px 0!important;padding:13px 14px!important;border-radius:11px!important}
+#sources .isr-outlet-head{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(240px,380px)!important;gap:14px!important;align-items:start!important}
+#sources .isr-outlet-head>div:first-child,#sources .isr-outlet-head>strong{min-width:0}
+#sources .isr-outlet-head strong{font-size:15.5px!important;line-height:1.3!important}
+#sources .isr-gov-source-star{font-size:16px!important;margin-left:7px!important;vertical-align:-1px!important}
+#sources .isr-source-summary{font-size:11.5px!important;line-height:1.5!important;gap:10px!important;margin:10px 0 12px!important}
+#sources .isr-source-row{grid-template-columns:104px minmax(0,1fr) auto!important;gap:9px!important;padding:9px 0!important;font-size:11.5px!important;line-height:1.4!important;align-items:start!important}
+#sources .isr-source-row a{font-size:12.5px!important;line-height:1.45!important}
+#sources .isr-source-row .srcchip,#sources .isr-source-row>span:last-child{font-size:9.5px!important}
+#sources .isr-gn,#sources .isr-ground-gauge{justify-self:end!important;max-width:380px!important;opacity:.78!important}
+#sources .isr-ground-title{font-size:10px!important;line-height:1.35!important}
+#sources .isr-ground-scale span{font-size:7px!important}
+#sources .isr-ground-link,#sources .isr-provider-chip{font-size:9px!important}
+#sources .isr-gn small,#sources .isr-ground-gauge small{font-size:8.5px!important;line-height:1.35!important}
+#sources .isr-gov-source{border-left:3px solid #d9bb5b!important}
+
+/* Consequences / losses: increase scan speed without hiding audit detail. */
+#losses{max-width:1480px;margin-inline:auto}
+#losses>.callout{font-size:14px!important;line-height:1.55!important;padding:14px 16px!important;margin-bottom:13px!important}
+#losses .eyebrow{font-size:10px!important;line-height:1.3!important}
+#losses .loss-envelope,#losses .munitions-separate,#losses .leadership-ledger,#losses .casualty-ledger{padding:15px!important;margin:13px 0!important;border-radius:12px!important}
+#losses .loss-envelope h2,#losses .munitions-separate h2,#losses .leadership-ledger h2,#losses .casualty-ledger h2{font-size:18px!important;line-height:1.3!important;margin:5px 0 7px!important}
+#losses .loss-envelope>p,#losses .munitions-separate>p,#losses .leadership-ledger p,#losses .casualty-ledger p{font-size:12.5px!important;line-height:1.55!important}
+#losses .loss-envelope .loss-range{font-size:27px!important}
+#losses .forensic-category-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))!important;gap:9px!important}
+#losses .loss-category-card,#losses .claim-chain-card{min-height:108px!important;padding:12px!important;gap:7px!important;border-radius:10px!important}
+#losses .loss-category-name{font-size:11.5px!important;line-height:1.35!important}
+#losses .loss-category-card strong{font-size:22px!important;line-height:1.1!important}
+#losses .loss-category-card small,#losses .claim-chain-card small{font-size:10px!important;line-height:1.4!important}
+#losses .casualty-doctrine{padding:12px!important;gap:11px!important}
+#losses .casualty-doctrine p{font-size:12.5px!important;line-height:1.55!important}
+#losses .casualty-category{margin:14px 0!important}
+#losses .casualty-category h3{font-size:14px!important}
+#losses .casualty-category>header>span{font-size:10px!important;line-height:1.4!important}
+#losses .casualty-records{gap:9px!important}
+#losses .casualty-records article{padding:11px!important;gap:7px 10px!important;border-radius:10px!important}
+#losses .casualty-records article>div:first-child b{font-size:11.5px!important;line-height:1.35!important}
+#losses .casualty-records article>div:first-child span{font-size:9.5px!important;line-height:1.4!important}
+#losses .casualty-records article>strong{font-size:23px!important}
+#losses .casualty-records article>small,#losses .casualty-records article>.sources{font-size:10.5px!important;line-height:1.5!important}
+#losses .legacy-audit-note summary{font-size:11.5px!important}#losses .legacy-audit-note p{font-size:11px!important;line-height:1.55!important}
+
+@media(max-width:900px){
+  .leaflet-popup-content{width:min(440px,calc(100vw - 58px))!important;max-height:62vh!important;margin:13px 14px!important}
+  #sources .isr-outlet-head{grid-template-columns:1fr!important}
+  #sources .isr-gn,#sources .isr-ground-gauge{justify-self:stretch!important;max-width:none!important}
+}
+@media(max-width:600px){
+  .leaflet-popup-content-wrapper{max-width:calc(100vw - 24px)!important}
+  .leaflet-popup-content{width:calc(100vw - 52px)!important;max-height:58vh!important;font-size:12.5px!important}
+  .pr3-popup-actor{flex-wrap:wrap}
+  #sources .isr-source-row{grid-template-columns:1fr!important;gap:4px!important}
+  #sources .isr-source-row>*{min-width:0}
+  #losses .forensic-category-grid{grid-template-columns:1fr!important}
+}
