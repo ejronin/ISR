@@ -74,6 +74,15 @@
     if (badge) badge.textContent = `Current chronology · ${EXPECTED_CURRENT} records through Aug. 24 14:14 ET`;
   }
 
+  function loadSuccessor() {
+    if (document.querySelector('script[data-current-update-20260825]')) return;
+    const script = document.createElement('script');
+    script.src = './js/current-update-20260825.js?v=20260825-r1';
+    script.async = false;
+    script.dataset.currentUpdate20260825 = '1';
+    document.head.append(script);
+  }
+
   async function init() {
     await waitFor(() => window.ATLAS_LEDGER && window.ATLAS_TEMPORAL_INDEX && window.registerAtlasEvents && window.registerAtlasSources);
     const [manifest, events, timeline, sources] = await Promise.all([
@@ -93,6 +102,7 @@
     updateLabels();
     window.ISRFullScope20260822?.refreshTimeline?.();
     window.dispatchEvent(new CustomEvent('atlascurrentready', { detail: { count: EXPECTED_CURRENT, cutoff: CUTOFF } }));
+    loadSuccessor();
   }
 
   const start = () => init().catch(error => console.warn('Aug. 24 current overlay unavailable; locked historical ledger remains usable.', error));
