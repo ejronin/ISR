@@ -53,7 +53,7 @@
     if(!$('.pr2-timeline-intro',shell)){const intro=E('div','pr2-timeline-intro'),copy=E('div');copy.append(E('strong','','Read the chronology'),E('span','','Pick a date or event card to see what happened. Open Advanced timeline tools when you need historical evidence cutoffs, actor filters or a narrower time window.'));intro.append(copy);$('.isr-current-strip',shell)?.insertAdjacentElement('afterend',intro);}
     const controls=$('.isr-timeline-controls',shell),actors=$('.isr-actor-strip',shell),more=$('.isr-actor-more-menu',shell),ruler=$('.isr-ruler-wrap',shell),search=$('.isr-timeline-search',shell);
     if(search){search.classList.add('pr2-public-search');const map=$('.isr-timeline-map-slot',shell);if(search.parentElement===controls)(map||$('.pr2-timeline-intro',shell))?.insertAdjacentElement('afterend',search);}
-    if(controls&&!$('.pr2-timeline-tools',shell)){const d=E('details','pr2-timeline-tools'),body=E('div','pr2-tools-body');d.append(E('summary','','Advanced timeline tools'),body);[controls,actors,more,ruler].filter(Boolean).forEach(n=>body.append(n));if(search)search.insertAdjacentElement('afterend',d);else $('.isr-timeline-map-slot',shell)?.insertAdjacentElement('afterend',d);}
+    if(controls&&!$('.pr2-timeline-tools',shell)){const d=E('details','pr2-timeline-tools'),body=E('div','pr2-tools-body');d.append(E('summary','','Advanced timeline tools'),body);[controls,actors,more,ruler].filter(Boolean).forEach(n=>body.append(n));d.append(body);if(search)search.insertAdjacentElement('afterend',d);else $('.isr-timeline-map-slot',shell)?.insertAdjacentElement('afterend',d);}
     const help=$('.isr-timeline-help',shell);if(help)setText($('summary',help),'What AS OF and KNOWN BY mean');
   }
 
@@ -72,6 +72,34 @@
     const posture=E('div');posture.append(E('strong','','Dispute posture'),E('span','','Uncontested · Contested'));
     const support=E('div');support.append(E('strong','','Evidence support'),E('span','','Claim only · Supported · Verified · Unresolved'));
     grid.append(posture,support);sec.append(grid);panel.prepend(sec);
+  }
+
+  function normalizeLegacyEvidencePresentation(){
+    const presentation=P();if(!presentation)return;
+    const method=$$('.v133-method').find(node=>/Public evidence vocabulary/i.test(node.textContent||''));
+    if(method&&method.dataset.evidenceDoctrineR2!=='1'){
+      method.replaceChildren();
+      method.append(E('b','','Public evidence vocabulary: '),document.createTextNode('Dispute posture and evidentiary support are separate. Uncontested means no identified dispute was located; it is not proof. Evidence support is Claim only, Supported, Verified, or Unresolved. False, disproven, and superseded remain adjudication outcomes.'));
+      method.dataset.evidenceDoctrineR2='1';
+    }
+    $$('.v133-badge').forEach(node=>{
+      const raw=(node.textContent||'').trim();if(!raw)return;
+      const upper=raw.toUpperCase();
+      if(/\bFALSE\b|\bDISPROVEN\b|\bSUPERSEDED\b|\bCORRECTED\b/.test(upper)){node.dataset.adjudicationOutcome='true';return;}
+      const semantics=presentation.evidenceSemantics?.(raw);if(!semantics)return;
+      node.dataset.disputePosture=semantics.posture;
+      node.dataset.evidenceSupport=semantics.support;
+      if(/UNVERIFIED|NOT INDEPENDENTLY VERIFIED/.test(upper)){
+        node.classList.remove('uncontested','confirmed','supported','contested','mixed','not-established');
+        node.classList.add('unresolved');
+        node.textContent=presentation.formatLabel(raw);
+        node.title='Evidence support: unresolved';
+      }else if(/^UNCONTESTED$/i.test(raw)){
+        node.title='Dispute posture: uncontested · not a verification finding';
+      }else if(/^CONTESTED$/i.test(raw)){
+        node.title='Dispute posture: contested';
+      }
+    });
   }
 
   function ensureObjectiveDisclosure(){
@@ -116,12 +144,12 @@
     layerScopeInstalled=true;tuneLayerControl();return true;
   }
 
-  function refresh(){applyPublicShell();applyFreshness();ensureOverviewIntro();tuneOverviewSynthesis();ensureTimelineReadingMode();ensureSourcesReadingMode();ensureClaimsDoctrine();ensureObjectiveDisclosure();ensureEvidenceDrawerLink();tuneMethodLanguage();installViewScopedLayerOverrides();tuneLayerControl();normalizePublicLanguage(document);applyFreshness();}
+  function refresh(){applyPublicShell();applyFreshness();ensureOverviewIntro();tuneOverviewSynthesis();ensureTimelineReadingMode();ensureSourcesReadingMode();ensureClaimsDoctrine();normalizeLegacyEvidencePresentation();ensureObjectiveDisclosure();ensureEvidenceDrawerLink();tuneMethodLanguage();installViewScopedLayerOverrides();tuneLayerControl();normalizePublicLanguage(document);applyFreshness();}
   function bind(){
     document.addEventListener('click',e=>{const route=e.target.closest('[data-pr2-view]');if(route){window.showAtlasPanel?.(route.dataset.pr2View);return;}if(e.target.closest('.primary-nav,.secondary-nav,.analysis-nav,#timeline,#sources,#claims,#endgame,.isr-evidence-drawer,.layer-control'))[0,100,300].forEach(ms=>setTimeout(refresh,ms));},true);
     window.addEventListener('atlasstatechange',()=>setTimeout(refresh,0));
     ['atlasdataready','atlascurrentready20260824','atlascurrentready20260825','atlascurrentready20260825late','atlascurrentready20260826','atlaswikireconready20260826'].forEach(name=>window.addEventListener(name,()=>setTimeout(refresh,0)));
   }
-  function init(){refresh();bind();[80,220,600,1400,3000,6000].forEach(ms=>setTimeout(refresh,ms));window.ISRPublicRecordUIR2={refresh};}
+  function init(){refresh();bind();[80,220,600,1400,3000,6000].forEach(ms=>setTimeout(refresh,ms));window.ISRPublicRecordUIR2={refresh,normalizeLegacyEvidencePresentation};}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 }());
