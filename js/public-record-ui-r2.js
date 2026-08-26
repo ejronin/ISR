@@ -6,13 +6,10 @@
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const E=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n;};
   const setText=(n,t)=>{if(n&&n.textContent!==t)n.textContent=t;};
-  const STATUS_TEXT=new Map([
-    ['UNCONTESTED','NOT INDEPENDENTLY VERIFIED'],
-    ['UNCONTESTED CLAIM','CLAIMED · NOT INDEPENDENTLY VERIFIED'],
-    ['UNVERIFIED','NOT INDEPENDENTLY VERIFIED'],
-    ['UNVERIFIED / CLAIM','CLAIMED · NOT INDEPENDENTLY VERIFIED'],
-    ['ACTOR CLAIM','ACTOR CLAIM · NOT VERIFIED']
-  ]);
+  const P=()=>window.AtlasPresentation;
+  const DEFAULT_LAYER_OVERRIDES=Object.freeze({snapshot:Object.freeze({'Strike effects':false}),timeline:Object.freeze({'Strike effects':false})});
+  let layerScopeInstalled=false,lastMapView=null;
+  const scopedLayerOverrides=new Map();
 
   function setShareStatus(message){const out=$('#shareStatus');if(!out)return;out.textContent=message;setTimeout(()=>{if(out.textContent===message)out.textContent='';},2200);}
   async function copyUrl(url,label){try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(url);else{const i=E('input','clipboard-fallback');i.value=url;i.readOnly=true;document.body.append(i);i.select();document.execCommand('copy');i.remove();}setShareStatus(label||'Link copied');}catch(_){setShareStatus('Copy failed — use the address bar');}}
@@ -28,11 +25,7 @@
     setText($('#copyLinkButton'),'Copy current view link');
   }
 
-  function applyFreshness(){
-    const latest=window.ATLAS_CURRENT_UPDATE_20260825_LATE;if(!latest?.cutoff)return;
-    const stamp=$('.review-stamp');if(stamp)setText(stamp,'Reviewed through 2026-08-25 21:32 ET');
-    const strip=$('#timeline .isr-current-strip span');if(strip)setText(strip,'Current chronology through 2026-08-25 21:32 ET · 117 records');
-  }
+  function applyFreshness(){P()?.applyFreshnessDisplay?.(document,window);}
 
   function routeButton(title,copy,view){const b=E('button','pr2-route');b.type='button';b.dataset.pr2View=view;b.append(E('strong','',title),E('span','',copy));return b;}
   function ensureOverviewIntro(){
@@ -40,7 +33,10 @@
     const sec=E('section','pr2-overview-intro');sec.dataset.pr2Overview='1';
     sec.append(E('div','pr2-eyebrow','START HERE'),E('h2','','The war record at a glance'),E('p','','Use this page for the current picture. From here you can follow the chronology, inspect military events and losses, review diplomacy and outcomes, or open the underlying sources.'));
     const routes=E('div','pr2-route-grid');routes.append(routeButton('Follow the war','Read events in chronological order.','timeline'),routeButton('Military record','Bases, strikes, missiles, drones and imagery.','facilities'),routeButton('Consequences','Casualties, losses, economics and trade.','losses'),routeButton('Diplomacy & outcome','Talks, agreements, objectives and outcomes.','diplomacy-hub'));
-    sec.append(routes);const key=E('div','pr2-status-key');[['pr2-confirmed','Confirmed'],['pr2-claimed','Claimed / not independently verified'],['pr2-disputed','Disputed or attribution unresolved'],['pr2-unresolved','Unknown / unresolved']].forEach(([c,t])=>key.append(E('span',c,t)));sec.append(key);panel.prepend(sec);
+    sec.append(routes);
+    const key=E('div','pr2-status-key');[
+      ['pr2-confirmed','Verified'],['pr2-supported','Supported'],['pr2-claimed','Claim only'],['pr2-disputed','Contested / unverified'],['pr2-unresolved','Unresolved']
+    ].forEach(([c,t])=>key.append(E('span',c,t)));sec.append(key);panel.prepend(sec);
   }
 
   function tuneOverviewSynthesis(){
@@ -49,7 +45,8 @@
     const dek=$('.isr-outcome-head p',dash);if(dek&&/Five analytical levels/i.test(dek.textContent||''))setText(dek,'A structured synthesis of what the accepted record supports. This is not a combined war score.');
     if(picture&&dash.previousElementSibling!==picture)picture.insertAdjacentElement('afterend',dash);
   }
-  function normalizeStatusLabels(root=document){$$('.pill,.badge,.evidence-badge,.isr-status,.iw-meta span',root).forEach(n=>{const k=(n.textContent||'').trim().replace(/\s+/g,' ').toUpperCase(),v=STATUS_TEXT.get(k);if(v)setText(n,v);});}
+
+  function normalizePublicLanguage(root=document){P()?.formatPublicDom?.(root);}
 
   function ensureTimelineReadingMode(){
     const panel=$('#timeline'),shell=$('.isr-timeline-shell',panel);if(!panel||!shell)return;
@@ -67,6 +64,16 @@
     if(!$('.pr2-source-filters',root)){const selects=$$('select',controls);if(selects.length){const d=E('details','pr2-source-filters'),grid=E('div','pr2-source-filter-grid');d.append(E('summary','','Advanced source filters'));selects.forEach(s=>grid.append(s));d.append(grid);controls.insertAdjacentElement('afterend',d);}}
   }
 
+  function ensureClaimsDoctrine(){
+    const panel=$('#claims');if(!panel||$('.pr2-claims-doctrine',panel))return;
+    const sec=E('section','pr2-claims-doctrine');
+    sec.append(E('div','pr2-eyebrow','HOW TO READ CLAIMS'),E('h2','','Dispute and evidence are separate questions'),E('p','','The Atlas grades propositions, not narratives. “Uncontested” means no identified party or source dispute was located; it is not proof. A proposition can be contested and still be supported or verified by independent evidence.'));
+    const grid=E('div','pr2-claim-semantics-grid');
+    const posture=E('div');posture.append(E('strong','','Dispute posture'),E('span','','Uncontested · Contested'));
+    const support=E('div');support.append(E('strong','','Evidence support'),E('span','','Claim only · Supported · Verified · Unresolved'));
+    grid.append(posture,support);sec.append(grid);panel.prepend(sec);
+  }
+
   function ensureObjectiveDisclosure(){
     const board=$('#endgame .eg25-objective-board');if(!board||$('.pr2-objective-method',board))return;const tally=$('.eg25-tally-summary',board),scale=$('.eg25-scale',board);if(!tally&&!scale)return;
     const d=E('details','pr2-objective-method'),body=E('div','pr2-objective-method-body');d.append(E('summary','','How the objective score is calculated'));[tally,scale].filter(Boolean).forEach(n=>body.append(n));d.append(body);const head=$('.eg3-section-head',board);if(head)head.insertAdjacentElement('afterend',d);else board.prepend(d);
@@ -78,10 +85,43 @@
     setText(b,window.AtlasState?.get?.().selectedRecord?'Copy record link':'Copy view link');
   }
 
-  function tuneMethodLanguage(){const panel=$('#intro');if(!panel)return;$$('.method-card h3',panel).forEach(h=>{const t=(h.textContent||'').trim();if(t==='Evidence doctrine')setText(h,'How evidence is treated');if(t==='Source doctrine')setText(h,'How sources are used');if(t==='Geographic precision')setText(h,'How precise the map is');if(t==='Damage vs operational effect')setText(h,'Damage is not the same as shutdown');});}
+  function tuneMethodLanguage(){
+    const panel=$('#intro');if(!panel)return;
+    $$('.method-card h3',panel).forEach(h=>{const t=(h.textContent||'').trim();if(t==='Evidence doctrine')setText(h,'How evidence is treated');if(t==='Source doctrine')setText(h,'How sources are used');if(t==='Geographic precision')setText(h,'How precise the map is');if(t==='Damage vs operational effect')setText(h,'Damage is not the same as shutdown');});
+    const evidenceCard=$$('.method-card',panel).find(card=>/How evidence is treated|Evidence doctrine/i.test($('h3',card)?.textContent||''));
+    if(evidenceCard&&!$('.pr2-evidence-doctrine',evidenceCard)){const p=E('p','pr2-evidence-doctrine','Dispute posture and evidentiary support are tracked separately. Uncontested means no identified dispute was located; it does not mean verified. Evidence support is shown as Claim only, Supported, Verified, or Unresolved. False, disproven, and superseded remain adjudication outcomes rather than evidence-strength labels.');evidenceCard.append(p);}
+  }
 
-  function refresh(){applyPublicShell();applyFreshness();ensureOverviewIntro();tuneOverviewSynthesis();ensureTimelineReadingMode();ensureSourcesReadingMode();ensureObjectiveDisclosure();ensureEvidenceDrawerLink();tuneMethodLanguage();normalizeStatusLabels();}
-  function bind(){document.addEventListener('click',e=>{const route=e.target.closest('[data-pr2-view]');if(route){window.showAtlasPanel?.(route.dataset.pr2View);return;}if(e.target.closest('.primary-nav,.secondary-nav,.analysis-nav,#timeline,#sources,#endgame,.isr-evidence-drawer'))[0,100,300].forEach(ms=>setTimeout(refresh,ms));},true);window.addEventListener('atlasstatechange',()=>setTimeout(refresh,0));window.addEventListener('atlascurrentready20260825late',()=>setTimeout(refresh,0));}
+  function tuneLayerControl(){const reset=$('.layer-control .layer-reset');if(reset)setText(reset,"Reset to this view's defaults");}
+
+  function installViewScopedLayerOverrides(){
+    if(layerScopeInstalled||typeof window.configureAtlasMap!=='function'||!window.AtlasState?.get)return layerScopeInstalled;
+    const original=window.configureAtlasMap;
+    const initial=window.AtlasState.get();lastMapView=initial.activeView||'snapshot';
+    scopedLayerOverrides.set(lastMapView,{...(initial.manualLayerOverrides||{})});
+    window.configureAtlasMap=function scopedConfigureAtlasMap(viewId){
+      const state=window.AtlasState.get();
+      if(lastMapView)scopedLayerOverrides.set(lastMapView,{...(state.manualLayerOverrides||{})});
+      const target=viewId||state.activeView||'snapshot';
+      const next={...(DEFAULT_LAYER_OVERRIDES[target]||{}),...(scopedLayerOverrides.get(target)||{})};
+      state.manualLayerOverrides=next;
+      lastMapView=target;
+      const result=original(target);
+      setTimeout(tuneLayerControl,0);
+      return result;
+    };
+    const first={...(DEFAULT_LAYER_OVERRIDES[lastMapView]||{}),...(scopedLayerOverrides.get(lastMapView)||{})};
+    initial.manualLayerOverrides=first;
+    original(lastMapView);
+    layerScopeInstalled=true;tuneLayerControl();return true;
+  }
+
+  function refresh(){applyPublicShell();applyFreshness();ensureOverviewIntro();tuneOverviewSynthesis();ensureTimelineReadingMode();ensureSourcesReadingMode();ensureClaimsDoctrine();ensureObjectiveDisclosure();ensureEvidenceDrawerLink();tuneMethodLanguage();installViewScopedLayerOverrides();tuneLayerControl();normalizePublicLanguage(document);applyFreshness();}
+  function bind(){
+    document.addEventListener('click',e=>{const route=e.target.closest('[data-pr2-view]');if(route){window.showAtlasPanel?.(route.dataset.pr2View);return;}if(e.target.closest('.primary-nav,.secondary-nav,.analysis-nav,#timeline,#sources,#claims,#endgame,.isr-evidence-drawer,.layer-control'))[0,100,300].forEach(ms=>setTimeout(refresh,ms));},true);
+    window.addEventListener('atlasstatechange',()=>setTimeout(refresh,0));
+    ['atlasdataready','atlascurrentready20260824','atlascurrentready20260825','atlascurrentready20260825late','atlascurrentready20260826','atlaswikireconready20260826'].forEach(name=>window.addEventListener(name,()=>setTimeout(refresh,0)));
+  }
   function init(){refresh();bind();[80,220,600,1400,3000,6000].forEach(ms=>setTimeout(refresh,ms));window.ISRPublicRecordUIR2={refresh};}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 }());
