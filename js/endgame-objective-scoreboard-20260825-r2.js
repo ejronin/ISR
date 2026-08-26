@@ -57,6 +57,42 @@
     if(x.origin)card.append(E('div','eg25-origin',`Original benchmark · ${x.origin}`));
     card.append(E('p','',x.assessment));chips(card,x.source_ids);return card;
   }
+  function tally(items){
+    const all=items||[];
+    const adjudicable=all.filter(x=>x.score!=null);
+    const points=adjudicable.reduce((sum,x)=>sum+Math.max(0,Math.min(4,Number(x.score)||0)),0);
+    const available=adjudicable.length*4;
+    return {
+      documented:all.length,
+      adjudicable:adjudicable.length,
+      unresolved:all.length-adjudicable.length,
+      points,
+      available,
+      percent:available?((points/available)*100):null
+    };
+  }
+  function tallySide(label,items){
+    const t=tally(items),card=E('article','eg3-card eg25-tally-card');
+    card.append(E('h4','',label));
+    const grid=E('div','eg25-tally-metrics');
+    const metric=(value,name)=>{const m=E('div','eg25-tally-metric');m.append(E('strong','',value),E('span','',name));return m;};
+    grid.append(
+      metric(`${t.adjudicable} / ${t.documented}`,'objectives adjudicable'),
+      metric(`${t.points} / ${t.available}`,'points on adjudicable objectives'),
+      metric(t.percent==null?'—':`${t.percent.toFixed(1)}%`,'unweighted tally'),
+      metric(String(t.unresolved),'unresolved / excluded')
+    );
+    card.append(grid);
+    return card;
+  }
+  function tallySummary(){
+    const sec=E('section','eg25-tally-summary');sec.dataset.eg25ObjectiveTally='1';
+    const head=E('div','eg25-tally-head');head.append(E('h4','','Current objective tally'),E('p','eg3-muted','Only adjudicable objectives enter the point denominator. UNSCORED lanes are excluded rather than treated as zero.'));
+    sec.append(head);
+    const grid=E('div','eg25-tally-grid');grid.append(tallySide('United States',data.us_objectives),tallySide('Iran',data.iran_objectives));sec.append(grid);
+    sec.append(E('p','eg3-warning-text eg25-no-composite','Unweighted objective tally — not a strategic-weight victory index. Each scored objective contributes at most four points regardless of its strategic ambition, so use this as a compact status summary, not as a claim that every objective is equally important.'));
+    return sec;
+  }
   function side(title,dek,items){
     const box=E('div','eg25-objective-side');const h=E('div','eg25-objective-side-head');h.append(E('h4','',title),E('p','eg3-muted',dek));box.append(h);
     const grid=E('div','eg25-objective-grid');(items||[]).forEach(x=>grid.append(objectiveCard(x)));box.append(grid);return box;
@@ -74,6 +110,7 @@
     const s=E('section','eg3-section eg25-objective-board');s.dataset.eg25ObjectiveScoreboard='1';
     const head=E('div','eg3-section-head');head.append(E('h3','',data.title),E('p','',data.dek));s.append(head);
     if(corr?.method_note)s.append(E('p','eg3-warning-text eg25-no-composite',corr.method_note));
+    s.append(tallySummary());
     s.append(scaleLegend());
     s.append(side('United States · documented objectives','Official sources define the objective; independent and cross-source evidence grades the outcome. The score threshold matches the objective actually stated — degradation is not graded against eradication.',data.us_objectives));
     s.append(side('Iran · original victory conditions','Later, easier claims do not reset the benchmark. Each original condition stays visible and is graded against the current record. Restorative conditions are explicitly labeled so they are not mistaken for equivalent-weight strategic prizes.',data.iran_objectives));
@@ -92,7 +129,7 @@
     [data,live,corr]=await Promise.all([J(DATA),J(LIVE),J(CORR)]);applyCorrections();
     for(let i=0;i<100;i++){if($('#endgame .eg3-shell'))break;await sleep(60);}install();
     const root=$('#endgame');if(root){const mo=new MutationObserver(m=>{const oldAppeared=m.some(x=>[...x.addedNodes].some(n=>n.nodeType===1&&(n.matches?.('[data-eg25-us-objectives]')||n.matches?.('.eg3-shell')||n.querySelector?.('[data-eg25-us-objectives]'))));if(oldAppeared)setTimeout(install,80);});mo.observe(root,{childList:true,subtree:true});}
-    window.ISREndgameObjectiveScoreboardR2={refresh:install,data:()=>data,corrections:()=>corr};
+    window.ISREndgameObjectiveScoreboardR2={refresh:install,data:()=>data,corrections:()=>corr,tallies:()=>({us:tally(data?.us_objectives||[]),iran:tally(data?.iran_objectives||[])})};
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>init().catch(console.error),{once:true});else init().catch(console.error);
 }());
