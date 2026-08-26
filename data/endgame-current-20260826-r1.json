@@ -25,15 +25,39 @@
       "supports": "Al Jazeera reported that there is no clear public answer on how many mines remain or where they are; Iran has not officially disclosed the minefield. It also reported Gharibabadi's rejection of the U.S. clearance claim and his threat against U.S. mine-detection vessels.",
       "url": "https://www.aljazeera.com/news/2026/8/26/iran-oman-agree-on-temporary-hormuz-route-what-we-know",
       "quality": "SECONDARY SYNTHESIS; useful for unresolved mine-state context"
+    },
+    "S36": {
+      "id": "S36",
+      "publisher": "Al Jazeera",
+      "date": "2026-04-28",
+      "supports": "Iran had earlier published a map showing parts of the Strait that it said were mined and an alternative route for approved ships. The public map identified hazardous/mined geometry at area level rather than publishing a mine-by-mine coordinate ledger.",
+      "url": "https://www.aljazeera.com/features/2026/4/28/when-will-strait-of-hormuz-be-safe-for-commercial-shipping-again",
+      "quality": "SECONDARY REPORTING; strong for fact of public area-level map, not proof of exact mine coordinates"
+    },
+    "S37": {
+      "id": "S37",
+      "publisher": "Reuters",
+      "date": "2026-03-10",
+      "supports": "U.S. Central Command said the U.S. military eliminated 16 Iranian mine-laying vessels near Hormuz; Trump separately said 10 inactive mine-laying vessels had previously been destroyed, and the Pentagon said it was striking mine-laying vessels and mine-storage facilities.",
+      "url": "https://www.reuters.com/world/middle-east/us-energy-secretary-deletes-post-about-navy-escorting-vessel-through-strait-2026-03-10/",
+      "quality": "HIGH for FACT OF U.S./CENTCOM CLAIMS; does not establish total elimination of Iranian minelaying capability"
+    },
+    "S38": {
+      "id": "S38",
+      "publisher": "Chatham House",
+      "date": "2026-06-26",
+      "supports": "Chatham House assessed that Iran had not publicly confirmed exact mine numbers or precise locations; it distinguished Iran's previously declared hazardous area from suspected individual minefield locations and noted that Iranian participation could still provide information on mine placement, types and arming settings.",
+      "url": "https://www.chathamhouse.org/2026/06/why-demining-strait-hormuz-will-be-difficult-also-presents-opportunity",
+      "quality": "CREDIBLE ANALYTIC SECONDARY SOURCE; useful for distinguishing area-level disclosure from exact mine-location knowledge"
     }
   },
   "status_overrides": {
-    "Hormuz leverage": "STILL POWERFUL / MINE-CLEARANCE CLAIM CONTESTED / COMMERCIAL NORMALIZATION ABSENT"
+    "Hormuz leverage": "STILL POWERFUL / MINE-CLEARANCE CLAIM CONTESTED / INFORMATIONAL EXCLUSIVITY DEGRADED / COMMERCIAL NORMALIZATION ABSENT"
   },
   "hormuz_update": {
     "title": "Aug. 26 correction — the U.S. demining claim is openly contested",
-    "text": "Washington says U.S. forces removed or detonated the mines in the international waters of Hormuz. Deputy Foreign Minister Kazem Gharibabadi publicly rejected that account as propaganda, argued that only Iran knows the exact mine locations, and threatened U.S. minesweepers. The physical completeness of U.S. demining remains independently unresolved, and depressed commercial traffic means a claimed mine-clear lane is not equivalent to restored commercial normalization.",
-    "source_ids": ["S26", "S33", "S34", "S35"]
+    "text": "Washington says U.S. forces removed or detonated the mines in the international waters of Hormuz. Deputy Foreign Minister Kazem Gharibabadi publicly rejected that account as propaganda, argued that only Iran knows the exact mine locations, and threatened U.S. minesweepers. That exclusivity claim should be read against two earlier facts: Iran had already published an area-level map showing parts of the Strait it said were mined and an alternative approved route, and U.S. forces had previously attacked multiple Iranian mine-laying vessels and mine-storage facilities. Neither fact proves that Washington possesses a complete mine-by-mine coordinate and arming ledger, nor that Iran lost all ability to lay new mines. But they reduce the force of any claim that the coalition was wholly dependent on Iran for minefield knowledge or future clearance. The physical completeness of U.S. demining remains independently unresolved, and depressed commercial traffic means a claimed mine-clear lane is not equivalent to restored commercial normalization.",
+    "source_ids": ["S26", "S33", "S34", "S35", "S36", "S37", "S38"]
   },
   "node_evidence": [
     {
@@ -47,10 +71,10 @@
     {
       "node_id": "H12",
       "classification": "INFERENCE",
-      "claim": "The demining contest shows Washington trying to remove mine clearance from Iran's exclusive bargaining leverage while Tehran tries to preserve uncertainty and deterrence around the minefield.",
-      "source_ids": ["S26", "S33", "S34", "S35"],
+      "claim": "The demining contest shows Washington trying to remove mine clearance from Iran's exclusive bargaining leverage while Tehran tries to preserve uncertainty and deterrence around the minefield. Earlier Iranian area-level mine disclosure and U.S. attacks on mine-laying infrastructure mean Tehran's informational exclusivity was already degraded, though not eliminated.",
+      "source_ids": ["S26", "S33", "S34", "S35", "S36", "S37", "S38"],
       "confidence": "Medium-high",
-      "editorial_note": "This is an inference from competing public positions and observed bargaining behavior; it does not establish who physically controls every mine location."
+      "editorial_note": "Iran's public map did not amount to a mine-by-mine coordinate ledger, and destruction of multiple minelayers does not prove total elimination of Iranian laying capacity. The narrower inference is that U.S./coalition demining was not necessarily dependent on Iran possessing all useful minefield information."
     },
     {
       "node_id": "H14",
@@ -58,7 +82,15 @@
       "claim": "Gharibabadi says only Iran knows the precise mine locations and warns that U.S. minesweepers entering the area would be targets.",
       "source_ids": ["S33", "S34"],
       "confidence": "High for fact of statement",
-      "editorial_note": "Treat the claimed exclusive knowledge of mine locations as an Iranian assertion, not independently verified technical knowledge."
+      "editorial_note": "Treat the claimed exclusive knowledge of precise mine locations as an Iranian assertion. Earlier public disclosure covered broader hazardous/mined areas, not a verified exact mine ledger."
+    },
+    {
+      "node_id": "H16",
+      "classification": "HISTORICAL FACT + CONSTRAINT CONTEXT",
+      "claim": "Before the current demining dispute, Iran publicly identified mined/hazardous Strait geometry and an alternative approved route, while U.S. forces had already struck numerous Iranian mine-laying vessels and mine-storage facilities.",
+      "source_ids": ["S36", "S37", "S38"],
+      "confidence": "High for public map and U.S. strike claims; lower for the remaining fraction of Iranian minelaying capability",
+      "editorial_note": "This weakens claims of complete Iranian informational or operational exclusivity without proving exact U.S. knowledge of every mine or eliminating Iran's ability to re-mine the Strait."
     }
   ]
 }
