@@ -15,7 +15,8 @@
   const FLAG_PREFIX=/^[\u{1F1E6}-\u{1F1FF}]{2}\s/u;
   const ACTOR_ROOTS='#snapshot,#timeline,#facilities,#strikes,#csis,#imagery,#losses,#economy,#arctic,#diplomacy-hub,#endgame,#claims,#infowar,.atlas-popup,.isr-evidence-drawer';
   const ACTOR_ELEMENTS='h1,h2,h3,h4,strong,button,[data-actor],.actor,.actor-label,.isr-actor-chip,.isr-actor-strip span,.isr-actor-strip button';
-  const STATUS_ELEMENTS='.pill,.badge,.evidence-badge,.physical-badge,.isr-status,.iw-meta span,.status,.loss-status,.isr-loss-status,.component-state b,.component-state span';
+  /* Physical condition styling is intentionally restricted to explicit physical/loss surfaces. Evidence badges use their own vocabulary and classes. */
+  const STATUS_ELEMENTS='.physical-badge,.loss-status,.isr-loss-status,.component-state .physical-badge';
   const STATUS_CLASSES=['sir-condition-loss','sir-condition-damage','sir-condition-operational','sir-condition-unresolved'];
 
   function norm(v){return String(v||'').trim().replace(/\s+/g,' ').toLowerCase();}
@@ -75,15 +76,13 @@
 
   function ensureSourceLegend(){
     const intro=$('#sources .pr2-source-intro');if(!intro||$('.sir-source-star-key',intro))return;
-    const key=document.createElement('div');key.className='sir-source-star-key';key.textContent='★ Official government source / outlet';intro.appendChild(key);
+    const key=document.createElement('div');key.className='sir-source-star-key';key.textContent='★ Official government/state source · provenance only';intro.appendChild(key);
   }
 
   function refresh(){decorateActors();decorateStatuses();ensureSourceLegend();window.ISRSourceBiasR1?.apply?.();}
   function bind(){
     document.addEventListener('click',e=>{if(e.target.closest('.primary-nav,.secondary-nav,.analysis-nav,.panel,.isr-evidence-drawer,.leaflet-popup'))[0,80,220].forEach(ms=>setTimeout(refresh,ms));},true);
-    window.addEventListener('atlasstatechange',()=>setTimeout(refresh,0));
-    window.addEventListener('atlasdataready',()=>setTimeout(refresh,0));
-    window.addEventListener('atlascurrentready20260825late',()=>setTimeout(refresh,0));
+    ['atlasstatechange','atlasdataready','atlascurrentready20260825late','atlascurrentready20260826','atlaswikireconready20260826'].forEach(name=>window.addEventListener(name,()=>setTimeout(refresh,0)));
   }
   function init(){refresh();bind();[80,220,600,1400,3000].forEach(ms=>setTimeout(refresh,ms));window.ISRStatusIdentityR1={refresh,conditionFor,actorFlagFor,actorCodeFor};}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
