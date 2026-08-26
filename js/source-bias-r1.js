@@ -130,6 +130,7 @@
     secondaryRatings(parent,alts,'AD_FONTES');
   }
 
+  /* Negative-control contract: NOT RATED is never interpreted as CENTER. */
   function renderBias(parent,profile){
     parent.replaceChildren();
     const g=profile?.ground_news||{},alts=media_bias_context(profile);
