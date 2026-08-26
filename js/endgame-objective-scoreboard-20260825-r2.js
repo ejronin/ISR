@@ -2,21 +2,39 @@
 (function EndgameObjectiveScoreboard20260825R2(){
   const DATA='./data/endgame-us-objectives-20260825-r1.json?v=20260825-r2';
   const LIVE='./data/endgame-current-20260825-r2.json?v=20260825-r4';
+  const CORR='./data/endgame-objective-score-corrections-20260825-r3.json?v=20260825-r3';
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const E=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n;};
   const safe=u=>{try{const x=new URL(u,location.href);return /^https?:$/.test(x.protocol)?x.href:null}catch{return null;}};
   const J=async u=>{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error(`${u}: ${r.status}`);return r.json();};
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  let data=null,live=null;
+  let data=null,live=null,corr=null;
 
-  function source(id){return data?.sources?.[id]||live?.sources?.[id]||window.ISREndgamePublicViewR1?.model?.()?.sources?.[id]||null;}
+  function applyCorrections(){
+    (corr?.us_overrides||[]).forEach(o=>{
+      const x=(data?.us_objectives||[]).find(v=>v.objective===o.match);
+      if(!x)return;
+      if(o.objective)x.objective=o.objective;
+      x.score=o.score;
+      if(o.status)x.status=o.status;
+      if(o.assessment)x.assessment=o.assessment;
+      if(o.source_ids)x.source_ids=o.source_ids;
+    });
+  }
+  function source(id){return corr?.sources?.[id]||data?.sources?.[id]||live?.sources?.[id]||window.ISREndgamePublicViewR1?.model?.()?.sources?.[id]||null;}
   function chips(parent,ids){
     const box=E('div','eg3-sources');let count=0;
     (ids||[]).forEach(id=>{const s=source(id),u=safe(s?.url);if(!s||!u)return;const a=E('a','eg3-source-chip',`${id} · ${s.publisher||s.outlet||'source'}`);a.href=u;a.target='_blank';a.rel='noopener noreferrer';a.title=`${s.date||''} · ${s.quality||''} · ${s.supports||s.note||''}`;box.append(a);count++;});
     if(count)parent.append(box);
   }
   function meter(score){
-    const wrap=E('div','eg25-score-wrap');const m=E('span','eg25-meter');const v=Math.max(0,Math.min(4,Number(score)||0));
+    const wrap=E('div','eg25-score-wrap');
+    if(score==null){
+      const m=E('span','eg25-meter eg25-meter-unscored');m.setAttribute('role','img');m.setAttribute('aria-label','Unscored: current evidence does not establish an adjudicable outcome');
+      for(let i=1;i<=4;i++)m.append(E('i',''));
+      wrap.append(m,E('span','eg25-score','UNSCORED'));return wrap;
+    }
+    const m=E('span','eg25-meter');const v=Math.max(0,Math.min(4,Number(score)||0));
     m.setAttribute('role','img');m.setAttribute('aria-label',`${v} of 4 on the Atlas objective-outcome evidence scale`);
     for(let i=1;i<=4;i++)m.append(E('i',i<=v?'on':''));
     wrap.append(m,E('span','eg25-score',`${v} / 4`));return wrap;
@@ -33,7 +51,9 @@
     const grid=E('div','eg25-objective-grid');(items||[]).forEach(x=>grid.append(objectiveCard(x)));box.append(grid);return box;
   }
   function scaleLegend(){
-    const wrap=E('div','eg25-scale');(data.scale||[]).forEach(x=>{const c=E('div','eg25-scale-item');c.append(E('strong','',`${x.score}/4 · ${x.label}`),E('span','',x.meaning));wrap.append(c);});return wrap;
+    const wrap=E('div','eg25-scale');
+    const u=E('div','eg25-scale-item');u.append(E('strong','','UNSCORED'),E('span','','Current evidence does not yet create an adjudicable end state. Do not convert absence of a score into 0/4.'));wrap.append(u);
+    (data.scale||[]).forEach(x=>{const c=E('div','eg25-scale-item');c.append(E('strong','',`${x.score}/4 · ${x.label}`),E('span','',x.meaning));wrap.append(c);});return wrap;
   }
   function walkbacks(){
     const sec=E('article','eg3-card eg25-walkbacks');sec.append(E('h4','','Iran objective walk-backs · original benchmark stays on the board'));
@@ -41,8 +61,10 @@
   }
   function build(){
     const s=E('section','eg3-section eg25-objective-board');s.dataset.eg25ObjectiveScoreboard='1';
-    const head=E('div','eg3-section-head');head.append(E('h3','',data.title),E('p','',data.dek));s.append(head,scaleLegend());
-    s.append(side('United States · documented objectives','Official sources define the objective; independent and cross-source evidence grades the outcome.',data.us_objectives));
+    const head=E('div','eg3-section-head');head.append(E('h3','',data.title),E('p','',data.dek));s.append(head);
+    if(corr?.method_note)s.append(E('p','eg3-warning-text eg25-no-composite',corr.method_note));
+    s.append(scaleLegend());
+    s.append(side('United States · documented objectives','Official sources define the objective; independent and cross-source evidence grades the outcome. The score threshold matches the objective actually stated — degradation is not graded against eradication.',data.us_objectives));
     s.append(side('Iran · original victory conditions','Later, easier claims do not reset the benchmark. Each original condition stays visible and is graded against the current record.',data.iran_objectives));
     s.append(walkbacks());
     const not=E('article','eg3-card');not.append(E('h4','','What was not a required U.S. victory condition'));const ul=E('ul','eg25-us-not-list');(data.not_documented_as_required_us_victory_conditions||[]).forEach(x=>ul.append(E('li','',x)));not.append(ul);chips(not,['US1','US2','US3']);s.append(not);
@@ -50,16 +72,16 @@
     s.append(E('p','eg3-warning-text eg25-no-composite',data.precision_note));return s;
   }
   function install(){
-    const shell=$('#endgame .eg3-shell');if(!shell||!data||!live)return false;
+    const shell=$('#endgame .eg3-shell');if(!shell||!data||!live||!corr)return false;
     $('[data-eg25-us-objectives]',shell)?.remove();$('[data-eg25-objective-scoreboard]',shell)?.remove();
     const overview=$('[data-eg25-endgame-overview]',shell),tabs=$('.eg3-subnav',shell),board=build();
     if(overview&&overview.nextSibling)shell.insertBefore(board,overview.nextSibling);else if(tabs)shell.insertBefore(board,tabs);else shell.prepend(board);return true;
   }
   async function init(){
-    [data,live]=await Promise.all([J(DATA),J(LIVE)]);
+    [data,live,corr]=await Promise.all([J(DATA),J(LIVE),J(CORR)]);applyCorrections();
     for(let i=0;i<100;i++){if($('#endgame .eg3-shell'))break;await sleep(60);}install();
     const root=$('#endgame');if(root){const mo=new MutationObserver(m=>{const oldAppeared=m.some(x=>[...x.addedNodes].some(n=>n.nodeType===1&&(n.matches?.('[data-eg25-us-objectives]')||n.matches?.('.eg3-shell')||n.querySelector?.('[data-eg25-us-objectives]'))));if(oldAppeared)setTimeout(install,80);});mo.observe(root,{childList:true,subtree:true});}
-    window.ISREndgameObjectiveScoreboardR2={refresh:install,data:()=>data};
+    window.ISREndgameObjectiveScoreboardR2={refresh:install,data:()=>data,corrections:()=>corr};
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>init().catch(console.error),{once:true});else init().catch(console.error);
 }());
