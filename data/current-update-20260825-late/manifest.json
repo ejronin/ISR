@@ -1,0 +1,26 @@
+{
+  "package_name": "ISR-AUG25-LATE-CURRENT-OVERLAY-20260825",
+  "schema_version": "1.0",
+  "created_at": "2026-08-25T21:32:55-04:00",
+  "collection_cutoff": "2026-08-25T21:32:55-04:00",
+  "layer": "APPEND_ONLY_CURRENT_OVERLAY",
+  "depends_on": {
+    "package": "ISR-AUG25-CURRENT-OVERLAY-20260825",
+    "current_chronology_records": 116,
+    "cutoff": "2026-08-25T21:14:00-04:00"
+  },
+  "counts": {
+    "overlay_events": 1,
+    "overlay_timeline_records": 1,
+    "overlay_sources": 1,
+    "current_chronology_records": 117
+  },
+  "equation": "116 + 1 = 117",
+  "rules": [
+    "Do not rewrite integration-v1.2 historical JSON or prior current overlays.",
+    "Use event occurrence time for turn attribution when known; do not substitute publication time.",
+    "Source-specific ship-tracking counts are not silently converted into exact total physical traffic.",
+    "A diplomatic framework is not proof that commercial navigation has normalized.",
+    "Unknown is not zero."
+  ]
+}
