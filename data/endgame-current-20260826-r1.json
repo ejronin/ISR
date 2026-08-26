@@ -49,15 +49,31 @@
       "supports": "Chatham House assessed that Iran had not publicly confirmed exact mine numbers or precise locations; it distinguished Iran's previously declared hazardous area from suspected individual minefield locations and noted that Iranian participation could still provide information on mine placement, types and arming settings.",
       "url": "https://www.chathamhouse.org/2026/06/why-demining-strait-hormuz-will-be-difficult-also-presents-opportunity",
       "quality": "CREDIBLE ANALYTIC SECONDARY SOURCE; useful for distinguishing area-level disclosure from exact mine-location knowledge"
+    },
+    "S39": {
+      "id": "S39",
+      "publisher": "U.S. Central Command",
+      "date": "2026-04-11",
+      "supports": "CENTCOM said USS Frank E. Petersen (DDG-121) and USS Michael Murphy (DDG-112) transited the Strait of Hormuz and operated in the Arabian Gulf as U.S. forces began setting conditions for mine clearance and establishing a new safe passage.",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4457220/us-forces-start-mine-clearance-mission-in-strait-of-hormuz/",
+      "quality": "PRIMARY U.S. MILITARY SOURCE; high for fact of announced destroyer transit/mission, not independent proof that every mine threat was absent along the route"
+    },
+    "S40": {
+      "id": "S40",
+      "publisher": "USNI News / Critical Threats",
+      "date": "2026-04-11",
+      "supports": "Contemporaneous reporting paired the April 11 DDG transit with Iran's April 9 government-approved traffic chart. Critical Threats assessed that the destroyer transit was intended to demonstrate that the normal Traffic Separation Scheme was safe and viable despite Iran's declared hazardous area and mine threat.",
+      "url": "https://news.usni.org/2026/04/11/two-u-s-warships-sail-through-strait-of-hormuz-to-establish-new-route-for-merchant-ships",
+      "quality": "CREDIBLE SECONDARY REPORTING / ANALYTIC ASSESSMENT; stronger for chronology and declared purpose than for exact ship track inside every portion of the Iranian hazard polygon"
     }
   },
   "status_overrides": {
-    "Hormuz leverage": "STILL POWERFUL / MINE-CLEARANCE CLAIM CONTESTED / INFORMATIONAL EXCLUSIVITY DEGRADED / COMMERCIAL NORMALIZATION ABSENT"
+    "Hormuz leverage": "STILL POWERFUL / MINE-CLEARANCE CLAIM CONTESTED / INFORMATIONAL EXCLUSIVITY DEGRADED / U.S. LANE-TESTING DEMONSTRATED / COMMERCIAL NORMALIZATION ABSENT"
   },
   "hormuz_update": {
     "title": "Aug. 26 correction — the U.S. demining claim is openly contested",
-    "text": "Washington says U.S. forces removed or detonated the mines in the international waters of Hormuz. Deputy Foreign Minister Kazem Gharibabadi publicly rejected that account as propaganda, argued that only Iran knows the exact mine locations, and threatened U.S. minesweepers. That exclusivity claim should be read against two earlier facts: Iran had already published an area-level map showing parts of the Strait it said were mined and an alternative approved route, and U.S. forces had previously attacked multiple Iranian mine-laying vessels and mine-storage facilities. Neither fact proves that Washington possesses a complete mine-by-mine coordinate and arming ledger, nor that Iran lost all ability to lay new mines. But they reduce the force of any claim that the coalition was wholly dependent on Iran for minefield knowledge or future clearance. The physical completeness of U.S. demining remains independently unresolved, and depressed commercial traffic means a claimed mine-clear lane is not equivalent to restored commercial normalization.",
-    "source_ids": ["S26", "S33", "S34", "S35", "S36", "S37", "S38"]
+    "text": "Washington says U.S. forces removed or detonated the mines in the international waters of Hormuz. Deputy Foreign Minister Kazem Gharibabadi publicly rejected that account as propaganda, argued that only Iran knows the exact mine locations, and threatened U.S. minesweepers. That exclusivity claim should be read against earlier public evidence: Iran had already published an area-level map showing mined/hazardous Strait geometry and an alternative approved route; U.S. forces had attacked multiple Iranian mine-laying vessels and mine-storage facilities; and two U.S. guided-missile destroyers publicly transited the Strait on April 11 as part of the mine-clearance/new-passage mission after Iran's April 9 chart was published. Contemporary analysis treated that destroyer transit as an effort to demonstrate that the normal Traffic Separation Scheme remained viable despite Iran's declared mine threat. The current public-source review located no Iranian retraction or correction of the April 9 hazard chart, but absence of a located retraction is not proof that none existed. None of this proves Washington possesses a complete mine-by-mine coordinate and arming ledger, nor that Iran lost all ability to lay new mines. It does, however, materially weaken the claim that the coalition was wholly dependent on Iran for useful minefield knowledge or practical lane testing. The physical completeness of U.S. demining remains independently unresolved, and depressed commercial traffic means a claimed mine-clear lane is not equivalent to restored commercial normalization.",
+    "source_ids": ["S26", "S33", "S34", "S35", "S36", "S37", "S38", "S39", "S40"]
   },
   "node_evidence": [
     {
@@ -71,10 +87,10 @@
     {
       "node_id": "H12",
       "classification": "INFERENCE",
-      "claim": "The demining contest shows Washington trying to remove mine clearance from Iran's exclusive bargaining leverage while Tehran tries to preserve uncertainty and deterrence around the minefield. Earlier Iranian area-level mine disclosure and U.S. attacks on mine-laying infrastructure mean Tehran's informational exclusivity was already degraded, though not eliminated.",
-      "source_ids": ["S26", "S33", "S34", "S35", "S36", "S37", "S38"],
+      "claim": "Washington is trying to remove mine clearance from Iran's exclusive bargaining leverage while Tehran tries to preserve uncertainty and deterrence around the minefield. Earlier Iranian area-level mine disclosure, U.S. attacks on mine-laying infrastructure, and the April 11 DDG transit after publication of Iran's hazard chart mean Tehran's informational and practical exclusivity was already degraded, though not eliminated.",
+      "source_ids": ["S26", "S33", "S34", "S35", "S36", "S37", "S38", "S39", "S40"],
       "confidence": "Medium-high",
-      "editorial_note": "Iran's public map did not amount to a mine-by-mine coordinate ledger, and destruction of multiple minelayers does not prove total elimination of Iranian laying capacity. The narrower inference is that U.S./coalition demining was not necessarily dependent on Iran possessing all useful minefield information."
+      "editorial_note": "Iran's public map did not amount to a mine-by-mine coordinate ledger, and destruction of multiple minelayers does not prove total elimination of Iranian laying capacity. Public reporting confirms DDG transit through the Strait and the mission purpose; exact overlap with every part of the Iranian hazard polygon should not be overstated."
     },
     {
       "node_id": "H14",
@@ -87,10 +103,10 @@
     {
       "node_id": "H16",
       "classification": "HISTORICAL FACT + CONSTRAINT CONTEXT",
-      "claim": "Before the current demining dispute, Iran publicly identified mined/hazardous Strait geometry and an alternative approved route, while U.S. forces had already struck numerous Iranian mine-laying vessels and mine-storage facilities.",
-      "source_ids": ["S36", "S37", "S38"],
-      "confidence": "High for public map and U.S. strike claims; lower for the remaining fraction of Iranian minelaying capability",
-      "editorial_note": "This weakens claims of complete Iranian informational or operational exclusivity without proving exact U.S. knowledge of every mine or eliminating Iran's ability to re-mine the Strait."
+      "claim": "Before the current demining dispute, Iran publicly identified mined/hazardous Strait geometry and an alternative approved route; U.S. forces had struck numerous Iranian mine-laying vessels and mine-storage facilities; and DDG-121 and DDG-112 then transited the Strait on April 11 as part of the U.S. mine-clearance/new-passage mission.",
+      "source_ids": ["S36", "S37", "S38", "S39", "S40"],
+      "confidence": "High for the public map, U.S. strike claims, and announced DDG transit; lower for the remaining fraction of Iranian minelaying capability and exact destroyer track relative to every portion of the declared hazard area",
+      "editorial_note": "No Iranian retraction/correction of the April 9 hazard chart was located in the Aug. 26 public-source review. Treat that as a search result, not proof of universal absence. This context weakens claims of complete Iranian informational or operational exclusivity without proving exact U.S. knowledge of every mine or eliminating Iran's ability to re-mine the Strait."
     }
   ]
 }
