@@ -1,0 +1,72 @@
+{
+  "version": "2026.08.26-r1",
+  "evidence_cutoff": "2026-08-26 09:15 ET",
+  "sources": {
+    "S33": {
+      "id": "S33",
+      "publisher": "Press TV",
+      "date": "2026-08-26",
+      "supports": "Iranian Deputy Foreign Minister Kazem Gharibabadi publicly rejected the U.S. claim that mines in the Strait of Hormuz had been cleared, calling it a propaganda hoax/deception; he argued that only Iran knows the exact mine locations and said U.S. minesweepers entering the area would be targets.",
+      "url": "https://599046384.r.worldcdn.net/Detail/2026/08/26/775082/Press-TV-s-news-headlines-",
+      "quality": "IRANIAN STATE MEDIA / ACTOR CLAIM; strong for fact of Iran's rebuttal, not for physical mine-state verification"
+    },
+    "S34": {
+      "id": "S34",
+      "publisher": "AFP via Arab News",
+      "date": "2026-08-26",
+      "supports": "AFP independently reported that Gharibabadi called the U.S. mine-clearance claim 'propaganda deception' and warned that Iran would target U.S. minesweepers entering the area.",
+      "url": "https://www.arabnews.com/node/2655870/middle-east",
+      "quality": "HIGH for FACT OF IRANIAN PUBLIC REBUTTAL / THREAT; does not independently verify the physical mine state"
+    },
+    "S35": {
+      "id": "S35",
+      "publisher": "Al Jazeera",
+      "date": "2026-08-26",
+      "supports": "Al Jazeera reported that there is no clear public answer on how many mines remain or where they are; Iran has not officially disclosed the minefield. It also reported Gharibabadi's rejection of the U.S. clearance claim and his threat against U.S. mine-detection vessels.",
+      "url": "https://www.aljazeera.com/news/2026/8/26/iran-oman-agree-on-temporary-hormuz-route-what-we-know",
+      "quality": "SECONDARY SYNTHESIS; useful for unresolved mine-state context"
+    }
+  },
+  "status_overrides": {
+    "Hormuz leverage": "STILL POWERFUL / MINE-CLEARANCE CLAIM CONTESTED / COMMERCIAL NORMALIZATION ABSENT"
+  },
+  "hormuz_update": {
+    "title": "Aug. 26 correction — the U.S. demining claim is openly contested",
+    "text": "Washington says U.S. forces removed or detonated the mines in the international waters of Hormuz. Tehran did not remain silent: Deputy Foreign Minister Kazem Gharibabadi publicly rejected that account as propaganda, argued that only Iran knows the exact mine locations, and threatened U.S. minesweepers. The earlier silence-based inference — that Iran either did not know the clearance occurred or could not stop it and therefore avoided comment — is therefore falsified by the subsequent public record. The physical completeness of U.S. demining remains independently unresolved, and depressed commercial traffic means a claimed mine-clear lane is not equivalent to restored commercial normalization.",
+    "source_ids": ["S26", "S33", "S34", "S35"]
+  },
+  "node_evidence": [
+    {
+      "node_id": "H11",
+      "classification": "CONTESTED ACTOR CLAIMS",
+      "claim": "Washington says U.S. forces cleared mines from the international waters of Hormuz; Iran publicly rejects that account as propaganda.",
+      "source_ids": ["S26", "S33", "S34"],
+      "confidence": "High that both governments made the claims; independent completeness verification remains unresolved",
+      "editorial_note": "Do not convert either Washington's clearance claim or Tehran's continued-mine-control claim into independently established physical fact. Iran did not remain silent; the Aug. 26 rebuttal supersedes that inference."
+    },
+    {
+      "node_id": "H12",
+      "classification": "INFERENCE",
+      "claim": "The demining contest shows Washington trying to remove mine clearance from Iran's exclusive bargaining leverage while Tehran tries to preserve uncertainty and deterrence around the minefield.",
+      "source_ids": ["S26", "S33", "S34", "S35"],
+      "confidence": "Medium-high",
+      "editorial_note": "This is an inference from competing public positions and observed bargaining behavior; it does not establish who physically controls every mine location."
+    },
+    {
+      "node_id": "H14",
+      "classification": "IRANIAN ACTOR CLAIM + THREAT",
+      "claim": "Gharibabadi says only Iran knows the precise mine locations and warns that U.S. minesweepers entering the area would be targets.",
+      "source_ids": ["S33", "S34"],
+      "confidence": "High for fact of statement",
+      "editorial_note": "Treat the claimed exclusive knowledge of mine locations as an Iranian assertion, not independently verified technical knowledge."
+    },
+    {
+      "node_id": "H15",
+      "classification": "SYNTHESIS / FALSIFIER",
+      "claim": "Iran's public rebuttal falsifies the silence-based branch that Tehran said nothing because it did not know U.S. clearance occurred or could not stop it and wished to avoid embarrassment.",
+      "source_ids": ["S33", "S34"],
+      "confidence": "High",
+      "editorial_note": "Retain the earlier branch only as a timestamped hypothesis that was later falsified; do not carry it forward as a live explanation."
+    }
+  ]
+}
