@@ -2,7 +2,7 @@
 (function EndgameObjectiveScoreboard20260825R2(){
   const DATA='./data/endgame-us-objectives-20260825-r1.json?v=20260825-r2';
   const LIVE='./data/endgame-current-20260825-r2.json?v=20260825-r4';
-  const CORR='./data/endgame-objective-score-corrections-20260825-r3.json?v=20260825-r3';
+  const CORR='./data/endgame-objective-score-corrections-20260825-r4.json?v=20260825-r4';
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const E=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n;};
   const safe=u=>{try{const x=new URL(u,location.href);return /^https?:$/.test(x.protocol)?x.href:null}catch{return null;}};
@@ -18,6 +18,17 @@
       x.score=o.score;
       if(o.status)x.status=o.status;
       if(o.assessment)x.assessment=o.assessment;
+      if(o.origin)x.origin=o.origin;
+      if(o.source_ids)x.source_ids=o.source_ids;
+    });
+    (corr?.iran_overrides||[]).forEach(o=>{
+      const x=(data?.iran_objectives||[]).find(v=>v.objective===o.match);
+      if(!x)return;
+      if(o.objective)x.objective=o.objective;
+      x.score=o.score;
+      if(o.status)x.status=o.status;
+      if(o.assessment)x.assessment=o.assessment;
+      if(o.origin)x.origin=o.origin;
       if(o.source_ids)x.source_ids=o.source_ids;
     });
   }
@@ -65,7 +76,7 @@
     if(corr?.method_note)s.append(E('p','eg3-warning-text eg25-no-composite',corr.method_note));
     s.append(scaleLegend());
     s.append(side('United States · documented objectives','Official sources define the objective; independent and cross-source evidence grades the outcome. The score threshold matches the objective actually stated — degradation is not graded against eradication.',data.us_objectives));
-    s.append(side('Iran · original victory conditions','Later, easier claims do not reset the benchmark. Each original condition stays visible and is graded against the current record.',data.iran_objectives));
+    s.append(side('Iran · original victory conditions','Later, easier claims do not reset the benchmark. Each original condition stays visible and is graded against the current record. Restorative conditions are explicitly labeled so they are not mistaken for equivalent-weight strategic prizes.',data.iran_objectives));
     s.append(walkbacks());
     const not=E('article','eg3-card');not.append(E('h4','','What was not a required U.S. victory condition'));const ul=E('ul','eg25-us-not-list');(data.not_documented_as_required_us_victory_conditions||[]).forEach(x=>ul.append(E('li','',x)));not.append(ul);chips(not,['US1','US2','US3']);s.append(not);
     const sem=E('article','eg3-card eg3-finding');sem.append(E('h4','',data.semantic_test.title),E('p','',data.semantic_test.text));chips(sem,data.semantic_test.source_ids);s.append(sem);
