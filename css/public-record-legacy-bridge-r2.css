@@ -1,4 +1,5 @@
-/* Public-record bridge for retained specialist workspace/map engines. Presentation only. */
+/* Public-record bridge for retained specialist workspace/map engines. Presentation only.
+   Release-finalized after the public IA/state migration; no map or evidence semantics are changed here. */
 .public-record-r2 .isr-workspace-nav{display:none!important}
 .public-record-r2 .analysis-nav[hidden]{display:block!important}
 .public-record-r2 #app.isr-atlas-map-only>.side>.analysis-nav{display:block!important;visibility:visible!important}
