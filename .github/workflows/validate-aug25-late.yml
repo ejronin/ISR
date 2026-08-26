@@ -1,0 +1,27 @@
+name: Validate late Aug. 25 Atlas update
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-aug25-late:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Validate late overlay and China oil shift map
+        run: |
+          python scripts/validate_aug25_late.py
+          node --check js/current-update-20260825.js
+          node --check js/current-update-20260825-late.js
+          node --check js/china-oil-sourcing-shift-r1.js
