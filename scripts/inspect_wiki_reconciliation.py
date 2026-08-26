@@ -15,45 +15,48 @@ for key in ("sources", "events", "timeline", "strikes", "material_losses"):
     value = payload.get(key)
     print("COUNT", key, len(value) if isinstance(value, list) else f"TYPE={type(value).__name__}")
 
-coverage = payload.get("coverage_audit")
+coverage = payload.get("coverage_audit") or {}
 print("COVERAGE_TYPE", type(coverage).__name__)
+accepted = []
+rejected = []
 if isinstance(coverage, dict):
     print("COVERAGE_KEYS", sorted(coverage.keys()))
-    rows = None
-    for key in ("candidates", "records", "rows", "items", "entries"):
-        if isinstance(coverage.get(key), list):
-            rows = coverage[key]
-            print("COVERAGE_ROWS_KEY", key)
-            break
-    if rows is None and all(isinstance(v, dict) for v in coverage.values()):
-        rows = list(coverage.values())
+    accepted = coverage.get("accepted_or_corrected") or []
+    rejected = coverage.get("deduped_rejected_or_unresolved") or []
+    if not isinstance(accepted, list):
+        accepted = []
+    if not isinstance(rejected, list):
+        rejected = []
 elif isinstance(coverage, list):
-    rows = coverage
-else:
-    rows = []
+    accepted = coverage
 
+rows = accepted + rejected
+print("COVERAGE_ACCEPTED", len(accepted))
+print("COVERAGE_REJECTED_OR_UNRESOLVED", len(rejected))
 print("COVERAGE_ROWS", len(rows))
-if rows:
-    all_keys = sorted(set().union(*(row.keys() for row in rows if isinstance(row, dict))))
-    print("COVERAGE_ROW_KEYS", all_keys)
-    for field in ("status", "disposition", "decision", "result", "evidence_status", "candidate_type", "category", "source_list"):
-        vals = [str(r.get(field)) for r in rows if isinstance(r, dict) and r.get(field) not in (None, "")]
+for label, subset in (("ACCEPTED", accepted), ("REJECTED", rejected), ("ALL", rows)):
+    if not subset:
+        continue
+    all_keys = sorted(set().union(*(row.keys() for row in subset if isinstance(row, dict))))
+    print(f"{label}_ROW_KEYS", all_keys)
+    for field in ("status", "disposition", "decision", "result", "evidence_status", "candidate_type", "category", "source_list", "reason", "rejection_reason", "notes"):
+        vals = [str(r.get(field)) for r in subset if isinstance(r, dict) and r.get(field) not in (None, "")]
         if vals:
-            print("COVERAGE_FIELD", field, Counter(vals).most_common())
-    print("COVERAGE_SAMPLE_FIRST", json.dumps(rows[:3], ensure_ascii=False, sort_keys=True))
-    print("COVERAGE_SAMPLE_LAST", json.dumps(rows[-3:], ensure_ascii=False, sort_keys=True))
+            print(f"{label}_FIELD", field, Counter(vals).most_common())
+    print(f"{label}_SAMPLE_FIRST", json.dumps(subset[:3], ensure_ascii=False, sort_keys=True))
+    print(f"{label}_SAMPLE_LAST", json.dumps(subset[-3:], ensure_ascii=False, sort_keys=True))
 
 losses = payload.get("material_losses") or []
 if losses:
     loss_keys = sorted(set().union(*(row.keys() for row in losses if isinstance(row, dict))))
     print("LOSS_KEYS", loss_keys)
-    for field in ("asset_category", "asset_type", "category", "type", "service", "actor", "country", "disposition", "damage_level", "status"):
+    for field in ("asset_category", "asset_type", "category", "type", "service", "actor", "country", "country_organization", "disposition", "damage_level", "status", "evidence_status"):
         vals = [str(r.get(field)) for r in losses if isinstance(r, dict) and r.get(field) not in (None, "")]
         if vals:
             print("LOSS_FIELD", field, Counter(vals).most_common())
-    shipish = [r for r in losses if any(term in json.dumps(r, ensure_ascii=False).lower() for term in ("ship", "vessel", "tanker", "cargo", "frigate", "submarine", "carrier", "destroyer", "boat"))]
+    shipish = [r for r in losses if any(term in json.dumps(r, ensure_ascii=False).lower() for term in ("ship", "vessel", "tanker", "cargo", "frigate", "submarine", "carrier", "destroyer", "boat", "merchant"))]
     print("SHIPISH_LOSSES", len(shipish))
-    print("SHIPISH_IDS", [r.get("loss_id") or r.get("id") or r.get("name") for r in shipish])
+    print("SHIPISH_ROWS", json.dumps(shipish, ensure_ascii=False, sort_keys=True))
 
 sources = payload.get("sources") or []
 wiki_urls = [s.get("url") for s in sources if "wiki" in str(s.get("url", "")).lower()]
