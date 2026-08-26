@@ -7,9 +7,11 @@ const root = path.resolve(__dirname, '..');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'data', 'endgame-so-far.json'), 'utf8'));
 const scoreData = JSON.parse(fs.readFileSync(path.join(root, 'data', 'endgame-us-objectives-20260825-r1.json'), 'utf8'));
 const scoreCorr = JSON.parse(fs.readFileSync(path.join(root, 'data', 'endgame-objective-score-corrections-20260825-r4.json'), 'utf8'));
+const hormuzAug26 = JSON.parse(fs.readFileSync(path.join(root, 'data', 'endgame-current-20260826-r1.json'), 'utf8'));
 const state = fs.readFileSync(path.join(root, 'js', 'state.js'), 'utf8');
 const nav = fs.readFileSync(path.join(root, 'js', 'navigation.js'), 'utf8');
 const view = fs.readFileSync(path.join(root, 'js', 'endgame-20260823.js'), 'utf8');
+const currentView = fs.readFileSync(path.join(root, 'js', 'endgame-current-20260825-r2.js'), 'utf8');
 const scoreboard = fs.readFileSync(path.join(root, 'js', 'endgame-objective-scoreboard-20260825-r2.js'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'css', 'endgame-20260823.css'), 'utf8');
 const scoreboardCss = fs.readFileSync(path.join(root, 'css', 'endgame-objective-scoreboard-20260825-r2.css'), 'utf8');
@@ -38,6 +40,21 @@ assert.ok(iranRedline);
 assert.equal(iranRedline.score, null);
 assert.match(iranRedline.status, /UNSCORED \/ FINAL BARGAIN UNRESOLVED/i);
 assert.match(iranRedline.assessment, /No nuclear concession yet is not evidence/i);
+
+const h11 = hormuzAug26.node_evidence.find(x => x.node_id === 'H11');
+const h15 = hormuzAug26.node_evidence.find(x => x.node_id === 'H15');
+assert.ok(h11);
+assert.match(h11.classification, /CONTESTED ACTOR CLAIMS/i);
+assert.match(h11.claim, /Washington says.*cleared mines.*Iran publicly rejects/i);
+assert.match(h11.editorial_note, /Iran did not remain silent/i);
+assert.ok(h15);
+assert.match(h15.classification, /FALSIFIER/i);
+assert.match(h15.claim, /falsifies the silence-based branch/i);
+assert.match(hormuzAug26.hormuz_update.text, /physical completeness.*independently unresolved/i);
+assert.match(hormuzAug26.status_overrides['Hormuz leverage'], /MINE-CLEARANCE CLAIM CONTESTED/i);
+assert.match(currentView, /endgame-current-20260826-r1\.json/);
+assert.match(currentView, /CONTESTED CLAIMS · AUG\. 26/);
+assert.match(currentView, /mergeSupplement/);
 
 function applyOverrides(items, overrides){
   return items.map(item => {
@@ -87,4 +104,4 @@ assert.match(scoreboardCss, /eg25-tally-summary/);
 assert.match(scoreboardCss, /eg25-tally-metrics/);
 assert.match(css, /#endgame/);
 
-console.log('endgame-page: Atlas view, dynamic objective tally, cutoff behavior, victory-condition ledger, Iran scoring caveats and evidence trail passed');
+console.log('endgame-page: Atlas view, dynamic objective tally, Hormuz demining claim correction, cutoff behavior, victory-condition ledger, Iran scoring caveats and evidence trail passed');
