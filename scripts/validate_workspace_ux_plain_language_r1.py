@@ -3,6 +3,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 js = (root / 'js' / 'public-record-ui-r2.js').read_text(encoding='utf-8')
 css = (root / 'css' / 'public-record-ui-r2.css').read_text(encoding='utf-8')
+bridge = (root / 'css' / 'public-record-legacy-bridge-r2.css').read_text(encoding='utf-8')
 loader = (root / 'js' / 'navigation.js').read_text(encoding='utf-8')
 endgame_loader = (root / 'js' / 'endgame-20260823.js').read_text(encoding='utf-8')
 state = (root / 'js' / 'state.js').read_text(encoding='utf-8')
@@ -14,6 +15,7 @@ required_js = [
     'Copy record link',
     'NOT INDEPENDENTLY VERIFIED',
     'How the objective score is calculated',
+    'public-record-legacy-bridge-r2.css',
 ]
 for marker in required_js:
     assert marker in js, f'missing public-record UX marker: {marker}'
@@ -38,6 +40,12 @@ for marker in [
     '--pr-unresolved:',
 ]:
     assert marker in css, f'missing public-record CSS marker: {marker}'
+
+for marker in [
+    '.analysis-nav[hidden]{display:block!important}',
+    '#app.isr-atlas-map-only>.side>.analysis-nav{display:block!important',
+]:
+    assert marker in bridge, f'missing retained-layout bridge marker: {marker}'
 
 for marker in [
     "losses: 'consequences'",
