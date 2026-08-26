@@ -18,7 +18,19 @@ def fail(message: str) -> None:
 
 
 def sid(ref):
-    return ref if isinstance(ref, str) else ref.get("source_id")
+    value = ref
+    seen = set()
+    while isinstance(value, dict):
+        marker = id(value)
+        if marker in seen:
+            return None
+        seen.add(marker)
+        value = value.get("source_id") or value.get("id")
+    return value if isinstance(value, str) and value else None
+
+
+def sids(values):
+    return [value for value in (sid(ref) for ref in (values or [])) if value]
 
 
 def main() -> int:
@@ -72,7 +84,7 @@ def main() -> int:
     if set(event_ids) != set(timeline_ids) or len(timeline_ids) != len(set(timeline_ids)):
         fail("timeline/event ID set mismatch")
     for event in events:
-        refs = [sid(ref) for ref in event.get("source_refs", [])]
+        refs = sids(event.get("source_refs"))
         if not refs:
             fail(f"event {event.get('event_id')} has no underlying sources")
         unresolved = [ref for ref in refs if ref not in source_set]
@@ -85,7 +97,7 @@ def main() -> int:
     for row in accepted:
         if not row.get("candidate") or not row.get("disposition") or not row.get("reason"):
             fail(f"accepted audit row incomplete: {row}")
-        refs = row.get("underlying_source_ids") or []
+        refs = sids(row.get("underlying_source_ids"))
         if not refs:
             fail(f"accepted candidate lacks underlying evidence: {row.get('candidate')}")
         unresolved = [ref for ref in refs if ref not in source_set]
@@ -112,7 +124,7 @@ def main() -> int:
     if set(loss_ids) - accepted_loss_ids:
         fail(f"loss records lack accepted candidate lineage: {sorted(set(loss_ids)-accepted_loss_ids)[:5]}")
     for loss in losses:
-        refs = loss.get("source_ids") or []
+        refs = sids(loss.get("source_ids"))
         if not refs:
             fail(f"material loss {loss.get('loss_id')} has no sources")
         unresolved = [ref for ref in refs if ref not in source_set]
