@@ -13,7 +13,7 @@ required_js = [
     'Publisher bias · Ground News',
     'Oil routes',
     'CURRENT MAP · latest accepted state',
-    'Use Timeline to look backward',
+    'use Timeline to look backward',
 ]
 for marker in required_js:
     assert marker in js, f'missing UX marker: {marker}'
