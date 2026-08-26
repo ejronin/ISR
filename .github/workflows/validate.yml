@@ -72,6 +72,12 @@ jobs:
         run: |
           node --check js/endgame-ux-plain-language-r1.js
           python scripts/validate_endgame_ux_plain_language_r1.py
+      - name: Validate workspace plain-language UX R1
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          node --check js/workspace-ux-plain-language-r1.js
+          python scripts/validate_workspace_ux_plain_language_r1.py
       - name: Validate final Mermaid fit and Oil Routes R1
         env:
           PYTHONUTF8: '1'
