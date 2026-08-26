@@ -1,9 +1,16 @@
 /* Site legibility R3 — readable multi-entry popups, clearer source hierarchy and loss analysis. Presentation only. */
 
 /* Leaflet popups: stop compressing multi-entry evidence into a narrow column. */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip{
+  background:#0b1724!important;
+  color:#edf5fb!important;
+}
 .leaflet-popup-content-wrapper{
   max-width:min(560px,calc(100vw - 44px))!important;
+  border:1px solid #35536b!important;
   border-radius:13px!important;
+  box-shadow:0 16px 44px rgba(0,0,0,.42)!important;
 }
 .leaflet-popup-content{
   width:min(500px,calc(100vw - 78px))!important;
@@ -12,16 +19,18 @@
   overflow-y:auto!important;
   overflow-x:hidden!important;
   scrollbar-gutter:stable;
+  scrollbar-color:#49667c #0b1724;
   margin:15px 16px!important;
   font-size:13px!important;
   line-height:1.5!important;
+  color:#d9e5ee!important;
 }
 .atlas-popup.pr3-readable-popup h3,
 .leaflet-popup-content .atlas-popup h3{
   margin:0 0 6px!important;
   font-size:17px!important;
   line-height:1.25!important;
-  color:#17212b!important;
+  color:#f4f8fb!important;
 }
 .pr3-popup-actor{
   display:flex;
@@ -31,18 +40,18 @@
   max-width:100%;
   margin:0 0 10px;
   padding:4px 7px;
-  border:1px solid #c6d4de;
+  border:1px solid #35576e;
   border-radius:7px;
-  background:#eef4f7;
-  color:#243746;
+  background:#102638;
+  color:#edf6fc;
   font-size:11.5px;
   font-weight:750;
 }
 .pr3-popup-actor .sir-actor-flag-icon{width:25px;height:17px;min-width:25px;margin:0;vertical-align:middle}
-.pr3-popup-actor small{font-size:10px;font-weight:600;color:#607281;padding-left:3px}
+.pr3-popup-actor small{font-size:10px;font-weight:600;color:#9fb4c3;padding-left:3px}
 .leaflet-popup-content .atlas-popup .popup-badges{margin:4px 0 9px}
 .leaflet-popup-content .atlas-popup section{
-  border-top:1px solid #adc1cf!important;
+  border-top:1px solid #29445a!important;
   padding-top:10px!important;
   margin-top:10px!important;
 }
@@ -50,7 +59,7 @@
 .leaflet-popup-content .atlas-popup p>b{
   display:block!important;
   margin:0 0 5px!important;
-  color:#248a9b!important;
+  color:#65d7e3!important;
   font-size:10px!important;
   line-height:1.25!important;
   letter-spacing:.065em!important;
@@ -58,7 +67,7 @@
 }
 .leaflet-popup-content .atlas-popup p{
   margin:5px 0 9px!important;
-  color:#354754!important;
+  color:#c7d4df!important;
   font-size:12.5px!important;
   line-height:1.5!important;
 }
@@ -72,6 +81,7 @@
   border-left-width:4px!important;
   border-radius:0 7px 7px 0!important;
   min-width:0!important;
+  background:#081727!important;
 }
 .leaflet-popup-content .atlas-popup .component-state .physical-badge{
   grid-row:auto!important;
@@ -99,7 +109,7 @@
   gap:5px!important;
   margin-top:11px!important;
   padding-top:9px!important;
-  border-top:1px solid #b8c8d3!important;
+  border-top:1px solid #29445a!important;
 }
 .leaflet-popup-content .atlas-popup .sources a,
 .leaflet-popup-content .atlas-popup .srcchip{
@@ -108,7 +118,7 @@
   font-size:10.5px!important;
   line-height:1.25!important;
 }
-.leaflet-popup-content .popup-history{margin-top:11px;padding-top:9px;border-top:1px solid #b8c8d3}.leaflet-popup-content .popup-event-link{font-size:11px!important;line-height:1.4!important;padding:7px!important}
+.leaflet-popup-content .popup-history{margin-top:11px;padding-top:9px;border-top:1px solid #29445a}.leaflet-popup-content .popup-event-link{font-size:11px!important;line-height:1.4!important;padding:7px!important}
 
 /* Keep map chrome readable without stealing vertical space from the map. */
 .public-record-r2 #app.isr-atlas-map-only .global-search-button{min-height:42px!important;font-size:12px!important}
