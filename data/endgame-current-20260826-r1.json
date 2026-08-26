@@ -32,7 +32,7 @@
   },
   "hormuz_update": {
     "title": "Aug. 26 correction — the U.S. demining claim is openly contested",
-    "text": "Washington says U.S. forces removed or detonated the mines in the international waters of Hormuz. Tehran did not remain silent: Deputy Foreign Minister Kazem Gharibabadi publicly rejected that account as propaganda, argued that only Iran knows the exact mine locations, and threatened U.S. minesweepers. The earlier silence-based inference — that Iran either did not know the clearance occurred or could not stop it and therefore avoided comment — is therefore falsified by the subsequent public record. The physical completeness of U.S. demining remains independently unresolved, and depressed commercial traffic means a claimed mine-clear lane is not equivalent to restored commercial normalization.",
+    "text": "Washington says U.S. forces removed or detonated the mines in the international waters of Hormuz. Deputy Foreign Minister Kazem Gharibabadi publicly rejected that account as propaganda, argued that only Iran knows the exact mine locations, and threatened U.S. minesweepers. The physical completeness of U.S. demining remains independently unresolved, and depressed commercial traffic means a claimed mine-clear lane is not equivalent to restored commercial normalization.",
     "source_ids": ["S26", "S33", "S34", "S35"]
   },
   "node_evidence": [
@@ -42,7 +42,7 @@
       "claim": "Washington says U.S. forces cleared mines from the international waters of Hormuz; Iran publicly rejects that account as propaganda.",
       "source_ids": ["S26", "S33", "S34"],
       "confidence": "High that both governments made the claims; independent completeness verification remains unresolved",
-      "editorial_note": "Do not convert either Washington's clearance claim or Tehran's continued-mine-control claim into independently established physical fact. Iran did not remain silent; the Aug. 26 rebuttal supersedes that inference."
+      "editorial_note": "Do not convert either Washington's clearance claim or Tehran's continued-mine-control claim into independently established physical fact."
     },
     {
       "node_id": "H12",
@@ -59,14 +59,6 @@
       "source_ids": ["S33", "S34"],
       "confidence": "High for fact of statement",
       "editorial_note": "Treat the claimed exclusive knowledge of mine locations as an Iranian assertion, not independently verified technical knowledge."
-    },
-    {
-      "node_id": "H15",
-      "classification": "SYNTHESIS / FALSIFIER",
-      "claim": "Iran's public rebuttal falsifies the silence-based branch that Tehran said nothing because it did not know U.S. clearance occurred or could not stop it and wished to avoid embarrassment.",
-      "source_ids": ["S33", "S34"],
-      "confidence": "High",
-      "editorial_note": "Retain the earlier branch only as a timestamped hypothesis that was later falsified; do not carry it forward as a live explanation."
     }
   ]
 }
