@@ -2,18 +2,104 @@
 (function atlasShell() {
   const canonicalUrl = 'https://ejronin.github.io/ISR/';
   const groups = {
-    overview: [['snapshot', 'Current picture'], ['timeline', 'Timeline'], ['endgame', 'Endgame (so far)']],
-    operations: [['facilities', 'U.S. sites'], ['strikes', 'U.S. strike effects'], ['imagery', 'Satellite BDA'], ['csis', 'Missiles / drones']],
-    effects: [['losses', 'Verified losses'], ['economy', 'GCC / Iran economy'], ['arctic', 'China Arctic routes']],
-    information: [['claims', 'Claim checks'], ['infowar', 'Information war']],
-    evidence: [['sources', 'Sources'], ['intro', 'Method'], ['historical', 'Historical model'], ['history', 'Historical snapshots']]
+    overview: [['snapshot', 'Current status'], ['timeline', 'Chronology']],
+    operations: [['facilities', 'Bases & infrastructure'], ['strikes', 'Campaigns & strikes'], ['csis', 'Air / missile / drone'], ['imagery', 'Damage imagery']],
+    consequences: [['losses', 'Casualties & losses'], ['economy', 'Economic effects'], ['arctic', 'Shipping & trade']],
+    diplomacy: [['diplomacy-hub', 'Diplomacy overview'], ['endgame', 'Objectives & outcomes']],
+    claims: [['claims', 'Claim checks'], ['infowar', 'Information environment']],
+    sources: [['sources', 'Sources'], ['intro', 'Method'], ['analytic-record', 'Analytic record'], ['historical', 'Historical record'], ['history', 'Archive']]
+  };
+  const primaryLabels = {
+    overview: 'Overview',
+    operations: 'Military Operations',
+    consequences: 'Consequences',
+    diplomacy: 'Diplomacy & Outcome',
+    claims: 'Claims & Verification',
+    sources: 'Sources & Method'
   };
   const panelGroup = Object.fromEntries(Object.entries(groups).flatMap(([group, rows]) => rows.map(([id]) => [id, group])));
 
   let restoringState = false;
+  let legacyObserver = null;
+
+  function closeLegacyOverlay() {
+    if (!document.querySelector('.isr-hormuz-overlay:not([hidden])')) return;
+    document.querySelector('[data-peer-workspace="ANALYSIS"]')?.click();
+  }
+
+  function ensurePrimaryNavigation() {
+    const nav = document.getElementById('primaryNav');
+    if (!nav) return;
+    nav.textContent = '';
+    Object.entries(primaryLabels).forEach(([group, label]) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'primary-tab';
+      button.dataset.group = group;
+      button.setAttribute('role', 'tab');
+      button.setAttribute('aria-selected', 'false');
+      button.tabIndex = -1;
+      button.textContent = label;
+      nav.appendChild(button);
+    });
+  }
+
+  function ensureDiplomacyPanel() {
+    const content = document.querySelector('.content');
+    if (!content || document.getElementById('diplomacy-hub')) return;
+    const panel = document.createElement('section');
+    panel.className = 'panel';
+    panel.id = 'diplomacy-hub';
+    panel.innerHTML = '<div class="section-title">Diplomacy &amp; outcome</div>' +
+      '<div class="callout"><strong>Negotiations and agreements</strong><br>The existing agreement workspace remains available as a detailed view of the Islamabad memorandum, Hormuz bargaining and related diplomatic records.</div>' +
+      '<div class="item"><h3>Negotiations / agreement record</h3><p>Open the detailed agreement workspace.</p><button class="action-btn" id="openAgreementWorkspace" type="button">Open negotiations &amp; agreements</button></div>' +
+      '<div class="item"><h3>Objectives &amp; outcomes</h3><p>Compare documented objectives, concessions, unresolved terms and outcome evidence without converting unlike measures into a single war score.</p><button class="action-btn" id="openOutcomeRecord" type="button">Open objectives &amp; outcomes</button></div>';
+    content.appendChild(panel);
+    panel.querySelector('#openAgreementWorkspace')?.addEventListener('click', () => {
+      const legacy = document.querySelector('[data-peer-workspace="MOU"]');
+      if (legacy) legacy.click();
+    });
+    panel.querySelector('#openOutcomeRecord')?.addEventListener('click', () => window.showAtlasPanel?.('endgame'));
+  }
+
+  function ensureAnalyticRecordPanel() {
+    const content = document.querySelector('.content');
+    if (!content || document.getElementById('analytic-record')) return;
+    const panel = document.createElement('section');
+    panel.className = 'panel';
+    panel.id = 'analytic-record';
+    panel.innerHTML = '<div class="section-title">Analytic record</div>' +
+      '<div class="callout"><strong>Separate from the factual ledger.</strong> This section is reserved for contemporaneous forecasts and assessments, followed by later source-based adjudication. It is never used to establish that an event occurred.</div>' +
+      '<div class="method-grid">' +
+        '<div class="method-card"><h3>Evidence available then</h3><p>Sources and observations available when the assessment was made.</p></div>' +
+        '<div class="method-card"><h3>Contemporaneous assessment</h3><p>What the author assessed, including actors, mechanism, expected movement and time horizon where stated.</p></div>' +
+        '<div class="method-card"><h3>Subsequent record</h3><p>Later independent sources used to test the assessment.</p></div>' +
+        '<div class="method-card"><h3>Adjudication</h3><p>Supported, partial, contradicted or unresolved; quantitative calibration is limited to forecasts that can be scored honestly.</p></div>' +
+      '</div>' +
+      '<div class="callout"><strong>Completeness gate:</strong> the historical assessment register is not being published piecemeal. The full project sweep must include misses, revisions and failed mechanisms before individual entries are exposed here.</div>';
+    content.appendChild(panel);
+  }
+
+  function suppressLegacyWorkspaceNavigation() {
+    const apply = () => {
+      document.querySelectorAll('.isr-workspace-nav').forEach(nav => {
+        if (!nav.hidden) nav.hidden = true;
+        nav.setAttribute('aria-hidden', 'true');
+      });
+      const analysisNav = document.querySelector('.analysis-nav');
+      if (analysisNav?.hidden) analysisNav.hidden = false;
+    };
+    apply();
+    if (!legacyObserver && document.body) {
+      legacyObserver = new MutationObserver(apply);
+      legacyObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'] });
+    }
+  }
+
   function activatePanel(id, focusButton, options) {
     const target = document.getElementById(id);
     if (!target) return false;
+    if (id !== 'diplomacy-hub') closeLegacyOverlay();
     document.querySelectorAll('.panel').forEach(panel => {
       const selected = panel === target;
       panel.classList.toggle('active', selected);
@@ -127,7 +213,7 @@
       const panel = document.createElement('section');
       panel.className = 'panel';
       panel.id = 'endgame';
-      panel.innerHTML = '<div class="callout"><strong>ENDGAME (So far)</strong><br>Loading the source-linked endgame audit…</div>';
+      panel.innerHTML = '<div class="callout"><strong>Objectives & outcomes</strong><br>Loading the source-linked outcome audit…</div>';
       content.appendChild(panel);
     }
     if (!document.querySelector('link[data-atlas-endgame]')) {
@@ -147,10 +233,17 @@
   }
 
   function wireShell() {
+    ensurePrimaryNavigation();
     ensureEndgamePanel();
+    ensureDiplomacyPanel();
+    ensureAnalyticRecordPanel();
+    suppressLegacyWorkspaceNavigation();
     const primary = document.getElementById('primaryNav'); const secondary = document.getElementById('secondaryNav');
     document.querySelectorAll('.primary-tab').forEach(button => button.setAttribute('aria-controls', 'secondaryNav'));
-    primary?.addEventListener('click', event => { const button = event.target.closest('.primary-tab'); if (button) renderSecondary(button.dataset.group); });
+    primary?.addEventListener('click', event => {
+      const button = event.target.closest('.primary-tab');
+      if (button) { closeLegacyOverlay(); renderSecondary(button.dataset.group); }
+    });
     primary?.addEventListener('keydown', handleRovingKeys);
     secondary?.addEventListener('click', event => { const button = event.target.closest('.secondary-tab'); if (button) activatePanel(button.dataset.tab); });
     secondary?.addEventListener('keydown', handleRovingKeys);
@@ -159,16 +252,20 @@
       const eventTarget = event.target.closest('[data-event-id]'); if (eventTarget && window.focusLedgerEvent) window.focusLedgerEvent(eventTarget.dataset.eventId);
     });
     document.getElementById('copyLinkButton')?.addEventListener('click', copyCanonicalLink);
-    const initial = window.AtlasState?.get?.() || { activePrimaryGroup: 'overview', activeView: 'snapshot' };
+    const stored = window.AtlasState?.get?.() || {};
+    const initialView = panelGroup[stored.activeView] ? stored.activeView : 'snapshot';
+    const initialGroup = panelGroup[initialView] || 'overview';
     restoringState = true;
-    try { renderSecondary(initial.activePrimaryGroup, initial.activeView, { writeState: false }); } finally { restoringState = false; }
+    try { renderSecondary(initialGroup, initialView, { writeState: false }); } finally { restoringState = false; }
     loadSnapshots(); loadBuildInfo();
     window.AtlasState?.subscribe?.((state, source) => {
       if (!['popstate', 'history', 'restore'].includes(source)) return;
+      const view = panelGroup[state.activeView] ? state.activeView : 'snapshot';
+      const group = panelGroup[view] || 'overview';
       restoringState = true;
       try {
-        if (!document.querySelector(`.secondary-tab[data-tab="${state.activeView}"]`)) renderSecondary(state.activePrimaryGroup, state.activeView);
-        activatePanel(state.activeView, false, { writeState: false });
+        if (!document.querySelector(`.secondary-tab[data-tab="${view}"]`)) renderSecondary(group, view);
+        activatePanel(view, false, { writeState: false });
       } finally { restoringState = false; }
     });
   }
