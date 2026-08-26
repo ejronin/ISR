@@ -96,7 +96,7 @@ assert 'provenance only' in source.lower(), 'government-source star must explici
 for token in [
     './css/status-identity-r1.css?v=20260826-r2-svg',
     './js/status-identity-r1.js?v=20260826-r2-svg',
-    './js/source-bias-r1.js?v=20260826-r3',
+    './js/source-bias-r1.js?v=20260826-r4',
 ]:
     assert token in loader, f'loader missing cache-busted status/source asset: {token}'
 
