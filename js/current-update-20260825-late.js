@@ -34,6 +34,15 @@
     document.head.append(script);
   }
 
+  function loadAug26Update(){
+    if (document.querySelector('script[data-current-update-20260826]')) return;
+    const script = document.createElement('script');
+    script.src = './js/current-update-20260826.js?v=20260826-1552';
+    script.async = false;
+    script.dataset.currentUpdate20260826 = '1';
+    document.head.append(script);
+  }
+
   function assertPayload(manifest, events, timeline, sources){
     const current = window.ATLAS_TEMPORAL_INDEX || [];
     if (current.length < EXPECTED_PRIOR) throw new Error(`Prior chronology not loaded: ${current.length}`);
@@ -115,7 +124,7 @@
 
   const start = () => {
     loadChinaOilShift();
-    init().catch(error => console.warn('Late Aug. 25 current overlay unavailable; prior chronology remains usable.', error));
+    init().then(loadAug26Update).catch(error => console.warn('Late Aug. 25 current overlay unavailable; prior chronology remains usable.', error));
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once:true });
   else start();
