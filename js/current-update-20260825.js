@@ -92,6 +92,15 @@
     if (grid?.nextSibling) panel.insertBefore(box, grid.nextSibling); else panel.prepend(box);
   }
 
+  function loadSuccessor() {
+    if (document.querySelector('script[data-current-update-20260825-late]')) return;
+    const script = document.createElement('script');
+    script.src = './js/current-update-20260825-late.js?v=20260825-r1';
+    script.async = false;
+    script.dataset.currentUpdate20260825Late = '1';
+    document.head.append(script);
+  }
+
   async function init() {
     await waitFor(() => window.ATLAS_CURRENT_UPDATE?.events?.length === 10 && window.ATLAS_TEMPORAL_INDEX && window.registerAtlasEvents && window.registerAtlasSources);
     const [manifest, events, timeline, sources] = await Promise.all([
@@ -105,6 +114,7 @@
     addCurrentPicture();
     window.ISRFullScope20260822?.refreshTimeline?.();
     window.dispatchEvent(new CustomEvent('atlascurrentready20260825', { detail: { count: EXPECTED_CURRENT, cutoff: CUTOFF } }));
+    loadSuccessor();
   }
 
   const start = () => init().catch(error => console.warn('Aug. 25 current overlay unavailable; prior chronology remains usable.', error));
