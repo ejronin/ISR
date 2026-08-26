@@ -1,0 +1,34 @@
+/* ENDGAME plain-language UX R1 — presentation only */
+#endgame .eg3-section{scroll-margin-top:7.5rem}
+#endgame .eg3-subnav.eg4-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;align-items:stretch;padding:.55rem}
+#endgame .eg4-nav-card{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:.2rem;min-height:4.4rem;padding:.68rem .75rem;text-align:left}
+#endgame .eg4-nav-card .eg4-tab-title{font-size:.82rem;line-height:1.2;font-weight:900;letter-spacing:.025em}
+#endgame .eg4-nav-card .eg4-tab-dek{font-size:.72rem;line-height:1.35;font-weight:600;color:#aebfd1;letter-spacing:0;text-transform:none}
+#endgame .eg4-nav-card.active .eg4-tab-dek{color:#d8e8f7}
+#endgame .eg4-jumps{display:flex;gap:.4rem;flex-wrap:wrap;margin:0 0 .72rem;padding:.48rem;border:1px solid #29445f;border-radius:.6rem;background:#081726}
+#endgame .eg4-jump{border:1px solid #315170;background:#0d2137;color:#cbe3ff;border-radius:999px;padding:.36rem .58rem;font-size:.71rem;font-weight:800;line-height:1.25;cursor:pointer}
+#endgame .eg4-jump:hover,#endgame .eg4-jump:focus-visible{background:#173b5e;border-color:#6fa8dc;outline:2px solid #6fa8dc44;outline-offset:1px}
+#endgame .eg4-board-guide{margin:.05rem 0 .25rem;color:#b8c8d8;font-size:.78rem;line-height:1.5}
+#endgame .eg4-disclosure{border:1px solid #2d4964;border-radius:.62rem;background:#0a192a;overflow:hidden}
+#endgame .eg4-disclosure>summary{cursor:pointer;list-style:none;padding:.72rem .8rem;font-size:.8rem;font-weight:900;line-height:1.35;color:#e6f0fb;background:#0d2035}
+#endgame .eg4-disclosure>summary::-webkit-details-marker{display:none}
+#endgame .eg4-disclosure>summary:before{content:'+';display:inline-grid;place-items:center;width:1.25rem;height:1.25rem;margin-right:.45rem;border:1px solid #527493;border-radius:50%;font-size:.8rem;line-height:1;color:#bfe2ff}
+#endgame .eg4-disclosure[open]>summary:before{content:'−'}
+#endgame .eg4-disclosure>summary:hover,#endgame .eg4-disclosure>summary:focus-visible{background:#14304d;outline:none}
+#endgame .eg4-disclosure>.eg25-scale,#endgame .eg4-disclosure>.eg25-objective-side,#endgame .eg4-disclosure>.eg25-walkbacks,#endgame .eg4-disclosure>.eg3-card{margin:.75rem}
+#endgame .eg25-objective-board{gap:.78rem}
+#endgame .eg25-objective-board>.eg25-tally-summary{margin-bottom:.05rem}
+#endgame .eg25-tally-metric strong{font-size:1.12rem}
+#endgame .eg25-tally-metric span{font-size:.78rem;line-height:1.35}
+#endgame .eg3-section-head h3{font-size:1.08rem}
+#endgame .eg3-section-head p,#endgame .eg3-lead{font-size:.82rem;line-height:1.55}
+#endgame .eg3-card p,#endgame .eg3-card li{font-size:.79rem;line-height:1.55}
+#endgame .eg25-overview-thesis{font-size:.84rem!important;line-height:1.58!important}
+#endgame .eg25-proof-step strong{font-size:.72rem;color:#89dce7}
+#endgame .eg25-proof-step p{font-size:.79rem;line-height:1.55}
+#endgame .eg3-evidence-drawer{font-size:.8rem}
+#endgame .eg3-meta-box span{font-size:.75rem;line-height:1.5}
+#endgame .eg3-hero-copy>p{font-size:.9rem}
+#endgame .eg3-source-chip{font-size:.69rem}
+@media(max-width:980px){#endgame .eg3-subnav.eg4-nav{grid-template-columns:1fr}.eg4-jumps{position:static}}
+@media(max-width:640px){#endgame .eg4-jumps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}#endgame .eg4-jump{text-align:left;border-radius:.45rem}#endgame .eg4-nav-card{min-height:0}}
