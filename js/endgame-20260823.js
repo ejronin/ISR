@@ -13,7 +13,8 @@
     ['./css/mermaid-autofit-r2.css?v=20260825-r2','mermaid-autofit-r2'],
     ['./css/endgame-three-angles-20260825-r3.css?v=20260825-r3','three-angles-20260825-r3'],
     ['./css/endgame-objective-scoreboard-20260825-r2.css?v=20260825-r2','objective-scoreboard-20260825-r2'],
-    ['./css/endgame-ux-plain-language-r1.css?v=20260825-r1','endgame-ux-plain-language-r1']
+    ['./css/endgame-ux-plain-language-r1.css?v=20260825-r1','endgame-ux-plain-language-r1'],
+    ['./css/site-legibility-r3.css?v=20260826-r3','site-legibility-r3']
   ];
   const scripts=[
     ['./js/endgame-adjudication-r1.js?v=20260824-r1','controller'],
@@ -26,7 +27,8 @@
     ['./js/endgame-current-20260825-r2.js?v=20260825-r3','current-20260825-r2'],
     ['./js/endgame-three-angles-20260825-r3.js?v=20260825-r5','three-angles-20260825-r3'],
     ['./js/endgame-objective-scoreboard-20260825-r2.js?v=20260825-r3','objective-scoreboard-20260825-r2'],
-    ['./js/endgame-ux-plain-language-r1.js?v=20260825-r1','endgame-ux-plain-language-r1']
+    ['./js/endgame-ux-plain-language-r1.js?v=20260825-r1','endgame-ux-plain-language-r1'],
+    ['./js/site-legibility-r3.js?v=20260826-r3','site-legibility-r3']
   ];
   styles.forEach(([href,key])=>{
     if(document.querySelector(`link[data-endgame-r1="${key}"]`))return;
