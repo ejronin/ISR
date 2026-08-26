@@ -15,6 +15,24 @@
     if(count)parent.append(box);
   }
   function findSection(panel,prefix){return $$('section.eg3-section',panel).find(s=>($('h3',s)?.textContent||'').trim().startsWith(prefix));}
+
+  function makeOverview(){
+    const s=E('section','eg3-section eg25-endgame-overview');s.dataset.eg25EndgameOverview='1';
+    const head=E('div','eg3-section-head');head.append(E('h3','','What this board shows'),E('p','','The scoreboard is strategic position, not mere state survival.'));s.append(head);
+    const card=E('article','eg3-card eg3-finding eg25-overview-card');
+    const p1=E('p','eg25-overview-thesis','Iran has not been destroyed and retains meaningful coercive capability. But survival is increasingly the principal accomplishment Tehran can point to, while several of the strategic objectives that were supposed to make that survival advantageous have weakened, failed, or been replaced by less favorable arrangements.');
+    const p2=E('p','eg25-overview-thesis','And that is why the “we did not capitulate” rhetoric matters so much. If Tehran were actually emerging with its original bargaining position intact, it would not need to redefine victory around continued existence and a face-saving account of concessions.');
+    const rule=E('p','eg3-warning-text eg25-overview-rule','How to read Atlas: actor claims show the story each side wants told. They do not decide the board. Observable behavior, implemented arrangements, economic and military effects, and changes in bargaining position carry the analytical weight. The board does not invent hypothetical victories or motives to offset recorded outcomes.');
+    card.append(p1,p2,rule);chips(card,['S01','S06','S07','S14','S15','S16','S24','S25','S27','S32']);s.append(card);
+    return s;
+  }
+
+  function installOverview(){
+    const shell=$('#endgame .eg3-shell');if(!shell||!live)return false;
+    $('[data-eg25-endgame-overview]',shell)?.remove();
+    const overview=makeOverview();const tabs=$('.eg3-subnav',shell);tabs?shell.insertBefore(overview,tabs):shell.prepend(overview);return true;
+  }
+
   function makeSection(){
     const s=E('section','eg3-section eg25-three-angles');s.dataset.eg25ThreeAngles='1';
     const head=E('div','eg3-section-head');head.append(E('h3','','Iran’s three live paths · position test'),E('p','','This grades Tehran against its own stated objectives and observable behavior — not against a claim of unconditional surrender. The question is whether each path is improving, holding, or weakening Iran’s bargaining position.'));s.append(head);
@@ -41,12 +59,13 @@
     const old=$('[data-eg25-three-angles]',panel);old?.remove();
     const s=makeSection();const lenses=findSection(panel,'Two non-duplicative views');lenses?panel.insertBefore(s,lenses):panel.prepend(s);return true;
   }
+  function refresh(){installOverview();install();}
   async function init(){
     live=await J(DATA);
     for(let i=0;i<80;i++){if($('#endgame [data-eg3-panel="strategic"]')&&window.ISREndgamePublicViewR1?.model?.())break;await sleep(75);}
-    install();
-    const root=$('#endgame');if(root){const mo=new MutationObserver(m=>{if(m.some(x=>[...x.addedNodes].some(n=>n.nodeType===1&&n.matches?.('.eg3-shell'))))setTimeout(install,60);});mo.observe(root,{childList:true});}
-    window.ISREndgameThreeAnglesR3={refresh:install,live:()=>live};
+    refresh();
+    const root=$('#endgame');if(root){const mo=new MutationObserver(m=>{if(m.some(x=>[...x.addedNodes].some(n=>n.nodeType===1&&n.matches?.('.eg3-shell'))))setTimeout(refresh,60);});mo.observe(root,{childList:true});}
+    window.ISREndgameThreeAnglesR3={refresh,live:()=>live};
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>init().catch(console.error),{once:true});else init().catch(console.error);
 }());
