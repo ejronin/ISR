@@ -26,7 +26,7 @@ The analytic register is subject to a completeness gate: historical entries are 
 ## What the atlas covers
 
 - current operational assessment without a composite “war score”;
-- the canonical historical-ledger record plus append-only current overlays;
+- 98 canonical historical-ledger records plus append-only current overlays;
 - U.S./coalition facilities, strike effects, satellite/visual BDA, and missile/drone metrics;
 - casualties, durable material loss, munitions expenditure, and economic effects as separate accounting scopes;
 - bargaining, force posture, agreements, regional alignment, and trade routes;
