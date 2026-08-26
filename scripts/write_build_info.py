@@ -40,14 +40,32 @@ def main() -> int:
         overlay_hashes[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
 
     if overlay_manifests:
-        _, latest_path, latest_manifest = max(overlay_manifests, key=lambda row: row[0])
+        latest_dt, latest_path, latest_manifest = max(overlay_manifests, key=lambda row: row[0])
         current_cutoff = latest_manifest.get("collection_cutoff") or latest_manifest.get("created_at")
         current_count = latest_manifest.get("counts", {}).get("current_chronology_records")
         current_layer = str(latest_path.parent.relative_to(root))
     else:
+        latest_dt = parse_cutoff(historical_cutoff)
         current_cutoff = historical_cutoff
         current_count = historical_manifest.get("counts", {}).get("timeline_records")
         current_layer = "data/integration-v1.2"
+
+    reconciliation_dir = root / "data" / "wiki-map-reconciliation-20260826"
+    reconciliation_manifest_path = reconciliation_dir / "manifest.json"
+    reconciliation_layer = None
+    reconciliation_records = 0
+    reconciliation_hashes = {}
+    if reconciliation_manifest_path.exists():
+        reconciliation_manifest = json.loads(reconciliation_manifest_path.read_text(encoding="utf-8"))
+        reconciliation_records = int(reconciliation_manifest.get("counts", {}).get("accepted_or_corrected_events") or 0)
+        reconciliation_layer = str(reconciliation_dir.relative_to(root))
+        recon_cutoff = reconciliation_manifest.get("collection_cutoff") or reconciliation_manifest.get("created_at")
+        if recon_cutoff and parse_cutoff(recon_cutoff) > latest_dt:
+            current_cutoff = recon_cutoff
+        if current_count is not None:
+            current_count = int(current_count) + reconciliation_records
+        for path in sorted(reconciliation_dir.glob("*.json")):
+            reconciliation_hashes[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
 
     payload = {
         "canonical_url": "https://ejronin.github.io/ISR/",
@@ -58,8 +76,11 @@ def main() -> int:
         "current_chronology_records": current_count,
         "current_layer": current_layer,
         "historical_ledger_cutoff": historical_cutoff,
+        "historical_reconciliation_layer": reconciliation_layer,
+        "historical_reconciliation_records": reconciliation_records,
         "authoritative_json_sha256": hashes,
         "current_overlay_manifest_sha256": overlay_hashes,
+        "historical_reconciliation_sha256": reconciliation_hashes,
     }
 
     output = Path(args.output)
