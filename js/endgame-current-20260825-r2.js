@@ -1,6 +1,7 @@
 'use strict';
 (function EndgameCurrent20260825R2(){
   const LIVE='./data/endgame-current-20260825-r2.json?v=20260825-r2';
+  const SUP='./data/endgame-current-20260826-r1.json?v=20260826-r1';
   const CAUSAL='./data/endgame-causal-map-r2.mmd?v=20260825-r2';
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const E=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n;};
@@ -8,9 +9,9 @@
   const J=async u=>{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error(`${u}: ${r.status}`);return r.json();};
   const T=async u=>{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error(`${u}: ${r.status}`);return r.text();};
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  let live=null,model=null,applying=false,observer=null;
+  let live=null,supplement=null,model=null,applying=false,observer=null;
 
-  function classificationKind(s){const v=String(s||'').toUpperCase();if(v.includes('DISPUTED'))return'disputed';if(v.includes('ACTOR')||v.includes('OFFICIAL')||v.includes('CLAIM')||v.includes('THREAT'))return'claim';if(v.includes('INFERENCE')||v.includes('SYNTHESIS'))return'assessment';if(v.includes('SURVEY'))return'survey';return'fact';}
+  function classificationKind(s){const v=String(s||'').toUpperCase();if(v.includes('DISPUTED')||v.includes('CONTESTED'))return'disputed';if(v.includes('ACTOR')||v.includes('OFFICIAL')||v.includes('CLAIM')||v.includes('THREAT'))return'claim';if(v.includes('INFERENCE')||v.includes('SYNTHESIS')||v.includes('FALSIFIER'))return'assessment';if(v.includes('SURVEY'))return'survey';return'fact';}
   function sourceChips(parent,ids){
     const old=$('.eg25-sources',parent);old?.remove();
     const box=E('div','eg3-sources eg25-sources');let n=0;
@@ -18,6 +19,15 @@
     if(n)parent.append(box);
   }
   function sectionByTitle(panel,text){return $$('section.eg3-section',panel).find(s=>($('h3',s)?.textContent||'').trim().startsWith(text))||null;}
+  function mergeSupplement(){
+    if(!live||!supplement)return;
+    live.sources=Object.assign(live.sources||{},supplement.sources||{});
+    live.status_overrides=Object.assign(live.status_overrides||{},supplement.status_overrides||{});
+    live.evidence_cutoff=supplement.evidence_cutoff||live.evidence_cutoff;
+    const incoming=new Map((supplement.node_evidence||[]).map(x=>[x.node_id,x]));
+    live.node_evidence=[...(live.node_evidence||[]).filter(x=>!incoming.has(x.node_id)),...incoming.values()];
+    if(supplement.hormuz_update)live.hormuz_update=supplement.hormuz_update;
+  }
   function mergeLive(){
     if(!model||!live)return;
     model.sources=Object.assign(model.sources||{},live.sources||{});
@@ -34,7 +44,12 @@
   function patchMou(){
     const panel=$('#endgame [data-eg3-panel="mou"]');if(!panel)return;
     const ev=sectionByTitle(panel,'What the evidence says · Paragraph 5');
-    if(ev){$('.eg25-p5',ev)?.remove();const c=E('article','eg3-card eg3-finding eg25-p5');const h=E('h4','',live.paragraph5_update.title);const b=E('span','eg3-badge eg3-fact','NEW FACT · AUG. 25');const p=E('p','',live.paragraph5_update.text);c.append(h,b,p);sourceChips(c,live.paragraph5_update.source_ids);ev.append(c);}
+    if(ev){
+      $('.eg25-p5',ev)?.remove();
+      const c=E('article','eg3-card eg3-finding eg25-p5');const h=E('h4','',live.paragraph5_update.title);const b=E('span','eg3-badge eg3-fact','NEW FACT · AUG. 25');const p=E('p','',live.paragraph5_update.text);c.append(h,b,p);sourceChips(c,live.paragraph5_update.source_ids);ev.append(c);
+      $('.eg26-mines',ev)?.remove();
+      if(live.hormuz_update){const m=E('article','eg3-card eg3-finding eg26-mines');const mh=E('h4','',live.hormuz_update.title);const mb=E('span','eg3-badge eg3-disputed','CONTESTED CLAIMS · AUG. 26');const mp=E('p','',live.hormuz_update.text);m.append(mh,mb,mp);sourceChips(m,live.hormuz_update.source_ids);ev.append(m);}
+    }
     const now=sectionByTitle(panel,'Where the MOU is now');
     if(now){const p=$('.eg3-lead',now);if(p)p.textContent=live.mou_now.text;sourceChips(now,live.mou_now.source_ids);const flow=$('.eg3-flow',now);if(flow){flow.replaceChildren();['SIGNED','IMPLEMENTED','MARITIME DISPUTE','FUNCTIONALLY DEAD','IRAN INVOKES OLD BASELINE','NEW OMAN FRAMEWORK','SUCCESSOR DEAL OPEN'].forEach((x,i,a)=>{const n=E('span',x==='FUNCTIONALLY DEAD'?'dead':'',x);flow.append(n);if(i<a.length-1)flow.append(E('i','','→'));});}}
   }
@@ -52,7 +67,7 @@
     const m=window.mermaid;m.initialize({startOnLoad:false,securityLevel:'strict',theme:'dark',htmlLabels:false,flowchart:{htmlLabels:false,useMaxWidth:false,curve:'basis',nodeSpacing:34,rankSpacing:54}});
     const out=await m.render(`isrEndgameCausalR2_${Date.now()}`,def);if(!document.body.contains(host))return;
     host.replaceChildren();const canvas=E('div','eg3-causal-canvas');canvas.innerHTML=out.svg;out.bindFunctions?.(canvas);host.append(canvas);
-    const svg=$('svg',canvas);if(!svg)return;svg.removeAttribute('style');svg.setAttribute('role','img');svg.setAttribute('aria-label','Updated human causal endgame map distinguishing Iranian public framing from observable negotiation behavior and the Aug. 25 Oman framework.');
+    const svg=$('svg',canvas);if(!svg)return;svg.removeAttribute('style');svg.setAttribute('role','img');svg.setAttribute('aria-label','Updated human causal endgame map distinguishing Iranian public framing from observable negotiation behavior, the Aug. 25 Oman framework, and the Aug. 26 contested demining claims.');
     (model.node_evidence||[]).forEach(x=>{const n=graphNode(svg,x.node_id);if(!n)return;n.classList.add(`eg3-node-${classificationKind(x.classification)}`);n.dataset.nodeId=x.node_id;n.tabIndex=0;n.setAttribute('role','button');n.setAttribute('aria-label',`${x.node_id}: ${x.claim}`);const go=e=>{if(e.type==='keydown'&&!['Enter',' '].includes(e.key))return;e.preventDefault();$$('g.node.eg3-selected-node',svg).forEach(q=>q.classList.remove('eg3-selected-node'));n.classList.add('eg3-selected-node');showEvidence(x.node_id);};n.onclick=go;n.onkeydown=go;});
     $$('g.node',svg).forEach(n=>{const txt=(n.textContent||'').toUpperCase();if(txt.includes('DEAD END')||txt.includes('STILL NOT VALIDATED'))n.classList.add('eg3-node-dead');if(txt.includes('OPEN PATH')||txt.includes('OPEN POSSIBILITY')||txt.includes('OPEN TEST')||txt.includes('NOW HAPPENING'))n.classList.add('eg3-node-open');});
     host.dataset.rendered='1';host.dataset.liveR2='1';showEvidence('NARROW');
@@ -63,10 +78,11 @@
   }
   async function init(){
     live=await J(LIVE);
+    try{supplement=await J(SUP);mergeSupplement();}catch(e){console.error('Endgame Aug26 supplement',e);}
     for(let i=0;i<80;i++){if(window.ISREndgamePublicViewR1?.model?.()&&$('#endgame .eg3-shell'))break;await sleep(75);}
     await apply();
     const root=$('#endgame');if(root){observer=new MutationObserver(()=>{clearTimeout(observer._t);observer._t=setTimeout(()=>apply(),60);});observer.observe(root,{childList:true});}
-    window.ISREndgameCurrentR2={apply,live:()=>live};
+    window.ISREndgameCurrentR2={apply,live:()=>live,supplement:()=>supplement};
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>init().catch(console.error),{once:true});else init().catch(console.error);
 }());
