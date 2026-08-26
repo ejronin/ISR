@@ -4,12 +4,13 @@
   window.__ISR_STATUS_IDENTITY_R1__=true;
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 
+  const FLAG_ASSET_ROOT='./assets/flags/';
   const ACTOR_FLAGS=new Map([
-    ['iran','🇮🇷'],['iran / aligned','🇮🇷'],['iran/aligned','🇮🇷'],['iranian','🇮🇷'],['irgc','🇮🇷'],
-    ['u.s.','🇺🇸'],['us','🇺🇸'],['united states','🇺🇸'],['u.s. / coalition','🇺🇸'],['u.s./coalition','🇺🇸'],['us / coalition','🇺🇸'],['us/coalition','🇺🇸'],
-    ['israel','🇮🇱'],['saudi arabia','🇸🇦'],['pakistan','🇵🇰'],['china','🇨🇳'],['russia','🇷🇺'],['oman','🇴🇲'],
-    ['turkey','🇹🇷'],['türkiye','🇹🇷'],['lebanon','🇱🇧'],['hezbollah','🇱🇧'],['united arab emirates','🇦🇪'],['uae','🇦🇪'],
-    ['bahrain','🇧🇭'],['qatar','🇶🇦'],['kuwait','🇰🇼'],['iraq','🇮🇶'],['jordan','🇯🇴'],['yemen','🇾🇪'],['houthis','🇾🇪']
+    ['iran','ir'],['iran / aligned','ir'],['iran/aligned','ir'],['iranian','ir'],['irgc','ir'],
+    ['u.s.','us'],['us','us'],['united states','us'],['u.s. / coalition','us'],['u.s./coalition','us'],['us / coalition','us'],['us/coalition','us'],
+    ['israel','il'],['saudi arabia','sa'],['pakistan','pk'],['china','cn'],['russia','ru'],['oman','om'],
+    ['turkey','tr'],['türkiye','tr'],['lebanon','lb'],['hezbollah','lb'],['united arab emirates','ae'],['uae','ae'],
+    ['bahrain','bh'],['qatar','qa'],['kuwait','kw'],['iraq','iq'],['jordan','jo'],['yemen','ye'],['houthis','ye']
   ]);
   const FLAG_PREFIX=/^[\u{1F1E6}-\u{1F1FF}]{2}\s/u;
   const ACTOR_ROOTS='#snapshot,#timeline,#facilities,#strikes,#csis,#imagery,#losses,#economy,#arctic,#diplomacy-hub,#endgame,#claims,#infowar,.atlas-popup,.isr-evidence-drawer';
@@ -18,15 +19,33 @@
   const STATUS_CLASSES=['sir-condition-loss','sir-condition-damage','sir-condition-operational','sir-condition-unresolved'];
 
   function norm(v){return String(v||'').trim().replace(/\s+/g,' ').toLowerCase();}
-  function actorFlagFor(text){return ACTOR_FLAGS.get(norm(text))||null;}
+  function actorCodeFor(text){return ACTOR_FLAGS.get(norm(text))||null;}
+  function actorFlagFor(text){const code=actorCodeFor(text);return code?`${FLAG_ASSET_ROOT}${code}.svg`:null;}
+  function flagIcon(code,label){
+    const img=document.createElement('img');
+    img.className='sir-actor-flag-icon';
+    img.src=`${FLAG_ASSET_ROOT}${code}.svg`;
+    img.alt='';
+    img.setAttribute('aria-hidden','true');
+    img.width=24;
+    img.height=18;
+    img.decoding='async';
+    img.dataset.flagCode=code;
+    img.title=label;
+    return img;
+  }
   function decorateActors(){
     $$(ACTOR_ROOTS).forEach(root=>{
       $$(ACTOR_ELEMENTS,root).forEach(node=>{
-        if(node.dataset.actorFlagR1==='1')return;
-        const text=(node.textContent||'').trim();
-        if(!text||FLAG_PREFIX.test(text))return;
-        const flag=actorFlagFor(text);if(!flag)return;
-        node.textContent=`${flag} ${text}`;
+        if(node.querySelector(':scope > .sir-actor-flag-icon')){node.dataset.actorFlagR1='1';return;}
+        const raw=(node.textContent||'').trim();
+        if(!raw)return;
+        const text=raw.replace(FLAG_PREFIX,'').trim();
+        const code=actorCodeFor(text);if(!code)return;
+        if(raw!==text)node.textContent=text;
+        const icon=flagIcon(code,text);
+        node.prepend(document.createTextNode(' '));
+        node.prepend(icon);
         node.dataset.actorFlagR1='1';
         node.dataset.actorIdentity=norm(text);
       });
@@ -66,6 +85,6 @@
     window.addEventListener('atlasdataready',()=>setTimeout(refresh,0));
     window.addEventListener('atlascurrentready20260825late',()=>setTimeout(refresh,0));
   }
-  function init(){refresh();bind();[80,220,600,1400,3000].forEach(ms=>setTimeout(refresh,ms));window.ISRStatusIdentityR1={refresh,conditionFor,actorFlagFor};}
+  function init(){refresh();bind();[80,220,600,1400,3000].forEach(ms=>setTimeout(refresh,ms));window.ISRStatusIdentityR1={refresh,conditionFor,actorFlagFor,actorCodeFor};}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 }());
