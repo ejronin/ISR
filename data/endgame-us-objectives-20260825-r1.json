@@ -1,0 +1,85 @@
+{
+  "version": "2026.08.25-us-objectives-r1",
+  "title": "What the United States said it was trying to achieve",
+  "dek": "Score U.S. performance against documented objectives, not against an invented requirement to destroy Iran as a state.",
+  "sources": {
+    "US1": {
+      "publisher": "The White House",
+      "date": "2026-04-01",
+      "title": "President Trump’s Clear and Unchanging Objectives Drive Decisive Success Against Iranian Regime",
+      "url": "https://www.whitehouse.gov/releases/2026/04/president-trumps-clear-and-unchanging-objectives-drive-decisive-success-against-iranian-regime/",
+      "supports": "The White House repeatedly defined Operation Epic Fury objectives as destroying or severely degrading Iran's ballistic missiles and production capacity, navy/power projection, proxy support, and denying Iran a nuclear weapon. The same White House compilation quotes Vice President Vance saying what happens to the regime is incidental to the President's primary objective of preventing an Iranian nuclear bomb.",
+      "quality": "PRIMARY / OFFICIAL-ACTOR; use to define stated U.S. objectives, not to independently verify claimed battlefield success"
+    },
+    "US2": {
+      "publisher": "The White House",
+      "date": "2025-02-04",
+      "title": "National Security Presidential Memorandum/NSPM-2",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/02/national-security-presidential-memorandum-nspm-2/",
+      "supports": "Formal U.S. policy: deny Iran a nuclear weapon and ICBMs; neutralize its regional aggression; disrupt, degrade or deprive the IRGC and surrogates of resources; counter missile and asymmetric/conventional weapons capabilities; apply maximum economic pressure.",
+      "quality": "PRIMARY / FORMAL POLICY"
+    },
+    "US3": {
+      "publisher": "The White House",
+      "date": "2026-06-19",
+      "title": "President Trump’s Iran Agreement Is America First in Action",
+      "url": "https://www.whitehouse.gov/releases/2026/06/president-trumps-iran-agreement-is-america-first-in-action/",
+      "supports": "The administration presented the June agreement as serving U.S. objectives by preventing an Iranian nuclear weapon and reopening the Strait of Hormuz to free navigation, rather than by destroying or occupying Iran.",
+      "quality": "PRIMARY / OFFICIAL-ACTOR; agreement-characterization source"
+    },
+    "US4": {
+      "publisher": "The White House",
+      "date": "2026-08-24",
+      "title": "Operation Economic Outcast: Total Isolation of the Iranian Regime",
+      "url": "https://www.whitehouse.gov/releases/2026/08/operation-economic-outcast-total-isolation-of-the-iranian-regime/",
+      "supports": "The current economic phase states its objective as severing economic lifelines sustaining the Iranian regime and its threat networks until Tehran is isolated and financially broken. This is coercive economic pressure, not a stated requirement to eliminate Iran as a state.",
+      "quality": "PRIMARY / OFFICIAL-ACTOR; defines current economic objective"
+    }
+  },
+  "documented_objectives": [
+    {
+      "objective": "Deny Iran a nuclear weapon",
+      "status": "CONTINUOUS CORE OBJECTIVE",
+      "explanation": "This appears consistently in formal policy, wartime mission statements and the June settlement framework. Final adjudication remains tied to the nuclear end state, inspections and any successor agreement.",
+      "source_ids": ["US1", "US2", "US3"]
+    },
+    {
+      "objective": "Break offensive military power projection",
+      "status": "EXPLICIT MILITARY OBJECTIVE",
+      "explanation": "Washington explicitly targeted ballistic missiles, missile/drone production, launch infrastructure, the navy and the broader defense-industrial base that supported regional power projection. Battlefield claims of complete destruction must still be checked against independent BDA elsewhere in Atlas.",
+      "source_ids": ["US1", "US2"]
+    },
+    {
+      "objective": "Reduce Iran's ability to arm and sustain proxies",
+      "status": "EXPLICIT / PARTIAL END STATE",
+      "explanation": "Formal policy and wartime statements aimed to disrupt or sever Iranian support to proxy and aligned forces. This is not the same as requiring every aligned actor to disappear; the board should grade the actual degradation of Iran's ability to fund, arm and direct them.",
+      "source_ids": ["US1", "US2"]
+    },
+    {
+      "objective": "Restore usable navigation through Hormuz",
+      "status": "EXPLICIT SETTLEMENT OBJECTIVE",
+      "explanation": "The administration explicitly presented free navigation through Hormuz as a U.S. objective in the June agreement. The current Oman-Iran joint corridor process and U.S. demining claims belong under this metric, not under a requirement for Iranian state destruction.",
+      "source_ids": ["US3"]
+    },
+    {
+      "objective": "Use economic isolation to narrow Tehran's remaining options",
+      "status": "ACTIVE CURRENT OBJECTIVE",
+      "explanation": "The August phase explicitly seeks to sever financial and commercial lifelines that sustain the regime's threat capacity and force a worse choice set on Tehran.",
+      "source_ids": ["US2", "US4"]
+    }
+  ],
+  "not_documented_as_required_victory_conditions": [
+    "Destroy Iran as a country",
+    "Occupy Iran",
+    "Dissolve the Iranian state",
+    "Regime change as a mandatory condition of military success",
+    "Force unconditional national surrender",
+    "Eliminate every remaining Iranian coercive capability"
+  ],
+  "semantic_test": {
+    "title": "Do not change the scoreboard after the fact",
+    "text": "The claim 'Iran still exists, therefore the United States failed' only works if destroying Iran was actually a U.S. victory condition. The official objective record does not establish that. Once unrelated conditions are admitted, the exercise becomes meaningless: one could just as arbitrarily ask whether Iran is prosperous, whether its economy is healthy, or whether every Iranian weapon disappeared. Those may describe Iran's condition, but they are not automatically mission objectives. Atlas grades each side against the objectives it actually stated and the outcomes its behavior produced.",
+    "source_ids": ["US1", "US2", "US3", "US4"]
+  },
+  "precision_note": "Official U.S. sources are authoritative for what Washington said its objectives were. They are not independent proof that Washington achieved them. Achievement is adjudicated using the broader Atlas evidence record."
+}
