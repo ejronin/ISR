@@ -8,6 +8,7 @@ loader = (root / 'js' / 'navigation.js').read_text(encoding='utf-8')
 endgame_loader = (root / 'js' / 'endgame-20260823.js').read_text(encoding='utf-8')
 state = (root / 'js' / 'state.js').read_text(encoding='utf-8')
 presentation = (root / 'js' / 'presentation.js').read_text(encoding='utf-8')
+legibility = (root / 'js' / 'site-legibility-r3.js').read_text(encoding='utf-8')
 
 required_js = [
     'The war record at a glance',
@@ -22,6 +23,9 @@ required_js = [
     'DEFAULT_LAYER_OVERRIDES',
     "Reset to this view's defaults",
     'How the objective score is calculated',
+    'normalizeLegacyEvidencePresentation',
+    'NOT INDEPENDENTLY VERIFIED',
+    'Dispute posture: uncontested · not a verification finding',
     'public-record-legacy-bridge-r2.css',
 ]
 for marker in required_js:
@@ -34,6 +38,7 @@ assert "UNCONTESTED','NOT INDEPENDENTLY VERIFIED" not in js, 'uncontested must n
 assert "UNVERIFIED: 'UNCONTESTED'" not in presentation, 'canonical presentation must not rewrite UNVERIFIED as UNCONTESTED'
 assert 'disputePosture' in presentation and 'evidenceSupport' in presentation, 'two-axis evidence semantics missing from canonical presentation'
 assert 'formatPublicDom' in presentation, 'canonical public machine-token humanizer missing'
+assert 'normalizeLegacyEvidencePresentation' in legibility, 'late-rendered legacy evidence cards must receive canonical presentation semantics'
 assert 'public-record-ui-r2.css' in loader
 assert 'public-record-ui-r2.js' in loader
 assert 'workspace-ux-plain-language-r1.css' not in endgame_loader
