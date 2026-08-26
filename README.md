@@ -1,29 +1,47 @@
 # Iran War Evidence Atlas
 
-A public, source-linked OSINT atlas for the 2026 Iran conflict. The project separates physical damage, functional effect, actor claims, analytic assessment, and later adjudication so readers can inspect both the current picture and what the public record supported at an earlier cutoff.
+A public, source-linked OSINT record for the 2026 Iran conflict. The project separates observed events, actor claims, physical damage, functional effects, later adjudication, and author analysis so readers can inspect the historical record without treating inference as evidence.
 
 **Live atlas:** https://ejronin.github.io/ISR/
+
+## Public information architecture
+
+The public interface is organized around the questions a reader of a historical war record is likely to ask, rather than around the project's internal analytic workflow:
+
+1. **Overview** — current/final status and chronology.
+2. **Military Operations** — bases and infrastructure, campaigns and strikes, air/missile/drone activity, and supporting damage imagery.
+3. **Consequences** — casualties and material losses, economic effects, and shipping/trade effects.
+4. **Diplomacy & Outcome** — negotiations and agreements, documented objectives, concessions, unresolved terms, and outcome evidence.
+5. **Claims & Verification** — claim checks and the information environment.
+6. **Sources & Method** — source register, methodology, analytic record, historical-record construction, and immutable archive snapshots.
+
+The former ATLAS / TIMELINE / ANALYSIS / MOU / SOURCES workspace bar remains an implementation dependency for specialized views but is no longer public navigation. The detailed agreement workspace remains reachable through **Diplomacy & Outcome**.
+
+### Analytic record separation
+
+The **Analytic record** is an audit layer, not an evidentiary layer. It is reserved for contemporaneous forecasts and current-state/actor-intent/causal assessments, followed by later source-based adjudication. It is never used to establish that an event occurred or to alter the factual ledger.
+
+The analytic register is subject to a completeness gate: historical entries are not published piecemeal. The project sweep must include misses, revisions, incorrect mechanisms, and unresolved assessments before the register is exposed as a scored record.
 
 ## What the atlas covers
 
 - current operational assessment without a composite “war score”;
-- 98 canonical historical-ledger records, including 15 pre-war context records;
-- 117 current chronology records through 2026-08-25 21:32 ET (98 locked historical + 10 Aug. 24 overlay + 8 Aug. 25 overlay + 1 late Aug. 25 shipping update);
-- U.S./coalition facilities, strike effects, satellite BDA, and missile/drone metrics;
+- the canonical historical-ledger record plus append-only current overlays;
+- U.S./coalition facilities, strike effects, satellite/visual BDA, and missile/drone metrics;
 - casualties, durable material loss, munitions expenditure, and economic effects as separate accounting scopes;
 - bargaining, force posture, agreements, regional alignment, and trade routes;
-- schematic oil-route mapping that now distinguishes the degraded Iran→China crude chain from Russian and non-sanctioned Gulf substitute-supply lanes;
+- schematic oil-route mapping that distinguishes the degraded Iran→China crude chain from Russian and non-sanctioned Gulf substitute-supply lanes;
 - claim checks, information-environment analysis, sources, revisions, and unresolved collection gaps;
 - immutable historical HTML snapshots.
 
 ## How to read it
 
-The five primary analysis areas—Overview, Operations, Effects, Information, and Evidence—configure the evidence rail and map together. Contextual subviews remain available beneath the primary navigation. The compact map-layer menu is an expert override, not a second navigation system.
+Start with **Overview → Current status** for the latest synthesized picture, then use **Chronology** to follow events. Move into Military Operations, Consequences, Diplomacy & Outcome, or Claims & Verification for subject-specific records. **Sources & Method** contains the evidence provenance and audit machinery for readers who need to inspect how records were constructed.
 
 Timeline modes have different meanings:
 
-- **AS OF** selects records by event occurrence. Current adjudication is allowed only under the explicit label `CURRENT ASSESSMENT — reviewed through <ledger cutoff>`.
-- **KNOWN BY** selects records by `first_reported`, displays verification only when `first_verified` is at or before the chosen cutoff, and hides later or undated sources and later adjudication fields. Readers can deliberately open the separately labeled current adjudication.
+- **AS OF** selects records by event occurrence. Current adjudication is allowed only under an explicit current-assessment label.
+- **KNOWN BY** selects records by when public evidence entered the record and prevents later evidence from leaking backward into historical cutoffs.
 
 War, month, week, day, and hour zoom are supported. Hour zoom remains disabled unless the canonical records contain a source-supported hour bucket; the interface never invents midnight or noon for date-only evidence.
 
@@ -38,21 +56,20 @@ War, month, week, day, and hour zoom are supported. Hour zoom remains disabled u
 - Schematic routes are transportation-domain approximations, not live AIS tracks or exact operational routes.
 - Source-specific vessel counts remain source-specific; they are not silently converted into exact total physical traffic.
 
-Direct-military accounting is symmetric across U.S./coalition and Iran/aligned material and munitions. `SOURCE-REPORTED`, `CALCULATED`, `CALCULATED RANGE`, `ESTIMATED`, `UNPRICED REMAINDER`, and `UNRESOLVED` are distinct states. A calculated estimate requires a supported quantity and compatible price basis; the two may come from different existing records when the join is explicit and auditable. Overlapping aggregates are never added twice.
+Direct-military accounting is symmetric across U.S./coalition and Iran/aligned material and munitions. `SOURCE-REPORTED`, `CALCULATED`, `CALCULATED RANGE`, `ESTIMATED`, `UNPRICED REMAINDER`, and `UNRESOLVED` are distinct states. A calculated estimate requires a supported quantity and compatible price basis; overlapping aggregates are never added twice.
 
 ## Repository structure
 
 - `index.html` — semantic shell and readable no-JavaScript fallback
-- `css/`, `js/` — local presentation, navigation, map, temporal, safety, and costing modules
+- `css/`, `js/` — local presentation, navigation, map, temporal, safety, costing, and public-record interface modules
 - `assets/icons/` — local map icon grammar
-- `vendor/leaflet/` — pinned Leaflet 1.9.4 runtime
-- `data/` — legacy UI data plus the authoritative locked `integration-v1.2/` ledger and append-only Aug. 24/Aug. 25 current overlays
-- `data/china-oil-sourcing-shift-r1.json` — source-linked schematic China crude-sourcing transition layer used by the Oil Routes map
+- `vendor/leaflet/` — pinned Leaflet runtime
+- `data/` — UI data, authoritative historical integration ledger, and append-only current overlays
 - `snapshots/` — immutable dated public boards
-- `scripts/`, `tests/` — structural, integration, temporal, costing, and hostile-input checks
-- `docs/` — methodology, migration, validation, and historical engineering notes
+- `scripts/`, `tests/` — structural, integration, temporal, costing, hostile-input, and public-IA checks
+- `docs/` — methodology, migration, validation, information-architecture, and historical engineering notes
 
-The prior engineering handoff is preserved at [`docs/Engineering Handoff 20260820.md`](docs/Engineering%20Handoff%2020260820.md).
+The public-record information-architecture specification is preserved in `docs/Public Record Information Architecture 20260826.md`.
 
 ## Local development
 
@@ -64,20 +81,7 @@ python -m http.server 8000
 
 Then open `http://127.0.0.1:8000/`.
 
-Run the release checks:
-
-```bash
-python scripts/validate.py
-python scripts/validate_integration.py
-python scripts/validate_ux.py
-python scripts/validate_aug25_late.py
-node --check js/current-update-20260825-late.js
-node --check js/china-oil-sourcing-shift-r1.js
-node tests/temporal-state.test.js
-node tests/presentation.test.js
-node tests/security-rendering.test.js
-node tests/costing.test.js
-```
+Run the release checks documented by the repository validation scripts and the JavaScript tests under `tests/`.
 
 ## Publishing and integrity
 
@@ -85,8 +89,8 @@ Pull requests run validation only. Deployment runs only from `main` through the 
 
 Before a data update, preserve the current complete board as a new dated file under `snapshots/`; never overwrite an existing snapshot. The canonical integration JSON is hash-checked during validation.
 
-See [`SECURITY.md`](SECURITY.md) for vulnerability reporting and the static-site threat model. See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) for vendored dependency details.
-
 ## Limitations
 
 The atlas reflects the reviewed public record through the displayed cutoff, not classified knowledge or a complete loss inventory. Source availability, publication lag, unresolved time precision, incomplete BDA, inconsistent official accounting, and AIS-dark shipping constrain comparisons. Absence from the current source set is not proof that an event did not occur.
+
+The atlas is designed to make underlying sources easy to inspect and reuse. Its own analytical conclusions are not substitutes for reliable independent secondary sources, and the factual record must remain valid if the analytic-record layer is removed entirely.
