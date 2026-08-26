@@ -25,12 +25,29 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
+      - name: Enforce presentation-only pull-request diff
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          changed="$(git diff --name-only "$BASE_SHA...HEAD")"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -E '^data/'; then
+            echo 'FAIL: presentation-only pass contains data file changes.' >&2
+            exit 1
+          fi
       - name: Build exhaustive source registry
         run: python scripts/build_source_registry.py --root .
       - name: Validate Aug. 24 count synchronization after source build
         env:
           PYTHONUTF8: '1'
         run: python scripts/validate_aug24_counts.py
+      - name: Validate current and late-update overlays
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          python scripts/validate_aug25_late.py
+          python scripts/validate_aug26_strike_map.py
       - name: Validate regional reconciliation coverage, evidence and ship-loss rules
         env:
           PYTHONUTF8: '1'

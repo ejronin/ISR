@@ -7,6 +7,15 @@
   const safe=u=>{try{const x=new URL(u,location.href);return /^https?:$/.test(x.protocol)?x.href:null}catch{return null}};
   const norm=v=>String(v||'').trim().toLowerCase();
   const POS=v=>String(v||'').trim().toUpperCase().replace(/\s+/g,'-');
+  const FLAG_ROOT='./assets/flags/';
+  const GLOBE_ICON='./assets/icons/globe.svg';
+  const COUNTRY_FLAGS=new Map([
+    ['united states','us'],['united states of america','us'],['u.s.','us'],['usa','us'],
+    ['united kingdom','gb'],['uk','gb'],['great britain','gb'],
+    ['iran','ir'],['israel','il'],['saudi arabia','sa'],['pakistan','pk'],['china','cn'],['russia','ru'],['oman','om'],
+    ['turkey','tr'],['türkiye','tr'],['lebanon','lb'],['united arab emirates','ae'],['uae','ae'],
+    ['bahrain','bh'],['qatar','qa'],['kuwait','kw'],['iraq','iq'],['jordan','jo'],['yemen','ye']
+  ]);
   let registry,ctx,biasMeta,obs;
 
   function outletRatingRow(profile){
@@ -37,9 +46,30 @@
     if(star)return;
     star=E('span','isr-gov-source-star','★');
     star.setAttribute('role','img');
-    star.setAttribute('aria-label','Official government source or outlet');
-    star.title='Official government source / outlet';
+    star.setAttribute('aria-label','Official government or state source');
+    star.title='Official government or state source · provenance only';
     name.insertAdjacentElement('afterend',star);
+  }
+
+  function countryIcon(label){
+    const key=norm(label);
+    const global=/^(global|international|global \/ international|global international)$/.test(key);
+    const code=COUNTRY_FLAGS.get(key);
+    if(!code&&!global)return null;
+    const img=E('img',global?'isr-country-globe':'isr-country-flag');
+    img.src=global?GLOBE_ICON:`${FLAG_ROOT}${code}.svg`;
+    img.alt='';img.setAttribute('aria-hidden','true');img.decoding='async';img.width=global?20:24;img.height=18;
+    return img;
+  }
+
+  function decorateCountryHeaders(root){
+    $$('.isr-country>h3',root).forEach(head=>{
+      if(head.dataset.countryIdentityR1==='1')return;
+      const label=(head.textContent||'').trim();
+      const icon=countryIcon(label);
+      if(icon){head.prepend(document.createTextNode(' '));head.prepend(icon);}
+      head.dataset.countryIdentityR1='1';
+    });
   }
 
   function positionScale(parent,provider,labels,selected){
@@ -62,16 +92,16 @@
     const rows=(ratings||[]).filter(r=>r.provider!==excludeProvider);
     if(!rows.length)return;
     const box=A(parent,'div','isr-bias-secondary');
-    A(box,'span','isr-bias-secondary-label','Additional provider context');
+    A(box,'span','isr-bias-secondary-label','Additional publisher context');
     rows.forEach(r=>{
       const u=safe(r.profile_url);if(!u)return;
-      const a=A(box,'a','isr-provider-chip',`${r.provider==='AD_FONTES'?'AD FONTES MEDIA':r.provider} · ${String(r.label||'').toUpperCase()}`);
+      const a=A(box,'a','isr-provider-chip',`${r.provider==='AD_FONTES'?'Ad Fontes Media':r.provider} · ${String(r.label||'').toLowerCase()}`);
       a.dataset.provider=r.provider;a.href=u;a.target='_blank';a.rel='noopener noreferrer';
     });
   }
 
   function renderGround(parent,g,alts){
-    A(parent,'b','isr-ground-title',`GROUND NEWS · ${String(g.bias_raw).toUpperCase()}${g.factuality?` · ${String(g.factuality).toUpperCase()} FACTUALITY`:''}`);
+    A(parent,'b','isr-ground-title',`Ground News · ${String(g.bias_raw).toLowerCase()}${g.factuality?` · ${String(g.factuality).toLowerCase()} factuality`:''}`);
     positionScale(parent,'GROUND_NEWS',['FAR LEFT','LEFT','LEAN LEFT','CENTER','LEAN RIGHT','RIGHT','FAR RIGHT'],String(g.bias_raw).toUpperCase());
     providerLink(parent,g,'Ground News publisher profile ↗');
     A(parent,'small','','Third-party publisher context only. It does not change Atlas evidence grade.');
@@ -79,27 +109,28 @@
   }
 
   function renderAllSides(parent,rating,alts){
-    A(parent,'b','isr-ground-title',`ALLSIDES · ${String(rating.label).toUpperCase()}`);
+    A(parent,'b','isr-ground-title',`AllSides · ${String(rating.label).toLowerCase()}`);
     positionScale(parent,'ALLSIDES',['LEFT','LEAN LEFT','CENTER','LEAN RIGHT','RIGHT'],String(rating.label).toUpperCase());
     providerLink(parent,rating,'AllSides publisher profile ↗');
     const note=A(parent,'div','isr-bias-provider-note');
-    note.textContent=`Provider-native publisher rating${rating.confidence?` · ${String(rating.confidence).toUpperCase()} confidence`:''}. Not an Atlas evidence grade.`;
+    note.textContent=`Provider-native publisher rating${rating.confidence?` · ${String(rating.confidence).toLowerCase()} confidence`:''}. Not an Atlas evidence grade.`;
     secondaryRatings(parent,alts,'ALLSIDES');
   }
 
   function renderAdFontes(parent,rating,alts){
-    A(parent,'b','isr-ground-title',`AD FONTES MEDIA · ${String(rating.label).toUpperCase()}`);
+    A(parent,'b','isr-ground-title',`Ad Fontes Media · ${String(rating.label).toLowerCase()}`);
     const wrap=A(parent,'div','isr-adfontes-wrap'),meter=A(wrap,'div','isr-adfontes-meter');
     const score=Number(rating.bias_score),bounded=Number.isFinite(score)?Math.max(-42,Math.min(42,score)):0;
     meter.style.setProperty('--bias-pos',`${((bounded+42)/84)*100}%`);
     meter.dataset.biasProvider='AD_FONTES';meter.dataset.biasPosition=POS(rating.label);
-    const axis=A(wrap,'div','isr-adfontes-axis');A(axis,'span','','-42 LEFT');A(axis,'span','',`${bounded.toFixed(2)} · ${String(rating.label).toUpperCase()}`);A(axis,'span','', '+42 RIGHT');
+    const axis=A(wrap,'div','isr-adfontes-axis');A(axis,'span','','-42 left');A(axis,'span','',`${bounded.toFixed(2)} · ${String(rating.label).toLowerCase()}`);A(axis,'span','', '+42 right');
     if(rating.reliability_label||rating.reliability_score!=null){A(parent,'div','isr-bias-reliability',`Reliability: ${rating.reliability_label||'provider rated'}${rating.reliability_score!=null?` · ${rating.reliability_score}`:''}`)}
     providerLink(parent,rating,'Ad Fontes publisher profile ↗');
     A(parent,'small','','Ad Fontes bias/reliability are provider-native publisher context. They do not change Atlas evidence grade.');
     secondaryRatings(parent,alts,'AD_FONTES');
   }
 
+  /* Negative-control contract: NOT RATED is never interpreted as CENTER. */
   function renderBias(parent,profile){
     parent.replaceChildren();
     const g=profile?.ground_news||{},alts=media_bias_context(profile);
@@ -107,12 +138,13 @@
     if(groundRated){renderGround(parent,g,alts);return}
     const allSides=alts.find(r=>r.provider==='ALLSIDES');if(allSides){renderAllSides(parent,allSides,alts);return}
     const adFontes=alts.find(r=>r.provider==='AD_FONTES');if(adFontes){renderAdFontes(parent,adFontes,alts);return}
-    A(parent,'b','isr-ground-title',na?(ctx?.political_bias?.not_applicable_display||'POLITICAL-BIAS RATING NOT APPLICABLE'):(ctx?.political_bias?.unrated_display||'NO INDEPENDENT POLITICAL-BIAS RATING LOCATED'));
-    A(parent,'small','',na?'Political-bias rating is not applicable to this source type.':'No verified Ground News, AllSides or Ad Fontes publisher rating is stored for this outlet. NOT RATED is never interpreted as CENTER.');
+    A(parent,'span','isr-bias-secondary-label',na?'Political-bias rating not applicable':'No independent political-bias rating located');
+    A(parent,'small','',na?'Political-bias rating is not applicable to this source type.':'No verified Ground News, AllSides or Ad Fontes publisher rating is stored for this outlet. Not rated is never interpreted as center.');
   }
 
   function apply(){
     const root=$('#sources');if(!root||!registry)return;
+    decorateCountryHeaders(root);
     const profiles=new Map((registry.outlet_profiles||[]).map(p=>[p.display_name,p]));
     $$('.isr-outlet-card',root).forEach(card=>{
       const name=$('.isr-outlet-head strong',card)?.textContent?.trim(),profile=profiles.get(name);if(!profile)return;
@@ -134,7 +166,7 @@
       J('./data/media-bias-provider-metadata.json?v=20260824-r1')
     ]);
     apply();observe();window.AtlasState?.subscribe?.(s=>{if(s.activeView==='sources')setTimeout(apply,90)});
-    window.ISRSourceBiasR1={apply,media_bias_context,officialGovernmentProfile};
+    window.ISRSourceBiasR1={apply,media_bias_context,officialGovernmentProfile,decorateCountryHeaders};
   }
 
   init().catch(e=>console.error('source-bias-r1',e));
