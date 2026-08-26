@@ -21,9 +21,24 @@
   });
 
   const VIEW_GROUPS = Object.freeze({
-    snapshot: 'overview', timeline: 'overview', endgame: 'overview', facilities: 'operations', strikes: 'operations', imagery: 'operations', csis: 'operations',
-    losses: 'effects', economy: 'effects', arctic: 'effects', claims: 'information', infowar: 'information',
-    sources: 'evidence', intro: 'evidence', historical: 'evidence', history: 'evidence'
+    snapshot: 'overview',
+    timeline: 'overview',
+    facilities: 'operations',
+    strikes: 'operations',
+    imagery: 'operations',
+    csis: 'operations',
+    losses: 'consequences',
+    economy: 'consequences',
+    arctic: 'consequences',
+    'diplomacy-hub': 'diplomacy',
+    endgame: 'diplomacy',
+    claims: 'claims',
+    infowar: 'claims',
+    sources: 'sources',
+    intro: 'sources',
+    'analytic-record': 'sources',
+    historical: 'sources',
+    history: 'sources'
   });
 
   function selectedRecord(value) {
@@ -41,7 +56,7 @@
   function normalize(input) {
     const next = Object.assign({}, DEFAULTS, input || {});
     next.activeView = VIEW_GROUPS[next.activeView] ? next.activeView : DEFAULTS.activeView;
-    next.activePrimaryGroup = VIEW_GROUPS[next.activeView] || next.activePrimaryGroup || DEFAULTS.activePrimaryGroup;
+    next.activePrimaryGroup = VIEW_GROUPS[next.activeView] || DEFAULTS.activePrimaryGroup;
     next.selectedRecord = selectedRecord(next.selectedRecord);
     next.temporalMode = next.temporalMode === 'known-by' ? 'known-by' : 'as-of';
     next.temporalGranularity = ['war', 'month', 'week', 'day', 'hour'].includes(next.temporalGranularity) ? next.temporalGranularity : 'war';

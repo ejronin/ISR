@@ -26,7 +26,7 @@ The analytic register is subject to a completeness gate: historical entries are 
 ## What the atlas covers
 
 - current operational assessment without a composite “war score”;
-- 98 canonical historical-ledger records plus append-only current overlays;
+- current chronology records built from 98 canonical historical-ledger records plus append-only current overlays;
 - U.S./coalition facilities, strike effects, satellite/visual BDA, and missile/drone metrics;
 - casualties, durable material loss, munitions expenditure, and economic effects as separate accounting scopes;
 - bargaining, force posture, agreements, regional alignment, and trade routes;
@@ -36,7 +36,7 @@ The analytic register is subject to a completeness gate: historical entries are 
 
 ## How to read it
 
-Start with **Overview → Current status** for the latest synthesized picture, then use **Chronology** to follow events. Move into Military Operations, Consequences, Diplomacy & Outcome, or Claims & Verification for subject-specific records. **Sources & Method** contains the evidence provenance and audit machinery for readers who need to inspect how records were constructed.
+Start with **Overview → At a glance** for the latest synthesized picture, then use **Timeline** to follow events. Move into Military Operations, Consequences, Diplomacy & Outcome, or Claims & Verification for subject-specific records. **Sources & Method** contains the evidence provenance and audit machinery for readers who need to inspect how records were constructed.
 
 Timeline modes have different meanings:
 
@@ -45,14 +45,11 @@ Timeline modes have different meanings:
 
 War, month, week, day, and hour zoom are supported. Hour zoom remains disabled unless the canonical records contain a source-supported hour bucket; the interface never invents midnight or noon for date-only evidence.
 
-## Evidence and accounting rules
+## Evidence discipline
 
-- Observation is not attribution.
-- Actor claim is not confirmation.
-- Damage is not incapacity.
-- A launch is an expenditure, not proof of impact.
-- Unknown is not zero.
-- Geographic precision follows public evidence.
+- An actor claim is not promoted to confirmation without independent support.
+- Physical damage and operational effect are separate findings.
+- An observed event and attribution for that event may have different evidence states.
 - Schematic routes are transportation-domain approximations, not live AIS tracks or exact operational routes.
 - Source-specific vessel counts remain source-specific; they are not silently converted into exact total physical traffic.
 
@@ -73,7 +70,7 @@ The public-record information-architecture specification is preserved in `docs/P
 
 ## Local development
 
-Serve the repository over HTTP; browser security rules make `file://` an unreliable test environment.
+Serve the repository root with a local HTTP server, for example:
 
 ```bash
 python -m http.server 8000

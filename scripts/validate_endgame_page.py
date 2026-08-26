@@ -21,8 +21,8 @@ assert len(data["victory_ledger"]) >= 8
 
 state = state_path.read_text(encoding="utf-8")
 nav = nav_path.read_text(encoding="utf-8")
-assert "endgame: 'overview'" in state
-assert "['endgame', 'Endgame (so far)']" in nav
+assert "endgame: 'diplomacy'" in state
+assert "['endgame', 'Objectives & outcomes']" in nav
 assert "ensureEndgamePanel" in nav
 assert "endgame-20260823.js" in nav
 assert "endgame-20260823.css" in nav

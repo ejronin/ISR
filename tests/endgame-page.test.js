@@ -97,8 +97,8 @@ const iranTally = tally(applyOverrides(scoreData.iran_objectives, scoreCorr.iran
 assert.deepEqual(usTally, {documented:5, adjudicable:4, unresolved:1, points:11, available:16});
 assert.deepEqual(iranTally, {documented:8, adjudicable:7, unresolved:1, points:2, available:28});
 
-assert.match(state, /endgame:\s*'overview'/);
-assert.match(nav, /\['endgame',\s*'Endgame \(so far\)'\]/);
+assert.match(state, /endgame:\s*'diplomacy'/);
+assert.match(nav, /\['endgame',\s*'Objectives & outcomes'\]/);
 assert.match(nav, /ensureEndgamePanel/);
 assert.match(nav, /endgame-20260823\.js/);
 assert.match(view, /Evidence cutoff/);
@@ -118,4 +118,4 @@ assert.match(scoreboardCss, /eg25-tally-summary/);
 assert.match(scoreboardCss, /eg25-tally-metrics/);
 assert.match(css, /#endgame/);
 
-console.log('endgame-page: Atlas view, dynamic objective tally, Hormuz demining claim correction, historical mine-map/minelayer/DDG lane-testing context, cutoff behavior, victory-condition ledger, Iran scoring caveats and evidence trail passed');
+console.log('endgame-page: public Diplomacy & Outcome wiring, dynamic objective tally, Hormuz demining claim correction, historical mine-map/minelayer/DDG lane-testing context, cutoff behavior, victory-condition ledger, Iran scoring caveats and evidence trail passed');
