@@ -19,9 +19,10 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
-      - name: Validate late overlay and China oil shift map
+      - name: Validate late overlay, deployment identity, and China oil shift map
         run: |
           python scripts/validate_aug25_late.py
+          python scripts/validate_build_info_current.py
           node --check js/current-update-20260825.js
           node --check js/current-update-20260825-late.js
           node --check js/china-oil-sourcing-shift-r1.js
