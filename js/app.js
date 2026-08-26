@@ -290,6 +290,7 @@ function ensureTimelineControls(){
  controls.querySelectorAll('select,input').forEach(control=>control.addEventListener('change',()=>{window.AtlasState?.set?.({temporalMode:document.getElementById('timelineMode').value,timeCutoff:document.getElementById('timelineCutoff').value,temporalGranularity:document.getElementById('timelineGranularity').value,timelineContext:document.getElementById('timelineContext').value},{source:'temporal-controls'});renderTimeline(search.value);}));
 }
 const timelineRecordById=new Map((LEDGER.timeline.records||[]).map(row=>[row.event_id,row]));
+window.registerAtlasTimelineRecords=function registerAtlasTimelineRecords(records){(records||[]).forEach(row=>{if(row?.event_id)timelineRecordById.set(row.event_id,row);});};
 window.registerAtlasEvents=function registerAtlasEvents(events){(events||[]).forEach(event=>{eventById.set(event.event_id,event);if(!timelineRecordById.has(event.event_id)){const day=String(event.event_date||'').slice(0,10);const date=new Date(`${day}T00:00:00Z`);const first=new Date(Date.UTC(date.getUTCFullYear(),0,1));const isoWeek=Math.ceil((((date-first)/86400000)+first.getUTCDay()+1)/7);timelineRecordById.set(event.event_id,{event_id:event.event_id,day,month:day.slice(0,7),iso_week:`${date.getUTCFullYear()}-W${String(isoWeek).padStart(2,'0')}`,hour_bucket:null});}});};
 function ledgerTimeline(filter=''){
  const mode=document.getElementById('timelineMode')?.value||'as-of';

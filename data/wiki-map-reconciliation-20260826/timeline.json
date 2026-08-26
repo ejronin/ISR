@@ -1,0 +1,2167 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-08-26T16:30:00-04:00",
+  "layer": "HISTORICAL_COVERAGE_RECONCILIATION",
+  "discovery_basis": [
+    "Wikipedia List of attacks during the 2026 Iran war",
+    "Wikipedia List of ships attacked during the 2026 Iran war"
+  ],
+  "evidence_rule": "Wikipedia is discovery only. Accepted records cite vetted underlying reporting or official/technical evidence; weak/circular/claim-only rows are rejected or retained as unresolved in coverage-audit.json.",
+  "records": [
+    {
+      "event_id": "WIKI-20260228-TELAVIV",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian ballistic missile strike hit a Tel Aviv residential block.",
+      "map_refs": [
+        "MAP-WIKI-20260228-TELAVIV"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        "SRC-F8F0F13C7150"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-BEITSHEMESH",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian missile breached defenses and struck Beit Shemesh.",
+      "map_refs": [
+        "MAP-WIKI-20260301-BEITSHEMESH"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        "SRC-25CB60A3ED30"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260313-NORTHISRAEL",
+      "date": "2026-03-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-13",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "ROCKET_OR_MISSILE_STRIKE",
+      "summary": "Hezbollah continued attacks into northern Israel.",
+      "map_refs": [
+        "MAP-WIKI-20260313-NORTHISRAEL"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-13",
+      "first_verified": "2026-03-13",
+      "source_ids": [
+        "SRC-11F2DDFC000A"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260314-EILAT",
+      "date": "2026-03-14",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-14",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian missile attack affected Eilat.",
+      "map_refs": [
+        "MAP-WIKI-20260314-EILAT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-14",
+      "first_verified": "2026-03-14",
+      "source_ids": [
+        "SRC-330B28666CDE"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260316-JERUSALEM",
+      "date": "2026-03-16",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-16",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_INTERCEPTION_DEBRIS",
+      "summary": "Missile/interceptor fragments fell around Jerusalem's Old City after Iranian fire.",
+      "map_refs": [
+        "MAP-WIKI-20260316-JERUSALEM"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-16",
+      "first_verified": "2026-03-16",
+      "source_ids": [
+        "SRC-D8F23C89D294"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260321-DIMONA",
+      "date": "2026-03-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian missile strike hit the Dimona area.",
+      "map_refs": [
+        "MAP-WIKI-20260321-DIMONA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-21",
+      "first_verified": "2026-03-21",
+      "source_ids": [
+        "SRC-A1B3E76C6CC9"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260321-ARAD",
+      "date": "2026-03-21",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-21",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian missile strike hit Arad.",
+      "map_refs": [
+        "MAP-WIKI-20260321-ARAD"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-21",
+      "first_verified": "2026-03-21",
+      "source_ids": [
+        "SRC-A1B3E76C6CC9"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260322-CENTRALISRAEL",
+      "date": "2026-03-22",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-22",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "CLUSTER_MUNITION_STRIKE",
+      "summary": "Iranian cluster munitions impacted central Israel.",
+      "map_refs": [
+        "MAP-WIKI-20260322-CENTRALISRAEL"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-22",
+      "first_verified": "2026-03-22",
+      "source_ids": [
+        "SRC-9816195E468E"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260328-TELAVIV",
+      "date": "2026-03-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W13",
+      "day": "2026-03-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian ballistic missile struck central Tel Aviv.",
+      "map_refs": [
+        "MAP-WIKI-20260328-TELAVIV"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-28",
+      "first_verified": "2026-03-28",
+      "source_ids": [
+        "SRC-4940F8627D00"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-BHR5FLEET",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian attack targeted the U.S. Navy Fifth Fleet headquarters in Bahrain.",
+      "map_refs": [
+        "MAP-WIKI-20260228-BHR5FLEET"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        "SRC-351DB33C9E1C"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-MINASALMAN",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "STRIKE",
+      "summary": "Iranian strike caused a fire near Mina Salman Port.",
+      "map_refs": [
+        "MAP-WIKI-20260302-MINASALMAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        "SRC-69856BC3D07D"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260309-SITRA",
+      "date": "2026-03-09",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-09",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_OR_MISSILE_STRIKE",
+      "summary": "Attack on Bahrain's Sitra refinery contributed to Bapco force majeure.",
+      "map_refs": [
+        "MAP-WIKI-20260309-SITRA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-09",
+      "first_verified": "2026-03-09",
+      "source_ids": [
+        "SRC-5133006E29A1"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-SHUAIBA",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKE",
+      "summary": "Iranian drone strike hit a U.S. tactical operations site at Shuaiba port.",
+      "map_refs": [
+        "MAP-WIKI-20260301-SHUAIBA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        "SRC-AE2215AEF832"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-KWTEMB",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian strike hit the U.S. Embassy in Kuwait.",
+      "map_refs": [
+        "MAP-WIKI-20260302-KWTEMB"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        "SRC-AE2215AEF832"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-ABUDHABI",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "INTERCEPTION_DEBRIS",
+      "summary": "Debris from interception of Iranian attacks fell in Abu Dhabi.",
+      "map_refs": [
+        "MAP-WIKI-20260228-ABUDHABI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        {
+          "source_id": "SRC-C44035E78D67",
+          "outlet": "Washington Post",
+          "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+          "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-FAIRMONT",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian strike caused a fire at Fairmont The Palm.",
+      "map_refs": [
+        "MAP-WIKI-20260228-FAIRMONT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        {
+          "source_id": "SRC-C44035E78D67",
+          "outlet": "Washington Post",
+          "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+          "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-ALMINHAD",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "AIR_BASE_STRIKE",
+      "summary": "Strike affected Al Minhad Air Base near Dubai.",
+      "map_refs": [
+        "MAP-WIKI-20260302-ALMINHAD"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        "SRC-8BF5DA8426B2"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-AWSUAE",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "INFRASTRUCTURE_STRIKE",
+      "summary": "Objects struck an AWS data center in the UAE, causing fire and power loss.",
+      "map_refs": [
+        "MAP-WIKI-20260302-AWSUAE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        "SRC-BBE3712CD37E"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-JEBELALI",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "PORT_STRIKE_OR_DAMAGE",
+      "summary": "Regional Iranian attack wave affected Jebel Ali/Dubai infrastructure.",
+      "map_refs": [
+        "MAP-WIKI-20260301-JEBELALI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        "SRC-C83A52109F9D"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-ERBIL",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_DRONE_ATTACK",
+      "summary": "Iranian aerial attacks targeted Erbil infrastructure hosting U.S. personnel.",
+      "map_refs": [
+        "MAP-WIKI-20260228-ERBIL"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        "SRC-B3B9C353A9D2"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-VICTORYBASE",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_ATTACK",
+      "summary": "Two drones targeted Victory Base near Baghdad airport; one reportedly struck.",
+      "map_refs": [
+        "MAP-WIKI-20260302-VICTORYBASE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        "SRC-F1EFC5719A4C"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260303-RIYADEMB",
+      "date": "2026-03-03",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-03",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKE",
+      "summary": "Two drones targeted the U.S. Embassy in Riyadh.",
+      "map_refs": [
+        "MAP-WIKI-20260303-RIYADEMB"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-03",
+      "first_verified": "2026-03-03",
+      "source_ids": [
+        "SRC-2EA95127B111",
+        "SRC-AE2215AEF832"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-PRINCESULTAN",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "INTERCEPTED_MISSILE_ATTACK",
+      "summary": "Saudi defenses intercepted missiles attempting to target Prince Sultan Air Base.",
+      "map_refs": [
+        "MAP-WIKI-20260301-PRINCESULTAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        "SRC-A5815BB09BDD"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-KINGKHALID",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "INTERCEPTED_MISSILE_ATTACK",
+      "summary": "Saudi defenses intercepted missiles attempting to target King Khalid International Airport.",
+      "map_refs": [
+        "MAP-WIKI-20260301-KINGKHALID"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        "SRC-A5815BB09BDD"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260319-SAMREF",
+      "date": "2026-03-19",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-19",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKE",
+      "summary": "Drone attack targeted the Saudi Aramco-Exxon SAMREF refinery at Yanbu.",
+      "map_refs": [
+        "MAP-WIKI-20260319-SAMREF"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-19",
+      "first_verified": "2026-03-19",
+      "source_ids": [
+        "SRC-A18378E042B3"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260318-RASLAFFAN",
+      "date": "2026-03-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-18",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian missiles struck Ras Laffan energy facilities.",
+      "map_refs": [
+        "MAP-WIKI-20260318-RASLAFFAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-18",
+      "first_verified": "2026-03-18",
+      "source_ids": [
+        "SRC-5133006E29A1"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260319-KWTREFINERIES",
+      "date": "2026-03-19",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-19",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKES",
+      "summary": "Iranian drones hit operational units at two Kuwaiti refineries.",
+      "map_refs": [
+        "MAP-WIKI-20260319-KWTREFINERIES"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-19",
+      "first_verified": "2026-03-19",
+      "source_ids": [
+        "SRC-5133006E29A1"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260304-TURKEY",
+      "date": "2026-03-04",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-04",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "BALLISTIC_MISSILE_INTERCEPTION",
+      "summary": "NATO air defenses intercepted a ballistic missile Turkey said was fired from Iran.",
+      "map_refs": [
+        "MAP-WIKI-20260304-TURKEY"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-04",
+      "first_verified": "2026-03-04",
+      "source_ids": [
+        "SRC-2AB9F7EAB381"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260309-GAZIANTEP",
+      "date": "2026-03-09",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-09",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "BALLISTIC_MISSILE_INTERCEPTION",
+      "summary": "A ballistic missile fired from Iran toward Türkiye was neutralized by NATO defenses.",
+      "map_refs": [
+        "MAP-WIKI-20260309-GAZIANTEP"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-09",
+      "first_verified": "2026-03-09",
+      "source_ids": [
+        "SRC-8A7095F066CF"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260313-INCIRLIK",
+      "date": "2026-03-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-13",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "BALLISTIC_MISSILE_INTERCEPTION",
+      "summary": "NATO defenses intercepted a third missile Turkey said came from Iran near Incirlik.",
+      "map_refs": [
+        "MAP-WIKI-20260313-INCIRLIK"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-13",
+      "first_verified": "2026-03-13",
+      "source_ids": [
+        "SRC-97B3782FD3F8"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260305-NAKHCHIVAN",
+      "date": "2026-03-05",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-05",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_IMPACTS",
+      "summary": "Azerbaijan said drones linked to Iran fell at Nakhchivan airport and near Shakarabad.",
+      "map_refs": [
+        "MAP-WIKI-20260305-NAKHCHIVAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-05",
+      "first_verified": "2026-03-05",
+      "source_ids": [
+        "SRC-F73E20CD020C"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260318-BEITAWWA",
+      "date": "2026-03-18",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-18",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian missile struck Beit Awwa near Hebron.",
+      "map_refs": [
+        "MAP-WIKI-20260318-BEITAWWA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-18",
+      "first_verified": "2026-03-18",
+      "source_ids": [
+        "SRC-43786DAB5413"
+      ]
+    },
+    {
+      "event_id": "SHIP-SKYLIGHT",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Skylight was attacked in the Strait of Hormuz north of Oman; crew evacuated.",
+      "map_refs": [
+        "MAP-SHIP-SKYLIGHT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-MKDVYOM",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "MKD Vyom was hit by a projectile off Oman; a crew member was killed.",
+      "map_refs": [
+        "MAP-SHIP-MKDVYOM"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-HERCULES",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Hercules Star was struck by a projectile northwest of Mina Saqr; fire was extinguished.",
+      "map_refs": [
+        "MAP-SHIP-HERCULES"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-STENA",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Stena Imperative was struck by two projectiles in Bahrain port; fire broke out and crew evacuated.",
+      "map_refs": [
+        "MAP-SHIP-STENA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-LIBRATRADER",
+      "date": "2026-03-03",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-03",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Libra Trader sustained minor damage off Fujairah.",
+      "map_refs": [
+        "MAP-SHIP-LIBRATRADER"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-03",
+      "first_verified": "2026-03-03",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-GOLDOAK",
+      "date": "2026-03-03",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-03",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Gold Oak sustained minor damage off Fujairah.",
+      "map_refs": [
+        "MAP-SHIP-GOLDOAK"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-03",
+      "first_verified": "2026-03-03",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-SAFEENPRESTIGE",
+      "date": "2026-03-04",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-04",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Safeen Prestige was struck near Oman, causing an engine-room fire and crew abandonment.",
+      "map_refs": [
+        "MAP-SHIP-SAFEENPRESTIGE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-04",
+      "first_verified": "2026-03-04",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-SONANGOL",
+      "date": "2026-03-05",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-05",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Sonangol Namibe was hit by a blast near Iraq's Khor al-Zubair port; initial assessments cited an Iranian explosive boat.",
+      "map_refs": [
+        "MAP-SHIP-SONANGOL"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-05",
+      "first_verified": "2026-03-05",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-TUG-MUSSAFAH",
+      "date": "2026-03-06",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-06",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "A tug was hit by projectiles while assisting Safeen Prestige in the Strait of Hormuz.",
+      "map_refs": [
+        "MAP-SHIP-TUG-MUSSAFAH"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-06",
+      "first_verified": "2026-03-06",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-LOUISEP",
+      "date": "2026-03-07",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-07",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "UKMTO reported a possible drone attack north of Jubail and evacuation of most crew.",
+      "map_refs": [
+        "MAP-SHIP-LOUISEP"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-07",
+      "first_verified": "2026-03-07",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-MAYUREE",
+      "date": "2026-03-11",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-11",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Mayuree Naree was hit by a projectile north of Oman; engine-room fire prompted evacuation.",
+      "map_refs": [
+        "MAP-SHIP-MAYUREE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-ONEMAJESTY",
+      "date": "2026-03-11",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-11",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "One Majesty sustained minor damage from a projectile northwest of Ras Al Khaimah.",
+      "map_refs": [
+        "MAP-SHIP-ONEMAJESTY"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-STARGWYNETH",
+      "date": "2026-03-11",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-11",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Star Gwyneth was hit above the waterline northwest of Dubai.",
+      "map_refs": [
+        "MAP-SHIP-STARGWYNETH"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-SAFESEAVISHNU",
+      "date": "2026-03-11",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-11",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Safesea Vishnu was attacked near Iraq and caught fire; one foreign crew member was killed.",
+      "map_refs": [
+        "MAP-SHIP-SAFESEAVISHNU"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-ZEFYROS",
+      "date": "2026-03-11",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-11",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Zefyros was attacked near Iraq alongside Safesea Vishnu.",
+      "map_refs": [
+        "MAP-SHIP-ZEFYROS"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-11",
+      "first_verified": "2026-03-11",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-SOURCEBLESSING",
+      "date": "2026-03-12",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-12",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Projectile fragments struck Source Blessing north of Jebel Ali; fire was extinguished.",
+      "map_refs": [
+        "MAP-SHIP-SOURCEBLESSING"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-12",
+      "first_verified": "2026-03-12",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-GASALAHMADIAH",
+      "date": "2026-03-17",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-17",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "A projectile struck Gas Al Ahmadiah east of Fujairah.",
+      "map_refs": [
+        "MAP-SHIP-GASALAHMADIAH"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-17",
+      "first_verified": "2026-03-17",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-HALUL50",
+      "date": "2026-03-19",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W12",
+      "day": "2026-03-19",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "A vessel east of Ras Laffan was struck by debris/projectile amid Iranian attacks on the energy complex.",
+      "map_refs": [
+        "MAP-SHIP-HALUL50"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-19",
+      "first_verified": "2026-03-19",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "SHIP-AL-SALMI",
+      "date": "2026-03-30",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W14",
+      "day": "2026-03-30",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Al Salmi was hit at anchorage off Dubai during an Iranian attack; a fire broke out.",
+      "map_refs": [
+        "MAP-SHIP-AL-SALMI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-30",
+      "first_verified": "2026-03-30",
+      "source_ids": [
+        "SRC-C5B26E2C83F4"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260419-TOUSKA",
+      "date": "2026-04-19",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-04",
+      "iso_week": "2026-W16",
+      "day": "2026-04-19",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "summary": "U.S. forces disabled Touska's propulsion and Marines boarded and seized the vessel.",
+      "map_refs": [
+        "MAP-WIKI-20260419-TOUSKA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-04-19",
+      "first_verified": "2026-04-19",
+      "source_ids": [
+        "SRC-F9AD70C05327"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260506-HASNA",
+      "date": "2026-05-06",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W19",
+      "day": "2026-05-06",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "summary": "A U.S. Navy F/A-18 disabled Hasna's rudder during blockade enforcement.",
+      "map_refs": [
+        "MAP-WIKI-20260506-HASNA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-06",
+      "first_verified": "2026-05-06",
+      "source_ids": [
+        {
+          "source_id": "SRC-4B554E439A4A",
+          "outlet": "USCENTCOM",
+          "title": "U.S. Forces Disable Vessel in Gulf of Oman Attempting to Violate Blockade",
+          "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4479004/us-forces-disable-vessel-in-gulf-of-oman-attempting-to-violate-blockade/",
+          "publication_date": "2026-05-06",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260508-SEASTARIII",
+      "date": "2026-05-08",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W19",
+      "day": "2026-05-08",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "summary": "A U.S. Navy F/A-18 disabled Sea Star III during blockade enforcement.",
+      "map_refs": [
+        "MAP-WIKI-20260508-SEASTARIII"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-08",
+      "first_verified": "2026-05-08",
+      "source_ids": [
+        "SRC-0E7A334F8A2A"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260508-SEVDA",
+      "date": "2026-05-08",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W19",
+      "day": "2026-05-08",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "summary": "A U.S. Navy F/A-18 disabled Sevda during blockade enforcement.",
+      "map_refs": [
+        "MAP-WIKI-20260508-SEVDA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-08",
+      "first_verified": "2026-05-08",
+      "source_ids": [
+        "SRC-0E7A334F8A2A"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260529-LIANSTAR",
+      "date": "2026-05-29",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W22",
+      "day": "2026-05-29",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "summary": "A U.S. aircraft disabled Lian Star with a Hellfire missile during blockade enforcement.",
+      "map_refs": [
+        "MAP-WIKI-20260529-LIANSTAR"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-29",
+      "first_verified": "2026-05-29",
+      "source_ids": [
+        "SRC-BF66F38A274F"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260602-LEXIE",
+      "date": "2026-06-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W23",
+      "day": "2026-06-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "summary": "A U.S. aircraft disabled Lexie with a Hellfire missile during blockade enforcement.",
+      "map_refs": [
+        "MAP-WIKI-20260602-LEXIE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-06-02",
+      "first_verified": "2026-06-02",
+      "source_ids": [
+        "SRC-F9DF83972317"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260608-MARIVEX",
+      "date": "2026-06-08",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W24",
+      "day": "2026-06-08",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_BLOCKADE_STRIKE",
+      "summary": "A U.S. Navy F/A-18 disabled Marivex during blockade enforcement.",
+      "map_refs": [
+        "MAP-WIKI-20260608-MARIVEX"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-06-08",
+      "first_verified": "2026-06-08",
+      "source_ids": [
+        "SRC-F074C4DA31A4"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260610-SETTEBELLO",
+      "date": "2026-06-10",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-06",
+      "iso_week": "2026-W24",
+      "day": "2026-06-10",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "MT Settebello was hit by a projectile near the Strait of Hormuz, causing a fire and three seafarer deaths.",
+      "map_refs": [
+        "MAP-WIKI-20260610-SETTEBELLO"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-06-10",
+      "first_verified": "2026-06-10",
+      "source_ids": [
+        "SRC-CF91257C0AC2"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-JAMARAN",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "NAVAL_STRIKE",
+      "summary": "U.S. Central Command said it sank the Iranian Jamaran-class warship at a Chabahar pier.",
+      "map_refs": [
+        "MAP-WIKI-20260228-JAMARAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        "SRC-A2912FAC4A18"
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-BAYANDOR",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "NAVAL_STRIKE",
+      "summary": "Satellite imagery analysis assessed IRIS Bayandor sunk at Konarak during opening strikes.",
+      "map_refs": [
+        "MAP-WIKI-20260228-BAYANDOR"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        {
+          "source_id": "SRC-6843BB957E02",
+          "outlet": "Critical Threats Project / ISW",
+          "title": "Iran Update Evening Special Report, March 1, 2026",
+          "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-march-1-2026",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_OSINT_ANALYSIS",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-NAGHDI",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "NAVAL_STRIKE",
+      "summary": "Satellite imagery analysis assessed IRIS Naghdi sunk at Konarak during opening strikes.",
+      "map_refs": [
+        "MAP-WIKI-20260228-NAGHDI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        {
+          "source_id": "SRC-6843BB957E02",
+          "outlet": "Critical Threats Project / ISW",
+          "title": "Iran Update Evening Special Report, March 1, 2026",
+          "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-march-1-2026",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_OSINT_ANALYSIS",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-MAKRAN",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "NAVAL_STRIKE",
+      "summary": "Satellite imagery showed IRINS Makran struck and burning at Bandar Abbas.",
+      "map_refs": [
+        "MAP-WIKI-20260302-MAKRAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        {
+          "source_id": "SRC-7C416B910C6E",
+          "outlet": "USNI News",
+          "title": "Iranian Naval Forces are Major Target in Operation Epic Fury Strikes",
+          "url": "https://news.usni.org/2026/03/02/iranian-naval-forces-are-major-target-in-operation-epic-fury-strikes",
+          "publication_date": "2026-03-02",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_SPECIALIST_REPORTING",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-SHAHIDBAGHERI",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "NAVAL_STRIKE",
+      "summary": "U.S. forces struck Iranian drone carrier IRIS Shahid Bagheri at Bandar Abbas.",
+      "map_refs": [
+        "MAP-WIKI-20260228-SHAHIDBAGHERI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        {
+          "source_id": "SRC-7C416B910C6E",
+          "outlet": "USNI News",
+          "title": "Iranian Naval Forces are Major Target in Operation Epic Fury Strikes",
+          "url": "https://news.usni.org/2026/03/02/iranian-naval-forces-are-major-target-in-operation-epic-fury-strikes",
+          "publication_date": "2026-03-02",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_SPECIALIST_REPORTING",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-CROWNEPLAZA",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKE",
+      "summary": "Crowne Plaza Hotel in Manama was struck during the Iranian retaliatory campaign.",
+      "map_refs": [
+        "MAP-WIKI-20260301-CROWNEPLAZA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        {
+          "source_id": "SRC-D571336DF718",
+          "outlet": "Airwars / U.S. Embassy Manama",
+          "title": "Crowne Plaza Hotel Manama strike assessment",
+          "url": "https://airwars.org/incidents/irbh260301j-march-1-2026",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "CORROBORATED_OSINT_AGGREGATION",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-ETIHADTOWERS",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "INTERCEPT_DEBRIS",
+      "summary": "Debris from an intercepted drone struck Etihad Towers in Abu Dhabi.",
+      "map_refs": [
+        "MAP-WIKI-20260301-ETIHADTOWERS"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        {
+          "source_id": "SRC-82CB62CA99D5",
+          "outlet": "Emirates News Agency (WAM)",
+          "title": "Debris from drones intercepted by air defence systems falls on façade of one of Etihad Towers buildings",
+          "url": "https://www.wam.ae/en/article/byzgp55-debris-from-drones-intercepted-air-defence-systems",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-ALSALAM",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKE",
+      "summary": "Two Iranian drones targeted a warehouse at Al Salam naval base in Abu Dhabi.",
+      "map_refs": [
+        "MAP-WIKI-20260301-ALSALAM"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        {
+          "source_id": "SRC-5A20B2D03812",
+          "outlet": "Emirates News Agency (WAM)",
+          "title": "Ministry of Defence responds to targeting of Al Salam military base",
+          "url": "https://www.wam.ae/en/article/byzgpj8-ministry-defence-responds-targeting-salam-military",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260228-AMMAN",
+      "date": "2026-02-28",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-02",
+      "iso_week": "2026-W09",
+      "day": "2026-02-28",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "INTERCEPTED_MISSILE_DRONE_WAVE",
+      "summary": "Jordan intercepted Iranian missiles and drones targeting its territory; falling debris caused material damage.",
+      "map_refs": [
+        "MAP-WIKI-20260228-AMMAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-02-28",
+      "first_verified": "2026-02-28",
+      "source_ids": [
+        {
+          "source_id": "SRC-328CF1F87DC5",
+          "outlet": "Jordan Times",
+          "title": "JAF intercepts 49 drones, ballistic missiles, ensures no casualties",
+          "url": "https://jordantimes.com/news/local/jaf-intercepts-49-drones-ballistic-missiles-ensures-no-casualties",
+          "publication_date": "2026-02-28",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260309-YEHUD",
+      "date": "2026-03-09",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W11",
+      "day": "2026-03-09",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MISSILE_STRIKE",
+      "summary": "Iranian cluster-warhead ballistic missile struck a construction site in Yehud.",
+      "map_refs": [
+        "MAP-WIKI-20260309-YEHUD"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-09",
+      "first_verified": "2026-03-09",
+      "source_ids": [
+        {
+          "source_id": "SRC-FFE00BDC5BDE",
+          "outlet": "Times of Israel",
+          "title": "Second person dies as a result of Iranian cluster bomb strike yesterday",
+          "url": "https://www.timesofisrael.com/liveblog_entry/death-of-second-victim-is-confirmed-in-iranian-missile-strike-yesterday/",
+          "publication_date": "2026-03-10",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260302-RASTANURA",
+      "date": "2026-03-02",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W10",
+      "day": "2026-03-02",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKE",
+      "summary": "A drone strike hit Saudi Aramco's Ras Tanura refinery and prompted a shutdown.",
+      "map_refs": [
+        "MAP-WIKI-20260302-RASTANURA"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-02",
+      "first_verified": "2026-03-02",
+      "source_ids": [
+        {
+          "source_id": "SRC-65FC65F4C81E",
+          "outlet": "Reuters",
+          "title": "Ras Tanura refinery struck by drone; Reuters-verified aftermath",
+          "url": "https://www.reutersconnect.com/item/smoke-billows-from-saudi-aramcos-ras-tanura-oil-refinery-after-a-reported-iranian-drone-strike/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1JDMkJXSkFUS1UyWQ",
+          "publication_date": "2026-03-02",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-BHRAIRPORT",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKE",
+      "summary": "Bahrain International Airport was targeted by a drone and sustained damage.",
+      "map_refs": [
+        "MAP-WIKI-20260301-BHRAIRPORT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        {
+          "source_id": "SRC-16289E10CF8B",
+          "outlet": "Xinhua",
+          "title": "Bahrain says international airport targeted by drone, no casualties reported",
+          "url": "https://english.news.cn/20260301/20a60c3e5558426f8ae6cb9b2d73a4dc/c.html",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "STATE_NEWS_CITING_BAHRAIN_INTERIOR_MINISTRY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-BURJALARAB",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "INTERCEPT_DEBRIS",
+      "summary": "Debris from an intercepted drone caused a minor fire on the Burj Al Arab facade.",
+      "map_refs": [
+        "MAP-WIKI-20260301-BURJALARAB"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        {
+          "source_id": "SRC-02466B4C454D",
+          "outlet": "Reuters",
+          "title": "Dubai airport and Burj Al Arab damaged in Iranian strikes",
+          "url": "https://www.reuters.com/world/middle-east/missile-debris-panic-buying-jolt-dubais-aura-calm-after-iran-attack-2026-03-01/",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "PRIMARY_OR_HIGH_QUALITY_SECONDARY",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "WIKI-20260301-DUQM",
+      "date": "2026-03-01",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-03",
+      "iso_week": "2026-W09",
+      "day": "2026-03-01",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "DRONE_STRIKE",
+      "summary": "Drone strikes hit Port of Duqm during Iran's regional retaliatory campaign.",
+      "map_refs": [
+        "MAP-WIKI-20260301-DUQM"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-03-01",
+      "first_verified": "2026-03-01",
+      "source_ids": [
+        {
+          "source_id": "SRC-C44035E78D67",
+          "outlet": "Washington Post",
+          "title": "Where Iran has retaliated across the Middle East, according to satellite images and videos",
+          "url": "https://www.washingtonpost.com/investigations/2026/03/01/where-iran-strikes-middle-east-images-video/",
+          "publication_date": "2026-03-01",
+          "source_roles": [
+            "EVENT_EXISTENCE",
+            "ATTRIBUTION_OR_EFFECT"
+          ],
+          "quality": "HIGH_QUALITY_VISUAL_VERIFICATION",
+          "lineage": "UNDERLYING_SOURCE_FROM_WIKIPEDIA_COVERAGE_RECONCILIATION",
+          "records_supported": []
+        }
+      ]
+    },
+    {
+      "event_id": "SHIP-JVINNOVATION",
+      "date": "2026-05-04",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W19",
+      "day": "2026-05-04",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "JV Innovation was struck by an unidentified munition near Mina Saqr.",
+      "map_refs": [
+        "MAP-SHIP-JVINNOVATION"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-04",
+      "first_verified": "2026-05-04",
+      "source_ids": [
+        "SRC-EC86B7B61B78"
+      ]
+    },
+    {
+      "event_id": "SHIP-HAJIALI",
+      "date": "2026-05-13",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W20",
+      "day": "2026-05-13",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Haji Ali caught fire and sank after a suspected drone or missile attack off Oman.",
+      "map_refs": [
+        "MAP-SHIP-HAJIALI"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-13",
+      "first_verified": "2026-05-13",
+      "source_ids": [
+        "SRC-D56EA3603AB6"
+      ]
+    },
+    {
+      "event_id": "SHIP-OLYMPICLIFE",
+      "date": "2026-05-26",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W22",
+      "day": "2026-05-26",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Olympic Life suffered an external explosion near the waterline off Muscat.",
+      "map_refs": [
+        "MAP-SHIP-OLYMPICLIFE"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-26",
+      "first_verified": "2026-05-26",
+      "source_ids": [
+        "SRC-7C60593278F2"
+      ]
+    },
+    {
+      "event_id": "SHIP-HUICHUAN",
+      "date": "2026-05-14",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-05",
+      "iso_week": "2026-W20",
+      "day": "2026-05-14",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_SEIZURE",
+      "summary": "Hui Chuan was seized near the UAE and taken toward Iranian waters.",
+      "map_refs": [
+        "MAP-SHIP-HUICHUAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-05-14",
+      "first_verified": "2026-05-14",
+      "source_ids": [
+        "SRC-E64ED5CE389D"
+      ]
+    },
+    {
+      "event_id": "SHIP-ALREKAYYAT",
+      "date": "2026-07-06",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W28",
+      "day": "2026-07-06",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Al Rekayyat was struck while transiting the Omani side of Hormuz.",
+      "map_refs": [
+        "MAP-SHIP-ALREKAYYAT"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-07-06",
+      "first_verified": "2026-07-06",
+      "source_ids": [
+        "SRC-1DB72555A64F",
+        "SRC-FF3DDA1F64DA"
+      ]
+    },
+    {
+      "event_id": "SHIP-WEDYAN",
+      "date": "2026-07-07",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W28",
+      "day": "2026-07-07",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "Wedyan was damaged during the July 6–7 Hormuz attacks.",
+      "map_refs": [
+        "MAP-SHIP-WEDYAN"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-07-07",
+      "first_verified": "2026-07-07",
+      "source_ids": [
+        "SRC-B026DA8C0073",
+        "SRC-FF3DDA1F64DA"
+      ]
+    },
+    {
+      "event_id": "SHIP-CYPRUSPROSPERITY",
+      "date": "2026-07-07",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W28",
+      "day": "2026-07-07",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "CENTCOM identified Cyprus Prosperity as one of three commercial vessels attacked by Iran.",
+      "map_refs": [
+        "MAP-SHIP-CYPRUSPROSPERITY"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-07-07",
+      "first_verified": "2026-07-07",
+      "source_ids": [
+        "SRC-FF3DDA1F64DA"
+      ]
+    },
+    {
+      "event_id": "SHIP-GFSGALAXY",
+      "date": "2026-07-12",
+      "time": null,
+      "time_precision": "DATE_ONLY",
+      "year": 2026,
+      "month": "2026-07",
+      "iso_week": "2026-W28",
+      "day": "2026-07-12",
+      "hour_bucket": null,
+      "record_class": "WARTIME EVENT",
+      "event_type": "MARITIME_ATTACK",
+      "summary": "GFS Galaxy was hit in Hormuz and abandoned after engine-room damage.",
+      "map_refs": [
+        "MAP-SHIP-GFSGALAXY"
+      ],
+      "facility_refs": [],
+      "claim_refs": [],
+      "first_reported": "2026-07-12",
+      "first_verified": "2026-07-12",
+      "source_ids": [
+        "SRC-FD363054B86E"
+      ]
+    }
+  ]
+}

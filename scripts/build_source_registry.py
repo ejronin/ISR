@@ -58,6 +58,8 @@ SOURCE_NAMESPACES = [
     "data/current-update-20260824/sources.json",
     "data/current-update-20260825/sources.json",
     "data/current-update-20260825-late/sources.json",
+    "data/current-update-20260826/sources.json",
+    "data/wiki-map-reconciliation-20260826/sources.json",
 ]
 
 def canonical_outlet(name: str, url: str = '') -> str:
@@ -165,7 +167,7 @@ def write(root: Path, registry: dict):
     fields=["source_id","outlet_profile_id","outlet","country","region","outlet_type","ground_news_status","bias_raw","bias_bucket_3","factuality","quality","publication_date","source_roles","title","url"]
     profiles={p["outlet_profile_id"]:p for p in registry["outlet_profiles"]}
     with (root/"data/source-registry.csv").open("w",newline="",encoding="utf-8") as fh:
-        w=csv.DictWriter(fh,fieldnames=fields); w.writeheader()
+        w=csv.DictWriter(fh,fieldnames=fields,lineterminator="\n"); w.writeheader()
         for s in registry["sources"]:
             p=profiles[s["outlet_profile_id"]]; g=p["ground_news"]
             w.writerow({"source_id":s["source_id"],"outlet_profile_id":p["outlet_profile_id"],"outlet":p["display_name"],"country":p.get("country") or "","region":p["region"],"outlet_type":p["outlet_type"],"ground_news_status":g["status"],"bias_raw":g.get("bias_raw") or "","bias_bucket_3":g.get("bias_bucket_3") or "","factuality":g.get("factuality") or "","quality":s.get("quality") or "","publication_date":s.get("publication_date") or "","source_roles":"|".join(s.get("source_roles") or []),"title":s.get("title") or "","url":s["url"]})
