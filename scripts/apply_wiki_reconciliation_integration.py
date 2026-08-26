@@ -33,6 +33,14 @@ def main() -> int:
         '"data/wiki-map-reconciliation-20260826/sources.json"',
     )
 
+    # Keep generated CSV deterministic and compatible with git diff --check.
+    patch(
+        "scripts/build_source_registry.py",
+        "        writer = csv.writer(handle)\n",
+        '        writer = csv.writer(handle, lineterminator="\\n")\n',
+        'lineterminator="\\n"',
+    )
+
     timeline_anchor = 'const timelineRecordById=new Map((LEDGER.timeline.records||[]).map(row=>[row.event_id,row]));\nwindow.registerAtlasEvents=function registerAtlasEvents(events){'
     timeline_replacement = '''const timelineRecordById=new Map((LEDGER.timeline.records||[]).map(row=>[row.event_id,row]));
 window.registerAtlasTimelineRecords=function registerAtlasTimelineRecords(records){(records||[]).forEach(row=>{if(row?.event_id)timelineRecordById.set(row.event_id,row);});};
