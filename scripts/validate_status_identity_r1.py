@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -5,8 +6,32 @@ js = (ROOT / 'js/status-identity-r1.js').read_text(encoding='utf-8')
 css = (ROOT / 'css/status-identity-r1.css').read_text(encoding='utf-8')
 source = (ROOT / 'js/source-bias-r1.js').read_text(encoding='utf-8')
 loader = (ROOT / 'js/endgame-20260823.js').read_text(encoding='utf-8')
+outlet_profiles = json.loads((ROOT / 'data' / 'outlet-profiles.json').read_text(encoding='utf-8'))
 
-FLAG_CODES = ['ir','us','il','sa','pk','cn','ru','om','tr','lb','ae','bh','qa','kw','iq','jo','ye','gb']
+SOURCE_COUNTRY_CODES = {
+    'Australia': 'au',
+    'Bahrain': 'bh',
+    'Bulgaria': 'bg',
+    'China': 'cn',
+    'Iran': 'ir',
+    'Iraq': 'iq',
+    'Israel': 'il',
+    'Jordan': 'jo',
+    'Kuwait': 'kw',
+    'Lebanon': 'lb',
+    'Oman': 'om',
+    'Pakistan': 'pk',
+    'Qatar': 'qa',
+    'Russia': 'ru',
+    'Saudi Arabia': 'sa',
+    'Turkey': 'tr',
+    'Türkiye': 'tr',
+    'United Arab Emirates': 'ae',
+    'United Kingdom': 'gb',
+    'United States': 'us',
+    'Yemen': 'ye',
+}
+FLAG_CODES = sorted(set(SOURCE_COUNTRY_CODES.values()))
 
 required_js = [
     'ACTOR_FLAGS', 'FLAG_ASSET_ROOT', 'sir-actor-flag-icon', 'actorCodeFor',
@@ -26,6 +51,20 @@ for emoji in ['🇮🇷','🇺🇸','🇮🇱','🇸🇦','🇵🇰','🇨🇳',
 expected_status_selector = "const STATUS_ELEMENTS='.physical-badge,.loss-status,.isr-loss-status,.component-state .physical-badge';"
 assert expected_status_selector in js, 'physical-condition decorator is not restricted to physical/loss surfaces'
 assert ".evidence-badge" not in expected_status_selector, 'evidence badges must remain separate from physical condition colors'
+
+# Every structured country currently capable of becoming a Sources country header must resolve to a local SVG.
+structured_countries = sorted({
+    profile.get('country')
+    for profile in outlet_profiles.get('outlet_profiles', [])
+    if profile.get('country')
+})
+unmapped = [country for country in structured_countries if country not in SOURCE_COUNTRY_CODES]
+assert not unmapped, f'country header(s) lack presentation flag-code contract: {unmapped}'
+source_lower = source.lower()
+for country in structured_countries:
+    code = SOURCE_COUNTRY_CODES[country]
+    mapping_token = f"['{country.lower()}','{code}']"
+    assert mapping_token in source_lower, f'country header is not mapped in source-bias-r1.js: {country} -> {code}'
 
 for code in FLAG_CODES:
     path = ROOT / 'assets' / 'flags' / f'{code}.svg'
@@ -48,7 +87,7 @@ for token in required_css:
 for token in [
     'officialGovernmentProfile', 'markOfficialGovernment', 'isr-gov-source-star',
     'Official government or state source', 'decorateCountryHeaders', 'COUNTRY_FLAGS',
-    "['united kingdom','gb']", 'GLOBE_ICON'
+    "['united kingdom','gb']", "['bulgaria','bg']", "['australia','au']", 'GLOBE_ICON'
 ]:
     assert token in source, f'missing source identity/provenance contract: {token}'
 assert 'evidence grade' in source.lower(), 'government-source star must explicitly remain separate from evidence grade'
@@ -61,4 +100,4 @@ for token in [
 ]:
     assert token in loader, f'loader missing cache-busted status/source asset: {token}'
 
-print('status identity R1 validation: PASS — actor flags, country-header identity, provenance and condition/evidence separation')
+print('status identity R1 validation: PASS — actor flags, complete country-header identity, provenance and condition/evidence separation')
