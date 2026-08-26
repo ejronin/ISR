@@ -81,13 +81,14 @@
   }
 
   function refresh(){analysisGuide();atlasGuide();timelineGuide();sourcesGuide();}
+  function queueRefresh(){setTimeout(refresh,0);setTimeout(refresh,90);}
 
   function bind(){
     const interactive='.isr-workspace-nav,.analysis-nav,#timeline,#sources';
-    document.addEventListener('click',e=>{if(e.target.closest(interactive))setTimeout(refresh,0);},true);
-    document.addEventListener('input',e=>{if(e.target.closest('#timeline,#sources'))setTimeout(refresh,0);},true);
-    document.addEventListener('change',e=>{if(e.target.closest('#timeline,#sources'))setTimeout(refresh,0);},true);
-    window.AtlasState?.subscribe?.(()=>setTimeout(refresh,0));
+    document.addEventListener('click',e=>{if(e.target.closest(interactive))queueRefresh();},true);
+    document.addEventListener('input',e=>{if(e.target.closest('#timeline,#sources'))queueRefresh();},true);
+    document.addEventListener('change',e=>{if(e.target.closest('#timeline,#sources'))queueRefresh();},true);
+    window.AtlasState?.subscribe?.(queueRefresh);
   }
 
   function init(){
