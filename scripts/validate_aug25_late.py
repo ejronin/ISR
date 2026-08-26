@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,6 +38,7 @@ req(source['source_id'] in {r['source_id'] for r in event['source_refs']}, 'even
 req('source-specific' in event['verified_effect'].lower(), 'shipping methodology boundary preserved')
 req('current-update-20260825-late.js' in loader, 'Aug25 loader chains late overlay')
 req('china-oil-sourcing-shift-r1.js' in latejs, 'late overlay chains map shift')
+req('current-update-20260826.js' in latejs, 'late overlay chains Aug26 append-only overlay')
 
 req(mapdata.get('schema_version') == '1.0', 'China oil shift schema')
 req('schematic' in mapdata.get('geometry_policy', '').lower(), 'map geometry policy')
@@ -59,4 +62,5 @@ for marker in ['Trade / logistics routes','degraded_legacy','expanded_substitute
     req(marker in mapjs, f'map JS marker {marker}')
 req("return { color:'#38bdf8'" in mapjs, 'default renderer style for additional substitute classes')
 
-print('aug25-late: PASS — 117-record chronology, methodology-bounded Hormuz update, and China crude sourcing-shift map layer')
+subprocess.run([sys.executable, str(ROOT / 'scripts/validate_aug26_strike_map.py')], cwd=ROOT, check=True)
+print('aug25-late: PASS — frozen 117-record late overlay retained; Aug26 strike/map overlay validation chained cleanly')
