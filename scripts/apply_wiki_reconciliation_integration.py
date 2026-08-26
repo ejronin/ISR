@@ -36,8 +36,8 @@ def main() -> int:
     # Keep generated CSV deterministic and compatible with git diff --check.
     patch(
         "scripts/build_source_registry.py",
-        "        writer = csv.writer(handle)\n",
-        '        writer = csv.writer(handle, lineterminator="\\n")\n',
+        '        w=csv.DictWriter(fh,fieldnames=fields); w.writeheader()\n',
+        '        w=csv.DictWriter(fh,fieldnames=fields,lineterminator="\\n"); w.writeheader()\n',
         'lineterminator="\\n"',
     )
 
