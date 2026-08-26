@@ -88,6 +88,12 @@ jobs:
           node --check js/status-identity-r1.js
           node --check js/source-bias-r1.js
           python scripts/validate_status_identity_r1.py
+      - name: Validate popup, source and analysis legibility R3
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          node --check js/site-legibility-r3.js
+          python scripts/validate_site_legibility_r3.py
       - name: Validate final Mermaid fit and Oil Routes R1
         env:
           PYTHONUTF8: '1'
