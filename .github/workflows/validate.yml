@@ -25,15 +25,18 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
-      - name: Enforce presentation-only pull-request diff
+      - name: Protect frozen data in pull-request diffs
         if: github.event_name == 'pull_request'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           changed="$(git diff --name-only "$BASE_SHA...HEAD")"
           printf '%s\n' "$changed"
-          if printf '%s\n' "$changed" | grep -E '^data/'; then
-            echo 'FAIL: presentation-only pass contains data file changes.' >&2
+          data_changed="$(printf '%s\n' "$changed" | grep -E '^data/' || true)"
+          illegal="$(printf '%s\n' "$data_changed" | grep -Ev '^(data/current-update-20260827/|data/iran-messaging-shifts-20260827-r1\.json$)' || true)"
+          if [ -n "$illegal" ]; then
+            echo 'FAIL: this update modifies frozen or non-authorized historical data paths:' >&2
+            printf '%s\n' "$illegal" >&2
             exit 1
           fi
       - name: Build exhaustive source registry
@@ -48,6 +51,10 @@ jobs:
         run: |
           python scripts/validate_aug25_late.py
           python scripts/validate_aug26_strike_map.py
+          python scripts/validate_aug27_update.py
+          node --check js/current-update-20260827.js
+          node --check js/iran-messaging-shifts-20260827-r1.js
+          node --check tests/browser-aug27-messaging-smoke.js
       - name: Validate regional reconciliation coverage, evidence and ship-loss rules
         env:
           PYTHONUTF8: '1'
@@ -64,7 +71,7 @@ jobs:
           python scripts/validate_mou_strike_integration_r1.py
           node --check js/iran-messaging-r1.js
           node --check tests/browser-mou-strike-smoke.js
-      - name: Exercise async MOU and strike UI in headless browser
+      - name: Exercise async MOU, strike and Aug. 27 messaging UI in headless browser
         shell: bash
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/atlas-http.log 2>&1 &
@@ -92,6 +99,7 @@ jobs:
             exit 1
           fi
           ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-mou-strike-smoke.js
+          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-aug27-messaging-smoke.js
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration
