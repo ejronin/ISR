@@ -127,7 +127,7 @@
     const ids=new Set();
     for(const row of window.ATLAS_TEMPORAL_INDEX||[]){
       if(!row?.event_id)continue;
-      if(row.temporal_record_type==='ANNOTATION'||row.record_class==='EVIDENCE ANNOTATION')continue;
+      if(row.temporal_record_type==='ANNOTATION')continue;
       ids.add(row.event_id);
     }
     return ids.size;
