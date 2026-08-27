@@ -5,7 +5,7 @@
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const E=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n;};
   const safe=u=>{try{const x=new URL(u,location.href);return /^https?:$/.test(x.protocol)?x.href:null}catch{return null;}};
-  let queued=false,observer=null;
+  let queued=false,observer=null,pendingAuditClaim=null;
 
   function sourceMap(){
     const out={};
@@ -43,9 +43,9 @@
     return $('#endgame .eg-ledger.selected')||$('#endgame .eg-ledger[aria-pressed="true"]');
   }
   function focusNode(host,node){
-    const svg=host?.querySelector('svg');if(!host||!svg||!node?.getBBox)return;
+    const svg=host?.querySelector('svg');if(!host||!svg||!node?.getBBox)return false;
     if(!svg.dataset.ph1OriginalViewBox){const vb=svg.getAttribute('viewBox');if(vb)svg.dataset.ph1OriginalViewBox=vb;}
-    let b;try{b=node.getBBox();}catch{return;}
+    let b;try{b=node.getBBox();}catch{return false;}
     const hostRect=host.getBoundingClientRect(),aspect=Math.max(.8,hostRect.width/Math.max(1,hostRect.height));
     let w=Math.max(260,b.width*4.4),h=Math.max(190,b.height*6.2);if(w/h<aspect)w=h*aspect;else h=w/aspect;
     const cx=b.x+b.width/2,cy=b.y+b.height/2;
@@ -59,7 +59,21 @@
     const details=E('button','','Open associated information');details.type='button';details.onclick=()=>associatedTarget(host)?.scrollIntoView({behavior:'smooth',block:'center'});
     const full=E('button','','Show full chart');full.type='button';full.onclick=()=>resetNodeFocus(host);
     bar.append(details,full);
-    requestAnimationFrame(()=>window.ISRTrueMermaidFitR1?.fit?.(host));
+    return true;
+  }
+  function selectedLedgerFor(claim){
+    return $$('#endgame .eg-ledger').find(l=>l.dataset.claimId===claim&&(l.classList.contains('selected')||l.getAttribute('aria-pressed')==='true'))||null;
+  }
+  function settleAuditFocus(claim,attempt=0){
+    if(!claim||pendingAuditClaim!==claim)return;
+    const host=document.getElementById('egMermaidHost');
+    const target=host&&$$('g.node[role="button"]',host).find(n=>(n.dataset.claimIds||'').split(',').includes(claim));
+    if(host&&target?.isConnected&&selectedLedgerFor(claim)){
+      installGraphInteraction();
+      if(focusNode(host,target))pendingAuditClaim=null;
+      return;
+    }
+    if(attempt<32)setTimeout(()=>settleAuditFocus(claim,attempt+1),75);
   }
 
   function installGraphInteraction(){
@@ -154,12 +168,23 @@
     document.addEventListener('click',openAgreement,true);
     document.addEventListener('click',e=>{
       const node=e.target.closest?.('#eg3CausalHost g.node[role="button"],#egMermaidHost g.node[role="button"]');if(!node)return;
-      const host=node.closest('#eg3CausalHost,#egMermaidHost'),nodeId=node.dataset.nodeId||node.dataset.claimIds||'';
-      setTimeout(()=>{let target=node;if(!target.isConnected&&host?.id==='egMermaidHost'&&nodeId){target=$$('g.node[role="button"]',host).find(n=>(n.dataset.claimIds||'').split(',').includes(nodeId.split(',')[0]))||null;}if(target?.isConnected)focusNode(host,target);},100);
+      const host=node.closest('#eg3CausalHost,#egMermaidHost');
+      if(host?.id==='egMermaidHost'){
+        const claim=(node.dataset.claimIds||'').split(',').find(Boolean)||'';
+        if(!claim)return;
+        pendingAuditClaim=claim;
+        setTimeout(()=>settleAuditFocus(claim),60);
+      }else{
+        setTimeout(()=>{if(node.isConnected)focusNode(host,node);},60);
+      }
     },true);
     document.addEventListener('click',e=>{const fit=e.target.closest?.('.eg3-causal-controls button,.eg-graph-controls button');if(!fit||!/^(FIT)$/i.test((fit.textContent||'').trim()))return;const host=fit.closest('.eg3-causal-controls')?$('#eg3CausalHost'):$('#egMermaidHost');const svg=host?.querySelector('svg');if(svg?.dataset.ph1OriginalViewBox)svg.setAttribute('viewBox',svg.dataset.ph1OriginalViewBox);host?.parentElement?.querySelector(`.ph1-graph-focus[data-for="${host.id}"]`)?.remove();},true);
-    ['isr:endgame-r2-rendered','atlascurrentready20260827'].forEach(name=>window.addEventListener(name,()=>setTimeout(schedule,30)));
+    window.addEventListener('atlascurrentready20260827',()=>setTimeout(schedule,30));
   }
-  function init(){apply();bind();observer=new MutationObserver(schedule);observer.observe(document.documentElement,{childList:true,subtree:true});[100,300,900,1800,3500].forEach(ms=>setTimeout(schedule,ms));window.ISRPublicHousekeepingR1={apply,focusNode,resetNodeFocus};}
+  function init(){
+    apply();bind();observer=new MutationObserver(schedule);observer.observe(document.documentElement,{childList:true,subtree:true});
+    [100,300,900,1800,3500].forEach(ms=>setTimeout(schedule,ms));
+    window.ISRPublicHousekeepingR1={apply,focusNode,resetNodeFocus,settleAuditFocus};
+  }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 }());
