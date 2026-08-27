@@ -39,6 +39,7 @@ def main() -> int:
         overlay_manifests.append((parse_cutoff(cutoff), path, payload))
         overlay_hashes[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
 
+    latest_manifest = None
     if overlay_manifests:
         latest_dt, latest_path, latest_manifest = max(overlay_manifests, key=lambda row: row[0])
         current_cutoff = latest_manifest.get("collection_cutoff") or latest_manifest.get("created_at")
@@ -55,6 +56,7 @@ def main() -> int:
     reconciliation_layer = None
     reconciliation_records = 0
     reconciliation_hashes = {}
+    reconciliation_already_included = False
     if reconciliation_manifest_path.exists():
         reconciliation_manifest = json.loads(reconciliation_manifest_path.read_text(encoding="utf-8"))
         reconciliation_records = int(reconciliation_manifest.get("counts", {}).get("accepted_or_corrected_events") or 0)
@@ -62,7 +64,9 @@ def main() -> int:
         recon_cutoff = reconciliation_manifest.get("collection_cutoff") or reconciliation_manifest.get("created_at")
         if recon_cutoff and parse_cutoff(recon_cutoff) > latest_dt:
             current_cutoff = recon_cutoff
-        if current_count is not None:
+        depends_on = (latest_manifest or {}).get("depends_on") or {}
+        reconciliation_already_included = depends_on.get("package") == "ISR-WIKI-MAP-RECONCILIATION-20260826"
+        if current_count is not None and not reconciliation_already_included:
             current_count = int(current_count) + reconciliation_records
         for path in sorted(reconciliation_dir.glob("*.json")):
             reconciliation_hashes[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -78,6 +82,7 @@ def main() -> int:
         "historical_ledger_cutoff": historical_cutoff,
         "historical_reconciliation_layer": reconciliation_layer,
         "historical_reconciliation_records": reconciliation_records,
+        "historical_reconciliation_included_in_current_count": reconciliation_already_included,
         "authoritative_json_sha256": hashes,
         "current_overlay_manifest_sha256": overlay_hashes,
         "historical_reconciliation_sha256": reconciliation_hashes,
