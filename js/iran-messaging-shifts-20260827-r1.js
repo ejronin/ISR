@@ -14,19 +14,22 @@
       old_position:'Washington must halt coercion and change course before Iran returns to talks.',
       new_position:'Iran can enter mediated talks while continuing to say U.S. coercion is illegitimate and that Tehran is negotiating from strength.',
       lets_iran_say:'We did not return because Washington ordered us to; regional mediation created an acceptable path.',
-      practical_change:'Iran entered a political process before the precondition it had publicly set was satisfied.'
+      practical_change:'Iran entered a political process before the precondition it had publicly set was satisfied.',
+      logical_implication:'The precondition was therefore conceded / walked back. If X was stated as required before Y, X did not occur, and Iran nevertheless did Y, the earlier requirement no longer governed Iran’s behavior. That conclusion does not depend on proving why Tehran changed course.'
     },
     'MSG-SHIFT-02':{
       old_position:'This is ours to administer: Iran framed Hormuz management as its responsibility and said vessels should contribute to service costs.',
       new_position:'We secured our rightful share through negotiations with the regional states: Iran can describe a shared Oman/Gulf arrangement as recognition of Iranian rights and a legitimate Iranian role.',
       lets_iran_say:'Iran resisted outside dictates and obtained regional recognition of its rights in Hormuz.',
-      practical_change:'Iran can retreat from “this is ours to administer” toward shared or regional management without publicly saying its original unilateral position failed.'
+      practical_change:'Iran can retreat from “this is ours to administer” toward shared or regional management without publicly saying its original unilateral position failed.',
+      logical_implication:'To the extent Iran enters and advances a shared regional administration framework, the earlier claim of unilateral Iranian management is conceded / walked back. Final authority, revenue and toll terms remain unresolved, so Atlas does not infer that every Iranian Hormuz demand has already been surrendered.'
     },
     'MSG-SHIFT-03':{
       old_position:'Iran framed the nuclear program and related sovereign capabilities as non-negotiable strategic capital.',
       new_position:'Iran can negotiate procedures, inspection conditions or implementation while continuing to say the sovereign right itself is not being surrendered.',
       lets_iran_say:'Negotiating the conditions is not surrendering the right itself.',
-      practical_change:'A subject previously framed as outside bargaining can move into a negotiating process while Tehran preserves a domestic claim that the underlying sovereign right remains intact.'
+      practical_change:'A subject previously framed as outside bargaining can move into a negotiating process while Tehran preserves a domestic claim that the underlying sovereign right remains intact.',
+      logical_implication:'Putting nuclear terms into a negotiated final-deal process necessarily walks back the narrower claim that those terms are not negotiable at all. It does not by itself concede the substantive final nuclear outcome. The present inspection hardening may be an attempt to protect what remains of that sovereignty line, but that motive is inferential.'
     }
   };
 
@@ -77,7 +80,8 @@
       ['WHAT CHANGED IN PRACTICE',b.practical_change]
     ];
     items.forEach(([label,text])=>{const line=A(sec,'div','ims-bridge-line');A(line,'strong','',label);A(line,'p','',text);});
-    A(sec,'p','ims-bridge-guardrail','The positional change can be observed. Treating the new framing as deliberate cover for the walk-back remains an inference unless later evidence establishes motive.');
+    const logic=A(sec,'div','ims-logical-implication');A(logic,'strong','','LOGICAL IMPLICATION · CONCESSION / WALK-BACK');A(logic,'p','',b.logical_implication);
+    A(sec,'p','ims-bridge-guardrail','The concession/walk-back conclusion follows from the documented change between the stated position and later behavior. What remains inferential is the motive: whether the replacement framing was deliberately designed to conceal the retreat, reflected mediator sequencing, factional differences, genuine policy evolution, or another cause.');
   }
   function alternatives(parent,row){
     const box=A(parent,'details','ims-alternatives');
@@ -110,7 +114,7 @@
     root.querySelector('[data-iran-messaging-shifts-20260827]')?.remove();
     const box=E('section','iran-messaging-shifts');box.dataset.iranMessagingShifts20260827='1';
     A(box,'div','section-title','IRAN MESSAGING · POSITION-SHIFT SERIES');
-    A(box,'p','callout','Read each row left-to-right: what Iran said → the outside acts that narrowed or changed that lane → what actually happened → what Iran said next → how the new position can absorb the retreat without publicly admitting the old position failed. The positional change can be observed; motive remains separately labeled as inference. This is not a propaganda blacklist.');
+    A(box,'p','callout','Read each row left-to-right: what Iran said → the outside acts that narrowed or changed that lane → what actually happened → what Iran said next → how the new position can absorb the retreat without publicly admitting the old position failed. Where the premises establish that a stated requirement was abandoned in practice, Atlas calls the concession / walk-back directly. Only the motive for the change remains inferential. This is not a propaganda blacklist.');
     const key=A(box,'div','ims-key');
     [['ASSERTIVE / LEGITIMIZING MESSAGE','What Tehran publicly establishes as strength or a red line.'],['OPTIONALITY-PRESERVING / NEGOTIATING MESSAGE','Language that preserves room to bargain without openly surrendering the earlier line.'],['OBSERVED REALITY','What the sourced sequence establishes independently of either narrative.'],['PRACTICAL RECONCILIATION','How the new line can absorb a real positional retreat without Tehran publicly saying the earlier position failed; motive remains unproven unless evidence establishes it.']].forEach(([h,p])=>{const k=A(key,'div','');A(k,'strong','',h);A(k,'span','',p);});
     const list=A(box,'div','ims-series');
