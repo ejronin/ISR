@@ -96,7 +96,7 @@ def validate_canonical_runtime_wiring() -> None:
     require("new Map" not in recon, "reconciliation loader must not maintain a private marker Map")
     require("findStrikeLayer" not in recon and "installPan" not in recon,
             "legacy private strike-layer/pan shims must be removed")
-    require("row.temporal_contexts" in temporal,
+    require("event?.temporal_contexts" in temporal or "event.temporal_contexts" in temporal,
             "temporal context matcher must honor explicit reconciliation strike context")
     require("Open Campaigns & strikes" in navigation,
             "Overview must expose a discoverable route into Campaigns & Strikes")
