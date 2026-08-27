@@ -136,7 +136,6 @@
     attach();
     window.addEventListener('atlasstatechange',remount);
     window.addEventListener('atlascurrentready20260827',remount);
-    window.setInterval(attach,750);
   }
   async function init(){const model=await J(DATA);window.ISRIranMessagingShifts20260827R1={model:()=>model,refresh:()=>install(model)};install(model);keepMounted(model);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>init().catch(console.error),{once:true});else init().catch(console.error);
