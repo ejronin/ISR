@@ -154,6 +154,12 @@
     $$('.ph1-mou-actor',block).forEach(c=>chips(c,(c.dataset.ph1Sources||'').split(',').filter(Boolean)));
   }
 
+  function ensureMessagingShiftSeries(){
+    const root=document.getElementById('infowar');
+    if(root&&!root.querySelector('[data-iran-messaging-shifts-20260827]')&&window.ISRIranMessagingShifts20260827R1?.refresh){
+      window.ISRIranMessagingShifts20260827R1.refresh();
+    }
+  }
   function fixTalksAgreementButton(){const b=document.getElementById('openAgreementWorkspace');if(b){b.dataset.ph1Fixed='1';b.setAttribute('aria-label','Open the MOU talks and agreements record');}}
   function openAgreement(e){
     const b=e.target.closest?.('#openAgreementWorkspace');if(!b)return;
@@ -162,7 +168,7 @@
   }
 
   function mouPunchout(){const panel=$('#endgame [data-eg3-panel="mou"]');if(!panel)return;ensureMouStatus(panel);patchMouAttribution(panel);removeRedundantPills(panel);clarifyMouAfterlife(panel);}
-  function apply(){queued=false;fixTalksAgreementButton();strictLensSwap();strategicOrder();mouPunchout();installGraphInteraction();document.documentElement.dataset.publicHousekeepingR1='1';}
+  function apply(){queued=false;fixTalksAgreementButton();strictLensSwap();strategicOrder();mouPunchout();installGraphInteraction();ensureMessagingShiftSeries();document.documentElement.dataset.publicHousekeepingR1='1';}
   function schedule(){if(queued)return;queued=true;requestAnimationFrame(apply);}
   function bind(){
     document.addEventListener('click',openAgreement,true);
