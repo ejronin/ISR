@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "id_rule": "Canonical overlay source IDs are SHA-1(url without trailing slash), first 12 uppercase hex, prefixed SRC-.",
+  "as_of": "2026-08-27T08:25:00-04:00",
+  "sources": [
+    {
+      "source_id": "SRC-93B855640581",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/qatar-pm-visit-tehran-pursue-mediation-efforts-2026-08-26/",
+      "outlet": "Reuters",
+      "title": "Qatar PM visits Tehran to pursue mediation efforts",
+      "publication_date": "2026-08-27",
+      "publication_time": null,
+      "author": null,
+      "source_roles": ["DIPLOMACY", "QATAR", "IRAN", "HORMUZ_NEGOTIATION", "IRANIAN_ACTOR_STATEMENT"],
+      "quality": "A",
+      "records_supported": ["CUR-20260827-001", "CUR-20260827-002"],
+      "proof_note": "Reuters live-file reporting supports the Aug. 27 Tehran visit, the subjects discussed with Abbas Araghchi, the unresolved Iran-Oman finality split, and Mohammad Baqer Qalibaf's 'all-out economic war' rhetoric. The URL was first posted Aug. 26 but this source record dates the supporting updated version to Aug. 27.",
+      "lineage": "Aug. 27 current-overlay collection",
+      "source_origin": "current_update_2026-08-27"
+    },
+    {
+      "source_id": "SRC-10EEF6E3F806",
+      "legacy_ids": {},
+      "url": "https://www.reuters.com/world/middle-east/shipping-traffic-through-strait-hormuz-rises-slightly-data-shows-2026-08-27/",
+      "outlet": "Reuters",
+      "title": "Shipping traffic through Strait of Hormuz rises slightly, data shows",
+      "publication_date": "2026-08-27",
+      "publication_time": null,
+      "author": null,
+      "source_roles": ["SHIPPING_DATA", "HORMUZ", "TRAFFIC_BASELINE", "KPLER"],
+      "quality": "A",
+      "records_supported": ["CUR-20260826-004"],
+      "proof_note": "Reports Kpler's visible count of 10 commodity-vessel transits on Wednesday, Aug. 26, up from eight Tuesday but below the 10-day moving average of about 15; transponder-dark traffic remains a counting limitation.",
+      "lineage": "Aug. 27 current-overlay collection",
+      "source_origin": "current_update_2026-08-27"
+    },
+    {
+      "source_id": "SRC-25C68ED54E67",
+      "legacy_ids": {},
+      "url": "https://mofa.gov.qa/en/qatar/latest-articles/latest-news/details/2026/08/25/phone-call-between-prime-minister-and-minister-of-foreign-affairs--iranian-foreign-minister",
+      "outlet": "Qatar Ministry of Foreign Affairs",
+      "title": "Phone Call Between Prime Minister and Minister of Foreign Affairs, Iranian Foreign Minister",
+      "publication_date": "2026-08-25",
+      "publication_time": null,
+      "author": null,
+      "source_roles": ["OFFICIAL_QATARI_POSITION", "HORMUZ", "FREEDOM_OF_NAVIGATION", "COMPREHENSIVE_AGREEMENT"],
+      "quality": "A_FOR_QATARI_POSITION",
+      "records_supported": ["CUR-20260827-001"],
+      "proof_note": "Primary Qatari statement establishing Doha's pre-visit agenda: support a temporary Iran-Oman corridor and mine-clearing process only as part of a solution guaranteeing freedom of maritime navigation and paving the way to a comprehensive agreement.",
+      "lineage": "Aug. 27 current-overlay contextual source",
+      "source_origin": "current_update_2026-08-27"
+    }
+  ]
+}

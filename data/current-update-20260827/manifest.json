@@ -1,0 +1,28 @@
+{
+  "package_name": "ISR-AUG27-CURRENT-OVERLAY-20260827",
+  "schema_version": "1.0",
+  "created_at": "2026-08-27T08:25:00-04:00",
+  "collection_cutoff": "2026-08-27T08:25:00-04:00",
+  "layer": "APPEND_ONLY_CURRENT_OVERLAY",
+  "depends_on": {
+    "package": "ISR-WIKI-MAP-RECONCILIATION-20260826",
+    "current_chronology_records": 202,
+    "cutoff": "2026-08-26T16:30:00-04:00"
+  },
+  "counts": {
+    "overlay_events": 3,
+    "overlay_timeline_records": 3,
+    "overlay_sources": 3,
+    "current_chronology_records": 205
+  },
+  "equation": "202 + 3 = 205",
+  "rules": [
+    "Do not rewrite integration-v1.2, the 81-record historical reconciliation, or prior current-overlay packages.",
+    "Use occurrence date for chronology when known; do not substitute publication date.",
+    "Qatari and Iranian statements establish actor positions; they do not self-verify a final Hormuz agreement.",
+    "An in-person mediation session is diplomatic movement, not proof that a comprehensive U.S.-Iran deal has resumed.",
+    "Kpler/AIS-visible vessel counts are methodology-bounded and are not exact total physical traffic counts.",
+    "Domestic rhetoric and negotiating behavior may diverge; motive for that divergence is not assumed without evidence.",
+    "Unknown is not zero."
+  ]
+}

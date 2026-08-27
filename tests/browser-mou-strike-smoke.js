@@ -61,7 +61,7 @@ async function diagnostics(cdp){return cdp.eval(`(async()=>{
 
     await wait(cdp,'Boolean(window.ISREndgamePublicViewR1)');await cdp.eval(`window.ISREndgamePublicViewR1.open('mou');true`);
     const mou=await cdp.eval(`document.querySelector('#endgame')?.innerText||''`);for(const s of ['DEFERRED TO FINAL NEGOTIATIONS — NOT YET WON OR LOST','PROMISED BUT NEVER IMPLEMENTED','LATER REVERSED','Where the signed deal landed','UNSCORED / NOT YET ADJUDICABLE'])assert(mou.includes(s),`MOU missing ${s}`);
-    await wait(cdp,`Boolean(document.querySelector('[data-iran-messaging-r1]'))`);
+    await wait(cdp,`Boolean(document.querySelector('[data-iran-messaging-shifts-20260827]')||document.querySelector('[data-iran-messaging-r1]'))`);
 
     await cdp.call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await sleep(100);
     const mobile=await cdp.eval(`(()=>{window.showAtlasPanel('snapshot');const p=[...document.querySelectorAll('#primaryNav .primary-tab')].find(b=>b.textContent.trim()==='Military Operations');p?.click();const s=[...document.querySelectorAll('#secondaryNav .secondary-tab')].find(b=>b.textContent.trim()==='Campaigns & strikes');s?.click();return {p:!!p&&p.getBoundingClientRect().height>20,s:!!s&&s.getBoundingClientRect().height>20,active:document.getElementById('strikes')?.classList.contains('active')};})()`);assert.deepEqual(mobile,{p:true,s:true,active:true});
