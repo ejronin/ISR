@@ -18,12 +18,16 @@
     return out;
   }
   function chips(parent,ids){
-    const old=$(':scope > .ph1-sources',parent);old?.remove();
-    const map=sourceMap(),box=E('div','eg3-sources ph1-sources');let count=0;
-    (ids||[]).forEach(id=>{const s=map[id],u=safe(s?.url);if(!s||!u)return;const a=E('a','eg3-source-chip',`${id} · ${s.publisher||'Source'}`);a.href=u;a.target='_blank';a.rel='noopener noreferrer';a.title=`${s.date||''} · ${s.quality||''} · ${s.supports||''}`;box.append(a);count++;});
-    if(count)parent.append(box);
+    const map=sourceMap(),resolved=(ids||[]).filter(id=>map[id]&&safe(map[id].url));
+    const sig=resolved.join('|');if(parent.dataset.ph1SourceSig===sig&&$(':scope > .ph1-sources',parent))return;
+    parent.dataset.ph1SourceSig=sig;$(':scope > .ph1-sources',parent)?.remove();
+    if(!resolved.length)return;
+    const box=E('div','eg3-sources ph1-sources');
+    resolved.forEach(id=>{const s=map[id],u=safe(s.url);const a=E('a','eg3-source-chip',`${id} · ${s.publisher||'Source'}`);a.href=u;a.target='_blank';a.rel='noopener noreferrer';a.title=`${s.date||''} · ${s.quality||''} · ${s.supports||''}`;box.append(a);});
+    parent.append(box);
   }
   function section(panel,idOrTitle){
+    if(!panel)return null;
     return $$('section.eg3-section',panel).find(s=>s.dataset.eg4Section===idOrTitle||($('h3',s)?.textContent||'').trim().startsWith(idOrTitle))||null;
   }
   function resetNodeFocus(host){
@@ -67,15 +71,14 @@
   }
 
   function strictLensSwap(){
-    const maps=section($('#endgame [data-eg3-panel="strategic"]'),'maps')||section($('#endgame [data-eg3-panel="strategic"]'),'Two ways to read the endgame');if(!maps)return;
+    const panel=$('#endgame [data-eg3-panel="strategic"]');const maps=section(panel,'maps')||section(panel,'Two ways to read the endgame');if(!maps)return;
     maps.classList.add('ph1-lens-swap');
     const buttons=$$('[data-eg3-lens]',maps),panels=$$('[data-eg3-lens-panel]',maps);
     const sync=()=>{
       const active=buttons.find(b=>b.classList.contains('active'))?.dataset.eg3Lens||'causal';
       buttons.forEach(b=>{const on=b.dataset.eg3Lens===active;b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-selected',String(on));});
       panels.forEach(p=>{const on=p.dataset.eg3LensPanel===active;p.hidden=!on;p.setAttribute('aria-hidden',String(!on));});
-      maps.dataset.ph1Lens=active;
-      setTimeout(installGraphInteraction,80);
+      maps.dataset.ph1Lens=active;setTimeout(installGraphInteraction,80);
     };
     buttons.forEach(b=>{if(b.dataset.ph1SwapBound==='1')return;b.dataset.ph1SwapBound='1';b.addEventListener('click',()=>setTimeout(sync,0));});sync();
   }
@@ -91,22 +94,21 @@
       const anchor=quick||status;if(anchor&&anchor.nextSibling!==paths)anchor.after(paths);
       if(paths.nextSibling!==connector)paths.after(connector);if(connector.nextSibling!==next)connector.after(next);
     }
-    if(jumps){
-      const order=['Current status','Quick read','Iran’s paths','Next moves','Objectives','Maps / audit'];const nodes=$$('button',jumps);order.forEach(label=>{const b=nodes.find(x=>(x.textContent||'').trim()===label);if(b)jumps.append(b);});
-    }
+    if(jumps){const order=['Current status','Quick read','Iran’s paths','Next moves','Objectives','Maps / audit'];const nodes=$$('button',jumps);order.forEach(label=>{const b=nodes.find(x=>(x.textContent||'').trim()===label);if(b)jumps.append(b);});}
   }
 
   function ensureMouStatus(panel){
     let sec=$('[data-ph1-mou-status]',panel);if(!sec){
       sec=E('section','eg3-section ph1-mou-status');sec.dataset.ph1MouStatus='1';
       const head=E('div','eg3-section-head');head.append(E('h3','','Status first: the June MOU is effectively dead'),E('p','','The old instrument can still be cited in negotiations, but it no longer controls the parties by itself.'));sec.append(head);
-      const card=E('article','eg3-card eg3-finding ph1-mou-status-card');card.append(E('span','eg3-badge eg3-dead','DEAD / NON-CONTROLLING'));
+      const card=E('article','eg3-card eg3-finding ph1-mou-status-card');card.dataset.ph1Sources='S01,S05,S06,S23';card.append(E('span','eg3-badge eg3-dead','DEAD / NON-CONTROLLING'));
       const ul=E('ul','eg3-list');[
         'Paragraph 3 created a 60-day route to a final deal and allowed an extension only by mutual agreement.',
         'Washington subsequently declared the MOU “over.” Iran later described it as “suspended,” but that is only one party’s characterization of a bilateral instrument.',
         'No mutually agreed extension or final controlling agreement replaced the expired 60-day bargain. Iran can invoke the old terms as a negotiating baseline; it cannot revive them unilaterally.'
-      ].forEach(t=>ul.append(E('li','',t)));card.append(ul);chips(card,['S01','S05','S06','S23']);sec.append(card);
+      ].forEach(t=>ul.append(E('li','',t)));card.append(ul);sec.append(card);
     }
+    const card=$('.ph1-mou-status-card',sec);if(card)chips(card,(card.dataset.ph1Sources||'').split(',').filter(Boolean));
     const jumps=$(':scope > .eg4-jumps',panel);const first=jumps?.nextSibling||panel.firstChild;if(sec!==first)panel.insertBefore(sec,first);
   }
 
@@ -114,7 +116,8 @@
     const timeline=section(panel,'timeline')||section(panel,'How the MOU fell apart');if(!timeline)return;
     const row=$$('.eg3-timeline-row',timeline).find(r=>/Jul\s*7/i.test($('.eg3-date',r)?.textContent||''));if(!row)return;
     const body=row.children[1]||row;const h=$('h4',body);if(h)h.textContent='Three tankers attacked; U.S. and Qatar attribute the attacks to Iran; U.S. strikes and revokes oil relief';
-    let note=$('.ph1-attribution',body);if(!note){note=E('div','ph1-attribution');const strong=E('strong','','ATTRIBUTION / CAUSAL LINK');const p=E('p','','U.S. initial indications said Iran fired on the vessels, and Qatar blamed Iran. Tehran disputed the attribution while warning that ships using routes not coordinated with Iran faced risk. The record therefore does not read as a random attack followed by an unrelated U.S. withdrawal: the vessel attacks, the attribution to Iran, Iran’s route warning, the U.S. strike/oil-waiver revocation and Washington’s subsequent “MOU is over” declaration form the relevant sequence.');note.append(strong,p);chips(note,['S04','S05']);body.append(note);}
+    let note=$('.ph1-attribution',body);if(!note){note=E('div','ph1-attribution');note.dataset.ph1Sources='S04,S05';note.append(E('strong','','ATTRIBUTION / CAUSAL LINK'),E('p','','U.S. initial indications said Iran fired on the vessels, and Qatar blamed Iran. Tehran disputed the attribution while warning that ships using routes not coordinated with Iran faced risk. The record therefore does not read as a random attack followed by an unrelated U.S. withdrawal: the vessel attacks, the attribution to Iran, Iran’s route warning, the U.S. strike/oil-waiver revocation and Washington’s subsequent “MOU is over” declaration form the relevant sequence.'));body.append(note);}
+    chips(note,(note.dataset.ph1Sources||'').split(',').filter(Boolean));
   }
 
   function removeRedundantPills(panel){
@@ -124,20 +127,20 @@
 
   function clarifyMouAfterlife(panel){
     const now=section(panel,'now')||section(panel,'Why the old MOU still matters');if(!now)return;
-    let block=$('.ph1-mou-actors',now);if(!block){block=E('div','ph1-mou-actors');const cards=[
-      ['WASHINGTON','The June instrument is no longer controlling, so its old relief package is not an automatic U.S. starting obligation. Washington is negotiating any successor arrangement from the post-collapse record, not from a presumption that the June concessions simply resume.',['S05','S06','S31']],
-      ['IRAN','The old MOU still gives Tehran a more favorable optical baseline than its current position. Citing it lets Iran describe a successor negotiation as restoration of an agreed bargain rather than movement from weaker terms. But Iran’s own later “suspension” and renewed invocation cannot substitute for the mutual agreement required to extend the bilateral instrument.',['S01','S06','S24','S25']],
-      ['GCC / MEDIATORS','The old text remains useful as a reference architecture: safe passage, mine-clearing, littoral-state consultation, administration and maritime services can be reused to coax the parties back into a common process. Oman, Pakistan and now Qatar are working from that kind of shared framework rather than validating unilateral permanent Iranian control.',['S01','S25','S27','S32','SRC-93B855640581','SRC-25C68ED54E67']],
-      ['WHAT CHANGED SINCE JUNE','The record no longer supports treating the June front-loaded package as automatically available to Tehran. Renewed maritime conflict, withdrawn oil relief, broader secondary sanctions and a new shared maritime process have worsened Iran’s bargaining baseline. Any renewed relief now has to be negotiated into a successor bargain. A longer period of observable implementation before major relief is an analytical implication of the changed leverage—not an announced final U.S. term.',['S04','S05','S24','S25','S31','S32','SRC-93B855640581']]
-    ];
-      cards.forEach(([title,copy,src])=>{const c=E('article','eg3-card ph1-mou-actor');c.append(E('h4','',title),E('p','',copy));chips(c,src);block.append(c);});
+    let block=$('.ph1-mou-actors',now);if(!block){
+      block=E('div','ph1-mou-actors');const cards=[
+        ['WASHINGTON','The June instrument is no longer controlling, so its old relief package is not an automatic U.S. starting obligation. Washington is negotiating any successor arrangement from the post-collapse record, not from a presumption that the June concessions simply resume.','S05,S06,S31'],
+        ['IRAN','The old MOU still gives Tehran a more favorable optical baseline than its current position. Citing it lets Iran describe a successor negotiation as restoration of an agreed bargain rather than movement from weaker terms. But Iran’s own later “suspension” and renewed invocation cannot substitute for the mutual agreement required to extend the bilateral instrument.','S01,S06,S24,S25'],
+        ['GCC / MEDIATORS','The old text remains useful as a reference architecture: safe passage, mine-clearing, littoral-state consultation, administration and maritime services can be reused to coax the parties back into a common process. Oman, Pakistan and now Qatar are working from that kind of shared framework rather than validating unilateral permanent Iranian control.','S01,S25,S27,S32,SRC-93B855640581,SRC-25C68ED54E67'],
+        ['WHAT CHANGED SINCE JUNE','The record no longer supports treating the June front-loaded package as automatically available to Tehran. Renewed maritime conflict, withdrawn oil relief, broader secondary sanctions and a new shared maritime process have worsened Iran’s bargaining baseline. Any renewed relief now has to be negotiated into a successor bargain. A longer period of observable implementation before major relief is an analytical implication of the changed leverage—not an announced final U.S. term.','S04,S05,S24,S25,S31,S32,SRC-93B855640581']
+      ];
+      cards.forEach(([title,copy,src])=>{const c=E('article','eg3-card ph1-mou-actor');c.dataset.ph1Sources=src;c.append(E('h4','',title),E('p','',copy));block.append(c);});
       const flow=$('.eg3-flow',now);flow?flow.after(block):$('.eg3-section-head',now)?.after(block);
     }
+    $$('.ph1-mou-actor',block).forEach(c=>chips(c,(c.dataset.ph1Sources||'').split(',').filter(Boolean)));
   }
 
-  function fixTalksAgreementButton(){
-    const b=document.getElementById('openAgreementWorkspace');if(b){b.dataset.ph1Fixed='1';b.setAttribute('aria-label','Open the MOU talks and agreements record');}
-  }
+  function fixTalksAgreementButton(){const b=document.getElementById('openAgreementWorkspace');if(b){b.dataset.ph1Fixed='1';b.setAttribute('aria-label','Open the MOU talks and agreements record');}}
   function openAgreement(e){
     const b=e.target.closest?.('#openAgreementWorkspace');if(!b)return;
     e.preventDefault();e.stopImmediatePropagation();
@@ -151,8 +154,8 @@
     document.addEventListener('click',openAgreement,true);
     document.addEventListener('click',e=>{
       const node=e.target.closest?.('#eg3CausalHost g.node[role="button"],#egMermaidHost g.node[role="button"]');if(!node)return;
-      const host=node.closest('#eg3CausalHost,#egMermaidHost');const nodeId=node.dataset.nodeId||node.dataset.claimIds||'';
-      setTimeout(()=>{let target=node;if(!target.isConnected&&host?.id==='egMermaidHost'&&nodeId){target=$$(`g.node[role="button"]`,host).find(n=>(n.dataset.claimIds||'').split(',').includes(nodeId.split(',')[0]))||null;}if(target?.isConnected)focusNode(host,target);},100);
+      const host=node.closest('#eg3CausalHost,#egMermaidHost'),nodeId=node.dataset.nodeId||node.dataset.claimIds||'';
+      setTimeout(()=>{let target=node;if(!target.isConnected&&host?.id==='egMermaidHost'&&nodeId){target=$$('g.node[role="button"]',host).find(n=>(n.dataset.claimIds||'').split(',').includes(nodeId.split(',')[0]))||null;}if(target?.isConnected)focusNode(host,target);},100);
     },true);
     document.addEventListener('click',e=>{const fit=e.target.closest?.('.eg3-causal-controls button,.eg-graph-controls button');if(!fit||!/^(FIT)$/i.test((fit.textContent||'').trim()))return;const host=fit.closest('.eg3-causal-controls')?$('#eg3CausalHost'):$('#egMermaidHost');const svg=host?.querySelector('svg');if(svg?.dataset.ph1OriginalViewBox)svg.setAttribute('viewBox',svg.dataset.ph1OriginalViewBox);host?.parentElement?.querySelector(`.ph1-graph-focus[data-for="${host.id}"]`)?.remove();},true);
     ['isr:endgame-r2-rendered','atlascurrentready20260827'].forEach(name=>window.addEventListener(name,()=>setTimeout(schedule,30)));
