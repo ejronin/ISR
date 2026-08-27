@@ -108,6 +108,18 @@
     }
   }
 
+  function ensureMessagingShiftSeries(){
+    loadMessagingShiftSeries();
+    let attempts=0;
+    (function mount(){
+      if(document.querySelector('[data-iran-messaging-shifts-20260827]'))return;
+      safeUi('messaging shift refresh',()=>window.ISRIranMessagingShifts20260827R1?.refresh?.());
+      attempts+=1;
+      if(attempts<80)setTimeout(mount,100);
+      else console.warn('Aug. 27 messaging shift series did not mount after retry window.');
+    }());
+  }
+
   async function init(){
     await waitFor(()=>window.ATLAS_WIKI_RECON_20260826&&chronologyCount()===EXPECTED_PRIOR&&window.registerAtlasEvents&&window.registerAtlasSources&&window.registerAtlasTimelineRecords);
     const [manifest,events,timeline,sources]=await Promise.all([fetchJson('manifest.json'),fetchJson('events.json'),fetchJson('timeline.json'),fetchJson('sources.json')]);
@@ -121,7 +133,7 @@
     moveDefaultCutoff();
     safeUi('labels',updateLabels);
     safeUi('current picture',addCurrentPicture);
-    safeUi('messaging shift loader',loadMessagingShiftSeries);
+    safeUi('messaging shift loader',ensureMessagingShiftSeries);
     safeUi('timeline render',()=>window.renderAtlasTimeline?.(document.getElementById('timelineSearch')?.value||''));
     safeUi('timeline map',()=>window.refreshAtlasTimelineMap?.());
     safeUi('full-scope timeline',()=>window.ISRFullScope20260822?.refreshTimeline?.());
