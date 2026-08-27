@@ -97,6 +97,15 @@
     document.head.append(script);
   }
 
+  function loadAug27Update(){
+    if(document.querySelector('script[data-current-update-20260827]'))return;
+    const script=document.createElement('script');
+    script.src='./js/current-update-20260827.js?v=20260827-r1';
+    script.async=false;
+    script.dataset.currentUpdate20260827='1';
+    document.head.append(script);
+  }
+
   async function init(){
     await waitFor(() => (window.ATLAS_TEMPORAL_INDEX || []).length >= EXPECTED_PRIOR && window.ATLAS_CURRENT_UPDATE_20260825_LATE && window.registerAtlasEvents && window.registerAtlasSources);
     const [manifest,events,timeline,sources] = await Promise.all([
@@ -112,7 +121,7 @@
     window.dispatchEvent(new CustomEvent('atlascurrentready20260826', { detail:{ count:EXPECTED_CURRENT, cutoff:CUTOFF } }));
   }
 
-  const start = () => init().then(loadHistoricalReconciliation).catch(error => console.warn('Aug. 26 current overlay unavailable; prior chronology remains usable.', error));
+  const start = () => init().then(()=>{loadHistoricalReconciliation();loadAug27Update();}).catch(error => console.warn('Aug. 26 current overlay unavailable; prior chronology remains usable.', error));
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once:true });
   else start();
 }());
