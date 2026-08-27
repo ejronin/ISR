@@ -72,7 +72,8 @@ def main()->int:
     renderer=text("js/iran-messaging-shifts-20260827-r1.js")
     for token in ("IRAN SAID","WHAT CLOSED OR CHANGED THE LANE","OBSERVED REALITY","IRAN SHIFTED TO","HOW THE WALK-BACK CAN BE REFRAMED","WHAT THE NEW POSITION LETS IRAN SAY","WHAT CHANGED IN PRACTICE","LOGICAL IMPLICATION · CONCESSION / WALK-BACK","does not depend on proving why Tehran changed course","assets/flags/","Other explanations kept open"):
         require(token in renderer,f"messaging renderer missing {token}")
-    require("the concession / walk-back conclusion follows from the documented change" in renderer.lower(),"renderer must distinguish logical concession from inferred motive")
+    normalized=renderer.lower().replace("concession/walk-back","concession / walk-back")
+    require("the concession / walk-back conclusion follows from the documented change" in normalized,"renderer must distinguish logical concession from inferred motive")
     current26=text("js/current-update-20260826.js")
     require("loadAug27Update" in current26 and "current-update-20260827.js" in current26,"Aug26 chain does not load Aug27 successor")
     print("Aug27 update: PASS — 3 additive events produce 205-record chronology; three messaging shifts retain actor flags, explicit concession/walk-back logic, observed outcomes and motive alternatives")
