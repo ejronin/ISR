@@ -112,7 +112,7 @@
     const root=document.getElementById('infowar');if(!root)return false;
     root.querySelector('[data-iran-messaging-r1]')?.remove();
     root.querySelector('[data-iran-messaging-shifts-20260827]')?.remove();
-    const box=E('section','iran-messaging-shifts');box.dataset.iranMessagingShifts20260827='1';
+    const box=E('section','iran-messaging-shifts');box.setAttribute('data-iran-messaging-shifts-20260827','1');
     A(box,'div','section-title','IRAN MESSAGING · POSITION-SHIFT SERIES');
     A(box,'p','callout','Read each row left-to-right: what Iran said → the outside acts that narrowed or changed that lane → what actually happened → what Iran said next → how the new position can absorb the retreat without publicly admitting the old position failed. Where the premises establish that a stated requirement was abandoned in practice, Atlas calls the concession / walk-back directly. Only the motive for the change remains inferential. This is not a propaganda blacklist.');
     const key=A(box,'div','ims-key');
