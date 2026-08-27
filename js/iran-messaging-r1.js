@@ -35,17 +35,34 @@
     return false;
   }
   function repairBurst(){
-    [0,80,250,750,1600].forEach(ms=>setTimeout(repairShiftSeries,ms));
+    [0,80,250,750,1600,3000,5000,7000].forEach(ms=>setTimeout(repairShiftSeries,ms));
   }
   function install(){
     const mounted=repairShiftSeries();
     if(!mounted)loadShiftSeries();
     return mounted;
   }
-  window.ISRIranMessagingR1={install,loadShiftSeries,loadHousekeeping,repairShiftSeries,repairBurst,model:()=>window.ISRIranMessagingShifts20260827R1?.model?.()||null};
+  function hookPublicRoute(attempt=0){
+    const original=window.showAtlasPanel;
+    if(typeof original!=='function'){
+      if(attempt<80)setTimeout(()=>hookPublicRoute(attempt+1),50);
+      return false;
+    }
+    if(original.__iranMessagingRouteHook)return true;
+    const wrapped=function(id,options){
+      const result=original.apply(this,arguments);
+      if(id==='infowar')repairBurst();
+      return result;
+    };
+    wrapped.__iranMessagingRouteHook=true;
+    window.showAtlasPanel=wrapped;
+    return true;
+  }
+  window.ISRIranMessagingR1={install,loadShiftSeries,loadHousekeeping,repairShiftSeries,repairBurst,hookPublicRoute,model:()=>window.ISRIranMessagingShifts20260827R1?.model?.()||null};
   loadShiftSeries();
   loadHousekeeping();
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',repairBurst,{once:true});else repairBurst();
+  hookPublicRoute();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{repairBurst();hookPublicRoute();},{once:true});else repairBurst();
   window.addEventListener('atlasstatechange',repairBurst);
-  window.addEventListener('atlascurrentready20260827',repairBurst);
+  window.addEventListener('atlascurrentready20260827',()=>{repairBurst();hookPublicRoute();});
 }());
