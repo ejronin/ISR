@@ -13,6 +13,7 @@
   const fetchJson=async file=>{const r=await fetch(PATH+file,{cache:'no-store'});if(!r.ok)throw Error(`${file}: ${r.status}`);return r.json();};
   const waitFor=(predicate,timeout=18000)=>new Promise((resolve,reject)=>{const started=Date.now();(function poll(){const value=predicate();if(value)return resolve(value);if(Date.now()-started>timeout)return reject(Error('Aug27 overlay dependency timeout'));setTimeout(poll,50);}());});
   const chronologyCount=()=>{const ids=new Set();for(const row of window.ATLAS_TEMPORAL_INDEX||[]){if(!row?.event_id||row.temporal_record_type==='ANNOTATION')continue;ids.add(row.event_id);}return ids.size;};
+  const safeUi=(label,fn)=>{try{return fn?.();}catch(error){console.warn(`Aug. 27 optional UI refresh failed: ${label}`,error);return null;}};
 
   function assertPayload(manifest,events,timeline,sources){
     const prior=chronologyCount();
@@ -100,10 +101,10 @@
 
   function loadMessagingShiftSeries(){
     if(!document.querySelector('link[data-iran-messaging-shifts-20260827]')){
-      const css=document.createElement('link');css.rel='stylesheet';css.href='./css/iran-messaging-shifts-20260827-r1.css?v=20260827-r1';css.dataset.iranMessagingShifts20260827='1';document.head.append(css);
+      const css=document.createElement('link');css.rel='stylesheet';css.href='./css/iran-messaging-shifts-20260827-r1.css?v=20260827-r1';css.dataset.iranMessagingShifts20260827='1';document.head?.append(css);
     }
     if(!document.querySelector('script[data-iran-messaging-shifts-20260827]')){
-      const js=document.createElement('script');js.src='./js/iran-messaging-shifts-20260827-r1.js?v=20260827-r1';js.async=false;js.dataset.iranMessagingShifts20260827='1';document.head.append(js);
+      const js=document.createElement('script');js.src='./js/iran-messaging-shifts-20260827-r1.js?v=20260827-r1';js.async=false;js.dataset.iranMessagingShifts20260827='1';document.head?.append(js);
     }
   }
 
@@ -115,16 +116,16 @@
     window.registerAtlasSources(sources.sources);
     installTemporal(events.events,timeline.records);
     const current=chronologyCount();if(current!==EXPECTED_CURRENT)throw Error(`Aug27 runtime chronology mismatch ${current} != ${EXPECTED_CURRENT}`);
-    window.setAtlasCurrentOsintCutoff?.('2026-08-27 08:25 ET');
+    safeUi('current OSINT cutoff',()=>window.setAtlasCurrentOsintCutoff?.('2026-08-27 08:25 ET'));
     installFreshnessOverride();
     moveDefaultCutoff();
-    updateLabels();
-    addCurrentPicture();
-    loadMessagingShiftSeries();
-    window.renderAtlasTimeline?.(document.getElementById('timelineSearch')?.value||'');
-    window.refreshAtlasTimelineMap?.();
-    window.ISRFullScope20260822?.refreshTimeline?.();
-    window.ISRPublicRecordUIR2?.refresh?.();
+    safeUi('labels',updateLabels);
+    safeUi('current picture',addCurrentPicture);
+    safeUi('messaging shift loader',loadMessagingShiftSeries);
+    safeUi('timeline render',()=>window.renderAtlasTimeline?.(document.getElementById('timelineSearch')?.value||''));
+    safeUi('timeline map',()=>window.refreshAtlasTimelineMap?.());
+    safeUi('full-scope timeline',()=>window.ISRFullScope20260822?.refreshTimeline?.());
+    safeUi('public-record refresh',()=>window.ISRPublicRecordUIR2?.refresh?.());
     window.dispatchEvent(new CustomEvent('atlascurrentready20260827',{detail:{count:EXPECTED_CURRENT,cutoff:CUTOFF}}));
   }
 
