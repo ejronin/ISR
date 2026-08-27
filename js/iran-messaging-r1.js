@@ -2,6 +2,7 @@
 (function IranMessagingR1CompatibilityShim(){
   if(window.__ISR_IRAN_MESSAGING_R1_SHIM__)return;
   window.__ISR_IRAN_MESSAGING_R1_SHIM__=true;
+  let activePanelObserver=null,activePanelRoot=null;
   function loadShiftSeries(){
     if(!document.querySelector('link[data-iran-messaging-shifts-20260827]')){
       const css=document.createElement('link');css.rel='stylesheet';css.href='./css/iran-messaging-shifts-20260827-r1.css?v=20260827-r1';css.dataset.iranMessagingShifts20260827='1';document.head?.appendChild(css);
@@ -28,8 +29,7 @@
     root.querySelector('[data-'+'iran-messaging-r1]')?.remove();
     if(root.querySelector('[data-iran-messaging-shifts-20260827]'))return true;
     if(window.ISRIranMessagingShifts20260827R1?.refresh){
-      window.ISRIranMessagingShifts20260827R1.refresh();
-      return true;
+      return window.ISRIranMessagingShifts20260827R1.refresh()!==false;
     }
     loadShiftSeries();
     return false;
@@ -41,6 +41,18 @@
     const mounted=repairShiftSeries();
     if(!mounted)loadShiftSeries();
     return mounted;
+  }
+  function watchActivePanel(attempt=0){
+    const root=document.getElementById('infowar');
+    if(!root){if(attempt<80)setTimeout(()=>watchActivePanel(attempt+1),50);return false;}
+    if(root!==activePanelRoot){
+      activePanelObserver?.disconnect();
+      activePanelRoot=root;
+      activePanelObserver=new MutationObserver(()=>{if(root.classList.contains('active'))repairBurst();});
+      activePanelObserver.observe(root,{attributes:true,attributeFilter:['class']});
+    }
+    if(root.classList.contains('active'))repairBurst();
+    return true;
   }
   function hookPublicRoute(attempt=0){
     const original=window.showAtlasPanel;
@@ -58,11 +70,12 @@
     window.showAtlasPanel=wrapped;
     return true;
   }
-  window.ISRIranMessagingR1={install,loadShiftSeries,loadHousekeeping,repairShiftSeries,repairBurst,hookPublicRoute,model:()=>window.ISRIranMessagingShifts20260827R1?.model?.()||null};
+  window.ISRIranMessagingR1={install,loadShiftSeries,loadHousekeeping,repairShiftSeries,repairBurst,watchActivePanel,hookPublicRoute,model:()=>window.ISRIranMessagingShifts20260827R1?.model?.()||null};
   loadShiftSeries();
   loadHousekeeping();
   hookPublicRoute();
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{repairBurst();hookPublicRoute();},{once:true});else repairBurst();
-  window.addEventListener('atlasstatechange',repairBurst);
-  window.addEventListener('atlascurrentready20260827',()=>{repairBurst();hookPublicRoute();});
+  watchActivePanel();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{repairBurst();hookPublicRoute();watchActivePanel();},{once:true});else repairBurst();
+  window.addEventListener('atlasstatechange',()=>{repairBurst();watchActivePanel();});
+  window.addEventListener('atlascurrentready20260827',()=>{repairBurst();hookPublicRoute();watchActivePanel();});
 }());
