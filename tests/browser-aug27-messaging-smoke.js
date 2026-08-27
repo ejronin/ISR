@@ -10,6 +10,19 @@ class CDP{
   close(){this.ws?.close();}
 }
 async function wait(cdp,expression,timeout=25000){const start=Date.now();while(Date.now()-start<timeout){const v=await cdp.eval(expression);if(v)return v;await sleep(200);}throw Error(`timeout: ${expression}`);}
+async function messagingDiagnostics(cdp){return cdp.eval(`(()=>({
+  readyState:document.readyState,
+  infowar:!!document.getElementById('infowar'),
+  oldPanel:!!document.querySelector('[data-iran-messaging-r1]'),
+  newPanel:!!document.querySelector('[data-iran-messaging-shifts-20260827]'),
+  oldGlobal:!!window.ISRIranMessagingR1,
+  newGlobal:!!window.ISRIranMessagingShifts20260827R1,
+  oldScript:document.querySelector('script[data-iran-messaging-r1]')?.src||null,
+  newScript:document.querySelector('script[data-iran-messaging-shifts-20260827]')?.src||null,
+  newCss:document.querySelector('link[data-iran-messaging-shifts-20260827]')?.href||null,
+  overlayError:window.ATLAS_CURRENT_UPDATE_ERROR_20260827||null,
+  current205:!!window.ATLAS_CURRENT_UPDATE_20260827
+}))()`);}
 (async()=>{
   const targets=await(await fetch(`${DEBUG}/json`)).json();
   const target=targets.find(x=>x.type==='page'&&/^http:\/\/127\.0\.0\.1:8765\//.test(x.url));
@@ -21,7 +34,7 @@ async function wait(cdp,expression,timeout=25000){const start=Date.now();while(D
     const err=await cdp.eval('window.ATLAS_CURRENT_UPDATE_ERROR_20260827||null');if(err)throw Error(`Aug27 runtime error: ${err.message}`);
     assert.equal(await cdp.eval(`new Set((window.ATLAS_TEMPORAL_INDEX||[]).filter(x=>x?.event_id&&x.temporal_record_type!=='ANNOTATION').map(x=>x.event_id)).size`),205,'Aug27 chronology must be 205');
     assert.equal(await cdp.eval(`window.ATLAS_CURRENT_UPDATE_20260827.events.length`),3,'Aug27 overlay must expose 3 events');
-    await wait(cdp,`Boolean(document.querySelector('[data-iran-messaging-shifts-20260827]'))`);
+    try{await wait(cdp,`Boolean(document.querySelector('[data-iran-messaging-shifts-20260827]'))`,8000);}catch(e){console.error('MESSAGING DIAGNOSTICS',JSON.stringify(await messagingDiagnostics(cdp),null,2));throw e;}
     const messaging=await cdp.eval(`(()=>{const root=document.querySelector('[data-iran-messaging-shifts-20260827]');return {cards:root?.querySelectorAll('[data-messaging-shift-id]').length||0,flags:root?.querySelectorAll('img.ims-flag').length||0,logic:root?.querySelectorAll('.ims-logical-implication').length||0,text:(root?.innerText||'').toUpperCase()};})()`);
     assert.equal(messaging.cards,3,'three messaging-shift series cards required');
     assert(messaging.flags>=10,'actor flags must render across the shift series');
