@@ -13,6 +13,7 @@ async function wait(cdp,expression,timeout=25000){const start=Date.now();while(D
 async function messagingDiagnostics(cdp){return cdp.eval(`(()=>({
   readyState:document.readyState,
   infowar:!!document.getElementById('infowar'),
+  infowarActive:!!document.getElementById('infowar')?.classList.contains('active'),
   oldPanel:!!document.querySelector('[data-iran-messaging-r1]'),
   newPanel:!!document.querySelector('[data-iran-messaging-shifts-20260827]'),
   oldGlobal:!!window.ISRIranMessagingR1,
@@ -34,7 +35,12 @@ async function messagingDiagnostics(cdp){return cdp.eval(`(()=>({
     const err=await cdp.eval('window.ATLAS_CURRENT_UPDATE_ERROR_20260827||null');if(err)throw Error(`Aug27 runtime error: ${err.message}`);
     assert.equal(await cdp.eval(`new Set((window.ATLAS_TEMPORAL_INDEX||[]).filter(x=>x?.event_id&&x.temporal_record_type!=='ANNOTATION').map(x=>x.event_id)).size`),205,'Aug27 chronology must be 205');
     assert.equal(await cdp.eval(`window.ATLAS_CURRENT_UPDATE_20260827.events.length`),3,'Aug27 overlay must expose 3 events');
-    try{await wait(cdp,`Boolean(document.querySelector('[data-iran-messaging-shifts-20260827]'))`,8000);}catch(e){console.error('MESSAGING DIAGNOSTICS',JSON.stringify(await messagingDiagnostics(cdp),null,2));throw e;}
+
+    // Inspect the messaging series through the public Information Environment route. Hidden panels may be rebuilt lazily after unrelated navigation.
+    await cdp.eval(`window.showAtlasPanel('infowar');true`);
+    try{await wait(cdp,`document.getElementById('infowar')?.classList.contains('active')&&Boolean(document.querySelector('[data-iran-messaging-shifts-20260827]'))`,8000);}catch(e){console.error('MESSAGING DIAGNOSTICS',JSON.stringify(await messagingDiagnostics(cdp),null,2));throw e;}
+    assert.equal(await cdp.eval(`document.getElementById('infowar')?.classList.contains('active')`),true,'Information environment route must be active when messaging series is inspected');
+
     const messaging=await cdp.eval(`(()=>{const root=document.querySelector('[data-iran-messaging-shifts-20260827]');return {cards:root?.querySelectorAll('[data-messaging-shift-id]').length||0,flags:root?.querySelectorAll('img.ims-flag').length||0,logic:root?.querySelectorAll('.ims-logical-implication').length||0,text:(root?.innerText||'').toUpperCase()};})()`);
     assert.equal(messaging.cards,3,'three messaging-shift series cards required');
     assert(messaging.flags>=10,'actor flags must render across the shift series');
@@ -45,6 +51,6 @@ async function messagingDiagnostics(cdp){return cdp.eval(`(()=>({
     const freshness=await cdp.eval(`window.AtlasPresentation?.freshness?.(window)||{}`);
     assert.equal(freshness.chronologyCount,205,'freshness count must remain 205 after public UI refresh');
     assert(String(freshness.currentOsintDisplay||'').includes('Aug. 27'),'freshness cutoff must show Aug27');
-    console.log('browser Aug27 messaging/timeline smoke: PASS — 205 chronology records, 3 shift-series cards, explicit concession/walk-back logic, actor flags, and Aug27 freshness verified');
+    console.log('browser Aug27 messaging/timeline smoke: PASS — Information Environment route mounts 3 shift-series cards; 205 chronology records, explicit concession/walk-back logic, actor flags, and Aug27 freshness verified');
   }finally{cdp.close();}
 })().catch(e=>{console.error(e.stack||e);process.exitCode=1;});
