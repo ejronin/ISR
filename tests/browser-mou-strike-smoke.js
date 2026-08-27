@@ -9,11 +9,7 @@ const EXPECTED_TOTAL_STRIKES = 100;
 async function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 class CDP {
-  constructor(url) {
-    this.url = url;
-    this.nextId = 0;
-    this.pending = new Map();
-  }
+  constructor(url) { this.url = url; this.nextId = 0; this.pending = new Map(); }
   async open() {
     this.ws = new WebSocket(this.url);
     await new Promise((resolve, reject) => {
@@ -38,12 +34,7 @@ class CDP {
     });
   }
   async eval(expression) {
-    const out = await this.call('Runtime.evaluate', {
-      expression,
-      awaitPromise: true,
-      returnByValue: true,
-      userGesture: true
-    });
+    const out = await this.call('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true, userGesture: true });
     const result = out.result || {};
     if (result.subtype === 'error') throw new Error(result.description || 'Runtime.evaluate error');
     return result.value;
@@ -62,6 +53,35 @@ async function waitFor(cdp, expression, timeout = 25000) {
   throw new Error(`waitFor timeout: ${expression}; last=${JSON.stringify(last)}`);
 }
 
+async function overlayDiagnostics(cdp) {
+  return cdp.eval(`(() => ({
+    readyState:document.readyState,
+    temporalLength:Array.isArray(window.ATLAS_TEMPORAL_INDEX)?window.ATLAS_TEMPORAL_INDEX.length:null,
+    ledgerEvents:window.ATLAS_LEDGER?.events?.events?.length??null,
+    baseData:Boolean(window.ATLAS_DATA),
+    aug24:Boolean(window.ATLAS_CURRENT_UPDATE),
+    aug25:Boolean(window.ATLAS_CURRENT_UPDATE_20260825),
+    aug25Late:Boolean(window.ATLAS_CURRENT_UPDATE_20260825_LATE),
+    aug26:Boolean(window.ATLAS_CURRENT_UPDATE_20260826),
+    recon:Boolean(window.ATLAS_WIKI_RECON_20260826),
+    initFlags:{
+      aug24:Boolean(window.__ISR_CURRENT_UPDATE_20260824__),
+      aug25:Boolean(window.__ISR_CURRENT_UPDATE_20260825__),
+      aug25Late:Boolean(window.__ISR_CURRENT_UPDATE_20260825_LATE__),
+      aug26:Boolean(window.__ISR_CURRENT_UPDATE_20260826__),
+      recon:Boolean(window.__ISR_WIKI_MAP_RECON_20260826__)
+    },
+    apis:{
+      events:typeof window.registerAtlasEvents,
+      sources:typeof window.registerAtlasSources,
+      strikes:typeof window.registerAtlasStrikeRecords,
+      marker:typeof window.getAtlasMapMarker,
+      map:Boolean(window.atlasMap)
+    },
+    scripts:[...document.scripts].map(s=>({src:s.getAttribute('src')||'',aug24:s.dataset.currentUpdate20260824||null,aug25:s.dataset.currentUpdate20260825||null,late:s.dataset.currentUpdate20260825Late||null,aug26:s.dataset.currentUpdate20260826||null,recon:s.dataset.historicalReconciliation20260826||null})).filter(x=>/current-update|wiki-map-reconciliation/.test(x.src))
+  }))()`);
+}
+
 async function main() {
   const targets = await (await fetch(`${DEBUG}/json`)).json();
   const target = targets.find(row => row.type === 'page' && /^http:\/\/127\.0\.0\.1:8765\//.test(row.url));
@@ -73,7 +93,12 @@ async function main() {
     await cdp.call('Runtime.enable');
     await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
 
-    await waitFor(cdp, `window.ATLAS_WIKI_RECON_20260826?.counts?.registered_strike_markers === ${EXPECTED_RECON}`);
+    try {
+      await waitFor(cdp, `window.ATLAS_WIKI_RECON_20260826?.counts?.registered_strike_markers === ${EXPECTED_RECON}`);
+    } catch (error) {
+      console.error('OVERLAY CHAIN DIAGNOSTICS', JSON.stringify(await overlayDiagnostics(cdp), null, 2));
+      throw error;
+    }
 
     const counts = await cdp.eval(`window.ATLAS_WIKI_RECON_20260826.counts`);
     assert.equal(counts.registered_strike_markers, EXPECTED_RECON, 'all reconciliation strikes must register canonically');
@@ -91,12 +116,7 @@ async function main() {
       const missingCanonical=ids.filter(id=>!window.getAtlasMapMarker?.(id));
       const visibleMarkerHosts=document.querySelectorAll('.leaflet-marker-pane .atlas-marker-host').length;
       const strikeToggle=[...document.querySelectorAll('[data-layer-name="Strike effects"]')].find(Boolean);
-      return {
-        dataset:ids.length,
-        missingCanonical,
-        visibleMarkerHosts,
-        strikeLayerPressed:strikeToggle?.getAttribute('aria-pressed')||null
-      };
+      return {dataset:ids.length,missingCanonical,visibleMarkerHosts,strikeLayerPressed:strikeToggle?.getAttribute('aria-pressed')||null};
     })()`);
     assert.equal(strikeLayerProof.dataset, EXPECTED_TOTAL_STRIKES, 'strike dataset must contain all 100 strike locations');
     assert.deepEqual(strikeLayerProof.missingCanonical, [], 'every strike location must resolve to a canonical marker');
@@ -143,15 +163,9 @@ async function main() {
     await waitFor(cdp, `Boolean(window.ISREndgamePublicViewR1)`);
     await cdp.eval(`window.ISREndgamePublicViewR1.open('mou'); true`);
     const mou = await cdp.eval(`document.querySelector('#endgame')?.innerText || ''`);
-    for (const required of [
-      'OBTAINED IN THE INTERIM DEAL',
-      'DEFERRED TO FINAL NEGOTIATIONS — NOT YET WON OR LOST',
-      'EXPLICITLY NOT INCLUDED / REJECTED',
-      'PROMISED BUT NEVER IMPLEMENTED',
-      'LATER REVERSED',
-      'Where the signed deal landed',
-      'UNSCORED / NOT YET ADJUDICABLE'
-    ]) assert(mou.includes(required), `MOU browser presentation missing: ${required}`);
+    for (const required of ['OBTAINED IN THE INTERIM DEAL','DEFERRED TO FINAL NEGOTIATIONS — NOT YET WON OR LOST','EXPLICITLY NOT INCLUDED / REJECTED','PROMISED BUT NEVER IMPLEMENTED','LATER REVERSED','Where the signed deal landed','UNSCORED / NOT YET ADJUDICABLE']) {
+      assert(mou.includes(required), `MOU browser presentation missing: ${required}`);
+    }
 
     await waitFor(cdp, `Boolean(document.querySelector('[data-iran-messaging-r1]'))`);
     const messaging = await cdp.eval(`document.querySelector('[data-iran-messaging-r1]').innerText`);
@@ -172,13 +186,7 @@ async function main() {
       strikes?.click();
       const primary=document.getElementById('primaryNav');
       const pStyle=getComputedStyle(primary);
-      return {
-        width:innerWidth,
-        militaryUsable:Boolean(military&&military.getBoundingClientRect().height>20),
-        strikesUsable:Boolean(strikes&&strikes.getBoundingClientRect().height>20),
-        strikesActive:document.getElementById('strikes')?.classList.contains('active')||false,
-        navOverflowOk:primary.scrollWidth<=primary.clientWidth || ['auto','scroll'].includes(pStyle.overflowX)
-      };
+      return {width:innerWidth,militaryUsable:Boolean(military&&military.getBoundingClientRect().height>20),strikesUsable:Boolean(strikes&&strikes.getBoundingClientRect().height>20),strikesActive:document.getElementById('strikes')?.classList.contains('active')||false,navOverflowOk:primary.scrollWidth<=primary.clientWidth || ['auto','scroll'].includes(pStyle.overflowX)};
     })()`);
     assert.equal(mobile.width, 390, 'mobile viewport override failed');
     assert.equal(mobile.militaryUsable, true, 'Military Operations primary navigation is not usable at mobile width');
@@ -187,12 +195,7 @@ async function main() {
     assert.equal(mobile.navOverflowOk, true, 'mobile primary navigation overflows without a usable scroll strategy');
 
     console.log('browser MOU/strike smoke: PASS — 100/100 strike locations visibly present on active Strike layer, 81 reconciliation timeline map actions, pan/popup, MOU semantics, messaging and mobile navigation');
-  } finally {
-    cdp.close();
-  }
+  } finally { cdp.close(); }
 }
 
-main().catch(error => {
-  console.error(error.stack || error);
-  process.exitCode = 1;
-});
+main().catch(error => { console.error(error.stack || error); process.exitCode = 1; });
