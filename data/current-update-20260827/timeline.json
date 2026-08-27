@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "design_note": "Append-only Aug. 27 current-overlay timeline. Occurrence dates are preserved where reported; publication date is not repurposed as event date.",
+  "as_of": "2026-08-27T08:25:00-04:00",
+  "records": [
+    {"event_id":"CUR-20260827-001","date":"2026-08-27","time":null,"time_precision":"DATE_ONLY","year":2026,"month":"2026-08","iso_week":"2026-W35","day":"2026-08-27","hour_bucket":null,"record_class":"CURRENT UPDATE","event_type":"QATAR_TEHRAN_MEDIATION","summary":"Qatar's prime minister/foreign minister visited Tehran and met Iranian Foreign Minister Abbas Araghchi, moving the mediation track from calls into an in-person session focused on Hormuz, de-escalation and conditions for renewed dialogue.","map_refs":[],"facility_refs":[],"claim_refs":[],"first_reported":"2026-08-26","first_verified":"2026-08-27","source_ids":["SRC-93B855640581","SRC-25C68ED54E67"]},
+    {"event_id":"CUR-20260826-004","date":"2026-08-26","time":null,"time_precision":"DATE_ONLY","year":2026,"month":"2026-08","iso_week":"2026-W35","day":"2026-08-26","hour_bucket":null,"record_class":"CURRENT UPDATE","event_type":"SHIPPING_TRAFFIC_UPDATE","summary":"Kpler counted 10 visible commodity-vessel Hormuz transits on Wednesday, Aug. 26, up from eight Tuesday but still below the 10-day moving average of about 15.","map_refs":["MAP-GEO-HORMUZ"],"facility_refs":[],"claim_refs":[],"first_reported":"2026-08-27","first_verified":"2026-08-27","source_ids":["SRC-10EEF6E3F806"]},
+    {"event_id":"CUR-20260827-002","date":"2026-08-27","time":null,"time_precision":"DATE_ONLY","year":2026,"month":"2026-08","iso_week":"2026-W35","day":"2026-08-27","hour_bucket":null,"record_class":"CURRENT UPDATE","event_type":"IRAN_DOMESTIC_PRESSURE_MESSAGING","summary":"As Qatar mediated in Tehran, parliament speaker Mohammad Baqer Qalibaf framed U.S. pressure as an 'all-out economic war' and called for national unity.","map_refs":[],"facility_refs":[],"claim_refs":[],"first_reported":"2026-08-27","first_verified":null,"source_ids":["SRC-93B855640581"]}
+  ]
+}
