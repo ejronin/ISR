@@ -59,6 +59,20 @@ window.pan=function(){return false;};
 let map=null;
 window.atlasMap=null;
 const groups={}; const allMarkers={};
+const STRIKE_LAYER_KEY='Strike effects';
+let currentOsintCutoff='2026-08-26 16:30 ET';
+const OUTCOME_ASSESSMENT_CUTOFF='2026-08-20 15:59 ET';
+const MOU_ASSESSMENT_CUTOFF='2026-08-22 10:54 ET';
+window.AtlasCutoffs={currentOsint:()=>currentOsintCutoff,historicalRecord:()=>currentOsintCutoff,outcomeAssessment:OUTCOME_ASSESSMENT_CUTOFF,mouAssessment:MOU_ASSESSMENT_CUTOFF};
+window.getAtlasMapMarker=id=>allMarkers[id]||null;
+window.getAtlasMapMarkerCount=()=>Object.keys(allMarkers).length;
+window.registerAtlasMapMarker=function registerAtlasMapMarker(id,marker,layerName){
+  if(!id||!marker)return false;
+  const layer=layerName&&groups[layerName];
+  if(layer&&layer.addLayer&&!layer.hasLayer?.(marker))layer.addLayer(marker);
+  allMarkers[id]=marker;
+  return true;
+};
 window.pan=function(){ return false; };
 try{
 if(!window.L) throw new Error('Leaflet map library was blocked or unavailable.');
@@ -71,7 +85,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,att
  function legacyFacilityPhysicalState(p){const assets=[...(p.critical_assets_reported||[]),...(p.noncritical_or_soft_assets_reported||[])];const states=assets.map(Presentation.physicalState);if(states.includes('lost')||states.includes('degraded'))return 'degraded';if(Presentation.physicalState(p.continuity||p.current_presence_status)==='operational')return 'operational';return 'neutral';}
  function canonicalFacilityPhysicalState(p){return Presentation.facilityEntityState?.(p)||'neutral';}
  function facilityPopup(p){const assets=[...(p.critical_assets_reported||[]),...(p.noncritical_or_soft_assets_reported||[])];const evidence=p.verification_grade||p.damage_evidence_status;return `<div class="atlas-popup"><h3>${esc(p.name)}</h3><div class="popup-badges">${evidenceBadge(evidence)}</div><p><b>Purpose</b>${esc(p.purpose||p.role||'Purpose unresolved.')}</p><section><b>Component physical state</b>${componentList(assets,'No verified component list in the current ledger.')}</section><section><b>Functional effect</b>${componentList([p.effect||p.note||'Functional effect unresolved.'])}</section><section><b>Continuity</b>${componentList([p.continuity||p.current_presence_status||'Continuity unresolved.'])}</section><div class="sources">${srcLinks((p.source_urls||[]).map(u=>[sourceNameFromUrl(u),u]))}</div></div>`}
- function strikePopup(p){const evidence=p.verification||p.status||'SUPPORTED';return `<div class="atlas-popup"><h3>${esc(p.name)}</h3><div class="popup-badges">${evidenceBadge(evidence)}</div><p><b>Date</b>${esc(p.event_date||p.date||'Date unresolved.')}</p>${p.tally?`<p><b>Tally / effect</b>${esc(p.tally)}</p>`:''}<p><b>Target / effect</b>${esc(p.target_type||p.note||'')}</p>${p.network_relevance?`<p><b>Network relevance</b>${esc(p.network_relevance)}</p>`:''}${p.note&&p.target_type?`<p><b>Context</b>${esc(p.note)}</p>`:''}<div class="sources">${srcLinks(p.sources||(p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div></div>`}
+ function strikePopup(p){
+  const evidence=p.verification||p.status||'SUPPORTED';
+  const bda=p.bda&&typeof p.bda==='object'?p.bda:null;
+  const occurrence=p.target_type||p.purpose||p.note||'Attack / strike occurrence supported; target detail unresolved.';
+  const physical=bda?.finding||'Physical effect unresolved in this attack record. A mapped attack is not by itself verified damage.';
+  return `<div class="atlas-popup"><h3>${esc(p.name)}</h3><div class="popup-badges">${evidenceBadge(evidence)}${bda?`<span class="analysis-badge">BDA / PHYSICAL-EFFECT EVIDENCE</span>`:''}</div><p><b>Date</b>${esc(p.event_date||p.date||'Date unresolved.')}</p><p><b>Attack / strike occurrence</b>${esc(occurrence)}</p><p><b>Physical effect</b>${esc(physical)}</p>${bda?.limitations?`<p><b>BDA limitations</b>${esc(bda.limitations)}</p>`:''}${p.network_relevance?`<p><b>Network relevance</b>${esc(p.network_relevance)}</p>`:''}${p.tally?`<p><b>Reported tally / effect</b>${esc(p.tally)}</p>`:''}<p><b>Durable loss</b>Tracked separately in the material-loss ledger. This marker does not by itself establish destruction, seizure or disablement.</p><div class="sources">${srcLinks(p.sources||(p.source_urls||[]).map((u,i)=>['source '+(i+1),u]))}</div></div>`;
+}
  function claimPopup(p){return `<div class="atlas-popup"><h3>${esc(p.name)}</h3><div class="popup-badges">${evidenceBadge(p.verdict)}</div><p><b>Claim</b>${esc(p.claim)}</p><p><b>Finding</b>${esc(p.finding)}</p><div class="sources">${srcLinks(p.sources)}</div></div>`}
 function historyLinkList(ids){
   return (ids||[]).map(id=>{
@@ -122,8 +142,31 @@ let bda=L.layerGroup();groups['BDA imagery']=bda;
  addMarker(bda,overlay.overlay_id,base.getLatLng().lat,base.getLatLng().lng,'imagery','#1bbdd0','circle',popup,`${name} — imagery available`,'verified');
 });
 
-// U.S. strike effects are thematic markers; popup evidence remains separate from physical state.
-let s=L.layerGroup();groups['Strike effects']=s;DATA.strikes.forEach(p=>{if(p.lat==null||p.lon==null)return;const evidence=Presentation.evidenceState(p.verification||p.status);addMarker(s,p.id,p.lat,p.lon,'strike','#364454','diamond',strikePopup(p),p.name,evidence)});s.addTo(map);
+// ATTACKS / STRIKES records establish sourced occurrence. Verified BDA and durable losses remain separate evidence channels.
+let s=L.layerGroup();groups[STRIKE_LAYER_KEY]=s;
+function installStrikeMarker(p){
+  if(!p?.id||!Number.isFinite(p.lat)||!Number.isFinite(p.lon))return null;
+  if(allMarkers[p.id])return allMarkers[p.id];
+  const evidence=Presentation.evidenceState(p.verification||p.status);
+  return addMarker(s,p.id,p.lat,p.lon,'strike','#364454','diamond',strikePopup(p),p.name,evidence);
+}
+window.refreshAtlasStrikeEffects=function refreshAtlasStrikeEffects(){
+  try{renderStrikeEffects(document.getElementById('strikeSearch')?.value||'');}catch(error){console.warn('Strike list refresh failed',error);}
+};
+window.registerAtlasStrikeRecords=function registerAtlasStrikeRecords(records,options={}){
+  const incoming=Array.isArray(records)?records:[];
+  const known=new Set((DATA.strikes||[]).map(row=>row.id));
+  let added=0,eligible=0,registered=0;
+  for(const row of incoming){
+    if(!known.has(row.id)){DATA.strikes.push(row);known.add(row.id);added++;}
+    if(!Number.isFinite(row.lat)||!Number.isFinite(row.lon))continue;
+    eligible++;
+    if(installStrikeMarker(row))registered++;
+  }
+  if(options.refresh!==false)window.refreshAtlasStrikeEffects();
+  return {received:incoming.length,added,eligible,registered,totalDataset:DATA.strikes.length};
+};
+DATA.strikes.forEach(installStrikeMarker);s.addTo(map);
 
 // Agreements and alignment share a single expert override layer.
 let c=L.layerGroup();groups['Agreements / alignment']=c;
@@ -162,12 +205,12 @@ let ar=L.featureGroup();groups['Trade / logistics routes']=ar;
 let q=L.layerGroup();groups['Geolinked claims']=q;DATA.claims.forEach(p=>addMarker(q,p.id,p.lat,p.lon,'claim','#596a7b','circle',claimPopup(p),p.name,Presentation.evidenceState(p.verdict)));
 
 // Analysis navigation owns the map state; this compact control is an expert override.
-const viewLayers={snapshot:['Sites','Strike effects','Current events'],timeline:['Sites','Strike effects','Historical events'],facilities:['Sites'],strikes:['Strike effects'],imagery:['Sites','BDA imagery'],csis:['Strike effects'],losses:['Sites','Strike effects'],economy:[],arctic:['Trade / logistics routes'],claims:['Geolinked claims'],infowar:['Geolinked claims'],historical:['Historical events','Force posture','Agreements / alignment','Verification mechanisms'],sources:[],intro:[],history:[]};
+const viewLayers={snapshot:['Sites','Current events'],timeline:['Sites','Historical events'],facilities:['Sites'],strikes:['Strike effects'],imagery:['Sites','BDA imagery'],csis:['Strike effects'],losses:['Sites','Strike effects'],economy:[],arctic:['Trade / logistics routes'],claims:['Geolinked claims'],infowar:['Geolinked claims'],historical:['Historical events','Force posture','Agreements / alignment','Verification mechanisms'],sources:[],intro:[],history:[]};
 const viewCenters={snapshot:[[27.5,51.5],4],facilities:[[27.0,50.0],5],strikes:[[31.5,52.0],5],imagery:[[26.5,50.0],5],csis:[[31.5,52.0],5],losses:[[28.0,51.0],4],economy:[[25.5,51.0],4],claims:[[27.5,51.5],4],infowar:[[27.5,51.5],4],historical:[[29.0,48.0],4],sources:[[27.5,51.5],4],intro:[[27.5,51.5],4],history:[[27.5,51.5],4]};
 function refreshLayerButtons(){let active=0;document.querySelectorAll('[data-layer-name]').forEach(button=>{const on=map.hasLayer(groups[button.dataset.layerName]);button.classList.toggle('on',on);button.setAttribute('aria-pressed',String(on));if(on)active+=1;});const summary=document.querySelector('.layer-control summary');if(summary)summary.textContent=`Map layers · ${active} active`;}
 window.configureAtlasMap=function(viewId){map.closePopup();Object.values(groups).forEach(layer=>{if(map.hasLayer(layer))map.removeLayer(layer);});const active=new Set(viewLayers[viewId]||viewLayers.snapshot);const overrides=window.AtlasState?.get?.().manualLayerOverrides||{};Object.entries(overrides).forEach(([name,on])=>on?active.add(name):active.delete(name));active.forEach(name=>groups[name]?.addTo(map));if(viewId!=='timeline')document.querySelectorAll('.atlas-marker-host.timeline-member,.atlas-marker-host.timeline-hidden,.atlas-marker-host.selected-marker').forEach(el=>el.classList.remove('timeline-member','timeline-hidden','selected-marker'));refreshLayerButtons();if(viewId==='arctic'&&ar.getBounds().isValid())map.fitBounds(ar.getBounds(),{padding:[24,24],maxZoom:3});else if(viewId!=='timeline'&&viewCenters[viewId])map.setView(viewCenters[viewId][0],viewCenters[viewId][1]);};
 const tb=document.getElementById('toolbar');
-if(tb){const sections=[['Operations',[['Sites','Sites'],['Strike effects','Strike effects'],['Current events','Current events']]],['Evidence',[['BDA imagery','BDA imagery'],['Historical events','Historical events']]],['Posture',[['Force posture','Force posture'],['Agreements / alignment','Agreements / alignment'],['Verification mechanisms','Verification mechanisms']]],['Routes',[['Trade / logistics routes','Trade / logistics routes — SCHEMATIC']]],['Claims',[['Geolinked claims','Geolinked claims']]]];const details=document.createElement('details');details.className='layer-control';const summary=document.createElement('summary');summary.textContent='Map layers';details.appendChild(summary);const body=document.createElement('div');body.className='layer-control-body';sections.forEach(([heading,rows])=>{const section=document.createElement('section');section.className='layer-control-group';const title=document.createElement('h3');title.textContent=heading;section.appendChild(title);rows.forEach(([name,display])=>{const layer=groups[name];const button=document.createElement('button');button.type='button';button.className='layerbtn';button.dataset.layerName=name;button.textContent=display;button.addEventListener('click',()=>{const on=!map.hasLayer(layer);on?layer.addTo(map):map.removeLayer(layer);const state=window.AtlasState?.get?.();if(state)window.AtlasState.set({manualLayerOverrides:{...state.manualLayerOverrides,[name]:on}},{source:'layer-override'});refreshLayerButtons();});section.appendChild(button);});body.appendChild(section);});const reset=document.createElement('button');reset.type='button';reset.className='layer-reset';reset.textContent='Reset to analytical view';reset.addEventListener('click',()=>{const state=window.AtlasState?.get?.();if(state)window.AtlasState.set({manualLayerOverrides:{}},{source:'layer-reset'});window.configureAtlasMap(window.atlasActiveView||'snapshot');});body.appendChild(reset);details.appendChild(body);tb.appendChild(details);}
+if(tb){const sections=[['Operations',[['Sites','Sites'],['Strike effects','Attacks / strikes'],['Current events','Current events']]],['Evidence',[['BDA imagery','BDA imagery'],['Historical events','Historical events']]],['Posture',[['Force posture','Force posture'],['Agreements / alignment','Agreements / alignment'],['Verification mechanisms','Verification mechanisms']]],['Routes',[['Trade / logistics routes','Trade / logistics routes — SCHEMATIC']]],['Claims',[['Geolinked claims','Geolinked claims']]]];const details=document.createElement('details');details.className='layer-control';const summary=document.createElement('summary');summary.textContent='Map layers';details.appendChild(summary);const body=document.createElement('div');body.className='layer-control-body';sections.forEach(([heading,rows])=>{const section=document.createElement('section');section.className='layer-control-group';const title=document.createElement('h3');title.textContent=heading;section.appendChild(title);rows.forEach(([name,display])=>{const layer=groups[name];const button=document.createElement('button');button.type='button';button.className='layerbtn';button.dataset.layerName=name;button.textContent=display;button.addEventListener('click',()=>{const on=!map.hasLayer(layer);on?layer.addTo(map):map.removeLayer(layer);const state=window.AtlasState?.get?.();if(state)window.AtlasState.set({manualLayerOverrides:{...state.manualLayerOverrides,[name]:on}},{source:'layer-override'});refreshLayerButtons();});section.appendChild(button);});body.appendChild(section);});const reset=document.createElement('button');reset.type='button';reset.className='layer-reset';reset.textContent="Reset to this view's defaults";reset.addEventListener('click',()=>{const state=window.AtlasState?.get?.();if(state)window.AtlasState.set({manualLayerOverrides:{}},{source:'layer-reset'});window.configureAtlasMap(window.atlasActiveView||'snapshot');});body.appendChild(reset);details.appendChild(body);tb.appendChild(details);}
 window.configureAtlasMap('snapshot');
 
 let selectedMarker=null;
@@ -210,10 +253,19 @@ function claimClass(t){
  if(s.includes('UNVERIFIED')||s.includes('OVERSTAT')||s.includes('MIXED'))return 'ev-med';
  return 'ev-high';
 }
+function setCurrentOsintCutoff(value){
+  if(value)currentOsintCutoff=String(value).replace('2026-08-26T16:30:00-04:00','2026-08-26 16:30 ET');
+  const strip=document.querySelector('#timeline .latest-strip');
+  if(strip)strip.innerHTML=`<b>CURRENT OSINT CUTOFF — ${esc(currentOsintCutoff)}:</b> chronology and map-linked event records are reviewed through this point. Older analytical syntheses below retain their own re-adjudication cutoff.`;
+  document.querySelectorAll('[data-historical-record-cutoff]').forEach(node=>node.textContent=currentOsintCutoff);
+}
+window.setAtlasCurrentOsintCutoff=setCurrentOsintCutoff;
+setCurrentOsintCutoff(currentOsintCutoff);
+
 function renderBalance(){
  const domains=LEDGER['domain-assessments'].domains||[];
  const rows=domains.map(d=>`<article class="domain-assessment"><div class="domain-assessment-head"><b>${esc(d.domain)}</b><span class="analysis-badge">${escLabel(d.current_advantage)}</span><span class="confidence-badge">${escLabel(d.confidence)} CONFIDENCE</span></div><p>${esc(d.assessment)}</p><small>${escLabel(d.trend)}</small></article>`).join('');
- document.getElementById('balance').innerHTML=`<div class="callout"><strong>Domain assessment only:</strong> ${esc(LEDGER['domain-assessments'].rule)}</div><div class="domain-assessment-grid">${rows}</div>`;
+ document.getElementById('balance').innerHTML=`<div class="callout"><strong>ASSESSMENT LAST RE-ADJUDICATED — ${esc(OUTCOME_ASSESSMENT_CUTOFF)}:</strong> ${esc(LEDGER['domain-assessments'].rule)} Newer chronology through ${esc(currentOsintCutoff)} does not automatically recalculate this synthesis.</div><div class="domain-assessment-grid">${rows}</div>`;
 }
 try{renderBalance();}catch(e){console.warn("renderBalance failed; using embedded static fallback",e);}
 
@@ -227,7 +279,7 @@ function renderCurrentPicture(){
   ['MARITIME LEVERAGE',byName('Maritime control / sea denial')],
   ['ALLIANCE / DIPLOMATIC POSITION',byName('Alliance / diplomatic position')]
  ];
- target.innerHTML=`<div class="current-picture-label">CURRENT ASSESSMENT — reviewed through ${esc(LEDGER.manifest.collection_cutoff)} • no composite war score</div>`+blocks.map(([blockLabel,row])=>`<article class="current-picture-block"><b>${esc(blockLabel)}</b><div><span class="analysis-badge">${escLabel(row.current_advantage||'UNRESOLVED')}</span><span class="confidence-badge">${escLabel(row.confidence||'UNRESOLVED')} CONFIDENCE</span></div><p>${esc(row.assessment||'Assessment unresolved in the current ledger.')}</p><small>${escLabel(row.trend||'')}</small></article>`).join('');
+ target.innerHTML=`<div class="current-picture-label">ASSESSMENT LAST RE-ADJUDICATED — ${esc(OUTCOME_ASSESSMENT_CUTOFF)} • current OSINT through ${esc(currentOsintCutoff)} • no composite war score</div>`+blocks.map(([blockLabel,row])=>`<article class="current-picture-block"><b>${esc(blockLabel)}</b><div><span class="analysis-badge">${escLabel(row.current_advantage||'UNRESOLVED')}</span><span class="confidence-badge">${escLabel(row.confidence||'UNRESOLVED')} CONFIDENCE</span></div><p>${esc(row.assessment||'Assessment unresolved in the current ledger.')}</p><small>${escLabel(row.trend||'')}</small></article>`).join('');
 }
 try{renderCurrentPicture();}catch(e){console.warn('renderCurrentPicture failed',e);}
 
@@ -266,9 +318,9 @@ function renderStrikeEffects(filter=''){
   <div class="date">${esc(x.event_date||x.date||'')} • ${escLabel(x.verification||x.status||'')}</div>
   <h3>${esc(x.name)}</h3>
   <div class="status-row">${evidenceBadge(x.verification||x.status)}<span class="analysis-badge">${escLabel(x.impact_grade||'')}</span></div>
-  ${x.tally?`<p><b>Loss / effect tally:</b> ${esc(x.tally)}</p>`:''}
-  <p><b>Purpose of the target set:</b> ${esc(x.purpose||x.network_relevance||'')}</p>
-  <p><b>Operational effect:</b> ${esc(x.effect||x.note||'')}</p>
+  ${x.tally?`<p><b>Reported tally / effect:</b> ${esc(x.tally)}</p>`:''}
+  <p><b>Attack / strike occurrence:</b> ${esc(x.target_type||x.purpose||x.network_relevance||'Occurrence supported; target detail unresolved.')}</p>
+  <p><b>Physical effect / BDA:</b> ${esc(x.bda?.finding||'Physical effect unresolved in this attack record. A mapped attack is not by itself verified damage.')}</p>
   ${x.network_relevance?`<p><b>Network context:</b> ${esc(x.network_relevance)}</p>`:''}
   <div class="sources">${srcLinks(x.sources||namedUrlLinks(x.source_urls))}</div>
  </article>`).join('');
@@ -283,7 +335,7 @@ function ensureTimelineControls(){
  const controls=document.createElement('div');
  controls.id='timelineControls';
  controls.className='ledger-controls';
- controls.innerHTML=`<label>Temporal mode<select id="timelineMode"><option value="as-of">AS OF</option><option value="known-by">KNOWN BY</option></select></label><label>Cutoff<input id="timelineCutoff" type="date" min="2020-11-18" max="2026-08-20" value="2026-08-20"></label><label>Zoom<select id="timelineGranularity"><option value="war">War</option><option value="month">Month</option><option value="week">Week</option><option value="day">Day</option><option value="hour">Hour — source-supported only</option></select></label><label>Context<select id="timelineContext"><option value="all">All events</option><option value="loss">Loss events</option><option value="strike">Strike events</option><option value="facility">Facility / BDA events</option><option value="posture">Force-posture events</option></select></label><output id="timelineCount" aria-live="polite"></output>`;
+ controls.innerHTML=`<label>Temporal mode<select id="timelineMode"><option value="as-of">AS OF</option><option value="known-by">KNOWN BY</option></select></label><label>Cutoff<input id="timelineCutoff" type="date" min="2020-11-18" max="2026-08-26" value="2026-08-26"></label><label>Zoom<select id="timelineGranularity"><option value="war">War</option><option value="month">Month</option><option value="week">Week</option><option value="day">Day</option><option value="hour">Hour — source-supported only</option></select></label><label>Context<select id="timelineContext"><option value="all">All events</option><option value="loss">Loss events</option><option value="strike">Strike events</option><option value="facility">Facility / BDA events</option><option value="posture">Force-posture events</option></select></label><output id="timelineCount" aria-live="polite"></output>`;
  search.parentNode.insertBefore(controls,search);
  const state=window.AtlasState?.get?.();
  if(state){document.getElementById('timelineMode').value=state.temporalMode;document.getElementById('timelineCutoff').value=state.timeCutoff;document.getElementById('timelineGranularity').value=state.temporalGranularity;document.getElementById('timelineContext').value=state.timelineContext;}
@@ -294,7 +346,7 @@ window.registerAtlasTimelineRecords=function registerAtlasTimelineRecords(record
 window.registerAtlasEvents=function registerAtlasEvents(events){(events||[]).forEach(event=>{eventById.set(event.event_id,event);if(!timelineRecordById.has(event.event_id)){const day=String(event.event_date||'').slice(0,10);const date=new Date(`${day}T00:00:00Z`);const first=new Date(Date.UTC(date.getUTCFullYear(),0,1));const isoWeek=Math.ceil((((date-first)/86400000)+first.getUTCDay()+1)/7);timelineRecordById.set(event.event_id,{event_id:event.event_id,day,month:day.slice(0,7),iso_week:`${date.getUTCFullYear()}-W${String(isoWeek).padStart(2,'0')}`,hour_bucket:null});}});};
 function ledgerTimeline(filter=''){
  const mode=document.getElementById('timelineMode')?.value||'as-of';
- const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-20';
+ const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-26';
  const context=document.getElementById('timelineContext')?.value||'all';
  const granularity=document.getElementById('timelineGranularity')?.value||'war';
  const needle=filter.toLowerCase().trim();
@@ -319,7 +371,9 @@ function syncTimelineMap(events){
  document.querySelectorAll('.atlas-marker-host').forEach(el=>el.classList.remove('timeline-member','timeline-hidden'));
  if(window.atlasActiveView!=='timeline')return;
  // Navigation establishes the analytical layer set once; timeline updates preserve expert overrides.
- if(document.getElementById('timelineContext')?.value==='posture')groups['Force posture']?.addTo(map);
+ const timelineContext=document.getElementById('timelineContext')?.value||'all';
+ if(timelineContext==='posture')groups['Force posture']?.addTo(map);
+ if(timelineContext==='strike')groups[STRIKE_LAYER_KEY]?.addTo(map);
  const markers=[...new Set(events.flatMap(event=>eventMapRefs(event)).map(ref=>allMarkers[ref]).filter(Boolean))];
  document.querySelectorAll('.atlas-marker-host').forEach(el=>el.classList.add('timeline-hidden'));
  markers.forEach(marker=>marker.getElement()?.classList.remove('timeline-hidden'));
@@ -346,7 +400,7 @@ function renderTimeline(filter=''){
  ensureTimelineControls();
  const items=ledgerTimeline(filter);
  const mode=document.getElementById('timelineMode')?.value||'as-of';
- const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-20';
+ const cutoff=document.getElementById('timelineCutoff')?.value||'2026-08-26';
  const granularity=document.getElementById('timelineGranularity')?.value||'war';
  const hour=document.querySelector('#timelineGranularity option[value="hour"]');
  const allTimeline=LEDGER.timeline.records||[];const hourSupported=Temporal.supportsHour(allTimeline);
@@ -453,7 +507,7 @@ function renderHistoricalModel(){
  const counts=LEDGER.manifest.counts||{};
  const coverage=LEDGER['daily-coverage'].coverage||[];
  const quietMarkers=coverage.filter(x=>x.collection_status==='NO_STANDALONE_VERIFIED_EVENT_IN_CURRENT_SOURCE_SET').length;
- summary.innerHTML=`<div class="ledger-summary-grid"><div><b>${esc(counts.events)}</b><span>historical events</span></div><div><b>${esc(counts.prewar_events)}</b><span>pre-war context</span></div><div><b>${esc(counts.wartime_events)}</b><span>wartime events</span></div><div><b>${esc(coverage.length)}</b><span>daily coverage markers</span></div><div><b>${esc(counts.sources)}</b><span>canonical sources</span></div><div><b>${esc(counts.revision_records)}</b><span>documented revisions</span></div></div><div class="callout"><strong>Coverage rule:</strong> ${quietMarkers} daily markers record that no standalone verified event was found in the current source set. They are collection-state markers—not evidence that nothing happened.</div>`;
+ summary.innerHTML=`<div class="callout"><strong>HISTORICAL RECORD CUTOFF — <span data-historical-record-cutoff>${esc(currentOsintCutoff)}</span>:</strong> this describes record coverage, not the re-adjudication date of every analytical assessment.</div><div class="ledger-summary-grid"><div><b>${esc(counts.events)}</b><span>historical events</span></div><div><b>${esc(counts.prewar_events)}</b><span>pre-war context</span></div><div><b>${esc(counts.wartime_events)}</b><span>wartime events</span></div><div><b>${esc(coverage.length)}</b><span>daily coverage markers</span></div><div><b>${esc(counts.sources)}</b><span>canonical sources</span></div><div><b>${esc(counts.revision_records)}</b><span>documented revisions</span></div></div><div class="callout"><strong>Coverage rule:</strong> ${quietMarkers} daily markers record that no standalone verified event was found in the current source set. They are collection-state markers—not evidence that nothing happened.</div>`;
  document.getElementById('movementList').innerHTML=(LEDGER.movements.movements||[]).map(x=>`<article class="item"><div class="date">${esc(x.date)} • ${esc(x.movement_id)}</div><h3>${esc(x.unit_or_asset)}</h3><div class="status-row"><span class="analysis-badge">${escLabel(x.display_label)}</span><span class="confidence-badge">${escLabel(x.force_posture_classification)}</span></div><p><b>Movement:</b> ${esc(x.from)} → ${esc(x.to)}</p><p><b>Decision / execution:</b> ${esc(x.decision_date||'UNRESOLVED')} / ${esc(x.actual_execution_date||x.execution_date||'UNRESOLVED')}</p><p><b>War-change assessment:</b> ${esc(x.war_change_assessment||x.assessment_notes)}</p><p><b>Causation:</b> ${esc((x.causation_language||[]).join(' '))}</p><div class="sources">${canonicalSourceLinks(x.source_refs)}</div></article>`).join('');
  document.getElementById('agreementList').innerHTML=(LEDGER.agreements.records||[]).map(x=>{
    const relationship=x.replaces_us_linked_arrangement?'REPLACES U.S.-LINKED ARRANGEMENT':x.supplements_us_linked_arrangement?'SUPPLEMENTS U.S.-LINKED ARRANGEMENT':x.coexists_with_us_linked_arrangement?'COEXISTS WITH U.S.-LINKED ARRANGEMENT':'NO DEMONSTRATED EFFECT ON U.S.-LINKED ARRANGEMENT';

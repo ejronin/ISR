@@ -11,9 +11,10 @@
   const DATA='./data/endgame-public-view-v1.json?v=20260824-r1';
   const HORMUZ='./data/hormuz-strategic-v3.json?v=20260822-v3';
   const CAUSAL='./data/endgame-causal-map-r1.mmd?v=20260824-r1';
-  let model=null,hormuz=null,causalText='',activeTab='strategic',strategicLens='causal',wrapping=false,rootObserver=null,navObserver=null,causalRendering=false,causalRendered=false;
+  const OBJECTIVES='./data/endgame-us-objectives-20260825-r1.json?v=20260825-r1';
+  let model=null,hormuz=null,objectives=null,causalText='',activeTab='strategic',strategicLens='causal',wrapping=false,rootObserver=null,navObserver=null,causalRendering=false,causalRendered=false;
 
-  function source(id){return model?.sources?.[id]||null;}
+  function source(id){return model?.sources?.[id]||objectives?.sources?.[id]||null;}
   function handoffSources(parent,ids){
     const box=A(parent,'div','eg3-sources');let count=0;
     (ids||[]).forEach(id=>{const s=source(id),u=safe(s?.url);if(!s||!u)return;const a=A(box,'a','eg3-source-chip',`${id} · ${s.publisher}`);a.href=u;a.target='_blank';a.rel='noopener noreferrer';a.title=`${s.date} · ${s.quality} · ${s.supports}`;count++;});
@@ -83,16 +84,33 @@
   function renderMou(panel){
     panel.replaceChildren();
     const intro=section(panel,'What the agreement actually did','The Islamabad MOU was an interim bargain, not a final peace treaty. This section keeps the document text, the implementation sequence and the current status separate.');
-    const flags=A(intro,'div','eg3-inline-flags');badge(flags,'DOCUMENTARY RECORD','fact');badge(flags,'EXPIRED / NON-CONTROLLING','dead');badge(flags,'SUCCESSOR TERMS MAY BE REUSED','open');
+    const flags=A(intro,'div','eg3-inline-flags');badge(flags,'DOCUMENTARY RECORD','fact');badge(flags,'EXPIRED / NON-CONTROLLING','dead');badge(flags,'SUCCESSOR TERMS MAY BE REUSED','open');A(intro,'p','eg3-warning-text','MOU / HORMUZ ASSESSMENT LAST RE-ADJUDICATED — 2026-08-22 10:54 ET. Newer chronology does not silently re-adjudicate this section.');
 
     const clauses=section(panel,'What it said · 14-clause plain-English record','Key paragraphs are emphasized because they drive the current dispute. Open a row for the source and analytical context.');
     const cg=A(clauses,'div','eg3-clause-list');
     model.clauses.forEach(x=>{const d=A(cg,'details',`eg3-clause${x.key?' key':''}`);d.id=`eg3-clause-${x.paragraph}`;const s=A(d,'summary','');const left=A(s,'span','eg3-clause-id',`¶${x.paragraph}`);badge(left,'FACT','fact');const tx=A(s,'span','eg3-clause-copy');A(tx,'strong','',x.title);A(tx,'span','',x.summary);const body=A(d,'div','eg3-clause-body');A(body,'p','',x.summary);handoffSources(body,['S01']);});
 
-    const got=section(panel,'Who got what','Paper concessions are separated from whether they later survived implementation.');
+    const got=section(panel,'OBTAINED IN THE INTERIM DEAL','These are obligations or processes written into the 60-day interim instrument. A paper term is not automatically the same thing as completed implementation.');
     const gg=A(got,'div','eg3-two-col');Object.entries(model.who_got).forEach(([k,v])=>{const c=card(gg,k);bullets(c,v);handoffSources(c,['S01']);});
-    const ng=section(panel,'Who did NOT get what','This prevents later rhetoric from being mistaken for language the MOU actually contained.');
-    const ngd=A(ng,'div','eg3-two-col');Object.entries(model.who_did_not_get).forEach(([k,v])=>{const c=card(ngd,k);bullets(c,v);handoffSources(c,['S01']);});
+
+    const deferred=section(panel,'DEFERRED TO FINAL NEGOTIATIONS — NOT YET WON OR LOST','The interim MOU deliberately left these end-state questions to the final-deal process. Their absence from the interim text is not a failure by either side to obtain a final settlement in June.');
+    const dg=A(deferred,'div','eg3-two-col');
+    const nuclear=card(dg,'Nuclear end state');bullets(nuclear,['Final enrichment rules.','Final inspection regime and implementation framework.','Any ultimate dismantlement or rollback architecture beyond the interim freeze/stockpile mechanism.','The final controlling nuclear settlement.']);handoffSources(nuclear,['S01']);
+    const finalOther=card(dg,'Other final-deal architecture');bullets(finalOther,['Permanent Hormuz administration and maritime-services arrangements.','The final sanctions-termination schedule and reconstruction implementation mechanisms.','The binding final agreement contemplated for later U.N. Security Council endorsement.']);handoffSources(finalOther,['S01']);
+
+    const ng=section(panel,'EXPLICITLY NOT INCLUDED / REJECTED','Only terms the interim text did not grant are shown here. Deferred final-deal questions are not relabeled as “did not get.”');
+    const deferredPattern=/dismantlement|final enrichment|final Hormuz governance|permanent termination of every sanction|final nuclear settlement/i;
+    const ngd=A(ng,'div','eg3-two-col');Object.entries(model.who_did_not_get).forEach(([k,v])=>{const c=card(ngd,k);bullets(c,(v||[]).filter(item=>!deferredPattern.test(item)));handoffSources(c,['S01']);});
+
+    const impl=section(panel,'IMPLEMENTATION AFTER SIGNATURE','The same clause can move through different states. Paper promises, actual implementation, non-implementation and later reversal are not collapsed into one “concession” label.');
+    const ig=A(impl,'div','eg3-two-col');
+    const implemented=card(ig,'IMPLEMENTED');bullets(implemented,['Front-loaded implementation began after Jun. 17/18.','Immediate Iranian oil-export waivers were implemented before their later revocation.','Blockade relief began as a front-loaded obligation before the MOU collapsed.']);handoffSources(implemented,['S01','S02','S03','S04']);
+    const never=card(ig,'PROMISED BUT NEVER IMPLEMENTED');bullets(never,['No final deal was completed.','The promised post-final-deal U.S. force withdrawal never triggered.','The $300 billion reconstruction mechanism and comprehensive sanctions termination were never realized.','The contemplated U.N. Security Council endorsement never occurred.']);handoffSources(never,['S05','S06']);
+    const reversed=card(ig,'LATER REVERSED');bullets(reversed,['Blockade relief was reversed after renewed conflict.','The front-loaded oil waiver was revoked in July.','Washington said the MOU was over; Iran later said it was suspended.']);handoffSources(reversed,['S04','S05','S06']);
+
+    const nuclearSeq=section(panel,'Nuclear sequence · before → interim → deferred → movement → current','This separates agreeing to negotiate from conceding the final nuclear question.');
+    const seq=A(nuclearSeq,'div','eg3-timeline');
+    [['BEFORE','Iranian state-aligned strategic messaging described nuclear, missile and defense capabilities as non-negotiable and resisted concessions under pressure.'],['INTERIM MOU RESULT','Iran reaffirmed no nuclear weapon, accepted the interim nuclear status quo/freeze, accepted the stockpile-management/downblending mechanism in the MOU, and agreed to a final-deal process for unresolved nuclear terms.'],['DEFERRED — NOT YET WON OR LOST','Final enrichment, final inspections/implementation and any ultimate rollback architecture were left for the final controlling bargain.'],['WHO MOVED','Iran’s agreement to negotiate unresolved nuclear terms is movement from its earlier non-negotiable framing toward the negotiation process Washington sought. Washington’s agreement to keep negotiating an issue it was already asking to negotiate is not a Washington walkback. No numeric movement score is assigned here.'],['CURRENT RESULT','No final controlling nuclear settlement is established. The U.S. nuclear objective remains UNSCORED / NOT YET ADJUDICABLE in the current objective board.']].forEach(([title,body])=>{const row=A(seq,'article','eg3-timeline-row');A(row,'div','eg3-date',title);const c=A(row,'div');A(c,'p','',body);});handoffSources(nuclearSeq,['IR1','IR4','S01']);
 
     renderMouBars(panel);
 
@@ -111,13 +129,13 @@
   }
 
   function renderMouBars(panel){
-    const balance=section(panel,'Bargaining balance · preserved comparative bars','These analyst aids answer “how far did each side move from its own bargaining pole?” They do not measure morality, blame or a war score. They are retained because the new layout does not supersede that comparison.');
+    const balance=section(panel,'Where the signed deal landed · analyst pole comparison','These bars show where each signed clause sits between analyst-defined Iran and U.S. preferred endpoints. They are NOT a measurement of how far either actor moved from a dated pre-MOU position.');
     const matrix=hormuz?.mou_concession_matrix||[];
-    const mg=A(balance,'div','eg3-bar-grid');matrix.forEach(x=>{const c=card(mg,x.topic);const rows=[['Iran concession aid',Number(x.iran_concession)||0,'iran'],['U.S. concession aid',Number(x.us_concession)||0,'us']];rows.forEach(([label,val,kind])=>{const r=A(c,'div','eg3-bar-row');A(r,'span','',label);const tr=A(r,'div','eg3-bar-track');const fill=A(tr,'i',kind);fill.style.width=`${Math.max(0,Math.min(10,val))*10}%`;A(r,'b','',`${val}/10`);});A(c,'p','eg3-muted',x.status||x.why||'');legacySources(c,x.sources);});
+    const mg=A(balance,'div','eg3-bar-grid');matrix.forEach(x=>{const c=card(mg,x.topic);const rows=[['Distance from Iran preferred endpoint',Number(x.iran_concession)||0,'iran'],['Distance from U.S. preferred endpoint',Number(x.us_concession)||0,'us']];rows.forEach(([label,val,kind])=>{const r=A(c,'div','eg3-bar-row');A(r,'span','',label);const tr=A(r,'div','eg3-bar-track');const fill=A(tr,'i',kind);fill.style.width=`${Math.max(0,Math.min(10,val))*10}%`;A(r,'b','',`${val}/10`);});A(c,'p','eg3-muted',x.status||x.why||'');legacySources(c,x.sources);});
     if(!matrix.length)A(balance,'p','eg3-muted','Comparative concession data are unavailable at this cutoff.');
 
-    const tracks=section(panel,'Clause position tracks · signed position vs later reality','The signed marker shows where the MOU sat between the two substantive poles. A second marker shows later implementation where the current dataset supports one.');
-    const tg=A(tracks,'div','eg3-track-grid');(hormuz?.mou_position_tracks||[]).filter(x=>x.scorable).forEach(x=>{const c=card(tg,`Clause ${x.clause} · ${x.topic}`);A(c,'p','',x.analysis||x.mou||'');const l=A(c,'div','eg3-pole-labels');A(l,'span','','Iran pole');A(l,'span','','U.S. pole');const axis=A(c,'div','eg3-position-axis');const signed=A(axis,'i','signed');signed.style.left=`${Math.max(0,Math.min(100,Number(x.position)||0))}%`;signed.title=`Signed position: ${x.position}/100 toward U.S. pole`;if(x.later_marker){const later=A(axis,'i','later');later.style.left=`${Math.max(0,Math.min(100,Number(x.later_marker.position)||0))}%`;later.title=x.later_marker.text||x.later_marker.label||'Later position';}const leg=A(c,'div','eg3-track-legend');A(leg,'span','','● signed');if(x.later_marker)A(leg,'span','','◇ later');A(c,'strong','eg3-current-status',x.current_status||'');legacySources(c,x.sources);});
+    const tracks=section(panel,'Clause position tracks · signed location vs later reality','The signed marker is a location between analyst-defined preferred endpoints, not an actor-movement score. A second marker shows later implementation where the current dataset supports one.');
+    const tg=A(tracks,'div','eg3-track-grid');(hormuz?.mou_position_tracks||[]).filter(x=>x.scorable).forEach(x=>{const c=card(tg,`Clause ${x.clause} · ${x.topic}`);A(c,'p','',x.analysis||x.mou||'');const l=A(c,'div','eg3-pole-labels');A(l,'span','','Iran preferred endpoint');A(l,'span','','U.S. preferred endpoint');const axis=A(c,'div','eg3-position-axis');const signed=A(axis,'i','signed');signed.style.left=`${Math.max(0,Math.min(100,Number(x.position)||0))}%`;signed.title=`Signed position: ${x.position}/100 toward U.S. pole`;if(x.later_marker){const later=A(axis,'i','later');later.style.left=`${Math.max(0,Math.min(100,Number(x.later_marker.position)||0))}%`;later.title=x.later_marker.text||x.later_marker.label||'Later position';}const leg=A(c,'div','eg3-track-legend');A(leg,'span','','● signed');if(x.later_marker)A(leg,'span','','◇ later');A(c,'strong','eg3-current-status',x.current_status||'');legacySources(c,x.sources);});
   }
 
   function renderStrategicScaffold(panel,legacyNodes){
@@ -204,7 +222,7 @@
   function handleHash(){const h=(location.hash||'').toLowerCase();if(h==='#mou'||h.includes('mou'))openEndgame('mou');else if(h==='#public-view'||h.includes('public-view')||h.includes('public_perception'))openEndgame('public');else if(h==='#endgame'||h.includes('strategic-endgame'))openEndgame('strategic');}
 
   async function init(){
-    [model,hormuz,causalText]=await Promise.all([J(DATA),J(HORMUZ),T(CAUSAL)]);
+    [model,hormuz,objectives,causalText]=await Promise.all([J(DATA),J(HORMUZ),J(OBJECTIVES),T(CAUSAL)]);
     watchNav();
     if(!watchRoot()){const mo=new MutationObserver(()=>{if(watchRoot())mo.disconnect();});mo.observe(document.documentElement,{childList:true,subtree:true});}
     window.addEventListener('hashchange',handleHash);setTimeout(handleHash,120);

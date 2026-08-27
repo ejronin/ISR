@@ -124,7 +124,8 @@ def main():
     # index.html is the static baseline; runtime successor overlays may advance the displayed count.
     for token in [">98</b><span>canonical historical-ledger records", ">108</b><span>current chronology records", "current-update-20260824.js"]:
         if token not in index: fail(f"index missing {token!r}")
-    if "timeCutoff: '2026-08-24'" not in state: fail("state default cutoff is not Aug. 24")
+    # This gate freezes the Aug. 24 data layer, not the current public timeline default. Later append-only overlays may advance it.
+    if "timeCutoff: '2026-08-26'" not in state: fail("state default cutoff is not current through Aug. 26")
     for token in ["const CANONICAL='2026-08-24'", "2026-08-24 14:14 ET", "2026-08-20 15:59 ET", "2026-08-22 10:54 ET"]:
         if token not in work: fail(f"workspace lock missing {token!r}")
     if "ATLAS_CURRENT_UPDATE?.sources" not in full: fail("full-scope source map does not include current overlay")

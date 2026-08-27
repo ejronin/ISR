@@ -52,8 +52,8 @@
   }
   function objectiveCard(x){
     const card=E('article','eg3-card eg25-objective-card');
-    const top=E('div','eg25-objective-top');top.append(E('h5','',x.objective),meter(x.score));card.append(top);
-    const badge=E('span','eg3-badge eg3-assessment',x.status||'UNRATED');card.append(badge);
+    const top=E('div','eg25-objective-top');const heading=E('div','eg25-objective-heading');heading.append(E('h5','',x.objective),E('span','eg3-badge eg3-assessment eg25-primary-status',x.status||'UNRATED'));top.append(heading);card.append(top);
+    const scoreWrap=E('div','eg25-secondary-score');scoreWrap.append(E('span','eg3-muted','Secondary 0–4 convenience score'),meter(x.score));card.append(scoreWrap);
     if(x.origin)card.append(E('div','eg25-origin',`Original benchmark · ${x.origin}`));
     card.append(E('p','',x.assessment));chips(card,x.source_ids);return card;
   }

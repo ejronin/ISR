@@ -216,7 +216,7 @@ function shiftDay(n){const state=window.AtlasState?.get?.();if(!state?.timeCutof
     [/\bforce posture\b/gi,'force positioning'],[/\bfunctional continuity\b/gi,'ability to keep operating'],[/\bfunctional effect\b/gi,'what stopped working'],
     [/\battrition\b/gi,'losses'],[/\battrited\b/gi,'worn down'],[/\bdegradation\b/gi,'weakening'],[/\bdegraded\b/gi,'weakened'],
     [/\bsea-denial\b/gi,'ability to keep ships out'],[/\bcoercive leverage\b/gi,'pressure'],[/\bcoercive\b/gi,'pressure-based'],[/\bkinetic\b/gi,'military'],
-    [/\bcapitulation\b/gi,'giving in'],[/\bdecapitation\b/gi,'senior leadership losses'],[/\binstitutionalized\b/gi,'formally established'],
+    [/\bcapitulation\b/gi,'movement from a prior position'],[/\bdecapitation\b/gi,'senior leadership losses'],[/\binstitutionalized\b/gi,'formally established'],
     [/\btheater-wide\b/gi,'region-wide'],[/\bcampaign-generating capacity\b/gi,'ability to keep military operations going']
   ];
   function plainText(value){let s=String(value||'');if(PLAIN_EXACT.has(s.trim()))return PLAIN_EXACT.get(s.trim());if(/^[A-Z0-9_+\-/ ]{5,}$/.test(s.trim())&&s.includes('_'))s=label(s);PLAIN_REPLACE.forEach(([r,v])=>{s=s.replace(r,v)});return s;}
