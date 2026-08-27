@@ -12,7 +12,7 @@
 
   const fetchJson = async file => {
     const response = await fetch(PATH + file, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`${file}: ${response.status}`);
+    if (!response.ok) throw new Error(`${path}: ${response.status}`);
     return response.json();
   };
 
@@ -25,6 +25,27 @@
       setTimeout(poll, 50);
     }());
   });
+
+  function ensureTemporalBase() {
+    const historical = window.ATLAS_LEDGER?.events?.events || [];
+    if (historical.length !== EXPECTED_HISTORICAL) throw new Error(`Historical ledger count changed: ${historical.length}`);
+    const current = Array.isArray(window.ATLAS_TEMPORAL_INDEX) ? window.ATLAS_TEMPORAL_INDEX : [];
+    const byId = new Map(current.filter(row => row?.event_id).map(row => [row.event_id, row]));
+    for (const row of historical) {
+      if (!byId.has(row.event_id)) byId.set(row.event_id, {
+        ...row,
+        temporal_record_type: row.temporal_record_type || 'HISTORICAL_LEDGER',
+        day: row.event_date,
+        month: row.event_date?.slice(0, 7)
+      });
+    }
+    window.ATLAS_TEMPORAL_INDEX = [...byId.values()].sort((a, b) =>
+      String(a.event_date || '').localeCompare(String(b.event_date || '')) ||
+      String(a.event_time || '').localeCompare(String(b.event_time || '')) ||
+      String(a.event_id || '').localeCompare(String(b.event_id || ''))
+    );
+    if (window.ATLAS_TEMPORAL_INDEX.length < EXPECTED_HISTORICAL) throw new Error(`Temporal base incomplete: ${window.ATLAS_TEMPORAL_INDEX.length}`);
+  }
 
   function assertPayload(manifest, events, timeline, sources) {
     const historical = window.ATLAS_LEDGER?.events?.events || [];
@@ -84,7 +105,8 @@
   }
 
   async function init() {
-    await waitFor(() => window.ATLAS_LEDGER && window.ATLAS_TEMPORAL_INDEX && window.registerAtlasEvents && window.registerAtlasSources);
+    await waitFor(() => window.ATLAS_LEDGER && window.registerAtlasEvents && window.registerAtlasSources);
+    ensureTemporalBase();
     const [manifest, events, timeline, sources] = await Promise.all([
       fetchJson('manifest.json'), fetchJson('events.json'), fetchJson('timeline.json'), fetchJson('sources.json')
     ]);
