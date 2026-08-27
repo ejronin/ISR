@@ -123,6 +123,16 @@
     return linked;
   }
 
+  function chronologyCount(){
+    const ids=new Set();
+    for(const row of window.ATLAS_TEMPORAL_INDEX||[]){
+      if(!row?.event_id)continue;
+      if(row.temporal_record_type==='ANNOTATION'||row.record_class==='EVIDENCE ANNOTATION')continue;
+      ids.add(row.event_id);
+    }
+    return ids.size;
+  }
+
   function updateLabels(){
     document.querySelectorAll('[data-current-chronology-count]').forEach(node=>{node.textContent=String(EXPECTED.runtime_chronology);});
     document.querySelectorAll('.kpi.info').forEach(kpi=>{
@@ -151,15 +161,18 @@
     const mapLinkedTimeline=validateTimelineMapLinks(payload);
     window.setAtlasCurrentOsintCutoff?.('2026-08-26 16:30 ET');
     updateLabels();
-    const runtime=(window.ATLAS_TEMPORAL_INDEX||[]).length;
+    const runtime=chronologyCount();
     if(runtime!==EXPECTED.runtime_chronology)throw new Error(`runtime chronology mismatch ${runtime} != ${EXPECTED.runtime_chronology}`);
-    window.ATLAS_WIKI_RECON_20260826={cutoff:manifest.collection_cutoff||manifest.created_at,counts:{...EXPECTED,runtime_chronology:runtime,registered_strike_markers:strikeRegistration.registered,map_linked_timeline_records:mapLinkedTimeline},coverageAudit:audit,sources:payload.sources,events:payload.events,materialLosses:payload.material_losses};
+    window.ATLAS_WIKI_RECON_20260826={cutoff:manifest.collection_cutoff||manifest.created_at,counts:{...EXPECTED,runtime_chronology:runtime,temporal_index_records:(window.ATLAS_TEMPORAL_INDEX||[]).length,registered_strike_markers:strikeRegistration.registered,map_linked_timeline_records:mapLinkedTimeline},coverageAudit:audit,sources:payload.sources,events:payload.events,materialLosses:payload.material_losses};
     window.renderAtlasTimeline?.(document.getElementById('timelineSearch')?.value||'');
     window.refreshAtlasTimelineMap?.();
     window.ISRFullScope20260822?.refreshTimeline?.();
     window.dispatchEvent(new CustomEvent('atlaswikireconready20260826',{detail:window.ATLAS_WIKI_RECON_20260826.counts}));
   }
 
-  const start=()=>init().catch(error=>console.warn('Historical regional reconciliation unavailable; prior Atlas data remains usable.',error));
+  const start=()=>init().catch(error=>{
+    window.ATLAS_WIKI_RECON_ERROR_20260826={message:String(error?.message||error),stack:String(error?.stack||'')};
+    console.warn('Historical regional reconciliation unavailable; prior Atlas data remains usable.',error);
+  });
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 }());
