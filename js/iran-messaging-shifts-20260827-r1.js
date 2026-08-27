@@ -125,15 +125,7 @@
     return true;
   }
   function keepMounted(model){
-    let observer=null,observedRoot=null,queued=false;
-    const attach=()=>{
-      const root=document.getElementById('infowar');
-      if(!root)return;
-      if(root!==observedRoot&&window.MutationObserver){observer?.disconnect();observer=new MutationObserver(remount);observer.observe(root,{childList:true});observedRoot=root;window.__ISR_IRAN_MESSAGING_SHIFTS_OBSERVER_20260827=observer;}
-      if(!root.querySelector('[data-iran-messaging-shifts-20260827]'))install(model);
-    };
-    const remount=()=>{if(queued)return;queued=true;queueMicrotask(()=>{queued=false;attach();});};
-    attach();
+    const remount=()=>{const root=document.getElementById('infowar');if(root&&!root.querySelector('[data-iran-messaging-shifts-20260827]'))install(model);};
     window.addEventListener('atlasstatechange',remount);
     window.addEventListener('atlascurrentready20260827',remount);
   }
