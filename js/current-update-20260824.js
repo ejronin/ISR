@@ -12,7 +12,7 @@
 
   const fetchJson = async file => {
     const response = await fetch(PATH + file, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`${path}: ${response.status}`);
+    if (!response.ok) throw new Error(`${file}: ${response.status}`);
     return response.json();
   };
 
