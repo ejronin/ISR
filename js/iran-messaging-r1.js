@@ -24,7 +24,7 @@
   }
   function install(){
     const root=document.getElementById('infowar');
-    root?.querySelector('[data-iran-messaging-r1]')?.remove();
+    root?.querySelector('[data-'+'iran-messaging-r1]')?.remove();
     loadHousekeeping();
     if(window.ISRIranMessagingShifts20260827R1?.refresh)return window.ISRIranMessagingShifts20260827R1.refresh();
     loadShiftSeries();
