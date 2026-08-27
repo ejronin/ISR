@@ -21,6 +21,8 @@ jobs:
       - name: Assemble static artifact and deployment identity
         run: |
           python scripts/build_source_registry.py --root .
+          python scripts/build_public_current_state.py
+          python scripts/validate_public_current_state.py
           mkdir _site
           cp -R index.html .nojekyll assets css data js schemas snapshots vendor _site/
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"

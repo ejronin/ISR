@@ -80,6 +80,16 @@ Then open `http://127.0.0.1:8000/`.
 
 Run the release checks documented by the repository validation scripts and the JavaScript tests under `tests/`.
 
+The current public evidence state also has a deterministic, generated read model. Build and verify it with:
+
+```bash
+python scripts/build_public_current_state.py
+python scripts/build_public_current_state.py --check
+python scripts/validate_public_current_state.py
+```
+
+The ignored deploy-time artifact at `data/public-current-state.json` is a derived view only; canonical packages remain authoritative. See `docs/public-current-state.md` for its input and provenance contract.
+
 ## Publishing and integrity
 
 Pull requests run validation only. Deployment runs only from `main` through the scoped GitHub Pages workflow. The deployed artifact publishes `build-info.json` containing the canonical URL, exact deployed commit, ledger version, review cutoff, and authoritative-ledger hashes.

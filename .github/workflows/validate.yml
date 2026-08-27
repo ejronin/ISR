@@ -41,6 +41,14 @@ jobs:
           fi
       - name: Build exhaustive source registry
         run: python scripts/build_source_registry.py --root .
+      - name: Validate deterministic public current-state assembly
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          python scripts/build_public_current_state.py
+          python scripts/build_public_current_state.py --check
+          python scripts/validate_public_current_state.py
+          node tests/public-current-state.test.js
       - name: Validate Aug. 24 count synchronization after source build
         env:
           PYTHONUTF8: '1'
