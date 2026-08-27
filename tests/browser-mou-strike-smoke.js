@@ -86,6 +86,24 @@ async function main() {
     assert.equal(await cdp.eval(`document.getElementById('strikes').classList.contains('active')`), true,
       'Campaigns & Strikes must be reachable through normal public navigation');
 
+    const strikeLayerProof = await cdp.eval(`(() => {
+      const ids=(window.ATLAS_DATA.strikes||[]).map(row=>row.id);
+      const missingCanonical=ids.filter(id=>!window.getAtlasMapMarker?.(id));
+      const visibleMarkerHosts=document.querySelectorAll('.leaflet-marker-pane .atlas-marker-host').length;
+      const strikeToggle=[...document.querySelectorAll('[data-layer-name="Strike effects"]')].find(Boolean);
+      return {
+        dataset:ids.length,
+        missingCanonical,
+        visibleMarkerHosts,
+        strikeLayerPressed:strikeToggle?.getAttribute('aria-pressed')||null
+      };
+    })()`);
+    assert.equal(strikeLayerProof.dataset, EXPECTED_TOTAL_STRIKES, 'strike dataset must contain all 100 strike locations');
+    assert.deepEqual(strikeLayerProof.missingCanonical, [], 'every strike location must resolve to a canonical marker');
+    assert.equal(strikeLayerProof.strikeLayerPressed, 'true', 'Strike effects layer must be active in Campaigns & Strikes');
+    assert.equal(strikeLayerProof.visibleMarkerHosts, EXPECTED_TOTAL_STRIKES,
+      'all 100 strike locations must be physically present in the active Leaflet Strike layer');
+
     const markerResolution = await cdp.eval(`(() => {
       const events=window.ATLAS_WIKI_RECON_20260826.events||[];
       return events.filter(event=>[...(event.map_refs||[]),...(event.facility_refs||[])].some(ref=>window.getAtlasMapMarker(ref))).length;
@@ -168,7 +186,7 @@ async function main() {
     assert.equal(mobile.strikesActive, true, 'mobile public navigation cannot reach Campaigns & Strikes');
     assert.equal(mobile.navOverflowOk, true, 'mobile primary navigation overflows without a usable scroll strategy');
 
-    console.log('browser MOU/strike smoke: PASS — 100 strike cards, 81 canonical reconciliation markers, 81 timeline map actions, pan/popup, MOU semantics, messaging and mobile navigation');
+    console.log('browser MOU/strike smoke: PASS — 100/100 strike locations visibly present on active Strike layer, 81 reconciliation timeline map actions, pan/popup, MOU semantics, messaging and mobile navigation');
   } finally {
     cdp.close();
   }
