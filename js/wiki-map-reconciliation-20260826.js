@@ -164,8 +164,12 @@
     const runtime=chronologyCount();
     if(runtime!==EXPECTED.runtime_chronology)throw new Error(`runtime chronology mismatch ${runtime} != ${EXPECTED.runtime_chronology}`);
     window.ATLAS_WIKI_RECON_20260826={cutoff:manifest.collection_cutoff||manifest.created_at,counts:{...EXPECTED,runtime_chronology:runtime,temporal_index_records:(window.ATLAS_TEMPORAL_INDEX||[]).length,registered_strike_markers:strikeRegistration.registered,map_linked_timeline_records:mapLinkedTimeline},coverageAudit:audit,sources:payload.sources,events:payload.events,materialLosses:payload.material_losses};
-    window.renderAtlasTimeline?.(document.getElementById('timelineSearch')?.value||'');
-    window.refreshAtlasTimelineMap?.();
+    // The legacy timeline list may have been retired/rebuilt by the public workspace before this late async loader completes.
+    // Only refresh it when its canonical DOM target still exists; the full-scope timeline refresh owns the rebuilt surface.
+    if(document.getElementById('timelineList')){
+      window.renderAtlasTimeline?.(document.getElementById('timelineSearch')?.value||'');
+      window.refreshAtlasTimelineMap?.();
+    }
     window.ISRFullScope20260822?.refreshTimeline?.();
     window.dispatchEvent(new CustomEvent('atlaswikireconready20260826',{detail:window.ATLAS_WIKI_RECON_20260826.counts}));
   }
