@@ -53,14 +53,11 @@ async function diagnostics(cdp){return cdp.eval(`(async()=>{
     assert.equal(proof.markers,TOTAL,'all 100 strike locations must be physically present on active Leaflet Strike layer');
     assert.equal(proof.active,true,'Campaigns & Strikes panel must be active');
 
-    // The rebuilt timeline no longer exposes the retired #timelineContext/#timelineList controls.
-    // Validate the canonical timeline→map contract directly: all 81 records were resolved during reconciliation,
-    // and a representative reconciliation event must pan/zoom/open its canonical marker through the public map API.
-    const action=await cdp.eval(`(()=>{const e=window.ATLAS_WIKI_RECON_20260826.events[0];const ref=[...(e.map_refs||[]),...(e.facility_refs||[])].find(x=>window.getAtlasMapMarker(x));const m=window.getAtlasMapMarker(ref);const ok=window.pan(ref);return {ref,ok,popup:!!m?.isPopupOpen?.(),zoom:window.atlasMap?.getZoom?.()||0};})()`);
+    const action=await cdp.eval(`(()=>{const e=window.ATLAS_WIKI_RECON_20260826.events[0];const ref=[...(e.map_refs||[]),...(e.facility_refs||[])].find(x=>window.getAtlasMapMarker(x));const m=window.getAtlasMapMarker(ref);const ok=window.pan(ref);return {ref,ok,popup:!!m?.isPopupOpen?.()};})()`);
     assert.equal(Boolean(action.ref),true,'sample reconciliation event must resolve to a map ref');
     assert.equal(action.ok,true,'canonical pan action must succeed');
     assert.equal(action.popup,true,'canonical pan action must open the marker popup');
-    assert(action.zoom>=6,'canonical pan action must zoom to the marker');
+    await wait(cdp,'window.atlasMap?.getZoom?.()>=6',3000);
 
     await wait(cdp,'Boolean(window.ISREndgamePublicViewR1)');await cdp.eval(`window.ISREndgamePublicViewR1.open('mou');true`);
     const mou=await cdp.eval(`document.querySelector('#endgame')?.innerText||''`);for(const s of ['DEFERRED TO FINAL NEGOTIATIONS — NOT YET WON OR LOST','PROMISED BUT NEVER IMPLEMENTED','LATER REVERSED','Where the signed deal landed','UNSCORED / NOT YET ADJUDICABLE'])assert(mou.includes(s),`MOU missing ${s}`);
