@@ -97,7 +97,7 @@ async function diagnostics(cdp){return cdp.eval(`(async()=>{
     // Every selectable causal-map node must drill into evidence and focus/zoom the selected branch.
     await cdp.eval(`document.querySelector('[data-eg3-lens="causal"]').click();true`);
     await wait(cdp,`Boolean(document.querySelector('#eg3CausalHost g.node[role="button"]'))`);
-    const causalFocus=await cdp.eval(`(()=>{const host=document.getElementById('eg3CausalHost'),svg=host.querySelector('svg'),node=host.querySelector('g.node[role="button"]');const before=svg.dataset.ph1OriginalViewBox||svg.getAttribute('viewBox');node.click();return {before};})()`);
+    const causalFocus=await cdp.eval(`(()=>{const host=document.getElementById('eg3CausalHost'),svg=host.querySelector('svg'),node=host.querySelector('g.node[role="button"]');const before=svg.dataset.ph1OriginalViewBox||svg.getAttribute('viewBox');node.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}));return {before};})()`);
     await wait(cdp,`Boolean(document.querySelector('.ph1-graph-focus[data-for="eg3CausalHost"]')&&document.querySelector('#eg3CausalHost .ph1-node-focus'))`);
     const causalAfter=await cdp.eval(`(()=>{const host=document.getElementById('eg3CausalHost'),svg=host.querySelector('svg'),bar=document.querySelector('.ph1-graph-focus[data-for="eg3CausalHost"]'),drawer=document.getElementById('eg3EvidenceDrawer');return {after:svg.getAttribute('viewBox'),buttons:[...bar.querySelectorAll('button')].map(x=>x.textContent.trim()),drawer:drawer?.innerText||'',sources:drawer?.querySelectorAll('.eg3-source-chip').length||0};})()`);
     assert.notEqual(causalAfter.after,causalFocus.before,'causal node selection must zoom/focus the chart');
@@ -110,7 +110,7 @@ async function diagnostics(cdp){return cdp.eval(`(async()=>{
     // Objective-audit selectable nodes must likewise select their ledger/data tree and focus the chart.
     await cdp.eval(`document.querySelector('[data-eg3-lens="audit"]').click();true`);
     await wait(cdp,`Boolean(document.querySelector('#egMermaidHost g.node[role="button"]'))`);
-    const auditFocus=await cdp.eval(`(()=>{const host=document.getElementById('egMermaidHost'),svg=host.querySelector('svg'),node=host.querySelector('g.node[role="button"]');const before=svg.dataset.ph1OriginalViewBox||svg.getAttribute('viewBox');node.click();return {before};})()`);
+    const auditFocus=await cdp.eval(`(()=>{const host=document.getElementById('egMermaidHost'),svg=host.querySelector('svg'),node=host.querySelector('g.node[role="button"]');const before=svg.dataset.ph1OriginalViewBox||svg.getAttribute('viewBox');node.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}));return {before};})()`);
     await wait(cdp,`Boolean(document.querySelector('.ph1-graph-focus[data-for="egMermaidHost"]')&&document.querySelector('#egMermaidHost .ph1-node-focus')&&document.querySelector('#endgame .eg-ledger.selected,#endgame .eg-ledger[aria-pressed="true"]'))`);
     const auditAfter=await cdp.eval(`(()=>{const host=document.getElementById('egMermaidHost'),bar=document.querySelector('.ph1-graph-focus[data-for="egMermaidHost"]'),selected=document.querySelector('#endgame .eg-ledger.selected,#endgame .eg-ledger[aria-pressed="true"]');return {after:host.querySelector('svg')?.getAttribute('viewBox'),buttons:[...bar.querySelectorAll('button')].map(x=>x.textContent.trim()),selected:!!selected};})()`);
     assert.notEqual(auditAfter.after,auditFocus.before,'objective-audit node selection must zoom/focus the chart');
