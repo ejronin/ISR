@@ -105,7 +105,9 @@
   }
 
   async function init() {
-    await waitFor(() => window.ATLAS_LEDGER && window.registerAtlasEvents && window.registerAtlasSources);
+    // Forensic builds the canonical 98-record temporal base plus evidence annotations asynchronously.
+    // Wait for that write to complete before appending current overlays so forensic cannot overwrite Aug. 24 records in a race.
+    await waitFor(() => window.ATLAS_LEDGER && window.ATLAS_FORENSIC && Array.isArray(window.ATLAS_TEMPORAL_INDEX) && window.registerAtlasEvents && window.registerAtlasSources);
     ensureTemporalBase();
     const [manifest, events, timeline, sources] = await Promise.all([
       fetchJson('manifest.json'), fetchJson('events.json'), fetchJson('timeline.json'), fetchJson('sources.json')
