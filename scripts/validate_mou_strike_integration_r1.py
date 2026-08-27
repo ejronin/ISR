@@ -195,7 +195,7 @@ def validate_scoreboard_and_messaging() -> None:
         "deliberate ambiguity",
         "bureaucratic",
         "deception",
-        "genuine evolution",
+        "genuine policy evolution",
     ):
         require(token.lower() in messaging.lower(), f"Iran Messaging public structure missing: {token}")
     require("propaganda blacklist" in messaging.lower(), "Iran Messaging must explicitly remain separate from a propaganda blacklist")
