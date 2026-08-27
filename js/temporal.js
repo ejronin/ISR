@@ -81,6 +81,7 @@
 
   function contextMatches(event, context) {
     if (!event || !context || context === 'all') return true;
+    if (Array.isArray(event?.temporal_contexts) && event.temporal_contexts.includes(context)) return true;
     const type = String(event.event_type || '').toUpperCase();
     const record = JSON.stringify(event).toUpperCase();
     if (context === 'loss') {

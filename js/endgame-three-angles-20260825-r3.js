@@ -22,7 +22,7 @@
     const head=E('div','eg3-section-head');head.append(E('h3','','What this board shows'),E('p','','The scoreboard is strategic position, not mere state survival.'));s.append(head);
     const card=E('article','eg3-card eg3-finding eg25-overview-card');
     const p1=E('p','eg25-overview-thesis','Iran has not been destroyed and retains meaningful coercive capability. But survival is increasingly the principal accomplishment Tehran can point to, while several of the strategic objectives that were supposed to make that survival advantageous have weakened, failed, or been replaced by less favorable arrangements.');
-    const p2=E('p','eg25-overview-thesis','And that is why the “we did not capitulate” rhetoric matters so much. If Tehran were actually emerging with its original bargaining position intact, it would not need to redefine victory around continued existence and a face-saving account of concessions.');
+    const p2=E('p','eg25-overview-thesis','That is why later survival-and-resistance rhetoric must be kept separate from the original bargaining benchmarks. A change in rhetoric does not itself prove a substantive concession; the comparison must come from observable terms and behavior.');
     const rule=E('p','eg3-warning-text eg25-overview-rule','How to read Atlas: actor claims show the story each side wants told. They do not decide the board. Observable behavior, implemented arrangements, economic and military effects, and changes in bargaining position carry the analytical weight. The board does not invent hypothetical victories or motives to offset recorded outcomes.');
     card.append(p1,p2,rule);chips(card,['S01','S06','S07','S14','S15','S16','S24','S25','S27','S32']);s.append(card);
     return s;
@@ -61,7 +61,7 @@
     const chain=E('div','eg25-proof-chain');
     const a=E('div','eg25-proof-step');a.append(E('strong','','IRAN SAYS'),E('p','','Washington must stop coercion, restore the old bargain, or visibly move first before Tehran can return to a political process.'));
     const b=E('div','eg25-proof-step');b.append(E('strong','','IRAN HAS ALREADY DONE'),E('p','','Validated Pakistan’s mediation and accepted a joint Oman implementation process while the old MOU remains dead and its prior economic concessions have not simply been restored.'));
-    const c=E('div','eg25-proof-step');c.append(E('strong','','WHAT THE RECORD MEANS'),E('p','','Measured against Iran’s own prior terms, Tehran has already moved before Washington restored what Tehran demanded. That is a concession — and, in bargaining terms, capitulation from the prior position — even if Iran packages the move as reciprocity or “negotiating from strength.” It is not unconditional surrender of Iran as a state.'));
+    const c=E('div','eg25-proof-step');c.append(E('strong','','WHAT THE RECORD MEANS'),E('p','','Measured against Iran’s own prior terms, Tehran entered or validated mediation before Washington restored all of the conditions Tehran had demanded. That supports a narrower finding: Iran moved off or relaxed a previously stated negotiating precondition. It does not by itself establish acceptance of substantive U.S. final terms.'));
     chain.append(a,b,c);proof.append(chain);chips(proof,['S06','S24','S25','S27','S32']);s.append(proof);
     const grid=E('div','eg25-three-angle-grid');
     (live.three_angle_status||[]).forEach(x=>{
@@ -69,7 +69,7 @@
       const why=E('div','eg25-why');why.append(E('strong','','Why'),E('p','',x.why));card.append(why);chips(card,x.source_ids);grid.append(card);
     });
     s.append(grid);
-    s.append(E('p','eg3-warning-text eg25-precision','Precision note: “capitulation” here means retreat from Iran’s previously stated negotiating position under external pressure. It does not mean regime surrender, disarmament, occupation, or proof that every Iranian objective has failed.'));
+    s.append(E('p','eg3-warning-text eg25-precision','Precision note: participation in mediation is not automatically a substantive concession. The supported finding here is movement from a previously stated negotiating precondition; Washington’s own movement must be measured separately from dated evidence.'));
     return s;
   }
   function install(){

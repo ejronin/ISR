@@ -10,6 +10,12 @@
   }
 }());
 
+(function loadIranMessagingR1(){
+  if(document.querySelector('script[data-iran-messaging-r1]'))return;
+  const css=document.createElement('link');css.rel='stylesheet';css.href='./css/iran-messaging-r1.css?v=20260826-r1';css.dataset.iranMessagingR1='1';document.head.appendChild(css);
+  const js=document.createElement('script');js.src='./js/iran-messaging-r1.js?v=20260826-r1';js.async=false;js.dataset.iranMessagingR1='1';document.head.appendChild(js);
+}());
+
 (function atlasShell() {
   const canonicalUrl = 'https://ejronin.github.io/ISR/';
   const groups = {
@@ -71,6 +77,15 @@
       if (legacy) legacy.click();
     });
     panel.querySelector('#openOutcomeRecord')?.addEventListener('click', () => window.showAtlasPanel?.('endgame'));
+  }
+
+  function ensureOverviewStrikeRoute() {
+    const panel=document.getElementById('snapshot');
+    if(!panel||panel.querySelector('[data-overview-strike-route]'))return;
+    const route=document.createElement('div');route.className='callout overview-strike-route';route.dataset.overviewStrikeRoute='1';
+    route.innerHTML='<strong>Expanded military record:</strong> the map contains the reconciled attack/strike record. Overview keeps those markers off by default to avoid clutter.';
+    const button=document.createElement('button');button.type='button';button.className='action-btn';button.textContent='Open Campaigns & strikes';button.onclick=()=>window.showAtlasPanel?.('strikes');route.appendChild(document.createElement('br'));route.appendChild(button);
+    panel.querySelector('.current-picture-grid')?.after(route);
   }
 
   function ensureAnalyticRecordPanel() {
@@ -244,6 +259,7 @@
     ensureEndgamePanel();
     ensureDiplomacyPanel();
     ensureAnalyticRecordPanel();
+    ensureOverviewStrikeRoute();
     retireLegacyWorkspaceNavigation();
     const primary = document.getElementById('primaryNav'); const secondary = document.getElementById('secondaryNav');
     document.querySelectorAll('.primary-tab').forEach(button => button.setAttribute('aria-controls', 'secondaryNav'));

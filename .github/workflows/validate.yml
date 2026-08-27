@@ -57,6 +57,41 @@ jobs:
           node --check js/wiki-map-reconciliation-20260826.js
           node --check js/current-update-20260826.js
           node --check js/app.js
+      - name: Validate MOU logic and canonical strike integration
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          python scripts/validate_mou_strike_integration_r1.py
+          node --check js/iran-messaging-r1.js
+          node --check tests/browser-mou-strike-smoke.js
+      - name: Exercise async MOU and strike UI in headless browser
+        shell: bash
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/atlas-http.log 2>&1 &
+          server_pid=$!
+          chrome="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$chrome" ]; then
+            echo 'FAIL: no Chrome/Chromium executable is available for the public UI smoke test.' >&2
+            exit 1
+          fi
+          rm -rf /tmp/atlas-chrome-profile
+          "$chrome" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --remote-debugging-port=9222 --remote-allow-origins='*' \
+            --user-data-dir=/tmp/atlas-chrome-profile 'http://127.0.0.1:8765/?view=strikes' >/tmp/atlas-chrome.log 2>&1 &
+          chrome_pid=$!
+          cleanup(){ kill "$chrome_pid" "$server_pid" 2>/dev/null || true; }
+          trap cleanup EXIT
+          ready=0
+          for _ in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:9222/json >/dev/null 2>&1; then ready=1; break; fi
+            sleep 0.25
+          done
+          if [ "$ready" -ne 1 ]; then
+            cat /tmp/atlas-chrome.log >&2 || true
+            echo 'FAIL: Chrome DevTools endpoint did not become ready.' >&2
+            exit 1
+          fi
+          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-mou-strike-smoke.js
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration

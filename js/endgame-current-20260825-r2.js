@@ -54,10 +54,12 @@
     if(now){const p=$('.eg3-lead',now);if(p)p.textContent=live.mou_now.text;sourceChips(now,live.mou_now.source_ids);const flow=$('.eg3-flow',now);if(flow){flow.replaceChildren();['SIGNED','IMPLEMENTED','MARITIME DISPUTE','FUNCTIONALLY DEAD','IRAN INVOKES OLD BASELINE','NEW OMAN FRAMEWORK','SUCCESSOR DEAL OPEN'].forEach((x,i,a)=>{const n=E('span',x==='FUNCTIONALLY DEAD'?'dead':'',x);flow.append(n);if(i<a.length-1)flow.append(E('i','','→'));});}}
   }
   function graphNode(svg,id){return $$('g.node',svg).find(n=>n.id===id||n.id.startsWith(`flowchart-${id}-`)||n.id.includes(`-${id}-`));}
+  function publicNodeClaim(x){return x?.node_id==='Q3'?'The clearest current distinction is defiant public framing versus practical movement into mediated negotiation and shared implementation.':x?.claim||'';}
+  function publicEditorialNote(x){return x?.node_id==='Q3'?'The observable record supports movement from a prior negotiating position. It does not establish surrender or acceptance of substantive U.S. final terms.':x?.editorial_note||'';}
   function showEvidence(nodeId){
     const d=$('#eg3EvidenceDrawer');if(!d)return;const x=(model.node_evidence||[]).find(q=>q.node_id===nodeId);d.replaceChildren();
     if(!x){d.append(E('h4','',nodeId||'Strategic node'),E('p','eg3-muted','This connective node is explanatory. Follow the nearest sourced node for the underlying record.'));return;}
-    const head=E('div','eg3-drawer-head');head.append(E('span','eg3-node-id',x.node_id),E('span',`eg3-badge eg3-${classificationKind(x.classification)}`,String(x.classification||'EVIDENCE').replace(/_/g,' ')));d.append(head,E('h4','',x.claim),E('p','',x.editorial_note||''));
+    const head=E('div','eg3-drawer-head');head.append(E('span','eg3-node-id',x.node_id),E('span',`eg3-badge eg3-${classificationKind(x.classification)}`,String(x.classification||'EVIDENCE').replace(/_/g,' ')));d.append(head,E('h4','',publicNodeClaim(x)),E('p','',publicEditorialNote(x)));
     const dl=E('dl','eg3-method');dl.append(E('dt','','Confidence'),E('dd','',x.confidence||'Not rated'));d.append(dl);sourceChips(d,x.source_ids);
   }
   async function renderLiveCausal(){
@@ -68,7 +70,7 @@
     const out=await m.render(`isrEndgameCausalR2_${Date.now()}`,def);if(!document.body.contains(host))return;
     host.replaceChildren();const canvas=E('div','eg3-causal-canvas');canvas.innerHTML=out.svg;out.bindFunctions?.(canvas);host.append(canvas);
     const svg=$('svg',canvas);if(!svg)return;svg.removeAttribute('style');svg.setAttribute('role','img');svg.setAttribute('aria-label','Updated human causal endgame map distinguishing Iranian public framing from observable negotiation behavior, the Aug. 25 Oman framework, and the Aug. 26 contested demining claims.');
-    (model.node_evidence||[]).forEach(x=>{const n=graphNode(svg,x.node_id);if(!n)return;n.classList.add(`eg3-node-${classificationKind(x.classification)}`);n.dataset.nodeId=x.node_id;n.tabIndex=0;n.setAttribute('role','button');n.setAttribute('aria-label',`${x.node_id}: ${x.claim}`);const go=e=>{if(e.type==='keydown'&&!['Enter',' '].includes(e.key))return;e.preventDefault();$$('g.node.eg3-selected-node',svg).forEach(q=>q.classList.remove('eg3-selected-node'));n.classList.add('eg3-selected-node');showEvidence(x.node_id);};n.onclick=go;n.onkeydown=go;});
+    (model.node_evidence||[]).forEach(x=>{const n=graphNode(svg,x.node_id);if(!n)return;n.classList.add(`eg3-node-${classificationKind(x.classification)}`);n.dataset.nodeId=x.node_id;n.tabIndex=0;n.setAttribute('role','button');n.setAttribute('aria-label',`${x.node_id}: ${publicNodeClaim(x)}`);const go=e=>{if(e.type==='keydown'&&!['Enter',' '].includes(e.key))return;e.preventDefault();$$('g.node.eg3-selected-node',svg).forEach(q=>q.classList.remove('eg3-selected-node'));n.classList.add('eg3-selected-node');showEvidence(x.node_id);};n.onclick=go;n.onkeydown=go;});
     $$('g.node',svg).forEach(n=>{const txt=(n.textContent||'').toUpperCase();if(txt.includes('DEAD END')||txt.includes('STILL NOT VALIDATED'))n.classList.add('eg3-node-dead');if(txt.includes('OPEN PATH')||txt.includes('OPEN POSSIBILITY')||txt.includes('OPEN TEST')||txt.includes('NOW HAPPENING'))n.classList.add('eg3-node-open');});
     host.dataset.rendered='1';host.dataset.liveR2='1';showEvidence('NARROW');
   }

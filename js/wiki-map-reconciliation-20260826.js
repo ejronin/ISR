@@ -69,6 +69,7 @@
     const additions=payload.events.filter(row=>!existing.has(row.event_id)).map(row=>({
       ...row,
       temporal_record_type:'HISTORICAL_RECONCILIATION',
+      temporal_contexts:[...new Set([...(row.temporal_contexts||[]),'strike'])],
       day:row.event_date,
       month:row.event_date?.slice(0,7)
     }));
@@ -100,54 +101,26 @@
     if(search)search.dispatchEvent(new Event('input',{bubbles:true}));
   }
 
-  function findStrikeLayer(){
-    const map=window.atlasMap;
-    if(!map)return null;
-    const known=new Set(['Kharg Island military targets','Bandar Abbas / port-area July strike reporting']);
-    return Object.values(map._layers||{}).find(layer=>{
-      if(typeof layer?.eachLayer!=='function')return false;
-      let match=false;
-      layer.eachLayer(child=>{if(known.has(child?.options?.title))match=true;});
-      return match;
-    })||null;
-  }
-
   function installStrikes(payload){
-    const data=window.ATLAS_DATA;
-    const map=window.atlasMap;
-    if(!data?.strikes||!map||!window.L)return new Map();
-    const existing=new Set(data.strikes.map(row=>row.id));
-    const rows=payload.strikes.filter(row=>!existing.has(row.id));
-    data.strikes.push(...rows);
-    const layer=findStrikeLayer();
-    const markers=new Map();
-    if(!layer)return markers;
-    for(const row of rows){
-      if(!Number.isFinite(row.lat)||!Number.isFinite(row.lon))continue;
-      const popup=`<div class="atlas-popup"><h3>${esc(row.name)}</h3><div class="popup-badges"><span class="evidence-badge evidence-supported">${esc(row.verification||'SUPPORTED')}</span></div><p><b>Date</b>${esc(row.event_date||'Date unresolved.')}</p><p><b>Actor</b>${esc(row.actor||'Attribution unresolved.')}</p><p><b>Target / effect</b>${esc(row.target_type||row.note||'')}</p>${row.note?`<p><b>Context</b>${esc(row.note)}</p>`:''}<div class="sources">${sourceLinks(row.source_urls)}</div></div>`;
-      const icon=L.divIcon({className:'atlas-marker-host evidence-marker-supported',html:'<div class="pin diamond" style="--marker-color:#364454"><img src="assets/icons/strike.svg" alt=""/></div>',iconSize:[34,34],iconAnchor:[17,17],popupAnchor:[0,-15]});
-      const marker=L.marker([row.lat,row.lon],{icon,title:row.name,alt:row.name,keyboard:true}).bindPopup(popup,{maxWidth:380});
-      marker.addTo(layer);
-      markers.set(row.id,marker);
+    const api=window.registerAtlasStrikeRecords;
+    if(typeof api!=='function')throw new Error('Canonical strike registration API unavailable');
+    const result=api(payload.strikes,{refresh:true});
+    if(result.eligible!==EXPECTED.strikes||result.registered!==EXPECTED.strikes){
+      throw new Error(`reconciliation strike registration mismatch ${result.registered}/${result.eligible}; expected ${EXPECTED.strikes}/${EXPECTED.strikes}`);
     }
-    return markers;
+    return result;
   }
 
-  function installPan(markers){
-    const previous=window.pan;
-    window.pan=function(id){
-      const marker=markers.get(id);
-      if(marker&&window.atlasMap){
-        const map=window.atlasMap;
-        const layer=findStrikeLayer();
-        if(layer&&!map.hasLayer(layer))layer.addTo(map);
-        if(!map.getBounds().pad(-.15).contains(marker.getLatLng()))map.panTo(marker.getLatLng());
-        if(map.getZoom()<6)map.setZoom(6);
-        marker.openPopup();
-        return true;
-      }
-      return typeof previous==='function'?previous(id):false;
-    };
+  function validateTimelineMapLinks(payload){
+    let linked=0;
+    for(const event of payload.events){
+      const refs=[...(event.map_refs||[]),...(event.facility_refs||[])];
+      const markerRef=refs.find(ref=>window.getAtlasMapMarker?.(ref));
+      if(!markerRef)throw new Error(`reconciliation timeline event lacks canonical map marker: ${event.event_id}`);
+      linked++;
+    }
+    if(linked!==EXPECTED.events)throw new Error(`reconciliation map-linked timeline count mismatch ${linked} != ${EXPECTED.events}`);
+    return linked;
   }
 
   function updateLabels(){
@@ -165,7 +138,7 @@
   }
 
   async function init(){
-    await waitFor(()=>window.ATLAS_CURRENT_UPDATE_20260826&&window.ATLAS_DATA&&window.ATLAS_LEDGER&&window.registerAtlasEvents&&window.registerAtlasSources&&window.atlasMap);
+    await waitFor(()=>window.ATLAS_CURRENT_UPDATE_20260826&&window.ATLAS_DATA&&window.ATLAS_LEDGER&&window.registerAtlasEvents&&window.registerAtlasSources&&window.registerAtlasStrikeRecords&&window.getAtlasMapMarker&&window.atlasMap);
     const [manifest,events,timeline,sources,strikes,losses,audit]=await Promise.all([
       fetchJson('manifest.json'),fetchJson('events.json'),fetchJson('timeline.json'),fetchJson('sources.json'),fetchJson('strikes.json'),fetchJson('material-losses.json'),fetchJson('coverage-audit.json')
     ]);
@@ -174,12 +147,15 @@
     installSources(payload);
     installHistory(payload);
     installLosses(payload);
-    const markers=installStrikes(payload);
-    installPan(markers);
+    const strikeRegistration=installStrikes(payload);
+    const mapLinkedTimeline=validateTimelineMapLinks(payload);
+    window.setAtlasCurrentOsintCutoff?.('2026-08-26 16:30 ET');
     updateLabels();
     const runtime=(window.ATLAS_TEMPORAL_INDEX||[]).length;
     if(runtime!==EXPECTED.runtime_chronology)throw new Error(`runtime chronology mismatch ${runtime} != ${EXPECTED.runtime_chronology}`);
-    window.ATLAS_WIKI_RECON_20260826={cutoff:manifest.collection_cutoff||manifest.created_at,counts:{...EXPECTED,runtime_chronology:runtime},coverageAudit:audit,sources:payload.sources,events:payload.events,materialLosses:payload.material_losses};
+    window.ATLAS_WIKI_RECON_20260826={cutoff:manifest.collection_cutoff||manifest.created_at,counts:{...EXPECTED,runtime_chronology:runtime,registered_strike_markers:strikeRegistration.registered,map_linked_timeline_records:mapLinkedTimeline},coverageAudit:audit,sources:payload.sources,events:payload.events,materialLosses:payload.material_losses};
+    window.renderAtlasTimeline?.(document.getElementById('timelineSearch')?.value||'');
+    window.refreshAtlasTimelineMap?.();
     window.ISRFullScope20260822?.refreshTimeline?.();
     window.dispatchEvent(new CustomEvent('atlaswikireconready20260826',{detail:window.ATLAS_WIKI_RECON_20260826.counts}));
   }

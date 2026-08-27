@@ -21,13 +21,13 @@
     ['./js/source-bias-r1.js?v=20260826-r4','source-bias'],
     ['./js/status-identity-r1.js?v=20260826-r2-svg','status-identity-r1'],
     ['./js/endgame-mermaid-r2.js?v=20260824-r2','mermaid-r2'],
-    ['./js/endgame-public-view-r1.js?v=20260824-r1','public-view-r1'],
+    ['./js/endgame-public-view-r1.js?v=20260826-r2','public-view-r1'],
     ['./js/final-mermaid-oil-routes-r1.js?v=20260825-r1-hotfix1','final-mermaid-oil-routes-r1'],
     ['./js/mermaid-autofit-r2.js?v=20260825-r2','mermaid-autofit-r2'],
-    ['./js/endgame-current-20260825-r2.js?v=20260825-r3','current-20260825-r2'],
-    ['./js/endgame-three-angles-20260825-r3.js?v=20260825-r5','three-angles-20260825-r3'],
-    ['./js/endgame-objective-scoreboard-20260825-r2.js?v=20260825-r3','objective-scoreboard-20260825-r2'],
-    ['./js/endgame-ux-plain-language-r1.js?v=20260825-r1','endgame-ux-plain-language-r1'],
+    ['./js/endgame-current-20260825-r2.js?v=20260826-r2','current-20260825-r2'],
+    ['./js/endgame-three-angles-20260825-r3.js?v=20260826-r2','three-angles-20260825-r3'],
+    ['./js/endgame-objective-scoreboard-20260825-r2.js?v=20260826-r2','objective-scoreboard-20260825-r2'],
+    ['./js/endgame-ux-plain-language-r1.js?v=20260826-r2','endgame-ux-plain-language-r1'],
     ['./js/site-legibility-r3.js?v=20260826-r3','site-legibility-r3']
   ];
   styles.forEach(([href,key])=>{
