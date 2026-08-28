@@ -1011,7 +1011,7 @@
   }
 
   function TimelinePage(context) {
-    const frame = pageFrame(context, 'A selective timeline of developments that changed the military, maritime, economic or diplomatic record. Detailed Chronology retains all 205 records.');
+    const frame = pageFrame(context, `A selective timeline of developments that changed the military, maritime, economic or diplomatic record. Detailed Chronology retains all ${formatNumber(context.model.counts.chronology_records)} records.`);
     const wartime = context.model.chronology.filter(item => !String(item.event_id).startsWith('PRE-'));
     const phases = [
       { title: 'Opening week', start: '2026-02-28', end: '2026-03-07', text: 'Opening strikes, Iranian retaliation and immediate regional effects.' },

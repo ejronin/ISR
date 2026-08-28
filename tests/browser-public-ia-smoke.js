@@ -153,10 +153,42 @@ async function setRoute(cdp, route) {
       maps: document.querySelectorAll('.timeline-phase [data-component="MapView"] svg').length,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
+    const expectedTimelineCount = await cdp.eval(`window.ATLAS_PUBLIC_MODEL.counts.chronology_records`);
     assert.equal(timeline.phases, 6);
-    assert(timeline.cards > 10 && timeline.cards < 205, 'primary timeline must emphasize representative developments');
+    assert(timeline.cards > 10 && timeline.cards < expectedTimelineCount, 'primary timeline must emphasize representative developments');
     assert(timeline.maps > 0, 'timeline phases with coordinates must expose spatial context');
-    assert.match(timeline.text, /Detailed Chronology retains all 205 records/);
+    assert(timeline.text.includes(`Detailed Chronology retains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
+
+    const changedModelTimeline = await cdp.eval(`(() => {
+      const model = structuredClone(window.ATLAS_PUBLIC_MODEL);
+      model.counts.chronology_records += 1;
+      const host = document.createElement('div');
+      host.style.cssText = 'position:fixed;left:-10000px;top:0;width:1024px;';
+      document.body.append(host);
+      const testWindow = {
+        location: { hash: '#/timeline/war' },
+        history: { replaceState() {} },
+        addEventListener() {},
+        removeEventListener() {},
+        dispatchEvent() {},
+        CustomEvent: window.CustomEvent
+      };
+      const controller = window.AtlasPublicIA.mount({
+        rootElement: host,
+        model,
+        state: {},
+        documentObject: document,
+        windowObject: testWindow
+      });
+      const text = host.querySelector('.page-host')?.innerText || '';
+      controller.destroy();
+      host.remove();
+      return { count: model.counts.chronology_records, text };
+    })()`);
+    assert(
+      changedModelTimeline.text.includes(`Detailed Chronology retains all ${changedModelTimeline.count} records.`),
+      `timeline copy does not advance when the supplied model count changes: ${JSON.stringify(changedModelTimeline)}`
+    );
 
     await setRoute(cdp, ia.ROUTES.get('timeline.war'));
     await cdp.eval('history.back();true');
