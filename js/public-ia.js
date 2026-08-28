@@ -31,8 +31,8 @@
 
     { key: 'military.campaigns', primary: 'military', slug: 'campaigns', label: 'Campaigns & Strikes', title: 'Campaigns & Strikes', owner: 'CampaignsPage', dataKeys: ['current.chronology', 'ledger.map_links', 'reconciliation.strikes'], related: ['timeline.chronology', 'military.facilities', 'military.weapons'] },
     { key: 'military.facilities', primary: 'military', slug: 'facilities', label: 'Bases & Infrastructure', title: 'Bases & Infrastructure', owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'ledger.map_links'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
-    { key: 'military.weapons', primary: 'military', slug: 'weapons', label: 'Air, Missiles & Drones', title: 'Air, Missiles & Drones', owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'ledger.material_losses'], related: ['military.campaigns', 'military.losses'] },
-    { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['ledger.casualties', 'ledger.material_losses', 'reconciliation.material_losses', 'forensic.loss_envelopes', 'analysis.casualty_corrections'], related: ['military.weapons', 'evidence.method'] },
+    { key: 'military.weapons', primary: 'military', slug: 'weapons', label: 'Air, Missiles & Drones', title: 'Air, Missiles & Drones', owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses'], related: ['military.campaigns', 'military.losses'] },
+    { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'analysis.casualty_corrections'], related: ['military.weapons', 'evidence.method'] },
     { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Imagery', title: 'Damage Imagery', owner: 'ImageryPage', dataKeys: ['ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
 
     { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.agreements'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
@@ -49,7 +49,7 @@
     { key: 'objectives.positions', primary: 'objectives', slug: 'positions', label: 'Position Changes', title: 'Position Changes', owner: 'PositionChangesPage', dataKeys: ['current.chronology', 'analysis.endgame_public_view', 'analysis.outcome_evidence_links'], related: ['objectives.outcomes', 'objectives.iran', 'timeline.chronology'] },
     { key: 'objectives.iran', primary: 'objectives', slug: 'iran-position', label: "How Iran's Position Changed", title: "How Iran's Position Changed", owner: 'IranMessagingPage', dataKeys: ['analysis.iran_messaging'], related: ['objectives.positions', 'talks.overview', 'evidence.information'] },
 
-    { key: 'evidence.claims', primary: 'evidence', slug: 'claims', label: 'Claim Checks', title: 'Claim Checks', owner: 'ClaimChecksPage', dataKeys: ['ledger.claims', 'forensic.public_assessments'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
+    { key: 'evidence.claims', primary: 'evidence', slug: 'claims', label: 'Claim Checks', title: 'Claim Checks', owner: 'ClaimChecksPage', dataKeys: ['current.claims', 'forensic.public_assessments'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
     { key: 'evidence.information', primary: 'evidence', slug: 'information', label: 'Information Environment', title: 'Information Environment', owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks', 'forensic.claim_evolution'], related: ['evidence.claims', 'objectives.iran', 'evidence.method'] },
     { key: 'evidence.sources', primary: 'evidence', slug: 'sources', label: 'Sources', title: 'Sources', owner: 'SourcesPage', dataKeys: ['current.sources', 'analysis.source_context', 'analysis.media_bias_provider'], related: ['evidence.method', 'evidence.claims'] },
     { key: 'evidence.method', primary: 'evidence', slug: 'method', label: 'How We Check the Evidence', title: 'How We Check the Evidence', owner: 'MethodPage', dataKeys: ['current.sources', 'ledger.source_role_map', 'ledger.revision_history', 'reconciliation.coverage_audit'], related: ['evidence.sources', 'evidence.claims', 'evidence.archive'] },
@@ -84,6 +84,8 @@
     'ledger.revision_history': 'Revision history',
     'reconciliation.strikes': 'Reconciled strike record',
     'reconciliation.material_losses': 'Reconciled material losses',
+    'current.material_losses': 'Current canonical material-loss records',
+    'current.claims': 'Current canonical claim records',
     'reconciliation.coverage_audit': 'Coverage audit',
     'forensic.loss_envelopes': 'Loss ranges and accounting',
     'forensic.facility_claim_audits': 'Facility claim checks',
@@ -211,6 +213,12 @@
   ]);
 
   const AFFILIATION_BY_ID = new Map(AFFILIATED_ACTORS.map(actor => [actor.id, actor]));
+  let MODEL_ACTORS = [];
+
+  function configureActorModel(model) {
+    const records = model && model.entities && Array.isArray(model.entities.actors) ? model.entities.actors : [];
+    MODEL_ACTORS = records.map(item => item && item.record ? item.record : item).filter(Boolean);
+  }
 
   function invariant(condition, message) {
     if (!condition) throw new Error(message);
@@ -310,12 +318,26 @@
     if (value && typeof value === 'object') {
       return {
         name: String(value.canonicalName || value.name || value.label || 'Unknown').trim(),
+        actorId: value.actorId || value.actor_id || null,
         entityType: value.entityType || null,
         role: value.role || value.title || null,
         affiliation: value.affiliation || value.affiliationId || null
       };
     }
-    return { name: String(value || 'Unknown').trim(), entityType: null, role: null, affiliation: null };
+    return { name: String(value || 'Unknown').trim(), actorId: null, entityType: null, role: null, affiliation: null };
+  }
+
+  function findModelActor(value) {
+    const normalized = String(value || '').trim().toLowerCase();
+    if (!normalized) return { actor: null, exact: false };
+    const exact = MODEL_ACTORS.find(actor =>
+      String(actor.actor_id || '').toLowerCase() === normalized ||
+      String(actor.canonical_name || '').toLowerCase() === normalized ||
+      (actor.aliases || []).includes(normalized)
+    );
+    if (exact) return { actor: exact, exact: true };
+    const qualified = MODEL_ACTORS.find(actor => (actor.aliases || []).some(alias => normalized.startsWith(`${alias} (`)));
+    return { actor: qualified || null, exact: false };
   }
 
   function findAffiliation(value) {
@@ -330,8 +352,28 @@
   }
 
   const ActorIdentity = Object.freeze({
+    configure: configureActorModel,
     resolve(value) {
       const input = normalizedActorInput(value);
+      const modelLookup = findModelActor(input.actorId || input.name);
+      if (modelLookup.actor) {
+        const actor = modelLookup.actor;
+        const canonicalName = publicNarrative(modelLookup.exact ? actor.canonical_name : input.name, 'Unknown actor');
+        const entityType = actor.entity_type || 'unresolved';
+        const affiliationName = entityType === 'person' ? actor.affiliation || null : actor.canonical_name;
+        return {
+          canonicalName,
+          label: canonicalName,
+          entityType,
+          role: actor.role || null,
+          affiliation: affiliationName,
+          affiliationId: actor.affiliation_id || (entityType === 'person' ? null : actor.actor_id),
+          affiliationType: actor.affiliation_type || 'unknown',
+          parentState: actor.parent_state || null,
+          flag: actor.flag || '',
+          subtitle: actor.subtitle || (entityType === 'person' ? 'Affiliation unresolved' : 'Identity as recorded; affiliation unresolved')
+        };
+      }
       const normalizedName = input.name.toLowerCase();
       const profile = PERSON_PROFILES.find(person => person.aliases.includes(normalizedName));
       const entityType = input.entityType === 'person' || profile
@@ -415,7 +457,7 @@
       const variant = (source.variants || []).find(item => item.variant_key === variantKey);
       if (variant) return variant.record;
     }
-    return source.resolution === 'UNAMBIGUOUS' ? source.record : null;
+    return ['UNAMBIGUOUS', 'CANONICAL_UPDATE_CURRENT'].includes(source.resolution) ? source.record : null;
   }
 
   function safeExternalUrl(value) {
@@ -533,6 +575,8 @@
   }
 
   function eventActors(item) {
+    const actorIds = item && (item.actor_ids || item.event && item.event.actor_ids);
+    if (Array.isArray(actorIds) && actorIds.length) return actorIds;
     const actors = item && item.event && item.event.actors;
     if (Array.isArray(actors)) return actors;
     if (typeof actors === 'string') return [actors];
@@ -660,11 +704,17 @@
     const body = JSON.stringify(context.model.chronology).toLowerCase();
     const section = addSection(frame.article, "Actors in the record");
     const list = append(section, 'div', 'actor-directory');
-    const directory = [
-      ...AFFILIATED_ACTORS.map(actor => ({ aliases: actor.aliases, value: actor.canonicalName })),
-      ...PERSON_PROFILES.map(person => ({ aliases: person.aliases, value: person.canonicalName }))
-    ];
-    directory.filter(entry => entry.aliases.some(alias => body.includes(alias))).forEach(entry => {
+    const referencedIds = new Set(context.model.chronology.flatMap(item => item.actor_ids || item.event && item.event.actor_ids || []));
+    const modelDirectory = context.model.entities && Array.isArray(context.model.entities.actors)
+      ? context.model.entities.actors.map(item => item.record || item).filter(actor => referencedIds.has(actor.actor_id))
+      : [];
+    const directory = modelDirectory.length
+      ? modelDirectory.map(actor => ({ aliases: actor.aliases || [], value: actor.actor_id }))
+      : [
+          ...AFFILIATED_ACTORS.map(actor => ({ aliases: actor.aliases, value: actor.canonicalName })),
+          ...PERSON_PROFILES.map(person => ({ aliases: person.aliases, value: person.canonicalName }))
+        ].filter(entry => entry.aliases.some(alias => body.includes(alias)));
+    directory.forEach(entry => {
       const card = append(list, 'article', 'actor-card');
       card.append(ActorIdentity.create(context.documentObject, entry.value, { subtitle: true }));
     });
@@ -726,7 +776,7 @@
     const count = append(pager, 'span');
     const more = append(pager, 'button', 'action', 'Show more');
     more.type = 'button';
-    let limit = context.route.params.event ? 205 : 40;
+    let limit = context.route.params.event ? context.model.counts.chronology_records : 40;
     const draw = () => {
       const query = search.value.trim().toLowerCase();
       const actor = actorSelect.value;
@@ -989,6 +1039,7 @@
     const model = settings.model;
     const state = settings.state;
     invariant(documentObject && rootElement && model, 'Public IA mount requires a document, root element, and current model');
+    configureActorModel(model);
     validateRegistry(model);
     if (rootElement.__atlasRouteController) rootElement.__atlasRouteController.destroy();
     const shell = AppShell.create(documentObject);

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ejronin.github.io/ISR/schemas/canonical-current-state-v1.json",
+  "title": "Atlas ISR derived canonical current entity state",
+  "description": "Deterministic consolidated state compiled from the sealed migration boundary and append-only accepted evidence updates.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_role",
+    "authority_notice",
+    "generator",
+    "migration_boundary",
+    "release",
+    "counts",
+    "input_packages",
+    "accepted_updates",
+    "input_files",
+    "chronology",
+    "sources",
+    "entities",
+    "revision_history",
+    "integrity"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "artifact_role": { "const": "DERIVED_CANONICAL_CURRENT_ENTITY_STATE" },
+    "authority_notice": { "type": "string", "minLength": 1 },
+    "release": {
+      "type": "object",
+      "required": ["current_osint_cutoff", "current_osint_cutoff_display", "input_set_sha256", "canonical_state_identity", "generated_timestamp_included"],
+      "properties": {
+        "current_osint_cutoff": { "type": "string", "format": "date-time" },
+        "current_osint_cutoff_display": { "type": "string", "minLength": 1 },
+        "input_set_sha256": { "$ref": "#/$defs/sha256" },
+        "canonical_state_identity": { "pattern": "^canonical-current-v1-[a-f0-9]{16}$" },
+        "generated_timestamp_included": { "const": false }
+      }
+    },
+    "chronology": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "event", "timeline", "source_ids", "source_references", "actor_ids", "location_ids", "claim_ids", "provenance", "revisions"]
+      }
+    },
+    "entities": {
+      "type": "object",
+      "required": ["actors", "locations", "claims", "material_losses", "relationships"],
+      "properties": {
+        "actors": { "type": "array" },
+        "locations": { "type": "array" },
+        "claims": { "type": "array" },
+        "material_losses": { "type": "array" },
+        "relationships": { "type": "array" }
+      }
+    },
+    "revision_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["revision_id", "entity_type", "entity_id", "field", "previous_value", "new_value", "known_at", "supporting_source_ids", "update_packet", "revision_type", "reason", "analytical_meaning_changed"]
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["generated_timestamp_included", "duplicate_event_ids", "unresolved_references", "sealed_migration_inputs_modified", "accepted_packets_modified", "canonical_inputs_modified_by_generation"],
+      "properties": {
+        "generated_timestamp_included": { "const": false },
+        "duplicate_event_ids": { "const": 0 },
+        "unresolved_references": { "type": "array", "maxItems": 0 },
+        "sealed_migration_inputs_modified": { "const": false },
+        "accepted_packets_modified": { "const": false },
+        "canonical_inputs_modified_by_generation": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

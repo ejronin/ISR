@@ -22,6 +22,7 @@ jobs:
       - name: Validate late overlay, deployment identity, and China oil shift map
         run: |
           python scripts/validate_aug25_late.py
+          python scripts/build_canonical_current_state.py
           python scripts/validate_build_info_current.py
           node --check js/current-update-20260825.js
           node --check js/current-update-20260825-late.js

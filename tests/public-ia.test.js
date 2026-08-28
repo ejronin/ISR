@@ -47,6 +47,11 @@ for (const route of ia.ROUTES.values()) {
 }
 assert.equal(ia.parseRoute('#/not/a-route').key, 'start.overview');
 assert(ia.validateRegistry(model));
+ia.ActorIdentity.configure(model);
+
+const canonicalActorRecords = model.entities.actors.map(item => item.record);
+assert(canonicalActorRecords.some(actor => actor.actor_id === 'ACT-IRGC-NAVY'));
+assert(canonicalActorRecords.some(actor => actor.actor_id === 'ACT-PER-MOHAMMAD-BAQER-QALIBAF'));
 
 const iran = ia.ActorIdentity.resolve('Iran');
 assert.equal(iran.entityType, 'entity');

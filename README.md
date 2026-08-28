@@ -8,13 +8,17 @@ A public, source-linked OSINT record for the 2026 Iran conflict. The project sep
 
 The root page now starts from a neutral shell and renders only after the generated current-state model and application assets resolve to one validated release. The browser does not replay the Aug. 24 through Aug. 27 dated presentation chain to discover the current record. If the current model cannot be loaded or validated, the site shows an explicit error and an archive link instead of an older dashboard.
 
-Build the two ignored deployment artifacts with:
+Build the ignored canonical state, public read model, and signed deployment artifacts with:
 
 ```bash
+python scripts/build_canonical_current_state.py
+python scripts/validate_canonical_update_pipeline.py
 python scripts/build_public_current_state.py
 python scripts/build_public_release.py
 python scripts/validate_public_deployment.py
 ```
+
+Future evidence changes are small append-only packets under `data/canonical-updates/`; they do not require frontend edits or another dated loader. See `docs/canonical-update-pipeline.md` for validation, dry-run, registration and publication commands.
 
 The temporary Phase 2 renderer exposes the full chronology, provenance-scoped sources, and approved datasets without attempting the final navigation, map, or specialist-view redesign. See `docs/public-boot-architecture.md` for the boot sequence and legacy-runtime classification.
 

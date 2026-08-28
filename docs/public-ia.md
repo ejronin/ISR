@@ -16,7 +16,7 @@ The seven primary sections and their secondary destinations are declared once in
 
 Shared owners are `AppShell`, `PublicNavigation`, `EvidenceDrawer`, `ActorIdentity`, `EvidenceStatus`, and contextual `MapView`. Page-owner configuration maps each route to a subset of one of the seven approved `page_data` groups in `data/public-current-state.json`. Registry validation fails if a route requests a dataset outside its approved group or any `legacy.*` dataset.
 
-Cross-links carry the same event or record ID in the hash query instead of copying a canonical record. The detailed chronology resolves event IDs against the single in-memory 205-record chronology. Later content phases can add MOU, Hormuz, objective, and position relationships through the same route/query mechanism without replacing navigation.
+Cross-links carry the same event or record ID in the hash query instead of copying a canonical record. The detailed chronology resolves event IDs against the single derived in-memory chronology (205 records at the Phase 3.5 migration boundary). Later accepted evidence packets can add relationships through canonical data without replacing navigation.
 
 Desktop navigation uses semantic primary and secondary `<nav>` elements. At mobile widths, a keyboard-operable disclosure presents the current primary/secondary location and vertically stacked links; it does not collapse the seven sections into a horizontal tab strip. Each page supplies exactly one H1. The shell-owned skip control moves focus directly to the current page-content container inside the single `main` landmark without changing the route hash, while route changes move focus to the new page heading.
 

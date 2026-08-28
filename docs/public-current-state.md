@@ -1,10 +1,13 @@
 # Derived public current-state read model
 
-`data/public-current-state.json` is a generated, non-authoritative read model for the current public Atlas application. It is produced during validation/deployment and intentionally excluded from Git because it is reproducible and large. Canonical evidence remains in the historical ledger, append-only overlays, accepted reconciliation package, forensic package, source namespaces and approved analytical datasets.
+`data/public-current-state.json` is a generated, non-authoritative read model for the current public Atlas application. It is produced during validation/deployment and intentionally excluded from Git because it is reproducible and large. Phase 3.5 compiles the sealed inherited record and append-only accepted update packets into `data/canonical-current-state.json` first; the public builder consumes that single current entity state and never replays the update ledger.
 
 ## Build and validation
 
 ```bash
+python scripts/build_canonical_current_state.py
+python scripts/build_canonical_current_state.py --check
+python scripts/validate_canonical_update_pipeline.py
 python scripts/build_public_current_state.py
 python scripts/build_public_current_state.py --check
 python scripts/validate_public_current_state.py
@@ -17,6 +20,8 @@ The validator rebuilds the artifact twice in temporary locations, compares both 
 Phase 2 binds this artifact to the public shell through the separately generated `data/public-release.json`. The browser validates that manifest, the shell-asset hashes, the exact read-model hash, and the read-model release identity before it performs the first current render. See `public-boot-architecture.md`.
 
 ## Current chronology assembly
+
+The inherited seven-package record is sealed at accepted Phase 3 HEAD. Post-boundary changes are discovered only through `data/canonical-ledger/manifest.json`, and chronology totals/cutoff are derived from the compiled entities and accepted packet metadata. Adding an event no longer requires changing this builder, a count constant, cutoff constant, browser loader or dated presentation layer. See `canonical-update-pipeline.md`.
 
 The normalized chronology preserves the existing append-only order of authority and then sorts the resulting records by occurrence date, occurrence time and event ID:
 
@@ -38,7 +43,7 @@ Every chronology item carries:
 - package identity and role;
 - exact event/timeline input paths, array indexes and SHA-256 hashes.
 
-The reconciliation package contains several source objects nested in source-ID positions. The read model extracts their explicit canonical `SRC-*` IDs, records each structural normalization in `normalizations`, and retains the untouched canonical file and its exact provenance. No evidentiary meaning changes.
+The reconciliation package contains several source objects nested in source-ID positions. The canonical compiler extracts their explicit canonical `SRC-*` IDs while retaining the untouched sealed file, exact source variant and event provenance. No evidentiary meaning changes.
 
 ## Source assembly
 
@@ -60,6 +65,6 @@ Canonical and approved supporting datasets are embedded once under `datasets`. `
 - `objectives_position_changes`
 - `claims_sources`
 
-This mapping is an engineering index, not new analysis. Phase 1 does not change the current browser boot path or visible site.
+This mapping is an engineering index, not new analysis. Phase 3.5 changes maintenance/build architecture only; it does not redesign public pages or begin Phase 4.
 
 The original `data/*.json` public/map datasets are still embedded under `legacy.*` so their historical bytes and provenance remain inspectable. They are classified `HISTORICAL_REFERENCE_DATA` and are not mapped into any current page. Current page mappings use the frozen ledger, accepted reconciliation, normalized chronology/source catalog, forensic products, and approved analytical datasets that supersede those legacy runtime inputs. No legacy file is deleted or rewritten by this classification.

@@ -9,7 +9,7 @@ Phase 2 replaces the root document's dated presentation replay with one release-
 3. The bootstrap validates its own path, hash marker, and SRI value against the manifest. It then obtains the manifest-authorized, content-addressed stylesheet, public page registry, and application entrypoint.
 4. The browser enforces each authorized asset's SHA-256 SRI while loading it. Only after the stylesheet and inert page registry succeed does the bootstrap load the application entrypoint.
 5. The application validates that authorization, its executing script element, the active page registry, and the active stylesheet against the same manifest. It then loads generated `data/public-current-state.json`, verifies its normalized byte hash and byte count, and parses it once.
-6. The application verifies the read-model schema, release binding, cutoff identity, 205-record chronology, event-ID uniqueness, per-event provenance, and source resolution.
+6. The application verifies the read-model schema, release binding, cutoff identity, derived chronology count (205 at the Phase 3.5 migration boundary), event-ID uniqueness, per-event provenance, and source resolution.
 7. It initializes `window.ATLAS_PUBLIC_STATE` and performs the first current public render. Current sections read only from that validated in-memory model.
 
 The initial document contains no chronology count, cutoff, current summary, old navigation, map workspace, dated latest-update card, or active application CSS. If the manifest, authorized asset, or model cannot be loaded and validated, the neutral shell becomes an explicit error state with **Retry** and **Open archived records**. A release mismatch receives one controlled same-origin reload; a repeated mismatch becomes the explicit error state.
@@ -43,7 +43,7 @@ The dated update/reconciliation modules and original presentation, repair, remou
 
 Coordinated map/layer state, spatial-temporal selection, specialized MOU/objectives/Iran Messaging presentation, route/Mermaid interactions, advanced source context, and page-specific charts remain Phase 3 work. Existing legacy modules are reference implementations, not live owners.
 
-The temporary Phase 2 renderer preserves direct access to the complete 205-record chronology, exact event-source variants, all seven current page-data mappings, every embedded approved dataset, and the complete source catalog. It deliberately does not emulate the old map or repair-driven specialized views.
+The renderer preserves direct access to the complete derived chronology (205 records at the migration boundary), exact event-source variants, all seven current page-data mappings, every embedded approved dataset, and the complete source catalog. It deliberately does not emulate the old map or repair-driven specialized views.
 
 ## Test transition
 

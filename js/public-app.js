@@ -19,7 +19,6 @@
   const RELOAD_ATTEMPT_KEY = 'atlas-public-release-reload-attempted-v1';
   const EXPECTED_MODEL_SCHEMA = '1.0';
   const EXPECTED_MANIFEST_SCHEMA = '1.0';
-  const EXPECTED_CHRONOLOGY_COUNT = 205;
 
   class AtlasBootError extends Error {
     constructor(code, message, cause) {
@@ -145,7 +144,7 @@
     invariant(model.release && model.release.release_identity === manifest.current_state.release_identity, 'RELEASE_MISMATCH', 'The application and current-state release identities do not match.');
     invariant(model.release.input_set_sha256 === manifest.current_state.input_set_sha256, 'RELEASE_MISMATCH', 'The current-state input identity does not match the public release.');
     invariant(model.release.current_osint_cutoff === manifest.current_state.current_osint_cutoff, 'RELEASE_MISMATCH', 'The current-state cutoff does not match the public release.');
-    invariant(model.counts && model.counts.chronology_records === EXPECTED_CHRONOLOGY_COUNT, 'MODEL_INVALID', 'The approved chronology count is not present.');
+    invariant(model.counts && Number.isInteger(model.counts.chronology_records) && model.counts.chronology_records > 0, 'MODEL_INVALID', 'The derived chronology count is invalid.');
     invariant(Array.isArray(model.chronology) && model.chronology.length === model.counts.chronology_records, 'MODEL_INVALID', 'The chronology length does not match its declared count.');
     const ids = model.chronology.map(item => item && item.event_id);
     invariant(ids.every(Boolean) && new Set(ids).size === ids.length, 'MODEL_INVALID', 'The chronology contains a missing or duplicate event ID.');
@@ -153,7 +152,7 @@
     const sourceIds = new Set(sourceRecords.map(source => source.source_id));
     invariant(sourceIds.size === sourceRecords.length, 'MODEL_INVALID', 'The source catalog contains duplicate IDs.');
     for (const item of model.chronology) {
-      invariant(item.provenance && item.provenance.package_key && item.provenance.event && item.provenance.timeline, 'MODEL_INVALID', `Chronology provenance is incomplete for ${item.event_id}.`);
+      invariant(Array.isArray(item.provenance) && item.provenance.length > 0, 'MODEL_INVALID', `Chronology provenance is incomplete for ${item.event_id}.`);
       invariant(Array.isArray(item.source_references), 'MODEL_INVALID', `Source provenance is incomplete for ${item.event_id}.`);
       for (const reference of item.source_references) {
         invariant(sourceIds.has(reference.source_id) && reference.variant_key, 'MODEL_INVALID', `A source reference does not resolve for ${item.event_id}.`);
@@ -311,7 +310,6 @@
   return Object.freeze({
     APPLICATION_VERSION,
     MODEL_URL,
-    EXPECTED_CHRONOLOGY_COUNT,
     AtlasBootError,
     canonicalText,
     sha256Text,

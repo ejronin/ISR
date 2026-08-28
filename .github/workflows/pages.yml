@@ -21,6 +21,9 @@ jobs:
       - name: Assemble static artifact and deployment identity
         run: |
           python scripts/build_source_registry.py --root .
+          python scripts/build_canonical_current_state.py
+          python scripts/build_canonical_current_state.py --check
+          python scripts/validate_canonical_update_pipeline.py
           python scripts/build_public_current_state.py
           python scripts/validate_public_current_state.py
           python scripts/build_public_release.py

@@ -1,0 +1,596 @@
+{
+  "accepted_phase3_head": "b6dabf7d9dc346a81afc9ba4a9074c481e70e02a",
+  "artifact_role": "SEALED_PHASE_3_MIGRATION_BOUNDARY",
+  "generated_timestamp_included": false,
+  "protected_files": [
+    {
+      "bytes": 19676,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/canonical-ledger/migration-actors.json",
+      "sha256": "3b20c673812c5d972a0571c012caace1b061f065076946fa9303c892dbda6509"
+    },
+    {
+      "bytes": 22276,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260824/events.json",
+      "sha256": "c401dd4f687bbdca75f07bf39d4adadd15466446ed2cb0504472ad1a2ea71fcb"
+    },
+    {
+      "bytes": 1334,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260824/manifest.json",
+      "sha256": "f510929ddc618ed08a691763d06db4a24ccfe88cccca5cd5f74819360b066c05"
+    },
+    {
+      "bytes": 8570,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260824/sources.json",
+      "sha256": "7a1264a8fae770711904ac28a1c673c3acf68840b89171809ac2342599fc4270"
+    },
+    {
+      "bytes": 7261,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260824/timeline.json",
+      "sha256": "9eb940a3389551dcb7c665700ecab1353b8d5db3b9b2408256ad548b9832babb"
+    },
+    {
+      "bytes": 2462,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260825-late/events.json",
+      "sha256": "b82120c7e8ce2793962fe06580599d6c92211064891f4a1f8237549aeaf606f8"
+    },
+    {
+      "bytes": 982,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260825-late/manifest.json",
+      "sha256": "fb1ee3953d84cd2d2e9b82a6ec53899589c1d8cb8f934455ccc29e6c062799f5"
+    },
+    {
+      "bytes": 1229,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260825-late/sources.json",
+      "sha256": "f152e9b469c30b3d6f770201ab401b33a32f53f7c1d3b8cfd288e2860b69a4bd"
+    },
+    {
+      "bytes": 858,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260825-late/timeline.json",
+      "sha256": "3ebfaab0511f2bc2cab52aa6e737b79c32ba68419e6bc809771812efc07415a3"
+    },
+    {
+      "bytes": 15644,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260825/events.json",
+      "sha256": "6cc522c5ac11a91a98625c195bdd4e0e6cc779acd2f46cc6587d6c510e503bd4"
+    },
+    {
+      "bytes": 1143,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260825/manifest.json",
+      "sha256": "d574a37bf556a62ada43fb5471ffc7a132e98fcb8d5f61ea220772947b692def"
+    },
+    {
+      "bytes": 5584,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260825/sources.json",
+      "sha256": "2e37d043bf1d916e2226497203b37b67d13a4d9c77bc57c63cd9b86787b19a48"
+    },
+    {
+      "bytes": 4774,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260825/timeline.json",
+      "sha256": "aeccad1ec69d18d18e75e6d516d749e405476d894def8ce95bb7d0ddb0daef70"
+    },
+    {
+      "bytes": 9528,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260826/events.json",
+      "sha256": "d5f7e5598929c143e974c806049dc9cf46d4f9063db6a7313475dfa280114150"
+    },
+    {
+      "bytes": 1186,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260826/manifest.json",
+      "sha256": "c1d2d3fd75faa7852322f5a6e379d833c665ac2e3e986987822cf279c7405dec"
+    },
+    {
+      "bytes": 4750,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260826/sources.json",
+      "sha256": "9d11648ba8e9a9f8fedd3bbff65fb5218fb8e6395c3d316c9016ef1c8265b92a"
+    },
+    {
+      "bytes": 2646,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260826/timeline.json",
+      "sha256": "1f2c498361030f9ed66376587d66207f064302e49a7d0ac166b4dcd69a7c9c08"
+    },
+    {
+      "bytes": 7315,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260827/events.json",
+      "sha256": "f7bcdcd4e322dd55f745f31814e100663869bfa9bd36621b27ccbc907a69f01e"
+    },
+    {
+      "bytes": 1278,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260827/manifest.json",
+      "sha256": "c08848d86b9ba0bfd82e9486c5e9fd99de4a100f9409287737f3ab4ca5b1ef35"
+    },
+    {
+      "bytes": 3249,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260827/sources.json",
+      "sha256": "8cd8b2203bff7564a04c650b96f68d07de91e66e9b9d46b11507eeae298ff5f0"
+    },
+    {
+      "bytes": 2076,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/current-update-20260827/timeline.json",
+      "sha256": "b334498614661225dc4893930d0e7d255584e135e0fee61302e042bc4ea4aba0"
+    },
+    {
+      "bytes": 3811,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/ANALYTICAL-DOCTRINE.md",
+      "sha256": "4d13c39e456088681fa289af6dc12b12d4a59b70c588cba679f5d3077d0bc4b5"
+    },
+    {
+      "bytes": 3862,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/CHANGELOG.md",
+      "sha256": "8d49342272d6756f89bf025222d632506e6008364cc9e8b98728ee39d7ce3181"
+    },
+    {
+      "bytes": 13956,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/CODEX-ADDON-INSTRUCTIONS.md",
+      "sha256": "2eb5f6028dcf88581934b940259c6dbfd3ecc94a30e9a0cb22a7cff318a0abcd"
+    },
+    {
+      "bytes": 13647,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/ENGINEER-RESEARCH-PROMPT.md",
+      "sha256": "03bce349ed16e2e11c2f7db47d35c1ce07e9635ba54d3b76e6a9f364e13dfe2f"
+    },
+    {
+      "bytes": 9820,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/README.md",
+      "sha256": "3839d4f938c74e155735c2b8233772dca9f1bb0bf53dc4155fd3810dc8f4b115"
+    },
+    {
+      "bytes": 5314,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/addon-summary.md",
+      "sha256": "3d87f79c5444888e224ba99b9c29b3f923a90c02dda753dd1da9eae485fdd6ad"
+    },
+    {
+      "bytes": 2304,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/aviation-reconciliation.json",
+      "sha256": "503c748491adbd88577cc53511b7054d01b35b80c3cd0914150289604d84e726"
+    },
+    {
+      "bytes": 1837,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/ceasefire-causality.json",
+      "sha256": "c395f75fcbb46435bb1460ec941c78a128bbd09e6b5052c8a82b9ee712e4f28f"
+    },
+    {
+      "bytes": 7887,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/claim-audits.json",
+      "sha256": "f89d43f659bb4f7d5bdace344cea71c6abf535897cec6f3e3ee6b3786ebfd229"
+    },
+    {
+      "bytes": 4722,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/claim-chain-index.json",
+      "sha256": "615397398607d86038f5b01418513cf61987e81aeb12422b9157f516e726878d"
+    },
+    {
+      "bytes": 3700,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/claim-taxonomy.json",
+      "sha256": "bcb44997d46a9f154d63bf13158b0b05ea439c735ce70d6b3e1cada35d8d24e1"
+    },
+    {
+      "bytes": 5688,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/collection-requests.json",
+      "sha256": "9842aaafbc1b1e958946a5e9f4a8e3b620e77e49be2cf7b07ec491491c30f016"
+    },
+    {
+      "bytes": 22643,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/connection-graph.dot",
+      "sha256": "f07fe88e5c00cce05ef2b24108e5c78d0e885861df1bec0c73180d552ab18a8a"
+    },
+    {
+      "bytes": 39859,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/connection-graph.json",
+      "sha256": "0dad36b0f68b19846e1db5fa052ec1569b5a1f3ac5b9973b15f52bb132618d27"
+    },
+    {
+      "bytes": 7679,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/cost-methodology.md",
+      "sha256": "fb790cd285dbfa7f9c87f77150fe87a057a3dfc0b9d8d0ffa91c0a473056f059"
+    },
+    {
+      "bytes": 5682,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/damage-observations.json",
+      "sha256": "d5f4e781924af90b916b01c48fa2b8b32af6ce04e89e5bc3f9361527dec078f2"
+    },
+    {
+      "bytes": 10532,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/facility-claim-audits.json",
+      "sha256": "270a38d9fed58452f9496917d3975567c8ac0c68fe712e50aea6826e37ce7aef"
+    },
+    {
+      "bytes": 8570,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/imagery-index.json",
+      "sha256": "0e67810f927b555a77b4054d687270ec3dbdbc45efe9a9f8303678bf0294b8f0"
+    },
+    {
+      "bytes": 2136,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/imagery-open-access.md",
+      "sha256": "f45479a0c6881568c35fc4f8c2752137e9fb4d6500e3687b4f241cf8c3d49b3f"
+    },
+    {
+      "bytes": 4103,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/integration-bridge.json",
+      "sha256": "5a3030818ae34f896bde9cc28ea5817446ff468dd116e6fc00ff15b82fd23538"
+    },
+    {
+      "bytes": 8315,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/iran-leadership-casualties.json",
+      "sha256": "d109b35bd824f436541bcfe796de61afa4298ca62ef3b9825a5105a4a9790e9b"
+    },
+    {
+      "bytes": 72982,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/iran-loss-envelopes.json",
+      "sha256": "69cd64355f9f6be1312b0d16d4bbd054068c99ffca46d342cd210bd531be7115"
+    },
+    {
+      "bytes": 18851,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/iran-war-cost-estimate.json",
+      "sha256": "6155967e926d917f7b1c470970b2144b8a8920f07984b63e33062770b655fe7f"
+    },
+    {
+      "bytes": 132654,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/iranian-claim-evolution.json",
+      "sha256": "fb660d04a2a9fdff36aaebfb7215b0d8a3adf2b46de5b4352f093a497e8ff522"
+    },
+    {
+      "bytes": 10778,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/manifest.json",
+      "sha256": "e9ea055ce4c729fc2ad7882207c3189440f3cfb32c86976f5fe05cb469cc8f43"
+    },
+    {
+      "bytes": 6052,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/media-forensics.json",
+      "sha256": "52aa164a61f3784b49022d17434d320e1540845d9d03b614f0866732a8612d16"
+    },
+    {
+      "bytes": 5658,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/pilot-rescue-timeline.json",
+      "sha256": "60ce6d2ebb7ce50bc338548c24487b5763fc8c5c7f42116ed920b4279770ef20"
+    },
+    {
+      "bytes": 7406,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/public-assessments.json",
+      "sha256": "d0ec70df1f6006b86abd0ce177310b64ec38201f6a9ea92486dd61c39c080c84"
+    },
+    {
+      "bytes": 1535,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/qatar-iran-april-contacts.json",
+      "sha256": "f86d3e96c3d0ef0c3a5d8e03e01a801e469bbf1678d1fd1ab21346cfbaac3413"
+    },
+    {
+      "bytes": 8304,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/research-log.md",
+      "sha256": "480b4ff1be9563cdbddf7ad5e9a32d9b82aefc66ec4755ae3a96b0df55cffcf5"
+    },
+    {
+      "bytes": 112972,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/sources.json",
+      "sha256": "a1b8de4465a0c815a44bc0dd1d36122c4c77afd32dac4c242c510acf5e283a6c"
+    },
+    {
+      "bytes": 1791,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/strike-geolocations.csv",
+      "sha256": "db8136db5d57f02ac451fb05cf0652b4ec14b283ad120b0862d315b7e5bb210f"
+    },
+    {
+      "bytes": 7841,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/strike-geolocations.geojson",
+      "sha256": "23a7f5e096add91ac5ced1f29e1be48aaff4e24fa0b2a71e6669b990df5cbe3e"
+    },
+    {
+      "bytes": 7944,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/unresolved.json",
+      "sha256": "db739032ef2248d335939f51c5e9719dac45f122d731c4b6f0dfe8dc8a85c52e"
+    },
+    {
+      "bytes": 21197,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/validate-addon.py",
+      "sha256": "52770fd259f0d13fdb02539adad1210fea8e8c5e729d6fda07f5e5ede53864e7"
+    },
+    {
+      "bytes": 2502,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/forensic-v1.3.2/yemen-mahan-chain.json",
+      "sha256": "3925788fbd19df3371a23ba46657d73c7a5296010897160dcb947e6e18da34f4"
+    },
+    {
+      "bytes": 37327,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/CODEX-INSTRUCTIONS.md",
+      "sha256": "5a1c6102fce95ada2e02f4bc9836ff73f52341fab06fdfd76993304db65cd85d"
+    },
+    {
+      "bytes": 26960,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/agreements.json",
+      "sha256": "3a700e876cdf1eb89b0b770b2ba99d1329280940e40ab40a2950e5e2969ebeda"
+    },
+    {
+      "bytes": 3819,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/attrition-series.json",
+      "sha256": "36c1ef9ea26dd00c146a22ae3790ae21fdf9fd8281a7cb4c077a49609dba5b9c"
+    },
+    {
+      "bytes": 27948,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/aug22-update-lineage.json",
+      "sha256": "27ead4c3f81585b29d844f2b9fa5619f9add1784101854d5a6e13e3d865c433f"
+    },
+    {
+      "bytes": 8763,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/bda-overlays.json",
+      "sha256": "4ee80eb1a5884c62fd2548b1d3827f6cb0d9e366e05b39b67544899de5a8e3ce"
+    },
+    {
+      "bytes": 20820,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/casualties.json",
+      "sha256": "30353eaeadd22e542148b893ee3e85c8394a1e249f4977c9f25a0f8ddb3d67ef"
+    },
+    {
+      "bytes": 20879,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/claims.json",
+      "sha256": "9398442f1aa19eac13a9c3f6eba774092a8f4035c27bb5e2f3b2bdc5091d257a"
+    },
+    {
+      "bytes": 13799,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/collection-requests.json",
+      "sha256": "ee3572231a19a13f622fe84acfd9e82cd6b691f48fd86c1f38c10f06e9c27d7e"
+    },
+    {
+      "bytes": 4951,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/cost-model.json",
+      "sha256": "365572c51eb1fcd0b4f17303d40616da359ecd0628573a16567aaf859ba3d695"
+    },
+    {
+      "bytes": 62343,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/daily-coverage.json",
+      "sha256": "997bde5bc8a4419ab7843f32b5badf67d85ee68f8b6ae6167c74fc87d38eda72"
+    },
+    {
+      "bytes": 13595,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/diplomacy.json",
+      "sha256": "2e702651b30ab22c447dd387f93f189b0542d1cfb3c924ba6c9af2d722e6190a"
+    },
+    {
+      "bytes": 5671,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/domain-assessments.json",
+      "sha256": "8ce18fd0fcf19ff5e5705d1fd3d0e0c083581282da130cb0f9046df515aa03b5"
+    },
+    {
+      "bytes": 6556,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/economics.json",
+      "sha256": "d64d82a59a6a1ad682a6c97708eead585a4bee86e29140f521cd06985031fccf"
+    },
+    {
+      "bytes": 222476,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/events.json",
+      "sha256": "46f0195ed96c22112066ad884e882340bdda5cee07583421cc28f8e9a58c6a5b"
+    },
+    {
+      "bytes": 11912,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/facilities.json",
+      "sha256": "818f47c13f0f26e37b395fc07f670ef78847c7c9d968752014f6239380c88f40"
+    },
+    {
+      "bytes": 12438,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/integration-summary.md",
+      "sha256": "83c0a2005024b0113c078dcae65c46ef72c143e0e3be131980a604a74ab2304a"
+    },
+    {
+      "bytes": 6316,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/manifest.json",
+      "sha256": "dd474379104f7cbfdbe08df12b9240a3e0c9a943b82a17ae50023be3924e2871"
+    },
+    {
+      "bytes": 5980,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/map-links.json",
+      "sha256": "aa52960252ea0c91cfc419c38a12fdbd0c21c37b03bbade15de8c54603dda1b9"
+    },
+    {
+      "bytes": 9348,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/material-losses.json",
+      "sha256": "a4bb6164817b1759d2f5c84b391d83cb256adb2e83edd394e0f8cbf1f0a42f70"
+    },
+    {
+      "bytes": 31044,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/movements.json",
+      "sha256": "9f07b6f35e19df110f019eee5e27c684be29807902f0128dedacf11d2be10356"
+    },
+    {
+      "bytes": 5968,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/munitions-expenditure.json",
+      "sha256": "2cb94fcea9a701c62f7a18882827db2c93211dfc43323dea7bdd2d1f7e9775bc"
+    },
+    {
+      "bytes": 9673,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/revision-history.json",
+      "sha256": "99ff36a6a24331ddf06cba486402913ac168d1246bd6302fe5c6a5a1dead4214"
+    },
+    {
+      "bytes": 7107,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/shipping.json",
+      "sha256": "f0aef1da39bd4a98aa94965ed2177b701122ec0bd3bcaa2216dfd1fbe943ac37"
+    },
+    {
+      "bytes": 13001,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/source-role-map.json",
+      "sha256": "cf038ca018181a6d6644c5883d8c7c36d17754f9e0ac642ee37c0f69f60cb351"
+    },
+    {
+      "bytes": 139523,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/sources.json",
+      "sha256": "6f2dc54b044cf4cd255e8ae7f43198f1cc0ad503764f2cf8319127804f2f6e05"
+    },
+    {
+      "bytes": 71782,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/timeline.json",
+      "sha256": "4b8b2dbc07ce8e0b301ef76ab4fe1745ed09bf69cfb0aee1e8f11f68011518c7"
+    },
+    {
+      "bytes": 12620,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/unresolved.json",
+      "sha256": "ca103ebd1ef5a2a51d0095c04755b5706a0e404959859f65a8e61c612663d244"
+    },
+    {
+      "bytes": 5477,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/integration-v1.2/validate-package.py",
+      "sha256": "aac774bf27d9cfa47e8210a17ee0752ff3f9f024600f91cd28f342b7af6ae804"
+    },
+    {
+      "bytes": 271479,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/source-registry.json",
+      "sha256": "164c32f491138226fccc804ca19d6c607f46a647021b37c6daccc5d675029c38"
+    },
+    {
+      "bytes": 50316,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/coverage-audit.json",
+      "sha256": "887868e94e895bd1e3ea162a33af3cb5ee432d404d0bf493bacc385383f43dee"
+    },
+    {
+      "bytes": 170041,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/events.json",
+      "sha256": "df4d80aadef8925cd1efde1dca37c708324cb2940bf63d010c5f6d1b0d4037f7"
+    },
+    {
+      "bytes": 1248,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/manifest.json",
+      "sha256": "f5460ff40cc3474d74df589a6ae3f9f771f86aa2a418cb2c82496a6bd263fe99"
+    },
+    {
+      "bytes": 28584,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/material-losses.json",
+      "sha256": "5c4590921a75cb5375675fa7f5efa56d2d53034992c37d1234e691c212ed4026"
+    },
+    {
+      "bytes": 18000,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/payload.part1.b64",
+      "sha256": "1be0e7f50f11d6489b0c8061e14eb67ec8bbe0982228225cccb22749ccaf0a95"
+    },
+    {
+      "bytes": 18000,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/payload.part2.b64",
+      "sha256": "08c6a832f115c4bf752baf7d18ca8c88104de75a1cfd8a1eb2321121b3be8f5a"
+    },
+    {
+      "bytes": 18000,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/payload.part3.b64",
+      "sha256": "148f346f81872f64cbd115468e0a7a7fc6dac52a43b4864932f006bbd0270189"
+    },
+    {
+      "bytes": 5796,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/payload.part4.b64",
+      "sha256": "6985d64c860af038ae9e9f1f9478f679db5acff38a8bad39cf056585075fb7bb"
+    },
+    {
+      "bytes": 33123,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/sources.json",
+      "sha256": "3c3536d25a58ad950211c5f5394810cfc2450a00103d311d914e0c36a32c2ce6"
+    },
+    {
+      "bytes": 101137,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/strikes.json",
+      "sha256": "e441e4f9b4ff2847957fe1371442c0250488a9a8bc564e6383abbe86f5df6b62"
+    },
+    {
+      "bytes": 66357,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "data/wiki-map-reconciliation-20260826/timeline.json",
+      "sha256": "da8634de0ad0575e0931cbfe7221d6d1e61f0c2e3f12d32fcdb243d83b0a7d9f"
+    },
+    {
+      "bytes": 674050,
+      "hash_basis": "UTF8_LF_NORMALIZED",
+      "path": "snapshots/Iran War Map 20260820.html",
+      "sha256": "c920d9ab616079827dafb1882a93aa50ae0b4dcc12cdd11c9db67fdf1782b65e"
+    }
+  ],
+  "schema_version": "1.0"
+}

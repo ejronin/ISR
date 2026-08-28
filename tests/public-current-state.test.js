@@ -15,12 +15,15 @@ const normalizedHash = relativePath => {
 };
 
 const state = json('data/public-current-state.json');
+const canonicalState = json('data/canonical-current-state.json');
 assert.equal(state.schema_version, '1.0');
 assert.equal(state.artifact_role, 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL');
 assert.equal(state.release.repository, 'ejronin/ISR');
 assert.equal(state.release.approved_baseline_sha, '9a93eea6afb1ba2f3899e96dc72e2e66071d41b1');
 assert.equal(state.release.current_osint_cutoff, '2026-08-27T08:25:00-04:00');
 assert.equal(state.release.current_osint_cutoff_display, '2026-08-27 08:25 ET');
+assert.equal(state.release.canonical_migration_head, 'b6dabf7d9dc346a81afc9ba4a9074c481e70e02a');
+assert.equal(state.release.canonical_state_identity, canonicalState.release.canonical_state_identity);
 assert.equal(Object.hasOwn(state.release, 'generated_at'), false);
 
 assert.deepEqual(
@@ -51,8 +54,10 @@ for (const item of state.chronology) {
   eventIds.add(item.event_id);
   assert.equal(item.event.event_id, item.event_id);
   assert.equal(item.timeline.event_id, item.event_id);
-  assert(item.provenance?.event?.path && Number.isInteger(item.provenance.event.index));
-  assert(item.provenance?.timeline?.path && Number.isInteger(item.provenance.timeline.index));
+  assert(Array.isArray(item.provenance) && item.provenance.length > 0);
+  const inherited = item.provenance[0];
+  assert(inherited.event?.path && Number.isInteger(inherited.event.index));
+  assert(inherited.timeline?.path && Number.isInteger(inherited.timeline.index));
   assert(item.source_ids.every(sourceId => sourceIds.has(sourceId)), `unresolved event source: ${item.event_id}`);
   assert.deepEqual(item.source_references.map(reference => reference.source_id), item.source_ids);
   assert(item.source_references.every(reference => sourceVariants.has(reference.variant_key)), `unresolved event source variant: ${item.event_id}`);
@@ -91,5 +96,12 @@ assert.deepEqual(state.integrity.unresolved_chronology_source_ids, []);
 assert.deepEqual(state.integrity.unresolved_page_dataset_source_ids, []);
 assert.equal(state.integrity.canonical_inputs_modified, false);
 assert.equal(state.integrity.generated_timestamp_included, false);
+assert.equal(state.integrity.canonical_state_stale, false);
+assert.equal(state.integrity.browser_replays_update_packets, false);
+assert.deepEqual(state.chronology, canonicalState.chronology);
+assert.deepEqual(state.entities, canonicalState.entities);
+assert.deepEqual(state.revision_history, canonicalState.revision_history);
+assert.equal(state.datasets['current.claims'].payload.claims.length, canonicalState.counts.claim_records);
+assert.equal(state.datasets['current.material_losses'].payload.records.length, canonicalState.counts.material_loss_records);
 
-console.log('public-current-state consumer test: PASS - 205 unique events, 362 sources, provenance and page-data mappings verified');
+console.log('public-current-state consumer test: PASS - canonical current entities, 205 unique events, 362 sources, provenance and page-data mappings verified');

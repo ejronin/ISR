@@ -33,7 +33,7 @@ jobs:
           changed="$(git diff --name-only "$BASE_SHA...HEAD")"
           printf '%s\n' "$changed"
           data_changed="$(printf '%s\n' "$changed" | grep -E '^data/' || true)"
-          illegal="$(printf '%s\n' "$data_changed" | grep -Ev '^(data/current-update-20260827/|data/iran-messaging-shifts-20260827-r1\.json$)' || true)"
+          illegal="$(printf '%s\n' "$data_changed" | grep -Ev '^(data/current-update-20260827/|data/iran-messaging-shifts-20260827-r1\.json$|data/canonical-ledger/|data/canonical-updates/|data/public-read-model-registry\.json$)' || true)"
           if [ -n "$illegal" ]; then
             echo 'FAIL: this update modifies frozen or non-authorized historical data paths:' >&2
             printf '%s\n' "$illegal" >&2
@@ -45,6 +45,10 @@ jobs:
         env:
           PYTHONUTF8: '1'
         run: |
+          python scripts/build_canonical_current_state.py
+          python scripts/build_canonical_current_state.py --check
+          python scripts/validate_canonical_update_pipeline.py
+          python tests/canonical-update-pipeline.test.py
           python scripts/build_public_current_state.py
           python scripts/build_public_current_state.py --check
           python scripts/validate_public_current_state.py

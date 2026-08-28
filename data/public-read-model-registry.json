@@ -1,0 +1,432 @@
+{
+  "$schema": "../schemas/public-read-model-registry-v1.json",
+  "artifact_role": "PUBLIC_READ_MODEL_DATASET_REGISTRY",
+  "datasets": [
+    {
+      "key": "legacy.core",
+      "path": "data/core.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.events",
+      "path": "data/events.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.facilities",
+      "path": "data/facilities.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.strikes",
+      "path": "data/strikes.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.losses",
+      "path": "data/losses.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.claims",
+      "path": "data/claims.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.sources",
+      "path": "data/sources.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.economics",
+      "path": "data/economics.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.routes",
+      "path": "data/routes.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.missiles",
+      "path": "data/missiles.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "legacy.influence_networks",
+      "path": "data/influence-networks.json",
+      "role": "HISTORICAL_REFERENCE_DATA"
+    },
+    {
+      "key": "ledger.daily_coverage",
+      "path": "data/integration-v1.2/daily-coverage.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.facilities",
+      "path": "data/integration-v1.2/facilities.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.map_links",
+      "path": "data/integration-v1.2/map-links.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.movements",
+      "path": "data/integration-v1.2/movements.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.agreements",
+      "path": "data/integration-v1.2/agreements.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.claims",
+      "path": "data/integration-v1.2/claims.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.casualties",
+      "path": "data/integration-v1.2/casualties.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.material_losses",
+      "path": "data/integration-v1.2/material-losses.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.munitions_expenditure",
+      "path": "data/integration-v1.2/munitions-expenditure.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.cost_model",
+      "path": "data/integration-v1.2/cost-model.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.economics",
+      "path": "data/integration-v1.2/economics.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.shipping",
+      "path": "data/integration-v1.2/shipping.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.diplomacy",
+      "path": "data/integration-v1.2/diplomacy.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.attrition_series",
+      "path": "data/integration-v1.2/attrition-series.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.bda_overlays",
+      "path": "data/integration-v1.2/bda-overlays.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.source_role_map",
+      "path": "data/integration-v1.2/source-role-map.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.revision_history",
+      "path": "data/integration-v1.2/revision-history.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.unresolved",
+      "path": "data/integration-v1.2/unresolved.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.collection_requests",
+      "path": "data/integration-v1.2/collection-requests.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.domain_assessments",
+      "path": "data/integration-v1.2/domain-assessments.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "ledger.aug22_lineage",
+      "path": "data/integration-v1.2/aug22-update-lineage.json",
+      "role": "CANONICAL_LEDGER_DATA"
+    },
+    {
+      "key": "reconciliation.strikes",
+      "path": "data/wiki-map-reconciliation-20260826/strikes.json",
+      "role": "ACCEPTED_RECONCILIATION_DATA"
+    },
+    {
+      "key": "reconciliation.material_losses",
+      "path": "data/wiki-map-reconciliation-20260826/material-losses.json",
+      "role": "ACCEPTED_RECONCILIATION_DATA"
+    },
+    {
+      "key": "reconciliation.coverage_audit",
+      "path": "data/wiki-map-reconciliation-20260826/coverage-audit.json",
+      "role": "ACCEPTED_RECONCILIATION_DATA"
+    },
+    {
+      "key": "forensic.manifest",
+      "path": "data/forensic-v1.3.2/manifest.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
+      "key": "forensic.loss_envelopes",
+      "path": "data/forensic-v1.3.2/iran-loss-envelopes.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
+      "key": "forensic.leadership_casualties",
+      "path": "data/forensic-v1.3.2/iran-leadership-casualties.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
+      "key": "forensic.claim_evolution",
+      "path": "data/forensic-v1.3.2/iranian-claim-evolution.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
+      "key": "forensic.claim_chain_index",
+      "path": "data/forensic-v1.3.2/claim-chain-index.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
+      "key": "forensic.public_assessments",
+      "path": "data/forensic-v1.3.2/public-assessments.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
+      "key": "forensic.facility_claim_audits",
+      "path": "data/forensic-v1.3.2/facility-claim-audits.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
+      "key": "forensic.pilot_rescue_timeline",
+      "path": "data/forensic-v1.3.2/pilot-rescue-timeline.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
+      "key": "analysis.asset_display",
+      "path": "data/asset-display-v1.3.3.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.casualty_corrections",
+      "path": "data/casualty-corrections-v1.3.3.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.us_war_rationales",
+      "path": "data/us-war-rationales-v1.3.3.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.ui_corrections",
+      "path": "data/ui-corrections-v1.3.2.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.hormuz",
+      "path": "data/hormuz-strategic-v3.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.iran_messaging",
+      "path": "data/iran-messaging-shifts-20260827-r1.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.iran_outcomes",
+      "path": "data/iran-outcome-assessments-v1.0.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.endgame_adjudication",
+      "path": "data/endgame-adjudication-v1.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.endgame_public_view",
+      "path": "data/endgame-public-view-v1.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.endgame_so_far",
+      "path": "data/endgame-so-far.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.endgame_current_aug25",
+      "path": "data/endgame-current-20260825-r2.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.endgame_current_aug26",
+      "path": "data/endgame-current-20260826-r1.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.endgame_us_objectives",
+      "path": "data/endgame-us-objectives-20260825-r1.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.endgame_objective_corrections",
+      "path": "data/endgame-objective-score-corrections-20260825-r4.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.outcome_evidence_links",
+      "path": "data/outcome-evidence-links-20260823.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.china_oil_shift",
+      "path": "data/china-oil-sourcing-shift-r1.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.oil_routes",
+      "path": "data/oil-routes-r1.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.information_war_claims",
+      "path": "data/information_war_claims_v2_7.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.influence_networks",
+      "path": "data/influence_networks_v2_7.json",
+      "role": "APPROVED_ANALYTICAL_DATA"
+    },
+    {
+      "key": "analysis.source_context",
+      "path": "data/source-context-v1.json",
+      "role": "SOURCE_CONTEXT_DATA"
+    },
+    {
+      "key": "analysis.media_bias_provider",
+      "path": "data/media-bias-provider-metadata.json",
+      "role": "SOURCE_CONTEXT_DATA"
+    },
+    {
+      "key": "analysis.ground_news_outlets",
+      "path": "data/ground-news-outlet-metadata.json",
+      "role": "SOURCE_CONTEXT_DATA"
+    },
+    {
+      "key": "archive.snapshot_index",
+      "path": "data/snapshots.json",
+      "role": "ARCHIVE_INDEX_DATA"
+    },
+    {
+      "key": "analysis.endgame_causal_graph",
+      "path": "data/endgame-causal-map-r2.mmd",
+      "role": "APPROVED_ANALYTICAL_TEXT"
+    }
+  ],
+  "page_data": {
+    "claims_sources": [
+      "current.chronology",
+      "current.sources",
+      "current.claims",
+      "current.relationships",
+      "ledger.claims",
+      "ledger.source_role_map",
+      "ledger.revision_history",
+      "ledger.collection_requests",
+      "reconciliation.coverage_audit",
+      "forensic.claim_evolution",
+      "forensic.claim_chain_index",
+      "forensic.public_assessments",
+      "analysis.information_war_claims",
+      "analysis.influence_networks",
+      "analysis.source_context",
+      "analysis.media_bias_provider",
+      "archive.snapshot_index"
+    ],
+    "diplomacy_mou": [
+      "current.chronology",
+      "ledger.agreements",
+      "ledger.diplomacy",
+      "analysis.hormuz",
+      "analysis.endgame_public_view",
+      "analysis.endgame_current_aug25",
+      "analysis.endgame_current_aug26"
+    ],
+    "hormuz_economy": [
+      "current.chronology",
+      "ledger.economics",
+      "ledger.shipping",
+      "ledger.agreements",
+      "analysis.hormuz",
+      "analysis.china_oil_shift",
+      "analysis.oil_routes",
+      "analysis.endgame_current_aug25",
+      "analysis.endgame_current_aug26"
+    ],
+    "military_record": [
+      "current.chronology",
+      "current.actors",
+      "current.locations",
+      "current.material_losses",
+      "ledger.facilities",
+      "ledger.map_links",
+      "ledger.casualties",
+      "ledger.material_losses",
+      "ledger.munitions_expenditure",
+      "ledger.cost_model",
+      "ledger.attrition_series",
+      "ledger.bda_overlays",
+      "reconciliation.strikes",
+      "reconciliation.material_losses",
+      "forensic.loss_envelopes",
+      "forensic.leadership_casualties",
+      "forensic.facility_claim_audits",
+      "analysis.asset_display",
+      "analysis.casualty_corrections"
+    ],
+    "objectives_position_changes": [
+      "current.chronology",
+      "analysis.iran_messaging",
+      "analysis.iran_outcomes",
+      "analysis.endgame_adjudication",
+      "analysis.endgame_public_view",
+      "analysis.endgame_current_aug25",
+      "analysis.endgame_current_aug26",
+      "analysis.endgame_us_objectives",
+      "analysis.endgame_objective_corrections",
+      "analysis.outcome_evidence_links",
+      "analysis.us_war_rationales"
+    ],
+    "start_here": [
+      "current.chronology",
+      "ledger.domain_assessments",
+      "ledger.unresolved",
+      "analysis.endgame_public_view",
+      "analysis.endgame_current_aug25",
+      "analysis.endgame_current_aug26"
+    ],
+    "timeline": [
+      "current.chronology",
+      "ledger.daily_coverage",
+      "ledger.map_links",
+      "forensic.claim_evolution",
+      "forensic.pilot_rescue_timeline"
+    ]
+  },
+  "schema_version": "1.0"
+}

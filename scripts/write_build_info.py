@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""Write the machine-readable deployment identity for the static atlas."""
+"""Write machine-readable deployment identity from canonical current state."""
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
-from datetime import datetime
 from pathlib import Path
 
 
-def parse_cutoff(value: str) -> datetime:
-    return datetime.fromisoformat(value)
+def file_hash(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def main() -> int:
@@ -20,57 +19,33 @@ def main() -> int:
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parents[1]
-    ledger = root / "data" / "integration-v1.2"
+    ledger = root / "data/integration-v1.2"
     historical_manifest = json.loads((ledger / "manifest.json").read_text(encoding="utf-8"))
-    historical_cutoff = historical_manifest["collection_cutoff"]
+    canonical_path = root / "data/canonical-current-state.json"
+    if not canonical_path.is_file():
+        raise SystemExit("canonical current state is missing; run build_canonical_current_state.py first")
+    canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
+    if canonical.get("artifact_role") != "DERIVED_CANONICAL_CURRENT_ENTITY_STATE":
+        raise SystemExit("canonical current-state artifact role is invalid")
 
-    hashes = {
-        path.name: hashlib.sha256(path.read_bytes()).hexdigest()
-        for path in sorted(ledger.glob("*.json"))
+    authoritative_hashes = {path.name: file_hash(path) for path in sorted(ledger.glob("*.json"))}
+    overlay_hashes = {
+        path.relative_to(root).as_posix(): file_hash(path)
+        for path in sorted((root / "data").glob("current-update-*/manifest.json"))
+    }
+    reconciliation_dir = root / "data/wiki-map-reconciliation-20260826"
+    reconciliation_manifest = json.loads((reconciliation_dir / "manifest.json").read_text(encoding="utf-8"))
+    reconciliation_hashes = {
+        path.relative_to(root).as_posix(): file_hash(path)
+        for path in sorted(reconciliation_dir.glob("*.json"))
+    }
+    accepted_update_hashes = {
+        item["path"]: item["sha256"]
+        for item in canonical.get("accepted_updates") or []
     }
 
-    overlay_manifests = []
-    overlay_hashes = {}
-    for path in sorted((root / "data").glob("current-update-*/manifest.json")):
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        cutoff = payload.get("collection_cutoff") or payload.get("created_at")
-        if not cutoff:
-            continue
-        overlay_manifests.append((parse_cutoff(cutoff), path, payload))
-        overlay_hashes[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
-
-    latest_manifest = None
-    if overlay_manifests:
-        latest_dt, latest_path, latest_manifest = max(overlay_manifests, key=lambda row: row[0])
-        current_cutoff = latest_manifest.get("collection_cutoff") or latest_manifest.get("created_at")
-        current_count = latest_manifest.get("counts", {}).get("current_chronology_records")
-        current_layer = str(latest_path.parent.relative_to(root))
-    else:
-        latest_dt = parse_cutoff(historical_cutoff)
-        current_cutoff = historical_cutoff
-        current_count = historical_manifest.get("counts", {}).get("timeline_records")
-        current_layer = "data/integration-v1.2"
-
-    reconciliation_dir = root / "data" / "wiki-map-reconciliation-20260826"
-    reconciliation_manifest_path = reconciliation_dir / "manifest.json"
-    reconciliation_layer = None
-    reconciliation_records = 0
-    reconciliation_hashes = {}
-    reconciliation_already_included = False
-    if reconciliation_manifest_path.exists():
-        reconciliation_manifest = json.loads(reconciliation_manifest_path.read_text(encoding="utf-8"))
-        reconciliation_records = int(reconciliation_manifest.get("counts", {}).get("accepted_or_corrected_events") or 0)
-        reconciliation_layer = str(reconciliation_dir.relative_to(root))
-        recon_cutoff = reconciliation_manifest.get("collection_cutoff") or reconciliation_manifest.get("created_at")
-        if recon_cutoff and parse_cutoff(recon_cutoff) > latest_dt:
-            current_cutoff = recon_cutoff
-        depends_on = (latest_manifest or {}).get("depends_on") or {}
-        reconciliation_already_included = depends_on.get("package") == "ISR-WIKI-MAP-RECONCILIATION-20260826"
-        if current_count is not None and not reconciliation_already_included:
-            current_count = int(current_count) + reconciliation_records
-        for path in sorted(reconciliation_dir.glob("*.json")):
-            reconciliation_hashes[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
-
+    current_cutoff = canonical["release"]["current_osint_cutoff"]
+    current_count = canonical["counts"]["chronology_records"]
     payload = {
         "canonical_url": "https://ejronin.github.io/ISR/",
         "commit_sha": args.commit,
@@ -78,12 +53,18 @@ def main() -> int:
         "collection_cutoff": current_cutoff,
         "current_review_cutoff": current_cutoff,
         "current_chronology_records": current_count,
-        "current_layer": current_layer,
-        "historical_ledger_cutoff": historical_cutoff,
-        "historical_reconciliation_layer": reconciliation_layer,
-        "historical_reconciliation_records": reconciliation_records,
-        "historical_reconciliation_included_in_current_count": reconciliation_already_included,
-        "authoritative_json_sha256": hashes,
+        "current_layer": canonical_path.relative_to(root).as_posix(),
+        "canonical_state_identity": canonical["release"]["canonical_state_identity"],
+        "canonical_state_sha256": file_hash(canonical_path),
+        "canonical_input_set_sha256": canonical["release"]["input_set_sha256"],
+        "canonical_migration_head": canonical["migration_boundary"]["accepted_phase3_head"],
+        "accepted_update_packets": len(canonical.get("accepted_updates") or []),
+        "accepted_update_packet_sha256": accepted_update_hashes,
+        "historical_ledger_cutoff": historical_manifest["collection_cutoff"],
+        "historical_reconciliation_layer": reconciliation_dir.relative_to(root).as_posix(),
+        "historical_reconciliation_records": int(reconciliation_manifest.get("counts", {}).get("accepted_or_corrected_events") or 0),
+        "historical_reconciliation_included_in_current_count": True,
+        "authoritative_json_sha256": authoritative_hashes,
         "current_overlay_manifest_sha256": overlay_hashes,
         "historical_reconciliation_sha256": reconciliation_hashes,
     }
@@ -92,7 +73,7 @@ def main() -> int:
     if not output.is_absolute():
         output = root / output
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     return 0
 
 

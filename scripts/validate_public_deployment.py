@@ -88,8 +88,9 @@ def main() -> int:
         fail("deployed application and current-state input identities differ")
     if current.get("current_osint_cutoff") != release.get("current_osint_cutoff"):
         fail("deployed application and current-state cutoffs differ")
-    if state.get("counts", {}).get("chronology_records") != 205 or len(state.get("chronology", [])) != 205:
-        fail("deployed current-state chronology is not 205 records")
+    chronology_count = state.get("counts", {}).get("chronology_records")
+    if not isinstance(chronology_count, int) or chronology_count < 1 or len(state.get("chronology", [])) != chronology_count:
+        fail("deployed current-state chronology does not match its derived count")
 
     bootstrap_block = manifest.get("neutral_bootstrap") or {}
     if bootstrap_block.get("protocol") != "atlas-release-bootstrap-v1":
@@ -142,7 +143,7 @@ def main() -> int:
     compressed = gzip.compress(state_bytes, compresslevel=9, mtime=0)
     print(
         "public-deployment validation: PASS - "
-        f"{manifest['release_identity']}; content-addressed bootstrap/application; 205 records; "
+        f"{manifest['release_identity']}; content-addressed bootstrap/application; {chronology_count} records; "
         f"model={len(state_bytes)} bytes; gzip-9={len(compressed)} bytes"
     )
     return 0
