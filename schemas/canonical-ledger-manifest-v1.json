@@ -40,11 +40,14 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["packet_id", "path", "sha256"],
+        "required": ["packet_id", "path", "sha256", "known_at", "previous_lineage_sha256", "lineage_sha256"],
         "properties": {
           "packet_id": { "pattern": "^UPD-[0-9]{8}-[A-Z0-9-]+$" },
           "path": { "pattern": "^data/canonical-updates/.+\\.json$" },
-          "sha256": { "$ref": "#/$defs/sha256" }
+          "sha256": { "$ref": "#/$defs/sha256" },
+          "known_at": { "type": "string", "format": "date-time" },
+          "previous_lineage_sha256": { "$ref": "#/$defs/sha256" },
+          "lineage_sha256": { "$ref": "#/$defs/sha256" }
         },
         "additionalProperties": false
       }

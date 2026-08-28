@@ -10,6 +10,7 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 
 import build_canonical_current_state as compiler
+import canonical_authority as authority
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +27,11 @@ def raw_hash(path: Path) -> str:
 
 
 def main() -> int:
+    manifest = json.loads((ROOT / compiler.MANIFEST_PATH).read_text(encoding="utf-8"))
+    try:
+        authority.verify_static_authority(ROOT, manifest)
+    except ValueError as exc:
+        raise SystemExit(f"FAIL: {exc}") from exc
     require(ARTIFACT.is_file(), f"generated canonical state is missing: {compiler.DEFAULT_OUTPUT}")
     artifact = json.loads(ARTIFACT.read_text(encoding="utf-8"))
     inputs = [ROOT / item["path"] for item in artifact.get("input_files") or []]

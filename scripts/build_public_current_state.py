@@ -218,6 +218,9 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         missing = sorted(set(keys) - available_dataset_keys)
         if missing:
             raise ValueError(f"Page {page} references missing dataset keys: {missing}")
+        historical_roles = sorted(key for key in keys if (datasets.get(key) or {}).get("role") == "HISTORICAL_REFERENCE_DATA")
+        if historical_roles:
+            raise ValueError(f"Page {page} maps historical-reference datasets as current: {historical_roles}")
     dataset_source_ids = extract_source_ids(datasets)
     unresolved_dataset_sources = sorted(dataset_source_ids - source_ids)
     if unresolved_dataset_sources:

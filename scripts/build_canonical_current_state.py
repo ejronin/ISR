@@ -9,6 +9,7 @@ authority of its own.
 from __future__ import annotations
 
 import argparse
+import ast
 import copy
 import hashlib
 import json
@@ -16,6 +17,8 @@ import re
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Iterable
+
+import canonical_authority as authority
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -152,6 +155,11 @@ def normalize_event_source_refs(values: Any, label: str) -> tuple[list[str], lis
                 roles = value["source_id"].get("source_roles") or []
             if roles:
                 reference["roles"] = copy.deepcopy(roles)
+            variant_key = value.get("variant_key")
+            if variant_key is not None:
+                if not isinstance(variant_key, str) or not variant_key.endswith(f":{source_id}"):
+                    raise ValueError(f"Invalid source variant key {variant_key!r} in {label}")
+                reference["variant_key"] = variant_key
         source_ids.append(source_id)
         references.append(reference)
     return source_ids, references
@@ -204,6 +212,19 @@ class InputReader:
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
             raise ValueError(f"Invalid JSON input {relative_path}: {exc}") from exc
 
+    def virtual_json(self, relative_path: str, role: str, payload: Any) -> Any:
+        relative = Path(relative_path).as_posix()
+        raw = canonical_json_bytes(payload)
+        self.files[relative] = {
+            "path": relative,
+            "sha256": sha256_bytes(raw),
+            "bytes": len(raw),
+            "hash_basis": "UTF8_LF_NORMALIZED",
+            "roles": [role],
+            "virtual": True,
+        }
+        return copy.deepcopy(payload)
+
     def text(self, relative_path: str, role: str) -> str:
         raw = self._read(relative_path, role)
         try:
@@ -216,6 +237,8 @@ class InputReader:
 
     def verify_unchanged(self) -> None:
         for relative, expected in self.files.items():
+            if expected.get("virtual"):
+                continue
             raw = canonical_input_bytes((self.root / relative).read_bytes())
             if sha256_bytes(raw) != expected["sha256"]:
                 raise ValueError(f"Compilation modified canonical input: {relative}")
@@ -502,11 +525,17 @@ def validate_packet_shape(packet: Any, accepted: bool = False) -> dict[str, Any]
         operation_ids.add(operation_id)
         if operation.get("op") not in OPERATIONS:
             raise ValueError(f"Packet {packet_id} has invalid operation {operation.get('op')!r}")
+        variant_key = operation.get("variant_key")
+        if variant_key is not None:
+            if operation.get("op") != "update_source":
+                raise ValueError(f"Packet {packet_id} may use variant_key only with update_source")
+            if not isinstance(variant_key, str) or not re.fullmatch(r"[^:]+:SRC-[A-F0-9]{12}", variant_key):
+                raise ValueError(f"Packet {packet_id} has malformed source variant_key {variant_key!r}")
     return packet
 
 
 def revision_entry(packet: dict[str, Any], operation: dict[str, Any], revision: dict[str, Any], entity_type: str, entity_id: str, field: str, previous: Any, new: Any, index: int) -> dict[str, Any]:
-    return {
+    entry = {
         "revision_id": f"{packet['packet_id']}:{operation['operation_id']}:{index}",
         "entity_type": entity_type,
         "entity_id": entity_id,
@@ -522,6 +551,9 @@ def revision_entry(packet: dict[str, Any], operation: dict[str, Any], revision: 
         "reason": revision["reason"],
         "analytical_meaning_changed": revision["analytical_meaning_changed"],
     }
+    if operation.get("variant_key"):
+        entry["variant_key"] = operation["variant_key"]
+    return entry
 
 
 def apply_packet(stores: dict[str, dict[str, dict[str, Any]]], relationships: dict[str, dict[str, Any]], revisions: list[dict[str, Any]], packet: dict[str, Any], packet_path: str, report: dict[str, Any]) -> None:
@@ -609,6 +641,13 @@ def apply_packet(stores: dict[str, dict[str, dict[str, Any]]], relationships: di
                 wrapper["actor_ids"] = list(record.pop("actor_ids", []))
                 wrapper["location_ids"] = list(record.pop("location_ids", []))
                 wrapper["claim_ids"] = list(record.pop("claim_ids", []))
+            if entity_type == "source":
+                wrapper["variants"] = [{
+                    "variant_key": f"{packet['packet_id']}:{entity_id}",
+                    "record": copy.deepcopy(wrapper["record"]),
+                    "provenance": copy.deepcopy(wrapper["provenance"][0]),
+                }]
+                wrapper["field_conflicts"] = []
             entry = revision_entry(packet, operation, revision, entity_type, entity_id, "__entity__", None, record, 0)
             wrapper["revisions"].append(entry)
             revisions.append(entry)
@@ -624,10 +663,21 @@ def apply_packet(stores: dict[str, dict[str, dict[str, Any]]], relationships: di
             raise ValueError(f"{label} requires explicit field changes")
         revision = validate_revision(operation.get("revision"), packet, label, require_sources=True)
         relationship_fields = {"source_ids", "actor_ids", "location_ids", "claim_ids"} if entity_type == "event" else {"source_ids"}
+        source_variant = None
+        variant_key = operation.get("variant_key")
+        if entity_type == "source":
+            variants = wrapper.get("variants") or []
+            conflicts = wrapper.get("field_conflicts") or []
+            if conflicts and not variant_key:
+                raise ValueError(f"{label} must target a provenance-scoped variant; global correction of conflicted source {entity_id} is forbidden")
+            if variant_key:
+                source_variant = next((variant for variant in variants if variant.get("variant_key") == variant_key), None)
+                if source_variant is None:
+                    raise ValueError(f"{label} references unknown source variant {variant_key!r}")
         for index, (field, change) in enumerate(changes.items()):
             if not isinstance(change, dict) or set(change) != {"previous", "new"}:
                 raise ValueError(f"{label} field {field} must state previous and new values")
-            target = wrapper if field in relationship_fields else wrapper["record"]
+            target = wrapper if field in relationship_fields else source_variant["record"] if source_variant is not None else wrapper["record"]
             actual = target.get(field)
             if not json_equal(actual, change["previous"]):
                 raise ValueError(f"{label} stale previous value for {field}: expected {actual!r}, packet has {change['previous']!r}")
@@ -640,14 +690,21 @@ def apply_packet(stores: dict[str, dict[str, dict[str, Any]]], relationships: di
             report["fields_revised"].append(entry)
         if entity_type == "location":
             validate_coordinates(wrapper["record"], label)
-        validate_record_timestamps(wrapper["record"], label)
-        wrapper["provenance"].append({
+        validate_record_timestamps(source_variant["record"] if source_variant is not None else wrapper["record"], label)
+        update_provenance = {
             "kind": provenance_kind,
             "packet_id": packet["packet_id"],
             "path": packet_path,
             "operation_id": operation["operation_id"],
-        })
-        report["records_changed"].append({"entity_type": entity_type, "entity_id": entity_id})
+        }
+        if variant_key:
+            update_provenance["variant_key"] = variant_key
+            source_variant.setdefault("correction_provenance", []).append(copy.deepcopy(update_provenance))
+        wrapper["provenance"].append(update_provenance)
+        changed_record = {"entity_type": entity_type, "entity_id": entity_id}
+        if variant_key:
+            changed_record["variant_key"] = variant_key
+        report["records_changed"].append(changed_record)
 
 
 def validate_references(stores: dict[str, dict[str, dict[str, Any]]], relationships: dict[str, dict[str, Any]], report: dict[str, Any]) -> None:
@@ -717,30 +774,39 @@ def duplicate_warnings(stores: dict[str, dict[str, dict[str, Any]]]) -> list[dic
 def verify_migration_boundary(reader: InputReader, manifest: dict[str, Any]) -> dict[str, Any]:
     boundary_path = manifest["migration_boundary"]["sealed_inputs"]
     boundary = reader.json(boundary_path, "SEALED_MIGRATION_BOUNDARY")
+    if reader.digest(boundary_path) != authority.MIGRATION_BOUNDARY_SHA256:
+        raise ValueError("Migration boundary differs from the independently pinned authority digest")
+    if boundary.get("accepted_phase3_head") != authority.ACCEPTED_PHASE3_HEAD:
+        raise ValueError("Migration boundary attempts to redefine the accepted Phase 3 HEAD")
     if boundary.get("accepted_phase3_head") != manifest["migration_boundary"].get("accepted_phase3_head"):
         raise ValueError("Migration boundary commit does not match canonical manifest")
     for item in boundary.get("protected_files") or []:
         raw = reader._read(item["path"], "SEALED_MIGRATION_INPUT")
         if sha256_bytes(raw) != item["sha256"]:
             raise ValueError(f"Unauthorized modification of sealed migration input: {item['path']}")
+    if reader.digest(manifest["migration_boundary"]["actor_registry"]) != authority.MIGRATION_ACTOR_REGISTRY_SHA256:
+        raise ValueError("Migration actor authority differs from the independently pinned digest")
     return boundary
 
 
-def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, Any]]] | None = None) -> tuple[dict[str, Any], dict[str, Any]]:
+def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, Any]]] | None = None, manifest_override: dict[str, Any] | None = None) -> tuple[dict[str, Any], dict[str, Any]]:
     root = root.resolve()
     reader = InputReader(root)
     generator_path = "scripts/build_canonical_current_state.py"
+    authority_path = "scripts/canonical_authority.py"
     schema_paths = [
         "schemas/canonical-ledger-manifest-v1.json",
         "schemas/canonical-update-packet-v1.json",
         "schemas/canonical-current-state-v1.json",
     ]
     reader.text(generator_path, "CANONICAL_COMPILER")
+    reader.text(authority_path, "CANONICAL_AUTHORITY_POLICY")
     for schema_path in schema_paths:
         reader.json(schema_path, "CANONICAL_SCHEMA")
-    manifest = reader.json(MANIFEST_PATH, "CANONICAL_LEDGER_MANIFEST")
+    manifest = reader.virtual_json(MANIFEST_PATH, "PROPOSED_CANONICAL_LEDGER_MANIFEST", manifest_override) if manifest_override is not None else reader.json(MANIFEST_PATH, "CANONICAL_LEDGER_MANIFEST")
     if manifest.get("schema_version") != "1.0" or manifest.get("artifact_role") != "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY":
         raise ValueError("Canonical ledger manifest identity is invalid")
+    authority.verify_static_authority(root, manifest)
     boundary = verify_migration_boundary(reader, manifest)
 
     stores: dict[str, dict[str, dict[str, Any]]] = {entity_type: {} for entity_type in ENTITY_PLURALS}
@@ -850,6 +916,10 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
         for index, source in enumerate(payload.get("sources") or []):
             add_source_record(source, namespace["path"], namespace["key"], index)
 
+    for source_id, wrapper in stores["source"].items():
+        wrapper["variants"] = source_variants.get(source_id, [])
+        wrapper["field_conflicts"] = source_conflicts.get(source_id, [])
+
     actor_path = manifest["migration_boundary"]["actor_registry"]
     actors, actor_aliases = load_actor_registry(reader, actor_path)
     stores["actor"] = actors
@@ -903,7 +973,7 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
     accepted_updates: list[dict[str, Any]] = []
     packet_ids: set[str] = set()
     packet_paths: set[str] = set()
-    prior_packet_known_at: datetime | None = None
+    prior_packet_known_at: datetime | None = max(cutoff_candidates, key=lambda item: item[0])[0] if cutoff_candidates else None
     for sequence, entry in enumerate(manifest.get("accepted_updates") or [], start=1):
         packet_id = entry.get("packet_id")
         path = entry.get("path")
@@ -919,9 +989,11 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
         if reader.digest(path) != entry.get("sha256"):
             raise ValueError(f"Accepted packet was modified after registration: {path}")
         validate_packet_shape(packet, accepted=True)
+        if entry.get("known_at") != packet.get("known_at"):
+            raise ValueError(f"Accepted packet known_at differs from immutable manifest lineage: {packet_id}")
         packet_known_at = parse_datetime(packet["known_at"], f"packet {packet_id} known_at")
-        if prior_packet_known_at and packet_known_at < prior_packet_known_at:
-            raise ValueError(f"Accepted packet order is not monotonic by known_at: {packet_id}")
+        if prior_packet_known_at and packet_known_at <= prior_packet_known_at:
+            raise ValueError(f"Accepted packet known_at must be strictly later than the prior accepted state: {packet_id}")
         prior_packet_known_at = packet_known_at
         apply_packet(stores, relationships, revisions, packet, path, report)
         cutoff_candidates.append((packet_known_at, packet["known_at"]))
@@ -931,8 +1003,12 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
         validate_packet_shape(packet, accepted=False)
         if packet["packet_id"] in packet_ids:
             raise ValueError(f"Proposed packet is already accepted: {packet['packet_id']}")
+        proposed_known_at = parse_datetime(packet["known_at"], f"packet {packet['packet_id']} known_at")
+        if prior_packet_known_at and proposed_known_at <= prior_packet_known_at:
+            raise ValueError(f"Proposed packet known_at must be strictly later than the last accepted state: {packet['packet_id']}")
+        prior_packet_known_at = proposed_known_at
         apply_packet(stores, relationships, revisions, packet, path, report)
-        cutoff_candidates.append((parse_datetime(packet["known_at"], f"packet {packet['packet_id']} known_at"), packet["known_at"]))
+        cutoff_candidates.append((proposed_known_at, packet["known_at"]))
 
     hydrate_actor_records(stores["actor"])
     for event_id, wrapper in stores["event"].items():
@@ -966,21 +1042,24 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
     source_catalog: list[dict[str, Any]] = []
     for source_id in sorted(stores["source"]):
         wrapper = stores["source"][source_id]
-        conflicts = source_conflicts.get(source_id, [])
+        conflicts = wrapper.get("field_conflicts") or []
         registry_record = registry_sources.get(source_id)
         profile = profiles.get(registry_record.get("outlet_profile_id")) if registry_record else None
-        variants = source_variants.get(source_id, [])
+        variants = copy.deepcopy(wrapper.get("variants") or [])
         for provenance in wrapper["provenance"]:
-            if provenance.get("kind") in {"ACCEPTED_UPDATE_PACKET", "PROPOSED_UPDATE_PACKET"} and wrapper["record"]:
-                variants.append({
-                    "variant_key": f"{provenance['packet_id']}:{source_id}",
-                    "record": copy.deepcopy(wrapper["record"]),
-                    "provenance": provenance,
-                })
+            if provenance.get("kind") in {"ACCEPTED_UPDATE_PACKET", "PROPOSED_UPDATE_PACKET"} and not provenance.get("variant_key") and wrapper["record"]:
+                update_variant_key = f"{provenance['packet_id']}:{source_id}"
+                if not any(variant.get("variant_key") == update_variant_key for variant in variants):
+                    variants.append({
+                        "variant_key": update_variant_key,
+                        "record": copy.deepcopy(wrapper["record"]),
+                        "provenance": provenance,
+                    })
+        resolution = "PROVENANCE_SCOPED_VARIANTS_REQUIRED" if conflicts else "CANONICAL_UPDATE_CURRENT" if wrapper["revisions"] else "UNAMBIGUOUS"
         source_catalog.append({
             "source_id": source_id,
-            "record": copy.deepcopy(wrapper["record"]) if not conflicts or wrapper["revisions"] else None,
-            "resolution": "CANONICAL_UPDATE_CURRENT" if wrapper["revisions"] else ("UNAMBIGUOUS" if not conflicts else "PROVENANCE_SCOPED_VARIANTS_REQUIRED"),
+            "record": copy.deepcopy(wrapper["record"]) if not conflicts else None,
+            "resolution": resolution,
             "registry": registry_record,
             "outlet_profile": profile,
             "registry_status": "REGISTERED" if registry_record else ("CANONICAL_UPDATE_SOURCE" if wrapper["revisions"] else "CANONICAL_SOURCE_NOT_YET_IN_GENERATED_REGISTRY"),
@@ -996,12 +1075,23 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
     for event_id, wrapper in stores["event"].items():
         references = []
         package_key = wrapper["provenance"][0].get("package_key")
+        recorded_references = {
+            source_id_from(reference): reference
+            for reference in wrapper["record"].get("source_refs") or []
+        }
         for source_id in wrapper["source_ids"]:
             preferred = f"{package_key}:{source_id}" if package_key else None
             keys = source_variant_keys.get(source_id) or []
             current_source = source_by_id.get(source_id) or {}
+            explicit_variant = (recorded_references.get(source_id) or {}).get("variant_key")
+            if explicit_variant and explicit_variant not in keys:
+                raise ValueError(f"Event {event_id} source {source_id} references unknown variant {explicit_variant}")
+            if current_source.get("resolution") == "PROVENANCE_SCOPED_VARIANTS_REQUIRED" and not explicit_variant and preferred not in keys:
+                raise ValueError(f"Event {event_id} must explicitly select a provenance variant for conflicted source {source_id}")
             variant_key = (
-                keys[-1]
+                explicit_variant
+                if explicit_variant
+                else keys[-1]
                 if current_source.get("resolution") == "CANONICAL_UPDATE_CURRENT" and keys
                 else preferred if preferred in keys
                 else keys[-1] if keys
@@ -1035,6 +1125,7 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
     report["derived_current_cutoff"] = current_cutoff
     report["derived_chronology_count"] = len(chronology)
     report["accepted_packet_count"] = len(accepted_updates)
+    accepted_ledger_tip = authority.verify_accepted_lineage(manifest)
     state = {
         "schema_version": SCHEMA_VERSION,
         "artifact_role": "DERIVED_CANONICAL_CURRENT_ENTITY_STATE",
@@ -1043,10 +1134,16 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
             "version": GENERATOR_VERSION,
             "script_path": generator_path,
             "script_sha256": reader.digest(generator_path),
+            "authority_path": authority_path,
+            "authority_sha256": reader.digest(authority_path),
             "schema_paths": [{"path": path, "sha256": reader.digest(path)} for path in schema_paths],
         },
         "migration_boundary": {
             "accepted_phase3_head": manifest["migration_boundary"]["accepted_phase3_head"],
+            "authority_genesis_commit": authority.PHASE35_AUTHORITY_GENESIS_COMMIT,
+            "boundary_authority_sha256": authority.MIGRATION_BOUNDARY_SHA256,
+            "actor_authority_sha256": authority.MIGRATION_ACTOR_REGISTRY_SHA256,
+            "accepted_ledger_tip_sha256": accepted_ledger_tip,
             "manifest_path": MANIFEST_PATH,
             "manifest_sha256": reader.digest(MANIFEST_PATH),
             "sealed_inputs_path": manifest["migration_boundary"]["sealed_inputs"],
@@ -1105,44 +1202,8 @@ def build_state(root: Path = ROOT, proposed_packets: list[tuple[str, dict[str, A
     return state, report
 
 
-def boundary_paths(root: Path, manifest: dict[str, Any]) -> list[str]:
-    paths: set[str] = set()
-    for package in manifest.get("baseline_packages") or []:
-        directory = root / package["path"]
-        paths.update(path.relative_to(root).as_posix() for path in directory.rglob("*") if path.is_file())
-    for namespace in manifest.get("source_namespaces") or []:
-        directory = (root / namespace["path"]).parent
-        paths.update(path.relative_to(root).as_posix() for path in directory.rglob("*") if path.is_file())
-    for collection in manifest.get("entity_collections") or []:
-        paths.add(Path(collection["path"]).as_posix())
-    paths.add(Path(manifest["migration_boundary"]["actor_registry"]).as_posix())
-    paths.add(Path(manifest["source_registry"]).as_posix())
-    snapshots = root / "snapshots"
-    if snapshots.is_dir():
-        paths.update(path.relative_to(root).as_posix() for path in snapshots.rglob("*") if path.is_file())
-    return sorted(paths)
-
-
 def seal_migration_boundary(root: Path) -> bytes:
-    manifest = json.loads(canonical_input_bytes((root / MANIFEST_PATH).read_bytes()).decode("utf-8"))
-    output = root / manifest["migration_boundary"]["sealed_inputs"]
-    if output.exists():
-        raise ValueError(f"Refusing to overwrite sealed migration boundary: {output.relative_to(root)}")
-    protected_files = []
-    for relative in boundary_paths(root, manifest):
-        raw = canonical_input_bytes((root / relative).read_bytes())
-        protected_files.append({"path": relative, "sha256": sha256_bytes(raw), "bytes": len(raw), "hash_basis": "UTF8_LF_NORMALIZED"})
-    payload = {
-        "schema_version": "1.0",
-        "artifact_role": "SEALED_PHASE_3_MIGRATION_BOUNDARY",
-        "accepted_phase3_head": manifest["migration_boundary"]["accepted_phase3_head"],
-        "generated_timestamp_included": False,
-        "protected_files": protected_files,
-    }
-    serialized = canonical_json_bytes(payload)
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_bytes(serialized)
-    return serialized
+    raise ValueError("Migration boundary resealing is disabled after the Phase 3.5 authority anchor")
 
 
 def register_packet(root: Path, packet_path: str) -> dict[str, Any]:
@@ -1157,16 +1218,30 @@ def register_packet(root: Path, packet_path: str) -> dict[str, Any]:
     packet = validate_packet_shape(json.loads(raw.decode("utf-8")), accepted=True)
     manifest_file = root / MANIFEST_PATH
     manifest = json.loads(canonical_input_bytes(manifest_file.read_bytes()).decode("utf-8"))
+    authority.verify_static_authority(root, manifest)
     if any(item["packet_id"] == packet["packet_id"] or item["path"] == relative for item in manifest.get("accepted_updates") or []):
         raise ValueError(f"Packet is already registered: {packet['packet_id']}")
-    # Registration is transactional: compile the proposed packet against the
-    # accepted ledger before changing the manifest. A duplicate, stale previous
-    # value, bad reference, or malformed coordinate leaves the ledger untouched.
-    build_state(root, [(relative, packet)])
-    entry = {"packet_id": packet["packet_id"], "path": relative, "sha256": sha256_bytes(raw)}
-    manifest.setdefault("accepted_updates", []).append(entry)
+    # Validate the currently accepted state before considering an extension.
+    build_state(root)
+    accepted = manifest.setdefault("accepted_updates", [])
+    if accepted:
+        last_known_at = parse_datetime(accepted[-1]["known_at"], "last accepted packet known_at")
+        candidate_known_at = parse_datetime(packet["known_at"], f"packet {packet['packet_id']} known_at")
+        if candidate_known_at <= last_known_at:
+            raise ValueError(f"Packet {packet['packet_id']} known_at must be strictly later than the last accepted packet")
+        previous_lineage = accepted[-1]["lineage_sha256"]
+    else:
+        previous_lineage = authority.ACCEPTED_LEDGER_GENESIS_SHA256
+    entry = authority.make_accepted_entry(packet["packet_id"], relative, sha256_bytes(raw), packet["known_at"], previous_lineage)
+    candidate_manifest = copy.deepcopy(manifest)
+    candidate_manifest["accepted_updates"].append(entry)
+    authority.require_exact_prefix(manifest, candidate_manifest)
+    # Compile the complete resulting manifest before any write. A duplicate,
+    # stale value, bad reference, ordering defect, or altered lineage leaves
+    # both the manifest and generated current-state artifact untouched.
+    build_state(root, manifest_override=candidate_manifest)
     temporary_manifest = manifest_file.with_suffix(".json.tmp")
-    temporary_manifest.write_bytes(canonical_json_bytes(manifest))
+    temporary_manifest.write_bytes(canonical_json_bytes(candidate_manifest))
     temporary_manifest.replace(manifest_file)
     return entry
 
@@ -1183,7 +1258,7 @@ def main() -> int:
     parser.add_argument("--preview", metavar="PACKET", help="Validate and dry-run one unregistered packet without writing state")
     parser.add_argument("--validate-packet", metavar="PACKET", help="Validate one packet against accepted state without writing")
     parser.add_argument("--register", metavar="PACKET", help="Append an already approved ACCEPTED packet to the manifest")
-    parser.add_argument("--seal-migration-boundary", action="store_true", help="One-time creation of the immutable Phase 3 input hash inventory")
+    parser.add_argument("--seal-migration-boundary", action="store_true", help="Retired command; always refuses because the Phase 3.5 authority seal is anchored")
     args = parser.parse_args()
     root = Path(args.root).resolve()
     if args.seal_migration_boundary:
@@ -1200,7 +1275,26 @@ def main() -> int:
         path = root / packet_path
         packet = json.loads(canonical_input_bytes(path.read_bytes()).decode("utf-8"))
         proposed.append((Path(packet_path).as_posix(), packet))
-    state, report = build_state(root, proposed)
+    try:
+        state, report = build_state(root, proposed)
+    except ValueError as exc:
+        if args.preview:
+            message = str(exc)
+            unresolved_references: list[str] = []
+            unresolved_prefix = "Unresolved canonical references: "
+            if message.startswith(unresolved_prefix):
+                try:
+                    unresolved_references = list(ast.literal_eval(message[len(unresolved_prefix):]))
+                except (SyntaxError, ValueError, TypeError):
+                    unresolved_references = []
+            print(format_report({
+                "status": "FAIL",
+                "errors": [{"type": type(exc).__name__, "message": message}],
+                "unresolved_references": unresolved_references,
+            }))
+            print(f"canonical-update: FAIL - {packet_path} did not validate; no files written")
+            return 1
+        raise
     if packet_path:
         print(format_report(report))
         print(f"canonical-update: PASS - {packet_path} is valid against accepted state; no files written")

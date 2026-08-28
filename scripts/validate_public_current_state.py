@@ -135,6 +135,7 @@ def validate_references_and_views(payload: dict[str, Any]) -> None:
         actual_keys = payload["page_data"][page].get("dataset_keys")
         require(actual_keys == expected_keys and set(actual_keys) <= available_keys, f"{page} dataset mapping mismatch")
         require(not any(key.startswith("legacy.") for key in actual_keys), f"{page} maps historical reference data as current")
+        require(not any((datasets.get(key) or {}).get("role") == "HISTORICAL_REFERENCE_DATA" for key in actual_keys), f"{page} maps a historical-reference role as current")
     legacy_datasets = {key: value for key, value in datasets.items() if key.startswith("legacy.")}
     require(bool(legacy_datasets) and all(dataset.get("role") == "HISTORICAL_REFERENCE_DATA" for dataset in legacy_datasets.values()), "historical reference classification mismatch")
     dataset_source_ids = builder.extract_source_ids(datasets)

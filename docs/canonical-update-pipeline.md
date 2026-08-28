@@ -8,12 +8,14 @@ The browser receives only `data/public-current-state.json`. It never downloads o
 
 ## File roles
 
-- `data/canonical-ledger/manifest.json` lists the sealed inherited packages and accepted post-migration packets in deterministic order.
-- `data/canonical-ledger/migration-boundary.json` records normalized SHA-256 values for every inherited evidence-package file and immutable snapshot at accepted Phase 3 HEAD `b6dabf7d9dc346a81afc9ba4a9074c481e70e02a`.
+- `data/canonical-ledger/manifest.json` lists the sealed pre-boundary inputs and accepted post-migration packets in deterministic order. Every accepted entry stores its packet hash, immutable `known_at`, prior-lineage digest and resulting lineage digest.
+- `data/canonical-ledger/migration-boundary.json` records 98 normalized SHA-256 values: 59 canonical evidence-package/reconciliation files, 36 forensic source-namespace files, the migration actor authority, the generated source registry, and the immutable snapshot inventory. This is a different inventory from the former 99-input public-read-model inventory; neither count implies a missing canonical input.
 - `data/canonical-ledger/migration-actors.json` formalizes the accepted Phase 3 actor/person/affiliation identities.
 - `data/canonical-updates/*.json` contains small update packets. A packet becomes authoritative only after review, `status: "ACCEPTED"`, and transactional registration in the manifest.
 - `data/canonical-current-state.json` is an ignored, deterministic compiler artifact. It contains stable current events, sources, actors, locations, claims, material losses, relationships and field-level revisions.
 - `data/public-current-state.json` remains the ignored public read model. It is generated from canonical current state rather than from dated overlays.
+
+The boundary file and migration actor registry are independently digest-pinned in `scripts/canonical_authority.py`. Authority validation also compares the other 97 sealed inputs directly with accepted Phase 3 commit `b6dabf7d9dc346a81afc9ba4a9074c481e70e02a`. Changing an input and editing its stored seal hash therefore still fails. Normal evidence-update CI compares the prior manifest to the proposed manifest and requires the prior accepted sequence to remain an exact prefix.
 
 Stable IDs use existing event/source/claim/loss IDs and the formalized `ACT-*` and `LOC-*` namespaces. Clarifying a record updates that ID; it does not create an `-v2` entity.
 
@@ -59,7 +61,7 @@ Add any new source, actor or location first in the same packet, then use `add_ev
 
 ## Add a source
 
-Use `add_source` with a `SRC-` ID and the approved metadata available: publisher/outlet, title, URL, publication timestamp, retrieval timestamp, source type, context and reliability metadata. Future events reference the ID. A source URL/time correction is made once with `update_source`; all current consumers resolve the corrected record while the old value remains in revision/provenance history.
+Use `add_source` with a `SRC-` ID and the approved metadata available: publisher/outlet, title, URL, publication timestamp, retrieval timestamp, source type, context and reliability metadata. Future events reference the ID. A non-conflicted source URL/time correction is made once with `update_source`; all current consumers resolve the corrected record while the old value remains in revision/provenance history. If a source ID has conflicting package-scoped variants, `update_source` must include the exact `variant_key`. A targeted correction changes only that variant and never creates a global winner.
 
 ## Correct a date/time
 
@@ -81,7 +83,9 @@ Use `update_claim`, `update_material_loss`, `link_source`, or `add_relationship`
 
 ```bash
 python scripts/build_canonical_current_state.py --validate-packet data/canonical-updates/UPD-YYYYMMDD-NNN.json
+python scripts/validate_canonical_authority.py
 python tests/canonical-update-pipeline.test.py
+python tests/canonical-authority.test.py
 python scripts/validate_canonical_update_pipeline.py
 ```
 
@@ -93,7 +97,7 @@ Validation rejects duplicate IDs, stale previous values, malformed timestamps/ID
 python scripts/build_canonical_current_state.py --preview data/canonical-updates/UPD-YYYYMMDD-NNN.json
 ```
 
-Preview does not write any file. Its deterministic report lists records added/changed, field-level previous/new values, source links, unresolved references, exact duplicate/collision warnings, new cutoff and new chronology count. Similar-looking records are never fuzzy-merged.
+Preview does not write any file. Its deterministic report lists records added/changed, field-level previous/new values, source links, unresolved references, exact duplicate/collision warnings, new cutoff and new chronology count. Failed previews return a structured `errors` and `unresolved_references` report while remaining non-writing. Similar-looking records are never fuzzy-merged.
 
 ## Publish after approval
 
@@ -114,4 +118,6 @@ python scripts/validate_public_deployment.py
 
 `--register` validates the packet against accepted state before appending its normalized SHA-256 to the manifest. It refuses duplicate packet IDs/paths and never rewrites an existing accepted packet. A correction to an accepted packet is a new packet.
 
-Do not rerun `--seal-migration-boundary`; the command refuses to overwrite the accepted seal. Do not add another dated frontend loader, overlay or presentation script.
+Accepted packet `known_at` values must be strictly increasing; equal or earlier timestamps are rejected before any manifest write. Registration compiles the complete candidate manifest in memory, verifies the lineage chain and exact-prefix extension, then performs the same-directory atomic replace. Failed registration leaves the accepted manifest and generated canonical state byte-for-byte unchanged.
+
+Do not rerun `--seal-migration-boundary`; resealing is permanently disabled after the authority anchor, even if the boundary file is deleted. Do not add another dated frontend loader, overlay or presentation script.

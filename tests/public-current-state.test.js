@@ -89,6 +89,7 @@ for (const [page, mapping] of Object.entries(state.page_data)) {
   assert(mapping.dataset_keys.length > 0, `page dataset mapping empty: ${page}`);
   assert(mapping.dataset_keys.every(key => availableData.has(key)), `page dataset mapping unresolved: ${page}`);
   assert(mapping.dataset_keys.every(key => !key.startsWith('legacy.')), `page maps historical reference data as current: ${page}`);
+  assert(mapping.dataset_keys.every(key => state.datasets[key]?.role !== 'HISTORICAL_REFERENCE_DATA'), `page maps a historical-reference role as current: ${page}`);
 }
 
 assert.equal(state.integrity.duplicate_event_ids, 0);

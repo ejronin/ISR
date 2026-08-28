@@ -12,13 +12,14 @@ Build the ignored canonical state, public read model, and signed deployment arti
 
 ```bash
 python scripts/build_canonical_current_state.py
+python scripts/validate_canonical_authority.py
 python scripts/validate_canonical_update_pipeline.py
 python scripts/build_public_current_state.py
 python scripts/build_public_release.py
 python scripts/validate_public_deployment.py
 ```
 
-Future evidence changes are small append-only packets under `data/canonical-updates/`; they do not require frontend edits or another dated loader. See `docs/canonical-update-pipeline.md` for validation, dry-run, registration and publication commands.
+Future evidence changes are small append-only packets under `data/canonical-updates/`; they do not require frontend edits or another dated loader. The migration boundary is independently pinned, and CI requires every prior accepted manifest entry to remain an exact prefix of the proposed ledger. See `docs/canonical-update-pipeline.md` for validation, dry-run, registration and publication commands.
 
 The temporary Phase 2 renderer exposes the full chronology, provenance-scoped sources, and approved datasets without attempting the final navigation, map, or specialist-view redesign. See `docs/public-boot-architecture.md` for the boot sequence and legacy-runtime classification.
 

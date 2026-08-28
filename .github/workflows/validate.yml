@@ -25,20 +25,10 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
-      - name: Protect frozen data in pull-request diffs
-        if: github.event_name == 'pull_request'
+      - name: Protect immutable migration authority and append-only ledger history
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: |
-          changed="$(git diff --name-only "$BASE_SHA...HEAD")"
-          printf '%s\n' "$changed"
-          data_changed="$(printf '%s\n' "$changed" | grep -E '^data/' || true)"
-          illegal="$(printf '%s\n' "$data_changed" | grep -Ev '^(data/current-update-20260827/|data/iran-messaging-shifts-20260827-r1\.json$|data/canonical-ledger/|data/canonical-updates/|data/public-read-model-registry\.json$)' || true)"
-          if [ -n "$illegal" ]; then
-            echo 'FAIL: this update modifies frozen or non-authorized historical data paths:' >&2
-            printf '%s\n' "$illegal" >&2
-            exit 1
-          fi
+          AUTHORITY_BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: python scripts/validate_canonical_authority.py --compare-ref "$AUTHORITY_BASE_REF"
       - name: Build exhaustive source registry
         run: python scripts/build_source_registry.py --root .
       - name: Validate deterministic public current-state assembly
@@ -47,7 +37,9 @@ jobs:
         run: |
           python scripts/build_canonical_current_state.py
           python scripts/build_canonical_current_state.py --check
+          python scripts/validate_canonical_authority.py
           python scripts/validate_canonical_update_pipeline.py
+          python tests/canonical-authority.test.py
           python tests/canonical-update-pipeline.test.py
           python scripts/build_public_current_state.py
           python scripts/build_public_current_state.py --check

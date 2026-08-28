@@ -82,6 +82,7 @@
           "additionalProperties": { "$ref": "#/$defs/change" }
         },
         "source_id": { "pattern": "^SRC-[A-F0-9]{12}$" },
+        "variant_key": { "pattern": "^[^:]+:SRC-[A-F0-9]{12}$" },
         "relationship": { "type": "object" },
         "revision": { "$ref": "#/$defs/revision" }
       },
