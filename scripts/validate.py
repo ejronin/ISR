@@ -6,7 +6,7 @@ import json, re, struct, subprocess, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_FILES = [
-    'index.html','templates/public-index.html','css/public-shell.css','js/public-app.js',
+    'index.html','templates/public-index.html','css/public-shell.css','js/public-bootstrap.js','js/public-ia.js','js/public-app.js',
     'legacy/phase1-public-runtime-reference.html','css/app.css','js/navigation.js','js/app.js','.nojekyll',
     'assets/social-preview.png','data/core.json','data/events.json','data/facilities.json',
     'data/strikes.json','data/losses.json','data/claims.json','data/influence-networks.json',
@@ -80,9 +80,9 @@ def main():
             w,h=struct.unpack('>II',b[16:24])
             if (w,h)!=(1200,630): failures += fail(f'social preview dimensions {(w,h)} != (1200,630)')
     css=(ROOT/'css/public-shell.css').read_text(encoding='utf-8')
-    if 'prefers-reduced-motion: reduce' not in css or '.section-nav' not in css:
+    if 'prefers-reduced-motion: reduce' not in css or '.secondary-nav' not in css or '.mobile-navigation' not in css:
         failures += fail('public shell responsive/reduced-motion styles missing')
-    for js in ['js/public-app.js','js/navigation.js','js/app.js']:
+    for js in ['js/public-bootstrap.js','js/public-ia.js','js/public-app.js','js/navigation.js','js/app.js']:
         proc=subprocess.run(['node','--check',str(ROOT/js)],capture_output=True,text=True)
         if proc.returncode: failures += fail(f'JS syntax error in {js}: {proc.stderr.strip()}')
     # protect against the blank strategic CLAIM CHECK regression caught during migration

@@ -21,6 +21,7 @@ SCHEMA_VERSION = "1.0"
 GENERATOR_VERSION = "1.1"
 ASSET_SPECS = (
     ("bootstrap", "public-bootstrap", "js/public-bootstrap.js", "js"),
+    ("page_registry", "public-ia", "js/public-ia.js", "js"),
     ("stylesheet", "public-shell", "css/public-shell.css", "css"),
     ("entrypoint", "public-app", "js/public-app.js", "js"),
 )
@@ -114,7 +115,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
     if state.get("artifact_role") != "DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL":
         raise ValueError("Current-state artifact role is invalid")
 
-    application_assets = [assets_by_role["stylesheet"], assets_by_role["entrypoint"]]
+    application_assets = [assets_by_role["page_registry"], assets_by_role["stylesheet"], assets_by_role["entrypoint"]]
     asset_set_material = "".join(
         f"{item['role']}\0{item['path']}\0{item['sha256']}\n"
         for item in sorted(application_assets, key=lambda row: row["role"])
@@ -145,6 +146,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         },
         "application": {
             "version": version,
+            "runtime": [assets_by_role["page_registry"]["path"]],
             "entrypoint": assets_by_role["entrypoint"]["path"],
             "stylesheet": assets_by_role["stylesheet"]["path"],
             "asset_set_sha256": asset_set_sha256,

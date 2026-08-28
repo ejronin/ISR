@@ -97,12 +97,15 @@ def main() -> int:
     bootstrap = bootstrap_block.get("asset") or {}
     application = manifest.get("application") or {}
     assets = application.get("assets") or []
-    if len(assets) != 2 or {asset.get("role") for asset in assets} != {"stylesheet", "entrypoint"}:
+    if len(assets) != 3 or {asset.get("role") for asset in assets} != {"page_registry", "stylesheet", "entrypoint"}:
         fail("public release application asset inventory is incomplete")
     by_role = {asset["role"]: asset for asset in assets}
     validate_asset(site, bootstrap, "bootstrap", "js")
+    validate_asset(site, by_role["page_registry"], "page_registry", "js")
     validate_asset(site, by_role["stylesheet"], "stylesheet", "css")
     validate_asset(site, by_role["entrypoint"], "entrypoint", "js")
+    if application.get("runtime") != [by_role["page_registry"].get("path")]:
+        fail("public release page-registry pointer mismatch")
     if application.get("stylesheet") != by_role["stylesheet"].get("path"):
         fail("public release stylesheet pointer mismatch")
     if application.get("entrypoint") != by_role["entrypoint"].get("path"):

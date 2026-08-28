@@ -6,9 +6,9 @@ Phase 2 replaces the root document's dated presentation replay with one release-
 
 1. `index.html` exposes only metadata, the neutral `#atlas-root` loading state, and one content-addressed bootstrap script with a SHA-256 Subresource Integrity value.
 2. The neutral bootstrap loads generated `data/public-release.json` with `cache: no-store`. The real renderer has not loaded and cannot execute at this point.
-3. The bootstrap validates its own path, hash marker, and SRI value against the manifest. It then obtains the manifest-authorized, content-addressed stylesheet and application entrypoint.
-4. The browser enforces each authorized asset's SHA-256 SRI while loading it. Only after the stylesheet succeeds does the bootstrap publish a frozen runtime authorization and load the application entrypoint.
-5. The application validates that authorization, its executing script element, and the active stylesheet against the same manifest. It then loads generated `data/public-current-state.json`, verifies its normalized byte hash and byte count, and parses it once.
+3. The bootstrap validates its own path, hash marker, and SRI value against the manifest. It then obtains the manifest-authorized, content-addressed stylesheet, public page registry, and application entrypoint.
+4. The browser enforces each authorized asset's SHA-256 SRI while loading it. Only after the stylesheet and inert page registry succeed does the bootstrap load the application entrypoint.
+5. The application validates that authorization, its executing script element, the active page registry, and the active stylesheet against the same manifest. It then loads generated `data/public-current-state.json`, verifies its normalized byte hash and byte count, and parses it once.
 6. The application verifies the read-model schema, release binding, cutoff identity, 205-record chronology, event-ID uniqueness, per-event provenance, and source resolution.
 7. It initializes `window.ATLAS_PUBLIC_STATE` and performs the first current public render. Current sections read only from that validated in-memory model.
 
@@ -29,7 +29,8 @@ The original top-level `data/*.json` runtime datasets also remain untouched for 
 ### Still required during Phase 2
 
 - `js/public-bootstrap.js` — neutral manifest resolver and the only script bound by `index.html`.
-- `js/public-app.js` — manifest-authorized owner of model loading, current state, errors, and top-level rendering.
+- `js/public-ia.js` — manifest-authorized registry of permanent routes, page owners, shared public components, and shell navigation.
+- `js/public-app.js` — manifest-authorized owner of model loading, current state, errors, and page-registry initialization.
 - `css/public-shell.css` — manifest-authorized Phase 2 shell and temporary read-model presentation.
 
 No former presentation module remains required during current boot.

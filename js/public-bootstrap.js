@@ -56,12 +56,14 @@
     invariant(scriptUrl.pathname.endsWith(`/${bootstrap.path}`), 'RELEASE_MISMATCH', 'The executing bootstrap path is not authorized by this release.');
     invariant(executingScript.integrity === bootstrap.integrity, 'RELEASE_MISMATCH', 'The executing bootstrap integrity is not authorized by this release.');
     invariant(executingScript.dataset.bootstrapSha256 === bootstrap.sha256, 'RELEASE_MISMATCH', 'The executing bootstrap hash marker is not authorized by this release.');
+    const runtime = validateContentAddressedAsset(assetForRole(manifest, 'page_registry'), 'js');
     const style = validateContentAddressedAsset(assetForRole(manifest, 'stylesheet'), 'css');
     const entry = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
+    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 1 && manifest.application.runtime[0] === runtime.path, 'RELEASE_MISMATCH', 'The authorized page registry path is inconsistent.');
     invariant(manifest.application.stylesheet === style.path, 'RELEASE_MISMATCH', 'The authorized stylesheet path is inconsistent.');
     invariant(manifest.application.entrypoint === entry.path, 'RELEASE_MISMATCH', 'The authorized entrypoint path is inconsistent.');
     invariant(manifest.current_state && manifest.current_state.path === 'data/public-current-state.json', 'RELEASE_MISMATCH', 'The current-state path is invalid.');
-    return { manifest, bootstrap, style, entry };
+    return { manifest, bootstrap, runtime, style, entry };
   }
 
   async function fetchManifest(fetchImpl) {
@@ -108,13 +110,28 @@
     });
   }
 
-  function authorize(manifest, bootstrap, style, entry) {
+  function loadRuntime(documentObject, asset, releaseIdentity) {
+    return new Promise((resolve, reject) => {
+      const script = documentObject.createElement('script');
+      script.src = `./${asset.path}`;
+      script.integrity = asset.integrity;
+      script.crossOrigin = 'anonymous';
+      script.dataset.atlasAuthorizedRuntime = releaseIdentity;
+      script.dataset.assetSha256 = asset.sha256;
+      script.onload = () => resolve(script);
+      script.onerror = () => reject(new BootstrapError('ASSET_INTEGRITY_FAILED', 'The authorized public page registry could not be loaded.'));
+      documentObject.head.append(script);
+    });
+  }
+
+  function authorize(manifest, bootstrap, runtime, style, entry) {
     const authorization = Object.freeze({
       releaseIdentity: manifest.release_identity,
       manifest,
       bootstrapPath: bootstrap.path,
       stylesheetPath: style.path,
       entrypointPath: entry.path,
+      runtimeAssets: Object.freeze([{ path: runtime.path, sha256: runtime.sha256 }]),
       stylesheetSha256: style.sha256,
       entrypointSha256: entry.sha256
     });
@@ -180,7 +197,8 @@
       const validated = validateManifest(manifest, executingScript);
       root.ATLAS_BOOTSTRAP_STATE = { status: 'authorizing', releaseIdentity: manifest.release_identity };
       await loadStylesheet(documentObject, validated.style, manifest.release_identity);
-      authorize(manifest, validated.bootstrap, validated.style, validated.entry);
+      authorize(manifest, validated.bootstrap, validated.runtime, validated.style, validated.entry);
+      await loadRuntime(documentObject, validated.runtime, manifest.release_identity);
       await loadEntrypoint(documentObject, validated.entry, manifest.release_identity);
       root.ATLAS_BOOTSTRAP_STATE = { status: 'authorized', releaseIdentity: manifest.release_identity };
       return root.ATLAS_RELEASE_AUTHORIZATION;
@@ -202,6 +220,7 @@
     validateManifest,
     fetchManifest,
     authorize,
+    loadRuntime,
     controlledReload,
     renderFailure,
     start

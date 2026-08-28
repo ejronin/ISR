@@ -1,0 +1,173 @@
+'use strict';
+const assert = require('node:assert/strict');
+const ia = require('../js/public-ia.js');
+
+const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
+const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
+const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+
+class CDP {
+  constructor(url) {
+    this.url = url;
+    this.id = 0;
+    this.pending = new Map();
+  }
+  async open() {
+    this.ws = new WebSocket(this.url);
+    await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('CDP open timeout')), 10000);
+      this.ws.onopen = () => { clearTimeout(timer); resolve(); };
+      this.ws.onerror = () => reject(new Error('CDP websocket error'));
+    });
+    this.ws.onmessage = event => {
+      const message = JSON.parse(String(event.data));
+      if (!message.id || !this.pending.has(message.id)) return;
+      const pending = this.pending.get(message.id);
+      this.pending.delete(message.id);
+      message.error ? pending.reject(new Error(message.error.message)) : pending.resolve(message.result || {});
+    };
+  }
+  call(method, params = {}) {
+    const id = ++this.id;
+    return new Promise((resolve, reject) => {
+      this.pending.set(id, { resolve, reject });
+      this.ws.send(JSON.stringify({ id, method, params }));
+    });
+  }
+  async eval(expression) {
+    const out = await this.call('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true, userGesture: true });
+    if (out.result && out.result.subtype === 'error') throw new Error(out.result.description || 'Runtime error');
+    return out.result && out.result.value;
+  }
+  close() { if (this.ws) this.ws.close(); }
+}
+
+async function waitFor(cdp, expression, timeout = 30000) {
+  const started = Date.now();
+  while (Date.now() - started < timeout) {
+    try {
+      const value = await cdp.eval(expression);
+      if (value) return value;
+    } catch (_) { /* navigation may replace the execution context */ }
+    await sleep(75);
+  }
+  throw new Error(`timeout: ${expression}`);
+}
+
+async function setRoute(cdp, route) {
+  await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref(route.key))};true`);
+  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(route.key)}`);
+  return cdp.eval(`(() => ({
+    routeKey: window.ATLAS_PUBLIC_STATE.routeKey,
+    owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
+    h1: [...document.querySelectorAll('main h1')].map(node => node.textContent.trim()),
+    machineTokens: ['CURRENT_OVERLAY','HISTORICAL_RECONCILIATION','NOT_YET_ADJUDICABLE'].filter(token => document.body.innerText.includes(token)),
+    currentSecondary: document.querySelector('.secondary-nav a[aria-current="page"]')?.textContent.trim()
+  }))()`);
+}
+
+(async () => {
+  const targets = await (await fetch(`${DEBUG}/json`)).json();
+  const target = targets.find(item => item.type === 'page');
+  assert(target && target.webSocketDebuggerUrl, 'Atlas browser target missing');
+  const cdp = new CDP(target.webSocketDebuggerUrl);
+  await cdp.open();
+  try {
+    await cdp.call('Runtime.enable');
+    await cdp.call('Page.enable');
+    await cdp.call('Network.enable');
+    await cdp.call('Network.setCacheDisabled', { cacheDisabled: true });
+
+    await cdp.call('Page.navigate', { url: `${SITE}#/military/facilities` });
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === 'military.facilities'`);
+    const direct = await cdp.eval(`(() => ({
+      owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
+      h1: document.querySelector('main h1')?.textContent.trim(),
+      navs: [...document.querySelectorAll('nav')].map(nav => nav.getAttribute('aria-label')),
+      tabs: document.querySelectorAll('[role="tab"], [role="tablist"]').length,
+      skip: document.querySelector('.skip-link')?.getAttribute('href'),
+      scripts: performance.getEntriesByType('resource').map(entry => entry.name).filter(name => /\.js(?:[?#]|$)/.test(name)),
+      oldGlobals: [
+        window.ATLAS_CURRENT_UPDATE,
+        window.ATLAS_CURRENT_UPDATE_20260825,
+        window.ATLAS_CURRENT_UPDATE_20260825_LATE,
+        window.ATLAS_CURRENT_UPDATE_20260826,
+        window.ATLAS_WIKI_RECON_20260826,
+        window.ATLAS_CURRENT_UPDATE_20260827
+      ].some(Boolean)
+    }))()`);
+    assert.equal(direct.owner, 'FacilitiesPage');
+    assert.equal(direct.h1, 'Bases & Infrastructure');
+    assert(direct.navs.includes('Primary'));
+    assert(direct.navs.includes('Military Record pages'));
+    assert.equal(direct.tabs, 0, 'global navigation must not use tab semantics');
+    assert.equal(direct.skip, '#main-content');
+    assert.equal(direct.oldGlobals, false);
+    assert(!direct.scripts.some(url => /current-update|wiki-map-reconciliation|public-housekeeping|status-identity|js\/app\.js/.test(url)), 'legacy renderer entered Phase 3 navigation');
+
+    for (const route of ia.ROUTES.values()) {
+      const view = await setRoute(cdp, route);
+      assert.equal(view.routeKey, route.key);
+      assert.equal(view.owner, route.owner, `wrong owner for ${route.key}`);
+      assert.deepEqual(view.h1, [route.title], `heading structure failed for ${route.key}`);
+      assert.deepEqual(view.machineTokens, [], `machine token exposed by ${route.key}`);
+      assert.equal(view.currentSecondary, route.label, `secondary location not obvious for ${route.key}`);
+    }
+
+    await setRoute(cdp, ia.ROUTES.get('start.overview'));
+    await setRoute(cdp, ia.ROUTES.get('timeline.war'));
+    await cdp.eval('history.back();true');
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === 'start.overview'`);
+    await cdp.eval('history.forward();true');
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === 'timeline.war'`);
+
+    await setRoute(cdp, ia.ROUTES.get('start.actors'));
+    const actors = await cdp.eval(`(() => ({
+      hezbollahFlag: document.querySelector('[data-actor-kind="non-state"] .actor-flag')?.textContent || '',
+      stateFlag: document.querySelector('[data-actor-kind="state"] .actor-flag')?.textContent || ''
+    }))()`);
+    assert.equal(actors.hezbollahFlag, '', 'non-state actor must not receive a host-country flag');
+    assert(actors.stateFlag, 'state actors should retain their state identity');
+
+    await setRoute(cdp, ia.ROUTES.get('military.campaigns'));
+    assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"]'))`), true, 'map-heavy page lacks contextual MapView owner');
+    await setRoute(cdp, ia.ROUTES.get('talks.mou'));
+    assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"]'))`), false, 'text-first MOU page must not require a map');
+
+    for (const width of [320, 390]) {
+      await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
+      await setRoute(cdp, ia.ROUTES.get('evidence.method'));
+      const mobile = await cdp.eval(`(() => {
+        const details = document.querySelector('.mobile-navigation');
+        details.open = true;
+        const link = details.querySelector('a');
+        link.focus();
+        return {
+          width: document.documentElement.clientWidth,
+          scrollWidth: document.documentElement.scrollWidth,
+          visible: getComputedStyle(details).display !== 'none',
+          summary: details.querySelector('summary').textContent.trim(),
+          focusedLink: document.activeElement === link,
+          touchTarget: link.getBoundingClientRect().height,
+          primaryCurrent: details.querySelector('.mobile-primary a[aria-current="page"]')?.textContent.trim(),
+          secondaryCurrent: details.querySelector('.mobile-secondary a[aria-current="page"]')?.textContent.trim()
+        };
+      })()`);
+      assert.equal(mobile.visible, true, `mobile navigation hidden at ${width}px`);
+      assert(mobile.scrollWidth <= mobile.width, `page-level horizontal overflow at ${width}px`);
+      assert.match(mobile.summary, /Claims & Evidence.*How We Check the Evidence/);
+      assert.equal(mobile.focusedLink, true, `mobile navigation link not keyboard focusable at ${width}px`);
+      assert(mobile.touchTarget >= 44, `mobile navigation target below 44px at ${width}px`);
+      assert.equal(mobile.primaryCurrent, 'Claims & Evidence');
+      assert.equal(mobile.secondaryCurrent, 'How We Check the Evidence');
+    }
+    await cdp.call('Emulation.clearDeviceMetricsOverride');
+
+    console.log('browser public IA smoke: PASS — 25 direct routes, page ownership, back/forward, legacy isolation, contextual map boundary, semantic navigation, and 320/390px mobile accessibility verified');
+  } finally {
+    cdp.close();
+  }
+})().catch(error => {
+  console.error(error.stack || error);
+  process.exitCode = 1;
+});

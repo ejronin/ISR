@@ -9,6 +9,7 @@ const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
 const json = relative => JSON.parse(read(relative));
 const bootstrap = require('../js/public-bootstrap.js');
 const app = require('../js/public-app.js');
+const ia = require('../js/public-ia.js');
 
 const manifest = json('data/public-release.json');
 const model = json('data/public-current-state.json');
@@ -49,12 +50,14 @@ function fakeBootstrapScript(sourceManifest = manifest) {
 function fakeAuthorizedRuntime(sourceManifest = manifest) {
   const entrypoint = app.assetForRole(sourceManifest, 'entrypoint');
   const stylesheet = app.assetForRole(sourceManifest, 'stylesheet');
+  const runtime = app.assetForRole(sourceManifest, 'page_registry');
   const authorization = {
     releaseIdentity: sourceManifest.release_identity,
     manifest: sourceManifest,
     bootstrapPath: sourceManifest.neutral_bootstrap.asset.path,
     entrypointPath: entrypoint.path,
     stylesheetPath: stylesheet.path,
+    runtimeAssets: [{ path: runtime.path, sha256: runtime.sha256 }],
     entrypointSha256: entrypoint.sha256,
     stylesheetSha256: stylesheet.sha256
   };
@@ -74,10 +77,18 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
       assetSha256: stylesheet.sha256
     }
   };
+  const activeRuntime = {
+    src: `http://localhost/${runtime.path}`,
+    integrity: runtime.integrity,
+    dataset: {
+      atlasAuthorizedRuntime: sourceManifest.release_identity,
+      assetSha256: runtime.sha256
+    }
+  };
   return {
     authorization,
     executingScript,
-    documentObject: { querySelectorAll: () => [activeStyle] }
+    documentObject: { querySelectorAll: selector => selector.startsWith('script') ? [activeRuntime] : [activeStyle] }
   };
 }
 
@@ -88,11 +99,12 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   bootstrap.validateManifest(manifest, fakeBootstrapScript());
   app.validateManifest(manifest);
   app.validateModel(model, manifest);
+  ia.validateRegistry(model);
 
   const bootstrapAsset = manifest.neutral_bootstrap.asset;
   const applicationAssets = manifest.application.assets;
-  assert.equal(applicationAssets.length, 2);
-  assert.deepEqual(new Set(applicationAssets.map(asset => asset.role)), new Set(['stylesheet', 'entrypoint']));
+  assert.equal(applicationAssets.length, 3);
+  assert.deepEqual(new Set(applicationAssets.map(asset => asset.role)), new Set(['page_registry', 'stylesheet', 'entrypoint']));
   for (const asset of [bootstrapAsset, ...applicationAssets]) {
     const generated = read(asset.path);
     const source = read(asset.source_path);

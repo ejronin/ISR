@@ -88,11 +88,12 @@ def main() -> int:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     legacy_html = (ROOT / "legacy" / "phase1-public-runtime-reference.html").read_text(encoding="utf-8")
     public_app = (ROOT / "js" / "public-app.js").read_text(encoding="utf-8")
+    public_ia = (ROOT / "js" / "public-ia.js").read_text(encoding="utf-8")
     app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
     navigation = (ROOT / "js" / "navigation.js").read_text(encoding="utf-8")
     check('id="historical"' in legacy_html and "['historical', 'How the record was built']" in navigation,
           "retired historical record-construction panel/tab reference is not preserved", failures)
-    check("model.chronology" in public_app and "model.input_packages" in public_app and "source_references" in public_app,
+    check("model.chronology" in public_app and "model.input_packages" in public_ia and "source_references" in public_ia,
           "new current renderer is not wired to chronology, package lineage, and exact source provenance", failures)
     check("timelineMode" in app and "known-by" in app and "LEDGER.events.events" in app,
           "AS OF / KNOWN BY canonical timeline is not wired", failures)
