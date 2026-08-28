@@ -135,23 +135,82 @@
     DATE_ONLY: 'Date only'
   });
 
-  const ACTOR_CATALOG = Object.freeze([
-    { aliases: ['iran', 'iranian government'], label: 'Iran', flag: '🇮🇷', kind: 'state', subtitle: 'State actor' },
-    { aliases: ['united states', 'u.s.', 'us'], label: 'United States', flag: '🇺🇸', kind: 'state', subtitle: 'State actor' },
-    { aliases: ['irgc', 'irgc navy', 'islamic revolutionary guard corps'], label: 'IRGC', flag: '🇮🇷', kind: 'state-institution', subtitle: 'Iranian state institution' },
-    { aliases: ['foreign ministry', 'iranian foreign ministry'], label: 'Foreign Ministry', flag: '🇮🇷', kind: 'state-institution', subtitle: 'Iranian state institution' },
-    { aliases: ['centcom', 'u.s. central command'], label: 'CENTCOM', flag: '🇺🇸', kind: 'state-institution', subtitle: 'United States military command' },
-    { aliases: ['hezbollah'], label: 'Hezbollah', flag: '', kind: 'non-state', subtitle: 'Lebanese non-state armed organization' },
-    { aliases: ['houthis', 'houthis / ansar allah', 'ansar allah'], label: 'Houthis / Ansar Allah', flag: '', kind: 'non-state', subtitle: 'Yemeni armed movement' },
-    { aliases: ['israel'], label: 'Israel', flag: '🇮🇱', kind: 'state', subtitle: 'State actor' },
-    { aliases: ['oman'], label: 'Oman', flag: '🇴🇲', kind: 'state', subtitle: 'State actor and mediator' },
-    { aliases: ['qatar'], label: 'Qatar', flag: '🇶🇦', kind: 'state', subtitle: 'State actor and mediator' },
-    { aliases: ['pakistan'], label: 'Pakistan', flag: '🇵🇰', kind: 'state', subtitle: 'State actor and mediator' },
-    { aliases: ['saudi arabia'], label: 'Saudi Arabia', flag: '🇸🇦', kind: 'state', subtitle: 'State actor' },
-    { aliases: ['united nations', 'united nations security council'], label: 'United Nations', flag: '', kind: 'international', subtitle: 'International organization' },
-    { aliases: ['iaea', 'international atomic energy agency'], label: 'IAEA', flag: '', kind: 'international', subtitle: 'International organization' },
-    { aliases: ['commercial shipping'], label: 'Commercial shipping', flag: '', kind: 'civilian', subtitle: 'Civilian maritime activity' }
+  const AFFILIATED_ACTORS = Object.freeze([
+    { id: 'iran', aliases: ['iran'], canonicalName: 'Iran', affiliationType: 'state', parentState: 'Iran', flag: '🇮🇷', subtitle: 'State actor' },
+    { id: 'united-states', aliases: ['united states', 'u.s.', 'us'], canonicalName: 'United States', affiliationType: 'state', parentState: 'United States', flag: '🇺🇸', subtitle: 'State actor' },
+    { id: 'syria', aliases: ['syria'], canonicalName: 'Syria', affiliationType: 'state', parentState: 'Syria', flag: '🇸🇾', subtitle: 'State actor' },
+    { id: 'iraq', aliases: ['iraq', 'republic of iraq'], canonicalName: 'Iraq', affiliationType: 'state', parentState: 'Iraq', flag: '🇮🇶', subtitle: 'State actor' },
+    { id: 'israel', aliases: ['israel'], canonicalName: 'Israel', affiliationType: 'state', parentState: 'Israel', flag: '🇮🇱', subtitle: 'State actor' },
+    { id: 'oman', aliases: ['oman'], canonicalName: 'Oman', affiliationType: 'state', parentState: 'Oman', flag: '🇴🇲', subtitle: 'State actor and mediator' },
+    { id: 'qatar', aliases: ['qatar'], canonicalName: 'Qatar', affiliationType: 'state', parentState: 'Qatar', flag: '🇶🇦', subtitle: 'State actor and mediator' },
+    { id: 'pakistan', aliases: ['pakistan'], canonicalName: 'Pakistan', affiliationType: 'state', parentState: 'Pakistan', flag: '🇵🇰', subtitle: 'State actor and mediator' },
+    { id: 'saudi-arabia', aliases: ['saudi arabia'], canonicalName: 'Saudi Arabia', affiliationType: 'state', parentState: 'Saudi Arabia', flag: '🇸🇦', subtitle: 'State actor' },
+    { id: 'china', aliases: ['china'], canonicalName: 'China', affiliationType: 'state', parentState: 'China', flag: '🇨🇳', subtitle: 'State actor' },
+    { id: 'russia', aliases: ['russia'], canonicalName: 'Russia', affiliationType: 'state', parentState: 'Russia', flag: '🇷🇺', subtitle: 'State actor' },
+    { id: 'united-kingdom', aliases: ['united kingdom'], canonicalName: 'United Kingdom', affiliationType: 'state', parentState: 'United Kingdom', flag: '🇬🇧', subtitle: 'State actor' },
+    { id: 'france', aliases: ['france'], canonicalName: 'France', affiliationType: 'state', parentState: 'France', flag: '🇫🇷', subtitle: 'State actor' },
+    { id: 'australia', aliases: ['australia'], canonicalName: 'Australia', affiliationType: 'state', parentState: 'Australia', flag: '🇦🇺', subtitle: 'State actor' },
+    { id: 'bulgaria', aliases: ['bulgaria'], canonicalName: 'Bulgaria', affiliationType: 'state', parentState: 'Bulgaria', flag: '🇧🇬', subtitle: 'State actor' },
+    { id: 'india', aliases: ['india'], canonicalName: 'India', affiliationType: 'state', parentState: 'India', flag: '🇮🇳', subtitle: 'State actor' },
+    { id: 'japan', aliases: ['japan'], canonicalName: 'Japan', affiliationType: 'state', parentState: 'Japan', flag: '🇯🇵', subtitle: 'State actor' },
+    { id: 'kuwait', aliases: ['kuwait'], canonicalName: 'Kuwait', affiliationType: 'state', parentState: 'Kuwait', flag: '🇰🇼', subtitle: 'State actor' },
+    { id: 'lebanon', aliases: ['lebanon'], canonicalName: 'Lebanon', affiliationType: 'state', parentState: 'Lebanon', flag: '🇱🇧', subtitle: 'State actor' },
+    { id: 'turkiye', aliases: ['türkiye', 'turkiye'], canonicalName: 'Türkiye', affiliationType: 'state', parentState: 'Türkiye', flag: '🇹🇷', subtitle: 'State actor' },
+    { id: 'united-arab-emirates', aliases: ['united arab emirates'], canonicalName: 'United Arab Emirates', affiliationType: 'state', parentState: 'United Arab Emirates', flag: '🇦🇪', subtitle: 'State actor' },
+
+    { id: 'iranian-government', aliases: ['iranian government'], canonicalName: 'Iranian government', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state institution' },
+    { id: 'iranian-parliament', aliases: ['iranian parliament'], canonicalName: 'Iranian parliament', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state institution' },
+    { id: 'irgc', aliases: ['irgc', 'islamic revolutionary guard corps'], canonicalName: 'IRGC', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state institution' },
+    { id: 'irgc-navy', aliases: ['irgc navy'], canonicalName: 'IRGC Navy', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state institution' },
+    { id: 'iranian-foreign-ministry', aliases: ['foreign ministry', 'iranian foreign ministry'], canonicalName: 'Iranian Foreign Ministry', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state institution' },
+    { id: 'iranian-armed-forces', aliases: ['iranian armed forces'], canonicalName: 'Iranian Armed Forces', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state institution' },
+    { id: 'central-bank-of-iran', aliases: ['central bank of iran'], canonicalName: 'Central Bank of Iran', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state institution' },
+    { id: 'iranian-state-television', aliases: ['iranian state television'], canonicalName: 'Iranian state television', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state media institution' },
+    { id: 'persian-gulf-strait-authority', aliases: ['persian gulf strait authority'], canonicalName: 'Persian Gulf Strait Authority', affiliationType: 'state-institution', parentState: 'Iran', flag: '🇮🇷', subtitle: 'Iranian state authority' },
+    { id: 'syrian-government', aliases: ['syrian government'], canonicalName: 'Syrian government', affiliationType: 'state-institution', parentState: 'Syria', flag: '🇸🇾', subtitle: 'Syrian state institution' },
+    { id: 'centcom', aliases: ['centcom', 'u.s. central command'], canonicalName: 'CENTCOM', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States military command' },
+    { id: 'us-department-of-defense', aliases: ['u.s. department of defense'], canonicalName: 'U.S. Department of Defense', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States state institution' },
+    { id: 'us-congress', aliases: ['u.s. congress'], canonicalName: 'U.S. Congress', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States state institution' },
+    { id: 'us-secret-service', aliases: ['u.s. secret service'], canonicalName: 'U.S. Secret Service', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States state institution' },
+    { id: 'usafcent', aliases: ['usafcent'], canonicalName: 'USAFCENT', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States military command' },
+    { id: 'marine-expeditionary-unit', aliases: ['marine expeditionary unit'], canonicalName: 'Marine Expeditionary Unit', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States military unit' },
+    { id: 'uss-abraham-lincoln', aliases: ['uss abraham lincoln'], canonicalName: 'USS Abraham Lincoln', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States naval vessel' },
+    { id: 'uss-abraham-lincoln-csg', aliases: ['uss abraham lincoln carrier strike group'], canonicalName: 'USS Abraham Lincoln Carrier Strike Group', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States naval formation' },
+    { id: 'uss-boxer-arg', aliases: ['uss boxer amphibious ready group'], canonicalName: 'USS Boxer Amphibious Ready Group', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States naval formation' },
+    { id: 'uss-george-hw-bush', aliases: ['uss george h.w. bush'], canonicalName: 'USS George H.W. Bush', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States naval vessel' },
+    { id: 'uss-george-washington', aliases: ['uss george washington'], canonicalName: 'USS George Washington', affiliationType: 'state-institution', parentState: 'United States', flag: '🇺🇸', subtitle: 'United States naval vessel' },
+    { id: 'ukmto', aliases: ['ukmto'], canonicalName: 'UKMTO', affiliationType: 'state-institution', parentState: 'United Kingdom', flag: '🇬🇧', subtitle: 'United Kingdom maritime security institution' },
+
+    { id: 'hezbollah', aliases: ['hezbollah'], canonicalName: 'Hezbollah', affiliationType: 'non-state', parentState: null, flag: '', subtitle: 'Lebanese non-state armed organization' },
+    { id: 'houthis', aliases: ['houthis', 'houthis / ansar allah', 'ansar allah', 'yemen houthis'], canonicalName: 'Houthis / Ansar Allah', affiliationType: 'non-state', parentState: null, flag: '', subtitle: 'Yemeni armed movement' },
+    { id: 'united-nations', aliases: ['united nations', 'united nations security council'], canonicalName: 'United Nations', affiliationType: 'international', parentState: null, flag: '', subtitle: 'International organization' },
+    { id: 'iaea', aliases: ['iaea', 'international atomic energy agency'], canonicalName: 'IAEA', affiliationType: 'international', parentState: null, flag: '', subtitle: 'International organization' },
+    { id: 'nato-saceur', aliases: ['nato saceur'], canonicalName: 'NATO SACEUR', affiliationType: 'international', parentState: null, flag: '', subtitle: 'International military command' },
+    { id: 'opec', aliases: ['opec'], canonicalName: 'OPEC', affiliationType: 'international', parentState: null, flag: '', subtitle: 'International organization' },
+    { id: 'world-bank', aliases: ['world bank'], canonicalName: 'World Bank', affiliationType: 'international', parentState: null, flag: '', subtitle: 'International organization' },
+    { id: 'adnoc', aliases: ['adnoc'], canonicalName: 'ADNOC', affiliationType: 'organization', parentState: null, flag: '', subtitle: 'Organization as recorded' },
+    { id: 'bahri', aliases: ['bahri'], canonicalName: 'Bahri', affiliationType: 'organization', parentState: null, flag: '', subtitle: 'Organization as recorded' },
+    { id: 'cosco', aliases: ['cosco'], canonicalName: 'COSCO', affiliationType: 'organization', parentState: null, flag: '', subtitle: 'Organization as recorded' },
+    { id: 'china-merchants-energy-shipping', aliases: ['china merchants energy shipping'], canonicalName: 'China Merchants Energy Shipping', affiliationType: 'organization', parentState: null, flag: '', subtitle: 'Organization as recorded' },
+    { id: 'kpler', aliases: ['kpler'], canonicalName: 'Kpler', affiliationType: 'organization', parentState: null, flag: '', subtitle: 'Organization as recorded' },
+    { id: 'qatarenergy', aliases: ['qatarenergy'], canonicalName: 'QatarEnergy', affiliationType: 'organization', parentState: null, flag: '', subtitle: 'Organization as recorded' },
+    { id: 'reuters', aliases: ['reuters'], canonicalName: 'Reuters', affiliationType: 'organization', parentState: null, flag: '', subtitle: 'News organization' },
+    { id: 'windward', aliases: ['windward'], canonicalName: 'Windward', affiliationType: 'organization', parentState: null, flag: '', subtitle: 'Organization as recorded' },
+    { id: 'commercial-shipping', aliases: ['commercial shipping'], canonicalName: 'Commercial shipping', affiliationType: 'civilian', parentState: null, flag: '', subtitle: 'Civilian maritime activity' }
   ]);
+
+  const PERSON_PROFILES = Object.freeze([
+    { aliases: ['mohammad baqer qalibaf', 'mohammad bagher qalibaf'], canonicalName: 'Mohammad Baqer Qalibaf', role: 'Parliament speaker', affiliationId: 'iranian-parliament' },
+    { aliases: ['abbas araghchi'], canonicalName: 'Abbas Araghchi', role: 'Foreign minister', affiliationId: 'iranian-foreign-ministry' },
+    { aliases: ['badr albusaidi'], canonicalName: 'Badr Albusaidi', role: 'Foreign minister', affiliationId: 'oman' },
+    { aliases: ['masoud pezeshkian'], canonicalName: 'Masoud Pezeshkian', role: 'President', affiliationId: 'iran' },
+    { aliases: ['ali abdollahi'], canonicalName: 'Ali Abdollahi', role: 'Armed Forces chief', affiliationId: 'iranian-armed-forces' },
+    { aliases: ['hossein mohebi'], canonicalName: 'Hossein Mohebi', role: 'Spokesperson', affiliationId: 'irgc' },
+    { aliases: ['alireza tangsiri'], canonicalName: 'Alireza Tangsiri', role: 'IRGC Navy commander', affiliationId: 'irgc-navy' },
+    { aliases: ['mohammad eslami'], canonicalName: 'Mohammad Eslami', role: 'Nuclear chief', affiliationId: 'iran' }
+  ]);
+
+  const AFFILIATION_BY_ID = new Map(AFFILIATED_ACTORS.map(actor => [actor.id, actor]));
 
   function invariant(condition, message) {
     if (!condition) throw new Error(message);
@@ -247,25 +306,81 @@
     return true;
   }
 
+  function normalizedActorInput(value) {
+    if (value && typeof value === 'object') {
+      return {
+        name: String(value.canonicalName || value.name || value.label || 'Unknown').trim(),
+        entityType: value.entityType || null,
+        role: value.role || value.title || null,
+        affiliation: value.affiliation || value.affiliationId || null
+      };
+    }
+    return { name: String(value || 'Unknown').trim(), entityType: null, role: null, affiliation: null };
+  }
+
+  function findAffiliation(value) {
+    const normalized = String(value || '').trim().toLowerCase();
+    if (!normalized) return { actor: null, exact: false };
+    const byId = AFFILIATION_BY_ID.get(normalized);
+    if (byId) return { actor: byId, exact: true };
+    const exact = AFFILIATED_ACTORS.find(actor => actor.aliases.includes(normalized));
+    if (exact) return { actor: exact, exact: true };
+    const qualified = AFFILIATED_ACTORS.find(actor => actor.aliases.some(alias => normalized.startsWith(`${alias} (`)));
+    return { actor: qualified || null, exact: false };
+  }
+
   const ActorIdentity = Object.freeze({
     resolve(value) {
-      const raw = String(value || 'Unknown').trim();
-      const normalized = raw.toLowerCase();
-      const exact = ACTOR_CATALOG.find(actor => actor.aliases.includes(normalized));
-      if (exact) return { ...exact };
-      const prefix = ACTOR_CATALOG.find(actor => actor.aliases.some(alias => normalized.startsWith(`${alias} (`) || normalized.startsWith(`${alias} /`)));
-      if (prefix) return { ...prefix, label: publicNarrative(raw, prefix.label) };
-      return { label: publicNarrative(raw, 'Unknown actor'), flag: '', kind: 'other', subtitle: 'Actor identity as recorded' };
+      const input = normalizedActorInput(value);
+      const normalizedName = input.name.toLowerCase();
+      const profile = PERSON_PROFILES.find(person => person.aliases.includes(normalizedName));
+      const entityType = input.entityType === 'person' || profile
+        ? 'person'
+        : input.entityType === 'entity'
+          ? 'entity'
+          : null;
+      const affiliationLookup = findAffiliation(input.affiliation || profile && profile.affiliationId || (entityType === 'person' ? null : input.name));
+      const affiliation = affiliationLookup.actor;
+      const resolvedEntityType = entityType || (affiliation ? 'entity' : 'unresolved');
+      const canonicalName = publicNarrative(
+        profile && profile.canonicalName || (resolvedEntityType === 'person' ? input.name : affiliation && affiliationLookup.exact ? affiliation.canonicalName : input.name),
+        'Unknown actor'
+      );
+      const role = publicNarrative(input.role || profile && profile.role, '') || null;
+      const affiliationName = affiliation ? affiliation.canonicalName : null;
+      const subtitle = resolvedEntityType === 'person'
+        ? [role, affiliationName].filter(Boolean).join(' · ') || 'Affiliation unresolved'
+        : affiliation
+          ? affiliation.subtitle
+          : 'Identity as recorded; affiliation unresolved';
+      return {
+        canonicalName,
+        label: canonicalName,
+        entityType: resolvedEntityType,
+        role,
+        affiliation: affiliationName,
+        affiliationId: affiliation ? affiliation.id : null,
+        affiliationType: affiliation ? affiliation.affiliationType : 'unknown',
+        parentState: affiliation ? affiliation.parentState : null,
+        flag: affiliation ? affiliation.flag : '',
+        subtitle
+      };
     },
     create(documentObject, value, options) {
       const actor = this.resolve(value);
       const wrapper = element(documentObject, 'span', 'actor-identity');
-      wrapper.dataset.actorKind = actor.kind;
+      wrapper.dataset.actorName = actor.canonicalName;
+      wrapper.dataset.actorEntityType = actor.entityType;
+      wrapper.dataset.actorKind = actor.affiliationType;
+      wrapper.dataset.actorAffiliationType = actor.affiliationType;
+      if (actor.affiliation) wrapper.dataset.actorAffiliation = actor.affiliation;
+      if (actor.parentState) wrapper.dataset.actorParentState = actor.parentState;
+      if (actor.role) wrapper.dataset.actorRole = actor.role;
       if (actor.flag) {
         const flag = append(wrapper, 'span', 'actor-flag', actor.flag);
         flag.setAttribute('aria-hidden', 'true');
       }
-      append(wrapper, 'span', 'actor-name', actor.label);
+      append(wrapper, 'span', 'actor-name', actor.canonicalName);
       if (options && options.subtitle) append(wrapper, 'span', 'actor-subtitle', actor.subtitle);
       return wrapper;
     }
@@ -541,13 +656,17 @@
   }
 
   function ActorsPage(context) {
-    const frame = pageFrame(context, 'The states, institutions, non-state armed groups, and international organizations named in the current record.');
+    const frame = pageFrame(context, 'The named people, states, institutions, non-state armed groups, and international or other organizations in the current record.');
     const body = JSON.stringify(context.model.chronology).toLowerCase();
     const section = addSection(frame.article, "Actors in the record");
     const list = append(section, 'div', 'actor-directory');
-    ACTOR_CATALOG.filter(actor => actor.aliases.some(alias => body.includes(alias))).forEach(actor => {
+    const directory = [
+      ...AFFILIATED_ACTORS.map(actor => ({ aliases: actor.aliases, value: actor.canonicalName })),
+      ...PERSON_PROFILES.map(person => ({ aliases: person.aliases, value: person.canonicalName }))
+    ];
+    directory.filter(entry => entry.aliases.some(alias => body.includes(alias))).forEach(entry => {
       const card = append(list, 'article', 'actor-card');
-      card.append(ActorIdentity.create(context.documentObject, actor.label, { subtitle: true }));
+      card.append(ActorIdentity.create(context.documentObject, entry.value, { subtitle: true }));
     });
     renderRelatedLinks(frame.article, context);
     return frame.article;
@@ -835,8 +954,8 @@
     create(documentObject) {
       const app = element(documentObject, 'div', 'atlas-app');
       app.dataset.component = 'AppShell';
-      const skip = append(app, 'a', 'skip-link', 'Skip to content');
-      skip.href = '#main-content';
+      const skip = append(app, 'button', 'skip-link', 'Skip to content');
+      skip.type = 'button';
       const header = append(app, 'header', 'app-header');
       const headerInner = append(header, 'div', 'header-inner');
       const brand = append(headerInner, 'a', 'brand');
@@ -847,9 +966,16 @@
       const mobileHost = append(header, 'div', 'mobile-nav-host');
       const grid = append(app, 'div', 'app-grid');
       const aside = append(grid, 'aside', 'secondary-column');
-      const main = append(grid, 'main', 'page-host');
+      const main = append(grid, 'div', 'page-host');
       main.id = 'main-content';
       main.tabIndex = -1;
+      const focusMain = () => main.focus();
+      skip.addEventListener('click', focusMain);
+      skip.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        focusMain();
+      });
       const footer = append(app, 'footer', 'page-footer');
       return { app, primaryHost, mobileHost, aside, main, footer };
     }
@@ -922,7 +1048,8 @@
     ROUTES,
     DATASET_LABELS,
     DISPLAY_TERMS,
-    ACTOR_CATALOG,
+    AFFILIATED_ACTORS,
+    PERSON_PROFILES,
     PAGE_OWNERS,
     AppShell,
     PublicNavigation,

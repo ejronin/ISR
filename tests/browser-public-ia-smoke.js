@@ -85,7 +85,8 @@ async function setRoute(cdp, route) {
       h1: document.querySelector('main h1')?.textContent.trim(),
       navs: [...document.querySelectorAll('nav')].map(nav => nav.getAttribute('aria-label')),
       tabs: document.querySelectorAll('[role="tab"], [role="tablist"]').length,
-      skip: document.querySelector('.skip-link')?.getAttribute('href'),
+      skipTag: document.querySelector('.skip-link')?.tagName,
+      skipHref: document.querySelector('.skip-link')?.getAttribute('href'),
       scripts: performance.getEntriesByType('resource').map(entry => entry.name).filter(name => /\.js(?:[?#]|$)/.test(name)),
       oldGlobals: [
         window.ATLAS_CURRENT_UPDATE,
@@ -101,9 +102,25 @@ async function setRoute(cdp, route) {
     assert(direct.navs.includes('Primary'));
     assert(direct.navs.includes('Military Record pages'));
     assert.equal(direct.tabs, 0, 'global navigation must not use tab semantics');
-    assert.equal(direct.skip, '#main-content');
+    assert.equal(direct.skipTag, 'BUTTON', 'skip control must not enter the hash-router namespace');
+    assert.equal(direct.skipHref, null, 'skip control must not create a fragment route');
     assert.equal(direct.oldGlobals, false);
     assert(!direct.scripts.some(url => /current-update|wiki-map-reconciliation|public-housekeeping|status-identity|js\/app\.js/.test(url)), 'legacy renderer entered Phase 3 navigation');
+
+    await cdp.eval(`document.querySelector('.skip-link').focus();true`);
+    await cdp.call('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, nativeVirtualKeyCode: 13 });
+    await cdp.call('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, nativeVirtualKeyCode: 13 });
+    await waitFor(cdp, `document.activeElement === document.getElementById('main-content')`);
+    const skipped = await cdp.eval(`(() => ({
+      hash: location.hash,
+      routeKey: window.ATLAS_PUBLIC_STATE.routeKey,
+      owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
+      mainFocused: document.activeElement === document.getElementById('main-content')
+    }))()`);
+    assert.equal(skipped.hash, '#/military/facilities');
+    assert.equal(skipped.routeKey, 'military.facilities');
+    assert.equal(skipped.owner, 'FacilitiesPage');
+    assert.equal(skipped.mainFocused, true);
 
     for (const route of ia.ROUTES.values()) {
       const view = await setRoute(cdp, route);
@@ -124,10 +141,48 @@ async function setRoute(cdp, route) {
     await setRoute(cdp, ia.ROUTES.get('start.actors'));
     const actors = await cdp.eval(`(() => ({
       hezbollahFlag: document.querySelector('[data-actor-kind="non-state"] .actor-flag')?.textContent || '',
-      stateFlag: document.querySelector('[data-actor-kind="state"] .actor-flag')?.textContent || ''
+      houthiFlag: document.querySelector('[data-actor-affiliation="Houthis / Ansar Allah"] .actor-flag')?.textContent || '',
+      stateFlag: document.querySelector('[data-actor-kind="state"] .actor-flag')?.textContent || '',
+      qalibaf: (() => {
+        const node = document.querySelector('[data-actor-name="Mohammad Baqer Qalibaf"]');
+        return node && {
+          entityType: node.dataset.actorEntityType,
+          role: node.dataset.actorRole,
+          affiliation: node.dataset.actorAffiliation,
+          affiliationType: node.dataset.actorAffiliationType,
+          parentState: node.dataset.actorParentState,
+          flag: node.querySelector('.actor-flag')?.textContent || '',
+          subtitle: node.querySelector('.actor-subtitle')?.textContent || ''
+        };
+      })(),
+      parliament: (() => {
+        const node = document.querySelector('[data-actor-name="Iranian parliament"]');
+        return node && {
+          entityType: node.dataset.actorEntityType,
+          affiliationType: node.dataset.actorAffiliationType,
+          parentState: node.dataset.actorParentState,
+          flag: node.querySelector('.actor-flag')?.textContent || ''
+        };
+      })()
     }))()`);
     assert.equal(actors.hezbollahFlag, '', 'non-state actor must not receive a host-country flag');
+    assert.equal(actors.houthiFlag, '', 'Houthi actor must not receive a Yemeni state flag');
     assert(actors.stateFlag, 'state actors should retain their state identity');
+    assert.deepEqual(actors.qalibaf, {
+      entityType: 'person',
+      role: 'Parliament speaker',
+      affiliation: 'Iranian parliament',
+      affiliationType: 'state-institution',
+      parentState: 'Iran',
+      flag: '🇮🇷',
+      subtitle: 'Parliament speaker · Iranian parliament'
+    });
+    assert.deepEqual(actors.parliament, {
+      entityType: 'entity',
+      affiliationType: 'state-institution',
+      parentState: 'Iran',
+      flag: '🇮🇷'
+    });
 
     await setRoute(cdp, ia.ROUTES.get('military.campaigns'));
     assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"]'))`), true, 'map-heavy page lacks contextual MapView owner');
@@ -163,7 +218,7 @@ async function setRoute(cdp, route) {
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 
-    console.log('browser public IA smoke: PASS — 25 direct routes, page ownership, back/forward, legacy isolation, contextual map boundary, semantic navigation, and 320/390px mobile accessibility verified');
+    console.log('browser public IA smoke: PASS — 25 direct routes, skip-link route isolation, actor affiliation/role identity, back/forward, legacy isolation, contextual map boundary, semantic navigation, and 320/390px mobile accessibility verified');
   } finally {
     cdp.close();
   }

@@ -48,15 +48,86 @@ for (const route of ia.ROUTES.values()) {
 assert.equal(ia.parseRoute('#/not/a-route').key, 'start.overview');
 assert(ia.validateRegistry(model));
 
-assert.deepEqual(
-  ia.ActorIdentity.resolve('Iran'),
-  { aliases: ['iran', 'iranian government'], label: 'Iran', flag: '🇮🇷', kind: 'state', subtitle: 'State actor' }
-);
+const iran = ia.ActorIdentity.resolve('Iran');
+assert.equal(iran.entityType, 'entity');
+assert.equal(iran.affiliationType, 'state');
+assert.equal(iran.parentState, 'Iran');
+assert.equal(iran.flag, '🇮🇷');
+
+const parliament = ia.ActorIdentity.resolve('Iranian parliament');
+assert.equal(parliament.entityType, 'entity');
+assert.equal(parliament.affiliationType, 'state-institution');
+assert.equal(parliament.parentState, 'Iran');
+assert.equal(parliament.flag, '🇮🇷');
+
+assert.equal(new Set(ia.AFFILIATED_ACTORS.map(actor => actor.id)).size, ia.AFFILIATED_ACTORS.length, 'affiliation IDs must be unique');
+assert.equal(new Set(ia.AFFILIATED_ACTORS.flatMap(actor => actor.aliases)).size, ia.AFFILIATED_ACTORS.flatMap(actor => actor.aliases).length, 'affiliation aliases must be unique');
+
+const qalibafEvent = model.chronology.find(item => item.event_id === 'CUR-20260827-002');
+assert.match(qalibafEvent.event.summary, /parliament speaker Mohammad Baqer Qalibaf/i, 'Qalibaf role must come from approved current data');
+const qalibaf = ia.ActorIdentity.resolve('Mohammad Baqer Qalibaf');
+assert.equal(qalibaf.canonicalName, 'Mohammad Baqer Qalibaf');
+assert.equal(qalibaf.entityType, 'person');
+assert.equal(qalibaf.role, 'Parliament speaker');
+assert.equal(qalibaf.affiliation, 'Iranian parliament');
+assert.equal(qalibaf.affiliationType, 'state-institution');
+assert.equal(qalibaf.parentState, 'Iran');
+assert.equal(qalibaf.flag, '🇮🇷');
+assert.notEqual(qalibaf.entityType, qalibaf.affiliationType, 'person/entity and affiliation type must remain separate axes');
+assert.equal(ia.ActorIdentity.resolve('Mohammad Bagher Qalibaf').canonicalName, 'Mohammad Baqer Qalibaf');
+
+const currentActors = new Set(model.chronology.flatMap(item => item.event.actors || []));
+for (const name of ['Abbas Araghchi', 'Badr Albusaidi', 'Masoud Pezeshkian', 'Ali Abdollahi']) {
+  assert(currentActors.has(name), `actor audit fixture is not present in the current chronology: ${name}`);
+  assert.equal(ia.ActorIdentity.resolve(name).entityType, 'person', `named current person falls through: ${name}`);
+  assert.notEqual(ia.ActorIdentity.resolve(name).affiliationType, 'unknown', `named current person's affiliation is unresolved: ${name}`);
+}
+for (const name of ['Central Bank of Iran', 'Iranian Armed Forces', 'Iranian state television', 'Persian Gulf Strait Authority', 'Syrian government', 'U.S. Congress', 'U.S. Department of Defense', 'U.S. Secret Service', 'USAFCENT']) {
+  assert(currentActors.has(name), `institution audit fixture is not present in the current chronology: ${name}`);
+  assert.equal(ia.ActorIdentity.resolve(name).entityType, 'entity', `current institution falls through: ${name}`);
+  assert.equal(ia.ActorIdentity.resolve(name).affiliationType, 'state-institution', `current institution is not typed correctly: ${name}`);
+}
+
+const irgc = ia.ActorIdentity.resolve('IRGC');
+assert.equal(irgc.entityType, 'entity');
+assert.equal(irgc.affiliationType, 'state-institution');
+assert.equal(irgc.parentState, 'Iran');
+const irgcOfficial = ia.ActorIdentity.resolve('Hossein Mohebi');
+assert.equal(irgcOfficial.entityType, 'person');
+assert.equal(irgcOfficial.role, 'Spokesperson');
+assert.equal(irgcOfficial.affiliation, 'IRGC');
+assert.equal(irgcOfficial.affiliationType, 'state-institution');
+assert.equal(irgcOfficial.flag, '🇮🇷');
+
+const hezbollah = ia.ActorIdentity.resolve('Hezbollah');
+assert.equal(hezbollah.affiliationType, 'non-state');
+assert.equal(hezbollah.flag, '');
+assert.equal(hezbollah.parentState, null);
+const hezbollahOfficial = ia.ActorIdentity.resolve({ name: 'Affiliated Hezbollah person fixture', entityType: 'person', role: 'Official', affiliation: 'Hezbollah' });
+assert.equal(hezbollahOfficial.entityType, 'person');
+assert.equal(hezbollahOfficial.role, 'Official');
+assert.equal(hezbollahOfficial.affiliation, 'Hezbollah');
+assert.equal(hezbollahOfficial.affiliationType, 'non-state');
+assert.equal(hezbollahOfficial.flag, '');
+
+const houthis = ia.ActorIdentity.resolve('Houthis / Ansar Allah');
+assert.equal(houthis.affiliationType, 'non-state');
+assert.equal(houthis.flag, '');
+assert.equal(houthis.parentState, null);
+const houthiOfficial = ia.ActorIdentity.resolve({ name: 'Affiliated Houthi person fixture', entityType: 'person', role: 'Official', affiliation: 'Houthis / Ansar Allah' });
+assert.equal(houthiOfficial.entityType, 'person');
+assert.equal(houthiOfficial.role, 'Official');
+assert.equal(houthiOfficial.affiliation, 'Houthis / Ansar Allah');
+assert.equal(houthiOfficial.affiliationType, 'non-state');
+assert.equal(houthiOfficial.flag, '');
+
 assert.equal(ia.ActorIdentity.resolve('U.S. Central Command').flag, '🇺🇸');
-assert.equal(ia.ActorIdentity.resolve('Hezbollah').flag, '');
-assert.equal(ia.ActorIdentity.resolve('Hezbollah').kind, 'non-state');
-assert.equal(ia.ActorIdentity.resolve('Houthis / Ansar Allah').flag, '');
-assert.equal(ia.ActorIdentity.resolve('United Nations Security Council').kind, 'international');
+assert.equal(ia.ActorIdentity.resolve('United Nations Security Council').affiliationType, 'international');
+const unknownActor = ia.ActorIdentity.resolve('Unresolved actor example');
+assert.equal(unknownActor.entityType, 'unresolved');
+assert.equal(unknownActor.affiliation, null);
+assert.equal(unknownActor.affiliationType, 'unknown');
+assert.equal(unknownActor.flag, '');
 
 assert.deepEqual(
   ia.EvidenceStatus.viewModel({ support: 'STRONGLY_SUPPORTED', dispute: 'DISPUTED_BY_IRAN' }),
