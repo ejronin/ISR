@@ -132,6 +132,32 @@ async function setRoute(cdp, route) {
     }
 
     await setRoute(cdp, ia.ROUTES.get('start.overview'));
+    const overview = await cdp.eval(`(() => ({
+      text: document.querySelector('main')?.innerText || '',
+      pathways: document.querySelectorAll('.pathway-card').length,
+      latest: document.querySelectorAll('.compact-record-list .chronology-card').length,
+      metrics: document.querySelectorAll('.metric-card').length
+    }))()`);
+    assert.match(overview.text, /What happened\?/);
+    assert.match(overview.text, /Where things stand now/);
+    assert.match(overview.text, /What should I look at next\?/);
+    assert.match(overview.text, /The June MOU no longer controls either side/);
+    assert.equal(overview.pathways, 6);
+    assert.equal(overview.latest, 3);
+    assert(overview.metrics >= 4);
+
+    await setRoute(cdp, ia.ROUTES.get('timeline.war'));
+    const timeline = await cdp.eval(`(() => ({
+      phases: document.querySelectorAll('.timeline-phase').length,
+      cards: document.querySelectorAll('.timeline-phase .chronology-card').length,
+      maps: document.querySelectorAll('.timeline-phase [data-component="MapView"] svg').length,
+      text: document.querySelector('main')?.innerText || ''
+    }))()`);
+    assert.equal(timeline.phases, 6);
+    assert(timeline.cards > 10 && timeline.cards < 205, 'primary timeline must emphasize representative developments');
+    assert(timeline.maps > 0, 'timeline phases with coordinates must expose spatial context');
+    assert.match(timeline.text, /Detailed Chronology retains all 205 records/);
+
     await setRoute(cdp, ia.ROUTES.get('timeline.war'));
     await cdp.eval('history.back();true');
     await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === 'start.overview'`);
@@ -184,10 +210,57 @@ async function setRoute(cdp, route) {
       flag: '🇮🇷'
     });
 
-    await setRoute(cdp, ia.ROUTES.get('military.campaigns'));
-    assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"]'))`), true, 'map-heavy page lacks contextual MapView owner');
+    for (const key of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
+      await setRoute(cdp, ia.ROUTES.get(key));
+      assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"] svg'))`), true, `map-first page lacks rendered contextual map: ${key}`);
+    }
+    for (const key of ['talks.mou', 'objectives.outcomes', 'objectives.positions', 'evidence.method']) {
+      await setRoute(cdp, ia.ROUTES.get(key));
+      assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"]'))`), false, `text-first page requires a map: ${key}`);
+    }
+
+    await setRoute(cdp, ia.ROUTES.get('military.losses'));
+    const losses = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
+    assert.match(losses, /18\s+Total military dead/);
+    assert.match(losses, /757\s+WIA/);
+    assert.match(losses, /1\s+MIA/);
+    assert.match(losses, /2,008\s+military-death subtotal/);
+    assert.match(losses, /does not mean 52 confirmed destroyed assets/);
+    assert(!/\b\d[\d,]*\s+total casualties\b/i.test(losses), 'loss page displays an invalid unique-person grand total');
+    assert.match(losses, /does not calculate [“"]total casualties\s*=\s*dead/i, 'loss page omits the approved anti-double-counting warning');
+
     await setRoute(cdp, ia.ROUTES.get('talks.mou'));
-    assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"]'))`), false, 'text-first MOU page must not require a map');
+    const mou = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
+    for (const heading of ['1. What each side wanted before the MOU', '2. What the interim MOU gave each side', '3–5. Immediate obligations, deferred issues and implementation', '6–9. What was implemented, reversed and broken', '10. Status now', '11. How it still shapes current talks', '12. Clause explorer']) assert(mou.includes(heading), `MOU pedagogy step missing: ${heading}`);
+    assert.match(mou, /The June MOU no longer controls what either side has to do/);
+    assert(!/currently binding/i.test(mou), 'MOU page implies the expired instrument remains binding');
+
+    await setRoute(cdp, ia.ROUTES.get('objectives.iran'));
+    const positions = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
+    assert.match(positions, /What Iran said/);
+    assert.match(positions, /What happened/);
+    assert.match(positions, /What Iran said or did later/);
+    assert.match(positions, /Approved assessment/i);
+
+    await setRoute(cdp, ia.ROUTES.get('evidence.claims'));
+    const evidence = await cdp.eval(`(() => ({
+      claims: document.querySelectorAll('.claim-case').length,
+      support: document.querySelectorAll('.support-column').length,
+      contrary: document.querySelectorAll('.contrary-column').length,
+      sourceLinks: [...document.querySelectorAll('.evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
+      recordLinks: [...document.querySelectorAll('.record-reference-list a')].every(link => link.getAttribute('href')?.startsWith('#/timeline/chronology?event=')),
+      text: document.querySelector('main')?.innerText || ''
+    }))()`);
+    assert.equal(evidence.claims, 6);
+    assert.equal(evidence.support, 6);
+    assert.equal(evidence.contrary, 6);
+    assert(evidence.sourceLinks > 0, 'claim evidence drawers do not resolve source links');
+    assert.equal(evidence.recordLinks, true, 'claim evidence drawer contains an unresolved internal record link');
+    assert.match(evidence.text, /False — causation not supported/i);
+
+    await setRoute(cdp, ia.ROUTES.get('evidence.sources'));
+    const sourceVariants = await cdp.eval(`document.querySelectorAll('.source-variants').length`);
+    assert(sourceVariants > 0, 'provenance-scoped source variants are not exposed');
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
@@ -215,6 +288,17 @@ async function setRoute(cdp, route) {
       assert(mobile.touchTarget >= 44, `mobile navigation target below 44px at ${width}px`);
       assert.equal(mobile.primaryCurrent, 'Claims & Evidence');
       assert.equal(mobile.secondaryCurrent, 'How We Check the Evidence');
+
+      await setRoute(cdp, ia.ROUTES.get('evidence.claims'));
+      const mobileTargets = await cdp.eval(`(() => ({
+        skip: document.querySelector('.skip-link')?.getBoundingClientRect().height || 0,
+        drawers: [...document.querySelectorAll('.evidence-drawer summary')].map(summary => summary.getBoundingClientRect().height),
+        scrollWidth: document.documentElement.scrollWidth,
+        width: document.documentElement.clientWidth
+      }))()`);
+      assert(mobileTargets.skip >= 44, `skip target below 44px at ${width}px`);
+      assert(mobileTargets.drawers.length > 0 && mobileTargets.drawers.every(height => height >= 44), `evidence disclosure target below 44px at ${width}px`);
+      assert(mobileTargets.scrollWidth <= mobileTargets.width, `claim page has page-level horizontal overflow at ${width}px`);
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 

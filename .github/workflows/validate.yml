@@ -50,6 +50,7 @@ jobs:
           node tests/public-current-state.test.js
           node tests/public-boot.test.js
           node tests/public-ia.test.js
+          node tests/public-content-redesign.test.js
           node --check js/public-bootstrap.js
           node --check js/public-app.js
           node --check js/public-ia.js
