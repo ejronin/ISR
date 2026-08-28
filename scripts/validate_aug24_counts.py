@@ -111,7 +111,8 @@ def main():
     if not source_ids.issubset(registry_ids): fail("Aug. 24 sources absent from generated registry")
 
     readme = (root/"README.md").read_text(encoding="utf-8")
-    index = (root/"index.html").read_text(encoding="utf-8")
+    index = (root/"legacy/phase1-public-runtime-reference.html").read_text(encoding="utf-8")
+    public_index = (root/"index.html").read_text(encoding="utf-8")
     state = (root/"js/state.js").read_text(encoding="utf-8")
     work = (root/"js/workspaces-20260822.js").read_text(encoding="utf-8")
     full = (root/"js/full-scope-20260822.js").read_text(encoding="utf-8")
@@ -121,9 +122,11 @@ def main():
     # README may advance beyond Aug. 24; it must still identify the locked historical baseline and current-overlay architecture.
     for token in ["98 canonical historical-ledger records", "append-only", "current chronology records"]:
         if token not in readme: fail(f"README missing {token!r}")
-    # index.html is the static baseline; runtime successor overlays may advance the displayed count.
+    # The retired presentation reference preserves the frozen static baseline; the current root never boots it.
     for token in [">98</b><span>canonical historical-ledger records", ">108</b><span>current chronology records", "current-update-20260824.js"]:
         if token not in index: fail(f"index missing {token!r}")
+    if "current-update-20260824.js" in public_index or ">108</b><span>current chronology records" in public_index:
+        fail("retired Aug. 24 baseline remains in the current public boot")
     # This gate freezes the Aug. 24 data layer, not the current public timeline default. Later append-only overlays may advance it.
     if "timeCutoff: '2026-08-26'" not in state: fail("state default cutoff is not current through Aug. 26")
     for token in ["const CANONICAL='2026-08-24'", "2026-08-24 14:14 ET", "2026-08-20 15:59 ET", "2026-08-22 10:54 ET"]:

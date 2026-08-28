@@ -4,6 +4,20 @@ A public, source-linked OSINT record for the 2026 Iran conflict. The project sep
 
 **Live atlas:** https://ejronin.github.io/ISR/
 
+## Current public boot
+
+The root page now starts from a neutral shell and renders only after the generated current-state model and application assets resolve to one validated release. The browser does not replay the Aug. 24 through Aug. 27 dated presentation chain to discover the current record. If the current model cannot be loaded or validated, the site shows an explicit error and an archive link instead of an older dashboard.
+
+Build the two ignored deployment artifacts with:
+
+```bash
+python scripts/build_public_current_state.py
+python scripts/build_public_release.py
+python scripts/validate_public_deployment.py
+```
+
+The temporary Phase 2 renderer exposes the full chronology, provenance-scoped sources, and approved datasets without attempting the final navigation, map, or specialist-view redesign. See `docs/public-boot-architecture.md` for the boot sequence and legacy-runtime classification.
+
 ## Public information architecture
 
 The public interface is organized around the questions a reader of a historical war record is likely to ask, rather than around the project's internal analytic workflow:
@@ -57,7 +71,9 @@ Direct-military accounting is symmetric across U.S./coalition and Iran/aligned m
 
 ## Repository structure
 
-- `index.html` — semantic shell and readable no-JavaScript fallback
+- `index.html` — neutral current-record loading/failure shell with one application entry
+- `templates/public-index.html` — exact review source for the root shell; build validation requires byte equality
+- `legacy/phase1-public-runtime-reference.html` — repository-only retired presentation reference; excluded from Pages packaging
 - `css/`, `js/` — local presentation, navigation, map, temporal, safety, costing, and public-record interface modules
 - `assets/icons/` — local map icon grammar
 - `vendor/leaflet/` — pinned Leaflet runtime
@@ -80,15 +96,18 @@ Then open `http://127.0.0.1:8000/`.
 
 Run the release checks documented by the repository validation scripts and the JavaScript tests under `tests/`.
 
-The current public evidence state also has a deterministic, generated read model. Build and verify it with:
+The current public evidence state also has a deterministic, generated read model and a release-binding manifest. Build and verify them with:
 
 ```bash
 python scripts/build_public_current_state.py
 python scripts/build_public_current_state.py --check
 python scripts/validate_public_current_state.py
+python scripts/build_public_release.py
+python scripts/build_public_release.py --check
+python scripts/validate_public_deployment.py
 ```
 
-The ignored deploy-time artifact at `data/public-current-state.json` is a derived view only; canonical packages remain authoritative. See `docs/public-current-state.md` for its input and provenance contract.
+The ignored deploy-time artifacts at `data/public-current-state.json` and `data/public-release.json` are derived views only; canonical packages remain authoritative. See `docs/public-current-state.md` for the read-model input/provenance contract and `docs/public-boot-architecture.md` for the release boundary.
 
 ## Publishing and integrity
 

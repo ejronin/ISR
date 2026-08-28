@@ -23,9 +23,13 @@ jobs:
           python scripts/build_source_registry.py --root .
           python scripts/build_public_current_state.py
           python scripts/validate_public_current_state.py
+          python scripts/build_public_release.py
+          python scripts/build_public_release.py --check
+          python scripts/validate_public_deployment.py
           mkdir _site
           cp -R index.html .nojekyll assets css data js schemas snapshots vendor _site/
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
+          python scripts/validate_public_deployment.py --site-root _site --require-build-info
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: ./_site

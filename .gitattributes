@@ -2,3 +2,7 @@ data/integration-v1.2/*.json linguist-generated=true
 data/integration-v1.2/* whitespace=-trailing-space
 data/forensic-v1.3.2/* -text linguist-generated=true
 data/forensic-v1.3.2/* whitespace=-trailing-space
+# The prior root was a 340 KB single-line document. Keep the Phase 2 root
+# reviewable through its exact source mirror while suppressing the obsolete
+# document's otherwise unreviewable deletion payload in pull-request diffs.
+/index.html -diff linguist-generated=true

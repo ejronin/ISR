@@ -45,8 +45,8 @@ def main():
         for ident,want in lin[kind].items(): req(ident in sets[kind] and stable(sets[kind][ident])==want,f'pre-update {kind} record was silently rewritten: {ident}')
     shipping=load('data/integration-v1.2/shipping.json')['records'];ship={x['shipping_id']:x for x in shipping};req(ship['SHIP-UPD-20260820-KPLER']['value']==7 and ship['SHIP-UPD-20260820-REUTERS-AUG22']['value']==4,'shipping discrepancy records missing')
     rev=load('data/integration-v1.2/revision-history.json')['revisions'];req(any(x.get('revision_id')=='REV-024' for x in rev),'REV-024 append-only update audit entry missing')
-    index=(ROOT/'index.html').read_text(encoding='utf-8');css=(ROOT/'css/workspaces-20260822.css').read_text(encoding='utf-8');js=(ROOT/'js/workspaces-20260822.js').read_text(encoding='utf-8')
-    req('workspaces-20260822.css' in index and 'workspaces-20260822.js' in index,'workspace assets not loaded by index')
+    index=(ROOT/'legacy/phase1-public-runtime-reference.html').read_text(encoding='utf-8');css=(ROOT/'css/workspaces-20260822.css').read_text(encoding='utf-8');js=(ROOT/'js/workspaces-20260822.js').read_text(encoding='utf-8')
+    req('workspaces-20260822.css' in index and 'workspaces-20260822.js' in index,'workspace assets not preserved in retired runtime reference')
     req('.panel.isr-timeline-built:not(.active)' in css and 'display:none!important' in css,'Timeline panel-specificity leak fix missing')
     for token in ['ATLAS','TIMELINE','MOU','SOURCES','How to use','FIT','1×','2×','4×','8×','NOT measured by Ground News','FAR LEFT','LEAN LEFT','CENTER','LEAN RIGHT','FAR RIGHT']:
         req(token in js,f'workspace UI requirement missing: {token}')

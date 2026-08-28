@@ -48,7 +48,12 @@ jobs:
           python scripts/build_public_current_state.py
           python scripts/build_public_current_state.py --check
           python scripts/validate_public_current_state.py
+          python scripts/build_public_release.py
+          python scripts/build_public_release.py --check
+          python scripts/validate_public_deployment.py
           node tests/public-current-state.test.js
+          node tests/public-boot.test.js
+          node --check tests/browser-public-boot-smoke.js
       - name: Validate Aug. 24 count synchronization after source build
         env:
           PYTHONUTF8: '1'
@@ -79,7 +84,7 @@ jobs:
           python scripts/validate_mou_strike_integration_r1.py
           node --check js/iran-messaging-r1.js
           node --check tests/browser-mou-strike-smoke.js
-      - name: Exercise async MOU, strike and Aug. 27 messaging UI in headless browser
+      - name: Exercise cold, current, failure and release-mismatch boot paths in headless browser
         shell: bash
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/atlas-http.log 2>&1 &
@@ -106,8 +111,7 @@ jobs:
             echo 'FAIL: Chrome DevTools endpoint did not become ready.' >&2
             exit 1
           fi
-          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-mou-strike-smoke.js
-          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-aug27-messaging-smoke.js
+          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-boot-smoke.js
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration

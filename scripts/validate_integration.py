@@ -86,19 +86,23 @@ def main() -> int:
           "revision or unresolved inventory changed", failures)
 
     html = (ROOT / "index.html").read_text(encoding="utf-8")
+    legacy_html = (ROOT / "legacy" / "phase1-public-runtime-reference.html").read_text(encoding="utf-8")
+    public_app = (ROOT / "js" / "public-app.js").read_text(encoding="utf-8")
     app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
     navigation = (ROOT / "js" / "navigation.js").read_text(encoding="utf-8")
-    check('id="historical"' in html and "['historical', 'How the record was built']" in navigation,
-          "historical record-construction panel/tab is not wired", failures)
+    check('id="historical"' in legacy_html and "['historical', 'How the record was built']" in navigation,
+          "retired historical record-construction panel/tab reference is not preserved", failures)
+    check("model.chronology" in public_app and "model.input_packages" in public_app and "source_references" in public_app,
+          "new current renderer is not wired to chronology, package lineage, and exact source provenance", failures)
     check("timelineMode" in app and "known-by" in app and "LEDGER.events.events" in app,
           "AS OF / KNOWN BY canonical timeline is not wired", failures)
     check("Historical events" in app and "Force posture" in app and "allMarkers[link.map_ref]" in app,
           "stable map/timeline reverse linkage is not wired", failures)
-    check("coalitionComposite" not in app and "+3.0" not in html and "-1.25" not in html,
+    check("coalitionComposite" not in app and "+3.0" not in legacy_html and "-1.25" not in legacy_html,
           "deprecated composite war score remains in primary display", failures)
-    check("senior leaders individually identified killed" not in html.lower(),
+    check("senior leaders individually identified killed" not in legacy_html.lower(),
           "legacy leadership total remains presented as canonical", failures)
-    check("≥$170B" not in html, "wider economic estimate remains in military-cost arithmetic", failures)
+    check("≥$170B" not in legacy_html, "wider economic estimate remains in military-cost arithmetic", failures)
 
     if failures:
         for failure in failures:
@@ -109,7 +113,7 @@ def main() -> int:
     print(package_check.stdout.strip())
     print(
         "Historical integration validation passed: canonical counts, precision, identity, "
-        "force posture, agreements, like-for-like accounting, source lineage, UI wiring, "
+        "force posture, agreements, like-for-like accounting, source lineage, read-model UI wiring, "
         "revisions and unresolved gaps."
     )
     return 0

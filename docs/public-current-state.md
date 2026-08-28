@@ -14,6 +14,8 @@ Generation uses only repository inputs and includes no build timestamp. Object k
 
 The validator rebuilds the artifact twice in temporary locations, compares both byte streams with the generated output and verifies that every canonical input's raw byte hash is unchanged before and after generation.
 
+Phase 2 binds this artifact to the public shell through the separately generated `data/public-release.json`. The browser validates that manifest, the shell-asset hashes, the exact read-model hash, and the read-model release identity before it performs the first current render. See `public-boot-architecture.md`.
+
 ## Current chronology assembly
 
 The normalized chronology preserves the existing append-only order of authority and then sorts the resulting records by occurrence date, occurrence time and event ID:

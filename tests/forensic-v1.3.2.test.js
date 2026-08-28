@@ -74,8 +74,10 @@ const css = fs.readFileSync(path.join(root, 'css/app.css'), 'utf8');
 assert.match(css, /prefers-reduced-motion:reduce/);
 assert(css.lastIndexOf('.mapwrap{display:block!important') > css.lastIndexOf('.mapwrap{display:none'), 'mobile map override must win');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-assert.match(html, /js\/state\.js/);
-assert.match(html, /js\/forensic\.js/);
+const legacyHtml = fs.readFileSync(path.join(root, 'legacy/phase1-public-runtime-reference.html'), 'utf8');
+assert.match(legacyHtml, /js\/state\.js/);
+assert.match(legacyHtml, /js\/forensic\.js/);
+assert.match(html, /js\/public-app\.js/);
 assert.match(html, /object-src 'none'/);
 assert(!/_[A-Z]+_[A-Z]+/.test('FALSE — CAUSATION NOT SUPPORTED'));
 
