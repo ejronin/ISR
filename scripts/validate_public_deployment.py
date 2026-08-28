@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Validate the generated current record and public release inside a Pages tree."""
+"""Validate the generated current record and bound release inside a Pages tree."""
 from __future__ import annotations
 
 import argparse
+import base64
 import gzip
 import hashlib
 import json
@@ -10,7 +11,6 @@ import re
 from pathlib import Path
 
 
-REQUIRED_ASSETS = {"index.html", "css/public-shell.css", "js/public-app.js"}
 FORBIDDEN_INITIAL_CONTENT = (
     "Reviewed through 2026-08-20 15:59 ET",
     ">108</b><span>current chronology records",
@@ -35,6 +35,25 @@ def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def integrity(data: bytes) -> str:
+    return "sha256-" + base64.b64encode(hashlib.sha256(data).digest()).decode("ascii")
+
+
+def validate_asset(site: Path, asset: dict, role: str, extension: str) -> None:
+    if asset.get("role") != role:
+        fail(f"public release {role} role mismatch")
+    expected_path = f"assets/releases/{asset.get('name')}.{asset.get('sha256')}.{extension}"
+    if asset.get("path") != expected_path:
+        fail(f"public release {role} is not content-addressed")
+    data = canonical_text_bytes(site / expected_path)
+    if digest(data) != asset.get("sha256") or len(data) != asset.get("bytes"):
+        fail(f"deployed {role} bytes do not match the public release manifest")
+    if integrity(data) != asset.get("integrity"):
+        fail(f"deployed {role} SRI does not match the public release manifest")
+    if asset.get("hash_basis") != "UTF8_LF_NORMALIZED":
+        fail(f"public release {role} hash basis mismatch")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--site-root", default=".")
@@ -55,6 +74,8 @@ def main() -> int:
         fail("public release manifest role mismatch")
     if manifest.get("generated_timestamp_included") is not False:
         fail("public release manifest must remain deterministic")
+    if not re.fullmatch(r"public-release-v1-[a-f0-9]{16}", manifest.get("release_identity") or ""):
+        fail("public release identity mismatch")
     current = manifest.get("current_state") or {}
     if current.get("path") != "data/public-current-state.json":
         fail("public release current-state path mismatch")
@@ -70,25 +91,47 @@ def main() -> int:
     if state.get("counts", {}).get("chronology_records") != 205 or len(state.get("chronology", [])) != 205:
         fail("deployed current-state chronology is not 205 records")
 
-    assets = manifest.get("application", {}).get("assets") or []
-    asset_paths = {item.get("path") for item in assets}
-    if not REQUIRED_ASSETS.issubset(asset_paths):
+    bootstrap_block = manifest.get("neutral_bootstrap") or {}
+    if bootstrap_block.get("protocol") != "atlas-release-bootstrap-v1":
+        fail("neutral bootstrap protocol mismatch")
+    bootstrap = bootstrap_block.get("asset") or {}
+    application = manifest.get("application") or {}
+    assets = application.get("assets") or []
+    if len(assets) != 2 or {asset.get("role") for asset in assets} != {"stylesheet", "entrypoint"}:
         fail("public release application asset inventory is incomplete")
-    for asset in assets:
-        data = canonical_text_bytes(site / asset["path"])
-        if digest(data) != asset.get("sha256") or len(data) != asset.get("bytes"):
-            fail(f"deployed asset does not match the public release manifest: {asset['path']}")
+    by_role = {asset["role"]: asset for asset in assets}
+    validate_asset(site, bootstrap, "bootstrap", "js")
+    validate_asset(site, by_role["stylesheet"], "stylesheet", "css")
+    validate_asset(site, by_role["entrypoint"], "entrypoint", "js")
+    if application.get("stylesheet") != by_role["stylesheet"].get("path"):
+        fail("public release stylesheet pointer mismatch")
+    if application.get("entrypoint") != by_role["entrypoint"].get("path"):
+        fail("public release entrypoint pointer mismatch")
 
     index = canonical_text_bytes(site / "index.html").decode("utf-8")
     if 'id="atlas-root"' not in index or "Loading current evidence record…" not in index:
         fail("minimal current-record loading shell is missing")
     if any(token in index for token in FORBIDDEN_INITIAL_CONTENT):
         fail("obsolete current content remains in the initial public document")
-    scripts = re.findall(r"<script\b[^>]*\bsrc=\"([^\"]+)\"", index, re.I)
-    if len(scripts) != 1 or not scripts[0].startswith("js/public-app.js"):
-        fail(f"initial document must load one canonical application entry; found {scripts}")
-    if 'meta name="atlas-application-version" content="atlas-public-shell-v1"' not in index:
-        fail("document/application release version marker is missing")
+    script_tags = re.findall(r"<script\b[^>]*\bsrc=\"[^\"]+\"[^>]*>", index, re.I)
+    if len(script_tags) != 1:
+        fail(f"initial document must load one neutral bootstrap; found {len(script_tags)} scripts")
+    script = script_tags[0]
+    required_attributes = (
+        f'src="{bootstrap["path"]}"',
+        f'integrity="{bootstrap["integrity"]}"',
+        'crossorigin="anonymous"',
+        f'data-bootstrap-sha256="{bootstrap["sha256"]}"',
+        'data-atlas-entry="bootstrap"',
+    )
+    if not all(attribute in script for attribute in required_attributes):
+        fail("initial document does not bind the exact manifest-authorized bootstrap")
+    if re.search(r'<script\b[^>]*\bsrc="js/public-app\.js', index, re.I):
+        fail("initial document executes mutable application bytes directly")
+    if re.search(r'<link\b[^>]*\bhref="css/public-shell\.css', index, re.I):
+        fail("initial document activates mutable application CSS directly")
+    if 'meta name="atlas-bootstrap-protocol" content="atlas-release-bootstrap-v1"' not in index:
+        fail("neutral bootstrap protocol marker is missing")
 
     if args.require_build_info and not (site / "build-info.json").is_file():
         fail("build-info.json is missing from the Pages artifact")
@@ -96,7 +139,7 @@ def main() -> int:
     compressed = gzip.compress(state_bytes, compresslevel=9, mtime=0)
     print(
         "public-deployment validation: PASS - "
-        f"{manifest['release_identity']}; 205 records; "
+        f"{manifest['release_identity']}; content-addressed bootstrap/application; 205 records; "
         f"model={len(state_bytes)} bytes; gzip-9={len(compressed)} bytes"
     )
     return 0

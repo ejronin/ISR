@@ -6,12 +6,14 @@
     return;
   }
   globalObject.AtlasPublicBoot = api;
-  api.boot();
+  api.boot({
+    authorization: globalObject.ATLAS_RELEASE_AUTHORIZATION,
+    executingScript: globalObject.document && globalObject.document.currentScript
+  });
 }(typeof globalThis !== 'undefined' ? globalThis : this, function atlasPublicBootFactory(root) {
   'use strict';
 
   const APPLICATION_VERSION = 'atlas-public-shell-v1';
-  const MANIFEST_URL = './data/public-release.json';
   const MODEL_URL = './data/public-current-state.json';
   const ARCHIVE_URL = './snapshots/Iran%20War%20Map%2020260820.html';
   const RELOAD_ATTEMPT_KEY = 'atlas-public-release-reload-attempted-v1';
@@ -98,24 +100,59 @@
     return response.text();
   }
 
-  function validateManifest(manifest, documentVersion) {
+  function assetForRole(manifest, role) {
+    return (manifest.application && manifest.application.assets || []).find(asset => asset.role === role);
+  }
+
+  function validateContentAddressedAsset(asset, extension) {
+    invariant(asset && typeof asset === 'object', 'RELEASE_MISMATCH', `The ${extension} release asset is missing.`);
+    invariant(/^[a-f0-9]{64}$/.test(asset.sha256 || ''), 'RELEASE_MISMATCH', `The ${extension} release hash is invalid.`);
+    invariant(asset.path === `assets/releases/${asset.name}.${asset.sha256}.${extension}`, 'RELEASE_MISMATCH', `The ${extension} release path is not content-addressed.`);
+    invariant(asset.integrity && /^sha256-[A-Za-z0-9+/]{43}=$/.test(asset.integrity), 'RELEASE_MISMATCH', `The ${extension} release integrity value is invalid.`);
+    invariant(asset.hash_basis === 'UTF8_LF_NORMALIZED', 'RELEASE_MISMATCH', `The ${extension} release hash basis is invalid.`);
+    return asset;
+  }
+
+  function validateManifest(manifest) {
     invariant(manifest && typeof manifest === 'object', 'RELEASE_MISMATCH', 'The public release manifest is missing.');
     invariant(manifest.schema_version === EXPECTED_MANIFEST_SCHEMA, 'RELEASE_MISMATCH', 'The public release manifest schema is not supported.');
     invariant(manifest.artifact_role === 'PUBLIC_APPLICATION_RELEASE_MANIFEST', 'RELEASE_MISMATCH', 'The public release manifest role is invalid.');
     invariant(/^public-release-v1-[a-f0-9]{16}$/.test(manifest.release_identity || ''), 'RELEASE_MISMATCH', 'The public release identity is invalid.');
     invariant(manifest.application && manifest.application.version === APPLICATION_VERSION, 'RELEASE_MISMATCH', 'The application and release manifest versions do not match.');
-    if (documentVersion) {
-      invariant(documentVersion === APPLICATION_VERSION, 'RELEASE_MISMATCH', 'The document shell and application versions do not match.');
-    }
     invariant(manifest.current_state && manifest.current_state.path === 'data/public-current-state.json', 'RELEASE_MISMATCH', 'The current-state path is invalid.');
     invariant(manifest.current_state.schema_version === EXPECTED_MODEL_SCHEMA, 'RELEASE_MISMATCH', 'The current-state schema is not supported.');
     invariant(/^[a-f0-9]{64}$/.test(manifest.current_state.sha256 || ''), 'RELEASE_MISMATCH', 'The current-state integrity value is invalid.');
-    invariant(Array.isArray(manifest.application.assets) && manifest.application.assets.length >= 3, 'RELEASE_MISMATCH', 'The application asset inventory is incomplete.');
+    invariant(Array.isArray(manifest.application.assets) && manifest.application.assets.length === 2, 'RELEASE_MISMATCH', 'The application asset inventory is incomplete.');
     const assetPaths = manifest.application.assets.map(asset => asset.path);
     invariant(new Set(assetPaths).size === assetPaths.length, 'RELEASE_MISMATCH', 'The application asset inventory contains duplicate paths.');
-    for (const required of ['index.html', 'css/public-shell.css', 'js/public-app.js']) {
-      invariant(assetPaths.includes(required), 'RELEASE_MISMATCH', `The application asset inventory is missing ${required}.`);
-    }
+    const stylesheet = validateContentAddressedAsset(assetForRole(manifest, 'stylesheet'), 'css');
+    const entrypoint = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
+    invariant(manifest.application.stylesheet === stylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet path is inconsistent.');
+    invariant(manifest.application.entrypoint === entrypoint.path, 'RELEASE_MISMATCH', 'The application entrypoint path is inconsistent.');
+    return manifest;
+  }
+
+  function validateRuntimeAuthorization(authorization, executingScript, documentObject) {
+    invariant(authorization && authorization.manifest, 'RELEASE_MISMATCH', 'The application was not started by an authorized release bootstrap.');
+    const manifest = validateManifest(authorization.manifest);
+    invariant(authorization.releaseIdentity === manifest.release_identity, 'RELEASE_MISMATCH', 'The runtime authorization release identity is inconsistent.');
+    const entrypoint = assetForRole(manifest, 'entrypoint');
+    const stylesheet = assetForRole(manifest, 'stylesheet');
+    invariant(authorization.entrypointPath === entrypoint.path && authorization.entrypointSha256 === entrypoint.sha256, 'RELEASE_MISMATCH', 'The entrypoint authorization is inconsistent.');
+    invariant(authorization.stylesheetPath === stylesheet.path && authorization.stylesheetSha256 === stylesheet.sha256, 'RELEASE_MISMATCH', 'The stylesheet authorization is inconsistent.');
+    invariant(executingScript && executingScript.src, 'RELEASE_MISMATCH', 'The executing application identity is unavailable.');
+    const scriptUrl = new URL(executingScript.src, root.location && root.location.href);
+    invariant(scriptUrl.pathname.endsWith(`/${entrypoint.path}`), 'RELEASE_MISMATCH', 'The executing application path is not authorized by this release.');
+    invariant(executingScript.integrity === entrypoint.integrity, 'RELEASE_MISMATCH', 'The executing application integrity is not authorized by this release.');
+    invariant(executingScript.dataset.atlasAuthorizedEntrypoint === manifest.release_identity, 'RELEASE_MISMATCH', 'The executing application release marker is invalid.');
+    invariant(executingScript.dataset.assetSha256 === entrypoint.sha256, 'RELEASE_MISMATCH', 'The executing application hash marker is invalid.');
+    const styleLinks = Array.from(documentObject.querySelectorAll('link[data-atlas-authorized-style]'));
+    const activeStyle = styleLinks.find(link => link.dataset.atlasAuthorizedStyle === manifest.release_identity);
+    invariant(activeStyle && activeStyle.href, 'RELEASE_MISMATCH', 'The authorized application stylesheet is not active.');
+    const styleUrl = new URL(activeStyle.href, root.location && root.location.href);
+    invariant(styleUrl.pathname.endsWith(`/${stylesheet.path}`), 'RELEASE_MISMATCH', 'The active stylesheet path is not authorized by this release.');
+    invariant(activeStyle.integrity === stylesheet.integrity, 'RELEASE_MISMATCH', 'The active stylesheet integrity is not authorized by this release.');
+    invariant(activeStyle.dataset.assetSha256 === stylesheet.sha256, 'RELEASE_MISMATCH', 'The active stylesheet hash marker is invalid.');
     return manifest;
   }
 
@@ -145,16 +182,6 @@
     return model;
   }
 
-  async function verifyApplicationAssets(manifest, fetchImpl) {
-    await Promise.all(manifest.application.assets.map(async asset => {
-      const separator = asset.path.includes('?') ? '&' : '?';
-      const text = await fetchText(`./${asset.path}${separator}release=${encodeURIComponent(manifest.release_identity)}`, fetchImpl);
-      const digest = await sha256Text(text);
-      invariant(digest === asset.sha256, 'RELEASE_MISMATCH', `The loaded ${asset.path} asset does not match this release.`);
-      invariant(utf8Bytes(text).byteLength === asset.bytes, 'RELEASE_MISMATCH', `The loaded ${asset.path} byte count does not match this release.`);
-    }));
-  }
-
   function now() {
     return root.performance && typeof root.performance.now === 'function' ? root.performance.now() : Date.now();
   }
@@ -164,13 +191,9 @@
     const fetchImpl = settings.fetchImpl || root.fetch;
     invariant(typeof fetchImpl === 'function', 'FETCH_UNAVAILABLE', 'This browser cannot load the current evidence record.');
     const startedAt = now();
-    const manifestText = await fetchText(settings.manifestUrl || MANIFEST_URL, fetchImpl);
-    const manifest = validateManifest(parseJson(manifestText, 'The public release manifest'), settings.documentVersion);
+    const manifest = validateManifest(settings.manifest);
     const modelStartedAt = now();
-    const modelPromise = fetchText(settings.modelUrl || MODEL_URL, fetchImpl);
-    const assetPromise = settings.verifyAssets === false ? Promise.resolve() : verifyApplicationAssets(manifest, fetchImpl);
-    const modelText = await modelPromise;
-    await assetPromise;
+    const modelText = await fetchText(settings.modelUrl || MODEL_URL, fetchImpl);
     const modelHash = await sha256Text(modelText);
     invariant(modelHash === manifest.current_state.sha256, 'RELEASE_MISMATCH', 'The current-state bytes do not match the public release.');
     invariant(utf8Bytes(modelText).byteLength === manifest.current_state.bytes, 'RELEASE_MISMATCH', 'The current-state byte count does not match the public release.');
@@ -641,14 +664,16 @@
     if (!documentObject) return null;
     const rootElement = settings.rootElement || documentObject.getElementById('atlas-root');
     if (!rootElement) return null;
-    const versionMeta = documentObject.querySelector('meta[name="atlas-application-version"]');
     try {
+      const manifest = validateRuntimeAuthorization(
+        settings.authorization || root.ATLAS_RELEASE_AUTHORIZATION,
+        settings.executingScript,
+        documentObject
+      );
       const loaded = await loadCurrentRecord({
         fetchImpl: settings.fetchImpl,
-        manifestUrl: settings.manifestUrl,
         modelUrl: settings.modelUrl,
-        verifyAssets: settings.verifyAssets,
-        documentVersion: versionMeta && versionMeta.content
+        manifest
       });
       return renderCurrent(rootElement, loaded);
     } catch (error) {
@@ -660,15 +685,16 @@
 
   return Object.freeze({
     APPLICATION_VERSION,
-    MANIFEST_URL,
     MODEL_URL,
     EXPECTED_CHRONOLOGY_COUNT,
     AtlasBootError,
     canonicalText,
     sha256Text,
+    assetForRole,
+    validateContentAddressedAsset,
     validateManifest,
+    validateRuntimeAuthorization,
     validateModel,
-    verifyApplicationAssets,
     loadCurrentRecord,
     renderCurrent,
     renderFailure,

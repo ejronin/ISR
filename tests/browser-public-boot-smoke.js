@@ -6,6 +6,16 @@ const path = require('node:path');
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-release.json'), 'utf8'));
+const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
+const entrypoint = manifest.application.assets.find(asset => asset.role === 'entrypoint');
+const stylesheet = manifest.application.assets.find(asset => asset.role === 'stylesheet');
+const bootstrap = manifest.neutral_bootstrap.asset;
+const oldValidApplication = fs.readFileSync(path.join(__dirname, 'fixtures', 'public-app-old-valid.js'), 'utf8');
+
+assert(entrypoint && stylesheet && bootstrap, 'content-addressed release assets are missing');
+assert(oldValidApplication.includes("const APPLICATION_VERSION = 'atlas-public-shell-v1'"), 'split-release fixture must keep the current logical application version');
+assert.equal(model.release.release_identity, manifest.current_state.release_identity, 'split-release test requires a valid new manifest/model pair');
 
 class CDP {
   constructor(url) {
@@ -90,6 +100,9 @@ function base64(value) {
   try {
     await cdp.call('Runtime.enable');
     await cdp.call('Page.enable');
+    await cdp.call('Network.enable');
+    await cdp.call('Network.setCacheDisabled', { cacheDisabled: true });
+    await cdp.call('Fetch.disable');
     await cdp.call('Fetch.enable', { patterns: [{ urlPattern: '*data/public-current-state.json*', requestStage: 'Request' }] });
     const pausedPromise = cdp.waitEvent('Fetch.requestPaused', params => params.request.url.includes('public-current-state.json'));
     await cdp.call('Page.navigate', { url: `${SITE}?phase2=cold` });
@@ -98,12 +111,18 @@ function base64(value) {
     const loading = await cdp.eval(`(() => ({
       status: document.getElementById('atlas-root')?.dataset.status,
       text: document.body.innerText,
-      scripts: [...document.scripts].map(script => script.src),
+      scripts: [...document.scripts].map(script => ({ src: script.src, integrity: script.integrity })),
+      styles: [...document.querySelectorAll('link[rel="stylesheet"]')].map(link => ({ href: link.href, integrity: link.integrity })),
       ready: Boolean(window.ATLAS_PUBLIC_STATE?.status === 'ready')
     }))()`);
     assert.equal(loading.status, 'loading', 'slow current-state response must leave the neutral loading shell active');
     assert.equal(loading.ready, false, 'current application state must not initialize before the model is ready');
-    assert.deepEqual(loading.scripts.map(url => new URL(url).pathname.split('/').pop()), ['public-app.js'], 'cold shell must execute one application entry');
+    const loadedScripts = new Map(loading.scripts.map(item => [new URL(item.src).pathname, item.integrity]));
+    assert.deepEqual(new Set(loadedScripts.keys()), new Set([`/${bootstrap.path}`, `/${entrypoint.path}`]), 'cold shell must execute only the bound bootstrap and authorized entrypoint');
+    assert.equal(loadedScripts.get(`/${bootstrap.path}`), bootstrap.integrity, 'bootstrap must carry the manifest-authorized SRI value');
+    assert.equal(loadedScripts.get(`/${entrypoint.path}`), entrypoint.integrity, 'entrypoint must carry the manifest-authorized SRI value');
+    assert.deepEqual(loading.styles.map(item => new URL(item.href).pathname), [`/${stylesheet.path}`], 'cold shell must activate only the authorized stylesheet');
+    assert.equal(loading.styles[0].integrity, stylesheet.integrity, 'active stylesheet must carry the manifest-authorized SRI value');
     for (const forbidden of [
       'REVIEWED THROUGH 2026-08-20 15:59 ET',
       '108 CURRENT CHRONOLOGY',
@@ -122,6 +141,11 @@ function base64(value) {
       release: window.ATLAS_PUBLIC_STATE.releaseIdentity,
       currentRelease: window.ATLAS_PUBLIC_STATE.currentStateReleaseIdentity,
       performance: window.ATLAS_PUBLIC_STATE.performance,
+      authorization: {
+        release: window.ATLAS_RELEASE_AUTHORIZATION?.releaseIdentity,
+        entrypoint: window.ATLAS_RELEASE_AUTHORIZATION?.entrypointPath,
+        stylesheet: window.ATLAS_RELEASE_AUTHORIZATION?.stylesheetPath
+      },
       scripts: performance.getEntriesByType('resource').map(entry => entry.name).filter(name => /\\.js(?:[?#]|$)/.test(name)),
       oldGlobals: [
         window.ATLAS_CURRENT_UPDATE,
@@ -137,6 +161,9 @@ function base64(value) {
     assert.equal(ready.cutoff, '2026-08-27T08:25:00-04:00');
     assert.match(ready.release, /^public-release-v1-[a-f0-9]{16}$/);
     assert.match(ready.currentRelease, /^public-current-v1-[a-f0-9]{16}$/);
+    assert.equal(ready.authorization.release, ready.release);
+    assert.equal(ready.authorization.entrypoint, entrypoint.path);
+    assert.equal(ready.authorization.stylesheet, stylesheet.path);
     assert(ready.performance.model_transfer_bytes > 4_000_000);
     assert(ready.performance.model_parse_milliseconds >= 0);
     assert.equal(ready.oldGlobals, false, 'dated successor-chain globals must not initialize');
@@ -165,8 +192,33 @@ function base64(value) {
     assert.match(failure.archive || '', /snapshots\//);
     assert.equal(failure.old, false, 'failure state must not reveal the old dashboard');
 
-    const manifestPath = path.join(__dirname, '..', 'data', 'public-release.json');
-    const mismatched = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    await cdp.eval(`sessionStorage.removeItem('atlas-public-release-reload-attempted-v1');true`);
+    await cdp.call('Fetch.enable', { patterns: [{ urlPattern: `*${entrypoint.path}`, requestStage: 'Request' }] });
+    const splitPromise = cdp.waitEvent('Fetch.requestPaused', params => params.request.url.includes(entrypoint.path));
+    await cdp.call('Page.navigate', { url: `${SITE}?phase2=split-release` });
+    const splitRequest = await splitPromise;
+    await cdp.call('Fetch.fulfillRequest', {
+      requestId: splitRequest.requestId,
+      responseCode: 200,
+      responseHeaders: [{ name: 'Content-Type', value: 'application/javascript; charset=utf-8' }],
+      body: base64(oldValidApplication)
+    });
+    await cdp.call('Fetch.disable');
+    await waitFor(cdp, `document.getElementById('atlas-root')?.dataset.status === 'error' && window.ATLAS_PUBLIC_STATE?.code === 'ASSET_INTEGRITY_FAILED'`, 30000);
+    const split = await cdp.eval(`({
+      status: window.ATLAS_PUBLIC_STATE?.status,
+      code: window.ATLAS_PUBLIC_STATE?.code,
+      oldExecuted: Boolean(window.ATLAS_SPLIT_RELEASE_OLD_EXECUTED),
+      hybrid: Boolean(window.ATLAS_PUBLIC_STATE?.hybrid),
+      text: document.body.innerText
+    })`);
+    assert.equal(split.status, 'error');
+    assert.equal(split.code, 'ASSET_INTEGRITY_FAILED');
+    assert.equal(split.oldExecuted, false, 'old valid application bytes must fail SRI before execution');
+    assert.equal(split.hybrid, false, 'old application bytes must not render against the new model');
+    assert.match(split.text, /could not be loaded|integrity validation/i);
+
+    const mismatched = JSON.parse(JSON.stringify(manifest));
     mismatched.application.version = 'stale-public-shell';
     await cdp.eval(`sessionStorage.removeItem('atlas-public-release-reload-attempted-v1');true`);
     let mismatchRequests = 0;
@@ -200,7 +252,7 @@ function base64(value) {
     assert.match(mismatch.text, /did not resolve to one release/i);
     assert.equal(mismatch.old, false, 'release mismatch must not produce a hybrid legacy UI');
 
-    console.log(`browser public boot smoke: PASS — cold shell remained neutral for 500ms; 205 records rendered; parse ${ready.performance.model_parse_milliseconds.toFixed(1)}ms; fetch failure and controlled release mismatch stayed explicit`);
+    console.log(`browser public boot smoke: PASS — neutral cold shell; 205 records rendered; parse ${ready.performance.model_parse_milliseconds.toFixed(1)}ms; fetch failure, exact split-release SRI rejection, and controlled manifest mismatch stayed explicit`);
   } finally {
     cdp.close();
   }

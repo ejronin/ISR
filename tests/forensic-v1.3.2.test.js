@@ -75,9 +75,12 @@ assert.match(css, /prefers-reduced-motion:reduce/);
 assert(css.lastIndexOf('.mapwrap{display:block!important') > css.lastIndexOf('.mapwrap{display:none'), 'mobile map override must win');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const legacyHtml = fs.readFileSync(path.join(root, 'legacy/phase1-public-runtime-reference.html'), 'utf8');
+const publicRelease = JSON.parse(fs.readFileSync(path.join(root, 'data/public-release.json'), 'utf8'));
 assert.match(legacyHtml, /js\/state\.js/);
 assert.match(legacyHtml, /js\/forensic\.js/);
-assert.match(html, /js\/public-app\.js/);
+assert(html.includes(publicRelease.neutral_bootstrap.asset.path));
+assert(html.includes(publicRelease.neutral_bootstrap.asset.integrity));
+assert(!/<script\b[^>]*\bsrc="js\/public-app\.js/i.test(html));
 assert.match(html, /object-src 'none'/);
 assert(!/_[A-Z]+_[A-Z]+/.test('FALSE — CAUSATION NOT SUPPORTED'));
 

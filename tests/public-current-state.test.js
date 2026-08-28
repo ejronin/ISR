@@ -71,6 +71,9 @@ for (const [key, dataset] of Object.entries(state.datasets)) {
   assert.equal(normalizedHash(dataset.path), dataset.sha256, `dataset hash mismatch: ${key}`);
   assert(dataset.source_references.every(reference => reference.variant_keys.every(variantKey => sourceVariants.has(variantKey))), `dataset source variant mismatch: ${key}`);
 }
+const legacyDatasets = Object.entries(state.datasets).filter(([key]) => key.startsWith('legacy.'));
+assert(legacyDatasets.length > 0, 'historical reference datasets must be retained');
+assert(legacyDatasets.every(([, dataset]) => dataset.role === 'HISTORICAL_REFERENCE_DATA'));
 
 assert.deepEqual(
   Object.keys(state.page_data).sort(),
@@ -80,6 +83,7 @@ const availableData = new Set([...Object.keys(state.datasets), 'current.chronolo
 for (const [page, mapping] of Object.entries(state.page_data)) {
   assert(mapping.dataset_keys.length > 0, `page dataset mapping empty: ${page}`);
   assert(mapping.dataset_keys.every(key => availableData.has(key)), `page dataset mapping unresolved: ${page}`);
+  assert(mapping.dataset_keys.every(key => !key.startsWith('legacy.')), `page maps historical reference data as current: ${page}`);
 }
 
 assert.equal(state.integrity.duplicate_event_ids, 0);

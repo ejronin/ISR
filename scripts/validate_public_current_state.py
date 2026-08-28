@@ -176,6 +176,13 @@ def validate_references_and_views(payload: dict[str, Any]) -> None:
         actual_keys = payload["page_data"][page].get("dataset_keys")
         require(actual_keys == expected_keys, f"{page} dataset mapping mismatch")
         require(set(actual_keys) <= available_keys, f"{page} maps to unavailable data")
+        require(not any(key.startswith("legacy.") for key in actual_keys), f"{page} maps historical reference data as current")
+    legacy_datasets = {key: value for key, value in datasets.items() if key.startswith("legacy.")}
+    require(bool(legacy_datasets), "historical reference datasets are missing")
+    require(
+        all(dataset.get("role") == "HISTORICAL_REFERENCE_DATA" for dataset in legacy_datasets.values()),
+        "a legacy dataset is not classified as historical/reference",
+    )
     dataset_source_ids = builder.extract_source_ids(datasets)
     require(dataset_source_ids <= source_ids, "a page dataset contains an unresolved source reference")
     require(len(dataset_source_ids) == payload["counts"]["page_dataset_referenced_sources"], "page source-reference count mismatch")

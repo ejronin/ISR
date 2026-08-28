@@ -93,18 +93,19 @@ SOURCE_NAMESPACE_SPECS = [
 
 
 DATASET_SPECS = [
-    # Existing public/map data used by the current application.
-    ("legacy.core", "data/core.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.events", "data/events.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.facilities", "data/facilities.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.strikes", "data/strikes.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.losses", "data/losses.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.claims", "data/claims.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.sources", "data/sources.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.economics", "data/economics.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.routes", "data/routes.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.missiles", "data/missiles.json", "LEGACY_CURRENT_PUBLIC_DATA"),
-    ("legacy.influence_networks", "data/influence-networks.json", "LEGACY_CURRENT_PUBLIC_DATA"),
+    # Retained for historical/reference access only. Superseding canonical and
+    # approved datasets, below, are the only datasets mapped to current pages.
+    ("legacy.core", "data/core.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.events", "data/events.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.facilities", "data/facilities.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.strikes", "data/strikes.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.losses", "data/losses.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.claims", "data/claims.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.sources", "data/sources.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.economics", "data/economics.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.routes", "data/routes.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.missiles", "data/missiles.json", "HISTORICAL_REFERENCE_DATA"),
+    ("legacy.influence_networks", "data/influence-networks.json", "HISTORICAL_REFERENCE_DATA"),
     # Canonical historical-ledger subjects. Events, timeline and sources are
     # represented by the normalized chronology and source catalog instead.
     ("ledger.daily_coverage", "data/integration-v1.2/daily-coverage.json", "CANONICAL_LEDGER_DATA"),
@@ -172,7 +173,6 @@ DATASET_SPECS = [
 PAGE_DATASETS = {
     "start_here": [
         "current.chronology",
-        "legacy.core",
         "ledger.domain_assessments",
         "ledger.unresolved",
         "analysis.endgame_public_view",
@@ -188,9 +188,6 @@ PAGE_DATASETS = {
     ],
     "military_record": [
         "current.chronology",
-        "legacy.facilities",
-        "legacy.strikes",
-        "legacy.missiles",
         "ledger.facilities",
         "ledger.map_links",
         "ledger.casualties",
@@ -209,8 +206,6 @@ PAGE_DATASETS = {
     ],
     "hormuz_economy": [
         "current.chronology",
-        "legacy.economics",
-        "legacy.routes",
         "ledger.economics",
         "ledger.shipping",
         "ledger.agreements",
@@ -245,7 +240,6 @@ PAGE_DATASETS = {
     "claims_sources": [
         "current.chronology",
         "current.sources",
-        "legacy.claims",
         "ledger.claims",
         "ledger.source_role_map",
         "ledger.revision_history",

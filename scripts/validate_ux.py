@@ -33,6 +33,8 @@ def main() -> int:
     errors: list[str] = []
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     legacy_html = (ROOT / "legacy/phase1-public-runtime-reference.html").read_text(encoding="utf-8")
+    public_release = json.loads((ROOT / "data/public-release.json").read_text(encoding="utf-8"))
+    bootstrap = (public_release.get("neutral_bootstrap") or {}).get("asset") or {}
     scripts = "\n".join(path.read_text(encoding="utf-8") for path in (ROOT / "js").glob("*.js"))
     require("Content-Security-Policy" in html, "CSP meta policy missing", errors)
     require("script-src 'self'" in html, "CSP script-src must be self-only", errors)
@@ -52,7 +54,14 @@ def main() -> int:
         require(actual == expected, f"vendored Leaflet hash mismatch: {relative}", errors)
     require('id="atlas-root"' in html and 'data-status="loading"' in html, "neutral current-record root missing", errors)
     require("Loading current evidence record…" in html, "accessible current-record loading state missing", errors)
-    require(html.count("<script ") == 1 and "js/public-app.js" in html, "public root must load one application entry", errors)
+    require(
+        html.count("<script ") == 1
+        and f'src="{bootstrap.get("path")}"' in html
+        and f'integrity="{bootstrap.get("integrity")}"' in html
+        and "js/public-app.js" not in html,
+        "public root must load one manifest-bound neutral bootstrap",
+        errors,
+    )
     require("current-update-20260824.js" not in html and 'id="currentPictureBlocks"' not in html, "obsolete current dashboard remains in public boot", errors)
     for label in ("Overview", "Operations", "Effects", "Information", "Evidence"):
         require(f">{label}<" in legacy_html, f"retired presentation reference missing primary area: {label}", errors)
@@ -89,7 +98,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("UX/security validation passed: neutral single-entry boot, preserved presentation grammar, canonical accounting, temporal/map source modules, CSP, safe links, and build identity")
+    print("UX/security validation passed: neutral manifest-bound bootstrap, preserved presentation grammar, canonical accounting, temporal/map source modules, CSP, safe links, and build identity")
     return 0
 
 

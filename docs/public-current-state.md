@@ -61,3 +61,5 @@ Canonical and approved supporting datasets are embedded once under `datasets`. `
 - `claims_sources`
 
 This mapping is an engineering index, not new analysis. Phase 1 does not change the current browser boot path or visible site.
+
+The original `data/*.json` public/map datasets are still embedded under `legacy.*` so their historical bytes and provenance remain inspectable. They are classified `HISTORICAL_REFERENCE_DATA` and are not mapped into any current page. Current page mappings use the frozen ledger, accepted reconciliation, normalized chronology/source catalog, forensic products, and approved analytical datasets that supersede those legacy runtime inputs. No legacy file is deleted or rewritten by this classification.

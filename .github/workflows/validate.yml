@@ -53,6 +53,8 @@ jobs:
           python scripts/validate_public_deployment.py
           node tests/public-current-state.test.js
           node tests/public-boot.test.js
+          node --check js/public-bootstrap.js
+          node --check js/public-app.js
           node --check tests/browser-public-boot-smoke.js
       - name: Validate Aug. 24 count synchronization after source build
         env:

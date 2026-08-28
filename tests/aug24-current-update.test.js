@@ -25,6 +25,7 @@ assert.strictEqual(new Set([...histEvents, ...overlayEvents].map(x => x.event_id
 
 const index = read('legacy/phase1-public-runtime-reference.html');
 const publicIndex = read('index.html');
+const publicRelease = json('data/public-release.json');
 const state = read('js/state.js');
 const work = read('js/workspaces-20260822.js');
 const loader = read('js/current-update-20260824.js');
@@ -32,7 +33,9 @@ assert(index.includes('>98</b><span>canonical historical-ledger records'));
 assert(index.includes('>108</b><span>current chronology records'));
 assert(index.includes('js/current-update-20260824.js'));
 assert(!publicIndex.includes('js/current-update-20260824.js'));
-assert(publicIndex.includes('js/public-app.js'));
+assert(publicIndex.includes(publicRelease.neutral_bootstrap.asset.path));
+assert(publicIndex.includes(publicRelease.neutral_bootstrap.asset.integrity));
+assert(!/<script\b[^>]*\bsrc="js\/public-app\.js/i.test(publicIndex));
 // The Aug. 24 layer is frozen, but the public temporal default advances with later append-only overlays.
 assert(state.includes("timeCutoff: '2026-08-26'"), 'current public timeline default must be Aug. 26');
 assert(work.includes("const CANONICAL='2026-08-24'"));
