@@ -51,11 +51,13 @@ jobs:
           node tests/public-boot.test.js
           node tests/public-ia.test.js
           node tests/public-content-redesign.test.js
+          node tests/public-evidence-phase5.test.js
           node --check js/public-bootstrap.js
           node --check js/public-app.js
           node --check js/public-ia.js
           node --check tests/browser-public-boot-smoke.js
           node --check tests/browser-public-ia-smoke.js
+          node --check tests/browser-public-evidence-phase5.js
       - name: Validate Aug. 24 count synchronization after source build
         env:
           PYTHONUTF8: '1'
@@ -115,6 +117,7 @@ jobs:
           fi
           ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-boot-smoke.js
           ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-ia-smoke.js
+          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-evidence-phase5.js
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration
