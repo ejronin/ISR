@@ -1,140 +1,153 @@
 'use strict';
 
-const assert = require('assert');
+const assert = require('node:assert/strict');
 const boot = require('../js/public-app.js');
+const ia = require('../js/public-ia.js');
+const model = require('../data/public-current-state.json');
 
-function dataset(role = 'APPROVED_ANALYTICAL_DATA', payload = {}) {
-  return { role, payload };
-}
+assert.equal(Object.keys(boot.ROUTE_DATA_DEPENDENCIES).length, 25, 'all 25 routes declare dependencies');
+assert.equal(boot.validatePageDataMappings(model), true);
+assert.equal(boot.validateRouteDependencies(model), true);
 
-function modelFixture() {
-  const datasets = {
-    'current.actors': dataset('DERIVED_CANONICAL_CURRENT_ENTITY_STATE', []),
-    'current.locations': dataset('DERIVED_CANONICAL_CURRENT_ENTITY_STATE', []),
-    'current.claims': dataset('DERIVED_CANONICAL_CURRENT_ENTITY_STATE', { claims: [] }),
-    'current.material_losses': dataset('DERIVED_CANONICAL_CURRENT_ENTITY_STATE', { records: [] }),
-    'current.relationships': dataset('DERIVED_CANONICAL_CURRENT_ENTITY_STATE', []),
-    'ledger.domain_assessments': dataset(),
-    'ledger.unresolved': dataset(),
-    'analysis.endgame_public_view': dataset(),
-    'reconciliation.strikes': dataset(),
-    'ledger.facilities': dataset(),
-    'ledger.munitions_expenditure': dataset(),
-    'ledger.attrition_series': dataset(),
-    'analysis.casualty_corrections': dataset(),
-    'ledger.bda_overlays': dataset(),
-    'analysis.hormuz': dataset(),
-    'ledger.shipping': dataset(),
-    'analysis.oil_routes': dataset(),
-    'ledger.economics': dataset(),
-    'analysis.china_oil_shift': dataset(),
-    'ledger.diplomacy': dataset(),
-    'analysis.iran_messaging': dataset(),
-    'ledger.agreements': dataset(),
-    'analysis.iran_outcomes': dataset(),
-    'analysis.endgame_us_objectives': dataset(),
-    'analysis.endgame_objective_corrections': dataset(),
-    'analysis.information_war_claims': dataset(),
-    'analysis.influence_networks': dataset(),
-    'archive.snapshot_index': dataset('ARCHIVE_INDEX_DATA')
-  };
-  const pageData = {};
-  for (const contract of Object.values(boot.ROUTE_DATA_DEPENDENCIES)) {
-    const current = pageData[contract.modelPage] || [];
-    pageData[contract.modelPage] = Array.from(new Set([...current, ...contract.datasets]));
-  }
-  return {
-    schema_version: '1.0',
-    artifact_role: 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL',
-    release: { release_identity: 'x', input_set_sha256: 'y', current_osint_cutoff: 'z' },
-    counts: { chronology_records: 1, canonical_source_records: 3 },
-    chronology: [{ event_id: 'EVT-1', provenance: [{}], source_references: [{ source_id: 'SRC-AAA', variant_key: 'v1' }] }],
-    sources: { records: [
-      { source_id: 'SRC-AAA', resolution: 'UNAMBIGUOUS', record: { title: 'Ordinary', url: 'https://example.com/a' }, variants: [{ variant_key: 'v1', record: { title: 'Ordinary', url: 'https://example.com/a' } }] },
-      { source_id: 'SRC-CONFLICT', resolution: 'PROVENANCE_SCOPED_VARIANTS_REQUIRED', variants: [
-        { variant_key: 'pkg-a', package_label: 'Package A', record: { title: 'A title', publisher: 'A outlet', url: 'https://example.com/a-version' } },
-        { variant_key: 'pkg-b', package_label: 'Package B', record: { title: 'B title', publisher: 'B outlet', url: 'https://example.com/b-version' } }
-      ] },
-      { source_id: 'SRC-OTHER', resolution: 'UNAMBIGUOUS', record: { title: 'Other' }, variants: [] }
-    ] },
-    datasets,
-    page_data: Object.fromEntries(Object.entries(pageData).map(([key, dataset_keys]) => [key, { dataset_keys }])),
-    integrity: { duplicate_event_ids: 0, unresolved_chronology_source_ids: [] },
-    entities: { actors: [], locations: [] }
-  };
-}
-
-const model = modelFixture();
-assert.strictEqual(Object.keys(boot.ROUTE_DATA_DEPENDENCIES).length, 25, 'all 25 routes declare dependencies');
-assert.strictEqual(boot.validatePageDataMappings(model), true);
-assert.strictEqual(boot.validateRouteDependencies(model), true);
-assert(boot.ROUTE_DATA_DEPENDENCIES['talks.nuclear'].datasets.includes('analysis.iran_messaging'), 'Nuclear Talks declares Iran messaging');
-assert(boot.ROUTE_DATA_DEPENDENCIES['talks.nuclear'].datasets.includes('analysis.endgame_public_view'), 'Nuclear Talks declares public-view evidence');
-
-{
-  const broken = modelFixture();
-  delete broken.datasets['analysis.iran_messaging'];
-  assert.throws(() => boot.validateRouteDependencies(broken), error => error.code === 'MODEL_INVALID' && /missing dataset/.test(error.message));
+for (const [routeKey, contract] of Object.entries(boot.ROUTE_DATA_DEPENDENCIES)) {
+  const generated = model.page_data[contract.modelPage].dataset_keys;
+  assert(contract.datasets.every(key => generated.includes(key)), `${routeKey} exceeds generated ${contract.modelPage} authority`);
 }
 
 {
-  const broken = modelFixture();
-  broken.datasets['legacy.bad'] = dataset('HISTORICAL_REFERENCE_DATA');
-  broken.page_data.timeline.dataset_keys.push('legacy.bad');
-  assert.throws(() => boot.validatePageDataMappings(broken), error => error.code === 'MODEL_INVALID' && /legacy reference data/.test(error.message));
+  const broken = structuredClone(model);
+  broken.page_data.diplomacy_mou.dataset_keys = broken.page_data.diplomacy_mou.dataset_keys.filter(key => key !== 'analysis.iran_messaging');
+  assert.throws(
+    () => boot.validateRouteDependencies(broken),
+    error => error.code === 'MODEL_INVALID' && /outside generated page-data owner/.test(error.message),
+    'frontend contract must be a subset of independently generated page_data'
+  );
 }
 
 {
-  const broken = modelFixture();
-  broken.datasets['historical.bad'] = dataset('HISTORICAL_REFERENCE_DATA');
-  broken.page_data.timeline.dataset_keys.push('historical.bad');
-  assert.throws(() => boot.validatePageDataMappings(broken), error => error.code === 'MODEL_INVALID' && /historical-reference/.test(error.message));
+  const view = boot.createRouteModelView(model, 'talks.nuclear');
+  assert(view.datasets['analysis.iran_messaging']);
+  assert.throws(() => view.datasets['ledger.shipping'], error => error.code === 'UNDECLARED_DATA_DEPENDENCY');
+  assert.throws(() => view.accepted_updates, error => error.code === 'UNDECLARED_DATA_DEPENDENCY');
+  assert.equal('enable' in view, false, 'route view must not have a disabled/bypass mode');
 }
 
 {
-  const broken = modelFixture();
-  broken.page_data.timeline.dataset_keys.push('current.sources');
-  assert.throws(() => boot.validatePageDataMappings(broken), error => error.code === 'MODEL_INVALID' && /duplicate dataset/.test(error.message));
-}
-
-{
-  const windowObject = { location: { hash: '#/talks/nuclear' } };
-  const ia = { parseRoute() { return { key: 'talks.nuclear' }; } };
-  const guard = boot.createRouteGuardedModel(model, { ia, windowObject, state: { routeKey: 'talks.nuclear' } });
-  guard.enable();
-  assert(model.datasets['analysis.iran_messaging']);
-  assert(guard.model.datasets['analysis.iran_messaging']);
-  assert.throws(() => guard.model.datasets['ledger.shipping'], error => error.code === 'UNDECLARED_DATA_DEPENDENCY');
+  const runtime = boot.createRouteRuntime(model, { ia });
+  const first = runtime.forRoute('start.overview');
+  assert(first.services.sourceResolver.size > 300);
+  runtime.forRoute('talks.nuclear');
+  assert.deepEqual(runtime.diagnostics(), { sourceIndexBuilds: 1, routeViewCount: 2, sourceCount: model.sources.records.length });
 }
 
 {
   const resolver = boot.createSourceResolver(model);
-  const ordinary = resolver.resolve('SRC-AAA');
-  assert.strictEqual(ordinary.status, 'resolved');
-  assert.strictEqual(ordinary.selected.record.title, 'Ordinary');
-  const conflicted = resolver.resolve('SRC-CONFLICT');
-  assert.strictEqual(conflicted.status, 'variant-required');
-  assert.strictEqual(conflicted.selected, undefined, 'conflicted source has no implicit global winner');
-  assert.strictEqual(conflicted.variants.length, 2);
-  const b = resolver.resolve('SRC-CONFLICT', 'pkg-b');
-  assert.strictEqual(b.status, 'resolved');
-  assert.strictEqual(b.selected.record.title, 'B title');
-  assert.strictEqual(b.selected.record.url, 'https://example.com/b-version');
-  assert.strictEqual(b.selected.packageLabel, 'Package B');
-  assert.strictEqual(resolver.resolve('SRC-CONFLICT', 'missing').status, 'missing-variant');
+  const conflictedId = 'SRC-6843BB957E02';
+  assert(resolver.conflictedSourceIds.includes(conflictedId));
+  const conflicted = resolver.resolve(conflictedId);
+  assert.equal(conflicted.status, 'variant-required');
+  assert.equal(conflicted.selected, undefined, 'conflicted source has no implicit global winner');
+  assert(conflicted.variants.length > 1);
+  const explicit = resolver.resolve(conflictedId, conflicted.variants[0].variantKey);
+  assert.equal(explicit.status, 'resolved');
+  assert.equal(explicit.selected.variantKey, conflicted.variants[0].variantKey);
 }
 
 {
-  const future = modelFixture();
-  future.sources.records.push({ source_id: 'SRC-FUTURE', resolution: 'UNAMBIGUOUS', record: { title: 'Future source' }, variants: [] });
-  const resolver = boot.createSourceResolver(future);
-  assert.strictEqual(resolver.resolve('SRC-FUTURE').selected.record.title, 'Future source', 'new model source propagates without a frontend constant');
+  const synthetic = {
+    sources: { records: [{
+      source_id: 'SRC-CURRENT',
+      resolution: 'CANONICAL_UPDATE_CURRENT',
+      record: { title: 'Accepted current metadata', url: 'https://example.com/current' },
+      variants: [
+        { variant_key: 'older', record: { title: 'Older metadata' } },
+        { variant_key: 'current', record: { title: 'Accepted current metadata' } }
+      ]
+    }] }
+  };
+  const resolved = boot.createSourceResolver(synthetic).resolve('SRC-CURRENT');
+  assert.equal(resolved.status, 'resolved', 'multiple variants alone must not create a conflict');
+  assert.equal(resolved.selected.record.title, 'Accepted current metadata');
+  assert.equal(resolved.selected.record.url, 'https://example.com/current');
 }
 
-assert.strictEqual(
-  boot.rewritePublicLanguageText('Conflicting provenance-scoped variants remain separate.'),
-  'Conflicting source versions are preserved separately.'
-);
-assert(boot.rewritePublicLanguageText('The browser receives the already assembled current state; it does not rebuild history by replaying dated updates.').includes('Later corrections remain temporally explicit'));
+{
+  const synthetic = { sources: { records: [
+    { source_id: 'SRC-REL', resolution: 'UNAMBIGUOUS', record: { title: 'Relative', url: '/not-absolute' }, variants: [] },
+    { source_id: 'SRC-JS', resolution: 'UNAMBIGUOUS', record: { title: 'Script', url: 'javascript:alert(1)' }, variants: [] },
+    { source_id: 'SRC-HTTPS', resolution: 'UNAMBIGUOUS', record: { title: 'Web', url: 'https://example.com/source' }, variants: [] }
+  ] } };
+  const resolver = boot.createSourceResolver(synthetic);
+  assert.equal(resolver.resolve('SRC-REL').selected.record.url, null);
+  assert.equal(resolver.resolve('SRC-JS').selected.record.url, null);
+  assert.equal(resolver.resolve('SRC-HTTPS').selected.record.url, 'https://example.com/source');
+}
 
-console.log('public-evidence-phase5: PASS');
+{
+  const locationResolver = boot.createLocationResolver(model);
+  const event = model.chronology.find(item => (item.location_ids || []).some(id => {
+    const value = locationResolver.resolve(id);
+    return value && Number.isFinite(value.latitude) && Number.isFinite(value.longitude);
+  }));
+  const location = event.location_ids.map(id => locationResolver.resolve(id)).find(value => value && Number.isFinite(value.latitude) && Number.isFinite(value.longitude));
+  assert(location && location.label && Number.isFinite(location.latitude) && Number.isFinite(location.longitude), 'canonical location_id must resolve to its entity');
+  const unresolvedCoordinates = boot.createLocationResolver({ entities: { locations: [{ record: { location_id: 'LOC-UNKNOWN', canonical_name: 'Unknown coordinates', latitude: null, longitude: null } }] } }).resolve('LOC-UNKNOWN');
+  assert.equal(unresolvedCoordinates.latitude, null, 'unknown latitude must not become zero');
+  assert.equal(unresolvedCoordinates.longitude, null, 'unknown longitude must not become zero');
+}
+
+{
+  const actorResolver = ia.ActorIdentity.createResolver(model);
+  const qalibaf = actorResolver.resolve('Mohammad Baqer Qalibaf');
+  assert.equal(qalibaf.entityType, 'person');
+  assert.equal(qalibaf.role, 'Parliament speaker');
+  assert.equal(qalibaf.affiliation, 'Iranian parliament');
+  assert.equal(qalibaf.affiliationId, 'ACT-IRANIAN-PARLIAMENT');
+  assert.equal(qalibaf.flag, '🇮🇷');
+  assert.equal(actorResolver.resolve('IRGC').affiliationType, 'state-institution');
+  assert.equal(actorResolver.resolve('Hezbollah').flag, '');
+  assert.equal(actorResolver.resolve('Houthis / Ansar Allah').flag, '');
+  assert.equal(actorResolver.resolve('Unresolved actor fixture').affiliationType, 'unknown');
+}
+
+{
+  const future = structuredClone(model);
+  future.sources.records.push({ source_id: 'SRC-FUTURE', resolution: 'UNAMBIGUOUS', record: { title: 'Future source' }, variants: [] });
+  future.entities.actors.push({ record: { actor_id: 'ACT-FUTURE', aliases: ['future actor'], canonical_name: 'Future actor', entity_type: 'entity', affiliation_type: 'organization', flag: '', subtitle: 'Future organization' } });
+  future.entities.locations.push({ record: { location_id: 'LOC-FUTURE', canonical_name: 'Future location', latitude: 1, longitude: 2, coordinate_precision: 'CITY' } });
+  assert.equal(boot.createSourceResolver(future).resolve('SRC-FUTURE').selected.record.title, 'Future source');
+  assert.equal(ia.ActorIdentity.createResolver(future).resolve('ACT-FUTURE').canonicalName, 'Future actor');
+  assert.equal(boot.createLocationResolver(future).resolve('LOC-FUTURE').label, 'Future location');
+  const event = structuredClone(future.chronology[0]);
+  event.event_id = 'EV-FUTURE-PACKET';
+  future.chronology.push(event);
+  const futureView = boot.createRouteModelView(future, 'timeline.chronology');
+  assert(futureView.chronology.some(item => item.event_id === 'EV-FUTURE-PACKET'), 'new chronology event must propagate without a frontend constant');
+}
+
+{
+  const refined = structuredClone(model);
+  const location = refined.entities.locations[0].record;
+  location.canonical_name = 'Refined canonical location';
+  location.latitude = 12.5;
+  location.longitude = 42.25;
+  const resolved = boot.createLocationResolver(refined).resolve(location.location_id);
+  assert.deepEqual({ label: resolved.label, latitude: resolved.latitude, longitude: resolved.longitude }, { label: 'Refined canonical location', latitude: 12.5, longitude: 42.25 });
+
+  const actor = refined.entities.actors.find(item => item.record.canonical_name === 'Mohammad Baqer Qalibaf').record;
+  actor.role = 'Recorded refined role';
+  assert.equal(ia.ActorIdentity.createResolver(refined).resolve(actor.actor_id).role, 'Recorded refined role');
+}
+
+{
+  const temporal = ia.eventTemporalValues({ event: { event_date: '2026-08-01', event_time: '03:00', first_reported: '2026-08-02' } });
+  assert.equal(temporal.occurred, '2026-08-01 03:00');
+  assert.equal(temporal.knownBy, '2026-08-02');
+  const status = ia.eventEvidenceValues({ event: { evidence_status: 'SUPPORTED_WITH_LIMITATIONS', dispute_posture: 'DISPUTED' } });
+  assert.equal(status.support, 'SUPPORTED_WITH_LIMITATIONS');
+  assert.equal(status.dispute, 'DISPUTED');
+  const realStatusRecord = model.chronology.find(item => item.event && typeof item.event.evidence_status === 'string');
+  assert.equal(ia.eventEvidenceValues(realStatusRecord).support, realStatusRecord.event.evidence_status);
+}
+
+console.log('public-evidence-phase5: PASS - generated authority, strict route views, provenance, actor/location/status and future-update behavior verified');

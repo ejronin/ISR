@@ -153,14 +153,14 @@ async function setRoute(cdp, route) {
       maps: document.querySelectorAll('.timeline-phase [data-component="MapView"] svg').length,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
-    const expectedTimelineCount = await cdp.eval(`window.ATLAS_PUBLIC_MODEL.counts.chronology_records`);
+    const expectedTimelineCount = await cdp.eval(`window.ATLAS_PUBLIC_STATE.chronologyCount`);
     assert.equal(timeline.phases, 6);
     assert(timeline.cards > 10 && timeline.cards < expectedTimelineCount, 'primary timeline must emphasize representative developments');
     assert(timeline.maps > 0, 'timeline phases with coordinates must expose spatial context');
     assert(timeline.text.includes(`Detailed Chronology retains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
 
-    const changedModelTimeline = await cdp.eval(`(() => {
-      const model = structuredClone(window.ATLAS_PUBLIC_MODEL);
+    const changedModelTimeline = await cdp.eval(`(async () => {
+      const model = await fetch('./data/public-current-state.json', { cache: 'no-store' }).then(response => response.json());
       model.counts.chronology_records += 1;
       const host = document.createElement('div');
       host.style.cssText = 'position:fixed;left:-10000px;top:0;width:1024px;';
@@ -173,9 +173,10 @@ async function setRoute(cdp, route) {
         dispatchEvent() {},
         CustomEvent: window.CustomEvent
       };
+      const routeRuntime = window.AtlasPublicBoot.createRouteRuntime(model, { ia: window.AtlasPublicIA });
       const controller = window.AtlasPublicIA.mount({
         rootElement: host,
-        model,
+        routeRuntime,
         state: {},
         documentObject: document,
         windowObject: testWindow

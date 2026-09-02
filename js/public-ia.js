@@ -213,12 +213,6 @@
   ]);
 
   const AFFILIATION_BY_ID = new Map(AFFILIATED_ACTORS.map(actor => [actor.id, actor]));
-  let MODEL_ACTORS = [];
-
-  function configureActorModel(model) {
-    const records = model && model.entities && Array.isArray(model.entities.actors) ? model.entities.actors : [];
-    MODEL_ACTORS = records.map(item => item && item.record ? item.record : item).filter(Boolean);
-  }
 
   function invariant(condition, message) {
     if (!condition) throw new Error(message);
@@ -360,16 +354,17 @@
     return { name: String(value || 'Unknown').trim(), actorId: null, entityType: null, role: null, affiliation: null };
   }
 
-  function findModelActor(value) {
+  function findModelActor(value, modelActors) {
+    const actorRecords = Array.isArray(modelActors) ? modelActors : [];
     const normalized = String(value || '').trim().toLowerCase();
     if (!normalized) return { actor: null, exact: false };
-    const exact = MODEL_ACTORS.find(actor =>
+    const exact = actorRecords.find(actor =>
       String(actor.actor_id || '').toLowerCase() === normalized ||
       String(actor.canonical_name || '').toLowerCase() === normalized ||
       (actor.aliases || []).includes(normalized)
     );
     if (exact) return { actor: exact, exact: true };
-    const qualified = MODEL_ACTORS.find(actor => (actor.aliases || []).some(alias => normalized.startsWith(`${alias} (`)));
+    const qualified = actorRecords.find(actor => (actor.aliases || []).some(alias => normalized.startsWith(`${alias} (`)));
     return { actor: qualified || null, exact: false };
   }
 
@@ -385,10 +380,10 @@
   }
 
   const ActorIdentity = Object.freeze({
-    configure: configureActorModel,
-    resolve(value) {
+    configure(model) { return this.createResolver(model); },
+    resolve(value, modelActors) {
       const input = normalizedActorInput(value);
-      const modelLookup = findModelActor(input.actorId || input.name);
+      const modelLookup = findModelActor(input.actorId || input.name, modelActors);
       if (modelLookup.actor) {
         const actor = modelLookup.actor;
         const canonicalName = publicNarrative(modelLookup.exact ? actor.canonical_name : input.name, 'Unknown actor');
@@ -441,8 +436,8 @@
         subtitle
       };
     },
-    create(documentObject, value, options) {
-      const actor = this.resolve(value);
+    create(documentObject, value, options, resolver) {
+      const actor = (resolver || this).resolve(value);
       const wrapper = element(documentObject, 'span', 'actor-identity');
       wrapper.dataset.actorName = actor.canonicalName;
       wrapper.dataset.actorEntityType = actor.entityType;
@@ -458,6 +453,16 @@
       append(wrapper, 'span', 'actor-name', actor.canonicalName);
       if (options && options.subtitle) append(wrapper, 'span', 'actor-subtitle', actor.subtitle);
       return wrapper;
+    },
+    createResolver(model) {
+      const records = model && model.entities && Array.isArray(model.entities.actors) ? model.entities.actors : [];
+      const modelActors = records.map(item => item && item.record ? item.record : item).filter(Boolean);
+      const resolver = {
+        size: modelActors.length,
+        resolve(value) { return ActorIdentity.resolve(value, modelActors); },
+        create(documentObject, value, options) { return ActorIdentity.create(documentObject, value, options, resolver); }
+      };
+      return Object.freeze(resolver);
     }
   });
 
@@ -466,14 +471,16 @@
       const rawSupport = value && value.support;
       const support = rawSupport === null || rawSupport === undefined || rawSupport === ''
         ? 'Unknown'
-        : displayTerm(rawSupport, 'Evidence status recorded');
-      const dispute = value && value.dispute ? displayTerm(value.dispute, 'Unknown') : null;
+        : DISPLAY_TERMS[rawSupport] || plainLabel(rawSupport, 'Evidence status recorded');
+      const dispute = value && value.dispute ? DISPLAY_TERMS[value.dispute] || plainLabel(value.dispute, 'Dispute status recorded') : null;
       return { support, dispute };
     },
     create(documentObject, value) {
       const view = this.viewModel(value || {});
       const wrapper = element(documentObject, 'div', 'evidence-status');
       wrapper.dataset.component = 'EvidenceStatus';
+      wrapper.setAttribute('role', 'group');
+      wrapper.setAttribute('aria-label', 'Evidence status');
       const support = append(wrapper, 'span', 'evidence-support', view.support);
       support.setAttribute('aria-label', `Evidence support: ${view.support}`);
       if (view.dispute) {
@@ -484,26 +491,87 @@
     }
   });
 
-  function sourceDisplayRecord(source, variantKey) {
-    if (!source) return null;
-    if (variantKey) {
-      const variant = (source.variants || []).find(item => item.variant_key === variantKey);
-      if (variant) return variant.record;
-    }
-    return ['UNAMBIGUOUS', 'CANONICAL_UPDATE_CURRENT'].includes(source.resolution) ? source.record : null;
+  function firstText() {
+    for (const value of arguments) if (typeof value === 'string' && value.trim()) return value.trim();
+    return null;
   }
 
-  function safeExternalUrl(value) {
-    try {
-      const parsed = new URL(value);
-      return ['http:', 'https:'].includes(parsed.protocol) ? parsed.href : null;
-    } catch (_) {
-      return null;
+  function eventTemporalValues(item) {
+    const record = item && item.event && typeof item.event === 'object' ? item.event : item || {};
+    const timeline = item && item.timeline && typeof item.timeline === 'object' ? item.timeline : {};
+    const date = firstText(record.event_date, record.date, item && item.event_date, item && item.date, timeline.date);
+    const time = firstText(record.event_time, record.time, item && item.event_time, item && item.time, timeline.time);
+    return {
+      occurred: firstText(record.occurred_at, record.timestamp, item && item.occurred_at, item && item.timestamp) || (date && time ? `${date} ${time}` : date),
+      knownBy: firstText(record.known_at, record.first_reported, record.first_verified_at, record.first_verified, item && item.known_at, item && item.first_reported, item && item.first_verified, timeline.known_at, timeline.first_reported, timeline.first_verified)
+    };
+  }
+
+  function eventEvidenceValues(item) {
+    const record = item && item.event && typeof item.event === 'object' ? item.event : item || {};
+    const evidence = record.evidence_status && typeof record.evidence_status === 'object'
+      ? record.evidence_status
+      : item && item.evidence_status && typeof item.evidence_status === 'object' ? item.evidence_status : {};
+    return {
+      support: firstText(
+        typeof record.evidence_status === 'string' ? record.evidence_status : null,
+        typeof item.evidence_status === 'string' ? item.evidence_status : null,
+        evidence.support,
+        evidence.status,
+        evidence.classification
+      ),
+      dispute: firstText(record.dispute_status, record.dispute_posture, item && item.dispute_status, item && item.dispute_posture, evidence.dispute, evidence.dispute_status),
+      unresolved: firstText(record.unresolved_evidence, record.unresolved, record.evidence_gap, item && item.unresolved_evidence, item && item.unresolved, item && item.evidence_gap)
+    };
+  }
+
+  function appendDefinition(list, term, value) {
+    if (value === null || value === undefined || value === '' || Array.isArray(value) && !value.length) return;
+    append(list, 'dt', '', term);
+    append(list, 'dd', '', Array.isArray(value) ? value.filter(Boolean).join('; ') : value);
+  }
+
+  function appendSourceLink(documentObject, parent, resolved) {
+    const selected = resolved && resolved.selected;
+    const record = selected && selected.record || {};
+    const item = append(parent, 'li');
+    const label = publicNarrative(record.title || record.publisher, resolved && resolved.sourceId || 'Source');
+    if (record.url) {
+      const link = append(item, 'a', '', label);
+      link.href = record.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    } else append(item, 'span', '', label);
+    const metadata = [record.publisher, record.publicationDate, record.role, selected && selected.packageLabel].filter(Boolean);
+    if (metadata.length) append(item, 'small', '', ` — ${metadata.join(' · ')}`);
+    if (record.supports) append(item, 'small', '', ` ${publicNarrative(record.supports, '')}`);
+    if (record.context) append(item, 'div', 'source-context', publicNarrative(record.context, ''));
+    return item;
+  }
+
+  function appendSourceResolution(documentObject, parent, resolved) {
+    if (!resolved || resolved.status === 'missing-source' || resolved.status === 'missing-variant') {
+      append(parent, 'p', 'source-resolution-note', `${resolved && resolved.sourceId || 'Source'} — source version could not be resolved.`);
+      return;
     }
+    if (resolved.status === 'resolved') {
+      const list = append(parent, 'ul', 'source-link-list');
+      appendSourceLink(documentObject, list, resolved);
+      return;
+    }
+    const details = append(parent, 'details', 'source-variants shared-source-variants');
+    details.dataset.phase5SourceVariants = resolved.sourceId;
+    append(details, 'summary', '', `Preserved source versions (${resolved.variants.length})`);
+    append(details, 'p', 'source-variant-note', 'This source appears differently in preserved evidence packages, so Atlas keeps each version rather than silently choosing one.');
+    const list = append(details, 'ul', 'source-link-list source-variant-list');
+    resolved.variants.forEach(variant => appendSourceLink(documentObject, list, { sourceId: resolved.sourceId, selected: variant }));
   }
 
   const EvidenceDrawer = Object.freeze({
-    create(documentObject, item, model, options) {
+    create(context, item, options) {
+      const documentObject = context.documentObject;
+      const services = context.services;
+      invariant(services && services.sourceResolver && services.actorIdentity && services.locationResolver, 'Shared evidence services are unavailable');
       const directReferences = item && (item.source_references || item.source_refs) || [];
       const listedIds = item && (item.source_ids || item.sources) || [];
       const references = [
@@ -513,36 +581,43 @@
       const relatedRecords = options && options.relatedRecords || [];
       const localSources = options && options.localSources || {};
       const details = element(documentObject, 'details', 'evidence-drawer');
-      details.dataset.component = 'EvidenceDrawer';
+      details.dataset.component = 'SharedEvidenceDrawer';
       append(details, 'summary', '', references.length || relatedRecords.length
         ? `Evidence and sources (${references.length + relatedRecords.length})`
         : 'Evidence and sources');
       const body = append(details, 'div', 'evidence-drawer-body');
+      if (item && item.event_id) {
+        const record = item.event && typeof item.event === 'object' ? item.event : item;
+        const temporal = eventTemporalValues(item);
+        const status = eventEvidenceValues(item);
+        const actorValues = item.actor_ids || record.actor_ids || record.actors || [];
+        const locationValues = item.location_ids || record.location_ids || [];
+        const facts = append(body, 'dl', 'evidence-facts');
+        appendDefinition(facts, 'Event ID', item.event_id);
+        appendDefinition(facts, 'Event summary', firstText(record.summary, record.observed_fact, record.headline, item.summary));
+        appendDefinition(facts, 'Occurred', temporal.occurred);
+        appendDefinition(facts, 'First reported / known', temporal.knownBy);
+        appendDefinition(facts, 'Actors', (Array.isArray(actorValues) ? actorValues : [actorValues]).map(value => services.actorIdentity.resolve(value).label));
+        appendDefinition(facts, 'Locations', (Array.isArray(locationValues) ? locationValues : [locationValues]).map(value => {
+          const location = services.locationResolver.resolve(value);
+          return location ? location.label : typeof value === 'string' ? value : null;
+        }));
+        appendDefinition(facts, 'Evidence status', status.support && (DISPLAY_TERMS[status.support] || plainLabel(status.support, 'Evidence status recorded')));
+        appendDefinition(facts, 'Dispute status', status.dispute && (DISPLAY_TERMS[status.dispute] || plainLabel(status.dispute, 'Dispute status recorded')));
+        appendDefinition(facts, 'Unresolved evidence', status.unresolved);
+      }
       if (!references.length && !relatedRecords.length) {
         append(body, 'p', '', 'No source links are attached to this summarized view.');
         return details;
       }
-      const index = new Map(model.sources.records.map(source => [source.source_id, source]));
       if (references.length) {
         append(body, 'h4', '', 'Sources');
-        const list = append(body, 'ul', 'source-link-list');
         references.forEach(reference => {
-          const catalog = index.get(reference.source_id);
-          const record = sourceDisplayRecord(catalog, reference.variant_key) || localSources[reference.source_id];
-          const itemNode = append(list, 'li');
-          const label = publicNarrative(record && (record.outlet || record.publisher || record.title || record.label), reference.source_id);
-          const url = safeExternalUrl(record && record.url);
-          if (url) {
-            const link = append(itemNode, 'a', '', label);
-            link.href = url;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-          } else {
-            append(itemNode, 'span', '', label);
+          let resolved = services.sourceResolver.resolveReference(reference);
+          if (resolved.status === 'missing-source' && localSources[reference.source_id]) {
+            resolved = services.sourceResolver.resolveLocal(reference.source_id, localSources[reference.source_id]);
           }
-          if (catalog && !record) append(itemNode, 'small', '', ' Multiple provenance-scoped records are preserved; no global version was selected.');
-          const supports = publicNarrative(record && (record.supports || record.role), '');
-          if (supports) append(itemNode, 'small', '', ` ${supports}`);
+          appendSourceResolution(documentObject, body, resolved);
         });
       }
       if (relatedRecords.length) {
@@ -558,13 +633,16 @@
     }
   });
 
-  function pointFromRecord(record) {
+  function pointFromRecord(record, locationResolver) {
     if (!record || typeof record !== 'object') return null;
     const candidates = [record, record.location, record.event && record.event.location, record.locations && record.locations[0]];
     for (const candidate of candidates) {
       if (!candidate || typeof candidate !== 'object') continue;
-      const lat = Number(candidate.lat);
-      const lon = Number(candidate.lon);
+      const latValue = candidate.latitude === undefined ? candidate.lat : candidate.latitude;
+      const lonValue = candidate.longitude === undefined ? candidate.lon : candidate.longitude;
+      if (latValue === null || latValue === undefined || latValue === '' || lonValue === null || lonValue === undefined || lonValue === '') continue;
+      const lat = Number(latValue);
+      const lon = Number(lonValue);
       if (!Number.isFinite(lat) || !Number.isFinite(lon)) continue;
       return {
         lat,
@@ -573,15 +651,28 @@
         precision: plainLabel(candidate.precision || record.coordinate_precision, 'Recorded location')
       };
     }
+    const nested = record.event && typeof record.event === 'object' ? record.event : {};
+    const ids = record.location_ids || nested.location_ids || (record.location_id ? [record.location_id] : []);
+    for (const id of Array.isArray(ids) ? ids : [ids]) {
+      const location = locationResolver && locationResolver.resolve(id);
+      if (!location || !Number.isFinite(location.latitude) || !Number.isFinite(location.longitude)) continue;
+      return {
+        lat: location.latitude,
+        lon: location.longitude,
+        label: publicNarrative(location.label, record.event_id || 'Mapped record'),
+        precision: plainLabel(location.precision, 'Recorded location')
+      };
+    }
     return null;
   }
 
   const MapView = Object.freeze({
-    create(documentObject, options) {
+    create(context, options) {
+      const documentObject = context.documentObject;
       const section = element(documentObject, 'section', 'context-map');
       section.dataset.component = 'MapView';
       append(section, 'h2', '', options && options.title || 'Geographic context');
-      const points = (options && options.records || []).map(pointFromRecord).filter(Boolean);
+      const points = (options && options.records || []).map(record => pointFromRecord(record, context.services.locationResolver)).filter(Boolean);
       const unique = points.filter((point, index, rows) => rows.findIndex(row => row.lat === point.lat && row.lon === point.lon && row.label === point.label) === index);
       append(section, 'p', '', options && options.description || (unique.length
         ? `${unique.length.toLocaleString()} source-linked locations are plotted. Marker precision follows the underlying record.`
@@ -645,6 +736,11 @@
       unique.slice(0, 6).forEach(point => append(legend, 'span', '', point.label));
       if (unique.length > 6) append(legend, 'span', '', `+ ${unique.length - 6} more mapped records`);
       append(section, 'small', 'map-caveat', 'Context map · approximate record coordinates · not targeting or navigation data');
+      const equivalent = append(section, 'details');
+      equivalent.dataset.phase5MapEquivalent = 'locations';
+      append(equivalent, 'summary', '', `Locations represented on this map (${unique.length})`);
+      const list = append(equivalent, 'ul');
+      unique.forEach(point => append(list, 'li', '', `${point.label} · ${point.precision}`));
       return section;
     }
   });
@@ -703,7 +799,7 @@
     const sources = sourceIdsFrom(evidenceItem);
     const records = options && options.relatedRecords || relatedRecordsFrom(evidenceItem);
     if (sources.length || records.length || options && options.alwaysShowEvidence) {
-      card.append(EvidenceDrawer.create(context.documentObject, sourceEnvelope(evidenceItem), context.model, {
+      card.append(EvidenceDrawer.create(context, sourceEnvelope(evidenceItem), {
         relatedRecords: records,
         localSources: options && options.localSources || {}
       }));
@@ -728,7 +824,7 @@
       if (step.date || step.kicker) append(body, 'p', 'card-kicker', step.date ? readableDate(step.date) : step.kicker);
       append(body, 'h3', '', step.title);
       if (step.text) append(body, 'p', '', step.text);
-      if (step.item) body.append(EvidenceDrawer.create(context.documentObject, sourceEnvelope(step.item), context.model, {
+      if (step.item) body.append(EvidenceDrawer.create(context, sourceEnvelope(step.item), {
         relatedRecords: step.relatedRecords || relatedRecordsFrom(step.item),
         localSources: step.localSources || {}
       }));
@@ -751,6 +847,25 @@
       append(line, 'strong', 'bar-value', row.display === undefined ? formatNumber(row.value) : row.display);
     });
     if (options && options.note) append(host, 'p', 'chart-note', options.note);
+    const details = append(host, 'details');
+    details.dataset.phase5ChartEquivalent = options && options.key || 'chart-values';
+    append(details, 'summary', '', options && options.valuesLabel || 'Numeric values for this chart');
+    if (options && options.numericNote) append(details, 'p', '', options.numericNote);
+    const table = append(details, 'table');
+    append(table, 'caption', '', options && options.tableCaption || options && options.label || 'Chart values');
+    const thead = append(table, 'thead');
+    const headingRow = append(thead, 'tr');
+    const categoryHeading = append(headingRow, 'th', '', options && options.categoryLabel || 'Category');
+    categoryHeading.scope = 'col';
+    const valueHeading = append(headingRow, 'th', '', options && options.valueLabel || 'Value');
+    valueHeading.scope = 'col';
+    const tbody = append(table, 'tbody');
+    rows.forEach(row => {
+      const tr = append(tbody, 'tr');
+      const th = append(tr, 'th', '', row.label);
+      th.scope = 'row';
+      append(tr, 'td', '', row.display === undefined ? formatNumber(row.value) : row.display);
+    });
     return chart;
   }
 
@@ -768,8 +883,8 @@
     return 'Wider record';
   }
 
-  function mappedChronology(items) {
-    return asArray(items).filter(item => pointFromRecord(item));
+  function mappedChronology(items, locationResolver) {
+    return asArray(items).filter(item => pointFromRecord(item, locationResolver));
   }
 
   function itemTitle(item, fallback) {
@@ -851,7 +966,7 @@
     const actors = eventActors(item);
     if (actors.length) {
       const actorRow = append(card, 'div', 'actor-row');
-      actors.forEach(actor => actorRow.append(ActorIdentity.create(context.documentObject, actor)));
+      actors.forEach(actor => actorRow.append(context.services.actorIdentity.create(context.documentObject, actor)));
     }
     card.append(EvidenceStatus.create(context.documentObject, {
       support: event.evidence_support || event.evidence_status || 'UNKNOWN',
@@ -864,7 +979,7 @@
       const link = append(actions, 'a', '', linkDefinition.label);
       link.href = routeHref(linkDefinition.key, { event: item.event_id });
     });
-    card.append(EvidenceDrawer.create(context.documentObject, item, context.model));
+    card.append(EvidenceDrawer.create(context, item));
     return card;
   }
 
@@ -888,8 +1003,8 @@
     }
     renderDatasetBlocks(frame.article, context, context.route.dataKeys, options && options.limit || 5);
     if (options && options.map) {
-      const mapRecords = context.route.dataKeys.flatMap(key => recordArray(modelData(context.model, key))).filter(item => item && (item.map_ref || item.map_refs || item.location));
-      frame.article.append(MapView.create(context.documentObject, { records: mapRecords }));
+      const mapRecords = context.route.dataKeys.flatMap(key => recordArray(modelData(context.model, key))).filter(item => item && (item.map_ref || item.map_refs || item.location || item.location_id || item.location_ids));
+      frame.article.append(MapView.create(context, { records: mapRecords }));
     }
     renderRelatedLinks(frame.article, context);
     return frame.article;
@@ -906,7 +1021,7 @@
     const whatHappened = addSection(frame.article, 'What happened?', 'content-section lead-story');
     append(whatHappened, 'p', 'lead-copy', publicNarrative(firstWar && firstWar.event && firstWar.event.observed_fact,
       'The United States and Israel opened strikes on Iran, and Iran retaliated against Israel and regional bases hosting U.S. forces.'));
-    if (firstWar) whatHappened.append(EvidenceDrawer.create(context.documentObject, firstWar, context.model));
+    if (firstWar) whatHappened.append(EvidenceDrawer.create(context, firstWar));
 
     const now = addSection(frame.article, 'Where things stand now');
     const nowGrid = append(now, 'div', 'story-grid');
@@ -938,7 +1053,7 @@
     append(record, 'p', '', 'This edition assembles the accepted evidence once and presents the current result directly. Counts describe the evidence collection; they are not a score of who is winning.');
     const metrics = append(record, 'div', 'metric-grid');
     addMetric(metrics, formatNumber(context.model.counts.chronology_records), 'dated chronology records', 'From pre-war context through the current cutoff.');
-    addMetric(metrics, formatNumber(context.model.counts.canonical_source_records), 'source records', 'Conflicting provenance-scoped variants remain separate.');
+    addMetric(metrics, formatNumber(context.model.counts.canonical_source_records), 'source records', 'Conflicting source versions are preserved separately.');
     addMetric(metrics, readableDate(firstWar && firstWar.timeline && firstWar.timeline.date), 'war began', 'The opening event remains linked to its source record.');
     addMetric(metrics, context.model.release.current_osint_cutoff_display, 'evidence reviewed through', 'Later information is not backdated into earlier knowledge states.');
 
@@ -1000,7 +1115,7 @@
       const list = append(section, 'div', 'actor-directory');
       records.forEach(actor => {
         const card = append(list, 'article', 'actor-card');
-        card.append(ActorIdentity.create(context.documentObject, actor.actor_id, { subtitle: true }));
+        card.append(context.services.actorIdentity.create(context.documentObject, actor.actor_id, { subtitle: true }));
       });
     });
     const note = append(frame.article, 'aside', 'scope-note');
@@ -1048,8 +1163,8 @@
       const section = addSection(frame.article, phase.title, 'timeline-month timeline-phase');
       append(section, 'p', 'phase-range', `${readableDate(phase.start)} – ${phase.end.startsWith('9999') ? context.model.release.current_osint_cutoff_display : readableDate(phase.end)}`);
       append(section, 'p', 'section-note', `${phase.text} ${items.length.toLocaleString()} chronology records fall within this period.`);
-      const mapped = mappedChronology(items);
-      if (mapped.length) section.append(MapView.create(context.documentObject, {
+      const mapped = mappedChronology(items, context.services.locationResolver);
+      if (mapped.length) section.append(MapView.create(context, {
         title: `${phase.title}: mapped records`,
         records: mapped,
         description: `${mapped.length.toLocaleString()} records in this phase include source-supported coordinates.`
@@ -1074,7 +1189,7 @@
     const actorSelect = append(actorLabel, 'select');
     append(actorSelect, 'option', '', 'All actors').value = '';
     Array.from(new Set(context.model.chronology.flatMap(eventActors))).sort().forEach(actor => {
-      const option = append(actorSelect, 'option', '', ActorIdentity.resolve(actor).label);
+      const option = append(actorSelect, 'option', '', context.services.actorIdentity.resolve(actor).label);
       option.value = actor;
     });
     const sourceLabel = append(controls, 'label', '', 'Source ID');
@@ -1151,11 +1266,17 @@
     });
     addBarChart(tempo, Array.from(months, ([label, value]) => ({ label, value })), {
       label: 'Monthly count of military-event records in the accepted chronology',
-      note: 'Record counts show documented event tempo, not weapon totals. One record can describe a wave, and quiet dates may reflect collection depth.'
+      note: 'Record counts show documented event tempo, not weapon totals. One record can describe a wave, and quiet dates may reflect collection depth.',
+      key: 'campaign-tempo',
+      valuesLabel: 'Numeric values for recorded event tempo',
+      tableCaption: 'Recorded military-event / strike-record tempo',
+      categoryLabel: 'Period',
+      valueLabel: 'Recorded events',
+      numericNote: 'These are recorded military-event / strike-record counts. They are not total weapons, successful hits, destruction, or exhaustive operational tempo.'
     });
 
     const strikes = recordArray(modelData(context.model, 'reconciliation.strikes'));
-    frame.article.append(MapView.create(context.documentObject, {
+    frame.article.append(MapView.create(context, {
       title: 'Reconciled strike geography',
       records: strikes,
       description: `${strikes.length.toLocaleString()} reconciled strike locations are plotted from the accepted record. Coordinates retain their stated precision.`
@@ -1171,7 +1292,7 @@
   function FacilitiesPage(context) {
     const frame = pageFrame(context, 'Facilities are presented as places with dated damage, continuing-operation and reconstitution evidence—not as isolated strike claims.');
     const facilities = recordArray(modelData(context.model, 'ledger.facilities'));
-    frame.article.append(MapView.create(context.documentObject, {
+    frame.article.append(MapView.create(context, {
       title: 'Facilities in the current record',
       records: facilities,
       description: `${facilities.length.toLocaleString()} canonical facility records include source-supported geographic context.`
@@ -1240,7 +1361,7 @@
     addMetric(usMetrics, formatNumber(corrections.united_states.current_display.total_military_dead), 'Total military dead', 'Combined reported military deaths; not labeled entirely KIA.');
     addMetric(usMetrics, formatNumber(corrections.united_states.current_display.wounded), 'WIA', 'Current cumulative wounded-in-action display.');
     addMetric(usMetrics, formatNumber(corrections.united_states.current_display.missing), 'MIA', 'Retained until a source explicitly resolves formal status.');
-    us.append(EvidenceDrawer.create(context.documentObject, { sources: corrections.united_states.sources.map((_, index) => `US-CAS-${index}`) }, context.model, {
+    us.append(EvidenceDrawer.create(context, { sources: corrections.united_states.sources.map((_, index) => `US-CAS-${index}`) }, {
       localSources: Object.fromEntries(corrections.united_states.sources.map((source, index) => [`US-CAS-${index}`, source]))
     }));
     const iran = append(personnelGrid, 'section', 'casualty-column');
@@ -1249,7 +1370,7 @@
     addMetric(iranMetrics, formatNumber(corrections.iran.official_snapshot.military_dead), 'military-death subtotal', `${readableDate(corrections.iran.official_snapshot.date)} official snapshot; not an August military-only cumulative total.`);
     addMetric(iranMetrics, formatNumber(corrections.iran.official_snapshot.civilian_dead), 'civilian dead', 'Same dated official snapshot.');
     addMetric(iranMetrics, 'Unresolved', 'current military WIA / MIA', 'No supported current national military-only totals are integrated.');
-    iran.append(EvidenceDrawer.create(context.documentObject, { sources: corrections.iran.sources.map((_, index) => `IR-CAS-${index}`) }, context.model, {
+    iran.append(EvidenceDrawer.create(context, { sources: corrections.iran.sources.map((_, index) => `IR-CAS-${index}`) }, {
       localSources: Object.fromEntries(corrections.iran.sources.map((source, index) => [`IR-CAS-${index}`, source]))
     }));
     const warning = append(frame.article, 'aside', 'scope-note');
@@ -1285,7 +1406,7 @@
       const facility = facilities.find(item => item.facility_id === overlay.facility_ref || asArray(item.legacy_ids).includes(overlay.facility_ref));
       return facility ? { ...overlay, name: facility.name, location: facility.location } : overlay;
     });
-    frame.article.append(MapView.create(context.documentObject, {
+    frame.article.append(MapView.create(context, {
       title: 'Locations with imagery or damage-review records',
       records: mapped,
       description: 'Markers identify facilities associated with the imagery review. They do not represent damage polygons or affected-area estimates.'
@@ -1324,7 +1445,7 @@
       { title: 'The end state remains unresolved', text: 'Final authority, revenue, mine-clearing, inspection and permanent passage rules have not been settled. The Atlas therefore records a walk-back and concession, not total Iranian capitulation.', item: latestShipping[1] || {} }
     ]);
 
-    frame.article.append(MapView.create(context.documentObject, {
+    frame.article.append(MapView.create(context, {
       title: 'Hormuz and connected conflict locations',
       records: asArray(hormuz.current_board_delta),
       description: 'Mapped records show verified or qualified conflict developments around the Strait. They are not live ship tracks.'
@@ -1345,7 +1466,7 @@
     const frame = pageFrame(context, 'Commercial traffic never fit a simple open-or-closed label. This record separates observed vessel counts, physical passage, permission, insurance and normal commercial traffic.');
     const shipping = recordArray(modelData(context.model, 'ledger.shipping'));
     const hormuz = modelData(context.model, 'analysis.hormuz');
-    frame.article.append(MapView.create(context.documentObject, {
+    frame.article.append(MapView.create(context, {
       title: 'Maritime incident and pressure geography',
       records: asArray(hormuz.current_board_delta),
       description: 'Locations come from the accepted Hormuz record. The plot is contextual and does not reproduce live AIS tracks.'
@@ -1445,7 +1566,7 @@
     addSequence(sequence, context, recordArray(diplomacy).map(record => ({
       date: record.date,
       title: publicNarrative(record.position_change, 'Diplomatic development'),
-      text: asArray(record.actors).map(actor => ActorIdentity.resolve(actor).label).join(' · '),
+      text: asArray(record.actors).map(actor => context.services.actorIdentity.resolve(actor).label).join(' · '),
       item: record,
       relatedRecords: record.event_refs
     })));
@@ -1510,7 +1631,7 @@
 
     const influence = addSection(frame.article, '11. How it still shapes current talks');
     append(influence, 'p', '', publicNarrative(publicView.mou_now.text));
-    influence.append(EvidenceDrawer.create(context.documentObject, sourceEnvelope(publicView.mou_now), context.model, { localSources }));
+    influence.append(EvidenceDrawer.create(context, sourceEnvelope(publicView.mou_now), { localSources }));
 
     const explorer = addSection(frame.article, '12. Clause explorer');
     append(explorer, 'p', 'section-note', 'Clause summaries preserve the approved analytical text. Open the linked evidence for the document-level source context.');
@@ -1634,7 +1755,7 @@
       addProvenanceCard(grid, context, { kicker: 'Earlier position', title: 'What Iran said it required', text: publicNarrative(change.from) });
       addProvenanceCard(grid, context, { kicker: 'Later position or behavior', title: 'What changed', text: publicNarrative(change.to) });
       if (change.assessment) append(group, 'p', 'supported-conclusion', publicNarrative(change.assessment));
-      group.append(EvidenceDrawer.create(context.documentObject, sourceEnvelope(change), context.model, { localSources: localSourceMap(objectives) }));
+      group.append(EvidenceDrawer.create(context, sourceEnvelope(change), { localSources: localSourceMap(objectives) }));
     });
     const explanation = addSection(frame.article, 'Issue-specific conclusions');
     const list = append(explanation, 'div', 'record-list');
@@ -1696,7 +1817,7 @@
       append(unresolved, 'h3', '', 'What remains unresolved');
       const unresolvedList = append(unresolved, 'ul', 'method-list');
       asArray(claim.unresolved_questions).forEach(value => append(unresolvedList, 'li', '', publicNarrative(value)));
-      section.append(EvidenceDrawer.create(context.documentObject, sourceEnvelope(claim), context.model, { relatedRecords: claim.chronology }));
+      section.append(EvidenceDrawer.create(context, sourceEnvelope(claim), { relatedRecords: claim.chronology }));
     });
     renderRelatedLinks(frame.article, context);
     return frame.article;
@@ -1738,7 +1859,7 @@
   function SourcesPage(context) {
     const frame = pageFrame(context, 'The source catalog behind the current record. A source shows what an outlet, official or technical record reported; it does not automatically prove every claim inside it.');
     const guide = addSection(frame.article, 'How source context works');
-    append(guide, 'p', '', 'Source type, outlet context and the proposition a source supports are kept separate. When the same source ID carries different metadata in different evidence packages, the Atlas preserves those provenance-scoped versions instead of choosing a global winner.');
+    append(guide, 'p', '', 'Source type, outlet context and the proposition a source supports are kept separate. When the same source ID carries conflicting metadata in different evidence packages, the Atlas preserves each version instead of choosing a global winner.');
     const controls = append(frame.article, 'form', 'source-controls');
     controls.addEventListener('submit', event => event.preventDefault());
     const label = append(controls, 'label', '', 'Search sources');
@@ -1749,40 +1870,24 @@
     const count = append(frame.article, 'p', 'section-note');
     const draw = () => {
       const query = search.value.trim().toLowerCase();
-      const sources = context.model.sources.records
+      const sources = context.services.sourceResolver.catalog()
         .filter(source => !query || JSON.stringify(source).toLowerCase().includes(query))
         .sort((left, right) => {
           const variantDifference = asArray(right.variants).length - asArray(left.variants).length;
-          return variantDifference || String(left.source_id).localeCompare(String(right.source_id));
+          return variantDifference || String(left.sourceId).localeCompare(String(right.sourceId));
         });
       list.replaceChildren();
       sources.slice(0, 80).forEach(source => {
-        const record = sourceDisplayRecord(source) || source.variants && source.variants[0] && source.variants[0].record;
+        const record = source.status === 'resolved' && source.selected ? source.selected.record : source.identity;
         const card = append(list, 'article', 'source-card');
-        append(card, 'h2', '', publicNarrative(record && (record.outlet || record.title), source.source_id));
-        append(card, 'p', 'source-id', source.source_id);
-        if (record && record.title && record.title !== record.outlet) append(card, 'p', '', publicNarrative(record.title));
+        card.dataset.sourceId = source.sourceId;
+        append(card, 'h2', '', publicNarrative(record && (record.publisher || record.title), source.sourceId));
+        append(card, 'p', 'source-id', source.sourceId);
+        if (record && record.title && record.title !== record.publisher) append(card, 'p', '', publicNarrative(record.title));
         const contextRow = append(card, 'div', 'source-context-row');
-        append(contextRow, 'span', '', plainLabel(source.outlet_profile && source.outlet_profile.outlet_type, 'Source type not classified'));
-        append(contextRow, 'span', '', source.variants && source.variants.length > 1 ? `${source.variants.length} provenance-scoped versions` : 'One resolved source record');
-        const url = safeExternalUrl(record && record.url);
-        if (url) {
-          const link = append(card, 'a', '', 'Open source');
-          link.href = url;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-        }
-        if (source.variants && source.variants.length > 1) {
-          const variants = append(card, 'details', 'source-variants');
-          append(variants, 'summary', '', 'Compare preserved source contexts');
-          const variantList = append(variants, 'div', 'variant-list');
-          source.variants.forEach(variant => {
-            const variantCard = append(variantList, 'section', 'variant-card');
-            append(variantCard, 'h3', '', publicNarrative(variant.record && (variant.record.outlet || variant.record.title), source.source_id));
-            append(variantCard, 'p', '', publicNarrative(variant.record && variant.record.proof_note, 'This version remains linked to its original evidence package.'));
-            append(variantCard, 'small', '', `Used in ${formatNumber(variant.record && variant.record.records_supported && variant.record.records_supported.length)} linked records`);
-          });
-        }
+        append(contextRow, 'span', '', source.conflict ? 'Source metadata differs across evidence packages' : 'Source record resolved');
+        append(contextRow, 'span', '', source.conflict ? `${source.variants.length} preserved source versions` : 'One current source record');
+        appendSourceResolution(context.documentObject, card, source);
       });
       count.textContent = `${Math.min(sources.length, 80)} of ${sources.length} matching sources shown`;
     };
@@ -1816,7 +1921,7 @@
       { title: 'Follow corrections through time', text: 'New evidence can clarify the current record while the earlier claim, date and revision history remain preserved.' }
     ]);
     const current = addSection(frame.article, 'Current edition');
-    append(current, 'p', '', `The accepted current record contains ${formatNumber(context.model.counts.chronology_records)} chronology records and ${formatNumber(context.model.counts.canonical_source_records)} canonical source records from ${formatNumber(packageLineage.length)} accepted evidence collections, reviewed through ${context.model.release.current_osint_cutoff_display}. The browser receives the already assembled current state; it does not rebuild history by replaying dated updates.`);
+    append(current, 'p', '', `The accepted current record contains ${formatNumber(context.model.counts.chronology_records)} chronology records and ${formatNumber(context.model.counts.canonical_source_records)} canonical source records from ${formatNumber(packageLineage.length)} accepted evidence collections, reviewed through ${context.model.release.current_osint_cutoff_display}. Later corrections remain temporally explicit, so a correction does not pretend the information was known earlier.`);
     renderRelatedLinks(frame.article, context);
     return frame.article;
   }
@@ -1964,11 +2069,11 @@
     const documentObject = settings.documentObject || root.document;
     const windowObject = settings.windowObject || root;
     const rootElement = settings.rootElement;
-    const model = settings.model;
+    const routeRuntime = settings.routeRuntime;
     const state = settings.state;
-    invariant(documentObject && rootElement && model, 'Public IA mount requires a document, root element, and current model');
-    configureActorModel(model);
-    validateRegistry(model);
+    invariant(documentObject && rootElement && routeRuntime && typeof routeRuntime.forRoute === 'function', 'Public IA mount requires a document, root element, and guarded route runtime');
+    const firstRoute = parseRoute(windowObject.location && windowObject.location.hash);
+    const firstAccess = routeRuntime.forRoute(firstRoute);
     if (rootElement.__atlasRouteController) rootElement.__atlasRouteController.destroy();
     const shell = AppShell.create(documentObject);
     rootElement.replaceChildren(shell.app);
@@ -1977,12 +2082,16 @@
     rootElement.setAttribute('aria-busy', 'false');
 
     let previousRouteKey = null;
-    const renderRoute = (focusHeading) => {
+    let currentServices = firstAccess.services;
+    const renderRoute = (focusHeading, prepared) => {
       const route = parseRoute(windowObject.location && windowObject.location.hash);
+      const access = prepared && prepared.routeKey === route.key ? prepared.access : routeRuntime.forRoute(route);
+      const model = access.model;
+      currentServices = access.services;
       if (!route.canonical && windowObject.history && windowObject.location) {
         windowObject.history.replaceState(null, '', routeHref(route.key, route.params));
       }
-      const context = { documentObject, windowObject, model, state, route };
+      const context = { documentObject, windowObject, model, services: access.services, state, route };
       shell.primaryHost.replaceChildren(PublicNavigation.renderPrimary(documentObject, route));
       shell.mobileHost.replaceChildren(PublicNavigation.renderMobile(documentObject, route));
       shell.aside.replaceChildren(PublicNavigation.renderSecondary(documentObject, route));
@@ -2002,17 +2111,15 @@
         if (heading) heading.focus();
       }
       previousRouteKey = route.key;
-      if (typeof windowObject.CustomEvent === 'function' && windowObject.dispatchEvent) {
-        windowObject.dispatchEvent(new windowObject.CustomEvent('atlasroutechange', { detail: { routeKey: route.key, owner: route.owner } }));
-      }
       return route;
     };
     const onHashChange = () => renderRoute(true);
     windowObject.addEventListener('hashchange', onHashChange);
-    const initialRoute = renderRoute(false);
+    const initialRoute = renderRoute(false, { routeKey: firstRoute.key, access: firstAccess });
     const controller = Object.freeze({
       render: () => renderRoute(false),
       current: () => parseRoute(windowObject.location && windowObject.location.hash),
+      services: () => currentServices,
       destroy: () => windowObject.removeEventListener('hashchange', onHashChange),
       initialRoute
     });
@@ -2036,6 +2143,8 @@
     ActorIdentity,
     EvidenceStatus,
     MapView,
+    eventTemporalValues,
+    eventEvidenceValues,
     displayTerm,
     publicNarrative,
     routeHref,

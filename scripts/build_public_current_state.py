@@ -22,9 +22,14 @@ CANONICAL_STATE_PATH = "data/canonical-current-state.json"
 REGISTRY_PATH = "data/public-read-model-registry.json"
 REGISTRY_SCHEMA_PATH = "schemas/public-read-model-registry-v1.json"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "1.1"
+GENERATOR_VERSION = "1.2"
 APPROVED_BASELINE_SHA = "9a93eea6afb1ba2f3899e96dc72e2e66071d41b1"
 SOURCE_ID_RE = re.compile(r"SRC-[A-F0-9]{12}")
+SHARED_PUBLIC_DATASETS = ("current.sources", "current.actors", "current.locations")
+PUBLIC_PAGE_DATASET_ADDITIONS = {
+    # Nuclear Talks compares approved Iran messaging with the agreement record.
+    "diplomacy_mou": ("analysis.iran_messaging",),
+}
 
 
 def canonical_input_bytes(value: bytes) -> bytes:
@@ -121,12 +126,31 @@ class InputReader:
                 raise ValueError(f"Public generation modified input: {relative}")
 
 
+def authorize_shared_public_datasets(pages: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Add the evidence services every public page may use.
+
+    The registry remains the owner of page-specific analytical data. The public
+    read-model builder owns this small, deterministic cross-page authorization
+    for source, actor, and location resolution.
+    """
+    return {
+        page: list(dict.fromkeys([
+            *values,
+            *PUBLIC_PAGE_DATASET_ADDITIONS.get(page, ()),
+            *SHARED_PUBLIC_DATASETS,
+        ]))
+        for page, values in pages.items()
+    }
+
+
 def read_registry(root: Path = ROOT) -> tuple[list[tuple[str, str, str]], dict[str, list[str]]]:
     payload = json.loads(canonical_input_bytes((root / REGISTRY_PATH).read_bytes()).decode("utf-8"))
     if payload.get("schema_version") != "1.0" or payload.get("artifact_role") != "PUBLIC_READ_MODEL_DATASET_REGISTRY":
         raise ValueError("Public read-model dataset registry identity is invalid")
     specs = [(item["key"], item["path"], item["role"]) for item in payload.get("datasets") or []]
-    pages = {key: list(values) for key, values in (payload.get("page_data") or {}).items()}
+    pages = authorize_shared_public_datasets(
+        {key: list(values) for key, values in (payload.get("page_data") or {}).items()}
+    )
     if not specs or not pages:
         raise ValueError("Public read-model dataset registry is incomplete")
     return specs, pages
@@ -145,7 +169,9 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     reader.json(REGISTRY_SCHEMA_PATH, "PUBLIC_READ_MODEL_DATASET_REGISTRY_SCHEMA")
     registry = reader.json(REGISTRY_PATH, "PUBLIC_READ_MODEL_DATASET_REGISTRY")
     dataset_specs = [(item["key"], item["path"], item["role"]) for item in registry.get("datasets") or []]
-    page_datasets = {key: list(values) for key, values in (registry.get("page_data") or {}).items()}
+    page_datasets = authorize_shared_public_datasets(
+        {key: list(values) for key, values in (registry.get("page_data") or {}).items()}
+    )
     canonical = reader.json(CANONICAL_STATE_PATH, "DERIVED_CANONICAL_CURRENT_ENTITY_STATE")
     if canonical.get("artifact_role") != "DERIVED_CANONICAL_CURRENT_ENTITY_STATE":
         raise ValueError("Canonical current-state artifact role is invalid")

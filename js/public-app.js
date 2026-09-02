@@ -34,7 +34,8 @@
   }
 
   function freezeContract(modelPage, datasets) {
-    return Object.freeze({ modelPage, datasets: Object.freeze(datasets.slice()) });
+    const shared = ['current.sources', 'current.actors', 'current.locations'];
+    return Object.freeze({ modelPage, datasets: Object.freeze(Array.from(new Set([...shared, ...datasets]))) });
   }
 
   /*
@@ -42,35 +43,35 @@
    *
    * This is deliberately independent of the network/loading architecture. It
    * declares what each accepted page owner may consume from the already-loaded
-   * public read model. `current.sources` is shared because the evidence/source
-   * experience is available consistently on every route.
+   * public read model. Shared source, actor, and location authority is emitted
+   * into every generated page-data mapping by the public read-model builder.
    */
   const ROUTE_DATA_DEPENDENCIES = Object.freeze({
-    'start.overview': freezeContract('start_here', ['current.sources', 'current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view']),
-    'start.actors': freezeContract('start_here', ['current.sources', 'current.chronology', 'current.actors']),
-    'timeline.war': freezeContract('timeline', ['current.sources', 'current.chronology']),
-    'timeline.chronology': freezeContract('timeline', ['current.sources', 'current.chronology']),
-    'military.campaigns': freezeContract('military_record', ['current.sources', 'current.chronology', 'reconciliation.strikes']),
-    'military.facilities': freezeContract('military_record', ['current.sources', 'ledger.facilities']),
-    'military.weapons': freezeContract('military_record', ['current.sources', 'ledger.munitions_expenditure', 'ledger.attrition_series']),
-    'military.losses': freezeContract('military_record', ['current.sources', 'current.material_losses', 'analysis.casualty_corrections']),
-    'military.imagery': freezeContract('military_record', ['current.sources', 'ledger.bda_overlays', 'ledger.facilities']),
-    'hormuz.overview': freezeContract('hormuz_economy', ['current.sources', 'analysis.hormuz', 'ledger.shipping']),
-    'hormuz.shipping': freezeContract('hormuz_economy', ['current.sources', 'ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz']),
-    'hormuz.economy': freezeContract('hormuz_economy', ['current.sources', 'ledger.economics', 'analysis.china_oil_shift']),
-    'hormuz.talks': freezeContract('hormuz_economy', ['current.sources', 'current.chronology', 'analysis.hormuz']),
-    'talks.overview': freezeContract('diplomacy_mou', ['current.sources', 'ledger.diplomacy']),
-    'talks.mou': freezeContract('diplomacy_mou', ['current.sources', 'analysis.hormuz', 'analysis.endgame_public_view']),
-    'talks.nuclear': freezeContract('diplomacy_mou', ['current.sources', 'analysis.iran_messaging', 'analysis.endgame_public_view']),
-    'talks.regional': freezeContract('diplomacy_mou', ['current.sources', 'ledger.agreements']),
-    'objectives.outcomes': freezeContract('objectives_position_changes', ['current.sources', 'analysis.iran_outcomes', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections']),
-    'objectives.positions': freezeContract('objectives_position_changes', ['current.sources', 'analysis.endgame_us_objectives', 'analysis.iran_messaging']),
-    'objectives.iran': freezeContract('objectives_position_changes', ['current.sources', 'analysis.iran_messaging']),
-    'evidence.claims': freezeContract('claims_sources', ['current.sources', 'current.claims']),
-    'evidence.information': freezeContract('claims_sources', ['current.sources', 'analysis.information_war_claims', 'analysis.influence_networks']),
-    'evidence.sources': freezeContract('claims_sources', ['current.sources']),
-    'evidence.method': freezeContract('claims_sources', ['current.sources']),
-    'evidence.archive': freezeContract('claims_sources', ['current.sources', 'archive.snapshot_index'])
+    'start.overview': freezeContract('start_here', ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view']),
+    'start.actors': freezeContract('start_here', ['current.chronology']),
+    'timeline.war': freezeContract('timeline', ['current.chronology', 'ledger.daily_coverage']),
+    'timeline.chronology': freezeContract('timeline', ['current.chronology', 'ledger.map_links']),
+    'military.campaigns': freezeContract('military_record', ['current.chronology', 'ledger.map_links', 'reconciliation.strikes']),
+    'military.facilities': freezeContract('military_record', ['ledger.facilities', 'ledger.map_links']),
+    'military.weapons': freezeContract('military_record', ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses']),
+    'military.losses': freezeContract('military_record', ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'analysis.casualty_corrections']),
+    'military.imagery': freezeContract('military_record', ['ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits']),
+    'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'ledger.agreements', 'ledger.shipping']),
+    'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz']),
+    'hormuz.economy': freezeContract('hormuz_economy', ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes']),
+    'hormuz.talks': freezeContract('hormuz_economy', ['current.chronology', 'ledger.agreements', 'analysis.hormuz']),
+    'talks.overview': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy']),
+    'talks.mou': freezeContract('diplomacy_mou', ['ledger.agreements', 'analysis.hormuz', 'analysis.endgame_public_view', 'analysis.endgame_current_aug25', 'analysis.endgame_current_aug26']),
+    'talks.nuclear': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy', 'analysis.iran_messaging', 'analysis.endgame_public_view']),
+    'talks.regional': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy']),
+    'objectives.outcomes': freezeContract('objectives_position_changes', ['analysis.iran_outcomes', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections', 'analysis.outcome_evidence_links']),
+    'objectives.positions': freezeContract('objectives_position_changes', ['current.chronology', 'analysis.endgame_public_view', 'analysis.outcome_evidence_links', 'analysis.endgame_us_objectives', 'analysis.iran_messaging']),
+    'objectives.iran': freezeContract('objectives_position_changes', ['analysis.iran_messaging']),
+    'evidence.claims': freezeContract('claims_sources', ['current.claims', 'forensic.public_assessments']),
+    'evidence.information': freezeContract('claims_sources', ['analysis.information_war_claims', 'analysis.influence_networks', 'forensic.claim_evolution']),
+    'evidence.sources': freezeContract('claims_sources', ['analysis.source_context', 'analysis.media_bias_provider']),
+    'evidence.method': freezeContract('claims_sources', ['ledger.source_role_map', 'ledger.revision_history', 'reconciliation.coverage_audit']),
+    'evidence.archive': freezeContract('claims_sources', ['archive.snapshot_index'])
   });
 
   const ROUTE_HASH_TO_KEY = Object.freeze({
@@ -208,11 +209,13 @@
   function datasetExists(model, key) {
     if (key === 'current.chronology') return Array.isArray(model.chronology);
     if (key === 'current.sources') return Boolean(model.sources && Array.isArray(model.sources.records));
+    if (key === 'current.actors') return Boolean(model.entities && Array.isArray(model.entities.actors));
+    if (key === 'current.locations') return Boolean(model.entities && Array.isArray(model.entities.locations));
     return Boolean(model.datasets && Object.prototype.hasOwnProperty.call(model.datasets, key));
   }
 
   function datasetRole(model, key) {
-    if (key === 'current.chronology' || key === 'current.sources') return 'DERIVED_CANONICAL_CURRENT_ENTITY_STATE';
+    if (['current.chronology', 'current.sources', 'current.actors', 'current.locations'].includes(key)) return 'DERIVED_CANONICAL_CURRENT_ENTITY_STATE';
     return model.datasets && model.datasets[key] ? model.datasets[key].role : null;
   }
 
@@ -243,6 +246,7 @@
       const pageMapping = model.page_data && model.page_data[contract.modelPage];
       invariant(pageMapping && Array.isArray(pageMapping.dataset_keys), 'MODEL_INVALID', `Route ${routeKey} maps missing page-data owner ${contract.modelPage}.`);
       for (const key of contract.datasets) {
+        invariant(pageMapping.dataset_keys.includes(key), 'MODEL_INVALID', `Route ${routeKey} declares ${key} outside generated page-data owner ${contract.modelPage}.`);
         invariant(!key.startsWith('legacy.'), 'MODEL_INVALID', `Route ${routeKey} declares legacy dataset ${key}.`);
         invariant(datasetExists(model, key), 'MODEL_INVALID', `Route ${routeKey} declares missing dataset ${key}.`);
         invariant(datasetRole(model, key) !== 'HISTORICAL_REFERENCE_DATA', 'MODEL_INVALID', `Route ${routeKey} declares historical-reference dataset ${key}.`);
@@ -279,80 +283,140 @@
     return model;
   }
 
-  function routeKeyFor(windowObject, state, ia) {
-    if (ia && typeof ia.parseRoute === 'function' && windowObject && windowObject.location) {
-      try {
-        const parsed = ia.parseRoute(windowObject.location.hash || '');
-        if (parsed && parsed.key && ROUTE_DATA_DEPENDENCIES[parsed.key]) return parsed.key;
-      } catch (_) { /* fall through to state/hash lookup */ }
-    }
-    if (state && state.routeKey && ROUTE_DATA_DEPENDENCIES[state.routeKey]) return state.routeKey;
-    const hash = windowObject && windowObject.location ? String(windowObject.location.hash || '').replace(/[?].*$/, '') : '';
-    if (ROUTE_HASH_TO_KEY[hash]) return ROUTE_HASH_TO_KEY[hash];
-    return 'start.overview';
-  }
+  const ENTITY_DATASET_BY_PROPERTY = Object.freeze({
+    actors: 'current.actors',
+    locations: 'current.locations',
+    claims: 'current.claims',
+    material_losses: 'current.material_losses',
+    relationships: 'current.relationships'
+  });
 
-  function createRouteGuardedModel(model, options) {
-    const settings = options || {};
-    let enforcing = settings.enforcing === true;
-    const contract = settings.contracts || ROUTE_DATA_DEPENDENCIES;
-    const ia = settings.ia || null;
-    const state = settings.state || null;
-    const windowObject = settings.windowObject || null;
-
-    function requireDependency(key) {
-      if (!enforcing) return true;
-      const routeKey = routeKeyFor(windowObject, state, ia);
-      const routeContract = contract[routeKey];
-      invariant(routeContract, 'UNDECLARED_DATA_DEPENDENCY', `No data contract exists for route ${routeKey}.`);
-      invariant(routeContract.datasets.includes(key), 'UNDECLARED_DATA_DEPENDENCY', `Route ${routeKey} attempted undeclared dataset access: ${key}.`);
-      return true;
-    }
-
-    const datasetsProxy = new Proxy(model.datasets || {}, {
+  function createRouteModelView(model, routeKey, contracts) {
+    const contract = (contracts || ROUTE_DATA_DEPENDENCIES)[routeKey];
+    invariant(contract, 'UNDECLARED_DATA_DEPENDENCY', `No data contract exists for route ${routeKey}.`);
+    const allowed = new Set(contract.datasets);
+    const requireDependency = key => {
+      invariant(allowed.has(key), 'UNDECLARED_DATA_DEPENDENCY', `Route ${routeKey} attempted undeclared dataset access: ${key}.`);
+    };
+    const datasets = new Proxy(model.datasets || {}, {
       get(target, prop, receiver) {
-        if (typeof prop === 'string' && Object.prototype.hasOwnProperty.call(target, prop)) requireDependency(prop);
+        if (typeof prop === 'string') requireDependency(prop);
+        return Reflect.get(target, prop, receiver);
+      },
+      has(target, prop) {
+        if (typeof prop === 'string') requireDependency(prop);
+        return Reflect.has(target, prop);
+      },
+      ownKeys(target) {
+        return Reflect.ownKeys(target).filter(key => typeof key !== 'string' || allowed.has(key));
+      },
+      getOwnPropertyDescriptor(target, prop) {
+        if (typeof prop === 'string' && !allowed.has(prop)) return undefined;
+        return Reflect.getOwnPropertyDescriptor(target, prop);
+      }
+    });
+    const sources = new Proxy(model.sources || {}, {
+      get(target, prop, receiver) {
+        if (typeof prop === 'string') requireDependency('current.sources');
         return Reflect.get(target, prop, receiver);
       }
     });
-    const sourcesProxy = new Proxy(model.sources || {}, {
+    const entities = new Proxy(model.entities || {}, {
       get(target, prop, receiver) {
-        if (prop === 'records') requireDependency('current.sources');
+        if (typeof prop === 'string') {
+          const key = ENTITY_DATASET_BY_PROPERTY[prop];
+          invariant(key, 'UNDECLARED_DATA_DEPENDENCY', `Route ${routeKey} attempted undeclared entity access: ${prop}.`);
+          requireDependency(key);
+        }
         return Reflect.get(target, prop, receiver);
+      },
+      ownKeys(target) {
+        return Reflect.ownKeys(target).filter(prop => typeof prop !== 'string' || allowed.has(ENTITY_DATASET_BY_PROPERTY[prop]));
+      },
+      getOwnPropertyDescriptor(target, prop) {
+        if (typeof prop === 'string' && !allowed.has(ENTITY_DATASET_BY_PROPERTY[prop])) return undefined;
+        return Reflect.getOwnPropertyDescriptor(target, prop);
       }
     });
-    const entityKeyByProperty = Object.freeze({
-      actors: 'current.actors',
-      locations: 'current.locations',
-      claims: 'current.claims',
-      material_losses: 'current.material_losses',
-      relationships: 'current.relationships'
-    });
-    const entitiesProxy = new Proxy(model.entities || {}, {
-      get(target, prop, receiver) {
-        if (typeof prop === 'string' && entityKeyByProperty[prop]) requireDependency(entityKeyByProperty[prop]);
-        return Reflect.get(target, prop, receiver);
-      }
-    });
-    const guarded = new Proxy(model, {
-      get(target, prop, receiver) {
-        if (prop === 'chronology') requireDependency('current.chronology');
+    const metadata = new Set(['schema_version', 'artifact_role', 'release', 'counts', 'integrity', 'input_packages']);
+    return new Proxy(Object.create(null), {
+      get(_target, prop) {
+        if (prop === 'chronology') {
+          requireDependency('current.chronology');
+          return model.chronology;
+        }
         if (prop === 'sources') {
           requireDependency('current.sources');
-          return sourcesProxy;
+          return sources;
         }
-        if (prop === 'datasets') return datasetsProxy;
-        if (prop === 'entities') return entitiesProxy;
-        return Reflect.get(target, prop, receiver);
-      }
+        if (prop === 'entities') return entities;
+        if (prop === 'datasets') return datasets;
+        if (typeof prop === 'string' && metadata.has(prop)) return model[prop];
+        if (typeof prop === 'symbol') return undefined;
+        throw new AtlasBootError('UNDECLARED_DATA_DEPENDENCY', `Route ${routeKey} attempted undeclared model access: ${String(prop)}.`);
+      },
+      ownKeys() { return [...metadata, 'chronology', 'sources', 'entities', 'datasets']; },
+      getOwnPropertyDescriptor() { return { enumerable: true, configurable: true }; }
     });
+  }
+
+  function createLocationResolver(model) {
+    const records = model && model.entities && Array.isArray(model.entities.locations) ? model.entities.locations : [];
+    const byId = new Map();
+    for (const item of records) {
+      const record = item && item.record ? item.record : item;
+      if (record && record.location_id) byId.set(record.location_id, record);
+    }
+    function coordinate(value) {
+      if (value === null || value === undefined || value === '') return null;
+      const number = Number(value);
+      return Number.isFinite(number) ? number : null;
+    }
+    function resolve(value) {
+      const record = typeof value === 'string' ? byId.get(value) : value && value.record ? value.record : value;
+      if (!record || typeof record !== 'object') return null;
+      return Object.freeze({
+        locationId: record.location_id || (typeof value === 'string' ? value : null),
+        label: firstString(record.canonical_name, record.name, record.label, record.location_id),
+        latitude: coordinate(record.latitude === undefined ? record.lat : record.latitude),
+        longitude: coordinate(record.longitude === undefined ? record.lon : record.longitude),
+        precision: firstString(record.coordinate_precision, record.precision)
+      });
+    }
+    return Object.freeze({ size: byId.size, resolve });
+  }
+
+  function createRouteRuntime(model, options) {
+    const settings = options || {};
+    const contracts = settings.contracts || ROUTE_DATA_DEPENDENCIES;
+    const ia = settings.ia;
+    invariant(ia && ia.ActorIdentity && typeof ia.ActorIdentity.createResolver === 'function', 'RENDERER_UNAVAILABLE', 'The actor-identity authority is unavailable.');
+    validatePageDataMappings(model);
+    validateRouteDependencies(model, contracts);
+    let services = null;
+    let sourceIndexBuilds = 0;
+    const views = new Map();
+    function forRoute(routeValue) {
+      const routeKey = typeof routeValue === 'string' ? routeValue : routeValue && routeValue.key;
+      invariant(routeKey && contracts[routeKey], 'UNDECLARED_DATA_DEPENDENCY', `No data contract exists for route ${routeKey || 'unknown'}.`);
+      if (!views.has(routeKey)) views.set(routeKey, createRouteModelView(model, routeKey, contracts));
+      const routeModel = views.get(routeKey);
+      if (!services) {
+        const sourceResolver = createSourceResolver(routeModel);
+        sourceIndexBuilds += 1;
+        services = Object.freeze({
+          sourceResolver,
+          actorIdentity: ia.ActorIdentity.createResolver(routeModel),
+          locationResolver: createLocationResolver(routeModel)
+        });
+      }
+      return Object.freeze({ model: routeModel, services });
+    }
     return Object.freeze({
-      model: guarded,
-      enable() { enforcing = true; },
-      disable() { enforcing = false; },
-      isEnabled() { return enforcing; },
-      requireDependency,
-      currentRouteKey() { return routeKeyFor(windowObject, state, ia); }
+      forRoute,
+      diagnostics() {
+        return Object.freeze({ sourceIndexBuilds, routeViewCount: views.size, sourceCount: services ? services.sourceResolver.size : 0 });
+      }
     });
   }
 
@@ -365,8 +429,9 @@
 
   function safeHttpUrl(value) {
     if (!value || typeof value !== 'string') return null;
+    if (!/^https?:\/\//i.test(value.trim())) return null;
     try {
-      const parsed = new URL(value, root.location && root.location.href ? root.location.href : 'https://atlas.invalid/');
+      const parsed = new URL(value.trim());
       return parsed.protocol === 'http:' || parsed.protocol === 'https:' ? parsed.href : null;
     } catch (_) {
       return null;
@@ -382,6 +447,7 @@
       publicationDate: firstString(value.publication_date, value.published_at, value.published, value.date, value.source_date),
       context: firstString(value.context, value.source_context, value.notes, value.note, value.evidence_context),
       role: firstString(value.source_role, value.role, value.evidence_role, value.type),
+      supports: firstString(value.supports, value.proof_note, value.evidence_note),
       raw: value
     });
   }
@@ -426,7 +492,22 @@
     }
 
     function isConflict(source) {
-      return Boolean(source && (source.resolution === 'PROVENANCE_SCOPED_VARIANTS_REQUIRED' || (source.variants || []).length > 1));
+      return Boolean(source && source.resolution === 'PROVENANCE_SCOPED_VARIANTS_REQUIRED');
+    }
+
+    function neutralIdentity(source) {
+      const registry = source && source.registry || {};
+      const profile = source && source.outlet_profile || {};
+      return Object.freeze({
+        title: firstString(registry.title),
+        publisher: firstString(profile.display_name),
+        url: safeHttpUrl(firstString(registry.url)),
+        publicationDate: firstString(registry.publication_date),
+        role: Array.isArray(registry.source_roles) ? registry.source_roles.join('; ') : null,
+        context: firstString(registry.lineage, profile.ownership_note),
+        supports: null,
+        raw: Object.freeze({})
+      });
     }
 
     function resolve(sourceId, variantKey) {
@@ -435,11 +516,11 @@
       const variants = source.variants || [];
       if (variantKey) {
         const variant = (variantBySource.get(sourceId) || new Map()).get(variantKey);
-        if (!variant) return Object.freeze({ status: 'missing-variant', sourceId, variantKey, conflict: isConflict(source), variants: Object.freeze(variants.map(item => variantView(source, item))) });
-        return Object.freeze({ status: 'resolved', sourceId, variantKey, conflict: isConflict(source), selected: variantView(source, variant), variants: Object.freeze(variants.map(item => variantView(source, item))) });
+        if (!variant) return Object.freeze({ status: 'missing-variant', sourceId, variantKey, resolution: source.resolution, conflict: isConflict(source), identity: neutralIdentity(source), variants: Object.freeze(variants.map(item => variantView(source, item))) });
+        return Object.freeze({ status: 'resolved', sourceId, variantKey, resolution: source.resolution, conflict: isConflict(source), identity: neutralIdentity(source), selected: variantView(source, variant), variants: Object.freeze(variants.map(item => variantView(source, item))) });
       }
       if (isConflict(source)) {
-        return Object.freeze({ status: 'variant-required', sourceId, variantKey: null, conflict: true, variants: Object.freeze(variants.map(item => variantView(source, item))) });
+        return Object.freeze({ status: 'variant-required', sourceId, variantKey: null, resolution: source.resolution, conflict: true, identity: neutralIdentity(source), variants: Object.freeze(variants.map(item => variantView(source, item))) });
       }
       const selectedVariant = variants.length === 1 ? variantView(source, variants[0]) : null;
       const canonicalRecord = source.record ? sourceRecordView(source.record) : (selectedVariant ? selectedVariant.record : sourceRecordView({}));
@@ -447,7 +528,9 @@
         status: 'resolved',
         sourceId,
         variantKey: selectedVariant ? selectedVariant.variantKey : null,
+        resolution: source.resolution,
         conflict: false,
+        identity: neutralIdentity(source),
         selected: Object.freeze({
           sourceId,
           variantKey: selectedVariant ? selectedVariant.variantKey : null,
@@ -471,485 +554,13 @@
         const result = resolve(sourceId, null);
         return result.variants || Object.freeze([]);
       },
+      resolveLocal(sourceId, record) {
+        const selected = Object.freeze({ sourceId, variantKey: null, packageLabel: null, record: sourceRecordView(record), rawVariant: null });
+        return Object.freeze({ status: 'resolved', sourceId, variantKey: null, resolution: 'LOCAL_PAGE_REFERENCE', conflict: false, identity: selected.record, selected, variants: Object.freeze([]) });
+      },
+      catalog() { return Object.freeze(records.map(source => resolve(source.source_id, null))); },
       conflictedSourceIds: Object.freeze(records.filter(isConflict).map(source => source.source_id).sort())
     });
-  }
-
-  function createIdentityResolver(model) {
-    const entities = model && model.entities ? model.entities : {};
-    function keyedMap(items, keys) {
-      const map = new Map();
-      for (const item of Array.isArray(items) ? items : []) {
-        const value = item && item.record ? item.record : item;
-        for (const key of keys) {
-          if (value && typeof value[key] === 'string') map.set(value[key], value);
-        }
-      }
-      return map;
-    }
-    const actors = keyedMap(entities.actors, ['actor_id', 'id']);
-    const locations = keyedMap(entities.locations, ['location_id', 'id']);
-    function actorLabel(value) {
-      if (typeof value === 'string') {
-        const actor = actors.get(value);
-        if (!actor) return value;
-        const name = firstString(actor.name, actor.label, actor.display_name, value);
-        const role = firstString(actor.role, actor.role_label, actor.title);
-        const affiliation = firstString(actor.affiliation, actor.affiliation_label, actor.organization);
-        return [name, role, affiliation].filter(Boolean).join(' — ');
-      }
-      if (value && typeof value === 'object') return firstString(value.name, value.label, value.display_name, value.actor_id, value.id);
-      return null;
-    }
-    function locationLabel(value) {
-      if (typeof value === 'string') {
-        const location = locations.get(value);
-        return location ? firstString(location.name, location.label, location.display_name, value) : value;
-      }
-      if (value && typeof value === 'object') return firstString(value.name, value.label, value.display_name, value.location_id, value.id);
-      return null;
-    }
-    return Object.freeze({ actorLabel, locationLabel });
-  }
-
-  const PUBLIC_LANGUAGE_REPLACEMENTS = Object.freeze([
-    Object.freeze({
-      find: 'Conflicting provenance-scoped variants remain separate.',
-      replace: 'Conflicting source versions are preserved separately.'
-    }),
-    Object.freeze({
-      find: 'Multiple provenance-scoped records are preserved; no global version was selected.',
-      replace: 'This source appears differently in preserved evidence packages, so Atlas keeps each version rather than silently choosing one.'
-    }),
-    Object.freeze({
-      find: 'provenance-scoped versions',
-      replace: 'preserved source versions'
-    }),
-    Object.freeze({
-      find: 'provenance-scoped variants',
-      replace: 'conflicting source versions'
-    }),
-    Object.freeze({
-      find: 'The browser receives the already assembled current state; it does not rebuild history by replaying dated updates.',
-      replace: 'Later corrections remain temporally explicit, so a correction does not pretend the information was known earlier.'
-    })
-  ]);
-
-  function rewritePublicLanguageText(text) {
-    let output = String(text || '');
-    for (const replacement of PUBLIC_LANGUAGE_REPLACEMENTS) output = output.split(replacement.find).join(replacement.replace);
-    return output;
-  }
-
-  function rewritePublicLanguage(rootElement) {
-    function visit(node) {
-      if (!node) return;
-      if (node.nodeType === 3 && typeof node.nodeValue === 'string') {
-        node.nodeValue = rewritePublicLanguageText(node.nodeValue);
-        return;
-      }
-      for (const child of Array.from(node.childNodes || [])) visit(child);
-    }
-    visit(rootElement);
-  }
-
-  function appendDefinition(documentObject, list, term, value) {
-    if (value === null || value === undefined || value === '') return;
-    const dt = documentObject.createElement('dt');
-    dt.textContent = term;
-    const dd = documentObject.createElement('dd');
-    dd.textContent = Array.isArray(value) ? value.filter(Boolean).join('; ') : String(value);
-    list.append(dt, dd);
-  }
-
-  function eventOccurrence(event) {
-  if (!event || typeof event !== 'object') return null;
-  const timeline = event.timeline && typeof event.timeline === 'object' ? event.timeline : {};
-  const record = event.event && typeof event.event === 'object' ? event.event : {};
-  const direct = firstString(
-    event.occurred_at,
-    event.occurrence_at,
-    event.timestamp,
-    event.datetime,
-    event.date_time,
-    timeline.occurred_at,
-    timeline.occurrence_at,
-    record.occurred_at,
-    record.occurrence_at,
-    record.timestamp,
-    record.datetime,
-    record.date_time
-  );
-  if (direct) return direct;
-  const date = firstString(
-    event.date,
-    event.occurrence_date,
-    event.event_date,
-    timeline.date,
-    timeline.day,
-    record.event_date,
-    record.date
-  );
-  const time = firstString(
-    event.time,
-    event.occurrence_time,
-    event.event_time,
-    timeline.time,
-    record.event_time,
-    record.time
-  );
-  return date && time ? `${date} ${time}` : date;
-}
-
-function eventKnownBy(event) {
-  if (!event || typeof event !== 'object') return null;
-  const timeline = event.timeline && typeof event.timeline === 'object' ? event.timeline : {};
-  const record = event.event && typeof event.event === 'object' ? event.event : {};
-  const revisionKnown = (Array.isArray(event.revisions) ? event.revisions : [])
-    .map(revision => revision && revision.known_at)
-    .filter(Boolean)
-    .sort()[0] || null;
-  return firstString(
-    event.known_at,
-    event.known_by,
-    event.first_verified_at,
-    event.first_verified,
-    timeline.known_at,
-    timeline.known_by,
-    timeline.first_verified,
-    timeline.first_reported,
-    record.known_at,
-    record.known_by,
-    record.first_verified_at,
-    record.first_verified,
-    record.first_reported,
-    revisionKnown
-  );
-}
-
-  function normalizeActorValues(event) {
-    const raw = event && (event.actor_ids || event.actors || event.actor_id || event.actor);
-    if (Array.isArray(raw)) return raw;
-    return raw ? [raw] : [];
-  }
-
-  function eventLocationValue(event) {
-    if (!event) return null;
-    if (event.location_id) return event.location_id;
-    if (event.location) return event.location;
-    if (Array.isArray(event.locations) && event.locations.length) return event.locations[0];
-    return null;
-  }
-
-  function evidenceStatusValues(event) {
-    if (!event || typeof event !== 'object') return Object.freeze({ support: null, dispute: null });
-    const evidence = event.evidence && typeof event.evidence === 'object' ? event.evidence : {};
-    return Object.freeze({
-      support: firstString(event.evidence_support, event.evidence_status, evidence.support, evidence.status),
-      dispute: firstString(event.dispute_status, event.dispute, evidence.dispute, evidence.dispute_status)
-    });
-  }
-
-  function findEventForDrawer(drawer, eventById, eventIds) {
-    let node = drawer;
-    for (let depth = 0; node && depth < 7; depth += 1, node = node.parentElement) {
-      const candidates = [
-        node.getAttribute && node.getAttribute('data-event-id'),
-        node.getAttribute && node.getAttribute('data-record-id'),
-        node.dataset && node.dataset.eventId,
-        node.dataset && node.dataset.recordId
-      ].filter(Boolean);
-      for (const value of candidates) if (eventById.has(value)) return eventById.get(value);
-      const text = typeof node.textContent === 'string' ? node.textContent : '';
-      for (const eventId of eventIds) if (text.includes(eventId)) return eventById.get(eventId);
-    }
-    return null;
-  }
-
-  function sourceLink(documentObject, resolved) {
-    const selected = resolved && resolved.selected;
-    const record = selected && selected.record;
-    const li = documentObject.createElement('li');
-    const label = record && (record.title || record.publisher) ? (record.title || record.publisher) : resolved.sourceId;
-    if (record && record.url) {
-      const link = documentObject.createElement('a');
-      link.href = record.url;
-      link.textContent = label;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      li.append(link);
-    } else {
-      li.append(documentObject.createTextNode(label || resolved.sourceId));
-    }
-    const meta = [record && record.publisher, record && record.publicationDate, selected && selected.variantKey ? `version ${selected.variantKey}` : null].filter(Boolean);
-    if (meta.length) {
-      const small = documentObject.createElement('small');
-      small.textContent = ` — ${meta.join(' · ')}`;
-      li.append(small);
-    }
-    if (record && record.context) {
-      const context = documentObject.createElement('div');
-      context.className = 'source-context';
-      context.textContent = record.context;
-      li.append(context);
-    }
-    return li;
-  }
-
-  function appendConflictVariants(documentObject, parent, resolved) {
-    const note = documentObject.createElement('p');
-    note.className = 'source-variant-note';
-    note.textContent = 'This source appears differently in preserved evidence packages, so Atlas keeps each version rather than silently choosing one.';
-    parent.append(note);
-    const list = documentObject.createElement('ul');
-    list.className = 'source-list source-variant-list';
-    for (const variant of resolved.variants || []) {
-      const variantResolved = Object.freeze({ sourceId: resolved.sourceId, selected: variant });
-      const li = sourceLink(documentObject, variantResolved);
-      if (variant.packageLabel) {
-        const packageDetail = documentObject.createElement('small');
-        packageDetail.textContent = ` Preserved in: ${variant.packageLabel}.`;
-        li.append(packageDetail);
-      }
-      list.append(li);
-    }
-    parent.append(list);
-  }
-
-  function rebuildEventEvidenceDrawer(drawer, event, services) {
-    const documentObject = services.documentObject;
-    const resolver = services.sourceResolver;
-    const identity = services.identityResolver;
-    const summary = drawer.querySelector('summary') || documentObject.createElement('summary');
-    const references = Array.isArray(event.source_references) ? event.source_references : [];
-    summary.textContent = `Evidence and sources${references.length ? ` (${references.length})` : ''}`;
-    summary.style.minHeight = '44px';
-    const body = documentObject.createElement('div');
-    body.className = 'evidence-drawer-body shared-evidence-drawer-body';
-    const facts = documentObject.createElement('dl');
-    facts.className = 'evidence-facts';
-    appendDefinition(documentObject, facts, 'Event ID', event.event_id);
-    appendDefinition(documentObject, facts, 'Event summary', firstString(event.summary, event.headline, event.title, event.event));
-    appendDefinition(documentObject, facts, 'Occurred', eventOccurrence(event));
-    appendDefinition(documentObject, facts, 'First reported / known', eventKnownBy(event));
-    const actorLabels = normalizeActorValues(event).map(identity.actorLabel).filter(Boolean);
-    appendDefinition(documentObject, facts, 'Actors', actorLabels);
-    appendDefinition(documentObject, facts, 'Location', identity.locationLabel(eventLocationValue(event)));
-    const status = evidenceStatusValues(event);
-    appendDefinition(documentObject, facts, 'Evidence status', status.support);
-    appendDefinition(documentObject, facts, 'Dispute status', status.dispute);
-    appendDefinition(documentObject, facts, 'Unresolved evidence', firstString(event.unresolved_evidence, event.unresolved, event.evidence_gap, event.evidence_gaps));
-    if (facts.childNodes.length) body.append(facts);
-
-    if (references.length) {
-      const heading = documentObject.createElement('h4');
-      heading.textContent = 'Linked sources';
-      body.append(heading);
-      const list = documentObject.createElement('ul');
-      list.className = 'source-list';
-      for (const reference of references) {
-        const resolved = resolver.resolveReference(reference);
-        if (resolved.status === 'resolved') list.append(sourceLink(documentObject, resolved));
-        else if (resolved.status === 'variant-required') {
-          const li = documentObject.createElement('li');
-          li.textContent = resolved.sourceId;
-          appendConflictVariants(documentObject, li, resolved);
-          list.append(li);
-        } else {
-          const li = documentObject.createElement('li');
-          li.textContent = `${reference.source_id || 'Source'} — source version could not be resolved.`;
-          list.append(li);
-        }
-      }
-      body.append(list);
-    }
-
-    const relatedIds = Array.isArray(event.related_event_ids) ? event.related_event_ids : [];
-    if (relatedIds.length) {
-      const relatedHeading = documentObject.createElement('h4');
-      relatedHeading.textContent = 'Related chronology records';
-      const relatedList = documentObject.createElement('ul');
-      for (const id of relatedIds) {
-        const related = services.eventById.get(id);
-        const li = documentObject.createElement('li');
-        li.textContent = related ? `${id} — ${firstString(related.summary, related.headline, related.title, related.event) || 'Related event'}` : id;
-        relatedList.append(li);
-      }
-      body.append(relatedHeading, relatedList);
-    }
-    drawer.replaceChildren(summary, body);
-    drawer.dataset.component = 'SharedEvidenceDrawer';
-    drawer.dataset.phase5Evidence = 'true';
-  }
-
-  function enhanceSourceVariantCards(rootElement, services) {
-    const documentObject = services.documentObject;
-    const conflictedIds = services.sourceResolver.conflictedSourceIds;
-    if (!conflictedIds.length) return;
-    const candidates = Array.from(rootElement.querySelectorAll('[data-source-id], .source-card, .source-detail, .source-record'));
-    for (const card of candidates) {
-      const explicit = card.getAttribute && card.getAttribute('data-source-id');
-      const sourceId = explicit && conflictedIds.includes(explicit)
-        ? explicit
-        : conflictedIds.find(id => typeof card.textContent === 'string' && card.textContent.includes(id));
-      if (!sourceId || card.querySelector('[data-phase5-source-variants]')) continue;
-      const resolved = services.sourceResolver.resolve(sourceId, null);
-      if (resolved.status !== 'variant-required') continue;
-      const existing = card.querySelector('.source-variants');
-      const details = existing && String(existing.tagName || '').toLowerCase() === 'details' ? existing : documentObject.createElement('details');
-      details.className = 'source-variants shared-source-variants';
-      details.dataset.phase5SourceVariants = sourceId;
-      const summary = documentObject.createElement('summary');
-      summary.textContent = `Preserved source versions (${resolved.variants.length})`;
-      summary.style.minHeight = '44px';
-      const intro = documentObject.createElement('p');
-      intro.textContent = 'This source appears differently in preserved evidence packages, so Atlas keeps each preserved version rather than silently choosing one.';
-      details.replaceChildren(summary, intro);
-      for (const variant of resolved.variants) {
-        const section = documentObject.createElement('section');
-        section.className = 'source-variant';
-        const heading = documentObject.createElement('h4');
-        heading.textContent = variant.record.title || variant.record.publisher || variant.variantKey || sourceId;
-        const dl = documentObject.createElement('dl');
-        appendDefinition(documentObject, dl, 'Preserved package', variant.packageLabel);
-        appendDefinition(documentObject, dl, 'Version key', variant.variantKey);
-        appendDefinition(documentObject, dl, 'Title', variant.record.title);
-        appendDefinition(documentObject, dl, 'Publisher', variant.record.publisher);
-        appendDefinition(documentObject, dl, 'Publication date', variant.record.publicationDate);
-        appendDefinition(documentObject, dl, 'Source role', variant.record.role);
-        appendDefinition(documentObject, dl, 'Context', variant.record.context);
-        section.append(heading, dl);
-        if (variant.record.url) {
-          const link = documentObject.createElement('a');
-          link.href = variant.record.url;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.textContent = 'Open this preserved source version';
-          section.append(link);
-        }
-        details.append(section);
-      }
-      if (!existing) card.append(details);
-    }
-  }
-
-  function addChartNumericEquivalent(rootElement, documentObject) {
-    const charts = Array.from(rootElement.querySelectorAll('[role="img"]'));
-    for (const chart of charts) {
-      const label = String(chart.getAttribute('aria-label') || '').toLowerCase();
-      if (!label.includes('military-event') && !label.includes('strike-record') && !label.includes('event tempo')) continue;
-      if (chart.parentElement && chart.parentElement.querySelector('[data-phase5-chart-equivalent]')) continue;
-      const rows = Array.from(chart.querySelectorAll('.bar-row, .bar-chart-row, [data-bar-row]'));
-      const values = rows.map(row => {
-        const children = Array.from(row.children || []);
-        const labelNode = row.querySelector('.bar-label, .bar-name, [data-bar-label]') || children[0];
-        const valueNode = row.querySelector('.bar-value, [data-bar-value]') || children[children.length - 1];
-        return {
-          label: labelNode && String(labelNode.textContent || '').trim(),
-          value: valueNode && String(valueNode.textContent || '').trim()
-        };
-      }).filter(item => item.label && item.value && item.label !== item.value);
-      if (!values.length) continue;
-      const details = documentObject.createElement('details');
-      details.dataset.phase5ChartEquivalent = 'campaign-tempo';
-      const summary = documentObject.createElement('summary');
-      summary.textContent = 'Numeric values for recorded event tempo';
-      summary.style.minHeight = '44px';
-      const note = documentObject.createElement('p');
-      note.textContent = 'These are recorded military-event / strike-record counts. They are not total weapons, successful hits, destruction, or exhaustive operational tempo.';
-      const table = documentObject.createElement('table');
-      const caption = documentObject.createElement('caption');
-      caption.textContent = 'Recorded military-event / strike-record tempo';
-      const thead = documentObject.createElement('thead');
-      const headRow = documentObject.createElement('tr');
-      const h1 = documentObject.createElement('th');
-      h1.scope = 'col';
-      h1.textContent = 'Period';
-      const h2 = documentObject.createElement('th');
-      h2.scope = 'col';
-      h2.textContent = 'Recorded events';
-      headRow.append(h1, h2);
-      thead.append(headRow);
-      const tbody = documentObject.createElement('tbody');
-      for (const item of values) {
-        const tr = documentObject.createElement('tr');
-        const th = documentObject.createElement('th');
-        th.scope = 'row';
-        th.textContent = item.label;
-        const td = documentObject.createElement('td');
-        td.textContent = item.value;
-        tr.append(th, td);
-        tbody.append(tr);
-      }
-      table.append(caption, thead, tbody);
-      details.append(summary, note, table);
-      chart.insertAdjacentElement('afterend', details);
-    }
-  }
-
-  function addMapTextEquivalent(rootElement, documentObject) {
-    const maps = Array.from(rootElement.querySelectorAll('svg[role="img"]'));
-    for (const map of maps) {
-      const label = String(map.getAttribute('aria-label') || '').toLowerCase();
-      const mapHost = typeof map.closest === 'function' ? map.closest('[data-component="MapView"], .context-map') : null;
-      if (!label.includes('map') && !mapHost) continue;
-      const parent = mapHost || map.parentElement || map;
-      if (parent.querySelector && parent.querySelector('[data-phase5-map-equivalent]')) continue;
-      const labels = Array.from(map.querySelectorAll('title')).map(node => String(node.textContent || '').trim()).filter(Boolean);
-      const unique = Array.from(new Set(labels.filter(text => text.toLowerCase() !== label)));
-      if (!unique.length) continue;
-      const details = documentObject.createElement('details');
-      details.dataset.phase5MapEquivalent = 'locations';
-      const summary = documentObject.createElement('summary');
-      summary.textContent = `Locations represented on this map (${unique.length})`;
-      summary.style.minHeight = '44px';
-      const list = documentObject.createElement('ul');
-      for (const text of unique) {
-        const li = documentObject.createElement('li');
-        li.textContent = text;
-        list.append(li);
-      }
-      details.append(summary, list);
-      parent.append(details);
-    }
-  }
-
-  function improveEvidenceSemantics(rootElement) {
-    for (const drawer of Array.from(rootElement.querySelectorAll('details.evidence-drawer'))) {
-      drawer.dataset.component = 'SharedEvidenceDrawer';
-      const summary = drawer.querySelector('summary');
-      if (summary && !summary.getAttribute('aria-label')) summary.setAttribute('aria-label', summary.textContent || 'Evidence and sources');
-    }
-    for (const status of Array.from(rootElement.querySelectorAll('.evidence-status'))) {
-      if (!status.getAttribute('role')) status.setAttribute('role', 'group');
-      if (!status.getAttribute('aria-label')) status.setAttribute('aria-label', 'Evidence status');
-    }
-  }
-
-  function enhanceEvidenceExperience(rootElement, options) {
-    if (!rootElement || typeof rootElement.querySelectorAll !== 'function') return;
-    const services = options || {};
-    const model = services.model;
-    const documentObject = services.documentObject || rootElement.ownerDocument || root.document;
-    const sourceResolver = services.sourceResolver || createSourceResolver(model);
-    const identityResolver = services.identityResolver || createIdentityResolver(model);
-    const eventById = services.eventById || new Map((model && model.chronology || []).map(event => [event.event_id, event]));
-    const eventIds = Array.from(eventById.keys()).sort((a, b) => b.length - a.length);
-    const shared = { documentObject, sourceResolver, identityResolver, eventById };
-
-    for (const drawer of Array.from(rootElement.querySelectorAll('details.evidence-drawer'))) {
-      const event = findEventForDrawer(drawer, eventById, eventIds);
-      if (event) rebuildEventEvidenceDrawer(drawer, event, shared);
-      else {
-        drawer.dataset.component = 'SharedEvidenceDrawer';
-        drawer.dataset.phase5Evidence = 'true';
-      }
-    }
-    enhanceSourceVariantCards(rootElement, shared);
-    rewritePublicLanguage(rootElement);
-    improveEvidenceSemantics(rootElement);
-    addChartNumericEquivalent(rootElement, documentObject);
-    addMapTextEquivalent(rootElement, documentObject);
   }
 
   function now() {
@@ -1003,31 +614,22 @@ function eventKnownBy(event) {
     const settings = options || {};
     const documentObject = settings.documentObject || root.document;
     const windowObject = settings.windowObject || root;
-    const sourceResolver = createSourceResolver(loaded.model);
-    const identityResolver = createIdentityResolver(loaded.model);
-    const eventById = new Map(loaded.model.chronology.map(event => [event.event_id, event]));
-    const routeGuard = createRouteGuardedModel(loaded.model, { ia, state, windowObject });
+    const routeRuntime = createRouteRuntime(loaded.model, { ia });
     const controller = ia.mount({
       rootElement,
-      model: routeGuard.model,
+      routeRuntime,
       state,
       documentObject,
       windowObject
     });
-    routeGuard.enable();
-    const enhance = () => enhanceEvidenceExperience(rootElement, {
-      model: loaded.model,
-      documentObject,
-      sourceResolver,
-      identityResolver,
-      eventById
-    });
-    if (windowObject && typeof windowObject.addEventListener === 'function') windowObject.addEventListener('atlasroutechange', enhance);
-    enhance();
     root.ATLAS_PUBLIC_STATE = state;
-    root.ATLAS_PUBLIC_MODEL = loaded.model;
     root.ATLAS_PUBLIC_ROUTER = controller;
-    root.ATLAS_PUBLIC_EVIDENCE = Object.freeze({ sourceResolver });
+    const runtimeDiagnostics = routeRuntime.diagnostics();
+    root.ATLAS_PUBLIC_EVIDENCE = Object.freeze({
+      sourceResolver: controller.services().sourceResolver,
+      sourceIndexBuilds: runtimeDiagnostics.sourceIndexBuilds,
+      sourceCount: runtimeDiagnostics.sourceCount
+    });
     try { root.sessionStorage && root.sessionStorage.removeItem(RELOAD_ATTEMPT_KEY); } catch (_) { /* storage is optional */ }
     if (typeof root.CustomEvent === 'function' && root.dispatchEvent) {
       root.dispatchEvent(new root.CustomEvent('atlaspublicready', { detail: {
@@ -1128,11 +730,10 @@ function eventKnownBy(event) {
     validatePageDataMappings,
     validateRouteDependencies,
     validateModel,
-    createRouteGuardedModel,
+    createRouteModelView,
+    createRouteRuntime,
     createSourceResolver,
-    createIdentityResolver,
-    rewritePublicLanguageText,
-    enhanceEvidenceExperience,
+    createLocationResolver,
     loadCurrentRecord,
     renderCurrent,
     renderFailure,
