@@ -33,7 +33,7 @@
     { key: 'military.facilities', primary: 'military', slug: 'facilities', label: 'Bases & Infrastructure', title: 'Bases & Infrastructure', owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'ledger.map_links'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
     { key: 'military.weapons', primary: 'military', slug: 'weapons', label: 'Air, Missiles & Drones', title: 'Air, Missiles & Drones', owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses'], related: ['military.campaigns', 'military.losses'] },
     { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'analysis.casualty_corrections'], related: ['military.weapons', 'evidence.method'] },
-    { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Imagery', title: 'Damage Imagery', owner: 'ImageryPage', dataKeys: ['ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
+    { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Imagery', title: 'Damage Imagery', owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
 
     { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.agreements'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
     { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.talks'] },
@@ -676,7 +676,13 @@
     }
   });
 
-  function pointFromRecord(record, locationResolver) {
+  function relationCandidates(record) {
+    const nested = record && record.event && typeof record.event === 'object' ? record.event : {};
+    return [record && record.facility_ref, record && record.location_ref, record && record.map_ref, nested.facility_ref, nested.location_ref]
+      .flatMap(value => Array.isArray(value) ? value : [value]).filter(Boolean);
+  }
+
+  function pointFromRecord(record, locationResolver, relatedRecords) {
     if (!record || typeof record !== 'object') return null;
     const nested = record.event && typeof record.event === 'object' ? record.event : {};
     const rawIds = record.location_ids || nested.location_ids || (record.location_id ? [record.location_id] : nested.location_id ? [nested.location_id] : []);
@@ -695,6 +701,18 @@
       };
     }
     if (canonicalReferenceResolved) return null;
+
+    const relations = relationCandidates(record);
+    if (relations.length && Array.isArray(relatedRecords)) {
+      const related = relatedRecords.find(item => {
+        const identities = [item && item.location_id, item && item.facility_id, item && item.id, ...(Array.isArray(item && item.legacy_ids) ? item.legacy_ids : [])];
+        return relations.some(reference => identities.includes(reference));
+      });
+      if (related) {
+        const resolved = pointFromRecord(related, locationResolver, []);
+        if (resolved) return { ...resolved, label: publicNarrative(record.name || record.title || related.name, resolved.label) };
+      }
+    }
 
     const candidates = [record, record.location, nested.location, record.locations && record.locations[0]];
     for (const candidate of candidates) {
@@ -715,82 +733,334 @@
     return null;
   }
 
+  function routeAuthority(route) {
+    const authority = route && (route.authority_class || route.route_authority || route.geometry_authority);
+    return ['DOCUMENTED_TRACK', 'DOCUMENTED_CORRIDOR', 'SCHEMATIC_REFERENCE_ROUTE'].includes(authority) ? authority : null;
+  }
+
+  function routeGeometry(route) {
+    if (!route || !routeAuthority(route)) return [];
+    const coordinates = route.geometry && route.geometry.type === 'LineString' ? route.geometry.coordinates.map(point => [point[1], point[0]]) : route.coords;
+    return asArray(coordinates).map(point => [Number(point && point[0]), Number(point && point[1])]).filter(point => point.every(Number.isFinite));
+  }
+
+  function pointAlongPolyline(coordinates, fraction) {
+    const points = asArray(coordinates);
+    if (!points.length) return null;
+    if (points.length === 1) return points[0].slice();
+    const lengths = points.slice(1).map((point, index) => Math.hypot(point[0] - points[index][0], point[1] - points[index][1]));
+    const total = lengths.reduce((sum, value) => sum + value, 0);
+    if (!total) return points[0].slice();
+    let target = Math.max(0, Math.min(1, Number(fraction) || 0)) * total;
+    for (let index = 0; index < lengths.length; index += 1) {
+      if (target > lengths[index]) { target -= lengths[index]; continue; }
+      const ratio = lengths[index] ? target / lengths[index] : 0;
+      return [
+        points[index][0] + (points[index + 1][0] - points[index][0]) * ratio,
+        points[index][1] + (points[index + 1][1] - points[index][1]) * ratio
+      ];
+    }
+    return points[points.length - 1].slice();
+  }
+
+  function normalizeBounds(value) {
+    if (!value) return null;
+    if (Array.isArray(value) && value.length === 2 && value.every(point => Array.isArray(point) && point.length >= 2)) {
+      const bounds = value.map(point => [Number(point[0]), Number(point[1])]);
+      return bounds.every(point => point.every(Number.isFinite)) ? bounds : null;
+    }
+    if (typeof value === 'object') {
+      const south = Number(value.south === undefined ? value.min_lat : value.south);
+      const west = Number(value.west === undefined ? value.min_lon : value.west);
+      const north = Number(value.north === undefined ? value.max_lat : value.north);
+      const east = Number(value.east === undefined ? value.max_lon : value.east);
+      if ([south, west, north, east].every(Number.isFinite)) return [[south, west], [north, east]];
+    }
+    return null;
+  }
+
+  function normalizeFootprint(value) {
+    if (!value) return null;
+    let coordinates = value;
+    let geoJsonOrder = false;
+    if (value.type === 'Polygon') { coordinates = value.coordinates && value.coordinates[0]; geoJsonOrder = true; }
+    if (!Array.isArray(coordinates) || coordinates.length < 3) return null;
+    const result = coordinates.map(point => geoJsonOrder ? [Number(point && point[1]), Number(point && point[0])] : [Number(point && point[0]), Number(point && point[1])]);
+    return result.every(point => point.every(Number.isFinite)) ? result : null;
+  }
+
+  function safeImageUrl(value) {
+    if (typeof value !== 'string' || !value) return null;
+    if (/^data:image\/(?:png|jpeg|webp);base64,/i.test(value)) return value;
+    const authorized = root.ATLAS_AUTHORIZED_MEDIA && root.ATLAS_AUTHORIZED_MEDIA[value];
+    return authorized || null;
+  }
+
+  function imageryPayloads(record) {
+    if (!record || typeof record !== 'object') return [];
+    const nested = record.imagery || record.bda || record.event && (record.event.imagery || record.event.bda);
+    if (nested) return asArray(Array.isArray(nested) ? nested : [nested]).filter(value => value && typeof value === 'object').map(value => ({ ...value, evidence_record: record }));
+    const imageryShape = record.damage_imagery_source_ids || record.image_url || record.thumbnail_url || record.image_bounds || record.georeferenced_bounds || record.footprint || record.corners || record.imagery_type;
+    return imageryShape ? [record] : [];
+  }
+
+  function imageryDescriptor(record, locationResolver, relatedRecords) {
+    const evidenceRecord = record && record.evidence_record || record;
+    const bounds = normalizeBounds(record && (record.georeferenced_bounds || record.image_bounds || record.bounds));
+    const footprintValue = record && (record.footprint || record.corners || (record.geometry && record.geometry.type === 'Polygon' ? record.geometry : null));
+    const footprint = normalizeFootprint(footprintValue);
+    const imageUrl = safeImageUrl(record && (record.image_url || record.thumbnail_url || record.asset_path));
+    const point = pointFromRecord(evidenceRecord, locationResolver, relatedRecords);
+    const reliability = String(record && (record.geolocation_precision || record.precision || record.coordinate_precision) || '').toLowerCase();
+    const reliable = record && record.geolocation_reliable !== false && !/(unknown|unresolved|unreliable)/.test(reliability);
+    const tier = bounds && imageUrl && reliable ? 'A' : footprint && reliable ? 'B' : point ? 'C' : 'D';
+    return Object.freeze({ record, evidenceRecord, bounds, footprint, imageUrl, point, tier });
+  }
+
+  function mapTitle(record, fallback) {
+    const nested = record && record.event || {};
+    return publicNarrative(record && (record.name || record.title || record.facility_name || record.label) || nested.title || nested.summary, fallback || 'Recorded evidence');
+  }
+
+  function mapDate(record) {
+    const nested = record && record.event || {};
+    return readableDate(record && (record.date || record.capture_date || record.publication_date) || record && record.timeline && record.timeline.date || nested.date);
+  }
+
+  function evidenceEnvelope(record) {
+    const nested = record && record.event || {};
+    return {
+      source_ids: [record && record.source_ids, record && record.damage_imagery_source_ids, nested.source_ids].flatMap(value => asArray(value)).filter(value => typeof value === 'string')
+    };
+  }
+
+  function routeSources(route) {
+    const localSources = {};
+    const sourceIds = [];
+    asArray(route && route.sources).forEach((source, index) => {
+      if (!Array.isArray(source) || !source[0]) return;
+      const sourceId = `${route.id || 'ROUTE'}-SOURCE-${index + 1}`;
+      sourceIds.push(sourceId);
+      localSources[sourceId] = { title: source[0], url: source[1] || null, publisher: 'Route evidence source' };
+    });
+    return { sourceIds, localSources };
+  }
+
+  function routeViewport(routeKey) {
+    if (String(routeKey).startsWith('hormuz.')) return [[22.4, 50.8], [28.9, 60.8]];
+    if (String(routeKey).startsWith('military.')) return [[22.5, 42.0], [40.5, 67.5]];
+    if (String(routeKey).startsWith('timeline.')) return [[11.0, 32.0], [40.5, 67.5]];
+    return [[11.0, 32.0], [40.5, 67.5]];
+  }
+
   const MapView = Object.freeze({
     pointFromRecord,
+    pointAlongPolyline,
+    routeGeometry,
+    imageryDescriptor,
     create(context, options) {
       const documentObject = context.documentObject;
       const section = element(documentObject, 'section', 'context-map');
       section.dataset.component = 'MapView';
       append(section, 'h2', '', options && options.title || 'Geographic context');
-      const points = (options && options.records || []).map(record => pointFromRecord(record, context.services.locationResolver)).filter(Boolean);
-      const unique = points.filter((point, index, rows) => rows.findIndex(row => row.lat === point.lat && row.lon === point.lon && row.label === point.label) === index);
-      append(section, 'p', '', options && options.description || (unique.length
-        ? `${unique.length.toLocaleString()} source-linked locations are plotted. Marker precision follows the underlying record.`
-        : 'No source-supported coordinates are available for this summarized view.'));
-      if (!unique.length) return section;
+      const records = asArray(options && options.records);
+      const relatedRecords = asArray(options && options.relatedRecords);
+      const routes = asArray(options && options.routes).filter(route => routeGeometry(route).length > 1);
+      const imagery = records.flatMap(record => imageryPayloads(record).map(payload => imageryDescriptor(payload, context.services.locationResolver, relatedRecords)));
+      const imageryRecords = new Set(imagery.map(item => item.evidenceRecord));
+      const points = records.filter(record => !imageryRecords.has(record)).map(record => ({ record, point: pointFromRecord(record, context.services.locationResolver, relatedRecords) })).filter(item => item.point);
+      imagery.filter(item => item.point && ['C'].includes(item.tier)).forEach(item => points.push({ record: item.evidenceRecord, point: item.point, imagery: item }));
+      const groups = new Map();
+      points.forEach(item => {
+        const key = `${item.point.lat.toFixed(6)},${item.point.lon.toFixed(6)}`;
+        if (!groups.has(key)) groups.set(key, { point: item.point, items: [] });
+        groups.get(key).items.push(item);
+      });
+      append(section, 'p', '', options && options.description || (groups.size
+        ? `${groups.size.toLocaleString()} source-linked locations are shown. Geographic precision follows the underlying record.`
+        : 'No source-supported point coordinates are available for these records. Reference geography remains available for context.'));
 
-      const minLat = Math.min(...unique.map(point => point.lat));
-      const maxLat = Math.max(...unique.map(point => point.lat));
-      const minLon = Math.min(...unique.map(point => point.lon));
-      const maxLon = Math.max(...unique.map(point => point.lon));
-      const latPad = Math.max(1.5, (maxLat - minLat) * .12);
-      const lonPad = Math.max(1.5, (maxLon - minLon) * .12);
-      const bounds = { minLat: minLat - latPad, maxLat: maxLat + latPad, minLon: minLon - lonPad, maxLon: maxLon + lonPad };
-      const width = 800;
-      const height = 360;
-      const project = point => ({
-        x: 36 + ((point.lon - bounds.minLon) / Math.max(.001, bounds.maxLon - bounds.minLon)) * (width - 72),
-        y: 28 + ((bounds.maxLat - point.lat) / Math.max(.001, bounds.maxLat - bounds.minLat)) * (height - 56)
-      });
-      const svg = documentObject.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-      svg.setAttribute('role', 'img');
-      svg.setAttribute('aria-label', `${unique.length} approximate record locations`);
-      svg.classList.add('context-map-plot');
-      const background = documentObject.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      background.setAttribute('width', width);
-      background.setAttribute('height', height);
-      background.setAttribute('rx', '14');
-      background.setAttribute('class', 'map-plot-background');
-      svg.append(background);
-      for (let step = 1; step < 5; step += 1) {
-        const vertical = documentObject.createElementNS('http://www.w3.org/2000/svg', 'line');
-        vertical.setAttribute('x1', String(step * width / 5));
-        vertical.setAttribute('x2', String(step * width / 5));
-        vertical.setAttribute('y1', '0');
-        vertical.setAttribute('y2', String(height));
-        vertical.setAttribute('class', 'map-gridline');
-        svg.append(vertical);
-        const horizontal = documentObject.createElementNS('http://www.w3.org/2000/svg', 'line');
-        horizontal.setAttribute('x1', '0');
-        horizontal.setAttribute('x2', String(width));
-        horizontal.setAttribute('y1', String(step * height / 5));
-        horizontal.setAttribute('y2', String(step * height / 5));
-        horizontal.setAttribute('class', 'map-gridline');
-        svg.append(horizontal);
+      const mapHost = append(section, 'div', 'atlas-leaflet-map');
+      mapHost.setAttribute('role', 'region');
+      mapHost.setAttribute('aria-label', `${options && options.title || 'Evidence map'}; ${groups.size} mapped locations`);
+      mapHost.tabIndex = 0;
+      const cardHost = append(section, 'div', 'map-selection-card');
+      cardHost.hidden = true;
+      cardHost.setAttribute('aria-live', 'polite');
+      const imageryLayers = new Map();
+
+      const renderEvidenceCard = (record, extra) => {
+        cardHost.replaceChildren();
+        cardHost.hidden = false;
+        const card = append(cardHost, 'article', 'map-card');
+        append(card, 'p', 'card-kicker', extra && extra.kicker || 'Mapped evidence');
+        append(card, 'h3', '', mapTitle(record, extra && extra.title));
+        const date = mapDate(record);
+        if (date) append(card, 'p', 'record-status', date);
+        const nested = record && record.event || {};
+        const summary = publicNarrative(record && (record.summary || record.note || record.limitations || record.assessment) || nested.summary, extra && extra.text || 'This location is supplied by the accepted current evidence record.');
+        append(card, 'p', '', summary);
+        if (extra && extra.meta) append(card, 'p', 'map-card-meta', extra.meta);
+        const envelope = evidenceEnvelope(extra && extra.evidenceRecord || record);
+        if (envelope.source_ids.length) card.append(EvidenceDrawer.create(context, envelope, { relatedRecords: relatedRecordsFrom(extra && extra.evidenceRecord || record) }));
+        const close = append(card, 'button', 'map-card-close', 'Close map card');
+        close.type = 'button';
+        close.addEventListener('click', () => { cardHost.hidden = true; cardHost.replaceChildren(); mapHost.focus(); });
+      };
+
+      const L = root.L;
+      const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
+      if (L && geography && geography.type === 'FeatureCollection') {
+        const map = L.map(mapHost, { attributionControl: false, scrollWheelZoom: false, zoomControl: true, minZoom: 3, maxZoom: 10, worldCopyJump: false });
+        ['reference', 'routes', 'imagery', 'evidence', 'labels'].forEach((name, index) => {
+          map.createPane(`atlas-${name}`);
+          map.getPane(`atlas-${name}`).style.zIndex = String(210 + index * 80);
+        });
+        const routeKey = context.route && context.route.key || '';
+        const detailLayer = String(routeKey).startsWith('hormuz.') ? 'hormuz_10m' : 'regional_50m';
+        const features = geography.features.filter(feature => feature.properties && feature.properties.layer === detailLayer);
+        L.geoJSON({ type: 'FeatureCollection', features }, {
+          pane: 'atlas-reference',
+          interactive: false,
+          style: { color: '#587082', weight: detailLayer === 'hormuz_10m' ? 1.2 : .8, fillColor: '#172732', fillOpacity: .92 }
+        }).addTo(map);
+
+        routes.forEach(route => {
+          const coordinates = routeGeometry(route);
+          const authority = routeAuthority(route);
+          const maritime = String(route.mode).toLowerCase() === 'maritime';
+          const line = L.polyline(coordinates, {
+            pane: 'atlas-routes', color: maritime ? '#7fcbe8' : '#d5ad6d', weight: 4, opacity: .9,
+            dashArray: authority === 'SCHEMATIC_REFERENCE_ROUTE' ? '9 7' : null
+          }).addTo(map);
+          line.on('click', () => {
+            const sources = routeSources(route);
+            cardHost.replaceChildren(); cardHost.hidden = false;
+            const card = append(cardHost, 'article', 'map-card');
+            append(card, 'p', 'card-kicker', authority === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : authority === 'DOCUMENTED_TRACK' ? 'Documented track' : 'Documented corridor');
+            append(card, 'h3', '', publicNarrative(route.name, 'Transport route'));
+            append(card, 'p', '', publicNarrative(route.note, 'The stored route geometry is shown in sequence.'));
+            append(card, 'p', 'map-card-meta', maritime ? 'This line explains a maritime path. It is not live vessel tracking.' : 'This is a geographic corridor reference, not live tracking.');
+            if (sources.sourceIds.length) card.append(EvidenceDrawer.create(context, { source_ids: sources.sourceIds }, { localSources: sources.localSources }));
+            const close = append(card, 'button', 'map-card-close', 'Close map card'); close.type = 'button'; close.addEventListener('click', () => { cardHost.hidden = true; cardHost.replaceChildren(); mapHost.focus(); });
+          });
+          const flowPoint = pointAlongPolyline(coordinates, .58);
+          if (flowPoint) L.marker(flowPoint, { pane: 'atlas-routes', interactive: false, icon: L.divIcon({ className: 'route-flow-marker', html: '<span aria-hidden="true">›</span>', iconSize: [24, 24] }) }).addTo(map);
+        });
+
+        let selectedOverlay = null;
+        imagery.forEach((item, index) => {
+          const title = mapTitle(item.evidenceRecord, item.point && item.point.label || `Imagery record ${index + 1}`);
+          if (item.tier === 'A') {
+            const overlay = L.imageOverlay(item.imageUrl, item.bounds, { pane: 'atlas-imagery', opacity: .56, alt: `${title} imagery overlay`, interactive: true }).addTo(map);
+            imageryLayers.set(item, overlay);
+            overlay.on('click', () => { if (selectedOverlay && selectedOverlay !== overlay) selectedOverlay.setOpacity(.36); selectedOverlay = overlay; overlay.setOpacity(.72); renderEvidenceCard(item.evidenceRecord, { kicker: 'Georeferenced imagery', meta: 'The accepted record supplies reliable image bounds.', evidenceRecord: item.evidenceRecord }); });
+          } else if (item.tier === 'B') {
+            const footprintLayer = L.polygon(item.footprint, { pane: 'atlas-imagery', color: '#e9c983', weight: 2, fillOpacity: .18 }).addTo(map);
+            imageryLayers.set(item, footprintLayer);
+            footprintLayer.on('click', () => renderEvidenceCard(item.evidenceRecord, { kicker: 'Imagery footprint', meta: 'The accepted record supplies a footprint; the preview is not stretched into a false rectangle.', evidenceRecord: item.evidenceRecord }));
+          }
+        });
+
+        const keyboardMarkers = [];
+        groups.forEach(group => {
+          const count = group.items.length;
+          const label = count > 1 ? `${count} records at ${group.point.label}` : group.point.label;
+          const marker = L.marker([group.point.lat, group.point.lon], {
+            pane: 'atlas-evidence', keyboard: true, title: label,
+            icon: L.divIcon({ className: `evidence-map-marker${count > 1 ? ' marker-cluster' : ''}`, html: `<span aria-hidden="true">${count > 1 ? count : '•'}</span>`, iconSize: [count > 1 ? 34 : 26, count > 1 ? 34 : 26] })
+          }).addTo(map);
+          keyboardMarkers.push(marker);
+          marker.on('click', () => {
+            if (count === 1) {
+              const item = group.items[0];
+              const imageryMeta = item.imagery ? 'Precise image footprint unavailable; the imagery card is anchored to the supported location.' : `${group.point.precision}.`;
+              renderEvidenceCard(item.record, { kicker: item.imagery ? 'Location-linked imagery' : 'Mapped evidence', title: item.point.label, meta: imageryMeta, evidenceRecord: item.record });
+              return;
+            }
+            cardHost.replaceChildren(); cardHost.hidden = false;
+            const card = append(cardHost, 'article', 'map-card');
+            append(card, 'p', 'card-kicker', 'Shared recorded location');
+            append(card, 'h3', '', `${count} records at ${group.point.label}`);
+            const list = append(card, 'ul', 'map-card-records');
+            group.items.forEach(item => {
+              const row = append(list, 'li');
+              const button = append(row, 'button', 'map-record-button', mapTitle(item.record, item.point.label));
+              button.type = 'button'; button.addEventListener('click', () => renderEvidenceCard(item.record, { kicker: item.imagery ? 'Location-linked imagery' : 'Mapped evidence', title: item.point.label, evidenceRecord: item.record }));
+            });
+          });
+        });
+
+        const viewport = options && options.viewport || routeViewport(routeKey);
+        map.fitBounds(viewport, { padding: [12, 12], animate: false });
+        keyboardMarkers.forEach(marker => {
+          const markerElement = marker.getElement();
+          if (!markerElement) return;
+          markerElement.addEventListener('keydown', event => {
+            if (event.key !== ' ' && event.code !== 'Space' && event.key !== 'Spacebar') return;
+            event.preventDefault();
+            marker.fire('click');
+          }, true);
+        });
+        asArray(geography.metadata && geography.metadata.labels).filter(label => label.lat >= viewport[0][0] && label.lat <= viewport[1][0] && label.lon >= viewport[0][1] && label.lon <= viewport[1][1]).forEach(label => {
+          L.marker([label.lat, label.lon], { pane: 'atlas-labels', interactive: false, icon: L.divIcon({ className: `reference-map-label ${label.kind || ''}`, html: `<span>${String(label.label).replace(/[<>&]/g, '')}</span>`, iconSize: null }) }).addTo(map);
+        });
+        mapHost.addEventListener('keydown', event => { if (event.key === 'Escape' && !cardHost.hidden) { event.preventDefault(); cardHost.hidden = true; cardHost.replaceChildren(); } });
+        if (root.requestAnimationFrame) root.requestAnimationFrame(() => map.invalidateSize(false));
+        section._atlasMap = map;
+      } else {
+        append(mapHost, 'p', 'empty-state', 'The authorized local reference geography is unavailable. Textual locations remain below.');
       }
-      unique.slice(0, 100).forEach(point => {
-        const position = project(point);
-        const marker = documentObject.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        marker.setAttribute('cx', position.x.toFixed(2));
-        marker.setAttribute('cy', position.y.toFixed(2));
-        marker.setAttribute('r', unique.length > 35 ? '4.2' : '5.5');
-        marker.setAttribute('class', 'map-marker');
-        const title = documentObject.createElementNS('http://www.w3.org/2000/svg', 'title');
-        title.textContent = `${point.label} · ${point.precision}`;
-        marker.append(title);
-        svg.append(marker);
+
+      const routeControls = routes.length ? append(section, 'div', 'map-route-controls') : null;
+      if (routeControls) routes.forEach(route => {
+        const button = append(routeControls, 'button', 'map-route-button', publicNarrative(route.name, 'Transport route'));
+        button.type = 'button';
+        button.addEventListener('click', () => {
+          const sources = routeSources(route);
+          cardHost.replaceChildren(); cardHost.hidden = false;
+          const card = append(cardHost, 'article', 'map-card');
+          append(card, 'p', 'card-kicker', routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : plainLabel(routeAuthority(route), 'Documented route'));
+          append(card, 'h3', '', publicNarrative(route.name, 'Transport route'));
+          append(card, 'p', '', publicNarrative(route.note));
+          append(card, 'p', 'map-card-meta', String(route.mode).toLowerCase() === 'maritime' ? 'This line explains a maritime path. It is not live vessel tracking.' : 'This is a geographic corridor reference, not live tracking.');
+          if (sources.sourceIds.length) card.append(EvidenceDrawer.create(context, { source_ids: sources.sourceIds }, { localSources: sources.localSources }));
+        });
       });
-      section.append(svg);
+
+      const imageryControls = imagery.length ? append(section, 'div', 'map-imagery-controls') : null;
+      if (imageryControls) {
+        append(imageryControls, 'p', 'map-control-label', imagery.length > 1 ? 'Imagery records shown' : 'Imagery record');
+        imagery.forEach(item => {
+          const imageryType = publicNarrative(item.record.imagery_type, 'Imagery evidence');
+          const button = append(imageryControls, 'button', 'map-imagery-button', `${mapDate(item.evidenceRecord) || 'Date unresolved'} · ${imageryType} · ${mapTitle(item.evidenceRecord, item.point && item.point.label)}`);
+          button.type = 'button';
+          button.addEventListener('click', () => {
+            const meta = item.tier === 'A' ? 'Reliable image bounds support a geographic overlay.' : item.tier === 'B' ? 'A reliable footprint is shown without manufacturing an image rectangle.' : item.tier === 'C' ? 'Precise image footprint unavailable; the card is anchored to the supported location.' : 'Reliable geolocation unavailable; no map overlay is created.';
+            renderEvidenceCard(item.evidenceRecord, { kicker: item.tier === 'D' ? imageryType : `${imageryType} · geographically linked`, title: item.point && item.point.label, meta, evidenceRecord: item.evidenceRecord });
+            const layer = imageryLayers.get(item);
+            if (layer && layer.setOpacity) layer.setOpacity(.72);
+          });
+        });
+      }
+
       const legend = append(section, 'div', 'map-legend');
-      unique.slice(0, 6).forEach(point => append(legend, 'span', '', point.label));
-      if (unique.length > 6) append(legend, 'span', '', `+ ${unique.length - 6} more mapped records`);
-      append(section, 'small', 'map-caveat', 'Context map · approximate record coordinates · not targeting or navigation data');
+      if (groups.size) append(legend, 'span', '', 'Recorded evidence location');
+      if (imagery.length) append(legend, 'span', '', 'BDA imagery / footprint');
+      if (routes.length) append(legend, 'span', '', 'Transport reference route');
+      append(legend, 'span', '', 'Reference geography');
+      append(section, 'small', 'map-caveat', 'Locations reflect the current evidence record · routes are not live tracking · not targeting or navigation data');
       const equivalent = append(section, 'details');
       equivalent.dataset.phase5MapEquivalent = 'locations';
-      append(equivalent, 'summary', '', `Locations represented on this map (${unique.length})`);
+      equivalent.dataset.phase6MapEquivalent = 'geography';
+      append(equivalent, 'summary', '', `Text equivalent for this map (${groups.size} locations)`);
       const list = append(equivalent, 'ul');
-      unique.forEach(point => append(list, 'li', '', `${point.label} · ${point.precision}`));
+      groups.forEach(group => append(list, 'li', '', `${group.point.label} · ${group.point.precision} · ${group.items.length} record${group.items.length === 1 ? '' : 's'}`));
+      routes.forEach(route => append(list, 'li', '', `${publicNarrative(route.name)} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'schematic reference route' : plainLabel(routeAuthority(route))} · ${publicNarrative(route.note)}`));
+      imagery.forEach(item => {
+        const placement = item.tier === 'A' ? 'georeferenced image overlay' : item.tier === 'B' ? 'recorded image footprint' : item.tier === 'C' ? 'location-linked imagery card; precise footprint unavailable' : 'evidence card only; reliable geolocation unavailable';
+        append(list, 'li', '', `${publicNarrative(item.record.imagery_type, 'Imagery evidence')} · ${mapTitle(item.evidenceRecord, item.point && item.point.label)} · ${placement}${item.point ? ` · ${item.point.label} · ${item.point.precision}` : ''}`);
+      });
       return section;
     }
   });
@@ -1452,24 +1722,31 @@
     const frame = pageFrame(context, 'Damage imagery is supporting evidence, not a self-authenticating verdict. Every entry keeps its facility, source context, geographic precision and stated limitation.');
     const overlays = recordArray(modelData(context.model, 'ledger.bda_overlays'));
     const facilities = recordArray(modelData(context.model, 'ledger.facilities'));
-    const mapped = overlays.map(overlay => {
-      const facility = facilities.find(item => item.facility_id === overlay.facility_ref || asArray(item.legacy_ids).includes(overlay.facility_ref));
-      return facility ? { ...overlay, name: facility.name, location: facility.location } : overlay;
-    });
+    const currentImagery = context.model.chronology.filter(record => imageryPayloads(record).length);
+    const imageryRecords = [...overlays, ...currentImagery];
     frame.article.append(MapView.create(context, {
       title: 'Locations with imagery or damage-review records',
-      records: mapped,
-      description: 'Markers identify facilities associated with the imagery review. They do not represent damage polygons or affected-area estimates.'
+      records: imageryRecords,
+      relatedRecords: facilities,
+      description: 'Imagery is overlaid only when the current evidence record supplies reliable geolocation. Otherwise it remains a footprint, location-linked card or evidence-only record.'
     }));
     const section = addSection(frame.article, 'Imagery review');
     const list = append(section, 'div', 'record-list two-column-list');
-    mapped.forEach(overlay => addProvenanceCard(list, context, {
-      kicker: plainLabel(overlay.candidate_confidence, 'Review status unresolved'),
-      title: publicNarrative(overlay.name, overlay.facility_ref),
-      text: publicNarrative(overlay.limitations),
-      meta: overlay.affected_area_calculation_supported ? 'Affected-area calculation supported by supplied geometry' : 'No supported affected-area percentage',
-      item: { source_ids: overlay.damage_imagery_source_ids }
-    }));
+    imageryRecords.flatMap(record => imageryPayloads(record)).map(payload => imageryDescriptor(payload, context.services.locationResolver, facilities)).forEach(item => {
+      const tierText = {
+        A: 'Reliable image bounds support a geographic overlay.',
+        B: 'A reliable footprint is shown; the image is not stretched into a false rectangle.',
+        C: 'The target area is supported, but a precise image footprint is unavailable.',
+        D: 'Reliable geolocation is unavailable; this item remains an evidence card only.'
+      }[item.tier];
+      addProvenanceCard(list, context, {
+        kicker: publicNarrative(item.record.imagery_type, plainLabel(item.record.candidate_confidence || item.record.evidence_status, 'Imagery evidence')),
+        title: mapTitle(item.evidenceRecord, item.point && item.point.label),
+        text: publicNarrative(item.record.limitations || item.evidenceRecord.event && item.evidenceRecord.event.summary, tierText),
+        meta: tierText,
+        item: evidenceEnvelope(item.evidenceRecord)
+      });
+    });
     renderRelatedLinks(frame.article, context);
     return frame.article;
   }
@@ -1516,10 +1793,12 @@
     const frame = pageFrame(context, 'Commercial traffic never fit a simple open-or-closed label. This record separates observed vessel counts, physical passage, permission, insurance and normal commercial traffic.');
     const shipping = recordArray(modelData(context.model, 'ledger.shipping'));
     const hormuz = modelData(context.model, 'analysis.hormuz');
+    const routeRecords = asArray(modelData(context.model, 'analysis.oil_routes').routes);
     frame.article.append(MapView.create(context, {
       title: 'Maritime incident and pressure geography',
       records: asArray(hormuz.current_board_delta),
-      description: 'Locations come from the accepted Hormuz record. The plot is contextual and does not reproduce live AIS tracks.'
+      routes: routeRecords.filter(route => String(route.mode).toLowerCase() === 'maritime'),
+      description: 'Locations come from the accepted Hormuz record. Stored maritime reference geometry is schematic and does not reproduce live AIS tracks.'
     }));
     const reading = addSection(frame.article, 'How to read the traffic observations');
     append(reading, 'p', 'lead-copy', 'AIS-visible counts are useful observations, not a complete census. Vessels can sail with transponders off, different providers count different categories, and a single successful transit does not establish commercial normalization.');
@@ -1535,8 +1814,8 @@
     const routes = addSection(frame.article, 'Alternative routes and trade adaptation');
     append(routes, 'p', '', publicNarrative(modelData(context.model, 'analysis.oil_routes').geometry_policy, 'Route geometry is schematic and describes transport corridors, not live vessel tracks.'));
     const routeList = append(routes, 'div', 'record-list two-column-list');
-    asArray(modelData(context.model, 'analysis.oil_routes').routes).forEach(route => addProvenanceCard(routeList, context, {
-      kicker: `${plainLabel(route.mode, 'Transport mode')} · Schematic`,
+    routeRecords.forEach(route => addProvenanceCard(routeList, context, {
+      kicker: `${plainLabel(route.mode, 'Transport mode')} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : plainLabel(routeAuthority(route), 'Documented route')}`,
       title: publicNarrative(route.name),
       text: publicNarrative(route.note),
       item: route

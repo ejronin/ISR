@@ -150,7 +150,7 @@ async function setRoute(cdp, route) {
     const timeline = await cdp.eval(`(() => ({
       phases: document.querySelectorAll('.timeline-phase').length,
       cards: document.querySelectorAll('.timeline-phase .chronology-card').length,
-      maps: document.querySelectorAll('.timeline-phase [data-component="MapView"] svg').length,
+      maps: document.querySelectorAll('.timeline-phase [data-component="MapView"] .leaflet-container').length,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     const expectedTimelineCount = await cdp.eval(`window.ATLAS_PUBLIC_STATE.chronologyCount`);
@@ -245,7 +245,7 @@ async function setRoute(cdp, route) {
 
     for (const key of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
       await setRoute(cdp, ia.ROUTES.get(key));
-      assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"] svg'))`), true, `map-first page lacks rendered contextual map: ${key}`);
+      assert.equal(await cdp.eval(`Boolean(document.querySelector('[data-component="MapView"] .leaflet-container'))`), true, `map-first page lacks rendered contextual map: ${key}`);
     }
     for (const key of ['talks.mou', 'objectives.outcomes', 'objectives.positions', 'evidence.method']) {
       await setRoute(cdp, ia.ROUTES.get(key));

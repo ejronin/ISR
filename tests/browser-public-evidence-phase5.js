@@ -224,7 +224,7 @@ async function setRoute(cdp, routeKey) {
     for (const routeKey of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
       await setRoute(cdp, routeKey);
       const map = await cdp.eval(`(() => ({
-        maps: document.querySelectorAll('[data-component="MapView"] svg').length,
+        maps: document.querySelectorAll('[data-component="MapView"] .leaflet-container').length,
         textEquivalents: document.querySelectorAll('[data-component="MapView"] [data-phase5-map-equivalent]').length,
         locations: document.querySelectorAll('[data-component="MapView"] [data-phase5-map-equivalent] li').length
       }))()`);

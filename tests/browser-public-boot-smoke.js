@@ -11,10 +11,13 @@ const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'pub
 const entrypoint = manifest.application.assets.find(asset => asset.role === 'entrypoint');
 const stylesheet = manifest.application.assets.find(asset => asset.role === 'stylesheet');
 const pageRegistry = manifest.application.assets.find(asset => asset.role === 'page_registry');
+const mapRuntime = manifest.application.assets.find(asset => asset.role === 'map_runtime');
+const mapStylesheet = manifest.application.assets.find(asset => asset.role === 'map_stylesheet');
+const referenceGeography = manifest.application.assets.find(asset => asset.role === 'reference_geography');
 const bootstrap = manifest.neutral_bootstrap.asset;
 const oldValidApplication = fs.readFileSync(path.join(__dirname, 'fixtures', 'public-app-old-valid.js'), 'utf8');
 
-assert(entrypoint && stylesheet && pageRegistry && bootstrap, 'content-addressed release assets are missing');
+assert(entrypoint && stylesheet && pageRegistry && mapRuntime && mapStylesheet && referenceGeography && bootstrap, 'content-addressed release assets are missing');
 assert(oldValidApplication.includes("const APPLICATION_VERSION = 'atlas-public-shell-v1'"), 'split-release fixture must keep the current logical application version');
 assert.equal(model.release.release_identity, manifest.current_state.release_identity, 'split-release test requires a valid new manifest/model pair');
 
@@ -119,12 +122,13 @@ function base64(value) {
     assert.equal(loading.status, 'loading', 'slow current-state response must leave the neutral loading shell active');
     assert.equal(loading.ready, false, 'current application state must not initialize before the model is ready');
     const loadedScripts = new Map(loading.scripts.map(item => [new URL(item.src).pathname, item.integrity]));
-    assert.deepEqual(new Set(loadedScripts.keys()), new Set([`/${bootstrap.path}`, `/${pageRegistry.path}`, `/${entrypoint.path}`]), 'cold shell must execute only the bound bootstrap, page registry, and authorized entrypoint');
+    assert.deepEqual(new Set(loadedScripts.keys()), new Set([`/${bootstrap.path}`, `/${mapRuntime.path}`, `/${pageRegistry.path}`, `/${entrypoint.path}`]), 'cold shell must execute only the bound bootstrap and authorized runtimes/entrypoint');
     assert.equal(loadedScripts.get(`/${bootstrap.path}`), bootstrap.integrity, 'bootstrap must carry the manifest-authorized SRI value');
     assert.equal(loadedScripts.get(`/${pageRegistry.path}`), pageRegistry.integrity, 'page registry must carry the manifest-authorized SRI value');
+    assert.equal(loadedScripts.get(`/${mapRuntime.path}`), mapRuntime.integrity, 'map runtime must carry the manifest-authorized SRI value');
     assert.equal(loadedScripts.get(`/${entrypoint.path}`), entrypoint.integrity, 'entrypoint must carry the manifest-authorized SRI value');
-    assert.deepEqual(loading.styles.map(item => new URL(item.href).pathname), [`/${stylesheet.path}`], 'cold shell must activate only the authorized stylesheet');
-    assert.equal(loading.styles[0].integrity, stylesheet.integrity, 'active stylesheet must carry the manifest-authorized SRI value');
+    assert.deepEqual(loading.styles.map(item => new URL(item.href).pathname), [`/${mapStylesheet.path}`, `/${stylesheet.path}`], 'cold shell must activate only the authorized stylesheets');
+    assert.deepEqual(loading.styles.map(item => item.integrity), [mapStylesheet.integrity, stylesheet.integrity], 'active stylesheets must carry manifest-authorized SRI values');
     for (const forbidden of [
       'REVIEWED THROUGH 2026-08-20 15:59 ET',
       '108 CURRENT CHRONOLOGY',
@@ -146,8 +150,10 @@ function base64(value) {
       authorization: {
         release: window.ATLAS_RELEASE_AUTHORIZATION?.releaseIdentity,
         entrypoint: window.ATLAS_RELEASE_AUTHORIZATION?.entrypointPath,
-        runtime: window.ATLAS_RELEASE_AUTHORIZATION?.runtimeAssets?.[0]?.path,
-        stylesheet: window.ATLAS_RELEASE_AUTHORIZATION?.stylesheetPath
+        runtimes: window.ATLAS_RELEASE_AUTHORIZATION?.runtimeAssets?.map(item => item.path),
+        stylesheets: window.ATLAS_RELEASE_AUTHORIZATION?.stylesheetAssets?.map(item => item.path),
+        stylesheet: window.ATLAS_RELEASE_AUTHORIZATION?.stylesheetPath,
+        geography: window.ATLAS_RELEASE_AUTHORIZATION?.referenceGeography?.path
       },
       scripts: performance.getEntriesByType('resource').map(entry => entry.name).filter(name => /\\.js(?:[?#]|$)/.test(name)),
       oldGlobals: [
@@ -166,8 +172,10 @@ function base64(value) {
     assert.match(ready.currentRelease, /^public-current-v1-[a-f0-9]{16}$/);
     assert.equal(ready.authorization.release, ready.release);
     assert.equal(ready.authorization.entrypoint, entrypoint.path);
-    assert.equal(ready.authorization.runtime, pageRegistry.path);
+    assert.deepEqual(ready.authorization.runtimes, [mapRuntime.path, pageRegistry.path]);
+    assert.deepEqual(ready.authorization.stylesheets, [mapStylesheet.path, stylesheet.path]);
     assert.equal(ready.authorization.stylesheet, stylesheet.path);
+    assert.equal(ready.authorization.geography, referenceGeography.path);
     assert(ready.performance.model_transfer_bytes > 4_000_000);
     assert(ready.performance.model_parse_milliseconds >= 0);
     assert.equal(ready.oldGlobals, false, 'dated successor-chain globals must not initialize');

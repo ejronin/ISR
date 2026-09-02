@@ -39,18 +39,18 @@ def integrity(data: bytes) -> str:
     return "sha256-" + base64.b64encode(hashlib.sha256(data).digest()).decode("ascii")
 
 
-def validate_asset(site: Path, asset: dict, role: str, extension: str) -> None:
+def validate_asset(site: Path, asset: dict, role: str, extension: str, hash_basis: str = "UTF8_LF_NORMALIZED") -> None:
     if asset.get("role") != role:
         fail(f"public release {role} role mismatch")
     expected_path = f"assets/releases/{asset.get('name')}.{asset.get('sha256')}.{extension}"
     if asset.get("path") != expected_path:
         fail(f"public release {role} is not content-addressed")
-    data = canonical_text_bytes(site / expected_path)
+    data = (site / expected_path).read_bytes() if hash_basis == "BINARY_BYTES" else canonical_text_bytes(site / expected_path)
     if digest(data) != asset.get("sha256") or len(data) != asset.get("bytes"):
         fail(f"deployed {role} bytes do not match the public release manifest")
     if integrity(data) != asset.get("integrity"):
         fail(f"deployed {role} SRI does not match the public release manifest")
-    if asset.get("hash_basis") != "UTF8_LF_NORMALIZED":
+    if asset.get("hash_basis") != hash_basis:
         fail(f"public release {role} hash basis mismatch")
 
 
@@ -98,17 +98,34 @@ def main() -> int:
     bootstrap = bootstrap_block.get("asset") or {}
     application = manifest.get("application") or {}
     assets = application.get("assets") or []
-    if len(assets) != 3 or {asset.get("role") for asset in assets} != {"page_registry", "stylesheet", "entrypoint"}:
+    expected_roles = {"map_runtime", "page_registry", "map_stylesheet", "stylesheet", "reference_geography", "entrypoint"}
+    role_counts = {role: sum(asset.get("role") == role for asset in assets) for role in expected_roles}
+    if any(count != 1 for count in role_counts.values()) or any(asset.get("role") not in expected_roles | {"evidence_image"} for asset in assets):
         fail("public release application asset inventory is incomplete")
     by_role = {asset["role"]: asset for asset in assets}
     validate_asset(site, bootstrap, "bootstrap", "js")
+    validate_asset(site, by_role["map_runtime"], "map_runtime", "js")
     validate_asset(site, by_role["page_registry"], "page_registry", "js")
+    validate_asset(site, by_role["map_stylesheet"], "map_stylesheet", "css")
     validate_asset(site, by_role["stylesheet"], "stylesheet", "css")
+    validate_asset(site, by_role["reference_geography"], "reference_geography", "geojson")
     validate_asset(site, by_role["entrypoint"], "entrypoint", "js")
-    if application.get("runtime") != [by_role["page_registry"].get("path")]:
-        fail("public release page-registry pointer mismatch")
+    evidence_images = [asset for asset in assets if asset.get("role") == "evidence_image"]
+    for asset in evidence_images:
+        extension = str(asset.get("path") or "").rsplit(".", 1)[-1]
+        if extension not in {"png", "jpg", "webp"}:
+            fail("public release evidence-image extension is unsupported")
+        validate_asset(site, asset, "evidence_image", extension, "BINARY_BYTES")
+    if application.get("runtime") != [by_role["map_runtime"].get("path"), by_role["page_registry"].get("path")]:
+        fail("public release runtime pointers mismatch")
+    if application.get("stylesheets") != [by_role["map_stylesheet"].get("path"), by_role["stylesheet"].get("path")]:
+        fail("public release stylesheet inventory mismatch")
     if application.get("stylesheet") != by_role["stylesheet"].get("path"):
         fail("public release stylesheet pointer mismatch")
+    if application.get("reference_geography") != by_role["reference_geography"].get("path"):
+        fail("public release reference-geography pointer mismatch")
+    if application.get("evidence_images") != [asset.get("path") for asset in evidence_images]:
+        fail("public release evidence-image inventory mismatch")
     if application.get("entrypoint") != by_role["entrypoint"].get("path"):
         fail("public release entrypoint pointer mismatch")
 

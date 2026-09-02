@@ -18,11 +18,14 @@ PUBLIC_SHELL_SOURCE = "templates/public-index.html"
 APPLICATION_VERSION = "atlas-public-shell-v1"
 BOOTSTRAP_PROTOCOL = "atlas-release-bootstrap-v1"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "1.1"
+GENERATOR_VERSION = "1.2"
 ASSET_SPECS = (
     ("bootstrap", "public-bootstrap", "js/public-bootstrap.js", "js"),
+    ("map_runtime", "leaflet", "vendor/leaflet/leaflet.js", "js"),
     ("page_registry", "public-ia", "js/public-ia.js", "js"),
+    ("map_stylesheet", "leaflet", "vendor/leaflet/leaflet.css", "css"),
     ("stylesheet", "public-shell", "css/public-shell.css", "css"),
+    ("reference_geography", "atlas-reference-geography", "assets/geography/atlas-reference-geography.geojson", "geojson"),
     ("entrypoint", "public-app", "js/public-app.js", "js"),
 )
 
@@ -64,6 +67,54 @@ def materialize_asset(root: Path, role: str, name: str, source_path: str, extens
         "integrity": sri_sha256(data),
         "bytes": len(data),
         "hash_basis": "UTF8_LF_NORMALIZED",
+    }
+
+
+def discover_evidence_images(payload: Any) -> list[str]:
+    discovered: set[str] = set()
+    image_keys = {"image_url", "thumbnail_url", "asset_path"}
+
+    def visit(value: Any) -> None:
+        if isinstance(value, dict):
+            for key, child in value.items():
+                if key in image_keys and isinstance(child, str):
+                    candidate = child.replace("\\", "/").removeprefix("./")
+                    path = Path(candidate)
+                    if not candidate.startswith(("data:", "http://", "https://")) and not path.is_absolute() and ".." not in path.parts and path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}:
+                        discovered.add(candidate)
+                else:
+                    visit(child)
+        elif isinstance(value, list):
+            for child in value:
+                visit(child)
+
+    visit(payload)
+    return sorted(discovered)
+
+
+def materialize_binary_image(root: Path, source_path: str, index: int) -> dict[str, Any]:
+    source = root / source_path
+    if not source.is_file():
+        raise FileNotFoundError(f"Public evidence image is missing: {source_path}")
+    data = source.read_bytes()
+    digest = sha256(data)
+    extension = source.suffix.lower().removeprefix(".").replace("jpeg", "jpg")
+    safe_stem = re.sub(r"[^a-z0-9-]+", "-", source.stem.lower()).strip("-") or "image"
+    name = f"evidence-image-{index:03d}-{safe_stem}"
+    relative_path = f"assets/releases/{name}.{digest}.{extension}"
+    output = root / relative_path
+    output.parent.mkdir(parents=True, exist_ok=True)
+    if not output.is_file() or output.read_bytes() != data:
+        output.write_bytes(data)
+    return {
+        "role": "evidence_image",
+        "name": name,
+        "source_path": source_path,
+        "path": relative_path,
+        "sha256": digest,
+        "integrity": sri_sha256(data),
+        "bytes": len(data),
+        "hash_basis": "BINARY_BYTES",
     }
 
 
@@ -115,7 +166,16 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
     if state.get("artifact_role") != "DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL":
         raise ValueError("Current-state artifact role is invalid")
 
-    application_assets = [assets_by_role["page_registry"], assets_by_role["stylesheet"], assets_by_role["entrypoint"]]
+    evidence_images = [materialize_binary_image(root, path, index + 1) for index, path in enumerate(discover_evidence_images(state))]
+    application_assets = [
+        assets_by_role["map_runtime"],
+        assets_by_role["page_registry"],
+        assets_by_role["map_stylesheet"],
+        assets_by_role["stylesheet"],
+        assets_by_role["reference_geography"],
+        assets_by_role["entrypoint"],
+        *evidence_images,
+    ]
     asset_set_material = "".join(
         f"{item['role']}\0{item['path']}\0{item['sha256']}\n"
         for item in sorted(application_assets, key=lambda row: row["role"])
@@ -146,9 +206,12 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         },
         "application": {
             "version": version,
-            "runtime": [assets_by_role["page_registry"]["path"]],
+            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["page_registry"]["path"]],
             "entrypoint": assets_by_role["entrypoint"]["path"],
             "stylesheet": assets_by_role["stylesheet"]["path"],
+            "stylesheets": [assets_by_role["map_stylesheet"]["path"], assets_by_role["stylesheet"]["path"]],
+            "reference_geography": assets_by_role["reference_geography"]["path"],
+            "evidence_images": [asset["path"] for asset in evidence_images],
             "asset_set_sha256": asset_set_sha256,
             "assets": application_assets,
         },

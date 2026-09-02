@@ -6,15 +6,15 @@ Phase 2 replaces the root document's dated presentation replay with one release-
 
 1. `index.html` exposes only metadata, the neutral `#atlas-root` loading state, and one content-addressed bootstrap script with a SHA-256 Subresource Integrity value.
 2. The neutral bootstrap loads generated `data/public-release.json` with `cache: no-store`. The real renderer has not loaded and cannot execute at this point.
-3. The bootstrap validates its own path, hash marker, and SRI value against the manifest. It then obtains the manifest-authorized, content-addressed stylesheet, public page registry, and application entrypoint.
-4. The browser enforces each authorized asset's SHA-256 SRI while loading it. Only after the stylesheet and inert page registry succeed does the bootstrap load the application entrypoint.
-5. The application validates that authorization, its executing script element, the active page registry, and the active stylesheet against the same manifest. It then loads generated `data/public-current-state.json`, verifies its normalized byte hash and byte count, and parses it once.
+3. The bootstrap validates its own path, hash marker, and SRI value against the manifest. It then obtains the manifest-authorized, content-addressed Leaflet runtime/CSS, public stylesheet, public page registry, local reference geography, and application entrypoint.
+4. The browser enforces each JavaScript/CSS asset's SHA-256 SRI. The bootstrap separately verifies the fetched GeoJSON bytes against the manifest before exposing the presentation-only geography. Only after these assets succeed does it load the application entrypoint.
+5. The application validates that authorization, its executing script element, both active runtimes, both active stylesheets, and the local reference-geography authorization resolve to the same manifest. It then loads generated `data/public-current-state.json`, verifies its normalized byte hash and byte count, and parses it once.
 6. The application verifies the read-model schema, release binding, cutoff identity, derived chronology count (205 at the Phase 3.5 migration boundary), event-ID uniqueness, per-event provenance, and source resolution.
 7. It initializes `window.ATLAS_PUBLIC_STATE` and performs the first current public render. Current sections read only from that validated in-memory model.
 
 The initial document contains no chronology count, cutoff, current summary, old navigation, map workspace, dated latest-update card, or active application CSS. If the manifest, authorized asset, or model cannot be loaded and validated, the neutral shell becomes an explicit error state with **Retry** and **Open archived records**. A release mismatch receives one controlled same-origin reload; a repeated mismatch becomes the explicit error state.
 
-`data/public-release.json` and `assets/releases/` are deterministic generated artifacts and are Git-ignored. `scripts/build_public_release.py` emits normalized, content-addressed copies of the neutral bootstrap, application stylesheet, and application entrypoint; binds those exact bytes and the current-state read model in the manifest; and fails if `index.html` does not bind the exact bootstrap. `scripts/validate_public_deployment.py` verifies the same contract inside the final Pages directory.
+`data/public-release.json` and `assets/releases/` are deterministic generated artifacts and are Git-ignored. `scripts/build_public_release.py` emits normalized, content-addressed copies of the neutral bootstrap, Leaflet runtime/CSS, application stylesheet, page registry, regional GeoJSON, and application entrypoint; binds those exact bytes and the current-state read model in the manifest; and fails if `index.html` does not bind the exact bootstrap. `scripts/validate_public_deployment.py` verifies the same contract inside the final Pages directory.
 
 This design prevents a cache split from creating an old-code/new-model hybrid. A cached bootstrap can authorize only a manifest that names that bootstrap's exact hash, while application JS and CSS are immutable hash-addressed URLs protected by browser SRI. A same-version asset with different bytes is rejected before it can execute.
 
@@ -32,6 +32,8 @@ The original top-level `data/*.json` runtime datasets also remain untouched for 
 - `js/public-ia.js` — manifest-authorized registry of permanent routes, page owners, shared public components, and shell navigation.
 - `js/public-app.js` — manifest-authorized owner of model loading, current state, errors, and page-registry initialization.
 - `css/public-shell.css` — manifest-authorized Phase 2 shell and temporary read-model presentation.
+- `vendor/leaflet/` — pinned manifest-authorized map runtime and base CSS.
+- `assets/geography/atlas-reference-geography.geojson` — checked-in presentation-only Natural Earth subset used without a runtime tile service.
 
 No former presentation module remains required during current boot.
 

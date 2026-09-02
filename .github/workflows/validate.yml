@@ -47,17 +47,21 @@ jobs:
           python scripts/build_public_release.py
           python scripts/build_public_release.py --check
           python scripts/validate_public_deployment.py
+          python scripts/validate_public_geography.py
+          python tests/public-release-evidence-image.test.py
           node tests/public-current-state.test.js
           node tests/public-boot.test.js
           node tests/public-ia.test.js
           node tests/public-content-redesign.test.js
           node tests/public-evidence-phase5.test.js
+          node tests/public-map-phase6.test.js
           node --check js/public-bootstrap.js
           node --check js/public-app.js
           node --check js/public-ia.js
           node --check tests/browser-public-boot-smoke.js
           node --check tests/browser-public-ia-smoke.js
           node --check tests/browser-public-evidence-phase5.js
+          node --check tests/browser-public-map-phase6.js
       - name: Validate Aug. 24 count synchronization after source build
         env:
           PYTHONUTF8: '1'
@@ -118,6 +122,7 @@ jobs:
           ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-boot-smoke.js
           ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-ia-smoke.js
           ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-evidence-phase5.js
+          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-map-phase6.js
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration

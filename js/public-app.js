@@ -55,7 +55,7 @@
     'military.facilities': freezeContract('military_record', ['ledger.facilities', 'ledger.map_links']),
     'military.weapons': freezeContract('military_record', ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses']),
     'military.losses': freezeContract('military_record', ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'analysis.casualty_corrections']),
-    'military.imagery': freezeContract('military_record', ['ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits']),
+    'military.imagery': freezeContract('military_record', ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits']),
     'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'ledger.agreements', 'ledger.shipping']),
     'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz']),
     'hormuz.economy': freezeContract('hormuz_economy', ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes']),
@@ -150,6 +150,14 @@
     return asset;
   }
 
+  function validateBinaryImage(asset) {
+    invariant(asset && asset.role === 'evidence_image', 'RELEASE_MISMATCH', 'An evidence-image release asset is invalid.');
+    const match = String(asset.path || '').match(/^assets\/releases\/(.+)\.([a-f0-9]{64})\.(png|jpg|webp)$/);
+    invariant(match && match[1] === asset.name && match[2] === asset.sha256, 'RELEASE_MISMATCH', 'An evidence-image release path is not content-addressed.');
+    invariant(asset.hash_basis === 'BINARY_BYTES', 'RELEASE_MISMATCH', 'An evidence-image hash basis is invalid.');
+    return asset;
+  }
+
   function validateManifest(manifest) {
     invariant(manifest && typeof manifest === 'object', 'RELEASE_MISMATCH', 'The public release manifest is missing.');
     invariant(manifest.schema_version === EXPECTED_MANIFEST_SCHEMA, 'RELEASE_MISMATCH', 'The public release manifest schema is not supported.');
@@ -159,14 +167,24 @@
     invariant(manifest.current_state && manifest.current_state.path === 'data/public-current-state.json', 'RELEASE_MISMATCH', 'The current-state path is invalid.');
     invariant(manifest.current_state.schema_version === EXPECTED_MODEL_SCHEMA, 'RELEASE_MISMATCH', 'The current-state schema is not supported.');
     invariant(/^[a-f0-9]{64}$/.test(manifest.current_state.sha256 || ''), 'RELEASE_MISMATCH', 'The current-state integrity value is invalid.');
-    invariant(Array.isArray(manifest.application.assets) && manifest.application.assets.length === 3, 'RELEASE_MISMATCH', 'The application asset inventory is incomplete.');
+    invariant(Array.isArray(manifest.application.assets) && manifest.application.assets.length >= 6, 'RELEASE_MISMATCH', 'The application asset inventory is incomplete.');
     const assetPaths = manifest.application.assets.map(asset => asset.path);
     invariant(new Set(assetPaths).size === assetPaths.length, 'RELEASE_MISMATCH', 'The application asset inventory contains duplicate paths.');
+    const mapRuntime = validateContentAddressedAsset(assetForRole(manifest, 'map_runtime'), 'js');
     const runtime = validateContentAddressedAsset(assetForRole(manifest, 'page_registry'), 'js');
+    const mapStylesheet = validateContentAddressedAsset(assetForRole(manifest, 'map_stylesheet'), 'css');
     const stylesheet = validateContentAddressedAsset(assetForRole(manifest, 'stylesheet'), 'css');
+    const geography = validateContentAddressedAsset(assetForRole(manifest, 'reference_geography'), 'geojson');
     const entrypoint = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
-    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 1 && manifest.application.runtime[0] === runtime.path, 'RELEASE_MISMATCH', 'The application runtime path is inconsistent.');
+    const evidenceImages = manifest.application.assets.filter(asset => asset.role === 'evidence_image').map(validateBinaryImage);
+    const fixedRoles = ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint'];
+    invariant(fixedRoles.every(role => manifest.application.assets.filter(asset => asset.role === role).length === 1), 'RELEASE_MISMATCH', 'A required application asset role is missing or duplicated.');
+    invariant(manifest.application.assets.every(asset => fixedRoles.includes(asset.role) || asset.role === 'evidence_image'), 'RELEASE_MISMATCH', 'The application asset inventory contains an unsupported role.');
+    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 2 && manifest.application.runtime[0] === mapRuntime.path && manifest.application.runtime[1] === runtime.path, 'RELEASE_MISMATCH', 'The application runtime paths are inconsistent.');
+    invariant(Array.isArray(manifest.application.stylesheets) && manifest.application.stylesheets.length === 2 && manifest.application.stylesheets[0] === mapStylesheet.path && manifest.application.stylesheets[1] === stylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet paths are inconsistent.');
     invariant(manifest.application.stylesheet === stylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet path is inconsistent.');
+    invariant(manifest.application.reference_geography === geography.path, 'RELEASE_MISMATCH', 'The application reference-geography path is inconsistent.');
+    invariant(Array.isArray(manifest.application.evidence_images) && evidenceImages.every((asset, index) => manifest.application.evidence_images[index] === asset.path) && evidenceImages.length === manifest.application.evidence_images.length, 'RELEASE_MISMATCH', 'The application evidence-image inventory is inconsistent.');
     invariant(manifest.application.entrypoint === entrypoint.path, 'RELEASE_MISMATCH', 'The application entrypoint path is inconsistent.');
     return manifest;
   }
@@ -180,29 +198,39 @@
     invariant(authorization && authorization.manifest, 'RELEASE_MISMATCH', 'The application was not started by an authorized release bootstrap.');
     const manifest = validateManifest(authorization.manifest);
     invariant(authorization.releaseIdentity === manifest.release_identity, 'RELEASE_MISMATCH', 'The runtime authorization release identity is inconsistent.');
-    const runtime = assetForRole(manifest, 'page_registry');
+    const runtimes = [assetForRole(manifest, 'map_runtime'), assetForRole(manifest, 'page_registry')];
     const entrypoint = assetForRole(manifest, 'entrypoint');
-    const stylesheet = assetForRole(manifest, 'stylesheet');
+    const stylesheets = [assetForRole(manifest, 'map_stylesheet'), assetForRole(manifest, 'stylesheet')];
+    const stylesheet = stylesheets[1];
+    const geography = assetForRole(manifest, 'reference_geography');
+    const evidenceImages = manifest.application.assets.filter(asset => asset.role === 'evidence_image');
     invariant(authorization.entrypointPath === entrypoint.path && authorization.entrypointSha256 === entrypoint.sha256, 'RELEASE_MISMATCH', 'The entrypoint authorization is inconsistent.');
     invariant(authorization.stylesheetPath === stylesheet.path && authorization.stylesheetSha256 === stylesheet.sha256, 'RELEASE_MISMATCH', 'The stylesheet authorization is inconsistent.');
-    invariant(Array.isArray(authorization.runtimeAssets) && authorization.runtimeAssets.length === 1, 'RELEASE_MISMATCH', 'The page registry authorization is missing.');
-    invariant(authorization.runtimeAssets[0].path === runtime.path && authorization.runtimeAssets[0].sha256 === runtime.sha256, 'RELEASE_MISMATCH', 'The page registry authorization is inconsistent.');
+    invariant(Array.isArray(authorization.runtimeAssets) && authorization.runtimeAssets.length === 2, 'RELEASE_MISMATCH', 'The runtime authorization is incomplete.');
+    runtimes.forEach((runtime, index) => invariant(authorization.runtimeAssets[index].path === runtime.path && authorization.runtimeAssets[index].sha256 === runtime.sha256, 'RELEASE_MISMATCH', 'The runtime authorization is inconsistent.'));
+    invariant(Array.isArray(authorization.stylesheetAssets) && authorization.stylesheetAssets.length === 2, 'RELEASE_MISMATCH', 'The stylesheet authorization is incomplete.');
+    stylesheets.forEach((style, index) => invariant(authorization.stylesheetAssets[index].path === style.path && authorization.stylesheetAssets[index].sha256 === style.sha256, 'RELEASE_MISMATCH', 'The stylesheet authorization is inconsistent.'));
+    invariant(authorization.referenceGeography && authorization.referenceGeography.path === geography.path && authorization.referenceGeography.sha256 === geography.sha256, 'RELEASE_MISMATCH', 'The reference-geography authorization is inconsistent.');
+    invariant(Array.isArray(authorization.evidenceImages) && authorization.evidenceImages.length === evidenceImages.length, 'RELEASE_MISMATCH', 'The evidence-image authorization is inconsistent.');
+    evidenceImages.forEach((asset, index) => invariant(authorization.evidenceImages[index].path === asset.path && authorization.evidenceImages[index].sourcePath === asset.source_path && authorization.evidenceImages[index].sha256 === asset.sha256, 'RELEASE_MISMATCH', 'An evidence-image authorization is inconsistent.'));
     invariant(executingScript && executingScript.src, 'RELEASE_MISMATCH', 'The executing application identity is unavailable.');
     invariant(pathMatches(executingScript.src, entrypoint.path), 'RELEASE_MISMATCH', 'The executing application path is not authorized by this release.');
     invariant(executingScript.integrity === entrypoint.integrity, 'RELEASE_MISMATCH', 'The executing application integrity is not authorized by this release.');
     invariant(executingScript.dataset.atlasAuthorizedEntrypoint === manifest.release_identity, 'RELEASE_MISMATCH', 'The executing application release marker is invalid.');
     invariant(executingScript.dataset.assetSha256 === entrypoint.sha256, 'RELEASE_MISMATCH', 'The executing application hash marker is invalid.');
     const runtimeScripts = Array.from(documentObject.querySelectorAll('script[data-atlas-authorized-runtime]'));
-    const activeRuntime = runtimeScripts.find(script => script.dataset.atlasAuthorizedRuntime === manifest.release_identity);
-    invariant(activeRuntime && activeRuntime.src, 'RELEASE_MISMATCH', 'The authorized page registry is not active.');
-    invariant(pathMatches(activeRuntime.src, runtime.path), 'RELEASE_MISMATCH', 'The active page registry path is not authorized by this release.');
-    invariant(activeRuntime.integrity === runtime.integrity && activeRuntime.dataset.assetSha256 === runtime.sha256, 'RELEASE_MISMATCH', 'The active page registry integrity is not authorized by this release.');
+    runtimes.forEach(runtime => {
+      const activeRuntime = runtimeScripts.find(script => script.dataset.atlasAuthorizedRuntime === manifest.release_identity && pathMatches(script.src, runtime.path));
+      invariant(activeRuntime && activeRuntime.src, 'RELEASE_MISMATCH', 'An authorized runtime is not active.');
+      invariant(activeRuntime.integrity === runtime.integrity && activeRuntime.dataset.assetSha256 === runtime.sha256, 'RELEASE_MISMATCH', 'An active runtime integrity value is not authorized by this release.');
+    });
     const styleLinks = Array.from(documentObject.querySelectorAll('link[data-atlas-authorized-style]'));
-    const activeStyle = styleLinks.find(link => link.dataset.atlasAuthorizedStyle === manifest.release_identity);
-    invariant(activeStyle && activeStyle.href, 'RELEASE_MISMATCH', 'The authorized application stylesheet is not active.');
-    invariant(pathMatches(activeStyle.href, stylesheet.path), 'RELEASE_MISMATCH', 'The active stylesheet path is not authorized by this release.');
-    invariant(activeStyle.integrity === stylesheet.integrity, 'RELEASE_MISMATCH', 'The active stylesheet integrity is not authorized by this release.');
-    invariant(activeStyle.dataset.assetSha256 === stylesheet.sha256, 'RELEASE_MISMATCH', 'The active stylesheet hash marker is invalid.');
+    stylesheets.forEach(style => {
+      const activeStyle = styleLinks.find(link => link.dataset.atlasAuthorizedStyle === manifest.release_identity && pathMatches(link.href, style.path));
+      invariant(activeStyle && activeStyle.href, 'RELEASE_MISMATCH', 'An authorized stylesheet is not active.');
+      invariant(activeStyle.integrity === style.integrity, 'RELEASE_MISMATCH', 'An active stylesheet integrity value is not authorized by this release.');
+      invariant(activeStyle.dataset.assetSha256 === style.sha256, 'RELEASE_MISMATCH', 'An active stylesheet hash marker is invalid.');
+    });
     return manifest;
   }
 
@@ -707,6 +735,10 @@
         settings.executingScript,
         documentObject
       );
+      invariant(root.L && root.L.version === '1.9.4', 'RELEASE_MISMATCH', 'The authorized map runtime is unavailable.');
+      invariant(root.ATLAS_REFERENCE_GEOGRAPHY && root.ATLAS_REFERENCE_GEOGRAPHY.artifact_role === 'PRESENTATION_REFERENCE_GEOGRAPHY', 'RELEASE_MISMATCH', 'The authorized reference geography is unavailable.');
+      invariant(root.ATLAS_AUTHORIZED_MEDIA && typeof root.ATLAS_AUTHORIZED_MEDIA === 'object', 'RELEASE_MISMATCH', 'The authorized evidence-media map is unavailable.');
+      invariant(manifest.application.assets.filter(asset => asset.role === 'evidence_image').every(asset => root.ATLAS_AUTHORIZED_MEDIA[asset.source_path]), 'RELEASE_MISMATCH', 'An authorized evidence image is unavailable.');
       const loaded = await loadCurrentRecord({ fetchImpl: settings.fetchImpl, modelUrl: settings.modelUrl, manifest });
       return renderCurrent(rootElement, loaded, { documentObject, windowObject: settings.windowObject });
     } catch (error) {

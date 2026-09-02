@@ -17,11 +17,12 @@ python scripts/validate_canonical_update_pipeline.py
 python scripts/build_public_current_state.py
 python scripts/build_public_release.py
 python scripts/validate_public_deployment.py
+python scripts/validate_public_geography.py
 ```
 
 Future evidence changes are small append-only packets under `data/canonical-updates/`; they do not require frontend edits or another dated loader. The migration boundary is independently pinned, and CI requires every prior accepted manifest entry to remain an exact prefix of the proposed ledger. See `docs/canonical-update-pipeline.md` for validation, dry-run, registration and publication commands.
 
-The temporary Phase 2 renderer exposes the full chronology, provenance-scoped sources, and approved datasets without attempting the final navigation, map, or specialist-view redesign. See `docs/public-boot-architecture.md` for the boot sequence and legacy-runtime classification.
+The current renderer exposes the full chronology, shared evidence/source services, approved analytical datasets, and one shared Leaflet MapView backed by checked-in Natural Earth reference geography. Maps do not use live tiles, routing services, or a separate evidence pipeline. See `docs/public-boot-architecture.md` for the boot sequence and release boundary, and `docs/reference-geography.md` for map provenance and preprocessing.
 
 ## Public information architecture
 
@@ -110,6 +111,7 @@ python scripts/validate_public_current_state.py
 python scripts/build_public_release.py
 python scripts/build_public_release.py --check
 python scripts/validate_public_deployment.py
+python scripts/validate_public_geography.py
 ```
 
 The ignored deploy-time artifacts at `data/public-current-state.json` and `data/public-release.json` are derived views only; canonical packages remain authoritative. See `docs/public-current-state.md` for the read-model input/provenance contract and `docs/public-boot-architecture.md` for the release boundary.

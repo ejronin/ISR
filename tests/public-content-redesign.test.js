@@ -55,7 +55,7 @@ assert.match(abandonment.what_actually_happened, /drawdowns already in execution
 for (const selector of [
   '.lead-story',
   '.story-sequence',
-  '.context-map-plot',
+  '.atlas-leaflet-map',
   '.bar-chart',
   '.comparison-grid',
   '.claim-case',

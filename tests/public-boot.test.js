@@ -50,14 +50,19 @@ function fakeBootstrapScript(sourceManifest = manifest) {
 function fakeAuthorizedRuntime(sourceManifest = manifest) {
   const entrypoint = app.assetForRole(sourceManifest, 'entrypoint');
   const stylesheet = app.assetForRole(sourceManifest, 'stylesheet');
-  const runtime = app.assetForRole(sourceManifest, 'page_registry');
+  const runtimes = ['map_runtime', 'page_registry'].map(role => app.assetForRole(sourceManifest, role));
+  const stylesheets = ['map_stylesheet', 'stylesheet'].map(role => app.assetForRole(sourceManifest, role));
+  const geography = app.assetForRole(sourceManifest, 'reference_geography');
   const authorization = {
     releaseIdentity: sourceManifest.release_identity,
     manifest: sourceManifest,
     bootstrapPath: sourceManifest.neutral_bootstrap.asset.path,
     entrypointPath: entrypoint.path,
     stylesheetPath: stylesheet.path,
-    runtimeAssets: [{ path: runtime.path, sha256: runtime.sha256 }],
+    runtimeAssets: runtimes.map(runtime => ({ path: runtime.path, sha256: runtime.sha256 })),
+    stylesheetAssets: stylesheets.map(style => ({ path: style.path, sha256: style.sha256 })),
+    referenceGeography: { path: geography.path, sha256: geography.sha256 },
+    evidenceImages: [],
     entrypointSha256: entrypoint.sha256,
     stylesheetSha256: stylesheet.sha256
   };
@@ -69,26 +74,20 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
       assetSha256: entrypoint.sha256
     }
   };
-  const activeStyle = {
-    href: `http://localhost/${stylesheet.path}`,
-    integrity: stylesheet.integrity,
-    dataset: {
-      atlasAuthorizedStyle: sourceManifest.release_identity,
-      assetSha256: stylesheet.sha256
-    }
-  };
-  const activeRuntime = {
+  const activeStyles = stylesheets.map(style => ({
+    href: `http://localhost/${style.path}`,
+    integrity: style.integrity,
+    dataset: { atlasAuthorizedStyle: sourceManifest.release_identity, assetSha256: style.sha256 }
+  }));
+  const activeRuntimes = runtimes.map(runtime => ({
     src: `http://localhost/${runtime.path}`,
     integrity: runtime.integrity,
-    dataset: {
-      atlasAuthorizedRuntime: sourceManifest.release_identity,
-      assetSha256: runtime.sha256
-    }
-  };
+    dataset: { atlasAuthorizedRuntime: sourceManifest.release_identity, assetSha256: runtime.sha256 }
+  }));
   return {
     authorization,
     executingScript,
-    documentObject: { querySelectorAll: selector => selector.startsWith('script') ? [activeRuntime] : [activeStyle] }
+    documentObject: { querySelectorAll: selector => selector.startsWith('script') ? activeRuntimes : activeStyles }
   };
 }
 
@@ -103,8 +102,8 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
 
   const bootstrapAsset = manifest.neutral_bootstrap.asset;
   const applicationAssets = manifest.application.assets;
-  assert.equal(applicationAssets.length, 3);
-  assert.deepEqual(new Set(applicationAssets.map(asset => asset.role)), new Set(['page_registry', 'stylesheet', 'entrypoint']));
+  assert.equal(applicationAssets.length, 6);
+  assert.deepEqual(new Set(applicationAssets.map(asset => asset.role)), new Set(['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint']));
   for (const asset of [bootstrapAsset, ...applicationAssets]) {
     const generated = read(asset.path);
     const source = read(asset.source_path);
