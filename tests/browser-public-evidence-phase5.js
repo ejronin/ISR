@@ -120,13 +120,18 @@ async function setRoute(cdp, routeKey) {
     const futureEvidence = await cdp.eval(`(async () => {
       const model = await fetch('./data/public-current-state.json', { cache: 'no-store' }).then(response => response.json());
       const locationId = model.entities.locations[0].record.location_id;
+      model.entities.locations[0].record.canonical_name = 'Current canonical location fixture';
+      model.entities.locations[0].record.latitude = 34.125;
+      model.entities.locations[0].record.longitude = 46.875;
+      model.entities.locations[0].record.coordinate_precision = 'CITY';
       const sourceReference = model.chronology.find(item => item.source_references?.length).source_references[0];
       model.counts.chronology_records += 1;
-      model.chronology.push({
+      const futureRecord = {
         event_id: 'EV-FUTURE-PHASE5',
         actor_ids: ['ACT-PER-MOHAMMAD-BAQER-QALIBAF'],
         location_ids: [locationId],
         provenance: [{ package_key: 'future-test' }],
+        revisions: [{ revision_id: 'UPD-20990105-TEST:EVENT:1', known_at: '2099-01-05T12:30:00-04:00', reason: 'Later accepted location clarification' }],
         source_ids: [sourceReference.source_id],
         source_references: [sourceReference],
         timeline: { date: '2099-01-02', first_reported: '2099-01-03' },
@@ -135,12 +140,15 @@ async function setRoute(cdp, routeKey) {
           event_date: '2099-01-02',
           event_time: '04:05',
           first_reported: '2099-01-03',
+          evidence_support: 'HIGH',
           evidence_status: 'SUPPORTED_WITH_LIMITATIONS',
-          dispute_posture: 'DISPUTED',
+          disputed_by: 'Recorded opposing party',
           actor_ids: ['ACT-PER-MOHAMMAD-BAQER-QALIBAF'],
-          location_ids: [locationId]
+          location_ids: [locationId],
+          location: { name: 'Stale embedded location fixture', lat: -8.25, lon: -12.5, precision: 'STALE' }
         }
-      });
+      };
+      model.chronology.push(futureRecord);
       const host = document.createElement('div');
       const testWindow = {
         location: { hash: '#/timeline/chronology' }, history: { replaceState() {} },
@@ -150,15 +158,25 @@ async function setRoute(cdp, routeKey) {
       const controller = window.AtlasPublicIA.mount({ rootElement: host, routeRuntime: runtime, state: {}, documentObject: document, windowObject: testWindow });
       const drawer = host.querySelector('[data-event-id="EV-FUTURE-PHASE5"] details.evidence-drawer');
       const text = drawer?.textContent || '';
+      const context = { documentObject: document, services: runtime.forRoute('timeline.chronology').services };
+      const map = window.AtlasPublicIA.MapView.create(context, { records: [futureRecord], title: 'Canonical location precedence fixture' });
+      host.append(map);
+      const point = window.AtlasPublicIA.MapView.pointFromRecord(futureRecord, context.services.locationResolver);
+      const mapText = map.textContent || '';
       controller.destroy();
-      return { text, locationLabel: model.entities.locations[0].record.canonical_name, sourceIndexes: runtime.diagnostics().sourceIndexBuilds };
+      return { text, mapText, point, locationLabel: model.entities.locations[0].record.canonical_name, sourceIndexes: runtime.diagnostics().sourceIndexBuilds };
     })()`);
     assert.match(futureEvidence.text, /Occurred2099-01-02 04:05/);
     assert.match(futureEvidence.text, /First reported \/ known2099-01-03/);
+    assert.match(futureEvidence.text, /Later revision known2099-01-05T12:30:00-04:00/);
     assert.match(futureEvidence.text, /Mohammad Baqer Qalibaf/);
     assert(futureEvidence.text.includes(futureEvidence.locationLabel), 'canonical location_id did not resolve in the shared drawer');
+    assert.match(futureEvidence.text, /Evidence supportHigh/);
     assert.match(futureEvidence.text, /Evidence statusSupported With Limitations/);
-    assert.match(futureEvidence.text, /Dispute statusDisputed/);
+    assert.match(futureEvidence.text, /Disputed byRecorded opposing party/);
+    assert(futureEvidence.mapText.includes('Current canonical location fixture'), 'map text equivalent did not use the current canonical location label');
+    assert(!futureEvidence.mapText.includes('Stale embedded location fixture'), 'stale embedded location leaked into the map text equivalent');
+    assert.deepEqual(futureEvidence.point, { lat: 34.125, lon: 46.875, label: 'Current canonical location fixture', precision: 'City' });
     assert.equal(futureEvidence.sourceIndexes, 1, 'future model instance did not build exactly one fresh source index');
 
     for (const route of ia.ROUTES.values()) await setRoute(cdp, route.key);

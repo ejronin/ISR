@@ -496,14 +496,39 @@
     return null;
   }
 
+  function firstSemanticText() {
+    for (const value of arguments) {
+      if (typeof value === 'string' && value.trim()) return value.trim();
+      if (Array.isArray(value)) {
+        const values = value.filter(item => typeof item === 'string' && item.trim()).map(item => item.trim());
+        if (values.length) return values.join('; ');
+      }
+    }
+    return null;
+  }
+
   function eventTemporalValues(item) {
     const record = item && item.event && typeof item.event === 'object' ? item.event : item || {};
     const timeline = item && item.timeline && typeof item.timeline === 'object' ? item.timeline : {};
     const date = firstText(record.event_date, record.date, item && item.event_date, item && item.date, timeline.date);
     const time = firstText(record.event_time, record.time, item && item.event_time, item && item.time, timeline.time);
+    const knownBy = firstText(record.known_at, record.first_reported, record.first_verified_at, record.first_verified, item && item.known_at, item && item.first_reported, item && item.first_verified, timeline.known_at, timeline.first_reported, timeline.first_verified);
+    const revisionKnownAt = [];
+    const revisions = [item && item.revisions, record.revisions, timeline.revisions]
+      .filter(Array.isArray)
+      .flat();
+    const knownByTime = knownBy ? Date.parse(knownBy) : Number.NaN;
+    for (const revision of revisions) {
+      const learned = revision && firstText(revision.known_at);
+      if (!learned || learned === knownBy || revisionKnownAt.includes(learned)) continue;
+      const learnedTime = Date.parse(learned);
+      if (Number.isFinite(knownByTime) && Number.isFinite(learnedTime) && learnedTime <= knownByTime) continue;
+      revisionKnownAt.push(learned);
+    }
     return {
       occurred: firstText(record.occurred_at, record.timestamp, item && item.occurred_at, item && item.timestamp) || (date && time ? `${date} ${time}` : date),
-      knownBy: firstText(record.known_at, record.first_reported, record.first_verified_at, record.first_verified, item && item.known_at, item && item.first_reported, item && item.first_verified, timeline.known_at, timeline.first_reported, timeline.first_verified)
+      knownBy,
+      revisionKnownAt
     };
   }
 
@@ -512,16 +537,31 @@
     const evidence = record.evidence_status && typeof record.evidence_status === 'object'
       ? record.evidence_status
       : item && item.evidence_status && typeof item.evidence_status === 'object' ? item.evidence_status : {};
+    const explicitSupport = firstSemanticText(record.evidence_support, item && item.evidence_support, evidence.support);
+    const status = firstSemanticText(
+      typeof record.evidence_status === 'string' ? record.evidence_status : null,
+      typeof item.evidence_status === 'string' ? item.evidence_status : null,
+      evidence.status,
+      evidence.classification
+    );
+    const disputeStatus = firstSemanticText(
+      record.dispute_status,
+      record.dispute_posture,
+      item && item.dispute_status,
+      item && item.dispute_posture,
+      evidence.dispute,
+      evidence.dispute_status,
+      evidence.dispute_posture
+    );
+    const disputedBy = firstSemanticText(record.disputed_by, item && item.disputed_by, evidence.disputed_by);
     return {
-      support: firstText(
-        typeof record.evidence_status === 'string' ? record.evidence_status : null,
-        typeof item.evidence_status === 'string' ? item.evidence_status : null,
-        evidence.support,
-        evidence.status,
-        evidence.classification
-      ),
-      dispute: firstText(record.dispute_status, record.dispute_posture, item && item.dispute_status, item && item.dispute_posture, evidence.dispute, evidence.dispute_status),
-      unresolved: firstText(record.unresolved_evidence, record.unresolved, record.evidence_gap, item && item.unresolved_evidence, item && item.unresolved, item && item.evidence_gap)
+      support: explicitSupport || status,
+      explicitSupport,
+      status,
+      dispute: disputeStatus || disputedBy,
+      disputeStatus,
+      disputedBy,
+      unresolved: firstSemanticText(record.unresolved_evidence, record.unresolved, record.evidence_gap, item && item.unresolved_evidence, item && item.unresolved, item && item.evidence_gap)
     };
   }
 
@@ -597,13 +637,16 @@
         appendDefinition(facts, 'Event summary', firstText(record.summary, record.observed_fact, record.headline, item.summary));
         appendDefinition(facts, 'Occurred', temporal.occurred);
         appendDefinition(facts, 'First reported / known', temporal.knownBy);
+        appendDefinition(facts, 'Later revision known', temporal.revisionKnownAt);
         appendDefinition(facts, 'Actors', (Array.isArray(actorValues) ? actorValues : [actorValues]).map(value => services.actorIdentity.resolve(value).label));
         appendDefinition(facts, 'Locations', (Array.isArray(locationValues) ? locationValues : [locationValues]).map(value => {
           const location = services.locationResolver.resolve(value);
           return location ? location.label : typeof value === 'string' ? value : null;
         }));
-        appendDefinition(facts, 'Evidence status', status.support && (DISPLAY_TERMS[status.support] || plainLabel(status.support, 'Evidence status recorded')));
-        appendDefinition(facts, 'Dispute status', status.dispute && (DISPLAY_TERMS[status.dispute] || plainLabel(status.dispute, 'Dispute status recorded')));
+        appendDefinition(facts, 'Evidence support', status.explicitSupport && (DISPLAY_TERMS[status.explicitSupport] || plainLabel(status.explicitSupport, 'Evidence support recorded')));
+        appendDefinition(facts, 'Evidence status', status.status && (DISPLAY_TERMS[status.status] || plainLabel(status.status, 'Evidence status recorded')));
+        appendDefinition(facts, 'Dispute status', status.disputeStatus && (DISPLAY_TERMS[status.disputeStatus] || plainLabel(status.disputeStatus, 'Dispute status recorded')));
+        appendDefinition(facts, 'Disputed by', status.disputedBy && (DISPLAY_TERMS[status.disputedBy] || plainLabel(status.disputedBy, 'Recorded disputing party')));
         appendDefinition(facts, 'Unresolved evidence', status.unresolved);
       }
       if (!references.length && !relatedRecords.length) {
@@ -635,7 +678,25 @@
 
   function pointFromRecord(record, locationResolver) {
     if (!record || typeof record !== 'object') return null;
-    const candidates = [record, record.location, record.event && record.event.location, record.locations && record.locations[0]];
+    const nested = record.event && typeof record.event === 'object' ? record.event : {};
+    const rawIds = record.location_ids || nested.location_ids || (record.location_id ? [record.location_id] : nested.location_id ? [nested.location_id] : []);
+    const ids = (Array.isArray(rawIds) ? rawIds : [rawIds]).filter(Boolean);
+    let canonicalReferenceResolved = false;
+    for (const id of ids) {
+      const location = locationResolver && locationResolver.resolve(id);
+      if (!location) continue;
+      canonicalReferenceResolved = true;
+      if (!Number.isFinite(location.latitude) || !Number.isFinite(location.longitude)) continue;
+      return {
+        lat: location.latitude,
+        lon: location.longitude,
+        label: publicNarrative(location.label, record.event_id || 'Mapped record'),
+        precision: plainLabel(location.precision, 'Recorded location')
+      };
+    }
+    if (canonicalReferenceResolved) return null;
+
+    const candidates = [record, record.location, nested.location, record.locations && record.locations[0]];
     for (const candidate of candidates) {
       if (!candidate || typeof candidate !== 'object') continue;
       const latValue = candidate.latitude === undefined ? candidate.lat : candidate.latitude;
@@ -651,22 +712,11 @@
         precision: plainLabel(candidate.precision || record.coordinate_precision, 'Recorded location')
       };
     }
-    const nested = record.event && typeof record.event === 'object' ? record.event : {};
-    const ids = record.location_ids || nested.location_ids || (record.location_id ? [record.location_id] : []);
-    for (const id of Array.isArray(ids) ? ids : [ids]) {
-      const location = locationResolver && locationResolver.resolve(id);
-      if (!location || !Number.isFinite(location.latitude) || !Number.isFinite(location.longitude)) continue;
-      return {
-        lat: location.latitude,
-        lon: location.longitude,
-        label: publicNarrative(location.label, record.event_id || 'Mapped record'),
-        precision: plainLabel(location.precision, 'Recorded location')
-      };
-    }
     return null;
   }
 
   const MapView = Object.freeze({
+    pointFromRecord,
     create(context, options) {
       const documentObject = context.documentObject;
       const section = element(documentObject, 'section', 'context-map');

@@ -140,14 +140,32 @@ for (const [routeKey, contract] of Object.entries(boot.ROUTE_DATA_DEPENDENCIES))
 }
 
 {
-  const temporal = ia.eventTemporalValues({ event: { event_date: '2026-08-01', event_time: '03:00', first_reported: '2026-08-02' } });
+  const temporal = ia.eventTemporalValues({
+    event: { event_date: '2026-08-01', event_time: '03:00', first_reported: '2026-08-02' },
+    revisions: [{ revision_id: 'UPD-TEST:EVENT:1', known_at: '2026-08-04T12:30:00-04:00', reason: 'Later accepted clarification' }]
+  });
   assert.equal(temporal.occurred, '2026-08-01 03:00');
   assert.equal(temporal.knownBy, '2026-08-02');
+  assert.deepEqual(temporal.revisionKnownAt, ['2026-08-04T12:30:00-04:00']);
   const status = ia.eventEvidenceValues({ event: { evidence_status: 'SUPPORTED_WITH_LIMITATIONS', dispute_posture: 'DISPUTED' } });
   assert.equal(status.support, 'SUPPORTED_WITH_LIMITATIONS');
+  assert.equal(status.status, 'SUPPORTED_WITH_LIMITATIONS');
   assert.equal(status.dispute, 'DISPUTED');
+  const canonicalShape = ia.eventEvidenceValues({
+    event: {
+      evidence_support: 'HIGH',
+      evidence_status: 'SUPPORTED_WITH_LIMITATIONS',
+      disputed_by: 'Recorded opposing party'
+    }
+  });
+  assert.equal(canonicalShape.support, 'HIGH');
+  assert.equal(canonicalShape.status, 'SUPPORTED_WITH_LIMITATIONS');
+  assert.equal(canonicalShape.dispute, 'Recorded opposing party');
+  assert.equal(canonicalShape.disputedBy, 'Recorded opposing party');
   const realStatusRecord = model.chronology.find(item => item.event && typeof item.event.evidence_status === 'string');
-  assert.equal(ia.eventEvidenceValues(realStatusRecord).support, realStatusRecord.event.evidence_status);
+  const realStatus = ia.eventEvidenceValues(realStatusRecord);
+  assert.equal(realStatus.support, realStatusRecord.event.evidence_status);
+  assert.equal(realStatus.status, realStatusRecord.event.evidence_status);
 }
 
 console.log('public-evidence-phase5: PASS - generated authority, strict route views, provenance, actor/location/status and future-update behavior verified');
