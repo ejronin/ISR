@@ -22,10 +22,14 @@ CANONICAL_STATE_PATH = "data/canonical-current-state.json"
 REGISTRY_PATH = "data/public-read-model-registry.json"
 REGISTRY_SCHEMA_PATH = "schemas/public-read-model-registry-v1.json"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "1.2"
+GENERATOR_VERSION = "1.3"
 APPROVED_BASELINE_SHA = "9a93eea6afb1ba2f3899e96dc72e2e66071d41b1"
 SOURCE_ID_RE = re.compile(r"SRC-[A-F0-9]{12}")
 SHARED_PUBLIC_DATASETS = ("current.sources", "current.actors", "current.locations")
+FACILITY_DATASET_KEY = "ledger.facilities"
+LEGACY_FACILITY_DATASET_KEY = "legacy.facilities"
+FACILITY_CONTRACT_PATH = "data/integration-v1.2/facilities.json"
+PRESERVED_FACILITY_RECORD_PATH = "data/facilities.json"
 PUBLIC_PAGE_DATASET_ADDITIONS = {
     # Nuclear Talks compares approved Iran messaging with the agreement record.
     "diplomacy_mou": ("analysis.iran_messaging",),
@@ -73,6 +77,102 @@ def extract_source_ids(value: Any) -> set[str]:
             found.update(extract_source_ids(key))
             found.update(extract_source_ids(item))
     return found
+
+
+def source_ids_by_exact_url(source_catalog: list[dict[str, Any]]) -> dict[str, list[str]]:
+    index: dict[str, set[str]] = {}
+    for source in source_catalog:
+        source_id = source.get("source_id")
+        if not isinstance(source_id, str):
+            continue
+        records = [source.get("record"), source.get("registry")]
+        records.extend(variant.get("record") for variant in source.get("variants") or [] if isinstance(variant, dict))
+        for record in records:
+            url = record.get("url") if isinstance(record, dict) else None
+            if isinstance(url, str) and url:
+                index.setdefault(url, set()).add(source_id)
+    return {url: sorted(source_ids) for url, source_ids in index.items()}
+
+
+def materialize_facility_payload(
+    ledger_payload: dict[str, Any],
+    preserved_payload: dict[str, Any],
+    source_catalog: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Enforce the ledger's preserved-repository facility contract.
+
+    The integration ledger owns which historical IDs remain live. The older
+    repository file supplies only the explicitly named record bodies; it is
+    never exposed to a current page as a separate runtime authority.
+    """
+    result = copy.deepcopy(ledger_payload)
+    facilities = result.get("facilities") or []
+    preserve_ids = result.get("repo_records_to_preserve") or []
+    if not isinstance(facilities, list) or not isinstance(preserve_ids, list):
+        raise ValueError("Facility ledger preservation contract is malformed")
+    if any(not isinstance(item, str) or not item for item in preserve_ids):
+        raise ValueError("Facility preservation IDs must be non-empty strings")
+    if len(preserve_ids) != len(set(preserve_ids)):
+        raise ValueError("Facility preservation contract contains duplicate IDs")
+
+    live_ids = [record.get("facility_id") for record in facilities]
+    if any(not isinstance(item, str) or not item for item in live_ids):
+        raise ValueError("Integrated facility record is missing facility_id")
+    if len(live_ids) != len(set(live_ids)):
+        raise ValueError("Integrated facility records contain duplicate IDs")
+
+    preserved_records = preserved_payload.get("facilities") or []
+    preserved_by_id = {record.get("id"): record for record in preserved_records if isinstance(record, dict)}
+    if len(preserved_by_id) != len(preserved_records):
+        raise ValueError("Preserved repository facility records contain missing or duplicate IDs")
+    missing_bodies = sorted(set(preserve_ids) - set(preserved_by_id) - set(live_ids))
+    if missing_bodies:
+        raise ValueError(f"Preserved facility bodies are missing: {missing_bodies}")
+
+    url_index = source_ids_by_exact_url(source_catalog)
+    added_ids: list[str] = []
+    for facility_id in preserve_ids:
+        if facility_id in live_ids:
+            continue
+        preserved = copy.deepcopy(preserved_by_id[facility_id])
+        source_urls = [url for url in preserved.get("source_urls") or [] if isinstance(url, str) and url]
+        resolved_source_ids = sorted({source_id for url in source_urls for source_id in url_index.get(url, [])})
+        unresolved_source_urls = [url for url in source_urls if url not in url_index]
+        preserved.update({
+            "facility_id": facility_id,
+            "legacy_ids": {"repo": facility_id},
+            "integration_action": "PRESERVE_EXISTING",
+            "country": preserved.get("host"),
+            "location": {
+                "lat": preserved.get("lat"),
+                "lon": preserved.get("lon"),
+                "precision": "COARSE_EXISTING_ATLAS_POINT",
+                "coordinate_source": "existing ejronin/ISR data/facilities.json",
+            },
+            "source_ids": resolved_source_ids,
+            "unresolved_source_urls": unresolved_source_urls,
+            "preservation_provenance": {
+                "status": "PRESERVED_NON_SUPERSEDED",
+                "contract_path": FACILITY_CONTRACT_PATH,
+                "record_path": PRESERVED_FACILITY_RECORD_PATH,
+                "record_id": facility_id,
+            },
+        })
+        facilities.append(preserved)
+        live_ids.append(facility_id)
+        added_ids.append(facility_id)
+
+    if not set(preserve_ids) <= set(live_ids):
+        raise ValueError("Facility preservation contract was not fully materialized")
+    result["facilities"] = facilities
+    result["materialization"] = {
+        "contract_enforced": True,
+        "contract_path": FACILITY_CONTRACT_PATH,
+        "preserved_record_path": PRESERVED_FACILITY_RECORD_PATH,
+        "preserved_live_ids": list(preserve_ids),
+        "materialized_from_preserved_record_ids": added_ids,
+    }
+    return result
 
 
 class InputReader:
@@ -228,6 +328,40 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
             media_type = "text/plain"
         datasets[key] = dataset_record(key, Path(path).as_posix(), role, payload, media_type)
 
+    facility_dataset = datasets[FACILITY_DATASET_KEY]
+    facility_payload = materialize_facility_payload(
+        facility_dataset["payload"],
+        datasets[LEGACY_FACILITY_DATASET_KEY]["payload"],
+        source_catalog,
+    )
+    facility_dataset["payload"] = facility_payload
+    facility_dataset["source_references"] = dataset_record(
+        FACILITY_DATASET_KEY,
+        facility_dataset["path"],
+        facility_dataset["role"],
+        facility_payload,
+        facility_dataset["media_type"],
+    )["source_references"]
+    facility_dataset["derivation"] = {
+        "kind": "PRESERVATION_CONTRACT_MATERIALIZATION",
+        "input_paths": [FACILITY_CONTRACT_PATH, PRESERVED_FACILITY_RECORD_PATH],
+    }
+    live_facility_ids = {record["facility_id"] for record in facility_payload["facilities"]}
+    bda_records = (datasets.get("ledger.bda_overlays") or {}).get("payload", {}).get("overlays") or []
+    unresolved_bda_facility_refs = sorted({
+        record.get("facility_ref") for record in bda_records
+        if record.get("facility_ref") and record.get("facility_ref") not in live_facility_ids
+    })
+    if unresolved_bda_facility_refs:
+        raise ValueError(f"BDA facility references do not resolve: {unresolved_bda_facility_refs}")
+    audit_records = (datasets.get("forensic.facility_claim_audits") or {}).get("payload", {}).get("records") or []
+    unresolved_audit_facility_refs = sorted({
+        record.get("facility_id") for record in audit_records
+        if record.get("facility_id") and record.get("facility_id") not in live_facility_ids
+    })
+    if unresolved_audit_facility_refs:
+        raise ValueError(f"Facility claim-audit references do not resolve: {unresolved_audit_facility_refs}")
+
     entity_payloads = {
         "current.actors": (canonical.get("entities") or {}).get("actors") or [],
         "current.locations": (canonical.get("entities") or {}).get("locations") or [],
@@ -266,6 +400,10 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "page_dataset_referenced_sources": len(dataset_source_ids),
         "source_metadata_field_conflicts": sum(len(source.get("field_conflicts") or []) for source in source_catalog),
         "source_ids_requiring_provenance_scope": sum(1 for source in source_catalog if source.get("resolution") == "PROVENANCE_SCOPED_VARIANTS_REQUIRED"),
+        "live_facility_records": len(facility_payload["facilities"]),
+        "preserved_facility_records": len(facility_payload["repo_records_to_preserve"]),
+        "damage_observation_records": len((datasets.get("forensic.damage_observations") or {}).get("payload", {}).get("records") or []),
+        "facility_claim_audit_records": len((datasets.get("forensic.facility_claim_audits") or {}).get("payload", {}).get("records") or []),
     })
     release = canonical["release"]
     scoped_source_ids = sorted(source["source_id"] for source in source_catalog if source.get("resolution") == "PROVENANCE_SCOPED_VARIANTS_REQUIRED")
@@ -317,6 +455,9 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
             "canonical_inputs_modified": False,
             "canonical_state_stale": False,
             "browser_replays_update_packets": False,
+            "facility_preservation_contract_satisfied": True,
+            "unresolved_bda_facility_refs": unresolved_bda_facility_refs,
+            "unresolved_facility_claim_audit_refs": unresolved_audit_facility_refs,
         },
     }
 

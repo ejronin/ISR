@@ -105,4 +105,38 @@ assert.deepEqual(state.revision_history, canonicalState.revision_history);
 assert.equal(state.datasets['current.claims'].payload.claims.length, canonicalState.counts.claim_records);
 assert.equal(state.datasets['current.material_losses'].payload.records.length, canonicalState.counts.material_loss_records);
 
-console.log('public-current-state consumer test: PASS - canonical current entities, 205 unique events, 362 sources, provenance and page-data mappings verified');
+const requiredPreservedFacilities = new Set([
+  'US-NSA-BHR', 'US-ARIFJAN', 'US-ALISALEM', 'US-BUEHRING', 'US-SHUAIBA-TOC', 'US-CAMPDOHA',
+  'US-BUBIYAN', 'US-ALDHAFRA', 'US-JEBELALI', 'US-ERBIL', 'US-AINASAD', 'US-PRINCESULTAN',
+  'US-MUWAFFAQ', 'US-INCIRLIK', 'US-ISA', 'US-RMELAN', 'US-QASRAK', 'US-TANF'
+]);
+const facilityPayload = state.datasets['ledger.facilities'].payload;
+const liveFacilityIds = facilityPayload.facilities.map(record => record.facility_id);
+assert.equal(liveFacilityIds.length, new Set(liveFacilityIds).size, 'live facility IDs must be unique');
+assert.deepEqual(new Set(facilityPayload.repo_records_to_preserve), requiredPreservedFacilities, 'the reviewed preservation contract changed');
+assert([...requiredPreservedFacilities].every(facilityId => liveFacilityIds.includes(facilityId)), 'a preserved facility is absent from live public state');
+assert.equal(facilityPayload.materialization.contract_enforced, true);
+assert.deepEqual(new Set(facilityPayload.materialization.preserved_live_ids), requiredPreservedFacilities);
+for (const facilityId of requiredPreservedFacilities) {
+  const facility = facilityPayload.facilities.find(record => record.facility_id === facilityId);
+  assert.equal(facility.preservation_provenance.status, 'PRESERVED_NON_SUPERSEDED');
+  assert.equal(facility.location.precision, 'COARSE_EXISTING_ATLAS_POINT');
+}
+
+const bdaRecords = state.datasets['ledger.bda_overlays'].payload.overlays;
+assert(bdaRecords.every(record => liveFacilityIds.includes(record.facility_ref)), 'BDA facility reference must resolve through the live facility set');
+assert(bdaRecords.every(record => !record.image_bounds && !record.georeferenced_bounds && !record.footprint && !record.corners), 'facility restoration must not manufacture BDA geometry');
+const damageObservations = state.datasets['forensic.damage_observations'];
+assert.equal(damageObservations.role, 'APPROVED_FORENSIC_DATA');
+assert.equal(damageObservations.payload.records.length, 9);
+assert.equal(new Set(damageObservations.payload.records.map(record => record.observation_id)).size, 9);
+assert(damageObservations.payload.records.every(record => record.sources.every(sourceId => sourceIds.has(sourceId))), 'damage-observation provenance must resolve');
+const facilityAudits = state.datasets['forensic.facility_claim_audits'].payload.records;
+assert.equal(facilityAudits.length, 4);
+assert(facilityAudits.every(record => liveFacilityIds.includes(record.facility_id)), 'facility claim-audit relationship must resolve');
+assert(facilityAudits.every(record => record.propositions.every(proposition => proposition.disposition)), 'claim-audit dispositions must remain proposition-specific');
+assert(state.page_data.military_record.dataset_keys.includes('forensic.damage_observations'));
+assert.deepEqual(state.integrity.unresolved_bda_facility_refs, []);
+assert.deepEqual(state.integrity.unresolved_facility_claim_audit_refs, []);
+
+console.log('public-current-state consumer test: PASS - canonical current entities, 205 unique events, 362 sources, facility preservation, BDA references, damage observations, provenance and page-data mappings verified');

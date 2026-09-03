@@ -8,6 +8,7 @@ const ia = require('../js/public-ia.js');
 const geography = JSON.parse(fs.readFileSync(path.join(root, 'assets/geography/atlas-reference-geography.geojson'), 'utf8'));
 const routes = JSON.parse(fs.readFileSync(path.join(root, 'data/oil-routes-r1.json'), 'utf8'));
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'data/public-release.json'), 'utf8'));
+const publicState = JSON.parse(fs.readFileSync(path.join(root, 'data/public-current-state.json'), 'utf8'));
 
 assert.equal(geography.artifact_role, 'PRESENTATION_REFERENCE_GEOGRAPHY');
 assert.equal(geography.metadata.version, '5.1.1');
@@ -39,6 +40,30 @@ assert.equal(generalArea.bounds, null, 'general-area imagery must not invent rec
 assert.equal(generalArea.footprint, null, 'general-area imagery must not invent a polygon');
 assert.equal(generalArea.point.precision, 'General area', 'general-area imagery must retain approximate precision');
 assert.equal(ia.MapView.pointFromRecord({ location_id: 'LOC-UNKNOWN', location: { lat: 0, lon: 0, name: 'Stale embedded point' } }, resolver), null, 'stale embedded coordinates must not outrank a canonical unknown location');
+
+const facilityRecords = publicState.datasets['ledger.facilities'].payload.facilities;
+const facilityIds = new Set(facilityRecords.map(record => record.facility_id));
+const bdaRecords = publicState.datasets['ledger.bda_overlays'].payload.overlays;
+assert(bdaRecords.every(record => facilityIds.has(record.facility_ref)), 'current BDA facility reference is dangling');
+const bdaDescriptors = bdaRecords.map(record => ia.MapView.imageryDescriptor(record, resolver, facilityRecords));
+assert(bdaDescriptors.every(item => ['C', 'D'].includes(item.tier)), 'facility reference restoration upgraded BDA to a footprint or image overlay');
+assert(bdaDescriptors.every(item => item.bounds === null && item.footprint === null), 'facility reference point was emitted as precise imagery geometry');
+const restoredBda = bdaRecords.find(record => record.facility_ref === 'US-NSA-BHR');
+const restoredDescriptor = ia.MapView.imageryDescriptor(restoredBda, resolver, facilityRecords);
+assert.equal(restoredDescriptor.tier, 'C', 'restored preserved facility did not provide general BDA context');
+assert.equal(restoredDescriptor.point.precision, 'Coarse Existing Atlas Point');
+assert.equal(restoredDescriptor.bounds, null, 'facility reference point became a damage rectangle');
+assert.equal(restoredDescriptor.footprint, null, 'facility reference point became a damage footprint');
+
+const damageObservations = publicState.datasets['forensic.damage_observations'].payload.records;
+const locatedObservation = damageObservations.find(record => record.coordinate);
+const unlocatedObservation = damageObservations.find(record => !record.coordinate);
+const locatedDamage = ia.MapView.imageryDescriptor(locatedObservation, resolver, facilityRecords);
+assert.equal(locatedDamage.tier, 'C', 'located forensic damage observation should remain a location-linked card');
+assert.equal(locatedDamage.point.precision, 'Complex Reference Point Low Confidence Public Map');
+assert.equal(locatedDamage.bounds, null, 'damage observation invented image bounds');
+assert.equal(locatedDamage.footprint, null, 'damage observation invented a footprint');
+assert.equal(ia.MapView.imageryDescriptor(unlocatedObservation, resolver, facilityRecords).tier, 'D', 'unlocated forensic observation should remain evidence-only');
 
 assert.deepEqual(new Set(manifest.application.assets.map(asset => asset.role)), new Set(['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint']));
 assert.equal(manifest.application.reference_geography, manifest.application.assets.find(asset => asset.role === 'reference_geography').path);
