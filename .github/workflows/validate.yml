@@ -112,28 +112,68 @@ jobs:
         run: |
           python -m http.server 8765 --bind 127.0.0.1 --directory _site >/tmp/atlas-http.log 2>&1 &
           server_pid=$!
-          chrome="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
-          if [ -z "$chrome" ]; then
+          browser_pid=''
+          cleanup(){
+            if [ -n "$browser_pid" ]; then kill "$browser_pid" 2>/dev/null || true; fi
+            kill "$server_pid" 2>/dev/null || true
+            if [ -n "$browser_pid" ]; then wait "$browser_pid" 2>/dev/null || true; fi
+            wait "$server_pid" 2>/dev/null || true
+          }
+          trap cleanup EXIT
+          mapfile -t browsers < <(
+            for name in chromium google-chrome-stable google-chrome chromium-browser; do
+              command -v "$name" 2>/dev/null || true
+            done | awk '!seen[$0]++'
+          )
+          if [ "${#browsers[@]}" -eq 0 ]; then
             echo 'FAIL: no Chrome/Chromium executable is available for the public UI smoke test.' >&2
             exit 1
           fi
-          rm -rf /tmp/atlas-chrome-profile
-          "$chrome" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
-            --remote-debugging-port=9222 --remote-allow-origins='*' \
-            --user-data-dir=/tmp/atlas-chrome-profile 'http://127.0.0.1:8765/?view=strikes' >/tmp/atlas-chrome.log 2>&1 &
-          chrome_pid=$!
-          cleanup(){ kill "$chrome_pid" "$server_pid" 2>/dev/null || true; }
-          trap cleanup EXIT
           ready=0
-          for _ in $(seq 1 60); do
-            if curl -fsS http://127.0.0.1:9222/json >/dev/null 2>&1; then ready=1; break; fi
-            sleep 0.25
+          browser=''
+          for candidate in "${browsers[@]}"; do
+            echo "Browser candidate: $candidate"
+            timeout --signal=KILL 5s "$candidate" --version || true
+            rm -rf /tmp/atlas-chrome-profile
+            : >/tmp/atlas-chrome.log
+            "$candidate" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+              --no-first-run --no-default-browser-check \
+              --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
+              --remote-allow-origins='*' --user-data-dir=/tmp/atlas-chrome-profile \
+              'http://127.0.0.1:8765/?view=strikes' >/tmp/atlas-chrome.log 2>&1 &
+            browser_pid=$!
+            deadline=$((SECONDS + 15))
+            while [ "$SECONDS" -lt "$deadline" ]; do
+              if curl -fsS --connect-timeout 1 --max-time 1 \
+                http://127.0.0.1:9222/json/version >/tmp/atlas-cdp-version.json 2>/dev/null; then
+                ready=1
+                browser="$candidate"
+                break
+              fi
+              if ! kill -0 "$browser_pid" 2>/dev/null; then break; fi
+              sleep 0.25
+            done
+            if [ "$ready" -eq 1 ]; then break; fi
+            candidate_status='still running without CDP'
+            if ! kill -0 "$browser_pid" 2>/dev/null; then
+              candidate_status=0
+              wait "$browser_pid" || candidate_status=$?
+            else
+              kill "$browser_pid" 2>/dev/null || true
+              wait "$browser_pid" 2>/dev/null || true
+            fi
+            echo "Browser candidate failed ($candidate_status): $candidate" >&2
+            cat /tmp/atlas-chrome.log >&2 || true
+            browser_pid=''
           done
           if [ "$ready" -ne 1 ]; then
-            cat /tmp/atlas-chrome.log >&2 || true
-            echo 'FAIL: Chrome DevTools endpoint did not become ready.' >&2
+            cat /tmp/atlas-http.log >&2 || true
+            echo 'FAIL: no installed Chrome/Chromium candidate exposed a DevTools endpoint.' >&2
             exit 1
           fi
+          echo "Selected browser path: $browser"
+          timeout --signal=KILL 5s "$browser" --version || true
+          cat /tmp/atlas-cdp-version.json
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-boot-smoke.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-ia-smoke.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-evidence-phase5.js
