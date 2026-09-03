@@ -35,7 +35,7 @@ The public interface is organized around the questions a reader of a historical 
 5. **Claims & Verification** — claim checks and the information environment.
 6. **Sources & Method** — source register, methodology, analytic record, historical-record construction, and immutable archive snapshots.
 
-The former ATLAS / TIMELINE / ANALYSIS / MOU / SOURCES workspace bar remains an implementation dependency for specialized views but is no longer public navigation. The detailed agreement workspace remains reachable through **Diplomacy & Outcome**.
+The retired ATLAS / TIMELINE / ANALYSIS / MOU / SOURCES workspace is preserved only as repository history. It is not a dependency of the current renderer or part of the Pages artifact. Agreement records are presented through **Diplomacy & Outcome**.
 
 ### Analytic record separation
 
@@ -80,9 +80,9 @@ Direct-military accounting is symmetric across U.S./coalition and Iran/aligned m
 - `index.html` — neutral current-record loading/failure shell with one application entry
 - `templates/public-index.html` — exact review source for the root shell; build validation requires byte equality
 - `legacy/phase1-public-runtime-reference.html` — repository-only retired presentation reference; excluded from Pages packaging
-- `css/`, `js/` — local presentation, navigation, map, temporal, safety, costing, and public-record interface modules
-- `assets/icons/` — local map icon grammar
-- `vendor/leaflet/` — pinned Leaflet runtime
+- `css/public-shell.css`, `js/public-*.js` — the complete current public presentation source set
+- other `css/`, `js/`, `assets/icons/`, and `assets/flags/` files — retained historical presentation references; never copied into the Pages artifact
+- `vendor/leaflet/` — pinned current Leaflet source package; only manifest-authorized runtime bytes are published
 - `data/` — UI data, authoritative historical integration ledger, and append-only current overlays
 - `snapshots/` — immutable dated public boards
 - `scripts/`, `tests/` — structural, integration, temporal, costing, hostile-input, and public-IA checks
@@ -112,13 +112,16 @@ python scripts/build_public_release.py
 python scripts/build_public_release.py --check
 python scripts/validate_public_deployment.py
 python scripts/validate_public_geography.py
+python scripts/validate_public_runtime_inventory.py
+python scripts/assemble_public_site.py --output _site
+python scripts/assemble_public_site.py --output _site --check
 ```
 
 The ignored deploy-time artifacts at `data/public-current-state.json` and `data/public-release.json` are derived views only; canonical packages remain authoritative. See `docs/public-current-state.md` for the read-model input/provenance contract and `docs/public-boot-architecture.md` for the release boundary.
 
 ## Publishing and integrity
 
-Pull requests run validation only. Deployment runs only from `main` through the scoped GitHub Pages workflow. The deployed artifact publishes `build-info.json` containing the canonical URL, exact deployed commit, ledger version, review cutoff, and authoritative-ledger hashes.
+Pull requests run validation only. Deployment runs only from `main` through the scoped GitHub Pages workflow. The manifest-driven assembler publishes only the neutral shell, signed current release, derived current model, social preview, immutable snapshots, and `build-info.json`; raw evidence packages and retired presentation modules remain repository-only. The deployment identity records the canonical URL, exact deployed commit, ledger version, review cutoff, and authoritative-ledger hashes.
 
 Before a data update, preserve the current complete board as a new dated file under `snapshots/`; never overwrite an existing snapshot. The canonical integration JSON is hash-checked during validation.
 

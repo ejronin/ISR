@@ -1,62 +1,62 @@
-# Phase 2 public boot architecture
+# Current public runtime and release architecture
 
-Phase 2 replaces the root document's dated presentation replay with one release-bound boot path. It does not perform the Phase 3 information-architecture or visual redesign.
+The root document has one release-bound boot path. Current public state flows from accepted evidence through the canonical compiler and derived public read model; the browser never reconstructs that state by replaying dated update packages.
 
 ## Current boot sequence
 
-1. `index.html` exposes only metadata, the neutral `#atlas-root` loading state, and one content-addressed bootstrap script with a SHA-256 Subresource Integrity value.
-2. The neutral bootstrap loads generated `data/public-release.json` with `cache: no-store`. The real renderer has not loaded and cannot execute at this point.
-3. The bootstrap validates its own path, hash marker, and SRI value against the manifest. It then obtains the manifest-authorized, content-addressed Leaflet runtime/CSS, public stylesheet, public page registry, local reference geography, and application entrypoint.
-4. The browser enforces each JavaScript/CSS asset's SHA-256 SRI. The bootstrap separately verifies the fetched GeoJSON bytes against the manifest before exposing the presentation-only geography. Only after these assets succeed does it load the application entrypoint.
-5. The application validates that authorization, its executing script element, both active runtimes, both active stylesheets, and the local reference-geography authorization resolve to the same manifest. It then loads generated `data/public-current-state.json`, verifies its normalized byte hash and byte count, and parses it once.
-6. The application verifies the read-model schema, release binding, cutoff identity, derived chronology count (205 at the Phase 3.5 migration boundary), event-ID uniqueness, per-event provenance, and source resolution.
-7. It initializes `window.ATLAS_PUBLIC_STATE` and performs the first current public render. Current sections read only from that validated in-memory model.
+1. `index.html` exposes metadata, the neutral `#atlas-root` loading state, and one content-addressed bootstrap script protected by SHA-256 Subresource Integrity.
+2. The bootstrap loads generated `data/public-release.json` with `cache: no-store`. No renderer or current content executes before that manifest is validated.
+3. The bootstrap validates its own path, hash marker, and SRI against the manifest. It then obtains the manifest-authorized, content-addressed Leaflet runtime/CSS, public stylesheet, public page registry, local reference geography, and application entrypoint.
+4. The browser enforces SRI for every JavaScript and CSS asset. The bootstrap separately verifies the fetched GeoJSON bytes before exposing the presentation-only geography.
+5. The application verifies that the authorized runtimes, stylesheets, entrypoint, and geography resolve to the same release. It loads `data/public-current-state.json`, verifies the normalized byte hash and byte count, and parses it once.
+6. The application verifies schema and release binding, the derived cutoff and chronology count, event-ID uniqueness, per-event provenance, and source resolution.
+7. It initializes `window.ATLAS_PUBLIC_STATE` and renders all 25 routes from the single validated in-memory model. The shared evidence resolver, source service, timeline, charts, and MapView consume that model; none owns a parallel evidence pipeline.
 
-The initial document contains no chronology count, cutoff, current summary, old navigation, map workspace, dated latest-update card, or active application CSS. If the manifest, authorized asset, or model cannot be loaded and validated, the neutral shell becomes an explicit error state with **Retry** and **Open archived records**. A release mismatch receives one controlled same-origin reload; a repeated mismatch becomes the explicit error state.
+The initial document contains no chronology count, cutoff, current summary, old navigation, old map workspace, dated update card, or active application CSS. If the manifest, an authorized asset, or the model fails validation, the neutral shell becomes an explicit error state with **Retry** and **Open archived records**. A release mismatch receives one controlled same-origin reload; a repeated mismatch becomes the explicit error state.
 
-`data/public-release.json` and `assets/releases/` are deterministic generated artifacts and are Git-ignored. `scripts/build_public_release.py` emits normalized, content-addressed copies of the neutral bootstrap, Leaflet runtime/CSS, application stylesheet, page registry, regional GeoJSON, and application entrypoint; binds those exact bytes and the current-state read model in the manifest; and fails if `index.html` does not bind the exact bootstrap. `scripts/validate_public_deployment.py` verifies the same contract inside the final Pages directory.
+## Signed release
 
-This design prevents a cache split from creating an old-code/new-model hybrid. A cached bootstrap can authorize only a manifest that names that bootstrap's exact hash, while application JS and CSS are immutable hash-addressed URLs protected by browser SRI. A same-version asset with different bytes is rejected before it can execute.
+`data/public-release.json`, `data/public-current-state.json`, `data/canonical-current-state.json`, and `assets/releases/` are deterministic generated artifacts and are Git-ignored. `scripts/build_public_release.py` emits normalized, content-addressed copies of the neutral bootstrap, Leaflet runtime/CSS, application stylesheet, page registry, reference geography, application entrypoint, and only the evidence images referenced by the accepted current model. It binds those exact bytes and the current-state model in the manifest and fails if `index.html` does not bind the exact bootstrap.
 
-The former root was a 340 KB largely single-line document. To keep the Phase 2 pull-request diff reviewable, `.gitattributes` marks the replaced root as generated/non-diffable and `templates/public-index.html` carries an exact reviewable source copy. The release builder fails if the two differ.
+This prevents a cache split from creating an old-code/new-model hybrid. A cached bootstrap can authorize only a manifest that names that bootstrap's exact hash. Application JS and CSS are immutable hash-addressed URLs protected by browser SRI, while the GeoJSON and model receive explicit byte verification.
 
-## Legacy runtime classification
+Local evidence imagery may be published only when the accepted current model references a PNG, JPEG, or WebP under `assets/evidence/`. The release builder resolves links, enforces containment, fully decodes the image with the pinned build dependency, checks extension/format agreement, and publishes the original bytes at a content-addressed path. Absolute paths, URLs, traversal, link escapes, missing files, malformed content, extension mismatches, aliases, and unreferenced images fail closed or remain unpublished.
 
-The original root document is retained as repository-only `legacy/phase1-public-runtime-reference.html`; Pages packaging does not copy `legacy/`, and current boot does not link to or execute it.
+## Pages artifact boundary
 
-The original top-level `data/*.json` runtime datasets also remain untouched for historical/reference inspection. The derived model classifies their `legacy.*` entries as `HISTORICAL_REFERENCE_DATA` and does not map them into any current page. Current mappings use the canonical ledger, normalized chronology/source catalog, accepted reconciliation, forensic products, and approved analytical datasets.
+`scripts/assemble_public_site.py` creates a closed artifact from the release manifest. Pages receives only:
 
-### Still required during Phase 2
+- the neutral `index.html` and `.nojekyll` marker;
+- the exact content-addressed assets authorized by `data/public-release.json`;
+- `data/public-release.json` and `data/public-current-state.json`;
+- the social preview;
+- immutable files under `snapshots/`;
+- deployment-generated `build-info.json`.
 
-- `js/public-bootstrap.js` — neutral manifest resolver and the only script bound by `index.html`.
-- `js/public-ia.js` — manifest-authorized registry of permanent routes, page owners, shared public components, and shell navigation.
-- `js/public-app.js` — manifest-authorized owner of model loading, current state, errors, and page-registry initialization.
-- `css/public-shell.css` — manifest-authorized Phase 2 shell and temporary read-model presentation.
-- `vendor/leaflet/` — pinned manifest-authorized map runtime and base CSS.
-- `assets/geography/atlas-reference-geography.geojson` — checked-in presentation-only Natural Earth subset used without a runtime tile service.
+Raw canonical packages, source registries, schemas, mutable source modules, vendor source trees, and retired presentation layers are not public deployment inputs. `scripts/assemble_public_site.py --check`, `scripts/validate_public_runtime_inventory.py --site-root`, and `scripts/validate_public_deployment.py --site-root` enforce the closed inventory and signed-byte contract.
 
-## Evidence-image publication boundary
+## Presentation classification
 
-Local evidence imagery may be published only when the accepted/current public model references a PNG, JPEG, or WebP file under `assets/evidence/`. The release builder normalizes the reference, resolves both the repository and approved media root, follows filesystem links, and requires the real file to remain contained by that approved root. It then uses the build-time-only Pillow version pinned in `requirements-build.txt` to verify the container, reopen it, fully decode pixel data, require positive dimensions, and require the detected format to match the extension before content-addressing the original bytes. Pillow's decompression-bomb protections remain enabled. Absolute paths, URLs, traversal, symlink escapes, missing files, unsupported or malformed content, extension mismatches, and case/alias collisions fail the release build. Files merely present under `assets/evidence/` are not published unless the current evidence graph references them; decoder metadata is never added to the release manifest.
+`config/public-runtime-inventory.json` is the deterministic ownership ledger for presentation files. It identifies:
 
-No former presentation module remains required during current boot.
+- seven current signed source roles;
+- the neutral shell and deployment support files;
+- retired JavaScript, CSS, icons, flags, Mermaid, and the Phase 1 reference retained only for historical tests and engineering audit;
+- pinned Leaflet package support retained at build time;
+- generated artifacts and immutable snapshot roots.
 
-### Data/build or historical reference only
+Every top-level JavaScript and stylesheet must appear in exactly one current or archive classification. Adding an unclassified presentation module fails validation. Current sources are scanned for retired boot references, and the assembled artifact rejects any unmanifested file. This preserves the old implementation record without leaving an alternate public boot path.
 
-The dated update/reconciliation modules and original presentation, repair, remount, map, chart, and compatibility modules remain in the repository for canonical package assembly, frozen tests, and audit reference. None executes from `index.html`. Their canonical JSON inputs remain authoritative and unchanged.
+The reviewable root source is `templates/public-index.html`; it must remain byte-identical to `index.html`. The retired large root is preserved at `legacy/phase1-public-runtime-reference.html` and is not deployed. Historical JavaScript/CSS continues to support frozen package tests where required, but it is not an application dependency and cannot execute in the current site.
 
-### Deferred to Phase 3
+## Security and network boundary
 
-Coordinated map/layer state, spatial-temporal selection, specialized MOU/objectives/Iran Messaging presentation, route/Mermaid interactions, advanced source context, and page-specific charts remain Phase 3 work. Existing legacy modules are reference implementations, not live owners.
+The current Content Security Policy permits scripts, styles, connections, and fonts only from the same origin. Images are same-origin plus `data:` and `blob:` for verified local presentation. The application uses no external tiles, fonts, routing service, image host, or analytics endpoint. MapView consumes the checked-in Natural Earth subset and signed evidence assets only.
 
-The renderer preserves direct access to the complete derived chronology (205 records at the migration boundary), exact event-source variants, all seven current page-data mappings, every embedded approved dataset, and the complete source catalog. It deliberately does not emulate the old map or repair-driven specialized views.
+The release builder's strict evidence-image decoder is build-time only. It is installed from `requirements-build.txt` by both validation and deployment workflows and is not shipped to browsers.
 
-## Test transition
+## Tests and measurements
 
-`browser-public-boot-smoke.js` proves that the loading shell stays neutral during a delayed model request; the validated 205-record Aug. 27 state renders; dated successor/repair scripts do not execute; model failure stays explicit; a manifest mismatch receives one controlled reload; and the exact split-release case—different old-but-valid application bytes served at the new content address—is blocked by SRI before the renderer can execute.
+The public boot smoke proves a neutral delayed-model state, current-model rendering, dated-loader non-execution, explicit model failure, controlled release mismatch, and split-release SRI rejection. Public route, evidence, map, responsive, keyboard, and reduced-motion suites exercise the current renderer. The runtime inventory test assembles a temporary Pages tree, proves it excludes raw/mutable presentation sources, and deliberately injects a dated loader to verify fail-closed rejection.
 
-Frozen data/package validators continue to run. Validators whose old assertions concerned `index.html` inspect the repository-only legacy reference and separately enforce the new root through the public boot/deployment gates.
-
-## Performance observation
-
-The deploy validator reports uncompressed and deterministic gzip-9 model sizes. The browser smoke records model transfer bytes, load/integrity time, and JSON parse time from `window.ATLAS_PUBLIC_STATE.performance`. Page-specific splitting and indexes remain Phase 3 optimization candidates; Phase 2 prioritizes correct ownership.
+`validate_public_deployment.py` reports model bytes and deterministic gzip-9 bytes. Phase 7 reporting compares the accepted starting commit's current JS/CSS source bytes with the cleaned result and separately records signed runtime asset count, geography bytes, model bytes, and gzip bytes.

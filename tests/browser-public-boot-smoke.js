@@ -156,6 +156,7 @@ function base64(value) {
         geography: window.ATLAS_RELEASE_AUTHORIZATION?.referenceGeography?.path
       },
       scripts: performance.getEntriesByType('resource').map(entry => entry.name).filter(name => /\\.js(?:[?#]|$)/.test(name)),
+      resources: performance.getEntriesByType('resource').map(entry => new URL(entry.name).pathname),
       oldGlobals: [
         window.ATLAS_CURRENT_UPDATE,
         window.ATLAS_CURRENT_UPDATE_20260825,
@@ -180,6 +181,7 @@ function base64(value) {
     assert(ready.performance.model_parse_milliseconds >= 0);
     assert.equal(ready.oldGlobals, false, 'dated successor-chain globals must not initialize');
     assert(!ready.scripts.some(url => /current-update|wiki-map-reconciliation|public-housekeeping|status-identity/.test(url)), 'dated or repair scripts entered current boot');
+    assert(!ready.resources.some(url => /\/(?:js|css|vendor|schemas|legacy)\//.test(url) || /\/data\/(?!public-(?:release|current-state)\.json$)/.test(url)), 'mutable, retired, or raw evidence paths entered the current network graph');
 
     await cdp.call('Fetch.enable', { patterns: [{ urlPattern: '*data/public-current-state.json*', requestStage: 'Request' }] });
     const failedPromise = cdp.waitEvent('Fetch.requestPaused', params => params.request.url.includes('public-current-state.json'));

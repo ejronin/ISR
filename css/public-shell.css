@@ -640,11 +640,6 @@ a:hover { color: #e0f2ff; }
 }
 .source-variants { margin-top: .8rem; }
 .source-variants summary { min-height: 2.75rem; color: var(--accent-strong); cursor: pointer; }
-.variant-list { display: grid; gap: .6rem; }
-.variant-card { padding: .75rem; border-left: 2px solid #3d6177; background: #0d161e; }
-.variant-card h3 { margin: 0; font-size: .86rem; }
-.variant-card p { color: var(--muted); font-size: .76rem; line-height: 1.5; }
-.variant-card small { color: var(--warn); }
 
 .evidence-drawer-body h4 { margin: .65rem 0 .3rem; color: var(--text); font-size: .78rem; }
 .source-link-list small { color: var(--muted); font-size: .7rem; line-height: 1.4; }
@@ -653,7 +648,6 @@ a:hover { color: #e0f2ff; }
 .scope-note strong { display: block; margin-bottom: .35rem; }
 .scope-note p { margin: 0; }
 
-.situation-grid,
 .explore-grid,
 .actor-directory {
   display: grid;
@@ -661,7 +655,6 @@ a:hover { color: #e0f2ff; }
   gap: .75rem;
 }
 
-.situation-card,
 .question-card,
 .actor-card,
 .record-card,
@@ -673,7 +666,6 @@ a:hover { color: #e0f2ff; }
   background: var(--surface-2);
 }
 
-.situation-card h3,
 .question-card h3,
 .record-card h3,
 .source-card h2 {
@@ -682,7 +674,6 @@ a:hover { color: #e0f2ff; }
   line-height: 1.38;
 }
 
-.situation-card p,
 .question-card p,
 .record-card p,
 .source-card p {
@@ -691,7 +682,6 @@ a:hover { color: #e0f2ff; }
   line-height: 1.58;
 }
 
-.confidence-label,
 .record-status,
 .source-id { color: var(--muted); font-size: .78rem; }
 
@@ -877,7 +867,6 @@ a:hover { color: #e0f2ff; }
   text-align: center;
 }
 
-.table-wrap { max-width: 100%; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th,
 td { padding: .75rem; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
@@ -943,7 +932,6 @@ tbody tr:last-child td { border-bottom: 0; }
   .mobile-navigation a { min-height: 2.8rem; padding: .55rem; }
   .mobile-navigation a[aria-current="page"] { background: #203445; color: var(--text); }
   .app-grid { grid-template-columns: minmax(0, 1fr); padding-top: .9rem; }
-  .situation-grid,
   .actor-directory,
   .comparison-grid,
   .casualty-columns,

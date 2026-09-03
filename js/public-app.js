@@ -39,7 +39,7 @@
   }
 
   /*
-   * Phase 5 route/data contract.
+   * Route/data authorization.
    *
    * This is deliberately independent of the network/loading architecture. It
    * declares what each accepted page owner may consume from the already-loaded
