@@ -25,6 +25,12 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
+      - name: Regenerate and validate pinned Natural Earth reference geography
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          python scripts/build_reference_geography.py --fetch-source-dir "$RUNNER_TEMP/atlas-natural-earth-v5.1.1" --check
+          python scripts/validate_public_geography.py
       - name: Protect immutable migration authority and append-only ledger history
         env:
           AUTHORITY_BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}

@@ -141,6 +141,20 @@ async function setRoute(cdp, key) {
       future.revisions = [{ known_at: '2099-02-05T12:00:00-04:00', change: 'Later accepted imagery metadata' }];
       model.chronology.push(future); model.counts.chronology_records += 1;
 
+      const generalLocationId = 'LOC-PHASE6-GENERAL-AREA';
+      const generalEventId = 'EV-PHASE6-GENERAL-AREA';
+      const generalLocation = structuredClone(location);
+      generalLocation.location_id = generalLocationId;
+      generalLocation.record = { ...generalLocation.record, location_id: generalLocationId, canonical_name: 'Future supported Bandar Abbas general area', latitude: 27.18, longitude: 56.27, coordinate_precision: 'GENERAL_AREA' };
+      model.entities.locations.push(generalLocation);
+      const generalArea = structuredClone(future);
+      generalArea.event_id = generalEventId; generalArea.location_ids = [generalLocationId];
+      generalArea.timeline = { ...generalArea.timeline, event_id: generalEventId, summary: 'Future general-area imagery fixture' };
+      generalArea.event = { ...generalArea.event, event_id: generalEventId, summary: 'Future general-area imagery fixture', location_ids: [generalLocationId], imagery: {
+        imagery_type: 'General-area news imagery', image_url: tinyPng, geolocation_reliable: true, geolocation_precision: 'general area', source_ids: [sourceId], limitations: 'Associated only with the supported general area; precise footprint unavailable.'
+      } };
+      model.chronology.push(generalArea); model.counts.chronology_records += 1;
+
       const located = model.entities.locations.find(item => Number.isFinite(item.record.latitude) && Number.isFinite(item.record.longitude) && model.chronology.some(event => (event.location_ids || []).includes(item.location_id)) && item.location_id !== locationId);
       const retrofit = model.chronology.find(event => (event.location_ids || []).includes(located.location_id));
       const retrofitSourceId = retrofit.source_ids[0];
@@ -178,7 +192,8 @@ async function setRoute(cdp, key) {
         };
         controller.destroy(); host.remove(); return result;
       };
-      return { timeline: render('timeline.chronology'), retrofitTimeline: render('timeline.chronology', retrofit.event_id), imagery: render('military.imagery'), sources: render('evidence.sources', sourceId), retrofitSources: render('evidence.sources', retrofitSourceId), eventId, sourceId };
+      const generalDescriptor = window.AtlasPublicIA.MapView.imageryDescriptor({ ...generalArea.event.imagery, location_id: generalLocationId }, { resolve: id => id === generalLocationId ? { latitude: 27.18, longitude: 56.27, label: 'Future supported Bandar Abbas general area', precision: 'General area' } : null }, []);
+      return { timeline: render('timeline.chronology'), retrofitTimeline: render('timeline.chronology', retrofit.event_id), imagery: render('military.imagery'), sources: render('evidence.sources', sourceId), retrofitSources: render('evidence.sources', retrofitSourceId), generalTier: generalDescriptor.tier, generalBounds: generalDescriptor.bounds, generalFootprint: generalDescriptor.footprint, eventId, sourceId };
     })()`);
     assert.match(propagation.timeline.text, /Future accepted imagery evidence fixture/);
     assert.match(propagation.timeline.allText, /Future imagery evidence source/);
@@ -187,6 +202,13 @@ async function setRoute(cdp, key) {
     assert(propagation.imagery.overlays >= 1, 'new reliable bounds did not produce a generic image overlay');
     assert(propagation.imagery.imageryButtons.some(label => /Satellite damage review/.test(label)) && propagation.imagery.imageryButtons.some(label => /Follow-up area-linked image/.test(label)), 'multiple imagery items at one accepted location are not distinguishable');
     assert.match(propagation.imagery.equivalent, /Future accepted imagery location/);
+    assert.match(propagation.imagery.text, /Future general-area imagery fixture/);
+    assert.match(propagation.imagery.equivalent, /Future supported Bandar Abbas general area/);
+    assert.match(propagation.imagery.equivalent, /General Area/i);
+    assert.match(propagation.imagery.equivalent, /precise footprint unavailable/i);
+    assert.equal(propagation.generalTier, 'C', 'future general-area imagery did not remain Tier C');
+    assert.equal(propagation.generalBounds, null, 'future general-area imagery invented rectangular bounds');
+    assert.equal(propagation.generalFootprint, null, 'future general-area imagery invented a footprint');
     assert(propagation.imagery.drawers >= 1, 'new imagery record did not retain shared evidence actions');
     assert.match(propagation.sources.text, /Future imagery evidence source/);
     assert.match(propagation.retrofitTimeline.text, /Retrofit accepted imagery evidence fixture/);

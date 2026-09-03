@@ -11,6 +11,7 @@ import hashlib
 import json
 from pathlib import Path
 from typing import Any, Callable
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +24,10 @@ SOURCE_50M = {
 SOURCE_10M = {
     "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.1/geojson/ne_10m_admin_0_countries.geojson",
     "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
+}
+SOURCE_FILENAMES = {
+    "1:50m": "ne_50m_admin_0_countries.v5.1.1.geojson",
+    "1:10m": "ne_10m_admin_0_countries.v5.1.1.geojson",
 }
 REGIONAL_COUNTRIES = {
     "Afghanistan", "Bahrain", "Djibouti", "Egypt", "Eritrea", "Iran", "Iraq",
@@ -54,15 +59,37 @@ def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
-def read_source(path: Path, expected: dict[str, str]) -> dict[str, Any]:
-    raw = path.read_bytes()
+def verify_source_bytes(raw: bytes, expected: dict[str, str], label: str) -> None:
     digest = sha256_bytes(raw)
     if digest != expected["sha256"]:
-        raise ValueError(f"Natural Earth source hash mismatch for {path}: {digest}")
+        raise ValueError(
+            f"Natural Earth {label} source hash mismatch: expected {expected['sha256']}, got {digest}"
+        )
+
+
+def read_source(path: Path, expected: dict[str, str]) -> dict[str, Any]:
+    raw = path.read_bytes()
+    verify_source_bytes(raw, expected, str(path))
     payload = json.loads(raw.decode("utf-8"))
     if payload.get("type") != "FeatureCollection":
         raise ValueError(f"Natural Earth source is not a FeatureCollection: {path}")
     return payload
+
+
+def obtain_pinned_source(directory: Path, label: str, expected: dict[str, str]) -> Path:
+    """Fetch one exact versioned input, or validate an existing closed cache."""
+    destination = directory / SOURCE_FILENAMES[label]
+    if destination.exists():
+        raw = destination.read_bytes()
+        verify_source_bytes(raw, expected, label)
+        return destination
+    request = Request(expected["url"], headers={"User-Agent": "ISR-reference-geography-builder/1.0"})
+    with urlopen(request, timeout=120) as response:
+        raw = response.read()
+    verify_source_bytes(raw, expected, label)
+    directory.mkdir(parents=True, exist_ok=True)
+    destination.write_bytes(raw)
+    return destination
 
 
 def intersect(a: list[float], b: list[float], axis: int, bound: float) -> list[float]:
@@ -200,13 +227,38 @@ def stable_bytes(payload: dict[str, Any]) -> bytes:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source-50m", required=True)
-    parser.add_argument("--source-10m", required=True)
+    parser.add_argument("--source-50m")
+    parser.add_argument("--source-10m")
+    parser.add_argument(
+        "--fetch-source-dir",
+        help="Fetch exact versioned Natural Earth inputs into this build-only directory and verify both pinned SHA-256 values",
+    )
     parser.add_argument("--output", default=OUTPUT)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
+    explicit_sources = bool(args.source_50m or args.source_10m)
+    if args.fetch_source_dir and explicit_sources:
+        parser.error("use either --fetch-source-dir or both explicit source paths, not both")
+    if explicit_sources and not (args.source_50m and args.source_10m):
+        parser.error("--source-50m and --source-10m must be supplied together")
+    if args.fetch_source_dir:
+        source_directory = Path(args.fetch_source_dir).resolve()
+        source_50m = obtain_pinned_source(source_directory, "1:50m", SOURCE_50M)
+        source_10m = obtain_pinned_source(source_directory, "1:10m", SOURCE_10M)
+    elif args.source_50m and args.source_10m:
+        source_50m = Path(args.source_50m)
+        source_10m = Path(args.source_10m)
+    else:
+        parser.error("provide --fetch-source-dir or both --source-50m and --source-10m")
+
+    # These reads are intentional even though build() reads again: the command
+    # reports each independently verified pin before deterministic generation.
+    read_source(source_50m, SOURCE_50M)
+    read_source(source_10m, SOURCE_10M)
+    print(f"reference-geography: verified 1:50m source SHA-256 {SOURCE_50M['sha256']}")
+    print(f"reference-geography: verified 1:10m source SHA-256 {SOURCE_10M['sha256']}")
     output = ROOT / args.output
-    generated = stable_bytes(build(Path(args.source_50m), Path(args.source_10m)))
+    generated = stable_bytes(build(source_50m, source_10m))
     if args.check:
         if not output.is_file() or output.read_bytes() != generated:
             raise SystemExit(f"FAIL: reference geography is stale: {args.output}")

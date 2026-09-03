@@ -6,9 +6,12 @@ import argparse
 import base64
 import hashlib
 import json
+import posixpath
 import re
-from pathlib import Path
+import zlib
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
+from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,7 +21,14 @@ PUBLIC_SHELL_SOURCE = "templates/public-index.html"
 APPLICATION_VERSION = "atlas-public-shell-v1"
 BOOTSTRAP_PROTOCOL = "atlas-release-bootstrap-v1"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "1.2"
+GENERATOR_VERSION = "1.3"
+EVIDENCE_MEDIA_ROOT = "assets/evidence"
+SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS = {
+    ".png": "png",
+    ".jpg": "jpeg",
+    ".jpeg": "jpeg",
+    ".webp": "webp",
+}
 ASSET_SPECS = (
     ("bootstrap", "public-bootstrap", "js/public-bootstrap.js", "js"),
     ("map_runtime", "leaflet", "vendor/leaflet/leaflet.js", "js"),
@@ -47,6 +57,10 @@ def stable_json_bytes(payload: dict[str, Any]) -> bytes:
     return (json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode("utf-8")
 
 
+class EvidenceImagePublicationError(ValueError):
+    """An evidence-image reference cannot cross the signed-release boundary."""
+
+
 def materialize_asset(root: Path, role: str, name: str, source_path: str, extension: str) -> dict[str, Any]:
     source = root / source_path
     if not source.is_file():
@@ -70,18 +84,53 @@ def materialize_asset(root: Path, role: str, name: str, source_path: str, extens
     }
 
 
+def normalize_evidence_image_reference(value: str) -> str:
+    """Return one repository-relative POSIX path or reject the reference."""
+    if not value or value != value.strip() or "\0" in value:
+        raise EvidenceImagePublicationError("Evidence image path is empty or contains unsafe whitespace/null bytes")
+    candidate = value.replace("\\", "/")
+    windows_path = PureWindowsPath(value)
+    if windows_path.is_absolute() or windows_path.drive or candidate.startswith(("/", "//")):
+        raise EvidenceImagePublicationError(f"Evidence image path must not be absolute: {value}")
+    parsed = urlsplit(candidate)
+    if parsed.scheme or parsed.netloc:
+        raise EvidenceImagePublicationError(f"Evidence image path must be local and relative: {value}")
+    if parsed.query or parsed.fragment:
+        raise EvidenceImagePublicationError(f"Evidence image path must not contain a query or fragment: {value}")
+
+    normalized = posixpath.normpath(candidate)
+    parts = PurePosixPath(normalized).parts
+    if normalized in {"", "."} or ".." in parts:
+        raise EvidenceImagePublicationError(f"Evidence image path escapes its approved root: {value}")
+    approved_prefix = f"{EVIDENCE_MEDIA_ROOT}/"
+    if not normalized.startswith(approved_prefix):
+        raise EvidenceImagePublicationError(
+            f"Evidence image path is outside the approved {EVIDENCE_MEDIA_ROOT}/ root: {value}"
+        )
+    if PurePosixPath(normalized).suffix.lower() not in SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS:
+        raise EvidenceImagePublicationError(f"Evidence image format is unsupported: {value}")
+    return normalized
+
+
 def discover_evidence_images(payload: Any) -> list[str]:
-    discovered: set[str] = set()
+    """Discover only referenced media; path security is applied before publication."""
+    discovered: dict[str, str] = {}
+    casefolded: dict[str, str] = {}
     image_keys = {"image_url", "thumbnail_url", "asset_path"}
 
     def visit(value: Any) -> None:
         if isinstance(value, dict):
             for key, child in value.items():
                 if key in image_keys and isinstance(child, str):
-                    candidate = child.replace("\\", "/").removeprefix("./")
-                    path = Path(candidate)
-                    if not candidate.startswith(("data:", "http://", "https://")) and not path.is_absolute() and ".." not in path.parts and path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}:
-                        discovered.add(candidate)
+                    normalized = normalize_evidence_image_reference(child)
+                    collision_key = normalized.casefold()
+                    prior = casefolded.get(collision_key)
+                    if prior is not None and prior != normalized:
+                        raise EvidenceImagePublicationError(
+                            f"Evidence image path case collision is unsafe: {prior} and {normalized}"
+                        )
+                    casefolded[collision_key] = normalized
+                    discovered.setdefault(normalized, child)
                 else:
                     visit(child)
         elif isinstance(value, list):
@@ -92,13 +141,157 @@ def discover_evidence_images(payload: Any) -> list[str]:
     return sorted(discovered)
 
 
-def materialize_binary_image(root: Path, source_path: str, index: int) -> dict[str, Any]:
-    source = root / source_path
-    if not source.is_file():
-        raise FileNotFoundError(f"Public evidence image is missing: {source_path}")
-    data = source.read_bytes()
+def resolve_evidence_image(root: Path, source_path: str) -> Path:
+    """Resolve a referenced image and prove it remains inside the approved real path."""
+    repository_root = root.resolve(strict=True)
+    approved_lexical = repository_root.joinpath(*PurePosixPath(EVIDENCE_MEDIA_ROOT).parts)
+    try:
+        approved_root = approved_lexical.resolve(strict=True)
+    except FileNotFoundError as error:
+        raise FileNotFoundError(f"Approved evidence-media root is missing: {EVIDENCE_MEDIA_ROOT}") from error
+    try:
+        approved_root.relative_to(repository_root)
+    except ValueError as error:
+        raise EvidenceImagePublicationError(
+            f"Approved evidence-media root resolves outside the repository: {EVIDENCE_MEDIA_ROOT}"
+        ) from error
+
+    lexical = repository_root.joinpath(*PurePosixPath(source_path).parts)
+    try:
+        resolved = lexical.resolve(strict=True)
+    except FileNotFoundError as error:
+        raise FileNotFoundError(f"Public evidence image is missing: {source_path}") from error
+    try:
+        resolved.relative_to(approved_root)
+    except ValueError as error:
+        raise EvidenceImagePublicationError(
+            f"Evidence image resolves outside the approved {EVIDENCE_MEDIA_ROOT}/ root: {source_path}"
+        ) from error
+    if not resolved.is_file():
+        raise FileNotFoundError(f"Public evidence image is not a file: {source_path}")
+    return resolved
+
+
+def valid_png(data: bytes) -> bool:
+    if not data.startswith(b"\x89PNG\r\n\x1a\n"):
+        return False
+    offset = 8
+    saw_header = saw_data = saw_end = False
+    while offset + 12 <= len(data):
+        length = int.from_bytes(data[offset:offset + 4], "big")
+        chunk_type = data[offset + 4:offset + 8]
+        chunk_end = offset + 12 + length
+        if chunk_end > len(data):
+            return False
+        payload = data[offset + 8:offset + 8 + length]
+        expected_crc = int.from_bytes(data[offset + 8 + length:chunk_end], "big")
+        if zlib.crc32(chunk_type + payload) & 0xFFFFFFFF != expected_crc:
+            return False
+        if not saw_header:
+            if chunk_type != b"IHDR" or length != 13:
+                return False
+            saw_header = True
+        elif chunk_type == b"IHDR":
+            return False
+        if chunk_type == b"IDAT":
+            saw_data = True
+        if chunk_type == b"IEND":
+            saw_end = length == 0
+            return saw_header and saw_data and saw_end and chunk_end == len(data)
+        offset = chunk_end
+    return False
+
+
+def valid_jpeg(data: bytes) -> bool:
+    if len(data) < 8 or not data.startswith(b"\xff\xd8") or not data.endswith(b"\xff\xd9"):
+        return False
+    offset = 2
+    saw_frame = False
+    frame_markers = {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}
+    while offset < len(data) - 2:
+        if data[offset] != 0xFF:
+            return False
+        while offset < len(data) and data[offset] == 0xFF:
+            offset += 1
+        if offset >= len(data):
+            return False
+        marker = data[offset]
+        offset += 1
+        if marker == 0xDA:
+            if offset + 2 > len(data):
+                return False
+            length = int.from_bytes(data[offset:offset + 2], "big")
+            return saw_frame and length >= 2 and offset + length <= len(data) - 2
+        if marker in {0x01, *range(0xD0, 0xD8)}:
+            continue
+        if marker == 0xD9 or offset + 2 > len(data):
+            return False
+        length = int.from_bytes(data[offset:offset + 2], "big")
+        if length < 2 or offset + length > len(data):
+            return False
+        if marker in frame_markers:
+            saw_frame = True
+        offset += length
+    return False
+
+
+def valid_webp(data: bytes) -> bool:
+    if len(data) < 20 or data[:4] != b"RIFF" or data[8:12] != b"WEBP":
+        return False
+    if int.from_bytes(data[4:8], "little") + 8 != len(data):
+        return False
+    offset = 12
+    saw_image_chunk = False
+    while offset + 8 <= len(data):
+        chunk_type = data[offset:offset + 4]
+        length = int.from_bytes(data[offset + 4:offset + 8], "little")
+        chunk_end = offset + 8 + length
+        if chunk_end > len(data):
+            return False
+        if chunk_type in {b"VP8 ", b"VP8L", b"VP8X"}:
+            saw_image_chunk = True
+        offset = chunk_end + (length % 2)
+    return saw_image_chunk and offset == len(data)
+
+
+def validate_image_content(source_path: str, data: bytes) -> str:
+    detected = None
+    for image_type, validator in (("png", valid_png), ("jpeg", valid_jpeg), ("webp", valid_webp)):
+        if validator(data):
+            detected = image_type
+            break
+    if detected is None:
+        raise EvidenceImagePublicationError(f"Evidence image bytes are not a supported image: {source_path}")
+    expected = SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS[PurePosixPath(source_path).suffix.lower()]
+    if detected != expected:
+        raise EvidenceImagePublicationError(
+            f"Evidence image extension/content mismatch for {source_path}: expected {expected}, detected {detected}"
+        )
+    return detected
+
+
+def prepare_evidence_images(root: Path, payload: Any) -> list[tuple[str, Path, bytes, str]]:
+    prepared: list[tuple[str, Path, bytes, str]] = []
+    resolved_identities: dict[str, str] = {}
+    for source_path in discover_evidence_images(payload):
+        source = resolve_evidence_image(root, source_path)
+        identity = str(source).casefold()
+        prior = resolved_identities.get(identity)
+        if prior is not None and prior != source_path:
+            raise EvidenceImagePublicationError(
+                f"Distinct evidence image paths resolve to one file: {prior} and {source_path}"
+            )
+        resolved_identities[identity] = source_path
+        data = source.read_bytes()
+        image_type = validate_image_content(source_path, data)
+        prepared.append((source_path, source, data, image_type))
+    return prepared
+
+
+def materialize_binary_image(prepared: tuple[str, Path, bytes, str], root: Path, index: int) -> dict[str, Any]:
+    source_path, source, data, image_type = prepared
     digest = sha256(data)
-    extension = source.suffix.lower().removeprefix(".").replace("jpeg", "jpg")
+    extension = "jpg" if image_type == "jpeg" else image_type
     safe_stem = re.sub(r"[^a-z0-9-]+", "-", source.stem.lower()).strip("-") or "image"
     name = f"evidence-image-{index:03d}-{safe_stem}"
     relative_path = f"assets/releases/{name}.{digest}.{extension}"
@@ -166,7 +359,8 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
     if state.get("artifact_role") != "DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL":
         raise ValueError("Current-state artifact role is invalid")
 
-    evidence_images = [materialize_binary_image(root, path, index + 1) for index, path in enumerate(discover_evidence_images(state))]
+    prepared_images = prepare_evidence_images(root, state)
+    evidence_images = [materialize_binary_image(item, root, index + 1) for index, item in enumerate(prepared_images)]
     application_assets = [
         assets_by_role["map_runtime"],
         assets_by_role["page_registry"],
@@ -178,7 +372,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
     ]
     asset_set_material = "".join(
         f"{item['role']}\0{item['path']}\0{item['sha256']}\n"
-        for item in sorted(application_assets, key=lambda row: row["role"])
+        for item in sorted(application_assets, key=lambda row: (row["role"], row["source_path"], row["path"]))
     ).encode("utf-8")
     asset_set_sha256 = sha256(asset_set_material)
     release_material = (

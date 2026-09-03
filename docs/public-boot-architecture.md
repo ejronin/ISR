@@ -35,6 +35,10 @@ The original top-level `data/*.json` runtime datasets also remain untouched for 
 - `vendor/leaflet/` — pinned manifest-authorized map runtime and base CSS.
 - `assets/geography/atlas-reference-geography.geojson` — checked-in presentation-only Natural Earth subset used without a runtime tile service.
 
+## Evidence-image publication boundary
+
+Local evidence imagery may be published only when the accepted/current public model references a PNG, JPEG, or WebP file under `assets/evidence/`. The release builder normalizes the reference, resolves both the repository and approved media root, follows filesystem links, and requires the real file to remain contained by that approved root. It then verifies the actual image structure and extension before content-addressing the bytes. Absolute paths, URLs, traversal, symlink escapes, missing files, unsupported or mismatched content, and case/alias collisions fail the release build. Files merely present under `assets/evidence/` are not published unless the current evidence graph references them.
+
 No former presentation module remains required during current boot.
 
 ### Data/build or historical reference only

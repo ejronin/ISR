@@ -24,6 +24,7 @@ assert.deepEqual(ia.MapView.pointAlongPolyline([[0, 0], [0, 10], [10, 10]], .75)
 
 const locations = new Map([
   ['LOC-PRECISE', { latitude: 26.5, longitude: 56.2, label: 'Canonical Strait fixture', precision: 'Exact' }],
+  ['LOC-GENERAL', { latitude: 27.18, longitude: 56.27, label: 'Bandar Abbas general area', precision: 'General area' }],
   ['LOC-UNKNOWN', { latitude: null, longitude: null, label: 'Unknown canonical fixture', precision: 'Unknown' }]
 ]);
 const resolver = { resolve(id) { return locations.get(id) || null; } };
@@ -32,6 +33,11 @@ assert.equal(ia.MapView.imageryDescriptor({ location_id: 'LOC-PRECISE', image_ur
 assert.equal(ia.MapView.imageryDescriptor({ location_id: 'LOC-PRECISE', footprint: [[26.4, 56.1], [26.5, 56.3], [26.6, 56.1]], geolocation_reliable: true }, resolver, []).tier, 'B');
 assert.equal(ia.MapView.imageryDescriptor({ location_id: 'LOC-PRECISE', image_url: tinyPng }, resolver, []).tier, 'C');
 assert.equal(ia.MapView.imageryDescriptor({ title: 'Unlocated imagery fixture', image_url: tinyPng }, resolver, []).tier, 'D');
+const generalArea = ia.MapView.imageryDescriptor({ location_id: 'LOC-GENERAL', image_url: tinyPng, geolocation_precision: 'general area' }, resolver, []);
+assert.equal(generalArea.tier, 'C', 'general-area imagery must remain location/area-linked');
+assert.equal(generalArea.bounds, null, 'general-area imagery must not invent rectangular bounds');
+assert.equal(generalArea.footprint, null, 'general-area imagery must not invent a polygon');
+assert.equal(generalArea.point.precision, 'General area', 'general-area imagery must retain approximate precision');
 assert.equal(ia.MapView.pointFromRecord({ location_id: 'LOC-UNKNOWN', location: { lat: 0, lon: 0, name: 'Stale embedded point' } }, resolver), null, 'stale embedded coordinates must not outrank a canonical unknown location');
 
 assert.deepEqual(new Set(manifest.application.assets.map(asset => asset.role)), new Set(['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint']));
