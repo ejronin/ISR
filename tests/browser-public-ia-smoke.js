@@ -54,9 +54,7 @@ async function waitFor(cdp, expression, timeout = 30000) {
   throw new Error(`timeout: ${expression}`);
 }
 
-async function setRoute(cdp, route) {
-  await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref(route.key))};true`);
-  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(route.key)}`);
+async function routeView(cdp) {
   return cdp.eval(`(() => ({
     routeKey: window.ATLAS_PUBLIC_STATE.routeKey,
     owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
@@ -64,6 +62,18 @@ async function setRoute(cdp, route) {
     machineTokens: ['CURRENT_OVERLAY','HISTORICAL_RECONCILIATION','NOT_YET_ADJUDICABLE'].filter(token => document.body.innerText.includes(token)),
     currentSecondary: document.querySelector('.secondary-nav a[aria-current="page"]')?.textContent.trim()
   }))()`);
+}
+
+async function setRoute(cdp, route) {
+  await cdp.eval(`location.hash=${JSON.stringify(ia.routeHref(route.key))};true`);
+  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(route.key)}`);
+  return routeView(cdp);
+}
+
+async function loadDirectRoute(cdp, route) {
+  await cdp.call('Page.navigate', { url: new URL(ia.routeHref(route.key), SITE).href });
+  await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(route.key)}`);
+  return routeView(cdp);
 }
 
 (async () => {
@@ -123,13 +133,20 @@ async function setRoute(cdp, route) {
     assert.equal(skipped.mainFocused, true);
 
     for (const route of ia.ROUTES.values()) {
-      const view = await setRoute(cdp, route);
+      const view = await loadDirectRoute(cdp, route);
       assert.equal(view.routeKey, route.key);
       assert.equal(view.owner, route.owner, `wrong owner for ${route.key}`);
       assert.deepEqual(view.h1, [route.title], `heading structure failed for ${route.key}`);
       assert.deepEqual(view.machineTokens, [], `machine token exposed by ${route.key}`);
       assert.equal(view.currentSecondary, route.label, `secondary location not obvious for ${route.key}`);
     }
+    await cdp.call('Page.reload', { ignoreCache: true });
+    const refreshRoute = [...ia.ROUTES.values()].at(-1);
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(refreshRoute.key)}`);
+    const refreshed = await routeView(cdp);
+    assert.equal(refreshed.owner, refreshRoute.owner, 'direct route must retain its owner after refresh');
+    assert.deepEqual(refreshed.h1, [refreshRoute.title], 'direct route must retain one H1 after refresh');
+    assert.equal(await cdp.eval(`document.querySelectorAll('a[href*="snapshots/"]').length`), 0, 'current public application must not link to repository-only snapshots');
 
     await setRoute(cdp, ia.ROUTES.get('start.overview'));
     const overview = await cdp.eval(`(() => ({
@@ -335,7 +352,7 @@ async function setRoute(cdp, route) {
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 
-    console.log('browser public IA smoke: PASS — 25 direct routes, skip-link route isolation, actor affiliation/role identity, back/forward, legacy isolation, contextual map boundary, semantic navigation, and 320/390px mobile accessibility verified');
+    console.log('browser public IA smoke: PASS — 25 direct artifact entries plus refresh, skip-link route isolation, actor affiliation/role identity, back/forward, legacy isolation, contextual map boundary, semantic navigation, and 320/390px mobile accessibility verified');
   } finally {
     cdp.close();
   }

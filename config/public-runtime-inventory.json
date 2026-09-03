@@ -1,6 +1,12 @@
 {
   "schema_version": "1.0",
   "artifact_role": "PUBLIC_PRESENTATION_RUNTIME_CLASSIFICATION",
+  "classification_semantics": {
+    "current_runtime": "Signed browser runtime source; deployable only through a manifest-authorized content-addressed output.",
+    "archive_reference": "Retained in the repository for history or audit; forbidden from the current production artifact.",
+    "generated": "Deterministically produced current-state or release output; deployable only when explicitly named by production policy.",
+    "build_test_support": "Repository-only build, validation, or test support; not deployable unless separately named as a current output."
+  },
   "current_sources": [
     { "role": "bootstrap", "path": "js/public-bootstrap.js" },
     { "role": "map_runtime", "path": "vendor/leaflet/leaflet.js" },
@@ -15,12 +21,23 @@
     "templates/public-index.html"
   ],
   "current_service_owners": [
-    { "service": "route owners", "path": "js/public-ia.js", "symbol": "PAGE_OWNERS" },
+    { "service": "public bootstrap", "path": "js/public-bootstrap.js", "symbol": "async function start" },
+    { "service": "public application", "path": "js/public-app.js", "symbol": "async function boot" },
+    { "service": "public page registry and route ownership", "path": "js/public-ia.js", "symbol": "PAGE_OWNERS" },
     { "service": "shared evidence drawer", "path": "js/public-ia.js", "symbol": "EvidenceDrawer" },
     { "service": "shared MapView", "path": "js/public-ia.js", "symbol": "MapView" },
     { "service": "route data authorization", "path": "js/public-app.js", "symbol": "createRouteModelView" },
     { "service": "shared source resolver", "path": "js/public-app.js", "symbol": "createSourceResolver" },
-    { "service": "canonical location resolver", "path": "js/public-app.js", "symbol": "createLocationResolver" }
+    { "service": "canonical location resolver", "path": "js/public-app.js", "symbol": "createLocationResolver" },
+    { "service": "signed release builder", "path": "scripts/build_public_release.py", "symbol": "def build_manifest" },
+    { "service": "closed production artifact assembler", "path": "scripts/assemble_public_site.py", "symbol": "def expected_files" },
+    { "service": "runtime inventory validator", "path": "scripts/validate_public_runtime_inventory.py", "symbol": "def validate_repository" }
+  ],
+  "build_test_support": [
+    "requirements-build.txt",
+    "scripts/build_public_release.py",
+    "scripts/assemble_public_site.py",
+    "scripts/validate_public_runtime_inventory.py"
   ],
   "deployment_support": [
     ".nojekyll",
@@ -154,6 +171,7 @@
     "js/public-housekeeping-r1.js",
     "js/status-identity-r1.js",
     "vendor/mermaid/mermaid.min.js",
+    "snapshots/",
     "data/current-update-20260824/",
     "data/current-update-20260825/",
     "data/current-update-20260825-late/",

@@ -2263,8 +2263,7 @@
       const card = append(list, 'article', 'record-card');
       append(card, 'h3', '', publicNarrative(snapshot.label, 'Archived edition'));
       append(card, 'p', '', snapshot.date || 'Date not stated');
-      const link = append(card, 'a', '', 'Open archived edition');
-      link.href = encodeURI(snapshot.path);
+      append(card, 'p', '', 'Retained in repository history; not included in the current production site.');
     });
     const note = append(frame.article, 'aside', 'scope-note');
     append(note, 'strong', '', 'Historical reference boundary');

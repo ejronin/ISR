@@ -15,7 +15,6 @@
 
   const APPLICATION_VERSION = 'atlas-public-shell-v1';
   const MODEL_URL = './data/public-current-state.json';
-  const ARCHIVE_URL = './snapshots/Iran%20War%20Map%2020260820.html';
   const RELOAD_ATTEMPT_KEY = 'atlas-public-release-reload-attempted-v1';
   const EXPECTED_MODEL_SCHEMA = '1.0';
   const EXPECTED_MANIFEST_SCHEMA = '1.0';
@@ -698,10 +697,7 @@
     retryButton.type = 'button';
     retryButton.textContent = 'Retry';
     retryButton.addEventListener('click', retry || (() => root.location.reload()));
-    const archive = documentObject.createElement('a');
-    archive.href = ARCHIVE_URL;
-    archive.textContent = 'Open archived records';
-    actions.append(retryButton, archive);
+    actions.append(retryButton);
     section.append(actions);
     rootElement.replaceChildren(section);
     rootElement.className = 'atlas-error';

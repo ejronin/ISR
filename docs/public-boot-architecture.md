@@ -12,7 +12,7 @@ The root document has one release-bound boot path. Current public state flows fr
 6. The application verifies schema and release binding, the derived cutoff and chronology count, event-ID uniqueness, per-event provenance, and source resolution.
 7. It initializes `window.ATLAS_PUBLIC_STATE` and renders all 25 routes from the single validated in-memory model. The shared evidence resolver, source service, timeline, charts, and MapView consume that model; none owns a parallel evidence pipeline.
 
-The initial document contains no chronology count, cutoff, current summary, old navigation, old map workspace, dated update card, or active application CSS. If the manifest, an authorized asset, or the model fails validation, the neutral shell becomes an explicit error state with **Retry** and **Open archived records**. A release mismatch receives one controlled same-origin reload; a repeated mismatch becomes the explicit error state.
+The initial document contains no chronology count, cutoff, current summary, old navigation, old map workspace, dated update card, or active application CSS. If the manifest, an authorized asset, or the model fails validation, the neutral shell becomes an explicit error state with **Retry**. It never falls back or links to a repository-only application. A release mismatch receives one controlled same-origin reload; a repeated mismatch becomes the explicit error state.
 
 ## Signed release
 
@@ -30,10 +30,9 @@ Local evidence imagery may be published only when the accepted current model ref
 - the exact content-addressed assets authorized by `data/public-release.json`;
 - `data/public-release.json` and `data/public-current-state.json`;
 - the social preview;
-- immutable files under `snapshots/`;
 - deployment-generated `build-info.json`.
 
-Raw canonical packages, source registries, schemas, mutable source modules, vendor source trees, and retired presentation layers are not public deployment inputs. `scripts/assemble_public_site.py --check`, `scripts/validate_public_runtime_inventory.py --site-root`, and `scripts/validate_public_deployment.py --site-root` enforce the closed inventory and signed-byte contract.
+Snapshots, raw canonical packages, source registries, schemas, mutable source modules, vendor source trees, and retired presentation layers are not public deployment inputs. `scripts/assemble_public_site.py --check`, `scripts/validate_public_runtime_inventory.py --site-root`, and `scripts/validate_public_deployment.py --site-root` enforce the exact closed inventory and signed-byte contract. `build-info.json` is accepted only when validation explicitly requires the deployment identity.
 
 ## Presentation classification
 
@@ -43,7 +42,7 @@ Raw canonical packages, source registries, schemas, mutable source modules, vend
 - the neutral shell and deployment support files;
 - retired JavaScript, CSS, icons, flags, Mermaid, and the Phase 1 reference retained only for historical tests and engineering audit;
 - pinned Leaflet package support retained at build time;
-- generated artifacts and immutable snapshot roots.
+- generated artifacts and immutable repository-only snapshot roots.
 
 Every top-level JavaScript and stylesheet must appear in exactly one current or archive classification. Adding an unclassified presentation module fails validation. Current sources are scanned for retired boot references, and the assembled artifact rejects any unmanifested file. This preserves the old implementation record without leaving an alternate public boot path.
 
@@ -57,6 +56,6 @@ The release builder's strict evidence-image decoder is build-time only. It is in
 
 ## Tests and measurements
 
-The public boot smoke proves a neutral delayed-model state, current-model rendering, dated-loader non-execution, explicit model failure, controlled release mismatch, and split-release SRI rejection. Public route, evidence, map, responsive, keyboard, and reduced-motion suites exercise the current renderer. The runtime inventory test assembles a temporary Pages tree, proves it excludes raw/mutable presentation sources, and deliberately injects a dated loader to verify fail-closed rejection.
+The public boot smoke proves a neutral delayed-model state, current-model rendering, dated-loader non-execution, explicit model failure, controlled release mismatch, split-release SRI rejection, and an exact same-origin request allowlist. Public route, evidence, map, responsive, keyboard, and reduced-motion suites exercise the current renderer by serving only an isolated assembled `_site`; all 25 hash routes are entered directly and refresh-tested from that artifact. The runtime inventory test assembles a temporary Pages tree, proves it excludes snapshots and raw/mutable presentation sources, and deliberately injects forbidden and unexpected files to verify fail-closed rejection.
 
 `validate_public_deployment.py` reports model bytes and deterministic gzip-9 bytes. Phase 7 reporting compares the accepted starting commit's current JS/CSS source bytes with the cleaned result and separately records signed runtime asset count, geography bytes, model bytes, and gzip bytes.

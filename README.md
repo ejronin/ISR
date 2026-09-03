@@ -6,7 +6,7 @@ A public, source-linked OSINT record for the 2026 Iran conflict. The project sep
 
 ## Current public boot
 
-The root page now starts from a neutral shell and renders only after the generated current-state model and application assets resolve to one validated release. The browser does not replay the Aug. 24 through Aug. 27 dated presentation chain to discover the current record. If the current model cannot be loaded or validated, the site shows an explicit error and an archive link instead of an older dashboard.
+The root page now starts from a neutral shell and renders only after the generated current-state model and application assets resolve to one validated release. The browser does not replay the Aug. 24 through Aug. 27 dated presentation chain to discover the current record. If the current model cannot be loaded or validated, the site shows an explicit error with a retry action instead of an older dashboard.
 
 Build the ignored canonical state, public read model, and signed deployment artifacts with:
 
@@ -33,7 +33,7 @@ The public interface is organized around the questions a reader of a historical 
 3. **Consequences** — casualties and material losses, economic effects, and shipping/trade effects.
 4. **Diplomacy & Outcome** — negotiations and agreements, documented objectives, concessions, unresolved terms, and outcome evidence.
 5. **Claims & Verification** — claim checks and the information environment.
-6. **Sources & Method** — source register, methodology, analytic record, historical-record construction, and immutable archive snapshots.
+6. **Sources & Method** — source register, methodology, analytic record, historical-record construction, and archive metadata.
 
 The retired ATLAS / TIMELINE / ANALYSIS / MOU / SOURCES workspace is preserved only as repository history. It is not a dependency of the current renderer or part of the Pages artifact. Agreement records are presented through **Diplomacy & Outcome**.
 
@@ -52,7 +52,7 @@ The analytic register is subject to a completeness gate: historical entries are 
 - bargaining, force posture, agreements, regional alignment, and trade routes;
 - schematic oil-route mapping that distinguishes the degraded Iran→China crude chain from Russian and non-sanctioned Gulf substitute-supply lanes;
 - claim checks, information-environment analysis, sources, revisions, and unresolved collection gaps;
-- immutable historical HTML snapshots.
+- repository-retained immutable historical HTML snapshots for audit and reconstruction.
 
 ## How to read it
 
@@ -84,7 +84,7 @@ Direct-military accounting is symmetric across U.S./coalition and Iran/aligned m
 - other `css/`, `js/`, `assets/icons/`, and `assets/flags/` files — retained historical presentation references; never copied into the Pages artifact
 - `vendor/leaflet/` — pinned current Leaflet source package; only manifest-authorized runtime bytes are published
 - `data/` — UI data, authoritative historical integration ledger, and append-only current overlays
-- `snapshots/` — immutable dated public boards
+- `snapshots/` — repository-only immutable dated public boards; excluded from the current Pages artifact
 - `scripts/`, `tests/` — structural, integration, temporal, costing, hostile-input, and public-IA checks
 - `docs/` — methodology, migration, validation, information-architecture, and historical engineering notes
 
@@ -92,10 +92,11 @@ The public-record information-architecture specification is preserved in `docs/P
 
 ## Local development
 
-Serve the repository root with a local HTTP server, for example:
+Build and serve the same closed artifact used by deployment, for example:
 
 ```bash
-python -m http.server 8000
+python scripts/assemble_public_site.py --output _site
+python -m http.server 8000 --directory _site
 ```
 
 Then open `http://127.0.0.1:8000/`.
@@ -121,7 +122,7 @@ The ignored deploy-time artifacts at `data/public-current-state.json` and `data/
 
 ## Publishing and integrity
 
-Pull requests run validation only. Deployment runs only from `main` through the scoped GitHub Pages workflow. The manifest-driven assembler publishes only the neutral shell, signed current release, derived current model, social preview, immutable snapshots, and `build-info.json`; raw evidence packages and retired presentation modules remain repository-only. The deployment identity records the canonical URL, exact deployed commit, ledger version, review cutoff, and authoritative-ledger hashes.
+Pull requests run validation only. Deployment runs only from `main` through the scoped GitHub Pages workflow. The manifest-driven assembler publishes only the neutral shell, signed current release, derived current model, social preview, and deployment-generated `build-info.json`; snapshots, raw evidence packages, and retired presentation modules remain repository-only. The deployment identity records the canonical URL, exact deployed commit, ledger version, review cutoff, and authoritative-ledger hashes.
 
 Before a data update, preserve the current complete board as a new dated file under `snapshots/`; never overwrite an existing snapshot. The canonical integration JSON is hash-checked during validation.
 

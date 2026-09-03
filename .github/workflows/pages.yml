@@ -40,8 +40,8 @@ jobs:
           python scripts/validate_public_runtime_inventory.py
           python scripts/assemble_public_site.py --output _site
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
-          python scripts/assemble_public_site.py --output _site --check
-          python scripts/validate_public_runtime_inventory.py --site-root _site
+          python scripts/assemble_public_site.py --output _site --check --require-build-info
+          python scripts/validate_public_runtime_inventory.py --site-root _site --require-build-info
           python scripts/validate_public_deployment.py --site-root _site --require-build-info
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:

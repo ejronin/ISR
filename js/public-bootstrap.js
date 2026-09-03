@@ -13,7 +13,6 @@
   const BOOTSTRAP_PROTOCOL = 'atlas-release-bootstrap-v1';
   const APPLICATION_VERSION = 'atlas-public-shell-v1';
   const MANIFEST_URL = './data/public-release.json';
-  const ARCHIVE_URL = './snapshots/Iran%20War%20Map%2020260820.html';
   const RELOAD_ATTEMPT_KEY = 'atlas-public-release-reload-attempted-v1';
 
   class BootstrapError extends Error {
@@ -246,10 +245,7 @@
     retryButton.type = 'button';
     retryButton.textContent = 'Retry';
     retryButton.addEventListener('click', retry || (() => root.location.reload()));
-    const archive = documentObject.createElement('a');
-    archive.href = ARCHIVE_URL;
-    archive.textContent = 'Open archived records';
-    actions.append(retryButton, archive);
+    actions.append(retryButton);
     section.append(kicker, title, detail, code, actions);
     host.append(section);
     root.ATLAS_PUBLIC_STATE = { status: 'error', code: error && error.code || 'BOOTSTRAP_FAILED' };

@@ -14,6 +14,8 @@ The seven primary sections and their secondary destinations are declared once in
 | What Each Side Wanted | Objectives & Outcomes — `ObjectivesPage`; Position Changes — `PositionChangesPage`; How Iran's Position Changed — `IranMessagingPage` |
 | Claims & Evidence | Claim Checks — `ClaimChecksPage`; Information Environment — `InformationEnvironmentPage`; Sources — `SourcesPage`; How We Check the Evidence — `MethodPage`; Archive — `ArchivePage` |
 
+`ArchivePage` describes retained revision and snapshot metadata within the current evidence product. Historical HTML applications remain repository-only audit material: the route does not link to or load them, and the closed Pages artifact does not contain them.
+
 Shared owners are `AppShell`, `PublicNavigation`, `EvidenceDrawer`, `ActorIdentity`, `EvidenceStatus`, and contextual `MapView`. Page-owner configuration maps each route to a subset of one of the seven approved `page_data` groups in `data/public-current-state.json`. Registry validation fails if a route requests a dataset outside its approved group or any `legacy.*` dataset.
 
 Cross-links carry the same event or record ID in the hash query instead of copying a canonical record. The detailed chronology resolves event IDs against the single derived in-memory chronology (205 records at the Phase 3.5 migration boundary). Later accepted evidence packets can add relationships through canonical data without replacing navigation.

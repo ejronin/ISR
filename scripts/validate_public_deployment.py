@@ -16,6 +16,8 @@ FORBIDDEN_INITIAL_CONTENT = (
     ">108</b><span>current chronology records",
     "ATLAS / TIMELINE / ANALYSIS / MOU / SOURCES",
     "current-update-20260824.js",
+    "snapshots/",
+    "Open archived records",
 )
 
 

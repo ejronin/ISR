@@ -105,6 +105,8 @@ function base64(value) {
     await cdp.call('Runtime.enable');
     await cdp.call('Page.enable');
     await cdp.call('Network.enable');
+    const observedRequests = [];
+    cdp.on('Network.requestWillBeSent', params => observedRequests.push(params.request.url));
     await cdp.call('Network.setCacheDisabled', { cacheDisabled: true });
     await cdp.call('Fetch.disable');
     await cdp.call('Fetch.enable', { patterns: [{ urlPattern: '*data/public-current-state.json*', requestStage: 'Request' }] });
@@ -181,7 +183,7 @@ function base64(value) {
     assert(ready.performance.model_parse_milliseconds >= 0);
     assert.equal(ready.oldGlobals, false, 'dated successor-chain globals must not initialize');
     assert(!ready.scripts.some(url => /current-update|wiki-map-reconciliation|public-housekeeping|status-identity/.test(url)), 'dated or repair scripts entered current boot');
-    assert(!ready.resources.some(url => /\/(?:js|css|vendor|schemas|legacy)\//.test(url) || /\/data\/(?!public-(?:release|current-state)\.json$)/.test(url)), 'mutable, retired, or raw evidence paths entered the current network graph');
+    assert(!ready.resources.some(url => /\/(?:js|css|vendor|schemas|legacy|snapshots)\//.test(url) || /\/data\/(?!public-(?:release|current-state)\.json$)/.test(url)), 'mutable, retired, archived, or raw evidence paths entered the current network graph');
 
     await cdp.call('Fetch.enable', { patterns: [{ urlPattern: '*data/public-current-state.json*', requestStage: 'Request' }] });
     const failedPromise = cdp.waitEvent('Fetch.requestPaused', params => params.request.url.includes('public-current-state.json'));
@@ -198,12 +200,12 @@ function base64(value) {
     const failure = await cdp.eval(`(() => ({
       text: document.body.innerText,
       retry: Boolean(document.querySelector('.error-actions button')),
-      archive: document.querySelector('.error-actions a')?.getAttribute('href'),
+      archive: Boolean(document.querySelector('.error-actions a')),
       old: Boolean(document.getElementById('primaryNav') || document.getElementById('map'))
     }))()`);
     assert.match(failure.text, /The current evidence record could not be loaded/i);
     assert.equal(failure.retry, true);
-    assert.match(failure.archive || '', /snapshots\//);
+    assert.equal(failure.archive, false, 'failure state must not link to a repository-only snapshot');
     assert.equal(failure.old, false, 'failure state must not reveal the old dashboard');
 
     await cdp.eval(`sessionStorage.removeItem('atlas-public-release-reload-attempted-v1');true`);
@@ -266,7 +268,25 @@ function base64(value) {
     assert.match(mismatch.text, /did not resolve to one release/i);
     assert.equal(mismatch.old, false, 'release mismatch must not produce a hybrid legacy UI');
 
-    console.log(`browser public boot smoke: PASS — neutral cold shell; 205 records rendered; parse ${ready.performance.model_parse_milliseconds.toFixed(1)}ms; fetch failure, exact split-release SRI rejection, and controlled manifest mismatch stayed explicit`);
+    const allowedPaths = new Set([
+      '/',
+      '/data/public-release.json',
+      `/${manifest.current_state.path}`,
+      `/${bootstrap.path}`,
+      ...manifest.application.assets.map(asset => `/${asset.path}`)
+    ]);
+    const siteOrigin = new URL(SITE).origin;
+    const networkRequests = [...new Set(observedRequests)]
+      .filter(value => !value.startsWith('data:'))
+      .map(value => new URL(value));
+    assert(networkRequests.length > 0, 'browser network allowlist did not observe any requests');
+    for (const request of networkRequests) {
+      assert.equal(request.origin, siteOrigin, `current production requested a non-site origin: ${request.href}`);
+      assert(allowedPaths.has(request.pathname), `current production requested an unauthorized path: ${request.pathname}`);
+    }
+    const observedPaths = [...new Set(networkRequests.map(request => request.pathname))].sort();
+
+    console.log(`browser public boot smoke: PASS — neutral cold shell; 205 records rendered; parse ${ready.performance.model_parse_milliseconds.toFixed(1)}ms; fetch failure, exact split-release SRI rejection, controlled manifest mismatch, and closed request allowlist (${observedPaths.join(', ')}) verified`);
   } finally {
     cdp.close();
   }
