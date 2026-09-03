@@ -4,6 +4,26 @@ A public, source-linked OSINT record for the 2026 Iran conflict. The project sep
 
 **Live atlas:** https://ejronin.github.io/ISR/
 
+## Current public boot
+
+The root page now starts from a neutral shell and renders only after the generated current-state model and application assets resolve to one validated release. The browser does not replay the Aug. 24 through Aug. 27 dated presentation chain to discover the current record. If the current model cannot be loaded or validated, the site shows an explicit error with a retry action instead of an older dashboard.
+
+Build the ignored canonical state, public read model, and signed deployment artifacts with:
+
+```bash
+python scripts/build_canonical_current_state.py
+python scripts/validate_canonical_authority.py
+python scripts/validate_canonical_update_pipeline.py
+python scripts/build_public_current_state.py
+python scripts/build_public_release.py
+python scripts/validate_public_deployment.py
+python scripts/validate_public_geography.py
+```
+
+Future evidence changes are small append-only packets under `data/canonical-updates/`; they do not require frontend edits or another dated loader. The migration boundary is independently pinned, and CI requires every prior accepted manifest entry to remain an exact prefix of the proposed ledger. See `docs/canonical-update-pipeline.md` for validation, dry-run, registration and publication commands.
+
+The current renderer exposes the full chronology, shared evidence/source services, approved analytical datasets, and one shared Leaflet MapView backed by checked-in Natural Earth reference geography. Maps do not use live tiles, routing services, or a separate evidence pipeline. See `docs/public-boot-architecture.md` for the boot sequence and release boundary, and `docs/reference-geography.md` for map provenance and preprocessing.
+
 ## Public information architecture
 
 The public interface is organized around the questions a reader of a historical war record is likely to ask, rather than around the project's internal analytic workflow:
@@ -13,9 +33,9 @@ The public interface is organized around the questions a reader of a historical 
 3. **Consequences** — casualties and material losses, economic effects, and shipping/trade effects.
 4. **Diplomacy & Outcome** — negotiations and agreements, documented objectives, concessions, unresolved terms, and outcome evidence.
 5. **Claims & Verification** — claim checks and the information environment.
-6. **Sources & Method** — source register, methodology, analytic record, historical-record construction, and immutable archive snapshots.
+6. **Sources & Method** — source register, methodology, analytic record, historical-record construction, and archive metadata.
 
-The former ATLAS / TIMELINE / ANALYSIS / MOU / SOURCES workspace bar remains an implementation dependency for specialized views but is no longer public navigation. The detailed agreement workspace remains reachable through **Diplomacy & Outcome**.
+The retired ATLAS / TIMELINE / ANALYSIS / MOU / SOURCES workspace is preserved only as repository history. It is not a dependency of the current renderer or part of the Pages artifact. Agreement records are presented through **Diplomacy & Outcome**.
 
 ### Analytic record separation
 
@@ -32,7 +52,7 @@ The analytic register is subject to a completeness gate: historical entries are 
 - bargaining, force posture, agreements, regional alignment, and trade routes;
 - schematic oil-route mapping that distinguishes the degraded Iran→China crude chain from Russian and non-sanctioned Gulf substitute-supply lanes;
 - claim checks, information-environment analysis, sources, revisions, and unresolved collection gaps;
-- immutable historical HTML snapshots.
+- repository-retained immutable historical HTML snapshots for audit and reconstruction.
 
 ## How to read it
 
@@ -57,12 +77,14 @@ Direct-military accounting is symmetric across U.S./coalition and Iran/aligned m
 
 ## Repository structure
 
-- `index.html` — semantic shell and readable no-JavaScript fallback
-- `css/`, `js/` — local presentation, navigation, map, temporal, safety, costing, and public-record interface modules
-- `assets/icons/` — local map icon grammar
-- `vendor/leaflet/` — pinned Leaflet runtime
+- `index.html` — neutral current-record loading/failure shell with one application entry
+- `templates/public-index.html` — exact review source for the root shell; build validation requires byte equality
+- `legacy/phase1-public-runtime-reference.html` — repository-only retired presentation reference; excluded from Pages packaging
+- `css/public-shell.css`, `js/public-*.js` — the complete current public presentation source set
+- other `css/`, `js/`, `assets/icons/`, and `assets/flags/` files — retained historical presentation references; never copied into the Pages artifact
+- `vendor/leaflet/` — pinned current Leaflet source package; only manifest-authorized runtime bytes are published
 - `data/` — UI data, authoritative historical integration ledger, and append-only current overlays
-- `snapshots/` — immutable dated public boards
+- `snapshots/` — repository-only immutable dated public boards; excluded from the current Pages artifact
 - `scripts/`, `tests/` — structural, integration, temporal, costing, hostile-input, and public-IA checks
 - `docs/` — methodology, migration, validation, information-architecture, and historical engineering notes
 
@@ -70,19 +92,37 @@ The public-record information-architecture specification is preserved in `docs/P
 
 ## Local development
 
-Serve the repository root with a local HTTP server, for example:
+Build and serve the same closed artifact used by deployment, for example:
 
 ```bash
-python -m http.server 8000
+python scripts/assemble_public_site.py --output _site
+python -m http.server 8000 --directory _site
 ```
 
 Then open `http://127.0.0.1:8000/`.
 
 Run the release checks documented by the repository validation scripts and the JavaScript tests under `tests/`.
 
+The current public evidence state also has a deterministic, generated read model and a release-binding manifest. Build and verify them with:
+
+```bash
+python scripts/build_public_current_state.py
+python scripts/build_public_current_state.py --check
+python scripts/validate_public_current_state.py
+python scripts/build_public_release.py
+python scripts/build_public_release.py --check
+python scripts/validate_public_deployment.py
+python scripts/validate_public_geography.py
+python scripts/validate_public_runtime_inventory.py
+python scripts/assemble_public_site.py --output _site
+python scripts/assemble_public_site.py --output _site --check
+```
+
+The ignored deploy-time artifacts at `data/public-current-state.json` and `data/public-release.json` are derived views only; canonical packages remain authoritative. See `docs/public-current-state.md` for the read-model input/provenance contract and `docs/public-boot-architecture.md` for the release boundary.
+
 ## Publishing and integrity
 
-Pull requests run validation only. Deployment runs only from `main` through the scoped GitHub Pages workflow. The deployed artifact publishes `build-info.json` containing the canonical URL, exact deployed commit, ledger version, review cutoff, and authoritative-ledger hashes.
+Pull requests run validation only. Deployment runs only from `main` through the scoped GitHub Pages workflow. The manifest-driven assembler publishes only the neutral shell, signed current release, derived current model, social preview, and deployment-generated `build-info.json`; snapshots, raw evidence packages, and retired presentation modules remain repository-only. The deployment identity records the canonical URL, exact deployed commit, ledger version, review cutoff, and authoritative-ledger hashes.
 
 Before a data update, preserve the current complete board as a new dated file under `snapshots/`; never overwrite an existing snapshot. The canonical integration JSON is hash-checked during validation.
 

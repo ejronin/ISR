@@ -32,6 +32,9 @@ def require(condition: bool, message: str, errors: list[str]) -> None:
 def main() -> int:
     errors: list[str] = []
     html = (ROOT / "index.html").read_text(encoding="utf-8")
+    legacy_html = (ROOT / "legacy/phase1-public-runtime-reference.html").read_text(encoding="utf-8")
+    public_release = json.loads((ROOT / "data/public-release.json").read_text(encoding="utf-8"))
+    bootstrap = (public_release.get("neutral_bootstrap") or {}).get("asset") or {}
     scripts = "\n".join(path.read_text(encoding="utf-8") for path in (ROOT / "js").glob("*.js"))
     require("Content-Security-Policy" in html, "CSP meta policy missing", errors)
     require("script-src 'self'" in html, "CSP script-src must be self-only", errors)
@@ -49,9 +52,20 @@ def main() -> int:
             data = data.replace(b"\r\n", b"\n")
         actual = hashlib.sha256(data).hexdigest() if data is not None else None
         require(actual == expected, f"vendored Leaflet hash mismatch: {relative}", errors)
+    require('id="atlas-root"' in html and 'data-status="loading"' in html, "neutral current-record root missing", errors)
+    require("Loading current evidence record…" in html, "accessible current-record loading state missing", errors)
+    require(
+        html.count("<script ") == 1
+        and f'src="{bootstrap.get("path")}"' in html
+        and f'integrity="{bootstrap.get("integrity")}"' in html
+        and "js/public-app.js" not in html,
+        "public root must load one manifest-bound neutral bootstrap",
+        errors,
+    )
+    require("current-update-20260824.js" not in html and 'id="currentPictureBlocks"' not in html, "obsolete current dashboard remains in public boot", errors)
     for label in ("Overview", "Operations", "Effects", "Information", "Evidence"):
-        require(f">{label}<" in html, f"primary area missing: {label}", errors)
-    require('id="currentPictureBlocks"' in html, "Current Picture structured blocks missing", errors)
+        require(f">{label}<" in legacy_html, f"retired presentation reference missing primary area: {label}", errors)
+    require('id="currentPictureBlocks"' in legacy_html, "retired Current Picture reference missing", errors)
     require("CURRENT ASSESSMENT — reviewed through" in scripts, "current-adjudication cutoff label missing", errors)
     require("REPORTED / NOT VERIFIED BY CUTOFF" in (ROOT / "js/temporal.js").read_text(encoding="utf-8"), "KNOWN BY badge missing", errors)
     require("timeline-rail" in scripts and "timelineGranularity" in scripts, "temporal controller missing", errors)
@@ -84,7 +98,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("UX/security validation passed: presentation grammar, canonical accounting, temporal state, synchronized map, grouped layers, CSP, local runtime, safe links, and build identity")
+    print("UX/security validation passed: neutral manifest-bound bootstrap, preserved presentation grammar, canonical accounting, temporal/map source modules, CSP, safe links, and build identity")
     return 0
 
 

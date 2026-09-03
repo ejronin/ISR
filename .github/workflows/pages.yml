@@ -17,13 +17,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.x'
+      - name: Install pinned build-time image decoder
+        run: python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
       - name: Assemble static artifact and deployment identity
         run: |
           python scripts/build_source_registry.py --root .
-          mkdir _site
-          cp -R index.html .nojekyll assets css data js schemas snapshots vendor _site/
+          python scripts/build_canonical_current_state.py
+          python scripts/build_canonical_current_state.py --check
+          python scripts/validate_canonical_authority.py
+          python scripts/validate_canonical_update_pipeline.py
+          python scripts/build_public_current_state.py
+          python scripts/validate_public_current_state.py
+          python scripts/build_public_release.py
+          python scripts/build_public_release.py --check
+          python scripts/validate_public_deployment.py
+          python scripts/validate_public_runtime_inventory.py
+          python scripts/assemble_public_site.py --output _site
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
+          python scripts/assemble_public_site.py --output _site --check --require-build-info
+          python scripts/validate_public_runtime_inventory.py --site-root _site --require-build-info
+          python scripts/validate_public_deployment.py --site-root _site --require-build-info
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: ./_site

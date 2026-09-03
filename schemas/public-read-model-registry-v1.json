@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ejronin.github.io/ISR/schemas/public-read-model-registry-v1.json",
+  "title": "Atlas public read-model dataset registry",
+  "type": "object",
+  "required": ["schema_version", "artifact_role", "datasets", "page_data"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "artifact_role": { "const": "PUBLIC_READ_MODEL_DATASET_REGISTRY" },
+    "datasets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["key", "path", "role"],
+        "properties": {
+          "key": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "page_data": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "type": "string", "minLength": 1 }
+      }
+    }
+  },
+  "additionalProperties": false
+}

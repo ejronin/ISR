@@ -22,25 +22,61 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: '3.x'
+      - name: Install pinned build-time image decoder
+        run: python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
-      - name: Protect frozen data in pull-request diffs
-        if: github.event_name == 'pull_request'
+      - name: Regenerate and validate pinned Natural Earth reference geography
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PYTHONUTF8: '1'
         run: |
-          changed="$(git diff --name-only "$BASE_SHA...HEAD")"
-          printf '%s\n' "$changed"
-          data_changed="$(printf '%s\n' "$changed" | grep -E '^data/' || true)"
-          illegal="$(printf '%s\n' "$data_changed" | grep -Ev '^(data/current-update-20260827/|data/iran-messaging-shifts-20260827-r1\.json$)' || true)"
-          if [ -n "$illegal" ]; then
-            echo 'FAIL: this update modifies frozen or non-authorized historical data paths:' >&2
-            printf '%s\n' "$illegal" >&2
-            exit 1
-          fi
+          python scripts/build_reference_geography.py --fetch-source-dir "$RUNNER_TEMP/atlas-natural-earth-v5.1.1" --check
+          python scripts/validate_public_geography.py
+      - name: Protect immutable migration authority and append-only ledger history
+        env:
+          AUTHORITY_BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: python scripts/validate_canonical_authority.py --compare-ref "$AUTHORITY_BASE_REF"
       - name: Build exhaustive source registry
         run: python scripts/build_source_registry.py --root .
+      - name: Validate deterministic public current-state assembly
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          python scripts/build_canonical_current_state.py
+          python scripts/build_canonical_current_state.py --check
+          python scripts/validate_canonical_authority.py
+          python scripts/validate_canonical_update_pipeline.py
+          python tests/canonical-authority.test.py
+          python tests/canonical-update-pipeline.test.py
+          python scripts/build_public_current_state.py
+          python scripts/build_public_current_state.py --check
+          python scripts/validate_public_current_state.py
+          python scripts/build_public_release.py
+          python scripts/build_public_release.py --check
+          python scripts/validate_public_deployment.py
+          python scripts/validate_public_geography.py
+          python scripts/validate_public_runtime_inventory.py
+          python tests/public-runtime-inventory.test.py
+          python tests/public-release-evidence-image.test.py
+          node tests/public-current-state.test.js
+          node tests/public-boot.test.js
+          node tests/public-ia.test.js
+          node tests/public-content-redesign.test.js
+          node tests/public-evidence-phase5.test.js
+          node tests/public-map-phase6.test.js
+          node --check js/public-bootstrap.js
+          node --check js/public-app.js
+          node --check js/public-ia.js
+          node --check tests/browser-public-boot-smoke.js
+          node --check tests/browser-public-ia-smoke.js
+          node --check tests/browser-public-evidence-phase5.js
+          node --check tests/browser-public-map-phase6.js
+          python scripts/assemble_public_site.py --output _site
+          python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
+          python scripts/assemble_public_site.py --output _site --check --require-build-info
+          python scripts/validate_public_runtime_inventory.py --site-root _site --require-build-info
+          python scripts/validate_public_deployment.py --site-root _site --require-build-info
       - name: Validate Aug. 24 count synchronization after source build
         env:
           PYTHONUTF8: '1'
@@ -71,35 +107,77 @@ jobs:
           python scripts/validate_mou_strike_integration_r1.py
           node --check js/iran-messaging-r1.js
           node --check tests/browser-mou-strike-smoke.js
-      - name: Exercise async MOU, strike and Aug. 27 messaging UI in headless browser
+      - name: Exercise cold, current, failure and release-mismatch boot paths in headless browser
         shell: bash
         run: |
-          python -m http.server 8765 --bind 127.0.0.1 >/tmp/atlas-http.log 2>&1 &
+          python -m http.server 8765 --bind 127.0.0.1 --directory _site >/tmp/atlas-http.log 2>&1 &
           server_pid=$!
-          chrome="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
-          if [ -z "$chrome" ]; then
+          browser_pid=''
+          cleanup(){
+            if [ -n "$browser_pid" ]; then kill "$browser_pid" 2>/dev/null || true; fi
+            kill "$server_pid" 2>/dev/null || true
+            if [ -n "$browser_pid" ]; then wait "$browser_pid" 2>/dev/null || true; fi
+            wait "$server_pid" 2>/dev/null || true
+          }
+          trap cleanup EXIT
+          mapfile -t browsers < <(
+            for name in chromium google-chrome-stable google-chrome chromium-browser; do
+              command -v "$name" 2>/dev/null || true
+            done | awk '!seen[$0]++'
+          )
+          if [ "${#browsers[@]}" -eq 0 ]; then
             echo 'FAIL: no Chrome/Chromium executable is available for the public UI smoke test.' >&2
             exit 1
           fi
-          rm -rf /tmp/atlas-chrome-profile
-          "$chrome" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
-            --remote-debugging-port=9222 --remote-allow-origins='*' \
-            --user-data-dir=/tmp/atlas-chrome-profile 'http://127.0.0.1:8765/?view=strikes' >/tmp/atlas-chrome.log 2>&1 &
-          chrome_pid=$!
-          cleanup(){ kill "$chrome_pid" "$server_pid" 2>/dev/null || true; }
-          trap cleanup EXIT
           ready=0
-          for _ in $(seq 1 60); do
-            if curl -fsS http://127.0.0.1:9222/json >/dev/null 2>&1; then ready=1; break; fi
-            sleep 0.25
+          browser=''
+          for candidate in "${browsers[@]}"; do
+            echo "Browser candidate: $candidate"
+            timeout --signal=KILL 5s "$candidate" --version || true
+            rm -rf /tmp/atlas-chrome-profile
+            : >/tmp/atlas-chrome.log
+            "$candidate" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+              --no-first-run --no-default-browser-check \
+              --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
+              --remote-allow-origins='*' --user-data-dir=/tmp/atlas-chrome-profile \
+              'http://127.0.0.1:8765/?view=strikes' >/tmp/atlas-chrome.log 2>&1 &
+            browser_pid=$!
+            deadline=$((SECONDS + 15))
+            while [ "$SECONDS" -lt "$deadline" ]; do
+              if curl -fsS --connect-timeout 1 --max-time 1 \
+                http://127.0.0.1:9222/json/version >/tmp/atlas-cdp-version.json 2>/dev/null; then
+                ready=1
+                browser="$candidate"
+                break
+              fi
+              if ! kill -0 "$browser_pid" 2>/dev/null; then break; fi
+              sleep 0.25
+            done
+            if [ "$ready" -eq 1 ]; then break; fi
+            candidate_status='still running without CDP'
+            if ! kill -0 "$browser_pid" 2>/dev/null; then
+              candidate_status=0
+              wait "$browser_pid" || candidate_status=$?
+            else
+              kill "$browser_pid" 2>/dev/null || true
+              wait "$browser_pid" 2>/dev/null || true
+            fi
+            echo "Browser candidate failed ($candidate_status): $candidate" >&2
+            cat /tmp/atlas-chrome.log >&2 || true
+            browser_pid=''
           done
           if [ "$ready" -ne 1 ]; then
-            cat /tmp/atlas-chrome.log >&2 || true
-            echo 'FAIL: Chrome DevTools endpoint did not become ready.' >&2
+            cat /tmp/atlas-http.log >&2 || true
+            echo 'FAIL: no installed Chrome/Chromium candidate exposed a DevTools endpoint.' >&2
             exit 1
           fi
-          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-mou-strike-smoke.js
-          ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-aug27-messaging-smoke.js
+          echo "Selected browser path: $browser"
+          timeout --signal=KILL 5s "$browser" --version || true
+          cat /tmp/atlas-cdp-version.json
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-boot-smoke.js
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-ia-smoke.js
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-evidence-phase5.js
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-map-phase6.js
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration

@@ -1,0 +1,5 @@
+data/public-current-state.json
+data/public-release.json
+data/canonical-current-state.json
+assets/releases/
+__pycache__/

@@ -5,7 +5,7 @@ const path=require('node:path');
 const ROOT=path.resolve(__dirname,'..');
 const js=fs.readFileSync(path.join(ROOT,'js/workspaces-20260822.js'),'utf8');
 const css=fs.readFileSync(path.join(ROOT,'css/workspaces-20260822.css'),'utf8');
-const index=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');
+const index=fs.readFileSync(path.join(ROOT,'legacy/phase1-public-runtime-reference.html'),'utf8');
 const hz=JSON.parse(fs.readFileSync(path.join(ROOT,'data/hormuz-strategic-v3.json'),'utf8'));
 const outcome=JSON.parse(fs.readFileSync(path.join(ROOT,'data/iran-outcome-assessments-v1.0.json'),'utf8'));
 

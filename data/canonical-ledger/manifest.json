@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schemas/canonical-ledger-manifest-v1.json",
+  "schema_version": "1.0",
+  "ledger_id": "ATLAS-ISR-CANONICAL-UPDATES",
+  "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY",
+  "migration_boundary": {
+    "accepted_phase3_head": "b6dabf7d9dc346a81afc9ba4a9074c481e70e02a",
+    "sealed_inputs": "data/canonical-ledger/migration-boundary.json",
+    "actor_registry": "data/canonical-ledger/migration-actors.json",
+    "rule": "The listed inherited packages are immutable inputs. Accepted post-boundary packets are appended in manifest order and must retain their recorded SHA-256."
+  },
+  "baseline_packages": [
+    {
+      "key": "historical_base",
+      "path": "data/integration-v1.2",
+      "role": "FROZEN_HISTORICAL_LEDGER"
+    },
+    {
+      "key": "aug_24_overlay",
+      "path": "data/current-update-20260824",
+      "role": "INHERITED_PRE_MIGRATION_OVERLAY"
+    },
+    {
+      "key": "aug_25_overlay",
+      "path": "data/current-update-20260825",
+      "role": "INHERITED_PRE_MIGRATION_OVERLAY"
+    },
+    {
+      "key": "aug_25_late_overlay",
+      "path": "data/current-update-20260825-late",
+      "role": "INHERITED_PRE_MIGRATION_OVERLAY"
+    },
+    {
+      "key": "aug_26_overlay",
+      "path": "data/current-update-20260826",
+      "role": "INHERITED_PRE_MIGRATION_OVERLAY"
+    },
+    {
+      "key": "historical_reconciliation",
+      "path": "data/wiki-map-reconciliation-20260826",
+      "role": "ACCEPTED_HISTORICAL_RECONCILIATION"
+    },
+    {
+      "key": "aug_27_overlay",
+      "path": "data/current-update-20260827",
+      "role": "INHERITED_PRE_MIGRATION_OVERLAY"
+    }
+  ],
+  "source_namespaces": [
+    {
+      "key": "forensic_v1_3_2",
+      "path": "data/forensic-v1.3.2/sources.json",
+      "role": "FORENSIC_SOURCE_NAMESPACE"
+    }
+  ],
+  "entity_collections": [
+    {
+      "entity_type": "claim",
+      "path": "data/integration-v1.2/claims.json",
+      "array_key": "claims",
+      "id_field": "case_id",
+      "role": "FROZEN_HISTORICAL_LEDGER"
+    },
+    {
+      "entity_type": "material_loss",
+      "path": "data/integration-v1.2/material-losses.json",
+      "array_key": "records",
+      "id_field": "loss_id",
+      "role": "FROZEN_HISTORICAL_LEDGER"
+    },
+    {
+      "entity_type": "material_loss",
+      "path": "data/wiki-map-reconciliation-20260826/material-losses.json",
+      "array_key": "records",
+      "id_field": "loss_id",
+      "role": "ACCEPTED_HISTORICAL_RECONCILIATION"
+    }
+  ],
+  "source_registry": "data/source-registry.json",
+  "accepted_updates": []
+}

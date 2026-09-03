@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ejronin.github.io/ISR/schemas/canonical-ledger-manifest-v1.json",
+  "title": "Atlas ISR canonical update-ledger registry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "ledger_id",
+    "artifact_role",
+    "migration_boundary",
+    "baseline_packages",
+    "source_namespaces",
+    "entity_collections",
+    "source_registry",
+    "accepted_updates"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "ledger_id": { "const": "ATLAS-ISR-CANONICAL-UPDATES" },
+    "artifact_role": { "const": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY" },
+    "migration_boundary": {
+      "type": "object",
+      "required": ["accepted_phase3_head", "sealed_inputs", "actor_registry", "rule"]
+    },
+    "baseline_packages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/package" }
+    },
+    "source_namespaces": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/namespace" }
+    },
+    "entity_collections": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/collection" }
+    },
+    "source_registry": { "type": "string", "minLength": 1 },
+    "accepted_updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["packet_id", "path", "sha256", "known_at", "previous_lineage_sha256", "lineage_sha256"],
+        "properties": {
+          "packet_id": { "pattern": "^UPD-[0-9]{8}-[A-Z0-9-]+$" },
+          "path": { "pattern": "^data/canonical-updates/.+\\.json$" },
+          "sha256": { "$ref": "#/$defs/sha256" },
+          "known_at": { "type": "string", "format": "date-time" },
+          "previous_lineage_sha256": { "$ref": "#/$defs/sha256" },
+          "lineage_sha256": { "$ref": "#/$defs/sha256" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "package": {
+      "type": "object",
+      "required": ["key", "path", "role"],
+      "properties": {
+        "key": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "namespace": { "$ref": "#/$defs/package" },
+    "collection": {
+      "type": "object",
+      "required": ["entity_type", "path", "array_key", "id_field", "role"],
+      "properties": {
+        "entity_type": { "enum": ["claim", "material_loss"] },
+        "path": { "type": "string", "minLength": 1 },
+        "array_key": { "type": "string", "minLength": 1 },
+        "id_field": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  }
+}

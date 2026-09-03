@@ -35,9 +35,9 @@ def main():
     req('mou_breach_assessment' in hz and 'mou_concession_matrix' in hz,'full MOU analytical experience was not restored')
     req('map_points' not in hz and 'routes' not in hz,'Hormuz overlay must not import standalone coordinates into a second map database')
     sm=hz['summary_metrics']; req(sm['iran_coercive_hormuz_leverage_0_10']>sm['iran_institutionalized_control_0_10'],'de facto/legal Hormuz distinction lost')
-    index=(ROOT/'index.html').read_text(encoding='utf-8') if (ROOT/'index.html').exists() else ''
+    index=(ROOT/'legacy/phase1-public-runtime-reference.html').read_text(encoding='utf-8') if (ROOT/'legacy/phase1-public-runtime-reference.html').exists() else ''
     if index:
-        req('full-scope-20260822.css' in index and 'full-scope-core.js' in index and 'full-scope-20260822.js' in index,'index does not load full-scope layer')
+        req('full-scope-20260822.css' in index and 'full-scope-core.js' in index and 'full-scope-20260822.js' in index,'retired runtime reference does not preserve full-scope layer')
     regpath=ROOT/'data/source-registry.json'
     if regpath.exists():
         reg=load('data/source-registry.json'); req(reg['schema_version']=='1.0','source registry schema mismatch')
