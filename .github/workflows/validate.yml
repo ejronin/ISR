@@ -113,11 +113,46 @@ jobs:
           python -m http.server 8765 --bind 127.0.0.1 --directory _site >/tmp/atlas-http.log 2>&1 &
           server_pid=$!
           browser_pid=''
+          process_is_running(){
+            local pid="$1"
+            local state=''
+            kill -0 "$pid" 2>/dev/null || return 1
+            if [ -r "/proc/$pid/stat" ]; then
+              state="$(sed -E 's/^.*\) ([A-Z]) .*/\1/' "/proc/$pid/stat" 2>/dev/null)" || true
+              [ "$state" != 'Z' ]
+              return
+            fi
+            return 0
+          }
+          terminate_process(){
+            local pid="${1:-}"
+            local label="${2:-process}"
+            local deadline
+            [ -n "$pid" ] || return 0
+            if process_is_running "$pid"; then
+              echo "Stopping $label (pid $pid) with TERM." >&2
+              kill -TERM "$pid" 2>/dev/null || true
+              deadline=$((SECONDS + 5))
+              while process_is_running "$pid" && [ "$SECONDS" -lt "$deadline" ]; do
+                sleep 0.1
+              done
+            fi
+            if process_is_running "$pid"; then
+              echo "$label (pid $pid) did not exit after TERM; sending KILL." >&2
+              kill -KILL "$pid" 2>/dev/null || true
+              deadline=$((SECONDS + 2))
+              while process_is_running "$pid" && [ "$SECONDS" -lt "$deadline" ]; do
+                sleep 0.1
+              done
+            fi
+            if process_is_running "$pid"; then
+              echo "WARN: $label (pid $pid) is still present after KILL." >&2
+              return 1
+            fi
+          }
           cleanup(){
-            if [ -n "$browser_pid" ]; then kill "$browser_pid" 2>/dev/null || true; fi
-            kill "$server_pid" 2>/dev/null || true
-            if [ -n "$browser_pid" ]; then wait "$browser_pid" 2>/dev/null || true; fi
-            wait "$server_pid" 2>/dev/null || true
+            terminate_process "$browser_pid" 'browser' || true
+            terminate_process "$server_pid" 'HTTP server' || true
           }
           trap cleanup EXIT
           mapfile -t browsers < <(
@@ -154,14 +189,12 @@ jobs:
               sleep 0.25
             done
             if [ "$ready" -eq 1 ]; then break; fi
-            candidate_status='still running without CDP'
-            if ! kill -0 "$browser_pid" 2>/dev/null; then
-              candidate_status=0
-              wait "$browser_pid" || candidate_status=$?
+            if process_is_running "$browser_pid"; then
+              candidate_status='still running without CDP'
             else
-              kill "$browser_pid" 2>/dev/null || true
-              wait "$browser_pid" 2>/dev/null || true
+              candidate_status='exited before exposing CDP'
             fi
+            terminate_process "$browser_pid" "browser candidate $candidate" || true
             echo "Browser candidate failed ($candidate_status): $candidate" >&2
             cat /tmp/atlas-chrome.log >&2 || true
             browser_pid=''
