@@ -2,7 +2,6 @@
 """Exercise the real signed-release evidence-image publication boundary."""
 from __future__ import annotations
 
-import base64
 import json
 import os
 import shutil
@@ -14,6 +13,8 @@ import zlib
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Iterator
+
+from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,28 +32,47 @@ def png_chunk(kind: bytes, payload: bytes) -> bytes:
     return struct.pack(">I", len(payload)) + kind + payload + struct.pack(">I", zlib.crc32(kind + payload) & 0xFFFFFFFF)
 
 
+def encoded_image(image_format: str) -> bytes:
+    from io import BytesIO
+
+    output = BytesIO()
+    with Image.new("RGB", (2, 2), (17, 67, 131)) as image:
+        image.save(output, format=image_format)
+    return output.getvalue()
+
+
 def valid_png() -> bytes:
-    header = struct.pack(">IIBBBBB", 1, 1, 8, 6, 0, 0, 0)
-    pixels = zlib.compress(b"\x00\x00\x00\x00\xff")
-    return b"\x89PNG\r\n\x1a\n" + png_chunk(b"IHDR", header) + png_chunk(b"IDAT", pixels) + png_chunk(b"IEND", b"")
+    return encoded_image("PNG")
 
 
 def valid_jpeg() -> bytes:
-    return base64.b64decode(
-        "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////"
-        "2wBDAf//////////////////////////////////////////////////////////////////////////////////////"
-        "wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/"
-        "9oADAMBAAIQAxAAAAF//8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAA"
-        "AAAAP/aAAgBAwEBPwF//8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAgEBPwF//8QAFBABAAAAAAAAAAAAAAAAAAAA"
-        "AP/aAAgBAQAGPwJ//8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPyF//9oADAMBAAIAAwAAABD/xAAUEQEAAAAA"
-        "AAAAAAAAAAAAAAAA/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oACAECAQE/EB//xAAUEAEAAAAAAAAA"
-        "AAAAAAAAAAAA/9oACAEBAAE/EB//2Q=="
-    )
+    return encoded_image("JPEG")
 
 
 def valid_webp() -> bytes:
-    payload = b"\x2f\x00\x00\x00\x00"
-    chunk = b"VP8L" + struct.pack("<I", len(payload)) + payload + b"\x00"
+    return encoded_image("WEBP")
+
+
+def png_container(width: int, height: int, idat: bytes) -> bytes:
+    header = struct.pack(">IIBBBBB", width, height, 8, 6, 0, 0, 0)
+    return b"\x89PNG\r\n\x1a\n" + png_chunk(b"IHDR", header) + png_chunk(b"IDAT", idat) + png_chunk(b"IEND", b"")
+
+
+def invalid_jpeg_sof() -> bytes:
+    return b"\xff\xd8\xff\xc0\x00\x02\xff\xda\x00\x02\xff\xd9"
+
+
+def jpeg_with_invalid_scan_data() -> bytes:
+    valid = valid_jpeg()
+    start = valid.index(b"\xff\xda")
+    scan_length = int.from_bytes(valid[start + 2:start + 4], "big")
+    scan_start = start + 2 + scan_length
+    return valid[:scan_start] + b"\xff\xc0\x00\x02\xff\xd9"
+
+
+def webp_container(chunk_type: bytes, payload: bytes) -> bytes:
+    padding = b"\x00" if len(payload) % 2 else b""
+    chunk = chunk_type + struct.pack("<I", len(payload)) + payload + padding
     return b"RIFF" + struct.pack("<I", 4 + len(chunk)) + b"WEBP" + chunk
 
 
@@ -96,6 +116,8 @@ def evidence_assets(manifest: dict) -> list[dict]:
 
 
 def expect_failure(target: Path, references: list[str], expected: str) -> None:
+    release_directory = target / "assets/releases"
+    before = set(release_directory.glob("evidence-image-*")) if release_directory.exists() else set()
     set_references(target, references)
     try:
         release.build_manifest(target)
@@ -103,6 +125,8 @@ def expect_failure(target: Path, references: list[str], expected: str) -> None:
         assert expected.lower() in str(error).lower(), (expected, str(error))
     else:
         raise AssertionError(f"unsafe evidence-image case unexpectedly passed: {references}")
+    after = set(release_directory.glob("evidence-image-*")) if release_directory.exists() else set()
+    assert after == before, f"failed release emitted an evidence image: {after - before}"
 
 
 # A valid referenced image is signed; an unreferenced peer is not.
@@ -128,6 +152,37 @@ with workspace() as target:
         write_file(target, reference, content)
     set_references(target, references)
     assert [asset["source_path"] for asset in evidence_assets(release.build_manifest(target))] == sorted(references)
+
+# Decoder-level malformed fixtures all traverse build_manifest() and emit no signed evidence asset.
+malformed_pngs = {
+    "zero dimensions": png_container(0, 1, zlib.compress(b"\x00\x00\x00\x00\xff")),
+    "invalid IDAT": png_container(1, 1, b"not-a-zlib-stream"),
+    "truncated": valid_png()[:-11],
+}
+for label, content in malformed_pngs.items():
+    with workspace() as target:
+        write_file(target, f"assets/evidence/malformed-png-{label.replace(' ', '-')}.png", content)
+        expect_failure(target, [f"assets/evidence/malformed-png-{label.replace(' ', '-')}.png"], "malformed or undecodable")
+
+malformed_jpegs = {
+    "invalid SOF": invalid_jpeg_sof(),
+    "invalid scan": jpeg_with_invalid_scan_data(),
+    "truncated": valid_jpeg()[:-24],
+}
+for label, content in malformed_jpegs.items():
+    with workspace() as target:
+        write_file(target, f"assets/evidence/malformed-jpeg-{label.replace(' ', '-')}.jpg", content)
+        expect_failure(target, [f"assets/evidence/malformed-jpeg-{label.replace(' ', '-')}.jpg"], "malformed or undecodable")
+
+malformed_webps = {
+    "zero VP8X": webp_container(b"VP8X", b""),
+    "invalid VP8L": webp_container(b"VP8L", b"\x2f\x00\x00\x00\x00"),
+    "truncated": valid_webp()[:-7],
+}
+for label, content in malformed_webps.items():
+    with workspace() as target:
+        write_file(target, f"assets/evidence/malformed-webp-{label.replace(' ', '-')}.webp", content)
+        expect_failure(target, [f"assets/evidence/malformed-webp-{label.replace(' ', '-')}.webp"], "malformed or undecodable")
 
 # Valid image bytes outside the sole publication root fail instead of being signed.
 for outside_path in ("docs/unrelated.png", "scripts/foo.jpg"):
@@ -176,7 +231,7 @@ with workspace() as target:
     expect_failure(target, ["assets/evidence/missing.png"], "missing")
 with workspace() as target:
     write_file(target, "assets/evidence/not-image.png", b"<script>not an image</script>")
-    expect_failure(target, ["assets/evidence/not-image.png"], "not a supported image")
+    expect_failure(target, ["assets/evidence/not-image.png"], "malformed or undecodable")
 with workspace() as target:
     write_file(target, "assets/evidence/wrong.jpg", valid_png())
     expect_failure(target, ["assets/evidence/wrong.jpg"], "extension/content mismatch")
@@ -205,5 +260,6 @@ with workspace() as target:
 
 print(
     "public release evidence image: PASS - approved-root containment, symlink escape, "
-    "content signatures, reference-only publication, missing assets, duplicates, and collisions verified"
+    "full PNG/JPEG/WebP decode, malformed/truncated rejection, reference-only publication, "
+    "missing assets, duplicates, and collisions verified through build_manifest()"
 )

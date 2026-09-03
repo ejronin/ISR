@@ -8,10 +8,14 @@ import hashlib
 import json
 import posixpath
 import re
-import zlib
+import warnings
+from io import BytesIO
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 from urllib.parse import urlsplit
+
+import PIL
+from PIL import Image, UnidentifiedImageError
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,7 +25,8 @@ PUBLIC_SHELL_SOURCE = "templates/public-index.html"
 APPLICATION_VERSION = "atlas-public-shell-v1"
 BOOTSTRAP_PROTOCOL = "atlas-release-bootstrap-v1"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "1.3"
+GENERATOR_VERSION = "1.4"
+REQUIRED_PILLOW_VERSION = "12.3.0"
 EVIDENCE_MEDIA_ROOT = "assets/evidence"
 SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS = {
     ".png": "png",
@@ -59,6 +64,12 @@ def stable_json_bytes(payload: dict[str, Any]) -> bytes:
 
 class EvidenceImagePublicationError(ValueError):
     """An evidence-image reference cannot cross the signed-release boundary."""
+
+
+if PIL.__version__ != REQUIRED_PILLOW_VERSION:
+    raise RuntimeError(
+        f"Public release image validation requires Pillow {REQUIRED_PILLOW_VERSION}; found {PIL.__version__}"
+    )
 
 
 def materialize_asset(root: Path, role: str, name: str, source_path: str, extension: str) -> dict[str, Any]:
@@ -172,101 +183,46 @@ def resolve_evidence_image(root: Path, source_path: str) -> Path:
     return resolved
 
 
-def valid_png(data: bytes) -> bool:
-    if not data.startswith(b"\x89PNG\r\n\x1a\n"):
-        return False
-    offset = 8
-    saw_header = saw_data = saw_end = False
-    while offset + 12 <= len(data):
-        length = int.from_bytes(data[offset:offset + 4], "big")
-        chunk_type = data[offset + 4:offset + 8]
-        chunk_end = offset + 12 + length
-        if chunk_end > len(data):
-            return False
-        payload = data[offset + 8:offset + 8 + length]
-        expected_crc = int.from_bytes(data[offset + 8 + length:chunk_end], "big")
-        if zlib.crc32(chunk_type + payload) & 0xFFFFFFFF != expected_crc:
-            return False
-        if not saw_header:
-            if chunk_type != b"IHDR" or length != 13:
-                return False
-            saw_header = True
-        elif chunk_type == b"IHDR":
-            return False
-        if chunk_type == b"IDAT":
-            saw_data = True
-        if chunk_type == b"IEND":
-            saw_end = length == 0
-            return saw_header and saw_data and saw_end and chunk_end == len(data)
-        offset = chunk_end
-    return False
-
-
-def valid_jpeg(data: bytes) -> bool:
-    if len(data) < 8 or not data.startswith(b"\xff\xd8") or not data.endswith(b"\xff\xd9"):
-        return False
-    offset = 2
-    saw_frame = False
-    frame_markers = {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}
-    while offset < len(data) - 2:
-        if data[offset] != 0xFF:
-            return False
-        while offset < len(data) and data[offset] == 0xFF:
-            offset += 1
-        if offset >= len(data):
-            return False
-        marker = data[offset]
-        offset += 1
-        if marker == 0xDA:
-            if offset + 2 > len(data):
-                return False
-            length = int.from_bytes(data[offset:offset + 2], "big")
-            return saw_frame and length >= 2 and offset + length <= len(data) - 2
-        if marker in {0x01, *range(0xD0, 0xD8)}:
-            continue
-        if marker == 0xD9 or offset + 2 > len(data):
-            return False
-        length = int.from_bytes(data[offset:offset + 2], "big")
-        if length < 2 or offset + length > len(data):
-            return False
-        if marker in frame_markers:
-            saw_frame = True
-        offset += length
-    return False
-
-
-def valid_webp(data: bytes) -> bool:
-    if len(data) < 20 or data[:4] != b"RIFF" or data[8:12] != b"WEBP":
-        return False
-    if int.from_bytes(data[4:8], "little") + 8 != len(data):
-        return False
-    offset = 12
-    saw_image_chunk = False
-    while offset + 8 <= len(data):
-        chunk_type = data[offset:offset + 4]
-        length = int.from_bytes(data[offset + 4:offset + 8], "little")
-        chunk_end = offset + 8 + length
-        if chunk_end > len(data):
-            return False
-        if chunk_type in {b"VP8 ", b"VP8L", b"VP8X"}:
-            saw_image_chunk = True
-        offset = chunk_end + (length % 2)
-    return saw_image_chunk and offset == len(data)
-
-
 def validate_image_content(source_path: str, data: bytes) -> str:
-    detected = None
-    for image_type, validator in (("png", valid_png), ("jpeg", valid_jpeg), ("webp", valid_webp)):
-        if validator(data):
-            detected = image_type
-            break
-    if detected is None:
-        raise EvidenceImagePublicationError(f"Evidence image bytes are not a supported image: {source_path}")
+    """Verify structure, then reopen and force full pixel-data decoding."""
     expected = SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS[PurePosixPath(source_path).suffix.lower()]
-    if detected != expected:
+    supported_formats = {"PNG": "png", "JPEG": "jpeg", "WEBP": "webp"}
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", Image.DecompressionBombWarning)
+            with Image.open(BytesIO(data)) as image:
+                detected = supported_formats.get(image.format or "")
+                width, height = image.size
+                if detected is None:
+                    raise EvidenceImagePublicationError(
+                        f"Evidence image format is unsupported after decode: {source_path}"
+                    )
+                if detected != expected:
+                    raise EvidenceImagePublicationError(
+                        f"Evidence image extension/content mismatch for {source_path}: "
+                        f"expected {expected}, detected {detected}"
+                    )
+                if width <= 0 or height <= 0:
+                    raise EvidenceImagePublicationError(
+                        f"Evidence image dimensions must be positive for {source_path}: {width}x{height}"
+                    )
+                image.verify()
+
+            # verify() checks container structure but intentionally does not decode
+            # pixels. Reopen and load every pixel so corrupt compressed payloads fail.
+            with Image.open(BytesIO(data)) as image:
+                decoded = supported_formats.get(image.format or "")
+                if decoded != detected or image.size != (width, height):
+                    raise EvidenceImagePublicationError(
+                        f"Evidence image identity changed during decode: {source_path}"
+                    )
+                image.load()
+    except EvidenceImagePublicationError:
+        raise
+    except (Image.DecompressionBombError, Image.DecompressionBombWarning, UnidentifiedImageError, OSError, SyntaxError, ValueError) as error:
         raise EvidenceImagePublicationError(
-            f"Evidence image extension/content mismatch for {source_path}: expected {expected}, detected {detected}"
-        )
+            f"Evidence image is malformed or undecodable: {source_path}: {error}"
+        ) from error
     return detected
 
 
