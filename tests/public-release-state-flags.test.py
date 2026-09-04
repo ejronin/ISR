@@ -25,9 +25,14 @@ for asset in flags:
 
 unsafe = {
     "script": b'<svg xmlns="http://www.w3.org/2000/svg"><script>alert(1)</script></svg>',
+    "stylesheet import": b'<svg xmlns="http://www.w3.org/2000/svg"><style>@import url("https://example.com/x.css")</style></svg>',
+    "stylesheet url": b'<svg xmlns="http://www.w3.org/2000/svg"><style>rect{fill:url(https://example.com/x)}</style></svg>',
+    "xml stylesheet": b'<?xml-stylesheet href="https://example.com/x.css"?><svg xmlns="http://www.w3.org/2000/svg"/>',
     "handler": b'<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"/>',
     "external": b'<svg xmlns="http://www.w3.org/2000/svg"><image href="https://example.com/x.png"/></svg>',
     "data": b'<svg xmlns="http://www.w3.org/2000/svg"><image href="data:image/png;base64,AA=="/></svg>',
+    "text url": b'<svg xmlns="http://www.w3.org/2000/svg"><desc>url(https://example.com/x)</desc></svg>',
+    "tail import": b'<svg xmlns="http://www.w3.org/2000/svg"><rect/>@import "https://example.com/x.css"</svg>',
     "doctype": b'<!DOCTYPE svg><svg xmlns="http://www.w3.org/2000/svg"/>',
 }
 for label, payload in unsafe.items():
@@ -38,4 +43,7 @@ for label, payload in unsafe.items():
     else:
         raise AssertionError(f"unsafe SVG fixture was accepted: {label}")
 
-print("public state flags: PASS - 30 closed content-addressed SVGs; active/external payloads rejected")
+safe_internal_fragment = b'<svg xmlns="http://www.w3.org/2000/svg"><defs><path id="mark" d="M0 0h1v1H0z"/></defs><use href="#mark"/></svg>'
+release.validate_flag_svg("assets/flags/zz.svg", safe_internal_fragment)
+
+print("public state flags: PASS - 30 closed content-addressed SVGs; stylesheets, processing instructions, text/tail expressions, and active/external payloads rejected")

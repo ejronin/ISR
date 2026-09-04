@@ -53,6 +53,10 @@ FLAG_ASSET_SPECS = (
     ("sd", "Sudan"), ("so", "Somalia"), ("sy", "Syria"), ("tr", "Türkiye"), ("us", "United States"),
     ("ye", "Yemen"),
 )
+UNSAFE_SVG_EXPRESSION = re.compile(
+    r"(?:url\s*\(|@\s*import\b|javascript\s*:|data\s*:|expression\s*\()",
+    re.IGNORECASE,
+)
 
 
 def canonical_text_bytes(path: Path) -> bytes:
@@ -115,16 +119,21 @@ def validate_flag_svg(source_path: str, data: bytes) -> None:
     lowered = text.lower()
     if "<!doctype" in lowered or "<!entity" in lowered:
         raise ValueError(f"State flag contains a forbidden document declaration: {source_path}")
+    if "<?" in text:
+        raise ValueError(f"State flag contains a forbidden processing instruction: {source_path}")
     try:
         root = ET.fromstring(text)
     except ET.ParseError as error:
         raise ValueError(f"State flag is malformed XML: {source_path}: {error}") from error
     if root.tag.rsplit("}", 1)[-1].lower() != "svg":
         raise ValueError(f"State flag root is not SVG: {source_path}")
-    forbidden_tags = {"script", "foreignobject", "iframe", "object", "embed", "audio", "video", "animate", "animatemotion", "animatetransform", "set"}
+    forbidden_tags = {"script", "style", "link", "foreignobject", "iframe", "object", "embed", "audio", "video", "animate", "animatemotion", "animatetransform", "set"}
     for node in root.iter():
         if node.tag.rsplit("}", 1)[-1].lower() in forbidden_tags:
             raise ValueError(f"State flag contains active content: {source_path}")
+        for content in (node.text, node.tail):
+            if content and UNSAFE_SVG_EXPRESSION.search(content):
+                raise ValueError(f"State flag contains an unsafe text resource expression: {source_path}")
         for raw_name, raw_value in node.attrib.items():
             name = raw_name.rsplit("}", 1)[-1].lower()
             value = str(raw_value).strip().lower()
@@ -132,7 +141,7 @@ def validate_flag_svg(source_path: str, data: bytes) -> None:
                 raise ValueError(f"State flag contains an event-handler attribute: {source_path}")
             if name in {"href", "src"} and value and not value.startswith("#"):
                 raise ValueError(f"State flag contains an external resource reference: {source_path}")
-            if "url(" in value or "javascript:" in value or "data:" in value or "@import" in value or "expression(" in value:
+            if UNSAFE_SVG_EXPRESSION.search(value):
                 raise ValueError(f"State flag contains an unsafe resource expression: {source_path}")
 
 
