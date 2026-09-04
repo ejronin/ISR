@@ -9,6 +9,7 @@ import json
 import posixpath
 import re
 import warnings
+import xml.etree.ElementTree as ET
 from io import BytesIO
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
@@ -42,6 +43,19 @@ ASSET_SPECS = (
     ("stylesheet", "public-shell", "css/public-shell.css", "css"),
     ("reference_geography", "atlas-reference-geography", "assets/geography/atlas-reference-geography.geojson", "geojson"),
     ("entrypoint", "public-app", "js/public-app.js", "js"),
+)
+FLAG_ASSET_SPECS = (
+    ("ae", "United Arab Emirates"), ("au", "Australia"), ("bd", "Bangladesh"), ("bg", "Bulgaria"),
+    ("bh", "Bahrain"), ("cn", "China"), ("dj", "Djibouti"), ("eg", "Egypt"), ("fr", "France"),
+    ("gb", "United Kingdom"), ("il", "Israel"), ("in", "India"), ("iq", "Iraq"), ("ir", "Iran"),
+    ("jo", "Jordan"), ("jp", "Japan"), ("kw", "Kuwait"), ("lb", "Lebanon"), ("ng", "Nigeria"),
+    ("om", "Oman"), ("pk", "Pakistan"), ("qa", "Qatar"), ("ru", "Russia"), ("sa", "Saudi Arabia"),
+    ("sd", "Sudan"), ("so", "Somalia"), ("sy", "Syria"), ("tr", "Türkiye"), ("us", "United States"),
+    ("ye", "Yemen"),
+)
+UNSAFE_SVG_EXPRESSION = re.compile(
+    r"(?:url\s*\(|@\s*import\b|javascript\s*:|data\s*:|expression\s*\()",
+    re.IGNORECASE,
 )
 
 
@@ -93,6 +107,51 @@ def materialize_asset(root: Path, role: str, name: str, source_path: str, extens
         "bytes": len(data),
         "hash_basis": "UTF8_LF_NORMALIZED",
     }
+
+
+def validate_flag_svg(source_path: str, data: bytes) -> None:
+    """Reject executable or externally referential SVG before publication."""
+    if not re.fullmatch(r"assets/flags/[a-z]{2}\.svg", source_path):
+        raise ValueError(f"State flag is outside the closed allowlist path: {source_path}")
+    if len(data) > 65536:
+        raise ValueError(f"State flag exceeds the 64 KiB presentation limit: {source_path}")
+    text = data.decode("utf-8")
+    lowered = text.lower()
+    if "<!doctype" in lowered or "<!entity" in lowered:
+        raise ValueError(f"State flag contains a forbidden document declaration: {source_path}")
+    if "<?" in text:
+        raise ValueError(f"State flag contains a forbidden processing instruction: {source_path}")
+    try:
+        root = ET.fromstring(text)
+    except ET.ParseError as error:
+        raise ValueError(f"State flag is malformed XML: {source_path}: {error}") from error
+    if root.tag.rsplit("}", 1)[-1].lower() != "svg":
+        raise ValueError(f"State flag root is not SVG: {source_path}")
+    forbidden_tags = {"script", "style", "link", "foreignobject", "iframe", "object", "embed", "audio", "video", "animate", "animatemotion", "animatetransform", "set"}
+    for node in root.iter():
+        if node.tag.rsplit("}", 1)[-1].lower() in forbidden_tags:
+            raise ValueError(f"State flag contains active content: {source_path}")
+        for content in (node.text, node.tail):
+            if content and UNSAFE_SVG_EXPRESSION.search(content):
+                raise ValueError(f"State flag contains an unsafe text resource expression: {source_path}")
+        for raw_name, raw_value in node.attrib.items():
+            name = raw_name.rsplit("}", 1)[-1].lower()
+            value = str(raw_value).strip().lower()
+            if name.startswith("on"):
+                raise ValueError(f"State flag contains an event-handler attribute: {source_path}")
+            if name in {"href", "src"} and value and not value.startswith("#"):
+                raise ValueError(f"State flag contains an external resource reference: {source_path}")
+            if UNSAFE_SVG_EXPRESSION.search(value):
+                raise ValueError(f"State flag contains an unsafe resource expression: {source_path}")
+
+
+def materialize_state_flag(root: Path, code: str, label: str) -> dict[str, Any]:
+    source_path = f"assets/flags/{code}.svg"
+    data = canonical_text_bytes(root / source_path)
+    validate_flag_svg(source_path, data)
+    record = materialize_asset(root, "state_flag", f"state-flag-{code}", source_path, "svg")
+    record.update({"code": code, "label": label})
+    return record
 
 
 def normalize_evidence_image_reference(value: str) -> str:
@@ -317,6 +376,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
 
     prepared_images = prepare_evidence_images(root, state)
     evidence_images = [materialize_binary_image(item, root, index + 1) for index, item in enumerate(prepared_images)]
+    state_flags = [materialize_state_flag(root, code, label) for code, label in FLAG_ASSET_SPECS]
     application_assets = [
         assets_by_role["map_runtime"],
         assets_by_role["page_registry"],
@@ -324,6 +384,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         assets_by_role["stylesheet"],
         assets_by_role["reference_geography"],
         assets_by_role["entrypoint"],
+        *state_flags,
         *evidence_images,
     ]
     asset_set_material = "".join(
@@ -362,6 +423,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
             "stylesheets": [assets_by_role["map_stylesheet"]["path"], assets_by_role["stylesheet"]["path"]],
             "reference_geography": assets_by_role["reference_geography"]["path"],
             "evidence_images": [asset["path"] for asset in evidence_images],
+            "state_flags": state_flags,
             "asset_set_sha256": asset_set_sha256,
             "assets": application_assets,
         },

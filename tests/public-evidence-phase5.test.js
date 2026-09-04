@@ -103,10 +103,10 @@ for (const [routeKey, contract] of Object.entries(boot.ROUTE_DATA_DEPENDENCIES))
   assert.equal(qalibaf.role, 'Parliament speaker');
   assert.equal(qalibaf.affiliation, 'Iranian parliament');
   assert.equal(qalibaf.affiliationId, 'ACT-IRANIAN-PARLIAMENT');
-  assert.equal(qalibaf.flag, '🇮🇷');
+  assert.equal(qalibaf.flagCode, 'ir');
   assert.equal(actorResolver.resolve('IRGC').affiliationType, 'state-institution');
-  assert.equal(actorResolver.resolve('Hezbollah').flag, '');
-  assert.equal(actorResolver.resolve('Houthis / Ansar Allah').flag, '');
+  assert.equal(actorResolver.resolve('Hezbollah').flagCode, null);
+  assert.equal(actorResolver.resolve('Houthis / Ansar Allah').flagCode, null);
   assert.equal(actorResolver.resolve('Unresolved actor fixture').affiliationType, 'unknown');
 }
 

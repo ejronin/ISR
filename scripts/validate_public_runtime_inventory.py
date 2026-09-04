@@ -112,7 +112,7 @@ def validate_repository(root: Path) -> dict[str, int]:
         raise RuntimeInventoryError("current source roles must be unique and complete")
     bootstrap = (manifest.get("neutral_bootstrap") or {}).get("asset") or {}
     release_assets = (manifest.get("application") or {}).get("assets") or []
-    release_by_role = {asset.get("role"): asset.get("source_path") for asset in release_assets if asset.get("role") != "evidence_image"}
+    release_by_role = {asset.get("role"): asset.get("source_path") for asset in release_assets if asset.get("role") not in {"evidence_image", "state_flag"}}
     release_by_role[bootstrap.get("role")] = bootstrap.get("source_path")
     if release_by_role != current_by_role:
         raise RuntimeInventoryError(f"signed release source roles differ from the current inventory: {release_by_role}")
@@ -182,6 +182,12 @@ def validate_repository(root: Path) -> dict[str, int]:
     if evidence_files != set(evidence_sources):
         raise RuntimeInventoryError(
             f"evidence-image source accounting mismatch; referenced={sorted(evidence_sources)}; present={sorted(evidence_files)}"
+        )
+    flag_sources = {asset.get("source_path") for asset in release_assets if asset.get("role") == "state_flag"}
+    flag_files = files_under(root, "assets/flags/*")
+    if flag_sources != flag_files or not flag_sources <= current_package_support:
+        raise RuntimeInventoryError(
+            f"state-flag source accounting mismatch; signed={sorted(flag_sources)}; present={sorted(flag_files)}"
         )
 
     return {

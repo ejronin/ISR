@@ -8,6 +8,7 @@ import gzip
 import hashlib
 import json
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -56,6 +57,31 @@ def validate_asset(site: Path, asset: dict, role: str, extension: str, hash_basi
         fail(f"public release {role} hash basis mismatch")
 
 
+def validate_deployed_flag(site: Path, asset: dict) -> None:
+    validate_asset(site, asset, "state_flag", "svg")
+    if not re.fullmatch(r"[a-z]{2}", asset.get("code") or "") or not asset.get("label"):
+        fail("public release state-flag identity is invalid")
+    text = canonical_text_bytes(site / asset["path"]).decode("utf-8")
+    lowered = text.lower()
+    if "<!doctype" in lowered or "<!entity" in lowered:
+        fail("deployed state flag contains a forbidden document declaration")
+    try:
+        svg = ET.fromstring(text)
+    except ET.ParseError as error:
+        fail(f"deployed state flag is malformed XML: {error}")
+    forbidden = {"script", "foreignobject", "iframe", "object", "embed", "audio", "video", "animate", "animatemotion", "animatetransform", "set"}
+    for node in svg.iter():
+        if node.tag.rsplit("}", 1)[-1].lower() in forbidden:
+            fail("deployed state flag contains active content")
+        for raw_name, raw_value in node.attrib.items():
+            name = raw_name.rsplit("}", 1)[-1].lower()
+            value = str(raw_value).lower()
+            if name.startswith("on") or "url(" in value or "javascript:" in value or "data:" in value or "@import" in value or "expression(" in value:
+                fail("deployed state flag contains an unsafe attribute")
+            if name in {"href", "src"} and value and not value.startswith("#"):
+                fail("deployed state flag contains an external resource reference")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--site-root", default=".")
@@ -102,7 +128,7 @@ def main() -> int:
     assets = application.get("assets") or []
     expected_roles = {"map_runtime", "page_registry", "map_stylesheet", "stylesheet", "reference_geography", "entrypoint"}
     role_counts = {role: sum(asset.get("role") == role for asset in assets) for role in expected_roles}
-    if any(count != 1 for count in role_counts.values()) or any(asset.get("role") not in expected_roles | {"evidence_image"} for asset in assets):
+    if any(count != 1 for count in role_counts.values()) or any(asset.get("role") not in expected_roles | {"evidence_image", "state_flag"} for asset in assets):
         fail("public release application asset inventory is incomplete")
     by_role = {asset["role"]: asset for asset in assets}
     validate_asset(site, bootstrap, "bootstrap", "js")
@@ -118,6 +144,11 @@ def main() -> int:
         if extension not in {"png", "jpg", "webp"}:
             fail("public release evidence-image extension is unsupported")
         validate_asset(site, asset, "evidence_image", extension, "BINARY_BYTES")
+    state_flags = [asset for asset in assets if asset.get("role") == "state_flag"]
+    if len({asset.get("code") for asset in state_flags}) != len(state_flags):
+        fail("public release state-flag codes are duplicated")
+    for asset in state_flags:
+        validate_deployed_flag(site, asset)
     if application.get("runtime") != [by_role["map_runtime"].get("path"), by_role["page_registry"].get("path")]:
         fail("public release runtime pointers mismatch")
     if application.get("stylesheets") != [by_role["map_stylesheet"].get("path"), by_role["stylesheet"].get("path")]:
@@ -128,6 +159,8 @@ def main() -> int:
         fail("public release reference-geography pointer mismatch")
     if application.get("evidence_images") != [asset.get("path") for asset in evidence_images]:
         fail("public release evidence-image inventory mismatch")
+    if application.get("state_flags") != state_flags:
+        fail("public release state-flag inventory mismatch")
     if application.get("entrypoint") != by_role["entrypoint"].get("path"):
         fail("public release entrypoint pointer mismatch")
 

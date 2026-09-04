@@ -223,6 +223,11 @@
       "role": "APPROVED_FORENSIC_DATA"
     },
     {
+      "key": "forensic.aviation_reconciliation",
+      "path": "data/forensic-v1.3.2/aviation-reconciliation.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
       "key": "analysis.asset_display",
       "path": "data/asset-display-v1.3.3.json",
       "role": "APPROVED_ANALYTICAL_DATA"
@@ -400,6 +405,8 @@
       "reconciliation.material_losses",
       "forensic.loss_envelopes",
       "forensic.leadership_casualties",
+      "forensic.aviation_reconciliation",
+      "forensic.pilot_rescue_timeline",
       "forensic.facility_claim_audits",
       "forensic.damage_observations",
       "analysis.asset_display",

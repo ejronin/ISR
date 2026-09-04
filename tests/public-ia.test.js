@@ -57,13 +57,13 @@ const iran = ia.ActorIdentity.resolve('Iran');
 assert.equal(iran.entityType, 'entity');
 assert.equal(iran.affiliationType, 'state');
 assert.equal(iran.parentState, 'Iran');
-assert.equal(iran.flag, '🇮🇷');
+assert.equal(iran.flagCode, 'ir');
 
 const parliament = ia.ActorIdentity.resolve('Iranian parliament');
 assert.equal(parliament.entityType, 'entity');
 assert.equal(parliament.affiliationType, 'state-institution');
 assert.equal(parliament.parentState, 'Iran');
-assert.equal(parliament.flag, '🇮🇷');
+assert.equal(parliament.flagCode, 'ir');
 
 assert.equal(new Set(ia.AFFILIATED_ACTORS.map(actor => actor.id)).size, ia.AFFILIATED_ACTORS.length, 'affiliation IDs must be unique');
 assert.equal(new Set(ia.AFFILIATED_ACTORS.flatMap(actor => actor.aliases)).size, ia.AFFILIATED_ACTORS.flatMap(actor => actor.aliases).length, 'affiliation aliases must be unique');
@@ -77,7 +77,7 @@ assert.equal(qalibaf.role, 'Parliament speaker');
 assert.equal(qalibaf.affiliation, 'Iranian parliament');
 assert.equal(qalibaf.affiliationType, 'state-institution');
 assert.equal(qalibaf.parentState, 'Iran');
-assert.equal(qalibaf.flag, '🇮🇷');
+assert.equal(qalibaf.flagCode, 'ir');
 assert.notEqual(qalibaf.entityType, qalibaf.affiliationType, 'person/entity and affiliation type must remain separate axes');
 assert.equal(ia.ActorIdentity.resolve('Mohammad Bagher Qalibaf').canonicalName, 'Mohammad Baqer Qalibaf');
 
@@ -102,37 +102,37 @@ assert.equal(irgcOfficial.entityType, 'person');
 assert.equal(irgcOfficial.role, 'Spokesperson');
 assert.equal(irgcOfficial.affiliation, 'IRGC');
 assert.equal(irgcOfficial.affiliationType, 'state-institution');
-assert.equal(irgcOfficial.flag, '🇮🇷');
+assert.equal(irgcOfficial.flagCode, 'ir');
 
 const hezbollah = ia.ActorIdentity.resolve('Hezbollah');
 assert.equal(hezbollah.affiliationType, 'non-state');
-assert.equal(hezbollah.flag, '');
+assert.equal(hezbollah.flagCode, null);
 assert.equal(hezbollah.parentState, null);
 const hezbollahOfficial = ia.ActorIdentity.resolve({ name: 'Affiliated Hezbollah person fixture', entityType: 'person', role: 'Official', affiliation: 'Hezbollah' });
 assert.equal(hezbollahOfficial.entityType, 'person');
 assert.equal(hezbollahOfficial.role, 'Official');
 assert.equal(hezbollahOfficial.affiliation, 'Hezbollah');
 assert.equal(hezbollahOfficial.affiliationType, 'non-state');
-assert.equal(hezbollahOfficial.flag, '');
+assert.equal(hezbollahOfficial.flagCode, null);
 
 const houthis = ia.ActorIdentity.resolve('Houthis / Ansar Allah');
 assert.equal(houthis.affiliationType, 'non-state');
-assert.equal(houthis.flag, '');
+assert.equal(houthis.flagCode, null);
 assert.equal(houthis.parentState, null);
 const houthiOfficial = ia.ActorIdentity.resolve({ name: 'Affiliated Houthi person fixture', entityType: 'person', role: 'Official', affiliation: 'Houthis / Ansar Allah' });
 assert.equal(houthiOfficial.entityType, 'person');
 assert.equal(houthiOfficial.role, 'Official');
 assert.equal(houthiOfficial.affiliation, 'Houthis / Ansar Allah');
 assert.equal(houthiOfficial.affiliationType, 'non-state');
-assert.equal(houthiOfficial.flag, '');
+assert.equal(houthiOfficial.flagCode, null);
 
-assert.equal(ia.ActorIdentity.resolve('U.S. Central Command').flag, '🇺🇸');
+assert.equal(ia.ActorIdentity.resolve('U.S. Central Command').flagCode, 'us');
 assert.equal(ia.ActorIdentity.resolve('United Nations Security Council').affiliationType, 'international');
 const unknownActor = ia.ActorIdentity.resolve('Unresolved actor example');
 assert.equal(unknownActor.entityType, 'unresolved');
 assert.equal(unknownActor.affiliation, null);
 assert.equal(unknownActor.affiliationType, 'unknown');
-assert.equal(unknownActor.flag, '');
+assert.equal(unknownActor.flagCode, null);
 
 assert.deepEqual(
   ia.EvidenceStatus.viewModel({ support: 'STRONGLY_SUPPORTED', dispute: 'DISPUTED_BY_IRAN' }),

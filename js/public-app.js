@@ -47,13 +47,13 @@
    */
   const ROUTE_DATA_DEPENDENCIES = Object.freeze({
     'start.overview': freezeContract('start_here', ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view']),
-    'start.actors': freezeContract('start_here', ['current.chronology']),
+    'start.actors': freezeContract('start_here', ['current.actors']),
     'timeline.war': freezeContract('timeline', ['current.chronology', 'ledger.daily_coverage']),
     'timeline.chronology': freezeContract('timeline', ['current.chronology', 'ledger.map_links']),
     'military.campaigns': freezeContract('military_record', ['current.chronology', 'ledger.map_links', 'reconciliation.strikes']),
     'military.facilities': freezeContract('military_record', ['ledger.facilities', 'ledger.map_links', 'forensic.facility_claim_audits']),
-    'military.weapons': freezeContract('military_record', ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses']),
-    'military.losses': freezeContract('military_record', ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'analysis.casualty_corrections']),
+    'military.weapons': freezeContract('military_record', ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation']),
+    'military.losses': freezeContract('military_record', ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections']),
     'military.imagery': freezeContract('military_record', ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations']),
     'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'ledger.agreements', 'ledger.shipping']),
     'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz']),
@@ -157,6 +157,11 @@
     return asset;
   }
 
+  function validateStateFlag(asset) {
+    invariant(asset && asset.role === 'state_flag' && /^[a-z]{2}$/.test(asset.code || '') && typeof asset.label === 'string' && asset.label, 'RELEASE_MISMATCH', 'A state-flag release asset is invalid.');
+    return validateContentAddressedAsset(asset, 'svg');
+  }
+
   function validateManifest(manifest) {
     invariant(manifest && typeof manifest === 'object', 'RELEASE_MISMATCH', 'The public release manifest is missing.');
     invariant(manifest.schema_version === EXPECTED_MANIFEST_SCHEMA, 'RELEASE_MISMATCH', 'The public release manifest schema is not supported.');
@@ -176,14 +181,17 @@
     const geography = validateContentAddressedAsset(assetForRole(manifest, 'reference_geography'), 'geojson');
     const entrypoint = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
     const evidenceImages = manifest.application.assets.filter(asset => asset.role === 'evidence_image').map(validateBinaryImage);
+    const stateFlags = manifest.application.assets.filter(asset => asset.role === 'state_flag').map(validateStateFlag);
     const fixedRoles = ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint'];
     invariant(fixedRoles.every(role => manifest.application.assets.filter(asset => asset.role === role).length === 1), 'RELEASE_MISMATCH', 'A required application asset role is missing or duplicated.');
-    invariant(manifest.application.assets.every(asset => fixedRoles.includes(asset.role) || asset.role === 'evidence_image'), 'RELEASE_MISMATCH', 'The application asset inventory contains an unsupported role.');
+    invariant(manifest.application.assets.every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)), 'RELEASE_MISMATCH', 'The application asset inventory contains an unsupported role.');
     invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 2 && manifest.application.runtime[0] === mapRuntime.path && manifest.application.runtime[1] === runtime.path, 'RELEASE_MISMATCH', 'The application runtime paths are inconsistent.');
     invariant(Array.isArray(manifest.application.stylesheets) && manifest.application.stylesheets.length === 2 && manifest.application.stylesheets[0] === mapStylesheet.path && manifest.application.stylesheets[1] === stylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet paths are inconsistent.');
     invariant(manifest.application.stylesheet === stylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet path is inconsistent.');
     invariant(manifest.application.reference_geography === geography.path, 'RELEASE_MISMATCH', 'The application reference-geography path is inconsistent.');
     invariant(Array.isArray(manifest.application.evidence_images) && evidenceImages.every((asset, index) => manifest.application.evidence_images[index] === asset.path) && evidenceImages.length === manifest.application.evidence_images.length, 'RELEASE_MISMATCH', 'The application evidence-image inventory is inconsistent.');
+    invariant(Array.isArray(manifest.application.state_flags) && stateFlags.every((asset, index) => manifest.application.state_flags[index].path === asset.path && manifest.application.state_flags[index].code === asset.code) && stateFlags.length === manifest.application.state_flags.length, 'RELEASE_MISMATCH', 'The application state-flag inventory is inconsistent.');
+    invariant(new Set(stateFlags.map(asset => asset.code)).size === stateFlags.length, 'RELEASE_MISMATCH', 'The application state-flag inventory contains duplicate codes.');
     invariant(manifest.application.entrypoint === entrypoint.path, 'RELEASE_MISMATCH', 'The application entrypoint path is inconsistent.');
     return manifest;
   }
@@ -236,7 +244,7 @@
   function datasetExists(model, key) {
     if (key === 'current.chronology') return Array.isArray(model.chronology);
     if (key === 'current.sources') return Boolean(model.sources && Array.isArray(model.sources.records));
-    if (key === 'current.actors') return Boolean(model.entities && Array.isArray(model.entities.actors));
+    if (key === 'current.actors') return Boolean(model.datasets && model.datasets['current.actors'] && Array.isArray(model.datasets['current.actors'].payload));
     if (key === 'current.locations') return Boolean(model.entities && Array.isArray(model.entities.locations));
     return Boolean(model.datasets && Object.prototype.hasOwnProperty.call(model.datasets, key));
   }
@@ -413,6 +421,20 @@
     return Object.freeze({ size: byId.size, resolve });
   }
 
+  function createStateFlagResolver(manifest) {
+    const records = manifest && manifest.application && Array.isArray(manifest.application.state_flags)
+      ? manifest.application.state_flags
+      : [];
+    const byCode = new Map(records.map(item => [String(item.code || '').toLowerCase(), item]));
+    return Object.freeze({
+      size: byCode.size,
+      resolve(code) {
+        const item = byCode.get(String(code || '').toLowerCase());
+        return item ? Object.freeze({ code: item.code, label: item.label, path: `./${item.path}`, integrity: item.integrity }) : null;
+      }
+    });
+  }
+
   function createRouteRuntime(model, options) {
     const settings = options || {};
     const contracts = settings.contracts || ROUTE_DATA_DEPENDENCIES;
@@ -433,7 +455,7 @@
         sourceIndexBuilds += 1;
         services = Object.freeze({
           sourceResolver,
-          actorIdentity: ia.ActorIdentity.createResolver(routeModel),
+          actorIdentity: ia.ActorIdentity.createResolver(routeModel, settings.stateFlagResolver),
           locationResolver: createLocationResolver(routeModel)
         });
       }
@@ -641,7 +663,7 @@
     const settings = options || {};
     const documentObject = settings.documentObject || root.document;
     const windowObject = settings.windowObject || root;
-    const routeRuntime = createRouteRuntime(loaded.model, { ia });
+    const routeRuntime = createRouteRuntime(loaded.model, { ia, stateFlagResolver: createStateFlagResolver(loaded.manifest) });
     const controller = ia.mount({
       rootElement,
       routeRuntime,
@@ -762,6 +784,7 @@
     createRouteRuntime,
     createSourceResolver,
     createLocationResolver,
+    createStateFlagResolver,
     loadCurrentRecord,
     renderCurrent,
     renderFailure,

@@ -35,6 +35,107 @@ PUBLIC_PAGE_DATASET_ADDITIONS = {
     "diplomacy_mou": ("analysis.iran_messaging",),
 }
 
+PUBLIC_PARTICIPANT_IDENTITIES = {
+    "MMDA-BHR": ("ACT-BAHRAIN", "Bahrain", "state", "Bahrain", ["bahrain"]),
+    "MMDA-JOR": ("ACT-JORDAN", "Jordan", "state", "Jordan", ["jordan"]),
+    "MMDA-YEM": ("ACT-YEMEN-PLC", "Yemen's internationally recognized government", "state-institution", "Yemen", ["yemen (plc)", "yemen's internationally recognized government"]),
+    "MMDA-EGY": ("ACT-EGYPT", "Egypt", "state", "Egypt", ["egypt"]),
+    "MMDA-SDN": ("ACT-SUDAN", "Sudan", "state", "Sudan", ["sudan"]),
+    "MMDA-DJI": ("ACT-DJIBOUTI", "Djibouti", "state", "Djibouti", ["djibouti"]),
+    "MMDA-SOM": ("ACT-SOMALIA", "Somalia", "state", "Somalia", ["somalia"]),
+    "MMDA-NGA": ("ACT-NIGERIA", "Nigeria", "state", "Nigeria", ["nigeria"]),
+    "MMDA-BGD": ("ACT-BANGLADESH", "Bangladesh", "state", "Bangladesh", ["bangladesh"]),
+}
+
+
+def materialize_public_actor_directory(
+    canonical_actors: list[dict[str, Any]],
+    legacy_core: dict[str, Any],
+    leadership: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Add structural identities without changing sealed canonical actor records.
+
+    The legacy participation records contribute only an already-accepted name and
+    stable record identity. Coalition labels, claims, roles, coordinates and
+    presentation fields are deliberately excluded. Approved leadership records
+    contribute only their recorded name, role, status lineage and Iranian
+    affiliation for shared identity rendering.
+    """
+    directory = copy.deepcopy(canonical_actors)
+    records = [item.get("record", item) for item in directory]
+    by_name = {str(item.get("canonical_name") or "").casefold(): item for item in records}
+    actor_ids = {item.get("actor_id") for item in records}
+    participant_by_id = {item.get("id"): item for item in legacy_core.get("coalition14") or []}
+
+    for record_id, (actor_id, canonical_name, affiliation_type, parent_state, aliases) in PUBLIC_PARTICIPANT_IDENTITIES.items():
+        accepted = participant_by_id.get(record_id)
+        if not accepted:
+            raise ValueError(f"Accepted participant identity is missing: {record_id}")
+        if canonical_name.casefold() in by_name:
+            continue
+        if actor_id in actor_ids:
+            raise ValueError(f"Public actor normalization collides with canonical actor ID: {actor_id}")
+        record = {
+            "actor_id": actor_id,
+            "canonical_name": canonical_name,
+            "entity_type": "entity",
+            "role": None,
+            "affiliation_id": None,
+            "affiliation_type": affiliation_type,
+            "parent_state": parent_state,
+            "aliases": aliases,
+            "subtitle": "Internationally recognized government" if affiliation_type == "state-institution" else "State actor",
+        }
+        directory.append({
+            "record": record,
+            "provenance": [{
+                "kind": "STRUCTURAL_PUBLIC_IDENTITY_NORMALIZATION",
+                "path": "data/core.json",
+                "record_id": record_id,
+                "fields_used": ["id", "name"],
+            }],
+        })
+        records.append(record)
+        by_name[canonical_name.casefold()] = record
+        actor_ids.add(actor_id)
+
+    for leader in leadership.get("records") or []:
+        name = str(leader.get("name") or "").strip()
+        if not name or name.casefold() in by_name:
+            continue
+        actor_id = "ACT-PER-" + re.sub(r"[^A-Z0-9]+", "-", name.upper()).strip("-")
+        if actor_id in actor_ids:
+            raise ValueError(f"Leadership identity collides with public actor ID: {actor_id}")
+        role = leader.get("role_at_death")
+        explicit_irgc = "IRGC" in str(role or "")
+        record = {
+            "actor_id": actor_id,
+            "canonical_name": name,
+            "entity_type": "person",
+            "role": role,
+            "affiliation_id": "ACT-IRGC" if explicit_irgc else "ACT-IRAN",
+            "affiliation": "IRGC" if explicit_irgc else "Iran",
+            "affiliation_type": "state-institution" if explicit_irgc else "state",
+            "parent_state": "Iran",
+            "aliases": [name.casefold()],
+            "subtitle": " · ".join(value for value in [role, "IRGC" if explicit_irgc else "Iran"] if value),
+        }
+        directory.append({
+            "record": record,
+            "provenance": [{
+                "kind": "APPROVED_FORENSIC_IDENTITY_NORMALIZATION",
+                "path": "data/forensic-v1.3.2/iran-leadership-casualties.json",
+                "record_id": leader.get("leadership_id"),
+                "fields_used": ["name", "role_at_death", "category", "sources"],
+            }],
+            "source_ids": list(leader.get("sources") or []),
+        })
+        records.append(record)
+        by_name[name.casefold()] = record
+        actor_ids.add(actor_id)
+
+    return directory
+
 
 def canonical_input_bytes(value: bytes) -> bytes:
     try:
@@ -362,8 +463,22 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     if unresolved_audit_facility_refs:
         raise ValueError(f"Facility claim-audit references do not resolve: {unresolved_audit_facility_refs}")
 
+    # Reject any historical-reference dataset mapped to a current page before
+    # structural normalization reads the explicitly registered legacy identity
+    # source. This preserves the authority-boundary failure mode even when a
+    # hostile registry renames that key.
+    for page, keys in page_datasets.items():
+        historical_roles = sorted(key for key in keys if (datasets.get(key) or {}).get("role") == "HISTORICAL_REFERENCE_DATA")
+        if historical_roles:
+            raise ValueError(f"Page {page} maps historical-reference datasets as current: {historical_roles}")
+
+    public_actor_directory = materialize_public_actor_directory(
+        (canonical.get("entities") or {}).get("actors") or [],
+        datasets["legacy.core"]["payload"],
+        datasets["forensic.leadership_casualties"]["payload"],
+    )
     entity_payloads = {
-        "current.actors": (canonical.get("entities") or {}).get("actors") or [],
+        "current.actors": public_actor_directory,
         "current.locations": (canonical.get("entities") or {}).get("locations") or [],
         "current.claims": {"schema_version": "1.0", "claims": [item["record"] for item in (canonical.get("entities") or {}).get("claims") or []]},
         "current.material_losses": {"schema_version": "1.0", "records": [item["record"] for item in (canonical.get("entities") or {}).get("material_losses") or []]},
@@ -404,6 +519,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "preserved_facility_records": len(facility_payload["repo_records_to_preserve"]),
         "damage_observation_records": len((datasets.get("forensic.damage_observations") or {}).get("payload", {}).get("records") or []),
         "facility_claim_audit_records": len((datasets.get("forensic.facility_claim_audits") or {}).get("payload", {}).get("records") or []),
+        "canonical_actor_records": len((canonical.get("entities") or {}).get("actors") or []),
+        "public_actor_records": len(public_actor_directory),
     })
     release = canonical["release"]
     scoped_source_ids = sorted(source["source_id"] for source in source_catalog if source.get("resolution") == "PROVENANCE_SCOPED_VARIANTS_REQUIRED")

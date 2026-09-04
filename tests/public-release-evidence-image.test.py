@@ -82,6 +82,8 @@ def workspace() -> Iterator[Path]:
         target = Path(directory)
         for _, _, source_path, _ in release.ASSET_SPECS:
             copy(source_path, target)
+        for code, _ in release.FLAG_ASSET_SPECS:
+            copy(f"assets/flags/{code}.svg", target)
         for relative in (
             "index.html",
             "templates/public-index.html",
