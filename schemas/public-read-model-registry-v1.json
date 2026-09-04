@@ -3,7 +3,7 @@
   "$id": "https://ejronin.github.io/ISR/schemas/public-read-model-registry-v1.json",
   "title": "Atlas public read-model dataset registry",
   "type": "object",
-  "required": ["schema_version", "artifact_role", "datasets", "page_data"],
+  "required": ["schema_version", "artifact_role", "datasets", "page_data", "consumer_coverage"],
   "properties": {
     "schema_version": { "const": "1.0" },
     "artifact_role": { "const": "PUBLIC_READ_MODEL_DATASET_REGISTRY" },
@@ -29,6 +29,53 @@
         "minItems": 1,
         "items": { "type": "string", "minLength": 1 }
       }
+    },
+    "consumer_coverage": {
+      "type": "object",
+      "required": ["schema_version", "route_data_waivers", "dataset_waivers"],
+      "properties": {
+        "schema_version": { "const": "1.0" },
+        "route_data_waivers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/routeDataWaiver" }
+        },
+        "dataset_waivers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/datasetWaiver" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "waiverBase": {
+      "type": "object",
+      "required": ["dataset_key", "reason", "authority_role", "owner"],
+      "properties": {
+        "dataset_key": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 20 },
+        "authority_role": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 }
+      }
+    },
+    "datasetWaiver": {
+      "allOf": [
+        { "$ref": "#/$defs/waiverBase" },
+        { "unevaluatedProperties": false }
+      ]
+    },
+    "routeDataWaiver": {
+      "allOf": [
+        { "$ref": "#/$defs/waiverBase" },
+        {
+          "type": "object",
+          "required": ["route_key"],
+          "properties": {
+            "route_key": { "type": "string", "minLength": 1 }
+          }
+        },
+        { "unevaluatedProperties": false }
+      ]
     }
   },
   "additionalProperties": false

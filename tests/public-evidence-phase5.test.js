@@ -37,7 +37,12 @@ for (const [routeKey, contract] of Object.entries(boot.ROUTE_DATA_DEPENDENCIES))
   const first = runtime.forRoute('start.overview');
   assert(first.services.sourceResolver.size > 300);
   runtime.forRoute('talks.nuclear');
-  assert.deepEqual(runtime.diagnostics(), { sourceIndexBuilds: 1, routeViewCount: 2, sourceCount: model.sources.records.length });
+  const diagnostics = runtime.diagnostics();
+  assert.equal(diagnostics.sourceIndexBuilds, 1);
+  assert.equal(diagnostics.routeViewCount, 2);
+  assert.equal(diagnostics.sourceCount, model.sources.records.length);
+  assert.deepEqual(diagnostics.sharedAccesses, ['current.actors', 'current.locations', 'current.sources']);
+  assert.deepEqual(Object.keys(diagnostics.routeAccesses).sort(), ['start.overview', 'talks.nuclear']);
 }
 
 {

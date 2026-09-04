@@ -30,12 +30,13 @@ SOURCE_FILENAMES = {
     "1:10m": "ne_10m_admin_0_countries.v5.1.1.geojson",
 }
 REGIONAL_COUNTRIES = {
-    "Afghanistan", "Bahrain", "Djibouti", "Egypt", "Eritrea", "Iran", "Iraq",
-    "Israel", "Jordan", "Kuwait", "Oman", "Pakistan", "Qatar", "Saudi Arabia",
-    "Somalia", "Sudan", "Turkmenistan", "United Arab Emirates", "Yemen",
+    "Afghanistan", "Bahrain", "Bangladesh", "China", "Djibouti", "Egypt", "Eritrea",
+    "Iran", "Iraq", "Israel", "Jordan", "Kazakhstan", "Kuwait", "Lebanon", "Nigeria",
+    "Oman", "Pakistan", "Qatar", "Russia", "Saudi Arabia", "Somalia", "Sudan", "Syria",
+    "Turkey", "Turkmenistan", "United Arab Emirates", "Yemen",
 }
 HORMUZ_COUNTRIES = {"Bahrain", "Iran", "Oman", "Qatar", "Saudi Arabia", "United Arab Emirates"}
-REGIONAL_BBOX = [32.0, 11.0, 67.5, 40.5]
+REGIONAL_BBOX = [2.0, -2.0, 110.0, 57.0]
 HORMUZ_BBOX = [50.8, 22.4, 60.8, 28.9]
 REFERENCE_LABELS = [
     {"label": "Iran", "lat": 32.4, "lon": 53.7, "kind": "country"},
@@ -48,6 +49,10 @@ REFERENCE_LABELS = [
     {"label": "Oman", "lat": 22.8, "lon": 57.6, "kind": "country"},
     {"label": "Pakistan", "lat": 29.4, "lon": 65.0, "kind": "country"},
     {"label": "Yemen", "lat": 15.8, "lon": 47.5, "kind": "country"},
+    {"label": "Israel / Palestinian territories", "lat": 31.7, "lon": 35.1, "kind": "country"},
+    {"label": "Egypt", "lat": 27.0, "lon": 30.8, "kind": "country"},
+    {"label": "Suez", "lat": 29.97, "lon": 32.55, "kind": "water"},
+    {"label": "Bab el-Mandeb", "lat": 12.58, "lon": 43.33, "kind": "water"},
     {"label": "Persian Gulf", "lat": 26.3, "lon": 52.3, "kind": "water"},
     {"label": "Strait of Hormuz", "lat": 26.55, "lon": 56.25, "kind": "water"},
     {"label": "Gulf of Oman", "lat": 24.5, "lon": 58.5, "kind": "water"},

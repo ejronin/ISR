@@ -14,7 +14,7 @@ assert.equal(geography.artifact_role, 'PRESENTATION_REFERENCE_GEOGRAPHY');
 assert.equal(geography.metadata.version, '5.1.1');
 assert.equal(geography.metadata.runtime_network_required, false);
 assert.deepEqual(new Set(geography.features.map(feature => feature.properties.layer)), new Set(['regional_50m', 'hormuz_10m']));
-assert(fs.statSync(path.join(root, 'assets/geography/atlas-reference-geography.geojson')).size < 250_000);
+assert(fs.statSync(path.join(root, 'assets/geography/atlas-reference-geography.geojson')).size < 300_000);
 
 for (const route of routes.routes) {
   assert(['DOCUMENTED_TRACK', 'DOCUMENTED_CORRIDOR', 'SCHEMATIC_REFERENCE_ROUTE'].includes(route.authority_class), `route class missing: ${route.id}`);

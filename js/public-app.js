@@ -32,9 +32,10 @@
     if (!condition) throw new AtlasBootError(code, message);
   }
 
+  const SHARED_DATASETS = Object.freeze(['current.sources', 'current.actors', 'current.locations']);
+
   function freezeContract(modelPage, datasets) {
-    const shared = ['current.sources', 'current.actors', 'current.locations'];
-    return Object.freeze({ modelPage, datasets: Object.freeze(Array.from(new Set([...shared, ...datasets]))) });
+    return Object.freeze({ modelPage, datasets: Object.freeze(Array.from(new Set([...SHARED_DATASETS, ...datasets]))) });
   }
 
   /*
@@ -48,28 +49,28 @@
   const ROUTE_DATA_DEPENDENCIES = Object.freeze({
     'start.overview': freezeContract('start_here', ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view']),
     'start.actors': freezeContract('start_here', ['current.actors']),
-    'timeline.war': freezeContract('timeline', ['current.chronology', 'ledger.daily_coverage']),
-    'timeline.chronology': freezeContract('timeline', ['current.chronology', 'ledger.map_links']),
-    'military.campaigns': freezeContract('military_record', ['current.chronology', 'ledger.map_links', 'reconciliation.strikes']),
-    'military.facilities': freezeContract('military_record', ['ledger.facilities', 'ledger.map_links', 'forensic.facility_claim_audits']),
+    'timeline.war': freezeContract('timeline', ['current.chronology']),
+    'timeline.chronology': freezeContract('timeline', ['current.chronology']),
+    'military.campaigns': freezeContract('military_record', ['current.chronology', 'reconciliation.strikes', 'forensic.damage_observations', 'forensic.facility_claim_audits', 'ledger.facilities']),
+    'military.facilities': freezeContract('military_record', ['ledger.facilities', 'forensic.facility_claim_audits']),
     'military.weapons': freezeContract('military_record', ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation']),
-    'military.losses': freezeContract('military_record', ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections']),
+    'military.losses': freezeContract('military_record', ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections']),
     'military.imagery': freezeContract('military_record', ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations']),
-    'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'ledger.agreements', 'ledger.shipping']),
-    'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz']),
+    'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'ledger.shipping']),
+    'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses']),
     'hormuz.economy': freezeContract('hormuz_economy', ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes']),
-    'hormuz.talks': freezeContract('hormuz_economy', ['current.chronology', 'ledger.agreements', 'analysis.hormuz']),
+    'hormuz.talks': freezeContract('hormuz_economy', ['current.chronology', 'analysis.hormuz']),
     'talks.overview': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy']),
-    'talks.mou': freezeContract('diplomacy_mou', ['ledger.agreements', 'analysis.hormuz', 'analysis.endgame_public_view', 'analysis.endgame_current_aug25', 'analysis.endgame_current_aug26']),
-    'talks.nuclear': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy', 'analysis.iran_messaging', 'analysis.endgame_public_view']),
-    'talks.regional': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy']),
-    'objectives.outcomes': freezeContract('objectives_position_changes', ['analysis.iran_outcomes', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections', 'analysis.outcome_evidence_links']),
-    'objectives.positions': freezeContract('objectives_position_changes', ['current.chronology', 'analysis.endgame_public_view', 'analysis.outcome_evidence_links', 'analysis.endgame_us_objectives', 'analysis.iran_messaging']),
+    'talks.mou': freezeContract('diplomacy_mou', ['analysis.hormuz', 'analysis.endgame_public_view']),
+    'talks.nuclear': freezeContract('diplomacy_mou', ['analysis.iran_messaging', 'analysis.endgame_public_view']),
+    'talks.regional': freezeContract('diplomacy_mou', ['ledger.agreements']),
+    'objectives.outcomes': freezeContract('objectives_position_changes', ['analysis.iran_outcomes', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections']),
+    'objectives.positions': freezeContract('objectives_position_changes', ['analysis.endgame_us_objectives', 'analysis.iran_messaging']),
     'objectives.iran': freezeContract('objectives_position_changes', ['analysis.iran_messaging']),
-    'evidence.claims': freezeContract('claims_sources', ['current.claims', 'forensic.public_assessments']),
-    'evidence.information': freezeContract('claims_sources', ['analysis.information_war_claims', 'analysis.influence_networks', 'forensic.claim_evolution']),
-    'evidence.sources': freezeContract('claims_sources', ['analysis.source_context', 'analysis.media_bias_provider']),
-    'evidence.method': freezeContract('claims_sources', ['ledger.source_role_map', 'ledger.revision_history', 'reconciliation.coverage_audit']),
+    'evidence.claims': freezeContract('claims_sources', ['current.claims']),
+    'evidence.information': freezeContract('claims_sources', ['analysis.information_war_claims', 'analysis.influence_networks']),
+    'evidence.sources': freezeContract('claims_sources', []),
+    'evidence.method': freezeContract('claims_sources', []),
     'evidence.archive': freezeContract('claims_sources', ['archive.snapshot_index'])
   });
 
@@ -290,6 +291,85 @@
     return true;
   }
 
+  function validateConsumerCoverage(model, contracts, observed) {
+    const activeContracts = contracts || ROUTE_DATA_DEPENDENCIES;
+    const coverage = model && model.consumer_coverage;
+    invariant(coverage && coverage.schema_version === '1.0', 'MODEL_INVALID', 'Public consumer-coverage policy is missing.');
+    invariant(Array.isArray(coverage.route_data_waivers) && Array.isArray(coverage.dataset_waivers), 'MODEL_INVALID', 'Public consumer-coverage waivers are malformed.');
+    const routeEntries = Object.entries(activeContracts);
+    invariant(routeEntries.length === 25, 'MODEL_INVALID', `Expected 25 public route consumer contracts; found ${routeEntries.length}.`);
+    const observedRoutes = observed && observed.routeAccesses && typeof observed.routeAccesses === 'object' ? observed.routeAccesses : {};
+    const sharedAccesses = new Set(observed && Array.isArray(observed.sharedAccesses) ? observed.sharedAccesses : []);
+    const routeWaivers = new Map();
+    const datasetWaivers = new Map();
+    const validateWaiver = (waiver, routeLevel) => {
+      invariant(waiver && typeof waiver === 'object', 'MODEL_INVALID', 'Consumer-coverage waiver must be an object.');
+      const key = typeof waiver.dataset_key === 'string' ? waiver.dataset_key.trim() : '';
+      const reason = typeof waiver.reason === 'string' ? waiver.reason.trim() : '';
+      const owner = typeof waiver.owner === 'string' ? waiver.owner.trim() : '';
+      const role = typeof waiver.authority_role === 'string' ? waiver.authority_role.trim() : '';
+      invariant(key && datasetExists(model, key), 'MODEL_INVALID', `Consumer-coverage waiver names missing dataset ${key || '<empty>'}.`);
+      invariant(reason.length >= 20 && !['legacy', 'not needed'].includes(reason.toLowerCase()), 'MODEL_INVALID', `Consumer-coverage waiver reason is not reviewable for ${key}.`);
+      invariant(owner, 'MODEL_INVALID', `Consumer-coverage waiver owner is missing for ${key}.`);
+      invariant(role === datasetRole(model, key), 'MODEL_INVALID', `Consumer-coverage authority role does not match ${key}.`);
+      if (!routeLevel) return { key, reason, owner, role };
+      const routeKey = typeof waiver.route_key === 'string' ? waiver.route_key.trim() : '';
+      invariant(routeKey && activeContracts[routeKey], 'MODEL_INVALID', `Consumer-coverage waiver names missing route ${routeKey || '<empty>'}.`);
+      invariant(activeContracts[routeKey].datasets.includes(key), 'MODEL_INVALID', `Consumer-coverage waiver names undeclared route dataset ${routeKey} / ${key}.`);
+      return { key, routeKey, reason, owner, role };
+    };
+    coverage.route_data_waivers.forEach(waiver => {
+      const record = validateWaiver(waiver, true);
+      const identity = `${record.routeKey}\u0000${record.key}`;
+      invariant(!routeWaivers.has(identity), 'MODEL_INVALID', `Duplicate route consumer waiver: ${record.routeKey} / ${record.key}.`);
+      routeWaivers.set(identity, record);
+    });
+    coverage.dataset_waivers.forEach(waiver => {
+      const record = validateWaiver(waiver, false);
+      invariant(!datasetWaivers.has(record.key), 'MODEL_INVALID', `Duplicate dataset consumer waiver: ${record.key}.`);
+      datasetWaivers.set(record.key, record);
+    });
+
+    const actualConsumers = new Set(sharedAccesses);
+    for (const [routeKey, contract] of routeEntries) {
+      const routeAccesses = new Set(Array.isArray(observedRoutes[routeKey]) ? observedRoutes[routeKey] : []);
+      routeAccesses.forEach(key => {
+        invariant(contract.datasets.includes(key), 'MODEL_INVALID', `Observed undeclared route access: ${routeKey} / ${key}.`);
+        actualConsumers.add(key);
+      });
+      for (const key of contract.datasets) {
+        if (SHARED_DATASETS.includes(key)) continue;
+        const identity = `${routeKey}\u0000${key}`;
+        invariant(routeAccesses.has(key) || routeWaivers.has(identity), 'MODEL_INVALID', `Silent route dataset: ${routeKey} / ${key}.`);
+        invariant(!(routeAccesses.has(key) && routeWaivers.has(identity)), 'MODEL_INVALID', `Stale route consumer waiver: ${routeKey} / ${key}.`);
+      }
+    }
+    for (const key of SHARED_DATASETS) {
+      invariant(sharedAccesses.has(key), 'MODEL_INVALID', `Shared public service did not consume ${key}.`);
+    }
+    for (const [identity, waiver] of routeWaivers) {
+      const routeAccesses = new Set(Array.isArray(observedRoutes[waiver.routeKey]) ? observedRoutes[waiver.routeKey] : []);
+      invariant(!routeAccesses.has(waiver.key), 'MODEL_INVALID', `Stale route consumer waiver: ${waiver.routeKey} / ${waiver.key}.`);
+      invariant(identity === `${waiver.routeKey}\u0000${waiver.key}`, 'MODEL_INVALID', 'Route consumer waiver identity is unstable.');
+    }
+
+    const publicDatasetKeys = new Set([...Object.keys(model.datasets || {}), 'current.chronology', 'current.sources']);
+    for (const key of publicDatasetKeys) {
+      invariant(actualConsumers.has(key) || datasetWaivers.has(key), 'MODEL_INVALID', `Public dataset has no actual consumer or audit-only waiver: ${key}.`);
+      invariant(!(actualConsumers.has(key) && datasetWaivers.has(key)), 'MODEL_INVALID', `Stale dataset consumer waiver: ${key}.`);
+    }
+    for (const key of datasetWaivers.keys()) {
+      invariant(publicDatasetKeys.has(key), 'MODEL_INVALID', `Dataset consumer waiver is outside the public read model: ${key}.`);
+    }
+    return Object.freeze({
+      routeCount: routeEntries.length,
+      actualConsumerCount: actualConsumers.size,
+      routeWaiverCount: routeWaivers.size,
+      datasetWaiverCount: datasetWaivers.size,
+      coveredDatasetCount: publicDatasetKeys.size
+    });
+  }
+
   function validateModel(model, manifest) {
     invariant(model && typeof model === 'object', 'MODEL_INVALID', 'The current evidence record is missing.');
     invariant(model.schema_version === EXPECTED_MODEL_SCHEMA, 'MODEL_INVALID', 'The current evidence schema is not supported.');
@@ -326,12 +406,13 @@
     relationships: 'current.relationships'
   });
 
-  function createRouteModelView(model, routeKey, contracts) {
+  function createRouteModelView(model, routeKey, contracts, onAccess) {
     const contract = (contracts || ROUTE_DATA_DEPENDENCIES)[routeKey];
     invariant(contract, 'UNDECLARED_DATA_DEPENDENCY', `No data contract exists for route ${routeKey}.`);
     const allowed = new Set(contract.datasets);
     const requireDependency = key => {
       invariant(allowed.has(key), 'UNDECLARED_DATA_DEPENDENCY', `Route ${routeKey} attempted undeclared dataset access: ${key}.`);
+      if (typeof onAccess === 'function') onAccess(routeKey, key);
     };
     const datasets = new Proxy(model.datasets || {}, {
       get(target, prop, receiver) {
@@ -445,10 +526,21 @@
     let services = null;
     let sourceIndexBuilds = 0;
     const views = new Map();
+    const routeAccesses = new Map();
+    const sharedAccesses = new Set();
+    const noteAccess = (routeKey, datasetKey) => {
+      if (SHARED_DATASETS.includes(datasetKey)) {
+        sharedAccesses.add(datasetKey);
+        return;
+      }
+      if (!routeAccesses.has(routeKey)) routeAccesses.set(routeKey, new Set());
+      routeAccesses.get(routeKey).add(datasetKey);
+    };
     function forRoute(routeValue) {
       const routeKey = typeof routeValue === 'string' ? routeValue : routeValue && routeValue.key;
       invariant(routeKey && contracts[routeKey], 'UNDECLARED_DATA_DEPENDENCY', `No data contract exists for route ${routeKey || 'unknown'}.`);
-      if (!views.has(routeKey)) views.set(routeKey, createRouteModelView(model, routeKey, contracts));
+      if (!routeAccesses.has(routeKey)) routeAccesses.set(routeKey, new Set());
+      if (!views.has(routeKey)) views.set(routeKey, createRouteModelView(model, routeKey, contracts, noteAccess));
       const routeModel = views.get(routeKey);
       if (!services) {
         const sourceResolver = createSourceResolver(routeModel);
@@ -464,7 +556,13 @@
     return Object.freeze({
       forRoute,
       diagnostics() {
-        return Object.freeze({ sourceIndexBuilds, routeViewCount: views.size, sourceCount: services ? services.sourceResolver.size : 0 });
+        return Object.freeze({
+          sourceIndexBuilds,
+          routeViewCount: views.size,
+          sourceCount: services ? services.sourceResolver.size : 0,
+          sharedAccesses: Object.freeze(Array.from(sharedAccesses).sort()),
+          routeAccesses: Object.freeze(Object.fromEntries(Array.from(routeAccesses, ([routeKey, keys]) => [routeKey, Object.freeze(Array.from(keys).sort())])))
+        });
       }
     });
   }
@@ -673,6 +771,10 @@
     });
     root.ATLAS_PUBLIC_STATE = state;
     root.ATLAS_PUBLIC_ROUTER = controller;
+    root.ATLAS_PUBLIC_COVERAGE = Object.freeze({
+      diagnostics: () => routeRuntime.diagnostics(),
+      validate: () => validateConsumerCoverage(loaded.model, ROUTE_DATA_DEPENDENCIES, routeRuntime.diagnostics())
+    });
     const runtimeDiagnostics = routeRuntime.diagnostics();
     root.ATLAS_PUBLIC_EVIDENCE = Object.freeze({
       sourceResolver: controller.services().sourceResolver,
@@ -771,6 +873,7 @@
     MODEL_URL,
     AtlasBootError,
     ROUTE_DATA_DEPENDENCIES,
+    SHARED_DATASETS,
     canonicalText,
     sha256Text,
     assetForRole,
@@ -779,6 +882,7 @@
     validateRuntimeAuthorization,
     validatePageDataMappings,
     validateRouteDependencies,
+    validateConsumerCoverage,
     validateModel,
     createRouteModelView,
     createRouteRuntime,

@@ -21,6 +21,7 @@
     "revision_history",
     "datasets",
     "page_data",
+    "consumer_coverage",
     "normalizations",
     "integrity"
   ],
@@ -209,6 +210,22 @@
         "additionalProperties": false
       }
     },
+    "consumer_coverage": {
+      "type": "object",
+      "required": ["schema_version", "route_data_waivers", "dataset_waivers"],
+      "properties": {
+        "schema_version": { "const": "1.0" },
+        "route_data_waivers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/routeDataWaiver" }
+        },
+        "dataset_waivers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/datasetWaiver" }
+        }
+      },
+      "additionalProperties": false
+    },
     "normalizations": {
       "type": "array",
       "items": {
@@ -256,6 +273,35 @@
     }
   },
   "$defs": {
+    "waiverBase": {
+      "type": "object",
+      "required": ["dataset_key", "reason", "authority_role", "owner"],
+      "properties": {
+        "dataset_key": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 20 },
+        "authority_role": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 }
+      }
+    },
+    "datasetWaiver": {
+      "allOf": [
+        { "$ref": "#/$defs/waiverBase" },
+        { "unevaluatedProperties": false }
+      ]
+    },
+    "routeDataWaiver": {
+      "allOf": [
+        { "$ref": "#/$defs/waiverBase" },
+        {
+          "type": "object",
+          "required": ["route_key"],
+          "properties": {
+            "route_key": { "type": "string", "minLength": 1 }
+          }
+        },
+        { "unevaluatedProperties": false }
+      ]
+    },
     "sha256": {
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
