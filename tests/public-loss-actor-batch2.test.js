@@ -31,6 +31,8 @@ for (const key of ['current.material_losses', 'analysis.asset_display', 'forensi
 }
 for (const key of ia.ROUTES.get('military.losses').dataKeys) assert(app.ROUTE_DATA_DEPENDENCIES['military.losses'].datasets.includes(key));
 for (const key of ia.ROUTES.get('military.weapons').dataKeys) assert(app.ROUTE_DATA_DEPENDENCIES['military.weapons'].datasets.includes(key));
+assert.deepEqual(ia.ROUTES.get('start.actors').dataKeys, ['current.actors'], 'Actors page declares chronology as identity authority');
+assert(!app.ROUTE_DATA_DEPENDENCIES['start.actors'].datasets.includes('current.chronology'), 'Actors route authorization requires chronology');
 
 const assetCategories = payload('analysis.asset_display').iran.headline_categories;
 assert.equal(assetCategories.length, 10);
@@ -55,6 +57,20 @@ const required = new Map([
 ]);
 for (const [name, actorId] of required) assert.equal(directory.find(actor => actor.canonical_name === name)?.actor_id, actorId, `stable public identity missing: ${name}`);
 assert(!JSON.stringify(payload('current.actors')).includes('FOUNDING_SIGNATORY'));
+
+const actorOrder = candidateModel => ia.sortActorDirectory(candidateModel.datasets['current.actors'].payload.map(item => item.record || item)).map(actor => actor.actor_id);
+const emptyChronologyModel = { ...model, chronology: [] };
+const changedChronologyModel = { ...model, chronology: [{ event_id: 'ORDER-MUST-NOT-CHANGE', actor_ids: [...directory].reverse().map(actor => actor.actor_id) }] };
+assert.deepEqual(actorOrder(emptyChronologyModel), actorOrder(model), 'empty chronology changed actor-directory ordering');
+assert.deepEqual(actorOrder(changedChronologyModel), actorOrder(model), 'independent chronology changes actor-directory ordering');
+const pinnedNames = new Set(['Iran', 'United States', 'Israel', 'IRGC', 'Iranian parliament', 'Mohammad Baqer Qalibaf', 'Hezbollah', 'Houthis / Ansar Allah', 'Oman', 'Qatar']);
+const orderedDirectory = ia.sortActorDirectory(directory);
+const firstUnpinned = orderedDirectory.findIndex(actor => !pinnedNames.has(actor.canonical_name));
+assert(orderedDirectory.slice(0, firstUnpinned).every(actor => pinnedNames.has(actor.canonical_name)), 'pinned identities are not grouped first');
+for (const group of [orderedDirectory.slice(0, firstUnpinned), orderedDirectory.slice(firstUnpinned)]) {
+  const keys = group.map(actor => `${actor.canonical_name}\u0000${actor.actor_id}`);
+  assert.deepEqual(keys, [...keys].sort(), 'actor-directory group is not ordered by canonical name and actor ID');
+}
 
 const flagResolver = app.createStateFlagResolver(manifest);
 const actorResolver = ia.ActorIdentity.createResolver(model, flagResolver);

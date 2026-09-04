@@ -24,7 +24,7 @@
 
   const ROUTE_DEFINITIONS = Object.freeze([
     { key: 'start.overview', primary: 'start', slug: 'overview', label: 'Overview', title: 'Start Here', owner: 'OverviewPage', dataKeys: ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view'], related: ['timeline.war', 'military.campaigns', 'hormuz.overview', 'talks.mou', 'objectives.outcomes', 'evidence.claims'] },
-    { key: 'start.actors', primary: 'start', slug: 'actors', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.chronology', 'current.actors'], related: ['timeline.war', 'evidence.sources'] },
+    { key: 'start.actors', primary: 'start', slug: 'actors', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.actors'], related: ['timeline.war', 'evidence.sources'] },
 
     { key: 'timeline.war', primary: 'timeline', slug: 'war', label: 'War Timeline', title: 'War Timeline', owner: 'TimelinePage', dataKeys: ['current.chronology', 'ledger.daily_coverage'], related: ['timeline.chronology', 'military.campaigns', 'talks.overview'] },
     { key: 'timeline.chronology', primary: 'timeline', slug: 'chronology', label: 'Detailed Chronology', title: 'Detailed Chronology', owner: 'ChronologyPage', dataKeys: ['current.chronology', 'ledger.map_links'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
@@ -1532,15 +1532,27 @@
     return frame.article;
   }
 
+  const ACTOR_DIRECTORY_PINNED = Object.freeze(['Iran', 'United States', 'Israel', 'IRGC', 'Iranian parliament', 'Mohammad Baqer Qalibaf', 'Hezbollah', 'Houthis / Ansar Allah', 'Oman', 'Qatar']);
+
+  function compareActorDirectoryText(left, right) {
+    const a = String(left || '');
+    const b = String(right || '');
+    return a === b ? 0 : a < b ? -1 : 1;
+  }
+
+  function sortActorDirectory(records) {
+    const pinned = new Set(ACTOR_DIRECTORY_PINNED);
+    return asArray(records).slice().sort((a, b) =>
+      Number(pinned.has(b.canonical_name)) - Number(pinned.has(a.canonical_name)) ||
+      compareActorDirectoryText(a.canonical_name, b.canonical_name) ||
+      compareActorDirectoryText(a.actor_id, b.actor_id)
+    );
+  }
+
   function ActorsPage(context) {
     const frame = pageFrame(context, 'People are shown with their recorded role and affiliation. Flags follow the affiliated state or state institution; non-state groups do not inherit the flag of the country where they operate.');
     const modelDirectory = recordArray(modelData(context.model, 'current.actors')).map(item => item.record || item);
-    const frequency = new Map();
-    context.model.chronology.flatMap(item => item.actor_ids || item.event && item.event.actor_ids || []).forEach(id => frequency.set(id, (frequency.get(id) || 0) + 1));
-    const pinned = new Set(['Iran', 'United States', 'Israel', 'IRGC', 'Iranian parliament', 'Mohammad Baqer Qalibaf', 'Hezbollah', 'Houthis / Ansar Allah', 'Oman', 'Qatar']);
-    const directory = modelDirectory
-      .slice()
-      .sort((a, b) => Number(pinned.has(b.canonical_name)) - Number(pinned.has(a.canonical_name)) || (frequency.get(b.actor_id) || 0) - (frequency.get(a.actor_id) || 0) || String(a.canonical_name).localeCompare(String(b.canonical_name)));
+    const directory = sortActorDirectory(modelDirectory);
     const controls = append(frame.article, 'form', 'actor-controls');
     controls.addEventListener('submit', event => event.preventDefault());
     const searchLabel = append(controls, 'label', '', 'Search people and organizations');
@@ -2855,6 +2867,7 @@
     routesForPrimary,
     modelData,
     recordArray,
+    sortActorDirectory,
     validateRegistry,
     mount
   });
