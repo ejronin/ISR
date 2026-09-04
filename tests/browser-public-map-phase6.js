@@ -47,6 +47,12 @@ async function setRoute(cdp, key) {
   await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(key)}`);
 }
 
+const PRESERVED_FACILITY_IDS = [
+  'US-NSA-BHR', 'US-ARIFJAN', 'US-ALISALEM', 'US-BUEHRING', 'US-SHUAIBA-TOC', 'US-CAMPDOHA',
+  'US-BUBIYAN', 'US-ALDHAFRA', 'US-JEBELALI', 'US-ERBIL', 'US-AINASAD', 'US-PRINCESULTAN',
+  'US-MUWAFFAQ', 'US-INCIRLIK', 'US-ISA', 'US-RMELAN', 'US-QASRAK', 'US-TANF'
+];
+
 (async () => {
   const targets = await (await fetch(`${DEBUG}/json`)).json();
   const target = targets.find(item => item.type === 'page');
@@ -101,11 +107,29 @@ async function setRoute(cdp, key) {
     assert.equal(await cdp.eval(`getComputedStyle(document.querySelector('.route-flow-marker')).animationName`), 'none', 'reduced-motion mode retains route animation');
     await cdp.call('Emulation.setEmulatedMedia', { media: 'screen', features: [] });
 
+    await setRoute(cdp, 'military.facilities');
+    const facilityParity = await cdp.eval(`(() => ({
+      ids: [...document.querySelectorAll('[data-facility-id]')].map(node => node.dataset.facilityId),
+      auditDetails: document.querySelectorAll('.facility-claim-audit[data-facility-audit-id]').length,
+      sourceLinks: [...document.querySelectorAll('[data-facility-id] .evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
+      page: document.querySelector('main')?.innerText || ''
+    }))()`);
+    assert.equal(new Set(facilityParity.ids).size, 23, 'generated live facility cards are missing or duplicated');
+    assert(PRESERVED_FACILITY_IDS.every(facilityId => facilityParity.ids.includes(facilityId)), 'a preserved facility is not publicly reachable');
+    assert.equal(facilityParity.auditDetails, 4, 'facility-linked claim audits are not reachable from facility cards');
+    assert(facilityParity.sourceLinks > 0, 'restored facility cards do not expose source links');
+    assert.match(facilityParity.page, /reference points identify the facility—not a precise damage location/i);
+
     await setRoute(cdp, 'military.imagery');
     const baselineBda = await cdp.eval(`(() => ({
       buttons: document.querySelectorAll('.map-imagery-button').length,
       overlays: document.querySelectorAll('img.leaflet-image-layer').length,
       points: document.querySelectorAll('.evidence-map-marker').length,
+      damageObservationIds: [...document.querySelectorAll('[data-damage-observation-id]')].map(node => node.dataset.damageObservationId),
+      facilityAuditCards: document.querySelectorAll('article[data-facility-audit-id]').length,
+      facilityAuditDetails: document.querySelectorAll('article[data-facility-audit-id] .facility-claim-audit').length,
+      evidenceLinks: [...document.querySelectorAll('[data-damage-observation-id] .evidence-drawer a, article[data-facility-audit-id] .evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
+      auditText: [...document.querySelectorAll('article[data-facility-audit-id] .facility-claim-audit')].map(node => node.textContent || '').join(' '),
       text: document.querySelector('[data-phase6-map-equivalent]')?.innerText || '',
       page: document.querySelector('main')?.innerText || ''
     }))()`);
@@ -113,6 +137,14 @@ async function setRoute(cdp, key) {
     assert.equal(baselineBda.overlays, 0, 'approximate baseline imagery was stretched into an unsupported image overlay');
     assert(baselineBda.points >= 1, 'location-linked baseline imagery lacks canonical markers');
     assert.match(baselineBda.page, /precise image footprint is unavailable/i);
+    assert.equal(new Set(baselineBda.damageObservationIds).size, 9, 'forensic damage observations are not publicly reachable');
+    assert.equal(baselineBda.facilityAuditCards, 4, 'facility claim audits lack a visible imagery consumer');
+    assert.equal(baselineBda.facilityAuditDetails, 4, 'facility claim-audit propositions are not exposed');
+    assert(baselineBda.evidenceLinks > 0, 'damage observations or facility audits lost source provenance');
+    assert.match(baselineBda.page, /A physical damage observation records what imagery or reporting shows/i);
+    assert.match(baselineBda.page, /Fath Air Base, Karaj/i);
+    assert.match(baselineBda.auditText, /Confirmed.*Was Al Udeid struck/is);
+    assert.match(baselineBda.auditText, /Unresolved.*permanently destroyed beyond repair/is);
 
     const propagation = await cdp.eval(`(async () => {
       const model = await fetch('./data/public-current-state.json', { cache: 'no-store' }).then(response => response.json());

@@ -30,10 +30,10 @@
     { key: 'timeline.chronology', primary: 'timeline', slug: 'chronology', label: 'Detailed Chronology', title: 'Detailed Chronology', owner: 'ChronologyPage', dataKeys: ['current.chronology', 'ledger.map_links'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
 
     { key: 'military.campaigns', primary: 'military', slug: 'campaigns', label: 'Campaigns & Strikes', title: 'Campaigns & Strikes', owner: 'CampaignsPage', dataKeys: ['current.chronology', 'ledger.map_links', 'reconciliation.strikes'], related: ['timeline.chronology', 'military.facilities', 'military.weapons'] },
-    { key: 'military.facilities', primary: 'military', slug: 'facilities', label: 'Bases & Infrastructure', title: 'Bases & Infrastructure', owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'ledger.map_links'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
+    { key: 'military.facilities', primary: 'military', slug: 'facilities', label: 'Bases & Infrastructure', title: 'Bases & Infrastructure', owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'ledger.map_links', 'forensic.facility_claim_audits'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
     { key: 'military.weapons', primary: 'military', slug: 'weapons', label: 'Air, Missiles & Drones', title: 'Air, Missiles & Drones', owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses'], related: ['military.campaigns', 'military.losses'] },
     { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'analysis.casualty_corrections'], related: ['military.weapons', 'evidence.method'] },
-    { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Imagery', title: 'Damage Imagery', owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
+    { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Imagery', title: 'Damage Imagery', owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
 
     { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.agreements'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
     { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.talks'] },
@@ -89,6 +89,7 @@
     'reconciliation.coverage_audit': 'Coverage audit',
     'forensic.loss_envelopes': 'Loss ranges and accounting',
     'forensic.facility_claim_audits': 'Facility claim checks',
+    'forensic.damage_observations': 'Physical damage observations',
     'forensic.public_assessments': 'Public assessments',
     'forensic.claim_evolution': 'Claim evolution',
     'analysis.casualty_corrections': 'Current casualty display',
@@ -678,7 +679,7 @@
 
   function relationCandidates(record) {
     const nested = record && record.event && typeof record.event === 'object' ? record.event : {};
-    return [record && record.facility_ref, record && record.location_ref, record && record.map_ref, nested.facility_ref, nested.location_ref]
+    return [record && record.facility_ref, record && record.facility_id, record && record.location_ref, record && record.map_ref, nested.facility_ref, nested.location_ref]
       .flatMap(value => Array.isArray(value) ? value : [value]).filter(Boolean);
   }
 
@@ -714,7 +715,7 @@
       }
     }
 
-    const candidates = [record, record.location, nested.location, record.locations && record.locations[0]];
+    const candidates = [record, record.location, record.coordinate, nested.location, record.locations && record.locations[0]];
     for (const candidate of candidates) {
       if (!candidate || typeof candidate !== 'object') continue;
       const latValue = candidate.latitude === undefined ? candidate.lat : candidate.latitude;
@@ -727,7 +728,7 @@
         lat,
         lon,
         label: publicNarrative(record.name || record.facility_name || candidate.name || record.event_id || record.id, 'Mapped record'),
-        precision: plainLabel(candidate.precision || record.coordinate_precision, 'Recorded location')
+        precision: plainLabel(candidate.precision || record.coordinate_precision || record.geographic_precision || record.location && record.location.precision, 'Recorded location')
       };
     }
     return null;
@@ -800,7 +801,7 @@
     if (!record || typeof record !== 'object') return [];
     const nested = record.imagery || record.bda || record.event && (record.event.imagery || record.event.bda);
     if (nested) return asArray(Array.isArray(nested) ? nested : [nested]).filter(value => value && typeof value === 'object').map(value => ({ ...value, evidence_record: record }));
-    const imageryShape = record.damage_imagery_source_ids || record.image_url || record.thumbnail_url || record.image_bounds || record.georeferenced_bounds || record.footprint || record.corners || record.imagery_type;
+    const imageryShape = record.damage_imagery_source_ids || record.image_url || record.thumbnail_url || record.image_bounds || record.georeferenced_bounds || record.footprint || record.corners || record.imagery_type || record.observation_id && record.observation;
     return imageryShape ? [record] : [];
   }
 
@@ -811,7 +812,7 @@
     const footprint = normalizeFootprint(footprintValue);
     const imageUrl = safeImageUrl(record && (record.image_url || record.thumbnail_url || record.asset_path));
     const point = pointFromRecord(evidenceRecord, locationResolver, relatedRecords);
-    const reliability = String(record && (record.geolocation_precision || record.precision || record.coordinate_precision) || '').toLowerCase();
+    const reliability = String(record && (record.geolocation_precision || record.geographic_precision || record.precision || record.coordinate_precision || record.coordinate && record.coordinate.precision) || '').toLowerCase();
     const reliable = record && record.geolocation_reliable !== false && !/(unknown|unresolved|unreliable)/.test(reliability);
     const tier = bounds && imageUrl && reliable ? 'A' : footprint && reliable ? 'B' : point ? 'C' : 'D';
     return Object.freeze({ record, evidenceRecord, bounds, footprint, imageUrl, point, tier });
@@ -819,7 +820,7 @@
 
   function mapTitle(record, fallback) {
     const nested = record && record.event || {};
-    return publicNarrative(record && (record.name || record.title || record.facility_name || record.label) || nested.title || nested.summary, fallback || 'Recorded evidence');
+    return publicNarrative(record && (record.name || record.title || record.facility_name || record.target || record.label) || nested.title || nested.summary, fallback || 'Recorded evidence');
   }
 
   function mapDate(record) {
@@ -830,7 +831,7 @@
   function evidenceEnvelope(record) {
     const nested = record && record.event || {};
     return {
-      source_ids: [record && record.source_ids, record && record.damage_imagery_source_ids, nested.source_ids].flatMap(value => asArray(value)).filter(value => typeof value === 'string')
+      source_ids: [record && record.source_ids, record && record.sources, record && record.damage_imagery_source_ids, nested.source_ids].flatMap(value => asArray(value)).filter(value => typeof value === 'string')
     };
   }
 
@@ -898,7 +899,7 @@
         const date = mapDate(record);
         if (date) append(card, 'p', 'record-status', date);
         const nested = record && record.event || {};
-        const summary = publicNarrative(record && (record.summary || record.note || record.limitations || record.assessment) || nested.summary, extra && extra.text || 'This location is supplied by the accepted current evidence record.');
+        const summary = publicNarrative(record && (record.summary || record.observation || record.note || record.limitations || record.assessment) || nested.summary, extra && extra.text || 'This location is supplied by the accepted current evidence record.');
         append(card, 'p', '', summary);
         if (extra && extra.meta) append(card, 'p', 'map-card-meta', extra.meta);
         const envelope = evidenceEnvelope(extra && extra.evidenceRecord || record);
@@ -1030,9 +1031,9 @@
 
       const imageryControls = imagery.length ? append(section, 'div', 'map-imagery-controls') : null;
       if (imageryControls) {
-        append(imageryControls, 'p', 'map-control-label', imagery.length > 1 ? 'Imagery records shown' : 'Imagery record');
+        append(imageryControls, 'p', 'map-control-label', imagery.length > 1 ? 'Imagery and damage records shown' : 'Imagery or damage record');
         imagery.forEach(item => {
-          const imageryType = publicNarrative(item.record.imagery_type, 'Imagery evidence');
+          const imageryType = item.evidenceRecord.observation_id ? 'Physical damage observation' : publicNarrative(item.record.imagery_type, 'Imagery evidence');
           const button = append(imageryControls, 'button', 'map-imagery-button', `${mapDate(item.evidenceRecord) || 'Date unresolved'} · ${imageryType} · ${mapTitle(item.evidenceRecord, item.point && item.point.label)}`);
           button.type = 'button';
           button.addEventListener('click', () => {
@@ -1046,7 +1047,7 @@
 
       const legend = append(section, 'div', 'map-legend');
       if (groups.size) append(legend, 'span', '', 'Recorded evidence location');
-      if (imagery.length) append(legend, 'span', '', 'BDA imagery / footprint');
+      if (imagery.length) append(legend, 'span', '', 'Damage / imagery evidence');
       if (routes.length) append(legend, 'span', '', 'Transport reference route');
       append(legend, 'span', '', 'Reference geography');
       append(section, 'small', 'map-caveat', 'Locations reflect the current evidence record · routes are not live tracking · not targeting or navigation data');
@@ -1059,7 +1060,7 @@
       routes.forEach(route => append(list, 'li', '', `${publicNarrative(route.name)} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'schematic reference route' : plainLabel(routeAuthority(route))} · ${publicNarrative(route.note)}`));
       imagery.forEach(item => {
         const placement = item.tier === 'A' ? 'georeferenced image overlay' : item.tier === 'B' ? 'recorded image footprint' : item.tier === 'C' ? 'location-linked imagery card; precise footprint unavailable' : 'evidence card only; reliable geolocation unavailable';
-        append(list, 'li', '', `${publicNarrative(item.record.imagery_type, 'Imagery evidence')} · ${mapTitle(item.evidenceRecord, item.point && item.point.label)} · ${placement}${item.point ? ` · ${item.point.label} · ${item.point.precision}` : ''}`);
+        append(list, 'li', '', `${item.evidenceRecord.observation_id ? 'Physical damage observation' : publicNarrative(item.record.imagery_type, 'Imagery evidence')} · ${mapTitle(item.evidenceRecord, item.point && item.point.label)} · ${placement}${item.point ? ` · ${item.point.label} · ${item.point.precision}` : ''}`);
       });
       return section;
     }
@@ -1090,6 +1091,42 @@
     if (!item || typeof item !== 'object') return [];
     const values = [item.source_ids, item.sources, item.damage_imagery_source_ids, item.evidence];
     return values.flatMap(value => asArray(value)).filter(value => typeof value === 'string');
+  }
+
+  function facilityAuditSourceIds(audit) {
+    return [...new Set(asArray(audit && audit.propositions).flatMap(proposition => asArray(proposition && proposition.basis_sources)).filter(value => typeof value === 'string'))];
+  }
+
+  function facilitySourceContext(facility) {
+    const sourceIds = [...new Set(sourceIdsFrom(facility))];
+    const localSources = {};
+    asArray(facility && facility.unresolved_source_urls).forEach((url, index) => {
+      const sourceId = `PRESERVED-FACILITY-${facility.facility_id}-SOURCE-${index + 1}`;
+      sourceIds.push(sourceId);
+      localSources[sourceId] = {
+        title: `${publicNarrative(facility.name, facility.facility_id)} source`,
+        publisher: 'Preserved facility evidence source',
+        url
+      };
+    });
+    return { sourceIds, localSources };
+  }
+
+  function appendFacilityAudit(host, context, audit) {
+    const details = append(host, 'details', 'facility-claim-audit');
+    details.dataset.facilityAuditId = audit.facility_audit_id;
+    append(details, 'summary', '', `Facility claim audit · ${asArray(audit.propositions).length} proposition${asArray(audit.propositions).length === 1 ? '' : 's'}`);
+    append(details, 'p', 'section-note', 'The audit separates a reported claim, an observed physical effect, a functional assessment and an unresolved proposition. Confirmation of one proposition does not confirm every claim about the facility.');
+    const list = append(details, 'ul', 'method-list facility-audit-propositions');
+    asArray(audit.propositions).forEach(proposition => {
+      const row = append(list, 'li');
+      append(row, 'strong', '', `${plainLabel(proposition.disposition, 'Unresolved')} — `);
+      append(row, 'span', '', publicNarrative(proposition.question, 'Recorded facility proposition'));
+      if (proposition.axis) append(row, 'small', '', ` Question type: ${plainLabel(proposition.axis)}.`);
+    });
+    const sourceIds = facilityAuditSourceIds(audit);
+    if (sourceIds.length) details.append(EvidenceDrawer.create(context, { source_ids: sourceIds }));
+    return details;
   }
 
   function relatedRecordsFrom(item) {
@@ -1612,32 +1649,37 @@
   function FacilitiesPage(context) {
     const frame = pageFrame(context, 'Facilities are presented as places with dated damage, continuing-operation and reconstitution evidence—not as isolated strike claims.');
     const facilities = recordArray(modelData(context.model, 'ledger.facilities'));
+    const claimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits'));
     frame.article.append(MapView.create(context, {
       title: 'Facilities in the current record',
       records: facilities,
-      description: `${facilities.length.toLocaleString()} canonical facility records include source-supported geographic context.`
+      description: `${facilities.length.toLocaleString()} current facility records include source-supported geographic context. Preserved reference points identify the facility—not a precise damage location.`
     }));
     const section = addSection(frame.article, 'Facility assessments');
     const list = append(section, 'div', 'record-list');
     facilities.forEach(facility => {
-      const status = plainLabel(facility.current_status, 'Current status unresolved');
+      const status = plainLabel(firstText(facility.current_status, facility.operational_effect_status, facility.damage_evidence_status), 'Current status unresolved');
+      const facilityAudits = claimAudits.filter(audit => audit.facility_id === facility.facility_id);
+      const sourceContext = facilitySourceContext(facility);
       const card = addProvenanceCard(list, context, {
-        kicker: [facility.country, status].filter(Boolean).join(' · '),
+        kicker: [facility.country || facility.host, status].filter(Boolean).join(' · '),
         title: publicNarrative(facility.name, facility.facility_id),
-        text: publicNarrative(facility.assessment, 'The facility remains in the accepted record; no broader functional conclusion is added here.'),
-        item: facility,
-        relatedRecords: asArray(facility.damage_events)
+        text: publicNarrative(facility.assessment || facility.note, 'The facility remains in the accepted record; no broader functional conclusion is added here.'),
+        item: { source_ids: sourceContext.sourceIds },
+        localSources: sourceContext.localSources
       });
+      card.dataset.facilityId = facility.facility_id;
       const facts = append(card, 'dl', 'fact-list');
       const addFact = (term, values) => {
-        const readable = asArray(values).map(value => typeof value === 'string' ? publicNarrative(value, '') : publicNarrative(value && (value.detail || value.assessment || value.note), '')).filter(Boolean);
+        const readable = (Array.isArray(values) ? values : [values]).filter(Boolean).map(value => typeof value === 'string' ? publicNarrative(value, '') : publicNarrative(value && (value.detail || value.assessment || value.note), '')).filter(Boolean);
         if (!readable.length) return;
         append(facts, 'dt', '', term);
         append(facts, 'dd', '', readable.slice(0, 2).join(' '));
       };
-      addFact('Physical damage', facility.verified_physical_damage);
-      addFact('Functional effect', facility.verified_functional_effect);
-      addFact('Continued operation', facility.continued_operation_evidence);
+      addFact('Physical damage', asArray(facility.verified_physical_damage).length ? facility.verified_physical_damage : [...asArray(facility.critical_assets_reported), ...asArray(facility.noncritical_or_soft_assets_reported)]);
+      addFact('Functional effect', asArray(facility.verified_functional_effect).length ? facility.verified_functional_effect : facility.effect);
+      addFact('Continued operation', asArray(facility.continued_operation_evidence).length ? facility.continued_operation_evidence : firstText(facility.continuity, facility.current_presence_status));
+      facilityAudits.forEach(audit => appendFacilityAudit(card, context, audit));
     });
     renderRelatedLinks(frame.article, context);
     return frame.article;
@@ -1722,8 +1764,10 @@
     const frame = pageFrame(context, 'Damage imagery is supporting evidence, not a self-authenticating verdict. Every entry keeps its facility, source context, geographic precision and stated limitation.');
     const overlays = recordArray(modelData(context.model, 'ledger.bda_overlays'));
     const facilities = recordArray(modelData(context.model, 'ledger.facilities'));
+    const damageObservations = recordArray(modelData(context.model, 'forensic.damage_observations'));
+    const facilityClaimAudits = recordArray(modelData(context.model, 'forensic.facility_claim_audits'));
     const currentImagery = context.model.chronology.filter(record => imageryPayloads(record).length);
-    const imageryRecords = [...overlays, ...currentImagery];
+    const imageryRecords = [...overlays, ...damageObservations, ...currentImagery];
     frame.article.append(MapView.create(context, {
       title: 'Locations with imagery or damage-review records',
       records: imageryRecords,
@@ -1731,6 +1775,7 @@
       description: 'Imagery is overlaid only when the current evidence record supplies reliable geolocation. Otherwise it remains a footprint, location-linked card or evidence-only record.'
     }));
     const section = addSection(frame.article, 'Imagery review');
+    append(section, 'p', 'section-note', 'A strike or attack record establishes an event. A physical damage observation records what imagery or reporting shows. An operational-effect assessment requires separate evidence and is not inferred from visible damage alone.');
     const list = append(section, 'div', 'record-list two-column-list');
     imageryRecords.flatMap(record => imageryPayloads(record)).map(payload => imageryDescriptor(payload, context.services.locationResolver, facilities)).forEach(item => {
       const tierText = {
@@ -1739,13 +1784,38 @@
         C: 'The target area is supported, but a precise image footprint is unavailable.',
         D: 'Reliable geolocation is unavailable; this item remains an evidence card only.'
       }[item.tier];
-      addProvenanceCard(list, context, {
-        kicker: publicNarrative(item.record.imagery_type, plainLabel(item.record.candidate_confidence || item.record.evidence_status, 'Imagery evidence')),
+      const observation = Boolean(item.evidenceRecord.observation_id);
+      const card = addProvenanceCard(list, context, {
+        kicker: observation
+          ? `Physical damage observation · ${plainLabel(item.evidenceRecord.damage_confidence, 'Evidence status recorded')}`
+          : publicNarrative(item.record.imagery_type, plainLabel(item.record.candidate_confidence || item.record.evidence_status, 'Imagery evidence')),
         title: mapTitle(item.evidenceRecord, item.point && item.point.label),
-        text: publicNarrative(item.record.limitations || item.evidenceRecord.event && item.evidenceRecord.event.summary, tierText),
-        meta: tierText,
+        text: publicNarrative(item.evidenceRecord.observation || item.record.limitations || item.evidenceRecord.event && item.evidenceRecord.event.summary, tierText),
+        meta: observation
+          ? `${tierText} Location confidence: ${plainLabel(item.evidenceRecord.location_confidence, 'Unresolved')}. This observation does not by itself establish operational effect.`
+          : tierText,
         item: evidenceEnvelope(item.evidenceRecord)
       });
+      if (observation) card.dataset.damageObservationId = item.evidenceRecord.observation_id;
+    });
+
+    const audits = addSection(frame.article, 'Facility claim audits');
+    append(audits, 'p', 'section-note', 'These records test specific facility claims against the available observations. Each proposition keeps its own disposition; confirmation of damage does not automatically confirm a claimed mission kill, destroyed platform or whole-site shutdown.');
+    const auditList = append(audits, 'div', 'record-list two-column-list');
+    facilityClaimAudits.forEach(audit => {
+      const facility = facilities.find(record => record.facility_id === audit.facility_id);
+      const card = addProvenanceCard(auditList, context, {
+        kicker: 'Claim review linked to a facility record',
+        title: publicNarrative(audit.facility_name, audit.facility_id),
+        text: facility
+          ? `Related current facility: ${publicNarrative(facility.name, facility.facility_id)}. Open the proposition audit to see what is confirmed, misleading, unsubstantiated or unresolved.`
+          : 'The related facility identity is unresolved in the current public model.'
+      });
+      card.dataset.facilityAuditId = audit.facility_audit_id;
+      card.dataset.facilityId = audit.facility_id;
+      appendFacilityAudit(card, context, audit);
+      const facilityLink = append(card, 'a', 'inline-route-link', 'Open related facility record');
+      facilityLink.href = routeHref('military.facilities', { facility: audit.facility_id });
     });
     renderRelatedLinks(frame.article, context);
     return frame.article;

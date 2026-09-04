@@ -18,6 +18,11 @@ ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = ROOT / builder.DEFAULT_OUTPUT
 CANONICAL = ROOT / builder.CANONICAL_STATE_PATH
 SCHEMA = ROOT / "schemas/public-current-state-v1.json"
+EXPECTED_PRESERVED_FACILITY_IDS = {
+    "US-NSA-BHR", "US-ARIFJAN", "US-ALISALEM", "US-BUEHRING", "US-SHUAIBA-TOC", "US-CAMPDOHA",
+    "US-BUBIYAN", "US-ALDHAFRA", "US-JEBELALI", "US-ERBIL", "US-AINASAD", "US-PRINCESULTAN",
+    "US-MUWAFFAQ", "US-INCIRLIK", "US-ISA", "US-RMELAN", "US-QASRAK", "US-TANF",
+}
 
 
 def require(condition: bool, message: str) -> None:
@@ -150,6 +155,72 @@ def validate_references_and_views(payload: dict[str, Any]) -> None:
         require(all(variant_key in variant_index for item in refs for variant_key in item.get("variant_keys") or []), f"dataset {key} has unresolved source variant")
 
 
+def validate_facility_and_imagery_parity(payload: dict[str, Any]) -> None:
+    datasets = payload.get("datasets") or {}
+    facility_payload = datasets.get("ledger.facilities", {}).get("payload") or {}
+    facilities = facility_payload.get("facilities") or []
+    facility_ids = [record.get("facility_id") for record in facilities]
+    contract_ids = facility_payload.get("repo_records_to_preserve") or []
+    require(set(contract_ids) == EXPECTED_PRESERVED_FACILITY_IDS, "the 18-ID facility preservation contract changed without an explicit reviewed supersession")
+    require(len(facility_ids) == len(set(facility_ids)), "generated live facilities contain duplicate IDs")
+    require(EXPECTED_PRESERVED_FACILITY_IDS <= set(facility_ids), "a preserved facility disappeared from generated live state")
+
+    materialization = facility_payload.get("materialization") or {}
+    require(materialization.get("contract_enforced") is True, "facility preservation materialization is not declared")
+    require(set(materialization.get("preserved_live_ids") or []) == EXPECTED_PRESERVED_FACILITY_IDS, "facility materialization does not account for every preserved ID")
+    require(materialization.get("contract_path") == builder.FACILITY_CONTRACT_PATH, "facility contract provenance path mismatch")
+    require(materialization.get("preserved_record_path") == builder.PRESERVED_FACILITY_RECORD_PATH, "preserved facility-body provenance path mismatch")
+
+    ledger_source = json.loads((ROOT / builder.FACILITY_CONTRACT_PATH).read_text(encoding="utf-8"))
+    preserved_source = json.loads((ROOT / builder.PRESERVED_FACILITY_RECORD_PATH).read_text(encoding="utf-8"))
+    integrated_ids = {record["facility_id"] for record in ledger_source.get("facilities") or []}
+    preserved_by_id = {record["id"]: record for record in preserved_source.get("facilities") or []}
+    require(len(facilities) == len(integrated_ids | EXPECTED_PRESERVED_FACILITY_IDS), "live facility set is not the stable-ID union of integrated and preserved records")
+    for facility_id in EXPECTED_PRESERVED_FACILITY_IDS - integrated_ids:
+        generated = next(record for record in facilities if record.get("facility_id") == facility_id)
+        source = preserved_by_id.get(facility_id)
+        require(source is not None, f"preserved facility body missing: {facility_id}")
+        require(all(generated.get(key) == value for key, value in source.items()), f"preserved facility facts changed during materialization: {facility_id}")
+        provenance = generated.get("preservation_provenance") or {}
+        require(provenance == {
+            "status": "PRESERVED_NON_SUPERSEDED",
+            "contract_path": builder.FACILITY_CONTRACT_PATH,
+            "record_path": builder.PRESERVED_FACILITY_RECORD_PATH,
+            "record_id": facility_id,
+        }, f"preserved facility provenance is incomplete: {facility_id}")
+        location = generated.get("location") or {}
+        require(location.get("lat") == source.get("lat") and location.get("lon") == source.get("lon"), f"preserved facility coordinates changed: {facility_id}")
+        require(location.get("precision") == "COARSE_EXISTING_ATLAS_POINT", f"preserved facility precision was upgraded: {facility_id}")
+    map_refs = [record.get("map_ref") for record in facilities if record.get("map_ref")]
+    require(len(map_refs) == len(set(map_refs)), "generated facility map references are not unique")
+
+    bda_payload = datasets.get("ledger.bda_overlays", {}).get("payload") or {}
+    raw_bda = json.loads((ROOT / "data/integration-v1.2/bda-overlays.json").read_text(encoding="utf-8"))
+    require(bda_payload == raw_bda, "BDA evidence or precision changed during facility-reference repair")
+    bda_refs = {record.get("facility_ref") for record in bda_payload.get("overlays") or [] if record.get("facility_ref")}
+    require(bda_refs <= set(facility_ids), f"BDA facility references do not resolve: {sorted(bda_refs - set(facility_ids))}")
+    for record in bda_payload.get("overlays") or []:
+        require(not any(record.get(key) for key in ("image_bounds", "georeferenced_bounds", "footprint", "corners")), f"BDA repair manufactured precise geometry: {record.get('overlay_id')}")
+
+    damage_dataset = datasets.get("forensic.damage_observations") or {}
+    raw_damage = json.loads((ROOT / "data/forensic-v1.3.2/damage-observations.json").read_text(encoding="utf-8"))
+    require(damage_dataset.get("role") == "APPROVED_FORENSIC_DATA" and damage_dataset.get("payload") == raw_damage, "forensic damage observations are not registered unchanged")
+    observations = raw_damage.get("records") or []
+    observation_ids = [record.get("observation_id") for record in observations]
+    require(len(observation_ids) == len(set(observation_ids)) and all(observation_ids), "damage-observation stable IDs are missing or duplicated")
+    canonical_source_ids = {record["source_id"] for record in payload["sources"]["records"]}
+    require(all(set(record.get("sources") or []) <= canonical_source_ids for record in observations), "damage-observation source provenance does not resolve")
+
+    audit_dataset = datasets.get("forensic.facility_claim_audits") or {}
+    raw_audits = json.loads((ROOT / "data/forensic-v1.3.2/facility-claim-audits.json").read_text(encoding="utf-8"))
+    require(audit_dataset.get("payload") == raw_audits, "facility claim audits changed during public registration")
+    audits = raw_audits.get("records") or []
+    audit_ids = [record.get("facility_audit_id") for record in audits]
+    require(len(audit_ids) == len(set(audit_ids)) and all(audit_ids), "facility claim-audit stable IDs are missing or duplicated")
+    require({record.get("facility_id") for record in audits} <= set(facility_ids), "facility claim-audit relationship does not resolve")
+    require(all(all(proposition.get("disposition") for proposition in record.get("propositions") or []) for record in audits), "facility claim-audit disposition was flattened or lost")
+
+
 def main() -> int:
     require(ARTIFACT.is_file(), f"generated artifact missing: {builder.DEFAULT_OUTPUT}")
     require(CANONICAL.is_file(), f"generated canonical state missing: {builder.CANONICAL_STATE_PATH}")
@@ -169,11 +240,15 @@ def main() -> int:
 
     validate_payload(payload, canonical)
     validate_references_and_views(payload)
+    validate_facility_and_imagery_parity(payload)
     integrity = payload.get("integrity") or {}
     require(integrity.get("canonical_inputs_modified") is False, "artifact reports canonical input mutation")
     require(integrity.get("generated_timestamp_included") is False, "artifact contains a generated timestamp")
     require(integrity.get("canonical_state_stale") is False, "artifact reports stale canonical state")
     require(integrity.get("browser_replays_update_packets") is False, "artifact reports browser update replay")
+    require(integrity.get("facility_preservation_contract_satisfied") is True, "artifact reports a broken facility preservation contract")
+    require(integrity.get("unresolved_bda_facility_refs") == [], "artifact reports dangling BDA facility references")
+    require(integrity.get("unresolved_facility_claim_audit_refs") == [], "artifact reports dangling facility claim-audit references")
     print(
         "public-current-state validation: PASS - "
         f"{payload['counts']['chronology_records']} chronology records; "

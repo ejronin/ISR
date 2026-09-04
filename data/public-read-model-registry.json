@@ -213,6 +213,11 @@
       "role": "APPROVED_FORENSIC_DATA"
     },
     {
+      "key": "forensic.damage_observations",
+      "path": "data/forensic-v1.3.2/damage-observations.json",
+      "role": "APPROVED_FORENSIC_DATA"
+    },
+    {
       "key": "forensic.pilot_rescue_timeline",
       "path": "data/forensic-v1.3.2/pilot-rescue-timeline.json",
       "role": "APPROVED_FORENSIC_DATA"
@@ -396,6 +401,7 @@
       "forensic.loss_envelopes",
       "forensic.leadership_casualties",
       "forensic.facility_claim_audits",
+      "forensic.damage_observations",
       "analysis.asset_display",
       "analysis.casualty_corrections"
     ],
