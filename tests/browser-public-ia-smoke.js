@@ -216,9 +216,9 @@ async function loadDirectRoute(cdp, route) {
 
     await setRoute(cdp, ia.ROUTES.get('start.actors'));
     const actors = await cdp.eval(`(() => ({
-      hezbollahFlag: document.querySelector('[data-actor-kind="non-state"] .actor-flag')?.textContent || '',
-      houthiFlag: document.querySelector('[data-actor-affiliation="Houthis / Ansar Allah"] .actor-flag')?.textContent || '',
-      stateFlag: document.querySelector('[data-actor-kind="state"] .actor-flag')?.textContent || '',
+      hezbollahFlag: Boolean(document.querySelector('[data-actor-kind="non-state"] .actor-flag')),
+      houthiFlag: Boolean(document.querySelector('[data-actor-affiliation="Houthis / Ansar Allah"] .actor-flag')),
+      stateFlag: document.querySelector('[data-actor-kind="state"] .actor-flag')?.alt || '',
       qalibaf: (() => {
         const node = document.querySelector('[data-actor-name="Mohammad Baqer Qalibaf"]');
         return node && {
@@ -227,7 +227,7 @@ async function loadDirectRoute(cdp, route) {
           affiliation: node.dataset.actorAffiliation,
           affiliationType: node.dataset.actorAffiliationType,
           parentState: node.dataset.actorParentState,
-          flag: node.querySelector('.actor-flag')?.textContent || '',
+          flag: node.querySelector('.actor-flag')?.alt || '',
           subtitle: node.querySelector('.actor-subtitle')?.textContent || ''
         };
       })(),
@@ -237,12 +237,12 @@ async function loadDirectRoute(cdp, route) {
           entityType: node.dataset.actorEntityType,
           affiliationType: node.dataset.actorAffiliationType,
           parentState: node.dataset.actorParentState,
-          flag: node.querySelector('.actor-flag')?.textContent || ''
+          flag: node.querySelector('.actor-flag')?.alt || ''
         };
       })()
     }))()`);
-    assert.equal(actors.hezbollahFlag, '', 'non-state actor must not receive a host-country flag');
-    assert.equal(actors.houthiFlag, '', 'Houthi actor must not receive a Yemeni state flag');
+    assert.equal(actors.hezbollahFlag, false, 'non-state actor must not receive a host-country flag');
+    assert.equal(actors.houthiFlag, false, 'Houthi actor must not receive a Yemeni state flag');
     assert(actors.stateFlag, 'state actors should retain their state identity');
     assert.deepEqual(actors.qalibaf, {
       entityType: 'person',
@@ -250,14 +250,14 @@ async function loadDirectRoute(cdp, route) {
       affiliation: 'Iranian parliament',
       affiliationType: 'state-institution',
       parentState: 'Iran',
-      flag: '🇮🇷',
+      flag: 'Iran flag',
       subtitle: 'Parliament speaker · Iranian parliament'
     });
     assert.deepEqual(actors.parliament, {
       entityType: 'entity',
       affiliationType: 'state-institution',
       parentState: 'Iran',
-      flag: '🇮🇷'
+      flag: 'Iran flag'
     });
 
     for (const key of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
@@ -275,7 +275,7 @@ async function loadDirectRoute(cdp, route) {
     assert.match(losses, /757\s+WIA/);
     assert.match(losses, /1\s+MIA/);
     assert.match(losses, /2,008\s+military-death subtotal/);
-    assert.match(losses, /does not mean 52 confirmed destroyed assets/);
+    assert.match(losses, /52 current material-loss records/);
     assert(!/\b\d[\d,]*\s+total casualties\b/i.test(losses), 'loss page displays an invalid unique-person grand total');
     assert.match(losses, /does not calculate [“"]total casualties\s*=\s*dead/i, 'loss page omits the approved anti-double-counting warning');
 

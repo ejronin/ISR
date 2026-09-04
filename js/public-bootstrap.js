@@ -50,6 +50,11 @@
     return asset;
   }
 
+  function validateStateFlag(asset) {
+    invariant(asset && asset.role === 'state_flag' && /^[a-z]{2}$/.test(asset.code || '') && typeof asset.label === 'string' && asset.label, 'RELEASE_MISMATCH', 'A state-flag release asset is invalid.');
+    return validateContentAddressedAsset(asset, 'svg');
+  }
+
   function validateManifest(manifest, executingScript) {
     invariant(manifest && typeof manifest === 'object', 'RELEASE_MISMATCH', 'The public release manifest is missing.');
     invariant(manifest.schema_version === '1.0', 'RELEASE_MISMATCH', 'The public release manifest schema is not supported.');
@@ -71,6 +76,7 @@
     const geography = validateContentAddressedAsset(assetForRole(manifest, 'reference_geography'), 'geojson');
     const entry = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
     const evidenceImages = (manifest.application.assets || []).filter(asset => asset.role === 'evidence_image').map(validateBinaryImage);
+    const stateFlags = (manifest.application.assets || []).filter(asset => asset.role === 'state_flag').map(validateStateFlag);
     const runtimes = [mapRuntime, pageRegistry];
     const styles = [mapStyle, style];
     invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 2 && runtimes.every((asset, index) => manifest.application.runtime[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized runtime paths are inconsistent.');
@@ -78,9 +84,12 @@
     invariant(manifest.application.stylesheet === style.path, 'RELEASE_MISMATCH', 'The authorized stylesheet path is inconsistent.');
     invariant(manifest.application.reference_geography === geography.path, 'RELEASE_MISMATCH', 'The authorized reference-geography path is inconsistent.');
     invariant(Array.isArray(manifest.application.evidence_images) && manifest.application.evidence_images.length === evidenceImages.length && evidenceImages.every((asset, index) => manifest.application.evidence_images[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized evidence-image inventory is inconsistent.');
+    invariant(Array.isArray(manifest.application.state_flags) && manifest.application.state_flags.length === stateFlags.length && stateFlags.every((asset, index) => manifest.application.state_flags[index].path === asset.path && manifest.application.state_flags[index].code === asset.code), 'RELEASE_MISMATCH', 'The authorized state-flag inventory is inconsistent.');
+    invariant(new Set(stateFlags.map(asset => asset.code)).size === stateFlags.length, 'RELEASE_MISMATCH', 'The authorized state-flag inventory contains duplicate codes.');
+    invariant((manifest.application.assets || []).every(asset => ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint', 'evidence_image', 'state_flag'].includes(asset.role)), 'RELEASE_MISMATCH', 'The authorized application asset inventory contains an unsupported role.');
     invariant(manifest.application.entrypoint === entry.path, 'RELEASE_MISMATCH', 'The authorized entrypoint path is inconsistent.');
     invariant(manifest.current_state && manifest.current_state.path === 'data/public-current-state.json', 'RELEASE_MISMATCH', 'The current-state path is invalid.');
-    return { manifest, bootstrap, runtimes, styles, geography, evidenceImages, entry };
+    return { manifest, bootstrap, runtimes, styles, geography, evidenceImages, stateFlags, entry };
   }
 
   async function fetchManifest(fetchImpl) {

@@ -102,8 +102,11 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
 
   const bootstrapAsset = manifest.neutral_bootstrap.asset;
   const applicationAssets = manifest.application.assets;
-  assert.equal(applicationAssets.length, 6);
-  assert.deepEqual(new Set(applicationAssets.map(asset => asset.role)), new Set(['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint']));
+  const fixedRoles = ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint'];
+  fixedRoles.forEach(role => assert.equal(applicationAssets.filter(asset => asset.role === role).length, 1, `${role} must remain singular`));
+  assert.equal(applicationAssets.filter(asset => asset.role === 'state_flag').length, manifest.application.state_flags.length);
+  assert(manifest.application.state_flags.length >= 3, 'closed state-flag inventory must be present');
+  assert(applicationAssets.every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)));
   for (const asset of [bootstrapAsset, ...applicationAssets]) {
     const generated = read(asset.path);
     const source = read(asset.source_path);

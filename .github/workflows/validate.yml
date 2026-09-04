@@ -59,12 +59,14 @@ jobs:
           python scripts/validate_public_runtime_inventory.py
           python tests/public-runtime-inventory.test.py
           python tests/public-release-evidence-image.test.py
+          python tests/public-release-state-flags.test.py
           node tests/public-current-state.test.js
           node tests/public-boot.test.js
           node tests/public-ia.test.js
           node tests/public-content-redesign.test.js
           node tests/public-evidence-phase5.test.js
           node tests/public-map-phase6.test.js
+          node tests/public-loss-actor-batch2.test.js
           node --check js/public-bootstrap.js
           node --check js/public-app.js
           node --check js/public-ia.js
@@ -72,6 +74,7 @@ jobs:
           node --check tests/browser-public-ia-smoke.js
           node --check tests/browser-public-evidence-phase5.js
           node --check tests/browser-public-map-phase6.js
+          node --check tests/browser-public-loss-actor-batch2.js
           python scripts/assemble_public_site.py --output _site
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
           python scripts/assemble_public_site.py --output _site --check --require-build-info
@@ -211,6 +214,7 @@ jobs:
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-ia-smoke.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-evidence-phase5.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-map-phase6.js
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-loss-actor-batch2.js
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration

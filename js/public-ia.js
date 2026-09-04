@@ -24,15 +24,15 @@
 
   const ROUTE_DEFINITIONS = Object.freeze([
     { key: 'start.overview', primary: 'start', slug: 'overview', label: 'Overview', title: 'Start Here', owner: 'OverviewPage', dataKeys: ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view'], related: ['timeline.war', 'military.campaigns', 'hormuz.overview', 'talks.mou', 'objectives.outcomes', 'evidence.claims'] },
-    { key: 'start.actors', primary: 'start', slug: 'actors', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.chronology'], related: ['timeline.war', 'evidence.sources'] },
+    { key: 'start.actors', primary: 'start', slug: 'actors', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.chronology', 'current.actors'], related: ['timeline.war', 'evidence.sources'] },
 
     { key: 'timeline.war', primary: 'timeline', slug: 'war', label: 'War Timeline', title: 'War Timeline', owner: 'TimelinePage', dataKeys: ['current.chronology', 'ledger.daily_coverage'], related: ['timeline.chronology', 'military.campaigns', 'talks.overview'] },
     { key: 'timeline.chronology', primary: 'timeline', slug: 'chronology', label: 'Detailed Chronology', title: 'Detailed Chronology', owner: 'ChronologyPage', dataKeys: ['current.chronology', 'ledger.map_links'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
 
     { key: 'military.campaigns', primary: 'military', slug: 'campaigns', label: 'Campaigns & Strikes', title: 'Campaigns & Strikes', owner: 'CampaignsPage', dataKeys: ['current.chronology', 'ledger.map_links', 'reconciliation.strikes'], related: ['timeline.chronology', 'military.facilities', 'military.weapons'] },
     { key: 'military.facilities', primary: 'military', slug: 'facilities', label: 'Bases & Infrastructure', title: 'Bases & Infrastructure', owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'ledger.map_links', 'forensic.facility_claim_audits'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
-    { key: 'military.weapons', primary: 'military', slug: 'weapons', label: 'Air, Missiles & Drones', title: 'Air, Missiles & Drones', owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses'], related: ['military.campaigns', 'military.losses'] },
-    { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'analysis.casualty_corrections'], related: ['military.weapons', 'evidence.method'] },
+    { key: 'military.weapons', primary: 'military', slug: 'weapons', label: 'Air, Missiles & Drones', title: 'Air, Missiles & Drones', owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation'], related: ['military.campaigns', 'military.losses'] },
+    { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections'], related: ['military.weapons', 'evidence.method'] },
     { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Imagery', title: 'Damage Imagery', owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
 
     { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.agreements'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
@@ -88,11 +88,15 @@
     'current.claims': 'Current canonical claim records',
     'reconciliation.coverage_audit': 'Coverage audit',
     'forensic.loss_envelopes': 'Loss ranges and accounting',
+    'forensic.leadership_casualties': 'Senior-leadership casualty detail',
+    'forensic.aviation_reconciliation': 'Aviation reconciliation',
+    'forensic.pilot_rescue_timeline': 'Pilot-rescue chronology',
     'forensic.facility_claim_audits': 'Facility claim checks',
     'forensic.damage_observations': 'Physical damage observations',
     'forensic.public_assessments': 'Public assessments',
     'forensic.claim_evolution': 'Claim evolution',
     'analysis.casualty_corrections': 'Current casualty display',
+    'analysis.asset_display': 'Approved Iranian asset display',
     'analysis.hormuz': 'Hormuz record',
     'analysis.oil_routes': 'Oil-route record',
     'analysis.china_oil_shift': 'China oil-sourcing shift',
@@ -213,6 +217,18 @@
     { aliases: ['mohammad eslami'], canonicalName: 'Mohammad Eslami', role: 'Nuclear chief', affiliationId: 'iran' }
   ]);
 
+  const STATE_FLAG_CODES = Object.freeze({
+    Australia: 'au', Bahrain: 'bh', Bangladesh: 'bd', Bulgaria: 'bg', China: 'cn', Djibouti: 'dj', Egypt: 'eg',
+    France: 'fr', India: 'in', Iran: 'ir', Iraq: 'iq', Israel: 'il', Japan: 'jp', Jordan: 'jo', Kuwait: 'kw',
+    Lebanon: 'lb', Nigeria: 'ng', Oman: 'om', Pakistan: 'pk', Qatar: 'qa', Russia: 'ru', 'Saudi Arabia': 'sa',
+    Somalia: 'so', Sudan: 'sd', Syria: 'sy', 'Türkiye': 'tr', 'United Arab Emirates': 'ae',
+    'United Kingdom': 'gb', 'United States': 'us', Yemen: 'ye'
+  });
+
+  function stateFlagCode(parentState, affiliationType) {
+    return ['state', 'state-institution'].includes(affiliationType) ? STATE_FLAG_CODES[parentState] || null : null;
+  }
+
   const AFFILIATION_BY_ID = new Map(AFFILIATED_ACTORS.map(actor => [actor.id, actor]));
 
   function invariant(condition, message) {
@@ -282,6 +298,7 @@
   }
 
   function formatNumber(value) {
+    if (value === null || value === undefined || value === '') return 'Unknown';
     const number = Number(value);
     return Number.isFinite(number) ? number.toLocaleString('en-US') : 'Unknown';
   }
@@ -399,7 +416,7 @@
           affiliationId: actor.affiliation_id || (entityType === 'person' ? null : actor.actor_id),
           affiliationType: actor.affiliation_type || 'unknown',
           parentState: actor.parent_state || null,
-          flag: actor.flag || '',
+          flagCode: stateFlagCode(actor.parent_state, actor.affiliation_type),
           subtitle: actor.subtitle || (entityType === 'person' ? 'Affiliation unresolved' : 'Identity as recorded; affiliation unresolved')
         };
       }
@@ -433,7 +450,7 @@
         affiliationId: affiliation ? affiliation.id : null,
         affiliationType: affiliation ? affiliation.affiliationType : 'unknown',
         parentState: affiliation ? affiliation.parentState : null,
-        flag: affiliation ? affiliation.flag : '',
+        flagCode: affiliation ? stateFlagCode(affiliation.parentState, affiliation.affiliationType) : null,
         subtitle
       };
     },
@@ -447,20 +464,32 @@
       if (actor.affiliation) wrapper.dataset.actorAffiliation = actor.affiliation;
       if (actor.parentState) wrapper.dataset.actorParentState = actor.parentState;
       if (actor.role) wrapper.dataset.actorRole = actor.role;
-      if (actor.flag) {
-        const flag = append(wrapper, 'span', 'actor-flag', actor.flag);
-        flag.setAttribute('aria-hidden', 'true');
+      if (actor.flagCode && resolver && resolver.flagFor) {
+        const asset = resolver.flagFor(actor.flagCode);
+        if (asset) {
+          const flag = append(wrapper, 'img', 'actor-flag');
+          flag.src = asset.path;
+          flag.alt = `${actor.parentState} flag`;
+          flag.width = 24;
+          flag.height = 18;
+          flag.decoding = 'async';
+        }
       }
       append(wrapper, 'span', 'actor-name', actor.canonicalName);
       if (options && options.subtitle) append(wrapper, 'span', 'actor-subtitle', actor.subtitle);
       return wrapper;
     },
-    createResolver(model) {
-      const records = model && model.entities && Array.isArray(model.entities.actors) ? model.entities.actors : [];
-      const modelActors = records.map(item => item && item.record ? item.record : item).filter(Boolean);
+    createResolver(model, stateFlagResolver) {
+      const publicActors = model && model.datasets && model.datasets['current.actors'];
+      const records = [
+        ...(publicActors && Array.isArray(publicActors.payload) ? publicActors.payload : []),
+        ...(model && model.entities && Array.isArray(model.entities.actors) ? model.entities.actors : [])
+      ];
+      const modelActors = Array.from(new Map(records.map(item => item && item.record ? item.record : item).filter(Boolean).map(actor => [actor.actor_id || actor.canonical_name, actor])).values());
       const resolver = {
         size: modelActors.length,
         resolve(value) { return ActorIdentity.resolve(value, modelActors); },
+        flagFor(code) { return stateFlagResolver && stateFlagResolver.resolve(code); },
         create(documentObject, value, options) { return ActorIdentity.create(documentObject, value, options, resolver); }
       };
       return Object.freeze(resolver);
@@ -1226,6 +1255,63 @@
     return chart;
   }
 
+  function formatQuantity(record) {
+    if (!record || record.quantity === null || record.quantity === undefined || record.quantity === '') return 'Unknown quantity';
+    const quantity = formatNumber(record.quantity);
+    const qualifier = String(record.quantity_qualifier || '').trim();
+    if (qualifier === '>') return `More than ${quantity}`;
+    if (qualifier && qualifier !== '=') return `${quantity} (${publicNarrative(qualifier)})`;
+    return quantity;
+  }
+
+  function formatUsd(value) {
+    if (value === null || value === undefined || value === '' || !Number.isFinite(Number(value))) return 'Unpriced';
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(Number(value));
+  }
+
+  function appendActorIdentities(host, context, values, options) {
+    const row = append(host, 'div', 'actor-row');
+    const raw = asArray(values).flatMap(value => value && typeof value === 'object' ? [value] : String(value || '').split('/').map(part => part.trim())).filter(value => typeof value === 'object' || value);
+    const identities = raw.length ? raw : ['Actor unresolved'];
+    identities.forEach(value => row.append(context.services.actorIdentity.create(context.documentObject, value, options)));
+    return row;
+  }
+
+  function addFactList(host, rows) {
+    const facts = append(host, 'dl', 'fact-list');
+    rows.filter(([, value]) => value !== null && value !== undefined && value !== '').forEach(([term, value]) => {
+      append(facts, 'dt', '', term);
+      append(facts, 'dd', '', String(value));
+    });
+    return facts;
+  }
+
+  function addLossCard(host, context, record) {
+    const card = addProvenanceCard(host, context, {
+      kicker: `${record.side || 'Side unresolved'} · ${plainLabel(record.status, 'Physical state unresolved')}`,
+      title: `${formatQuantity(record)} · ${publicNarrative(record.item, 'Material item')}`,
+      text: publicNarrative(record.note),
+      meta: `Stable record: ${record.loss_id}`,
+      item: record
+    });
+    card.dataset.lossId = record.loss_id;
+    card.dataset.lossActor = String(record.owner || record.side || '').toLowerCase();
+    card.dataset.lossService = String(record.service || '').toLowerCase();
+    card.dataset.lossClass = String(record.accounting_category || '').toLowerCase();
+    card.dataset.lossPhysical = String(record.status || '').toLowerCase();
+    card.dataset.lossEvidence = String(record.confidence || '').toLowerCase();
+    appendActorIdentities(card, context, [record.owner || record.side]);
+    addFactList(card, [
+      ['Service', publicNarrative(record.service, 'Unresolved')],
+      ['Accounting class', plainLabel(record.accounting_category, 'Unresolved')],
+      ['Quantity status', record.quantity === null || record.quantity === undefined ? 'Unknown; not zero' : publicNarrative(record.quantity_qualifier, 'Exact quantity recorded')],
+      ['Physical state', plainLabel(record.status, 'Unresolved')],
+      ['Evidence status', plainLabel(record.confidence, 'Unresolved')],
+      ['Date', readableDate(record.event_date)]
+    ]);
+    return card;
+  }
+
   function eventType(item) {
     return String(item && (item.event && item.event.event_type || item.timeline && item.timeline.event_type) || '');
   }
@@ -1448,17 +1534,21 @@
 
   function ActorsPage(context) {
     const frame = pageFrame(context, 'People are shown with their recorded role and affiliation. Flags follow the affiliated state or state institution; non-state groups do not inherit the flag of the country where they operate.');
-    const referencedIds = new Set(context.model.chronology.flatMap(item => item.actor_ids || item.event && item.event.actor_ids || []));
-    const modelDirectory = context.model.entities && Array.isArray(context.model.entities.actors)
-      ? context.model.entities.actors.map(item => item.record || item).filter(actor => referencedIds.has(actor.actor_id))
-      : [];
+    const modelDirectory = recordArray(modelData(context.model, 'current.actors')).map(item => item.record || item);
     const frequency = new Map();
     context.model.chronology.flatMap(item => item.actor_ids || item.event && item.event.actor_ids || []).forEach(id => frequency.set(id, (frequency.get(id) || 0) + 1));
     const pinned = new Set(['Iran', 'United States', 'Israel', 'IRGC', 'Iranian parliament', 'Mohammad Baqer Qalibaf', 'Hezbollah', 'Houthis / Ansar Allah', 'Oman', 'Qatar']);
     const directory = modelDirectory
       .slice()
-      .sort((a, b) => Number(pinned.has(b.canonical_name)) - Number(pinned.has(a.canonical_name)) || (frequency.get(b.actor_id) || 0) - (frequency.get(a.actor_id) || 0) || String(a.canonical_name).localeCompare(String(b.canonical_name)))
-      .slice(0, 32);
+      .sort((a, b) => Number(pinned.has(b.canonical_name)) - Number(pinned.has(a.canonical_name)) || (frequency.get(b.actor_id) || 0) - (frequency.get(a.actor_id) || 0) || String(a.canonical_name).localeCompare(String(b.canonical_name)));
+    const controls = append(frame.article, 'form', 'actor-controls');
+    controls.addEventListener('submit', event => event.preventDefault());
+    const searchLabel = append(controls, 'label', '', 'Search people and organizations');
+    const search = append(searchLabel, 'input');
+    search.type = 'search';
+    search.placeholder = 'Name, role, affiliation, or actor ID';
+    const resultCount = append(controls, 'p', 'filter-result-count');
+    resultCount.setAttribute('aria-live', 'polite');
     const groups = [
       { title: 'States and state institutions', test: actor => ['state', 'state-institution'].includes(actor.affiliation_type) && actor.entity_type !== 'person' },
       { title: 'Named people', test: actor => actor.entity_type === 'person' },
@@ -1472,9 +1562,22 @@
       const list = append(section, 'div', 'actor-directory');
       records.forEach(actor => {
         const card = append(list, 'article', 'actor-card');
+        card.dataset.actorId = actor.actor_id;
+        card.dataset.actorSearch = JSON.stringify(actor).toLowerCase();
         card.append(context.services.actorIdentity.create(context.documentObject, actor.actor_id, { subtitle: true }));
       });
     });
+    const draw = () => {
+      const query = search.value.trim().toLowerCase();
+      let visible = 0;
+      frame.article.querySelectorAll('[data-actor-id]').forEach(card => {
+        card.hidden = Boolean(query && !card.dataset.actorSearch.includes(query));
+        if (!card.hidden) visible += 1;
+      });
+      resultCount.textContent = `${visible.toLocaleString()} of ${directory.length.toLocaleString()} actor identities shown`;
+    };
+    search.addEventListener('input', draw);
+    draw();
     const note = append(frame.article, 'aside', 'scope-note');
     append(note, 'strong', '', 'Identity boundary');
     append(note, 'p', '', 'A role describes a person; affiliation determines actor identity. If the accepted record does not establish an affiliation, the Atlas shows the recorded name without guessing.');
@@ -1688,6 +1791,10 @@
   function WeaponsPage(context) {
     const frame = pageFrame(context, 'Aircraft, missiles, drones and defenses are shown through the propositions the sources actually support. A launch is expenditure; it is not automatically a hit or a measure of effectiveness.');
     const expenditure = recordArray(modelData(context.model, 'ledger.munitions_expenditure'));
+    const attrition = modelData(context.model, 'ledger.attrition_series');
+    const materialLosses = recordArray(modelData(context.model, 'current.material_losses'));
+    const assetDisplay = modelData(context.model, 'analysis.asset_display');
+    const envelopes = modelData(context.model, 'forensic.loss_envelopes');
     const rule = addSection(frame.article, 'What the counts mean');
     append(rule, 'p', 'lead-copy', publicNarrative(modelData(context.model, 'ledger.munitions_expenditure').rule));
     const sides = addSection(frame.article, 'Reported expenditure');
@@ -1696,15 +1803,85 @@
       const column = append(columns, 'section', 'comparison-column');
       append(column, 'h3', '', side === 'U.S./COALITION' ? 'United States / coalition' : 'Iran / aligned');
       expenditure.filter(record => record.side === side).forEach(record => {
-        addProvenanceCard(column, context, {
+        const card = addProvenanceCard(column, context, {
           kicker: `${readableDate(record.period_end || record.event_date)} · ${plainLabel(record.evidence_type)}`,
-          title: `${record.quantity_qualifier === '>' ? 'More than ' : ''}${formatNumber(record.quantity)} ${publicNarrative(record.munition)}`,
+          title: `${formatQuantity(record)} ${publicNarrative(record.munition)}`,
           text: publicNarrative(record.note),
           meta: record.cost_low ? `Recorded cost basis: $${(Number(record.cost_low) / 1e9).toFixed(2)} billion` : plainLabel(record.cost_status, 'No compatible price basis recorded'),
           item: record
         });
+        card.dataset.expenditureId = record.expenditure_id;
+        appendActorIdentities(card, context, [record.actor || record.side]);
       });
     });
+
+    const series = addSection(frame.article, 'Approved quantitative series');
+    append(series, 'p', 'section-note', 'These are source-reported cumulative or event values with their recorded value type. Superseding and overlapping periods are not added together.');
+    const seriesGrid = append(series, 'div', 'record-list two-column-list');
+    Object.entries(attrition.series || {}).filter(([key]) => key.includes('munitions_expenditure')).forEach(([key, points]) => {
+      asArray(points).forEach(point => {
+        const card = addProvenanceCard(seriesGrid, context, {
+          kicker: `${readableDate(point.date)} · ${plainLabel(point.value_type, 'Recorded series value')}`,
+          title: `${point.qualifier === '>' ? 'More than ' : ''}${formatNumber(point.value)} ${publicNarrative(point.munition, 'munitions')}`,
+          text: publicNarrative(point.note, 'A launch or expenditure value does not establish interception, impact, target hit or destruction.'),
+          meta: `Series: ${plainLabel(key)}`,
+          item: point
+        });
+        appendActorIdentities(card, context, [key.startsWith('iran_') ? 'Iran' : 'United States']);
+      });
+    });
+
+    const approvedMetrics = addSection(frame.article, 'Inventory and launcher context');
+    append(approvedMetrics, 'p', 'section-note', 'These approved categories retain their original evidence labels. Neutralized does not mean destroyed, and modeled inventory attrition is not a confirmed physical-loss count.');
+    const metricGrid = append(approvedMetrics, 'div', 'record-list two-column-list');
+    asArray(assetDisplay.iran && assetDisplay.iran.headline_categories).filter(item => ['launchers', 'missile_inventory'].includes(item.id)).forEach(item => {
+      const card = addProvenanceCard(metricGrid, context, {
+        kicker: plainLabel(item.public_status),
+        title: `${item.headline} · ${item.label}`,
+        text: publicNarrative(item.note || item.scope),
+        meta: `${publicNarrative(item.subheadline)} · ${publicNarrative(item.scope)}`,
+        item
+      });
+      card.dataset.weaponMetricId = item.id;
+      appendActorIdentities(card, context, ['Iran']);
+      if (item.components) addFactList(card, item.components.map(([label, value]) => [label, formatNumber(value)]));
+    });
+    const missileEnvelope = asArray(envelopes.categories).find(item => item.category === 'MISSILE_UAS_INVENTORY');
+    if (missileEnvelope) {
+      const range = missileEnvelope.cost_model_range_usd || {};
+      addProvenanceCard(metricGrid, context, {
+        kicker: 'Calculated range · not a confirmed inventory count',
+        title: `${formatUsd(range.low)} – ${formatUsd(range.high)}`,
+        text: 'Approved bounded material-value envelope for missile/UAS inventory. It is presented as a range and is not added to launch counts.',
+        meta: `Central modeled value: ${formatUsd(range.central)}`,
+        item: { source_ids: asArray(missileEnvelope.envelopes).flatMap(sourceIdsFrom) }
+      });
+    }
+
+    const linked = materialLosses.filter(record => record.side !== 'CIVILIAN/COMMERCIAL' && /(air|aircraft|helicopter|missile|drone|uas|launcher|radar|patriot|thaad)/i.test(`${record.item || ''} ${record.service || ''}`));
+    const durable = addSection(frame.article, 'Related durable-loss records');
+    append(durable, 'p', 'section-note', `${linked.length.toLocaleString()} current material-loss records are linked by their recorded item or service language. They remain physical/evidence-state records, separate from munitions expended.`);
+    const durableList = append(durable, 'div', 'record-list two-column-list');
+    linked.forEach(record => {
+      const card = addLossCard(durableList, context, record);
+      card.dataset.weaponLossId = record.loss_id;
+    });
+
+    const aviation = recordArray(modelData(context.model, 'forensic.aviation_reconciliation'));
+    const aviationSection = addSection(frame.article, 'Aviation reconciliation');
+    append(aviationSection, 'p', 'section-note', publicNarrative(modelData(context.model, 'forensic.aviation_reconciliation').assessment));
+    const aviationList = append(aviationSection, 'div', 'record-list two-column-list');
+    aviation.forEach(record => {
+      const card = addProvenanceCard(aviationList, context, {
+        kicker: readableDate(record.date), title: `${record.id} · ${record.aircraft}`, text: record.event,
+        meta: `Crew status: ${record.crew_status}`, item: record
+      });
+      card.dataset.aviationId = record.id;
+      appendActorIdentities(card, context, [record.actor]);
+    });
+    const unresolved = append(frame.article, 'aside', 'scope-note');
+    append(unresolved, 'strong', '', 'Quantitative boundary');
+    append(unresolved, 'p', '', 'No route-level interception, impact or known-target-hit aggregate is rendered because no approved current dataset traced for this repair supplies a compatible total. The Atlas does not derive those outcomes from launch counts.');
     const gaps = addSection(frame.article, 'Limits of the series');
     const gapList = append(gaps, 'ul', 'method-list');
     asArray(modelData(context.model, 'ledger.attrition_series').gaps).forEach(gap => append(gapList, 'li', '', publicNarrative(gap)));
@@ -1715,7 +1892,39 @@
   function LossesPage(context) {
     const frame = pageFrame(context, 'Personnel, material loss, munitions and cost records remain separate. Unknown does not mean zero, and overlapping reported statuses are not added into a unique-person total.');
     const corrections = modelData(context.model, 'analysis.casualty_corrections');
-    const personnel = addSection(frame.article, 'Current personnel display');
+    const losses = recordArray(modelData(context.model, 'current.material_losses'));
+    const assetDisplay = modelData(context.model, 'analysis.asset_display');
+    const envelopeData = modelData(context.model, 'forensic.loss_envelopes');
+    const leadershipData = modelData(context.model, 'forensic.leadership_casualties');
+    const aviationData = modelData(context.model, 'forensic.aviation_reconciliation');
+    const pilotData = modelData(context.model, 'forensic.pilot_rescue_timeline');
+
+    const summary = addSection(frame.article, 'What is recorded');
+    append(summary, 'p', 'lead-copy', `${losses.length.toLocaleString()} current material-loss records preserve confirmed, damaged, reported, claimed, targeted and unresolved states. Record count is not platform count, and civilian/commercial records remain separate from military losses.`);
+    const visualizations = addSection(frame.article, 'Two views of the material-loss record');
+    const statusCounts = new Map();
+    losses.forEach(record => statusCounts.set(plainLabel(record.status, 'Status unresolved'), (statusCounts.get(plainLabel(record.status, 'Status unresolved')) || 0) + 1));
+    const statusChart = addBarChart(visualizations, Array.from(statusCounts, ([label, value]) => ({ label, value })), {
+      label: 'Material-loss record count by recorded physical or claim state',
+      note: 'Values are record counts, not destroyed-platform quantities. Targeted, reported, damaged, claimed and unresolved states remain distinct.',
+      key: 'loss-physical-state-record-counts', valuesLabel: 'Numeric record counts by physical or claim state',
+      tableCaption: 'Material-loss records by physical or claim state', categoryLabel: 'Recorded state', valueLabel: 'Records',
+      numericNote: 'Each value counts records. It does not sum platform quantity or convert an unknown quantity to zero.'
+    });
+    statusChart.dataset.lossVisualization = 'physical-state-record-counts';
+    const categoryCounts = new Map();
+    losses.forEach(record => categoryCounts.set(plainLabel(record.accounting_category, 'Class unresolved'), (categoryCounts.get(plainLabel(record.accounting_category, 'Class unresolved')) || 0) + 1));
+    const categoryChart = addBarChart(visualizations, Array.from(categoryCounts, ([label, value]) => ({ label, value })), {
+      label: 'Material-loss record count by recorded accounting class',
+      note: 'This second view counts records by accepted accounting class. It does not add overlapping quantities, envelopes, or modeled values.',
+      key: 'loss-accounting-class-record-counts', valuesLabel: 'Numeric record counts by accounting class',
+      tableCaption: 'Material-loss records by accounting class', categoryLabel: 'Accounting class', valueLabel: 'Records',
+      numericNote: 'These are record counts—not platform quantities, replacement-cost values, or confirmed-destruction totals.'
+    });
+    categoryChart.dataset.lossVisualization = 'accounting-class-record-counts';
+
+    const personnel = addSection(frame.article, 'People');
+    append(personnel, 'p', 'section-note', 'Headline personnel statuses and named senior figures answer different questions. The named list is not added to the broader casualty display.');
     const personnelGrid = append(personnel, 'div', 'casualty-columns');
     const us = append(personnelGrid, 'section', 'casualty-column');
     append(us, 'h3', '', 'United States');
@@ -1739,23 +1948,119 @@
     append(warning, 'strong', '', 'Do not add the headline categories');
     append(warning, 'p', '', 'The missing service member may also be represented in a later death aggregate. The Atlas therefore does not calculate “total casualties = dead + wounded + missing” without item-level deconfliction.');
 
-    const losses = recordArray(modelData(context.model, 'current.material_losses'));
-    const material = addSection(frame.article, 'Material losses and damage');
-    append(material, 'p', '', `${losses.length.toLocaleString()} material-loss entities are tracked. That does not mean ${losses.length.toLocaleString()} confirmed destroyed assets: the records preserve destroyed, damaged, claimed, targeted and unresolved states separately.`);
-    const statusCounts = new Map();
-    losses.forEach(record => statusCounts.set(plainLabel(record.status, 'Status unresolved'), (statusCounts.get(plainLabel(record.status, 'Status unresolved')) || 0) + 1));
-    addBarChart(material, Array.from(statusCounts, ([label, value]) => ({ label, value })), {
-      label: 'Material-loss entities grouped by recorded status',
-      note: 'Counts are record entities by status, not a replacement-cost total and not proof that every item was destroyed.'
+    const leaders = recordArray(leadershipData);
+    const leadership = addSection(personnel, 'Named senior Iranian figures', 'subsection');
+    append(leadership, 'p', 'section-note', `${leaders.length.toLocaleString()} itemized approved records form a minimum list. They may overlap aggregate casualty reporting and are not added to it.`);
+    const leadershipList = append(leadership, 'div', 'record-list two-column-list');
+    leaders.forEach(record => {
+      const affiliation = /IRGC/i.test(record.role_at_death || '') ? 'IRGC' : 'Iran';
+      const card = addProvenanceCard(leadershipList, context, {
+        kicker: `${readableDate(record.death_date)} · ${plainLabel(record.death_status)}`,
+        title: record.name, text: record.confirmation_basis,
+        meta: `${record.role_at_death} · ${plainLabel(record.analytic_confidence)} confidence`, item: record
+      });
+      card.dataset.leadershipId = record.leadership_id;
+      appendActorIdentities(card, context, [{ name: record.name, entityType: 'person', role: record.role_at_death, affiliation }], { subtitle: true });
+      addFactList(card, [['Status', plainLabel(record.death_status)], ['Likelihood', plainLabel(record.analytic_likelihood)], ['Attribution', record.attribution], ['Date precision', plainLabel(record.date_precision)]]);
     });
-    const list = append(material, 'div', 'record-list two-column-list');
-    losses.slice(0, 12).forEach(record => addProvenanceCard(list, context, {
-      kicker: `${record.side || 'Side unresolved'} · ${plainLabel(record.status)}`,
-      title: `${record.quantity_qualifier === '>' ? 'More than ' : ''}${formatNumber(record.quantity)} ${publicNarrative(record.item, 'material item')}`,
-      text: publicNarrative(record.note),
-      meta: plainLabel(record.accounting_category, 'Accounting category recorded'),
-      item: record
-    }));
+
+    const material = addSection(frame.article, 'Equipment');
+    append(material, 'p', '', `Every one of the ${losses.length.toLocaleString()} current material-loss stable IDs is available below. Filters change visibility only; they do not delete or truncate the underlying record.`);
+    const controls = append(material, 'form', 'loss-controls');
+    controls.addEventListener('submit', event => event.preventDefault());
+    const controlsByField = {};
+    const addFilter = (field, label, values) => {
+      const wrapper = append(controls, 'label', '', label);
+      const select = append(wrapper, 'select');
+      select.dataset.lossFilter = field;
+      append(select, 'option', '', `All ${label.toLowerCase()}`).value = '';
+      values.filter(Boolean).sort().forEach(value => { const option = append(select, 'option', '', publicNarrative(value)); option.value = String(value).toLowerCase(); });
+      controlsByField[field] = select;
+      return select;
+    };
+    addFilter('actor', 'Actors / owners', [...new Set(losses.map(record => record.owner || record.side))]);
+    addFilter('service', 'Services', [...new Set(losses.map(record => record.service))]);
+    addFilter('class', 'Accounting classes', [...new Set(losses.map(record => record.accounting_category))]);
+    addFilter('physical', 'Physical / claim states', [...new Set(losses.map(record => record.status))]);
+    addFilter('evidence', 'Evidence statuses', [...new Set(losses.map(record => record.confidence))]);
+    const filterCount = append(controls, 'p', 'filter-result-count');
+    filterCount.setAttribute('aria-live', 'polite');
+    const militaryHeading = append(material, 'h3', 'ledger-group-heading', 'Military and state equipment records');
+    const militaryList = append(material, 'div', 'record-list two-column-list');
+    militaryList.dataset.lossGroup = 'military';
+    const commercialHeading = append(material, 'h3', 'ledger-group-heading', 'Civilian and commercial records');
+    const commercialList = append(material, 'div', 'record-list two-column-list');
+    commercialList.dataset.lossGroup = 'commercial';
+    losses.forEach(record => addLossCard(record.side === 'CIVILIAN/COMMERCIAL' ? commercialList : militaryList, context, record));
+    const drawLosses = () => {
+      let visible = 0;
+      material.querySelectorAll('[data-loss-id]').forEach(card => {
+        card.hidden = Object.entries(controlsByField).some(([field, control]) => control.value && card.dataset[`loss${field[0].toUpperCase()}${field.slice(1)}`] !== control.value);
+        if (!card.hidden) visible += 1;
+      });
+      const militaryVisible = militaryList.querySelectorAll('[data-loss-id]:not([hidden])').length;
+      const commercialVisible = commercialList.querySelectorAll('[data-loss-id]:not([hidden])').length;
+      militaryHeading.hidden = militaryList.hidden = militaryVisible === 0;
+      commercialHeading.hidden = commercialList.hidden = commercialVisible === 0;
+      filterCount.textContent = `${visible.toLocaleString()} of ${losses.length.toLocaleString()} material-loss records shown`;
+    };
+    Object.values(controlsByField).forEach(control => control.addEventListener('change', drawLosses));
+    drawLosses();
+
+    const assetSection = addSection(frame.article, 'Detailed Iranian asset breakdown');
+    append(assetSection, 'p', 'section-note', `${publicNarrative(assetDisplay.doctrine)} Categories can overlap (for example, naval total and hull subclasses) and must not be added together.`);
+    const assetList = append(assetSection, 'div', 'record-list two-column-list');
+    asArray(assetDisplay.iran && assetDisplay.iran.headline_categories).forEach(record => {
+      const card = addProvenanceCard(assetList, context, {
+        kicker: plainLabel(record.public_status), title: `${record.headline} · ${record.label}`,
+        text: publicNarrative(record.note || record.scope), meta: `${publicNarrative(record.subheadline)} · ${publicNarrative(record.scope)}`, item: record
+      });
+      card.dataset.assetCategoryId = record.id;
+      appendActorIdentities(card, context, ['Iran']);
+      if (record.components) addFactList(card, record.components.map(([label, value]) => [label, formatNumber(value)]));
+    });
+
+    const envelopes = addSection(frame.article, 'Loss envelopes and uncertainty');
+    append(envelopes, 'p', 'section-note', `${publicNarrative(envelopeData.doctrine)} ${publicNarrative(envelopeData.double_counting_rule)} Ranges remain ranges and are not silently added to hard material-loss record counts.`);
+    const envelopeList = append(envelopes, 'div', 'record-list');
+    asArray(envelopeData.categories).forEach(category => {
+      const range = category.cost_model_range_usd || {};
+      const low = range.low === undefined ? range.all_region_model_low : range.low;
+      const central = range.central === undefined ? range.all_region_model_central : range.central;
+      const high = range.high === undefined ? range.all_region_model_high : range.high;
+      const card = addProvenanceCard(envelopeList, context, {
+        kicker: `${plainLabel(category.model_status, 'Calculated range')} · not a hard count`,
+        title: `${plainLabel(category.category)} · ${formatUsd(low)} – ${formatUsd(high)}`,
+        text: `Central modeled value: ${formatUsd(central)}. ${asArray(category.overlap_notes).map(publicNarrative).join(' ')}`,
+        meta: 'Low / central / upper cases remain separate.',
+        item: { source_ids: asArray(category.envelopes).flatMap(sourceIdsFrom) }
+      });
+      card.dataset.envelopeCategory = category.category;
+      asArray(category.envelopes).forEach(envelope => {
+        const detail = append(card, 'details', 'envelope-detail');
+        append(detail, 'summary', '', `${publicNarrative(envelope.label)} · ${formatUsd(envelope.estimated_cost_usd)}`);
+        addFactList(detail, [['Estimate status', plainLabel(envelope.estimate_status)], ['Confidence', plainLabel(envelope.confidence)], ['Additivity', plainLabel(envelope.additivity)], ['Quantity basis', envelope.quantity_basis], ['Methodology', envelope.methodology], ['Exclusions', asArray(envelope.exclusions).join('; ')]]);
+        if (sourceIdsFrom(envelope).length) detail.append(EvidenceDrawer.create(context, envelope));
+      });
+    });
+
+    const aviationSection = addSection(frame.article, 'Aviation and pilot forensic detail');
+    append(aviationSection, 'p', 'section-note', publicNarrative(aviationData.assessment));
+    const aviationList = append(aviationSection, 'div', 'record-list two-column-list');
+    recordArray(aviationData).forEach(record => {
+      const card = addProvenanceCard(aviationList, context, { kicker: readableDate(record.date), title: `${record.id} · ${record.aircraft}`, text: record.event, meta: `Crew status: ${record.crew_status}`, item: record });
+      card.dataset.aviationId = record.id;
+      appendActorIdentities(card, context, [record.actor]);
+    });
+    const pilot = addSection(aviationSection, 'Pilot-rescue evidence chronology', 'subsection');
+    append(pilot, 'p', 'section-note', publicNarrative(pilotData.method_rule));
+    addSequence(pilot, context, recordArray(pilotData).sort((a, b) => a.sequence - b.sequence).map(record => ({
+      date: record.date, title: `${record.id} · ${plainLabel(record.status)}`, text: record.event, item: record
+    })), { className: 'story-sequence pilot-rescue-sequence' });
+    pilot.querySelectorAll('.story-step').forEach((item, index) => { item.dataset.pilotRescueId = recordArray(pilotData).sort((a, b) => a.sequence - b.sequence)[index].id; });
+
+    const method = addSection(frame.article, 'Sources and method');
+    append(method, 'p', '', 'Stable IDs, recorded status, quantity qualifiers and source links are retained from the accepted current or approved analytical record. Claims, targeted assets, damaged equipment, neutralized systems, modeled quantities and calculated envelopes are never relabeled as confirmed destruction.');
     renderRelatedLinks(frame.article, context);
     return frame.article;
   }

@@ -65,7 +65,9 @@ assert.equal(locatedDamage.bounds, null, 'damage observation invented image boun
 assert.equal(locatedDamage.footprint, null, 'damage observation invented a footprint');
 assert.equal(ia.MapView.imageryDescriptor(unlocatedObservation, resolver, facilityRecords).tier, 'D', 'unlocated forensic observation should remain evidence-only');
 
-assert.deepEqual(new Set(manifest.application.assets.map(asset => asset.role)), new Set(['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint']));
+const releaseRoles = new Set(manifest.application.assets.map(asset => asset.role));
+for (const role of ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint']) assert(releaseRoles.has(role), `required release role missing: ${role}`);
+assert([...releaseRoles].every(role => ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint', 'evidence_image', 'state_flag'].includes(role)), 'release contains an unsupported role');
 assert.equal(manifest.application.reference_geography, manifest.application.assets.find(asset => asset.role === 'reference_geography').path);
 assert.equal(manifest.application.runtime.length, 2);
 assert.equal(manifest.application.stylesheets.length, 2);
