@@ -38,7 +38,7 @@ PUBLIC_PAGE_DATASET_ADDITIONS = {
 PUBLIC_PARTICIPANT_IDENTITIES = {
     "MMDA-BHR": ("ACT-BAHRAIN", "Bahrain", "state", "Bahrain", ["bahrain"]),
     "MMDA-JOR": ("ACT-JORDAN", "Jordan", "state", "Jordan", ["jordan"]),
-    "MMDA-YEM": ("ACT-YEMEN-PLC", "Yemen's internationally recognized government", "state-institution", "Yemen", ["yemen (plc)", "yemen's internationally recognized government"]),
+    "MMDA-YEM": ("ACT-YEMEN-PLC", "Yemen's internationally recognized government", "state-institution", "Yemen", ["yemen (plc)", "yemen (internationally recognized government)", "yemen's internationally recognized government"]),
     "MMDA-EGY": ("ACT-EGYPT", "Egypt", "state", "Egypt", ["egypt"]),
     "MMDA-SDN": ("ACT-SUDAN", "Sudan", "state", "Sudan", ["sudan"]),
     "MMDA-DJI": ("ACT-DJIBOUTI", "Djibouti", "state", "Djibouti", ["djibouti"]),
@@ -344,6 +344,55 @@ def authorize_shared_public_datasets(pages: dict[str, list[str]]) -> dict[str, l
     }
 
 
+def validate_consumer_coverage_config(config: Any, datasets: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    """Validate explicit audit-only and route-level consumer waivers.
+
+    Actual renderer consumption is checked in the public runtime/browser gate.
+    Generation owns the deterministic waiver inventory and proves that every
+    waiver names a real dataset, its authoritative role, a responsible owner,
+    and a reviewable reason.
+    """
+    if not isinstance(config, dict) or config.get("schema_version") != "1.0":
+        raise ValueError("Public consumer-coverage configuration identity is invalid")
+    expected_collections = {"route_data_waivers", "dataset_waivers"}
+    if not expected_collections.issubset(config):
+        raise ValueError("Public consumer-coverage configuration is incomplete")
+    seen_dataset_waivers: set[str] = set()
+    seen_route_waivers: set[tuple[str, str]] = set()
+    for collection_name in sorted(expected_collections):
+        collection = config.get(collection_name)
+        if not isinstance(collection, list):
+            raise ValueError(f"Consumer-coverage {collection_name} must be an array")
+        for waiver in collection:
+            if not isinstance(waiver, dict):
+                raise ValueError(f"Consumer-coverage {collection_name} contains a non-object waiver")
+            dataset_key = str(waiver.get("dataset_key") or "").strip()
+            reason = str(waiver.get("reason") or "").strip()
+            authority_role = str(waiver.get("authority_role") or "").strip()
+            owner = str(waiver.get("owner") or "").strip()
+            if dataset_key not in datasets:
+                raise ValueError(f"Consumer-coverage waiver names missing dataset: {dataset_key or '<empty>'}")
+            if authority_role != datasets[dataset_key].get("role"):
+                raise ValueError(f"Consumer-coverage authority role does not match {dataset_key}")
+            if len(reason) < 20 or reason.lower() in {"not needed", "legacy"}:
+                raise ValueError(f"Consumer-coverage waiver reason is not reviewable for {dataset_key}")
+            if not owner:
+                raise ValueError(f"Consumer-coverage waiver owner is missing for {dataset_key}")
+            if collection_name == "dataset_waivers":
+                if dataset_key in seen_dataset_waivers:
+                    raise ValueError(f"Duplicate dataset consumer waiver: {dataset_key}")
+                seen_dataset_waivers.add(dataset_key)
+            else:
+                route_key = str(waiver.get("route_key") or "").strip()
+                if not route_key:
+                    raise ValueError(f"Route consumer waiver is missing route_key for {dataset_key}")
+                pair = (route_key, dataset_key)
+                if pair in seen_route_waivers:
+                    raise ValueError(f"Duplicate route consumer waiver: {route_key} / {dataset_key}")
+                seen_route_waivers.add(pair)
+    return copy.deepcopy(config)
+
+
 def read_registry(root: Path = ROOT) -> tuple[list[tuple[str, str, str]], dict[str, list[str]]]:
     payload = json.loads(canonical_input_bytes((root / REGISTRY_PATH).read_bytes()).decode("utf-8"))
     if payload.get("schema_version") != "1.0" or payload.get("artifact_role") != "PUBLIC_READ_MODEL_DATASET_REGISTRY":
@@ -488,6 +537,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     for key, payload in entity_payloads.items():
         datasets[key] = dataset_record(key, CANONICAL_STATE_PATH, "DERIVED_CANONICAL_CURRENT_ENTITY_STATE", copy.deepcopy(payload), "application/json")
 
+    consumer_coverage = validate_consumer_coverage_config(registry.get("consumer_coverage"), datasets)
+
     available_dataset_keys = set(datasets) | {"current.chronology", "current.sources"}
     for page, keys in page_datasets.items():
         missing = sorted(set(keys) - available_dataset_keys)
@@ -561,6 +612,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "revision_history": copy.deepcopy(canonical.get("revision_history") or []),
         "datasets": datasets,
         "page_data": {page: {"dataset_keys": keys} for page, keys in page_datasets.items()},
+        "consumer_coverage": consumer_coverage,
         "normalizations": [],
         "integrity": {
             "serialization": "UTF-8 JSON; sorted object keys; two-space indentation; LF newline",

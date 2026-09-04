@@ -348,6 +348,252 @@
       "role": "APPROVED_ANALYTICAL_TEXT"
     }
   ],
+  "consumer_coverage": {
+    "dataset_waivers": [
+      {
+        "authority_role": "APPROVED_ANALYTICAL_DATA",
+        "dataset_key": "analysis.endgame_current_aug25",
+        "owner": "endgame overlay audit trail",
+        "reason": "Retained as the dated analytical overlay that feeds later synthesis; current public pages render the accepted consolidated public-view record."
+      },
+      {
+        "authority_role": "APPROVED_ANALYTICAL_DATA",
+        "dataset_key": "analysis.endgame_current_aug26",
+        "owner": "endgame overlay audit trail",
+        "reason": "Retained as the dated analytical overlay that feeds later synthesis; current public pages render the accepted consolidated public-view record."
+      },
+      {
+        "authority_role": "SOURCE_CONTEXT_DATA",
+        "dataset_key": "analysis.media_bias_provider",
+        "owner": "source-context audit trail",
+        "reason": "Retained as provider-level methodology metadata; the public Sources page consumes the canonical source catalog and its provenance-scoped variants."
+      },
+      {
+        "authority_role": "APPROVED_ANALYTICAL_DATA",
+        "dataset_key": "analysis.outcome_evidence_links",
+        "owner": "outcome-link audit trail",
+        "reason": "Retained as a validation crosswalk between analytical outcomes and evidence; public outcome cards use the evidence references embedded in accepted outcome records."
+      },
+      {
+        "authority_role": "SOURCE_CONTEXT_DATA",
+        "dataset_key": "analysis.source_context",
+        "owner": "source-context audit trail",
+        "reason": "Retained as supporting outlet-context metadata; public source access is supplied by the canonical catalog and provenance-scoped source variants."
+      },
+      {
+        "authority_role": "APPROVED_ANALYTICAL_DATA",
+        "dataset_key": "analysis.endgame_adjudication",
+        "owner": "claims-and-objectives analytical audit trail",
+        "reason": "Retained for review of the approved adjudication chain; current public conclusions render from the downstream objective, outcome, and public-view datasets."
+      },
+      {
+        "authority_role": "APPROVED_ANALYTICAL_TEXT",
+        "dataset_key": "analysis.endgame_causal_graph",
+        "owner": "analytical methodology audit trail",
+        "reason": "Retained as the approved machine-readable causal graph text; the current public renderer does not execute or present analytical graph source."
+      },
+      {
+        "authority_role": "APPROVED_ANALYTICAL_DATA",
+        "dataset_key": "analysis.endgame_so_far",
+        "owner": "endgame analytical audit trail",
+        "reason": "Retained as an earlier approved analytical synthesis; current public pages use the later approved public-view and outcomes records."
+      },
+      {
+        "authority_role": "SOURCE_CONTEXT_DATA",
+        "dataset_key": "analysis.ground_news_outlets",
+        "owner": "source-context audit trail",
+        "reason": "Retained for outlet-context audit and registry generation; it is not a proposition-level current public source catalog consumer."
+      },
+      {
+        "authority_role": "APPROVED_ANALYTICAL_DATA",
+        "dataset_key": "analysis.ui_corrections",
+        "owner": "migration presentation audit trail",
+        "reason": "Retained to document accepted legacy presentation corrections; the canonical public shell implements the resulting approved state directly."
+      },
+      {
+        "authority_role": "APPROVED_ANALYTICAL_DATA",
+        "dataset_key": "analysis.us_war_rationales",
+        "owner": "objectives analytical audit trail",
+        "reason": "Retained for audit of the opening-rationale reconstruction; current objectives pages render the approved downstream objective and outcome assessments."
+      },
+      {
+        "authority_role": "DERIVED_CANONICAL_CURRENT_ENTITY_STATE",
+        "dataset_key": "current.relationships",
+        "owner": "canonical entity-relationship audit trail",
+        "reason": "Retained for stable entity-link provenance and future generic consumers; no current route presents the relationship graph as an independent public view."
+      },
+      {
+        "authority_role": "APPROVED_FORENSIC_DATA",
+        "dataset_key": "forensic.claim_chain_index",
+        "owner": "claim-chain audit trail",
+        "reason": "Retained as an integrity index for forensic claim chains; public claim pages render the resolved claim and assessment records instead of this index."
+      },
+      {
+        "authority_role": "APPROVED_FORENSIC_DATA",
+        "dataset_key": "forensic.claim_evolution",
+        "owner": "claim-evolution audit trail",
+        "reason": "Retained for review of dated claim-state transitions; current claim pages present the normalized current claim and approved finding rather than replaying history."
+      },
+      {
+        "authority_role": "APPROVED_FORENSIC_DATA",
+        "dataset_key": "forensic.manifest",
+        "owner": "forensic package integrity",
+        "reason": "Retained to verify the approved forensic package contents and hashes; package manifests are not public evidence propositions."
+      },
+      {
+        "authority_role": "APPROVED_FORENSIC_DATA",
+        "dataset_key": "forensic.public_assessments",
+        "owner": "public-assessment audit trail",
+        "reason": "Retained for forensic assessment review; current claim entities already carry the accepted public verdict, counterevidence, and unresolved questions."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.aug22_lineage",
+        "owner": "canonical migration lineage",
+        "reason": "Retained for deterministic migration-lineage verification; the public application exposes current provenance rather than internal migration bookkeeping."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.casualties",
+        "owner": "casualty-accounting audit trail",
+        "reason": "Retained as the canonical casualty ledger; the public loss page consumes the approved current display corrections and supporting forensic accounting outputs."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.claims",
+        "owner": "canonical claim migration audit",
+        "reason": "Retained as the pre-entity claim ledger for reconciliation audit; public claim checks consume the normalized canonical current claim entities."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.collection_requests",
+        "owner": "evidence-collection audit trail",
+        "reason": "Retained as analyst collection-task provenance; open collection requests are not presented as established public evidence."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.cost_model",
+        "owner": "loss-accounting audit trail",
+        "reason": "Retained as the unit-cost and calculation-basis ledger; current public loss presentation uses the approved display and loss-envelope outputs."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.daily_coverage",
+        "owner": "chronology coverage audit trail",
+        "reason": "Retained to audit collection coverage by date; the public timeline renders the accepted canonical chronology rather than internal coverage bookkeeping."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.map_links",
+        "owner": "geographic-link migration audit",
+        "reason": "Retained as the migration-era map-link crosswalk; current MapView resolves canonical locations and record geometry through the shared current-state graph."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.material_losses",
+        "owner": "material-loss migration audit",
+        "reason": "Retained as the source material-loss ledger; public military and shipping pages consume normalized canonical current material-loss entities."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.movements",
+        "owner": "movement-ledger audit trail",
+        "reason": "Retained for canonical movement provenance; no current route independently presents this migration-era movement collection."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.revision_history",
+        "owner": "canonical revision audit trail",
+        "reason": "Retained as migration-era revision metadata; public evidence drawers use canonical current provenance while immutable revision history remains an audit control."
+      },
+      {
+        "authority_role": "CANONICAL_LEDGER_DATA",
+        "dataset_key": "ledger.source_role_map",
+        "owner": "source-role audit trail",
+        "reason": "Retained as the canonical source-role crosswalk; current source cards obtain their role and variant context from the compiled canonical source catalog."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.claims",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical claim preservation and comparison; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.core",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only to materialize preserved actor identity fields during deterministic generation; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.economics",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical economic preservation and comparison; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.events",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical event preservation and comparison; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.facilities",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only to enforce the reviewed facility-preservation contract during generation; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.influence_networks",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical influence-network preservation; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.losses",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical loss preservation and comparison; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.missiles",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical weapon-record preservation; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.routes",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical route preservation and comparison; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.sources",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical source preservation and comparison; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "HISTORICAL_REFERENCE_DATA",
+        "dataset_key": "legacy.strikes",
+        "owner": "migration preservation boundary",
+        "reason": "Retained only for deterministic historical strike preservation and comparison; current route authorization forbids historical-reference datasets."
+      },
+      {
+        "authority_role": "ACCEPTED_RECONCILIATION_DATA",
+        "dataset_key": "reconciliation.coverage_audit",
+        "owner": "reconciliation coverage audit",
+        "reason": "Retained to prove reconciliation completeness and exclusions; it is an audit artifact rather than a public evidence proposition or page dataset."
+      },
+      {
+        "authority_role": "ACCEPTED_RECONCILIATION_DATA",
+        "dataset_key": "reconciliation.material_losses",
+        "owner": "material-loss reconciliation audit",
+        "reason": "Retained as the accepted reconciliation input for provenance review; public pages consume the normalized canonical current material-loss entities."
+      }
+    ],
+    "route_data_waivers": [],
+    "schema_version": "1.0"
+  },
   "page_data": {
     "claims_sources": [
       "current.chronology",
@@ -379,6 +625,7 @@
     ],
     "hormuz_economy": [
       "current.chronology",
+      "current.material_losses",
       "ledger.economics",
       "ledger.shipping",
       "ledger.agreements",

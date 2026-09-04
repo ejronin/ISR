@@ -574,7 +574,41 @@ a:hover { color: #e0f2ff; }
   color: var(--muted);
   font-size: .69rem;
 }
+.map-legend .legend-route::before,
+.map-legend .legend-country::before {
+  display: inline-block;
+  width: 1.1rem;
+  height: .2rem;
+  margin-right: .35rem;
+  border-radius: 999px;
+  background: #7db7d5;
+  content: "";
+  vertical-align: middle;
+}
+.map-legend .legend-pipeline::before { background: #d2a861; }
+.map-legend .legend-rail::before { background: #bb8ccd; }
+.map-legend .legend-country::before { height: .65rem; background: rgb(75 151 119 / 55%); }
+.map-mode-boundary { margin: .65rem 0 0; color: var(--muted); font-size: .72rem; line-height: 1.5; }
 .map-caveat { display: block; margin-top: .65rem; color: var(--warn); font-size: .68rem; }
+
+.alignment-roster {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+  margin-top: 1rem;
+}
+.alignment-participant,
+.effect-proposition-group {
+  padding: .9rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: #0d161e;
+}
+.alignment-participant .actor-identity { border: 0; padding: 0; }
+.alignment-participant p { margin: .55rem 0 0; color: var(--muted); font-size: .74rem; }
+.effect-proposition-group + .effect-proposition-group { margin-top: .8rem; }
+.effect-proposition-group > h3 { margin-top: 0; }
+.economic-comparison .record-card { height: auto; }
 
 .outcome-balance {
   display: grid;
@@ -980,6 +1014,7 @@ tbody tr:last-child td { border-bottom: 0; }
   .mobile-navigation a[aria-current="page"] { background: #203445; color: var(--text); }
   .app-grid { grid-template-columns: minmax(0, 1fr); padding-top: .9rem; }
   .actor-directory,
+  .alignment-roster,
   .comparison-grid,
   .casualty-columns,
   .evidence-columns,

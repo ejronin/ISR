@@ -26,33 +26,33 @@
     { key: 'start.overview', primary: 'start', slug: 'overview', label: 'Overview', title: 'Start Here', owner: 'OverviewPage', dataKeys: ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view'], related: ['timeline.war', 'military.campaigns', 'hormuz.overview', 'talks.mou', 'objectives.outcomes', 'evidence.claims'] },
     { key: 'start.actors', primary: 'start', slug: 'actors', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.actors'], related: ['timeline.war', 'evidence.sources'] },
 
-    { key: 'timeline.war', primary: 'timeline', slug: 'war', label: 'War Timeline', title: 'War Timeline', owner: 'TimelinePage', dataKeys: ['current.chronology', 'ledger.daily_coverage'], related: ['timeline.chronology', 'military.campaigns', 'talks.overview'] },
-    { key: 'timeline.chronology', primary: 'timeline', slug: 'chronology', label: 'Detailed Chronology', title: 'Detailed Chronology', owner: 'ChronologyPage', dataKeys: ['current.chronology', 'ledger.map_links'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
+    { key: 'timeline.war', primary: 'timeline', slug: 'war', label: 'War Timeline', title: 'War Timeline', owner: 'TimelinePage', dataKeys: ['current.chronology'], related: ['timeline.chronology', 'military.campaigns', 'talks.overview'] },
+    { key: 'timeline.chronology', primary: 'timeline', slug: 'chronology', label: 'Detailed Chronology', title: 'Detailed Chronology', owner: 'ChronologyPage', dataKeys: ['current.chronology'], related: ['timeline.war', 'evidence.sources', 'evidence.method'] },
 
-    { key: 'military.campaigns', primary: 'military', slug: 'campaigns', label: 'Campaigns & Strikes', title: 'Campaigns & Strikes', owner: 'CampaignsPage', dataKeys: ['current.chronology', 'ledger.map_links', 'reconciliation.strikes'], related: ['timeline.chronology', 'military.facilities', 'military.weapons'] },
-    { key: 'military.facilities', primary: 'military', slug: 'facilities', label: 'Bases & Infrastructure', title: 'Bases & Infrastructure', owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'ledger.map_links', 'forensic.facility_claim_audits'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
+    { key: 'military.campaigns', primary: 'military', slug: 'campaigns', label: 'Campaigns & Strikes', title: 'Campaigns & Strikes', owner: 'CampaignsPage', dataKeys: ['current.chronology', 'reconciliation.strikes', 'forensic.damage_observations', 'forensic.facility_claim_audits', 'ledger.facilities'], related: ['timeline.chronology', 'military.facilities', 'military.imagery'] },
+    { key: 'military.facilities', primary: 'military', slug: 'facilities', label: 'Bases & Infrastructure', title: 'Bases & Infrastructure', owner: 'FacilitiesPage', dataKeys: ['ledger.facilities', 'forensic.facility_claim_audits'], related: ['military.campaigns', 'military.imagery', 'timeline.chronology'] },
     { key: 'military.weapons', primary: 'military', slug: 'weapons', label: 'Air, Missiles & Drones', title: 'Air, Missiles & Drones', owner: 'WeaponsPage', dataKeys: ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation'], related: ['military.campaigns', 'military.losses'] },
-    { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['ledger.casualties', 'current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections'], related: ['military.weapons', 'evidence.method'] },
+    { key: 'military.losses', primary: 'military', slug: 'losses', label: 'Casualties & Losses', title: 'Casualties & Losses', owner: 'LossesPage', dataKeys: ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections'], related: ['military.weapons', 'evidence.method'] },
     { key: 'military.imagery', primary: 'military', slug: 'imagery', label: 'Damage Imagery', title: 'Damage Imagery', owner: 'ImageryPage', dataKeys: ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations'], related: ['military.facilities', 'military.campaigns', 'evidence.method'] },
 
-    { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.agreements'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
-    { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.talks'] },
+    { key: 'hormuz.overview', primary: 'hormuz', slug: 'overview', label: 'Why Hormuz Matters', title: 'Why Hormuz Matters', owner: 'HormuzOverviewPage', dataKeys: ['analysis.hormuz', 'ledger.shipping'], related: ['hormuz.shipping', 'hormuz.talks', 'talks.mou'] },
+    { key: 'hormuz.shipping', primary: 'hormuz', slug: 'shipping', label: 'Shipping & Trade', title: 'Shipping & Trade', owner: 'ShippingPage', dataKeys: ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses'], related: ['hormuz.overview', 'hormuz.economy', 'hormuz.talks', 'military.losses'] },
     { key: 'hormuz.economy', primary: 'hormuz', slug: 'economy', label: 'Oil & Economic Effects', title: 'Oil & Economic Effects', owner: 'EconomyPage', dataKeys: ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes'], related: ['hormuz.shipping', 'hormuz.overview'] },
-    { key: 'hormuz.talks', primary: 'hormuz', slug: 'talks', label: 'Current Hormuz Talks', title: 'Current Hormuz Talks', owner: 'HormuzNegotiationsPage', dataKeys: ['current.chronology', 'ledger.agreements', 'analysis.hormuz'], related: ['talks.mou', 'talks.overview', 'hormuz.shipping'] },
+    { key: 'hormuz.talks', primary: 'hormuz', slug: 'talks', label: 'Current Hormuz Talks', title: 'Current Hormuz Talks', owner: 'HormuzNegotiationsPage', dataKeys: ['current.chronology', 'analysis.hormuz'], related: ['talks.mou', 'talks.overview', 'hormuz.shipping'] },
 
     { key: 'talks.overview', primary: 'talks', slug: 'overview', label: 'Talks & Agreements', title: 'Talks & Agreements', owner: 'DiplomacyPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy'], related: ['talks.mou', 'talks.nuclear', 'talks.regional'] },
-    { key: 'talks.mou', primary: 'talks', slug: 'june-mou', label: 'June MOU', title: 'June MOU', owner: 'MouPage', dataKeys: ['ledger.agreements', 'analysis.hormuz', 'analysis.endgame_public_view', 'analysis.endgame_current_aug25', 'analysis.endgame_current_aug26'], related: ['hormuz.talks', 'talks.nuclear', 'objectives.outcomes'] },
-    { key: 'talks.nuclear', primary: 'talks', slug: 'nuclear', label: 'Nuclear Talks', title: 'Nuclear Talks', owner: 'NuclearPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy'], related: ['talks.overview', 'talks.mou', 'objectives.positions'] },
-    { key: 'talks.regional', primary: 'talks', slug: 'regional', label: 'Regional Diplomacy', title: 'Regional Diplomacy', owner: 'RegionalDiplomacyPage', dataKeys: ['ledger.agreements', 'ledger.diplomacy'], related: ['talks.overview', 'hormuz.talks', 'start.actors'] },
+    { key: 'talks.mou', primary: 'talks', slug: 'june-mou', label: 'June MOU', title: 'June MOU', owner: 'MouPage', dataKeys: ['analysis.hormuz', 'analysis.endgame_public_view'], related: ['hormuz.talks', 'talks.nuclear', 'objectives.outcomes'] },
+    { key: 'talks.nuclear', primary: 'talks', slug: 'nuclear', label: 'Nuclear Talks', title: 'Nuclear Talks', owner: 'NuclearPage', dataKeys: ['analysis.iran_messaging', 'analysis.endgame_public_view'], related: ['talks.overview', 'talks.mou', 'objectives.positions'] },
+    { key: 'talks.regional', primary: 'talks', slug: 'regional', label: 'Regional Diplomacy', title: 'Regional Diplomacy', owner: 'RegionalDiplomacyPage', dataKeys: ['ledger.agreements'], related: ['talks.overview', 'hormuz.talks', 'start.actors'] },
 
-    { key: 'objectives.outcomes', primary: 'objectives', slug: 'outcomes', label: 'Objectives & Outcomes', title: 'Objectives & Outcomes', owner: 'ObjectivesPage', dataKeys: ['analysis.iran_outcomes', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections', 'analysis.outcome_evidence_links'], related: ['objectives.positions', 'objectives.iran', 'talks.mou'] },
-    { key: 'objectives.positions', primary: 'objectives', slug: 'positions', label: 'Position Changes', title: 'Position Changes', owner: 'PositionChangesPage', dataKeys: ['current.chronology', 'analysis.endgame_public_view', 'analysis.outcome_evidence_links'], related: ['objectives.outcomes', 'objectives.iran', 'timeline.chronology'] },
+    { key: 'objectives.outcomes', primary: 'objectives', slug: 'outcomes', label: 'Objectives & Outcomes', title: 'Objectives & Outcomes', owner: 'ObjectivesPage', dataKeys: ['analysis.iran_outcomes', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections'], related: ['objectives.positions', 'objectives.iran', 'talks.mou'] },
+    { key: 'objectives.positions', primary: 'objectives', slug: 'positions', label: 'Position Changes', title: 'Position Changes', owner: 'PositionChangesPage', dataKeys: ['analysis.endgame_us_objectives', 'analysis.iran_messaging'], related: ['objectives.outcomes', 'objectives.iran', 'timeline.chronology'] },
     { key: 'objectives.iran', primary: 'objectives', slug: 'iran-position', label: "How Iran's Position Changed", title: "How Iran's Position Changed", owner: 'IranMessagingPage', dataKeys: ['analysis.iran_messaging'], related: ['objectives.positions', 'talks.overview', 'evidence.information'] },
 
-    { key: 'evidence.claims', primary: 'evidence', slug: 'claims', label: 'Claim Checks', title: 'Claim Checks', owner: 'ClaimChecksPage', dataKeys: ['current.claims', 'forensic.public_assessments'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
-    { key: 'evidence.information', primary: 'evidence', slug: 'information', label: 'Information Environment', title: 'Information Environment', owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks', 'forensic.claim_evolution'], related: ['evidence.claims', 'objectives.iran', 'evidence.method'] },
-    { key: 'evidence.sources', primary: 'evidence', slug: 'sources', label: 'Sources', title: 'Sources', owner: 'SourcesPage', dataKeys: ['current.sources', 'analysis.source_context', 'analysis.media_bias_provider'], related: ['evidence.method', 'evidence.claims'] },
-    { key: 'evidence.method', primary: 'evidence', slug: 'method', label: 'How We Check the Evidence', title: 'How We Check the Evidence', owner: 'MethodPage', dataKeys: ['current.sources', 'ledger.source_role_map', 'ledger.revision_history', 'reconciliation.coverage_audit'], related: ['evidence.sources', 'evidence.claims', 'evidence.archive'] },
+    { key: 'evidence.claims', primary: 'evidence', slug: 'claims', label: 'Claim Checks', title: 'Claim Checks', owner: 'ClaimChecksPage', dataKeys: ['current.claims'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
+    { key: 'evidence.information', primary: 'evidence', slug: 'information', label: 'Information Environment', title: 'Information Environment', owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks'], related: ['evidence.claims', 'objectives.iran', 'evidence.method'] },
+    { key: 'evidence.sources', primary: 'evidence', slug: 'sources', label: 'Sources', title: 'Sources', owner: 'SourcesPage', dataKeys: ['current.sources'], related: ['evidence.method', 'evidence.claims'] },
+    { key: 'evidence.method', primary: 'evidence', slug: 'method', label: 'How We Check the Evidence', title: 'How We Check the Evidence', owner: 'MethodPage', dataKeys: ['current.sources'], related: ['evidence.sources', 'evidence.claims', 'evidence.archive'] },
     { key: 'evidence.archive', primary: 'evidence', slug: 'archive', label: 'Archive', title: 'Archive', owner: 'ArchivePage', dataKeys: ['archive.snapshot_index'], related: ['evidence.method', 'start.overview'] }
   ]);
 
@@ -408,6 +408,7 @@
         const entityType = actor.entity_type || 'unresolved';
         const affiliationName = entityType === 'person' ? actor.affiliation || null : actor.canonical_name;
         return {
+          actorId: actor.actor_id || null,
           canonicalName,
           label: canonicalName,
           entityType,
@@ -442,6 +443,7 @@
           ? affiliation.subtitle
           : 'Identity as recorded; affiliation unresolved';
       return {
+        actorId: input.actorId || affiliation && affiliation.id || null,
         canonicalName,
         label: canonicalName,
         entityType: resolvedEntityType,
@@ -712,6 +714,15 @@
       .flatMap(value => Array.isArray(value) ? value : [value]).filter(Boolean);
   }
 
+  function validMapPoint(point) {
+    return Array.isArray(point) && point.length >= 2
+      && point[0] !== null && point[0] !== undefined && point[0] !== ''
+      && point[1] !== null && point[1] !== undefined && point[1] !== ''
+      && Number.isFinite(Number(point[0])) && Number.isFinite(Number(point[1]))
+      && Number(point[0]) >= -90 && Number(point[0]) <= 90
+      && Number(point[1]) >= -180 && Number(point[1]) <= 180;
+  }
+
   function pointFromRecord(record, locationResolver, relatedRecords) {
     if (!record || typeof record !== 'object') return null;
     const nested = record.event && typeof record.event === 'object' ? record.event : {};
@@ -722,7 +733,7 @@
       const location = locationResolver && locationResolver.resolve(id);
       if (!location) continue;
       canonicalReferenceResolved = true;
-      if (!Number.isFinite(location.latitude) || !Number.isFinite(location.longitude)) continue;
+      if (!validMapPoint([location.latitude, location.longitude])) continue;
       return {
         lat: location.latitude,
         lon: location.longitude,
@@ -752,7 +763,7 @@
       if (latValue === null || latValue === undefined || latValue === '' || lonValue === null || lonValue === undefined || lonValue === '') continue;
       const lat = Number(latValue);
       const lon = Number(lonValue);
-      if (!Number.isFinite(lat) || !Number.isFinite(lon)) continue;
+      if (!validMapPoint([lat, lon])) continue;
       return {
         lat,
         lon,
@@ -771,7 +782,7 @@
   function routeGeometry(route) {
     if (!route || !routeAuthority(route)) return [];
     const coordinates = route.geometry && route.geometry.type === 'LineString' ? route.geometry.coordinates.map(point => [point[1], point[0]]) : route.coords;
-    return asArray(coordinates).map(point => [Number(point && point[0]), Number(point && point[1])]).filter(point => point.every(Number.isFinite));
+    return asArray(coordinates).map(point => [Number(point && point[0]), Number(point && point[1])]).filter(validMapPoint);
   }
 
   function pointAlongPolyline(coordinates, fraction) {
@@ -797,14 +808,14 @@
     if (!value) return null;
     if (Array.isArray(value) && value.length === 2 && value.every(point => Array.isArray(point) && point.length >= 2)) {
       const bounds = value.map(point => [Number(point[0]), Number(point[1])]);
-      return bounds.every(point => point.every(Number.isFinite)) ? bounds : null;
+      return bounds.every(validMapPoint) ? bounds : null;
     }
     if (typeof value === 'object') {
       const south = Number(value.south === undefined ? value.min_lat : value.south);
       const west = Number(value.west === undefined ? value.min_lon : value.west);
       const north = Number(value.north === undefined ? value.max_lat : value.north);
       const east = Number(value.east === undefined ? value.max_lon : value.east);
-      if ([south, west, north, east].every(Number.isFinite)) return [[south, west], [north, east]];
+      if ([south, west, north, east].every(Number.isFinite) && validMapPoint([south, west]) && validMapPoint([north, east])) return [[south, west], [north, east]];
     }
     return null;
   }
@@ -816,7 +827,7 @@
     if (value.type === 'Polygon') { coordinates = value.coordinates && value.coordinates[0]; geoJsonOrder = true; }
     if (!Array.isArray(coordinates) || coordinates.length < 3) return null;
     const result = coordinates.map(point => geoJsonOrder ? [Number(point && point[1]), Number(point && point[0])] : [Number(point && point[0]), Number(point && point[1])]);
-    return result.every(point => point.every(Number.isFinite)) ? result : null;
+    return result.every(validMapPoint) ? result : null;
   }
 
   function safeImageUrl(value) {
@@ -883,11 +894,58 @@
     return [[11.0, 32.0], [40.5, 67.5]];
   }
 
+  function geometryPoints(geometry) {
+    if (!geometry || typeof geometry !== 'object') return [];
+    const points = [];
+    const visit = value => {
+      if (!Array.isArray(value)) return;
+      if (value.length >= 2 && Number.isFinite(Number(value[0])) && Number.isFinite(Number(value[1]))) {
+        const point = [Number(value[1]), Number(value[0])];
+        if (validMapPoint(point)) points.push(point);
+        return;
+      }
+      value.forEach(visit);
+    };
+    visit(geometry.coordinates);
+    return points;
+  }
+
+  function deriveMapViewport(pointRecords, routes, imagery, countryFeatures, fallback) {
+    const coordinates = [];
+    asArray(pointRecords).forEach(item => {
+      const point = item && item.point ? [item.point.lat, item.point.lon] : item;
+      if (validMapPoint(point)) coordinates.push(point.map(Number));
+    });
+    asArray(routes).forEach(route => routeGeometry(route).forEach(point => coordinates.push(point)));
+    asArray(imagery).forEach(item => {
+      if (item && item.bounds) item.bounds.forEach(point => { if (validMapPoint(point)) coordinates.push(point.map(Number)); });
+      if (item && item.footprint) item.footprint.forEach(point => { if (validMapPoint(point)) coordinates.push(point.map(Number)); });
+      if (item && item.point && validMapPoint([item.point.lat, item.point.lon])) coordinates.push([item.point.lat, item.point.lon]);
+    });
+    asArray(countryFeatures).forEach(feature => geometryPoints(feature && feature.geometry).forEach(point => coordinates.push(point)));
+    if (!coordinates.length) return Object.freeze({ bounds: fallback, derived: false, coordinateCount: 0 });
+    const latitudes = coordinates.map(point => point[0]);
+    const longitudes = coordinates.map(point => point[1]);
+    let south = Math.min(...latitudes); let north = Math.max(...latitudes);
+    let west = Math.min(...longitudes); let east = Math.max(...longitudes);
+    if (south === north) { south = Math.max(-90, south - .75); north = Math.min(90, north + .75); }
+    if (west === east) { west = Math.max(-180, west - .75); east = Math.min(180, east + .75); }
+    return Object.freeze({ bounds: Object.freeze([[south, west], [north, east]].map(point => Object.freeze(point))), derived: true, coordinateCount: coordinates.length });
+  }
+
+  function countryKey(value) {
+    const normalized = String(value || '').trim().toLowerCase();
+    if (normalized === 'türkiye' || normalized === 'turkiye') return 'turkey';
+    if (normalized.startsWith('yemen')) return 'yemen';
+    return normalized;
+  }
+
   const MapView = Object.freeze({
     pointFromRecord,
     pointAlongPolyline,
     routeGeometry,
     imageryDescriptor,
+    deriveMapViewport,
     create(context, options) {
       const documentObject = context.documentObject;
       const section = element(documentObject, 'section', 'context-map');
@@ -906,6 +964,19 @@
         if (!groups.has(key)) groups.set(key, { point: item.point, items: [] });
         groups.get(key).items.push(item);
       });
+      const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
+      const countryNames = asArray(options && options.countryNames).map(countryKey).filter(Boolean);
+      const selectedCountryFeatures = geography && geography.type === 'FeatureCollection'
+        ? geography.features.filter(feature => feature.properties && feature.properties.layer === 'regional_50m' && countryNames.includes(countryKey(feature.properties.name)))
+        : [];
+      const routeKey = context.route && context.route.key || '';
+      const fallbackViewport = options && options.fallbackViewport || routeViewport(routeKey);
+      const viewportInfo = deriveMapViewport(points, routes, imagery, selectedCountryFeatures, fallbackViewport);
+      const viewport = viewportInfo.bounds;
+      section.dataset.mapExtentSource = viewportInfo.derived ? 'visible-records' : 'deterministic-fallback';
+      section.dataset.mapBounds = JSON.stringify(viewport);
+      section.dataset.mapRouteModes = Array.from(new Set(routes.map(route => String(route.mode || '').toLowerCase()).filter(Boolean))).sort().join(',');
+      if (countryNames.length) section.dataset.mapCountries = countryNames.join(',');
       append(section, 'p', '', options && options.description || (groups.size
         ? `${groups.size.toLocaleString()} source-linked locations are shown. Geographic precision follows the underlying record.`
         : 'No source-supported point coordinates are available for these records. Reference geography remains available for context.'));
@@ -939,30 +1010,39 @@
       };
 
       const L = root.L;
-      const geography = root.ATLAS_REFERENCE_GEOGRAPHY;
       if (L && geography && geography.type === 'FeatureCollection') {
-        const map = L.map(mapHost, { attributionControl: false, scrollWheelZoom: false, zoomControl: true, minZoom: 3, maxZoom: 10, worldCopyJump: false });
+        const map = L.map(mapHost, { attributionControl: false, scrollWheelZoom: false, zoomControl: true, minZoom: 1, maxZoom: 10, worldCopyJump: false });
         ['reference', 'routes', 'imagery', 'evidence', 'labels'].forEach((name, index) => {
           map.createPane(`atlas-${name}`);
           map.getPane(`atlas-${name}`).style.zIndex = String(210 + index * 80);
         });
-        const routeKey = context.route && context.route.key || '';
-        const detailLayer = String(routeKey).startsWith('hormuz.') ? 'hormuz_10m' : 'regional_50m';
+        const hormuzOnly = viewport[0][0] >= 22.4 && viewport[1][0] <= 28.9 && viewport[0][1] >= 50.8 && viewport[1][1] <= 60.8;
+        const detailLayer = hormuzOnly ? 'hormuz_10m' : 'regional_50m';
         const features = geography.features.filter(feature => feature.properties && feature.properties.layer === detailLayer);
         L.geoJSON({ type: 'FeatureCollection', features }, {
           pane: 'atlas-reference',
           interactive: false,
           style: { color: '#587082', weight: detailLayer === 'hormuz_10m' ? 1.2 : .8, fillColor: '#172732', fillOpacity: .92 }
         }).addTo(map);
+        if (selectedCountryFeatures.length) {
+          L.geoJSON({ type: 'FeatureCollection', features: selectedCountryFeatures }, {
+            pane: 'atlas-evidence', interactive: false,
+            style: { color: '#f0c875', weight: 1.8, fillColor: '#8f6f2e', fillOpacity: .28, dashArray: '5 4' }
+          }).addTo(map);
+        }
 
         routes.forEach(route => {
           const coordinates = routeGeometry(route);
           const authority = routeAuthority(route);
-          const maritime = String(route.mode).toLowerCase() === 'maritime';
+          const mode = String(route.mode || 'transport').toLowerCase();
+          const maritime = mode === 'maritime';
+          const pipeline = mode === 'pipeline';
           const line = L.polyline(coordinates, {
-            pane: 'atlas-routes', color: maritime ? '#7fcbe8' : '#d5ad6d', weight: 4, opacity: .9,
-            dashArray: authority === 'SCHEMATIC_REFERENCE_ROUTE' ? '9 7' : null
+            pane: 'atlas-routes', color: maritime ? '#7fcbe8' : pipeline ? '#e9b96e' : '#c6a8ee', weight: pipeline ? 5 : 4, opacity: .92,
+            dashArray: maritime ? null : pipeline ? '13 8' : '3 7', lineCap: pipeline ? 'butt' : 'round'
           }).addTo(map);
+          const lineElement = line.getElement && line.getElement();
+          if (lineElement) { lineElement.dataset.routeMode = mode; lineElement.dataset.routeId = route.id || ''; }
           line.on('click', () => {
             const sources = routeSources(route);
             cardHost.replaceChildren(); cardHost.hidden = false;
@@ -970,12 +1050,12 @@
             append(card, 'p', 'card-kicker', authority === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : authority === 'DOCUMENTED_TRACK' ? 'Documented track' : 'Documented corridor');
             append(card, 'h3', '', publicNarrative(route.name, 'Transport route'));
             append(card, 'p', '', publicNarrative(route.note, 'The stored route geometry is shown in sequence.'));
-            append(card, 'p', 'map-card-meta', maritime ? 'This line explains a maritime path. It is not live vessel tracking.' : 'This is a geographic corridor reference, not live tracking.');
+            append(card, 'p', 'map-card-meta', maritime ? 'SCHEMATIC · not live vessel tracking.' : pipeline ? 'SCHEMATIC · not a surveyed pipeline alignment or targeting-quality geometry.' : 'SCHEMATIC · not exact rail alignment, live movement, or targeting-quality geometry.');
             if (sources.sourceIds.length) card.append(EvidenceDrawer.create(context, { source_ids: sources.sourceIds }, { localSources: sources.localSources }));
             const close = append(card, 'button', 'map-card-close', 'Close map card'); close.type = 'button'; close.addEventListener('click', () => { cardHost.hidden = true; cardHost.replaceChildren(); mapHost.focus(); });
           });
           const flowPoint = pointAlongPolyline(coordinates, .58);
-          if (flowPoint) L.marker(flowPoint, { pane: 'atlas-routes', interactive: false, icon: L.divIcon({ className: 'route-flow-marker', html: '<span aria-hidden="true">›</span>', iconSize: [24, 24] }) }).addTo(map);
+          if (flowPoint) L.marker(flowPoint, { pane: 'atlas-routes', interactive: false, icon: L.divIcon({ className: `route-flow-marker route-flow-${mode}`, html: `<span aria-hidden="true">${maritime ? '›' : pipeline ? '◆' : 'Ⅱ'}</span>`, iconSize: [24, 24] }) }).addTo(map);
         });
 
         let selectedOverlay = null;
@@ -1021,8 +1101,10 @@
           });
         });
 
-        const viewport = options && options.viewport || routeViewport(routeKey);
-        map.fitBounds(viewport, { padding: [12, 12], animate: false });
+        const fitVisibleGeography = () => map.fitBounds(viewport, { padding: options && options.padding || [20, 20], maxZoom: options && options.maxZoom || 7, animate: false });
+        fitVisibleGeography();
+        map._atlasDataBounds = viewport;
+        map._atlasExtentSource = viewportInfo.derived ? 'visible-records' : 'deterministic-fallback';
         keyboardMarkers.forEach(marker => {
           const markerElement = marker.getElement();
           if (!markerElement) return;
@@ -1036,7 +1118,7 @@
           L.marker([label.lat, label.lon], { pane: 'atlas-labels', interactive: false, icon: L.divIcon({ className: `reference-map-label ${label.kind || ''}`, html: `<span>${String(label.label).replace(/[<>&]/g, '')}</span>`, iconSize: null }) }).addTo(map);
         });
         mapHost.addEventListener('keydown', event => { if (event.key === 'Escape' && !cardHost.hidden) { event.preventDefault(); cardHost.hidden = true; cardHost.replaceChildren(); } });
-        if (root.requestAnimationFrame) root.requestAnimationFrame(() => map.invalidateSize(false));
+        if (root.requestAnimationFrame) root.requestAnimationFrame(() => { map.invalidateSize(false); fitVisibleGeography(); });
         section._atlasMap = map;
       } else {
         append(mapHost, 'p', 'empty-state', 'The authorized local reference geography is unavailable. Textual locations remain below.');
@@ -1046,6 +1128,8 @@
       if (routeControls) routes.forEach(route => {
         const button = append(routeControls, 'button', 'map-route-button', publicNarrative(route.name, 'Transport route'));
         button.type = 'button';
+        button.dataset.routeId = route.id || '';
+        button.dataset.routeMode = String(route.mode || '').toLowerCase();
         button.addEventListener('click', () => {
           const sources = routeSources(route);
           cardHost.replaceChildren(); cardHost.hidden = false;
@@ -1053,7 +1137,8 @@
           append(card, 'p', 'card-kicker', routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : plainLabel(routeAuthority(route), 'Documented route'));
           append(card, 'h3', '', publicNarrative(route.name, 'Transport route'));
           append(card, 'p', '', publicNarrative(route.note));
-          append(card, 'p', 'map-card-meta', String(route.mode).toLowerCase() === 'maritime' ? 'This line explains a maritime path. It is not live vessel tracking.' : 'This is a geographic corridor reference, not live tracking.');
+          const mode = String(route.mode || '').toLowerCase();
+          append(card, 'p', 'map-card-meta', mode === 'maritime' ? 'SCHEMATIC · not live vessel tracking.' : mode === 'pipeline' ? 'SCHEMATIC · not a surveyed pipeline alignment or targeting-quality geometry.' : 'SCHEMATIC · not exact rail alignment, live movement, or targeting-quality geometry.');
           if (sources.sourceIds.length) card.append(EvidenceDrawer.create(context, { source_ids: sources.sourceIds }, { localSources: sources.localSources }));
         });
       });
@@ -1077,14 +1162,19 @@
       const legend = append(section, 'div', 'map-legend');
       if (groups.size) append(legend, 'span', '', 'Recorded evidence location');
       if (imagery.length) append(legend, 'span', '', 'Damage / imagery evidence');
-      if (routes.length) append(legend, 'span', '', 'Transport reference route');
+      if (selectedCountryFeatures.length) append(legend, 'span', 'legend-country', 'Recorded participant state');
+      if (routes.some(route => String(route.mode).toLowerCase() === 'maritime')) append(legend, 'span', 'legend-route legend-maritime', 'Maritime · schematic');
+      if (routes.some(route => String(route.mode).toLowerCase() === 'pipeline')) append(legend, 'span', 'legend-route legend-pipeline', 'Pipeline · schematic');
+      if (routes.some(route => String(route.mode).toLowerCase() === 'rail')) append(legend, 'span', 'legend-route legend-rail', 'Rail · schematic');
       append(legend, 'span', '', 'Reference geography');
-      append(section, 'small', 'map-caveat', 'Locations reflect the current evidence record · routes are not live tracking · not targeting or navigation data');
+      if (routes.length) append(section, 'p', 'map-mode-boundary', 'Mode boundary: maritime lines are schematic, not live vessel tracking; pipeline lines are not surveyed alignments; rail lines are not exact track alignments or live movements.');
+      append(section, 'small', 'map-caveat', 'Locations reflect the current evidence record · routes are SCHEMATIC · not live tracking, surveyed alignment, targeting, or navigation data');
       const equivalent = append(section, 'details');
       equivalent.dataset.phase5MapEquivalent = 'locations';
       equivalent.dataset.phase6MapEquivalent = 'geography';
-      append(equivalent, 'summary', '', `Text equivalent for this map (${groups.size} locations)`);
+      append(equivalent, 'summary', '', `Text equivalent for this map (${groups.size} locations${selectedCountryFeatures.length ? `; ${selectedCountryFeatures.length} participant states` : ''})`);
       const list = append(equivalent, 'ul');
+      selectedCountryFeatures.forEach(feature => append(list, 'li', '', `${feature.properties.name} · participant-state reference geography; not an operational headquarters or command location`));
       groups.forEach(group => append(list, 'li', '', `${group.point.label} · ${group.point.precision} · ${group.items.length} record${group.items.length === 1 ? '' : 's'}`));
       routes.forEach(route => append(list, 'li', '', `${publicNarrative(route.name)} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'schematic reference route' : plainLabel(routeAuthority(route))} · ${publicNarrative(route.note)}`));
       imagery.forEach(item => {
@@ -1309,6 +1399,10 @@
       ['Evidence status', plainLabel(record.confidence, 'Unresolved')],
       ['Date', readableDate(record.event_date)]
     ]);
+    if (record.side === 'CIVILIAN/COMMERCIAL') {
+      const link = append(card, 'a', 'inline-route-link', context.route.key === 'hormuz.shipping' ? 'Open in the complete Losses record' : 'Open related Shipping & Trade context');
+      link.href = routeHref(context.route.key === 'hormuz.shipping' ? 'military.losses' : 'hormuz.shipping', { loss: record.loss_id });
+    }
     return card;
   }
 
@@ -1465,6 +1559,21 @@
     append(whatHappened, 'p', 'lead-copy', publicNarrative(firstWar && firstWar.event && firstWar.event.observed_fact,
       'The United States and Israel opened strikes on Iran, and Iran retaliated against Israel and regional bases hosting U.S. forces.'));
     if (firstWar) whatHappened.append(EvidenceDrawer.create(context, firstWar));
+
+    const theaterRecords = mappedChronology(context.model.chronology, context.services.locationResolver).filter(item => {
+      const point = pointFromRecord(item, context.services.locationResolver);
+      return point && point.lat >= 8 && point.lat <= 42 && point.lon >= 28 && point.lon <= 70;
+    });
+    const theaterMap = MapView.create(context, {
+      title: 'Where the conflict record extends',
+      records: theaterRecords,
+      fallbackViewport: [[11, 32], [40.5, 67.5]],
+      maxZoom: 5,
+      description: `${theaterRecords.length.toLocaleString()} accepted chronology records have source-supported coordinates within the broad Iran–Gulf–Levant–Red Sea theater. Shared points are clustered; records outside this map or without reliable coordinates remain in the chronology.`
+    });
+    theaterMap.classList.add('overview-theater-map');
+    theaterMap.dataset.selectionRule = 'accepted-chronology-with-supported-coordinate-in-broad-theater';
+    frame.article.append(theaterMap);
 
     const now = addSection(frame.article, 'Where things stand now');
     const nowGrid = append(now, 'div', 'story-grid');
@@ -1753,6 +1862,70 @@
       records: strikes,
       description: `${strikes.length.toLocaleString()} reconciled strike locations are plotted from the accepted record. Coordinates retain their stated precision.`
     }));
+
+    const coalitionIranStrikes = strikes.filter(strike =>
+      /USA|US_ISR_COMBINED/.test(String(strike.actor || '')) &&
+      strike.target_type !== 'maritime_blockade_strike' &&
+      Number(strike.lat) >= 25 && Number(strike.lat) <= 40 &&
+      Number(strike.lon) >= 44 && Number(strike.lon) <= 64
+    );
+    const effects = addSection(frame.article, 'U.S. / coalition attacks inside Iran: what the evidence establishes');
+    append(effects, 'p', 'section-note', 'These accepted records keep the attack occurrence, observed physical effect and any operational consequence separate. A blank or unresolved later stage is not promoted from the earlier stage.');
+    const effectsList = append(effects, 'div', 'record-list two-column-list');
+    coalitionIranStrikes.forEach(strike => {
+      const card = addProvenanceCard(effectsList, context, {
+        kicker: `${readableDate(strike.event_date)} · ${plainLabel(strike.verification)}`,
+        title: publicNarrative(strike.name, strike.id),
+        text: publicNarrative(strike.target_type || strike.purpose, 'Attack occurrence recorded; target proposition remains bounded by the cited source.'),
+        meta: `Stable strike record: ${strike.id}`,
+        item: strike
+      });
+      card.dataset.strikeEffectId = strike.id;
+      addFactList(card, [
+        ['Attack occurrence', publicNarrative(strike.target_type || strike.purpose, 'Recorded; detail unresolved')],
+        ['Physical effect', publicNarrative(strike.impact_grade || strike.effect, 'Unresolved')],
+        ['Operational effect', publicNarrative(strike.operational_effect, 'Unresolved unless separately established by accepted evidence')]
+      ]);
+    });
+
+    const damageObservations = recordArray(modelData(context.model, 'forensic.damage_observations'));
+    const physical = addSection(frame.article, 'Physical-damage observations');
+    append(physical, 'p', 'section-note', 'These observations document physical evidence. They do not by themselves establish a whole-facility operational outcome.');
+    const physicalList = append(physical, 'div', 'record-list two-column-list');
+    damageObservations.forEach(observation => {
+      const card = addProvenanceCard(physicalList, context, {
+        kicker: `${plainLabel(observation.damage_confidence)} physical-evidence confidence`,
+        title: publicNarrative(observation.target, observation.observation_id),
+        text: publicNarrative(observation.observation),
+        meta: `Stable damage record: ${observation.observation_id} · Operational effect remains separately assessed.`,
+        item: { source_ids: asArray(observation.sources) }
+      });
+      card.dataset.damageObservationId = observation.observation_id;
+    });
+
+    const audits = recordArray(modelData(context.model, 'forensic.facility_claim_audits'));
+    const propositions = addSection(frame.article, 'From physical effect to operational outcome');
+    append(propositions, 'p', 'section-note', 'Each proposition retains its own accepted disposition. Confirmation of a strike or damaged component does not confirm every broader mission-kill claim.');
+    const facilities = recordArray(modelData(context.model, 'ledger.facilities'));
+    audits.forEach(audit => {
+      const group = append(propositions, 'article', 'effect-proposition-group');
+      group.dataset.facilityAuditId = audit.facility_audit_id;
+      append(group, 'h3', '', publicNarrative(audit.facility_name, audit.facility_id));
+      const list = append(group, 'div', 'record-list');
+      asArray(audit.propositions).forEach(proposition => addProvenanceCard(list, context, {
+        kicker: `${plainLabel(proposition.axis, 'Evidence proposition')} · ${plainLabel(proposition.disposition)}`,
+        title: publicNarrative(proposition.question),
+        text: asArray(proposition.inference_basis).map(publicNarrative).join(' '),
+        meta: `Confidence: ${plainLabel(proposition.analytic_confidence)}`,
+        item: { source_ids: asArray(proposition.basis_sources) },
+        relatedRecords: [audit.facility_id]
+      }));
+      const facility = facilities.find(record => record.facility_id === audit.facility_id);
+      if (facility) {
+        const link = append(group, 'a', 'inline-route-link', `Open ${publicNarrative(facility.name, audit.facility_name)} in Bases & Infrastructure`);
+        link.href = routeHref('military.facilities', { facility: audit.facility_id });
+      }
+    });
 
     const examples = addSection(frame.article, 'Representative campaign developments');
     const eventList = append(examples, 'div', 'record-list');
@@ -2181,11 +2354,16 @@
     const shipping = recordArray(modelData(context.model, 'ledger.shipping'));
     const hormuz = modelData(context.model, 'analysis.hormuz');
     const routeRecords = asArray(modelData(context.model, 'analysis.oil_routes').routes);
+    const materialLosses = recordArray(modelData(context.model, 'current.material_losses'));
+    const shippingMapRecords = asArray(hormuz.current_board_delta).filter(record =>
+      /SHIPPING|HORMUZ|IRAN OIL EXPORTS/i.test(String(record.category || ''))
+    );
     frame.article.append(MapView.create(context, {
-      title: 'Maritime incident and pressure geography',
-      records: asArray(hormuz.current_board_delta),
-      routes: routeRecords.filter(route => String(route.mode).toLowerCase() === 'maritime'),
-      description: 'Locations come from the accepted Hormuz record. Stored maritime reference geometry is schematic and does not reproduce live AIS tracks.'
+      title: 'Shipping pressure and strategic bypass corridors',
+      records: shippingMapRecords,
+      routes: routeRecords,
+      maxZoom: 5,
+      description: 'The same accepted corridor records show Red Sea/Suez maritime context, the Saudi East–West pipeline, and China/Russia–Iran rail logistics. Every line is schematic; none is live tracking, surveyed alignment, or targeting-quality geometry.'
     }));
     const reading = addSection(frame.article, 'How to read the traffic observations');
     append(reading, 'p', 'lead-copy', 'AIS-visible counts are useful observations, not a complete census. Vessels can sail with transponders off, different providers count different categories, and a single successful transit does not establish commercial normalization.');
@@ -2201,12 +2379,24 @@
     const routes = addSection(frame.article, 'Alternative routes and trade adaptation');
     append(routes, 'p', '', publicNarrative(modelData(context.model, 'analysis.oil_routes').geometry_policy, 'Route geometry is schematic and describes transport corridors, not live vessel tracks.'));
     const routeList = append(routes, 'div', 'record-list two-column-list');
-    routeRecords.forEach(route => addProvenanceCard(routeList, context, {
-      kicker: `${plainLabel(route.mode, 'Transport mode')} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : plainLabel(routeAuthority(route), 'Documented route')}`,
-      title: publicNarrative(route.name),
-      text: publicNarrative(route.note),
-      item: route
-    }));
+    routeRecords.forEach(route => {
+      const card = addProvenanceCard(routeList, context, {
+        kicker: `${plainLabel(route.mode, 'Transport mode')} · ${routeAuthority(route) === 'SCHEMATIC_REFERENCE_ROUTE' ? 'Schematic reference route' : plainLabel(routeAuthority(route), 'Documented route')}`,
+        title: publicNarrative(route.name),
+        text: publicNarrative(route.note),
+        meta: `Stable corridor: ${route.id}`,
+        item: route
+      });
+      card.dataset.routeId = route.id;
+      card.dataset.routeMode = String(route.mode || '').toLowerCase();
+    });
+    const merchantLosses = materialLosses.filter(record => record.side === 'CIVILIAN/COMMERCIAL');
+    const merchant = addSection(frame.article, 'Merchant-vessel physical-loss record');
+    append(merchant, 'p', 'section-note', `${merchantLosses.length.toLocaleString()} commercial-vessel records retain their stable loss IDs and physical/evidence states. They are cross-linked here for shipping context and remain excluded from military equipment totals.`);
+    const merchantDetails = append(merchant, 'details', 'merchant-loss-details');
+    append(merchantDetails, 'summary', '', `Browse ${merchantLosses.length.toLocaleString()} merchant-vessel records`);
+    const merchantList = append(merchantDetails, 'div', 'record-list two-column-list');
+    merchantLosses.forEach(record => addLossCard(merchantList, context, record));
     renderRelatedLinks(frame.article, context);
     return frame.article;
   }
@@ -2215,6 +2405,14 @@
     const frame = pageFrame(context, 'Economic effects extend beyond military spending. Oil flows, sanctions, insurance, infrastructure damage and growth forecasts are kept in their own accounting domains.');
     const economics = modelData(context.model, 'ledger.economics');
     const china = modelData(context.model, 'analysis.china_oil_shift');
+    const oilRouteData = modelData(context.model, 'analysis.oil_routes');
+    const oilRoutes = asArray(oilRouteData.routes);
+    frame.article.append(MapView.create(context, {
+      title: 'Economic exposure and transport alternatives',
+      routes: oilRoutes,
+      maxZoom: 5,
+      description: 'Approved maritime, pipeline and rail corridor objects connect chokepoint exposure with transport alternatives. Geometry is schematic and does not state capacity, current movement, or exact alignment.'
+    }));
     const forecast = addSection(frame.article, 'Forecast change across the region');
     addBarChart(forecast, asArray(economics.forecast_context.rows).map(row => ({
       label: row.country,
@@ -2223,6 +2421,25 @@
     })), {
       label: 'Change in 2026 real GDP growth forecasts, percentage points',
       note: publicNarrative(economics.forecast_context.note)
+    });
+    const comparison = addSection(frame.article, 'GCC and Iran: comparable forecast context');
+    append(comparison, 'p', 'section-note', `${publicNarrative(economics.forecast_context.metric)} · FORECAST / MODELED OUTLOOK, not realized GDP and not a military score. Pre-war and current forecasts are compared within the same approved series.`);
+    const comparisonGrid = append(comparison, 'div', 'comparison-grid economic-comparison');
+    const forecastRows = asArray(economics.forecast_context.rows);
+    const gccNames = new Set(['Saudi Arabia', 'Oman', 'United Arab Emirates', 'Bahrain', 'Kuwait', 'Qatar']);
+    [['GCC states', forecastRows.filter(row => gccNames.has(row.country))], ['Iran', forecastRows.filter(row => row.country === 'Iran')]].forEach(([label, rows]) => {
+      const column = append(comparisonGrid, 'section', 'comparison-column');
+      append(column, 'h3', '', label);
+      rows.forEach(row => {
+        const card = addProvenanceCard(column, context, {
+          kicker: 'Forecast · percentage points',
+          title: row.country,
+          text: `Pre-war forecast: ${row.prewar.toFixed(1)}%. Current forecast: ${row.current.toFixed(1)}%. Change: ${row.delta > 0 ? '+' : ''}${row.delta.toFixed(1)} percentage points.`,
+          meta: 'Modeled forecast comparison; not a realized output measure.',
+          item: row
+        });
+        card.dataset.economicComparisonCountry = row.country;
+      });
     });
     const current = addSection(frame.article, 'Recorded economic effects');
     const list = append(current, 'div', 'record-list two-column-list');
@@ -2243,6 +2460,23 @@
       meta: publicNarrative(route.note),
       item: route
     }));
+    const arcticLinks = asArray(china.linked_existing_routes);
+    if (arcticLinks.length) {
+      const arctic = append(trade, 'details', 'secondary-context arctic-context');
+      append(arctic, 'summary', '', 'Secondary context: Arctic / Northern Sea Route');
+      append(arctic, 'p', '', 'The approved current analysis identifies this as substitute-supply context. It is not an Iranian supply route, an observed current war movement, or a verified substitute-volume measure. No retired map geometry is restored here.');
+      arcticLinks.forEach(route => {
+        const card = addProvenanceCard(arctic, context, { kicker: 'Contextual link · not mapped', title: route.route_id, text: publicNarrative(route.note), item: route });
+        card.dataset.arcticRouteId = route.route_id;
+      });
+    }
+    const corridorIndex = addSection(frame.article, 'Approved corridor inventory');
+    append(corridorIndex, 'p', '', publicNarrative(oilRouteData.geometry_policy));
+    const corridorList = append(corridorIndex, 'div', 'record-list two-column-list');
+    oilRoutes.forEach(route => {
+      const card = addProvenanceCard(corridorList, context, { kicker: `${plainLabel(route.mode)} · Schematic`, title: publicNarrative(route.name), text: publicNarrative(route.note), meta: `Stable corridor: ${route.id}`, item: route });
+      card.dataset.economyRouteId = route.id;
+    });
     const note = append(frame.article, 'aside', 'scope-note');
     append(note, 'strong', '', 'Accounting boundary');
     append(note, 'p', '', publicNarrative(economics.separation_rule));
@@ -2276,6 +2510,36 @@
 
   function DiplomacyPage(context) {
     const frame = pageFrame(context, 'The diplomatic record moves from proposal to ceasefire, interim agreement, implementation, breakdown and renewed mediation. Those states are not interchangeable.');
+    const agreements = recordArray(modelData(context.model, 'ledger.agreements'));
+    const agreementSection = addSection(frame.article, 'Agreements, frameworks and proposals');
+    append(agreementSection, 'p', 'section-note', `All ${agreements.length.toLocaleString()} accepted agreement-ledger records are shown. Their recorded type and status remain distinct: a proposal or negotiating mechanism is not relabeled as a signed agreement.`);
+    const agreementList = append(agreementSection, 'div', 'record-list agreement-directory');
+    agreements.forEach(agreement => {
+      const formalized = agreement.signed_or_formalized_date;
+      const card = addProvenanceCard(agreementList, context, {
+        kicker: `${formalized ? `Signed / formalized ${readableDate(formalized)}` : `Origin ${readableDate(agreement.origin_date)}`} · ${plainLabel(agreement.status)}`,
+        title: publicNarrative(agreement.name, agreement.agreement_id),
+        text: publicNarrative(agreement.current_assessment || agreement.what_it_proves),
+        meta: `Stable agreement: ${agreement.agreement_id}`,
+        item: agreement,
+        relatedRecords: agreement.relevant_drawdown_or_event_refs
+      });
+      card.dataset.agreementId = agreement.agreement_id;
+      card.dataset.agreementFormalized = formalized ? 'true' : 'false';
+      addFactList(card, [
+        ['Recorded type', plainLabel(agreement.agreement_type)],
+        ['Recorded status', plainLabel(agreement.status)],
+        ['Parties', asArray(agreement.parties).join('; ')],
+        ['Host or mediator', publicNarrative(agreement.host_or_mediator, '')],
+        ['What it supports', publicNarrative(agreement.what_it_proves, '')],
+        ['What it does not establish', publicNarrative(agreement.what_it_does_not_prove, '')]
+      ]);
+      if (agreement.agreement_id === 'AGR-US-IRN-14POINT-MOU-2026') {
+        const links = append(card, 'div', 'agreement-route-links');
+        const mou = append(links, 'a', 'inline-route-link', 'Open the June MOU record'); mou.href = routeHref('talks.mou');
+        const nuclear = append(links, 'a', 'inline-route-link', 'Open the nuclear-talks record'); nuclear.href = routeHref('talks.nuclear');
+      }
+    });
     const diplomacy = modelData(context.model, 'ledger.diplomacy');
     const sequence = addSection(frame.article, 'Negotiation sequence');
     append(sequence, 'p', 'section-note', publicNarrative(diplomacy.rule));
@@ -2386,6 +2650,30 @@
   function RegionalDiplomacyPage(context) {
     const frame = pageFrame(context, 'Regional states added mediation and security arrangements during the conflict. Each arrangement is shown with its parties, pre-war context and relationship to existing security structures; timing alone does not prove causation.');
     const agreements = recordArray(modelData(context.model, 'ledger.agreements'));
+    const alignment = agreements.find(agreement => agreement.agreement_id === 'AGR-SAUDI-MARITIME-COALITION-2026');
+    const participants = asArray(alignment && alignment.parties).map(name => ({ name, identity: context.services.actorIdentity.resolve(name) }));
+    const alignmentSection = addSection(frame.article, 'Fourteen-state maritime support and alignment record', 'content-section alignment-section');
+    append(alignmentSection, 'p', 'section-note', alignment ? publicNarrative(alignment.what_it_proves) : 'The accepted alignment record is unavailable.');
+    if (alignment) {
+      alignmentSection.append(MapView.create(context, {
+        title: 'Participant-state geographic spread',
+        countryNames: participants.map(item => item.identity.parentState || item.identity.canonicalName),
+        maxZoom: 4,
+        fallbackViewport: [[-2, 5], [42, 95]],
+        description: 'Highlighted country geography represents the states listed in the accepted joint support/alignment record. It does not identify capitals, headquarters, command nodes, deployments, or operating areas.'
+      }));
+      const roster = append(alignmentSection, 'div', 'alignment-roster');
+      participants.forEach(item => {
+        const card = append(roster, 'article', 'alignment-participant');
+        card.dataset.alignmentActorId = item.identity.actorId || '';
+        card.append(context.services.actorIdentity.create(context.documentObject, item.name, { subtitle: true }));
+        append(card, 'p', '', 'Regional maritime-support participant');
+      });
+      alignmentSection.append(EvidenceDrawer.create(context, alignment, { relatedRecords: alignment.relevant_drawdown_or_event_refs }));
+      const boundary = append(alignmentSection, 'aside', 'scope-note');
+      append(boundary, 'strong', '', 'Participation boundary');
+      append(boundary, 'p', '', publicNarrative(alignment.what_it_does_not_prove));
+    }
     const section = addSection(frame.article, 'Regional agreements and arrangements');
     const list = append(section, 'div', 'record-list');
     agreements.forEach(agreement => addProvenanceCard(list, context, {

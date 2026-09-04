@@ -103,9 +103,19 @@ def main() -> int:
     require(geography.get("artifact_role") == "PRESENTATION_REFERENCE_GEOGRAPHY", "reference geography role is not presentation-only")
     require((geography.get("metadata") or {}).get("version") == "5.1.1", "Natural Earth version is not pinned")
     require((geography.get("metadata") or {}).get("runtime_network_required") is False, "reference geography requires runtime network access")
-    require(GEOGRAPHY_PATH.stat().st_size < 250_000, "regional geography exceeds the lightweight public budget")
+    require(GEOGRAPHY_PATH.stat().st_size < 300_000, "regional geography exceeds the lightweight public budget")
     layers = {feature.get("properties", {}).get("layer") for feature in geography.get("features") or []}
     require(layers == {"regional_50m", "hormuz_10m"}, f"unexpected reference geography layers: {sorted(layers)}")
+    regional_names = {
+        feature.get("properties", {}).get("name")
+        for feature in geography.get("features") or []
+        if feature.get("properties", {}).get("layer") == "regional_50m"
+    }
+    required_context = {
+        "Bangladesh", "China", "Djibouti", "Egypt", "Iran", "Israel", "Kazakhstan",
+        "Nigeria", "Russia", "Saudi Arabia", "Somalia", "Sudan", "Turkey", "Yemen",
+    }
+    require(required_context <= regional_names, f"regional geography omits required theater/alignment/route context: {sorted(required_context - regional_names)}")
     for feature in geography.get("features") or []:
         require(set(feature.get("properties") or {}) == {"name", "iso_a3", "layer", "scale"}, "reference feature contains unnecessary attributes")
         for ring in rings(feature.get("geometry") or {}):
