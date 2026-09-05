@@ -47,7 +47,8 @@ jobs:
 
       - name: Run Gate 3 semantic validator
         run: |
-          python scripts/validate_gate3.py
+          set -o pipefail
+          python scripts/validate_gate3.py 2>&1 | tee gate3-validator.log
 
       - name: Build hardened Gate 3 public read model
         run: |
@@ -58,7 +59,16 @@ jobs:
           python scripts/build_canonical_current_state_v2_hardened.py --check --output data/canonical-current-state-v2.json
           python scripts/build_public_current_state_v2_hardened.py --check --output data/public-current-state-v2.json
 
+      - name: Upload Gate 3 diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate3-validation-diagnostics
+          path: gate3-validator.log
+          if-no-files-found: ignore
+
       - name: Upload generated Gate 3 read models
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: gate3-read-models-hardened
