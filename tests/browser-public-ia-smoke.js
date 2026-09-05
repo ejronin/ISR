@@ -165,16 +165,44 @@ async function loadDirectRoute(cdp, route) {
 
     await setRoute(cdp, ia.ROUTES.get('timeline.war'));
     const timeline = await cdp.eval(`(() => ({
-      phases: document.querySelectorAll('.timeline-phase').length,
-      cards: document.querySelectorAll('.timeline-phase .chronology-card').length,
-      maps: document.querySelectorAll('.timeline-phase [data-component="MapView"] .leaflet-container').length,
+      controller: document.querySelector('[data-timeline-controller]')?.dataset.timelineController,
+      clusters: document.querySelectorAll('.timeline-marker.cluster').length,
+      eventMarkers: document.querySelectorAll('.timeline-marker.event').length,
+      map: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"] .leaflet-container')),
+      controls: [...document.querySelectorAll('.timeline-controls input, .timeline-controls select, .timeline-navigation button')].map(node => node.getBoundingClientRect().height),
+      prewar: document.querySelector('[data-timeline-prewar]')?.dataset.timelinePrewar,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     const expectedTimelineCount = await cdp.eval(`window.ATLAS_PUBLIC_STATE.chronologyCount`);
-    assert.equal(timeline.phases, 6);
-    assert(timeline.cards > 10 && timeline.cards < expectedTimelineCount, 'primary timeline must emphasize representative developments');
-    assert(timeline.maps > 0, 'timeline phases with coordinates must expose spatial context');
+    assert.equal(timeline.controller, 'current-state');
+    assert(timeline.clusters > 0, 'broad timeline must cluster the full wartime record');
+    assert.equal(timeline.eventMarkers, 0, 'full-war view should not flatten every record into individual markers');
+    assert.equal(timeline.map, true, 'active timeline window must expose spatial context');
+    assert(timeline.controls.every(height => height >= 44), 'timeline controls must retain 44px touch targets');
+    assert.equal(timeline.prewar, 'distinct', 'prewar context must remain distinct from wartime duration');
     assert(timeline.text.includes(`Detailed Chronology retains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
+
+    const narrowedTimeline = await cdp.eval(`(() => {
+      const clickCluster = () => document.querySelector('.timeline-marker.cluster')?.click();
+      clickCluster();
+      if (!document.querySelector('.timeline-marker.event')) clickCluster();
+      return {
+        eventMarkers: document.querySelectorAll('.timeline-marker.event').length,
+        count: document.querySelector('.timeline-navigation .filter-result-count')?.textContent || ''
+      };
+    })()`);
+    assert(narrowedTimeline.eventMarkers > 0, 'selecting a cluster must expose individual event markers');
+    assert.match(narrowedTimeline.count, /wartime record/);
+    const selectedTimeline = await cdp.eval(`(() => {
+      const marker = document.querySelector('.timeline-marker.event');
+      marker.click();
+      return {
+        pressed: marker.getAttribute('aria-pressed'),
+        card: Boolean(document.querySelector('.timeline-selection .chronology-card')),
+        spatial: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"], .timeline-map-host .empty-state'))
+      };
+    })()`);
+    assert.deepEqual(selectedTimeline, { pressed: 'true', card: true, spatial: true }, 'event selection must coordinate marker, record and spatial state');
 
     const changedModelTimeline = await cdp.eval(`(async () => {
       const model = await fetch('./data/public-current-state.json', { cache: 'no-store' }).then(response => response.json());
@@ -270,7 +298,11 @@ async function loadDirectRoute(cdp, route) {
     }
 
     await setRoute(cdp, ia.ROUTES.get('military.losses'));
-    const losses = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
+    const losses = await cdp.eval(`(() => {
+      const method = document.querySelector('.casualty-method');
+      if (method) method.open = true;
+      return document.querySelector('main')?.innerText || '';
+    })()`);
     assert.match(losses, /18\s+Total military dead/);
     assert.match(losses, /757\s+WIA/);
     assert.match(losses, /1\s+MIA/);

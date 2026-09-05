@@ -1,9 +1,12 @@
 'use strict';
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -92,7 +95,7 @@ async function route(cdp, hash, key) {
       };
     })()`);
     if (losses.cardCount !== 52) console.error('Loss page diagnostics:', losses, await cdp.eval(`({state:window.ATLAS_PUBLIC_STATE,text:document.querySelector('main')?.innerText||document.body.innerText})`));
-    assert.equal(losses.stateCount, 205);
+    assert.equal(losses.stateCount, model.counts.chronology_records);
     assert.equal(losses.cardCount, 52);
     assert.equal(losses.uniqueIds, 52);
     assert.equal(losses.visibleCount, 52);
@@ -181,7 +184,6 @@ async function route(cdp, hash, key) {
 
     console.log('browser public losses/actors Batch 2: PASS - complete 52-record ledger, filters, two accessible charts, approved detail consumers, 115-identity directory, signed flags, non-state semantics, Weapons linkage, and 320/390px rendering verified');
   } finally {
-    try { await cdp.call('Browser.close'); } catch (_) { /* workflow cleanup remains the fallback */ }
     cdp.close();
   }
 })().catch(error => { console.error(error.stack || error); process.exitCode = 1; });

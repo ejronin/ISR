@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -13,10 +14,17 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_public_current_state_v2 as public_core
 
 OUT = "data/public-current-state-v2.json"
+SCHEMA = "schemas/public-current-state-v2.json"
+GENERATOR = "scripts/build_public_current_state_v2_hardened.py"
+GENERATOR_VERSION = "2.0"
 
 
 def canonical_bytes(value: Any) -> bytes:
     return (json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode("utf-8")
+
+
+def sha256(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
 
 
 def build_state(root: Path = ROOT) -> dict[str, Any]:
@@ -34,6 +42,44 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     canonical = json.loads((root / "data/canonical-current-state-v2.json").read_text(encoding="utf-8"))
     counts["gate3_source_reliability_records"] = len(canonical["entities"].get("source_reliability") or [])
     counts["gate3_forensic_proposition_records"] = canonical["counts"].get("gate3_forensic_proposition_records", 0)
+    counts["gate3_daily_coverage_days"] = len(canonical.get("daily_coverage") or [])
+    counts["chronology_referenced_sources"] = len({
+        source_id for item in state.get("chronology") or [] for source_id in item.get("source_ids") or []
+    })
+    counts["page_dataset_referenced_sources"] = len(public_core.public_v1.extract_source_ids(state.get("datasets") or {}))
+
+    input_roles = {
+        "data/canonical-current-state-v2.json": "DERIVED_GATE3_CANONICAL_CURRENT_STATE",
+        "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
+        GENERATOR: "PHASE9_PUBLIC_READ_MODEL_GENERATOR",
+        SCHEMA: "PHASE9_PUBLIC_READ_MODEL_SCHEMA",
+    }
+    input_files = {item["path"]: item for item in state.get("input_files") or []}
+    for path, role in input_roles.items():
+        raw = public_core.public_v1.canonical_input_bytes((root / path).read_bytes())
+        input_files[path] = {
+            "path": path,
+            "sha256": sha256(raw),
+            "bytes": len(raw),
+            "hash_basis": "UTF8_LF_NORMALIZED",
+            "roles": [role],
+        }
+    state["input_files"] = [input_files[path] for path in sorted(input_files)]
+    input_set_material = "".join(
+        f"{item['path']}\0{item['sha256']}\n" for item in state["input_files"]
+    ).encode("utf-8")
+    input_set_sha256 = sha256(input_set_material)
+    state["release"]["input_set_sha256"] = input_set_sha256
+    state["release"]["release_identity"] = f"public-current-v2-{input_set_sha256[:16]}"
+    generator_raw = public_core.public_v1.canonical_input_bytes((root / GENERATOR).read_bytes())
+    schema_raw = public_core.public_v1.canonical_input_bytes((root / SCHEMA).read_bytes())
+    state["generator"] = {
+        "version": GENERATOR_VERSION,
+        "script_path": GENERATOR,
+        "script_sha256": sha256(generator_raw),
+        "schema_path": SCHEMA,
+        "schema_sha256": sha256(schema_raw),
+    }
     state.setdefault("integrity", {}).update({
         "source_count_metadata_current": counts["source_records"] == actual,
         "source_reliability_populated": counts["gate3_source_reliability_records"] > 0,
