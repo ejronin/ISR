@@ -86,6 +86,7 @@ jobs:
           node --check tests/browser-public-loss-actor-batch2.js
           node --check tests/browser-public-parity-batch3.js
           node --check tests/browser-public-phase9.js
+          node --check tests/browser-public-responsive-phase9.js
           python scripts/assemble_public_site.py --output _site
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
           python scripts/assemble_public_site.py --output _site --check --require-build-info
@@ -227,6 +228,7 @@ jobs:
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-map-phase6.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-parity-batch3.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-loss-actor-batch2.js
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-responsive-phase9.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-phase9.js
       - name: Validate static atlas
         run: python scripts/validate.py

@@ -181,6 +181,41 @@ async function route(cdp, hash, key) {
     assert(ledger.controls.every(height => height >= 44), 'Lie Ledger has a touch target below 44px');
     assert.match(ledger.text, /A false claim is not automatically a lie/);
 
+    const acceptedNarrativeFunctions = records('gate3.lie_ledger').map(record => ({
+      claimId: record.claim_id,
+      narrativeFunction: typeof record.narrative_function === 'string' ? record.narrative_function.trim() : '',
+      displayValue: typeof record.narrative_function === 'string' ? ia.publicNarrative(record.narrative_function) : '',
+      truthAdjudication: String(record.truth_adjudication || '').toLowerCase(),
+      deceptionScore: String(record.deception_score)
+    }));
+    assert.equal(acceptedNarrativeFunctions.filter(record => record.narrativeFunction).length, 15, 'accepted populated narrative-function count changed');
+    const narrativeFunctionDetails = await cdp.eval(`(() => {
+      const accepted = ${JSON.stringify(acceptedNarrativeFunctions)};
+      return accepted.map(record => {
+        const row = [...document.querySelectorAll('[data-claim-id]')].find(node => node.dataset.claimId === record.claimId);
+        row.open = true;
+        const terms = [...row.querySelectorAll('.lie-ledger-detail dt')];
+        const term = terms.find(node => node.textContent.trim() === 'Narrative function');
+        const value = term?.nextElementSibling?.textContent.trim() || '';
+        return {
+          claimId: record.claimId,
+          populated: Boolean(record.narrativeFunction),
+          exposed: Boolean(term),
+          value,
+          valueMatches: value === record.displayValue,
+          machineTokens: value.match(/\\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\\b/g) || [],
+          truthUnchanged: row.dataset.truthAdjudication === record.truthAdjudication,
+          deceptionUnchanged: row.dataset.deceptionScore === record.deceptionScore
+        };
+      });
+    })()`);
+    const populatedNarrativeFunctionDetails = narrativeFunctionDetails.filter(record => record.populated);
+    const emptyNarrativeFunctionDetails = narrativeFunctionDetails.filter(record => !record.populated);
+    assert.equal(populatedNarrativeFunctionDetails.length, 15);
+    assert(populatedNarrativeFunctionDetails.every(record => record.exposed && record.value && record.valueMatches && !record.machineTokens.length), 'a populated narrative function is missing, not humanized by the public-language system, or exposes machine language');
+    assert(emptyNarrativeFunctionDetails.every(record => !record.exposed && !record.value), 'an empty narrative function was invented');
+    assert(narrativeFunctionDetails.every(record => record.truthUnchanged && record.deceptionUnchanged), 'narrative-function display changed truth or deception findings');
+
     const publicLanguageLeaks = [];
     for (const routeRecord of ia.ROUTES.values()) {
       await route(cdp, ia.routeHref(routeRecord.key), routeRecord.key);
@@ -220,7 +255,7 @@ async function route(cdp, hash, key) {
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 
-    console.log(`browser public Phase 9: PASS - ${timeline.count} current records through ${timeline.cutoff}; interactive spatial timeline, full chronology, side-ledger losses, progressive imagery, human labels, and ${ledger.claims} Lie Ledger propositions verified`);
+    console.log(`browser public Phase 9: PASS - ${timeline.count} current records through ${timeline.cutoff}; interactive spatial timeline, full chronology, side-ledger losses, progressive imagery, human labels, and ${ledger.claims} Lie Ledger propositions including ${populatedNarrativeFunctionDetails.length} narrative functions verified`);
   } finally {
     try { await cdp.call('Browser.close'); } catch (_) { /* workflow cleanup is the fallback */ }
     cdp.close();

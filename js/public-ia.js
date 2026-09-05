@@ -1161,7 +1161,11 @@
           L.marker([label.lat, label.lon], { pane: 'atlas-labels', interactive: false, icon: L.divIcon({ className: `reference-map-label ${label.kind || ''}`, html: `<span>${String(label.label).replace(/[<>&]/g, '')}</span>`, iconSize: null }) }).addTo(map);
         });
         mapHost.addEventListener('keydown', event => { if (event.key === 'Escape' && !cardHost.hidden) { event.preventDefault(); cardHost.hidden = true; cardHost.replaceChildren(); } });
-        if (root.requestAnimationFrame) root.requestAnimationFrame(() => { map.invalidateSize(false); fitVisibleGeography(); });
+        if (root.requestAnimationFrame) root.requestAnimationFrame(() => {
+          if (!section.isConnected || !map._mapPane) return;
+          map.invalidateSize(false);
+          fitVisibleGeography();
+        });
         section._atlasMap = map;
       } else {
         append(mapHost, 'p', 'empty-state', 'The authorized local reference geography is unavailable. Textual locations remain below.');
@@ -3185,6 +3189,7 @@
           ['Truth adjudication', plainLabel(record.truth_adjudication, 'Unresolved')],
           ['Deception score', `${record.deception_score} — ${deceptionLabels[Number(record.deception_score)] || 'Basis recorded below'}`],
           ['Deception basis', publicNarrative(record.deception_basis)],
+          ['Narrative function', firstText(record.narrative_function) ? publicNarrative(record.narrative_function) : null],
           ['Knowledge access', plainLabel(record.knowledge_access, 'Not established')],
           ['Knowledge-access basis', publicNarrative(record.knowledge_access_note, 'No separate knowledge-access basis is recorded.')],
           ['Confidence', plainLabel(record.confidence, 'Unresolved')],
