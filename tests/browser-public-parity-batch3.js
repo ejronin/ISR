@@ -1,10 +1,13 @@
 'use strict';
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const ia = require('../js/public-ia.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -104,8 +107,8 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       throw error;
     }
     assert.equal(coverage.routeCount, 25);
-    assert.equal(coverage.coveredDatasetCount, 76);
-    assert.equal(coverage.datasetWaiverCount, 40);
+    assert.equal(coverage.coveredDatasetCount, Object.keys(model.datasets).length + 2);
+    assert.equal(coverage.datasetWaiverCount, model.consumer_coverage.dataset_waivers.length);
     assert.equal(coverage.routeWaiverCount, 0);
     assert.equal(Object.keys(diagnostics.routeAccesses).length, 25);
     assert.deepEqual(diagnostics.sharedAccesses, ['current.actors', 'current.locations', 'current.sources']);

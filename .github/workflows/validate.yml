@@ -52,6 +52,13 @@ jobs:
           python scripts/build_public_current_state.py
           python scripts/build_public_current_state.py --check
           python scripts/validate_public_current_state.py
+          python scripts/build_canonical_current_state_v2_final.py --output data/canonical-current-state-v2.json
+          python scripts/validate_gate3_final.py
+          python tests/gate3-packet-hash-portability.test.py
+          python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state.json
+          python scripts/build_canonical_current_state_v2_final.py --check --output data/canonical-current-state-v2.json
+          python scripts/build_public_current_state_v2_hardened.py --check --output data/public-current-state.json
+          python scripts/validate_public_current_state_v2.py
           python scripts/build_public_release.py
           python scripts/build_public_release.py --check
           python scripts/validate_public_deployment.py
@@ -68,6 +75,7 @@ jobs:
           node tests/public-map-phase6.test.js
           node tests/public-loss-actor-batch2.test.js
           node tests/public-parity-batch3.test.js
+          node tests/public-phase9.test.js
           node --check js/public-bootstrap.js
           node --check js/public-app.js
           node --check js/public-ia.js
@@ -77,6 +85,7 @@ jobs:
           node --check tests/browser-public-map-phase6.js
           node --check tests/browser-public-loss-actor-batch2.js
           node --check tests/browser-public-parity-batch3.js
+          node --check tests/browser-public-phase9.js
           python scripts/assemble_public_site.py --output _site
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
           python scripts/assemble_public_site.py --output _site --check --require-build-info
@@ -218,6 +227,7 @@ jobs:
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-map-phase6.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-parity-batch3.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-loss-actor-batch2.js
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-phase9.js
       - name: Validate static atlas
         run: python scripts/validate.py
       - name: Validate historical-ledger integration

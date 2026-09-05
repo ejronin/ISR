@@ -16,7 +16,7 @@
   const APPLICATION_VERSION = 'atlas-public-shell-v1';
   const MODEL_URL = './data/public-current-state.json';
   const RELOAD_ATTEMPT_KEY = 'atlas-public-release-reload-attempted-v1';
-  const EXPECTED_MODEL_SCHEMA = '1.0';
+  const EXPECTED_MODEL_SCHEMA = '2.0';
   const EXPECTED_MANIFEST_SCHEMA = '1.0';
 
   class AtlasBootError extends Error {
@@ -47,28 +47,28 @@
    * into every generated page-data mapping by the public read-model builder.
    */
   const ROUTE_DATA_DEPENDENCIES = Object.freeze({
-    'start.overview': freezeContract('start_here', ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view']),
+    'start.overview': freezeContract('start_here', ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view', 'gate3.gaps']),
     'start.actors': freezeContract('start_here', ['current.actors']),
-    'timeline.war': freezeContract('timeline', ['current.chronology']),
-    'timeline.chronology': freezeContract('timeline', ['current.chronology']),
-    'military.campaigns': freezeContract('military_record', ['current.chronology', 'reconciliation.strikes', 'forensic.damage_observations', 'forensic.facility_claim_audits', 'ledger.facilities']),
-    'military.facilities': freezeContract('military_record', ['ledger.facilities', 'forensic.facility_claim_audits']),
+    'timeline.war': freezeContract('timeline', ['current.chronology', 'gate3.daily_coverage']),
+    'timeline.chronology': freezeContract('timeline', ['current.chronology', 'gate3.daily_coverage']),
+    'military.campaigns': freezeContract('military_record', ['current.chronology', 'reconciliation.strikes', 'forensic.damage_observations', 'forensic.facility_claim_audits', 'ledger.facilities', 'gate3.movements']),
+    'military.facilities': freezeContract('military_record', ['ledger.facilities', 'forensic.facility_claim_audits', 'gate3.facilities']),
     'military.weapons': freezeContract('military_record', ['ledger.munitions_expenditure', 'ledger.attrition_series', 'current.material_losses', 'analysis.asset_display', 'forensic.loss_envelopes', 'forensic.aviation_reconciliation']),
-    'military.losses': freezeContract('military_record', ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections']),
-    'military.imagery': freezeContract('military_record', ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations']),
-    'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'ledger.shipping']),
-    'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses']),
-    'hormuz.economy': freezeContract('hormuz_economy', ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes']),
+    'military.losses': freezeContract('military_record', ['current.material_losses', 'forensic.loss_envelopes', 'forensic.leadership_casualties', 'forensic.aviation_reconciliation', 'forensic.pilot_rescue_timeline', 'analysis.asset_display', 'analysis.casualty_corrections', 'gate3.casualties']),
+    'military.imagery': freezeContract('military_record', ['current.chronology', 'ledger.bda_overlays', 'ledger.facilities', 'forensic.facility_claim_audits', 'forensic.damage_observations', 'gate3.facilities']),
+    'hormuz.overview': freezeContract('hormuz_economy', ['analysis.hormuz', 'ledger.shipping', 'gate3.shipping']),
+    'hormuz.shipping': freezeContract('hormuz_economy', ['ledger.shipping', 'analysis.oil_routes', 'analysis.hormuz', 'current.material_losses', 'gate3.shipping']),
+    'hormuz.economy': freezeContract('hormuz_economy', ['ledger.economics', 'analysis.china_oil_shift', 'analysis.oil_routes', 'gate3.economics']),
     'hormuz.talks': freezeContract('hormuz_economy', ['current.chronology', 'analysis.hormuz']),
-    'talks.overview': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy']),
+    'talks.overview': freezeContract('diplomacy_mou', ['ledger.agreements', 'ledger.diplomacy', 'gate3.agreements', 'gate3.diplomacy']),
     'talks.mou': freezeContract('diplomacy_mou', ['analysis.hormuz', 'analysis.endgame_public_view']),
     'talks.nuclear': freezeContract('diplomacy_mou', ['analysis.iran_messaging', 'analysis.endgame_public_view']),
-    'talks.regional': freezeContract('diplomacy_mou', ['ledger.agreements']),
+    'talks.regional': freezeContract('diplomacy_mou', ['ledger.agreements', 'gate3.agreements']),
     'objectives.outcomes': freezeContract('objectives_position_changes', ['analysis.iran_outcomes', 'analysis.endgame_us_objectives', 'analysis.endgame_objective_corrections']),
     'objectives.positions': freezeContract('objectives_position_changes', ['analysis.endgame_us_objectives', 'analysis.iran_messaging']),
     'objectives.iran': freezeContract('objectives_position_changes', ['analysis.iran_messaging']),
     'evidence.claims': freezeContract('claims_sources', ['current.claims']),
-    'evidence.information': freezeContract('claims_sources', ['analysis.information_war_claims', 'analysis.influence_networks']),
+    'evidence.information': freezeContract('claims_sources', ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability']),
     'evidence.sources': freezeContract('claims_sources', []),
     'evidence.method': freezeContract('claims_sources', []),
     'evidence.archive': freezeContract('claims_sources', ['archive.snapshot_index'])
@@ -383,12 +383,19 @@
     invariant(ids.every(Boolean) && new Set(ids).size === ids.length, 'MODEL_INVALID', 'The chronology contains a missing or duplicate event ID.');
     const sourceRecords = model.sources && Array.isArray(model.sources.records) ? model.sources.records : [];
     const sourceIds = new Set(sourceRecords.map(source => source.source_id));
+    const sourceById = new Map(sourceRecords.map(source => [source.source_id, source]));
     invariant(sourceIds.size === sourceRecords.length, 'MODEL_INVALID', 'The source catalog contains duplicate IDs.');
     for (const item of model.chronology) {
       invariant(Array.isArray(item.provenance) && item.provenance.length > 0, 'MODEL_INVALID', `Chronology provenance is incomplete for ${item.event_id}.`);
       invariant(Array.isArray(item.source_references), 'MODEL_INVALID', `Source provenance is incomplete for ${item.event_id}.`);
       for (const reference of item.source_references) {
-        invariant(sourceIds.has(reference.source_id) && reference.variant_key, 'MODEL_INVALID', `A source reference does not resolve for ${item.event_id}.`);
+        const source = sourceById.get(reference.source_id);
+        invariant(source, 'MODEL_INVALID', `A source reference does not resolve for ${item.event_id}.`);
+        if (reference.variant_key) {
+          invariant((source.variants || []).some(variant => variant.variant_key === reference.variant_key), 'MODEL_INVALID', `A source variant does not resolve for ${item.event_id}.`);
+        } else {
+          invariant(source.resolution === 'PROVENANCE_SCOPED_VARIANTS_REQUIRED', 'MODEL_INVALID', `An unscoped source reference is not an explicit preserved conflict for ${item.event_id}.`);
+        }
       }
     }
     invariant(model.integrity && model.integrity.duplicate_event_ids === 0, 'MODEL_INVALID', 'The current-state integrity block reports duplicate events.');

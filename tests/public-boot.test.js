@@ -119,14 +119,14 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
 
   const runtime = fakeAuthorizedRuntime();
   assert.equal(app.validateRuntimeAuthorization(runtime.authorization, runtime.executingScript, runtime.documentObject), manifest);
-  assert.equal(model.counts.chronology_records, 205);
-  assert.equal(model.release.current_osint_cutoff, '2026-08-27T08:25:00-04:00');
+  assert.equal(model.counts.chronology_records, model.chronology.length);
+  assert.equal(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
   assert.equal(manifest.current_state.release_identity, model.release.release_identity);
   assert.equal(digest(read('data/public-current-state.json')), manifest.current_state.sha256);
   assert.equal(byteLength(read('data/public-current-state.json')), manifest.current_state.bytes);
 
   const loaded = await app.loadCurrentRecord({ manifest, fetchImpl: fixtureFetch });
-  assert.equal(loaded.model.chronology.length, 205);
+  assert.equal(loaded.model.chronology.length, model.counts.chronology_records);
   assert.equal(loaded.manifest.release_identity, manifest.release_identity);
   assert(loaded.performance.model_transfer_bytes > 4_000_000, 'Phase 2 model transfer observation must remain explicit');
   assert(loaded.performance.model_parse_milliseconds >= 0);
@@ -195,7 +195,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   assert(legacy.includes('>108</b><span>current chronology records'), 'retired presentation reference must preserve its obsolete baseline state');
   assert(!index.includes('legacy/phase1-public-runtime-reference.html'), 'retired presentation reference must not enter current boot');
 
-  console.log('public boot contract: PASS - neutral bootstrap, content-addressed SRI assets, runtime authorization, 205-record model, mismatch rejection, and retired successor chain verified');
+  console.log(`public boot contract: PASS - neutral bootstrap, content-addressed SRI assets, runtime authorization, ${model.counts.chronology_records}-record model, mismatch rejection, and retired successor chain verified`);
 })().catch(error => {
   console.error(error.stack || error);
   process.exitCode = 1;

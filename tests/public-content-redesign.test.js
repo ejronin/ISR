@@ -9,8 +9,8 @@ const model = JSON.parse(fs.readFileSync(path.join(root, 'data', 'public-current
 const source = fs.readFileSync(path.join(root, 'js', 'public-ia.js'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'css', 'public-shell.css'), 'utf8');
 
-assert.equal(model.counts.chronology_records, 205, 'Phase 4 must retain the accepted chronology');
-assert.equal(model.release.current_osint_cutoff_display, '2026-08-27 08:25 ET', 'Phase 4 must derive current status from the accepted read model');
+assert.equal(model.counts.chronology_records, model.chronology.length, 'public copy must derive the accepted chronology count');
+assert.equal(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff, 'public status must derive from the accepted read model');
 assert.equal(ia.ROUTES.size, 25, 'Phase 4 must retain all accepted public routes');
 assert.equal(new Set([...ia.ROUTES.values()].map(route => route.owner)).size, 25, 'each route must retain one page owner');
 assert([...ia.ROUTES.values()].every(route => route.dataKeys.every(key => !key.startsWith('legacy.'))), 'a current route maps a legacy dataset');

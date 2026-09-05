@@ -25,7 +25,7 @@ const expectedSecondary = {
   hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Current Hormuz Talks'],
   talks: ['Talks & Agreements', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
   objectives: ['Objectives & Outcomes', 'Position Changes', "How Iran's Position Changed"],
-  evidence: ['Claim Checks', 'Information Environment', 'Sources', 'How We Check the Evidence', 'Archive']
+  evidence: ['Claim Checks', 'Lie Ledger', 'Sources', 'How We Check the Evidence', 'Archive']
 };
 for (const [primary, labels] of Object.entries(expectedSecondary)) {
   assert.deepEqual(ia.routesForPrimary(primary).map(route => route.label), labels, `secondary navigation mismatch: ${primary}`);
@@ -140,8 +140,9 @@ assert.deepEqual(
 );
 assert.deepEqual(ia.EvidenceStatus.viewModel({ support: null }), { support: 'Unknown', dispute: null });
 assert.notEqual(ia.EvidenceStatus.viewModel({ support: null }).support, '0');
-assert.equal(ia.displayTerm('CURRENT_OVERLAY', 'Unknown'), 'Unknown');
-assert.equal(ia.displayTerm('NOT_YET_ADJUDICABLE', 'Unknown'), 'Unknown');
+assert.equal(ia.displayTerm('CURRENT_OVERLAY', 'Unknown'), 'Current overlay');
+assert.equal(ia.displayTerm('NOT_YET_ADJUDICABLE', 'Unknown'), 'Not yet adjudicable');
+assert.equal(ia.displayTerm('naval_strike', 'Unknown'), 'Naval strike');
 
 const publicLabels = [
   ...ia.PRIMARY_SECTIONS.map(section => section.label),

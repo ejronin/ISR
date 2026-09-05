@@ -12,6 +12,16 @@ PLURAL={"actor":"actors","location":"locations","claim":"claims","material_loss"
 def load(root,p): return json.loads((root/p).read_text(encoding="utf-8"))
 def cbytes(x): return (json.dumps(x,ensure_ascii=False,sort_keys=True,indent=2)+"\n").encode()
 def sha(b): return hashlib.sha256(b).hexdigest()
+def canonical_packet_text_bytes(raw):
+    """Return manifest-hash bytes for repository JSON text.
+
+    Accepted v2 packet hashes describe the repository's LF text content, not a
+    platform-specific checkout representation.  This deliberately changes
+    newline representation only; JSON is never parsed or reserialized before
+    its manifest hash is checked, so every substantive byte still matters.
+    """
+    raw.decode("utf-8")
+    return raw.replace(b"\r\n", b"\n")
 def dt(x):
     d=datetime.fromisoformat(x)
     if d.tzinfo is None: raise ValueError(f"timestamp needs offset: {x}")
@@ -193,7 +203,7 @@ def build_state(root=ROOT):
     prior=dt(base["release"]["current_osint_cutoff"]); accepted=[]
     for n,e in enumerate(man["accepted_updates"],1):
         if e["sequence"]!=n: raise ValueError("packet sequence gap")
-        raw=(root/e["path"]).read_bytes()
+        raw=canonical_packet_text_bytes((root/e["path"]).read_bytes())
         if sha(raw)!=e["sha256"]: raise ValueError(f"packet hash changed {e['path']}")
         p=json.loads(raw); known=dt(p["known_at"])
         if known<=prior or known>dt(man["gate2_evidence_cutoff"]): raise ValueError("packet knowledge order/cutoff violation")

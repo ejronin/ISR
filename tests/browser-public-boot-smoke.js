@@ -169,10 +169,11 @@ function base64(value) {
       ].some(Boolean)
     }))()`);
     assert.equal(ready.status, 'ready');
-    assert.equal(ready.count, 205);
-    assert.equal(ready.cutoff, '2026-08-27T08:25:00-04:00');
+    assert.equal(ready.count, model.counts.chronology_records);
+    assert.equal(ready.cutoff, model.release.current_osint_cutoff);
     assert.match(ready.release, /^public-release-v1-[a-f0-9]{16}$/);
-    assert.match(ready.currentRelease, /^public-current-v1-[a-f0-9]{16}$/);
+    assert.equal(ready.currentRelease, manifest.current_state.release_identity);
+    assert.match(ready.currentRelease, /^public-current-v2-[a-f0-9]{16}$/);
     assert.equal(ready.authorization.release, ready.release);
     assert.equal(ready.authorization.entrypoint, entrypoint.path);
     assert.deepEqual(ready.authorization.runtimes, [mapRuntime.path, pageRegistry.path]);
@@ -286,7 +287,7 @@ function base64(value) {
     }
     const observedPaths = [...new Set(networkRequests.map(request => request.pathname))].sort();
 
-    console.log(`browser public boot smoke: PASS — neutral cold shell; 205 records rendered; parse ${ready.performance.model_parse_milliseconds.toFixed(1)}ms; fetch failure, exact split-release SRI rejection, controlled manifest mismatch, and closed request allowlist (${observedPaths.join(', ')}) verified`);
+    console.log(`browser public boot smoke: PASS — neutral cold shell; ${ready.count} records rendered; parse ${ready.performance.model_parse_milliseconds.toFixed(1)}ms; fetch failure, exact split-release SRI rejection, controlled manifest mismatch, and closed request allowlist (${observedPaths.join(', ')}) verified`);
   } finally {
     cdp.close();
   }
