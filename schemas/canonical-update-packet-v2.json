@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.local/schemas/canonical-update-packet-v2.json",
+  "title": "ATLAS canonical update packet v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","packet_id","known_at","evidence_cutoff","summary","sources","events","entities","narrative_claims"],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "packet_id": {"type":"string","pattern":"^UPD-[0-9]{8}-[A-Z0-9-]+$"},
+    "known_at": {"type":"string","format":"date-time"},
+    "evidence_cutoff": {"type":"string","format":"date-time"},
+    "summary": {"type":"string","minLength":1},
+    "sources": {"type":"array","items":{"type":"object","required":["source_id","url","source_role"],"properties":{"source_id":{"type":"string","pattern":"^SRC-[A-F0-9]{12}$"},"url":{"type":"string"},"source_role":{"type":"string"}},"additionalProperties":true}},
+    "events": {"type":"array","items":{"type":"object","required":["event_id","event_date","summary","event_class","source_ids"],"properties":{"event_id":{"type":"string"},"event_date":{"type":"string","format":"date"},"summary":{"type":"string"},"event_class":{"enum":["CORE_WARTIME_EVENT","RELATED_THEATER_CONTEXT","DIPLOMATIC_OR_POLICY_EVENT","STATE_SNAPSHOT","PERIOD_ASSESSMENT"]},"strike_countable":{"type":"boolean"},"source_ids":{"type":"array","minItems":1,"items":{"type":"string","pattern":"^SRC-[A-F0-9]{12}$"},"uniqueItems":true}},"additionalProperties":true}},
+    "entities": {"type":"array","items":{"type":"object","required":["entity_type","entity_id","record"],"properties":{"entity_type":{"enum":["actor","location","claim","material_loss","casualty","agreement","diplomacy","facility","movement","shipping","economic","gap","narrative_claim","narrative_family","information_chain","source_reliability","legacy_disposition","side_ledger_disposition","relationship"]},"entity_id":{"type":"string","minLength":3},"mode":{"enum":["add","update"]},"record":{"type":"object"}},"additionalProperties":false}},
+    "narrative_claims": {"type":"array","items":{"type":"object","required":["claim_id","claim","proposition","truth_adjudication","deception_score","deception_basis","source_ids"],"properties":{"claim_id":{"type":"string"},"truth_adjudication":{"enum":["VERIFIED_TRUE","SUPPORTED","UNRESOLVED","EXAGGERATED_OVERSTATED","MISLEADING","CONTRADICTED_BY_OBSERVED_BEHAVIOR","DISPROVEN","RETRACTED_CORRECTED","KNOWING_FALSEHOOD_LIE"]},"deception_score":{"type":"integer","minimum":0,"maximum":4},"source_ids":{"type":"array","minItems":1,"items":{"type":"string"}},"claim":{"type":"string"},"proposition":{"type":"string"},"deception_basis":{"type":"string"}},"additionalProperties":true}}
+  }
+}
