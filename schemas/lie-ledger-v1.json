@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.local/schemas/lie-ledger-v1.json",
+  "title": "ATLAS Lie Ledger claim/contradiction/deception record",
+  "type": "object",
+  "required": ["claim_id","claim","proposition","truth_adjudication","deception_score","deception_basis","source_ids"],
+  "properties": {
+    "claim_id":{"type":"string"},
+    "claim":{"type":"string"},
+    "proposition":{"type":"string"},
+    "truth_adjudication":{"enum":["VERIFIED_TRUE","SUPPORTED","UNRESOLVED","EXAGGERATED_OVERSTATED","MISLEADING","CONTRADICTED_BY_OBSERVED_BEHAVIOR","DISPROVEN","RETRACTED_CORRECTED","KNOWING_FALSEHOOD_LIE"]},
+    "deception_score":{"type":"integer","minimum":0,"maximum":4},
+    "deception_basis":{"type":"string"},
+    "source_ids":{"type":"array","minItems":1,"items":{"type":"string"}},
+    "event_tree":{"type":"array"},
+    "knowledge_access":{"type":"string"},
+    "event_time":{},
+    "knowledge_time":{},
+    "narrative_function":{"type":"string"},
+    "what_would_change_rating":{"type":"string"}
+  },
+  "additionalProperties": true
+}
