@@ -8,13 +8,16 @@ These requirements do not alter the Gate 3 evidence cutoff or canonical adjudica
 
 - If canonical Gate 3 chronology or daily coverage is missing part of the conflict period, that is a Gate 3 evidence defect.
 - If canonical Gate 3 chronology and daily coverage span the conflict but a page truncates, filters away, or fails to expose that material, that is a Phase 9 consumer/presentation defect.
-- Gate 3 validation must prove daily coverage from **2026-02-28 through 2026-09-05** with no missing dates.
+- Gate 3 validation must prove wartime daily coverage from **2026-02-28 through 2026-09-05** with no missing dates.
+- The canonical chronology may retain **prewar contextual events** when they materially explain the road to war, White House/U.S. justification, Iranian behavior, treaty/policy context, prior attacks, or another causal predicate relevant to understanding later wartime claims or decisions.
+- Prewar context must not redefine conflict Day 1 or inflate the war-duration count. It should be represented as context and visually distinguished from wartime events in the public timeline.
 
 ## Phase 9 acceptance requirements
 
 ### 1. Complete chronology and interactive timeline
 
 - The Detailed chronology view must expose the full validated Gate 3 chronology across the war period, not a partial date range.
+- Relevant prewar context may also appear where it materially explains later wartime claims, decisions or causal chains; it should be clearly labeled as prewar context rather than mixed into the wartime duration count.
 - Restore or redesign a true chronological timeline with selectable event markers.
 - Geolocatable timeline events must be able to select/focus their associated map point; map controls must support useful zoom and selection.
 - The replacement should improve on the older timeline/map interaction rather than merely reproducing it.
@@ -76,7 +79,7 @@ The existing Phase 8.5 / Gate 2 guardrails remain binding during all Phase 9 red
 
 Phase 9 should add automated consumer/UI checks where practical for:
 
-- full chronology date-span consumption;
+- full wartime chronology date-span consumption, while permitting clearly labeled relevant prewar context;
 - no raw underscore enum tokens in visible UI text;
 - state-actor flag rendering and non-state flag exclusion;
 - side-separated loss presentation;
