@@ -27,6 +27,7 @@ jobs:
         run: |
           node --check js/public-ia.js
           node --check tests/browser-public-source-humanization-focus.js
+          node --check tests/browser-public-full-stack-audit.js
           python scripts/build_source_registry.py --root .
           python scripts/build_canonical_current_state.py
           python scripts/build_public_current_state.py
@@ -35,7 +36,7 @@ jobs:
           python scripts/build_public_release.py
           python scripts/assemble_public_site.py --output _site
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
-      - name: Qualify source humanization at 390px
+      - name: Qualify full public stack and source humanization
         shell: bash
         run: |
           set -euo pipefail
@@ -71,4 +72,5 @@ jobs:
             cat /tmp/atlas-humanization-chrome.log >&2 || true
             exit 1
           fi
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-full-stack-audit.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-source-humanization-focus.js
