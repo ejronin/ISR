@@ -307,7 +307,7 @@ async function loadDirectRoute(cdp, route) {
     assert.match(losses, /757\s+WIA/);
     assert.match(losses, /1\s+MIA/);
     assert.match(losses, /2,008\s+military-death subtotal/);
-    assert.match(losses, /52 current material-loss records/);
+    assert.match(losses, /52\s+material-loss records/);
     assert(!/\b\d[\d,]*\s+total casualties\b/i.test(losses), 'loss page displays an invalid unique-person grand total');
     assert.match(losses, /does not calculate [“"]total casualties\s*=\s*dead/i, 'loss page omits the approved anti-double-counting warning');
 
