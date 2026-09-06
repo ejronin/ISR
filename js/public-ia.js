@@ -1665,7 +1665,7 @@
         append(family, 'h2', '', familyName);
         append(family, 'p', '', `${familyCount.toLocaleString()} source record${familyCount === 1 ? '' : 's'}`);
         Array.from(originMap.entries()).sort(([left], [right]) => left.localeCompare(right)).forEach(([originName, outletMap]) => {
-          const origin = append(family, 'section', 'source-origin'); append(origin, 'h3', '', originName);
+          const origin = append(family, 'section', 'source-origin'); append(origin, 'h3', '', displayTerm(originName, 'Other / not classified'));
           Array.from(outletMap.entries()).sort(([left], [right]) => left.localeCompare(right)).forEach(([outletName, outletRows]) => {
             const details = append(origin, 'details', 'source-outlet');
             const summary = append(details, 'summary'); append(summary, 'span', 'source-outlet-name', outletName); append(summary, 'span', 'source-outlet-count', `${outletRows.length.toLocaleString()} item${outletRows.length === 1 ? '' : 's'}`);
