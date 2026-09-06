@@ -203,7 +203,7 @@ async function route(cdp, hash, key) {
           exposed: Boolean(term),
           value,
           valueMatches: value === record.displayValue,
-          machineTokens: value.match(/\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\b/g) || [],
+          machineTokens: value.match(/\\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\\b/g) || [],
           truthUnchanged: row.dataset.truthAdjudication === record.truthAdjudication,
           deceptionUnchanged: row.dataset.deceptionScore === record.deceptionScore
         };
@@ -226,7 +226,7 @@ async function route(cdp, hash, key) {
           .flatMap(node => [node.getAttribute('aria-label'), node.getAttribute('title'), node.tagName === 'OPTION' ? node.textContent : ''])
           .filter(Boolean).join(' ');
         return {
-          machine: [...new Set((visible + ' ' + labels).match(/\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\b/g) || [])],
+          machine: [...new Set((visible + ' ' + labels).match(/\\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\\b/g) || [])],
           internal: ['Do not add the headline categories', 'No machine-readable footprint/damage polygons were supplied', 'Do not create polygons or percentages from prose'].filter(phrase => visible.includes(phrase))
         };
       })()`);
