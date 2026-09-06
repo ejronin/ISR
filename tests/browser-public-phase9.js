@@ -92,7 +92,7 @@ async function route(cdp, hash, key) {
     assert.equal(timeline.prewar, 'distinct');
     assert(timeline.controls.every(height => height >= 44), 'timeline has a touch target below 44px');
     assert(timeline.copy.includes(`Detailed Chronology contains all ${model.counts.chronology_records} records.`));
-    assert.match(timeline.copy, /190 conflict days are represented/);
+    assert.match(timeline.copy, /191 conflict days are represented/);
 
     const selected = await cdp.eval(`(() => {
       const narrow = () => document.querySelector('.timeline-marker.cluster')?.click();
@@ -188,7 +188,7 @@ async function route(cdp, hash, key) {
       truthAdjudication: String(record.truth_adjudication || '').toLowerCase(),
       deceptionScore: String(record.deception_score)
     }));
-    assert.equal(acceptedNarrativeFunctions.filter(record => record.narrativeFunction).length, 15, 'accepted populated narrative-function count changed');
+    assert.equal(acceptedNarrativeFunctions.filter(record => record.narrativeFunction).length, 21, 'accepted populated narrative-function count changed');
     const narrativeFunctionDetails = await cdp.eval(`(() => {
       const accepted = ${JSON.stringify(acceptedNarrativeFunctions)};
       return accepted.map(record => {
@@ -211,7 +211,7 @@ async function route(cdp, hash, key) {
     })()`);
     const populatedNarrativeFunctionDetails = narrativeFunctionDetails.filter(record => record.populated);
     const emptyNarrativeFunctionDetails = narrativeFunctionDetails.filter(record => !record.populated);
-    assert.equal(populatedNarrativeFunctionDetails.length, 15);
+    assert.equal(populatedNarrativeFunctionDetails.length, 21);
     assert(populatedNarrativeFunctionDetails.every(record => record.exposed && record.value && record.valueMatches && !record.machineTokens.length), 'a populated narrative function is missing, not humanized by the public-language system, or exposes machine language');
     assert(emptyNarrativeFunctionDetails.every(record => !record.exposed && !record.value), 'an empty narrative function was invented');
     assert(narrativeFunctionDetails.every(record => record.truthUnchanged && record.deceptionUnchanged), 'narrative-function display changed truth or deception findings');
