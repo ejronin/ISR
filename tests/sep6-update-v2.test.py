@@ -26,7 +26,11 @@ def main() -> int:
         assert event_id in events
     assert events["G3-IRGC-SIX-VESSEL-CLAIM-20260905"]["event"]["strike_countable"] is False
 
-    losses = {item["entity_id"]: item for item in state["entities"]["material_losses"]}
+    def loss_key(item):
+        record = item.get("record") or {}
+        return item.get("entity_id") or item.get("loss_id") or record.get("loss_id")
+
+    losses = {loss_key(item): item for item in state["entities"]["material_losses"] if loss_key(item)}
     expected_losses = {
         "MAT-IRN-DOWNY-20260905",
         "MAT-IRN-STARK1-20260905",
