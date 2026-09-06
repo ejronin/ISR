@@ -179,7 +179,7 @@ async function route(cdp, hash, key) {
     assert(ledger.independent && ledger.independentOpen, 'truth and deception were not rendered as independent findings');
     assert.equal(ledger.evidence, true, 'Lie Ledger detail lacks source access');
     assert(ledger.controls.every(height => height >= 44), 'Lie Ledger has a touch target below 44px');
-    assert.match(ledger.text, /A false claim is not automatically a lie/);
+    assert.match(ledger.text, /a false claim is not automatically a lie/);
 
     const acceptedNarrativeFunctions = records('gate3.lie_ledger').map(record => ({
       claimId: record.claim_id,
