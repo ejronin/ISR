@@ -3,7 +3,7 @@
 
 The underlying chronology may contain prewar context. Daily war coverage is a
 separate derived series and is deliberately bounded to conflict Day 1 through
-the frozen Gate 2 evidence cutoff.
+the accepted current evidence cutoff while preserving the frozen Gate 2 boundary.
 """
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ def war_daily_coverage(state: dict[str, Any]) -> list[dict[str, Any]]:
         event_date = str((item.get("event") or {}).get("event_date") or "")
         if event_date:
             by_date.setdefault(event_date, []).append(item["event_id"])
-    cutoff = datetime.fromisoformat(state["release"]["gate2_evidence_cutoff"]).date()
+    cutoff = datetime.fromisoformat(state["release"].get("current_osint_cutoff") or state["release"]["gate2_evidence_cutoff"]).date()
     cursor = CONFLICT_DAY_1
     rows: list[dict[str, Any]] = []
     while cursor <= cutoff:
@@ -49,7 +49,7 @@ def war_daily_coverage(state: dict[str, Any]) -> list[dict[str, Any]]:
             "canonical_event_ids": ids,
             "canonical_event_count": len(ids),
             "derived": True,
-            "coverage_scope": "CONFLICT_DAY_1_THROUGH_GATE2_CUTOFF",
+            "coverage_scope": "CONFLICT_DAY_1_THROUGH_CURRENT_EVIDENCE_CUTOFF",
         })
         cursor += timedelta(days=1)
     return rows
@@ -63,7 +63,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     state.setdefault("integrity", {}).update({
         "war_daily_coverage_bounded_to_conflict": True,
         "war_daily_coverage_starts_day1": bool(rows and rows[0]["date"] == "2026-02-28"),
-        "war_daily_coverage_reaches_gate2_cutoff": bool(rows and rows[-1]["date"] == "2026-09-05"),
+        "war_daily_coverage_reaches_gate2_cutoff": bool(rows and rows[-1]["date"] >= datetime.fromisoformat(state["release"]["gate2_evidence_cutoff"]).date().isoformat()),
+        "war_daily_coverage_reaches_current_cutoff": bool(rows and rows[-1]["date"] == datetime.fromisoformat(state["release"]["current_osint_cutoff"]).date().isoformat()),
     })
     prior_identity = state["release"]["canonical_state_identity_v2"]
     identity_material = {
