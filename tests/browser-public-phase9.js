@@ -91,7 +91,7 @@ async function route(cdp, hash, key) {
     assert.equal(timeline.map, true, 'active temporal window lacks contextual map state');
     assert.equal(timeline.prewar, 'distinct');
     assert(timeline.controls.every(height => height >= 44), 'timeline has a touch target below 44px');
-    assert(timeline.copy.includes(`Detailed Chronology retains all ${model.counts.chronology_records} records.`));
+    assert(timeline.copy.includes(`Detailed Chronology contains all ${model.counts.chronology_records} records.`));
     assert.match(timeline.copy, /190 conflict days are represented/);
 
     const selected = await cdp.eval(`(() => {
@@ -157,7 +157,7 @@ async function route(cdp, hash, key) {
     assert.match(imageryDetail, /no polygon or damage percentage is inferred|no precise imagery footprint/i);
 
     await route(cdp, '#/evidence/information', 'evidence.information');
-    const ledger = await cdp.eval(`(() => {
+    const ledger = await cdp.eval(`(() => ({
       const independent = [...document.querySelectorAll('[data-claim-id]')].find(node => node.dataset.truthAdjudication === 'disproven' && node.dataset.deceptionScore === '0');
       independent?.querySelector('summary')?.click();
       return {
