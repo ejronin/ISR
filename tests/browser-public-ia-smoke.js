@@ -180,7 +180,7 @@ async function loadDirectRoute(cdp, route) {
     assert.equal(timeline.map, true, 'active timeline window must expose spatial context');
     assert(timeline.controls.every(height => height >= 44), 'timeline controls must retain 44px touch targets');
     assert.equal(timeline.prewar, 'distinct', 'prewar context must remain distinct from wartime duration');
-    assert(timeline.text.includes(`Detailed Chronology retains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
+    assert(timeline.text.includes(`Detailed Chronology contains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
 
     const narrowedTimeline = await cdp.eval(`(() => {
       const clickCluster = () => document.querySelector('.timeline-marker.cluster')?.click();
@@ -232,7 +232,7 @@ async function loadDirectRoute(cdp, route) {
       return { count: model.counts.chronology_records, text };
     })()`);
     assert(
-      changedModelTimeline.text.includes(`Detailed Chronology retains all ${changedModelTimeline.count} records.`),
+      changedModelTimeline.text.includes(`Detailed Chronology contains all ${changedModelTimeline.count} records.`),
       `timeline copy does not advance when the supplied model count changes: ${JSON.stringify(changedModelTimeline)}`
     );
 
