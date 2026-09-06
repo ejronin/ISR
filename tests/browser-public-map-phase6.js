@@ -216,6 +216,7 @@ const PRESERVED_FACILITY_IDS = [
           text: host.innerText,
           allText: host.textContent,
           html: host.innerHTML,
+          sourceIds: [...host.querySelectorAll('[data-source-id]')].map(node => node.dataset.sourceId),
           overlays: host.querySelectorAll('img.leaflet-image-layer').length,
           footprints: host.querySelectorAll('.leaflet-atlas-imagery-pane path').length,
           imageryButtons: [...host.querySelectorAll('.map-imagery-button')].map(button => button.textContent),
@@ -225,7 +226,7 @@ const PRESERVED_FACILITY_IDS = [
         controller.destroy(); host.remove(); return result;
       };
       const generalDescriptor = window.AtlasPublicIA.MapView.imageryDescriptor({ ...generalArea.event.imagery, location_id: generalLocationId }, { resolve: id => id === generalLocationId ? { latitude: 27.18, longitude: 56.27, label: 'Future supported Bandar Abbas general area', precision: 'General area' } : null }, []);
-      return { timeline: render('timeline.chronology'), retrofitTimeline: render('timeline.chronology', retrofit.event_id), imagery: render('military.imagery'), sources: render('evidence.sources', sourceId), retrofitSources: render('evidence.sources', retrofitSourceId), generalTier: generalDescriptor.tier, generalBounds: generalDescriptor.bounds, generalFootprint: generalDescriptor.footprint, eventId, sourceId };
+      return { timeline: render('timeline.chronology'), retrofitTimeline: render('timeline.chronology', retrofit.event_id), imagery: render('military.imagery'), sources: render('evidence.sources', sourceId), retrofitSources: render('evidence.sources', retrofitSourceId), generalTier: generalDescriptor.tier, generalBounds: generalDescriptor.bounds, generalFootprint: generalDescriptor.footprint, eventId, sourceId, retrofitSourceId };
     })()`);
     assert.match(propagation.timeline.text, /Future accepted imagery evidence fixture/);
     assert.match(propagation.timeline.allText, /Future imagery evidence source/);
@@ -242,14 +243,16 @@ const PRESERVED_FACILITY_IDS = [
     assert.equal(propagation.generalBounds, null, 'future general-area imagery invented rectangular bounds');
     assert.equal(propagation.generalFootprint, null, 'future general-area imagery invented a footprint');
     assert(propagation.imagery.drawers >= 1, 'new imagery record did not retain shared evidence actions');
-    assert.match(propagation.sources.text, /Future imagery evidence source/);
+    assert.deepEqual(propagation.sources.sourceIds, [propagation.sourceId], 'source search did not retain the injected source record in the directory');
+    assert.match(propagation.sources.allText, /Future imagery evidence source/);
     assert.match(propagation.retrofitTimeline.text, /Retrofit accepted imagery evidence fixture/);
     assert.match(propagation.retrofitTimeline.allText, /Refined retrofit location/);
     assert.match(propagation.retrofitTimeline.allText, /Updated retrofit source metadata/);
     assert.match(propagation.retrofitTimeline.text, /Disputed/i);
     assert(propagation.imagery.footprints >= 1, 'retrofit accepted footprint did not render through the generic imagery path');
     assert.match(propagation.imagery.equivalent, /Refined retrofit location/);
-    assert.match(propagation.retrofitSources.text, /Updated retrofit source metadata/);
+    assert.deepEqual(propagation.retrofitSources.sourceIds, [propagation.retrofitSourceId], 'source search did not retain the updated source record in the directory');
+    assert.match(propagation.retrofitSources.allText, /Updated retrofit source metadata/);
 
     await setRoute(cdp, 'military.imagery');
     const keyboard = await cdp.eval(`(() => {
