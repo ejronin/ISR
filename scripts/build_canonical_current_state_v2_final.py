@@ -55,8 +55,20 @@ def war_daily_coverage(state: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+def refresh_derived_counts(state: dict[str, Any]) -> None:
+    """Refresh entity counts whose collections can grow through accepted v2 packets."""
+    entities = state.get("entities") or {}
+    counts = state.setdefault("counts", {})
+    counts["material_loss_records"] = len(entities.get("material_losses") or [])
+    counts["relationship_records"] = len(entities.get("relationships") or [])
+    counts["gate3_narrative_claims"] = len(entities.get("narrative_claims") or [])
+    counts["gate3_source_records"] = len((state.get("sources") or {}).get("records") or [])
+    counts["source_records"] = counts["gate3_source_records"]
+
+
 def build_state(root: Path = ROOT) -> dict[str, Any]:
     state = hardened.build_state(Path(root).resolve())
+    refresh_derived_counts(state)
     rows = war_daily_coverage(state)
     state["daily_coverage"] = rows
     state.setdefault("counts", {})["gate3_daily_coverage_days"] = len(rows)
