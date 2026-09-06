@@ -28,6 +28,7 @@ jobs:
           node --check js/public-ia.js
           node --check tests/browser-public-source-humanization-focus.js
           node --check tests/browser-public-full-stack-audit.js
+          node --check tests/browser-public-render-review.js
           python scripts/build_source_registry.py --root .
           python scripts/build_canonical_current_state.py
           python scripts/build_public_current_state.py
@@ -83,3 +84,18 @@ jobs:
 
           launch_browser /tmp/atlas-source-humanization-profile
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-source-humanization-focus.js
+          wait "$browser_pid" 2>/dev/null || true
+          browser_pid=''
+
+          launch_browser /tmp/atlas-render-review-profile
+          ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ ATLAS_SCREENSHOT_DIR=audit-screens node tests/browser-public-render-review.js
+          wait "$browser_pid" 2>/dev/null || true
+          browser_pid=''
+      - name: Upload rendered review screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: public-render-review-${{ github.sha }}
+          path: audit-screens
+          if-no-files-found: error
+          retention-days: 7
