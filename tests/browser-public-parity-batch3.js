@@ -169,7 +169,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert(shipping.merchant > 0);
     assert.equal(shipping.merchantLinks.length, shipping.merchant);
     assert(shipping.merchantLinks.every(link => link.startsWith('#/military/losses?loss=')));
-    assert.match(shipping.text, /excluded from military equipment totals/i);
+    assert.match(shipping.text, /remain separate from military equipment totals/i);
 
     await routeKey(cdp, 'hormuz.economy');
     const economy = await cdp.eval(`(() => {
