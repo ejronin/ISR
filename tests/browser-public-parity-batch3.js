@@ -132,7 +132,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(overview.rule, 'accepted-chronology-with-supported-coordinate-in-broad-theater');
     assert(overview.bounds[0][1] < 50 && overview.bounds[1][1] > 60, 'overview remained trapped in a Hormuz frame');
     assert.equal(overview.inside, true, `record-derived overview bounds do not fit the map: ${JSON.stringify(overview)}`);
-    assert.match(overview.text, /broad .* theater/i);
+    assert.match(overview.text, /Iran.*Gulf.*Levant.*Red Sea theater/i);
 
     const routeIds = ['REDSEA-SUEZ-MARITIME', 'REDSEA-SAUDI-EAST-WEST', 'RAIL-CN-IR-APRIN', 'RAIL-RU-IR-APRIN'];
     await routeKey(cdp, 'hormuz.shipping');
