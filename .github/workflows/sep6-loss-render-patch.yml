@@ -1,0 +1,46 @@
+name: Sep 6 loss rendering patch (temporary)
+
+on:
+  push:
+    branches:
+      - update/sep6-evidence-20260906
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: ${{ !contains(github.event.head_commit.message, '[sep6-loss-render-applied]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - name: Apply bounded loss-side presentation grouping
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('js/public-ia.js')
+          text = path.read_text(encoding='utf-8')
+          old = "    const groupDefinitions = [{ side: 'U.S./COALITION', title: 'United States / coalition losses', group: 'military', key: 'us-coalition' }, { side: 'IRAN/ALIGNED', title: 'Iran / aligned losses', group: 'military', key: 'iran-aligned' }, { side: 'CIVILIAN/COMMERCIAL', title: 'Civilian and commercial losses', group: 'commercial', key: 'civilian-commercial' }]; const groupViews = groupDefinitions.map(definition => { const section = append(material, 'section', 'loss-side-group'); section.dataset.lossGroup = definition.group; section.dataset.lossSideGroup = definition.key; const heading = append(section, 'h3', 'ledger-group-heading', definition.title); const records = losses.filter(record => record.side === definition.side); append(section, 'p', 'section-note', `${records.length.toLocaleString()} material-loss record${records.length === 1 ? '' : 's'} in this group.`); const list = append(section, 'div', 'record-list two-column-list'); records.forEach(record => addLossCard(list, context, record)); return { section, heading, list }; });"
+          new = "    const lossSideGroup = record => { const side = String(record.side || ''); if (side === 'U.S./COALITION') return 'us-coalition'; if (side === 'IRAN/ALIGNED') return 'iran-aligned'; if (side === 'CIVILIAN/COMMERCIAL' || side.includes('COMMERCIAL')) return 'civilian-commercial'; return 'unclassified'; }; const groupDefinitions = [{ title: 'United States / coalition losses', group: 'military', key: 'us-coalition' }, { title: 'Iran / aligned losses', group: 'military', key: 'iran-aligned' }, { title: 'Civilian and commercial losses', group: 'commercial', key: 'civilian-commercial' }, { title: 'Other / not classified', group: 'unclassified', key: 'unclassified' }]; const groupViews = groupDefinitions.map(definition => { const section = append(material, 'section', 'loss-side-group'); section.dataset.lossGroup = definition.group; section.dataset.lossSideGroup = definition.key; const heading = append(section, 'h3', 'ledger-group-heading', definition.title); const records = losses.filter(record => lossSideGroup(record) === definition.key); append(section, 'p', 'section-note', `${records.length.toLocaleString()} material-loss record${records.length === 1 ? '' : 's'} in this group.`); const list = append(section, 'div', 'record-list two-column-list'); records.forEach(record => addLossCard(list, context, record)); return { section, heading, list }; });"
+          count = text.count(old)
+          if count != 1:
+              raise SystemExit(f'expected exactly one LossesPage grouping block, found {count}')
+          text = text.replace(old, new)
+          path.write_text(text, encoding='utf-8')
+          PY
+          node --check js/public-ia.js
+          git diff --check
+      - name: Commit rendering fix
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'atlas-release-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add js/public-ia.js
+          git diff --cached --check
+          git commit -m 'Render all canonical material-loss side categories [sep6-loss-render-applied]'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
