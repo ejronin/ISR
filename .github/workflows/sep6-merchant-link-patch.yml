@@ -1,0 +1,45 @@
+name: Sep 6 merchant link patch (temporary)
+
+on:
+  push:
+    branches:
+      - update/sep6-evidence-20260906
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: ${{ !contains(github.event.head_commit.message, '[sep6-merchant-link-applied]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - name: Extend merchant cross-link predicate to commercial taxonomy variants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('js/public-ia.js')
+          text = path.read_text(encoding='utf-8')
+          old = "if (record.side === 'CIVILIAN/COMMERCIAL') { const link = append(card, 'a', 'inline-route-link'"
+          new = "if (record.side === 'CIVILIAN/COMMERCIAL' || String(record.side || '').includes('COMMERCIAL')) { const link = append(card, 'a', 'inline-route-link'"
+          count = text.count(old)
+          if count != 1:
+              raise SystemExit(f'expected exactly one merchant link predicate, found {count}')
+          path.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+          node --check js/public-ia.js
+          git diff --check
+      - name: Commit merchant link fix
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'atlas-release-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add js/public-ia.js
+          git diff --cached --check
+          git commit -m 'Link all commercial loss taxonomy variants [sep6-merchant-link-applied]'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
