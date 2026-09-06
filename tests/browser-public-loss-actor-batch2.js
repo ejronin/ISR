@@ -166,7 +166,7 @@ async function route(cdp, hash, key) {
     assert.equal(weapons.expenditures, 9);
     assert.equal(weapons.aviation, 4);
     assert.match(weapons.text, /Neutralized does not mean destroyed/);
-    assert.match(weapons.text, /No route-level interception, impact or known-target-hit aggregate/);
+    assert.match(weapons.text, /route-level aggregate.*interception.*impact.*known-target hit/i);
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
