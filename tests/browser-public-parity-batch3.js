@@ -191,8 +191,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.deepEqual(economy.arctic, ['ARCTIC-RU-CN-OIL']);
     assert.equal(economy.inside, true);
     assert.match(economy.text, /These are forecasts, not realized GDP or a measure of military success/i);
-    assert.match(economy.arcticText, /not evidence of Iranian wartime shipments/i);
-    assert.match(economy.arcticText, /not a measured replacement for lost Iranian volume/i);
+    assert.match(economy.arcticText, /not evidence of Iranian wartime shipments or a measured replacement for lost Iranian volume/i);
 
     await routeKey(cdp, 'talks.regional');
     const alignment = await cdp.eval(`(() => {
