@@ -190,9 +190,9 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.deepEqual(economy.countries.sort(), ['Bahrain', 'Iran', 'Kuwait', 'Oman', 'Qatar', 'Saudi Arabia', 'United Arab Emirates'].sort());
     assert.deepEqual(economy.arctic, ['ARCTIC-RU-CN-OIL']);
     assert.equal(economy.inside, true);
-    assert.match(economy.text, /FORECAST \/ MODELED OUTLOOK, not realized GDP and not a military score/i);
-    assert.match(economy.arcticText, /not an Iranian supply route/i);
-    assert.match(economy.arcticText, /not .*observed current war movement/i);
+    assert.match(economy.text, /These are forecasts, not realized GDP or a measure of military success/i);
+    assert.match(economy.arcticText, /not evidence of Iranian wartime shipments/i);
+    assert.match(economy.arcticText, /not a measured replacement for lost Iranian volume/i);
 
     await routeKey(cdp, 'talks.regional');
     const alignment = await cdp.eval(`(() => {
@@ -254,7 +254,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert(agreements.evidence > 0);
     assert.equal(agreements.mou, true);
     assert.equal(agreements.nuclear, true);
-    assert.match(agreements.text, /proposal or negotiating mechanism is not relabeled as a signed agreement/i);
+    assert.match(agreements.text, /a proposal is not the same as a signed agreement/i);
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: true });
