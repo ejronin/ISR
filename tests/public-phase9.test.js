@@ -14,7 +14,10 @@ const payload = key => model.datasets[key].payload;
 const records = key => ia.recordArray(payload(key));
 
 assert.equal(model.schema_version, '2.0');
+assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
+assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
 assert.equal(model.release.current_osint_cutoff, canonical.release.current_osint_cutoff);
+assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
 assert.equal(model.counts.chronology_records, canonical.chronology.length);
 assert.equal(model.chronology.length, model.counts.chronology_records);
 assert.equal(model.integrity.browser_replays_update_packets, false);
@@ -22,7 +25,7 @@ assert.equal(model.integrity.browser_replays_update_packets, false);
 const coverage = records('gate3.daily_coverage');
 assert.equal(coverage[0].date, '2026-02-28');
 assert.equal(coverage.at(-1).date, model.release.current_osint_cutoff.slice(0, 10));
-assert.equal(coverage.length, 190);
+assert.equal(coverage.length, 191);
 assert(coverage.every((day, index) => day.date === new Date(Date.UTC(2026, 1, 28 + index)).toISOString().slice(0, 10)), 'wartime coverage contains a gap');
 assert(model.chronology.some(item => item.timeline.date < coverage[0].date), 'prewar context is absent');
 
@@ -63,11 +66,11 @@ assert.equal(records('gate3.casualties').length, 23);
 
 const ledger = records('gate3.lie_ledger');
 assert.equal(ledger.length, model.counts.gate3_lie_ledger_records);
-assert.equal(ledger.length, 76);
+assert.equal(ledger.length, 82);
 assert(ledger.every(record => record.truth_adjudication && Number.isInteger(record.deception_score)));
 assert(ledger.some(record => record.truth_adjudication === 'DISPROVEN' && record.deception_score === 0), 'falsehood was treated as automatic intent');
 const narrativeFunctions = ledger.filter(record => typeof record.narrative_function === 'string' && record.narrative_function.trim());
-assert.equal(narrativeFunctions.length, 15, 'accepted populated narrative-function count changed');
+assert.equal(narrativeFunctions.length, 21, 'accepted populated narrative-function count changed');
 assert(narrativeFunctions.every(record => ia.publicNarrative(record.narrative_function) && !/\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\b/.test(ia.publicNarrative(record.narrative_function))), 'narrative function is not reader-facing');
 assert.equal(records('gate3.narrative_families').length, 40);
 assert.equal(records('gate3.information_chains').length, 14);
