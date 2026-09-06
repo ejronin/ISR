@@ -35,8 +35,8 @@ jobs:
           python scripts/build_canonical_current_state_v2_final.py --output data/canonical-current-state-v2.json
           python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state.json
           printf '%s  %s\n' \
-            'ce5e3223a11d0f0a858bec50b78b3cb26832a5eedb1dfa7b6b4758a9810385f5' 'data/canonical-current-state-v2.json' \
-            '0c73dd585f5b1f648ae17e595de0985c1ecbbf0c7e987307432186226ba072ba' 'data/public-current-state.json' \
+            'a734332a5a9401938a25dc82a4e00e9167b1131969756c6143fbff0a2010cfeb' 'data/canonical-current-state-v2.json' \
+            '5475645e6ee1f5109eccab649de6abe1d3c6c5b64c4c869cb248ed0778119bb1' 'data/public-current-state.json' \
             | sha256sum -c -
           python scripts/build_public_release.py
           python scripts/assemble_public_site.py --output _site
