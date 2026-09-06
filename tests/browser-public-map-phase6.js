@@ -212,11 +212,36 @@ const PRESERVED_FACILITY_IDS = [
         if (search && query) { search.value = query; search.dispatchEvent(new Event('input', { bubbles: true })); }
         const chronologySearch = host.querySelector('.chronology-controls input');
         if (chronologySearch && query) { chronologySearch.value = query; chronologySearch.dispatchEvent(new Event('input', { bubbles: true })); }
+        const sourceCards = [...host.querySelectorAll('[data-source-id]')];
+        const matchedSource = query ? sourceCards.find(node => node.dataset.sourceId === query) : null;
+        let sourcePath = null;
+        if (matchedSource) {
+          const family = matchedSource.closest('.source-family');
+          const origin = matchedSource.closest('.source-origin');
+          const outlet = matchedSource.closest('details.source-outlet');
+          const summary = outlet?.querySelector(':scope > summary');
+          const summaryVisible = Boolean(summary && summary.getClientRects().length && getComputedStyle(summary).display !== 'none' && getComputedStyle(summary).visibility !== 'hidden');
+          summary?.focus();
+          const summaryFocusable = document.activeElement === summary;
+          summary?.click();
+          const revealed = Boolean(outlet?.open && matchedSource.getClientRects().length && getComputedStyle(matchedSource).display !== 'none' && getComputedStyle(matchedSource).visibility !== 'hidden');
+          sourcePath = {
+            count: host.querySelector('.source-controls .filter-result-count')?.textContent || '',
+            familyHidden: Boolean(family?.hidden),
+            originHidden: Boolean(origin?.hidden),
+            outletHidden: Boolean(outlet?.hidden),
+            summaryText: summary?.innerText || '',
+            summaryVisible,
+            summaryFocusable,
+            revealed
+          };
+        }
         const result = {
           text: host.innerText,
           allText: host.textContent,
           html: host.innerHTML,
-          sourceIds: [...host.querySelectorAll('[data-source-id]')].map(node => node.dataset.sourceId),
+          sourceIds: sourceCards.map(node => node.dataset.sourceId),
+          sourcePath,
           overlays: host.querySelectorAll('img.leaflet-image-layer').length,
           footprints: host.querySelectorAll('.leaflet-atlas-imagery-pane path').length,
           imageryButtons: [...host.querySelectorAll('.map-imagery-button')].map(button => button.textContent),
@@ -244,6 +269,12 @@ const PRESERVED_FACILITY_IDS = [
     assert.equal(propagation.generalFootprint, null, 'future general-area imagery invented a footprint');
     assert(propagation.imagery.drawers >= 1, 'new imagery record did not retain shared evidence actions');
     assert.deepEqual(propagation.sources.sourceIds, [propagation.sourceId], 'source search did not retain the injected source record in the directory');
+    assert.match(propagation.sources.sourcePath?.count || '', /^1 of \d+ sources shown$/i, 'source search count does not report the single injected match');
+    assert.deepEqual({ familyHidden: propagation.sources.sourcePath?.familyHidden, originHidden: propagation.sources.sourcePath?.originHidden, outletHidden: propagation.sources.sourcePath?.outletHidden }, { familyHidden: false, originHidden: false, outletHidden: false }, 'matched source is contained by a hidden filtered-result group');
+    assert(propagation.sources.sourcePath?.summaryText, 'matched source outlet summary disappeared during filtering');
+    assert.equal(propagation.sources.sourcePath?.summaryVisible, true, 'matched source outlet summary is not visible after filtering');
+    assert.equal(propagation.sources.sourcePath?.summaryFocusable, true, 'matched source outlet summary is not keyboard focusable');
+    assert.equal(propagation.sources.sourcePath?.revealed, true, 'matched source cannot be revealed through its filtered outlet disclosure');
     assert.match(propagation.sources.allText, /Future imagery evidence source/);
     assert.match(propagation.retrofitTimeline.text, /Retrofit accepted imagery evidence fixture/);
     assert.match(propagation.retrofitTimeline.allText, /Refined retrofit location/);
@@ -252,6 +283,12 @@ const PRESERVED_FACILITY_IDS = [
     assert(propagation.imagery.footprints >= 1, 'retrofit accepted footprint did not render through the generic imagery path');
     assert.match(propagation.imagery.equivalent, /Refined retrofit location/);
     assert.deepEqual(propagation.retrofitSources.sourceIds, [propagation.retrofitSourceId], 'source search did not retain the updated source record in the directory');
+    assert.match(propagation.retrofitSources.sourcePath?.count || '', /^1 of \d+ sources shown$/i, 'updated source search count does not report the single match');
+    assert.deepEqual({ familyHidden: propagation.retrofitSources.sourcePath?.familyHidden, originHidden: propagation.retrofitSources.sourcePath?.originHidden, outletHidden: propagation.retrofitSources.sourcePath?.outletHidden }, { familyHidden: false, originHidden: false, outletHidden: false }, 'updated matched source is contained by a hidden filtered-result group');
+    assert(propagation.retrofitSources.sourcePath?.summaryText, 'updated source outlet summary disappeared during filtering');
+    assert.equal(propagation.retrofitSources.sourcePath?.summaryVisible, true, 'updated source outlet summary is not visible after filtering');
+    assert.equal(propagation.retrofitSources.sourcePath?.summaryFocusable, true, 'updated source outlet summary is not keyboard focusable');
+    assert.equal(propagation.retrofitSources.sourcePath?.revealed, true, 'updated source cannot be revealed through its filtered outlet disclosure');
     assert.match(propagation.retrofitSources.allText, /Updated retrofit source metadata/);
 
     await setRoute(cdp, 'military.imagery');
