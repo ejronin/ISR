@@ -12,8 +12,8 @@ const expectedPrimary = [
   'Timeline',
   'Military Record',
   'Hormuz & Economy',
-  'Talks & June Agreement',
-  'What Each Side Wanted',
+  'Talks & Agreements',
+  'Objectives & Outcomes',
   'Claims & Evidence'
 ];
 assert.deepEqual(ia.PRIMARY_SECTIONS.map(section => section.label), expectedPrimary);

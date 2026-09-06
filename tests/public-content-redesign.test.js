@@ -18,15 +18,22 @@ assert([...ia.ROUTES.values()].every(route => route.dataKeys.every(key => !key.s
 for (const phrase of [
   'What happened?',
   'Where things stand now',
-  'What should I look at next?',
-  'From launch to verified effect',
+  'Where to go next',
   'Iran originally said it would control and manage the Strait.',
   'The June MOU no longer controls what either side has to do.',
   'Original and wartime objectives',
   'Evidence supporting the claim',
-  'A launch does not prove a hit.',
   'Unknown does not mean zero.'
 ]) assert(source.includes(phrase), `required public explanation missing: ${phrase}`);
+
+assert(source.includes('How an attack becomes a demonstrated effect'), 'military evidence ladder is missing its reader-facing explanation');
+assert.match(
+  source,
+  /\['Launch', 'Defense \/ interception', 'Impact', 'Physical damage', 'Operational \/ mission effect', 'Strategic effect'\]/,
+  'military evidence ladder no longer separates launch, defense/interception, impact, physical damage, mission effect and strategic effect'
+);
+assert(source.includes('Evidence at one stage does not establish the next.'), 'military evidence ladder no longer preserves stage-by-stage proof boundaries');
+assert(source.includes('A launch does not prove penetration, impact or damage.'), 'method page no longer preserves the launch/effect distinction');
 
 for (const forbidden of [
   'window.ATLAS_CURRENT_UPDATE',

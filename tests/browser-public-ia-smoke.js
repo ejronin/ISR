@@ -157,7 +157,7 @@ async function loadDirectRoute(cdp, route) {
     }))()`);
     assert.match(overview.text, /What happened\?/);
     assert.match(overview.text, /Where things stand now/);
-    assert.match(overview.text, /What should I look at next\?/);
+    assert.match(overview.text, /Where to go next/);
     assert.match(overview.text, /The June MOU no longer controls either side/);
     assert.equal(overview.pathways, 6);
     assert.equal(overview.latest, 3);
@@ -313,7 +313,8 @@ async function loadDirectRoute(cdp, route) {
 
     await setRoute(cdp, ia.ROUTES.get('talks.mou'));
     const mou = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
-    for (const heading of ['1. What each side wanted before the MOU', '2. What the interim MOU gave each side', '3–5. Immediate obligations, deferred issues and implementation', '6–9. What was implemented, reversed and broken', '10. Status now', '11. How it still shapes current talks', '12. Clause explorer']) assert(mou.includes(heading), `MOU pedagogy step missing: ${heading}`);
+    for (const heading of ['What each side wanted', 'What the MOU actually did', 'What the agreement required', 'What happened afterward', 'Where it stands now', 'How it still shapes current talks', 'Read the agreement clause by clause']) assert(mou.includes(heading), `MOU presentation section missing: ${heading}`);
+    assert.match(mou, /Read all 14 clauses/);
     assert.match(mou, /The June MOU no longer controls what either side has to do/);
     assert(!/currently binding/i.test(mou), 'MOU page implies the expired instrument remains binding');
 
@@ -322,7 +323,7 @@ async function loadDirectRoute(cdp, route) {
     assert.match(positions, /What Iran said/);
     assert.match(positions, /What happened/);
     assert.match(positions, /What Iran said or did later/);
-    assert.match(positions, /Approved assessment/i);
+    assert.match(positions, /Assessment/i);
 
     await setRoute(cdp, ia.ROUTES.get('evidence.claims'));
     const evidence = await cdp.eval(`(() => ({
