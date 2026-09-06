@@ -56,21 +56,30 @@ jobs:
             echo 'FAIL: no Chrome/Chromium executable available.' >&2
             exit 1
           fi
-          rm -rf /tmp/atlas-humanization-profile
-          "$browser" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
-            --no-first-run --no-default-browser-check \
-            --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
-            --remote-allow-origins='*' --user-data-dir=/tmp/atlas-humanization-profile \
-            'http://127.0.0.1:8765/#/evidence/sources' >/tmp/atlas-humanization-chrome.log 2>&1 &
-          browser_pid=$!
-          ready=0
-          for _ in $(seq 1 60); do
-            if curl -fsS --connect-timeout 1 --max-time 1 http://127.0.0.1:9222/json/version >/dev/null 2>&1; then ready=1; break; fi
-            sleep 0.25
-          done
-          if [ "$ready" -ne 1 ]; then
-            cat /tmp/atlas-humanization-chrome.log >&2 || true
-            exit 1
-          fi
+          launch_browser(){
+            local profile="$1"
+            rm -rf "$profile"
+            "$browser" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+              --no-first-run --no-default-browser-check \
+              --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
+              --remote-allow-origins='*' --user-data-dir="$profile" \
+              'http://127.0.0.1:8765/#/evidence/sources' >/tmp/atlas-humanization-chrome.log 2>&1 &
+            browser_pid=$!
+            local ready=0
+            for _ in $(seq 1 60); do
+              if curl -fsS --connect-timeout 1 --max-time 1 http://127.0.0.1:9222/json/version >/dev/null 2>&1; then ready=1; break; fi
+              sleep 0.25
+            done
+            if [ "$ready" -ne 1 ]; then
+              cat /tmp/atlas-humanization-chrome.log >&2 || true
+              exit 1
+            fi
+          }
+
+          launch_browser /tmp/atlas-full-stack-audit-profile
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-full-stack-audit.js
+          wait "$browser_pid" 2>/dev/null || true
+          browser_pid=''
+
+          launch_browser /tmp/atlas-source-humanization-profile
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-source-humanization-focus.js
