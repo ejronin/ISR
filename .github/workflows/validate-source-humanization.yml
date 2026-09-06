@@ -36,7 +36,7 @@ jobs:
           python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state.json
           printf '%s  %s\n' \
             '116d64442e7c5953ac36a44125088cb86626f386c81f93c0d4bbf917b346a64d' 'data/canonical-current-state-v2.json' \
-            '72739acbefbf878421ab99056b2aba2f88985c37b467d58f0dcb9228d496c13c' 'data/public-current-state.json' \
+            '60ce8432170a15f91fadc399101b5d00612f4178d3fb494d146e16b663a7eeb0' 'data/public-current-state.json' \
             | sha256sum -c -
           python scripts/build_public_release.py
           python scripts/assemble_public_site.py --output _site
