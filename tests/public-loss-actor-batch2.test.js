@@ -13,11 +13,13 @@ const payload = key => model.datasets[key] && model.datasets[key].payload;
 assert.equal(model.counts.chronology_records, model.chronology.length);
 assert.equal(model.counts.canonical_source_records, model.sources.records.length);
 assert.equal(model.counts.accepted_update_packets, 0);
-assert.equal(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
+assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
+assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
+assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
 
 const losses = payload('current.material_losses').records;
 assert.equal(losses.length, model.counts.material_loss_records);
-assert.equal(losses.length, 52);
+assert.equal(losses.length, 57);
 assert.equal(new Set(losses.map(record => record.loss_id)).size, losses.length);
 assert(losses.some(record => record.quantity == null), 'unknown-quantity test records are absent');
 assert(losses.some(record => record.status === 'DAMAGED'));

@@ -91,12 +91,13 @@ def main() -> int:
             fail(f"gap lacks attached collection actions: {item['entity_id']}")
 
     coverage = state.get("daily_coverage") or []
+    current_cutoff_date = datetime.fromisoformat(state["release"].get("current_osint_cutoff") or state["release"]["gate2_evidence_cutoff"]).date()
     if not coverage:
         fail("daily coverage is empty")
     if coverage[0].get("date") != "2026-02-28":
         fail(f"daily coverage does not begin on conflict Day 1: {coverage[0].get('date')}")
-    if coverage[-1].get("date") != "2026-09-05":
-        fail(f"daily coverage does not reach Gate 2 cutoff date: {coverage[-1].get('date')}")
+    if coverage[-1].get("date") != current_cutoff_date.isoformat():
+        fail(f"daily coverage does not reach current evidence cutoff date: {coverage[-1].get('date')}")
     expected_date = date(2026, 2, 28)
     for row in coverage:
         if row.get("date") != expected_date.isoformat():
@@ -104,7 +105,7 @@ def main() -> int:
         if row["status"] == "NO_CANONICAL_EVENT_RECORDED" and row["canonical_event_ids"]:
             fail(f"quiet date contains canonical event: {row['date']}")
         expected_date += timedelta(days=1)
-    if expected_date != date(2026, 9, 6):
+    if expected_date != current_cutoff_date + timedelta(days=1):
         fail("daily coverage span is incomplete")
 
     forensic = json.loads((ROOT / "data/forensic-v1.3.2/iranian-claim-evolution.json").read_text(encoding="utf-8"))
@@ -149,6 +150,8 @@ def main() -> int:
 
     if state["release"]["gate2_evidence_cutoff"] != "2026-09-05T00:37:00-04:00":
         fail("Gate 2 evidentiary boundary drifted")
+    if state["release"].get("current_osint_cutoff") != "2026-09-06T14:10:43-04:00":
+        fail("current evidence cutoff does not match accepted Sep. 6 sweep")
     if state["integrity"].get("frozen_v1_inputs_mutated"):
         fail("frozen v1 inputs mutated")
     for key in (

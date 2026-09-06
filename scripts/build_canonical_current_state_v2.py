@@ -185,20 +185,33 @@ def apply_packet(root,state,p,path):
             found.setdefault("revisions",[]).append({"packet_id":p["packet_id"],"known_at":p["known_at"],"kind":"GATE3_ENTITY_UPDATE"})
         else:
             if found: raise ValueError(f"duplicate entity {eid}")
-            coll.append(wrap(eid,ent["record"],{"kind":"GATE3_ACCEPTED_PACKET","packet_id":p["packet_id"]}))
+            item=wrap(eid,ent["record"],{"kind":"GATE3_ACCEPTED_PACKET","packet_id":p["packet_id"]})
+            if et=="material_loss":
+                record=item["record"]; ref=record.get("event_ref")
+                if ref:
+                    if ref not in {x["event_id"] for x in state["chronology"]}: raise ValueError(f"material loss event link does not resolve {eid} -> {ref}")
+                    disposition={"disposition":"EVENT_LINK","canonical_event_ref":ref}
+                else:
+                    disposition={"disposition":"NON_EVENT_UNRESOLVED_DATE","reason":"No single canonical event date/link is established for this accepted material-loss observation.","additive":False}
+                item["semantic_disposition"]=disposition
+                sld=f"SLD-{re.sub(r'[^A-Z0-9-]+','-',str(eid).upper())}"
+                state["entities"].setdefault("side_ledger_dispositions",[]).append(wrap(sld,{"side_ledger_disposition_id":sld,"side_record_id":eid,"side_collection":"material_losses",**copy.deepcopy(disposition)},{"kind":"GATE3_ACCEPTED_PACKET_SIDE_LEDGER_RECONCILIATION","packet_id":p["packet_id"]}))
+            coll.append(item)
     for r in p.get("narrative_claims") or []:
         if not r.get("source_ids"): raise ValueError(f"claim lacks provenance {r['claim_id']}")
         state["entities"]["narrative_claims"].append(wrap(r["claim_id"],r,{"kind":"GATE3_ACCEPTED_PACKET","packet_id":p["packet_id"]}))
 def coverage(state):
     by={}
     for x in state["chronology"]: by.setdefault(x["event"]["event_date"],[]).append(x["event_id"])
-    start=min(date.fromisoformat(x) for x in by); end=dt(state["release"]["gate2_evidence_cutoff"]).date(); out=[]
+    start=min(date.fromisoformat(x) for x in by); end=dt(state["release"].get("current_osint_cutoff") or state["release"]["gate2_evidence_cutoff"]).date(); out=[]
     while start<=end:
         d=start.isoformat(); ids=sorted(by.get(d,[])); out.append({"date":d,"status":"EVENTS_RECORDED" if ids else "NO_CANONICAL_EVENT_RECORDED","canonical_event_ids":ids,"canonical_event_count":len(ids),"derived":True}); start+=timedelta(days=1)
     return out
 def build_state(root=ROOT):
     root=Path(root).resolve(); base,report=v1.build_state(root); state=copy.deepcopy(base); spec=load(root,SPEC); man=load(root,MANIFEST)
     if spec["gate2_evidence_cutoff"]!=man["gate2_evidence_cutoff"]: raise ValueError("Gate2 cutoff mismatch")
+    current_cutoff=man.get("current_evidence_cutoff") or man["gate2_evidence_cutoff"]
+    if dt(current_cutoff)<dt(man["gate2_evidence_cutoff"]): raise ValueError("current evidence cutoff precedes Gate2 boundary")
     state["schema_version"]="2.0"; state["artifact_role"]="DERIVED_CANONICAL_CURRENT_ENTITY_STATE_V2"; seed(root,state,spec); restored=restore_legacy(root,state,spec); migrate_info(root,state,spec); side_reconcile(root,state,spec)
     prior=dt(base["release"]["current_osint_cutoff"]); accepted=[]
     for n,e in enumerate(man["accepted_updates"],1):
@@ -206,12 +219,12 @@ def build_state(root=ROOT):
         raw=canonical_packet_text_bytes((root/e["path"]).read_bytes())
         if sha(raw)!=e["sha256"]: raise ValueError(f"packet hash changed {e['path']}")
         p=json.loads(raw); known=dt(p["known_at"])
-        if known<=prior or known>dt(man["gate2_evidence_cutoff"]): raise ValueError("packet knowledge order/cutoff violation")
+        if known<=prior or known>dt(current_cutoff): raise ValueError("packet knowledge order/cutoff violation")
         prior=known; apply_packet(root,state,p,e["path"]); accepted.append({**e,"summary":p["summary"]})
     state["chronology"].sort(key=lambda x:(x["event"]["event_date"],str(x["event"].get("event_time") or ""),x["event_id"]))
-    state["accepted_updates_v2"]=accepted; state["release"]["gate2_evidence_cutoff"]=man["gate2_evidence_cutoff"]; state["release"]["current_osint_cutoff"]=man["gate2_evidence_cutoff"]; state["release"]["current_osint_cutoff_display"]="September 5, 2026 00:37 ET"; state["release"]["canonical_state_identity_v2"]="canonical-current-v2-"+sha(cbytes({"base":base["release"]["canonical_state_identity"],"packets":accepted,"restored":restored}))[:16]
+    state["accepted_updates_v2"]=accepted; state["release"]["gate2_evidence_cutoff"]=man["gate2_evidence_cutoff"]; state["release"]["current_osint_cutoff"]=current_cutoff; state["release"]["current_osint_cutoff_display"]=dt(current_cutoff).strftime("%B %d, %Y %H:%M ET").replace(" 0"," "); state["release"]["canonical_state_identity_v2"]="canonical-current-v2-"+sha(cbytes({"base":base["release"]["canonical_state_identity"],"packets":accepted,"restored":restored}))[:16]
     state["daily_coverage"]=coverage(state); state["counts"].update({"gate3_chronology_records":len(state["chronology"]),"gate3_legacy_events_restored":len(restored),"gate3_update_packets":len(accepted),"gate3_narrative_claims":len(state["entities"]["narrative_claims"])})
-    state["integrity"].update({"gate3_cutoff_frozen":True,"legacy_disposition_complete":True,"daily_coverage_derived_from_chronology":True,"false_is_not_automatically_lie":True,"cumulative_casualty_snapshots_nonadditive":True,"frozen_v1_inputs_mutated":False,"gate3_semantic_validation_ready":True})
+    state["integrity"].update({"gate3_cutoff_frozen":True,"legacy_disposition_complete":True,"daily_coverage_derived_from_chronology":True,"false_is_not_automatically_lie":True,"cumulative_casualty_snapshots_nonadditive":True,"frozen_v1_inputs_mutated":False,"gate3_semantic_validation_ready":True,"current_evidence_cutoff_frozen":True})
     return state
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--root",default=str(ROOT)); ap.add_argument("--output",default=OUT); ap.add_argument("--check",action="store_true"); a=ap.parse_args(); root=Path(a.root).resolve(); out=Path(a.output); out=out if out.is_absolute() else root/out; b=cbytes(build_state(root))

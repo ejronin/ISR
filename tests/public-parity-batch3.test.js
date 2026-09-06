@@ -11,7 +11,9 @@ const geography = JSON.parse(fs.readFileSync(path.join(root, 'assets', 'geograph
 const payload = key => model.datasets[key].payload;
 
 assert.equal(model.counts.chronology_records, model.chronology.length);
-assert.equal(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
+assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
+assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
+assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
 assert.equal(ia.ROUTES.size, 25);
 assert.equal(Object.keys(app.ROUTE_DATA_DEPENDENCIES).length, 25);
 for (const route of ia.ROUTES.values()) {
