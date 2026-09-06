@@ -1,10 +1,13 @@
 'use strict';
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const ia = require('../js/public-ia.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -104,8 +107,8 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       throw error;
     }
     assert.equal(coverage.routeCount, 25);
-    assert.equal(coverage.coveredDatasetCount, 76);
-    assert.equal(coverage.datasetWaiverCount, 40);
+    assert.equal(coverage.coveredDatasetCount, Object.keys(model.datasets).length + 2);
+    assert.equal(coverage.datasetWaiverCount, model.consumer_coverage.dataset_waivers.length);
     assert.equal(coverage.routeWaiverCount, 0);
     assert.equal(Object.keys(diagnostics.routeAccesses).length, 25);
     assert.deepEqual(diagnostics.sharedAccesses, ['current.actors', 'current.locations', 'current.sources']);
@@ -129,7 +132,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(overview.rule, 'accepted-chronology-with-supported-coordinate-in-broad-theater');
     assert(overview.bounds[0][1] < 50 && overview.bounds[1][1] > 60, 'overview remained trapped in a Hormuz frame');
     assert.equal(overview.inside, true, `record-derived overview bounds do not fit the map: ${JSON.stringify(overview)}`);
-    assert.match(overview.text, /broad .* theater/i);
+    assert.match(overview.text, /Iran.*Gulf.*Levant.*Red Sea theater/i);
 
     const routeIds = ['REDSEA-SUEZ-MARITIME', 'REDSEA-SAUDI-EAST-WEST', 'RAIL-CN-IR-APRIN', 'RAIL-RU-IR-APRIN'];
     await routeKey(cdp, 'hormuz.shipping');
@@ -166,7 +169,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert(shipping.merchant > 0);
     assert.equal(shipping.merchantLinks.length, shipping.merchant);
     assert(shipping.merchantLinks.every(link => link.startsWith('#/military/losses?loss=')));
-    assert.match(shipping.text, /excluded from military equipment totals/i);
+    assert.match(shipping.text, /remain separate from military equipment totals/i);
 
     await routeKey(cdp, 'hormuz.economy');
     const economy = await cdp.eval(`(() => {
@@ -187,9 +190,8 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.deepEqual(economy.countries.sort(), ['Bahrain', 'Iran', 'Kuwait', 'Oman', 'Qatar', 'Saudi Arabia', 'United Arab Emirates'].sort());
     assert.deepEqual(economy.arctic, ['ARCTIC-RU-CN-OIL']);
     assert.equal(economy.inside, true);
-    assert.match(economy.text, /FORECAST \/ MODELED OUTLOOK, not realized GDP and not a military score/i);
-    assert.match(economy.arcticText, /not an Iranian supply route/i);
-    assert.match(economy.arcticText, /not .*observed current war movement/i);
+    assert.match(economy.text, /These are forecasts, not realized GDP or a measure of military success/i);
+    assert.match(economy.arcticText, /not evidence of Iranian wartime shipments or a measured replacement for lost Iranian volume/i);
 
     await routeKey(cdp, 'talks.regional');
     const alignment = await cdp.eval(`(() => {
@@ -251,7 +253,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert(agreements.evidence > 0);
     assert.equal(agreements.mou, true);
     assert.equal(agreements.nuclear, true);
-    assert.match(agreements.text, /proposal or negotiating mechanism is not relabeled as a signed agreement/i);
+    assert.match(agreements.text, /a proposal is not the same as a signed agreement/i);
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: true });

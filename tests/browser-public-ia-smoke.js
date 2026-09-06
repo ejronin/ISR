@@ -157,7 +157,7 @@ async function loadDirectRoute(cdp, route) {
     }))()`);
     assert.match(overview.text, /What happened\?/);
     assert.match(overview.text, /Where things stand now/);
-    assert.match(overview.text, /What should I look at next\?/);
+    assert.match(overview.text, /Where to go next/);
     assert.match(overview.text, /The June MOU no longer controls either side/);
     assert.equal(overview.pathways, 6);
     assert.equal(overview.latest, 3);
@@ -165,16 +165,44 @@ async function loadDirectRoute(cdp, route) {
 
     await setRoute(cdp, ia.ROUTES.get('timeline.war'));
     const timeline = await cdp.eval(`(() => ({
-      phases: document.querySelectorAll('.timeline-phase').length,
-      cards: document.querySelectorAll('.timeline-phase .chronology-card').length,
-      maps: document.querySelectorAll('.timeline-phase [data-component="MapView"] .leaflet-container').length,
+      controller: document.querySelector('[data-timeline-controller]')?.dataset.timelineController,
+      clusters: document.querySelectorAll('.timeline-marker.cluster').length,
+      eventMarkers: document.querySelectorAll('.timeline-marker.event').length,
+      map: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"] .leaflet-container')),
+      controls: [...document.querySelectorAll('.timeline-controls input, .timeline-controls select, .timeline-navigation button')].map(node => node.getBoundingClientRect().height),
+      prewar: document.querySelector('[data-timeline-prewar]')?.dataset.timelinePrewar,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
     const expectedTimelineCount = await cdp.eval(`window.ATLAS_PUBLIC_STATE.chronologyCount`);
-    assert.equal(timeline.phases, 6);
-    assert(timeline.cards > 10 && timeline.cards < expectedTimelineCount, 'primary timeline must emphasize representative developments');
-    assert(timeline.maps > 0, 'timeline phases with coordinates must expose spatial context');
-    assert(timeline.text.includes(`Detailed Chronology retains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
+    assert.equal(timeline.controller, 'current-state');
+    assert(timeline.clusters > 0, 'broad timeline must cluster the full wartime record');
+    assert.equal(timeline.eventMarkers, 0, 'full-war view should not flatten every record into individual markers');
+    assert.equal(timeline.map, true, 'active timeline window must expose spatial context');
+    assert(timeline.controls.every(height => height >= 44), 'timeline controls must retain 44px touch targets');
+    assert.equal(timeline.prewar, 'distinct', 'prewar context must remain distinct from wartime duration');
+    assert(timeline.text.includes(`Detailed Chronology contains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
+
+    const narrowedTimeline = await cdp.eval(`(() => {
+      const clickCluster = () => document.querySelector('.timeline-marker.cluster')?.click();
+      clickCluster();
+      if (!document.querySelector('.timeline-marker.event')) clickCluster();
+      return {
+        eventMarkers: document.querySelectorAll('.timeline-marker.event').length,
+        count: document.querySelector('.timeline-navigation .filter-result-count')?.textContent || ''
+      };
+    })()`);
+    assert(narrowedTimeline.eventMarkers > 0, 'selecting a cluster must expose individual event markers');
+    assert.match(narrowedTimeline.count, /wartime record/);
+    const selectedTimeline = await cdp.eval(`(() => {
+      const marker = document.querySelector('.timeline-marker.event');
+      marker.click();
+      return {
+        pressed: marker.getAttribute('aria-pressed'),
+        card: Boolean(document.querySelector('.timeline-selection .chronology-card')),
+        spatial: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"], .timeline-map-host .empty-state'))
+      };
+    })()`);
+    assert.deepEqual(selectedTimeline, { pressed: 'true', card: true, spatial: true }, 'event selection must coordinate marker, record and spatial state');
 
     const changedModelTimeline = await cdp.eval(`(async () => {
       const model = await fetch('./data/public-current-state.json', { cache: 'no-store' }).then(response => response.json());
@@ -204,7 +232,7 @@ async function loadDirectRoute(cdp, route) {
       return { count: model.counts.chronology_records, text };
     })()`);
     assert(
-      changedModelTimeline.text.includes(`Detailed Chronology retains all ${changedModelTimeline.count} records.`),
+      changedModelTimeline.text.includes(`Detailed Chronology contains all ${changedModelTimeline.count} records.`),
       `timeline copy does not advance when the supplied model count changes: ${JSON.stringify(changedModelTimeline)}`
     );
 
@@ -270,18 +298,23 @@ async function loadDirectRoute(cdp, route) {
     }
 
     await setRoute(cdp, ia.ROUTES.get('military.losses'));
-    const losses = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
+    const losses = await cdp.eval(`(() => {
+      const method = document.querySelector('.casualty-method');
+      if (method) method.open = true;
+      return document.querySelector('main')?.innerText || '';
+    })()`);
     assert.match(losses, /18\s+Total military dead/);
     assert.match(losses, /757\s+WIA/);
     assert.match(losses, /1\s+MIA/);
     assert.match(losses, /2,008\s+military-death subtotal/);
-    assert.match(losses, /52 current material-loss records/);
+    assert.match(losses, /52\s+material-loss records/);
     assert(!/\b\d[\d,]*\s+total casualties\b/i.test(losses), 'loss page displays an invalid unique-person grand total');
     assert.match(losses, /does not calculate [“"]total casualties\s*=\s*dead/i, 'loss page omits the approved anti-double-counting warning');
 
     await setRoute(cdp, ia.ROUTES.get('talks.mou'));
     const mou = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
-    for (const heading of ['1. What each side wanted before the MOU', '2. What the interim MOU gave each side', '3–5. Immediate obligations, deferred issues and implementation', '6–9. What was implemented, reversed and broken', '10. Status now', '11. How it still shapes current talks', '12. Clause explorer']) assert(mou.includes(heading), `MOU pedagogy step missing: ${heading}`);
+    for (const heading of ['What each side wanted', 'What the MOU actually did', 'What the agreement required', 'What happened afterward', 'Where it stands now', 'How it still shapes current talks', 'Read the agreement clause by clause']) assert(mou.includes(heading), `MOU presentation section missing: ${heading}`);
+    assert.match(mou, /Read all 14 clauses/);
     assert.match(mou, /The June MOU no longer controls what either side has to do/);
     assert(!/currently binding/i.test(mou), 'MOU page implies the expired instrument remains binding');
 
@@ -290,7 +323,7 @@ async function loadDirectRoute(cdp, route) {
     assert.match(positions, /What Iran said/);
     assert.match(positions, /What happened/);
     assert.match(positions, /What Iran said or did later/);
-    assert.match(positions, /Approved assessment/i);
+    assert.match(positions, /Assessment/i);
 
     await setRoute(cdp, ia.ROUTES.get('evidence.claims'));
     const evidence = await cdp.eval(`(() => ({

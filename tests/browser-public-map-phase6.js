@@ -118,7 +118,7 @@ const PRESERVED_FACILITY_IDS = [
     assert(PRESERVED_FACILITY_IDS.every(facilityId => facilityParity.ids.includes(facilityId)), 'a preserved facility is not publicly reachable');
     assert.equal(facilityParity.auditDetails, 4, 'facility-linked claim audits are not reachable from facility cards');
     assert(facilityParity.sourceLinks > 0, 'restored facility cards do not expose source links');
-    assert.match(facilityParity.page, /reference points identify the facility—not a precise damage location/i);
+    assert.match(facilityParity.page, /Map markers show the facility’s general location, not the exact point of impact/i);
 
     await setRoute(cdp, 'military.imagery');
     const baselineBda = await cdp.eval(`(() => ({
@@ -212,10 +212,36 @@ const PRESERVED_FACILITY_IDS = [
         if (search && query) { search.value = query; search.dispatchEvent(new Event('input', { bubbles: true })); }
         const chronologySearch = host.querySelector('.chronology-controls input');
         if (chronologySearch && query) { chronologySearch.value = query; chronologySearch.dispatchEvent(new Event('input', { bubbles: true })); }
+        const sourceCards = [...host.querySelectorAll('[data-source-id]')];
+        const matchedSource = query ? sourceCards.find(node => node.dataset.sourceId === query) : null;
+        let sourcePath = null;
+        if (matchedSource) {
+          const family = matchedSource.closest('.source-family');
+          const origin = matchedSource.closest('.source-origin');
+          const outlet = matchedSource.closest('details.source-outlet');
+          const summary = outlet?.querySelector(':scope > summary');
+          const summaryVisible = Boolean(summary && summary.getClientRects().length && getComputedStyle(summary).display !== 'none' && getComputedStyle(summary).visibility !== 'hidden');
+          summary?.focus();
+          const summaryFocusable = document.activeElement === summary;
+          summary?.click();
+          const revealed = Boolean(outlet?.open && matchedSource.getClientRects().length && getComputedStyle(matchedSource).display !== 'none' && getComputedStyle(matchedSource).visibility !== 'hidden');
+          sourcePath = {
+            count: host.querySelector('.source-controls .filter-result-count')?.textContent || '',
+            familyHidden: Boolean(family?.hidden),
+            originHidden: Boolean(origin?.hidden),
+            outletHidden: Boolean(outlet?.hidden),
+            summaryText: summary?.innerText || '',
+            summaryVisible,
+            summaryFocusable,
+            revealed
+          };
+        }
         const result = {
           text: host.innerText,
           allText: host.textContent,
           html: host.innerHTML,
+          sourceIds: sourceCards.map(node => node.dataset.sourceId),
+          sourcePath,
           overlays: host.querySelectorAll('img.leaflet-image-layer').length,
           footprints: host.querySelectorAll('.leaflet-atlas-imagery-pane path').length,
           imageryButtons: [...host.querySelectorAll('.map-imagery-button')].map(button => button.textContent),
@@ -225,7 +251,7 @@ const PRESERVED_FACILITY_IDS = [
         controller.destroy(); host.remove(); return result;
       };
       const generalDescriptor = window.AtlasPublicIA.MapView.imageryDescriptor({ ...generalArea.event.imagery, location_id: generalLocationId }, { resolve: id => id === generalLocationId ? { latitude: 27.18, longitude: 56.27, label: 'Future supported Bandar Abbas general area', precision: 'General area' } : null }, []);
-      return { timeline: render('timeline.chronology'), retrofitTimeline: render('timeline.chronology', retrofit.event_id), imagery: render('military.imagery'), sources: render('evidence.sources', sourceId), retrofitSources: render('evidence.sources', retrofitSourceId), generalTier: generalDescriptor.tier, generalBounds: generalDescriptor.bounds, generalFootprint: generalDescriptor.footprint, eventId, sourceId };
+      return { timeline: render('timeline.chronology'), retrofitTimeline: render('timeline.chronology', retrofit.event_id), imagery: render('military.imagery'), sources: render('evidence.sources', sourceId), retrofitSources: render('evidence.sources', retrofitSourceId), generalTier: generalDescriptor.tier, generalBounds: generalDescriptor.bounds, generalFootprint: generalDescriptor.footprint, eventId, sourceId, retrofitSourceId };
     })()`);
     assert.match(propagation.timeline.text, /Future accepted imagery evidence fixture/);
     assert.match(propagation.timeline.allText, /Future imagery evidence source/);
@@ -242,14 +268,28 @@ const PRESERVED_FACILITY_IDS = [
     assert.equal(propagation.generalBounds, null, 'future general-area imagery invented rectangular bounds');
     assert.equal(propagation.generalFootprint, null, 'future general-area imagery invented a footprint');
     assert(propagation.imagery.drawers >= 1, 'new imagery record did not retain shared evidence actions');
-    assert.match(propagation.sources.text, /Future imagery evidence source/);
+    assert.deepEqual(propagation.sources.sourceIds, [propagation.sourceId], 'source search did not retain the injected source record in the directory');
+    assert.match(propagation.sources.sourcePath?.count || '', /^1 of \d+ sources shown$/i, 'source search count does not report the single injected match');
+    assert.deepEqual({ familyHidden: propagation.sources.sourcePath?.familyHidden, originHidden: propagation.sources.sourcePath?.originHidden, outletHidden: propagation.sources.sourcePath?.outletHidden }, { familyHidden: false, originHidden: false, outletHidden: false }, 'matched source is contained by a hidden filtered-result group');
+    assert(propagation.sources.sourcePath?.summaryText, 'matched source outlet summary disappeared during filtering');
+    assert.equal(propagation.sources.sourcePath?.summaryVisible, true, 'matched source outlet summary is not visible after filtering');
+    assert.equal(propagation.sources.sourcePath?.summaryFocusable, true, 'matched source outlet summary is not keyboard focusable');
+    assert.equal(propagation.sources.sourcePath?.revealed, true, 'matched source cannot be revealed through its filtered outlet disclosure');
+    assert.match(propagation.sources.allText, /Future imagery evidence source/);
     assert.match(propagation.retrofitTimeline.text, /Retrofit accepted imagery evidence fixture/);
     assert.match(propagation.retrofitTimeline.allText, /Refined retrofit location/);
     assert.match(propagation.retrofitTimeline.allText, /Updated retrofit source metadata/);
     assert.match(propagation.retrofitTimeline.text, /Disputed/i);
     assert(propagation.imagery.footprints >= 1, 'retrofit accepted footprint did not render through the generic imagery path');
     assert.match(propagation.imagery.equivalent, /Refined retrofit location/);
-    assert.match(propagation.retrofitSources.text, /Updated retrofit source metadata/);
+    assert.deepEqual(propagation.retrofitSources.sourceIds, [propagation.retrofitSourceId], 'source search did not retain the updated source record in the directory');
+    assert.match(propagation.retrofitSources.sourcePath?.count || '', /^1 of \d+ sources shown$/i, 'updated source search count does not report the single match');
+    assert.deepEqual({ familyHidden: propagation.retrofitSources.sourcePath?.familyHidden, originHidden: propagation.retrofitSources.sourcePath?.originHidden, outletHidden: propagation.retrofitSources.sourcePath?.outletHidden }, { familyHidden: false, originHidden: false, outletHidden: false }, 'updated matched source is contained by a hidden filtered-result group');
+    assert(propagation.retrofitSources.sourcePath?.summaryText, 'updated source outlet summary disappeared during filtering');
+    assert.equal(propagation.retrofitSources.sourcePath?.summaryVisible, true, 'updated source outlet summary is not visible after filtering');
+    assert.equal(propagation.retrofitSources.sourcePath?.summaryFocusable, true, 'updated source outlet summary is not keyboard focusable');
+    assert.equal(propagation.retrofitSources.sourcePath?.revealed, true, 'updated source cannot be revealed through its filtered outlet disclosure');
+    assert.match(propagation.retrofitSources.allText, /Updated retrofit source metadata/);
 
     await setRoute(cdp, 'military.imagery');
     const keyboard = await cdp.eval(`(() => {

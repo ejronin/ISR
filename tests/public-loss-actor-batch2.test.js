@@ -10,10 +10,10 @@ const model = JSON.parse(fs.readFileSync(path.join(root, 'data/public-current-st
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'data/public-release.json'), 'utf8'));
 const payload = key => model.datasets[key] && model.datasets[key].payload;
 
-assert.equal(model.counts.chronology_records, 205);
-assert.equal(model.counts.canonical_source_records, 362);
+assert.equal(model.counts.chronology_records, model.chronology.length);
+assert.equal(model.counts.canonical_source_records, model.sources.records.length);
 assert.equal(model.counts.accepted_update_packets, 0);
-assert.equal(model.release.current_osint_cutoff, '2026-08-27T08:25:00-04:00');
+assert.equal(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
 
 const losses = payload('current.material_losses').records;
 assert.equal(losses.length, model.counts.material_loss_records);
