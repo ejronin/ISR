@@ -22,9 +22,10 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
+          bs = chr(92)
           patches = {
               'tests/browser-public-ia-smoke.js': [
-                  (r'/52\\s+material-loss records/', r'/57\\s+material-loss records/', 1),
+                  (f'/52{bs}s+material-loss records/', f'/57{bs}s+material-loss records/', 1),
               ],
               'tests/browser-public-loss-actor-batch2.js': [
                   ('if (losses.cardCount !== 52)', 'if (losses.cardCount !== 57)', 1),
@@ -37,7 +38,7 @@ jobs:
                   ('assert.equal(mobile.cards, 52);', 'assert.equal(mobile.cards, 57);', 1),
               ],
               'tests/browser-public-phase9.js': [
-                  (r'/190 conflict days are represented/', r'/191 conflict days are represented/', 1),
+                  ('/190 conflict days are represented/', '/191 conflict days are represented/', 1),
                   ("assert.equal(acceptedNarrativeFunctions.filter(record => record.narrativeFunction).length, 15, 'accepted populated narrative-function count changed');", "assert.equal(acceptedNarrativeFunctions.filter(record => record.narrativeFunction).length, 21, 'accepted populated narrative-function count changed');", 1),
                   ('assert.equal(populatedNarrativeFunctionDetails.length, 15);', 'assert.equal(populatedNarrativeFunctionDetails.length, 21);', 1),
               ],
