@@ -40,6 +40,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     counts["canonical_source_records"] = actual
     counts["gate3_source_records"] = actual
     canonical = json.loads((root / "data/canonical-current-state-v2.json").read_text(encoding="utf-8"))
+    counts["material_loss_records"] = len(canonical["entities"].get("material_losses") or [])
+    counts["relationship_records"] = len(canonical["entities"].get("relationships") or [])
     counts["gate3_source_reliability_records"] = len(canonical["entities"].get("source_reliability") or [])
     counts["gate3_forensic_proposition_records"] = canonical["counts"].get("gate3_forensic_proposition_records", 0)
     counts["gate3_daily_coverage_days"] = len(canonical.get("daily_coverage") or [])
@@ -82,6 +84,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     }
     state.setdefault("integrity", {}).update({
         "source_count_metadata_current": counts["source_records"] == actual,
+        "material_loss_count_metadata_current": counts["material_loss_records"] == len(canonical["entities"].get("material_losses") or []),
+        "relationship_count_metadata_current": counts["relationship_records"] == len(canonical["entities"].get("relationships") or []),
         "source_reliability_populated": counts["gate3_source_reliability_records"] > 0,
         "gate3_lie_ledger_hardening_complete": bool(canonical["integrity"].get("gate3_lie_ledger_hardening_complete")),
     })
