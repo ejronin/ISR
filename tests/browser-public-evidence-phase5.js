@@ -166,8 +166,8 @@ async function setRoute(cdp, routeKey) {
       controller.destroy();
       return { text, mapText, point, locationLabel: model.entities.locations[0].record.canonical_name, sourceIndexes: runtime.diagnostics().sourceIndexBuilds };
     })()`);
-    assert.match(futureEvidence.text, /Occurred2099-01-02 04:05/);
-    assert.match(futureEvidence.text, /First reported \/ known2099-01-03/);
+    assert.match(futureEvidence.text, /Event time2099-01-02 04:05/);
+    assert.match(futureEvidence.text, /Knowledge time2099-01-03/);
     assert.match(futureEvidence.text, /Later revision known2099-01-05T12:30:00-04:00/);
     assert.match(futureEvidence.text, /Mohammad Baqer Qalibaf/);
     assert(futureEvidence.text.includes(futureEvidence.locationLabel), 'canonical location_id did not resolve in the shared drawer');
@@ -203,7 +203,7 @@ async function setRoute(cdp, routeKey) {
       total: document.querySelectorAll('details.evidence-drawer').length,
       shared: document.querySelectorAll('details.evidence-drawer[data-component="SharedEvidenceDrawer"]').length,
       sourceLinks: [...document.querySelectorAll('details.evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
-      temporal: [...document.querySelectorAll('details.evidence-drawer .evidence-facts')].some(node => /Known by Atlas|Occurred/.test(node.textContent || '')),
+      temporal: [...document.querySelectorAll('details.evidence-drawer .evidence-facts')].some(node => /Event time/.test(node.textContent || '') && /Knowledge time/.test(node.textContent || '')),
       factsText: [...document.querySelectorAll('details.evidence-drawer .evidence-facts')].slice(0, 6).map(node => (node.textContent || '').replace(/\s+/g, ' ').trim()),
       drawerText: [...document.querySelectorAll('details.evidence-drawer')].slice(0, 3).map(node => (node.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 1200))
     }))()`);
@@ -218,7 +218,7 @@ async function setRoute(cdp, routeKey) {
       text: document.querySelector('[data-phase5-chart-equivalent]')?.textContent || ''
     }))()`);
     assert(chart.count >= 1 && chart.rows >= 1, 'campaign chart lacks numeric accessible equivalent');
-    assert.match(chart.text, /recorded military-event \/ strike-record counts/i);
+    assert.match(chart.text, /recorded military-event counts/i);
     assert.match(chart.text, /not total weapons/i);
 
     for (const routeKey of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
@@ -237,7 +237,7 @@ async function setRoute(cdp, routeKey) {
     assert(!method.includes('browser receives the already assembled current state'));
     assert(!method.includes('replaying dated updates'));
     assert.match(method, /Later corrections remain temporally explicit/i);
-    assert.match(method, /A launch does not prove a hit/i);
+    assert.match(method, /A launch does not prove penetration, impact or damage/i);
     assert.match(method, /Unknown does not mean zero/i);
 
     for (const width of [320, 390]) {

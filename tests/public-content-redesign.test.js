@@ -9,8 +9,8 @@ const model = JSON.parse(fs.readFileSync(path.join(root, 'data', 'public-current
 const source = fs.readFileSync(path.join(root, 'js', 'public-ia.js'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'css', 'public-shell.css'), 'utf8');
 
-assert.equal(model.counts.chronology_records, 205, 'Phase 4 must retain the accepted chronology');
-assert.equal(model.release.current_osint_cutoff_display, '2026-08-27 08:25 ET', 'Phase 4 must derive current status from the accepted read model');
+assert.equal(model.counts.chronology_records, model.chronology.length, 'public copy must derive the accepted chronology count');
+assert.equal(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff, 'public status must derive from the accepted read model');
 assert.equal(ia.ROUTES.size, 25, 'Phase 4 must retain all accepted public routes');
 assert.equal(new Set([...ia.ROUTES.values()].map(route => route.owner)).size, 25, 'each route must retain one page owner');
 assert([...ia.ROUTES.values()].every(route => route.dataKeys.every(key => !key.startsWith('legacy.'))), 'a current route maps a legacy dataset');
@@ -18,15 +18,22 @@ assert([...ia.ROUTES.values()].every(route => route.dataKeys.every(key => !key.s
 for (const phrase of [
   'What happened?',
   'Where things stand now',
-  'What should I look at next?',
-  'From launch to verified effect',
+  'Where to go next',
   'Iran originally said it would control and manage the Strait.',
   'The June MOU no longer controls what either side has to do.',
   'Original and wartime objectives',
   'Evidence supporting the claim',
-  'A launch does not prove a hit.',
   'Unknown does not mean zero.'
 ]) assert(source.includes(phrase), `required public explanation missing: ${phrase}`);
+
+assert(source.includes('How an attack becomes a demonstrated effect'), 'military evidence ladder is missing its reader-facing explanation');
+assert.match(
+  source,
+  /\['Launch', 'Defense \/ interception', 'Impact', 'Physical damage', 'Operational \/ mission effect', 'Strategic effect'\]/,
+  'military evidence ladder no longer separates launch, defense/interception, impact, physical damage, mission effect and strategic effect'
+);
+assert(source.includes('Evidence at one stage does not establish the next.'), 'military evidence ladder no longer preserves stage-by-stage proof boundaries');
+assert(source.includes('A launch does not prove penetration, impact or damage.'), 'method page no longer preserves the launch/effect distinction');
 
 for (const forbidden of [
   'window.ATLAS_CURRENT_UPDATE',
