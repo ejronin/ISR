@@ -34,6 +34,10 @@ jobs:
           python scripts/build_public_current_state.py
           python scripts/build_canonical_current_state_v2_final.py --output data/canonical-current-state-v2.json
           python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state.json
+          printf '%s  %s\n' \
+            'ce5e3223a11d0f0a858bec50b78b3cb26832a5eedb1dfa7b6b4758a9810385f5' 'data/canonical-current-state-v2.json' \
+            '0c73dd585f5b1f648ae17e595de0985c1ecbbf0c7e987307432186226ba072ba' 'data/public-current-state.json' \
+            | sha256sum -c -
           python scripts/build_public_release.py
           python scripts/assemble_public_site.py --output _site
           python scripts/write_build_info.py --output _site/build-info.json --commit "$GITHUB_SHA"
@@ -44,8 +48,15 @@ jobs:
           python -m http.server 8765 --bind 127.0.0.1 --directory _site >/tmp/atlas-humanization-http.log 2>&1 &
           server_pid=$!
           browser_pid=''
+          stop_browser(){
+            if [ -n "$browser_pid" ]; then
+              kill -TERM "$browser_pid" 2>/dev/null || true
+              wait "$browser_pid" 2>/dev/null || true
+              browser_pid=''
+            fi
+          }
           cleanup(){
-            if [ -n "$browser_pid" ]; then kill "$browser_pid" 2>/dev/null || true; fi
+            stop_browser
             kill "$server_pid" 2>/dev/null || true
           }
           trap cleanup EXIT
@@ -79,18 +90,15 @@ jobs:
 
           launch_browser /tmp/atlas-full-stack-audit-profile
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-full-stack-audit.js
-          wait "$browser_pid" 2>/dev/null || true
-          browser_pid=''
+          stop_browser
 
           launch_browser /tmp/atlas-source-humanization-profile
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-source-humanization-focus.js
-          wait "$browser_pid" 2>/dev/null || true
-          browser_pid=''
+          stop_browser
 
           launch_browser /tmp/atlas-render-review-profile
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ ATLAS_SCREENSHOT_DIR=audit-screens node tests/browser-public-render-review.js
-          wait "$browser_pid" 2>/dev/null || true
-          browser_pid=''
+          stop_browser
       - name: Upload rendered review screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
