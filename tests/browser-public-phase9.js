@@ -130,7 +130,7 @@ async function route(cdp, hash, key) {
       badHeading: (document.querySelector('main')?.innerText || '').includes('Do not add the headline categories'),
       cards: document.querySelectorAll('[data-loss-id]').length
     }))()`);
-    assert.deepEqual(losses.groups, ['us-coalition', 'iran-aligned', 'civilian-commercial']);
+    assert.deepEqual(losses.groups, ['us-coalition', 'iran-aligned', 'civilian-commercial', 'unclassified']);
     assert.equal(losses.casualtyRecords, records('gate3.casualties').length);
     assert.equal(losses.method, 'How casualty totals are counted');
     assert.equal(losses.badHeading, false);
