@@ -118,7 +118,7 @@ const PRESERVED_FACILITY_IDS = [
     assert(PRESERVED_FACILITY_IDS.every(facilityId => facilityParity.ids.includes(facilityId)), 'a preserved facility is not publicly reachable');
     assert.equal(facilityParity.auditDetails, 4, 'facility-linked claim audits are not reachable from facility cards');
     assert(facilityParity.sourceLinks > 0, 'restored facility cards do not expose source links');
-    assert.match(facilityParity.page, /reference points identify the facility—not a precise damage location/i);
+    assert.match(facilityParity.page, /Map markers show the facility’s general location, not the exact point of impact/i);
 
     await setRoute(cdp, 'military.imagery');
     const baselineBda = await cdp.eval(`(() => ({
