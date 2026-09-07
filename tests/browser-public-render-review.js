@@ -120,17 +120,23 @@ async function captureViewport(cdp, filename) {
           const target = document.querySelector(${selector});
           target.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'auto' });
           const map = target.closest('[data-component="MapView"]');
+          const routePane = map?._atlasMap?.getPane('atlas-routes');
           return {
             width: target.getBoundingClientRect().width,
             height: target.getBoundingClientRect().height,
-            routeLines: target.querySelectorAll('[data-route-id]').length,
+            routePaths: routePane?.querySelectorAll('path').length || 0,
+            routeControls: map?.querySelectorAll('.map-route-button').length || 0,
+            routeModes: map?.dataset.mapRouteModes || '',
             labels: target.querySelectorAll('.reference-map-label').length,
             scope: map?.dataset.mapScope || '',
             bounds: map?.dataset.mapBounds || ''
           };
         })()`);
         assert(reviewState.width > 0 && reviewState.height > 0, `${focus.label} map has no rendered area at ${width}px`);
-        if (focus.label === 'shipping-network') assert(reviewState.routeLines > 0, `${focus.label} has no visible route geometry at ${width}px`);
+        if (focus.label === 'shipping-network') {
+          assert(reviewState.routePaths > 0, `${focus.label} has no rendered SVG route geometry at ${width}px`);
+          assert(reviewState.routeControls > 0 && reviewState.routeModes, `${focus.label} lacks route controls or route-mode metadata at ${width}px`);
+        }
         await sleep(180);
         await captureViewport(cdp, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
         mapFocusCaptures += 1;
