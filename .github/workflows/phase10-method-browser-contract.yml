@@ -1,0 +1,41 @@
+name: Apply Phase 10 method browser contract
+
+on:
+  push:
+    branches:
+      - ux/phase10-language-presentation-20260906
+    paths:
+      - .github/workflows/phase10-method-browser-contract.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - name: Update method-page browser assertions
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('tests/browser-public-evidence-phase5.js')
+          text = p.read_text(encoding='utf-8')
+          old = "    assert.match(method, /Later corrections remain temporally explicit/i);"
+          new = "    assert.match(method, /Historical views preserve the evidence boundary that existed at the selected time/i);\n    assert.match(method, /Attribution strengthened by later evidence\. Existing event retained\./i);"
+          if text.count(old) != 1:
+              raise SystemExit(f'expected one stale method assertion, found {text.count(old)}')
+          p.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+          node --check tests/browser-public-evidence-phase5.js
+      - name: Commit method browser contract
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tests/browser-public-evidence-phase5.js
+          git commit -m 'Update method browser contract for Phase 10'
+          git push origin HEAD:ux/phase10-language-presentation-20260906
