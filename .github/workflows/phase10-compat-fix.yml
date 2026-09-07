@@ -1,0 +1,41 @@
+name: Apply Phase 10 compatibility wording
+
+on:
+  push:
+    branches:
+      - ux/phase10-language-presentation-20260906
+    paths:
+      - .github/workflows/phase10-compat-fix.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - name: Preserve symbolic and literal unknown-quantity guardrails
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('js/public-ia.js')
+          text = p.read_text(encoding='utf-8')
+          old = "'Unknown ≠ zero.'"
+          new = "'Unknown ≠ zero. Unknown does not mean zero.'"
+          if text.count(old) != 1:
+              raise SystemExit(f'expected one Phase 10 unknown guardrail, found {text.count(old)}')
+          p.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+          node --check js/public-ia.js
+      - name: Commit compatibility wording
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add js/public-ia.js
+          git commit -m 'Preserve unknown-quantity compatibility wording'
+          git push origin HEAD:ux/phase10-language-presentation-20260906
