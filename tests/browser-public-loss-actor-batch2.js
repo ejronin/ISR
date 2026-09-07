@@ -92,7 +92,7 @@ async function route(cdp, hash, key) {
         commercial: document.querySelectorAll('[data-loss-group="commercial"] [data-loss-id]').length,
         military: document.querySelectorAll('[data-loss-group="military"] [data-loss-id]').length,
         sourceDrawers: document.querySelectorAll('[data-loss-id] details.evidence-drawer').length,
-        visualizationText: [...document.querySelectorAll('[data-loss-visualization]')].map(node => node.innerText || '').join('\n')
+        visualizationText: [...document.querySelectorAll('[data-loss-visualization]')].map(node => node.innerText || '').join('\\n')
       };
     })()`);
     if (losses.cardCount !== 57) console.error('Loss page diagnostics:', losses, await cdp.eval(`({state:window.ATLAS_PUBLIC_STATE,text:document.querySelector('main')?.innerText||document.body.innerText})`));
