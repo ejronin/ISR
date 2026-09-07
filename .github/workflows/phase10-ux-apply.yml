@@ -27,12 +27,23 @@ jobs:
           ' .github/phase10-ux-apply-source.txt > /tmp/phase10-apply.py
           test -s /tmp/phase10-apply.py
           python /tmp/phase10-apply.py
+          git restore .github/workflows/validate.yml
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('tests/public-phase9.test.js')
+          text = p.read_text(encoding='utf-8')
+          hook = "require('./public-phase10.test.js');"
+          if hook not in text:
+              text = text.rstrip() + "\n\n" + hook + "\n"
+          p.write_text(text, encoding='utf-8')
+          PY
+          node --check tests/public-phase9.test.js
       - name: Commit Phase 10 implementation
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm .github/workflows/phase10-ux-apply.yml .github/phase10-ux-apply-source.txt
-          git add js/public-ia.js css/public-shell.css tests/public-phase10.test.js tests/browser-public-phase9.js .github/workflows/validate.yml
+          git rm .github/phase10-ux-apply-source.txt
+          git add js/public-ia.js css/public-shell.css tests/public-phase10.test.js tests/public-phase9.test.js tests/browser-public-phase9.js
           git commit -m 'Implement Phase 10 evidence-state UX language'
           git push origin HEAD:ux/phase10-language-presentation-20260906
