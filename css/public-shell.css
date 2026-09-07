@@ -1396,3 +1396,75 @@ tbody tr:last-child td { border-bottom: 0; }
   .source-outlet-meta { margin-inline: .65rem; }
   .source-outlet .source-list { margin-inline: .65rem; }
 }
+
+
+/* Phase 10 evidence-state presentation */
+.evidence-clocks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+.evidence-clock-card {
+  display: grid;
+  gap: .45rem;
+  padding: 1rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: #0d161e;
+}
+.evidence-clock-card > strong { color: var(--accent-strong); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
+.evidence-clock-card > time { color: var(--text); font-size: 1.02rem; font-weight: 760; }
+.evidence-clock-card > p { margin: 0; color: var(--muted); line-height: 1.5; }
+.evidence-clock-help { margin-top: .15rem; }
+.evidence-clock-help summary,
+.evidence-role-guide summary { color: var(--accent-strong); cursor: pointer; font-size: .78rem; font-weight: 700; }
+.evidence-clock-help p { color: var(--muted); line-height: 1.55; }
+.evidence-layer-list,
+.evidence-role-definitions {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 12rem) minmax(0, 1fr);
+  gap: .45rem .8rem;
+  padding: .8rem;
+  margin: 0 0 .8rem;
+  border: 1px solid var(--line-soft);
+  border-radius: .55rem;
+  background: #0b131a;
+}
+.evidence-layer-list dt,
+.evidence-role-definitions dt { color: var(--accent-strong); font-weight: 760; }
+.evidence-layer-list dd,
+.evidence-role-definitions dd { margin: 0; color: var(--muted); line-height: 1.5; }
+.evidence-role-guide { margin: 0 0 .8rem; }
+.evidence-role-guide .evidence-role-definitions { margin-top: .7rem; }
+.effect-framework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: .7rem;
+  margin-top: .9rem;
+}
+.effect-framework-card {
+  padding: .9rem;
+  border: 1px solid var(--line-soft);
+  border-radius: .55rem;
+  background: #0d161e;
+}
+.effect-framework-card h3 { margin: 0 0 .4rem; font-size: .95rem; }
+.effect-framework-card p { margin: 0; color: var(--muted); line-height: 1.5; }
+.phase10-guardrail {
+  padding: .8rem 1rem;
+  border-left: 4px solid var(--warn);
+  background: rgb(228 195 132 / 8%);
+  color: var(--text);
+  font-weight: 720;
+  line-height: 1.5;
+}
+.objective-benchmark-grid { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+.objective-benchmark-grid .definition-card { min-width: 0; }
+.material-loss-claim-boundary { margin-top: .8rem; }
+.claim-public-sentence { padding: .75rem .9rem; border-left: 4px solid var(--accent); background: #0b131a; color: var(--text); font-weight: 650; line-height: 1.55; }
+.knowledge-boundary { margin-top: .8rem; }
+@media (max-width: 44rem) {
+  .evidence-clocks { grid-template-columns: 1fr; }
+  .evidence-layer-list,
+  .evidence-role-definitions { grid-template-columns: 1fr; }
+}

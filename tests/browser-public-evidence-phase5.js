@@ -167,8 +167,8 @@ async function setRoute(cdp, routeKey) {
       return { text, mapText, point, locationLabel: model.entities.locations[0].record.canonical_name, sourceIndexes: runtime.diagnostics().sourceIndexBuilds };
     })()`);
     assert.match(futureEvidence.text, /Event time2099-01-02 04:05/);
-    assert.match(futureEvidence.text, /Knowledge time2099-01-03/);
-    assert.match(futureEvidence.text, /Later revision known2099-01-05T12:30:00-04:00/);
+    assert.match(futureEvidence.text, /Known at the time2099-01-03/);
+    assert.match(futureEvidence.text, /Added later2099-01-05T12:30:00-04:00/);
     assert.match(futureEvidence.text, /Mohammad Baqer Qalibaf/);
     assert(futureEvidence.text.includes(futureEvidence.locationLabel), 'canonical location_id did not resolve in the shared drawer');
     assert.match(futureEvidence.text, /Evidence supportHigh/);
@@ -203,7 +203,7 @@ async function setRoute(cdp, routeKey) {
       total: document.querySelectorAll('details.evidence-drawer').length,
       shared: document.querySelectorAll('details.evidence-drawer[data-component="SharedEvidenceDrawer"]').length,
       sourceLinks: [...document.querySelectorAll('details.evidence-drawer a')].filter(link => /^https?:/.test(link.href)).length,
-      temporal: [...document.querySelectorAll('details.evidence-drawer .evidence-facts')].some(node => /Event time/.test(node.textContent || '') && /Knowledge time/.test(node.textContent || '')),
+      temporal: [...document.querySelectorAll('details.evidence-drawer .evidence-facts')].some(node => /Event time/.test(node.textContent || '') && /Known at the time/.test(node.textContent || '')),
       factsText: [...document.querySelectorAll('details.evidence-drawer .evidence-facts')].slice(0, 6).map(node => (node.textContent || '').replace(/\s+/g, ' ').trim()),
       drawerText: [...document.querySelectorAll('details.evidence-drawer')].slice(0, 3).map(node => (node.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 1200))
     }))()`);
@@ -236,7 +236,8 @@ async function setRoute(cdp, routeKey) {
     const method = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
     assert(!method.includes('browser receives the already assembled current state'));
     assert(!method.includes('replaying dated updates'));
-    assert.match(method, /Later corrections remain temporally explicit/i);
+    assert.match(method, /Historical views preserve the evidence boundary that existed at the selected time/i);
+    assert.match(method, /Attribution strengthened by later evidence\. Existing event retained\./i);
     assert.match(method, /A launch does not prove penetration, impact or damage/i);
     assert.match(method, /Unknown does not mean zero/i);
 

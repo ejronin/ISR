@@ -179,7 +179,7 @@ async function route(cdp, hash, key) {
     assert(ledger.independent && ledger.independentOpen, 'truth and deception were not rendered as independent findings');
     assert.equal(ledger.evidence, true, 'Lie Ledger detail lacks source access');
     assert(ledger.controls.every(height => height >= 44), 'Lie Ledger has a touch target below 44px');
-    assert.match(ledger.text, /a false claim is not automatically a lie/);
+    assert.match(ledger.text, /a false statement is not automatically a deliberate lie/i);
 
     const acceptedNarrativeFunctions = records('gate3.lie_ledger').map(record => ({
       claimId: record.claim_id,
@@ -254,6 +254,45 @@ async function route(cdp, hash, key) {
       assert(mobile.scrollWidth <= mobile.width, `Phase 9 information page overflows at ${width}px`);
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
+
+    await route(cdp, '#/evidence/information', 'evidence.information');
+    const phase10Ledger = await cdp.eval(`(() => {
+      const main = document.querySelector('main');
+      const falseRow = [...document.querySelectorAll('[data-claim-id]')].find(node => node.dataset.truthAdjudication === 'disproven');
+      if (falseRow) falseRow.open = true;
+      const zeroRow = [...document.querySelectorAll('[data-claim-id]')].find(node => node.dataset.deceptionScore === '0');
+      if (zeroRow) zeroRow.open = true;
+      return {
+        title: main?.querySelector('h1')?.textContent.trim() || '',
+        clocks: [...main.querySelectorAll('[data-component="EvidenceClocks"] .evidence-clock-card > strong')].map(node => node.textContent.trim()),
+        clockTimes: [...main.querySelectorAll('[data-component="EvidenceClocks"] time')].map(node => node.textContent.trim()),
+        explainer: main?.innerText || '',
+        falseLine: falseRow?.querySelector('.claim-public-sentence')?.textContent.trim() || '',
+        zeroText: zeroRow?.innerText || '',
+        evidenceSummary: falseRow?.querySelector('.evidence-drawer > summary')?.textContent.trim() || ''
+      };
+    })()`);
+    assert.equal(phase10Ledger.title, 'Lie Ledger');
+    assert.deepEqual(phase10Ledger.clocks, ['Frozen review cutoff', 'Current evidence cutoff']);
+    assert.deepEqual(phase10Ledger.clockTimes, ['Sep. 5, 2026 · 12:37 AM ET', 'Sep. 6, 2026 · 2:10 PM ET']);
+    assert.match(phase10Ledger.explainer, /Claim accuracy & deception evidence/i);
+    assert.match(phase10Ledger.explainer, /A false statement is not automatically a deliberate lie/i);
+    assert.match(phase10Ledger.zeroText, /No evidence of knowing deception/);
+    assert.match(phase10Ledger.falseLine, /That claim was false\.|direct institutional knowledge/i);
+    assert.match(phase10Ledger.evidenceSummary, /^Evidence(?: \(\d+\))?$/);
+
+    await route(cdp, '#/military/campaigns', 'military.campaigns');
+    const phase10Effects = await cdp.eval(`(() => ({ text: document.querySelector('main')?.innerText || '', cards: document.querySelectorAll('.effect-framework-card').length }))()`);
+    assert.equal(phase10Effects.cards, 7);
+    assert.match(phase10Effects.text, /From damage to strategic effect/);
+    assert.match(phase10Effects.text, /confirmed hit does not by itself establish destroyed capability or strategic effect/i);
+
+    await route(cdp, '#/military/losses', 'military.losses');
+    const phase10Losses = await cdp.eval(`(() => ({ text: document.querySelector('main')?.innerText || '', cards: document.querySelectorAll('[data-loss-id]').length }))()`);
+    assert.equal(phase10Losses.cards, model.counts.material_loss_records);
+    assert.match(phase10Losses.text, /Claimed ≠ verified/);
+    assert.match(phase10Losses.text, /IRGC claim: six vessel successes\. Verified loss count not established\./);
+    assert(!/Quantity: 0\b/.test(phase10Losses.text), 'unknown quantity rendered as zero');
 
     console.log(`browser public Phase 9: PASS - ${timeline.count} current records through ${timeline.cutoff}; interactive spatial timeline, full chronology, side-ledger losses, progressive imagery, human labels, and ${ledger.claims} Lie Ledger propositions including ${populatedNarrativeFunctionDetails.length} narrative functions verified`);
   } finally {
