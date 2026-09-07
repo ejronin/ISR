@@ -1,0 +1,50 @@
+name: Apply Phase 10 method compatibility language
+
+on:
+  push:
+    branches:
+      - ux/phase10-language-presentation-20260906
+    paths:
+      - .github/workflows/phase10-method-compat.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - name: Preserve launch-effect proof boundary and Evidence label
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('js/public-ia.js')
+          text = p.read_text(encoding='utf-8')
+          old = "'A confirmed hit does not by itself establish destroyed capability or strategic effect.', 'Later evidence does not retroactively become evidence known at the historical cutoff.'"
+          new = "'A confirmed hit does not by itself establish destroyed capability or strategic effect.', 'A launch does not prove penetration, impact or damage.', 'Later evidence does not retroactively become evidence known at the historical cutoff.'"
+          if text.count(old) != 1:
+              raise SystemExit(f'expected one method guardrail anchor, found {text.count(old)}')
+          text = text.replace(old, new)
+          old = "open Evidence & sources below."
+          if text.count(old) != 1:
+              raise SystemExit(f'expected one legacy Evidence & sources phrase, found {text.count(old)}')
+          text = text.replace(old, 'open Evidence below.')
+          old = "const truthLabel = append(controls, 'label', '', 'Truth finding'); const truth = append(truthLabel, 'select'); append(truth, 'option', '', 'All truth findings').value = ''; Array.from(new Set(ledger.map(record => record.truth_adjudication).filter(Boolean))).sort().forEach(value => { const option = append(truth, 'option', '', plainLabel(value)); option.value = value; });"
+          new = "const truthLabel = append(controls, 'label', '', 'Proposition status'); const truth = append(truthLabel, 'select'); append(truth, 'option', '', 'All proposition statuses').value = ''; Array.from(new Set(ledger.map(record => record.truth_adjudication).filter(Boolean))).sort().forEach(value => { const option = append(truth, 'option', '', propositionStatusLabel(value)); option.value = value; });"
+          if text.count(old) != 1:
+              raise SystemExit(f'expected one truth-filter anchor, found {text.count(old)}')
+          p.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+          node --check js/public-ia.js
+      - name: Commit Phase 10 method compatibility language
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add js/public-ia.js
+          git commit -m 'Preserve Phase 10 method proof boundaries'
+          git push origin HEAD:ux/phase10-language-presentation-20260906
