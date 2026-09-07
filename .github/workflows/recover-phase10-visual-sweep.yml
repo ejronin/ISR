@@ -1,0 +1,55 @@
+name: Recover Phase 10 visual sweep
+
+on:
+  push:
+    branches:
+      - ux/phase10-visual-sweep-20260907
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: ux/phase10-visual-sweep-20260907
+          fetch-depth: 0
+      - name: Recover reviewed patch payload
+        shell: python
+        run: |
+          from pathlib import Path
+          import subprocess
+          source = subprocess.check_output(['git', 'show', 'e71c137beb75c09b33099feecb8e19036311522b:.github/workflows/apply-phase10-visual-sweep.yml'], text=True)
+          start = "      - name: Apply approved visual sweep\n        shell: python\n        run: |\n"
+          end = "      - name: Verify syntax and focused contracts\n"
+          if start not in source or end not in source:
+              raise SystemExit('reviewed patch payload markers not found')
+          block = source.split(start, 1)[1].split(end, 1)[0]
+          lines = []
+          for line in block.splitlines():
+              lines.append(line[10:] if line.startswith('          ') else line)
+          Path('/tmp/apply-visual-sweep.py').write_text('\n'.join(lines) + '\n')
+      - name: Apply reviewed visual sweep
+        run: python /tmp/apply-visual-sweep.py
+      - name: Build deterministic Phase 10 state
+        run: |
+          python scripts/build_source_registry.py --root .
+          python scripts/build_canonical_current_state.py
+          python scripts/build_public_current_state.py
+          python scripts/build_canonical_current_state_v2_final.py --output data/canonical-current-state-v2.json
+          python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state.json
+      - name: Verify syntax and focused contracts
+        run: |
+          node --check js/public-ia.js
+          node tests/public-phase10.test.js
+          node tests/public-phase9.test.js
+      - name: Commit durable visual sweep
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add js/public-ia.js css/public-shell.css
+          git commit -m 'Implement approved Phase 10 visual sweep foundations'
+          git push origin HEAD:ux/phase10-visual-sweep-20260907
