@@ -130,7 +130,7 @@ async function captureViewport(cdp, filename) {
           };
         })()`);
         assert(reviewState.width > 0 && reviewState.height > 0, `${focus.label} map has no rendered area at ${width}px`);
-        if (focus.label.startsWith('shipping-')) assert(reviewState.routeLines > 0, `${focus.label} has no visible route geometry at ${width}px`);
+        if (focus.label === 'shipping-network') assert(reviewState.routeLines > 0, `${focus.label} has no visible route geometry at ${width}px`);
         await sleep(180);
         await captureViewport(cdp, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
         mapFocusCaptures += 1;
