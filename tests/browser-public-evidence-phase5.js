@@ -236,7 +236,8 @@ async function setRoute(cdp, routeKey) {
     const method = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
     assert(!method.includes('browser receives the already assembled current state'));
     assert(!method.includes('replaying dated updates'));
-    assert.match(method, /Later corrections remain temporally explicit/i);
+    assert.match(method, /Historical views preserve the evidence boundary that existed at the selected time/i);
+    assert.match(method, /Attribution strengthened by later evidence\. Existing event retained\./i);
     assert.match(method, /A launch does not prove penetration, impact or damage/i);
     assert.match(method, /Unknown does not mean zero/i);
 
