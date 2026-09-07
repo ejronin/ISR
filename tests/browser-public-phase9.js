@@ -83,7 +83,11 @@ async function route(cdp, hash, key) {
       map: Boolean(document.querySelector('.timeline-map-host [data-component="MapView"] .leaflet-container')),
       prewar: document.querySelector('[data-timeline-prewar]')?.dataset.timelinePrewar,
       copy: document.querySelector('main')?.innerText || '',
-      controls: [...document.querySelectorAll('.timeline-controls input, .timeline-controls select, .timeline-navigation button')].map(node => node.getBoundingClientRect().height)
+      controls: [...document.querySelectorAll('.timeline-controls input, .timeline-controls select, .timeline-navigation button')].map(node => node.getBoundingClientRect().height),
+      densityBins: document.querySelectorAll('[data-timeline-density="record-count-only"] .timeline-density-bin').length,
+      densityText: document.querySelector('[data-timeline-density="record-count-only"]')?.innerText || '',
+      scaleLabels: [...(document.querySelector('[data-timeline-scale-model="semantic-conflict-span"]')?.options || [])].map(option => option.textContent.trim()),
+      fullLabel: [...document.querySelectorAll('.timeline-navigation button')].find(button => /full conflict/i.test(button.textContent))?.textContent.trim() || ''
     }))()`);
     assert.equal(timeline.count, model.counts.chronology_records);
     assert.equal(timeline.cutoff, model.release.current_osint_cutoff);
@@ -93,6 +97,10 @@ async function route(cdp, hash, key) {
     assert(timeline.controls.every(height => height >= 44), 'timeline has a touch target below 44px');
     assert(timeline.copy.includes(`Detailed Chronology contains all ${model.counts.chronology_records} records.`));
     assert.match(timeline.copy, /191 conflict days are represented/);
+    assert(timeline.densityBins > 0, 'full-conflict density overview is absent');
+    assert.match(timeline.densityText, /not greater strategic importance/i, 'timeline density implies analytical importance');
+    assert.deepEqual(timeline.scaleLabels, ['Full', '4×', '8×', '16×']);
+    assert.equal(timeline.fullLabel, 'Back to full conflict');
 
     const selected = await cdp.eval(`(() => {
       const narrow = () => document.querySelector('.timeline-marker.cluster')?.click();
@@ -264,7 +272,7 @@ async function route(cdp, hash, key) {
       if (zeroRow) zeroRow.open = true;
       return {
         title: main?.querySelector('h1')?.textContent.trim() || '',
-        clocks: [...main.querySelectorAll('[data-component="EvidenceClocks"] .evidence-clock-card > strong')].map(node => node.textContent.trim()),
+        clocks: [...main.querySelectorAll('[data-component="EvidenceClocks"] .evidence-clock-summary > strong')].map(node => node.textContent.trim()),
         clockTimes: [...main.querySelectorAll('[data-component="EvidenceClocks"] time')].map(node => node.textContent.trim()),
         explainer: main?.innerText || '',
         falseLine: falseRow?.querySelector('.claim-public-sentence')?.textContent.trim() || '',
@@ -293,6 +301,66 @@ async function route(cdp, hash, key) {
     assert.match(phase10Losses.text, /Claimed ≠ verified/);
     assert.match(phase10Losses.text, /IRGC claim: six vessel successes\. Verified loss count not established\./);
     assert(!/Quantity: 0\b/.test(phase10Losses.text), 'unknown quantity rendered as zero');
+
+    const lossAudit = await cdp.eval(`(() => {
+      const ids = [...document.querySelectorAll('[data-loss-id]')].map(node => node.dataset.lossId).sort();
+      const details = [...document.querySelectorAll('[data-loss-comparison="record-count-auditable"] [data-aggregation="record-count-only"]')];
+      const contributors = details.flatMap(node => (node.dataset.contributingRecordIds || '').split(',').filter(Boolean)).sort();
+      return { ids, contributors, groupCount: document.querySelectorAll('[data-loss-summary-group]').length, comparisonText: document.querySelector('[data-loss-comparison]')?.innerText || '' };
+    })()`);
+    assert.deepEqual(lossAudit.contributors, lossAudit.ids, 'loss comparison aggregation cannot be audited back to the exact canonical loss IDs');
+    assert(lossAudit.groupCount >= 3, 'loss comparison collapsed actor/commercial group structure');
+    assert.match(lossAudit.comparisonText, /count canonical material-loss records/i);
+    assert.match(lossAudit.comparisonText, /Unknown does not mean zero|unknown quantities/i);
+
+    await route(cdp, '#/hormuz/shipping', 'hormuz.shipping');
+    const shippingVisual = await cdp.eval(`(() => ({
+      views: [...document.querySelectorAll('[data-shipping-map-view]')].map(node => node.dataset.shippingMapView),
+      routeLines: document.querySelectorAll('[data-shipping-map-view="network"] [data-route-id]').length,
+      contextLabels: [...document.querySelectorAll('[data-shipping-map-view="network"] .reference-map-label')].map(node => node.textContent.trim()).filter(Boolean),
+      chokepointLabels: [...document.querySelectorAll('[data-shipping-map-view="chokepoint"] .reference-map-label')].map(node => node.textContent.trim()).filter(Boolean),
+      text: document.querySelector('[data-shipping-map-system]')?.innerText || ''
+    }))()`);
+    assert.deepEqual(shippingVisual.views, ['chokepoint', 'network']);
+    assert(shippingVisual.routeLines >= 4, 'supported oil/shipping route geometry is not visibly rendered');
+    assert(shippingVisual.contextLabels.length > 0, 'broader route map lacks named city/port/corridor context');
+    assert(shippingVisual.chokepointLabels.some(label => /Iran|Oman|Hormuz|Persian Gulf|Gulf of Oman/i.test(label)), 'chokepoint map lacks basic geographic orientation');
+    assert.match(shippingVisual.text, /not live vessel positions, surveyed alignment, or targeting-quality geometry/i);
+
+    await route(cdp, '#/hormuz/economy', 'hormuz.economy');
+    const economyVisual = await cdp.eval(`(() => ({
+      interpolation: document.querySelector('[data-economic-viz]')?.dataset.interpolation || '',
+      cards: document.querySelectorAll('[data-economic-country]').length,
+      tableRows: document.querySelectorAll('.economic-numeric-equivalent tbody tr').length,
+      hasConnectingPolyline: Boolean(document.querySelector('[data-economic-viz] svg polyline, [data-economic-viz] svg path[data-series]')),
+      text: document.querySelector('[data-economic-viz]')?.innerText || ''
+    }))()`);
+    assert.equal(economyVisual.interpolation, 'none');
+    assert.equal(economyVisual.cards, model.datasets['ledger.economics'].payload.economicOutlook.rows.length);
+    assert.equal(economyVisual.tableRows, economyVisual.cards);
+    assert.equal(economyVisual.hasConnectingPolyline, false, 'economy snapshots are visually connected as an invented continuous series');
+    assert.match(economyVisual.text, /does not interpolate values between observations/i);
+
+    await route(cdp, '#/talks/june-mou', 'talks.mou');
+    const mouVisual = await cdp.eval(`(() => ({
+      rows: document.querySelectorAll('[data-agreement-balance] .agreement-term-row').length,
+      selected: document.querySelectorAll('[data-agreement-balance] .agreement-state.selected').length,
+      notAdjudicated: (document.querySelector('[data-agreement-balance]')?.innerText.match(/Balance not adjudicated/g) || []).length,
+      ranges: document.querySelectorAll('[data-agreement-balance] input[type="range"]').length,
+      labels: [...document.querySelectorAll('[data-agreement-balance] .agreement-ordinal')].map(node => node.getAttribute('aria-label') || '')
+    }))()`);
+    const mouTracks = model.datasets['analysis.hormuz'].payload.mou_position_tracks;
+    assert.equal(mouVisual.rows, mouTracks.length);
+    assert.equal(mouVisual.selected, mouTracks.filter(track => track.scorable).length);
+    assert.equal(mouVisual.notAdjudicated, mouTracks.filter(track => !track.scorable).length);
+    assert.equal(mouVisual.ranges, 0, 'MOU balance was rendered as a continuous slider');
+    assert(mouVisual.labels.filter(label => /underlying analyst position/i.test(label)).length === mouVisual.selected, 'scorable MOU terms do not expose their existing analyst-position basis');
+
+    await route(cdp, '#/timeline/war', 'timeline.war');
+    const densityInteraction = await cdp.eval(`(() => {
+      const bin = document.querySelector('.timeline-density-bin'); const inputs = document.querySelectorAll('.timeline-controls input[type="date"]'); if (!bin || inputs.length < 2) return null; bin.click(); return { start: inputs[0].value, end: inputs[1].value, expectedStart: bin.dataset.start, expectedEnd: bin.dataset.end };
+    })()`);
+    assert(densityInteraction && densityInteraction.start === densityInteraction.expectedStart && densityInteraction.end === densityInteraction.expectedEnd, 'timeline density cluster does not drive the chronology window');
 
     console.log(`browser public Phase 9: PASS - ${timeline.count} current records through ${timeline.cutoff}; interactive spatial timeline, full chronology, side-ledger losses, progressive imagery, human labels, and ${ledger.claims} Lie Ledger propositions including ${populatedNarrativeFunctionDetails.length} narrative functions verified`);
   } finally {

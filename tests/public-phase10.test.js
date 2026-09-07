@@ -51,9 +51,28 @@ assert(!source.includes("const deceptionLabels = ['No evidence of deception', 'P
 assert(!source.includes("append(deceptionLabel, 'label', '', 'Deception score')"), 'old deception UI label remains');
 assert(source.includes("? `Evidence (${references.length + relatedRecords.length})`"), 'Evidence drawer is not using the approved system label');
 assert(css.includes('Phase 10 evidence-state presentation'));
+assert(css.includes('Phase 10 approved visual sweep'));
+assert(source.includes("density.dataset.timelineDensity = 'record-count-only'"), 'timeline density is not explicitly record-count-only');
+assert(source.includes('not greater strategic importance'), 'timeline density lacks the non-importance guardrail');
+assert(source.includes("system.dataset.shippingMapSystem = 'chokepoint-network'"), 'Shipping lacks the two-scope map system');
+assert(source.includes("network.dataset.shippingMapView = 'network'"), 'Shipping network-consequences map is absent');
+assert(source.includes("details.dataset.aggregation = 'record-count-only'"), 'loss summaries are not explicitly record-count-only');
+assert(source.includes('details.dataset.contributingRecordIds'), 'loss summary aggregation does not expose contributing stable IDs');
+assert(source.includes("section.dataset.interpolation = 'none'"), 'economy view does not explicitly prohibit interpolation');
+assert(source.includes("section.dataset.agreementBalance = 'existing-position-derived'"), 'MOU balance does not declare its existing analytical source');
+assert(source.includes('Balance not adjudicated'), 'MOU non-scorable fallback is absent');
+
+const oilRoutePayload = model.datasets['analysis.oil_routes'].payload;
+assert(Array.isArray(oilRoutePayload.routes) && oilRoutePayload.routes.length >= 4, 'supported oil/shipping route geometry is unavailable');
+assert(oilRoutePayload.routes.every(route => Array.isArray(route.coords) && route.coords.length >= 2), 'a supported route lacks renderable geometry');
+const economyPayload = model.datasets['ledger.economics'].payload;
+assert(Array.isArray(economyPayload.economicOutlook?.rows) && economyPayload.economicOutlook.rows.length >= 2, 'economy view lacks comparable source snapshots');
+const mouTracks = model.datasets['analysis.hormuz'].payload.mou_position_tracks;
+assert(Array.isArray(mouTracks) && mouTracks.length > 0, 'MOU position tracks are unavailable');
+assert(mouTracks.filter(track => track.scorable).every(track => Number.isFinite(Number(track.position))), 'scorable MOU term lacks an existing numeric analyst position');
 
 const losses = (() => { const payload = model.datasets['current.material_losses'].payload; return payload.records || []; })();
 assert.equal(losses.length, 57);
 assert(losses.every(record => record.quantity !== null || record.quantity !== 0), 'unknown quantity was converted to zero');
 
-console.log('public Phase 10: PASS - dual evidence clocks, evidence roles, Lie Ledger truth/deception separation, effects framework, loss grammar, stable-ID language and objective benchmarks verified');
+console.log('public Phase 10: PASS - evidence semantics plus approved visual-sweep contracts for timeline density, shipping routes, auditable loss aggregation, non-interpolated economics and MOU balance verified');

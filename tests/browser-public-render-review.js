@@ -11,6 +11,7 @@ const OUTPUT = process.env.ATLAS_SCREENSHOT_DIR || path.join(__dirname, '..', 'a
 const WIDTHS = [1440, 1024, 768, 390, 320];
 const ROUTES = [
   'start.overview',
+  'timeline.war',
   'evidence.sources',
   'evidence.information',
   'military.campaigns',
@@ -18,6 +19,7 @@ const ROUTES = [
   'hormuz.shipping',
   'hormuz.economy',
   'talks.overview',
+  'talks.mou',
   'evidence.archive',
   'military.imagery'
 ];
