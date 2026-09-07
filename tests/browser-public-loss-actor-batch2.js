@@ -91,7 +91,8 @@ async function route(cdp, hash, key) {
         unresolvedActorNames: [...document.querySelectorAll('[data-loss-id] [data-actor-name]')].filter(node => !node.dataset.actorName).length,
         commercial: document.querySelectorAll('[data-loss-group="commercial"] [data-loss-id]').length,
         military: document.querySelectorAll('[data-loss-group="military"] [data-loss-id]').length,
-        sourceDrawers: document.querySelectorAll('[data-loss-id] details.evidence-drawer').length
+        sourceDrawers: document.querySelectorAll('[data-loss-id] details.evidence-drawer').length,
+        visualizationText: [...document.querySelectorAll('[data-loss-visualization]')].map(node => node.innerText || '').join('\n')
       };
     })()`);
     if (losses.cardCount !== 57) console.error('Loss page diagnostics:', losses, await cdp.eval(`({state:window.ATLAS_PUBLIC_STATE,text:document.querySelector('main')?.innerText||document.body.innerText})`));
@@ -99,8 +100,11 @@ async function route(cdp, hash, key) {
     assert.equal(losses.cardCount, 57);
     assert.equal(losses.uniqueIds, 57);
     assert.equal(losses.visibleCount, 57);
-    assert.match(losses.unknownText, /Unknown quantity/);
-    assert.match(losses.unknownText, /Unknown; not zero/);
+    assert.match(losses.unknownText, /Quantity:\s*unknown/i, 'unresolved quantity is not explicitly labeled unknown');
+    assert.match(losses.unknownText, /Unknown does not mean zero/i, 'unknown-quantity guardrail is absent');
+    assert.doesNotMatch(losses.unknownText, /Quantity:\s*0(?:\D|$)/i, 'unresolved quantity was rendered as numeric zero');
+    assert.match(losses.visualizationText, /does not sum platform quantity or convert an unknown quantity to zero/i, 'loss visualization permits unknown-to-zero or additive quantity semantics');
+    assert.match(losses.visualizationText, /record counts[^.]*not platform quantities|record counts—not platform quantities/i, 'loss visualization is not explicitly bounded to record counts');
     assert.match(losses.damagedText, /Damaged/);
     assert(!/\bDestroyed\b/.test(losses.damagedText), 'damaged record was relabeled destroyed');
     assert.deepEqual(new Set(losses.visualizations), new Set(['physical-state-record-counts', 'accounting-class-record-counts']));
