@@ -762,25 +762,25 @@
   }
 
   function addEvidenceClocks(article, context) {
-    const release = context.model && context.model.release || {};
-    if (!release.gate2_evidence_cutoff || !release.current_osint_cutoff) return;
-    const intro = article.querySelector('.page-intro');
-    if (!intro) return;
-    const clocks = element(context.documentObject, 'section', 'evidence-clocks');
-    clocks.dataset.component = 'EvidenceClocks';
-    clocks.setAttribute('aria-label', 'Evidence cutoffs');
-    const frozen = append(clocks, 'article', 'evidence-clock-card frozen-evidence-clock');
-    append(frozen, 'strong', '', 'Frozen review cutoff');
-    const frozenTime = append(frozen, 'time', '', formatEvidenceClock(release.gate2_evidence_cutoff)); frozenTime.dateTime = release.gate2_evidence_cutoff;
-    append(frozen, 'p', '', 'Historical evaluation uses only evidence available by this time.');
-    const frozenHelp = append(frozen, 'details', 'evidence-clock-help'); append(frozenHelp, 'summary', '', 'Why this cutoff is frozen'); append(frozenHelp, 'p', '', "This is the fixed evidence boundary used for the historical Gate 2 review. Evidence incorporated after this time can strengthen or revise Atlas's current evidence record, but it does not change what was available for the frozen evaluation.");
-    const current = append(clocks, 'article', 'evidence-clock-card current-evidence-clock');
-    append(current, 'strong', '', 'Current evidence cutoff');
-    const currentTime = append(current, 'time', '', formatEvidenceClock(release.current_osint_cutoff)); currentTime.dateTime = release.current_osint_cutoff;
-    append(current, 'p', '', 'Current Atlas evidence includes material incorporated through this time.');
-    const currentHelp = append(current, 'details', 'evidence-clock-help'); append(currentHelp, 'summary', '', 'How the current cutoff works'); append(currentHelp, 'p', '', 'This is the latest evidence cutoff represented in the current Atlas record. It advances when new evidence is incorporated. It does not reopen or retroactively alter a frozen historical evaluation.');
-    intro.after(clocks);
-  }
+  const release = context.model && context.model.release || {};
+  if (!release.gate2_evidence_cutoff || !release.current_osint_cutoff) return;
+  const intro = article.querySelector('.page-intro');
+  if (!intro) return;
+  const clocks = element(context.documentObject, 'section', 'evidence-clocks evidence-clock-bar');
+  clocks.dataset.component = 'EvidenceClocks';
+  clocks.setAttribute('aria-label', 'Evidence cutoffs');
+  const addClock = (className, label, value, shortExplanation, helpLabel, helpText) => {
+    const item = append(clocks, 'article', `evidence-clock-item ${className}`);
+    const summary = append(item, 'div', 'evidence-clock-summary');
+    append(summary, 'strong', '', label);
+    const time = append(summary, 'time', '', formatEvidenceClock(value)); time.dateTime = value;
+    const help = append(item, 'details', 'evidence-clock-help'); append(help, 'summary', '', helpLabel); append(help, 'p', '', shortExplanation); append(help, 'p', '', helpText);
+    return item;
+  };
+  addClock('frozen-evidence-clock', 'Frozen review cutoff', release.gate2_evidence_cutoff, 'Historical evaluation uses only evidence available by this time.', 'Why frozen?', "This is the fixed evidence boundary used for the historical Gate 2 review. Evidence incorporated later can strengthen or revise the current Atlas record, but it does not rewrite what was available for the frozen evaluation.");
+  addClock('current-evidence-clock', 'Current evidence cutoff', release.current_osint_cutoff, 'Current Atlas evidence includes material incorporated through this time.', 'How current works', 'This cutoff advances when new evidence is incorporated. It does not reopen or retroactively alter a frozen historical evaluation.');
+  intro.after(clocks);
+}
 
   function appendDefinition(list, term, value) {
     if (value === null || value === undefined || value === '' || Array.isArray(value) && !value.length) return;
@@ -1146,6 +1146,7 @@
       const documentObject = context.documentObject;
       const section = element(documentObject, 'section', 'context-map');
       section.dataset.component = 'MapView';
+      section.dataset.mapScope = options && options.scope || 'context';
       append(section, 'h2', '', options && options.title || 'Geographic context');
       const records = asArray(options && options.records);
       const relatedRecords = asArray(options && options.relatedRecords);
@@ -1167,7 +1168,7 @@
         : [];
       const routeKey = context.route && context.route.key || '';
       const fallbackViewport = options && options.fallbackViewport || routeViewport(routeKey);
-      const viewportInfo = deriveMapViewport(points, routes, imagery, selectedCountryFeatures, fallbackViewport);
+      const viewportInfo = options && options.viewportOverride ? Object.freeze({ bounds: normalizeBounds(options.viewportOverride) || fallbackViewport, derived: false, coordinateCount: points.length }) : deriveMapViewport(points, routes, imagery, selectedCountryFeatures, fallbackViewport);
       const viewport = viewportInfo.bounds;
       section.dataset.mapExtentSource = viewportInfo.derived ? 'visible-records' : 'deterministic-fallback';
       section.dataset.mapBounds = JSON.stringify(viewport);
@@ -1176,6 +1177,7 @@
       append(section, 'p', '', options && options.description || (groups.size
         ? `${groups.size.toLocaleString()} source-linked locations are shown. Geographic precision follows the underlying record.`
         : 'No source-supported point coordinates are available for these records. Reference geography remains available for context.'));
+      if (options && options.contextNote) append(section, 'p', 'map-context-note', options.contextNote);
 
       const mapHost = append(section, 'div', 'atlas-leaflet-map');
       mapHost.setAttribute('role', 'region');
@@ -1302,7 +1304,7 @@
             event.preventDefault(); marker.fire('click');
           }, true);
         });
-        asArray(geography.metadata && geography.metadata.labels).filter(label => label.lat >= viewport[0][0] && label.lat <= viewport[1][0] && label.lon >= viewport[0][1] && label.lon <= viewport[1][1]).forEach(label => {
+        [...asArray(geography.metadata && geography.metadata.labels), ...asArray(options && options.contextLabels)].filter((label, index, labels) => label && Number.isFinite(Number(label.lat)) && Number.isFinite(Number(label.lon)) && labels.findIndex(candidate => candidate && candidate.label === label.label && Number(candidate.lat) === Number(label.lat) && Number(candidate.lon) === Number(label.lon)) === index).filter(label => label.lat >= viewport[0][0] && label.lat <= viewport[1][0] && label.lon >= viewport[0][1] && label.lon <= viewport[1][1]).forEach(label => {
           L.marker([label.lat, label.lon], { pane: 'atlas-labels', interactive: false, icon: L.divIcon({ className: `reference-map-label ${label.kind || ''}`, html: `<span>${String(label.label).replace(/[<>&]/g, '')}</span>`, iconSize: null }) }).addTo(map);
         });
         mapHost.addEventListener('keydown', event => { if (event.key === 'Escape' && !cardHost.hidden) { event.preventDefault(); cardHost.hidden = true; cardHost.replaceChildren(); } });
@@ -1865,16 +1867,25 @@
   const LOCAL_NAV_ROUTES = new Set(['military.campaigns', 'military.losses', 'military.imagery', 'hormuz.shipping', 'hormuz.economy', 'talks.overview', 'talks.mou', 'talks.regional', 'objectives.outcomes', 'objectives.positions', 'evidence.claims', 'evidence.information', 'evidence.sources']);
 
   function addPageLocalNavigation(article, context) {
-    if (!LOCAL_NAV_ROUTES.has(context.route.key)) return;
-    const sections = Array.from(article.children).filter(node => node.matches && node.matches('section, .context-map, .related-section')).filter(node => {
-      const heading = node.querySelector(':scope > h2');
-      return heading && heading.textContent.trim() !== 'Continue exploring';
-    });
-    if (sections.length < 3) return;
-    const nav = element(context.documentObject, 'nav', 'page-local-nav'); nav.setAttribute('aria-label', 'On this page'); append(nav, 'strong', '', 'On this page'); const links = append(nav, 'div', 'page-local-nav__links');
-    sections.forEach(section => { const heading = section.querySelector(':scope > h2'); if (!heading) return; heading.tabIndex = -1; const button = append(links, 'button', '', heading.textContent.trim()); button.type = 'button'; button.addEventListener('click', () => { heading.focus({ preventScroll: true }); section.scrollIntoView({ block: 'start' }); }); });
-    const intro = article.querySelector('.page-intro'); const glance = article.querySelector('.at-a-glance'); (glance || intro).after(nav);
-  }
+  if (!LOCAL_NAV_ROUTES.has(context.route.key)) return;
+  const sections = Array.from(article.children).filter(node => node.matches && node.matches('section, .context-map, .related-section')).filter(node => {
+    const heading = node.querySelector(':scope > h2');
+    return heading && heading.textContent.trim() !== 'Continue exploring';
+  });
+  if (sections.length < 3) return;
+  const nav = element(context.documentObject, 'nav', 'page-local-nav compact-section-index'); nav.setAttribute('aria-label', 'Jump to sections');
+  const details = append(nav, 'details', 'section-index-disclosure');
+  details.open = Number(context.windowObject && context.windowObject.innerWidth || 0) >= 900;
+  append(details, 'summary', '', 'Jump to sections');
+  const links = append(details, 'div', 'page-local-nav__links');
+  sections.forEach(section => {
+    const heading = section.querySelector(':scope > h2'); if (!heading) return;
+    heading.tabIndex = -1;
+    const button = append(links, 'button', 'section-index-link', heading.textContent.trim()); button.type = 'button';
+    button.addEventListener('click', () => { heading.focus({ preventScroll: true }); section.scrollIntoView({ block: 'start', behavior: context.windowObject && context.windowObject.matchMedia && context.windowObject.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); if (Number(context.windowObject && context.windowObject.innerWidth || 0) < 900) details.open = false; });
+  });
+  const intro = article.querySelector('.page-intro'); const clocks = article.querySelector('.evidence-clock-bar'); const glance = article.querySelector('.at-a-glance'); (clocks || glance || intro).after(nav);
+}
 
   function addSafeAtAGlance(article, context) {
     const definitions = {
@@ -1901,12 +1912,125 @@
     }
   }
 
+
+function visualSweepInsertAfterStatus(article, node) {
+  const anchor = article.querySelector('.compact-section-index') || article.querySelector('.evidence-clock-bar') || article.querySelector('.at-a-glance') || article.querySelector('.page-intro');
+  if (anchor) anchor.after(node); else article.prepend(node);
+  return node;
+}
+
+function routeContextLabels(routes) {
+  const labels = [];
+  asArray(routes).forEach(route => asArray(route && route.nodes).forEach(node => {
+    if (Array.isArray(node) && node.length >= 3 && Number.isFinite(Number(node[1])) && Number.isFinite(Number(node[2]))) labels.push({ label: publicNarrative(node[0], 'Route node'), lat: Number(node[1]), lon: Number(node[2]), kind: String(route.mode || '').toLowerCase() === 'maritime' ? 'port' : 'place' });
+    else if (node && typeof node === 'object') {
+      const lat = Number(node.lat === undefined ? node.latitude : node.lat); const lon = Number(node.lon === undefined ? node.longitude : node.lon);
+      if (validMapPoint([lat, lon])) labels.push({ label: publicNarrative(node.label || node.name, 'Route node'), lat, lon, kind: node.kind || 'place' });
+    }
+  }));
+  return labels;
+}
+
+function enhanceTimelineVisual(article, context) {
+  const explorer = article.querySelector('[data-timeline-controller]'); if (!explorer || explorer.querySelector('[data-timeline-density]')) return;
+  const coverage = recordArray(modelData(context.model, 'gate3.daily_coverage'));
+  const conflictStart = coverage[0] && coverage[0].date || '2026-02-28';
+  const conflictEnd = coverage[coverage.length - 1] && coverage[coverage.length - 1].date || String(context.model.release.current_osint_cutoff).slice(0, 10);
+  const eventDate = item => String(item.timeline && item.timeline.date || item.event && item.event.event_date || '');
+  const wartime = context.model.chronology.filter(item => eventDate(item) >= conflictStart && eventDate(item) <= conflictEnd);
+  const parseDay = value => new Date(`${value}T12:00:00Z`); const dayString = value => value.toISOString().slice(0, 10);
+  const totalDays = Math.max(1, Math.round((parseDay(conflictEnd) - parseDay(conflictStart)) / 86400000) + 1);
+  const binCount = Math.min(24, totalDays); const binSize = Math.ceil(totalDays / binCount);
+  const bins = [];
+  for (let index = 0; index < binCount; index += 1) {
+    const start = new Date(parseDay(conflictStart).getTime() + index * binSize * 86400000); if (start > parseDay(conflictEnd)) break;
+    const end = new Date(Math.min(parseDay(conflictEnd).getTime(), start.getTime() + (binSize - 1) * 86400000)); const startValue = dayString(start); const endValue = dayString(end);
+    const records = wartime.filter(item => { const date = eventDate(item); return date >= startValue && date <= endValue; }); bins.push({ start: startValue, end: endValue, count: records.length });
+  }
+  const maxCount = Math.max(1, ...bins.map(bin => bin.count));
+  const density = element(context.documentObject, 'section', 'timeline-density-overview analytical-hero'); density.dataset.timelineDensity = 'record-count-only';
+  append(density, 'h2', '', 'Conflict tempo at a glance'); append(density, 'p', 'section-note', 'Bar height shows the number of recorded events in each interval. A larger cluster means more recorded events—not greater strategic importance.');
+  const strip = append(density, 'div', 'timeline-density-strip'); strip.setAttribute('role', 'group'); strip.setAttribute('aria-label', 'Recorded event density across the full conflict');
+  bins.forEach(bin => { const button = append(strip, 'button', 'timeline-density-bin'); button.type = 'button'; button.style.setProperty('--density', String(bin.count / maxCount)); button.dataset.start = bin.start; button.dataset.end = bin.end; button.setAttribute('aria-label', `${bin.count} recorded events from ${readableDate(bin.start)} through ${readableDate(bin.end)}. Event density only; not strategic importance.`); append(button, 'span', 'timeline-density-bar', ''); append(button, 'small', '', String(bin.count)); button.addEventListener('click', () => { const inputs = explorer.querySelectorAll('.timeline-controls input[type="date"]'); if (inputs.length >= 2) { inputs[0].value = bin.start; inputs[1].value = bin.end; const EventCtor = context.windowObject && context.windowObject.Event; if (EventCtor) { inputs[0].dispatchEvent(new EventCtor('change', { bubbles: true })); inputs[1].dispatchEvent(new EventCtor('change', { bubbles: true })); } } }); });
+  const controls = explorer.querySelector('.timeline-controls'); explorer.insertBefore(density, controls || explorer.firstChild);
+  const scaleSelect = explorer.querySelector('.timeline-controls select:last-of-type');
+  if (scaleSelect) { const options = [['all', 'Full'], [String(Math.ceil(totalDays / 4)), '4×'], [String(Math.ceil(totalDays / 8)), '8×'], [String(Math.ceil(totalDays / 16)), '16×']]; scaleSelect.replaceChildren(); options.forEach(([value, label]) => { const option = append(scaleSelect, 'option', '', label); option.value = value; }); scaleSelect.dataset.timelineScaleModel = 'semantic-conflict-span'; }
+  const fullButton = Array.from(explorer.querySelectorAll('.timeline-navigation button')).find(button => /full war/i.test(button.textContent)); if (fullButton) fullButton.textContent = 'Back to full conflict';
+}
+
+function enhanceCampaignVisual(article, context) {
+  const map = article.querySelector('.context-map'); if (!map || article.querySelector('[data-visual-sweep-hero="campaign"]')) return;
+  map.dataset.mapScope = 'military-theater'; map.classList.add('hero-map'); const heading = map.querySelector(':scope > h2'); if (heading) heading.textContent = 'Strike geography';
+  const hero = element(context.documentObject, 'section', 'analytical-hero campaign-hero'); hero.dataset.visualSweepHero = 'campaign'; append(hero, 'h2', '', 'Campaign picture');
+  const layout = append(hero, 'div', 'analytical-hero-grid'); layout.append(map); const glance = article.querySelector('.at-a-glance'); if (glance) layout.append(glance); else { const note = append(layout, 'aside', 'hero-context-panel'); append(note, 'strong', '', 'Map-led campaign view'); append(note, 'p', '', 'Mapped strike and damage records appear first; physical damage and strategic effect remain separately assessed below.'); }
+  visualSweepInsertAfterStatus(article, hero);
+}
+
+function enhanceShippingVisual(article, context) {
+  if (article.querySelector('[data-shipping-map-system]')) return;
+  const oil = modelData(context.model, 'analysis.oil_routes') || {}; const routes = asArray(oil.routes); if (!routes.length) { const warning = element(context.documentObject, 'aside', 'scope-note'); warning.dataset.shippingRouteDependency = 'missing'; append(warning, 'strong', '', 'Route data unavailable'); append(warning, 'p', '', 'Atlas cannot render the broader shipping network because no supported route geometry is present in the current public model.'); visualSweepInsertAfterStatus(article, warning); return; }
+  const shippingRecords = [...recordArray(modelData(context.model, 'ledger.shipping')), ...recordArray(modelData(context.model, 'gate3.shipping')), ...recordArray(modelData(context.model, 'current.material_losses')).filter(record => record.military_platform === false || String(record.side || '').includes('COMMERCIAL'))];
+  const inHormuz = shippingRecords.filter(record => { const point = pointFromRecord(record, context.services.locationResolver); return point && point.lat >= 22.4 && point.lat <= 28.9 && point.lon >= 50.8 && point.lon <= 60.8; });
+  const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero'); system.dataset.shippingMapSystem = 'chokepoint-network'; append(system, 'h2', '', 'From chokepoint to network consequences'); append(system, 'p', 'section-note', `${routes.length.toLocaleString()} source-supported schematic corridor${routes.length === 1 ? '' : 's'} are available. Route lines show strategic connectivity—not live vessel positions, surveyed alignment, or targeting-quality geometry.`);
+  const grid = append(system, 'div', 'shipping-map-grid');
+  const choke = MapView.create(context, { title: 'Hormuz chokepoint', records: inHormuz, viewportOverride: [[22.4, 50.8], [28.9, 60.8]], scope: 'hormuz-chokepoint', maxZoom: 7, contextNote: 'Country, coastline and named evidence locations provide orientation. Geographic precision remains bounded by the underlying record.', description: `${inHormuz.length.toLocaleString()} supported shipping or commercial-loss records fall within the public Hormuz context window.` }); choke.dataset.shippingMapView = 'chokepoint';
+  const network = MapView.create(context, { title: 'Network consequences', records: shippingRecords, routes, scope: 'route-network', maxZoom: 5, contextLabels: routeContextLabels(routes), contextNote: 'Named route nodes provide city, port and corridor context. Roads are not inferred where no deterministic road reference layer is packaged.', description: 'Broader maritime, pipeline and rail corridors show how pressure at Hormuz connects to Red Sea, Arabian Peninsula and Eurasian alternatives.' }); network.dataset.shippingMapView = 'network';
+  grid.append(choke, network); const oldMap = article.querySelector('.context-map'); if (oldMap && oldMap !== choke && oldMap !== network) { if (oldMap._atlasMap && oldMap._atlasMap.remove) oldMap._atlasMap.remove(); oldMap.remove(); }
+  visualSweepInsertAfterStatus(article, system);
+}
+
+function visualLossGroup(record) { const side = String(record && record.side || ''); if (side === 'U.S./COALITION') return ['United States / coalition', 'us-coalition']; if (side === 'IRAN/ALIGNED') return ['Iran / aligned', 'iran-aligned']; if (side === 'CIVILIAN/COMMERCIAL' || side.includes('COMMERCIAL')) return ['Civilian / commercial', 'civilian-commercial']; return ['Other / not classified', 'unclassified']; }
+
+function enhanceLossLedgerVisual(article, context) {
+  if (article.querySelector('[data-loss-comparison]')) return;
+  const losses = recordArray(modelData(context.model, 'current.material_losses')); if (!losses.length) return;
+  article.querySelectorAll('[data-loss-id]').forEach(card => { if (!card.id) card.id = `loss-${String(card.dataset.lossId).replace(/[^A-Za-z0-9_-]/g, '-')}`; });
+  const section = element(context.documentObject, 'section', 'loss-comparison analytical-hero'); section.dataset.lossComparison = 'record-count-auditable'; append(section, 'h2', '', 'Loss record comparison'); append(section, 'p', 'section-note', 'These summaries count canonical material-loss records. They do not add unknown quantities, overlapping envelopes, claimed successes, or incompatible platform quantities. Every count links back to the contributing stable records.');
+  const groups = new Map(); losses.forEach(record => { const [label, key] = visualLossGroup(record); if (!groups.has(key)) groups.set(key, { label, key, records: [] }); groups.get(key).records.push(record); });
+  const grid = append(section, 'div', 'loss-comparison-grid');
+  Array.from(groups.values()).forEach(group => { const panel = append(grid, 'section', 'loss-group-summary'); panel.dataset.lossSummaryGroup = group.key; append(panel, 'h3', '', group.label); append(panel, 'p', 'loss-summary-total', `${group.records.length.toLocaleString()} canonical record${group.records.length === 1 ? '' : 's'}`); const categories = new Map(); group.records.forEach(record => { const category = plainLabel(record.accounting_category, 'Category unresolved'); if (!categories.has(category)) categories.set(category, []); categories.get(category).push(record); }); Array.from(categories.entries()).sort(([a], [b]) => a.localeCompare(b)).forEach(([category, records]) => { const details = append(panel, 'details', 'loss-category-drilldown'); details.dataset.aggregation = 'record-count-only'; details.dataset.contributingRecordIds = records.map(record => record.loss_id).join(','); const summary = append(details, 'summary'); append(summary, 'span', '', category); append(summary, 'strong', '', String(records.length)); const unknown = records.filter(record => record.quantity === null || record.quantity === undefined || record.quantity === '').length; if (unknown) append(details, 'p', 'loss-summary-unknown', `${unknown} record${unknown === 1 ? '' : 's'} with unknown quantity. Unknown does not mean zero.`); const list = append(details, 'ul', 'loss-summary-records'); records.forEach(record => { const item = append(list, 'li'); const link = append(item, 'a', '', publicNarrative(record.item, record.loss_id)); link.href = `#loss-${String(record.loss_id).replace(/[^A-Za-z0-9_-]/g, '-')}`; append(item, 'small', '', ` ${plainLabel(record.status, 'Status unresolved')} · ${lossQuantityLabel(record)}`); }); }); });
+  visualSweepInsertAfterStatus(article, section);
+}
+
+function enhanceEconomyVisual(article, context) {
+  if (article.querySelector('[data-economic-viz]')) return;
+  const payload = modelData(context.model, 'ledger.economics') || {}; const outlook = payload.economicOutlook || payload.economic_outlook || {}; const rows = asArray(outlook.rows); if (!rows.length) return;
+  const section = element(context.documentObject, 'section', 'economic-snapshot-dashboard analytical-hero'); section.dataset.economicViz = 'paired-snapshot-small-multiples'; section.dataset.interpolation = 'none'; append(section, 'h2', '', 'Economic pressure: comparable snapshots'); append(section, 'p', 'section-note', `${publicNarrative(outlook.metric, 'Comparable economic metric')}. Each country shows the recorded prewar and current forecast snapshots. Atlas does not interpolate values between observations.`);
+  const maxDelta = Math.max(1, ...rows.map(row => Math.abs(Number(row.delta))).filter(Number.isFinite)); const grid = append(section, 'div', 'economic-small-multiples');
+  rows.forEach(row => { const card = append(grid, 'article', 'economic-snapshot-card'); card.dataset.economicCountry = row.country || ''; append(card, 'h3', '', publicNarrative(row.country, 'Economy')); const values = append(card, 'div', 'economic-paired-values'); const before = append(values, 'div'); append(before, 'span', '', 'Prewar'); append(before, 'strong', '', `${Number(row.prewar).toFixed(1)}%`); const current = append(values, 'div'); append(current, 'span', '', 'Current'); append(current, 'strong', '', `${Number(row.current).toFixed(1)}%`); const delta = append(card, 'div', `economic-delta ${Number(row.delta) < 0 ? 'negative' : 'positive'}`); delta.style.setProperty('--delta-size', String(Math.min(1, Math.abs(Number(row.delta)) / maxDelta))); append(delta, 'span', 'economic-delta-bar', ''); append(delta, 'strong', '', `${Number(row.delta) > 0 ? '+' : ''}${Number(row.delta).toFixed(1)} pp`); });
+  const tableDetails = append(section, 'details', 'economic-numeric-equivalent'); append(tableDetails, 'summary', '', 'Numeric values and methodology'); append(tableDetails, 'p', '', publicNarrative(outlook.note, 'These are reported comparison snapshots; no values are inferred between them.')); const table = append(tableDetails, 'table'); const thead = append(table, 'thead'); const hr = append(thead, 'tr'); ['Economy', 'Prewar', 'Current', 'Change'].forEach(label => { const th = append(hr, 'th', '', label); th.scope = 'col'; }); const tbody = append(table, 'tbody'); rows.forEach(row => { const tr = append(tbody, 'tr'); const th = append(tr, 'th', '', row.country); th.scope = 'row'; append(tr, 'td', '', `${Number(row.prewar).toFixed(1)}%`); append(tr, 'td', '', `${Number(row.current).toFixed(1)}%`); append(tr, 'td', '', `${Number(row.delta) > 0 ? '+' : ''}${Number(row.delta).toFixed(1)} pp`); });
+  const currentRecords = recordArray(modelData(context.model, 'gate3.economics')); if (currentRecords.length) { const snapshots = append(section, 'div', 'economic-event-snapshots'); append(snapshots, 'h3', '', 'Dated pressure snapshots'); currentRecords.slice().sort((a, b) => String(a.date || a.event_date || '').localeCompare(String(b.date || b.event_date || ''))).slice(-6).forEach(record => { const card = addProvenanceCard(snapshots, context, { kicker: readableDate(record.date || record.event_date), title: itemTitle(record, 'Economic pressure record'), text: itemSummary(record), item: record, relatedRecords: relatedRecordsFrom(record) }); card.dataset.economicSnapshot = record.economic_id || record.event_id || record.id || ''; }); }
+  visualSweepInsertAfterStatus(article, section);
+}
+
+function agreementOrdinal(position) { const value = Number(position); if (!Number.isFinite(value)) return null; if (value <= 20) return { index: 0, label: 'Strongly favored Iran' }; if (value <= 40) return { index: 1, label: 'Leaned Iran' }; if (value <= 60) return { index: 2, label: 'Mixed / split' }; if (value <= 80) return { index: 3, label: 'Leaned U.S. / coalition' }; return { index: 4, label: 'Strongly favored U.S. / coalition' }; }
+
+function enhanceMouVisual(article, context) {
+  if (article.querySelector('[data-agreement-balance]')) return;
+  const hormuz = modelData(context.model, 'analysis.hormuz') || {}; const tracks = asArray(hormuz.mou_position_tracks); if (!tracks.length) return;
+  const section = element(context.documentObject, 'section', 'agreement-balance-matrix analytical-hero'); section.dataset.agreementBalance = 'existing-position-derived'; append(section, 'h2', '', 'Agreement balance by term'); append(section, 'p', 'section-note', 'The five-state labels are a presentation of the existing analyst position field: 0–20 strongly Iran; >20–40 leaned Iran; >40–60 mixed/split; >60–80 leaned U.S./coalition; >80 strongly U.S./coalition. Non-scorable terms remain “Balance not adjudicated.”');
+  const list = append(section, 'div', 'agreement-term-list'); const labels = ['Strongly Iran', 'Leaned Iran', 'Mixed / split', 'Leaned U.S.', 'Strongly U.S.'];
+  tracks.forEach(track => { const row = append(list, 'article', 'agreement-term-row'); row.dataset.clause = String(track.clause); append(row, 'h3', '', `${track.clause}. ${publicNarrative(track.topic, 'Agreement term')}`); const ordinal = track.scorable ? agreementOrdinal(track.position) : null; const state = append(row, 'div', 'agreement-ordinal'); state.setAttribute('role', 'img'); state.setAttribute('aria-label', ordinal ? `${ordinal.label}; underlying analyst position ${track.position} of 100` : 'Balance not adjudicated'); labels.forEach((label, index) => { const cell = append(state, 'span', `agreement-state${ordinal && ordinal.index === index ? ' selected' : ''}`, label); cell.setAttribute('aria-hidden', 'true'); }); append(row, 'p', 'agreement-current-balance', ordinal ? `${ordinal.label} · analyst position ${track.position}/100` : 'Balance not adjudicated'); if (track.later_marker && Number.isFinite(Number(track.later_marker.position))) { const later = agreementOrdinal(track.later_marker.position); const compare = append(row, 'div', 'agreement-before-after'); append(compare, 'span', '', `At signing: ${ordinal ? ordinal.label : 'Not adjudicated'}`); append(compare, 'span', '', `Later: ${later ? later.label : 'Not adjudicated'}`); append(compare, 'p', '', publicNarrative(track.later_marker.text)); } else if (track.current_status) append(row, 'p', 'record-status', publicNarrative(track.current_status)); const details = append(row, 'details', 'agreement-term-detail'); append(details, 'summary', '', 'Term, concessions and evidence'); addFactList(details, [['Iran sought', publicNarrative(track.iran_max)], ['MOU result', publicNarrative(track.mou)], ['U.S. / coalition sought', publicNarrative(track.us_max)], ['Atlas analysis', publicNarrative(track.analysis)], ['Current status', publicNarrative(track.current_status)]]); if (asArray(track.sources).length) details.append(EvidenceDrawer.create(context, { source_ids: asArray(track.sources) })); });
+  visualSweepInsertAfterStatus(article, section);
+}
+
+function applyVisualSweep(article, context) {
+  article.dataset.visualSweep = 'phase10-approved'; article.classList.add(`visual-route-${context.route.key.replace(/\./g, '-')}`);
+  if (context.route.key === 'timeline.war') enhanceTimelineVisual(article, context);
+  if (context.route.key === 'military.campaigns') enhanceCampaignVisual(article, context);
+  if (context.route.key === 'hormuz.shipping') enhanceShippingVisual(article, context);
+  if (context.route.key === 'military.losses') enhanceLossLedgerVisual(article, context);
+  if (context.route.key === 'hormuz.economy') enhanceEconomyVisual(article, context);
+  if (context.route.key === 'talks.mou') enhanceMouVisual(article, context);
+}
+
   function preparePage(owner) {
     return context => {
       const article = owner(context);
       addSafeAtAGlance(article, context);
       addEvidenceClocks(article, context);
       applyPresentationDisclosure(article, context);
+      applyVisualSweep(article, context);
       addPageLocalNavigation(article, context);
       return article;
     };
