@@ -23,6 +23,12 @@ const ROUTES = [
   'evidence.archive',
   'military.imagery'
 ];
+const MAP_FOCUS = [
+  { routeKey: 'military.campaigns', label: 'campaign', selector: '[data-visual-sweep-hero="campaign"] .atlas-leaflet-map' },
+  { routeKey: 'hormuz.shipping', label: 'shipping-chokepoint', selector: '[data-shipping-map-view="chokepoint"] .atlas-leaflet-map' },
+  { routeKey: 'hormuz.shipping', label: 'shipping-network', selector: '[data-shipping-map-view="network"] .atlas-leaflet-map' },
+  { routeKey: 'hormuz.economy', label: 'economy-network', selector: '.context-map .atlas-leaflet-map' }
+];
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 class CDP {
@@ -72,6 +78,11 @@ async function route(cdp, routeKey) {
   await sleep(120);
 }
 
+async function captureViewport(cdp, filename) {
+  const screenshot = await cdp.call('Page.captureScreenshot', { format: 'png', fromSurface: true, captureBeyondViewport: false });
+  fs.writeFileSync(path.join(OUTPUT, filename), Buffer.from(screenshot.data, 'base64'));
+}
+
 (async () => {
   fs.mkdirSync(OUTPUT, { recursive: true });
   const targets = await (await fetch(`${DEBUG}/json`)).json();
@@ -92,16 +103,51 @@ async function route(cdp, routeKey) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 768 });
       for (const routeKey of ROUTES) {
         await route(cdp, routeKey);
-        const screenshot = await cdp.call('Page.captureScreenshot', { format: 'png', fromSurface: true, captureBeyondViewport: false });
         const safeRoute = routeKey.replace(/[^a-z0-9.-]+/gi, '-');
-        fs.writeFileSync(path.join(OUTPUT, `${String(width).padStart(4, '0')}-${safeRoute}.png`), Buffer.from(screenshot.data, 'base64'));
+        await captureViewport(cdp, `${String(width).padStart(4, '0')}-${safeRoute}.png`);
         captures += 1;
       }
     }
+
+    let mapFocusCaptures = 0;
+    for (const width of WIDTHS) {
+      await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 768 });
+      for (const focus of MAP_FOCUS) {
+        await route(cdp, focus.routeKey);
+        const selector = JSON.stringify(focus.selector);
+        await waitFor(cdp, `Boolean(document.querySelector(${selector}))`);
+        const reviewState = await cdp.eval(`(() => {
+          const target = document.querySelector(${selector});
+          target.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'auto' });
+          const map = target.closest('[data-component="MapView"]');
+          return {
+            width: target.getBoundingClientRect().width,
+            height: target.getBoundingClientRect().height,
+            routeLines: target.querySelectorAll('[data-route-id]').length,
+            labels: target.querySelectorAll('.reference-map-label').length,
+            scope: map?.dataset.mapScope || '',
+            bounds: map?.dataset.mapBounds || ''
+          };
+        })()`);
+        assert(reviewState.width > 0 && reviewState.height > 0, `${focus.label} map has no rendered area at ${width}px`);
+        if (focus.label.startsWith('shipping-')) assert(reviewState.routeLines > 0, `${focus.label} has no visible route geometry at ${width}px`);
+        await sleep(180);
+        await captureViewport(cdp, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
+        mapFocusCaptures += 1;
+      }
+    }
+
     await cdp.call('Emulation.clearDeviceMetricsOverride');
-    const manifest = { widths: WIDTHS, routes: ROUTES, captures };
+    const manifest = {
+      widths: WIDTHS,
+      routes: ROUTES,
+      captures,
+      map_focus: MAP_FOCUS.map(({ routeKey, label, selector }) => ({ routeKey, label, selector })),
+      map_focus_captures: mapFocusCaptures,
+      total_review_captures: captures + mapFocusCaptures
+    };
     fs.writeFileSync(path.join(OUTPUT, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
-    console.log(`browser public rendered review capture: PASS - ${captures} screenshots (${ROUTES.length} high-risk routes x ${WIDTHS.length} widths)`);
+    console.log(`browser public rendered review capture: PASS - ${captures} top-of-page screenshots (${ROUTES.length} high-risk routes x ${WIDTHS.length} widths) + ${mapFocusCaptures} focused map screenshots`);
   } finally {
     try { await cdp.call('Browser.close'); } catch (_) { /* workflow cleanup is fallback */ }
     cdp.close();
