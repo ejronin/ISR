@@ -66,7 +66,7 @@ const oilRoutePayload = model.datasets['analysis.oil_routes'].payload;
 assert(Array.isArray(oilRoutePayload.routes) && oilRoutePayload.routes.length >= 4, 'supported oil/shipping route geometry is unavailable');
 assert(oilRoutePayload.routes.every(route => Array.isArray(route.coords) && route.coords.length >= 2), 'a supported route lacks renderable geometry');
 const economyPayload = model.datasets['ledger.economics'].payload;
-assert(Array.isArray(economyPayload.economicOutlook?.rows) && economyPayload.economicOutlook.rows.length >= 2, 'economy view lacks comparable source snapshots');
+assert(Array.isArray(economyPayload.forecast_context?.rows) && economyPayload.economicOutlook.rows.length >= 2, 'economy view lacks comparable source snapshots');
 const mouTracks = model.datasets['analysis.hormuz'].payload.mou_position_tracks;
 assert(Array.isArray(mouTracks) && mouTracks.length > 0, 'MOU position tracks are unavailable');
 assert(mouTracks.filter(track => track.scorable).every(track => Number.isFinite(Number(track.position))), 'scorable MOU term lacks an existing numeric analyst position');

@@ -336,7 +336,7 @@ async function route(cdp, hash, key) {
       text: document.querySelector('[data-economic-viz]')?.innerText || ''
     }))()`);
     assert.equal(economyVisual.interpolation, 'none');
-    assert.equal(economyVisual.cards, model.datasets['ledger.economics'].payload.economicOutlook.rows.length);
+    assert.equal(economyVisual.cards, model.datasets['ledger.economics'].payload.forecast_context.rows.length);
     assert.equal(economyVisual.tableRows, economyVisual.cards);
     assert.equal(economyVisual.hasConnectingPolyline, false, 'economy snapshots are visually connected as an invented continuous series');
     assert.match(economyVisual.text, /does not interpolate values between observations/i);
