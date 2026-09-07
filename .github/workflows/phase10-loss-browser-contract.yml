@@ -1,0 +1,44 @@
+name: Apply Phase 10 loss browser contract repair
+
+on:
+  push:
+    branches:
+      - ux/phase10-language-presentation-20260906
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: ux/phase10-language-presentation-20260906
+      - name: Repair stale loss browser contract
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('tests/browser-public-loss-actor-batch2.js')
+          text = path.read_text()
+          old = """        sourceDrawers: document.querySelectorAll('[data-loss-id] details.evidence-drawer').length\n      };\n    })()`);\n"""
+          new = """        sourceDrawers: document.querySelectorAll('[data-loss-id] details.evidence-drawer').length,\n        visualizationText: [...document.querySelectorAll('[data-loss-visualization]')].map(node => node.innerText || '').join('\\n')\n      };\n    })()`);\n"""
+          if old not in text:
+              raise SystemExit('loss diagnostics insertion point not found')
+          text = text.replace(old, new, 1)
+          old_assertions = """    assert.match(losses.unknownText, /Unknown quantity/);\n    assert.match(losses.unknownText, /Unknown; not zero/);\n"""
+          new_assertions = """    assert.match(losses.unknownText, /Quantity:\\s*unknown/i, 'unresolved quantity is not explicitly labeled unknown');\n    assert.match(losses.unknownText, /Unknown does not mean zero/i, 'unknown-quantity guardrail is absent');\n    assert.doesNotMatch(losses.unknownText, /Quantity:\\s*0(?:\\D|$)/i, 'unresolved quantity was rendered as numeric zero');\n    assert.match(losses.visualizationText, /does not sum platform quantity or convert an unknown quantity to zero/i, 'loss visualization permits unknown-to-zero or additive quantity semantics');\n    assert.match(losses.visualizationText, /record counts[^.]*not platform quantities|record counts—not platform quantities/i, 'loss visualization is not explicitly bounded to record counts');\n"""
+          if old_assertions not in text:
+              raise SystemExit('stale loss assertions not found')
+          text = text.replace(old_assertions, new_assertions, 1)
+          path.write_text(text)
+      - name: Verify browser test syntax
+        run: node --check tests/browser-public-loss-actor-batch2.js
+      - name: Commit repaired contract
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tests/browser-public-loss-actor-batch2.js
+          git commit -m 'Repair Phase 10 unknown-quantity browser contract'
+          git push origin HEAD:ux/phase10-language-presentation-20260906
