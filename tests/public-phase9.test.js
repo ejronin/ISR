@@ -105,3 +105,5 @@ assert(!/\b316\b/.test(source), 'current chronology count is hard-coded in front
 for (const replay of ['current-update-20260824.js', 'current-update-20260825.js', 'current-update-20260826.js', 'current-update-20260827.js']) assert(!source.includes(replay));
 
 console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${ledger.length} Lie Ledger propositions, and resolvable source references verified`);
+
+require('./public-phase10.test.js');
