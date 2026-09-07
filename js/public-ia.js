@@ -1884,7 +1884,7 @@
     const button = append(links, 'button', 'section-index-link', heading.textContent.trim()); button.type = 'button';
     button.addEventListener('click', () => { heading.focus({ preventScroll: true }); section.scrollIntoView({ block: 'start', behavior: context.windowObject && context.windowObject.matchMedia && context.windowObject.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); if (Number(context.windowObject && context.windowObject.innerWidth || 0) < 900) details.open = false; });
   });
-  const intro = article.querySelector('.page-intro'); const clocks = article.querySelector('.evidence-clock-bar'); const glance = article.querySelector('.at-a-glance'); (clocks || glance || intro).after(nav);
+  const intro = article.querySelector('.page-intro'); const clocks = article.querySelector('.evidence-clock-bar'); const glance = article.querySelector('.at-a-glance'); const analyticalHero = article.querySelector('.analytical-hero'); (analyticalHero || clocks || glance || intro).after(nav);
 }
 
   function addSafeAtAGlance(article, context) {

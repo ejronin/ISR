@@ -52,6 +52,8 @@ assert(!source.includes("append(deceptionLabel, 'label', '', 'Deception score')"
 assert(source.includes("? `Evidence (${references.length + relatedRecords.length})`"), 'Evidence drawer is not using the approved system label');
 assert(css.includes('Phase 10 evidence-state presentation'));
 assert(css.includes('Phase 10 approved visual sweep'));
+assert(source.includes("const analyticalHero = article.querySelector('.analytical-hero')"), 'analytical hero is not recognized by local navigation');
+assert(source.includes('(analyticalHero || clocks || glance || intro).after(nav)'), 'local section navigation can still precede the analytical hero');
 assert(source.includes("density.dataset.timelineDensity = 'record-count-only'"), 'timeline density is not explicitly record-count-only');
 assert(source.includes('not greater strategic importance'), 'timeline density lacks the non-importance guardrail');
 assert(source.includes("system.dataset.shippingMapSystem = 'chokepoint-network'"), 'Shipping lacks the two-scope map system');
