@@ -1,0 +1,183 @@
+name: Apply Phase 10 visual sweep contracts
+
+on:
+  push:
+    branches:
+      - ux/phase10-visual-sweep-20260907
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: ux/phase10-visual-sweep-20260907
+      - name: Add visual sweep contracts
+        shell: python
+        run: |
+          from pathlib import Path
+
+          static_path = Path('tests/public-phase10.test.js')
+          text = static_path.read_text()
+          anchor = "assert(css.includes('Phase 10 evidence-state presentation'));\n"
+          addition = """assert(css.includes('Phase 10 evidence-state presentation'));
+          assert(css.includes('Phase 10 approved visual sweep'));
+          assert(source.includes("density.dataset.timelineDensity = 'record-count-only'"), 'timeline density is not explicitly record-count-only');
+          assert(source.includes('not greater strategic importance'), 'timeline density lacks the non-importance guardrail');
+          assert(source.includes("system.dataset.shippingMapSystem = 'chokepoint-network'"), 'Shipping lacks the two-scope map system');
+          assert(source.includes("network.dataset.shippingMapView = 'network'"), 'Shipping network-consequences map is absent');
+          assert(source.includes("details.dataset.aggregation = 'record-count-only'"), 'loss summaries are not explicitly record-count-only');
+          assert(source.includes('details.dataset.contributingRecordIds'), 'loss summary aggregation does not expose contributing stable IDs');
+          assert(source.includes("section.dataset.interpolation = 'none'"), 'economy view does not explicitly prohibit interpolation');
+          assert(source.includes("section.dataset.agreementBalance = 'existing-position-derived'"), 'MOU balance does not declare its existing analytical source');
+          assert(source.includes('Balance not adjudicated'), 'MOU non-scorable fallback is absent');
+
+          const oilRoutePayload = model.datasets['analysis.oil_routes'].payload;
+          assert(Array.isArray(oilRoutePayload.routes) && oilRoutePayload.routes.length >= 4, 'supported oil/shipping route geometry is unavailable');
+          assert(oilRoutePayload.routes.every(route => Array.isArray(route.coords) && route.coords.length >= 2), 'a supported route lacks renderable geometry');
+          const economyPayload = model.datasets['ledger.economics'].payload;
+          assert(Array.isArray(economyPayload.economicOutlook?.rows) && economyPayload.economicOutlook.rows.length >= 2, 'economy view lacks comparable source snapshots');
+          const mouTracks = model.datasets['analysis.hormuz'].payload.mou_position_tracks;
+          assert(Array.isArray(mouTracks) && mouTracks.length > 0, 'MOU position tracks are unavailable');
+          assert(mouTracks.filter(track => track.scorable).every(track => Number.isFinite(Number(track.position))), 'scorable MOU term lacks an existing numeric analyst position');
+          """
+          if anchor not in text:
+              raise SystemExit('Phase 10 static insertion anchor not found')
+          text = text.replace(anchor, addition, 1)
+          text = text.replace("console.log('public Phase 10: PASS - dual evidence clocks, evidence roles, Lie Ledger truth/deception separation, effects framework, loss grammar, stable-ID language and objective benchmarks verified');", "console.log('public Phase 10: PASS - evidence semantics plus approved visual-sweep contracts for timeline density, shipping routes, auditable loss aggregation, non-interpolated economics and MOU balance verified');")
+          static_path.write_text(text)
+
+          browser_path = Path('tests/browser-public-phase9.js')
+          text = browser_path.read_text()
+          old = """      copy: document.querySelector('main')?.innerText || '',
+                controls: [...document.querySelectorAll('.timeline-controls input, .timeline-controls select, .timeline-navigation button')].map(node => node.getBoundingClientRect().height)
+          """
+          new = """      copy: document.querySelector('main')?.innerText || '',
+                controls: [...document.querySelectorAll('.timeline-controls input, .timeline-controls select, .timeline-navigation button')].map(node => node.getBoundingClientRect().height),
+                densityBins: document.querySelectorAll('[data-timeline-density=\"record-count-only\"] .timeline-density-bin').length,
+                densityText: document.querySelector('[data-timeline-density=\"record-count-only\"]')?.innerText || '',
+                scaleLabels: [...(document.querySelector('[data-timeline-scale-model=\"semantic-conflict-span\"]')?.options || [])].map(option => option.textContent.trim()),
+                fullLabel: [...document.querySelectorAll('.timeline-navigation button')].find(button => /full conflict/i.test(button.textContent))?.textContent.trim() || ''
+          """
+          if old not in text: raise SystemExit('timeline diagnostic anchor not found')
+          text = text.replace(old, new, 1)
+          old = """    assert.match(timeline.copy, /191 conflict days are represented/);
+
+              const selected = await cdp.eval"""
+          new = """    assert.match(timeline.copy, /191 conflict days are represented/);
+              assert(timeline.densityBins > 0, 'full-conflict density overview is absent');
+              assert.match(timeline.densityText, /not greater strategic importance/i, 'timeline density implies analytical importance');
+              assert.deepEqual(timeline.scaleLabels, ['Full', '4×', '8×', '16×']);
+              assert.equal(timeline.fullLabel, 'Back to full conflict');
+
+              const selected = await cdp.eval"""
+          if old not in text: raise SystemExit('timeline assertion anchor not found')
+          text = text.replace(old, new, 1)
+          text = text.replace("clocks: [...main.querySelectorAll('[data-component=\"EvidenceClocks\"] .evidence-clock-card > strong')].map(node => node.textContent.trim()),", "clocks: [...main.querySelectorAll('[data-component=\"EvidenceClocks\"] .evidence-clock-summary > strong')].map(node => node.textContent.trim()),", 1)
+          old = """    assert(!/Quantity: 0\\b/.test(phase10Losses.text), 'unknown quantity rendered as zero');
+
+              console.log(`browser public Phase 9: PASS"""
+          new = """    assert(!/Quantity: 0\\b/.test(phase10Losses.text), 'unknown quantity rendered as zero');
+
+              const lossAudit = await cdp.eval(`(() => {
+                const ids = [...document.querySelectorAll('[data-loss-id]')].map(node => node.dataset.lossId).sort();
+                const details = [...document.querySelectorAll('[data-loss-comparison=\"record-count-auditable\"] [data-aggregation=\"record-count-only\"]')];
+                const contributors = details.flatMap(node => (node.dataset.contributingRecordIds || '').split(',').filter(Boolean)).sort();
+                return { ids, contributors, groupCount: document.querySelectorAll('[data-loss-summary-group]').length, comparisonText: document.querySelector('[data-loss-comparison]')?.innerText || '' };
+              })()`);
+              assert.deepEqual(lossAudit.contributors, lossAudit.ids, 'loss comparison aggregation cannot be audited back to the exact canonical loss IDs');
+              assert(lossAudit.groupCount >= 3, 'loss comparison collapsed actor/commercial group structure');
+              assert.match(lossAudit.comparisonText, /count canonical material-loss records/i);
+              assert.match(lossAudit.comparisonText, /Unknown does not mean zero|unknown quantities/i);
+
+              await route(cdp, '#/hormuz/shipping', 'hormuz.shipping');
+              const shippingVisual = await cdp.eval(`(() => ({
+                views: [...document.querySelectorAll('[data-shipping-map-view]')].map(node => node.dataset.shippingMapView),
+                routeLines: document.querySelectorAll('[data-shipping-map-view=\"network\"] [data-route-id]').length,
+                contextLabels: [...document.querySelectorAll('[data-shipping-map-view=\"network\"] .reference-map-label')].map(node => node.textContent.trim()).filter(Boolean),
+                chokepointLabels: [...document.querySelectorAll('[data-shipping-map-view=\"chokepoint\"] .reference-map-label')].map(node => node.textContent.trim()).filter(Boolean),
+                text: document.querySelector('[data-shipping-map-system]')?.innerText || ''
+              }))()`);
+              assert.deepEqual(shippingVisual.views, ['chokepoint', 'network']);
+              assert(shippingVisual.routeLines >= 4, 'supported oil/shipping route geometry is not visibly rendered');
+              assert(shippingVisual.contextLabels.length > 0, 'broader route map lacks named city/port/corridor context');
+              assert(shippingVisual.chokepointLabels.some(label => /Iran|Oman|Hormuz|Persian Gulf|Gulf of Oman/i.test(label)), 'chokepoint map lacks basic geographic orientation');
+              assert.match(shippingVisual.text, /not live vessel positions, surveyed alignment, or targeting-quality geometry/i);
+
+              await route(cdp, '#/hormuz/economy', 'hormuz.economy');
+              const economyVisual = await cdp.eval(`(() => ({
+                interpolation: document.querySelector('[data-economic-viz]')?.dataset.interpolation || '',
+                cards: document.querySelectorAll('[data-economic-country]').length,
+                tableRows: document.querySelectorAll('.economic-numeric-equivalent tbody tr').length,
+                hasConnectingPolyline: Boolean(document.querySelector('[data-economic-viz] svg polyline, [data-economic-viz] svg path[data-series]')),
+                text: document.querySelector('[data-economic-viz]')?.innerText || ''
+              }))()`);
+              assert.equal(economyVisual.interpolation, 'none');
+              assert.equal(economyVisual.cards, model.datasets['ledger.economics'].payload.economicOutlook.rows.length);
+              assert.equal(economyVisual.tableRows, economyVisual.cards);
+              assert.equal(economyVisual.hasConnectingPolyline, false, 'economy snapshots are visually connected as an invented continuous series');
+              assert.match(economyVisual.text, /does not interpolate values between observations/i);
+
+              await route(cdp, '#/talks/june-mou', 'talks.mou');
+              const mouVisual = await cdp.eval(`(() => ({
+                rows: document.querySelectorAll('[data-agreement-balance] .agreement-term-row').length,
+                selected: document.querySelectorAll('[data-agreement-balance] .agreement-state.selected').length,
+                notAdjudicated: (document.querySelector('[data-agreement-balance]')?.innerText.match(/Balance not adjudicated/g) || []).length,
+                ranges: document.querySelectorAll('[data-agreement-balance] input[type=\"range\"]').length,
+                labels: [...document.querySelectorAll('[data-agreement-balance] .agreement-ordinal')].map(node => node.getAttribute('aria-label') || '')
+              }))()`);
+              const mouTracks = model.datasets['analysis.hormuz'].payload.mou_position_tracks;
+              assert.equal(mouVisual.rows, mouTracks.length);
+              assert.equal(mouVisual.selected, mouTracks.filter(track => track.scorable).length);
+              assert.equal(mouVisual.notAdjudicated, mouTracks.filter(track => !track.scorable).length);
+              assert.equal(mouVisual.ranges, 0, 'MOU balance was rendered as a continuous slider');
+              assert(mouVisual.labels.filter(label => /underlying analyst position/i.test(label)).length === mouVisual.selected, 'scorable MOU terms do not expose their existing analyst-position basis');
+
+              await route(cdp, '#/timeline/war', 'timeline.war');
+              const densityInteraction = await cdp.eval(`(() => {
+                const bin = document.querySelector('.timeline-density-bin'); const inputs = document.querySelectorAll('.timeline-controls input[type=\"date\"]'); if (!bin || inputs.length < 2) return null; bin.click(); return { start: inputs[0].value, end: inputs[1].value, expectedStart: bin.dataset.start, expectedEnd: bin.dataset.end };
+              })()`);
+              assert(densityInteraction && densityInteraction.start === densityInteraction.expectedStart && densityInteraction.end === densityInteraction.expectedEnd, 'timeline density cluster does not drive the chronology window');
+
+              console.log(`browser public Phase 9: PASS"""
+          if old not in text: raise SystemExit('Phase 10 browser insertion anchor not found')
+          text = text.replace(old, new, 1)
+          browser_path.write_text(text)
+
+          render_path = Path('tests/browser-public-render-review.js')
+          text = render_path.read_text()
+          old = """const ROUTES = [
+            'start.overview',
+            'evidence.sources',"""
+          new = """const ROUTES = [
+            'start.overview',
+            'timeline.war',
+            'evidence.sources',"""
+          if old not in text: raise SystemExit('render route start anchor not found')
+          text = text.replace(old, new, 1)
+          old = """  'hormuz.economy',
+            'talks.overview',
+            'evidence.archive',"""
+          new = """  'hormuz.economy',
+            'talks.overview',
+            'talks.mou',
+            'evidence.archive',"""
+          if old not in text: raise SystemExit('render MOU route anchor not found')
+          text = text.replace(old, new, 1)
+          render_path.write_text(text)
+      - name: Verify test syntax
+        run: |
+          node --check tests/public-phase10.test.js
+          node --check tests/browser-public-phase9.js
+          node --check tests/browser-public-render-review.js
+      - name: Commit visual sweep contracts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tests/public-phase10.test.js tests/browser-public-phase9.js tests/browser-public-render-review.js
+          git commit -m 'Add Phase 10 visual sweep contracts'
+          git push origin HEAD:ux/phase10-visual-sweep-20260907
