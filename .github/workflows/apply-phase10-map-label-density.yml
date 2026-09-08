@@ -1,0 +1,33 @@
+name: Apply Phase 10 map readability repair
+
+on:
+  push:
+    branches:
+      - ux/phase10-visual-sweep-20260907
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: ux/phase10-visual-sweep-20260907
+      - name: Apply reviewed patch
+        run: python scripts/_phase10_map_label_patch.py
+      - name: Verify syntax
+        run: |
+          node --check js/public-ia.js
+          node --check tests/browser-public-render-review.js
+          node --check tests/public-phase10.test.js
+      - name: Commit durable repair and remove temporary tooling
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm scripts/_phase10_map_label_patch.py .github/workflows/apply-phase10-map-label-density.yml
+          git add js/public-ia.js css/public-shell.css tests/public-phase10.test.js tests/browser-public-render-review.js
+          git commit -m 'Declutter map context labels for visual sweep'
+          git push origin HEAD:ux/phase10-visual-sweep-20260907
