@@ -66,7 +66,7 @@ for (const phrase of [
   'proposal, not an agreement'
 ]) assert(appSource.includes(phrase), `missing cleared narrative-gate semantic contract: ${phrase}`);
 
-assert(source.includes(".dataset.warIn90Seconds = 'approved'"), 'War in 90 Seconds lacks deterministic approval metadata');
+assert(source.includes("setAttribute('data-war-in-90-seconds', 'approved')"), 'War in 90 Seconds lacks deterministic approval metadata');
 assert(source.includes(".dataset.objectiveOrientation = 'approved'"), 'objective orientation lacks deterministic approval metadata');
 assert(source.includes(".dataset.usWarRationale = 'approved'"), 'U.S. rationale module lacks deterministic approval metadata');
 assert(source.includes(".dataset.hormuzTrajectory = 'approved'"), 'Hormuz trajectory lacks deterministic approval metadata');

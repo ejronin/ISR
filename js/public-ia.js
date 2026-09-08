@@ -1715,7 +1715,7 @@
 
     const war = contract.war90;
     const warSection = append(wrapper, 'section', 'content-section narrative-gate');
-    warSection.dataset.warIn90Seconds = 'approved';
+    warSection.setAttribute('data-war-in-90-seconds', 'approved');
     warSection.dataset.narrativeGate = 'war-90';
     append(warSection, 'h2', '', war.title);
     append(warSection, 'p', 'section-note', war.disclaimer);
