@@ -1,0 +1,36 @@
+name: Apply Phase 10 timeline scale selector repair
+
+on:
+  push:
+    branches:
+      - ux/phase10-visual-sweep-20260907
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: ux/phase10-visual-sweep-20260907
+      - name: Apply timeline scale selector repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/_phase10_timeline_scale_selector_patch.py
+          node --check js/public-ia.js
+          node --check tests/browser-public-phase9.js
+          node --check tests/public-phase10.test.js
+      - name: Commit durable selector repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm scripts/_phase10_timeline_scale_selector_patch.py .github/workflows/apply-phase10-timeline-scale-selector.yml
+          git add js/public-ia.js tests/browser-public-phase9.js tests/public-phase10.test.js
+          git commit -m 'Scope Phase 10 timeline scale selector'
+          git push origin HEAD:ux/phase10-visual-sweep-20260907
