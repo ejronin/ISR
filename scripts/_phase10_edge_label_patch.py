@@ -1,0 +1,75 @@
+from pathlib import Path
+
+js = Path('js/public-ia.js')
+text = js.read_text()
+old = """          const kept = [];
+          const maxVisible = windowWidth <= 390 ? (routeHeavy ? 6 : 7) : (routeHeavy ? 9 : 10);
+          nodes.forEach(node => {
+            const span = node.querySelector('span') || node;
+            const rect = span.getBoundingClientRect();
+            const box = { left: rect.left - 4, right: rect.right + 4, top: rect.top - 3, bottom: rect.bottom + 3 };
+            const collides = kept.some(prior => !(box.right <= prior.left || box.left >= prior.right || box.bottom <= prior.top || box.top >= prior.bottom));
+            if (collides || kept.length >= maxVisible) node.style.display = 'none';
+            else kept.push(box);
+          });"""
+new = """          const kept = [];
+          const hostRect = mapHost.getBoundingClientRect();
+          const maxVisible = windowWidth <= 390 ? (routeHeavy ? 6 : 7) : (routeHeavy ? 9 : 10);
+          nodes.forEach(node => {
+            const span = node.querySelector('span') || node;
+            const rect = span.getBoundingClientRect();
+            const clipped = rect.left < hostRect.left + 4 || rect.right > hostRect.right - 4 || rect.top < hostRect.top + 4 || rect.bottom > hostRect.bottom - 4;
+            if (clipped) { node.style.display = 'none'; return; }
+            const box = { left: rect.left - 4, right: rect.right + 4, top: rect.top - 3, bottom: rect.bottom + 3 };
+            const collides = kept.some(prior => !(box.right <= prior.left || box.left >= prior.right || box.bottom <= prior.top || box.top >= prior.bottom));
+            if (collides || kept.length >= maxVisible) node.style.display = 'none';
+            else kept.push(box);
+          });"""
+if text.count(old) != 1:
+    raise SystemExit(f'declutter block changed: found {text.count(old)} matches')
+js.write_text(text.replace(old, new, 1))
+
+test = Path('tests/browser-public-render-review.js')
+text = test.read_text()
+old_state = """            labelOverlaps: (() => {
+              const boxes = [...target.querySelectorAll('.reference-map-label')]
+                .filter(node => getComputedStyle(node).display !== 'none')
+                .map(node => (node.querySelector('span') || node).getBoundingClientRect());
+              let overlaps = 0;
+              for (let i = 0; i < boxes.length; i += 1) for (let j = i + 1; j < boxes.length; j += 1) {
+                const a = boxes[i], b = boxes[j];
+                if (!(a.right <= b.left || a.left >= b.right || a.bottom <= b.top || a.top >= b.bottom)) overlaps += 1;
+              }
+              return overlaps;
+            })(),
+            labelPolicy: map?.dataset.mapLabelPolicy || '',"""
+new_state = """            labelOverlaps: (() => {
+              const boxes = [...target.querySelectorAll('.reference-map-label')]
+                .filter(node => getComputedStyle(node).display !== 'none')
+                .map(node => (node.querySelector('span') || node).getBoundingClientRect());
+              let overlaps = 0;
+              for (let i = 0; i < boxes.length; i += 1) for (let j = i + 1; j < boxes.length; j += 1) {
+                const a = boxes[i], b = boxes[j];
+                if (!(a.right <= b.left || a.left >= b.right || a.bottom <= b.top || a.top >= b.bottom)) overlaps += 1;
+              }
+              return overlaps;
+            })(),
+            labelClips: (() => {
+              const bounds = target.getBoundingClientRect();
+              return [...target.querySelectorAll('.reference-map-label')]
+                .filter(node => getComputedStyle(node).display !== 'none')
+                .map(node => (node.querySelector('span') || node).getBoundingClientRect())
+                .filter(rect => rect.left < bounds.left + 3 || rect.right > bounds.right - 3 || rect.top < bounds.top + 3 || rect.bottom > bounds.bottom - 3).length;
+            })(),
+            labelPolicy: map?.dataset.mapLabelPolicy || '',"""
+if text.count(old_state) != 1:
+    raise SystemExit(f'render review state block changed: found {text.count(old_state)} matches')
+text = text.replace(old_state, new_state, 1)
+old_assert = """        if (width <= 390) assert.equal(reviewState.labelOverlaps, 0, `${focus.label} has overlapping visible context labels at ${width}px`);"""
+new_assert = """        if (width <= 390) {
+          assert.equal(reviewState.labelOverlaps, 0, `${focus.label} has overlapping visible context labels at ${width}px`);
+          assert.equal(reviewState.labelClips, 0, `${focus.label} has a visible context label clipped by the map edge at ${width}px`);
+        }"""
+if text.count(old_assert) != 1:
+    raise SystemExit(f'render review compact assertion changed: found {text.count(old_assert)} matches')
+test.write_text(text.replace(old_assert, new_assert, 1))
