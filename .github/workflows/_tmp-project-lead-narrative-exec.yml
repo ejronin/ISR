@@ -1,0 +1,33 @@
+name: Temporary narrative gate execution
+
+on:
+  push:
+    branches:
+      - tmp/project-lead-narrative-exec-20260908
+
+permissions:
+  contents: write
+
+jobs:
+  patch-entrypoint:
+    if: ${{ !contains(github.event.head_commit.message, '[narrative-exec-done]') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out exact execution branch
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - name: Apply cleared narrative gates
+        run: python scripts/_tmp_apply_narrative_gates.py
+      - name: Syntax check entrypoint
+        run: node --check js/public-app.js
+      - name: Commit patched entrypoint to temporary branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Atlas Project Lead Automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add js/public-app.js
+          git diff --cached --check
+          git commit -m '[narrative-exec-done] Implement cleared Start Here narrative gates'
+          git push origin HEAD:${GITHUB_REF_NAME}
