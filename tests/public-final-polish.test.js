@@ -10,6 +10,22 @@ const source = read('js/public-ia.js');
 const appSource = read('js/public-app.js');
 const css = read('css/public-shell.css');
 
+const rookNarrative = JSON.parse(read('config/rook-narrative-current.json'));
+const rookKeys = [
+  'schema_version', 'contract_version', 'evidence_as_of',
+  'war90_current_title', 'war90_current_text', 'war90_current_changed',
+  'us_record_shows', 'us_current_position', 'iran_record_shows', 'iran_current_position', 'hormuz_now'
+].sort();
+assert.deepEqual(Object.keys(rookNarrative).sort(), rookKeys, 'ROOK routine narrative slot schema changed');
+assert.equal(rookNarrative.schema_version, '1.0', 'ROOK routine narrative schema version changed');
+assert.equal(rookNarrative.contract_version, 'atlas-final-narrative-v1', 'ROOK routine narrative contract version changed');
+assert(/^20\d{2}-\d{2}-\d{2}$/.test(rookNarrative.evidence_as_of), 'ROOK evidence_as_of must be YYYY-MM-DD');
+assert(appSource.includes('ROOK_NARRATIVE_CURRENT_BEGIN') && appSource.includes('ROOK_NARRATIVE_CURRENT_END'), 'ROOK generated narrative slot markers are missing');
+for (const key of rookKeys.filter(key => !['schema_version', 'contract_version', 'evidence_as_of'].includes(key))) {
+  assert(typeof rookNarrative[key] === 'string' && rookNarrative[key].trim(), `ROOK routine slot ${key} is empty`);
+  assert(appSource.includes(rookNarrative[key]) || appSource.includes(`ROOK_NARRATIVE_CURRENT.${key}`), `ROOK routine slot ${key} is not synchronized into public-app`);
+}
+
 for (const phrase of [
   'Final polish semantic state notices',
   'Where things stand now',
@@ -55,6 +71,7 @@ assert(appSource.includes(".dataset.objectiveOrientation = 'approved'"), 'object
 assert(appSource.includes(".dataset.usWarRationale = 'approved'"), 'U.S. rationale module lacks deterministic approval metadata');
 assert(appSource.includes(".dataset.hormuzTrajectory = 'approved'"), 'Hormuz trajectory lacks deterministic approval metadata');
 assert(appSource.includes("article.querySelector('.evidence-clock-bar')"), 'narrative gates are not anchored after the Evidence Clock');
+assert(appSource.includes('MutationObserver'), 'narrative gates are not re-applied after route DOM replacement');
 assert(!appSource.includes('Why the war began'), 'U.S. rationale module was broadened into an omniscient war-cause heading');
 
 for (const phrase of [
