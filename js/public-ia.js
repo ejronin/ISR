@@ -1706,6 +1706,81 @@
     renderRelatedLinks(frame.article, context); return frame.article;
   }
 
+
+  function renderFinalNarrativeGates(article, context) {
+    const contract = context.state && context.state.narrativeContract;
+    if (!contract || article.querySelector('[data-narrative-gates]')) return;
+    const wrapper = append(article, 'div', 'narrative-gates');
+    wrapper.dataset.narrativeGates = 'approved';
+
+    const war = contract.war90;
+    const warSection = append(wrapper, 'section', 'content-section narrative-gate');
+    warSection.dataset.warIn90Seconds = 'approved';
+    warSection.dataset.narrativeGate = 'war-90';
+    append(warSection, 'h2', '', war.title);
+    append(warSection, 'p', 'section-note', war.disclaimer);
+    const sequence = append(warSection, 'div', 'story-sequence');
+    asArray(war.milestones).forEach((milestone, index) => {
+      const step = append(sequence, 'article', 'story-step');
+      step.dataset.warMilestone = String(index + 1);
+      append(step, 'h3', '', milestone.title);
+      append(step, 'p', '', milestone.text);
+      const changed = append(step, 'p', 'record-status');
+      append(changed, 'strong', '', 'What changed: ');
+      changed.append(context.documentObject.createTextNode(milestone.changed));
+    });
+    const warFooter = append(warSection, 'p', 'section-note');
+    warFooter.append(context.documentObject.createTextNode(`${war.disclaimer} Open the `));
+    const timelineLink = append(warFooter, 'a', 'inline-route-link', 'full Timeline');
+    timelineLink.href = routeHref('timeline.war');
+    warFooter.append(context.documentObject.createTextNode(' for the complete dated record.'));
+
+    const objectives = contract.objectives;
+    const objectiveSection = append(wrapper, 'section', 'content-section narrative-gate');
+    objectiveSection.dataset.objectiveOrientation = 'approved';
+    objectiveSection.dataset.narrativeGate = 'objectives';
+    append(objectiveSection, 'h2', '', objectives.title);
+    const objectiveGrid = append(objectiveSection, 'div', 'record-list two-column-list');
+    asArray(objectives.actors).forEach(actor => {
+      const card = append(objectiveGrid, 'article', 'record-card evidence-card');
+      card.dataset.objectiveActor = actor.key;
+      append(card, 'h3', '', actor.title);
+      asArray(actor.stages).forEach(stage => {
+        const stageNode = append(card, 'div', 'narrative-stage');
+        stageNode.dataset.objectiveStage = stage.key;
+        append(stageNode, 'h4', '', stage.title);
+        append(stageNode, 'p', '', stage.text);
+      });
+    });
+
+    const usEntry = contract.usEntry;
+    const rationaleSection = append(wrapper, 'section', 'content-section narrative-gate');
+    rationaleSection.dataset.usWarRationale = 'approved';
+    rationaleSection.dataset.narrativeGate = 'us-entry';
+    append(rationaleSection, 'h2', '', usEntry.title);
+    append(rationaleSection, 'p', 'section-note', usEntry.intro);
+    const rationaleGrid = append(rationaleSection, 'div', 'record-list two-column-list');
+    asArray(usEntry.items).forEach(item => {
+      const card = append(rationaleGrid, 'article', 'record-card evidence-card');
+      card.dataset.rationaleKind = item.key;
+      append(card, 'h3', '', item.title);
+      append(card, 'p', '', item.text);
+    });
+
+    const hormuz = contract.hormuz;
+    const hormuzSection = append(wrapper, 'section', 'content-section narrative-gate');
+    hormuzSection.dataset.hormuzTrajectory = 'approved';
+    hormuzSection.dataset.narrativeGate = 'hormuz-trajectory';
+    append(hormuzSection, 'h2', '', hormuz.title);
+    const hormuzGrid = append(hormuzSection, 'div', 'story-grid');
+    asArray(hormuz.stages).forEach(stage => {
+      const card = append(hormuzGrid, 'article', 'record-card evidence-card');
+      card.dataset.hormuzStage = stage.key;
+      append(card, 'h3', '', stage.title);
+      append(card, 'p', '', stage.text);
+    });
+  }
+
   function OverviewPage(context) {
     const frame = pageFrame(context, 'The conflict began with U.S. and Israeli strikes on Iran on February 28, 2026. Iran retaliated across the region, and the war developed into a sustained military, maritime, economic and diplomatic confrontation.');
     frame.article.classList.add('overview-page');
@@ -1746,6 +1821,8 @@
       item: diplomacyEnvelope, localSources: localSourceMap(publicView), relatedRecords: diplomaticEvents.map(item => item.event_id).filter(Boolean),
       route: 'talks.overview', linkLabel: 'Explore Talks & Agreements'
     });
+
+    renderFinalNarrativeGates(frame.article, context);
 
     const whatHappened = addSection(frame.article, 'How the conflict opened', 'content-section lead-story historical-orientation');
     append(whatHappened, 'p', 'lead-copy', publicNarrative(firstWar && firstWar.event && firstWar.event.observed_fact, 'The United States and Israel opened strikes on Iran, and Iran retaliated against Israel and regional bases hosting U.S. forces.'));

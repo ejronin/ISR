@@ -66,12 +66,13 @@ for (const phrase of [
   'proposal, not an agreement'
 ]) assert(appSource.includes(phrase), `missing cleared narrative-gate semantic contract: ${phrase}`);
 
-assert(appSource.includes(".dataset.warIn90Seconds = 'approved'"), 'War in 90 Seconds lacks deterministic approval metadata');
-assert(appSource.includes(".dataset.objectiveOrientation = 'approved'"), 'objective orientation lacks deterministic approval metadata');
-assert(appSource.includes(".dataset.usWarRationale = 'approved'"), 'U.S. rationale module lacks deterministic approval metadata');
-assert(appSource.includes(".dataset.hormuzTrajectory = 'approved'"), 'Hormuz trajectory lacks deterministic approval metadata');
-assert(appSource.includes("article.querySelector('.evidence-clock-bar')"), 'narrative gates are not anchored after the Evidence Clock');
-assert(appSource.includes('MutationObserver'), 'narrative gates are not re-applied after route DOM replacement');
+assert(source.includes(".dataset.warIn90Seconds = 'approved'"), 'War in 90 Seconds lacks deterministic approval metadata');
+assert(source.includes(".dataset.objectiveOrientation = 'approved'"), 'objective orientation lacks deterministic approval metadata');
+assert(source.includes(".dataset.usWarRationale = 'approved'"), 'U.S. rationale module lacks deterministic approval metadata');
+assert(source.includes(".dataset.hormuzTrajectory = 'approved'"), 'Hormuz trajectory lacks deterministic approval metadata');
+assert(source.includes('renderFinalNarrativeGates(frame.article, context);'), 'OverviewPage does not own the cleared narrative modules');
+assert(appSource.includes('narrativeContract: FINAL_NARRATIVE_GATES'), 'public app does not supply the approved narrative contract to the page owner');
+assert(source.includes("const startState = context.route.key === 'start.overview' ? article.querySelector('[data-current-state-summary]')"), 'Start Here Evidence Clock is not anchored to current state before narrative orientation');
 assert(!appSource.includes('Why the war began'), 'U.S. rationale module was broadened into an omniscient war-cause heading');
 
 for (const phrase of [
