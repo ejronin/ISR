@@ -1,0 +1,72 @@
+name: Final polish Talks route-contract repair
+
+on:
+  push:
+    branches: [ux/final-polish-20260908]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: ux/final-polish-20260908
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.x'
+      - name: Apply Talks route repair and stale browser compatibility fix
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          ia_path = Path('js/public-ia.js')
+          ia = ia_path.read_text(encoding='utf-8')
+          old = "    const agreements = mergeCurrentRecords(modelData(context.model, 'ledger.agreements'), modelData(context.model, 'gate3.agreements'), ['agreement_id', 'id']);\n    const publicView = modelData(context.model, 'analysis.endgame_public_view') || {};\n    const current = addSection(frame.article, 'Current diplomatic state', 'content-section lead-story'); current.dataset.diplomaticState = 'current';"
+          new = "    const agreements = mergeCurrentRecords(modelData(context.model, 'ledger.agreements'), modelData(context.model, 'gate3.agreements'), ['agreement_id', 'id']);\n    const current = addSection(frame.article, 'Current diplomatic state', 'content-section lead-story'); current.dataset.diplomaticState = 'current';"
+          if ia.count(old) != 1:
+              raise SystemExit(f'DiplomacyPage publicView declaration target changed: {ia.count(old)} matches')
+          ia = ia.replace(old, new, 1)
+          drawer = "    if (publicView.mou_now) current.append(EvidenceDrawer.create(context, sourceEnvelope(publicView.mou_now), { localSources: localSourceMap(publicView) }));\n"
+          if ia.count(drawer) != 1:
+              raise SystemExit(f'DiplomacyPage current-state drawer target changed: {ia.count(drawer)} matches')
+          ia_path.write_text(ia.replace(drawer, '', 1), encoding='utf-8')
+
+          browser_path = Path('tests/browser-public-ia-smoke.js')
+          browser = browser_path.read_text(encoding='utf-8')
+          old_assert = "    assert.match(overview.text, /What happened\\?/);"
+          new_assert = "    assert.match(overview.text, /How the conflict opened/);"
+          if browser.count(old_assert) != 1:
+              raise SystemExit(f'stale browser heading assertion target changed: {browser.count(old_assert)} matches')
+          browser_path.write_text(browser.replace(old_assert, new_assert, 1), encoding='utf-8')
+
+          test_path = Path('tests/public-final-polish.test.js')
+          test = test_path.read_text(encoding='utf-8')
+          needle = "assert(source.includes(\"wartime.dataset.agreementGroup = 'wartime'\"), 'wartime agreements group is absent');\n"
+          addition = needle + "const diplomacyPageSource = source.slice(source.indexOf('function DiplomacyPage'), source.indexOf('function MouPage'));\nassert(!diplomacyPageSource.includes(\"'analysis.endgame_public_view'\"), 'Talks overview reaches outside its mapped agreements/diplomacy evidence contract');\n"
+          if test.count(needle) != 1:
+              raise SystemExit('final-polish Talks regression insertion point changed')
+          test_path.write_text(test.replace(needle, addition, 1), encoding='utf-8')
+          PY
+      - name: Verify targeted contracts
+        run: |
+          node --check js/public-ia.js
+          node --check tests/browser-public-ia-smoke.js
+          node tests/public-final-polish.test.js
+          git diff --check
+      - name: Commit durable repair
+        run: |
+          rm -f .github/workflows/final-polish-talks-route-fix.yml
+          git add js/public-ia.js tests/browser-public-ia-smoke.js tests/public-final-polish.test.js .github/workflows/final-polish-talks-route-fix.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'fix: keep Talks overview within mapped evidence contract'
+          git push origin HEAD:ux/final-polish-20260908
