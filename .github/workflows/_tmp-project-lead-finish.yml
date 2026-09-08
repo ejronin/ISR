@@ -1,0 +1,35 @@
+name: Temporary project-lead finish
+on:
+  push:
+    branches:
+      - tmp/project-lead-narrative-lifecycle-20260908
+permissions:
+  contents: write
+jobs:
+  finish:
+    if: "!contains(github.event.head_commit.message, '[project-lead-finish-done]')"
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.x'
+      - name: Apply lifecycle and ROOK routine-lane patch
+        run: python .tmp/finish_narrative_and_rook_lane.py
+      - name: Verify generated narrative sync and static contracts
+        run: |
+          python scripts/sync_rook_narrative.py --check
+          node --check js/public-app.js
+          node tests/public-final-polish.test.js
+      - name: Commit verified result on temporary branch
+        run: |
+          git config user.name 'Atlas Project Lead Automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add js/public-app.js tests/public-final-polish.test.js config/rook-narrative-current.json scripts/sync_rook_narrative.py docs/ROOK_DAILY_UPDATE_LANE.md
+          git commit -m '[project-lead-finish-done] Finish narrative lifecycle and ROOK update lane'
+          git push origin HEAD:tmp/project-lead-narrative-lifecycle-20260908
