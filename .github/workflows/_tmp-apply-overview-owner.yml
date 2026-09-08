@@ -17,6 +17,13 @@ jobs:
           node-version: '22'
       - name: Apply page-owner migration
         run: python .tmp/move_narratives_into_overview.py
+      - name: Build deterministic public state for contract verification
+        run: |
+          python scripts/build_source_registry.py --root .
+          python scripts/build_canonical_current_state.py
+          python scripts/build_public_current_state.py
+          python scripts/build_canonical_current_state_v2_final.py --output data/canonical-current-state-v2.json
+          python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state.json
       - name: Verify architecture and static contracts
         run: |
           python scripts/sync_rook_narrative.py --check
