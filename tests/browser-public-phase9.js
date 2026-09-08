@@ -347,7 +347,7 @@ async function route(cdp, hash, key) {
     const mouVisual = await cdp.eval(`(() => ({
       rows: document.querySelectorAll('[data-agreement-balance] .agreement-term-row').length,
       selected: document.querySelectorAll('[data-agreement-balance] .agreement-state.selected').length,
-      notAdjudicated: (document.querySelector('[data-agreement-balance]')?.innerText.match(/Balance not adjudicated/g) || []).length,
+      notAdjudicated: [...document.querySelectorAll('[data-agreement-balance] .agreement-current-balance')].filter(node => node.textContent.trim() === 'Balance not adjudicated').length,
       ranges: document.querySelectorAll('[data-agreement-balance] input[type="range"]').length,
       labels: [...document.querySelectorAll('[data-agreement-balance] .agreement-ordinal')].map(node => node.getAttribute('aria-label') || '')
     }))()`);
