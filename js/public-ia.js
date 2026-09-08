@@ -1883,12 +1883,10 @@
   function DiplomacyPage(context) {
     const frame = pageFrame(context, 'The record moves from proposals to ceasefires, interim agreements, implementation, breakdown and renewed mediation. Those states are not interchangeable.');
     const agreements = mergeCurrentRecords(modelData(context.model, 'ledger.agreements'), modelData(context.model, 'gate3.agreements'), ['agreement_id', 'id']);
-    const publicView = modelData(context.model, 'analysis.endgame_public_view') || {};
     const current = addSection(frame.article, 'Current diplomatic state', 'content-section lead-story'); current.dataset.diplomaticState = 'current';
     append(current, 'p', 'lead-copy', 'The June MOU no longer controls either side, but negotiations continue. Current talks involve Hormuz passage and administration, nuclear questions and regional de-escalation. Diplomatic contact does not itself establish agreement or concession.');
     const currentLinks = append(current, 'div', 'record-actions diplomatic-current-links');
     [['talks.mou', 'June MOU'], ['hormuz.talks', 'Current Hormuz Talks'], ['talks.nuclear', 'Nuclear Talks']].forEach(([key, label]) => { const link = append(currentLinks, 'a', 'inline-route-link', label); link.href = routeHref(key); });
-    if (publicView.mou_now) current.append(EvidenceDrawer.create(context, sourceEnvelope(publicView.mou_now), { localSources: localSourceMap(publicView) }));
 
     const renderAgreement = (host, agreement) => {
       const formalized = agreement.signed_or_formalized_date;

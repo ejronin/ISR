@@ -155,7 +155,7 @@ async function loadDirectRoute(cdp, route) {
       latest: document.querySelectorAll('.compact-record-list .chronology-card').length,
       metrics: document.querySelectorAll('.metric-card').length
     }))()`);
-    assert.match(overview.text, /What happened\?/);
+    assert.match(overview.text, /How the conflict opened/);
     assert.match(overview.text, /Where things stand now/);
     assert.match(overview.text, /Where to go next/);
     assert.match(overview.text, /The June MOU no longer controls either side/);
