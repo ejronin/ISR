@@ -1700,7 +1700,8 @@ tbody tr:last-child td { border-bottom: 0; }
   list-style: none;
 }
 .evidence-clock-mobile > summary::-webkit-details-marker { display: none; }
-.evidence-clock-mobile-action { color: var(--atlas-accent); font-size: .76rem; font-weight: 760; }
+.evidence-clock-mobile-text { min-width: 0; flex: 1 1 auto; }
+.evidence-clock-mobile-action { flex: 0 0 auto; white-space: nowrap; color: var(--atlas-accent); font-size: .76rem; font-weight: 760; }
 .evidence-clock-mobile-body { display: grid; gap: .35rem; padding: 0 .35rem .35rem; }
 
 .state-notice {
