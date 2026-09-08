@@ -277,7 +277,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     const agreements = await cdp.eval(`(() => ({
       ids: [...document.querySelectorAll('[data-agreement-id]')].map(node => node.dataset.agreementId),
       formalized: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized === 'true').length,
-      proposalStates: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized !== 'true' && /\bpropos(?:al|ed)\b/i.test(node.innerText || '')).length,
+      proposalStates: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized !== 'true' && /propos(?:al|ed)/i.test(node.innerText || '')).length,
       evidence: document.querySelectorAll('[data-agreement-id] details.evidence-drawer').length,
       mou: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/talks/june-mou"]')),
       nuclear: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/talks/nuclear"]')),
