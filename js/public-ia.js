@@ -1338,10 +1338,13 @@
           nodes.forEach(node => { node.style.display = ''; });
           if (windowWidth > 768) { section.dataset.mapVisibleLabelCount = String(nodes.length); return; }
           const kept = [];
+          const hostRect = mapHost.getBoundingClientRect();
           const maxVisible = windowWidth <= 390 ? (routeHeavy ? 6 : 7) : (routeHeavy ? 9 : 10);
           nodes.forEach(node => {
             const span = node.querySelector('span') || node;
             const rect = span.getBoundingClientRect();
+            const clipped = rect.left < hostRect.left + 4 || rect.right > hostRect.right - 4 || rect.top < hostRect.top + 4 || rect.bottom > hostRect.bottom - 4;
+            if (clipped) { node.style.display = 'none'; return; }
             const box = { left: rect.left - 4, right: rect.right + 4, top: rect.top - 3, bottom: rect.bottom + 3 };
             const collides = kept.some(prior => !(box.right <= prior.left || box.left >= prior.right || box.bottom <= prior.top || box.top >= prior.bottom));
             if (collides || kept.length >= maxVisible) node.style.display = 'none';

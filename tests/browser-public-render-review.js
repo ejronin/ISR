@@ -140,6 +140,13 @@ async function captureViewport(cdp, filename) {
               }
               return overlaps;
             })(),
+            labelClips: (() => {
+              const bounds = target.getBoundingClientRect();
+              return [...target.querySelectorAll('.reference-map-label')]
+                .filter(node => getComputedStyle(node).display !== 'none')
+                .map(node => (node.querySelector('span') || node).getBoundingClientRect())
+                .filter(rect => rect.left < bounds.left + 3 || rect.right > bounds.right - 3 || rect.top < bounds.top + 3 || rect.bottom > bounds.bottom - 3).length;
+            })(),
             labelPolicy: map?.dataset.mapLabelPolicy || '',
             scope: map?.dataset.mapScope || '',
             bounds: map?.dataset.mapBounds || ''
@@ -160,7 +167,10 @@ async function captureViewport(cdp, filename) {
           assert(reviewState.visibleLabels <= visibleCeiling, `campaign map exceeds ${visibleCeiling} visible theater labels at ${width}px`);
           assert.equal(reviewState.labelPolicy, 'theater-context-prioritized', `campaign map is not using the theater label policy at ${width}px`);
         }
-        if (width <= 390) assert.equal(reviewState.labelOverlaps, 0, `${focus.label} has overlapping visible context labels at ${width}px`);
+        if (width <= 390) {
+          assert.equal(reviewState.labelOverlaps, 0, `${focus.label} has overlapping visible context labels at ${width}px`);
+          assert.equal(reviewState.labelClips, 0, `${focus.label} has a visible context label clipped by the map edge at ${width}px`);
+        }
         await sleep(180);
         await captureViewport(cdp, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
         mapFocusCaptures += 1;
