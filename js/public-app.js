@@ -888,131 +888,6 @@
     })
   });
 
-  function narrativeNode(documentObject, tagName, className, text) {
-    const node = documentObject.createElement(tagName);
-    if (className) node.className = className;
-    if (text !== undefined && text !== null) node.textContent = text;
-    return node;
-  }
-
-  function buildFinalNarrativeGates(documentObject, ia) {
-    const wrapper = narrativeNode(documentObject, 'div', 'narrative-gates');
-    wrapper.dataset.narrativeGates = 'approved';
-
-    const war = FINAL_NARRATIVE_GATES.war90;
-    const warSection = narrativeNode(documentObject, 'section', 'content-section narrative-gate');
-    warSection.dataset.warIn90Seconds = 'approved';
-    warSection.dataset.narrativeGate = 'war-90';
-    warSection.append(narrativeNode(documentObject, 'h2', '', war.title));
-    warSection.append(narrativeNode(documentObject, 'p', 'section-note', war.disclaimer));
-    const sequence = narrativeNode(documentObject, 'div', 'story-sequence');
-    war.milestones.forEach((milestone, index) => {
-      const step = narrativeNode(documentObject, 'article', 'story-step');
-      step.dataset.warMilestone = String(index + 1);
-      step.append(narrativeNode(documentObject, 'h3', '', milestone.title));
-      step.append(narrativeNode(documentObject, 'p', '', milestone.text));
-      const changed = narrativeNode(documentObject, 'p', 'record-status');
-      changed.append(narrativeNode(documentObject, 'strong', '', 'What changed: '));
-      changed.append(documentObject.createTextNode(milestone.changed));
-      step.append(changed);
-      sequence.append(step);
-    });
-    warSection.append(sequence);
-    const warFooter = narrativeNode(documentObject, 'p', 'section-note');
-    warFooter.append(documentObject.createTextNode(`${war.disclaimer} Open the `));
-    const timelineLink = narrativeNode(documentObject, 'a', 'inline-route-link', 'full Timeline');
-    timelineLink.href = ia.routeHref('timeline.war');
-    warFooter.append(timelineLink, documentObject.createTextNode(' for the complete dated record.'));
-    warSection.append(warFooter);
-    wrapper.append(warSection);
-
-    const objectiveSection = narrativeNode(documentObject, 'section', 'content-section narrative-gate');
-    objectiveSection.dataset.objectiveOrientation = 'approved';
-    objectiveSection.dataset.narrativeGate = 'objectives';
-    objectiveSection.append(narrativeNode(documentObject, 'h2', '', FINAL_NARRATIVE_GATES.objectives.title));
-    const objectiveGrid = narrativeNode(documentObject, 'div', 'record-list two-column-list');
-    FINAL_NARRATIVE_GATES.objectives.actors.forEach(actor => {
-      const card = narrativeNode(documentObject, 'article', 'record-card evidence-card');
-      card.dataset.objectiveActor = actor.key;
-      card.append(narrativeNode(documentObject, 'h3', '', actor.title));
-      actor.stages.forEach(stage => {
-        const stageNode = narrativeNode(documentObject, 'div', 'narrative-stage');
-        stageNode.dataset.objectiveStage = stage.key;
-        stageNode.append(narrativeNode(documentObject, 'h4', '', stage.title));
-        stageNode.append(narrativeNode(documentObject, 'p', '', stage.text));
-        card.append(stageNode);
-      });
-      objectiveGrid.append(card);
-    });
-    objectiveSection.append(objectiveGrid);
-    wrapper.append(objectiveSection);
-
-    const rationaleSection = narrativeNode(documentObject, 'section', 'content-section narrative-gate');
-    rationaleSection.dataset.usWarRationale = 'approved';
-    rationaleSection.dataset.narrativeGate = 'us-entry';
-    rationaleSection.append(narrativeNode(documentObject, 'h2', '', FINAL_NARRATIVE_GATES.usEntry.title));
-    rationaleSection.append(narrativeNode(documentObject, 'p', 'section-note', FINAL_NARRATIVE_GATES.usEntry.intro));
-    const rationaleGrid = narrativeNode(documentObject, 'div', 'record-list two-column-list');
-    FINAL_NARRATIVE_GATES.usEntry.items.forEach(item => {
-      const card = narrativeNode(documentObject, 'article', 'record-card evidence-card');
-      card.dataset.rationaleKind = item.key;
-      card.append(narrativeNode(documentObject, 'h3', '', item.title));
-      card.append(narrativeNode(documentObject, 'p', '', item.text));
-      rationaleGrid.append(card);
-    });
-    rationaleSection.append(rationaleGrid);
-    wrapper.append(rationaleSection);
-
-    const hormuzSection = narrativeNode(documentObject, 'section', 'content-section narrative-gate');
-    hormuzSection.dataset.hormuzTrajectory = 'approved';
-    hormuzSection.dataset.narrativeGate = 'hormuz-trajectory';
-    hormuzSection.append(narrativeNode(documentObject, 'h2', '', FINAL_NARRATIVE_GATES.hormuz.title));
-    const hormuzGrid = narrativeNode(documentObject, 'div', 'story-grid');
-    FINAL_NARRATIVE_GATES.hormuz.stages.forEach(stage => {
-      const card = narrativeNode(documentObject, 'article', 'record-card evidence-card');
-      card.dataset.hormuzStage = stage.key;
-      card.append(narrativeNode(documentObject, 'h3', '', stage.title));
-      card.append(narrativeNode(documentObject, 'p', '', stage.text));
-      hormuzGrid.append(card);
-    });
-    hormuzSection.append(hormuzGrid);
-    wrapper.append(hormuzSection);
-
-    return wrapper;
-  }
-
-  function installFinalNarrativeGates(rootElement, documentObject, windowObject, state, ia) {
-    if (rootElement.__atlasNarrativeGateHandler && windowObject && windowObject.removeEventListener) {
-      windowObject.removeEventListener('hashchange', rootElement.__atlasNarrativeGateHandler);
-    }
-    if (rootElement.__atlasNarrativeGateObserver && typeof rootElement.__atlasNarrativeGateObserver.disconnect === 'function') {
-      rootElement.__atlasNarrativeGateObserver.disconnect();
-    }
-    const apply = () => {
-      if (!state || state.routeKey !== 'start.overview') return;
-      const article = rootElement.querySelector('.overview-page');
-      if (!article || article.querySelector('[data-narrative-gates]')) return;
-      const gates = buildFinalNarrativeGates(documentObject, ia);
-      const anchor = article.querySelector('.evidence-clock-bar') || article.querySelector('[data-current-state-summary]') || article.querySelector('.page-intro');
-      if (anchor) anchor.after(gates); else article.append(gates);
-    };
-    const scheduleApply = () => {
-      if (windowObject && typeof windowObject.queueMicrotask === 'function') windowObject.queueMicrotask(apply);
-      else Promise.resolve().then(apply);
-    };
-    const onHashChange = () => scheduleApply();
-    if (windowObject && windowObject.addEventListener) windowObject.addEventListener('hashchange', onHashChange);
-    if (windowObject && typeof windowObject.MutationObserver === 'function') {
-      const observer = new windowObject.MutationObserver(() => apply());
-      observer.observe(rootElement, { childList: true, subtree: true });
-      rootElement.__atlasNarrativeGateObserver = observer;
-    } else {
-      rootElement.__atlasNarrativeGateObserver = null;
-    }
-    rootElement.__atlasNarrativeGateHandler = onHashChange;
-    apply();
-  }
-
   function now() {
     return root.performance && typeof root.performance.now === 'function' ? root.performance.now() : Date.now();
   }
@@ -1058,6 +933,7 @@
       chronologyCount: loaded.model.counts.chronology_records,
       sourceCount: loaded.model.counts.canonical_source_records,
       performance: loaded.performance,
+      narrativeContract: FINAL_NARRATIVE_GATES,
       routeKey: null,
       pageOwner: null
     };
@@ -1072,7 +948,6 @@
       documentObject,
       windowObject
     });
-    installFinalNarrativeGates(rootElement, documentObject, windowObject, state, ia);
     root.ATLAS_PUBLIC_STATE = state;
     root.ATLAS_PUBLIC_ROUTER = controller;
     root.ATLAS_PUBLIC_COVERAGE = Object.freeze({
