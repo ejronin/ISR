@@ -72,5 +72,5 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
     console.log('browser public final polish: PASS - Start Here discoverability, compact evidence status, Talks grouping, semantic Shipping state, mobile readability and touch/focus behavior verified');
-  } finally { try { await cdp.call('Browser.close'); } catch (_) {} cdp.close(); }
+  } finally { try { await cdp.call('Emulation.clearDeviceMetricsOverride'); } catch (_) {} cdp.close(); }
 })().catch(error => { console.error(error.stack || error); process.exitCode = 1; });
