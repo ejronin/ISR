@@ -1310,29 +1310,50 @@
         const allowedReferenceNames = options && options.referenceLabelNames
           ? new Set(asArray(options.referenceLabelNames))
           : routeHeavy ? routeReferenceNames : routeKey === 'military.campaigns' ? campaignReferenceNames : null;
+        const windowWidth = Number(context.windowObject && context.windowObject.innerWidth || 1440);
+        const compactLabelMode = windowWidth <= 390;
         const referenceLabels = asArray(geography.metadata && geography.metadata.labels)
           .filter(label => !allowedReferenceNames || allowedReferenceNames.has(label.label))
-          .map(label => ({ ...label, priority: label.kind === 'water' ? 1 : 2 }));
+          .map(label => ({ ...label, priority: compactLabelMode ? (label.kind === 'water' ? 0 : 1) : (label.kind === 'water' ? 1 : 2) }));
         const suppliedContextLabels = asArray(options && options.contextLabels);
-        const derivedContextLabels = suppliedContextLabels.length ? suppliedContextLabels : routeHeavy ? routeContextLabels(routes, true) : [];
+        const derivedContextLabels = (suppliedContextLabels.length ? suppliedContextLabels : routeHeavy ? routeContextLabels(routes, true) : [])
+          .map(label => ({ ...label, priority: compactLabelMode ? 2 : Number(label.priority ?? 0) }));
         const visibleLabels = [...referenceLabels, ...derivedContextLabels]
           .filter((label, index, labels) => label && Number.isFinite(Number(label.lat)) && Number.isFinite(Number(label.lon)) && labels.findIndex(candidate => candidate && candidate.label === label.label && Number(candidate.lat) === Number(label.lat) && Number(candidate.lon) === Number(label.lon)) === index)
           .filter(label => label.lat >= viewport[0][0] && label.lat <= viewport[1][0] && label.lon >= viewport[0][1] && label.lon <= viewport[1][1])
-          .sort((left, right) => Number(left.priority ?? 2) - Number(right.priority ?? 2) || String(left.label).localeCompare(String(right.label)));
-        const windowWidth = Number(context.windowObject && context.windowObject.innerWidth || 1440);
-        const automaticLabelLimit = routeHeavy ? (windowWidth <= 390 ? 8 : windowWidth <= 768 ? 10 : 14) : routeKey === 'military.campaigns' ? (windowWidth <= 390 ? 8 : windowWidth <= 768 ? 9 : 10) : Number.POSITIVE_INFINITY;
+          .sort((left, right) => Number(left.priority ?? 2) - Number(right.priority ?? 2));
+        const automaticLabelLimit = routeHeavy ? (windowWidth <= 390 ? 12 : windowWidth <= 768 ? 12 : 14) : routeKey === 'military.campaigns' ? (windowWidth <= 390 ? 10 : windowWidth <= 768 ? 10 : 10) : Number.POSITIVE_INFINITY;
         const configuredLabelLimit = Number(options && options.labelLimit);
         const labelLimit = Number.isFinite(configuredLabelLimit) && configuredLabelLimit > 0 ? configuredLabelLimit : automaticLabelLimit;
         const renderedLabels = visibleLabels.slice(0, labelLimit);
         section.dataset.mapLabelPolicy = routeHeavy ? 'route-endpoints-prioritized' : routeKey === 'military.campaigns' ? 'theater-context-prioritized' : 'viewport-reference';
         section.dataset.mapLabelCount = String(renderedLabels.length);
+        const labelMarkers = [];
         renderedLabels.forEach(label => {
-          L.marker([label.lat, label.lon], { pane: 'atlas-labels', interactive: false, icon: L.divIcon({ className: `reference-map-label ${label.kind || ''}`, html: `<span>${String(label.label).replace(/[<>&]/g, '')}</span>`, iconSize: null }) }).addTo(map);
+          const marker = L.marker([label.lat, label.lon], { pane: 'atlas-labels', interactive: false, icon: L.divIcon({ className: `reference-map-label ${label.kind || ''}`, html: `<span>${String(label.label).replace(/[<>&]/g, '')}</span>`, iconSize: null }) }).addTo(map);
+          labelMarkers.push(marker);
         });
+        const declutterReferenceLabels = () => {
+          const nodes = labelMarkers.map(marker => marker.getElement()).filter(Boolean);
+          nodes.forEach(node => { node.style.display = ''; });
+          if (windowWidth > 768) { section.dataset.mapVisibleLabelCount = String(nodes.length); return; }
+          const kept = [];
+          const maxVisible = windowWidth <= 390 ? (routeHeavy ? 6 : 7) : (routeHeavy ? 9 : 10);
+          nodes.forEach(node => {
+            const span = node.querySelector('span') || node;
+            const rect = span.getBoundingClientRect();
+            const box = { left: rect.left - 4, right: rect.right + 4, top: rect.top - 3, bottom: rect.bottom + 3 };
+            const collides = kept.some(prior => !(box.right <= prior.left || box.left >= prior.right || box.bottom <= prior.top || box.top >= prior.bottom));
+            if (collides || kept.length >= maxVisible) node.style.display = 'none';
+            else kept.push(box);
+          });
+          section.dataset.mapVisibleLabelCount = String(kept.length);
+        };
+        map.on('zoomend moveend', declutterReferenceLabels);
         mapHost.addEventListener('keydown', event => { if (event.key === 'Escape' && !cardHost.hidden) { event.preventDefault(); cardHost.hidden = true; cardHost.replaceChildren(); } });
         if (root.requestAnimationFrame) root.requestAnimationFrame(() => {
           if (!section.isConnected || !map._mapPane) return;
-          map.invalidateSize(false); fitVisibleGeography();
+          map.invalidateSize(false); fitVisibleGeography(); declutterReferenceLabels();
         });
         section._atlasMap = map;
       } else {

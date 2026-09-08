@@ -128,6 +128,18 @@ async function captureViewport(cdp, filename) {
             routeControls: map?.querySelectorAll('.map-route-button').length || 0,
             routeModes: map?.dataset.mapRouteModes || '',
             labels: target.querySelectorAll('.reference-map-label').length,
+            visibleLabels: [...target.querySelectorAll('.reference-map-label')].filter(node => getComputedStyle(node).display !== 'none').length,
+            labelOverlaps: (() => {
+              const boxes = [...target.querySelectorAll('.reference-map-label')]
+                .filter(node => getComputedStyle(node).display !== 'none')
+                .map(node => (node.querySelector('span') || node).getBoundingClientRect());
+              let overlaps = 0;
+              for (let i = 0; i < boxes.length; i += 1) for (let j = i + 1; j < boxes.length; j += 1) {
+                const a = boxes[i], b = boxes[j];
+                if (!(a.right <= b.left || a.left >= b.right || a.bottom <= b.top || a.top >= b.bottom)) overlaps += 1;
+              }
+              return overlaps;
+            })(),
             labelPolicy: map?.dataset.mapLabelPolicy || '',
             scope: map?.dataset.mapScope || '',
             bounds: map?.dataset.mapBounds || ''
@@ -139,15 +151,16 @@ async function captureViewport(cdp, filename) {
           assert(reviewState.routeControls > 0 && reviewState.routeModes, `${focus.label} lacks route controls or route-mode metadata at ${width}px`);
         }
         if (focus.label === 'shipping-network' || focus.label === 'economy-network') {
-          const labelCeiling = width <= 390 ? 8 : width <= 768 ? 10 : 14;
-          assert(reviewState.labels <= labelCeiling, `${focus.label} exceeds ${labelCeiling} contextual labels at ${width}px`);
+          const visibleCeiling = width <= 390 ? 6 : width <= 768 ? 9 : 14;
+          assert(reviewState.visibleLabels <= visibleCeiling, `${focus.label} exceeds ${visibleCeiling} visible contextual labels at ${width}px`);
           assert.equal(reviewState.labelPolicy, 'route-endpoints-prioritized', `${focus.label} is not using the route-endpoint label policy at ${width}px`);
         }
         if (focus.label === 'campaign') {
-          const labelCeiling = width <= 390 ? 8 : width <= 768 ? 9 : 10;
-          assert(reviewState.labels <= labelCeiling, `campaign map exceeds ${labelCeiling} theater labels at ${width}px`);
+          const visibleCeiling = width <= 390 ? 7 : width <= 768 ? 10 : 10;
+          assert(reviewState.visibleLabels <= visibleCeiling, `campaign map exceeds ${visibleCeiling} visible theater labels at ${width}px`);
           assert.equal(reviewState.labelPolicy, 'theater-context-prioritized', `campaign map is not using the theater label policy at ${width}px`);
         }
+        if (width <= 390) assert.equal(reviewState.labelOverlaps, 0, `${focus.label} has overlapping visible context labels at ${width}px`);
         await sleep(180);
         await captureViewport(cdp, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
         mapFocusCaptures += 1;

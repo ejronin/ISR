@@ -1589,3 +1589,8 @@ tbody tr:last-child td { border-bottom: 0; }
   .reference-map-label.place span,
   .reference-map-label.port span { font-size: .64rem; }
 }
+
+
+/* Phase 10 label-collision follow-up */
+.economic-paired-values span,
+.economic-paired-values strong { white-space: nowrap; overflow-wrap: normal; word-break: normal; }

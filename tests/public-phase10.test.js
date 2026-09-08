@@ -57,6 +57,9 @@ assert(source.includes('(analyticalHero || clocks || glance || intro).after(nav)
 assert(source.includes("section.dataset.mapLabelPolicy = routeHeavy ? 'route-endpoints-prioritized'"), 'route-heavy maps lack deterministic label-density policy');
 assert(source.includes("routeContextLabels(routes, true)"), 'route-heavy maps do not derive endpoint context when explicit labels are absent');
 assert(css.includes('Phase 10 manual map-readability follow-up'));
+assert(source.includes('const declutterReferenceLabels = () =>'), 'responsive map labels lack deterministic collision suppression');
+assert(source.includes("map.on('zoomend moveend', declutterReferenceLabels)"), 'map label collision suppression does not follow viewport changes');
+assert(css.includes('Phase 10 label-collision follow-up'));
 assert(source.includes("density.dataset.timelineDensity = 'record-count-only'"), 'timeline density is not explicitly record-count-only');
 assert(source.includes('not greater strategic importance'), 'timeline density lacks the non-importance guardrail');
 assert(source.includes("system.dataset.shippingMapSystem = 'chokepoint-network'"), 'Shipping lacks the two-scope map system');
