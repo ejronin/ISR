@@ -1,0 +1,31 @@
+name: Temporary final narrative metadata
+on:
+  push:
+    branches: [tmp/project-lead-final-metadata-20260908]
+permissions:
+  contents: write
+jobs:
+  fix:
+    if: "!contains(github.event.head_commit.message, '[final-metadata-done]')"
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Apply exact metadata repair
+        run: python .tmp/fix_final_war_metadata.py
+      - name: Verify static architecture contracts
+        run: |
+          node --check js/public-ia.js
+          node --check js/public-app.js
+          node tests/public-final-polish.test.js
+      - name: Commit verified result
+        run: |
+          git config user.name 'Atlas Project Lead Automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add js/public-ia.js tests/public-final-polish.test.js
+          git commit -m '[final-metadata-done] Fix War in 90 Seconds DOM metadata'
+          git push origin HEAD:tmp/project-lead-final-metadata-20260908
