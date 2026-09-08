@@ -61,6 +61,9 @@ assert(source.includes('const declutterReferenceLabels = () =>'), 'responsive ma
 assert(source.includes("map.on('zoomend moveend', declutterReferenceLabels)"), 'map label collision suppression does not follow viewport changes');
 assert(css.includes('Phase 10 label-collision follow-up'));
 assert(source.includes("density.dataset.timelineDensity = 'record-count-only'"), 'timeline density is not explicitly record-count-only');
+assert(source.includes("windowSelect.dataset.timelineScaleControl = 'window'"), 'timeline scale control lacks an explicit selector boundary');
+assert(source.includes("explorer.querySelector('[data-timeline-scale-control=\"window\"]')"), 'Phase 10 scale enhancement is not scoped to the timeline-scale control');
+assert(!source.includes(".timeline-controls select:last-of-type"), 'Phase 10 scale enhancement can corrupt a sibling filter select');
 assert(source.includes('not greater strategic importance'), 'timeline density lacks the non-importance guardrail');
 assert(source.includes("system.dataset.shippingMapSystem = 'chokepoint-network'"), 'Shipping lacks the two-scope map system');
 assert(source.includes("network.dataset.shippingMapView = 'network'"), 'Shipping network-consequences map is absent');

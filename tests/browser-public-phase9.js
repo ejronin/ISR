@@ -87,6 +87,7 @@ async function route(cdp, hash, key) {
       densityBins: document.querySelectorAll('[data-timeline-density="record-count-only"] .timeline-density-bin').length,
       densityText: document.querySelector('[data-timeline-density="record-count-only"]')?.innerText || '',
       scaleLabels: [...(document.querySelector('[data-timeline-scale-model="semantic-conflict-span"]')?.options || [])].map(option => option.textContent.trim()),
+      topicLabels: [...document.querySelectorAll('.timeline-controls label')].find(label => /^Topic/.test(label.textContent.trim())) ? [...[...document.querySelectorAll('.timeline-controls label')].find(label => /^Topic/.test(label.textContent.trim())).querySelectorAll('option')].map(option => option.textContent.trim()) : [],
       fullLabel: [...document.querySelectorAll('.timeline-navigation button')].find(button => /full conflict/i.test(button.textContent))?.textContent.trim() || ''
     }))()`);
     assert.equal(timeline.count, model.counts.chronology_records);
@@ -100,6 +101,7 @@ async function route(cdp, hash, key) {
     assert(timeline.densityBins > 0, 'full-conflict density overview is absent');
     assert.match(timeline.densityText, /not greater strategic importance/i, 'timeline density implies analytical importance');
     assert.deepEqual(timeline.scaleLabels, ['Full', '4×', '8×', '16×']);
+    assert.deepEqual(timeline.topicLabels, ['All topics', 'Military', 'Hormuz', 'Economy', 'Diplomacy', 'Losses and damage', 'Wider record'], 'Phase 10 scale presentation corrupted the Topic filter');
     assert.equal(timeline.fullLabel, 'Back to full conflict');
 
     const selected = await cdp.eval(`(() => {
