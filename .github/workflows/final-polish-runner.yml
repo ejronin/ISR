@@ -16,7 +16,7 @@ jobs:
         with:
           ref: ux/final-polish-20260908
           fetch-depth: 0
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16b87065
         with:
           python-version: '3.x'
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -24,6 +24,8 @@ jobs:
           node-version: '22'
       - name: Apply final-polish patch
         run: python tools/_final_polish_patch.py
+      - name: Keep workflow changes for user-authored follow-up
+        run: git checkout -- .github/workflows/validate.yml .github/workflows/validate-source-humanization.yml
       - name: Syntax and whitespace checks
         run: |
           node --check js/public-ia.js
@@ -31,10 +33,11 @@ jobs:
           node --check tests/browser-public-final-polish.js
           node --check tests/browser-public-render-review.js
           git diff --check
-      - name: Commit durable delta and self-clean
+      - name: Commit durable presentation and test delta
         run: |
-          rm -f tools/_final_polish_patch.py .github/workflows/final-polish-runner.yml
+          rm -f tools/_final_polish_patch.py
           git add -A
+          git reset -- .github/workflows/final-polish-runner.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'feat: final production polish and onboarding foundation'
