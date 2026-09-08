@@ -88,14 +88,15 @@ const PRESERVED_FACILITY_IDS = [
     await setRoute(cdp, 'hormuz.shipping');
     const shipping = await cdp.eval(`(() => {
       const button = document.querySelector('.map-route-button');
+      const routeMap = button?.closest('[data-component="MapView"]');
       button?.click();
       return {
         routeButtons: document.querySelectorAll('.map-route-button').length,
         paths: document.querySelectorAll('.leaflet-atlas-routes-pane path').length,
         flow: document.querySelectorAll('.route-flow-marker').length,
-        card: document.querySelector('.map-selection-card')?.innerText || '',
-        drawer: Boolean(document.querySelector('.map-selection-card details[data-component="SharedEvidenceDrawer"]')),
-        equivalent: document.querySelector('[data-phase6-map-equivalent]')?.textContent || ''
+        card: routeMap?.querySelector('.map-selection-card')?.innerText || '',
+        drawer: Boolean(routeMap?.querySelector('.map-selection-card details[data-component="SharedEvidenceDrawer"]')),
+        equivalent: routeMap?.querySelector('[data-phase6-map-equivalent]')?.textContent || ''
       };
     })()`);
     assert(shipping.routeButtons >= 1 && shipping.paths >= 1 && shipping.flow >= 1, 'stored maritime route did not render with its flow marker');
