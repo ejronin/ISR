@@ -20,7 +20,9 @@ jobs:
         with:
           python-version: '3.x'
       - name: Apply lifecycle and ROOK routine-lane patch
-        run: python .tmp/finish_narrative_and_rook_lane.py
+        run: |
+          python .tmp/finish_narrative_and_rook_lane.py
+          python .tmp/fix_rook_regex.py
       - name: Verify generated narrative sync and static contracts
         run: |
           python scripts/sync_rook_narrative.py --check
