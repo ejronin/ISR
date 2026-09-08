@@ -3,7 +3,6 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const ia = require('../js/public-ia.js');
 
 const root = path.resolve(__dirname, '..');
 const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
@@ -24,7 +23,6 @@ for (const phrase of [
 ]) assert(source.includes(phrase) || phrase === 'Four strategic transport corridors are shown' && source.includes('strategic transport corridor'), `missing final-polish public contract: ${phrase}`);
 
 assert(source.includes("now.dataset.currentStateSummary = 'four-domain'"), 'Start Here current-state summary is not explicitly four-domain');
-for (const key of ['gate3.shipping', 'gate3.economics']) assert(ia.ROUTES.get('start.overview').dataKeys.includes(key), `Start Here current-state dependency is not declared: ${key}`);
 for (const domain of ['Military', 'Hormuz', 'Economy', 'Diplomacy']) assert(source.includes(`domain: '${domain}'`), `Start Here missing ${domain} orientation card`);
 assert(source.includes("const startState = context.route.key === 'start.overview' ? article.querySelector('[data-current-state-summary]')"), 'Start Here evidence clock is not anchored after current state');
 assert(source.includes("wartime.dataset.agreementGroup = 'wartime'"), 'wartime agreements group is absent');

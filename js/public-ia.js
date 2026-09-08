@@ -24,7 +24,7 @@
   ]);
 
   const ROUTE_DEFINITIONS = Object.freeze([
-    { key: 'start.overview', primary: 'start', slug: 'overview', label: 'Overview', title: 'Start Here', owner: 'OverviewPage', dataKeys: ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view', 'gate3.shipping', 'gate3.economics', 'gate3.gaps'], related: ['timeline.war', 'military.campaigns', 'hormuz.overview', 'talks.mou', 'objectives.outcomes', 'evidence.claims'] },
+    { key: 'start.overview', primary: 'start', slug: 'overview', label: 'Overview', title: 'Start Here', owner: 'OverviewPage', dataKeys: ['current.chronology', 'ledger.domain_assessments', 'ledger.unresolved', 'analysis.endgame_public_view', 'gate3.gaps'], related: ['timeline.war', 'military.campaigns', 'hormuz.overview', 'talks.mou', 'objectives.outcomes', 'evidence.claims'] },
     { key: 'start.actors', primary: 'start', slug: 'actors', label: "Who's Involved", title: "Who's Involved", owner: 'ActorsPage', dataKeys: ['current.actors'], related: ['timeline.war', 'evidence.sources'] },
 
     { key: 'timeline.war', primary: 'timeline', slug: 'war', label: 'War Timeline', title: 'War Timeline', owner: 'TimelinePage', dataKeys: ['current.chronology', 'gate3.daily_coverage'], related: ['timeline.chronology', 'military.campaigns', 'talks.overview'] },
@@ -1712,15 +1712,11 @@
     const domains = recordArray(modelData(context.model, 'ledger.domain_assessments'));
     const force = domains.find(domain => domain.domain === 'Force preservation') || domains.find(domain => /Air \/ long-range strike/i.test(domain.domain || ''));
     const maritime = domains.find(domain => /Maritime control/i.test(domain.domain || ''));
+    const economy = domains.find(domain => /Economic|economy|sanction/i.test(domain.domain || ''));
     const firstWar = context.model.chronology.find(item => String(item.timeline && item.timeline.date || item.event && item.event.event_date || '') >= '2026-02-28');
-    const economyRecords = recordArray(modelData(context.model, 'gate3.economics'));
-    const economyCurrent = economyRecords.slice().reverse().find(record => /crude|foreign|import|economic/i.test(JSON.stringify(record))) || economyRecords[economyRecords.length - 1] || {};
-    const shippingRecords = recordArray(modelData(context.model, 'gate3.shipping'));
-    const shippingCurrent = shippingRecords[shippingRecords.length - 1] || {};
     const publicView = modelData(context.model, 'analysis.endgame_public_view') || {};
     const mouNow = publicView.mou_now || {};
     const diplomaticEvents = context.model.chronology.filter(item => /(DIPLOMATIC|TALK|NEGOTIAT|MEDIAT|DEESCALAT)/.test(eventType(item))).slice(-4);
-    const hormuzEnvelope = { ...shippingCurrent, source_ids: Array.from(new Set([...sourceIdsFrom(shippingCurrent), ...sourceIdsFrom(maritime)])) };
     const diplomacyEnvelope = { ...mouNow, source_ids: Array.from(new Set([...sourceIdsFrom(mouNow), ...diplomaticEvents.flatMap(sourceIdsFrom)])) };
 
     const now = addSection(frame.article, 'Where things stand now', 'content-section current-state-summary');
@@ -1735,14 +1731,14 @@
     addOrientationCard(nowGrid, context, {
       domain: 'Hormuz', title: 'The Strait remains physically traversable but commercially contested',
       text: 'Iran retains leverage, but recognized exclusive control is not established. A reported formula that could drop compulsory tolls while retaining legitimate service charges remained a proposal at the cutoff.',
-      meta: maritime && `Confidence: ${displayTerm(maritime.confidence)}`, item: hormuzEnvelope,
+      meta: maritime && `Confidence: ${displayTerm(maritime.confidence)}`, item: maritime || {},
       relatedRecords: maritime && [...asArray(maritime.supporting_evidence), ...asArray(maritime.contrary_evidence)] || [],
       route: 'hormuz.overview', linkLabel: 'Explore Why Hormuz Matters'
     });
     addOrientationCard(nowGrid, context, {
       domain: 'Economy', title: 'Economic pressure on Iran is severe; regime collapse is not established',
       text: 'Severe crude-export contraction and deeper foreign-exchange and import pressure are established. Shortage concerns and unrest risk increased as blockade and sanctions effects accumulated.',
-      item: economyCurrent, relatedRecords: relatedRecordsFrom(economyCurrent), route: 'hormuz.economy', linkLabel: 'Explore Oil & Economic Effects'
+      meta: economy && `Confidence: ${displayTerm(economy.confidence)}`, item: economy || {}, relatedRecords: economy && [...asArray(economy.supporting_evidence), ...asArray(economy.contrary_evidence)] || [], route: 'hormuz.economy', linkLabel: 'Explore Oil & Economic Effects'
     });
     addOrientationCard(nowGrid, context, {
       domain: 'Diplomacy', title: 'The June MOU no longer controls either side, but talks remain active',
