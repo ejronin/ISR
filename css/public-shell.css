@@ -1570,7 +1570,7 @@ tbody tr:last-child td { border-bottom: 0; }
   .timeline-density-strip { height: 6rem; overflow-x: auto; }
   .timeline-density-bin { min-width: .55rem; }
   .economic-small-multiples { grid-template-columns: 1fr; }
-  .agreement-state { font-size: .58rem; padding: .15rem; }
+  .agreement-state { font-size: .72rem; padding: .15rem; }
   .agreement-before-after { grid-template-columns: 1fr; }
   .agreement-before-after p { grid-column: 1; }
 }
