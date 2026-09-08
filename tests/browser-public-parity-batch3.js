@@ -137,24 +137,41 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     const routeIds = ['REDSEA-SUEZ-MARITIME', 'REDSEA-SAUDI-EAST-WEST', 'RAIL-CN-IR-APRIN', 'RAIL-RU-IR-APRIN'];
     await routeKey(cdp, 'hormuz.shipping');
     const shipping = await cdp.eval(`(() => {
-      const map = document.querySelector('[data-component="MapView"]');
-      const controls = [...map.querySelectorAll('button[data-route-id]')];
-      const bounds = JSON.parse(map.dataset.mapBounds);
-      const fitted = map._atlasMap.getBounds();
+      const maps = [...document.querySelectorAll('[data-component="MapView"]')];
+      const routeOwners = maps.filter(candidate => candidate.querySelector('button[data-route-id]'));
+      const networkMaps = maps.filter(candidate => candidate.dataset.shippingMapView === 'network');
+      const chokepointMaps = maps.filter(candidate => candidate.dataset.shippingMapView === 'chokepoint');
+      const map = routeOwners[0];
+      const controls = map ? [...map.querySelectorAll('button[data-route-id]')] : [];
+      const bounds = map ? JSON.parse(map.dataset.mapBounds) : null;
+      const fitted = map?._atlasMap?.getBounds();
+      const chokepointBounds = chokepointMaps.length === 1 ? JSON.parse(chokepointMaps[0].dataset.mapBounds) : null;
       return {
+        routeOwnerCount: routeOwners.length,
+        networkMapCount: networkMaps.length,
+        networkOwnsRoutes: routeOwners.length === 1 && networkMaps.length === 1 && routeOwners[0] === networkMaps[0],
+        chokepointMapCount: chokepointMaps.length,
+        chokepointRouteControls: chokepointMaps.reduce((count, candidate) => count + candidate.querySelectorAll('button[data-route-id]').length, 0),
+        chokepointBounds,
         routeIds: controls.map(node => node.dataset.routeId),
         modes: [...new Set(controls.map(node => node.dataset.routeMode))].sort(),
-        mapModes: map.dataset.mapRouteModes,
+        mapModes: map?.dataset.mapRouteModes || '',
         bounds,
-        fitted: [[fitted.getSouth(), fitted.getWest()], [fitted.getNorth(), fitted.getEast()]],
-        inside: fitted.contains(bounds[0]) && fitted.contains(bounds[1]),
-        legend: map.querySelector('.map-legend')?.innerText || '',
-        mapText: map.innerText,
+        fitted: fitted ? [[fitted.getSouth(), fitted.getWest()], [fitted.getNorth(), fitted.getEast()]] : null,
+        inside: Boolean(fitted && bounds && fitted.contains(bounds[0]) && fitted.contains(bounds[1])),
+        legend: map?.querySelector('.map-legend')?.innerText || '',
+        mapText: map?.innerText || '',
         merchant: document.querySelectorAll('.merchant-loss-details [data-loss-id]').length,
         merchantLinks: [...document.querySelectorAll('.merchant-loss-details [data-loss-id] a.inline-route-link')].map(node => node.getAttribute('href')),
         text: document.querySelector('main')?.innerText || ''
       };
     })()`);
+    assert.equal(shipping.routeOwnerCount, 1, 'exactly one Shipping MapView must own transport route controls');
+    assert.equal(shipping.networkMapCount, 1, 'Shipping must expose exactly one network MapView');
+    assert.equal(shipping.networkOwnsRoutes, true, 'the Shipping network MapView must be the sole owner of transport route controls');
+    assert.equal(shipping.chokepointMapCount, 1, 'Shipping must retain one independently testable chokepoint MapView');
+    assert.equal(shipping.chokepointRouteControls, 0, 'the Hormuz chokepoint MapView must not duplicate network route controls');
+    assert(shipping.chokepointBounds && shipping.chokepointBounds[0][1] >= 50 && shipping.chokepointBounds[1][1] <= 61, 'Shipping chokepoint map lost its Hormuz-scoped bounds');
     assert.deepEqual(shipping.routeIds.sort(), routeIds.slice().sort());
     assert.deepEqual(shipping.modes, ['maritime', 'pipeline', 'rail']);
     assert.equal(shipping.mapModes, 'maritime,pipeline,rail');
@@ -173,19 +190,37 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
 
     await routeKey(cdp, 'hormuz.economy');
     const economy = await cdp.eval(`(() => {
-      const map = document.querySelector('[data-component="MapView"]');
-      const bounds = JSON.parse(map.dataset.mapBounds);
+      const maps = [...document.querySelectorAll('[data-component="MapView"]')];
+      const routeOwners = maps.filter(candidate => candidate.querySelector('button[data-route-id]'));
+      const map = routeOwners[0];
+      const controls = map ? [...map.querySelectorAll('button[data-route-id]')] : [];
+      const bounds = map ? JSON.parse(map.dataset.mapBounds) : null;
+      const fitted = map?._atlasMap?.getBounds();
       return {
-        mapRouteIds: [...map.querySelectorAll('button[data-route-id]')].map(node => node.dataset.routeId),
+        routeOwnerCount: routeOwners.length,
+        mapRouteIds: controls.map(node => node.dataset.routeId),
+        modes: [...new Set(controls.map(node => node.dataset.routeMode))].sort(),
+        mapModes: map?.dataset.mapRouteModes || '',
+        bounds,
+        fitted: fitted ? [[fitted.getSouth(), fitted.getWest()], [fitted.getNorth(), fitted.getEast()]] : null,
+        legend: map?.querySelector('.map-legend')?.innerText || '',
         directoryRouteIds: [...document.querySelectorAll('[data-economy-route-id]')].map(node => node.dataset.economyRouteId),
         countries: [...document.querySelectorAll('[data-economic-comparison-country]')].map(node => node.dataset.economicComparisonCountry),
         arctic: [...document.querySelectorAll('[data-arctic-route-id]')].map(node => node.dataset.arcticRouteId),
         arcticText: document.querySelector('.arctic-context')?.textContent || '',
-        inside: map._atlasMap.getBounds().contains(bounds[0]) && map._atlasMap.getBounds().contains(bounds[1]),
+        inside: Boolean(fitted && bounds && fitted.contains(bounds[0]) && fitted.contains(bounds[1])),
         text: document.querySelector('main')?.innerText || ''
       };
     })()`);
+    assert.equal(economy.routeOwnerCount, 1, 'exactly one Economy MapView must own transport route controls');
     assert.deepEqual(economy.mapRouteIds.sort(), routeIds.slice().sort());
+    assert.deepEqual(economy.modes, ['maritime', 'pipeline', 'rail']);
+    assert.equal(economy.mapModes, 'maritime,pipeline,rail');
+    assert(economy.bounds && economy.bounds[0][1] <= 32.6, 'Economy transport owner clipped Red Sea/Suez from route bounds');
+    assert.equal(economy.inside, true, `Economy transport routes do not fit their owning MapView: ${JSON.stringify({bounds: economy.bounds, fitted: economy.fitted})}`);
+    assert.match(economy.legend, /Maritime · schematic/);
+    assert.match(economy.legend, /Pipeline · schematic/);
+    assert.match(economy.legend, /Rail · schematic/);
     assert.deepEqual(economy.directoryRouteIds.sort(), routeIds.slice().sort());
     assert.deepEqual(economy.countries.sort(), ['Bahrain', 'Iran', 'Kuwait', 'Oman', 'Qatar', 'Saudi Arabia', 'United Arab Emirates'].sort());
     assert.deepEqual(economy.arctic, ['ARCTIC-RU-CN-OIL']);
