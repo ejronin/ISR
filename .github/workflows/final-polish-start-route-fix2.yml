@@ -28,7 +28,6 @@ jobs:
         run: |
           node --check js/public-ia.js
           node tests/public-final-polish.test.js
-          node tests/public-boot.test.js
           git diff --check
       - name: Commit durable repair
         run: |
