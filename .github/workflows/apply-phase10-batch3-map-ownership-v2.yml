@@ -1,0 +1,30 @@
+name: Apply Phase 10 Batch 3 ownership repair v2
+
+on:
+  push:
+    paths:
+      - .github/workflows/apply-phase10-batch3-map-ownership-v2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: ux/phase10-visual-sweep-20260907
+      - name: Apply patch
+        run: |
+          python _phase10_batch3_map_ownership_patch.py
+          node --check tests/browser-public-parity-batch3.js
+      - name: Commit durable repair
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm _phase10_batch3_map_ownership_patch.py
+          rm .github/workflows/apply-phase10-batch3-map-ownership-v2.yml
+          git add -A
+          git commit -m 'Scope Batch 3 transport assertions to owning MapViews'
+          git push origin HEAD:ux/phase10-visual-sweep-20260907
