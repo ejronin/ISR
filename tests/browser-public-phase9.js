@@ -350,7 +350,11 @@ async function route(cdp, hash, key) {
     assert(shippingVisual.routeLines >= 4, 'supported oil/shipping route geometry is not visibly rendered');
     assert(shippingVisual.contextLabels.length > 0, 'broader route map lacks named city/port/corridor context');
     assert(shippingVisual.chokepointLabels.some(label => /Iran|Oman|Hormuz|Persian Gulf|Gulf of Oman/i.test(label)), 'chokepoint map lacks basic geographic orientation');
-    assert.match(shippingVisual.text, /not live vessel positions, surveyed alignment, or targeting-quality geometry/i);
+    assert.match(shippingVisual.text, /\bschematic\b/i, 'Shipping presentation does not identify route geometry as schematic');
+    assert.match(shippingVisual.text, /not[^.\n]{0,160}precise vessel tracks/i, 'Shipping presentation does not disclaim precise vessel tracks');
+    assert.match(shippingVisual.text, /not[^.\n]{0,160}surveyed alignment/i, 'Shipping presentation does not disclaim surveyed alignment');
+    assert.match(shippingVisual.text, /not[^.\n]{0,160}targeting(?:-quality geometry| data)?/i, 'Shipping presentation does not disclaim targeting-quality use');
+    assert.match(shippingVisual.text, /not[^.\n]{0,160}live tracking[^.\n]{0,160}navigation data/i, 'Shipping presentation does not disclaim live-tracking/navigation use');
 
     await route(cdp, '#/hormuz/economy', 'hormuz.economy');
     const economyVisual = await cdp.eval(`(() => ({
