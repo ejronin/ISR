@@ -718,6 +718,24 @@
   }
 
 
+  // ROOK_NARRATIVE_CURRENT_BEGIN
+  const ROOK_NARRATIVE_CURRENT = Object.freeze(
+  {
+    "schema_version": "1.0",
+    "contract_version": "atlas-final-narrative-v1",
+    "evidence_as_of": "2026-09-06",
+    "war90_current_title": "Current phase — Sep. 5–6",
+    "war90_current_text": "Direct U.S.–Iran maritime exchanges resumed even as diplomatic channels remained active and economic pressure on Iran deepened.",
+    "war90_current_changed": "Kinetic escalation and negotiation were occurring at the same time.",
+    "us_record_shows": "Atlas assesses substantial but incomplete degradation of Iran's offensive power projection, partial progress on usable Hormuz navigation and substantial active economic pressure. The nuclear objective remains open.",
+    "us_current_position": "Washington continues military and economic pressure while negotiations remain active. Atlas does not treat the original objective set as fully achieved.",
+    "iran_record_shows": "Most of those maximal terms are not controlling outcomes. Iran retains missiles, maritime leverage and bargaining power, but it entered a new maritime process without first securing the full earlier economic package, and its unilateral Hormuz position has narrowed in practice.",
+    "iran_current_position": "By August Iran publicly shifted toward ending the war while preserving “power and dignity” and accepted a phased joint Oman maritime framework while permanent terms remained unresolved. That later position does not erase the original benchmark.",
+    "hormuz_now": "The Strait is physically traversable but commercially contested. Iran retains leverage, but recognized exclusive control is not established. A reported negotiating formula under which compulsory tolls would be dropped while charges described as legitimate maritime-service fees could remain was still a proposal, not an agreement, at the evidence cutoff."
+  }
+  );
+  // ROOK_NARRATIVE_CURRENT_END
+
   const FINAL_NARRATIVE_GATES = Object.freeze({
     war90: Object.freeze({
       title: 'War in 90 Seconds',
@@ -759,9 +777,9 @@
           changed: "The practical negotiating framework narrowed relative to Iran's earlier maximal Hormuz claims."
         }),
         Object.freeze({
-          title: 'Current phase — Sep. 5–6',
-          text: 'Direct U.S.–Iran maritime exchanges resumed even as diplomatic channels remained active and economic pressure on Iran deepened.',
-          changed: 'Kinetic escalation and negotiation were occurring at the same time.'
+          title: ROOK_NARRATIVE_CURRENT.war90_current_title,
+          text: ROOK_NARRATIVE_CURRENT.war90_current_text,
+          changed: ROOK_NARRATIVE_CURRENT.war90_current_changed
         })
       ])
     }),
@@ -780,12 +798,12 @@
             Object.freeze({
               key: 'record-shows',
               title: 'What the record shows',
-              text: "Atlas assesses substantial but incomplete degradation of Iran's offensive power projection, partial progress on usable Hormuz navigation and substantial active economic pressure. The nuclear objective remains open."
+              text: ROOK_NARRATIVE_CURRENT.us_record_shows
             }),
             Object.freeze({
               key: 'current-position',
               title: 'Current position',
-              text: 'Washington continues military and economic pressure while negotiations remain active. Atlas does not treat the original objective set as fully achieved.'
+              text: ROOK_NARRATIVE_CURRENT.us_current_position
             })
           ])
         }),
@@ -801,12 +819,12 @@
             Object.freeze({
               key: 'record-shows',
               title: 'What the record shows',
-              text: 'Most of those maximal terms are not controlling outcomes. Iran retains missiles, maritime leverage and bargaining power, but it entered a new maritime process without first securing the full earlier economic package, and its unilateral Hormuz position has narrowed in practice.'
+              text: ROOK_NARRATIVE_CURRENT.iran_record_shows
             }),
             Object.freeze({
               key: 'current-position',
               title: 'Current position',
-              text: 'By August Iran publicly shifted toward ending the war while preserving “power and dignity” and accepted a phased joint Oman maritime framework while permanent terms remained unresolved. That later position does not erase the original benchmark.'
+              text: ROOK_NARRATIVE_CURRENT.iran_current_position
             })
           ])
         })
@@ -864,7 +882,7 @@
         Object.freeze({
           key: 'now',
           title: 'Now',
-          text: 'The Strait is physically traversable but commercially contested. Iran retains leverage, but recognized exclusive control is not established. A reported negotiating formula under which compulsory tolls would be dropped while charges described as legitimate maritime-service fees could remain was still a proposal, not an agreement, at the evidence cutoff.'
+          text: ROOK_NARRATIVE_CURRENT.hormuz_now
         })
       ])
     })
@@ -967,6 +985,9 @@
     if (rootElement.__atlasNarrativeGateHandler && windowObject && windowObject.removeEventListener) {
       windowObject.removeEventListener('hashchange', rootElement.__atlasNarrativeGateHandler);
     }
+    if (rootElement.__atlasNarrativeGateObserver && typeof rootElement.__atlasNarrativeGateObserver.disconnect === 'function') {
+      rootElement.__atlasNarrativeGateObserver.disconnect();
+    }
     const apply = () => {
       if (!state || state.routeKey !== 'start.overview') return;
       const article = rootElement.querySelector('.overview-page');
@@ -975,8 +996,19 @@
       const anchor = article.querySelector('.evidence-clock-bar') || article.querySelector('[data-current-state-summary]') || article.querySelector('.page-intro');
       if (anchor) anchor.after(gates); else article.append(gates);
     };
-    const onHashChange = () => apply();
+    const scheduleApply = () => {
+      if (windowObject && typeof windowObject.queueMicrotask === 'function') windowObject.queueMicrotask(apply);
+      else Promise.resolve().then(apply);
+    };
+    const onHashChange = () => scheduleApply();
     if (windowObject && windowObject.addEventListener) windowObject.addEventListener('hashchange', onHashChange);
+    if (windowObject && typeof windowObject.MutationObserver === 'function') {
+      const observer = new windowObject.MutationObserver(() => apply());
+      observer.observe(rootElement, { childList: true, subtree: true });
+      rootElement.__atlasNarrativeGateObserver = observer;
+    } else {
+      rootElement.__atlasNarrativeGateObserver = null;
+    }
     rootElement.__atlasNarrativeGateHandler = onHashChange;
     apply();
   }
