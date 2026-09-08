@@ -1,0 +1,16 @@
+name: Temporary inspect OverviewPage
+on:
+  push:
+    branches: [tmp/project-lead-overview-owner-20260908]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - name: Show OverviewPage owner and AppShell mount
+        run: |
+          grep -n -B 20 -A 120 "function OverviewPage" js/public-ia.js || true
+          grep -n -B 30 -A 160 "function AppShell" js/public-ia.js || true
+          grep -n -B 30 -A 160 "addEventListener('hashchange'" js/public-ia.js || true
