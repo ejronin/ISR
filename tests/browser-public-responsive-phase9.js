@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const { spawnSync } = require('node:child_process');
 const ia = require('../js/public-ia.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
@@ -142,7 +143,7 @@ function assertRouteView(view, route, width) {
               const rect = node.getBoundingClientRect();
               return { label: node.dataset.component || node.className || node.tagName, left: rect.left, right: rect.right };
             }).filter(item => item.left < -1 || item.right > viewportWidth + 1),
-            machineTokens: [...new Set((visibleText.match(/\\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\\b/g) || []))]
+            machineTokens: [...new Set((visibleText.match(/\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\b/g) || []))]
           };
         })()`);
         assertRouteView(view, route, width);
@@ -190,7 +191,16 @@ function assertRouteView(view, route, width) {
     const windowErrors = await cdp.eval('window.__atlasResponsiveSmokeErrors');
     assert.deepEqual(windowErrors, [], 'fatal window error occurred during responsive route smoke');
     assert.deepEqual(cdp.exceptions.filter(Boolean), [], 'uncaught runtime exception occurred during responsive route smoke');
-    console.log(`browser public responsive Phase 9: PASS - ${ia.ROUTES.size} routes at ${VIEWPORTS.join('px and ')}px; ${cases} route/viewport cases verified`);
+
+    // Chain the final-polish browser contract through an already-protected browser entry point.
+    // The child opens its own CDP socket but intentionally leaves the shared browser process alive.
+    const polish = spawnSync(process.execPath, [require.resolve('./browser-public-final-polish.js')], {
+      stdio: 'inherit',
+      env: { ...process.env, ATLAS_CDP: DEBUG, ATLAS_SITE: SITE }
+    });
+    assert.equal(polish.status, 0, `final-polish browser audit failed with status ${polish.status}`);
+
+    console.log(`browser public responsive Phase 9: PASS - ${ia.ROUTES.size} routes at ${VIEWPORTS.join('px and ')}px; ${cases} route/viewport cases plus final-polish discoverability audit verified`);
   } finally {
     try { await cdp.call('Emulation.clearDeviceMetricsOverride'); } catch (_) { /* browser cleanup handles a lost target */ }
     cdp.close();
