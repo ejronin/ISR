@@ -128,6 +128,7 @@ async function captureViewport(cdp, filename) {
             routeControls: map?.querySelectorAll('.map-route-button').length || 0,
             routeModes: map?.dataset.mapRouteModes || '',
             labels: target.querySelectorAll('.reference-map-label').length,
+            labelPolicy: map?.dataset.mapLabelPolicy || '',
             scope: map?.dataset.mapScope || '',
             bounds: map?.dataset.mapBounds || ''
           };
@@ -136,6 +137,16 @@ async function captureViewport(cdp, filename) {
         if (focus.label === 'shipping-network') {
           assert(reviewState.routePaths > 0, `${focus.label} has no rendered SVG route geometry at ${width}px`);
           assert(reviewState.routeControls > 0 && reviewState.routeModes, `${focus.label} lacks route controls or route-mode metadata at ${width}px`);
+        }
+        if (focus.label === 'shipping-network' || focus.label === 'economy-network') {
+          const labelCeiling = width <= 390 ? 8 : width <= 768 ? 10 : 14;
+          assert(reviewState.labels <= labelCeiling, `${focus.label} exceeds ${labelCeiling} contextual labels at ${width}px`);
+          assert.equal(reviewState.labelPolicy, 'route-endpoints-prioritized', `${focus.label} is not using the route-endpoint label policy at ${width}px`);
+        }
+        if (focus.label === 'campaign') {
+          const labelCeiling = width <= 390 ? 8 : width <= 768 ? 9 : 10;
+          assert(reviewState.labels <= labelCeiling, `campaign map exceeds ${labelCeiling} theater labels at ${width}px`);
+          assert.equal(reviewState.labelPolicy, 'theater-context-prioritized', `campaign map is not using the theater label policy at ${width}px`);
         }
         await sleep(180);
         await captureViewport(cdp, `mapfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);

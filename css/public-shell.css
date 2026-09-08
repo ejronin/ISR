@@ -1577,3 +1577,15 @@ tbody tr:last-child td { border-bottom: 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; animation-duration: .001ms !important; }
 }
+
+
+/* Phase 10 manual map-readability follow-up */
+.campaign-hero .at-a-glance .metric-grid { grid-template-columns: 1fr; }
+.campaign-hero .at-a-glance .metric-card,
+.campaign-hero .at-a-glance .metric { min-width: 0; }
+.campaign-hero .at-a-glance .metric-card *,
+.campaign-hero .at-a-glance .metric * { overflow-wrap: normal; word-break: normal; }
+@media (max-width: 52rem) {
+  .reference-map-label.place span,
+  .reference-map-label.port span { font-size: .64rem; }
+}

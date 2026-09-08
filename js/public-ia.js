@@ -1304,7 +1304,29 @@
             event.preventDefault(); marker.fire('click');
           }, true);
         });
-        [...asArray(geography.metadata && geography.metadata.labels), ...asArray(options && options.contextLabels)].filter((label, index, labels) => label && Number.isFinite(Number(label.lat)) && Number.isFinite(Number(label.lon)) && labels.findIndex(candidate => candidate && candidate.label === label.label && Number(candidate.lat) === Number(label.lat) && Number(candidate.lon) === Number(label.lon)) === index).filter(label => label.lat >= viewport[0][0] && label.lat <= viewport[1][0] && label.lon >= viewport[0][1] && label.lon <= viewport[1][1]).forEach(label => {
+        const routeHeavy = routes.length > 1;
+        const campaignReferenceNames = new Set(['Iran', 'Iraq', 'Saudi Arabia', 'Israel / Palestinian territories', 'United Arab Emirates', 'Oman', 'Red Sea', 'Persian Gulf', 'Strait of Hormuz']);
+        const routeReferenceNames = new Set(['Iran', 'Saudi Arabia', 'Red Sea', 'Persian Gulf']);
+        const allowedReferenceNames = options && options.referenceLabelNames
+          ? new Set(asArray(options.referenceLabelNames))
+          : routeHeavy ? routeReferenceNames : routeKey === 'military.campaigns' ? campaignReferenceNames : null;
+        const referenceLabels = asArray(geography.metadata && geography.metadata.labels)
+          .filter(label => !allowedReferenceNames || allowedReferenceNames.has(label.label))
+          .map(label => ({ ...label, priority: label.kind === 'water' ? 1 : 2 }));
+        const suppliedContextLabels = asArray(options && options.contextLabels);
+        const derivedContextLabels = suppliedContextLabels.length ? suppliedContextLabels : routeHeavy ? routeContextLabels(routes, true) : [];
+        const visibleLabels = [...referenceLabels, ...derivedContextLabels]
+          .filter((label, index, labels) => label && Number.isFinite(Number(label.lat)) && Number.isFinite(Number(label.lon)) && labels.findIndex(candidate => candidate && candidate.label === label.label && Number(candidate.lat) === Number(label.lat) && Number(candidate.lon) === Number(label.lon)) === index)
+          .filter(label => label.lat >= viewport[0][0] && label.lat <= viewport[1][0] && label.lon >= viewport[0][1] && label.lon <= viewport[1][1])
+          .sort((left, right) => Number(left.priority ?? 2) - Number(right.priority ?? 2) || String(left.label).localeCompare(String(right.label)));
+        const windowWidth = Number(context.windowObject && context.windowObject.innerWidth || 1440);
+        const automaticLabelLimit = routeHeavy ? (windowWidth <= 390 ? 8 : windowWidth <= 768 ? 10 : 14) : routeKey === 'military.campaigns' ? (windowWidth <= 390 ? 8 : windowWidth <= 768 ? 9 : 10) : Number.POSITIVE_INFINITY;
+        const configuredLabelLimit = Number(options && options.labelLimit);
+        const labelLimit = Number.isFinite(configuredLabelLimit) && configuredLabelLimit > 0 ? configuredLabelLimit : automaticLabelLimit;
+        const renderedLabels = visibleLabels.slice(0, labelLimit);
+        section.dataset.mapLabelPolicy = routeHeavy ? 'route-endpoints-prioritized' : routeKey === 'military.campaigns' ? 'theater-context-prioritized' : 'viewport-reference';
+        section.dataset.mapLabelCount = String(renderedLabels.length);
+        renderedLabels.forEach(label => {
           L.marker([label.lat, label.lon], { pane: 'atlas-labels', interactive: false, icon: L.divIcon({ className: `reference-map-label ${label.kind || ''}`, html: `<span>${String(label.label).replace(/[<>&]/g, '')}</span>`, iconSize: null }) }).addTo(map);
         });
         mapHost.addEventListener('keydown', event => { if (event.key === 'Escape' && !cardHost.hidden) { event.preventDefault(); cardHost.hidden = true; cardHost.replaceChildren(); } });
@@ -1919,15 +1941,21 @@ function visualSweepInsertAfterStatus(article, node) {
   return node;
 }
 
-function routeContextLabels(routes) {
+function routeContextLabels(routes, endpointsOnly) {
   const labels = [];
-  asArray(routes).forEach(route => asArray(route && route.nodes).forEach(node => {
-    if (Array.isArray(node) && node.length >= 3 && Number.isFinite(Number(node[1])) && Number.isFinite(Number(node[2]))) labels.push({ label: publicNarrative(node[0], 'Route node'), lat: Number(node[1]), lon: Number(node[2]), kind: String(route.mode || '').toLowerCase() === 'maritime' ? 'port' : 'place' });
-    else if (node && typeof node === 'object') {
-      const lat = Number(node.lat === undefined ? node.latitude : node.lat); const lon = Number(node.lon === undefined ? node.longitude : node.lon);
-      if (validMapPoint([lat, lon])) labels.push({ label: publicNarrative(node.label || node.name, 'Route node'), lat, lon, kind: node.kind || 'place' });
-    }
-  }));
+  asArray(routes).forEach(route => {
+    const nodes = asArray(route && route.nodes);
+    nodes.forEach((node, index) => {
+      const endpoint = index === 0 || index === nodes.length - 1;
+      if (endpointsOnly && !endpoint) return;
+      const priority = endpoint ? 0 : 3;
+      if (Array.isArray(node) && node.length >= 3 && Number.isFinite(Number(node[1])) && Number.isFinite(Number(node[2]))) labels.push({ label: publicNarrative(node[0], 'Route node'), lat: Number(node[1]), lon: Number(node[2]), kind: String(route.mode || '').toLowerCase() === 'maritime' ? 'port' : 'place', priority });
+      else if (node && typeof node === 'object') {
+        const lat = Number(node.lat === undefined ? node.latitude : node.lat); const lon = Number(node.lon === undefined ? node.longitude : node.lon);
+        if (validMapPoint([lat, lon])) labels.push({ label: publicNarrative(node.label || node.name, 'Route node'), lat, lon, kind: node.kind || 'place', priority });
+      }
+    });
+  });
   return labels;
 }
 
