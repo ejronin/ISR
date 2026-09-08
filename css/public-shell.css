@@ -426,7 +426,7 @@ a:hover { color: #e0f2ff; }
 .timeline-phase { display: grid; gap: .85rem; }
 .timeline-phase > h2 { margin-bottom: 0; }
 .timeline-phase > .context-map { background: #0d161e; }
-.timeline-explorer { display: grid; gap: 1rem; }
+.timeline-explorer { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .timeline-controls,
 .lie-ledger-controls {
   display: grid;
@@ -488,6 +488,7 @@ a:hover { color: #e0f2ff; }
 .timeline-marker-date { color: var(--accent-strong); font-size: .68rem; font-weight: 780; letter-spacing: .04em; text-transform: uppercase; }
 .timeline-marker-title { font-size: .8rem; line-height: 1.42; }
 .timeline-selection { min-height: 5rem; }
+.timeline-map-host { min-width: 0; }
 .timeline-map-host > .context-map { margin-top: 0; background: #0d161e; }
 .prewar-context,
 .secondary-context,
