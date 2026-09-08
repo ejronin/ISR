@@ -50,10 +50,10 @@ for (const phrase of [
   'proposal, not an agreement'
 ]) assert(appSource.includes(phrase), `missing cleared narrative-gate semantic contract: ${phrase}`);
 
-assert(appSource.includes("section.dataset.warIn90Seconds = 'approved'"), 'War in 90 Seconds lacks deterministic approval metadata');
-assert(appSource.includes("section.dataset.objectiveOrientation = 'approved'"), 'objective orientation lacks deterministic approval metadata');
-assert(appSource.includes("section.dataset.usWarRationale = 'approved'"), 'U.S. rationale module lacks deterministic approval metadata');
-assert(appSource.includes("section.dataset.hormuzTrajectory = 'approved'"), 'Hormuz trajectory lacks deterministic approval metadata');
+assert(appSource.includes(".dataset.warIn90Seconds = 'approved'"), 'War in 90 Seconds lacks deterministic approval metadata');
+assert(appSource.includes(".dataset.objectiveOrientation = 'approved'"), 'objective orientation lacks deterministic approval metadata');
+assert(appSource.includes(".dataset.usWarRationale = 'approved'"), 'U.S. rationale module lacks deterministic approval metadata');
+assert(appSource.includes(".dataset.hormuzTrajectory = 'approved'"), 'Hormuz trajectory lacks deterministic approval metadata');
 assert(appSource.includes("article.querySelector('.evidence-clock-bar')"), 'narrative gates are not anchored after the Evidence Clock');
 assert(!appSource.includes('Why the war began'), 'U.S. rationale module was broadened into an omniscient war-cause heading');
 
