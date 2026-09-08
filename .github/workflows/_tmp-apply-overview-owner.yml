@@ -1,0 +1,33 @@
+name: Temporary apply OverviewPage owner migration
+on:
+  push:
+    branches: [tmp/project-lead-overview-owner-20260908]
+permissions:
+  contents: write
+jobs:
+  apply:
+    if: "!contains(github.event.head_commit.message, '[overview-owner-done]')"
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Apply page-owner migration
+        run: python .tmp/move_narratives_into_overview.py
+      - name: Verify architecture and static contracts
+        run: |
+          python scripts/sync_rook_narrative.py --check
+          node --check js/public-app.js
+          node --check js/public-ia.js
+          node tests/public-ia.test.js
+          node tests/public-final-polish.test.js
+      - name: Commit verified production result
+        run: |
+          git config user.name 'Atlas Project Lead Automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add js/public-app.js js/public-ia.js tests/public-final-polish.test.js
+          git commit -m '[overview-owner-done] Render cleared narratives in OverviewPage owner'
+          git push origin HEAD:tmp/project-lead-overview-owner-20260908
