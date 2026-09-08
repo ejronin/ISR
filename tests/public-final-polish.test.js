@@ -7,6 +7,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
 const source = read('js/public-ia.js');
+const appSource = read('js/public-app.js');
 const css = read('css/public-shell.css');
 
 for (const phrase of [
@@ -32,9 +33,29 @@ assert(source.includes("earlier.dataset.agreementGroup = 'historical'"), 'histor
 assert(source.includes("notice.dataset.stateNotice = variant"), 'State Notice component lacks deterministic variant metadata');
 assert(source.includes("variant: 'no-geolocated-records'"), 'Shipping zero geography does not use the semantic State Notice');
 assert(source.includes("variant: 'dependency-unavailable'"), 'dependency unavailable State Notice is not used');
-assert(!source.includes('dataWarIn90Seconds'), 'gated War in 90 Seconds copy leaked into production runtime');
-assert(!source.includes('dataObjectiveOrientation'), 'gated objective orientation copy leaked into production runtime');
-assert(!source.includes('dataUsWarRationale'), 'gated U.S. rationale copy leaked into production runtime');
+
+for (const phrase of [
+  'FINAL_NARRATIVE_GATES',
+  'War in 90 Seconds',
+  "These milestones are selected to explain the conflict's progression. They are not a ranking of strategic importance.",
+  'Opening strikes — Feb. 28',
+  'The MOU breaks down — Jul. 7',
+  'Across prewar policy and objectives publicly formalized during the opening and early wartime period',
+  'Original public benchmark',
+  'Why the U.S. said it entered the war',
+  'Intelligence predicate',
+  'Expected-retaliation rationale',
+  'Wartime campaign objectives',
+  '60-day interim no-charge period',
+  'proposal, not an agreement'
+]) assert(appSource.includes(phrase), `missing cleared narrative-gate semantic contract: ${phrase}`);
+
+assert(appSource.includes("section.dataset.warIn90Seconds = 'approved'"), 'War in 90 Seconds lacks deterministic approval metadata');
+assert(appSource.includes("section.dataset.objectiveOrientation = 'approved'"), 'objective orientation lacks deterministic approval metadata');
+assert(appSource.includes("section.dataset.usWarRationale = 'approved'"), 'U.S. rationale module lacks deterministic approval metadata');
+assert(appSource.includes("section.dataset.hormuzTrajectory = 'approved'"), 'Hormuz trajectory lacks deterministic approval metadata');
+assert(appSource.includes("article.querySelector('.evidence-clock-bar')"), 'narrative gates are not anchored after the Evidence Clock');
+assert(!appSource.includes('Why the war began'), 'U.S. rationale module was broadened into an omniscient war-cause heading');
 
 for (const phrase of [
   'Final polish design-system convergence', '--atlas-surface-card', '--atlas-focus-ring',
@@ -45,4 +66,4 @@ assert(css.includes('outline: 2px solid var(--atlas-focus-ring)'), 'editorial H1
 assert(css.includes('min-height: 2.75rem'), 'touch-target floor is absent');
 assert(!css.includes('font-size: .58rem'), 'final polish still depends on sub-readable .58rem mobile type');
 
-console.log('public final polish: PASS - cleared onboarding, semantic state notices, Talks grouping, compact clocks and shared interaction/readability contracts verified; narrative-gated modules remain unpublished');
+console.log('public final polish: PASS - current-state hierarchy, semantic state notices, Talks grouping, compact clocks, cleared narrative gates and shared interaction/readability contracts verified');

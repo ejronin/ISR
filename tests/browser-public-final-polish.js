@@ -5,7 +5,7 @@ const ia = require('../js/public-ia.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
-const WIDTHS = [1440, 768, 390, 320];
+const WIDTHS = [1440, 1024, 768, 390, 320];
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 class CDP {
@@ -33,20 +33,58 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 768 });
       await route(cdp, 'start.overview');
       const start = await cdp.eval(`(() => {
-        const article = document.querySelector('.overview-page'); const current = article?.querySelector('[data-current-state-summary]'); const clocks = article?.querySelector('.evidence-clock-bar'); const historical = article?.querySelector('.historical-orientation');
+        const article = document.querySelector('.overview-page');
+        const current = article?.querySelector('[data-current-state-summary]');
+        const clocks = article?.querySelector('.evidence-clock-bar');
+        const narratives = article?.querySelector('[data-narrative-gates]');
+        const historical = article?.querySelector('.historical-orientation');
+        const war = narratives?.querySelector('[data-war-in-90-seconds]');
+        const objectives = narratives?.querySelector('[data-objective-orientation]');
+        const rationale = narratives?.querySelector('[data-us-war-rationale]');
+        const hormuz = narratives?.querySelector('[data-hormuz-trajectory]');
         const domains = [...(current?.querySelectorAll('[data-orientation-domain]') || [])].map(card => ({ domain: card.dataset.orientationDomain, href: card.querySelector('.orientation-actions a')?.getAttribute('href') || '', height: card.querySelector('.orientation-actions a')?.getBoundingClientRect().height || 0 }));
         const desktop = clocks?.querySelector('.evidence-clock-desktop'); const mobile = clocks?.querySelector('.evidence-clock-mobile');
         const position = node => node ? [...article.children].indexOf(node) : -1;
         const focusTarget = current?.querySelector('.orientation-actions a'); focusTarget?.focus(); const focusStyle = focusTarget ? getComputedStyle(focusTarget) : null;
-        return { currentIndex: position(current), clockIndex: position(clocks), historicalIndex: position(historical), domains, desktopDisplay: desktop ? getComputedStyle(desktop).display : '', mobileDisplay: mobile ? getComputedStyle(mobile).display : '', focusOutline: focusStyle?.outlineStyle || '', gated: Boolean(article?.querySelector('[data-war-in-90-seconds], [data-objective-orientation], [data-us-war-rationale]')) };
+        const actorStages = [...(objectives?.querySelectorAll('[data-objective-actor]') || [])].map(actor => ({ actor: actor.dataset.objectiveActor, stages: [...actor.querySelectorAll('[data-objective-stage]')].map(stage => stage.dataset.objectiveStage) }));
+        const rationaleKinds = [...(rationale?.querySelectorAll('[data-rationale-kind]') || [])].map(node => node.dataset.rationaleKind);
+        const hormuzStages = [...(hormuz?.querySelectorAll('[data-hormuz-stage]') || [])].map(node => node.dataset.hormuzStage);
+        const gateNodes = narratives ? [...narratives.querySelectorAll('[data-narrative-gate]')] : [];
+        const viewportOverflow = gateNodes.some(node => { const rect=node.getBoundingClientRect(); return rect.left < -1 || rect.right > innerWidth + 1 || node.scrollWidth > node.clientWidth + 1; });
+        return {
+          currentIndex: position(current), clockIndex: position(clocks), narrativeIndex: position(narratives), historicalIndex: position(historical),
+          domains, desktopDisplay: desktop ? getComputedStyle(desktop).display : '', mobileDisplay: mobile ? getComputedStyle(mobile).display : '', focusOutline: focusStyle?.outlineStyle || '',
+          narrativeSections: gateNodes.length,
+          warMilestones: war?.querySelectorAll('[data-war-milestone]').length || 0,
+          warDisclaimer: war?.querySelector('.section-note')?.textContent || '',
+          actorStages,
+          rationaleKinds,
+          rationaleTitle: rationale?.querySelector('h2')?.textContent || '',
+          rationaleText: rationale?.textContent || '',
+          hormuzStages,
+          hormuzText: hormuz?.textContent || '',
+          viewportOverflow
+        };
       })()`);
       assert.equal(start.domains.length, 4, `Start Here does not expose four current-state domains at ${width}px`);
       assert.deepEqual(start.domains.map(item => item.domain).sort(), ['diplomacy', 'economy', 'hormuz', 'military']);
-      assert(start.currentIndex >= 0 && start.clockIndex > start.currentIndex && start.historicalIndex > start.clockIndex, `Start Here order is not current state -> evidence -> historical orientation at ${width}px`);
+      assert(start.currentIndex >= 0 && start.clockIndex > start.currentIndex && start.narrativeIndex > start.clockIndex && start.historicalIndex > start.narrativeIndex, `Start Here order is not current state -> evidence -> cleared narratives -> historical orientation at ${width}px`);
       assert(start.domains.every(item => /^#\//.test(item.href)), `Start Here drill-down link is unresolved at ${width}px`);
       if (width <= 390) assert(start.domains.every(item => item.height >= 43.5), `Start Here touch target below 44px at ${width}px`);
       assert.notEqual(start.focusOutline, 'none', `focused Start Here action loses visible focus at ${width}px`);
-      assert.equal(start.gated, false, 'content-gated narrative module was rendered before approval');
+      assert.equal(start.narrativeSections, 4, `Start Here does not expose all four cleared narrative modules at ${width}px`);
+      assert.equal(start.warMilestones, 8, `War in 90 Seconds does not contain exactly eight milestones at ${width}px`);
+      assert(/not a ranking of strategic importance/i.test(start.warDisclaimer), `War in 90 Seconds lost its non-ranking disclaimer at ${width}px`);
+      assert.deepEqual(start.actorStages.map(item => item.actor).sort(), ['iran', 'us-coalition'], `objective orientation actor set changed at ${width}px`);
+      assert(start.actorStages.every(item => item.stages.join('|') === 'original-public-benchmark|record-shows|current-position'), `objective orientation three-stage structure changed at ${width}px`);
+      assert.deepEqual(start.rationaleKinds.sort(), ['atlas-assessment', 'campaign-objectives', 'diplomatic-record', 'expected-retaliation', 'intelligence-predicate', 'strategic-regional'].sort(), `U.S. entry rationale taxonomy collapsed at ${width}px`);
+      assert.equal(start.rationaleTitle, 'Why the U.S. said it entered the war', `U.S. entry module title changed at ${width}px`);
+      assert(!/Why the war began/.test(start.rationaleText), `U.S. entry module became an omniscient war-cause explanation at ${width}px`);
+      assert.deepEqual(start.hormuzStages, ['then', 'development', 'now'], `Hormuz trajectory stages changed at ${width}px`);
+      assert(/60-day interim no-charge period/.test(start.hormuzText), `Hormuz trajectory lost the 60-day interim no-charge boundary at ${width}px`);
+      assert(/recognized exclusive control is not established/.test(start.hormuzText), `Hormuz trajectory lost the recognized-control boundary at ${width}px`);
+      assert(/proposal, not an agreement/.test(start.hormuzText), `Hormuz trajectory lost proposal-not-agreement status at ${width}px`);
+      assert.equal(start.viewportOverflow, false, `cleared narrative module escapes its viewport at ${width}px`);
       if (width <= 600) { assert.notEqual(start.mobileDisplay, 'none', `mobile evidence summary hidden at ${width}px`); assert.equal(start.desktopDisplay, 'none', `desktop evidence clocks remain visible at ${width}px`); const expanded = await cdp.eval(`(() => { const d=document.querySelector('.evidence-clock-mobile'); d.open=true; return { labels:[...d.querySelectorAll('.evidence-clock-item strong')].map(n=>n.textContent.trim()), summary:d.querySelector('summary')?.textContent||'' }; })()`); assert(expanded.labels.includes('Current evidence cutoff') && expanded.labels.includes('Frozen review cutoff'), `mobile evidence details lost cutoff definitions at ${width}px`); assert(/Evidence through/.test(expanded.summary) && /Historical review/.test(expanded.summary), `mobile evidence summary is not compact/data-derived at ${width}px`); }
       else { assert.notEqual(start.desktopDisplay, 'none', `desktop evidence clocks hidden at ${width}px`); assert.equal(start.mobileDisplay, 'none', `mobile evidence disclosure visible at ${width}px`); }
 
@@ -71,6 +109,6 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
       }
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
-    console.log('browser public final polish: PASS - Start Here discoverability, compact evidence status, Talks grouping, semantic Shipping state, mobile readability and touch/focus behavior verified');
+    console.log('browser public final polish: PASS - Start Here current-state/evidence/narrative hierarchy, cleared Gates A-D, compact evidence status, Talks grouping, semantic Shipping state and responsive interaction behavior verified');
   } finally { try { await cdp.call('Emulation.clearDeviceMetricsOverride'); } catch (_) {} cdp.close(); }
 })().catch(error => { console.error(error.stack || error); process.exitCode = 1; });

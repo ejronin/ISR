@@ -26,7 +26,11 @@ const ROUTES = [
 const POLISH_FOCUS = [
   { routeKey: 'start.overview', label: 'start-current-state', selector: '[data-current-state-summary]' },
   { routeKey: 'start.overview', label: 'start-evidence-clock', selector: '.evidence-clock-bar', openSelector: '.evidence-clock-mobile' },
-  { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' }
+  { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' },
+  { routeKey: 'start.overview', label: 'start-war-90', selector: '[data-war-in-90-seconds]' },
+  { routeKey: 'start.overview', label: 'start-objectives', selector: '[data-objective-orientation]' },
+  { routeKey: 'start.overview', label: 'start-us-entry', selector: '[data-us-war-rationale]' },
+  { routeKey: 'start.overview', label: 'start-hormuz-trajectory', selector: '[data-hormuz-trajectory]' }
 ];
 const MAP_FOCUS = [
   { routeKey: 'military.campaigns', label: 'campaign', selector: '[data-visual-sweep-hero="campaign"] .atlas-leaflet-map' },
