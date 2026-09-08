@@ -1,0 +1,106 @@
+name: Final polish exact-candidate boot diagnostic v2
+
+on:
+  push:
+    branches: [ux/final-polish-20260908]
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: 02c0aaad3e946ff719ebad035fc3692798522b15
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install pinned build dependency
+        run: python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
+      - name: Build exact candidate
+        env:
+          PYTHONUTF8: '1'
+        run: |
+          python scripts/build_source_registry.py --root .
+          python scripts/build_canonical_current_state.py
+          python scripts/build_public_current_state.py
+          python scripts/build_canonical_current_state_v2_final.py --output data/canonical-current-state-v2.json
+          python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state.json
+          printf '%s  %s\n' \
+            '116d64442e7c5953ac36a44125088cb86626f386c81f93c0d4bbf917b346a64d' 'data/canonical-current-state-v2.json' \
+            '60ce8432170a15f91fadc399101b5d00612f4178d3fb494d146e16b663a7eeb0' 'data/public-current-state.json' \
+            | sha256sum -c -
+          python scripts/build_public_release.py
+          python scripts/assemble_public_site.py --output _site
+          python scripts/write_build_info.py --output _site/build-info.json --commit '02c0aaad3e946ff719ebad035fc3692798522b15'
+      - name: Capture exact boot diagnostics
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m http.server 8765 --bind 127.0.0.1 --directory _site >/tmp/atlas-diag-http.log 2>&1 &
+          server_pid=$!
+          browser=''
+          for candidate in google-chrome-stable google-chrome chromium chromium-browser; do
+            if command -v "$candidate" >/dev/null 2>&1; then browser="$(command -v "$candidate")"; break; fi
+          done
+          test -n "$browser"
+          rm -rf /tmp/atlas-diag-profile
+          "$browser" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --no-first-run --no-default-browser-check \
+            --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 \
+            --remote-allow-origins='*' --user-data-dir=/tmp/atlas-diag-profile \
+            about:blank >/tmp/atlas-diag-chrome.log 2>&1 &
+          browser_pid=$!
+          cleanup(){ kill -TERM "$browser_pid" "$server_pid" 2>/dev/null || true; }
+          trap cleanup EXIT
+          ready=0
+          for _ in $(seq 1 80); do
+            if curl -fsS --connect-timeout 1 --max-time 1 http://127.0.0.1:9222/json/version >/dev/null 2>&1; then ready=1; break; fi
+            sleep 0.25
+          done
+          test "$ready" -eq 1
+          node <<'NODE'
+          'use strict';
+          const sleep = ms => new Promise(r => setTimeout(r, ms));
+          class CDP {
+            constructor(url){ this.url=url; this.id=0; this.pending=new Map(); this.listeners=new Map(); }
+            async open(){ this.ws=new WebSocket(this.url); await new Promise((res,rej)=>{ const t=setTimeout(()=>rej(new Error('CDP open timeout')),10000); this.ws.onopen=()=>{clearTimeout(t);res();}; this.ws.onerror=()=>rej(new Error('CDP websocket error')); }); this.ws.onmessage=e=>{ const m=JSON.parse(String(e.data)); if(m.id&&this.pending.has(m.id)){ const p=this.pending.get(m.id); this.pending.delete(m.id); m.error?p.reject(new Error(m.error.message)):p.resolve(m.result||{}); return; } if(m.method){ for(const fn of this.listeners.get(m.method)||[]) fn(m.params||{}); } }; }
+            call(method,params={}){ const id=++this.id; return new Promise((res,rej)=>{ this.pending.set(id,{resolve:res,reject:rej}); this.ws.send(JSON.stringify({id,method,params})); }); }
+            on(method,fn){ if(!this.listeners.has(method)) this.listeners.set(method,new Set()); this.listeners.get(method).add(fn); }
+            async eval(expr){ const out=await this.call('Runtime.evaluate',{expression:expr,awaitPromise:true,returnByValue:true,userGesture:true}); if(out.exceptionDetails) throw new Error(out.exceptionDetails.exception?.description||out.exceptionDetails.text||'Runtime exception'); return out.result&&out.result.value; }
+            close(){ try { this.ws && this.ws.close(); } catch(_){} }
+          }
+          const DEBUG='http://127.0.0.1:9222'; const SITE='http://127.0.0.1:8765/';
+          const simplifyException = d => ({text:d?.text||null,lineNumber:d?.lineNumber??null,columnNumber:d?.columnNumber??null,url:d?.url||null,exception:d?.exception?.description||d?.exception?.value||null,stack:d?.stackTrace||null});
+          (async()=>{
+            const targets=await (await fetch(`${DEBUG}/json`)).json(); const target=targets.find(x=>x.type==='page'); if(!target) throw new Error('page target missing');
+            const cdp=new CDP(target.webSocketDebuggerUrl); await cdp.open();
+            const evidence={candidate:'02c0aaad3e946ff719ebad035fc3692798522b15',runs:[],exceptions:[],console:[],logEntries:[],requestFailures:[],badResponses:[],requests:[],frames:[]};
+            let active='';
+            try {
+              await cdp.call('Runtime.enable'); await cdp.call('Page.enable'); await cdp.call('Network.enable'); await cdp.call('Log.enable'); await cdp.call('Network.setCacheDisabled',{cacheDisabled:true});
+              cdp.on('Runtime.exceptionThrown',p=>evidence.exceptions.push({run:active,...simplifyException(p.exceptionDetails)}));
+              cdp.on('Runtime.consoleAPICalled',p=>evidence.console.push({run:active,type:p.type,args:(p.args||[]).map(a=>a.value??a.description??a.type)}));
+              cdp.on('Log.entryAdded',p=>evidence.logEntries.push({run:active,source:p.entry?.source,level:p.entry?.level,text:p.entry?.text,url:p.entry?.url,lineNumber:p.entry?.lineNumber}));
+              cdp.on('Network.requestWillBeSent',p=>{ if(p.request.url.startsWith(SITE)) evidence.requests.push({run:active,url:p.request.url,method:p.request.method,type:p.type}); });
+              cdp.on('Network.loadingFailed',p=>evidence.requestFailures.push({run:active,requestId:p.requestId,errorText:p.errorText,canceled:p.canceled||false,blockedReason:p.blockedReason||null}));
+              cdp.on('Network.responseReceived',p=>{ if(p.response.status>=400) evidence.badResponses.push({run:active,url:p.response.url,status:p.response.status,statusText:p.response.statusText,type:p.type}); });
+              cdp.on('Page.frameNavigated',p=>{ if(!p.frame.parentId) evidence.frames.push({run:active,url:p.frame.url}); });
+              async function snapshot(){ return cdp.eval(`(() => { const s=window.ATLAS_PUBLIC_STATE; const host=document.getElementById('atlas-root'); return {href:location.href,hash:location.hash,documentReadyState:document.readyState,rootStatus:host?.dataset.status||null,publicState:s?{status:s.status||null,code:s.code||null,routeKey:s.routeKey||null,releaseIdentity:s.releaseIdentity||null,currentStateReleaseIdentity:s.currentStateReleaseIdentity||null,chronologyCount:s.chronologyCount??null,currentOsintCutoff:s.currentOsintCutoff||null,hybrid:s.hybrid??null}:null,releaseMismatch:Boolean(s?.code==='RELEASE_MISMATCH'),authorization:window.ATLAS_RELEASE_AUTHORIZATION?{releaseIdentity:window.ATLAS_RELEASE_AUTHORIZATION.releaseIdentity,entrypointPath:window.ATLAS_RELEASE_AUTHORIZATION.entrypointPath}:null,bootstrapPresent:Boolean(window.AtlasReleaseBootstrap),appPresent:Boolean(window.AtlasPublicBoot),iaPresent:Boolean(window.AtlasPublicIA),bodyText:(document.body?.innerText||'').slice(0,900)}; })()`); }
+              async function run(label,url){ active=label; const transitions=[]; let previous=''; await cdp.call('Page.navigate',{url}); const started=Date.now(); while(Date.now()-started<32000){ let s; try{s=await snapshot();}catch(e){ transitions.push({ms:Date.now()-started,snapshotError:String(e)}); await sleep(100); continue; } const sig=JSON.stringify([s.href,s.rootStatus,s.publicState,s.documentReadyState]); if(sig!==previous){transitions.push({ms:Date.now()-started,...s});previous=sig;} if(s.publicState?.status==='ready'||s.publicState?.status==='error'||s.rootStatus==='error') break; await sleep(100); } return {label,url,transitions,final:await snapshot()}; }
+              evidence.runs.push(await run('cold-default',`${SITE}?diag=exact-cold`));
+              evidence.runs.push(await run('sources-route',`${SITE}?diag=exact-sources#/evidence/sources`));
+            } finally { cdp.close(); }
+            console.log('ATLAS_BOOT_DIAGNOSTIC_BEGIN'); console.log(JSON.stringify(evidence,null,2)); console.log('ATLAS_BOOT_DIAGNOSTIC_END');
+          })().catch(error=>{ console.error('DIAGNOSTIC_FATAL',error.stack||error); process.exitCode=1; });
+          NODE
+          echo '--- chromium stderr ---'
+          cat /tmp/atlas-diag-chrome.log || true
+          echo '--- http stderr ---'
+          cat /tmp/atlas-diag-http.log || true
