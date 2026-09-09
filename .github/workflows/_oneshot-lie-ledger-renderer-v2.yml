@@ -1,0 +1,42 @@
+name: One-shot Lie Ledger v2 renderer migration
+
+on:
+  push:
+    branches:
+      - fix/lie-ledger-semantic-contract-20260909
+    paths:
+      - scripts/_oneshot_patch_lie_ledger_renderer_v2.py
+      - .github/workflows/_oneshot-lie-ledger-renderer-v2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  migrate-renderer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: fix/lie-ledger-semantic-contract-20260909
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Apply deterministic renderer migration
+        run: |
+          python scripts/_oneshot_patch_lie_ledger_renderer_v2.py
+          node --check js/public-ia.js
+          ! grep -n "deception_score\|All deception scores\|dataset.deceptionScore\|0 — No evidence of knowing deception" js/public-ia.js
+          grep -n "function knowledgeJudgmentDisplay\|Combined ROOK assessment\|EVIDENCE COMPLETION REQUIRED\|dataset.evidenceComponent" js/public-ia.js
+      - name: Commit patched runtime and remove one-shot machinery
+        run: |
+          git config user.name "atlas-prci-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git rm .github/workflows/_oneshot-lie-ledger-renderer-v2.yml scripts/_oneshot_patch_lie_ledger_renderer_v2.py
+          git add js/public-ia.js
+          git diff --cached --check
+          git commit -m "Migrate Lie Ledger public renderer to v2 chain contract"
+          git push origin HEAD:fix/lie-ledger-semantic-contract-20260909
