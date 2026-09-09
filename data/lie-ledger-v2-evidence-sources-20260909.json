@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "LIE_LEDGER_V2_EVIDENCE_SOURCE_REGISTRY",
+  "authority": "ROOK_EVIDENCE_COMPLETION",
+  "effective_date": "2026-09-09",
+  "sources": [
+    {
+      "source_id": "SRC-435A52166AA7",
+      "outlet": "Press TV",
+      "title": "IRGC Navy’s strike damages US aircraft carrier Abraham Lincoln",
+      "url": "https://www.presstv.ir/Detail/2026/03/13/765316/IRGC-Navy%E2%80%99s-strike-damages-US-aircraft-carrier-Abraham-Lincoln",
+      "publication_date": "2026-03-13",
+      "source_role": "STATE_MEDIA_PRIMARY_CLAIM",
+      "temporal_note": "Contemporaneous claim publication; source display time 02:52, timezone not explicit."
+    },
+    {
+      "source_id": "SRC-4418D9006E00",
+      "outlet": "U.S. Central Command / DVIDS",
+      "title": "USS Abraham Lincoln Conducts Flight Operations During Operation Epic Fury",
+      "url": "https://www.dvidshub.net/video/999519/uss-abraham-lincoln-conducts-flight-operations-during-operation-epic-fury",
+      "publication_date": "2026-03-13",
+      "source_role": "PRIMARY_OFFICIAL",
+      "temporal_note": "Event date March 12; public posting March 13."
+    },
+    {
+      "source_id": "SRC-8485866F094A",
+      "outlet": "U.S. Central Command / DVIDS",
+      "title": "USS Abraham Lincoln Supports Operation Epic Fury",
+      "url": "https://www.dvidshub.net/video/999635/uss-abraham-lincoln-supports-operation-epic-fury",
+      "publication_date": "2026-03-17",
+      "source_role": "PRIMARY_OFFICIAL",
+      "temporal_note": "Later-released imagery of March 13 flight operations; not evidence available to the claimant at claim time."
+    },
+    {
+      "source_id": "SRC-78A57448DD47",
+      "outlet": "WANA",
+      "title": "Live Coverage of the Iran–U.S.–Israel Conflict / April 05",
+      "url": "https://wanaen.com/live-coverage-of-the-iran-u-s-israel-conflict-april-05/",
+      "publication_date": "2026-04-05",
+      "source_role": "REGIONAL_MEDIA",
+      "temporal_note": "Preserves the IRGC PR hedge and the April 6 IRIB correction on the same live-coverage page."
+    },
+    {
+      "source_id": "SRC-E8925FA221DA",
+      "outlet": "ABC News Australia",
+      "title": "How US forces pulled off daring rescue of stranded airman shot down in Iran",
+      "url": "https://www.abc.net.au/news/2026-04-06/how-us-forces-rescued-stranded-airman-in-iran-explainer/106533914",
+      "publication_date": "2026-04-06",
+      "source_role": "INDEPENDENT_MEDIA",
+      "temporal_note": "Later reporting on the remains/skull presentation and rescue outcome."
+    },
+    {
+      "source_id": "SRC-BDFE31C022B3",
+      "outlet": "Qatar Ministry of Foreign Affairs",
+      "title": "Invitation Remains Open for Iran to Review Details of Search, Rescue Operations for Its Pilots",
+      "url": "https://mofa.gov.qa/en/qatar/latest-articles/latest-news/details/2026/08/18/advisor-to-prime-minister-and-official-spokesperson-for-ministry-of-foreign-affairs--invitation-remains-open-for-iran-to-review-details-of-search--rescue-operations-for-its-pilots",
+      "publication_date": "2026-08-18",
+      "source_role": "PRIMARY_OFFICIAL",
+      "temporal_note": "Later official confirmation of the earlier April invitation and Tehran non-response."
+    },
+    {
+      "source_id": "SRC-2BC8EFC300C5",
+      "outlet": "Reuters",
+      "title": "Qatar denies detaining Iranian pilots, says it found remains of one",
+      "url": "https://www.reuters.com/world/middle-east/qatar-denies-detaining-iranian-pilots-says-it-found-remains-one-2026-08-15/",
+      "publication_date": "2026-08-15",
+      "source_role": "INDEPENDENT_WIRE",
+      "temporal_note": "Public before the August 16 Iranian obstruction accusation; reports Qatar's April invitation and Tehran non-response."
+    },
+    {
+      "source_id": "SRC-09C0C5E902E2",
+      "outlet": "Reuters",
+      "title": "Iran says Qatar delaying probe into fate of Iranian pilots, Tasnim news agency reports",
+      "url": "https://www.reuters.com/world/middle-east/iran-says-qatar-delaying-probe-into-fate-iranian-pilots-tasnim-news-agency-2026-08-16/",
+      "publication_date": "2026-08-16",
+      "source_role": "INDEPENDENT_WIRE",
+      "temporal_note": "Contemporaneous report of Baqerzadeh's waiting-for-months and Qatar-delay accusation."
+    },
+    {
+      "source_id": "SRC-A52F28BE68C6",
+      "outlet": "Tasnim News Agency",
+      "title": "IRGC Strikes US Military Center in Syria",
+      "url": "https://www.tasnimnews.ir/en/news/2026/07/17/3649063/irgc-strikes-us-military-center-in-syria",
+      "publication_date": "2026-07-17",
+      "source_role": "SEMIOFFICIAL_MEDIA_PRIMARY_CLAIM",
+      "temporal_note": "IRGC statement published 08:32; source for all three atomic al-Tanf propositions."
+    },
+    {
+      "source_id": "SRC-F9D0D4519D4D",
+      "outlet": "U.S. Central Command",
+      "title": "U.S. Forces Depart Base in Syria during Orderly Transition",
+      "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4404940/us-forces-depart-base-in-syria-during-orderly-transition/",
+      "publication_date": "2026-02-12",
+      "source_role": "PRIMARY_OFFICIAL",
+      "temporal_note": "States U.S. departure from al-Tanf was completed February 11."
+    },
+    {
+      "source_id": "SRC-C0E8F130EDDF",
+      "outlet": "Associated Press / Military.com",
+      "title": "Syria Says Its Forces Have Taken Over al-Tanf Base After a Handover from the US",
+      "url": "https://www.military.com/daily-news/2026/02/12/syria-says-its-forces-have-taken-over-al-tanf-base-after-handover-us.html",
+      "publication_date": "2026-02-12",
+      "source_role": "INDEPENDENT_WIRE_REPUBLICATION",
+      "temporal_note": "Independent corroboration of Syrian takeover after the U.S. handover."
+    },
+    {
+      "source_id": "SRC-F8CFD40201CE",
+      "outlet": "Reuters",
+      "title": "Iran's IRGC says it targeted US command centre in Syria, state media reports",
+      "url": "https://www.reuters.com/world/middle-east/irans-irgc-say-they-targeted-us-command-centre-syria-state-media-reports-2026-07-17/",
+      "publication_date": "2026-07-17",
+      "source_role": "INDEPENDENT_WIRE",
+      "temporal_note": "Same-day effect reporting; Syrian military source said the attack was near al-Tanf, the base was not hit, and there were no casualties or material damage."
+    },
+    {
+      "source_id": "SRC-B96297D7ACDA",
+      "outlet": "Critical Threats Project",
+      "title": "Iran Update Evening Special Report, August 6, 2026",
+      "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-august-06-2026",
+      "publication_date": "2026-08-06",
+      "source_role": "ANALYTIC_SECONDARY",
+      "temporal_note": "Later reporting describes al-Tanf as a former U.S. base."
+    },
+    {
+      "source_id": "SRC-D938910EDB89",
+      "outlet": "The National",
+      "title": "US denies Iran's claim it killed American troops in Syria",
+      "url": "https://www.thenationalnews.com/news/mena/2026/07/17/iran-claims-first-attack-on-us-troops-in-syria/",
+      "publication_date": "2026-07-17",
+      "source_role": "INDEPENDENT_MEDIA",
+      "temporal_note": "Same-day U.S. denial of claimed American troop deaths and current official presence."
+    }
+  ]
+}
