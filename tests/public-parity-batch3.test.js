@@ -7,12 +7,13 @@ const root = path.resolve(__dirname, '..');
 const app = require('../js/public-app.js');
 const ia = require('../js/public-ia.js');
 const model = JSON.parse(fs.readFileSync(path.join(root, 'data', 'public-current-state.json'), 'utf8'));
+const canonicalManifest = JSON.parse(fs.readFileSync(path.join(root, 'data', 'canonical-ledger', 'manifest-v2.json'), 'utf8'));
 const geography = JSON.parse(fs.readFileSync(path.join(root, 'assets', 'geography', 'atlas-reference-geography.geojson'), 'utf8'));
 const payload = key => model.datasets[key].payload;
 
 assert.equal(model.counts.chronology_records, model.chronology.length);
 assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
-assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
+assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff);
 assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
 assert.equal(ia.ROUTES.size, 25);
 assert.equal(Object.keys(app.ROUTE_DATA_DEPENDENCIES).length, 25);
