@@ -47,8 +47,8 @@ assert(model.chronology.every(item => item.event && item.timeline));
 assert(model.chronology.every(item => item.event.event_date === item.timeline.date));
 assert(model.chronology.every(item => Array.isArray(item.source_references)));
 
-assert.equal(records('gate3.material_losses').length, model.counts.material_loss_records);
-assert.equal(records('gate3.relationships').length, model.counts.relationship_records);
+assert.equal(records('current.material_losses').length, model.counts.material_loss_records);
+assert.equal(records('current.relationships').length, model.counts.relationship_records);
 assert.equal(records('gate3.source_reliability').length, model.counts.gate3_source_reliability_records);
 assert.equal(records('gate3.gaps').length, 19);
 assert.equal(records('gate3.casualties').length, 23);
