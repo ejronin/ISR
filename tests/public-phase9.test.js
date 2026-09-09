@@ -107,3 +107,4 @@ for (const replay of ['current-update-20260824.js', 'current-update-20260825.js'
 console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${ledger.length} Lie Ledger propositions, and resolvable source references verified`);
 
 require('./public-phase10.test.js');
+require('./public-final-polish.test.js');

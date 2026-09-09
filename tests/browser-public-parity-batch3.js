@@ -277,6 +277,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     const agreements = await cdp.eval(`(() => ({
       ids: [...document.querySelectorAll('[data-agreement-id]')].map(node => node.dataset.agreementId),
       formalized: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized === 'true').length,
+      proposalStates: [...document.querySelectorAll('[data-agreement-id]')].filter(node => node.dataset.agreementFormalized !== 'true' && /propos(?:al|ed)/i.test(node.innerText || '')).length,
       evidence: document.querySelectorAll('[data-agreement-id] details.evidence-drawer').length,
       mou: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/talks/june-mou"]')),
       nuclear: Boolean(document.querySelector('[data-agreement-id="AGR-US-IRN-14POINT-MOU-2026"] a[href^="#/talks/nuclear"]')),
@@ -285,10 +286,11 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(agreements.ids.length, 8);
     assert.equal(new Set(agreements.ids).size, 8);
     assert(agreements.formalized > 0 && agreements.formalized < 8);
+    assert(agreements.proposalStates > 0, 'Talks must visibly retain at least one non-formalized proposal-state agreement');
     assert(agreements.evidence > 0);
     assert.equal(agreements.mou, true);
     assert.equal(agreements.nuclear, true);
-    assert.match(agreements.text, /a proposal is not the same as a signed agreement/i);
+    assert.match(agreements.text, /states are not interchangeable/i);
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: true });

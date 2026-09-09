@@ -18,7 +18,7 @@ assert.equal(new Set([...ia.ROUTES.values()].map(route => route.owner)).size, 25
 assert([...ia.ROUTES.values()].every(route => route.dataKeys.every(key => !key.startsWith('legacy.'))), 'a current route maps a legacy dataset');
 
 for (const phrase of [
-  'What happened?',
+  'How the conflict opened',
   'Where things stand now',
   'Where to go next',
   'Iran originally said it would control and manage the Strait.',

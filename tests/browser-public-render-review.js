@@ -23,6 +23,15 @@ const ROUTES = [
   'evidence.archive',
   'military.imagery'
 ];
+const POLISH_FOCUS = [
+  { routeKey: 'start.overview', label: 'start-current-state', selector: '[data-current-state-summary]' },
+  { routeKey: 'start.overview', label: 'start-evidence-clock', selector: '.evidence-clock-bar', openSelector: '.evidence-clock-mobile' },
+  { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' },
+  { routeKey: 'start.overview', label: 'start-war-90', selector: '[data-war-in-90-seconds]' },
+  { routeKey: 'start.overview', label: 'start-objectives', selector: '[data-objective-orientation]' },
+  { routeKey: 'start.overview', label: 'start-us-entry', selector: '[data-us-war-rationale]' },
+  { routeKey: 'start.overview', label: 'start-hormuz-trajectory', selector: '[data-hormuz-trajectory]' }
+];
 const MAP_FOCUS = [
   { routeKey: 'military.campaigns', label: 'campaign', selector: '[data-visual-sweep-hero="campaign"] .atlas-leaflet-map' },
   { routeKey: 'hormuz.shipping', label: 'shipping-chokepoint', selector: '[data-shipping-map-view="chokepoint"] .atlas-leaflet-map' },
@@ -177,6 +186,20 @@ async function captureViewport(cdp, filename) {
       }
     }
 
+    let polishFocusCaptures = 0;
+    for (const width of WIDTHS) {
+      await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: width <= 768 });
+      for (const focus of POLISH_FOCUS) {
+        await route(cdp, focus.routeKey);
+        const selector = JSON.stringify(focus.selector);
+        await waitFor(cdp, `Boolean(document.querySelector(${selector}))`);
+        await cdp.eval(`(() => { const target=document.querySelector(${selector}); ${focus.openSelector ? `const disclosure=document.querySelector(${JSON.stringify(focus.openSelector)}); if (disclosure && innerWidth <= 600) disclosure.open=true;` : ''} target.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'auto' }); return true; })()`);
+        await sleep(150);
+        await captureViewport(cdp, `polishfocus-${String(width).padStart(4, '0')}-${focus.label}.png`);
+        polishFocusCaptures += 1;
+      }
+    }
+
     await cdp.call('Emulation.clearDeviceMetricsOverride');
     const manifest = {
       widths: WIDTHS,
@@ -184,10 +207,12 @@ async function captureViewport(cdp, filename) {
       captures,
       map_focus: MAP_FOCUS.map(({ routeKey, label, selector }) => ({ routeKey, label, selector })),
       map_focus_captures: mapFocusCaptures,
-      total_review_captures: captures + mapFocusCaptures
+      polish_focus: POLISH_FOCUS.map(({ routeKey, label, selector }) => ({ routeKey, label, selector })),
+      polish_focus_captures: polishFocusCaptures,
+      total_review_captures: captures + mapFocusCaptures + polishFocusCaptures
     };
     fs.writeFileSync(path.join(OUTPUT, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
-    console.log(`browser public rendered review capture: PASS - ${captures} top-of-page screenshots (${ROUTES.length} high-risk routes x ${WIDTHS.length} widths) + ${mapFocusCaptures} focused map screenshots`);
+    console.log(`browser public rendered review capture: PASS - ${captures} top-of-page screenshots (${ROUTES.length} high-risk routes x ${WIDTHS.length} widths) + ${mapFocusCaptures} focused map screenshots + ${polishFocusCaptures} final-polish focus screenshots`);
   } finally {
     try { await cdp.call('Browser.close'); } catch (_) { /* workflow cleanup is fallback */ }
     cdp.close();

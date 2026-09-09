@@ -769,17 +769,26 @@
   const clocks = element(context.documentObject, 'section', 'evidence-clocks evidence-clock-bar');
   clocks.dataset.component = 'EvidenceClocks';
   clocks.setAttribute('aria-label', 'Evidence cutoffs');
-  const addClock = (className, label, value, shortExplanation, helpLabel, helpText) => {
-    const item = append(clocks, 'article', `evidence-clock-item ${className}`);
+  const addClock = (host, className, label, value, shortExplanation, helpLabel, helpText) => {
+    const item = append(host, 'article', `evidence-clock-item ${className}`);
     const summary = append(item, 'div', 'evidence-clock-summary');
     append(summary, 'strong', '', label);
     const time = append(summary, 'time', '', formatEvidenceClock(value)); time.dateTime = value;
     const help = append(item, 'details', 'evidence-clock-help'); append(help, 'summary', '', helpLabel); append(help, 'p', '', shortExplanation); append(help, 'p', '', helpText);
     return item;
   };
-  addClock('frozen-evidence-clock', 'Frozen review cutoff', release.gate2_evidence_cutoff, 'Historical evaluation uses only evidence available by this time.', 'Why frozen?', "This is the fixed evidence boundary used for the historical Gate 2 review. Evidence incorporated later can strengthen or revise the current Atlas record, but it does not rewrite what was available for the frozen evaluation.");
-  addClock('current-evidence-clock', 'Current evidence cutoff', release.current_osint_cutoff, 'Current Atlas evidence includes material incorporated through this time.', 'How current works', 'This cutoff advances when new evidence is incorporated. It does not reopen or retroactively alter a frozen historical evaluation.');
-  intro.after(clocks);
+  const frozenArgs = ['frozen-evidence-clock', 'Frozen review cutoff', release.gate2_evidence_cutoff, 'Historical evaluation uses only evidence available by this time.', 'Why frozen?', "This is the fixed evidence boundary used for the historical Gate 2 review. Evidence incorporated later can strengthen or revise the current Atlas record, but it does not rewrite what was available for the frozen evaluation."];
+  const currentArgs = ['current-evidence-clock', 'Current evidence cutoff', release.current_osint_cutoff, 'Current Atlas evidence includes material incorporated through this time.', 'How current works', 'This cutoff advances when new evidence is incorporated. It does not reopen or retroactively alter a frozen historical evaluation.'];
+  const desktop = append(clocks, 'div', 'evidence-clock-desktop');
+  addClock(desktop, ...frozenArgs); addClock(desktop, ...currentArgs);
+  const mobile = append(clocks, 'details', 'evidence-clock-mobile');
+  const mobileSummary = append(mobile, 'summary', 'evidence-clock-mobile-summary');
+  append(mobileSummary, 'span', 'evidence-clock-mobile-text', `Evidence through ${formatEvidenceClock(release.current_osint_cutoff)} · Historical review ${formatEvidenceClock(release.gate2_evidence_cutoff)}`);
+  append(mobileSummary, 'span', 'evidence-clock-mobile-action', 'Details');
+  const mobileBody = append(mobile, 'div', 'evidence-clock-mobile-body');
+  addClock(mobileBody, ...currentArgs); addClock(mobileBody, ...frozenArgs);
+  const startState = context.route.key === 'start.overview' ? article.querySelector('[data-current-state-summary]') : null;
+  (startState || intro).after(clocks);
 }
 
   function appendDefinition(list, term, value) {
@@ -1512,6 +1521,49 @@
     append(card, 'strong', '', value); append(card, 'span', '', label); if (note) append(card, 'small', '', note); return card;
   }
 
+
+  // Final polish semantic state notices: reader meaning first, accounting detail second.
+  const STATE_NOTICE_TITLES = Object.freeze({
+    'no-applicable-records': 'No applicable records',
+    'no-geolocated-records': 'No geolocated records in this view',
+    unresolved: 'Unresolved',
+    'partial-evidence': 'Partial evidence',
+    'insufficient-evidence': 'Insufficient evidence',
+    'dependency-unavailable': 'Data dependency unavailable',
+    'methodology-boundary': 'Methodology boundary'
+  });
+
+  function createStateNotice(context, options) {
+    const settings = options || {}; const variant = settings.variant || 'methodology-boundary';
+    const notice = element(context.documentObject, 'aside', `state-notice state-notice-${variant}`);
+    notice.dataset.stateNotice = variant;
+    append(notice, 'strong', 'state-notice-title', settings.title || STATE_NOTICE_TITLES[variant] || 'Evidence state');
+    if (settings.message) append(notice, 'p', 'state-notice-message', settings.message);
+    if (settings.accounting) append(notice, 'p', 'state-notice-accounting', settings.accounting);
+    return notice;
+  }
+
+  function addOrientationCard(host, context, options) {
+    const settings = options || {};
+    const card = addProvenanceCard(host, context, {
+      kicker: settings.kicker || settings.domain,
+      title: settings.title,
+      text: settings.text,
+      meta: settings.meta,
+      item: settings.item || {},
+      relatedRecords: settings.relatedRecords || [],
+      localSources: settings.localSources || {}
+    });
+    card.classList.add('orientation-card');
+    card.dataset.orientationDomain = String(settings.domain || '').toLowerCase();
+    if (settings.route) {
+      const actions = append(card, 'div', 'record-actions orientation-actions');
+      const link = append(actions, 'a', 'inline-route-link', settings.linkLabel || `Explore ${settings.domain}`);
+      link.href = routeHref(settings.route);
+    }
+    return card;
+  }
+
   function addSequence(host, context, steps, options) {
     const list = append(host, 'ol', options && options.className || 'story-sequence');
     asArray(steps).forEach((step, index) => {
@@ -1654,21 +1706,155 @@
     renderRelatedLinks(frame.article, context); return frame.article;
   }
 
+
+  function renderFinalNarrativeGates(article, context) {
+    const contract = context.state && context.state.narrativeContract;
+    if (!contract || article.querySelector('[data-narrative-gates]')) return;
+    const wrapper = append(article, 'div', 'narrative-gates');
+    wrapper.dataset.narrativeGates = 'approved';
+
+    const war = contract.war90;
+    const warSection = append(wrapper, 'section', 'content-section narrative-gate');
+    warSection.setAttribute('data-war-in-90-seconds', 'approved');
+    warSection.dataset.narrativeGate = 'war-90';
+    append(warSection, 'h2', '', war.title);
+    append(warSection, 'p', 'section-note', war.disclaimer);
+    const sequence = append(warSection, 'div', 'story-sequence');
+    asArray(war.milestones).forEach((milestone, index) => {
+      const step = append(sequence, 'article', 'story-step');
+      step.dataset.warMilestone = String(index + 1);
+      const marker = append(step, 'span', 'step-number', String(index + 1));
+      marker.setAttribute('aria-hidden', 'true');
+      const body = append(step, 'div', 'step-body');
+      append(body, 'h3', '', milestone.title);
+      append(body, 'p', '', milestone.text);
+      const changed = append(body, 'p', 'record-status');
+      append(changed, 'strong', '', 'What changed: ');
+      changed.append(context.documentObject.createTextNode(milestone.changed));
+    });
+    const warFooter = append(warSection, 'p', 'section-note');
+    warFooter.append(context.documentObject.createTextNode(`${war.disclaimer} Open the `));
+    const timelineLink = append(warFooter, 'a', 'inline-route-link', 'full Timeline');
+    timelineLink.href = routeHref('timeline.war');
+    warFooter.append(context.documentObject.createTextNode(' for the complete dated record.'));
+
+    const objectives = contract.objectives;
+    const objectiveSection = append(wrapper, 'section', 'content-section narrative-gate');
+    objectiveSection.dataset.objectiveOrientation = 'approved';
+    objectiveSection.dataset.narrativeGate = 'objectives';
+    append(objectiveSection, 'h2', '', objectives.title);
+    const objectiveGrid = append(objectiveSection, 'div', 'record-list two-column-list');
+    asArray(objectives.actors).forEach(actor => {
+      const card = append(objectiveGrid, 'article', 'record-card evidence-card');
+      card.dataset.objectiveActor = actor.key;
+      append(card, 'h3', '', actor.title);
+      asArray(actor.stages).forEach(stage => {
+        const stageNode = append(card, 'div', 'narrative-stage');
+        stageNode.dataset.objectiveStage = stage.key;
+        append(stageNode, 'h4', '', stage.title);
+        append(stageNode, 'p', '', stage.text);
+      });
+    });
+
+    const usEntry = contract.usEntry;
+    const rationaleSection = append(wrapper, 'section', 'content-section narrative-gate');
+    rationaleSection.dataset.usWarRationale = 'approved';
+    rationaleSection.dataset.narrativeGate = 'us-entry';
+    append(rationaleSection, 'h2', '', usEntry.title);
+    append(rationaleSection, 'p', 'section-note', usEntry.intro);
+    const rationaleGrid = append(rationaleSection, 'div', 'record-list two-column-list');
+    asArray(usEntry.items).forEach(item => {
+      const card = append(rationaleGrid, 'article', 'record-card evidence-card');
+      card.dataset.rationaleKind = item.key;
+      append(card, 'h3', '', item.title);
+      append(card, 'p', '', item.text);
+    });
+
+    const hormuz = contract.hormuz;
+    const hormuzSection = append(wrapper, 'section', 'content-section narrative-gate');
+    hormuzSection.dataset.hormuzTrajectory = 'approved';
+    hormuzSection.dataset.narrativeGate = 'hormuz-trajectory';
+    append(hormuzSection, 'h2', '', hormuz.title);
+    const hormuzGrid = append(hormuzSection, 'div', 'story-grid');
+    asArray(hormuz.stages).forEach(stage => {
+      const card = append(hormuzGrid, 'article', 'record-card evidence-card');
+      card.dataset.hormuzStage = stage.key;
+      append(card, 'h3', '', stage.title);
+      append(card, 'p', '', stage.text);
+    });
+  }
+
   function OverviewPage(context) {
     const frame = pageFrame(context, 'The conflict began with U.S. and Israeli strikes on Iran on February 28, 2026. Iran retaliated across the region, and the war developed into a sustained military, maritime, economic and diplomatic confrontation.');
-    frame.article.classList.add('overview-page'); const domains = recordArray(modelData(context.model, 'ledger.domain_assessments')); const force = domains.find(domain => domain.domain === 'Force preservation') || domains.find(domain => /Air \/ long-range strike/i.test(domain.domain || '')); const maritime = domains.find(domain => /Maritime control/i.test(domain.domain || '')); const firstWar = context.model.chronology.find(item => String(item.timeline && item.timeline.date || item.event && item.event.event_date || '') >= '2026-02-28');
-    const whatHappened = addSection(frame.article, 'What happened?', 'content-section lead-story'); append(whatHappened, 'p', 'lead-copy', publicNarrative(firstWar && firstWar.event && firstWar.event.observed_fact, 'The United States and Israel opened strikes on Iran, and Iran retaliated against Israel and regional bases hosting U.S. forces.')); if (firstWar) whatHappened.append(EvidenceDrawer.create(context, firstWar));
+    frame.article.classList.add('overview-page');
+    const domains = recordArray(modelData(context.model, 'ledger.domain_assessments'));
+    const force = domains.find(domain => domain.domain === 'Force preservation') || domains.find(domain => /Air \/ long-range strike/i.test(domain.domain || ''));
+    const maritime = domains.find(domain => /Maritime control/i.test(domain.domain || ''));
+    const economy = domains.find(domain => /Economic|economy|sanction/i.test(domain.domain || ''));
+    const firstWar = context.model.chronology.find(item => String(item.timeline && item.timeline.date || item.event && item.event.event_date || '') >= '2026-02-28');
+    const publicView = modelData(context.model, 'analysis.endgame_public_view') || {};
+    const mouNow = publicView.mou_now || {};
+    const diplomaticEvents = context.model.chronology.filter(item => /(DIPLOMATIC|TALK|NEGOTIAT|MEDIAT|DEESCALAT)/.test(eventType(item))).slice(-4);
+    const diplomacyEnvelope = { ...mouNow, source_ids: Array.from(new Set([...sourceIdsFrom(mouNow), ...diplomaticEvents.flatMap(sourceIdsFrom)])) };
+
+    const now = addSection(frame.article, 'Where things stand now', 'content-section current-state-summary');
+    now.dataset.currentStateSummary = 'four-domain';
+    const nowGrid = append(now, 'div', 'story-grid current-state-grid');
+    addOrientationCard(nowGrid, context, {
+      domain: 'Military', title: 'U.S. strike capacity remained intact; Iran retained disruptive capability',
+      text: publicNarrative(force && force.assessment, 'The reviewed record supports a U.S./coalition force-preservation advantage while Iran retains consequential strike and maritime capabilities.'),
+      meta: force && `Confidence: ${displayTerm(force.confidence)}`, item: force || {}, relatedRecords: force && force.supporting_evidence || [],
+      route: 'military.campaigns', linkLabel: 'Explore Campaigns & Strikes'
+    });
+    addOrientationCard(nowGrid, context, {
+      domain: 'Hormuz', title: 'The Strait remains physically traversable but commercially contested',
+      text: 'Iran retains leverage, but recognized exclusive control is not established. A reported formula that could drop compulsory tolls while retaining legitimate service charges remained a proposal at the cutoff.',
+      meta: maritime && `Confidence: ${displayTerm(maritime.confidence)}`, item: maritime || {},
+      relatedRecords: maritime && [...asArray(maritime.supporting_evidence), ...asArray(maritime.contrary_evidence)] || [],
+      route: 'hormuz.overview', linkLabel: 'Explore Why Hormuz Matters'
+    });
+    addOrientationCard(nowGrid, context, {
+      domain: 'Economy', title: 'Economic pressure on Iran is severe; regime collapse is not established',
+      text: 'Severe crude-export contraction and deeper foreign-exchange and import pressure are established. Shortage concerns and unrest risk increased as blockade and sanctions effects accumulated.',
+      meta: economy && `Confidence: ${displayTerm(economy.confidence)}`, item: economy || {}, relatedRecords: economy && [...asArray(economy.supporting_evidence), ...asArray(economy.contrary_evidence)] || [], route: 'hormuz.economy', linkLabel: 'Explore Oil & Economic Effects'
+    });
+    addOrientationCard(nowGrid, context, {
+      domain: 'Diplomacy', title: 'The June MOU no longer controls either side, but talks remain active',
+      text: 'Washington called it over and Iran later called it suspended. No final deal replaced it, while U.S.–Iran and regional de-escalation contacts continued at the cutoff.',
+      item: diplomacyEnvelope, localSources: localSourceMap(publicView), relatedRecords: diplomaticEvents.map(item => item.event_id).filter(Boolean),
+      route: 'talks.overview', linkLabel: 'Explore Talks & Agreements'
+    });
+
+    renderFinalNarrativeGates(frame.article, context);
+
+    const whatHappened = addSection(frame.article, 'How the conflict opened', 'content-section lead-story historical-orientation');
+    append(whatHappened, 'p', 'lead-copy', publicNarrative(firstWar && firstWar.event && firstWar.event.observed_fact, 'The United States and Israel opened strikes on Iran, and Iran retaliated against Israel and regional bases hosting U.S. forces.'));
+    if (firstWar) whatHappened.append(EvidenceDrawer.create(context, firstWar));
+
     const theaterRecords = mappedChronology(context.model.chronology, context.services.locationResolver).filter(item => { const point = pointFromRecord(item, context.services.locationResolver); return point && point.lat >= 8 && point.lat <= 42 && point.lon >= 28 && point.lon <= 70; });
-    const theaterMap = MapView.create(context, { title: 'Where the conflict extends', records: theaterRecords, fallbackViewport: [[11, 32], [40.5, 67.5]], maxZoom: 5, description: `This map shows ${theaterRecords.length.toLocaleString()} recorded events whose locations can be placed with reasonable confidence across the Iran–Gulf–Levant–Red Sea theater. Multiple events at the same location may be grouped; records without reliable coordinates remain in the chronology.` }); theaterMap.classList.add('overview-theater-map'); theaterMap.dataset.selectionRule = 'accepted-chronology-with-supported-coordinate-in-broad-theater'; frame.article.append(theaterMap);
-    const now = addSection(frame.article, 'Where things stand now'); const nowGrid = append(now, 'div', 'story-grid');
-    addProvenanceCard(nowGrid, context, { kicker: 'Military result so far', title: 'U.S. strike capacity remained intact; Iran retained disruptive capability', text: publicNarrative(force && force.assessment, 'The reviewed record supports a U.S./coalition force-preservation advantage while Iran retains consequential strike and maritime capabilities.'), meta: force && `Confidence: ${displayTerm(force.confidence)}`, item: force || {}, relatedRecords: force && force.supporting_evidence || [] });
-    addProvenanceCard(nowGrid, context, { kicker: 'Diplomatic result so far', title: 'The June MOU no longer controls either side', text: 'Washington called it over. Iran later called it suspended. Neither side agreed to extend it, and no final deal replaced it. Parts of it are still being used as a starting point in new talks.', item: modelData(context.model, 'analysis.endgame_public_view').mou_now, localSources: localSourceMap(modelData(context.model, 'analysis.endgame_public_view')) });
-    addProvenanceCard(nowGrid, context, { kicker: 'Hormuz', title: 'Iran retains leverage, but not recognized exclusive control', text: 'Iran originally said it would control and manage the Strait. It is now negotiating a shared arrangement with Oman and other Gulf states. That is a step backward from its original claim. The final terms are still being negotiated.', meta: maritime && `Confidence: ${displayTerm(maritime.confidence)}`, item: maritime || {}, relatedRecords: maritime && [...asArray(maritime.supporting_evidence), ...asArray(maritime.contrary_evidence)] || [] });
-    const record = addSection(frame.article, 'About these numbers'); append(record, 'p', '', 'Counts describe the evidence collection; they are not a score of who is winning.'); const metrics = append(record, 'div', 'metric-grid'); addMetric(metrics, formatNumber(context.model.counts.chronology_records), 'dated chronology records', 'From pre-war context through the current cutoff.'); addMetric(metrics, formatNumber(context.model.counts.canonical_source_records), 'source records', 'Conflicting source versions are preserved separately.'); addMetric(metrics, readableDate(firstWar && firstWar.timeline && firstWar.timeline.date), 'war began', 'The opening event remains linked to its source record.'); addMetric(metrics, context.model.release.current_osint_cutoff_display, 'evidence reviewed through', 'Later information is not backdated into earlier knowledge states.');
-    const developments = addSection(frame.article, 'Latest in the record'); append(developments, 'p', 'section-note', 'These are the latest dated developments, not a claim that every one changed the conflict by the same amount.'); const developmentList = append(developments, 'div', 'record-list compact-record-list'); context.model.chronology.slice(-3).reverse().forEach(item => renderEventCard(developmentList, item, context, { topic: eventTopic(item) }));
-    const gate3Gaps = recordArray(modelData(context.model, 'gate3.gaps')); const migrationBoundaryGaps = recordArray(modelData(context.model, 'ledger.unresolved')); const unresolved = addSection(frame.article, 'What remains unresolved'); const unresolvedList = append(unresolved, 'div', 'question-list'); const unresolvedRecords = gate3Gaps.length ? gate3Gaps : migrationBoundaryGaps; unresolvedRecords.filter(item => item.priority === 'HIGH').slice(0, 4).forEach(item => { const card = append(unresolvedList, 'article', 'question-card'); append(card, 'h3', '', publicNarrative(item.topic, 'Open question')); append(card, 'p', '', publicNarrative(item.question)); if (item.why_it_matters) append(card, 'small', '', publicNarrative(item.why_it_matters)); });
+    const theaterMap = MapView.create(context, { title: 'Where the conflict extends', records: theaterRecords, fallbackViewport: [[11, 32], [40.5, 67.5]], maxZoom: 5, description: `This map shows ${theaterRecords.length.toLocaleString()} recorded events whose locations can be placed with reasonable confidence across the Iran–Gulf–Levant–Red Sea theater. Multiple events at the same location may be grouped; records without reliable coordinates remain in the chronology.` });
+    theaterMap.classList.add('overview-theater-map'); theaterMap.dataset.selectionRule = 'accepted-chronology-with-supported-coordinate-in-broad-theater'; frame.article.append(theaterMap);
+
+    const developments = addSection(frame.article, 'Latest in the record');
+    append(developments, 'p', 'section-note', 'These are the latest dated developments, not a claim that every one changed the conflict by the same amount.');
+    const developmentList = append(developments, 'div', 'record-list compact-record-list'); context.model.chronology.slice(-3).reverse().forEach(item => renderEventCard(developmentList, item, context, { topic: eventTopic(item) }));
+
+    const record = addSection(frame.article, 'About the record');
+    append(record, 'p', '', 'Counts describe the evidence collection; they are not a score of who is winning.');
+    const metrics = append(record, 'div', 'metric-grid');
+    addMetric(metrics, formatNumber(context.model.counts.chronology_records), 'dated chronology records', 'From pre-war context through the current cutoff.');
+    addMetric(metrics, formatNumber(context.model.counts.canonical_source_records), 'source records', 'Conflicting source versions are preserved separately.');
+    addMetric(metrics, readableDate(firstWar && firstWar.timeline && firstWar.timeline.date), 'war began', 'The opening event remains linked to its source record.');
+    addMetric(metrics, context.model.release.current_osint_cutoff_display, 'evidence reviewed through', 'Later information is not backdated into earlier knowledge states.');
+
+    const gate3Gaps = recordArray(modelData(context.model, 'gate3.gaps')); const migrationBoundaryGaps = recordArray(modelData(context.model, 'ledger.unresolved'));
+    const unresolved = addSection(frame.article, 'What remains unresolved'); const unresolvedList = append(unresolved, 'div', 'question-list'); const unresolvedRecords = gate3Gaps.length ? gate3Gaps : migrationBoundaryGaps;
+    unresolvedRecords.filter(item => item.priority === 'HIGH').slice(0, 4).forEach(item => { const card = append(unresolvedList, 'article', 'question-card'); append(card, 'h3', '', publicNarrative(item.topic, 'Open question')); append(card, 'p', '', publicNarrative(item.question)); if (item.why_it_matters) append(card, 'small', '', publicNarrative(item.why_it_matters)); });
     if (unresolvedRecords.length > 4) { const more = append(unresolved, 'details', 'secondary-context'); append(more, 'summary', '', `Review all ${unresolvedRecords.length.toLocaleString()} open evidence questions`); const moreList = append(more, 'div', 'question-list'); unresolvedRecords.slice(4).forEach(item => { const card = addProvenanceCard(moreList, context, { kicker: `${plainLabel(item.priority, 'Priority not assigned')} priority · ${plainLabel(item.status, 'Open')}`, title: publicNarrative(item.topic, 'Open question'), text: publicNarrative(item.question), meta: publicNarrative(item.why_it_matters), item: { related_records: item.related_records } }); card.dataset.gapId = item.gap_id || ''; }); }
-    const explore = addSection(frame.article, 'Where to go next'); const links = append(explore, 'div', 'explore-grid'); [['timeline.war', 'What happened', 'Follow the conflict timeline and the developments that changed the military, maritime and diplomatic record.'], ['military.campaigns', 'Military record', 'Strikes, facilities, weapons, casualties and damage imagery, with action and effect kept separate.'], ['hormuz.overview', 'Hormuz and the economy', 'What Iran could disrupt, what it could not control, and how trade adapted.'], ['talks.mou', 'Talks and agreements', 'What each side received, what was implemented, and why the interim bargain stopped controlling events.'], ['objectives.positions', 'Objectives and positions', 'Earlier positions, intervening events and later positions, using accepted findings only.'], ['evidence.claims', 'Claims and evidence', 'Claims, adjudications, source context and unresolved questions.']].forEach(([key, title, text]) => { const link = append(links, 'a', 'pathway-card'); append(link, 'strong', '', title); append(link, 'span', '', text); link.href = routeHref(key); }); return frame.article;
+
+    const explore = addSection(frame.article, 'Where to go next'); const links = append(explore, 'div', 'explore-grid');
+    [['timeline.war', 'What happened', 'Follow the conflict timeline and the developments that changed the military, maritime and diplomatic record.'], ['military.campaigns', 'Military record', 'Strikes, facilities, weapons, casualties and damage imagery, with action and effect kept separate.'], ['hormuz.overview', 'Hormuz and the economy', 'What Iran could disrupt, what it could not control, and how trade adapted.'], ['talks.mou', 'Talks and agreements', 'What each side received, what was implemented, and why the interim bargain stopped controlling events.'], ['objectives.positions', 'Objectives and positions', 'Earlier positions, intervening events and later positions, using accepted findings only.'], ['evidence.claims', 'Claims and evidence', 'Claims, adjudications, source context and unresolved questions.']].forEach(([key, title, text]) => { const link = append(links, 'a', 'pathway-card'); append(link, 'strong', '', title); append(link, 'span', '', text); link.href = routeHref(key); });
+    return frame.article;
   }
 
   const ACTOR_DIRECTORY_PINNED = Object.freeze(['Iran', 'United States', 'Israel', 'IRGC', 'Iranian parliament', 'Mohammad Baqer Qalibaf', 'Hezbollah', 'Houthis / Ansar Allah', 'Oman', 'Qatar']);
@@ -1775,7 +1961,35 @@
   }
 
   function DiplomacyPage(context) {
-    const frame = pageFrame(context, 'The record moves from proposals to ceasefires, interim agreements, implementation, breakdown and renewed mediation. Those states are not interchangeable.'); const agreements = mergeCurrentRecords(modelData(context.model, 'ledger.agreements'), modelData(context.model, 'gate3.agreements'), ['agreement_id', 'id']); const agreementSection = addSection(frame.article, 'Agreements, frameworks and proposals'); append(agreementSection, 'p', 'section-note', `The record includes ${agreements.length.toLocaleString()} agreements, frameworks and proposals. Their status matters: a proposal is not the same as a signed agreement.`); const agreementList = append(agreementSection, 'div', 'record-list agreement-directory'); agreements.forEach(agreement => { const formalized = agreement.signed_or_formalized_date; const card = addProvenanceCard(agreementList, context, { kicker: `${formalized ? `Signed / formalized ${readableDate(formalized)}` : `Origin ${readableDate(agreement.origin_date)}`} · ${plainLabel(agreement.status)}`, title: publicNarrative(agreement.name, agreement.agreement_id), text: publicNarrative(agreement.current_assessment || agreement.what_it_proves), technicalId: agreement.agreement_id, technicalIdLabel: 'Stable agreement ID', item: agreement, relatedRecords: agreement.relevant_drawdown_or_event_refs }); card.dataset.agreementId = agreement.agreement_id; card.dataset.agreementFormalized = formalized ? 'true' : 'false'; if (asArray(agreement.parties).length) appendActorIdentities(card, context, agreement.parties); addFactList(card, [['Type', plainLabel(agreement.agreement_type)], ['Status', plainLabel(agreement.status)], ['Host or mediator', publicNarrative(agreement.host_or_mediator, '')], ['What happened', publicNarrative(agreement.what_it_proves, '')], ['What remains uncertain', publicNarrative(agreement.what_it_does_not_prove, '')]]); if (agreement.agreement_id === 'AGR-US-IRN-14POINT-MOU-2026') { const links = append(card, 'div', 'agreement-route-links'); const mou = append(links, 'a', 'inline-route-link', 'Open the June MOU record'); mou.href = routeHref('talks.mou'); const nuclear = append(links, 'a', 'inline-route-link', 'Open the nuclear-talks record'); nuclear.href = routeHref('talks.nuclear'); } }); const diplomacy = modelData(context.model, 'ledger.diplomacy'); const diplomacyRecords = mergeCurrentRecords(diplomacy, modelData(context.model, 'gate3.diplomacy'), ['diplomacy_id', 'id']); const sequence = addSection(frame.article, 'Negotiation sequence'); append(sequence, 'p', 'section-note', publicNarrative(diplomacy.rule)); addSequence(sequence, context, diplomacyRecords.map(record => ({ date: record.date, title: publicNarrative(record.position_change, 'Diplomatic development'), text: asArray(record.actors).map(actor => context.services.actorIdentity.resolve(actor).label).join(' · '), item: record, relatedRecords: record.event_refs }))); renderRelatedLinks(frame.article, context); return frame.article;
+    const frame = pageFrame(context, 'The record moves from proposals to ceasefires, interim agreements, implementation, breakdown and renewed mediation. Those states are not interchangeable.');
+    const agreements = mergeCurrentRecords(modelData(context.model, 'ledger.agreements'), modelData(context.model, 'gate3.agreements'), ['agreement_id', 'id']);
+    const current = addSection(frame.article, 'Current diplomatic state', 'content-section lead-story'); current.dataset.diplomaticState = 'current';
+    append(current, 'p', 'lead-copy', 'The June MOU no longer controls either side, but negotiations continue. Current talks involve Hormuz passage and administration, nuclear questions and regional de-escalation. Diplomatic contact does not itself establish agreement or concession.');
+    const currentLinks = append(current, 'div', 'record-actions diplomatic-current-links');
+    [['talks.mou', 'June MOU'], ['hormuz.talks', 'Current Hormuz Talks'], ['talks.nuclear', 'Nuclear Talks']].forEach(([key, label]) => { const link = append(currentLinks, 'a', 'inline-route-link', label); link.href = routeHref(key); });
+
+    const renderAgreement = (host, agreement) => {
+      const formalized = agreement.signed_or_formalized_date;
+      const card = addProvenanceCard(host, context, { kicker: `${formalized ? `Signed / formalized ${readableDate(formalized)}` : `Origin ${readableDate(agreement.origin_date)}`} · ${plainLabel(agreement.status)}`, title: publicNarrative(agreement.name, agreement.agreement_id), text: publicNarrative(agreement.current_assessment || agreement.what_it_proves), technicalId: agreement.agreement_id, technicalIdLabel: 'Stable agreement ID', item: agreement, relatedRecords: agreement.relevant_drawdown_or_event_refs });
+      card.dataset.agreementId = agreement.agreement_id; card.dataset.agreementFormalized = formalized ? 'true' : 'false';
+      if (asArray(agreement.parties).length) appendActorIdentities(card, context, agreement.parties);
+      addFactList(card, [['Type', plainLabel(agreement.agreement_type)], ['Status', plainLabel(agreement.status)], ['Host or mediator', publicNarrative(agreement.host_or_mediator, '')], ['What happened', publicNarrative(agreement.what_it_proves, '')], ['What remains uncertain', publicNarrative(agreement.what_it_does_not_prove, '')]]);
+      if (agreement.agreement_id === 'AGR-US-IRN-14POINT-MOU-2026') { const links = append(card, 'div', 'agreement-route-links'); const mou = append(links, 'a', 'inline-route-link', 'Open the June MOU record'); mou.href = routeHref('talks.mou'); const nuclear = append(links, 'a', 'inline-route-link', 'Open the nuclear-talks record'); nuclear.href = routeHref('talks.nuclear'); }
+    };
+    const isWartime = agreement => String(agreement.signed_or_formalized_date || agreement.origin_date || '') >= '2026-02-28';
+    const wartimeAgreements = agreements.filter(isWartime); const earlierAgreements = agreements.filter(agreement => !isWartime(agreement));
+    const wartime = addSection(frame.article, 'Wartime agreements and negotiations'); wartime.dataset.agreementGroup = 'wartime';
+    append(wartime, 'p', 'section-note', `${wartimeAgreements.length.toLocaleString()} wartime agreement, framework or proposal record${wartimeAgreements.length === 1 ? '' : 's'} are grouped here by relevance to the conflict, not treated as interchangeable legal states.`);
+    const wartimeList = append(wartime, 'div', 'record-list agreement-directory'); wartimeAgreements.forEach(agreement => renderAgreement(wartimeList, agreement));
+    const earlier = addSection(frame.article, 'Earlier agreements relevant to the war'); earlier.dataset.agreementGroup = 'historical';
+    append(earlier, 'p', 'section-note', `${earlierAgreements.length.toLocaleString()} earlier agreement or framework record${earlierAgreements.length === 1 ? '' : 's'} remain available as context and retain their original dates.`);
+    const earlierList = append(earlier, 'div', 'record-list agreement-directory'); earlierAgreements.forEach(agreement => renderAgreement(earlierList, agreement));
+
+    const diplomacy = modelData(context.model, 'ledger.diplomacy'); const diplomacyRecords = mergeCurrentRecords(diplomacy, modelData(context.model, 'gate3.diplomacy'), ['diplomacy_id', 'id']);
+    const sequence = addSection(frame.article, 'Detailed negotiation sequence'); sequence.dataset.diplomaticState = 'sequence';
+    append(sequence, 'p', 'section-note', publicNarrative(diplomacy.rule));
+    addSequence(sequence, context, diplomacyRecords.map(record => ({ date: record.date, title: publicNarrative(record.position_change, 'Diplomatic development'), text: asArray(record.actors).map(actor => context.services.actorIdentity.resolve(actor).label).join(' · '), item: record, relatedRecords: record.event_refs })));
+    renderRelatedLinks(frame.article, context); return frame.article;
   }
 
   function MouPage(context) {
@@ -2020,12 +2234,21 @@ function enhanceCampaignVisual(article, context) {
 
 function enhanceShippingVisual(article, context) {
   if (article.querySelector('[data-shipping-map-system]')) return;
-  const oil = modelData(context.model, 'analysis.oil_routes') || {}; const routes = asArray(oil.routes); if (!routes.length) { const warning = element(context.documentObject, 'aside', 'scope-note'); warning.dataset.shippingRouteDependency = 'missing'; append(warning, 'strong', '', 'Route data unavailable'); append(warning, 'p', '', 'Atlas cannot render the broader shipping network because no supported route geometry is present in the current public model.'); visualSweepInsertAfterStatus(article, warning); return; }
+  const oil = modelData(context.model, 'analysis.oil_routes') || {}; const routes = asArray(oil.routes);
+  if (!routes.length) {
+    const warning = createStateNotice(context, { variant: 'dependency-unavailable', title: 'Route data unavailable', message: 'Atlas cannot render the broader shipping network because no supported route geometry is present in the current public model.', accounting: 'No route geometry is inferred to fill this gap.' });
+    warning.dataset.shippingRouteDependency = 'missing'; visualSweepInsertAfterStatus(article, warning); return;
+  }
   const shippingRecords = [...recordArray(modelData(context.model, 'ledger.shipping')), ...recordArray(modelData(context.model, 'gate3.shipping')), ...recordArray(modelData(context.model, 'current.material_losses')).filter(record => record.military_platform === false || String(record.side || '').includes('COMMERCIAL'))];
   const inHormuz = shippingRecords.filter(record => { const point = pointFromRecord(record, context.services.locationResolver); return point && point.lat >= 22.4 && point.lat <= 28.9 && point.lon >= 50.8 && point.lon <= 60.8; });
-  const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero'); system.dataset.shippingMapSystem = 'chokepoint-network'; append(system, 'h2', '', 'From chokepoint to network consequences'); append(system, 'p', 'section-note', `${routes.length.toLocaleString()} source-supported schematic corridor${routes.length === 1 ? '' : 's'} are available. Route lines show strategic connectivity—not live vessel positions, surveyed alignment, or targeting-quality geometry.`);
+  const system = element(context.documentObject, 'section', 'shipping-map-system analytical-hero'); system.dataset.shippingMapSystem = 'chokepoint-network';
+  append(system, 'h2', '', 'From chokepoint to network consequences');
+  append(system, 'p', 'section-note meaning-first-summary', `${routes.length.toLocaleString()} strategic transport corridor${routes.length === 1 ? ' is' : 's are'} shown.`);
+  append(system, 'p', 'method-note', 'These are source-supported schematic routes, not precise vessel tracks, surveyed alignment, or targeting-quality geometry.');
   const grid = append(system, 'div', 'shipping-map-grid');
-  const choke = MapView.create(context, { title: 'Hormuz chokepoint', records: inHormuz, viewportOverride: [[22.4, 50.8], [28.9, 60.8]], scope: 'hormuz-chokepoint', maxZoom: 7, contextNote: 'Country, coastline and named evidence locations provide orientation. Geographic precision remains bounded by the underlying record.', description: `${inHormuz.length.toLocaleString()} supported shipping or commercial-loss records fall within the public Hormuz context window.` }); choke.dataset.shippingMapView = 'chokepoint';
+  const choke = MapView.create(context, { title: 'Hormuz chokepoint', records: inHormuz, viewportOverride: [[22.4, 50.8], [28.9, 60.8]], scope: 'hormuz-chokepoint', maxZoom: 7, contextNote: 'Country, coastline and named evidence locations provide orientation. Geographic precision remains bounded by the underlying record.', description: inHormuz.length ? `${inHormuz.length.toLocaleString()} geolocated shipping or commercial-loss record${inHormuz.length === 1 ? '' : 's'} are shown within the public Hormuz context window.` : 'This map provides geographic context for the Strait; current public shipping evidence in this view is primarily corridor- and reporting-based rather than point-mapped loss evidence.' });
+  choke.dataset.shippingMapView = 'chokepoint';
+  if (!inHormuz.length) choke.append(createStateNotice(context, { variant: 'no-geolocated-records', message: 'This map provides geographic context. Current public shipping evidence in this view is primarily corridor- and reporting-based rather than represented by geolocated material-loss records.', accounting: 'Geolocated shipping or commercial-loss records in this view: 0' }));
   const network = MapView.create(context, { title: 'Network consequences', records: shippingRecords, routes, scope: 'route-network', maxZoom: 5, contextLabels: routeContextLabels(routes), contextNote: 'Named route nodes provide city, port and corridor context. Roads are not inferred where no deterministic road reference layer is packaged.', description: 'Broader maritime, pipeline and rail corridors show how pressure at Hormuz connects to Red Sea, Arabian Peninsula and Eurasian alternatives.' }); network.dataset.shippingMapView = 'network';
   grid.append(choke, network); const oldMap = article.querySelector('.context-map'); if (oldMap && oldMap !== choke && oldMap !== network) { if (oldMap._atlasMap && oldMap._atlasMap.remove) oldMap._atlasMap.remove(); oldMap.remove(); }
   visualSweepInsertAfterStatus(article, system);
@@ -2046,7 +2269,7 @@ function enhanceLossLedgerVisual(article, context) {
 
 function enhanceEconomyVisual(article, context) {
   if (article.querySelector('[data-economic-viz]')) return;
-  const payload = modelData(context.model, 'ledger.economics') || {}; const outlook = payload.forecast_context || payload.economicOutlook || payload.economic_outlook || {}; const rows = asArray(outlook.rows); if (!rows.length) return;
+  const payload = modelData(context.model, 'ledger.economics') || {}; const outlook = payload.forecast_context || payload.economicOutlook || payload.economic_outlook || {}; const rows = asArray(outlook.rows); if (!rows.length) { const notice = createStateNotice(context, { variant: 'dependency-unavailable', title: 'Comparable economic snapshots unavailable', message: 'Atlas cannot render the economic comparison because the current public model does not contain comparable recorded snapshots.', accounting: 'No values are interpolated or invented to fill the missing series.' }); visualSweepInsertAfterStatus(article, notice); return; }
   const section = element(context.documentObject, 'section', 'economic-snapshot-dashboard analytical-hero'); section.dataset.economicViz = 'paired-snapshot-small-multiples'; section.dataset.interpolation = 'none'; append(section, 'h2', '', 'Economic pressure: comparable snapshots'); append(section, 'p', 'section-note', `${publicNarrative(outlook.metric, 'Comparable economic metric')}. Each country shows the recorded prewar and current forecast snapshots. Atlas does not interpolate values between observations.`);
   const maxDelta = Math.max(1, ...rows.map(row => Math.abs(Number(row.delta))).filter(Number.isFinite)); const grid = append(section, 'div', 'economic-small-multiples');
   rows.forEach(row => { const card = append(grid, 'article', 'economic-snapshot-card'); card.dataset.economicCountry = row.country || ''; append(card, 'h3', '', publicNarrative(row.country, 'Economy')); const values = append(card, 'div', 'economic-paired-values'); const before = append(values, 'div'); append(before, 'span', '', 'Prewar'); append(before, 'strong', '', `${Number(row.prewar).toFixed(1)}%`); const current = append(values, 'div'); append(current, 'span', '', 'Current'); append(current, 'strong', '', `${Number(row.current).toFixed(1)}%`); const delta = append(card, 'div', `economic-delta ${Number(row.delta) < 0 ? 'negative' : 'positive'}`); delta.style.setProperty('--delta-size', String(Math.min(1, Math.abs(Number(row.delta)) / maxDelta))); append(delta, 'span', 'economic-delta-bar', ''); append(delta, 'strong', '', `${Number(row.delta) > 0 ? '+' : ''}${Number(row.delta).toFixed(1)} pp`); });

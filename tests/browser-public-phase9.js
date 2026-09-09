@@ -272,10 +272,24 @@ async function route(cdp, hash, key) {
       if (falseRow) falseRow.open = true;
       const zeroRow = [...document.querySelectorAll('[data-claim-id]')].find(node => node.dataset.deceptionScore === '0');
       if (zeroRow) zeroRow.open = true;
+      const desktopClockHost = main.querySelector('[data-component="EvidenceClocks"] .evidence-clock-desktop');
+      const mobileClockHost = main.querySelector('[data-component="EvidenceClocks"] .evidence-clock-mobile');
+      if (mobileClockHost) {
+        mobileClockHost.open = true;
+        mobileClockHost.querySelectorAll('.evidence-clock-help').forEach(help => { help.open = true; });
+      }
+      const clockView = host => ({
+        labels: [...(host?.querySelectorAll('.evidence-clock-summary > strong') || [])].map(node => node.textContent.trim()),
+        dateTimes: [...(host?.querySelectorAll('time') || [])].map(node => node.dateTime),
+        displayTimes: [...(host?.querySelectorAll('time') || [])].map(node => node.textContent.trim())
+      });
       return {
         title: main?.querySelector('h1')?.textContent.trim() || '',
-        clocks: [...main.querySelectorAll('[data-component="EvidenceClocks"] .evidence-clock-summary > strong')].map(node => node.textContent.trim()),
-        clockTimes: [...main.querySelectorAll('[data-component="EvidenceClocks"] time')].map(node => node.textContent.trim()),
+        desktopClocks: clockView(desktopClockHost),
+        mobileClocks: clockView(mobileClockHost),
+        mobileDisclosureSummary: mobileClockHost?.querySelector(':scope > summary')?.innerText.trim() || '',
+        mobileHelpLabels: [...(mobileClockHost?.querySelectorAll('.evidence-clock-help > summary') || [])].map(node => node.textContent.trim()),
+        mobileDefinitionText: mobileClockHost?.querySelector('.evidence-clock-mobile-body')?.innerText || '',
         explainer: main?.innerText || '',
         falseLine: falseRow?.querySelector('.claim-public-sentence')?.textContent.trim() || '',
         zeroText: zeroRow?.innerText || '',
@@ -283,8 +297,17 @@ async function route(cdp, hash, key) {
       };
     })()`);
     assert.equal(phase10Ledger.title, 'Lie Ledger');
-    assert.deepEqual(phase10Ledger.clocks, ['Frozen review cutoff', 'Current evidence cutoff']);
-    assert.deepEqual(phase10Ledger.clockTimes, ['Sep. 5, 2026 · 12:37 AM ET', 'Sep. 6, 2026 · 2:10 PM ET']);
+    assert.deepEqual(phase10Ledger.desktopClocks.labels, ['Frozen review cutoff', 'Current evidence cutoff']);
+    assert.deepEqual(phase10Ledger.mobileClocks.labels, ['Current evidence cutoff', 'Frozen review cutoff']);
+    assert.deepEqual(phase10Ledger.desktopClocks.dateTimes, [model.release.gate2_evidence_cutoff, model.release.current_osint_cutoff]);
+    assert.deepEqual(phase10Ledger.mobileClocks.dateTimes, [model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff]);
+    assert.deepEqual(phase10Ledger.mobileClocks.displayTimes, [...phase10Ledger.desktopClocks.displayTimes].reverse(), 'desktop and mobile clocks do not expose the same two formatted cutoffs');
+    assert.match(phase10Ledger.mobileDisclosureSummary, /Evidence through .*Historical review/i);
+    assert.deepEqual(phase10Ledger.mobileHelpLabels, ['How current works', 'Why frozen?']);
+    assert.match(phase10Ledger.mobileDefinitionText, /Current Atlas evidence includes material incorporated through this time\./);
+    assert.match(phase10Ledger.mobileDefinitionText, /This cutoff advances when new evidence is incorporated\./);
+    assert.match(phase10Ledger.mobileDefinitionText, /Historical evaluation uses only evidence available by this time\./);
+    assert.match(phase10Ledger.mobileDefinitionText, /fixed evidence boundary used for the historical Gate 2 review/i);
     assert.match(phase10Ledger.explainer, /Claim accuracy & deception evidence/i);
     assert.match(phase10Ledger.explainer, /A false statement is not automatically a deliberate lie/i);
     assert.match(phase10Ledger.zeroText, /No evidence of knowing deception/);
@@ -327,7 +350,11 @@ async function route(cdp, hash, key) {
     assert(shippingVisual.routeLines >= 4, 'supported oil/shipping route geometry is not visibly rendered');
     assert(shippingVisual.contextLabels.length > 0, 'broader route map lacks named city/port/corridor context');
     assert(shippingVisual.chokepointLabels.some(label => /Iran|Oman|Hormuz|Persian Gulf|Gulf of Oman/i.test(label)), 'chokepoint map lacks basic geographic orientation');
-    assert.match(shippingVisual.text, /not live vessel positions, surveyed alignment, or targeting-quality geometry/i);
+    assert.match(shippingVisual.text, /\bschematic\b/i, 'Shipping presentation does not identify route geometry as schematic');
+    assert.match(shippingVisual.text, /not[^.\n]{0,160}precise vessel tracks/i, 'Shipping presentation does not disclaim precise vessel tracks');
+    assert.match(shippingVisual.text, /not[^.\n]{0,160}surveyed alignment/i, 'Shipping presentation does not disclaim surveyed alignment');
+    assert.match(shippingVisual.text, /not[^.\n]{0,160}targeting(?:-quality geometry| data)?/i, 'Shipping presentation does not disclaim targeting-quality use');
+    assert.match(shippingVisual.text, /not[^.\n]{0,160}live tracking[^.\n]{0,160}navigation data/i, 'Shipping presentation does not disclaim live-tracking/navigation use');
 
     await route(cdp, '#/hormuz/economy', 'hormuz.economy');
     const economyVisual = await cdp.eval(`(() => ({
