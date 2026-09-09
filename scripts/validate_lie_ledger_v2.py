@@ -17,6 +17,7 @@ CANONICAL = "data/canonical-current-state-v2.json"
 PUBLIC = "data/public-current-state-v2.json"
 SCHEMA = "schemas/lie-ledger-v2.json"
 DOCTRINE = "ROOK-20260909-1"
+COMPLETION = "ROOK-EVIDENCE-COMPLETION-20260909-v1"
 STRONG = {"LIKELY_KNEW_FALSE", "VERY_LIKELY_KNEW_FALSE", "KNOWING_FALSEHOOD_ESTABLISHED"}
 FALSY = {"FALSE", "MISLEADING"}
 
@@ -69,15 +70,25 @@ def evidence_refs(record: dict[str, Any]) -> set[str]:
     }
 
 
+def claim_instance_key(record: dict[str, Any]) -> str:
+    """Count one originating statement once even when decomposed into propositions."""
+    return str(
+        record.get("original_claim_id")
+        or record.get("claim_id")
+        or record.get("claim_instance_id")
+    )
+
+
 def recompute_metrics(records: list[dict[str, Any]], chain_count: int) -> dict[str, Any]:
     factual = Counter()
     knowledge = Counter()
     unique_ids: set[str] = set()
-    originations = amplifications = corrections = retractions = substitutions = media = claims = 0
+    claim_instance_keys: set[str] = set()
+    originations = amplifications = corrections = retractions = substitutions = media = 0
     for record in records:
         if record.get("authority_status") != "ROOK_ADJUDICATED":
             continue
-        claims += 1
+        claim_instance_keys.add(claim_instance_key(record))
         factual[record["truth_adjudication"]] += 1
         knowledge[record["knowledge_judgment"]] += 1
         relation = record.get("relation_type")
@@ -112,7 +123,7 @@ def recompute_metrics(records: list[dict[str, Any]], chain_count: int) -> dict[s
     pct = round(100.0 * len(falsy_unique) / len(resolved_unique), 2) if resolved_unique else None
     return {
         "unique_propositions": len(unique_ids),
-        "claim_instances": claims,
+        "claim_instances": len(claim_instance_keys),
         "originations": originations,
         "amplifications": amplifications,
         "corrections": corrections,
@@ -224,6 +235,38 @@ def validate(root: Path = ROOT) -> None:
     require(headline[0]["actor"] == "Press TV", "publisher headline silently attributed to source speaker")
     require(headline[0]["proposition_axis"] == "PUBLISHER_FRAMING", "publisher framing not structurally separated")
 
+    # Sep. 9 ROOK evidence-completion hard stops.
+    authority = canonical.get("lie_ledger_v2_authority") or {}
+    require(authority.get("evidence_completion_version") == COMPLETION, "ROOK evidence-completion overlay is not active")
+    resolved = set(authority.get("resolved_publication_blockers") or [])
+    required_resolved = {"BLOCK-LINCOLN-MAR13", "BLOCK-CSAR-REMAINS", "BLOCK-QATAR-INVITATION", "BLOCK-TANF-CLAIM-SOURCE"}
+    require(required_resolved <= resolved, "ROOK evidence-completion blocker set is incomplete")
+    global_blocker_ids = {str(item.get("blocker_id") or "") for item in canonical.get("lie_ledger_v2_publication_blockers") or []}
+    require(not (required_resolved & global_blocker_ids), "resolved ROOK blocker remained open")
+
+    remains = [record for record in records if record.get("proposition_id") == "PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION"]
+    require(len(remains) == 1, "American-remains evidence proposition missing or duplicated")
+    require(remains[0]["proposition_fidelity"] == "SOURCE_HEDGE_PRESERVED", "American-remains hedge fidelity flag missing")
+    require("believed" in remains[0]["proposition"].casefold(), "American-remains hedge was strengthened into a categorical claim")
+    require(remains[0]["publication_status"] == "PUBLIC_READY", "American-remains completed ruling remains blocked")
+
+    lincoln = [record for record in records if record.get("proposition_id") == "PROP-LINCOLN-20260313-NONOPERATIONAL"]
+    require(len(lincoln) == 1, "March 13 Lincoln effect proposition missing or duplicated")
+    require(lincoln[0]["combined_assessment"] == "VERY LIKELY LIE — FALSE NON-OPERATIONAL / FORCED-RETREAT CLAIM", "March 13 Lincoln ROOK ruling changed")
+    require(lincoln[0]["publication_status"] == "PUBLIC_READY", "March 13 Lincoln completed ruling remains blocked")
+
+    qatar = [record for record in records if record.get("original_claim_id") == "IR-CLM-0702" and "waiting for months" in record.get("proposition", "")]
+    require(len(qatar) == 1, "Qatar access-obstruction completed proposition missing or duplicated")
+    require(qatar[0]["combined_assessment"] == "LIKELY LIE — ACCESS-OBSTRUCTION CLAIM", "Qatar ROOK ruling changed")
+    require(qatar[0]["publication_status"] == "PUBLIC_READY", "Qatar completed ruling remains blocked")
+
+    tanf = [record for record in records if record.get("chain_id") == "CH-TANF-JUL17"]
+    require(len(tanf) == 3, "al-Tanf must render as exactly three atomic propositions")
+    require(len({claim_instance_key(record) for record in tanf}) == 1, "al-Tanf three propositions do not resolve to one originating claim instance")
+    require(len({record["proposition_id"] for record in tanf}) == 3, "al-Tanf atomic proposition identities are not unique")
+    require(all(record["counts_as_unique_proposition"] for record in tanf), "al-Tanf atomic proposition excluded from unique proposition denominator")
+    require(not any(record.get("claim_id") == "CL-TANF" for record in records), "legacy blended CL-TANF v2 record still double-counts the atomic decomposition")
+
     expected_metrics = recompute_metrics(records, len(chains))
     require(canonical.get("lie_ledger_v2_metrics") == expected_metrics, "canonical Lie Ledger v2 metrics do not independently reconcile")
     require((public.get("gate3") or {}).get("lie_ledger", {}).get("metrics") == expected_metrics, "public Lie Ledger metrics differ from canonical recomputation")
@@ -253,6 +296,7 @@ def validate(root: Path = ROOT) -> None:
         "lie-ledger-v2: PASS "
         f"records={len(records)} chains={len(chains)} "
         f"unique={expected_metrics['unique_propositions']} "
+        f"claims={expected_metrics['claim_instances']} "
         f"blockers={len(canonical.get('lie_ledger_v2_publication_blockers') or [])}"
     )
 
