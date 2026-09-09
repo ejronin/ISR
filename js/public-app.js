@@ -723,15 +723,15 @@
   {
     "schema_version": "1.0",
     "contract_version": "atlas-final-narrative-v1",
-    "evidence_as_of": "2026-09-06",
-    "war90_current_title": "Current phase — Sep. 5–6",
-    "war90_current_text": "Direct U.S.–Iran maritime exchanges resumed even as diplomatic channels remained active and economic pressure on Iran deepened.",
-    "war90_current_changed": "Kinetic escalation and negotiation were occurring at the same time.",
-    "us_record_shows": "Atlas assesses substantial but incomplete degradation of Iran's offensive power projection, partial progress on usable Hormuz navigation and substantial active economic pressure. The nuclear objective remains open.",
-    "us_current_position": "Washington continues military and economic pressure while negotiations remain active. Atlas does not treat the original objective set as fully achieved.",
-    "iran_record_shows": "Most of those maximal terms are not controlling outcomes. Iran retains missiles, maritime leverage and bargaining power, but it entered a new maritime process without first securing the full earlier economic package, and its unilateral Hormuz position has narrowed in practice.",
-    "iran_current_position": "By August Iran publicly shifted toward ending the war while preserving “power and dignity” and accepted a phased joint Oman maritime framework while permanent terms remained unresolved. That later position does not erase the original benchmark.",
-    "hormuz_now": "The Strait is physically traversable but commercially contested. Iran retains leverage, but recognized exclusive control is not established. A reported negotiating formula under which compulsory tolls would be dropped while charges described as legitimate maritime-service fees could remain was still a proposal, not an agreement, at the evidence cutoff."
+    "evidence_as_of": "2026-09-09",
+    "war90_current_title": "Current phase — Sep. 7–9",
+    "war90_current_text": "Direct U.S.–Iran exchanges widened across Gulf shipping and Jordan while U.S. pressure expanded to additional Iranian crude carriers and aviation networks; Houthi attacks also struck Saudi cities and energy facilities.",
+    "war90_current_changed": "Retaliation broadened and imposed more external economic cost, while Iran also absorbed additional maritime losses and sanctions pressure.",
+    "us_record_shows": "Atlas assesses substantial but incomplete degradation of Iran's offensive power projection, additional losses to Iran-linked crude-carrier capacity, and continuing economic pressure. Hormuz remained physically traversable but became more severely disrupted, and the nuclear objective remains open.",
+    "us_current_position": "Washington continues military and economic pressure while negotiations remain unresolved. The United States has widened pressure on Iranian shipping and aviation networks, but Atlas does not treat the original objective set as fully achieved.",
+    "iran_record_shows": "Iran retains missiles, maritime leverage and regional strike capacity and demonstrated a broader retaliation pattern, including an attack on a U.S.-used base in Jordan and renewed maritime attacks. It has not established recognized exclusive Hormuz control or a permanent fee arrangement, while severe export and financial pressure persists.",
+    "iran_current_position": "Iran is signaling a less proportional retaliation posture and renewed coercive Hormuz restrictions while diplomatic channels remain unresolved. Its ability to impose external costs increased, but the original maximal benchmark still does not control outcomes.",
+    "hormuz_now": "The Strait is physically traversable but severely disrupted and commercially contested. Iran retains coercive leverage, but recognized exclusive control is not established. Iran's announced restricted-zone posture and reported service-fee formula remain distinct from an agreed navigation regime; the fee formula was still a proposal, not an agreement, at the evidence cutoff."
   }
   );
   // ROOK_NARRATIVE_CURRENT_END
