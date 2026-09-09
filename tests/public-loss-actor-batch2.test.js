@@ -8,13 +8,14 @@ const app = require('../js/public-app.js');
 const root = path.resolve(__dirname, '..');
 const model = JSON.parse(fs.readFileSync(path.join(root, 'data/public-current-state.json'), 'utf8'));
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'data/public-release.json'), 'utf8'));
+const canonicalManifest = JSON.parse(fs.readFileSync(path.join(root, 'data/canonical-ledger/manifest-v2.json'), 'utf8'));
 const payload = key => model.datasets[key] && model.datasets[key].payload;
 
 assert.equal(model.counts.chronology_records, model.chronology.length);
 assert.equal(model.counts.canonical_source_records, model.sources.records.length);
 assert.equal(model.counts.accepted_update_packets, 0);
 assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
-assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
+assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff);
 assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
 
 const losses = payload('current.material_losses').records;
