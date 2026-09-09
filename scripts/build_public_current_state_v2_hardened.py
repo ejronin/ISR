@@ -87,12 +87,12 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
                 "truth_adjudication": record.get("truth_adjudication"),
                 "knowledge_judgment": record.get("public_knowledge_judgment"),
                 "combined_assessment": record.get("public_combined_assessment"),
-                "publication_status": record.get("publication_status"),
+                "publication_status": record.get("publication_status")
             })
         chains.append(chain)
 
     gate3 = state.setdefault("gate3", {})
-    gate3["lie_ledger"] = {
+    public_ledger = {
         "schema_version": "2.0",
         "doctrine_version": canonical["lie_ledger_v2_authority"]["doctrine_version"],
         "contract_version": canonical["lie_ledger_v2_authority"]["contract_version"],
@@ -107,6 +107,16 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
             "blocked_verdict_policy": "WITHHOLD_NOT_DOWNGRADE"
         }
     }
+    gate3["lie_ledger"] = public_ledger
+    # Replace the Phase 9 dataset payload as well as the convenience gate3 view.
+    # The route contract consumes datasets, so leaving the legacy flat payload
+    # here would preserve obsolete semantics even if the top-level view were v2.
+    state["datasets"]["gate3.lie_ledger"] = public_core.dataset(
+        "gate3.lie_ledger",
+        public_core.CANONICAL_V2,
+        public_ledger,
+        public_core.source_reference_index(canonical)
+    )
     counts = state.setdefault("counts", {})
     counts["gate3_lie_ledger_chains"] = len(chains)
     counts["gate3_lie_ledger_records"] = sum(
