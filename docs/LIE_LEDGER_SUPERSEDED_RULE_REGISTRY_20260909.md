@@ -1,8 +1,8 @@
 # ATLAS Lie Ledger — Superseded Rule Registry
 
-**Status:** ACTIVE SEMANTIC-MIGRATION CONTROL  
-**Contract version:** `2026-09-09`  
-**Doctrine version:** `ROOK-20260909-1`  
+**Status:** ACTIVE SEMANTIC-MIGRATION CONTROL<br>
+**Contract version:** `2026-09-09`<br>
+**Doctrine version:** `ROOK-20260909-1`<br>
 **Authority:** `docs/LIE_LEDGER_ANALYTICAL_AUTHORITY_AND_EVIDENCE_CONTRACT_20260909.md`
 
 This registry records semantic rules deliberately superseded by Lie Ledger v2.
