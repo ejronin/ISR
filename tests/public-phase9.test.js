@@ -5,7 +5,11 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const model = JSON.parse(fs.readFileSync(path.join(root, 'data/public-current-state.json'), 'utf8'));
 const payload = key => model.datasets[key] && model.datasets[key].payload;
-const records = key => Array.isArray(payload(key)) ? payload(key) : [];
+const records = key => {
+  const value = payload(key);
+  if (Array.isArray(value)) return value;
+  return value && (value.records || value.items || value.events || value.entries) || [];
+};
 const sourceIdSet = new Set((model.sources && model.sources.records || []).map(item => item.source_id));
 const referenceIds = value => {
   const result = new Set();
@@ -30,11 +34,12 @@ assert.equal(model.schema_version, '2.0');
 assert.equal(model.artifact_role, 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL');
 assert(model.release && model.release.release_identity);
 assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
-assert.equal(model.daily_coverage.length, 191);
-assert.equal(model.daily_coverage[0].date, '2026-02-28');
-assert.equal(model.daily_coverage.at(-1).date, '2026-09-06');
-assert(model.daily_coverage.every(row => row.coverage_scope === 'CONFLICT_DAY_1_THROUGH_CURRENT_EVIDENCE_CUTOFF'));
-assert.equal(model.counts.gate3_daily_coverage_days, model.daily_coverage.length);
+const coverage = records('gate3.daily_coverage');
+assert.equal(coverage.length, 191);
+assert.equal(coverage[0].date, '2026-02-28');
+assert.equal(coverage.at(-1).date, '2026-09-06');
+assert(coverage.every(row => row.coverage_scope === 'CONFLICT_DAY_1_THROUGH_CURRENT_EVIDENCE_CUTOFF'));
+assert.equal(model.counts.gate3_daily_coverage_days, coverage.length);
 assert.equal(model.integrity.war_daily_coverage_bounded_to_conflict, true);
 assert.equal(model.integrity.war_daily_coverage_starts_day1, true);
 assert.equal(model.integrity.war_daily_coverage_reaches_gate2_cutoff, true);
@@ -116,7 +121,7 @@ assert(!/\b316\b/.test(fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8
 const source = fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8');
 for (const replay of ['current-update-20260824.js', 'current-update-20260825.js', 'current-update-20260826.js', 'current-update-20260827.js']) assert(!source.includes(replay));
 
-console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${model.daily_coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${model.counts.gate3_lie_ledger_unique_propositions} Lie Ledger propositions across ${model.counts.gate3_lie_ledger_claim_instances} claim instances, and resolvable source references verified`);
+console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${model.counts.gate3_lie_ledger_unique_propositions} Lie Ledger propositions across ${model.counts.gate3_lie_ledger_claim_instances} claim instances, and resolvable source references verified`);
 
 require('./public-phase10.test.js');
 require('./public-final-polish.test.js');
