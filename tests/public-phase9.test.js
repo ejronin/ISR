@@ -64,13 +64,61 @@ assert(losses.some(record => record.side === 'IRAN/ALIGNED'));
 assert(losses.some(record => record.side === 'CIVILIAN/COMMERCIAL'));
 assert.equal(records('gate3.casualties').length, 23);
 
-const ledger = records('gate3.lie_ledger');
-assert.equal(ledger.length, model.counts.gate3_lie_ledger_records);
-assert.equal(ledger.length, 82);
-assert(ledger.every(record => record.truth_adjudication && Number.isInteger(record.deception_score)));
-assert(ledger.some(record => record.truth_adjudication === 'DISPROVEN' && record.deception_score === 0), 'falsehood was treated as automatic intent');
-const narrativeFunctions = ledger.filter(record => typeof record.narrative_function === 'string' && record.narrative_function.trim());
-assert.equal(narrativeFunctions.length, 21, 'accepted populated narrative-function count changed');
+// Lie Ledger v2: public primary object is a narrative/proposition chain, never a flat score row.
+const ledger = payload('gate3.lie_ledger');
+assert.equal(ledger.schema_version, '2.0');
+assert.equal(ledger.primary_object, 'NARRATIVE_PROPOSITION_CHAIN');
+assert.equal(ledger.doctrine_version, model.release.lie_ledger_doctrine_version);
+assert.equal(ledger.contract_version, model.release.lie_ledger_contract_version);
+assert.equal(ledger.authority.verdicts, 'ROOK');
+assert.equal(ledger.authority.implementation_and_evidence_qualification, 'PR/CI');
+assert.equal(ledger.authority.blocked_verdict_policy, 'WITHHOLD_NOT_DOWNGRADE');
+assert.equal(ledger.records.length, model.counts.gate3_lie_ledger_chains);
+assert.equal(ledger.metrics.narrative_chains, ledger.records.length);
+
+const propositions = ledger.records.flatMap(chain => chain.proposition_records || []);
+assert.equal(propositions.length, model.counts.gate3_lie_ledger_records);
+assert.equal(propositions.length, model.counts.gate3_lie_ledger_claim_instances);
+assert(propositions.every(record => record.semantic_version === '2.0'));
+assert(propositions.every(record => record.doctrine_version === ledger.doctrine_version));
+assert(propositions.every(record => record.contract_version === ledger.contract_version));
+assert(propositions.every(record => record.truth_adjudication));
+assert(propositions.every(record => record.public_knowledge_judgment));
+assert(propositions.every(record => record.public_combined_assessment));
+assert(propositions.every(record => !Object.hasOwn(record, 'deception_score')), 'active public v2 propositions expose legacy deception_score');
+assert(propositions.every(record => record.proposition_fidelity), 'proposition fidelity is missing');
+assert(propositions.every(record => record.actor_role), 'originator/amplifier role is missing');
+assert(propositions.every(record => record.statement_time && typeof record.statement_time === 'object'), 'claim chronology is missing');
+assert(propositions.every(record => record.evidence_support && typeof record.evidence_support === 'object'), 'component evidence support is missing');
+for (const record of propositions) {
+  for (const group of [
+    'what_was_said', 'factual_baseline', 'contemporaneous_state', 'knowledge_access',
+    'knowledge_indicators', 'contrary_evidence', 'corrections', 'repetitions',
+    'credible_alternative', 'comparative_inference', 'falsifier'
+  ]) assert(Array.isArray(record.evidence_support[group]), `missing evidence component ${group}: ${record.claim_instance_id}`);
+}
+const blocked = propositions.filter(record => record.publication_status === 'BLOCKED_EVIDENCE_COMPLETION');
+assert(blocked.length > 0, 'expected evidence-completion blockers are absent');
+assert(blocked.every(record => record.canonical_rook_assessment_withheld === true));
+assert(blocked.every(record => record.public_combined_assessment === 'EVIDENCE COMPLETION REQUIRED'));
+assert(blocked.every(record => record.public_knowledge_judgment === 'WITHHELD_PENDING_EVIDENCE_QUALIFICATION'));
+assert(blocked.every(record => !Object.hasOwn(record, 'combined_assessment') && !Object.hasOwn(record, 'knowledge_judgment')), 'blocked canonical ROOK verdict leaked into public model');
+
+for (const chain of ledger.records) {
+  assert.equal(chain.primary_object, 'NARRATIVE_PROPOSITION_CHAIN');
+  assert.equal(chain.chronology.length, chain.proposition_records.length, `chain chronology mismatch: ${chain.chain_id}`);
+  assert.deepEqual(chain.chronology.map(item => item.claim_instance_id), chain.proposition_records.map(item => item.claim_instance_id), `chain chronology order mismatch: ${chain.chain_id}`);
+}
+assert.equal(ledger.metrics.unique_propositions, model.counts.gate3_lie_ledger_unique_propositions);
+assert.equal(ledger.metrics.claim_instances, model.counts.gate3_lie_ledger_claim_instances);
+assert.equal(ledger.metrics.claim_instances, propositions.filter(record => record.authority_status === 'ROOK_ADJUDICATED').length);
+const percentage = ledger.metrics.percentages.falsy_share_of_resolved_unique_propositions;
+assert.equal(percentage.numerator_definition, 'Unique ROOK-adjudicated propositions classified FALSE or MISLEADING.');
+assert.match(percentage.denominator_definition, /UNRESOLVED excluded/);
+if (percentage.denominator) assert.equal(percentage.percentage, Math.round((10000 * percentage.numerator) / percentage.denominator) / 100);
+
+const narrativeFunctions = propositions.filter(record => typeof record.narrative_function === 'string' && record.narrative_function.trim());
+assert(narrativeFunctions.length > 0, 'no narrative functions survive the v2 projection');
 assert(narrativeFunctions.every(record => ia.publicNarrative(record.narrative_function) && !/\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\b/.test(ia.publicNarrative(record.narrative_function))), 'narrative function is not reader-facing');
 assert.equal(records('gate3.narrative_families').length, 40);
 assert.equal(records('gate3.information_chains').length, 14);
@@ -95,7 +143,11 @@ assert(source.includes("button.dataset.eventId = item.event_id"));
 assert(source.includes('replaceMap([item])'));
 assert(source.includes("dataset.timelinePrewar = 'distinct'"));
 assert(source.includes("append(list, 'details', 'lie-ledger-record')"));
-assert(source.includes("['Narrative function', firstText(record.narrative_function) ? publicNarrative(record.narrative_function) : null]"));
+assert(source.includes('public_knowledge_judgment'), 'v2 qualitative knowledge rendering is absent');
+assert(source.includes('public_combined_assessment'), 'v2 combined ROOK assessment rendering is absent');
+assert(source.includes('evidence_support'), 'component evidence rendering is absent');
+assert(!source.includes('All deception scores'), 'legacy score filter remains active');
+assert(!source.includes('dataset.deceptionScore'), 'legacy deception-score DOM contract remains active');
 assert(source.includes('if (!section.isConnected || !map._mapPane) return;'), 'detached maps are not guarded before deferred viewport work');
 assert(source.includes('technicalId: strike.id'));
 assert(source.includes('technicalId: record.loss_id'));
@@ -104,7 +156,7 @@ assert(!source.includes('meta: `Stable record:'));
 assert(!/\b316\b/.test(source), 'current chronology count is hard-coded in frontend source');
 for (const replay of ['current-update-20260824.js', 'current-update-20260825.js', 'current-update-20260826.js', 'current-update-20260827.js']) assert(!source.includes(replay));
 
-console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${ledger.length} Lie Ledger propositions, and resolvable source references verified`);
+console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${ledger.records.length} Lie Ledger chains / ${propositions.length} claim instances, and resolvable source references verified`);
 
 require('./public-phase10.test.js');
 require('./public-final-polish.test.js');
