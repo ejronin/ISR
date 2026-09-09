@@ -1,10 +1,10 @@
 # ATLAS LIE LEDGER — ANALYTICAL AUTHORITY, EVIDENCE-DRAWER & SEMANTIC-MIGRATION CONTRACT
 
-**Status:** CONTROLLING PROJECT AUTHORITY  
-**Effective date:** 2026-09-09  
-**Authorized by:** Project Lead  
-**Applies to:** Lie Ledger semantic remediation and all successor Lie Ledger updates  
-**Governing remediation branch:** `fix/lie-ledger-semantic-contract-20260909`  
+**Status:** CONTROLLING PROJECT AUTHORITY<br>
+**Effective date:** 2026-09-09<br>
+**Authorized by:** Project Lead<br>
+**Applies to:** Lie Ledger semantic remediation and all successor Lie Ledger updates<br>
+**Governing remediation branch:** `fix/lie-ledger-semantic-contract-20260909`<br>
 **Successor doctrine target:** `lie-ledger-v2`
 
 This document supersedes any prior instruction, implementation assumption, PR/CI practice, test expectation, or product behavior that gives PR/CI independent authority to decide whether a statement was a lie.
@@ -402,16 +402,16 @@ Do not mix this remediation into:
 
 Preferred topology:
 
-`main`  
-→ `fix/lie-ledger-semantic-contract-20260909`  
-→ remediation PR  
+`main`<br>
+→ `fix/lie-ledger-semantic-contract-20260909`<br>
+→ remediation PR<br>
 → `main`
 
 Then:
 
-new `main`  
-→ replay/rebase `rook/catchup-20260909`  
-→ PR #62  
+new `main`<br>
+→ replay/rebase `rook/catchup-20260909`<br>
+→ PR #62<br>
 → `main`
 
 No branch pyramids without explicit Project Lead authorization.
