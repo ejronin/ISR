@@ -162,8 +162,11 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     input_roles = {
         "data/canonical-current-state-v2.json": "DERIVED_GATE3_CANONICAL_CURRENT_STATE",
         "data/lie-ledger-v2-rook-authority.json": "ROOK_LIE_LEDGER_V2_AUTHORITY",
+        "data/lie-ledger-v2-rook-evidence-completion-20260909.json": "ROOK_LIE_LEDGER_EVIDENCE_COMPLETION_AUTHORITY",
+        "data/lie-ledger-v2-evidence-sources-20260909.json": "ROOK_LIE_LEDGER_EVIDENCE_SOURCE_REGISTRY",
         "schemas/lie-ledger-v2.json": "LIE_LEDGER_V2_SEMANTIC_SCHEMA",
         "scripts/build_lie_ledger_v2.py": "LIE_LEDGER_V2_FORWARD_MIGRATION_GENERATOR",
+        "scripts/apply_lie_ledger_evidence_completion_20260909.py": "LIE_LEDGER_V2_EVIDENCE_COMPLETION_GENERATOR",
         "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
         GENERATOR: "PHASE9_PUBLIC_READ_MODEL_GENERATOR",
         SCHEMA: "PHASE9_PUBLIC_READ_MODEL_SCHEMA"
@@ -187,6 +190,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     state["release"]["release_identity"] = f"public-current-v2-{input_set_sha256[:16]}"
     state["release"]["lie_ledger_doctrine_version"] = canonical["release"]["lie_ledger_doctrine_version"]
     state["release"]["lie_ledger_contract_version"] = canonical["release"]["lie_ledger_contract_version"]
+    state["release"]["lie_ledger_evidence_completion_version"] = canonical["release"].get("lie_ledger_evidence_completion_version")
     generator_raw = public_core.public_v1.canonical_input_bytes((root / GENERATOR).read_bytes())
     schema_raw = public_core.public_v1.canonical_input_bytes((root / SCHEMA).read_bytes())
     state["generator"] = {
@@ -205,7 +209,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_truth_knowledge_axes_separate": True,
         "lie_ledger_primary_public_object_is_chain": True,
         "lie_ledger_blocked_verdicts_withheld_not_downgraded": True,
-        "lie_ledger_component_evidence_refs_public": True
+        "lie_ledger_component_evidence_refs_public": True,
+        "lie_ledger_evidence_completion_inputs_pinned": True
     })
     return state
 
@@ -223,7 +228,7 @@ def main() -> int:
     serialized = canonical_bytes(build_state(root))
     if args.check:
         if not output.is_file() or output.read_bytes() != serialized:
-            raise SystemExit(f"FAIL: generated hardened Gate 3 public state is missing or stale: {output}")
+            raise SystemExit(f"FAIL stale {output}")
         print("gate3 hardened public state: PASS")
         return 0
     output.parent.mkdir(parents=True, exist_ok=True)
