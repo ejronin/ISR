@@ -7,6 +7,7 @@
   "required": ["schema_version","packet_id","known_at","evidence_cutoff","summary","sources","events","entities","narrative_claims"],
   "properties": {
     "schema_version": {"const": "2.0"},
+    "status": {"enum":["DRAFT","REVIEWED","ACCEPTED"]},
     "packet_id": {"type":"string","pattern":"^UPD-[0-9]{8}-[A-Z0-9-]+$"},
     "known_at": {"type":"string","format":"date-time"},
     "evidence_cutoff": {"type":"string","format":"date-time"},

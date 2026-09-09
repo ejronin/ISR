@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.local/schemas/canonical-ledger-manifest-v2.json",
+  "title": "ATLAS Gate 3 v2 append-only canonical update ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_role",
+    "base_manifest",
+    "gate2_evidence_cutoff",
+    "lineage_version",
+    "manifest_authority_sha256",
+    "lineage_genesis_sha256",
+    "accepted_updates",
+    "current_evidence_cutoff"
+  ],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "artifact_role": {"const": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2"},
+    "base_manifest": {"const": "data/canonical-ledger/manifest.json"},
+    "gate2_evidence_cutoff": {"type": "string", "format": "date-time"},
+    "lineage_version": {"const": "1.0"},
+    "manifest_authority_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "lineage_genesis_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "accepted_updates": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sequence",
+          "packet_id",
+          "path",
+          "sha256",
+          "known_at",
+          "evidence_cutoff",
+          "acceptance_basis",
+          "previous_lineage_sha256",
+          "lineage_sha256"
+        ],
+        "properties": {
+          "sequence": {"type": "integer", "minimum": 1},
+          "packet_id": {"type": "string", "pattern": "^UPD-[0-9]{8}-[A-Z0-9-]+$"},
+          "path": {"type": "string", "pattern": "^data/canonical-updates/[^/]+\\.json$"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "known_at": {"type": "string", "format": "date-time"},
+          "evidence_cutoff": {"type": "string", "format": "date-time"},
+          "acceptance_basis": {
+            "enum": [
+              "LEGACY_MANIFEST_ACCEPTED_PRE_REGISTRAR",
+              "PACKET_STATUS_ACCEPTED"
+            ]
+          },
+          "previous_lineage_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "lineage_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "current_evidence_cutoff": {"type": "string", "format": "date-time"}
+  }
+}
