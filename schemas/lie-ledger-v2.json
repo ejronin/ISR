@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.local/schemas/lie-ledger-v2.json",
+  "title": "ATLAS Lie Ledger semantic record v2",
+  "description": "Actor-neutral two-axis proposition and knowledge assessment contract. Truth status never contains a mental-state finding.",
+  "type": "object",
+  "required": [
+    "semantic_version",
+    "claim_id",
+    "proposition_id",
+    "claim",
+    "proposition",
+    "truth_adjudication",
+    "observed_facts",
+    "analytic_inference",
+    "knowledge_basis",
+    "knowledge_judgment",
+    "credible_alternatives",
+    "comparative_assessment",
+    "narrative_function",
+    "confidence",
+    "falsifier",
+    "source_ids",
+    "event_time",
+    "knowledge_time",
+    "relation_type"
+  ],
+  "properties": {
+    "semantic_version": {"const": "2.0"},
+    "claim_id": {"type": "string", "minLength": 3},
+    "claim_instance_id": {"type": "string", "minLength": 3},
+    "proposition_id": {"type": "string", "minLength": 3},
+    "original_claim_id": {"type": ["string", "null"]},
+    "chain_id": {"type": ["string", "null"]},
+    "actor": {"type": "string"},
+    "claimant_type": {"type": ["string", "null"]},
+    "claim": {"type": "string", "minLength": 1},
+    "proposition": {"type": "string", "minLength": 1},
+    "proposition_axis": {"type": ["string", "null"]},
+    "proposition_fidelity": {
+      "enum": [
+        "SOURCE_EQUIVALENT",
+        "ANALYTIC_DECOMPOSITION",
+        "ANALYTIC_REFRAME_STRONGER_THAN_SOURCE",
+        "LEGACY_SOURCE_TEXT_ONLY",
+        "UNRESOLVED"
+      ]
+    },
+    "truth_adjudication": {
+      "enum": ["SUPPORTED", "PARTLY_TRUE", "MISLEADING", "FALSE", "UNRESOLVED", "CORRECTED_RETRACTED"]
+    },
+    "truth_basis": {"type": "string"},
+    "observed_facts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "analytic_inference": {"type": "string", "minLength": 1},
+    "knowledge_basis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["indicator", "direction", "strength", "summary"],
+        "properties": {
+          "indicator": {
+            "enum": [
+              "DIRECT_EVIDENCE",
+              "DIRECT_INSTITUTIONAL_ACCESS",
+              "PHYSICAL_EVIDENCE_ACCESS",
+              "DISTINCTIVE_OBJECT_MISMATCH",
+              "TEMPORAL_KNOWLEDGE",
+              "POST_CORRECTION_REPETITION",
+              "INTERNAL_CONTRADICTION",
+              "BEHAVIORAL_CONTRADICTION",
+              "NARRATIVE_SUBSTITUTION",
+              "FABRICATED_MISLABELED_SUPPORT",
+              "SELECTIVE_OMISSION",
+              "COORDINATED_AMPLIFICATION",
+              "RETROSPECTIVE_REFRAMING"
+            ]
+          },
+          "direction": {"enum": ["SUPPORTS_KNOWLEDGE", "SUPPORTS_INNOCENT_ERROR", "CONTEXT_ONLY"]},
+          "strength": {"enum": ["CONTEXTUAL", "MODERATE", "STRONG", "DIRECT"]},
+          "summary": {"type": "string", "minLength": 1},
+          "source_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "available_at": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "knowledge_judgment": {
+      "enum": [
+        "NOT_ASSESSED",
+        "INSUFFICIENT_EVIDENCE",
+        "POSSIBLE_KNOWLEDGE",
+        "LIKELY_KNEW_FALSE",
+        "VERY_LIKELY_KNEW_FALSE",
+        "DIRECTLY_ESTABLISHED_KNOWLEDGE"
+      ]
+    },
+    "credible_alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["alternative", "comparative_weight", "basis"],
+        "properties": {
+          "alternative": {"type": "string", "minLength": 1},
+          "comparative_weight": {"enum": ["MORE_PLAUSIBLE", "PLAUSIBLE", "LESS_PLAUSIBLE", "REMOTE", "UNRESOLVED"]},
+          "basis": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "comparative_assessment": {"type": "string", "minLength": 1},
+    "narrative_function": {"type": "string", "minLength": 1},
+    "confidence": {"enum": ["LOW", "MODERATE", "HIGH"]},
+    "falsifier": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "combined_assessment": {
+      "enum": [
+        "SUPPORTED",
+        "PARTLY_TRUE",
+        "MISLEADING",
+        "FALSE_KNOWLEDGE_NOT_ESTABLISHED",
+        "FALSE_POSSIBLE_KNOWLEDGE",
+        "LIKELY_LIE",
+        "FALSE_VERY_LIKELY_KNOWING_FALSEHOOD",
+        "LIE_KNOWING_FALSEHOOD_ESTABLISHED",
+        "UNRESOLVED",
+        "CORRECTED_RETRACTED"
+      ]
+    },
+    "event_time": {},
+    "knowledge_time": {},
+    "assessment_time": {},
+    "relation_type": {
+      "enum": ["ORIGINATION", "REPETITION", "AMPLIFICATION", "CORRECTION", "WALKBACK", "NARRATIVE_SUBSTITUTION", "STANDALONE"]
+    },
+    "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+    "legacy_semantics": {
+      "type": "object",
+      "properties": {
+        "truth_adjudication": {},
+        "deception_score": {},
+        "deception_basis": {},
+        "knowledge_access": {}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
