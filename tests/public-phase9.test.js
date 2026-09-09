@@ -111,7 +111,12 @@ for (const chain of ledger.records) {
 }
 assert.equal(ledger.metrics.unique_propositions, model.counts.gate3_lie_ledger_unique_propositions);
 assert.equal(ledger.metrics.claim_instances, model.counts.gate3_lie_ledger_claim_instances);
-assert.equal(ledger.metrics.claim_instances, propositions.filter(record => record.authority_status === 'ROOK_ADJUDICATED').length);
+const adjudicated = propositions.filter(record => record.authority_status === 'ROOK_ADJUDICATED');
+const factualAssessedTotal = Object.values(ledger.metrics.factual_status_totals || {}).reduce((sum, value) => sum + Number(value || 0), 0);
+const knowledgeAssessedTotal = Object.values(ledger.metrics.knowledge_assessment_totals || {}).reduce((sum, value) => sum + Number(value || 0), 0);
+assert.equal(factualAssessedTotal, adjudicated.length, 'factual-status metric denominator does not reconcile to ROOK-adjudicated claim instances');
+assert.equal(knowledgeAssessedTotal, adjudicated.length, 'knowledge-assessment metric denominator does not reconcile to ROOK-adjudicated claim instances');
+assert(adjudicated.length <= ledger.metrics.claim_instances, 'adjudicated subset exceeds all claim instances');
 const percentage = ledger.metrics.percentages.falsy_share_of_resolved_unique_propositions;
 assert.equal(percentage.numerator_definition, 'Unique ROOK-adjudicated propositions classified FALSE or MISLEADING.');
 assert.match(percentage.denominator_definition, /UNRESOLVED excluded/);
