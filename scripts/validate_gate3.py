@@ -149,8 +149,19 @@ def main() -> int:
 
     if state["release"]["gate2_evidence_cutoff"] != "2026-09-05T00:37:00-04:00":
         fail("Gate 2 evidentiary boundary drifted")
-    if state["release"].get("current_osint_cutoff") != "2026-09-06T14:10:43-04:00":
-        fail("current evidence cutoff does not match accepted Sep. 6 sweep")
+    manifest = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
+    manifest_cutoff = manifest.get("current_evidence_cutoff") or manifest.get("gate2_evidence_cutoff")
+    if not manifest_cutoff:
+        fail("canonical v2 manifest lacks a current evidence cutoff")
+    if state["release"].get("current_osint_cutoff") != manifest_cutoff:
+        fail("current evidence cutoff does not match append-only canonical manifest")
+    if datetime.fromisoformat(manifest_cutoff) < datetime.fromisoformat(state["release"]["gate2_evidence_cutoff"]):
+        fail("current evidence cutoff precedes Gate 2 evidentiary boundary")
+    accepted = manifest.get("accepted_updates") or []
+    if state["counts"].get("gate3_update_packets") != len(accepted):
+        fail("accepted-update count does not match append-only canonical manifest")
+    if [item.get("sequence") for item in accepted] != list(range(1, len(accepted) + 1)):
+        fail("append-only canonical manifest contains a sequence gap")
     if state["integrity"].get("frozen_v1_inputs_mutated"):
         fail("frozen v1 inputs mutated")
     for key in (
