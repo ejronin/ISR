@@ -2,14 +2,11 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const ia = require('../js/public-ia.js');
 const root = path.resolve(__dirname, '..');
 const model = JSON.parse(fs.readFileSync(path.join(root, 'data/public-current-state.json'), 'utf8'));
 const payload = key => model.datasets[key] && model.datasets[key].payload;
-const records = key => {
-  const value = payload(key);
-  if (Array.isArray(value)) return value;
-  return value && (value.records || value.items || value.events || value.entries) || [];
-};
+const records = key => ia.recordArray(payload(key));
 const sourceIdSet = new Set((model.sources && model.sources.records || []).map(item => item.source_id));
 const referenceIds = value => {
   const result = new Set();
