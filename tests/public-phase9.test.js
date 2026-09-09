@@ -37,13 +37,11 @@ assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
 const coverage = records('gate3.daily_coverage');
 assert.equal(coverage.length, 191);
 assert.equal(coverage[0].date, '2026-02-28');
-assert.equal(coverage.at(-1).date, '2026-09-06');
+assert.equal(coverage.at(-1).date, model.release.current_osint_cutoff.slice(0, 10));
 assert(coverage.every(row => row.coverage_scope === 'CONFLICT_DAY_1_THROUGH_CURRENT_EVIDENCE_CUTOFF'));
 assert.equal(model.counts.gate3_daily_coverage_days, coverage.length);
-assert.equal(model.integrity.war_daily_coverage_bounded_to_conflict, true);
-assert.equal(model.integrity.war_daily_coverage_starts_day1, true);
-assert.equal(model.integrity.war_daily_coverage_reaches_gate2_cutoff, true);
-assert.equal(model.integrity.war_daily_coverage_reaches_current_cutoff, true);
+assert(coverage.every((day, index) => day.date === new Date(Date.UTC(2026, 1, 28 + index)).toISOString().slice(0, 10)), 'wartime coverage contains a gap');
+assert(model.chronology.some(item => item.timeline.date < coverage[0].date), 'prewar context is absent');
 
 const chronologyIds = model.chronology.map(item => item.event_id);
 assert.equal(new Set(chronologyIds).size, chronologyIds.length);
