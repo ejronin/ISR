@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Adversarial Gate 3 semantic validator, including final hardening acceptance tests."""
+"""Adversarial Gate 3 semantic validator, including final hardening acceptance tests.
+
+This validator protects the legacy-to-current migration boundary. Lie Ledger v2
+truth/knowledge doctrine is enforced separately by validate_lie_ledger_v2.py;
+this file must not manufacture or enforce substantive ROOK knowledge judgments.
+"""
 from __future__ import annotations
 
 import json
@@ -31,6 +36,8 @@ def main() -> int:
     if state["counts"].get("gate3_source_records") != len(source_ids):
         fail("Gate 3 source count does not match current source catalog")
 
+    # Legacy claims remain provenance inputs only. Substantive factual/knowledge
+    # adjudication belongs to the successor v2 projection and ROOK authority.
     for collection in ("claims", "narrative_claims"):
         for item in state["entities"].get(collection, []):
             sources = item.get("source_ids") or (item.get("record") or {}).get("source_ids") or []
@@ -38,11 +45,6 @@ def main() -> int:
                 fail(f"claim record lacks provenance: {collection}:{item.get('entity_id') or item.get('case_id')}")
             if set(sources) - source_ids:
                 fail(f"claim record has unresolved source: {collection}:{item.get('entity_id')}")
-            record = item.get("record") or {}
-            if record.get("truth_adjudication") == "KNOWING_FALSEHOOD_LIE" and (record.get("deception_score", -1) < 3 or not record.get("deception_basis")):
-                fail(f"lie classification lacks knowledge evidence: {item.get('entity_id')}")
-            if record.get("truth_adjudication") == "DISPROVEN" and record.get("deception_score", 0) > 0 and not record.get("deception_basis"):
-                fail(f"disproven proposition was promoted toward deception without basis: {item.get('entity_id')}")
 
     for item in state["chronology"]:
         event = item["event"]
@@ -113,14 +115,11 @@ def main() -> int:
     migrated = [item["record"] for item in state["entities"].get("narrative_claims", []) if str(item.get("entity_id") or "").startswith("LL-EVO-")]
     represented = {record.get("original_claim_id") for record in migrated}
     if forensic_claim_ids != represented or len(forensic_claim_ids) != 37:
-        fail("all 37 forensic claims are not represented proposition-by-proposition in the Lie Ledger")
+        fail("all 37 forensic claims are not represented proposition-by-proposition in the legacy migration layer")
     if not migrated:
-        fail("forensic proposition-level Lie Ledger migration is empty")
-    for record in migrated:
-        if record.get("truth_adjudication") == "DISPROVEN" and record.get("deception_score") != 0:
-            fail(f"FALSE was automatically promoted toward LIE: {record.get('claim_id')}")
-        if record.get("contradiction_type") == "SELF_CORRECTION" and record.get("deception_score") != 0:
-            fail(f"self-correction was mislabeled as deception: {record.get('claim_id')}")
+        fail("forensic proposition-level migration layer is empty")
+    if any(not record.get("original_claim_id") for record in migrated):
+        fail("forensic migration record lost its original claim identity")
 
     forensic_chain_ids = {str(claim.get("chain_id")) for claim in forensic.get("claims") or []}
     granular_chains = [item["record"] for item in state["entities"].get("information_chains", []) if (item.get("record") or {}).get("source_chain_id")]

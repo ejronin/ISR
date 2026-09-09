@@ -55,6 +55,8 @@ def main() -> int:
     require(release["current_osint_cutoff"] == canonical_release["current_osint_cutoff"], "public cutoff is not derived from Gate 3")
     require(release["current_osint_cutoff_display"] == canonical_release["current_osint_cutoff_display"], "public cutoff display mismatch")
     require(release["canonical_state_identity_v2"] == canonical_release["canonical_state_identity_v2"], "Gate 3 lineage identity mismatch")
+    require(release.get("lie_ledger_doctrine_version") == canonical_release.get("lie_ledger_doctrine_version"), "Lie Ledger doctrine version mismatch")
+    require(release.get("lie_ledger_contract_version") == canonical_release.get("lie_ledger_contract_version"), "Lie Ledger contract version mismatch")
     require("generated_at" not in state and "generated_at" not in release, "nondeterministic generated timestamp present")
 
     chronology = state["chronology"]
@@ -121,14 +123,30 @@ def main() -> int:
     require(state["integrity"].get("browser_replays_update_packets") is False, "browser update replay was enabled")
     require(state["integrity"].get("phase9_routes_consume_gate3_state") is True, "Phase 9 route-consumer declaration missing")
 
-    ledger = payload_records(state, "gate3.lie_ledger")
-    require(len(ledger) == state["counts"]["gate3_lie_ledger_records"], "Lie Ledger count mismatch")
-    require(all(record.get("truth_adjudication") and isinstance(record.get("deception_score"), int) for record in ledger), "Lie Ledger truth/intent axes incomplete")
-    require(all(0 <= record["deception_score"] <= 4 for record in ledger), "Lie Ledger deception score outside 0-4")
-    require(any(record.get("truth_adjudication") == "DISPROVEN" and record.get("deception_score") == 0 for record in ledger), "falsehood was collapsed into deceptive intent")
-    for record in ledger:
-        if record["deception_score"] >= 3:
-            require(record.get("knowledge_access") and record.get("deception_basis"), f"high deception score lacks knowledge evidence: {record.get('claim_id')}")
+    ledger_payload = state["datasets"]["gate3.lie_ledger"]["payload"]
+    require(isinstance(ledger_payload, dict), "Lie Ledger v2 dataset payload is not an object")
+    require(ledger_payload.get("schema_version") == "2.0", "Lie Ledger v2 schema version mismatch")
+    require(ledger_payload.get("doctrine_version") == canonical_release.get("lie_ledger_doctrine_version"), "Lie Ledger v2 doctrine pin mismatch")
+    require(ledger_payload.get("contract_version") == canonical_release.get("lie_ledger_contract_version"), "Lie Ledger v2 contract pin mismatch")
+    require(ledger_payload.get("primary_object") == "NARRATIVE_PROPOSITION_CHAIN", "Lie Ledger public primary object is not a narrative/proposition chain")
+    chains = ledger_payload.get("records") or []
+    ledger_records = [record for chain in chains for record in chain.get("proposition_records") or []]
+    require(len(chains) == state["counts"]["gate3_lie_ledger_chains"], "Lie Ledger chain count mismatch")
+    require(len(ledger_records) == state["counts"]["gate3_lie_ledger_records"], "Lie Ledger claim-instance count mismatch")
+    require(ledger_payload.get("metrics") == canonical.get("lie_ledger_v2_metrics"), "Lie Ledger public metrics differ from canonical metrics")
+    require(ledger_payload.get("metrics", {}).get("unique_propositions") == state["counts"]["gate3_lie_ledger_unique_propositions"], "Lie Ledger unique-proposition count mismatch")
+    require(ledger_payload.get("metrics", {}).get("claim_instances") == state["counts"]["gate3_lie_ledger_claim_instances"], "Lie Ledger metric claim-instance count mismatch")
+    require(all(record.get("truth_adjudication") for record in ledger_records), "Lie Ledger factual axis incomplete")
+    require(all(record.get("public_knowledge_judgment") for record in ledger_records), "Lie Ledger public knowledge axis incomplete")
+    require(all("deception_score" not in record and "deception_basis" not in record for record in ledger_records), "obsolete deception-score semantics leaked into public Lie Ledger v2")
+    for record in ledger_records:
+        if record.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION":
+            require(record.get("canonical_rook_assessment_withheld") is True, f"blocked ROOK judgment not withheld: {record.get('claim_instance_id')}")
+            require("knowledge_judgment" not in record and "combined_assessment" not in record, f"blocked ROOK accusation leaked into public model: {record.get('claim_instance_id')}")
+            require(record.get("public_combined_assessment") == "EVIDENCE COMPLETION REQUIRED", f"blocked public assessment marker missing: {record.get('claim_instance_id')}")
+        elif record.get("publication_status") == "PUBLIC_READY":
+            require(record.get("canonical_rook_assessment_withheld") is False, f"public-ready ROOK judgment unexpectedly withheld: {record.get('claim_instance_id')}")
+            require(record.get("public_knowledge_judgment") and record.get("public_combined_assessment"), f"public-ready ROOK judgment incomplete: {record.get('claim_instance_id')}")
 
     actors = payload_records(state, "current.actors")
     require(len(actors) == state["counts"]["public_actor_records"], "public actor-directory count mismatch")
@@ -143,7 +161,8 @@ def main() -> int:
     print(
         "Phase 9 public current-state validation: PASS - "
         f"{len(chronology)} chronology records; {len(coverage)} conflict days; "
-        f"{len(sources)} sources; {len(ledger)} Lie Ledger propositions; deterministic bytes verified"
+        f"{len(sources)} sources; {len(chains)} Lie Ledger chains; "
+        f"{len(ledger_records)} claim instances; deterministic bytes verified"
     )
     return 0
 

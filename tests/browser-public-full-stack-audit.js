@@ -180,15 +180,19 @@ function addFinding(findings, routeKey, width, category, detail) {
     await route(cdp, 'evidence.information');
     const ledger = await cdp.eval(`(() => {
       const main = document.querySelector('main');
-      const claim = main.querySelector('[data-claim-id]');
-      const summary = claim?.querySelector('summary');
+      const claim = main.querySelector('[data-claim-instance-id]');
+      const chain = claim?.closest('[data-chain-id]');
+      if (chain) chain.open = true;
+      const summary = claim?.querySelector(':scope > summary');
       if (summary) summary.focus();
       const focusable = !summary || document.activeElement === summary;
       if (summary) summary.click();
-      const drawerSummary = claim?.querySelector('.evidence-drawer > summary');
+      const drawerSummary = claim?.querySelector('[data-evidence-component] .evidence-drawer > summary');
       if (drawerSummary) drawerSummary.click();
       return {
         claim: Boolean(claim),
+        chain: Boolean(chain),
+        chainOpen: !chain || Boolean(chain.open),
         focusable,
         open: Boolean(claim?.open),
         drawer: Boolean(drawerSummary),
@@ -196,8 +200,8 @@ function addFinding(findings, routeKey, width, category, detail) {
         text: claim?.innerText || ''
       };
     })()`);
-    if (!ledger.claim || !ledger.focusable || !ledger.open) addFinding(findings, 'evidence.information', 390, 'disclosure', 'claim-not-focusable-or-openable');
-    if (!ledger.drawer || !ledger.drawerOpen) addFinding(findings, 'evidence.information', 390, 'evidence-drawer', 'drawer-not-discoverable-or-openable');
+    if (!ledger.claim || !ledger.chain || !ledger.chainOpen || !ledger.focusable || !ledger.open) addFinding(findings, 'evidence.information', 390, 'disclosure', 'claim-instance-not-focusable-or-openable');
+    if (!ledger.drawer || !ledger.drawerOpen) addFinding(findings, 'evidence.information', 390, 'evidence-drawer', 'component-drawer-not-discoverable-or-openable');
 
     await route(cdp, 'military.imagery');
     const imagery = await cdp.eval(`(() => {

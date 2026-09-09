@@ -4,17 +4,24 @@ on:
   push:
     branches:
       - "gate3/**"
+      - "fix/lie-ledger-semantic-contract-20260909"
   pull_request:
     paths:
       - "data/gate3/**"
       - "data/canonical-updates/UPD-20260905-GATE3-*.json"
       - "data/canonical-ledger/manifest-v2.json"
       - "data/forensic-v1.3.2/iranian-claim-evolution.json"
+      - "data/lie-ledger-v2-rook-authority.json"
+      - "docs/LIE_LEDGER_ANALYTICAL_AUTHORITY_AND_EVIDENCE_CONTRACT_20260909.md"
+      - "docs/LIE_LEDGER_SUPERSEDED_RULE_REGISTRY_20260909.md"
       - "schemas/canonical-*-v2.json"
       - "schemas/lie-ledger-v1.json"
+      - "schemas/lie-ledger-v2.json"
       - "scripts/*gate3*.py"
       - "scripts/build_canonical_current_state_v2*.py"
       - "scripts/build_public_current_state_v2*.py"
+      - "scripts/build_lie_ledger_v2.py"
+      - "scripts/validate_lie_ledger_v2.py"
 
 permissions:
   contents: read
@@ -52,6 +59,11 @@ jobs:
         run: |
           python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state-v2.json
 
+      - name: Validate Lie Ledger v2 contract and metrics
+        run: |
+          set -o pipefail
+          python scripts/validate_lie_ledger_v2.py 2>&1 | tee lie-ledger-v2-validator.log
+
       - name: Determinism checks
         run: |
           python scripts/build_canonical_current_state_v2_final.py --check --output data/canonical-current-state-v2.json
@@ -62,7 +74,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gate3-validation-diagnostics
-          path: gate3-validator.log
+          path: |
+            gate3-validator.log
+            lie-ledger-v2-validator.log
           if-no-files-found: ignore
 
       - name: Upload generated Gate 3 read models

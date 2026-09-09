@@ -1,0 +1,479 @@
+{
+  "schema_version": "1.0",
+  "handoff_version": "ROOK-EVIDENCE-COMPLETION-20260909-v1",
+  "artifact_role": "ROOK_LIE_LEDGER_EVIDENCE_COMPLETION_OVERLAY",
+  "authority": "ROOK",
+  "governing_contract": "docs/LIE_LEDGER_ANALYTICAL_AUTHORITY_AND_EVIDENCE_CONTRACT_20260909.md",
+  "source_registry": "data/lie-ledger-v2-evidence-sources-20260909.json",
+  "resolved_blockers": [
+    "BLOCK-LINCOLN-MAR13",
+    "BLOCK-CSAR-REMAINS",
+    "BLOCK-QATAR-INVITATION",
+    "BLOCK-TANF-CLAIM-SOURCE"
+  ],
+  "remove_v2_records": [
+    {
+      "match": {"claim_id": "CL-TANF"},
+      "reason": "The blended CL-TANF v2 projection is replaced by three atomic July 17 propositions. The legacy CL-TANF source record remains preserved as v1 provenance."
+    }
+  ],
+  "record_updates": [
+    {
+      "match": {
+        "original_claim_id": "IR-CLM-0702",
+        "proposition_contains": "Qatar refused Iran access"
+      },
+      "fields": {
+        "claim": "Qatari authorities had repeatedly delayed or obstructed clarification of the pilots' fate and had left an Iranian Air Force expert/fact-finding team waiting for months for permission to enter Qatar.",
+        "source_proposition": "Qatari authorities had repeatedly delayed or obstructed clarification of the pilots' fate and had left an Iranian Air Force expert/fact-finding team waiting for months for permission to enter Qatar.",
+        "proposition": "Qatari authorities had repeatedly delayed or obstructed clarification of the pilots' fate and had left an Iranian Air Force expert/fact-finding team waiting for months for permission to enter Qatar.",
+        "proposition_fidelity": "SOURCE_EQUIVALENT",
+        "truth_adjudication": "FALSE",
+        "truth_qualifier": "ACCESS_OBSTRUCTION_CLAIM",
+        "knowledge_judgment": "LIKELY_KNEW_FALSE",
+        "combined_assessment": "LIKELY LIE — ACCESS-OBSTRUCTION CLAIM",
+        "confidence": "MODERATE_HIGH",
+        "observed_facts": [
+          "Qatar said it formally invited an Iranian team in April to review details of the search-and-rescue operation and Tehran did not respond.",
+          "Iran and Qatar had direct senior diplomatic contact on April 6, April 13, and April 26.",
+          "Baqerzadeh nevertheless said the Iranian expert/fact-finding team had been waiting for months and accused Qatar of repeated delay.",
+          "Qatar later formally reiterated that the invitation remained open and that Tehran had not responded."
+        ],
+        "analytic_inference": "A distinction between a controlled technical review and broader unrestricted investigative access prevents the invitation from proving that every Iranian request was satisfied. It does not rescue the broad claim that Qatar simply kept an Iranian fact-finding team waiting for months. The claimant's specialized role, the formal prior invitation, Iran's nonresponse, and established senior diplomatic channels make innocent ignorance of the basic invitation history less likely than deliberate externalization of responsibility.",
+        "knowledge_indicators": [
+          {
+            "indicator": "DIPLOMATIC_RECORD_ACCESS",
+            "direction": "SUPPORTS_KNOWLEDGE",
+            "strength": "STRONG",
+            "summary": "The claimant's missing-person portfolio and repeated senior Iran-Qatar contacts made the invitation/nonresponse history directly material and institutionally accessible.",
+            "evidence_refs": ["SRC-09C0C5E902E2", "SRC-1185C28B7D9A", "SRC-7920A7C9C230", "SRC-6FEC9305D8FE"],
+            "temporal_role": "CONTEMPORANEOUS"
+          },
+          {
+            "indicator": "TEMPORAL_KNOWLEDGE",
+            "direction": "SUPPORTS_KNOWLEDGE",
+            "strength": "STRONG",
+            "summary": "Reuters reported Qatar's account of the April invitation and Tehran nonresponse on August 15, before the August 16 obstruction accusation.",
+            "evidence_refs": ["SRC-2BC8EFC300C5", "SRC-09C0C5E902E2"],
+            "temporal_role": "CONTEMPORANEOUS"
+          }
+        ],
+        "credible_alternatives": [
+          {
+            "alternative": "Baqerzadeh was referring to a broader form of access than Qatar's invitation offered, such as unrestricted field investigation or access to alleged surviving pilots, while Qatar offered only a controlled technical review of SAR records.",
+            "comparative_weight": "PLAUSIBLE",
+            "basis": "A technical-team invitation does not necessarily establish that every form of access Iran may have wanted was granted."
+          }
+        ],
+        "comparative_assessment": "The scope distinction is material but does not rescue the generalized months-long obstruction accusation. The specialized official role, prior formal invitation, Tehran's reported nonresponse, and active senior diplomatic channels make deliberate externalization of responsibility more likely than innocent ignorance of the invitation history.",
+        "narrative_function": "Shift responsibility for unresolved or missing pilots from the Iranian custody claim onto alleged Qatari obstruction.",
+        "falsifier": [
+          "Documentation showing Iran promptly accepted the April invitation but Qatar refused entry or repeatedly postponed an agreed technical visit.",
+          "Correspondence demonstrating Qatar's invitation was materially unrelated to the investigation described and Qatar separately blocked the requested fact-finding mission for months.",
+          "Evidence Baqerzadeh was not informed of the invitation despite reasonable official procedures."
+        ],
+        "evidence_support": {
+          "what_was_said": ["SRC-09C0C5E902E2"],
+          "factual_baseline": ["SRC-BDFE31C022B3", "SRC-2BC8EFC300C5", "SRC-1185C28B7D9A", "SRC-7920A7C9C230", "SRC-6FEC9305D8FE"],
+          "contemporaneous_state": ["SRC-2BC8EFC300C5", "SRC-1185C28B7D9A", "SRC-7920A7C9C230", "SRC-6FEC9305D8FE"],
+          "knowledge_access": ["SRC-09C0C5E902E2", "SRC-1185C28B7D9A", "SRC-7920A7C9C230", "SRC-6FEC9305D8FE"],
+          "knowledge_indicators": ["SRC-09C0C5E902E2", "SRC-2BC8EFC300C5", "SRC-1185C28B7D9A", "SRC-7920A7C9C230", "SRC-6FEC9305D8FE"],
+          "contrary_evidence": ["SRC-BDFE31C022B3", "SRC-2BC8EFC300C5"],
+          "corrections": [],
+          "repetitions": [],
+          "credible_alternative": ["SRC-BDFE31C022B3", "SRC-09C0C5E902E2"],
+          "comparative_inference": ["SRC-BDFE31C022B3", "SRC-2BC8EFC300C5", "SRC-09C0C5E902E2", "SRC-1185C28B7D9A", "SRC-7920A7C9C230", "SRC-6FEC9305D8FE"],
+          "falsifier": []
+        }
+      }
+    }
+  ],
+  "supplemental_records": [
+    {
+      "claim_id": "ROOK-LINCOLN-20260313-NONOPERATIONAL",
+      "claim_instance_id": "CI-PROP-LINCOLN-20260313-NONOPERATIONAL",
+      "original_claim_id": "ROOK-LINCOLN-20260313-STATEMENT",
+      "proposition_id": "PROP-LINCOLN-20260313-NONOPERATIONAL",
+      "chain_id": "CHAIN-CL-LINCOLN",
+      "narrative_family_id": "FAMILY-CL-LINCOLN",
+      "actor": "Iranian Central Headquarters of the Holy Prophet / Khatam al-Anbiya Central Headquarters",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "An IRGC Navy missile-and-drone strike rendered USS Abraham Lincoln non-operational and forced the carrier and its strike group to retreat from regional waters.",
+      "source_proposition": "An IRGC Navy missile-and-drone strike rendered USS Abraham Lincoln non-operational and forced the carrier and its strike group to retreat from regional waters.",
+      "proposition": "An IRGC Navy missile-and-drone strike rendered USS Abraham Lincoln non-operational and forced the carrier and its strike group to retreat from regional waters.",
+      "proposition_axis": "OPERATIONAL_EFFECT",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_OPERATIONAL_EFFECT_CLAIM",
+      "knowledge_judgment": "VERY_LIKELY_KNEW_FALSE",
+      "combined_assessment": "VERY LIKELY LIE — FALSE NON-OPERATIONAL / FORCED-RETREAT CLAIM",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "USS Abraham Lincoln was documented conducting flight operations on March 12, immediately before the March 13 claim.",
+        "The Iranian command published a categorical mission-effect assessment: non-operational status, forced retreat, and asserted post-strike observation of the strike group departing at high speed.",
+        "Later-released official imagery documents Lincoln conducting flight operations on March 13 itself; the release timing is later evidence and is not backdated into Iranian knowledge."
+      ],
+      "analytic_inference": "Ordinary BDA error is possible, but it must explain a categorical mission-kill claim from the institution responsible for the strike, an asserted post-strike observation, and a carrier that demonstrably continued flight operations. Deliberate victory inflation is substantially more likely than a good-faith assessment that Lincoln had actually become non-operational.",
+      "knowledge_indicators": [
+        {
+          "indicator": "DIRECT_INSTITUTIONAL_ACCESS",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The issuing military command was reporting the claimed effect of its own operation and asserted continuing post-strike observation of the carrier group.",
+          "evidence_refs": ["SRC-435A52166AA7"],
+          "temporal_role": "CONTEMPORANEOUS"
+        },
+        {
+          "indicator": "BEHAVIORAL_CONTRADICTION",
+          "direction": "CONTEXT_ONLY",
+          "strength": "STRONG",
+          "summary": "Later-released imagery records Lincoln conducting flight operations on March 13; this establishes same-date operational activity but is not backdated into the claimant's knowledge.",
+          "evidence_refs": ["SRC-8485866F094A"],
+          "temporal_role": "LATER_RETROSPECTIVE"
+        }
+      ],
+      "credible_alternatives": [
+        {
+          "alternative": "Catastrophic or premature Iranian battle-damage overassessment: operators believed the carrier had suffered serious damage and interpreted tactical movement as evidence of lost combat function.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "Remote battle-damage assessment can be wrong, and the public record does not expose the underlying Iranian sensor picture."
+        }
+      ],
+      "comparative_assessment": "Ordinary BDA error remains possible, but the categorical institutional mission-kill assertion, claimed post-strike observation, and demonstrated same-date flight operations make deliberate victory inflation substantially more likely.",
+      "narrative_function": "High-value naval victory / U.S. carrier mission-defeat narrative.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Contemporaneous Iranian sensor or BDA records showing a reasonable technical basis for believing the carrier had temporarily lost flight operations when the statement was approved.",
+        "Independent evidence of a March 12-13 strike causing a temporary operational shutdown before flight operations resumed."
+      ],
+      "evidence_support": {
+        "what_was_said": ["SRC-435A52166AA7"],
+        "factual_baseline": ["SRC-4418D9006E00", "SRC-8485866F094A"],
+        "contemporaneous_state": ["SRC-4418D9006E00"],
+        "knowledge_access": ["SRC-435A52166AA7"],
+        "knowledge_indicators": ["SRC-435A52166AA7", "SRC-8485866F094A"],
+        "contrary_evidence": ["SRC-4418D9006E00", "SRC-8485866F094A"],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": ["SRC-435A52166AA7"],
+        "comparative_inference": ["SRC-435A52166AA7", "SRC-8485866F094A"],
+        "falsifier": []
+      },
+      "statement_time": {"date": "2026-03-13", "display_time": "02:52", "precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT"},
+      "event_time": "2026-03-13",
+      "knowledge_time": "2026-03-13",
+      "relation_type": "ORIGINATION"
+    },
+    {
+      "claim_id": "ROOK-CSAR-US-REMAINS-20260405",
+      "claim_instance_id": "CI-PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION",
+      "original_claim_id": "ROOK-CSAR-US-REMAINS-20260405-STATEMENT",
+      "proposition_id": "PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "narrative_family_id": "CH-F15E-CSAR-URANIUM",
+      "actor": "Islamic Revolutionary Guard Corps Public Relations Office",
+      "claimant_type": "OFFICIAL_MILITARY_PUBLIC_AFFAIRS",
+      "actor_role": "ORIGINATOR",
+      "claim": "The IRGC Public Relations Office presented material from the destroyed-aircraft wreckage as remains believed to belong to a U.S. servicemember, including an image described through Iranian reporting as a skull linked to an American military member; the presentation was used as evidence of U.S. personnel loss and defeat.",
+      "source_proposition": "The material was presented as remains believed to belong to a U.S. servicemember; the hedge is preserved.",
+      "proposition": "The IRGC Public Relations Office presented the pictured material as credible physical evidence of remains believed to belong to a U.S. servicemember from the destroyed-aircraft wreckage.",
+      "proposition_axis": "PHYSICAL_EVIDENCE_PRESENTATION",
+      "proposition_fidelity": "SOURCE_HEDGE_PRESERVED",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_PHYSICAL_EVIDENCE_PRESENTATION",
+      "knowledge_judgment": "VERY_LIKELY_KNEW_FALSE",
+      "combined_assessment": "VERY LIKELY LIE — FALSE AMERICAN-REMAINS EVIDENTIARY PRESENTATION",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The source wording was hedged: the material was described as remains believed to belong to a U.S. servicemember; Atlas must not strengthen that wording into a categorical identification.",
+        "Real U.S. aircraft or equipment wreckage existed from the rescue operation, so the existence of wreckage itself is not the false proposition.",
+        "IRIB acknowledged on April 6 that the published image was inaccurate or incorrect despite official-channel provenance and apologized.",
+        "The existing Atlas record establishes successful recovery of both F-15E aircrew."
+      ],
+      "analytic_inference": "A genuine battlefield or publication-chain verification failure remains a meaningful alternative because the originating wording contained a belief hedge. Even so, the originator had superior access to physical provenance, the artifact was deployed as evidence rather than unidentified wreckage, and the state information system could determine within a day that it was incorrect. Deliberate or knowingly reckless evidentiary misrepresentation remains substantially more likely than a good-faith, adequately verified identification.",
+      "knowledge_indicators": [
+        {
+          "indicator": "PHYSICAL_EVIDENCE_ACCESS",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The IRGC Public Relations Office was the stated official source of the wreckage or remains material and was positioned to know its collection and provenance chain.",
+          "evidence_refs": ["SRC-78A57448DD47", "SRC-E8925FA221DA"],
+          "temporal_role": "CONTEMPORANEOUS"
+        },
+        {
+          "indicator": "INTERNAL_CONTRADICTION",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The Iranian broadcasting system determined by the next day that the image was inaccurate or incorrect despite official-channel sourcing; this later correction supports the knowledge assessment but is not backdated as contemporaneous proof.",
+          "evidence_refs": ["SRC-78A57448DD47"],
+          "temporal_role": "LATER_RETROSPECTIVE"
+        }
+      ],
+      "credible_alternatives": [
+        {
+          "alternative": "A genuine battlefield and publication-chain verification failure: field personnel supplied an incorrectly identified image to IRGC PR, which published it with a belief hedge before verification caught up.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "The originating wording preserved a belief hedge, and rapid wartime collection and publication chains can transmit misidentified material."
+        }
+      ],
+      "comparative_assessment": "The innocent verification-failure alternative is materially stronger here than in a demonstrated internally fabricated-image case. Nevertheless, physical or provenance access, evidentiary use of the image, and the rapid official correction make deliberate or knowingly reckless misrepresentation substantially more likely.",
+      "narrative_function": "Physical proof for U.S. personnel-loss / failed-rescue victory narrative.",
+      "confidence": "MODERATE_HIGH",
+      "falsifier": [
+        "Authenticated contemporaneous chain-of-custody records showing IRGC PR received the image from a responsible field unit with a reasonable preliminary human-remains identification and published it before contrary verification was available.",
+        "Forensic evidence establishing genuine U.S. remains were recovered from the referenced wreckage and that the correction concerned only the wrong photograph rather than the underlying remains proposition."
+      ],
+      "evidence_support": {
+        "what_was_said": ["SRC-78A57448DD47", "SRC-E8925FA221DA"],
+        "factual_baseline": ["SRC-694207959BE5", "SRC-C7C20E33BFCA", "SRC-78A57448DD47"],
+        "contemporaneous_state": ["SRC-78A57448DD47"],
+        "knowledge_access": ["SRC-78A57448DD47", "SRC-E8925FA221DA"],
+        "knowledge_indicators": ["SRC-78A57448DD47", "SRC-E8925FA221DA"],
+        "contrary_evidence": ["SRC-694207959BE5", "SRC-C7C20E33BFCA", "SRC-78A57448DD47"],
+        "corrections": ["SRC-78A57448DD47"],
+        "repetitions": [],
+        "credible_alternative": ["SRC-78A57448DD47"],
+        "comparative_inference": ["SRC-78A57448DD47", "SRC-E8925FA221DA"],
+        "falsifier": []
+      },
+      "statement_time": {"date": "2026-04-05", "display_time": null, "precision": "DATE_ONLY"},
+      "event_time": "2026-04-05",
+      "knowledge_time": "2026-04-05",
+      "relation_type": "ORIGINATION"
+    },
+    {
+      "claim_id": "ROOK-TANF-20260717-STATEMENT",
+      "claim_instance_id": "CI-PROP-TANF-20260717-CURRENT-US-COMMAND",
+      "original_claim_id": "ROOK-TANF-20260717-STATEMENT",
+      "proposition_id": "PROP-TANF-20260717-CURRENT-US-COMMAND",
+      "chain_id": "CH-TANF-JUL17",
+      "narrative_family_id": "CH-TANF-JUL17",
+      "actor": "Islamic Revolutionary Guard Corps / IRGC Aerospace Force",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "The July 17 IRGC statement asserted a current special-operations command center at al-Tanf, destruction of radar and several special-operations helicopters, and a large number of American deaths.",
+      "source_proposition": "A current U.S./enemy special operations command center existed at al-Tanf and was the object of the July 17 IRGC strike.",
+      "proposition": "A current U.S./enemy special operations command center existed at al-Tanf and was the object of the July 17 IRGC strike.",
+      "proposition_axis": "ATOMIC_DECOMPOSITION",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "CURRENT_US_COMMAND_CENTER",
+      "knowledge_judgment": "LIKELY_KNEW_FALSE",
+      "combined_assessment": "LIKELY LIE — FALSE CURRENT U.S. COMMAND-CENTER CLAIM",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "CENTCOM publicly announced in February that U.S. forces had completed departure from al-Tanf on February 11.",
+        "Syrian government forces assumed control after the U.S. withdrawal.",
+        "The IRGC statement nevertheless described a current enemy special-operations command center at the site."
+      ],
+      "analytic_inference": "A stale-target-file failure is possible, but five months elapsed after a public military handover. A force claiming a deliberate surprise strike against a specific current command center should reasonably have resolved whether the target remained occupied. Deliberate legacy-target framing is more likely than an innocent current-status error.",
+      "knowledge_indicators": [
+        {
+          "indicator": "TEMPORAL_KNOWLEDGE",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The U.S. departure and Syrian handover were publicly documented roughly five months before the July claim.",
+          "evidence_refs": ["SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF"],
+          "temporal_role": "CONTEMPORANEOUS"
+        },
+        {
+          "indicator": "DIRECT_INSTITUTIONAL_ACCESS",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The IRGC described a deliberate surprise strike on a specific operational command center, implying current target identification rather than accidental area fire.",
+          "evidence_refs": ["SRC-A52F28BE68C6"],
+          "temporal_role": "CONTEMPORANEOUS"
+        }
+      ],
+      "credible_alternatives": [
+        {
+          "alternative": "Stale or erroneous target intelligence: the IRGC targeting system continued to classify al-Tanf as an active U.S. node despite the withdrawal, or believed U.S. forces had covertly returned.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "Military target files can lag reality, and covert reoccupation is theoretically possible even though no reviewed evidence supports it."
+        }
+      ],
+      "comparative_assessment": "A stale-target-file failure is possible, but the long public lead time and the statement's specific current-occupancy framing make deliberate legacy-target framing more likely.",
+      "narrative_function": "Convert an attack near a former U.S. installation into destruction of a current American operational node, its equipment, and a large U.S. force.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Independent evidence that U.S. special-operations personnel had reoccupied al-Tanf before July 17.",
+        "Authenticated Iranian intelligence showing a reasonable basis for assessing a covert U.S. command presence at the time."
+      ],
+      "evidence_support": {
+        "what_was_said": ["SRC-A52F28BE68C6"],
+        "factual_baseline": ["SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF", "SRC-F8CFD40201CE", "SRC-B96297D7ACDA"],
+        "contemporaneous_state": ["SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF"],
+        "knowledge_access": ["SRC-A52F28BE68C6", "SRC-F9D0D4519D4D"],
+        "knowledge_indicators": ["SRC-A52F28BE68C6", "SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF"],
+        "contrary_evidence": ["SRC-F8CFD40201CE", "SRC-B96297D7ACDA"],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": ["SRC-F9D0D4519D4D"],
+        "comparative_inference": ["SRC-A52F28BE68C6", "SRC-F9D0D4519D4D", "SRC-F8CFD40201CE"],
+        "falsifier": []
+      },
+      "statement_time": {"date": "2026-07-17", "display_time": "08:32", "precision": "SOURCE_PUBLICATION_TIME"},
+      "event_time": "2026-07-17",
+      "knowledge_time": "2026-07-17",
+      "relation_type": "ORIGINATION"
+    },
+    {
+      "claim_id": "ROOK-TANF-20260717-STATEMENT",
+      "claim_instance_id": "CI-PROP-TANF-20260717-RADAR-HELICOPTERS",
+      "original_claim_id": "ROOK-TANF-20260717-STATEMENT",
+      "proposition_id": "PROP-TANF-20260717-RADAR-HELICOPTERS",
+      "chain_id": "CH-TANF-JUL17",
+      "narrative_family_id": "CH-TANF-JUL17",
+      "actor": "Islamic Revolutionary Guard Corps / IRGC Aerospace Force",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "The July 17 IRGC statement asserted a current special-operations command center at al-Tanf, destruction of radar and several special-operations helicopters, and a large number of American deaths.",
+      "source_proposition": "The July 17 strike destroyed a radar system and several U.S./enemy special-operations helicopters at al-Tanf.",
+      "proposition": "The July 17 strike destroyed a radar system and several U.S./enemy special-operations helicopters at al-Tanf.",
+      "proposition_axis": "ATOMIC_DECOMPOSITION",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_BDA_EFFECT_CLAIM",
+      "knowledge_judgment": "LIKELY_KNEW_FALSE",
+      "combined_assessment": "LIKELY LIE — FALSE RADAR / HELICOPTER DESTRUCTION CLAIM",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The IRGC statement specifically claimed destruction of a radar system and several special-operations helicopters.",
+        "A Syrian military source reported the attack occurred near al-Tanf, did not hit the base, and caused no material damage.",
+        "The U.S. had publicly departed the installation months earlier."
+      ],
+      "analytic_inference": "BDA error is more credible for equipment effects than for the basic assertion that a current U.S. base existed. Nevertheless, the conjunction of a vacated site, local reporting that the attack missed the base, and categorical destruction of multiple named asset classes makes deliberate effect inflation more likely than not.",
+      "knowledge_indicators": [
+        {
+          "indicator": "DIRECT_INSTITUTIONAL_ACCESS",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The strike originator asserted specific effects from its own planned operation and therefore had access to its targeting plan and whatever BDA supported the public statement.",
+          "evidence_refs": ["SRC-A52F28BE68C6"],
+          "temporal_role": "CONTEMPORANEOUS"
+        },
+        {
+          "indicator": "REMOTE_BDA_UNCERTAINTY",
+          "direction": "SUPPORTS_INNOCENT_ERROR",
+          "strength": "MODERATE",
+          "summary": "Remote post-strike BDA can be wrong; the public record does not expose the IRGC sensor picture underlying the equipment-destruction claim.",
+          "evidence_refs": ["SRC-A52F28BE68C6"],
+          "temporal_role": "CONTEMPORANEOUS"
+        }
+      ],
+      "credible_alternatives": [
+        {
+          "alternative": "Post-strike BDA error based on stale target intelligence or misread sensor indications.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "Remote battle-damage assessment can misclassify preplanned target imagery or ambiguous sensor returns as confirmed destruction."
+        }
+      ],
+      "comparative_assessment": "BDA error remains plausible, but the vacated-site baseline and same-day report of no base hit or material damage make deliberate effect inflation more likely than not.",
+      "narrative_function": "Convert an attack near a former U.S. installation into destruction of a current American operational node, its equipment, and a large U.S. force.",
+      "confidence": "MODERATE_HIGH",
+      "falsifier": [
+        "Independent imagery or verified local records showing a radar and helicopters were actually destroyed.",
+        "Authenticated Iranian BDA demonstrating a reasonable contemporaneous misidentification of real destroyed equipment."
+      ],
+      "evidence_support": {
+        "what_was_said": ["SRC-A52F28BE68C6"],
+        "factual_baseline": ["SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF", "SRC-F8CFD40201CE"],
+        "contemporaneous_state": ["SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF"],
+        "knowledge_access": ["SRC-A52F28BE68C6"],
+        "knowledge_indicators": ["SRC-A52F28BE68C6"],
+        "contrary_evidence": ["SRC-F8CFD40201CE"],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": ["SRC-A52F28BE68C6"],
+        "comparative_inference": ["SRC-A52F28BE68C6", "SRC-F8CFD40201CE"],
+        "falsifier": []
+      },
+      "statement_time": {"date": "2026-07-17", "display_time": "08:32", "precision": "SOURCE_PUBLICATION_TIME"},
+      "event_time": "2026-07-17",
+      "knowledge_time": "2026-07-17",
+      "relation_type": "ORIGINATION"
+    },
+    {
+      "claim_id": "ROOK-TANF-20260717-STATEMENT",
+      "claim_instance_id": "CI-PROP-TANF-20260717-LARGE-US-CASUALTIES",
+      "original_claim_id": "ROOK-TANF-20260717-STATEMENT",
+      "proposition_id": "PROP-TANF-20260717-LARGE-US-CASUALTIES",
+      "chain_id": "CH-TANF-JUL17",
+      "narrative_family_id": "CH-TANF-JUL17",
+      "actor": "Islamic Revolutionary Guard Corps / IRGC Aerospace Force",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "The July 17 IRGC statement asserted a current special-operations command center at al-Tanf, destruction of radar and several special-operations helicopters, and a large number of American deaths.",
+      "source_proposition": "The July 17 al-Tanf strike killed a large number of American forces.",
+      "proposition": "The July 17 al-Tanf strike killed a large number of American forces.",
+      "proposition_axis": "ATOMIC_DECOMPOSITION",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_MASS_CURRENT_US_CASUALTY_CLAIM",
+      "knowledge_judgment": "VERY_LIKELY_KNEW_FALSE",
+      "combined_assessment": "VERY LIKELY LIE — FALSE MASS U.S. CASUALTY CLAIM",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "U.S. forces had publicly completed departure from al-Tanf months before the strike claim.",
+        "The IRGC asserted a large number of American deaths rather than a possibility of casualties.",
+        "A Syrian military source reported no casualties from the attack, and U.S. reporting denied the claimed American troop deaths."
+      ],
+      "analytic_inference": "The innocent explanation requires simultaneous failure on target ownership, target occupancy, strike impact, and casualty assessment. The more parsimonious explanation for the categorical mass-casualty statement is deliberate victory fabrication, while the absence of direct internal records keeps the judgment estimative rather than knowledge directly established.",
+      "knowledge_indicators": [
+        {
+          "indicator": "TEMPORAL_KNOWLEDGE",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The public U.S. withdrawal and Syrian handover created a long-lead baseline against a large current U.S. force concentration at the site.",
+          "evidence_refs": ["SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF"],
+          "temporal_role": "CONTEMPORANEOUS"
+        },
+        {
+          "indicator": "DIRECT_INSTITUTIONAL_ACCESS",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The same institution asserting a large casualty count was responsible for the strike and claimed detailed knowledge of the target and damage.",
+          "evidence_refs": ["SRC-A52F28BE68C6"],
+          "temporal_role": "CONTEMPORANEOUS"
+        }
+      ],
+      "credible_alternatives": [
+        {
+          "alternative": "Severe stale-intelligence and BDA failure: planners incorrectly believed U.S. personnel had returned, assumed the strike hit its target, and converted assumed occupancy into a casualty claim.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "A badly outdated occupancy model plus erroneous BDA could theoretically generate a false casualty estimate without deliberate fabrication."
+        }
+      ],
+      "comparative_assessment": "The alternative requires simultaneous error on ownership, occupancy, strike impact, and casualty assessment; deliberate victory fabrication is the better explanation on the reviewed public record.",
+      "narrative_function": "Convert an attack near a former U.S. installation into destruction of a current American operational node, its equipment, and a large U.S. force.",
+      "confidence": "MODERATE_HIGH",
+      "falsifier": [
+        "Credible independent evidence of U.S. personnel secretly present at al-Tanf on July 17 and casualties from the strike.",
+        "Authenticated contemporaneous intelligence showing a reasonable evidence-based belief that a substantial U.S. force had reoccupied the site and that the strike produced personnel effects."
+      ],
+      "evidence_support": {
+        "what_was_said": ["SRC-A52F28BE68C6"],
+        "factual_baseline": ["SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF", "SRC-F8CFD40201CE", "SRC-D938910EDB89"],
+        "contemporaneous_state": ["SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF"],
+        "knowledge_access": ["SRC-A52F28BE68C6", "SRC-F9D0D4519D4D"],
+        "knowledge_indicators": ["SRC-A52F28BE68C6", "SRC-F9D0D4519D4D", "SRC-C0E8F130EDDF"],
+        "contrary_evidence": ["SRC-F8CFD40201CE", "SRC-D938910EDB89"],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": ["SRC-F9D0D4519D4D"],
+        "comparative_inference": ["SRC-A52F28BE68C6", "SRC-F9D0D4519D4D", "SRC-F8CFD40201CE", "SRC-D938910EDB89"],
+        "falsifier": []
+      },
+      "statement_time": {"date": "2026-07-17", "display_time": "08:32", "precision": "SOURCE_PUBLICATION_TIME"},
+      "event_time": "2026-07-17",
+      "knowledge_time": "2026-07-17",
+      "relation_type": "ORIGINATION"
+    }
+  ]
+}

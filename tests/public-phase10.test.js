@@ -23,9 +23,13 @@ assert.equal(ia.propositionStatusLabel('SUPPORTED'), 'Substantially true');
 assert.equal(ia.propositionStatusLabel('UNSUPPORTED'), 'Unsupported');
 assert.equal(ia.propositionStatusLabel('DISPUTED'), 'Disputed');
 assert.equal(ia.propositionStatusLabel('UNRESOLVED'), 'Unresolved');
-assert.equal(ia.deceptionDisplay({ deception_score: 0 }), '0 — No evidence of knowing deception');
-assert.equal(ia.deceptionDisplay({ deception_score: 2 }), '2 — Basis recorded below');
-assert.equal(ia.deceptionDisplay({ deception_score: 2, deception_classification: 'ENCODED_CLASS' }), '2 — Encoded class');
+assert.equal(ia.knowledgeJudgmentDisplay({ public_knowledge_judgment: 'NOT_ASSESSED' }), 'Not assessed');
+assert.equal(ia.knowledgeJudgmentDisplay({ public_knowledge_judgment: 'INSUFFICIENT_EVIDENCE' }), 'Insufficient evidence');
+assert.equal(ia.knowledgeJudgmentDisplay({ public_knowledge_judgment: 'POSSIBLE_KNOWLEDGE' }), 'Possible knowledge');
+assert.equal(ia.knowledgeJudgmentDisplay({ public_knowledge_judgment: 'LIKELY_KNEW_FALSE' }), 'Likely knew false');
+assert.equal(ia.knowledgeJudgmentDisplay({ public_knowledge_judgment: 'VERY_LIKELY_KNEW_FALSE' }), 'Very likely knew false');
+assert.equal(ia.knowledgeJudgmentDisplay({ public_knowledge_judgment: 'KNOWING_FALSEHOOD_ESTABLISHED' }), 'Knowing falsehood established');
+assert.equal(ia.knowledgeJudgmentDisplay({ public_knowledge_judgment: 'WITHHELD_PENDING_EVIDENCE_QUALIFICATION' }), 'Evidence completion required');
 assert.equal(ia.objectiveChangeLabel({ type: 'WALKBACK' }), 'Walkback');
 assert.notEqual(ia.objectiveChangeLabel({ movement: 'WALKBACK_DILUTED_CANDIDATE_IF_ADOPTED' }), 'Walkback');
 assert.equal(ia.lossQuantityLabel({ quantity: null }), 'Quantity: unknown');
@@ -37,8 +41,8 @@ for (const phrase of [
   'Historical evaluation uses only evidence available by this time.',
   'Current Atlas evidence includes material incorporated through this time.',
   'Observation', 'Actor claim', 'Source reporting', 'Independent corroboration', 'Atlas assessment', 'Competing explanation', 'Confidence & limits',
-  'Claim accuracy & deception evidence', 'A false statement is not automatically a deliberate lie.',
-  'Evidence of knowing deception', 'Reasonable institutional knowledge',
+  'Factual status and knowledge are separate assessments.', 'A false statement is not automatically a deliberate lie.',
+  'Knowledge judgment', 'Combined ROOK assessment', 'EVIDENCE COMPLETION REQUIRED',
   'From damage to strategic effect', 'A confirmed hit does not by itself establish destroyed capability or strategic effect.',
   'Physical damage', 'Asset lost', 'Subsystem degraded', 'Function degraded', 'Local operational effect', 'Theater operational effect', 'Strategic consequence',
   'Unknown ≠ zero.', 'Claimed ≠ verified.', 'Reported ≠ established.', 'Unsupported ≠ false.', 'Disputed ≠ false.',
@@ -47,6 +51,9 @@ for (const phrase of [
   'Outcome against original objective', 'Outcome against revised objective'
 ]) assert(source.includes(phrase), `missing Phase 10 public language: ${phrase}`);
 
+assert(!source.includes('All deception scores'), 'legacy deception-score filter remains');
+assert(!source.includes('dataset.deceptionScore'), 'legacy deception-score DOM state remains');
+assert(!source.includes('0 — No evidence of knowing deception'), 'score zero still implies evidentiary absence');
 assert(!source.includes("const deceptionLabels = ['No evidence of deception', 'Possible spin'"), 'frontend still invents positive deception-score semantics');
 assert(!source.includes("append(deceptionLabel, 'label', '', 'Deception score')"), 'old deception UI label remains');
 assert(source.includes("? `Evidence (${references.length + relatedRecords.length})`"), 'Evidence drawer is not using the approved system label');
@@ -86,4 +93,4 @@ const losses = (() => { const payload = model.datasets['current.material_losses'
 assert.equal(losses.length, 57);
 assert(losses.every(record => record.quantity !== null || record.quantity !== 0), 'unknown quantity was converted to zero');
 
-console.log('public Phase 10: PASS - evidence semantics plus approved visual-sweep contracts for timeline density, shipping routes, auditable loss aggregation, non-interpolated economics and MOU balance verified');
+console.log('public Phase 10: PASS - factual/knowledge separation plus approved visual-sweep contracts for timeline density, shipping routes, auditable loss aggregation, non-interpolated economics and MOU balance verified');

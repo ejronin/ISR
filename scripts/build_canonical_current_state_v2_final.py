@@ -4,6 +4,10 @@
 The underlying chronology may contain prewar context. Daily war coverage is a
 separate derived series and is deliberately bounded to conflict Day 1 through
 the accepted current evidence cutoff while preserving the frozen Gate 2 boundary.
+
+Lie Ledger v2 is a forward semantic projection applied only after the hardened
+canonical state exists. It preserves lie-ledger-v1 provenance and consumes ROOK's
+machine authority overlay without rewriting sealed evidence.
 """
 from __future__ import annotations
 
@@ -18,6 +22,8 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_canonical_current_state_v2_hardened as hardened
+import build_lie_ledger_v2 as lie_ledger_v2
+import apply_lie_ledger_evidence_completion_20260909 as lie_ledger_evidence_completion
 
 OUT = "data/canonical-current-state-v2.json"
 CONFLICT_DAY_1 = date(2026, 2, 28)
@@ -37,7 +43,9 @@ def war_daily_coverage(state: dict[str, Any]) -> list[dict[str, Any]]:
         event_date = str((item.get("event") or {}).get("event_date") or "")
         if event_date:
             by_date.setdefault(event_date, []).append(item["event_id"])
-    cutoff = datetime.fromisoformat(state["release"].get("current_osint_cutoff") or state["release"]["gate2_evidence_cutoff"]).date()
+    cutoff = datetime.fromisoformat(
+        state["release"].get("current_osint_cutoff") or state["release"]["gate2_evidence_cutoff"]
+    ).date()
     cursor = CONFLICT_DAY_1
     rows: list[dict[str, Any]] = []
     while cursor <= cutoff:
@@ -64,19 +72,39 @@ def refresh_derived_counts(state: dict[str, Any]) -> None:
     counts["gate3_narrative_claims"] = len(entities.get("narrative_claims") or [])
     counts["gate3_source_records"] = len((state.get("sources") or {}).get("records") or [])
     counts["source_records"] = counts["gate3_source_records"]
+    counts["lie_ledger_v2_records"] = len(entities.get("lie_ledger_v2") or [])
+    counts["lie_ledger_v2_chains"] = len(entities.get("lie_ledger_chains_v2") or [])
 
 
 def build_state(root: Path = ROOT) -> dict[str, Any]:
-    state = hardened.build_state(Path(root).resolve())
+    root = Path(root).resolve()
+    state = hardened.build_state(root)
+
+    # Forward-only semantic layer. ROOK's overlay is the only source of
+    # substantive knowledge/lie judgments; the builder only normalizes structure.
+    # The evidence-completion layer first injects governed source objects, then
+    # qualifies the named ROOK blockers after the base v2 projection is built.
+    lie_ledger_evidence_completion.inject_sources(state, root)
+    lie_ledger_v2.apply(state, root)
+    lie_ledger_evidence_completion.apply(state, root, lie_ledger_v2)
     refresh_derived_counts(state)
+
     rows = war_daily_coverage(state)
     state["daily_coverage"] = rows
     state.setdefault("counts", {})["gate3_daily_coverage_days"] = len(rows)
     state.setdefault("integrity", {}).update({
         "war_daily_coverage_bounded_to_conflict": True,
         "war_daily_coverage_starts_day1": bool(rows and rows[0]["date"] == "2026-02-28"),
-        "war_daily_coverage_reaches_gate2_cutoff": bool(rows and rows[-1]["date"] >= datetime.fromisoformat(state["release"]["gate2_evidence_cutoff"]).date().isoformat()),
-        "war_daily_coverage_reaches_current_cutoff": bool(rows and rows[-1]["date"] == datetime.fromisoformat(state["release"]["current_osint_cutoff"]).date().isoformat()),
+        "war_daily_coverage_reaches_gate2_cutoff": bool(
+            rows and rows[-1]["date"] >= datetime.fromisoformat(
+                state["release"]["gate2_evidence_cutoff"]
+            ).date().isoformat()
+        ),
+        "war_daily_coverage_reaches_current_cutoff": bool(
+            rows and rows[-1]["date"] == datetime.fromisoformat(
+                state["release"]["current_osint_cutoff"]
+            ).date().isoformat()
+        ),
     })
     prior_identity = state["release"]["canonical_state_identity_v2"]
     identity_material = {
@@ -84,9 +112,18 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "coverage_start": rows[0]["date"] if rows else None,
         "coverage_end": rows[-1]["date"] if rows else None,
         "coverage_days": len(rows),
+        "lie_ledger_doctrine_version": state["release"]["lie_ledger_doctrine_version"],
+        "lie_ledger_contract_version": state["release"]["lie_ledger_contract_version"],
+        "lie_ledger_evidence_completion_version": state["release"].get("lie_ledger_evidence_completion_version"),
+        "lie_ledger_v2_records": state["counts"]["lie_ledger_v2_records"],
+        "lie_ledger_v2_chains": state["counts"]["lie_ledger_v2_chains"],
+        "lie_ledger_v2_claim_instances": state.get("lie_ledger_v2_metrics", {}).get("claim_instances"),
+        "lie_ledger_v2_unique_propositions": state.get("lie_ledger_v2_metrics", {}).get("unique_propositions"),
     }
     state["release"]["canonical_state_identity_v2_hardening"] = prior_identity
-    state["release"]["canonical_state_identity_v2"] = "canonical-current-v2-" + digest(canonical_bytes(identity_material))[:16]
+    state["release"]["canonical_state_identity_v2"] = (
+        "canonical-current-v2-" + digest(canonical_bytes(identity_material))[:16]
+    )
     return state
 
 

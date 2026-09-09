@@ -1,0 +1,336 @@
+{
+  "schema_version": "2.0",
+  "artifact_role": "DERIVED_ANALYTIC_ASSESSMENT_OVERLAY",
+  "authority_notice": "This file does not replace or rewrite sealed evidence. It records forward semantic normalization and forensic knowledge-assessment judgments against preserved source IDs.",
+  "doctrine": {
+    "false_is_not_automatically_lie": true,
+    "knowledge_may_be_circumstantial": true,
+    "ultimate_motive_required_for_lie": false,
+    "retrospective_explanations_are_tested_not_presumed": true,
+    "actor_specific_thresholds_prohibited": true
+  },
+  "proposition_groups": {
+    "LL-EVO-IR-CLM-0001-P02": "PROP-F15E-APR03-AIRCRAFT-TYPE",
+    "LL-EVO-IR-CLM-0002-P01": "PROP-F15E-APR03-AIRCRAFT-TYPE",
+    "LL-EVO-IR-CLM-0004-P02": "PROP-F15E-APR03-CREWMAN-CAPTURE",
+    "LL-EVO-IR-CLM-0006-P01": "PROP-F15E-APR03-CREWMAN-CAPTURE",
+    "LL-EVO-IR-CLM-0005-P02": "PROP-F15E-APR03-CSAR-ULTIMATE-OUTCOME",
+    "LL-EVO-IR-CLM-0007-P03": "PROP-F15E-APR03-CSAR-ULTIMATE-OUTCOME",
+    "LL-EVO-IR-CLM-0007-P02": "PROP-F15E-APR03-CSAR-LOSS-CAUSATION",
+    "LL-EVO-IR-CLM-0008-P02": "PROP-F15E-APR03-CSAR-LOSS-CAUSATION",
+    "LL-EVO-IR-CLM-0201-P01": "PROP-TURKEY-MISSILES-IRANIAN-ORIGIN",
+    "LL-EVO-IR-CLM-0202-P01": "PROP-TURKEY-MISSILES-IRANIAN-ORIGIN",
+    "LL-EVO-IR-CLM-0203-P01": "PROP-TURKEY-MISSILES-IRANIAN-ORIGIN",
+    "LL-EVO-IR-CLM-0204-P01": "PROP-TURKEY-MISSILES-FALSE-FLAG",
+    "LL-EVO-IR-CLM-0205-P01": "PROP-TURKEY-MISSILES-FALSE-FLAG",
+    "LL-EVO-IR-CLM-0301-P02": "PROP-F35-MAR19-DOWNED-LOST",
+    "LL-EVO-IR-CLM-0302-P01": "PROP-F35-MAR19-DOWNED-LOST",
+    "LL-EVO-IR-CLM-0303-P01": "PROP-F35-MAR19-DOWNED-LOST"
+  },
+  "record_overrides": {
+    "LL-EVO-IR-CLM-0001-P02": {
+      "truth_adjudication": "FALSE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "observed_facts": [
+        "The IRGC/Khatam al-Anbiya claim identified the downed aircraft as an F-35.",
+        "The aircraft was an F-15E; Iranian state media later explicitly corrected the type.",
+        "The correction says recovered debris, including an ejection seat photographed and released by the IRGC Intelligence Organization on April 3, established the F-15E identification.",
+        "Iranian media also published aircraft debris on April 3 that later reporting described as carrying F-15E-identifying Lakenheath markings."
+      ],
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "STRONG", "The originating military institution was reporting the result of its own engagement and had materially better access to its own engagement reporting than outside observers."],
+        ["PHYSICAL_EVIDENCE_ACCESS", "SUPPORTS_KNOWLEDGE", "STRONG", "Iranian authorities possessed and released recovered aircraft debris on the day of the claim."],
+        ["DISTINCTIVE_OBJECT_MISMATCH", "SUPPORTS_KNOWLEDGE", "STRONG", "F-15E debris and unit markings are materially distinguishable from an F-35; this is not a near-identical-platform ambiguity."],
+        ["RETROSPECTIVE_REFRAMING", "SUPPORTS_INNOCENT_ERROR", "MODERATE", "Press TV later characterized the original F-35 identification as a real-time battlefield misidentification before technical analysis."]
+      ],
+      "credible_alternatives": [
+        ["Fog-of-war or subordinate misidentification reached the public statement before technical exploitation of the wreckage.", "PLAUSIBLE", "The initial claim was made rapidly after the engagement and direct evidence does not establish exactly when the responsible speaker received the technical identification."],
+        ["Severe institutional identification failure persisted despite custody of distinguishing physical evidence.", "LESS_PLAUSIBLE", "This remains possible, but it requires the organization responsible for the engagement to fail to reconcile plainly identifying debris with its public aircraft-type claim."]
+      ],
+      "comparative_assessment": "Knowing false identification is more likely than an innocent technical mistake once institutional and physical-evidence access are considered together, but direct evidence does not establish which individual knew what at the first publication minute.",
+      "confidence": "MODERATE",
+      "narrative_function": "Victory inflation / fifth-generation aircraft prestige defeat.",
+      "falsifier": [
+        "Contemporaneous command records showing the F-35 identification was issued before wreckage or identifying imagery reached the originating command and was corrected promptly once that evidence arrived.",
+        "Evidence that the identifying debris shown publicly was not available to the originating institution until after the relevant statement."
+      ]
+    },
+    "LL-EVO-IR-CLM-0002-P01": {
+      "truth_adjudication": "FALSE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "indicators": [
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_KNOWLEDGE", "MODERATE", "The senior-official repetition occurred later on April 3, after the initial claim, public wreckage imagery and U.S. reporting identifying an F-15E."],
+        ["COORDINATED_AMPLIFICATION", "CONTEXT_ONLY", "CONTEXTUAL", "The statement amplified an official military identification through a senior political channel."],
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "MODERATE", "A senior national official had potential access to state reporting, although the public record does not show the contents of his briefing."
+        ]
+      ],
+      "credible_alternatives": [
+        ["The official repeated a military briefing he reasonably believed despite contrary public reporting.", "PLAUSIBLE", "The evidence does not establish his personal access to wreckage analysis or a corrected internal briefing before the statement."]
+      ],
+      "comparative_assessment": "The later timing and senior access make knowledge plausible, but the record does not establish that the official personally received the corrected technical identification before repeating the claim.",
+      "confidence": "MODERATE",
+      "narrative_function": "Senior-official amplification / adversary humiliation.",
+      "falsifier": ["A contemporaneous briefing record showing the official was told the aircraft was an F-15E before the statement would materially strengthen the judgment; a record showing he was still officially briefed F-35 would weaken it."]
+    },
+    "LL-EVO-IR-CLM-0005-P02": {
+      "truth_adjudication": "MISLEADING",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "indicators": [
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_INNOCENT_ERROR", "STRONG", "The headline used final-sounding language while the article body said the recovery effort had so far been futile; the operation was still unfolding."]
+      ],
+      "credible_alternatives": [
+        ["Premature finality during an ongoing combat search rather than knowing falsehood about the ultimate result.", "MORE_PLAUSIBLE", "The body itself preserved the temporal qualification that the effort had not succeeded yet."
+        ]
+      ],
+      "comparative_assessment": "The evidence better supports premature or sensational framing than a knowingly false assertion about an outcome that had not yet occurred.",
+      "confidence": "HIGH",
+      "narrative_function": "Premature victory framing.",
+      "falsifier": ["Evidence that the publisher knew the second airman had already been recovered before publishing the headline would materially strengthen a knowledge finding."]
+    },
+    "LL-EVO-IR-CLM-0007-P02": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "MODERATE", "The military claimant was reporting the effects of its own engagement."],
+        ["PHYSICAL_EVIDENCE_ACCESS", "CONTEXT_ONLY", "MODERATE", "Iran had access to wreckage in the operating area, but wreckage alone did not disclose whether every aircraft was destroyed by Iranian fire or by U.S. denial action."]
+      ],
+      "credible_alternatives": [
+        ["Battlefield attribution error: Iranian forces saw wreckage after firing on the rescue force and attributed all losses to their own action.", "PLAUSIBLE", "Independent reconstruction confirms Iranian fire hit two helicopters while other disabled aircraft were destroyed by U.S. personnel."
+        ]
+      ],
+      "comparative_assessment": "The false causation claim could reflect victory inflation, but the mixed mechanism and chaotic operating environment leave a substantial innocent-error alternative.",
+      "confidence": "MODERATE",
+      "narrative_function": "Attribution inflation / tactical victory expansion.",
+      "falsifier": ["Iranian operational logs or communications showing commanders knew the major wreckage resulted from U.S. self-destruction before the public claim would strengthen knowledge; evidence of contemporaneous uncertainty would weaken it."]
+    },
+    "LL-EVO-IR-CLM-0007-P03": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["TEMPORAL_KNOWLEDGE", "CONTEXT_ONLY", "MODERATE", "The claim of complete rescue failure was made while the personnel-recovery chronology was still developing in public reporting."]
+      ],
+      "credible_alternatives": [
+        ["The claimant incorrectly inferred mission failure from aircraft losses and an incomplete search picture.", "PLAUSIBLE", "The public record does not establish when the claimant learned both crew members had been recovered."
+        ]
+      ],
+      "comparative_assessment": "The proposition is false in hindsight, but knowledge of the successful personnel outcome at the claim time is not adequately established.",
+      "confidence": "MODERATE",
+      "narrative_function": "Victory inflation / rescue-failure narrative.",
+      "falsifier": ["Evidence that both recoveries were known to the originating command before the statement would strengthen the knowledge judgment."]
+    },
+    "LL-EVO-IR-CLM-0008-P02": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "MODERATE", "The armed-forces claim concerned effects attributed to its own engagement."],
+        ["PHYSICAL_EVIDENCE_ACCESS", "CONTEXT_ONLY", "MODERATE", "Real wreckage was present, but the causal mechanism for each loss was not self-proving."
+        ]
+      ],
+      "credible_alternatives": [
+        ["Mistaken battle-damage attribution after observing wreckage and knowing Iranian fire had hit part of the rescue force.", "PLAUSIBLE", "The mixed loss mechanism is independently reconstructed."
+        ]
+      ],
+      "comparative_assessment": "Knowledge is possible, but the available evidence does not distinguish deliberate overclaim from battlefield causation error strongly enough for a likely-knowledge finding.",
+      "confidence": "MODERATE",
+      "narrative_function": "Attribution inflation.",
+      "falsifier": ["Internal BDA showing U.S. self-destruction was known before the public claim would materially strengthen the judgment."]
+    },
+    "LL-EVO-IR-CLM-0101-P02": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "MODERATE", "The claim attributed an aircraft loss to Iranian action, a matter on which the military could examine its own engagement records."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_INNOCENT_ERROR", "MODERATE", "The attribution was made on the day of the loss, when friendly-fire and hostile-fire mechanisms could reasonably be confused."
+        ]
+      ],
+      "credible_alternatives": [
+        ["Fog-of-war misattribution of a real aircraft loss to Iranian fire.", "PLAUSIBLE", "The aircraft was genuinely lost, creating a real event around which attribution could be mistaken."
+        ]
+      ],
+      "comparative_assessment": "The claim is false, but same-day combat attribution uncertainty remains a strong innocent explanation.",
+      "confidence": "MODERATE",
+      "narrative_function": "Battlefield success attribution.",
+      "falsifier": ["Internal Iranian engagement records showing no corresponding engagement while the public claim was approved would strengthen a knowledge judgment."]
+    },
+    "LL-EVO-IR-CLM-0102-P02": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "MODERATE", "The official military claimant could compare the asserted three kills against its own engagement reporting."],
+        ["COORDINATED_AMPLIFICATION", "CONTEXT_ONLY", "CONTEXTUAL", "The quantity increased from one claimed kill to three within the same information cycle."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_INNOCENT_ERROR", "MODERATE", "The claim remained within the same-day combat reporting window."
+        ]
+      ],
+      "credible_alternatives": [
+        ["Multiple real friendly-fire losses were misread as confirmation of Iranian engagements.", "PLAUSIBLE", "Three F-15 losses were real even though the causal attribution was wrong."
+        ]
+      ],
+      "comparative_assessment": "The specificity and escalation make knowledge possible, but the coincidence of three real losses preserves a substantial mistaken-attribution explanation.",
+      "confidence": "MODERATE",
+      "narrative_function": "Claim escalation / battlefield victory inflation.",
+      "falsifier": ["Contemporaneous Iranian fire-control records showing no engagements compatible with the three losses would materially strengthen a knowledge finding."]
+    },
+    "LL-EVO-IR-CLM-0201-P01": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "STRONG", "The armed forces were categorically denying the origin of missiles launched from their own territory, a matter ordinarily recorded within the military command system."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_INNOCENT_ERROR", "MODERATE", "The first denial was close enough to the incident that incomplete reporting or launch-unit attribution error remained plausible."
+        ]
+      ],
+      "credible_alternatives": [
+        ["The central command lacked complete launch reporting or believed the tracked missiles were misattributed.", "PLAUSIBLE", "War-time command reporting can lag or be compartmented."
+        ]
+      ],
+      "comparative_assessment": "Institutional access makes knowing falsity possible, but the first denial remains too close to the event to rule out reporting failure.",
+      "confidence": "MODERATE",
+      "narrative_function": "Attribution denial / regional de-escalation positioning.",
+      "falsifier": ["Launch logs or internal reporting showing the originating command had confirmed Iranian launch tracks before the denial would strengthen the assessment."]
+    },
+    "LL-EVO-IR-CLM-0202-P01": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "STRONG", "A foreign minister speaking for the state could reasonably obtain authoritative clarification of whether Iranian forces launched projectiles toward Turkey."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_KNOWLEDGE", "STRONG", "The categorical denial was repeated five days after the initial incident and after Turkish/NATO attribution had entered the public record."],
+        ["COORDINATED_AMPLIFICATION", "CONTEXT_ONLY", "MODERATE", "The denial persisted across military and diplomatic channels rather than remaining a single battlefield report."
+        ]
+      ],
+      "credible_alternatives": [
+        ["The minister continued to receive incorrect or compartmented military reporting.", "LESS_PLAUSIBLE", "A multi-day lag gives the state substantially more opportunity to reconcile its own launch records, although the public record does not contain the internal brief."
+        ]
+      ],
+      "comparative_assessment": "Given the elapsed time, direct state access and repeated categorical denial, knowing falsity is more likely than continuing innocent reporting error.",
+      "confidence": "MODERATE",
+      "narrative_function": "Attribution denial / diplomatic insulation.",
+      "falsifier": ["A contemporaneous internal brief showing the foreign ministry was still credibly informed that no Iranian launch occurred would materially weaken the judgment."]
+    },
+    "LL-EVO-IR-CLM-0203-P01": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "STRONG", "Official diplomatic messaging concerned a state military action that the state could verify from its own launch records."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_KNOWLEDGE", "STRONG", "The denial persisted more than a week after the first incident and after repeated Turkish/NATO attribution."],
+        ["COORDINATED_AMPLIFICATION", "SUPPORTS_KNOWLEDGE", "MODERATE", "The same denial was maintained across multiple official channels over time."
+        ]
+      ],
+      "credible_alternatives": [
+        ["Persistent institutional reporting failure or deliberate compartmentation kept diplomatic channels genuinely unaware of the launches.", "LESS_PLAUSIBLE", "The explanation requires an extended failure to reconcile a high-salience cross-border ballistic-missile incident with the state's own launch records."
+        ]
+      ],
+      "comparative_assessment": "The extended repetition and direct state access make knowing falsity substantially more plausible than innocent ignorance, although no internal launch log or instruction is public.",
+      "confidence": "MODERATE",
+      "narrative_function": "Sustained attribution denial / diplomatic insulation.",
+      "falsifier": ["Contemporaneous evidence that the diplomatic channel was affirmatively and credibly briefed that the launches did not originate in Iran would weaken the judgment; internal launch records available to the messaging chain would strengthen it."]
+    },
+    "LL-EVO-IR-CLM-0301-P02": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "MODERATE", "Iranian military channels had direct knowledge of the engagement but not necessarily the aircraft's ultimate recovery status."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_INNOCENT_ERROR", "MODERATE", "A combat hit followed by loss of track can be mistaken for a shootdown before the aircraft's landing is known."
+        ]
+      ],
+      "credible_alternatives": [
+        ["A genuine combat hit was overinterpreted as a kill before the aircraft's emergency landing became clear.", "PLAUSIBLE", "Independent evidence supports a real Iranian hit and emergency landing."
+        ]
+      ],
+      "comparative_assessment": "The record supports a real tactical hit and a false destruction claim, but mistaken BDA remains a substantial innocent explanation at the first publication.",
+      "confidence": "MODERATE",
+      "narrative_function": "Tactical success inflation.",
+      "falsifier": ["Evidence that the originating channel knew the aircraft had landed safely before claiming a shootdown would strengthen knowledge."]
+    },
+    "LL-EVO-IR-CLM-0302-P01": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_KNOWLEDGE", "MODERATE", "State-media repetition occurred after independent reporting described combat damage followed by an emergency landing."],
+        ["COORDINATED_AMPLIFICATION", "CONTEXT_ONLY", "CONTEXTUAL", "The downed framing was repeated through state media after the initial official claim."
+        ]
+      ],
+      "credible_alternatives": [
+        ["The outlet relied on official military BDA and discounted external reporting as adversary denial.", "PLAUSIBLE", "The public record does not establish that the outlet had authoritative internal confirmation of the landing."
+        ]
+      ],
+      "comparative_assessment": "Knowledge is possible, but the evidence does not yet distinguish deliberate repetition from reliance on incorrect official BDA strongly enough for a likely-knowledge finding.",
+      "confidence": "MODERATE",
+      "narrative_function": "State-media amplification / stealth-aircraft prestige defeat.",
+      "falsifier": ["Internal or state-channel acknowledgment of the safe landing before this publication would materially strengthen the knowledge assessment."]
+    },
+    "LL-EVO-IR-CLM-0303-P01": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "MODERATE", "The article centered an officer associated with the engagement."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_KNOWLEDGE", "STRONG", "The downed/lost framing persisted roughly a month after independent reporting that the aircraft landed safely."],
+        ["COORDINATED_AMPLIFICATION", "SUPPORTS_KNOWLEDGE", "MODERATE", "The state-media narrative persisted after a long opportunity to reconcile the aircraft's survival."
+        ]
+      ],
+      "credible_alternatives": [
+        ["The speaker and outlet continued to rely on an unrevised military kill assessment and rejected contrary reporting.", "LESS_PLAUSIBLE", "A month-long interval substantially reduces ordinary fog-of-war as an explanation, though no internal repair-status record is public."
+        ]
+      ],
+      "comparative_assessment": "By this later repetition, knowing falsehood is more likely than ordinary combat-reporting error, but direct internal knowledge remains unproven.",
+      "confidence": "MODERATE",
+      "narrative_function": "Persistent prestige-victory narrative.",
+      "falsifier": ["Evidence that the military still had credible technical reasons to believe the aircraft was lost, despite external reporting, would weaken the judgment."]
+    },
+    "LL-EVO-IR-CLM-0604-P01": {
+      "truth_adjudication": "UNRESOLVED",
+      "proposition_fidelity": "ANALYTIC_REFRAME_STRONGER_THAN_SOURCE",
+      "observed_facts": [
+        "The source claim said more than 170 enemy aircraft had been hit, including 16 fighter jets.",
+        "The legacy proposition test restated the fighter component as at least 16 aircraft destroyed/downed.",
+        "Hit, damaged, destroyed and downed are not interchangeable effects."
+      ],
+      "indicators": [],
+      "credible_alternatives": [
+        ["Some or all of the 16 referred to aircraft targeted or damaged rather than destroyed.", "PLAUSIBLE", "The source wording does not establish the stronger destroyed/downed proposition."
+        ]
+      ],
+      "comparative_assessment": "The legacy test exceeded the source proposition. Atlas cannot use a stronger analyst restatement to manufacture a falsehood; the original hit-count claim remains unresolved without aircraft-by-aircraft reconciliation.",
+      "confidence": "HIGH",
+      "narrative_function": "Aggregate combat-effect claim; metric precision unresolved.",
+      "falsifier": ["Aircraft-by-aircraft records establishing the meaning and outcome of each of the 16 claimed hits would resolve the proposition."]
+    },
+    "LL-EVO-IR-CLM-0701-P02": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_KNOWLEDGE", "MODERATE", "The claim that all three missing pilots were alive in secret Qatari custody came months after the engagements and after Qatar said remains of one pilot had been recovered."],
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "MODERATE", "Iranian authorities had direct diplomatic channels through which the status of missing military personnel could be pursued, although the complete correspondence is not public."
+        ]
+      ],
+      "credible_alternatives": [
+        ["Iran received or credited intelligence suggesting secret detention and distrusted Qatari statements about recovered remains.", "PLAUSIBLE", "The public record does not expose all intelligence or diplomatic exchanges."
+        ]
+      ],
+      "comparative_assessment": "The specificity and elapsed time make knowledge possible, but incomplete access to the underlying diplomatic and intelligence record prevents a likely-knowledge finding.",
+      "confidence": "MODERATE",
+      "narrative_function": "Custody accusation / pressure on Qatar.",
+      "falsifier": ["Diplomatic records showing Iran had been given verifiable identification of a pilot's remains before asserting all three were alive would materially strengthen the knowledge judgment."]
+    },
+    "LL-EVO-IR-CLM-0701-P03": {
+      "truth_adjudication": "FALSE",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "STRONG", "The proposition concerns whether Qatar invited Iranian participation; Iran was the intended recipient of that diplomatic communication."],
+        ["SELECTIVE_OMISSION", "SUPPORTS_KNOWLEDGE", "STRONG", "A categorical refusal-from-the-outset account omits Qatar's documented April invitation, if that communication reached the Iranian state as Qatar says."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_KNOWLEDGE", "MODERATE", "The accusation was made months after the reported invitation."
+        ]
+      ],
+      "credible_alternatives": [
+        ["The invitation did not reach the responsible Iranian officials, was materially conditional, or did not provide the access later characterized by Qatar.", "PLAUSIBLE", "The full diplomatic exchange is not public."
+        ]
+      ],
+      "comparative_assessment": "Knowledge of the omitted invitation is more likely than total institutional ignorance because Iran was the direct counterparty, but the absent full correspondence prevents a stronger conclusion.",
+      "confidence": "MODERATE",
+      "narrative_function": "Attribution of investigative obstruction.",
+      "falsifier": ["Complete correspondence showing no usable invitation reached Iran, or that Qatar later blocked an accepted invitation, would weaken the assessment."]
+    },
+    "LL-EVO-IR-CLM-0702-P01": {
+      "truth_adjudication": "MISLEADING",
+      "indicators": [
+        ["DIRECT_INSTITUTIONAL_ACCESS", "SUPPORTS_KNOWLEDGE", "STRONG", "The Iranian state was a direct party to the exchanges over access and clarification."],
+        ["SELECTIVE_OMISSION", "SUPPORTS_KNOWLEDGE", "STRONG", "Assigning sole responsibility to Qatar omits the reported April invitation and absence of an Iranian response."],
+        ["TEMPORAL_KNOWLEDGE", "SUPPORTS_KNOWLEDGE", "MODERATE", "The later accusation followed months in which the invitation could have been clarified internally."
+        ]
+      ],
+      "credible_alternatives": [
+        ["Private Qatari conduct not in the public record materially impeded the process despite the April invitation.", "PLAUSIBLE", "The full diplomatic record remains incomplete."
+        ]
+      ],
+      "comparative_assessment": "The record supports knowing omission as more likely than innocent ignorance of the invitation, while leaving room for undisclosed Qatari conduct that could affect the broader blame judgment.",
+      "confidence": "MODERATE",
+      "narrative_function": "Blame allocation / diplomatic pressure.",
+      "falsifier": ["Complete diplomatic correspondence showing Iran promptly accepted workable access and Qatar then obstructed it would materially change the assessment."]
+    }
+  }
+}
