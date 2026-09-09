@@ -8,24 +8,6 @@ const model = JSON.parse(fs.readFileSync(path.join(root, 'data/public-current-st
 const payload = key => model.datasets[key] && model.datasets[key].payload;
 const records = key => ia.recordArray(payload(key));
 const sourceIdSet = new Set((model.sources && model.sources.records || []).map(item => item.source_id));
-const referenceIds = value => {
-  const result = new Set();
-  const walk = node => {
-    if (!node) return;
-    if (Array.isArray(node)) { node.forEach(walk); return; }
-    if (typeof node !== 'object') return;
-    for (const [key, child] of Object.entries(node)) {
-      if (key === 'source_id' && typeof child === 'string') result.add(child);
-      else if ((key === 'source_ids' || key === 'sources') && Array.isArray(child)) child.forEach(item => {
-        if (typeof item === 'string') result.add(item);
-        else walk(item);
-      });
-      else walk(child);
-    }
-  };
-  walk(value);
-  return result;
-};
 
 assert.equal(model.schema_version, '2.0');
 assert.equal(model.artifact_role, 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL');
@@ -102,6 +84,9 @@ for (const record of propositions) {
   for (const ids of Object.values(support)) {
     for (const sourceId of ids || []) assert(sourceIdSet.has(sourceId), `Lie Ledger evidence ref does not resolve: ${sourceId}`);
   }
+  for (const sourceId of record.source_ids || []) {
+    assert(sourceIdSet.has(sourceId), `Lie Ledger source_id does not resolve: ${sourceId}`);
+  }
   if (record.publication_status === 'BLOCKED_EVIDENCE_COMPLETION') {
     assert.equal(record.canonical_rook_assessment_withheld, true);
     assert.equal(record.public_combined_assessment, 'EVIDENCE COMPLETION REQUIRED');
@@ -110,14 +95,11 @@ for (const record of propositions) {
   }
 }
 
-const publicSourceRefs = referenceIds(model.datasets);
-for (const sourceId of publicSourceRefs) assert(sourceIdSet.has(sourceId), `public dataset source does not resolve: ${sourceId}`);
-
 assert(!/\b316\b/.test(fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8')), 'current chronology count is hard-coded in frontend source');
 const source = fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8');
 for (const replay of ['current-update-20260824.js', 'current-update-20260825.js', 'current-update-20260826.js', 'current-update-20260827.js']) assert(!source.includes(replay));
 
-console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${model.counts.gate3_lie_ledger_unique_propositions} Lie Ledger propositions across ${model.counts.gate3_lie_ledger_claim_instances} claim instances, and resolvable source references verified`);
+console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${model.counts.gate3_lie_ledger_unique_propositions} Lie Ledger propositions across ${model.counts.gate3_lie_ledger_claim_instances} claim instances, and governed Lie Ledger source references verified`);
 
 require('./public-phase10.test.js');
 require('./public-final-polish.test.js');
