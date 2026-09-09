@@ -298,6 +298,16 @@ def apply(state: dict[str, Any], root: Path, lie_module: Any) -> None:
     for directive in completion.get("record_updates") or []:
         match = directive.get("match") or {}
         matched = [record for record in records if _matches(record, match)]
+        if not matched and "proposition_contains" in match and match.get("original_claim_id"):
+            stable_match = {
+                key: value for key, value in match.items()
+                if key != "proposition_contains"
+            }
+            stable_candidates = [
+                record for record in records if _matches(record, stable_match)
+            ]
+            if len(stable_candidates) == 1:
+                matched = stable_candidates
         if len(matched) != 1:
             raise ValueError(
                 f"completion update expected one record for {match}; found {len(matched)}"
