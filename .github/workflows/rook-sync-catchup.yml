@@ -1,0 +1,32 @@
+name: ROOK catch-up narrative sync
+
+on:
+  push:
+    branches:
+      - "rook/catchup-20260909"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: rook/catchup-20260909
+          fetch-depth: 0
+      - name: Sync bounded ROOK narrative
+        run: python scripts/sync_rook_narrative.py
+      - name: Commit generated entrypoint only when changed
+        shell: bash
+        run: |
+          if git diff --quiet -- js/public-app.js; then
+            echo "ROOK narrative already synchronized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/public-app.js
+          git commit -m "Sync Sep 7-9 ROOK current narrative"
+          git push origin HEAD:rook/catchup-20260909

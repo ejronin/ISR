@@ -24,6 +24,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_v2 as lie_ledger_v2
 import apply_lie_ledger_evidence_completion_20260909 as lie_ledger_evidence_completion
+import apply_lie_ledger_current_claims_20260909 as lie_ledger_current_claims
 
 OUT = "data/canonical-current-state-v2.json"
 CONFLICT_DAY_1 = date(2026, 2, 28)
@@ -87,6 +88,12 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     lie_ledger_evidence_completion.inject_sources(state, root)
     lie_ledger_v2.apply(state, root)
     lie_ledger_evidence_completion.apply(state, root, lie_ledger_v2)
+    lie_ledger_current_claims.apply(
+        state,
+        root,
+        lie_ledger_v2,
+        lie_ledger_evidence_completion,
+    )
     refresh_derived_counts(state)
 
     rows = war_daily_coverage(state)
@@ -115,6 +122,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_doctrine_version": state["release"]["lie_ledger_doctrine_version"],
         "lie_ledger_contract_version": state["release"]["lie_ledger_contract_version"],
         "lie_ledger_evidence_completion_version": state["release"].get("lie_ledger_evidence_completion_version"),
+        "lie_ledger_current_claim_update_version": state["release"].get("lie_ledger_current_claim_update_version"),
         "lie_ledger_v2_records": state["counts"]["lie_ledger_v2_records"],
         "lie_ledger_v2_chains": state["counts"]["lie_ledger_v2_chains"],
         "lie_ledger_v2_claim_instances": state.get("lie_ledger_v2_metrics", {}).get("claim_instances"),
