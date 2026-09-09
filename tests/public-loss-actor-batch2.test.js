@@ -20,7 +20,15 @@ assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence
 
 const losses = payload('current.material_losses').records;
 assert.equal(losses.length, model.counts.material_loss_records);
-assert.equal(losses.length, 57);
+for (const lossId of [
+  'MAT-IRN-KAVIZ-20260908',
+  'MAT-IRN-CHARMINAR-20260908',
+  'MAT-IRN-HORIZON1-20260908',
+  'MAT-IRN-RIESCO-20260908',
+  'MAT-IRN-DERYA-20260908',
+  'MAT-US-DIVE-LD-20260908',
+  'MAT-COM-NEW-ANDROS-20260909'
+]) assert(losses.some(record => record.loss_id === lossId), `accepted catch-up material-loss record missing: ${lossId}`);
 assert.equal(new Set(losses.map(record => record.loss_id)).size, losses.length);
 assert(losses.some(record => record.quantity == null), 'unknown-quantity test records are absent');
 assert(losses.some(record => record.status === 'DAMAGED'));
