@@ -56,6 +56,7 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
           domains, desktopDisplay: desktop ? getComputedStyle(desktop).display : '', mobileDisplay: mobile ? getComputedStyle(mobile).display : '', focusOutline: focusStyle?.outlineStyle || '',
           narrativeSections: gateNodes.length,
           warMilestones: war?.querySelectorAll('[data-war-milestone]').length || 0,
+          warMilestoneBodies: [...(war?.querySelectorAll('[data-war-milestone] > .step-body') || [])].map(node => node.getBoundingClientRect().width),
           warDisclaimer: war?.querySelector('.section-note')?.textContent || '',
           actorStages,
           rationaleKinds,
@@ -74,6 +75,8 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
       assert.notEqual(start.focusOutline, 'none', `focused Start Here action loses visible focus at ${width}px`);
       assert.equal(start.narrativeSections, 4, `Start Here does not expose all four cleared narrative modules at ${width}px`);
       assert.equal(start.warMilestones, 8, `War in 90 Seconds does not contain exactly eight milestones at ${width}px`);
+      assert.equal(start.warMilestoneBodies.length, 8, `War in 90 Seconds milestone content is not contained by the story-step body at ${width}px`);
+      if (width <= 390) assert(Math.min(...start.warMilestoneBodies) >= 180, `War in 90 Seconds milestone body is squeezed below a readable mobile width at ${width}px`);
       assert(/not a ranking of strategic importance/i.test(start.warDisclaimer), `War in 90 Seconds lost its non-ranking disclaimer at ${width}px`);
       assert.deepEqual(start.actorStages.map(item => item.actor).sort(), ['iran', 'us-coalition'], `objective orientation actor set changed at ${width}px`);
       assert(start.actorStages.every(item => item.stages.join('|') === 'original-public-benchmark|record-shows|current-position'), `objective orientation three-stage structure changed at ${width}px`);

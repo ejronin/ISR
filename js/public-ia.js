@@ -1723,9 +1723,12 @@
     asArray(war.milestones).forEach((milestone, index) => {
       const step = append(sequence, 'article', 'story-step');
       step.dataset.warMilestone = String(index + 1);
-      append(step, 'h3', '', milestone.title);
-      append(step, 'p', '', milestone.text);
-      const changed = append(step, 'p', 'record-status');
+      const marker = append(step, 'span', 'step-number', String(index + 1));
+      marker.setAttribute('aria-hidden', 'true');
+      const body = append(step, 'div', 'step-body');
+      append(body, 'h3', '', milestone.title);
+      append(body, 'p', '', milestone.text);
+      const changed = append(body, 'p', 'record-status');
       append(changed, 'strong', '', 'What changed: ');
       changed.append(context.documentObject.createTextNode(milestone.changed));
     });
