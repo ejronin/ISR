@@ -148,6 +148,11 @@ assert.deepEqual(state.integrity.unresolved_facility_claim_audit_refs, []);
 
 assert.equal(state.datasets['gate3.daily_coverage'].payload.records.at(0).date, '2026-02-28');
 assert.equal(state.datasets['gate3.daily_coverage'].payload.records.at(-1).date, state.release.current_osint_cutoff.slice(0, 10));
-assert.equal(state.datasets['gate3.lie_ledger'].payload.records.length, state.counts.gate3_lie_ledger_records);
+const lieLedger = state.datasets['gate3.lie_ledger'].payload;
+assert.equal(lieLedger.primary_object, 'NARRATIVE_PROPOSITION_CHAIN');
+assert.equal(lieLedger.records.length, state.counts.gate3_lie_ledger_chains);
+assert.equal(lieLedger.records.flatMap(chain => chain.proposition_records || []).length, state.counts.gate3_lie_ledger_records);
+assert.equal(lieLedger.metrics.claim_instances, state.counts.gate3_lie_ledger_claim_instances);
+assert.equal(lieLedger.metrics.narrative_chains, state.counts.gate3_lie_ledger_chains);
 
 console.log(`public-current-state consumer test: PASS - canonical current entities, ${state.chronology.length} unique events, ${sourceIds.size} sources, Gate 3 coverage, facility preservation, BDA references, damage observations, provenance and page-data mappings verified`);
