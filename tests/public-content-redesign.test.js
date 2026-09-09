@@ -6,12 +6,14 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const ia = require('../js/public-ia.js');
 const model = JSON.parse(fs.readFileSync(path.join(root, 'data', 'public-current-state.json'), 'utf8'));
+const canonicalManifest = JSON.parse(fs.readFileSync(path.join(root, 'data', 'canonical-ledger', 'manifest-v2.json'), 'utf8'));
 const source = fs.readFileSync(path.join(root, 'js', 'public-ia.js'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'css', 'public-shell.css'), 'utf8');
 
 assert.equal(model.counts.chronology_records, model.chronology.length, 'public copy must derive the accepted chronology count');
 assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00', 'frozen Gate 2 boundary changed');
-assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00', 'public status must derive the accepted current read model');
+assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff, 'public status must derive the accepted current read model');
+assert.equal(canonicalManifest.current_evidence_cutoff, canonicalManifest.accepted_updates.at(-1).known_at, 'current evidence cutoff must match the latest accepted canonical update');
 assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff, 'current status must remain distinct from the frozen Gate 2 boundary after accepted later evidence');
 assert.equal(ia.ROUTES.size, 25, 'Phase 4 must retain all accepted public routes');
 assert.equal(new Set([...ia.ROUTES.values()].map(route => route.owner)).size, 25, 'each route must retain one page owner');
