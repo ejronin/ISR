@@ -75,9 +75,12 @@ def main() -> int:
 
         baseline_canonical = canonical_v2.build_state(root)
         baseline_public_path = root / "data/public-current-state.json"
+        gate3_public_path = root / "data/public-current-state-v2.json"
         write_generated(root / "data/canonical-current-state-v2.json", canonical_v2.canonical_bytes(baseline_canonical))
         baseline_public = public_v2.build_state(root)
-        write_generated(baseline_public_path, public_v2.canonical_bytes(baseline_public))
+        baseline_public_bytes = public_v2.canonical_bytes(baseline_public)
+        write_generated(gate3_public_path, baseline_public_bytes)
+        write_generated(baseline_public_path, baseline_public_bytes)
 
         baseline_source_ids = {item["source_id"] for item in baseline_canonical["sources"]["records"]}
         baseline_event_ids = {item["event_id"] for item in baseline_canonical["chronology"]}
@@ -203,6 +206,7 @@ def main() -> int:
         write_generated(root / "data/canonical-current-state-v2.json", canonical_bytes)
         advanced_public = public_v2.build_state(root)
         public_bytes = public_v2.canonical_bytes(advanced_public)
+        write_generated(gate3_public_path, public_bytes)
         write_generated(baseline_public_path, public_bytes)
         public_losses = advanced_public["datasets"]["current.material_losses"]["payload"]["records"]
         if advanced_public["release"]["current_osint_cutoff"] != future_timestamp:
@@ -240,6 +244,7 @@ def main() -> int:
         second_public = public_v2.canonical_bytes(public_v2.build_state(root))
         if second_public != public_bytes:
             raise AssertionError("public forward regeneration is nondeterministic")
+        write_generated(gate3_public_path, second_public)
         write_generated(baseline_public_path, second_public)
         second_release = release_builder.stable_json_bytes(release_builder.build_manifest(root))
         if second_release != release_bytes:
