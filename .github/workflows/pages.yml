@@ -23,7 +23,9 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install pinned build-time image decoder
-        run: python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
+        run: |
+          python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
+          python -m pip check
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
       - name: Assemble static artifact and deployment identity
         env:
