@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_v2 as lie_ledger_v2
+import apply_lie_ledger_evidence_completion_20260909 as lie_ledger_evidence_completion
 
 OUT = "data/canonical-current-state-v2.json"
 CONFLICT_DAY_1 = date(2026, 2, 28)
@@ -81,7 +82,11 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
 
     # Forward-only semantic layer. ROOK's overlay is the only source of
     # substantive knowledge/lie judgments; the builder only normalizes structure.
+    # The evidence-completion layer first injects governed source objects, then
+    # qualifies the named ROOK blockers after the base v2 projection is built.
+    lie_ledger_evidence_completion.inject_sources(state, root)
     lie_ledger_v2.apply(state, root)
+    lie_ledger_evidence_completion.apply(state, root, lie_ledger_v2)
     refresh_derived_counts(state)
 
     rows = war_daily_coverage(state)
@@ -109,8 +114,11 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "coverage_days": len(rows),
         "lie_ledger_doctrine_version": state["release"]["lie_ledger_doctrine_version"],
         "lie_ledger_contract_version": state["release"]["lie_ledger_contract_version"],
+        "lie_ledger_evidence_completion_version": state["release"].get("lie_ledger_evidence_completion_version"),
         "lie_ledger_v2_records": state["counts"]["lie_ledger_v2_records"],
         "lie_ledger_v2_chains": state["counts"]["lie_ledger_v2_chains"],
+        "lie_ledger_v2_claim_instances": state.get("lie_ledger_v2_metrics", {}).get("claim_instances"),
+        "lie_ledger_v2_unique_propositions": state.get("lie_ledger_v2_metrics", {}).get("unique_propositions"),
     }
     state["release"]["canonical_state_identity_v2_hardening"] = prior_identity
     state["release"]["canonical_state_identity_v2"] = (
