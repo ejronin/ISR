@@ -71,12 +71,13 @@ assert.equal(ledger.metrics.unique_propositions, model.counts.gate3_lie_ledger_u
 assert.equal(ledger.metrics.claim_instances, model.counts.gate3_lie_ledger_claim_instances);
 assert(model.counts.gate3_lie_ledger_claim_instances <= propositions.length,
   'claim-instance denominator cannot exceed atomic proposition rows');
-const originatingClaimKeys = new Set(propositions.map(record => record.original_claim_id || record.claim_id || record.claim_instance_id));
+const adjudicated = propositions.filter(record => record.authority_status === 'ROOK_ADJUDICATED');
+const originatingClaimKeys = new Set(adjudicated.map(record => record.original_claim_id || record.claim_id || record.claim_instance_id));
 assert.equal(originatingClaimKeys.size, model.counts.gate3_lie_ledger_claim_instances,
-  'claim-instance count must reconcile to distinct originating statements/instances');
-const uniquePropositionIds = new Set(propositions.filter(record => record.counts_as_unique_proposition).map(record => record.proposition_id));
+  'claim-instance count must reconcile to distinct ROOK-adjudicated originating statements/instances');
+const uniquePropositionIds = new Set(adjudicated.filter(record => record.counts_as_unique_proposition).map(record => record.proposition_id));
 assert.equal(uniquePropositionIds.size, model.counts.gate3_lie_ledger_unique_propositions,
-  'unique-proposition count must reconcile independently of claim-instance count');
+  'unique-proposition count must reconcile independently within the ROOK-adjudicated scope');
 assert(propositions.every(record => record.semantic_version === '2.0'));
 assert(propositions.every(record => record.doctrine_version === ledger.doctrine_version));
 assert(propositions.every(record => record.contract_version === ledger.contract_version));
