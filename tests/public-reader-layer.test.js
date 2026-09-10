@@ -102,6 +102,8 @@ assert.equal(status({
 
 const readerSource = fs.readFileSync(path.join(root, 'src/public-reader-layer.js'), 'utf8');
 const readerCss = fs.readFileSync(path.join(root, 'src/public-reader-layer.css'), 'utf8');
+const releaseBuilder = fs.readFileSync(path.join(root, 'scripts/build_public_release.py'), 'utf8');
+const entrypointPreparation = fs.readFileSync(path.join(root, 'scripts/retire_privileged_narrative_runtime.py'), 'utf8');
 assert.match(readerSource, /What made up these monthly totals/);
 assert.match(readerSource, /Equipment quantities are not substituted for event counts/);
 assert.match(readerSource, /Facility status by actor/);
@@ -111,4 +113,15 @@ assert.match(readerSource, /The separate knowledge\/intent assessment remains pe
 assert.match(readerSource, /const positiveDamage = !negativeDamage/);
 assert.doesNotMatch(readerCss, /technical-record-metadata[\s\S]*display\s*:\s*none/i, 'internal fields must be removed structurally, not hidden by CSS');
 
-console.log('public reader layer: PASS - factual/intent separation, facility status integrity, constituent drilldown, and structural public/internal boundary verified');
+// The reader is now a pair of signed source modules, not text spliced into the
+// base registry or base stylesheet during release assembly.
+assert.match(releaseBuilder, /reader_runtime/);
+assert.match(releaseBuilder, /src\/public-reader-layer\.js/);
+assert.match(releaseBuilder, /reader_stylesheet/);
+assert.match(releaseBuilder, /src\/public-reader-layer\.css/);
+assert.doesNotMatch(releaseBuilder, /compose_reader_sources|ATLAS_PUBLIC_READER_LAYER_COMPOSED|ATLAS_PUBLIC_READER_STYLES_COMPOSED/);
+assert.doesNotMatch(releaseBuilder, /PAGE_REGISTRY|PUBLIC_STYLESHEET/);
+assert.match(entrypointPreparation, /reader_runtime/);
+assert.match(entrypointPreparation, /reader_stylesheet/);
+
+console.log('public reader layer: PASS - factual/intent separation, facility status integrity, constituent drilldown, structural public/internal boundary, and explicit signed reader assets verified');
