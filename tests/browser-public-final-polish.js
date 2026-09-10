@@ -38,56 +38,32 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
         const clocks = article?.querySelector('.evidence-clock-bar, [data-component="EvidenceClocks"]');
         const narratives = article?.querySelector('[data-narrative-gates]');
         const historical = article?.querySelector('.historical-orientation');
-        const war = narratives?.querySelector('[data-war-in-90-seconds]');
-        const objectives = narratives?.querySelector('[data-objective-orientation]');
-        const rationale = narratives?.querySelector('[data-us-war-rationale]');
-        const hormuz = narratives?.querySelector('[data-hormuz-trajectory]');
-        const domains = [...(current?.querySelectorAll('[data-orientation-domain]') || [])].map(card => ({ domain: card.dataset.orientationDomain, href: card.querySelector('.orientation-actions a')?.getAttribute('href') || '', height: card.querySelector('.orientation-actions a')?.getBoundingClientRect().height || 0, title: card.querySelector('h3')?.textContent.trim() || '' }));
+        const latest = [...(article?.querySelectorAll(':scope > section') || [])].find(node => node.querySelector(':scope > h2')?.textContent.trim() === 'Latest in the record');
+        const domains = [...(current?.querySelectorAll('[data-orientation-domain]') || [])].map(card => ({ domain: card.dataset.orientationDomain, href: card.querySelector('.orientation-actions a')?.getAttribute('href') || '', height: card.querySelector('.orientation-actions a')?.getBoundingClientRect().height || 0, title: card.querySelector('h3')?.textContent.trim() || '', evidence: card.querySelectorAll('details.evidence-drawer, [data-component="EvidenceDrawer"]').length }));
         const position = node => node ? [...article.children].indexOf(node) : -1;
         const focusTarget = current?.querySelector('.orientation-actions a'); focusTarget?.focus(); const focusStyle = focusTarget ? getComputedStyle(focusTarget) : null;
-        const actorStages = [...(objectives?.querySelectorAll('[data-objective-actor]') || [])].map(actor => ({ actor: actor.dataset.objectiveActor, stages: [...actor.querySelectorAll('[data-objective-stage]')].map(stage => stage.dataset.objectiveStage) }));
-        const rationaleKinds = [...(rationale?.querySelectorAll('[data-rationale-kind]') || [])].map(node => node.dataset.rationaleKind);
-        const hormuzStages = [...(hormuz?.querySelectorAll('[data-hormuz-stage]') || [])].map(node => node.dataset.hormuzStage);
-        const gateNodes = narratives ? [...narratives.querySelectorAll('[data-narrative-gate]')] : [];
-        const viewportOverflow = gateNodes.some(node => { const rect=node.getBoundingClientRect(); return rect.left < -1 || rect.right > innerWidth + 1 || node.scrollWidth > node.clientWidth + 1; });
+        const articleText = article?.innerText || '';
+        const overflow = [...(article?.querySelectorAll(':scope > *') || [])].some(node => { const rect=node.getBoundingClientRect(); return rect.left < -1 || rect.right > innerWidth + 1 || node.scrollWidth > node.clientWidth + 1; });
         return {
-          currentIndex: position(current), clockIndex: position(clocks), narrativeIndex: position(narratives), historicalIndex: position(historical),
+          currentIndex: position(current), clockIndex: position(clocks), narrativeIndex: position(narratives), historicalIndex: position(historical), latestIndex: position(latest),
           domains, focusOutline: focusStyle?.outlineStyle || '',
-          narrativeSections: gateNodes.length,
-          warMilestones: war?.querySelectorAll('[data-war-milestone]').length || 0,
-          warMilestoneBodies: [...(war?.querySelectorAll('[data-war-milestone] > .step-body') || [])].map(node => node.getBoundingClientRect().width),
-          warDisclaimer: war?.querySelector('.section-note')?.textContent || '',
-          actorStages,
-          rationaleKinds,
-          rationaleTitle: rationale?.querySelector('h2')?.textContent || '',
-          rationaleText: rationale?.textContent || '',
-          hormuzStages,
-          hormuzText: hormuz?.textContent || '',
-          viewportOverflow,
+          narrativeContractNull: window.ATLAS_PUBLIC_STATE?.narrativeContract === null,
+          retiredNarrativeCount: article?.querySelectorAll('[data-war-in-90-seconds],[data-objective-orientation],[data-us-war-rationale],[data-hormuz-trajectory]').length || 0,
+          internalPersonaText: /\\bROOK\\b|PR\\/CI/.test(articleText),
+          overflow,
           footer: document.querySelector('.page-footer')?.innerText || ''
         };
       })()`);
       assert.equal(start.domains.length, 4, `Start Here does not expose four current-state domains at ${width}px`);
       assert.deepEqual(start.domains.map(item => item.domain).sort(), ['diplomacy', 'economy', 'hormuz', 'military']);
-      assert(start.currentIndex >= 0 && start.clockIndex === -1 && start.narrativeIndex > start.currentIndex && start.historicalIndex > start.narrativeIndex, `Start Here reader order is not current state -> narrative context -> historical orientation at ${width}px`);
+      assert(start.currentIndex >= 0 && start.clockIndex === -1 && start.narrativeIndex === -1 && start.historicalIndex > start.currentIndex && start.latestIndex > start.historicalIndex, `Start Here reader order is not current state -> opening context -> latest evidence at ${width}px`);
       assert(start.domains.every(item => /^#\//.test(item.href)), `Start Here drill-down link is unresolved at ${width}px`);
       if (width <= 390) assert(start.domains.every(item => item.height >= 43.5), `Start Here touch target below 44px at ${width}px`);
       assert.notEqual(start.focusOutline, 'none', `focused Start Here action loses visible focus at ${width}px`);
-      assert.equal(start.narrativeSections, 4, `Start Here does not expose all four narrative modules at ${width}px`);
-      assert.equal(start.warMilestones, 8, `War in 90 Seconds does not contain exactly eight milestones at ${width}px`);
-      assert.equal(start.warMilestoneBodies.length, 8, `War in 90 Seconds milestone content is not contained by the story-step body at ${width}px`);
-      if (width <= 390) assert(Math.min(...start.warMilestoneBodies) >= 180, `War in 90 Seconds milestone body is squeezed below a readable mobile width at ${width}px`);
-      assert(/not a ranking of strategic importance/i.test(start.warDisclaimer), `War in 90 Seconds lost its non-ranking disclaimer at ${width}px`);
-      assert.deepEqual(start.actorStages.map(item => item.actor).sort(), ['iran', 'us-coalition'], `objective orientation actor set changed at ${width}px`);
-      assert(start.actorStages.every(item => item.stages.join('|') === 'original-public-benchmark|record-shows|current-position'), `objective orientation three-stage structure changed at ${width}px`);
-      assert.deepEqual(start.rationaleKinds.sort(), ['atlas-assessment', 'campaign-objectives', 'diplomatic-record', 'expected-retaliation', 'intelligence-predicate', 'strategic-regional'].sort(), `U.S. entry rationale taxonomy collapsed at ${width}px`);
-      assert.equal(start.rationaleTitle, 'Why the U.S. said it entered the war', `U.S. entry module title changed at ${width}px`);
-      assert(!/Why the war began/.test(start.rationaleText), `U.S. entry module became an omniscient war-cause explanation at ${width}px`);
-      assert.deepEqual(start.hormuzStages, ['then', 'development', 'now'], `Hormuz trajectory stages changed at ${width}px`);
-      assert(/60-day interim no-charge period/.test(start.hormuzText), `Hormuz trajectory lost the 60-day interim no-charge boundary at ${width}px`);
-      assert(/(?:recognized exclusive control is not established|Iran\b[^.!?]{0,160}\b(?:it\s+)?has not established recognized exclusive control)/i.test(start.hormuzText), `Hormuz trajectory lost the recognized-control boundary at ${width}px`);
-      assert(/proposal\s*(?:—|–|-|,)\s*not an agreement/i.test(start.hormuzText), `Hormuz trajectory lost proposal-not-agreement status at ${width}px`);
-      assert.equal(start.viewportOverflow, false, `narrative module escapes its viewport at ${width}px`);
+      assert.equal(start.narrativeContractNull, true, `retired privileged narrative contract remains active at ${width}px`);
+      assert.equal(start.retiredNarrativeCount, 0, `retired narrative modules still render at ${width}px`);
+      assert.equal(start.internalPersonaText, false, `public Overview exposes internal persona terminology at ${width}px`);
+      assert.equal(start.overflow, false, `Overview content escapes its viewport at ${width}px`);
       assert(start.domains.some(item => /strike advantage/i.test(item.title)), `reader-first military outcome is absent at ${width}px`);
       assert(start.domains.some(item => /not secured exclusive control of Hormuz/i.test(item.title)), `reader-first Hormuz outcome is absent at ${width}px`);
       assert(start.domains.some(item => /Economic pressure on Iran is severe/i.test(item.title)), `reader-first economy outcome is absent at ${width}px`);
@@ -124,6 +100,6 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
       }
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
-    console.log('browser public final polish: PASS - reader-first Start Here hierarchy, narrative context, Talks grouping, semantic Shipping state, score-free MOU detail and responsive interaction behavior verified');
+    console.log('browser public final polish: PASS - evidence-derived Start Here hierarchy, retired persona narrative path, Talks grouping, semantic Shipping state, score-free MOU detail and responsive interaction behavior verified');
   } finally { try { await cdp.call('Emulation.clearDeviceMetricsOverride'); } catch (_) {} cdp.close(); }
 })().catch(error => { console.error(error.stack || error); process.exitCode = 1; });
