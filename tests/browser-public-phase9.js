@@ -356,7 +356,7 @@ async function route(cdp, hash, key) {
     const mouVisual = await cdp.eval(`(() => ({
       analystMatrix: document.querySelectorAll('[data-agreement-balance], .agreement-balance-matrix').length,
       ranges: document.querySelectorAll('[data-agreement-balance] input[type="range"]').length,
-      scoreText: /\b\d{1,3}\s*\/\s*100\b/.test(document.querySelector('main')?.innerText || ''),
+      scoreText: (document.querySelector('main')?.innerText || '').replaceAll(' ', '').includes('/100'),
       clauses: document.querySelectorAll('[data-clause-id], .agreement-clause').length,
       text: document.querySelector('main')?.innerText || ''
     }))()`);
