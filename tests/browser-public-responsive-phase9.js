@@ -124,7 +124,7 @@ function assertRouteView(view, route, width) {
           skip.click();
           const majorSelectors = [
             '[data-component="MapView"]', '.timeline-explorer', '.chronology-controls', '.chronology-list',
-            '.lie-ledger-controls', '.lie-ledger-list', '[data-loss-side-group]', '[data-imagery-summary]'
+            '.reader-ledger-controls', '.reader-lie-ledger', '[data-loss-side-group]', '[data-imagery-summary]'
           ].join(',');
           const viewportWidth = document.documentElement.clientWidth;
           return {
@@ -167,7 +167,7 @@ function assertRouteView(view, route, width) {
           }
           const evidence = main.querySelector('.evidence-drawer');
           if (evidence) { evidence.open = true; result.evidence = evidence.open; }
-          const ledger = main.querySelector('.lie-ledger-record');
+          const ledger = main.querySelector('[data-reader-finding] .reader-how-we-know');
           if (ledger) { ledger.open = true; result.ledger = ledger.open; }
           const imagery = main.querySelector('[data-imagery-summary]');
           if (imagery) { imagery.open = true; result.imagery = imagery.open; }
@@ -180,7 +180,7 @@ function assertRouteView(view, route, width) {
           };
         })()`);
         if (route.key === 'timeline.war') assert.equal(interaction.timeline, true, `timeline state is unusable at ${width}px`);
-        if (route.key === 'evidence.information') assert.equal(interaction.ledger, true, `Lie Ledger cannot expand at ${width}px`);
+        if (route.key === 'evidence.information') assert.equal(interaction.ledger, true, `reader claim evidence cannot expand at ${width}px`);
         if (route.key === 'military.imagery') assert.equal(interaction.imagery, true, `imagery detail cannot expand at ${width}px`);
         if (route.key === 'military.losses') assert.equal(interaction.losses, true, `loss methodology cannot expand at ${width}px`);
         assert(interaction.pageScrollWidth <= interaction.pageWidth, `representative interactive state causes overflow: ${route.key} at ${width}px`);
@@ -200,7 +200,7 @@ function assertRouteView(view, route, width) {
     });
     assert.equal(polish.status, 0, `final-polish browser audit failed with status ${polish.status}`);
 
-    console.log(`browser public responsive Phase 9: PASS - ${ia.ROUTES.size} routes at ${VIEWPORTS.join('px and ')}px; ${cases} route/viewport cases plus final-polish discoverability audit verified`);
+    console.log(`browser public responsive reader contract: PASS - ${ia.ROUTES.size} routes at ${VIEWPORTS.join('px and ')}px; ${cases} route/viewport cases plus final-polish discoverability audit verified`);
   } finally {
     try { await cdp.call('Emulation.clearDeviceMetricsOverride'); } catch (_) { /* browser cleanup handles a lost target */ }
     cdp.close();
