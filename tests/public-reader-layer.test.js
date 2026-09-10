@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
-const reader = require('../js/public-reader-layer.js');
+const reader = require('../src/public-reader-layer.js');
 
 assert.equal(reader.READER_LAYER_VERSION, 'atlas-reader-v1');
 
@@ -62,8 +62,8 @@ assert.equal(status({
   operational_effect_status: 'OPERATIONAL'
 }), 'operational');
 
-const readerSource = fs.readFileSync(path.join(root, 'js/public-reader-layer.js'), 'utf8');
-const readerCss = fs.readFileSync(path.join(root, 'css/public-reader-layer.css'), 'utf8');
+const readerSource = fs.readFileSync(path.join(root, 'src/public-reader-layer.js'), 'utf8');
+const readerCss = fs.readFileSync(path.join(root, 'src/public-reader-layer.css'), 'utf8');
 assert.match(readerSource, /What made up these monthly totals/);
 assert.match(readerSource, /Equipment quantities are not substituted for event counts/);
 assert.match(readerSource, /Facility status by actor/);
