@@ -1,7 +1,7 @@
 # SUPERSEDED — ROOK routine narrative update lane
 
-**Status:** HISTORICAL / NON-BINDING  
-**Superseded:** 2026-09-10  
+**Status:** HISTORICAL / NON-BINDING
+**Superseded:** 2026-09-10
 **Current engineering-governance reference:** `docs/ENGINEERING_DOCTRINE.md`
 
 The former routine lane that gave ROOK bounded authority to edit public narrative fields is retired as project governance.
