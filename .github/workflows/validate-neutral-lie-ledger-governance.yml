@@ -6,6 +6,7 @@ on:
       - "evidence/**"
     paths:
       - "scripts/neutralize_lie_ledger_governance.py"
+      - "scripts/build_lie_ledger_evidence_adjudication.py"
       - "tests/lie-ledger-governance-neutralization.test.py"
       - "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md"
       - "schemas/lie-ledger-evidence-adjudication-v2.json"
@@ -22,6 +23,7 @@ on:
   pull_request:
     paths:
       - "scripts/neutralize_lie_ledger_governance.py"
+      - "scripts/build_lie_ledger_evidence_adjudication.py"
       - "tests/lie-ledger-governance-neutralization.test.py"
       - "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md"
       - "schemas/lie-ledger-evidence-adjudication-v2.json"
@@ -57,6 +59,7 @@ jobs:
       - name: Compile neutral governance implementation
         run: |
           python -m py_compile scripts/neutralize_lie_ledger_governance.py
+          python -m py_compile scripts/build_lie_ledger_evidence_adjudication.py
           python -m py_compile scripts/build_canonical_current_state_v2_final.py
           python -m py_compile scripts/build_public_current_state_v2_hardened.py
           python -m py_compile scripts/validate_lie_ledger_v2.py
@@ -88,6 +91,7 @@ jobs:
               Path('docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md'),
               Path('schemas/lie-ledger-evidence-adjudication-v2.json'),
               Path('scripts/neutralize_lie_ledger_governance.py'),
+              Path('scripts/build_lie_ledger_evidence_adjudication.py'),
               Path('scripts/build_canonical_current_state_v2_final.py'),
               Path('scripts/build_public_current_state_v2_hardened.py'),
               Path('scripts/validate_lie_ledger_v2.py'),
@@ -107,5 +111,16 @@ jobs:
               for token in forbidden:
                   if token in text:
                       raise SystemExit(f'active persona-authority token in {path}: {token}')
+
+          final_builder = Path('scripts/build_canonical_current_state_v2_final.py').read_text(encoding='utf-8')
+          for legacy_import in (
+              'import build_lie_ledger_v2',
+              'import apply_lie_ledger_evidence_completion_20260909',
+              'import apply_lie_ledger_current_claims_20260909',
+          ):
+              if legacy_import in final_builder:
+                  raise SystemExit(f'production final builder bypasses neutral entrypoint: {legacy_import}')
+          if 'import build_lie_ledger_evidence_adjudication as lie_ledger_pipeline' not in final_builder:
+              raise SystemExit('production final builder is not bound to neutral evidence-adjudication entrypoint')
           print('successor governance source scan: PASS')
           PY
