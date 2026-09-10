@@ -5,6 +5,7 @@ on:
     branches:
       - "gate3/**"
       - "fix/lie-ledger-semantic-contract-20260909"
+      - "fix/gate3-v2-registration-20260909"
   pull_request:
     paths:
       - "data/gate3/**"
@@ -14,6 +15,7 @@ on:
       - "data/lie-ledger-v2-rook-authority.json"
       - "docs/LIE_LEDGER_ANALYTICAL_AUTHORITY_AND_EVIDENCE_CONTRACT_20260909.md"
       - "docs/LIE_LEDGER_SUPERSEDED_RULE_REGISTRY_20260909.md"
+      - "docs/gate3-v2-registration.md"
       - "schemas/canonical-*-v2.json"
       - "schemas/lie-ledger-v1.json"
       - "schemas/lie-ledger-v2.json"
@@ -22,6 +24,8 @@ on:
       - "scripts/build_public_current_state_v2*.py"
       - "scripts/build_lie_ledger_v2.py"
       - "scripts/validate_lie_ledger_v2.py"
+      - "tests/gate3-v2-*.test.py"
+      - "requirements-build.txt"
 
 permissions:
   contents: read
@@ -39,7 +43,17 @@ jobs:
       - name: Install build requirements
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements-build.txt ]; then python -m pip install -r requirements-build.txt; fi
+          if [ -f requirements-build.txt ]; then python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt; fi
+          python -m pip check
+
+      - name: Verify Gate 3 v2 registration authority
+        run: |
+          python scripts/gate3_v2_registration.py --verify
+          python tests/gate3-v2-registration.test.py
+
+      - name: Exercise Gate 3 v2 forward-update canary
+        run: |
+          python tests/gate3-v2-forward-update-canary.test.py
 
       - name: Verify sealed v1 canonical baseline
         run: |
@@ -66,6 +80,7 @@ jobs:
 
       - name: Determinism checks
         run: |
+          python scripts/gate3_v2_registration.py --verify
           python scripts/build_canonical_current_state_v2_final.py --check --output data/canonical-current-state-v2.json
           python scripts/build_public_current_state_v2_hardened.py --check --output data/public-current-state-v2.json
 
