@@ -51,8 +51,9 @@ Atlas has multiple clocks. They are deliberately not interchangeable.
 5. Across accepted lineage, `evidence_cutoff` is **non-decreasing**. It may advance or remain equal; it may never regress.
 6. `current_evidence_cutoff` is derived from the accepted lineage tip. It is not derived from `known_at` and cannot be substituted for it.
 7. The resulting current evidence horizon may never precede frozen `gate2_evidence_cutoff`. The migrated pre-registrar prefix itself may contain earlier cutoffs while it approaches the frozen boundary; those entries are independently pinned and are not rewritten.
-8. Event/publication/record-knowledge clocks preserve their own chronology. They do not control accepted packet ordering unless a specific contract explicitly says so.
-9. Registration is transactional. Any temporal, schema, lineage, packet-hash, consumer-dry-run, or atomic-write failure leaves the authoritative manifest byte-for-byte unchanged.
+8. For every **registrar-era** packet, any event `game_knowledge_time` or record-level `knowledge_time` carried by that packet must be `<=` the packet's `known_at`. A packet cannot become knowledge-effective before information inside it is itself recorded as known. The independently pinned five-packet pre-registrar prefix is grandfathered because its immutable legacy bytes include minute-level knowledge timestamps created before this contract; those packets are not rewritten retroactively.
+9. Event/publication/record-knowledge clocks otherwise preserve their own chronology. They do not control accepted packet ordering or evidence-horizon derivation unless a specific contract explicitly says so.
+10. Registration is transactional. Any temporal, schema, lineage, packet-hash, consumer-dry-run, or atomic-write failure leaves the authoritative manifest byte-for-byte unchanged.
 
 ### Examples
 
@@ -82,6 +83,7 @@ Assume the accepted current evidence horizon is already Sep. 10. On Sep. 11 Atla
 event/source time = 2026-09-08...
 evidence_cutoff    = 2026-09-10...   # horizon maintained
 known_at           = 2026-09-11...   # new knowledge
+game_knowledge_time = 2026-09-11...  # must not exceed packet known_at
 ```
 
 The historical timestamp lives on the event/source. The packet records when Atlas learned it. The evidence horizon stays non-regressing. If the same review genuinely advances collection beyond Sep. 10, its `evidence_cutoff` may advance as well, provided it remains `<= known_at`.
@@ -95,12 +97,21 @@ known_at        = 2026-09-11T23:00:00-04:00
 
 Invalid because the packet asserts an evidence horizon after its own knowledge-effective time.
 
+**Invalid future record knowledge**
+
+```text
+known_at            = 2026-09-11T23:00:00-04:00
+game_knowledge_time = 2026-09-12T00:00:00-04:00
+```
+
+Invalid for registrar-era packets because the packet would become effective before the event-level knowledge it contains. Rejection occurs before manifest mutation.
+
 ## Temporal comparison audit
 
 The production audit classified temporal comparisons as follows:
 
 - **Evidence chronology:** packet `evidence_cutoff`, manifest `current_evidence_cutoff`, Gate 2 boundary, and release `current_osint_cutoff`. Non-regression and derivation are owned centrally.
-- **Knowledge chronology:** packet `known_at` strict accepted-lineage order; record/event `game_knowledge_time` remains record-level knowledge metadata.
+- **Knowledge chronology:** packet `known_at` strict accepted-lineage order; registrar-era record/event `game_knowledge_time` and `knowledge_time` may not exceed the enclosing packet's `known_at`.
 - **Authority/registration chronology:** append sequence, acceptance basis, lineage hashes, and transactional registration. No acceptance wall-clock is overloaded onto `known_at`.
 - **Observation/event chronology:** `event_date`/`event_time`; chronology sort order is occurrence order, not packet order.
 - **Publication chronology:** source `published_date` and `public_available_time`; public availability may not predate the represented event date where that field is used by Gate 3 event validation.
@@ -116,7 +127,7 @@ Remaining downstream equality checks (canonical -> public -> release -> build-in
 Registration performs all checks before replacing the manifest:
 
 1. parse and schema-validate the candidate packet;
-2. validate packet temporal semantics through `canonical_temporal_contract`;
+2. validate packet and registrar-era record-level temporal semantics through `canonical_temporal_contract`;
 3. require `status: ACCEPTED`;
 4. normalize packet bytes with the same UTF-8 CRLF-to-LF contract used by the Gate 3 consumer;
 5. reject duplicate packet IDs and paths;
@@ -133,7 +144,7 @@ If any step fails, the authoritative manifest remains byte-for-byte unchanged. T
 
 Manifest lineage version `1.0` binds sequence, packet ID, path, packet SHA-256, `known_at`, `evidence_cutoff`, acceptance basis, and previous lineage digest. Static authority, lineage genesis, and the independently pinned five-packet migration tip remain unchanged.
 
-The five packets accepted through September 6 are not rewritten. Their bytes, SHA-256 values, stable IDs, and evidence semantics remain frozen. They retain `acceptance_basis: LEGACY_MANIFEST_ACCEPTED_PRE_REGISTRAR`. Future accepted packets use `PACKET_STATUS_ACCEPTED` and must carry `status: "ACCEPTED"`.
+The five packets accepted through September 6 are not rewritten. Their bytes, SHA-256 values, stable IDs, and evidence semantics remain frozen. They retain `acceptance_basis: LEGACY_MANIFEST_ACCEPTED_PRE_REGISTRAR`. Because those immutable packets predate the registrar-era record-knowledge boundary, their existing event-level knowledge timestamps are grandfathered rather than rewritten. Future accepted packets use `PACKET_STATUS_ACCEPTED`, must carry `status: "ACCEPTED"`, and must satisfy the full record-level knowledge boundary.
 
 Frozen Gate 2 remains:
 
@@ -144,7 +155,7 @@ Frozen Gate 2 remains:
 Permanent tests include:
 
 - `tests/gate3-v2-registration.test.py` — transactional authority/immutability;
-- `tests/gate3-v2-temporal-contract.test.py` — table-driven valid/invalid temporal matrix, late historical evidence, transactional rejects, and shared-authority anti-recurrence;
+- `tests/gate3-v2-temporal-contract.test.py` — table-driven valid/invalid temporal matrix, late historical evidence, future record-knowledge rejection, transactional rejects, and shared-authority anti-recurrence;
 - `tests/gate3-v2-forward-update-canary.test.py` — ordinary future evidence + future knowledge through the production path;
 - `tests/gate3-v2-delayed-knowledge-canary.test.py` — more-than-one-day knowledge lag through the real registrar, canonical v2, public v2, Lie Ledger validation, release model, and deterministic regeneration;
 - `tests/gate3-v2-sep7-replay.test.py` — isolated replay of the exact Sep. 7 payload from locked PR #62 head, adding only the registrar-required acceptance status in the temporary proving workspace because that draft packet predates the registrar.
