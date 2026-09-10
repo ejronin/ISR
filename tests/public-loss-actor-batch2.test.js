@@ -13,7 +13,7 @@ const payload = key => model.datasets[key] && model.datasets[key].payload;
 
 assert.equal(model.counts.chronology_records, model.chronology.length);
 assert.equal(model.counts.canonical_source_records, model.sources.records.length);
-assert.equal(model.counts.accepted_update_packets, canonicalManifest.accepted_updates.length);
+assert.equal(model.counts.gate3_update_packets, canonicalManifest.accepted_updates.length);
 assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
 assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff);
 assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
