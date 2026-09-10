@@ -26,6 +26,9 @@ def command(script: str, *args: str) -> tuple[str, ...]:
     return (sys.executable, script, *args)
 
 
+# Build mode preserves the currently qualified compatibility sequence exactly.
+# The v1 public artifact is validated before the v2 public builder intentionally
+# promotes/overwrites data/public-current-state.json with the current schema.
 BUILD_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/build_canonical_current_state.py"),
     command("scripts/build_canonical_current_state.py", "--check"),
@@ -42,12 +45,15 @@ BUILD_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/validate_public_current_state_v2.py"),
 )
 
+# Check mode starts from the final promoted repository state. The legacy public
+# builder cannot be checked against data/public-current-state.json at this point
+# because that path now correctly contains schema v2. Its compatibility output
+# was already byte-checked during BUILD_COMMANDS before promotion. Canonical v1
+# has a distinct output path, so it remains independently checkable here.
 CHECK_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/build_canonical_current_state.py", "--check"),
     command("scripts/validate_canonical_authority.py"),
     command("scripts/validate_canonical_update_pipeline.py"),
-    command("scripts/build_public_current_state.py", "--check"),
-    command("scripts/validate_public_current_state.py"),
     command("scripts/build_canonical_current_state_v2_final.py", "--check", "--output", CANONICAL_V2),
     command("scripts/validate_gate3_final.py"),
     command("scripts/build_public_current_state_v2_hardened.py", "--check", "--output", PUBLIC_CURRENT),
@@ -73,14 +79,14 @@ def main() -> int:
     parser.add_argument(
         "--check",
         action="store_true",
-        help="Verify tracked derived state without writing it",
+        help="Verify final promoted derived state without writing it",
     )
     args = parser.parse_args()
     commands = CHECK_COMMANDS if args.check else BUILD_COMMANDS
     run(commands, Path(args.root))
     print(
         "current-release-state: PASS "
-        + ("verified without writes" if args.check else "built and verified"),
+        + ("final promoted state verified without writes" if args.check else "built and verified"),
         flush=True,
     )
     return 0
