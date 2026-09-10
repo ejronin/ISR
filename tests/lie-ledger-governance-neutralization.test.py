@@ -25,11 +25,10 @@ import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_v2 as lie_ledger_v2
 import neutralize_lie_ledger_governance as neutral
 
-# Frozen after the first exact-main semantic capture. Until populated, CI prints
-# the digest so it can be independently pinned before historical replay code is
-# refactored. Once set, any substantive drift fails even if both sides of the
-# migration happen to drift together.
-EXPECTED_BASELINE_DIGEST: str | None = None
+# Frozen from the exact pre-refactor replay path after the first successful
+# neutral-governance parity run. This prevents later replay refactors from moving
+# both sides of a comparison together while silently changing substance.
+EXPECTED_BASELINE_DIGEST = "52767b85fa54264bfbd94bbea5ee62c55d0f9831f10bb5e71c86573e4a0c420d"
 
 TEXT_NORMALIZATION = {
     "ROOK credible alternative.": "Credible alternative retained from the accepted assessment record.",
@@ -226,10 +225,9 @@ def main() -> None:
     before_metrics = numeric_metrics(original.get("lie_ledger_v2_metrics") or {})
     before_counts = ledger_counts(original)
 
-    if EXPECTED_BASELINE_DIGEST is not None:
-        assert before_digest == EXPECTED_BASELINE_DIGEST, (
-            f"historical replay substantive baseline drifted: {before_digest} != {EXPECTED_BASELINE_DIGEST}"
-        )
+    assert before_digest == EXPECTED_BASELINE_DIGEST, (
+        f"historical replay substantive baseline drifted: {before_digest} != {EXPECTED_BASELINE_DIGEST}"
+    )
 
     neutral.neutralize(migrated)
 
