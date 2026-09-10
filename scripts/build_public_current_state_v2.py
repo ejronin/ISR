@@ -13,6 +13,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_public_current_state as public_v1
+import canonical_temporal_contract as temporal
 
 CANONICAL_V1 = "data/canonical-current-state.json"
 CANONICAL_V2 = "data/canonical-current-state-v2.json"
@@ -70,8 +71,8 @@ def public_chronology(canonical: dict[str, Any]) -> tuple[list[dict[str, Any]], 
     """Resolve generated chronology source pointers without choosing conflicts.
 
     Gate 3 preserves some derived side/legacy reference keys that do not name a
-    catalog variant.  The public projection may select the sole variant when
-    there is only one.  Where multiple versions exist it deliberately removes
+    catalog variant. The public projection may select the sole variant when
+    there is only one. Where multiple versions exist it deliberately removes
     the invalid key so the shared resolver displays every preserved variant.
     Canonical evidence and source records remain unchanged.
     """
@@ -156,6 +157,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
     if canonical.get("schema_version") != "2.0":
         raise ValueError("Gate 3 public builder requires canonical-current-state-v2")
+    temporal.validate_current_state_temporal_projection(canonical, label="canonical Gate 3 v2 public input")
 
     # This validates the sealed v1 authority and materializes its accepted
     # public-only identity additions before Gate 3 overlays the current state.
@@ -267,6 +269,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "v1_public_contract_validated_before_v2_overlay": True,
         "phase9_routes_consume_gate3_state": True,
     })
+    temporal.validate_current_state_temporal_projection(state, label="public Gate 3 v2 read model")
     return state
 
 
