@@ -1,7 +1,7 @@
 # ATLAS ISR — Engineering Doctrine Bootstrap
 
-**Status:** CONTROLLING ENGINEERING GOVERNANCE UNTIL REPLACED BY THE LEAD PUBLIC PRODUCT ENGINEER  
-**Effective:** 2026-09-10  
+**Status:** CONTROLLING ENGINEERING GOVERNANCE UNTIL REPLACED BY THE LEAD PUBLIC PRODUCT ENGINEER
+**Effective:** 2026-09-10
 **Purpose:** Remove prior engineer/persona authority structures as binding project law and give the Lead Public Product Engineer authority to rebuild the engineering organization around the product.
 
 ## 1. This document supersedes prior engineering-authority doctrine
