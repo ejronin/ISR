@@ -7,8 +7,16 @@ on:
       - "src/public-reader-layer.css"
       - "scripts/build_public_release.py"
       - "scripts/build_public_release_core.py"
+      - "scripts/retire_privileged_narrative_runtime.py"
+      - "scripts/sync_rook_narrative.py"
+      - "config/rook-narrative-current.json"
       - "tests/public-reader-layer.test.js"
+      - "tests/neutral-current-narrative.test.py"
+      - "tests/public-final-polish.test.js"
+      - "tests/browser-public-final-polish.js"
+      - "tests/browser-public-render-review.js"
       - "docs/ENGINEERING_DOCTRINE.md"
+      - "docs/PRIVILEGED_NARRATIVE_RETIREMENT_2026-09-10.md"
       - ".github/workflows/validate-reader-rearchitecture.yml"
 
 permissions:
@@ -28,8 +36,11 @@ jobs:
       - name: Reader-layer static and invariant checks
         run: |
           node --check src/public-reader-layer.js
+          node --check tests/browser-public-final-polish.js
+          node --check tests/browser-public-render-review.js
           node tests/public-reader-layer.test.js
-          python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py
+          python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py scripts/retire_privileged_narrative_runtime.py tests/neutral-current-narrative.test.py
+          python tests/neutral-current-narrative.test.py
       - name: Verify composition source is structural
         run: |
           python - <<'PY'
@@ -46,4 +57,6 @@ jobs:
           assert 'display: none !important' not in css_text
           assert 'Combined ROOK assessment' not in js_text
           assert 'ROOK verdict / PR/CI evidence boundary' not in js_text
+          assert not (root / 'config' / 'rook-narrative-current.json').exists()
+          assert not (root / 'scripts' / 'sync_rook_narrative.py').exists()
           PY

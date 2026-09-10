@@ -2,28 +2,39 @@
 
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
+const { spawnSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
 const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
 const source = read('js/public-ia.js');
 const appSource = read('js/public-app.js');
 const css = read('css/public-shell.css');
+const releaseBuilder = read('scripts/build_public_release.py');
+const retirementScript = path.join(root, 'scripts', 'retire_privileged_narrative_runtime.py');
 
-const rookNarrative = JSON.parse(read('config/rook-narrative-current.json'));
-const rookKeys = [
-  'schema_version', 'contract_version', 'evidence_as_of',
-  'war90_current_title', 'war90_current_text', 'war90_current_changed',
-  'us_record_shows', 'us_current_position', 'iran_record_shows', 'iran_current_position', 'hormuz_now'
-].sort();
-assert.deepEqual(Object.keys(rookNarrative).sort(), rookKeys, 'ROOK routine narrative slot schema changed');
-assert.equal(rookNarrative.schema_version, '1.0', 'ROOK routine narrative schema version changed');
-assert.equal(rookNarrative.contract_version, 'atlas-final-narrative-v1', 'ROOK routine narrative contract version changed');
-assert(/^20\d{2}-\d{2}-\d{2}$/.test(rookNarrative.evidence_as_of), 'ROOK evidence_as_of must be YYYY-MM-DD');
-assert(appSource.includes('ROOK_NARRATIVE_CURRENT_BEGIN') && appSource.includes('ROOK_NARRATIVE_CURRENT_END'), 'ROOK generated narrative slot markers are missing');
-for (const key of rookKeys.filter(key => !['schema_version', 'contract_version', 'evidence_as_of'].includes(key))) {
-  assert(typeof rookNarrative[key] === 'string' && rookNarrative[key].trim(), `ROOK routine slot ${key} is empty`);
-  assert(appSource.includes(rookNarrative[key]) || appSource.includes(`ROOK_NARRATIVE_CURRENT.${key}`), `ROOK routine slot ${key} is not synchronized into public-app`);
+assert.equal(fs.existsSync(path.join(root, 'config', 'rook-narrative-current.json')), false, 'retired persona narrative config remains active');
+assert.equal(fs.existsSync(path.join(root, 'scripts', 'sync_rook_narrative.py')), false, 'retired persona narrative sync script remains active');
+assert(fs.existsSync(retirementScript), 'neutral narrative retirement transform is missing');
+assert(releaseBuilder.includes('import retire_privileged_narrative_runtime as narrative_retirement'), 'release builder does not import neutral narrative retirement');
+assert(releaseBuilder.includes('narrative_retirement.apply(root)'), 'release builder does not retire privileged narrative before signing');
+assert(releaseBuilder.indexOf('narrative_retirement.apply(root)') < releaseBuilder.indexOf('compose_reader_sources(root)'), 'narrative retirement must precede reader composition');
+
+const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'atlas-neutral-narrative-'));
+try {
+  fs.mkdirSync(path.join(temp, 'js'));
+  fs.writeFileSync(path.join(temp, 'js', 'public-app.js'), appSource);
+  const run = spawnSync(process.env.PYTHON || 'python3', [retirementScript, '--root', temp], { encoding: 'utf8' });
+  assert.equal(run.status, 0, `neutral narrative retirement transform failed: ${run.stderr || run.stdout}`);
+  const deployableApp = fs.readFileSync(path.join(temp, 'js', 'public-app.js'), 'utf8');
+  assert(!deployableApp.includes('ROOK_NARRATIVE_CURRENT'), 'deployable entrypoint still contains persona narrative payload');
+  assert(!deployableApp.includes('FINAL_NARRATIVE_GATES'), 'deployable entrypoint still contains retired narrative contract');
+  assert(!deployableApp.includes('narrativeContract: FINAL_NARRATIVE_GATES'), 'deployable entrypoint still supplies retired narrative contract');
+  assert(deployableApp.includes('narrativeContract: null'), 'deployable entrypoint does not explicitly disable the retired narrative hook');
+  assert(deployableApp.includes('ATLAS_PRIVILEGED_NARRATIVE_RETIRED'), 'deployable entrypoint lacks retirement marker');
+} finally {
+  fs.rmSync(temp, { recursive: true, force: true });
 }
 
 for (const phrase of [
@@ -41,7 +52,9 @@ for (const phrase of [
 
 assert(source.includes("now.dataset.currentStateSummary = 'four-domain'"), 'Start Here current-state summary is not explicitly four-domain');
 for (const domain of ['Military', 'Hormuz', 'Economy', 'Diplomacy']) assert(source.includes(`domain: '${domain}'`), `Start Here missing ${domain} orientation card`);
-assert(source.includes("const startState = context.route.key === 'start.overview' ? article.querySelector('[data-current-state-summary]')"), 'Start Here evidence clock is not anchored after current state');
+assert(source.includes("const firstWar = context.model.chronology.find"), 'Start Here opening-war context is not derived from chronology');
+assert(source.includes("const diplomaticEvents = context.model.chronology.filter"), 'Start Here diplomacy context is not derived from chronology');
+assert(source.includes("const publicView = modelData(context.model, 'analysis.endgame_public_view')"), 'Start Here does not consume its neutral public evidence view');
 assert(source.includes("wartime.dataset.agreementGroup = 'wartime'"), 'wartime agreements group is absent');
 const diplomacyPageSource = source.slice(source.indexOf('function DiplomacyPage'), source.indexOf('function MouPage'));
 assert(!diplomacyPageSource.includes("'analysis.endgame_public_view'"), 'Talks overview reaches outside its mapped agreements/diplomacy evidence contract');
@@ -50,30 +63,15 @@ assert(source.includes("notice.dataset.stateNotice = variant"), 'State Notice co
 assert(source.includes("variant: 'no-geolocated-records'"), 'Shipping zero geography does not use the semantic State Notice');
 assert(source.includes("variant: 'dependency-unavailable'"), 'dependency unavailable State Notice is not used');
 
-for (const phrase of [
-  'FINAL_NARRATIVE_GATES',
-  'War in 90 Seconds',
-  "These milestones are selected to explain the conflict's progression. They are not a ranking of strategic importance.",
-  'Opening strikes — Feb. 28',
-  'The MOU breaks down — Jul. 7',
-  'Across prewar policy and objectives publicly formalized during the opening and early wartime period',
-  'Original public benchmark',
-  'Why the U.S. said it entered the war',
-  'Intelligence predicate',
-  'Expected-retaliation rationale',
-  'Wartime campaign objectives',
-  '60-day interim no-charge period'
-]) assert(appSource.includes(phrase), `missing cleared narrative-gate semantic contract: ${phrase}`);
-assert(/proposal\s*(?:—|–|-|,)\s*not an agreement/i.test(appSource), 'missing cleared narrative-gate semantic contract: proposal, not an agreement');
-
-assert(source.includes("setAttribute('data-war-in-90-seconds', 'approved')"), 'War in 90 Seconds lacks deterministic approval metadata');
-assert(source.includes(".dataset.objectiveOrientation = 'approved'"), 'objective orientation lacks deterministic approval metadata');
-assert(source.includes(".dataset.usWarRationale = 'approved'"), 'U.S. rationale module lacks deterministic approval metadata');
-assert(source.includes(".dataset.hormuzTrajectory = 'approved'"), 'Hormuz trajectory lacks deterministic approval metadata');
-assert(source.includes('renderFinalNarrativeGates(frame.article, context);'), 'OverviewPage does not own the cleared narrative modules');
-assert(appSource.includes('narrativeContract: FINAL_NARRATIVE_GATES'), 'public app does not supply the approved narrative contract to the page owner');
-assert(source.includes("const startState = context.route.key === 'start.overview' ? article.querySelector('[data-current-state-summary]')"), 'Start Here Evidence Clock is not anchored to current state before narrative orientation');
-assert(!appSource.includes('Why the war began'), 'U.S. rationale module was broadened into an omniscient war-cause heading');
+const retirementNote = read('docs/PRIVILEGED_NARRATIVE_RETIREMENT_2026-09-10.md');
+for (const eventId of [
+  'G3-US-IRAN-TANKERS-20260908',
+  'G3-IRAN-JORDAN-BASE-ATTACK-20260908',
+  'G3-HOUTHI-SAUDI-ENERGY-ATTACKS-20260908',
+  'G3-NEW-ANDROS-DRONE-STRIKE-20260909',
+  'G3-HORMUZ-TRAFFIC-20260909',
+  'G3-BRENT-100-20260909'
+]) assert(retirementNote.includes(eventId), `retired narrative evidence parity note missing ${eventId}`);
 
 for (const phrase of [
   'Final polish design-system convergence', '--atlas-surface-card', '--atlas-focus-ring',
@@ -84,4 +82,4 @@ assert(css.includes('outline: 2px solid var(--atlas-focus-ring)'), 'editorial H1
 assert(css.includes('min-height: 2.75rem'), 'touch-target floor is absent');
 assert(!css.includes('font-size: .58rem'), 'final polish still depends on sub-readable .58rem mobile type');
 
-console.log('public final polish: PASS - current-state hierarchy, semantic state notices, Talks grouping, compact clocks, cleared narrative gates and shared interaction/readability contracts verified');
+console.log('public final polish: PASS - current-state hierarchy, semantic state notices, Talks grouping, neutral narrative retirement and shared interaction/readability contracts verified');
