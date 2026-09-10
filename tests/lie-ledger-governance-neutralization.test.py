@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Parity contract for neutral Lie Ledger governance migration.
 
-This test intentionally exercises the committed canonical fixture rather than a
-synthetic record. It proves that neutralization changes governance vocabulary and
-provenance placement without changing substantive adjudication or evidence.
+The test constructs the pre-neutral Lie Ledger directly from the historical
+migration inputs, then proves that neutral governance changes only governance
+vocabulary/provenance placement. It also verifies that the production final
+builder, once wired to the neutralizer, preserves the same substantive record.
 """
 from __future__ import annotations
 
 import copy
-import json
 import sys
 from pathlib import Path
 from typing import Any
@@ -16,9 +16,12 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import apply_lie_ledger_current_claims_20260909 as current_claims
+import apply_lie_ledger_evidence_completion_20260909 as evidence_completion
+import build_canonical_current_state_v2_final as final_builder
+import build_canonical_current_state_v2_hardened as hardened
+import build_lie_ledger_v2 as lie_ledger_v2
 import neutralize_lie_ledger_governance as neutral
-
-CANONICAL = ROOT / "data/canonical-current-state-v2.json"
 
 
 def unwrap(item: dict[str, Any]) -> dict[str, Any]:
@@ -31,6 +34,17 @@ def records(state: dict[str, Any]) -> list[dict[str, Any]]:
         unwrap(item)
         for item in (state.get("entities") or {}).get("lie_ledger_v2") or []
     ]
+
+
+def build_pre_neutral_state() -> dict[str, Any]:
+    """Reproduce the accepted historical-assessment projection before neutralization."""
+    state = hardened.build_state(ROOT)
+    evidence_completion.inject_sources(state, ROOT)
+    lie_ledger_v2.apply(state, ROOT)
+    evidence_completion.apply(state, ROOT, lie_ledger_v2)
+    current_claims.apply(state, ROOT, lie_ledger_v2, evidence_completion)
+    final_builder.refresh_derived_counts(state)
+    return state
 
 
 def publication_semantic(value: Any) -> str:
@@ -114,6 +128,14 @@ def numeric_metrics(metrics: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def ledger_counts(state: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: value
+        for key, value in (state.get("counts") or {}).items()
+        if key.startswith("lie_ledger_v2_")
+    }
+
+
 def assert_neutral_structure(state: dict[str, Any]) -> None:
     assert "lie_ledger_v2_authority" not in state
     governance = state.get("lie_ledger_v2_governance") or {}
@@ -149,27 +171,18 @@ def assert_neutral_structure(state: dict[str, Any]) -> None:
 
 
 def main() -> None:
-    original = json.loads(CANONICAL.read_text(encoding="utf-8"))
+    original = build_pre_neutral_state()
     migrated = copy.deepcopy(original)
 
     before_records = substantive_fingerprint(original)
     before_metrics = numeric_metrics(original.get("lie_ledger_v2_metrics") or {})
-    before_counts = {
-        key: value
-        for key, value in (original.get("counts") or {}).items()
-        if key.startswith("lie_ledger_v2_")
-    }
+    before_counts = ledger_counts(original)
 
     neutral.neutralize(migrated)
 
     assert substantive_fingerprint(migrated) == before_records
     assert numeric_metrics(migrated.get("lie_ledger_v2_metrics") or {}) == before_metrics
-    after_counts = {
-        key: value
-        for key, value in (migrated.get("counts") or {}).items()
-        if key.startswith("lie_ledger_v2_")
-    }
-    assert after_counts == before_counts
+    assert ledger_counts(migrated) == before_counts
     assert_neutral_structure(migrated)
 
     once = copy.deepcopy(migrated)
@@ -186,9 +199,16 @@ def main() -> None:
         for row in records(migrated)
     ), "migration corpus must preserve at least one False != Lie case"
 
+    production = final_builder.build_state(ROOT)
+    if "lie_ledger_v2_governance" in production:
+        assert_neutral_structure(production)
+        assert substantive_fingerprint(production) == before_records
+        assert numeric_metrics(production.get("lie_ledger_v2_metrics") or {}) == before_metrics
+        assert ledger_counts(production) == before_counts
+
     print(
         "neutral Lie Ledger governance parity: PASS "
-        f"({len(before_records)} propositions; metrics/counts unchanged)"
+        f"({len(before_records)} propositions; adjudications/evidence/metrics unchanged)"
     )
 
 
