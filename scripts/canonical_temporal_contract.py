@@ -70,6 +70,48 @@ def validate_event_temporal_semantics(event: dict[str, Any], *, label: str) -> N
         parse_datetime(game_raw, f"{label} game_knowledge_time")
 
 
+def _validate_record_knowledge_boundary(record: dict[str, Any], packet_known_at: datetime, *, label: str) -> None:
+    """Prevent a packet from making record knowledge effective before Atlas knows it."""
+    for field in ("game_knowledge_time", "knowledge_time"):
+        raw = record.get(field)
+        if not raw:
+            continue
+        knowledge_time = parse_datetime(raw, f"{label} {field}")
+        if knowledge_time > packet_known_at:
+            raise ValueError(f"{label} {field} may not be later than packet known_at")
+
+
+def validate_packet_content_temporal_semantics(packet: dict[str, Any], *, label: str = "packet") -> None:
+    """Validate record-level knowledge clocks against the enclosing packet authority time.
+
+    Event/source chronology and packet ordering remain separate clocks. The only
+    cross-clock relationship enforced here is authority safety: information
+    carried by a packet cannot have a record-level knowledge time later than the
+    time at which that packet becomes knowledge-effective.
+    """
+    known_at, _ = validate_packet_temporal_semantics(packet, label=label)
+
+    for index, event in enumerate(packet.get("events") or []):
+        if not isinstance(event, dict):
+            continue
+        event_label = f"{label} event[{index}]"
+        validate_event_temporal_semantics(event, label=event_label)
+        _validate_record_knowledge_boundary(event, known_at, label=event_label)
+
+    for index, entity in enumerate(packet.get("entities") or []):
+        if not isinstance(entity, dict):
+            continue
+        record = entity.get("record")
+        if isinstance(record, dict):
+            _validate_record_knowledge_boundary(record, known_at, label=f"{label} entity[{index}]")
+
+    for index, claim in enumerate(packet.get("narrative_claims") or []):
+        if not isinstance(claim, dict):
+            continue
+        record = claim.get("record") if isinstance(claim.get("record"), dict) else claim
+        _validate_record_knowledge_boundary(record, known_at, label=f"{label} narrative_claim[{index}]")
+
+
 def validate_accepted_lineage_temporal_ordering(
     entries: Iterable[dict[str, Any]],
     *,
@@ -124,6 +166,7 @@ def validate_candidate_append(manifest: dict[str, Any], packet: dict[str, Any]) 
     """Validate a candidate against the accepted tip without moving either clock backward."""
     projection = validate_manifest_temporal_contract(manifest)
     candidate_known_at, candidate_cutoff = validate_packet_temporal_semantics(packet)
+    validate_packet_content_temporal_semantics(packet)
     entries = manifest.get("accepted_updates") or []
     if entries:
         last_known_at = parse_datetime(entries[-1]["known_at"], "accepted tip known_at")
@@ -142,6 +185,7 @@ def validate_candidate_append(manifest: dict[str, Any], packet: dict[str, Any]) 
 def validate_packet_against_accepted_entry(packet: dict[str, Any], entry: dict[str, Any]) -> None:
     """Require the packet bytes and accepted temporal projection to describe the same clocks."""
     validate_packet_temporal_semantics(packet)
+    validate_packet_content_temporal_semantics(packet)
     if packet.get("known_at") != entry.get("known_at"):
         raise ValueError(f"Accepted Gate 3 v2 packet known_at differs from manifest: {entry.get('packet_id')}")
     if packet.get("evidence_cutoff") != entry.get("evidence_cutoff"):
