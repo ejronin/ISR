@@ -16,6 +16,10 @@ const records = key => {
 };
 const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
+const expectedReaderClaims = lieLedgerModel.records.reduce((count, chain) => {
+  const keys = new Set((chain.proposition_records || []).map(record => record.proposition_id || record.proposition || record.source_proposition || record.claim).filter(Boolean));
+  return count + keys.size;
+}, 0);
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -103,7 +107,7 @@ async function route(cdp, hash, key) {
     assert(timeline.densityBins > 0, 'full-conflict density overview is absent');
     assert.match(timeline.densityText, /not greater strategic importance/i, 'timeline density implies analytical importance');
     assert.deepEqual(timeline.scaleLabels, ['Full', '4×', '8×', '16×']);
-    assert.deepEqual(timeline.topicLabels, ['All topics', 'Military', 'Hormuz', 'Economy', 'Diplomacy', 'Losses and damage', 'Wider record'], 'Phase 10 scale presentation corrupted the Topic filter');
+    assert.deepEqual(timeline.topicLabels, ['All topics', 'Military', 'Hormuz', 'Economy', 'Diplomacy', 'Losses and damage', 'Wider record'], 'timeline scale presentation corrupted the Topic filter');
     assert.equal(timeline.fullLabel, 'Back to full conflict');
 
     const selected = await cdp.eval(`(() => {
@@ -169,108 +173,75 @@ async function route(cdp, hash, key) {
     assert.match(imageryDetail, /no polygon or damage percentage is inferred|no precise imagery footprint/i);
 
     await route(cdp, '#/evidence/information', 'evidence.information');
-    const blockedModel = liePropositions.find(record => record.publication_status === 'BLOCKED_EVIDENCE_COMPLETION');
-    const readyModel = liePropositions.find(record => record.publication_status === 'PUBLIC_READY' && record.truth_adjudication === 'FALSE') || liePropositions.find(record => record.publication_status === 'PUBLIC_READY');
-    assert(blockedModel, 'public model lacks an evidence-completion regression case');
-    assert(readyModel, 'public model lacks a publication-ready regression case');
     const ledger = await cdp.eval(`(() => {
-      const blockedId = ${JSON.stringify(blockedModel.claim_instance_id)};
-      const readyId = ${JSON.stringify(readyModel.claim_instance_id)};
-      const openRecord = id => {
-        const row = document.querySelector('[data-claim-instance-id="' + CSS.escape(id) + '"]');
-        const chain = row?.closest('[data-chain-id]');
-        if (chain) chain.open = true;
-        if (row) row.open = true;
-        return row;
-      };
-      const blocked = openRecord(blockedId);
-      const ready = openRecord(readyId);
+      const main = document.querySelector('main');
+      const cards = [...main.querySelectorAll('[data-reader-finding]')];
+      const first = cards[0];
+      const why = first?.querySelector('.reader-how-we-know');
+      const whySummary = why?.querySelector(':scope > summary');
+      if (whySummary) {
+        whySummary.focus();
+        whySummary.click();
+      }
+      const evidenceSummary = why?.querySelector('.evidence-drawer > summary');
+      if (evidenceSummary) evidenceSummary.click();
+      const search = main.querySelector('.reader-ledger-controls input[type="search"]');
+      const select = main.querySelector('.reader-ledger-controls select');
+      const statuses = cards.map(card => card.querySelector('.reader-claim-status')?.textContent.trim() || '');
+      const internalSelectors = main.querySelectorAll('[data-claim-instance-id], [data-chain-id], [data-publication-status], [data-combined-assessment]').length;
+      const technicalMetadata = main.querySelectorAll('.technical-record-metadata, .evidence-role-guide').length;
+      const text = main.innerText || '';
       return {
-        chainCount: document.querySelectorAll('[data-chain-id]').length,
-        propositionCount: document.querySelectorAll('[data-claim-instance-id]').length,
-        blocked: blocked ? {
-          publicationStatus: blocked.dataset.publicationStatus,
-          truth: blocked.dataset.truthAdjudication,
-          knowledge: blocked.dataset.knowledgeJudgment,
-          text: blocked.innerText || ''
-        } : null,
-        ready: ready ? {
-          publicationStatus: ready.dataset.publicationStatus,
-          truth: ready.dataset.truthAdjudication,
-          knowledge: ready.dataset.knowledgeJudgment,
-          combined: ready.dataset.combinedAssessment,
-          text: ready.innerText || '',
-          evidenceComponents: [...ready.querySelectorAll('[data-evidence-component]')].map(node => node.dataset.evidenceComponent),
-          evidenceDrawers: ready.querySelectorAll('[data-evidence-component] .evidence-drawer').length
-        } : null,
-        families: document.querySelector('.narrative-family-directory summary')?.textContent || '',
-        chains: document.querySelector('.information-chain-directory summary')?.textContent || '',
-        reliability: document.querySelector('.reliability-directory summary')?.textContent || '',
-        controls: [...document.querySelectorAll('.lie-ledger-controls input, .lie-ledger-controls select')].map(node => node.getBoundingClientRect().height),
-        text: document.querySelector('main')?.innerText || '',
-        scoreAttrs: document.querySelectorAll('[data-deception-score]').length,
-        scoreOptions: [...document.querySelectorAll('.lie-ledger-controls option')].filter(node => /deception score|0 — no evidence/i.test(node.textContent)).length
+        cards: cards.length,
+        statuses,
+        why: Boolean(why),
+        whyFocusable: !whySummary || document.activeElement === whySummary,
+        whyOpen: Boolean(why?.open),
+        evidence: Boolean(evidenceSummary),
+        evidenceOpen: !evidenceSummary || Boolean(evidenceSummary.parentElement.open),
+        controls: [...main.querySelectorAll('.reader-ledger-controls input, .reader-ledger-controls select')].map(node => node.getBoundingClientRect().height),
+        search: Boolean(search),
+        select: Boolean(select),
+        internalSelectors,
+        technicalMetadata,
+        text,
+        scoreAttrs: main.querySelectorAll('[data-deception-score]').length,
+        oldControls: main.querySelectorAll('.lie-ledger-controls').length,
+        clocks: main.querySelectorAll('[data-component="EvidenceClocks"], .evidence-clocks, .evidence-clock-bar').length
       };
     })()`);
-    assert.equal(ledger.chainCount, lieLedgerModel.records.length, 'renderer does not use chain-first primary objects');
-    assert.equal(ledger.propositionCount, liePropositions.length, 'renderer claim-instance population diverges from public v2 model');
-    assert.match(ledger.families, new RegExp(`${records('gate3.narrative_families').length} narrative families`));
-    assert.match(ledger.chains, new RegExp(`${records('gate3.information_chains').length} information chains`));
-    assert.match(ledger.reliability, new RegExp(`${records('gate3.source_reliability').length} source and claimant histories`));
-    assert(ledger.controls.every(height => height >= 44), 'Lie Ledger has a touch target below 44px');
-    assert.match(ledger.text, /a false statement is not automatically a deliberate lie/i);
-    assert.match(ledger.text, /factual status and knowledge are separate assessments/i);
+    assert.equal(ledger.cards, expectedReaderClaims, 'reader claim population does not reconcile to unique propositions within each chain');
+    assert(ledger.cards > 0, 'reader-facing claim ledger is empty');
+    assert(ledger.statuses.every(value => ['Lie', 'Likely lie', 'False', 'Misleading', 'Partly true', 'Supported', 'Unresolved', 'Evidence review incomplete', 'Not yet assessed'].includes(value)), 'reader ledger exposes an unapproved finding label');
+    assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
+    assert(ledger.evidence && ledger.evidenceOpen, 'reader evidence drawer is not discoverable/openable');
+    assert(ledger.controls.length >= 2 && ledger.controls.every(height => height >= 44), 'reader claim controls have a touch target below 44px');
+    assert(ledger.search && ledger.select, 'reader claim search/filter controls are missing');
+    assert.equal(ledger.internalSelectors, 0, 'internal claim-instance/chain/publication metadata remains in the reader DOM');
+    assert.equal(ledger.technicalMetadata, 0, 'technical metadata remains in the reader DOM');
     assert.equal(ledger.scoreAttrs, 0, 'legacy deception score remains in active DOM state');
-    assert.equal(ledger.scoreOptions, 0, 'legacy deception score remains in active filter controls');
-    assert(ledger.blocked, 'blocked v2 proposition is absent from renderer');
-    assert.equal(ledger.blocked.publicationStatus, 'BLOCKED_EVIDENCE_COMPLETION');
-    assert.equal(ledger.blocked.knowledge, 'WITHHELD_PENDING_EVIDENCE_QUALIFICATION');
-    assert.match(ledger.blocked.text, /EVIDENCE COMPLETION REQUIRED/);
-    assert.doesNotMatch(ledger.blocked.text, /LIKELY KNEW FALSE|VERY LIKELY KNEW FALSE|KNOWING FALSEHOOD ESTABLISHED/i, 'withheld canonical ROOK knowledge leaked into blocked public rendering');
-    assert(ledger.ready, 'publication-ready v2 proposition is absent from renderer');
-    assert.equal(ledger.ready.publicationStatus, 'PUBLIC_READY');
-    assert.equal(ledger.ready.knowledge, readyModel.public_knowledge_judgment);
-    assert.equal(ledger.ready.combined, readyModel.public_combined_assessment);
-    assert.match(ledger.ready.text, /Factual verdict/i);
-    assert.match(ledger.ready.text, /Knowledge judgment/i);
-    assert.match(ledger.ready.text, /Combined ROOK assessment/i);
-    assert.match(ledger.ready.text, /Confidence/i);
-    assert.match(ledger.ready.text, /Falsifier|What would change/i);
-    assert(ledger.ready.evidenceComponents.length > 0 && ledger.ready.evidenceDrawers > 0, 'component-level Evidence drawers are absent');
+    assert.equal(ledger.oldControls, 0, 'legacy forensic-workstation controls remain active');
+    assert.equal(ledger.clocks, 0, 'evidence-clock machinery remains on the ordinary reader claim page');
+    assert.doesNotMatch(ledger.text, /Combined ROOK assessment|ROOK verdict|PR\/CI|claim_instance_id|proposition_id|chain_id|publication blocker/i, 'internal authority/schema language leaked into reader claims');
+    assert.match(ledger.text, /Claims and findings/i);
+    assert.match(ledger.text, /How we know it is/i);
 
-    const acceptedNarrativeFunctions = liePropositions.filter(record => typeof record.narrative_function === 'string' && record.narrative_function.trim()).map(record => ({
-      claimInstanceId: record.claim_instance_id,
-      narrativeFunction: record.narrative_function.trim(),
-      displayValue: ia.publicNarrative(record.narrative_function),
-      truthAdjudication: String(record.truth_adjudication || ''),
-      knowledgeJudgment: String(record.public_knowledge_judgment || ''),
-      combinedAssessment: String(record.public_combined_assessment || '')
-    }));
-    assert(acceptedNarrativeFunctions.length > 0, 'v2 public model exposes no narrative functions');
-    const narrativeFunctionDetails = await cdp.eval(`(() => {
-      const accepted = ${JSON.stringify(acceptedNarrativeFunctions)};
-      return accepted.map(record => {
-        const row = document.querySelector('[data-claim-instance-id="' + CSS.escape(record.claimInstanceId) + '"]');
-        const chain = row?.closest('[data-chain-id]');
-        if (chain) chain.open = true;
-        if (row) row.open = true;
-        const terms = [...(row?.querySelectorAll('.lie-ledger-detail dt') || [])];
-        const term = terms.find(node => node.textContent.trim() === 'Narrative function');
-        const value = term?.nextElementSibling?.textContent.trim() || '';
-        return {
-          claimInstanceId: record.claimInstanceId,
-          exposed: Boolean(term),
-          value,
-          valueMatches: value === record.displayValue,
-          machineTokens: value.match(/\\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\\b/g) || [],
-          truthUnchanged: row?.dataset.truthAdjudication === record.truthAdjudication,
-          knowledgeUnchanged: row?.dataset.knowledgeJudgment === record.knowledgeJudgment,
-          combinedUnchanged: row?.dataset.combinedAssessment === record.combinedAssessment
-        };
-      });
+    const filteredLedger = await cdp.eval(`(() => {
+      const main = document.querySelector('main');
+      const search = main.querySelector('.reader-ledger-controls input[type="search"]');
+      const first = main.querySelector('[data-reader-finding]');
+      const term = first?.querySelector('h3')?.textContent.trim().split(/\s+/).find(word => word.length >= 5) || '';
+      if (!search || !term) return null;
+      search.value = term;
+      search.dispatchEvent(new Event('input', { bubbles: true }));
+      return {
+        term,
+        visible: [...main.querySelectorAll('[data-reader-finding]')].filter(card => !card.hidden).length,
+        count: main.querySelector('.reader-ledger-controls .filter-result-count')?.textContent.trim() || ''
+      };
     })()`);
-    assert(narrativeFunctionDetails.every(record => record.exposed && record.value && record.valueMatches && !record.machineTokens.length), 'a v2 narrative function is missing, not humanized, or exposes machine language');
-    assert(narrativeFunctionDetails.every(record => record.truthUnchanged && record.knowledgeUnchanged && record.combinedUnchanged), 'narrative-function display altered a ROOK factual/knowledge/combined finding');
+    assert(filteredLedger && filteredLedger.visible > 0, 'reader claim search does not preserve matching claims');
+    assert.match(filteredLedger.count, /^\d+ of \d+ claims shown$/);
 
     const publicLanguageLeaks = [];
     for (const routeRecord of ia.ROUTES.values()) {
@@ -295,77 +266,38 @@ async function route(cdp, hash, key) {
     const technicalRecord = await cdp.eval(`(() => {
       const main = document.querySelector('main');
       const card = document.querySelector('[data-strike-effect-id]');
-      const before = main.innerText;
       const drawer = card?.querySelector('.evidence-drawer');
       if (drawer) drawer.open = true;
-      return { before, after: card?.innerText || '' };
+      return { before: main?.innerText || '', after: card?.innerText || '' };
     })()`);
-    assert(!/Stable strike record(?: ID)?:/i.test(technicalRecord.before), 'internal strike ID is visible before deliberate evidence expansion');
-    assert.match(technicalRecord.after, /Stable strike record ID/i, 'expanded evidence omits stable technical identity');
+    assert(!/Stable strike record(?: ID)?:/i.test(technicalRecord.before), 'internal strike ID is visible on the reader surface');
+    assert(!/Stable strike record(?: ID)?:/i.test(technicalRecord.after), 'internal strike ID leaks through ordinary evidence expansion');
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
       await route(cdp, '#/evidence/information', 'evidence.information');
-      const mobile = await cdp.eval(`({ width:document.documentElement.clientWidth, scrollWidth:document.documentElement.scrollWidth })`);
-      assert(mobile.scrollWidth <= mobile.width, `Phase 9 information page overflows at ${width}px`);
+      const mobile = await cdp.eval(`(() => ({
+        width: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        controls: [...document.querySelectorAll('.reader-ledger-controls input, .reader-ledger-controls select')].map(node => node.getBoundingClientRect().height),
+        summaries: [...document.querySelectorAll('.reader-how-we-know > summary')].map(node => node.getBoundingClientRect().height)
+      }))()`);
+      assert(mobile.scrollWidth <= mobile.width, `reader information page overflows at ${width}px`);
+      assert(mobile.controls.every(height => height >= 44), `reader claim control below 44px at ${width}px`);
+      assert(mobile.summaries.length > 0 && mobile.summaries.every(height => height >= 44), `reader evidence disclosure below 44px at ${width}px`);
     }
     await cdp.call('Emulation.clearDeviceMetricsOverride');
 
-    await route(cdp, '#/evidence/information', 'evidence.information');
-    const phase10Ledger = await cdp.eval(`(() => {
-      const main = document.querySelector('main');
-      const blockedId = ${JSON.stringify(blockedModel.claim_instance_id)};
-      const readyId = ${JSON.stringify(readyModel.claim_instance_id)};
-      const blocked = document.querySelector('[data-claim-instance-id="' + CSS.escape(blockedId) + '"]');
-      const ready = document.querySelector('[data-claim-instance-id="' + CSS.escape(readyId) + '"]');
-      [blocked, ready].forEach(row => { const chain = row?.closest('[data-chain-id]'); if (chain) chain.open = true; if (row) row.open = true; });
-      const desktopClockHost = main.querySelector('[data-component="EvidenceClocks"] .evidence-clock-desktop');
-      const mobileClockHost = main.querySelector('[data-component="EvidenceClocks"] .evidence-clock-mobile');
-      if (mobileClockHost) {
-        mobileClockHost.open = true;
-        mobileClockHost.querySelectorAll('.evidence-clock-help').forEach(help => { help.open = true; });
-      }
-      const clockView = host => ({
-        labels: [...(host?.querySelectorAll('.evidence-clock-summary > strong') || [])].map(node => node.textContent.trim()),
-        dateTimes: [...(host?.querySelectorAll('time') || [])].map(node => node.dateTime),
-        displayTimes: [...(host?.querySelectorAll('time') || [])].map(node => node.textContent.trim())
-      });
-      return {
-        title: main?.querySelector('h1')?.textContent.trim() || '',
-        desktopClocks: clockView(desktopClockHost),
-        mobileClocks: clockView(mobileClockHost),
-        mobileDisclosureSummary: mobileClockHost?.querySelector(':scope > summary')?.innerText.trim() || '',
-        mobileHelpLabels: [...(mobileClockHost?.querySelectorAll('.evidence-clock-help > summary') || [])].map(node => node.textContent.trim()),
-        mobileDefinitionText: mobileClockHost?.querySelector('.evidence-clock-mobile-body')?.innerText || '',
-        explainer: main?.innerText || '',
-        blockedText: blocked?.innerText || '',
-        readyText: ready?.innerText || '',
-        evidenceSummary: ready?.querySelector('.evidence-drawer > summary')?.textContent.trim() || ''
-      };
-    })()`);
-    assert.equal(phase10Ledger.title, 'Lie Ledger');
-    assert.deepEqual(phase10Ledger.desktopClocks.labels, ['Frozen review cutoff', 'Current evidence cutoff']);
-    assert.deepEqual(phase10Ledger.mobileClocks.labels, ['Current evidence cutoff', 'Frozen review cutoff']);
-    assert.deepEqual(phase10Ledger.desktopClocks.dateTimes, [model.release.gate2_evidence_cutoff, model.release.current_osint_cutoff]);
-    assert.deepEqual(phase10Ledger.mobileClocks.dateTimes, [model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff]);
-    assert.deepEqual(phase10Ledger.mobileClocks.displayTimes, [...phase10Ledger.desktopClocks.displayTimes].reverse(), 'desktop and mobile clocks do not expose the same two formatted cutoffs');
-    assert.match(phase10Ledger.mobileDisclosureSummary, /Evidence through .*Historical review/i);
-    assert.deepEqual(phase10Ledger.mobileHelpLabels, ['How current works', 'Why frozen?']);
-    assert.match(phase10Ledger.mobileDefinitionText, /Current Atlas evidence includes material incorporated through this time\./);
-    assert.match(phase10Ledger.mobileDefinitionText, /This cutoff advances when new evidence is incorporated\./);
-    assert.match(phase10Ledger.mobileDefinitionText, /Historical evaluation uses only evidence available by this time\./);
-    assert.match(phase10Ledger.mobileDefinitionText, /fixed evidence boundary used for the historical Gate 2 review/i);
-    assert.match(phase10Ledger.explainer, /Factual status and knowledge are separate assessments\./i);
-    assert.match(phase10Ledger.explainer, /A false statement is not automatically a deliberate lie/i);
-    assert.match(phase10Ledger.blockedText, /EVIDENCE COMPLETION REQUIRED/);
-    assert.match(phase10Ledger.readyText, /Combined ROOK assessment/i);
-    assert.match(phase10Ledger.evidenceSummary, /^Evidence(?: \(\d+\))?$/);
-
     await route(cdp, '#/military/campaigns', 'military.campaigns');
-    const phase10Effects = await cdp.eval(`(() => ({ text: document.querySelector('main')?.innerText || '', cards: document.querySelectorAll('.effect-framework-card').length }))()`);
+    const phase10Effects = await cdp.eval(`(() => ({
+      text: document.querySelector('main')?.innerText || '',
+      cards: document.querySelectorAll('.effect-framework-card').length,
+      drilldown: document.querySelector('[data-reader-drilldown="event-constituents"]')?.innerText || ''
+    }))()`);
     assert.equal(phase10Effects.cards, 7);
     assert.match(phase10Effects.text, /From damage to strategic effect/);
     assert.match(phase10Effects.text, /confirmed hit does not by itself establish destroyed capability or strategic effect/i);
+    assert.match(phase10Effects.drilldown, /Equipment quantities are not substituted for event counts/i, 'campaign totals lack an auditable constituent-count boundary');
 
     await route(cdp, '#/military/losses', 'military.losses');
     const phase10Losses = await cdp.eval(`(() => ({ text: document.querySelector('main')?.innerText || '', cards: document.querySelectorAll('[data-loss-id]').length }))()`);
@@ -382,7 +314,7 @@ async function route(cdp, hash, key) {
     })()`);
     assert.deepEqual(lossAudit.contributors, lossAudit.ids, 'loss comparison aggregation cannot be audited back to the exact canonical loss IDs');
     assert(lossAudit.groupCount >= 3, 'loss comparison collapsed actor/commercial group structure');
-    assert.match(lossAudit.comparisonText, /count canonical material-loss records/i);
+    assert.match(lossAudit.comparisonText, /count material-loss records|count canonical material-loss records/i);
     assert.match(lossAudit.comparisonText, /Unknown does not mean zero|unknown quantities/i);
 
     await route(cdp, '#/hormuz/shipping', 'hormuz.shipping');
@@ -409,28 +341,28 @@ async function route(cdp, hash, key) {
       cards: document.querySelectorAll('[data-economic-country]').length,
       tableRows: document.querySelectorAll('.economic-numeric-equivalent tbody tr').length,
       hasConnectingPolyline: Boolean(document.querySelector('[data-economic-viz] svg polyline, [data-economic-viz] svg path[data-series]')),
-      text: document.querySelector('[data-economic-viz]')?.innerText || ''
+      text: document.querySelector('[data-economic-viz]')?.innerText || '',
+      duplicatedCorridorInventory: Boolean([...document.querySelectorAll('h2')].find(node => node.textContent.trim() === 'Strategic transport corridors'))
     }))()`);
     assert.equal(economyVisual.interpolation, 'none');
     assert.equal(economyVisual.cards, model.datasets['ledger.economics'].payload.forecast_context.rows.length);
     assert.equal(economyVisual.tableRows, economyVisual.cards);
     assert.equal(economyVisual.hasConnectingPolyline, false, 'economy snapshots are visually connected as an invented continuous series');
     assert.match(economyVisual.text, /does not interpolate values between observations/i);
+    assert.equal(economyVisual.duplicatedCorridorInventory, false, 'Economy duplicates the Shipping & Trade corridor inventory');
 
     await route(cdp, '#/talks/june-mou', 'talks.mou');
     const mouVisual = await cdp.eval(`(() => ({
-      rows: document.querySelectorAll('[data-agreement-balance] .agreement-term-row').length,
-      selected: document.querySelectorAll('[data-agreement-balance] .agreement-state.selected').length,
-      notAdjudicated: [...document.querySelectorAll('[data-agreement-balance] .agreement-current-balance')].filter(node => node.textContent.trim() === 'Balance not adjudicated').length,
+      analystMatrix: document.querySelectorAll('[data-agreement-balance], .agreement-balance-matrix').length,
       ranges: document.querySelectorAll('[data-agreement-balance] input[type="range"]').length,
-      labels: [...document.querySelectorAll('[data-agreement-balance] .agreement-ordinal')].map(node => node.getAttribute('aria-label') || '')
+      scoreText: /\b\d{1,3}\s*\/\s*100\b/.test(document.querySelector('main')?.innerText || ''),
+      clauses: document.querySelectorAll('[data-clause-id], .agreement-clause').length,
+      text: document.querySelector('main')?.innerText || ''
     }))()`);
-    const mouTracks = model.datasets['analysis.hormuz'].payload.mou_position_tracks;
-    assert.equal(mouVisual.rows, mouTracks.length);
-    assert.equal(mouVisual.selected, mouTracks.filter(track => track.scorable).length);
-    assert.equal(mouVisual.notAdjudicated, mouTracks.filter(track => !track.scorable).length);
+    assert.equal(mouVisual.analystMatrix, 0, 'internal analyst-position matrix remains on the public MOU page');
     assert.equal(mouVisual.ranges, 0, 'MOU balance was rendered as a continuous slider');
-    assert(mouVisual.labels.filter(label => /underlying analyst position/i.test(label)).length === mouVisual.selected, 'scorable MOU terms do not expose their existing analyst-position basis');
+    assert.equal(mouVisual.scoreText, false, 'internal /100 analyst position leaked into the public MOU page');
+    assert.match(mouVisual.text, /Read all 14 clauses|Read the agreement clause by clause/i, 'reader-accessible clause detail is missing after score removal');
 
     await route(cdp, '#/timeline/war', 'timeline.war');
     const densityInteraction = await cdp.eval(`(() => {
@@ -438,7 +370,7 @@ async function route(cdp, hash, key) {
     })()`);
     assert(densityInteraction && densityInteraction.start === densityInteraction.expectedStart && densityInteraction.end === densityInteraction.expectedEnd, 'timeline density cluster does not drive the chronology window');
 
-    console.log(`browser public Phase 9: PASS - ${timeline.count} current records through ${timeline.cutoff}; interactive spatial timeline, full chronology, side-ledger losses, progressive imagery, human labels, and ${ledger.chainCount} Lie Ledger chains / ${ledger.propositionCount} claim instances verified`);
+    console.log(`browser public reader/Phase 9: PASS - ${timeline.count} current records through ${timeline.cutoff}; interactive timeline, chronology, losses, imagery, ${ledger.cards} reader claims, public/internal boundary, maps, economics and score-free MOU presentation verified`);
   } finally {
     try { await cdp.call('Browser.close'); } catch (_) { /* workflow cleanup is the fallback */ }
     cdp.close();
