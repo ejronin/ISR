@@ -124,19 +124,39 @@ class TemporalContractMatrix(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     temporal.validate_packet_temporal_semantics(packet)
 
-    def test_invalid_lineage_ordering_table(self) -> None:
-        for name, known_delta, cutoff_delta, message in (
-            ("equal_known", timedelta(0), timedelta(days=1), "increase strictly"),
-            ("decreasing_known", timedelta(seconds=-1), timedelta(days=1), "increase strictly"),
-            ("evidence_regression", timedelta(days=1), timedelta(seconds=-1), "may not move backward"),
+    def test_nonincreasing_known_at_is_rejected_independently(self) -> None:
+        prior_known = self.tip_known + timedelta(days=5)
+        prior_cutoff = self.tip_cutoff + timedelta(days=1)
+        for name, candidate_known in (
+            ("equal_known", prior_known),
+            ("decreasing_known", prior_known - timedelta(seconds=1)),
         ):
             with self.subTest(name=name):
-                value = copy.deepcopy(self.manifest)
-                row = {"sequence": len(value["accepted_updates"])+1, "known_at": (self.tip_known + known_delta).isoformat(), "evidence_cutoff": (self.tip_cutoff + cutoff_delta).isoformat()}
-                value["accepted_updates"].append(row)
-                value["current_evidence_cutoff"] = row["evidence_cutoff"]
-                with self.assertRaisesRegex(ValueError, message):
+                value = {
+                    "gate2_evidence_cutoff": self.manifest["gate2_evidence_cutoff"],
+                    "current_evidence_cutoff": prior_cutoff.isoformat(),
+                    "accepted_updates": [
+                        {"sequence": 1, "known_at": prior_known.isoformat(), "evidence_cutoff": prior_cutoff.isoformat()},
+                        {"sequence": 2, "known_at": candidate_known.isoformat(), "evidence_cutoff": prior_cutoff.isoformat()},
+                    ],
+                }
+                with self.assertRaisesRegex(ValueError, "increase strictly"):
                     temporal.validate_manifest_temporal_contract(value)
+
+    def test_evidence_horizon_regression_is_rejected_independently(self) -> None:
+        prior_known = self.tip_known + timedelta(days=3)
+        prior_cutoff = self.tip_cutoff + timedelta(days=2)
+        regressed = prior_cutoff - timedelta(seconds=1)
+        value = {
+            "gate2_evidence_cutoff": self.manifest["gate2_evidence_cutoff"],
+            "current_evidence_cutoff": regressed.isoformat(),
+            "accepted_updates": [
+                {"sequence": 1, "known_at": prior_known.isoformat(), "evidence_cutoff": prior_cutoff.isoformat()},
+                {"sequence": 2, "known_at": (prior_known + timedelta(days=1)).isoformat(), "evidence_cutoff": regressed.isoformat()},
+            ],
+        }
+        with self.assertRaisesRegex(ValueError, "may not move backward"):
+            temporal.validate_manifest_temporal_contract(value)
 
     def test_real_registrar_accepts_delayed_knowledge_and_consumer_agrees(self) -> None:
         known = self.tip_known + timedelta(days=3)
