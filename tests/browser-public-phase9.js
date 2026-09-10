@@ -99,7 +99,7 @@ async function route(cdp, hash, key) {
     assert.equal(timeline.prewar, 'distinct');
     assert(timeline.controls.every(height => height >= 44), 'timeline has a touch target below 44px');
     assert(timeline.copy.includes(`Detailed Chronology contains all ${model.counts.chronology_records} records.`));
-    assert.match(timeline.copy, /191 conflict days are represented/);
+    assert(timeline.copy.includes(`${model.counts.gate3_daily_coverage_days} conflict days are represented`));
     assert(timeline.densityBins > 0, 'full-conflict density overview is absent');
     assert.match(timeline.densityText, /not greater strategic importance/i, 'timeline density implies analytical importance');
     assert.deepEqual(timeline.scaleLabels, ['Full', '4×', '8×', '16×']);
