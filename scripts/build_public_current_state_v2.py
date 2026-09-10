@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Gate 3 public read model after validating the v1 public contract."""
+"""Build the Gate 3 public read model from the neutral public foundation."""
 from __future__ import annotations
 
 import argparse
@@ -12,8 +12,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-import build_public_current_state as public_v1
 import canonical_temporal_contract as temporal
+import public_read_model_foundation as foundation
 
 CANONICAL_V1 = "data/canonical-current-state.json"
 CANONICAL_V2 = "data/canonical-current-state-v2.json"
@@ -107,7 +107,7 @@ def dataset(
     payload: Any,
     source_index: dict[str, dict[str, Any]],
 ) -> dict[str, Any]:
-    referenced = sorted(public_v1.extract_source_ids(payload))
+    referenced = sorted(foundation.extract_source_ids(payload))
     unresolved = [source_id for source_id in referenced if source_id not in source_index]
     if unresolved:
         raise ValueError(f"Gate 3 dataset {key} has unresolved sources: {unresolved}")
@@ -159,9 +159,10 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         raise ValueError("Gate 3 public builder requires canonical-current-state-v2")
     temporal.validate_current_state_temporal_projection(canonical, label="canonical Gate 3 v2 public input")
 
-    # This validates the sealed v1 authority and materializes its accepted
-    # public-only identity additions before Gate 3 overlays the current state.
-    state = public_v1.build_state(root)
+    # Materialize the accepted cross-version public foundation directly. The
+    # legacy v1 generator is retained only as fingerprinted compatibility
+    # lineage and is not imported or executed by this current builder.
+    state = foundation.build_compatibility_foundation(root)
     v1_public_input_set = state["release"]["input_set_sha256"]
     v1_public_source_records = state["counts"].get("source_records")
     v1_public_canonical_source_records = state["counts"].get("canonical_source_records")
@@ -182,7 +183,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     state["accepted_updates_v2"] = copy.deepcopy(canonical.get("accepted_updates_v2") or [])
 
     release = canonical["release"]
-    canonical_digest = sha256(public_v1.canonical_input_bytes(canonical_path.read_bytes()))
+    canonical_digest = sha256(foundation.canonical_input_bytes(canonical_path.read_bytes()))
     phase9_input_set = sha256(f"{v1_public_input_set}\0{canonical_digest}\n".encode("utf-8"))
     state["release"].update({
         "gate2_evidence_cutoff": release["gate2_evidence_cutoff"],
@@ -198,7 +199,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "input_set_sha256": release["input_set_sha256"],
         "canonical_state_identity_v2": release["canonical_state_identity_v2"],
         "v1_path": CANONICAL_V1,
-        "v1_sha256": sha256(public_v1.canonical_input_bytes((root / CANONICAL_V1).read_bytes())),
+        "v1_sha256": sha256(foundation.canonical_input_bytes((root / CANONICAL_V1).read_bytes())),
     })
 
     replacements = {
