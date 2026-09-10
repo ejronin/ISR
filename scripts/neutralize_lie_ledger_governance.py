@@ -53,10 +53,11 @@ def _neutralize_text(value: Any) -> Any:
 def _neutralize_blocker(blocker: dict[str, Any]) -> None:
     if blocker.get("code") == "ROOK_EVIDENCE_COMPLETION_REQUIRED":
         blocker["code"] = "EVIDENCE_COMPLETION_REQUIRED"
-    authority = blocker.pop("authority", None)
-    if authority:
-        blocker.setdefault("qualification_scope", "EVIDENCE_INTEGRITY")
-        blocker.setdefault("historical_owner", authority)
+    # Historical author/implementer ownership is already traceable from the
+    # migration input path. It is deliberately not copied into active blocker
+    # objects, whose job is only to describe the evidentiary deficiency.
+    blocker.pop("authority", None)
+    blocker.setdefault("qualification_scope", "EVIDENCE_INTEGRITY")
 
 
 def _neutralize_record(record: dict[str, Any]) -> None:
