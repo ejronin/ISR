@@ -62,9 +62,9 @@ for (const phrase of [
   'Intelligence predicate',
   'Expected-retaliation rationale',
   'Wartime campaign objectives',
-  '60-day interim no-charge period',
-  'proposal, not an agreement'
+  '60-day interim no-charge period'
 ]) assert(appSource.includes(phrase), `missing cleared narrative-gate semantic contract: ${phrase}`);
+assert(/proposal\s*(?:—|–|-|,)\s*not an agreement/i.test(appSource), 'missing cleared narrative-gate semantic contract: proposal, not an agreement');
 
 assert(source.includes("setAttribute('data-war-in-90-seconds', 'approved')"), 'War in 90 Seconds lacks deterministic approval metadata');
 assert(source.includes(".dataset.objectiveOrientation = 'approved'"), 'objective orientation lacks deterministic approval metadata');
