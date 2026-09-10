@@ -47,7 +47,7 @@ assert check[-1][1] == "scripts/validate_public_current_state_v2.py"
 
 source = SCRIPT.read_text(encoding="utf-8")
 assert "subprocess.run" in source and "check=True" in source
-assert "accepted evidence" in source.lower()
+assert "BUILD_COMMANDS" in source and "CHECK_COMMANDS" in source
 assert "v1 compatibility lineage" in source
 assert "final promoted repository state" in source
 
