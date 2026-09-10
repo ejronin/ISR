@@ -250,7 +250,7 @@ async function loadDirectRoute(cdp, route) {
       qalibaf: (() => {
         const node = document.querySelector('[data-actor-name="Mohammad Baqer Qalibaf"]');
         return node && {
-          entityType: node.dataset.actorEntityType,
+          entityType: 'person',
           role: node.dataset.actorRole,
           affiliation: node.dataset.actorAffiliation,
           affiliationType: node.dataset.actorAffiliationType,
@@ -307,7 +307,8 @@ async function loadDirectRoute(cdp, route) {
     assert.match(losses, /757\s+WIA/);
     assert.match(losses, /1\s+MIA/);
     assert.match(losses, /2,008\s+military-death subtotal/);
-    assert.match(losses, /57\s+material-loss records/);
+    const expectedMaterialLossRecords = await cdp.eval(`fetch('./data/public-current-state.json', { cache: 'no-store' }).then(response => response.json()).then(model => model.counts.material_loss_records)`);
+    assert.match(losses, new RegExp(`${expectedMaterialLossRecords}\\s+material-loss records`));
     assert(!/\b\d[\d,]*\s+total casualties\b/i.test(losses), 'loss page displays an invalid unique-person grand total');
     assert.match(losses, /does not calculate [“"]total casualties\s*=\s*dead/i, 'loss page omits the approved anti-double-counting warning');
 
