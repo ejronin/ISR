@@ -8,17 +8,17 @@ A public, source-linked OSINT record for the 2026 Iran conflict. The project sep
 
 The root page now starts from a neutral shell and renders only after the generated current-state model and application assets resolve to one validated release. The browser does not replay the Aug. 24 through Aug. 27 dated presentation chain to discover the current record. If the current model cannot be loaded or validated, the site shows an explicit error with a retry action instead of an older dashboard.
 
-Build the ignored canonical state, public read model, and signed deployment artifacts with:
+Build the current canonical/public state and signed deployment artifacts with the same orchestrator used by CI and Pages:
 
 ```bash
-python scripts/build_canonical_current_state.py
-python scripts/validate_canonical_authority.py
-python scripts/validate_canonical_update_pipeline.py
-python scripts/build_public_current_state.py
+python scripts/build_current_release_state.py
+python scripts/build_current_release_state.py --check
 python scripts/build_public_release.py
 python scripts/validate_public_deployment.py
 python scripts/validate_public_geography.py
 ```
+
+The release orchestrator still validates the sealed canonical-v1 migration lineage, but the release-facing `data/public-current-state.json` is v2-only. The frozen public-v1 compiler is retained as compatibility lineage and parity evidence; production release assembly does not create a public-v1 artifact.
 
 Future evidence changes are small append-only packets under `data/canonical-updates/`; they do not require frontend edits or another dated loader. The migration boundary is independently pinned, and CI requires every prior accepted manifest entry to remain an exact prefix of the proposed ledger. See `docs/canonical-update-pipeline.md` for validation, dry-run, registration and publication commands.
 
@@ -106,9 +106,8 @@ Run the release checks documented by the repository validation scripts and the J
 The current public evidence state also has a deterministic, generated read model and a release-binding manifest. Build and verify them with:
 
 ```bash
-python scripts/build_public_current_state.py
-python scripts/build_public_current_state.py --check
-python scripts/validate_public_current_state.py
+python scripts/build_current_release_state.py
+python scripts/build_current_release_state.py --check
 python scripts/build_public_release.py
 python scripts/build_public_release.py --check
 python scripts/validate_public_deployment.py
