@@ -6,8 +6,8 @@ separate derived series and is deliberately bounded to conflict Day 1 through
 the accepted current evidence cutoff while preserving the frozen Gate 2 boundary.
 
 Lie Ledger v2 is a forward semantic projection applied only after the hardened
-canonical state exists. It preserves lie-ledger-v1 provenance and consumes ROOK's
-machine authority overlay without rewriting sealed evidence.
+canonical state exists. Historical assessment artifacts are consumed as bounded
+migration inputs; active generated governance is neutral and evidence-based.
 """
 from __future__ import annotations
 
@@ -25,6 +25,7 @@ import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_v2 as lie_ledger_v2
 import apply_lie_ledger_evidence_completion_20260909 as lie_ledger_evidence_completion
 import apply_lie_ledger_current_claims_20260909 as lie_ledger_current_claims
+import neutralize_lie_ledger_governance as lie_ledger_governance
 
 OUT = "data/canonical-current-state-v2.json"
 CONFLICT_DAY_1 = date(2026, 2, 28)
@@ -81,10 +82,10 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     root = Path(root).resolve()
     state = hardened.build_state(root)
 
-    # Forward-only semantic layer. ROOK's overlay is the only source of
-    # substantive knowledge/lie judgments; the builder only normalizes structure.
-    # The evidence-completion layer first injects governed source objects, then
-    # qualifies the named ROOK blockers after the base v2 projection is built.
+    # Historical assessment inputs are replayed deterministically so the accepted
+    # adjudications and evidence relationships are preserved byte-for-byte in
+    # meaning. The neutralization pass below removes active persona authority
+    # semantics from generated state without changing those substantive findings.
     lie_ledger_evidence_completion.inject_sources(state, root)
     lie_ledger_v2.apply(state, root)
     lie_ledger_evidence_completion.apply(state, root, lie_ledger_v2)
@@ -95,6 +96,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         lie_ledger_evidence_completion,
     )
     refresh_derived_counts(state)
+    lie_ledger_governance.neutralize(state)
 
     rows = war_daily_coverage(state)
     state["daily_coverage"] = rows
@@ -114,13 +116,15 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         ),
     })
     prior_identity = state["release"]["canonical_state_identity_v2"]
+    historical = state["release"].get("lie_ledger_historical_assessment") or {}
     identity_material = {
         "prior_identity": prior_identity,
         "coverage_start": rows[0]["date"] if rows else None,
         "coverage_end": rows[-1]["date"] if rows else None,
         "coverage_days": len(rows),
-        "lie_ledger_doctrine_version": state["release"]["lie_ledger_doctrine_version"],
+        "lie_ledger_governance_version": state["release"]["lie_ledger_governance_version"],
         "lie_ledger_contract_version": state["release"]["lie_ledger_contract_version"],
+        "lie_ledger_historical_doctrine_version": historical.get("doctrine_version"),
         "lie_ledger_evidence_completion_version": state["release"].get("lie_ledger_evidence_completion_version"),
         "lie_ledger_current_claim_update_version": state["release"].get("lie_ledger_current_claim_update_version"),
         "lie_ledger_v2_records": state["counts"]["lie_ledger_v2_records"],
