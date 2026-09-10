@@ -295,8 +295,9 @@ async function route(cdp, hash, key) {
       drilldown: document.querySelector('[data-reader-drilldown="event-constituents"]')?.innerText || ''
     }))()`);
     assert.equal(phase10Effects.cards, 7);
-    assert.match(phase10Effects.text, /From damage to strategic effect/);
-    assert.match(phase10Effects.text, /confirmed hit does not by itself establish destroyed capability or strategic effect/i);
+    assert.match(phase10Effects.text, /How damage and operational effect are separated/);
+    assert.match(phase10Effects.text, /Attack occurrence, physical effect and operational consequence are separate/i);
+    assert.match(phase10Effects.text, /does not automatically prove a mission kill, destroyed platform or whole-site shutdown/i);
     assert.match(phase10Effects.drilldown, /Equipment quantities are not substituted for event counts/i, 'campaign totals lack an auditable constituent-count boundary');
 
     await route(cdp, '#/military/losses', 'military.losses');
