@@ -5,15 +5,16 @@ This orchestrator deliberately preserves the qualified v1 compatibility lineage
 while the successor v2 builders are being converged. Workflows should call this
 script instead of independently spelling out the v1 -> v2 choreography.
 
-It does not own evidence. Each invoked builder/validator retains its existing
-authority and byte-level semantics; this file only fixes ordering and gives
-validation and deployment one deterministic entrypoint.
+The legacy public projection is generated only inside an isolated temporary
+directory. `data/public-current-state.json` is therefore a v2-only release path.
+No accepted evidence is owned or rewritten by this orchestration layer.
 """
 from __future__ import annotations
 
 import argparse
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import Sequence
 
@@ -26,30 +27,29 @@ def command(script: str, *args: str) -> tuple[str, ...]:
     return (sys.executable, script, *args)
 
 
-# Build mode preserves the currently qualified compatibility sequence exactly.
-# The v1 public artifact is validated before the v2 public builder intentionally
-# promotes/overwrites data/public-current-state.json with the current schema.
-BUILD_COMMANDS: tuple[tuple[str, ...], ...] = (
-    command("scripts/build_canonical_current_state.py"),
-    command("scripts/build_canonical_current_state.py", "--check"),
-    command("scripts/validate_canonical_authority.py"),
-    command("scripts/validate_canonical_update_pipeline.py"),
-    command("scripts/build_public_current_state.py"),
-    command("scripts/build_public_current_state.py", "--check"),
-    command("scripts/validate_public_current_state.py"),
-    command("scripts/build_canonical_current_state_v2_final.py", "--output", CANONICAL_V2),
-    command("scripts/validate_gate3_final.py"),
-    command("scripts/build_public_current_state_v2_hardened.py", "--output", PUBLIC_CURRENT),
-    command("scripts/build_canonical_current_state_v2_final.py", "--check", "--output", CANONICAL_V2),
-    command("scripts/build_public_current_state_v2_hardened.py", "--check", "--output", PUBLIC_CURRENT),
-    command("scripts/validate_public_current_state_v2.py"),
-)
+def build_commands(compat_artifact: str) -> tuple[tuple[str, ...], ...]:
+    """Return the qualified build sequence for one isolated v1 artifact path."""
+    return (
+        command("scripts/build_canonical_current_state.py"),
+        command("scripts/build_canonical_current_state.py", "--check"),
+        command("scripts/validate_canonical_authority.py"),
+        command("scripts/validate_canonical_update_pipeline.py"),
+        command("scripts/build_public_current_state.py", "--output", compat_artifact),
+        command("scripts/build_public_current_state.py", "--check", "--output", compat_artifact),
+        command("scripts/validate_public_current_state_compat.py", "--artifact", compat_artifact),
+        command("scripts/build_canonical_current_state_v2_final.py", "--output", CANONICAL_V2),
+        command("scripts/validate_gate3_final.py"),
+        command("scripts/build_public_current_state_v2_hardened.py", "--output", PUBLIC_CURRENT),
+        command("scripts/build_canonical_current_state_v2_final.py", "--check", "--output", CANONICAL_V2),
+        command("scripts/build_public_current_state_v2_hardened.py", "--check", "--output", PUBLIC_CURRENT),
+        command("scripts/validate_public_current_state_v2.py"),
+    )
+
 
 # Check mode starts from the final promoted repository state. The legacy public
-# builder cannot be checked against data/public-current-state.json at this point
-# because that path now correctly contains schema v2. Its compatibility output
-# was already byte-checked during BUILD_COMMANDS before promotion. Canonical v1
-# has a distinct output path, so it remains independently checkable here.
+# compatibility calculation is intentionally absent: it is fully generated and
+# byte-validated inside build mode, while this read-only mode verifies the
+# persisted canonical lineage and the only release-facing public artifact.
 CHECK_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/build_canonical_current_state.py", "--check"),
     command("scripts/validate_canonical_authority.py"),
@@ -82,13 +82,18 @@ def main() -> int:
         help="Verify final promoted derived state without writing it",
     )
     args = parser.parse_args()
-    commands = CHECK_COMMANDS if args.check else BUILD_COMMANDS
-    run(commands, Path(args.root))
-    print(
-        "current-release-state: PASS "
-        + ("final promoted state verified without writes" if args.check else "built and verified"),
-        flush=True,
-    )
+    root = Path(args.root).resolve()
+
+    if args.check:
+        run(CHECK_COMMANDS, root)
+        print("current-release-state: PASS final promoted state verified without writes", flush=True)
+        return 0
+
+    with tempfile.TemporaryDirectory(prefix="atlas-public-v1-compat-") as temporary:
+        compat_artifact = str(Path(temporary) / "public-current-state-v1.json")
+        run(build_commands(compat_artifact), root)
+
+    print("current-release-state: PASS built and verified; legacy public projection remained isolated", flush=True)
     return 0
 
 
