@@ -16,8 +16,6 @@ import build_public_current_state as builder
 import validate_public_current_state as legacy
 
 ROOT = Path(__file__).resolve().parents[1]
-CANONICAL = ROOT / builder.CANONICAL_STATE_PATH
-SCHEMA = ROOT / "schemas/public-current-state-v1.json"
 
 
 def resolve(root: Path, value: str) -> Path:
@@ -30,6 +28,10 @@ def validate(artifact: Path, root: Path = ROOT) -> None:
     artifact = artifact.resolve()
     canonical_path = root / builder.CANONICAL_STATE_PATH
     schema_path = root / "schemas/public-current-state-v1.json"
+
+    # The imported legacy validator predates configurable roots. Point its helper
+    # functions at the same explicit repository root before reusing them.
+    legacy.ROOT = root
 
     legacy.require(artifact.is_file(), f"generated compatibility artifact missing: {artifact}")
     legacy.require(canonical_path.is_file(), f"generated canonical state missing: {builder.CANONICAL_STATE_PATH}")
