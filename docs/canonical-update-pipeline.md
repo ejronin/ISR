@@ -12,8 +12,9 @@ The browser receives only `data/public-current-state.json`. It never downloads o
 - `data/canonical-ledger/migration-boundary.json` records 98 normalized SHA-256 values: 59 canonical evidence-package/reconciliation files, 36 forensic source-namespace files, the migration actor authority, the generated source registry, and the immutable snapshot inventory. This is a different inventory from the former 99-input public-read-model inventory; neither count implies a missing canonical input.
 - `data/canonical-ledger/migration-actors.json` formalizes the accepted Phase 3 actor/person/affiliation identities.
 - `data/canonical-updates/*.json` contains small update packets. A packet becomes authoritative only after review, `status: "ACCEPTED"`, and transactional registration in the manifest.
-- `data/canonical-current-state.json` is an ignored, deterministic compiler artifact. It contains stable current events, sources, actors, locations, claims, material losses, relationships and field-level revisions.
-- `data/public-current-state.json` remains the ignored public read model. It is generated from canonical current state rather than from dated overlays.
+- `data/canonical-current-state.json` is an ignored, deterministic compiler artifact. It preserves the sealed canonical-v1 migration/update lineage used by current qualification.
+- `data/canonical-current-state-v2.json` is the ignored current canonical-v2 projection used by the release-facing public compiler.
+- `data/public-current-state.json` is the ignored current public-v2 read model. Production release assembly does not create a public-v1 artifact.
 
 The boundary file and migration actor registry are independently digest-pinned in `scripts/canonical_authority.py`. Authority validation also compares the other 97 sealed inputs directly with accepted Phase 3 commit `b6dabf7d9dc346a81afc9ba4a9074c481e70e02a`. Changing an input and editing its stored seal hash therefore still fails. Normal evidence-update CI compares the prior manifest to the proposed manifest and requires the prior accepted sequence to remain an exact prefix.
 
@@ -101,16 +102,12 @@ Preview does not write any file. Its deterministic report lists records added/ch
 
 ## Publish after approval
 
-After human approval, change the packet status to `ACCEPTED`, then run:
+After human approval, change the packet status to `ACCEPTED`, register it, then run the same current-state orchestration contract used by CI and Pages:
 
 ```bash
 python scripts/build_canonical_current_state.py --register data/canonical-updates/UPD-YYYYMMDD-NNN.json
-python scripts/build_canonical_current_state.py
-python scripts/build_canonical_current_state.py --check
-python scripts/validate_canonical_update_pipeline.py
-python scripts/build_public_current_state.py
-python scripts/build_public_current_state.py --check
-python scripts/validate_public_current_state.py
+python scripts/build_current_release_state.py
+python scripts/build_current_release_state.py --check
 python scripts/build_public_release.py
 python scripts/build_public_release.py --check
 python scripts/validate_public_deployment.py
@@ -119,5 +116,7 @@ python scripts/validate_public_deployment.py
 `--register` validates the packet against accepted state before appending its normalized SHA-256 to the manifest. It refuses duplicate packet IDs/paths and never rewrites an existing accepted packet. A correction to an accepted packet is a new packet.
 
 Accepted packet `known_at` values must be strictly increasing; equal or earlier timestamps are rejected before any manifest write. Registration compiles the complete candidate manifest in memory, verifies the lineage chain and exact-prefix extension, then performs the same-directory atomic replace. Failed registration leaves the accepted manifest and generated canonical state byte-for-byte unchanged.
+
+The release orchestrator retains canonical-v1 authority/update validation where it still protects migration lineage, then builds/validates canonical-v2 and public-v2. The frozen public-v1 compiler is used only by the focused in-memory foundation parity proof; no public-v1 artifact participates in publication.
 
 Do not rerun `--seal-migration-boundary`; resealing is permanently disabled after the authority anchor, even if the boundary file is deleted. Do not add another dated frontend loader, overlay or presentation script.
