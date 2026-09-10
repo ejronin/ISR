@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.local/schemas/lie-ledger-evidence-adjudication-v2.json",
+  "title": "ATLAS Lie Ledger evidence-adjudication record v2",
+  "description": "Neutral active semantic contract. Factual truth, lifecycle, knowledge judgment, relationships, evidence support, denominator class, publication qualification and confidence remain independent dimensions; historical assessment authorship is provenance only.",
+  "type": "object",
+  "$defs": {
+    "sourceRefs": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^SRC-[A-F0-9]{12}$"},
+      "uniqueItems": true
+    },
+    "statementTime": {
+      "type": "object",
+      "required": ["date", "display_time", "precision"],
+      "properties": {
+        "date": {"type": ["string", "null"]},
+        "display_time": {"type": ["string", "null"]},
+        "precision": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "knowledgeIndicator": {
+      "type": "object",
+      "required": ["indicator", "direction", "strength", "summary", "evidence_refs"],
+      "properties": {
+        "indicator": {
+          "enum": [
+            "ASSESSMENT_KNOWLEDGE_BASIS",
+            "DIRECT_EVIDENCE",
+            "DIRECT_INSTITUTIONAL_ACCESS",
+            "PHYSICAL_EVIDENCE_ACCESS",
+            "DISTINCTIVE_OBJECT_MISMATCH",
+            "TEMPORAL_KNOWLEDGE",
+            "POST_CORRECTION_REPETITION",
+            "INTERNAL_CONTRADICTION",
+            "BEHAVIORAL_CONTRADICTION",
+            "NARRATIVE_SUBSTITUTION",
+            "FABRICATED_MISLABELED_SUPPORT",
+            "SELECTIVE_OMISSION",
+            "COORDINATED_AMPLIFICATION",
+            "RETROSPECTIVE_REFRAMING",
+            "SAME_PUBLICATION_CONTRADICTION",
+            "OWN_FORCE_RECORD_ACCESS",
+            "DIPLOMATIC_RECORD_ACCESS",
+            "PERSONNEL_ACCOUNTABILITY_ACCESS",
+            "REMOTE_BDA_UNCERTAINTY"
+          ]
+        },
+        "direction": {"enum": ["SUPPORTS_KNOWLEDGE", "SUPPORTS_INNOCENT_ERROR", "CONTEXT_ONLY"]},
+        "strength": {"enum": ["CONTEXTUAL", "MODERATE", "STRONG", "DIRECT"]},
+        "summary": {"type": "string", "minLength": 1},
+        "evidence_refs": {"$ref": "#/$defs/sourceRefs"},
+        "available_at": {"type": ["string", "null"]},
+        "temporal_role": {"enum": ["CONTEMPORANEOUS", "LATER_RETROSPECTIVE", "MIXED", "NOT_APPLICABLE"]}
+      },
+      "additionalProperties": false
+    },
+    "credibleAlternative": {
+      "type": "object",
+      "required": ["alternative", "comparative_weight", "basis"],
+      "properties": {
+        "alternative": {"type": "string", "minLength": 1},
+        "comparative_weight": {"enum": ["MORE_PLAUSIBLE", "PLAUSIBLE", "LESS_PLAUSIBLE", "REMOTE", "UNRESOLVED"]},
+        "basis": {"type": "string", "minLength": 1},
+        "source_refs": {"$ref": "#/$defs/sourceRefs"}
+      },
+      "additionalProperties": false
+    },
+    "evidenceSupport": {
+      "type": "object",
+      "required": [
+        "what_was_said",
+        "factual_baseline",
+        "contemporaneous_state",
+        "knowledge_access",
+        "knowledge_indicators",
+        "contrary_evidence",
+        "corrections",
+        "repetitions",
+        "credible_alternative",
+        "comparative_inference",
+        "falsifier"
+      ],
+      "properties": {
+        "what_was_said": {"$ref": "#/$defs/sourceRefs"},
+        "factual_baseline": {"$ref": "#/$defs/sourceRefs"},
+        "contemporaneous_state": {"$ref": "#/$defs/sourceRefs"},
+        "knowledge_access": {"$ref": "#/$defs/sourceRefs"},
+        "knowledge_indicators": {"$ref": "#/$defs/sourceRefs"},
+        "contrary_evidence": {"$ref": "#/$defs/sourceRefs"},
+        "corrections": {"$ref": "#/$defs/sourceRefs"},
+        "repetitions": {"$ref": "#/$defs/sourceRefs"},
+        "credible_alternative": {"$ref": "#/$defs/sourceRefs"},
+        "comparative_inference": {"$ref": "#/$defs/sourceRefs"},
+        "falsifier": {"$ref": "#/$defs/sourceRefs"}
+      },
+      "additionalProperties": false
+    },
+    "publicationBlocker": {
+      "type": "object",
+      "required": ["code", "deficiency"],
+      "properties": {
+        "code": {"type": "string", "minLength": 1},
+        "deficiency": {"type": "string", "minLength": 1},
+        "qualification_scope": {"const": "EVIDENCE_INTEGRITY"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "semantic_version",
+    "doctrine_version",
+    "contract_version",
+    "contract_path",
+    "claim_id",
+    "claim_instance_id",
+    "proposition_id",
+    "chain_id",
+    "actor",
+    "actor_role",
+    "claim",
+    "source_proposition",
+    "proposition",
+    "proposition_fidelity",
+    "truth_adjudication",
+    "lifecycle_status",
+    "knowledge_judgment",
+    "combined_assessment",
+    "denominator_class",
+    "counts_as_unique_proposition",
+    "observed_facts",
+    "analytic_inference",
+    "knowledge_indicators",
+    "credible_alternatives",
+    "comparative_assessment",
+    "narrative_function",
+    "confidence",
+    "falsifier",
+    "evidence_support",
+    "source_ids",
+    "statement_time",
+    "event_time",
+    "knowledge_time",
+    "assessment_time",
+    "relation_type",
+    "adjudication_status",
+    "publication_status",
+    "publication_blockers"
+  ],
+  "properties": {
+    "semantic_version": {"const": "2.0"},
+    "doctrine_version": {"const": "ATLAS-EVIDENCE-20260910-1"},
+    "contract_version": {"const": "2026-09-10"},
+    "contract_path": {"const": "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md"},
+    "claim_id": {"type": "string", "minLength": 1},
+    "claim_instance_id": {"type": "string", "minLength": 3},
+    "original_claim_id": {"type": ["string", "null"]},
+    "proposition_id": {"type": "string", "minLength": 3},
+    "chain_id": {"type": "string", "minLength": 3},
+    "narrative_family_id": {"type": ["string", "null"]},
+    "actor": {"type": "string", "minLength": 1},
+    "claimant_type": {"type": ["string", "null"]},
+    "actor_role": {"enum": ["ORIGINATOR", "AMPLIFIER", "CORRECTOR", "RETRACTOR", "SUBSTITUTER", "UNRESOLVED"]},
+    "claim": {"type": "string", "minLength": 1},
+    "source_proposition": {"type": "string", "minLength": 1},
+    "proposition": {"type": "string", "minLength": 1},
+    "proposition_axis": {"type": ["string", "null"]},
+    "proposition_fidelity": {
+      "enum": [
+        "SOURCE_EQUIVALENT",
+        "ANALYTIC_DECOMPOSITION",
+        "SOURCE_HEDGE_PRESERVED",
+        "SOURCE_POLARITY_PRESERVED",
+        "ANALYTIC_REFRAME_STRONGER_THAN_SOURCE",
+        "LEGACY_SOURCE_TEXT_ONLY",
+        "UNRESOLVED"
+      ]
+    },
+    "truth_adjudication": {"enum": ["SUPPORTED", "PARTLY_TRUE", "MISLEADING", "FALSE", "UNRESOLVED"]},
+    "truth_qualifier": {"type": ["string", "null"]},
+    "lifecycle_status": {"enum": ["ACTIVE", "CORRECTED", "RETRACTED", "CORRECTED_AND_RETRACTED", "ACKNOWLEDGED", "SUPERSEDED", "NOT_APPLICABLE"]},
+    "knowledge_judgment": {"enum": ["NOT_ASSESSED", "NOT_ASSESSABLE", "INSUFFICIENT_EVIDENCE", "POSSIBLE_KNOWLEDGE", "LIKELY_KNEW_FALSE", "VERY_LIKELY_KNEW_FALSE", "KNOWING_FALSEHOOD_ESTABLISHED"]},
+    "combined_assessment": {"type": "string", "minLength": 1},
+    "denominator_class": {
+      "enum": [
+        "UNIQUE_ATOMIC_PROPOSITION",
+        "ORIGINATING_ASSERTION",
+        "REPETITION_AMPLIFICATION",
+        "CLAIM_INSTANCE",
+        "CORRECTION_RETRACTION",
+        "ADMISSION_ACKNOWLEDGMENT",
+        "MEDIA_ARTIFACT",
+        "ATLAS_CONTEXT_EFFECT_LADDER",
+        "STRATEGIC_NARRATIVE_CASE_FILE",
+        "RHETORIC_DECLARATORY_POLICY",
+        "NARRATIVE_FAMILY",
+        "EVIDENTIARY_INFERENCE",
+        "OFFICIAL_ASSESSMENT",
+        "NON_ACCUSATION_CONTEXT"
+      ]
+    },
+    "counts_as_unique_proposition": {"type": "boolean"},
+    "observed_facts": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "analytic_inference": {"type": "string"},
+    "knowledge_indicators": {"type": "array", "items": {"$ref": "#/$defs/knowledgeIndicator"}},
+    "credible_alternatives": {"type": "array", "items": {"$ref": "#/$defs/credibleAlternative"}},
+    "comparative_assessment": {"type": "string"},
+    "narrative_function": {"type": "string"},
+    "confidence": {"enum": ["LOW", "MODERATE", "MODERATE_HIGH", "HIGH"]},
+    "falsifier": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "evidence_support": {"$ref": "#/$defs/evidenceSupport"},
+    "source_ids": {"$ref": "#/$defs/sourceRefs"},
+    "statement_time": {"$ref": "#/$defs/statementTime"},
+    "event_time": {"type": ["string", "null"]},
+    "knowledge_time": {"type": ["string", "null"]},
+    "assessment_time": {"type": ["string", "null"]},
+    "relation_type": {"enum": ["ORIGINATION", "REPETITION", "AMPLIFICATION", "CORRECTION", "RETRACTION", "NARRATIVE_SUBSTITUTION", "STANDALONE"]},
+    "parent_claim_instance_id": {"type": ["string", "null"]},
+    "parent_claim_id": {"type": ["string", "null"]},
+    "next_claim_id": {"type": ["string", "null"]},
+    "adjudication_status": {"enum": ["EVIDENCE_ADJUDICATED", "LEGACY_NORMALIZED_NOT_REASSESSED"]},
+    "publication_status": {"enum": ["PUBLIC_READY", "BLOCKED_EVIDENCE_COMPLETION", "NOT_REASSESSED"]},
+    "publication_blockers": {"type": "array", "items": {"$ref": "#/$defs/publicationBlocker"}},
+    "legacy_semantics": {"type": "object", "additionalProperties": true}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "publication_status": {"const": "PUBLIC_READY"},
+          "knowledge_judgment": {"enum": ["LIKELY_KNEW_FALSE", "VERY_LIKELY_KNEW_FALSE", "KNOWING_FALSEHOOD_ESTABLISHED"]}
+        }
+      },
+      "then": {
+        "properties": {
+          "credible_alternatives": {"minItems": 1},
+          "knowledge_indicators": {"minItems": 1},
+          "falsifier": {"minItems": 1},
+          "evidence_support": {
+            "properties": {
+              "what_was_said": {"minItems": 1},
+              "factual_baseline": {"minItems": 1},
+              "knowledge_access": {"minItems": 1}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"knowledge_judgment": {"const": "KNOWING_FALSEHOOD_ESTABLISHED"}}},
+      "then": {"properties": {"truth_adjudication": {"const": "FALSE"}}}
+    }
+  ],
+  "additionalProperties": true
+}
