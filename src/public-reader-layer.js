@@ -16,7 +16,7 @@
   if (!base || typeof base.mount !== 'function') return;
   if (base.READER_LAYER_VERSION) return;
 
-  const VERSION = 'atlas-reader-v1';
+  const VERSION = 'atlas-reader-v1.1';
   const INTERNAL_TEXT = /\b(?:ROOK|PR\/CI)\b|claim[_ -]?instance[_ -]?id|proposition[_ -]?id|chain[_ -]?id|publication[_ -]?blocker|knowledge[_ -]?basis[_ -]?support[_ -]?failure/i;
 
   const asArray = value => Array.isArray(value) ? value : [];
@@ -236,6 +236,8 @@
     const facilityClass = text(record && record.facility_class).toUpperCase();
     const type = text(record && record.type).toUpperCase();
     const adminText = `${presence} ${effect}`;
+    const negativeDamage = /(^|[^A-Z0-9])(?:NO_VERIFIED_DAMAGE|NO_CONFIRMED_DAMAGE|UNVERIFIED_DAMAGE|UNCONFIRMED_DAMAGE)(?=$|[^A-Z0-9])/.test(damage);
+    const positiveDamage = !negativeDamage && /(^|[^A-Z0-9])(?:VERIFIED_DAMAGE|CONFIRMED_DAMAGE)(?=$|[^A-Z0-9])/.test(damage);
     if (/\b(WITHDRAWN|CLOSED|TRANSFERRED|DRAWDOWN|DEACTIVATED|VACATED|NOT ACTIVE)\b/.test(adminText) && !/DESTROYED/.test(adminText)) return 'administrative';
     if (/\b(WHOLE_SITE_DESTROYED|FACILITY_DESTROYED|BASE_DESTROYED)\b/.test(effect)) return 'destroyed';
     if (/^DESTROYED\b/.test(presence) || (/\bDESTROYED\b/.test(presence) && /OUTPOST|SITE|CENTER|CENTRE|FACILITY/.test(facilityClass + ' ' + type))) return 'destroyed';
@@ -244,7 +246,7 @@
       if (/OUTPOST|SUBFACILITY|OPERATIONS_CENTER|OPERATIONS CENTRE|TOC/.test(`${facilityClass} ${type} ${presence}`)) return 'damaged_inoperable';
       return 'damaged_operational';
     }
-    if (/VERIFIED_DAMAGE|CONFIRMED_DAMAGE/.test(damage)) {
+    if (positiveDamage) {
       if (/NO_WHOLE_SITE_SHUTDOWN|OPERAT|PRESENCE|REOPEN|CONTINU/.test(`${effect} ${presence} ${continuity}`)) return 'damaged_operational';
       return 'damaged_operational';
     }
@@ -360,10 +362,10 @@
 
   function publicAdjudication(record) {
     const publication = text(record && record.publication_status).toUpperCase();
-    if (publication === 'BLOCKED_EVIDENCE_COMPLETION') return { label: 'Evidence review incomplete', key: 'pending' };
-    if (publication === 'NOT_ROOK_REASSESSED') return { label: 'Not yet assessed', key: 'pending' };
     const truth = text(record && record.truth_adjudication).toUpperCase();
-    const knowledge = text(record && (record.public_knowledge_judgment || record.knowledge_judgment)).toUpperCase();
+    const rawKnowledge = text(record && (record.public_knowledge_judgment || record.knowledge_judgment)).toUpperCase();
+    const knowledgeQualified = !['BLOCKED_EVIDENCE_COMPLETION', 'NOT_REASSESSED', 'NOT_ROOK_REASSESSED'].includes(publication);
+    const knowledge = knowledgeQualified ? rawKnowledge : '';
     if (truth === 'FALSE') {
       if (knowledge === 'KNOWING_FALSEHOOD_ESTABLISHED') return { label: 'Lie', key: 'lie' };
       if (['LIKELY_KNEW_FALSE', 'VERY_LIKELY_KNEW_FALSE'].includes(knowledge)) return { label: 'Likely lie', key: 'likely-lie' };
@@ -372,7 +374,20 @@
     if (truth === 'MISLEADING') return { label: 'Misleading', key: 'misleading' };
     if (truth === 'PARTLY_TRUE') return { label: 'Partly true', key: 'partly-true' };
     if (truth === 'SUPPORTED') return { label: 'Supported', key: 'supported' };
+    if (truth === 'UNRESOLVED') return { label: 'Unresolved', key: 'unresolved' };
+    if (!knowledgeQualified) return { label: 'Evidence review incomplete', key: 'pending' };
     return { label: 'Unresolved', key: 'unresolved' };
+  }
+
+  function intentReviewNote(record) {
+    const publication = text(record && record.publication_status).toUpperCase();
+    if (publication === 'BLOCKED_EVIDENCE_COMPLETION') {
+      return 'The factual finding is shown above. The separate knowledge/intent assessment remains pending additional evidence.';
+    }
+    if (['NOT_REASSESSED', 'NOT_ROOK_REASSESSED'].includes(publication)) {
+      return 'The factual finding is shown above. The claimant’s knowledge or intent has not yet been assessed.';
+    }
+    return '';
   }
 
   function statementDate(record) {
@@ -446,6 +461,8 @@
         const copy = append(top, 'div');
         append(copy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
         append(copy, 'h3', '', recordProposition(main));
+        const intentNote = intentReviewNote(main);
+        if (intentNote) append(copy, 'p', 'reader-intent-note', intentNote);
         append(top, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
 
         const related = groupEntries.filter(([key]) => key !== groupKey).flatMap(([, rows]) => rows.filter(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION').slice(0, 1));
@@ -640,7 +657,14 @@
     return wrapped;
   }
 
-  const api = Object.freeze({ ...base, mount, READER_LAYER_VERSION: VERSION, readerFacilityStatus: facilityStatus, readerPublicAdjudication: publicAdjudication });
+  const api = Object.freeze({
+    ...base,
+    mount,
+    READER_LAYER_VERSION: VERSION,
+    readerFacilityStatus: facilityStatus,
+    readerPublicAdjudication: publicAdjudication,
+    readerIntentReviewNote: intentReviewNote
+  });
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.AtlasPublicIA = api;
 }(typeof globalThis !== 'undefined' ? globalThis : this));
