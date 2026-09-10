@@ -247,11 +247,6 @@
   margin-top: 1rem;
 }
 
-.public-page[data-reader-layer] .technical-record-metadata,
-.public-page[data-reader-layer] .evidence-role-guide {
-  display: none !important;
-}
-
 @media (max-width: 760px) {
   .reader-ledger-controls {
     grid-template-columns: 1fr;
