@@ -58,7 +58,7 @@ assert.equal(status({
 assert.equal(status({
   facility_class: 'BASE',
   current_presence_status: 'Operational and active.',
-  damage_evidence_status: 'NO_VERIFIED_DAMAGE',
+  damage_evidence_status: '',
   operational_effect_status: 'OPERATIONAL'
 }), 'operational');
 
