@@ -13,6 +13,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_public_current_state_v2 as public_core
+import public_read_model_foundation as foundation
 
 OUT = "data/public-current-state-v2.json"
 SCHEMA = "schemas/public-current-state-v2.json"
@@ -62,8 +63,6 @@ def public_proposition(record: dict[str, Any]) -> dict[str, Any]:
         result["canonical_assessment_withheld"] = False
         result["public_knowledge_judgment"] = result.get("knowledge_judgment")
         result["public_combined_assessment"] = result.get("combined_assessment")
-    # Historical migration semantics are provenance-only and never part of the
-    # public reader hierarchy.
     result.pop("legacy_semantics", None)
     return result
 
@@ -76,8 +75,6 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
             public_proposition(record)
             for record in chain.get("proposition_records") or []
         ]
-        # Recompute public chronology so a withheld knowledge conclusion cannot
-        # leak through a nested summary object.
         chain["chronology"] = []
         for record in chain["proposition_records"]:
             chain["chronology"].append({
@@ -88,9 +85,8 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
                 "truth_adjudication": record.get("truth_adjudication"),
                 "knowledge_judgment": record.get("public_knowledge_judgment"),
                 "combined_assessment": record.get("public_combined_assessment"),
-                "publication_status": record.get("publication_status")
+                "publication_status": record.get("publication_status"),
             })
-        # The public chain does not need migration-governance bookkeeping.
         chain.pop("historical_assessment", None)
         chains.append(chain)
 
@@ -105,17 +101,14 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
         "records": chains,
         "metrics": copy.deepcopy(canonical.get("lie_ledger_v2_metrics") or {}),
         "publication_blockers": copy.deepcopy(canonical.get("lie_ledger_v2_publication_blockers") or []),
-        "blocked_assessment_policy": governance.get("blocked_assessment_policy")
+        "blocked_assessment_policy": governance.get("blocked_assessment_policy"),
     }
     gate3["lie_ledger"] = public_ledger
-    # Replace the Phase 9 dataset payload as well as the convenience gate3 view.
-    # The route contract consumes datasets, so the dataset and top-level view
-    # must carry the same neutral projection.
     state["datasets"]["gate3.lie_ledger"] = public_core.dataset(
         "gate3.lie_ledger",
         public_core.CANONICAL_V2,
         public_ledger,
-        public_core.source_reference_index(canonical)
+        public_core.source_reference_index(canonical),
     )
     counts = state.setdefault("counts", {})
     counts["gate3_lie_ledger_chains"] = len(chains)
@@ -156,7 +149,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         source_id for item in state.get("chronology") or [] for source_id in item.get("source_ids") or []
     })
     counts["page_dataset_referenced_sources"] = len(
-        public_core.public_v1.extract_source_ids(state.get("datasets") or {})
+        foundation.extract_source_ids(state.get("datasets") or {})
     )
 
     input_roles = {
@@ -173,18 +166,19 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "scripts/apply_lie_ledger_evidence_completion_20260909.py": "HISTORICAL_EVIDENCE_COMPLETION_APPLICATOR",
         "scripts/apply_lie_ledger_current_claims_20260909.py": "HISTORICAL_CURRENT_CLAIM_APPLICATOR",
         "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
+        "scripts/public_read_model_foundation.py": "PUBLIC_READ_MODEL_FOUNDATION",
         GENERATOR: "PHASE9_PUBLIC_READ_MODEL_GENERATOR",
-        SCHEMA: "PHASE9_PUBLIC_READ_MODEL_SCHEMA"
+        SCHEMA: "PHASE9_PUBLIC_READ_MODEL_SCHEMA",
     }
     input_files = {item["path"]: item for item in state.get("input_files") or []}
     for path, role in input_roles.items():
-        raw = public_core.public_v1.canonical_input_bytes((root / path).read_bytes())
+        raw = foundation.canonical_input_bytes((root / path).read_bytes())
         input_files[path] = {
             "path": path,
             "sha256": sha256(raw),
             "bytes": len(raw),
             "hash_basis": "UTF8_LF_NORMALIZED",
-            "roles": [role]
+            "roles": [role],
         }
     state["input_files"] = [input_files[path] for path in sorted(input_files)]
     input_set_material = "".join(
@@ -198,14 +192,14 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     state["release"]["lie_ledger_contract_path"] = canonical["release"].get("lie_ledger_contract_path")
     state["release"]["lie_ledger_evidence_completion_version"] = canonical["release"].get("lie_ledger_evidence_completion_version")
     state["release"]["lie_ledger_current_claim_update_version"] = canonical["release"].get("lie_ledger_current_claim_update_version")
-    generator_raw = public_core.public_v1.canonical_input_bytes((root / GENERATOR).read_bytes())
-    schema_raw = public_core.public_v1.canonical_input_bytes((root / SCHEMA).read_bytes())
+    generator_raw = foundation.canonical_input_bytes((root / GENERATOR).read_bytes())
+    schema_raw = foundation.canonical_input_bytes((root / SCHEMA).read_bytes())
     state["generator"] = {
         "version": GENERATOR_VERSION,
         "script_path": GENERATOR,
         "script_sha256": sha256(generator_raw),
         "schema_path": SCHEMA,
-        "schema_sha256": sha256(schema_raw)
+        "schema_sha256": sha256(schema_raw),
     }
     state.setdefault("integrity", {}).update({
         "source_count_metadata_current": counts["source_records"] == actual,
@@ -219,7 +213,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_component_evidence_refs_public": True,
         "lie_ledger_historical_evidence_completion_input_pinned": True,
         "lie_ledger_historical_current_claim_input_pinned": True,
-        "lie_ledger_active_persona_authority_removed": True
+        "lie_ledger_active_persona_authority_removed": True,
+        "legacy_v1_builder_not_executed_by_v2": True,
     })
     return state
 
