@@ -167,6 +167,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "data/lie-ledger-v2-rook-current-claims-20260909.json": "HISTORICAL_CURRENT_CLAIM_ASSESSMENT_INPUT",
         "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md": "ACTIVE_LIE_LEDGER_EVIDENCE_CONTRACT",
         "scripts/neutralize_lie_ledger_governance.py": "ACTIVE_LIE_LEDGER_GOVERNANCE_MIGRATION",
+        "schemas/lie-ledger-evidence-adjudication-v2.json": "ACTIVE_LIE_LEDGER_EVIDENCE_SCHEMA",
         "schemas/lie-ledger-v2.json": "HISTORICAL_LIE_LEDGER_V2_SCHEMA",
         "scripts/build_lie_ledger_v2.py": "HISTORICAL_ASSESSMENT_PROJECTION_GENERATOR",
         "scripts/apply_lie_ledger_evidence_completion_20260909.py": "HISTORICAL_EVIDENCE_COMPLETION_APPLICATOR",
