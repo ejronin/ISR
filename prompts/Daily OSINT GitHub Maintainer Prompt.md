@@ -1,7 +1,7 @@
 # SUPERSEDED — Daily OSINT GitHub Maintainer master prompt
 
-**Status:** HISTORICAL / NON-BINDING  
-**Superseded:** 2026-09-10  
+**Status:** HISTORICAL / NON-BINDING
+**Superseded:** 2026-09-10
 **Current engineering-governance reference:** `docs/ENGINEERING_DOCTRINE.md`
 
 This former master prompt combined OSINT collection, analysis, data engineering, public writing, GitHub maintenance, and publication authority in one role.
