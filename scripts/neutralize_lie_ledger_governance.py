@@ -108,9 +108,9 @@ def _neutralize_chain(chain: dict[str, Any]) -> None:
     historical_doctrine = chain.get("doctrine_version")
     if historical_doctrine:
         chain["doctrine_version"] = GOVERNANCE_VERSION
-        chain.setdefault("historical_assessment", {})[
-            "doctrine_version"
-        ] = historical_doctrine
+        chain.setdefault("historical_assessment", {}).setdefault(
+            "doctrine_version", historical_doctrine
+        )
     for record in chain.get("proposition_records") or []:
         _neutralize_record(record)
     for row in chain.get("chronology") or []:
@@ -155,6 +155,13 @@ def _neutralize_source_wrappers(state: dict[str, Any]) -> None:
 
 def neutralize(state: dict[str, Any]) -> dict[str, Any]:
     """Mutate and return generated canonical state using neutral governance semantics."""
+    existing = state.get("lie_ledger_v2_governance") or {}
+    if (
+        "lie_ledger_v2_authority" not in state
+        and existing.get("governance_version") == GOVERNANCE_VERSION
+    ):
+        return state
+
     entities = state.setdefault("entities", {})
     for wrapped in entities.get("lie_ledger_v2") or []:
         _neutralize_record(_unwrap(wrapped))
@@ -216,10 +223,7 @@ def neutralize(state: dict[str, Any]) -> dict[str, Any]:
     release["lie_ledger_historical_assessment"] = historical_release
 
     integrity = state.setdefault("integrity", {})
-    for key in [
-        "lie_ledger_builder_manufactures_rook_judgments",
-    ]:
-        integrity.pop(key, None)
+    integrity.pop("lie_ledger_builder_manufactures_rook_judgments", None)
     integrity.update({
         "lie_ledger_active_persona_authority_removed": True,
         "lie_ledger_historical_assessment_provenance_preserved": True,
