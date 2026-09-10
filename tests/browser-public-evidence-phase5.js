@@ -189,8 +189,8 @@ async function setRoute(cdp, routeKey) {
       jargon: /provenance-scoped variants|provenance-scoped versions/i.test(document.querySelector('main')?.innerText || ''),
       preserved: document.querySelectorAll('[data-phase5-source-variants]').length,
       noWinner: [...document.querySelectorAll('[data-phase5-source-variants]')].every(node => /rather than silently choosing one/i.test(node.textContent || '')),
-      variantLinks: [...document.querySelectorAll('[data-phase5-source-variants] a')].filter(link => /^https?:/.test(link.href)).length
-      ,conflictHasTopLevelResolvedList: [...document.querySelectorAll('.source-card:has([data-phase5-source-variants])')].some(card => Boolean(card.querySelector(':scope > .source-link-list')))
+      variantLinks: [...document.querySelectorAll('[data-phase5-source-variants] a')].filter(link => /^https?:/.test(link.href)).length,
+      conflictHasTopLevelResolvedList: [...document.querySelectorAll('.source-card:has([data-phase5-source-variants])')].some(card => Boolean(card.querySelector(':scope > .source-link-list')))
     }))()`);
     assert.equal(sourceUx.jargon, false, 'ordinary source page still exposes internal provenance jargon');
     assert(sourceUx.preserved >= 1, 'conflicted sources do not expose preserved source versions');
@@ -214,12 +214,13 @@ async function setRoute(cdp, routeKey) {
     await setRoute(cdp, 'military.campaigns');
     const chart = await cdp.eval(`(() => ({
       count: document.querySelectorAll('[data-phase5-chart-equivalent]').length,
-      rows: document.querySelectorAll('[data-phase5-chart-equivalent] tbody tr').length,
-      text: document.querySelector('[data-phase5-chart-equivalent]')?.textContent || ''
+      months: document.querySelectorAll('[data-reader-drilldown="event-constituents"] .reader-month-drilldown').length,
+      constituents: document.querySelectorAll('[data-reader-drilldown="event-constituents"] .reader-constituent-list li').length,
+      text: document.querySelector('[data-reader-drilldown="event-constituents"]')?.textContent || ''
     }))()`);
-    assert(chart.count >= 1 && chart.rows >= 1, 'campaign chart lacks numeric accessible equivalent');
-    assert.match(chart.text, /recorded military-event counts/i);
-    assert.match(chart.text, /not total weapons/i);
+    assert(chart.count >= 1 && chart.months >= 1 && chart.constituents >= 1, 'campaign event-count drilldown lacks auditable constituents');
+    assert.match(chart.text, /count of recorded military events/i);
+    assert.match(chart.text, /Equipment quantities are not substituted for event counts/i);
 
     for (const routeKey of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
       await setRoute(cdp, routeKey);
@@ -250,7 +251,7 @@ async function setRoute(cdp, routeKey) {
       assert.equal(targets, true, `${width}px evidence disclosure target is below 44px`);
     }
 
-    console.log('public Phase 5 browser contract: PASS - shared drawers/sources, variants, temporal evidence, chart/map equivalents, route contracts, and 320/390 accessibility verified');
+    console.log('public Phase 5 browser contract: PASS - shared drawers/sources, variants, temporal evidence, reader constituent drilldowns, map equivalents, route contracts, and 320/390 accessibility verified');
   } finally {
     cdp.close();
   }
