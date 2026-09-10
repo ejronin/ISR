@@ -1,7 +1,7 @@
 # SUPERSEDED — UX/UI ISR Dashboard Engineer prompt
 
-**Status:** HISTORICAL / NON-BINDING  
-**Superseded:** 2026-09-10  
+**Status:** HISTORICAL / NON-BINDING
+**Superseded:** 2026-09-10
 **Current engineering-governance reference:** `docs/ENGINEERING_DOCTRINE.md`
 
 This former prompt is retained only for historical reference.
