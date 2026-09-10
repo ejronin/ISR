@@ -158,7 +158,7 @@ async function loadDirectRoute(cdp, route) {
     assert.match(overview.text, /How the conflict opened/);
     assert.match(overview.text, /Where things stand now/);
     assert.match(overview.text, /Where to go next/);
-    assert.match(overview.text, /The June MOU no longer controls either side/);
+    assert.match(overview.text, /The June MOU is no longer in force; negotiations continue/);
     assert.equal(overview.pathways, 6);
     assert.equal(overview.latest, 3);
     assert(overview.metrics >= 4);
