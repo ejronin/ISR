@@ -14,8 +14,8 @@ import build_public_release_core as core
 from build_public_release_core import *  # re-export release helpers for existing tests/importers
 
 ROOT = Path(__file__).resolve().parents[1]
-READER_JS = "js/public-reader-layer.js"
-READER_CSS = "css/public-reader-layer.css"
+READER_JS = "src/public-reader-layer.js"
+READER_CSS = "src/public-reader-layer.css"
 PAGE_REGISTRY = "js/public-ia.js"
 PUBLIC_STYLESHEET = "css/public-shell.css"
 JS_MARKER = "/* ATLAS_PUBLIC_READER_LAYER_COMPOSED */"
