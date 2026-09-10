@@ -1,27 +1,27 @@
 # Derived public current-state read model
 
-`data/public-current-state.json` is a generated, non-authoritative read model for the current public Atlas application. It is produced during validation/deployment and intentionally excluded from Git because it is reproducible and large. Phase 3.5 compiles the sealed inherited record and append-only accepted update packets into `data/canonical-current-state.json` first; the public builder consumes that single current entity state and never replays the update ledger.
+`data/public-current-state.json` is the generated, non-authoritative **v2** read model for the current public Atlas application. It is produced during validation/deployment and intentionally excluded from Git because it is reproducible and large. The release orchestrator first validates the sealed canonical-v1 migration lineage, then compiles and validates the current canonical-v2 state before producing the public-v2 read model. The browser receives only the already-assembled current result and never replays the update ledger.
+
+The frozen public-v1 builder remains repository compatibility lineage, not a release artifact generator. Current v2 compilation uses `scripts/public_read_model_foundation.py`; an exact in-memory parity regression proves that this neutral foundation preserves the accepted v1 seed semantics while avoiding an executable v1 dependency in the production compiler.
 
 ## Build and validation
 
+Use the same state orchestration contract used by CI and Pages:
+
 ```bash
-python scripts/build_canonical_current_state.py
-python scripts/build_canonical_current_state.py --check
-python scripts/validate_canonical_update_pipeline.py
-python scripts/build_public_current_state.py
-python scripts/build_public_current_state.py --check
-python scripts/validate_public_current_state.py
+python scripts/build_current_release_state.py
+python scripts/build_current_release_state.py --check
 ```
 
 Generation uses only repository inputs and includes no build timestamp. Object keys, record ordering, encoding and line endings are fixed, so identical inputs produce identical bytes. Input SHA-256 values use UTF-8 content with line endings normalized to LF, preventing Windows and Linux Git checkouts from producing different release identities for the same content. The release identity is derived from the sorted input-path and normalized SHA-256 inventory.
 
-The validator rebuilds the artifact twice in temporary locations, compares both byte streams with the generated output and verifies that every canonical input's raw byte hash is unchanged before and after generation.
+Current-state validation rebuilds/compares the deterministic v2 projection and verifies that registered inputs remain unchanged. Release qualification also runs the neutral-foundation parity regression against the unchanged legacy v1 seed in memory; it does not create a public-v1 release artifact.
 
-Phase 2 binds this artifact to the public shell through the separately generated `data/public-release.json`. The browser validates that manifest, the shell-asset hashes, the exact read-model hash, and the read-model release identity before it performs the first current render. See `public-boot-architecture.md`.
+Phase 2 binds the current v2 artifact to the public shell through the separately generated `data/public-release.json`. The browser validates that manifest, the shell-asset hashes, the exact read-model hash, and the read-model release identity before it performs the first current render. See `public-boot-architecture.md`.
 
 ## Current chronology assembly
 
-The inherited seven-package record is sealed at accepted Phase 3 HEAD. Post-boundary changes are discovered only through `data/canonical-ledger/manifest.json`, and chronology totals/cutoff are derived from the compiled entities and accepted packet metadata. Adding an event no longer requires changing this builder, a count constant, cutoff constant, browser loader or dated presentation layer. See `canonical-update-pipeline.md`.
+The inherited seven-package record is sealed at accepted Phase 3 HEAD. Post-boundary changes are discovered only through `data/canonical-ledger/manifest.json`, and chronology totals/cutoff are derived from the compiled entities and accepted packet metadata. Adding an event no longer requires changing the public builder, a count constant, cutoff constant, browser loader or dated presentation layer. See `canonical-update-pipeline.md`.
 
 The normalized chronology preserves the existing append-only order of authority and then sorts the resulting records by occurrence date, occurrence time and event ID:
 
@@ -55,7 +55,7 @@ When the same source ID appears in more than one canonical namespace, the read m
 
 ## Page-data mapping
 
-Canonical and approved supporting datasets are embedded once under `datasets`. `page_data` maps the seven planned public sections to dataset keys without copying or re-adjudicating their contents:
+Canonical and approved supporting datasets are embedded once under `datasets`. `page_data` maps the public sections to dataset keys without copying or re-adjudicating their contents. The registry-level owners remain:
 
 - `start_here`
 - `timeline`
@@ -65,6 +65,6 @@ Canonical and approved supporting datasets are embedded once under `datasets`. `
 - `objectives_position_changes`
 - `claims_sources`
 
-This mapping is an engineering index, not new analysis. Phase 3.5 changes maintenance/build architecture only; it does not redesign public pages or begin Phase 4.
+This mapping is an engineering index, not new analysis. Current v2 overlays add Gate 3 datasets to these owners while retaining the evidence/public boundary.
 
-The original `data/*.json` public/map datasets are still embedded under `legacy.*` so their historical bytes and provenance remain inspectable. They are classified `HISTORICAL_REFERENCE_DATA` and are not mapped into any current page. Current page mappings use the frozen ledger, accepted reconciliation, normalized chronology/source catalog, forensic products, and approved analytical datasets that supersede those legacy runtime inputs. No legacy file is deleted or rewritten by this classification.
+The original `data/*.json` public/map datasets remain embedded under `legacy.*` where required for historical bytes, provenance, or accepted structural normalization. They are classified `HISTORICAL_REFERENCE_DATA` and are not mapped into any current page as factual authority. Current page mappings use the frozen ledger, accepted reconciliation, normalized chronology/source catalog, forensic products, Gate 3 state, and approved analytical datasets that supersede those legacy runtime inputs. No legacy evidence file is rewritten by this classification.
