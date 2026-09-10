@@ -38,6 +38,12 @@ LOSS_LITERAL = re.compile(r"assert\.(?:equal|strictEqual)\(\s*losses\.length\s*,
 GATE3_RECORD_LITERAL = re.compile(
     r"assert\.(?:equal|strictEqual)\(\s*records\(['\"]gate3\.[^'\"]+['\"]\)\.length\s*,\s*\d+"
 )
+RENDERED_CURRENT_POPULATION_LITERAL = re.compile(
+    r"(?:assert(?:\.\w+)?\s*\(|\.includes\(|\.match\(|\.test\()"
+    r"[^\n]*?(?:/|['\"`])\d[\d,]*(?:\\s\+|\s+)"
+    r"(?:material-loss records|event-level casualty records|(?:current\s+)?chronology records|(?:current\s+)?conflict days)\b",
+    re.IGNORECASE,
+)
 
 
 def tracked_paths() -> list[Path]:
@@ -69,6 +75,27 @@ def mutable_cutoff_literal(line: str) -> bool:
     return bool(JS_LITERAL_ASSERT.search(line) or PY_LITERAL_COMPARE.search(line) or "fail(" in line or "raise " in line)
 
 
+def validate_rendered_current_pattern() -> None:
+    positive_samples = (
+        r"assert.match(text, /57\s+material-loss records/);",
+        r"assert.match(text, /89\s+event-level casualty records/);",
+        r"assert.match(text, /356\s+chronology records/);",
+        r"assert.match(text, /194\s+conflict days/);",
+        'assert(text.includes("356 current chronology records"));',
+    )
+    for sample in positive_samples:
+        if not RENDERED_CURRENT_POPULATION_LITERAL.search(sample):
+            raise AssertionError(f"rendered-current guard does not recognize required class: {sample}")
+    negative_samples = (
+        "assert.equal(retries, 3);",
+        "assert.match(text, /14 clauses/);",
+        "assert.equal(historicalEvents.length, 98);",
+    )
+    for sample in negative_samples:
+        if RENDERED_CURRENT_POPULATION_LITERAL.search(sample):
+            raise AssertionError(f"rendered-current guard is overbroad: {sample}")
+
+
 def scan(path: Path) -> list[str]:
     text = path.read_text(encoding="utf-8", errors="strict")
     lines = text.splitlines()
@@ -76,6 +103,7 @@ def scan(path: Path) -> list[str]:
         "public-current-state.json" in text
         or "build_public_current_state" in text
         or "current.material_losses" in text
+        or "ATLAS_PUBLIC_STATE" in text
     )
     violations: list[str] = []
     for index, line in enumerate(lines):
@@ -96,6 +124,8 @@ def scan(path: Path) -> list[str]:
             reasons.append("current material-loss population pinned to a literal")
         if public_current_consumer and GATE3_RECORD_LITERAL.search(line):
             reasons.append("current Gate 3 dataset population pinned to a literal")
+        if public_current_consumer and RENDERED_CURRENT_POPULATION_LITERAL.search(line):
+            reasons.append("rendered current-state population pinned to a literal")
         if reasons:
             rel = path.relative_to(ROOT)
             violations.append(f"{rel}:{index + 1}: {', '.join(reasons)} :: {line.strip()}")
@@ -103,6 +133,7 @@ def scan(path: Path) -> list[str]:
 
 
 def main() -> int:
+    validate_rendered_current_pattern()
     violations: list[str] = []
     paths = tracked_paths()
     for path in paths:
