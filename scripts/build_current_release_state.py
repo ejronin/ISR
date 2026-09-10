@@ -89,7 +89,10 @@ def main() -> int:
         print("current-release-state: PASS final promoted state verified without writes", flush=True)
         return 0
 
-    with tempfile.TemporaryDirectory(prefix="atlas-public-v1-compat-") as temporary:
+    # Keep the compatibility artifact below the repository root because the
+    # legacy builder's status output expects to render repository-relative paths.
+    # TemporaryDirectory still guarantees cleanup on success and exceptions.
+    with tempfile.TemporaryDirectory(prefix=".atlas-public-v1-compat-", dir=root) as temporary:
         compat_artifact = str(Path(temporary) / "public-current-state-v1.json")
         run(build_commands(compat_artifact), root)
 
