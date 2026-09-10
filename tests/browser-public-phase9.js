@@ -292,7 +292,7 @@ async function route(cdp, hash, key) {
     const phase10Effects = await cdp.eval(`(() => ({
       text: document.querySelector('main')?.innerText || '',
       cards: document.querySelectorAll('.effect-framework-card').length,
-      drilldown: document.querySelector('[data-reader-drilldown="event-constituents"]')?.innerText || ''
+      drilldown: document.querySelector('[data-reader-drilldown="event-constituents"]')?.textContent || ''
     }))()`);
     assert.equal(phase10Effects.cards, 7);
     assert.match(phase10Effects.text, /How damage and operational effect are separated/);
