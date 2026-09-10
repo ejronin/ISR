@@ -97,20 +97,20 @@ def mutable_cutoff_literal(line: str) -> bool:
 def validate_rendered_current_patterns() -> None:
     rendered_positive = (
         r"assert.match(text, /57\s+material-loss records/);",
-        r"assert.match(text, /89\s+event-level casualty records/);",
-        r"assert.match(text, /356\s+chronology records/);",
-        r"assert.match(text, /194\s+conflict days/);",
-        'assert(text.includes("356 current chronology records"));',
+        r"assert.match(text, /23\s+event-level casualty records/);",
+        r"assert.match(text, /347\s+chronology records/);",
+        r"assert.match(text, /173\s+conflict days/);",
+        'assert(text.includes("347 current chronology records"));',
     )
     for sample in rendered_positive:
         if not RENDERED_CURRENT_POPULATION_LITERAL.search(sample):
             raise AssertionError(f"rendered-current guard does not recognize required class: {sample}")
 
     named_positive = (
-        "assert.equal(view.casualtyRecords, 27);",
-        "assert.equal(view.chronologyCount, 356);",
-        "if (view.conflictDays !== 194) fail();",
-        "assert.equal(view.materialLossRecords, 64);",
+        "assert.equal(view.casualtyRecords, 23);",
+        "assert.equal(view.chronologyCount, 347);",
+        "if (view.conflictDays !== 173) fail();",
+        "assert.equal(view.materialLossRecords, 61);",
     )
     for sample in named_positive:
         if not NAMED_CURRENT_POPULATION_LITERAL.search(sample):
