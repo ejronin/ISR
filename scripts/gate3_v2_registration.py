@@ -7,9 +7,10 @@ import copy
 import hashlib
 import json
 import os
-from datetime import datetime
 from pathlib import Path
 from typing import Any
+
+import canonical_temporal_contract as temporal
 
 try:
     import jsonschema
@@ -41,6 +42,10 @@ STATIC_AUTHORITY_FIELDS = (
     "lineage_version",
 )
 
+# Compatibility alias for existing production callers/tests. Temporal parsing is
+# owned by canonical_temporal_contract.
+parse_datetime = temporal.parse_datetime
+
 
 def canonical_input_bytes(value: bytes) -> bytes:
     """Normalize packet bytes exactly as the Gate 3 v2 consumer does."""
@@ -54,16 +59,6 @@ def canonical_json_bytes(value: Any) -> bytes:
 
 def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
-
-
-def parse_datetime(value: str, label: str) -> datetime:
-    try:
-        parsed = datetime.fromisoformat(value)
-    except (TypeError, ValueError) as exc:
-        raise ValueError(f"{label} must be an ISO-8601 timestamp with offset") from exc
-    if parsed.tzinfo is None:
-        raise ValueError(f"{label} must include an explicit UTC offset")
-    return parsed
 
 
 def _load_json(path: Path, label: str) -> dict[str, Any]:
@@ -89,10 +84,7 @@ def _schema_validate(root: Path, value: dict[str, Any], schema_path: str, label:
 
 def validate_packet_schema(root: Path, packet: dict[str, Any], *, require_accepted_status: bool) -> None:
     _schema_validate(root, packet, PACKET_SCHEMA_PATH, "Gate 3 v2 packet")
-    known_at = parse_datetime(packet["known_at"], "packet known_at")
-    evidence_cutoff = parse_datetime(packet["evidence_cutoff"], "packet evidence_cutoff")
-    if evidence_cutoff > known_at:
-        raise ValueError("packet evidence_cutoff may not be later than packet known_at")
+    temporal.validate_packet_temporal_semantics(packet)
     if require_accepted_status and packet.get("status") != "ACCEPTED":
         raise ValueError("Gate 3 v2 registration requires packet status ACCEPTED")
 
@@ -158,8 +150,6 @@ def verify_lineage(manifest: dict[str, Any]) -> str:
     previous = ACCEPTED_LEDGER_GENESIS_SHA256
     packet_ids: set[str] = set()
     paths: set[str] = set()
-    prior_known_at: datetime | None = None
-    prior_cutoff: datetime | None = None
     for sequence, entry in enumerate(entries, start=1):
         if entry.get("sequence") != sequence:
             raise ValueError("Gate 3 v2 accepted packet sequence is not contiguous")
@@ -179,25 +169,13 @@ def verify_lineage(manifest: dict[str, Any]) -> str:
         expected = sha256_bytes(lineage_material(entry))
         if entry.get("lineage_sha256") != expected:
             raise ValueError(f"Gate 3 v2 accepted entry {sequence} has an invalid resulting-lineage digest")
-        known_at = parse_datetime(entry["known_at"], f"accepted entry {sequence} known_at")
-        cutoff = parse_datetime(entry["evidence_cutoff"], f"accepted entry {sequence} evidence_cutoff")
-        if prior_known_at is not None and known_at <= prior_known_at:
-            raise ValueError("Gate 3 v2 accepted known_at values must increase strictly")
-        if prior_cutoff is not None and cutoff < prior_cutoff:
-            raise ValueError("Gate 3 v2 evidence cutoff may not move backward")
-        if cutoff > known_at:
-            raise ValueError("Gate 3 v2 accepted evidence cutoff may not be later than known_at")
-        prior_known_at = known_at
-        prior_cutoff = cutoff
         previous = expected
         if sequence == MIGRATED_ACCEPTED_PREFIX_LENGTH and previous != MIGRATED_ACCEPTED_PREFIX_TIP_SHA256:
             raise ValueError("Gate 3 v2 pre-registrar accepted prefix differs from the independently pinned migration tip")
 
-    expected_current = entries[-1]["evidence_cutoff"]
-    if manifest.get("current_evidence_cutoff") != expected_current:
-        raise ValueError("Gate 3 v2 current_evidence_cutoff must derive from the accepted lineage tip")
-    if parse_datetime(manifest["current_evidence_cutoff"], "current evidence cutoff") < parse_datetime(manifest["gate2_evidence_cutoff"], "Gate 2 evidence cutoff"):
-        raise ValueError("Gate 3 v2 current evidence cutoff may not precede the frozen Gate 2 boundary")
+    # Cross-field and cross-entry time semantics are deliberately delegated to
+    # one authority shared with production consumers.
+    temporal.validate_manifest_temporal_contract(manifest)
     return previous
 
 
@@ -225,10 +203,7 @@ def verify_manifest(root: Path, manifest: dict[str, Any] | None = None, *, verif
         validate_packet_schema(root, packet, require_accepted_status=entry["acceptance_basis"] == REGISTERED_ACCEPTANCE_BASIS)
         if packet["packet_id"] != entry["packet_id"]:
             raise ValueError(f"Accepted Gate 3 v2 packet ID/path mismatch: {entry['path']}")
-        if packet["known_at"] != entry["known_at"]:
-            raise ValueError(f"Accepted Gate 3 v2 packet known_at differs from manifest: {entry['packet_id']}")
-        if packet["evidence_cutoff"] != entry["evidence_cutoff"]:
-            raise ValueError(f"Accepted Gate 3 v2 packet evidence_cutoff differs from manifest: {entry['packet_id']}")
+        temporal.validate_packet_against_accepted_entry(packet, entry)
     return tip
 
 
@@ -281,14 +256,7 @@ def register_v2_packet(root: Path, packet_path: str) -> dict[str, Any]:
         raise ValueError(f"Gate 3 v2 packet path is already registered: {relative}")
 
     current_tip = verify_manifest(root, manifest)
-    candidate_known_at = parse_datetime(packet["known_at"], "candidate packet known_at")
-    candidate_cutoff = parse_datetime(packet["evidence_cutoff"], "candidate packet evidence_cutoff")
-    last_known_at = parse_datetime(accepted[-1]["known_at"], "accepted tip known_at")
-    current_cutoff = parse_datetime(manifest["current_evidence_cutoff"], "current evidence cutoff")
-    if candidate_known_at <= last_known_at:
-        raise ValueError("Gate 3 v2 packet known_at must be strictly later than the accepted tip")
-    if candidate_cutoff < current_cutoff:
-        raise ValueError("Gate 3 v2 packet evidence_cutoff may not move backward")
+    candidate_temporal = temporal.validate_candidate_append(manifest, packet)
 
     entry = make_accepted_entry(
         len(accepted) + 1,
@@ -301,7 +269,7 @@ def register_v2_packet(root: Path, packet_path: str) -> dict[str, Any]:
     )
     candidate_manifest = copy.deepcopy(manifest)
     candidate_manifest["accepted_updates"].append(entry)
-    candidate_manifest["current_evidence_cutoff"] = packet["evidence_cutoff"]
+    candidate_manifest["current_evidence_cutoff"] = candidate_temporal.current_evidence_cutoff
     require_exact_prefix(manifest, candidate_manifest)
     verify_manifest(root, candidate_manifest)
 
