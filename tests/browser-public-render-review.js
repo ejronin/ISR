@@ -25,12 +25,12 @@ const ROUTES = [
 ];
 const POLISH_FOCUS = [
   { routeKey: 'start.overview', label: 'start-current-state', selector: '[data-current-state-summary]' },
-  { routeKey: 'evidence.information', label: 'claims-reader', selector: '[data-reader-finding]' },
-  { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' },
-  { routeKey: 'start.overview', label: 'start-war-90', selector: '[data-war-in-90-seconds]' },
-  { routeKey: 'start.overview', label: 'start-objectives', selector: '[data-objective-orientation]' },
-  { routeKey: 'start.overview', label: 'start-us-entry', selector: '[data-us-war-rationale]' },
-  { routeKey: 'start.overview', label: 'start-hormuz-trajectory', selector: '[data-hormuz-trajectory]' }
+  { routeKey: 'start.overview', label: 'start-opening-context', selector: '.historical-orientation' },
+  { routeKey: 'start.overview', label: 'start-theater-map', selector: '.overview-theater-map' },
+  { routeKey: 'evidence.information', label: 'claims-reader', selector: '[data-reader-lie-ledger]' },
+  { routeKey: 'military.facilities', label: 'facility-status-dashboard', selector: '[data-reader-facility-dashboard]' },
+  { routeKey: 'military.campaigns', label: 'campaign-constituents', selector: '[data-reader-drilldown="event-constituents"]' },
+  { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' }
 ];
 const MAP_FOCUS = [
   { routeKey: 'military.campaigns', label: 'campaign', selector: '[data-visual-sweep-hero="campaign"] .atlas-leaflet-map' },
@@ -212,7 +212,7 @@ async function captureViewport(cdp, filename) {
       total_review_captures: captures + mapFocusCaptures + polishFocusCaptures
     };
     fs.writeFileSync(path.join(OUTPUT, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
-    console.log(`browser public rendered review capture: PASS - ${captures} top-of-page screenshots (${ROUTES.length} high-risk routes x ${WIDTHS.length} widths) + ${mapFocusCaptures} focused map screenshots + ${polishFocusCaptures} final-polish focus screenshots`);
+    console.log(`browser public rendered review capture: PASS - ${captures} top-of-page screenshots (${ROUTES.length} high-risk routes x ${WIDTHS.length} widths) + ${mapFocusCaptures} focused map screenshots + ${polishFocusCaptures} evidence-first focus screenshots`);
   } finally {
     try { await cdp.call('Browser.close'); } catch (_) { /* workflow cleanup is fallback */ }
     cdp.close();
