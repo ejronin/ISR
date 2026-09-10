@@ -250,7 +250,7 @@ async function loadDirectRoute(cdp, route) {
       qalibaf: (() => {
         const node = document.querySelector('[data-actor-name="Mohammad Baqer Qalibaf"]');
         return node && {
-          entityType: 'person',
+          entityType: node.dataset.actorEntityType,
           role: node.dataset.actorRole,
           affiliation: node.dataset.actorAffiliation,
           affiliationType: node.dataset.actorAffiliationType,
