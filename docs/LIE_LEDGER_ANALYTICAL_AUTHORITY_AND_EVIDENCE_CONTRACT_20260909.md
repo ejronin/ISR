@@ -1,7 +1,7 @@
 # SUPERSEDED — Lie Ledger analytical-authority contract (2026-09-09)
 
-**Status:** HISTORICAL / NON-BINDING  
-**Superseded:** 2026-09-10  
+**Status:** HISTORICAL / NON-BINDING
+**Superseded:** 2026-09-10
 **Current engineering-governance reference:** `docs/ENGINEERING_DOCTRINE.md`
 
 This file is retained at its historical path because existing schemas, builders, validators, and records may still reference that path during the transition.
