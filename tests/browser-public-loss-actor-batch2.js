@@ -74,6 +74,8 @@ async function route(cdp, hash, key) {
       const model = window.ATLAS_PUBLIC_STATE;
       const unknown = cards.find(card => card.dataset.lossId === 'MAT-USA-ALISALEM-AD');
       const damaged = cards.find(card => card.dataset.lossPhysical === 'damaged');
+      const comparison = document.querySelector('[data-loss-comparison="record-count-auditable"]');
+      const comparisonDetails = [...(comparison?.querySelectorAll('[data-aggregation="record-count-only"]') || [])];
       return {
         stateCount: model.chronologyCount,
         cardCount: cards.length,
@@ -81,8 +83,10 @@ async function route(cdp, hash, key) {
         visibleCount: cards.filter(card => !card.hidden).length,
         unknownText: unknown?.innerText || '',
         damagedText: damaged?.innerText || '',
-        visualizations: [...document.querySelectorAll('[data-loss-visualization]')].map(node => node.dataset.lossVisualization),
-        chartEquivalents: document.querySelectorAll('[data-phase5-chart-equivalent] table').length,
+        comparisonText: comparison?.innerText || '',
+        comparisonGroups: comparison?.querySelectorAll('[data-loss-summary-group]').length || 0,
+        comparisonContributors: comparisonDetails.flatMap(node => (node.dataset.contributingRecordIds || '').split(',').filter(Boolean)).sort(),
+        cardIds: cards.map(card => card.dataset.lossId).sort(),
         assets: document.querySelectorAll('[data-asset-category-id]').length,
         envelopes: document.querySelectorAll('[data-envelope-category]').length,
         leaders: document.querySelectorAll('[data-leadership-id]').length,
@@ -92,9 +96,7 @@ async function route(cdp, hash, key) {
         unresolvedActorNames: [...document.querySelectorAll('[data-loss-id] [data-actor-name]')].filter(node => !node.dataset.actorName).length,
         commercial: document.querySelectorAll('[data-loss-group="commercial"] [data-loss-id]').length,
         military: document.querySelectorAll('[data-loss-group="military"] [data-loss-id]').length,
-        sourceDrawers: document.querySelectorAll('[data-loss-id] details.evidence-drawer').length,
-        physicalChartEquivalentText: document.querySelector('[data-phase5-chart-equivalent="loss-physical-state-record-counts"]')?.textContent || '',
-        accountingChartEquivalentText: document.querySelector('[data-phase5-chart-equivalent="loss-accounting-class-record-counts"]')?.textContent || ''
+        sourceDrawers: document.querySelectorAll('[data-loss-id] details.evidence-drawer').length
       };
     })()`);
     if (losses.cardCount !== expectedMaterialLossRecords) console.error('Loss page diagnostics:', losses, await cdp.eval(`({state:window.ATLAS_PUBLIC_STATE,text:document.querySelector('main')?.innerText||document.body.innerText})`));
@@ -105,12 +107,12 @@ async function route(cdp, hash, key) {
     assert.match(losses.unknownText, /Quantity:\s*unknown/i, 'unresolved quantity is not explicitly labeled unknown');
     assert.match(losses.unknownText, /Unknown does not mean zero/i, 'unknown-quantity guardrail is absent');
     assert.doesNotMatch(losses.unknownText, /Quantity:\s*0(?:\D|$)/i, 'unresolved quantity was rendered as numeric zero');
-    assert.match(losses.physicalChartEquivalentText, /does not sum platform quantity or convert an unknown quantity to zero/i, 'physical-state numeric equivalent permits unknown-to-zero or additive quantity semantics');
-    assert.match(losses.accountingChartEquivalentText, /record counts[^.]*not platform quantities|record counts—not platform quantities/i, 'accounting-class numeric equivalent is not explicitly bounded to record counts');
+    assert(losses.comparisonGroups >= 3, 'reader loss comparison collapsed actor/commercial grouping');
+    assert.deepEqual(losses.comparisonContributors, losses.cardIds, 'reader loss comparison does not reconcile exactly to canonical material-loss records');
+    assert.match(losses.comparisonText, /count material-loss records|count canonical material-loss records/i, 'reader loss comparison does not state its record-count denominator');
+    assert.match(losses.comparisonText, /Unknown does not mean zero|unknown quantities/i, 'reader loss comparison permits unknown-to-zero semantics');
     assert.match(losses.damagedText, /Damaged/);
     assert(!/\bDestroyed\b/.test(losses.damagedText), 'damaged record was relabeled destroyed');
-    assert.deepEqual(new Set(losses.visualizations), new Set(['physical-state-record-counts', 'accounting-class-record-counts']));
-    assert(losses.chartEquivalents >= 2, 'loss charts lack numeric equivalents');
     assert.equal(losses.assets, 10);
     assert.equal(losses.envelopes, 9);
     assert.equal(losses.leaders, 11);
@@ -165,12 +167,14 @@ async function route(cdp, hash, key) {
       metrics: document.querySelectorAll('[data-weapon-metric-id]').length,
       expenditures: document.querySelectorAll('[data-expenditure-id]').length,
       aviation: document.querySelectorAll('[data-aviation-id]').length,
+      lossCrosslink: [...document.querySelectorAll('a.inline-route-link')].some(node => node.getAttribute('href') === '#/military/losses'),
       text: document.querySelector('main')?.innerText || ''
     }))()`);
-    assert(weapons.durable > 0, 'Weapons does not meaningfully consume current material losses');
+    assert.equal(weapons.durable, 0, 'Weapons duplicates the material-loss inventory instead of linking to its canonical reader view');
     assert.equal(weapons.metrics, 2);
     assert.equal(weapons.expenditures, 9);
-    assert.equal(weapons.aviation, 4);
+    assert.equal(weapons.aviation, 0, 'Weapons duplicates the aviation incident inventory instead of linking to the loss page');
+    assert.equal(weapons.lossCrosslink, true, 'Weapons does not link readers to the canonical Casualties & Losses inventory');
     assert.match(weapons.text, /Neutralized does not mean destroyed/);
     assert.match(weapons.text, /route-level aggregate.*interception.*impact.*known-target hit/i);
 
@@ -188,7 +192,7 @@ async function route(cdp, hash, key) {
     assert(flagResources.length > 0);
     assert(flagResources.every(url => new URL(url).origin === new URL(SITE).origin && /assets\/releases\/state-flag-[a-z]{2}\.[a-f0-9]{64}\.svg$/.test(new URL(url).pathname)), 'flag loading escaped the same-origin content-addressed release');
 
-    console.log('browser public losses/actors Batch 2: PASS - complete current material-loss ledger, filters, two accessible charts, approved detail consumers, 115-identity directory, signed flags, non-state semantics, Weapons linkage, and 320/390px rendering verified');
+    console.log('browser public losses/actors Batch 2: PASS - canonical material-loss reconciliation, unknown preservation, filters, 115-identity directory, signed flags, non-state semantics, de-duplicated Weapons linkage, and 320/390px rendering verified');
   } finally {
     cdp.close();
   }
