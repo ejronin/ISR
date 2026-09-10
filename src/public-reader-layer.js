@@ -628,7 +628,7 @@
     apply();
     const onHashChange = () => {
       if (typeof queueMicrotask === 'function') queueMicrotask(apply);
-      else setTimeout(apply, 0);
+      else Promise.resolve().then(apply);
     };
     windowObject.addEventListener('hashchange', onHashChange);
     const wrapped = Object.freeze({
