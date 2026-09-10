@@ -50,6 +50,7 @@ jobs:
             data/canonical-updates/UPD-20260909-CATCHUP.json
 
           python - <<'PY'
+          import json
           from pathlib import Path
 
           for name in (
@@ -58,13 +59,9 @@ jobs:
               "UPD-20260909-CATCHUP.json",
           ):
               path = Path("data/canonical-updates") / name
-              text = path.read_text(encoding="utf-8")
-              if '"status": "ACCEPTED"' not in text:
-                  marker = '  "schema_version": "2.0",\n'
-                  if text.count(marker) != 1:
-                      raise SystemExit(f"unexpected schema marker in {path}")
-                  text = text.replace(marker, marker + '  "status": "ACCEPTED",\n', 1)
-                  path.write_text(text, encoding="utf-8", newline="\n")
+              packet = json.loads(path.read_text(encoding="utf-8"))
+              packet["status"] = "ACCEPTED"
+              path.write_text(json.dumps(packet, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
 
           path = Path("scripts/build_canonical_current_state_v2.py")
           text = path.read_text(encoding="utf-8")
@@ -76,7 +73,6 @@ jobs:
           path.write_text(text, encoding="utf-8", newline="\n")
           PY
 
-          # Hard check that the #65 authority remains wired into the overlapping consumer.
           grep -F 'import canonical_temporal_contract as temporal' scripts/build_canonical_current_state_v2.py
           grep -F 'temporal.validate_packet_against_accepted_entry' scripts/build_canonical_current_state_v2.py
           grep -F 'temporal.validate_event_temporal_semantics' scripts/build_canonical_current_state_v2.py
