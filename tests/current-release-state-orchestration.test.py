@@ -29,12 +29,16 @@ assert ("scripts/build_public_current_state_v2_hardened.py", "--output", "data/p
 for validator in (
     "scripts/validate_canonical_authority.py",
     "scripts/validate_canonical_update_pipeline.py",
-    "scripts/validate_public_current_state.py",
     "scripts/validate_gate3_final.py",
     "scripts/validate_public_current_state_v2.py",
 ):
     assert any(item[1] == validator for item in build), f"build contract omitted {validator}"
     assert any(item[1] == validator for item in check), f"check contract omitted {validator}"
+
+# The temporary v1 public projection must still be validated during build, before
+# the final v2 projection takes ownership of data/public-current-state.json.
+assert any(item[1] == "scripts/validate_public_current_state.py" for item in build)
+assert not any(item[1] in {"scripts/build_public_current_state.py", "scripts/validate_public_current_state.py"} for item in check), "final-state check must not reinterpret the promoted v2 public artifact as v1"
 
 assert all("--check" in item or item[1].startswith("scripts/validate_") for item in check), "check mode contains a write-capable builder"
 assert build.index(next(item for item in build if item[1] == "scripts/build_public_current_state.py" and "--check" not in item)) < build.index(next(item for item in build if item[1] == "scripts/build_canonical_current_state_v2_final.py" and "--check" not in item)), "qualified legacy public state must be materialized before the v2 overlay until compatibility is retired"
@@ -45,5 +49,6 @@ source = SCRIPT.read_text(encoding="utf-8")
 assert "subprocess.run" in source and "check=True" in source
 assert "accepted evidence" in source.lower()
 assert "v1 compatibility lineage" in source
+assert "final promoted repository state" in source
 
-print("current release-state orchestration: PASS - one ordered build/check contract preserves existing canonical/public validators")
+print("current release-state orchestration: PASS - one ordered build contract and final-state check contract preserve qualified canonical/public semantics")
