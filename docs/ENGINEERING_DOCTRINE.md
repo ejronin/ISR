@@ -1,8 +1,8 @@
 # ATLAS ISR — Engineering Doctrine and Lane Registry
 
-**Status:** CONTROLLING ENGINEERING GOVERNANCE  
-**Effective:** 2026-09-10  
-**Owner:** Lead Public Product Engineer  
+**Status:** CONTROLLING ENGINEERING GOVERNANCE
+**Effective:** 2026-09-10
+**Owner:** Lead Public Product Engineer
 **Supersedes:** the 2026-09-10 bootstrap in this file and every earlier ROOK / PR-CI / UX-UI / prompt / PR-era authority contract where they conflict with this doctrine.
 
 ## 1. Product mission
