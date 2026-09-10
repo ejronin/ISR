@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import argparse, copy, hashlib, json, re, sys
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 import build_canonical_current_state as v1
+import canonical_temporal_contract as temporal
 SPEC="data/gate3/gate3-spec.json"; MANIFEST="data/canonical-ledger/manifest-v2.json"; OUT="data/canonical-current-state-v2.json"
 SEEDS={"casualties":("data/integration-v1.2/casualties.json","records","casualty_id"),"agreements":("data/integration-v1.2/agreements.json","records","agreement_id"),"diplomacy":("data/integration-v1.2/diplomacy.json","records","diplomacy_id"),"facilities":("data/integration-v1.2/facilities.json","facilities","facility_id"),"movements":("data/integration-v1.2/movements.json","movements","movement_id"),"shipping":("data/integration-v1.2/shipping.json","records","shipping_id"),"economics":("data/integration-v1.2/economics.json","records","economic_id")}
 PLURAL={"actor":"actors","location":"locations","claim":"claims","material_loss":"material_losses","casualty":"casualties","agreement":"agreements","diplomacy":"diplomacy","facility":"facilities","movement":"movements","shipping":"shipping","economic":"economics","gap":"gaps","narrative_claim":"narrative_claims","narrative_family":"narrative_families","information_chain":"information_chains","source_reliability":"source_reliability","legacy_disposition":"legacy_dispositions","side_ledger_disposition":"side_ledger_dispositions","relationship":"relationships"}
@@ -16,16 +17,13 @@ def canonical_packet_text_bytes(raw):
     """Return manifest-hash bytes for repository JSON text.
 
     Accepted v2 packet hashes describe the repository's LF text content, not a
-    platform-specific checkout representation.  This deliberately changes
+    platform-specific checkout representation. This deliberately changes
     newline representation only; JSON is never parsed or reserialized before
     its manifest hash is checked, so every substantive byte still matters.
     """
     raw.decode("utf-8")
     return raw.replace(b"\r\n", b"\n")
-def dt(x):
-    d=datetime.fromisoformat(x)
-    if d.tzinfo is None: raise ValueError(f"timestamp needs offset: {x}")
-    return d
+def dt(x): return temporal.parse_datetime(x,"timestamp")
 def wrap(i,r,prov): return {"entity_id":i,"record":copy.deepcopy(r),"source_ids":list(r.get("source_ids") or []),"provenance":[prov],"revisions":[]}
 def source_item(r,prov,key):
     return {"source_id":r["source_id"],"record":copy.deepcopy(r),"resolution":"CANONICAL_UPDATE_CURRENT","registry":None,"outlet_profile":None,"registry_status":"CANONICAL_UPDATE_SOURCE","provenance":[prov],"variants":[{"variant_key":key,"record":copy.deepcopy(r),"provenance":prov}],"field_conflicts":[],"revisions":[]}
@@ -169,7 +167,7 @@ def apply_packet(root,state,p,path):
         miss=set(e.get("source_ids") or [])-set(src)
         if miss: raise ValueError(f"unresolved event sources {miss}")
         if e.get("event_class") in {"RELATED_THEATER_CONTEXT","PERIOD_ASSESSMENT","STATE_SNAPSHOT","DIPLOMATIC_OR_POLICY_EVENT"} and e.get("strike_countable"): raise ValueError(f"non-strike class counted as strike {e['event_id']}")
-        if e.get("public_available_time") and dt(e["public_available_time"]).date()<date.fromisoformat(e["event_date"]): raise ValueError(f"backdated evidence {e['event_id']}")
+        temporal.validate_event_temporal_semantics(e,label=f"event {e['event_id']}")
         state["chronology"].append(chron(e,{"kind":"GATE3_ACCEPTED_PACKET","packet_id":p["packet_id"],"path":path},p["packet_id"])); ids.add(e["event_id"])
     for ent in p.get("entities") or []:
         et=ent["entity_type"]
@@ -210,19 +208,18 @@ def coverage(state):
 def build_state(root=ROOT):
     root=Path(root).resolve(); base,report=v1.build_state(root); state=copy.deepcopy(base); spec=load(root,SPEC); man=load(root,MANIFEST)
     if spec["gate2_evidence_cutoff"]!=man["gate2_evidence_cutoff"]: raise ValueError("Gate2 cutoff mismatch")
-    current_cutoff=man.get("current_evidence_cutoff") or man["gate2_evidence_cutoff"]
-    if dt(current_cutoff)<dt(man["gate2_evidence_cutoff"]): raise ValueError("current evidence cutoff precedes Gate2 boundary")
+    temporal_projection=temporal.validate_manifest_temporal_contract(man); current_cutoff=temporal_projection.current_evidence_cutoff
     state["schema_version"]="2.0"; state["artifact_role"]="DERIVED_CANONICAL_CURRENT_ENTITY_STATE_V2"; seed(root,state,spec); restored=restore_legacy(root,state,spec); migrate_info(root,state,spec); side_reconcile(root,state,spec)
-    prior=dt(base["release"]["current_osint_cutoff"]); accepted=[]
+    accepted=[]
     for n,e in enumerate(man["accepted_updates"],1):
         if e["sequence"]!=n: raise ValueError("packet sequence gap")
         raw=canonical_packet_text_bytes((root/e["path"]).read_bytes())
         if sha(raw)!=e["sha256"]: raise ValueError(f"packet hash changed {e['path']}")
-        p=json.loads(raw); known=dt(p["known_at"])
-        if known<=prior or known>dt(current_cutoff): raise ValueError("packet knowledge order/cutoff violation")
-        prior=known; apply_packet(root,state,p,e["path"]); accepted.append({**e,"summary":p["summary"]})
+        p=json.loads(raw); temporal.validate_packet_against_accepted_entry(p,e)
+        apply_packet(root,state,p,e["path"]); accepted.append({**e,"summary":p["summary"]})
     state["chronology"].sort(key=lambda x:(x["event"]["event_date"],str(x["event"].get("event_time") or ""),x["event_id"]))
     state["accepted_updates_v2"]=accepted; state["release"]["gate2_evidence_cutoff"]=man["gate2_evidence_cutoff"]; state["release"]["current_osint_cutoff"]=current_cutoff; state["release"]["current_osint_cutoff_display"]=dt(current_cutoff).strftime("%B %d, %Y %H:%M ET").replace(" 0"," "); state["release"]["canonical_state_identity_v2"]="canonical-current-v2-"+sha(cbytes({"base":base["release"]["canonical_state_identity"],"packets":accepted,"restored":restored}))[:16]
+    temporal.validate_current_state_temporal_projection(state,label="canonical Gate 3 v2 current state")
     state["daily_coverage"]=coverage(state); state["counts"].update({"gate3_chronology_records":len(state["chronology"]),"gate3_legacy_events_restored":len(restored),"gate3_update_packets":len(accepted),"gate3_narrative_claims":len(state["entities"]["narrative_claims"])})
     state["integrity"].update({"gate3_cutoff_frozen":True,"legacy_disposition_complete":True,"daily_coverage_derived_from_chronology":True,"false_is_not_automatically_lie":True,"cumulative_casualty_snapshots_nonadditive":True,"frozen_v1_inputs_mutated":False,"gate3_semantic_validation_ready":True,"current_evidence_cutoff_frozen":True})
     return state
