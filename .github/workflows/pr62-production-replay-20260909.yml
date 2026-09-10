@@ -128,9 +128,10 @@ jobs:
       - name: Qualify registered current state before push
         run: |
           set -euo pipefail
-          python scripts/build_canonical_current_state_v2_final.py --output /tmp/canonical-current-state-v2.json
-          python scripts/build_public_current_state_v2_hardened.py --output /tmp/public-current-state-v2.json
+          python scripts/build_canonical_current_state.py --output data/canonical-current-state.json
+          python scripts/build_canonical_current_state_v2_final.py --output data/canonical-current-state-v2.json
           python scripts/validate_gate3_final.py
+          python scripts/build_public_current_state_v2_hardened.py --output data/public-current-state-v2.json
           python scripts/validate_lie_ledger_v2.py
           python tests/sep6-update-v2.test.py
 
