@@ -180,28 +180,29 @@ function addFinding(findings, routeKey, width, category, detail) {
     await route(cdp, 'evidence.information');
     const ledger = await cdp.eval(`(() => {
       const main = document.querySelector('main');
-      const claim = main.querySelector('[data-claim-instance-id]');
-      const chain = claim?.closest('[data-chain-id]');
-      if (chain) chain.open = true;
-      const summary = claim?.querySelector(':scope > summary');
+      const card = main.querySelector('[data-reader-finding]');
+      const why = card?.querySelector('.reader-how-we-know');
+      const summary = why?.querySelector(':scope > summary');
       if (summary) summary.focus();
       const focusable = !summary || document.activeElement === summary;
       if (summary) summary.click();
-      const drawerSummary = claim?.querySelector('[data-evidence-component] .evidence-drawer > summary');
+      const drawerSummary = why?.querySelector('.evidence-drawer > summary');
       if (drawerSummary) drawerSummary.click();
+      const status = card?.querySelector('.reader-claim-status')?.textContent.trim() || '';
       return {
-        claim: Boolean(claim),
-        chain: Boolean(chain),
-        chainOpen: !chain || Boolean(chain.open),
+        card: Boolean(card),
+        why: Boolean(why),
         focusable,
-        open: Boolean(claim?.open),
+        open: Boolean(why?.open),
         drawer: Boolean(drawerSummary),
-        drawerOpen: !drawerSummary || drawerSummary.parentElement.open,
-        text: claim?.innerText || ''
+        drawerOpen: !drawerSummary || Boolean(drawerSummary.parentElement.open),
+        status,
+        text: card?.innerText || ''
       };
     })()`);
-    if (!ledger.claim || !ledger.chain || !ledger.chainOpen || !ledger.focusable || !ledger.open) addFinding(findings, 'evidence.information', 390, 'disclosure', 'claim-instance-not-focusable-or-openable');
-    if (!ledger.drawer || !ledger.drawerOpen) addFinding(findings, 'evidence.information', 390, 'evidence-drawer', 'component-drawer-not-discoverable-or-openable');
+    if (!ledger.card || !ledger.why || !ledger.focusable || !ledger.open) addFinding(findings, 'evidence.information', 390, 'disclosure', 'reader-finding-evidence-path-not-focusable-or-openable');
+    if (!ledger.status) addFinding(findings, 'evidence.information', 390, 'finding', 'reader-finding-status-missing');
+    if (!ledger.drawer || !ledger.drawerOpen) addFinding(findings, 'evidence.information', 390, 'evidence-drawer', 'reader-evidence-drawer-not-discoverable-or-openable');
 
     await route(cdp, 'military.imagery');
     const imagery = await cdp.eval(`(() => {

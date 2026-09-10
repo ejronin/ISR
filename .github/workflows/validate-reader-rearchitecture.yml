@@ -1,0 +1,49 @@
+name: Validate reader rearchitecture
+
+on:
+  pull_request:
+    paths:
+      - "src/public-reader-layer.js"
+      - "src/public-reader-layer.css"
+      - "scripts/build_public_release.py"
+      - "scripts/build_public_release_core.py"
+      - "tests/public-reader-layer.test.js"
+      - "docs/ENGINEERING_DOCTRINE.md"
+      - ".github/workflows/validate-reader-rearchitecture.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  reader-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.x'
+      - name: Reader-layer static and invariant checks
+        run: |
+          node --check src/public-reader-layer.js
+          node tests/public-reader-layer.test.js
+          python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py
+      - name: Verify composition source is structural
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('.')
+          js = root / 'src/public-reader-layer.js'
+          css = root / 'src/public-reader-layer.css'
+          assert js.is_file() and css.is_file()
+          js_text = js.read_text(encoding='utf-8')
+          css_text = css.read_text(encoding='utf-8')
+          assert 'ATLAS PUBLIC READER LAYER' in js_text
+          assert 'ATLAS PUBLIC READER LAYER' in css_text
+          assert 'display: none !important' not in css_text
+          assert 'Combined ROOK assessment' not in js_text
+          assert 'ROOK verdict / PR/CI evidence boundary' not in js_text
+          PY
