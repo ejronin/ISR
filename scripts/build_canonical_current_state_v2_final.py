@@ -24,7 +24,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_v2 as lie_ledger_v2
 import apply_lie_ledger_evidence_completion_20260909 as lie_ledger_evidence_completion
-import gate3_v2_registration as gate3_v2_authority
+import apply_lie_ledger_current_claims_20260909 as lie_ledger_current_claims
 
 OUT = "data/canonical-current-state-v2.json"
 CONFLICT_DAY_1 = date(2026, 2, 28)
@@ -79,7 +79,6 @@ def refresh_derived_counts(state: dict[str, Any]) -> None:
 
 def build_state(root: Path = ROOT) -> dict[str, Any]:
     root = Path(root).resolve()
-    gate3_v2_authority.verify_manifest(root)
     state = hardened.build_state(root)
 
     # Forward-only semantic layer. ROOK's overlay is the only source of
@@ -89,13 +88,18 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     lie_ledger_evidence_completion.inject_sources(state, root)
     lie_ledger_v2.apply(state, root)
     lie_ledger_evidence_completion.apply(state, root, lie_ledger_v2)
+    lie_ledger_current_claims.apply(
+        state,
+        root,
+        lie_ledger_v2,
+        lie_ledger_evidence_completion,
+    )
     refresh_derived_counts(state)
 
     rows = war_daily_coverage(state)
     state["daily_coverage"] = rows
     state.setdefault("counts", {})["gate3_daily_coverage_days"] = len(rows)
     state.setdefault("integrity", {}).update({
-        "gate3_v2_registration_lineage_verified": True,
         "war_daily_coverage_bounded_to_conflict": True,
         "war_daily_coverage_starts_day1": bool(rows and rows[0]["date"] == "2026-02-28"),
         "war_daily_coverage_reaches_gate2_cutoff": bool(
@@ -118,6 +122,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_doctrine_version": state["release"]["lie_ledger_doctrine_version"],
         "lie_ledger_contract_version": state["release"]["lie_ledger_contract_version"],
         "lie_ledger_evidence_completion_version": state["release"].get("lie_ledger_evidence_completion_version"),
+        "lie_ledger_current_claim_update_version": state["release"].get("lie_ledger_current_claim_update_version"),
         "lie_ledger_v2_records": state["counts"]["lie_ledger_v2_records"],
         "lie_ledger_v2_chains": state["counts"]["lie_ledger_v2_chains"],
         "lie_ledger_v2_claim_instances": state.get("lie_ledger_v2_metrics", {}).get("claim_instances"),

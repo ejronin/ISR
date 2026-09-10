@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -12,7 +13,12 @@ import build_canonical_current_state_v2_final as builder
 def main() -> int:
     state = builder.build_state(ROOT)
     assert state["release"]["gate2_evidence_cutoff"] == "2026-09-05T00:37:00-04:00"
-    assert state["release"]["current_osint_cutoff"] == "2026-09-06T14:10:43-04:00"
+    manifest = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
+    sep6 = [item for item in manifest.get("accepted_updates") or [] if item.get("packet_id") == "UPD-20260906-CURRENT"]
+    assert len(sep6) == 1
+    assert sep6[0]["known_at"] == "2026-09-06T14:10:43-04:00"
+    assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
+
     events = {item["event_id"]: item for item in state["chronology"]}
     for event_id in (
         "G3-IRGC-US-WARSHIPS-20260905",
@@ -73,15 +79,22 @@ def main() -> int:
     assert sum(1 for item in state["chronology"] if item["event_id"] == "G3-MINAB-SCHOOL-20260228") == 1
     assert len([key for key in relationships if key.startswith("REL-STRAT-") and key.endswith("-20260906")]) == 6
 
-    shipping = {item["entity_id"]: item["record"] for item in state["entities"]["shipping"]}
-    assert shipping["SHIP-G3-HORMUZ-20260904"]["date"] == "2026-09-06"
-    assert "scope" in shipping["SHIP-G3-HORMUZ-20260904"]["ais_scope"].lower()
-    economics = {item["entity_id"]: item["record"] for item in state["entities"]["economics"]}
-    assert economics["ECON-G3-OIL-EXPORTS-20260903"]["date"] == "2026-09-06"
-    assert "REGIME_COLLAPSE_NOT_ESTABLISHED" in economics["ECON-G3-OIL-EXPORTS-20260903"]["adjudication"]
+    shipping_items = {item["entity_id"]: item for item in state["entities"]["shipping"]}
+    shipping = shipping_items["SHIP-G3-HORMUZ-20260904"]
+    assert shipping["record"]["date"] >= "2026-09-06"
+    assert "scope" in shipping["record"]["ais_scope"].lower()
+    assert any(revision.get("packet_id") == "UPD-20260906-CURRENT" for revision in shipping.get("revisions") or [])
 
-    assert state["daily_coverage"][-1]["date"] == "2026-09-06"
-    print("sep6-update-v2: PASS - stable IDs, material-loss semantics, claim discipline, strategic state and cutoff verified")
+    economic_items = {item["entity_id"]: item for item in state["entities"]["economics"]}
+    economics = economic_items["ECON-G3-OIL-EXPORTS-20260903"]
+    assert economics["record"]["date"] >= "2026-09-06"
+    assert "REGIME_COLLAPSE_NOT_ESTABLISHED" in economics["record"]["adjudication"]
+    assert any(revision.get("packet_id") == "UPD-20260906-CURRENT" for revision in economics.get("revisions") or [])
+
+    coverage_dates = {row["date"] for row in state["daily_coverage"]}
+    assert "2026-09-06" in coverage_dates
+    assert state["daily_coverage"][-1]["date"] == state["release"]["current_osint_cutoff"][:10]
+    print("sep6-update-v2: PASS - Sep. 6 stable IDs, material-loss semantics and strategic state remain preserved after later append-only updates")
     return 0
 
 

@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "ROOK_LIE_LEDGER_V2_CURRENT_CLAIM_UPDATE",
+  "authority": "ROOK",
+  "contract_version": "2026-09-09",
+  "update_version": "ROOK-CURRENT-CLAIMS-20260909-v1",
+  "evidence_cutoff": "2026-09-09T09:30:02-04:00",
+  "current_claims": {
+    "LL-IRAN-QALIBAF-ESCALATION-DOCTRINE-20260906": {
+      "truth": "SUPPORTED",
+      "truth_qualifier": "PRELIMINARY_BEHAVIORAL_MANIFESTATION",
+      "knowledge": "NOT_ASSESSABLE",
+      "combined": "DECLARATORY DOCTRINE — PRELIMINARY BEHAVIORAL SUPPORT",
+      "confidence": "MODERATE_HIGH",
+      "denominator": "RHETORIC_DECLARATORY_POLICY",
+      "narrative": "Declared faster/heavier retaliation; Sep. 8–9 broadened retaliation provides preliminary behavioral support without proving a durable doctrine."
+    },
+    "LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908": {
+      "truth": "FALSE",
+      "truth_qualifier": "CONTRADICTED_EFFECT_CLAIM",
+      "knowledge": "POSSIBLE_KNOWLEDGE",
+      "combined": "FALSE/CONTRADICTED EFFECT CLAIM — POSSIBLE KNOWLEDGE",
+      "confidence": "MODERATE",
+      "denominator": "UNIQUE_ATOMIC_PROPOSITION",
+      "narrative": "Strategic battle-damage claim about the U.S.-used base near Al Azraq."
+    },
+    "LL-IRAN-DIVE-LD-CAPTURE-20260908": {
+      "truth": "SUPPORTED",
+      "truth_qualifier": "POSSESSION_SUPPORTED_CAUSE_SEPARATE",
+      "knowledge": "NOT_ASSESSABLE",
+      "combined": "SUPPORTED POSSESSION — CAUSE OF LOSS SEPARATE",
+      "confidence": "HIGH",
+      "denominator": "UNIQUE_ATOMIC_PROPOSITION",
+      "narrative": "U.S. uncrewed-system possession claim; possession is separated from the cause of loss."
+    },
+    "LL-IRAN-TEN-VESSEL-SUCCESS-20260909": {
+      "truth": "UNRESOLVED",
+      "truth_qualifier": "PARTIAL_MERCHANT_CORROBORATION_EXACT_TEN_UNRESOLVED",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "combined": "PARTIALLY CORROBORATED / EXACT TEN UNRESOLVED — NO LIE FINDING",
+      "confidence": "MODERATE",
+      "denominator": "UNIQUE_ATOMIC_PROPOSITION",
+      "narrative": "Aggregate maritime-retaliation success claim."
+    },
+    "LL-IRAN-US-WARSHIP-HITS-20260909": {
+      "truth": "FALSE",
+      "truth_qualifier": "CONTRADICTED_EFFECT_CLAIM",
+      "knowledge": "POSSIBLE_KNOWLEDGE",
+      "combined": "FALSE/CONTRADICTED EFFECT CLAIM — POSSIBLE KNOWLEDGE",
+      "confidence": "MODERATE",
+      "denominator": "UNIQUE_ATOMIC_PROPOSITION",
+      "narrative": "Claim that two U.S. military vessels were physically hit or damaged in the Sep. 8–9 retaliation wave."
+    }
+  }
+}

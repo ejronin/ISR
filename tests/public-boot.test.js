@@ -121,7 +121,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   assert.equal(app.validateRuntimeAuthorization(runtime.authorization, runtime.executingScript, runtime.documentObject), manifest);
   assert.equal(model.counts.chronology_records, model.chronology.length);
   assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
-  assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
+  assert.equal(model.release.current_osint_cutoff, manifest.current_state.current_osint_cutoff);
   assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
   assert.equal(manifest.current_state.release_identity, model.release.release_identity);
   assert.equal(digest(read('data/public-current-state.json')), manifest.current_state.sha256);
