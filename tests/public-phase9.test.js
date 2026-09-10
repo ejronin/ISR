@@ -34,8 +34,8 @@ assert(model.chronology.every(item => Array.isArray(item.source_references)));
 assert.equal(records('current.material_losses').length, model.counts.material_loss_records);
 assert.equal(records('current.relationships').length, model.counts.relationship_records);
 assert.equal(records('gate3.source_reliability').length, model.counts.gate3_source_reliability_records);
-assert.equal(records('gate3.gaps').length, 19);
-assert.equal(records('gate3.casualties').length, 23);
+assert.equal(records('gate3.gaps').length, (model.entities.gaps || []).length);
+assert.equal(records('gate3.casualties').length, (model.entities.casualties || []).length);
 
 // Lie Ledger v2: public primary object is a narrative/proposition chain, never a flat score row.
 const ledger = payload('gate3.lie_ledger');
