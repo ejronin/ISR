@@ -1,35 +1,19 @@
-# ATLAS Lie Ledger — Superseded Rule Registry
+# SUPERSEDED — Lie Ledger semantic-migration registry (2026-09-09)
 
-**Status:** ACTIVE SEMANTIC-MIGRATION CONTROL<br>
-**Contract version:** `2026-09-09`<br>
-**Doctrine version:** `ROOK-20260909-1`<br>
-**Authority:** `docs/LIE_LEDGER_ANALYTICAL_AUTHORITY_AND_EVIDENCE_CONTRACT_20260909.md`
+**Status:** HISTORICAL / NON-BINDING
+**Superseded:** 2026-09-10
+**Current engineering-governance reference:** `docs/ENGINEERING_DOCTRINE.md`
 
-This registry records semantic rules deliberately superseded by Lie Ledger v2.
-A superseded rule must not be restored to production code, builders, validators,
-tests, generated public state, or renderer behavior merely to recover a green
-build. `lie-ledger-v1` may retain old fields strictly as sealed provenance.
+This registry previously acted as an active semantic-migration control for Lie Ledger v2.
 
-| OLD RULE | WHY DEFECTIVE | NEW RULE | CONTRACT VERSION | REGRESSION TEST |
-|---|---|---|---|---|
-| `deception_score` is the primary knowledge/intent representation. | A numeric score collapses distinct factual and knowledge questions and encouraged UI text to treat an unassessed state as a substantive finding. | Knowledge is a qualitative, ROOK-owned axis: `NOT_ASSESSED`, `NOT_ASSESSABLE`, `INSUFFICIENT_EVIDENCE`, `POSSIBLE_KNOWLEDGE`, `LIKELY_KNEW_FALSE`, `VERY_LIKELY_KNEW_FALSE`, or `KNOWING_FALSEHOOD_ESTABLISHED`. | 2026-09-09 | `scripts/validate_lie_ledger_v2.py::assert_no_active_deception_score`; public v2 model scan |
-| Score `0` means “No evidence of knowing deception.” | `0` conflated **not assessed** with an evidentiary conclusion and erased the difference between unavailable, insufficient, and non-assessable knowledge evidence. | No numeric zero semantics exist in v2. Workflow state and evidence state remain explicit and separate. | 2026-09-09 | `validate_lie_ledger_v2.py` rejects `0 — No evidence` and `NOT_ASSESSED_FOR_DECEPTION` in the public v2 model |
-| `NOT_ASSESSED_FOR_DECEPTION` is a valid active knowledge token. | It encodes the old deception-score model and fails to distinguish not assessed from not assessable and insufficient evidence. | Use the active v2 knowledge vocabulary only. | 2026-09-09 | v2 schema enum + `validate_lie_ledger_v2.py` |
-| `KNOWING_FALSEHOOD_LIE` may appear on the factual truth axis. | It merges proposition truth with claimant mental state. A false proposition does not itself establish knowledge. | Factual truth is limited to `SUPPORTED`, `PARTLY_TRUE`, `MISLEADING`, `FALSE`, `UNRESOLVED`. Knowledge is separate. Combined assessment is a ROOK-owned output derived from the two axes, not a truth token. | 2026-09-09 | v2 schema truth enum + validator truth/lifecycle checks |
-| False factual status automatically implies a lie. | It manufactures intent from outcome and violates the authority contract. | `FALSE` can coexist with any permitted knowledge judgment; a lie classification requires ROOK's separate knowledge assessment. | 2026-09-09 | validator requires a false proposition below the likely-lie knowledge threshold |
-| Direct mental-state proof is required before any estimative knowledge judgment. | It would prohibit normal structured intelligence inference from institutional access, chronology, custody, contradictions, or repeated post-correction conduct. | ROOK may reach estimative knowledge judgments circumstantially. PR/CI must expose the evidence and distinguish inference from observed fact. | 2026-09-09 | validator requires estimative knowledge represented through structured evidence-backed knowledge indicators |
-| Correction/retraction is a factual-truth value. | A false statement can later be corrected; truth and lifecycle are independent. | `lifecycle_status` separately records correction, retraction, acknowledgement, supersession, or active status. | 2026-09-09 | v2 schema has no correction/retraction truth token; lifecycle enum is separate |
-| A generic `source_ids` list is sufficient support for a strong ruling. | Readers cannot tell which source supports the claim, factual baseline, knowledge access, contrary evidence, alternative, or inference. | `evidence_support` contains named component-level reference groups. Strong public-ready judgments require claim, factual-baseline, and knowledge-access evidence, plus structured indicators, credible alternative, and falsifier. | 2026-09-09 | v2 schema conditional + validator source-resolution/component checks |
-| Later evidence may be treated as if available at the original statement time. | It backdates knowledge and corrupts contemporaneous analysis. | Statement time, contemporaneous state, later evidence, correction time, and assessment time remain distinguishable. | 2026-09-09 | component evidence groups + temporal fields; successor CI validates separate groups |
-| Publisher headline/framing may silently become the quoted official's proposition. | It changes actor attribution and can strengthen a source statement. | Publisher framing is a separate claim instance/proposition with its own actor. | 2026-09-09 | `PROP-IR-210-DOWNED-HEADLINE` validator asserts actor `Press TV` and axis `PUBLISHER_FRAMING` |
-| Source wording may be strengthened during normalization (`hit` → `downed`/`destroyed`). | It changes the proposition being adjudicated. | Preserve source strength. Forward v2 normalization may correct a legacy analytical strengthening while retaining the legacy source/provenance unchanged. | 2026-09-09 | validator hard-stops `IR-CLM-0604` unless the active proposition is `At least 16 enemy fighters were hit.` |
-| Every repeated statement is another unique proposition. | Amplification/repetition inflated falsehood and lie totals. | Claim instances and unique propositions are counted separately. `REPETITION_AMPLIFICATION` never increments the unique-proposition denominator. | 2026-09-09 | validator rejects `counts_as_unique_proposition=true` on amplification/repetition |
-| Corrections and retractions increase accusation/falsehood totals. | It rewards correction with a worse reliability metric and corrupts denominators. | Corrections/retractions are lifecycle/claim-instance counts and do not increment unique false propositions. | 2026-09-09 | validator rejects unique-proposition counting for `CORRECTION_RETRACTION` |
-| `UNRESOLVED` belongs in the falsehood denominator. | Unknown is not false. | Public percentages identify numerator/denominator and exclude unresolved unique propositions from the resolved-factual denominator. | 2026-09-09 | independent metric recomputation in `validate_lie_ledger_v2.py` |
-| DOM/card count is a valid analytical denominator. | Renderer rows include repetition, corrections, contextual records, media artifacts, and non-unique case files. | Metrics derive from canonical entity classes and explicit denominator flags only. | 2026-09-09 | canonical/public metric equality against independent recomputation |
-| Hard-coded Lie Ledger row counts (for example `82`) are release contracts. | Content growth or correct proposition decomposition breaks tests unrelated to semantic integrity. | Counts are generated and reconciled from canonical v2 data; CI tests relationships and denominators, not magic corpus size. | 2026-09-09 | `validate_lie_ledger_v2.py` computes all totals from canonical records |
-| Synthetic media automatically attributes deception to Iran/state actors. | False media can circulate without established official provenance. | Media artifact truth and originator attribution are separate. Unknown originators remain unresolved/non-assessable. | 2026-09-09 | v2 actor/knowledge separation and denominator class `MEDIA_ARTIFACT` |
-| Actor-specific thresholds may be used for lie findings. | It creates asymmetric analytical standards. | One actor-neutral knowledge framework applies to all claimants. | 2026-09-09 | authority overlay doctrine pin + schema/validator use one knowledge enum |
-| Renderer may translate or soften ROOK's canonical verdict. | It transfers analytical authority from ROOK to presentation code. | Public-ready records render ROOK's canonical knowledge and combined assessment unchanged. Evidence-blocked records are **withheld, not downgraded**. | 2026-09-09 | validator compares canonical/public values and rejects blocked-verdict leakage |
-| An evidence-deficient strong ROOK ruling may be silently demoted to pass CI. | It substitutes PR/CI judgment for ROOK authority. | Preserve canonical ROOK ruling, mark publication blocker, and return `ROOK RE-ADJUDICATION / EVIDENCE COMPLETION REQUIRED — [deficiency]`. | 2026-09-09 | canonical `publication_blockers`; public `WITHHOLD_NOT_DOWNGRADE` policy; validator |
-| Generated public/current state is the analytical authority. | Generated state is a projection and can be rebuilt; it must not overwrite the adjudication source. | `data/lie-ledger-v2-rook-authority.json` pins ROOK rulings; builders normalize deterministically from preserved evidence. | 2026-09-09 | canonical authority metadata + input-set hashing |
+It no longer governs production code, builders, validators, tests, generated public state, renderer behavior, engineer authority, or public presentation.
+
+The Lead Public Product Engineer may recover any useful data-integrity lessons from the former registry—such as keeping factual truth separate from claimant knowledge, avoiding denominator inflation, preserving chronology, and maintaining source fidelity—but the former ROOK-owned doctrine, renderer requirements, publication-blocker behavior, and semantic-control rules are not binding.
+
+If an existing validator, schema, builder, workflow, or test still assumes this registry is controlling, the Lead Public Product Engineer is authorized to replace that dependency as part of the rebuild.
+
+Do not restore an old rule solely because a historical document or CI expectation once required it.
+
+Use `docs/ENGINEERING_DOCTRINE.md` until the lead publishes the successor doctrine and lane registry.
+
+Git history preserves the full former registry for historical review.

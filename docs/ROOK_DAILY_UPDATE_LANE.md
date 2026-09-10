@@ -1,43 +1,26 @@
-# ROOK routine narrative update lane
+# SUPERSEDED — ROOK routine narrative update lane
 
-This is the normal maintenance path after the final narrative contract was approved. It exists so routine evidence/current-state updates do **not** reopen PR/linguistics, UX/UI, and release-engineering review.
+**Status:** HISTORICAL / NON-BINDING
+**Superseded:** 2026-09-10
+**Current engineering-governance reference:** `docs/ENGINEERING_DOCTRINE.md`
 
-## Routine update
+The former routine lane that gave ROOK bounded authority to edit public narrative fields is retired as project governance.
 
-ROOK may edit only the mutable values in `config/rook-narrative-current.json`:
+ROOK is not the controlling public editor, semantic authority, or publishing authority for Atlas.
 
-- `evidence_as_of`
-- `war90_current_title`
-- `war90_current_text`
-- `war90_current_changed`
-- `us_record_shows`
-- `us_current_position`
-- `iran_record_shows`
-- `iran_current_position`
-- `hormuz_now`
+This file remains only as historical context while the Lead Public Product Engineer redesigns the update architecture.
 
-Then run:
+The Lead Public Product Engineer is explicitly authorized to replace or remove:
 
-```bash
-python scripts/sync_rook_narrative.py
-node tests/public-final-polish.test.js
-```
+- `config/rook-narrative-current.json` as a publishing authority mechanism;
+- `scripts/sync_rook_narrative.py`;
+- tests that freeze the old narrative-slot contract;
+- old mutable/frozen field distinctions;
+- old escalation rules;
+- any dependent builder, renderer, schema, prompt, or workflow that encodes the former lane.
 
-Normal repository CI remains the release gate. No separate linguistics, UX, or CI-engineer signoff is required for a routine update that stays inside this contract.
+Useful evidence and source material should be preserved. The old lane itself does not constrain the replacement.
 
-## Frozen contract
+The successor daily-update process and engineer ownership model will be defined by the Lead Public Product Engineer in the project doctrine and lane registry described in `docs/ENGINEERING_DOCTRINE.md`.
 
-ROOK must not change in the routine lane:
-
-- `schema_version` or `contract_version`;
-- module titles or taxonomy;
-- **Original public benchmark → What the record shows → Current position**;
-- the U.S.-entry trigger/rationale/objective distinctions;
-- the non-ranking War in 90 Seconds disclaimer;
-- the Hormuz **60-day interim no-charge** distinction;
-- proposal-versus-agreement, leverage-versus-recognized-control, or attribution standards;
-- DOM architecture, route authority, evidence schema, analytical thresholds, or stable IDs.
-
-## Escalate only when meaning changes
-
-ROOK stops the routine lane and flags a semantic-contract change only if the evidence requires a new proposition/category, a changed legal or agreement status, a changed attribution standard, a new route/data dependency, a schema/threshold change, or copy that cannot truthfully fit the existing slots. That is the exception path—not the daily update process.
+Git history preserves the prior routine-lane instructions for historical review.
