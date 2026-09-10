@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Validate Lie Ledger v2 doctrine, evidence support, metrics and public projection.
+"""Validate neutral Lie Ledger evidence semantics and public projection.
 
-This validator enforces representation and evidentiary integrity. It never decides
-whether ROOK's substantive adjudication was analytically correct.
+This validator protects representation, evidence sufficiency, temporal/source
+fidelity, denominator integrity, and public withholding behavior. It does not
+assign factual authority to a person, persona, or implementation lane.
 """
 from __future__ import annotations
 
@@ -15,9 +16,11 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = "data/canonical-current-state-v2.json"
 PUBLIC = "data/public-current-state-v2.json"
-SCHEMA = "schemas/lie-ledger-v2.json"
-DOCTRINE = "ROOK-20260909-1"
+SCHEMA = "schemas/lie-ledger-evidence-adjudication-v2.json"
+GOVERNANCE = "ATLAS-EVIDENCE-20260910-1"
+CONTRACT = "2026-09-10"
 COMPLETION = "ROOK-EVIDENCE-COMPLETION-20260909-v1"
+ADJUDICATED = "EVIDENCE_ADJUDICATED"
 STRONG = {"LIKELY_KNEW_FALSE", "VERY_LIKELY_KNEW_FALSE", "KNOWING_FALSEHOOD_ESTABLISHED"}
 FALSY = {"FALSE", "MISLEADING"}
 
@@ -86,7 +89,7 @@ def recompute_metrics(records: list[dict[str, Any]], chain_count: int) -> dict[s
     claim_instance_keys: set[str] = set()
     originations = amplifications = corrections = retractions = substitutions = media = 0
     for record in records:
-        if record.get("authority_status") != "ROOK_ADJUDICATED":
+        if record.get("adjudication_status") != ADJUDICATED:
             continue
         claim_instance_keys.add(claim_instance_key(record))
         factual[record["truth_adjudication"]] += 1
@@ -109,14 +112,14 @@ def recompute_metrics(records: list[dict[str, Any]], chain_count: int) -> dict[s
     falsy_unique = {
         record["proposition_id"]
         for record in records
-        if record.get("authority_status") == "ROOK_ADJUDICATED"
+        if record.get("adjudication_status") == ADJUDICATED
         and record.get("counts_as_unique_proposition")
         and record.get("truth_adjudication") in FALSY
     }
     resolved_unique = {
         record["proposition_id"]
         for record in records
-        if record.get("authority_status") == "ROOK_ADJUDICATED"
+        if record.get("adjudication_status") == ADJUDICATED
         and record.get("counts_as_unique_proposition")
         and record.get("truth_adjudication") != "UNRESOLVED"
     }
@@ -138,8 +141,8 @@ def recompute_metrics(records: list[dict[str, Any]], chain_count: int) -> dict[s
                 "numerator": len(falsy_unique),
                 "denominator": len(resolved_unique),
                 "percentage": pct,
-                "numerator_definition": "Unique ROOK-adjudicated propositions classified FALSE or MISLEADING.",
-                "denominator_definition": "Unique ROOK-adjudicated propositions with a resolved factual status; UNRESOLVED excluded."
+                "numerator_definition": "Unique evidence-adjudicated propositions classified FALSE or MISLEADING.",
+                "denominator_definition": "Unique evidence-adjudicated propositions with a resolved factual status; UNRESOLVED excluded."
             }
         }
     }
@@ -170,19 +173,28 @@ def validate(root: Path = ROOT) -> None:
 
     require(records, "canonical Lie Ledger v2 is empty")
     require(chains, "canonical Lie Ledger v2 chains are empty")
-    require(canonical.get("lie_ledger_v2_authority", {}).get("verdict_authority") == "ROOK", "ROOK verdict authority is not pinned")
-    require(canonical.get("lie_ledger_v2_authority", {}).get("implementation_authority") == "PR/CI", "PR/CI implementation authority is not pinned")
-    require(canonical.get("release", {}).get("lie_ledger_doctrine_version") == DOCTRINE, "canonical doctrine version mismatch")
-    require((public.get("gate3") or {}).get("lie_ledger", {}).get("doctrine_version") == DOCTRINE, "public doctrine version mismatch")
-    require((public.get("gate3") or {}).get("lie_ledger", {}).get("primary_object") == "NARRATIVE_PROPOSITION_CHAIN", "public primary object is not narrative/proposition chain")
+    require("lie_ledger_v2_authority" not in canonical, "active persona-authority object remains in canonical state")
+    governance = canonical.get("lie_ledger_v2_governance") or {}
+    require(governance.get("governance_version") == GOVERNANCE, "neutral Lie Ledger governance version mismatch")
+    require(governance.get("contract_version") == CONTRACT, "neutral Lie Ledger contract version mismatch")
+    require(governance.get("adjudication_basis") == "EVIDENCE_AND_ACCEPTED_ASSESSMENT", "Lie Ledger adjudication basis is not evidence-based")
+    require(governance.get("implementation_model") == "DETERMINISTIC_BUILDER", "Lie Ledger implementation model is not neutral")
+    require(canonical.get("release", {}).get("lie_ledger_governance_version") == GOVERNANCE, "canonical governance release pin mismatch")
+    public_ledger = (public.get("gate3") or {}).get("lie_ledger", {})
+    require(public_ledger.get("governance_version") == GOVERNANCE, "public governance version mismatch")
+    require(public_ledger.get("primary_object") == "NARRATIVE_PROPOSITION_CHAIN", "public primary object is not narrative/proposition chain")
+    require("authority" not in public_ledger, "public Lie Ledger exposes an active authority object")
 
     if jsonschema is not None:
+        validator = jsonschema.Draft202012Validator(schema)
         for record in records:
-            jsonschema.Draft202012Validator(schema).validate(record)
+            validator.validate(record)
 
     known_sources = source_ids(canonical)
     for record in records:
         assert_no_active_deception_score(record)
+        require("authority_status" not in record, f"active persona-status field remains in {record['claim_instance_id']}")
+        require(record.get("adjudication_status") in {ADJUDICATED, "LEGACY_NORMALIZED_NOT_REASSESSED"}, f"invalid adjudication status {record['claim_instance_id']}")
         require(record["truth_adjudication"] in {"SUPPORTED", "PARTLY_TRUE", "MISLEADING", "FALSE", "UNRESOLVED"}, f"truth/lifecycle collapse in {record['claim_instance_id']}")
         require(record["knowledge_judgment"] != "NOT_ASSESSED_FOR_DECEPTION", f"obsolete knowledge token in {record['claim_instance_id']}")
         require(record["combined_assessment"] != "KNOWING_FALSEHOOD_LIE", f"obsolete combined token in {record['claim_instance_id']}")
@@ -198,6 +210,8 @@ def validate(root: Path = ROOT) -> None:
             require(record["falsifier"], f"strong judgment lacks falsifier {record['claim_instance_id']}")
         if record["denominator_class"] in {"REPETITION_AMPLIFICATION", "CORRECTION_RETRACTION"}:
             require(not record["counts_as_unique_proposition"], f"amplification/correction inflates unique propositions {record['claim_instance_id']}")
+        for blocker in record.get("publication_blockers") or []:
+            require("authority" not in blocker, f"active blocker owner remains in {record['claim_instance_id']}")
 
     # False factual status cannot automatically manufacture a lie finding.
     require(
@@ -209,11 +223,12 @@ def validate(root: Path = ROOT) -> None:
         "anti-regression corpus lacks a false proposition with knowledge below likely-lie threshold"
     )
 
-    # Direct mental-state evidence is not a prerequisite for estimative knowledge.
+    # Direct mental-state evidence is not a prerequisite for an estimative
+    # knowledge judgment; circumstantial/institutional access can support it.
     require(
         any(
             record["knowledge_judgment"] in {"LIKELY_KNEW_FALSE", "VERY_LIKELY_KNEW_FALSE"}
-            and any(ind.get("indicator") == "ROOK_KNOWLEDGE_BASIS" for ind in record.get("knowledge_indicators") or [])
+            and any(ind.get("indicator") == "ASSESSMENT_KNOWLEDGE_BASIS" for ind in record.get("knowledge_indicators") or [])
             for record in records
         ),
         "estimative knowledge is not represented through circumstantial/institutional evidence"
@@ -223,7 +238,7 @@ def validate(root: Path = ROOT) -> None:
     sixteen = [
         record for record in records
         if record.get("original_claim_id") == "IR-CLM-0604"
-        and record.get("authority_status") == "ROOK_ADJUDICATED"
+        and record.get("adjudication_status") == ADJUDICATED
     ]
     require(sixteen, "IR-CLM-0604 v2 proposition missing")
     require(any(record["proposition"] == "At least 16 enemy fighters were hit." for record in sixteen), "IR-CLM-0604 source wording not restored to hit")
@@ -235,14 +250,17 @@ def validate(root: Path = ROOT) -> None:
     require(headline[0]["actor"] == "Press TV", "publisher headline silently attributed to source speaker")
     require(headline[0]["proposition_axis"] == "PUBLISHER_FRAMING", "publisher framing not structurally separated")
 
-    # Sep. 9 ROOK evidence-completion hard stops.
-    authority = canonical.get("lie_ledger_v2_authority") or {}
-    require(authority.get("evidence_completion_version") == COMPLETION, "ROOK evidence-completion overlay is not active")
-    resolved = set(authority.get("resolved_publication_blockers") or [])
+    # Historical Sep. 9 evidence-completion inputs remain traceable, but no
+    # historical author is active authority in generated state.
+    historical = governance.get("historical_inputs") or {}
+    require(historical.get("evidence_completion_version") == COMPLETION, "historical evidence-completion input is not pinned")
+    resolved = set(historical.get("resolved_publication_blockers") or [])
     required_resolved = {"BLOCK-LINCOLN-MAR13", "BLOCK-CSAR-REMAINS", "BLOCK-QATAR-INVITATION", "BLOCK-TANF-CLAIM-SOURCE"}
-    require(required_resolved <= resolved, "ROOK evidence-completion blocker set is incomplete")
-    global_blocker_ids = {str(item.get("blocker_id") or "") for item in canonical.get("lie_ledger_v2_publication_blockers") or []}
-    require(not (required_resolved & global_blocker_ids), "resolved ROOK blocker remained open")
+    require(required_resolved <= resolved, "historical evidence-completion blocker set is incomplete")
+    global_blockers = canonical.get("lie_ledger_v2_publication_blockers") or []
+    global_blocker_ids = {str(item.get("blocker_id") or "") for item in global_blockers}
+    require(not (required_resolved & global_blocker_ids), "resolved historical blocker remained open")
+    require(all("authority" not in blocker for blocker in global_blockers), "global blocker carries active persona authority")
 
     remains = [record for record in records if record.get("proposition_id") == "PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION"]
     require(len(remains) == 1, "American-remains evidence proposition missing or duplicated")
@@ -252,12 +270,12 @@ def validate(root: Path = ROOT) -> None:
 
     lincoln = [record for record in records if record.get("proposition_id") == "PROP-LINCOLN-20260313-NONOPERATIONAL"]
     require(len(lincoln) == 1, "March 13 Lincoln effect proposition missing or duplicated")
-    require(lincoln[0]["combined_assessment"] == "VERY LIKELY LIE — FALSE NON-OPERATIONAL / FORCED-RETREAT CLAIM", "March 13 Lincoln ROOK ruling changed")
+    require(lincoln[0]["combined_assessment"] == "VERY LIKELY LIE — FALSE NON-OPERATIONAL / FORCED-RETREAT CLAIM", "March 13 Lincoln assessment changed")
     require(lincoln[0]["publication_status"] == "PUBLIC_READY", "March 13 Lincoln completed ruling remains blocked")
 
     qatar = [record for record in records if record.get("original_claim_id") == "IR-CLM-0702" and "waiting for months" in record.get("proposition", "")]
     require(len(qatar) == 1, "Qatar access-obstruction completed proposition missing or duplicated")
-    require(qatar[0]["combined_assessment"] == "LIKELY LIE — ACCESS-OBSTRUCTION CLAIM", "Qatar ROOK ruling changed")
+    require(qatar[0]["combined_assessment"] == "LIKELY LIE — ACCESS-OBSTRUCTION CLAIM", "Qatar access-obstruction assessment changed")
     require(qatar[0]["publication_status"] == "PUBLIC_READY", "Qatar completed ruling remains blocked")
 
     tanf = [record for record in records if record.get("chain_id") == "CH-TANF-JUL17"]
@@ -269,35 +287,39 @@ def validate(root: Path = ROOT) -> None:
 
     expected_metrics = recompute_metrics(records, len(chains))
     require(canonical.get("lie_ledger_v2_metrics") == expected_metrics, "canonical Lie Ledger v2 metrics do not independently reconcile")
-    require((public.get("gate3") or {}).get("lie_ledger", {}).get("metrics") == expected_metrics, "public Lie Ledger metrics differ from canonical recomputation")
+    require(public_ledger.get("metrics") == expected_metrics, "public Lie Ledger metrics differ from canonical recomputation")
 
     canonical_by_id = {record["claim_instance_id"]: record for record in records}
     public_by_id = {record["claim_instance_id"]: record for record in public_rows}
     require(set(canonical_by_id) == set(public_by_id), "public/canonical Lie Ledger claim-instance sets differ")
     for claim_id, source in canonical_by_id.items():
         rendered = public_by_id[claim_id]
-        require(rendered["truth_adjudication"] == source["truth_adjudication"], f"renderer/public model altered factual verdict {claim_id}")
+        require(rendered["truth_adjudication"] == source["truth_adjudication"], f"public model altered factual verdict {claim_id}")
         if source["publication_status"] == "PUBLIC_READY":
-            require(rendered.get("public_knowledge_judgment") == source["knowledge_judgment"], f"public model altered ROOK knowledge judgment {claim_id}")
-            require(rendered.get("public_combined_assessment") == source["combined_assessment"], f"public model altered ROOK combined assessment {claim_id}")
-            require(not rendered.get("canonical_rook_assessment_withheld"), f"public-ready verdict unexpectedly withheld {claim_id}")
+            require(rendered.get("public_knowledge_judgment") == source["knowledge_judgment"], f"public model altered knowledge judgment {claim_id}")
+            require(rendered.get("public_combined_assessment") == source["combined_assessment"], f"public model altered combined assessment {claim_id}")
+            require(rendered.get("canonical_assessment_withheld") is False, f"public-ready assessment unexpectedly withheld {claim_id}")
         elif source["publication_status"] == "BLOCKED_EVIDENCE_COMPLETION":
-            require(rendered.get("canonical_rook_assessment_withheld") is True, f"blocked ROOK verdict leaked publicly {claim_id}")
+            require(rendered.get("canonical_assessment_withheld") is True, f"blocked knowledge assessment leaked publicly {claim_id}")
             require("knowledge_judgment" not in rendered, f"blocked knowledge accusation leaked publicly {claim_id}")
             require("combined_assessment" not in rendered, f"blocked combined accusation leaked publicly {claim_id}")
             require(rendered.get("public_combined_assessment") == "EVIDENCE COMPLETION REQUIRED", f"blocked public status incorrect {claim_id}")
+            require(rendered.get("truth_adjudication") == source.get("truth_adjudication"), f"blocked knowledge qualification erased factual status {claim_id}")
+        elif source["publication_status"] == "NOT_REASSESSED":
+            require(rendered.get("canonical_assessment_withheld") is True, f"not-reassessed knowledge state was not withheld {claim_id}")
+            require(rendered.get("public_knowledge_judgment") == "NOT_ASSESSED", f"not-reassessed public knowledge marker incorrect {claim_id}")
 
-    # NOT_ASSESSED is a workflow state, not the old score-zero/no-evidence claim.
-    public_blob = json.dumps((public.get("gate3") or {}).get("lie_ledger") or {}, ensure_ascii=False).casefold()
+    public_blob = json.dumps(public_ledger, ensure_ascii=False).casefold()
     require("0 — no evidence" not in public_blob and "0 - no evidence" not in public_blob, "score-zero/no-evidence semantics returned to public v2 model")
     require("not_assessed_for_deception" not in public_blob, "obsolete NOT_ASSESSED_FOR_DECEPTION returned to public v2 model")
+    require("verdict_authority" not in public_blob and "implementation_authority" not in public_blob, "persona authority leaked into public v2 model")
 
     print(
         "lie-ledger-v2: PASS "
         f"records={len(records)} chains={len(chains)} "
         f"unique={expected_metrics['unique_propositions']} "
         f"claims={expected_metrics['claim_instances']} "
-        f"blockers={len(canonical.get('lie_ledger_v2_publication_blockers') or [])}"
+        f"blockers={len(global_blockers)}"
     )
 
 

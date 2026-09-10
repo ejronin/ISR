@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the final Gate 3 public read model with current Lie Ledger v2 metadata."""
+"""Build the final Gate 3 public read model with neutral Lie Ledger governance."""
 from __future__ import annotations
 
 import argparse
@@ -17,7 +17,7 @@ import build_public_current_state_v2 as public_core
 OUT = "data/public-current-state-v2.json"
 SCHEMA = "schemas/public-current-state-v2.json"
 GENERATOR = "scripts/build_public_current_state_v2_hardened.py"
-GENERATOR_VERSION = "2.2"
+GENERATOR_VERSION = "2.3-neutral-governance"
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -36,33 +36,34 @@ def unwrap(item: dict[str, Any]) -> dict[str, Any]:
 def public_proposition(record: dict[str, Any]) -> dict[str, Any]:
     """Project a canonical v2 proposition to the public model.
 
-    A blocked ROOK judgment is withheld, never downgraded. The public model keeps
-    factual status and the exact PR/CI deficiency but omits the unqualified
-    knowledge/combined accusation until its component evidence is publication-ready.
+    A publication blocker affecting knowledge/intent withholds the unqualified
+    knowledge conclusion; it does not erase or downgrade an independently
+    supported factual adjudication.
     """
     result = copy.deepcopy(record)
     status = result.get("publication_status")
     if status == "BLOCKED_EVIDENCE_COMPLETION":
-        result["canonical_rook_assessment_withheld"] = True
+        result["canonical_assessment_withheld"] = True
         result["public_knowledge_judgment"] = "WITHHELD_PENDING_EVIDENCE_QUALIFICATION"
         result["public_combined_assessment"] = "EVIDENCE COMPLETION REQUIRED"
         result.pop("knowledge_judgment", None)
         result.pop("combined_assessment", None)
         result.pop("analytic_inference", None)
         result.pop("comparative_assessment", None)
-    elif status == "NOT_ROOK_REASSESSED":
-        result["canonical_rook_assessment_withheld"] = True
+    elif status == "NOT_REASSESSED":
+        result["canonical_assessment_withheld"] = True
         result["public_knowledge_judgment"] = "NOT_ASSESSED"
-        result["public_combined_assessment"] = "NOT YET ROOK REASSESSED"
+        result["public_combined_assessment"] = "NOT YET REASSESSED"
         result.pop("knowledge_judgment", None)
         result.pop("combined_assessment", None)
         result.pop("analytic_inference", None)
         result.pop("comparative_assessment", None)
     else:
-        result["canonical_rook_assessment_withheld"] = False
+        result["canonical_assessment_withheld"] = False
         result["public_knowledge_judgment"] = result.get("knowledge_judgment")
         result["public_combined_assessment"] = result.get("combined_assessment")
-    # Legacy semantic fields are provenance-only and never part of the v2 public hierarchy.
+    # Historical migration semantics are provenance-only and never part of the
+    # public reader hierarchy.
     result.pop("legacy_semantics", None)
     return result
 
@@ -75,8 +76,8 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
             public_proposition(record)
             for record in chain.get("proposition_records") or []
         ]
-        # Recompute public chronology so a blocked canonical knowledge verdict
-        # cannot leak through a nested summary object.
+        # Recompute public chronology so a withheld knowledge conclusion cannot
+        # leak through a nested summary object.
         chain["chronology"] = []
         for record in chain["proposition_records"]:
             chain["chronology"].append({
@@ -89,28 +90,27 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
                 "combined_assessment": record.get("public_combined_assessment"),
                 "publication_status": record.get("publication_status")
             })
+        # The public chain does not need migration-governance bookkeeping.
+        chain.pop("historical_assessment", None)
         chains.append(chain)
 
+    governance = canonical.get("lie_ledger_v2_governance") or {}
     gate3 = state.setdefault("gate3", {})
     public_ledger = {
         "schema_version": "2.0",
-        "doctrine_version": canonical["lie_ledger_v2_authority"]["doctrine_version"],
-        "contract_version": canonical["lie_ledger_v2_authority"]["contract_version"],
-        "contract_path": canonical["lie_ledger_v2_authority"]["contract_path"],
+        "governance_version": governance.get("governance_version"),
+        "contract_version": governance.get("contract_version"),
+        "contract_path": governance.get("contract_path"),
         "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
         "records": chains,
         "metrics": copy.deepcopy(canonical.get("lie_ledger_v2_metrics") or {}),
         "publication_blockers": copy.deepcopy(canonical.get("lie_ledger_v2_publication_blockers") or []),
-        "authority": {
-            "verdicts": "ROOK",
-            "implementation_and_evidence_qualification": "PR/CI",
-            "blocked_verdict_policy": "WITHHOLD_NOT_DOWNGRADE"
-        }
+        "blocked_assessment_policy": governance.get("blocked_assessment_policy")
     }
     gate3["lie_ledger"] = public_ledger
     # Replace the Phase 9 dataset payload as well as the convenience gate3 view.
-    # The route contract consumes datasets, so leaving the legacy flat payload
-    # here would preserve obsolete semantics even if the top-level view were v2.
+    # The route contract consumes datasets, so the dataset and top-level view
+    # must carry the same neutral projection.
     state["datasets"]["gate3.lie_ledger"] = public_core.dataset(
         "gate3.lie_ledger",
         public_core.CANONICAL_V2,
@@ -161,14 +161,17 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
 
     input_roles = {
         "data/canonical-current-state-v2.json": "DERIVED_GATE3_CANONICAL_CURRENT_STATE",
-        "data/lie-ledger-v2-rook-authority.json": "ROOK_LIE_LEDGER_V2_AUTHORITY",
-        "data/lie-ledger-v2-rook-evidence-completion-20260909.json": "ROOK_LIE_LEDGER_EVIDENCE_COMPLETION_AUTHORITY",
-        "data/lie-ledger-v2-evidence-sources-20260909.json": "ROOK_LIE_LEDGER_EVIDENCE_SOURCE_REGISTRY",
-        "data/lie-ledger-v2-rook-current-claims-20260909.json": "ROOK_LIE_LEDGER_CURRENT_CLAIM_UPDATE_AUTHORITY",
-        "schemas/lie-ledger-v2.json": "LIE_LEDGER_V2_SEMANTIC_SCHEMA",
-        "scripts/build_lie_ledger_v2.py": "LIE_LEDGER_V2_FORWARD_MIGRATION_GENERATOR",
-        "scripts/apply_lie_ledger_evidence_completion_20260909.py": "LIE_LEDGER_V2_EVIDENCE_COMPLETION_GENERATOR",
-        "scripts/apply_lie_ledger_current_claims_20260909.py": "LIE_LEDGER_V2_CURRENT_CLAIM_UPDATE_GENERATOR",
+        "data/lie-ledger-v2-rook-authority.json": "HISTORICAL_LIE_LEDGER_ASSESSMENT_INPUT",
+        "data/lie-ledger-v2-rook-evidence-completion-20260909.json": "HISTORICAL_EVIDENCE_COMPLETION_INPUT",
+        "data/lie-ledger-v2-evidence-sources-20260909.json": "LIE_LEDGER_EVIDENCE_SOURCE_REGISTRY",
+        "data/lie-ledger-v2-rook-current-claims-20260909.json": "HISTORICAL_CURRENT_CLAIM_ASSESSMENT_INPUT",
+        "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md": "ACTIVE_LIE_LEDGER_EVIDENCE_CONTRACT",
+        "scripts/neutralize_lie_ledger_governance.py": "ACTIVE_LIE_LEDGER_GOVERNANCE_MIGRATION",
+        "schemas/lie-ledger-evidence-adjudication-v2.json": "ACTIVE_LIE_LEDGER_EVIDENCE_SCHEMA",
+        "schemas/lie-ledger-v2.json": "HISTORICAL_LIE_LEDGER_V2_SCHEMA",
+        "scripts/build_lie_ledger_v2.py": "HISTORICAL_ASSESSMENT_PROJECTION_GENERATOR",
+        "scripts/apply_lie_ledger_evidence_completion_20260909.py": "HISTORICAL_EVIDENCE_COMPLETION_APPLICATOR",
+        "scripts/apply_lie_ledger_current_claims_20260909.py": "HISTORICAL_CURRENT_CLAIM_APPLICATOR",
         "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
         GENERATOR: "PHASE9_PUBLIC_READ_MODEL_GENERATOR",
         SCHEMA: "PHASE9_PUBLIC_READ_MODEL_SCHEMA"
@@ -190,8 +193,9 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     input_set_sha256 = sha256(input_set_material)
     state["release"]["input_set_sha256"] = input_set_sha256
     state["release"]["release_identity"] = f"public-current-v2-{input_set_sha256[:16]}"
-    state["release"]["lie_ledger_doctrine_version"] = canonical["release"]["lie_ledger_doctrine_version"]
+    state["release"]["lie_ledger_governance_version"] = canonical["release"].get("lie_ledger_governance_version")
     state["release"]["lie_ledger_contract_version"] = canonical["release"]["lie_ledger_contract_version"]
+    state["release"]["lie_ledger_contract_path"] = canonical["release"].get("lie_ledger_contract_path")
     state["release"]["lie_ledger_evidence_completion_version"] = canonical["release"].get("lie_ledger_evidence_completion_version")
     state["release"]["lie_ledger_current_claim_update_version"] = canonical["release"].get("lie_ledger_current_claim_update_version")
     generator_raw = public_core.public_v1.canonical_input_bytes((root / GENERATOR).read_bytes())
@@ -211,10 +215,11 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_v2_forward_migration_active": True,
         "lie_ledger_truth_knowledge_axes_separate": True,
         "lie_ledger_primary_public_object_is_chain": True,
-        "lie_ledger_blocked_verdicts_withheld_not_downgraded": True,
+        "lie_ledger_blocked_assessments_withheld_not_downgraded": True,
         "lie_ledger_component_evidence_refs_public": True,
-        "lie_ledger_evidence_completion_inputs_pinned": True,
-        "lie_ledger_current_claim_update_inputs_pinned": True
+        "lie_ledger_historical_evidence_completion_input_pinned": True,
+        "lie_ledger_historical_current_claim_input_pinned": True,
+        "lie_ledger_active_persona_authority_removed": True
     })
     return state
 

@@ -20,7 +20,7 @@ import build_public_current_state_v2_hardened as public_v2  # noqa: E402
 import build_public_release as release_builder  # noqa: E402
 import gate3_v2_registration as registrar  # noqa: E402
 
-COPY_DIRS = ("data", "schemas", "scripts", "snapshots", "assets", "templates", "js", "css", "vendor", "config")
+COPY_DIRS = ("data", "schemas", "scripts", "snapshots", "assets", "templates", "js", "css", "vendor", "config", "docs", "src")
 COPY_FILES = ("index.html", ".nojekyll")
 SOURCE_ID = "SRC-DA1A9EDC0A11"
 EVENT_ID = "TEST-CANARY-DELAYED-KNOWLEDGE-EVENT"

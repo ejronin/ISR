@@ -92,11 +92,24 @@ jobs:
             fi
           }
 
+          remove_profile(){
+            local profile="${1:-}"
+            local attempt
+            [ -n "$profile" ] || return 0
+            for attempt in 1 2 3; do
+              rm -rf "$profile" 2>/dev/null || true
+              [ ! -e "$profile" ] && return 0
+              sleep 0.2
+            done
+            echo "WARN: browser profile cleanup did not fully settle: $profile" >&2
+            return 0
+          }
+
           stop_browser(){
             terminate_process "$browser_pid" 'browser' || true
             browser_pid=''
             if [ -n "$browser_profile" ]; then
-              rm -rf "$browser_profile"
+              remove_profile "$browser_profile"
               browser_profile=''
             fi
           }
@@ -136,7 +149,7 @@ jobs:
               log="/tmp/atlas-humanization-${suite}-${attempt}-${candidate_name}.log"
               echo "Browser candidate [$suite #$attempt]: $candidate"
               timeout --signal=KILL 5s "$candidate" --version || true
-              rm -rf "$profile"
+              remove_profile "$profile"
               : >"$log"
               "$candidate" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage \
                 --no-first-run --no-default-browser-check \
@@ -170,7 +183,7 @@ jobs:
               fi
               terminate_process "$browser_pid" "browser candidate $candidate" || true
               browser_pid=''
-              rm -rf "$profile"
+              remove_profile "$profile"
               browser_profile=''
               echo "Browser candidate failed [$suite] ($candidate_status): $candidate" >&2
               cat "$log" >&2 || true
