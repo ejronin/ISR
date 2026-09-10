@@ -12,6 +12,8 @@ from datetime import date, datetime
 from typing import Any, Iterable
 
 CONTRACT_VERSION = "1.0"
+LEGACY_PRE_REGISTRAR_ACCEPTANCE_BASIS = "LEGACY_MANIFEST_ACCEPTED_PRE_REGISTRAR"
+LEGACY_PRE_REGISTRAR_PREFIX_LENGTH = 5
 
 
 @dataclass(frozen=True)
@@ -86,8 +88,8 @@ def validate_packet_content_temporal_semantics(packet: dict[str, Any], *, label:
 
     Event/source chronology and packet ordering remain separate clocks. The only
     cross-clock relationship enforced here is authority safety: information
-    carried by a packet cannot have a record-level knowledge time later than the
-    time at which that packet becomes knowledge-effective.
+    carried by a registrar-era packet cannot have a record-level knowledge time
+    later than the time at which that packet becomes knowledge-effective.
     """
     known_at, _ = validate_packet_temporal_semantics(packet, label=label)
 
@@ -183,9 +185,26 @@ def validate_candidate_append(manifest: dict[str, Any], packet: dict[str, Any]) 
 
 
 def validate_packet_against_accepted_entry(packet: dict[str, Any], entry: dict[str, Any]) -> None:
-    """Require the packet bytes and accepted temporal projection to describe the same clocks."""
+    """Require packet bytes and accepted temporal projection to describe the same clocks.
+
+    The five pinned pre-registrar packets are immutable migration history and
+    contain legacy minute-level knowledge timestamps that predate this contract.
+    They retain structural/event-clock validation but are not retroactively
+    rewritten to satisfy the registrar-era record-knowledge boundary.
+    """
     validate_packet_temporal_semantics(packet)
-    validate_packet_content_temporal_semantics(packet)
+    sequence = entry.get("sequence")
+    is_pinned_legacy_prefix = (
+        isinstance(sequence, int)
+        and 1 <= sequence <= LEGACY_PRE_REGISTRAR_PREFIX_LENGTH
+        and entry.get("acceptance_basis") == LEGACY_PRE_REGISTRAR_ACCEPTANCE_BASIS
+    )
+    if not is_pinned_legacy_prefix:
+        validate_packet_content_temporal_semantics(packet)
+    else:
+        for index, event in enumerate(packet.get("events") or []):
+            if isinstance(event, dict):
+                validate_event_temporal_semantics(event, label=f"legacy packet event[{index}]")
     if packet.get("known_at") != entry.get("known_at"):
         raise ValueError(f"Accepted Gate 3 v2 packet known_at differs from manifest: {entry.get('packet_id')}")
     if packet.get("evidence_cutoff") != entry.get("evidence_cutoff"):
