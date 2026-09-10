@@ -55,8 +55,10 @@ def main() -> int:
     require(release["current_osint_cutoff"] == canonical_release["current_osint_cutoff"], "public cutoff is not derived from Gate 3")
     require(release["current_osint_cutoff_display"] == canonical_release["current_osint_cutoff_display"], "public cutoff display mismatch")
     require(release["canonical_state_identity_v2"] == canonical_release["canonical_state_identity_v2"], "Gate 3 lineage identity mismatch")
-    require(release.get("lie_ledger_doctrine_version") == canonical_release.get("lie_ledger_doctrine_version"), "Lie Ledger doctrine version mismatch")
+    require(release.get("lie_ledger_governance_version") == canonical_release.get("lie_ledger_governance_version"), "Lie Ledger governance version mismatch")
     require(release.get("lie_ledger_contract_version") == canonical_release.get("lie_ledger_contract_version"), "Lie Ledger contract version mismatch")
+    require(release.get("lie_ledger_contract_path") == canonical_release.get("lie_ledger_contract_path"), "Lie Ledger contract path mismatch")
+    require("lie_ledger_doctrine_version" not in release, "obsolete persona-doctrine release pin remains public")
     require("generated_at" not in state and "generated_at" not in release, "nondeterministic generated timestamp present")
 
     chronology = state["chronology"]
@@ -126,27 +128,34 @@ def main() -> int:
     ledger_payload = state["datasets"]["gate3.lie_ledger"]["payload"]
     require(isinstance(ledger_payload, dict), "Lie Ledger v2 dataset payload is not an object")
     require(ledger_payload.get("schema_version") == "2.0", "Lie Ledger v2 schema version mismatch")
-    require(ledger_payload.get("doctrine_version") == canonical_release.get("lie_ledger_doctrine_version"), "Lie Ledger v2 doctrine pin mismatch")
+    require(ledger_payload.get("governance_version") == canonical_release.get("lie_ledger_governance_version"), "Lie Ledger v2 governance pin mismatch")
     require(ledger_payload.get("contract_version") == canonical_release.get("lie_ledger_contract_version"), "Lie Ledger v2 contract pin mismatch")
+    require(ledger_payload.get("contract_path") == canonical_release.get("lie_ledger_contract_path"), "Lie Ledger v2 contract path mismatch")
     require(ledger_payload.get("primary_object") == "NARRATIVE_PROPOSITION_CHAIN", "Lie Ledger public primary object is not a narrative/proposition chain")
+    require("authority" not in ledger_payload, "Lie Ledger public payload carries an active authority object")
     chains = ledger_payload.get("records") or []
     ledger_records = [record for chain in chains for record in chain.get("proposition_records") or []]
     require(len(chains) == state["counts"]["gate3_lie_ledger_chains"], "Lie Ledger chain count mismatch")
-    require(len(ledger_records) == state["counts"]["gate3_lie_ledger_records"], "Lie Ledger claim-instance count mismatch")
+    require(len(ledger_records) == state["counts"]["gate3_lie_ledger_records"], "Lie Ledger proposition-row count mismatch")
     require(ledger_payload.get("metrics") == canonical.get("lie_ledger_v2_metrics"), "Lie Ledger public metrics differ from canonical metrics")
     require(ledger_payload.get("metrics", {}).get("unique_propositions") == state["counts"]["gate3_lie_ledger_unique_propositions"], "Lie Ledger unique-proposition count mismatch")
     require(ledger_payload.get("metrics", {}).get("claim_instances") == state["counts"]["gate3_lie_ledger_claim_instances"], "Lie Ledger metric claim-instance count mismatch")
     require(all(record.get("truth_adjudication") for record in ledger_records), "Lie Ledger factual axis incomplete")
     require(all(record.get("public_knowledge_judgment") for record in ledger_records), "Lie Ledger public knowledge axis incomplete")
     require(all("deception_score" not in record and "deception_basis" not in record for record in ledger_records), "obsolete deception-score semantics leaked into public Lie Ledger v2")
+    require(all("authority_status" not in record for record in ledger_records), "obsolete persona adjudication status leaked into public Lie Ledger v2")
     for record in ledger_records:
         if record.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION":
-            require(record.get("canonical_rook_assessment_withheld") is True, f"blocked ROOK judgment not withheld: {record.get('claim_instance_id')}")
-            require("knowledge_judgment" not in record and "combined_assessment" not in record, f"blocked ROOK accusation leaked into public model: {record.get('claim_instance_id')}")
+            require(record.get("canonical_assessment_withheld") is True, f"blocked knowledge judgment not withheld: {record.get('claim_instance_id')}")
+            require("knowledge_judgment" not in record and "combined_assessment" not in record, f"blocked knowledge accusation leaked into public model: {record.get('claim_instance_id')}")
             require(record.get("public_combined_assessment") == "EVIDENCE COMPLETION REQUIRED", f"blocked public assessment marker missing: {record.get('claim_instance_id')}")
+            require(record.get("truth_adjudication"), f"blocked knowledge qualification erased factual status: {record.get('claim_instance_id')}")
         elif record.get("publication_status") == "PUBLIC_READY":
-            require(record.get("canonical_rook_assessment_withheld") is False, f"public-ready ROOK judgment unexpectedly withheld: {record.get('claim_instance_id')}")
-            require(record.get("public_knowledge_judgment") and record.get("public_combined_assessment"), f"public-ready ROOK judgment incomplete: {record.get('claim_instance_id')}")
+            require(record.get("canonical_assessment_withheld") is False, f"public-ready judgment unexpectedly withheld: {record.get('claim_instance_id')}")
+            require(record.get("public_knowledge_judgment") and record.get("public_combined_assessment"), f"public-ready judgment incomplete: {record.get('claim_instance_id')}")
+        elif record.get("publication_status") == "NOT_REASSESSED":
+            require(record.get("canonical_assessment_withheld") is True, f"not-reassessed knowledge state not withheld: {record.get('claim_instance_id')}")
+            require(record.get("public_knowledge_judgment") == "NOT_ASSESSED", f"not-reassessed public marker incorrect: {record.get('claim_instance_id')}")
 
     actors = payload_records(state, "current.actors")
     require(len(actors) == state["counts"]["public_actor_records"], "public actor-directory count mismatch")
@@ -162,7 +171,7 @@ def main() -> int:
         "Phase 9 public current-state validation: PASS - "
         f"{len(chronology)} chronology records; {len(coverage)} conflict days; "
         f"{len(sources)} sources; {len(chains)} Lie Ledger chains; "
-        f"{len(ledger_records)} claim instances; deterministic bytes verified"
+        f"{len(ledger_records)} proposition rows; deterministic bytes verified"
     )
     return 0
 
