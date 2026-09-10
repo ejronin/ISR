@@ -52,6 +52,7 @@ jobs:
 
       - name: Verify Gate 3 v2 registration and temporal authority
         run: |
+          python tests/gate3-v2-mutable-current-invariants.test.py
           python scripts/gate3_v2_registration.py --verify
           python tests/gate3-v2-registration.test.py
           python tests/gate3-v2-temporal-contract.test.py
