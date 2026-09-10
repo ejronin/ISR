@@ -20,7 +20,7 @@ import build_public_current_state_v2_hardened as public_v2  # noqa: E402
 import build_public_release as release_builder  # noqa: E402
 import gate3_v2_registration as registrar  # noqa: E402
 
-COPY_DIRS = ("data", "schemas", "scripts", "snapshots", "assets", "templates", "js", "css", "vendor", "config", "docs")
+COPY_DIRS = ("data", "schemas", "scripts", "snapshots", "assets", "templates", "js", "css", "vendor", "config", "docs", "src")
 COPY_FILES = ("index.html", ".nojekyll")
 GATE2_FROZEN = "2026-09-05T00:37:00-04:00"
 SEP6_PACKET_ID = "UPD-20260906-CURRENT"
