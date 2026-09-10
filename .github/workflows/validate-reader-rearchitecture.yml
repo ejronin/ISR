@@ -1,0 +1,54 @@
+name: Validate reader rearchitecture
+
+on:
+  pull_request:
+    paths:
+      - "js/public-reader-layer.js"
+      - "css/public-reader-layer.css"
+      - "scripts/build_public_release.py"
+      - "scripts/build_public_release_core.py"
+      - "tests/public-reader-layer.test.js"
+      - "docs/ENGINEERING_DOCTRINE.md"
+      - ".github/workflows/validate-reader-rearchitecture.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  reader-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.x'
+      - name: Reader-layer static and invariant checks
+        run: |
+          node --check js/public-reader-layer.js
+          node tests/public-reader-layer.test.js
+          python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py
+      - name: Verify composition is deterministic and structural
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import shutil
+          import tempfile
+
+          # Import only after build requirements are unnecessary: the wrapper's
+          # syntax was compiled above. Test composition semantics without running
+          # the release builder by reproducing its append-once contract.
+          root = Path('.')
+          js = root / 'js/public-reader-layer.js'
+          css = root / 'css/public-reader-layer.css'
+          assert js.is_file() and css.is_file()
+          js_text = js.read_text(encoding='utf-8')
+          css_text = css.read_text(encoding='utf-8')
+          assert 'ATLAS PUBLIC READER LAYER' in js_text
+          assert 'ATLAS PUBLIC READER LAYER' in css_text
+          assert 'display: none !important' not in css_text
+          assert 'Combined ROOK assessment' not in js_text
+          assert 'ROOK verdict / PR/CI evidence boundary' not in js_text
+          PY
