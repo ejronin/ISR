@@ -2,15 +2,17 @@
 """Build the signed public release after composing the reader-first presentation layer.
 
 The legacy page registry remains reviewable source during the migration. This
-entrypoint deterministically appends the reader layer and its CSS to the signed
-runtime source before delegating to the proven release builder. Composition is
-idempotent inside a build workspace and does not alter canonical evidence.
+entrypoint deterministically removes the superseded persona-specific narrative
+contract, then appends the reader layer and its CSS before delegating to the
+proven release builder. Both transforms are idempotent inside a build workspace
+and do not alter canonical evidence.
 """
 from __future__ import annotations
 
 from pathlib import Path
 
 import build_public_release_core as core
+import retire_privileged_narrative_runtime as narrative_retirement
 from build_public_release_core import *  # re-export release helpers for existing tests/importers
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,14 +47,15 @@ def compose_reader_sources(root: Path = ROOT) -> None:
 
 def build_manifest(root: Path = ROOT) -> dict:
     root = Path(root).resolve()
+    narrative_retirement.apply(root)
     compose_reader_sources(root)
-    core.GENERATOR_VERSION = "2.0-reader"
+    core.GENERATOR_VERSION = "2.0-reader-neutral-narrative"
     return _core_build_manifest(root)
 
 
 def main() -> int:
     core.build_manifest = build_manifest
-    core.GENERATOR_VERSION = "2.0-reader"
+    core.GENERATOR_VERSION = "2.0-reader-neutral-narrative"
     return core.main()
 
 
