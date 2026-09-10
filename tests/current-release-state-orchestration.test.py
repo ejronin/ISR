@@ -17,19 +17,26 @@ spec.loader.exec_module(module)
 
 
 def normalized(commands):
-    return [tuple(Path(part).as_posix() if index == 1 else part for index, part in enumerate(command)) for command in commands]
+    return [
+        tuple(Path(part).as_posix() if index == 1 else part for index, part in enumerate(command))
+        for command in commands
+    ]
 
 
-compat = "/tmp/atlas-public-v1-compat-test.json"
-build = normalized(module.build_commands(compat))
+build = normalized(module.BUILD_COMMANDS)
 check = normalized(module.CHECK_COMMANDS)
 
 assert build[0][1:] == ("scripts/build_canonical_current_state.py",)
-assert ("scripts/build_public_current_state.py", "--output", compat) in [item[1:] for item in build]
-assert ("scripts/build_public_current_state.py", "--check", "--output", compat) in [item[1:] for item in build]
-assert ("scripts/validate_public_current_state_compat.py", "--artifact", compat) in [item[1:] for item in build]
-assert ("scripts/build_canonical_current_state_v2_final.py", "--output", "data/canonical-current-state-v2.json") in [item[1:] for item in build]
-assert ("scripts/build_public_current_state_v2_hardened.py", "--output", "data/public-current-state.json") in [item[1:] for item in build]
+assert (
+    "scripts/build_canonical_current_state_v2_final.py",
+    "--output",
+    "data/canonical-current-state-v2.json",
+) in [item[1:] for item in build]
+assert (
+    "scripts/build_public_current_state_v2_hardened.py",
+    "--output",
+    "data/public-current-state.json",
+) in [item[1:] for item in build]
 
 for validator in (
     "scripts/validate_canonical_authority.py",
@@ -40,36 +47,42 @@ for validator in (
     assert any(item[1] == validator for item in build), f"build contract omitted {validator}"
     assert any(item[1] == validator for item in check), f"check contract omitted {validator}"
 
-v1_builds = [item for item in build if item[1] == "scripts/build_public_current_state.py"]
-assert len(v1_builds) == 2
-assert all(compat in item for item in v1_builds)
-assert all("data/public-current-state.json" not in item for item in v1_builds)
-assert not any(item[1] in {"scripts/build_public_current_state.py", "scripts/validate_public_current_state.py", "scripts/validate_public_current_state_compat.py"} for item in check), "final-state check must not regenerate legacy public compatibility state"
+# Public-v1 remains frozen compatibility lineage, but it is no longer a release
+# artifact or release validator. The current public path has one meaning: v2.
+retired_public_v1_release_steps = {
+    "scripts/build_public_current_state.py",
+    "scripts/validate_public_current_state.py",
+    "scripts/validate_public_current_state_compat.py",
+}
+assert not any(item[1] in retired_public_v1_release_steps for item in build), (
+    "release build still executes a legacy public-v1 artifact step"
+)
+assert not any(item[1] in retired_public_v1_release_steps for item in check), (
+    "release check still executes a legacy public-v1 artifact step"
+)
 
-assert all("--check" in item or item[1].startswith("scripts/validate_") for item in check), "check mode contains a write-capable builder"
-assert build.index(v1_builds[0]) < build.index(next(item for item in build if item[1] == "scripts/build_canonical_current_state_v2_final.py" and "--check" not in item)), "legacy public compatibility validation must precede the v2 overlay"
+assert all(
+    "--check" in item or item[1].startswith("scripts/validate_") for item in check
+), "check mode contains a write-capable builder"
 assert build[-1][1] == "scripts/validate_public_current_state_v2.py"
 assert check[-1][1] == "scripts/validate_public_current_state_v2.py"
 
 source = SCRIPT.read_text(encoding="utf-8")
 assert "subprocess.run" in source and "check=True" in source
-assert "build_commands" in source and "CHECK_COMMANDS" in source
-assert "TemporaryDirectory" in source
-assert "data/public-current-state.json` is therefore a v2-only release path" in source
+assert "BUILD_COMMANDS" in source and "CHECK_COMMANDS" in source
+assert "TemporaryDirectory" not in source
+assert "legacy public-v1" in source.lower()
 
-compat_validator = (ROOT / "scripts" / "validate_public_current_state_compat.py").read_text(encoding="utf-8")
-assert "legacy.validate_payload" in compat_validator
-assert "legacy.validate_references_and_views" in compat_validator
-assert "legacy.validate_facility_and_imagery_parity" in compat_validator
-assert "legacy compatibility validation may not target data/public-current-state.json" in compat_validator
-
-# Every production release qualification path already executes this test. Chain
-# the focused foundation parity proof here so the new compiler boundary cannot
-# drift without failing Pages, primary validation and source-humanization CI.
+# Every production release qualification path already executes this test. Keep
+# exact in-memory parity against the frozen v1 seed as the compatibility proof,
+# without creating a v1 artifact in the release sequence.
 subprocess.run(
     [sys.executable, "tests/public-read-model-foundation-parity.test.py"],
     cwd=ROOT,
     check=True,
 )
 
-print("current release-state orchestration: PASS - legacy public compatibility is isolated and the current public path is v2-only")
+print(
+    "current release-state orchestration: PASS - canonical lineage remains qualified, "
+    "public-v1 artifact execution is retired, and the release-facing public state is v2-only"
+)
