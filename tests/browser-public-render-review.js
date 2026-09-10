@@ -25,7 +25,7 @@ const ROUTES = [
 ];
 const POLISH_FOCUS = [
   { routeKey: 'start.overview', label: 'start-current-state', selector: '[data-current-state-summary]' },
-  { routeKey: 'start.overview', label: 'start-evidence-clock', selector: '.evidence-clock-bar', openSelector: '.evidence-clock-mobile' },
+  { routeKey: 'evidence.information', label: 'claims-reader', selector: '[data-reader-finding]' },
   { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' },
   { routeKey: 'start.overview', label: 'start-war-90', selector: '[data-war-in-90-seconds]' },
   { routeKey: 'start.overview', label: 'start-objectives', selector: '[data-objective-orientation]' },
