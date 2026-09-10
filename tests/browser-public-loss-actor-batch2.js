@@ -7,6 +7,7 @@ const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
+const expectedMaterialLossRecords = model.counts.material_loss_records;
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -96,11 +97,11 @@ async function route(cdp, hash, key) {
         accountingChartEquivalentText: document.querySelector('[data-phase5-chart-equivalent="loss-accounting-class-record-counts"]')?.textContent || ''
       };
     })()`);
-    if (losses.cardCount !== 57) console.error('Loss page diagnostics:', losses, await cdp.eval(`({state:window.ATLAS_PUBLIC_STATE,text:document.querySelector('main')?.innerText||document.body.innerText})`));
+    if (losses.cardCount !== expectedMaterialLossRecords) console.error('Loss page diagnostics:', losses, await cdp.eval(`({state:window.ATLAS_PUBLIC_STATE,text:document.querySelector('main')?.innerText||document.body.innerText})`));
     assert.equal(losses.stateCount, model.counts.chronology_records);
-    assert.equal(losses.cardCount, 57);
-    assert.equal(losses.uniqueIds, 57);
-    assert.equal(losses.visibleCount, 57);
+    assert.equal(losses.cardCount, expectedMaterialLossRecords);
+    assert.equal(losses.uniqueIds, expectedMaterialLossRecords);
+    assert.equal(losses.visibleCount, expectedMaterialLossRecords);
     assert.match(losses.unknownText, /Quantity:\s*unknown/i, 'unresolved quantity is not explicitly labeled unknown');
     assert.match(losses.unknownText, /Unknown does not mean zero/i, 'unknown-quantity guardrail is absent');
     assert.doesNotMatch(losses.unknownText, /Quantity:\s*0(?:\D|$)/i, 'unresolved quantity was rendered as numeric zero');
@@ -128,9 +129,9 @@ async function route(cdp, hash, key) {
       select.dispatchEvent(new Event('change', {bubbles:true}));
       return {before, after:document.querySelectorAll('[data-loss-id]').length, visible:[...document.querySelectorAll('[data-loss-id]')].filter(card => !card.hidden).length, focused:document.activeElement === select, height:select.getBoundingClientRect().height};
     })()`);
-    assert.equal(filtered.before, 57);
-    assert.equal(filtered.after, 57, 'filter deleted underlying loss records');
-    assert(filtered.visible > 0 && filtered.visible < 57);
+    assert.equal(filtered.before, expectedMaterialLossRecords);
+    assert.equal(filtered.after, expectedMaterialLossRecords, 'filter deleted underlying loss records');
+    assert(filtered.visible > 0 && filtered.visible < expectedMaterialLossRecords);
     assert.equal(filtered.focused, true);
     assert(filtered.height >= 44);
 
@@ -177,7 +178,7 @@ async function route(cdp, hash, key) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
       await route(cdp, '#/military/losses', 'military.losses');
       const mobile = await cdp.eval(`(() => ({width:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,filters:[...document.querySelectorAll('[data-loss-filter]')].map(node => node.getBoundingClientRect().height),cards:document.querySelectorAll('[data-loss-id]').length}))()`);
-      assert.equal(mobile.cards, 57);
+      assert.equal(mobile.cards, expectedMaterialLossRecords);
       assert(mobile.scrollWidth <= mobile.width, `loss page overflows at ${width}px`);
       assert(mobile.filters.every(height => height >= 44), `loss filter target below 44px at ${width}px`);
     }
@@ -187,7 +188,7 @@ async function route(cdp, hash, key) {
     assert(flagResources.length > 0);
     assert(flagResources.every(url => new URL(url).origin === new URL(SITE).origin && /assets\/releases\/state-flag-[a-z]{2}\.[a-f0-9]{64}\.svg$/.test(new URL(url).pathname)), 'flag loading escaped the same-origin content-addressed release');
 
-    console.log('browser public losses/actors Batch 2: PASS - complete 52-record ledger, filters, two accessible charts, approved detail consumers, 115-identity directory, signed flags, non-state semantics, Weapons linkage, and 320/390px rendering verified');
+    console.log('browser public losses/actors Batch 2: PASS - complete current material-loss ledger, filters, two accessible charts, approved detail consumers, 115-identity directory, signed flags, non-state semantics, Weapons linkage, and 320/390px rendering verified');
   } finally {
     cdp.close();
   }
