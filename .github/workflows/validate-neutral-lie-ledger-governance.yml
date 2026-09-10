@@ -1,0 +1,66 @@
+name: Validate neutral Lie Ledger governance
+
+on:
+  push:
+    branches:
+      - "evidence/**"
+    paths:
+      - "scripts/neutralize_lie_ledger_governance.py"
+      - "tests/lie-ledger-governance-neutralization.test.py"
+      - "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md"
+      - ".github/workflows/validate-neutral-lie-ledger-governance.yml"
+  pull_request:
+    paths:
+      - "scripts/neutralize_lie_ledger_governance.py"
+      - "tests/lie-ledger-governance-neutralization.test.py"
+      - "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md"
+      - "scripts/build_canonical_current_state_v2_final.py"
+      - "scripts/build_public_current_state_v2_hardened.py"
+      - "scripts/build_lie_ledger_v2.py"
+      - "scripts/apply_lie_ledger_evidence_completion_20260909.py"
+      - "scripts/apply_lie_ledger_current_claims_20260909.py"
+      - "scripts/validate_lie_ledger_v2.py"
+      - "scripts/validate_public_current_state_v2.py"
+      - "schemas/lie-ledger-v2.json"
+      - "tests/public-phase9.test.js"
+      - ".github/workflows/validate-neutral-lie-ledger-governance.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  parity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.13"
+      - name: Compile neutral governance adapter
+        run: python -m py_compile scripts/neutralize_lie_ledger_governance.py
+      - name: Prove governance-only migration parity on current canonical fixture
+        run: python tests/lie-ledger-governance-neutralization.test.py
+      - name: Reject new active persona-authority declarations in successor files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          targets = [
+              Path('docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md'),
+              Path('scripts/neutralize_lie_ledger_governance.py'),
+          ]
+          forbidden = [
+              'verdict_authority": "ROOK',
+              'implementation_authority": "PR/CI',
+              'authority_status": "ROOK_ADJUDICATED',
+              'authority": "PR/CI',
+              'authority": "ROOK',
+          ]
+          for path in targets:
+              text = path.read_text(encoding='utf-8')
+              for token in forbidden:
+                  if token in text:
+                      raise SystemExit(f'active persona-authority token in {path}: {token}')
+          print('successor governance source scan: PASS')
+          PY
