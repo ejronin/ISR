@@ -41,11 +41,11 @@ assert.equal(records('gate3.casualties').length, (model.entities.casualties || [
 const ledger = payload('gate3.lie_ledger');
 assert.equal(ledger.schema_version, '2.0');
 assert.equal(ledger.primary_object, 'NARRATIVE_PROPOSITION_CHAIN');
-assert.equal(ledger.doctrine_version, model.release.lie_ledger_doctrine_version);
+assert.equal(ledger.governance_version, model.release.lie_ledger_governance_version);
 assert.equal(ledger.contract_version, model.release.lie_ledger_contract_version);
-assert.equal(ledger.authority.verdicts, 'ROOK');
-assert.equal(ledger.authority.implementation_and_evidence_qualification, 'PR/CI');
-assert.equal(ledger.authority.blocked_verdict_policy, 'WITHHOLD_NOT_DOWNGRADE');
+assert.equal(ledger.contract_path, model.release.lie_ledger_contract_path);
+assert(!Object.hasOwn(ledger, 'authority'), 'public Lie Ledger must not expose persona authority');
+assert.equal(ledger.blocked_assessment_policy, 'WITHHOLD_UNQUALIFIED_KNOWLEDGE_NOT_FACTUAL_STATUS');
 assert.equal(ledger.records.length, model.counts.gate3_lie_ledger_chains);
 assert.equal(ledger.metrics.narrative_chains, ledger.records.length);
 
@@ -55,22 +55,29 @@ assert.equal(ledger.metrics.unique_propositions, model.counts.gate3_lie_ledger_u
 assert.equal(ledger.metrics.claim_instances, model.counts.gate3_lie_ledger_claim_instances);
 assert(model.counts.gate3_lie_ledger_claim_instances <= propositions.length,
   'claim-instance denominator cannot exceed atomic proposition rows');
-const adjudicated = propositions.filter(record => record.authority_status === 'ROOK_ADJUDICATED');
+const adjudicated = propositions.filter(record => record.adjudication_status === 'EVIDENCE_ADJUDICATED');
 const originatingClaimKeys = new Set(adjudicated.map(record => record.original_claim_id || record.claim_id || record.claim_instance_id));
 assert.equal(originatingClaimKeys.size, model.counts.gate3_lie_ledger_claim_instances,
-  'claim-instance count must reconcile to distinct ROOK-adjudicated originating statements/instances');
+  'claim-instance count must reconcile to distinct evidence-adjudicated originating statements/instances');
 const uniquePropositionIds = new Set(adjudicated.filter(record => record.counts_as_unique_proposition).map(record => record.proposition_id));
 assert.equal(uniquePropositionIds.size, model.counts.gate3_lie_ledger_unique_propositions,
-  'unique-proposition count must reconcile independently within the ROOK-adjudicated scope');
+  'unique-proposition count must reconcile independently within the evidence-adjudicated scope');
 assert(propositions.every(record => record.semantic_version === '2.0'));
-assert(propositions.every(record => record.doctrine_version === ledger.doctrine_version));
+assert(propositions.every(record => record.doctrine_version === ledger.governance_version));
 assert(propositions.every(record => record.contract_version === ledger.contract_version));
 assert(propositions.every(record => record.truth_adjudication));
 assert(propositions.every(record => record.public_knowledge_judgment));
 assert(propositions.every(record => record.public_combined_assessment));
 assert(propositions.every(record => !Object.hasOwn(record, 'deception_score')), 'active public v2 propositions expose legacy deception_score');
+assert(propositions.every(record => !Object.hasOwn(record, 'authority_status')), 'active public v2 propositions expose persona adjudication status');
 assert(propositions.every(record => record.proposition_fidelity), 'proposition fidelity is missing');
 assert(propositions.every(record => record.actor_role), 'originator/amplifier role is missing');
+
+const falseWithoutLieThreshold = propositions.find(record =>
+  record.truth_adjudication === 'FALSE' &&
+  !['LIKELY_KNEW_FALSE', 'VERY_LIKELY_KNEW_FALSE', 'KNOWING_FALSEHOOD_ESTABLISHED'].includes(record.public_knowledge_judgment)
+);
+assert(falseWithoutLieThreshold, 'public regression corpus must preserve a FALSE proposition below the lie knowledge threshold');
 
 const tanf = propositions.filter(record => record.chain_id === 'CH-TANF-JUL17');
 if (tanf.length) {
@@ -90,10 +97,16 @@ for (const record of propositions) {
     assert(sourceIdSet.has(sourceId), `Lie Ledger source_id does not resolve: ${sourceId}`);
   }
   if (record.publication_status === 'BLOCKED_EVIDENCE_COMPLETION') {
-    assert.equal(record.canonical_rook_assessment_withheld, true);
+    assert.equal(record.canonical_assessment_withheld, true);
     assert.equal(record.public_combined_assessment, 'EVIDENCE COMPLETION REQUIRED');
+    assert(record.truth_adjudication, 'blocked knowledge qualification must retain factual status');
     assert(!Object.hasOwn(record, 'knowledge_judgment'));
     assert(!Object.hasOwn(record, 'combined_assessment'));
+  } else if (record.publication_status === 'PUBLIC_READY') {
+    assert.equal(record.canonical_assessment_withheld, false);
+  } else if (record.publication_status === 'NOT_REASSESSED') {
+    assert.equal(record.canonical_assessment_withheld, true);
+    assert.equal(record.public_knowledge_judgment, 'NOT_ASSESSED');
   }
 }
 
@@ -101,7 +114,7 @@ assert(!/\b316\b/.test(fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8
 const source = fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8');
 for (const replay of ['current-update-20260824.js', 'current-update-20260825.js', 'current-update-20260826.js', 'current-update-20260827.js']) assert(!source.includes(replay));
 
-console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${model.counts.gate3_lie_ledger_unique_propositions} Lie Ledger propositions across ${model.counts.gate3_lie_ledger_claim_instances} claim instances, and governed Lie Ledger source references verified`);
+console.log(`public Phase 9: PASS - ${model.chronology.length} chronology records, ${coverage.length} conflict days, side-separated losses, progressive imagery, human labels, ${model.counts.gate3_lie_ledger_unique_propositions} Lie Ledger propositions across ${model.counts.gate3_lie_ledger_claim_instances} claim instances, and evidence-governed Lie Ledger source references verified`);
 
 require('./public-phase10.test.js');
 require('./public-final-polish.test.js');
