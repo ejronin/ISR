@@ -44,6 +44,25 @@ RENDERED_CURRENT_POPULATION_LITERAL = re.compile(
     r"(?:material-loss records|event-level casualty records|(?:current\s+)?chronology records|(?:current\s+)?conflict days)\b",
     re.IGNORECASE,
 )
+NAMED_CURRENT_POPULATION_LITERAL = re.compile(
+    r"(?:"
+    r"assert\.(?:equal|strictEqual)\(\s*(?:[A-Za-z_$][\w$]*\.)*"
+    r"(?:materialLoss(?:Records|Count)|material_loss_records|casualty(?:Records|Count)|chronology(?:Records|Count)|conflictDays)\s*,\s*[1-9]\d*"
+    r"|(?:if\s*\(|assert\s*\()[^\n]*?(?:[A-Za-z_$][\w$]*\.)*"
+    r"(?:materialLoss(?:Records|Count)|material_loss_records|casualty(?:Records|Count)|chronology(?:Records|Count)|conflictDays)"
+    r"\s*(?:===|!==|==|!=|<=?|>=?)\s*[1-9]\d*"
+    r")",
+    re.IGNORECASE,
+)
+LOSS_VIEW_POPULATION_LITERAL = re.compile(
+    r"(?:"
+    r"assert\.(?:equal|strictEqual)\(\s*(?:losses|filtered|mobile)\."
+    r"(?:cardCount|uniqueIds|visibleCount|before|after|cards)\s*,\s*[1-9]\d*"
+    r"|(?:if\s*\(|assert\s*\()[^\n]*?(?:losses|filtered|mobile)\."
+    r"(?:cardCount|uniqueIds|visibleCount|before|after|cards|visible)"
+    r"\s*(?:===|!==|==|!=|<=?|>=?)\s*[1-9]\d*"
+    r")"
+)
 
 
 def tracked_paths() -> list[Path]:
@@ -75,25 +94,57 @@ def mutable_cutoff_literal(line: str) -> bool:
     return bool(JS_LITERAL_ASSERT.search(line) or PY_LITERAL_COMPARE.search(line) or "fail(" in line or "raise " in line)
 
 
-def validate_rendered_current_pattern() -> None:
-    positive_samples = (
+def validate_rendered_current_patterns() -> None:
+    rendered_positive = (
         r"assert.match(text, /57\s+material-loss records/);",
         r"assert.match(text, /89\s+event-level casualty records/);",
         r"assert.match(text, /356\s+chronology records/);",
         r"assert.match(text, /194\s+conflict days/);",
         'assert(text.includes("356 current chronology records"));',
     )
-    for sample in positive_samples:
+    for sample in rendered_positive:
         if not RENDERED_CURRENT_POPULATION_LITERAL.search(sample):
             raise AssertionError(f"rendered-current guard does not recognize required class: {sample}")
-    negative_samples = (
+
+    named_positive = (
+        "assert.equal(view.casualtyRecords, 27);",
+        "assert.equal(view.chronologyCount, 356);",
+        "if (view.conflictDays !== 194) fail();",
+        "assert.equal(view.materialLossRecords, 64);",
+    )
+    for sample in named_positive:
+        if not NAMED_CURRENT_POPULATION_LITERAL.search(sample):
+            raise AssertionError(f"named current-population guard does not recognize required class: {sample}")
+
+    loss_view_positive = (
+        "if (losses.cardCount !== 57) console.error(losses);",
+        "assert.equal(losses.cardCount, 57);",
+        "assert.equal(losses.uniqueIds, 57);",
+        "assert.equal(filtered.after, 57);",
+        "assert(filtered.visible > 0 && filtered.visible < 57);",
+        "assert.equal(mobile.cards, 57);",
+    )
+    for sample in loss_view_positive:
+        if not LOSS_VIEW_POPULATION_LITERAL.search(sample):
+            raise AssertionError(f"loss-view current-population guard does not recognize required class: {sample}")
+
+    rendered_negative = (
         "assert.equal(retries, 3);",
         "assert.match(text, /14 clauses/);",
         "assert.equal(historicalEvents.length, 98);",
     )
-    for sample in negative_samples:
+    for sample in rendered_negative:
         if RENDERED_CURRENT_POPULATION_LITERAL.search(sample):
             raise AssertionError(f"rendered-current guard is overbroad: {sample}")
+
+    named_negative = (
+        "assert.equal(losses.assets, 10);",
+        "assert.equal(overview.metrics, 4);",
+        "assert.equal(historicalEvents.length, 98);",
+    )
+    for sample in named_negative:
+        if NAMED_CURRENT_POPULATION_LITERAL.search(sample) or LOSS_VIEW_POPULATION_LITERAL.search(sample):
+            raise AssertionError(f"current-population guard is overbroad: {sample}")
 
 
 def scan(path: Path) -> list[str]:
@@ -104,6 +155,11 @@ def scan(path: Path) -> list[str]:
         or "build_public_current_state" in text
         or "current.material_losses" in text
         or "ATLAS_PUBLIC_STATE" in text
+    )
+    loss_view_consumer = (
+        public_current_consumer
+        and "model.counts.material_loss_records" in text
+        and "[data-loss-id]" in text
     )
     violations: list[str] = []
     for index, line in enumerate(lines):
@@ -126,6 +182,10 @@ def scan(path: Path) -> list[str]:
             reasons.append("current Gate 3 dataset population pinned to a literal")
         if public_current_consumer and RENDERED_CURRENT_POPULATION_LITERAL.search(line):
             reasons.append("rendered current-state population pinned to a literal")
+        if public_current_consumer and NAMED_CURRENT_POPULATION_LITERAL.search(line):
+            reasons.append("named current-state population pinned to a literal")
+        if loss_view_consumer and LOSS_VIEW_POPULATION_LITERAL.search(line):
+            reasons.append("rendered material-loss population pinned to a literal")
         if reasons:
             rel = path.relative_to(ROOT)
             violations.append(f"{rel}:{index + 1}: {', '.join(reasons)} :: {line.strip()}")
@@ -133,7 +193,7 @@ def scan(path: Path) -> list[str]:
 
 
 def main() -> int:
-    validate_rendered_current_pattern()
+    validate_rendered_current_patterns()
     violations: list[str] = []
     paths = tracked_paths()
     for path in paths:
