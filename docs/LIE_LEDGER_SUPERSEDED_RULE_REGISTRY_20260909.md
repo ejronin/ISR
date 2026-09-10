@@ -1,7 +1,7 @@
 # SUPERSEDED — Lie Ledger semantic-migration registry (2026-09-09)
 
-**Status:** HISTORICAL / NON-BINDING  
-**Superseded:** 2026-09-10  
+**Status:** HISTORICAL / NON-BINDING
+**Superseded:** 2026-09-10
 **Current engineering-governance reference:** `docs/ENGINEERING_DOCTRINE.md`
 
 This registry previously acted as an active semantic-migration control for Lie Ledger v2.
