@@ -4,11 +4,13 @@
 The test constructs the pre-neutral Lie Ledger directly from the historical
 migration inputs, then proves that neutral governance changes only governance
 vocabulary/provenance placement. It also verifies that the production final
-builder, once wired to the neutralizer, preserves the same substantive record.
+builder preserves the same substantive record.
 """
 from __future__ import annotations
 
 import copy
+import hashlib
+import json
 import sys
 from pathlib import Path
 from typing import Any
@@ -23,6 +25,20 @@ import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_v2 as lie_ledger_v2
 import neutralize_lie_ledger_governance as neutral
 
+# Frozen after the first exact-main semantic capture. Until populated, CI prints
+# the digest so it can be independently pinned before historical replay code is
+# refactored. Once set, any substantive drift fails even if both sides of the
+# migration happen to drift together.
+EXPECTED_BASELINE_DIGEST: str | None = None
+
+TEXT_NORMALIZATION = {
+    "ROOK credible alternative.": "Credible alternative retained from the accepted assessment record.",
+    "No separate ROOK comparative knowledge inference supplied.": "No separate comparative knowledge inference supplied.",
+    "No separate ROOK comparative inference supplied.": "No separate comparative inference supplied.",
+    "No separate ROOK knowledge inference has been supplied for this normalized legacy proposition.": "No separate knowledge inference has been supplied for this normalized legacy proposition.",
+    "ROOK identified the linked evidence as part of the claimant/institution knowledge-access basis.": "The linked evidence forms part of the claimant/institution knowledge-access basis.",
+}
+
 
 def unwrap(item: dict[str, Any]) -> dict[str, Any]:
     record = item.get("record")
@@ -30,10 +46,7 @@ def unwrap(item: dict[str, Any]) -> dict[str, Any]:
 
 
 def records(state: dict[str, Any]) -> list[dict[str, Any]]:
-    return [
-        unwrap(item)
-        for item in (state.get("entities") or {}).get("lie_ledger_v2") or []
-    ]
+    return [unwrap(item) for item in (state.get("entities") or {}).get("lie_ledger_v2") or []]
 
 
 def build_pre_neutral_state() -> dict[str, Any]:
@@ -47,10 +60,36 @@ def build_pre_neutral_state() -> dict[str, Any]:
     return state
 
 
+def semantic_text(value: Any) -> Any:
+    if isinstance(value, str):
+        return TEXT_NORMALIZATION.get(value, value)
+    if isinstance(value, list):
+        return [semantic_text(item) for item in value]
+    if isinstance(value, dict):
+        return {key: semantic_text(item) for key, item in value.items()}
+    return value
+
+
 def publication_semantic(value: Any) -> str:
     if value in {"NOT_ROOK_REASSESSED", "NOT_REASSESSED"}:
         return "NOT_REASSESSED"
     return str(value)
+
+
+def normalized_indicators(record: dict[str, Any]) -> list[dict[str, Any]]:
+    result = []
+    for raw in record.get("knowledge_indicators") or []:
+        item = copy.deepcopy(raw)
+        if item.get("indicator") == "ROOK_KNOWLEDGE_BASIS":
+            item["indicator"] = "ASSESSMENT_KNOWLEDGE_BASIS"
+        if item.get("summary") in TEXT_NORMALIZATION:
+            item["summary"] = TEXT_NORMALIZATION[item["summary"]]
+        result.append(semantic_text(item))
+    return result
+
+
+def normalized_alternatives(record: dict[str, Any]) -> list[dict[str, Any]]:
+    return semantic_text(copy.deepcopy(record.get("credible_alternatives") or []))
 
 
 def substantive_record(record: dict[str, Any]) -> dict[str, Any]:
@@ -60,10 +99,14 @@ def substantive_record(record: dict[str, Any]) -> dict[str, Any]:
         "original_claim_id": record.get("original_claim_id"),
         "proposition_id": record.get("proposition_id"),
         "chain_id": record.get("chain_id"),
+        "narrative_family_id": record.get("narrative_family_id"),
         "actor": record.get("actor"),
+        "claimant_type": record.get("claimant_type"),
+        "actor_role": record.get("actor_role"),
         "claim": record.get("claim"),
         "source_proposition": record.get("source_proposition"),
         "proposition": record.get("proposition"),
+        "proposition_axis": record.get("proposition_axis"),
         "proposition_fidelity": record.get("proposition_fidelity"),
         "truth_adjudication": record.get("truth_adjudication"),
         "truth_qualifier": record.get("truth_qualifier"),
@@ -73,6 +116,12 @@ def substantive_record(record: dict[str, Any]) -> dict[str, Any]:
         "denominator_class": record.get("denominator_class"),
         "counts_as_unique_proposition": record.get("counts_as_unique_proposition"),
         "observed_facts": record.get("observed_facts"),
+        "analytic_inference": semantic_text(record.get("analytic_inference")),
+        "knowledge_indicators": normalized_indicators(record),
+        "credible_alternatives": normalized_alternatives(record),
+        "comparative_assessment": semantic_text(record.get("comparative_assessment")),
+        "narrative_function": record.get("narrative_function"),
+        "confidence": record.get("confidence"),
         "falsifier": record.get("falsifier"),
         "evidence_support": record.get("evidence_support"),
         "source_ids": record.get("source_ids"),
@@ -106,10 +155,13 @@ def substantive_fingerprint(state: dict[str, Any]) -> list[dict[str, Any]]:
     )
 
 
+def fingerprint_digest(rows: list[dict[str, Any]]) -> str:
+    raw = json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(raw).hexdigest()
+
+
 def numeric_metrics(metrics: dict[str, Any]) -> dict[str, Any]:
-    pct = (metrics.get("percentages") or {}).get(
-        "falsy_share_of_resolved_unique_propositions"
-    ) or {}
+    pct = (metrics.get("percentages") or {}).get("falsy_share_of_resolved_unique_propositions") or {}
     return {
         "unique_propositions": metrics.get("unique_propositions"),
         "claim_instances": metrics.get("claim_instances"),
@@ -129,11 +181,7 @@ def numeric_metrics(metrics: dict[str, Any]) -> dict[str, Any]:
 
 
 def ledger_counts(state: dict[str, Any]) -> dict[str, Any]:
-    return {
-        key: value
-        for key, value in (state.get("counts") or {}).items()
-        if key.startswith("lie_ledger_v2_")
-    }
+    return {key: value for key, value in (state.get("counts") or {}).items() if key.startswith("lie_ledger_v2_")}
 
 
 def assert_neutral_structure(state: dict[str, Any]) -> None:
@@ -146,22 +194,21 @@ def assert_neutral_structure(state: dict[str, Any]) -> None:
 
     for record in records(state):
         assert "authority_status" not in record
-        assert record.get("adjudication_status") in {
-            "EVIDENCE_ADJUDICATED",
-            "LEGACY_NORMALIZED_NOT_REASSESSED",
-        }
+        assert record.get("adjudication_status") in {"EVIDENCE_ADJUDICATED", "LEGACY_NORMALIZED_NOT_REASSESSED"}
         assert record.get("doctrine_version") == neutral.GOVERNANCE_VERSION
         assert record.get("contract_version") == neutral.CONTRACT_VERSION
         assert record.get("contract_path") == neutral.CONTRACT_PATH
         assert record.get("publication_status") != "NOT_ROOK_REASSESSED"
         for blocker in record.get("publication_blockers") or []:
             assert "authority" not in blocker
+            assert "historical_owner" not in blocker
             assert blocker.get("code") != "ROOK_EVIDENCE_COMPLETION_REQUIRED"
         for indicator in record.get("knowledge_indicators") or []:
             assert indicator.get("indicator") != "ROOK_KNOWLEDGE_BASIS"
 
     for blocker in state.get("lie_ledger_v2_publication_blockers") or []:
         assert "authority" not in blocker
+        assert "historical_owner" not in blocker
         assert blocker.get("code") != "ROOK_EVIDENCE_COMPLETION_REQUIRED"
 
     release = state.get("release") or {}
@@ -175,8 +222,14 @@ def main() -> None:
     migrated = copy.deepcopy(original)
 
     before_records = substantive_fingerprint(original)
+    before_digest = fingerprint_digest(before_records)
     before_metrics = numeric_metrics(original.get("lie_ledger_v2_metrics") or {})
     before_counts = ledger_counts(original)
+
+    if EXPECTED_BASELINE_DIGEST is not None:
+        assert before_digest == EXPECTED_BASELINE_DIGEST, (
+            f"historical replay substantive baseline drifted: {before_digest} != {EXPECTED_BASELINE_DIGEST}"
+        )
 
     neutral.neutralize(migrated)
 
@@ -191,24 +244,20 @@ def main() -> None:
 
     assert any(
         row.get("truth_adjudication") == "FALSE"
-        and row.get("knowledge_judgment") not in {
-            "LIKELY_KNEW_FALSE",
-            "VERY_LIKELY_KNEW_FALSE",
-            "KNOWING_FALSEHOOD_ESTABLISHED",
-        }
+        and row.get("knowledge_judgment") not in {"LIKELY_KNEW_FALSE", "VERY_LIKELY_KNEW_FALSE", "KNOWING_FALSEHOOD_ESTABLISHED"}
         for row in records(migrated)
     ), "migration corpus must preserve at least one False != Lie case"
 
     production = final_builder.build_state(ROOT)
-    if "lie_ledger_v2_governance" in production:
-        assert_neutral_structure(production)
-        assert substantive_fingerprint(production) == before_records
-        assert numeric_metrics(production.get("lie_ledger_v2_metrics") or {}) == before_metrics
-        assert ledger_counts(production) == before_counts
+    assert_neutral_structure(production)
+    assert substantive_fingerprint(production) == before_records
+    assert numeric_metrics(production.get("lie_ledger_v2_metrics") or {}) == before_metrics
+    assert ledger_counts(production) == before_counts
 
     print(
         "neutral Lie Ledger governance parity: PASS "
-        f"({len(before_records)} propositions; adjudications/evidence/metrics unchanged)"
+        f"({len(before_records)} propositions; semantic_sha256={before_digest}; "
+        "adjudications/evidence/alternatives/metrics unchanged)"
     )
 
 
