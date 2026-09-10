@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import importlib.util
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,8 +40,6 @@ for validator in (
     assert any(item[1] == validator for item in build), f"build contract omitted {validator}"
     assert any(item[1] == validator for item in check), f"check contract omitted {validator}"
 
-# Legacy public state is still fully qualified, but its builder is forbidden from
-# targeting the one release-facing public-current-state path.
 v1_builds = [item for item in build if item[1] == "scripts/build_public_current_state.py"]
 assert len(v1_builds) == 2
 assert all(compat in item for item in v1_builds)
@@ -62,5 +62,14 @@ assert "legacy.validate_payload" in compat_validator
 assert "legacy.validate_references_and_views" in compat_validator
 assert "legacy.validate_facility_and_imagery_parity" in compat_validator
 assert "legacy compatibility validation may not target data/public-current-state.json" in compat_validator
+
+# Every production release qualification path already executes this test. Chain
+# the focused foundation parity proof here so the new compiler boundary cannot
+# drift without failing Pages, primary validation and source-humanization CI.
+subprocess.run(
+    [sys.executable, "tests/public-read-model-foundation-parity.test.py"],
+    cwd=ROOT,
+    check=True,
+)
 
 print("current release-state orchestration: PASS - legacy public compatibility is isolated and the current public path is v2-only")

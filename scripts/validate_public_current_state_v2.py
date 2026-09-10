@@ -11,9 +11,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-import build_public_current_state as public_v1  # noqa: E402
 import build_public_current_state_v2 as core  # noqa: E402
 import build_public_current_state_v2_hardened as builder  # noqa: E402
+import public_read_model_foundation as foundation  # noqa: E402
 
 
 ARTIFACT = ROOT / "data/public-current-state.json"
@@ -47,8 +47,8 @@ def main() -> int:
     require(state.get("schema_version") == "2.0", "public schema version mismatch")
     require(state.get("artifact_role") == "DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL", "public artifact role mismatch")
     require(state.get("generator", {}).get("version") == builder.GENERATOR_VERSION, "generator version mismatch")
-    require(state["generator"]["script_sha256"] == digest(public_v1.canonical_input_bytes((ROOT / builder.GENERATOR).read_bytes())), "generator identity mismatch")
-    require(state["generator"]["schema_sha256"] == digest(public_v1.canonical_input_bytes(SCHEMA.read_bytes())), "schema hash mismatch")
+    require(state["generator"]["script_sha256"] == digest(foundation.canonical_input_bytes((ROOT / builder.GENERATOR).read_bytes())), "generator identity mismatch")
+    require(state["generator"]["schema_sha256"] == digest(foundation.canonical_input_bytes(SCHEMA.read_bytes())), "schema hash mismatch")
 
     release = state["release"]
     canonical_release = canonical["release"]
@@ -124,6 +124,7 @@ def main() -> int:
     require(set(core.AUDIT_ONLY_GATE3_DATASETS) <= audit_waivers, "Gate 3 audit-only datasets lack explicit waivers")
     require(state["integrity"].get("browser_replays_update_packets") is False, "browser update replay was enabled")
     require(state["integrity"].get("phase9_routes_consume_gate3_state") is True, "Phase 9 route-consumer declaration missing")
+    require(state["integrity"].get("legacy_v1_builder_not_executed_by_v2") is True, "v2 compiler decoupling declaration missing")
 
     ledger_payload = state["datasets"]["gate3.lie_ledger"]["payload"]
     require(isinstance(ledger_payload, dict), "Lie Ledger v2 dataset payload is not an object")
