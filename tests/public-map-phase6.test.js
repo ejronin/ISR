@@ -66,15 +66,20 @@ assert.equal(locatedDamage.footprint, null, 'damage observation invented a footp
 assert.equal(ia.MapView.imageryDescriptor(unlocatedObservation, resolver, facilityRecords).tier, 'D', 'unlocated forensic observation should remain evidence-only');
 
 const releaseRoles = new Set(manifest.application.assets.map(asset => asset.role));
-for (const role of ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint']) assert(releaseRoles.has(role), `required release role missing: ${role}`);
-assert([...releaseRoles].every(role => ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint', 'evidence_image', 'state_flag'].includes(role)), 'release contains an unsupported role');
-assert.equal(manifest.application.reference_geography, manifest.application.assets.find(asset => asset.role === 'reference_geography').path);
-assert.equal(manifest.application.runtime.length, 2);
-assert.equal(manifest.application.stylesheets.length, 2);
+const fixedRoles = ['map_runtime', 'page_registry', 'reader_runtime', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+for (const role of fixedRoles) assert(releaseRoles.has(role), `required release role missing: ${role}`);
+assert([...releaseRoles].every(role => [...fixedRoles, 'evidence_image', 'state_flag'].includes(role)), 'release contains an unsupported role');
+const byRole = Object.fromEntries(manifest.application.assets.filter(asset => fixedRoles.includes(asset.role)).map(asset => [asset.role, asset]));
+assert.equal(byRole.reader_runtime.source_path, 'src/public-reader-layer.js');
+assert.equal(byRole.reader_stylesheet.source_path, 'src/public-reader-layer.css');
+assert.equal(manifest.application.reference_geography, byRole.reference_geography.path);
+assert.deepEqual(manifest.application.runtime, [byRole.map_runtime.path, byRole.page_registry.path, byRole.reader_runtime.path]);
+assert.deepEqual(manifest.application.stylesheets, [byRole.map_stylesheet.path, byRole.stylesheet.path, byRole.reader_stylesheet.path]);
+assert.equal(manifest.application.stylesheet, byRole.stylesheet.path, 'reader CSS must augment rather than replace the primary shell stylesheet');
 
 const mapSource = fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8');
 for (const forbidden of ['bda-map-data.json', 'map-only source index', 'image_id ===', 'facility ===']) assert(!mapSource.includes(forbidden), `map runtime contains a separate or record-specific path: ${forbidden}`);
 assert(!/L\.tileLayer|tile\.openstreetmap|api\.mapbox|maps\.google/i.test(mapSource), 'current MapView depends on an external tile or map API');
 for (const forbiddenPath of ['data/bda-map-data.json', 'data/map-source-index.json']) assert(!fs.existsSync(path.join(root, forbiddenPath)), `separate map pipeline artifact exists: ${forbiddenPath}`);
 
-console.log('public map Phase 6: PASS - local geography, explicit route authority, polyline flow, generic imagery tiers, canonical precedence, and signed assets verified');
+console.log('public map Phase 6: PASS - local geography, explicit route authority, polyline flow, generic imagery tiers, canonical precedence, and explicit signed reader assets verified');
