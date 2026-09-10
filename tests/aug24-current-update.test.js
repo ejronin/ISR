@@ -20,6 +20,7 @@ assert.strictEqual(overlayEvents.length, 10, 'frozen Aug. 24 overlay event count
 assert.strictEqual(overlayTimeline.length, 10, 'frozen Aug. 24 overlay timeline count');
 assert.strictEqual(overlayManifest.counts.current_chronology_records, 108, 'frozen Aug. 24 chronology count');
 assert.strictEqual(overlayManifest.equation, '98 + 10 = 108');
+// MUTABLE_CURRENT_HISTORICAL_FIXTURE: this is the sealed Aug. 24 overlay's own evidence cutoff, not the live Atlas horizon.
 assert.strictEqual(overlayManifest.collection_cutoff, '2026-08-24T14:14:00-04:00', 'Aug. 24 layer cutoff must remain frozen');
 assert.strictEqual(new Set([...histEvents, ...overlayEvents].map(x => x.event_id)).size, 108, '98 + 10 unique Aug. 24 IDs');
 

@@ -17,7 +17,7 @@ import build_public_current_state_v2 as public_core
 OUT = "data/public-current-state-v2.json"
 SCHEMA = "schemas/public-current-state-v2.json"
 GENERATOR = "scripts/build_public_current_state_v2_hardened.py"
-GENERATOR_VERSION = "2.1"
+GENERATOR_VERSION = "2.2"
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -164,9 +164,11 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "data/lie-ledger-v2-rook-authority.json": "ROOK_LIE_LEDGER_V2_AUTHORITY",
         "data/lie-ledger-v2-rook-evidence-completion-20260909.json": "ROOK_LIE_LEDGER_EVIDENCE_COMPLETION_AUTHORITY",
         "data/lie-ledger-v2-evidence-sources-20260909.json": "ROOK_LIE_LEDGER_EVIDENCE_SOURCE_REGISTRY",
+        "data/lie-ledger-v2-rook-current-claims-20260909.json": "ROOK_LIE_LEDGER_CURRENT_CLAIM_UPDATE_AUTHORITY",
         "schemas/lie-ledger-v2.json": "LIE_LEDGER_V2_SEMANTIC_SCHEMA",
         "scripts/build_lie_ledger_v2.py": "LIE_LEDGER_V2_FORWARD_MIGRATION_GENERATOR",
         "scripts/apply_lie_ledger_evidence_completion_20260909.py": "LIE_LEDGER_V2_EVIDENCE_COMPLETION_GENERATOR",
+        "scripts/apply_lie_ledger_current_claims_20260909.py": "LIE_LEDGER_V2_CURRENT_CLAIM_UPDATE_GENERATOR",
         "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
         GENERATOR: "PHASE9_PUBLIC_READ_MODEL_GENERATOR",
         SCHEMA: "PHASE9_PUBLIC_READ_MODEL_SCHEMA"
@@ -191,6 +193,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     state["release"]["lie_ledger_doctrine_version"] = canonical["release"]["lie_ledger_doctrine_version"]
     state["release"]["lie_ledger_contract_version"] = canonical["release"]["lie_ledger_contract_version"]
     state["release"]["lie_ledger_evidence_completion_version"] = canonical["release"].get("lie_ledger_evidence_completion_version")
+    state["release"]["lie_ledger_current_claim_update_version"] = canonical["release"].get("lie_ledger_current_claim_update_version")
     generator_raw = public_core.public_v1.canonical_input_bytes((root / GENERATOR).read_bytes())
     schema_raw = public_core.public_v1.canonical_input_bytes((root / SCHEMA).read_bytes())
     state["generator"] = {
@@ -210,7 +213,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_primary_public_object_is_chain": True,
         "lie_ledger_blocked_verdicts_withheld_not_downgraded": True,
         "lie_ledger_component_evidence_refs_public": True,
-        "lie_ledger_evidence_completion_inputs_pinned": True
+        "lie_ledger_evidence_completion_inputs_pinned": True,
+        "lie_ledger_current_claim_update_inputs_pinned": True
     })
     return state
 

@@ -8,13 +8,14 @@ const ia = require('../js/public-ia.js');
 const root = path.resolve(__dirname, '..');
 const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
 const model = JSON.parse(read('data/public-current-state.json'));
+const canonicalManifest = JSON.parse(read('data/canonical-ledger/manifest-v2.json'));
 const source = read('js/public-ia.js');
 const css = read('css/public-shell.css');
 
 assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
-assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
+assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff);
 assert.equal(ia.formatEvidenceClock(model.release.gate2_evidence_cutoff), 'Sep. 5, 2026 · 12:37 AM ET');
-assert.equal(ia.formatEvidenceClock(model.release.current_osint_cutoff), 'Sep. 6, 2026 · 2:10 PM ET');
+assert.equal(ia.formatEvidenceClock(model.release.current_osint_cutoff), ia.formatEvidenceClock(canonicalManifest.current_evidence_cutoff));
 assert.equal(ia.ROUTES.get('evidence.information').title, 'Lie Ledger');
 
 assert.equal(ia.propositionStatusLabel('DISPROVEN'), 'False');
@@ -90,7 +91,7 @@ assert(Array.isArray(mouTracks) && mouTracks.length > 0, 'MOU position tracks ar
 assert(mouTracks.filter(track => track.scorable).every(track => Number.isFinite(Number(track.position))), 'scorable MOU term lacks an existing numeric analyst position');
 
 const losses = (() => { const payload = model.datasets['current.material_losses'].payload; return payload.records || []; })();
-assert.equal(losses.length, 57);
+assert.equal(losses.length, model.counts.material_loss_records);
 assert(losses.every(record => record.quantity !== null || record.quantity !== 0), 'unknown quantity was converted to zero');
 
 console.log('public Phase 10: PASS - factual/knowledge separation plus approved visual-sweep contracts for timeline density, shipping routes, auditable loss aggregation, non-interpolated economics and MOU balance verified');

@@ -8,18 +8,27 @@ const app = require('../js/public-app.js');
 const root = path.resolve(__dirname, '..');
 const model = JSON.parse(fs.readFileSync(path.join(root, 'data/public-current-state.json'), 'utf8'));
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'data/public-release.json'), 'utf8'));
+const canonicalManifest = JSON.parse(fs.readFileSync(path.join(root, 'data/canonical-ledger/manifest-v2.json'), 'utf8'));
 const payload = key => model.datasets[key] && model.datasets[key].payload;
 
 assert.equal(model.counts.chronology_records, model.chronology.length);
 assert.equal(model.counts.canonical_source_records, model.sources.records.length);
-assert.equal(model.counts.accepted_update_packets, 0);
+assert.equal(model.counts.gate3_update_packets, canonicalManifest.accepted_updates.length);
 assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
-assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
+assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff);
 assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
 
 const losses = payload('current.material_losses').records;
 assert.equal(losses.length, model.counts.material_loss_records);
-assert.equal(losses.length, 57);
+for (const lossId of [
+  'MAT-IRN-KAVIZ-20260908',
+  'MAT-IRN-CHARMINAR-20260908',
+  'MAT-IRN-HORIZON1-20260908',
+  'MAT-IRN-RIESCO-20260908',
+  'MAT-IRN-DERYA-20260908',
+  'MAT-US-DIVE-LD-20260908',
+  'MAT-COM-NEW-ANDROS-20260909'
+]) assert(losses.some(record => record.loss_id === lossId), `accepted catch-up material-loss record missing: ${lossId}`);
 assert.equal(new Set(losses.map(record => record.loss_id)).size, losses.length);
 assert(losses.some(record => record.quantity == null), 'unknown-quantity test records are absent');
 assert(losses.some(record => record.status === 'DAMAGED'));

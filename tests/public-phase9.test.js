@@ -2,9 +2,12 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 const ia = require('../js/public-ia.js');
 const root = path.resolve(__dirname, '..');
+execFileSync(process.env.PYTHON || 'python', ['tests/gate3-v2-mutable-current-invariants.test.py'], { cwd: root, stdio: 'inherit' });
 const model = JSON.parse(fs.readFileSync(path.join(root, 'data/public-current-state.json'), 'utf8'));
+const canonicalManifest = JSON.parse(fs.readFileSync(path.join(root, 'data/canonical-ledger/manifest-v2.json'), 'utf8'));
 const payload = key => model.datasets[key] && model.datasets[key].payload;
 const records = key => ia.recordArray(payload(key));
 const sourceIdSet = new Set((model.sources && model.sources.records || []).map(item => item.source_id));
@@ -12,9 +15,8 @@ const sourceIdSet = new Set((model.sources && model.sources.records || []).map(i
 assert.equal(model.schema_version, '2.0');
 assert.equal(model.artifact_role, 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL');
 assert(model.release && model.release.release_identity);
-assert.equal(model.release.current_osint_cutoff, '2026-09-06T14:10:43-04:00');
+assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff);
 const coverage = records('gate3.daily_coverage');
-assert.equal(coverage.length, 191);
 assert.equal(coverage[0].date, '2026-02-28');
 assert.equal(coverage.at(-1).date, model.release.current_osint_cutoff.slice(0, 10));
 assert(coverage.every(row => row.coverage_scope === 'CONFLICT_DAY_1_THROUGH_CURRENT_EVIDENCE_CUTOFF'));
@@ -32,8 +34,8 @@ assert(model.chronology.every(item => Array.isArray(item.source_references)));
 assert.equal(records('current.material_losses').length, model.counts.material_loss_records);
 assert.equal(records('current.relationships').length, model.counts.relationship_records);
 assert.equal(records('gate3.source_reliability').length, model.counts.gate3_source_reliability_records);
-assert.equal(records('gate3.gaps').length, 19);
-assert.equal(records('gate3.casualties').length, 23);
+assert.equal(records('gate3.gaps').length, (model.entities.gaps || []).length);
+assert.equal(records('gate3.casualties').length, (model.entities.casualties || []).length);
 
 // Lie Ledger v2: public primary object is a narrative/proposition chain, never a flat score row.
 const ledger = payload('gate3.lie_ledger');

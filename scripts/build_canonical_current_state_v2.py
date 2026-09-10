@@ -184,6 +184,18 @@ def apply_packet(root,state,p,path):
         else:
             if found: raise ValueError(f"duplicate entity {eid}")
             item=wrap(eid,ent["record"],{"kind":"GATE3_ACCEPTED_PACKET","packet_id":p["packet_id"]})
+            if et=="casualty":
+                record=item["record"]; ref=record.get("event_ref")
+                if ref:
+                    if ref not in {x["event_id"] for x in state["chronology"]}: raise ValueError(f"casualty event link does not resolve {eid} -> {ref}")
+                    disposition={"disposition":"EVENT_LINK","canonical_event_ref":ref,"additive":str(record.get("aggregation_type") or "").upper()!="CUMULATIVE_SNAPSHOT"}
+                elif str(record.get("aggregation_type") or "").upper()=="CUMULATIVE_SNAPSHOT" or record.get("cumulative_snapshot"):
+                    disposition={"disposition":"AGGREGATE_SNAPSHOT","additive":False}
+                else:
+                    disposition={"disposition":"NON_EVENT_OR_AGGREGATE","reason":"No canonical event link is established for this accepted casualty observation.","additive":False}
+                item["semantic_disposition"]=disposition
+                sld=f"SLD-{re.sub(r'[^A-Z0-9-]+','-',str(eid).upper())}"
+                state["entities"].setdefault("side_ledger_dispositions",[]).append(wrap(sld,{"side_ledger_disposition_id":sld,"side_record_id":eid,"side_collection":"casualties",**copy.deepcopy(disposition)},{"kind":"GATE3_ACCEPTED_PACKET_SIDE_LEDGER_RECONCILIATION","packet_id":p["packet_id"]}))
             if et=="material_loss":
                 record=item["record"]; ref=record.get("event_ref")
                 if ref:
