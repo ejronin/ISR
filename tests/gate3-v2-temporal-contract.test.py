@@ -198,6 +198,29 @@ class TemporalContractMatrix(unittest.TestCase):
                     registrar.register_v2_packet(self.root, relative)
                 self.assertEqual((self.root / registrar.MANIFEST_PATH).read_bytes(), before)
 
+    def test_future_record_knowledge_is_rejected_transactionally(self) -> None:
+        before = (self.root / registrar.MANIFEST_PATH).read_bytes()
+        known = self.tip_known + timedelta(days=2)
+        cutoff = self.tip_cutoff + timedelta(days=1)
+        packet = make_packet(self.root, "FUTURE-RECORD-KNOWLEDGE", known, cutoff)
+        packet["events"][0]["game_knowledge_time"] = (known + timedelta(hours=1)).isoformat()
+        relative = write_packet(self.root, packet)
+        with self.assertRaisesRegex(ValueError, "game_knowledge_time may not be later than packet known_at"):
+            registrar.register_v2_packet(self.root, relative)
+        self.assertEqual((self.root / registrar.MANIFEST_PATH).read_bytes(), before)
+
+    def test_future_entity_knowledge_is_rejected_by_shared_authority(self) -> None:
+        known = self.tip_known + timedelta(days=2)
+        cutoff = self.tip_cutoff + timedelta(days=1)
+        packet = make_packet(self.root, "FUTURE-ENTITY-KNOWLEDGE", known, cutoff)
+        packet["entities"] = [{
+            "entity_type": "economic",
+            "entity_id": "TEST-FUTURE-KNOWLEDGE",
+            "record": {"knowledge_time": (known + timedelta(minutes=1)).isoformat()},
+        }]
+        with self.assertRaisesRegex(ValueError, "knowledge_time may not be later than packet known_at"):
+            temporal.validate_packet_content_temporal_semantics(packet)
+
     def test_registrar_and_consumer_share_the_same_temporal_authority(self) -> None:
         self.assertIs(registrar.temporal, temporal)
         self.assertIs(consumer.temporal, temporal)
