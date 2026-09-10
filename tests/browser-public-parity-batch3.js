@@ -221,7 +221,8 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.match(economy.legend, /Maritime · schematic/);
     assert.match(economy.legend, /Pipeline · schematic/);
     assert.match(economy.legend, /Rail · schematic/);
-    assert.deepEqual(economy.directoryRouteIds.sort(), routeIds.slice().sort());
+    assert.deepEqual(economy.directoryRouteIds, [], 'Economy must not duplicate the Shipping & Trade route directory');
+    assert.match(economy.text, /Open Shipping & Trade routes/i, 'Economy does not cross-link to the canonical route directory');
     assert.deepEqual(economy.countries.sort(), ['Bahrain', 'Iran', 'Kuwait', 'Oman', 'Qatar', 'Saudi Arabia', 'United Arab Emirates'].sort());
     assert.deepEqual(economy.arctic, ['ARCTIC-RU-CN-OIL']);
     assert.equal(economy.inside, true);
