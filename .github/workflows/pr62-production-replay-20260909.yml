@@ -71,11 +71,26 @@ jobs:
               raise SystemExit("casualty merge insertion point not found in repaired builder")
           text = text.replace(needle, replacement, 1)
           path.write_text(text, encoding="utf-8", newline="\n")
+
+          path = Path("scripts/apply_lie_ledger_current_claims_20260909.py")
+          text = path.read_text(encoding="utf-8")
+          import_marker = "from typing import Any\n"
+          if "import canonical_temporal_contract as temporal" not in text:
+              if text.count(import_marker) != 1:
+                  raise SystemExit("current-claim temporal import insertion point not found")
+              text = text.replace(import_marker, import_marker + "\nimport canonical_temporal_contract as temporal\n", 1)
+          old = '''    if update.get("evidence_cutoff") != state["release"].get("current_osint_cutoff"):\n        raise ValueError("ROOK current-claim update cutoff does not match canonical current cutoff")\n'''
+          new = '''    update_cutoff_raw = update.get("evidence_cutoff")\n    current_cutoff_raw = state["release"].get("current_osint_cutoff")\n    update_cutoff = temporal.parse_datetime(update_cutoff_raw, "ROOK current-claim update evidence cutoff")\n    current_cutoff = temporal.parse_datetime(current_cutoff_raw, "canonical current evidence cutoff")\n    if update_cutoff > current_cutoff:\n        raise ValueError("ROOK current-claim update cutoff is later than canonical current cutoff")\n    anchor = [\n        row for row in state.get("accepted_updates_v2") or []\n        if row.get("packet_id") == "UPD-20260909-CATCHUP"\n    ]\n    if len(anchor) != 1 or anchor[0].get("evidence_cutoff") != update_cutoff_raw:\n        raise ValueError("ROOK current-claim update lacks its accepted Sep. 9 evidence anchor")\n'''
+          if old not in text:
+              raise SystemExit("current-claim cutoff guard insertion point not found")
+          text = text.replace(old, new, 1)
+          path.write_text(text, encoding="utf-8", newline="\n")
           PY
 
           grep -F 'import canonical_temporal_contract as temporal' scripts/build_canonical_current_state_v2.py
           grep -F 'temporal.validate_packet_against_accepted_entry' scripts/build_canonical_current_state_v2.py
           grep -F 'temporal.validate_event_temporal_semantics' scripts/build_canonical_current_state_v2.py
+          grep -F 'UPD-20260909-CATCHUP' scripts/apply_lie_ledger_current_claims_20260909.py
           git diff --check
 
       - name: Commit replay inputs before registration
