@@ -32,9 +32,12 @@ COVERAGE_LITERAL = re.compile(r"assert\.(?:equal|strictEqual)\(\s*coverage\.leng
 CHRONOLOGY_LITERAL = re.compile(r"assert\.(?:equal|strictEqual)\(\s*(?:model\.)?chronology\.length\s*,\s*\d+")
 MODEL_COUNT_LITERAL = re.compile(
     r"assert\.(?:equal|strictEqual)\(\s*model\.counts\."
-    r"(?:chronology_records|material_loss_records|accepted_update_packets|gate3_daily_coverage_days)\s*,\s*\d+"
+    r"(?:chronology_records|material_loss_records|accepted_update_packets|gate3_update_packets|gate3_daily_coverage_days)\s*,\s*\d+"
 )
 LOSS_LITERAL = re.compile(r"assert\.(?:equal|strictEqual)\(\s*losses\.length\s*,\s*\d+")
+GATE3_RECORD_LITERAL = re.compile(
+    r"assert\.(?:equal|strictEqual)\(\s*records\(['\"]gate3\.[^'\"]+['\"]\)\.length\s*,\s*\d+"
+)
 
 
 def tracked_paths() -> list[Path]:
@@ -91,6 +94,8 @@ def scan(path: Path) -> list[str]:
             reasons.append("generated current count pinned to a literal")
         if "current.material_losses" in text and LOSS_LITERAL.search(line):
             reasons.append("current material-loss population pinned to a literal")
+        if public_current_consumer and GATE3_RECORD_LITERAL.search(line):
+            reasons.append("current Gate 3 dataset population pinned to a literal")
         if reasons:
             rel = path.relative_to(ROOT)
             violations.append(f"{rel}:{index + 1}: {', '.join(reasons)} :: {line.strip()}")
