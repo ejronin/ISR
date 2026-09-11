@@ -1,0 +1,36 @@
+name: Materialize neutral Lie Ledger adjudications once
+
+on:
+  push:
+    branches:
+      - evidence/neutral-lie-ledger-adjudication-20260911
+    paths:
+      - ".github/workflows/materialize-neutral-lie-ledger-adjudications-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: evidence/neutral-lie-ledger-adjudication-20260911
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.13"
+      - name: Install pinned validation requirements
+        run: python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
+      - name: Materialize neutral adjudication set
+        run: |
+          python scripts/build_source_registry.py --root .
+          python scripts/migrate_lie_ledger_evidence_adjudications.py
+          python scripts/migrate_lie_ledger_evidence_adjudications.py --check
+      - name: Commit neutral adjudication set
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lie-ledger-v2-evidence-adjudications.json
+          git commit -m "Materialize neutral Lie Ledger adjudications"
+          git push origin HEAD:evidence/neutral-lie-ledger-adjudication-20260911
