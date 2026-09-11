@@ -7,22 +7,137 @@ this file must not manufacture or enforce substantive ROOK knowledge judgments.
 """
 from __future__ import annotations
 
+import copy
 import json
+import re
 import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+import build_canonical_current_state_v2 as gate3_base
 import build_canonical_current_state_v2_hardened as gate3
+import build_canonical_current_state_v2_final as gate3_final
+
+PROTECTED_INHERITED_GAP_IDS = tuple(f"GAP-{i:03d}" for i in range(1, 20))
+PROTECTED_GAP_BASELINE_LINEAGE_SHA256 = "d6250ba785c7480f59058b3e6292fad608c9390d47c3ab7cab60fd57c239d4eb"
+GAP_ID_RE = re.compile(r"^GAP-[A-Z0-9][A-Z0-9-]*$")
 
 
 def fail(message: str) -> None:
     raise AssertionError(message)
 
 
+def _protected_gap_baseline(root: Path) -> dict[str, dict]:
+    """Rebuild the accepted R1-era state of inherited GAP-001..GAP-019.
+
+    The raw migration records are sealed, but GAP-009 and GAP-011 were later
+    revised by an accepted Evidence packet before R1. Replaying only the exact
+    accepted lineage through the R1 tip preserves those authorized revisions
+    while preventing any later generic entity update from silently redefining a
+    protected inherited gap. Advancing this baseline requires an explicit
+    Release change tied to an authorized Evidence revision; appending new gap
+    identities never requires changing the baseline.
+    """
+    spec = json.loads((root / "data/gate3/gate3-spec.json").read_text(encoding="utf-8"))
+    scratch = {"entities": {}}
+    gate3_base.seed(root, scratch, spec)
+    baseline = {item["entity_id"]: item for item in scratch["entities"].get("gaps", [])}
+
+    manifest = json.loads((root / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
+    reached_baseline_tip = False
+    for entry in manifest.get("accepted_updates") or []:
+        packet = json.loads((root / entry["path"]).read_text(encoding="utf-8"))
+        for entity in packet.get("entities") or []:
+            gap_id = str(entity.get("entity_id") or "")
+            if entity.get("entity_type") != "gap" or gap_id not in baseline:
+                continue
+            if entity.get("mode") != "update":
+                fail(f"protected inherited gap has non-update historical operation: {gap_id}")
+            baseline[gap_id]["record"].update(copy.deepcopy(entity.get("record") or {}))
+            baseline[gap_id]["source_ids"] = list(baseline[gap_id]["record"].get("source_ids") or [])
+            baseline[gap_id]["revisions"].append({
+                "packet_id": packet["packet_id"],
+                "known_at": packet["known_at"],
+                "kind": "GATE3_ENTITY_UPDATE",
+            })
+        if entry.get("lineage_sha256") == PROTECTED_GAP_BASELINE_LINEAGE_SHA256:
+            reached_baseline_tip = True
+            break
+
+    if not reached_baseline_tip:
+        fail("protected inherited gap baseline lineage is not an exact accepted prefix")
+    return baseline
+
+
+def _meaningful_collection_action(action) -> bool:
+    if isinstance(action, str):
+        return bool(action.strip())
+    if not isinstance(action, dict):
+        return False
+    for key in ("task", "question", "action", "purpose"):
+        if str(action.get(key) or "").strip():
+            return True
+    for key in ("collection_scope", "scope", "targets"):
+        value = action.get(key)
+        if isinstance(value, list) and any(str(item or "").strip() for item in value):
+            return True
+    return False
+
+
+def validate_gap_contract(state: dict, root: Path = ROOT) -> None:
+    gaps = state.get("entities", {}).get("gaps", [])
+    ids = [str(item.get("entity_id") or "") for item in gaps]
+    if len(ids) != len(set(ids)):
+        fail("duplicate gap identity")
+
+    protected = set(PROTECTED_INHERITED_GAP_IDS)
+    missing_protected = protected - set(ids)
+    if missing_protected:
+        fail(f"protected inherited gap deleted: {sorted(missing_protected)}")
+
+    baseline = _protected_gap_baseline(Path(root))
+    by_id = {item["entity_id"]: item for item in gaps}
+    for gap_id in PROTECTED_INHERITED_GAP_IDS:
+        current = by_id[gap_id]
+        expected = baseline[gap_id]
+        for field in ("record", "source_ids", "provenance", "revisions"):
+            if current.get(field) != expected.get(field):
+                fail(f"protected inherited gap mutated without authorized revision: {gap_id}:{field}")
+
+    source_ids = {item["source_id"] for item in state.get("sources", {}).get("records", [])}
+    for item in gaps:
+        gap_id = str(item.get("entity_id") or "")
+        record = item.get("record")
+        if not GAP_ID_RE.fullmatch(gap_id):
+            fail(f"invalid stable gap identity: {gap_id or '<missing>'}")
+        if not isinstance(record, dict):
+            fail(f"gap lacks valid record: {gap_id}")
+        if record.get("gap_id") != gap_id:
+            fail(f"gap record identity mismatch: {gap_id}")
+        if not str(record.get("topic") or "").strip():
+            fail(f"gap lacks topic: {gap_id}")
+        if not str(record.get("status") or "").strip():
+            fail(f"gap lacks status: {gap_id}")
+        actions = record.get("collection_actions")
+        if not isinstance(actions, list) or not actions or not all(_meaningful_collection_action(action) for action in actions):
+            fail(f"gap lacks meaningful collection actions: {gap_id}")
+        if not item.get("provenance"):
+            fail(f"gap lacks provenance: {gap_id}")
+
+        if gap_id not in protected:
+            linked_sources = list(dict.fromkeys(record.get("source_ids") or item.get("source_ids") or []))
+            if not linked_sources:
+                fail(f"appended gap lacks source linkage: {gap_id}")
+            unresolved = set(linked_sources) - source_ids
+            if unresolved:
+                fail(f"appended gap has unresolved source linkage: {gap_id} -> {sorted(unresolved)}")
+
+
 def main() -> int:
     state = gate3.build_state(ROOT)
+    gate3_final.ensure_gap_collection_actions(state)
     dispositions = [item["record"] for item in state["entities"].get("legacy_dispositions", [])]
     expected = {f"E{i:03d}" for i in range(1, 64)}
     actual = [row["legacy_event_id"] for row in dispositions]
@@ -85,12 +200,8 @@ def main() -> int:
         if disposition.get("disposition") not in {"EVENT_LINK", "CLAIM_ONLY", "NON_EVENT_UNRESOLVED_DATE"}:
             fail(f"material loss has ambiguous semantic disposition: {record_id} {disposition}")
 
+    validate_gap_contract(state, ROOT)
     gaps = state["entities"].get("gaps", [])
-    if {item["entity_id"] for item in gaps} != {f"GAP-{i:03d}" for i in range(1, 20)}:
-        fail("unresolved/collection migration diverged from GAP-001..GAP-019")
-    for item in gaps:
-        if "collection_actions" not in item["record"]:
-            fail(f"gap lacks attached collection actions: {item['entity_id']}")
 
     coverage = state.get("daily_coverage") or []
     current_cutoff_date = datetime.fromisoformat(state["release"].get("current_osint_cutoff") or state["release"]["gate2_evidence_cutoff"]).date()
