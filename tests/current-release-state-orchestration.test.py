@@ -25,13 +25,13 @@ def normalized(commands):
 
 build = normalized(module.BUILD_COMMANDS)
 check = normalized(module.CHECK_COMMANDS)
+historical = normalized(module.HISTORICAL_AUDIT_COMMANDS)
 
-assert build[0][1:] == ("scripts/build_canonical_current_state.py",)
-assert (
+assert build[0][1:] == (
     "scripts/build_canonical_current_state_v2_final.py",
     "--output",
     "data/canonical-current-state-v2.json",
-) in [item[1:] for item in build]
+)
 assert (
     "scripts/build_public_current_state_v2_hardened.py",
     "--output",
@@ -39,27 +39,38 @@ assert (
 ) in [item[1:] for item in build]
 
 for validator in (
-    "scripts/validate_canonical_authority.py",
-    "scripts/validate_canonical_update_pipeline.py",
     "scripts/validate_gate3_final.py",
     "scripts/validate_public_current_state_v2.py",
 ):
     assert any(item[1] == validator for item in build), f"build contract omitted {validator}"
     assert any(item[1] == validator for item in check), f"check contract omitted {validator}"
 
-# Public-v1 remains frozen compatibility lineage, but it is no longer a release
-# artifact or release validator. The current public path has one meaning: v2.
-retired_public_v1_release_steps = {
+# Current release choreography must not generate/check canonical-v1 or bind its
+# old authority/update validators into every production build.
+retired_current_steps = {
+    "scripts/build_canonical_current_state.py",
+    "scripts/validate_canonical_authority.py",
+    "scripts/validate_canonical_update_pipeline.py",
     "scripts/build_public_current_state.py",
     "scripts/validate_public_current_state.py",
     "scripts/validate_public_current_state_compat.py",
 }
-assert not any(item[1] in retired_public_v1_release_steps for item in build), (
-    "release build still executes a legacy public-v1 artifact step"
+assert not any(item[1] in retired_current_steps for item in build), (
+    "current release build still executes a historical compatibility step"
 )
-assert not any(item[1] in retired_public_v1_release_steps for item in check), (
-    "release check still executes a legacy public-v1 artifact step"
+assert not any(item[1] in retired_current_steps for item in check), (
+    "current release check still executes a historical compatibility step"
 )
+
+# Historical lineage remains explicitly auditable and read-only.
+assert [item[1:] for item in historical] == [
+    ("scripts/build_canonical_current_state.py", "--check"),
+    ("scripts/validate_canonical_authority.py",),
+    ("scripts/validate_canonical_update_pipeline.py",),
+]
+assert all(
+    "--check" in item or item[1].startswith("scripts/validate_") for item in historical
+), "historical audit contains a write-capable builder"
 
 assert all(
     "--check" in item or item[1].startswith("scripts/validate_") for item in check
@@ -70,12 +81,11 @@ assert check[-1][1] == "scripts/validate_public_current_state_v2.py"
 source = SCRIPT.read_text(encoding="utf-8")
 assert "subprocess.run" in source and "check=True" in source
 assert "BUILD_COMMANDS" in source and "CHECK_COMMANDS" in source
+assert "HISTORICAL_AUDIT_COMMANDS" in source and "--historical-audit" in source
 assert "TemporaryDirectory" not in source
-assert "legacy public-v1" in source.lower()
+assert "current-v2 only" in source.lower()
 
-# Every production release qualification path already executes this test. Keep
-# exact in-memory parity against the frozen v1 seed as the compatibility proof,
-# without creating a v1 artifact in the release sequence.
+# Production public-foundation migration must be parity-qualified independently.
 subprocess.run(
     [sys.executable, "tests/public-read-model-foundation-parity.test.py"],
     cwd=ROOT,
@@ -83,6 +93,6 @@ subprocess.run(
 )
 
 print(
-    "current release-state orchestration: PASS - canonical lineage remains qualified, "
-    "public-v1 artifact execution is retired, and the release-facing public state is v2-only"
+    "current release-state orchestration: PASS - default release is v2-only, "
+    "historical canonical-v1 validation is explicit/read-only, and current foundation parity is enforced"
 )

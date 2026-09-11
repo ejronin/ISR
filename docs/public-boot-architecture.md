@@ -16,7 +16,7 @@ The initial document contains no chronology count, cutoff, current summary, old 
 
 ## Signed release
 
-`data/public-release.json`, `data/public-current-state.json`, `data/canonical-current-state.json`, and `assets/releases/` are deterministic generated artifacts and are Git-ignored. `scripts/build_public_release.py` emits normalized, content-addressed copies of the neutral bootstrap, Leaflet runtime/CSS, application stylesheet, page registry, reference geography, application entrypoint, and only the evidence images referenced by the accepted current model. It binds those exact bytes and the current-state model in the manifest and fails if `index.html` does not bind the exact bootstrap.
+`data/public-release.json`, `data/public-current-state.json`, `data/canonical-current-state-v2.json`, and `assets/releases/` are deterministic generated artifacts and are Git-ignored. The canonical-v1 artifact is historical compatibility output and is not part of current release assembly. `scripts/build_public_release.py` emits normalized, content-addressed copies of the neutral bootstrap, Leaflet runtime/CSS, application stylesheet, page registry, reference geography, application entrypoint, and only the evidence images referenced by the accepted current model. It binds those exact bytes and the current-state model in the manifest and fails if `index.html` does not bind the exact bootstrap.
 
 This prevents a cache split from creating an old-code/new-model hybrid. A cached bootstrap can authorize only a manifest that names that bootstrap's exact hash. Application JS and CSS are immutable hash-addressed URLs protected by browser SRI, while the GeoJSON and model receive explicit byte verification.
 
@@ -38,7 +38,7 @@ Snapshots, raw canonical packages, source registries, schemas, mutable source mo
 
 `config/public-runtime-inventory.json` is the deterministic ownership ledger for presentation files. It identifies:
 
-- seven current signed source roles;
+- nine current signed source roles;
 - the neutral shell and deployment support files;
 - retired JavaScript, CSS, icons, flags, Mermaid, and the Phase 1 reference retained only for historical tests and engineering audit;
 - pinned Leaflet package support retained at build time;

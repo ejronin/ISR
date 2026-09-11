@@ -168,7 +168,7 @@
     "snapshots"
   ],
   "generated_current_state_files": [
-    "data/canonical-current-state.json",
+    "data/canonical-current-state-v2.json",
     "data/public-current-state.json",
     "data/public-release.json"
   ],

@@ -19,11 +19,16 @@ const canonicalState = json('data/canonical-current-state-v2.json');
 assert.equal(state.schema_version, '2.0');
 assert.equal(state.artifact_role, 'DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL');
 assert.equal(state.release.repository, 'ejronin/ISR');
-assert.equal(state.release.approved_baseline_sha, '9a93eea6afb1ba2f3899e96dc72e2e66071d41b1');
+assert.equal(Object.hasOwn(state.release, 'approved_baseline_sha'), false);
+assert.equal(Object.hasOwn(state.release, 'canonical_migration_head'), false);
+assert.equal(Object.hasOwn(state.release, 'canonical_state_identity'), false);
 assert.equal(state.release.current_osint_cutoff, canonicalState.release.current_osint_cutoff);
 assert.equal(state.release.current_osint_cutoff_display, canonicalState.release.current_osint_cutoff_display);
-assert.equal(state.release.canonical_migration_head, 'b6dabf7d9dc346a81afc9ba4a9074c481e70e02a');
-assert.equal(state.release.canonical_state_identity, canonicalState.release.canonical_state_identity);
+assert.equal(
+  state.canonical_lineage.migration_boundary.accepted_phase3_head,
+  'b6dabf7d9dc346a81afc9ba4a9074c481e70e02a'
+);
+assert.equal(state.canonical_lineage.path, 'data/canonical-current-state-v2.json');
 assert.equal(state.release.canonical_state_identity_v2, canonicalState.release.canonical_state_identity_v2);
 assert.equal(Object.hasOwn(state.release, 'generated_at'), false);
 

@@ -32,7 +32,7 @@
       "type": "object",
       "required": ["version", "script_path", "script_sha256", "schema_path", "schema_sha256"],
       "properties": {
-        "version": { "const": "2.0" },
+        "version": { "const": "2.5-current-foundation" },
         "script_path": { "const": "scripts/build_public_current_state_v2_hardened.py" },
         "script_sha256": { "$ref": "#/$defs/sha256" },
         "schema_path": { "const": "schemas/public-current-state-v2.json" },
@@ -44,7 +44,6 @@
       "type": "object",
       "required": [
         "repository",
-        "canonical_state_identity",
         "canonical_state_identity_v2",
         "gate2_evidence_cutoff",
         "current_osint_cutoff",
@@ -54,10 +53,9 @@
       ],
       "properties": {
         "repository": { "const": "ejronin/ISR" },
-        "canonical_state_identity": { "pattern": "^canonical-current-v1-[a-f0-9]{16}$" },
         "canonical_state_identity_v2": { "pattern": "^canonical-current-v2-[a-f0-9]{16}$" },
         "gate2_evidence_cutoff": { "const": "2026-09-05T00:37:00-04:00" },
-        "current_osint_cutoff": { "const": "2026-09-05T00:37:00-04:00" },
+        "current_osint_cutoff": { "type": "string", "minLength": 1 },
         "current_osint_cutoff_display": { "type": "string", "minLength": 1 },
         "input_set_sha256": { "$ref": "#/$defs/sha256" },
         "release_identity": { "pattern": "^public-current-v2-[a-f0-9]{16}$" }
