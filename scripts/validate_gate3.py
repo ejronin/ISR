@@ -7,6 +7,7 @@ this file must not manufacture or enforce substantive ROOK knowledge judgments.
 """
 from __future__ import annotations
 
+import copy
 import json
 import re
 import sys
@@ -19,6 +20,7 @@ import build_canonical_current_state_v2 as gate3_base
 import build_canonical_current_state_v2_hardened as gate3
 
 PROTECTED_INHERITED_GAP_IDS = tuple(f"GAP-{i:03d}" for i in range(1, 20))
+PROTECTED_GAP_BASELINE_LINEAGE_SHA256 = "d6250ba785c7480f59058b3e6292fad608c9390d47c3ab7cab60fd57c239d4eb"
 GAP_ID_RE = re.compile(r"^GAP-[A-Z0-9][A-Z0-9-]*$")
 
 
@@ -27,16 +29,48 @@ def fail(message: str) -> None:
 
 
 def _protected_gap_baseline(root: Path) -> dict[str, dict]:
-    """Rebuild the frozen migration form of GAP-001..GAP-019.
+    """Rebuild the accepted R1-era state of inherited GAP-001..GAP-019.
 
-    The underlying migration files are separately sealed by canonical authority;
-    this comparison prevents later accepted packets from using generic entity
-    update semantics to overwrite the inherited gap records silently.
+    The raw migration records are sealed, but GAP-009 and GAP-011 were later
+    revised by an accepted Evidence packet before R1. Replaying only the exact
+    accepted lineage through the R1 tip preserves those authorized revisions
+    while preventing any later generic entity update from silently redefining a
+    protected inherited gap. Advancing this baseline requires an explicit
+    Release change tied to an authorized Evidence revision; appending new gap
+    identities never requires changing the baseline.
     """
     spec = json.loads((root / "data/gate3/gate3-spec.json").read_text(encoding="utf-8"))
     scratch = {"entities": {}}
     gate3_base.seed(root, scratch, spec)
-    return {item["entity_id"]: item for item in scratch["entities"].get("gaps", [])}
+    baseline = {item["entity_id"]: item for item in scratch["entities"].get("gaps", [])}
+
+    manifest = json.loads((root / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
+    reached_baseline_tip = False
+    for entry in manifest.get("accepted_updates") or []:
+        packet = json.loads((root / entry["path"]).read_text(encoding="utf-8"))
+        for entity in packet.get("entities") or []:
+            gap_id = str(entity.get("entity_id") or "")
+            if entity.get("entity_type") != "gap" or gap_id not in baseline:
+                continue
+            if entity.get("mode") != "update":
+                fail(f"protected inherited gap has non-update historical operation: {gap_id}")
+            baseline[gap_id]["record"].update(copy.deepcopy(entity.get("record") or {}))
+            baseline[gap_id]["provenance"].append({
+                "kind": "GATE3_ENTITY_UPDATE",
+                "packet_id": packet["packet_id"],
+            })
+            baseline[gap_id]["revisions"].append({
+                "packet_id": packet["packet_id"],
+                "known_at": packet["known_at"],
+                "kind": "GATE3_ENTITY_UPDATE",
+            })
+        if entry.get("lineage_sha256") == PROTECTED_GAP_BASELINE_LINEAGE_SHA256:
+            reached_baseline_tip = True
+            break
+
+    if not reached_baseline_tip:
+        fail("protected inherited gap baseline lineage is not an exact accepted prefix")
+    return baseline
 
 
 def _meaningful_collection_action(action) -> bool:
