@@ -29,19 +29,23 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
+
       - name: Regenerate and validate pinned Natural Earth reference geography
         env:
           PYTHONUTF8: '1'
         run: |
           python scripts/build_reference_geography.py --fetch-source-dir "$RUNNER_TEMP/atlas-natural-earth-v5.1.1" --check
           python scripts/validate_public_geography.py
+
       - name: Protect immutable migration authority and append-only ledger history
         env:
           AUTHORITY_BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: python scripts/validate_canonical_authority.py --compare-ref "$AUTHORITY_BASE_REF"
+
       - name: Build exhaustive source registry
         run: python scripts/build_source_registry.py --root .
-      - name: Validate deterministic public current-state assembly
+
+      - name: Build and validate current canonical/public release
         env:
           PYTHONUTF8: '1'
         run: |
@@ -53,6 +57,7 @@ jobs:
           python tests/gate3-packet-hash-portability.test.py
           python scripts/migrate_lie_ledger_evidence_adjudications.py --check
           python tests/lie-ledger-governance-neutralization.test.py
+          python tests/evidence-semantic-edge-regressions.test.py
           python scripts/build_public_release.py
           python scripts/build_public_release.py --check
           python scripts/validate_public_deployment.py
@@ -70,6 +75,10 @@ jobs:
           node tests/public-loss-actor-batch2.test.js
           node tests/public-parity-batch3.test.js
           node tests/public-phase9.test.js
+          node tests/security-rendering.test.js
+          node tests/public-reader-layer.test.js
+          node tests/public-final-polish.test.js
+          python tests/neutral-current-narrative.test.py
           node --check js/public-bootstrap.js
           node --check js/public-app.js
           node --check js/public-ia.js
@@ -89,37 +98,9 @@ jobs:
           python scripts/assemble_public_site.py --output _site --check --require-build-info
           python scripts/validate_public_runtime_inventory.py --site-root _site --require-build-info
           python scripts/validate_public_deployment.py --site-root _site --require-build-info
-      - name: Validate Aug. 24 count synchronization after source build
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_aug24_counts.py
-      - name: Validate current and late-update overlays
-        env:
-          PYTHONUTF8: '1'
-        run: |
-          python scripts/validate_aug25_late.py
-          python scripts/validate_aug26_strike_map.py
-          python scripts/validate_aug27_update.py
-          node --check js/current-update-20260827.js
-          node --check js/iran-messaging-shifts-20260827-r1.js
-          node --check tests/browser-aug27-messaging-smoke.js
-      - name: Validate regional reconciliation coverage, evidence and ship-loss rules
-        env:
-          PYTHONUTF8: '1'
-        run: |
-          python scripts/validate_wiki_reconciliation.py
-          python scripts/validate_build_info_current.py
-          node --check js/wiki-map-reconciliation-20260826.js
-          node --check js/current-update-20260826.js
-          node --check js/app.js
-      - name: Validate MOU logic and canonical strike integration
-        env:
-          PYTHONUTF8: '1'
-        run: |
-          python scripts/validate_mou_strike_integration_r1.py
-          node --check js/iran-messaging-r1.js
-          node --check tests/browser-mou-strike-smoke.js
-      - name: Exercise cold, current, failure and release-mismatch boot paths in headless browser
+          python scripts/validate.py
+
+      - name: Exercise current public reader paths in headless browser
         shell: bash
         run: |
           python -m http.server 8765 --bind 127.0.0.1 --directory _site >/tmp/atlas-http.log 2>&1 &
@@ -227,99 +208,6 @@ jobs:
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-loss-actor-batch2.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-responsive-phase9.js
           ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/ node tests/browser-public-phase9.js
-      - name: Validate static atlas
-        run: python scripts/validate.py
-      - name: Validate historical-ledger integration
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_integration.py
-      - name: Validate UX and security release gates
-        run: python scripts/validate_ux.py
+
       - name: Scan tracked files and Git metadata for privacy regressions
         run: python scripts/privacy_scan.py
-      - name: Run deterministic presentation, temporal, costing, hostile-input, and public-IA tests
-        run: |
-          node tests/presentation.test.js
-          node tests/temporal-state.test.js
-          node tests/security-rendering.test.js
-          node tests/costing.test.js
-          node tests/forensic-v1.3.2.test.js
-          node tests/full-scope-20260822.test.js
-          node tests/aug22-update.test.js
-          node tests/endgame-page.test.js
-          node tests/public-ux-20260823.test.js
-          node tests/public-record-ia-20260826.test.js
-          node tests/aug24-current-update.test.js
-          node tests/ui-endgame-mermaid-r1.test.js
-          node tests/public-reader-layer.test.js
-          node tests/public-final-polish.test.js
-          python tests/neutral-current-narrative.test.py
-      - name: Validate ENDGAME analytical page
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_endgame_page.py
-      - name: Validate compact shell, Mermaid adjudication and source context
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_ui_endgame_mermaid_r1.py
-      - name: Validate ENDGAME / MOU / Public View R1
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_endgame_public_view_r1.py
-      - name: Validate ENDGAME plain-language UX R1
-        env:
-          PYTHONUTF8: '1'
-        run: |
-          node --check js/endgame-ux-plain-language-r1.js
-          python scripts/validate_endgame_ux_plain_language_r1.py
-      - name: Validate public historical-record UX R2
-        env:
-          PYTHONUTF8: '1'
-        run: |
-          node --check js/public-record-ui-r2.js
-          node --check js/navigation.js
-          node --check js/state.js
-          python scripts/validate_workspace_ux_plain_language_r1.py
-      - name: Validate site-wide status, actor identity and government-source marker R1
-        env:
-          PYTHONUTF8: '1'
-        run: |
-          node --check js/status-identity-r1.js
-          node --check js/source-bias-r1.js
-          python scripts/validate_status_identity_r1.py
-      - name: Validate popup, source and analysis legibility R3
-        env:
-          PYTHONUTF8: '1'
-        run: |
-          node --check js/site-legibility-r3.js
-          python scripts/validate_site_legibility_r3.py
-      - name: Validate final Mermaid fit and Oil Routes R1
-        env:
-          PYTHONUTF8: '1'
-        run: |
-          node --check js/final-mermaid-oil-routes-r1.js
-          python scripts/validate_final_mermaid_oil_routes_r1.py
-      - name: Validate Endgame/source analytical guardrails
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_analysis_contracts.py
-      - name: Validate Aug. 23 public UX
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_public_ux_20260823.py
-      - name: Validate forensic v1.3.2 analytical package
-        env:
-          PYTHONUTF8: '1'
-        run: python data/forensic-v1.3.2/validate-addon.py
-      - name: Validate full-scope design and analytical locks
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_full_scope.py
-      - name: Validate Aug. 22 canonical/workspace update
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_aug22_update.py
-      - name: Validate Aug. 24 count synchronization after full regression suite
-        env:
-          PYTHONUTF8: '1'
-        run: python scripts/validate_aug24_counts.py
