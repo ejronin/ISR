@@ -1,0 +1,52 @@
+name: Patch reader core test once
+
+on:
+  push:
+    branches:
+      - release/single-pass-reader-assets-20260910
+    paths:
+      - ".github/workflows/patch-reader-core-test-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: release/single-pass-reader-assets-20260910
+      - name: Bind reader test to single-pass core asset graph
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('tests/public-reader-layer.test.js')
+          text = path.read_text(encoding='utf-8')
+          old_decl = "const releaseBuilder = fs.readFileSync(path.join(root, 'scripts/build_public_release.py'), 'utf8');\nconst appSource = fs.readFileSync(path.join(root, 'js/public-app.js'), 'utf8');"
+          new_decl = "const releaseBuilder = fs.readFileSync(path.join(root, 'scripts/build_public_release.py'), 'utf8');\nconst releaseCore = fs.readFileSync(path.join(root, 'scripts/build_public_release_core.py'), 'utf8');\nconst appSource = fs.readFileSync(path.join(root, 'js/public-app.js'), 'utf8');"
+          if text.count(old_decl) != 1:
+              raise SystemExit('reader test declaration target not unique')
+          text = text.replace(old_decl, new_decl, 1)
+
+          old = """assert.match(releaseBuilder, /reader_runtime/);\nassert.match(releaseBuilder, /src\\/public-reader-layer\\.js/);\nassert.match(releaseBuilder, /reader_stylesheet/);\nassert.match(releaseBuilder, /src\\/public-reader-layer\\.css/);\nassert.doesNotMatch(releaseBuilder, /compose_reader_sources|ATLAS_PUBLIC_READER_LAYER_COMPOSED|ATLAS_PUBLIC_READER_STYLES_COMPOSED/);\nassert.doesNotMatch(releaseBuilder, /PAGE_REGISTRY|PUBLIC_STYLESHEET|retire_privileged_narrative_runtime|entrypoint_preparation/);"""
+          new = """assert.match(releaseCore, /reader_runtime/);\nassert.match(releaseCore, /src\\/public-reader-layer\\.js/);\nassert.match(releaseCore, /reader_stylesheet/);\nassert.match(releaseCore, /src\\/public-reader-layer\\.css/);\nassert.match(releaseCore, /2\\.3-single-pass-reader-assets/);\nassert.match(releaseBuilder, /from build_public_release_core import \\*/);\nassert.doesNotMatch(releaseBuilder, /_promote_reader_assets|_rebind_release_identity|_asset_set_sha256|READER_RUNTIME_SPEC|READER_STYLESHEET_SPEC|materialize_asset\\(/);\nassert.doesNotMatch(releaseBuilder, /compose_reader_sources|ATLAS_PUBLIC_READER_LAYER_COMPOSED|ATLAS_PUBLIC_READER_STYLES_COMPOSED/);\nassert.doesNotMatch(releaseBuilder, /PAGE_REGISTRY|PUBLIC_STYLESHEET|retire_privileged_narrative_runtime|entrypoint_preparation/);"""
+          if text.count(old) != 1:
+              raise SystemExit('reader test release-assertion target not unique')
+          text = text.replace(old, new, 1)
+          text = text.replace(
+              "explicit signed reader assets, and direct neutral entrypoint verified",
+              "explicit signed reader assets, single-pass release graph, and direct neutral entrypoint verified",
+              1,
+          )
+          path.write_text(text, encoding='utf-8', newline='\n')
+          PY
+          node --check tests/public-reader-layer.test.js
+      - name: Commit reader test patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/public-reader-layer.test.js
+          git commit -m "Bind reader test to single-pass release core"
+          git push origin HEAD:release/single-pass-reader-assets-20260910
