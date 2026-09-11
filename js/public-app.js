@@ -177,17 +177,19 @@
     invariant(new Set(assetPaths).size === assetPaths.length, 'RELEASE_MISMATCH', 'The application asset inventory contains duplicate paths.');
     const mapRuntime = validateContentAddressedAsset(assetForRole(manifest, 'map_runtime'), 'js');
     const runtime = validateContentAddressedAsset(assetForRole(manifest, 'page_registry'), 'js');
+    const readerRuntime = validateContentAddressedAsset(assetForRole(manifest, 'reader_runtime'), 'js');
     const mapStylesheet = validateContentAddressedAsset(assetForRole(manifest, 'map_stylesheet'), 'css');
     const stylesheet = validateContentAddressedAsset(assetForRole(manifest, 'stylesheet'), 'css');
+    const readerStylesheet = validateContentAddressedAsset(assetForRole(manifest, 'reader_stylesheet'), 'css');
     const geography = validateContentAddressedAsset(assetForRole(manifest, 'reference_geography'), 'geojson');
     const entrypoint = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
     const evidenceImages = manifest.application.assets.filter(asset => asset.role === 'evidence_image').map(validateBinaryImage);
     const stateFlags = manifest.application.assets.filter(asset => asset.role === 'state_flag').map(validateStateFlag);
-    const fixedRoles = ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint'];
+    const fixedRoles = ['map_runtime', 'page_registry', 'reader_runtime', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
     invariant(fixedRoles.every(role => manifest.application.assets.filter(asset => asset.role === role).length === 1), 'RELEASE_MISMATCH', 'A required application asset role is missing or duplicated.');
     invariant(manifest.application.assets.every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)), 'RELEASE_MISMATCH', 'The application asset inventory contains an unsupported role.');
-    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 2 && manifest.application.runtime[0] === mapRuntime.path && manifest.application.runtime[1] === runtime.path, 'RELEASE_MISMATCH', 'The application runtime paths are inconsistent.');
-    invariant(Array.isArray(manifest.application.stylesheets) && manifest.application.stylesheets.length === 2 && manifest.application.stylesheets[0] === mapStylesheet.path && manifest.application.stylesheets[1] === stylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet paths are inconsistent.');
+    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 3 && manifest.application.runtime[0] === mapRuntime.path && manifest.application.runtime[1] === runtime.path && manifest.application.runtime[2] === readerRuntime.path, 'RELEASE_MISMATCH', 'The application runtime paths are inconsistent.');
+    invariant(Array.isArray(manifest.application.stylesheets) && manifest.application.stylesheets.length === 3 && manifest.application.stylesheets[0] === mapStylesheet.path && manifest.application.stylesheets[1] === stylesheet.path && manifest.application.stylesheets[2] === readerStylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet paths are inconsistent.');
     invariant(manifest.application.stylesheet === stylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet path is inconsistent.');
     invariant(manifest.application.reference_geography === geography.path, 'RELEASE_MISMATCH', 'The application reference-geography path is inconsistent.');
     invariant(Array.isArray(manifest.application.evidence_images) && evidenceImages.every((asset, index) => manifest.application.evidence_images[index] === asset.path) && evidenceImages.length === manifest.application.evidence_images.length, 'RELEASE_MISMATCH', 'The application evidence-image inventory is inconsistent.');
@@ -206,17 +208,17 @@
     invariant(authorization && authorization.manifest, 'RELEASE_MISMATCH', 'The application was not started by an authorized release bootstrap.');
     const manifest = validateManifest(authorization.manifest);
     invariant(authorization.releaseIdentity === manifest.release_identity, 'RELEASE_MISMATCH', 'The runtime authorization release identity is inconsistent.');
-    const runtimes = [assetForRole(manifest, 'map_runtime'), assetForRole(manifest, 'page_registry')];
+    const runtimes = [assetForRole(manifest, 'map_runtime'), assetForRole(manifest, 'page_registry'), assetForRole(manifest, 'reader_runtime')];
     const entrypoint = assetForRole(manifest, 'entrypoint');
-    const stylesheets = [assetForRole(manifest, 'map_stylesheet'), assetForRole(manifest, 'stylesheet')];
+    const stylesheets = [assetForRole(manifest, 'map_stylesheet'), assetForRole(manifest, 'stylesheet'), assetForRole(manifest, 'reader_stylesheet')];
     const stylesheet = stylesheets[1];
     const geography = assetForRole(manifest, 'reference_geography');
     const evidenceImages = manifest.application.assets.filter(asset => asset.role === 'evidence_image');
     invariant(authorization.entrypointPath === entrypoint.path && authorization.entrypointSha256 === entrypoint.sha256, 'RELEASE_MISMATCH', 'The entrypoint authorization is inconsistent.');
     invariant(authorization.stylesheetPath === stylesheet.path && authorization.stylesheetSha256 === stylesheet.sha256, 'RELEASE_MISMATCH', 'The stylesheet authorization is inconsistent.');
-    invariant(Array.isArray(authorization.runtimeAssets) && authorization.runtimeAssets.length === 2, 'RELEASE_MISMATCH', 'The runtime authorization is incomplete.');
+    invariant(Array.isArray(authorization.runtimeAssets) && authorization.runtimeAssets.length === 3, 'RELEASE_MISMATCH', 'The runtime authorization is incomplete.');
     runtimes.forEach((runtime, index) => invariant(authorization.runtimeAssets[index].path === runtime.path && authorization.runtimeAssets[index].sha256 === runtime.sha256, 'RELEASE_MISMATCH', 'The runtime authorization is inconsistent.'));
-    invariant(Array.isArray(authorization.stylesheetAssets) && authorization.stylesheetAssets.length === 2, 'RELEASE_MISMATCH', 'The stylesheet authorization is incomplete.');
+    invariant(Array.isArray(authorization.stylesheetAssets) && authorization.stylesheetAssets.length === 3, 'RELEASE_MISMATCH', 'The stylesheet authorization is incomplete.');
     stylesheets.forEach((style, index) => invariant(authorization.stylesheetAssets[index].path === style.path && authorization.stylesheetAssets[index].sha256 === style.sha256, 'RELEASE_MISMATCH', 'The stylesheet authorization is inconsistent.'));
     invariant(authorization.referenceGeography && authorization.referenceGeography.path === geography.path && authorization.referenceGeography.sha256 === geography.sha256, 'RELEASE_MISMATCH', 'The reference-geography authorization is inconsistent.');
     invariant(Array.isArray(authorization.evidenceImages) && authorization.evidenceImages.length === evidenceImages.length, 'RELEASE_MISMATCH', 'The evidence-image authorization is inconsistent.');
@@ -718,175 +720,7 @@
   }
 
 
-  // ROOK_NARRATIVE_CURRENT_BEGIN
-  const ROOK_NARRATIVE_CURRENT = Object.freeze(
-  {
-    "schema_version": "1.0",
-    "contract_version": "atlas-final-narrative-v1",
-    "evidence_as_of": "2026-09-09",
-    "war90_current_title": "Current phase — Sep. 7–9",
-    "war90_current_text": "U.S.–Iran fighting widened again: the United States disabled five more Iran-linked crude tankers, Iran struck at a U.S.-used base in Jordan, and attacks also hit Gulf shipping and Saudi energy sites.",
-    "war90_current_changed": "The war imposed more cost outside Iran through shipping and oil-market disruption, while Iran also lost more tanker capacity and faced broader sanctions.",
-    "us_record_shows": "The record shows substantial but incomplete degradation of Iran's military and export capacity. Five more Iran-linked crude tankers were rendered inoperable on Sep. 8, but Iran still retained missile and maritime strike capability. The nuclear objective remains unresolved.",
-    "us_current_position": "Washington is still using military and economic pressure while negotiations remain unresolved. It has widened pressure on Iranian shipping and aviation networks, but the original U.S. objective set is not fully achieved.",
-    "iran_record_shows": "Iran still has missiles, maritime leverage and the ability to impose costs beyond its borders. In this period it struck at a U.S.-used base in Jordan, while Houthi attacks hit Saudi cities and energy facilities and merchant shipping was attacked around the Gulf. Iran has not secured recognized exclusive control of Hormuz or a permanent fee arrangement, and its export and financial pressure remains severe.",
-    "iran_current_position": "Iran is threatening faster and heavier retaliation and renewed restrictions around Hormuz while talks remain unresolved. Its ability to impose external costs increased in this period, but its earlier maximal demands still are not controlling the outcome.",
-    "hormuz_now": "Ships are still getting through Hormuz, but traffic is sharply reduced and the route is dangerous and commercially disrupted. Iran can still impose costs, but it has not established recognized exclusive control. Its restricted-zone announcement is an Iranian claim of authority, and the reported service-fee formula remains a proposal—not an agreement."
-  }
-  );
-  // ROOK_NARRATIVE_CURRENT_END
-
-  const FINAL_NARRATIVE_GATES = Object.freeze({
-    war90: Object.freeze({
-      title: 'War in 90 Seconds',
-      disclaimer: "These milestones are selected to explain the conflict's progression. They are not a ranking of strategic importance.",
-      milestones: Object.freeze([
-        Object.freeze({
-          title: 'Opening strikes — Feb. 28',
-          text: 'U.S. and Israeli forces struck Iran. Iran retaliated against Israel and bases hosting U.S. forces.',
-          changed: 'The conflict moved from prewar confrontation into direct interstate war.'
-        }),
-        Object.freeze({
-          title: 'The conflict becomes sustained and regional',
-          text: 'Missile, drone, maritime and related-theater exchanges turned the opening strike cycle into a prolonged military confrontation.',
-          changed: 'The war was no longer a single strike-and-retaliation episode.'
-        }),
-        Object.freeze({
-          title: 'Hormuz becomes a central pressure point',
-          text: 'Iran used the Strait as leverage through mines, routing restrictions and control or fee claims, while the United States and regional states contested unilateral Iranian control.',
-          changed: 'Maritime access and economic coercion became a major front of the conflict.'
-        }),
-        Object.freeze({
-          title: 'June interim bargain — Jun. 17–18',
-          text: 'The June MOU created an interim ceasefire and a 60-day path toward a final deal, including safe-passage, blockade-relief, nuclear and economic provisions.',
-          changed: 'The conflict temporarily moved into a negotiated operating framework.'
-        }),
-        Object.freeze({
-          title: 'The MOU breaks down — Jul. 7',
-          text: 'After vessel attacks and renewed hostilities, U.S. strikes and an oil-relief reversal followed, and Washington treated the MOU as over. Iran later described it as suspended.',
-          changed: 'The interim bargain stopped controlling either side.'
-        }),
-        Object.freeze({
-          title: 'Pressure widens',
-          text: 'Sanctions, blockade pressure and regional security arrangements tightened while Iran continued to retain military and maritime options.',
-          changed: 'The contest increasingly combined military pressure with economic isolation and regional alignment.'
-        }),
-        Object.freeze({
-          title: "Iran's original Hormuz position narrows",
-          text: "Iran's bargaining position shifted into mediated, shared and regional mechanisms without securing recognized unilateral control of the Strait. Permanent terms remained unresolved.",
-          changed: "The practical negotiating framework narrowed relative to Iran's earlier maximal Hormuz claims."
-        }),
-        Object.freeze({
-          title: ROOK_NARRATIVE_CURRENT.war90_current_title,
-          text: ROOK_NARRATIVE_CURRENT.war90_current_text,
-          changed: ROOK_NARRATIVE_CURRENT.war90_current_changed
-        })
-      ])
-    }),
-    objectives: Object.freeze({
-      title: 'What each side wanted',
-      actors: Object.freeze([
-        Object.freeze({
-          key: 'us-coalition',
-          title: 'United States / coalition',
-          stages: Object.freeze([
-            Object.freeze({
-              key: 'original-public-benchmark',
-              title: 'Original public benchmark',
-              text: "Across prewar policy and objectives publicly formalized during the opening and early wartime period, U.S. goals included denying Iran a nuclear weapon; degrading missile, naval and proxy-support capabilities; restoring usable navigation through Hormuz; and applying economic pressure to narrow Tehran's options."
-            }),
-            Object.freeze({
-              key: 'record-shows',
-              title: 'What the record shows',
-              text: ROOK_NARRATIVE_CURRENT.us_record_shows
-            }),
-            Object.freeze({
-              key: 'current-position',
-              title: 'Current position',
-              text: ROOK_NARRATIVE_CURRENT.us_current_position
-            })
-          ])
-        }),
-        Object.freeze({
-          key: 'iran',
-          title: 'Iran',
-          stages: Object.freeze([
-            Object.freeze({
-              key: 'original-public-benchmark',
-              title: 'Original public benchmark',
-              text: "Iran's April–May victory terms demanded reparations, restored assets, an end to the U.S. blockade, broad sanctions relief, U.S. regional withdrawal, protection for aligned forces and permanent Iranian Hormuz authority."
-            }),
-            Object.freeze({
-              key: 'record-shows',
-              title: 'What the record shows',
-              text: ROOK_NARRATIVE_CURRENT.iran_record_shows
-            }),
-            Object.freeze({
-              key: 'current-position',
-              title: 'Current position',
-              text: ROOK_NARRATIVE_CURRENT.iran_current_position
-            })
-          ])
-        })
-      ])
-    }),
-    usEntry: Object.freeze({
-      title: 'Why the U.S. said it entered the war',
-      intro: 'The public record contains several distinct U.S. rationales and later campaign objectives. Atlas keeps them separate because they do not have the same evidentiary status.',
-      items: Object.freeze([
-        Object.freeze({
-          key: 'intelligence-predicate',
-          title: 'Intelligence predicate',
-          text: 'The public record does not support the narrower claim that U.S. intelligence showed Iran planned to attack U.S. forces first before Feb. 28.'
-        }),
-        Object.freeze({
-          key: 'expected-retaliation',
-          title: 'Expected-retaliation rationale',
-          text: 'Washington said Israel was expected to strike, Iran was expected to retaliate against U.S. forces, and U.S. participation could reduce expected American casualties. Expected retaliation after an Israeli strike is not evidence of an Iranian plan to strike the United States first.'
-        }),
-        Object.freeze({
-          key: 'strategic-regional',
-          title: 'Strategic and regional rationales',
-          text: 'Washington also cited preventing Iran from obtaining a nuclear weapon and confronting Iranian missile, naval and proxy threats. Existing capability and threat history do not by themselves establish an imminent Feb. 28 first strike or imminent nuclear weapon completion.'
-        }),
-        Object.freeze({
-          key: 'campaign-objectives',
-          title: 'Wartime campaign objectives',
-          text: 'Subsequent U.S. statements defined campaign objectives around denying Iran a nuclear weapon and degrading its missile, naval and proxy-support capabilities.'
-        }),
-        Object.freeze({
-          key: 'diplomatic-record',
-          title: 'Diplomatic record',
-          text: 'No final agreement existed before the war, but the public record shows progress in Feb. 26 talks and expectations of further talks. It does not establish that diplomacy had been exhausted.'
-        }),
-        Object.freeze({
-          key: 'atlas-assessment',
-          title: 'Atlas assessment',
-          text: "These are separate propositions with different evidentiary support. Atlas does not collapse them into one proven cause or adjudicate the war's ultimate legality, morality, wisdom or desirability."
-        })
-      ])
-    }),
-    hormuz: Object.freeze({
-      title: 'Hormuz trajectory',
-      stages: Object.freeze([
-        Object.freeze({
-          key: 'then',
-          title: 'Then',
-          text: 'Iran presented control and management of Hormuz, compulsory fees and broad sovereignty claims as strategic gains it intended to preserve.'
-        }),
-        Object.freeze({
-          key: 'development',
-          title: 'Development',
-          text: 'The June MOU required safe commercial passage, removal of obstacles and demining, with a 60-day interim no-charge period. Future administration and maritime services were left to later talks with Oman and other Gulf littoral states. After the MOU broke down, U.S. blockade and mine-clearance pressure continued while shipping adapted through alternative routes.'
-        }),
-        Object.freeze({
-          key: 'now',
-          title: 'Now',
-          text: ROOK_NARRATIVE_CURRENT.hormuz_now
-        })
-      ])
-    })
-  });
+  // ATLAS_PRIVILEGED_NARRATIVE_RETIRED
 
   function now() {
     return root.performance && typeof root.performance.now === 'function' ? root.performance.now() : Date.now();
@@ -933,7 +767,7 @@
       chronologyCount: loaded.model.counts.chronology_records,
       sourceCount: loaded.model.counts.canonical_source_records,
       performance: loaded.performance,
-      narrativeContract: FINAL_NARRATIVE_GATES,
+      narrativeContract: null,
       routeKey: null,
       pageOwner: null
     };
