@@ -10,14 +10,16 @@ const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', '
 const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
 const entrypoint = manifest.application.assets.find(asset => asset.role === 'entrypoint');
 const stylesheet = manifest.application.assets.find(asset => asset.role === 'stylesheet');
+const readerStylesheet = manifest.application.assets.find(asset => asset.role === 'reader_stylesheet');
 const pageRegistry = manifest.application.assets.find(asset => asset.role === 'page_registry');
+const readerRuntime = manifest.application.assets.find(asset => asset.role === 'reader_runtime');
 const mapRuntime = manifest.application.assets.find(asset => asset.role === 'map_runtime');
 const mapStylesheet = manifest.application.assets.find(asset => asset.role === 'map_stylesheet');
 const referenceGeography = manifest.application.assets.find(asset => asset.role === 'reference_geography');
 const bootstrap = manifest.neutral_bootstrap.asset;
 const oldValidApplication = fs.readFileSync(path.join(__dirname, 'fixtures', 'public-app-old-valid.js'), 'utf8');
 
-assert(entrypoint && stylesheet && pageRegistry && mapRuntime && mapStylesheet && referenceGeography && bootstrap, 'content-addressed release assets are missing');
+assert(entrypoint && stylesheet && readerStylesheet && pageRegistry && readerRuntime && mapRuntime && mapStylesheet && referenceGeography && bootstrap, 'content-addressed release assets are missing');
 assert(oldValidApplication.includes("const APPLICATION_VERSION = 'atlas-public-shell-v1'"), 'split-release fixture must keep the current logical application version');
 assert.equal(model.release.release_identity, manifest.current_state.release_identity, 'split-release test requires a valid new manifest/model pair');
 
@@ -124,13 +126,26 @@ function base64(value) {
     assert.equal(loading.status, 'loading', 'slow current-state response must leave the neutral loading shell active');
     assert.equal(loading.ready, false, 'current application state must not initialize before the model is ready');
     const loadedScripts = new Map(loading.scripts.map(item => [new URL(item.src).pathname, item.integrity]));
-    assert.deepEqual(new Set(loadedScripts.keys()), new Set([`/${bootstrap.path}`, `/${mapRuntime.path}`, `/${pageRegistry.path}`, `/${entrypoint.path}`]), 'cold shell must execute only the bound bootstrap and authorized runtimes/entrypoint');
+    assert.deepEqual(
+      new Set(loadedScripts.keys()),
+      new Set([`/${bootstrap.path}`, `/${mapRuntime.path}`, `/${pageRegistry.path}`, `/${readerRuntime.path}`, `/${entrypoint.path}`]),
+      'cold shell must execute only the bound bootstrap and authorized runtimes/entrypoint'
+    );
     assert.equal(loadedScripts.get(`/${bootstrap.path}`), bootstrap.integrity, 'bootstrap must carry the manifest-authorized SRI value');
     assert.equal(loadedScripts.get(`/${pageRegistry.path}`), pageRegistry.integrity, 'page registry must carry the manifest-authorized SRI value');
+    assert.equal(loadedScripts.get(`/${readerRuntime.path}`), readerRuntime.integrity, 'reader runtime must carry the manifest-authorized SRI value');
     assert.equal(loadedScripts.get(`/${mapRuntime.path}`), mapRuntime.integrity, 'map runtime must carry the manifest-authorized SRI value');
     assert.equal(loadedScripts.get(`/${entrypoint.path}`), entrypoint.integrity, 'entrypoint must carry the manifest-authorized SRI value');
-    assert.deepEqual(loading.styles.map(item => new URL(item.href).pathname), [`/${mapStylesheet.path}`, `/${stylesheet.path}`], 'cold shell must activate only the authorized stylesheets');
-    assert.deepEqual(loading.styles.map(item => item.integrity), [mapStylesheet.integrity, stylesheet.integrity], 'active stylesheets must carry manifest-authorized SRI values');
+    assert.deepEqual(
+      loading.styles.map(item => new URL(item.href).pathname),
+      [`/${mapStylesheet.path}`, `/${stylesheet.path}`, `/${readerStylesheet.path}`],
+      'cold shell must activate only the authorized stylesheets in cascade order'
+    );
+    assert.deepEqual(
+      loading.styles.map(item => item.integrity),
+      [mapStylesheet.integrity, stylesheet.integrity, readerStylesheet.integrity],
+      'active stylesheets must carry manifest-authorized SRI values'
+    );
     for (const forbidden of [
       'REVIEWED THROUGH 2026-08-20 15:59 ET',
       '108 CURRENT CHRONOLOGY',
@@ -176,15 +191,15 @@ function base64(value) {
     assert.match(ready.currentRelease, /^public-current-v2-[a-f0-9]{16}$/);
     assert.equal(ready.authorization.release, ready.release);
     assert.equal(ready.authorization.entrypoint, entrypoint.path);
-    assert.deepEqual(ready.authorization.runtimes, [mapRuntime.path, pageRegistry.path]);
-    assert.deepEqual(ready.authorization.stylesheets, [mapStylesheet.path, stylesheet.path]);
+    assert.deepEqual(ready.authorization.runtimes, [mapRuntime.path, pageRegistry.path, readerRuntime.path]);
+    assert.deepEqual(ready.authorization.stylesheets, [mapStylesheet.path, stylesheet.path, readerStylesheet.path]);
     assert.equal(ready.authorization.stylesheet, stylesheet.path);
     assert.equal(ready.authorization.geography, referenceGeography.path);
     assert(ready.performance.model_transfer_bytes > 4_000_000);
     assert(ready.performance.model_parse_milliseconds >= 0);
     assert.equal(ready.oldGlobals, false, 'dated successor-chain globals must not initialize');
     assert(!ready.scripts.some(url => /current-update|wiki-map-reconciliation|public-housekeeping|status-identity/.test(url)), 'dated or repair scripts entered current boot');
-    assert(!ready.resources.some(url => /\/(?:js|css|vendor|schemas|legacy|snapshots)\//.test(url) || /\/data\/(?!public-(?:release|current-state)\.json$)/.test(url)), 'mutable, retired, archived, or raw evidence paths entered the current network graph');
+    assert(!ready.resources.some(url => /\/(?:js|css|vendor|src|schemas|legacy|snapshots)\//.test(url) || /\/data\/(?!public-(?:release|current-state)\.json$)/.test(url)), 'mutable, retired, archived, or raw evidence paths entered the current network graph');
 
     await cdp.call('Fetch.enable', { patterns: [{ urlPattern: '*data/public-current-state.json*', requestStage: 'Request' }] });
     const failedPromise = cdp.waitEvent('Fetch.requestPaused', params => params.request.url.includes('public-current-state.json'));
@@ -287,7 +302,7 @@ function base64(value) {
     }
     const observedPaths = [...new Set(networkRequests.map(request => request.pathname))].sort();
 
-    console.log(`browser public boot smoke: PASS — neutral cold shell; ${ready.count} records rendered; parse ${ready.performance.model_parse_milliseconds.toFixed(1)}ms; fetch failure, exact split-release SRI rejection, controlled manifest mismatch, and closed request allowlist (${observedPaths.join(', ')}) verified`);
+    console.log(`browser public boot smoke: PASS — neutral cold shell; ${ready.count} records rendered; explicit signed reader runtime/style; parse ${ready.performance.model_parse_milliseconds.toFixed(1)}ms; fetch failure, exact split-release SRI rejection, controlled manifest mismatch, and closed request allowlist (${observedPaths.join(', ')}) verified`);
   } finally {
     cdp.close();
   }

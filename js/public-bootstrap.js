@@ -71,22 +71,26 @@
     invariant(executingScript.dataset.bootstrapSha256 === bootstrap.sha256, 'RELEASE_MISMATCH', 'The executing bootstrap hash marker is not authorized by this release.');
     const mapRuntime = validateContentAddressedAsset(assetForRole(manifest, 'map_runtime'), 'js');
     const pageRegistry = validateContentAddressedAsset(assetForRole(manifest, 'page_registry'), 'js');
+    const readerRuntime = validateContentAddressedAsset(assetForRole(manifest, 'reader_runtime'), 'js');
     const mapStyle = validateContentAddressedAsset(assetForRole(manifest, 'map_stylesheet'), 'css');
     const style = validateContentAddressedAsset(assetForRole(manifest, 'stylesheet'), 'css');
+    const readerStyle = validateContentAddressedAsset(assetForRole(manifest, 'reader_stylesheet'), 'css');
     const geography = validateContentAddressedAsset(assetForRole(manifest, 'reference_geography'), 'geojson');
     const entry = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
     const evidenceImages = (manifest.application.assets || []).filter(asset => asset.role === 'evidence_image').map(validateBinaryImage);
     const stateFlags = (manifest.application.assets || []).filter(asset => asset.role === 'state_flag').map(validateStateFlag);
-    const runtimes = [mapRuntime, pageRegistry];
-    const styles = [mapStyle, style];
-    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 2 && runtimes.every((asset, index) => manifest.application.runtime[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized runtime paths are inconsistent.');
-    invariant(Array.isArray(manifest.application.stylesheets) && manifest.application.stylesheets.length === 2 && styles.every((asset, index) => manifest.application.stylesheets[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized stylesheet paths are inconsistent.');
+    const fixedRoles = ['map_runtime', 'page_registry', 'reader_runtime', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+    invariant(fixedRoles.every(role => (manifest.application.assets || []).filter(asset => asset.role === role).length === 1), 'RELEASE_MISMATCH', 'A required application asset role is missing or duplicated.');
+    invariant((manifest.application.assets || []).every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)), 'RELEASE_MISMATCH', 'The authorized application asset inventory contains an unsupported role.');
+    const runtimes = [mapRuntime, pageRegistry, readerRuntime];
+    const styles = [mapStyle, style, readerStyle];
+    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 3 && runtimes.every((asset, index) => manifest.application.runtime[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized runtime paths are inconsistent.');
+    invariant(Array.isArray(manifest.application.stylesheets) && manifest.application.stylesheets.length === 3 && styles.every((asset, index) => manifest.application.stylesheets[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized stylesheet paths are inconsistent.');
     invariant(manifest.application.stylesheet === style.path, 'RELEASE_MISMATCH', 'The authorized stylesheet path is inconsistent.');
     invariant(manifest.application.reference_geography === geography.path, 'RELEASE_MISMATCH', 'The authorized reference-geography path is inconsistent.');
     invariant(Array.isArray(manifest.application.evidence_images) && manifest.application.evidence_images.length === evidenceImages.length && evidenceImages.every((asset, index) => manifest.application.evidence_images[index] === asset.path), 'RELEASE_MISMATCH', 'The authorized evidence-image inventory is inconsistent.');
     invariant(Array.isArray(manifest.application.state_flags) && manifest.application.state_flags.length === stateFlags.length && stateFlags.every((asset, index) => manifest.application.state_flags[index].path === asset.path && manifest.application.state_flags[index].code === asset.code), 'RELEASE_MISMATCH', 'The authorized state-flag inventory is inconsistent.');
     invariant(new Set(stateFlags.map(asset => asset.code)).size === stateFlags.length, 'RELEASE_MISMATCH', 'The authorized state-flag inventory contains duplicate codes.');
-    invariant((manifest.application.assets || []).every(asset => ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint', 'evidence_image', 'state_flag'].includes(asset.role)), 'RELEASE_MISMATCH', 'The authorized application asset inventory contains an unsupported role.');
     invariant(manifest.application.entrypoint === entry.path, 'RELEASE_MISMATCH', 'The authorized entrypoint path is inconsistent.');
     invariant(manifest.current_state && manifest.current_state.path === 'data/public-current-state.json', 'RELEASE_MISMATCH', 'The current-state path is invalid.');
     return { manifest, bootstrap, runtimes, styles, geography, evidenceImages, stateFlags, entry };
@@ -145,7 +149,7 @@
       script.dataset.atlasAuthorizedRuntime = releaseIdentity;
       script.dataset.assetSha256 = asset.sha256;
       script.onload = () => resolve(script);
-      script.onerror = () => reject(new BootstrapError('ASSET_INTEGRITY_FAILED', 'The authorized public page registry could not be loaded.'));
+      script.onerror = () => reject(new BootstrapError('ASSET_INTEGRITY_FAILED', 'An authorized application runtime could not be loaded.'));
       documentObject.head.append(script);
     });
   }
@@ -199,15 +203,16 @@
   }
 
   function authorize(manifest, bootstrap, runtimes, styles, geography, evidenceImages, entry) {
+    const primaryStyle = styles[1];
     const authorization = Object.freeze({
       releaseIdentity: manifest.release_identity,
       manifest,
       bootstrapPath: bootstrap.path,
-      stylesheetPath: styles[styles.length - 1].path,
+      stylesheetPath: primaryStyle.path,
       entrypointPath: entry.path,
       runtimeAssets: Object.freeze(runtimes.map(asset => Object.freeze({ path: asset.path, sha256: asset.sha256 }))),
       stylesheetAssets: Object.freeze(styles.map(asset => Object.freeze({ path: asset.path, sha256: asset.sha256 }))),
-      stylesheetSha256: styles[styles.length - 1].sha256,
+      stylesheetSha256: primaryStyle.sha256,
       referenceGeography: Object.freeze({ path: geography.path, sha256: geography.sha256 }),
       evidenceImages: Object.freeze(evidenceImages.map(asset => Object.freeze({ path: asset.path, sourcePath: asset.source_path, sha256: asset.sha256 }))),
       entrypointSha256: entry.sha256

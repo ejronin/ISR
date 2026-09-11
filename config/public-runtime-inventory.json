@@ -11,8 +11,10 @@
     { "role": "bootstrap", "path": "js/public-bootstrap.js" },
     { "role": "map_runtime", "path": "vendor/leaflet/leaflet.js" },
     { "role": "page_registry", "path": "js/public-ia.js" },
+    { "role": "reader_runtime", "path": "src/public-reader-layer.js" },
     { "role": "map_stylesheet", "path": "vendor/leaflet/leaflet.css" },
     { "role": "stylesheet", "path": "css/public-shell.css" },
+    { "role": "reader_stylesheet", "path": "src/public-reader-layer.css" },
     { "role": "reference_geography", "path": "assets/geography/atlas-reference-geography.geojson" },
     { "role": "entrypoint", "path": "js/public-app.js" }
   ],

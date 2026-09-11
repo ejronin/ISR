@@ -88,6 +88,8 @@ def workspace() -> Iterator[Path]:
             "index.html",
             "templates/public-index.html",
             "scripts/build_public_release.py",
+            "src/public-reader-layer.js",
+            "src/public-reader-layer.css",
             "data/public-current-state.json",
         ):
             copy(relative, target)

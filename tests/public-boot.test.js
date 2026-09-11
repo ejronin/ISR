@@ -50,8 +50,8 @@ function fakeBootstrapScript(sourceManifest = manifest) {
 function fakeAuthorizedRuntime(sourceManifest = manifest) {
   const entrypoint = app.assetForRole(sourceManifest, 'entrypoint');
   const stylesheet = app.assetForRole(sourceManifest, 'stylesheet');
-  const runtimes = ['map_runtime', 'page_registry'].map(role => app.assetForRole(sourceManifest, role));
-  const stylesheets = ['map_stylesheet', 'stylesheet'].map(role => app.assetForRole(sourceManifest, role));
+  const runtimes = ['map_runtime', 'page_registry', 'reader_runtime'].map(role => app.assetForRole(sourceManifest, role));
+  const stylesheets = ['map_stylesheet', 'stylesheet', 'reader_stylesheet'].map(role => app.assetForRole(sourceManifest, role));
   const geography = app.assetForRole(sourceManifest, 'reference_geography');
   const authorization = {
     releaseIdentity: sourceManifest.release_identity,
@@ -102,11 +102,26 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
 
   const bootstrapAsset = manifest.neutral_bootstrap.asset;
   const applicationAssets = manifest.application.assets;
-  const fixedRoles = ['map_runtime', 'page_registry', 'map_stylesheet', 'stylesheet', 'reference_geography', 'entrypoint'];
+  const fixedRoles = ['map_runtime', 'page_registry', 'reader_runtime', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
   fixedRoles.forEach(role => assert.equal(applicationAssets.filter(asset => asset.role === role).length, 1, `${role} must remain singular`));
   assert.equal(applicationAssets.filter(asset => asset.role === 'state_flag').length, manifest.application.state_flags.length);
   assert(manifest.application.state_flags.length >= 3, 'closed state-flag inventory must be present');
   assert(applicationAssets.every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)));
+  const readerRuntime = app.assetForRole(manifest, 'reader_runtime');
+  const readerStylesheet = app.assetForRole(manifest, 'reader_stylesheet');
+  assert.equal(readerRuntime.source_path, 'src/public-reader-layer.js');
+  assert.equal(readerStylesheet.source_path, 'src/public-reader-layer.css');
+  assert.deepEqual(manifest.application.runtime, [
+    app.assetForRole(manifest, 'map_runtime').path,
+    app.assetForRole(manifest, 'page_registry').path,
+    readerRuntime.path
+  ]);
+  assert.deepEqual(manifest.application.stylesheets, [
+    app.assetForRole(manifest, 'map_stylesheet').path,
+    app.assetForRole(manifest, 'stylesheet').path,
+    readerStylesheet.path
+  ]);
+  assert.equal(manifest.application.stylesheet, app.assetForRole(manifest, 'stylesheet').path);
   for (const asset of [bootstrapAsset, ...applicationAssets]) {
     const generated = read(asset.path);
     const source = read(asset.source_path);
@@ -137,6 +152,13 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   wrongApplication.application.version = 'stale-public-shell';
   assert.throws(
     () => bootstrap.validateManifest(wrongApplication, fakeBootstrapScript(wrongApplication)),
+    error => error.code === 'RELEASE_MISMATCH'
+  );
+
+  const missingReader = clone(manifest);
+  missingReader.application.assets = missingReader.application.assets.filter(asset => asset.role !== 'reader_runtime');
+  assert.throws(
+    () => bootstrap.validateManifest(missingReader, fakeBootstrapScript(missingReader)),
     error => error.code === 'RELEASE_MISMATCH'
   );
 
@@ -197,7 +219,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   assert(legacy.includes('>108</b><span>current chronology records'), 'retired presentation reference must preserve its obsolete baseline state');
   assert(!index.includes('legacy/phase1-public-runtime-reference.html'), 'retired presentation reference must not enter current boot');
 
-  console.log(`public boot contract: PASS - neutral bootstrap, content-addressed SRI assets, runtime authorization, ${model.counts.chronology_records}-record model, mismatch rejection, and retired successor chain verified`);
+  console.log(`public boot contract: PASS - neutral bootstrap, explicit signed reader assets, runtime authorization, ${model.counts.chronology_records}-record model, mismatch rejection, and retired successor chain verified`);
 })().catch(error => {
   console.error(error.stack || error);
   process.exitCode = 1;

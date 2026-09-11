@@ -126,7 +126,11 @@ def main() -> int:
     bootstrap = bootstrap_block.get("asset") or {}
     application = manifest.get("application") or {}
     assets = application.get("assets") or []
-    expected_roles = {"map_runtime", "page_registry", "map_stylesheet", "stylesheet", "reference_geography", "entrypoint"}
+    expected_roles = {
+        "map_runtime", "page_registry", "reader_runtime",
+        "map_stylesheet", "stylesheet", "reader_stylesheet",
+        "reference_geography", "entrypoint",
+    }
     role_counts = {role: sum(asset.get("role") == role for asset in assets) for role in expected_roles}
     if any(count != 1 for count in role_counts.values()) or any(asset.get("role") not in expected_roles | {"evidence_image", "state_flag"} for asset in assets):
         fail("public release application asset inventory is incomplete")
@@ -134,8 +138,10 @@ def main() -> int:
     validate_asset(site, bootstrap, "bootstrap", "js")
     validate_asset(site, by_role["map_runtime"], "map_runtime", "js")
     validate_asset(site, by_role["page_registry"], "page_registry", "js")
+    validate_asset(site, by_role["reader_runtime"], "reader_runtime", "js")
     validate_asset(site, by_role["map_stylesheet"], "map_stylesheet", "css")
     validate_asset(site, by_role["stylesheet"], "stylesheet", "css")
+    validate_asset(site, by_role["reader_stylesheet"], "reader_stylesheet", "css")
     validate_asset(site, by_role["reference_geography"], "reference_geography", "geojson")
     validate_asset(site, by_role["entrypoint"], "entrypoint", "js")
     evidence_images = [asset for asset in assets if asset.get("role") == "evidence_image"]
@@ -149,9 +155,17 @@ def main() -> int:
         fail("public release state-flag codes are duplicated")
     for asset in state_flags:
         validate_deployed_flag(site, asset)
-    if application.get("runtime") != [by_role["map_runtime"].get("path"), by_role["page_registry"].get("path")]:
+    if application.get("runtime") != [
+        by_role["map_runtime"].get("path"),
+        by_role["page_registry"].get("path"),
+        by_role["reader_runtime"].get("path"),
+    ]:
         fail("public release runtime pointers mismatch")
-    if application.get("stylesheets") != [by_role["map_stylesheet"].get("path"), by_role["stylesheet"].get("path")]:
+    if application.get("stylesheets") != [
+        by_role["map_stylesheet"].get("path"),
+        by_role["stylesheet"].get("path"),
+        by_role["reader_stylesheet"].get("path"),
+    ]:
         fail("public release stylesheet inventory mismatch")
     if application.get("stylesheet") != by_role["stylesheet"].get("path"):
         fail("public release stylesheet pointer mismatch")

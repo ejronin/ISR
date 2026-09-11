@@ -91,7 +91,7 @@ class PublicRuntimeInventoryTests(unittest.TestCase):
     def test_repository_archive_is_retained_but_not_deployed(self) -> None:
         self.assertTrue(SNAPSHOT.is_file(), "historical snapshot must remain in repository history")
         counts = validate_repository(ROOT)
-        self.assertEqual(counts["current_sources"], 7)
+        self.assertEqual(counts["current_sources"], 9)
         manifest = json.loads((ROOT / "data/public-release.json").read_text(encoding="utf-8"))
         self.assertEqual(counts["signed_release_assets"], 1 + len(manifest["application"]["assets"]))
 
@@ -105,6 +105,7 @@ class PublicRuntimeInventoryTests(unittest.TestCase):
             self.assertFalse((site / "legacy").exists(), "retired applications must not be published")
             self.assertFalse((site / "js").exists(), "mutable source JS must not be published")
             self.assertFalse((site / "css").exists(), "mutable source CSS must not be published")
+            self.assertFalse((site / "src").exists(), "reader source files must be published only through signed release assets")
             self.assertFalse((site / "vendor").exists(), "vendor source trees must not be published")
             self.assertFalse((site / "schemas").exists(), "application schemas must not be published")
             self.assertEqual(

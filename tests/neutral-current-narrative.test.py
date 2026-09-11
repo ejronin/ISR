@@ -21,6 +21,10 @@ assert "FINAL_NARRATIVE_GATES" not in transformed
 assert "narrativeContract: FINAL_NARRATIVE_GATES" not in transformed
 assert "narrativeContract: null" in transformed
 assert "ATLAS_PRIVILEGED_NARRATIVE_RETIRED" in transformed
+assert "reader_runtime" in transformed
+assert "reader_stylesheet" in transformed
+assert "runtime.length === 3" in transformed
+assert "stylesheets.length === 3" in transformed
 assert module.transform(transformed) == transformed
 
 with tempfile.TemporaryDirectory() as tmp:
@@ -32,9 +36,13 @@ with tempfile.TemporaryDirectory() as tmp:
     assert built == transformed
 
 builder = (ROOT / "scripts" / "build_public_release.py").read_text(encoding="utf-8")
-assert "narrative_retirement.apply(root)" in builder
-assert builder.index("narrative_retirement.apply(root)") < builder.index("compose_reader_sources(root)")
-assert "2.0-reader-neutral-narrative" in builder
+assert "entrypoint_preparation.apply(root)" in builder
+assert "2.1-reader-assets-neutral-narrative" in builder
+assert "reader_runtime" in builder and "src/public-reader-layer.js" in builder
+assert "reader_stylesheet" in builder and "src/public-reader-layer.css" in builder
+assert "compose_reader_sources" not in builder
+assert "ATLAS_PUBLIC_READER_LAYER_COMPOSED" not in builder
+assert "ATLAS_PUBLIC_READER_STYLES_COMPOSED" not in builder
 
 # The retired side-channel files must not remain active inputs.
 assert not (ROOT / "config" / "rook-narrative-current.json").exists()
@@ -73,4 +81,4 @@ retirement_note = (ROOT / "docs" / "PRIVILEGED_NARRATIVE_RETIREMENT_2026-09-10.m
 for event_id in sorted(required):
     assert event_id in retirement_note
 
-print("neutral current narrative: PASS - privileged publication path retired before signing; accepted Sep. 8-9 evidence parity preserved")
+print("neutral current narrative: PASS - privileged publication path retired before signing; reader assets explicit; accepted Sep. 8-9 evidence parity preserved")

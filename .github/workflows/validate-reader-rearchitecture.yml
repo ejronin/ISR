@@ -5,12 +5,20 @@ on:
     paths:
       - "src/public-reader-layer.js"
       - "src/public-reader-layer.css"
+      - "js/public-bootstrap.js"
+      - "index.html"
+      - "templates/public-index.html"
+      - "config/public-runtime-inventory.json"
       - "scripts/build_public_release.py"
       - "scripts/build_public_release_core.py"
       - "scripts/retire_privileged_narrative_runtime.py"
+      - "scripts/validate_public_deployment.py"
       - "scripts/sync_rook_narrative.py"
       - "config/rook-narrative-current.json"
       - "tests/public-reader-layer.test.js"
+      - "tests/public-boot.test.js"
+      - "tests/public-map-phase6.test.js"
+      - "tests/browser-public-boot-smoke.js"
       - "tests/neutral-current-narrative.test.py"
       - "tests/public-final-polish.test.js"
       - "tests/browser-public-final-polish.js"
@@ -36,12 +44,14 @@ jobs:
       - name: Reader-layer static and invariant checks
         run: |
           node --check src/public-reader-layer.js
+          node --check js/public-bootstrap.js
+          node --check tests/browser-public-boot-smoke.js
           node --check tests/browser-public-final-polish.js
           node --check tests/browser-public-render-review.js
           node tests/public-reader-layer.test.js
-          python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py scripts/retire_privileged_narrative_runtime.py tests/neutral-current-narrative.test.py
+          python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py scripts/retire_privileged_narrative_runtime.py scripts/validate_public_deployment.py tests/neutral-current-narrative.test.py
           python tests/neutral-current-narrative.test.py
-      - name: Verify composition source is structural
+      - name: Verify reader sources are explicit signed assets
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -52,11 +62,25 @@ jobs:
           assert js.is_file() and css.is_file()
           js_text = js.read_text(encoding='utf-8')
           css_text = css.read_text(encoding='utf-8')
+          builder = (root / 'scripts/build_public_release.py').read_text(encoding='utf-8')
+          bootstrap = (root / 'js/public-bootstrap.js').read_text(encoding='utf-8')
+          entrypoint_prep = (root / 'scripts/retire_privileged_narrative_runtime.py').read_text(encoding='utf-8')
+          inventory = (root / 'config/public-runtime-inventory.json').read_text(encoding='utf-8')
+
           assert 'ATLAS PUBLIC READER LAYER' in js_text
           assert 'ATLAS PUBLIC READER LAYER' in css_text
           assert 'display: none !important' not in css_text
           assert 'Combined ROOK assessment' not in js_text
           assert 'ROOK verdict / PR/CI evidence boundary' not in js_text
+
+          for token in ('reader_runtime', 'reader_stylesheet', 'src/public-reader-layer.js', 'src/public-reader-layer.css'):
+              assert token in builder, token
+              assert token in inventory, token
+          assert 'reader_runtime' in bootstrap and 'reader_stylesheet' in bootstrap
+          assert 'reader_runtime' in entrypoint_prep and 'reader_stylesheet' in entrypoint_prep
+          for retired in ('compose_reader_sources', 'ATLAS_PUBLIC_READER_LAYER_COMPOSED', 'ATLAS_PUBLIC_READER_STYLES_COMPOSED', 'PAGE_REGISTRY', 'PUBLIC_STYLESHEET'):
+              assert retired not in builder, retired
+
           assert not (root / 'config' / 'rook-narrative-current.json').exists()
           assert not (root / 'scripts' / 'sync_rook_narrative.py').exists()
           PY
