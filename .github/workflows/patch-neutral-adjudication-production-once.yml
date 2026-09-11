@@ -1,0 +1,171 @@
+name: Patch neutral adjudication production once
+
+on:
+  push:
+    branches:
+      - evidence/neutral-lie-ledger-adjudication-20260911
+    paths:
+      - ".github/workflows/patch-neutral-adjudication-production-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: evidence/neutral-lie-ledger-adjudication-20260911
+      - name: Move production to the tracked neutral adjudication set
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def patch(path, replacements):
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              for old, new in replacements:
+                  count = text.count(old)
+                  if count != 1:
+                      raise SystemExit(f'{path}: expected one replacement target, found {count}: {old[:120]!r}')
+                  text = text.replace(old, new, 1)
+              p.write_text(text, encoding='utf-8', newline='\n')
+
+          patch('scripts/build_lie_ledger_evidence_adjudication.py', [
+              (
+                  '    release["lie_ledger_adjudication_version"] = ADJUDICATION_VERSION\n'
+                  '    release["lie_ledger_evidence_completion_version"] = historical.get("evidence_completion_version")',
+                  '    release["lie_ledger_adjudication_version"] = ADJUDICATION_VERSION\n'
+                  '    release["lie_ledger_adjudication_record_sha256"] = (payload.get("migration_provenance") or {}).get("neutral_record_set_sha256")\n'
+                  '    release["lie_ledger_evidence_completion_version"] = historical.get("evidence_completion_version")',
+              ),
+          ])
+
+          patch('scripts/build_canonical_current_state_v2_final.py', [
+              (
+                  '        "lie_ledger_governance_version": state["release"]["lie_ledger_governance_version"],\n'
+                  '        "lie_ledger_contract_version": state["release"]["lie_ledger_contract_version"],',
+                  '        "lie_ledger_governance_version": state["release"]["lie_ledger_governance_version"],\n'
+                  '        "lie_ledger_adjudication_version": state["release"].get("lie_ledger_adjudication_version"),\n'
+                  '        "lie_ledger_adjudication_record_sha256": state["release"].get("lie_ledger_adjudication_record_sha256"),\n'
+                  '        "lie_ledger_contract_version": state["release"]["lie_ledger_contract_version"],',
+              ),
+              (
+                  'Historical assessment artifacts remain replayable provenance inputs,\n'
+                  'but persona authority is not part of generated canonical governance.',
+                  'Historical assessment artifacts remain migration-audit provenance only;\n'
+                  'production consumes the tracked neutral adjudication set directly.',
+              ),
+          ])
+
+          patch('scripts/build_public_current_state_v2_hardened.py', [
+              ('GENERATOR_VERSION = "2.3-neutral-governance"', 'GENERATOR_VERSION = "2.4-neutral-adjudication-input"'),
+              (
+                  '    input_roles = {\n'
+                  '        "data/canonical-current-state-v2.json": "DERIVED_GATE3_CANONICAL_CURRENT_STATE",\n'
+                  '        "data/lie-ledger-v2-rook-authority.json": "HISTORICAL_LIE_LEDGER_ASSESSMENT_INPUT",\n'
+                  '        "data/lie-ledger-v2-rook-evidence-completion-20260909.json": "HISTORICAL_EVIDENCE_COMPLETION_INPUT",\n'
+                  '        "data/lie-ledger-v2-evidence-sources-20260909.json": "LIE_LEDGER_EVIDENCE_SOURCE_REGISTRY",\n'
+                  '        "data/lie-ledger-v2-rook-current-claims-20260909.json": "HISTORICAL_CURRENT_CLAIM_ASSESSMENT_INPUT",\n'
+                  '        "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md": "ACTIVE_LIE_LEDGER_EVIDENCE_CONTRACT",\n'
+                  '        "scripts/neutralize_lie_ledger_governance.py": "ACTIVE_LIE_LEDGER_GOVERNANCE_MIGRATION",\n'
+                  '        "schemas/lie-ledger-evidence-adjudication-v2.json": "ACTIVE_LIE_LEDGER_EVIDENCE_SCHEMA",\n'
+                  '        "schemas/lie-ledger-v2.json": "HISTORICAL_LIE_LEDGER_V2_SCHEMA",\n'
+                  '        "scripts/build_lie_ledger_v2.py": "HISTORICAL_ASSESSMENT_PROJECTION_GENERATOR",\n'
+                  '        "scripts/apply_lie_ledger_evidence_completion_20260909.py": "HISTORICAL_EVIDENCE_COMPLETION_APPLICATOR",\n'
+                  '        "scripts/apply_lie_ledger_current_claims_20260909.py": "HISTORICAL_CURRENT_CLAIM_APPLICATOR",\n'
+                  '        "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",',
+                  '    input_roles = {\n'
+                  '        "data/canonical-current-state-v2.json": "DERIVED_GATE3_CANONICAL_CURRENT_STATE",\n'
+                  '        "data/lie-ledger-v2-evidence-adjudications.json": "ACTIVE_LIE_LEDGER_EVIDENCE_ADJUDICATION_SET",\n'
+                  '        "data/lie-ledger-v2-evidence-sources-20260909.json": "LIE_LEDGER_EVIDENCE_SOURCE_REGISTRY",\n'
+                  '        "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md": "ACTIVE_LIE_LEDGER_EVIDENCE_CONTRACT",\n'
+                  '        "scripts/build_lie_ledger_evidence_adjudication.py": "ACTIVE_LIE_LEDGER_EVIDENCE_BUILDER",\n'
+                  '        "schemas/lie-ledger-evidence-adjudication-v2.json": "ACTIVE_LIE_LEDGER_EVIDENCE_SCHEMA",\n'
+                  '        "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",',
+              ),
+              (
+                  '    state["release"]["lie_ledger_contract_path"] = canonical["release"].get("lie_ledger_contract_path")\n'
+                  '    state["release"]["lie_ledger_evidence_completion_version"] = canonical["release"].get("lie_ledger_evidence_completion_version")',
+                  '    state["release"]["lie_ledger_contract_path"] = canonical["release"].get("lie_ledger_contract_path")\n'
+                  '    state["release"]["lie_ledger_adjudication_version"] = canonical["release"].get("lie_ledger_adjudication_version")\n'
+                  '    state["release"]["lie_ledger_adjudication_record_sha256"] = canonical["release"].get("lie_ledger_adjudication_record_sha256")\n'
+                  '    state["release"]["lie_ledger_evidence_completion_version"] = canonical["release"].get("lie_ledger_evidence_completion_version")',
+              ),
+              (
+                  '        "lie_ledger_historical_evidence_completion_input_pinned": True,\n'
+                  '        "lie_ledger_historical_current_claim_input_pinned": True,',
+                  '        "lie_ledger_active_adjudication_input_neutral": True,\n'
+                  '        "lie_ledger_historical_handoffs_are_migration_provenance_only": True,',
+              ),
+          ])
+
+          patch('scripts/validate_lie_ledger_v2.py', [
+              (
+                  'CONTRACT = "2026-09-10"\nCOMPLETION = "ROOK-EVIDENCE-COMPLETION-20260909-v1"',
+                  'CONTRACT = "2026-09-10"\nADJUDICATION_PATH = "data/lie-ledger-v2-evidence-adjudications.json"\nADJUDICATION_VERSION = "ATLAS-EVIDENCE-ADJUDICATION-20260911-v1"\nCOMPLETION = "ROOK-EVIDENCE-COMPLETION-20260909-v1"',
+              ),
+              (
+                  '    require(governance.get("implementation_model") == "DETERMINISTIC_BUILDER", "Lie Ledger implementation model is not neutral")\n'
+                  '    require(canonical.get("release", {}).get("lie_ledger_governance_version") == GOVERNANCE, "canonical governance release pin mismatch")',
+                  '    require(governance.get("implementation_model") == "DETERMINISTIC_BUILDER", "Lie Ledger implementation model is not neutral")\n'
+                  '    require(governance.get("active_adjudication_path") == ADJUDICATION_PATH, "active Lie Ledger adjudication path mismatch")\n'
+                  '    require(governance.get("adjudication_version") == ADJUDICATION_VERSION, "active Lie Ledger adjudication version mismatch")\n'
+                  '    adjudication = load(root, ADJUDICATION_PATH)\n'
+                  '    require(adjudication.get("artifact_role") == "LIE_LEDGER_V2_EVIDENCE_ADJUDICATION_SET", "active Lie Ledger adjudication artifact role mismatch")\n'
+                  '    require(adjudication.get("adjudication_version") == ADJUDICATION_VERSION, "tracked adjudication version mismatch")\n'
+                  '    require(int(adjudication.get("record_count") or 0) == len(records), "tracked adjudication record count mismatch")\n'
+                  '    require(canonical.get("release", {}).get("lie_ledger_governance_version") == GOVERNANCE, "canonical governance release pin mismatch")\n'
+                  '    require(canonical.get("release", {}).get("lie_ledger_adjudication_version") == ADJUDICATION_VERSION, "canonical adjudication release pin mismatch")\n'
+                  '    require(canonical.get("release", {}).get("lie_ledger_adjudication_record_sha256") == (adjudication.get("migration_provenance") or {}).get("neutral_record_set_sha256"), "canonical adjudication fingerprint pin mismatch")',
+              ),
+          ])
+
+          patch('tests/lie-ledger-governance-neutralization.test.py', [
+              (
+                  'import build_lie_ledger_v2 as lie_ledger_v2\nimport neutralize_lie_ledger_governance as neutral',
+                  'import build_lie_ledger_v2 as lie_ledger_v2\nimport migrate_lie_ledger_evidence_adjudications as migration\nimport neutralize_lie_ledger_governance as neutral',
+              ),
+              (
+                  '    assert governance.get("implementation_model") == "DETERMINISTIC_BUILDER"\n'
+                  '    assert governance.get("historical_inputs", {}).get("assessment_path")',
+                  '    assert governance.get("implementation_model") == "DETERMINISTIC_BUILDER"\n'
+                  '    assert governance.get("historical_inputs", {}).get("assessment_path")\n'
+                  '    if governance.get("active_adjudication_path") is not None:\n'
+                  '        assert governance.get("active_adjudication_path") == migration.OUT\n'
+                  '        assert governance.get("adjudication_version") == migration.ADJUDICATION_VERSION',
+              ),
+              (
+                  '    neutral.neutralize(migrated)\n\n    assert substantive_fingerprint(migrated) == before_records',
+                  '    neutral.neutralize(migrated)\n\n'
+                  '    tracked_adjudication = json.loads((ROOT / migration.OUT).read_text(encoding="utf-8"))\n'
+                  '    assert migration.build_payload(ROOT) == tracked_adjudication\n'
+                  '    assert tracked_adjudication["migration_provenance"]["historical_substantive_sha256"] == EXPECTED_BASELINE_DIGEST\n'
+                  '    artifact_records = sorted(\n'
+                  '        (substantive_record(record) for record in tracked_adjudication["records"]),\n'
+                  '        key=lambda row: str(row["claim_instance_id"]),\n'
+                  '    )\n'
+                  '    assert artifact_records == before_records\n\n'
+                  '    assert substantive_fingerprint(migrated) == before_records',
+              ),
+              (
+                  '    production = final_builder.build_state(ROOT)\n'
+                  '    assert_neutral_structure(production)',
+                  '    production = final_builder.build_state(ROOT)\n'
+                  '    assert_neutral_structure(production)\n'
+                  '    governance = production["lie_ledger_v2_governance"]\n'
+                  '    assert governance["active_adjudication_path"] == migration.OUT\n'
+                  '    assert governance["adjudication_version"] == migration.ADJUDICATION_VERSION\n'
+                  '    assert production["release"]["lie_ledger_adjudication_record_sha256"] == tracked_adjudication["migration_provenance"]["neutral_record_set_sha256"]',
+              ),
+          ])
+          PY
+          python -m py_compile scripts/build_lie_ledger_evidence_adjudication.py scripts/build_canonical_current_state_v2_final.py scripts/build_public_current_state_v2_hardened.py scripts/validate_lie_ledger_v2.py tests/lie-ledger-governance-neutralization.test.py
+      - name: Commit production migration patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/build_lie_ledger_evidence_adjudication.py scripts/build_canonical_current_state_v2_final.py scripts/build_public_current_state_v2_hardened.py scripts/validate_lie_ledger_v2.py tests/lie-ledger-governance-neutralization.test.py
+          git commit -m "Consume neutral Lie Ledger adjudications in production"
+          git push origin HEAD:evidence/neutral-lie-ledger-adjudication-20260911
