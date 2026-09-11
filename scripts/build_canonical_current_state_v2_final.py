@@ -75,9 +75,48 @@ def refresh_derived_counts(state: dict[str, Any]) -> None:
     counts["lie_ledger_v2_chains"] = len(entities.get("lie_ledger_chains_v2") or [])
 
 
+def ensure_gap_collection_actions(state: dict[str, Any]) -> None:
+    """Give appended gaps a visible minimum collection action without inventing facts.
+
+    Historical migration gaps already carry Evidence-authored collection requests
+    and are deliberately left untouched. Accepted later packets may add a gap with
+    a specific unresolved topic and source provenance but omit a separately shaped
+    collection request. In that case Release derives only the mechanical minimum
+    action: collect evidence sufficient to resolve or materially narrow that exact
+    topic. The derivation is explicit in-state and does not select sources, assert
+    an outcome, or change the gap's factual content.
+    """
+    for item in (state.get("entities") or {}).get("gaps") or []:
+        record = item.get("record")
+        if not isinstance(record, dict):
+            continue
+        actions = record.get("collection_actions")
+        if isinstance(actions, list) and actions:
+            continue
+        if any((prov or {}).get("kind") == "UNIFIED_GAP_MIGRATION" for prov in item.get("provenance") or []):
+            # Missing actions on a protected inherited gap are a validation error;
+            # never paper over migration damage with a derived fallback.
+            continue
+        gap_id = str(item.get("entity_id") or record.get("gap_id") or "").strip()
+        topic = str(record.get("topic") or "").strip()
+        if not gap_id or not topic:
+            continue
+        source_ids = list(dict.fromkeys(record.get("source_ids") or item.get("source_ids") or []))
+        record["collection_actions"] = [{
+            "action_id": f"COLLECT-{gap_id}",
+            "action_type": "RESOLVE_OR_MATERIALLY_NARROW_GAP",
+            "target_gap_id": gap_id,
+            "task": f"Collect evidence that resolves or materially narrows: {topic}",
+            "source_context_ids": source_ids,
+            "derivation": "RELEASE_DERIVED_FROM_GAP_TOPIC",
+        }]
+        record["collection_actions_origin"] = "RELEASE_DERIVED_MINIMUM_FROM_GAP_TOPIC"
+
+
 def build_state(root: Path = ROOT) -> dict[str, Any]:
     root = Path(root).resolve()
     state = hardened.build_state(root)
+    ensure_gap_collection_actions(state)
 
     # One production entrypoint owns the transition from historical assessment
     # handoffs to active neutral governance. The pipeline preserves adjudication,
