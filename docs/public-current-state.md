@@ -1,21 +1,30 @@
 # Derived public current-state read model
 
-`data/public-current-state.json` is the generated, non-authoritative **v2** read model for the current public Atlas application. It is produced during validation/deployment and intentionally excluded from Git because it is reproducible and large. The release orchestrator first validates the sealed canonical-v1 migration lineage, then compiles and validates the current canonical-v2 state before producing the public-v2 read model. The browser receives only the already-assembled current result and never replays the update ledger.
+`data/public-current-state.json` is the generated, non-authoritative **v2** read model for the current public Atlas application. It is produced during validation/deployment and intentionally excluded from Git because it is reproducible and large. The default release orchestrator compiles and validates the current canonical-v2 state directly before producing the public-v2 read model. The browser receives only the already-assembled current result and never replays the update ledger.
 
-The frozen public-v1 builder remains repository compatibility lineage, not a release artifact generator. Current v2 compilation uses `scripts/public_read_model_foundation.py`; an exact in-memory parity regression proves that this neutral foundation preserves the accepted v1 seed semantics while avoiding an executable v1 dependency in the production compiler.
+The frozen canonical-v1 and public-v1 builders remain repository compatibility/audit lineage, not current release inputs. Current public compilation uses `scripts/public_read_model_current_foundation.py`, which consumes `data/canonical-current-state-v2.json` plus the registered supporting reader datasets. The current release input fingerprint does not include the historical public-v1 compiler, public-v1 schema or generated canonical-v1 artifact.
+
+The migration regression independently reconstructs the former compatibility foundation and proves that the direct canonical-v2 foundation preserves reader dataset payloads, page ownership, consumer coverage, actor identity normalization and facility semantics. Facility preservation records may only gain source-ID resolution when a source already-declared by exact URL becomes resolvable in the larger current canonical source catalog; the migration test rejects loss of an accepted source, a new source URL, or any change to facility facts/status/effect fields.
 
 ## Build and validation
 
-Use the same state orchestration contract used by CI and Pages:
+Use the same current-v2 state orchestration contract used by CI and Pages:
 
 ```bash
 python scripts/build_current_release_state.py
 python scripts/build_current_release_state.py --check
 ```
 
-Generation uses only repository inputs and includes no build timestamp. Object keys, record ordering, encoding and line endings are fixed, so identical inputs produce identical bytes. Input SHA-256 values use UTF-8 content with line endings normalized to LF, preventing Windows and Linux Git checkouts from producing different release identities for the same content. The release identity is derived from the sorted input-path and normalized SHA-256 inventory.
+Historical canonical-v1 lineage remains available as an explicit, read-only audit rather than a prerequisite of every current release:
 
-Current-state validation rebuilds/compares the deterministic v2 projection and verifies that registered inputs remain unchanged. Release qualification also runs the neutral-foundation parity regression against the unchanged legacy v1 seed in memory; it does not create a public-v1 release artifact.
+```bash
+python scripts/build_current_release_state.py --historical-audit
+python scripts/build_current_release_state.py --check --historical-audit
+```
+
+Generation uses only repository inputs and includes no build timestamp. Object keys, record ordering, encoding and line endings are fixed, so identical inputs produce identical bytes. Input SHA-256 values use UTF-8 content with line endings normalized to LF, preventing Windows and Linux Git checkouts from producing different release identities for the same content. The release identity is derived from the sorted current input-path and normalized SHA-256 inventory.
+
+Current-state validation rebuilds/compares the deterministic v2 projection and verifies that registered inputs remain unchanged. Migration qualification separately exercises the historical compatibility oracle; that audit does not make public-v1 or canonical-v1 artifacts part of current production identity.
 
 Phase 2 binds the current v2 artifact to the public shell through the separately generated `data/public-release.json`. The browser validates that manifest, the shell-asset hashes, the exact read-model hash, and the read-model release identity before it performs the first current render. See `public-boot-architecture.md`.
 
