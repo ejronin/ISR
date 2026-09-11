@@ -1,0 +1,94 @@
+name: Fold reader assets into core once
+
+on:
+  push:
+    branches:
+      - release/single-pass-reader-assets-20260910
+    paths:
+      - ".github/workflows/fold-reader-assets-into-core-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: release/single-pass-reader-assets-20260910
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.x'
+      - name: Fold explicit reader assets into the canonical release graph
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('scripts/build_public_release_core.py')
+          text = path.read_text(encoding='utf-8')
+
+          replacements = [
+              (
+                  'GENERATOR_VERSION = "1.4"',
+                  'GENERATOR_VERSION = "2.3-single-pass-reader-assets"',
+              ),
+              (
+                  '    ("page_registry", "public-ia", "js/public-ia.js", "js"),\n'
+                  '    ("map_stylesheet", "leaflet", "vendor/leaflet/leaflet.css", "css"),\n'
+                  '    ("stylesheet", "public-shell", "css/public-shell.css", "css"),',
+                  '    ("page_registry", "public-ia", "js/public-ia.js", "js"),\n'
+                  '    ("reader_runtime", "public-reader-layer", "src/public-reader-layer.js", "js"),\n'
+                  '    ("map_stylesheet", "leaflet", "vendor/leaflet/leaflet.css", "css"),\n'
+                  '    ("stylesheet", "public-shell", "css/public-shell.css", "css"),\n'
+                  '    ("reader_stylesheet", "public-reader-layer", "src/public-reader-layer.css", "css"),',
+              ),
+              (
+                  '        assets_by_role["map_runtime"],\n'
+                  '        assets_by_role["page_registry"],\n'
+                  '        assets_by_role["map_stylesheet"],\n'
+                  '        assets_by_role["stylesheet"],\n'
+                  '        assets_by_role["reference_geography"],\n'
+                  '        assets_by_role["entrypoint"],',
+                  '        assets_by_role["map_runtime"],\n'
+                  '        assets_by_role["page_registry"],\n'
+                  '        assets_by_role["reader_runtime"],\n'
+                  '        assets_by_role["map_stylesheet"],\n'
+                  '        assets_by_role["stylesheet"],\n'
+                  '        assets_by_role["reader_stylesheet"],\n'
+                  '        assets_by_role["reference_geography"],\n'
+                  '        assets_by_role["entrypoint"],',
+              ),
+              (
+                  '            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["page_registry"]["path"]],',
+                  '            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["page_registry"]["path"], assets_by_role["reader_runtime"]["path"]],',
+              ),
+              (
+                  '            "stylesheets": [assets_by_role["map_stylesheet"]["path"], assets_by_role["stylesheet"]["path"]],',
+                  '            "stylesheets": [assets_by_role["map_stylesheet"]["path"], assets_by_role["stylesheet"]["path"], assets_by_role["reader_stylesheet"]["path"]],',
+              ),
+          ]
+
+          for old, new in replacements:
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'expected exactly one core replacement target; found {count}: {old[:100]!r}')
+              text = text.replace(old, new, 1)
+
+          if text.count('("reader_runtime", "public-reader-layer", "src/public-reader-layer.js", "js")') != 1:
+              raise SystemExit('reader runtime spec is not unique after fold')
+          if text.count('("reader_stylesheet", "public-reader-layer", "src/public-reader-layer.css", "css")') != 1:
+              raise SystemExit('reader stylesheet spec is not unique after fold')
+          if '2.3-single-pass-reader-assets' not in text:
+              raise SystemExit('single-pass generator version was not installed')
+
+          path.write_text(text, encoding='utf-8', newline='\n')
+          PY
+          python -m py_compile scripts/build_public_release_core.py
+      - name: Commit folded core graph
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/build_public_release_core.py
+          git commit -m "Fold reader assets into core release graph"
+          git push origin HEAD:release/single-pass-reader-assets-20260910
