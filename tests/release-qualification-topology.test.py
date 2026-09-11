@@ -38,6 +38,7 @@ browser_runner = (ROOT / "scripts/run_public_browser_qualification.sh").read_tex
 for token in (
     "ref: ${{ inputs.commit_sha }}",
     "Prove checkout identity",
+    "qualified_sha: ${{ steps.checkout_identity.outputs.sha }}",
     "python scripts/validate_canonical_authority.py",
     "python tests/canonical-update-pipeline.test.py",
     "python tests/gate3-v2-forward-update-canary.test.py",
@@ -73,10 +74,13 @@ assert browser_runner.count("start_browser") >= 3, "browser qualification no lon
 assert "uses: ./.github/workflows/release-qualification.yml" in primary, "PR validation bypasses reusable qualification"
 assert "pull_request:" in primary, "PR exact-head qualification trigger missing"
 assert "push:" not in primary, "main qualification is duplicated outside the deployment chain"
+assert "name: validate" in primary and "needs: qualification" in primary, "protected validate status is not downstream of exact-SHA qualification"
+assert "QUALIFIED_SHA: ${{ needs.qualification.outputs.qualified_sha }}" in primary, "protected validate status is not bound to reusable qualified SHA output"
 
 assert "uses: ./.github/workflows/release-qualification.yml" in pages, "Pages does not invoke reusable qualification"
 assert "needs: qualify" in pages, "Pages deployment is not gated by exact-SHA qualification"
 assert "prepare_pages_artifact: true" in pages, "Pages does not deploy the artifact produced by qualification"
+assert "QUALIFIED_SHA: ${{ needs.qualify.outputs.qualified_sha }}" in pages, "Pages deploy is not explicitly bound to reusable qualified SHA output"
 assert "attest_live_deployment.py" in pages, "Pages lacks live deployment attestation"
 assert "deployments: read" in pages and "/deployments?{params}" in pages, "Pages does not resolve a real exact-SHA deployment identity"
 assert "live-deployment-attestation-${{ github.sha }}" in pages, "Pages does not persist SHA-bound attestation"
@@ -95,4 +99,4 @@ assert "workflow_dispatch:" in historical, "historical reconciliation audit is n
 assert "pull_request:" not in historical, "historical reconciliation audit regained PR authority"
 assert "branches:" not in historical, "historical reconciliation audit regained branch-push authority"
 
-print("release qualification topology: PASS - one reusable exact-SHA qualification gate owns evidence, reader and release checks; Pages deploys only after that gate and attests live bytes")
+print("release qualification topology: PASS - one reusable exact-SHA qualification gate owns evidence, reader and release checks; protected validation and Pages deployment consume its exact SHA output; live bytes are attested")
