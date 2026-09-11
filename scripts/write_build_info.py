@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write machine-readable deployment identity from canonical current state."""
+"""Write machine-readable deployment identity from current canonical-v2 state."""
 from __future__ import annotations
 
 import argparse
@@ -21,12 +21,12 @@ def main() -> int:
     root = Path(__file__).resolve().parents[1]
     ledger = root / "data/integration-v1.2"
     historical_manifest = json.loads((ledger / "manifest.json").read_text(encoding="utf-8"))
-    canonical_path = root / "data/canonical-current-state.json"
+    canonical_path = root / "data/canonical-current-state-v2.json"
     if not canonical_path.is_file():
-        raise SystemExit("canonical current state is missing; run build_canonical_current_state.py first")
+        raise SystemExit("canonical-v2 current state is missing; run build_current_release_state.py first")
     canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
-    if canonical.get("artifact_role") != "DERIVED_CANONICAL_CURRENT_ENTITY_STATE":
-        raise SystemExit("canonical current-state artifact role is invalid")
+    if canonical.get("schema_version") != "2.0" or not canonical.get("release", {}).get("canonical_state_identity_v2"):
+        raise SystemExit("canonical-v2 current-state identity is invalid")
 
     authoritative_hashes = {path.name: file_hash(path) for path in sorted(ledger.glob("*.json"))}
     overlay_hashes = {
@@ -54,7 +54,10 @@ def main() -> int:
         "current_review_cutoff": current_cutoff,
         "current_chronology_records": current_count,
         "current_layer": canonical_path.relative_to(root).as_posix(),
+        # Keep the inherited v1 identity as migration lineage while binding
+        # deployment identity to the active canonical-v2 artifact.
         "canonical_state_identity": canonical["release"]["canonical_state_identity"],
+        "canonical_state_identity_v2": canonical["release"]["canonical_state_identity_v2"],
         "canonical_state_sha256": file_hash(canonical_path),
         "canonical_input_set_sha256": canonical["release"]["input_set_sha256"],
         "canonical_migration_head": canonical["migration_boundary"]["accepted_phase3_head"],

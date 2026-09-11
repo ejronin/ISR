@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate deployment identity against generated canonical current state."""
+"""Validate deployment identity against generated canonical-v2 current state."""
 from __future__ import annotations
 
 import json
@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CANONICAL_PATH = ROOT / "data/canonical-current-state.json"
+CANONICAL_PATH = ROOT / "data/canonical-current-state-v2.json"
 HISTORICAL_MANIFEST = json.loads((ROOT / "data/integration-v1.2/manifest.json").read_text(encoding="utf-8"))
 
 assert CANONICAL_PATH.is_file(), "canonical current state must be built before build-info validation"
@@ -30,9 +30,10 @@ assert payload["commit_sha"] == "TEST-COMMIT"
 assert payload["collection_cutoff"] == canonical["release"]["current_osint_cutoff"]
 assert payload["current_review_cutoff"] == canonical["release"]["current_osint_cutoff"]
 assert payload["current_chronology_records"] == canonical["counts"]["chronology_records"]
-assert payload["current_layer"] == "data/canonical-current-state.json"
+assert payload["current_layer"] == "data/canonical-current-state-v2.json"
 assert "\\" not in payload["current_layer"], "build-info repository paths must be platform-independent POSIX text"
 assert payload["canonical_state_identity"] == canonical["release"]["canonical_state_identity"]
+assert payload["canonical_state_identity_v2"] == canonical["release"]["canonical_state_identity_v2"]
 assert payload["canonical_input_set_sha256"] == canonical["release"]["input_set_sha256"]
 assert payload["canonical_migration_head"] == canonical["migration_boundary"]["accepted_phase3_head"]
 assert payload["accepted_update_packets"] == len(canonical.get("accepted_updates") or [])

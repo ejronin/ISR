@@ -137,6 +137,12 @@ class CanonicalAuthorityTests(unittest.TestCase):
         temporary, root = self.temp_repo()
         with temporary:
             artifact = root / compiler.DEFAULT_OUTPUT
+            # This is a historical canonical-v1 transaction fixture. Current release
+            # assembly no longer materializes the v1 artifact as a side effect, so
+            # the fixture must create its own baseline explicitly before testing
+            # that failed registration leaves the artifact untouched.
+            baseline_state, _ = compiler.build_state(root)
+            artifact.write_bytes(compiler.canonical_json_bytes(baseline_state))
             artifact_before = artifact.read_bytes()
             packet_a = source_packet("UPD-20260828-LINEAGE-A", "2026-08-28T10:00:00-04:00", "SRC-AAAAAAAAAAA1")
             compiler.register_packet(root, write_packet(root, packet_a))
