@@ -83,46 +83,81 @@ for (const [key, dataset] of Object.entries(state.datasets)) {
     assert.match(dataset.sha256, /^[a-f0-9]{64}$/, `dataset payload hash malformed: ${key}`);
     assert.equal(dataset.path, 'data/canonical-current-state-v2.json', `Gate 3 dataset lineage mismatch: ${key}`);
   } else {
-    assert.equal(normalizedHash(dataset.path), dataset.sha256, `dataset input hash mismatch: ${key}`);
+    assert.equal(normalizedHash(dataset.path), dataset.sha256, `dataset hash mismatch: ${key}`);
   }
+  assert(dataset.source_references.every(reference => reference.variant_keys.every(variantKey => sourceVariants.has(variantKey))), `dataset source variant mismatch: ${key}`);
+}
+const legacyDatasets = Object.entries(state.datasets).filter(([key]) => key.startsWith('legacy.'));
+assert(legacyDatasets.length > 0, 'historical reference datasets must be retained');
+assert(legacyDatasets.every(([, dataset]) => dataset.role === 'HISTORICAL_REFERENCE_DATA'));
+
+assert.deepEqual(
+  Object.keys(state.page_data).sort(),
+  ['claims_sources', 'diplomacy_mou', 'hormuz_economy', 'military_record', 'objectives_position_changes', 'start_here', 'timeline']
+);
+const availableData = new Set([...Object.keys(state.datasets), 'current.chronology', 'current.sources']);
+for (const [page, mapping] of Object.entries(state.page_data)) {
+  assert(mapping.dataset_keys.length > 0, `page dataset mapping empty: ${page}`);
+  assert(mapping.dataset_keys.every(key => availableData.has(key)), `page dataset mapping unresolved: ${page}`);
+  assert(mapping.dataset_keys.every(key => !key.startsWith('legacy.')), `page maps historical reference data as current: ${page}`);
+  assert(mapping.dataset_keys.every(key => state.datasets[key]?.role !== 'HISTORICAL_REFERENCE_DATA'), `page maps a historical-reference role as current: ${page}`);
 }
 
-assert(state.datasets['gate3.casualties']);
-assert(state.datasets['gate3.agreements']);
-assert(state.datasets['gate3.diplomacy']);
-assert(state.datasets['gate3.facilities']);
-assert(state.datasets['gate3.movements']);
-assert(state.datasets['gate3.shipping']);
-assert(state.datasets['gate3.economics']);
-assert(state.datasets['gate3.gaps']);
-assert(state.datasets['gate3.lie_ledger']);
-assert(state.datasets['gate3.narrative_families']);
-assert(state.datasets['gate3.information_chains']);
-assert(state.datasets['gate3.daily_coverage']);
-assert(state.datasets['gate3.legacy_dispositions']);
-assert(state.datasets['gate3.side_ledger_dispositions']);
-assert(state.datasets['gate3.source_reliability']);
-
-assert(state.page_data.start_here.dataset_keys.includes('gate3.gaps'));
-assert(state.page_data.timeline.dataset_keys.includes('gate3.daily_coverage'));
-assert(state.page_data.military_record.dataset_keys.includes('gate3.casualties'));
-assert(state.page_data.military_record.dataset_keys.includes('gate3.facilities'));
-assert(state.page_data.military_record.dataset_keys.includes('gate3.movements'));
-assert(state.page_data.hormuz_economy.dataset_keys.includes('gate3.shipping'));
-assert(state.page_data.hormuz_economy.dataset_keys.includes('gate3.economics'));
-assert(state.page_data.diplomacy_mou.dataset_keys.includes('gate3.agreements'));
-assert(state.page_data.diplomacy_mou.dataset_keys.includes('gate3.diplomacy'));
-assert(state.page_data.claims_sources.dataset_keys.includes('gate3.lie_ledger'));
-assert(state.page_data.claims_sources.dataset_keys.includes('gate3.narrative_families'));
-assert(state.page_data.claims_sources.dataset_keys.includes('gate3.information_chains'));
-assert(state.page_data.claims_sources.dataset_keys.includes('gate3.source_reliability'));
-
+assert.equal(state.integrity.duplicate_event_ids, 0);
+assert.deepEqual(state.integrity.unresolved_chronology_source_ids, []);
+assert.deepEqual(state.integrity.unresolved_page_dataset_source_ids, []);
+assert.equal(state.integrity.canonical_inputs_modified, false);
+assert.equal(state.integrity.generated_timestamp_included, false);
+assert.equal(state.integrity.canonical_state_stale, false);
 assert.equal(state.integrity.browser_replays_update_packets, false);
-assert.equal(state.integrity.phase9_routes_consume_gate3_state, true);
-assert.equal(state.integrity.current_foundation_direct_from_canonical_v2, true);
-assert.equal(state.integrity.historical_public_v1_compiler_in_active_input_graph, false);
+const withoutSourceReferences = rows => rows.map(item => { const copy = structuredClone(item); delete copy.source_references; return copy; });
+assert.deepEqual(withoutSourceReferences(state.chronology), withoutSourceReferences(canonicalState.chronology));
+assert.deepEqual(state.entities, canonicalState.entities);
+assert.deepEqual(state.revision_history, canonicalState.revision_history);
+assert.equal(state.datasets['current.claims'].payload.claims.length, canonicalState.counts.claim_records);
+assert.equal(state.datasets['current.material_losses'].payload.records.length, canonicalState.counts.material_loss_records);
 
-console.log(
-  `public-current-state: PASS - ${state.chronology.length} records; ${state.sources.records.length} sources; ` +
-  `${Object.keys(state.datasets).length} datasets; canonical-v2 direct foundation verified`
-);
+const requiredPreservedFacilities = new Set([
+  'US-NSA-BHR', 'US-ARIFJAN', 'US-ALISALEM', 'US-BUEHRING', 'US-SHUAIBA-TOC', 'US-CAMPDOHA',
+  'US-BUBIYAN', 'US-ALDHAFRA', 'US-JEBELALI', 'US-ERBIL', 'US-AINASAD', 'US-PRINCESULTAN',
+  'US-MUWAFFAQ', 'US-INCIRLIK', 'US-ISA', 'US-RMELAN', 'US-QASRAK', 'US-TANF'
+]);
+const facilityPayload = state.datasets['ledger.facilities'].payload;
+const liveFacilityIds = facilityPayload.facilities.map(record => record.facility_id);
+assert.equal(liveFacilityIds.length, new Set(liveFacilityIds).size, 'live facility IDs must be unique');
+assert.deepEqual(new Set(facilityPayload.repo_records_to_preserve), requiredPreservedFacilities, 'the reviewed preservation contract changed');
+assert([...requiredPreservedFacilities].every(facilityId => liveFacilityIds.includes(facilityId)), 'a preserved facility is absent from live public state');
+assert.equal(facilityPayload.materialization.contract_enforced, true);
+assert.deepEqual(new Set(facilityPayload.materialization.preserved_live_ids), requiredPreservedFacilities);
+for (const facilityId of requiredPreservedFacilities) {
+  const facility = facilityPayload.facilities.find(record => record.facility_id === facilityId);
+  assert.equal(facility.preservation_provenance.status, 'PRESERVED_NON_SUPERSEDED');
+  assert.equal(facility.location.precision, 'COARSE_EXISTING_ATLAS_POINT');
+}
+
+const bdaRecords = state.datasets['ledger.bda_overlays'].payload.overlays;
+assert(bdaRecords.every(record => liveFacilityIds.includes(record.facility_ref)), 'BDA facility reference must resolve through the live facility set');
+assert(bdaRecords.every(record => !record.image_bounds && !record.georeferenced_bounds && !record.footprint && !record.corners), 'facility restoration must not manufacture BDA geometry');
+const damageObservations = state.datasets['forensic.damage_observations'];
+assert.equal(damageObservations.role, 'APPROVED_FORENSIC_DATA');
+assert.equal(damageObservations.payload.records.length, 9);
+assert.equal(new Set(damageObservations.payload.records.map(record => record.observation_id)).size, 9);
+assert(damageObservations.payload.records.every(record => record.sources.every(sourceId => sourceIds.has(sourceId))), 'damage-observation provenance must resolve');
+const facilityAudits = state.datasets['forensic.facility_claim_audits'].payload.records;
+assert.equal(facilityAudits.length, 4);
+assert(facilityAudits.every(record => liveFacilityIds.includes(record.facility_id)), 'facility claim-audit relationship must resolve');
+assert(facilityAudits.every(record => record.propositions.every(proposition => proposition.disposition)), 'claim-audit dispositions must remain proposition-specific');
+assert(state.page_data.military_record.dataset_keys.includes('forensic.damage_observations'));
+assert.deepEqual(state.integrity.unresolved_bda_facility_refs, []);
+assert.deepEqual(state.integrity.unresolved_facility_claim_audit_refs, []);
+
+assert.equal(state.datasets['gate3.daily_coverage'].payload.records.at(0).date, '2026-02-28');
+assert.equal(state.datasets['gate3.daily_coverage'].payload.records.at(-1).date, state.release.current_osint_cutoff.slice(0, 10));
+const lieLedger = state.datasets['gate3.lie_ledger'].payload;
+assert.equal(lieLedger.primary_object, 'NARRATIVE_PROPOSITION_CHAIN');
+assert.equal(lieLedger.records.length, state.counts.gate3_lie_ledger_chains);
+assert.equal(lieLedger.records.flatMap(chain => chain.proposition_records || []).length, state.counts.gate3_lie_ledger_records);
+assert.equal(lieLedger.metrics.claim_instances, state.counts.gate3_lie_ledger_claim_instances);
+assert.equal(lieLedger.metrics.narrative_chains, state.counts.gate3_lie_ledger_chains);
+
+console.log(`public-current-state consumer test: PASS - canonical current entities, ${state.chronology.length} unique events, ${sourceIds.size} sources, Gate 3 coverage, facility preservation, BDA references, damage observations, provenance and page-data mappings verified`);
