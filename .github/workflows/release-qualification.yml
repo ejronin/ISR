@@ -17,6 +17,10 @@ on:
         required: false
         default: false
         type: boolean
+    outputs:
+      qualified_sha:
+        description: Exact commit SHA that completed the reusable qualification gate
+        value: ${{ jobs.qualify.outputs.qualified_sha }}
 
 permissions:
   contents: read
@@ -26,6 +30,8 @@ jobs:
     name: qualify exact SHA
     runs-on: ubuntu-24.04
     timeout-minutes: 45
+    outputs:
+      qualified_sha: ${{ steps.checkout_identity.outputs.sha }}
     env:
       ATLAS_COMMIT_SHA: ${{ inputs.commit_sha }}
       PYTHONUTF8: '1'
@@ -35,10 +41,12 @@ jobs:
           ref: ${{ inputs.commit_sha }}
           fetch-depth: 0
       - name: Prove checkout identity
+        id: checkout_identity
         run: |
           set -euo pipefail
           actual="$(git rev-parse HEAD)"
           test "$actual" = "$ATLAS_COMMIT_SHA" || { echo "FAIL: checkout $actual != requested $ATLAS_COMMIT_SHA" >&2; exit 1; }
+          echo "sha=$actual" >> "$GITHUB_OUTPUT"
           echo "Qualified commit: $actual"
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
