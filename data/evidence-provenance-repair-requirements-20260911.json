@@ -1,0 +1,67 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_PROVENANCE_REPAIR_REQUIREMENTS",
+  "version": "2026-09-11-E2",
+  "evidence_cutoff": "2026-09-11T16:22:00-04:00",
+  "content_owner": "Evidence Integration",
+  "implementation_owner": "Release Integrity where machinery/schema changes are required",
+  "requirements": [
+    {
+      "id": "PROV-01-CANONICAL-PACKET-COVERAGE",
+      "defect": "The generated source registry is an inventory of older authoritative source namespaces and does not ingest source objects from accepted canonical v2 update packets. Its generated_at value is 2026-08-22 while accepted canonical evidence extends through September.",
+      "required_factual_behavior": "The incorporated-source registry must cover every source referenced by the accepted canonical lineage, including sources introduced by accepted v2 packets, or must explicitly expose a registry cutoff older than the canonical cutoff. A source referenced by canonical evidence may not silently lack registry provenance.",
+      "do_not_do": "Do not turn the standing collection-source universe into the incorporated-source registry; they serve different functions.",
+      "repo_evidence": ["scripts/build_source_registry.py::SOURCE_NAMESPACES", "data/source-registry.json::generated_at", "data/canonical-ledger/manifest-v2.json::accepted_updates"]
+    },
+    {
+      "id": "PROV-02-ORIGINATOR-PUBLISHER-HOST",
+      "defect": "Composite outlet labels can collapse the person/organization that originated evidence with the site that republishes or hosts it.",
+      "required_factual_behavior": "Preserve separately: originator, publisher/outlet, republisher/host, retrieval URL, original URL when known, and evidentiary role. A republished wire story remains originated by the wire; a government statement quoted by an NGO remains a government-origin proposition embedded in an NGO source.",
+      "examples": [
+        {"legacy_label": "Associated Press via ABC News", "required_relationship": {"originator": "Associated Press", "republisher_host": "ABC News", "role": "WIRE_ORIGINATOR_WITH_REPUBLISHER"}},
+        {"legacy_label": "Airwars / U.S. Embassy Manama", "required_relationship": "Split into distinct source/proposition records unless a single retrieved artifact genuinely contains both. Airwars is an independent monitoring NGO; U.S. Embassy Manama is a U.S. government primary source."}
+      ],
+      "do_not_do": "Do not create one pseudo-outlet identity that inherits attributes from both organizations."
+    },
+    {
+      "id": "PROV-03-TASNIM-NORMALIZATION",
+      "defect": "The builder override correctly identifies Tasnim as Iranian/state-aligned, but the generated profile for 'Tasnim News Agency' can fall through alias normalization and appear with null country / GLOBAL_INTERNATIONAL.",
+      "required_factual_behavior": {"canonical_identity": "Tasnim News Agency", "country": "Iran", "region": "MIDDLE_EAST_NORTH_AFRICA", "source_class": "STATE_ALIGNED_NEWS_AGENCY", "state_affiliation": "Iranian state-aligned", "aliases": ["Tasnim", "Tasnim News Agency"]},
+      "do_not_do": "Do not treat state affiliation as a universal reliability score. Tasnim is high-value primary evidence for what it/linked Iranian actors publicly claimed."
+    },
+    {
+      "id": "PROV-04-CLOCK-SEPARATION",
+      "defect": "SIDR demonstrates occurrence/report conflation: the Aug. 31 attack was stored as a Sep. 7 event because Sep. 7 was the later Oman rescue/status report.",
+      "required_factual_behavior": "Every event model must preserve occurrence time/date, first-report/publication time, evidence-availability time, Atlas known_at/correction time, and later status/correction time separately where available.",
+      "required_guard": "A rescue, casualty revision, BDA update or investigation publication may update an existing occurrence but may not silently replace the occurrence date.",
+      "test_case": "G3-SAUDI-TANKER-OMAN-RESCUE-20260907 must remain one stable occurrence identity with corrected occurrence_date=2026-08-31 and later_status_date=2026-09-07."
+    },
+    {
+      "id": "PROV-05-LATER-BDA-DISPOSITION-RECONCILIATION",
+      "defect": "Later evidence can strengthen asset/event disposition after an initially correct lower-confidence state, but current event machinery provides no update path.",
+      "required_factual_behavior": "Allow later evidence to append a revision to the same stable event/asset without erasing the earlier assessment. Preserve the transition and when each state became supportable.",
+      "reconciliation_cues": ["claimed→reported→independently corroborated→primary confirmed", "hit→damaged→inoperable→destroyed→sunk", "unknown BDA→source-bounded BDA→primary/imagery-confirmed BDA"],
+      "automatic_truth_rule": "A cue creates a reconciliation candidate only. Human evidence adjudication decides whether status changes.",
+      "current_examples": ["MAT-IRN-RIESCO-20260908: RENDERED_INOPERABLE → SUNK_DESTROYED", "G3-IRAN-JORDAN-BASE-ATTACK-20260908: damage unestablished at cutoff → later aircraft damage established while exact BDA remains source-bounded"]
+    },
+    {
+      "id": "PROV-06-EVENT-REVISION-CAPABILITY",
+      "defect": "Gate 3 v2 entity records support mode=update, but chronology events reject duplicate IDs and expose no same-event update semantics.",
+      "required_factual_behavior": "Release machinery must support stable event revision with field-level previous/new values, effective occurrence time, correction known_at, supporting source IDs and analytical-meaning flag while retaining the prior accepted state.",
+      "blocked_corrections_file": "data/evidence-integration-required-event-revisions-20260911.json",
+      "do_not_do": "Do not create a second occurrence solely to work around append-only chronology."
+    },
+    {
+      "id": "PROV-07-URL-LIFECYCLE",
+      "defect": "A sampled set of high-value URLs was live, but a deterministic full registry liveness/redirect/archive state is not evidence-owned today.",
+      "required_factual_behavior": "Track URL lifecycle separately from evidentiary meaning: LIVE, REDIRECTED, MOVED, DEAD, ARCHIVED_COPY, SUPERSEDED. Preserve old URLs and archive references rather than rewriting source history.",
+      "do_not_do": "A dead URL does not make previously preserved evidence false; it creates a retrieval/provenance maintenance issue."
+    }
+  ],
+  "relationship_semantics": {
+    "state_media": "Can be primary evidence of actor/state-media publication or quotation; not independent corroboration of the claimed event.",
+    "official_source": "Can be primary legal/administrative authority for its own action and primary evidence of its own claim; outcome/effect still may require independent or physical evidence.",
+    "wire_service": "Secondary evidence; retain whether reporting rests on on-record official, anonymous official, multiple sources, imagery, or provider data.",
+    "commercial_tracking": "Provider-specific observation; preserve visibility/AIS/coverage limits and never silently equate with all physical traffic.",
+    "satellite_or_sensor": "Primary technical observation of what the sensor shows; attribution/intent may remain separate."
+  }
+}
