@@ -12,10 +12,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
-    name: validate
+  qualification:
+    name: exact-SHA qualification
     uses: ./.github/workflows/release-qualification.yml
     with:
       commit_sha: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
       authority_base_ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || '' }}
       prepare_pages_artifact: false
+
+  validate:
+    name: validate
+    needs: qualification
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Bind protected status to qualified SHA
+        env:
+          EXPECTED_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          QUALIFIED_SHA: ${{ needs.qualification.outputs.qualified_sha }}
+        run: |
+          set -euo pipefail
+          test -n "$QUALIFIED_SHA"
+          test "$QUALIFIED_SHA" = "$EXPECTED_SHA"
+          echo "validate: PASS exact qualified SHA $QUALIFIED_SHA"
