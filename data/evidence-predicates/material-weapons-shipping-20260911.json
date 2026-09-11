@@ -1,0 +1,59 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_FACTUAL_PREDICATES_FOR_PUBLIC_PRODUCT",
+  "version": "2026-09-11-E2",
+  "evidence_cutoff": "2026-09-11T16:22:00-04:00",
+  "principles": [
+    "Continued presence is not affirmative proof of operation.",
+    "No shutdown reported is not affirmative proof of operation.",
+    "Launch, interception, penetration, impact, damage, destruction and operational effect are separate predicates.",
+    "Stable loss IDs are deduplicated before any physical-quantity aggregate.",
+    "Claim-only or target-only quantities are never promoted into verified physical loss totals.",
+    "Provider-specific shipping and energy series are not merged across incompatible denominators."
+  ],
+  "predicate_scope": "MATERIAL_WEAPONS_SHIPPING",
+  "material_losses": {
+    "aggregate_scope": "PARTIAL_ONLY",
+    "global_total_supported": false,
+    "rule": "A deduplicated exact aggregate may be emitted only within a single compatible actor/platform/status/cause scope when each included stable loss record has a defensible exact physical quantity and is not marked claim-only/target-only/excluded. Null and approximate quantities remain outside the exact numerator.",
+    "exact_or_usable_examples": [
+      {"actor":"Iran/Aligned","platform_class":"frigate","status":"destroyed","known_physical_quantity":1,"basis_ids":["MAT-IRN-DENA-20260304"]},
+      {"actor":"Iran/Aligned","platform_class":"commercial crude tanker","status":"disabled/inoperable/sunk","known_physical_quantity":8,"military_platform":false,"basis":"Three Sep. 5 plus five Sep. 8 named carriers; Riesco is now sunk. Count is a commercial/shadow-fleet physical-loss class, not Iranian military-platform attrition."},
+      {"actor":"U.S./Coalition","platform_class":"KC-135","status":"destroyed/lost","known_physical_quantity":1,"cause_scope":"NON_HOSTILE_OPERATIONAL_LOSS","basis_ids":["MAT-USA-KC135-20260312"]},
+      {"actor":"U.S./Coalition","platform_class":"naval helicopter","status":"destroyed/lost","known_physical_quantity":1,"cause_scope":"NON_HOSTILE_OPERATIONAL_LOSS","basis_ids":["MAT-USA-HELO-20260701"]},
+      {"actor":"U.S./Coalition","platform_class":"autonomous underwater vehicle","status":"lost/acquired by Iran","known_physical_quantity":1,"basis_ids":["MAT-US-DIVE-LD-20260908"]},
+      {"actor":"U.S./Coalition","platform_class":"A-10","status":"severely damaged","known_physical_quantity":1,"basis_ids":["MAT-US-A10-MUWAFFAQ-20260908"]},
+      {"actor":"Commercial nonbelligerent","platform_class":"tanker","status":"damaged/fire","known_physical_quantity":1,"basis_ids":["MAT-COM-NEW-ANDROS-20260909"]}
+    ],
+    "non_exact_or_excluded_examples": [
+      {"platform_class":"F-15","status":"lightly damaged/returned to service","quantity_class":"APPROXIMATE","reported_quantity_approximate":8,"basis_ids":["MAT-US-F15-MUWAFFAQ-20260908"],"exclude_from_exact_sum":true},
+      {"record":"MAT-USA-ALUDEID-CAOC-2026","quantity_class":"UNKNOWN","exclude_from_exact_sum":true},
+      {"record":"MAT-USA-ARIFJAN-COMMS","quantity_class":"UNKNOWN","exclude_from_exact_sum":true},
+      {"record":"MAT-USA-ALISALEM-AD","quantity_class":"UNKNOWN","exclude_from_exact_sum":true},
+      {"record":"MAT-USA-PRINCESULTAN-AIRCRAFT","quantity_class":"UNKNOWN_MIXED","exclude_from_exact_sum":true},
+      {"record":"MAT-USA-MUWAFFAQ-THAAD","quantity_class":"UNKNOWN","exclude_from_exact_sum":true},
+      {"record":"MAT-USA-SHEIKHISA-PATRIOT","quantity_class":"UNKNOWN","exclude_from_exact_sum":true},
+      {"record":"MAT-CLAIM-IRN-100-VESSELS","quantity_class":"CLAIM_ONLY","claimed_quantity":"100+","exclude_from_exact_sum":true},
+      {"record":"MAT-CLAIM-IRGC-SMALLBOATS-20260707","quantity_class":"TARGET_ONLY","claimed_or_targeted_quantity":"60+","exclude_from_exact_sum":true}
+    ],
+    "public_product_boundary": "Atlas may publish scoped exact/minimum/approximate/unknown buckets, but not a single comprehensive actor equipment-loss total from the current record."
+  },
+  "weapons_effects": {
+    "global_compatible_aggregate": false,
+    "reason": "The record mixes actor launch claims, event-specific launch counts, interceptor counts, observed impacts, target counts and BDA across different time windows and denominators. No canonical common denominator supports a global launch→intercept→penetration→impact→damage funnel.",
+    "compatible_event_level_example": {
+      "event_id": "G3-IRAN-JORDAN-BASE-ATTACK-20260908",
+      "launch_or_inbound_reported": 20,
+      "intercepted_reported_by_jordan": 18,
+      "reported_fell_unpopulated": 2,
+      "later_damage": "U.S. aircraft damage established by later U.S.-official reporting.",
+      "constraint": "Do not infer that the two missiles reported as falling in unpopulated areas caused the aircraft damage, or silently reinterpret them as two penetrations. The early Jordan account and later BDA require reconciliation."
+    },
+    "public_product_boundary": "Only event-level chains with a shared scope/source denominator may be displayed as a funnel; otherwise show separate counts with scope labels."
+  },
+  "shipping": {
+    "latest_comparable_metric": {"provider":"Kpler via Reuters","observation_date":"2026-09-10","observable_transits":7,"previous_day_same_provider":11,"ten_day_average_same_provider":15,"inbound":5,"outbound":2,"source_ids":["SRC-A22AA87957A3"]},
+    "valid_baseline": "Use the same-provider observable series (11 prior day; 15 ten-day average) for direct percentage/relative comparisons.",
+    "context_only_baseline": "Pre-war estimates of roughly 125 large commercial vessels per day are broader contextual normalization and are not a like-for-like Kpler-series denominator.",
+    "scope_boundary": "Observable/AIS-visible traffic != all physical transit. AIS-off/dark vessels are unknown. Physical traversability != commercial normalization or recognized control."
+  }
+}
