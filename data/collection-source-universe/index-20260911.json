@@ -1,0 +1,17 @@
+{
+  "artifact_role": "ATLAS_EVIDENCE_COLLECTION_SOURCE_UNIVERSE_CONTENT",
+  "version": "2026-09-11-E2",
+  "content_owner": "Evidence Integration",
+  "packaging_owner": "Release Integrity",
+  "concept_boundary": "This is a standing collection universe, not the registry of sources already incorporated into Atlas evidence. Inclusion means routinely inspect, not presume credibility.",
+  "proposition_specific_reliability_rule": "No universal truth score is assigned. Source value depends on the proposition: first-party/state media may be strongest evidence of what an actor claimed while weak evidence that the claimed occurrence/effect happened.",
+  "required_fields_for_release_packaging": ["collection_source_id","source_name","country_or_region","region","languages","source_class","state_or_ownership_affiliation","evidentiary_role","topic_tags","check_cadence","access_location","status","replacement_relationship","collection_notes"],
+  "cadence_semantics": {"15m":"active-conflict near-real-time","30m":"active-conflict frequent","1h":"active-conflict hourly","2h":"active-conflict every two hours","4h":"active-conflict every four hours","daily":"daily review","intraday":"provider-dependent intraday review","event-driven":"check when event/task requires plus periodic liveness review"},
+  "segments": [
+    {"path":"data/collection-source-universe/official-middle-east-20260911.json","source_count":43},
+    {"path":"data/collection-source-universe/regional-eurasia-asia-20260911.json","source_count":37},
+    {"path":"data/collection-source-universe/international-specialist-20260911.json","source_count":42},
+    {"path":"data/collection-source-universe/imagery-osint-20260911.json","source_count":12}
+  ],
+  "total_source_count": 134
+}
