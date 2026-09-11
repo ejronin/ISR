@@ -15,7 +15,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = "data/canonical-current-state-v2.json"
-PUBLIC = "data/public-current-state-v2.json"
+PUBLIC = "data/public-current-state.json"
 SCHEMA = "schemas/lie-ledger-evidence-adjudication-v2.json"
 GOVERNANCE = "ATLAS-EVIDENCE-20260910-1"
 CONTRACT = "2026-09-10"
