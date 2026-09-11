@@ -6,8 +6,8 @@ separate derived series and is deliberately bounded to conflict Day 1 through
 the accepted current evidence cutoff while preserving the frozen Gate 2 boundary.
 
 Lie Ledger v2 is generated through the active neutral evidence-adjudication
-pipeline. Historical assessment artifacts remain replayable provenance inputs,
-but persona authority is not part of generated canonical governance.
+pipeline. Historical assessment artifacts remain migration-audit provenance only;
+production consumes the tracked neutral adjudication set directly.
 """
 from __future__ import annotations
 
@@ -111,6 +111,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "coverage_end": rows[-1]["date"] if rows else None,
         "coverage_days": len(rows),
         "lie_ledger_governance_version": state["release"]["lie_ledger_governance_version"],
+        "lie_ledger_adjudication_version": state["release"].get("lie_ledger_adjudication_version"),
+        "lie_ledger_adjudication_record_sha256": state["release"].get("lie_ledger_adjudication_record_sha256"),
         "lie_ledger_contract_version": state["release"]["lie_ledger_contract_version"],
         "lie_ledger_historical_doctrine_version": historical.get("doctrine_version"),
         "lie_ledger_evidence_completion_version": state["release"].get("lie_ledger_evidence_completion_version"),

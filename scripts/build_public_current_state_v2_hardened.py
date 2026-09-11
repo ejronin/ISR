@@ -18,7 +18,7 @@ import public_read_model_foundation as foundation
 OUT = "data/public-current-state-v2.json"
 SCHEMA = "schemas/public-current-state-v2.json"
 GENERATOR = "scripts/build_public_current_state_v2_hardened.py"
-GENERATOR_VERSION = "2.3-neutral-governance"
+GENERATOR_VERSION = "2.4-neutral-adjudication-input"
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -154,17 +154,11 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
 
     input_roles = {
         "data/canonical-current-state-v2.json": "DERIVED_GATE3_CANONICAL_CURRENT_STATE",
-        "data/lie-ledger-v2-rook-authority.json": "HISTORICAL_LIE_LEDGER_ASSESSMENT_INPUT",
-        "data/lie-ledger-v2-rook-evidence-completion-20260909.json": "HISTORICAL_EVIDENCE_COMPLETION_INPUT",
+        "data/lie-ledger-v2-evidence-adjudications.json": "ACTIVE_LIE_LEDGER_EVIDENCE_ADJUDICATION_SET",
         "data/lie-ledger-v2-evidence-sources-20260909.json": "LIE_LEDGER_EVIDENCE_SOURCE_REGISTRY",
-        "data/lie-ledger-v2-rook-current-claims-20260909.json": "HISTORICAL_CURRENT_CLAIM_ASSESSMENT_INPUT",
         "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md": "ACTIVE_LIE_LEDGER_EVIDENCE_CONTRACT",
-        "scripts/neutralize_lie_ledger_governance.py": "ACTIVE_LIE_LEDGER_GOVERNANCE_MIGRATION",
+        "scripts/build_lie_ledger_evidence_adjudication.py": "ACTIVE_LIE_LEDGER_EVIDENCE_BUILDER",
         "schemas/lie-ledger-evidence-adjudication-v2.json": "ACTIVE_LIE_LEDGER_EVIDENCE_SCHEMA",
-        "schemas/lie-ledger-v2.json": "HISTORICAL_LIE_LEDGER_V2_SCHEMA",
-        "scripts/build_lie_ledger_v2.py": "HISTORICAL_ASSESSMENT_PROJECTION_GENERATOR",
-        "scripts/apply_lie_ledger_evidence_completion_20260909.py": "HISTORICAL_EVIDENCE_COMPLETION_APPLICATOR",
-        "scripts/apply_lie_ledger_current_claims_20260909.py": "HISTORICAL_CURRENT_CLAIM_APPLICATOR",
         "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
         "scripts/public_read_model_foundation.py": "PUBLIC_READ_MODEL_FOUNDATION",
         GENERATOR: "PHASE9_PUBLIC_READ_MODEL_GENERATOR",
@@ -190,6 +184,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     state["release"]["lie_ledger_governance_version"] = canonical["release"].get("lie_ledger_governance_version")
     state["release"]["lie_ledger_contract_version"] = canonical["release"]["lie_ledger_contract_version"]
     state["release"]["lie_ledger_contract_path"] = canonical["release"].get("lie_ledger_contract_path")
+    state["release"]["lie_ledger_adjudication_version"] = canonical["release"].get("lie_ledger_adjudication_version")
+    state["release"]["lie_ledger_adjudication_record_sha256"] = canonical["release"].get("lie_ledger_adjudication_record_sha256")
     state["release"]["lie_ledger_evidence_completion_version"] = canonical["release"].get("lie_ledger_evidence_completion_version")
     state["release"]["lie_ledger_current_claim_update_version"] = canonical["release"].get("lie_ledger_current_claim_update_version")
     generator_raw = foundation.canonical_input_bytes((root / GENERATOR).read_bytes())
@@ -211,8 +207,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_primary_public_object_is_chain": True,
         "lie_ledger_blocked_assessments_withheld_not_downgraded": True,
         "lie_ledger_component_evidence_refs_public": True,
-        "lie_ledger_historical_evidence_completion_input_pinned": True,
-        "lie_ledger_historical_current_claim_input_pinned": True,
+        "lie_ledger_active_adjudication_input_neutral": True,
+        "lie_ledger_historical_handoffs_are_migration_provenance_only": True,
         "lie_ledger_active_persona_authority_removed": True,
         "legacy_v1_builder_not_executed_by_v2": True,
     })

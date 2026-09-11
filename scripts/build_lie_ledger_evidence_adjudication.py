@@ -359,6 +359,7 @@ def apply(state: dict[str, Any], root: Path = ROOT) -> dict[str, Any]:
     release["lie_ledger_contract_version"] = CONTRACT_VERSION
     release["lie_ledger_contract_path"] = CONTRACT_PATH
     release["lie_ledger_adjudication_version"] = ADJUDICATION_VERSION
+    release["lie_ledger_adjudication_record_sha256"] = (payload.get("migration_provenance") or {}).get("neutral_record_set_sha256")
     release["lie_ledger_evidence_completion_version"] = historical.get("evidence_completion_version")
     release["lie_ledger_current_claim_update_version"] = historical.get("current_claim_update_version")
     release["lie_ledger_historical_assessment"] = {
