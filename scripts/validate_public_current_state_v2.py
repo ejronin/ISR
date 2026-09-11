@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_public_current_state_v2 as core  # noqa: E402
 import build_public_current_state_v2_hardened as builder  # noqa: E402
-import public_read_model_foundation as foundation  # noqa: E402
+import public_read_model_current_foundation as foundation  # noqa: E402
 
 
 ARTIFACT = ROOT / "data/public-current-state.json"
@@ -124,7 +124,20 @@ def main() -> int:
     require(set(core.AUDIT_ONLY_GATE3_DATASETS) <= audit_waivers, "Gate 3 audit-only datasets lack explicit waivers")
     require(state["integrity"].get("browser_replays_update_packets") is False, "browser update replay was enabled")
     require(state["integrity"].get("phase9_routes_consume_gate3_state") is True, "Phase 9 route-consumer declaration missing")
-    require(state["integrity"].get("legacy_v1_builder_not_executed_by_v2") is True, "v2 compiler decoupling declaration missing")
+    require(state["integrity"].get("current_foundation_direct_from_canonical_v2") is True, "current public foundation is not direct from canonical-v2")
+    require(state["integrity"].get("historical_public_v1_compiler_in_active_input_graph") is False, "historical public-v1 compiler remains active")
+    require("v1_path" not in state.get("canonical_lineage", {}), "public canonical lineage still carries active v1 path")
+    require("v1_sha256" not in state.get("canonical_lineage", {}), "public canonical lineage still carries active v1 hash")
+    require("v1_public_source_records" not in state.get("counts", {}), "obsolete v1 public source count remains active")
+    require("v1_public_canonical_source_records" not in state.get("counts", {}), "obsolete v1 canonical source count remains active")
+    input_path_strings = {item["path"] for item in state.get("input_files") or []}
+    require("scripts/public_read_model_current_foundation.py" in input_path_strings, "current foundation is absent from release input graph")
+    for retired in (
+        "scripts/build_public_current_state.py",
+        "schemas/public-current-state-v1.json",
+        "data/canonical-current-state.json",
+    ):
+        require(retired not in input_path_strings, f"historical compatibility input remains active: {retired}")
 
     ledger_payload = state["datasets"]["gate3.lie_ledger"]["payload"]
     require(isinstance(ledger_payload, dict), "Lie Ledger v2 dataset payload is not an object")
