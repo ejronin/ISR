@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_canonical_current_state_v2 as gate3_base
 import build_canonical_current_state_v2_hardened as gate3
+import build_canonical_current_state_v2_final as gate3_final
 
 PROTECTED_INHERITED_GAP_IDS = tuple(f"GAP-{i:03d}" for i in range(1, 20))
 PROTECTED_GAP_BASELINE_LINEAGE_SHA256 = "d6250ba785c7480f59058b3e6292fad608c9390d47c3ab7cab60fd57c239d4eb"
@@ -139,6 +140,7 @@ def validate_gap_contract(state: dict, root: Path = ROOT) -> None:
 
 def main() -> int:
     state = gate3.build_state(ROOT)
+    gate3_final.ensure_gap_collection_actions(state)
     dispositions = [item["record"] for item in state["entities"].get("legacy_dispositions", [])]
     expected = {f"E{i:03d}" for i in range(1, 64)}
     actual = [row["legacy_event_id"] for row in dispositions]
