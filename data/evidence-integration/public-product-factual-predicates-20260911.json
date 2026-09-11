@@ -1,0 +1,122 @@
+{
+  "artifact_role": "EVIDENCE_LANE_PUBLIC_PRODUCT_FACTUAL_PREDICATES",
+  "authority_note": "Factual/evidentiary predicates only. Public Product owns reader wording; Release Integrity owns machine packaging.",
+  "evidence_cutoff": "2026-09-11T18:00:00-04:00",
+  "facility_predicate_definitions": {
+    "CONTINUED_PRESENCE_NO_SHUTDOWN_REPORTED": "Presence or continuity is reported, but operation is not affirmatively established merely from presence.",
+    "DAMAGED_BUT_OPERATING": "Physical damage plus affirmative evidence of continued operation at the represented facility/system scope.",
+    "DAMAGED_NOT_OPERATING": "Physical damage plus affirmative evidence the represented facility/node is not operating.",
+    "DAMAGED_OPERATIONAL_EFFECT_UNKNOWN": "Physical damage established; current operation/shutdown not established.",
+    "DESTROYED": "Facility or represented node is physically destroyed; later operation requires separate reconstitution evidence.",
+    "OPERATIONAL_CONTINUITY_ESTABLISHED": "Affirmative evidence of operating activity exists.",
+    "WITHDRAWN_CLOSED_TRANSFERRED": "Administrative withdrawal, closure, relocation or transfer is established; not a destruction predicate."
+  },
+  "facilities": [
+    {"facility_id":"US-ALUDEID","predicate":"DAMAGED_NOT_OPERATING","scope":"Combined Air Operations Center only","whole_facility_predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"CAOC reported inoperable; campaign command shifted to Shaw. Whole-base incapacity is not established."},
+    {"facility_id":"FAC-UAE-BARAKAH","predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","scope":"plant/system","basis":"Generator hit and one reactor automatically shut down; current restart status unresolved; no whole-plant destruction."},
+    {"facility_id":"FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT","predicate":"DAMAGED_BUT_OPERATING","scope":"airport","basis":"Terminal damage and disruption established; Terminal 4 flight continuity reported."},
+    {"facility_id":"FAC-IRN-KHONDAB-HEAVY-WATER","predicate":"DAMAGED_NOT_OPERATING","scope":"facility","basis":"IAEA reported severe damage and facility no longer operational; repair/restart unresolved."},
+    {"facility_id":"FAC-QAT-LNG-SYSTEM","predicate":"DAMAGED_BUT_OPERATING","scope":"Qatar LNG system","subfacility_predicate":"DAMAGED_NOT_OPERATING","basis":"Remaining system operates; two of 14 LNG trains and a GTL facility remained unavailable by Sep. 11; approximately 12.8 mtpa affected and multi-year repair effect reported."},
+    {"facility_id":"US-NSA-BHR","predicate":"WITHDRAWN_CLOSED_TRANSFERRED","scope":"Fifth Fleet HQ function","damage_predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"HQ function relocated to MacDill after extensive damage; evidence does not establish cessation of every local NSA Bahrain function."},
+    {"facility_id":"US-ARIFJAN","predicate":"CONTINUED_PRESENCE_NO_SHUTDOWN_REPORTED","damage_predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Damage verified; U.S. troops later reported present; presence is not silently upgraded to operational status."},
+    {"facility_id":"US-ALISALEM","predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Substantial localized damage verified; no affirmative whole-base shutdown or current full-operation record in the evidence predicate."},
+    {"facility_id":"US-BUEHRING","predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Power plant and other damage verified; no whole-site shutdown established."},
+    {"facility_id":"US-SHUAIBA-TOC","predicate":"DESTROYED","scope":"U.S. tactical operations center/outpost","basis":"The specific TOC was destroyed; this does not establish destruction of Camp Arifjan or the regional network."},
+    {"facility_id":"US-CAMPDOHA","predicate":"CONTINUED_PRESENCE_NO_SHUTDOWN_REPORTED","damage_predicate":"DAMAGE_NOT_ESTABLISHED","basis":"U.S. troop position reported; Iranian attack/damage claim not independently corroborated; operational effect unknown."},
+    {"facility_id":"US-BUBIYAN","predicate":"CONTINUED_PRESENCE_NO_SHUTDOWN_REPORTED","damage_predicate":"DAMAGE_NOT_ESTABLISHED","basis":"Reported relocated position; permanence and operational effect not established."},
+    {"facility_id":"US-ALDHAFRA","predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Damage verified and U.S. presence established; absence of a whole-base shutdown report is not affirmative proof of full operation."},
+    {"facility_id":"US-JEBELALI","predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Port-area damage/fire established; no isolated destroyed U.S. naval asset or whole-access-site shutdown established."},
+    {"facility_id":"US-ERBIL","predicate":"WITHDRAWN_CLOSED_TRANSFERRED","scope":"drawdown state","damage_predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Military/airport area damage reported while broader Iraq drawdown was underway; do not treat as stable permanent-base operational status."},
+    {"facility_id":"US-AINASAD","predicate":"WITHDRAWN_CLOSED_TRANSFERRED","basis":"U.S. forces fully withdrew by Jan. 17, 2026; not an active U.S. base for the war baseline."},
+    {"facility_id":"US-PRINCESULTAN","predicate":"CONTINUED_PRESENCE_NO_SHUTDOWN_REPORTED","damage_predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Aircraft/base damage verified and later U.S. presence reported; no whole-base shutdown established."},
+    {"facility_id":"US-MUWAFFAQ","predicate":"CONTINUED_PRESENCE_NO_SHUTDOWN_REPORTED","damage_predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Earlier THAAD damage plus Sep. 8 aircraft damage are established; exact BDA and whole-base operational effect remain unresolved."},
+    {"facility_id":"US-INCIRLIK","predicate":"OPERATIONAL_CONTINUITY_ESTABLISHED","damage_predicate":"NO_REPORTED_DAMAGE_FOUND","basis":"Operational U.S. wing activity publicly documented; no reviewed damage report."},
+    {"facility_id":"US-ISA","predicate":"DAMAGED_OPERATIONAL_EFFECT_UNKNOWN","basis":"Patriot/base damage established; no whole-site shutdown established."},
+    {"facility_id":"US-RMELAN","predicate":"WITHDRAWN_CLOSED_TRANSFERRED","scope":"drawdown state","basis":"Retained during February drawdown reporting, but later current presence not refreshed; cannot label current operation from stale presence alone."},
+    {"facility_id":"US-QASRAK","predicate":"WITHDRAWN_CLOSED_TRANSFERRED","scope":"drawdown state","basis":"Withdrawal began during February 2026 drawdown; current operating presence not established."},
+    {"facility_id":"US-TANF","predicate":"WITHDRAWN_CLOSED_TRANSFERRED","basis":"U.S. withdrawal completed Feb. 12, 2026; not an active U.S. garrison afterward absent re-entry evidence."}
+  ],
+  "lie_knowledge_predicates": {
+    "all_other_current_records": "DO_NOT_AUTO_LABEL_LIE",
+    "constraint": "LIKELY_KNEW_FALSE, VERY_LIKELY_KNEW_FALSE, POSSIBLE_KNOWLEDGE, INSUFFICIENT_EVIDENCE and NOT_ASSESSABLE are not equivalent to knowing falsehood established. Their public factual labels must remain False/Misleading/Partly true/Unresolved as supported, without 'Lie' unless knowledge is separately established.",
+    "current_public_ready_lie_findings": [
+      {
+        "basis": "The same Press TV article used the weaker 'target around 210' wording in its body while publishing a headline that said Iran had 'downed' about 210 aircraft. The publisher therefore possessed the contrary/weaker wording in the article it published; the finding applies to publisher framing, not automatically to every quoted Iranian official.",
+        "claim_instance_id": "CI-PROP-IR-210-DOWNED-HEADLINE",
+        "predicate": "KNOWING_FALSEHOOD_ESTABLISHED",
+        "proposition_id": "PROP-IR-210-DOWNED-HEADLINE",
+        "speaker_actor_scope": "Press TV as publisher/state-media actor"
+      }
+    ],
+    "jordan_heavy_damage_update": "Later evidence establishes real U.S. aircraft damage at Muwaffaq Salti. The earlier broad Iranian 'heavy damage' proposition therefore cannot remain a simple no-damage falsity; the supported boundary is real damage established, scope/severity claim only partly substantiated/overstated, knowledge of any overstatement not established.",
+    "rule": "Factual falsity and claimant knowledge are separate. 'Lie' is permitted only where evidence supports knowledge of falsity at statement time or an institutionally attributable knowledge chain."
+  },
+  "material_loss_predicates": {
+    "aggregate_status": "PARTIAL_DEDUPLICATED_AGGREGATES_ONLY",
+    "examples": [
+      {"class":"KNOWN_PHYSICAL_QUANTITY","quantity":1,"record":"MAT-IRN-DENA-20260304"},
+      {"class":"KNOWN_PHYSICAL_QUANTITY","quantity":2,"record":"MAT-USA-NSA-BHR-RADOMES"},
+      {"class":"UNKNOWN_QUANTITY","record":"MAT-USA-ALUDEID-CAOC-2026"},
+      {"aggregate_excluded":true,"class":"CLAIM_ONLY_QUANTITY","record":"MAT-CLAIM-IRN-100-VESSELS","reported":100},
+      {"aggregate_excluded":true,"class":"CLAIM_ONLY_QUANTITY","record":"MAT-CLAIM-IRGC-SMALLBOATS-20260707","reported":60},
+      {"class":"KNOWN_PHYSICAL_QUANTITY","quantity":1,"record":"MAT-US-A10-MUWAFFAQ-20260908"},
+      {"canonical_quantity":null,"class":"NONDEFENSIBLE_NUMERIC","record":"MAT-US-F15-MUWAFFAQ-20260908","reported_approx":8}
+    ],
+    "public_product_boundary": "No honest all-platform or all-actor 'total losses' number exists across the present record. Class-specific exact/minimum totals are permissible only from the compatible subset.",
+    "quantity_classes": {
+      "CLAIM_ONLY_QUANTITY": "Actor target/loss claim not verified; excluded from physical aggregate.",
+      "KNOWN_PHYSICAL_QUANTITY": "Exact sourced integer for an identified physical asset/set; may be summed after stable-ID deduplication.",
+      "MINIMUM_CONFIRMED_QUANTITY": "Use only when the source itself establishes a lower bound (for example 'at least N'); do not infer a minimum from vague plural language.",
+      "NONDEFENSIBLE_NUMERIC": "Approximate or mixed-category report that cannot be converted to an exact quantity.",
+      "UNKNOWN_QUANTITY": "Physical damage/loss established but quantity null."
+    },
+    "rule": "Atlas may sum only stable physical asset records with defensible numeric quantity and compatible asset class/status. Claim-only target counts, null quantities, approximate quantities and mixed unresolved classes stay outside the numeric total."
+  },
+  "objective_predicates": [
+    {"actor":"United States","objective":"Deny Iran a nuclear weapon","predicate":"UNRESOLVED","basis":"No Iranian nuclear weapon is established, but no durable controlling nuclear settlement exists and the IAEA safeguards dispute has escalated to Security Council referral."},
+    {"actor":"United States","objective":"Break offensive military power projection","predicate":"PARTLY_ACHIEVED","basis":"Substantial attrition/degradation is established, but Iran retains and uses missiles, drones and maritime coercive capability."},
+    {"actor":"United States","objective":"Reduce Iran's ability to arm and sustain proxies","predicate":"PARTLY_ACHIEVED","basis":"Some proxy/network degradation is established, but the Houthi force remains operationally capable and made major Sep. 10-11 territorial gains."},
+    {"actor":"United States","objective":"Restore usable navigation through Hormuz","predicate":"NOT_ACHIEVED","basis":"Physical transit exists, but observable traffic remains severely depressed, attacks continue and no normalized navigation regime controls."},
+    {"actor":"United States","objective":"Use economic isolation to narrow Tehran's options","predicate":"PARTLY_ACHIEVED","basis":"Severe trade/export/financial pressure and expanding sanctions are established; Iran remains capable of trade and coercive action and is not fully isolated."},
+    {"actor":"Iran","objective":"War damages / reparations paid","predicate":"NOT_ACHIEVED"},
+    {"actor":"Iran","objective":"Frozen / blocked Iranian assets returned","predicate":"NOT_ACHIEVED"},
+    {"actor":"Iran","objective":"U.S. naval blockade terminated","predicate":"NOT_ACHIEVED"},
+    {"actor":"Iran","objective":"Full / verifiable sanctions relief","predicate":"NOT_ACHIEVED"},
+    {"actor":"Iran","objective":"U.S. withdrawal from bases surrounding Iran","predicate":"NOT_ACHIEVED","basis":"Some unrelated/preexisting drawdowns occurred, but the broad demanded regional withdrawal is not established."},
+    {"actor":"Iran","objective":"Protection / non-aggression toward Axis allies","predicate":"NOT_ACHIEVED","basis":"No durable non-aggression/protection guarantee exists; aligned actors remain exposed to attack."},
+    {"actor":"Iran","objective":"Permanent Iranian Hormuz sovereignty / management / fees","predicate":"NOT_ACHIEVED","basis":"Iran has coercive leverage, but recognized exclusive sovereignty/management and compulsory fee rights are not established; Iran also temporarily suspended an energy freight charge."},
+    {"actor":"Iran","objective":"No concessions on nuclear, missiles, defense or regional architecture","predicate":"PARTLY_ACHIEVED","basis":"Important capabilities/red lines remain, but the record already includes mediated/shared maritime arrangements inconsistent with the earlier categorical all-or-nothing posture; final nuclear/missile bargain remains unresolved."}
+  ],
+  "shipping_predicates": {
+    "baseline_rule": "Use the same Kpler/provider series for short-term comparison. The approximately 125 large commercial vessels/day prewar figure is contextual scale only, not a mathematically compatible denominator for Kpler's narrower observable series.",
+    "commercial_status": "SEVERELY_DISRUPTED_AND_CONTESTED",
+    "latest_comparable_metric": {
+      "observation_date": "2026-09-10",
+      "prior_day": 11,
+      "provider": "Kpler",
+      "reported_date": "2026-09-11",
+      "scope": "provider-observable/AIS traffic; dark/AIS-off traffic excluded",
+      "ten_day_average": 15,
+      "unit": "observable vessel transits",
+      "value": 7
+    },
+    "normalization_status": "NOT_NORMALIZED",
+    "physical_status": "PHYSICALLY_TRAVERSABLE"
+  },
+  "version": "2026-09-11-e1-e2",
+  "weapons_effect_predicates": {
+    "aggregation_rule": "Aggregate only where source, time window, weapon class, denominator definition and stage semantics are identical.",
+    "permitted_chains": [
+      {
+        "constraint": "The later damage means the early impact account and BDA require reconciliation; do not infer a clean 18/20 interception-to-zero-hit chain.",
+        "damage": "Later U.S.-sourced reporting establishes real U.S. aircraft damage",
+        "event_ref": "G3-IRAN-JORDAN-BASE-ATTACK-20260908",
+        "interception": "18 reported intercepted",
+        "launch": "20 ballistic missiles reported by Jordan",
+        "penetration_or_fall": "Jordan initially reported two fell in unpopulated areas"
+      }
+    ],
+    "reason": "Launch/expenditure, interception, penetration, impact and damage observations come from different incidents, providers, time windows and counting universes. They cannot be divided into a whole-war effectiveness percentage.",
+    "whole_war_aggregate": "NO_COMPATIBLE_DENOMINATOR"
+  }
+}
