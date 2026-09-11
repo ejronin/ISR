@@ -53,7 +53,7 @@ jobs:
           node tests/public-final-polish.test.js
           python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py scripts/validate_public_deployment.py tests/neutral-current-narrative.test.py
           python tests/neutral-current-narrative.test.py
-      - name: Verify reader assets and direct neutral entrypoint
+      - name: Verify reader assets and single-pass release core
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -67,6 +67,7 @@ jobs:
           css_text = css.read_text(encoding='utf-8')
           app_text = app.read_text(encoding='utf-8')
           builder = (root / 'scripts/build_public_release.py').read_text(encoding='utf-8')
+          core = (root / 'scripts/build_public_release_core.py').read_text(encoding='utf-8')
           bootstrap = (root / 'js/public-bootstrap.js').read_text(encoding='utf-8')
           inventory = (root / 'config/public-runtime-inventory.json').read_text(encoding='utf-8')
 
@@ -77,8 +78,15 @@ jobs:
           assert 'ROOK verdict / PR/CI evidence boundary' not in js_text
 
           for token in ('reader_runtime', 'reader_stylesheet', 'src/public-reader-layer.js', 'src/public-reader-layer.css'):
-              assert token in builder, token
+              assert token in core, token
               assert token in inventory, token
+          assert core.count('(\"reader_runtime\", \"public-reader-layer\", \"src/public-reader-layer.js\", \"js\")') == 1
+          assert core.count('(\"reader_stylesheet\", \"public-reader-layer\", \"src/public-reader-layer.css\", \"css\")') == 1
+          assert '2.3-single-pass-reader-assets' in core
+          assert 'from build_public_release_core import *' in builder
+          for postprocess in ('_promote_reader_assets', '_rebind_release_identity', '_asset_set_sha256', 'READER_RUNTIME_SPEC', 'READER_STYLESHEET_SPEC', 'materialize_asset('):
+              assert postprocess not in builder, postprocess
+
           assert 'reader_runtime' in bootstrap and 'reader_stylesheet' in bootstrap
           assert 'reader_runtime' in app_text and 'reader_stylesheet' in app_text
           assert 'authorization.runtimeAssets.length === 3' in app_text

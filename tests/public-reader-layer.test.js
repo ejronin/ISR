@@ -103,6 +103,7 @@ assert.equal(status({
 const readerSource = fs.readFileSync(path.join(root, 'src/public-reader-layer.js'), 'utf8');
 const readerCss = fs.readFileSync(path.join(root, 'src/public-reader-layer.css'), 'utf8');
 const releaseBuilder = fs.readFileSync(path.join(root, 'scripts/build_public_release.py'), 'utf8');
+const releaseCore = fs.readFileSync(path.join(root, 'scripts/build_public_release_core.py'), 'utf8');
 const appSource = fs.readFileSync(path.join(root, 'js/public-app.js'), 'utf8');
 assert.match(readerSource, /What made up these monthly totals/);
 assert.match(readerSource, /Equipment quantities are not substituted for event counts/);
@@ -115,10 +116,13 @@ assert.doesNotMatch(readerCss, /technical-record-metadata[\s\S]*display\s*:\s*no
 
 // The reader is a pair of signed source modules, not text spliced into the
 // base registry, base stylesheet or entrypoint during release assembly.
-assert.match(releaseBuilder, /reader_runtime/);
-assert.match(releaseBuilder, /src\/public-reader-layer\.js/);
-assert.match(releaseBuilder, /reader_stylesheet/);
-assert.match(releaseBuilder, /src\/public-reader-layer\.css/);
+assert.match(releaseCore, /reader_runtime/);
+assert.match(releaseCore, /src\/public-reader-layer\.js/);
+assert.match(releaseCore, /reader_stylesheet/);
+assert.match(releaseCore, /src\/public-reader-layer\.css/);
+assert.match(releaseCore, /2\.3-single-pass-reader-assets/);
+assert.match(releaseBuilder, /from build_public_release_core import \*/);
+assert.doesNotMatch(releaseBuilder, /_promote_reader_assets|_rebind_release_identity|_asset_set_sha256|READER_RUNTIME_SPEC|READER_STYLESHEET_SPEC|materialize_asset\(/);
 assert.doesNotMatch(releaseBuilder, /compose_reader_sources|ATLAS_PUBLIC_READER_LAYER_COMPOSED|ATLAS_PUBLIC_READER_STYLES_COMPOSED/);
 assert.doesNotMatch(releaseBuilder, /PAGE_REGISTRY|PUBLIC_STYLESHEET|retire_privileged_narrative_runtime|entrypoint_preparation/);
 assert.match(appSource, /assetForRole\(manifest, 'reader_runtime'\)/);
@@ -128,4 +132,4 @@ assert.match(appSource, /authorization\.stylesheetAssets\.length === 3/);
 assert.doesNotMatch(appSource, /ROOK_NARRATIVE_CURRENT|FINAL_NARRATIVE_GATES/);
 assert.equal(fs.existsSync(path.join(root, 'scripts/retire_privileged_narrative_runtime.py')), false, 'retired entrypoint source transform remains in repository');
 
-console.log('public reader layer: PASS - factual/intent separation, facility status integrity, constituent drilldown, structural public/internal boundary, explicit signed reader assets, and direct neutral entrypoint verified');
+console.log('public reader layer: PASS - factual/intent separation, facility status integrity, constituent drilldown, structural public/internal boundary, explicit signed reader assets, single-pass release graph, and direct neutral entrypoint verified');

@@ -10,16 +10,22 @@ const source = read('js/public-ia.js');
 const appSource = read('js/public-app.js');
 const css = read('css/public-shell.css');
 const releaseBuilder = read('scripts/build_public_release.py');
+const releaseCore = read('scripts/build_public_release_core.py');
 const retirementScript = path.join(root, 'scripts', 'retire_privileged_narrative_runtime.py');
 
 assert.equal(fs.existsSync(path.join(root, 'config', 'rook-narrative-current.json')), false, 'retired persona narrative config remains active');
 assert.equal(fs.existsSync(path.join(root, 'scripts', 'sync_rook_narrative.py')), false, 'retired persona narrative sync script remains active');
 assert.equal(fs.existsSync(retirementScript), false, 'release-time public-entrypoint transform remains active');
-assert(!releaseBuilder.includes('retire_privileged_narrative_runtime'), 'release builder still imports the retired entrypoint transform');
-assert(!releaseBuilder.includes('entrypoint_preparation'), 'release builder still mutates the tracked entrypoint before signing');
-assert(releaseBuilder.includes('reader_runtime') && releaseBuilder.includes('reader_stylesheet'), 'release builder does not publish reader assets explicitly');
-assert(!releaseBuilder.includes('compose_reader_sources'), 'release builder still concatenates reader source into base assets');
-assert(releaseBuilder.includes('2.2-direct-runtime-sources'), 'release builder is not on the direct tracked-source contract');
+assert(!releaseBuilder.includes('retire_privileged_narrative_runtime'), 'release wrapper still imports the retired entrypoint transform');
+assert(!releaseBuilder.includes('entrypoint_preparation'), 'release wrapper still mutates the tracked entrypoint before signing');
+assert(!releaseBuilder.includes('_promote_reader_assets'), 'release wrapper still post-processes the reader asset graph');
+assert(!releaseBuilder.includes('_rebind_release_identity'), 'release wrapper still recomputes release identity after core assembly');
+assert(!releaseBuilder.includes('materialize_asset('), 'release wrapper still materializes application assets');
+assert(releaseBuilder.includes('from build_public_release_core import *'), 'release wrapper is not a stable compatibility entrypoint over the core builder');
+assert(releaseCore.includes('reader_runtime') && releaseCore.includes('reader_stylesheet'), 'single-pass core does not publish reader assets explicitly');
+assert(releaseCore.includes('src/public-reader-layer.js') && releaseCore.includes('src/public-reader-layer.css'), 'single-pass core does not source the reader modules directly');
+assert(releaseCore.includes('2.3-single-pass-reader-assets'), 'single-pass core generator contract is missing');
+assert(!releaseCore.includes('compose_reader_sources'), 'single-pass core still concatenates reader source into base assets');
 
 assert(!appSource.includes('ROOK_NARRATIVE_CURRENT'), 'tracked public entrypoint still contains persona narrative payload');
 assert(!appSource.includes('FINAL_NARRATIVE_GATES'), 'tracked public entrypoint still contains retired narrative contract');
@@ -77,4 +83,4 @@ assert(css.includes('outline: 2px solid var(--atlas-focus-ring)'), 'editorial H1
 assert(css.includes('min-height: 2.75rem'), 'touch-target floor is absent');
 assert(!css.includes('font-size: .58rem'), 'final polish still depends on sub-readable .58rem mobile type');
 
-console.log('public final polish: PASS - current-state hierarchy, semantic state notices, Talks grouping, direct neutral entrypoint source and shared interaction/readability contracts verified');
+console.log('public final polish: PASS - current-state hierarchy, semantic state notices, Talks grouping, direct neutral entrypoint source, single-pass reader asset graph and shared interaction/readability contracts verified');

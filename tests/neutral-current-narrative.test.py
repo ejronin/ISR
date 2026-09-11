@@ -18,16 +18,31 @@ assert "runtime.length === 3" in source
 assert "stylesheets.length === 3" in source
 
 builder = (ROOT / "scripts" / "build_public_release.py").read_text(encoding="utf-8")
-assert "2.2-direct-runtime-sources" in builder
-assert "reader_runtime" in builder and "src/public-reader-layer.js" in builder
-assert "reader_stylesheet" in builder and "src/public-reader-layer.css" in builder
-assert "retire_privileged_narrative_runtime" not in builder
-assert "entrypoint_preparation" not in builder
-assert "compose_reader_sources" not in builder
-assert "ATLAS_PUBLIC_READER_LAYER_COMPOSED" not in builder
-assert "ATLAS_PUBLIC_READER_STYLES_COMPOSED" not in builder
-assert "PAGE_REGISTRY" not in builder
-assert "PUBLIC_STYLESHEET" not in builder
+core_builder = (ROOT / "scripts" / "build_public_release_core.py").read_text(encoding="utf-8")
+assert "from build_public_release_core import *" in builder
+assert "2.3-single-pass-reader-assets" in core_builder
+assert core_builder.count('(\"reader_runtime\", \"public-reader-layer\", \"src/public-reader-layer.js\", \"js\")') == 1
+assert core_builder.count('(\"reader_stylesheet\", \"public-reader-layer\", \"src/public-reader-layer.css\", \"css\")') == 1
+assert 'assets_by_role[\"reader_runtime\"][\"path\"]' in core_builder
+assert 'assets_by_role[\"reader_stylesheet\"][\"path\"]' in core_builder
+
+# The stable wrapper must not perform a second manifest pass or source mutation.
+for retired in (
+    "_promote_reader_assets",
+    "_rebind_release_identity",
+    "_asset_set_sha256",
+    "READER_RUNTIME_SPEC",
+    "READER_STYLESHEET_SPEC",
+    "materialize_asset(",
+    "retire_privileged_narrative_runtime",
+    "entrypoint_preparation",
+    "compose_reader_sources",
+    "ATLAS_PUBLIC_READER_LAYER_COMPOSED",
+    "ATLAS_PUBLIC_READER_STYLES_COMPOSED",
+    "PAGE_REGISTRY",
+    "PUBLIC_STYLESHEET",
+):
+    assert retired not in builder, retired
 
 # Retired publication side channels and release-time source transforms must not
 # remain active inputs. The tracked public entrypoint is the deployable source.
@@ -69,4 +84,4 @@ for event_id in sorted(required):
     assert event_id in retirement_note
 assert "c75725d4c3164a014222fb996abd18aabe52e1564b092a0ca5b6ee407c8af638" in retirement_note
 
-print("neutral current narrative: PASS - tracked entrypoint is directly neutral; no release-time source transform remains; accepted Sep. 8-9 evidence parity preserved")
+print("neutral current narrative: PASS - tracked entrypoint is directly neutral; single-pass core owns the reader asset graph; accepted Sep. 8-9 evidence parity preserved")
