@@ -1,8 +1,8 @@
 # Privileged narrative retirement — 2026-09-10
 
-**Status:** migration record
+**Status:** migration complete
 
-This note records why the former `rook-narrative-current` publication side channel can be removed without deleting unique evidence. It is not a new analytical authority and does not freeze public wording.
+This note records why the former `rook-narrative-current` publication side channel was removed without deleting unique evidence, and how the final release-time compatibility transform was subsequently retired. It is not a new analytical authority and does not freeze public wording.
 
 ## Replacement rule
 
@@ -37,6 +37,12 @@ These remain ordinary source records. Removing the old narrative transport does 
 
 ## Release behavior
 
-`scripts/retire_privileged_narrative_runtime.py` removes the obsolete embedded narrative contract from the deployable `js/public-app.js` before content addressing and signing. `scripts/build_public_release.py` invokes that transform before release manifest construction. The reader then receives current-state content from the normal public read model.
+The migration is complete. `js/public-app.js` is now the direct tracked source that is content-addressed and signed for the public entrypoint. It contains the neutral `narrativeContract: null` state and the explicit three-runtime / three-stylesheet authorization contract, including the independently signed reader JS and CSS.
 
-The transform is a bounded migration adapter. The long-term cleanup is to remove the dead legacy block from tracked source when the public boot/reader sources are next consolidated; production does not depend on it in the interim.
+The last qualified release produced the neutral entrypoint bytes with SHA-256:
+
+`c75725d4c3164a014222fb996abd18aabe52e1564b092a0ca5b6ee407c8af638`
+
+Those exact bytes were promoted into tracked `js/public-app.js` before the compatibility transform was removed. `scripts/retire_privileged_narrative_runtime.py` is therefore no longer part of release assembly, and `scripts/build_public_release.py` signs reviewable tracked runtime sources directly. No release step rewrites `js/public-app.js`, `js/public-ia.js`, or `css/public-shell.css` before signing.
+
+The historical `ATLAS_PRIVILEGED_NARRATIVE_RETIRED` marker remains in the tracked entrypoint as an audit marker only. It carries no publication authority or runtime content.
