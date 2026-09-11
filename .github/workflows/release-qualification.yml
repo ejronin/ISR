@@ -1,0 +1,238 @@
+name: Reusable release qualification
+
+on:
+  workflow_call:
+    inputs:
+      commit_sha:
+        description: Exact commit SHA to qualify
+        required: true
+        type: string
+      authority_base_ref:
+        description: Prior authority ref used for append-only comparison
+        required: false
+        default: ''
+        type: string
+      prepare_pages_artifact:
+        description: Assemble and upload the Pages artifact after qualification
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    name: qualify exact SHA
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      ATLAS_COMMIT_SHA: ${{ inputs.commit_sha }}
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ inputs.commit_sha }}
+          fetch-depth: 0
+      - name: Prove checkout identity
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$ATLAS_COMMIT_SHA" || { echo "FAIL: checkout $actual != requested $ATLAS_COMMIT_SHA" >&2; exit 1; }
+          echo "Qualified commit: $actual"
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Install pinned build requirements
+        run: |
+          python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
+          python -m pip check
+
+      - name: Validate qualification topology and immutable authority
+        env:
+          INPUT_AUTHORITY_BASE_REF: ${{ inputs.authority_base_ref }}
+        run: |
+          set -euo pipefail
+          python tests/release-qualification-topology.test.py
+          base="$INPUT_AUTHORITY_BASE_REF"
+          if [ -z "$base" ]; then base="$(git rev-parse "$ATLAS_COMMIT_SHA^")"; fi
+          git cat-file -e "$base^{commit}"
+          python scripts/validate_canonical_authority.py --compare-ref "$base"
+          python tests/canonical-authority.test.py
+          python tests/canonical-update-pipeline.test.py
+          python tests/gate3-packet-hash-portability.test.py
+
+      - name: Validate registration and temporal semantics
+        run: |
+          python tests/gate3-v2-mutable-current-invariants.test.py
+          python scripts/gate3_v2_registration.py --verify
+          python tests/gate3-v2-registration.test.py
+          python tests/gate3-v2-temporal-contract.test.py
+          python tests/gate3-v2-temporal-consumer-agreement.test.py
+          python tests/gate3-v2-sep7-replay.test.py
+          python tests/gate3-v2-forward-update-canary.test.py
+          python tests/gate3-v2-delayed-knowledge-canary.test.py
+
+      - name: Validate neutral evidence governance
+        run: |
+          python scripts/migrate_lie_ledger_evidence_adjudications.py --check
+          python tests/lie-ledger-governance-neutralization.test.py
+          python tests/evidence-governance-boundary.test.py
+          python tests/evidence-semantic-edge-regressions.test.py
+
+      - name: Regenerate and validate pinned reference geography
+        run: |
+          python scripts/build_reference_geography.py --fetch-source-dir "$RUNNER_TEMP/atlas-natural-earth-v5.1.1" --check
+          python scripts/validate_public_geography.py
+
+      - name: Build exhaustive source registry
+        run: python scripts/build_source_registry.py --root .
+
+      - name: Build and validate canonical, public and signed release state
+        run: |
+          python scripts/build_current_release_state.py
+          python scripts/build_current_release_state.py --check
+          python tests/current-release-state-orchestration.test.py
+          python scripts/validate_gate3_final.py
+          python scripts/validate_lie_ledger_v2.py
+          python scripts/validate_public_current_state_v2.py
+          python scripts/build_public_release.py
+          python scripts/build_public_release.py --check
+          python scripts/validate_public_deployment.py
+          python scripts/validate_public_runtime_inventory.py
+          python tests/public-runtime-inventory.test.py
+          python tests/public-release-evidence-image.test.py
+          python tests/public-release-state-flags.test.py
+          node tests/public-current-state.test.js
+          node tests/public-boot.test.js
+          node tests/public-ia.test.js
+          node tests/public-content-redesign.test.js
+          node tests/public-evidence-phase5.test.js
+          node tests/public-map-phase6.test.js
+          node tests/public-loss-actor-batch2.test.js
+          node tests/public-parity-batch3.test.js
+          node tests/public-phase9.test.js
+          node tests/security-rendering.test.js
+          node tests/public-reader-layer.test.js
+          node tests/public-final-polish.test.js
+          python tests/neutral-current-narrative.test.py
+          node --check js/public-bootstrap.js
+          node --check js/public-app.js
+          node --check js/public-ia.js
+          node --check src/public-reader-layer.js
+          node --check tests/browser-public-boot-smoke.js
+          node --check tests/browser-public-final-polish.js
+          node --check tests/browser-public-render-review.js
+          node --check tests/browser-public-ia-smoke.js
+          node --check tests/browser-public-evidence-phase5.js
+          node --check tests/browser-public-map-phase6.js
+          node --check tests/browser-public-loss-actor-batch2.js
+          node --check tests/browser-public-parity-batch3.js
+          node --check tests/browser-public-phase9.js
+          node --check tests/browser-public-responsive-phase9.js
+          node --check tests/browser-public-full-stack-audit.js
+          node --check tests/browser-public-source-humanization-focus.js
+          python scripts/assemble_public_site.py --output _site
+          python scripts/write_build_info.py --output _site/build-info.json --commit "$ATLAS_COMMIT_SHA"
+          python scripts/assemble_public_site.py --output _site --check --require-build-info
+          python scripts/validate_public_runtime_inventory.py --site-root _site --require-build-info
+          python scripts/validate_public_deployment.py --site-root _site --require-build-info
+          python scripts/validate.py
+
+      - name: Exercise full current reader and accessibility behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m http.server 8765 --bind 127.0.0.1 --directory _site >/tmp/atlas-http.log 2>&1 &
+          server_pid=$!
+          browser_pid=''
+          process_is_running(){
+            local pid="$1" state=''
+            kill -0 "$pid" 2>/dev/null || return 1
+            if [ -r "/proc/$pid/stat" ]; then
+              state="$(sed -E 's/^.*\) ([A-Z]) .*/\1/' "/proc/$pid/stat" 2>/dev/null)" || true
+              [ "$state" != 'Z' ]
+              return
+            fi
+            return 0
+          }
+          terminate_process(){
+            local pid="${1:-}" label="${2:-process}" deadline
+            [ -n "$pid" ] || return 0
+            if process_is_running "$pid"; then
+              kill -TERM "$pid" 2>/dev/null || true
+              deadline=$((SECONDS + 5))
+              while process_is_running "$pid" && [ "$SECONDS" -lt "$deadline" ]; do sleep 0.1; done
+            fi
+            if process_is_running "$pid"; then
+              echo "$label did not exit after TERM; sending KILL." >&2
+              kill -KILL "$pid" 2>/dev/null || true
+            fi
+          }
+          cleanup(){ terminate_process "$browser_pid" browser || true; terminate_process "$server_pid" 'HTTP server' || true; }
+          trap cleanup EXIT
+          mapfile -t browsers < <(for name in chromium google-chrome-stable google-chrome chromium-browser; do command -v "$name" 2>/dev/null || true; done | awk '!seen[$0]++')
+          [ "${#browsers[@]}" -gt 0 ] || { echo 'FAIL: no Chrome/Chromium executable available.' >&2; exit 1; }
+          ready=0
+          for candidate in "${browsers[@]}"; do
+            rm -rf /tmp/atlas-chrome-profile
+            "$candidate" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --no-default-browser-check \
+              --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --remote-allow-origins='*' \
+              --user-data-dir=/tmp/atlas-chrome-profile 'http://127.0.0.1:8765/#/start/overview' >/tmp/atlas-chrome.log 2>&1 &
+            browser_pid=$!
+            deadline=$((SECONDS + 15))
+            while [ "$SECONDS" -lt "$deadline" ]; do
+              if curl -fsS --connect-timeout 1 --max-time 1 http://127.0.0.1:9222/json/version >/tmp/atlas-cdp-version.json 2>/dev/null; then ready=1; break; fi
+              if ! process_is_running "$browser_pid"; then break; fi
+              sleep 0.25
+            done
+            [ "$ready" -eq 1 ] && break
+            terminate_process "$browser_pid" "browser candidate" || true
+            browser_pid=''
+          done
+          [ "$ready" -eq 1 ] || { cat /tmp/atlas-http.log >&2 || true; cat /tmp/atlas-chrome.log >&2 || true; exit 1; }
+          export ATLAS_CDP=http://127.0.0.1:9222 ATLAS_SITE=http://127.0.0.1:8765/
+          node tests/browser-public-boot-smoke.js
+          node tests/browser-public-ia-smoke.js
+          node tests/browser-public-evidence-phase5.js
+          node tests/browser-public-map-phase6.js
+          node tests/browser-public-parity-batch3.js
+          node tests/browser-public-loss-actor-batch2.js
+          node tests/browser-public-responsive-phase9.js
+          node tests/browser-public-phase9.js
+          node tests/browser-public-full-stack-audit.js
+          node tests/browser-public-source-humanization-focus.js
+          ATLAS_SCREENSHOT_DIR=audit-screens node tests/browser-public-render-review.js
+
+      - name: Scan tracked files and Git metadata for privacy regressions
+        run: python scripts/privacy_scan.py
+
+      - name: Upload rendered review screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: public-render-review-${{ inputs.commit_sha }}
+          path: audit-screens
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload expected live-release identity
+        if: ${{ inputs.prepare_pages_artifact }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: release-attestation-input-${{ inputs.commit_sha }}
+          path: |
+            data/public-release.json
+            data/public-current-state.json
+            _site/build-info.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload qualified Pages artifact
+        if: ${{ inputs.prepare_pages_artifact }}
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: ./_site
