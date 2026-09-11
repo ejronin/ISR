@@ -56,10 +56,7 @@ def _protected_gap_baseline(root: Path) -> dict[str, dict]:
             if entity.get("mode") != "update":
                 fail(f"protected inherited gap has non-update historical operation: {gap_id}")
             baseline[gap_id]["record"].update(copy.deepcopy(entity.get("record") or {}))
-            baseline[gap_id]["provenance"].append({
-                "kind": "GATE3_ENTITY_UPDATE",
-                "packet_id": packet["packet_id"],
-            })
+            baseline[gap_id]["source_ids"] = list(baseline[gap_id]["record"].get("source_ids") or [])
             baseline[gap_id]["revisions"].append({
                 "packet_id": packet["packet_id"],
                 "known_at": packet["known_at"],
