@@ -39,18 +39,21 @@ SNAPSHOT = ROOT / "snapshots" / "Iran War Map 20260820.html"
 class PublicRuntimeInventoryTests(unittest.TestCase):
     def test_workflows_publish_and_browse_only_the_closed_artifact(self) -> None:
         pages = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
-        validate = (ROOT / ".github/workflows/validate.yml").read_text(encoding="utf-8")
-        self.assertIn("path: ./_site", pages)
-        self.assertIn("assemble_public_site.py --output _site --check --require-build-info", pages)
-        self.assertIn("validate_public_runtime_inventory.py --site-root _site --require-build-info", pages)
-        self.assertIn("--directory _site", validate)
+        qualification = (ROOT / ".github/workflows/release-qualification.yml").read_text(encoding="utf-8")
+        self.assertIn("uses: ./.github/workflows/release-qualification.yml", pages)
+        self.assertIn("needs: qualify", pages)
+        self.assertIn("prepare_pages_artifact: true", pages)
+        self.assertIn("path: ./_site", qualification)
+        self.assertIn("assemble_public_site.py --output _site --check --require-build-info", qualification)
+        self.assertIn("validate_public_runtime_inventory.py --site-root _site --require-build-info", qualification)
+        self.assertIn("--directory _site", qualification)
         for suite in (
             "browser-public-boot-smoke.js",
             "browser-public-ia-smoke.js",
             "browser-public-evidence-phase5.js",
             "browser-public-map-phase6.js",
         ):
-            self.assertIn(f"ATLAS_SITE=http://127.0.0.1:8765/ node tests/{suite}", validate)
+            self.assertIn(f"node tests/{suite}", qualification)
 
     def test_duplicate_case_and_normalization_collisions_fail(self) -> None:
         with self.assertRaisesRegex(SiteAssemblyError, "duplicate deployment output"):
