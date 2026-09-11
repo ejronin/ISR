@@ -26,7 +26,7 @@ PUBLIC_SHELL_SOURCE = "templates/public-index.html"
 APPLICATION_VERSION = "atlas-public-shell-v1"
 BOOTSTRAP_PROTOCOL = "atlas-release-bootstrap-v1"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "1.4"
+GENERATOR_VERSION = "2.3-single-pass-reader-assets"
 REQUIRED_PILLOW_VERSION = "12.3.0"
 EVIDENCE_MEDIA_ROOT = "assets/evidence"
 SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS = {
@@ -39,8 +39,10 @@ ASSET_SPECS = (
     ("bootstrap", "public-bootstrap", "js/public-bootstrap.js", "js"),
     ("map_runtime", "leaflet", "vendor/leaflet/leaflet.js", "js"),
     ("page_registry", "public-ia", "js/public-ia.js", "js"),
+    ("reader_runtime", "public-reader-layer", "src/public-reader-layer.js", "js"),
     ("map_stylesheet", "leaflet", "vendor/leaflet/leaflet.css", "css"),
     ("stylesheet", "public-shell", "css/public-shell.css", "css"),
+    ("reader_stylesheet", "public-reader-layer", "src/public-reader-layer.css", "css"),
     ("reference_geography", "atlas-reference-geography", "assets/geography/atlas-reference-geography.geojson", "geojson"),
     ("entrypoint", "public-app", "js/public-app.js", "js"),
 )
@@ -380,8 +382,10 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
     application_assets = [
         assets_by_role["map_runtime"],
         assets_by_role["page_registry"],
+        assets_by_role["reader_runtime"],
         assets_by_role["map_stylesheet"],
         assets_by_role["stylesheet"],
+        assets_by_role["reader_stylesheet"],
         assets_by_role["reference_geography"],
         assets_by_role["entrypoint"],
         *state_flags,
@@ -417,10 +421,10 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         },
         "application": {
             "version": version,
-            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["page_registry"]["path"]],
+            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["page_registry"]["path"], assets_by_role["reader_runtime"]["path"]],
             "entrypoint": assets_by_role["entrypoint"]["path"],
             "stylesheet": assets_by_role["stylesheet"]["path"],
-            "stylesheets": [assets_by_role["map_stylesheet"]["path"], assets_by_role["stylesheet"]["path"]],
+            "stylesheets": [assets_by_role["map_stylesheet"]["path"], assets_by_role["stylesheet"]["path"], assets_by_role["reader_stylesheet"]["path"]],
             "reference_geography": assets_by_role["reference_geography"]["path"],
             "evidence_images": [asset["path"] for asset in evidence_images],
             "state_flags": state_flags,
