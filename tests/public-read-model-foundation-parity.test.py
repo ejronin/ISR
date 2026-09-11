@@ -64,6 +64,58 @@ def canonical_v1_compatibility_foundation() -> dict[str, Any]:
             path.unlink(missing_ok=True)
 
 
+def source_urls_by_id(canonical: dict[str, Any]) -> dict[str, set[str]]:
+    result: dict[str, set[str]] = {}
+    for source in (canonical.get("sources") or {}).get("records") or []:
+        urls: set[str] = set()
+        for record in [source.get("record"), source.get("registry")]:
+            if isinstance(record, dict) and isinstance(record.get("url"), str):
+                urls.add(record["url"])
+        for variant in source.get("variants") or []:
+            record = variant.get("record") if isinstance(variant, dict) else None
+            if isinstance(record, dict) and isinstance(record.get("url"), str):
+                urls.add(record["url"])
+        result[source["source_id"]] = urls
+    return result
+
+
+def facility_semantic_view(payload: dict[str, Any]) -> dict[str, Any]:
+    """Ignore only source-ID resolution mechanics, never facility facts/effects."""
+    result = copy.deepcopy(payload)
+    for record in result.get("facilities") or []:
+        record.pop("source_ids", None)
+        record.pop("unresolved_source_urls", None)
+    return result
+
+
+def assert_facility_parity(new: dict[str, Any], old: dict[str, Any], canonical: dict[str, Any]) -> None:
+    # All facility facts/status/location/effect/provenance fields remain exact.
+    assert_same(facility_semantic_view(new), facility_semantic_view(old), "facility substantive payload")
+    new_by_id = {item["facility_id"]: item for item in new.get("facilities") or []}
+    old_by_id = {item["facility_id"]: item for item in old.get("facilities") or []}
+    assert set(new_by_id) == set(old_by_id), "facility inventory changed during foundation migration"
+    source_urls = source_urls_by_id(canonical)
+    for facility_id in sorted(old_by_id):
+        before = old_by_id[facility_id]
+        after = new_by_id[facility_id]
+        old_ids = set(before.get("source_ids") or [])
+        new_ids = set(after.get("source_ids") or [])
+        assert old_ids <= new_ids, f"facility {facility_id} lost an accepted source reference"
+        declared_urls = set(after.get("source_urls") or [])
+        for source_id in sorted(new_ids - old_ids):
+            assert source_id in source_urls, f"facility {facility_id} added unresolved source {source_id}"
+            assert source_urls[source_id] & declared_urls, (
+                f"facility {facility_id} added source {source_id} without an already-declared exact URL"
+            )
+        old_unresolved = set(before.get("unresolved_source_urls") or [])
+        new_unresolved = set(after.get("unresolved_source_urls") or [])
+        assert new_unresolved <= old_unresolved, f"facility {facility_id} introduced a new unresolved source URL"
+        for url in sorted(old_unresolved - new_unresolved):
+            assert any(url in source_urls.get(source_id, set()) for source_id in new_ids), (
+                f"facility {facility_id} removed unresolved URL {url} without canonical source resolution"
+            )
+
+
 canonical_path = ROOT / current.CANONICAL_STATE_PATH
 assert canonical_path.is_file(), "build canonical-current-state-v2 before foundation parity"
 canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
@@ -71,7 +123,9 @@ legacy = canonical_v1_compatibility_foundation()
 direct = current.build_current_foundation(ROOT)
 
 # Reader-facing static/analytical dataset payloads are preserved exactly. The
-# current entity datasets are intentionally rebound to canonical-v2 below.
+# current entity datasets are rebound to canonical-v2 below. Facility records
+# may only gain exact-URL source resolution from the larger current source
+# catalog; their substantive content must remain byte-for-byte equivalent.
 current_keys = {
     "current.actors",
     "current.locations",
@@ -83,13 +137,11 @@ for key, old_dataset in legacy["datasets"].items():
     if key in current_keys:
         continue
     assert key in direct["datasets"], f"direct foundation dropped dataset {key}"
-    assert_same(direct["datasets"][key]["payload"], old_dataset["payload"], f"dataset payload {key}")
+    if key == "ledger.facilities":
+        assert_facility_parity(direct["datasets"][key]["payload"], old_dataset["payload"], canonical)
+    else:
+        assert_same(direct["datasets"][key]["payload"], old_dataset["payload"], f"dataset payload {key}")
 
-assert_same(
-    direct["datasets"]["ledger.facilities"]["payload"],
-    legacy["datasets"]["ledger.facilities"]["payload"],
-    "facility preservation materialization",
-)
 assert_same(direct["page_data"], legacy["page_data"], "page-data ownership")
 assert_same(direct["consumer_coverage"], legacy["consumer_coverage"], "consumer coverage")
 assert_same(
@@ -129,8 +181,9 @@ assert_same(direct["sources"], canonical["sources"], "canonical sources")
 assert_same(direct["entities"], canonical["entities"], "canonical entities")
 
 # Reconstruct the pre-switch public-v2 payload inventory and prove the current
-# core exposes the same reader data. Identity/provenance metadata is expected to
-# change because historical-v1 compiler/schema hashes are being removed.
+# core exposes the same reader data, allowing only the qualified facility
+# source-resolution enrichment above. Identity/provenance metadata is expected
+# to change because historical-v1 compiler/schema hashes are being removed.
 expected_payloads = {
     key: copy.deepcopy(value["payload"])
     for key, value in legacy["datasets"].items()
@@ -160,7 +213,11 @@ expected_payloads.update({
 current_core = public_v2.build_state(ROOT)
 assert set(current_core["datasets"]) == set(expected_payloads), "current public-v2 dataset inventory changed"
 for key, expected in expected_payloads.items():
-    assert_same(current_core["datasets"][key]["payload"], expected, f"public-v2 payload {key}")
+    actual = current_core["datasets"][key]["payload"]
+    if key == "ledger.facilities":
+        assert_facility_parity(actual, expected, canonical)
+    else:
+        assert_same(actual, expected, f"public-v2 payload {key}")
 
 # Anti-recurrence: the active public compiler/foundation may not reach through
 # to public-v1 or canonical-v1 compatibility artifacts.
@@ -195,5 +252,5 @@ for retired in (
 
 print(
     "public read-model foundation parity: PASS - direct canonical-v2 foundation preserves "
-    "reader payloads, facility/actor semantics, route coverage and evidence data while public-v1 inputs are inactive"
+    "reader semantics and permits only exact-URL provenance resolution while public-v1 inputs are inactive"
 )
