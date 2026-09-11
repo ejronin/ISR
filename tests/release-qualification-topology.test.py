@@ -33,6 +33,7 @@ qualification = (WORKFLOWS / "release-qualification.yml").read_text(encoding="ut
 primary = (WORKFLOWS / "validate.yml").read_text(encoding="utf-8")
 pages = (WORKFLOWS / "pages.yml").read_text(encoding="utf-8")
 historical = (WORKFLOWS / "inspect-wiki-reconciliation.yml").read_text(encoding="utf-8")
+browser_runner = (ROOT / "scripts/run_public_browser_qualification.sh").read_text(encoding="utf-8")
 
 for token in (
     "ref: ${{ inputs.commit_sha }}",
@@ -48,12 +49,26 @@ for token in (
     "python scripts/build_public_release.py",
     "python scripts/assemble_public_site.py --output _site",
     "node tests/public-reader-layer.test.js",
-    "tests/browser-public-full-stack-audit.js",
-    "tests/browser-public-source-humanization-focus.js",
-    "tests/browser-public-render-review.js",
+    "bash scripts/run_public_browser_qualification.sh",
     "python scripts/privacy_scan.py",
 ):
     assert token in qualification, f"unified qualification lost mandatory gate: {token}"
+
+for suite in (
+    "browser-public-boot-smoke.js",
+    "browser-public-ia-smoke.js",
+    "browser-public-evidence-phase5.js",
+    "browser-public-map-phase6.js",
+    "browser-public-parity-batch3.js",
+    "browser-public-loss-actor-batch2.js",
+    "browser-public-responsive-phase9.js",
+    "browser-public-phase9.js",
+    "browser-public-full-stack-audit.js",
+    "browser-public-source-humanization-focus.js",
+    "browser-public-render-review.js",
+):
+    assert f"node tests/{suite}" in browser_runner, f"browser qualification lost mandatory suite: {suite}"
+assert browser_runner.count("start_browser") >= 3, "browser qualification no longer isolates the exhaustive audit in a fresh process"
 
 assert "uses: ./.github/workflows/release-qualification.yml" in primary, "PR validation bypasses reusable qualification"
 assert "pull_request:" in primary, "PR exact-head qualification trigger missing"
@@ -63,6 +78,7 @@ assert "uses: ./.github/workflows/release-qualification.yml" in pages, "Pages do
 assert "needs: qualify" in pages, "Pages deployment is not gated by exact-SHA qualification"
 assert "prepare_pages_artifact: true" in pages, "Pages does not deploy the artifact produced by qualification"
 assert "attest_live_deployment.py" in pages, "Pages lacks live deployment attestation"
+assert "deployments: read" in pages and "/deployments?{params}" in pages, "Pages does not resolve a real exact-SHA deployment identity"
 assert "live-deployment-attestation-${{ github.sha }}" in pages, "Pages does not persist SHA-bound attestation"
 
 # Current workflows may inspect historical compatibility through tests, but may
