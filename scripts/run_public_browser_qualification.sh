@@ -87,13 +87,17 @@ node tests/browser-public-loss-actor-batch2.js
 node tests/browser-public-responsive-phase9.js
 node tests/browser-public-phase9.js
 
-# The exhaustive all-route audit is intentionally isolated. Long-running map
-# and emulation suites can exhaust a headless browser process even when the
-# application is correct; a dead CDP endpoint must not masquerade as a product
-# failure, and the audit itself must not be skipped.
+# The exhaustive audits are intentionally isolated from one another. The
+# full-route/emulation scans are heavy enough to terminate a headless Chromium
+# process after successfully completing a suite. A dead CDP endpoint must not
+# masquerade as a product failure, and none of these audits may be skipped.
 start_browser
 node tests/browser-public-full-stack-audit.js
+
+start_browser
 node tests/browser-public-source-humanization-focus.js
+
+start_browser
 ATLAS_SCREENSHOT_DIR="$SCREENSHOT_DIR" node tests/browser-public-render-review.js
 
-echo 'public browser qualification: PASS - core reader behavior and fresh-process exhaustive audit completed'
+echo 'public browser qualification: PASS - core reader behavior and isolated exhaustive audits completed'
