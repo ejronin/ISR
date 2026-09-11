@@ -13,12 +13,12 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_public_current_state_v2 as public_core
-import public_read_model_foundation as foundation
+import public_read_model_current_foundation as foundation
 
 OUT = "data/public-current-state-v2.json"
 SCHEMA = "schemas/public-current-state-v2.json"
 GENERATOR = "scripts/build_public_current_state_v2_hardened.py"
-GENERATOR_VERSION = "2.4-neutral-adjudication-input"
+GENERATOR_VERSION = "2.5-current-foundation"
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -129,10 +129,6 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     state = public_core.build_state(root)
     actual = len((state.get("sources") or {}).get("records") or [])
     counts = state.setdefault("counts", {})
-    if "v1_public_source_records" not in counts:
-        counts["v1_public_source_records"] = counts.get("source_records")
-    if "v1_public_canonical_source_records" not in counts:
-        counts["v1_public_canonical_source_records"] = counts.get("canonical_source_records")
     counts["source_records"] = actual
     counts["canonical_source_records"] = actual
     counts["gate3_source_records"] = actual
@@ -160,7 +156,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "scripts/build_lie_ledger_evidence_adjudication.py": "ACTIVE_LIE_LEDGER_EVIDENCE_BUILDER",
         "schemas/lie-ledger-evidence-adjudication-v2.json": "ACTIVE_LIE_LEDGER_EVIDENCE_SCHEMA",
         "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
-        "scripts/public_read_model_foundation.py": "PUBLIC_READ_MODEL_FOUNDATION",
+        "scripts/public_read_model_current_foundation.py": "CURRENT_PUBLIC_READ_MODEL_FOUNDATION",
         GENERATOR: "PHASE9_PUBLIC_READ_MODEL_GENERATOR",
         SCHEMA: "PHASE9_PUBLIC_READ_MODEL_SCHEMA",
     }
@@ -210,7 +206,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_active_adjudication_input_neutral": True,
         "lie_ledger_historical_handoffs_are_migration_provenance_only": True,
         "lie_ledger_active_persona_authority_removed": True,
-        "legacy_v1_builder_not_executed_by_v2": True,
+        "current_foundation_direct_from_canonical_v2": True,
+        "historical_public_v1_compiler_in_active_input_graph": False,
     })
     return state
 
