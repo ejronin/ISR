@@ -6,10 +6,15 @@ loader choreography, page composition, or exact reader wording.
 """
 from __future__ import annotations
 
+import copy
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+import build_canonical_current_state_v2_final as final_builder
+import validate_gate3 as gate3_validator
 
 
 def load(rel: str):
@@ -19,6 +24,14 @@ def load(rel: str):
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
+
+
+def require_rejected(callable_obj, message: str) -> None:
+    try:
+        callable_obj()
+    except AssertionError:
+        return
+    raise AssertionError(message)
 
 
 def main() -> int:
@@ -109,6 +122,48 @@ def main() -> int:
     integration_ids = {row["source_id"] for row in load("data/integration-v1.2/sources.json").get("sources", [])}
     require(integration_ids <= registry_ids,
             f"source registry missing {len(integration_ids - registry_ids)} integration source(s)")
+
+    # GAP-001..GAP-019 are protected migration history, not a permanent ceiling.
+    # Deletion and generic mutation must fail while a new, source-linked stable
+    # gap with meaningful collection work is allowed to append.
+    current_state = final_builder.build_state(ROOT)
+    gate3_validator.validate_gap_contract(current_state, ROOT)
+
+    deleted = copy.deepcopy(current_state)
+    deleted["entities"]["gaps"] = [
+        item for item in deleted["entities"]["gaps"] if item.get("entity_id") != "GAP-001"
+    ]
+    require_rejected(
+        lambda: gate3_validator.validate_gap_contract(deleted, ROOT),
+        "deletion of protected GAP-001 was accepted",
+    )
+
+    mutated = copy.deepcopy(current_state)
+    inherited = next(item for item in mutated["entities"]["gaps"] if item.get("entity_id") == "GAP-001")
+    inherited["record"]["topic"] = "unauthorized mutation sentinel"
+    require_rejected(
+        lambda: gate3_validator.validate_gap_contract(mutated, ROOT),
+        "mutation of protected GAP-001 was accepted",
+    )
+
+    appended = copy.deepcopy(current_state)
+    source_id = appended["sources"]["records"][0]["source_id"]
+    appended["entities"]["gaps"].append({
+        "entity_id": "GAP-TEST-FORWARD-COMPAT",
+        "record": {
+            "gap_id": "GAP-TEST-FORWARD-COMPAT",
+            "topic": "Synthetic forward-compatibility collection question",
+            "status": "UNRESOLVED",
+            "source_ids": [source_id],
+        },
+        "source_ids": [source_id],
+        "provenance": [{"kind": "GATE3_ACCEPTED_PACKET", "packet_id": "TEST-FORWARD-COMPAT"}],
+        "revisions": [],
+    })
+    final_builder.ensure_gap_collection_actions(appended)
+    new_gap = appended["entities"]["gaps"][-1]
+    require(bool(new_gap["record"].get("collection_actions")), "appended gap did not acquire collection work")
+    gate3_validator.validate_gap_contract(appended, ROOT)
 
     print("evidence-semantic-edge-regressions: PASS")
     return 0
