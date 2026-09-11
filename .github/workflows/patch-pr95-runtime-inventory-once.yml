@@ -1,0 +1,50 @@
+name: Patch PR95 runtime inventory once
+
+on:
+  push:
+    branches:
+      - release/neutral-public-foundation-20260911
+    paths:
+      - ".github/workflows/patch-pr95-runtime-inventory-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: release/neutral-public-foundation-20260911
+      - name: Bind generated runtime inventory to canonical v2
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          inventory = Path('config/public-runtime-inventory.json')
+          text = inventory.read_text(encoding='utf-8')
+          old = '''  "generated_current_state_files": [\n    "data/canonical-current-state.json",\n    "data/public-current-state.json",\n    "data/public-release.json"\n  ],'''
+          new = '''  "generated_current_state_files": [\n    "data/canonical-current-state-v2.json",\n    "data/public-current-state.json",\n    "data/public-release.json"\n  ],'''
+          if text.count(old) != 1:
+              raise SystemExit(f'expected one generated-state inventory target, found {text.count(old)}')
+          inventory.write_text(text.replace(old, new, 1), encoding='utf-8', newline='\n')
+
+          doc = Path('docs/public-boot-architecture.md')
+          text = doc.read_text(encoding='utf-8')
+          old = '`data/public-release.json`, `data/public-current-state.json`, `data/canonical-current-state.json`, and `assets/releases/` are deterministic generated artifacts and are Git-ignored.'
+          new = '`data/public-release.json`, `data/public-current-state.json`, `data/canonical-current-state-v2.json`, and `assets/releases/` are deterministic generated artifacts and are Git-ignored. The canonical-v1 artifact is historical compatibility output and is not part of current release assembly.'
+          if text.count(old) != 1:
+              raise SystemExit(f'expected one public-boot generated-artifact target, found {text.count(old)}')
+          text = text.replace(old, new, 1)
+          text = text.replace('- seven current signed source roles;', '- nine current signed source roles;', 1)
+          doc.write_text(text, encoding='utf-8', newline='\n')
+          PY
+          python -m json.tool config/public-runtime-inventory.json >/dev/null
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/public-runtime-inventory.json docs/public-boot-architecture.md
+          git commit -m "Classify canonical v2 as current generated state"
+          git push origin HEAD:release/neutral-public-foundation-20260911
