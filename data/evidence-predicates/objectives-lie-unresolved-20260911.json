@@ -1,0 +1,49 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_FACTUAL_PREDICATES_FOR_PUBLIC_PRODUCT",
+  "version": "2026-09-11-E2",
+  "evidence_cutoff": "2026-09-11T16:22:00-04:00",
+  "principles": [
+    "Continued presence is not affirmative proof of operation.",
+    "No shutdown reported is not affirmative proof of operation.",
+    "Launch, interception, penetration, impact, damage, destruction and operational effect are separate predicates.",
+    "Stable loss IDs are deduplicated before any physical-quantity aggregate.",
+    "Claim-only or target-only quantities are never promoted into verified physical loss totals.",
+    "Provider-specific shipping and energy series are not merged across incompatible denominators."
+  ],
+  "predicate_scope": "OBJECTIVES_LIE_UNRESOLVED",
+  "objectives": {
+    "predicate_vocabulary": ["ACHIEVED","PARTLY_ACHIEVED","NOT_ACHIEVED","UNRESOLVED"],
+    "records": [
+      {"actor":"United States","objective":"Deny Iran a nuclear weapon","predicate":"UNRESOLVED","benchmark":"No Iranian nuclear weapon / durable verified denial.","basis":"No Iranian nuclear weapon is established, but the prior framework collapsed and IAEA safeguards non-compliance has now been reported to the Security Council. The continuing prevention objective cannot be closed as achieved."},
+      {"actor":"United States","objective":"Break offensive military power projection","predicate":"PARTLY_ACHIEVED","benchmark":"Destroy or severely degrade missiles/production, naval and power-projection capacity.","basis":"Substantial Iranian losses/degradation are established, but Sep. 8 ballistic-missile attacks and continuing maritime coercion demonstrate meaningful residual strike capability."},
+      {"actor":"United States","objective":"Reduce Iran's ability to arm and sustain proxies","predicate":"PARTLY_ACHIEVED","benchmark":"Disrupt/degrade/deprive IRGC and surrogates of resources and operational freedom.","basis":"Sanctions and regional pressure have increased, but Houthi attacks and the Mocha-Hanish-Dhubab-Perim advance show significant proxy operational capacity remains."},
+      {"actor":"United States","objective":"Restore usable navigation through Hormuz","predicate":"NOT_ACHIEVED","benchmark":"Usable/free navigation as a stable operating condition.","basis":"The Strait remains physically traversable but severely disrupted; Kpler counted seven observable transits Sep. 10 versus 11 the prior day and a 10-day average of 15, with dark traffic unknown."},
+      {"actor":"United States","objective":"Use economic isolation to narrow Tehran's options","predicate":"PARTLY_ACHIEVED","benchmark":"Sever economic lifelines sufficiently to materially narrow Iranian options.","basis":"Iranian officials acknowledge severe trade/economic effects and OFAC pressure has expanded; Iran retains external trade/evasion channels and has not been shown economically broken."},
+      {"actor":"Iran","objective":"War damages / reparations paid","predicate":"NOT_ACHIEVED","benchmark":"Implemented reparations payment.","basis":"No implemented reparations payment is established."},
+      {"actor":"Iran","objective":"Frozen / blocked Iranian assets returned","predicate":"NOT_ACHIEVED","benchmark":"Durable broad return/access to frozen assets.","basis":"No durable broad return/access is established; accepted evidence instead records continuing foreign-exchange constraints."},
+      {"actor":"Iran","objective":"U.S. naval blockade terminated","predicate":"NOT_ACHIEVED","benchmark":"Termination of the U.S. blockade/export-denial architecture.","basis":"No controlling end state terminating the blockade is established."},
+      {"actor":"Iran","objective":"Full / verifiable sanctions relief","predicate":"NOT_ACHIEVED","benchmark":"Broad implemented sanctions relief.","basis":"Sanctions have broadened, including Sep. 10 OFAC designations and a presumption-of-denial licensing policy."},
+      {"actor":"Iran","objective":"U.S. withdrawal from bases surrounding Iran","predicate":"NOT_ACHIEVED","benchmark":"Broad regional U.S. withdrawal attributable to a controlling settlement/end state.","basis":"Some Iraq/Syria withdrawals/drawdowns are independently documented administrative/posture processes, while a substantial regional U.S. footprint remains. No broad Iranian-demanded withdrawal is established."},
+      {"actor":"Iran","objective":"Protection / non-aggression toward Axis allies","predicate":"NOT_ACHIEVED","benchmark":"Durable protection/non-aggression guarantee or equivalent end state.","basis":"Aligned actors remain active, but no durable protection guarantee exists and they continue to face strikes and military pressure."},
+      {"actor":"Iran","objective":"Permanent Iranian Hormuz sovereignty / management / fees","predicate":"NOT_ACHIEVED","benchmark":"Recognized/controlling unilateral Iranian management or compulsory-fee regime.","basis":"Iran retains real coercive leverage, but no recognized exclusive control or permanent compulsory transit-toll regime is established; regional actors reject unilateral authority."},
+      {"actor":"Iran","objective":"No concessions on nuclear, missiles, defense or regional architecture","predicate":"UNRESOLVED","benchmark":"No concession/trade-off across the originally declared red-line set in a controlling final settlement.","basis":"No controlling final bargain exists. Earlier mediated/joint arrangements show behavioral softening in parts of the architecture, but the current final nuclear/missile/security end state remains unresolved."}
+    ]
+  },
+  "lie_knowledge": {
+    "public_exact_lie_rule": "Use exact label Lie only when truth_adjudication is FALSE/MISLEADING as applicable and knowledge_judgment is KNOWING_FALSEHOOD_ESTABLISHED. Factual falsity alone yields False; probabilistic knowledge yields Likely lie, not Lie.",
+    "current_exact_lie_findings": [
+      {"claim_instance_id":"CI-PROP-IR-210-DOWNED-HEADLINE","actor":"Press TV","truth_adjudication":"FALSE","knowledge_judgment":"KNOWING_FALSEHOOD_ESTABLISHED","predicate":"LIE_SUPPORTED","basis":"The same Press TV article used the stronger headline that Iran had 'downed' about 210 enemy aircraft while its body carried the materially weaker source wording that Iran could 'target around 210'. The publisher therefore possessed the contrary wording at publication time.","source_ids":["SRC-DB900429D8BC"],"scope_note":"This knowledge predicate attaches to Press TV's publisher framing, not automatically to the Defense Ministry speaker or every later amplifier."}
+    ],
+    "exact_lie_count": 1,
+    "other_current_false_findings": "Do not promote to exact Lie unless their own evidence chain reaches KNOWING_FALSEHOOD_ESTABLISHED. Existing LIKELY_KNEW_FALSE / VERY_LIKELY_KNEW_FALSE states remain probabilistic.",
+    "open_blockers_preserved": "Current adjudication file contains knowledge-basis/falsifier blockers for several strong historical judgments; those blockers remain evidence defects and prevent exact-Lie promotion where knowledge access is not established."
+  },
+  "unresolved_questions": [
+    {"id":"UQ-01","question":"Direct IRGC operational command of the Houthi coastal offensive","status":"UNRESOLVED","boundary":"Iranian support/alignment and source-reported advice/guidance are supported; exact operational command is not established."},
+    {"id":"UQ-02","question":"Exact Pakistan/Saudi warning delivered to Iran and its formal authority","status":"UNRESOLVED","boundary":"Reuters multi-source reporting supports message transmission; equivalent detailed on-record Pakistani confirmation is absent."},
+    {"id":"UQ-03","question":"Attribution for attacks causing the Saudi East-West pipeline shutdown","status":"PARTLY_RESOLVED","boundary":"Attack occurrence and temporary shutdown are now established by Saudi Energy Ministry reporting; responsible actor remains unresolved."},
+    {"id":"UQ-04","question":"Final status of seven SIDR crew not accounted for by two deaths plus 16 Omani evacuations","status":"UNRESOLVED","boundary":"Do not infer missing/dead/safe without later source."},
+    {"id":"UQ-05","question":"Exact Muwaffaq al-Salti Sep. 8 aircraft BDA and mechanism","status":"PARTLY_RESOLVED","boundary":"Aircraft damage established; one A-10 and roughly eight F-15s are source-bounded details; mechanism vs early Jordan report unresolved."},
+    {"id":"UQ-06","question":"Any announced future bank sanction not yet enacted by OFAC","status":"PENDING_NOT_A_COMPLETED_EVENT","boundary":"Do not enter legal effect until the competent sanctions authority actually acts."}
+  ]
+}
