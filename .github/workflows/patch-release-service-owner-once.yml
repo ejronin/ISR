@@ -1,0 +1,46 @@
+name: Patch release service owner once
+
+on:
+  push:
+    branches:
+      - release/single-pass-reader-assets-20260910
+    paths:
+      - ".github/workflows/patch-release-service-owner-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: release/single-pass-reader-assets-20260910
+      - name: Move signed-release service ownership to the single-pass core
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('config/public-runtime-inventory.json')
+          text = path.read_text(encoding='utf-8')
+          old_owner = '{ "service": "signed release builder", "path": "scripts/build_public_release.py", "symbol": "def build_manifest" }'
+          new_owner = '{ "service": "signed release builder", "path": "scripts/build_public_release_core.py", "symbol": "def build_manifest" }'
+          if text.count(old_owner) != 1:
+              raise SystemExit('signed-release service-owner target is not unique')
+          text = text.replace(old_owner, new_owner, 1)
+          old_support = '    "scripts/build_public_release.py",\n    "scripts/assemble_public_site.py",'
+          new_support = '    "scripts/build_public_release.py",\n    "scripts/build_public_release_core.py",\n    "scripts/assemble_public_site.py",'
+          if text.count(old_support) != 1:
+              raise SystemExit('build support insertion target is not unique')
+          text = text.replace(old_support, new_support, 1)
+          path.write_text(text, encoding='utf-8', newline='\n')
+          PY
+          python -m json.tool config/public-runtime-inventory.json >/dev/null
+      - name: Commit service-owner patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/public-runtime-inventory.json
+          git commit -m "Move release service ownership to single-pass core"
+          git push origin HEAD:release/single-pass-reader-assets-20260910
