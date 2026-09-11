@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Gate 3 public read model from the neutral public foundation."""
+"""Build the Gate 3 public read model from the current canonical-v2 foundation."""
 from __future__ import annotations
 
 import argparse
@@ -13,9 +13,8 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import canonical_temporal_contract as temporal
-import public_read_model_foundation as foundation
+import public_read_model_current_foundation as foundation
 
-CANONICAL_V1 = "data/canonical-current-state.json"
 CANONICAL_V2 = "data/canonical-current-state-v2.json"
 DEFAULT_OUTPUT = "data/public-current-state-v2.json"
 
@@ -68,14 +67,7 @@ def source_reference_index(canonical: dict[str, Any]) -> dict[str, dict[str, Any
 
 
 def public_chronology(canonical: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, int]]:
-    """Resolve generated chronology source pointers without choosing conflicts.
-
-    Gate 3 preserves some derived side/legacy reference keys that do not name a
-    catalog variant. The public projection may select the sole variant when
-    there is only one. Where multiple versions exist it deliberately removes
-    the invalid key so the shared resolver displays every preserved variant.
-    Canonical evidence and source records remain unchanged.
-    """
+    """Resolve generated chronology source pointers without choosing conflicts."""
     variants = {
         item["source_id"]: [variant["variant_key"] for variant in item.get("variants") or []]
         for item in (canonical.get("sources") or {}).get("records") or []
@@ -141,7 +133,7 @@ def add_gate3_waivers(state: dict[str, Any]) -> None:
             "dataset_key": key,
             "reason": reason,
             "authority_role": "DERIVED_GATE3_CANONICAL_DATASET",
-            "owner": "Gate 3 migration authority audit",
+            "owner": "Gate 3 migration audit",
         })
     for waiver in waivers:
         dataset_item = state["datasets"].get(waiver["dataset_key"])
@@ -151,75 +143,27 @@ def add_gate3_waivers(state: dict[str, Any]) -> None:
 
 def build_state(root: Path = ROOT) -> dict[str, Any]:
     root = Path(root).resolve()
-    if not (root / CANONICAL_V1).is_file():
-        raise ValueError("Build data/canonical-current-state.json before Gate 3 public state")
     canonical_path = root / CANONICAL_V2
+    if not canonical_path.is_file():
+        raise ValueError("Build data/canonical-current-state-v2.json before the public current state")
     canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
     if canonical.get("schema_version") != "2.0":
         raise ValueError("Gate 3 public builder requires canonical-current-state-v2")
     temporal.validate_current_state_temporal_projection(canonical, label="canonical Gate 3 v2 public input")
 
-    # Materialize the accepted cross-version public foundation directly. The
-    # legacy v1 generator is retained only as fingerprinted compatibility
-    # lineage and is not imported or executed by this current builder.
-    state = foundation.build_compatibility_foundation(root)
-    v1_public_input_set = state["release"]["input_set_sha256"]
-    v1_public_source_records = state["counts"].get("source_records")
-    v1_public_canonical_source_records = state["counts"].get("canonical_source_records")
-    public_actor_directory = copy.deepcopy(state["datasets"]["current.actors"]["payload"])
+    state = foundation.build_current_foundation(root)
     source_index = source_reference_index(canonical)
-
-    state["schema_version"] = "2.0"
-    state["artifact_role"] = "DERIVED_PUBLIC_CURRENT_STATE_READ_MODEL"
     state["authority_notice"] = (
-        "Generated public view of the validated Gate 3 current state. The sealed v1 state and append-only "
-        "Gate 3 evidence packets remain authoritative; the browser does not replay update history."
+        "Generated public view of the validated current canonical state. "
+        "Accepted evidence packets and preserved source provenance remain the record basis."
     )
+
     chronology, chronology_reference_repairs = public_chronology(canonical)
     state["chronology"] = chronology
     state["sources"] = copy.deepcopy(canonical["sources"])
     state["entities"] = copy.deepcopy(canonical["entities"])
     state["revision_history"] = copy.deepcopy(canonical.get("revision_history") or [])
     state["accepted_updates_v2"] = copy.deepcopy(canonical.get("accepted_updates_v2") or [])
-
-    release = canonical["release"]
-    canonical_digest = sha256(foundation.canonical_input_bytes(canonical_path.read_bytes()))
-    phase9_input_set = sha256(f"{v1_public_input_set}\0{canonical_digest}\n".encode("utf-8"))
-    state["release"].update({
-        "gate2_evidence_cutoff": release["gate2_evidence_cutoff"],
-        "canonical_state_identity_v2": release["canonical_state_identity_v2"],
-        "current_osint_cutoff": release["current_osint_cutoff"],
-        "current_osint_cutoff_display": release["current_osint_cutoff_display"],
-        "input_set_sha256": phase9_input_set,
-        "release_identity": f"public-current-v2-{phase9_input_set[:16]}",
-    })
-    state["canonical_lineage"].update({
-        "path": CANONICAL_V2,
-        "sha256": canonical_digest,
-        "input_set_sha256": release["input_set_sha256"],
-        "canonical_state_identity_v2": release["canonical_state_identity_v2"],
-        "v1_path": CANONICAL_V1,
-        "v1_sha256": sha256(foundation.canonical_input_bytes((root / CANONICAL_V1).read_bytes())),
-    })
-
-    replacements = {
-        # Retain the 115-record approved public directory. Gate 3's 96 canonical
-        # actors are an unchanged subset; replacing the directory would discard
-        # accepted participant and named-person identity links.
-        "current.actors": public_actor_directory,
-        "current.locations": copy.deepcopy(canonical["entities"].get("locations", [])),
-        "current.claims": {
-            "schema_version": "2.0",
-            "claims": [copy.deepcopy(item["record"]) for item in canonical["entities"].get("claims", [])],
-        },
-        "current.material_losses": {
-            "schema_version": "2.0",
-            "records": [copy.deepcopy(item["record"]) for item in canonical["entities"].get("material_losses", [])],
-        },
-        "current.relationships": copy.deepcopy(canonical["entities"].get("relationships", [])),
-    }
-    for key, payload in replacements.items():
-        state["datasets"][key] = dataset(key, CANONICAL_V2, payload, source_index)
 
     additions = {
         "gate3.casualties": entity_payload(canonical, "casualties"),
@@ -248,9 +192,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "chronology_records": len(canonical["chronology"]),
         "canonical_source_records": len(canonical["sources"].get("records") or []),
         "source_records": len(canonical["sources"].get("records") or []),
-        "v1_public_source_records": v1_public_source_records,
-        "v1_public_canonical_source_records": v1_public_canonical_source_records,
-        "public_actor_records": len(public_actor_directory),
+        "public_actor_records": len(state["datasets"]["current.actors"]["payload"]),
         "gate3_dataset_records": sum(
             len(payload.get("records") or []) for payload in additions.values() if isinstance(payload, dict)
         ),
@@ -267,7 +209,8 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "daily_coverage_derived_from_chronology": True,
         "war_daily_coverage_bounded_to_conflict": True,
         "browser_replays_update_packets": False,
-        "v1_public_contract_validated_before_v2_overlay": True,
+        "current_foundation_direct_from_canonical_v2": True,
+        "historical_public_v1_compiler_in_active_input_graph": False,
         "phase9_routes_consume_gate3_state": True,
     })
     temporal.validate_current_state_temporal_projection(state, label="public Gate 3 v2 read model")
