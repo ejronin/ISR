@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
-"""Build the signed public release with reader assets represented explicitly.
+"""Build the signed public release from reviewable tracked runtime sources.
 
 The reader-first JavaScript and CSS are published as first-class content-addressed
-assets. They are never concatenated into the base page registry or public shell
-stylesheet. The only remaining release-workspace source transform is the bounded
-entrypoint preparation in `retire_privileged_narrative_runtime.py`; that seam is
-tracked separately for removal after this asset promotion is qualified.
+assets. The tracked public entrypoint is already neutral and carries the explicit
+reader-runtime authorization contract, so release assembly no longer rewrites any
+tracked public runtime source before hashing and signing it.
 """
 from __future__ import annotations
 
 from pathlib import Path
 
 import build_public_release_core as core
-import retire_privileged_narrative_runtime as entrypoint_preparation
 from build_public_release_core import *  # re-export release helpers for existing tests/importers
 
 ROOT = Path(__file__).resolve().parents[1]
-GENERATOR_VERSION = "2.1-reader-assets-neutral-narrative"
+GENERATOR_VERSION = "2.2-direct-runtime-sources"
 READER_RUNTIME_SPEC = ("reader_runtime", "public-reader-layer", "src/public-reader-layer.js", "js")
 READER_STYLESHEET_SPEC = ("reader_stylesheet", "public-reader-layer", "src/public-reader-layer.css", "css")
 
@@ -91,7 +89,6 @@ def _promote_reader_assets(root: Path, manifest: dict) -> dict:
 
 def build_manifest(root: Path = ROOT) -> dict:
     root = Path(root).resolve()
-    entrypoint_preparation.apply(root)
     core.GENERATOR_VERSION = GENERATOR_VERSION
     return _promote_reader_assets(root, _core_build_manifest(root))
 

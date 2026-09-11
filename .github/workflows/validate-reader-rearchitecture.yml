@@ -5,13 +5,13 @@ on:
     paths:
       - "src/public-reader-layer.js"
       - "src/public-reader-layer.css"
+      - "js/public-app.js"
       - "js/public-bootstrap.js"
       - "index.html"
       - "templates/public-index.html"
       - "config/public-runtime-inventory.json"
       - "scripts/build_public_release.py"
       - "scripts/build_public_release_core.py"
-      - "scripts/retire_privileged_narrative_runtime.py"
       - "scripts/validate_public_deployment.py"
       - "scripts/sync_rook_narrative.py"
       - "config/rook-narrative-current.json"
@@ -44,14 +44,16 @@ jobs:
       - name: Reader-layer static and invariant checks
         run: |
           node --check src/public-reader-layer.js
+          node --check js/public-app.js
           node --check js/public-bootstrap.js
           node --check tests/browser-public-boot-smoke.js
           node --check tests/browser-public-final-polish.js
           node --check tests/browser-public-render-review.js
           node tests/public-reader-layer.test.js
-          python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py scripts/retire_privileged_narrative_runtime.py scripts/validate_public_deployment.py tests/neutral-current-narrative.test.py
+          node tests/public-final-polish.test.js
+          python -m py_compile scripts/build_public_release.py scripts/build_public_release_core.py scripts/validate_public_deployment.py tests/neutral-current-narrative.test.py
           python tests/neutral-current-narrative.test.py
-      - name: Verify reader sources are explicit signed assets
+      - name: Verify reader assets and direct neutral entrypoint
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -59,12 +61,13 @@ jobs:
           root = Path('.')
           js = root / 'src/public-reader-layer.js'
           css = root / 'src/public-reader-layer.css'
-          assert js.is_file() and css.is_file()
+          app = root / 'js/public-app.js'
+          assert js.is_file() and css.is_file() and app.is_file()
           js_text = js.read_text(encoding='utf-8')
           css_text = css.read_text(encoding='utf-8')
+          app_text = app.read_text(encoding='utf-8')
           builder = (root / 'scripts/build_public_release.py').read_text(encoding='utf-8')
           bootstrap = (root / 'js/public-bootstrap.js').read_text(encoding='utf-8')
-          entrypoint_prep = (root / 'scripts/retire_privileged_narrative_runtime.py').read_text(encoding='utf-8')
           inventory = (root / 'config/public-runtime-inventory.json').read_text(encoding='utf-8')
 
           assert 'ATLAS PUBLIC READER LAYER' in js_text
@@ -77,10 +80,25 @@ jobs:
               assert token in builder, token
               assert token in inventory, token
           assert 'reader_runtime' in bootstrap and 'reader_stylesheet' in bootstrap
-          assert 'reader_runtime' in entrypoint_prep and 'reader_stylesheet' in entrypoint_prep
-          for retired in ('compose_reader_sources', 'ATLAS_PUBLIC_READER_LAYER_COMPOSED', 'ATLAS_PUBLIC_READER_STYLES_COMPOSED', 'PAGE_REGISTRY', 'PUBLIC_STYLESHEET'):
+          assert 'reader_runtime' in app_text and 'reader_stylesheet' in app_text
+          assert 'authorization.runtimeAssets.length === 3' in app_text
+          assert 'authorization.stylesheetAssets.length === 3' in app_text
+          assert 'ROOK_NARRATIVE_CURRENT' not in app_text
+          assert 'FINAL_NARRATIVE_GATES' not in app_text
+          assert 'narrativeContract: null' in app_text
+
+          for retired in (
+              'compose_reader_sources',
+              'ATLAS_PUBLIC_READER_LAYER_COMPOSED',
+              'ATLAS_PUBLIC_READER_STYLES_COMPOSED',
+              'PAGE_REGISTRY',
+              'PUBLIC_STYLESHEET',
+              'retire_privileged_narrative_runtime',
+              'entrypoint_preparation',
+          ):
               assert retired not in builder, retired
 
           assert not (root / 'config' / 'rook-narrative-current.json').exists()
           assert not (root / 'scripts' / 'sync_rook_narrative.py').exists()
+          assert not (root / 'scripts' / 'retire_privileged_narrative_runtime.py').exists()
           PY
