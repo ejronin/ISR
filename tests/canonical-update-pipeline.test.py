@@ -231,6 +231,15 @@ class CanonicalUpdatePipelineTests(unittest.TestCase):
 
     def test_g_invalid_update_fails_without_modifying_current_state(self) -> None:
         artifact = ROOT / compiler.DEFAULT_OUTPUT
+        # The current release path no longer generates canonical-v1. This test
+        # exercises the historical canonical-v1 compiler directly, so create its
+        # comparison artifact explicitly rather than depending on release-order
+        # side effects. Restore any pre-existing bytes when the fixture completes.
+        existed = artifact.exists()
+        prior = artifact.read_bytes() if existed else None
+        baseline, _ = compiler.build_state(ROOT)
+        artifact.write_bytes(compiler.canonical_json_bytes(baseline))
+        self.addCleanup(lambda: artifact.write_bytes(prior) if existed and prior is not None else artifact.unlink(missing_ok=True))
         before = hashlib.sha256(artifact.read_bytes()).hexdigest()
         duplicate = packet("UPD-20260828-INVALID", [{
             "operation_id": "DUPLICATE_EVENT",
