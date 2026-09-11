@@ -1,0 +1,54 @@
+{
+  "artifact_role": "EVIDENCE_OWNED_REQUIRED_EVENT_REVISIONS",
+  "version": "2026-09-11-E1",
+  "evidence_cutoff": "2026-09-11T16:22:00-04:00",
+  "status": "REQUIRES_RELEASE_MACHINERY_SUPPORT",
+  "reason": "Gate 3 v2 accepts entity mode=update but chronology events are append-only and duplicate event IDs are rejected. The evidence lane will not create false duplicate occurrences.",
+  "required_revisions": [
+    {
+      "correction_id": "E1-SIDR-OCCURRENCE-CHRONOLOGY",
+      "event_id": "G3-SAUDI-TANKER-OMAN-RESCUE-20260907",
+      "same_occurrence": true,
+      "required_operation": "UPDATE_EXISTING_EVENT_WITH_REVISION_HISTORY",
+      "changes": {
+        "event_date": {"previous": "2026-09-07", "new": "2026-08-31"},
+        "event_type": {"previous": "COMMERCIAL_TANKER_ATTACK_AND_RESCUE", "new": "COMMERCIAL_TANKER_ATTACK_WITH_LATER_RESCUE_STATUS"},
+        "summary": {"previous": "Oman rescued 16 crew members from a Saudi tanker attacked near the Strait of Hormuz; seven crew remained missing in contemporaneous reporting.", "new_factual_content": "SIDR was struck by a projectile near Musandam on Aug. 31. Two crew deaths are established. On Sep. 7 Oman reported completing support operations and evacuating 16 of the 25 crew. The final status of the other seven is unresolved."}
+      },
+      "occurrence_time": "2026-08-31",
+      "first_report_date": "2026-09-01",
+      "later_status_date": "2026-09-07",
+      "correction_known_at": "2026-09-11T16:22:00-04:00",
+      "source_ids": ["SRC-C95FE4CFA0BF", "SRC-087C93198A67"],
+      "identity_note": "Retain the existing stable event ID even though its date suffix reflects the original mistaken report-date anchoring. Do not create a new Aug. 31 event and leave the Sep. 7 event active."
+    },
+    {
+      "correction_id": "E1-RIESCO-LATER-DISPOSITION",
+      "event_id": "G3-US-IRAN-TANKERS-20260908",
+      "same_occurrence": true,
+      "required_operation": "APPEND_EVENT_LATER_CLARIFICATION_WITHOUT_REPLACING_INITIAL_ASSESSMENT",
+      "later_clarification": "CENTCOM subsequently published primary video/caption evidence stating M/T Riesco sank in the Gulf of Oman on Sep. 8. The material-loss entity is updated to SUNK_DESTROYED; the original five-vessel 'rendered inoperable' contemporaneous statement remains preserved as earlier knowledge.",
+      "correction_known_at": "2026-09-11T16:22:00-04:00",
+      "source_ids": ["SRC-D1BEDB6691C0", "SRC-E0F708B79342"]
+    },
+    {
+      "correction_id": "E1-MUWAFFAQ-LATER-BDA",
+      "event_id": "G3-IRAN-JORDAN-BASE-ATTACK-20260908",
+      "same_occurrence": true,
+      "required_operation": "APPEND_EVENT_LATER_CLARIFICATION_WITHOUT_REPLACING_INITIAL_ASSESSMENT",
+      "later_clarification": "Reuters later reported a U.S. official confirming U.S. aircraft damage: one A-10 severely damaged and roughly eight F-15s lightly damaged and returned to service. This establishes material aircraft damage but does not validate every earlier Iranian heavy-damage claim or resolve the mechanism relative to Jordan's early interception/fall account.",
+      "correction_known_at": "2026-09-11T16:22:00-04:00",
+      "source_ids": ["SRC-8296405C4840"]
+    }
+  ],
+  "release_required_behavior": {
+    "event_revision_semantics": [
+      "Support update of an existing chronology event by stable event_id.",
+      "Retain prior event fields and the packet/known_at at which they were accepted.",
+      "Record field-level previous/new values, effective/occurrence date and correction known_at.",
+      "Permit later_clarification/status/BDA evidence without rewriting the earlier knowledge state.",
+      "Reject creation of a second occurrence when the revision declares same_occurrence=true."
+    ],
+    "current_blocker": "scripts/build_canonical_current_state_v2.py rejects any duplicate event_id and exposes no event update mode."
+  }
+}
