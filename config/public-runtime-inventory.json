@@ -31,13 +31,14 @@
     { "service": "route data authorization", "path": "js/public-app.js", "symbol": "createRouteModelView" },
     { "service": "shared source resolver", "path": "js/public-app.js", "symbol": "createSourceResolver" },
     { "service": "canonical location resolver", "path": "js/public-app.js", "symbol": "createLocationResolver" },
-    { "service": "signed release builder", "path": "scripts/build_public_release.py", "symbol": "def build_manifest" },
+    { "service": "signed release builder", "path": "scripts/build_public_release_core.py", "symbol": "def build_manifest" },
     { "service": "closed production artifact assembler", "path": "scripts/assemble_public_site.py", "symbol": "def expected_files" },
     { "service": "runtime inventory validator", "path": "scripts/validate_public_runtime_inventory.py", "symbol": "def validate_repository" }
   ],
   "build_test_support": [
     "requirements-build.txt",
     "scripts/build_public_release.py",
+    "scripts/build_public_release_core.py",
     "scripts/assemble_public_site.py",
     "scripts/validate_public_runtime_inventory.py"
   ],
