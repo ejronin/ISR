@@ -34,7 +34,6 @@ jobs:
       id-token: write
     outputs:
       page_url: ${{ steps.deployment.outputs.page_url }}
-      deployment_id: ${{ steps.deployment.outputs.deployment_id }}
     steps:
       - name: Deploy exact qualified artifact to GitHub Pages
         id: deployment
@@ -47,6 +46,7 @@ jobs:
     permissions:
       contents: read
       actions: read
+      deployments: read
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
@@ -60,10 +60,42 @@ jobs:
         with:
           name: release-attestation-input-${{ github.sha }}
           path: expected-release
+      - name: Resolve exact-SHA Pages environment deployment identity
+        id: deployment_identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+          repo = os.environ['GITHUB_REPOSITORY']
+          sha = os.environ['GITHUB_SHA']
+          params = urllib.parse.urlencode({'sha': sha, 'environment': 'github-pages', 'per_page': 20})
+          request = urllib.request.Request(
+              f'https://api.github.com/repos/{repo}/deployments?{params}',
+              headers={
+                  'Accept': 'application/vnd.github+json',
+                  'Authorization': f"Bearer {os.environ['GH_TOKEN']}",
+                  'X-GitHub-Api-Version': '2022-11-28',
+                  'User-Agent': 'atlas-release-attestation/1.0',
+              },
+          )
+          with urllib.request.urlopen(request, timeout=20) as response:
+              rows = json.load(response)
+          rows = [row for row in rows if row.get('sha') == sha and row.get('environment') == 'github-pages']
+          if not rows:
+              raise SystemExit(f'FAIL: no github-pages deployment record exists for exact SHA {sha}')
+          row = max(rows, key=lambda item: (item.get('created_at') or '', int(item.get('id') or 0)))
+          output = os.environ['GITHUB_OUTPUT']
+          with open(output, 'a', encoding='utf-8') as handle:
+              handle.write(f"deployment_id={row['id']}\n")
+              handle.write(f"deployment_created_at={row.get('created_at') or ''}\n")
+          print(f"Resolved github-pages deployment id={row['id']} sha={row['sha']} created_at={row.get('created_at')}")
+          PY
       - name: Prove live Pages bytes match the qualified SHA
         env:
           PAGE_URL: ${{ needs.deploy.outputs.page_url }}
-          PAGE_DEPLOYMENT_ID: ${{ needs.deploy.outputs.deployment_id }}
+          PAGE_DEPLOYMENT_ID: ${{ steps.deployment_identity.outputs.deployment_id }}
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
