@@ -11,6 +11,7 @@ on:
       - "data/lie-ledger-v2-evidence-sources-20260909.json"
       - "data/forensic-v1.3.2/**"
       - "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md"
+      - "docs/release-qualification.md"
       - "schemas/canonical-*-v2.json"
       - "schemas/lie-ledger-evidence-adjudication-v2.json"
       - "scripts/build_canonical_current_state_v2*.py"
@@ -27,8 +28,9 @@ on:
       - "tests/gate3-*.test.py"
       - "tests/lie-ledger-governance-neutralization.test.py"
       - "tests/evidence-governance-boundary.test.py"
+      - "tests/release-qualification-topology.test.py"
       - "requirements-build.txt"
-      - ".github/workflows/validate-evidence-integrity.yml"
+      - ".github/workflows/**"
   pull_request:
     paths:
       - "data/canonical-ledger/**"
@@ -38,6 +40,7 @@ on:
       - "data/lie-ledger-v2-evidence-sources-20260909.json"
       - "data/forensic-v1.3.2/**"
       - "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md"
+      - "docs/release-qualification.md"
       - "schemas/canonical-*-v2.json"
       - "schemas/lie-ledger-evidence-adjudication-v2.json"
       - "scripts/build_canonical_current_state_v2*.py"
@@ -54,8 +57,9 @@ on:
       - "tests/gate3-*.test.py"
       - "tests/lie-ledger-governance-neutralization.test.py"
       - "tests/evidence-governance-boundary.test.py"
+      - "tests/release-qualification-topology.test.py"
       - "requirements-build.txt"
-      - ".github/workflows/validate-evidence-integrity.yml"
+      - ".github/workflows/**"
 
 permissions:
   contents: read
@@ -77,11 +81,12 @@ jobs:
           python -m pip check
       - name: Build exhaustive source registry
         run: python scripts/build_source_registry.py --root .
-      - name: Protect accepted history and update mechanics
+      - name: Protect accepted history, update mechanics, and qualification topology
         env:
           AUTHORITY_BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: |
           git diff --check "$(git merge-base HEAD origin/main)" HEAD
+          python tests/release-qualification-topology.test.py
           python scripts/validate_canonical_authority.py --compare-ref "$AUTHORITY_BASE_REF"
           python tests/canonical-authority.test.py
           python tests/canonical-update-pipeline.test.py
