@@ -28,7 +28,7 @@ REQUIRED_CURRENT_SERVICE_OWNERS = (
     ("route data authorization", "js/public-app.js", "createRouteModelView"),
     ("shared source resolver", "js/public-app.js", "createSourceResolver"),
     ("canonical location resolver", "js/public-app.js", "createLocationResolver"),
-    ("signed release builder", "scripts/build_public_release.py", "def build_manifest"),
+    ("signed release builder", "scripts/build_public_release_core.py", "def build_manifest"),
     ("closed production artifact assembler", "scripts/assemble_public_site.py", "def expected_files"),
     ("runtime inventory validator", "scripts/validate_public_runtime_inventory.py", "def validate_repository"),
 )
