@@ -5,6 +5,9 @@ on:
     branches:
       - "evidence/**"
     paths:
+      - "data/lie-ledger-v2-evidence-adjudications.json"
+      - "data/lie-ledger-v2-evidence-sources-20260909.json"
+      - "scripts/migrate_lie_ledger_evidence_adjudications.py"
       - "scripts/neutralize_lie_ledger_governance.py"
       - "scripts/build_lie_ledger_evidence_adjudication.py"
       - "tests/lie-ledger-governance-neutralization.test.py"
@@ -22,6 +25,9 @@ on:
       - ".github/workflows/validate-neutral-lie-ledger-governance.yml"
   pull_request:
     paths:
+      - "data/lie-ledger-v2-evidence-adjudications.json"
+      - "data/lie-ledger-v2-evidence-sources-20260909.json"
+      - "scripts/migrate_lie_ledger_evidence_adjudications.py"
       - "scripts/neutralize_lie_ledger_governance.py"
       - "scripts/build_lie_ledger_evidence_adjudication.py"
       - "tests/lie-ledger-governance-neutralization.test.py"
@@ -58,18 +64,22 @@ jobs:
         run: python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
       - name: Compile neutral governance implementation
         run: |
+          python -m py_compile scripts/migrate_lie_ledger_evidence_adjudications.py
           python -m py_compile scripts/neutralize_lie_ledger_governance.py
           python -m py_compile scripts/build_lie_ledger_evidence_adjudication.py
           python -m py_compile scripts/build_canonical_current_state_v2_final.py
           python -m py_compile scripts/build_public_current_state_v2_hardened.py
           python -m py_compile scripts/validate_lie_ledger_v2.py
           python -m py_compile scripts/validate_public_current_state_v2.py
-      - name: Build current canonical state from tracked evidence
+      - name: Verify migration artifact against frozen historical handoff
         run: |
           python scripts/build_source_registry.py --root .
+          python scripts/migrate_lie_ledger_evidence_adjudications.py --check
+      - name: Build current canonical state from tracked neutral adjudications
+        run: |
           python scripts/build_canonical_current_state.py --output data/canonical-current-state.json
           python scripts/build_canonical_current_state_v2_final.py --output data/canonical-current-state-v2.json
-      - name: Prove governance-only migration parity
+      - name: Prove historical-to-neutral substantive parity
         run: python tests/lie-ledger-governance-neutralization.test.py
       - name: Build and validate neutral public read models
         run: |
@@ -82,7 +92,7 @@ jobs:
         run: |
           python scripts/build_canonical_current_state_v2_final.py --check --output data/canonical-current-state-v2.json
           python scripts/build_public_current_state_v2_hardened.py --check --output data/public-current-state.json
-      - name: Reject active persona-authority declarations in successor files
+      - name: Reject active persona authority and historical replay in production
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -90,7 +100,6 @@ jobs:
           targets = [
               Path('docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md'),
               Path('schemas/lie-ledger-evidence-adjudication-v2.json'),
-              Path('scripts/neutralize_lie_ledger_governance.py'),
               Path('scripts/build_lie_ledger_evidence_adjudication.py'),
               Path('scripts/build_canonical_current_state_v2_final.py'),
               Path('scripts/build_public_current_state_v2_hardened.py'),
@@ -112,7 +121,21 @@ jobs:
                   if token in text:
                       raise SystemExit(f'active persona-authority token in {path}: {token}')
 
+          active_builder = Path('scripts/build_lie_ledger_evidence_adjudication.py').read_text(encoding='utf-8')
+          for legacy_import in (
+              'import build_lie_ledger_v2',
+              'import apply_lie_ledger_evidence_completion_20260909',
+              'import apply_lie_ledger_current_claims_20260909',
+              'import neutralize_lie_ledger_governance',
+          ):
+              if legacy_import in active_builder:
+                  raise SystemExit(f'active adjudication builder still replays historical machinery: {legacy_import}')
+          if 'data/lie-ledger-v2-evidence-adjudications.json' not in active_builder:
+              raise SystemExit('active adjudication builder is not bound to the tracked neutral adjudication set')
+
           final_builder = Path('scripts/build_canonical_current_state_v2_final.py').read_text(encoding='utf-8')
+          if 'import build_lie_ledger_evidence_adjudication as lie_ledger_pipeline' not in final_builder:
+              raise SystemExit('production final builder is not bound to neutral evidence-adjudication entrypoint')
           for legacy_import in (
               'import build_lie_ledger_v2',
               'import apply_lie_ledger_evidence_completion_20260909',
@@ -120,7 +143,19 @@ jobs:
           ):
               if legacy_import in final_builder:
                   raise SystemExit(f'production final builder bypasses neutral entrypoint: {legacy_import}')
-          if 'import build_lie_ledger_evidence_adjudication as lie_ledger_pipeline' not in final_builder:
-              raise SystemExit('production final builder is not bound to neutral evidence-adjudication entrypoint')
+
+          public_builder = Path('scripts/build_public_current_state_v2_hardened.py').read_text(encoding='utf-8')
+          if 'ACTIVE_LIE_LEDGER_EVIDENCE_ADJUDICATION_SET' not in public_builder:
+              raise SystemExit('public release input graph does not bind the neutral adjudication set')
+          for retired_input in (
+              'HISTORICAL_LIE_LEDGER_ASSESSMENT_INPUT',
+              'HISTORICAL_EVIDENCE_COMPLETION_INPUT',
+              'HISTORICAL_CURRENT_CLAIM_ASSESSMENT_INPUT',
+              'HISTORICAL_ASSESSMENT_PROJECTION_GENERATOR',
+              'HISTORICAL_EVIDENCE_COMPLETION_APPLICATOR',
+              'HISTORICAL_CURRENT_CLAIM_APPLICATOR',
+          ):
+              if retired_input in public_builder:
+                  raise SystemExit(f'historical replay remains in active public input graph: {retired_input}')
           print('successor governance source scan: PASS')
           PY
