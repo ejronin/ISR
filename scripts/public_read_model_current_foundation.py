@@ -545,7 +545,7 @@ def build_current_foundation(root: Path = ROOT) -> dict[str, Any]:
         datasets[key] = dataset_record(
             key,
             CANONICAL_STATE_PATH,
-            "DERIVED_GATE3_CANONICAL_CURRENT_STATE",
+            "DERIVED_CANONICAL_CURRENT_ENTITY_STATE",
             copy.deepcopy(payload),
             "application/json",
         )
