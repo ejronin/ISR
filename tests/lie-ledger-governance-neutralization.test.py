@@ -23,6 +23,7 @@ import apply_lie_ledger_evidence_completion_20260909 as evidence_completion
 import build_canonical_current_state_v2_final as final_builder
 import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_v2 as lie_ledger_v2
+import migrate_lie_ledger_evidence_adjudications as migration
 import neutralize_lie_ledger_governance as neutral
 
 # Frozen from the exact pre-refactor replay path after the first successful
@@ -190,6 +191,9 @@ def assert_neutral_structure(state: dict[str, Any]) -> None:
     assert governance.get("adjudication_basis") == "EVIDENCE_AND_ACCEPTED_ASSESSMENT"
     assert governance.get("implementation_model") == "DETERMINISTIC_BUILDER"
     assert governance.get("historical_inputs", {}).get("assessment_path")
+    if governance.get("active_adjudication_path") is not None:
+        assert governance.get("active_adjudication_path") == migration.OUT
+        assert governance.get("adjudication_version") == migration.ADJUDICATION_VERSION
 
     for record in records(state):
         assert "authority_status" not in record
@@ -231,6 +235,15 @@ def main() -> None:
 
     neutral.neutralize(migrated)
 
+    tracked_adjudication = json.loads((ROOT / migration.OUT).read_text(encoding="utf-8"))
+    assert migration.build_payload(ROOT) == tracked_adjudication
+    assert tracked_adjudication["migration_provenance"]["historical_substantive_sha256"] == EXPECTED_BASELINE_DIGEST
+    artifact_records = sorted(
+        (substantive_record(record) for record in tracked_adjudication["records"]),
+        key=lambda row: str(row["claim_instance_id"]),
+    )
+    assert artifact_records == before_records
+
     assert substantive_fingerprint(migrated) == before_records
     assert numeric_metrics(migrated.get("lie_ledger_v2_metrics") or {}) == before_metrics
     assert ledger_counts(migrated) == before_counts
@@ -248,6 +261,10 @@ def main() -> None:
 
     production = final_builder.build_state(ROOT)
     assert_neutral_structure(production)
+    governance = production["lie_ledger_v2_governance"]
+    assert governance["active_adjudication_path"] == migration.OUT
+    assert governance["adjudication_version"] == migration.ADJUDICATION_VERSION
+    assert production["release"]["lie_ledger_adjudication_record_sha256"] == tracked_adjudication["migration_provenance"]["neutral_record_set_sha256"]
     assert substantive_fingerprint(production) == before_records
     assert numeric_metrics(production.get("lie_ledger_v2_metrics") or {}) == before_metrics
     assert ledger_counts(production) == before_counts

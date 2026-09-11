@@ -19,6 +19,8 @@ PUBLIC = "data/public-current-state-v2.json"
 SCHEMA = "schemas/lie-ledger-evidence-adjudication-v2.json"
 GOVERNANCE = "ATLAS-EVIDENCE-20260910-1"
 CONTRACT = "2026-09-10"
+ADJUDICATION_PATH = "data/lie-ledger-v2-evidence-adjudications.json"
+ADJUDICATION_VERSION = "ATLAS-EVIDENCE-ADJUDICATION-20260911-v1"
 COMPLETION = "ROOK-EVIDENCE-COMPLETION-20260909-v1"
 ADJUDICATED = "EVIDENCE_ADJUDICATED"
 STRONG = {"LIKELY_KNEW_FALSE", "VERY_LIKELY_KNEW_FALSE", "KNOWING_FALSEHOOD_ESTABLISHED"}
@@ -179,7 +181,15 @@ def validate(root: Path = ROOT) -> None:
     require(governance.get("contract_version") == CONTRACT, "neutral Lie Ledger contract version mismatch")
     require(governance.get("adjudication_basis") == "EVIDENCE_AND_ACCEPTED_ASSESSMENT", "Lie Ledger adjudication basis is not evidence-based")
     require(governance.get("implementation_model") == "DETERMINISTIC_BUILDER", "Lie Ledger implementation model is not neutral")
+    require(governance.get("active_adjudication_path") == ADJUDICATION_PATH, "active Lie Ledger adjudication path mismatch")
+    require(governance.get("adjudication_version") == ADJUDICATION_VERSION, "active Lie Ledger adjudication version mismatch")
+    adjudication = load(root, ADJUDICATION_PATH)
+    require(adjudication.get("artifact_role") == "LIE_LEDGER_V2_EVIDENCE_ADJUDICATION_SET", "active Lie Ledger adjudication artifact role mismatch")
+    require(adjudication.get("adjudication_version") == ADJUDICATION_VERSION, "tracked adjudication version mismatch")
+    require(int(adjudication.get("record_count") or 0) == len(records), "tracked adjudication record count mismatch")
     require(canonical.get("release", {}).get("lie_ledger_governance_version") == GOVERNANCE, "canonical governance release pin mismatch")
+    require(canonical.get("release", {}).get("lie_ledger_adjudication_version") == ADJUDICATION_VERSION, "canonical adjudication release pin mismatch")
+    require(canonical.get("release", {}).get("lie_ledger_adjudication_record_sha256") == (adjudication.get("migration_provenance") or {}).get("neutral_record_set_sha256"), "canonical adjudication fingerprint pin mismatch")
     public_ledger = (public.get("gate3") or {}).get("lie_ledger", {})
     require(public_ledger.get("governance_version") == GOVERNANCE, "public governance version mismatch")
     require(public_ledger.get("primary_object") == "NARRATIVE_PROPOSITION_CHAIN", "public primary object is not narrative/proposition chain")
