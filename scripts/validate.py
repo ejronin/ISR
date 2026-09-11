@@ -1,98 +1,194 @@
 #!/usr/bin/env python3
+"""Current static-site and security validation for the public Atlas release.
+
+This validator deliberately ignores retired root-application and historical
+presentation contracts. Current release qualification belongs to the signed
+public shell/runtime plus canonical/public evidence validation.
+"""
 from __future__ import annotations
+
 from html.parser import HTMLParser
 from pathlib import Path
-import json, re, struct, subprocess, sys
+import hashlib
+import json
+import re
+import struct
+import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_FILES = [
-    'index.html','templates/public-index.html','css/public-shell.css','js/public-bootstrap.js','js/public-ia.js','js/public-app.js',
-    'legacy/phase1-public-runtime-reference.html','css/app.css','js/navigation.js','js/app.js','.nojekyll',
-    'assets/social-preview.png','data/core.json','data/events.json','data/facilities.json',
-    'data/strikes.json','data/losses.json','data/claims.json','data/influence-networks.json',
-    'data/economics.json','data/routes.json','data/missiles.json','data/sources.json','data/snapshots.json',
-    'data/integration-v1.2/manifest.json','data/integration-v1.2/events.json',
-    'data/integration-v1.2/timeline.json','data/integration-v1.2/sources.json',
-    'data/integration-v1.2/validate-package.py','scripts/validate_integration.py',
+    "index.html",
+    "templates/public-index.html",
+    "css/public-shell.css",
+    "js/public-bootstrap.js",
+    "js/public-app.js",
+    "js/public-ia.js",
+    "src/public-reader-layer.js",
+    "src/public-reader-layer.css",
+    "data/public-release.json",
+    ".nojekyll",
+    "assets/social-preview.png",
+    "vendor/leaflet/leaflet.js",
+    "vendor/leaflet/leaflet.css",
+    "vendor/leaflet/VERSION.json",
 ]
-REQUIRED_IDS = {'atlas-root'}
+REQUIRED_IDS = {"atlas-root"}
+
 
 class AtlasParser(HTMLParser):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-        self.ids=[]; self.tab_targets=[]; self.local_assets=[]; self.meta={}; self.links=[]
-    def handle_starttag(self, tag, attrs):
-        a=dict(attrs)
-        if 'id' in a: self.ids.append(a['id'])
-        if tag=='button' and 'tab' in a.get('class','').split() and a.get('onclick'):
-            m=re.search(r"showAtlasPanel\('([^']+)'",a['onclick'])
-            if m: self.tab_targets.append(m.group(1))
-        if tag in {'script','link','img'}:
-            v=a.get('src') or a.get('href')
-            if v and '://' not in v and not v.startswith(('data:','#')): self.local_assets.append(v.split('?')[0])
-        if tag=='meta':
-            key=a.get('property') or a.get('name')
-            if key: self.meta[key]=a.get('content','')
-        if tag=='link': self.links.append(a)
+        self.ids: list[str] = []
+        self.local_assets: list[str] = []
+        self.meta: dict[str, str] = {}
+        self.links: list[dict[str, str]] = []
+        self.errors: list[str] = []
 
-def fail(msg):
-    print('FAIL:',msg); return 1
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = {key: value or "" for key, value in attrs}
+        if values.get("id"):
+            self.ids.append(values["id"])
+        if tag in {"script", "link", "img"}:
+            value = values.get("src") or values.get("href")
+            if value and "://" not in value and not value.startswith(("data:", "#")):
+                self.local_assets.append(value.split("?")[0])
+        if tag == "meta":
+            key = values.get("property") or values.get("name")
+            if key:
+                self.meta[key] = values.get("content", "")
+        if tag == "link":
+            self.links.append(values)
+        if tag == "a" and values.get("target") == "_blank":
+            rel = set(values.get("rel", "").split())
+            if not {"noopener", "noreferrer"}.issubset(rel):
+                self.errors.append(f"target=_blank link missing noopener/noreferrer: {values.get('href')}")
 
-def main():
-    failures=0
+
+def fail(message: str) -> int:
+    print("FAIL:", message)
+    return 1
+
+
+def main() -> int:
+    failures = 0
     for rel in REQUIRED_FILES:
-        if not (ROOT/rel).exists(): failures += fail(f'missing required file: {rel}')
-    html=(ROOT/'index.html').read_text(encoding='utf-8')
-    if html != (ROOT/'templates/public-index.html').read_text(encoding='utf-8'):
-        failures += fail('deployed index differs from templates/public-index.html review source')
-    p=AtlasParser(); p.feed(html)
-    seen=set(); dups=set()
-    for x in p.ids:
-        if x in seen: dups.add(x)
-        seen.add(x)
-    if dups: failures += fail(f'duplicate HTML ids: {sorted(dups)}')
-    missing_ids=sorted(REQUIRED_IDS-set(p.ids))
-    if missing_ids: failures += fail(f'missing required public-shell IDs: {missing_ids}')
-    orphan=sorted(set(p.tab_targets)-set(p.ids))
-    if orphan: failures += fail(f'orphan tab targets: {orphan}')
-    for rel in p.local_assets:
-        # percent-encoded paths are valid browser paths; decode simple spaces for filesystem validation
-        path=Path(rel.replace('%20',' '))
-        if not (ROOT/path).exists(): failures += fail(f'broken local asset reference: {rel}')
-    expected={
-        'og:type':'website','og:url':'https://ejronin.github.io/ISR/',
-        'og:image':'https://ejronin.github.io/ISR/assets/social-preview.png',
-        'twitter:card':'summary_large_image'
+        if not (ROOT / rel).exists():
+            failures += fail(f"missing required current-release file: {rel}")
+
+    html = (ROOT / "index.html").read_text(encoding="utf-8")
+    template = (ROOT / "templates/public-index.html").read_text(encoding="utf-8")
+    if html != template:
+        failures += fail("deployed index differs from templates/public-index.html review source")
+
+    parser = AtlasParser()
+    parser.feed(html)
+    for error in parser.errors:
+        failures += fail(error)
+
+    seen: set[str] = set()
+    duplicates: set[str] = set()
+    for value in parser.ids:
+        if value in seen:
+            duplicates.add(value)
+        seen.add(value)
+    if duplicates:
+        failures += fail(f"duplicate HTML ids: {sorted(duplicates)}")
+    missing_ids = sorted(REQUIRED_IDS - set(parser.ids))
+    if missing_ids:
+        failures += fail(f"missing required public-shell IDs: {missing_ids}")
+
+    for rel in parser.local_assets:
+        path = Path(rel.replace("%20", " "))
+        if not (ROOT / path).exists():
+            failures += fail(f"broken local asset reference: {rel}")
+
+    expected_meta = {
+        "og:type": "website",
+        "og:url": "https://ejronin.github.io/ISR/",
+        "og:image": "https://ejronin.github.io/ISR/assets/social-preview.png",
+        "twitter:card": "summary_large_image",
     }
-    for k,v in expected.items():
-        if p.meta.get(k)!=v: failures += fail(f'{k} expected {v!r}, got {p.meta.get(k)!r}')
-    canonical=[x.get('href') for x in p.links if 'canonical' in x.get('rel','').split()]
-    if canonical!=['https://ejronin.github.io/ISR/']: failures += fail(f'canonical link invalid: {canonical}')
-    for f in sorted((ROOT/'data').rglob('*.json')):
-        try: json.loads(f.read_text(encoding='utf-8'))
-        except Exception as e: failures += fail(f'invalid JSON {f.relative_to(ROOT)}: {e}')
-    # validate social PNG dimensions from IHDR without external packages
-    png=ROOT/'assets/social-preview.png'
+    for key, value in expected_meta.items():
+        if parser.meta.get(key) != value:
+            failures += fail(f"{key} expected {value!r}, got {parser.meta.get(key)!r}")
+    canonical = [item.get("href") for item in parser.links if "canonical" in item.get("rel", "").split()]
+    if canonical != ["https://ejronin.github.io/ISR/"]:
+        failures += fail(f"canonical link invalid: {canonical}")
+
+    # Current public root security policy.
+    for token, message in (
+        ("Content-Security-Policy", "CSP meta policy missing"),
+        ("script-src 'self'", "CSP script-src must be self-only"),
+        ("object-src 'none'", "CSP object-src must be none"),
+        ("form-action 'none'", "CSP form-action must be none"),
+    ):
+        if token not in html:
+            failures += fail(message)
+    if re.search(r"\son(?:click|load|error|input|change)=", html, re.I):
+        failures += fail("inline executable handler found")
+    if "unpkg.com" in html or "https://cdn" in html:
+        failures += fail("remote executable/style dependency found")
+    if "javascript:" in html.lower():
+        failures += fail("javascript URL found in HTML")
+
+    # All repository JSON should remain parseable even when some files are
+    # historical evidence/audit material rather than current presentation.
+    for path in sorted((ROOT / "data").rglob("*.json")):
+        try:
+            json.loads(path.read_text(encoding="utf-8"))
+        except Exception as exc:  # pragma: no cover - diagnostic path
+            failures += fail(f"invalid JSON {path.relative_to(ROOT)}: {exc}")
+
+    png = ROOT / "assets/social-preview.png"
     if png.exists():
-        b=png.read_bytes()[:24]
-        if b[:8]!=b'\x89PNG\r\n\x1a\n': failures += fail('social-preview.png is not PNG')
+        header = png.read_bytes()[:24]
+        if header[:8] != b"\x89PNG\r\n\x1a\n":
+            failures += fail("social-preview.png is not PNG")
         else:
-            w,h=struct.unpack('>II',b[16:24])
-            if (w,h)!=(1200,630): failures += fail(f'social preview dimensions {(w,h)} != (1200,630)')
-    css=(ROOT/'css/public-shell.css').read_text(encoding='utf-8')
-    if 'prefers-reduced-motion: reduce' not in css or '.secondary-nav' not in css or '.mobile-navigation' not in css:
-        failures += fail('public shell responsive/reduced-motion styles missing')
-    for js in ['js/public-bootstrap.js','js/public-ia.js','js/public-app.js','js/navigation.js','js/app.js']:
-        proc=subprocess.run(['node','--check',str(ROOT/js)],capture_output=True,text=True)
-        if proc.returncode: failures += fail(f'JS syntax error in {js}: {proc.stderr.strip()}')
-    # protect against the blank strategic CLAIM CHECK regression caught during migration
-    legacy=(ROOT/'legacy/phase1-public-runtime-reference.html').read_text(encoding='utf-8')
-    if re.search(r'<div class="date">2026-08-16 • CLAIM CHECK</div><h3>\s*</h3>',legacy):
-        failures += fail('blank Aug. 16 strategic claim-check card regression present')
+            width, height = struct.unpack(">II", header[16:24])
+            if (width, height) != (1200, 630):
+                failures += fail(f"social preview dimensions {(width, height)} != (1200, 630)")
+
+    css = (ROOT / "css/public-shell.css").read_text(encoding="utf-8")
+    for token in ("prefers-reduced-motion: reduce", ".secondary-nav", ".mobile-navigation"):
+        if token not in css:
+            failures += fail(f"public shell responsive/accessibility style missing: {token}")
+
+    # Vendored mapping runtime is pinned and hashed; no CDN execution path.
+    vendor = json.loads((ROOT / "vendor/leaflet/VERSION.json").read_text(encoding="utf-8"))
+    if vendor.get("version") != "1.9.4":
+        failures += fail("vendored Leaflet version mismatch")
+    for relative, expected in vendor.get("sha256", {}).items():
+        candidate = ROOT / "vendor/leaflet" / relative
+        if not candidate.is_file():
+            failures += fail(f"vendored Leaflet file missing: {relative}")
+            continue
+        data = candidate.read_bytes()
+        if candidate.suffix.lower() in {".css", ".js", ".md", ".txt", ""}:
+            data = data.replace(b"\r\n", b"\n")
+        actual = hashlib.sha256(data).hexdigest()
+        if actual != expected:
+            failures += fail(f"vendored Leaflet hash mismatch: {relative}")
+
+    # Syntax-check only current signed runtime sources. Retired root-app modules
+    # are intentionally outside current release qualification.
+    for rel in (
+        "js/public-bootstrap.js",
+        "js/public-app.js",
+        "js/public-ia.js",
+        "src/public-reader-layer.js",
+    ):
+        proc = subprocess.run(["node", "--check", str(ROOT / rel)], capture_output=True, text=True)
+        if proc.returncode:
+            failures += fail(f"JS syntax error in {rel}: {proc.stderr.strip()}")
+
     if failures:
-        print(f'Validation failed: {failures} issue(s)')
+        print(f"Validation failed: {failures} issue(s)")
         return 1
-    print('Validation passed: current shell, local assets, metadata, JSON, JS syntax, legacy reference, responsive styles, and social preview.')
+    print("Validation passed: current public shell, security policy, local assets, JSON, signed runtime syntax, accessibility styles, vendor hashes, metadata, and social preview.")
     return 0
 
-if __name__=='__main__': sys.exit(main())
+
+if __name__ == "__main__":
+    sys.exit(main())
