@@ -13,7 +13,27 @@ const css = fs.readFileSync(path.join(root, 'css', 'public-shell.css'), 'utf8');
 assert.equal(model.counts.chronology_records, model.chronology.length, 'public copy must derive the accepted chronology count');
 assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00', 'frozen Gate 2 boundary changed');
 assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff, 'public status must derive the accepted current read model');
-assert.equal(canonicalManifest.current_evidence_cutoff, canonicalManifest.accepted_updates.at(-1).known_at, 'current evidence cutoff must match the latest accepted canonical update');
+const acceptedUpdates = canonicalManifest.accepted_updates;
+assert(Array.isArray(acceptedUpdates) && acceptedUpdates.length > 0, 'canonical manifest must retain an accepted update lineage');
+const latestAccepted = acceptedUpdates.at(-1);
+assert.equal(typeof latestAccepted.evidence_cutoff, 'string', 'latest accepted update must carry an evidence cutoff');
+assert(latestAccepted.evidence_cutoff.length > 0, 'latest accepted update evidence cutoff must not be empty');
+assert.equal(typeof latestAccepted.known_at, 'string', 'latest accepted update must carry a knowledge-effective time');
+assert(latestAccepted.known_at.length > 0, 'latest accepted update knowledge-effective time must not be empty');
+assert.equal(canonicalManifest.current_evidence_cutoff, latestAccepted.evidence_cutoff, 'current evidence cutoff must derive from the latest accepted evidence horizon');
+for (const [index, update] of acceptedUpdates.entries()) {
+  const knownAt = Date.parse(update.known_at);
+  const evidenceCutoff = Date.parse(update.evidence_cutoff);
+  assert.equal(update.sequence, index + 1, 'accepted update sequence must remain contiguous');
+  assert(Number.isFinite(knownAt), `accepted update ${index + 1} known_at must be a valid timestamp`);
+  assert(Number.isFinite(evidenceCutoff), `accepted update ${index + 1} evidence_cutoff must be a valid timestamp`);
+  assert(evidenceCutoff <= knownAt, `accepted update ${index + 1} evidence cutoff may precede but may not be later than known_at`);
+  if (index > 0) {
+    const previous = acceptedUpdates[index - 1];
+    assert(knownAt > Date.parse(previous.known_at), 'accepted known_at values must increase strictly');
+    assert(evidenceCutoff >= Date.parse(previous.evidence_cutoff), 'accepted evidence cutoffs may not move backward');
+  }
+}
 assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff, 'current status must remain distinct from the frozen Gate 2 boundary after accepted later evidence');
 assert.equal(ia.ROUTES.size, 25, 'Phase 4 must retain all accepted public routes');
 assert.equal(new Set([...ia.ROUTES.values()].map(route => route.owner)).size, 25, 'each route must retain one page owner');
