@@ -82,7 +82,13 @@ def main() -> int:
     shipping_items = {item["entity_id"]: item for item in state["entities"]["shipping"]}
     shipping = shipping_items["SHIP-G3-HORMUZ-20260904"]
     assert shipping["record"]["date"] >= "2026-09-06"
-    assert "scope" in shipping["record"]["ais_scope"].lower()
+    # Protect the evidentiary behavior, not one sentence. Hormuz traffic metrics
+    # must remain explicitly AIS/provider bounded after later accepted updates.
+    ais_scope = shipping["record"].get("ais_scope")
+    assert isinstance(ais_scope, str) and ais_scope.strip()
+    assert "ais" in ais_scope.lower()
+    assert "SCOPE_BOUND" in str(shipping["record"].get("adjudication") or "")
+    assert shipping["record"].get("source_ids")
     assert any(revision.get("packet_id") == "UPD-20260906-CURRENT" for revision in shipping.get("revisions") or [])
 
     economic_items = {item["entity_id"]: item for item in state["entities"]["economics"]}
