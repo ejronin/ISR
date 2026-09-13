@@ -1,0 +1,35 @@
+name: Temporary R2 merged qualification repair
+
+on:
+  push:
+    branches:
+      - release/r2-authoritative-reader-20260913
+    paths:
+      - scripts/tmp_r2_merge_claim_canary.py
+      - .github/workflows/tmp-r2-merge-claim-canary.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: release/r2-authoritative-reader-20260913
+      - name: Apply asserted qualifier merge
+        run: python scripts/tmp_r2_merge_claim_canary.py
+      - name: Verify registry and claim canary remain qualified
+        run: |
+          grep -q 'node tests/public-reader-registry.test.js' .github/workflows/release-qualification.yml
+          grep -q 'python tests/gate3-v2-claim-count-canary.test.py' .github/workflows/release-qualification.yml
+      - name: Commit qualification merge
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/release-qualification.yml
+          git diff --cached --quiet && { echo "No qualifier changes produced"; exit 1; }
+          git commit -m "R2: retain claim-count canary after main merge"
+          git push origin HEAD:release/r2-authoritative-reader-20260913
