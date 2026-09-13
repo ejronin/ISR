@@ -82,6 +82,7 @@ jobs:
           python tests/gate3-v2-temporal-consumer-agreement.test.py
           python tests/gate3-v2-sep7-replay.test.py
           python tests/gate3-v2-forward-update-canary.test.py
+          python tests/gate3-v2-claim-count-canary.test.py
           python tests/gate3-v2-delayed-knowledge-canary.test.py
 
       - name: Validate neutral evidence governance
