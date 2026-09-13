@@ -1,0 +1,522 @@
+{
+  "entities": [
+    {
+      "entity_id": "REL-SIDR-OCCURRENCE-CORRECTION-20260911",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "correct_occurrence_date": "2026-08-31",
+        "event_ref": "G3-SAUDI-TANKER-OMAN-RESCUE-20260907",
+        "evidence": "Reuters contemporaneous reporting places the SIDR projectile attack on Aug. 31. The existing Sep. 7 canonical row represents later rescue/status reporting and must not remain the occurrence date. The v2 packet consumer lacks stable event-update semantics, so this relationship records the correction requirement without creating a false duplicate occurrence.",
+        "knowledge_time": "2026-09-11T18:19:00-04:00",
+        "later_status_report_date": "2026-09-07",
+        "relationship_id": "REL-SIDR-OCCURRENCE-CORRECTION-20260911",
+        "relationship_type": "CHRONOLOGY_CORRECTION_REQUIRED",
+        "source_ids": [
+          "SRC-C95FE4CFA0BF",
+          "SRC-0BDAFECA0DE1"
+        ],
+        "unresolved": "Final status of seven crew members is not established by the reviewed evidence."
+      }
+    },
+    {
+      "entity_id": "MAT-IRN-RIESCO-20260908",
+      "entity_type": "material_loss",
+      "mode": "update",
+      "record": {
+        "confidence": "HIGH",
+        "disposition": "CENTCOM primary media records M/T Riesco sinking in the Gulf of Oman after the Sep. 8 U.S. strike.",
+        "later_evidence_known_at": "2026-09-11T18:19:00-04:00",
+        "source_ids": [
+          "SRC-D1BEDB6691C0",
+          "SRC-6376083EFCD8"
+        ],
+        "status": "SUNK_DESTROYED"
+      }
+    },
+    {
+      "entity_id": "MAT-US-A10-MUWAFFAQ-20260908",
+      "entity_type": "material_loss",
+      "mode": "add",
+      "record": {
+        "asset_class": "A-10_ATTACK_AIRCRAFT",
+        "confidence": "HIGH_FOR_DAMAGE_MODERATE_HIGH_FOR_EXACT_BDA",
+        "disposition": "Reuters reported one A-10 severely damaged, including a missing wing, citing a U.S. official.",
+        "event_date": "2026-09-08",
+        "event_ref": "G3-IRAN-JORDAN-BASE-ATTACK-20260908",
+        "knowledge_time": "2026-09-11T18:19:00-04:00",
+        "loss_id": "MAT-US-A10-MUWAFFAQ-20260908",
+        "military_platform": true,
+        "owner": "United States",
+        "quantity": 1,
+        "service": "U.S. Air Force",
+        "side": "U.S./COALITION",
+        "source_ids": [
+          "SRC-8296405C4840"
+        ],
+        "status": "SEVERELY_DAMAGED"
+      }
+    },
+    {
+      "entity_id": "MAT-US-F15-MUWAFFAQ-20260908",
+      "entity_type": "material_loss",
+      "mode": "add",
+      "record": {
+        "asset_class": "F-15_FIGHTER",
+        "confidence": "HIGH_FOR_MULTIPLE_DAMAGE_MODERATE_HIGH_FOR_APPROXIMATE_COUNT",
+        "disposition": "Reuters reported roughly eight F-15s lightly damaged and returned to service, citing a U.S. official. Approximate reporting is not converted to an exact canonical quantity.",
+        "event_date": "2026-09-08",
+        "event_ref": "G3-IRAN-JORDAN-BASE-ATTACK-20260908",
+        "knowledge_time": "2026-09-11T18:19:00-04:00",
+        "loss_id": "MAT-US-F15-MUWAFFAQ-20260908",
+        "military_platform": true,
+        "owner": "United States",
+        "quantity": null,
+        "reported_quantity_approx": 8,
+        "service": "U.S. Air Force",
+        "side": "U.S./COALITION",
+        "source_ids": [
+          "SRC-8296405C4840"
+        ],
+        "status": "LIGHTLY_DAMAGED_RETURNED_TO_SERVICE_REPORTED"
+      }
+    },
+    {
+      "entity_id": "SHIP-G3-HORMUZ-20260904",
+      "entity_type": "shipping",
+      "mode": "update",
+      "record": {
+        "adjudication": "PHYSICALLY_TRAVERSABLE_SEVERELY_DISRUPTED_COMMERCIALLY_CONTESTED; METRICS_PROVIDER_AND_VISIBILITY_SCOPE_BOUND",
+        "ais_scope": "Provider-observable/AIS traffic; dark traffic, AIS-off crossings and provider/classification differences are not inferred into the visible count.",
+        "date": "2026-09-11",
+        "note": "Comparable trend claims must hold provider/vessel universe constant; prewar all-large-commercial-vessel traffic is contextual baseline, not the denominator for the Kpler commodity/observable series.",
+        "observed_traffic": "Kpler reported seven observable vessel transits on Sep. 10, versus 11 the prior day and a 10-day average of 15. Physical transit remained possible while commercial traffic stayed severely disrupted.",
+        "source_ids": [
+          "SRC-6A353EFF69DB",
+          "SRC-E2269A4B499D",
+          "SRC-F53065520EA8",
+          "SRC-A3480DB17165",
+          "SRC-9DC172E5EDB3",
+          "SRC-C7CC991B2C5F",
+          "SRC-0F405D5BB777",
+          "SRC-A22AA87957A3"
+        ]
+      }
+    },
+    {
+      "entity_id": "ECON-G3-VLCC-FREIGHT-20260911",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "adjudication": "RECORD_FREIGHT_COST_ESTABLISHED; CAUSAL_ALLOCATION_TO_SPECIFIC_UNDERWRITER_STATE_OR_GOVERNMENT_NOT_ESTABLISHED",
+        "date": "2026-09-11",
+        "economic_id": "ECON-G3-VLCC-FREIGHT-20260911",
+        "metric": "VLCC freight Gulf of Oman to China",
+        "observed_state": "Baltic Exchange Worldscale around 450, approximately $11.50 per barrel, reported as a record for the wartime route series; West Africa-to-Asia VLCC rates also reached records.",
+        "source_ids": [
+          "SRC-016DDDD31B15"
+        ]
+      }
+    },
+    {
+      "entity_id": "FAC-QAT-LNG-SYSTEM",
+      "entity_type": "facility",
+      "mode": "update",
+      "record": {
+        "assessment": "Physical damage remains the March event; Sep. 11 evidence strengthens duration and operational/economic effect without creating a new strike.",
+        "continued_operation_evidence": [
+          "The remaining Qatar LNG system continued operating; the evidence supports partial long-duration capacity loss, not system-wide shutdown."
+        ],
+        "current_status": "DAMAGED_BUT_SYSTEM_OPERATING; SPECIFIC_DAMAGED_CAPACITY_REMAINS_UNAVAILABLE; MULTI_YEAR_REPAIR_EFFECT",
+        "last_confirmed_degraded_date": "2026-09-11",
+        "last_confirmed_operating_date": "2026-09-11 (remaining system capacity operating; damaged units unavailable)",
+        "repair_evidence": [
+          "Damaged capacity remained unavailable by Sep. 11; multi-year repair horizon remained material."
+        ],
+        "source_ids": [
+          "SRC-4E85BD9B8182",
+          "SRC-AF45CA5FA4C9",
+          "SRC-4D482AE1D535"
+        ],
+        "verified_functional_effect": [
+          "QatarEnergy CEO had said roughly 12.8 million tonnes/year of LNG capacity was affected with a 3-5 year repair estimate.",
+          "By Sep. 11 Reuters reported two of 14 LNG trains and a GTL facility damaged in March remained unavailable, with QatarEnergy seeking replacement U.S. LNG supply through 2031."
+        ]
+      }
+    },
+    {
+      "entity_id": "ECON-SA-IEA-SUPPLY-202608",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "adjudication": "IEA_ESTIMATE_ESTABLISHED_AS_SOURCE_REPORTED; DO_NOT_MERGE_WITH_OPEC_SAUDI_PRODUCTION_OR_SUPPLY_SERIES",
+        "date": "2026-09-11",
+        "economic_id": "ECON-SA-IEA-SUPPLY-202608",
+        "metric": "Saudi August crude supply",
+        "observed_state": "IEA estimated August Saudi crude supply at 6.0 million bpd, down 2.3 million bpd month-on-month and the lowest in more than three decades. Saudi/OPEC-reported production and supply use different figures and must remain methodologically distinct.",
+        "source_ids": [
+          "SRC-BB84819A27C9"
+        ]
+      }
+    },
+    {
+      "entity_id": "GAP-E1-IRGC-HOUTHI-COMMAND",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "evidence": "Reuters multi-source reporting attributes Iranian arms/advice and direction; Iran denies directing the Houthis. Direct command is not promoted to established fact.",
+        "gap_id": "GAP-E1-IRGC-HOUTHI-COMMAND",
+        "known_at": "2026-09-11T18:19:00-04:00",
+        "source_ids": [
+          "SRC-223F14998B32",
+          "SRC-636B266D1191"
+        ],
+        "status": "UNRESOLVED",
+        "topic": "Direct IRGC operational command of Sep. 10-11 Houthi coastal offensive"
+      }
+    },
+    {
+      "entity_id": "GAP-E1-SIDR-SEVEN-CREW",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E1-SIDR-SEVEN-CREW",
+        "known_at": "2026-09-11T18:19:00-04:00",
+        "source_ids": [
+          "SRC-C95FE4CFA0BF",
+          "SRC-0BDAFECA0DE1"
+        ],
+        "status": "UNRESOLVED",
+        "topic": "Final status of seven SIDR crew not accounted for by two deaths plus sixteen evacuated"
+      }
+    },
+    {
+      "entity_id": "GAP-E1-MUWAFFAQ-EXACT-BDA",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E1-MUWAFFAQ-EXACT-BDA",
+        "known_at": "2026-09-11T18:19:00-04:00",
+        "source_ids": [
+          "SRC-8296405C4840",
+          "SRC-ED2A30FC7E01"
+        ],
+        "status": "UNRESOLVED",
+        "topic": "Exact aircraft-by-aircraft Muwaffaq Salti BDA and reconciliation with early Jordan impact account"
+      }
+    },
+    {
+      "entity_id": "GAP-E1-FUTURE-BANK-SANCTION",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E1-FUTURE-BANK-SANCTION",
+        "known_at": "2026-09-11T18:19:00-04:00",
+        "rule": "Do not convert announcement into completed legal action before OFAC enactment.",
+        "source_ids": [
+          "SRC-05898888F412"
+        ],
+        "status": "PENDING_NOT_COMPLETED_ACTION",
+        "topic": "Any announced future bank sanction not yet enacted by OFAC"
+      }
+    },
+    {
+      "entity_id": "GAP-E1-PAKISTAN-WARNING",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "evidence": "Reuters reported the warning from Saudi, Pakistani and Iranian sources; Pakistan publicly called the report unsubstantiated and did not confirm the alleged message.",
+        "gap_id": "GAP-E1-PAKISTAN-WARNING",
+        "known_at": "2026-09-11T18:19:00-04:00",
+        "source_ids": [
+          "SRC-FA535D8B18E9"
+        ],
+        "status": "UNRESOLVED_PRESERVE_CONFLICT",
+        "topic": "Reported Pakistani warning to Iran on behalf of Saudi Arabia"
+      }
+    },
+    {
+      "entity_id": "GAP-E1-SAUDI-EASTWEST-SMOKE",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "evidence": "Satellite imagery/reporting established smoke in the vicinity; no Saudi/Aramco confirmation established a Houthi strike or other cause at the reviewed cutoff.",
+        "gap_id": "GAP-E1-SAUDI-EASTWEST-SMOKE",
+        "known_at": "2026-09-11T18:19:00-04:00",
+        "source_ids": [
+          "SRC-636B266D1191"
+        ],
+        "status": "UNRESOLVED_CAUSE",
+        "topic": "Cause of smoke observed near Saudi East-West pipeline south of Medina"
+      }
+    }
+  ],
+  "events": [
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-09-09",
+      "event_id": "G3-IAEA-UNSC-REFERRAL-20260909",
+      "event_type": "IAEA_SAFEGUARDS_REFERRAL",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "knowledge_class": "LATE_INTEGRATED_CONTEMPORANEOUS_EVENT",
+      "public_available_time": "2026-09-09T12:00:00-04:00",
+      "source_ids": [
+        "SRC-9A54AFE25412",
+        "SRC-BEFAECE96492"
+      ],
+      "strike_countable": false,
+      "summary": "The IAEA Board of Governors reported Iran's safeguards non-compliance to the UN Security Council and General Assembly. This referral is not itself a Security Council sanction or enforcement action."
+    },
+    {
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_date": "2026-09-10",
+      "event_id": "G3-HOUTHI-MOCHA-HANISH-ADVANCE-20260910",
+      "event_type": "YEMEN_HOUTHI_TERRITORIAL_ADVANCE",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "public_available_time": "2026-09-10T12:00:00-04:00",
+      "source_ids": [
+        "SRC-223F14998B32"
+      ],
+      "strike_countable": false,
+      "summary": "Houthi forces seized Mocha and advanced onto or took positions on the Hanish islands. Sourced reporting linked Iranian arms/advice to the offensive, while direct Iranian operational command remained disputed."
+    },
+    {
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_date": "2026-09-11",
+      "event_id": "G3-HOUTHI-DHUBAB-PERIM-ADVANCE-20260911",
+      "event_type": "YEMEN_HOUTHI_TERRITORIAL_ADVANCE",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "public_available_time": "2026-09-11T08:00:00-04:00",
+      "source_ids": [
+        "SRC-636B266D1191"
+      ],
+      "strike_countable": false,
+      "summary": "Houthi forces took Dhubab and government forces withdrew from Perim/Mayun amid a continued Red Sea coastal advance. Geographic possession strengthens the Houthi position around Bab el-Mandeb but does not establish unqualified control of all strait traffic."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-09-10",
+      "event_id": "G3-US-OFAC-PROXY-LICENSING-20260910",
+      "event_type": "US_IRAN_SANCTIONS_AND_LICENSING_ACTION",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "public_available_time": "2026-09-10T12:00:00-04:00",
+      "source_ids": [
+        "SRC-05898888F412"
+      ],
+      "strike_countable": false,
+      "summary": "OFAC designated Iran-linked proxy support networks, announced an Iran-related enforcement action and shifted Iran-related specific-license review to a presumption of denial subject to stated exceptions. This records enacted September 10 action, not any separately announced future sanction."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-09-10",
+      "event_id": "G3-IRAN-ENERGY-FREIGHT-CHARGE-SUSPENSION-20260910",
+      "event_type": "IRAN_MARITIME_FREIGHT_POLICY",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "public_available_time": "2026-09-10T12:00:00-04:00",
+      "source_ids": [
+        "SRC-7B008BB91BDA"
+      ],
+      "strike_countable": false,
+      "summary": "Iran temporarily suspended its 10% freight-fee charge on foreign vessels transporting specified energy products to or from Iran pending approval/publication of a definitive taxable-products list. Implementation and commercial recovery effects remain unresolved."
+    },
+    {
+      "event_class": "STATE_SNAPSHOT",
+      "event_date": "2026-09-11",
+      "event_id": "G3-HORMUZ-TRAFFIC-20260911",
+      "event_type": "HORMUZ_TRAFFIC_METRIC",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "public_available_time": "2026-09-11T10:00:00-04:00",
+      "source_ids": [
+        "SRC-A22AA87957A3"
+      ],
+      "strike_countable": false,
+      "summary": "Kpler data reported seven observable vessel transits through Hormuz on Sep. 10, versus 11 the prior day and a 10-day average of 15. The metric is AIS/observable-provider traffic and excludes unknown dark traffic."
+    },
+    {
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_date": "2026-09-11",
+      "event_id": "G3-VLCC-FREIGHT-RECORD-20260911",
+      "event_type": "GLOBAL_SHIPPING_FREIGHT_ESCALATION",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "public_available_time": "2026-09-11T11:00:00-04:00",
+      "source_ids": [
+        "SRC-016DDDD31B15"
+      ],
+      "strike_countable": false,
+      "summary": "Baltic Exchange data reported Gulf of Oman-to-China VLCC freight around Worldscale 450, roughly $11.50 per barrel, a record for the wartime route series; West Africa-to-Asia VLCC rates also reached records."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-09-11",
+      "event_id": "G3-SK-IRAN-HORMUZ-CALL-20260911",
+      "event_type": "SOUTH_KOREA_IRAN_HORMUZ_DIPLOMACY",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "public_available_time": "2026-09-11T09:00:00-04:00",
+      "source_ids": [
+        "SRC-14A29B4C9164"
+      ],
+      "strike_countable": false,
+      "summary": "South Korea's and Iran's foreign ministers discussed Hormuz and navigation security at Iran's request while Seoul continued assessing contribution options. No South Korean troop or naval deployment decision was established."
+    },
+    {
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_date": "2026-08-28",
+      "event_id": "G3-PEZESHKIAN-SANCTIONS-ASSESSMENT-20260828",
+      "event_type": "IRAN_ECONOMIC_SELF_ASSESSMENT",
+      "game_knowledge_time": "2026-09-11T18:19:00-04:00",
+      "knowledge_class": "LATE_INTEGRATED_HISTORICAL_EVIDENCE",
+      "public_available_time": "2026-08-29T00:00:00-04:00",
+      "source_ids": [
+        "SRC-F550DDD51246",
+        "SRC-5D32C7182EFF"
+      ],
+      "strike_countable": false,
+      "summary": "President Masoud Pezeshkian publicly acknowledged material sanctions/war effects and reported roughly a 35% fall in foreign trade. The percentage is an Iranian presidential self-assessment, not an independently audited trade statistic."
+    }
+  ],
+  "evidence_cutoff": "2026-09-11T18:00:00-04:00",
+  "known_at": "2026-09-11T18:19:00-04:00",
+  "narrative_claims": [],
+  "packet_id": "UPD-20260911-EVIDENCE-CONVERGENCE",
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "outlet": "U.S. Central Command",
+      "published_date": "2026-09-08",
+      "source_id": "SRC-6376083EFCD8",
+      "source_role": "PRIMARY_OFFICIAL",
+      "title": "M/T Riesco sinks in the Gulf of Oman, Sept. 8",
+      "url": "https://www.centcom.mil/MEDIA/VIDEO-AND-IMAGERY/VIDEOS/dvpmoduleid/37619/videoid/1022167/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-10",
+      "source_id": "SRC-8296405C4840",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Multiple US military aircraft suffered damage in overnight strikes on Jordan air base",
+      "url": "https://www.reuters.com/world/multiple-us-military-aircraft-suffered-damage-overnight-strikes-on-jordan-air-2026-09-10/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-01",
+      "source_id": "SRC-C95FE4CFA0BF",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Two tankers carrying Saudi oil attacked in Strait of Hormuz",
+      "url": "https://www.reuters.com/business/energy/two-tankers-carrying-saudi-oil-attacked-strait-hormuz-2026-09-01/"
+    },
+    {
+      "outlet": "Associated Press",
+      "published_date": "2026-09-09",
+      "source_id": "SRC-9A54AFE25412",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "IAEA board reports Iran safeguards noncompliance to UN Security Council",
+      "url": "https://apnews.com/article/607ecdffcd8ef88ddf8f33041e86b720"
+    },
+    {
+      "outlet": "UK Foreign, Commonwealth & Development Office",
+      "published_date": "2026-09-09",
+      "source_id": "SRC-BEFAECE96492",
+      "source_role": "PRIMARY_OFFICIAL",
+      "title": "Implementation of the NPT safeguards agreement in Iran: Quad statement to the IAEA Board of Governors, September 2026",
+      "url": "https://www.gov.uk/government/speeches/implementation-of-the-npt-safeguards-agreement-in-iran-quad-statement-to-the-iaea-board-of-governors-september-2026"
+    },
+    {
+      "outlet": "U.S. Treasury OFAC",
+      "published_date": "2026-09-10",
+      "source_id": "SRC-05898888F412",
+      "source_role": "PRIMARY_OFFICIAL",
+      "title": "Iran-related and Counter Terrorism Designations; Iran-related Enforcement Action; Iran-related Licensing Policy",
+      "url": "https://ofac.treasury.gov/recent-actions/20260910"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-10",
+      "source_id": "SRC-7B008BB91BDA",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Iran suspends freight charge on foreign vessels carrying energy products to or from Iran",
+      "url": "https://www.reuters.com/business/energy/iran-suspends-freight-charge-foreign-vessels-carrying-energy-products-or-iran-2026-09-10/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-11",
+      "source_id": "SRC-A22AA87957A3",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Hormuz shipping traffic falls to single digits, data shows",
+      "url": "https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-single-digits-data-shows-2026-09-11/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-11",
+      "source_id": "SRC-016DDDD31B15",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Oil tanker rates hit record highs following Iran, US shipping attacks",
+      "url": "https://www.reuters.com/business/energy/oil-tanker-rates-hit-record-highs-following-iran-us-shipping-attacks-2026-09-11/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-11",
+      "source_id": "SRC-14A29B4C9164",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "South Korean, Iranian foreign ministers discuss Strait of Hormuz, Seoul says",
+      "url": "https://www.reuters.com/world/asia-pacific/south-korean-iranian-foreign-ministers-discuss-strait-hormuz-seoul-says-2026-09-11/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-10",
+      "source_id": "SRC-223F14998B32",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Iranian arms and advice helped Yemen's Houthis seize key Red Sea city, sources say",
+      "url": "https://www.reuters.com/world/middle-east/iranian-arms-advice-helped-yemens-houthis-seize-key-red-sea-city-sources-say-2026-09-10/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-11",
+      "source_id": "SRC-636B266D1191",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Yemen's Houthis reach strategic island at mouth of vital shipping lane",
+      "url": "https://www.reuters.com/world/middle-east/yemens-houthis-reach-strategic-island-mouth-vital-shipping-lane-2026-09-11/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-11",
+      "source_id": "SRC-4D482AE1D535",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "QatarEnergy seeks US LNG deals through 2031, sources say",
+      "url": "https://www.reuters.com/business/energy/qatarenergy-seeks-us-lng-deals-through-2031-sources-say-2026-09-11/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-11",
+      "source_id": "SRC-BB84819A27C9",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Saudi oil supply hits more than three-decade low after Houthi attacks, IEA says",
+      "url": "https://www.reuters.com/world/middle-east/saudi-oil-supply-hits-more-than-three-decade-low-after-houthi-attacks-iea-says-2026-09-11/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-08-28",
+      "source_id": "SRC-F550DDD51246",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Iran lashes out at US sanctions amid economic toll at home",
+      "url": "https://www.reuters.com/world/middle-east/iran-war-diplomacy-turns-toward-reopening-strait-hormuz-2026-08-28/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-08-29",
+      "source_id": "SRC-5D32C7182EFF",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "War weighs on Iran's economy as US intensifies sanctions",
+      "url": "https://www.reuters.com/world/asia-pacific/war-weighs-irans-economy-us-intensifies-sanctions-2026-08-29/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-11",
+      "source_id": "SRC-FA535D8B18E9",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Saudi tensions with Iran-backed Houthis escalate as mediator Pakistan faces pressure",
+      "url": "https://www.reuters.com/world/asia-pacific/saudi-tensions-with-iran-backed-houthis-escalate-mediator-pakistan-faces-2026-09-11/"
+    }
+  ],
+  "status": "ACCEPTED",
+  "summary": "Evidence Integration catch-up through Sep. 11 18:00 ET: late-evidence corrections, post-Sep.9 material events, economic/maritime updates, and preserved unresolved questions."
+}
