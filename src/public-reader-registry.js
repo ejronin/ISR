@@ -100,7 +100,7 @@
     let previousRouteKey = null;
     let currentServices = null;
 
-    const stageRoute = focusHeading => {
+    const stageRoute = (focusHeading, propagateFailure = false) => {
       invariant(!destroyed, 'READER_REGISTRY_DESTROYED', 'Reader registry is no longer active.');
       const previousTitle = documentObject.title;
       const previousVisible = Array.from(rootElement.children || []).filter(node => !(node.dataset && node.dataset.atlasReaderStaging));
@@ -143,27 +143,32 @@
         documentObject.title = previousTitle;
         const failure = error instanceof ReaderRegistryError
           ? error
-          : new ReaderRegistryError('READER_FINALIZATION_FAILED', 'Reader projection or finalization failed.', error);
+          : new ReaderRegistryError(
+            error && typeof error.code === 'string' && error.code ? error.code : 'READER_FINALIZATION_FAILED',
+            'Reader projection or finalization failed.',
+            error
+          );
         if (hasQualifiedVisible) {
           emitRouteFailure(windowObject, state, failure);
+          if (propagateFailure) throw failure;
           return null;
         }
         throw failure;
       }
     };
 
-    const onHashChange = () => stageRoute(true);
+    const onHashChange = () => stageRoute(true, false);
     if (windowObject && typeof windowObject.addEventListener === 'function') windowObject.addEventListener('hashchange', onHashChange);
     let initialRoute;
     try {
-      initialRoute = stageRoute(false);
+      initialRoute = stageRoute(false, false);
     } catch (error) {
       if (windowObject && typeof windowObject.removeEventListener === 'function') windowObject.removeEventListener('hashchange', onHashChange);
       throw error;
     }
 
     const controller = Object.freeze({
-      render: () => stageRoute(false),
+      render: () => stageRoute(false, true),
       current: () => projectionRuntime.parseRoute(windowObject.location && windowObject.location.hash),
       services: () => currentServices,
       destroy: () => {
