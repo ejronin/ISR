@@ -196,6 +196,12 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
     error => error.code === 'FETCH_FAILED'
   );
   assert.match(app.failureDetail({ code: 'FETCH_FAILED' }), /unavailable|integrity/i);
+  const codedRegistryFailure = new Error('route guard rejected access');
+  codedRegistryFailure.code = 'UNDECLARED_DATA_DEPENDENCY';
+  const normalizedRegistryFailure = app.normalizeBootError(codedRegistryFailure);
+  assert.equal(normalizedRegistryFailure.code, 'UNDECLARED_DATA_DEPENDENCY', 'coded registry failures must survive public boot');
+  assert.equal(normalizedRegistryFailure.cause, codedRegistryFailure);
+  assert.equal(app.normalizeBootError(new Error('uncoded failure')).code, 'BOOT_FAILED', 'uncoded boot failures retain the generic boundary code');
 
   const index = read('index.html');
   assert.equal(index, read('templates/public-index.html'), 'public root must match its reviewable shell source');

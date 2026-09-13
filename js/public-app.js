@@ -857,6 +857,12 @@
     return false;
   }
 
+  function normalizeBootError(error) {
+    if (error instanceof AtlasBootError) return error;
+    const code = error && typeof error.code === 'string' && error.code ? error.code : 'BOOT_FAILED';
+    return new AtlasBootError(code, 'The current evidence record could not be initialized.', error);
+  }
+
   async function boot(options) {
     const settings = options || {};
     const documentObject = settings.documentObject || root.document;
@@ -876,7 +882,7 @@
       const loaded = await loadCurrentRecord({ fetchImpl: settings.fetchImpl, modelUrl: settings.modelUrl, manifest });
       return renderCurrent(rootElement, loaded, { documentObject, windowObject: settings.windowObject });
     } catch (error) {
-      const bootError = error instanceof AtlasBootError ? error : new AtlasBootError('BOOT_FAILED', 'The current evidence record could not be initialized.', error);
+      const bootError = normalizeBootError(error);
       if (controlledReload(bootError, settings.allowReload)) return null;
       return renderFailure(rootElement, bootError, settings.retry);
     }
@@ -907,6 +913,7 @@
     renderCurrent,
     renderFailure,
     failureDetail,
+    normalizeBootError,
     boot
   });
 }));
