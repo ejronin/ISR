@@ -52,6 +52,26 @@
     });
   }
 
+  function retireVisibleNodes(documentObject, rootElement, nodes) {
+    if (!nodes || !nodes.length) return;
+    const host = documentObject.createElement('div');
+    host.dataset.atlasReaderRetirement = VERSION;
+    host.setAttribute('aria-hidden', 'true');
+    host.style.position = 'fixed';
+    host.style.left = '-100000px';
+    host.style.top = '0';
+    host.style.width = '1px';
+    host.style.height = '1px';
+    host.style.visibility = 'hidden';
+    host.style.pointerEvents = 'none';
+    host.style.overflow = 'hidden';
+    const retirementParent = documentObject.body || documentObject.documentElement || rootElement;
+    retirementParent.append(host);
+    nodes.forEach(node => host.append(node));
+    nodes.forEach(removeMaps);
+    if (typeof host.remove === 'function') host.remove();
+  }
+
   function createStagingHost(documentObject, rootElement, windowObject) {
     const host = documentObject.createElement('div');
     host.dataset.atlasReaderStaging = VERSION;
@@ -137,7 +157,7 @@
         finalized.app.dataset.readerAuthority = VERSION;
         previousVisible.forEach(quiesceMaps);
         rootElement.replaceChildren(finalized.app);
-        previousVisible.forEach(removeMaps);
+        retireVisibleNodes(documentObject, rootElement, previousVisible);
         if (stage && typeof stage.remove === 'function') stage.remove();
         rootElement.className = 'atlas-ready';
         rootElement.dataset.status = 'ready';
