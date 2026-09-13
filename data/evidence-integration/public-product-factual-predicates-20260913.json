@@ -1,0 +1,89 @@
+{
+  "artifact_role": "PUBLIC_PRODUCT_FACTUAL_HANDOFF",
+  "authority": "EVIDENCE_INTEGRATION_CANONICAL_PREDICATES",
+  "candidate_adjudication_summary": {
+    "claims_and_corrections": "Processed as actor-claim entities with attribution limits; none were promoted into factual attribution beyond supporting evidence.",
+    "diplomacy": "Processed for BRICS, Iran-UAE, Iran/Oman, UK-Saudi and Arab/Islamic reactions.",
+    "economic_sanctions_energy": "Processed with methodology/source-estimate boundaries retained.",
+    "existing_event_updates": "Processed through relationship and gap updates while preserving prior unresolved states.",
+    "maritime": "Processed with physical-closure and attribution limits retained.",
+    "material_losses_and_casualties": "Processed for the East-West pipeline, Iranian commercial vessel, Jazan injuries and evolving vessel casualty count.",
+    "new_event_candidates": "Processed. Perim was merged into the existing Sep. 11 event; East-West shutdown was attached to the Sep. 11 physical occurrence rather than duplicated.",
+    "sources_and_discoveries": "All locker source records used by accepted facts are embedded in the canonical packet; three newly discovered standing collection sources are handed off in collection-source-universe-delta-20260913.json.",
+    "unresolved_questions": "Processed as preserved/updated gaps; no unresolved item was silently closed."
+  },
+  "canonical_packet": "data/canonical-updates/UPD-20260913-ROOK-LOCKER.json",
+  "evidence_cutoff": "2026-09-13T12:00:00-04:00",
+  "headline_predicates": [
+    {
+      "canonical_event_id": "G3-SAUDI-EASTWEST-PIPELINE-ATTACK-20260911",
+      "must_preserve": [
+        "Occurrence remains Sep. 11; Sep. 12-13 reporting is later confirmation/BDA, not a second attack.",
+        "Iraqi territorial launch origin is established; perpetrator identity and Iranian command are not.",
+        "Saudi shutdown is established; exact damaged facilities and official repair timeline remain unresolved.",
+        "Industry repair and stock-runway estimates must be labeled as source estimates, not Saudi official forecasts."
+      ],
+      "topic": "Saudi East-West pipeline"
+    },
+    {
+      "canonical_event_ids": [
+        "G3-IRAQ-MAYSAN-SECURITY-RESPONSE-20260912",
+        "G3-IRAQ-IRAN-BORDER-SECURITY-ACTIONS-20260912",
+        "G3-IRAQ-SAUDI-ATTACK-LAUNCHER-SEIZURE-20260912",
+        "G3-IRAN-PARTICIPATES-IRAQ-PIPELINE-INQUIRY-20260912"
+      ],
+      "must_preserve": [
+        "Iraq removed security commanders, undertook border actions and says it seized a launch platform.",
+        "Iranian participation/monitoring of the Iraqi investigation is established as an Iraqi-reported procedural fact.",
+        "Iranian participation in the inquiry is not evidence that Tehran ordered the attack."
+      ],
+      "topic": "Iraqi investigation and security response"
+    },
+    {
+      "canonical_event_id": "G3-HOUTHI-DHUBAB-PERIM-ADVANCE-20260911",
+      "must_preserve": [
+        "Perim/Mayun seizure is later confirmation of the Sep. 11 occurrence, not a new Sep. 12 event.",
+        "Geographic possession increases Houthi leverage at Bab el-Mandeb but does not establish physical closure or control of all shipping.",
+        "Reuters reporting strengthens evidence of direct IRGC guidance for the west-coast offensive; scope beyond that offensive remains unresolved.",
+        "The Jazan projectile casualty/damage account is Saudi-attributed; the Sharurah base strike remains a Houthi claim without established BDA."
+      ],
+      "topic": "Perim/Mayun and Houthi escalation"
+    },
+    {
+      "canonical_event_ids": [
+        "G3-BRICS-NEWDELHI-DECLARATION-20260912",
+        "G3-IRAN-UAE-BRICS-MEETING-20260912",
+        "G3-XI-GREATER-BRICS-INITIATIVES-20260913"
+      ],
+      "must_preserve": [
+        "Final BRICS language supports generic insurance/reinsurance resilience mechanisms.",
+        "The final declaration did not establish the reported Iran-specific $10 billion reinsurer.",
+        "Iran-UAE public readouts show de-escalation/stability engagement but no announced concrete bargain.",
+        "Xi's Greater BRICS proposals are broader bloc initiatives, not an established Iran-specific wartime rescue commitment."
+      ],
+      "topic": "BRICS and Iran-UAE diplomacy"
+    },
+    {
+      "canonical_event_id": "G3-IRAN-COMMERCIAL-VESSEL-STRUCK-20260913",
+      "must_preserve": [
+        "Iranian sources describe evolving Oman/Hormuz terms; no matching Omani public confirmation was established by cutoff.",
+        "No signed reopening agreement was established by cutoff.",
+        "Iran's seven conditions remain actor-reported and undisclosed in reviewed evidence.",
+        "The Iranian commercial-vessel strike, fire, evacuation and casualties are established at event level; attribution is unresolved.",
+        "Do not assume the Iranian report and UKMTO projectile report are the same vessel unless later evidence links them."
+      ],
+      "topic": "Hormuz diplomacy and Sep. 13 vessel strike"
+    },
+    {
+      "gap_id": "GAP-E1-FUTURE-BANK-SANCTION",
+      "must_preserve": [
+        "The announced large-bank sanction remained pending at the Sep. 13 noon cutoff.",
+        "Do not name a bank or treat the sanction as enacted absent OFAC action."
+      ],
+      "topic": "Unnamed-bank sanction"
+    }
+  ],
+  "instructions": "Public Product may change presentation and wording but must preserve the factual predicates, attribution limits, chronology and unresolved-state boundaries below.",
+  "known_at": "2026-09-13T13:42:00-04:00",
+  "public_wording_status": "NOT_AUTHORED_BY_EVIDENCE"
+}
