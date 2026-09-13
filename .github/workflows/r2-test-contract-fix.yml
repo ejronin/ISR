@@ -1,0 +1,35 @@
+name: Temporary R2 test contract fix
+
+on:
+  push:
+    branches:
+      - release/r2-authoritative-reader-20260913
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: ${{ !contains(github.event.head_commit.message, '[r2-test-fix-complete]') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Apply test-contract fixes
+        run: python scripts/r2_test_contract_fix.py
+      - name: Check architecture tests for retired runtime contract
+        run: |
+          ! grep -R "reader_runtime" tests/public-boot.test.js tests/public-map-phase6.test.js tests/public-reader-layer.test.js tests/public-final-polish.test.js tests/neutral-current-narrative.test.py tests/browser-public-boot-smoke.js
+          ! grep -R "2.3-single-pass-reader-assets" tests/public-reader-layer.test.js tests/public-final-polish.test.js tests/neutral-current-narrative.test.py
+          node --check tests/public-map-phase6.test.js
+          node --check tests/public-final-polish.test.js
+      - name: Commit test-contract fixes
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Align R2 architecture tests [r2-test-fix-complete]"
+          git push origin HEAD:release/r2-authoritative-reader-20260913
