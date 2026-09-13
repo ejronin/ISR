@@ -37,9 +37,12 @@
   function removeMaps(node) {
     if (!node || typeof node.querySelectorAll !== 'function') return;
     [node, ...node.querySelectorAll('*')].forEach(candidate => {
-      if (candidate && candidate._atlasMap && typeof candidate._atlasMap.remove === 'function') {
-        try { candidate._atlasMap.remove(); } catch (_) { /* page is already retired */ }
-      }
+      const map = candidate && candidate._atlasMap;
+      if (!map || typeof map.remove !== 'function') return;
+      try {
+        if (typeof map.stop === 'function') map.stop();
+        map.remove();
+      } catch (_) { /* page is already retired */ }
     });
   }
 
@@ -126,9 +129,9 @@
         if (supportController && typeof supportController.destroy === 'function') supportController.destroy();
         supportController = null;
         finalized.app.dataset.readerAuthority = VERSION;
+        previousVisible.forEach(removeMaps);
         rootElement.replaceChildren(finalized.app);
         if (stage && typeof stage.remove === 'function') stage.remove();
-        previousVisible.forEach(removeMaps);
         rootElement.className = 'atlas-ready';
         rootElement.dataset.status = 'ready';
         rootElement.setAttribute('aria-busy', 'false');
