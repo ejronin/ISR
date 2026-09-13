@@ -1,0 +1,73 @@
+{
+  "artifact_role": "EVIDENCE_LANE_PROVENANCE_REPAIR_REQUIREMENTS",
+  "current_application": [
+    {
+      "detail": "REL-SIDR-OCCURRENCE-CORRECTION-20260911 records Aug. 31 occurrence and Sep. 7 later status. Completing the stable chronology correction awaits PROV-05.",
+      "finding": "EC-01 SIDR",
+      "state": "CORRECTION_RECORDED_BUT_EVENT_ROW_NOT_MUTATED"
+    },
+    {
+      "detail": "MAT-IRN-RIESCO-20260908 is updated to SUNK_DESTROYED with later CENTCOM primary media retained alongside the original source.",
+      "finding": "EC-02 Riesco",
+      "state": "NATIVE_ENTITY_UPDATE"
+    },
+    {
+      "detail": "New physical aircraft-damage records link to the existing Sep. 8 event; early Jordan reporting remains in the event history and exact reconciliation remains a gap.",
+      "finding": "EC-03 Muwaffaq Salti",
+      "state": "LATER_BDA_APPENDED"
+    }
+  ],
+  "evidence_cutoff": "2026-09-11T18:00:00-04:00",
+  "non_negotiable_evidence_rules": [
+    "Do not derive source reliability from ideology/ownership alone.",
+    "State/state-aligned media are primary evidence for what the actor published or claimed, not independent proof of the underlying event.",
+    "Never coerce unknown quantity/status to zero.",
+    "Never erase prior accepted assessment when later evidence strengthens or corrects it.",
+    "Never backdate later evidence into an earlier Atlas knowledge state."
+  ],
+  "repairs": [
+    {
+      "defect": "source-registry coverage stops at pre-Gate3 namespaces while accepted canonical packets add later sources",
+      "id": "PROV-01",
+      "release_machinery_required": true,
+      "required_behavior": "Registry/inventory generation must ingest the source records of every accepted canonical-v2 packet through the manifest tip, or explicitly expose a migration-boundary cutoff. Accepted packet sources must not be invisible to provenance lookup."
+    },
+    {
+      "defect": "originator and host/republisher can collapse into a composite pseudo-outlet",
+      "id": "PROV-02",
+      "release_machinery_required": true,
+      "required_behavior": "Represent originator, publisher/outlet, republisher/host and retrieval URL as separate provenance roles. Examples such as 'Associated Press via ABC News' must preserve AP as originator and ABC as host rather than forming one outlet identity."
+    },
+    {
+      "defect": "alias normalization can lose geography/state-affiliation, including Tasnim News Agency",
+      "id": "PROV-03",
+      "release_machinery_required": true,
+      "required_behavior": "Canonical outlet identity for Tasnim/Tasnim News Agency: country Iran; region Middle East; state affiliation Iranian state-aligned; source class state-aligned media/news agency. Alias normalization must retain these facts."
+    },
+    {
+      "defect": "later rescue/status/BDA publication can be mistaken for occurrence date",
+      "id": "PROV-04",
+      "release_machinery_required": true,
+      "required_behavior": "Store occurrence/effective time separately from first report, first verification and later correction/knowledge time. A later status report must update/link the stable occurrence rather than create or red-date a new occurrence. SIDR requires event_date Aug. 31 while Sep. 7 remains later rescue/status evidence."
+    },
+    {
+      "defect": "canonical-v2 supports entity updates but not stable chronology-event update in accepted packet format",
+      "id": "PROV-05",
+      "release_machinery_required": true,
+      "required_behavior": "Add stable event-update semantics that can revise event_date/time/attribution/BDA fields while preserving prior value, packet known_at, effective_at, source trail and revision history; regenerate timeline indices without duplicate event IDs. This is required to complete EC-01 SIDR correctly."
+    },
+    {
+      "defect": "later BDA/disposition can leave an earlier reasonable state stale",
+      "id": "PROV-06",
+      "release_machinery_required": true,
+      "required_behavior": "When later accepted evidence names a stable event/asset and strengthens outcome (hit→damaged→inoperable→destroyed/sunk or unverified→confirmed), surface a reconciliation candidate. Human evidence adjudication remains required; no automatic semantic promotion."
+    },
+    {
+      "defect": "URL liveness and source replacement are not equivalent to evidentiary replacement",
+      "id": "PROV-07",
+      "release_machinery_required": true,
+      "required_behavior": "Track live/redirected/moved/dead/archived/superseded access status separately from source content and provenance. Dead URLs retain evidentiary identity and may gain archive/replacement access paths without silent source substitution."
+    }
+  ],
+  "version": "2026-09-11-v1"
+}
