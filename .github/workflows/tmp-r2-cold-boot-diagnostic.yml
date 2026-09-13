@@ -36,10 +36,10 @@ jobs:
           if text.count(old) != 1:
               raise SystemExit('boot error wrapper mismatch')
           text = text.replace(old, '      const bootError = normalizeBootError(error);', 1)
-          export_marker = """    failureDetail,\n    renderFailure,\n"""
+          export_marker = """    renderFailure,\n    failureDetail,\n    boot\n"""
           if text.count(export_marker) != 1:
               raise SystemExit('export marker mismatch')
-          text = text.replace(export_marker, """    failureDetail,\n    normalizeBootError,\n    renderFailure,\n""", 1)
+          text = text.replace(export_marker, """    renderFailure,\n    failureDetail,\n    normalizeBootError,\n    boot\n""", 1)
           app.write_text(text)
 
           test = Path('tests/public-boot.test.js')
