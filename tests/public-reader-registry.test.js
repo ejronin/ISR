@@ -134,9 +134,10 @@ assert.match(source, /hasQualifiedVisible/);
 assert.match(source, /validateFinalizedStage\(stage, projectionRuntime\)/);
 assert(source.indexOf('validateFinalizedStage(stage, projectionRuntime)') < source.indexOf('rootElement.replaceChildren(finalized.app)'), 'validation must precede atomic visible promotion');
 assert(source.indexOf('previousVisible.forEach(quiesceMaps)') < source.indexOf('rootElement.replaceChildren(finalized.app)'), 'old maps must be quiesced while their DOM is still connected');
-assert(source.indexOf('rootElement.replaceChildren(finalized.app)') < source.indexOf('previousVisible.forEach(removeMaps)'), 'old page cleanup must occur only after atomic promotion succeeds');
+assert(source.indexOf('rootElement.replaceChildren(finalized.app)') < source.indexOf('retireVisibleNodes(documentObject, rootElement, previousVisible)'), 'old page retirement must begin only after atomic promotion succeeds');
+assert(source.indexOf('nodes.forEach(node => host.append(node))') < source.indexOf('nodes.forEach(removeMaps)'), 'retired maps must be reattached to a connected hidden host before Leaflet removal');
 for (const file of ['scripts/build_public_release_core.py', 'js/public-bootstrap.js', 'js/public-app.js', 'scripts/validate_public_deployment.py', 'config/public-runtime-inventory.json']) {
   const body = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
   assert(!body.includes('reader_runtime'), `${file} still authorizes old reader_runtime`);
 }
-console.log('authoritative reader registry: PASS - provenance filenames are permitted, standalone internal labels fail closed, route failures retain the last qualified page, and validation precedes atomic promotion');
+console.log('authoritative reader registry: PASS - provenance filenames are permitted, standalone internal labels fail closed, route failures retain the last qualified page, and retired maps are removed from a connected hidden host after atomic promotion');
