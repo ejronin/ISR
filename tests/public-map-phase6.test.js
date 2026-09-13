@@ -66,14 +66,14 @@ assert.equal(locatedDamage.footprint, null, 'damage observation invented a footp
 assert.equal(ia.MapView.imageryDescriptor(unlocatedObservation, resolver, facilityRecords).tier, 'D', 'unlocated forensic observation should remain evidence-only');
 
 const releaseRoles = new Set(manifest.application.assets.map(asset => asset.role));
-const fixedRoles = ['map_runtime', 'page_registry', 'reader_runtime', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+const fixedRoles = ['map_runtime', 'base_runtime', 'reader_projection', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
 for (const role of fixedRoles) assert(releaseRoles.has(role), `required release role missing: ${role}`);
 assert([...releaseRoles].every(role => [...fixedRoles, 'evidence_image', 'state_flag'].includes(role)), 'release contains an unsupported role');
 const byRole = Object.fromEntries(manifest.application.assets.filter(asset => fixedRoles.includes(asset.role)).map(asset => [asset.role, asset]));
-assert.equal(byRole.reader_runtime.source_path, 'src/public-reader-layer.js');
+assert.equal(byRole.reader_projection.source_path, 'src/public-reader-layer.js');
 assert.equal(byRole.reader_stylesheet.source_path, 'src/public-reader-layer.css');
 assert.equal(manifest.application.reference_geography, byRole.reference_geography.path);
-assert.deepEqual(manifest.application.runtime, [byRole.map_runtime.path, byRole.page_registry.path, byRole.reader_runtime.path]);
+assert.deepEqual(manifest.application.runtime, [byRole.map_runtime.path, byRole.page_registry.path, byRole.reader_projection.path]);
 assert.deepEqual(manifest.application.stylesheets, [byRole.map_stylesheet.path, byRole.stylesheet.path, byRole.reader_stylesheet.path]);
 assert.equal(manifest.application.stylesheet, byRole.stylesheet.path, 'reader CSS must augment rather than replace the primary shell stylesheet');
 
