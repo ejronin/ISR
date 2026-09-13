@@ -98,11 +98,22 @@
       "previous_lineage_sha256": "d6250ba785c7480f59058b3e6292fad608c9390d47c3ab7cab60fd57c239d4eb",
       "sequence": 9,
       "sha256": "35893b411096f7da79214350cad43b4a3ddadb4aab76c76edd407c87caf21f2d"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-09-13T12:00:00-04:00",
+      "known_at": "2026-09-13T13:42:00-04:00",
+      "lineage_sha256": "b2c2646ffeffa0d7f5c17a6b377aa1f8f3c47529bbbc66bb22f681ca7e202e35",
+      "packet_id": "UPD-20260913-ROOK-LOCKER",
+      "path": "data/canonical-updates/UPD-20260913-ROOK-LOCKER.json",
+      "previous_lineage_sha256": "f44f787940978c3fe7c857e16063da3fcc3aa5bc0233cd3d9722164fe3f5eaa9",
+      "sequence": 10,
+      "sha256": "9793ef438273808434073b971c4355c556a288be1a5c985f5d21c21e4d8434dc"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-09-11T18:00:00-04:00",
+  "current_evidence_cutoff": "2026-09-13T12:00:00-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",

@@ -1,0 +1,76 @@
+{
+  "artifact_role": "EVIDENCE_LANE_COLLECTION_SOURCE_UNIVERSE_DELTA",
+  "authority": "EVIDENCE_INTEGRATION",
+  "effective_at": "2026-09-13T13:42:00-04:00",
+  "evidence_cutoff": "2026-09-13T12:00:00-04:00",
+  "preservation_rule": "Append these standing collection sources without removing older sources merely because they were unproductive in the current sweep.",
+  "sources": [
+    {
+      "access_location": "https://video-agencyia.iq/EN/",
+      "check_cadence": "DAILY_DURING_ACTIVE_INVESTIGATIONS",
+      "collection_notes": "Preserve the attributed Iraqi Security Media Cell statement and the republisher URL separately when possible.",
+      "collection_source_id": "CSU-IQ-SMC-VIDEOAGENCY",
+      "country": "Iraq",
+      "evidentiary_role": "PRIMARY_FOR_ATTRIBUTED_IRAQ_SECURITY_STATEMENTS",
+      "languages": [
+        "English",
+        "Arabic"
+      ],
+      "lifecycle_state": "ACTIVE",
+      "region": "MIDDLE_EAST",
+      "source_class": "OFFICIAL_SECURITY_STATEMENT_REPUBLISHER",
+      "source_identity": "Iraqi Security Media Cell statements via Video Agency",
+      "topic_tags": [
+        "iraq",
+        "investigation",
+        "launchers",
+        "command_changes",
+        "iran_participation"
+      ]
+    },
+    {
+      "access_location": "https://saudigazette.com.sa/",
+      "check_cadence": "MULTIPLE_TIMES_DAILY_DURING_ACTIVE_ATTACK_PERIODS",
+      "collection_notes": "Useful for timestamped Saudi actor claims; follow to SPA/ministry/Civil Defense primary material where available.",
+      "collection_source_id": "CSU-SA-SAUDIGAZETTE",
+      "country": "Saudi Arabia",
+      "evidentiary_role": "RAPID_REPUBLISHER_OF_SAUDI_OFFICIAL_STATEMENTS",
+      "languages": [
+        "English"
+      ],
+      "lifecycle_state": "ACTIVE",
+      "region": "MIDDLE_EAST",
+      "source_class": "REGIONAL_STATE_ALIGNED_NEWS_OUTLET",
+      "source_identity": "Saudi Gazette",
+      "topic_tags": [
+        "saudi_arabia",
+        "civil_defense",
+        "security",
+        "diplomacy",
+        "yemen"
+      ]
+    },
+    {
+      "access_location": "https://ebs.publicnow.com/view/322C608779C3EE82D80D8869B7D797096FDC352E",
+      "check_cadence": "EVENT_DRIVEN",
+      "collection_notes": "Use as the authoritative baseline for final adopted BRICS text versus member-specific proposals.",
+      "collection_source_id": "CSU-BRICS-NEWDELHI-DECLARATION",
+      "country": "India / multilateral",
+      "evidentiary_role": "PRIMARY_FINAL_CONSENSUS_TEXT",
+      "languages": [
+        "English"
+      ],
+      "lifecycle_state": "ACTIVE",
+      "region": "GLOBAL",
+      "source_class": "PRIMARY_MULTILATERAL_DOCUMENT",
+      "source_identity": "BRICS New Delhi Declaration official text",
+      "topic_tags": [
+        "brics",
+        "declarations",
+        "insurance",
+        "reinsurance",
+        "middle_east"
+      ]
+    }
+  ]
+}
