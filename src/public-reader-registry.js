@@ -34,15 +34,21 @@
     if (!condition) throw new ReaderRegistryError(code, message);
   }
 
+  function quiesceMaps(node) {
+    if (!node || typeof node.querySelectorAll !== 'function') return;
+    [node, ...node.querySelectorAll('*')].forEach(candidate => {
+      const map = candidate && candidate._atlasMap;
+      if (!map || typeof map.stop !== 'function') return;
+      try { map.stop(); } catch (_) { /* replacement already settled */ }
+    });
+  }
+
   function removeMaps(node) {
     if (!node || typeof node.querySelectorAll !== 'function') return;
     [node, ...node.querySelectorAll('*')].forEach(candidate => {
       const map = candidate && candidate._atlasMap;
       if (!map || typeof map.remove !== 'function') return;
-      try {
-        if (typeof map.stop === 'function') map.stop();
-        map.remove();
-      } catch (_) { /* page is already retired */ }
+      try { map.remove(); } catch (_) { /* page is already retired */ }
     });
   }
 
@@ -129,8 +135,9 @@
         if (supportController && typeof supportController.destroy === 'function') supportController.destroy();
         supportController = null;
         finalized.app.dataset.readerAuthority = VERSION;
-        previousVisible.forEach(removeMaps);
+        previousVisible.forEach(quiesceMaps);
         rootElement.replaceChildren(finalized.app);
+        previousVisible.forEach(removeMaps);
         if (stage && typeof stage.remove === 'function') stage.remove();
         rootElement.className = 'atlas-ready';
         rootElement.dataset.status = 'ready';
