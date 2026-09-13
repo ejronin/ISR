@@ -38,7 +38,7 @@
     if (!node || typeof node.querySelectorAll !== 'function') return;
     [node, ...node.querySelectorAll('*')].forEach(candidate => {
       if (candidate && candidate._atlasMap && typeof candidate._atlasMap.remove === 'function') {
-        try { candidate._atlasMap.remove(); } catch (_) { /* page is being retired */ }
+        try { candidate._atlasMap.remove(); } catch (_) { /* page is already retired */ }
       }
     });
   }
@@ -104,6 +104,7 @@
       invariant(!destroyed, 'READER_REGISTRY_DESTROYED', 'Reader registry is no longer active.');
       const previousTitle = documentObject.title;
       const previousVisible = Array.from(rootElement.children || []).filter(node => !(node.dataset && node.dataset.atlasReaderStaging));
+      const hasQualifiedVisible = rootElement.dataset && rootElement.dataset.status === 'ready' && previousVisible.length > 0;
       const stagedState = { ...state };
       const stage = createStagingHost(documentObject, rootElement, windowObject);
       let supportController = null;
@@ -124,8 +125,8 @@
         if (supportController && typeof supportController.destroy === 'function') supportController.destroy();
         supportController = null;
         finalized.app.dataset.readerAuthority = VERSION;
-        previousVisible.forEach(removeMaps);
         rootElement.replaceChildren(finalized.app);
+        previousVisible.forEach(removeMaps);
         rootElement.className = 'atlas-ready';
         rootElement.dataset.status = 'ready';
         rootElement.setAttribute('aria-busy', 'false');
@@ -143,7 +144,7 @@
         const failure = error instanceof ReaderRegistryError
           ? error
           : new ReaderRegistryError('READER_FINALIZATION_FAILED', 'Reader projection or finalization failed.', error);
-        if (previousVisible.length) {
+        if (hasQualifiedVisible) {
           emitRouteFailure(windowObject, state, failure);
           return null;
         }
