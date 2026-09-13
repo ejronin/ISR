@@ -1,0 +1,31 @@
+name: Temporary R2 bootstrap binding refresh
+
+on:
+  push:
+    branches:
+      - release/r2-authoritative-reader-20260913
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    if: ${{ !contains(github.event.head_commit.message, '[r2-bootstrap-bind-complete]') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Refresh exact bootstrap binding
+        run: python scripts/r2_refresh_bootstrap_binding.py
+      - name: Verify shell parity
+        run: cmp --silent index.html templates/public-index.html
+      - name: Commit refreshed binding
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html templates/public-index.html
+          git commit -m "Refresh R2 bootstrap binding [r2-bootstrap-bind-complete]"
+          git push origin HEAD:release/r2-authoritative-reader-20260913
