@@ -66,6 +66,7 @@ def refresh_derived_counts(state: dict[str, Any]) -> None:
     """Refresh entity counts whose collections can grow through accepted v2 packets."""
     entities = state.get("entities") or {}
     counts = state.setdefault("counts", {})
+    counts["claim_records"] = len(entities.get("claims") or [])
     counts["material_loss_records"] = len(entities.get("material_losses") or [])
     counts["relationship_records"] = len(entities.get("relationships") or [])
     counts["gate3_narrative_claims"] = len(entities.get("narrative_claims") or [])
