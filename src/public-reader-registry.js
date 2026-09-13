@@ -55,7 +55,8 @@
     host.style.visibility = 'hidden';
     host.style.pointerEvents = 'none';
     host.style.overflow = 'hidden';
-    rootElement.append(host);
+    const stagingParent = documentObject.body || documentObject.documentElement || rootElement;
+    stagingParent.append(host);
     invariant(host.isConnected !== false, 'READER_STAGE_DISCONNECTED', 'Reader staging host must remain connected during finalization.');
     return host;
   }
@@ -126,6 +127,7 @@
         supportController = null;
         finalized.app.dataset.readerAuthority = VERSION;
         rootElement.replaceChildren(finalized.app);
+        if (stage && typeof stage.remove === 'function') stage.remove();
         previousVisible.forEach(removeMaps);
         rootElement.className = 'atlas-ready';
         rootElement.dataset.status = 'ready';
