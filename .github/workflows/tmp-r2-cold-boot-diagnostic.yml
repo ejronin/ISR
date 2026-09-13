@@ -43,22 +43,18 @@ jobs:
           if text.count(old) != 1:
               raise SystemExit('expected cold-boot wait exactly once')
           p.write_text(text.replace(old, new, 1))
+          runner = Path('scripts/run_public_browser_qualification.sh')
+          body = runner.read_text()
+          marker = 'node tests/browser-public-boot-smoke.js\n'
+          if body.count(marker) != 1:
+              raise SystemExit('expected browser smoke invocation exactly once')
+          runner.write_text(body.replace(marker, marker + 'exit $?\n', 1))
           PY
       - name: Run cold-boot probe
         shell: bash
         run: |
-          set -euo pipefail
-          python -m http.server 8765 --bind 127.0.0.1 --directory _site >/tmp/atlas-http.log 2>&1 &
-          server=$!
-          browser=''
-          cleanup(){ [ -z "$browser" ] || kill "$browser" 2>/dev/null || true; kill "$server" 2>/dev/null || true; }
-          trap cleanup EXIT
-          candidate="$(command -v chromium || command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser)"
-          "$candidate" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --no-default-browser-check --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --remote-allow-origins='*' --user-data-dir=/tmp/atlas-r2-diagnostic http://127.0.0.1:8765/ >/tmp/atlas-chrome.log 2>&1 &
-          browser=$!
-          for _ in $(seq 1 60); do curl -fsS http://127.0.0.1:9222/json/version >/dev/null 2>&1 && break; sleep .25; done
           set +e
-          ATLAS_SITE=http://127.0.0.1:8765/ ATLAS_CDP=http://127.0.0.1:9222 node tests/browser-public-boot-smoke.js
+          bash scripts/run_public_browser_qualification.sh
           rc=$?
           set -e
           echo '--- CHROME LOG ---'
