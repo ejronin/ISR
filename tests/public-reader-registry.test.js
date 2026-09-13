@@ -60,6 +60,34 @@ const failingProjection = {
 };
 const routeRuntime = { forRoute() { return { model: {}, services: {} }; } };
 
+function qualifiedStage(text) {
+  const stage = new Node('div');
+  stage.innerText = text;
+  stage.textContent = text;
+  const app = new Node('div');
+  app.dataset.kind = 'app';
+  const article = new Node('article');
+  article.dataset.kind = 'page';
+  article.dataset.readerLayer = failingProjection.READER_LAYER_VERSION;
+  const heading = new Node('h1');
+  article.append(heading);
+  app.append(article);
+  stage.append(app);
+  return stage;
+}
+
+// A canonical provenance filename may contain the string ROOK without exposing an
+// internal review label. Standalone internal labels remain publication blockers.
+{
+  const provenance = qualifiedStage('Source: data/canonical-updates/UPD-20260913-ROOK-LOCKER.json');
+  assert.doesNotThrow(() => registry.validateFinalizedStage(provenance, failingProjection));
+  const internal = qualifiedStage('ROOK internal review note');
+  assert.throws(
+    () => registry.validateFinalizedStage(internal, failingProjection),
+    error => error && error.code === 'READER_INTERNAL_LEAK'
+  );
+}
+
 // Initial projection failure: the neutral loading shell is not a qualified page.
 // The registry must throw so public-app can replace it with the explicit error boundary.
 {
@@ -111,4 +139,4 @@ for (const file of ['scripts/build_public_release_core.py', 'js/public-bootstrap
   const body = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
   assert(!body.includes('reader_runtime'), `${file} still authorizes old reader_runtime`);
 }
-console.log('authoritative reader registry: PASS - initial failure throws closed, route failure retains last qualified page, and validation precedes atomic promotion');
+console.log('authoritative reader registry: PASS - provenance filenames are permitted, standalone internal labels fail closed, route failures retain the last qualified page, and validation precedes atomic promotion');
