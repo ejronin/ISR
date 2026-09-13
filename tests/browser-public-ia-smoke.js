@@ -335,9 +335,12 @@ async function loadDirectRoute(cdp, route) {
       recordLinks: [...document.querySelectorAll('.record-reference-list a')].every(link => link.getAttribute('href')?.startsWith('#/timeline/chronology?event=')),
       text: document.querySelector('main')?.innerText || ''
     }))()`);
-    assert.equal(evidence.claims, 6);
-    assert.equal(evidence.support, 6);
-    assert.equal(evidence.contrary, 6);
+    const expectedClaimCount = await cdp.eval(`fetch('./data/public-current-state.json', { cache: 'no-store' })
+      .then(response => response.json())
+      .then(model => model.datasets['current.claims'].payload.claims.length)`);
+    assert.equal(evidence.claims, expectedClaimCount, 'claim page must render every current claim record');
+    assert.equal(evidence.support, expectedClaimCount, 'claim page must retain one support column per current claim');
+    assert.equal(evidence.contrary, expectedClaimCount, 'claim page must retain one contrary column per current claim');
     assert(evidence.sourceLinks > 0, 'claim evidence drawers do not resolve source links');
     assert.equal(evidence.recordLinks, true, 'claim evidence drawer contains an unresolved internal record link');
     assert.match(evidence.text, /False — causation not supported/i);
