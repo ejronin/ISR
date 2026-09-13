@@ -18,7 +18,12 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 0
       - name: Apply asserted R2 rewrite
-        run: python scripts/r2_rewrite.py
+        run: |
+          python scripts/r2_rewrite.py
+          # The GitHub Actions token may not update workflow files. The permanent
+          # qualification workflow is patched through the Release connector after
+          # this source rewrite lands.
+          git checkout HEAD -- .github/workflows/release-qualification.yml
       - name: Syntax-check new authority boundary
         run: |
           node --check src/public-reader-registry.js
