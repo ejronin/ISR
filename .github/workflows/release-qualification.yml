@@ -125,12 +125,15 @@ jobs:
           node tests/public-phase9.test.js
           node tests/security-rendering.test.js
           node tests/public-reader-layer.test.js
+          node tests/public-reader-registry.test.js
           node tests/public-final-polish.test.js
           python tests/neutral-current-narrative.test.py
           node --check js/public-bootstrap.js
           node --check js/public-app.js
           node --check js/public-ia.js
           node --check src/public-reader-layer.js
+          node --check src/public-reader-registry.js
+          node --check tests/public-reader-registry.test.js
           node --check tests/browser-public-boot-smoke.js
           node --check tests/browser-public-final-polish.js
           node --check tests/browser-public-render-review.js
