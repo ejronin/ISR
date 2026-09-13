@@ -38,8 +38,14 @@
     if (!node || typeof node.querySelectorAll !== 'function') return;
     [node, ...node.querySelectorAll('*')].forEach(candidate => {
       const map = candidate && candidate._atlasMap;
-      if (!map || typeof map.stop !== 'function') return;
-      try { map.stop(); } catch (_) { /* replacement already settled */ }
+      if (!map) return;
+      if (typeof map.stop === 'function') {
+        try { map.stop(); } catch (_) { /* replacement already settled */ }
+      }
+      // Leaflet 1.9.4 schedules _onZoomTransitionEnd with a timeout that is not
+      // cancelled by remove(). Clear its guard before the retired pane is torn down
+      // so the late callback returns without dereferencing the removed map pane.
+      if (map._animatingZoom) map._animatingZoom = false;
     });
   }
 
