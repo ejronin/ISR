@@ -1,0 +1,42 @@
+{
+  "artifact_role": "EVIDENCE_LOCKER_SOURCE_DISCOVERY_DELTA",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "collection_cutoff": "2026-09-13T12:00:00-04:00",
+  "sources": [
+    {
+      "source_name": "Iraqi Security Media Cell statements via Video Agency",
+      "country": "Iraq",
+      "source_type": "official_security_statement_republisher",
+      "state_affiliation": "Official Iraqi security-media statements",
+      "language": "English/Arabic",
+      "url": "https://video-agencyia.iq/EN/",
+      "topical_specialty": "Iraqi security investigations, command changes, seized launch hardware",
+      "why_useful": "Provided direct attributed Iraqi security statements on launcher seizure and Iranian participation in the inquiry.",
+      "suggested_future_collection_cadence": "Daily during Iraq-origin cross-border attack investigations"
+    },
+    {
+      "source_name": "Saudi Gazette",
+      "country": "Saudi Arabia",
+      "source_type": "regional_state_aligned_news_outlet",
+      "state_affiliation": "Saudi media ecosystem; not itself a ministry",
+      "language": "English",
+      "url": "https://saudigazette.com.sa/",
+      "topical_specialty": "Rapid publication of Saudi Civil Defense, foreign-ministry and security statements",
+      "why_useful": "Useful for timestamped Saudi actor claims and regional diplomatic reactions when primary SPA pages are harder to surface.",
+      "suggested_future_collection_cadence": "Multiple times daily during active Saudi attack periods"
+    },
+    {
+      "source_name": "BRICS New Delhi Declaration official text",
+      "country": "India / multilateral",
+      "source_type": "primary_multilateral_document",
+      "state_affiliation": "BRICS leaders / Indian host publication",
+      "language": "English",
+      "url": "https://ebs.publicnow.com/view/322C608779C3EE82D80D8869B7D797096FDC352E",
+      "topical_specialty": "Final BRICS consensus language and financial/insurance architecture",
+      "why_useful": "Authoritative baseline for what BRICS actually adopted versus member proposals.",
+      "suggested_future_collection_cadence": "Event-driven for summit declarations and finance-track communiques"
+    }
+  ],
+  "discovery_count": 3,
+  "preservation_rule": "Append discoveries; do not remove older standing sources merely because they were unproductive in this sweep."
+}
