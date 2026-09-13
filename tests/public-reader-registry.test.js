@@ -33,55 +33,81 @@ class Node {
   querySelectorAll() { const out = []; const stack = [...this.children]; while (stack.length) { const node = stack.shift(); out.push(node); stack.push(...node.children); } return out; }
 }
 
-const documentObject = { title: 'Qualified', createElement: tag => new Node(tag) };
-const listeners = new Map();
-const windowObject = {
-  innerWidth: 1440,
-  location: { hash: '#/start' },
-  history: { replaceState() {} },
-  addEventListener(type, fn) { listeners.set(type, fn); },
-  removeEventListener(type, fn) { if (listeners.get(type) === fn) listeners.delete(type); }
-};
-const root = new Node('main');
-const qualified = new Node('section'); qualified.dataset.qualified = 'true'; root.append(qualified);
-let supportDestroyed = false;
+function environment(title = 'Qualified') {
+  const listeners = new Map();
+  return {
+    documentObject: { title, createElement: tag => new Node(tag) },
+    windowObject: {
+      innerWidth: 1440,
+      location: { hash: '#/start' },
+      history: { replaceState() {} },
+      addEventListener(type, fn) { listeners.set(type, fn); },
+      removeEventListener(type, fn) { if (listeners.get(type) === fn) listeners.delete(type); }
+    }
+  };
+}
+
 const failingProjection = {
   READER_LAYER_VERSION: 'atlas-reader-v1.1',
   parseRoute() { return { key: 'start.overview' }; },
   mount({ rootElement }) {
-    const technical = new Node('div'); technical.textContent = 'TECHNICAL_BASE'; technical.innerText = 'TECHNICAL_BASE'; rootElement.append(technical);
+    const technical = new Node('div');
+    technical.textContent = 'TECHNICAL_BASE';
+    technical.innerText = 'TECHNICAL_BASE';
+    rootElement.append(technical);
     throw new Error('projection failed');
   }
 };
-const controller = registry.mount({
-  rootElement: root,
-  documentObject,
-  windowObject,
-  routeRuntime: { forRoute() { return { model: {}, services: {} }; } },
-  state: { routeKey: 'start.overview' },
-  projectionRuntime: {
-    ...failingProjection,
-    mount(options) {
-      try { return failingProjection.mount(options); }
-      finally { supportDestroyed = true; }
-    }
-  }
-});
-assert(controller, 'existing qualified page should remain routable after staged route failure');
-assert.equal(root.children.length, 1, 'failed staging host must be removed');
-assert.equal(root.children[0], qualified, 'failed projection must not replace the currently qualified page');
-assert.equal(root.querySelector('.atlas-app'), null, 'no technical staged app may become visible');
-assert.equal(documentObject.title, 'Qualified', 'failed staging must restore the qualified page title');
-assert.equal(supportDestroyed, true);
-assert.equal(root.dataset.status, undefined, 'failed staged route must not manufacture a new ready state');
+const routeRuntime = { forRoute() { return { model: {}, services: {} }; } };
+
+// Initial projection failure: the neutral loading shell is not a qualified page.
+// The registry must throw so public-app can replace it with the explicit error boundary.
+{
+  const { documentObject, windowObject } = environment('Loading');
+  const root = new Node('main');
+  root.dataset.status = 'loading';
+  const loading = new Node('section'); loading.dataset.loading = 'true'; root.append(loading);
+  assert.throws(
+    () => registry.mount({ rootElement: root, documentObject, windowObject, routeRuntime, state: {}, projectionRuntime: failingProjection }),
+    error => error && error.code === 'READER_FINALIZATION_FAILED'
+  );
+  assert.equal(root.children.length, 1, 'failed initial staging host must be removed');
+  assert.equal(root.children[0], loading, 'technical support output must never replace the neutral shell');
+  assert.equal(documentObject.title, 'Loading', 'failed initial staging must restore the prior title');
+  assert.equal(root.dataset.status, 'loading', 'registry must not manufacture ready state after initial failure');
+}
+
+// Later route failure: retain the last already-qualified visible reader page.
+{
+  const { documentObject, windowObject } = environment('Qualified');
+  const root = new Node('main');
+  root.dataset.status = 'ready';
+  const qualified = new Node('section'); qualified.dataset.readerAuthority = registry.READER_REGISTRY_VERSION; root.append(qualified);
+  const controller = registry.mount({
+    rootElement: root,
+    documentObject,
+    windowObject,
+    routeRuntime,
+    state: { routeKey: 'start.overview' },
+    projectionRuntime: failingProjection
+  });
+  assert(controller, 'existing qualified page should remain routable after staged route failure');
+  assert.equal(root.children.length, 1, 'failed route staging host must be removed');
+  assert.equal(root.children[0], qualified, 'failed projection must not replace the currently qualified page');
+  assert.equal(root.querySelector('.atlas-app'), null, 'no technical staged app may become visible');
+  assert.equal(documentObject.title, 'Qualified', 'failed route staging must restore the qualified page title');
+  assert.equal(root.dataset.status, 'ready', 'last qualified page remains the visible ready page');
+}
 
 const source = fs.readFileSync(path.join(__dirname, '..', 'src/public-reader-registry.js'), 'utf8');
 assert.match(source, /visibility = 'hidden'/);
 assert.match(source, /aria-hidden/);
+assert.match(source, /hasQualifiedVisible/);
 assert.match(source, /validateFinalizedStage\(stage, projectionRuntime\)/);
 assert(source.indexOf('validateFinalizedStage(stage, projectionRuntime)') < source.indexOf('rootElement.replaceChildren(finalized.app)'), 'validation must precede atomic visible promotion');
+assert(source.indexOf('rootElement.replaceChildren(finalized.app)') < source.indexOf('previousVisible.forEach(removeMaps)'), 'old page cleanup must occur only after atomic promotion succeeds');
 for (const file of ['scripts/build_public_release_core.py', 'js/public-bootstrap.js', 'js/public-app.js', 'scripts/validate_public_deployment.py', 'config/public-runtime-inventory.json']) {
   const body = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
   assert(!body.includes('reader_runtime'), `${file} still authorizes old reader_runtime`);
 }
-console.log('authoritative reader registry: PASS - connected hidden staging, pre-promotion validation, atomic swap, and fail-closed projection boundary verified');
+console.log('authoritative reader registry: PASS - initial failure throws closed, route failure retains last qualified page, and validation precedes atomic promotion');
