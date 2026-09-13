@@ -105,6 +105,7 @@ assert.match(source, /aria-hidden/);
 assert.match(source, /hasQualifiedVisible/);
 assert.match(source, /validateFinalizedStage\(stage, projectionRuntime\)/);
 assert(source.indexOf('validateFinalizedStage(stage, projectionRuntime)') < source.indexOf('rootElement.replaceChildren(finalized.app)'), 'validation must precede atomic visible promotion');
+assert(source.indexOf('previousVisible.forEach(quiesceMaps)') < source.indexOf('rootElement.replaceChildren(finalized.app)'), 'old maps must be quiesced while their DOM is still connected');
 assert(source.indexOf('rootElement.replaceChildren(finalized.app)') < source.indexOf('previousVisible.forEach(removeMaps)'), 'old page cleanup must occur only after atomic promotion succeeds');
 for (const file of ['scripts/build_public_release_core.py', 'js/public-bootstrap.js', 'js/public-app.js', 'scripts/validate_public_deployment.py', 'config/public-runtime-inventory.json']) {
   const body = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
