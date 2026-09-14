@@ -133,8 +133,9 @@
     const n=article.querySelector('.scope-note'); if(n) collapse(n,'How actor identity is assigned');
   }
 
-  function timeline(article) {
-    intro(article,'The conflict is easiest to follow in phases. Use this orientation first, then narrow the interactive timeline by date, actor or topic.');
+  function timeline(article, context) {
+    const counts=context.model.counts||{}, chronologyCount=Number(counts.chronology_records)||0, conflictDays=Number(counts.gate3_daily_coverage_days)||0;
+    intro(article,`The conflict is easiest to follow in phases. Use this orientation first, then narrow the interactive timeline by date, actor or topic. Detailed Chronology contains all ${chronologyCount} records. ${conflictDays} conflict days are represented in the wartime coverage record.`);
     const s=section(article,'Conflict phases','The phase guide is orientation, not a replacement for the exhaustive chronology.'), g=add(s,'div','orientation-grid');
     card(g,'Opening strikes and regional expansion','Direct attacks quickly spread across bases, air-defense sites, maritime routes and aligned armed groups.','FEB–MAR');
     card(g,'Sustained strike and attrition campaign','Repeated strikes, interceptions and infrastructure damage accumulated while both sides tried to preserve leverage.','SPRING–SUMMER');
@@ -285,7 +286,7 @@
   function finalizePublicProduct(stage, route, routeRuntime, doc) {
     const article=stage.querySelector('.public-page');if(!article||!route)return;article.dataset.publicProduct=PRODUCT_VERSION;const context=accessContext(routeRuntime,route,doc);
     const k=route.key;
-    if(k==='start.overview')overview(article); if(k==='start.actors')actors(article); if(k==='timeline.war')timeline(article); if(k==='timeline.chronology')chronology(article);
+    if(k==='start.overview')overview(article); if(k==='start.actors')actors(article); if(k==='timeline.war')timeline(article,context); if(k==='timeline.chronology')chronology(article);
     if(k==='military.campaigns')campaigns(article); if(k==='military.facilities')facilities(article,context); if(k==='military.losses')losses(article); if(k==='military.weapons')weapons(article); if(k==='military.imagery')imagery(article);
     if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
     if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article);
