@@ -39,6 +39,9 @@ for token in (
     "ref: ${{ inputs.commit_sha }}",
     "Prove checkout identity",
     "qualified_sha: ${{ steps.checkout_identity.outputs.sha }}",
+    "python scripts/rook_intake_status.py validate",
+    "python tests/rook-intake-pipeline.test.py",
+    "python tests/release-change-classification.test.py",
     "python scripts/validate_canonical_authority.py",
     "python tests/canonical-update-pipeline.test.py",
     "python tests/gate3-v2-forward-update-canary.test.py",
@@ -77,16 +80,22 @@ assert "push:" not in primary, "main qualification is duplicated outside the dep
 assert "name: validate" in primary and "needs: qualification" in primary, "protected validate status is not downstream of exact-SHA qualification"
 assert "QUALIFIED_SHA: ${{ needs.qualification.outputs.qualified_sha }}" in primary, "protected validate status is not bound to reusable qualified SHA output"
 
-assert "uses: ./.github/workflows/release-qualification.yml" in pages, "Pages does not invoke reusable qualification"
-assert "needs: qualify" in pages, "Pages deployment is not gated by exact-SHA qualification"
-assert "prepare_pages_artifact: true" in pages, "Pages does not deploy the artifact produced by qualification"
+assert "python scripts/classify_release_change.py" in pages, "Pages lacks deterministic release-impact classification"
+assert "uses: ./.github/workflows/release-qualification.yml" in pages, "Pages release-affecting path does not invoke reusable qualification"
+assert "prepare_pages_artifact: true" in pages, "Pages release-affecting path does not deploy the artifact produced by qualification"
+assert "needs.classify.outputs.release_required == 'true'" in pages, "Pages deployment is not gated by release-impact classification"
+assert "needs.classify.outputs.release_required == 'false'" in pages, "Pages lacks explicit intake-only no-op path"
+assert "UPSTREAM_INTAKE_ONLY_PUBLIC_RELEASE_IDENTITY_UNCHANGED" in pages, "Pages no-op path is not identity-bound"
 assert "QUALIFIED_SHA: ${{ needs.qualify.outputs.qualified_sha }}" in pages, "Pages deploy is not explicitly bound to reusable qualified SHA output"
+assert "Deploy exact qualified artifact to GitHub Pages" in pages, "Pages lost exact-qualified deployment action"
 assert "attest_live_deployment.py" in pages, "Pages lacks live deployment attestation"
 assert "deployments: read" in pages and "/deployments?{params}" in pages, "Pages does not resolve a real exact-SHA deployment identity"
 assert "live-deployment-attestation-${{ github.sha }}" in pages, "Pages does not persist SHA-bound attestation"
 
-# Current workflows may inspect historical compatibility through tests, but may
-# not regenerate historical public/canonical artifacts as release inputs.
+no_deploy_block = pages.split("\n  no_deploy:\n", 1)[1].split("\n  deploy:\n", 1)[0]
+assert "deploy-pages@" not in no_deploy_block, "intake-only no-op path can still deploy Pages"
+assert "attest_live_deployment.py" not in no_deploy_block, "intake-only no-op path can still fabricate live attestation"
+
 for label, text in {"qualification": qualification, "primary": primary, "pages": pages}.items():
     for forbidden in (
         "python scripts/build_canonical_current_state.py --output",
@@ -99,4 +108,7 @@ assert "workflow_dispatch:" in historical, "historical reconciliation audit is n
 assert "pull_request:" not in historical, "historical reconciliation audit regained PR authority"
 assert "branches:" not in historical, "historical reconciliation audit regained branch-push authority"
 
-print("release qualification topology: PASS - one reusable exact-SHA qualification gate owns evidence, reader and release checks; protected validation and Pages deployment consume its exact SHA output; live bytes are attested")
+print(
+    "release qualification topology: PASS - one reusable exact-SHA gate owns release-affecting changes; "
+    "append-only intake may no-op only after deterministic public identity equivalence; deployed live bytes remain attested"
+)

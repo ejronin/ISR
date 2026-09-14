@@ -59,6 +59,18 @@ jobs:
           python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
           python -m pip check
 
+      - name: Validate routine upstream intake and handoff discovery
+        env:
+          INPUT_AUTHORITY_BASE_REF: ${{ inputs.authority_base_ref }}
+        run: |
+          set -euo pipefail
+          base="$INPUT_AUTHORITY_BASE_REF"
+          if [ -z "$base" ]; then base="$(git rev-parse "$ATLAS_COMMIT_SHA^")"; fi
+          git cat-file -e "$base^{commit}"
+          python scripts/rook_intake_status.py validate --compare-ref "$base"
+          python tests/rook-intake-pipeline.test.py
+          python tests/release-change-classification.test.py
+
       - name: Validate qualification topology and immutable authority
         env:
           INPUT_AUTHORITY_BASE_REF: ${{ inputs.authority_base_ref }}
