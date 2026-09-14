@@ -1,0 +1,173 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_PUBLIC_PRODUCT_FACTUAL_PREDICATES",
+  "authority": "ACCEPTED_CANONICAL_V2_EVIDENCE_INTEGRATION",
+  "evidence_cutoff": "2026-09-14T12:01:03-04:00",
+  "accepted_packets": [
+    "UPD-20260914-ROOK-0000ET",
+    "UPD-20260914-ROOK-1201ET"
+  ],
+  "chronology_changes": [
+    {
+      "event_id": "G3-OMAN-HORMUZ-MEETING-POSTPONED-20260913",
+      "predicate": "Oman publicly confirmed that the planned Gulf-Iran Hormuz meeting existed and then postponed it on Sep. 13. This resolves prior uncertainty over meeting existence but not over the substance or legal effect of any Iran-Oman understanding."
+    },
+    {
+      "event_id": "G3-SAUDI-HORMUZ-PROPOSAL-AMENDMENTS-20260913",
+      "predicate": "AP, citing a Gulf official, reported Saudi amendments to the emerging Hormuz proposal. The contents remain source-reported and were not established through a Saudi primary text by cutoff."
+    },
+    {
+      "event_id": "G3-YEMEN-DISPLACEMENT-UPDATE-20260913",
+      "predicate": "The Sep. 13 UN estimate of more than 80,000 displaced since Sep. 1 is preserved as the earlier knowledge state; later IOM reporting updated the current count to 82,164."
+    },
+    {
+      "event_id": "G3-ISRAEL-LEBANON-ROME-TALKS-SCHEDULED-20260913",
+      "predicate": "A U.S. State Department official said Israel and Lebanon are expected to meet in Rome in October. This is a scheduling/expectation event, not a completed negotiation."
+    },
+    {
+      "event_id": "G3-US-SAUDI-CENTCOM-MEETING-20260914",
+      "predicate": "Saudi Crown Prince Mohammed bin Salman met CENTCOM commander Adm. Brad Cooper in Jeddah on Sep. 14 to discuss regional developments amid Houthi escalation."
+    },
+    {
+      "event_id": "G3-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914",
+      "predicate": "Iran's Persian Gulf Strait Authority announced a 77-vessel list and threatened possible fines, detention or confiscation while warning maritime service providers. The announcement is established; external legal recognition, enforceability and compliance are not."
+    },
+    {
+      "event_id": "G3-SULAIMANI-MISSILE-STRIKES-20260914",
+      "predicate": "Five missiles were reported to have struck three areas in Sulaimani province, including a camp associated with Iranian Kurdish opposition groups. No casualties were reported and attribution remained unresolved."
+    },
+    {
+      "event_id": "G3-IAEA-ESLAMI-TRAVEL-EXEMPTION-BLOCKED-20260914",
+      "predicate": "Austria sought a UN sanctions travel exemption for Iranian nuclear chief Mohammad Eslami to attend the IAEA General Conference; the committee did not approve it after a U.S. objection. Iran protested."
+    },
+    {
+      "event_id": "G3-IRAN-GORGIJ-KILLED-20260914",
+      "predicate": "Iranian state media reported senior Sunni cleric Molavi Yusef Gorgij was shot dead by unidentified gunmen in southeastern Iran. Attacker identity and motive remained unresolved."
+    }
+  ],
+  "current_status": [
+    {
+      "subject": "Saudi East-West pipeline",
+      "predicate": "The physical attack remains the Sep. 11 occurrence. Later evidence says the line remained shut through the weekend and was expected to remain mostly out of service for roughly three to five weeks during repairs. Do not create a second attack event from the shutdown or repair reporting."
+    },
+    {
+      "subject": "Hanish islands",
+      "predicate": "Later AP reporting confirms Houthi control of Greater and Lesser Hanish. This is a later status confirmation of the Sep. 10-11 territorial advance, not a Sep. 14 capture event."
+    },
+    {
+      "subject": "Hormuz commercial traffic",
+      "predicate": "Preliminary Reuters tracking showed severely depressed weekend commodity-vessel traffic, with four exiting and ten entering the Gulf. AIS-dark vessels may be absent. This does not establish physical closure of Hormuz."
+    },
+    {
+      "subject": "Bab el-Mandeb commercial traffic",
+      "predicate": "Reuters counted 24 transits Saturday and 27 Sunday, approximately in line with the recent 10-day average. A general closure was not established despite Houthi territorial gains."
+    },
+    {
+      "subject": "Yemen displacement",
+      "predicate": "Current accepted status is 82,164 people displaced since Sep. 1 according to reported IOM data, with more than 2,000 people fleeing to Djibouti. The earlier greater-than-80,000 estimate remains historical provenance."
+    },
+    {
+      "subject": "Unnamed U.S. bank sanction",
+      "predicate": "No Treasury/OFAC enactment identifying the announced large bank was established by 2026-09-14T12:01:03-04:00. The action remains pending; do not name a bank or describe the sanction as enacted."
+    },
+    {
+      "subject": "Oil-market snapshot",
+      "predicate": "The latest accepted dated market snapshot is Reuters reporting Brent at $109.29/bbl and WTI at $104.26/bbl at 10:15 a.m. EDT on Sep. 14, both up more than 4%. Do not present this dated observation as a price beyond the evidence cutoff."
+    },
+    {
+      "subject": "Asian refinery and Saudi crude logistics",
+      "predicate": "Reuters reported expectations of tighter sour crude supply, at least one delayed Saudi loading, record Gulf-to-Asia tanker rates and some AIS-dark Red Sea-loading vessels. These are source-reported market/logistics conditions, not a declaration that all Saudi deliveries are disrupted."
+    }
+  ],
+  "attribution_boundaries": [
+    {
+      "subject": "Sep. 11 Saudi East-West pipeline attack",
+      "boundary": "Iraqi territorial launch origin is established. The responsible group, ordering authority and Iranian command remain unresolved. Iranian participation in the Iraqi investigation is not attribution evidence."
+    },
+    {
+      "subject": "Sep. 13 Iranian commercial-vessel strike",
+      "boundary": "Trump's statement that he did not want to say whether the United States struck the vessel is not an admission. Attribution remains unresolved, and the Iranian and UKMTO reports must not be assumed to identify the same vessel absent later linkage."
+    },
+    {
+      "subject": "Sep. 14 Sulaimani missile strikes",
+      "boundary": "The strikes are established in reviewed regional reporting; attacker identity is unresolved. Do not infer Iranian responsibility from the target's association with Iranian Kurdish opposition groups."
+    },
+    {
+      "subject": "Molavi Yusef Gorgij killing",
+      "boundary": "The killing is reported by Iranian state media; attacker identity and motive remain unresolved."
+    },
+    {
+      "subject": "China-based satellite-imagery allegation",
+      "boundary": "A report citing unnamed U.S. officials alleged that entities in China supplied imagery to Iran around the Jordan base attack. PRC government or state-organ involvement is not established."
+    }
+  ],
+  "actor_claim_boundaries": [
+    {
+      "claim_id": "CLM-HOUTHI-SAUDI-ATTACKS-20260913PM",
+      "boundary": "Saudi danger/shelter alerts are established; Houthi claims of specific successful missile/drone strikes and associated BDA were not independently established in these windows."
+    },
+    {
+      "claim_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+      "boundary": "Iranian officials attributed the meeting delay request to Saudi Arabia. Saudi or Omani primary confirmation of that attribution was not established by cutoff."
+    },
+    {
+      "claim_id": "CLM-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914",
+      "boundary": "The 77-vessel list and enforcement threats are Iranian regulatory claims/announcements. External recognition, actual detention/confiscation, or insurer/P&I/classification-society compliance was not established."
+    },
+    {
+      "subject": "Yemen west-coast casualty toll",
+      "boundary": "The National Resistance claim of more than 500 government-aligned fighters and more than 1,000 Houthis killed over four weeks is actor-supplied and not an independently verified casualty balance."
+    },
+    {
+      "claim_id": "CLM-TRUMP-IRAN-CALLING-CONSTANTLY-20260913",
+      "boundary": "Trump's statement that Iran was calling constantly and wanted a deal badly is a U.S.-presidential claim and was not independently verified in the locker window."
+    }
+  ],
+  "supersessions_and_corrections": [
+    {
+      "subject": "Oman/Hormuz meeting existence",
+      "prior_state": "No matching Omani public confirmation had been found by the Sep. 13 noon cutoff.",
+      "current_state": "Oman later publicly confirmed the planned meeting existed and announced its postponement. The underlying negotiating substance remains unresolved."
+    },
+    {
+      "subject": "Saudi East-West pipeline repair duration",
+      "prior_state": "Industry estimates ranged widely and no official repair duration was established.",
+      "current_state": "Later AP reporting gives a roughly three-to-five-week period in which the pipeline is expected to remain mostly out of service. Exact facility-level BDA and timing of partial restoration remain open."
+    },
+    {
+      "subject": "Yemen displacement",
+      "prior_state": "More than 80,000 displaced since Sep. 1.",
+      "current_state": "82,164 displaced since Sep. 1 in later IOM reporting; more than 2,000 fled to Djibouti."
+    },
+    {
+      "subject": "Houthi Hanish disposition",
+      "prior_state": "Earlier reporting established the west-coast/Hanish advance with evolving territorial confirmation.",
+      "current_state": "Greater and Lesser Hanish are confirmed under Houthi control in later AP reporting."
+    }
+  ],
+  "unresolved_questions": [
+    "What specific amendments did Saudi Arabia submit to the Iran-Oman Hormuz proposal?",
+    "Will Saudi Arabia or Oman independently confirm that Riyadh requested the meeting postponement?",
+    "What substantive Hormuz terms, if any, have Oman and Iran actually agreed to?",
+    "When will the postponed Gulf-Iran Hormuz meeting be rescheduled and which GCC states will attend?",
+    "Will Gulf states or maritime insurers, P&I clubs and classification societies recognize or act on Iran's asserted Strait Authority and 77-vessel list?",
+    "Can the Saudi East-West pipeline be partially restored before the reported three-to-five-week mostly-out-of-service period, and what is the exact facility-level BDA?",
+    "Who ordered or conducted the Sep. 11 Saudi pipeline attack beyond the established Iraqi launch origin?",
+    "Who struck the Iranian commercial vessel near Qeshm/Hengam?",
+    "Who launched the Sep. 14 missiles into Sulaimani province?",
+    "What is the independently verified casualty balance in the Yemen west-coast offensive?",
+    "What is the exact scope of IRGC operational command over current Houthi operations?",
+    "Who killed Molavi Yusef Gorgij and why?",
+    "Which large bank, if any, will Treasury designate and when will OFAC legally enact the action?",
+    "Did China-based commercial entities provide imagery used for Iranian targeting, and was any PRC state organ involved?"
+  ],
+  "presentation_constraints": [
+    "Keep occurrence time, publication time, evidence cutoff and Evidence Integration knowledge time distinct.",
+    "Do not convert later BDA, shutdown reporting, territorial confirmation or threat alerts into duplicate physical attack/capture events.",
+    "Do not present actor attribution claims as established attribution without the evidence threshold being met.",
+    "Do not imply Hormuz is physically closed from depressed traffic metrics.",
+    "Do not imply Bab el-Mandeb is generally closed from Houthi territorial gains; accepted weekend traffic data show general transit continuing.",
+    "Do not convert Iranian maritime enforcement announcements into internationally recognized legal authority or demonstrated external compliance.",
+    "Preserve earlier estimates and uncertainty in revision/provenance history even when later evidence changes current status."
+  ],
+  "public_product_action": "Use these accepted factual predicates as constraints for reader-facing wording and presentation. Public Product may rephrase and reorganize but must preserve chronology, evidentiary status, attribution limits, actor-claim boundaries, supersession history and unresolved states."
+}
