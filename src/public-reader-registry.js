@@ -15,7 +15,7 @@
   const projection = root.AtlasPublicIA || (typeof require === 'function' ? require('./public-reader-layer.js') : null);
   if (!projection || typeof projection.mount !== 'function') return null;
 
-  const VERSION = 'atlas-reader-registry-v1.1';
+  const VERSION = 'atlas-reader-registry-v1';
   const PRODUCT_VERSION = 'sep14-reader-convergence-v1';
   const INTERNAL_TEXT = /(?<![\w./-])ROOK(?![\w./-])|\bPR\/CI\b|claim[_ -]?instance[_ -]?id|proposition[_ -]?id|chain[_ -]?id|publication[_ -]?blocker|knowledge[_ -]?basis[_ -]?support[_ -]?failure/i;
 
