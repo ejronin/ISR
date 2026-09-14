@@ -1,0 +1,164 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-13T12:00:00-04:00",
+    "window_end": "2026-09-14T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "boundary_rule": "Occurrence, publication, collection and evidence-horizon times remain distinct. Later reporting updates earlier events rather than creating duplicate occurrences."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260913.json",
+  "new_events": [
+    {
+      "event_id": "LOCKER-OMAN-HORMUZ-MEETING-POSTPONED-20260913",
+      "event_type": "DIPLOMATIC_MEETING_POSTPONEMENT",
+      "occurrence_time": "2026-09-13 evening Oman/public announcement window",
+      "public_available_time": "2026-09-13T15:14:00-04:00 approximate Reuters publication conversion from 19:14 UTC",
+      "collection_time": "2026-09-14T00:00:00-04:00",
+      "actor": "Oman / Iran / Gulf states",
+      "summary": "Omani Foreign Minister Badr Albusaidi publicly announced that the Monday Gulf-Iran meeting on possible Strait of Hormuz arrangements was postponed. He cited the interests of consensus. Iranian officials subsequently said the postponement was requested by some regional countries and jointly decided by Tehran and Muscat.",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/oman-meeting-between-gulf-states-iran-postponed-omani-foreign-minister-says-2026-09-13/",
+        "https://www.reuters.com/business/energy/diplomacy-stumbles-with-postponement-meeting-strait-hormuz-proposal-2026-09-13/",
+        "https://apnews.com/article/iran-us-war-hormuz-ship-struck-aa034da0d8226f5a3b4794b10afb8b3b"
+      ]
+    },
+    {
+      "event_id": "LOCKER-SAUDI-AMENDMENTS-HORMUZ-PROPOSAL-20260913",
+      "event_type": "DIPLOMATIC_NEGOTIATION_POSITION",
+      "occurrence_time": "known by 2026-09-13",
+      "public_available_time": "2026-09-13",
+      "collection_time": "2026-09-14T00:00:00-04:00",
+      "actor": "Saudi Arabia",
+      "summary": "AP reported, citing a Gulf official, that Saudi Arabia submitted amendments to the emerging Iran-Oman Hormuz proposal because of concerns about long-term implications for GCC states.",
+      "confidence": "MODERATE_HIGH_SOURCE_REPORTED",
+      "sources": ["https://apnews.com/article/iran-us-war-hormuz-ship-struck-aa034da0d8226f5a3b4794b10afb8b3b"]
+    },
+    {
+      "event_id": "LOCKER-YEMEN-CASUALTY-TOLL-GOVT-20260913",
+      "event_type": "HUMAN_IMPACT_ACTOR_TOLL",
+      "occurrence_range": "previous four weeks through 2026-09-13",
+      "public_available_time": "2026-09-13",
+      "collection_time": "2026-09-14T00:00:00-04:00",
+      "actor": "Yemen National Resistance",
+      "summary": "Government-allied National Resistance issued its first comprehensive west-coast toll, saying more than 500 government fighters and more than 1,000 Houthis had been killed in Hodeida and Taiz over four weeks. Houthi side did not confirm the figure.",
+      "confidence": "ACTOR_CLAIM_NOT_INDEPENDENTLY_VERIFIED",
+      "sources": ["https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-90dc86201ef51410ebcdd913837d741d"]
+    },
+    {
+      "event_id": "LOCKER-YEMEN-DISPLACEMENT-80000-20260913",
+      "event_type": "HUMANITARIAN_DISPLACEMENT_UPDATE",
+      "occurrence_range": "2026-09-01 through 2026-09-13",
+      "public_available_time": "2026-09-13",
+      "collection_time": "2026-09-14T00:00:00-04:00",
+      "actor": "United Nations estimate",
+      "summary": "AP reported a UN estimate that more than 80,000 people had been displaced by Yemen fighting since the start of September.",
+      "confidence": "HIGH_FOR_REPORTED_UN_ESTIMATE",
+      "sources": ["https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-90dc86201ef51410ebcdd913837d741d"]
+    },
+    {
+      "event_id": "LOCKER-ISRAEL-LEBANON-OCTOBER-ROME-TALKS-20260913",
+      "event_type": "DIPLOMATIC_SCHEDULING_UPDATE",
+      "occurrence_time": "2026-09-13",
+      "public_available_time": "2026-09-13",
+      "collection_time": "2026-09-14T00:00:00-04:00",
+      "actor": "United States / Israel / Lebanon",
+      "summary": "A U.S. State Department official said Israel and Lebanon are expected to meet in Rome in October on the U.S.-brokered security framework; ambassador-level contacts in Washington were also expected beforehand.",
+      "confidence": "HIGH",
+      "sources": ["https://www.reuters.com/world/middle-east/israel-lebanon-meet-rome-october-us-state-department-official-says-2026-09-13/"]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-NEGOTIATION-POSTPONEMENT-20260913",
+      "updates_existing_ref": "UPD-HORMUZ-NEGOTIATION-FORMULATION-20260912",
+      "relationship": "LATER_OMANI_PUBLIC_CONFIRMATION_AND_POSTPONEMENT",
+      "summary": "The previous drawer correctly recorded that Oman had not publicly confirmed Tehran's described meeting/agreement by the noon cutoff. Oman later publicly confirmed the planned meeting existed but postponed it. This closes the meeting-existence uncertainty while leaving the substance and legal status of any Iran-Oman understanding unresolved.",
+      "status": "MEETING_EXISTENCE_CONFIRMED; MEETING_POSTPONED; AGREEMENT_SUBSTANCE_UNRESOLVED"
+    },
+    {
+      "update_id": "UPD-SAUDI-EASTWEST-STILL-CLOSED-20260913PM",
+      "updates_existing_ref": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "relationship": "LATER_OPERATIONAL_STATUS",
+      "summary": "Reuters reported the 1,200-km East-West pipeline remained closed throughout the weekend. Saudi buyers said Yanbu stocks could sustain exports for only five to seven days if it remains shut.",
+      "status": "DAMAGED_AND_STILL_SHUT_DOWN",
+      "sources": ["https://www.reuters.com/business/energy/diplomacy-stumbles-with-postponement-meeting-strait-hormuz-proposal-2026-09-13/"]
+    },
+    {
+      "update_id": "UPD-HOUTHI-SAUDI-ATTACKS-20260913PM",
+      "updates_existing_ref": "CLM-HOUTHI-SHARURAH-BASE-20260913",
+      "relationship": "LATER_ATTACK_ACTIVITY",
+      "summary": "Saudi authorities issued shelter warnings in Abha and Khamis Mushait; Houthis claimed drones and missiles against Saudi targets including a military base but did not provide evidence or precise timing. The previously reported Jazan projectile damage remains separately established by Saudi authorities.",
+      "status": "CONTINUED_ATTACK_ACTIVITY; SPECIFIC_HOUTHI_BDA_UNVERIFIED",
+      "sources": ["https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-90dc86201ef51410ebcdd913837d741d"]
+    },
+    {
+      "update_id": "UPD-IRAN-COMMERCIAL-VESSEL-US-ATTRIBUTION-20260913PM",
+      "updates_existing_ref": "MAT-IRAN-COMMERCIAL-VESSEL-20260913",
+      "relationship": "LATER_ATTRIBUTION_SIGNAL_NOT_RESOLUTION",
+      "summary": "When asked whether the United States struck the Iranian cargo vessel, President Trump said 'I don't want to say.' This is not an admission and does not resolve attribution. Iranian authorities continued blaming an unspecified 'terrorist enemy'; UKMTO confirmed a projectile/fire/evacuation incident without attribution.",
+      "status": "ATTRIBUTION_UNRESOLVED",
+      "sources": ["https://apnews.com/article/iran-us-war-hormuz-ship-struck-aa034da0d8226f5a3b4794b10afb8b3b"]
+    },
+    {
+      "update_id": "UPD-FUTURE-BANK-SANCTION-20260914T0000ET",
+      "updates_existing_ref": "GAP-E1-FUTURE-BANK-SANCTION",
+      "relationship": "STILL_PENDING_AT_WINDOW_END",
+      "summary": "No OFAC enactment or reliable identification of the announced large bank was found by midnight ET. Preserve the announcement as pending rather than completed action.",
+      "status": "PENDING_NOT_COMPLETED_ACTION"
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-TRUMP-IRAN-CALLING-CONSTANTLY-20260913",
+      "claimant": "Donald Trump",
+      "claim_time": "2026-09-13",
+      "claim": "Iran is calling constantly and wants a deal badly.",
+      "adjudication": "U.S._PRESIDENT_CLAIM; NOT_INDEPENDENTLY_VERIFIED_IN_WINDOW",
+      "sources": ["https://www.reuters.com/business/energy/diplomacy-stumbles-with-postponement-meeting-strait-hormuz-proposal-2026-09-13/"]
+    },
+    {
+      "claim_id": "CLM-CHINESE-ENTITIES-IMAGERY-JORDAN-BASE-20260913",
+      "claimant": "Wall Street Journal report citing unnamed U.S. officials; later addressed by Trump",
+      "claim_time": "2026-09-13",
+      "claim": "Entities in China provided Iran satellite imagery of a Jordanian base before and after a deadly attack on U.S. troops.",
+      "adjudication": "REPORTED_ALLEGATION; CHINESE_GOVERNMENT_ROLE_NOT_ESTABLISHED; TRUMP_PUBLICLY_DOWNPLAYED_REPORT",
+      "sources": ["https://www.reuters.com/world/china/trump-dismisses-report-china-entities-helped-iran-before-attack-that-killed-us-2026-09-14/"]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-OIL-MARKET-OPEN-20260914",
+      "metric": "Brent and WTI opening reaction",
+      "public_available_time": "2026-09-13T18:23:00-04:00 approximate Reuters publication conversion from 22:23 UTC",
+      "observed_state": "Brent rose 2.77% to $107.51/bbl and WTI 2.27% to $102.32/bbl at 2313 GMT after initially rising more than 3%, with Reuters tying the move to the Saudi pipeline shutdown, Houthi pressure near Bab el-Mandeb, and Hormuz vessel risk.",
+      "sources": ["https://www.reuters.com/business/energy/oil-prices-jump-more-than-3-after-new-strikes-saudi-strait-hormuz-2026-09-13/"]
+    }
+  ],
+  "unresolved_questions": [
+    "Who ordered and enabled the Saudi East-West pipeline drone attack beyond established Iraqi launch origin?",
+    "When will the East-West pipeline resume partial or full pumping and what is official Saudi BDA?",
+    "What specific amendments did Saudi Arabia submit to the Iran-Oman Hormuz proposal?",
+    "What substantive terms, if any, have Oman and Iran actually agreed to?",
+    "When will the postponed Gulf-Iran Hormuz meeting be rescheduled and which GCC states will attend?",
+    "Who struck the Iranian commercial vessel near Qeshm/Hengam?",
+    "What is the independently verified casualty balance in the current Yemen west-coast offensive?",
+    "Can Yemeni government-aligned forces retake or materially contest Perim/Mayun and Mocha?",
+    "What is the exact scope of IRGC operational command over current Houthi operations?",
+    "Which bank, if any, will Treasury designate and when does OFAC legally enact the action?",
+    "Did Chinese commercial entities provide imagery used for Iranian targeting, and was any PRC state organ involved?"
+  ],
+  "coverage": {
+    "material_results": ["Iran", "Oman", "Saudi Arabia", "Yemen/Houthis", "Iraq-context", "United States", "Israel/Lebanon", "energy markets", "maritime/Hormuz", "humanitarian Yemen"],
+    "checked_no_material_new_event_in_window": ["UAE beyond previously recorded Pezeshkian meeting", "Bahrain", "Kuwait", "Qatar", "Syria", "Russia", "Pakistan", "IAEA/UN nuclear enforcement", "new OFAC bank designation"],
+    "limitations": ["No subscription-only commercial AIS/imagery feed was directly accessible in this run; provider-specific commercial metrics were not invented.", "Some actor claims remain unverified and are preserved as claims rather than promoted to facts."]
+  },
+  "completion": {
+    "status": "COMPLETE_FOR_AVAILABLE_SOURCE_UNIVERSE",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
