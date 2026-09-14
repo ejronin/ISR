@@ -1,0 +1,490 @@
+{
+  "entities": [
+    {
+      "entity_id": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "entity_type": "material_loss",
+      "mode": "update",
+      "record": {
+        "disposition": "Later AP reporting said the East-West pipeline would remain mostly out of service for roughly three to five weeks during repairs. This is later BDA/repair-status evidence for the Sep. 11 attack, not a new attack occurrence. Exact facility-level damage remains incompletely specified.",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "source_ids": [
+          "SRC-594086EEF828",
+          "SRC-6184AFA78403",
+          "SRC-A165C41CB63F",
+          "SRC-C1C12D7A9913",
+          "SRC-E487426AC497"
+        ],
+        "status": "MOSTLY_OUT_OF_SERVICE_3_TO_5_WEEKS"
+      }
+    },
+    {
+      "entity_id": "GAP-E2-SAUDI-EASTWEST-EXACT-BDA",
+      "entity_type": "gap",
+      "mode": "update",
+      "record": {
+        "evidence": "AP reported the pipeline would remain mostly out of service for roughly three to five weeks during repairs. The repair-duration estimate is now better bounded, while exact facility-level BDA and the timing of any partial restoration remain unresolved.",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "known_at": "2026-09-14T15:37:31-04:00",
+        "source_ids": [
+          "SRC-6184AFA78403",
+          "SRC-E487426AC497"
+        ],
+        "status": "PARTIALLY_RESOLVED_REPAIR_ESTIMATE; EXACT_FACILITY_BDA_UNRESOLVED"
+      }
+    },
+    {
+      "entity_id": "REL-HOUTHI-HANISH-CONFIRMATION-20260914",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "confirmed_status": "GREATER_AND_LESSER_HANISH_CONFIRMED_HOUTHI_CONTROL",
+        "event_ref": "G3-HOUTHI-MOCHA-HANISH-ADVANCE-20260910",
+        "evidence": "AP reporting confirmed Houthi control of Greater and Lesser Hanish. This updates the Sep. 10-11 advance rather than creating a Sep. 14 capture event.",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "relationship_id": "REL-HOUTHI-HANISH-CONFIRMATION-20260914",
+        "relationship_type": "LATER_STATUS_CONFIRMATION",
+        "source_ids": [
+          "SRC-E36D08295EDC"
+        ]
+      }
+    },
+    {
+      "entity_id": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "adjudication": "SEVERELY_DEPRESSED_TRAFFIC; NOT_PHYSICAL_CLOSURE",
+        "date": "2026-09-14",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "observed_state": "Reuters preliminary tracking counted four commodity vessels exiting and ten entering the Gulf over the weekend, below the recent 10-day average. AIS-dark vessels may be missing from preliminary counts.",
+        "shipping_id": "SHIP-HORMUZ-TRAFFIC-20260914",
+        "source_ids": [
+          "SRC-CEA9C04AFB6F"
+        ]
+      }
+    },
+    {
+      "entity_id": "SHIP-BAB-EL-MANDEB-TRAFFIC-20260914",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "adjudication": "GENERAL_TRAFFIC_CONTINUES; GENERAL_CLOSURE_NOT_ESTABLISHED",
+        "date": "2026-09-14",
+        "event_ref": "G3-HOUTHI-MOCHA-HANISH-ADVANCE-20260910",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "observed_state": "Reuters tracking counted 24 Bab el-Mandeb vessel transits Saturday and 27 Sunday, approximately in line with the recent 10-day average.",
+        "shipping_id": "SHIP-BAB-EL-MANDEB-TRAFFIC-20260914",
+        "source_ids": [
+          "SRC-CEA9C04AFB6F"
+        ]
+      }
+    },
+    {
+      "entity_id": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "entity_type": "casualty",
+      "mode": "update",
+      "record": {
+        "confidence": "HIGH_FOR_REPORTED_IOM_COUNT",
+        "displaced": 82164,
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "note": "Later IOM reporting put displacement since Sep. 1 at 82,164 people, with more than 2,000 people fleeing to Djibouti. This supersedes the earlier >80,000 estimate as current status while preserving that earlier knowledge state in revision history.",
+        "period_start": "2026-09-01",
+        "source_ids": [
+          "SRC-252EBCCAE280"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-HOUTHI-SAUDI-THREAT-ALERTS-20260914",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "evidence": "Saudi Civil Defense issued and later lifted danger alerts for Najran, Khamis Mushait, Jazan and Abha. New successful impacts or BDA were not established in the reviewed evidence.",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "relationship_id": "REL-HOUTHI-SAUDI-THREAT-ALERTS-20260914",
+        "relationship_type": "LATER_THREAT_ACTIVITY_WITHOUT_CONFIRMED_IMPACT",
+        "source_ids": [
+          "SRC-5E8783A92303"
+        ],
+        "updates_existing_ref": "CLM-HOUTHI-SAUDI-ATTACKS-20260913PM"
+      }
+    },
+    {
+      "entity_id": "GAP-E1-FUTURE-BANK-SANCTION",
+      "entity_type": "gap",
+      "mode": "update",
+      "record": {
+        "evidence": "No Treasury/OFAC action identifying the announced large bank was found by the Sep. 14 12:01:03 ET cutoff.",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "known_at": "2026-09-14T15:37:31-04:00",
+        "source_ids": [
+          "SRC-0714BF64E524"
+        ],
+        "status": "PENDING_NOT_COMPLETED_ACTION"
+      }
+    },
+    {
+      "entity_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+      "entity_type": "claim",
+      "mode": "add",
+      "record": {
+        "adjudication": "IRANIAN_ATTRIBUTION_NOT_YET_INDEPENDENTLY_CONFIRMED_BY_SAUDI_OR_OMANI_PRIMARY_SOURCE",
+        "claim": "Saudi Arabia requested postponement of the planned Oman Gulf-Iran Hormuz meeting.",
+        "claim_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+        "claim_time": "2026-09-14",
+        "claimant": "Iranian officials",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "source_ids": [
+          "SRC-E36D08295EDC",
+          "SRC-67F73A60AE22"
+        ]
+      }
+    },
+    {
+      "entity_id": "ECON-OIL-MARKET-OPEN-20260914",
+      "entity_type": "economic",
+      "mode": "update",
+      "record": {
+        "adjudication": "SOURCE_REPORTED_MARKET_METRIC",
+        "date": "2026-09-14",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "metric": "Brent and WTI intraday reaction",
+        "observed_state": "Reuters reported Brent at $109.29/bbl and WTI at $104.26/bbl at 10:15 a.m. EDT, both up more than 4%. This later observation supersedes the earlier opening snapshot for current price state.",
+        "source_ids": [
+          "SRC-78E5CCAB48F8"
+        ]
+      }
+    },
+    {
+      "entity_id": "ECON-ASIA-REFINERS-20260914",
+      "entity_type": "economic",
+      "mode": "add",
+      "record": {
+        "adjudication": "SOURCE_REPORTED_MARKET_AND_LOGISTICS_CONDITIONS",
+        "date": "2026-09-14",
+        "economic_id": "ECON-ASIA-REFINERS-20260914",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "metric": "Saudi crude delivery risk and sour crude availability",
+        "observed_state": "Reuters reported Asian refiners expecting tighter sour crude supply, with at least one Saudi loading delayed; Gulf-to-Asia tanker rates were at records and some Red Sea-loading vessels were AIS-dark.",
+        "source_ids": [
+          "SRC-622DA7FBCFD6"
+        ]
+      }
+    },
+    {
+      "entity_id": "DIP-US-SAUDI-CENTCOM-20260914",
+      "entity_type": "diplomacy",
+      "mode": "add",
+      "record": {
+        "date": "2026-09-14",
+        "diplomacy_id": "DIP-US-SAUDI-CENTCOM-20260914",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "observed_state": "Saudi Crown Prince Mohammed bin Salman met CENTCOM commander Adm. Brad Cooper in Jeddah to discuss regional developments amid Houthi escalation.",
+        "source_ids": [
+          "SRC-B1DE52E8A140"
+        ],
+        "status": "DEFENSE_DIPLOMACY_MEETING"
+      }
+    },
+    {
+      "entity_id": "SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914",
+      "entity_type": "shipping",
+      "mode": "add",
+      "record": {
+        "adjudication": "IRANIAN_REGULATORY_ANNOUNCEMENT; EXTERNAL_LEGAL_RECOGNITION_OR_COMPLIANCE_NOT_ESTABLISHED",
+        "date": "2026-09-14",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "observed_state": "Iran's Persian Gulf Strait Authority published a list of 77 vessels it said violated Iranian protocols and threatened fines, detention or confiscation, while warning insurers, P&I clubs and classification societies against servicing listed vessels.",
+        "shipping_id": "SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914",
+        "source_ids": [
+          "SRC-C1DA87E35B40"
+        ]
+      }
+    },
+    {
+      "entity_id": "CLM-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914",
+      "entity_type": "claim",
+      "mode": "add",
+      "record": {
+        "adjudication": "ACTOR_REGULATORY_CLAIM; EXTERNAL_LEGAL_RECOGNITION_AND_COMPLIANCE_NOT_ESTABLISHED",
+        "claim": "Seventy-seven vessels violated Iranian Hormuz protocols and may face fines, detention or confiscation; insurers and maritime service providers should not service them.",
+        "claim_id": "CLM-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914",
+        "claim_time": "2026-09-14",
+        "claimant": "Iran / Persian Gulf Strait Authority",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "source_ids": [
+          "SRC-C1DA87E35B40"
+        ]
+      }
+    },
+    {
+      "entity_id": "GAP-E3-IRAN-STRAIT-AUTHORITY-RECOGNITION",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "evidence": "Iran announced the list and threatened enforcement/service restrictions; no external legal recognition or demonstrated insurer/P&I/classification-society compliance was established by cutoff.",
+        "gap_id": "GAP-E3-IRAN-STRAIT-AUTHORITY-RECOGNITION",
+        "known_at": "2026-09-14T15:37:31-04:00",
+        "source_ids": [
+          "SRC-C1DA87E35B40"
+        ],
+        "status": "UNRESOLVED",
+        "topic": "Whether Gulf states or maritime service providers recognize or act on Iran's asserted Strait Authority and 77-vessel list"
+      }
+    },
+    {
+      "entity_id": "GAP-E3-SULAIMANI-MISSILE-ATTRIBUTION",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "evidence": "Five missiles striking three areas, including a camp associated with Iranian Kurdish opposition groups, are established in regional reporting; attacker identity was not established.",
+        "gap_id": "GAP-E3-SULAIMANI-MISSILE-ATTRIBUTION",
+        "known_at": "2026-09-14T15:37:31-04:00",
+        "source_ids": [
+          "SRC-5A0C8C44EBDC",
+          "SRC-79760D79CB7F"
+        ],
+        "status": "UNRESOLVED",
+        "topic": "Who launched the Sep. 14 missiles into Sulaimani province"
+      }
+    },
+    {
+      "entity_id": "DIP-IAEA-ESLAMI-TRAVEL-20260914",
+      "entity_type": "diplomacy",
+      "mode": "add",
+      "record": {
+        "date": "2026-09-14",
+        "diplomacy_id": "DIP-IAEA-ESLAMI-TRAVEL-20260914",
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "observed_state": "Reuters reported Austria sought a UN sanctions travel exemption for Iranian nuclear chief Mohammad Eslami to attend the IAEA General Conference; the committee did not approve it after a U.S. objection. Iran protested the outcome.",
+        "source_ids": [
+          "SRC-A226E15BADE4"
+        ],
+        "status": "TRAVEL_EXEMPTION_NOT_APPROVED"
+      }
+    },
+    {
+      "entity_id": "CAS-IRAN-GORGIJ-20260914",
+      "entity_type": "casualty",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-IRAN-GORGIJ-20260914",
+        "confidence": "HIGH_FOR_REPORTED_KILLING",
+        "event_date": "2026-09-14",
+        "event_ref": "G3-IRAN-GORGIJ-KILLED-20260914",
+        "killed": 1,
+        "knowledge_time": "2026-09-14T15:37:31-04:00",
+        "note": "Iranian state media reported Molavi Yusef Gorgij was shot dead by unidentified gunmen; motive and attacker identity remained unresolved.",
+        "source_ids": [
+          "SRC-3102EB4D0ACD"
+        ],
+        "wounded": 0
+      }
+    },
+    {
+      "entity_id": "GAP-E3-GORGIJ-KILLING-ATTRIBUTION",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "evidence": "The killing is reported by Iranian state media; attacker identity and motive were unresolved at cutoff.",
+        "gap_id": "GAP-E3-GORGIJ-KILLING-ATTRIBUTION",
+        "known_at": "2026-09-14T15:37:31-04:00",
+        "source_ids": [
+          "SRC-3102EB4D0ACD"
+        ],
+        "status": "UNRESOLVED",
+        "topic": "Who killed Molavi Yusef Gorgij and why"
+      }
+    }
+  ],
+  "events": [
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-09-14",
+      "event_id": "G3-US-SAUDI-CENTCOM-MEETING-20260914",
+      "event_type": "US_SAUDI_DEFENSE_DIPLOMACY",
+      "game_knowledge_time": "2026-09-14T15:37:31-04:00",
+      "occurrence_time": "2026-09-14",
+      "public_available_time": "2026-09-14T05:55:00-04:00",
+      "source_ids": [
+        "SRC-B1DE52E8A140"
+      ],
+      "strike_countable": false,
+      "summary": "Saudi Crown Prince Mohammed bin Salman met U.S. CENTCOM commander Adm. Brad Cooper in Jeddah to discuss regional developments amid Houthi escalation."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-09-14",
+      "event_id": "G3-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914",
+      "event_type": "IRAN_MARITIME_REGULATORY_ANNOUNCEMENT",
+      "game_knowledge_time": "2026-09-14T15:37:31-04:00",
+      "occurrence_time": "2026-09-14",
+      "publication_date": "2026-09-14",
+      "source_ids": [
+        "SRC-C1DA87E35B40"
+      ],
+      "strike_countable": false,
+      "summary": "Iran's Persian Gulf Strait Authority published an updated list of 77 vessels it said violated Iranian Hormuz protocols and threatened possible fines, detention or confiscation, while warning insurers, P&I clubs and classification societies against servicing listed vessels. External legal recognition or compliance was not established."
+    },
+    {
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_date": "2026-09-14",
+      "event_id": "G3-SULAIMANI-MISSILE-STRIKES-20260914",
+      "event_time": "03:10",
+      "event_time_precision": "APPROXIMATE_LOCAL",
+      "event_type": "SULAIMANI_MISSILE_STRIKES_ATTRIBUTION_UNRESOLVED",
+      "game_knowledge_time": "2026-09-14T15:37:31-04:00",
+      "occurrence_time": "Approximately 2026-09-14T03:10:00+03:00",
+      "publication_date": "2026-09-14",
+      "source_ids": [
+        "SRC-5A0C8C44EBDC",
+        "SRC-79760D79CB7F"
+      ],
+      "strike_countable": false,
+      "summary": "Five missiles were reported to have struck three areas in Sulaimani province, including a camp associated with Iranian Kurdish opposition groups. No casualties were reported and attribution remained unresolved."
+    },
+    {
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_date": "2026-09-14",
+      "event_id": "G3-IAEA-ESLAMI-TRAVEL-EXEMPTION-BLOCKED-20260914",
+      "event_type": "IAEA_TRAVEL_EXEMPTION_NOT_APPROVED",
+      "game_knowledge_time": "2026-09-14T15:37:31-04:00",
+      "occurrence_time": "Known by 2026-09-14",
+      "publication_date": "2026-09-14",
+      "source_ids": [
+        "SRC-A226E15BADE4"
+      ],
+      "strike_countable": false,
+      "summary": "Iran protested after nuclear chief Mohammad Eslami was prevented from attending the IAEA General Conference. Reuters reported Austria sought a UN sanctions travel exemption and the sanctions committee did not approve it after a U.S. objection."
+    },
+    {
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_date": "2026-09-14",
+      "event_id": "G3-IRAN-GORGIJ-KILLED-20260914",
+      "event_type": "IRAN_INTERNAL_SECURITY_CLERIC_KILLED",
+      "game_knowledge_time": "2026-09-14T15:37:31-04:00",
+      "occurrence_time": "2026-09-14",
+      "public_available_time": "2026-09-14T11:09:00-04:00",
+      "source_ids": [
+        "SRC-3102EB4D0ACD"
+      ],
+      "strike_countable": false,
+      "summary": "Iranian state media reported senior Sunni cleric Molavi Yusef Gorgij was shot dead by unidentified gunmen in southeastern Iran. Attacker identity and motive remained unresolved."
+    }
+  ],
+  "evidence_cutoff": "2026-09-14T12:01:03-04:00",
+  "known_at": "2026-09-14T15:37:31-04:00",
+  "narrative_claims": [],
+  "packet_id": "UPD-20260914-ROOK-1201ET",
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "outlet": "Reuters",
+      "published_at": "2026-09-14T09:55:00Z",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-B1DE52E8A140",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Saudi crown prince and U.S. CENTCOM chief discuss regional developments",
+      "url": "https://www.reuters.com/world/middle-east/saudi-crown-prince-us-centcom-chief-discuss-developments-after-houthi-escalation-2026-09-14/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-C1DA87E35B40",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Iranian Strait Authority issues updated list of 77 vessels",
+      "url": "https://www.reuters.com/world/middle-east/iranian-strait-authority-issues-updated-list-sanctioned-vessels-2026-09-14/"
+    },
+    {
+      "outlet": "IraqiNews",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-5A0C8C44EBDC",
+      "source_role": "REGIONAL_MEDIA",
+      "title": "Missile attacks target three areas in Sulaimani province",
+      "url": "https://www.iraqinews.com/iraq/missile-attacks-target-three-residential-camps-in-northern-iraq/"
+    },
+    {
+      "outlet": "Rudaw",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-79760D79CB7F",
+      "source_role": "REGIONAL_MEDIA",
+      "title": "Missiles strike areas associated with Iranian Kurdish opposition in Sulaimani",
+      "url": "https://www.rudaw.net/english/categories/kurdistan/1079282"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-A226E15BADE4",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Iran protests after nuclear chief prevented from attending IAEA conference",
+      "url": "https://www.reuters.com/world/middle-east/iran-protests-us-prevents-its-nuclear-chief-attending-iaea-meeting-2026-09-14/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_at": "2026-09-14T15:09:00Z",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-3102EB4D0ACD",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Senior Sunni cleric shot dead in southeastern Iran",
+      "url": "https://www.reuters.com/world/middle-east/senior-sunni-cleric-shot-dead-by-unidentified-gunmen-southeast-iran-iranian-2026-09-14/"
+    },
+    {
+      "outlet": "Associated Press",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-E487426AC497",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Saudi East-West pipeline repair estimate",
+      "url": "https://apnews.com/article/8c18d82c109a8ea91347ce53c0096c53"
+    },
+    {
+      "outlet": "Associated Press",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-E36D08295EDC",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Houthi control of Hanish islands and Hormuz diplomacy developments",
+      "url": "https://apnews.com/article/b95a5a6c73a26bbbb1caddcbf365ca62"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-CEA9C04AFB6F",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Hormuz shipping traffic remains below 10-day average",
+      "url": "https://www.reuters.com/business/hormuz-shipping-traffic-remains-below-10-day-average-weekend-data-shows-2026-09-14/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-252EBCCAE280",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Yemen displacement rises as Houthis advance",
+      "url": "https://www.reuters.com/world/middle-east/yemens-displaced-long-loved-ones-stability-houthis-advance-2026-09-14/"
+    },
+    {
+      "outlet": "Daily Maverick",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-5E8783A92303",
+      "source_role": "WIRE_REPUBLICATION",
+      "title": "Saudi Civil Defense lifts danger warnings in four cities",
+      "url": "https://www.dailymaverick.co.za/article/2026-09-14-saudi-civil-defense-lifts-warnings-of-potential-danger-in-four-cities/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-67F73A60AE22",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Saudi stocks extend fall amid energy attacks",
+      "url": "https://www.reuters.com/world/middle-east/saudi-stocks-extend-fall-energy-attacks-rattle-sentiment-2026-09-14/"
+    },
+    {
+      "outlet": "Reuters",
+      "published_date": "2026-09-14",
+      "source_id": "SRC-622DA7FBCFD6",
+      "source_role": "INDEPENDENT_WIRE",
+      "title": "Asian refiners expect tighter sour crude supply",
+      "url": "https://www.reuters.com/business/energy/asian-refiners-awaiting-word-saudi-shipments-expect-tighter-supply-2026-09-14/"
+    }
+  ],
+  "status": "ACCEPTED",
+  "summary": "Sequential Evidence Integration adjudication of the ROOK locker from Sep. 14 00:01:03 through 12:01:03 ET: U.S.-Saudi defense diplomacy, Iran's 77-vessel Strait Authority announcement, unresolved Sulaimani missile strikes, IAEA travel-exemption dispute, Gorgij killing, later East-West pipeline repair estimate, confirmed Hanish control, Hormuz and Bab el-Mandeb traffic metrics, exact Yemen displacement update, continuing Saudi threat alerts, oil/refiner effects, and bank sanction still pending."
+}
