@@ -4,7 +4,6 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
-import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -19,6 +18,7 @@ SOURCE_REGISTRY_ROLE = "ROOK_EVIDENCE_LOCKER_SOURCE_REGISTRY_DELTA"
 SOURCE_DISCOVERY_ROLE = "EVIDENCE_LOCKER_SOURCE_DISCOVERY_DELTA"
 INTAKE_ROLES = {SWEEP_ROLE, SOURCE_REGISTRY_ROLE, SOURCE_DISCOVERY_ROLE}
 BOUNDARY_TOLERANCE = timedelta(minutes=5)
+WRITE_POLICY = "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION"
 
 
 @dataclass(frozen=True)
@@ -68,12 +68,43 @@ def iter_intake_artifacts() -> Iterable[tuple[Path, dict[str, Any]]]:
             yield path, value
 
 
-def validate_sweep(path: Path, data: dict[str, Any], as_of: datetime, errors: list[str]) -> Sweep | None:
+def changed_paths(base_ref: str) -> list[tuple[str, str]]:
+    if not base_ref or set(base_ref) == {"0"}:
+        return []
+    proc = subprocess.run(
+        ["git", "diff", "--name-status", f"{base_ref}...HEAD"],
+        cwd=ROOT,
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+    rows: list[tuple[str, str]] = []
+    for line in proc.stdout.splitlines():
+        if line.strip():
+            parts = line.split("\t")
+            rows.append((parts[0], parts[-1]))
+    return rows
+
+
+def validate_sweep(
+    path: Path,
+    data: dict[str, Any],
+    as_of: datetime,
+    errors: list[str],
+    *,
+    require_modern_contract: bool = False,
+) -> Sweep | None:
     rel = relative(path)
     if data.get("authority") != "ROOK_UPSTREAM_COLLECTION":
         errors.append(f"{rel}: authority must be ROOK_UPSTREAM_COLLECTION")
-    if data.get("write_policy") != "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION":
+
+    canonical_boundary = data.get("canonical_boundary")
+    legacy_policy = canonical_boundary.get("write_policy") if isinstance(canonical_boundary, dict) else None
+    policy = data.get("write_policy") or legacy_policy
+    if policy != WRITE_POLICY:
         errors.append(f"{rel}: write_policy must preserve append-only upstream-only semantics")
+    if require_modern_contract and data.get("write_policy") != WRITE_POLICY:
+        errors.append(f"{rel}: newly appended sweep must carry top-level write_policy")
 
     scope = data.get("scope")
     if not isinstance(scope, dict):
@@ -95,15 +126,17 @@ def validate_sweep(path: Path, data: dict[str, Any], as_of: datetime, errors: li
         errors.append(f"{rel}: scope.timezone must be present")
 
     completion = data.get("completion")
-    if not isinstance(completion, dict):
-        errors.append(f"{rel}: missing completion object")
-    else:
+    if isinstance(completion, dict):
         status = str(completion.get("status") or "")
         if not status.startswith("COMPLETE"):
             errors.append(f"{rel}: completion.status does not identify a completed sweep")
         for key in ("canonical_or_public_artifacts_mutated", "accepted_packet_bytes_or_hashes_mutated"):
             if completion.get(key) is not False:
                 errors.append(f"{rel}: completion.{key} must be false for upstream intake")
+    elif require_modern_contract:
+        errors.append(f"{rel}: newly appended sweep must carry completion metadata")
+    elif not (isinstance(canonical_boundary, dict) and legacy_policy == WRITE_POLICY):
+        errors.append(f"{rel}: missing completion object and no recognized legacy canonical_boundary contract")
 
     ids: set[str] = set()
     for collection_name, id_name in (
@@ -226,18 +259,12 @@ def packet_consumers(sweep: Sweep, accepted_updates: list[dict[str, Any]]) -> li
         packet = load_json(path)
         if packet.get("status") != "ACCEPTED":
             continue
-
         provenance = packet.get("upstream_provenance")
-        explicit = False
         if isinstance(provenance, dict):
             artifacts = provenance.get("locker_artifacts", [])
             if isinstance(artifacts, list) and sweep.path in artifacts:
-                explicit = True
-
-        if explicit:
-            consumers.append({"packet_id": str(packet.get("packet_id")), "mode": "EXPLICIT_LOCKER_PROVENANCE"})
-            continue
-
+                consumers.append({"packet_id": str(packet.get("packet_id")), "mode": "EXPLICIT_LOCKER_PROVENANCE"})
+                continue
         try:
             cutoff = parse_timestamp(packet.get("evidence_cutoff"), f"{packet_path} evidence_cutoff")
         except ValueError:
@@ -248,36 +275,21 @@ def packet_consumers(sweep: Sweep, accepted_updates: list[dict[str, Any]]) -> li
     return consumers
 
 
-def changed_paths(base_ref: str) -> list[tuple[str, str]]:
-    if not base_ref or set(base_ref) == {"0"}:
-        return []
-    proc = subprocess.run(
-        ["git", "diff", "--name-status", f"{base_ref}...HEAD"],
-        cwd=ROOT,
-        check=True,
-        text=True,
-        capture_output=True,
+def intake_path_or_role(path: str, role: Any) -> bool:
+    name = Path(path).name
+    return (
+        name.startswith("rook-evidence-locker-sweep-")
+        or name.startswith("rook-source-registry-delta-")
+        or name.startswith("source-discovery-")
+        or role in INTAKE_ROLES
     )
-    rows: list[tuple[str, str]] = []
-    for line in proc.stdout.splitlines():
-        if not line.strip():
-            continue
-        parts = line.split("\t")
-        status = parts[0]
-        path = parts[-1]
-        rows.append((status, path))
-    return rows
 
 
-def validate_append_only_compare(base_ref: str, errors: list[str]) -> None:
-    for status, path in changed_paths(base_ref):
+def validate_append_only_compare(rows: list[tuple[str, str]], errors: list[str]) -> set[str]:
+    added: set[str] = set()
+    for status, path in rows:
         if not path.startswith("data/evidence-integration/"):
             continue
-        intake_named = (
-            Path(path).name.startswith("rook-evidence-locker-sweep-")
-            or Path(path).name.startswith("rook-source-registry-delta-")
-            or Path(path).name.startswith("source-discovery-")
-        )
         current = ROOT / path
         role = None
         if current.exists() and current.suffix == ".json":
@@ -285,33 +297,45 @@ def validate_append_only_compare(base_ref: str, errors: list[str]) -> None:
                 role = load_json(current).get("artifact_role")
             except ValueError:
                 pass
-        if intake_named or role in INTAKE_ROLES:
+        if intake_path_or_role(path, role):
             if status != "A":
                 errors.append(f"{path}: upstream intake history is append-only; change status {status} is not permitted")
+            else:
+                added.add(path)
+    return added
 
 
 def validate_repository(as_of: datetime | None = None, compare_ref: str = "") -> dict[str, Any]:
     as_of = as_of or datetime.now(timezone.utc)
     errors: list[str] = []
     warnings: list[str] = []
+    compare_rows = changed_paths(compare_ref) if compare_ref else []
+    added_intake_paths = validate_append_only_compare(compare_rows, errors) if compare_rows else set()
+
     sweeps: list[Sweep] = []
     registries: list[dict[str, Any]] = []
     discoveries: list[dict[str, Any]] = []
-
     for path, data in iter_intake_artifacts():
         role = data.get("artifact_role")
+        rel = relative(path)
         if role == SWEEP_ROLE:
-            sweep = validate_sweep(path, data, as_of, errors)
+            sweep = validate_sweep(
+                path,
+                data,
+                as_of,
+                errors,
+                require_modern_contract=rel in added_intake_paths,
+            )
             if sweep:
                 sweeps.append(sweep)
         elif role == SOURCE_REGISTRY_ROLE:
             window = validate_source_registry(path, data, as_of, errors)
             if window:
-                registries.append({"path": relative(path), "start": window[0], "end": window[1]})
+                registries.append({"path": rel, "start": window[0], "end": window[1]})
         elif role == SOURCE_DISCOVERY_ROLE:
             cutoff = validate_source_discovery(path, data, as_of, errors)
             if cutoff:
-                discoveries.append({"path": relative(path), "cutoff": cutoff})
+                discoveries.append({"path": rel, "cutoff": cutoff})
 
     sweeps.sort(key=lambda item: (item.start, item.end, item.path))
     by_window: dict[tuple[datetime, datetime], list[str]] = {}
@@ -338,30 +362,22 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
                 f"after {current.path} starts {current.start.isoformat()}"
             )
         else:
-            warnings.append(
-                f"collection gap of {delta} between {previous.path} and {current.path}"
-            )
+            warnings.append(f"collection gap of {delta} between {previous.path} and {current.path}")
 
     for registry in registries:
-        overlaps = [
-            sweep.path for sweep in sweeps
-            if registry["start"] < sweep.end and registry["end"] > sweep.start
-        ]
+        overlaps = [s.path for s in sweeps if registry["start"] < s.end and registry["end"] > s.start]
         registry["associated_sweeps"] = overlaps
         if not overlaps:
             warnings.append(f"{registry['path']}: source-registry delta does not overlap a known completed sweep")
 
     for discovery in discoveries:
         associated = [
-            sweep.path for sweep in sweeps
-            if sweep.start - BOUNDARY_TOLERANCE <= discovery["cutoff"] <= sweep.end + BOUNDARY_TOLERANCE
+            s.path for s in sweeps
+            if s.start - BOUNDARY_TOLERANCE <= discovery["cutoff"] <= s.end + BOUNDARY_TOLERANCE
         ]
         discovery["associated_sweeps"] = associated
         if not associated:
             warnings.append(f"{discovery['path']}: source-discovery cutoff does not align with a known completed sweep")
-
-    if compare_ref:
-        validate_append_only_compare(compare_ref, errors)
 
     manifest = load_json(MANIFEST_PATH)
     accepted_updates = manifest.get("accepted_updates", [])
@@ -395,7 +411,7 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
             "unconsumed": not consumers,
         })
 
-    report = {
+    return {
         "schema_version": "1.0",
         "artifact_role": "ROOK_INTAKE_DISCOVERY_REPORT",
         "latest_accepted_canonical_evidence_cutoff": latest_cutoff.isoformat(),
@@ -414,7 +430,6 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
         "errors": errors,
         "valid": not errors,
     }
-    return report
 
 
 def render_text(report: dict[str, Any]) -> str:
@@ -444,7 +459,6 @@ def main() -> int:
         child.add_argument("--as-of", default="")
         child.add_argument("--json-out", default="")
     args = parser.parse_args()
-
     as_of = parse_timestamp(args.as_of, "--as-of") if args.as_of else None
     report = validate_repository(as_of=as_of, compare_ref=args.compare_ref)
     print(render_text(report))
