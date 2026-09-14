@@ -13,17 +13,90 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  classify:
+    name: classify release impact
+    runs-on: ubuntu-24.04
+    outputs:
+      release_required: ${{ steps.classification.outputs.release_required }}
+      intake_only: ${{ steps.classification.outputs.intake_only }}
+      release_identity_changed: ${{ steps.classification.outputs.release_identity_changed }}
+      reason: ${{ steps.classification.outputs.reason }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.13'
+      - name: Install pinned build requirements
+        run: |
+          python -m pip install --disable-pip-version-check --no-deps -r requirements-build.txt
+          python -m pip check
+      - name: Classify exact main-branch change
+        id: classification
+        env:
+          BASE_REF: ${{ github.event_name == 'push' && github.event.before || '' }}
+          FORCE_RELEASE: ${{ github.event_name == 'workflow_dispatch' && 'true' || 'false' }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          if [ "$FORCE_RELEASE" = "true" ]; then
+            base="$(git rev-parse "$GITHUB_SHA^")"
+            python scripts/classify_release_change.py \
+              --base-ref "$base" \
+              --force-release \
+              --json-out release-change-classification.json \
+              --github-output "$GITHUB_OUTPUT"
+          else
+            test -n "$BASE_REF"
+            git cat-file -e "$BASE_REF^{commit}"
+            python scripts/classify_release_change.py \
+              --base-ref "$BASE_REF" \
+              --json-out release-change-classification.json \
+              --github-output "$GITHUB_OUTPUT"
+          fi
+          cat release-change-classification.json
+      - name: Persist release classification
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: release-change-classification-${{ github.sha }}
+          path: release-change-classification.json
+          if-no-files-found: error
+          retention-days: 30
+
   qualify:
     name: qualify exact merge SHA
+    needs: classify
+    if: needs.classify.outputs.release_required == 'true'
     uses: ./.github/workflows/release-qualification.yml
     with:
       commit_sha: ${{ github.sha }}
       authority_base_ref: ${{ github.event_name == 'push' && github.event.before || '' }}
       prepare_pages_artifact: true
 
+  no_deploy:
+    name: validate intake-only no-op
+    needs: classify
+    if: needs.classify.outputs.release_required == 'false'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Confirm deterministic public no-op
+        env:
+          INTAKE_ONLY: ${{ needs.classify.outputs.intake_only }}
+          RELEASE_IDENTITY_CHANGED: ${{ needs.classify.outputs.release_identity_changed }}
+          REASON: ${{ needs.classify.outputs.reason }}
+        run: |
+          set -euo pipefail
+          test "$INTAKE_ONLY" = "true"
+          test "$RELEASE_IDENTITY_CHANGED" = "false"
+          test "$REASON" = "UPSTREAM_INTAKE_ONLY_PUBLIC_RELEASE_IDENTITY_UNCHANGED"
+          echo "Upstream evidence intake changed; accepted public release identity did not. No public deployment required."
+
   deploy:
     name: deploy qualified SHA
-    needs: qualify
+    needs: [classify, qualify]
+    if: needs.classify.outputs.release_required == 'true'
     runs-on: ubuntu-24.04
     environment:
       name: github-pages
@@ -49,7 +122,8 @@ jobs:
 
   attest:
     name: attest live deployment
-    needs: [qualify, deploy]
+    needs: [classify, qualify, deploy]
+    if: needs.classify.outputs.release_required == 'true'
     runs-on: ubuntu-24.04
     permissions:
       contents: read
