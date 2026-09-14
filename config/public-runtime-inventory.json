@@ -10,8 +10,9 @@
   "current_sources": [
     { "role": "bootstrap", "path": "js/public-bootstrap.js" },
     { "role": "map_runtime", "path": "vendor/leaflet/leaflet.js" },
-    { "role": "page_registry", "path": "js/public-ia.js" },
-    { "role": "reader_runtime", "path": "src/public-reader-layer.js" },
+    { "role": "base_runtime", "path": "js/public-ia.js" },
+    { "role": "reader_projection", "path": "src/public-reader-layer.js" },
+    { "role": "page_registry", "path": "src/public-reader-registry.js" },
     { "role": "map_stylesheet", "path": "vendor/leaflet/leaflet.css" },
     { "role": "stylesheet", "path": "css/public-shell.css" },
     { "role": "reader_stylesheet", "path": "src/public-reader-layer.css" },
@@ -25,7 +26,9 @@
   "current_service_owners": [
     { "service": "public bootstrap", "path": "js/public-bootstrap.js", "symbol": "async function start" },
     { "service": "public application", "path": "js/public-app.js", "symbol": "async function boot" },
-    { "service": "public page registry and route ownership", "path": "js/public-ia.js", "symbol": "PAGE_OWNERS" },
+    { "service": "authoritative visible reader registry and route lifecycle", "path": "src/public-reader-registry.js", "symbol": "function mount" },
+    { "service": "non-authoritative base rendering library", "path": "js/public-ia.js", "symbol": "PAGE_OWNERS" },
+    { "service": "non-authoritative reader projection support", "path": "src/public-reader-layer.js", "symbol": "READER_LAYER_VERSION" },
     { "service": "shared evidence drawer", "path": "js/public-ia.js", "symbol": "EvidenceDrawer" },
     { "service": "shared MapView", "path": "js/public-ia.js", "symbol": "MapView" },
     { "service": "route data authorization", "path": "js/public-app.js", "symbol": "createRouteModelView" },

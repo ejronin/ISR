@@ -116,18 +116,23 @@ assert.doesNotMatch(readerCss, /technical-record-metadata[\s\S]*display\s*:\s*no
 
 // The reader is a pair of signed source modules, not text spliced into the
 // base registry, base stylesheet or entrypoint during release assembly.
-assert.match(releaseCore, /reader_runtime/);
+assert.match(releaseCore, /base_runtime/);
+assert.match(releaseCore, /reader_projection/);
+assert.match(releaseCore, /page_registry/);
+assert.match(releaseCore, /src\/public-reader-registry\.js/);
 assert.match(releaseCore, /src\/public-reader-layer\.js/);
 assert.match(releaseCore, /reader_stylesheet/);
 assert.match(releaseCore, /src\/public-reader-layer\.css/);
-assert.match(releaseCore, /2\.3-single-pass-reader-assets/);
+assert.match(releaseCore, /2\.4-authoritative-reader-registry/);
 assert.match(releaseBuilder, /from build_public_release_core import \*/);
 assert.doesNotMatch(releaseBuilder, /_promote_reader_assets|_rebind_release_identity|_asset_set_sha256|READER_RUNTIME_SPEC|READER_STYLESHEET_SPEC|materialize_asset\(/);
 assert.doesNotMatch(releaseBuilder, /compose_reader_sources|ATLAS_PUBLIC_READER_LAYER_COMPOSED|ATLAS_PUBLIC_READER_STYLES_COMPOSED/);
 assert.doesNotMatch(releaseBuilder, /PAGE_REGISTRY|PUBLIC_STYLESHEET|retire_privileged_narrative_runtime|entrypoint_preparation/);
-assert.match(appSource, /assetForRole\(manifest, 'reader_runtime'\)/);
+assert.match(appSource, /assetForRole\(manifest, 'base_runtime'\)/);
+assert.match(appSource, /assetForRole\(manifest, 'reader_projection'\)/);
+assert.match(appSource, /assetForRole\(manifest, 'page_registry'\)/);
 assert.match(appSource, /assetForRole\(manifest, 'reader_stylesheet'\)/);
-assert.match(appSource, /authorization\.runtimeAssets\.length === 3/);
+assert.match(appSource, /authorization\.runtimeAssets\.length === 4/);
 assert.match(appSource, /authorization\.stylesheetAssets\.length === 3/);
 assert.doesNotMatch(appSource, /ROOK_NARRATIVE_CURRENT|FINAL_NARRATIVE_GATES/);
 assert.equal(fs.existsSync(path.join(root, 'scripts/retire_privileged_narrative_runtime.py')), false, 'retired entrypoint source transform remains in repository');

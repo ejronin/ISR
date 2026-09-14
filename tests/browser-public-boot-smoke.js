@@ -11,15 +11,16 @@ const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'pub
 const entrypoint = manifest.application.assets.find(asset => asset.role === 'entrypoint');
 const stylesheet = manifest.application.assets.find(asset => asset.role === 'stylesheet');
 const readerStylesheet = manifest.application.assets.find(asset => asset.role === 'reader_stylesheet');
+const baseRuntime = manifest.application.assets.find(asset => asset.role === 'base_runtime');
+const readerProjection = manifest.application.assets.find(asset => asset.role === 'reader_projection');
 const pageRegistry = manifest.application.assets.find(asset => asset.role === 'page_registry');
-const readerRuntime = manifest.application.assets.find(asset => asset.role === 'reader_runtime');
 const mapRuntime = manifest.application.assets.find(asset => asset.role === 'map_runtime');
 const mapStylesheet = manifest.application.assets.find(asset => asset.role === 'map_stylesheet');
 const referenceGeography = manifest.application.assets.find(asset => asset.role === 'reference_geography');
 const bootstrap = manifest.neutral_bootstrap.asset;
 const oldValidApplication = fs.readFileSync(path.join(__dirname, 'fixtures', 'public-app-old-valid.js'), 'utf8');
 
-assert(entrypoint && stylesheet && readerStylesheet && pageRegistry && readerRuntime && mapRuntime && mapStylesheet && referenceGeography && bootstrap, 'content-addressed release assets are missing');
+assert(entrypoint && stylesheet && readerStylesheet && baseRuntime && readerProjection && pageRegistry && mapRuntime && mapStylesheet && referenceGeography && bootstrap, 'content-addressed release assets are missing');
 assert(oldValidApplication.includes("const APPLICATION_VERSION = 'atlas-public-shell-v1'"), 'split-release fixture must keep the current logical application version');
 assert.equal(model.release.release_identity, manifest.current_state.release_identity, 'split-release test requires a valid new manifest/model pair');
 
@@ -128,12 +129,13 @@ function base64(value) {
     const loadedScripts = new Map(loading.scripts.map(item => [new URL(item.src).pathname, item.integrity]));
     assert.deepEqual(
       new Set(loadedScripts.keys()),
-      new Set([`/${bootstrap.path}`, `/${mapRuntime.path}`, `/${pageRegistry.path}`, `/${readerRuntime.path}`, `/${entrypoint.path}`]),
+      new Set([`/${bootstrap.path}`, `/${mapRuntime.path}`, `/${baseRuntime.path}`, `/${readerProjection.path}`, `/${pageRegistry.path}`, `/${entrypoint.path}`]),
       'cold shell must execute only the bound bootstrap and authorized runtimes/entrypoint'
     );
     assert.equal(loadedScripts.get(`/${bootstrap.path}`), bootstrap.integrity, 'bootstrap must carry the manifest-authorized SRI value');
-    assert.equal(loadedScripts.get(`/${pageRegistry.path}`), pageRegistry.integrity, 'page registry must carry the manifest-authorized SRI value');
-    assert.equal(loadedScripts.get(`/${readerRuntime.path}`), readerRuntime.integrity, 'reader runtime must carry the manifest-authorized SRI value');
+    assert.equal(loadedScripts.get(`/${baseRuntime.path}`), baseRuntime.integrity, 'base runtime must carry the manifest-authorized SRI value');
+    assert.equal(loadedScripts.get(`/${readerProjection.path}`), readerProjection.integrity, 'reader projection must carry the manifest-authorized SRI value');
+    assert.equal(loadedScripts.get(`/${pageRegistry.path}`), pageRegistry.integrity, 'authoritative page registry must carry the manifest-authorized SRI value');
     assert.equal(loadedScripts.get(`/${mapRuntime.path}`), mapRuntime.integrity, 'map runtime must carry the manifest-authorized SRI value');
     assert.equal(loadedScripts.get(`/${entrypoint.path}`), entrypoint.integrity, 'entrypoint must carry the manifest-authorized SRI value');
     assert.deepEqual(
@@ -191,7 +193,7 @@ function base64(value) {
     assert.match(ready.currentRelease, /^public-current-v2-[a-f0-9]{16}$/);
     assert.equal(ready.authorization.release, ready.release);
     assert.equal(ready.authorization.entrypoint, entrypoint.path);
-    assert.deepEqual(ready.authorization.runtimes, [mapRuntime.path, pageRegistry.path, readerRuntime.path]);
+    assert.deepEqual(ready.authorization.runtimes, [mapRuntime.path, baseRuntime.path, readerProjection.path, pageRegistry.path]);
     assert.deepEqual(ready.authorization.stylesheets, [mapStylesheet.path, stylesheet.path, readerStylesheet.path]);
     assert.equal(ready.authorization.stylesheet, stylesheet.path);
     assert.equal(ready.authorization.geography, referenceGeography.path);
