@@ -69,7 +69,6 @@
     if (!ids.length) return;
     const d = projection.EvidenceDrawer.create(context, { source_ids: ids }); const s = d.querySelector('summary'); if (s) s.textContent = label; host.append(d);
   }
-  function eventById(model, id) { return (model.chronology || []).find(x => x.event_id === id || x.event?.event_id === id); }
 
   const FACILITY = Object.freeze({
     'US-ALUDEID':['damaged_not_operating','Combined Air Operations Center','The CAOC was reported inoperable and campaign command shifted to Shaw. Whole-base incapacity is not established.'],
@@ -213,7 +212,7 @@
   function economy(article, context) {
     intro(article,'Iran and the Gulf are under severe wartime economic pressure. The current picture comes from sanctions, trade and oil-flow evidence, damaged energy infrastructure, freight costs and shipping disruption—not one forecast chart.');
     const s=section(article,'Current economic condition','Sanctions and war disruption materially constrain Iran and raise regional energy and freight costs, while trade and production continue unevenly rather than stopping altogether.'),g=add(s,'div','orientation-grid');
-    const p=card(g,'Iran’s own assessment','President Masoud Pezeshkian acknowledged material sanctions and war effects and reported roughly a 35% fall in foreign trade. The percentage is an Iranian presidential self-assessment, not an independently audited statistic.','AUG. 28');evidence(p,context,eventById(context.model,'G3-PEZESHKIAN-SANCTIONS-ASSESSMENT-20260828'));
+    const p=card(g,'Iran’s own assessment','President Masoud Pezeshkian acknowledged material sanctions and war effects and reported roughly a 35% fall in foreign trade. The percentage is an Iranian presidential self-assessment, not an independently audited statistic.','AUG. 28');evidence(p,context,{ source_ids: ['SRC-F550DDD51246','SRC-5D32C7182EFF'] });
     const er=records(context.model,'gate3.economics');
     const o=card(g,'Oil market','Reuters reported Brent at $109.29/bbl and WTI at $104.26/bbl at 10:15 a.m. EDT Sep. 14, both up more than 4%. This is a dated snapshot.','SEP. 14');evidence(o,context,er.find(r=>r.economic_id==='ECON-OIL-MARKET-OPEN-20260914'));
     const f=card(g,'Freight and crude logistics','Reuters reported expectations of tighter sour crude, at least one delayed Saudi loading, record Gulf-to-Asia tanker rates and some AIS-dark Red Sea-loading vessels. This does not mean all Saudi deliveries were disrupted.','SOURCE-REPORTED');evidence(f,context,er.find(r=>r.economic_id==='ECON-ASIA-REFINERS-20260914'));
