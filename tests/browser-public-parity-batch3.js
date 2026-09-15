@@ -25,6 +25,19 @@ function assertRouteHeadingParity(routeRecord, headings, publicProductVersion) {
   );
 }
 
+function assertAgreementStateDistinction(text) {
+  const normalized = String(text || '').replace(/\s+/g, ' ').trim();
+  const clauses = normalized.split(/(?<=[.!?;])\s+/);
+  const distinguishesStates = clauses.some(clause => {
+    const category = /\b(?:agreement|framework|proposal|legal|formaliz(?:ed|ation)|states?|statuses?)\b/i.test(clause);
+    const negativeInterchangeability =
+      /\b(?:not|never)\b[^.!?;]{0,80}\binterchangeable\b/i.test(clause)
+      || /\b(?:states?|statuses?)\b[^.!?;]{0,40}\b(?:are|is|were|be)\s+not\b[^.!?;]{0,20}\binterchangeable\b/i.test(clause);
+    return category && negativeInterchangeability;
+  });
+  assert(distinguishesStates, 'Talks must explicitly distinguish agreement/proposal/legal states as not interchangeable');
+}
+
 const ordinaryRouteFixture = { key: 'military.campaigns', title: 'Campaigns' };
 const iranMessagingFixture = { key: 'objectives.iran', title: "How Iran's Position Changed" };
 const informationFixture = { key: 'evidence.information', title: 'Lie Ledger' };
@@ -39,6 +52,11 @@ assert.throws(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'],
 assert.throws(() => assertRouteHeadingParity(informationFixture, ['Claims & Information'], 'sep14-reader-convergence-v1'));
 assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, [], 'sep14-reader-convergence-v1'));
 assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaigns', 'Campaigns'], 'sep14-reader-convergence-v1'));
+assert.doesNotThrow(() => assertAgreementStateDistinction('Five wartime agreement, framework or proposal records are grouped here by relevance to the conflict, not treated as interchangeable legal states.'));
+assert.doesNotThrow(() => assertAgreementStateDistinction('These states are not interchangeable.'));
+assert.throws(() => assertAgreementStateDistinction('These states are interchangeable.'));
+assert.throws(() => assertAgreementStateDistinction('Proposal and agreement states are interchangeable.'));
+assert.throws(() => assertAgreementStateDistinction('Eight agreement, framework, or proposal records are listed with distinct evidence drawers.'));
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -325,7 +343,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert(agreements.evidence > 0);
     assert.equal(agreements.mou, true);
     assert.equal(agreements.nuclear, true);
-    assert.match(agreements.text, /states are not interchangeable/i);
+    assertAgreementStateDistinction(agreements.text);
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: true });
