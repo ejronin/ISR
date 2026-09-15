@@ -1,0 +1,190 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-14T12:01:51-04:00",
+    "window_end": "2026-09-15T00:01:51-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-15T00:01:51-04:00",
+    "evidence_horizon_time": "2026-09-15T00:01:51-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260914T1201ET.json",
+    "boundary_rule": "Occurrence, publication, collection and evidence-horizon times remain distinct. Later reporting updates earlier events rather than creating duplicate occurrences."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-VTB-IRAN-SANCTIONS-20260914",
+      "event_type": "ECONOMIC_SANCTIONS_FOREIGN_FINANCIAL_INSTITUTION",
+      "occurrence_time": "2026-09-14",
+      "public_available_time": "2026-09-14T15:01:00-04:00",
+      "actor": "United States / VTB Bank / Russia / Iran",
+      "summary": "The U.S. Treasury imposed Iran-related sanctions on Russia's VTB Bank under an Iran-focused authority, alleging that VTB opened offices in Iran, established correspondent relationships with sanctioned Iranian lenders, built rial-ruble settlement channels, and sought to move billions of dollars in frozen Iranian assets. Treasury warned that foreign institutions continuing certain dealings with VTB could face additional sanctions exposure.",
+      "confidence": "HIGH",
+      "sources": ["https://www.reuters.com/world/middle-east/us-imposes-iran-related-sanctions-russias-vtb-2026-09-14/"]
+    },
+    {
+      "event_id": "LOCKER-US-WATCHDOG-IRAN-WAR-COSTS-20260914",
+      "event_type": "OFFICIAL_RETROSPECTIVE_BDA_AND_FORCE_SUSTAINMENT_REPORT",
+      "occurrence_range": "2026-04-01 through 2026-06-30",
+      "public_available_time": "2026-09-14",
+      "actor": "U.S. Department of Defense Inspector General / State Department / USAID",
+      "summary": "A U.S. government watchdog report publicly acknowledged strategic inventory shortfalls and industrial-base bottlenecks for advanced munitions, and provided the fullest official accounting yet of earlier-war damage. AP reported the document said Iranian strikes damaged or destroyed hundreds of structures at U.S. bases across Kuwait, Bahrain, Qatar, UAE, Saudi Arabia, Iraq, Oman and Jordan; up to 30 MQ-9s were destroyed, seven KC-135s were damaged or destroyed, and eleven service members were listed killed in action during the covered period. The report also recorded $184 million in physical damage to U.S. diplomatic facilities and 14-18 day alternate logistics cycles after disruption at Bahrain.",
+      "confidence": "HIGH_FOR_REPORTED_OFFICIAL_WATCHDOG_FINDINGS",
+      "sources": ["https://apnews.com/article/iran-war-damage-pentagon-inspector-general-87cbe4e2ac208a849cd1554c4bb44bbf"]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HOUTHI-SAUDI-STRIKES-13-WOUNDED-20260914PM",
+      "updates_existing_ref": "UPD-HOUTHI-SAUDI-ALERTS-20260914",
+      "relationship": "LATER_ATTACK_CONFIRMATION_AND_CASUALTY_UPDATE",
+      "summary": "Houthis said they fired dozens of missiles and drones at King Khalid Air Base in Khamis Mushait, claiming hangars, radar, runways and ammunition depots as targets. Saudi coalition spokesman Maj. Gen. Turki al-Malki said attacks struck civilian areas in Khamis Mushait and nearby cities, injuring 13 civilians and damaging houses and vehicles; he did not confirm the airbase was hit. Preserve Houthi military BDA as an actor claim rather than established damage.",
+      "status": "ATTACK_CONFIRMED; 13_CIVILIANS_WOUNDED; CLAIMED_AIRBASE_BDA_UNVERIFIED",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/","https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-8c18d82c109a8ea91347ce53c0096c53"]
+    },
+    {
+      "update_id": "UPD-SAUDI-ALERTS-YANBU-SIX-CITIES-20260914PM",
+      "updates_existing_ref": "UPD-HOUTHI-SAUDI-ALERTS-20260914",
+      "relationship": "LATER_THREAT_ALERT_EXPANSION_AND_ALL_CLEAR",
+      "summary": "Saudi Civil Defence issued and then lifted danger alerts affecting Yanbu, Jeddah, Abha, Jazan, AlUla and Taif. Yanbu is Saudi Arabia's principal Red Sea oil-loading port. The alerts establish threat activity but not successful impacts in each city.",
+      "status": "ALERTS_EXPANDED_TO_SIX_CITIES_INCLUDING_YANBU; ALL_CLEAR_ISSUED",
+      "sources": ["https://www.reuters.com/world/middle-east/saudi-civil-defence-says-danger-has-passed-six-cities-including-yanbu-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-HORMUZ-TRAFFIC-FOUR-MONDAY-20260914",
+      "updates_existing_ref": "UPD-HORMUZ-TRAFFIC-20260914",
+      "relationship": "LATER_DAILY_MARITIME_METRIC",
+      "summary": "Kpler preliminary data reported only four commodity-vessel transits through Hormuz on Monday, down from ten Sunday: two dry-bulk carriers exited and two ballast oil tankers entered. AIS-dark traffic may be omitted.",
+      "status": "HORMUZ_COMMODITY_TRANSITS_FOUR_ON_MONDAY; SEVERELY_DEPRESSED",
+      "sources": ["https://www.reuters.com/world/middle-east/hormuz-traffic-dwindles-after-middle-east-attacks-intensify-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-BAB-EL-MANDEB-TRAFFIC-21-MONDAY-20260914",
+      "updates_existing_ref": "UPD-BAB-EL-MANDEB-TRAFFIC-20260914",
+      "relationship": "LATER_DAILY_MARITIME_METRIC",
+      "summary": "Kpler preliminary data reported 21 commodity-vessel transits through Bab el-Mandeb on Monday, down from 28 Sunday. Traffic remained present despite Houthi territorial gains.",
+      "status": "TRAFFIC_CONTINUES_BUT_DAILY_COUNT_DECLINED_TO_21",
+      "sources": ["https://www.reuters.com/world/middle-east/hormuz-traffic-dwindles-after-middle-east-attacks-intensify-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-YEMEN-HUMAN-IMPACT-20260914PM",
+      "updates_existing_ref": "UPD-YEMEN-DISPLACEMENT-82164-20260914",
+      "relationship": "LATER_HUMANITARIAN_AND_CASUALTY_ESTIMATE",
+      "summary": "AP reported WHO said more than 500 people were killed in Yemen during the preceding week, up from nearly 200 the week before, and that fighting had displaced nearly 94,000 people. This supersedes the earlier 82,164 displacement figure as a later rounded estimate while preserving the earlier exact IOM count and its publication time.",
+      "status": "WHO_GT500_KILLED_LAST_WEEK; NEARLY_94000_DISPLACED",
+      "sources": ["https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-8c18d82c109a8ea91347ce53c0096c53"]
+    },
+    {
+      "update_id": "UPD-SAUDI-EASTWEST-PARTIAL-REPAIR-POSSIBILITY-20260914PM",
+      "updates_existing_ref": "UPD-SAUDI-EASTWEST-REPAIR-20260914",
+      "relationship": "LATER_REPAIR_DETAIL",
+      "summary": "AP's two regional officials retained the three-to-five-week repair estimate for major East-West Pipeline damage, including a major pumping facility. One official said partial operation during repairs may be possible, but no throughput estimate or restart date was available. Rystad said the pipeline had averaged roughly 2.6-4.0 million bpd since late August.",
+      "status": "MOSTLY_OUT_3_TO_5_WEEKS; PARTIAL_OPERATION_POSSIBLE_UNQUANTIFIED",
+      "sources": ["https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-8c18d82c109a8ea91347ce53c0096c53"]
+    },
+    {
+      "update_id": "UPD-FUTURE-BANK-SANCTION-RESOLVED-VTB-20260914",
+      "updates_existing_ref": "UPD-FUTURE-BANK-SANCTION-20260914T1201ET",
+      "relationship": "ANNOUNCED_FUTURE_ACTION_COMPLETED_AND_IDENTIFIED",
+      "summary": "The previously unidentified large bank in Treasury Secretary Scott Bessent's announced Monday sanctions action was identified as Russia's VTB Bank when Treasury imposed Iran-related sanctions on September 14.",
+      "status": "RESOLVED_COMPLETED_VTB_BANK",
+      "sources": ["https://www.reuters.com/world/middle-east/us-imposes-iran-related-sanctions-russias-vtb-2026-09-14/"]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914",
+      "claimant": "Houthi military spokesman Yahya Saree",
+      "claim_time": "2026-09-14",
+      "claim": "Dozens of missiles and drones targeted aircraft hangars, radar systems, runways and ammunition depots at King Khalid Air Base in Khamis Mushait.",
+      "adjudication": "ATTACK_ACTIVITY_SUPPORTED; SPECIFIC_MILITARY_TARGET_IMPACTS_AND_BDA_NOT_CONFIRMED_BY_SAUDI_REPORTING_REVIEWED",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/","https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-8c18d82c109a8ea91347ce53c0096c53"]
+    },
+    {
+      "claim_id": "CLM-IRGC-EL-GAIA-MINE-20260914",
+      "claimant": "IRGC via Fars",
+      "claim_time": "2026-09-14",
+      "claim": "Panama-flagged tanker El Gaia was damaged by sea mines while passing through an Iranian-prohibited zone south of Hormuz.",
+      "adjudication": "CONTESTED; CENTCOM SAID CLAIM_FALSE_AND_ASSERTED_IRANIAN_MISSILE_STRIKE_LAST_MONTH; IMO_REPORTED_DAMAGE_WITHOUT_CAUSE; TWO_SEAFARERS_MISSING; OWNERS_NOT_REACHED_BY_REUTERS",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/"]
+    },
+    {
+      "claim_id": "CLM-REZAEI-NO-TALKS-UNTIL-CONDITIONS-20260914",
+      "claimant": "Mohsen Rezaei, secretary of Iran's Supreme National Security Council",
+      "claim_time": "2026-09-14",
+      "claim": "No talks until Iran's conditions are met.",
+      "adjudication": "PUBLIC_IRANIAN_POSITION_SIGNAL; SPECIFIC_CONDITIONS_NOT_RESOLVED_BY_THIS_STATEMENT",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/"]
+    },
+    {
+      "claim_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914PM",
+      "claimant": "Iranian officials",
+      "claim_time": "2026-09-14",
+      "claim": "Saudi Arabia requested postponement of the Oman Gulf-Iran Hormuz meeting.",
+      "adjudication": "REPEATED_BY_REUTERS_AS_IRANIAN_ATTRIBUTION; NO_INDEPENDENT_SAUDI_OR_OMANI_PRIMARY_CONFIRMATION_FOUND_BY_CUTOFF",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/"]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-OIL-SETTLEMENT-20260914",
+      "metric": "Oil market reaction",
+      "public_available_time": "2026-09-14",
+      "observed_state": "Reuters reported crude prices rose more than 4% intraday Monday before settling roughly 1% higher, while AP reported Brent reached $109 during the session as markets priced Saudi pipeline outage risk.",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/","https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-8c18d82c109a8ea91347ce53c0096c53"]
+    },
+    {
+      "economic_id": "ECON-US-WAR-COST-OFFICIAL-RETROSPECTIVE-20260914",
+      "metric": "U.S. war costs and diplomatic-facility damage through June",
+      "public_available_time": "2026-09-14",
+      "observed_state": "The watchdog accounting cited a previously stated $37.5 billion war cost through late July and newly public $184 million physical damage estimate for U.S. diplomatic facilities in Iraq, Kuwait, Saudi Arabia and UAE; State Department contingency/evacuation-related costs were also detailed.",
+      "sources": ["https://apnews.com/article/iran-war-damage-pentagon-inspector-general-87cbe4e2ac208a849cd1554c4bb44bbf"]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "OFFICIAL_WATCHDOG_REPORTING",
+      "addition": "Pentagon Inspector General / interagency Iran-war oversight report surfaced via AP on Sep. 14; use as retrospective official BDA/sustainment source and reconcile prior asset-loss/cost drawers rather than creating new occurrence dates."
+    },
+    {
+      "source_class": "COMMERCIAL_MARITIME_DATA",
+      "addition": "Kpler daily Hormuz and Bab el-Mandeb preliminary transit counts surfaced through Reuters; retain AIS-dark caveat and avoid treating preliminary counts as exhaustive."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "Replace the pending-bank unresolved item with completed VTB identification while preserving every earlier pending state at its historical evidence horizon.",
+    "Update Sep. 14 Saudi threat-alert drawer with 13 civilian wounded and property damage; do not promote Houthi King Khalid Air Base BDA without independent confirmation.",
+    "Update Hormuz and Bab el-Mandeb maritime metrics with Monday Kpler counts; preserve earlier weekend counts as historical observations.",
+    "Update Yemen human-impact drawer from 82,164 exact earlier IOM displacement count to later nearly-94,000 rounded reporting; preserve both source/time contexts.",
+    "Append watchdog retrospective findings to prior U.S. aircraft/base/casualty/logistics/cost evidence. Do not rewrite original occurrence records because the report covers Apr-Jun and was only made public Sep. 14.",
+    "Retain Saudi East-West pipeline 3-5 week repair estimate and add possibility of partial unquantified operation during repairs."
+  ],
+  "unresolved_questions": [
+    "What specific amendments did Saudi Arabia submit to the Iran-Oman Hormuz proposal?",
+    "Will Saudi Arabia or Oman independently confirm that Riyadh requested the meeting postponement?",
+    "What substantive Hormuz terms, if any, have Oman and Iran agreed to?",
+    "Will any GCC state recognize Iran's asserted Strait Authority or 77-vessel list?",
+    "Will maritime insurers, P&I clubs or classification societies act on Iran's warning?",
+    "Can the Saudi East-West pipeline restore measurable partial throughput before full repairs, and at what capacity?",
+    "Who ordered the Sep. 11 Saudi pipeline attack beyond Saudi attribution to Iran-backed Iraqi militias?",
+    "Were King Khalid Air Base military facilities actually struck in the Sep. 14 Houthi attack?",
+    "What caused the El Gaia damage, and what is the vessel's exact incident chronology?",
+    "Will the Monday drop in Bab el-Mandeb traffic persist or prove transient?",
+    "Who launched the Sep. 14 missiles in Sulaimani province?",
+    "Who killed Molavi Yusef Gorgij?",
+    "How will non-U.S. financial institutions alter VTB relationships after the new Iran-specific designation?"
+  ],
+  "coverage": {
+    "material_results": ["Iran","Saudi Arabia","Oman/GCC","United States","Yemen/Houthis","Russia/VTB","Hormuz maritime","Bab el-Mandeb maritime","energy infrastructure","sanctions/financial networks","oil markets","humanitarian Yemen","U.S. force sustainment/BDA"],
+    "checked_no_material_new_event_in_window": ["UAE independent Hormuz endorsement","Qatar independent Hormuz endorsement","Kuwait independent Hormuz endorsement","Bahrain reversal","Pakistan new pact military commitment","Turkey new pact military commitment","China material new Iran intervention","Russia material military intervention beyond VTB financial-channel evidence","new Israel-Lebanon material event found within exact window","new independently confirmed Iran-US kinetic exchange within exact window"],
+    "limitations": ["No direct subscription-only AIS, Lloyd's List Intelligence full feed, proprietary satellite tasking, P&I circular or classification-society feed was accessible.","Kpler maritime counts were available through Reuters reporting rather than a direct commercial terminal and may omit AIS-dark vessels.","Saudi/Omani primary confirmation of Iran's Saudi-delay attribution was not found by cutoff.","Houthi military BDA and IRGC El Gaia mine attribution remain contested/unverified and were preserved as claims.","Some official primary documents were surfaced through high-quality secondary reporting rather than directly downloaded during this run."]
+  },
+  "completion": {
+    "status": "COMPLETE_FOR_AVAILABLE_SOURCE_UNIVERSE_THROUGH_2026-09-15T00:01:51-04:00",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_NEW_EVIDENCE_ARTIFACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
