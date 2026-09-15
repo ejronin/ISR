@@ -158,7 +158,12 @@
     card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. They do not establish additional successful impacts or BDA without separate evidence.','EVIDENCE BOUNDARY');
     routeLink(s,'military.facilities','See authoritative facility status');
     const m=findSection(article,/^At a glance$/i); if(m) collapse(m,'Record coverage');
-    const f=findSection(article,/^What did the damage change\?$/i); if(f){ const r=node(article.ownerDocument,'section','content-section canonical-owner-link'); add(r,'h2','','Facility effects'); add(r,'p','','Campaigns show when and how facilities were attacked. Current facility status is adjudicated once in Bases & Infrastructure.'); routeLink(r,'military.facilities','Open Bases & Infrastructure'); f.replaceWith(r); }
+    const f=findSection(article,/^What did the damage change\?$/i);
+    if(f){
+      const h=f.querySelector(':scope > h2'); if(h) h.textContent='Attack and effect evidence';
+      add(f,'p','scope-note','These records preserve attack occurrence, physical effect and operational-effect evidence. They do not independently adjudicate current facility status.');
+      routeLink(f,'military.facilities','Open Bases & Infrastructure for authoritative current facility status');
+    }
     article.querySelectorAll('[data-reader-drilldown="event-constituents"] .section-note').forEach(n=>n.textContent='This is a count of recorded military events, not combat intensity or weapon quantity. Open a month to inspect the records behind the count.');
   }
 
