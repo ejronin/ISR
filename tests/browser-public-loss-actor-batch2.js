@@ -84,6 +84,7 @@ async function route(cdp, hash, key) {
         cardCount: cards.length,
         uniqueIds: new Set(cards.map(card => card.dataset.lossId)).size,
         visibleCount: cards.filter(card => !card.hidden).length,
+        publicProduct: document.querySelector('.public-page')?.dataset.publicProduct || '',
         unknownText: unknown?.innerText || '',
         damagedText: damaged?.innerText || '',
         comparisonText: comparison?.innerText || '',
@@ -112,7 +113,7 @@ async function route(cdp, hash, key) {
     assert.doesNotMatch(losses.unknownText, /Quantity:\s*0(?:\D|$)/i, 'unresolved quantity was rendered as numeric zero');
     assert(losses.comparisonGroups >= 3, 'reader loss comparison collapsed actor/commercial grouping');
     assert.deepEqual(losses.comparisonContributors, losses.cardIds, 'reader loss comparison does not reconcile exactly to canonical material-loss records');
-    assertLossRecordDenominator(losses.comparisonText);
+    assertLossRecordDenominator(losses.comparisonText, { requirePhysicalLossExclusion: Boolean(losses.publicProduct) });
     assert.match(losses.comparisonText, /Unknown does not mean zero|unknown quantities/i, 'reader loss comparison permits unknown-to-zero semantics');
     assert.match(losses.damagedText, /Damaged/);
     assert(!/\bDestroyed\b/.test(losses.damagedText), 'damaged record was relabeled destroyed');
