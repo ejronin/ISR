@@ -254,6 +254,8 @@
 
   function regional(article) {
     intro(article,'Regional diplomacy is easiest to read through what actually changed—meetings held, proposals made, alignments tested and arrangements accepted or rejected. Participation rosters and causal interpretation come afterward.');
+    const introBlock=article.querySelector('.page-intro');
+    if(introBlock)add(introBlock,'p','scope-note','The participant-state map identifies supporting states only; it does not identify capitals, headquarters, command nodes, deployments, or operating areas.');
     const r=findSection(article,/14-state maritime support|roster/i);if(r)collapse(r,'Regional participation and roster detail');
   }
 
