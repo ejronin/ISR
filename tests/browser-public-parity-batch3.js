@@ -8,6 +8,37 @@ const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
+const PUBLIC_PRODUCT_ROUTE_TITLES = Object.freeze({
+  'objectives.iran': 'Iran Messaging & Claims',
+  'evidence.information': 'Claims, Falsehoods & Deception'
+});
+
+function expectedPublicTitle(routeRecord, publicProductVersion) {
+  return publicProductVersion ? (PUBLIC_PRODUCT_ROUTE_TITLES[routeRecord.key] || routeRecord.title) : routeRecord.title;
+}
+
+function assertRouteHeadingParity(routeRecord, headings, publicProductVersion) {
+  assert.deepEqual(
+    headings,
+    [expectedPublicTitle(routeRecord, publicProductVersion)],
+    `route heading parity failed for ${routeRecord.key}`
+  );
+}
+
+const ordinaryRouteFixture = { key: 'military.campaigns', title: 'Campaigns' };
+const iranMessagingFixture = { key: 'objectives.iran', title: "How Iran's Position Changed" };
+const informationFixture = { key: 'evidence.information', title: 'Lie Ledger' };
+assert.doesNotThrow(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaigns'], 'sep14-reader-convergence-v1'));
+assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaign Summary'], 'sep14-reader-convergence-v1'));
+assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ["How Iran's Position Changed"], ''));
+assert.doesNotThrow(() => assertRouteHeadingParity(iranMessagingFixture, ['Iran Messaging & Claims'], 'sep14-reader-convergence-v1'));
+assert.throws(() => assertRouteHeadingParity(iranMessagingFixture, ["How Iran's Position Changed"], 'sep14-reader-convergence-v1'));
+assert.doesNotThrow(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'], ''));
+assert.doesNotThrow(() => assertRouteHeadingParity(informationFixture, ['Claims, Falsehoods & Deception'], 'sep14-reader-convergence-v1'));
+assert.throws(() => assertRouteHeadingParity(informationFixture, ['Lie Ledger'], 'sep14-reader-convergence-v1'));
+assert.throws(() => assertRouteHeadingParity(informationFixture, ['Claims & Information'], 'sep14-reader-convergence-v1'));
+assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, [], 'sep14-reader-convergence-v1'));
+assert.throws(() => assertRouteHeadingParity(ordinaryRouteFixture, ['Campaigns', 'Campaigns'], 'sep14-reader-convergence-v1'));
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -91,10 +122,13 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     for (const routeRecord of expectedRoutes) {
       await route(cdp, routeRecord);
       const owner = await cdp.eval(`document.querySelector('[data-page-owner]')?.dataset.pageOwner`);
-      const headings = await cdp.eval(`[...document.querySelectorAll('main h1')].map(node => node.textContent.trim())`);
+      const headingState = await cdp.eval(`(() => ({
+        headings: [...document.querySelectorAll('main h1')].map(node => node.textContent.trim()),
+        publicProductVersion: document.querySelector('.public-page')?.dataset.publicProduct || ''
+      }))()`);
       const publicText = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
       assert.equal(owner, routeRecord.owner, `wrong page owner for ${routeRecord.key}`);
-      assert.deepEqual(headings, [routeRecord.title], `route heading parity failed for ${routeRecord.key}`);
+      assertRouteHeadingParity(routeRecord, headingState.headings, headingState.publicProductVersion);
       assert(!/founding signator/i.test(publicText), `retired founding-signatory wording surfaced on ${routeRecord.key}`);
     }
 
