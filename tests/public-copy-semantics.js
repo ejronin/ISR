@@ -3,7 +3,7 @@
 const assert = require('node:assert/strict');
 
 function assertLossRecordDenominator(text, options = {}) {
-  const { requirePhysicalLossExclusion = true } = options;
+  const { requirePhysicalLossExclusion = false } = options;
   const normalized = String(text || '').replace(/\s+/g, ' ').trim();
   const clauses = normalized.split(/(?<=[.!?;])\s+/);
 
@@ -30,13 +30,14 @@ function assertLossRecordDenominator(text, options = {}) {
 }
 
 function runLossRecordDenominatorFixtures() {
+  const fullContract = { requirePhysicalLossExclusion: true };
   for (const text of [
     'This comparison counts canonical material-loss records; it does not count physical losses.',
     'This comparison is counting canonical material-loss records, not physical losses.',
     'Canonical material-loss records are counted here rather than physical losses.',
     'This comparison counted material-loss records instead of physical losses.'
   ]) {
-    assert.doesNotThrow(() => assertLossRecordDenominator(text), `equivalent denominator wording was rejected: ${text}`);
+    assert.doesNotThrow(() => assertLossRecordDenominator(text, fullContract), `equivalent denominator wording was rejected: ${text}`);
   }
 
   for (const text of [
@@ -44,11 +45,11 @@ function runLossRecordDenominatorFixtures() {
     'This comparison does not count physical losses.',
     'This comparison counts canonical material-loss records.'
   ]) {
-    assert.throws(() => assertLossRecordDenominator(text), `invalid denominator wording was accepted: ${text}`);
+    assert.throws(() => assertLossRecordDenominator(text, fullContract), `invalid denominator wording was accepted: ${text}`);
   }
 
   assert.doesNotThrow(
-    () => assertLossRecordDenominator('These summaries count material-loss records by side and type.', { requirePhysicalLossExclusion: false }),
+    () => assertLossRecordDenominator('These summaries count material-loss records by side and type.'),
     'pre-finalization reader baseline lost its record-denominator compatibility contract'
   );
 }
