@@ -6,6 +6,42 @@ const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
+function assertCampaignEventCountSemanticBoundary(text) {
+  const normalized = String(text || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  const hasRecordedEventCount = [
+    /\bcount(?:s)?\s+of\s+(?:recorded\s+)?(?:military\s+)?(?:events?|records?)\b/,
+    /\b(?:recorded\s+)?(?:military\s+)?(?:event|record)\s+counts?\b/
+  ].some(pattern => pattern.test(normalized));
+  assert(hasRecordedEventCount, 'Campaigns explanation must identify the figure as a count of recorded events or records');
+
+  const hasExplicitDistinction = [
+    /\bcount(?:s)?\s+of\s+(?:recorded\s+)?(?:military\s+)?(?:events?|records?)\b[^.!?]{0,120}\bnot\b[^.!?]{0,80}\b(?:combat intensity|(?:equipment|weapon|physical asset)\s+(?:quantit(?:y|ies)|counts?))\b/,
+    /\b(?:event|record)\s+counts?\b[^.!?]{0,120}\b(?:are|is)\s+not\b[^.!?]{0,80}\b(?:combat intensity|(?:equipment|weapon|physical asset)\s+(?:quantit(?:y|ies)|counts?))\b/,
+    /\b(?:equipment|weapon|physical asset)\s+(?:quantit(?:y|ies)|counts?)\b[^.!?]{0,100}\b(?:are|is)\s+not\s+(?:substituted\s+for|the\s+same\s+as|equivalent\s+to)\b[^.!?]{0,80}\b(?:event|record)\s+counts?\b/,
+    /\b(?:event|record)\s+counts?\b[^.!?]{0,100}\b(?:do|does)\s+not\s+(?:represent|measure|equal|mean|count)\b[^.!?]{0,80}\b(?:combat intensity|(?:equipment|weapon|physical asset)\s+(?:quantit(?:y|ies)|counts?))\b/
+  ].some(pattern => pattern.test(normalized));
+  assert(hasExplicitDistinction, 'Campaigns explanation must distinguish recorded-event counts from equipment/weapon quantity, physical asset count, or combat intensity');
+
+  const forbiddenEquivalence = /\b(?:recorded\s+)?(?:military\s+)?(?:event|record)\s+counts?\b[^.!?]{0,100}\b(?:is|are|equals?|represent(?:s)?|measure(?:s)?|mean(?:s)?|correspond(?:s)?\s+to)\b[^.!?]{0,80}\b(?:combat intensity|(?:equipment|weapon|physical asset)\s+(?:quantit(?:y|ies)|counts?))\b/;
+  assert(!forbiddenEquivalence.test(normalized), 'Campaigns explanation must not equate event/record counts with equipment, weapon, physical-asset quantities, or combat intensity');
+}
+
+assert.doesNotThrow(() => assertCampaignEventCountSemanticBoundary(
+  'This is a count of recorded military events, not combat intensity or weapon quantity.'
+));
+assert.doesNotThrow(() => assertCampaignEventCountSemanticBoundary(
+  'Count of recorded military events. Equipment quantities are not substituted for event counts.'
+));
+for (const unsafe of [
+  'Recorded event count is equipment quantity.',
+  'Recorded event count represents weapon quantity.',
+  'Recorded event count equals physical asset count.',
+  'Recorded event count measures combat intensity.',
+  'This is a count of recorded military events.'
+]) {
+  assert.throws(() => assertCampaignEventCountSemanticBoundary(unsafe), undefined, `unsafe Campaigns count formulation passed: ${unsafe}`);
+}
+
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
   async open() {
@@ -219,8 +255,7 @@ async function setRoute(cdp, routeKey) {
       text: document.querySelector('[data-reader-drilldown="event-constituents"]')?.textContent || ''
     }))()`);
     assert(chart.count >= 1 && chart.months >= 1 && chart.constituents >= 1, 'campaign event-count drilldown lacks auditable constituents');
-    assert.match(chart.text, /count of recorded military events/i);
-    assert.match(chart.text, /Equipment quantities are not substituted for event counts/i);
+    assertCampaignEventCountSemanticBoundary(chart.text);
 
     for (const routeKey of ['military.campaigns', 'military.facilities', 'military.imagery', 'hormuz.overview', 'hormuz.shipping']) {
       await setRoute(cdp, routeKey);
