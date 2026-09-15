@@ -2,7 +2,8 @@
 
 const assert = require('node:assert/strict');
 
-function assertLossRecordDenominator(text) {
+function assertLossRecordDenominator(text, options = {}) {
+  const { requirePhysicalLossExclusion = true } = options;
   const normalized = String(text || '').replace(/\s+/g, ' ').trim();
   const clauses = normalized.split(/(?<=[.!?;])\s+/);
 
@@ -23,7 +24,9 @@ function assertLossRecordDenominator(text) {
   ));
 
   assert(recordDenominator, 'reader loss comparison does not identify material-loss records as the counted denominator');
-  assert(physicalLossExclusion, 'reader loss comparison does not explicitly exclude physical-loss quantity/count semantics');
+  if (requirePhysicalLossExclusion) {
+    assert(physicalLossExclusion, 'reader loss comparison does not explicitly exclude physical-loss quantity/count semantics');
+  }
 }
 
 function runLossRecordDenominatorFixtures() {
@@ -43,6 +46,11 @@ function runLossRecordDenominatorFixtures() {
   ]) {
     assert.throws(() => assertLossRecordDenominator(text), `invalid denominator wording was accepted: ${text}`);
   }
+
+  assert.doesNotThrow(
+    () => assertLossRecordDenominator('These summaries count material-loss records by side and type.', { requirePhysicalLossExclusion: false }),
+    'pre-finalization reader baseline lost its record-denominator compatibility contract'
+  );
 }
 
 module.exports = { assertLossRecordDenominator, runLossRecordDenominatorFixtures };
