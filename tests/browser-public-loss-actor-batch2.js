@@ -2,12 +2,15 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { assertLossRecordDenominator, runLossRecordDenominatorFixtures } = require('./public-copy-semantics.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
 const expectedMaterialLossRecords = model.counts.material_loss_records;
+
+runLossRecordDenominatorFixtures();
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -109,7 +112,7 @@ async function route(cdp, hash, key) {
     assert.doesNotMatch(losses.unknownText, /Quantity:\s*0(?:\D|$)/i, 'unresolved quantity was rendered as numeric zero');
     assert(losses.comparisonGroups >= 3, 'reader loss comparison collapsed actor/commercial grouping');
     assert.deepEqual(losses.comparisonContributors, losses.cardIds, 'reader loss comparison does not reconcile exactly to canonical material-loss records');
-    assert.match(losses.comparisonText, /count material-loss records|count canonical material-loss records/i, 'reader loss comparison does not state its record-count denominator');
+    assertLossRecordDenominator(losses.comparisonText);
     assert.match(losses.comparisonText, /Unknown does not mean zero|unknown quantities/i, 'reader loss comparison permits unknown-to-zero semantics');
     assert.match(losses.damagedText, /Damaged/);
     assert(!/\bDestroyed\b/.test(losses.damagedText), 'damaged record was relabeled destroyed');
