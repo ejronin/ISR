@@ -1,0 +1,204 @@
+{
+  "artifact_role": "ATLAS_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ATLAS_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-15T00:00:00-04:00",
+    "window_end": "2026-09-15T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-15T12:00:00-04:00",
+    "evidence_horizon_time": "2026-09-15T12:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260915T0001ET.json",
+    "boundary_rule": "Occurrence, publication, collection and evidence-horizon times remain distinct. Later reporting updates earlier events rather than creating duplicate occurrences."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_PACKET_PUBLIC_STATE_HASH_RELEASE_OR_MANIFEST_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-CHINA-IRAN-FINANCIAL-TALKS-20260915",
+      "event_type": "DIPLOMACY_SANCTIONS_ENFORCEMENT_CHINA",
+      "occurrence_time": "2026-09-15",
+      "public_available_time": "2026-09-15T10:59:00-04:00",
+      "actor": "United States / China / Iran",
+      "summary": "U.S. Treasury Secretary Scott Bessent told Congress that Washington has held private discussions with China on Iranian financial links and said President Trump would continue Iran-related discussions with Xi Jinping at a summit later in September.",
+      "confidence": "HIGH",
+      "sources": ["https://www.reuters.com/world/china/us-treasury-chief-says-rising-bond-yields-due-global-issues-2026-09-15/"]
+    },
+    {
+      "event_id": "LOCKER-IRAN-LINKED-CHOSEN-BRICK-ADVISORY-20260915",
+      "event_type": "CYBER_INTELLIGENCE_REPRESSION_ADVISORY",
+      "occurrence_time": "2026-09-15",
+      "public_available_time": "2026-09-15T10:33:00-04:00",
+      "actor": "United Kingdom / United States / Netherlands / alleged Iranian state-linked actors",
+      "summary": "The UK, U.S. and Netherlands issued a joint advisory alleging Iranian state-linked use of CHOSEN BRICK spyware against dissidents, activists and journalists. NCSC said the malware can steal messages and email, capture screens and access microphones; the FBI attributed its use to Iran's MOIS. Iran had not responded in the Reuters report.",
+      "confidence": "HIGH_FOR_ADVISORY_EXISTENCE; ATTRIBUTION_IS_GOVERNMENT_ASSESSMENT",
+      "sources": ["https://www.reuters.com/world/uk-us-netherlands-issue-advisory-iran-spyware-2026-09-15/"]
+    },
+    {
+      "event_id": "LOCKER-SAUDI-YANBU-LOADINGS-SUSPENDED-20260915",
+      "event_type": "ENERGY_EXPORT_TERMINAL_DISRUPTION",
+      "occurrence_time": "2026-09-15",
+      "public_available_time": "2026-09-15T08:36:00-04:00",
+      "actor": "Saudi Arabia / Yanbu / oil market",
+      "summary": "Shipping-industry sources told Reuters that oil loadings at Saudi Arabia's Red Sea terminal at Yanbu were suspended. Reuters also reported Riyadh had told European customers some late-September crude cargoes would be cancelled. This compounds the East-West Pipeline outage and removes near-term bypass capacity around Hormuz.",
+      "confidence": "HIGH_FOR_REUTERS_SOURCE_REPORTING; OFFICIAL_SAUDI_RESTART_TIMELINE_NOT_AVAILABLE",
+      "sources": ["https://www.reuters.com/business/energy/oil-prices-rise-saudi-pipeline-outage-fresh-attacks-raise-supply-concerns-2026-09-15/"]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-FOUR-TRANSITS-KPLER-20260915AM",
+      "updates_existing_ref": "UPD-HORMUZ-TRAFFIC-FOUR-MONDAY-20260914",
+      "relationship": "INDEPENDENT_DAILY_METRIC_RECONFIRMATION",
+      "summary": "Reuters/Kpler reconfirmed four Monday commodity-vessel transits versus ten Sunday: two dry-bulk exits and two ballast tanker entries. AIS-dark vessels remain an explicit omission risk. Pre-war large-commercial-vessel traffic was about 125/day.",
+      "status": "SEVERELY_DEPRESSED; FOUR_VISIBLE_COMMODITY_TRANSITS; AIS_DARK_CAVEAT",
+      "sources": ["https://www.reuters.com/world/middle-east/hormuz-traffic-dwindles-after-middle-east-attacks-intensify-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-BAB-EL-MANDEB-21-TRANSITS-20260915AM",
+      "updates_existing_ref": "UPD-BAB-EL-MANDEB-TRAFFIC-21-MONDAY-20260914",
+      "relationship": "INDEPENDENT_DAILY_METRIC_RECONFIRMATION",
+      "summary": "Kpler reported 21 Monday commodity-vessel transits through Bab el-Mandeb, down from 28 Sunday, while Houthi territorial gains and attacks continued.",
+      "status": "TRAFFIC_CONTINUES_AT_REDUCED_LEVEL",
+      "sources": ["https://www.reuters.com/world/middle-east/hormuz-traffic-dwindles-after-middle-east-attacks-intensify-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-HOUTHI-WEST-COAST-CONTROL-20260915AM",
+      "updates_existing_ref": "YEMEN_HOUTHI_WEST_COAST_ADVANCE_DRAWER",
+      "relationship": "TERRITORIAL_DISPOSITION_UPDATE",
+      "summary": "Officials from the Saudi-backed Yemeni government told Reuters the Houthis had effective control over almost the entire western Yemeni coast along the Red Sea after their rapid advance and island seizure near Bab el-Mandeb.",
+      "status": "EFFECTIVE_CONTROL_ALMOST_ENTIRE_WESTERN_COAST_REPORTED_BY_OPPOSING_YEMENI_OFFICIALS",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-SAUDI-WIDE-ALERTS-MECCA-JEDDAH-20260915AM",
+      "updates_existing_ref": "UPD-SAUDI-ALERTS-YANBU-SIX-CITIES-20260914PM",
+      "relationship": "THREAT_GEOGRAPHY_EXPANSION",
+      "summary": "Saudi Arabia issued and rapidly lifted wide-ranging security alerts including Mecca and Jeddah. Reuters described them as the broadest alerts since the latest escalation and the first wartime alarm in Mecca. No successful impact was immediately reported for the new alerts.",
+      "status": "THREAT_ALERT_GEOGRAPHY_EXPANDED; IMPACTS_NOT_ESTABLISHED",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-SAUDI-EASTWEST-ENERGY-CONSEQUENCE-20260915AM",
+      "updates_existing_ref": "UPD-SAUDI-EASTWEST-PARTIAL-REPAIR-POSSIBILITY-20260914PM",
+      "relationship": "DOWNSTREAM_EXPORT_AND_MARKET_CONSEQUENCE",
+      "summary": "Reuters reported the East-West Pipeline remained shut, Yanbu loadings were suspended and some late-September Saudi cargoes were being cancelled. Buyers/traders said Saudi exportable crude could be exhausted within days absent pipeline resumption. Goldman Sachs cited repair estimates ranging from very soon to eight weeks; retain earlier AP 3-5 week estimate as a separate sourced estimate rather than overwrite it.",
+      "status": "PIPELINE_SHUT; YANBU_LOADINGS_SUSPENDED; REPAIR_RANGE_REMAINS_UNRESOLVED",
+      "sources": ["https://www.reuters.com/business/energy/oil-prices-rise-saudi-pipeline-outage-fresh-attacks-raise-supply-concerns-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-GULF-IRAN-TALKS-POSTPONED-MARKET-20260915AM",
+      "updates_existing_ref": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914PM",
+      "relationship": "DIPLOMATIC_STATUS_UPDATE",
+      "summary": "Gulf-Iran Hormuz talks remained postponed with no revised timeline established in reviewed reporting. Market reporting linked the delay to diminished expectations for near-term Hormuz reopening/de-escalation. Attribution that Saudi Arabia requested the delay remains an Iranian claim pending independent Saudi/Omani primary confirmation.",
+      "status": "POSTPONED_NO_NEW_DATE; REQUESTOR_ATTRIBUTION_UNRESOLVED",
+      "sources": ["https://www.reuters.com/world/middle-east/most-gulf-stocks-red-houthi-attack-hormuz-shipping-slump-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-US-WATCHDOG-BDA-DETAIL-20260915AM",
+      "updates_existing_ref": "LOCKER-US-WATCHDOG-IRAN-WAR-COSTS-20260914",
+      "relationship": "SECONDARY_REGIONAL_DETAIL_FROM_OFFICIAL_REPORT",
+      "summary": "Al Jazeera's review of the Pentagon watchdog report said the covered accounting included at least 11 U.S. KIA, 417 wounded through June 30, at least four F-15E destroyed, at least one F-35A damaged, and at least seven KC-135 damaged/destroyed; it also cited $22B in expended munitions and $33B total war cost for Feb. 28-Jun. 30. Treat as retrospective BDA publication, not Sep. 15 occurrence.",
+      "status": "RETROSPECTIVE_OFFICIAL_BDA_DETAIL_EXPANDED",
+      "sources": ["https://www.aljazeera.com/features/2026/9/15/dozens-of-aircraft-hundreds-of-buildings-us-loss-to-iran-attacks-revealed"]
+    },
+    {
+      "update_id": "UPD-HORMUZ-LNG-SUPPLY-IMPACT-20260915AM",
+      "updates_existing_ref": "HORMUZ_ENERGY_SUPPLY_DRAWER",
+      "relationship": "COMMERCIAL_ENERGY_IMPACT_UPDATE",
+      "summary": "At Gastech, Shell estimated about 36 million tonnes of Middle East LNG had been lost so far this year as the conflict prevented Qatar and UAE from exporting most LNG through Hormuz. Asian spot LNG prices were near $30/MMBtu versus about $10 pre-war, with China, India and Pakistan substituting fuels and alternative cargoes.",
+      "status": "MAJOR_LNG_SUPPLY_AND_DEMAND_DISLOCATION",
+      "sources": ["https://www.reuters.com/business/energy/lng-demand-china-india-expected-recover-when-mideast-war-ends-2026-09-15/"]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-IRGC-EL-GAIA-MINE-20260914-UPDATE",
+      "claimant": "IRGC via Fars",
+      "claim_time": "2026-09-14",
+      "claim": "El Gaia struck Iranian sea mines in an unauthorized route.",
+      "adjudication": "REMAINS_CONTESTED. Gulf News reported CENTCOM called the mine account false and asserted an earlier Iranian missile strike plus a weekend Iranian drone strike. Gulf News also noted AIS/port-call history inconsistent with an August strike having rendered the vessel inoperable and said the Sep. 13 off-Oman fire was verified as a projectile attack by UKMTO and India's MEA. Preserve all propositions separately pending primary forensic/BDA evidence.",
+      "sources": ["https://gulfnews.com/world/mena/us-disputes-iran-mine-claim-says-el-gaia-crude-oil-tanker-was-hit-by-iranian-missile-and-drone-instead-1.500674671"]
+    },
+    {
+      "claim_id": "CLM-HOUTHI-KHAMIS-MUSHAIT-BDA-20260915-STATUS",
+      "claimant": "Houthis / Yemeni officials",
+      "claim_time": "2026-09-14",
+      "claim": "Missile/drone attack damaged hangars, radar, runways and ammunition depots at Khamis Mushait airbase.",
+      "adjudication": "ATTACK_CONFIRMED; 13_SAUDI_CIVILIANS_WOUNDED_IN_ASSOCIATED_ATTACKS; SPECIFIC_BASE_BDA_REMAINS_SOURCE_CONFLICTED. Reuters morning regional-market copy repeated Yemeni-official damage language, but no reviewed Saudi primary or independent imagery establishes the claimed component-level BDA.",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/","https://www.reuters.com/world/middle-east/most-gulf-stocks-red-houthi-attack-hormuz-shipping-slump-2026-09-15/"]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-OIL-20260915AM",
+      "metric": "Brent/WTI and Saudi bypass-route stress",
+      "public_available_time": "2026-09-15T08:36:00-04:00",
+      "observed_state": "Reuters reported Brent at $108.49 and WTI $104.68 around 11:06 ET, both up roughly $3, with Saudi East-West/Yanbu disruption a central supply-risk driver. Goldman Sachs said sustained disruption raised the probability of Brent above $120; Capital Economics said several weeks of pipeline closure absent compensating Hormuz flow/demand adjustment could push Brent toward $130.",
+      "sources": ["https://www.reuters.com/business/energy/oil-prices-rise-saudi-pipeline-outage-fresh-attacks-raise-supply-concerns-2026-09-15/"]
+    },
+    {
+      "economic_id": "ECON-GCC-EQUITIES-20260915AM",
+      "metric": "Gulf equity reaction",
+      "public_available_time": "2026-09-15T04:23:00-04:00",
+      "observed_state": "Saudi TASI fell 0.9%, Dubai 0.8% and Qatar 0.5% while Abu Dhabi rose 0.2%; Reuters linked risk sentiment to Houthi attacks, depressed Hormuz shipping and postponed Gulf-Iran talks.",
+      "sources": ["https://www.reuters.com/world/middle-east/most-gulf-stocks-red-houthi-attack-hormuz-shipping-slump-2026-09-15/"]
+    }
+  ],
+  "source_discovery_additions": [
+    {"source_class": "COMMERCIAL_ENERGY_EXECUTIVE_DATA", "addition": "Gastech executive statements provide Shell LNG loss estimate and buyer substitution/demand response; retain as attributed commercial estimates."},
+    {"source_class": "MULTINATIONAL_CYBER_ADVISORY", "addition": "UK NCSC/FBI/Netherlands AIVD joint Iran-linked spyware advisory adds cyber/repression collection class; attribution remains an official assessment."},
+    {"source_class": "COMMERCIAL_MARITIME_DATA", "addition": "Kpler daily Hormuz/Bab el-Mandeb counts remain useful but incomplete where AIS is disabled."}
+  ],
+  "prior_drawer_reconciliation": [
+    "Do not duplicate Monday Hormuz/Bab el-Mandeb counts; attach Sep. 15 Reuters publication as corroborating evidence to existing Sep. 14 occurrence metrics.",
+    "Append Yanbu loading suspension and customer cargo cancellations to the existing East-West Pipeline damage/repair drawer; do not replace the earlier 3-5 week repair estimate with Goldman's broader very-soon-to-eight-week range.",
+    "Append Pentagon-watchdog aircraft/personnel/cost details to the Sep. 14 retrospective BDA drawer; preserve original Apr-Jun occurrence dates and Sep. 14-15 publication horizons.",
+    "Keep El Gaia mine, missile and drone narratives as separate contested propositions. The projectile evidence weakens a simple mine-only account but does not by itself establish CENTCOM's full two-attack chronology.",
+    "Expand Saudi threat geography to Mecca/Jeddah but do not infer impacts from alerts.",
+    "Update Yemen disposition with opposing-government acknowledgment of near-total Houthi west-coast control; this materially increases Bab el-Mandeb risk without proving Houthi control of the international strait itself.",
+    "Keep Saudi-requested Oman postponement attribution unresolved absent Saudi/Omani primary confirmation.",
+    "Add U.S.-China private Iran-financial discussions as a new sanctions/diplomacy discriminator for China's willingness to cushion Tehran."
+  ],
+  "coverage_accounting": {
+    "military_kinetics": "COVERED",
+    "maritime_hormuz": "COVERED_WITH_KPLER_AIS_CAVEAT",
+    "maritime_bab_el_mandeb": "COVERED_WITH_KPLER_AIS_CAVEAT",
+    "infrastructure_energy": "COVERED",
+    "diplomacy_iran_gcc_oman": "COVERED_NO_BREAKTHROUGH",
+    "diplomacy_china": "COVERED_NEW_US_CHINA_FINANCIAL_CHANNEL",
+    "economy_sanctions_energy": "COVERED",
+    "claims_corrections": "COVERED",
+    "human_impact": "NO_NEW_HIGH_CONFIDENCE_THEATER_WIDE_AGGREGATE_BEYOND_PRIOR_DRAWER_IN_WINDOW",
+    "cyber_information": "COVERED_NEW_MULTINATIONAL_ADVISORY",
+    "commercial_osint": "PARTIAL_KPLER_AND_ENERGY_EXECUTIVES; DIRECT_PAID_TERMINAL_ACCESS_UNAVAILABLE",
+    "iran_primary_media": "SEARCHED; NO_HIGHER_CONFIDENCE_WINDOW_EVENT_SELECTED_OVER_WIRE_OR_PRIMARY_ADVISORY",
+    "lebanon_hezbollah": "SEARCHED; NO_MATERIAL_NEW_HIGH_CONFIDENCE_EVENT_IDENTIFIED_IN_WINDOW",
+    "israel_iran_direct": "SEARCHED; NO_DISTINCT_NEW_HIGH_CONFIDENCE_KINETIC_EVENT_IDENTIFIED_IN_WINDOW"
+  },
+  "unresolved_questions": [
+    "What is the forensic cause and exact strike chronology for El Gaia, including hull damage geometry and whether a mine was involved at any stage?",
+    "What specific amendments or objections caused the Gulf-Iran Oman meeting postponement, and will Saudi Arabia or Oman identify the requesting party?",
+    "When will the East-West Pipeline and Yanbu resume measurable exports, and at what partial/full throughput?",
+    "Can independent imagery or Saudi primary reporting establish or refute claimed Houthi BDA at King Khalid Air Base?",
+    "Does Houthi near-total west-coast control translate into persistent shore-based interdiction capability over Bab el-Mandeb traffic lanes?",
+    "Will China's private discussions with Treasury produce observable reduction in Iranian financial/oil-evasion support?",
+    "What volume of Hormuz traffic is AIS-dark and therefore absent from Kpler visible-transit counts?"
+  ],
+  "limitations": [
+    "Direct paid commercial maritime terminals, insurer/P&I feeds and proprietary satellite tasking were unavailable; commercial observations are limited to data quoted by accessible reporting.",
+    "The GitHub lane available for write is fix/lie-ledger-semantic-contract-20260909. The prior midnight evidence artifact exists on main but was not present on that lane, so it was reviewed read-only from main and referenced without mutation.",
+    "No canonical packet, canonical ledger manifest, generated public state, accepted hash, signed release artifact or release manifest was modified.",
+    "Search results can publish after the evidence horizon; items first published after 12:00 ET are excluded from this artifact even if discovered during collection."
+  ],
+  "completion_report": {
+    "status": "COMPLETE_WITH_STATED_SOURCE_LIMITATIONS",
+    "repository": "ejronin/ISR",
+    "lane": "fix/lie-ledger-semantic-contract-20260909",
+    "artifact": "data/evidence-integration/atlas-evidence-locker-sweep-20260915T1200ET.json",
+    "new_events": 3,
+    "existing_event_updates": 7,
+    "claims_corrections": 2,
+    "economic_energy_updates": 2,
+    "canonical_mutations": 0,
+    "public_state_mutations": 0
+  }
+}
