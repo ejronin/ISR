@@ -198,7 +198,12 @@
   function imagery(article) {
     intro(article,'Start with what the imagery shows: the site, comparison date and visible physical change. Geolocation precision and interpretation limits come after the observation.');
     const m=[...article.querySelectorAll(':scope > section')].find(x=>/precision|tier|geolocat/i.test(x.querySelector('h2')?.textContent||''));if(m)collapse(m,'How imagery precision is graded');
-    const a=findSection(article,/claims about these facilities hold up|facility assessments/i);if(a){const r=node(article.ownerDocument,'section','content-section canonical-owner-link');add(r,'h2','','Current facility status');add(r,'p','','Imagery supports physical observations. Current operating status is maintained in Bases & Infrastructure so the same site is not independently adjudicated twice.');routeLink(r,'military.facilities','Open Bases & Infrastructure');a.replaceWith(r);}
+    const a=findSection(article,/claims about these facilities hold up|facility assessments/i);
+    if(a){
+      const h=a.querySelector(':scope > h2'); if(h) h.textContent='Facility claim evidence';
+      add(a,'p','scope-note','These audits test specific claims against imagery and reporting; they do not independently adjudicate each facility’s current operating status.');
+      routeLink(a,'military.facilities','Open Bases & Infrastructure for authoritative current facility status');
+    }
   }
 
   function shipping(article, context) {
