@@ -4,6 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const ia = require('../js/public-ia.js');
+const { assertLossRecordDenominator } = require('./public-copy-semantics.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
@@ -315,7 +316,7 @@ async function route(cdp, hash, key) {
     })()`);
     assert.deepEqual(lossAudit.contributors, lossAudit.ids, 'loss comparison aggregation cannot be audited back to the exact canonical loss IDs');
     assert(lossAudit.groupCount >= 3, 'loss comparison collapsed actor/commercial group structure');
-    assert.match(lossAudit.comparisonText, /count material-loss records|count canonical material-loss records/i);
+    assertLossRecordDenominator(lossAudit.comparisonText);
     assert.match(lossAudit.comparisonText, /Unknown does not mean zero|unknown quantities/i);
 
     await route(cdp, '#/hormuz/shipping', 'hormuz.shipping');
