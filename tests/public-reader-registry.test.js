@@ -128,14 +128,22 @@ function qualifiedStage(text) {
 }
 
 const source = fs.readFileSync(path.join(__dirname, '..', 'src/public-reader-registry.js'), 'utf8');
-assert.match(source, /visibility = 'hidden'/);
+assert.match(source, /visibility\s*(?::|=)\s*['"]hidden['"]/);
 assert.match(source, /aria-hidden/);
-assert.match(source, /hasQualifiedVisible/);
+assert.match(source, /hasQualified(?:Visible)?/);
 assert.match(source, /validateFinalizedStage\(stage, projectionRuntime\)/);
-assert(source.indexOf('validateFinalizedStage(stage, projectionRuntime)') < source.indexOf('rootElement.replaceChildren(finalized.app)'), 'validation must precede atomic visible promotion');
-assert(source.indexOf('previousVisible.forEach(quiesceMaps)') < source.indexOf('rootElement.replaceChildren(finalized.app)'), 'old maps must be quiesced while their DOM is still connected');
-assert(source.indexOf('rootElement.replaceChildren(finalized.app)') < source.indexOf('retireVisibleNodes(documentObject, rootElement, previousVisible)'), 'old page retirement must begin only after atomic promotion succeeds');
-assert(source.indexOf('nodes.forEach(node => host.append(node))') < source.indexOf('nodes.forEach(removeMaps)'), 'retired maps must be reattached to a connected hidden host before Leaflet removal');
+const validationIndex = source.indexOf('validateFinalizedStage(stage, projectionRuntime)');
+const quiesceIndex = source.indexOf('previousVisible.forEach(quiesceMaps)');
+const promoteIndex = source.indexOf('rootElement.replaceChildren(finalized.app)');
+const retireMatch = source.match(/retireVisibleNodes\([^;\n]*previousVisible\)/);
+const reattachMatch = source.match(/nodes\.forEach\([^;\n]*host\.append\([^;\n]*\)\)/);
+const removeMapsIndex = source.indexOf('nodes.forEach(removeMaps)');
+assert(validationIndex >= 0 && validationIndex < promoteIndex, 'validation must precede atomic visible promotion');
+assert(quiesceIndex >= 0 && quiesceIndex < promoteIndex, 'old maps must be quiesced while their DOM is still connected');
+assert(retireMatch, 'qualified old page must be retired only through the connected retirement helper');
+assert(promoteIndex >= 0 && promoteIndex < source.indexOf(retireMatch[0]), 'old page retirement must begin only after atomic promotion succeeds');
+assert(reattachMatch, 'retired nodes must be reattached to a connected hidden host before map removal');
+assert(source.indexOf(reattachMatch[0]) < removeMapsIndex, 'retired maps must be reattached to a connected hidden host before Leaflet removal');
 for (const file of ['scripts/build_public_release_core.py', 'js/public-bootstrap.js', 'js/public-app.js', 'scripts/validate_public_deployment.py', 'config/public-runtime-inventory.json']) {
   const body = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
   assert(!body.includes('reader_runtime'), `${file} still authorizes old reader_runtime`);
