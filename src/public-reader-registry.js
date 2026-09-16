@@ -52,6 +52,7 @@
   function collapse(el, label) {
     if (!el || el.tagName === 'DETAILS') return el;
     const d = node(el.ownerDocument, 'details', 'secondary-context reader-method-detail'); add(d, 'summary', '', label);
+    Object.entries(el.dataset || {}).forEach(([key, value]) => { d.dataset[key] = value; });
     [...el.children].forEach(child => { if (!/^H[1-6]$/.test(child.tagName)) d.append(child); }); el.replaceWith(d); return d;
   }
   function accessContext(routeRuntime, route, doc) { const a = routeRuntime.forRoute(route); return { documentObject: doc, model: a.model, services: a.services, route }; }
