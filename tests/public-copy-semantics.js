@@ -54,4 +54,64 @@ function runLossRecordDenominatorFixtures() {
   );
 }
 
-module.exports = { assertLossRecordDenominator, runLossRecordDenominatorFixtures };
+function assertCampaignEventCountSemanticBoundary(text) {
+  const normalized = String(text || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  const denominator = '(?:combat intensity|(?:equipment|weapon|physical asset|platform)\\s+(?:quantit(?:y|ies)|counts?))';
+
+  const hasRecordedEventCount = [
+    /\bcount(?:s)?\s+of\s+(?:recorded\s+)?(?:military\s+)?(?:events?|records?)\b/,
+    /\b(?:recorded\s+)?(?:military\s+)?(?:event|record)\s+counts?\b/
+  ].some(pattern => pattern.test(normalized));
+  assert(hasRecordedEventCount, 'Campaigns explanation must identify the figure as a count of recorded events or records');
+
+  const distinctionPatterns = [
+    new RegExp(`\\bcount(?:s)?\\s+of\\s+(?:recorded\\s+)?(?:military\\s+)?(?:events?|records?)\\b[^.!?]{0,120}\\bnot\\b[^.!?]{0,80}\\b${denominator}\\b`),
+    new RegExp(`\\b(?:recorded\\s+)?(?:military\\s+)?(?:event|record)\\s+counts?\\b[^.!?]{0,100}\\b(?:are|is)\\s+not\\b[^.!?]{0,80}\\b${denominator}\\b`),
+    new RegExp(`\\b(?:recorded\\s+)?(?:military\\s+)?(?:event|record)\\s+counts?\\b\\s*[,;:—-]?\\s*not\\b[^.!?]{0,80}\\b${denominator}\\b`),
+    new RegExp(`\\b(?:equipment|weapon|physical asset|platform)\\s+(?:quantit(?:y|ies)|counts?)\\b[^.!?]{0,100}\\b(?:are|is)\\s+not\\s+(?:substituted\\s+for|the\\s+same\\s+as|equivalent\\s+to)\\b[^.!?]{0,80}\\b(?:event|record)\\s+counts?\\b`),
+    new RegExp(`\\b(?:recorded\\s+)?(?:military\\s+)?(?:event|record)\\s+counts?\\b[^.!?]{0,100}\\b(?:do|does)\\s+not\\s+(?:represent|measure|equal|mean|count)\\b[^.!?]{0,80}\\b${denominator}\\b`)
+  ];
+  assert(
+    distinctionPatterns.some(pattern => pattern.test(normalized)),
+    'Campaigns explanation must distinguish recorded-event counts from equipment/weapon/platform quantity, physical asset count, or combat intensity'
+  );
+
+  const forwardEquivalence = new RegExp(
+    `\\b(?:recorded\\s+)?(?:military\\s+)?(?:event|record)\\s+counts?\\b\\s*(?:=|(?:is|are|equals?|represents?|measures?|means?|corresponds?\\s+to|substitutes?\\s+for)\\s+)${denominator}\\b`
+  );
+  const reverseEquivalence = new RegExp(
+    `\\b${denominator}\\b\\s*(?:=|(?:is|are|equals?|represents?|measures?|means?|corresponds?\\s+to|substitutes?\\s+for)\\s+)\\b(?:recorded\\s+)?(?:military\\s+)?(?:event|record)\\s+counts?\\b`
+  );
+  assert(
+    !forwardEquivalence.test(normalized) && !reverseEquivalence.test(normalized),
+    'Campaigns explanation must not equate event/record counts with equipment, weapon, platform, physical-asset quantities, or combat intensity'
+  );
+}
+
+function runCampaignEventCountSemanticBoundaryFixtures() {
+  for (const text of [
+    'This is a count of recorded military events, not combat intensity or weapon quantity.',
+    'Recorded event count, not equipment quantity.',
+    'Recorded military event count does not represent platform quantity.'
+  ]) {
+    assert.doesNotThrow(() => assertCampaignEventCountSemanticBoundary(text), `equivalent Campaigns count boundary was rejected: ${text}`);
+  }
+
+  for (const text of [
+    'Recorded event count = equipment quantity.',
+    'Recorded event count represents weapon quantity.',
+    'Recorded event count equals physical asset count.',
+    'Recorded event count is platform count.',
+    'Recorded event count measures combat intensity.',
+    'This is a count of recorded military events.'
+  ]) {
+    assert.throws(() => assertCampaignEventCountSemanticBoundary(text), undefined, `unsafe Campaigns count formulation passed: ${text}`);
+  }
+}
+
+module.exports = {
+  assertLossRecordDenominator,
+  runLossRecordDenominatorFixtures,
+  assertCampaignEventCountSemanticBoundary,
+  runCampaignEventCountSemanticBoundaryFixtures
+};

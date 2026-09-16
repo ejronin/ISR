@@ -6,6 +6,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const reader = require('../src/public-reader-layer.js');
+const { assertCampaignEventCountSemanticBoundary } = require('./public-copy-semantics.js');
 
 assert.equal(reader.READER_LAYER_VERSION, 'atlas-reader-v1.1');
 
@@ -106,7 +107,8 @@ const releaseBuilder = fs.readFileSync(path.join(root, 'scripts/build_public_rel
 const releaseCore = fs.readFileSync(path.join(root, 'scripts/build_public_release_core.py'), 'utf8');
 const appSource = fs.readFileSync(path.join(root, 'js/public-app.js'), 'utf8');
 assert.match(readerSource, /What made up these monthly totals/);
-assert.match(readerSource, /Equipment quantities are not substituted for event counts/);
+const campaignCountCopy = readerSource.match(/append\(details, 'p', 'section-note', '([^']*count of recorded military events[^']*)'\)/)?.[1] || '';
+assertCampaignEventCountSemanticBoundary(campaignCountCopy);
 assert.match(readerSource, /Facility status by actor/);
 assert.match(readerSource, /Repeated by \(\$\{repeats\.length\}\)/);
 assert.match(readerSource, /How we know it is/);
