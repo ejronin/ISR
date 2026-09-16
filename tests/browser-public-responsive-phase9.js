@@ -3,11 +3,14 @@
 const assert = require('node:assert/strict');
 const { spawnSync } = require('node:child_process');
 const ia = require('../js/public-ia.js');
+const { assertFinalReaderHeading, runFinalReaderTitleFixtures } = require('./public-reader-title-authority.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const VIEWPORTS = [390, 320];
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+
+runFinalReaderTitleFixtures();
 
 class CDP {
   constructor(url) {
@@ -69,7 +72,7 @@ function assertRouteView(view, route, width) {
   const label = `${route.key} at ${width}px`;
   assert.equal(view.routeKey, route.key, `route did not render: ${label}`);
   assert.equal(view.owner, route.owner, `wrong page owner: ${label}`);
-  assert.deepEqual(view.h1, [route.title], `route must expose exactly one primary H1: ${label}`);
+  assertFinalReaderHeading(route, view.h1, view.publicProductVersion, `route must expose exactly one authoritative primary H1: ${label}`);
   assert.equal(view.mobileNavigationVisible, true, `primary mobile navigation is unreachable: ${label}`);
   assert(view.primaryLinks > 0, `primary mobile navigation contains no links: ${label}`);
   assert.equal(view.primaryLinkFocusable, true, `primary mobile navigation link is not focusable: ${label}`);
@@ -131,6 +134,7 @@ function assertRouteView(view, route, width) {
             routeKey: window.ATLAS_PUBLIC_STATE.routeKey,
             owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
             h1: [...document.querySelectorAll('main h1')].map(node => node.textContent.trim()),
+            publicProductVersion: document.querySelector('.public-page')?.dataset.publicProduct || '',
             mobileNavigationVisible: getComputedStyle(navigation).display !== 'none',
             primaryLinks: navigation.querySelectorAll('.mobile-primary a').length,
             primaryLinkFocusable,
