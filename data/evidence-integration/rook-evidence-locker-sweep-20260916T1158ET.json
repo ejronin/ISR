@@ -1,0 +1,237 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_12H_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-15T23:58:33-04:00",
+    "window_end": "2026-09-16T11:58:33-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-16T11:58:33-04:00",
+    "evidence_horizon_time": "2026-09-16T11:58:33-04:00",
+    "prior_drawers_reviewed": [
+      "data/evidence-integration/rook-evidence-locker-catchup-20260916T1052ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260916T1052ET.json"
+    ],
+    "boundary_rule": "Twelve-hour scheduled collection window. Occurrence, publication/public-availability, collection and evidence-horizon times are distinct. Items occurring before the window are included only when materially new evidence became public inside the window. Later evidence updates existing events instead of duplicating occurrences."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRGC-MQ9-QESHM-CLAIM-20260916",
+      "event_type": "AIR_DEFENSE_LOSS_CLAIM",
+      "occurrence_time": "2026-09-16T02:29:00+03:30",
+      "public_available_time": "2026-09-16",
+      "actor": "IRGC / United States",
+      "summary": "The IRGC said its air defenses shot down a U.S. MQ-9 over Qeshm Island at 02:29 local time using a new advanced air-defense system. Iranian reporting characterized it as the 52nd U.S. MQ-9 destroyed during the conflict. No immediate U.S. confirmation was identified in reviewed reporting. Preserve both the individual shootdown and cumulative 52-aircraft number as Iranian claims pending independent confirmation.",
+      "confidence": "HIGH_THAT_IRGC_MADE_CLAIM; UNVERIFIED_AIRCRAFT_LOSS",
+      "sources": [
+        "https://www.tasnimnews.ir/en/news/2026/09/16/3698072/irgc-downs-52nd-us-mq-9-drone-south-of-iran",
+        "https://www.aa.com.tr/en/middle-east/iran-says-it-shot-down-us-mq-9-drone-over-qeshm-island-/4058655"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-TUESDAY-FOUR-TRANSITS-20260916",
+      "updates_existing_ref": "MAR-HORMUZ-LOW-TRAFFIC-CONTINUITY-20260915",
+      "relationship": "LATER_DAILY_TRAFFIC_OBSERVATION",
+      "summary": "Reuters reporting on September 16 said four vessels transited the Strait of Hormuz on Tuesday, down from seven Monday. This extends the previously recorded single-digit/low-visible-traffic condition. Visible/AIS-derived counts remain lower-bound observations because dark or incomplete tracking can undercount actual movements.",
+      "status": "FOUR_TUESDAY_TRANSITS_REPORTED; LOW_TRAFFIC_CONTINUES",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/gulf-equities-muted-regional-conflict-fed-decision-keep-investors-cautious-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-CHINA-IRAN-WANG-ARAGHCHI-SEQUENCING-20260916",
+      "updates_existing_ref": "UPD-CHINA-IRAN-WANG-ARAGHCHI-PUBLIC-PRESSURE-20260916",
+      "relationship": "POSITION_DETAIL_WITH_INTERPRETIVE_GUARDRAIL",
+      "summary": "Reuters reported Wang Yi urged Iran and the United States to return to the June/Islamabad memorandum, rebuild the negotiation mechanism on consensus already reached, conduct substantive consultations, and take effective measures to reopen Hormuz early. Code this as Chinese support for restoring the diplomatic framework and navigation, not as evidence China endorses literal reimplementation of every prior MoU concession or sequencing demanded by Tehran. Araghchi expressed openness to diplomacy while emphasizing Iranian rights and sovereignty.",
+      "status": "CHINA_PUBLICLY_PUSHES_NEGOTIATION_FRAMEWORK_AND_EARLY_HORMUZ_REOPENING; EXACT_MOU_IMPLEMENTATION_SEQUENCE_UNRESOLVED",
+      "sources": [
+        "https://www.reuters.com/world/china/chinas-top-diplomat-urges-iran-us-show-restraint-revive-talks-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-US-HOUTHI-MUSCAT-PARTICIPANTS-AND-SCOPE-20260916",
+      "updates_existing_ref": "LOCKER-US-HOUTHI-OMAN-DIRECT-MEETING-20260913",
+      "relationship": "LATER_DETAIL_ON_PARTICIPANTS_AND_REPORTED_ASSURANCES",
+      "summary": "Reuters, citing five sources, reported a weekend Muscat meeting involving U.S. officials and Houthi representatives, facilitated by Oman. Reporting identified senior Houthi figures including Mohammad Abdulsalam and Abdelmalik al-Ajiri. Sources said Houthis intended to uphold the 2025 U.S. ceasefire and avoid attacks on American vessels; reporting also described differentiated treatment of Saudi shipping. The State Department did not formally confirm the meeting. Preserve as multi-source wire reporting rather than official U.S. confirmation.",
+      "status": "DIRECT_CHANNEL_STRONGLY_REPORTED; FORMAL_US_CONFIRMATION_ABSENT; MARITIME_SCOPE_REMAINS_SOURCE_REPORTED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-officials-met-iran-backed-houthis-oman-over-weekend-sources-say-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-HOUTHI-REDSEA-CONSOLIDATION-CAPTURED-MATERIEL-20260916-1158",
+      "updates_existing_ref": "UPD-HOUTHI-REDSEA-COAST-AND-BAB-EL-MANDEB-GAINS-20260916",
+      "relationship": "LATER_STRATEGIC_DISPOSITION_DETAIL",
+      "summary": "Reuters reported that Houthi gains consolidated strategic Red Sea coastline and islands around Bab el-Mandeb after Saudi-backed Yemeni units collapsed in sectors, with U.S.- and Saudi-supplied materiel reported abandoned or captured. Two Western officials were reported as saying the U.S. and European states were not prepared to provide direct military backing for a counteroffensive. Preserve territorial/materiel reporting separately from analytical labels about Saudi exposure or Iranian benefit.",
+      "status": "HOUTHI_REDSEA_POSITION_STRENGTHENED; CAPTURED_MATERIEL_REPORTED; DIRECT_WESTERN_COUNTEROFFENSIVE_BACKING_NOT_OBSERVED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/houthi-blitz-leaves-saudi-arabia-exposed-iran-emboldened-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-MECCA-DRONE-REGIONAL-REACTION-20260916",
+      "updates_existing_ref": "UPD-MECCA-UAV-INTERCEPTION-CONTESTED-INTENT-20260916",
+      "relationship": "LATER_DIPLOMATIC_REACTION_WITH_ATTRIBUTION_GUARDRAIL",
+      "summary": "Saudi Arabia maintained that the intercepted drone south of Mecca represented an attempted Houthi attack on the holy city and called protection of the holy sites a red line. Houthis denied targeting Mecca or religious sites. Pakistan and the Organization of Islamic Cooperation publicly condemned the alleged attack, but reviewed reporting did not establish Turkish or Pakistani military support to Saudi Arabia under the new defense pact. Intended aimpoint remains disputed despite regional diplomatic condemnation.",
+      "status": "SAUDI_ATTRIBUTION_AND_REGIONAL_CONDEMNATION_RECORDED; HOUTHI_DENIAL_PRESERVED; AIMPOINT_UNRESOLVED",
+      "sources": [
+        "https://apnews.com/article/895320bde6dc589cebb628b63832c38a",
+        "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroys-houthi-drone-south-mecca-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-SAUDI-EASTWEST-MARKET-AND-RESTART-DIVERGENCE-20260916-1158",
+      "updates_existing_ref": "UPD-SAUDI-EASTWEST-RESTART-TIMELINE-DIVERGENCE-20260916",
+      "relationship": "LATER_MARKET_REACTION_AND_REPAIR_UNCERTAINTY",
+      "summary": "Reuters continued to report U.S. Energy Secretary Chris Wright's expectation that the East-West Pipeline could be flowing within days, while source estimates remained substantially longer for repairs and allowed for partial operation before full repair. Saudi restart time remained unconfirmed in reviewed material. Gulf equity reporting cited supply-reassurance reports involving crude shipment alternatives via Oman. Keep physical repair, partial flow, full throughput, Yanbu loading and alternative-route mitigation as separate states.",
+      "status": "NO_CONFIRMED_FULL_RESTART; DAYS_VS_WEEKS_ESTIMATES_REMAIN_DIVERGENT; ALTERNATIVE_ROUTE_MITIGATION_REPORTED",
+      "sources": [
+        "https://www.reuters.com/business/energy/us-energy-chief-says-saudi-arabia-oil-pipeline-should-be-back-within-days-2026-09-15/",
+        "https://www.reuters.com/world/middle-east/gulf-equities-muted-regional-conflict-fed-decision-keep-investors-cautious-2026-09-16/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-IRGC-MQ9-QESHM-20260916",
+      "claimant": "IRGC",
+      "claim_time": "2026-09-16",
+      "claim": "Iranian air defenses shot down a U.S. MQ-9 over Qeshm Island at 02:29 local time.",
+      "adjudication": "NEW_ACTOR_CLAIM; NO_US_CONFIRMATION_OR_INDEPENDENT_WRECKAGE_VERIFICATION_IDENTIFIED_BY_HORIZON; DO_NOT PROMOTE TO CONFIRMED LOSS",
+      "sources": [
+        "https://www.tasnimnews.ir/en/news/2026/09/16/3698072/irgc-downs-52nd-us-mq-9-drone-south-of-iran",
+        "https://www.aa.com.tr/en/middle-east/iran-says-it-shot-down-us-mq-9-drone-over-qeshm-island-/4058655"
+      ]
+    },
+    {
+      "claim_id": "CLM-IRGC-52-MQ9-CUMULATIVE-20260916",
+      "claimant": "IRGC",
+      "claim_time": "2026-09-16",
+      "claim": "The claimed Qeshm loss was the 52nd U.S. MQ-9 destroyed during the conflict.",
+      "adjudication": "UNVERIFIED_CUMULATIVE_IRGC_CLAIM; REQUIRES LOSS-BY-LOSS RECONCILIATION AGAINST U.S. ACKNOWLEDGMENTS, WRECKAGE, SERIAL/TAIL IDENTIFICATION AND INDEPENDENT OSINT",
+      "sources": [
+        "https://www.tasnimnews.ir/en/news/2026/09/16/3698072/irgc-downs-52nd-us-mq-9-drone-south-of-iran"
+      ]
+    },
+    {
+      "claim_id": "CLM-HOUTHI-F15-SHOOTDOWN-20260916-1158",
+      "claimant": "Houthi military spokesman Yahya Saree",
+      "claim_time": "2026-09-16",
+      "claim": "Houthis shot down a Saudi F-15 with a locally made air-to-air missile.",
+      "adjudication": "REMAINS_UNVERIFIED; AP/OTHER REVIEWED REPORTING COULD NOT INDEPENDENTLY VERIFY; NO SAUDI LOSS ACKNOWLEDGMENT OR IDENTIFIABLE WRECKAGE FOUND BY HORIZON",
+      "sources": [
+        "https://apnews.com/article/895320bde6dc589cebb628b63832c38a"
+      ]
+    },
+    {
+      "claim_id": "CLM-IRGC-B2-SHOOTDOWN-RECIRCULATION-20260916",
+      "claimant": "Online/recirculated Iran-supporting claim environment",
+      "claim_time": "2026-09-16",
+      "claim": "Iran/IRGC shot down a U.S. B-2 bomber.",
+      "adjudication": "NO_NEW_CREDIBLE_IRGC_B2_LOSS_STATEMENT_OR_INDEPENDENT_LOSS_EVIDENCE_IDENTIFIED_IN_THIS_SWEEP; DO_NOT CONFLATE WITH THE NEW MQ-9/QESHM CLAIM; RETAIN AS UNVERIFIED/RECIRCULATED CLAIM PENDING PRIMARY EVIDENCE",
+      "sources": []
+    }
+  ],
+  "human_impact_updates": [
+    {
+      "update_id": "UPD-YEMEN-DISPLACEMENT-125K-OCHA-20260916",
+      "updates_existing_ref": "UPD-YEMEN-DISPLACEMENT-GT100K-20260915",
+      "relationship": "LATER_MORE_SPECIFIC_UN_HUMANITARIAN_COUNT",
+      "summary": "Reporting citing OCHA said at least 18,000 families, around 125,000 people, had been displaced in Yemen since the beginning of September. The same reporting cited the U.N. human rights office for 40 civilian deaths in the escalation, including eight killed and 32 injured from September 1-14; women and children accounted for half of those killed and more than half of those injured. Preserve earlier >100,000, ~94,000 and 82,164 figures with their own horizons rather than overwriting them.",
+      "status": "AROUND_125000_DISPLACED_SINCE_START_OF_SEPTEMBER; CIVILIAN_CASUALTY_COUNT_REPORTED_BY_UN_SOURCES",
+      "sources": [
+        "https://www.aa.com.tr/en/middle-east/at-least-125-000-displaced-by-escalating-fighting-in-yemen-this-month-un/4057876"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-GULF-EQUITIES-OIL-RISK-20260916-1158",
+      "metric": "Regional market response",
+      "observed_state": "Reuters reported most Gulf equity markets lower on September 16 amid regional conflict risk, while Saudi equities were roughly flat and Aramco gained on supply-reassurance reporting. The market response is consistent with continuing energy-route risk but some expectation of mitigation. Do not treat market pricing as evidence of physical pipeline restoration.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/gulf-equities-muted-regional-conflict-fed-decision-keep-investors-cautious-2026-09-16/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "IRANIAN_PRIMARY_ALIGNED_MEDIA",
+      "source": "Tasnim News Agency",
+      "use": "Primary/near-primary capture of IRGC public military claims; never use alone to confirm claimed adversary losses."
+    },
+    {
+      "source_class": "WIRE",
+      "source": "Reuters",
+      "use": "High-priority multi-source reporting for diplomacy, maritime traffic, strategic disposition, energy infrastructure and markets."
+    },
+    {
+      "source_class": "WIRE",
+      "source": "Associated Press",
+      "use": "Independent reporting and explicit verification status for Saudi-Houthi military claims and regional diplomatic reaction."
+    }
+  ],
+  "coverage_accounting": {
+    "covered": [
+      "Iran/IRGC",
+      "United States/CENTCOM posture",
+      "Saudi Arabia",
+      "Houthis/Yemen",
+      "China",
+      "Oman mediation",
+      "Pakistan/Turkey support posture",
+      "OIC/regional diplomacy",
+      "Hormuz maritime traffic",
+      "Bab el-Mandeb/Red Sea strategic disposition",
+      "military operations and loss claims",
+      "Saudi energy infrastructure and alternative export mitigation",
+      "oil/Gulf market effects",
+      "humanitarian displacement/civilian impact",
+      "claims/corrections",
+      "open-source/commercial ship-tracking reporting"
+    ],
+    "no_material_new_public_evidence_found_in_window": [
+      "Verified new B-2 loss",
+      "Independent confirmation of claimed Saudi F-15 loss",
+      "Confirmed U.S. MQ-9 loss over Qeshm",
+      "Confirmed full East-West Pipeline restart",
+      "New sanctions package materially changing prior sanctions state",
+      "Direct Turkish or Pakistani combat intervention for Saudi Arabia"
+    ],
+    "limitations": [
+      "No direct paid Kpler/Vortexa/MarineTraffic terminal access; commercial maritime observations rely on published reporting",
+      "No proprietary satellite tasking or paid high-resolution imagery archive",
+      "No insurer/P&I proprietary feeds",
+      "No classified ISR or military operational feeds",
+      "Some diplomatic propositions rely on anonymous-source wire reporting and remain explicitly attributed",
+      "The sweep is bounded by evidence publicly available by 2026-09-16T11:58:33-04:00"
+    ]
+  },
+  "unresolved_questions": [
+    "Whether the IRGC Qeshm MQ-9 claim is corroborated by U.S. acknowledgment, identifiable wreckage, imagery or loss accounting",
+    "Loss-by-loss reconciliation of the IRGC cumulative 52-MQ-9 claim",
+    "Independent verification of the claimed Saudi F-15 loss and alleged locally made Houthi air-to-air weapon employment",
+    "Mecca-intercepted UAV final intended aimpoint and independent attribution evidence",
+    "East-West Pipeline actual physical repair state, partial flow, full throughput and Yanbu crude-loading restart",
+    "Exact scale and routing of Saudi crude mitigation via Oman",
+    "AIS-dark share of Hormuz and Bab el-Mandeb traffic and reconciliation with visible transit counts",
+    "Whether China means literal restoration of the June/Islamabad MoU terms or use of the MoU as a bridge to a revised bargain; sequencing of Hormuz reopening versus concessions remains unresolved",
+    "Whether China applies economic/financial/oil-purchase leverage to Tehran beyond public diplomatic pressure",
+    "Whether the U.S.-Houthi Oman channel produces observable and enforceable maritime restraint, particularly toward Saudi versus U.S./other shipping",
+    "Saudi/Egypt operational support arrangements and whether regional partners move beyond diplomatic solidarity",
+    "Disposition, exploitation and operational use of captured U.S./Saudi-supplied materiel in Yemen"
+  ],
+  "completion_report": {
+    "status": "12H_SWEEP_APPENDED_TO_EVIDENCE_INTEGRATION_BRANCH",
+    "repository": "ejronin/ISR",
+    "branch": "evidence/rook-catchup-20260916",
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "note": "Completed scheduled 12-hour upstream collection sweep through 11:58:33 ET. Prior drawers were reviewed and materially changed propositions were represented as updates rather than rewritten or duplicated canonical evidence."
+  }
+}
