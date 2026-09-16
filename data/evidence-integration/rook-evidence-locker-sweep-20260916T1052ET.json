@@ -1,0 +1,94 @@
+{
+  "artifact_role": "ROOK_EVIDENCE_LOCKER_INCREMENTAL_UPDATE",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-16T10:52:00-04:00",
+    "window_end": "2026-09-16T10:52:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-16T10:52:00-04:00",
+    "evidence_horizon_time": "2026-09-16T10:52:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-catchup-20260916T1052ET.json",
+    "boundary_rule": "Append-only follow-on. Preserve occurrence, publication, collection and evidence-horizon times separately; later evidence updates prior events rather than rewriting accepted evidence."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-CHINA-IRAN-WANG-ARAGHCHI-PUBLIC-PRESSURE-20260916",
+      "updates_existing_ref": "LOCKER-IRAN-CHINA-WANG-ARAGHCHI-20260916",
+      "relationship": "PRIMARY_POSITION_DETAIL_AND_PRESSURE_DISCRIMINATOR",
+      "summary": "China's public readout said Wang Yi urged Iran and the United States to remain rational, exercise restraint, return to the Islamabad memorandum and engage in substantive consultations. Wang explicitly urged effective measures to reopen the Strait of Hormuz at an early date and said China did not want tensions spilling further into Yemen and the Red Sea. This strengthens the evidence that Beijing is publicly pressing Tehran toward negotiation and restored navigation, while not establishing economic coercion or withdrawal of Chinese support.",
+      "status": "CHINESE_PUBLIC_PRESSURE_FOR_HORMUZ_REOPENING_AND_US_IRAN_NEGOTIATIONS_CONFIRMED",
+      "sources": ["https://currently.att.yahoo.com/att/chinas-top-diplomat-urges-iran-092419413.html","https://news.rthk.hk/rthk/en/component/k2/1870287-20260916.htm?spTabChangeable=0"]
+    },
+    {
+      "update_id": "UPD-HOUTHI-SAUDI-YANBU-KHAMIS-MUSHAIT-CLAIMS-20260916",
+      "updates_existing_ref": "UPD-HOUTHI-REDSEA-COAST-AND-BAB-EL-MANDEB-GAINS-20260916",
+      "relationship": "LATER_OPERATIONAL_CLAIMS_AND_STRIKE_CONTINUITY",
+      "summary": "Houthi military spokesman Yahya Saree said the group launched fresh drone and missile strikes on Yanbu and an airbase at Khamis Mushait, without specifying attack times. Saudi Arabia had announced alerts in those locations Tuesday but no equivalent Wednesday alerts were reported at publication. Preserve the Houthi strike assertions as actor claims pending independent impact/BDA confirmation.",
+      "status": "HOUTHI_STRIKE_CLAIMS_RECORDED; SPECIFIC_IMPACTS_UNCONFIRMED",
+      "sources": ["https://www.reuters.com/world/middle-east/saudi-coalition-says-houthi-drone-destroyed-near-mecca-2026-09-16/"]
+    },
+    {
+      "update_id": "UPD-US-HOUTHI-OMAN-CEASEFIRE-ASSURANCE-20260916",
+      "updates_existing_ref": "LOCKER-US-HOUTHI-OMAN-DIRECT-MEETING-20260913",
+      "relationship": "LATER_CORROBORATING_REPORTING",
+      "summary": "Reuters reporting on September 16 again cited sources saying U.S. officials met Houthis in Oman over the weekend and that the Houthis said they intended to maintain the earlier U.S. ceasefire and avoid attacks on American vessels. This corroborates the existence and reported purpose of the Oman channel while remaining sourced reporting rather than formal U.S. confirmation.",
+      "status": "MULTI_SOURCE_REPORTING_CORROBORATED; FORMAL_US_CONFIRMATION_NOT_ESTABLISHED",
+      "sources": ["https://www.reuters.com/world/middle-east/saudi-coalition-says-houthi-drone-destroyed-near-mecca-2026-09-16/"]
+    },
+    {
+      "update_id": "UPD-SAUDI-EASTWEST-RESTART-TIMELINE-DIVERGENCE-20260916",
+      "updates_existing_ref": "UPD-SAUDI-YANBU-LOADINGS-SUSPENDED-CARGO-CANCELLATIONS-20260915",
+      "relationship": "LATER_REPAIR_TIMELINE_CONFLICT",
+      "summary": "Saudi Arabia had not publicly announced a restart time by Reuters' September 16 report. U.S. Energy Secretary Chris Wright said crude should be flowing through the East-West Pipeline within days, while earlier regional-official estimates reported by AP put repairs at three to five weeks. Preserve these as divergent estimates and keep physical repair, partial flow, full throughput and Yanbu loading normalization as separate disposition fields.",
+      "status": "PIPELINE_RESTART_NOT_CONFIRMED; OFFICIAL_US_DAYS_ESTIMATE_CONFLICTS_WITH_EARLIER_3_TO_5_WEEK_REPAIR_ESTIMATE",
+      "sources": ["https://www.reuters.com/world/middle-east/saudi-coalition-says-houthi-drone-destroyed-near-mecca-2026-09-16/","https://apnews.com/article/efa431e2fa771e34880c8453c62ffb92"]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-HOUTHI-F15-SHOOTDOWN-20260916-FOLLOWUP",
+      "claimant": "Houthi military spokesman Yahya Saree",
+      "claim_time": "2026-09-16",
+      "claim": "Houthis said they shot down a Saudi F-15 fighter jet.",
+      "adjudication": "NO_EVIDENCE_PRESENTED_IN_REUTERS_REPORTING_REVIEWED; REMAINS_UNVERIFIED; DO_NOT_PROMOTE_TO_CONFIRMED_LOSS",
+      "sources": ["https://www.reuters.com/world/middle-east/saudi-coalition-says-houthi-drone-destroyed-near-mecca-2026-09-16/"]
+    },
+    {
+      "claim_id": "CLM-HOUTHI-450-SAUDI-AIRSTRIKES-20260916",
+      "claimant": "Houthi military spokesman Yahya Saree",
+      "claim_time": "2026-09-16",
+      "claim": "Saudi forces carried out as many as 450 airstrikes on Yemen during the week.",
+      "adjudication": "SAUDI_BACKED_YEMENI_OFFICIALS_ACKNOWLEDGED AIRSTRIKES BY THEIR FORCES AND SAUDI ARABIA, BUT RIYADH HAD NOT CONFIRMED THE 450 FIGURE; PRESERVE QUANTITY AS HOUTHI CLAIM",
+      "sources": ["https://www.reuters.com/world/middle-east/saudi-coalition-says-houthi-drone-destroyed-near-mecca-2026-09-16/"]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-BRENT-DIESEL-20260916",
+      "metric": "Energy-market stress",
+      "observed_state": "Reuters reported Brent near $108 per barrel on September 16 and U.S. average retail diesel above $6.30 per gallon. Traders said a prolonged East-West Pipeline closure could remove as much as roughly 4% of global oil supply from the affected export route. Treat the 4% figure as market exposure estimate, not confirmed permanent supply loss.",
+      "sources": ["https://www.reuters.com/world/middle-east/saudi-coalition-says-houthi-drone-destroyed-near-mecca-2026-09-16/"]
+    }
+  ],
+  "coverage_accounting": {
+    "covered": ["China-Iran diplomacy","U.S.-Houthi Oman channel","Saudi-Houthi military claims","Saudi energy infrastructure","Yanbu","Khamis Mushait","Mecca attribution dispute","oil and diesel market effects","claims/corrections"],
+    "limitations": ["No direct paid Kpler/Vortexa/MarineTraffic terminal access","No proprietary satellite tasking","No insurer/P&I proprietary feeds","No classified ISR","Actor strike and aircraft-loss claims remain unconfirmed where independent evidence was absent"]
+  },
+  "unresolved_questions": [
+    "Independent evidence for or against the claimed Saudi F-15 loss",
+    "Independent BDA for claimed Houthi strikes on Yanbu and Khamis Mushait",
+    "East-West Pipeline actual partial-flow restart and Yanbu crude-loading restart",
+    "Whether China follows public diplomatic pressure with financial or oil-purchase leverage on Tehran",
+    "Whether U.S.-Houthi Oman assurances produce observable maritime behavior"
+  ],
+  "completion_report": {
+    "status": "INCREMENTAL_UPDATE_APPENDED_TO_EVIDENCE_INTEGRATION_BRANCH",
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "note": "Follow-on evidence artifact appended after catch-up drawer; no prior evidence bytes rewritten."
+  }
+}
