@@ -1,0 +1,127 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_CATCHUP_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-15T00:01:51-04:00",
+    "window_end": "2026-09-16T10:52:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-16T10:52:00-04:00",
+    "evidence_horizon_time": "2026-09-16T10:52:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260915T0001ET.json",
+    "boundary_rule": "Occurrence, publication, collection and evidence-horizon times remain distinct. Later evidence updates existing events where appropriate rather than creating duplicate occurrences."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-HOUTHI-OMAN-DIRECT-MEETING-20260913",
+      "event_type": "DIPLOMATIC_DIRECT_CONTACT",
+      "occurrence_time": "2026-09-13",
+      "public_available_time": "2026-09-16T07:04:16-04:00",
+      "actor": "United States / Houthis / Oman",
+      "summary": "Reuters reported, citing five sources, that U.S. officials met Houthi representatives in Muscat over the weekend, with three sources placing the meeting at the U.S. Embassy and two saying Oman helped organize it. Two sources said the Houthis stated they would uphold the 2025 U.S. ceasefire and not attack American vessels; one source said they also disclaimed attacks on Israeli or other commercial vessels except Saudi vessels. State Department did not confirm the meeting. Preserve the meeting and participant details as sourced reporting, not an official U.S. confirmation.",
+      "confidence": "HIGH_FOR_MULTI_SOURCE_REUTERS_REPORTING; NOT_OFFICIALLY_CONFIRMED_BY_US",
+      "sources": ["https://www.reuters.com/world/middle-east/us-officials-met-iran-backed-houthis-oman-over-weekend-sources-say-2026-09-16/"]
+    },
+    {
+      "event_id": "LOCKER-IRAN-CHINA-WANG-ARAGHCHI-20260916",
+      "event_type": "DIPLOMATIC_HIGH_LEVEL_TALKS",
+      "occurrence_time": "2026-09-16",
+      "public_available_time": "2026-09-16T05:24:19-04:00",
+      "actor": "China / Iran",
+      "summary": "Chinese Foreign Minister Wang Yi met Iranian Foreign Minister Abbas Araghchi in Beijing. China's public position urged Iran and the United States to exercise restraint, return to the Islamabad memorandum, engage in substantive consultations, and take effective measures to reopen the Strait of Hormuz early. China also said it did not want regional tensions spilling further into Yemen and the Red Sea. This is a material China-pressure discriminator but does not establish Chinese economic coercion or withdrawal of support from Iran.",
+      "confidence": "HIGH",
+      "sources": ["https://currently.att.yahoo.com/att/chinas-top-diplomat-urges-iran-092419413.html","https://news.rthk.hk/rthk/en/component/k2/1870287-20260916.htm?spTabChangeable=0"]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-YEMEN-DISPLACEMENT-GT100K-20260915",
+      "updates_existing_ref": "UPD-YEMEN-HUMAN-IMPACT-20260914PM",
+      "relationship": "LATER_HUMANITARIAN_COUNT_SUPERSEDES_PRIOR_ROUNDED_ESTIMATE",
+      "summary": "UNHCR said more than 100,000 people had been internally displaced by renewed fighting in Yemen and thousands more had fled by sea to Djibouti. Preserve prior 82,164 and nearly-94,000 figures with their publication horizons while using >100,000 as the later reported state.",
+      "status": "GT100000_INTERNALLY_DISPLACED; THOUSANDS_FLED_TO_DJIBOUTI",
+      "sources": ["https://www.reuters.com/world/middle-east/yemen-conflict-displaces-over-100000-people-un-says-2026-09-15/"]
+    },
+    {
+      "update_id": "UPD-SAUDI-YANBU-LOADINGS-SUSPENDED-CARGO-CANCELLATIONS-20260915",
+      "updates_existing_ref": "UPD-SAUDI-EASTWEST-PARTIAL-REPAIR-POSSIBILITY-20260914PM",
+      "relationship": "LATER_COMMERCIAL_DISPOSITION_AND_EXPORT_IMPACT",
+      "summary": "Shipping-industry sources reported crude loadings at Yanbu suspended and Saudi Arabia cancelling some cargo deliveries to European customers after East-West Pipeline damage. Brent settled at $108.75 and WTI at $105.83 on September 15. Track physical pipeline repair, partial throughput, full capacity and port loading normalization separately.",
+      "status": "YANBU_CRUDE_LOADINGS_SUSPENDED; SOME_EUROPEAN_CARGOES_CANCELLED",
+      "sources": ["https://www.marketscreener.com/news/oil-climbs-as-saudi-pipeline-outage-fresh-attacks-heighten-supply-concerns-ce785bddd98cfe2d"]
+    },
+    {
+      "update_id": "UPD-HOUTHI-REDSEA-COAST-AND-BAB-EL-MANDEB-GAINS-20260916",
+      "updates_existing_ref": "YEMEN_HOUTHI_REDSEA_ADVANCE_CHAIN",
+      "relationship": "LATER_TERRITORIAL_AND_MATERIEL_DISPOSITION_UPDATE",
+      "summary": "Reuters reported Houthis had consolidated control of strategic Red Sea coastline and islands around Bab el-Mandeb after Saudi-backed Yemeni forces collapsed in sectors. Regional sources reported capture of U.S.- and Saudi-supplied equipment. Two Western officials said neither the U.S. nor European states were prepared to provide direct military backing for a counteroffensive. Preserve analytical characterizations separately from the territorial and materiel facts.",
+      "status": "HOUTHI_GAINS_CONSOLIDATED; CAPTURED_MATERIEL_REPORTED; DIRECT_WESTERN_COUNTEROFFENSIVE_SUPPORT_NOT_OBSERVED",
+      "sources": ["https://www.reuters.com/world/middle-east/houthi-blitz-leaves-saudi-arabia-exposed-iran-emboldened-2026-09-16/"]
+    },
+    {
+      "update_id": "UPD-MECCA-UAV-INTERCEPTION-CONTESTED-INTENT-20260916",
+      "updates_existing_ref": "UPD-SAUDI-ALERTS-YANBU-SIX-CITIES-20260914PM",
+      "relationship": "LATER_INTERCEPTION_AND_ATTRIBUTION_DISPUTE",
+      "summary": "Saudi Arabia said it intercepted and destroyed a Houthi drone south of Mecca before it entered restricted airspace and characterized the attempted attack as crossing a red line. Houthis denied targeting Mecca or religious sites. Preserve interception as Saudi-reported event and intended target as disputed. AP also reported no military support from Turkey or Pakistan under the Makkah defense pact at that time.",
+      "status": "INTERCEPTION_REPORTED_BY_SAUDI; HOUTHI_ATTRIBUTION_AND_INTENDED_TARGET_CONTESTED",
+      "sources": ["https://apnews.com/article/895320bde6dc589cebb628b63832c38a"]
+    },
+    {
+      "update_id": "UPD-US-SAUDI-SUPPORT-INTEL-NOT-DIRECT-COMBAT-20260916",
+      "updates_existing_ref": "US_SAUDI_SUPPORT_CHAIN",
+      "relationship": "LATER_SUPPORT_SCOPE_CLARIFICATION",
+      "summary": "Reporting during the catch-up horizon indicates Washington provided intelligence/planning support to Saudi Arabia while declining direct military intervention in the Yemen fight. Preserve assistance scope separately from alliance commentary and do not code this as direct U.S. combat participation.",
+      "status": "INTELLIGENCE_PLANNING_SUPPORT_REPORTED; DIRECT_US_COMBAT_INTERVENTION_NOT_ESTABLISHED",
+      "sources": ["https://apnews.com/article/895320bde6dc589cebb628b63832c38a","https://www.reuters.com/world/middle-east/houthi-blitz-leaves-saudi-arabia-exposed-iran-emboldened-2026-09-16/"]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-HOUTHI-MECCA-DENIAL-20260916",
+      "claimant": "Houthi movement",
+      "claim_time": "2026-09-16",
+      "claim": "Houthis denied targeting Mecca or religious sites.",
+      "adjudication": "PRESERVE_AS_DENIAL_AGAINST_SAUDI_ATTRIBUTION_AND_INTENT_CLAIM; INTERCEPTION_DOES_NOT_BY_ITSELF_PROVE_FINAL_AIMPOINT",
+      "sources": ["https://apnews.com/article/895320bde6dc589cebb628b63832c38a"]
+    },
+    {
+      "claim_id": "CLM-HOUTHI-F15-SHOOTDOWN-20260916",
+      "claimant": "Houthis",
+      "claim_time": "2026-09-16",
+      "claim": "Houthis claimed to have shot down a Saudi F-15.",
+      "adjudication": "UNVERIFIED_IN_REVIEWED_REPORTING_BY_EVIDENCE_HORIZON; DO_NOT PROMOTE TO CONFIRMED AIRCRAFT LOSS",
+      "sources": ["https://apnews.com/article/895320bde6dc589cebb628b63832c38a"]
+    }
+  ],
+  "maritime_updates": [
+    {
+      "maritime_id": "MAR-HORMUZ-LOW-TRAFFIC-CONTINUITY-20260915",
+      "metric": "Visible commodity vessel transits",
+      "observed_state": "Kpler reporting carried into the horizon showed five commodity vessels Saturday, none Sunday in one preliminary weekend series, followed by four visible commodity-vessel transits Monday in later reporting. AIS-dark vessels remain an explicit undercount risk. Treat visible counts as observational lower bounds rather than total traffic.",
+      "sources": ["https://www.gulf-times.com/article/731298/shopping/shipping-slows-through-strait-of-hormuz-after-tanker-attacks/amp"]
+    }
+  ],
+  "coverage_accounting": {
+    "covered": ["Iran","United States","Saudi Arabia","Houthis/Yemen","China","Oman","Egypt","GCC diplomacy","Hormuz","Bab el-Mandeb/Red Sea","military operations","maritime traffic","energy infrastructure","oil markets","humanitarian impact","claims/corrections","alliance/support posture"],
+    "limitations": ["No direct paid Kpler/Vortexa/MarineTraffic terminal access","No proprietary commercial satellite tasking","No insurer/P&I proprietary feeds","No classified ISR","Some source propositions rely on anonymous-source wire reporting and are explicitly attributed","Catch-up is bounded by evidence publicly available by 2026-09-16T10:52:00-04:00"]
+  },
+  "unresolved_questions": [
+    "East-West Pipeline physical repair state, partial throughput, full throughput and Yanbu loading restart",
+    "Mecca-intercepted UAV final intended aimpoint and independent attribution evidence",
+    "Independent verification of claimed Saudi F-15 loss",
+    "Current AIS-dark share of Hormuz and Bab el-Mandeb traffic",
+    "Whether China follows Wang Yi's public pressure with economic or financial pressure on Tehran",
+    "Whether the U.S.-Houthi Oman channel produces enforceable maritime commitments beyond reported assurances",
+    "Saudi/Egypt operational support arrangements following Mohammed bin Salman's Cairo outreach",
+    "Disposition and exploitation risk of captured U.S./Saudi materiel in Yemen"
+  ],
+  "completion_report": {
+    "status": "CATCHUP_APPENDED_TO_EVIDENCE_INTEGRATION_LANE",
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "note": "This artifact bridges the repository gap from the last confirmed ROOK evidence-locker append at 2026-09-15T00:01:51-04:00 through the current 2026-09-16T10:52:00-04:00 evidence horizon."
+  }
+}
