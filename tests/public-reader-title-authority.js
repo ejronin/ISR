@@ -17,6 +17,12 @@ function expectedFinalReaderTitle(routeRecord, finalizationMarker) {
   return APPROVED_FINAL_READER_TITLES[routeRecord.key] || routeRecord.title;
 }
 
+function expectedFinalReaderLabel(routeRecord, finalizationMarker) {
+  assert(routeRecord && routeRecord.key && routeRecord.label, 'route record with key/label is required');
+  if (!isFinalizedPublicProduct(finalizationMarker)) return routeRecord.label;
+  return APPROVED_FINAL_READER_TITLES[routeRecord.key] || routeRecord.label;
+}
+
 function assertFinalReaderHeading(routeRecord, headings, finalizationMarker, message) {
   assert.deepEqual(
     headings,
@@ -26,23 +32,28 @@ function assertFinalReaderHeading(routeRecord, headings, finalizationMarker, mes
 }
 
 function runFinalReaderTitleFixtures() {
-  const ordinary = { key: 'military.campaigns', title: 'Campaigns' };
-  const iranMessaging = { key: 'objectives.iran', title: "How Iran's Position Changed" };
-  const information = { key: 'evidence.information', title: 'Lie Ledger' };
+  const ordinary = { key: 'military.campaigns', title: 'Campaigns', label: 'Campaigns & Strikes' };
+  const iranMessaging = { key: 'objectives.iran', title: "How Iran's Position Changed", label: "How Iran's Position Changed" };
+  const information = { key: 'evidence.information', title: 'Lie Ledger', label: 'Information Environment' };
   const finalized = 'finalized-reader';
 
   assert.doesNotThrow(() => assertFinalReaderHeading(ordinary, ['Campaigns'], finalized));
   assert.throws(() => assertFinalReaderHeading(ordinary, ['Campaign Summary'], finalized));
+  assert.equal(expectedFinalReaderLabel(ordinary, finalized), 'Campaigns & Strikes');
 
   assert.doesNotThrow(() => assertFinalReaderHeading(iranMessaging, ["How Iran's Position Changed"], ''));
   assert.doesNotThrow(() => assertFinalReaderHeading(iranMessaging, ['Iran Messaging & Claims'], finalized));
   assert.throws(() => assertFinalReaderHeading(iranMessaging, ["How Iran's Position Changed"], finalized));
   assert.throws(() => assertFinalReaderHeading(iranMessaging, ['Iran Claims'], finalized));
+  assert.equal(expectedFinalReaderLabel(iranMessaging, ''), "How Iran's Position Changed");
+  assert.equal(expectedFinalReaderLabel(iranMessaging, finalized), 'Iran Messaging & Claims');
 
   assert.doesNotThrow(() => assertFinalReaderHeading(information, ['Lie Ledger'], ''));
   assert.doesNotThrow(() => assertFinalReaderHeading(information, ['Claims, Falsehoods & Deception'], finalized));
   assert.throws(() => assertFinalReaderHeading(information, ['Lie Ledger'], finalized));
   assert.throws(() => assertFinalReaderHeading(information, ['Claims & Information'], finalized));
+  assert.equal(expectedFinalReaderLabel(information, ''), 'Information Environment');
+  assert.equal(expectedFinalReaderLabel(information, finalized), 'Claims, Falsehoods & Deception');
 
   assert.throws(() => assertFinalReaderHeading(ordinary, [], finalized));
   assert.throws(() => assertFinalReaderHeading(ordinary, ['Campaigns', 'Campaigns'], finalized));
@@ -52,6 +63,7 @@ module.exports = {
   APPROVED_FINAL_READER_TITLES,
   isFinalizedPublicProduct,
   expectedFinalReaderTitle,
+  expectedFinalReaderLabel,
   assertFinalReaderHeading,
   runFinalReaderTitleFixtures
 };
