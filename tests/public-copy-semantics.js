@@ -92,7 +92,7 @@ function runCampaignEventCountSemanticBoundaryFixtures() {
   for (const text of [
     'This is a count of recorded military events, not combat intensity or weapon quantity.',
     'Recorded event count, not equipment quantity.',
-    'Count of recorded military events. Equipment quantities are not substituted for event counts.'
+    'Recorded military event count does not represent platform quantity.'
   ]) {
     assert.doesNotThrow(() => assertCampaignEventCountSemanticBoundary(text), `equivalent Campaigns count boundary was rejected: ${text}`);
   }
