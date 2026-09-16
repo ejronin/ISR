@@ -3,24 +3,17 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const ia = require('../js/public-ia.js');
+const { expectedFinalReaderTitle, runFinalReaderTitleFixtures } = require('./public-reader-title-authority.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 const model = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'public-current-state.json'), 'utf8'));
-const PUBLIC_PRODUCT_ROUTE_TITLES = Object.freeze({
-  'objectives.iran': 'Iran Messaging & Claims',
-  'evidence.information': 'Claims, Falsehoods & Deception'
-});
-
-function expectedPublicTitle(routeRecord, publicProductVersion) {
-  return publicProductVersion ? (PUBLIC_PRODUCT_ROUTE_TITLES[routeRecord.key] || routeRecord.title) : routeRecord.title;
-}
 
 function assertRouteHeadingParity(routeRecord, headings, publicProductVersion) {
   assert.deepEqual(
     headings,
-    [expectedPublicTitle(routeRecord, publicProductVersion)],
+    [expectedFinalReaderTitle(routeRecord, publicProductVersion)],
     `route heading parity failed for ${routeRecord.key}`
   );
 }
@@ -38,6 +31,7 @@ function assertAgreementStateDistinction(text) {
   assert(distinguishesStates, 'Talks must explicitly distinguish agreement/proposal/legal states as not interchangeable');
 }
 
+runFinalReaderTitleFixtures();
 const ordinaryRouteFixture = { key: 'military.campaigns', title: 'Campaigns' };
 const iranMessagingFixture = { key: 'objectives.iran', title: "How Iran's Position Changed" };
 const informationFixture = { key: 'evidence.information', title: 'Lie Ledger' };

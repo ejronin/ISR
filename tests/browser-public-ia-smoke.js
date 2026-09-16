@@ -1,16 +1,13 @@
 'use strict';
 const assert = require('node:assert/strict');
 const ia = require('../js/public-ia.js');
+const { assertFinalReaderHeading, expectedFinalReaderLabel, runFinalReaderTitleFixtures } = require('./public-reader-title-authority.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
-const PUBLIC_PRODUCT_ROUTE_LABELS = Object.freeze({
-  'objectives.iran': 'Iran Messaging & Claims',
-  'evidence.information': 'Claims, Falsehoods & Deception'
-});
-const publicProductLabel = route => PUBLIC_PRODUCT_ROUTE_LABELS[route.key] || route.label;
-const publicProductTitle = route => PUBLIC_PRODUCT_ROUTE_LABELS[route.key] || route.title;
+
+runFinalReaderTitleFixtures();
 
 class CDP {
   constructor(url) {
@@ -65,6 +62,7 @@ async function routeView(cdp) {
     routeKey: window.ATLAS_PUBLIC_STATE.routeKey,
     owner: document.querySelector('[data-page-owner]')?.dataset.pageOwner,
     h1: [...document.querySelectorAll('main h1')].map(node => node.textContent.trim()),
+    publicProductVersion: document.querySelector('.public-page')?.dataset.publicProduct || '',
     machineTokens: ['CURRENT_OVERLAY','HISTORICAL_RECONCILIATION','NOT_YET_ADJUDICABLE'].filter(token => document.body.innerText.includes(token)),
     currentSecondary: document.querySelector('.secondary-nav a[aria-current="page"]')?.textContent.trim()
   }))()`);
@@ -142,16 +140,16 @@ async function loadDirectRoute(cdp, route) {
       const view = await loadDirectRoute(cdp, route);
       assert.equal(view.routeKey, route.key);
       assert.equal(view.owner, route.owner, `wrong owner for ${route.key}`);
-      assert.deepEqual(view.h1, [publicProductTitle(route)], `heading structure failed for ${route.key}`);
+      assertFinalReaderHeading(route, view.h1, view.publicProductVersion, `heading structure failed for ${route.key}`);
       assert.deepEqual(view.machineTokens, [], `machine token exposed by ${route.key}`);
-      assert.equal(view.currentSecondary, publicProductLabel(route), `secondary location not obvious for ${route.key}`);
+      assert.equal(view.currentSecondary, expectedFinalReaderLabel(route, view.publicProductVersion), `secondary location not obvious for ${route.key}`);
     }
     await cdp.call('Page.reload', { ignoreCache: true });
     const refreshRoute = [...ia.ROUTES.values()].at(-1);
     await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(refreshRoute.key)}`);
     const refreshed = await routeView(cdp);
     assert.equal(refreshed.owner, refreshRoute.owner, 'direct route must retain its owner after refresh');
-    assert.deepEqual(refreshed.h1, [publicProductTitle(refreshRoute)], 'direct route must retain one H1 after refresh');
+    assertFinalReaderHeading(refreshRoute, refreshed.h1, refreshed.publicProductVersion, 'direct route must retain one authoritative H1 after refresh');
     assert.equal(await cdp.eval(`document.querySelectorAll('a[href*="snapshots/"]').length`), 0, 'current public application must not link to repository-only snapshots');
 
     await setRoute(cdp, ia.ROUTES.get('start.overview'));
