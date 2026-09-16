@@ -230,7 +230,7 @@
     const f=card(g,'Freight and crude logistics','Reuters reported expectations of tighter sour crude, at least one delayed Saudi loading, record Gulf-to-Asia tanker rates and some AIS-dark Red Sea-loading vessels. This does not mean all Saudi deliveries were disrupted.','SOURCE-REPORTED');evidence(f,context,er.find(r=>r.economic_id==='ECON-ASIA-REFINERS-20260914'));
     card(g,'Saudi East-West pipeline','Later reporting says the line is expected to remain mostly out of service for roughly three to five weeks. Yanbu inventories and delivery timing are therefore material.','DAMAGED / MOSTLY OUT OF SERVICE');
     card(g,'Announced bank sanction','The announced large-bank U.S. sanction remained pending at the Sep. 14 12:01 ET cutoff. No bank is named because no Treasury/OFAC enactment identifying it was established.','NOT ENACTED');
-    const m=findSection(article,/economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);if(m)collapse(m,'Forecast context');
+    const m=findSection(article,/economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);if(m)collapse(m,'Forecast context — does not interpolate values between observations');
   }
 
   function hormuzTalks(article) {
