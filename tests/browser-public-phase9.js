@@ -4,7 +4,10 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const ia = require('../js/public-ia.js');
-const { assertLossRecordDenominator } = require('./public-copy-semantics.js');
+const {
+  assertLossRecordDenominator,
+  assertCampaignEventCountSemanticBoundary
+} = require('./public-copy-semantics.js');
 
 const DEBUG = process.env.ATLAS_CDP || 'http://127.0.0.1:9222';
 const SITE = process.env.ATLAS_SITE || 'http://127.0.0.1:8765/';
@@ -299,7 +302,7 @@ async function route(cdp, hash, key) {
     assert.match(phase10Effects.text, /How damage and operational effect are separated/);
     assert.match(phase10Effects.text, /Attack occurrence, physical effect and operational consequence are separate/i);
     assert.match(phase10Effects.text, /does not automatically prove a mission kill, destroyed platform or whole-site shutdown/i);
-    assert.match(phase10Effects.drilldown, /Equipment quantities are not substituted for event counts/i, 'campaign totals lack an auditable constituent-count boundary');
+    assertCampaignEventCountSemanticBoundary(phase10Effects.drilldown);
 
     await route(cdp, '#/military/losses', 'military.losses');
     const phase10Losses = await cdp.eval(`(() => ({ text: document.querySelector('main')?.innerText || '', cards: document.querySelectorAll('[data-loss-id]').length }))()`);
