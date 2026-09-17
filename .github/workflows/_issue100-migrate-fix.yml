@@ -1,0 +1,44 @@
+name: Issue 100 renderer convergence transform fix
+
+on:
+  push:
+    branches:
+      - public/100-authoritative-reader-renderer-20260916
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: ${{ !contains(github.event.head_commit.message, '[issue100-transform]') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: public/100-authoritative-reader-renderer-20260916
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - name: Apply architecture convergence
+        run: |
+          python scripts/_issue100_migrate.py
+          sed -i "1c'use strict';" tests/public-reader-registry.test.js
+      - name: Run focused architecture contracts
+        run: |
+          node tests/public-reader-layer.test.js
+          node tests/public-reader-registry.test.js
+          node tests/public-boot.test.js
+          python scripts/validate_public_runtime_inventory.py
+      - name: Commit converged renderer
+        run: |
+          rm scripts/_issue100_migrate.py .github/workflows/_issue100-migrate.yml .github/workflows/_issue100-migrate-fix.yml
+          git config user.name "Atlas Public Architecture"
+          git config user.email "noreply@github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Public: converge authoritative reader renderer [issue100-transform]"
+          git push origin HEAD:public/100-authoritative-reader-renderer-20260916
