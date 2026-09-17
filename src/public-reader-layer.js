@@ -1,10 +1,11 @@
-/* ATLAS PUBLIC READER LAYER
+/* ATLAS PUBLIC READER SUPPORT
  *
- * Reader-first projection and presentation behavior for the public Atlas.
- * This layer deliberately operates downstream of the evidence/canonical model.
- * It may simplify or reorganize presentation, but it must not manufacture facts.
+ * Reader-first projection helpers for the authoritative public page registry.
+ * This module has no route lifecycle or mount authority. It receives a staged
+ * route owned by the registry and projects reader-safe semantics before the
+ * route can be promoted. It may not manufacture facts.
  */
-(function installAtlasPublicReaderLayer(root) {
+(function installAtlasPublicReaderSupport(root) {
   'use strict';
 
   const existingModule = typeof module === 'object' && module.exports && typeof module.exports.mount === 'function'
@@ -14,9 +15,8 @@
     typeof require === 'function' ? require('./public-ia.js') : null
   );
   if (!base || typeof base.mount !== 'function') return;
-  if (base.READER_LAYER_VERSION) return;
 
-  const VERSION = 'atlas-reader-v1.1';
+  const VERSION = 'atlas-reader-support-v1.2';
   const INTERNAL_TEXT = /\b(?:ROOK|PR\/CI)\b|claim[_ -]?instance[_ -]?id|proposition[_ -]?id|chain[_ -]?id|publication[_ -]?blocker|knowledge[_ -]?basis[_ -]?support[_ -]?failure/i;
 
   const asArray = value => Array.isArray(value) ? value : [];
@@ -107,7 +107,7 @@
     return result;
   }
 
-  function removeInternalChrome(article, routeKey) {
+  function enforcePublicBoundary(article, routeKey) {
     article.querySelectorAll('.evidence-role-guide, .technical-record-metadata').forEach(node => node.remove());
     article.querySelectorAll('[data-phase5-chart-equivalent]').forEach(details => {
       if (routeKey !== 'military.campaigns' || details.dataset.phase5ChartEquivalent !== 'campaign-tempo') return;
@@ -121,15 +121,6 @@
     });
   }
 
-  function simplifyFooter(rootElement, model, routeKey) {
-    const footer = rootElement.querySelector('.page-footer');
-    if (!footer) return;
-    const first = footer.querySelector('span');
-    if (!first) return;
-    const current = model && model.release && (model.release.current_osint_cutoff_display || model.release.current_osint_cutoff);
-    if (['evidence.method', 'evidence.archive'].includes(routeKey)) return;
-    first.textContent = `Evidence current through ${current || 'the current review cutoff'}. `;
-  }
 
   function setPageIntro(article, copy) {
     const intro = article.querySelector('.page-intro');
@@ -602,8 +593,7 @@
     if (!article) return;
     const routeKey = context.route.key;
     article.dataset.readerLayer = VERSION;
-    removeInternalChrome(article, routeKey);
-    simplifyFooter(rootElement, context.model, routeKey);
+    enforcePublicBoundary(article, routeKey);
     if (routeKey === 'start.overview') simplifyOverview(article);
     if (routeKey === 'military.campaigns') buildCampaignDrilldown(article, context);
     if (routeKey === 'military.facilities') buildFacilityDashboard(article, context);
@@ -619,52 +609,19 @@
     article.querySelectorAll('.evidence-role-guide, .technical-record-metadata').forEach(node => node.remove());
   }
 
-  function makeContext(options) {
-    const windowObject = options.windowObject || root;
-    const route = base.parseRoute(windowObject.location && windowObject.location.hash);
-    const access = options.routeRuntime.forRoute(route);
-    return {
-      documentObject: options.documentObject || root.document,
-      windowObject,
-      model: access.model,
-      services: access.services,
-      state: options.state || {},
-      route
-    };
-  }
-
-  function mount(options) {
-    const settings = options || {};
-    const controller = base.mount(settings);
-    const windowObject = settings.windowObject || root;
-    const rootElement = settings.rootElement;
-    const apply = () => {
-      try { applyReaderLayer(rootElement, settings, makeContext(settings)); }
-      catch (error) { if (root.console && root.console.error) root.console.error('Atlas reader layer failed', error); }
-    };
-    apply();
-    const onHashChange = () => {
-      if (typeof queueMicrotask === 'function') queueMicrotask(apply);
-      else Promise.resolve().then(apply);
-    };
-    windowObject.addEventListener('hashchange', onHashChange);
-    const wrapped = Object.freeze({
-      ...controller,
-      render: () => { const result = controller.render(); apply(); return result; },
-      destroy: () => { windowObject.removeEventListener('hashchange', onHashChange); controller.destroy(); }
-    });
-    rootElement.__atlasRouteController = wrapped;
-    return wrapped;
+  function projectShell(rootElement, context) {
+    if (!rootElement || !context || !context.route) throw new Error('Reader support requires a staged shell and route context.');
+    applyReaderLayer(rootElement, {}, context);
+    return rootElement;
   }
 
   const api = Object.freeze({
-    ...base,
-    mount,
-    READER_LAYER_VERSION: VERSION,
+    READER_SUPPORT_VERSION: VERSION,
+    projectShell,
     readerFacilityStatus: facilityStatus,
     readerPublicAdjudication: publicAdjudication,
     readerIntentReviewNote: intentReviewNote
   });
   if (typeof module === 'object' && module.exports) module.exports = api;
-  else root.AtlasPublicIA = api;
+  else root.AtlasPublicReaderSupport = api;
 }(typeof globalThis !== 'undefined' ? globalThis : this));

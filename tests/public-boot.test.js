@@ -50,7 +50,7 @@ function fakeBootstrapScript(sourceManifest = manifest) {
 function fakeAuthorizedRuntime(sourceManifest = manifest) {
   const entrypoint = app.assetForRole(sourceManifest, 'entrypoint');
   const stylesheet = app.assetForRole(sourceManifest, 'stylesheet');
-  const runtimes = ['map_runtime', 'base_runtime', 'reader_projection', 'page_registry'].map(role => app.assetForRole(sourceManifest, role));
+  const runtimes = ['map_runtime', 'base_runtime', 'reader_support', 'page_registry'].map(role => app.assetForRole(sourceManifest, role));
   const stylesheets = ['map_stylesheet', 'stylesheet', 'reader_stylesheet'].map(role => app.assetForRole(sourceManifest, role));
   const geography = app.assetForRole(sourceManifest, 'reference_geography');
   const authorization = {
@@ -102,23 +102,23 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
 
   const bootstrapAsset = manifest.neutral_bootstrap.asset;
   const applicationAssets = manifest.application.assets;
-  const fixedRoles = ['map_runtime', 'base_runtime', 'reader_projection', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+  const fixedRoles = ['map_runtime', 'base_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
   fixedRoles.forEach(role => assert.equal(applicationAssets.filter(asset => asset.role === role).length, 1, `${role} must remain singular`));
   assert.equal(applicationAssets.filter(asset => asset.role === 'state_flag').length, manifest.application.state_flags.length);
   assert(manifest.application.state_flags.length >= 3, 'closed state-flag inventory must be present');
   assert(applicationAssets.every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)));
   const baseRuntime = app.assetForRole(manifest, 'base_runtime');
-  const readerProjection = app.assetForRole(manifest, 'reader_projection');
+  const readerSupport = app.assetForRole(manifest, 'reader_support');
   const pageRegistry = app.assetForRole(manifest, 'page_registry');
   const readerStylesheet = app.assetForRole(manifest, 'reader_stylesheet');
   assert.equal(baseRuntime.source_path, 'js/public-ia.js');
-  assert.equal(readerProjection.source_path, 'src/public-reader-layer.js');
+  assert.equal(readerSupport.source_path, 'src/public-reader-layer.js');
   assert.equal(pageRegistry.source_path, 'src/public-reader-registry.js');
   assert.equal(readerStylesheet.source_path, 'src/public-reader-layer.css');
   assert.deepEqual(manifest.application.runtime, [
     app.assetForRole(manifest, 'map_runtime').path,
     baseRuntime.path,
-    readerProjection.path,
+    readerSupport.path,
     pageRegistry.path
   ]);
   assert.deepEqual(manifest.application.stylesheets, [
@@ -161,7 +161,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   );
 
   const missingReader = clone(manifest);
-  missingReader.application.assets = missingReader.application.assets.filter(asset => asset.role !== 'reader_projection');
+  missingReader.application.assets = missingReader.application.assets.filter(asset => asset.role !== 'reader_support');
   assert.throws(
     () => bootstrap.validateManifest(missingReader, fakeBootstrapScript(missingReader)),
     error => error.code === 'RELEASE_MISMATCH'

@@ -177,7 +177,7 @@
     invariant(new Set(assetPaths).size === assetPaths.length, 'RELEASE_MISMATCH', 'The application asset inventory contains duplicate paths.');
     const mapRuntime = validateContentAddressedAsset(assetForRole(manifest, 'map_runtime'), 'js');
     const baseRuntime = validateContentAddressedAsset(assetForRole(manifest, 'base_runtime'), 'js');
-    const readerProjection = validateContentAddressedAsset(assetForRole(manifest, 'reader_projection'), 'js');
+    const readerSupport = validateContentAddressedAsset(assetForRole(manifest, 'reader_support'), 'js');
     const pageRegistry = validateContentAddressedAsset(assetForRole(manifest, 'page_registry'), 'js');
     const mapStylesheet = validateContentAddressedAsset(assetForRole(manifest, 'map_stylesheet'), 'css');
     const stylesheet = validateContentAddressedAsset(assetForRole(manifest, 'stylesheet'), 'css');
@@ -186,10 +186,10 @@
     const entrypoint = validateContentAddressedAsset(assetForRole(manifest, 'entrypoint'), 'js');
     const evidenceImages = manifest.application.assets.filter(asset => asset.role === 'evidence_image').map(validateBinaryImage);
     const stateFlags = manifest.application.assets.filter(asset => asset.role === 'state_flag').map(validateStateFlag);
-    const fixedRoles = ['map_runtime', 'base_runtime', 'reader_projection', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+    const fixedRoles = ['map_runtime', 'base_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
     invariant(fixedRoles.every(role => manifest.application.assets.filter(asset => asset.role === role).length === 1), 'RELEASE_MISMATCH', 'A required application asset role is missing or duplicated.');
     invariant(manifest.application.assets.every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)), 'RELEASE_MISMATCH', 'The application asset inventory contains an unsupported role.');
-    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 4 && manifest.application.runtime[0] === mapRuntime.path && manifest.application.runtime[1] === baseRuntime.path && manifest.application.runtime[2] === readerProjection.path && manifest.application.runtime[3] === pageRegistry.path, 'RELEASE_MISMATCH', 'The application runtime paths are inconsistent.');
+    invariant(Array.isArray(manifest.application.runtime) && manifest.application.runtime.length === 4 && manifest.application.runtime[0] === mapRuntime.path && manifest.application.runtime[1] === baseRuntime.path && manifest.application.runtime[2] === readerSupport.path && manifest.application.runtime[3] === pageRegistry.path, 'RELEASE_MISMATCH', 'The application runtime paths are inconsistent.');
     invariant(Array.isArray(manifest.application.stylesheets) && manifest.application.stylesheets.length === 3 && manifest.application.stylesheets[0] === mapStylesheet.path && manifest.application.stylesheets[1] === stylesheet.path && manifest.application.stylesheets[2] === readerStylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet paths are inconsistent.');
     invariant(manifest.application.stylesheet === stylesheet.path, 'RELEASE_MISMATCH', 'The application stylesheet path is inconsistent.');
     invariant(manifest.application.reference_geography === geography.path, 'RELEASE_MISMATCH', 'The application reference-geography path is inconsistent.');
@@ -209,7 +209,7 @@
     invariant(authorization && authorization.manifest, 'RELEASE_MISMATCH', 'The application was not started by an authorized release bootstrap.');
     const manifest = validateManifest(authorization.manifest);
     invariant(authorization.releaseIdentity === manifest.release_identity, 'RELEASE_MISMATCH', 'The runtime authorization release identity is inconsistent.');
-    const runtimes = [assetForRole(manifest, 'map_runtime'), assetForRole(manifest, 'base_runtime'), assetForRole(manifest, 'reader_projection'), assetForRole(manifest, 'page_registry')];
+    const runtimes = [assetForRole(manifest, 'map_runtime'), assetForRole(manifest, 'base_runtime'), assetForRole(manifest, 'reader_support'), assetForRole(manifest, 'page_registry')];
     const entrypoint = assetForRole(manifest, 'entrypoint');
     const stylesheets = [assetForRole(manifest, 'map_stylesheet'), assetForRole(manifest, 'stylesheet'), assetForRole(manifest, 'reader_stylesheet')];
     const stylesheet = stylesheets[1];

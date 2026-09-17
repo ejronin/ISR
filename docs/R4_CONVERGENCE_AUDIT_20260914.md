@@ -23,7 +23,7 @@ That separation is healthy. Archive presence is not production authority.
 
 The current signed reader graph remains:
 
-`map_runtime → base_runtime → reader_projection → page_registry → entrypoint`
+`map_runtime → base_runtime → reader_support → page_registry → entrypoint`
 
 R4-A does not alter that graph.
 
@@ -111,7 +111,7 @@ Do not mix archive deletion with the #100 runtime migration.
 1. Verify #115 live attestation and record its exact merge SHA.
 2. Resolve #116 from actual `main`.
 3. Freeze #115 output as the #100 reader parity oracle.
-4. Map `base_runtime` and `reader_projection` responsibilities into direct reader-first page construction.
+4. Map `base_runtime` and `reader_support` responsibilities into direct reader-first page construction.
 5. Replace migration-shaped tests with behavior/invariant tests before deleting support runtime.
 6. Remove only machinery proven redundant after exact-head and exact-merge-SHA qualification.
 7. Preserve historical evidence and accepted packet lineage throughout.
