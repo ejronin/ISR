@@ -1,0 +1,127 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_12H_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-16T19:30:00-04:00",
+    "window_end": "2026-09-17T07:30:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-17T07:30:00-04:00",
+    "evidence_horizon_time": "2026-09-17T07:30:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260916T1158ET.json",
+    "boundary_rule": "Twelve-hour scheduled collection window. Occurrence, publication/public-availability, collection and evidence-horizon times remain distinct. Pre-window occurrences enter only where materially new evidence became public during the collection horizon. Prefer updates over duplicate events."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-FINCEN-OPERATION-ECONOMIC-OUTCAST-20260916",
+      "event_type": "SANCTIONS_FINANCIAL_ENFORCEMENT",
+      "occurrence_time": "2026-09-16",
+      "public_available_time": "2026-09-16",
+      "actor": "United States Treasury / global financial institutions / Iran",
+      "summary": "Reuters reported FinCEN convened global financial institutions under Operation Economic Outcast and supplied actionable intelligence intended to disrupt Iranian revenue and procurement networks supporting military activity. This is an operational financial-enforcement step rather than merely a sanctions-policy statement.",
+      "confidence": "HIGH",
+      "sources": ["https://www.reuters.com/world/middle-east/us-treasury-gathers-global-financial-institutions-advance-iran-sanctions-2026-09-16/"]
+    },
+    {
+      "event_id": "LOCKER-US-HOUSE-RUSSIA-IRAN-SANCTIONS-ACT-20260916",
+      "event_type": "LEGISLATIVE_SANCTIONS_ACTION",
+      "occurrence_time": "2026-09-16",
+      "public_available_time": "2026-09-16",
+      "actor": "United States Congress / Russia / Iran",
+      "summary": "The U.S. House passed the Lindsey O. Graham Sanctioning Russia and Iran Act of 2026 by 262-159, sending it to the president. Preserve enactment as unresolved until presidential action; passage itself adds prospective sanctions/tariff pressure rather than immediately changing all operative sanctions.",
+      "confidence": "HIGH",
+      "sources": ["https://www.reuters.com/legal/government/us-house-takes-up-russia-sanctions-bill-backed-by-late-senator-graham-2026-09-16/"]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-SAUDI-EASTWEST-ALTERNATIVE-SOHAR-STS-20260917",
+      "updates_existing_ref": "UPD-SAUDI-EASTWEST-MARKET-AND-RESTART-DIVERGENCE-20260916-1158",
+      "relationship": "LATER_EXPORT_MITIGATION_DETAIL",
+      "summary": "Reuters reported Saudi Arabia offering additional Arab Light, Medium and Heavy crude to Asian term buyers using ship-to-ship transfers off Sohar, Oman after East-West Pipeline damage halted Yanbu loadings. Ras Tanura and Juaymah loadings inside the Gulf were reported near four million bpd and satellite observations showed four VLCCs loading at Ras Tanura. This is alternative-route mitigation, not evidence the East-West Pipeline or Yanbu has physically returned to service.",
+      "status": "SOHAR_STS_MITIGATION_EXPANDING; YANBU_LOADINGS_REMAIN_REPORTED_HALTED; GULF_PORT_LOADINGS_INCREASED",
+      "sources": ["https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/"]
+    },
+    {
+      "update_id": "UPD-OIL-PRICES-EASE-ON-SAUDI-MITIGATION-20260917",
+      "updates_existing_ref": "ECON-GULF-EQUITIES-OIL-RISK-20260916-1158",
+      "relationship": "LATER_MARKET_RESPONSE",
+      "summary": "Reuters reported Brent at $104.59 and WTI at $101.29 during September 17 trading, extending losses as the market incorporated Saudi alternative-loading plans via Sohar. This reflects reduced marginal supply-disruption fear, not restoration of normal regional energy flows.",
+      "status": "OIL_PRICES_EASING_FROM_PRIOR_SPIKE; PHYSICAL_ROUTE_RISK_PERSISTS",
+      "sources": ["https://www.reuters.com/business/energy/oil-prices-extend-losses-fears-middle-east-supply-disruptions-ease-2026-09-17/"]
+    },
+    {
+      "update_id": "UPD-ASIA-LNG-DEMAND-DESTRUCTION-QATAR-HORMUZ-20260917",
+      "updates_existing_ref": "REGIONAL_ENERGY_MARKET_CHAIN",
+      "relationship": "LATER_LNG_MARKET_IMPACT",
+      "summary": "Reuters analysis projected September Asian LNG imports at about 20.09 million tonnes, the weakest September since 2018, as spot LNG around $26/mmBtu deterred Asian buyers. The disruption is linked materially to absent/reduced Qatari LNG flows through Hormuz. Europe is absorbing more available LNG. Preserve forecasts separately from finalized monthly customs/import data.",
+      "status": "ASIAN_LNG_DEMAND_DESTRUCTION_REPORTED; QATAR_HORMUZ_DISRUPTION_MATERIAL",
+      "sources": ["https://www.reuters.com/commentary/reuters-open-interest/lng-spot-price-surge-deters-asian-buyers-saves-europe-2026-09-17/"]
+    },
+    {
+      "update_id": "UPD-SAUDI-MISSILE-DEFENSE-INTERCEPTOR-STRAIN-20260917",
+      "updates_existing_ref": "US_SAUDI_SUPPORT_CHAIN",
+      "relationship": "LATER_DEFENSE_SUSTAINMENT_AND_ALLIED-SUPPORT_DETAIL",
+      "summary": "AP reported Saudi Arabia is seeking missile-defense assistance from France, Britain, Pakistan and Egypt as interceptor stocks come under strain, with U.S. stocks also pressured by the Iran war. AP reported no ally had committed direct military support at publication. Washington continued indirect intelligence cooperation while declining direct intervention.",
+      "status": "SAUDI_INTERCEPTOR_STRAIN_REPORTED; EXTERNAL_SUPPORT_SOUGHT; DIRECT_ALLIED_COMBAT_SUPPORT_NOT_CONFIRMED",
+      "sources": ["https://apnews.com/article/895320bde6dc589cebb628b63832c38a"]
+    },
+    {
+      "update_id": "UPD-HOUTHI-WEAPONS-RD-LOITERING-TORPEDO-20260917",
+      "updates_existing_ref": "UPD-HOUTHI-REDSEA-CONSOLIDATION-CAPTURED-MATERIEL-20260916-1158",
+      "relationship": "LATER_TECHNICAL_CAPABILITY_EVIDENCE",
+      "summary": "The National reported Conflict Armament Research findings from Yemen identifying Iran-linked supply networks providing complete weapons, kits and manufacturing enablement while documenting Houthi indigenous experimentation, including navigation modules and propellers assessed as potentially applicable to loitering torpedoes and hydrogen-powered uncrewed-system range extension. Treat proposed loitering-torpedo application as CAR technical assessment, not confirmed operational deployment.",
+      "status": "IRAN_LINKED_SUPPLY_AND_LOCAL_R&D_EVIDENCE_STRENGTHENED; LOITERING_TORPEDO_OPERATIONAL_STATUS_UNCONFIRMED",
+      "sources": ["https://www.thenationalnews.com/news/mena/2026/09/17/houthis-experiment-with-weapons-no-other-armed-group-possesses/"]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-HOUTHI-F15-SHOOTDOWN-20260917-CONTINUITY",
+      "claimant": "Houthis",
+      "claim_time": "2026-09-16",
+      "claim": "Houthis shot down a Saudi F-15.",
+      "adjudication": "REMAINS_UNVERIFIED_AT_2026-09-17T07:30ET; NO INDEPENDENT CONFIRMATION OR SAUDI LOSS ACKNOWLEDGMENT IDENTIFIED IN REVIEWED CURRENT REPORTING",
+      "sources": ["https://apnews.com/article/895320bde6dc589cebb628b63832c38a"]
+    },
+    {
+      "claim_id": "CLM-IRGC-B2-SHOOTDOWN-20260917-CONTINUITY",
+      "claimant": "recirculated online claim environment",
+      "claim_time": "unknown/recirculated",
+      "claim": "Iran/IRGC shot down a U.S. B-2 bomber.",
+      "adjudication": "NO MATERIAL NEW PRIMARY OR INDEPENDENT EVIDENCE IDENTIFIED IN THIS WINDOW; DO NOT PROMOTE TO CONFIRMED LOSS",
+      "sources": []
+    }
+  ],
+  "human_impact_updates": [],
+  "maritime_updates": [
+    {
+      "maritime_id": "MAR-HORMUZ-CONTINUED-DISRUPTION-20260917",
+      "metric": "Hormuz physical/economic flow condition",
+      "observed_state": "No reviewed evidence in the window established restoration to normal Hormuz throughput. Continuing Qatari LNG absence/reduction and Saudi use of alternative Sohar ship-to-ship loading provide independent economic evidence that the chokepoint remains materially disrupted. Exact current visible-vessel count and AIS-dark share were not independently resolved in this sweep.",
+      "sources": ["https://www.reuters.com/commentary/reuters-open-interest/lng-spot-price-surge-deters-asian-buyers-saves-europe-2026-09-17/","https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/"]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "TECHNICAL_WEAPONS_INVESTIGATION",
+      "source": "Conflict Armament Research via The National",
+      "use": "Component-level provenance and weapons-development evidence; distinguish observed components from analyst-assessed potential applications."
+    }
+  ],
+  "coverage_accounting": {
+    "covered": ["Iran/IRGC","United States","Saudi Arabia","Houthis/Yemen","China continuity","Oman/export mediation role","Russia/Iran sanctions legislation","military operations/loss claims","missile-defense sustainment","Hormuz maritime condition","Bab el-Mandeb/Red Sea capability","Saudi energy infrastructure","oil markets","LNG markets","sanctions/financial enforcement","claims/corrections","technical weapons OSINT"],
+    "no_material_new_public_evidence_found_in_window": ["Verified B-2 loss","Independent Saudi F-15 loss confirmation","Confirmed East-West Pipeline full restart","Confirmed Yanbu crude-loading restart","New authoritative Hormuz daily vessel count","Material reversal of China's September 16 negotiation/Hormuz position","New independently verified casualty/displacement count superseding the prior drawer"],
+    "limitations": ["No direct paid Kpler/Vortexa/MarineTraffic terminal access","No proprietary commercial satellite tasking","No insurer/P&I proprietary feeds","No classified ISR","Search-index publication timing may differ from original publisher timestamp","CAR technical findings reviewed through secondary reporting rather than the complete underlying field report"]
+  },
+  "unresolved_questions": ["East-West Pipeline physical repair state, partial flow, full throughput and Yanbu restart","Current Hormuz visible-vessel count and AIS-dark share","Independent verification of claimed Saudi F-15 loss","Independent reconciliation of IRGC MQ-9 cumulative loss claims","Whether Saudi requests for external missile-defense assistance produce actual deployments or transfers","Whether Washington-Houthi Muscat contacts constrain Houthi attacks on Saudi or non-U.S. shipping","Whether China follows public pressure for Hormuz reopening with financial/economic leverage on Tehran","Operational maturity and deployment status of Houthi loitering-torpedo/uncrewed maritime R&D","Presidential disposition of the House-passed Russia/Iran sanctions legislation"],
+  "completion_report": {
+    "status": "12H_SWEEP_APPENDED_TO_EVIDENCE_INTEGRATION_LANE",
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "note": "Append-only scheduled sweep. Prior drawer reviewed; later evidence recorded as updates where it changes disposition, market effect, sustainment, or capability understanding. No downstream adjudication implied."
+  }
+}
