@@ -1,0 +1,124 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_12H_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-17T00:00:45-04:00",
+    "window_end": "2026-09-17T12:00:45-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-17T12:00:45-04:00",
+    "evidence_horizon_time": "2026-09-17T12:00:45-04:00",
+    "boundary_rule": "Occurrence, publication/public-available, collection, and evidence-horizon times remain distinct. Existing events are updated rather than duplicated when later evidence changes status."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRGC-MQ9-QESHM-SECOND-CLAIM-20260917",
+      "event_type": "AIR_DEFENSE_LOSS_CLAIM",
+      "occurrence_time": "2026-09-17T10:12:00+03:30",
+      "public_available_time": "2026-09-17",
+      "actor": "IRGC / United States",
+      "summary": "IRGC said it destroyed another U.S. MQ-9 over Qeshm Island at 10:12 Iran time using a new advanced air-defense system within the integrated air-defense network, calling it the 53rd MQ-9 destroyed in the conflict. No U.S. or independent confirmation was found by the evidence horizon.",
+      "confidence": "HIGH_THAT_IRGC_MADE_CLAIM; UNVERIFIED_AS_AIRCRAFT_LOSS",
+      "sources": ["https://www.aa.com.tr/en/middle-east/iran-says-another-us-mq-9-drone-downed-over-qeshm-island-near-strait-of-hormuz/4060222"]
+    },
+    {
+      "event_id": "LOCKER-TAIF-DRONE-DEBRIS-CASUALTIES-20260917",
+      "event_type": "HUMAN_IMPACT_AIR_DEFENSE_DEBRIS",
+      "occurrence_time": "2026-09-17",
+      "public_available_time": "2026-09-17",
+      "actor": "Saudi Arabia / Houthis",
+      "summary": "Saudi civil defense said falling debris from an intercepted Houthi drone in Taif province killed one Yemeni and injured a Saudi citizen and a Pakistani national, with vehicle and building damage reported.",
+      "confidence": "HIGH_FOR_SAUDI_REPORTED_CASUALTIES",
+      "sources": ["https://apnews.com/article/d29f7fb71331bea0098cbdb38d7577e0"]
+    },
+    {
+      "event_id": "LOCKER-UN-FFM-US-IRAN-FINDINGS-20260917",
+      "event_type": "HUMAN_RIGHTS_LEGAL_FINDING",
+      "occurrence_time": "2026-09-17",
+      "public_available_time": "2026-09-17",
+      "actor": "UN Fact-Finding Mission / United States / Iran",
+      "summary": "A UN fact-finding mission reported reasonable grounds to believe U.S. February strikes in Iran included war crimes and that Iranian authorities committed crimes against humanity in their response to anti-government protests. Preserve these as findings of the UN mission, not judicial determinations.",
+      "confidence": "HIGH_THAT_UN_MISSION_ISSUED_FINDINGS",
+      "sources": ["https://www.reuters.com/world/middle-east/un-mission-finds-grounds-believe-us-committed-war-crimes-iran-tehran-crimes-2026-09-17/"]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-KPLER-THREE-TRANSITS-20260917",
+      "updates_existing_ref": "MAR-HORMUZ-LOW-TRAFFIC-CONTINUITY-20260915",
+      "relationship": "LATER_DAILY_TRAFFIC_OBSERVATION",
+      "summary": "Reuters reported preliminary Kpler data showing only three commercial/commodity vessel transits Wednesday, down from 12 Tuesday and below a 10-day average of 17. One Supramax entered via the Iranian route; a petroleum-product tanker entered and a Panamax tanker exited using dark routes. AIS-off traffic remains an explicit undercount risk.",
+      "status": "THREE_VISIBLE/IDENTIFIED_TRANSITS_WEDNESDAY; SEVERE_DISRUPTION_CONTINUES",
+      "sources": ["https://www.reuters.com/world/middle-east/number-ships-transiting-strait-hormuz-falls-three-wednesday-data-shows-2026-09-17/"]
+    },
+    {
+      "update_id": "UPD-BAB-EL-MANDEB-21-TRANSITS-20260917",
+      "updates_existing_ref": "YEMEN_HOUTHI_REDSEA_ADVANCE_CHAIN",
+      "relationship": "LATER_DAILY_MARITIME_TRAFFIC_OBSERVATION",
+      "summary": "Kpler data reported by Reuters showed 21 Bab el-Mandeb crossings Wednesday, down from 24 Tuesday. The chokepoint remains operational despite Houthi territorial gains and threats.",
+      "status": "21_REPORTED_CROSSINGS_WEDNESDAY",
+      "sources": ["https://www.reuters.com/world/middle-east/number-ships-transiting-strait-hormuz-falls-three-wednesday-data-shows-2026-09-17/"]
+    },
+    {
+      "update_id": "UPD-OIL-PRICE-EASING-20260917",
+      "updates_existing_ref": "SAUDI_ENERGY_MARKET_REACTION_CHAIN",
+      "relationship": "LATER_MARKET_REACTION",
+      "summary": "Oil prices fell materially Thursday amid reduced Saudi-Houthi attack intensity and market expectations of possible de-escalation; reported Brent was around $101.68 and WTI around $99.36 during the session. This is market reaction, not evidence that physical chokepoint or pipeline constraints have normalized.",
+      "status": "PRICE_PRESSURE_EASED; PHYSICAL_CONSTRAINTS_PERSIST",
+      "sources": ["https://www1.folha.uol.com.br/mercado/2026/09/petroleo-cai-mais-de-2-com-reducao-de-ataques-no-oriente-medio.shtml"]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-IRGC-MQ9-53RD-20260917",
+      "claimant": "IRGC",
+      "claim_time": "2026-09-17",
+      "claim": "IRGC said the Qeshm shootdown was the 53rd U.S. MQ-9 destroyed in the conflict.",
+      "adjudication": "UNVERIFIED_AGGREGATE_CLAIM; DO_NOT PROMOTE TO CONFIRMED_LOSS_COUNT",
+      "sources": ["https://www.aa.com.tr/en/middle-east/iran-says-another-us-mq-9-drone-downed-over-qeshm-island-near-strait-of-hormuz/4060222"]
+    },
+    {
+      "claim_id": "CLM-HOUTHI-F15-SHOOTDOWN-CONTINUES-20260917",
+      "claimant": "Houthis",
+      "claim_time": "2026-09-16",
+      "claim": "Houthis claimed they shot down a Saudi F-15 over Marib.",
+      "adjudication": "REMAINS_UNVERIFIED_BY_EVIDENCE_HORIZON; AP Sep 17 reporting repeats claim without independent confirmation",
+      "sources": ["https://apnews.com/article/d29f7fb71331bea0098cbdb38d7577e0"]
+    }
+  ],
+  "diplomatic_updates": [
+    {
+      "update_id": "UPD-CHINA-IRAN-HORMUZ-NEGOTIATION-POSITION-20260917",
+      "summary": "Chinese reporting/readouts continued to frame the June interim agreement as a basis for rebuilding negotiations while separately urging effective measures to reopen Hormuz early. This supports coding Beijing's position as negotiation-restoration plus chokepoint reopening, not as established endorsement of Iran's demand for literal U.S. restoration of every prior MoU concession.",
+      "sources": ["https://www.asiaone.com/china/chinas-top-diplomat-urges-iran-us-show-restraint-revive-talks","https://www.dawn.com/news/amp/2030485"]
+    }
+  ],
+  "coverage_accounting": {
+    "covered": ["Iran","United States","Saudi Arabia","Houthis/Yemen","China","Hormuz","Bab el-Mandeb/Red Sea","military/air-defense claims","maritime traffic","energy/oil markets","diplomacy","human impact","international legal/human-rights findings","claims/corrections"],
+    "limitations": ["No direct paid Kpler/Vortexa/MarineTraffic terminal access","No proprietary commercial satellite tasking","No insurer/P&I proprietary feeds","No classified ISR","No U.S. confirmation located for the Sep 17 IRGC MQ-9 claim by evidence horizon","Search results for some source classes were sparse; absence of a new public report is not evidence of no activity"]
+  },
+  "source_discovery_additions": [
+    "Reuters/Kpler daily Hormuz and Bab el-Mandeb transit reporting",
+    "AP Saudi civil-defense casualty reporting",
+    "Anadolu carriage of IRGC statements, retained as claimant-source evidence rather than independent BDA",
+    "UN fact-finding mission reporting via Reuters"
+  ],
+  "unresolved_questions": [
+    "Independent/U.S. confirmation or contradiction of the Sep 17 Qeshm MQ-9 loss claim and claimed 53-aircraft aggregate",
+    "Independent verification of the Houthi Saudi F-15 loss claim",
+    "Current AIS-dark share of Hormuz traffic and reconciliation of preliminary Kpler counts",
+    "East-West Pipeline physical repair, partial/full throughput, and Yanbu crude-loading normalization",
+    "Whether reduced Saudi-Houthi attack tempo persists or is temporary",
+    "Whether China applies private economic/financial pressure on Tehran beyond its public negotiation/Hormuz position",
+    "Whether the U.S.-Houthi Oman channel yields constraints on attacks against Saudi-linked shipping or Saudi territory"
+  ],
+  "completion_report": {
+    "status": "12H_SWEEP_APPENDED_TO_EVIDENCE_INTEGRATION_LANE",
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "note": "Material new evidence existed in this collection window. Prior drawers were treated as historical horizons; later evidence supersedes status where explicitly linked without rewriting prior evidence bytes."
+  }
+}
