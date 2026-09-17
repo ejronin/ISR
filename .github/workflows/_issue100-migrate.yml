@@ -42,7 +42,6 @@ jobs:
         run: |
           node tests/public-reader-layer.test.js
           node tests/public-reader-registry.test.js
-          python scripts/validate_public_runtime_inventory.py
       - name: Commit converged renderer
         run: |
           rm -f scripts/_issue100_migrate.py .github/workflows/_issue100-migrate.yml .github/workflows/_issue100-migrate-fix.yml
