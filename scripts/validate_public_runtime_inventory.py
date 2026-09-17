@@ -22,9 +22,9 @@ REQUIRED_CLASSIFICATION_SEMANTICS = {
 REQUIRED_CURRENT_SERVICE_OWNERS = (
     ("public bootstrap", "js/public-bootstrap.js", "async function start"),
     ("public application", "js/public-app.js", "async function boot"),
-    ("authoritative visible reader registry and route lifecycle", "src/public-reader-registry.js", "function mount"),
+    ("authoritative reader-first page registry and route lifecycle", "src/public-reader-registry.js", "function mount"),
     ("non-authoritative base rendering library", "js/public-ia.js", "PAGE_OWNERS"),
-    ("non-authoritative reader projection support", "src/public-reader-layer.js", "READER_LAYER_VERSION"),
+    ("non-authoritative reader support module module", "src/public-reader-layer.js", "READER_SUPPORT_VERSION"),
     ("shared evidence drawer", "js/public-ia.js", "EvidenceDrawer"),
     ("shared MapView", "js/public-ia.js", "MapView"),
     ("route data authorization", "js/public-app.js", "createRouteModelView"),

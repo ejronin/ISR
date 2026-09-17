@@ -1,8 +1,10 @@
 /* ATLAS AUTHORITATIVE PUBLIC READER REGISTRY
  *
- * Sole visible page authority. Base rendering and reader projection run inside
- * a connected off-screen staging host. Public Product finalization runs on that
- * staged reader output before it is validated and promoted.
+ * Sole visible page and route authority. The registry directly constructs the
+ * public shell, invokes base page builders as non-authoritative render primitives,
+ * applies reader support while the route is still staged, finalizes Public Product
+ * semantics, validates the result, and only then promotes it. No alternate base
+ * application is ever mounted underneath the reader.
  */
 (function initAtlasPublicReaderRegistry(globalObject, factory) {
   'use strict';
@@ -12,8 +14,9 @@
 }(typeof globalThis !== 'undefined' ? globalThis : this, function atlasReaderRegistryFactory(root) {
   'use strict';
 
-  const projection = root.AtlasPublicIA || (typeof require === 'function' ? require('./public-reader-layer.js') : null);
-  if (!projection || typeof projection.mount !== 'function') return null;
+  const base = root.AtlasPublicIA || (typeof require === 'function' ? require('./public-ia.js') : null);
+  const readerSupport = root.AtlasPublicReaderSupport || (typeof require === 'function' ? require('./public-reader-layer.js') : null);
+  if (!base || typeof base.parseRoute !== 'function' || !readerSupport || typeof readerSupport.projectShell !== 'function') return null;
 
   const VERSION = 'atlas-reader-registry-v1';
   const PRODUCT_VERSION = 'sep14-reader-convergence-v1';
@@ -45,7 +48,7 @@
     const c = add(host, 'article', 'orientation-card'); if (kicker) add(c, 'p', 'card-kicker', kicker);
     add(c, 'h3', '', title); add(c, 'p', '', body); return c;
   }
-  function routeLink(host, key, label) { const a = add(host, 'a', 'inline-route-link', label); a.href = projection.routeHref(key); return a; }
+  function routeLink(host, key, label) { const a = add(host, 'a', 'inline-route-link', label); a.href = base.routeHref(key); return a; }
   function findSection(article, pattern) {
     return [...article.querySelectorAll(':scope > section, :scope > details')].find(x => pattern.test(x.querySelector(':scope > h2, :scope > summary')?.textContent || '')) || null;
   }
@@ -56,19 +59,19 @@
     [...el.children].forEach(child => { if (!/^H[1-6]$/.test(child.tagName)) d.append(child); }); el.replaceWith(d); return d;
   }
   function accessContext(routeRuntime, route, doc) { const a = routeRuntime.forRoute(route); return { documentObject: doc, model: a.model, services: a.services, route }; }
-  function modelData(model, key) { return projection.modelData ? projection.modelData(model, key) : null; }
+  function modelData(model, key) { return base.modelData ? base.modelData(model, key) : null; }
   function records(model, key) {
     const v = modelData(model, key);
-    if (projection.recordArray) return projection.recordArray(v);
+    if (base.recordArray) return base.recordArray(v);
     if (Array.isArray(v)) return v;
     if (v && typeof v === 'object') for (const k of ['records','items','facilities','shipping','economics','diplomacy','gaps','claims']) if (Array.isArray(v[k])) return v[k];
     return [];
   }
   function evidence(host, context, record, label='Evidence') {
-    if (!record || !projection.EvidenceDrawer?.create) return;
+    if (!record || !base.EvidenceDrawer?.create) return;
     const ids = [...new Set([...(record.source_ids || []), ...((record.sources || []).filter(x => typeof x === 'string'))])];
     if (!ids.length) return;
-    const d = projection.EvidenceDrawer.create(context, { source_ids: ids }); const s = d.querySelector('summary'); if (s) s.textContent = label; host.append(d);
+    const d = base.EvidenceDrawer.create(context, { source_ids: ids }); const s = d.querySelector('summary'); if (s) s.textContent = label; host.append(d);
   }
 
   const FACILITY = Object.freeze({
@@ -329,10 +332,10 @@
     Object.assign(host.style,{position:'fixed',left:'-100000px',top:'0',width:`${Math.max(1024,Number(win?.innerWidth)||1280)}px`,minHeight:'100vh',visibility:'hidden',pointerEvents:'none',overflow:'hidden'});
     (doc.body||doc.documentElement||rootElement).append(host);invariant(host.isConnected!==false,'READER_STAGE_DISCONNECTED','Reader staging host must remain connected during finalization.');return host;
   }
-  function validateFinalizedStage(stage, projectionRuntime) {
+  function validateFinalizedStage(stage, readerSupportRuntime) {
     const app=stage.querySelector?.('.atlas-app'),article=stage.querySelector?.('.public-page'),heading=article?.querySelector?.('h1');
     invariant(app&&article&&heading,'READER_FINALIZATION_INCOMPLETE','The staged route is missing the qualified reader shell.');
-    invariant(article.dataset&&article.dataset.readerLayer===projectionRuntime.READER_LAYER_VERSION,'READER_PROJECTION_MISSING','The staged route did not complete reader projection.');
+    invariant(article.dataset&&article.dataset.readerLayer===readerSupportRuntime.READER_SUPPORT_VERSION,'READER_PROJECTION_MISSING','The staged route did not complete reader projection.');
     invariant(!INTERNAL_TEXT.test(String(stage.innerText||stage.textContent||'')),'READER_INTERNAL_LEAK','The staged route contains internal review text.');
     return {app,article,heading};
   }
@@ -340,34 +343,46 @@
   function emitRouteFailure(win,state,error){state.readerError={code:error.code||'READER_FINALIZATION_FAILED'};root.console?.error?.('Atlas reader route finalization failed',error);if(win?.CustomEvent&&win.dispatchEvent)win.dispatchEvent(new win.CustomEvent('atlasreadererror',{detail:{code:state.readerError.code}}));}
 
   function mount(options) {
-    const settings=options||{},doc=settings.documentObject||root.document,win=settings.windowObject||root,rootElement=settings.rootElement,routeRuntime=settings.routeRuntime,state=settings.state||{},projectionRuntime=settings.projectionRuntime||projection;
+    const settings=options||{},doc=settings.documentObject||root.document,win=settings.windowObject||root,rootElement=settings.rootElement,routeRuntime=settings.routeRuntime,state=settings.state||{};
+    const baseRuntime=settings.baseRuntime||base,readerSupportRuntime=settings.readerSupportRuntime||readerSupport;
     invariant(doc&&rootElement&&routeRuntime&&typeof routeRuntime.forRoute==='function','READER_REGISTRY_INVALID','Reader registry requires a document, root element, and guarded route runtime.');
-    invariant(projectionRuntime&&typeof projectionRuntime.mount==='function'&&typeof projectionRuntime.parseRoute==='function','READER_PROJECTION_UNAVAILABLE','Reader projection support is unavailable.');
+    invariant(baseRuntime&&typeof baseRuntime.parseRoute==='function'&&baseRuntime.AppShell&&baseRuntime.PublicNavigation&&baseRuntime.PAGE_OWNERS,'READER_BASE_SUPPORT_UNAVAILABLE','Reader render primitives are unavailable.');
+    invariant(readerSupportRuntime&&typeof readerSupportRuntime.projectShell==='function'&&readerSupportRuntime.READER_SUPPORT_VERSION,'READER_SUPPORT_UNAVAILABLE','Reader projection support is unavailable.');
     rootElement.__atlasRouteController?.destroy?.();
     let destroyed=false,previousRouteKey=null,currentServices=null;
     const stageRoute=(focusHeading,propagateFailure=false)=>{
       invariant(!destroyed,'READER_REGISTRY_DESTROYED','Reader registry is no longer active.');
-      const previousTitle=doc.title,previousVisible=Array.from(rootElement.children||[]).filter(n=>!n.dataset?.atlasReaderStaging),hasQualified=rootElement.dataset?.status==='ready'&&previousVisible.length>0,stagedState={...state},stage=createStagingHost(doc,rootElement,win);let support=null;
+      const previousTitle=doc.title,previousVisible=Array.from(rootElement.children||[]).filter(n=>!n.dataset?.atlasReaderStaging),hasQualified=rootElement.dataset?.status==='ready'&&previousVisible.length>0,stagedState={...state},stage=createStagingHost(doc,rootElement,win);
       try {
-        support=projectionRuntime.mount({...settings,documentObject:doc,windowObject:win,rootElement:stage,routeRuntime,state:stagedState});
-        const route=support?.current?.()||projectionRuntime.parseRoute(win.location&&win.location.hash);
+        const route=baseRuntime.parseRoute(win.location&&win.location.hash),access=routeRuntime.forRoute(route),context={documentObject:doc,windowObject:win,model:access.model,services:access.services,state:stagedState,route};
+        currentServices=access.services;
+        if(!route.canonical&&win.history&&win.location)win.history.replaceState(null,'',baseRuntime.routeHref(route.key,route.params));
+        const shell=baseRuntime.AppShell.create(doc);stage.replaceChildren(shell.app);
+        shell.primaryHost.replaceChildren(baseRuntime.PublicNavigation.renderPrimary(doc,route));
+        shell.mobileHost.replaceChildren(baseRuntime.PublicNavigation.renderMobile(doc,route));
+        shell.aside.replaceChildren(baseRuntime.PublicNavigation.renderSecondary(doc,route));
+        const owner=baseRuntime.PAGE_OWNERS[route.owner];invariant(typeof owner==='function','READER_PAGE_OWNER_MISSING',`Reader page owner is unavailable: ${route.owner}`);
+        const page=owner(context);shell.main.replaceChildren(page);
+        shell.footer.replaceChildren();add(shell.footer,'span','',`Evidence current through ${access.model?.release?.current_osint_cutoff_display||access.model?.release?.current_osint_cutoff||'the current review cutoff'}. `);
+        const archive=add(shell.footer,'a','','Archive');archive.href=baseRuntime.routeHref('evidence.archive');
+        stagedState.routeKey=route.key;stagedState.pageOwner=route.owner;stagedState.primarySection=route.primaryLabel;stagedState.secondaryPage=route.label;doc.title=`${route.title} · Iran War Evidence Atlas`;
+        readerSupportRuntime.projectShell(shell.app,context);
         finalizePublicProduct(stage,route,routeRuntime,doc);
-        const finalized=validateFinalizedStage(stage,projectionRuntime);
-        currentServices=support?.services?.()||currentServices;support?.destroy?.();support=null;finalized.app.dataset.readerAuthority=VERSION;
+        const finalized=validateFinalizedStage(stage,readerSupportRuntime);finalized.app.dataset.readerAuthority=VERSION;
         previousVisible.forEach(quiesceMaps);rootElement.replaceChildren(finalized.app);retireVisibleNodes(doc,rootElement,previousVisible);stage.remove();
         rootElement.className='atlas-ready';rootElement.dataset.status='ready';rootElement.setAttribute('aria-busy','false');copyRouteState(state,stagedState);delete state.readerError;
-        if(focusHeading&&previousRouteKey&&route&&previousRouteKey!==route.key)finalized.heading.focus?.();previousRouteKey=route?.key||stagedState.routeKey||previousRouteKey;return route;
+        if(focusHeading&&previousRouteKey&&previousRouteKey!==route.key)finalized.heading.focus?.();previousRouteKey=route.key;return route;
       } catch(error) {
-        try{support?.destroy?.();}catch(_){} stage.remove();doc.title=previousTitle;
-        const failure=error instanceof ReaderRegistryError?error:new ReaderRegistryError(error?.code||'READER_FINALIZATION_FAILED','Reader projection or finalization failed.',error);
+        stage.remove();doc.title=previousTitle;
+        const failure=error instanceof ReaderRegistryError?error:new ReaderRegistryError(error?.code||'READER_FINALIZATION_FAILED','Reader rendering or finalization failed.',error);
         if(hasQualified){emitRouteFailure(win,state,failure);if(propagateFailure)throw failure;return null;} throw failure;
       }
     };
     const onHashChange=()=>stageRoute(true,false);win?.addEventListener?.('hashchange',onHashChange);let initialRoute;
     try{initialRoute=stageRoute(false,false);}catch(error){win?.removeEventListener?.('hashchange',onHashChange);throw error;}
-    const controller=Object.freeze({render:()=>stageRoute(false,true),current:()=>projectionRuntime.parseRoute(win.location&&win.location.hash),services:()=>currentServices,destroy:()=>{destroyed=true;win?.removeEventListener?.('hashchange',onHashChange);},initialRoute});
+    const controller=Object.freeze({render:()=>stageRoute(false,true),current:()=>baseRuntime.parseRoute(win.location&&win.location.hash),services:()=>currentServices,destroy:()=>{destroyed=true;win?.removeEventListener?.('hashchange',onHashChange);},initialRoute});
     rootElement.__atlasRouteController=controller;return controller;
   }
 
-  return Object.freeze({...projection,mount,READER_REGISTRY_VERSION:VERSION,ReaderRegistryError,validateFinalizedStage});
+  return Object.freeze({...base,mount,READER_REGISTRY_VERSION:VERSION,ReaderRegistryError,validateFinalizedStage});
 }));

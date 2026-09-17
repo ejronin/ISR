@@ -127,7 +127,7 @@ def main() -> int:
     application = manifest.get("application") or {}
     assets = application.get("assets") or []
     expected_roles = {
-        "map_runtime", "base_runtime", "reader_projection", "page_registry",
+        "map_runtime", "base_runtime", "reader_support", "page_registry",
         "map_stylesheet", "stylesheet", "reader_stylesheet",
         "reference_geography", "entrypoint",
     }
@@ -138,7 +138,7 @@ def main() -> int:
     validate_asset(site, bootstrap, "bootstrap", "js")
     validate_asset(site, by_role["map_runtime"], "map_runtime", "js")
     validate_asset(site, by_role["base_runtime"], "base_runtime", "js")
-    validate_asset(site, by_role["reader_projection"], "reader_projection", "js")
+    validate_asset(site, by_role["reader_support"], "reader_support", "js")
     validate_asset(site, by_role["page_registry"], "page_registry", "js")
     validate_asset(site, by_role["map_stylesheet"], "map_stylesheet", "css")
     validate_asset(site, by_role["stylesheet"], "stylesheet", "css")
@@ -159,7 +159,7 @@ def main() -> int:
     if application.get("runtime") != [
         by_role["map_runtime"].get("path"),
         by_role["base_runtime"].get("path"),
-        by_role["reader_projection"].get("path"),
+        by_role["reader_support"].get("path"),
         by_role["page_registry"].get("path"),
     ]:
         fail("public release runtime pointers mismatch")
