@@ -27,6 +27,17 @@ jobs:
         run: |
           python scripts/_issue100_migrate.py
           sed -i "1c'use strict';" tests/public-reader-registry.test.js
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('tests/public-reader-registry.test.js')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace("const documentObject={title,body,documentElement:body,createElement:t=>new Node(t)};", "const documentObject={title,body,documentElement:body};documentObject.createElement=t=>{const n=new Node(t);n.ownerDocument=documentObject;return n;};body.ownerDocument=documentObject;")
+          s = s.replace("const nav=doc=>new Node('nav');", "const nav=doc=>doc.createElement('nav');")
+          s = s.replace("const app=new Node('div');app.dataset.kind='app';const primaryHost=new Node(),mobileHost=new Node(),aside=new Node(),main=new Node(),footer=new Node();", "const app=doc.createElement('div');app.dataset.kind='app';const primaryHost=doc.createElement('div'),mobileHost=doc.createElement('div'),aside=doc.createElement('aside'),main=doc.createElement('main'),footer=doc.createElement('footer');")
+          s = s.replace("TestPage(){const article=new Node('article');article.dataset.kind='page';const intro=new Node('div');", "TestPage(context){const article=context.documentObject.createElement('article');article.dataset.kind='page';const intro=context.documentObject.createElement('div');")
+          s = s.replace("if(includeHeading)article.append(new Node('h1'));", "if(includeHeading)article.append(context.documentObject.createElement('h1'));")
+          p.write_text(s, encoding='utf-8')
+          PY
       - name: Run focused architecture contracts
         run: |
           node tests/public-reader-layer.test.js
