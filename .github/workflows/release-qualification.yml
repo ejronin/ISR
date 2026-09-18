@@ -102,6 +102,7 @@ jobs:
           python scripts/migrate_lie_ledger_evidence_adjudications.py --check
           python tests/lie-ledger-governance-neutralization.test.py
           python tests/evidence-governance-boundary.test.py
+          python tests/evidence-adjudication-reasoning-invariants.test.py
           python tests/evidence-semantic-edge-regressions.test.py
 
       - name: Regenerate and validate pinned reference geography

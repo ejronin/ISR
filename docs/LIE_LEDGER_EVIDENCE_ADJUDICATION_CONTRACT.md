@@ -1,7 +1,12 @@
 # Lie Ledger evidence-adjudication contract
 
 **Status:** Active successor contract for generated Lie Ledger state.
-**Reasoning amendment:** 2026-09-18 — ordinary-language proposition testing, claimant burden, reasonable inference, and source-reliability weighting.
+**Reasoning amendment:** 2026-09-18 — ordinary-language proposition testing, claimant burden, reasonable inference, temporal self-falsification, and source-reliability weighting.
+
+<!-- evidence-reasoning-contract: config/evidence-adjudication-reasoning.json -->
+<!-- evidence-reasoning-invariants: ORDINARY_MEANING,SPECIFICITY_BURDEN,EXACT_ACCOUNTING_IS_TESTABLE,CLAIMANT_NO_PRESUMPTION,ABSENCE_NOT_AUTOMATIC_FALSE,UNRESOLVED_NARROW,REASONABLE_INFERENCE,POSSIBILITY_IS_NOT_EVIDENCE,NO_INVENTED_INNOCENT_PATHWAY,LATER_SELF_ADMISSION_CAN_FALSIFY_PRIOR_DENIAL,LATER_PURPOSE_CAN_FALSIFY_ACCIDENT_EXPLANATION,CORRECTION_PATH_MUST_BE_EVIDENCED,FALSE_NOT_LIE,KNOWLEDGE_BY_CONVERGENCE,ACTOR_NEUTRAL -->
+
+The machine-readable reasoning contract above is binding semantic governance for this contract. Human prose may evolve, but release qualification must preserve its required invariant set and decision rules.
 
 This contract governs the active generated Lie Ledger model. Historical ROOK and PR/CI artifacts remain preserved as provenance and migration inputs, but no persona, engineer, or prior workflow owns factual truth, knowledge judgment, publication authority, or implementation authority.
 
@@ -63,6 +68,19 @@ These factors have different roles. Source history and motive change evidentiary
 An exact statement such as “the 52nd” or “all targets were destroyed” also makes an implicit record-keeping proposition: the claimant is representing that it possesses a coherent basis for that exact accounting. The adjudicator may test the asserted ordinal or universal against the claimant's own ledger, accepted external baselines, duplication controls, category boundaries, and later corrections.
 
 `FALSE != Lie` remains mandatory, but the knowledge prong does not require a confession. `LIKELY_KNEW_FALSE`, `VERY_LIKELY_KNEW_FALSE`, or `KNOWING_FALSEHOOD_ESTABLISHED` may be supported by converging evidence of access, chronology, internal contradiction, repetition after correction opportunity, record-keeping responsibility, and the relative weakness of credible innocent-error alternatives.
+
+## 2C. Temporal self-falsification and anti-drift
+
+Later statements are evidence about earlier propositions when they concern the same act, event, accounting, or asserted state.
+
+- **Possibility is not evidence.** An unevidenced hypothetical alternative has zero evidentiary weight. The adjudicator must not preserve `UNRESOLVED` merely because an innocent explanation can be imagined.
+- **Do not invent an innocent knowledge-acquisition sequence.** A claim that an earlier speaker lacked knowledge, received stale reporting, experienced a system failure, or learned the facts only later must be supported by evidence in the record before it can materially mitigate a knowledge inference.
+- **Later admission may directly falsify an earlier denial.** If the same responsible actor or institution later says it performed the same act it previously categorically denied, the later admission is affirmative falsifying evidence against the earlier denial. The earlier statement's current adjudication may therefore change while its historical assessment-time state remains preserved.
+- **Later purposeful explanation may directly falsify an earlier accident/no-intent account.** If an actor first concedes an act but attributes it to malfunction, accident, lack of intent, or unauthorized action, and later says the same act was deliberately performed because of a stated reason, the later purposeful account is affirmative counterevidence to the earlier explanation.
+- **Narrative evolution is a relationship, not a verdict substitute.** Chain labels such as correction, retraction, amplification, or narrative substitution describe how statements relate. They do not excuse the adjudicator from determining whether later nodes falsify, corroborate, qualify, or establish knowledge concerning earlier nodes.
+- **Good-faith correction is evidence-sensitive.** A documented chain such as initial denial -> investigation -> discovery of missing release report -> prompt correction may support a finding that the earlier false statement was not knowing. The adjudicator must require evidence for that chain rather than manufacture it.
+
+The temporal rule is: **the lie, if any, occurs when the knowingly false statement is made; later evidence may be what allows Atlas to establish that falsity and knowledge.** Current adjudication may therefore be revised by later evidence without backdating Atlas's earlier knowledge state.
 
 ## 3. Evidence invariants
 
