@@ -1,7 +1,7 @@
 # ATLAS ISR — Engineering Doctrine and Lane Registry
 
 **Status:** CONTROLLING ENGINEERING GOVERNANCE
-**Effective:** 2026-09-10
+**Effective:** 2026-09-10; adjudication reasoning amendment 2026-09-18
 **Owner:** Lead Public Product Engineer
 **Supersedes:** the 2026-09-10 bootstrap in this file and every earlier ROOK / PR-CI / UX-UI / prompt / PR-era authority contract where they conflict with this doctrine.
 
@@ -52,6 +52,26 @@ These rules survive every redesign unless the Lead records an explicit evidentia
 - Conflicting preserved source variants are not silently collapsed into a winner.
 - Corrections and retractions remain part of the historical record rather than erasing the earlier claim.
 - Unlike denominators are not added merely to produce a cleaner chart or headline.
+
+### Claim adjudication reasoning standard
+
+Evidence Integration applies ordinary evidentiary reasoning, not courtroom-style proof formalism and not automatic agnosticism.
+
+- **Words mean what they ordinarily communicate in context.** Test the proposition a reasonable audience would understand from the speaker's actual words, qualifiers, setting, audience, and contemporaneous context. Do not invent a narrower, more charitable proposition after contrary evidence appears.
+- **The speaker owns the statement as made.** A later clarification, correction, retraction, or claim that the statement was misunderstood is new evidence. It may change the current assessment, but it does not silently rewrite the original proposition or erase its earlier effects.
+- **Affirmative claims carry an evidentiary burden proportionate to their specificity.** An exact count, ordinal, identity, universal statement, causal attribution, destruction claim, capture claim, casualty count, or claim of total control requires evidence capable of supporting that level of precision. A claimant-only assertion is not presumed true until an opponent disproves it.
+- **Absence of corroboration is not automatically falsity, but neither is it a 50/50 state.** Use `UNSUBSTANTIATED` or the active equivalent when the claimant has not supplied enough support and the external record does not settle the proposition. Use `UNRESOLVED` only when material evidence leaves genuinely live explanations without a materially favored answer.
+- **Reasonable inference is evidence.** Direct proof is not required when independent facts, internal consistency, physical evidence, chronology, arithmetic, behavior, institutional access, correction opportunity, source reliability, and credible alternatives converge strongly enough to favor a conclusion.
+- **Exact accounting claims imply an accounting basis.** When an actor says “the 52nd,” “all,” “none,” “100 percent,” or another exact cumulative proposition, the implied ledger or record-keeping claim is itself testable. Compare it against the actor's own prior itemization, corrections, category definitions, duplicates, known losses, and independently established baselines.
+- **Internal contradiction can establish falsity.** A proposition may be adjudicated `FALSE` when it is incompatible with the claimant's own contemporaneous records, arithmetic, later acknowledgment, physical facts, or other accepted evidence even if the opposing party never publishes a single dispositive rebuttal.
+- **Source reliability affects evidentiary weight, not truth by fiat.** A documented history of accurate reporting increases weight; a documented history of unsupported, contradicted, exaggerated, recycled, or quietly replaced claims decreases it. Reliability history does not automatically make a new proposition true or false, but it changes how much unsupported assertion should move the assessment.
+- **Authority and access matter to the knowledge prong.** Ask whether the speaker or institution reasonably had access to own-force records, BDA, personnel accountability, targeting data, diplomatic records, sensor feeds, or corrections before speaking or repeating the claim. A confession is not required to infer knowledge when access and contradiction make innocent error materially less plausible.
+- **Motive is explanatory evidence, not a substitute for factual proof.** Domestic messaging, operational deception, face-saving, deterrence, bargaining, or propaganda may explain why a false statement was made and can strengthen a knowledge inference when supported by the record. Motive alone does not establish falsity.
+- **Plausible innocent-error explanations must be tested, not merely imagined.** Stale data, misidentification, translation error, reporting delay, fog of war, source error, or ambiguous terminology remain credible only when they fit the timeline, the speaker's access, the wording used, subsequent behavior, and the available correction opportunities.
+- **Responsibility is not erased by an explanation.** Understanding why a speaker relied on bad data, automation, subordinate reporting, stale targeting information, or an erroneous source can explain mechanism and intent; it does not change what was publicly asserted or eliminate responsibility for an unsupported or false statement.
+- **Apply the same standard to every actor.** U.S., Iranian, Israeli, GCC, proxy, international-organization, media, commercial, and third-party claims receive the same proposition-first, evidence-weighted treatment.
+
+`FALSE != Lie` remains controlling. The correction is that **knowledge may be established by reasonable inference from access, chronology, internal records, repetition after correction opportunity, and comparative alternatives; it does not require direct admission.**
 
 ## 4. Public / internal boundary
 

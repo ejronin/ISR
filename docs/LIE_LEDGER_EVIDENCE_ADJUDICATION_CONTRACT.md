@@ -1,6 +1,7 @@
 # Lie Ledger evidence-adjudication contract
 
 **Status:** Active successor contract for generated Lie Ledger state.
+**Reasoning amendment:** 2026-09-18 — ordinary-language proposition testing, claimant burden, reasonable inference, and source-reliability weighting.
 
 This contract governs the active generated Lie Ledger model. Historical ROOK and PR/CI artifacts remain preserved as provenance and migration inputs, but no persona, engineer, or prior workflow owns factual truth, knowledge judgment, publication authority, or implementation authority.
 
@@ -28,6 +29,40 @@ These dimensions must not be collapsed merely to simplify the public presentatio
 A knowing-falsehood or likely-lie conclusion requires evidence supporting the relevant knowledge judgment. A factual finding may remain false while the knowledge/intent question is unresolved, insufficiently evidenced, or not assessable.
 
 Likewise, a publication qualification affecting a knowledge judgment must not erase an independently supported factual status. The correct behavior is to withhold the unqualified knowledge/intent conclusion while retaining the supported factual finding.
+
+## 2A. Proposition meaning and evidentiary burden
+
+The adjudicator tests what the speaker actually communicated, not a hypothetical version that would be easier to defend later.
+
+- Use the ordinary meaning of the words in their contemporaneous context, including qualifiers, audience, role, and surrounding statements.
+- Preserve the speaker's level of specificity. Exact counts, ordinals, identities, universal propositions, causal attributions, destruction claims, capture claims, casualty counts, and claims of total control are exact testable propositions.
+- An affirmative claimant does not receive a presumption of truth merely because an opposing actor has not issued a dispositive rebuttal. The evidence must support the proposition at the precision asserted.
+- Absence of corroboration alone may support `UNSUBSTANTIATED` or an equivalent evidence-deficient state; it does not automatically establish `FALSE`.
+- `UNRESOLVED` is not the default for every unverified proposition. Reserve it for cases where material evidence leaves genuinely live explanations and no answer is materially favored.
+- A later clarification, correction, retraction, or claim of misquotation is evaluated as a later record. It may alter current understanding, but it does not erase or silently rewrite the earlier proposition.
+
+## 2B. Reasonable inference, internal consistency, and knowledge
+
+Atlas may reach factual and knowledge judgments through reasonable inference. Direct admission, a single dispositive source, or courtroom-style proof is not required.
+
+The adjudicator must consider, where relevant:
+
+- independent observation and physical evidence;
+- chronology and arithmetic;
+- internal consistency with the claimant's own prior records, category definitions, itemization, corrections, and later acknowledgments;
+- whether an exact cumulative claim implies a ledger that can be reconstructed and tested;
+- claimant/institution access to own-force records, BDA, personnel accountability, targeting data, sensor feeds, diplomatic records, or other counterfacts;
+- whether contrary evidence or correction opportunity existed before a repetition or escalation;
+- source reliability based on the source's documented record of accurate, unsupported, contradicted, exaggerated, recycled, corrected, or quietly abandoned claims;
+- subsequent behavior and operational consequences;
+- credible innocent-error explanations such as stale data, misidentification, translation error, reporting delay, fog of war, or subordinate-source error;
+- plausible motive or narrative function, including deterrence, bargaining, domestic messaging, face-saving, propaganda, or operational deception.
+
+These factors have different roles. Source history and motive change evidentiary weight and comparative plausibility; they do not make a proposition false by themselves. Institutional access does not automatically prove deception; it can, however, materially support a knowledge inference when the proposition is false and the access makes innocent error less plausible.
+
+An exact statement such as “the 52nd” or “all targets were destroyed” also makes an implicit record-keeping proposition: the claimant is representing that it possesses a coherent basis for that exact accounting. The adjudicator may test the asserted ordinal or universal against the claimant's own ledger, accepted external baselines, duplication controls, category boundaries, and later corrections.
+
+`FALSE != Lie` remains mandatory, but the knowledge prong does not require a confession. `LIKELY_KNEW_FALSE`, `VERY_LIKELY_KNEW_FALSE`, or `KNOWING_FALSEHOOD_ESTABLISHED` may be supported by converging evidence of access, chronology, internal contradiction, repetition after correction opportunity, record-keeping responsibility, and the relative weakness of credible innocent-error alternatives.
 
 ## 3. Evidence invariants
 
