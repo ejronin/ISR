@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "effective_date": "2026-09-18",
+  "lane_id": "information_claims_forensic_adjudication",
+  "display_name": "Information Claims & Forensic Adjudication",
+  "domain": "lie_ledger_claim_forensics",
+  "controlling_contract": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+  "active_prompt": "prompts/ATLAS Information Claims & Forensic Adjudication Engineer Prompt.md",
+  "authority": {
+    "owns": [
+      "claim_discovery",
+      "event_chain_membership",
+      "narrative_family_membership",
+      "atomic_proposition_decomposition",
+      "source_fidelity",
+      "truth_adjudication",
+      "knowledge_adjudication",
+      "claim_relationships",
+      "event_level_claim_summary",
+      "lie_ledger_wording",
+      "lie_ledger_denominators",
+      "lie_ledger_metrics",
+      "case_logic_graph",
+      "cross_surface_claim_regression_review"
+    ],
+    "evidence_integration_owns": [
+      "broader_event_facts",
+      "chronology",
+      "sources_and_provenance",
+      "physical_losses",
+      "facilities",
+      "casualties",
+      "economics",
+      "canonical_historical_state"
+    ],
+    "public_product_owns": [
+      "visual_design",
+      "layout",
+      "interaction",
+      "responsive_behavior",
+      "accessibility",
+      "typography",
+      "navigation",
+      "animation"
+    ],
+    "release_integrity_owns": [
+      "deterministic_validation",
+      "semantic_parity",
+      "ci_regression",
+      "deployment",
+      "attestation"
+    ],
+    "systems_lead": "scope_priority_integration_only"
+  },
+  "required_public_secondary_view": {
+    "name": "How Atlas reached this finding",
+    "required": true,
+    "default_visibility": "optional_collapsed",
+    "source": "canonical_logic_graph",
+    "must_not_be_hand_authored": true
+  },
+  "inference_invariants": [
+    "FALSE_NOT_LIE",
+    "DIRECT_CONFESSION_NOT_REQUIRED",
+    "REASONABLE_INFERENCE_ALLOWED",
+    "POSSIBILITY_IS_NOT_EVIDENCE",
+    "NO_INVENTED_INNOCENT_EXPLANATION",
+    "UNRESOLVED_NOT_DEFAULT",
+    "EXACT_CLAIM_EXACT_BURDEN",
+    "CHAIN_CONTEXT_NO_VERDICT_PROPAGATION",
+    "LATER_EVIDENCE_MAY_PROVE_EARLIER_KNOWLEDGE",
+    "ACTOR_NEUTRAL"
+  ],
+  "routine": [
+    "rook_or_source_intake",
+    "evidence_integration_updates_event_baseline",
+    "claims_forensics_updates_lie_ledger",
+    "public_product_renders_semantics",
+    "release_integrity_verifies"
+  ]
+}
