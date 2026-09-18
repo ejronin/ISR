@@ -134,14 +134,25 @@
     },
     {
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
-      "evidence_cutoff": "2026-09-17T16:00:00-04:00",
-      "known_at": "2026-09-17T16:12:21-04:00",
-      "lineage_sha256": "8018874ef41ca4e6fac6294ffeac2f7a69d8275a31b0eda2f59f6ce72d3dd50a",
-      "packet_id": "UPD-20260917-ISSUE132-EVIDENCE",
-      "path": "data/canonical-updates/UPD-20260917-ISSUE132-EVIDENCE.json",
+      "evidence_cutoff": "2026-09-15T00:01:51-04:00",
+      "known_at": "2026-09-15T00:01:51-04:00",
+      "packet_id": "UPD-20260915-ROOK-0001ET",
+      "path": "data/canonical-updates/UPD-20260915-ROOK-0001ET.json",
       "previous_lineage_sha256": "9b616dae5fcc6bf106d603839a7b38e5a521a635e2fc86b4d0c64caace98bc4e",
       "sequence": 13,
-      "sha256": "55abab3d4aadba14228abf2ee2672d9b5920bab8bd909431e72341e803f1f68f"
+      "sha256": "fdf8f8d81fe2392acbf1a52e5a909334eac24f5cb58286386e45b883b2738707",
+      "lineage_sha256": "7d97446f7f3ed99b215b767b8a602804de8e07793e74faa0cf048c38f46526c4"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-09-17T16:00:00-04:00",
+      "known_at": "2026-09-17T16:12:21-04:00",
+      "packet_id": "UPD-20260917-ISSUE132-EVIDENCE",
+      "path": "data/canonical-updates/UPD-20260917-ISSUE132-EVIDENCE.json",
+      "previous_lineage_sha256": "7d97446f7f3ed99b215b767b8a602804de8e07793e74faa0cf048c38f46526c4",
+      "sequence": 14,
+      "sha256": "55abab3d4aadba14228abf2ee2672d9b5920bab8bd909431e72341e803f1f68f",
+      "lineage_sha256": "e425467033b4ca1c020109143f1ff1c43f57c4bc221faae78def98980d5c2c5c"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
