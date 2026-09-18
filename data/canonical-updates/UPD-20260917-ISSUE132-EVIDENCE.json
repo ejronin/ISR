@@ -1,0 +1,798 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260917-ISSUE132-EVIDENCE",
+  "known_at": "2026-09-17T16:12:21-04:00",
+  "evidence_cutoff": "2026-09-17T16:00:00-04:00",
+  "summary": "Issue #132 accepted Evidence adjudication: preserve unresolved Sep. 16/17 Qeshm MQ-9 individual losses and unresolved 52nd/53rd type-specific cumulative propositions; encode no-verdict-propagation chain relationships; support one physical RSAF F-15SA loss while separating U.S. origin/manufacture from Saudi operation, leaving Houthi missile causation and crew fate unresolved; exclude recycled media; correct false-flag over-grouping to a cross-event narrative family; and mark Dena/Tangsiri as non-lie admission-latency controls.",
+  "sources": [
+    {
+      "source_id": "SRC-906AC32553A4",
+      "url": "https://www.tasnimnews.ir/en/news/2026/09/16/3698072/irgc-downs-52nd-us-mq-9-drone-south-of-iran",
+      "source_role": "STATE_ALIGNED_ACTOR_MEDIA",
+      "outlet": "Tasnim News Agency",
+      "published_date": "2026-09-16",
+      "title": "IRGC Downs 52nd US MQ-9 Drone South of Iran"
+    },
+    {
+      "source_id": "SRC-E8B81BD88EA4",
+      "url": "https://www.aa.com.tr/en/middle-east/iran-says-it-shot-down-us-mq-9-drone-over-qeshm-island-/4058655",
+      "source_role": "INDEPENDENT_MEDIA_REPORTING_ACTOR_CLAIM",
+      "outlet": "Anadolu Agency",
+      "published_date": "2026-09-16",
+      "title": "Iran says it shot down US MQ-9 drone over Qeshm Island"
+    },
+    {
+      "source_id": "SRC-34163F690F21",
+      "url": "https://www.aa.com.tr/en/middle-east/iran-says-another-us-mq-9-drone-downed-over-qeshm-island-near-strait-of-hormuz/4060222",
+      "source_role": "INDEPENDENT_MEDIA_REPORTING_ACTOR_CLAIM",
+      "outlet": "Anadolu Agency",
+      "published_date": "2026-09-17",
+      "title": "Iran says another US MQ-9 drone downed over Qeshm Island near Strait of Hormuz"
+    },
+    {
+      "source_id": "SRC-1B0B49B3F85E",
+      "url": "https://www.janes.com/defence-intelligence-insights/defence-news/defence/houthis-claim-shooting-down-of-saudi-fighter-in-first-combat-loss-for-advanced-eagle",
+      "source_role": "INDEPENDENT_DEFENSE_INTELLIGENCE",
+      "outlet": "Janes",
+      "published_date": "2026-09-17",
+      "title": "Houthis claim shooting down of Saudi fighter in first combat loss for Advanced Eagle"
+    },
+    {
+      "source_id": "SRC-F872A3FA0DB3",
+      "url": "https://www.misbar.com/amp/en/factcheck/2026/09/17/old-video-does-not-show-houthis-shooting-down-saudi-f-15-yemen",
+      "source_role": "INDEPENDENT_FACT_CHECK",
+      "outlet": "Misbar",
+      "published_date": "2026-09-17",
+      "title": "Old Video Does Not Show Houthis Shooting Down Saudi F-15 in Yemen"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-IRGC-QESHM-MQ9-CLAIM-20260916",
+      "event_date": "2026-09-16",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "IRGC_MQ9_LOSS_AND_CUMULATIVE_CLAIM",
+      "game_knowledge_time": "2026-09-17T16:12:21-04:00",
+      "strike_countable": false,
+      "summary": "IRGC publicly claimed an MQ-9 loss over Qeshm and described it as the 52nd U.S. MQ-9 destroyed during the conflict. Both the individual physical loss and cumulative type-specific denominator remain unresolved.",
+      "source_ids": [
+        "SRC-906AC32553A4",
+        "SRC-E8B81BD88EA4"
+      ]
+    },
+    {
+      "event_id": "G3-RSAF-F15SA-LOSS-MARIB-20260916",
+      "event_date": "2026-09-16",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "RSAF_F15SA_PHYSICAL_LOSS",
+      "game_knowledge_time": "2026-09-17T16:12:21-04:00",
+      "strike_countable": false,
+      "summary": "Wreckage evidence supports one Royal Saudi Air Force F-15SA physical loss over Marib. Houthi surface-to-air missile causation and the two-person crew fate remain unresolved.",
+      "source_ids": [
+        "SRC-1B0B49B3F85E"
+      ]
+    },
+    {
+      "event_id": "G3-IRGC-QESHM-MQ9-CLAIM-20260917",
+      "event_date": "2026-09-17",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "IRGC_MQ9_LOSS_AND_CUMULATIVE_CLAIM",
+      "game_knowledge_time": "2026-09-17T16:12:21-04:00",
+      "strike_countable": false,
+      "summary": "IRGC publicly claimed another MQ-9 loss over Qeshm and described it as the 53rd U.S. MQ-9 destroyed during the conflict. Both the individual physical loss and cumulative type-specific denominator remain unresolved.",
+      "source_ids": [
+        "SRC-34163F690F21"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+      "entity_type": "claim",
+      "mode": "add",
+      "record": {
+        "adjudication": "UNRESOLVED_UNVERIFIED_LOSS",
+        "case_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+        "claim": "An American MQ-9 was shot down over Qeshm Island on Sep. 16.",
+        "claim_time": "2026-09-16",
+        "claimant": "IRGC",
+        "proposition_type": "INDIVIDUAL_AIRCRAFT_LOSS",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE_UNTIL_MATERIAL_FALSITY_ESTABLISHED",
+        "knowledge_time": "2026-09-17T16:12:21-04:00"
+      }
+    },
+    {
+      "entity_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+      "entity_type": "claim",
+      "mode": "add",
+      "record": {
+        "adjudication": "UNRESOLVED_CUMULATIVE_DENOMINATOR_NOT_RECONCILED",
+        "case_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "claim": "The Sep. 16 Qeshm aircraft was the 52nd U.S. MQ-9 destroyed during the conflict.",
+        "claim_time": "2026-09-16",
+        "claimant": "IRGC",
+        "proposition_type": "CUMULATIVE_TYPE_SPECIFIC_LOSS_METRIC",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE_UNTIL_MATERIAL_FALSITY_ESTABLISHED",
+        "knowledge_time": "2026-09-17T16:12:21-04:00"
+      }
+    },
+    {
+      "entity_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+      "entity_type": "claim",
+      "mode": "add",
+      "record": {
+        "adjudication": "UNRESOLVED_UNVERIFIED_LOSS",
+        "case_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+        "claim": "Another American MQ-9 was shot down over Qeshm Island on Sep. 17.",
+        "claim_time": "2026-09-17",
+        "claimant": "IRGC",
+        "proposition_type": "INDIVIDUAL_AIRCRAFT_LOSS",
+        "source_ids": [
+          "SRC-34163F690F21"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE_UNTIL_MATERIAL_FALSITY_ESTABLISHED",
+        "knowledge_time": "2026-09-17T16:12:21-04:00"
+      }
+    },
+    {
+      "entity_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+      "entity_type": "claim",
+      "mode": "add",
+      "record": {
+        "adjudication": "UNRESOLVED_CUMULATIVE_DENOMINATOR_NOT_RECONCILED",
+        "case_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "claim": "The Sep. 17 Qeshm aircraft was the 53rd U.S. MQ-9 destroyed during the conflict.",
+        "claim_time": "2026-09-17",
+        "claimant": "IRGC",
+        "proposition_type": "CUMULATIVE_TYPE_SPECIFIC_LOSS_METRIC",
+        "source_ids": [
+          "SRC-34163F690F21"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE_UNTIL_MATERIAL_FALSITY_ESTABLISHED",
+        "knowledge_time": "2026-09-17T16:12:21-04:00"
+      }
+    },
+    {
+      "entity_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+      "entity_type": "claim",
+      "mode": "add",
+      "record": {
+        "adjudication": "UNRESOLVED_CAUSATION",
+        "case_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+        "claim": "A locally made surface-to-air missile caused the loss of the Saudi F-15SA over Marib.",
+        "claim_time": "2026-09-16",
+        "claimant": "Ansar Allah / Houthi military spokesman",
+        "proposition_type": "CAUSAL_ATTRIBUTION",
+        "source_ids": [
+          "SRC-1B0B49B3F85E"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE_UNTIL_MATERIAL_FALSITY_ESTABLISHED",
+        "knowledge_time": "2026-09-17T16:12:21-04:00"
+      }
+    },
+    {
+      "entity_id": "LL-CURRENT-QESHM-MQ9-LOSS-20260916",
+      "entity_type": "narrative_claim",
+      "mode": "add",
+      "record": {
+        "atomic_proposition": true,
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+        "combined_assessment": "UNRESOLVED / UNVERIFIED LOSS",
+        "counts_as_unique_proposition": true,
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "knowledge_access_status": "IRGC_COMMAND_AND_BDA_ACCESS_IS_CIRCUMSTANTIAL_CONTEXT_ONLY_WHILE_FALSITY_UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "The Sep. 16 Qeshm aircraft was a U.S. MQ-9 physically lost to Iranian air defense.",
+        "proposition_axis": "INDIVIDUAL_LOSS",
+        "relation_type": "ORIGINATION",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "INDEPENDENT_CONFIRMATION_INSUFFICIENT"
+      }
+    },
+    {
+      "entity_id": "LL-CURRENT-QESHM-MQ9-52-20260916",
+      "entity_type": "narrative_claim",
+      "mode": "add",
+      "record": {
+        "atomic_proposition": true,
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "claim_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "combined_assessment": "UNRESOLVED - CUMULATIVE MQ-9 DENOMINATOR NOT RECONCILED",
+        "counts_as_unique_proposition": true,
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "knowledge_access_status": "IRGC_COMMAND_AND_BDA_ACCESS_IS_CIRCUMSTANTIAL_CONTEXT_ONLY_WHILE_FALSITY_UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "Iranian forces had destroyed 52 U.S. MQ-9 aircraft during the conflict by Sep. 16.",
+        "proposition_axis": "CUMULATIVE_TYPE_SPECIFIC_METRIC",
+        "relation_type": "ORIGINATION",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "SOURCE_LANGUAGE_MQ9_SPECIFIC; CUMULATIVE_FALSITY_NOT_ESTABLISHED"
+      }
+    },
+    {
+      "entity_id": "LL-CURRENT-QESHM-MQ9-LOSS-20260917",
+      "entity_type": "narrative_claim",
+      "mode": "add",
+      "record": {
+        "atomic_proposition": true,
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+        "combined_assessment": "UNRESOLVED / UNVERIFIED LOSS",
+        "counts_as_unique_proposition": true,
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "knowledge_access_status": "IRGC_COMMAND_AND_BDA_ACCESS_IS_CIRCUMSTANTIAL_CONTEXT_ONLY_WHILE_FALSITY_UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "The Sep. 17 Qeshm aircraft was a U.S. MQ-9 physically lost to Iranian air defense.",
+        "proposition_axis": "INDIVIDUAL_LOSS",
+        "relation_type": "ORIGINATION",
+        "source_ids": [
+          "SRC-34163F690F21"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "INDEPENDENT_CONFIRMATION_INSUFFICIENT"
+      }
+    },
+    {
+      "entity_id": "LL-CURRENT-QESHM-MQ9-53-20260917",
+      "entity_type": "narrative_claim",
+      "mode": "add",
+      "record": {
+        "atomic_proposition": true,
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "claim_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "combined_assessment": "UNRESOLVED - CUMULATIVE MQ-9 DENOMINATOR NOT RECONCILED",
+        "counts_as_unique_proposition": true,
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "knowledge_access_status": "IRGC_COMMAND_AND_BDA_ACCESS_IS_CIRCUMSTANTIAL_CONTEXT_ONLY_WHILE_FALSITY_UNRESOLVED",
+        "knowledge_judgment": "NOT_ASSESSABLE",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "Iranian forces had destroyed 53 U.S. MQ-9 aircraft during the conflict by Sep. 17.",
+        "proposition_axis": "CUMULATIVE_TYPE_SPECIFIC_METRIC",
+        "relation_type": "ORIGINATION",
+        "source_ids": [
+          "SRC-34163F690F21"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "SOURCE_LANGUAGE_MQ9_SPECIFIC; CUMULATIVE_FALSITY_NOT_ESTABLISHED"
+      }
+    },
+    {
+      "entity_id": "LL-CURRENT-HOUTHI-F15SA-CAUSATION-20260916",
+      "entity_type": "narrative_claim",
+      "mode": "add",
+      "record": {
+        "atomic_proposition": true,
+        "chain_id": "CH-RSAF-F15SA-MARIB-20260916",
+        "claim_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+        "combined_assessment": "UNRESOLVED - PHYSICAL LOSS DOES NOT ESTABLISH MISSILE CAUSATION",
+        "counts_as_unique_proposition": true,
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "knowledge_access_status": "CLAIMANT_CAUSATION_ASSERTION_DOES_NOT_SUPPLY_INDEPENDENT_CAUSAL_PROOF",
+        "knowledge_judgment": "NOT_ASSESSABLE",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "A Houthi locally made surface-to-air missile caused the Sep. 16 F-15SA loss.",
+        "proposition_axis": "CAUSAL_ATTRIBUTION",
+        "relation_type": "ORIGINATION",
+        "source_ids": [
+          "SRC-1B0B49B3F85E"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "INDEPENDENT_CONFIRMATION_INSUFFICIENT"
+      }
+    },
+    {
+      "entity_id": "MAT-RSAF-F15SA-MARIB-20260916",
+      "entity_type": "material_loss",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-RSAF-F15SA-MARIB-20260916",
+        "asset_class": "FIGHTER_AIRCRAFT",
+        "event_date": "2026-09-16",
+        "event_ref": "G3-RSAF-F15SA-LOSS-MARIB-20260916",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "manufacturer": "Boeing",
+        "origin_design": "UNITED_STATES",
+        "operator": "Royal Saudi Air Force",
+        "owner": "Saudi Arabia",
+        "quantity": 1,
+        "status": "PHYSICAL_LOSS_SUPPORTED",
+        "variant": "F-15SA",
+        "causation_status": "UNRESOLVED_HOUTHI_SURFACE_TO_AIR_MISSILE_CLAIM_NOT_INDEPENDENTLY_ESTABLISHED",
+        "crew_status": "UNRESOLVED",
+        "source_ids": [
+          "SRC-1B0B49B3F85E"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-F15SA-ORIGIN-OPERATOR-DISTINCTION-20260917",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-F15SA-ORIGIN-OPERATOR-DISTINCTION-20260917",
+        "relationship_type": "ORIGIN_MANUFACTURER_OPERATOR_SEMANTIC_SEPARATION",
+        "asset_ref": "MAT-RSAF-F15SA-MARIB-20260916",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "evidence": "The F-15SA is U.S.-origin/U.S.-designed and Boeing-produced, while the identified aircraft was operated by the Royal Saudi Air Force. U.S. origin/manufacture must not be presented as U.S.-military operation.",
+        "source_ids": [
+          "SRC-1B0B49B3F85E"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-F15SA-RECYCLED-MEDIA-EXCLUSION-20260917",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-F15SA-RECYCLED-MEDIA-EXCLUSION-20260917",
+        "relationship_type": "EVIDENCE_MEDIA_EXCLUSION",
+        "event_ref": "G3-RSAF-F15SA-LOSS-MARIB-20260916",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "evidence": "At least one widely circulated purported shootdown video was traced to an older April 2026 event and is excluded from evidence for the Sep. 16 Saudi F-15SA occurrence. Current wreckage evidence must be evaluated independently.",
+        "source_ids": [
+          "SRC-F872A3FA0DB3",
+          "SRC-1B0B49B3F85E"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-QESHM-SEP16-INDIVIDUAL-AGGREGATE-20260917",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-QESHM-SEP16-INDIVIDUAL-AGGREGATE-20260917",
+        "relationship_type": "ATOMIC_PROPOSITION_TO_CUMULATIVE_METRIC_NO_VERDICT_PROPAGATION",
+        "from_claim_ref": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+        "to_claim_ref": "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "rule": "Relationship membership does not transfer factual or knowledge adjudication between propositions.",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-QESHM-SEP17-INDIVIDUAL-AGGREGATE-20260917",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-QESHM-SEP17-INDIVIDUAL-AGGREGATE-20260917",
+        "relationship_type": "ATOMIC_PROPOSITION_TO_CUMULATIVE_METRIC_NO_VERDICT_PROPAGATION",
+        "from_claim_ref": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+        "to_claim_ref": "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "rule": "Relationship membership does not transfer factual or knowledge adjudication between propositions.",
+        "source_ids": [
+          "SRC-34163F690F21"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-QESHM-MQ9-52-TO-53-SEQUENCE-20260917",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-QESHM-MQ9-52-TO-53-SEQUENCE-20260917",
+        "relationship_type": "CHRONOLOGICAL_TYPE_SPECIFIC_CUMULATIVE_SEQUENCE",
+        "from_claim_ref": "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "to_claim_ref": "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "rule": "Relationship membership does not transfer factual or knowledge adjudication between propositions.",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21"
+        ]
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-F15E-CSAR-URANIUM-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-F15E-CSAR-URANIUM-20260917",
+        "chain_id": "CH-F15E-CSAR-URANIUM",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "AIRCRAFT_IDENTIFICATION",
+          "PHYSICAL_AIRCRAFT_LOSS",
+          "AIRCREW_STATUS",
+          "CAPTURE_CLAIMS",
+          "DEATH_REMAINS_CLAIMS",
+          "CSAR_RESCUE",
+          "RESCUE_FAILURE_FOILING",
+          "URANIUM_HEIST_SUBSTITUTE_EXPLANATION"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-AIRCRAFT-KILL-AGGREGATES-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-AIRCRAFT-KILL-AGGREGATES-20260917",
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "HISTORICAL_82",
+          "HISTORICAL_130",
+          "HISTORICAL_170",
+          "HISTORICAL_210",
+          "TYPE_SPECIFIC_COUNTS",
+          "QESHM_SEP16_INDIVIDUAL",
+          "MQ9_52_CUMULATIVE",
+          "QESHM_SEP17_INDIVIDUAL",
+          "MQ9_53_CUMULATIVE"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-F35-MAR19-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-F35-MAR19-20260917",
+        "chain_id": "CH-F35-MAR19",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "REAL_COMBAT_DAMAGE",
+          "DESTRUCTION_DOWNING_ESCALATION"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-TURKEY-MISSILE-DENIAL-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-TURKEY-MISSILE-DENIAL-20260917",
+        "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "INCIDENT",
+          "DENIAL",
+          "CONTRARY_ATTRIBUTION",
+          "FALSE_FLAG_SUBSTITUTE_EXPLANATION"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-QATAR-PILOTS-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-QATAR-PILOTS-20260917",
+        "chain_id": "CH-QATAR-PILOTS",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "MISSING_PILOTS",
+          "SECRET_CUSTODY",
+          "QATAR_COUNTERCHRONOLOGY_ACCESS",
+          "OBSTRUCTION_EXPLANATION"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-INDIAN-OCEAN-DESTROYER-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-INDIAN-OCEAN-DESTROYER-20260917",
+        "chain_id": "CH-INDIAN-OCEAN-DESTROYER",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "STRIKE_LOSS_PROPOSITION",
+          "PURPORTED_PROOF",
+          "FAKE_RECYCLED_MEDIA"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-ALUDEID-BDA-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-ALUDEID-BDA-20260917",
+        "chain_id": "CH-ALUDEID-BDA",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "OCCURRENCE",
+          "PHYSICAL_DAMAGE",
+          "EQUIPMENT_BDA",
+          "FACILITY_WIDE_OPERATIONAL_EFFECT"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-KUWAIT-F15-FRIENDLY-FIRE-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-KUWAIT-F15-FRIENDLY-FIRE-20260917",
+        "chain_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "EVENT",
+          "ATTRIBUTION"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-DENA-ADMISSION-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-DENA-ADMISSION-20260917",
+        "chain_id": "CH-DENA-ADMISSION",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "PHYSICAL_LOSS",
+          "ACKNOWLEDGMENT_TIMING"
+        ],
+        "case_classification": "ADMISSION_LATENCY_CONTROL",
+        "lie_ledger_accusation": false,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-TANGSIRI-ADMISSION-20260917",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCHAIN-TANGSIRI-ADMISSION-20260917",
+        "chain_id": "CH-TANGSIRI-ADMISSION",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "PHYSICAL_LOSS",
+          "ACKNOWLEDGMENT_TIMING"
+        ],
+        "case_classification": "ADMISSION_LATENCY_CONTROL",
+        "lie_ledger_accusation": false,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict.",
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCH-FALSE-FLAG-ARAMCO-20260302",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCH-FALSE-FLAG-ARAMCO-20260302",
+        "chain_id": "CH-FALSE-FLAG-ARAMCO-20260302",
+        "semantic_overlay": true,
+        "event_ref": "ADD-EVT-20260302-ARAMCO",
+        "claim_ids": [
+          "IR-CLM-1001"
+        ],
+        "case_classification": "INCIDENT_SPECIFIC_NARRATIVE_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Incident-specific proposition chain; no causal continuity inferred from cross-event rhetorical similarity.",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCH-FALSE-FLAG-ERBIL-KUWAIT-20260315",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCH-FALSE-FLAG-ERBIL-KUWAIT-20260315",
+        "chain_id": "CH-FALSE-FLAG-ERBIL-KUWAIT-20260315",
+        "semantic_overlay": true,
+        "event_ref": "ADD-EVT-20260315-LANAZ-KUWAIT",
+        "claim_ids": [
+          "IR-CLM-1002"
+        ],
+        "case_classification": "INCIDENT_SPECIFIC_NARRATIVE_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Incident-specific proposition chain; no causal continuity inferred from cross-event rhetorical similarity.",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "SEMCH-FALSE-FLAG-LUCAS-20260315",
+      "entity_type": "information_chain",
+      "mode": "add",
+      "record": {
+        "information_chain_id": "SEMCH-FALSE-FLAG-LUCAS-20260315",
+        "chain_id": "CH-FALSE-FLAG-LUCAS-20260315",
+        "semantic_overlay": true,
+        "event_ref": "ADD-EVT-20260315-LUCAS",
+        "claim_ids": [
+          "IR-CLM-1003"
+        ],
+        "case_classification": "INCIDENT_SPECIFIC_NARRATIVE_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Incident-specific proposition chain; no causal continuity inferred from cross-event rhetorical similarity.",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "NF-FALSE-FLAG-REGIONAL",
+      "entity_type": "narrative_family",
+      "mode": "add",
+      "record": {
+        "narrative_family_id": "NF-FALSE-FLAG-REGIONAL",
+        "legacy_overgrouped_chain_id": "CH-FALSE-FLAG-REGIONAL",
+        "family_type": "CROSS_EVENT_RHETORICAL_NARRATIVE_FAMILY",
+        "member_chain_ids": [
+          "CH-FALSE-FLAG-ARAMCO-20260302",
+          "CH-FALSE-FLAG-ERBIL-KUWAIT-20260315",
+          "CH-FALSE-FLAG-LUCAS-20260315"
+        ],
+        "member_claim_ids": [
+          "IR-CLM-1001",
+          "IR-CLM-1002",
+          "IR-CLM-1003"
+        ],
+        "rule": "Rhetorical similarity links separate incident-specific chains; family membership does not create event continuity, shared causation, or verdict propagation.",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "source_ids": []
+      }
+    },
+    {
+      "entity_id": "GAP-E2-QESHM-MQ9-SEP16-LOSS",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E2-QESHM-MQ9-SEP16-LOSS",
+        "known_at": "2026-09-17T16:12:21-04:00",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "status": "UNRESOLVED",
+        "topic": "Whether an MQ-9 was physically lost over Qeshm on Sep. 16 and, if so, its serial/operational identity.",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4"
+        ]
+      }
+    },
+    {
+      "entity_id": "GAP-E2-QESHM-MQ9-SEP17-LOSS",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E2-QESHM-MQ9-SEP17-LOSS",
+        "known_at": "2026-09-17T16:12:21-04:00",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "status": "UNRESOLVED",
+        "topic": "Whether an MQ-9 was physically lost over Qeshm on Sep. 17 and, if so, its serial/operational identity.",
+        "source_ids": [
+          "SRC-34163F690F21"
+        ]
+      }
+    },
+    {
+      "entity_id": "GAP-E2-IRGC-MQ9-CUMULATIVE-DENOMINATOR",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E2-IRGC-MQ9-CUMULATIVE-DENOMINATOR",
+        "known_at": "2026-09-17T16:12:21-04:00",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "status": "UNRESOLVED",
+        "topic": "Loss-by-loss reconciliation of the IRGC's cumulative type-specific MQ-9 denominator through the 52nd and 53rd claims.",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21"
+        ]
+      }
+    },
+    {
+      "entity_id": "GAP-E2-RSAF-F15SA-CAUSATION-CREW",
+      "entity_type": "gap",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E2-RSAF-F15SA-CAUSATION-CREW",
+        "known_at": "2026-09-17T16:12:21-04:00",
+        "knowledge_time": "2026-09-17T16:12:21-04:00",
+        "status": "UNRESOLVED",
+        "topic": "Cause of the Sep. 16 F-15SA loss and fate of its two crewmembers.",
+        "source_ids": [
+          "SRC-1B0B49B3F85E"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}

@@ -1,0 +1,118 @@
+{
+  "artifact_role": "ROOK_LIE_LEDGER_CHAIN_GROUPING_AUDIT",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "audit_date": "2026-09-17",
+  "purpose": "Identify Lie Ledger claims that should render as branches/timeline steps of a larger narrative card rather than as unrelated top-level cards. This is an evidence/editorial handoff only; no canonical packet, accepted hash, generated public state, signed release artifact, or release manifest is modified.",
+  "governing_principle": "A chain card represents one evolving narrative object. Atomic propositions remain independently adjudicated, sourced, timed, and reversible, but related claims, corrections, substitutions, evidentiary fabrications, and downstream explanations should be displayed as branches/timeline steps beneath the parent narrative when they depend on the same underlying event or are deployed to preserve the same asserted outcome.",
+  "findings": [
+    {
+      "priority": "P0",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "recommended_parent_card": "F-15E shootdown / aircrew / CSAR / uranium narrative",
+      "status": "CHAIN_ALREADY_EXISTS_IN_FORENSIC_DATA; VERIFY_PUBLIC_LIE_LEDGER_RENDERS_AS_ONE_CARD",
+      "reason": "The repository already groups IR-CLM-0001 through IR-CLM-0011 under one chain, but the public Lie Ledger should present the full evolution as one narrative card rather than fragmenting aircraft identification, pilot capture/death/remains, rescue denial/failure, and uranium-heist explanations into independent headline cards.",
+      "required_branch_model": [
+        "Initial aircraft-type claim and later correction (F-35 -> F-15E)",
+        "Missing aircrew -> possible/claimed capture narrative",
+        "Capture/death/remains evidence branches and later contradiction/correction",
+        "U.S. CSAR operation -> Iranian claims of failure/foiling or alternative purpose",
+        "Uranium-heist/deception explanation as downstream narrative substitution tied to the same rescue operation"
+      ],
+      "display_rule": "One parent card with chronological branches. Do not erase the real F-15E shootdown merely because later branches are false or misleading; each proposition keeps its own truth/knowledge adjudication."
+    },
+    {
+      "priority": "P0",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "recommended_parent_card": "Iranian U.S. aircraft/UAV cumulative kill-count narrative",
+      "status": "EXISTING_CHAIN_REQUIRES_EXTENSION_AND_METRIC-NORMALIZATION_REVIEW",
+      "reason": "The existing 82 -> 130 -> 170 -> 210 aircraft/UAV series is already a chain. The Sep. 16-17 claims describing Qeshm MQ-9 losses as the 52nd/53rd MQ-9 should be evaluated as new branches of this aggregate narrative, not standalone aggregate cards. The individual Qeshm shootdown propositions remain separate atomic claims inside the chain.",
+      "required_branch_model": [
+        "Historical cumulative aircraft/UAV totals and denominator changes",
+        "Aircraft-type-specific totals when Iran distinguishes MQ-1, MQ-9, or other types",
+        "Sep. 16 Qeshm individual MQ-9 claim -> unverified independently",
+        "Sep. 17 Qeshm individual MQ-9 claim -> unverified independently",
+        "52nd/53rd MQ-9 cumulative assertions -> route to Lie Ledger knowledge/intent adjudication because prior Iranian taxonomy may internally contradict an all-MQ-9 denominator"
+      ],
+      "display_rule": "One aggregate-inflation/metric-shift card with a timeline, while allowing individual aircraft-loss claims to retain independent dispositions."
+    },
+    {
+      "priority": "P1",
+      "chain_id": "CH-F35-MAR19",
+      "recommended_parent_card": "F-35 combat damage -> destruction/downing inflation",
+      "status": "EXISTING_CHAIN; PUBLIC GROUPING SHOULD BE EXPLICIT",
+      "reason": "Real combat damage is the factual anchor and later destruction/downing claims are outcome inflation branches. Presenting them separately obscures the narrative evolution.",
+      "display_rule": "Single card: confirmed damage baseline -> destruction/downing escalation -> corrections/contrary evidence."
+    },
+    {
+      "priority": "P1",
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "recommended_parent_card": "Turkey missile incident: denial -> attribution -> false-flag substitution",
+      "status": "EXISTING_CHAIN; PUBLIC GROUPING SHOULD BE EXPLICIT",
+      "reason": "The false-flag explanation is a downstream substitute for the same missile incident after contrary attribution; it should not appear as an unrelated lie card.",
+      "display_rule": "Single chronological card preserving denial, contrary evidence, and later substitute explanation as separate propositions."
+    },
+    {
+      "priority": "P1",
+      "chain_id": "CH-QATAR-PILOTS",
+      "recommended_parent_card": "Missing Iranian pilots / Qatar custody-access narrative",
+      "status": "EXISTING_CHAIN; MERGE PUBLIC PRESENTATION OF CUSTODY AND ACCESS-OBSTRUCTION BRANCHES",
+      "reason": "The late secret-prisoner/custody allegation and subsequent claim that Qatar obstructed Iranian clarification are causally linked narrative branches concerning the same missing-pilot problem. The obstruction claim functions as a downstream explanation for the unresolved custody narrative.",
+      "display_rule": "One parent card with custody allegation -> Qatar counterchronology/invitation -> obstruction accusation -> adjudication."
+    },
+    {
+      "priority": "P1",
+      "chain_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "recommended_parent_card": "Indian Ocean U.S. destroyer/supply-ship strike narrative",
+      "status": "EXISTING_CHAIN; ENSURE FAKE PROOF IS CHILD BRANCH",
+      "reason": "The strike claim and fake/recycled proof footage are not two independent stories. The media artifact was offered/amplified as evidentiary support for the same asserted strike outcome.",
+      "display_rule": "Parent strike claim with separate child proposition for false media evidence."
+    },
+    {
+      "priority": "P1",
+      "chain_id": "CH-ALUDEID-BDA",
+      "recommended_parent_card": "Al Udeid strike BDA inflation",
+      "status": "EXISTING_CHAIN; DECOMPOSE EFFECTS WITHIN ONE CARD",
+      "reason": "Real damage, exact equipment-loss assertions, and whole-base operational-effect claims share one strike/BDA object and should be branches rather than independent cards.",
+      "display_rule": "One card with event existence, physical damage, equipment BDA, and facility operational-effect propositions independently adjudicated."
+    },
+    {
+      "priority": "P2",
+      "chain_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "recommended_parent_card": "Kuwait F-15 losses: Iranian attribution vs friendly-fire finding",
+      "status": "EXISTING_CHAIN; KEEP AS SINGLE ATTRIBUTION CARD",
+      "reason": "Multiple statements concern the same losses and causal attribution. Repetitions/amplifications belong under one card.",
+      "display_rule": "One card with Iranian attribution, later attribution evidence, and any repetition/amplification steps."
+    },
+    {
+      "priority": "P2",
+      "chain_id": "CH-FALSE-FLAG-REGIONAL",
+      "recommended_parent_card": "Regional false-flag attribution pattern",
+      "status": "REVIEW FOR OVER-GROUPING",
+      "reason": "Unlike event-specific chains, this chain may contain distinct incidents joined primarily by rhetorical pattern. Public UI should not imply causal continuity where none exists.",
+      "display_rule": "Prefer a narrative-family/index card linking distinct incident cards unless the individual claims concern the same underlying event."
+    },
+    {
+      "priority": "P2",
+      "chain_id": "CH-DENA-ADMISSION",
+      "recommended_parent_card": "IRIS Dena loss/acknowledgment",
+      "status": "NOT_A_LIE_CASE",
+      "reason": "Current forensic data explicitly classifies this as admission latency, not a lie case. It should not consume a normal Lie Ledger accusation card unless the UI intentionally includes non-lie comparison/control cases.",
+      "display_rule": "Remove from ordinary lie-card count or visibly mark as comparison/non-lie case."
+    },
+    {
+      "priority": "P2",
+      "chain_id": "CH-TANGSIRI-ADMISSION",
+      "recommended_parent_card": "Tangsiri announcement/confirmation latency",
+      "status": "NOT_A_LIE_CASE",
+      "reason": "Current forensic data says denial was not found. As with Dena, this is useful analytical control material but should not read as a lie card.",
+      "display_rule": "Remove from ordinary lie-card count or visibly mark as comparison/non-lie case."
+    }
+  ],
+  "public_product_recommendation": {
+    "card_unit": "NARRATIVE_CHAIN",
+    "inside_card_unit": "ATOMIC_PROPOSITION / CLAIM INSTANCE",
+    "recommended_order": ["parent narrative summary", "chronological claim branches", "current finding per proposition", "corrections/retractions", "how we know", "sources"],
+    "anti_pattern": "One top-level card per claim instance when several claims are revisions, consequences, evidentiary supports, or substitute explanations for the same underlying narrative."
+  },
+  "engineering_handoff": "Evidence Integration/Lie Ledger engineer should validate chain membership and knowledge judgments; Public Product should then ensure one-card-per-chain rendering where appropriate. No accepted canonical bytes should be rewritten merely to achieve visual grouping."
+}
