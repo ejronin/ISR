@@ -156,10 +156,11 @@ def _issue140_reader_findings(root: Path, canonical: dict[str, Any]) -> tuple[di
         raise ValueError("Issue #140 Public Product handoff role mismatch")
     accepted = canonical.get("accepted_updates_v2") or []
     packet_id = str(handoff.get("packet_id") or "")
-    if not any(str(row.get("packet_id") or "") == packet_id for row in accepted):
-        raise ValueError("Issue #140 Public Product handoff is not anchored to accepted canonical state")
-    if handoff.get("evidence_cutoff") != (canonical.get("release") or {}).get("current_osint_cutoff"):
-        raise ValueError("Issue #140 Public Product handoff cutoff differs from canonical current cutoff")
+    anchors = [row for row in accepted if str(row.get("packet_id") or "") == packet_id]
+    if len(anchors) != 1:
+        raise ValueError("Issue #140 Public Product handoff is not uniquely anchored to accepted canonical state")
+    if handoff.get("evidence_cutoff") != anchors[0].get("evidence_cutoff"):
+        raise ValueError("Issue #140 Public Product handoff cutoff differs from its accepted packet")
     by_claim: dict[str, dict[str, Any]] = {}
     by_overlay: dict[str, dict[str, Any]] = {}
     for finding in (handoff.get("current_findings") or {}).values():
