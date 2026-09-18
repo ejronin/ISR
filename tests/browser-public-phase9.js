@@ -195,6 +195,8 @@ async function route(cdp, hash, key) {
       if (evidenceSummary) evidenceSummary.click();
       const search = main.querySelector('.reader-ledger-controls input[type="search"]');
       const select = main.querySelector('.reader-ledger-controls select');
+      const contextDetails = main.querySelector('.reader-ledger-context');
+      if (contextDetails) contextDetails.open = true;
       const statuses = branches.map(branch => branch.querySelector('.reader-claim-status')?.textContent.trim() || '');
       const internalSelectors = main.querySelectorAll('[data-claim-instance-id], [data-chain-id], [data-publication-status], [data-combined-assessment]').length;
       const technicalMetadata = main.querySelectorAll('.technical-record-metadata, .evidence-role-guide').length;
