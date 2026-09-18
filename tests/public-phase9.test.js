@@ -82,7 +82,8 @@ for (const pair of [['52nd', mq52], ['53rd', mq53]]) {
   assert.equal(record.truth_adjudication, 'UNRESOLVED', label + ' MQ-9 truth enum was improperly upgraded');
   assert.equal(record.evidence_disposition, 'UNSUBSTANTIATED', label + ' MQ-9 exact-count burden finding is missing');
   assert.match(record.public_combined_assessment || '', /UNSUBSTANTIATED EXACT COUNT/);
-  assert(!/LIE|FALSE/.test(record.public_combined_assessment || ''), label + ' MQ-9 exact count was improperly turned into False/Lie');
+  assert.equal(record.public_knowledge_judgment, 'NOT_ASSESSABLE', label + ' MQ-9 exact count was improperly given a lie-knowledge finding');
+  assert.match(record.public_combined_assessment || '', /NO LIE FINDING/, label + ' MQ-9 public disposition lost the accepted no-Lie boundary');
 }
 assert.match(mq52.reader_reason || '', /at least 45/i, '52nd MQ-9 reader explanation lost the accepted independent lower bound');
 
