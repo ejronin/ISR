@@ -420,6 +420,9 @@
     const qualifier = text(record && record.truth_qualifier).toUpperCase();
     const axis = text(record && record.proposition_axis).toUpperCase();
     const truth = text(record && record.truth_adjudication).toUpperCase();
+    if (truth === 'SUPPORTED' && (/NARRATIVE SUBSTITUTION/.test(combined) || axis === 'NARRATIVE_EVOLUTION')) {
+      return { label: 'Narrative changed', key: 'narrative-changed' };
+    }
     if (evidence === 'UNSUBSTANTIATED' && (/EXACT/.test(combined) || /EXACT_.*ORDINAL|EXACT_LEDGER/.test(qualifier))) {
       return { label: 'Unsubstantiated exact count', key: 'unsubstantiated-exact' };
     }
@@ -428,9 +431,6 @@
     }
     if (/UNVERIFIED/.test(combined) || (truth === 'UNRESOLVED' && axis === 'INDIVIDUAL_LOSS' && /INDEPENDENT_CONFIRMATION_INSUFFICIENT/.test(qualifier))) {
       return { label: 'Unverified', key: 'unverified' };
-    }
-    if (truth === 'SUPPORTED' && (/NARRATIVE SUBSTITUTION/.test(combined) || axis === 'NARRATIVE_EVOLUTION')) {
-      return { label: 'Narrative changed', key: 'narrative-changed' };
     }
     return publicAdjudication(record);
   }
