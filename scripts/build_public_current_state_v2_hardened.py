@@ -19,6 +19,7 @@ OUT = "data/public-current-state-v2.json"
 SCHEMA = "schemas/public-current-state-v2.json"
 GENERATOR = "scripts/build_public_current_state_v2_hardened.py"
 GENERATOR_VERSION = "2.5-current-foundation"
+ISSUE140_HANDOFF = "data/evidence-integration/public-product-issue140-readjudication-handoff-20260918.json"
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -102,6 +103,8 @@ def _reader_overlay_record(
     entity_id: str,
     overlay: dict[str, Any],
     claims_by_id: dict[str, dict[str, Any]],
+    handoff_by_claim: dict[str, dict[str, Any]],
+    handoff_by_overlay: dict[str, dict[str, Any]],
 ) -> dict[str, Any]:
     claim_id = str(overlay.get("claim_id") or "")
     claim = claims_by_id.get(claim_id) or {}
@@ -112,7 +115,8 @@ def _reader_overlay_record(
         or ""
     )[:10]
     revision = claim.get("assessment_revision") or {}
-    reason = str(revision.get("reason") or "").strip()
+    handoff = handoff_by_overlay.get(entity_id) or handoff_by_claim.get(claim_id) or {}
+    reason = str(handoff.get("reason") or handoff.get("note") or revision.get("reason") or "").strip()
     return {
         "reader_branch_id": entity_id,
         "claim_id": claim_id or entity_id,
@@ -146,12 +150,38 @@ def _reader_overlay_record(
     }
 
 
+def _issue140_reader_findings(root: Path, canonical: dict[str, Any]) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+    handoff = json.loads((root / ISSUE140_HANDOFF).read_text(encoding="utf-8"))
+    if handoff.get("artifact_role") != "PUBLIC_PRODUCT_ISSUE140_READJUDICATION_HANDOFF":
+        raise ValueError("Issue #140 Public Product handoff role mismatch")
+    accepted = canonical.get("accepted_updates_v2") or []
+    packet_id = str(handoff.get("packet_id") or "")
+    if not any(str(row.get("packet_id") or "") == packet_id for row in accepted):
+        raise ValueError("Issue #140 Public Product handoff is not anchored to accepted canonical state")
+    if handoff.get("evidence_cutoff") != (canonical.get("release") or {}).get("current_osint_cutoff"):
+        raise ValueError("Issue #140 Public Product handoff cutoff differs from canonical current cutoff")
+    by_claim: dict[str, dict[str, Any]] = {}
+    by_overlay: dict[str, dict[str, Any]] = {}
+    for finding in (handoff.get("current_findings") or {}).values():
+        if not isinstance(finding, dict):
+            continue
+        claim_id = str(finding.get("claim_id") or finding.get("legacy_claim_id") or "")
+        overlay_id = str(finding.get("current_overlay_id") or "")
+        if claim_id:
+            by_claim[claim_id] = copy.deepcopy(finding)
+        if overlay_id:
+            by_overlay[overlay_id] = copy.deepcopy(finding)
+    return by_claim, by_overlay
+
+
 def _reader_cards(
+    root: Path,
     canonical: dict[str, Any],
     chains: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, int]]:
     cards = {str(chain.get("chain_id")): copy.deepcopy(chain) for chain in chains if chain.get("chain_id")}
     claims_by_id = {entity_id: record for entity_id, record in _entity_records(canonical, "claims")}
+    handoff_by_claim, handoff_by_overlay = _issue140_reader_findings(root, canonical)
 
     semantic_chains = {}
     for _, record in _entity_records(canonical, "information_chains"):
@@ -198,6 +228,7 @@ def _reader_cards(
         if target is None:
             raise ValueError(f"Public reader overlay target is absent: {entity_id} -> {legacy_instance}")
         original_proposition = target.get("proposition")
+        handoff = handoff_by_overlay.get(entity_id) or handoff_by_claim.get(str(overlay.get("claim_id") or "")) or {}
         target.update({
             "truth_adjudication": overlay.get("truth_adjudication") or target.get("truth_adjudication"),
             "truth_qualifier": overlay.get("truth_qualifier") or target.get("truth_qualifier"),
@@ -207,7 +238,7 @@ def _reader_cards(
             "combined_assessment": overlay.get("combined_assessment") or target.get("combined_assessment"),
             "public_combined_assessment": overlay.get("combined_assessment") or target.get("public_combined_assessment"),
             "knowledge_time": overlay.get("knowledge_time") or target.get("knowledge_time"),
-            "reader_reason": overlay.get("proposition"),
+            "reader_reason": handoff.get("reason") or handoff.get("note") or overlay.get("proposition"),
             "current_relation_type": overlay.get("relation_type"),
             "current_overlay_id": entity_id,
             "source_ids": sorted(set((target.get("source_ids") or []) + (overlay.get("source_ids") or []))),
@@ -230,7 +261,7 @@ def _reader_cards(
             "chronology": [],
             "source_ids": [],
         })
-        branch = _reader_overlay_record(entity_id, overlay, claims_by_id)
+        branch = _reader_overlay_record(entity_id, overlay, claims_by_id, handoff_by_claim, handoff_by_overlay)
         card.setdefault("proposition_records", []).append(branch)
 
     # The historical regional false-flag bucket is an accepted cross-event
@@ -318,7 +349,7 @@ def _reader_cards(
     return reader_cards, families, metrics
 
 
-def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> None:
+def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any], root: Path = ROOT) -> None:
     chains = []
     for wrapped in canonical["entities"].get("lie_ledger_chains_v2") or []:
         chain = copy.deepcopy(unwrap(wrapped))
@@ -342,7 +373,7 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
         chains.append(chain)
 
     governance = canonical.get("lie_ledger_v2_governance") or {}
-    reader_cards, reader_families, reader_metrics = _reader_cards(canonical, chains)
+    reader_cards, reader_families, reader_metrics = _reader_cards(root, canonical, chains)
     gate3 = state.setdefault("gate3", {})
     public_ledger = {
         "schema_version": "2.0",
@@ -392,7 +423,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     counts["gate3_source_records"] = actual
 
     canonical = json.loads((root / "data/canonical-current-state-v2.json").read_text(encoding="utf-8"))
-    project_lie_ledger_v2(state, canonical)
+    project_lie_ledger_v2(state, canonical, root)
 
     counts["material_loss_records"] = len(canonical["entities"].get("material_losses") or [])
     counts["relationship_records"] = len(canonical["entities"].get("relationships") or [])
@@ -416,6 +447,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
         "scripts/public_read_model_current_foundation.py": "CURRENT_PUBLIC_READ_MODEL_FOUNDATION",
         GENERATOR: "PHASE9_PUBLIC_READ_MODEL_GENERATOR",
+        ISSUE140_HANDOFF: "PUBLIC_PRODUCT_ACCEPTED_READJUDICATION_HANDOFF",
         SCHEMA: "PHASE9_PUBLIC_READ_MODEL_SCHEMA",
     }
     input_files = {item["path"]: item for item in state.get("input_files") or []}
