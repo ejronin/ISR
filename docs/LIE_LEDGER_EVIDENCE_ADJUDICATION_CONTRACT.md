@@ -6,6 +6,8 @@
 <!-- evidence-reasoning-contract: config/evidence-adjudication-reasoning.json -->
 <!-- evidence-reasoning-invariants: ORDINARY_MEANING,SPECIFICITY_BURDEN,EXACT_ACCOUNTING_IS_TESTABLE,CLAIMANT_NO_PRESUMPTION,ABSENCE_NOT_AUTOMATIC_FALSE,UNRESOLVED_NARROW,REASONABLE_INFERENCE,POSSIBILITY_IS_NOT_EVIDENCE,NO_INVENTED_INNOCENT_PATHWAY,LATER_SELF_ADMISSION_CAN_FALSIFY_PRIOR_DENIAL,LATER_PURPOSE_CAN_FALSIFY_ACCIDENT_EXPLANATION,CORRECTION_PATH_MUST_BE_EVIDENCED,FALSE_NOT_LIE,KNOWLEDGE_BY_CONVERGENCE,ACTOR_NEUTRAL -->
 
+The machine-readable reasoning contract above is binding semantic governance for this contract. Human prose may evolve, but release qualification must preserve its required invariant set and decision rules.
+
 This contract governs the active generated Lie Ledger model. Historical ROOK and PR/CI artifacts remain preserved as provenance and migration inputs, but no persona, engineer, or prior workflow owns factual truth, knowledge judgment, publication authority, or implementation authority.
 
 ## 1. Governing rule
