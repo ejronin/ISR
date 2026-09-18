@@ -1,0 +1,216 @@
+{
+  "artifact_role": "PUBLIC_PRODUCT_LIE_LEDGER_SEMANTIC_HANDOFF",
+  "schema_version": "1.0",
+  "issue": 132,
+  "evidence_packet": "UPD-20260917-ISSUE132-EVIDENCE",
+  "evidence_cutoff": "2026-09-17T16:00:00-04:00",
+  "known_at": "2026-09-17T16:12:21-04:00",
+  "reader_contract": {
+    "top_level_unit": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_READER_CARD",
+    "branch_unit": "INDEPENDENT_ATOMIC_PROPOSITION",
+    "chronology": "CHRONOLOGICAL_WITHIN_CHAIN",
+    "verdict_propagation": false,
+    "rule": "Truth, knowledge, correction status and evidentiary support remain proposition-specific. Chain/family membership is contextual structure, never a verdict shortcut."
+  },
+  "adjudications": {
+    "qeshm_sep16": {
+      "individual_claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "proposition": "A U.S. MQ-9 was physically lost over Qeshm on Sep. 16.",
+      "truth_adjudication": "UNRESOLVED",
+      "disposition": "UNVERIFIED_LOSS",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "knowledge_boundary": "IRGC command/BDA access is legitimate circumstantial knowledge context, but material falsity has not been established."
+    },
+    "mq9_52": {
+      "claim_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "proposition": "Iranian forces had destroyed 52 U.S. MQ-9 aircraft during the conflict by Sep. 16.",
+      "source_language_finding": "MQ9_SPECIFIC",
+      "translation_ambiguity": "RESOLVED",
+      "truth_adjudication": "UNRESOLVED",
+      "disposition": "CUMULATIVE_TYPE_SPECIFIC_DENOMINATOR_NOT_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "important_negative_finding": "Reviewed Sep. 16 source separately distinguishes Lukas, Hermes, MQ-1 and MQ-9 categories; evidence does not support treating the cumulative claim as proven false merely because prior UAV categories differed."
+    },
+    "qeshm_sep17": {
+      "individual_claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "proposition": "A U.S. MQ-9 was physically lost over Qeshm on Sep. 17.",
+      "truth_adjudication": "UNRESOLVED",
+      "disposition": "UNVERIFIED_LOSS",
+      "knowledge_judgment": "NOT_ASSESSABLE"
+    },
+    "mq9_53": {
+      "claim_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "proposition": "Iranian forces had destroyed 53 U.S. MQ-9 aircraft during the conflict by Sep. 17.",
+      "source_language_finding": "MQ9_SPECIFIC",
+      "translation_ambiguity": "RESOLVED",
+      "truth_adjudication": "UNRESOLVED",
+      "disposition": "CUMULATIVE_TYPE_SPECIFIC_DENOMINATOR_NOT_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE"
+    },
+    "f15sa": {
+      "event_id": "G3-RSAF-F15SA-LOSS-MARIB-20260916",
+      "material_loss_id": "MAT-RSAF-F15SA-MARIB-20260916",
+      "physical_loss": "SUPPORTED_ONE_AIRCRAFT",
+      "variant": "F-15SA",
+      "operator": "Royal Saudi Air Force",
+      "owner": "Saudi Arabia",
+      "origin_design": "UNITED_STATES",
+      "manufacturer": "Boeing",
+      "operator_origin_rule": "U.S. origin/design/manufacture is not U.S.-military operation.",
+      "houthi_missile_causation": "UNRESOLVED",
+      "crew_fate": "UNRESOLVED",
+      "recycled_media": "EXCLUDED_FROM_OCCURRENCE_EVIDENCE_WHERE_TRACED_TO_OLDER_EVENT"
+    }
+  },
+  "hard_relationships": [
+    {
+      "from": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+      "to": "CLM-IRGC-QESHM-MQ9-52-20260916",
+      "type": "ATOMIC_PROPOSITION_TO_CUMULATIVE_METRIC_NO_VERDICT_PROPAGATION"
+    },
+    {
+      "from": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+      "to": "CLM-IRGC-QESHM-MQ9-53-20260917",
+      "type": "ATOMIC_PROPOSITION_TO_CUMULATIVE_METRIC_NO_VERDICT_PROPAGATION"
+    },
+    {
+      "from": "CLM-IRGC-QESHM-MQ9-52-20260916",
+      "to": "CLM-IRGC-QESHM-MQ9-53-20260917",
+      "type": "CHRONOLOGICAL_TYPE_SPECIFIC_CUMULATIVE_SEQUENCE"
+    }
+  ],
+  "chain_overlays": [
+    {
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "classification": "ACCUSATION_CHAIN",
+      "branches": [
+        "AIRCRAFT_IDENTIFICATION",
+        "PHYSICAL_AIRCRAFT_LOSS",
+        "AIRCREW_STATUS",
+        "CAPTURE_CLAIMS",
+        "DEATH_REMAINS_CLAIMS",
+        "CSAR_RESCUE",
+        "RESCUE_FAILURE_FOILING",
+        "URANIUM_HEIST_SUBSTITUTE_EXPLANATION"
+      ]
+    },
+    {
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "classification": "ACCUSATION_CHAIN",
+      "branches": [
+        "HISTORICAL_82",
+        "HISTORICAL_130",
+        "HISTORICAL_170",
+        "HISTORICAL_210",
+        "TYPE_SPECIFIC_COUNTS",
+        "QESHM_SEP16_INDIVIDUAL",
+        "MQ9_52_CUMULATIVE",
+        "QESHM_SEP17_INDIVIDUAL",
+        "MQ9_53_CUMULATIVE"
+      ]
+    },
+    {
+      "chain_id": "CH-F35-MAR19",
+      "classification": "ACCUSATION_CHAIN",
+      "branches": [
+        "REAL_COMBAT_DAMAGE",
+        "DESTRUCTION_DOWNING_ESCALATION"
+      ]
+    },
+    {
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "classification": "ACCUSATION_CHAIN",
+      "branches": [
+        "INCIDENT",
+        "DENIAL",
+        "CONTRARY_ATTRIBUTION",
+        "FALSE_FLAG_SUBSTITUTE_EXPLANATION"
+      ]
+    },
+    {
+      "chain_id": "CH-QATAR-PILOTS",
+      "classification": "ACCUSATION_CHAIN",
+      "branches": [
+        "MISSING_PILOTS",
+        "SECRET_CUSTODY",
+        "QATAR_COUNTERCHRONOLOGY_ACCESS",
+        "OBSTRUCTION_EXPLANATION"
+      ]
+    },
+    {
+      "chain_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "classification": "ACCUSATION_CHAIN",
+      "branches": [
+        "STRIKE_LOSS_PROPOSITION",
+        "PURPORTED_PROOF",
+        "FAKE_RECYCLED_MEDIA"
+      ]
+    },
+    {
+      "chain_id": "CH-ALUDEID-BDA",
+      "classification": "ACCUSATION_CHAIN",
+      "branches": [
+        "OCCURRENCE",
+        "PHYSICAL_DAMAGE",
+        "EQUIPMENT_BDA",
+        "FACILITY_WIDE_OPERATIONAL_EFFECT"
+      ]
+    },
+    {
+      "chain_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "classification": "ACCUSATION_CHAIN",
+      "branches": [
+        "EVENT",
+        "ATTRIBUTION"
+      ]
+    },
+    {
+      "chain_id": "CH-DENA-ADMISSION",
+      "classification": "ADMISSION_LATENCY_CONTROL",
+      "lie_ledger_accusation": false
+    },
+    {
+      "chain_id": "CH-TANGSIRI-ADMISSION",
+      "classification": "ADMISSION_LATENCY_CONTROL",
+      "lie_ledger_accusation": false
+    }
+  ],
+  "narrative_family_correction": {
+    "legacy_chain_id": "CH-FALSE-FLAG-REGIONAL",
+    "current_family_id": "NF-FALSE-FLAG-REGIONAL",
+    "classification": "CROSS_EVENT_RHETORICAL_NARRATIVE_FAMILY",
+    "member_chains": [
+      "CH-FALSE-FLAG-ARAMCO-20260302",
+      "CH-FALSE-FLAG-ERBIL-KUWAIT-20260315",
+      "CH-FALSE-FLAG-LUCAS-20260315"
+    ],
+    "rule": "Do not imply causal continuity between distinct incidents connected only by rhetorical technique."
+  },
+  "evidence_sources": {
+    "mq9_sep16": [
+      "SRC-906AC32553A4",
+      "SRC-E8B81BD88EA4"
+    ],
+    "mq9_sep17": [
+      "SRC-34163F690F21"
+    ],
+    "f15sa": [
+      "SRC-1B0B49B3F85E"
+    ],
+    "recycled_media": [
+      "SRC-F872A3FA0DB3"
+    ]
+  },
+  "public_product_boundary": [
+    "Do not label either 52nd or 53rd MQ-9 proposition a Lie while cumulative material falsity remains unresolved.",
+    "Do not infer an individual MQ-9 loss from the cumulative claim or vice versa.",
+    "Do not present the RSAF F-15SA as U.S.-military-operated merely because the aircraft is U.S.-origin and Boeing-manufactured.",
+    "Do not present Houthi missile causation or crew fate as established.",
+    "Do not use excluded recycled video as evidence of the Sep. 16 F-15SA occurrence.",
+    "Do not present Dena or Tangsiri control cases as Lie Ledger accusations."
+  ]
+}
