@@ -220,6 +220,7 @@ async function route(cdp, hash, key) {
         familyNotes: main.querySelectorAll('.reader-narrative-family').length,
         contextCards: main.querySelectorAll('.reader-ledger-control-card').length,
         contextText: main.querySelector('.reader-ledger-context')?.innerText || '',
+        repeatSummary: main.querySelector('.reader-repeated-by > summary')?.textContent.trim() || '',
         permalinks: main.querySelectorAll('.reader-branch-permalink').length,
         f15saTitle: [...main.querySelectorAll('.reader-ledger-card h3')].find(node => /F-15SA/i.test(node.textContent || ''))?.textContent.trim() || ''
       };
@@ -240,6 +241,7 @@ async function route(cdp, hash, key) {
     assert(ledger.familyNotes >= 3, 'regional false-flag family is not presented as separate incident-linked narratives');
     assert(ledger.contextCards >= 2, 'Dena/Tangsiri admission controls are not separated from accusation cards');
     assert.match(ledger.contextText, /not accusations of lying/i);
+    assert.match(ledger.repeatSummary, /^Repeated by \(\d+\)$/, 'repeat disclosure is missing or not reader-legible');
     assert(ledger.permalinks > 0, 'claim-level deep links are missing');
     assert.match(ledger.f15saTitle, /Saudi F-15SA/i, 'F-15SA public title lost the Saudi operator distinction');
     assert.doesNotMatch(ledger.text, /U\.S\.-military F-15SA|U\.S\. F-15SA/i, 'U.S. origin/manufacture was collapsed into U.S.-military operation');
