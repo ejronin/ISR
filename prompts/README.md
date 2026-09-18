@@ -5,6 +5,8 @@ Current engineering governance begins with:
 - `docs/ENGINEERING_DOCTRINE.md`
 - `prompts/ATLAS Lead Public Product Engineer Prompt.md`
 - `prompts/ATLAS Evidence Integration Engineer Prompt.md`
+- `prompts/ATLAS Information Claims & Forensic Adjudication Engineer Prompt.md`
+- `docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md`
 
 Any older prompt in this directory marked `SUPERSEDED` is historical only and must not be treated as active project authority.
 
