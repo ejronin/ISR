@@ -1,0 +1,416 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260915-ROOK-0001ET",
+  "known_at": "2026-09-15T00:01:51-04:00",
+  "evidence_cutoff": "2026-09-15T00:01:51-04:00",
+  "summary": "Routine adjudication of the completed ROOK sweep ending Sep. 15 00:01:51 ET: VTB sanctions resolution, later Houthi-Saudi attack/casualty evidence, Saudi alerts, updated Hormuz/Bab el-Mandeb traffic, Yemen humanitarian status, East-West pipeline repair detail, and retrospective U.S. watchdog BDA/sustainment findings. Later reporting updates existing occurrences and is not backdated into new physical events.",
+  "sources": [
+    {
+      "source_id": "SRC-F308AF16618A",
+      "url": "https://www.reuters.com/world/middle-east/us-imposes-iran-related-sanctions-russias-vtb-2026-09-14/",
+      "source_role": "INDEPENDENT_WIRE",
+      "outlet": "Reuters",
+      "published_date": "2026-09-14",
+      "title": "U.S. imposes Iran-related sanctions on Russia's VTB"
+    },
+    {
+      "source_id": "SRC-DCAF6365D0E6",
+      "url": "https://apnews.com/article/iran-war-damage-pentagon-inspector-general-87cbe4e2ac208a849cd1554c4bb44bbf",
+      "source_role": "INDEPENDENT_WIRE_REPORTING_OFFICIAL_WATCHDOG",
+      "outlet": "Associated Press",
+      "published_date": "2026-09-14",
+      "title": "U.S. watchdog report details Iran-war damage and sustainment constraints"
+    },
+    {
+      "source_id": "SRC-C934F4D2622E",
+      "url": "https://www.reuters.com/world/middle-east/houthis-strike-saudi-targets-anew-talks-over-strait-hormuz-stall-2026-09-15/",
+      "source_role": "INDEPENDENT_WIRE",
+      "outlet": "Reuters",
+      "published_date": "2026-09-15",
+      "title": "Houthis strike Saudi targets anew as Hormuz talks stall"
+    },
+    {
+      "source_id": "SRC-D07884490630",
+      "url": "https://apnews.com/article/yemen-houthis-saudi-shipping-mandeb-8c18d82c109a8ea91347ce53c0096c53",
+      "source_role": "INDEPENDENT_WIRE",
+      "outlet": "Associated Press",
+      "published_date": "2026-09-14",
+      "title": "Yemen fighting, Saudi attacks and Bab el-Mandeb developments"
+    },
+    {
+      "source_id": "SRC-B43F3557DFFF",
+      "url": "https://www.reuters.com/world/middle-east/saudi-civil-defence-says-danger-has-passed-six-cities-including-yanbu-2026-09-15/",
+      "source_role": "INDEPENDENT_WIRE",
+      "outlet": "Reuters",
+      "published_date": "2026-09-15",
+      "title": "Saudi Civil Defence says danger passed in six cities including Yanbu"
+    },
+    {
+      "source_id": "SRC-1415D6F73AA8",
+      "url": "https://www.reuters.com/world/middle-east/hormuz-traffic-dwindles-after-middle-east-attacks-intensify-2026-09-15/",
+      "source_role": "INDEPENDENT_WIRE_REPORTING_COMMERCIAL_MARITIME_DATA",
+      "outlet": "Reuters",
+      "published_date": "2026-09-15",
+      "title": "Hormuz traffic dwindles after Middle East attacks intensify"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-US-VTB-IRAN-SANCTIONS-20260914",
+      "event_date": "2026-09-14",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_IRAN_RELATED_SANCTIONS_VTB_BANK",
+      "public_available_time": "2026-09-14T15:01:00-04:00",
+      "game_knowledge_time": "2026-09-15T00:01:51-04:00",
+      "strike_countable": false,
+      "summary": "The U.S. Treasury imposed Iran-related sanctions on Russia's VTB Bank under an Iran-focused authority. Treasury allegations about VTB's Iran financial channels are preserved as the government's stated basis.",
+      "source_ids": [
+        "SRC-F308AF16618A"
+      ]
+    },
+    {
+      "event_id": "G3-US-WATCHDOG-IRAN-WAR-RETROSPECTIVE-20260914",
+      "event_date": "2026-09-14",
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_type": "US_WATCHDOG_RETROSPECTIVE_BDA_AND_SUSTAINMENT",
+      "game_knowledge_time": "2026-09-15T00:01:51-04:00",
+      "strike_countable": false,
+      "summary": "A U.S. government watchdog report made public Sep. 14 provided retrospective April-June BDA and sustainment findings, including base damage, aircraft-loss aggregates, diplomatic-facility damage and logistics constraints. Publication is recorded as a retrospective assessment, not a new Sep. 14 physical-loss occurrence.",
+      "source_ids": [
+        "SRC-DCAF6365D0E6"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "status": "MOSTLY_OUT_OF_SERVICE_3_TO_5_WEEKS; PARTIAL_OPERATION_POSSIBLE_UNQUANTIFIED",
+        "disposition": "Later AP reporting retained the three-to-five-week repair estimate for major East-West Pipeline damage, including a major pumping facility. One regional official said partial operation during repairs may be possible, but no throughput estimate or restart date was established.",
+        "source_ids": [
+          "SRC-594086EEF828",
+          "SRC-6184AFA78403",
+          "SRC-A165C41CB63F",
+          "SRC-C1C12D7A9913",
+          "SRC-E487426AC497",
+          "SRC-D07884490630"
+        ]
+      }
+    },
+    {
+      "entity_type": "gap",
+      "entity_id": "GAP-E2-SAUDI-EASTWEST-EXACT-BDA",
+      "mode": "update",
+      "record": {
+        "known_at": "2026-09-15T00:01:51-04:00",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "status": "PARTIALLY_RESOLVED_REPAIR_RANGE; PARTIAL_THROUGHPUT_AND_EXACT_FACILITY_BDA_UNRESOLVED",
+        "topic": "Exact East-West pipeline facilities damaged, repair duration and partial-restoration throughput",
+        "evidence": "Three-to-five-week repair range retained; partial operation was described as possible but unquantified. Exact facility-level BDA and measurable restoration capacity remain unresolved.",
+        "source_ids": [
+          "SRC-6184AFA78403",
+          "SRC-E487426AC497",
+          "SRC-D07884490630"
+        ]
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "observed_state": "Kpler preliminary data reported four commodity-vessel transits through Hormuz on Monday, down from ten Sunday: two dry-bulk carriers exited and two ballast oil tankers entered. AIS-dark traffic may be omitted.",
+        "adjudication": "SEVERELY_DEPRESSED_OBSERVABLE_COMMODITY_TRAFFIC; NOT_PHYSICAL_CLOSURE; AIS_SCOPE_BOUND",
+        "latest_observable_metric": {
+          "provider": "Kpler via Reuters",
+          "day": "2026-09-14",
+          "commodity_vessel_transits": 4,
+          "scope": "PRELIMINARY_OBSERVABLE_TRAFFIC",
+          "ais_dark_excluded": true
+        },
+        "source_ids": [
+          "SRC-CEA9C04AFB6F",
+          "SRC-1415D6F73AA8"
+        ]
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-BAB-EL-MANDEB-TRAFFIC-20260914",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "observed_state": "Kpler preliminary data reported 21 commodity-vessel transits through Bab el-Mandeb on Monday, down from 28 Sunday. Traffic remained present despite Houthi territorial gains.",
+        "adjudication": "GENERAL_TRAFFIC_CONTINUES; DAILY_COUNT_DECLINED_TO_21; GENERAL_CLOSURE_NOT_ESTABLISHED",
+        "latest_observable_metric": {
+          "provider": "Kpler via Reuters",
+          "day": "2026-09-14",
+          "commodity_vessel_transits": 21,
+          "scope": "PRELIMINARY_OBSERVABLE_TRAFFIC"
+        },
+        "source_ids": [
+          "SRC-CEA9C04AFB6F",
+          "SRC-1415D6F73AA8"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "displaced": null,
+        "reported_displaced_approx": 94000,
+        "confidence": "HIGH_FOR_LATER_REPORTED_ROUNDED_ESTIMATE",
+        "note": "AP reported WHO said fighting had displaced nearly 94,000 people. This supersedes the earlier 82,164 exact IOM figure for current-status presentation while preserving that earlier exact count and publication time in revision history.",
+        "source_ids": [
+          "SRC-252EBCCAE280",
+          "SRC-D07884490630"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-YEMEN-WEEKLY-DEATHS-20260914",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-YEMEN-WEEKLY-DEATHS-20260914",
+        "period_description": "Preceding week as reported Sep. 14",
+        "reported_killed_gt": 500,
+        "aggregation_type": "NON_ADDITIVE_PERIOD_ESTIMATE",
+        "additive": false,
+        "confidence": "HIGH_FOR_WHO_REPORTED_ESTIMATE",
+        "note": "AP reported WHO said more than 500 people were killed in Yemen during the preceding week, up from nearly 200 the week before. This is a period estimate and must not be summed with event-level casualty rows without reconciliation.",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-D07884490630"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-SA-KHAMIS-MUSHAIT-CIVILIANS-20260914",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-SA-KHAMIS-MUSHAIT-CIVILIANS-20260914",
+        "event_date": "2026-09-14",
+        "wounded": 13,
+        "confidence": "HIGH_FOR_SAUDI_COALITION_ACCOUNT",
+        "note": "Saudi coalition spokesman said attacks struck civilian areas in Khamis Mushait and nearby cities, injuring 13 civilians and damaging houses and vehicles. This does not establish Houthi-claimed military-base BDA.",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-C934F4D2622E",
+          "SRC-D07884490630"
+        ]
+      }
+    },
+    {
+      "entity_type": "relationship",
+      "entity_id": "REL-HOUTHI-SAUDI-STRIKES-13-WOUNDED-20260914PM",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-HOUTHI-SAUDI-STRIKES-13-WOUNDED-20260914PM",
+        "relationship_type": "LATER_ATTACK_CONFIRMATION_AND_CASUALTY_UPDATE",
+        "updates_existing_ref": "REL-HOUTHI-SAUDI-THREAT-ALERTS-20260914",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "evidence": "Attack activity was confirmed and Saudi reporting established 13 civilian wounded with property damage. Houthi claims of impacts on King Khalid Air Base hangars, radar, runways and ammunition depots remain actor-supplied BDA.",
+        "source_ids": [
+          "SRC-C934F4D2622E",
+          "SRC-D07884490630"
+        ]
+      }
+    },
+    {
+      "entity_type": "relationship",
+      "entity_id": "REL-SAUDI-ALERTS-YANBU-SIX-CITIES-20260914PM",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-SAUDI-ALERTS-YANBU-SIX-CITIES-20260914PM",
+        "relationship_type": "LATER_THREAT_ALERT_EXPANSION_AND_ALL_CLEAR",
+        "updates_existing_ref": "REL-HOUTHI-SAUDI-THREAT-ALERTS-20260914",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "evidence": "Saudi Civil Defence issued and then lifted danger alerts affecting Yanbu, Jeddah, Abha, Jazan, AlUla and Taif. Alerts establish threat activity, not successful impacts in each city.",
+        "source_ids": [
+          "SRC-B43F3557DFFF"
+        ]
+      }
+    },
+    {
+      "entity_type": "gap",
+      "entity_id": "GAP-E1-FUTURE-BANK-SANCTION",
+      "mode": "update",
+      "record": {
+        "known_at": "2026-09-15T00:01:51-04:00",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "status": "RESOLVED_COMPLETED_VTB_BANK",
+        "topic": "Announced future U.S. sanction on an unnamed large bank",
+        "resolution": "Resolved Sep. 14: Treasury imposed Iran-related sanctions on Russia's VTB Bank, identifying the previously unnamed large bank.",
+        "evidence": "The previously pending announced bank action became completed and identified as VTB Bank under an Iran-focused authority.",
+        "source_ids": [
+          "SRC-0714BF64E524",
+          "SRC-F308AF16618A"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-VTB-IRAN-SANCTIONS-20260914",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-US-VTB-IRAN-SANCTIONS-20260914",
+        "date": "2026-09-14",
+        "metric": "Iran-related sanctions on VTB Bank",
+        "observed_state": "Treasury imposed Iran-related sanctions on Russia's VTB Bank, alleging Iran offices, correspondent relationships with sanctioned Iranian lenders, rial-ruble settlement channels and efforts to move frozen Iranian assets.",
+        "adjudication": "COMPLETED_US_SANCTIONS_ACTION; TREASURY_ALLEGATIONS_RETAINED_AS_GOVERNMENT_BASIS",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-F308AF16618A"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-WAR-COST-OFFICIAL-RETROSPECTIVE-20260914",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-US-WAR-COST-OFFICIAL-RETROSPECTIVE-20260914",
+        "date": "2026-09-14",
+        "metric": "Retrospective U.S. war and diplomatic-facility costs",
+        "observed_state": "AP reported a U.S. watchdog accounting that cited a previously stated $37.5 billion war cost through late July and $184 million in physical damage to U.S. diplomatic facilities in Iraq, Kuwait, Saudi Arabia and the UAE.",
+        "adjudication": "RETROSPECTIVE_OFFICIAL_WATCHDOG_FINDINGS_REPORTED_BY_AP; PUBLICATION_DATE_NOT_OCCURRENCE_DATE",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-DCAF6365D0E6"
+        ]
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-US-MQ9-OIG-RETRO-20260914",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-US-MQ9-OIG-RETRO-20260914",
+        "asset_class": "MQ-9",
+        "event_date": "2026-09-14",
+        "quantity": null,
+        "reported_maximum": 30,
+        "aggregation_type": "RETROSPECTIVE_OVERLAPPING_SNAPSHOT",
+        "additive": false,
+        "status": "UP_TO_30_DESTROYED_REPORTED_FOR_COVERED_PERIOD",
+        "disposition": "AP reported the U.S. watchdog document said up to 30 MQ-9s were destroyed during the covered period. This is a retrospective overlapping aggregate, not an additive new Sep. 14 loss occurrence.",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-DCAF6365D0E6"
+        ]
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-US-KC135-OIG-RETRO-20260914",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-US-KC135-OIG-RETRO-20260914",
+        "asset_class": "KC-135",
+        "event_date": "2026-09-14",
+        "quantity": 7,
+        "aggregation_type": "RETROSPECTIVE_OVERLAPPING_SNAPSHOT",
+        "additive": false,
+        "status": "SEVEN_DAMAGED_OR_DESTROYED_REPORTED_FOR_COVERED_PERIOD",
+        "disposition": "AP reported the watchdog document said seven KC-135 aircraft were damaged or destroyed during the covered period. Mixed disposition and overlap with event-level records preclude additive summation.",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-DCAF6365D0E6"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-US-OIG-KIA-RETRO-20260914",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-US-OIG-KIA-RETRO-20260914",
+        "event_date": "2026-09-14",
+        "reported_killed": 11,
+        "aggregation_type": "RETROSPECTIVE_OVERLAPPING_SNAPSHOT",
+        "additive": false,
+        "note": "AP reported the watchdog document listed eleven U.S. service members killed in action during the covered period. This is a retrospective overlapping total, not an additive Sep. 14 casualty occurrence.",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-DCAF6365D0E6"
+        ]
+      }
+    },
+    {
+      "entity_type": "claim",
+      "entity_id": "CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914",
+      "mode": "add",
+      "record": {
+        "case_id": "CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914",
+        "claimant": "Houthi military spokesman Yahya Saree",
+        "claim_time": "2026-09-14",
+        "claim": "Dozens of missiles and drones targeted aircraft hangars, radar systems, runways and ammunition depots at King Khalid Air Base in Khamis Mushait.",
+        "adjudication": "ATTACK_ACTIVITY_SUPPORTED; SPECIFIC_MILITARY_TARGET_IMPACTS_AND_BDA_NOT_CONFIRMED_BY_REVIEWED_SAUDI_REPORTING",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-C934F4D2622E",
+          "SRC-D07884490630"
+        ]
+      }
+    },
+    {
+      "entity_type": "claim",
+      "entity_id": "CLM-IRGC-EL-GAIA-MINE-20260914",
+      "mode": "add",
+      "record": {
+        "case_id": "CLM-IRGC-EL-GAIA-MINE-20260914",
+        "claimant": "IRGC via Fars",
+        "claim_time": "2026-09-14",
+        "claim": "Panama-flagged tanker El Gaia was damaged by sea mines while passing through an Iranian-prohibited zone south of Hormuz.",
+        "adjudication": "CONTESTED; CENTCOM_REPORTEDLY_CALLED_CLAIM_FALSE_AND_ASSERTED_PRIOR_IRANIAN_MISSILE_STRIKE; IMO_REPORTED_DAMAGE_WITHOUT_CAUSE",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-C934F4D2622E"
+        ]
+      }
+    },
+    {
+      "entity_type": "claim",
+      "entity_id": "CLM-REZAEI-NO-TALKS-UNTIL-CONDITIONS-20260914",
+      "mode": "add",
+      "record": {
+        "case_id": "CLM-REZAEI-NO-TALKS-UNTIL-CONDITIONS-20260914",
+        "claimant": "Mohsen Rezaei",
+        "claim_time": "2026-09-14",
+        "claim": "No talks until Iran's conditions are met.",
+        "adjudication": "PUBLIC_IRANIAN_POSITION_SIGNAL; SPECIFIC_CONDITIONS_NOT_RESOLVED_BY_THIS_STATEMENT",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-C934F4D2622E"
+        ]
+      }
+    },
+    {
+      "entity_type": "claim",
+      "entity_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914PM",
+      "mode": "add",
+      "record": {
+        "case_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914PM",
+        "claimant": "Iranian officials",
+        "claim_time": "2026-09-14",
+        "claim": "Saudi Arabia requested postponement of the Oman Gulf-Iran Hormuz meeting.",
+        "adjudication": "REPEATED_AS_IRANIAN_ATTRIBUTION; NO_INDEPENDENT_SAUDI_OR_OMANI_PRIMARY_CONFIRMATION_ESTABLISHED_BY_CUTOFF",
+        "knowledge_time": "2026-09-15T00:01:51-04:00",
+        "source_ids": [
+          "SRC-C934F4D2622E"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}
