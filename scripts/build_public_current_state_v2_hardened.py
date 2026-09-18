@@ -67,6 +67,257 @@ def public_proposition(record: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
+
+def _entity_records(canonical: dict[str, Any], key: str) -> list[tuple[str, dict[str, Any]]]:
+    rows: list[tuple[str, dict[str, Any]]] = []
+    for item in (canonical.get("entities") or {}).get(key) or []:
+        record = unwrap(item)
+        entity_id = str(item.get("entity_id") or record.get("entity_id") or "")
+        if entity_id and isinstance(record, dict):
+            rows.append((entity_id, record))
+    return rows
+
+
+def _reader_record_sort(record: dict[str, Any]) -> tuple[str, str, str]:
+    statement = record.get("statement_time") or {}
+    return (
+        str(statement.get("date") or record.get("event_time") or record.get("knowledge_time") or ""),
+        str(statement.get("display_time") or ""),
+        str(record.get("claim_instance_id") or record.get("reader_branch_id") or record.get("claim_id") or ""),
+    )
+
+
+def _reader_branch_key(record: dict[str, Any]) -> str:
+    return str(
+        record.get("proposition_id")
+        or record.get("claim_id")
+        or record.get("reader_branch_id")
+        or record.get("claim_instance_id")
+        or record.get("proposition")
+        or ""
+    )
+
+
+def _reader_overlay_record(
+    entity_id: str,
+    overlay: dict[str, Any],
+    claims_by_id: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    claim_id = str(overlay.get("claim_id") or "")
+    claim = claims_by_id.get(claim_id) or {}
+    statement_date = str(
+        claim.get("claim_time")
+        or overlay.get("event_time")
+        or overlay.get("knowledge_time")
+        or ""
+    )[:10]
+    revision = claim.get("assessment_revision") or {}
+    reason = str(revision.get("reason") or "").strip()
+    return {
+        "reader_branch_id": entity_id,
+        "claim_id": claim_id or entity_id,
+        "original_claim_id": claim_id or entity_id,
+        "chain_id": overlay.get("chain_id"),
+        "actor": claim.get("claimant") or overlay.get("actor") or "Claimant not identified",
+        "actor_role": overlay.get("actor_role") or "ORIGINATOR",
+        "claim": claim.get("claim") or overlay.get("proposition"),
+        "proposition": overlay.get("proposition") or claim.get("claim"),
+        "proposition_axis": overlay.get("proposition_axis") or claim.get("proposition_type"),
+        "relation_type": overlay.get("relation_type") or "ORIGINATION",
+        "statement_time": {
+            "date": statement_date or None,
+            "display_time": None,
+            "precision": "DATE_ONLY" if statement_date else "UNRESOLVED",
+        },
+        "truth_adjudication": overlay.get("truth_adjudication") or claim.get("truth_adjudication") or "UNRESOLVED",
+        "truth_qualifier": overlay.get("truth_qualifier") or claim.get("truth_qualifier"),
+        "evidence_disposition": overlay.get("evidence_disposition") or claim.get("evidence_disposition"),
+        "knowledge_judgment": overlay.get("knowledge_judgment") or claim.get("knowledge_judgment"),
+        "public_knowledge_judgment": overlay.get("knowledge_judgment") or claim.get("knowledge_judgment"),
+        "combined_assessment": overlay.get("combined_assessment") or claim.get("adjudication"),
+        "public_combined_assessment": overlay.get("combined_assessment") or claim.get("adjudication"),
+        "reader_reason": reason or None,
+        "source_ids": sorted(set((overlay.get("source_ids") or []) + (claim.get("source_ids") or []))),
+        "counts_as_unique_proposition": bool(overlay.get("counts_as_unique_proposition", True)),
+        "denominator_class": overlay.get("denominator_class") or "UNIQUE_ATOMIC_PROPOSITION",
+        "lifecycle_status": overlay.get("lifecycle_status") or "ACTIVE",
+        "knowledge_time": overlay.get("knowledge_time") or claim.get("knowledge_time"),
+        "canonical_assessment_withheld": False,
+    }
+
+
+def _reader_cards(
+    canonical: dict[str, Any],
+    chains: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, int]]:
+    cards = {str(chain.get("chain_id")): copy.deepcopy(chain) for chain in chains if chain.get("chain_id")}
+    claims_by_id = {entity_id: record for entity_id, record in _entity_records(canonical, "claims")}
+
+    semantic_chains = {}
+    for _, record in _entity_records(canonical, "information_chains"):
+        chain_id = str(record.get("chain_id") or "")
+        if chain_id and record.get("semantic_overlay") is True:
+            semantic_chains[chain_id] = copy.deepcopy(record)
+
+    families = []
+    family_by_chain: dict[str, dict[str, Any]] = {}
+    for entity_id, record in _entity_records(canonical, "narrative_families"):
+        if record.get("family_type") != "CROSS_EVENT_RHETORICAL_NARRATIVE_FAMILY":
+            continue
+        family = {
+            "narrative_family_id": record.get("narrative_family_id") or entity_id,
+            "family_type": record.get("family_type"),
+            "legacy_overgrouped_chain_id": record.get("legacy_overgrouped_chain_id"),
+            "member_chain_ids": copy.deepcopy(record.get("member_chain_ids") or []),
+            "rule": record.get("rule"),
+        }
+        families.append(family)
+        for chain_id in family["member_chain_ids"]:
+            family_by_chain[str(chain_id)] = family
+
+    overlays: list[tuple[str, dict[str, Any]]] = []
+    for entity_id, record in _entity_records(canonical, "narrative_claims"):
+        if "atomic_proposition" in record or record.get("legacy_claim_instance_id"):
+            overlays.append((entity_id, copy.deepcopy(record)))
+
+    # Accepted corrective overlays replace the current projection of the same
+    # proposition; they do not mutate the canonical historical adjudication row.
+    for entity_id, overlay in overlays:
+        legacy_instance = str(overlay.get("legacy_claim_instance_id") or "")
+        if not legacy_instance:
+            continue
+        chain_id = str(overlay.get("chain_id") or "")
+        card = cards.get(chain_id)
+        if not card:
+            raise ValueError(f"Public reader overlay references unknown chain: {entity_id} -> {chain_id}")
+        target = next(
+            (record for record in card.get("proposition_records") or []
+             if str(record.get("claim_instance_id") or "") == legacy_instance),
+            None,
+        )
+        if target is None:
+            raise ValueError(f"Public reader overlay target is absent: {entity_id} -> {legacy_instance}")
+        original_proposition = target.get("proposition")
+        target.update({
+            "truth_adjudication": overlay.get("truth_adjudication") or target.get("truth_adjudication"),
+            "truth_qualifier": overlay.get("truth_qualifier") or target.get("truth_qualifier"),
+            "evidence_disposition": overlay.get("evidence_disposition") or target.get("evidence_disposition"),
+            "knowledge_judgment": overlay.get("knowledge_judgment") or target.get("knowledge_judgment"),
+            "public_knowledge_judgment": overlay.get("knowledge_judgment") or target.get("public_knowledge_judgment"),
+            "combined_assessment": overlay.get("combined_assessment") or target.get("combined_assessment"),
+            "public_combined_assessment": overlay.get("combined_assessment") or target.get("public_combined_assessment"),
+            "knowledge_time": overlay.get("knowledge_time") or target.get("knowledge_time"),
+            "reader_reason": overlay.get("proposition"),
+            "current_relation_type": overlay.get("relation_type"),
+            "current_overlay_id": entity_id,
+            "source_ids": sorted(set((target.get("source_ids") or []) + (overlay.get("source_ids") or []))),
+        })
+        target["proposition"] = original_proposition
+
+    # New accepted propositions (for example the Sep. 16/17 Qeshm branches)
+    # are projected directly from canonical current entities.
+    for entity_id, overlay in overlays:
+        if overlay.get("legacy_claim_instance_id"):
+            continue
+        chain_id = str(overlay.get("chain_id") or "")
+        if not chain_id:
+            continue
+        card = cards.setdefault(chain_id, {
+            "semantic_version": "2.0",
+            "chain_id": chain_id,
+            "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+            "proposition_records": [],
+            "chronology": [],
+            "source_ids": [],
+        })
+        branch = _reader_overlay_record(entity_id, overlay, claims_by_id)
+        card.setdefault("proposition_records", []).append(branch)
+
+    # The historical regional false-flag bucket is an accepted cross-event
+    # narrative family, not one continuous incident. Split it only through the
+    # explicit claim->incident relationships supplied by the semantic overlays.
+    claim_to_incident_chain: dict[str, str] = {}
+    for chain_id, semantic in semantic_chains.items():
+        if semantic.get("case_classification") != "INCIDENT_SPECIFIC_NARRATIVE_CHAIN":
+            continue
+        for claim_id in semantic.get("claim_ids") or []:
+            claim_to_incident_chain[str(claim_id)] = chain_id
+    for family in families:
+        legacy_chain_id = str(family.get("legacy_overgrouped_chain_id") or "")
+        if not legacy_chain_id or legacy_chain_id not in cards:
+            continue
+        legacy = cards.pop(legacy_chain_id)
+        for record in legacy.get("proposition_records") or []:
+            claim_id = str(record.get("original_claim_id") or record.get("claim_id") or "")
+            target_chain = claim_to_incident_chain.get(claim_id)
+            if not target_chain:
+                raise ValueError(f"False-flag family record lacks incident relationship: {claim_id}")
+            target = cards.setdefault(target_chain, {
+                "semantic_version": "2.0",
+                "chain_id": target_chain,
+                "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+                "proposition_records": [],
+                "chronology": [],
+                "source_ids": [],
+            })
+            target.setdefault("proposition_records", []).append(copy.deepcopy(record))
+
+    reader_cards: list[dict[str, Any]] = []
+    for chain_id, card in sorted(cards.items()):
+        semantic = semantic_chains.get(chain_id) or {}
+        records = sorted(card.get("proposition_records") or [], key=_reader_record_sort)
+        if not records:
+            continue
+        non_accusation_context = all(
+            record.get("denominator_class") == "NON_ACCUSATION_CONTEXT"
+            for record in records
+        )
+        classification = (
+            semantic.get("case_classification")
+            or ("ADMISSION_LATENCY_CONTROL" if non_accusation_context else "ACCUSATION_CHAIN")
+        )
+        accusation = semantic.get("lie_ledger_accusation")
+        if accusation is None:
+            accusation = classification != "ADMISSION_LATENCY_CONTROL"
+        source_ids = sorted({
+            source_id
+            for record in records
+            for source_id in record.get("source_ids") or []
+        })
+        result = {
+            "chain_id": chain_id,
+            "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+            "classification": classification,
+            "lie_ledger_accusation": bool(accusation),
+            "branch_axes": copy.deepcopy(semantic.get("branch_axes") or []),
+            "reader_contract": semantic.get("reader_contract"),
+            "adjudication_rule": semantic.get("adjudication_rule"),
+            "proposition_records": records,
+            "source_ids": source_ids,
+        }
+        family = family_by_chain.get(chain_id)
+        if family:
+            result["narrative_family"] = copy.deepcopy(family)
+        reader_cards.append(result)
+
+    narrative_cards = [card for card in reader_cards if card["lie_ledger_accusation"]]
+    context_cards = [card for card in reader_cards if not card["lie_ledger_accusation"]]
+    branch_keys = {
+        (card["chain_id"], _reader_branch_key(record))
+        for card in reader_cards
+        for record in card["proposition_records"]
+        if _reader_branch_key(record)
+    }
+    metrics = {
+        "narrative_cards": len(narrative_cards),
+        "context_cards": len(context_cards),
+        "branch_findings": len(branch_keys),
+        "proposition_records": sum(len(card["proposition_records"]) for card in reader_cards),
+        "narrative_families": len(families),
+    }
+    return reader_cards, families, metrics
+
+
 def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> None:
     chains = []
     for wrapped in canonical["entities"].get("lie_ledger_chains_v2") or []:
@@ -91,6 +342,7 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
         chains.append(chain)
 
     governance = canonical.get("lie_ledger_v2_governance") or {}
+    reader_cards, reader_families, reader_metrics = _reader_cards(canonical, chains)
     gate3 = state.setdefault("gate3", {})
     public_ledger = {
         "schema_version": "2.0",
@@ -99,6 +351,9 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
         "contract_path": governance.get("contract_path"),
         "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
         "records": chains,
+        "reader_cards": reader_cards,
+        "reader_families": reader_families,
+        "reader_metrics": reader_metrics,
         "metrics": copy.deepcopy(canonical.get("lie_ledger_v2_metrics") or {}),
         "publication_blockers": copy.deepcopy(canonical.get("lie_ledger_v2_publication_blockers") or []),
         "blocked_assessment_policy": governance.get("blocked_assessment_policy"),
@@ -122,6 +377,9 @@ def project_lie_ledger_v2(state: dict[str, Any], canonical: dict[str, Any]) -> N
     counts["gate3_lie_ledger_claim_instances"] = int(
         (canonical.get("lie_ledger_v2_metrics") or {}).get("claim_instances") or 0
     )
+    counts["gate3_lie_ledger_reader_narratives"] = reader_metrics["narrative_cards"]
+    counts["gate3_lie_ledger_reader_contexts"] = reader_metrics["context_cards"]
+    counts["gate3_lie_ledger_reader_branches"] = reader_metrics["branch_findings"]
 
 
 def build_state(root: Path = ROOT) -> dict[str, Any]:
