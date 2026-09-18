@@ -242,6 +242,107 @@
 .reader-claim-status.unresolved,
 .reader-claim-status.pending { color: #aeb8c2; }
 
+
+.reader-ledger-metrics {
+  margin: -.25rem 0 .25rem;
+  color: var(--atlas-text-muted, #aeb8c2);
+}
+
+.reader-narrative-summary {
+  margin: .25rem 0 0;
+  max-width: 72ch;
+  color: var(--atlas-text-muted, #b8c2cc);
+}
+
+.reader-narrative-family {
+  margin: .8rem 0 0;
+  padding: .7rem .8rem;
+  border-left: .2rem solid #8ea6bd;
+  background: rgba(142, 166, 189, .08);
+  color: var(--atlas-text-muted, #c0cad4);
+}
+
+.reader-claim-timeline {
+  display: grid;
+  gap: .8rem;
+  margin-top: 1rem;
+}
+
+.reader-claim-branch {
+  position: relative;
+  padding: .9rem 1rem .9rem 1.15rem;
+  border-left: .2rem solid var(--atlas-border, #425769);
+  border-radius: .35rem .7rem .7rem .35rem;
+  background: rgba(255,255,255,.025);
+}
+
+.reader-claim-branch-head {
+  display: flex;
+  gap: .9rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.reader-claim-branch h4 {
+  margin: .2rem 0 .25rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.reader-current-correction {
+  margin: .5rem 0 0;
+  font-size: .9rem;
+  font-weight: 650;
+  color: #d6c28b;
+}
+
+.reader-branch-permalink {
+  display: inline-block;
+  margin-top: .65rem;
+  font-size: .88rem;
+}
+
+.reader-ledger-context {
+  margin-top: 1.25rem;
+  border: 1px solid var(--atlas-border, #263746);
+  border-radius: .8rem;
+  background: rgba(255,255,255,.018);
+}
+
+.reader-ledger-context > summary {
+  cursor: pointer;
+  min-height: 2.75rem;
+  padding: .8rem 1rem;
+  font-weight: 700;
+}
+
+.reader-ledger-context > :not(summary) {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.reader-ledger-context-grid {
+  display: grid;
+  gap: .8rem;
+  padding-bottom: 1rem;
+}
+
+.reader-ledger-control-card {
+  border-style: dashed;
+  opacity: .92;
+}
+
+.reader-claim-status.unsubstantiated-exact,
+.reader-claim-status.unsubstantiated,
+.reader-claim-status.unverified { color: #c9b98a; }
+
+.reader-claim-status.narrative-changed { color: #82d89a; }
+
+.reader-claim-branch:focus {
+  outline: 2px solid currentColor;
+  outline-offset: .2rem;
+}
+
 .reader-method-link,
 .reader-crosslink-section {
   margin-top: 1rem;
@@ -254,7 +355,8 @@
   .reader-ledger-controls .filter-result-count {
     grid-column: 1;
   }
-  .reader-ledger-card-head {
+  .reader-ledger-card-head,
+  .reader-claim-branch-head {
     display: grid;
   }
   .reader-claim-status {
