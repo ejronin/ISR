@@ -1,0 +1,145 @@
+{
+  "schema_version": "ATLAS-ROOK-EVIDENCE-SWEEP-1.0",
+  "artifact_role": "APPEND_ONLY_EVIDENCE_INTEGRATION",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-17T12:02:12-04:00",
+    "end": "2026-09-18T00:02:12-04:00",
+    "collection_time": "2026-09-18T00:02:12-04:00"
+  },
+  "immutability": {
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false
+  },
+  "evidence": [
+    {
+      "event_key": "CHINA-IRAN-HOUTHI-PRESSURE-20260917",
+      "domain": ["diplomacy", "yemen", "energy-security"],
+      "occurrence_time": "2026-09-17",
+      "publication_time": "2026-09-17T12:02:00Z",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "NEW_HIGH_VALUE_EVIDENCE",
+      "summary": "Reuters reports, citing three Iranian sources, that China privately asked Tehran to use its influence to rein in the Houthis after Saudi Arabia appealed to Beijing. This is stronger than China's public restraint language and is material evidence that Beijing is actively protecting Red Sea/Gulf energy-route stability. Tehran reportedly answered that regional stability depends on ending the US-Israel war on Iran; no Chinese economic threat was reported.",
+      "sources": ["https://www.reuters.com/world/china/china-presses-iran-help-rein-houthis-after-saudi-appeal-sources-say-2026-09-17/"],
+      "supersedes_or_updates": ["China diplomatic-pressure drawer", "Saudi external-support / Houthi containment drawer"],
+      "unresolved": ["Whether Tehran transmitted a restraint demand to Ansar Allah", "Whether Beijing attached private economic consequences"]
+    },
+    {
+      "event_key": "TREASURY-BITBANK-HORMUZ-20260917",
+      "domain": ["sanctions", "economy", "maritime"],
+      "occurrence_time": "2026-09-17",
+      "publication_time": "2026-09-17",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "CONFIRMED_OFFICIAL_ACTION",
+      "summary": "OFAC designated BitBank, its developer Pishtaz Simorgh Electronic Trade Company, and three Zanjani associates. Treasury says BitBank is part of Iran's digital-asset sanctions-evasion infrastructure; Reuters reports Treasury accused it of routing hundreds of millions to IRGC and processing funds paid to Hormuz Safe for vessel passage. Preserve Treasury allegations as U.S. government attribution, not independently proven transaction-level fact.",
+      "sources": ["https://home.treasury.gov/news/press-releases/sb0632", "https://www.reuters.com/world/middle-east/us-sanctions-iranian-financiers-crypto-exchange-says-it-processes-hormuz-2026-09-17/"],
+      "supersedes_or_updates": ["Operation Economic Outcast drawer", "Hormuz Safe / PGSA revenue drawer", "Babak Zanjani sanctions-evasion network"]
+    },
+    {
+      "event_key": "RSAF-F15SA-MARIB-20260916",
+      "domain": ["military", "claims-corrections", "yemen"],
+      "occurrence_time": "2026-09-16",
+      "publication_time": "2026-09-17",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "AIRFRAME_LOSS_NOW_STRONGLY_CORROBORATED; SHOOTDOWN_MECHANISM_UNRESOLVED",
+      "summary": "Janes identifies released wreckage as a Royal Saudi Air Force F-15SA Advanced Eagle using Saudi markings and variant-specific DEWS/CMWS apertures. This supersedes prior treatment of the aircraft loss as only a naked Houthi claim. Houthi targeting footage and claimed locally made SAM remain unverified; crew fate remains unknown. Social-media descriptions of the aircraft as a 'US fighter' require correction: it is U.S.-manufactured/designed but Saudi-operated.",
+      "sources": ["https://www.janes.com/defence-intelligence-insights/defence-news/defence/houthis-claim-shooting-down-of-saudi-fighter-in-first-combat-loss-for-advanced-eagle"],
+      "supersedes_or_updates": ["Houthi F-15 shootdown claim drawer", "Saudi aircraft-loss ledger"],
+      "unresolved": ["Cause of loss / weapon", "Crew disposition", "Saudi official acknowledgement"]
+    },
+    {
+      "event_key": "IRGC-QESHM-MQ9-20260917",
+      "domain": ["military", "claims-corrections", "lie-ledger"],
+      "occurrence_time": "2026-09-17T10:12:00+03:30",
+      "publication_time": "2026-09-17",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "INDIVIDUAL_LOSS_UNVERIFIED; CUMULATIVE_53_MQ9_CLAIM_REQUIRES_LIE_LEDGER_ADJUDICATION",
+      "summary": "IRGC says an MQ-9 was detected and destroyed over Qeshm at 10:12 local by a new advanced air-defense system and explicitly calls it the 53rd U.S. MQ-9 downed. No independent/U.S. confirmation located in this sweep. Preserve the individual loss claim separately from the cumulative aggregate. The explicit '53rd MQ-9' wording should update the aircraft-kill aggregate lie-chain audit because Iran's own prior BDA taxonomy distinguishes multiple aircraft/UAV types; do not silently normalize 'MQ-9' to generic aircraft.",
+      "sources": ["https://www.aa.com.tr/en/middle-east/iran-says-another-us-mq-9-drone-downed-over-qeshm-island-near-strait-of-hormuz/4060222"],
+      "supersedes_or_updates": ["Qeshm MQ-9 claim drawer", "CH-AIRCRAFT-KILL-AGGREGATES / lie-ledger engineer handoff"],
+      "unresolved": ["Physical proof or U.S. loss acknowledgement", "Exact system used", "Relationship to earlier Qeshm explosions"]
+    },
+    {
+      "event_key": "YEMEN-DISPLACEMENT-20260916-17",
+      "domain": ["human-impact", "yemen"],
+      "occurrence_time": "2026-09-16",
+      "publication_time": "2026-09-16/17",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "AUTHORITATIVE_BASELINE_CLARIFICATION",
+      "summary": "IOM DTM baseline is 104,796 internally displaced people (17,461 households), with 2,776 crossing to Djibouti. Some secondary reporting cites approximately 125,000; preserve that separately rather than replacing the IOM DTM count. This corrects any drawer that treated 125,000 as the authoritative IOM internal-displacement figure.",
+      "sources": ["https://dtm.iom.int/report-product-series/yemen-%E2%80%94-rapid-displacement-tracking-update-date", "https://www.yemenmonitor.com/en/Details/ArtMID/908/ArticleID/182259"],
+      "supersedes_or_updates": ["Yemen humanitarian/displacement drawer"]
+    },
+    {
+      "event_key": "HORMUZ-TRANSITS-WED-20260916",
+      "domain": ["maritime", "energy"],
+      "occurrence_time": "2026-09-16",
+      "publication_time": "2026-09-17T05:22:00Z",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "CONFIRMED_TRACKING_UPDATE",
+      "summary": "Kpler preliminary data reported only three commodity-vessel transits Wednesday, down from 12 Tuesday and versus a 10-day average near 17. Two of the three used dark routes; AIS-off vessels are excluded, so this is an observed-tracking floor, not total physical passage. Bab el-Mandeb crossings were 21 versus 24 Tuesday.",
+      "sources": ["https://www.reuters.com/world/middle-east/number-ships-transiting-strait-hormuz-falls-three-wednesday-data-shows-2026-09-17/"],
+      "supersedes_or_updates": ["Hormuz daily transit series", "Bab el-Mandeb transit series"]
+    },
+    {
+      "event_key": "YANBU-PETROLINE-DAMAGE-20260917-KPLER",
+      "domain": ["infrastructure", "energy", "BDA"],
+      "occurrence_time": "2026-09-10",
+      "publication_time": "2026-09-17",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "BDA_SUPERSESSION",
+      "summary": "Kpler assesses the September 10 Houthi attack disabled multiple pumping stations while the East-West Pipeline itself remains largely intact; damage is materially worse than April's single-station incident. Before attack, Kpler estimates throughput near 5.5 mb/d with about 4.5 mb/d crude exported via Yanbu. This should supersede any simplistic drawer wording that the pipeline itself was physically destroyed.",
+      "sources": ["https://www.kpler.com/blog/yanbu-pipeline-attack-ripples-across-crude-freight-and-gas-markets"],
+      "supersedes_or_updates": ["Saudi East-West Pipeline / Yanbu BDA drawer"],
+      "unresolved": ["Station-by-station repair status and restart date"]
+    },
+    {
+      "event_key": "IRGC-TANKER-HORMUZ-20260917",
+      "domain": ["military", "maritime", "energy", "claims"],
+      "occurrence_time": "2026-09-17",
+      "publication_time": "2026-09-17",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "NEW_CLAIM_EVENT; INDEPENDENT_BDA_PENDING",
+      "summary": "IRGC Navy said a Togo-flagged oil tanker caught fire after being hit while attempting an 'illegal passage' through Hormuz and stopped after the fire. Reuters confirms the IRGC statement but the sweep did not establish independent BDA, weapon, casualties, or ownership/affiliation. Do not import later secondary naming or additional tanker/mining claims without independent verification.",
+      "sources": ["https://www.reuters.com/world/middle-east/trump-hopes-iran-war-nearing-end-houthi-saudi-fighting-escalates-2026-09-17/"],
+      "supersedes_or_updates": ["Hormuz enforcement / tanker attack drawer"],
+      "unresolved": ["Vessel identity", "Weapon/cause", "Damage/casualties", "Whether passage was U.S.-assisted"]
+    },
+    {
+      "event_key": "US-IRAN-UNGA-VISAS-20260917",
+      "domain": ["diplomacy"],
+      "occurrence_time": "2026-09-17",
+      "publication_time": "2026-09-17",
+      "collection_time": "2026-09-18T00:02:12-04:00",
+      "evidence_horizon": "2026-09-18T00:02:12-04:00",
+      "assessment": "CONFIRMED_DIPLOMATIC_ACCESS",
+      "summary": "U.S. will allow Iran's core delegation, including expected senior leadership, to attend UNGA under host-country obligations, with a smaller delegation, travel restrictions and luxury-goods restrictions. This creates a near-term diplomatic contact opportunity but is not evidence by itself of resumed direct negotiations.",
+      "sources": ["https://www.reuters.com/world/middle-east/iranian-delegation-will-be-able-attend-un-general-assembly-us-says-2026-09-17/"],
+      "supersedes_or_updates": ["US-Iran diplomacy / UNGA drawer"]
+    }
+  ],
+  "coverage": {
+    "actors": ["Iran/IRGC", "United States", "Saudi Arabia", "Ansar Allah/Houthis", "China", "Yemen actors", "IOM/UN"],
+    "domains_checked": ["military", "maritime", "infrastructure", "diplomacy", "economy", "sanctions", "energy", "claims/corrections", "human impact", "commercial OSINT"],
+    "source_classes_used": ["Reuters", "AP discovery", "U.S. Treasury primary", "IOM/DTM", "Kpler commercial analysis", "Janes defense analysis", "Anadolu claim transcription"],
+    "limitations": ["No privileged satellite imagery or paid terminal feeds were available in-run beyond publicly indexed commercial reporting", "No direct CENTCOM confirmation located for the Qeshm MQ-9 claim", "Social-media-native collection was not treated as authoritative without corroboration"]
+  },
+  "source_discovery_additions": ["Janes F-15SA wreckage identification", "Kpler Yanbu multi-pumping-station BDA", "Treasury BitBank/Hormuz Safe linkage", "Reuters China private Houthi-restraint request"],
+  "completion": {
+    "status": "COMPLETE_WITH_EXPLICIT_LIMITATIONS",
+    "material_updates": 9,
+    "duplicate_policy": "Existing-event supersession/update preferred where applicable",
+    "canonical_or_release_mutation": false
+  }
+}
