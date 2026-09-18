@@ -1,0 +1,67 @@
+{
+  "artifact_role": "PUBLIC_PRODUCT_ISSUE140_READJUDICATION_HANDOFF",
+  "schema_version": "1.0",
+  "issue": 140,
+  "packet_id": "UPD-20260918-ISSUE140-READJUDICATION",
+  "canonical_sequence": 15,
+  "evidence_cutoff": "2026-09-18T10:27:26-04:00",
+  "known_at": "2026-09-18T10:27:26-04:00",
+  "audit_path": "data/evidence-integration/issue-140-readjudication-audit-20260918.json",
+  "current_findings": {
+    "mq9_52": {
+      "claim_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+      "public_semantic_disposition": "UNSUBSTANTIATED EXACT CUMULATIVE COUNT",
+      "truth_adjudication": "UNRESOLVED",
+      "lie_finding": false,
+      "reason": "IRGC asserted an exact MQ-9 ordinal without a reconciled public type-specific ledger. Independent evidence establishes substantial MQ-9 attrition and an Aug. 13 lower bound of at least 45, while later losses remain incompletely reconciled; no defensible upper bound below 52 is established."
+    },
+    "mq9_53": {
+      "claim_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+      "public_semantic_disposition": "UNSUBSTANTIATED EXACT CUMULATIVE COUNT",
+      "truth_adjudication": "UNRESOLVED",
+      "lie_finding": false,
+      "reason": "The exact 53 ordinal remains unsupported by a reconciled ledger, but the evidence does not establish an upper bound below 53."
+    },
+    "qeshm_sep16_individual": {
+      "claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+      "disposition": "UNVERIFIED / UNRESOLVED INDIVIDUAL LOSS",
+      "note": "Do not infer the individual occurrence from the cumulative ordinal."
+    },
+    "qeshm_sep17_individual": {
+      "claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+      "disposition": "UNVERIFIED / UNRESOLVED INDIVIDUAL LOSS",
+      "note": "Do not infer the individual occurrence from the cumulative ordinal."
+    },
+    "aircraft_210": {
+      "legacy_claim_id": "IR-CLM-0605",
+      "current_overlay_id": "LL-READJUDICATION-IR-CLM-0605-P01-20260918",
+      "disposition": "MISLEADING",
+      "reason": "The same publication shifts from 'down 210' in the headline to 'target around 210' in the body; targeted is not equivalent to downed/lost."
+    },
+    "turkey_false_flag_substitution": {
+      "legacy_claim_id": "IR-CLM-0204",
+      "current_overlay_id": "LL-READJUDICATION-IR-CLM-0204-P02-20260918",
+      "disposition": "SUPPORTED NARRATIVE SUBSTITUTION",
+      "causal_false_flag_disposition": "UNSUBSTANTIATED",
+      "reason": "The chronological shift from categorical no-Iran-launch denials to a false-flag explanation is observable; the truth of the false-flag causal theory remains a separate unsupported proposition."
+    }
+  },
+  "reader_contract": [
+    "One genuine narrative chain remains one top-level card with independently adjudicated proposition branches.",
+    "Do not render 52nd/53rd MQ-9 as verified, false, or Lie. Render them as unsupported exact ordinals whose precise accounting has not been demonstrated.",
+    "Do not describe UNSUBSTANTIATED as a 50/50 factual state; explain that the claimant has not met the evidentiary burden for the precision asserted.",
+    "Keep the individual Sep. 16 and Sep. 17 Qeshm losses separate and unverified/unresolved.",
+    "Do not use mixed 82/130/170/210 aircraft/UAV aggregates as a type-specific MQ-9 denominator.",
+    "Render the May 26 210 branch as a metric/wording problem: headline downed versus body targeted.",
+    "Render the Turkey false-flag branch as an observed narrative substitution while keeping the asserted false-flag cause unsubstantiated.",
+    "Do not propagate truth or knowledge verdicts across chain members."
+  ],
+  "knowledge_boundary": {
+    "mq9_ordinals": "IRGC command/BDA and exact-ordinal record-keeping access is strong contingent knowledge evidence if material falsity is later established. It does not substitute for proving falsity.",
+    "false_vs_lie": "FALSE != LIE remains controlling."
+  },
+  "supersedes_for_current_projection": [
+    "The sequence-14 Public Product instruction that 52/53 are generically unresolved because the cumulative denominator was not reconciled.",
+    "Any reader wording implying the only obstacle to a verdict is absence of a final CENTCOM rebuttal ledger."
+  ]
+}

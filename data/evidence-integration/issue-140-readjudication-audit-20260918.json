@@ -1,0 +1,336 @@
+{
+  "artifact_role": "ISSUE_140_EVIDENCE_READJUDICATION_AUDIT",
+  "schema_version": "1.0",
+  "issue": 140,
+  "starting_production_sha": "e1fbeff7f937b8bfc2bf4b6ccc186bbcb8f05a5e",
+  "reasoning_authority": {
+    "engineering_doctrine": "docs/ENGINEERING_DOCTRINE.md",
+    "lie_ledger_contract": "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md",
+    "evidence_lane_prompt": "prompts/ATLAS Evidence Integration Engineer Prompt.md",
+    "authority_merge": "e1fbeff7f937b8bfc2bf4b6ccc186bbcb8f05a5e"
+  },
+  "evidence_cutoff": "2026-09-18T10:27:26-04:00",
+  "known_at": "2026-09-18T10:27:26-04:00",
+  "methodology": [
+    "Test ordinary-language proposition at the precision asserted.",
+    "Do not presume claimant-only affirmative statements true until disproved.",
+    "Separate absence of corroboration from positive evidence of falsity.",
+    "Use arithmetic, chronology, internal consistency, claimant records, independent baselines, source reliability and institutional access as evidence.",
+    "Reserve UNRESOLVED for genuinely live evidentiary alternatives; use UNSUBSTANTIATED as the semantic disposition when claimant precision is not supported but falsity is not established.",
+    "Keep factual falsity and knowing deception separate."
+  ],
+  "mq9_case": {
+    "proposition_scope": [
+      {
+        "claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+        "proposition": "An American MQ-9 was shot down over Qeshm Island on Sep. 16.",
+        "result": "UNRESOLVED_UNVERIFIED_LOSS",
+        "changed": false,
+        "reason": "IRGC-origin claim is specific, but reviewed evidence still lacks independent confirmation or a dispositive counterfact for this individual occurrence."
+      },
+      {
+        "claim_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "proposition": "Iranian forces had destroyed 52 U.S. MQ-9 aircraft during the conflict by Sep. 16.",
+        "result": "UNSUBSTANTIATED_EXACT_CUMULATIVE_COUNT",
+        "truth_adjudication": "UNRESOLVED",
+        "changed": true,
+        "prior": "UNRESOLVED_CUMULATIVE_DENOMINATOR_NOT_RECONCILED",
+        "reason": "The Sep. 18 doctrine requires an exact ordinal to carry an exact accounting burden. The reviewed record does not supply a reconciled 52-aircraft MQ-9 ledger. However, independent reporting establishes at least 45 MQ-9 losses by Aug. 13 and subsequent Iranian claims create enough unresolved space that material falsity of 52 is not established on the present record."
+      },
+      {
+        "claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+        "proposition": "Another American MQ-9 was shot down over Qeshm Island on Sep. 17.",
+        "result": "UNRESOLVED_UNVERIFIED_LOSS",
+        "changed": false,
+        "reason": "IRGC-origin claim is specific, but reviewed evidence still lacks independent confirmation or a dispositive counterfact for this individual occurrence."
+      },
+      {
+        "claim_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "proposition": "Iranian forces had destroyed 53 U.S. MQ-9 aircraft during the conflict by Sep. 17.",
+        "result": "UNSUBSTANTIATED_EXACT_CUMULATIVE_COUNT",
+        "truth_adjudication": "UNRESOLVED",
+        "changed": true,
+        "prior": "UNRESOLVED_CUMULATIVE_DENOMINATOR_NOT_RECONCILED",
+        "reason": "The exact 53-aircraft ordinal is not supported by a reconciled type-specific ledger. The Sep. 17 claim logically depends on the unsupported 52 baseline plus the individual Sep. 17 loss claim. The present evidence does not establish an upper bound below 53, so material falsity is not established."
+      }
+    ],
+    "ordinary_language_finding": {
+      "source_language_specificity": "MQ-9_SPECIFIC",
+      "finding": "The Sep. 16/17 claims are type-specific exact ordinals, not generic UAV totals. Iran's own reporting simultaneously distinguishes MQ-9 from MQ-1, Lukas, Hermes and other drone categories.",
+      "implication": "52nd/53rd must be tested as exact MQ-9 cumulative propositions and cannot be rescued by folding unlike UAV categories into the denominator."
+    },
+    "independent_baselines": [
+      {
+        "as_of": "2026-06-30",
+        "value": "UP_TO_30_MQ9_DESTROYED",
+        "source_id": "SRC-DCAF6365D0E6",
+        "source": "Associated Press reporting U.S. government watchdog findings published Sep. 14",
+        "role": "RETROSPECTIVE_OFFICIAL_WATCHDOG_BASELINE",
+        "limitation": "Period ends Jun. 30 and is not a Sep. 16/17 upper bound."
+      },
+      {
+        "as_of": "2026-08-13",
+        "value": "AT_LEAST_45_MQ9_LOST",
+        "source_id": "SRC-2C92CED64676",
+        "source": "Washington Post citing three U.S. officials",
+        "role": "INDEPENDENT_REPORTING_US_OFFICIAL_BASELINE",
+        "limitation": "Explicit lower bound, not an upper bound; includes MQ-9s lost during the war and does not by itself establish Iranian shootdown causation for every loss."
+      },
+      {
+        "as_of": "2026-09-08",
+        "value": "AT_LEAST_45_MQ9_LOST_REPEATED",
+        "source_id": "SRC-A07B03007000",
+        "source": "Defense One reporting Air Force modernization discussion",
+        "role": "LATER_SERVICE_CONTEXT",
+        "limitation": "Repeats the at-least-45 figure rather than providing a new exact loss count."
+      }
+    ],
+    "iranian_accounting_evidence": [
+      {
+        "date": "2026-03-07",
+        "claim_id": "IR-CLM-0601",
+        "public_claim": "82 U.S. and Israeli drones downed",
+        "metric": "MIXED_US_ISRAELI_DRONES",
+        "disposition": "UNSUBSTANTIATED_EXACT_AGGREGATE",
+        "contribution_to_mq9_52": "NOT_TYPE_RESOLVED"
+      },
+      {
+        "date": "2026-03-25",
+        "claim_id": "IR-CLM-0602",
+        "public_claim": ">130 enemy drones downed",
+        "metric": "MIXED_ENEMY_DRONES",
+        "disposition": "UNSUBSTANTIATED_EXACT_AGGREGATE",
+        "contribution_to_mq9_52": "NOT_TYPE_RESOLVED"
+      },
+      {
+        "date": "2026-03-31",
+        "public_claim": "147 total UAVs downed after an MQ-9 over Isfahan and a LUCAS over Qeshm",
+        "metric": "MIXED_UAV_TOTAL",
+        "contribution_to_mq9_52": "ONE_PUBLICLY_TYPE_RESOLVED_MQ9_IN_THIS_ITEM; TOTAL_NOT_MQ9_SPECIFIC",
+        "source_url": "https://www.tasnimnews.ir/en/news/2026/03/31/3553408/iranian-army-shoots-down-intruding-mq-9-lucas-drones"
+      },
+      {
+        "date": "2026-04-04",
+        "public_claim": "Tasnim separately corrected an earlier two-drone identification, saying imagery suggested only one was a Reaper and the other a Wing Loong",
+        "metric": "TYPE_IDENTIFICATION_CORRECTION",
+        "contribution_to_mq9_52": "REDUCES_WEIGHT_OF_UNRECONCILED_TYPE_COUNTS",
+        "source_id": "SRC-4DED0E4745D2"
+      },
+      {
+        "date": "2026-04-18",
+        "claim_id": "IR-CLM-0603",
+        "public_claim": "170 advanced enemy drones downed, including Hermes 900, MQ-9 and Heron",
+        "metric": "MIXED_UAV_TOTAL",
+        "disposition": "UNSUBSTANTIATED_EXACT_AGGREGATE",
+        "contribution_to_mq9_52": "NOT_TYPE_RESOLVED"
+      },
+      {
+        "date": "2026-04-28",
+        "claim_id": "IR-CLM-0604",
+        "public_claim": ">170 enemy aircraft hit, including 16 fighters",
+        "metric": "AIRCRAFT_HIT_METRIC",
+        "disposition": "UNSUBSTANTIATED_EXACT_HIT_COUNT; METRIC_SHIFT",
+        "contribution_to_mq9_52": "NOT_COMPARABLE_TO_MQ9_DESTRUCTION_COUNT"
+      },
+      {
+        "date": "2026-05-26",
+        "claim_id": "IR-CLM-0605",
+        "public_claim": "Headline said 210 enemy aircraft downed while article body said Iran could target around 210 enemy aircraft",
+        "metric": "HEADLINE_BODY_METRIC_CONFLICT",
+        "disposition": "MISLEADING",
+        "contribution_to_mq9_52": "NOT_A_CLEAN_LOSS_LEDGER"
+      },
+      {
+        "date_range": "2026-07-08/2026-07-22",
+        "public_claim": "IRGC spokesman itemized 17 reconnaissance/operational drones destroyed, including eight brand-new drones, while separately listing fighters/helicopters, F-15, P-8, C-17 and tankers",
+        "metric": "PERIOD_ITEMIZATION",
+        "contribution_to_mq9_52": "SHOWS_CATEGORY_TRACKING_BUT_DOES_NOT_IDENTIFY_ALL_17_AS_MQ9",
+        "source_id": "SRC-1171DD00072E"
+      },
+      {
+        "date": "2026-07-22",
+        "public_claim": "IRGC said eight brand-new MQ-9s were destroyed before becoming operational and two additional MQ-9s were heavily damaged at Jordan bases",
+        "metric": "GROUND_DESTRUCTION_AND_DAMAGE",
+        "contribution_to_mq9_52": "EIGHT_DESTROYED_COULD_COUNT_IF_IRGC_LEDGER_INCLUDES_GROUND_LOSSES; TWO_DAMAGED_DO_NOT_COUNT_AS_DESTROYED",
+        "source_id": "SRC-FF6A20CEE01D"
+      },
+      {
+        "date": "2026-08-14",
+        "public_claim": "IRGC claimed one MQ-9 destroyed over Hormozgan",
+        "metric": "INDIVIDUAL_MQ9_LOSS",
+        "contribution_to_mq9_52": "PLUS_ONE_IF_TRUE",
+        "source_id": "SRC-72F1D576AF3E"
+      },
+      {
+        "date": "2026-08-31",
+        "public_claim": "IRGC claimed one MQ-9 shot down over the Strait of Hormuz",
+        "metric": "INDIVIDUAL_MQ9_LOSS",
+        "contribution_to_mq9_52": "PLUS_ONE_IF_TRUE",
+        "source_id": "SRC-37864A89695D"
+      },
+      {
+        "date": "2026-09-01",
+        "public_claim": "Tasnim reported one American MQ-9 shot down over Khomein",
+        "metric": "INDIVIDUAL_MQ9_LOSS",
+        "contribution_to_mq9_52": "PLUS_ONE_IF_TRUE",
+        "source_id": "SRC-AFBD0A43CE3E"
+      },
+      {
+        "date": "2026-09-02",
+        "public_claim": "IRGC said a strike on mixed RQ-4 and MQ-9 hangars at Prince Hassan destroyed 'a number of drones'",
+        "metric": "UNQUANTIFIED_MIXED_TYPE_GROUND_LOSS_CLAIM",
+        "contribution_to_mq9_52": "CANNOT_ASSIGN_AN_EXACT_MQ9_COUNT",
+        "source_id": "SRC-1681BB9FE598"
+      },
+      {
+        "date": "2026-09-16",
+        "claim_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "public_claim": "Qeshm event identified as the 52nd U.S. MQ-9 destroyed during the conflict",
+        "metric": "EXACT_MQ9_ORDINAL",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4"
+        ]
+      },
+      {
+        "date": "2026-09-17",
+        "claim_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "public_claim": "Qeshm event identified as the 53rd U.S. MQ-9 downed by Iranian forces",
+        "metric": "EXACT_MQ9_ORDINAL",
+        "source_ids": [
+          "SRC-34163F690F21"
+        ]
+      }
+    ],
+    "arithmetic": {
+      "strongest_independent_lower_bound_by_aug13": 45,
+      "public_type_specific_iranian_claims_after_aug13_before_sep16": [
+        "Aug. 14: +1 claimed MQ-9",
+        "Aug. 31: +1 claimed MQ-9",
+        "Sep. 1: +1 claimed MQ-9",
+        "Sep. 2: unquantified number of drones in mixed RQ-4/MQ-9 hangars"
+      ],
+      "minimum_if_aug13_lower_bound_were_exact_and_only_type_specific_individual_claims_counted_before_sep16": 48,
+      "sep16_individual_claim_would_make": 49,
+      "gap_to_asserted_52_if_aug13_lower_bound_were_exact": 3,
+      "why_gap_does_not_prove_false": [
+        "The Aug. 13 figure is explicitly 'at least 45', so the true baseline may already have exceeded 45.",
+        "The Sep. 2 IRGC ground-loss claim is unquantified and mixed-type; it could contain additional MQ-9 losses but cannot be assigned an exact count.",
+        "Publicly located Iranian reporting is not proven to be the complete internal engagement/BDA ledger."
+      ],
+      "why_52_53_are_not_supported": [
+        "IRGC did not publish the underlying type-resolved 52/53 ledger.",
+        "The public Iranian aggregate chain repeatedly changes denominator and metric: mixed drones, aircraft hit, targeted aircraft and type-specific MQ-9.",
+        "Some Iranian type identifications were later corrected.",
+        "The independent record establishes substantial real MQ-9 attrition but does not independently reconcile the exact 52/53 ordinals."
+      ],
+      "conclusion": "The evidence burden for an exact 52/53 ordinal is unmet. The present record supports UNSUBSTANTIATED exact counts, not a neutral 50/50 label. But the reviewed evidence does not establish a defensible upper bound below 52/53, so material falsity is not established."
+    },
+    "source_reliability": {
+      "assessment": "REDUCED_WEIGHT_FOR_UNCORROBORATED_EXACT_AGGREGATES",
+      "basis": [
+        "The same aggregate aircraft/UAV narrative has changed denominator and metric across 82, >130, 170, >170 hit and 210 target/down formulations.",
+        "Iranian reporting has issued aircraft-type corrections, demonstrating both genuine correction capacity and prior classification error.",
+        "Iran has also correctly reported genuine U.S. MQ-9 attrition, so source history does not support blanket dismissal."
+      ],
+      "effect": "Treat exact unsupported IRGC cumulative ordinals skeptically and require ledger-level support; do not convert degraded reliability alone into a FALSE finding."
+    },
+    "knowledge_prong": {
+      "institutional_access": "STRONG_RELEVANCE",
+      "factors": [
+        "The Sep. 16/17 statements are attributed to IRGC Public Relations and the IRGC Aerospace Force operating under Iran's integrated air-defense network.",
+        "52nd -> 53rd on successive days represents an actively maintained exact ordinal rather than a vague estimate.",
+        "An institution asserting an exact ordinal represents that it has access to an underlying accounting process."
+      ],
+      "current_judgment": "NOT_ASSESSABLE_FOR_KNOWING_FALSEHOOD_BECAUSE_MATERIAL_FALSITY_NOT_ESTABLISHED",
+      "contingent_finding": "If a later loss-by-loss reconciliation establishes 52/53 materially false, IRGC command/BDA access, ordinal record-keeping responsibility and next-day repetition would materially strengthen the knowledge inference."
+    }
+  },
+  "broader_legacy_sweep": {
+    "changed": [
+      {
+        "claim_instance_id": "CI-IR-CLM-0605-P01",
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "prior_truth": "UNRESOLVED",
+        "current_result": "MISLEADING",
+        "reason": "The source itself shifts from 'down 210' in the headline to 'target around 210' in the body. The metric conflict is observable within the same publication; this is not a balanced factual uncertainty."
+      },
+      {
+        "claim_instance_id": "CI-IR-CLM-0204-P02",
+        "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+        "prior_truth": "UNRESOLVED",
+        "current_result": "SUPPORTED_NARRATIVE_SUBSTITUTION",
+        "reason": "The proposition is about chronology, not whether the false-flag mechanism was true. Earlier categorical no-Iran-launch denials are documented; after repeated Turkish/NATO attribution, the Mar. 31 statement adds a false-flag explanation. The narrative shift itself is observable."
+      }
+    ],
+    "reviewed_unchanged": [
+      {
+        "claim_instances": [
+          "CI-IR-CLM-0601-P01",
+          "CI-IR-CLM-0602-P01",
+          "CI-IR-CLM-0603-P01"
+        ],
+        "semantic_result": "UNSUBSTANTIATED_EXACT_AGGREGATE",
+        "truth_enum": "UNRESOLVED",
+        "reason": "Exact mixed-drone counts lack reconciled itemization, but the record contains genuine U.S./Israeli UAV losses and no defensible upper bound proving the totals false."
+      },
+      {
+        "claim_instances": [
+          "CI-IR-CLM-0604-P01",
+          "CI-IR-CLM-0604-P02"
+        ],
+        "semantic_result": "UNSUBSTANTIATED_EXACT_HIT_COUNT",
+        "truth_enum": "UNRESOLVED",
+        "reason": "The source says fighters were 'hit'; the current evidence does not reconcile 16 hit aircraft, but does not establish an upper bound that makes 16 hits impossible. Earlier destroyed/downed wording was correctly normalized away."
+      },
+      {
+        "claim_instances": [
+          "CI-IR-CLM-0204-P01",
+          "CI-IR-CLM-0205-P01"
+        ],
+        "semantic_result": "UNSUBSTANTIATED_FALSE_FLAG_CAUSE",
+        "truth_enum": "UNRESOLVED",
+        "reason": "The false-flag mechanism is asserted without independent forensic support; contrary Turkish/NATO attribution weakens it, but this bounded pass does not establish the detailed causal mechanism beyond reasonable competing explanation."
+      },
+      {
+        "claim_instances": [
+          "CI-IR-CLM-0501-P01",
+          "CI-IR-CLM-0501-P02"
+        ],
+        "semantic_result": "UNSUBSTANTIATED_NAVAL_ENGAGEMENT_EFFECT",
+        "truth_enum": "UNRESOLVED",
+        "reason": "No independent BDA in this pass settles the claimed hit/fire effects; genuine Iranian naval engagement capability makes pure impossibility reasoning inappropriate."
+      },
+      {
+        "claim_instances": [
+          "CI-CL-18TARGETS",
+          "CI-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+          "CI-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+          "CI-LL-IRAN-TEN-VESSEL-SUCCESS-20260909"
+        ],
+        "semantic_result": "EXACT_COUNT_REQUIRES_SEPARATE_ITEMIZED_LEDGER",
+        "truth_enum": "UNRESOLVED",
+        "reason": "Each is an exact aggregate whose proper test is a dedicated target/vessel/impact ledger. This issue identifies the burden defect but does not manufacture a verdict without completing those separate denominators."
+      },
+      {
+        "claim_instances": [
+          "CI-IR-CLM-0004-P01",
+          "CI-IR-CLM-0004-P02",
+          "CI-IR-CLM-0009-P01"
+        ],
+        "semantic_result": "AT_TIME_UNRESOLVED_OR_UNSUBSTANTIATED",
+        "truth_enum": "UNRESOLVED",
+        "reason": "Later outcomes weaken the claims but do not erase temporal uncertainty or establish every intermediate custody/mission-purpose state as false."
+      }
+    ],
+    "rule": "This sweep changes only propositions for which the existing record itself supplies a stronger result under the Sep. 18 reasoning doctrine; other exact-count cases are explicitly queued for itemized reconciliation rather than auto-upgraded."
+  },
+  "public_product_boundary": [
+    "Render 52nd/53rd as UNSUBSTANTIATED exact cumulative MQ-9 counts, not as established truth and not as adjudicated Lies.",
+    "Keep the Sep. 16 and Sep. 17 individual Qeshm loss claims separate and UNVERIFIED/UNRESOLVED unless new occurrence evidence resolves them.",
+    "Do not use the mixed 82/130/170/210 aggregate chain as a type-specific MQ-9 denominator.",
+    "Render the 210 headline/body metric conflict as MISLEADING.",
+    "Render the Turkey false-flag branch as an observed narrative substitution while keeping the false-flag causal mechanism itself UNSUBSTANTIATED.",
+    "Do not propagate verdicts across chain branches."
+  ]
+}

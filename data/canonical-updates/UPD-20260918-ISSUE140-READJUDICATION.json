@@ -1,0 +1,468 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260918-ISSUE140-READJUDICATION",
+  "known_at": "2026-09-18T10:27:26-04:00",
+  "evidence_cutoff": "2026-09-18T10:27:26-04:00",
+  "summary": "Issue #140 re-adjudication under the Sep. 18 reasoning standard. The Sep. 16/17 52nd/53rd MQ-9 ordinals are corrected from generic unresolved-denominator treatment to UNSUBSTANTIATED exact cumulative counts because the claimant has not supplied a reconciled type-specific ledger. Material falsity is not established: independent reporting supplies an at-least-45 Aug. 13 lower bound and later losses remain incompletely reconciled. Individual Qeshm loss claims remain unverified and independent. The pass also corrects the May 26 210-aircraft branch to MISLEADING for same-publication metric shift and supports the Turkey false-flag branch as observable narrative substitution while leaving its causal false-flag theory unsubstantiated.",
+  "sources": [
+    {
+      "source_id": "SRC-2C92CED64676",
+      "url": "https://www.washingtonpost.com/national-security/2026/08/13/us-military-has-lost-roughly-25-its-reaper-drones-iran-war-depletes-arsenal/",
+      "source_role": "INDEPENDENT_MEDIA_CITING_MULTIPLE_US_OFFICIALS",
+      "outlet": "The Washington Post",
+      "published_date": "2026-08-13",
+      "title": "U.S. military has lost roughly 25% of its Reaper drones as Iran war depletes arsenal"
+    },
+    {
+      "source_id": "SRC-A07B03007000",
+      "url": "https://www.defenseone.com/technology/2026/09/after-heavy-reaper-drone-loses-iran-air-force-accelerates-affordable-future-replacement/415852/",
+      "source_role": "INDEPENDENT_DEFENSE_REPORTING",
+      "outlet": "Defense One",
+      "published_date": "2026-09-08",
+      "title": "USAF speeds up Reaper replacement after heavy losses in Iran"
+    },
+    {
+      "source_id": "SRC-4DED0E4745D2",
+      "url": "https://www.tasnimnews.ir/en/news/2026/04/04/3556720/uae-saudi-arabia-take-big-gamble-by-flying-drones-against-iran",
+      "source_role": "STATE_ALIGNED_MEDIA_SELF_CORRECTION",
+      "outlet": "Tasnim News Agency",
+      "published_date": "2026-04-04",
+      "title": "UAE, Saudi Arabia Take Big Gamble by Flying Drones against Iran"
+    },
+    {
+      "source_id": "SRC-1171DD00072E",
+      "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/07/iran-260725-irna02.htm",
+      "source_role": "ARCHIVED_IRNA_REPORTING_IRGC_SPOKESMAN",
+      "outlet": "IRNA via GlobalSecurity",
+      "published_date": "2026-07-25",
+      "title": "Spokesperson: IRGC destroyed 11 American fighter jets and helicopters during 15-day combat"
+    },
+    {
+      "source_id": "SRC-FF6A20CEE01D",
+      "url": "https://www.tasnimnews.ir/en/news/2026/07/22/3653908/irgc-destroys-us-mq-9-drones-in-fresh-wave-of-counterattack/amp",
+      "source_role": "STATE_ALIGNED_ACTOR_MEDIA",
+      "outlet": "Tasnim News Agency",
+      "published_date": "2026-07-22",
+      "title": "IRGC Destroys US MQ-9 Drones in Fresh Wave of Counterattack"
+    },
+    {
+      "source_id": "SRC-72F1D576AF3E",
+      "url": "https://www.tasnimnews.ir/en/news/2026/08/14/3670708/intruding-mq-9-drone-destroyed-over-iran-s-hormozgan",
+      "source_role": "STATE_ALIGNED_ACTOR_MEDIA",
+      "outlet": "Tasnim News Agency",
+      "published_date": "2026-08-14",
+      "title": "Intruding MQ-9 Drone Destroyed over Iran's Hormozgan"
+    },
+    {
+      "source_id": "SRC-37864A89695D",
+      "url": "https://www.tasnimnews.ir/en/news/2026/08/31/3684802/irgc-shoots-down-us-drone-over-strait-of-hormuz",
+      "source_role": "STATE_ALIGNED_ACTOR_MEDIA",
+      "outlet": "Tasnim News Agency",
+      "published_date": "2026-08-31",
+      "title": "IRGC Shoots Down US Drone over Strait of Hormuz"
+    },
+    {
+      "source_id": "SRC-AFBD0A43CE3E",
+      "url": "https://www.tasnimnews.ir/en/news/2026/09/01/3686428/iran-shoots-down-us-drone-over-city-of-khomein",
+      "source_role": "STATE_ALIGNED_MEDIA",
+      "outlet": "Tasnim News Agency",
+      "published_date": "2026-09-01",
+      "title": "Iran Shoots Down US Drone over City of Khomein"
+    },
+    {
+      "source_id": "SRC-1681BB9FE598",
+      "url": "https://www.tasnimnews.ir/en/news/2026/09/02/3686552/irgc-ballistic-missile-attack-hits-us-drone-hangars-in-jordan-several-crew-killed",
+      "source_role": "STATE_ALIGNED_ACTOR_MEDIA",
+      "outlet": "Tasnim News Agency",
+      "published_date": "2026-09-02",
+      "title": "IRGC Ballistic Missile Attack Hits US Drone Hangars in Jordan, Several Crew Killed"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-ISSUE140-EVIDENCE-READJUDICATION-20260918",
+      "event_date": "2026-09-18",
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_type": "EVIDENCE_READJUDICATION",
+      "game_knowledge_time": "2026-09-18T10:27:26-04:00",
+      "strike_countable": false,
+      "summary": "Atlas re-adjudicated selected legacy and current Lie Ledger propositions under the Sep. 18 evidence-reasoning doctrine without rewriting accepted historical packets.",
+      "source_ids": [
+        "SRC-906AC32553A4",
+        "SRC-E8B81BD88EA4",
+        "SRC-34163F690F21",
+        "SRC-DCAF6365D0E6",
+        "SRC-2C92CED64676",
+        "SRC-A07B03007000",
+        "SRC-4DED0E4745D2",
+        "SRC-1171DD00072E",
+        "SRC-FF6A20CEE01D",
+        "SRC-72F1D576AF3E",
+        "SRC-37864A89695D",
+        "SRC-AFBD0A43CE3E",
+        "SRC-1681BB9FE598"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+      "entity_type": "claim",
+      "mode": "update",
+      "record": {
+        "adjudication": "UNSUBSTANTIATED_EXACT_CUMULATIVE_COUNT; MATERIAL_FALSITY_NOT_ESTABLISHED",
+        "case_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "claim": "The Sep. 16 Qeshm aircraft was the 52nd U.S. MQ-9 destroyed during the conflict.",
+        "claim_time": "2026-09-16",
+        "claimant": "IRGC",
+        "proposition_type": "CUMULATIVE_TYPE_SPECIFIC_LOSS_METRIC",
+        "evidence_disposition": "UNSUBSTANTIATED",
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "EXACT_MQ9_ORDINAL_NOT_SUPPORTED_BY_RECONCILED_LEDGER; NO_DEFENSIBLE_UPPER_BOUND_BELOW_52",
+        "knowledge_judgment": "NOT_ASSESSABLE_FOR_KNOWING_FALSEHOOD_WITHOUT_ESTABLISHED_FALSITY",
+        "knowledge_access_status": "STRONG_IRGC_COMMAND_BDA_AND_RECORD_KEEPING_ACCESS_IF_FALSITY_IS_LATER_ESTABLISHED",
+        "assessment_revision": {
+          "prior": "UNRESOLVED_CUMULATIVE_DENOMINATOR_NOT_RECONCILED",
+          "reason": "Sep. 18 doctrine distinguishes evidentiary insufficiency from balanced factual uncertainty. Exact claimant burden is unmet, but present evidence does not prove the ordinal false."
+        },
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ]
+      }
+    },
+    {
+      "entity_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+      "entity_type": "claim",
+      "mode": "update",
+      "record": {
+        "adjudication": "UNSUBSTANTIATED_EXACT_CUMULATIVE_COUNT; MATERIAL_FALSITY_NOT_ESTABLISHED",
+        "case_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "claim": "The Sep. 17 Qeshm aircraft was the 53rd U.S. MQ-9 destroyed during the conflict.",
+        "claim_time": "2026-09-17",
+        "claimant": "IRGC",
+        "proposition_type": "CUMULATIVE_TYPE_SPECIFIC_LOSS_METRIC",
+        "evidence_disposition": "UNSUBSTANTIATED",
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "EXACT_MQ9_ORDINAL_NOT_SUPPORTED_BY_RECONCILED_LEDGER; NO_DEFENSIBLE_UPPER_BOUND_BELOW_53",
+        "knowledge_judgment": "NOT_ASSESSABLE_FOR_KNOWING_FALSEHOOD_WITHOUT_ESTABLISHED_FALSITY",
+        "knowledge_access_status": "STRONG_IRGC_COMMAND_BDA_AND_RECORD_KEEPING_ACCESS_IF_FALSITY_IS_LATER_ESTABLISHED",
+        "assessment_revision": {
+          "prior": "UNRESOLVED_CUMULATIVE_DENOMINATOR_NOT_RECONCILED",
+          "reason": "Sep. 18 doctrine distinguishes evidentiary insufficiency from balanced factual uncertainty. The 53rd claim depends on an unsupported 52 baseline plus the Sep. 17 individual occurrence; present evidence does not prove an upper bound below 53."
+        },
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ]
+      }
+    },
+    {
+      "entity_id": "LL-CURRENT-QESHM-MQ9-52-20260916",
+      "entity_type": "narrative_claim",
+      "mode": "update",
+      "record": {
+        "atomic_proposition": true,
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "claim_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "combined_assessment": "UNSUBSTANTIATED EXACT COUNT - MATERIAL FALSITY NOT ESTABLISHED; NO LIE FINDING",
+        "counts_as_unique_proposition": true,
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "evidence_disposition": "UNSUBSTANTIATED",
+        "knowledge_access_status": "IRGC COMMAND/BDA AND EXACT-ORDINAL RECORD-KEEPING ACCESS IS STRONG CONTINGENT KNOWLEDGE EVIDENCE IF FALSITY IS ESTABLISHED",
+        "knowledge_judgment": "NOT_ASSESSABLE",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "Iranian forces had destroyed 52 U.S. MQ-9 aircraft during the conflict by Sep. 16.",
+        "proposition_axis": "CUMULATIVE_TYPE_SPECIFIC_METRIC",
+        "relation_type": "ORIGINATION",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "MQ9_SPECIFIC; EXACT_LEDGER_BURDEN_UNMET; NO_DEFENSIBLE_UPPER_BOUND_BELOW_52"
+      }
+    },
+    {
+      "entity_id": "LL-CURRENT-QESHM-MQ9-53-20260917",
+      "entity_type": "narrative_claim",
+      "mode": "update",
+      "record": {
+        "atomic_proposition": true,
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "claim_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "combined_assessment": "UNSUBSTANTIATED EXACT COUNT - MATERIAL FALSITY NOT ESTABLISHED; NO LIE FINDING",
+        "counts_as_unique_proposition": true,
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "evidence_disposition": "UNSUBSTANTIATED",
+        "knowledge_access_status": "IRGC COMMAND/BDA AND EXACT-ORDINAL RECORD-KEEPING ACCESS IS STRONG CONTINGENT KNOWLEDGE EVIDENCE IF FALSITY IS ESTABLISHED",
+        "knowledge_judgment": "NOT_ASSESSABLE",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "Iranian forces had destroyed 53 U.S. MQ-9 aircraft during the conflict by Sep. 17.",
+        "proposition_axis": "CUMULATIVE_TYPE_SPECIFIC_METRIC",
+        "relation_type": "ORIGINATION",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ],
+        "truth_adjudication": "UNRESOLVED",
+        "truth_qualifier": "MQ9_SPECIFIC; EXACT_LEDGER_BURDEN_UNMET; NO_DEFENSIBLE_UPPER_BOUND_BELOW_53"
+      }
+    },
+    {
+      "entity_id": "SEMCHAIN-AIRCRAFT-KILL-AGGREGATES-20260917",
+      "entity_type": "information_chain",
+      "mode": "update",
+      "record": {
+        "information_chain_id": "SEMCHAIN-AIRCRAFT-KILL-AGGREGATES-20260917",
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "semantic_overlay": true,
+        "primary_object": "NARRATIVE_PROPOSITION_CHAIN",
+        "branch_axes": [
+          "HISTORICAL_82",
+          "HISTORICAL_130",
+          "HISTORICAL_170",
+          "HISTORICAL_210",
+          "TYPE_SPECIFIC_COUNTS",
+          "QESHM_SEP16_INDIVIDUAL",
+          "MQ9_52_CUMULATIVE",
+          "QESHM_SEP17_INDIVIDUAL",
+          "MQ9_53_CUMULATIVE"
+        ],
+        "case_classification": "ACCUSATION_CHAIN",
+        "lie_ledger_accusation": true,
+        "adjudication_rule": "Each atomic proposition retains independent truth and knowledge adjudication; chain membership never propagates a verdict. Exact ordinals carry an exact ledger burden; unsupported precision is not presumed true and does not become false absent positive falsity evidence.",
+        "current_readjudication": {
+          "date": "2026-09-18",
+          "mq9_52": "UNSUBSTANTIATED_EXACT_COUNT",
+          "mq9_53": "UNSUBSTANTIATED_EXACT_COUNT",
+          "mq9_52_53_material_falsity": "NOT_ESTABLISHED",
+          "historical_210_metric": "MISLEADING",
+          "turkey_narrative_substitution": "SUPPORTED"
+        },
+        "reader_contract": "ONE_GENUINE_NARRATIVE_CHAIN_ONE_TOP_LEVEL_CARD_WITH_CHRONOLOGICAL_INDEPENDENT_PROPOSITION_BRANCHES",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ]
+      }
+    },
+    {
+      "entity_id": "GAP-E2-IRGC-MQ9-CUMULATIVE-DENOMINATOR",
+      "entity_type": "gap",
+      "mode": "update",
+      "record": {
+        "gap_id": "GAP-E2-IRGC-MQ9-CUMULATIVE-DENOMINATOR",
+        "known_at": "2026-09-18T10:27:26-04:00",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "status": "PARTIALLY_RESOLVED_SEMANTIC_DISPOSITION_UNSUBSTANTIATED; MATERIAL_FALSITY_OPEN",
+        "topic": "Loss-by-loss reconciliation of the IRGC's cumulative type-specific MQ-9 denominator through the 52nd and 53rd claims.",
+        "resolution": "Sep. 18 re-adjudication establishes that 52/53 are unsupported exact ordinals rather than neutral unresolved propositions. Independent reporting gives an at-least-45 Aug. 13 lower bound and later Iranian claims leave unresolved numerical space, so no defensible upper bound below 52/53 is established.",
+        "stop_condition": "A type-resolved loss ledger or defensible upper bound through Sep. 16-17 that can establish or exclude 52/53 materially.",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-ISSUE140-MQ9-ORDINAL-READJUDICATION-20260918",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-ISSUE140-MQ9-ORDINAL-READJUDICATION-20260918",
+        "relationship_type": "EVIDENCE_READJUDICATION",
+        "claim_refs": [
+          "CLM-IRGC-QESHM-MQ9-52-20260916",
+          "CLM-IRGC-QESHM-MQ9-53-20260917"
+        ],
+        "prior_packet_ref": "UPD-20260917-ISSUE132-EVIDENCE",
+        "audit_path": "data/evidence-integration/issue-140-readjudication-audit-20260918.json",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "evidence": "The Sep. 18 doctrine changes the semantic result from generic unresolved denominator to UNSUBSTANTIATED exact count. It does not support a FALSE or LIE finding because the independent record supplies a lower bound, not an upper bound, and later losses remain incompletely reconciled.",
+        "source_ids": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ]
+      }
+    },
+    {
+      "entity_id": "LL-READJUDICATION-IR-CLM-0605-P01-20260918",
+      "entity_type": "narrative_claim",
+      "mode": "add",
+      "record": {
+        "atomic_proposition": false,
+        "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+        "claim_id": "IR-CLM-0605",
+        "legacy_claim_instance_id": "CI-IR-CLM-0605-P01",
+        "combined_assessment": "MISLEADING - SAME ARTICLE SHIFTS FROM DOWN 210 TO TARGET AROUND 210",
+        "counts_as_unique_proposition": false,
+        "denominator_class": "EVIDENTIARY_INFERENCE",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "The May 26 210 figure is not a clean cumulative count of aircraft downed/lost because the same publication shifts from 'down' in the headline to 'target around' in the body.",
+        "proposition_axis": "METRIC_INTEGRITY",
+        "relation_type": "CORRECTION",
+        "truth_adjudication": "MISLEADING",
+        "truth_qualifier": "SAME_PUBLICATION_METRIC_SHIFT_OBSERVABLE",
+        "source_ids": [
+          "SRC-DB900429D8BC"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-IR-CLM-0605-READJUDICATION-20260918",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-IR-CLM-0605-READJUDICATION-20260918",
+        "relationship_type": "APPEND_ONLY_ADJUDICATION_CORRECTION",
+        "legacy_claim_instance_id": "CI-IR-CLM-0605-P01",
+        "current_overlay_ref": "LL-READJUDICATION-IR-CLM-0605-P01-20260918",
+        "prior_truth_adjudication": "UNRESOLVED",
+        "current_truth_adjudication": "MISLEADING",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "evidence": "The same source uses incompatible 'down' and 'target around' metrics; under the Sep. 18 ordinary-language/internal-consistency rule this is a supported misleading metric shift rather than balanced uncertainty.",
+        "source_ids": [
+          "SRC-DB900429D8BC"
+        ]
+      }
+    },
+    {
+      "entity_id": "LL-READJUDICATION-IR-CLM-0204-P02-20260918",
+      "entity_type": "narrative_claim",
+      "mode": "add",
+      "record": {
+        "atomic_proposition": false,
+        "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+        "claim_id": "IR-CLM-0204",
+        "legacy_claim_instance_id": "CI-IR-CLM-0204-P02",
+        "combined_assessment": "SUPPORTED NARRATIVE SUBSTITUTION - FALSE-FLAG CAUSAL THEORY REMAINS UNSUBSTANTIATED",
+        "counts_as_unique_proposition": false,
+        "denominator_class": "EVIDENTIARY_INFERENCE",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "lifecycle_status": "ACTIVE",
+        "proposition": "The false-flag explanation was introduced after earlier categorical no-Iran-launch denials and after repeated Turkish/NATO attribution.",
+        "proposition_axis": "NARRATIVE_EVOLUTION",
+        "relation_type": "CORRECTION",
+        "truth_adjudication": "SUPPORTED",
+        "truth_qualifier": "CHRONOLOGICAL_NARRATIVE_SHIFT_OBSERVABLE; CAUSAL_FALSE_FLAG_PROPOSITION_SEPARATE_AND_UNSUBSTANTIATED",
+        "source_ids": [
+          "SRC-D86835557005",
+          "SRC-CC18DEA75017",
+          "SRC-82DCB357724B",
+          "SRC-733C755F8DC0",
+          "SRC-2E51203B3913"
+        ]
+      }
+    },
+    {
+      "entity_id": "REL-IR-CLM-0204-P02-READJUDICATION-20260918",
+      "entity_type": "relationship",
+      "mode": "add",
+      "record": {
+        "relationship_id": "REL-IR-CLM-0204-P02-READJUDICATION-20260918",
+        "relationship_type": "APPEND_ONLY_ADJUDICATION_CORRECTION",
+        "legacy_claim_instance_id": "CI-IR-CLM-0204-P02",
+        "current_overlay_ref": "LL-READJUDICATION-IR-CLM-0204-P02-20260918",
+        "prior_truth_adjudication": "UNRESOLVED",
+        "current_truth_adjudication": "SUPPORTED",
+        "knowledge_time": "2026-09-18T10:27:26-04:00",
+        "evidence": "This proposition tests the observable chronology of narrative substitution, not the truth of the false-flag mechanism. Earlier categorical denials and the later false-flag explanation are both documented.",
+        "source_ids": [
+          "SRC-D86835557005",
+          "SRC-CC18DEA75017",
+          "SRC-82DCB357724B",
+          "SRC-733C755F8DC0",
+          "SRC-2E51203B3913"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}
