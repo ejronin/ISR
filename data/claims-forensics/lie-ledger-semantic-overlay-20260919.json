@@ -1,7 +1,7 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-2",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-3",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "effective_date": "2026-09-19",
@@ -225,6 +225,57 @@
       "public_title": "Dive-LD possession factual context",
       "lie_ledger_accusation": false,
       "public_include_in_accusation_count": false
+    },
+    "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Saudi East-West pipeline Iranian-responsibility attribution",
+      "plain_english_summary": "Donald Trump said Iran was probably responsible for the Saudi East-West pipeline attack. Iraqi territorial launch origin is established; Iranian command or ordering responsibility is not. The source hedge ('probably') is preserved, so this remains an unresolved attribution claim rather than a falsehood finding."
+    },
+    "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912": {
+      "classification": "NEGOTIATION_POLICY_CONTROL",
+      "public_title": "Hormuz sovereignty, conditions, and claimed regulatory authority",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CH-HOUTHI-NAVIGATION-CLAIM-20260912": {
+      "classification": "STRATEGIC_CLAIM_CONTROL",
+      "public_title": "Houthi safe-navigation claim",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CH-HOUTHI-SAUDI-ATTACKS-20260913-14": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Houthi Saudi-base attack and BDA claims"
+    },
+    "CH-TRUMP-IRAN-CALLS-20260913": {
+      "classification": "PRIVATE_DIPLOMACY_CLAIM_CONTROL",
+      "public_title": "Trump claim that Iran was calling constantly for a deal",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CH-CHINA-IMAGERY-ALLEGATION-20260913": {
+      "classification": "THIRD_PARTY_ALLEGATION_CONTROL",
+      "public_title": "China-based entities imagery allegation",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Iranian claim that Saudi Arabia requested the Oman-meeting delay"
+    },
+    "CH-EL-GAIA-MINE-CAUSATION-20260914": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "El Gaia mine-causation claim"
+    },
+    "CH-REZAEI-NO-TALKS-20260914": {
+      "classification": "DECLARATORY_POLICY_CONTROL",
+      "public_title": "Rezaei no-talks-until-conditions position",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CH-RSAF-F15SA-MARIB-20260916": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Houthi causation claim for Saudi F-15SA loss"
     }
   },
   "narrative_family_overrides": {
@@ -470,7 +521,8 @@
         "Turkish/NATO attribution accumulated before the Mar. 31 false-flag explanation appeared.",
         "The chronology of the explanation change is observable; the asserted false-flag causal mechanism remains a separate unsubstantiated proposition."
       ],
-      "rationale": "The Sep. 18 re-adjudication correctly separated observable narrative substitution from the unresolved causal false-flag theory."
+      "rationale": "The Sep. 18 re-adjudication correctly separated observable narrative substitution from the unresolved causal false-flag theory.",
+      "accepted_correction_source": "data/canonical-updates/UPD-20260918-ISSUE140-READJUDICATION.json"
     },
     {
       "claim_instance_id": "CI-IR-CLM-0604-P01",
@@ -537,7 +589,8 @@
         "The same article body reported language about being able to target around 210 aircraft.",
         "Targeted, hit, damaged, destroyed, and downed are not interchangeable effects."
       ],
-      "rationale": "This row is the source-internal metric-integrity finding, not a second unique 210-downing accusation."
+      "rationale": "This row is the source-internal metric-integrity finding, not a second unique 210-downing accusation.",
+      "accepted_correction_source": "data/canonical-updates/UPD-20260918-ISSUE140-READJUDICATION.json"
     },
     {
       "claim_instance_id": "CI-PROP-IR-210-DOWNED-HEADLINE",
@@ -644,5 +697,1182 @@
     }
   ],
   "full_sweep_path": "data/claims-forensics/lie-ledger-full-sweep-20260919.json",
-  "full_sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-1"
+  "full_sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-1",
+  "append_records": [
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-EF89596BCB8A",
+          "SRC-22C142A8ADBB"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912",
+      "claim_instance_id": "CI-CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912-P01",
+      "proposition_id": "PROP-TRUMP-IRAN-PIPELINE-ATTRIBUTION-20260912",
+      "chain_id": "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912",
+      "actor": "Donald Trump",
+      "claimant_type": "PUBLIC_OFFICIAL",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iran was probably responsible for the Saudi East-West pipeline attack.",
+      "source_proposition": "Iran was probably responsible for the Saudi East-West pipeline attack.",
+      "proposition": "Iran was probably responsible for the Saudi East-West pipeline attack.",
+      "proposition_axis": "CAUSAL_ATTRIBUTION",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "HEDGED_ATTRIBUTION_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED HEDGED ATTRIBUTION — IRANIAN COMMAND NOT ESTABLISHED",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "Iraqi territorial launch origin is established.",
+        "No accepted evidence in the packet establishes Iranian command or ordering responsibility.",
+        "The claimant used the hedge 'probably'; Atlas preserves that wording."
+      ],
+      "analytic_inference": "Launch geography alone does not establish command responsibility, and the hedge prevents treating the statement as a categorical attribution.",
+      "falsifier": [
+        "Reliable evidence establishing or excluding Iranian command/ordering responsibility for the pipeline attack."
+      ],
+      "statement_date": "2026-09-12",
+      "event_time": "2026-09-11",
+      "knowledge_time": "2026-09-13T13:42:00-04:00",
+      "source_ids": [
+        "SRC-EF89596BCB8A",
+        "SRC-22C142A8ADBB"
+      ],
+      "narrative_function": "Hedged external attribution after the Saudi pipeline attack."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-A509B2C7C077",
+          "SRC-C6346AAFE053"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRAN-SOVEREIGNTY-HORMUZ-20260912",
+      "claim_instance_id": "CI-CLM-IRAN-SOVEREIGNTY-HORMUZ-20260912-P01",
+      "proposition_id": "PROP-IRAN-HORMUZ-SOVEREIGNTY-POSITION-20260912",
+      "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "actor": "Iranian source via Tasnim",
+      "claimant_type": "STATE_ALIGNED_SOURCE",
+      "actor_role": "ORIGINATOR",
+      "claim": "The Iran-Oman understanding is a step toward Iran exercising sovereignty over the Strait of Hormuz and does not itself reopen the strait.",
+      "source_proposition": "The Iran-Oman understanding is a step toward Iran exercising sovereignty over the Strait of Hormuz and does not itself reopen the strait.",
+      "proposition": "Iran publicly framed the Iran-Oman understanding as advancing Iranian sovereignty claims over Hormuz without itself reopening the strait.",
+      "proposition_axis": "NEGOTIATING_POSITION",
+      "truth_adjudication": "SUPPORTED",
+      "truth_qualifier": "ACTOR_POSITION_NOT_AGREED_LEGAL_STATUS",
+      "knowledge_judgment": "NOT_ASSESSED",
+      "combined_assessment": "SUPPORTED AS IRANIAN NEGOTIATING POSITION — NOT ESTABLISHED AS AGREED LEGAL STATUS",
+      "denominator_class": "RHETORIC_DECLARATORY_POLICY",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Tasnim reported the Iranian sovereignty framing.",
+        "The accepted packet did not locate public Omani confirmation of that legal characterization."
+      ],
+      "analytic_inference": "The statement is evidence of Iran's negotiating position, not proof that Oman or international law accepted the claimed sovereignty status.",
+      "falsifier": [
+        "Primary Oman-Iran text expressly adopting or rejecting the claimed sovereignty characterization."
+      ],
+      "statement_date": "2026-09-12",
+      "event_time": "2026-09-12",
+      "knowledge_time": "2026-09-13T13:42:00-04:00",
+      "source_ids": [
+        "SRC-A509B2C7C077",
+        "SRC-C6346AAFE053"
+      ],
+      "narrative_function": "Hormuz negotiating/legal-position framing."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C6346AAFE053"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRAN-SEVEN-CONDITIONS-20260912",
+      "claim_instance_id": "CI-CLM-IRAN-SEVEN-CONDITIONS-20260912-P01",
+      "proposition_id": "PROP-IRAN-SEVEN-CONDITIONS-20260912",
+      "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "actor": "Iranian source close to negotiating team via Tasnim",
+      "claimant_type": "STATE_ALIGNED_SOURCE",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iran transmitted seven conditions to the United States for reopening Hormuz, said to have top-leadership approval.",
+      "source_proposition": "Iran transmitted seven conditions to the United States for reopening Hormuz, said to have top-leadership approval.",
+      "proposition": "Iran transmitted seven conditions to the United States for reopening Hormuz.",
+      "proposition_axis": "NEGOTIATION_FACT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "ACTOR_REPORTED_CONDITIONS_NOT_PUBLICLY_ENUMERATED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED ACTOR-REPORTED NEGOTIATION CLAIM",
+      "denominator_class": "RHETORIC_DECLARATORY_POLICY",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Tasnim reported seven conditions and claimed top-leadership approval.",
+        "The conditions were not publicly enumerated in the accepted source record."
+      ],
+      "analytic_inference": "The public record establishes the existence of the report, not independent confirmation that seven conditions were formally transmitted as described.",
+      "falsifier": [
+        "Primary negotiating text or U.S./Omani confirmation resolving whether seven conditions were formally transmitted."
+      ],
+      "statement_date": "2026-09-12",
+      "event_time": "2026-09-12",
+      "knowledge_time": "2026-09-13T13:42:00-04:00",
+      "source_ids": [
+        "SRC-C6346AAFE053"
+      ],
+      "narrative_function": "Negotiation-process claim."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-594086EEF828"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-HOUTHI-SAFE-NAVIGATION-EXCEPT-SAUDI-20260912",
+      "claim_instance_id": "CI-CLM-HOUTHI-SAFE-NAVIGATION-EXCEPT-SAUDI-20260912-P01",
+      "proposition_id": "PROP-HOUTHI-SAFE-NAVIGATION-20260912",
+      "chain_id": "CH-HOUTHI-NAVIGATION-CLAIM-20260912",
+      "actor": "Yahya Saree",
+      "claimant_type": "NON_STATE_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Maritime navigation remains safe for all shipping except Saudi vessels subject to the Houthi ban.",
+      "source_proposition": "Maritime navigation remains safe for all shipping except Saudi vessels subject to the Houthi ban.",
+      "proposition": "Maritime navigation remained safe for all non-Saudi shipping despite the Houthi campaign.",
+      "proposition_axis": "STRATEGIC_SAFETY_CHARACTERIZATION",
+      "truth_adjudication": "MISLEADING",
+      "truth_qualifier": "ACTOR_SAFETY_CLAIM_OVERSTATES_GENERAL_MARITIME_RISK",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "MISLEADING SAFETY CHARACTERIZATION — NOT AN ORDINARY LIE-DENOMINATOR CASE",
+      "denominator_class": "STRATEGIC_NARRATIVE_CASE_FILE",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The claimant excluded Saudi vessels from the asserted safety guarantee.",
+        "Independent maritime risk remained elevated for regional shipping."
+      ],
+      "analytic_inference": "A belligerent's assurance that it intends to spare certain traffic is not equivalent to a general safety guarantee in an active maritime conflict.",
+      "falsifier": [
+        "Independent maritime-risk evidence showing non-Saudi commercial navigation faced no material Houthi-related hazard in the relevant period."
+      ],
+      "statement_date": "2026-09-12",
+      "event_time": "2026-09-12",
+      "knowledge_time": "2026-09-13T13:42:00-04:00",
+      "source_ids": [
+        "SRC-594086EEF828"
+      ],
+      "narrative_function": "Strategic safety assurance."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-37DB944DD69E"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-HOUTHI-SHARURAH-BASE-20260913",
+      "claim_instance_id": "CI-CLM-HOUTHI-SHARURAH-BASE-20260913-P01",
+      "proposition_id": "PROP-HOUTHI-SHARURAH-STRIKE-20260913",
+      "chain_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+      "actor": "Houthis",
+      "claimant_type": "NON_STATE_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Houthis claimed a strike on a Saudi military base in Sharurah.",
+      "source_proposition": "Houthis claimed a strike on a Saudi military base in Sharurah.",
+      "proposition": "A Houthi strike successfully hit the claimed Saudi military base in Sharurah.",
+      "proposition_axis": "STRIKE_EFFECT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "SPECIFIC_BDA_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED — SPECIFIC SHARURAH STRIKE EFFECT NOT INDEPENDENTLY ESTABLISHED",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The Houthi claim was recorded; no independent BDA for the claimed base strike was established in the accepted locker."
+      ],
+      "analytic_inference": "Claimed attack activity and successful target effect are separate questions; the current record does not establish the latter.",
+      "falsifier": [
+        "Independent imagery, Saudi reporting, or other BDA confirming or excluding the claimed Sharurah base impact."
+      ],
+      "statement_date": "2026-09-13",
+      "event_time": "2026-09-13",
+      "knowledge_time": "2026-09-13T13:42:00-04:00",
+      "source_ids": [
+        "SRC-37DB944DD69E"
+      ],
+      "narrative_function": "Specific Saudi-base strike-effect claim."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E87EAB53958A"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-HOUTHI-SAUDI-ATTACKS-20260913PM",
+      "claim_instance_id": "CI-CLM-HOUTHI-SAUDI-ATTACKS-20260913PM-P01",
+      "proposition_id": "PROP-HOUTHI-SAUDI-ATTACKS-20260913PM",
+      "chain_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+      "actor": "Houthis",
+      "claimant_type": "NON_STATE_MILITARY",
+      "actor_role": "AMPLIFIER",
+      "claim": "Houthis claimed drones and missiles against Saudi targets including a military base while Saudi authorities issued shelter warnings in Abha and Khamis Mushait.",
+      "source_proposition": "Houthis claimed drones and missiles against Saudi targets including a military base.",
+      "proposition": "The specific new Saudi targets claimed by the Houthis were successfully struck in the Sep. 13 attack wave.",
+      "proposition_axis": "STRIKE_EFFECT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "THREAT_ACTIVITY_SUPPORTED_SPECIFIC_EFFECTS_UNVERIFIED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED SPECIFIC BDA — WARNING/THREAT ACTIVITY SUPPORTED",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "Saudi shelter-warning activity is established.",
+        "The accepted packet did not independently verify the Houthi account of successful impacts on the specific targets."
+      ],
+      "analytic_inference": "Warning activity supports an active threat environment but does not establish the claimed target-by-target effects.",
+      "falsifier": [
+        "Saudi or independent BDA resolving the specific targets claimed in the Sep. 13 wave."
+      ],
+      "statement_date": "2026-09-13",
+      "event_time": "2026-09-13",
+      "knowledge_time": "2026-09-14T15:37:30-04:00",
+      "source_ids": [
+        "SRC-E87EAB53958A"
+      ],
+      "narrative_function": "Broader Saudi-target strike-effect claim."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C1C12D7A9913"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-TRUMP-IRAN-CALLING-CONSTANTLY-20260913",
+      "claim_instance_id": "CI-CLM-TRUMP-IRAN-CALLING-CONSTANTLY-20260913-P01",
+      "proposition_id": "PROP-TRUMP-IRAN-CALLING-CONSTANTLY-20260913",
+      "chain_id": "CH-TRUMP-IRAN-CALLS-20260913",
+      "actor": "Donald Trump",
+      "claimant_type": "PUBLIC_OFFICIAL",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iran is calling constantly and wants a deal badly.",
+      "source_proposition": "Iran is calling constantly and wants a deal badly.",
+      "proposition": "Iran was repeatedly contacting the United States seeking a deal at the frequency and urgency described.",
+      "proposition_axis": "PRIVATE_DIPLOMACY",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "PRIVATE_DIPLOMACY_NOT_INDEPENDENTLY_VERIFIED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED PRIVATE-DIPLOMACY CLAIM — EXCLUDED FROM ORDINARY LIE COUNT",
+      "denominator_class": "STRATEGIC_NARRATIVE_CASE_FILE",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The public record in the accepted window did not independently verify the claimed private-contact frequency or urgency."
+      ],
+      "analytic_inference": "Private diplomatic contacts may be inaccessible to public verification; absence of public corroboration does not establish falsity.",
+      "falsifier": [
+        "Primary diplomatic records or reciprocal official confirmation contradicting or confirming the claimed contact pattern."
+      ],
+      "statement_date": "2026-09-13",
+      "event_time": "2026-09-13",
+      "knowledge_time": "2026-09-14T15:37:30-04:00",
+      "source_ids": [
+        "SRC-C1C12D7A9913"
+      ],
+      "narrative_function": "Private-diplomacy characterization."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-2AC313F7F025"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-CHINESE-ENTITIES-IMAGERY-JORDAN-BASE-20260913",
+      "claim_instance_id": "CI-CLM-CHINESE-ENTITIES-IMAGERY-JORDAN-BASE-20260913-P01",
+      "proposition_id": "PROP-CHINESE-ENTITIES-IMAGERY-JORDAN-20260913",
+      "chain_id": "CH-CHINA-IMAGERY-ALLEGATION-20260913",
+      "actor": "Wall Street Journal report citing unnamed U.S. officials",
+      "claimant_type": "MEDIA_REPORT",
+      "actor_role": "ORIGINATOR",
+      "claim": "Entities in China provided Iran satellite imagery of a Jordanian base before and after the attack on U.S. forces.",
+      "source_proposition": "Entities in China provided Iran satellite imagery of a Jordanian base before and after the attack on U.S. forces.",
+      "proposition": "China-based entities supplied Iran satellite imagery of the Jordanian base as reported.",
+      "proposition_axis": "THIRD_PARTY_SUPPORT_ALLEGATION",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "CHINESE_GOVERNMENT_ROLE_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "REPORTED ALLEGATION — CHINESE GOVERNMENT ROLE NOT ESTABLISHED",
+      "denominator_class": "OFFICIAL_ASSESSMENT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The allegation was attributed to unnamed U.S. officials.",
+        "The accepted record does not establish that a Chinese state organ directed or participated in the alleged imagery transfer."
+      ],
+      "analytic_inference": "Activity by entities located in China cannot be converted into PRC government participation without evidence tying the conduct to a state organ.",
+      "falsifier": [
+        "Primary or independently corroborated evidence identifying the supplier and any Chinese government direction or lack thereof."
+      ],
+      "statement_date": "2026-09-13",
+      "event_time": "2026-09-13",
+      "knowledge_time": "2026-09-14T15:37:30-04:00",
+      "source_ids": [
+        "SRC-2AC313F7F025"
+      ],
+      "narrative_function": "Third-party support allegation with state-attribution boundary."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E36D08295EDC",
+          "SRC-67F73A60AE22"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+      "claim_instance_id": "CI-CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914-P01",
+      "proposition_id": "PROP-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+      "chain_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+      "actor": "Iranian officials",
+      "claimant_type": "PUBLIC_OFFICIAL",
+      "actor_role": "ORIGINATOR",
+      "claim": "Saudi Arabia requested postponement of the planned Oman Gulf-Iran Hormuz meeting.",
+      "source_proposition": "Saudi Arabia requested postponement of the planned Oman Gulf-Iran Hormuz meeting.",
+      "proposition": "Saudi Arabia requested postponement of the planned Oman Gulf-Iran Hormuz meeting.",
+      "proposition_axis": "DIPLOMATIC_ATTRIBUTION",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "IRANIAN_ATTRIBUTION_NOT_INDEPENDENTLY_CONFIRMED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED IRANIAN ATTRIBUTION — NO INDEPENDENT SAUDI/OMANI CONFIRMATION",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "Iranian officials made the attribution; no independent Saudi or Omani primary confirmation was established by the cutoff."
+      ],
+      "analytic_inference": "The proposition is a factual diplomatic attribution, but the accepted record remains one-sided.",
+      "falsifier": [
+        "Saudi or Omani primary confirmation or contradiction of who requested the postponement."
+      ],
+      "statement_date": "2026-09-14",
+      "event_time": "2026-09-14",
+      "knowledge_time": "2026-09-14T15:37:31-04:00",
+      "source_ids": [
+        "SRC-E36D08295EDC",
+        "SRC-67F73A60AE22"
+      ],
+      "narrative_function": "Diplomatic responsibility attribution."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C934F4D2622E"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914PM",
+      "original_claim_id": "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+      "claim_instance_id": "CI-CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914PM-P01",
+      "proposition_id": "PROP-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+      "chain_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+      "actor": "Iranian officials",
+      "claimant_type": "PUBLIC_OFFICIAL",
+      "actor_role": "AMPLIFIER",
+      "relation_type": "REPETITION",
+      "claim": "Saudi Arabia requested postponement of the Oman Gulf-Iran Hormuz meeting.",
+      "source_proposition": "Saudi Arabia requested postponement of the Oman Gulf-Iran Hormuz meeting.",
+      "proposition": "Saudi Arabia requested postponement of the planned Oman Gulf-Iran Hormuz meeting.",
+      "proposition_axis": "DIPLOMATIC_ATTRIBUTION",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "REPEATED_IRANIAN_ATTRIBUTION_NOT_INDEPENDENTLY_CONFIRMED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "REPETITION — UNDERLYING ATTRIBUTION REMAINS UNRESOLVED",
+      "denominator_class": "REPETITION_AMPLIFICATION",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The same attribution was repeated later on Sep. 14; no independent Saudi or Omani primary confirmation was established by the cutoff."
+      ],
+      "analytic_inference": "This is a repetition of the same underlying proposition and must not create a second unique claim.",
+      "falsifier": [
+        "Saudi or Omani primary confirmation or contradiction of who requested the postponement."
+      ],
+      "statement_date": "2026-09-14",
+      "event_time": "2026-09-14",
+      "knowledge_time": "2026-09-15T00:01:51-04:00",
+      "source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "narrative_function": "Repetition of diplomatic responsibility attribution."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C1DA87E35B40"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914",
+      "claim_instance_id": "CI-CLM-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914-P01",
+      "proposition_id": "PROP-IRAN-77-VESSEL-AUTHORITY-20260914",
+      "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "actor": "Iran / Persian Gulf Strait Authority",
+      "claimant_type": "PUBLIC_AUTHORITY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Seventy-seven vessels violated Iranian Hormuz protocols and may face fines, detention or confiscation; insurers and maritime service providers should not service them.",
+      "source_proposition": "Seventy-seven vessels violated Iranian Hormuz protocols and may face fines, detention or confiscation.",
+      "proposition": "Iran claimed regulatory authority to penalize 77 vessels for violating its Hormuz protocols.",
+      "proposition_axis": "REGULATORY_AUTHORITY_CLAIM",
+      "truth_adjudication": "SUPPORTED",
+      "truth_qualifier": "ACTOR_REGULATORY_CLAIM_EXTERNAL_LEGAL_RECOGNITION_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSED",
+      "combined_assessment": "SUPPORTED AS IRANIAN REGULATORY CLAIM — EXTERNAL LEGAL RECOGNITION NOT ESTABLISHED",
+      "denominator_class": "RHETORIC_DECLARATORY_POLICY",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Iran publicly asserted the authority and identified 77 vessels; external legal recognition and compliance were not established in the accepted packet."
+      ],
+      "analytic_inference": "Atlas can verify that Iran asserted the regulatory position without treating the claimed jurisdiction as internationally accepted law.",
+      "falsifier": [
+        "Authoritative legal/operational evidence resolving recognition and enforcement of the claimed vessel penalties."
+      ],
+      "statement_date": "2026-09-14",
+      "event_time": "2026-09-14",
+      "knowledge_time": "2026-09-14T15:37:31-04:00",
+      "source_ids": [
+        "SRC-C1DA87E35B40"
+      ],
+      "narrative_function": "Hormuz regulatory/jurisdiction claim."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C934F4D2622E",
+          "SRC-D07884490630"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914",
+      "claim_instance_id": "CI-CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914-P01",
+      "proposition_id": "PROP-HOUTHI-KING-KHALID-ATTACK-ACTIVITY-20260914",
+      "chain_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+      "actor": "Houthi military spokesman Yahya Saree",
+      "claimant_type": "NON_STATE_MILITARY",
+      "actor_role": "AMPLIFIER",
+      "claim": "Dozens of missiles and drones targeted aircraft hangars, radar systems, runways and ammunition depots at King Khalid Air Base in Khamis Mushait.",
+      "source_proposition": "Dozens of missiles and drones targeted King Khalid Air Base in Khamis Mushait.",
+      "proposition": "A Houthi attack wave targeted King Khalid Air Base around Sep. 14.",
+      "proposition_axis": "ATTACK_OCCURRENCE",
+      "truth_adjudication": "SUPPORTED",
+      "truth_qualifier": "ATTACK_ACTIVITY_SUPPORTED",
+      "knowledge_judgment": "NOT_ASSESSED",
+      "combined_assessment": "SUPPORTED ATTACK ACTIVITY — TARGET EFFECTS SEPARATE",
+      "denominator_class": "NON_ACCUSATION_CONTEXT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Accepted Saudi warning/reporting supports attack activity in the relevant area and time."
+      ],
+      "analytic_inference": "Attack occurrence is supported independently of the claimant's more specific target-effect assertions.",
+      "falsifier": [
+        "Authoritative evidence showing no Houthi attack activity against the base/area in the stated window."
+      ],
+      "statement_date": "2026-09-14",
+      "event_time": "2026-09-14",
+      "knowledge_time": "2026-09-15T00:01:51-04:00",
+      "source_ids": [
+        "SRC-C934F4D2622E",
+        "SRC-D07884490630"
+      ],
+      "narrative_function": "Supported occurrence baseline for later BDA claims."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C934F4D2622E",
+          "SRC-D07884490630"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914",
+      "original_claim_id": "CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914",
+      "claim_instance_id": "CI-CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914-P02",
+      "proposition_id": "PROP-HOUTHI-KING-KHALID-SPECIFIC-BDA-20260914",
+      "chain_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+      "actor": "Houthi military spokesman Yahya Saree",
+      "claimant_type": "NON_STATE_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Dozens of missiles and drones targeted aircraft hangars, radar systems, runways and ammunition depots at King Khalid Air Base in Khamis Mushait.",
+      "source_proposition": "Aircraft hangars, radar systems, runways and ammunition depots at King Khalid Air Base were successfully targeted as claimed.",
+      "proposition": "The claimed King Khalid hangar, radar, runway and ammunition-depot effects occurred as described.",
+      "proposition_axis": "BATTLE_DAMAGE_ASSESSMENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "SPECIFIC_MILITARY_TARGET_IMPACTS_NOT_CONFIRMED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED SPECIFIC BDA — ATTACK ACTIVITY ITSELF SUPPORTED",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "Reviewed Saudi reporting supported attack/warning activity but did not confirm the specific military target impacts claimed by the Houthis."
+      ],
+      "analytic_inference": "A supported attack wave does not automatically validate every claimed sub-target hit or damage effect.",
+      "falsifier": [
+        "Independent imagery, Saudi BDA, or other evidence resolving the claimed hangar/radar/runway/ammunition-depot effects."
+      ],
+      "statement_date": "2026-09-14",
+      "event_time": "2026-09-14",
+      "knowledge_time": "2026-09-15T00:01:51-04:00",
+      "source_ids": [
+        "SRC-C934F4D2622E",
+        "SRC-D07884490630"
+      ],
+      "narrative_function": "Specific BDA branch of the Saudi-base attack narrative."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C934F4D2622E"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRGC-EL-GAIA-MINE-20260914",
+      "claim_instance_id": "CI-CLM-IRGC-EL-GAIA-MINE-20260914-P01",
+      "proposition_id": "PROP-EL-GAIA-MINE-CAUSATION-20260914",
+      "chain_id": "CH-EL-GAIA-MINE-CAUSATION-20260914",
+      "actor": "IRGC via Fars",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Panama-flagged tanker El Gaia was damaged by sea mines while passing through an Iranian-prohibited zone south of Hormuz.",
+      "source_proposition": "Sea mines caused the damage to El Gaia.",
+      "proposition": "Sea mines caused the damage to the tanker El Gaia.",
+      "proposition_axis": "CAUSAL_ATTRIBUTION",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "CONTESTED_MINE_CAUSATION",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "CONTESTED / UNRESOLVED CAUSATION",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "CENTCOM reportedly called the mine claim false and asserted a prior Iranian missile strike.",
+        "IMO reporting established damage but did not establish cause in the accepted packet."
+      ],
+      "analytic_inference": "Competing causal accounts exist and the neutral damage report does not resolve the mechanism.",
+      "falsifier": [
+        "Forensic hull evidence, weapon fragments, mine evidence, or authoritative investigation resolving the damage mechanism."
+      ],
+      "statement_date": "2026-09-14",
+      "event_time": "2026-09-14",
+      "knowledge_time": "2026-09-15T00:01:51-04:00",
+      "source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "narrative_function": "Maritime damage-causation attribution."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C934F4D2622E"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-REZAEI-NO-TALKS-UNTIL-CONDITIONS-20260914",
+      "claim_instance_id": "CI-CLM-REZAEI-NO-TALKS-UNTIL-CONDITIONS-20260914-P01",
+      "proposition_id": "PROP-REZAEI-NO-TALKS-POSITION-20260914",
+      "chain_id": "CH-REZAEI-NO-TALKS-20260914",
+      "actor": "Mohsen Rezaei",
+      "claimant_type": "PUBLIC_OFFICIAL",
+      "actor_role": "ORIGINATOR",
+      "claim": "No talks until Iran's conditions are met.",
+      "source_proposition": "No talks until Iran's conditions are met.",
+      "proposition": "Rezaei publicly stated that talks should not occur until Iran's conditions were met.",
+      "proposition_axis": "DECLARATORY_POLICY",
+      "truth_adjudication": "SUPPORTED",
+      "truth_qualifier": "PUBLIC_POSITION_SIGNAL",
+      "knowledge_judgment": "NOT_ASSESSED",
+      "combined_assessment": "SUPPORTED PUBLIC POSITION — NOT AN ACCUSATION/LIE CASE",
+      "denominator_class": "RHETORIC_DECLARATORY_POLICY",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The accepted source records the public position; the specific conditions were not resolved by that statement."
+      ],
+      "analytic_inference": "This is a prospective policy position, not a binary factual accusation.",
+      "falsifier": [
+        "Primary evidence that the statement was misquoted or materially mistranslated."
+      ],
+      "statement_date": "2026-09-14",
+      "event_time": "2026-09-14",
+      "knowledge_time": "2026-09-15T00:01:51-04:00",
+      "source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "narrative_function": "Declaratory negotiation policy."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+      "claim_instance_id": "CI-CLM-IRGC-QESHM-MQ9-LOSS-20260916-P01",
+      "proposition_id": "PROP-QESHM-MQ9-LOSS-20260916",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "actor": "IRGC",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "An American MQ-9 was shot down over Qeshm Island on Sep. 16.",
+      "source_proposition": "An American MQ-9 was shot down over Qeshm Island on Sep. 16.",
+      "proposition": "The Sep. 16 Qeshm aircraft was a U.S. MQ-9 physically lost to Iranian air defense.",
+      "proposition_axis": "INDIVIDUAL_LOSS",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "INDEPENDENT_CONFIRMATION_INSUFFICIENT",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED / UNVERIFIED LOSS",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "IRGC made the specific MQ-9 shootdown claim; independent confirmation was insufficient in the accepted Sep. 17 evidence packet."
+      ],
+      "analytic_inference": "The claim is specific and falsifiable, but the available record does not establish either confirmation or a dispositive counterfact.",
+      "falsifier": [
+        "Operator loss records, wreckage/serial evidence, or independent imagery resolving the Sep. 16 occurrence."
+      ],
+      "statement_date": "2026-09-16",
+      "event_time": "2026-09-16",
+      "knowledge_time": "2026-09-17T16:12:21-04:00",
+      "source_ids": [
+        "SRC-906AC32553A4",
+        "SRC-E8B81BD88EA4"
+      ],
+      "narrative_function": "Type-specific individual-loss branch in the aggregate attrition narrative."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRGC-QESHM-MQ9-52-20260916",
+      "claim_instance_id": "CI-CLM-IRGC-QESHM-MQ9-52-20260916-P01",
+      "proposition_id": "PROP-MQ9-CUMULATIVE-52-20260916",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "actor": "IRGC",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "The Sep. 16 Qeshm aircraft was the 52nd U.S. MQ-9 destroyed during the conflict.",
+      "source_proposition": "Iranian forces had destroyed 52 U.S. MQ-9 aircraft during the conflict by Sep. 16.",
+      "proposition": "Iranian forces had destroyed 52 U.S. MQ-9 aircraft during the conflict by Sep. 16.",
+      "proposition_axis": "CUMULATIVE_TYPE_SPECIFIC_METRIC",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "MQ9_SPECIFIC_EXACT_LEDGER_BURDEN_UNMET_NO_UPPER_BOUND_BELOW_52",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNSUBSTANTIATED EXACT COUNT — MATERIAL FALSITY NOT ESTABLISHED; NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "Independent reporting established at least 45 MQ-9 losses by Aug. 13, which is a lower bound rather than an exact total.",
+        "The public Iranian record does not supply a reconciled type-specific ledger supporting exactly 52.",
+        "The current evidence also does not establish a defensible upper bound below 52."
+      ],
+      "analytic_inference": "The exact ordinal's evidentiary burden is unmet, but insufficiency is not the same as demonstrated falsity.",
+      "falsifier": [
+        "A loss-by-loss MQ-9 reconciliation establishing the exact cumulative total below, at, or above 52 by Sep. 16."
+      ],
+      "statement_date": "2026-09-16",
+      "event_time": "2026-09-16",
+      "knowledge_time": "2026-09-18T10:27:26-04:00",
+      "source_ids": [
+        "SRC-906AC32553A4",
+        "SRC-E8B81BD88EA4",
+        "SRC-34163F690F21",
+        "SRC-DCAF6365D0E6",
+        "SRC-2C92CED64676",
+        "SRC-A07B03007000",
+        "SRC-4DED0E4745D2",
+        "SRC-1171DD00072E",
+        "SRC-FF6A20CEE01D",
+        "SRC-72F1D576AF3E",
+        "SRC-37864A89695D",
+        "SRC-AFBD0A43CE3E",
+        "SRC-1681BB9FE598"
+      ],
+      "narrative_function": "Type-specific cumulative ordinal branch."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-34163F690F21"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+      "claim_instance_id": "CI-CLM-IRGC-QESHM-MQ9-LOSS-20260917-P01",
+      "proposition_id": "PROP-QESHM-MQ9-LOSS-20260917",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "actor": "IRGC",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Another American MQ-9 was shot down over Qeshm Island on Sep. 17.",
+      "source_proposition": "Another American MQ-9 was shot down over Qeshm Island on Sep. 17.",
+      "proposition": "The Sep. 17 Qeshm aircraft was a U.S. MQ-9 physically lost to Iranian air defense.",
+      "proposition_axis": "INDIVIDUAL_LOSS",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "INDEPENDENT_CONFIRMATION_INSUFFICIENT",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED / UNVERIFIED LOSS",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "IRGC made the specific Sep. 17 MQ-9 shootdown claim; independent confirmation was insufficient in the accepted evidence packet."
+      ],
+      "analytic_inference": "The claim remains unresolved because the record lacks both independent confirmation and a dispositive counterfact.",
+      "falsifier": [
+        "Operator loss records, wreckage/serial evidence, or independent imagery resolving the Sep. 17 occurrence."
+      ],
+      "statement_date": "2026-09-17",
+      "event_time": "2026-09-17",
+      "knowledge_time": "2026-09-17T16:12:21-04:00",
+      "source_ids": [
+        "SRC-34163F690F21"
+      ],
+      "narrative_function": "Type-specific individual-loss branch in the aggregate attrition narrative."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-906AC32553A4",
+          "SRC-E8B81BD88EA4",
+          "SRC-34163F690F21",
+          "SRC-DCAF6365D0E6",
+          "SRC-2C92CED64676",
+          "SRC-A07B03007000",
+          "SRC-4DED0E4745D2",
+          "SRC-1171DD00072E",
+          "SRC-FF6A20CEE01D",
+          "SRC-72F1D576AF3E",
+          "SRC-37864A89695D",
+          "SRC-AFBD0A43CE3E",
+          "SRC-1681BB9FE598"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-IRGC-QESHM-MQ9-53-20260917",
+      "claim_instance_id": "CI-CLM-IRGC-QESHM-MQ9-53-20260917-P01",
+      "proposition_id": "PROP-MQ9-CUMULATIVE-53-20260917",
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "actor": "IRGC",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "The Sep. 17 Qeshm aircraft was the 53rd U.S. MQ-9 downed by Iranian forces.",
+      "source_proposition": "Iranian forces had destroyed 53 U.S. MQ-9 aircraft during the conflict by Sep. 17.",
+      "proposition": "Iranian forces had destroyed 53 U.S. MQ-9 aircraft during the conflict by Sep. 17.",
+      "proposition_axis": "CUMULATIVE_TYPE_SPECIFIC_METRIC",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "MQ9_SPECIFIC_EXACT_LEDGER_BURDEN_UNMET_NO_UPPER_BOUND_BELOW_53",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNSUBSTANTIATED EXACT COUNT — MATERIAL FALSITY NOT ESTABLISHED; NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The 53rd claim depends on the unsupported exact 52 baseline plus the unresolved Sep. 17 individual occurrence.",
+        "The public Iranian record still does not supply a reconciled type-specific ledger.",
+        "The present evidence does not establish an upper bound below 53."
+      ],
+      "analytic_inference": "The exact ordinal is unsupported, but unsupported precision is not enough to declare the number false without a defensible upper bound.",
+      "falsifier": [
+        "A loss-by-loss MQ-9 reconciliation establishing the exact cumulative total below, at, or above 53 by Sep. 17."
+      ],
+      "statement_date": "2026-09-17",
+      "event_time": "2026-09-17",
+      "knowledge_time": "2026-09-18T10:27:26-04:00",
+      "source_ids": [
+        "SRC-906AC32553A4",
+        "SRC-E8B81BD88EA4",
+        "SRC-34163F690F21",
+        "SRC-DCAF6365D0E6",
+        "SRC-2C92CED64676",
+        "SRC-A07B03007000",
+        "SRC-4DED0E4745D2",
+        "SRC-1171DD00072E",
+        "SRC-FF6A20CEE01D",
+        "SRC-72F1D576AF3E",
+        "SRC-37864A89695D",
+        "SRC-AFBD0A43CE3E",
+        "SRC-1681BB9FE598"
+      ],
+      "narrative_function": "Type-specific cumulative ordinal branch."
+    },
+    {
+      "statement_precision": "DATE_ONLY",
+      "assessment_time": "2026-09-19",
+      "confidence": "MODERATE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-1B0B49B3F85E"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "claim_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+      "claim_instance_id": "CI-CLM-HOUTHI-F15SA-CAUSATION-20260916-P01",
+      "proposition_id": "PROP-HOUTHI-F15SA-CAUSATION-20260916",
+      "chain_id": "CH-RSAF-F15SA-MARIB-20260916",
+      "actor": "Ansar Allah / Houthi military spokesman",
+      "claimant_type": "NON_STATE_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "A locally made surface-to-air missile caused the loss of the Saudi F-15SA over Marib.",
+      "source_proposition": "A locally made surface-to-air missile caused the loss of the Saudi F-15SA over Marib.",
+      "proposition": "A Houthi locally made surface-to-air missile caused the Sep. 16 F-15SA loss.",
+      "proposition_axis": "CAUSAL_ATTRIBUTION",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "PHYSICAL_LOSS_DOES_NOT_ESTABLISH_MISSILE_CAUSATION",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED — PHYSICAL LOSS DOES NOT ESTABLISH HOUTHI MISSILE CAUSATION",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The aircraft loss is a separate physical fact; the accepted packet did not independently establish the claimed Houthi missile as the cause."
+      ],
+      "analytic_inference": "Possession of a plausible weapon and occurrence of an aircraft loss do not by themselves prove the causal mechanism.",
+      "falsifier": [
+        "Wreckage, missile fragments, telemetry, Saudi investigation, or other evidence resolving the F-15SA loss mechanism."
+      ],
+      "statement_date": "2026-09-16",
+      "event_time": "2026-09-16",
+      "knowledge_time": "2026-09-17T16:12:21-04:00",
+      "source_ids": [
+        "SRC-1B0B49B3F85E"
+      ],
+      "narrative_function": "Causal-attribution branch for a real aircraft-loss event."
+    }
+  ]
 }
