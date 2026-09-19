@@ -159,6 +159,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_historical_doctrine_version": historical.get("doctrine_version"),
         "lie_ledger_evidence_completion_version": state["release"].get("lie_ledger_evidence_completion_version"),
         "lie_ledger_current_claim_update_version": state["release"].get("lie_ledger_current_claim_update_version"),
+        "lie_ledger_claims_forensics_overlay_version": state["release"].get("lie_ledger_claims_forensics_overlay_version"),
         "lie_ledger_v2_records": state["counts"]["lie_ledger_v2_records"],
         "lie_ledger_v2_chains": state["counts"]["lie_ledger_v2_chains"],
         "lie_ledger_v2_claim_instances": state.get("lie_ledger_v2_metrics", {}).get("claim_instances"),
