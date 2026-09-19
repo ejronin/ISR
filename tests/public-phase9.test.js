@@ -54,6 +54,18 @@ assert(!Object.hasOwn(ledger, 'authority'), 'public Lie Ledger must not expose p
 assert.equal(ledger.blocked_assessment_policy, 'WITHHOLD_UNQUALIFIED_KNOWLEDGE_NOT_FACTUAL_STATUS');
 assert.equal(ledger.records.length, model.counts.gate3_lie_ledger_chains);
 assert.equal(ledger.metrics.narrative_chains, ledger.records.length);
+const accusationChains = ledger.records.filter(chain =>
+  chain.classification === 'ACCUSATION_CHAIN' &&
+  chain.public_include_in_accusation_count === true
+);
+const controlChains = ledger.records.filter(chain =>
+  chain.classification !== 'ACCUSATION_CHAIN' &&
+  chain.public_include_in_accusation_count === false
+);
+assert.equal(accusationChains.length, 33, 'Lie Ledger accusation-chain denominator drifted');
+assert.equal(controlChains.length, 14, 'Lie Ledger control-chain denominator drifted');
+assert.equal(accusationChains.length + controlChains.length, ledger.records.length,
+  'every current Lie Ledger chain must be explicitly classified as accusation or control');
 
 const propositions = ledger.records.flatMap(chain => chain.proposition_records || []);
 assert.equal(propositions.length, model.counts.gate3_lie_ledger_records);
