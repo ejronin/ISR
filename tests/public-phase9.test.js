@@ -88,6 +88,28 @@ if (tanf.length) {
     'al-Tanf proposition identities must remain atomic and unique');
 }
 
+const f15Chain = ledger.records.find(chain => chain.chain_id === 'CH-F15E-CSAR-URANIUM');
+assert(f15Chain, 'F-15E / CSAR chain is missing');
+assert.equal(f15Chain.public_finding?.label, 'Lie', 'F-15E chain-level finding must be explicit');
+assert.match(f15Chain.plain_english_summary || '', /real F-15E/i, 'F-15E chain lacks plain-English factual anchor');
+assert((f15Chain.how_we_know || []).length >= 5, 'F-15E chain lacks explicit plain-English inferential reasoning');
+
+const f15ByInstance = new Map((f15Chain.proposition_records || []).map(record => [record.claim_instance_id, record]));
+assert.equal(f15ByInstance.get('CI-IR-CLM-0004-P01')?.truth_adjudication, 'SUPPORTED',
+  'missing/evading airman must remain supported context');
+assert.equal(f15ByInstance.get('CI-IR-CLM-0004-P02')?.truth_adjudication, 'FALSE',
+  'capture proposition must be factually resolved false');
+assert.match(f15ByInstance.get('CI-IR-CLM-0006-P01')?.proposition || '', /had not been captured or detained/i,
+  'provincial IRGC denial must not retain positive-capture polarity');
+assert.equal(f15ByInstance.get('CI-IR-CLM-0006-P01')?.relation_type, 'CORRECTION',
+  'provincial IRGC denial must be modeled as a correction');
+assert.equal(f15ByInstance.get('CI-IR-CLM-0007-P01')?.truth_adjudication, 'SUPPORTED',
+  'real rescue-equipment loss must not inherit false causal attribution');
+assert.equal(f15ByInstance.get('CI-IR-CLM-0009-P02')?.truth_adjudication, 'SUPPORTED',
+  'Isfahan uranium presence must be separated from mission-purpose theory');
+assert.equal(f15ByInstance.get('CI-IR-CLM-0010-P01')?.relation_type, 'NARRATIVE_SUBSTITUTION',
+  'later nuclear-mission theory must retain its narrative-substitution relationship');
+
 for (const record of propositions) {
   const support = record.evidence_support || {};
   for (const ids of Object.values(support)) {
