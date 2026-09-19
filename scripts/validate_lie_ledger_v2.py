@@ -186,7 +186,29 @@ def validate(root: Path = ROOT) -> None:
     adjudication = load(root, ADJUDICATION_PATH)
     require(adjudication.get("artifact_role") == "LIE_LEDGER_V2_EVIDENCE_ADJUDICATION_SET", "active Lie Ledger adjudication artifact role mismatch")
     require(adjudication.get("adjudication_version") == ADJUDICATION_VERSION, "tracked adjudication version mismatch")
-    require(int(adjudication.get("record_count") or 0) == len(records), "tracked adjudication record count mismatch")
+    sealed_rows = adjudication.get("records") or []
+    sealed_ids = {
+        str(row.get("claim_instance_id") or "")
+        for row in sealed_rows
+        if row.get("claim_instance_id")
+    }
+    current_ids = {
+        str(row.get("claim_instance_id") or "")
+        for row in records
+        if row.get("claim_instance_id")
+    }
+    sealed_count = int(adjudication.get("record_count") or 0)
+    require(sealed_count == len(sealed_rows), "tracked adjudication internal record count mismatch")
+    require(len(sealed_ids) == sealed_count, "tracked adjudication contains duplicate/missing claim_instance_id values")
+    require(sealed_ids <= current_ids, "current Claims Forensics state deleted a sealed adjudication proposition")
+    appended_ids = current_ids - sealed_ids
+    require(
+        int(governance.get("post_cutoff_appended_record_count") or 0) == len(appended_ids),
+        "Claims Forensics appended-record count mismatch",
+    )
+    if appended_ids:
+        require(governance.get("claims_forensics_overlay_path"), "post-cutoff append lacks overlay provenance path")
+        require(governance.get("claims_forensics_overlay_version"), "post-cutoff append lacks overlay version")
     require(canonical.get("release", {}).get("lie_ledger_governance_version") == GOVERNANCE, "canonical governance release pin mismatch")
     require(canonical.get("release", {}).get("lie_ledger_adjudication_version") == ADJUDICATION_VERSION, "canonical adjudication release pin mismatch")
     require(canonical.get("release", {}).get("lie_ledger_adjudication_record_sha256") == (adjudication.get("migration_provenance") or {}).get("neutral_record_set_sha256"), "canonical adjudication fingerprint pin mismatch")
