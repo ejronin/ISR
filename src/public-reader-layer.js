@@ -469,6 +469,7 @@
     const cards = [];
 
     chains.forEach(chain => {
+      if (chain && chain.public_include_in_accusation_count === false) return;
       const records = asArray(chain && chain.proposition_records);
       if (!records.length) return;
 
