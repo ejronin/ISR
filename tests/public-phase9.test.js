@@ -99,6 +99,9 @@ assert(f15Chain, 'F-15E / CSAR chain is missing');
 assert.equal(f15Chain.public_finding?.label, 'Lie', 'F-15E chain-level finding must be explicit');
 assert.match(f15Chain.plain_english_summary || '', /real F-15E/i, 'F-15E chain lacks plain-English factual anchor');
 assert((f15Chain.how_we_know || []).length >= 5, 'F-15E chain lacks explicit plain-English inferential reasoning');
+assert.match(f15Chain.event_baseline || '', /F-15E was lost/i, 'F-15E chain lacks established event baseline');
+assert.match(f15Chain.terminal_event_state || '', /both crew were recovered/i, 'F-15E chain lacks terminal event state');
+assert((f15Chain.open_evidence_gaps || []).length >= 1, 'F-15E chain must state genuine remaining evidence gaps');
 
 const f15ByInstance = new Map((f15Chain.proposition_records || []).map(record => [record.claim_instance_id, record]));
 assert.equal(f15ByInstance.get('CI-IR-CLM-0004-P01')?.truth_adjudication, 'SUPPORTED',
