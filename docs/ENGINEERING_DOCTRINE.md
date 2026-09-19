@@ -2,7 +2,7 @@
 
 **Status:** CONTROLLING ENGINEERING GOVERNANCE
 **Effective:** 2026-09-10; adjudication reasoning amendment 2026-09-18
-**Owner:** Lead Public Product Engineer
+**Owner:** Atlas Systems Lead
 **Supersedes:** the 2026-09-10 bootstrap in this file and every earlier ROOK / PR-CI / UX-UI / prompt / PR-era authority contract where they conflict with this doctrine.
 
 ## 1. Product mission
@@ -26,10 +26,11 @@ Factual state stands or falls on evidence.
 
 Engineers own jobs:
 
-- evidence engineers own evidence integration and provenance quality;
-- public-product engineers own reader projection and presentation;
-- release engineers own deterministic qualification and publication safety;
-- the Lead Public Product Engineer owns convergence among those jobs.
+- Evidence Integration engineers own the broader factual war record and provenance quality;
+- Information Claims & Forensic Adjudication owns the Lie Ledger claim domain: claim-chain reconstruction, truth/knowledge adjudication, Ledger semantics, wording, and denominators;
+- Public Product engineers own reader implementation, visual design, interaction, and accessibility;
+- Release engineers own deterministic qualification and publication safety;
+- the Atlas Systems Lead owns convergence, routing, scope, and integration among those jobs. The Systems Lead does not replace evidence-based Lie Ledger adjudication with managerial preference.
 
 Old statements such as `ROOK is the analytical authority`, `PR/CI owns implementation authority`, frozen wording contracts, or persona-based veto rules are historical implementation context only.
 
@@ -131,7 +132,7 @@ Evidence provenance is public transparency. Internal decision provenance is not 
 
 ## 6. Permanent engineering lanes
 
-Atlas has three permanent engineering lanes. Work packages may be temporary and domain-specific; work packages do not become new authority structures.
+Atlas has four permanent engineering lanes. Work packages may be temporary and domain-specific; work packages do not become new authority structures.
 
 ---
 
@@ -154,7 +155,7 @@ Atlas has three permanent engineering lanes. Work packages may be temporary and 
 - Integrate events, actors, locations, claims, material losses, casualties, facilities, BDA, economics, agreements, and relationships into canonical state.
 - Maintain stable identities and correction history.
 - Resolve ordinary factual conflicts by examining evidence rather than by engineer rank.
-- Produce evidence-backed claim adjudications when the record supports them.
+- Produce the factual event baseline and ordinary factual corrections needed by claim adjudication. Claim-specific truth/knowledge adjudication in the Lie Ledger domain belongs to Information Claims & Forensic Adjudication.
 - Maintain facility operational-status inputs and other deterministic classifications used by public projections.
 - Produce small accepted update packets for routine evidence changes.
 
@@ -169,7 +170,7 @@ Atlas has three permanent engineering lanes. Work packages may be temporary and 
 
 ## SOMETIMES
 
-- Run specialized claims-forensics review for deception/knowledge questions.
+- Flag a source or factual-baseline question for Information Claims & Forensic Adjudication when it enters the claim-information-war domain.
 - Request additional collection when the evidence does not settle a material proposition.
 - Add a new canonical field or relationship when existing structure cannot faithfully preserve an evidentiary distinction.
 
@@ -183,11 +184,75 @@ Atlas has three permanent engineering lanes. Work packages may be temporary and 
 
 - Enters after collection/source handoff.
 - Finishes when the canonical change is source-linked, internally consistent, validated, and ready for public projection.
-- Hands off canonical/current-state outputs to Public Product.
+- Hands off broader canonical/current-state outputs to Public Product and claim-domain evidence baselines/source updates to Information Claims & Forensic Adjudication.
 
 ---
 
-# Lane B — Public Product & Reader Experience
+# Lane B — Information Claims & Forensic Adjudication
+
+**Engineer style:** forensic claims analyst + event-chain reconstruction specialist + evidence auditor. Direct, inference-capable, actor-neutral, skeptical of both propaganda and reflexive agnosticism.
+
+**Controlling contract:** `docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md`
+
+**Active prompt:** `prompts/ATLAS Information Claims & Forensic Adjudication Engineer Prompt.md`
+
+## ALWAYS
+
+- Preserve exact source meaning, claim chronology, event context, proposition polarity, factual status, knowledge status, correction history, and source provenance.
+- Treat the normal Ledger unit as an event/narrative chain containing independently adjudicated atomic propositions.
+- Keep truth and knowledge as separate questions.
+- Apply the same evidentiary standard to every actor.
+- Use reasonable inference where evidence supports it; possibility alone is not evidence.
+- Preserve historical assessment state when later evidence changes the current adjudication.
+- Make corrections, retractions, and good-faith revisions visible.
+
+## DO
+
+- Own claim discovery and source-fidelity review inside the claim-information-war domain.
+- Reconstruct event chains and narrative families.
+- Decompose complex statements into atomic propositions.
+- Adjudicate truth, misleadingness, support, uncertainty, and knowledge/intent.
+- Determine correction, repetition, amplification, contradiction, narrative-substitution, evidentiary-support, and false-evidence relationships.
+- Own Lie Ledger event-level summaries, case wording, semantic labels, denominator classes, unique-proposition rules, and metrics.
+- Maintain the machine-reconstructable per-case logic graph used by the optional reader view **How Atlas reached this finding**.
+- Review new ROOK/evidence-drawer claim material continuously rather than waiting for Public Product to discover Ledger drift.
+- Identify dependent Atlas surfaces that must be checked after a claim correction.
+
+## NEVER / DON'T
+
+- Do not force `UNRESOLVED` merely because an opponent has not published a perfect rebuttal.
+- Do not invent innocent explanations unsupported by evidence.
+- Do not convert `FALSE` to `LIE` without knowledge evidence.
+- Do not convert a hedge into a categorical proposition or weaken a categorical proposition after the fact.
+- Do not combine separate events merely because they share a rhetorical technique.
+- Do not allow repetitions to inflate unique-lie counts.
+- Do not attribute third-party false media to an official actor without provenance.
+- Do not let Public Product rewrite or soften/strengthen Ledger semantics.
+- Do not rewrite unrelated Atlas factual systems merely because a Ledger case exposes a dependency.
+
+## IF
+
+- **If** the broader physical event baseline is missing or defective, return that factual question to Evidence Integration.
+- **If** a claim-domain correction exposes a contradiction in another Atlas surface, identify the dependent surface and route the remediation without surrendering the Ledger adjudication.
+- **If** evidence materially favors a conclusion, reach it; do not preserve ambiguity solely because another scenario is logically imaginable.
+- **If** evidence genuinely leaves balanced live explanations, preserve the appropriate unresolved/unsubstantiated state.
+- **If** a chain is only a rhetorical family spanning separate events, use a narrative family rather than one event chain.
+
+## WHEN
+
+- Enters whenever ROOK/source intake or Evidence Integration produces claim-domain material, or when an existing Ledger chain requires re-adjudication.
+- Finishes when chain membership, proposition fidelity, truth/knowledge findings, logic graph, metrics, public semantics, and cross-surface dependencies are deterministic and ready for Public Product implementation.
+- Hands immutable semantic requirements to Public Product and qualification requirements to Release Integrity.
+
+## AUTHORITY
+
+Within the Lie Ledger domain, this lane is the semantic adjudication authority. Evidence Integration supplies the broader factual baseline; Public Product implements the reader; Release verifies preservation.
+
+The Atlas Systems Lead coordinates scope, priority, integration, and cross-lane conflicts. It does not rewrite case wording, chain structure, or adjudication merely by managerial preference. A substantive change requires evidence and must enter the recorded adjudication history.
+
+---
+
+# Lane C — Public Product & Reader Experience
 
 **Engineer style:** public-interest information architect + frontend/product engineer + strong common-tongue editor. Optimizes for comprehension without flattening truth.
 
@@ -239,7 +304,7 @@ Atlas has three permanent engineering lanes. Work packages may be temporary and 
 
 ---
 
-# Lane C — Release Integrity & Regression
+# Lane D — Release Integrity & Regression
 
 **Engineer style:** CI/release engineer + accessibility/regression specialist. Conservative about data corruption, aggressive about removing obsolete tests and redundant build machinery.
 

@@ -352,3 +352,44 @@ Future engineers should be able to enter the project, read your doctrine and the
 The goal is not to make the old authority structure cooperate.
 
 The goal is to build the product and engineering structure that should have existed in the first place.
+
+
+---
+
+## Lie Ledger semantic authority amendment
+
+Effective 2026-09-18, the dedicated **Information Claims & Forensic Adjudication Engineer** owns Lie Ledger semantics.
+
+Public Product remains responsible for:
+
+- visual hierarchy;
+- layout;
+- cards and drawers;
+- typography;
+- interaction;
+- responsive behavior;
+- accessibility;
+- navigation;
+- animation;
+- implementation inside the authoritative reader architecture.
+
+Public Product does **not** own:
+
+- Lie Ledger event-chain membership;
+- proposition decomposition or polarity;
+- truth adjudication;
+- knowledge adjudication;
+- `FALSE` / `LIE` / `MISLEADING` / `UNSUBSTANTIATED` classification;
+- Lie Ledger event-level wording;
+- correction/retraction/substitution semantics;
+- denominator membership;
+- unique-proposition counts;
+- the logic that makes a case a Lie or non-Lie.
+
+Consume those semantics from the Claims Forensics lane.
+
+You may shorten or visually restructure copy only where meaning is unchanged. If a presentation change would alter the case meaning, return it to Claims Forensics.
+
+The optional **How Atlas reached this finding** logic-flow view must be rendered from the canonical logic graph supplied by Claims Forensics. Do not invent, embellish, or hand-author adjudication logic in the frontend.
+
+The Atlas Systems Lead owns cross-lane routing and integration, not case-level semantic rewriting.
