@@ -1,7 +1,7 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-4",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-5",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "effective_date": "2026-09-19",
@@ -300,6 +300,17 @@
         "NON_OPERATIONAL_FORCED_RETREAT",
         "FALSE_MEDIA_PRESENTATION",
         "LATER_OPERATIONAL_EVIDENCE"
+      ]
+    },
+    "CHAIN-CL-IRGC-ASSET-LIST": {
+      "classification": "ACCUSATION_CHAIN_PENDING_LINE_ITEM_ADJUDICATION",
+      "public_title": "IRGC 15-day U.S. asset-loss scorecard",
+      "plain_english_summary": "The IRGC published a compound scorecard covering fighters/helicopters, drones, tankers, Patriot/HIMARS and command infrastructure. Independent imagery confirms substantial real U.S. damage, but the current canonical source graph does not contain the IRNA claim-origin article needed to decompose and adjudicate the individual counts faithfully. Atlas therefore does not publish the old one-row PARTLY_TRUE blob as though the line items were already checked.",
+      "how_we_know": [
+        "Independent satellite reporting confirms real damage to U.S. bases, aircraft, air-defense equipment and communications facilities.",
+        "That independent evidence does not by itself validate the IRGC's specific class-by-class counts.",
+        "The legacy curated record identifies the IRNA article containing the scorecard, but that claim-origin URL is not represented by a canonical source object in the active source graph.",
+        "Without source-qualified claim text, splitting the scorecard into 11 aircraft/helicopters, 17 drones, eight tankers and other equipment would risk silently strengthening or weakening what the source actually asserted."
       ]
     }
   },
@@ -719,6 +730,22 @@
         "counts_as_unique_proposition": true
       },
       "rationale": "The alleged U.S.-made Shahed-type clone is a separate mechanism proposition under the false-flag narrative family, not evidence of one continuous physical event."
+    },
+    {
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "set": {
+        "publication_status": "BLOCKED_EVIDENCE_COMPLETION",
+        "counts_as_unique_proposition": false,
+        "denominator_class": "CLAIM_INSTANCE",
+        "truth_qualifier": "MIXED_REQUIRES_LINE_ITEM_ADJUDICATION_AND_CLAIM_SOURCE_COMPLETION",
+        "publication_blockers": [
+          {
+            "code": "CLAIM_ORIGIN_SOURCE_MISSING",
+            "deficiency": "The IRNA Jul. 26 claim-origin URL for the detailed asset scorecard exists in legacy curated data but has no canonical source object in the active source graph; line-item source fidelity cannot yet be proven."
+          }
+        ]
+      },
+      "rationale": "Do not present a compound PARTLY_TRUE scorecard as final forensic adjudication when the direct claim-origin source is absent from canonical provenance."
     }
   ],
   "full_sweep_path": "data/claims-forensics/lie-ledger-full-sweep-20260919.json",
