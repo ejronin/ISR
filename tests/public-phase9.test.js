@@ -247,6 +247,29 @@ for (const mediaId of ['MED-001','MED-002','MED-003','MED-004','MED-005','MED-00
   assert.match(row.public_combined_assessment || '', /OFFICIAL ORIGIN NOT ESTABLISHED/i);
 }
 
+for (const chain of ledger.records) {
+  assert(chain.logic_graph, `missing machine logic graph for chain: ${chain.chain_id}`);
+  assert.equal(chain.logic_graph.chain_id, chain.chain_id);
+  assert.equal(chain.logic_graph.graph_type, 'CLAIM_EVIDENCE_ADJUDICATION');
+  assert.equal(chain.logic_graph.claim_node_count, (chain.proposition_records || []).length,
+    `logic graph claim-node count drifted: ${chain.chain_id}`);
+  const graphClaimIds = new Set(
+    (chain.logic_graph.nodes || [])
+      .filter(node => node.type === 'ATOMIC_PROPOSITION')
+      .map(node => node.claim_instance_id)
+  );
+  for (const record of chain.proposition_records || []) {
+    assert(graphClaimIds.has(record.claim_instance_id),
+      `logic graph omitted proposition ${record.claim_instance_id} from ${chain.chain_id}`);
+    const graphNode = (chain.logic_graph.nodes || []).find(node => node.claim_instance_id === record.claim_instance_id);
+    if (record.publication_status === 'BLOCKED_EVIDENCE_COMPLETION') {
+      assert.equal(graphNode.knowledge_finding, 'WITHHELD_PENDING_EVIDENCE',
+        `logic graph leaked blocked knowledge finding: ${record.claim_instance_id}`);
+    }
+  }
+}
+
+
 for (const record of propositions) {
   const support = record.evidence_support || {};
   for (const ids of Object.values(support)) {
