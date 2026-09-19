@@ -114,6 +114,11 @@ assert.match(readerSource, /Repeated or amplified by \(\$\{repeats\.length\}\)/)
 assert.match(readerSource, /How Atlas reached this finding/);
 assert.match(readerSource, /Why this branch is/);
 assert.match(readerSource, /That is why this branch is labeled False rather than Lie/);
+assert.match(readerSource, /What actually happened/);
+assert.match(readerSource, /Adjudicated outcome/);
+assert.match(readerSource, /How the logic works/);
+assert.match(readerSource, /What remains unknown/);
+assert.match(readerSource, /What was claimed and how the story changed/);
 assert.match(readerSource, /the inference answers "why that evidence changes/);
 assert.match(readerSource, /The separate knowledge\/intent assessment remains pending additional evidence/);
 assert.match(readerSource, /const positiveDamage = !negativeDamage/);
