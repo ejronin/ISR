@@ -20,8 +20,11 @@ const records = key => {
 };
 const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
-const expectedReaderClaims = lieLedgerModel.records.reduce((count, chain) => {
-  const keys = new Set((chain.proposition_records || []).map(record => record.proposition_id || record.proposition || record.source_proposition || record.claim).filter(Boolean));
+const readerCards = lieLedgerModel.reader_cards || lieLedgerModel.records;
+const readerAccusations = readerCards.filter(card => card.lie_ledger_accusation !== false);
+const expectedReaderNarratives = readerAccusations.length;
+const expectedReaderBranches = readerAccusations.reduce((count, chain) => {
+  const keys = new Set((chain.proposition_records || []).map(record => record.proposition_id || record.claim_id || record.reader_branch_id || record.proposition || record.source_proposition || record.claim).filter(Boolean));
   return count + keys.size;
 }, 0);
 
@@ -179,8 +182,9 @@ async function route(cdp, hash, key) {
     await route(cdp, '#/evidence/information', 'evidence.information');
     const ledger = await cdp.eval(`(() => {
       const main = document.querySelector('main');
-      const cards = [...main.querySelectorAll('[data-reader-finding]')];
-      const first = cards[0];
+      const narrativeCards = [...main.querySelectorAll('.reader-lie-ledger > .reader-ledger-card')];
+      const branches = narrativeCards.flatMap(card => [...card.querySelectorAll('.reader-claim-branch')]);
+      const first = branches[0];
       const why = first?.querySelector('.reader-how-we-know');
       const whySummary = why?.querySelector(':scope > summary');
       if (whySummary) {
@@ -191,12 +195,15 @@ async function route(cdp, hash, key) {
       if (evidenceSummary) evidenceSummary.click();
       const search = main.querySelector('.reader-ledger-controls input[type="search"]');
       const select = main.querySelector('.reader-ledger-controls select');
-      const statuses = cards.map(card => card.querySelector('.reader-claim-status')?.textContent.trim() || '');
+      const contextDetails = main.querySelector('.reader-ledger-context');
+      if (contextDetails) contextDetails.open = true;
+      const statuses = branches.map(branch => branch.querySelector('.reader-claim-status')?.textContent.trim() || '');
       const internalSelectors = main.querySelectorAll('[data-claim-instance-id], [data-chain-id], [data-publication-status], [data-combined-assessment]').length;
       const technicalMetadata = main.querySelectorAll('.technical-record-metadata, .evidence-role-guide').length;
       const text = main.innerText || '';
       return {
-        cards: cards.length,
+        cards: narrativeCards.length,
+        branches: branches.length,
         statuses,
         why: Boolean(why),
         whyFocusable: !whySummary || document.activeElement === whySummary,
@@ -211,41 +218,104 @@ async function route(cdp, hash, key) {
         text,
         scoreAttrs: main.querySelectorAll('[data-deception-score]').length,
         oldControls: main.querySelectorAll('.lie-ledger-controls').length,
-        clocks: main.querySelectorAll('[data-component="EvidenceClocks"], .evidence-clocks, .evidence-clock-bar').length
+        clocks: main.querySelectorAll('[data-component="EvidenceClocks"], .evidence-clocks, .evidence-clock-bar').length,
+        familyNotes: main.querySelectorAll('.reader-narrative-family').length,
+        contextCards: main.querySelectorAll('.reader-ledger-control-card').length,
+        contextText: main.querySelector('.reader-ledger-context')?.innerText || '',
+        repeatSummary: main.querySelector('.reader-repeated-by > summary')?.textContent.trim() || '',
+        permalinks: main.querySelectorAll('.reader-branch-permalink').length,
+        f15saTitle: [...main.querySelectorAll('.reader-ledger-card h3')].find(node => /F-15SA/i.test(node.textContent || ''))?.textContent.trim() || ''
       };
     })()`);
-    assert.equal(ledger.cards, expectedReaderClaims, 'reader claim population does not reconcile to unique propositions within each chain');
-    assert(ledger.cards > 0, 'reader-facing claim ledger is empty');
-    assert(ledger.statuses.every(value => ['Lie', 'Likely lie', 'False', 'Misleading', 'Partly true', 'Supported', 'Unresolved', 'Evidence review incomplete', 'Not yet assessed'].includes(value)), 'reader ledger exposes an unapproved finding label');
-    assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
-    assert(ledger.evidence && ledger.evidenceOpen, 'reader evidence drawer is not discoverable/openable');
-    assert(ledger.controls.length >= 2 && ledger.controls.every(height => height >= 44), 'reader claim controls have a touch target below 44px');
-    assert(ledger.search && ledger.select, 'reader claim search/filter controls are missing');
+    assert.equal(ledger.cards, expectedReaderNarratives, 'reader narrative-card population does not reconcile to the read model');
+    assert.equal(ledger.branches, expectedReaderBranches, 'reader branch population does not reconcile to independently adjudicated propositions');
+    assert(ledger.cards > 0 && ledger.branches >= ledger.cards, 'reader-facing narrative ledger is empty');
+    assert(ledger.statuses.every(value => ['Lie', 'Likely lie', 'False', 'Misleading', 'Partly true', 'Supported', 'Unresolved', 'Evidence review incomplete', 'Not yet assessed', 'Unsubstantiated exact count', 'Claim not established', 'Unverified', 'Narrative changed'].includes(value)), 'reader ledger exposes an unapproved finding label');
+    assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader branch evidence explanation is not keyboard-openable');
+    assert(ledger.evidence && ledger.evidenceOpen, 'reader branch evidence drawer is not discoverable/openable');
+    assert(ledger.controls.length >= 2 && ledger.controls.every(height => height >= 44), 'reader narrative controls have a touch target below 44px');
+    assert(ledger.search && ledger.select, 'reader narrative search/filter controls are missing');
     assert.equal(ledger.internalSelectors, 0, 'internal claim-instance/chain/publication metadata remains in the reader DOM');
     assert.equal(ledger.technicalMetadata, 0, 'technical metadata remains in the reader DOM');
     assert.equal(ledger.scoreAttrs, 0, 'legacy deception score remains in active DOM state');
     assert.equal(ledger.oldControls, 0, 'legacy forensic-workstation controls remain active');
     assert.equal(ledger.clocks, 0, 'evidence-clock machinery remains on the ordinary reader claim page');
+    assert(ledger.familyNotes >= 3, 'regional false-flag family is not presented as separate incident-linked narratives');
+    assert(ledger.contextCards >= 2, 'Dena/Tangsiri admission controls are not separated from accusation cards');
+    assert.match(ledger.contextText, /not accusations of lying/i);
+    assert.match(ledger.repeatSummary, /^Repeated by \(\d+\)$/, 'repeat disclosure is missing or not reader-legible');
+    assert(ledger.permalinks > 0, 'claim-level deep links are missing');
+    assert.match(ledger.f15saTitle, /Saudi F-15SA/i, 'F-15SA public title lost the Saudi operator distinction');
+    assert.doesNotMatch(ledger.text, /U\.S\.-military F-15SA|U\.S\. F-15SA/i, 'U.S. origin/manufacture was collapsed into U.S.-military operation');
     assert.doesNotMatch(ledger.text, /Combined ROOK assessment|ROOK verdict|PR\/CI|claim_instance_id|proposition_id|chain_id|publication blocker/i, 'internal authority/schema language leaked into reader claims');
-    assert.match(ledger.text, /Claims and findings/i);
-    assert.match(ledger.text, /How we know it is/i);
+    assert.match(ledger.text, /Narratives and findings/i);
+    assert.match(ledger.text, /How we know:/i);
+
+    const currentFindings = await cdp.eval(`(() => {
+      const main = document.querySelector('main');
+      const branches = [...main.querySelectorAll('.reader-claim-branch')];
+      const inspect = re => {
+        const branch = branches.find(node => re.test(node.innerText || ''));
+        if (!branch) return null;
+        const why = branch.querySelector('.reader-how-we-know');
+        if (why) why.open = true;
+        return {
+          status: branch.querySelector('.reader-claim-status')?.textContent.trim() || '',
+          text: branch.innerText || ''
+        };
+      };
+      return {
+        mq52: inspect(/destroyed 52 U\.S\. MQ-9/i),
+        mq53: inspect(/destroyed 53 U\.S\. MQ-9/i),
+        qeshm16: inspect(/Sep\. 16 Qeshm aircraft was a U\.S\. MQ-9 physically lost/i),
+        qeshm17: inspect(/Sep\. 17 Qeshm aircraft was a U\.S\. MQ-9 physically lost/i),
+        aircraft210: inspect(/210 figure is a clean count/i),
+        turkeyCausal: inspect(/false-flag operation by unspecified/i),
+        turkeyEvolution: inspect(/false-flag explanation replaces the earlier categorical/i)
+      };
+    })()`);
+    assert.equal(currentFindings.mq52?.status, 'Unsubstantiated exact count');
+    assert.equal(currentFindings.mq53?.status, 'Unsubstantiated exact count');
+    assert.match(currentFindings.mq52?.text || '', /at least 45/i, '52nd MQ-9 reader explanation lost the accepted lower bound');
+    assert.equal(currentFindings.qeshm16?.status, 'Unverified');
+    assert.equal(currentFindings.qeshm17?.status, 'Unverified');
+    assert.equal(currentFindings.aircraft210?.status, 'Misleading');
+    assert.match(currentFindings.aircraft210?.text || '', /down 210|target around 210/i);
+    assert.equal(currentFindings.turkeyCausal?.status, 'Claim not established');
+    assert.equal(currentFindings.turkeyEvolution?.status, 'Narrative changed');
 
     const filteredLedger = await cdp.eval(`(() => {
       const main = document.querySelector('main');
       const search = main.querySelector('.reader-ledger-controls input[type="search"]');
-      const first = main.querySelector('[data-reader-finding]');
+      const first = main.querySelector('.reader-lie-ledger > .reader-ledger-card');
       const term = first?.querySelector('h3')?.textContent.trim().split(/\s+/).find(word => word.length >= 5) || '';
       if (!search || !term) return null;
       search.value = term;
       search.dispatchEvent(new Event('input', { bubbles: true }));
       return {
         term,
-        visible: [...main.querySelectorAll('[data-reader-finding]')].filter(card => !card.hidden).length,
+        visible: [...main.querySelectorAll('.reader-lie-ledger > .reader-ledger-card')].filter(card => !card.hidden).length,
         count: main.querySelector('.reader-ledger-controls .filter-result-count')?.textContent.trim() || ''
       };
     })()`);
-    assert(filteredLedger && filteredLedger.visible > 0, 'reader claim search does not preserve matching claims');
-    assert.match(filteredLedger.count, /^\d+ of \d+ claims shown$/);
+    assert(filteredLedger && filteredLedger.visible > 0, 'reader narrative search does not preserve matching narratives');
+    assert.match(filteredLedger.count, /^\d+ of \d+ narratives shown · \d+ branch findings$/);
+
+    const deepHref = await cdp.eval(`document.querySelector('.reader-branch-permalink')?.href || ''`);
+    assert(deepHref, 'reader branch deep-link URL is absent');
+    await cdp.call('Page.navigate', { url: deepHref });
+    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === 'evidence.information'`);
+    await waitFor(cdp, `Boolean(document.querySelector('[data-reader-deep-link-target="true"]'))`);
+    const deepLink = await cdp.eval(`(() => {
+      const target = document.querySelector('[data-reader-deep-link-target="true"]');
+      return {
+        target: Boolean(target),
+        focused: document.activeElement === target,
+        id: target?.id || ''
+      };
+    })()`);
+    assert(deepLink.target && deepLink.id.startsWith('claim-'), 'deep link did not resolve to a deterministic claim anchor');
+    assert(deepLink.focused, 'deep-linked claim branch did not receive focus');
 
     const publicLanguageLeaks = [];
     for (const routeRecord of ia.ROUTES.values()) {

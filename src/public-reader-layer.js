@@ -389,10 +389,103 @@
     return cleanPublicText(record && (record.proposition || record.source_proposition || record.claim || 'Claim text unavailable'));
   }
 
+  const NARRATIVE_TITLES = Object.freeze({
+    'CH-F15E-CSAR-URANIUM': 'F-15E loss, aircrew rescue and later explanations',
+    'CH-AIRCRAFT-KILL-AGGREGATES': 'Aircraft and drone loss-count claims',
+    'CH-F35-MAR19': 'F-35 damage and downing claims',
+    'CH-TURKEY-MISSILE-DENIAL': 'Turkey missile attribution and false-flag explanation',
+    'CH-QATAR-PILOTS': 'Missing pilots and Qatar custody claims',
+    'CH-INDIAN-OCEAN-DESTROYER': 'Indian Ocean warship strike claims',
+    'CH-ALUDEID-BDA': 'Al Udeid damage and operating-effect claims',
+    'CH-KUWAIT-F15-FRIENDLY-FIRE': 'Kuwait F-15 losses and attribution',
+    'CH-FALSE-FLAG-ARAMCO-20260302': 'Aramco false-flag allegation',
+    'CH-FALSE-FLAG-ERBIL-KUWAIT-20260315': 'Erbil / Kuwait false-flag allegation',
+    'CH-FALSE-FLAG-LUCAS-20260315': 'Lucas drone false-flag allegation',
+    'CH-RSAF-F15SA-MARIB-20260916': 'Saudi F-15SA loss and causation claim',
+    'CH-DENA-ADMISSION': 'IRIS Dena loss and later acknowledgment',
+    'CH-TANGSIRI-ADMISSION': 'Tangsiri death and later acknowledgment'
+  });
+
+  function narrativeTitle(chain, groups) {
+    const fixed = NARRATIVE_TITLES[text(chain && chain.chain_id)];
+    if (fixed) return fixed;
+    const first = groups && groups[0] && groups[0].main;
+    const proposition = first ? recordProposition(first) : '';
+    return proposition || 'Claim narrative';
+  }
+
+  function readerBranchAdjudication(record) {
+    const evidence = text(record && record.evidence_disposition).toUpperCase();
+    const combined = text(record && (record.public_combined_assessment || record.combined_assessment)).toUpperCase();
+    const qualifier = text(record && record.truth_qualifier).toUpperCase();
+    const axis = text(record && record.proposition_axis).toUpperCase();
+    const truth = text(record && record.truth_adjudication).toUpperCase();
+    if (truth === 'SUPPORTED' && (/NARRATIVE SUBSTITUTION/.test(combined) || axis === 'NARRATIVE_EVOLUTION')) {
+      return { label: 'Narrative changed', key: 'narrative-changed' };
+    }
+    if (evidence === 'UNSUBSTANTIATED' && (/EXACT/.test(combined) || /EXACT_.*ORDINAL|EXACT_LEDGER/.test(qualifier))) {
+      return { label: 'Unsubstantiated exact count', key: 'unsubstantiated-exact' };
+    }
+    if (evidence === 'UNSUBSTANTIATED' || /UNSUBSTANTIATED/.test(combined) || /UNSUBSTANTIATED/.test(qualifier)) {
+      return { label: 'Claim not established', key: 'unsubstantiated' };
+    }
+    if (/UNVERIFIED/.test(combined) || (truth === 'UNRESOLVED' && axis === 'INDIVIDUAL_LOSS' && /INDEPENDENT_CONFIRMATION_INSUFFICIENT/.test(qualifier))) {
+      return { label: 'Unverified', key: 'unverified' };
+    }
+    return publicAdjudication(record);
+  }
+
+  function branchGroupKey(record) {
+    return text(record && (record.proposition_id || record.claim_id || record.reader_branch_id || record.proposition || record.claim)).toLowerCase();
+  }
+
+  function groupNarrativeBranches(chain) {
+    const groups = new Map();
+    asArray(chain && chain.proposition_records).forEach(record => {
+      const key = branchGroupKey(record);
+      if (!key) return;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(record);
+    });
+    return [...groups.entries()].map(([key, records]) => {
+      const main = records.find(record => record.current_overlay_id)
+        || records.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION')
+        || records[0];
+      const repeats = records.filter(record => record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type)));
+      return { key, records, main, repeats };
+    }).sort((a, b) => statementDate(a.main).localeCompare(statementDate(b.main)) || a.key.localeCompare(b.key));
+  }
+
+  function narrativeSummary(groups) {
+    const labels = [...new Set(groups.map(group => readerBranchAdjudication(group.main).label))];
+    const findings = labels.length ? labels.slice(0, 4).join(', ') : 'mixed findings';
+    return groups.length + ' independently reviewed ' + (groups.length === 1 ? 'branch' : 'branches') + ' — ' + findings + '. Each finding applies only to that proposition.';
+  }
+
+  function readerBranchAnchor(record) {
+    const raw = text(record && (record.claim_id || record.original_claim_id || record.reader_branch_id || record.proposition_id));
+    if (!raw) return '';
+    return 'claim-' + raw.replace(/[^A-Za-z0-9_.:-]+/g, '-');
+  }
+
+  function readerClaimKey(record) {
+    return text(record && (record.claim_id || record.original_claim_id || record.reader_branch_id || record.proposition_id));
+  }
+
   function howWeKnow(record, adjudication) {
     const facts = asArray(record && record.observed_facts).map(cleanPublicText).filter(Boolean);
-    const result = facts.slice(0, 4);
+    const result = [];
+    const readerReason = cleanPublicText(record && record.reader_reason);
+    if (readerReason && !INTERNAL_TEXT.test(readerReason)) result.push(readerReason);
+    facts.slice(0, 4).forEach(value => { if (!result.includes(value)) result.push(value); });
     const knowledge = text(record && (record.public_knowledge_judgment || record.knowledge_judgment)).toUpperCase();
+    if (adjudication.key === 'unsubstantiated-exact' && !result.length) {
+      result.push('The exact count has not been supported by a reconciled public ledger, while the available record does not establish an upper bound proving the ordinal false.');
+    } else if (adjudication.key === 'unverified' && !result.length) {
+      result.push('The individual loss remains unverified on the current record. A cumulative count does not establish that this specific occurrence happened.');
+    } else if (adjudication.key === 'unsubstantiated' && !result.length) {
+      result.push('The available record does not establish this claim.');
+    }
     if (adjudication.key === 'lie' && !result.some(value => /knew|knowledge|access/i.test(value))) {
       result.push('The evidence supports that the claimant had access to information contradicting the statement when it was made.');
     } else if (adjudication.key === 'likely-lie' && !result.some(value => /knew|knowledge|access/i.test(value))) {
@@ -410,80 +503,96 @@
 
   function rebuildLieLedger(article, context) {
     const payload = base.modelData(context.model, 'gate3.lie_ledger') || {};
-    const chains = asArray(payload.records).length ? asArray(payload.records) : base.recordArray(payload);
+    const allCards = asArray(payload.reader_cards).length ? asArray(payload.reader_cards) : asArray(payload.records);
+    const accusationCards = allCards.filter(card => card && card.lie_ledger_accusation !== false);
+    const contextCards = allCards.filter(card => card && card.lie_ledger_accusation === false);
     const documentObject = article.ownerDocument;
     const header = article.querySelector('.page-intro');
     if (!header) return;
-    setPageIntro(article, 'Claims are grouped by what was actually asserted. Each entry shows the current finding, repeats or related claims when they matter, and the evidence that supports the result.');
+    setPageIntro(article, 'Claims are grouped into evolving narratives. Every branch keeps its own factual and knowledge finding, so one true, false, misleading or unresolved claim never determines the others.');
     [...article.children].forEach(child => { if (child !== header) child.remove(); });
 
     const section = append(article, 'section', 'content-section reader-lie-ledger');
     section.dataset.readerLieLedger = VERSION;
-    append(section, 'h2', '', 'Claims and findings');
+    append(section, 'h2', '', 'Narratives and findings');
+
+    const totalBranches = accusationCards.reduce((sum, card) => sum + groupNarrativeBranches(card).length, 0);
+    append(section, 'p', 'reader-ledger-metrics', accusationCards.length + ' narratives · ' + totalBranches + ' independently adjudicated branches');
+
     const controls = append(section, 'form', 'reader-ledger-controls');
     controls.addEventListener('submit', event => event.preventDefault());
-    const searchLabel = append(controls, 'label', '', 'Search claims');
+    const searchLabel = append(controls, 'label', '', 'Search narratives and claims');
     const search = append(searchLabel, 'input');
-    search.type = 'search'; search.placeholder = 'Search claim or claimant';
-    const statusLabel = append(controls, 'label', '', 'Finding');
+    search.type = 'search'; search.placeholder = 'Search story, claim or claimant';
+    const statusLabel = append(controls, 'label', '', 'Branch finding');
     const status = append(statusLabel, 'select');
     append(status, 'option', '', 'All findings').value = '';
     const statusKeys = new Map();
-    const cards = [];
+    const renderedCards = [];
+    const deepLinkTargets = new Map();
 
-    chains.forEach(chain => {
-      const records = asArray(chain && chain.proposition_records);
-      const groups = new Map();
-      records.forEach(record => {
-        const key = record.proposition_id || recordProposition(record).toLowerCase();
-        if (!groups.has(key)) groups.set(key, []);
-        groups.get(key).push(record);
-      });
-      const groupEntries = [...groups.entries()];
-      groupEntries.forEach(([groupKey, groupRecords]) => {
-        const main = groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0];
-        if (!main) return;
-        const adjudication = publicAdjudication(main);
-        statusKeys.set(adjudication.key, adjudication.label);
-        const card = append(section, 'article', `reader-ledger-card finding-${adjudication.key}`);
-        card.dataset.readerFinding = adjudication.key;
-        card.dataset.readerSearch = `${recordProposition(main)} ${cleanPublicText(main.actor)} ${adjudication.label}`.toLowerCase();
-        const top = append(card, 'div', 'reader-ledger-card-head');
-        const copy = append(top, 'div');
-        append(copy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
-        append(copy, 'h3', '', recordProposition(main));
-        const intentNote = intentReviewNote(main);
-        if (intentNote) append(copy, 'p', 'reader-intent-note', intentNote);
-        append(top, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
+    function renderBranch(host, group, isContext = false) {
+      const main = group.main;
+      const adjudication = readerBranchAdjudication(main);
+      if (!isContext) statusKeys.set(adjudication.key, adjudication.label);
+      const branchNode = append(host, 'section', 'reader-claim-branch finding-' + adjudication.key);
+      branchNode.dataset.readerFinding = adjudication.key;
+      const anchor = readerBranchAnchor(main);
+      const claimKey = readerClaimKey(main);
+      if (anchor) branchNode.id = anchor;
+      if (claimKey) deepLinkTargets.set(claimKey, branchNode);
 
-        const related = groupEntries.filter(([key]) => key !== groupKey).flatMap(([, rows]) => rows.filter(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION').slice(0, 1));
-        if (related.length) {
-          const details = append(card, 'details', 'reader-related-claims');
-          append(details, 'summary', '', `Related claims (${related.length})`);
-          const list = append(details, 'ul', 'reader-claim-list');
-          related.forEach(record => {
-            const item = append(list, 'li');
-            append(item, 'span', '', recordProposition(record));
-            append(item, 'small', '', ` — ${publicAdjudication(record).label}`);
-          });
-        }
+      const head = append(branchNode, 'div', 'reader-claim-branch-head');
+      const copy = append(head, 'div');
+      append(copy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
+      append(copy, 'h4', '', recordProposition(main));
+      append(head, 'strong', 'reader-claim-status ' + adjudication.key, adjudication.label);
+      const intentNote = intentReviewNote(main);
+      if (intentNote) append(branchNode, 'p', 'reader-intent-note', intentNote);
+      if (main.current_relation_type === 'CORRECTION') append(branchNode, 'p', 'reader-current-correction', 'Current evidence correction applied to this branch.');
 
-        const repeats = groupRecords.filter(record => record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type)));
-        if (repeats.length) {
-          const details = append(card, 'details', 'reader-repeated-by');
-          append(details, 'summary', '', `Repeated by (${repeats.length})`);
-          const list = append(details, 'ul', 'reader-claim-list');
-          repeats.forEach(record => append(list, 'li', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · ')));
-          addEvidence(details, context, repeats, 'Sources for repeats');
-        }
+      if (group.repeats.length) {
+        const repeated = append(branchNode, 'details', 'reader-repeated-by');
+        append(repeated, 'summary', '', 'Repeated by (' + group.repeats.length + ')');
+        const list = append(repeated, 'ul', 'reader-claim-list');
+        group.repeats.forEach(record => append(list, 'li', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · ')));
+        addEvidence(repeated, context, group.repeats, 'Sources for repeats');
+      }
 
-        const why = append(card, 'details', 'reader-how-we-know');
-        append(why, 'summary', '', `How we know it is ${adjudication.label.toLowerCase()}`);
-        const explanation = append(why, 'ul', 'reader-explanation-list');
-        howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
-        addEvidence(why, context, [main], 'Evidence sources');
-        cards.push(card);
-      });
+      const why = append(branchNode, 'details', 'reader-how-we-know');
+      append(why, 'summary', '', 'How we know: ' + adjudication.label);
+      const explanation = append(why, 'ul', 'reader-explanation-list');
+      howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
+      addEvidence(why, context, group.records, 'Sources for this branch');
+
+      if (claimKey) {
+        const link = append(branchNode, 'a', 'reader-branch-permalink', 'Link to this claim');
+        link.href = '?claim=' + encodeURIComponent(claimKey) + base.routeHref('evidence.information');
+      }
+      return { node: branchNode, adjudication };
+    }
+
+    function renderNarrativeCard(card, host, isContext = false) {
+      const groups = groupNarrativeBranches(card);
+      if (!groups.length) return null;
+      const node = append(host, 'article', 'reader-ledger-card' + (isContext ? ' reader-ledger-control-card' : ''));
+      const top = append(node, 'div', 'reader-ledger-card-head');
+      const copy = append(top, 'div');
+      append(copy, 'p', 'card-kicker', isContext ? 'Comparison / acknowledgment timing' : 'Narrative');
+      append(copy, 'h3', '', narrativeTitle(card, groups));
+      append(copy, 'p', 'reader-narrative-summary', narrativeSummary(groups));
+      if (card.narrative_family && card.narrative_family.family_type === 'CROSS_EVENT_RHETORICAL_NARRATIVE_FAMILY') {
+        append(node, 'p', 'reader-narrative-family', 'Related false-flag rhetoric appears in other incidents. These are separate events; the family link does not establish a shared cause, event, or verdict.');
+      }
+      const timeline = append(node, 'div', 'reader-claim-timeline');
+      const branches = groups.map(group => renderBranch(timeline, group, isContext));
+      node.dataset.readerSearch = (narrativeTitle(card, groups) + ' ' + groups.map(group => recordProposition(group.main) + ' ' + cleanPublicText(group.main.actor) + ' ' + readerBranchAdjudication(group.main).label).join(' ')).toLowerCase();
+      return { node, branches, groups };
+    }
+
+    accusationCards.forEach(card => {
+      const rendered = renderNarrativeCard(card, section, false);
+      if (rendered) renderedCards.push(rendered);
     });
 
     [...statusKeys.entries()].sort((a, b) => a[1].localeCompare(b[1])).forEach(([key, label]) => {
@@ -493,20 +602,56 @@
     resultCount.setAttribute('aria-live', 'polite');
     const draw = () => {
       const query = search.value.trim().toLowerCase();
-      let visible = 0;
-      cards.forEach(card => {
-        const hidden = Boolean((query && !card.dataset.readerSearch.includes(query)) || (status.value && card.dataset.readerFinding !== status.value));
-        card.hidden = hidden;
-        if (!hidden) visible += 1;
+      let visibleCards = 0;
+      let visibleBranches = 0;
+      renderedCards.forEach(rendered => {
+        const queryMiss = Boolean(query && !rendered.node.dataset.readerSearch.includes(query));
+        let matchingBranches = 0;
+        rendered.branches.forEach(branch => {
+          const statusMiss = Boolean(status.value && branch.node.dataset.readerFinding !== status.value);
+          branch.node.hidden = queryMiss || statusMiss;
+          if (!branch.node.hidden) matchingBranches += 1;
+        });
+        rendered.node.hidden = queryMiss || (Boolean(status.value) && matchingBranches === 0);
+        if (!rendered.node.hidden) {
+          visibleCards += 1;
+          visibleBranches += matchingBranches;
+        }
       });
-      resultCount.textContent = `${visible} of ${cards.length} claims shown`;
+      resultCount.textContent = visibleCards + ' of ' + renderedCards.length + ' narratives shown · ' + visibleBranches + ' branch findings';
     };
     search.addEventListener('input', draw); status.addEventListener('change', draw); draw();
+
+    if (contextCards.length) {
+      const comparison = append(article, 'details', 'reader-ledger-context');
+      append(comparison, 'summary', '', 'Comparison cases: later acknowledgments (' + contextCards.length + ')');
+      append(comparison, 'p', 'section-note', 'These are admission-timing controls, not accusations of lying. They are kept separate so their presence cannot inflate Lie Ledger accusation totals.');
+      const host = append(comparison, 'div', 'reader-ledger-context-grid');
+      contextCards.forEach(card => renderNarrativeCard(card, host, true));
+    }
 
     const methods = append(article, 'p', 'reader-method-link');
     methods.append(documentObject.createTextNode('Want the methodology behind these findings? '));
     const link = append(methods, 'a', '', 'How we check the evidence');
     link.href = base.routeHref('evidence.method');
+
+    const requestedClaim = (() => {
+      const searchValue = context && context.windowObject && context.windowObject.location && context.windowObject.location.search;
+      if (!searchValue || typeof URLSearchParams === 'undefined') return '';
+      return new URLSearchParams(searchValue).get('claim') || '';
+    })();
+    const target = requestedClaim && deepLinkTargets.get(requestedClaim);
+    if (target) {
+      target.setAttribute('tabindex', '-1');
+      target.dataset.readerDeepLinkTarget = 'true';
+      const win = context && context.windowObject;
+      if (win && typeof win.setTimeout === 'function') {
+        win.setTimeout(() => {
+          target.focus?.();
+          target.scrollIntoView?.({ block: 'start' });
+        }, 0);
+      }
+    }
   }
 
   function dedupeWeapons(article) {

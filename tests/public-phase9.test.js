@@ -67,6 +67,86 @@ assert.equal(controlChains.length, 14, 'Lie Ledger control-chain denominator dri
 assert.equal(accusationChains.length + controlChains.length, ledger.records.length,
   'every current Lie Ledger chain must be explicitly classified as accusation or control');
 
+
+assert(Array.isArray(ledger.reader_cards) && ledger.reader_cards.length > 0, 'reader narrative-card projection is missing');
+assert(Array.isArray(ledger.reader_families), 'reader narrative-family projection is missing');
+const readerAccusations = ledger.reader_cards.filter(card => card.lie_ledger_accusation !== false);
+const readerContexts = ledger.reader_cards.filter(card => card.lie_ledger_accusation === false);
+assert.equal(readerAccusations.length, model.counts.gate3_lie_ledger_reader_narratives);
+assert.equal(readerContexts.length, model.counts.gate3_lie_ledger_reader_contexts);
+assert.equal(ledger.reader_metrics.narrative_cards, readerAccusations.length);
+assert.equal(ledger.reader_metrics.context_cards, readerContexts.length);
+
+const readerCard = chainId => ledger.reader_cards.find(card => card.chain_id === chainId);
+const readerRecord = (chainId, predicate) => (readerCard(chainId)?.proposition_records || []).find(predicate);
+const f15eCard = readerCard('CH-F15E-CSAR-URANIUM');
+assert(f15eCard && f15eCard.lie_ledger_accusation, 'F-15E / CSAR narrative is not one accusation card');
+assert((f15eCard.proposition_records || []).some(record => record.truth_adjudication === 'SUPPORTED'),
+  'F-15E narrative lost its independently supported branch');
+assert((f15eCard.proposition_records || []).some(record => record.truth_adjudication === 'FALSE'),
+  'F-15E narrative lost its independently false branch');
+
+const aggregateCard = readerCard('CH-AIRCRAFT-KILL-AGGREGATES');
+assert(aggregateCard, 'aircraft aggregate narrative card is missing');
+for (const originalId of ['IR-CLM-0601', 'IR-CLM-0602', 'IR-CLM-0603', 'IR-CLM-0605']) {
+  assert((aggregateCard.proposition_records || []).some(record => record.original_claim_id === originalId || record.claim_id === originalId),
+    'aircraft aggregate narrative lost ' + originalId);
+}
+const mq52 = readerRecord('CH-AIRCRAFT-KILL-AGGREGATES', record => record.claim_id === 'CLM-IRGC-QESHM-MQ9-52-20260916');
+const mq53 = readerRecord('CH-AIRCRAFT-KILL-AGGREGATES', record => record.claim_id === 'CLM-IRGC-QESHM-MQ9-53-20260917');
+assert(mq52 && mq53, 'current Qeshm cumulative MQ-9 branches are missing');
+for (const pair of [['52nd', mq52], ['53rd', mq53]]) {
+  const label = pair[0], record = pair[1];
+  assert.equal(record.truth_adjudication, 'UNRESOLVED', label + ' MQ-9 truth enum was improperly upgraded');
+  assert.equal(record.evidence_disposition, 'UNSUBSTANTIATED', label + ' MQ-9 exact-count burden finding is missing');
+  assert.match(record.public_combined_assessment || '', /UNSUBSTANTIATED EXACT COUNT/);
+  assert.equal(record.public_knowledge_judgment, 'NOT_ASSESSABLE', label + ' MQ-9 exact count was improperly given a lie-knowledge finding');
+  assert.match(record.public_combined_assessment || '', /NO LIE FINDING/, label + ' MQ-9 public disposition lost the accepted no-Lie boundary');
+}
+assert.match(mq52.reader_reason || '', /at least 45/i, '52nd MQ-9 reader explanation lost the accepted independent lower bound');
+
+const qeshm16 = readerRecord('CH-AIRCRAFT-KILL-AGGREGATES', record => record.claim_id === 'CLM-IRGC-QESHM-MQ9-LOSS-20260916');
+const qeshm17 = readerRecord('CH-AIRCRAFT-KILL-AGGREGATES', record => record.claim_id === 'CLM-IRGC-QESHM-MQ9-LOSS-20260917');
+for (const pair of [['Sep. 16', qeshm16], ['Sep. 17', qeshm17]]) {
+  const label = pair[0], record = pair[1];
+  assert(record, label + ' individual Qeshm loss is missing');
+  assert.equal(record.truth_adjudication, 'UNRESOLVED');
+  assert.match(record.public_combined_assessment || '', /UNVERIFIED/i, label + ' individual loss did not remain unverified');
+}
+
+const aircraft210 = readerRecord('CH-AIRCRAFT-KILL-AGGREGATES', record => record.claim_instance_id === 'CI-IR-CLM-0605-P01');
+assert(aircraft210, '210-aircraft metric branch is missing');
+assert.equal(aircraft210.truth_adjudication, 'MISLEADING');
+assert.match(aircraft210.reader_reason || '', /down 210|target around 210/i);
+
+const turkeyCausal = readerRecord('CH-TURKEY-MISSILE-DENIAL', record => record.claim_instance_id === 'CI-IR-CLM-0204-P01');
+const turkeyEvolution = readerRecord('CH-TURKEY-MISSILE-DENIAL', record => record.claim_instance_id === 'CI-IR-CLM-0204-P02');
+assert(turkeyCausal && turkeyEvolution, 'Turkey false-flag propositions are not independently projected');
+assert.equal(turkeyCausal.truth_adjudication, 'UNRESOLVED');
+assert.match(turkeyCausal.public_combined_assessment || turkeyCausal.combined_assessment || '', /UNSUBSTANTIATED/i);
+assert.equal(turkeyEvolution.truth_adjudication, 'SUPPORTED');
+assert.match(turkeyEvolution.public_combined_assessment || '', /NARRATIVE SUBSTITUTION/i);
+
+const regionalFamily = ledger.reader_families.find(family => family.narrative_family_id === 'NF-FALSE-FLAG-REGIONAL');
+assert(regionalFamily, 'regional false-flag narrative family is missing');
+assert.equal(readerCard('CH-FALSE-FLAG-REGIONAL'), undefined, 'legacy regional false-flag bucket still renders as one continuous event card');
+assert.equal(regionalFamily.member_chain_ids.length, 3);
+for (const chainId of regionalFamily.member_chain_ids) {
+  const member = readerCard(chainId);
+  assert(member && member.narrative_family?.narrative_family_id === 'NF-FALSE-FLAG-REGIONAL',
+    'false-flag family member is not preserved as a separate incident card: ' + chainId);
+}
+
+for (const chainId of ['CH-DENA-ADMISSION', 'CH-TANGSIRI-ADMISSION']) {
+  const control = readerCard(chainId);
+  assert(control && control.lie_ledger_accusation === false, chainId + ' is not isolated as a non-lie control');
+}
+const f15sa = readerCard('CH-RSAF-F15SA-MARIB-20260916');
+assert(f15sa, 'Saudi F-15SA current causation narrative is missing');
+assert((f15sa.proposition_records || []).some(record => /F-15SA/i.test(record.claim || record.proposition || '')));
+assert((f15sa.proposition_records || []).some(record => /Saudi/i.test(record.claim || '')),
+  'F-15SA reader data lost the Royal Saudi operator distinction');
+
 const propositions = ledger.records.flatMap(chain => chain.proposition_records || []);
 assert.equal(propositions.length, model.counts.gate3_lie_ledger_records);
 assert.equal(ledger.metrics.unique_propositions, model.counts.gate3_lie_ledger_unique_propositions);
