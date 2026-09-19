@@ -402,25 +402,46 @@ def _apply_chain_overrides(
                 break
 
     for chain in chains:
+        records = chain.get("proposition_records") or []
         chain["claim_nodes"] = [
             record.get("claim_instance_id")
-            for record in chain.get("proposition_records") or []
+            for record in records
             if record.get("claim_instance_id")
         ]
         chain["participants"] = sorted({
             str(record.get("actor"))
-            for record in chain.get("proposition_records") or []
+            for record in records
             if record.get("actor")
         })
-        chain["open_evidence_gaps"] = [
+        chain.setdefault(
+            "event_title",
+            chain.get("public_title") or chain.get("title") or chain.get("chain_id"),
+        )
+        statement_dates = sorted({
+            str((record.get("statement_time") or {}).get("date") or record.get("event_time") or "")
+            for record in records
+            if (record.get("statement_time") or {}).get("date") or record.get("event_time")
+        })
+        if statement_dates:
+            chain.setdefault("event_time", {
+                "start": statement_dates[0],
+                "end": statement_dates[-1],
+            })
+
+        derived_gaps = [
             {
                 "claim_instance_id": record.get("claim_instance_id"),
-                "falsifier": copy.deepcopy(record.get("falsifier") or []),
+                "needed_evidence": copy.deepcopy(record.get("falsifier") or []),
             }
-            for record in chain.get("proposition_records") or []
+            for record in records
             if record.get("truth_adjudication") == "UNRESOLVED"
             or record.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION"
         ]
+        if chain.get("open_evidence_gaps"):
+            chain["derived_open_evidence_gaps"] = derived_gaps
+        else:
+            chain["open_evidence_gaps"] = derived_gaps
+
         chain["logic_graph"] = _build_chain_logic_graph(chain)
 
     return chains
