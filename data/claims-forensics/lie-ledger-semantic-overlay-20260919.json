@@ -1,7 +1,7 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-1",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-2",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "effective_date": "2026-09-19",
@@ -56,6 +56,14 @@
         "MQ9_52_CUMULATIVE",
         "QESHM_SEP17_INDIVIDUAL",
         "MQ9_53_CUMULATIVE"
+      ],
+      "plain_english_summary": "Iran has reported a changing series of aircraft/UAV totals, but the denominator and metric do not stay constant: mixed drones, aircraft hit, aircraft targeted, and later type-specific MQ-9 ordinals are different propositions. Atlas therefore keeps each count and metric branch separate instead of treating the series as one cumulative confirmed-kill ledger.",
+      "how_we_know": [
+        "The public series moves through 82, more than 130, 170, more than 170 aircraft hit including 16 fighters, and a 210 figure whose headline/body use different verbs.",
+        "Those figures are not interchangeable: drones downed, aircraft hit, aircraft targeted, and type-specific MQ-9 losses use different denominators and effects.",
+        "The Apr. 28 '16 fighters hit' proposition is distinct from the analytic question of whether that metric can be compared directly with earlier drone-down totals; the old model accidentally duplicated the same proposition ID for both.",
+        "The May 26 article itself provides the contradiction: the headline says about 210 were downed while the body reports language about being able to target around 210. The publication act is observable; the underlying '210 downed' assertion is the factual proposition.",
+        "Later 52nd/53rd MQ-9 ordinals require a type-specific reconciled ledger. Existing evidence supports substantial real MQ-9 attrition but does not establish those exact ordinals as either true or false."
       ]
     },
     "CH-F35-MAR19": {
@@ -74,6 +82,12 @@
         "DENIAL",
         "CONTRARY_ATTRIBUTION",
         "FALSE_FLAG_SUBSTITUTE_EXPLANATION"
+      ],
+      "plain_english_summary": "Iran repeatedly denied that the missiles came from Iran. After Turkish/NATO attribution accumulated, the public explanation changed to a false-flag theory. Atlas treats the earlier launch denials, the later causal theory, and the observable narrative substitution as separate propositions.",
+      "how_we_know": [
+        "The first three categorical no-Iran-launch statements conflict with later Turkish/NATO attribution.",
+        "The later false-flag causal mechanism remains unsubstantiated on the current record.",
+        "What is independently observable is the chronology: the false-flag explanation appeared after the earlier categorical denials and after contrary attribution accumulated."
       ]
     },
     "CH-QATAR-PILOTS": {
@@ -84,6 +98,18 @@
         "SECRET_CUSTODY",
         "QATAR_COUNTERCHRONOLOGY_ACCESS",
         "OBSTRUCTION_EXPLANATION"
+      ],
+      "public_finding": {
+        "label": "False custody claim; likely lie on obstruction branch",
+        "key": "mixed-false-likely-lie"
+      },
+      "plain_english_summary": "Iranian aircraft and aircrew really were lost or went missing in the Qatar fighting. That factual baseline was incorrectly marked false in the old Ledger. The later claim that three missing pilots were alive in secret Qatari custody is a separate false proposition, and the subsequent claim that Qatar had simply kept an Iranian fact-finding team waiting for months is independently adjudicated as a likely lie.",
+      "how_we_know": [
+        "The underlying Iranian aircraft/aircrew losses and missing-person problem are independently established; they are factual context, not the disputed custody claim.",
+        "Qatar denied secretly holding the pilots, reported recovery of one pilot's remains, and described an April invitation for Iran to review the search-and-rescue record.",
+        "The secret-custody allegation is therefore false on the completed record, while claimant knowledge remains less certain because Iran did not control Qatari detention systems.",
+        "The later obstruction claim is different. Qatar says it formally invited an Iranian team in April, Iran did not respond, and senior Iranian-Qatari diplomatic contact was already occurring. That makes the broad 'kept waiting for months' story materially harder to explain as simple lack of access.",
+        "Atlas does not let the false custody allegation contaminate the real aircraft-loss baseline, and does not let the stronger knowledge finding on the obstruction branch propagate backward to every earlier statement."
       ]
     },
     "CH-INDIAN-OCEAN-DESTROYER": {
@@ -103,6 +129,14 @@
         "PHYSICAL_DAMAGE",
         "EQUIPMENT_BDA",
         "FACILITY_WIDE_OPERATIONAL_EFFECT"
+      ],
+      "plain_english_summary": "Al Udeid suffered real, serious damage. The forensic question is the level of effect: radar/site damage and CAOC inoperability are supported, permanent destruction of the radar remains unresolved, and shorthand that the entire base was destroyed or unusable overstates the evidence. The old Ledger also carried a second shorthand Al Udeid chain for the same physical event; that duplicate is folded into this event chain as context.",
+      "how_we_know": [
+        "Independent satellite imagery and later reporting confirm material strike damage at Al Udeid.",
+        "The AN/FPS-132 site was physically hit and materially degraded; available public evidence does not settle permanent repairability.",
+        "Separate reporting supports that the Combined Air Operations Center was rendered inoperable.",
+        "Those subfacility effects do not establish that the entire air base ceased operating.",
+        "The separate social-media shorthand record concerns the same physical event and therefore belongs inside this chain, not as another top-level event card."
       ]
     },
     "CH-KUWAIT-F15-FRIENDLY-FIRE": {
@@ -122,6 +156,73 @@
     "CH-TANGSIRI-ADMISSION": {
       "classification": "ADMISSION_LATENCY_CONTROL",
       "public_title": "Tangsiri announcement/confirmation-latency control case",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CH-BUSHEHR-AIRCRAFT": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Bushehr/Jam U.S. aircraft-destruction claim",
+      "plain_english_summary": "Iranian reporting said a U.S. aircraft had been destroyed near Bushehr/Jam. The physical-loss proposition is contradicted by the available record and should be counted as the accusation it is, rather than hidden as non-accusation context. Current evidence does not establish claimant knowledge strongly enough for a Lie finding.",
+      "how_we_know": [
+        "CENTCOM said all U.S. aircraft were accounted for.",
+        "No independently verified wreckage, serial, or corresponding U.S. aircraft loss was identified in the reviewed record.",
+        "That is sufficient for the current FALSE finding, but the present evidence package does not establish what the original local/state-media source knew when it reported the claim."
+      ]
+    },
+    "CH-ARAMCO-FALSE-FLAG-20260302": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Aramco false-flag attribution claim",
+      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL"
+    },
+    "CH-ERBIL-KUWAIT-FALSE-FLAG-20260315": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Erbil/Kuwait false-flag attribution claim",
+      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL"
+    },
+    "CH-SHAHED-CLONE-FALSE-FLAG-20260315": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Shahed-clone false-flag mechanism claim",
+      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL"
+    },
+    "CHAIN-CL-HORMUZ-CONTROL": {
+      "classification": "STRATEGIC_NARRATIVE_CONTROL",
+      "public_title": "Hormuz competing-control framing",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CHAIN-LL-TRUMP-KHARG-AI-20260830": {
+      "classification": "RHETORIC_MEDIA_CONTROL",
+      "public_title": "Synthetic Kharg destruction image/threat projection",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CHAIN-LL-US-NOT-WAR-SMALL-POTATOES-20260904": {
+      "classification": "RHETORIC_POLICY_CONTROL",
+      "public_title": "U.S. non-war/minimization framing",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CHAIN-LL-IRAN-PREEMPTIVE-DOCTRINE-20260904": {
+      "classification": "DECLARATORY_POLICY_CONTROL",
+      "public_title": "Iran preemptive-doctrine declaration",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CHAIN-LL-PAKNEJAD-KHARG-CONTINUED-OPS-20260906": {
+      "classification": "SUPPORTED_CONTEXT_CONTROL",
+      "public_title": "Kharg continued-operations factual context",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CHAIN-LL-IRAN-QALIBAF-ESCALATION-DOCTRINE-20260906": {
+      "classification": "DECLARATORY_POLICY_CONTROL",
+      "public_title": "Iran escalation-doctrine declaration",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CHAIN-LL-IRAN-DIVE-LD-CAPTURE-20260908": {
+      "classification": "SUPPORTED_CONTEXT_CONTROL",
+      "public_title": "Dive-LD possession factual context",
       "lie_ledger_accusation": false,
       "public_include_in_accusation_count": false
     }
@@ -321,6 +422,225 @@
         "relation_type": "NARRATIVE_SUBSTITUTION"
       },
       "rationale": "The claimed victory over a nuclear raid is the outcome branch of the same substitute narrative."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0101-P02",
+      "set": {
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true,
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "FALSE_CAUSAL_ATTRIBUTION_FRIENDLY_FIRE"
+      },
+      "rationale": "The real aircraft loss is context; Iranian causal attribution is the falsifiable accusation and must participate in the unique-proposition denominator."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0102-P02",
+      "set": {
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true,
+        "relation_type": "AMPLIFICATION",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "FALSE_CAUSAL_ATTRIBUTION_ALL_THREE"
+      },
+      "rationale": "The all-three causation assertion is quantitatively broader than the first one-aircraft attribution and remains a distinct false proposition."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0204-P02",
+      "set": {
+        "proposition": "The false-flag explanation was introduced after earlier categorical no-Iran-launch denials and after repeated Turkish/NATO attribution.",
+        "source_proposition": "The false-flag explanation replaced the earlier categorical no-Iran-launch explanation after contrary attribution accumulated.",
+        "proposition_id": "PROP-TURKEY-NARRATIVE-SUBSTITUTION-20260331",
+        "proposition_axis": "NARRATIVE_EVOLUTION",
+        "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+        "truth_adjudication": "SUPPORTED",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "SUPPORTED NARRATIVE SUBSTITUTION — FALSE-FLAG CAUSAL THEORY REMAINS UNSUBSTANTIATED",
+        "relation_type": "NARRATIVE_SUBSTITUTION",
+        "actor_role": "SUBSTITUTER",
+        "denominator_class": "EVIDENTIARY_INFERENCE",
+        "counts_as_unique_proposition": false,
+        "truth_qualifier": "CHRONOLOGICAL_NARRATIVE_SHIFT_OBSERVABLE",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY"
+      },
+      "replace_observed_facts": [
+        "Earlier Iranian statements categorically denied Iranian launch origin.",
+        "Turkish/NATO attribution accumulated before the Mar. 31 false-flag explanation appeared.",
+        "The chronology of the explanation change is observable; the asserted false-flag causal mechanism remains a separate unsubstantiated proposition."
+      ],
+      "rationale": "The Sep. 18 re-adjudication correctly separated observable narrative substitution from the unresolved causal false-flag theory."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0604-P01",
+      "set": {
+        "proposition": "At least 16 enemy fighters were hit.",
+        "source_proposition": "At least 16 enemy fighters were hit.",
+        "proposition_id": "PROP-AIRCRAFT-16-FIGHTERS-HIT-20260428",
+        "proposition_axis": "EFFECT_COUNT",
+        "proposition_fidelity": "SOURCE_EQUIVALENT",
+        "truth_adjudication": "UNRESOLVED",
+        "knowledge_judgment": "POSSIBLE_KNOWLEDGE",
+        "combined_assessment": "UNSUBSTANTIATED EXACT HIT COUNT — POSSIBLE KNOWLEDGE",
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true,
+        "truth_qualifier": "SOURCE_WORDING_HIT_NOT_DESTROYED"
+      },
+      "replace_observed_facts": [
+        "The source says 16 fighters were hit, not destroyed or downed.",
+        "The current record does not independently reconcile 16 fighter hits."
+      ],
+      "rationale": "This row carries the source-faithful 16-fighters-hit proposition only; the old stronger destroyed/downed restatement must not be silently substituted."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0604-P02",
+      "set": {
+        "proposition": "The Apr. 28 'aircraft hit' total is directly comparable to the earlier cumulative 'drones downed' totals as the same metric.",
+        "source_proposition": "The aggregate 'aircraft hit' number is comparable to earlier 'drones downed' totals.",
+        "proposition_id": "PROP-AIRCRAFT-AGGREGATE-METRIC-COMPARABILITY-20260428",
+        "proposition_axis": "METRIC_INTEGRITY",
+        "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+        "truth_adjudication": "MISLEADING",
+        "knowledge_judgment": "POSSIBLE_KNOWLEDGE",
+        "combined_assessment": "MISLEADING — METRIC AND DENOMINATOR SHIFT",
+        "denominator_class": "EVIDENTIARY_INFERENCE",
+        "counts_as_unique_proposition": false,
+        "truth_qualifier": "DRONES_DOWNED_TO_AIRCRAFT_HIT_METRIC_SHIFT"
+      },
+      "replace_observed_facts": [
+        "Earlier totals were framed as drones downed.",
+        "The Apr. 28 statement changes both category and effect to enemy aircraft hit.",
+        "A hit total cannot be treated as the same cumulative shootdown denominator without an explicit reconciliation."
+      ],
+      "rationale": "The old migration duplicated P01's proposition text/ID and lost the distinct metric-shift inference. This restores that branch without inflating unique-proposition counts."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0605-P01",
+      "set": {
+        "proposition": "The May 26 article does not support treating 210 as a clean confirmed count of aircraft downed/lost.",
+        "source_proposition": "The same article shifts from 'down 210' in the headline to language that Iran could 'target around 210' in the body.",
+        "proposition_id": "PROP-AIRCRAFT-210-METRIC-INTEGRITY-20260526",
+        "proposition_axis": "METRIC_INTEGRITY",
+        "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+        "truth_adjudication": "MISLEADING",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "MISLEADING — SAME ARTICLE SHIFTS FROM DOWN 210 TO TARGET AROUND 210",
+        "relation_type": "CORRECTION",
+        "actor_role": "CORRECTOR",
+        "denominator_class": "EVIDENTIARY_INFERENCE",
+        "counts_as_unique_proposition": false,
+        "truth_qualifier": "SAME_PUBLICATION_METRIC_SHIFT_OBSERVABLE"
+      },
+      "replace_observed_facts": [
+        "Press TV's headline used 'down 210 enemy aircraft'.",
+        "The same article body reported language about being able to target around 210 aircraft.",
+        "Targeted, hit, damaged, destroyed, and downed are not interchangeable effects."
+      ],
+      "rationale": "This row is the source-internal metric-integrity finding, not a second unique 210-downing accusation."
+    },
+    {
+      "claim_instance_id": "CI-PROP-IR-210-DOWNED-HEADLINE",
+      "set": {
+        "proposition": "Iran had downed about 210 enemy aircraft.",
+        "source_proposition": "Iran had downed about 210 enemy aircraft.",
+        "proposition_id": "PROP-IR-210-DOWNED-ASSERTION",
+        "proposition_axis": "EFFECT_COUNT",
+        "proposition_fidelity": "SOURCE_EQUIVALENT",
+        "truth_adjudication": "FALSE",
+        "combined_assessment": "LIE — KNOWING FALSEHOOD ESTABLISHED",
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true,
+        "truth_qualifier": "HEADLINE_ASSERTION_CONTRADICTED_BY_SAME_PUBLICATION_BODY"
+      },
+      "replace_observed_facts": [
+        "The headline asserted that about 210 enemy aircraft had been downed.",
+        "The article body itself used the materially weaker formulation that Iran could target around 210 aircraft.",
+        "Because the publisher printed both formulations in the same article, institutional possession of the contradictory wording is direct."
+      ],
+      "rationale": "The publication fact 'the headline said X' is true. The adjudicated factual proposition is the content X — that Iran had actually downed about 210 enemy aircraft."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0701-P01",
+      "set": {
+        "truth_adjudication": "SUPPORTED",
+        "knowledge_judgment": "NOT_ASSESSED",
+        "combined_assessment": "SUPPORTED — IRANIAN AIRCRAFT/AIRCREW LOSS OR MISSING STATUS ESTABLISHED",
+        "denominator_class": "NON_ACCUSATION_CONTEXT",
+        "counts_as_unique_proposition": false,
+        "truth_qualifier": "PHYSICAL_LOSS_MISSING_BASELINE",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY"
+      },
+      "replace_observed_facts": [
+        "The underlying Iranian aircraft/aircrew losses and missing-person problem in the Qatar engagements are independently established.",
+        "That physical-loss baseline is separate from the later secret-custody allegation."
+      ],
+      "rationale": "The old row incorrectly inherited the FALSE custody adjudication. The aircraft/aircrew loss/missing baseline is factual context."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0702-P01",
+      "set": {
+        "relation_type": "NARRATIVE_SUBSTITUTION",
+        "actor_role": "SUBSTITUTER",
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true,
+        "truth_qualifier": "ACCESS_OBSTRUCTION_CLAIM"
+      },
+      "rationale": "The obstruction accusation is a downstream explanation for why the custody narrative could not be resolved, not merely a repetition of the custody claim."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0801-P01",
+      "set": {
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true,
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "CONTRADICTED_AIRCRAFT_LOSS_CLAIM"
+      },
+      "rationale": "A false physical aircraft-loss claim is an accusation proposition. It should not be hidden in NON_ACCUSATION_CONTEXT solely because knowledge has not yet been assessed."
+    },
+    {
+      "claim_instance_id": "CI-CL-ALUDEID",
+      "set": {
+        "chain_id": "CH-ALUDEID-BDA",
+        "narrative_family_id": "CH-ALUDEID-BDA",
+        "relation_type": "STANDALONE",
+        "denominator_class": "ATLAS_CONTEXT_EFFECT_LADDER",
+        "counts_as_unique_proposition": false,
+        "truth_qualifier": "PUBLIC_SHORTHAND_EFFECT_LADDER"
+      },
+      "rationale": "This shorthand record is not a separate physical event. It belongs inside the Al Udeid BDA chain as public-context/effect-level framing."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-1001-P01",
+      "set": {
+        "chain_id": "CH-ARAMCO-FALSE-FLAG-20260302",
+        "narrative_family_id": "NF-FALSE-FLAG-REGIONAL",
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true
+      },
+      "rationale": "Aramco is a distinct incident; shared false-flag rhetoric belongs in a narrative family, not a common event chain."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-1002-P01",
+      "set": {
+        "chain_id": "CH-ERBIL-KUWAIT-FALSE-FLAG-20260315",
+        "narrative_family_id": "NF-FALSE-FLAG-REGIONAL",
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true
+      },
+      "rationale": "The Erbil/Kuwait attribution claim is a distinct incident grouping under the broader regional false-flag narrative family."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-1003-P01",
+      "set": {
+        "chain_id": "CH-SHAHED-CLONE-FALSE-FLAG-20260315",
+        "narrative_family_id": "NF-FALSE-FLAG-REGIONAL",
+        "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+        "counts_as_unique_proposition": true
+      },
+      "rationale": "The alleged U.S.-made Shahed-type clone is a separate mechanism proposition under the false-flag narrative family, not evidence of one continuous physical event."
     }
   ]
 }
