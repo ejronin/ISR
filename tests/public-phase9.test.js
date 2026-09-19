@@ -44,6 +44,12 @@ assert.equal(ledger.primary_object, 'NARRATIVE_PROPOSITION_CHAIN');
 assert.equal(ledger.governance_version, model.release.lie_ledger_governance_version);
 assert.equal(ledger.contract_version, model.release.lie_ledger_contract_version);
 assert.equal(ledger.contract_path, model.release.lie_ledger_contract_path);
+assert.match(model.release.lie_ledger_claims_forensics_overlay_version || '', /^ATLAS-CLAIMS-FORENSICS-/,
+  'public release does not pin Claims Forensics semantic overlay');
+assert.match(model.release.lie_ledger_claims_forensics_full_sweep_version || '', /^ATLAS-CLAIMS-FORENSICS-SWEEP-/,
+  'public release does not pin full Claims Forensics sweep');
+assert.equal(model.release.lie_ledger_claims_forensics_contract_path, 'docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md');
+assert.equal(model.integrity.lie_ledger_claims_forensics_release_pinned, true);
 assert(!Object.hasOwn(ledger, 'authority'), 'public Lie Ledger must not expose persona authority');
 assert.equal(ledger.blocked_assessment_policy, 'WITHHOLD_UNQUALIFIED_KNOWLEDGE_NOT_FACTUAL_STATUS');
 assert.equal(ledger.records.length, model.counts.gate3_lie_ledger_chains);
