@@ -233,7 +233,7 @@
         "actor_role": "CORRECTOR",
         "truth_adjudication": "SUPPORTED",
         "knowledge_judgment": "NOT_ASSESSED",
-        "combined_assessment": "SUPPORTED CORRECTION — CAPTURE/DENTENTION DENIED",
+        "combined_assessment": "SUPPORTED CORRECTION — CAPTURE/DETENTION DENIED",
         "denominator_class": "CORRECTION_RETRACTION",
         "adjudication_status": "EVIDENCE_ADJUDICATED",
         "publication_status": "PUBLIC_READY",
@@ -266,8 +266,8 @@
       "claim_instance_id": "CI-IR-CLM-0007-P03",
       "set": {
         "truth_adjudication": "FALSE",
-        "knowledge_judgment": "LIKELY_KNEW_FALSE",
-        "combined_assessment": "LIKELY LIE — PERSONNEL-RECOVERY MISSION DID NOT FAIL",
+        "knowledge_judgment": "NOT_ASSESSED",
+        "combined_assessment": "FALSE — PERSONNEL-RECOVERY MISSION DID NOT FAIL",
         "adjudication_status": "EVIDENCE_ADJUDICATED",
         "publication_status": "PUBLIC_READY",
         "truth_qualifier": "BOTH_AIRCREW_RECOVERED"
@@ -275,14 +275,14 @@
       "replace_observed_facts": [
         "Both F-15E crew members were recovered. By the April 5 statement, the Iranian military was directly involved in the engagement and had superior access to local battle-damage and search information."
       ],
-      "rationale": "The mission-outcome claim is false, and senior operational access makes continued presentation of complete rescue failure more likely than not to have been knowing."
+      "rationale": "The mission-outcome proposition is resolved false because both crew were recovered. This overlay does not manufacture a separate knowledge finding where the historical evidence components were not built to support one."
     },
     {
       "claim_instance_id": "CI-IR-CLM-0008-P02",
       "set": {
         "truth_adjudication": "FALSE",
-        "knowledge_judgment": "LIKELY_KNEW_FALSE",
-        "combined_assessment": "LIKELY LIE — IRAN DID NOT DESTROY ALL CLAIMED RESCUE AIRCRAFT",
+        "knowledge_judgment": "NOT_ASSESSED",
+        "combined_assessment": "FALSE — IRAN DID NOT DESTROY ALL CLAIMED RESCUE AIRCRAFT",
         "adjudication_status": "EVIDENCE_ADJUDICATED",
         "publication_status": "PUBLIC_READY",
         "truth_qualifier": "US_DENIAL_DESTRUCTION_MISATTRIBUTED"
@@ -290,7 +290,7 @@
       "replace_observed_facts": [
         "Independent reconstruction confirms Iranian fire hit rescue helicopters, but major disabled rescue aircraft were also destroyed by U.S. personnel to deny capture; claiming all major wreckage as Iranian kills overstates Iranian causal responsibility."
       ],
-      "rationale": "The prior row correctly found the proposition false but left knowledge unassessed despite direct military access to the engagement and wreckage environment."
+      "rationale": "The all-losses causal proposition is resolved false. Existing strong-knowledge adjudication remains attached to the better-supported originating causal-attribution branch rather than being mechanically propagated here."
     },
     {
       "claim_instance_id": "CI-IR-CLM-0009-P02",
