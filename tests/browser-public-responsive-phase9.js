@@ -171,7 +171,7 @@ function assertRouteView(view, route, width) {
           }
           const evidence = main.querySelector('.evidence-drawer');
           if (evidence) { evidence.open = true; result.evidence = evidence.open; }
-          const ledger = main.querySelector('[data-reader-finding] .reader-how-we-know');
+          const ledger = main.querySelector('.reader-ledger-chain-card .reader-how-we-know');
           if (ledger) { ledger.open = true; result.ledger = ledger.open; }
           const imagery = main.querySelector('[data-imagery-summary]');
           if (imagery) { imagery.open = true; result.imagery = imagery.open; }
