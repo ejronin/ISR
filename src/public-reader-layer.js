@@ -483,8 +483,7 @@
     if (typeof gap === 'string') return cleanPublicText(gap);
     if (!gap || typeof gap !== 'object') return '';
     const needed = asArray(gap.needed_evidence || gap.falsifier).map(cleanPublicText).filter(Boolean);
-    const prefix = cleanPublicText(gap.claim_instance_id ? `For ${gap.claim_instance_id}: ` : '');
-    return needed.length ? `${prefix}${needed.join(' ')}` : '';
+    return needed.length ? needed.join(' ') : '';
   }
 
   function rebuildLieLedger(article, context) {
