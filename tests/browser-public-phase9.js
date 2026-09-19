@@ -20,7 +20,7 @@ const records = key => {
 };
 const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
-const expectedReaderChains = lieLedgerModel.records.length;
+const expectedReaderChains = lieLedgerModel.records.filter(chain => chain.public_include_in_accusation_count !== false).length;
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
