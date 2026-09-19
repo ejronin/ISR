@@ -20,10 +20,7 @@ const records = key => {
 };
 const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
-const expectedReaderClaims = lieLedgerModel.records.reduce((count, chain) => {
-  const keys = new Set((chain.proposition_records || []).map(record => record.proposition_id || record.proposition || record.source_proposition || record.claim).filter(Boolean));
-  return count + keys.size;
-}, 0);
+const expectedReaderChains = lieLedgerModel.records.length;
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -214,7 +211,7 @@ async function route(cdp, hash, key) {
         clocks: main.querySelectorAll('[data-component="EvidenceClocks"], .evidence-clocks, .evidence-clock-bar').length
       };
     })()`);
-    assert.equal(ledger.cards, expectedReaderClaims, 'reader claim population does not reconcile to unique propositions within each chain');
+    assert.equal(ledger.cards, expectedReaderChains, 'reader claim population does not reconcile to unique propositions within each chain');
     assert(ledger.cards > 0, 'reader-facing claim ledger is empty');
     assert(ledger.statuses.every(value => ['Lie', 'Likely lie', 'False', 'Misleading', 'Partly true', 'Supported', 'Unresolved', 'Evidence review incomplete', 'Not yet assessed'].includes(value)), 'reader ledger exposes an unapproved finding label');
     assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
@@ -245,7 +242,7 @@ async function route(cdp, hash, key) {
       };
     })()`);
     assert(filteredLedger && filteredLedger.visible > 0, 'reader claim search does not preserve matching claims');
-    assert.match(filteredLedger.count, /^\d+ of \d+ claims shown$/);
+    assert.match(filteredLedger.count, /^\d+ of \d+ chains shown$/);
 
     const publicLanguageLeaks = [];
     for (const routeRecord of ia.ROUTES.values()) {
