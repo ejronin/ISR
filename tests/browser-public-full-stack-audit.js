@@ -180,7 +180,7 @@ function addFinding(findings, routeKey, width, category, detail) {
     await route(cdp, 'evidence.information');
     const ledger = await cdp.eval(`(() => {
       const main = document.querySelector('main');
-      const card = main.querySelector('[data-reader-finding]');
+      const card = main.querySelector('.reader-ledger-chain-card');
       const why = card?.querySelector('.reader-how-we-know');
       const summary = why?.querySelector(':scope > summary');
       if (summary) summary.focus();
