@@ -224,6 +224,20 @@ def validate(root: Path = ROOT) -> None:
 
     known_sources = source_ids(canonical)
 
+    accusation_chains = [
+        chain for chain in chains
+        if chain.get("classification") == "ACCUSATION_CHAIN"
+        and chain.get("public_include_in_accusation_count") is True
+    ]
+    control_chains = [
+        chain for chain in chains
+        if chain.get("classification") != "ACCUSATION_CHAIN"
+        and chain.get("public_include_in_accusation_count") is False
+    ]
+    require(len(accusation_chains) == 33, f"current accusation-chain denominator drifted: {len(accusation_chains)}")
+    require(len(control_chains) == 14, f"current control-chain denominator drifted: {len(control_chains)}")
+    require(len(accusation_chains) + len(control_chains) == len(chains), "current Lie Ledger chain classification is incomplete")
+
     # Every chain must be independently reconstructable from canonical claim,
     # evidence-component, and relationship references. The graph is structural:
     # it may expose only public-safe knowledge state for blocked assessments.
