@@ -2741,7 +2741,7 @@
       "chain_id": "CHAIN-CL-KWI-PATRIOT",
       "actor": "Kuwaiti authorities / independent reporting",
       "claimant_type": "HOST_NATION_AND_INDEPENDENT_REPORTING",
-      "actor_role": "CONTEXT",
+      "actor_role": "ORIGINATOR",
       "claim": "Kuwait International Airport passenger-terminal damage occurred during the June 3 Iranian missile-and-drone attack.",
       "source_proposition": "Kuwait International Airport sustained significant material damage during the June 3 attack.",
       "proposition": "Kuwait International Airport sustained significant material damage during the June 3 attack.",
