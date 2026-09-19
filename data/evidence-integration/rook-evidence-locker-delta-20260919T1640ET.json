@@ -1,0 +1,86 @@
+{
+  "schema_version": "ATLAS-ROOK-EVIDENCE-DELTA-1.0",
+  "artifact_role": "APPEND_ONLY_EVIDENCE_INTEGRATION_DELTA",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-19T12:00:00-04:00",
+    "end": "2026-09-19T16:40:00-04:00",
+    "evidence_horizon": "2026-09-19T16:40:00-04:00"
+  },
+  "prior_drawer": "data/evidence-integration/rook-evidence-locker-sweep-20260919T1200ET.json",
+  "immutability": {
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false
+  },
+  "updates": [
+    {
+      "key": "RIYADH-AIRPORT-AERIAL-THREAT-20260919",
+      "type": "EXISTING_EVENT_UPDATE",
+      "assessment": "Saudi coalition confirms destruction of a Houthi missile fired toward Riyadh and says attacks on Bish, Farasan, Taif and Yanbu were foiled. Reuters-observed airport-area fire/smoke remains causally unresolved; do not equate it with a successful Houthi impact.",
+      "sources": [
+        "Reuters Sep 19 Riyadh/Houthi report"
+      ]
+    },
+    {
+      "key": "IRAN-QATAR-US-SETTLEMENT-CONDITIONS-20260919",
+      "type": "NEW_DIPLOMATIC_EVENT",
+      "assessment": "Mohsen Rezaei says Iran sent conditions to Washington via Qatar: end war on all fronts, release frozen Iranian assets/funds, end U.S. naval blockade. Awaiting U.S. response. Treat as Iranian stated position, not agreed terms.",
+      "sources": [
+        "AP Sep 19 Mideast roundup",
+        "Al Jazeera Sep 19 Rezaei interview/report"
+      ]
+    },
+    {
+      "key": "US-HR5334-SIGNED-20260918",
+      "type": "STATUS_SUPERSESSION",
+      "assessment": "White House confirms President Trump signed H.R. 5334, Lindsey O. Graham Sanctioning Russia and Iran Act of 2026, Sep 18. Supersedes prior 'passed Congress / awaiting presidential disposition' status.",
+      "sources": [
+        "White House Sep 18 signing statement",
+        "Reuters Sep 18 signing report"
+      ]
+    },
+    {
+      "key": "TURKEY-SAUDI-DEFENCE-PACT-READINESS-20260919",
+      "type": "ALLIANCE_POSTURE_UPDATE",
+      "assessment": "Turkish FM Hakan Fidan says Turkey is ready to meet Saudi military/technical needs under Mecca Joint Defence Agreement. No Saudi request, deployment or transfer confirmed.",
+      "sources": [
+        "Reuters Sep 19 Turkey/Saudi defence pact"
+      ]
+    },
+    {
+      "key": "SOUTH-KOREA-HORMUZ-CONTRIBUTION-20260919",
+      "type": "SOURCE_DISCOVERY_ADDITION",
+      "assessment": "South Korea says it is willing to make a substantive contribution to restoring free Hormuz passage. No naval deployment or operational form established.",
+      "sources": [
+        "Reuters Sep 18/19 Seoul Hormuz report"
+      ]
+    },
+    {
+      "key": "UN-IRAN-SANCTIONS-MONITORING-MANDATE-ENDED-20260917",
+      "type": "MISSED_PRIOR_WINDOW_SOURCE_DISCOVERY",
+      "assessment": "Russia and China vetoed extension of independent UN monitoring mandate for Iran sanctions. This creates/continues a monitoring gap; it does not remove underlying sanctions.",
+      "sources": [
+        "Reuters Sep 17 UNSC Iran sanctions monitoring report"
+      ]
+    }
+  ],
+  "unchanged_high_priority": [
+    "Qeshm MQ-9 individual losses unresolved; 52nd/53rd MQ-9 aggregate not validated",
+    "RSAF F-15SA identification unchanged; shootdown mechanism/crew fate unresolved",
+    "Saudi Petroline BDA unchanged"
+  ],
+  "limitations": [
+    "No paid Kpler/Vortexa/MarineTraffic terminal",
+    "No privileged satellite/classified ISR",
+    "No newer commercial Hormuz count surfaced",
+    "Riyadh airport-area fire remains unattributed"
+  ],
+  "completion": {
+    "status": "COMPLETE_DELTA_APPEND",
+    "material_updates": 6,
+    "canonical_or_release_mutation": false
+  }
+}
