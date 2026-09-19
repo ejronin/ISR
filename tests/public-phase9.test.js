@@ -110,6 +110,77 @@ assert.equal(f15ByInstance.get('CI-IR-CLM-0009-P02')?.truth_adjudication, 'SUPPO
 assert.equal(f15ByInstance.get('CI-IR-CLM-0010-P01')?.relation_type, 'NARRATIVE_SUBSTITUTION',
   'later nuclear-mission theory must retain its narrative-substitution relationship');
 
+const qatarChain = ledger.records.find(chain => chain.chain_id === 'CH-QATAR-PILOTS');
+assert(qatarChain, 'Qatar pilot/custody chain is missing');
+assert.match(qatarChain.plain_english_summary || '', /aircraft and aircrew really were lost or went missing/i,
+  'Qatar chain must preserve the physical-loss baseline');
+const qatarByInstance = new Map((qatarChain.proposition_records || []).map(record => [record.claim_instance_id, record]));
+assert.equal(qatarByInstance.get('CI-IR-CLM-0701-P01')?.truth_adjudication, 'SUPPORTED',
+  'Qatar aircraft/aircrew-loss baseline must not inherit custody falsity');
+assert.equal(qatarByInstance.get('CI-IR-CLM-0701-P02')?.truth_adjudication, 'FALSE',
+  'secret-custody proposition must remain separately false');
+assert.equal(qatarByInstance.get('CI-IR-CLM-0702-P01')?.relation_type, 'NARRATIVE_SUBSTITUTION',
+  'Qatar obstruction allegation must be modeled as downstream narrative substitution');
+
+const aggregateChain = ledger.records.find(chain => chain.chain_id === 'CH-AIRCRAFT-KILL-AGGREGATES');
+assert(aggregateChain, 'aircraft/UAV aggregate chain is missing');
+const aggregateByInstance = new Map((aggregateChain.proposition_records || []).map(record => [record.claim_instance_id, record]));
+assert.notEqual(
+  aggregateByInstance.get('CI-IR-CLM-0604-P01')?.proposition_id,
+  aggregateByInstance.get('CI-IR-CLM-0604-P02')?.proposition_id,
+  'Apr. 28 count and metric-integrity branches must not share one proposition identity'
+);
+assert.equal(aggregateByInstance.get('CI-IR-CLM-0604-P02')?.counts_as_unique_proposition, false,
+  'metric-integrity inference must not inflate unique-proposition totals');
+assert.equal(aggregateByInstance.get('CI-IR-CLM-0605-P01')?.counts_as_unique_proposition, false,
+  'May 26 same-article metric correction must not duplicate the 210-downing proposition');
+assert.match(aggregateByInstance.get('CI-PROP-IR-210-DOWNED-HEADLINE')?.proposition || '', /downed about 210 enemy aircraft/i,
+  '210 headline node must adjudicate asserted content, not the observable fact that a headline existed');
+
+const alUdeidChains = ledger.records.filter(chain =>
+  chain.chain_id === 'CH-ALUDEID-BDA' || chain.chain_id === 'CHAIN-CL-ALUDEID'
+);
+assert.equal(alUdeidChains.length, 1, 'Al Udeid physical event must not exist as duplicate top-level chains');
+assert.equal(alUdeidChains[0].chain_id, 'CH-ALUDEID-BDA');
+assert((alUdeidChains[0].proposition_records || []).some(record => record.claim_instance_id === 'CI-CL-ALUDEID'),
+  'legacy Al Udeid shorthand must survive as context inside the BDA chain');
+
+for (const oldFalseFlag of ['CH-FALSE-FLAG-REGIONAL']) {
+  assert(!ledger.records.some(chain => chain.chain_id === oldFalseFlag),
+    'regional false-flag rhetoric must be a narrative family, not one physical event chain');
+}
+for (const incidentChain of [
+  'CH-ARAMCO-FALSE-FLAG-20260302',
+  'CH-ERBIL-KUWAIT-FALSE-FLAG-20260315',
+  'CH-SHAHED-CLONE-FALSE-FLAG-20260315'
+]) {
+  assert(ledger.records.some(chain => chain.chain_id === incidentChain),
+    `missing incident-specific false-flag chain: ${incidentChain}`);
+}
+
+const bushehr = propositions.find(record => record.claim_instance_id === 'CI-IR-CLM-0801-P01');
+assert.equal(bushehr?.denominator_class, 'UNIQUE_ATOMIC_PROPOSITION',
+  'Bushehr false aircraft-loss assertion must not be hidden as non-accusation context');
+assert.equal(bushehr?.counts_as_unique_proposition, true);
+
+for (const controlId of [
+  'CH-DENA-ADMISSION',
+  'CH-TANGSIRI-ADMISSION',
+  'CHAIN-CL-HORMUZ-CONTROL',
+  'CHAIN-LL-TRUMP-KHARG-AI-20260830',
+  'CHAIN-LL-US-NOT-WAR-SMALL-POTATOES-20260904',
+  'CHAIN-LL-IRAN-PREEMPTIVE-DOCTRINE-20260904',
+  'CHAIN-LL-PAKNEJAD-KHARG-CONTINUED-OPS-20260906',
+  'CHAIN-LL-IRAN-QALIBAF-ESCALATION-DOCTRINE-20260906',
+  'CHAIN-LL-IRAN-DIVE-LD-CAPTURE-20260908'
+]) {
+  const chain = ledger.records.find(item => item.chain_id === controlId);
+  assert(chain, `control chain missing from canonical audit model: ${controlId}`);
+  assert.equal(chain.public_include_in_accusation_count, false,
+    `control/non-accusation chain must not inflate accusation count: ${controlId}`);
+}
+
+
 for (const record of propositions) {
   const support = record.evidence_support || {};
   for (const ids of Object.values(support)) {
