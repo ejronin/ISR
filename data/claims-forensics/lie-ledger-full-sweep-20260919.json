@@ -4,7 +4,7 @@
   "sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-3",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
-  "evidence_cutoff": "2026-09-19T16:00:00-04:00",
+  "evidence_cutoff": "2026-09-18T10:27:26-04:00",
   "scope": {
     "legacy_active_chain_count": 36,
     "legacy_active_proposition_rows": 89,
