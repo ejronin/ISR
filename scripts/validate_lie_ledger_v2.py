@@ -223,6 +223,33 @@ def validate(root: Path = ROOT) -> None:
             validator.validate(record)
 
     known_sources = source_ids(canonical)
+
+    # Every chain must be independently reconstructable from canonical claim,
+    # evidence-component, and relationship references. The graph is structural:
+    # it may expose only public-safe knowledge state for blocked assessments.
+    for chain in chains:
+        graph = chain.get("logic_graph") or {}
+        require(graph.get("graph_type") == "CLAIM_EVIDENCE_ADJUDICATION", f"machine logic graph missing for chain {chain.get('chain_id')}")
+        claim_nodes = [
+            node for node in graph.get("nodes") or []
+            if node.get("type") == "ATOMIC_PROPOSITION"
+        ]
+        proposition_records = chain.get("proposition_records") or []
+        require(len(claim_nodes) == len(proposition_records), f"logic graph proposition count mismatch {chain.get('chain_id')}")
+        graph_instances = {str(node.get("claim_instance_id") or "") for node in claim_nodes}
+        record_instances = {str(row.get("claim_instance_id") or "") for row in proposition_records}
+        require(graph_instances == record_instances, f"logic graph proposition identity mismatch {chain.get('chain_id')}")
+        for node in claim_nodes:
+            record = next(row for row in proposition_records if row.get("claim_instance_id") == node.get("claim_instance_id"))
+            if record.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION":
+                require(node.get("knowledge_finding") == "WITHHELD_PENDING_EVIDENCE", f"logic graph leaks blocked knowledge finding {record.get('claim_instance_id')}")
+        graph_source_ids = {
+            str(node.get("source_id") or "")
+            for node in graph.get("nodes") or []
+            if node.get("type") == "SOURCE" and node.get("source_id")
+        }
+        require(graph_source_ids <= known_sources, f"logic graph contains unresolved source reference {chain.get('chain_id')}")
+
     for record in records:
         assert_no_active_deception_score(record)
         require("authority_status" not in record, f"active persona-status field remains in {record['claim_instance_id']}")
