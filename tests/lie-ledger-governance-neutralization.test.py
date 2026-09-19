@@ -3,8 +3,8 @@
 
 The test constructs the pre-neutral Lie Ledger directly from the historical
 migration inputs, then proves that neutral governance changes only governance
-vocabulary/provenance placement. It also verifies that the production final
-builder preserves the same substantive record.
+vocabulary/provenance placement. It also verifies that the production final builder validates that sealed baseline
+unchanged before applying a separately versioned Claims Forensics semantic overlay.
 """
 from __future__ import annotations
 
@@ -23,6 +23,7 @@ import apply_lie_ledger_evidence_completion_20260909 as evidence_completion
 import build_canonical_current_state_v2_final as final_builder
 import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_v2 as lie_ledger_v2
+import apply_claims_forensics_lie_ledger as claims_forensics
 import migrate_lie_ledger_evidence_adjudications as migration
 import neutralize_lie_ledger_governance as neutral
 
@@ -265,14 +266,51 @@ def main() -> None:
     assert governance["active_adjudication_path"] == migration.OUT
     assert governance["adjudication_version"] == migration.ADJUDICATION_VERSION
     assert production["release"]["lie_ledger_adjudication_record_sha256"] == tracked_adjudication["migration_provenance"]["neutral_record_set_sha256"]
-    assert substantive_fingerprint(production) == before_records
-    assert numeric_metrics(production.get("lie_ledger_v2_metrics") or {}) == before_metrics
-    assert ledger_counts(production) == before_counts
+
+    # The historical neutral artifact remains immutable. Production may differ
+    # only through the explicit, versioned Claims Forensics layer that executes
+    # after that artifact has passed the parity checks above.
+    overlay = json.loads((ROOT / claims_forensics.OVERLAY_PATH).read_text(encoding="utf-8"))
+    assert governance["claims_forensics_overlay_path"] == claims_forensics.OVERLAY_PATH
+    assert governance["claims_forensics_overlay_version"] == overlay["overlay_version"]
+    assert governance["semantic_authority"] == claims_forensics.EXPECTED_AUTHORITY
+    assert production["release"]["lie_ledger_claims_forensics_overlay_version"] == overlay["overlay_version"]
+    assert production["integrity"]["lie_ledger_historical_adjudication_input_preserved"] is True
+    assert production["integrity"]["lie_ledger_claims_forensics_overlay_active"] is True
+
+    production_records = substantive_fingerprint(production)
+    assert production_records != before_records, (
+        "production must expose the explicit post-migration Claims Forensics rulings"
+    )
+
+    # Semantic correction must not manufacture or delete claims/chains.
+    assert len(records(production)) == len(records(migrated))
+    assert production["counts"]["lie_ledger_v2_records"] == before_counts["lie_ledger_v2_records"]
+    assert production["counts"]["lie_ledger_v2_chains"] == before_counts["lie_ledger_v2_chains"]
+
+    by_instance = {
+        row.get("claim_instance_id"): row
+        for row in records(production)
+    }
+    assert by_instance["CI-IR-CLM-0004-P01"]["truth_adjudication"] == "SUPPORTED"
+    assert by_instance["CI-IR-CLM-0004-P02"]["truth_adjudication"] == "FALSE"
+    assert by_instance["CI-IR-CLM-0006-P01"]["relation_type"] == "CORRECTION"
+    assert "had not been captured or detained" in by_instance["CI-IR-CLM-0006-P01"]["proposition"]
+    assert by_instance["CI-IR-CLM-0007-P01"]["truth_adjudication"] == "SUPPORTED"
+    assert by_instance["CI-IR-CLM-0009-P02"]["truth_adjudication"] == "SUPPORTED"
+
+    chains = {
+        unwrap(item).get("chain_id"): unwrap(item)
+        for item in (production.get("entities") or {}).get("lie_ledger_chains_v2") or []
+    }
+    f15 = chains["CH-F15E-CSAR-URANIUM"]
+    assert f15["public_finding"]["label"] == "Lie"
+    assert len(f15.get("how_we_know") or []) >= 5
 
     print(
         "neutral Lie Ledger governance parity: PASS "
-        f"({len(before_records)} propositions; semantic_sha256={before_digest}; "
-        "adjudications/evidence/alternatives/metrics unchanged)"
+        f"({len(before_records)} sealed propositions; semantic_sha256={before_digest}; "
+        "sealed migration unchanged; versioned Claims Forensics overlay explicit)"
     )
 
 
