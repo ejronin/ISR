@@ -113,6 +113,8 @@ assert.match(readerSource, /Facility status by actor/);
 assert.match(readerSource, /Repeated or amplified by \(\$\{repeats\.length\}\)/);
 assert.match(readerSource, /How Atlas reached this finding/);
 assert.match(readerSource, /Why this branch is/);
+assert.match(readerSource, /That is why this branch is labeled False rather than Lie/);
+assert.match(readerSource, /the inference answers "why that evidence changes/);
 assert.match(readerSource, /The separate knowledge\/intent assessment remains pending additional evidence/);
 assert.match(readerSource, /const positiveDamage = !negativeDamage/);
 assert.doesNotMatch(readerCss, /technical-record-metadata[\s\S]*display\s*:\s*none/i, 'internal fields must be removed structurally, not hidden by CSS');
