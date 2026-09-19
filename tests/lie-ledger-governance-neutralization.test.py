@@ -283,10 +283,18 @@ def main() -> None:
         "production must expose the explicit post-migration Claims Forensics rulings"
     )
 
-    # Semantic correction must not manufacture or delete claims/chains.
-    assert len(records(production)) == len(records(migrated))
-    assert production["counts"]["lie_ledger_v2_records"] == before_counts["lie_ledger_v2_records"]
-    assert production["counts"]["lie_ledger_v2_chains"] == before_counts["lie_ledger_v2_chains"]
+    # The sealed historical corpus must remain intact. Post-cutoff accepted claims
+    # may be appended only through the explicit Claims Forensics intake list.
+    appended = overlay.get("append_records") or []
+    assert governance["post_cutoff_appended_record_count"] == len(appended)
+    assert production["integrity"]["lie_ledger_post_cutoff_claim_intake_active"] is bool(appended)
+    assert len(records(production)) == len(records(migrated)) + len(appended)
+    assert production["counts"]["lie_ledger_v2_records"] == before_counts["lie_ledger_v2_records"] + len(appended)
+
+    historical_instances = {row.get("claim_instance_id") for row in records(migrated)}
+    production_instances = {row.get("claim_instance_id") for row in records(production)}
+    assert historical_instances <= production_instances, "Claims Forensics intake deleted a sealed historical proposition"
+    assert {row["claim_instance_id"] for row in appended} <= production_instances
 
     by_instance = {
         row.get("claim_instance_id"): row
