@@ -50,7 +50,8 @@
         "The current record does not establish that the early hedged Tasnim capture report was knowingly false when first published.",
         "Not every rescue-equipment loss has a fully public platform-by-platform causal reconstruction.",
         "False third-party media tied to the pilot/rescue narrative is not attributed to an official Iranian origin absent authenticated provenance."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-AIRCRAFT-KILL-AGGREGATES": {
       "classification": "ACCUSATION_CHAIN",
@@ -73,7 +74,8 @@
         "The Apr. 28 '16 fighters hit' proposition is distinct from the analytic question of whether that metric can be compared directly with earlier drone-down totals; the old model accidentally duplicated the same proposition ID for both.",
         "The May 26 article itself provides the contradiction: the headline says about 210 were downed while the body reports language about being able to target around 210. The publication act is observable; the underlying '210 downed' assertion is the factual proposition.",
         "Later 52nd/53rd MQ-9 ordinals require a type-specific reconciled ledger. Existing evidence supports substantial real MQ-9 attrition but does not establish those exact ordinals as either true or false."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-F35-MAR19": {
       "classification": "ACCUSATION_CHAIN",
@@ -81,7 +83,8 @@
       "branches": [
         "REAL_COMBAT_DAMAGE",
         "DESTRUCTION_DOWNING_ESCALATION"
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-TURKEY-MISSILE-DENIAL": {
       "classification": "ACCUSATION_CHAIN",
@@ -97,7 +100,8 @@
         "The first three categorical no-Iran-launch statements conflict with later Turkish/NATO attribution.",
         "The later false-flag causal mechanism remains unsubstantiated on the current record.",
         "What is independently observable is the chronology: the false-flag explanation appeared after the earlier categorical denials and after contrary attribution accumulated."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-QATAR-PILOTS": {
       "classification": "ACCUSATION_CHAIN",
@@ -119,7 +123,8 @@
         "The secret-custody allegation is therefore false on the completed record, while claimant knowledge remains less certain because Iran did not control Qatari detention systems.",
         "The later obstruction claim is different. Qatar says it formally invited an Iranian team in April, Iran did not respond, and senior Iranian-Qatari diplomatic contact was already occurring. That makes the broad 'kept waiting for months' story materially harder to explain as simple lack of access.",
         "Atlas does not let the false custody allegation contaminate the real aircraft-loss baseline, and does not let the stronger knowledge finding on the obstruction branch propagate backward to every earlier statement."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-INDIAN-OCEAN-DESTROYER": {
       "classification": "ACCUSATION_CHAIN",
@@ -135,7 +140,8 @@
         "Remote maritime BDA can genuinely be uncertain, so absence of confirmed damage is not automatically a FALSE finding for the official claim.",
         "The circulated proof video is a different proposition. AFP traced it to RIMPAC 2022 footage of a decommissioned U.S. ship.",
         "Because official Iranian origin of that media artifact was not established, Atlas labels the artifact false without attributing a knowing fabrication to the official strike claimant."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-ALUDEID-BDA": {
       "classification": "ACCUSATION_CHAIN",
@@ -156,7 +162,8 @@
         "The separate social-media shorthand record concerns the same physical event and therefore belongs inside this chain, not as another top-level event card.",
         "AFP/Arab News found the viral radar image was AI-manipulated from a prior Google Earth image of a U.S. base in Bahrain. The image is false evidence even though real Al Udeid damage is independently established.",
         "The source identifies Tehran Times as an amplifier of the image but does not establish that the IRGC or an Iranian government office created it; Atlas therefore withholds official-origin knowledge attribution."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-KUWAIT-F15-FRIENDLY-FIRE": {
       "classification": "ACCUSATION_CHAIN",
@@ -164,7 +171,8 @@
       "branches": [
         "EVENT",
         "ATTRIBUTION"
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-DENA-ADMISSION": {
       "classification": "ADMISSION_LATENCY_CONTROL",
@@ -186,22 +194,26 @@
         "CENTCOM said all U.S. aircraft were accounted for.",
         "No independently verified wreckage, serial, or corresponding U.S. aircraft loss was identified in the reviewed record.",
         "That is sufficient for the current FALSE finding, but the present evidence package does not establish what the original local/state-media source knew when it reported the claim."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CH-ARAMCO-FALSE-FLAG-20260302": {
       "classification": "ACCUSATION_CHAIN",
       "public_title": "Aramco false-flag attribution claim",
-      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL"
+      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL",
+      "public_include_in_accusation_count": true
     },
     "CH-ERBIL-KUWAIT-FALSE-FLAG-20260315": {
       "classification": "ACCUSATION_CHAIN",
       "public_title": "Erbil/Kuwait false-flag attribution claim",
-      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL"
+      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL",
+      "public_include_in_accusation_count": true
     },
     "CH-SHAHED-CLONE-FALSE-FLAG-20260315": {
       "classification": "ACCUSATION_CHAIN",
       "public_title": "Shahed-clone false-flag mechanism claim",
-      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL"
+      "narrative_family_id": "NF-FALSE-FLAG-REGIONAL",
+      "public_include_in_accusation_count": true
     },
     "CHAIN-CL-HORMUZ-CONTROL": {
       "classification": "STRATEGIC_NARRATIVE_CONTROL",
@@ -248,7 +260,8 @@
     "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912": {
       "classification": "ACCUSATION_CHAIN",
       "public_title": "Saudi East-West pipeline Iranian-responsibility attribution",
-      "plain_english_summary": "Donald Trump said Iran was probably responsible for the Saudi East-West pipeline attack. Iraqi territorial launch origin is established; Iranian command or ordering responsibility is not. The source hedge ('probably') is preserved, so this remains an unresolved attribution claim rather than a falsehood finding."
+      "plain_english_summary": "Donald Trump said Iran was probably responsible for the Saudi East-West pipeline attack. Iraqi territorial launch origin is established; Iranian command or ordering responsibility is not. The source hedge ('probably') is preserved, so this remains an unresolved attribution claim rather than a falsehood finding.",
+      "public_include_in_accusation_count": true
     },
     "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912": {
       "classification": "NEGOTIATION_POLICY_CONTROL",
@@ -264,7 +277,8 @@
     },
     "CH-HOUTHI-SAUDI-ATTACKS-20260913-14": {
       "classification": "ACCUSATION_CHAIN",
-      "public_title": "Houthi Saudi-base attack and BDA claims"
+      "public_title": "Houthi Saudi-base attack and BDA claims",
+      "public_include_in_accusation_count": true
     },
     "CH-TRUMP-IRAN-CALLS-20260913": {
       "classification": "PRIVATE_DIPLOMACY_CLAIM_CONTROL",
@@ -280,11 +294,13 @@
     },
     "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914": {
       "classification": "ACCUSATION_CHAIN",
-      "public_title": "Iranian claim that Saudi Arabia requested the Oman-meeting delay"
+      "public_title": "Iranian claim that Saudi Arabia requested the Oman-meeting delay",
+      "public_include_in_accusation_count": true
     },
     "CH-EL-GAIA-MINE-CAUSATION-20260914": {
       "classification": "ACCUSATION_CHAIN",
-      "public_title": "El Gaia mine-causation claim"
+      "public_title": "El Gaia mine-causation claim",
+      "public_include_in_accusation_count": true
     },
     "CH-REZAEI-NO-TALKS-20260914": {
       "classification": "DECLARATORY_POLICY_CONTROL",
@@ -294,7 +310,8 @@
     },
     "CH-RSAF-F15SA-MARIB-20260916": {
       "classification": "ACCUSATION_CHAIN",
-      "public_title": "Houthi causation claim for Saudi F-15SA loss"
+      "public_title": "Houthi causation claim for Saudi F-15SA loss",
+      "public_include_in_accusation_count": true
     },
     "CHAIN-CL-LINCOLN": {
       "classification": "ACCUSATION_CHAIN",
@@ -311,7 +328,8 @@
         "NON_OPERATIONAL_FORCED_RETREAT",
         "FALSE_MEDIA_PRESENTATION",
         "LATER_OPERATIONAL_EVIDENCE"
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CHAIN-CL-IRGC-ASSET-LIST": {
       "classification": "ACCUSATION_CHAIN",
@@ -333,7 +351,8 @@
         "Independent physical reporting establishes that U.S. forces suffered real material damage during the war, so the scorecard cannot be dismissed merely because it came from a belligerent source.",
         "That broader damage record does not independently reconcile the specific 15-day quantities or prove that every listed asset was destroyed rather than damaged.",
         "Atlas therefore treats the exact line items as separate unresolved propositions where the count/effect burden is unmet. Lack of reconciliation is not converted into falsity, and unresolved subclaims do not create a parent Lie finding."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CHAIN-CL-KWI-PATRIOT": {
       "classification": "ACCUSATION_CHAIN",
@@ -359,7 +378,8 @@
       "open_evidence_gaps": [
         "Authenticated weapon-fragment or terminal-impact forensics identifying the exact munition that caused the terminal damage.",
         "Contemporaneous IRGC launch/BDA records showing what the claimant knew about the terminal impact before the Patriot attribution was issued."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CHAIN-CL-200-US-DEAD": {
       "classification": "ACCUSATION_CHAIN",
@@ -384,7 +404,8 @@
       "open_evidence_gaps": [
         "Authenticated IRGC strike/BDA or casualty-estimation records contemporaneous with the July 26 statement.",
         "A separately sourced repetition showing the claimant retained the >200 figure after authoritative contradictory casualty information became available to him."
-      ]
+      ],
+      "public_include_in_accusation_count": true
     },
     "CHAIN-CL-ERBIL-ALL": {
       "classification": "ACCUSATION_CHAIN",
@@ -411,7 +432,52 @@
       "open_evidence_gaps": [
         "Independent facility-by-facility post-strike BDA for the U.S. Erbil footprint as of July 26.",
         "Contemporaneous Iranian Army BDA/command reporting showing the basis for the 'almost all' destruction and operational-effect language."
-      ]
+      ],
+      "public_include_in_accusation_count": true
+    },
+    "CH-PROJECT-FREEDOM-BOATS": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CH-TANF-JUL17": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-CL-18TARGETS": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-CL-PSAB-JUN8": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-LL-IRAN-SIX-VESSEL-SUCCESS-20260905": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-LL-IRAN-TEN-VESSEL-SUCCESS-20260909": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-LL-IRAN-US-WARSHIP-DAMAGE-20260905": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
+    },
+    "CHAIN-LL-PAKNEJAD-KHARG-550-HITS-20260906": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_include_in_accusation_count": true
     }
   },
   "narrative_family_overrides": {
