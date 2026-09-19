@@ -227,6 +227,26 @@ assert.equal(kingKhalid.find(record => record.proposition_axis === 'ATTACK_OCCUR
 assert.equal(kingKhalid.find(record => record.proposition_axis === 'BATTLE_DAMAGE_ASSESSMENT')?.truth_adjudication, 'UNRESOLVED');
 
 
+const assetScorecard = propositions.find(record => record.claim_instance_id === 'CI-CL-IRGC-ASSET-LIST');
+assert(assetScorecard, 'IRGC asset-scorecard case is missing');
+assert.equal(assetScorecard.publication_status, 'BLOCKED_EVIDENCE_COMPLETION',
+  'compound IRGC asset scorecard must stay blocked until direct claim-origin provenance supports line-item adjudication');
+assert.equal(assetScorecard.canonical_assessment_withheld, true);
+assert.equal(assetScorecard.public_combined_assessment, 'EVIDENCE COMPLETION REQUIRED');
+assert((assetScorecard.publication_blockers || []).some(blocker => blocker.code === 'CLAIM_ORIGIN_SOURCE_MISSING'),
+  'IRGC asset scorecard must expose the specific source-completion blocker');
+
+const mediaArtifacts = propositions.filter(record => record.denominator_class === 'MEDIA_ARTIFACT');
+for (const mediaId of ['MED-001','MED-002','MED-003','MED-004','MED-005','MED-006']) {
+  const row = mediaArtifacts.find(record => record.claim_id === mediaId);
+  assert(row, `missing false-media forensic branch: ${mediaId}`);
+  assert.equal(row.truth_adjudication, 'FALSE');
+  assert.equal(row.public_knowledge_judgment, 'NOT_ASSESSABLE');
+  assert.equal(row.counts_as_unique_proposition, false,
+    `false media without official provenance must not inflate unique-Lie proposition counts: ${mediaId}`);
+  assert.match(row.public_combined_assessment || '', /OFFICIAL ORIGIN NOT ESTABLISHED/i);
+}
+
 for (const record of propositions) {
   const support = record.evidence_support || {};
   for (const ids of Object.values(support)) {
