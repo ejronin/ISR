@@ -1,7 +1,7 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-3",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-4",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "effective_date": "2026-09-19",
@@ -30,7 +30,8 @@
         "U.S. rescue aircraft and equipment were genuinely lost or damaged, but that does not establish Iran destroyed all of it. Independent reconstruction attributes part of the destroyed rescue package to U.S. denial action after aircraft became disabled.",
         "Iranian official channels also presented supposed U.S. remains as evidence; the Iranian broadcasting system acknowledged the image was inaccurate or incorrect the next day.",
         "Iran really did possess enriched uranium at Isfahan. That fact is not evidence that the observed rescue package was secretly a uranium-seizure mission. After the personnel-recovery outcome was established, later reporting substituted a nuclear/uranium mission narrative while preserving the same claimed Iranian victory.",
-        "The Lie finding comes from the combined chronology: repeated contradictions, corrections available inside the same state information system, direct institutional access to wreckage and battle-damage information, and later outcome-preserving narrative substitution. It is not based merely on the absence of proof or on a U.S. denial."
+        "The Lie finding comes from the combined chronology: repeated contradictions, corrections available inside the same state information system, direct institutional access to wreckage and battle-damage information, and later outcome-preserving narrative substitution. It is not based merely on the absence of proof or on a U.S. denial.",
+        "Several circulated images/videos tied to the pilot, rescue, and shootdown narrative are independently false or recycled. Atlas keeps those as separate media-artifact nodes because their official Iranian origin was not established; they support media-forensics conclusions, not automatic knowledge attribution to the IRGC or state officials."
       ],
       "branches": [
         "AIRCRAFT_IDENTIFICATION",
@@ -119,6 +120,13 @@
         "STRIKE_LOSS_PROPOSITION",
         "PURPORTED_PROOF",
         "FAKE_RECYCLED_MEDIA"
+      ],
+      "plain_english_summary": "The official claim that Iranian missiles hit a U.S. destroyer and refueling vessel remains unsubstantiated on the current physical/BDA record. Separately, video circulated as proof of the strike is definitely false: AFP traced it to a decommissioned U.S. ship sunk during RIMPAC 2022. The fake video does not by itself prove the official strike claim false, and its official Iranian origin has not been established.",
+      "how_we_know": [
+        "The official strike/effect claim lacks independently identified corresponding U.S. warship damage in the reviewed record.",
+        "Remote maritime BDA can genuinely be uncertain, so absence of confirmed damage is not automatically a FALSE finding for the official claim.",
+        "The circulated proof video is a different proposition. AFP traced it to RIMPAC 2022 footage of a decommissioned U.S. ship.",
+        "Because official Iranian origin of that media artifact was not established, Atlas labels the artifact false without attributing a knowing fabrication to the official strike claimant."
       ]
     },
     "CH-ALUDEID-BDA": {
@@ -276,6 +284,23 @@
     "CH-RSAF-F15SA-MARIB-20260916": {
       "classification": "ACCUSATION_CHAIN",
       "public_title": "Houthi causation claim for Saudi F-15SA loss"
+    },
+    "CHAIN-CL-LINCOLN": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "USS Abraham Lincoln strike, non-operational, retreat, and false-media narrative",
+      "plain_english_summary": "Claims that USS Abraham Lincoln was struck, sinking, rendered non-operational, or forced to retreat concern related but not identical propositions. The active Ledger already contains the strike/non-operational claims; false or recycled imagery used as purported proof is a separate media branch whose official origin is not established.",
+      "how_we_know": [
+        "Operational evidence contradicts the carrier-loss/non-operational claims while preserving the distinction between a claimed attempted strike and claimed effect.",
+        "A later Mar. 13 claim that the carrier was rendered non-operational and forced to retreat is a distinct effect/outcome proposition.",
+        "AFP identified circulated Lincoln-damage imagery as AI-generated or old/unrelated footage.",
+        "The false media is not automatically attributed to Iranian officials because provenance to an official origin is not established."
+      ],
+      "branches": [
+        "STRIKE_HIT_SINKING",
+        "NON_OPERATIONAL_FORCED_RETREAT",
+        "FALSE_MEDIA_PRESENTATION",
+        "LATER_OPERATIONAL_EVIDENCE"
+      ]
     }
   },
   "narrative_family_overrides": {
@@ -1873,6 +1898,426 @@
         "SRC-1B0B49B3F85E"
       ],
       "narrative_function": "Causal-attribution branch for a real aircraft-loss event."
+    },
+    {
+      "claim_id": "MED-001",
+      "claim_instance_id": "CI-MEDIA-MED-001",
+      "original_claim_id": "MED-001",
+      "proposition_id": "PROP-MEDIA-MED-001",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "actor": "Third-party / social-media circulation; official origin not established",
+      "claimant_type": "UNRESOLVED_MEDIA_ORIGIN",
+      "actor_role": "UNRESOLVED",
+      "claim": "Video circulated as captured U.S. F-15 pilot in Iran.",
+      "source_proposition": "The circulated video genuinely showed the missing 2026 U.S. F-15E airman after capture in Iran.",
+      "proposition": "The circulated video genuinely showed the missing 2026 U.S. F-15E airman after capture in Iran.",
+      "proposition_axis": "MEDIA_PROVENANCE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_MEDIA_ARTIFACT_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED",
+      "denominator_class": "MEDIA_ARTIFACT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The footage is from 1991 and shows U.S. aviator David Eberly after capture by Iraq.",
+        "The forensic media record explicitly says official Iranian origin was not established."
+      ],
+      "analytic_inference": "The media artifact is false as evidence of the claimed 2026 event. Without authenticated official provenance, that finding cannot be converted into a knowing-falsehood finding against an official actor.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "False media is established; official-attribution and claimant-knowledge inference are withheld absent provenance.",
+      "narrative_function": "False-evidence presentation or propagation branch.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-5BC8070E8CD9"
+        ],
+        "factual_baseline": [
+          "SRC-5BC8070E8CD9"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-5BC8070E8CD9"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-5BC8070E8CD9"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-5BC8070E8CD9"
+      ],
+      "statement_date": "2026-04",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-04",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "STANDALONE",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Imported from data/forensic-v1.3.2/media-forensics.json with official-origin boundary preserved."
+    },
+    {
+      "claim_id": "MED-002",
+      "claim_instance_id": "CI-MEDIA-MED-002",
+      "original_claim_id": "MED-002",
+      "proposition_id": "PROP-MEDIA-MED-002",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "actor": "Third-party / social-media circulation; official origin not established",
+      "claimant_type": "UNRESOLVED_MEDIA_ORIGIN",
+      "actor_role": "UNRESOLVED",
+      "claim": "Image circulated as captured American airman in Iran.",
+      "source_proposition": "The circulated image genuinely showed the missing 2026 American airman as an Iranian prisoner.",
+      "proposition": "The circulated image genuinely showed the missing 2026 American airman as an Iranian prisoner.",
+      "proposition_axis": "MEDIA_PROVENANCE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_MEDIA_ARTIFACT_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED",
+      "denominator_class": "MEDIA_ARTIFACT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The fact-check identified the image as AI-generated.",
+        "The forensic media record explicitly says official Iranian origin was not established."
+      ],
+      "analytic_inference": "The media artifact is false as evidence of the claimed 2026 event. Without authenticated official provenance, that finding cannot be converted into a knowing-falsehood finding against an official actor.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "False media is established; official-attribution and claimant-knowledge inference are withheld absent provenance.",
+      "narrative_function": "False-evidence presentation or propagation branch.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-00FF7E1E6EA4"
+        ],
+        "factual_baseline": [
+          "SRC-00FF7E1E6EA4"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-00FF7E1E6EA4"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-00FF7E1E6EA4"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-00FF7E1E6EA4"
+      ],
+      "statement_date": "2026-04",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-04",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "STANDALONE",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Imported from data/forensic-v1.3.2/media-forensics.json with official-origin boundary preserved."
+    },
+    {
+      "claim_id": "MED-003",
+      "claim_instance_id": "CI-MEDIA-MED-003",
+      "original_claim_id": "MED-003",
+      "proposition_id": "PROP-MEDIA-MED-003",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "actor": "Third-party / social-media circulation; official origin not established",
+      "claimant_type": "UNRESOLVED_MEDIA_ORIGIN",
+      "actor_role": "UNRESOLVED",
+      "claim": "Image circulated as rescued U.S. airman connected to the F-15E rescue narrative.",
+      "source_proposition": "The circulated image was genuine visual evidence of the rescued 2026 U.S. airman.",
+      "proposition": "The circulated image was genuine visual evidence of the rescued 2026 U.S. airman.",
+      "proposition_axis": "MEDIA_PROVENANCE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_MEDIA_ARTIFACT_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED",
+      "denominator_class": "MEDIA_ARTIFACT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Lead Stories found the circulated rescued-airman image was AI-generated.",
+        "The forensic media record explicitly says official Iranian origin was not established."
+      ],
+      "analytic_inference": "The media artifact is false as evidence of the claimed 2026 event. Without authenticated official provenance, that finding cannot be converted into a knowing-falsehood finding against an official actor.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "False media is established; official-attribution and claimant-knowledge inference are withheld absent provenance.",
+      "narrative_function": "False-evidence presentation or propagation branch.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-95219D950347"
+        ],
+        "factual_baseline": [
+          "SRC-95219D950347"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-95219D950347"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-95219D950347"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-95219D950347"
+      ],
+      "statement_date": "2026-04-05",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-04-05",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "STANDALONE",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Imported from data/forensic-v1.3.2/media-forensics.json with official-origin boundary preserved."
+    },
+    {
+      "claim_id": "MED-004",
+      "claim_instance_id": "CI-MEDIA-MED-004",
+      "original_claim_id": "MED-004",
+      "proposition_id": "PROP-MEDIA-MED-004",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "actor": "Third-party / social-media circulation; official origin not established",
+      "claimant_type": "UNRESOLVED_MEDIA_ORIGIN",
+      "actor_role": "UNRESOLVED",
+      "claim": "Video circulated as proof of the April F-15E shootdown over Iran.",
+      "source_proposition": "The circulated video genuinely showed the April 2026 F-15E shootdown over Iran.",
+      "proposition": "The circulated video genuinely showed the April 2026 F-15E shootdown over Iran.",
+      "proposition_axis": "MEDIA_PROVENANCE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_MEDIA_ARTIFACT_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED",
+      "denominator_class": "MEDIA_ARTIFACT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Lead Stories traced the clip to pre-existing or simulated visual material; the actual F-15E loss is real, but this specific video is not footage of that event.",
+        "The forensic media record explicitly says official Iranian origin was not established."
+      ],
+      "analytic_inference": "The media artifact is false as evidence of the claimed 2026 event. Without authenticated official provenance, that finding cannot be converted into a knowing-falsehood finding against an official actor.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "False media is established; official-attribution and claimant-knowledge inference are withheld absent provenance.",
+      "narrative_function": "False-evidence presentation or propagation branch.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-FADB5E0A4585"
+        ],
+        "factual_baseline": [
+          "SRC-FADB5E0A4585"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-FADB5E0A4585"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-FADB5E0A4585"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-FADB5E0A4585"
+      ],
+      "statement_date": "2026-04-03",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-04-03",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "STANDALONE",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Imported from data/forensic-v1.3.2/media-forensics.json with official-origin boundary preserved."
+    },
+    {
+      "claim_id": "MED-005",
+      "claim_instance_id": "CI-MEDIA-MED-005",
+      "original_claim_id": "MED-005",
+      "proposition_id": "PROP-MEDIA-MED-005",
+      "chain_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "actor": "Third-party / social-media circulation; official origin not established",
+      "claimant_type": "UNRESOLVED_MEDIA_ORIGIN",
+      "actor_role": "UNRESOLVED",
+      "claim": "Video circulated as proof Iran struck a U.S. destroyer in the Indian Ocean.",
+      "source_proposition": "The circulated video genuinely showed a U.S. destroyer visibly hit and burning after the claimed 2026 Iranian missile strike.",
+      "proposition": "The circulated video genuinely showed a U.S. destroyer visibly hit and burning after the claimed 2026 Iranian missile strike.",
+      "proposition_axis": "MEDIA_PROVENANCE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_MEDIA_ARTIFACT_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED",
+      "denominator_class": "MEDIA_ARTIFACT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "AFP traced the footage to a decommissioned U.S. ship sunk during RIMPAC 2022.",
+        "The forensic media record explicitly says official Iranian origin was not established."
+      ],
+      "analytic_inference": "The media artifact is false as evidence of the claimed 2026 event. Without authenticated official provenance, that finding cannot be converted into a knowing-falsehood finding against an official actor.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "False media is established; official-attribution and claimant-knowledge inference are withheld absent provenance.",
+      "narrative_function": "False-evidence presentation or propagation branch.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-744CF2CF4573"
+        ],
+        "factual_baseline": [
+          "SRC-744CF2CF4573"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-744CF2CF4573"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-744CF2CF4573"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "statement_date": "2026-03",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-03",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "STANDALONE",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Imported from data/forensic-v1.3.2/media-forensics.json with official-origin boundary preserved."
+    },
+    {
+      "claim_id": "MED-006",
+      "claim_instance_id": "CI-MEDIA-MED-006",
+      "original_claim_id": "MED-006",
+      "proposition_id": "PROP-MEDIA-MED-006",
+      "chain_id": "CHAIN-CL-LINCOLN",
+      "actor": "Third-party / social-media circulation; official origin not established",
+      "claimant_type": "UNRESOLVED_MEDIA_ORIGIN",
+      "actor_role": "UNRESOLVED",
+      "claim": "AI or unrelated imagery circulated as USS Abraham Lincoln strike evidence.",
+      "source_proposition": "The circulated imagery genuinely showed USS Abraham Lincoln damaged by the claimed 2026 Iranian strike.",
+      "proposition": "The circulated imagery genuinely showed USS Abraham Lincoln damaged by the claimed 2026 Iranian strike.",
+      "proposition_axis": "MEDIA_PROVENANCE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_MEDIA_ARTIFACT_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED",
+      "denominator_class": "MEDIA_ARTIFACT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "AFP identified one circulated Lincoln-damage clip as AI-generated and another as old footage unrelated to the claimed 2026 strike.",
+        "The forensic media record explicitly says official Iranian origin was not established."
+      ],
+      "analytic_inference": "The media artifact is false as evidence of the claimed 2026 event. Without authenticated official provenance, that finding cannot be converted into a knowing-falsehood finding against an official actor.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "False media is established; official-attribution and claimant-knowledge inference are withheld absent provenance.",
+      "narrative_function": "False-evidence presentation or propagation branch.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated provenance or forensic evidence showing the specific circulated media depicts the claimed 2026 event."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-6801FFDD232B"
+        ],
+        "factual_baseline": [
+          "SRC-6801FFDD232B"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-6801FFDD232B"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-6801FFDD232B"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-6801FFDD232B"
+      ],
+      "statement_date": "2026-03-12",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-03-12",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "STANDALONE",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Imported from data/forensic-v1.3.2/media-forensics.json with official-origin boundary preserved."
     }
   ]
 }
