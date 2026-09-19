@@ -1,7 +1,7 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_FULL_LEDGER_SWEEP",
   "schema_version": "1.0",
-  "sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-1",
+  "sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-2",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "evidence_cutoff": "2026-09-18T10:27:26-04:00",
@@ -62,10 +62,11 @@
     },
     {
       "chain_id": "CH-INDIAN-OCEAN-DESTROYER",
-      "disposition": "REVIEWED_APPEND_MEDIA_BRANCH_REQUIRED",
+      "disposition": "CORRECTED_MEDIA_BRANCH_ADDED",
       "actions": [
         "official strike/BDA claim remains unsubstantiated",
-        "recycled proof footage must be separate false-media branch with provenance"
+        "RIMPAC 2022 recycled footage added as separate FALSE MEDIA ARTIFACT",
+        "official origin not established; no verdict propagation to official strike claim"
       ]
     },
     {
@@ -129,12 +130,11 @@
     },
     {
       "chain_id": "CHAIN-CL-LINCOLN",
-      "disposition": "REVIEWED_EXTENSION_REQUIRED",
+      "disposition": "CORRECTED_MEDIA_BRANCH_ADDED",
       "actions": [
-        "separate strike/sinking claim",
-        "Mar. 13 non-operational/retreat claim",
-        "false-media branches require provenance",
-        "later rotation narrative must not be auto-merged merely because same carrier"
+        "preserve strike/sinking and Mar. 13 non-operational/forced-retreat propositions separately",
+        "AFP false/AI Lincoln imagery added as MEDIA_ARTIFACT with official-origin boundary",
+        "later rotation narrative remains a separate later event/causal question rather than automatic continuation"
       ]
     },
     {
@@ -155,10 +155,12 @@
     },
     {
       "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
-      "disposition": "REVIEWED_DECOMPOSITION_REQUIRED",
+      "disposition": "REVIEWED_SOURCE_COMPLETION_REQUIRED_FOR_DECOMPOSITION",
       "actions": [
-        "one-row PARTLY_TRUE compound blob is insufficient",
-        "decompose asset classes/counts/effects where source fidelity permits"
+        "current one-row PARTLY_TRUE compound claim is inadequate for final line-item adjudication",
+        "independent WaPo BDA source is canonical",
+        "IRNA claim-origin URL is present only in legacy curated data and lacks a canonical source object in the active source graph",
+        "do not fabricate line-item source provenance; qualify claim-origin source before publishing decomposed counts"
       ]
     },
     {
@@ -312,10 +314,42 @@
     "Controls, rhetoric, declaratory policy, and supported context must not inflate accusation/Lie denominators."
   ],
   "remaining_integration_work": [
-    "Append post-Sep. 9 accepted claim entities into the active claim-domain model with explicit include/control/defer dispositions.",
-    "Add provenance-bounded false-media branches for Qatar AI radar image, fighter video, Indian Ocean recycled footage, Lincoln imagery, and other accepted media-forensics items.",
-    "Decompose the IRGC 15-day asset-list compound row where source fidelity permits.",
+    "Qualify canonical claim-origin/source objects for the IRGC 15-day asset list before line-item decomposition.",
+    "Qualify the missing canonical source object for the Qatar AI radar-image fact check before adding that media artifact to the active Ledger.",
     "Qualify source/evidence components for Kuwait Patriot, 200 U.S. dead, and Erbil scale before publishing strong knowledge labels.",
     "Run cross-surface regression after canonical semantic merge."
-  ]
+  ],
+  "post_cutoff_intake": {
+    "source_packets": [
+      "data/canonical-updates/UPD-20260913-ROOK-LOCKER.json",
+      "data/canonical-updates/UPD-20260914-ROOK-0000ET.json",
+      "data/canonical-updates/UPD-20260914-ROOK-1201ET.json",
+      "data/canonical-updates/UPD-20260915-ROOK-0001ET.json",
+      "data/canonical-updates/UPD-20260917-ISSUE132-EVIDENCE.json",
+      "data/canonical-updates/UPD-20260918-ISSUE140-READJUDICATION.json"
+    ],
+    "raw_claim_entities_reviewed": 19,
+    "accepted_overlay_corrections_reviewed": 7,
+    "routing": [
+      "Falsifiable event/attribution/BDA claims appended to current claim-domain state.",
+      "Repetitions share proposition identity and do not inflate unique-proposition counts.",
+      "Negotiation, legal-authority, private-diplomacy, rhetoric and declaratory-policy items are preserved as controls and excluded from ordinary accusation counts.",
+      "Sep. 18 re-adjudications update existing propositions rather than creating duplicate rows."
+    ]
+  },
+  "false_media_intake": {
+    "imported_from": "data/forensic-v1.3.2/media-forensics.json",
+    "imported_media_ids": [
+      "MED-001",
+      "MED-002",
+      "MED-003",
+      "MED-004",
+      "MED-005",
+      "MED-006"
+    ],
+    "rule": "FALSE media artifact findings remain separate from official-origin and knowledge findings. No official attribution is manufactured where provenance is absent.",
+    "still_blocked": [
+      "CL-QATAR-AI / AFP-Arab News Qatar radar image: legacy URLs exist, but the active canonical source graph lacks the specific fact-check source object required for claim-domain publication."
+    ]
+  }
 }
