@@ -238,15 +238,69 @@ assert.equal(kingKhalid.find(record => record.proposition_axis === 'BATTLE_DAMAG
 
 const assetScorecard = propositions.find(record => record.claim_instance_id === 'CI-CL-IRGC-ASSET-LIST');
 assert(assetScorecard, 'IRGC asset-scorecard case is missing');
-assert.equal(assetScorecard.publication_status, 'BLOCKED_EVIDENCE_COMPLETION',
-  'compound IRGC asset scorecard must stay blocked until direct claim-origin provenance supports line-item adjudication');
-assert.equal(assetScorecard.canonical_assessment_withheld, true);
-assert.equal(assetScorecard.public_combined_assessment, 'EVIDENCE COMPLETION REQUIRED');
-assert((assetScorecard.publication_blockers || []).some(blocker => blocker.code === 'CLAIM_ORIGIN_SOURCE_MISSING'),
-  'IRGC asset scorecard must expose the specific source-completion blocker');
+assert.equal(assetScorecard.publication_status, 'PUBLIC_READY',
+  'source-qualified IRGC asset scorecard parent must no longer be publication-blocked');
+assert.equal(assetScorecard.canonical_assessment_withheld, false);
+assert.equal(assetScorecard.counts_as_unique_proposition, false,
+  'compound scorecard parent must not inflate the atomic proposition denominator');
+assert.match(assetScorecard.public_combined_assessment || '', /DECOMPOSED/i);
+assert((assetScorecard.source_ids || []).includes('SRC-E7D3837B67C4'),
+  'asset scorecard parent must consume the canonical IRNA claim-origin source');
+const assetAtoms = propositions.filter(record =>
+  record.original_claim_id === 'CL-IRGC-ASSET-LIST' &&
+  record.claim_instance_id !== 'CI-CL-IRGC-ASSET-LIST'
+);
+assert.equal(assetAtoms.length, 12, 'IRGC asset scorecard must expose twelve material atomic line items');
+assert(assetAtoms.every(record => record.counts_as_unique_proposition === true));
+assert(assetAtoms.every(record => record.truth_adjudication === 'UNRESOLVED'),
+  'unreconciled exact asset counts must remain unresolved rather than be converted from no corroboration to falsity');
+assert(assetAtoms.every(record => (record.evidence_support?.what_was_said || []).includes('SRC-E7D3837B67C4')));
+assert(assetAtoms.every(record => /NO LIE FINDING/i.test(record.public_combined_assessment || '')),
+  'unresolved scorecard line items must not manufacture Lie findings');
+
+const kwi = propositions.find(record => record.claim_instance_id === 'CI-CL-KWI-PATRIOT');
+assert(kwi, 'Kuwait Patriot-attribution proposition is missing');
+assert.equal(kwi.publication_status, 'PUBLIC_READY');
+assert.equal(kwi.truth_adjudication, 'FALSE');
+assert.equal(kwi.public_knowledge_judgment, 'POSSIBLE_KNOWLEDGE');
+assert.match(kwi.public_combined_assessment || '', /NO LIE FINDING/i);
+assert((kwi.source_ids || []).includes('SRC-67995288F15E'));
+assert((kwi.source_ids || []).includes('SRC-AB8D1A29D6A5'));
+const kwiEvent = propositions.find(record => record.claim_instance_id === 'CI-CL-KWI-PATRIOT-EVENT-P01');
+assert.equal(kwiEvent?.truth_adjudication, 'SUPPORTED',
+  'real Kuwait airport damage must remain supported context separate from causal attribution');
+
+const usDead = propositions.find(record => record.claim_instance_id === 'CI-CL-200-US-DEAD');
+assert(usDead, '>200 U.S. fatalities proposition is missing');
+assert.equal(usDead.publication_status, 'PUBLIC_READY');
+assert.equal(usDead.truth_adjudication, 'FALSE');
+assert.equal(usDead.public_knowledge_judgment, 'INSUFFICIENT_EVIDENCE');
+assert.match(usDead.public_combined_assessment || '', /NO LIE FINDING/i);
+assert((usDead.source_ids || []).includes('SRC-BACFCAB20181'));
+assert((usDead.source_ids || []).includes('SRC-691C9B6A352A'));
+assert((usDead.source_ids || []).includes('SRC-B4C80D942772'));
+
+const erbilParent = propositions.find(record => record.claim_instance_id === 'CI-CL-ERBIL-ALL');
+assert(erbilParent, 'Erbil compound parent is missing');
+assert.equal(erbilParent.counts_as_unique_proposition, false,
+  'Erbil compound parent must not duplicate decomposed effect/scale propositions');
+assert.equal(erbilParent.publication_status, 'PUBLIC_READY');
+const erbilAtoms = propositions.filter(record =>
+  record.original_claim_id === 'CL-ERBIL-ALL' &&
+  record.claim_instance_id !== 'CI-CL-ERBIL-ALL'
+);
+assert.equal(erbilAtoms.length, 4, 'Erbil claim must decompose occurrence, damage, functional effect and near-total scale');
+assert.equal(erbilAtoms.find(record => record.proposition_axis === 'ATTACK_OCCURRENCE')?.truth_adjudication, 'SUPPORTED');
+assert.equal(erbilAtoms.find(record => record.proposition_axis === 'PHYSICAL_EFFECT')?.truth_adjudication, 'PARTLY_TRUE');
+assert.equal(erbilAtoms.find(record => record.proposition_axis === 'FUNCTIONAL_EFFECT')?.truth_adjudication, 'MISLEADING');
+assert.equal(erbilAtoms.find(record => record.proposition_axis === 'SCALE')?.truth_adjudication, 'MISLEADING');
+for (const row of erbilAtoms.filter(record => record.counts_as_unique_proposition)) {
+  assert.equal(row.public_knowledge_judgment, 'INSUFFICIENT_EVIDENCE');
+  assert.match(row.public_combined_assessment || '', /NO LIE FINDING/i);
+}
 
 const mediaArtifacts = propositions.filter(record => record.denominator_class === 'MEDIA_ARTIFACT');
-for (const mediaId of ['MED-001','MED-002','MED-003','MED-004','MED-005','MED-006']) {
+for (const mediaId of ['MED-001','MED-002','MED-003','MED-004','MED-005','MED-006','MED-007']) {
   const row = mediaArtifacts.find(record => record.claim_id === mediaId);
   assert(row, `missing false-media forensic branch: ${mediaId}`);
   assert.equal(row.truth_adjudication, 'FALSE');
@@ -255,6 +309,14 @@ for (const mediaId of ['MED-001','MED-002','MED-003','MED-004','MED-005','MED-00
     `false media without official provenance must not inflate unique-Lie proposition counts: ${mediaId}`);
   assert.match(row.public_combined_assessment || '', /OFFICIAL ORIGIN NOT ESTABLISHED/i);
 }
+const qatarAi = mediaArtifacts.find(record => record.claim_id === 'MED-007');
+assert(qatarAi, 'Qatar AI radar-image branch is missing');
+assert((qatarAi.source_ids || []).includes('SRC-B56BDBD8628F'));
+assert((qatarAi.source_ids || []).includes('SRC-81C038608946'));
+assert((qatarAi.source_ids || []).includes('SRC-551A9C2DB97C'),
+  'Qatar false-media branch must preserve separate real-damage context');
+assert.match(qatarAi.actor || '', /official.*not established/i,
+  'Qatar fake image must not be attributed to an official military/government origin');
 
 for (const chain of ledger.records) {
   assert(chain.logic_graph, `missing machine logic graph for chain: ${chain.chain_id}`);
