@@ -1,0 +1,326 @@
+{
+  "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
+  "schema_version": "1.0",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-1",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+  "effective_date": "2026-09-19",
+  "purpose": "Apply accepted chain grouping, proposition-polarity corrections, chain-level findings, and plain-English inferential explanations after the sealed historical evidence-adjudication input has been validated.",
+  "rules": {
+    "top_level_unit": "NARRATIVE_CHAIN",
+    "atomic_propositions_remain_independent": true,
+    "chain_membership_does_not_propagate_truth": true,
+    "supported_context_nodes_may_exist_inside_a_lie_chain": true,
+    "later_evidence_may_adjudicate_earlier_claims_without_backdating_public_knowledge": true
+  },
+  "chain_overrides": {
+    "CH-F15E-CSAR-URANIUM": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "F-15E shootdown, missing airman, rescue, and uranium narrative",
+      "public_finding": {
+        "label": "Lie",
+        "key": "lie"
+      },
+      "plain_english_summary": "A real F-15E was lost and one airman was genuinely missing. The deceptive narrative was what Iranian official and state-media channels said happened next: the aircraft was first misidentified as an F-35; a capture story was promoted while Iranian authorities were still searching for the airman; rescue failure and Iranian-caused equipment losses were overstated; false remains evidence was presented; and, after both crew were recovered, the story shifted toward a nuclear/uranium mission explanation. Atlas keeps the real shootdown, the missing-airman period, the later F-15E correction, and real rescue-equipment losses as factual context rather than labeling those facts themselves as lies.",
+      "how_we_know": [
+        "The underlying loss is real: a U.S. F-15E went down in Iran and one crew member remained missing while U.S. forces searched for him.",
+        "The original F-35 identification was wrong. Iranian reporting later corrected the aircraft type to F-15E using recovered wreckage and debris.",
+        "The capture branch is false, not merely unsupported. Tasnim reported that the missing airman was likely captured; a provincial IRGC unit later denied he had been captured or detained, Iranian authorities were still seeking his capture, and the airman was subsequently recovered by U.S. forces.",
+        "The early fact that the second airman had not yet been recovered was true. The categorical claim that the rescue ultimately failed was not: both crew members were recovered.",
+        "U.S. rescue aircraft and equipment were genuinely lost or damaged, but that does not establish Iran destroyed all of it. Independent reconstruction attributes part of the destroyed rescue package to U.S. denial action after aircraft became disabled.",
+        "Iranian official channels also presented supposed U.S. remains as evidence; the Iranian broadcasting system acknowledged the image was inaccurate or incorrect the next day.",
+        "Iran really did possess enriched uranium at Isfahan. That fact is not evidence that the observed rescue package was secretly a uranium-seizure mission. After the personnel-recovery outcome was established, later reporting substituted a nuclear/uranium mission narrative while preserving the same claimed Iranian victory.",
+        "The Lie finding comes from the combined chronology: repeated contradictions, corrections available inside the same state information system, direct institutional access to wreckage and battle-damage information, and later outcome-preserving narrative substitution. It is not based merely on the absence of proof or on a U.S. denial."
+      ],
+      "branches": [
+        "AIRCRAFT_IDENTIFICATION",
+        "PHYSICAL_AIRCRAFT_LOSS",
+        "AIRCREW_STATUS",
+        "CAPTURE_CLAIMS",
+        "DEATH_REMAINS_CLAIMS",
+        "CSAR_RESCUE",
+        "RESCUE_FAILURE_FOILING",
+        "URANIUM_HEIST_SUBSTITUTE_EXPLANATION"
+      ]
+    },
+    "CH-AIRCRAFT-KILL-AGGREGATES": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Iranian U.S. aircraft and UAV cumulative kill-count narrative",
+      "branches": [
+        "HISTORICAL_82",
+        "HISTORICAL_130",
+        "HISTORICAL_170",
+        "HISTORICAL_210",
+        "TYPE_SPECIFIC_COUNTS",
+        "QESHM_SEP16_INDIVIDUAL",
+        "MQ9_52_CUMULATIVE",
+        "QESHM_SEP17_INDIVIDUAL",
+        "MQ9_53_CUMULATIVE"
+      ]
+    },
+    "CH-F35-MAR19": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "F-35 combat damage to destruction/downing inflation",
+      "branches": [
+        "REAL_COMBAT_DAMAGE",
+        "DESTRUCTION_DOWNING_ESCALATION"
+      ]
+    },
+    "CH-TURKEY-MISSILE-DENIAL": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Turkey missile incident: denial, attribution, and false-flag substitution",
+      "branches": [
+        "INCIDENT",
+        "DENIAL",
+        "CONTRARY_ATTRIBUTION",
+        "FALSE_FLAG_SUBSTITUTE_EXPLANATION"
+      ]
+    },
+    "CH-QATAR-PILOTS": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Missing Iranian pilots and Qatar custody-access narrative",
+      "branches": [
+        "MISSING_PILOTS",
+        "SECRET_CUSTODY",
+        "QATAR_COUNTERCHRONOLOGY_ACCESS",
+        "OBSTRUCTION_EXPLANATION"
+      ]
+    },
+    "CH-INDIAN-OCEAN-DESTROYER": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Indian Ocean U.S. destroyer/supply-ship strike narrative",
+      "branches": [
+        "STRIKE_LOSS_PROPOSITION",
+        "PURPORTED_PROOF",
+        "FAKE_RECYCLED_MEDIA"
+      ]
+    },
+    "CH-ALUDEID-BDA": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Al Udeid strike battle-damage inflation",
+      "branches": [
+        "OCCURRENCE",
+        "PHYSICAL_DAMAGE",
+        "EQUIPMENT_BDA",
+        "FACILITY_WIDE_OPERATIONAL_EFFECT"
+      ]
+    },
+    "CH-KUWAIT-F15-FRIENDLY-FIRE": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Kuwait F-15 losses: Iranian attribution versus friendly-fire finding",
+      "branches": [
+        "EVENT",
+        "ATTRIBUTION"
+      ]
+    },
+    "CH-DENA-ADMISSION": {
+      "classification": "ADMISSION_LATENCY_CONTROL",
+      "public_title": "IRIS Dena loss/acknowledgment control case",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    },
+    "CH-TANGSIRI-ADMISSION": {
+      "classification": "ADMISSION_LATENCY_CONTROL",
+      "public_title": "Tangsiri announcement/confirmation-latency control case",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false
+    }
+  },
+  "narrative_family_overrides": {
+    "CH-FALSE-FLAG-REGIONAL": {
+      "current_family_id": "NF-FALSE-FLAG-REGIONAL",
+      "classification": "CROSS_EVENT_RHETORICAL_NARRATIVE_FAMILY",
+      "rule": "Do not imply causal continuity between distinct incidents connected only by rhetorical technique."
+    }
+  },
+  "record_overrides": [
+    {
+      "claim_instance_id": "CI-IR-CLM-0003-P01",
+      "set": {
+        "relation_type": "CORRECTION",
+        "actor_role": "CORRECTOR",
+        "denominator_class": "CORRECTION_RETRACTION",
+        "lifecycle_status": "CORRECTED",
+        "publication_status": "PUBLIC_READY",
+        "adjudication_status": "EVIDENCE_ADJUDICATED"
+      },
+      "rationale": "Iranian state media explicitly corrected the earlier aircraft identification; this is a correction node, not a repetition."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0003-P02",
+      "set": {
+        "relation_type": "CORRECTION",
+        "actor_role": "CORRECTOR",
+        "denominator_class": "CORRECTION_RETRACTION",
+        "lifecycle_status": "CORRECTED",
+        "publication_status": "PUBLIC_READY",
+        "adjudication_status": "EVIDENCE_ADJUDICATED"
+      },
+      "rationale": "The F-15E identification is the affirmative correction to the earlier F-35 claim."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0004-P01",
+      "set": {
+        "truth_adjudication": "SUPPORTED",
+        "knowledge_judgment": "NOT_ASSESSED",
+        "combined_assessment": "SUPPORTED — AIRMAN WAS MISSING/EVADING AT PUBLICATION TIME",
+        "denominator_class": "NON_ACCUSATION_CONTEXT",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "CONTEMPORANEOUS_MISSING_AIRMAN_STATUS"
+      },
+      "replace_observed_facts": [
+        "One F-15E crew member remained unrecovered while U.S. search-and-rescue operations were still underway; that contemporaneous missing/evading status is factual context, not a deception claim."
+      ],
+      "rationale": "The existing record itself says the U.S. rescue timeline confirmed one airman remained unrecovered. Marking that proposition UNRESOLVED inverted the evidence."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0004-P02",
+      "set": {
+        "truth_adjudication": "FALSE",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "FALSE — EARLY HEDGED CAPTURE REPORT; KNOWLEDGE NOT ESTABLISHED",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "LATER_CONTRADICTED_CAPTURE_REPORT"
+      },
+      "replace_observed_facts": [
+        "Tasnim framed the report as unconfirmed and said the airman was likely captured rather than documenting custody.",
+        "A provincial IRGC unit subsequently denied that the second crew member had been captured or detained.",
+        "Iranian authorities continued seeking the airman's capture, while U.S. forces later recovered him."
+      ],
+      "rationale": "The capture proposition is factually false on the completed event record. The hedge matters to claimant-knowledge analysis but does not make the proposition factually UNRESOLVED forever."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0005-P01",
+      "set": {
+        "truth_adjudication": "SUPPORTED",
+        "knowledge_judgment": "NOT_ASSESSED",
+        "combined_assessment": "SUPPORTED — RECOVERY WAS STILL IN PROGRESS",
+        "denominator_class": "NON_ACCUSATION_CONTEXT",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "CONTEMPORANEOUS_RESCUE_STATUS"
+      },
+      "replace_observed_facts": [
+        "At the time of the report, the second F-15E crew member had not yet been recovered and U.S. search-and-rescue operations were still ongoing."
+      ],
+      "rationale": "An ongoing unsuccessful search at that moment is a supported temporal fact and must be separated from the later categorical claim that the overall rescue failed."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0005-P02",
+      "set": {
+        "truth_adjudication": "FALSE",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "FALSE OUTCOME CLAIM — PREMATURE AT PUBLICATION TIME",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "ULTIMATE_RESCUE_SUCCEEDED"
+      },
+      "replace_observed_facts": [
+        "The article declared the recovery effort a failure before the operation was complete; both F-15E crew members were subsequently recovered."
+      ],
+      "rationale": "The ultimate-failure proposition has a resolved false outcome even though contemporaneous evidence does not establish that the outlet knew the future rescue result."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0006-P01",
+      "set": {
+        "proposition": "The second F-15E crew member had not been captured or detained by Iranian forces in the province.",
+        "source_proposition": "The provincial IRGC denied that the second F-15E crew member had been captured or detained.",
+        "proposition_id": "PROP-F15E-CAPTURE-DENIAL-20260404",
+        "proposition_axis": "CUSTODY_STATUS",
+        "relation_type": "CORRECTION",
+        "actor_role": "CORRECTOR",
+        "truth_adjudication": "SUPPORTED",
+        "knowledge_judgment": "NOT_ASSESSED",
+        "combined_assessment": "SUPPORTED CORRECTION — CAPTURE/DENTENTION DENIED",
+        "denominator_class": "CORRECTION_RETRACTION",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "lifecycle_status": "CORRECTED",
+        "truth_qualifier": "OFFICIAL_PROVINCIAL_DENIAL"
+      },
+      "replace_observed_facts": [
+        "The provincial IRGC publicly denied reports that the second F-15E crew member had been captured or detained; subsequent U.S. recovery is consistent with that denial."
+      ],
+      "rationale": "The existing positive proposition ('Iran had captured/detained') paired with a SUPPORTED denial reverses polarity. The proposition must state the denial it actually adjudicates."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0007-P01",
+      "set": {
+        "truth_adjudication": "SUPPORTED",
+        "knowledge_judgment": "NOT_ASSESSED",
+        "combined_assessment": "SUPPORTED — REAL U.S. RESCUE-EQUIPMENT LOSSES",
+        "denominator_class": "NON_ACCUSATION_CONTEXT",
+        "counts_as_unique_proposition": false,
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "EQUIPMENT_LOSS_EXISTENCE"
+      },
+      "replace_observed_facts": [
+        "Independent reconstruction confirms that U.S. rescue aircraft/equipment were lost or destroyed inside Iran. The separate causal-attribution proposition determines which losses were actually caused by Iranian fire."
+      ],
+      "rationale": "The existence of U.S. rescue-equipment losses is supported and must not inherit the false finding attached to Iran's all-losses causal attribution."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0007-P03",
+      "set": {
+        "truth_adjudication": "FALSE",
+        "knowledge_judgment": "LIKELY_KNEW_FALSE",
+        "combined_assessment": "LIKELY LIE — PERSONNEL-RECOVERY MISSION DID NOT FAIL",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "BOTH_AIRCREW_RECOVERED"
+      },
+      "replace_observed_facts": [
+        "Both F-15E crew members were recovered. By the April 5 statement, the Iranian military was directly involved in the engagement and had superior access to local battle-damage and search information."
+      ],
+      "rationale": "The mission-outcome claim is false, and senior operational access makes continued presentation of complete rescue failure more likely than not to have been knowing."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0008-P02",
+      "set": {
+        "truth_adjudication": "FALSE",
+        "knowledge_judgment": "LIKELY_KNEW_FALSE",
+        "combined_assessment": "LIKELY LIE — IRAN DID NOT DESTROY ALL CLAIMED RESCUE AIRCRAFT",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "US_DENIAL_DESTRUCTION_MISATTRIBUTED"
+      },
+      "replace_observed_facts": [
+        "Independent reconstruction confirms Iranian fire hit rescue helicopters, but major disabled rescue aircraft were also destroyed by U.S. personnel to deny capture; claiming all major wreckage as Iranian kills overstates Iranian causal responsibility."
+      ],
+      "rationale": "The prior row correctly found the proposition false but left knowledge unassessed despite direct military access to the engagement and wreckage environment."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0009-P02",
+      "set": {
+        "truth_adjudication": "SUPPORTED",
+        "knowledge_judgment": "NOT_ASSESSED",
+        "combined_assessment": "SUPPORTED CONTEXT — ENRICHED URANIUM WAS ASSOCIATED WITH ISFAHAN",
+        "denominator_class": "NON_ACCUSATION_CONTEXT",
+        "adjudication_status": "EVIDENCE_ADJUDICATED",
+        "publication_status": "PUBLIC_READY",
+        "truth_qualifier": "IAEA_SUPPORTED_MATERIAL_PRESENCE"
+      },
+      "replace_observed_facts": [
+        "IAEA reporting before the war documented 20% and 60% enriched uranium at Isfahan, and later IAEA assessment said a little over 200 kg of 60% material had been there and likely remained. That material-presence fact does not establish the purpose of the U.S. rescue package."
+      ],
+      "rationale": "The existing row's own evidence supports material presence. It must be separated from the unsupported/false mission-purpose theory."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0010-P01",
+      "set": {
+        "relation_type": "NARRATIVE_SUBSTITUTION"
+      },
+      "rationale": "The later nuclear-facility mission claim is an outcome-preserving substitute explanation after the rescue narrative was contradicted."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0010-P02",
+      "set": {
+        "relation_type": "NARRATIVE_SUBSTITUTION"
+      },
+      "rationale": "The claimed victory over a nuclear raid is the outcome branch of the same substitute narrative."
+    }
+  ]
+}
