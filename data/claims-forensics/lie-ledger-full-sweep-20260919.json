@@ -1,10 +1,10 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_FULL_LEDGER_SWEEP",
   "schema_version": "1.0",
-  "sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-2",
+  "sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-3",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
-  "evidence_cutoff": "2026-09-18T10:27:26-04:00",
+  "evidence_cutoff": "2026-09-19T16:00:00-04:00",
   "scope": {
     "legacy_active_chain_count": 36,
     "legacy_active_proposition_rows": 89,
@@ -99,11 +99,13 @@
     },
     {
       "chain_id": "CH-ALUDEID-BDA",
-      "disposition": "CORRECTED_CHAIN_MERGE",
+      "disposition": "CORRECTED_CHAIN_MERGE_AND_FALSE_MEDIA_BRANCH",
       "actions": [
-        "preserve effect ladder",
+        "preserve real strike/damage and effect ladder",
         "fold CHAIN-CL-ALUDEID shorthand into this event",
-        "do not turn subfacility damage into whole-base loss"
+        "add canonical AFP/Arab News AI-radar media artifact as a separate false-evidence branch",
+        "do not attribute the fake image to IRGC/government absent provenance",
+        "do not let false media erase real Al Udeid damage"
       ]
     },
     {
@@ -139,28 +141,35 @@
     },
     {
       "chain_id": "CHAIN-CL-KWI-PATRIOT",
-      "disposition": "REVIEWED_PUBLICATION_BLOCKER_REMAINS",
+      "disposition": "SOURCE_COMPLETED_FALSE_ATTRIBUTION_NO_LIE_FINDING",
       "actions": [
-        "false causal attribution retained",
-        "knowledge/Lie publication requires source-graph qualification"
+        "separate physical airport damage from causal attribution",
+        "retain FALSE causal-attribution finding using canonical claim-origin and host-nation evidence",
+        "downgrade prior strong knowledge inference to POSSIBLE_KNOWLEDGE because impact-specific claimant access is not established",
+        "publish no Lie finding; innocent battlefield misidentification remains credible"
       ]
     },
     {
       "chain_id": "CHAIN-CL-200-US-DEAD",
-      "disposition": "REVIEWED_PUBLICATION_BLOCKER_REMAINS",
+      "disposition": "SOURCE_COMPLETED_FALSE_COUNT_NO_LIE_FINDING",
       "actions": [
-        "false casualty claim retained",
-        "knowledge/Lie publication requires evidence-component qualification"
+        "attach canonical IRNA claim origin",
+        "retain exact >200 casualty-count proposition as one unique proposition",
+        "use Reuters contemporaneous and AP later casualty accounting to adjudicate FALSE",
+        "do not backdate later AP evidence into statement-time knowledge",
+        "withhold Lie finding because the claimant's internal casualty-estimation basis is not canonical"
       ]
     },
     {
       "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
-      "disposition": "REVIEWED_SOURCE_COMPLETION_REQUIRED_FOR_DECOMPOSITION",
+      "disposition": "SOURCE_COMPLETED_ATOMIC_LINE_ITEM_DECOMPOSITION",
       "actions": [
-        "current one-row PARTLY_TRUE compound claim is inadequate for final line-item adjudication",
-        "independent WaPo BDA source is canonical",
-        "IRNA claim-origin URL is present only in legacy curated data and lacks a canonical source object in the active source graph",
-        "do not fabricate line-item source provenance; qualify claim-origin source before publishing decomposed counts"
+        "replace the one-row PARTLY_TRUE blob with a non-denominator compound parent plus atomic line-item propositions",
+        "preserve IRNA count/effect wording, including destroyed-or-damaged language",
+        "independently test aircraft/helicopter, drone, F-15, P-8, C-17, tanker, heavy-helicopter, HIMARS, Patriot, command-center and MQ-9-hangar line items",
+        "retain exact line items as UNRESOLVED where the current canonical BDA does not reconcile count and destroy-versus-damage effect",
+        "do not convert absence of line-item corroboration into falsity",
+        "do not create a parent Lie finding"
       ]
     },
     {
@@ -172,10 +181,14 @@
     },
     {
       "chain_id": "CHAIN-CL-ERBIL-ALL",
-      "disposition": "REVIEWED_PUBLICATION_BLOCKER_REMAINS",
+      "disposition": "SOURCE_COMPLETED_ATOMIC_SCALE_EFFECT_DECOMPOSITION_NO_LIE_FINDING",
       "actions": [
-        "scale overstatement retained",
-        "knowledge/Lie publication requires evidence-component qualification"
+        "separate attack occurrence, physical-damage context, functional effect and near-total scale",
+        "preserve real attack/damage context",
+        "use later AP force-posture evidence to limit the broad operational-effect and near-total-destruction propositions",
+        "retain MISLEADING scale/effect findings rather than treating real damage as proof of near-total destruction",
+        "do not backdate later force-posture evidence into July 26 claimant knowledge",
+        "publish no Lie finding because contemporaneous claimant BDA/knowledge access remains incomplete"
       ]
     },
     {
@@ -306,18 +319,18 @@
     }
   ],
   "cross_cutting_findings": [
-    "The active adjudication input was frozen at Sep. 9 while accepted canonical claim/evidence packets continued through Sep. 18.",
     "One top-level public unit must equal one genuine event/evolving narrative chain; rhetorical similarity alone forms a narrative family, not an event chain.",
     "Supported event facts inside deceptive chains must remain supported and must not inherit false/Lie labels.",
     "Publication acts and asserted factual content are different propositions.",
     "Exact counts require matching denominators; repetitions and evidentiary inferences must not inflate unique-proposition metrics.",
-    "Controls, rhetoric, declaratory policy, and supported context must not inflate accusation/Lie denominators."
+    "Controls, rhetoric, declaratory policy, and supported context must not inflate accusation/Lie denominators.",
+    "The final sweep consumes the Sep. 19 canonical source-completion packet while preserving the sealed Sep. 9 adjudication artifact as historical input.",
+    "Source qualification clears provenance blockers only; it does not automatically satisfy the claimant-knowledge prong.",
+    "Later evidence may adjudicate earlier factual truth without being backdated into statement-time public or claimant knowledge."
   ],
   "remaining_integration_work": [
-    "Qualify canonical claim-origin/source objects for the IRGC 15-day asset list before line-item decomposition.",
-    "Qualify the missing canonical source object for the Qatar AI radar-image fact check before adding that media artifact to the active Ledger.",
-    "Qualify source/evidence components for Kuwait Patriot, 200 U.S. dead, and Erbil scale before publishing strong knowledge labels.",
-    "Run cross-surface regression after canonical semantic merge."
+    "Run exact-head cross-surface regression after the completed semantic overlay.",
+    "Preserve any knowledge finding that remains evidence-incomplete as public-safe no-Lie/withheld output rather than manufacturing source or claimant access."
   ],
   "post_cutoff_intake": {
     "source_packets": [
@@ -338,18 +351,17 @@
     ]
   },
   "false_media_intake": {
-    "imported_from": "data/forensic-v1.3.2/media-forensics.json",
+    "imported_from": "data/forensic-v1.3.2/media-forensics.json plus canonical source-completion packet",
     "imported_media_ids": [
       "MED-001",
       "MED-002",
       "MED-003",
       "MED-004",
       "MED-005",
-      "MED-006"
+      "MED-006",
+      "MED-007"
     ],
-    "rule": "FALSE media artifact findings remain separate from official-origin and knowledge findings. No official attribution is manufactured where provenance is absent.",
-    "still_blocked": [
-      "CL-QATAR-AI / AFP-Arab News Qatar radar image: legacy URLs exist, but the active canonical source graph lacks the specific fact-check source object required for claim-domain publication."
-    ]
+    "rule": "FALSE media artifact findings remain separate from real physical-event findings and from official-origin/knowledge findings. No official attribution is manufactured where provenance is absent.",
+    "still_blocked": []
   }
 }
