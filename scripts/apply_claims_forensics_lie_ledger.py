@@ -39,6 +39,20 @@ def _validated_overlay(root: Path) -> dict[str, Any]:
         raise ValueError("Claims Forensics overlay contract mismatch")
     if not overlay.get("overlay_version"):
         raise ValueError("Claims Forensics overlay lacks overlay_version")
+
+    sweep_path = str(overlay.get("full_sweep_path") or "")
+    sweep_version = str(overlay.get("full_sweep_version") or "")
+    if not sweep_path or not sweep_version:
+        raise ValueError("Claims Forensics overlay lacks full-sweep provenance")
+    sweep = load(root, sweep_path)
+    if sweep.get("artifact_role") != "CLAIMS_FORENSICS_FULL_LEDGER_SWEEP":
+        raise ValueError("Claims Forensics full-sweep artifact role mismatch")
+    if sweep.get("authority") != EXPECTED_AUTHORITY:
+        raise ValueError("Claims Forensics full-sweep authority mismatch")
+    if sweep.get("contract_path") != EXPECTED_CONTRACT:
+        raise ValueError("Claims Forensics full-sweep contract mismatch")
+    if sweep.get("sweep_version") != sweep_version:
+        raise ValueError("Claims Forensics full-sweep version pin mismatch")
     return overlay
 
 
