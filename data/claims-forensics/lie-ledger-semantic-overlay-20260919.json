@@ -1,7 +1,7 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-5",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-6",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "effective_date": "2026-09-19",
@@ -749,7 +749,7 @@
     }
   ],
   "full_sweep_path": "data/claims-forensics/lie-ledger-full-sweep-20260919.json",
-  "full_sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-1",
+  "full_sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-2",
   "append_records": [
     {
       "statement_precision": "DATE_ONLY",
