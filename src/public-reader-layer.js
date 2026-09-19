@@ -391,21 +391,39 @@
 
   function howWeKnow(record, adjudication) {
     const facts = asArray(record && record.observed_facts).map(cleanPublicText).filter(Boolean);
-    const result = facts.slice(0, 4);
+    const result = facts.slice(0, 3);
+    const addUnique = value => {
+      const cleaned = cleanPublicText(value);
+      if (!cleaned || INTERNAL_TEXT.test(cleaned)) return;
+      if (!result.some(item => item.toLowerCase() === cleaned.toLowerCase())) result.push(cleaned);
+    };
+
+    // Always expose the reasoning step when it is public-safe. Facts answer
+    // "what evidence exists"; the inference answers "why that evidence changes
+    // the finding."
+    addUnique(record && record.analytic_inference);
+
     const knowledge = text(record && (record.public_knowledge_judgment || record.knowledge_judgment)).toUpperCase();
-    if (adjudication.key === 'lie' && !result.some(value => /knew|knowledge|access/i.test(value))) {
-      result.push('The evidence supports that the claimant had access to information contradicting the statement when it was made.');
-    } else if (adjudication.key === 'likely-lie' && !result.some(value => /knew|knowledge|access/i.test(value))) {
-      result.push('The evidence makes it more likely than not that the claimant had access to contradictory information at the time.');
+    const knowledgeSummaries = asArray(record && record.knowledge_indicators)
+      .map(item => cleanPublicText(item && item.summary))
+      .filter(value => value && !INTERNAL_TEXT.test(value));
+    knowledgeSummaries.slice(0, 2).forEach(addUnique);
+
+    if (['lie', 'likely-lie'].includes(adjudication.key)) {
+      addUnique(record && record.comparative_assessment);
+      if (!result.some(value => /knew|knowledge|access|possess|record|contradict/i.test(value))) {
+        addUnique(adjudication.key === 'lie'
+          ? 'The claim is false, and the evidence also establishes that the claimant possessed or had direct access to information contradicting it when the statement was made.'
+          : 'The claim is false, and the available access, chronology, repetition, or internal-contradiction evidence makes knowing falsity more likely than an innocent error.');
+      }
     } else if (knowledge === 'INSUFFICIENT_EVIDENCE' && adjudication.key === 'false') {
-      result.push('The claim is false on the available record, but the evidence does not establish that the claimant knew it was false when stated.');
+      addUnique('The claim is false on the completed record, but the evidence does not establish that the claimant knew it was false when stated. That is why this branch is labeled False rather than Lie.');
+    } else if (adjudication.key === 'unresolved') {
+      addUnique('The available evidence does not yet discriminate strongly enough between the live factual alternatives, so Atlas does not convert uncertainty into a falsehood finding.');
     }
-    if (!result.length) {
-      const inference = cleanPublicText(record && record.analytic_inference);
-      if (inference && !INTERNAL_TEXT.test(inference)) result.push(inference);
-    }
-    if (!result.length) result.push('The current evidence supports this finding; open the sources below for the underlying record.');
-    return result;
+
+    if (!result.length) result.push('The current evidence supports this finding; the source drawer below contains the underlying record.');
+    return result.slice(0, 7);
   }
 
   function chainPublicAdjudication(chain) {
@@ -430,15 +448,35 @@
       .filter(Boolean);
     if (explicit.length) return explicit;
 
-    const facts = [];
+    const findings = new Map();
     records.forEach(record => {
-      asArray(record && record.observed_facts).forEach(value => {
-        const cleaned = cleanPublicText(value);
-        if (cleaned && !facts.includes(cleaned)) facts.push(cleaned);
-      });
+      const finding = publicAdjudication(record).label;
+      findings.set(finding, (findings.get(finding) || 0) + 1);
     });
-    if (facts.length) return facts.slice(0, 6);
-    return ['The branch findings below show the chronology, what changed, and which evidence supports each conclusion.'];
+    const findingSummary = [...findings.entries()]
+      .map(([label, count]) => `${count} ${label.toLowerCase()}`)
+      .join(', ');
+
+    const explanation = [];
+    if (findingSummary) explanation.push(`This chain contains branch-specific findings: ${findingSummary}. A finding on one branch does not automatically apply to the others.`);
+
+    const seen = new Set();
+    const add = value => {
+      const cleaned = cleanPublicText(value);
+      if (!cleaned || INTERNAL_TEXT.test(cleaned)) return;
+      const key = cleaned.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        explanation.push(cleaned);
+      }
+    };
+    records.forEach(record => {
+      asArray(record && record.observed_facts).slice(0, 1).forEach(add);
+      add(record && record.analytic_inference);
+    });
+    return explanation.slice(0, 7).length
+      ? explanation.slice(0, 7)
+      : ['The branch findings below show the chronology, what changed, why each proposition received its finding, and the evidence supporting it.'];
   }
 
   function rebuildLieLedger(article, context) {
