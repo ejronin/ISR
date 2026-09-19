@@ -447,6 +447,53 @@ def _apply_chain_overrides(
     return chains
 
 
+def _active_publication_blockers(
+    records: list[dict[str, Any]],
+    historical_blockers: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Project the sealed historical blocker registry onto active adjudications.
+
+    The sealed artifact is provenance and remains unchanged on disk. Once the
+    Claims Forensics overlay changes a proposition's publication status or
+    knowledge ruling, the generated current state must not continue advertising
+    a historical blocker that no longer applies.
+    """
+    active_keys = {
+        (
+            str(record.get("claim_instance_id") or ""),
+            str(blocker.get("code") or ""),
+            str(blocker.get("deficiency") or ""),
+        )
+        for record in records
+        if record.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION"
+        for blocker in record.get("publication_blockers") or []
+    }
+    current = [
+        copy.deepcopy(blocker)
+        for blocker in historical_blockers
+        if (
+            str(blocker.get("claim_instance_id") or ""),
+            str(blocker.get("code") or ""),
+            str(blocker.get("deficiency") or ""),
+        ) in active_keys
+    ]
+    represented = {
+        (
+            str(blocker.get("claim_instance_id") or ""),
+            str(blocker.get("code") or ""),
+            str(blocker.get("deficiency") or ""),
+        )
+        for blocker in current
+    }
+    missing = sorted(active_keys - represented)
+    if missing:
+        raise ValueError(
+            "Claims Forensics active blocker lacks sealed blocker provenance: "
+            f"{missing}"
+        )
+    return current
+
+
 def apply(state: dict[str, Any], root: Path = ROOT) -> dict[str, Any]:
     # Import lazily so the sealed baseline pipeline remains independently usable.
     import build_lie_ledger_evidence_adjudication as baseline
@@ -462,6 +509,14 @@ def apply(state: dict[str, Any], root: Path = ROOT) -> dict[str, Any]:
     records = [copy.deepcopy(unwrap(item)) for item in wrapped_records]
     records = _apply_record_overrides(records, overlay)
     records = _append_claims_forensics_records(records, overlay)
+
+    historical_global_blockers = copy.deepcopy(
+        state.get("lie_ledger_v2_publication_blockers") or []
+    )
+    active_global_blockers = _active_publication_blockers(
+        records,
+        historical_global_blockers,
+    )
 
     # Preserve all existing evidence references and reject any overlay that breaks
     # source resolution after proposition correction.
@@ -523,6 +578,7 @@ def apply(state: dict[str, Any], root: Path = ROOT) -> dict[str, Any]:
     entities["lie_ledger_v2"] = [wrap_record(record) for record in records]
     entities["lie_ledger_chains_v2"] = [wrap_chain(chain) for chain in chains]
     state["lie_ledger_v2_metrics"] = metrics
+    state["lie_ledger_v2_publication_blockers"] = active_global_blockers
 
     governance = state.setdefault("lie_ledger_v2_governance", {})
     governance.update({
@@ -547,8 +603,10 @@ def apply(state: dict[str, Any], root: Path = ROOT) -> dict[str, Any]:
     counts["lie_ledger_v2_chains"] = len(chains)
     counts["lie_ledger_v2_unique_propositions"] = metrics["unique_propositions"]
     counts["lie_ledger_v2_claim_instances"] = metrics["claim_instances"]
+    counts["lie_ledger_v2_publication_blockers"] = len(active_global_blockers)
 
     state.setdefault("integrity", {}).update({
+        "lie_ledger_publication_blockers_open": bool(active_global_blockers),
         "lie_ledger_claims_forensics_overlay_active": True,
         "lie_ledger_one_chain_one_public_unit_required": True,
         "lie_ledger_atomic_truth_independence_preserved": True,
