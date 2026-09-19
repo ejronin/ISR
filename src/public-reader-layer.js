@@ -479,6 +479,14 @@
       : ['The branch findings below show the chronology, what changed, why each proposition received its finding, and the evidence supporting it.'];
   }
 
+  function evidenceGapText(gap) {
+    if (typeof gap === 'string') return cleanPublicText(gap);
+    if (!gap || typeof gap !== 'object') return '';
+    const needed = asArray(gap.needed_evidence || gap.falsifier).map(cleanPublicText).filter(Boolean);
+    const prefix = cleanPublicText(gap.claim_instance_id ? `For ${gap.claim_instance_id}: ` : '');
+    return needed.length ? `${prefix}${needed.join(' ')}` : '';
+  }
+
   function rebuildLieLedger(article, context) {
     const payload = base.modelData(context.model, 'gate3.lie_ledger') || {};
     const chains = asArray(payload.records).length ? asArray(payload.records) : base.recordArray(payload);
@@ -561,12 +569,54 @@
       if (chainSummary) append(copy, 'p', 'reader-chain-summary', chainSummary);
       if (chainFinding) append(top, 'strong', `reader-claim-status ${chainFinding.key}`, chainFinding.label);
 
+      const eventBaseline = cleanPublicText(chain.event_baseline || '');
+      if (eventBaseline) {
+        const baseline = append(card, 'section', 'reader-chain-baseline');
+        append(baseline, 'h4', '', 'What actually happened');
+        append(baseline, 'p', '', eventBaseline);
+      }
+
+      const terminalState = cleanPublicText(chain.terminal_event_state || '');
+      if (terminalState) {
+        const outcome = append(card, 'section', 'reader-chain-outcome');
+        append(outcome, 'h4', '', 'Adjudicated outcome');
+        append(outcome, 'p', '', terminalState);
+      }
+
       const chainWhy = append(card, 'details', 'reader-how-we-know reader-chain-how-we-know');
       append(chainWhy, 'summary', '', 'How Atlas reached this finding');
       const chainExplanation = append(chainWhy, 'ul', 'reader-explanation-list');
       chainPlainEnglish(chain, records).forEach(value => append(chainExplanation, 'li', '', value));
       addEvidence(chainWhy, context, records, 'Sources used across this chain');
 
+      const logic = chain && chain.logic_graph;
+      if (logic && asArray(logic.nodes).length) {
+        const logicDetails = append(card, 'details', 'reader-chain-logic');
+        append(logicDetails, 'summary', '', 'How the logic works');
+        append(logicDetails, 'p', 'section-note',
+          `This trace is generated from canonical claim/evidence relationships: ${Number(logic.claim_node_count || 0)} proposition nodes, ${Number(logic.source_node_count || 0)} source nodes, and ${asArray(logic.edges).length} typed links.`);
+        const relationCounts = new Map();
+        asArray(logic.edges).forEach(edge => {
+          const relation = cleanPublicText(edge && edge.relation);
+          if (relation) relationCounts.set(relation, (relationCounts.get(relation) || 0) + 1);
+        });
+        if (relationCounts.size) {
+          const list = append(logicDetails, 'ul', 'reader-logic-relations');
+          [...relationCounts.entries()].sort((a, b) => a[0].localeCompare(b[0])).forEach(([relation, count]) => {
+            append(list, 'li', '', `${relation.replaceAll('_', ' ').toLowerCase()} — ${count}`);
+          });
+        }
+      }
+
+      const gaps = asArray(chain && chain.open_evidence_gaps).map(evidenceGapText).filter(Boolean);
+      if (gaps.length) {
+        const unknown = append(card, 'details', 'reader-chain-open-gaps');
+        append(unknown, 'summary', '', 'What remains unknown');
+        const list = append(unknown, 'ul', 'reader-explanation-list');
+        gaps.forEach(value => append(list, 'li', '', value));
+      }
+
+      append(card, 'h4', 'reader-chain-claims-heading', 'What was claimed and how the story changed');
       const timeline = append(card, 'ol', 'reader-chain-timeline');
       groupEntries.forEach(([, groupRecords]) => {
         const main = groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0];
