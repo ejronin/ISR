@@ -408,100 +408,192 @@
     return result;
   }
 
+  function chainPublicAdjudication(chain) {
+    const raw = chain && (chain.public_finding || chain.event_level_finding || chain.chain_finding);
+    if (!raw) return null;
+    if (typeof raw === 'object') {
+      const label = cleanPublicText(raw.label || raw.public_label || raw.finding || '');
+      const key = text(raw.key || raw.public_key || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      return label ? { label, key: key || 'chain-finding' } : null;
+    }
+    const label = cleanPublicText(raw);
+    if (!label) return null;
+    return {
+      label,
+      key: label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'chain-finding'
+    };
+  }
+
+  function chainPlainEnglish(chain, records) {
+    const explicit = asArray(chain && (chain.how_we_know || chain.public_reasoning || chain.logic_summary))
+      .map(cleanPublicText)
+      .filter(Boolean);
+    if (explicit.length) return explicit;
+
+    const facts = [];
+    records.forEach(record => {
+      asArray(record && record.observed_facts).forEach(value => {
+        const cleaned = cleanPublicText(value);
+        if (cleaned && !facts.includes(cleaned)) facts.push(cleaned);
+      });
+    });
+    if (facts.length) return facts.slice(0, 6);
+    return ['The branch findings below show the chronology, what changed, and which evidence supports each conclusion.'];
+  }
+
   function rebuildLieLedger(article, context) {
     const payload = base.modelData(context.model, 'gate3.lie_ledger') || {};
     const chains = asArray(payload.records).length ? asArray(payload.records) : base.recordArray(payload);
     const documentObject = article.ownerDocument;
     const header = article.querySelector('.page-intro');
     if (!header) return;
-    setPageIntro(article, 'Claims are grouped by what was actually asserted. Each entry shows the current finding, repeats or related claims when they matter, and the evidence that supports the result.');
+
+    setPageIntro(article, 'Each top-level card is one real event or evolving narrative. Claims, corrections, repetitions, and substitutions stay inside that chain so the reader can see what happened, what changed, and why Atlas reached each finding.');
     [...article.children].forEach(child => { if (child !== header) child.remove(); });
 
     const section = append(article, 'section', 'content-section reader-lie-ledger');
     section.dataset.readerLieLedger = VERSION;
-    append(section, 'h2', '', 'Claims and findings');
+    append(section, 'h2', '', 'Narrative chains and findings');
+
     const controls = append(section, 'form', 'reader-ledger-controls');
     controls.addEventListener('submit', event => event.preventDefault());
-    const searchLabel = append(controls, 'label', '', 'Search claims');
+    const searchLabel = append(controls, 'label', '', 'Search chains or claims');
     const search = append(searchLabel, 'input');
-    search.type = 'search'; search.placeholder = 'Search claim or claimant';
+    search.type = 'search';
+    search.placeholder = 'Search claim, claimant, or finding';
     const statusLabel = append(controls, 'label', '', 'Finding');
     const status = append(statusLabel, 'select');
     append(status, 'option', '', 'All findings').value = '';
+
     const statusKeys = new Map();
     const cards = [];
 
     chains.forEach(chain => {
       const records = asArray(chain && chain.proposition_records);
+      if (!records.length) return;
+
       const groups = new Map();
       records.forEach(record => {
         const key = record.proposition_id || recordProposition(record).toLowerCase();
         if (!groups.has(key)) groups.set(key, []);
         groups.get(key).push(record);
       });
+
       const groupEntries = [...groups.entries()];
-      groupEntries.forEach(([groupKey, groupRecords]) => {
+      const branchMains = groupEntries.map(([, groupRecords]) =>
+        groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0]
+      ).filter(Boolean);
+      const first = branchMains[0] || records[0];
+      const chainFinding = chainPublicAdjudication(chain);
+      const branchFindings = branchMains.map(publicAdjudication);
+      branchFindings.forEach(item => statusKeys.set(item.key, item.label));
+      if (chainFinding) statusKeys.set(chainFinding.key, chainFinding.label);
+
+      const findingKeys = new Set(branchFindings.map(item => item.key));
+      if (chainFinding) findingKeys.add(chainFinding.key);
+
+      const card = append(section, 'article', 'reader-ledger-card reader-ledger-chain-card');
+      card.dataset.readerFindings = [...findingKeys].join(' ');
+      const searchText = [
+        chain.public_title,
+        chain.title,
+        chain.public_summary,
+        chain.plain_english_summary,
+        ...records.flatMap(record => [
+          recordProposition(record),
+          cleanPublicText(record.actor),
+          publicAdjudication(record).label
+        ])
+      ].filter(Boolean).join(' ').toLowerCase();
+      card.dataset.readerSearch = searchText;
+
+      const top = append(card, 'div', 'reader-ledger-card-head');
+      const copy = append(top, 'div');
+      const dates = records.map(statementDate).filter(Boolean);
+      const dateLabel = dates.length > 1 && dates[0] !== dates[dates.length - 1]
+        ? `${dates[0]} – ${dates[dates.length - 1]}`
+        : (dates[0] || '');
+      append(copy, 'p', 'card-kicker', ['Narrative chain', dateLabel].filter(Boolean).join(' · '));
+
+      const chainTitle = cleanPublicText(chain.public_title || chain.title || chain.reader_title || recordProposition(first));
+      append(copy, 'h3', '', chainTitle || 'Narrative chain');
+
+      const chainSummary = cleanPublicText(chain.plain_english_summary || chain.public_summary || chain.event_level_summary || '');
+      if (chainSummary) append(copy, 'p', 'reader-chain-summary', chainSummary);
+      if (chainFinding) append(top, 'strong', `reader-claim-status ${chainFinding.key}`, chainFinding.label);
+
+      const chainWhy = append(card, 'details', 'reader-how-we-know reader-chain-how-we-know');
+      append(chainWhy, 'summary', '', 'How Atlas reached this finding');
+      const chainExplanation = append(chainWhy, 'ul', 'reader-explanation-list');
+      chainPlainEnglish(chain, records).forEach(value => append(chainExplanation, 'li', '', value));
+      addEvidence(chainWhy, context, records, 'Sources used across this chain');
+
+      const timeline = append(card, 'ol', 'reader-chain-timeline');
+      groupEntries.forEach(([, groupRecords]) => {
         const main = groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0];
         if (!main) return;
+
         const adjudication = publicAdjudication(main);
-        statusKeys.set(adjudication.key, adjudication.label);
-        const card = append(section, 'article', `reader-ledger-card finding-${adjudication.key}`);
-        card.dataset.readerFinding = adjudication.key;
-        card.dataset.readerSearch = `${recordProposition(main)} ${cleanPublicText(main.actor)} ${adjudication.label}`.toLowerCase();
-        const top = append(card, 'div', 'reader-ledger-card-head');
-        const copy = append(top, 'div');
-        append(copy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
-        append(copy, 'h3', '', recordProposition(main));
+        const item = append(timeline, 'li', `reader-chain-branch finding-${adjudication.key}`);
+        const branchHead = append(item, 'div', 'reader-ledger-card-head');
+        const branchCopy = append(branchHead, 'div');
+        append(branchCopy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
+        append(branchCopy, 'h4', '', recordProposition(main));
         const intentNote = intentReviewNote(main);
-        if (intentNote) append(copy, 'p', 'reader-intent-note', intentNote);
-        append(top, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
+        if (intentNote) append(branchCopy, 'p', 'reader-intent-note', intentNote);
+        append(branchHead, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
 
-        const related = groupEntries.filter(([key]) => key !== groupKey).flatMap(([, rows]) => rows.filter(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION').slice(0, 1));
-        if (related.length) {
-          const details = append(card, 'details', 'reader-related-claims');
-          append(details, 'summary', '', `Related claims (${related.length})`);
-          const list = append(details, 'ul', 'reader-claim-list');
-          related.forEach(record => {
-            const item = append(list, 'li');
-            append(item, 'span', '', recordProposition(record));
-            append(item, 'small', '', ` — ${publicAdjudication(record).label}`);
-          });
-        }
-
-        const repeats = groupRecords.filter(record => record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type)));
-        if (repeats.length) {
-          const details = append(card, 'details', 'reader-repeated-by');
-          append(details, 'summary', '', `Repeated by (${repeats.length})`);
-          const list = append(details, 'ul', 'reader-claim-list');
-          repeats.forEach(record => append(list, 'li', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · ')));
-          addEvidence(details, context, repeats, 'Sources for repeats');
-        }
-
-        const why = append(card, 'details', 'reader-how-we-know');
-        append(why, 'summary', '', `How we know it is ${adjudication.label.toLowerCase()}`);
+        const why = append(item, 'details', 'reader-how-we-know reader-branch-how-we-know');
+        append(why, 'summary', '', `Why this branch is ${adjudication.label.toLowerCase()}`);
         const explanation = append(why, 'ul', 'reader-explanation-list');
         howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
-        addEvidence(why, context, [main], 'Evidence sources');
-        cards.push(card);
+        addEvidence(why, context, [main], 'Evidence for this branch');
+
+        const repeats = groupRecords.filter(record =>
+          record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type))
+        );
+        if (repeats.length) {
+          const details = append(item, 'details', 'reader-repeated-by');
+          append(details, 'summary', '', `Repeated or amplified by (${repeats.length})`);
+          const list = append(details, 'ul', 'reader-claim-list');
+          repeats.forEach(record => {
+            const row = append(list, 'li');
+            append(row, 'span', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · '));
+            append(row, 'small', '', ` — ${publicAdjudication(record).label}`);
+          });
+          addEvidence(details, context, repeats, 'Sources for repeats');
+        }
       });
+
+      cards.push(card);
     });
 
     [...statusKeys.entries()].sort((a, b) => a[1].localeCompare(b[1])).forEach(([key, label]) => {
-      const option = append(status, 'option', '', label); option.value = key;
+      const option = append(status, 'option', '', label);
+      option.value = key;
     });
+
     const resultCount = append(controls, 'p', 'filter-result-count');
     resultCount.setAttribute('aria-live', 'polite');
+
     const draw = () => {
       const query = search.value.trim().toLowerCase();
       let visible = 0;
       cards.forEach(card => {
-        const hidden = Boolean((query && !card.dataset.readerSearch.includes(query)) || (status.value && card.dataset.readerFinding !== status.value));
+        const findings = new Set((card.dataset.readerFindings || '').split(/\s+/).filter(Boolean));
+        const hidden = Boolean(
+          (query && !card.dataset.readerSearch.includes(query)) ||
+          (status.value && !findings.has(status.value))
+        );
         card.hidden = hidden;
         if (!hidden) visible += 1;
       });
-      resultCount.textContent = `${visible} of ${cards.length} claims shown`;
+      resultCount.textContent = `${visible} of ${cards.length} chains shown`;
     };
-    search.addEventListener('input', draw); status.addEventListener('change', draw); draw();
+
+    search.addEventListener('input', draw);
+    status.addEventListener('change', draw);
+    draw();
 
     const methods = append(article, 'p', 'reader-method-link');
     methods.append(documentObject.createTextNode('Want the methodology behind these findings? '));
