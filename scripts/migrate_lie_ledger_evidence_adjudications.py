@@ -33,6 +33,7 @@ HISTORICAL_ASSESSMENT_PATH = "data/lie-ledger-v2-rook-authority.json"
 HISTORICAL_COMPLETION_PATH = "data/lie-ledger-v2-rook-evidence-completion-20260909.json"
 HISTORICAL_CURRENT_CLAIMS_PATH = "data/lie-ledger-v2-rook-current-claims-20260909.json"
 SOURCE_REGISTRY_PATH = "data/lie-ledger-v2-evidence-sources-20260909.json"
+HISTORICAL_ACCEPTED_PACKET_ID = "UPD-20260909-CATCHUP"
 # Frozen by the previously qualified governance-parity test. This is the
 # substantive truth/knowledge/evidence fingerprint of the accepted historical
 # replay before governance vocabulary is neutralized.
@@ -57,8 +58,41 @@ def unwrap(item: dict[str, Any]) -> dict[str, Any]:
     return record if isinstance(record, dict) else item
 
 
+def _historical_gate3_manifest(root: Path) -> dict[str, Any]:
+    """Freeze migration/audit replay at the accepted Sep. 9 Gate 3 anchor.
+
+    The neutral adjudication artifact is a sealed historical replay. Later
+    canonical source admissions must not retroactively change which legacy
+    curated URLs resolved during that replay.
+    """
+    manifest_path = str(hardened.gate3_core.MANIFEST)
+    manifest = load(root, manifest_path)
+    accepted = list(manifest.get("accepted_updates") or [])
+    anchor_index = next(
+        (index for index, entry in enumerate(accepted) if entry.get("packet_id") == HISTORICAL_ACCEPTED_PACKET_ID),
+        None,
+    )
+    if anchor_index is None:
+        raise ValueError(f"historical Gate 3 anchor is missing: {HISTORICAL_ACCEPTED_PACKET_ID}")
+    frozen = copy.deepcopy(manifest)
+    frozen["accepted_updates"] = accepted[: anchor_index + 1]
+    frozen["current_evidence_cutoff"] = frozen["accepted_updates"][-1]["evidence_cutoff"]
+    return frozen
+
+
 def build_neutral_replay(root: Path) -> dict[str, Any]:
-    state = hardened.build_state(root)
+    frozen_manifest = _historical_gate3_manifest(root)
+    manifest_path = root / "data/canonical-ledger/.manifest-v2.lie-ledger-historical-replay.json"
+    previous_manifest = hardened.gate3_core.MANIFEST
+    try:
+        manifest_path.write_bytes(canonical_bytes(frozen_manifest))
+        hardened.gate3_core.MANIFEST = manifest_path.relative_to(root).as_posix()
+        state = hardened.build_state(root)
+    finally:
+        hardened.gate3_core.MANIFEST = previous_manifest
+        if manifest_path.exists():
+            manifest_path.unlink()
+
     historical_evidence_completion.inject_sources(state, root)
     historical_projection.apply(state, root)
     historical_evidence_completion.apply(state, root, historical_projection)
