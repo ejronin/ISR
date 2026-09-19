@@ -236,6 +236,137 @@ def _append_claims_forensics_records(
     return records
 
 
+def _build_chain_logic_graph(chain: dict[str, Any]) -> dict[str, Any]:
+    """Build a deterministic, public-safe logic graph from canonical claim records.
+
+    The graph never invents a causal relationship. It exposes only relationships
+    already encoded in the records plus evidence-component membership. Detailed
+    prose remains in the proposition records; this object makes the route from
+    claim -> evidence -> factual/knowledge finding machine reconstructable.
+    """
+    records = chain.get("proposition_records") or []
+    nodes: list[dict[str, Any]] = []
+    edges: list[dict[str, Any]] = []
+    node_ids: set[str] = set()
+    edge_keys: set[tuple[str, str, str]] = set()
+
+    def add_node(node: dict[str, Any]) -> None:
+        node_id = str(node.get("id") or "")
+        if node_id and node_id not in node_ids:
+            node_ids.add(node_id)
+            nodes.append(node)
+
+    def add_edge(source: str, target: str, relation: str) -> None:
+        if not source or not target or source == target:
+            return
+        key = (source, target, relation)
+        if key in edge_keys:
+            return
+        edge_keys.add(key)
+        edges.append({
+            "id": f"EDGE-{len(edges) + 1:04d}",
+            "source": source,
+            "target": target,
+            "relation": relation,
+        })
+
+    by_instance: dict[str, str] = {}
+    by_claim: dict[str, str] = {}
+    ordered_claim_nodes: list[str] = []
+
+    for record in records:
+        instance = str(record.get("claim_instance_id") or "")
+        if not instance:
+            continue
+        node_id = f"CLAIM-{instance}"
+        ordered_claim_nodes.append(node_id)
+        by_instance[instance] = node_id
+        for key in (
+            record.get("claim_id"),
+            record.get("original_claim_id"),
+        ):
+            if key and str(key) not in by_claim:
+                by_claim[str(key)] = node_id
+
+        publication = str(record.get("publication_status") or "")
+        public_knowledge = (
+            record.get("knowledge_judgment")
+            if publication == "PUBLIC_READY"
+            else "WITHHELD_PENDING_EVIDENCE"
+        )
+        add_node({
+            "id": node_id,
+            "type": "ATOMIC_PROPOSITION",
+            "claim_instance_id": instance,
+            "proposition_id": record.get("proposition_id"),
+            "actor": record.get("actor"),
+            "statement_time": copy.deepcopy(record.get("statement_time")),
+            "relation_type": record.get("relation_type"),
+            "truth_finding": record.get("truth_adjudication"),
+            "knowledge_finding": public_knowledge,
+            "publication_status": publication,
+        })
+
+        source_ids = sorted({
+            str(source_id)
+            for source_id in record.get("source_ids") or []
+            if source_id
+        })
+        support = record.get("evidence_support") or {}
+        buckets = {
+            "what_was_said": "DOCUMENTS_CLAIM_TEXT",
+            "factual_baseline": "SUPPORTS_FACTUAL_BASELINE",
+            "contemporaneous_state": "SUPPORTS_CONTEMPORANEOUS_STATE",
+            "contrary_evidence": "CONTRADICTS_OR_LIMITS_PROPOSITION",
+            "corrections": "DOCUMENTS_CORRECTION",
+            "repetitions": "DOCUMENTS_REPETITION",
+            "knowledge_access": "SUPPORTS_KNOWLEDGE_ACCESS",
+            "knowledge_indicators": "SUPPORTS_KNOWLEDGE_INFERENCE",
+            "comparative_inference": "SUPPORTS_COMPARATIVE_INFERENCE",
+            "credible_alternative": "SUPPORTS_CREDIBLE_ALTERNATIVE",
+            "falsifier": "SUPPORTS_FALSIFIER",
+        }
+        for source_id in source_ids:
+            add_node({"id": f"SOURCE-{source_id}", "type": "SOURCE", "source_id": source_id})
+        for bucket, relation in buckets.items():
+            for source_id in support.get(bucket) or []:
+                source_node = f"SOURCE-{source_id}"
+                add_node({"id": source_node, "type": "SOURCE", "source_id": source_id})
+                add_edge(source_node, node_id, relation)
+
+    # Only encode relationship edges already present in the record model.
+    for index, record in enumerate(records):
+        instance = str(record.get("claim_instance_id") or "")
+        current = by_instance.get(instance)
+        if not current:
+            continue
+        parent = None
+        if record.get("parent_claim_instance_id"):
+            parent = by_instance.get(str(record.get("parent_claim_instance_id")))
+        if parent is None and record.get("parent_claim_id"):
+            parent = by_claim.get(str(record.get("parent_claim_id")))
+        relation = str(record.get("relation_type") or "")
+        if parent and relation:
+            add_edge(parent, current, relation)
+        elif relation in {"REPETITION", "AMPLIFICATION", "CORRECTION", "RETRACTION", "NARRATIVE_SUBSTITUTION"} and index > 0:
+            # Some legacy rows carry relation semantics but no explicit parent.
+            # In that bounded case, link only to the immediately prior node in
+            # the already-ordered chain and mark the provenance of that fallback.
+            previous = ordered_claim_nodes[index - 1]
+            add_edge(previous, current, f"{relation}_TO_PRIOR_CHAIN_NODE")
+
+    return {
+        "schema_version": "1.0",
+        "graph_type": "CLAIM_EVIDENCE_ADJUDICATION",
+        "chain_id": chain.get("chain_id"),
+        "nodes": nodes,
+        "edges": edges,
+        "claim_node_count": len(ordered_claim_nodes),
+        "source_node_count": len([node for node in nodes if node.get("type") == "SOURCE"]),
+        "generation_rule": "DETERMINISTIC_FROM_CANONICAL_CLAIM_AND_EVIDENCE_RELATIONSHIPS",
+    }
+
+
 def _apply_chain_overrides(
     chains: list[dict[str, Any]],
     overlay: dict[str, Any],
@@ -269,6 +400,28 @@ def _apply_chain_overrides(
                 chain["narrative_family_correction"] = copy.deepcopy(patch)
                 chain["claims_forensics_overlay_version"] = overlay["overlay_version"]
                 break
+
+    for chain in chains:
+        chain["claim_nodes"] = [
+            record.get("claim_instance_id")
+            for record in chain.get("proposition_records") or []
+            if record.get("claim_instance_id")
+        ]
+        chain["participants"] = sorted({
+            str(record.get("actor"))
+            for record in chain.get("proposition_records") or []
+            if record.get("actor")
+        })
+        chain["open_evidence_gaps"] = [
+            {
+                "claim_instance_id": record.get("claim_instance_id"),
+                "falsifier": copy.deepcopy(record.get("falsifier") or []),
+            }
+            for record in chain.get("proposition_records") or []
+            if record.get("truth_adjudication") == "UNRESOLVED"
+            or record.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION"
+        ]
+        chain["logic_graph"] = _build_chain_logic_graph(chain)
 
     return chains
 
@@ -379,6 +532,7 @@ def apply(state: dict[str, Any], root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_one_chain_one_public_unit_required": True,
         "lie_ledger_atomic_truth_independence_preserved": True,
         "lie_ledger_chain_plain_english_reasoning_supported": True,
+        "lie_ledger_machine_logic_graph_active": True,
         "lie_ledger_historical_adjudication_input_preserved": True,
         "lie_ledger_post_cutoff_claim_intake_active": bool(overlay.get("append_records")),
     })
