@@ -80,19 +80,23 @@ def _historical_gate3_manifest(root: Path) -> dict[str, Any]:
     return frozen
 
 
-def build_neutral_replay(root: Path) -> dict[str, Any]:
+def build_historical_base_state(root: Path) -> dict[str, Any]:
+    """Build the canonical base exactly as it stood at the Sep. 9 replay anchor."""
     frozen_manifest = _historical_gate3_manifest(root)
     manifest_path = root / "data/canonical-ledger/.manifest-v2.lie-ledger-historical-replay.json"
     previous_manifest = hardened.gate3_core.MANIFEST
     try:
         manifest_path.write_bytes(canonical_bytes(frozen_manifest))
         hardened.gate3_core.MANIFEST = manifest_path.relative_to(root).as_posix()
-        state = hardened.build_state(root)
+        return hardened.build_state(root)
     finally:
         hardened.gate3_core.MANIFEST = previous_manifest
         if manifest_path.exists():
             manifest_path.unlink()
 
+
+def build_neutral_replay(root: Path) -> dict[str, Any]:
+    state = build_historical_base_state(root)
     historical_evidence_completion.inject_sources(state, root)
     historical_projection.apply(state, root)
     historical_evidence_completion.apply(state, root, historical_projection)
