@@ -181,6 +181,52 @@ for (const controlId of [
 }
 
 
+const postCutoffByInstance = new Map(propositions.map(record => [record.claim_instance_id, record]));
+for (const instance of [
+  'CI-CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912-P01',
+  'CI-CLM-HOUTHI-SHARURAH-BASE-20260913-P01',
+  'CI-CLM-IRGC-EL-GAIA-MINE-20260914-P01',
+  'CI-CLM-IRGC-QESHM-MQ9-LOSS-20260916-P01',
+  'CI-CLM-IRGC-QESHM-MQ9-52-20260916-P01',
+  'CI-CLM-IRGC-QESHM-MQ9-LOSS-20260917-P01',
+  'CI-CLM-IRGC-QESHM-MQ9-53-20260917-P01',
+  'CI-CLM-HOUTHI-F15SA-CAUSATION-20260916-P01'
+]) {
+  assert(postCutoffByInstance.has(instance), `accepted post-Sep. 9 claim is absent from active Claims Forensics state: ${instance}`);
+}
+
+assert.equal(
+  postCutoffByInstance.get('CI-CLM-IRGC-QESHM-MQ9-52-20260916-P01')?.truth_adjudication,
+  'UNRESOLVED',
+  '52nd MQ-9 ordinal must remain unsupported/unresolved rather than be auto-promoted to false'
+);
+assert.match(
+  postCutoffByInstance.get('CI-CLM-IRGC-QESHM-MQ9-52-20260916-P01')?.public_combined_assessment || '',
+  /NO LIE FINDING/i,
+  '52nd MQ-9 ordinal must explicitly preserve no-Lie disposition'
+);
+assert.equal(
+  postCutoffByInstance.get('CI-CLM-IRGC-QESHM-MQ9-53-20260917-P01')?.truth_adjudication,
+  'UNRESOLVED',
+  '53rd MQ-9 ordinal must remain unsupported/unresolved rather than be auto-promoted to false'
+);
+
+const omanDelay = propositions.filter(record =>
+  record.proposition_id === 'PROP-SAUDI-REQUESTED-OMAN-DELAY-20260914'
+);
+assert.equal(omanDelay.length, 2, 'Saudi-requested-delay proposition must preserve one origin plus one repetition');
+assert.equal(omanDelay.filter(record => record.counts_as_unique_proposition).length, 1,
+  'Saudi-requested-delay repetition must not inflate unique-proposition totals');
+assert.equal(omanDelay.filter(record => record.relation_type === 'REPETITION').length, 1);
+
+const kingKhalid = propositions.filter(record =>
+  (record.original_claim_id || record.claim_id) === 'CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914'
+);
+assert.equal(kingKhalid.length, 2, 'King Khalid claim must decompose occurrence from specific BDA');
+assert.equal(kingKhalid.find(record => record.proposition_axis === 'ATTACK_OCCURRENCE')?.truth_adjudication, 'SUPPORTED');
+assert.equal(kingKhalid.find(record => record.proposition_axis === 'BATTLE_DAMAGE_ASSESSMENT')?.truth_adjudication, 'UNRESOLVED');
+
+
 for (const record of propositions) {
   const support = record.evidence_support || {};
   for (const ids of Object.values(support)) {
