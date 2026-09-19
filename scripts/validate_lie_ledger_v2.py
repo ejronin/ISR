@@ -352,6 +352,30 @@ def validate(root: Path = ROOT) -> None:
     global_blocker_ids = {str(item.get("blocker_id") or "") for item in global_blockers}
     require(not (required_resolved & global_blocker_ids), "resolved historical blocker remained open")
     require(all("authority" not in blocker for blocker in global_blockers), "global blocker carries active persona authority")
+    active_blocker_keys = {
+        (
+            str(record.get("claim_instance_id") or ""),
+            str(blocker.get("code") or ""),
+            str(blocker.get("deficiency") or ""),
+        )
+        for record in records
+        if record.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION"
+        for blocker in record.get("publication_blockers") or []
+    }
+    global_blocker_keys = {
+        (
+            str(blocker.get("claim_instance_id") or ""),
+            str(blocker.get("code") or ""),
+            str(blocker.get("deficiency") or ""),
+        )
+        for blocker in global_blockers
+    }
+    require(global_blocker_keys == active_blocker_keys, "global publication-blocker registry is stale relative to active adjudications")
+    require(
+        {blocker.get("claim_instance_id") for blocker in global_blockers}
+        == {"CI-IR-CLM-0011-P01", "CI-IR-CLM-0011-P02"},
+        "unexpected active publication-blocked case remains after Sep. 19 source completion",
+    )
 
     remains = [record for record in records if record.get("proposition_id") == "PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION"]
     require(len(remains) == 1, "American-remains evidence proposition missing or duplicated")
