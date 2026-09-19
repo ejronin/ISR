@@ -186,7 +186,29 @@ def validate(root: Path = ROOT) -> None:
     adjudication = load(root, ADJUDICATION_PATH)
     require(adjudication.get("artifact_role") == "LIE_LEDGER_V2_EVIDENCE_ADJUDICATION_SET", "active Lie Ledger adjudication artifact role mismatch")
     require(adjudication.get("adjudication_version") == ADJUDICATION_VERSION, "tracked adjudication version mismatch")
-    require(int(adjudication.get("record_count") or 0) == len(records), "tracked adjudication record count mismatch")
+    sealed_rows = adjudication.get("records") or []
+    sealed_ids = {
+        str(row.get("claim_instance_id") or "")
+        for row in sealed_rows
+        if row.get("claim_instance_id")
+    }
+    current_ids = {
+        str(row.get("claim_instance_id") or "")
+        for row in records
+        if row.get("claim_instance_id")
+    }
+    sealed_count = int(adjudication.get("record_count") or 0)
+    require(sealed_count == len(sealed_rows), "tracked adjudication internal record count mismatch")
+    require(len(sealed_ids) == sealed_count, "tracked adjudication contains duplicate/missing claim_instance_id values")
+    require(sealed_ids <= current_ids, "current Claims Forensics state deleted a sealed adjudication proposition")
+    appended_ids = current_ids - sealed_ids
+    require(
+        int(governance.get("post_cutoff_appended_record_count") or 0) == len(appended_ids),
+        "Claims Forensics appended-record count mismatch",
+    )
+    if appended_ids:
+        require(governance.get("claims_forensics_overlay_path"), "post-cutoff append lacks overlay provenance path")
+        require(governance.get("claims_forensics_overlay_version"), "post-cutoff append lacks overlay version")
     require(canonical.get("release", {}).get("lie_ledger_governance_version") == GOVERNANCE, "canonical governance release pin mismatch")
     require(canonical.get("release", {}).get("lie_ledger_adjudication_version") == ADJUDICATION_VERSION, "canonical adjudication release pin mismatch")
     require(canonical.get("release", {}).get("lie_ledger_adjudication_record_sha256") == (adjudication.get("migration_provenance") or {}).get("neutral_record_set_sha256"), "canonical adjudication fingerprint pin mismatch")
@@ -201,6 +223,47 @@ def validate(root: Path = ROOT) -> None:
             validator.validate(record)
 
     known_sources = source_ids(canonical)
+
+    accusation_chains = [
+        chain for chain in chains
+        if chain.get("classification") == "ACCUSATION_CHAIN"
+        and chain.get("public_include_in_accusation_count") is True
+    ]
+    control_chains = [
+        chain for chain in chains
+        if chain.get("classification") != "ACCUSATION_CHAIN"
+        and chain.get("public_include_in_accusation_count") is False
+    ]
+    require(len(accusation_chains) == 33, f"current accusation-chain denominator drifted: {len(accusation_chains)}")
+    require(len(control_chains) == 14, f"current control-chain denominator drifted: {len(control_chains)}")
+    require(len(accusation_chains) + len(control_chains) == len(chains), "current Lie Ledger chain classification is incomplete")
+
+    # Every chain must be independently reconstructable from canonical claim,
+    # evidence-component, and relationship references. The graph is structural:
+    # it may expose only public-safe knowledge state for blocked assessments.
+    for chain in chains:
+        graph = chain.get("logic_graph") or {}
+        require(graph.get("graph_type") == "CLAIM_EVIDENCE_ADJUDICATION", f"machine logic graph missing for chain {chain.get('chain_id')}")
+        claim_nodes = [
+            node for node in graph.get("nodes") or []
+            if node.get("type") == "ATOMIC_PROPOSITION"
+        ]
+        proposition_records = chain.get("proposition_records") or []
+        require(len(claim_nodes) == len(proposition_records), f"logic graph proposition count mismatch {chain.get('chain_id')}")
+        graph_instances = {str(node.get("claim_instance_id") or "") for node in claim_nodes}
+        record_instances = {str(row.get("claim_instance_id") or "") for row in proposition_records}
+        require(graph_instances == record_instances, f"logic graph proposition identity mismatch {chain.get('chain_id')}")
+        for node in claim_nodes:
+            record = next(row for row in proposition_records if row.get("claim_instance_id") == node.get("claim_instance_id"))
+            if record.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION":
+                require(node.get("knowledge_finding") == "WITHHELD_PENDING_EVIDENCE", f"logic graph leaks blocked knowledge finding {record.get('claim_instance_id')}")
+        graph_source_ids = {
+            str(node.get("source_id") or "")
+            for node in graph.get("nodes") or []
+            if node.get("type") == "SOURCE" and node.get("source_id")
+        }
+        require(graph_source_ids <= known_sources, f"logic graph contains unresolved source reference {chain.get('chain_id')}")
+
     for record in records:
         assert_no_active_deception_score(record)
         require("authority_status" not in record, f"active persona-status field remains in {record['claim_instance_id']}")
@@ -244,21 +307,39 @@ def validate(root: Path = ROOT) -> None:
         "estimative knowledge is not represented through circumstantial/institutional evidence"
     )
 
-    # Source proposition fidelity hard-stop: the 16-fighter source said hit, not destroyed/downed.
+    # Source proposition fidelity hard-stop: the Apr. 28 source said 16 fighters
+    # were hit. Keep that source-faithful assertion separate from the analytic
+    # metric-integrity branch comparing "aircraft hit" with earlier "drones downed"
+    # totals.
     sixteen = [
         record for record in records
         if record.get("original_claim_id") == "IR-CLM-0604"
         and record.get("adjudication_status") == ADJUDICATED
     ]
-    require(sixteen, "IR-CLM-0604 v2 proposition missing")
-    require(any(record["proposition"] == "At least 16 enemy fighters were hit." for record in sixteen), "IR-CLM-0604 source wording not restored to hit")
-    require(all("destroy" not in record["proposition"].casefold() and "downed" not in record["proposition"].casefold() for record in sixteen), "IR-CLM-0604 proposition strengthened beyond source")
+    require(sixteen, "IR-CLM-0604 v2 propositions missing")
+    sixteen_source = [
+        record for record in sixteen
+        if record.get("proposition_id") == "PROP-AIRCRAFT-16-FIGHTERS-HIT-20260428"
+    ]
+    require(len(sixteen_source) == 1, "IR-CLM-0604 source-faithful 16-fighter proposition missing or duplicated")
+    require(sixteen_source[0]["proposition"] == "At least 16 enemy fighters were hit.", "IR-CLM-0604 source wording not restored to hit")
+    require("destroy" not in sixteen_source[0]["proposition"].casefold() and "downed" not in sixteen_source[0]["proposition"].casefold(), "IR-CLM-0604 source proposition strengthened beyond source")
+    sixteen_metric = [
+        record for record in sixteen
+        if record.get("proposition_id") == "PROP-AIRCRAFT-AGGREGATE-METRIC-COMPARABILITY-20260428"
+    ]
+    require(len(sixteen_metric) == 1, "IR-CLM-0604 metric-integrity proposition missing or duplicated")
+    require(sixteen_metric[0]["proposition_axis"] == "METRIC_INTEGRITY", "IR-CLM-0604 metric branch is not structurally separated")
+    require(sixteen_metric[0]["counts_as_unique_proposition"] is False, "IR-CLM-0604 metric inference inflates unique proposition count")
 
-    # Publisher framing remains a separate claim instance from the quoted/source-body proposition.
-    headline = [record for record in records if record.get("proposition_id") == "PROP-IR-210-DOWNED-HEADLINE"]
-    require(len(headline) == 1, "210-aircraft publisher headline proposition missing or duplicated")
-    require(headline[0]["actor"] == "Press TV", "publisher headline silently attributed to source speaker")
-    require(headline[0]["proposition_axis"] == "PUBLISHER_FRAMING", "publisher framing not structurally separated")
+    # The observable fact that Press TV printed a headline is not itself false.
+    # The factual proposition under adjudication is the headline's asserted content.
+    headline = [record for record in records if record.get("proposition_id") == "PROP-IR-210-DOWNED-ASSERTION"]
+    require(len(headline) == 1, "210-aircraft underlying headline assertion missing or duplicated")
+    require(headline[0]["actor"] == "Press TV", "publisher assertion silently attributed to source speaker")
+    require(headline[0]["proposition_axis"] == "EFFECT_COUNT", "210 downing assertion not separated from publication act")
+    require("downed about 210 enemy aircraft" in headline[0]["proposition"].casefold(), "210-aircraft underlying assertion wording drifted")
+    require(headline[0]["truth_adjudication"] == "FALSE", "210-aircraft underlying assertion factual finding changed")
 
     # Historical Sep. 9 evidence-completion inputs remain traceable, but no
     # historical author is active authority in generated state.
@@ -294,6 +375,64 @@ def validate(root: Path = ROOT) -> None:
     require(len({record["proposition_id"] for record in tanf}) == 3, "al-Tanf atomic proposition identities are not unique")
     require(all(record["counts_as_unique_proposition"] for record in tanf), "al-Tanf atomic proposition excluded from unique proposition denominator")
     require(not any(record.get("claim_id") == "CL-TANF" for record in records), "legacy blended CL-TANF v2 record still double-counts the atomic decomposition")
+
+    # Sep. 19 source-completion cases must be adjudicated without reviving the
+    # old publication blockers or manufacturing knowledge from source presence.
+    asset_parent = next((record for record in records if record.get("claim_instance_id") == "CI-CL-IRGC-ASSET-LIST"), None)
+    require(asset_parent is not None, "source-qualified IRGC asset scorecard parent missing")
+    require(asset_parent.get("publication_status") == "PUBLIC_READY", "IRGC asset scorecard remained source-blocked after canonical qualification")
+    require(asset_parent.get("counts_as_unique_proposition") is False, "compound asset-scorecard parent inflates unique proposition count")
+    require("SRC-E7D3837B67C4" in (asset_parent.get("source_ids") or []), "IRGC scorecard does not consume canonical claim-origin source")
+    asset_atoms = [
+        record for record in records
+        if record.get("original_claim_id") == "CL-IRGC-ASSET-LIST"
+        and record.get("claim_instance_id") != "CI-CL-IRGC-ASSET-LIST"
+    ]
+    require(len(asset_atoms) == 12, "IRGC scorecard atomic material-line decomposition is incomplete")
+    require(all(record.get("truth_adjudication") == "UNRESOLVED" for record in asset_atoms), "unreconciled IRGC scorecard line item was promoted beyond evidence")
+    require(all(record.get("knowledge_judgment") == "NOT_ASSESSABLE" for record in asset_atoms), "unresolved IRGC scorecard line item manufactured claimant knowledge")
+    require(all("SRC-E7D3837B67C4" in (record.get("evidence_support") or {}).get("what_was_said", []) for record in asset_atoms), "IRGC scorecard atom lacks direct claim-source fidelity")
+
+    qatar_ai = next((record for record in records if record.get("claim_instance_id") == "CI-MEDIA-MED-007"), None)
+    require(qatar_ai is not None, "Qatar AI radar-image media branch missing")
+    require(qatar_ai.get("truth_adjudication") == "FALSE", "Qatar AI radar-image artifact factual finding changed")
+    require(qatar_ai.get("denominator_class") == "MEDIA_ARTIFACT" and not qatar_ai.get("counts_as_unique_proposition"), "Qatar media artifact inflates accusation denominator")
+    require(qatar_ai.get("knowledge_judgment") == "NOT_ASSESSABLE", "Qatar fake image was improperly attributed to an official claimant")
+    require({"SRC-B56BDBD8628F", "SRC-81C038608946"} <= set(qatar_ai.get("source_ids") or []), "Qatar fake image lacks canonical fact-check provenance")
+
+    kwi = next((record for record in records if record.get("claim_instance_id") == "CI-CL-KWI-PATRIOT"), None)
+    require(kwi is not None and kwi.get("publication_status") == "PUBLIC_READY", "Kuwait Patriot attribution remained blocked")
+    require(kwi.get("truth_adjudication") == "FALSE", "Kuwait Patriot causal attribution factual finding changed")
+    require(kwi.get("knowledge_judgment") == "POSSIBLE_KNOWLEDGE", "Kuwait Patriot knowledge prong exceeds evidence-complete level")
+    require("NO LIE FINDING" in kwi.get("combined_assessment", ""), "Kuwait Patriot false attribution was improperly promoted to Lie")
+    require({"SRC-67995288F15E", "SRC-AB8D1A29D6A5"} <= set(kwi.get("source_ids") or []), "Kuwait Patriot proposition lacks source-qualified origin/counterevidence")
+
+    dead = next((record for record in records if record.get("claim_instance_id") == "CI-CL-200-US-DEAD"), None)
+    require(dead is not None and dead.get("publication_status") == "PUBLIC_READY", ">200 U.S. fatalities claim remained blocked")
+    require(dead.get("truth_adjudication") == "FALSE", ">200 U.S. fatalities factual finding changed")
+    require(dead.get("knowledge_judgment") == "INSUFFICIENT_EVIDENCE", ">200 U.S. fatalities claim manufactured knowledge from a large numerical error")
+    require("NO LIE FINDING" in dead.get("combined_assessment", ""), ">200 U.S. fatalities false count was improperly promoted to Lie")
+    require({"SRC-BACFCAB20181", "SRC-691C9B6A352A", "SRC-B4C80D942772"} <= set(dead.get("source_ids") or []), ">200 U.S. fatalities claim lacks canonical origin/casualty evidence")
+
+    erbil_parent = next((record for record in records if record.get("claim_instance_id") == "CI-CL-ERBIL-ALL"), None)
+    require(erbil_parent is not None and erbil_parent.get("publication_status") == "PUBLIC_READY", "Erbil compound claim remained blocked")
+    require(erbil_parent.get("counts_as_unique_proposition") is False, "Erbil compound parent duplicates atomic scale/effect propositions")
+    erbil_atoms = [
+        record for record in records
+        if record.get("original_claim_id") == "CL-ERBIL-ALL"
+        and record.get("claim_instance_id") != "CI-CL-ERBIL-ALL"
+    ]
+    require(len(erbil_atoms) == 4, "Erbil occurrence/damage/effect/scale decomposition is incomplete")
+    by_axis = {record.get("proposition_axis"): record for record in erbil_atoms}
+    require(by_axis.get("ATTACK_OCCURRENCE", {}).get("truth_adjudication") == "SUPPORTED", "Erbil real attack occurrence was erased by scale adjudication")
+    require(by_axis.get("PHYSICAL_EFFECT", {}).get("truth_adjudication") == "PARTLY_TRUE", "Erbil real damage context was erased by scale adjudication")
+    require(by_axis.get("FUNCTIONAL_EFFECT", {}).get("truth_adjudication") == "MISLEADING", "Erbil functional-effect overstatement not preserved")
+    require(by_axis.get("SCALE", {}).get("truth_adjudication") == "MISLEADING", "Erbil near-total scale overstatement not preserved")
+    require(all(
+        record.get("knowledge_judgment") == "INSUFFICIENT_EVIDENCE"
+        and "NO LIE FINDING" in record.get("combined_assessment", "")
+        for record in erbil_atoms if record.get("counts_as_unique_proposition")
+    ), "Erbil scale/effect findings exceed the claimant-knowledge evidence")
 
     expected_metrics = recompute_metrics(records, len(chains))
     require(canonical.get("lie_ledger_v2_metrics") == expected_metrics, "canonical Lie Ledger v2 metrics do not independently reconcile")

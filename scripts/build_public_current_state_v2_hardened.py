@@ -152,8 +152,12 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "data/canonical-current-state-v2.json": "DERIVED_GATE3_CANONICAL_CURRENT_STATE",
         "data/lie-ledger-v2-evidence-adjudications.json": "ACTIVE_LIE_LEDGER_EVIDENCE_ADJUDICATION_SET",
         "data/lie-ledger-v2-evidence-sources-20260909.json": "LIE_LEDGER_EVIDENCE_SOURCE_REGISTRY",
-        "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md": "ACTIVE_LIE_LEDGER_EVIDENCE_CONTRACT",
-        "scripts/build_lie_ledger_evidence_adjudication.py": "ACTIVE_LIE_LEDGER_EVIDENCE_BUILDER",
+        "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md": "HISTORICAL_LIE_LEDGER_EVIDENCE_CONTRACT",
+        "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md": "ACTIVE_CLAIMS_FORENSICS_LOGIC_CONTRACT",
+        "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json": "ACTIVE_CLAIMS_FORENSICS_SEMANTIC_OVERLAY",
+        "data/claims-forensics/lie-ledger-full-sweep-20260919.json": "ACTIVE_CLAIMS_FORENSICS_FULL_LEDGER_SWEEP",
+        "scripts/build_lie_ledger_evidence_adjudication.py": "HISTORICAL_LIE_LEDGER_EVIDENCE_BUILDER",
+        "scripts/apply_claims_forensics_lie_ledger.py": "ACTIVE_CLAIMS_FORENSICS_SEMANTIC_BUILDER",
         "schemas/lie-ledger-evidence-adjudication-v2.json": "ACTIVE_LIE_LEDGER_EVIDENCE_SCHEMA",
         "scripts/build_public_current_state_v2.py": "GATE3_PUBLIC_READ_MODEL_GENERATOR",
         "scripts/public_read_model_current_foundation.py": "CURRENT_PUBLIC_READ_MODEL_FOUNDATION",
@@ -184,6 +188,9 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     state["release"]["lie_ledger_adjudication_record_sha256"] = canonical["release"].get("lie_ledger_adjudication_record_sha256")
     state["release"]["lie_ledger_evidence_completion_version"] = canonical["release"].get("lie_ledger_evidence_completion_version")
     state["release"]["lie_ledger_current_claim_update_version"] = canonical["release"].get("lie_ledger_current_claim_update_version")
+    state["release"]["lie_ledger_claims_forensics_overlay_version"] = canonical["release"].get("lie_ledger_claims_forensics_overlay_version")
+    state["release"]["lie_ledger_claims_forensics_full_sweep_version"] = canonical["release"].get("lie_ledger_claims_forensics_full_sweep_version")
+    state["release"]["lie_ledger_claims_forensics_contract_path"] = canonical["release"].get("lie_ledger_claims_forensics_contract_path")
     generator_raw = foundation.canonical_input_bytes((root / GENERATOR).read_bytes())
     schema_raw = foundation.canonical_input_bytes((root / SCHEMA).read_bytes())
     state["generator"] = {
@@ -205,6 +212,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_component_evidence_refs_public": True,
         "lie_ledger_active_adjudication_input_neutral": True,
         "lie_ledger_historical_handoffs_are_migration_provenance_only": True,
+        "lie_ledger_claims_forensics_release_pinned": bool(state["release"].get("lie_ledger_claims_forensics_overlay_version") and state["release"].get("lie_ledger_claims_forensics_full_sweep_version")),
         "lie_ledger_active_persona_authority_removed": True,
         "current_foundation_direct_from_canonical_v2": True,
         "historical_public_v1_compiler_in_active_input_graph": False,
