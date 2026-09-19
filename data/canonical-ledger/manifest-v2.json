@@ -164,6 +164,17 @@
       "previous_lineage_sha256": "e425467033b4ca1c020109143f1ff1c43f57c4bc221faae78def98980d5c2c5c",
       "sequence": 15,
       "sha256": "90565d34650b4b9df0cfda931df0c3ab50de3b380acb81b7064ae3532d61ed99"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-09-18T10:27:26-04:00",
+      "known_at": "2026-09-19T16:00:00-04:00",
+      "lineage_sha256": "e136e2b4cf01874ee13912275c33d467ff7f593532cc5e1db268d2ae36c383ce",
+      "packet_id": "UPD-20260919-LIE-LEDGER-SOURCE-COMPLETION",
+      "path": "data/canonical-updates/UPD-20260919-LIE-LEDGER-SOURCE-COMPLETION.json",
+      "previous_lineage_sha256": "614c534716be696ab7cc7c618f579b72fe0f4b5630e7ee615c99d1764e656e17",
+      "sequence": 16,
+      "sha256": "3f44329fe7d9ddadb8131817bf72d48a5eb4d7570e201e9b2dd9fa7ac62fe641"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
