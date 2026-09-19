@@ -2726,12 +2726,12 @@
       "event_time": "2026-03-09",
       "knowledge_time": "2026-09-19",
       "assessment_time": "2026-09-19",
-      "relation_type": "FALSE_EVIDENCE_PRESENTATION",
+      "relation_type": "STANDALONE",
       "lifecycle_status": "ACTIVE",
       "adjudication_status": "EVIDENCE_ADJUDICATED",
       "publication_status": "PUBLIC_READY",
       "publication_blockers": [],
-      "rationale": "Canonical AFP/Arab News provenance supports a false-media branch while preserving the real-damage and official-origin boundaries."
+      "rationale": "Canonical AFP/Arab News provenance supports a standalone false-media branch while preserving the real-damage and official-origin boundaries."
     },
     {
       "claim_id": "CL-KWI-PATRIOT-CONTEXT",
