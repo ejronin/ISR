@@ -266,21 +266,39 @@ def validate(root: Path = ROOT) -> None:
         "estimative knowledge is not represented through circumstantial/institutional evidence"
     )
 
-    # Source proposition fidelity hard-stop: the 16-fighter source said hit, not destroyed/downed.
+    # Source proposition fidelity hard-stop: the Apr. 28 source said 16 fighters
+    # were hit. Keep that source-faithful assertion separate from the analytic
+    # metric-integrity branch comparing "aircraft hit" with earlier "drones downed"
+    # totals.
     sixteen = [
         record for record in records
         if record.get("original_claim_id") == "IR-CLM-0604"
         and record.get("adjudication_status") == ADJUDICATED
     ]
-    require(sixteen, "IR-CLM-0604 v2 proposition missing")
-    require(any(record["proposition"] == "At least 16 enemy fighters were hit." for record in sixteen), "IR-CLM-0604 source wording not restored to hit")
-    require(all("destroy" not in record["proposition"].casefold() and "downed" not in record["proposition"].casefold() for record in sixteen), "IR-CLM-0604 proposition strengthened beyond source")
+    require(sixteen, "IR-CLM-0604 v2 propositions missing")
+    sixteen_source = [
+        record for record in sixteen
+        if record.get("proposition_id") == "PROP-AIRCRAFT-16-FIGHTERS-HIT-20260428"
+    ]
+    require(len(sixteen_source) == 1, "IR-CLM-0604 source-faithful 16-fighter proposition missing or duplicated")
+    require(sixteen_source[0]["proposition"] == "At least 16 enemy fighters were hit.", "IR-CLM-0604 source wording not restored to hit")
+    require("destroy" not in sixteen_source[0]["proposition"].casefold() and "downed" not in sixteen_source[0]["proposition"].casefold(), "IR-CLM-0604 source proposition strengthened beyond source")
+    sixteen_metric = [
+        record for record in sixteen
+        if record.get("proposition_id") == "PROP-AIRCRAFT-AGGREGATE-METRIC-COMPARABILITY-20260428"
+    ]
+    require(len(sixteen_metric) == 1, "IR-CLM-0604 metric-integrity proposition missing or duplicated")
+    require(sixteen_metric[0]["proposition_axis"] == "METRIC_INTEGRITY", "IR-CLM-0604 metric branch is not structurally separated")
+    require(sixteen_metric[0]["counts_as_unique_proposition"] is False, "IR-CLM-0604 metric inference inflates unique proposition count")
 
-    # Publisher framing remains a separate claim instance from the quoted/source-body proposition.
-    headline = [record for record in records if record.get("proposition_id") == "PROP-IR-210-DOWNED-HEADLINE"]
-    require(len(headline) == 1, "210-aircraft publisher headline proposition missing or duplicated")
-    require(headline[0]["actor"] == "Press TV", "publisher headline silently attributed to source speaker")
-    require(headline[0]["proposition_axis"] == "PUBLISHER_FRAMING", "publisher framing not structurally separated")
+    # The observable fact that Press TV printed a headline is not itself false.
+    # The factual proposition under adjudication is the headline's asserted content.
+    headline = [record for record in records if record.get("proposition_id") == "PROP-IR-210-DOWNED-ASSERTION"]
+    require(len(headline) == 1, "210-aircraft underlying headline assertion missing or duplicated")
+    require(headline[0]["actor"] == "Press TV", "publisher assertion silently attributed to source speaker")
+    require(headline[0]["proposition_axis"] == "EFFECT_COUNT", "210 downing assertion not separated from publication act")
+    require("downed about 210 enemy aircraft" in headline[0]["proposition"].casefold(), "210-aircraft underlying assertion wording drifted")
+    require(headline[0]["truth_adjudication"] == "FALSE", "210-aircraft underlying assertion factual finding changed")
 
     # Historical Sep. 9 evidence-completion inputs remain traceable, but no
     # historical author is active authority in generated state.
