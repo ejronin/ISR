@@ -52,7 +52,7 @@ def records(state: dict[str, Any]) -> list[dict[str, Any]]:
 
 def build_pre_neutral_state() -> dict[str, Any]:
     """Reproduce the accepted historical-assessment projection before neutralization."""
-    state = hardened.build_state(ROOT)
+    state = migration.build_historical_base_state(ROOT)
     evidence_completion.inject_sources(state, ROOT)
     lie_ledger_v2.apply(state, ROOT)
     evidence_completion.apply(state, ROOT, lie_ledger_v2)

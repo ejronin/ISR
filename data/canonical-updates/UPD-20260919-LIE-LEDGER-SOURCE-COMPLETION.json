@@ -1,0 +1,69 @@
+{
+  "entities": [],
+  "events": [],
+  "evidence_cutoff": "2026-09-18T10:27:26-04:00",
+  "known_at": "2026-09-19T16:00:00-04:00",
+  "narrative_claims": [],
+  "packet_id": "UPD-20260919-LIE-LEDGER-SOURCE-COMPLETION",
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "outlet": "IRNA",
+      "published_date": "2026-07-26",
+      "source_id": "SRC-E7D3837B67C4",
+      "source_role": "CLAIM_ORIGIN_STATE_MEDIA",
+      "url": "https://en.irna.ir/news/86219475/IRGC-releases-list-of-US-military-assets-heavily-damaged-in-Iranian"
+    },
+    {
+      "outlet": "Arab News / AFP",
+      "published_date": "2026-03-09",
+      "source_id": "SRC-B56BDBD8628F",
+      "source_role": "INDEPENDENT_MEDIA_FACT_CHECK",
+      "url": "https://www.arabnews.com/node/2635797/media"
+    },
+    {
+      "outlet": "AFP Fact Check",
+      "published_date": "2026-03-09",
+      "source_id": "SRC-81C038608946",
+      "source_role": "INDEPENDENT_FACT_CHECK",
+      "url": "https://factcheck.afp.com/doc.afp.com.A2B239E"
+    },
+    {
+      "outlet": "Arab News / agencies",
+      "published_date": "2026-06-04",
+      "source_id": "SRC-67995288F15E",
+      "source_role": "AGENCY_REPORTED_CLAIM_ORIGIN_AND_HOST_NATION_COUNTEREVIDENCE",
+      "url": "https://www.arabnews.com/node/2645832/middle-east"
+    },
+    {
+      "outlet": "The National",
+      "published_date": "2026-06-03",
+      "source_id": "SRC-AB8D1A29D6A5",
+      "source_role": "HOST_NATION_ATTRIBUTION_REPORTING",
+      "url": "https://www.thenationalnews.com/news/gulf/2026/06/03/fresh-iran-strikes-on-bahrain-and-kuwait-test-failing-talks/"
+    },
+    {
+      "outlet": "IRNA",
+      "published_date": "2026-07-26",
+      "source_id": "SRC-BACFCAB20181",
+      "source_role": "CLAIM_ORIGIN_STATE_MEDIA",
+      "url": "https://en.irna.ir/news/86219333/IRGC-spokesperson-US-death-toll-following-violation-of-Islamabad"
+    },
+    {
+      "outlet": "Associated Press",
+      "published_date": "2026-07-29",
+      "source_id": "SRC-B4C80D942772",
+      "source_role": "INDEPENDENT_CASUALTY_ACCOUNTING",
+      "url": "https://apnews.com/article/612099f7e3eda9c28625e8bfe7c5c6dd"
+    },
+    {
+      "outlet": "IRNA",
+      "published_date": "2026-07-26",
+      "source_id": "SRC-F73E1BECC1A9",
+      "source_role": "CLAIM_ORIGIN_STATE_MEDIA",
+      "url": "https://en.irna.ir/news/86219451/Nearly-all-US-infrastructure-in-Erbil-destroyed-Iran-s-Army"
+    }
+  ],
+  "status": "ACCEPTED",
+  "summary": "Evidence Integration source-graph completion for Claims Forensics issue #144 / source blocker issue #149. Adds canonical source objects for the IRGC Jul. 26 asset-loss scorecard, Qatar AI-radar fact checks, Kuwait airport Patriot-attribution reporting, the IRGC >200 U.S. fatalities claim/counterevidence, and the Erbil near-total-destruction claim. This packet supplies provenance only; it does not change truth, knowledge, or Lie adjudications."
+}
