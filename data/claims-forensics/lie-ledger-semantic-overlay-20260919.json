@@ -1,7 +1,7 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-6",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-7",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "effective_date": "2026-09-19",
@@ -42,6 +42,14 @@
         "CSAR_RESCUE",
         "RESCUE_FAILURE_FOILING",
         "URANIUM_HEIST_SUBSTITUTE_EXPLANATION"
+      ],
+      "event_title": "F-15E shootdown, aircrew recovery, CSAR losses, and uranium narrative",
+      "event_baseline": "A U.S. F-15E was lost over Iran. Both crew ejected; one was initially missing/evading. U.S. forces conducted a personnel-recovery operation, lost or damaged rescue equipment, and ultimately recovered both crew members.",
+      "terminal_event_state": "The aircraft loss was real; the missing airman was not in established Iranian custody and both crew were recovered. Rescue-equipment losses were real but not all were caused by Iranian fire. Enriched uranium was associated with Isfahan, but that did not make the observed personnel-recovery mission a uranium-seizure raid.",
+      "open_evidence_gaps": [
+        "The current record does not establish that the early hedged Tasnim capture report was knowingly false when first published.",
+        "Not every rescue-equipment loss has a fully public platform-by-platform causal reconstruction.",
+        "False third-party media tied to the pilot/rescue narrative is not attributed to an official Iranian origin absent authenticated provenance."
       ]
     },
     "CH-AIRCRAFT-KILL-AGGREGATES": {
