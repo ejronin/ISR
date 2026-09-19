@@ -111,7 +111,8 @@ const campaignCountCopy = readerSource.match(/append\(details, 'p', 'section-not
 assertCampaignEventCountSemanticBoundary(campaignCountCopy);
 assert.match(readerSource, /Facility status by actor/);
 assert.match(readerSource, /Repeated or amplified by \(\$\{repeats\.length\}\)/);
-assert.match(readerSource, /How Atlas reached this finding/);\nassert.match(readerSource, /Why this branch is/);
+assert.match(readerSource, /How Atlas reached this finding/);
+assert.match(readerSource, /Why this branch is/);
 assert.match(readerSource, /The separate knowledge\/intent assessment remains pending additional evidence/);
 assert.match(readerSource, /const positiveDamage = !negativeDamage/);
 assert.doesNotMatch(readerCss, /technical-record-metadata[\s\S]*display\s*:\s*none/i, 'internal fields must be removed structurally, not hidden by CSS');
