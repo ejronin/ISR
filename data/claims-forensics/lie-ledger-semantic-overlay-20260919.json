@@ -1,11 +1,11 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-7",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-8",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "effective_date": "2026-09-19",
-  "purpose": "Apply accepted chain grouping, proposition-polarity corrections, chain-level findings, and plain-English inferential explanations after the sealed historical evidence-adjudication input has been validated.",
+  "purpose": "Apply the completed full-ledger Claims Forensics adjudication after source qualification, including source-faithful atomic decomposition of the IRGC 15-day asset scorecard, false-media provenance, and evidence-complete/no-Lie dispositions for formerly blocked cases.",
   "rules": {
     "top_level_unit": "NARRATIVE_CHAIN",
     "atomic_propositions_remain_independent": true,
@@ -144,15 +144,18 @@
         "OCCURRENCE",
         "PHYSICAL_DAMAGE",
         "EQUIPMENT_BDA",
-        "FACILITY_WIDE_OPERATIONAL_EFFECT"
+        "FACILITY_WIDE_OPERATIONAL_EFFECT",
+        "FALSE_MEDIA_AI_RADAR_IMAGE"
       ],
-      "plain_english_summary": "Al Udeid suffered real, serious damage. The forensic question is the level of effect: radar/site damage and CAOC inoperability are supported, permanent destruction of the radar remains unresolved, and shorthand that the entire base was destroyed or unusable overstates the evidence. The old Ledger also carried a second shorthand Al Udeid chain for the same physical event; that duplicate is folded into this event chain as context.",
+      "plain_english_summary": "Al Udeid suffered real, serious damage. The forensic question is the level of effect: radar/site damage and CAOC inoperability are supported, permanent destruction of the radar remains unresolved, and shorthand that the entire base was destroyed or unusable overstates the evidence. A separate viral 'before/after' satellite image used as proof of completely destroyed radar equipment is a false AI-manipulated media artifact; AFP traced it to a modified image of a U.S. base in Bahrain. The fake image does not erase the real Al Udeid damage and is not attributed to the IRGC or Iranian government without provenance.",
       "how_we_know": [
         "Independent satellite imagery and later reporting confirm material strike damage at Al Udeid.",
         "The AN/FPS-132 site was physically hit and materially degraded; available public evidence does not settle permanent repairability.",
         "Separate reporting supports that the Combined Air Operations Center was rendered inoperable.",
         "Those subfacility effects do not establish that the entire air base ceased operating.",
-        "The separate social-media shorthand record concerns the same physical event and therefore belongs inside this chain, not as another top-level event card."
+        "The separate social-media shorthand record concerns the same physical event and therefore belongs inside this chain, not as another top-level event card.",
+        "AFP/Arab News found the viral radar image was AI-manipulated from a prior Google Earth image of a U.S. base in Bahrain. The image is false evidence even though real Al Udeid damage is independently established.",
+        "The source identifies Tehran Times as an amplifier of the image but does not establish that the IRGC or an Iranian government office created it; Atlas therefore withholds official-origin knowledge attribution."
       ]
     },
     "CH-KUWAIT-F15-FRIENDLY-FIRE": {
@@ -311,14 +314,103 @@
       ]
     },
     "CHAIN-CL-IRGC-ASSET-LIST": {
-      "classification": "ACCUSATION_CHAIN_PENDING_LINE_ITEM_ADJUDICATION",
+      "classification": "ACCUSATION_CHAIN",
       "public_title": "IRGC 15-day U.S. asset-loss scorecard",
-      "plain_english_summary": "The IRGC published a compound scorecard covering fighters/helicopters, drones, tankers, Patriot/HIMARS and command infrastructure. Independent imagery confirms substantial real U.S. damage, but the current canonical source graph does not contain the IRNA claim-origin article needed to decompose and adjudicate the individual counts faithfully. Atlas therefore does not publish the old one-row PARTLY_TRUE blob as though the line items were already checked.",
+      "public_finding": {
+        "label": "Exact line-item tally unresolved; no parent Lie finding",
+        "key": "mixed-unresolved-no-parent-lie"
+      },
+      "branches": [
+        "COMPOUND_SOURCE_SCORECARD",
+        "AIR_OPERATIONS_LINE_ITEMS",
+        "AIR_DEFENSE_AND_LAUNCHER_LINE_ITEMS",
+        "COMMAND_AND_HANGAR_LINE_ITEMS"
+      ],
+      "plain_english_summary": "The IRGC published a detailed 15-day scorecard. The direct IRNA source now lets Atlas preserve the actual count/effect language and split the material claims instead of treating the whole list as one PARTLY_TRUE blob. Independent reporting proves the wider war caused real U.S. aircraft, air-defense, communications and base damage, but the current canonical record does not reconcile the scorecard's specific July 8–22 class-by-class counts. Each exact line item is therefore adjudicated separately and remains unresolved unless independent BDA supports that count and effect. The parent scorecard itself receives no Lie finding.",
       "how_we_know": [
-        "Independent satellite reporting confirms real damage to U.S. bases, aircraft, air-defense equipment and communications facilities.",
-        "That independent evidence does not by itself validate the IRGC's specific class-by-class counts.",
-        "The legacy curated record identifies the IRNA article containing the scorecard, but that claim-origin URL is not represented by a canonical source object in the active source graph.",
-        "Without source-qualified claim text, splitting the scorecard into 11 aircraft/helicopters, 17 drones, eight tankers and other equipment would risk silently strengthening or weakening what the source actually asserted."
+        "IRNA is now canonical as the claim-origin source for the 15-day scorecard, so the quoted counts can be tested without reconstructing them from secondary paraphrase.",
+        "The source uses count/effect language that must remain intact: for example, 11 fighter aircraft and helicopters were listed as destroyed or damaged on the ground, alongside separate drone, F-15, P-8, C-17, tanker, heavy-helicopter, HIMARS, Patriot, command-center and hangar claims.",
+        "Independent physical reporting establishes that U.S. forces suffered real material damage during the war, so the scorecard cannot be dismissed merely because it came from a belligerent source.",
+        "That broader damage record does not independently reconcile the specific 15-day quantities or prove that every listed asset was destroyed rather than damaged.",
+        "Atlas therefore treats the exact line items as separate unresolved propositions where the count/effect burden is unmet. Lack of reconciliation is not converted into falsity, and unresolved subclaims do not create a parent Lie finding."
+      ]
+    },
+    "CHAIN-CL-KWI-PATRIOT": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Kuwait airport damage and Patriot-interceptor attribution",
+      "public_finding": {
+        "label": "False causal attribution — knowledge not established",
+        "key": "false-attribution-no-lie"
+      },
+      "branches": [
+        "PHYSICAL_AIRPORT_DAMAGE",
+        "IRANIAN_ATTACK_ATTRIBUTION",
+        "PATRIOT_INTERCEPTOR_CAUSATION",
+        "CLAIMANT_KNOWLEDGE"
+      ],
+      "plain_english_summary": "Kuwait International Airport was genuinely damaged during an Iranian missile-and-drone attack. The IRGC/Tasnim attribution that the terminal damage was caused by a U.S. Patriot interceptor is contradicted by Kuwait's attribution of the attack to Iran and the U.S. account that Iranian drones struck the civilian airport. That is enough for a false causal-attribution finding. It is not enough to prove the IRGC spokesman knew the specific terminal impact mechanism was false at statement time; own-force launch knowledge does not automatically equal weapon-impact knowledge amid active interceptions. Atlas therefore publishes the factual falsity but no Lie finding.",
+      "how_we_know": [
+        "Arab News' agency report canonically preserves the IRGC/Tasnim Patriot-interceptor attribution and the U.S. denial in one source record.",
+        "Kuwaiti authorities attributed the airport damage and casualties to Iranian attacks; The National independently reports the host-nation attribution.",
+        "The physical event is not disputed: the passenger terminal sustained significant material damage and airport operations were disrupted.",
+        "The claimant institution plausibly knew what missiles and drones it launched, but the canonical record does not show it possessed discriminating terminal-impact evidence establishing whether a drone, missile, interceptor or debris caused the specific damage when the statement was made.",
+        "Because that knowledge component is missing and battlefield misidentification remains credible, the false attribution does not meet the contract's Lie threshold."
+      ],
+      "open_evidence_gaps": [
+        "Authenticated weapon-fragment or terminal-impact forensics identifying the exact munition that caused the terminal damage.",
+        "Contemporaneous IRGC launch/BDA records showing what the claimant knew about the terminal impact before the Patriot attribution was issued."
+      ]
+    },
+    "CHAIN-CL-200-US-DEAD": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "IRGC claim that U.S. military deaths exceeded 200",
+      "public_finding": {
+        "label": "False casualty count — no Lie finding",
+        "key": "false-count-no-lie"
+      },
+      "branches": [
+        "EXACT_CASUALTY_COUNT",
+        "INDEPENDENT_CASUALTY_ACCOUNTING",
+        "CLAIMANT_KNOWLEDGE"
+      ],
+      "plain_english_summary": "The IRGC spokesman's claim that U.S. military fatalities had exceeded 200 is false against the independent casualty record. Reuters reported 18 U.S. service members killed as of July 22, and later AP/Pentagon accounting still did not approach 200. The claim-origin source is now canonical, so the factual proposition is no longer source-blocked. But the current graph does not contain the internal IRGC casualty-estimation basis or evidence showing what Mohebi actually knew when he gave the figure. Atlas therefore publishes FALSE with knowledge insufficient for a Lie finding.",
+      "how_we_know": [
+        "IRNA canonically records the IRGC spokesman's greater-than-200 U.S.-fatality claim.",
+        "Reuters' July 22 casualty snapshot reported 18 U.S. service members killed in the war at that point.",
+        "Later AP/Pentagon accounting remained nowhere near 200, providing later evidence that adjudicates the earlier count without pretending that later accounting was public at the statement time.",
+        "The numerical gap establishes factual falsity, but it does not by itself reveal the internal BDA, assumptions, or casualty-estimation process available to the IRGC spokesman.",
+        "Without claimant-access evidence sufficient to distinguish deliberate inflation from catastrophic BDA error, Atlas does not promote the false count to Lie."
+      ],
+      "open_evidence_gaps": [
+        "Authenticated IRGC strike/BDA or casualty-estimation records contemporaneous with the July 26 statement.",
+        "A separately sourced repetition showing the claimant retained the >200 figure after authoritative contradictory casualty information became available to him."
+      ]
+    },
+    "CHAIN-CL-ERBIL-ALL": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Erbil U.S. infrastructure destruction and operational-effect claim",
+      "public_finding": {
+        "label": "Overstated scale/effect — knowledge not established",
+        "key": "misleading-scale-no-lie"
+      },
+      "branches": [
+        "ATTACK_OCCURRENCE",
+        "PHYSICAL_DAMAGE",
+        "FUNCTIONAL_EFFECT",
+        "NEARLY_ALL_INFRASTRUCTURE_SCALE",
+        "CLAIMANT_KNOWLEDGE"
+      ],
+      "plain_english_summary": "U.S. positions in the Erbil/Kurdistan theater were repeatedly attacked, and the accepted record preserves real damage as context. The Iranian Army's stronger proposition was that almost all U.S. infrastructure in Erbil had been destroyed and that the relevant presence had effectively lost operational capability. Later independent force-posture reporting shows U.S. troops and military equipment were still being withdrawn from Erbil weeks later. That continuing physical presence and organized drawdown are inconsistent with treating the near-total-destruction/effect language as established. Atlas separates real attack/damage from the overstated scale and functional-effect claims, and does not publish a Lie finding because claimant knowledge is not evidence-complete.",
+      "how_we_know": [
+        "IRNA now supplies the direct source for the Iranian Army's near-total-destruction claim.",
+        "Independent AP reporting later confirms that U.S. troops and military equipment remained in Erbil and that an organized drawdown was underway, rather than documenting a near-total physical elimination of the U.S. footprint.",
+        "The existence of real attacks or some damage does not prove the 'almost all infrastructure' scale claim.",
+        "Conversely, failure of the scale claim does not erase the underlying attack/damage context.",
+        "The later force-posture evidence can adjudicate the earlier scale/effect proposition today, but it is not backdated into the claimant's July 26 knowledge. No canonical evidence currently shows what facility-by-facility BDA the Army spokesman possessed."
+      ],
+      "open_evidence_gaps": [
+        "Independent facility-by-facility post-strike BDA for the U.S. Erbil footprint as of July 26.",
+        "Contemporaneous Iranian Army BDA/command reporting showing the basis for the 'almost all' destruction and operational-effect language."
       ]
     }
   },
@@ -742,22 +834,230 @@
     {
       "claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
       "set": {
-        "publication_status": "BLOCKED_EVIDENCE_COMPLETION",
+        "publication_status": "PUBLIC_READY",
+        "publication_blockers": [],
+        "canonical_assessment_withheld": false,
         "counts_as_unique_proposition": false,
         "denominator_class": "CLAIM_INSTANCE",
-        "truth_qualifier": "MIXED_REQUIRES_LINE_ITEM_ADJUDICATION_AND_CLAIM_SOURCE_COMPLETION",
-        "publication_blockers": [
-          {
-            "code": "CLAIM_ORIGIN_SOURCE_MISSING",
-            "deficiency": "The IRNA Jul. 26 claim-origin URL for the detailed asset scorecard exists in legacy curated data but has no canonical source object in the active source graph; line-item source fidelity cannot yet be proven."
-          }
-        ]
+        "truth_adjudication": "PARTLY_TRUE",
+        "truth_qualifier": "COMPOUND_SOURCE_SCORECARD_DECOMPOSED_TO_ATOMIC_LINE_ITEMS",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "COMPOUND SCORECARD DECOMPOSED — SEE ATOMIC LINE ITEMS; NO PARENT LIE FINDING",
+        "source_proposition": "IRGC published a 15-day scorecard listing specific U.S. aircraft, drones, air-defense systems, launchers, command facilities and other assets as destroyed or damaged.",
+        "proposition": "IRGC published a 15-day compound asset-loss scorecard whose exact line items require separate adjudication.",
+        "proposition_axis": "SOURCE_SCORECARD",
+        "source_ids": [
+          "SRC-E7D3837B67C4",
+          "SRC-551A9C2DB97C"
+        ],
+        "evidence_support": {
+          "what_was_said": [
+            "SRC-E7D3837B67C4"
+          ],
+          "factual_baseline": [
+            "SRC-551A9C2DB97C"
+          ],
+          "contemporaneous_state": [],
+          "knowledge_access": [],
+          "knowledge_indicators": [],
+          "contrary_evidence": [
+            "SRC-551A9C2DB97C"
+          ],
+          "corrections": [],
+          "repetitions": [],
+          "credible_alternative": [],
+          "comparative_inference": [
+            "SRC-551A9C2DB97C"
+          ],
+          "falsifier": []
+        },
+        "falsifier": [
+          "Independent line-item BDA sufficient to reconcile the scorecard's July 8–22 counts and distinguish destroyed from damaged assets."
+        ],
+        "analytic_inference": "The direct source establishes what the compound scorecard said. Broader independent BDA establishes real U.S. damage during the war but does not reconcile the July 8–22 line-item tally. The compound parent is therefore decomposed rather than assigned a blanket truth/Lie label."
       },
-      "rationale": "Do not present a compound PARTLY_TRUE scorecard as final forensic adjudication when the direct claim-origin source is absent from canonical provenance."
+      "rationale": "Direct claim-origin provenance is now canonical. Replace the old source blocker with a decomposed source-scorecard parent; atomic line items carry the actual factual burdens.",
+      "replace_observed_facts": [
+        "IRNA canonically preserves the detailed 15-day scorecard.",
+        "Independent BDA confirms real U.S. material damage during the war but does not validate the scorecard's exact July line-item counts."
+      ]
+    },
+    {
+      "claim_instance_id": "CI-CL-KWI-PATRIOT",
+      "set": {
+        "publication_status": "PUBLIC_READY",
+        "publication_blockers": [],
+        "canonical_assessment_withheld": false,
+        "truth_adjudication": "FALSE",
+        "truth_qualifier": "FALSE_CAUSAL_ATTRIBUTION",
+        "knowledge_judgment": "POSSIBLE_KNOWLEDGE",
+        "combined_assessment": "FALSE CAUSAL ATTRIBUTION — KNOWLEDGE NOT ESTABLISHED; NO LIE FINDING",
+        "source_ids": [
+          "SRC-67995288F15E",
+          "SRC-AB8D1A29D6A5"
+        ],
+        "evidence_support": {
+          "what_was_said": [
+            "SRC-67995288F15E"
+          ],
+          "factual_baseline": [
+            "SRC-67995288F15E",
+            "SRC-AB8D1A29D6A5"
+          ],
+          "contemporaneous_state": [
+            "SRC-67995288F15E",
+            "SRC-AB8D1A29D6A5"
+          ],
+          "knowledge_access": [],
+          "knowledge_indicators": [],
+          "contrary_evidence": [
+            "SRC-67995288F15E",
+            "SRC-AB8D1A29D6A5"
+          ],
+          "corrections": [],
+          "repetitions": [],
+          "credible_alternative": [
+            "SRC-67995288F15E",
+            "SRC-AB8D1A29D6A5"
+          ],
+          "comparative_inference": [
+            "SRC-67995288F15E",
+            "SRC-AB8D1A29D6A5"
+          ],
+          "falsifier": []
+        },
+        "falsifier": [
+          "Authenticated terminal-impact forensics showing a U.S. Patriot interceptor caused the passenger-terminal damage.",
+          "Contemporaneous IRGC BDA/launch records proving the spokesman knew an Iranian weapon caused the terminal impact before issuing the Patriot attribution."
+        ],
+        "credible_alternatives": [
+          {
+            "alternative": "The IRGC knew its own launch activity but genuinely misidentified the specific terminal impact amid simultaneous missile/drone attacks and air-defense interceptions.",
+            "basis": "The canonical reports describe simultaneous Iranian missiles/drones and active interception operations; they do not provide the claimant's terminal-impact forensics.",
+            "comparative_weight": "PLAUSIBLE"
+          }
+        ],
+        "analytic_inference": "Kuwaiti attribution and the U.S. account contradict the Patriot-causation claim, establishing false attribution. The current record does not establish that the claimant possessed discriminating impact evidence at statement time; own-force launch knowledge alone is insufficient to prove knowing falsity."
+      },
+      "rationale": "Source qualification resolves factual provenance but does not satisfy the strong knowledge prong. Publish the false attribution with no Lie finding.",
+      "replace_observed_facts": [
+        "Kuwait International Airport's passenger terminal sustained significant material damage during the June 3 attack.",
+        "Kuwaiti authorities attributed the attack to Iran; the U.S. said Iranian drones struck the civilian airport.",
+        "The IRGC/Tasnim account instead attributed the terminal destruction to a U.S. Patriot interceptor error.",
+        "The canonical record does not establish what terminal-impact evidence the IRGC possessed when that attribution was issued."
+      ]
+    },
+    {
+      "claim_instance_id": "CI-CL-200-US-DEAD",
+      "set": {
+        "publication_status": "PUBLIC_READY",
+        "publication_blockers": [],
+        "canonical_assessment_withheld": false,
+        "truth_adjudication": "FALSE",
+        "truth_qualifier": "FALSE_EXACT_CASUALTY_COUNT",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "FALSE CASUALTY COUNT — KNOWLEDGE INSUFFICIENT; NO LIE FINDING",
+        "source_ids": [
+          "SRC-BACFCAB20181",
+          "SRC-691C9B6A352A",
+          "SRC-B4C80D942772"
+        ],
+        "evidence_support": {
+          "what_was_said": [
+            "SRC-BACFCAB20181"
+          ],
+          "factual_baseline": [
+            "SRC-691C9B6A352A",
+            "SRC-B4C80D942772"
+          ],
+          "contemporaneous_state": [
+            "SRC-691C9B6A352A"
+          ],
+          "knowledge_access": [],
+          "knowledge_indicators": [],
+          "contrary_evidence": [
+            "SRC-691C9B6A352A",
+            "SRC-B4C80D942772"
+          ],
+          "corrections": [],
+          "repetitions": [],
+          "credible_alternative": [],
+          "comparative_inference": [
+            "SRC-691C9B6A352A",
+            "SRC-B4C80D942772"
+          ],
+          "falsifier": []
+        },
+        "falsifier": [
+          "Authoritative U.S. casualty records showing more than 200 service-member deaths by July 26.",
+          "Authenticated contemporaneous IRGC casualty/BDA records showing the basis for the >200 estimate and what Mohebi knew when he stated it."
+        ],
+        "credible_alternatives": [],
+        "analytic_inference": "The greater-than-200 fatality proposition is incompatible with contemporaneous Reuters casualty accounting and later AP/Pentagon accounting. The factual count is false. The source graph still does not expose the IRGC's internal casualty-estimation basis, so deliberate inflation is not established to the contract's knowledge threshold."
+      },
+      "rationale": "The claim origin and independent casualty records now resolve the factual proposition. They do not establish the claimant's internal knowledge basis, so the prior strong knowledge label is not retained.",
+      "replace_observed_facts": [
+        "IRNA records the IRGC spokesman claiming U.S. military deaths had exceeded 200.",
+        "Reuters reported 18 U.S. service members killed as of July 22.",
+        "Later AP/Pentagon accounting remained far below 200.",
+        "No authenticated IRGC internal casualty ledger is present in the canonical record."
+      ]
+    },
+    {
+      "claim_instance_id": "CI-CL-ERBIL-ALL",
+      "set": {
+        "publication_status": "PUBLIC_READY",
+        "publication_blockers": [],
+        "canonical_assessment_withheld": false,
+        "counts_as_unique_proposition": false,
+        "denominator_class": "CLAIM_INSTANCE",
+        "truth_adjudication": "PARTLY_TRUE",
+        "truth_qualifier": "COMPOUND_PARENT_DECOMPOSED_TO_OCCURRENCE_DAMAGE_EFFECT_AND_SCALE",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "COMPOUND ERBIL CLAIM DECOMPOSED — SEE ATOMIC EFFECT/SCALE FINDINGS; NO PARENT LIE FINDING",
+        "source_ids": [
+          "SRC-F73E1BECC1A9",
+          "SRC-80791B854E19"
+        ],
+        "evidence_support": {
+          "what_was_said": [
+            "SRC-F73E1BECC1A9"
+          ],
+          "factual_baseline": [
+            "SRC-80791B854E19"
+          ],
+          "contemporaneous_state": [],
+          "knowledge_access": [],
+          "knowledge_indicators": [],
+          "contrary_evidence": [
+            "SRC-80791B854E19"
+          ],
+          "corrections": [],
+          "repetitions": [],
+          "credible_alternative": [],
+          "comparative_inference": [
+            "SRC-80791B854E19"
+          ],
+          "falsifier": []
+        },
+        "falsifier": [
+          "Independent facility-by-facility BDA establishing the physical and operational state of the U.S. Erbil footprint on July 26.",
+          "Contemporaneous Iranian Army BDA showing the basis for the near-total destruction claim."
+        ],
+        "credible_alternatives": [],
+        "analytic_inference": "The direct source proves what Akraminia claimed. Later force-posture evidence shows U.S. troops and equipment remained in Erbil and were undergoing an organized drawdown. The compound parent is decomposed so real attack/damage context is not flattened together with the scale and functional-effect claims."
+      },
+      "rationale": "Source completion permits source-faithful decomposition. Strong knowledge remains unsupported; publish atomic truth findings without a parent Lie label.",
+      "replace_observed_facts": [
+        "U.S. positions in Iraqi Kurdistan were repeatedly attacked during the conflict.",
+        "The accepted historical assessment preserves real attack/damage context.",
+        "AP later reported U.S. troops and military equipment still present in Erbil during an organized drawdown.",
+        "The canonical record lacks facility-by-facility July 26 BDA or the claimant's internal assessment."
+      ]
     }
   ],
   "full_sweep_path": "data/claims-forensics/lie-ledger-full-sweep-20260919.json",
-  "full_sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-2",
+  "full_sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-3",
   "append_records": [
     {
       "statement_precision": "DATE_ONLY",
@@ -2353,6 +2653,1313 @@
       "publication_status": "PUBLIC_READY",
       "publication_blockers": [],
       "rationale": "Imported from data/forensic-v1.3.2/media-forensics.json with official-origin boundary preserved."
+    },
+    {
+      "claim_id": "MED-007",
+      "claim_instance_id": "CI-MEDIA-MED-007",
+      "original_claim_id": "MED-007",
+      "proposition_id": "PROP-MEDIA-MED-007",
+      "chain_id": "CH-ALUDEID-BDA",
+      "actor": "Tehran Times / social-media amplification; creator and official military/government origin not established",
+      "claimant_type": "STATE_ALIGNED_MEDIA",
+      "actor_role": "AMPLIFIER",
+      "claim": "A before/after satellite image was circulated as proof that U.S. radar equipment at a base in Qatar had been completely destroyed.",
+      "source_proposition": "The circulated before/after satellite image genuinely showed completely destroyed U.S. radar equipment at a base in Qatar.",
+      "proposition": "The circulated before/after satellite image genuinely showed completely destroyed U.S. radar equipment at a base in Qatar.",
+      "proposition_axis": "MEDIA_PROVENANCE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "FALSE_AI_MEDIA_ARTIFACT_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "FALSE MEDIA ARTIFACT — REAL AL UDEID DAMAGE SEPARATE; OFFICIAL ORIGIN NOT ESTABLISHED",
+      "denominator_class": "MEDIA_ARTIFACT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "AFP/Arab News found the image was AI-manipulated from a Google Earth image of a U.S. base in Bahrain rather than authentic post-strike imagery from Qatar.",
+        "Independent physical reporting separately establishes real damage at Al Udeid; falsity of the viral image does not negate that damage.",
+        "The fact check identifies Tehran Times as an amplifier but does not establish IRGC or Iranian-government creation of the image."
+      ],
+      "analytic_inference": "The image is false evidence for the claimed Qatar radar destruction. Media falsity is adjudicated independently from the real Al Udeid damage and from any official-claimant knowledge question.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "False media is established; official Iranian military/government authorship and knowledge are not.",
+      "narrative_function": "False-evidence presentation / amplification branch.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated image provenance showing the circulated image was genuine satellite imagery of the claimed Qatar site after the strike."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-B56BDBD8628F",
+          "SRC-81C038608946"
+        ],
+        "factual_baseline": [
+          "SRC-B56BDBD8628F",
+          "SRC-81C038608946",
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-B56BDBD8628F",
+          "SRC-81C038608946"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-B56BDBD8628F",
+          "SRC-81C038608946",
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-B56BDBD8628F",
+        "SRC-81C038608946",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-03-09",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-03-09",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "FALSE_EVIDENCE_PRESENTATION",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Canonical AFP/Arab News provenance supports a false-media branch while preserving the real-damage and official-origin boundaries."
+    },
+    {
+      "claim_id": "CL-KWI-PATRIOT-CONTEXT",
+      "claim_instance_id": "CI-CL-KWI-PATRIOT-EVENT-P01",
+      "original_claim_id": "CL-KWI-PATRIOT-CONTEXT",
+      "proposition_id": "PROP-KWI-AIRPORT-DAMAGE-OCCURRENCE",
+      "chain_id": "CHAIN-CL-KWI-PATRIOT",
+      "actor": "Kuwaiti authorities / independent reporting",
+      "claimant_type": "HOST_NATION_AND_INDEPENDENT_REPORTING",
+      "actor_role": "CONTEXT",
+      "claim": "Kuwait International Airport passenger-terminal damage occurred during the June 3 Iranian missile-and-drone attack.",
+      "source_proposition": "Kuwait International Airport sustained significant material damage during the June 3 attack.",
+      "proposition": "Kuwait International Airport sustained significant material damage during the June 3 attack.",
+      "proposition_axis": "EVENT_EXISTENCE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "SUPPORTED",
+      "truth_qualifier": "PHYSICAL_EVENT_BASELINE",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "SUPPORTED PHYSICAL EVENT CONTEXT",
+      "denominator_class": "NON_ACCUSATION_CONTEXT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Kuwait reported significant terminal damage, casualties and airport disruption during the Iranian attack."
+      ],
+      "analytic_inference": "The physical damage event is independently supported and must remain separate from the disputed causal attribution.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "Physical-event context only.",
+      "narrative_function": "Event baseline.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authoritative evidence that the reported terminal damage did not occur on June 3."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-67995288F15E",
+          "SRC-AB8D1A29D6A5"
+        ],
+        "factual_baseline": [
+          "SRC-67995288F15E",
+          "SRC-AB8D1A29D6A5"
+        ],
+        "contemporaneous_state": [
+          "SRC-67995288F15E",
+          "SRC-AB8D1A29D6A5"
+        ],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-67995288F15E",
+        "SRC-AB8D1A29D6A5"
+      ],
+      "statement_date": "2026-06-03",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-06-03",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Separate the physical event from the false Patriot-causation proposition."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P01",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P01",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed 11 fighter aircraft and helicopters among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "11 fighter aircraft and helicopters were destroyed or damaged on the ground during the 15-day scorecard period.",
+      "proposition": "11 fighter aircraft and helicopters were destroyed or damaged on the ground during the 15-day scorecard period.",
+      "proposition_axis": "AIRCRAFT_AND_HELICOPTERS",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P02",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P02",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed 17 reconnaissance and operational drones, including eight brand-new drones among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "17 reconnaissance and operational drones, including eight brand-new drones, were destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "17 reconnaissance and operational drones, including eight brand-new drones, were destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "UAS_COUNT",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P03",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P03",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed one F-15 fighter aircraft inside a shelter among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "One F-15 fighter aircraft inside a shelter was destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "One F-15 fighter aircraft inside a shelter was destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "F15_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P04",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P04",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed one P-8 aircraft among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "One P-8 aircraft was destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "One P-8 aircraft was destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "P8_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P05",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P05",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed one C-17 transport aircraft among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "One C-17 transport aircraft was destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "One C-17 transport aircraft was destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "C17_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P06",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P06",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed eight aerial refueling aircraft among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "Eight aerial refueling aircraft were destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "Eight aerial refueling aircraft were destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "TANKER_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P07",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P07",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed four heavy helicopters among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "Four heavy helicopters were destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "Four heavy helicopters were destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "HEAVY_HELICOPTER_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P08",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P08",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed four HIMARS missile platforms among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "Four HIMARS missile platforms were destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "Four HIMARS missile platforms were destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "HIMARS_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P09",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P09",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed four Patriot air-defense complexes among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "Four Patriot air-defense complexes were destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "Four Patriot air-defense complexes were destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "PATRIOT_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P10",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P10",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed two command centers among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "Two command centers were destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "Two command centers were destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "COMMAND_CENTER_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P11",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P11",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed six MQ-9 drone hangars among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "Six MQ-9 drone hangars were destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "Six MQ-9 drone hangars were destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "MQ9_HANGAR_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-IRGC-ASSET-LIST",
+      "claim_instance_id": "CI-CL-IRGC-ASSET-LIST-P12",
+      "original_claim_id": "CL-IRGC-ASSET-LIST",
+      "proposition_id": "PROP-IRGC-ASSET-LIST-P12",
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "actor": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC's 15-day scorecard listed one drone hangar containing eight brand-new unmanned aircraft among U.S. assets it said were destroyed or damaged.",
+      "source_proposition": "One drone hangar containing eight brand-new unmanned aircraft was destroyed or damaged during the 15-day scorecard period.",
+      "proposition": "One drone hangar containing eight brand-new unmanned aircraft was destroyed or damaged during the 15-day scorecard period.",
+      "proposition_axis": "NEW_DRONE_HANGAR_BDA",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The direct IRNA scorecard canonically establishes this count/effect assertion.",
+        "The broader independent BDA record establishes real U.S. material damage during the war but does not independently reconcile this exact July 8–22 line item."
+      ],
+      "analytic_inference": "The source-fidelity burden is satisfied, but the exact quantity and destroy-versus-damage effect are not independently reconciled in the current canonical record. The proposition therefore remains unresolved rather than being converted from lack of corroboration to falsity.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No knowledge finding is made because material falsity is not established for this exact line item.",
+      "narrative_function": "Cumulative battle-damage scorecard line item.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent line-item BDA or official loss accounting that reconciles the exact quantity and damage/destruction effect for the July 8–22 period.",
+        "Authenticated claimant BDA showing the basis for the line-item count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E7D3837B67C4"
+        ],
+        "factual_baseline": [
+          "SRC-551A9C2DB97C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-551A9C2DB97C"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-E7D3837B67C4",
+        "SRC-551A9C2DB97C"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-08/2026-07-22",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-IRGC-ASSET-LIST",
+      "parent_claim_id": "CL-IRGC-ASSET-LIST",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic line-item decomposition from the canonical IRNA scorecard; exact BDA burden remains unmet."
+    },
+    {
+      "claim_id": "CL-ERBIL-ALL",
+      "claim_instance_id": "CI-CL-ERBIL-ALL-P01",
+      "original_claim_id": "CL-ERBIL-ALL",
+      "proposition_id": "PROP-ERBIL-ATTACK-OCCURRENCE",
+      "chain_id": "CHAIN-CL-ERBIL-ALL",
+      "actor": "Iranian Army spokesperson Mohammad Akraminia",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed and described broad loss of operational capability.",
+      "source_proposition": "U.S. military positions in the Erbil/Kurdistan theater were repeatedly attacked during the conflict.",
+      "proposition": "U.S. military positions in the Erbil/Kurdistan theater were repeatedly attacked during the conflict.",
+      "proposition_axis": "ATTACK_OCCURRENCE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "SUPPORTED",
+      "truth_qualifier": "ATTACK_OCCURRENCE_SUPPORTED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "SUPPORTED ATTACK-OCCURRENCE CONTEXT",
+      "denominator_class": "NON_ACCUSATION_CONTEXT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "AP later reported that U.S. bases in the Kurdish north had regularly come under attack during the war.",
+        "The Iranian Army claim therefore arose in a theater where attacks on the U.S. footprint were real."
+      ],
+      "analytic_inference": "Independent force-posture reporting supports the occurrence of attacks on the U.S. footprint in Iraqi Kurdistan. This factual context is separate from the scale of destruction.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "Context proposition; no knowledge inference.",
+      "narrative_function": "Physical-event context.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Independent facility-by-facility BDA showing the July 26 physical/functional state of the U.S. Erbil footprint.",
+        "Contemporaneous Iranian Army BDA sufficient to establish what the spokesman knew when making the claim."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-F73E1BECC1A9"
+        ],
+        "factual_baseline": [
+          "SRC-80791B854E19"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-80791B854E19"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-F73E1BECC1A9",
+        "SRC-80791B854E19"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-26",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-ERBIL-ALL",
+      "parent_claim_id": "CL-ERBIL-ALL",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic Erbil decomposition separates occurrence/damage context from functional effect and near-total scale."
+    },
+    {
+      "claim_id": "CL-ERBIL-ALL",
+      "claim_instance_id": "CI-CL-ERBIL-ALL-P02",
+      "original_claim_id": "CL-ERBIL-ALL",
+      "proposition_id": "PROP-ERBIL-PHYSICAL-DAMAGE",
+      "chain_id": "CHAIN-CL-ERBIL-ALL",
+      "actor": "Iranian Army spokesperson Mohammad Akraminia",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed and described broad loss of operational capability.",
+      "source_proposition": "Iranian attacks caused some physical damage to the U.S. footprint in Erbil.",
+      "proposition": "Iranian attacks caused some physical damage to the U.S. footprint in Erbil.",
+      "proposition_axis": "PHYSICAL_EFFECT",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "PARTLY_TRUE",
+      "truth_qualifier": "REAL_DAMAGE_CONTEXT_EXTENT_NOT_RECONCILED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "REAL DAMAGE CONTEXT — EXTENT NOT RECONCILED",
+      "denominator_class": "NON_ACCUSATION_CONTEXT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The accepted historical assessment records real attack/damage context in Erbil.",
+        "The current canonical source set does not provide facility-by-facility BDA sufficient to quantify the July 26 damage."
+      ],
+      "analytic_inference": "Real damage is retained as accepted context, while the extent remains unresolved. This prevents the later scale adjudication from erasing the underlying physical event.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "Context proposition; no knowledge inference.",
+      "narrative_function": "Physical-event context.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent facility-by-facility BDA showing the July 26 physical/functional state of the U.S. Erbil footprint.",
+        "Contemporaneous Iranian Army BDA sufficient to establish what the spokesman knew when making the claim."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-F73E1BECC1A9"
+        ],
+        "factual_baseline": [
+          "SRC-80791B854E19"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-80791B854E19"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-F73E1BECC1A9",
+        "SRC-80791B854E19"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-26",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-ERBIL-ALL",
+      "parent_claim_id": "CL-ERBIL-ALL",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic Erbil decomposition separates occurrence/damage context from functional effect and near-total scale."
+    },
+    {
+      "claim_id": "CL-ERBIL-ALL",
+      "claim_instance_id": "CI-CL-ERBIL-ALL-P03",
+      "original_claim_id": "CL-ERBIL-ALL",
+      "proposition_id": "PROP-ERBIL-FUNCTIONAL-EFFECT",
+      "chain_id": "CHAIN-CL-ERBIL-ALL",
+      "actor": "Iranian Army spokesperson Mohammad Akraminia",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed and described broad loss of operational capability.",
+      "source_proposition": "The U.S. military footprint in Erbil had been rendered broadly unable to operate by the Iranian attacks.",
+      "proposition": "The U.S. military footprint in Erbil had been rendered broadly unable to operate by the Iranian attacks.",
+      "proposition_axis": "FUNCTIONAL_EFFECT",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "MISLEADING",
+      "truth_qualifier": "OVERSTATED_FUNCTIONAL_EFFECT",
+      "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+      "combined_assessment": "MISLEADING FUNCTIONAL-EFFECT CLAIM — KNOWLEDGE INSUFFICIENT; NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "AP reported U.S. troops and military equipment still present in Erbil during an organized drawdown weeks after the claim.",
+        "Continued organized presence and withdrawal activity are inconsistent with treating broad operational neutralization as established."
+      ],
+      "analytic_inference": "Later operating/force-posture evidence limits the claimed functional effect. It adjudicates the proposition today without being backdated into the claimant's July knowledge.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "Factual scale/effect is adjudicated; claimant knowledge remains below the Lie threshold.",
+      "narrative_function": "Strategic BDA / operational-effect claim.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent facility-by-facility BDA showing the July 26 physical/functional state of the U.S. Erbil footprint.",
+        "Contemporaneous Iranian Army BDA sufficient to establish what the spokesman knew when making the claim."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-F73E1BECC1A9"
+        ],
+        "factual_baseline": [
+          "SRC-80791B854E19"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-80791B854E19"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-80791B854E19"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-F73E1BECC1A9",
+        "SRC-80791B854E19"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-26",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-ERBIL-ALL",
+      "parent_claim_id": "CL-ERBIL-ALL",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic Erbil decomposition separates occurrence/damage context from functional effect and near-total scale."
+    },
+    {
+      "claim_id": "CL-ERBIL-ALL",
+      "claim_instance_id": "CI-CL-ERBIL-ALL-P04",
+      "original_claim_id": "CL-ERBIL-ALL",
+      "proposition_id": "PROP-ERBIL-NEARLY-ALL-INFRASTRUCTURE",
+      "chain_id": "CHAIN-CL-ERBIL-ALL",
+      "actor": "Iranian Army spokesperson Mohammad Akraminia",
+      "claimant_type": "OFFICIAL_MILITARY",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed and described broad loss of operational capability.",
+      "source_proposition": "Almost all U.S. military infrastructure in Erbil had been destroyed.",
+      "proposition": "Almost all U.S. military infrastructure in Erbil had been destroyed.",
+      "proposition_axis": "SCALE",
+      "proposition_fidelity": "ANALYTIC_DECOMPOSITION",
+      "truth_adjudication": "MISLEADING",
+      "truth_qualifier": "OVERSTATED_NEAR_TOTAL_DESTRUCTION",
+      "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+      "combined_assessment": "MISLEADING NEAR-TOTAL-DESTRUCTION CLAIM — KNOWLEDGE INSUFFICIENT; NO LIE FINDING",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The claim-origin source uses near-total destruction language.",
+        "AP later reported U.S. troops and military equipment remained in Erbil and were being withdrawn in an organized drawdown.",
+        "No canonical facility-by-facility BDA establishes destruction of almost all U.S. infrastructure as of July 26."
+      ],
+      "analytic_inference": "Real attacks and damage do not establish the near-total scale. Later continuing presence and organized withdrawal make the maximal scale claim unsustainable as stated, while the lack of claimant-side BDA prevents a strong knowledge finding.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "Factual scale/effect is adjudicated; claimant knowledge remains below the Lie threshold.",
+      "narrative_function": "Strategic BDA / operational-effect claim.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent facility-by-facility BDA showing the July 26 physical/functional state of the U.S. Erbil footprint.",
+        "Contemporaneous Iranian Army BDA sufficient to establish what the spokesman knew when making the claim."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-F73E1BECC1A9"
+        ],
+        "factual_baseline": [
+          "SRC-80791B854E19"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [
+          "SRC-80791B854E19"
+        ],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-80791B854E19"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-F73E1BECC1A9",
+        "SRC-80791B854E19"
+      ],
+      "statement_date": "2026-07-26",
+      "statement_precision": "DATE_ONLY",
+      "display_time": null,
+      "event_time": "2026-07-26",
+      "knowledge_time": "2026-09-19",
+      "assessment_time": "2026-09-19",
+      "relation_type": "EVIDENTIARY_SUPPORT",
+      "parent_claim_instance_id": "CI-CL-ERBIL-ALL",
+      "parent_claim_id": "CL-ERBIL-ALL",
+      "lifecycle_status": "ACTIVE",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Atomic Erbil decomposition separates occurrence/damage context from functional effect and near-total scale."
     }
   ]
 }
