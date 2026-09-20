@@ -142,8 +142,21 @@ async function loadDirectRoute(cdp, route) {
       assert.equal(view.owner, route.owner, `wrong owner for ${route.key}`);
       assertFinalReaderHeading(route, view.h1, view.publicProductVersion, `heading structure failed for ${route.key}`);
       assert.deepEqual(view.machineTokens, [], `machine token exposed by ${route.key}`);
-      assert.equal(view.currentSecondary, expectedFinalReaderLabel(route, view.publicProductVersion), `secondary location not obvious for ${route.key}`);
+      if (route.hiddenNav) {
+        assert.equal(view.currentSecondary, undefined, `buried route leaked into secondary navigation: ${route.key}`);
+      } else {
+        assert.equal(view.currentSecondary, expectedFinalReaderLabel(route, view.publicProductVersion), `secondary location not obvious for ${route.key}`);
+      }
     }
+
+    await setRoute(cdp, ia.ROUTES.get('evidence.information'));
+    const webOfLiesDiscovery = await cdp.eval(`(() => ({
+      landingLinks: [...document.querySelectorAll('main a')].filter(node => /Open Web of Lies/i.test(node.textContent || '')).map(node => node.getAttribute('href')),
+      traceLinks: [...document.querySelectorAll('main a.reader-wol-trace')].map(node => node.getAttribute('href'))
+    }))()`);
+    assert(webOfLiesDiscovery.landingLinks.some(href => href === '#/evidence/web-of-lies'), 'buried Web of Lies route is not discoverable from Lie Ledger');
+    assert(webOfLiesDiscovery.traceLinks.length > 0, 'Lie Ledger exposes no claim-level TRACE links');
+    assert(webOfLiesDiscovery.traceLinks.every(href => /^#\/evidence\/web-of-lies\?claim_family=/.test(href || '')), 'TRACE links do not resolve to claim-family Web of Lies views');
     await cdp.call('Page.reload', { ignoreCache: true });
     const refreshRoute = [...ia.ROUTES.values()].at(-1);
     await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(refreshRoute.key)}`);
