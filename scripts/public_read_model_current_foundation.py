@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_canonical_current_state_v2_final as canonical_builder
+import build_web_of_lies as web_of_lies_builder
 
 CANONICAL_STATE_PATH = "data/canonical-current-state-v2.json"
 REGISTRY_PATH = "data/public-read-model-registry.json"
@@ -36,7 +37,12 @@ FACILITY_CONTRACT_PATH = "data/integration-v1.2/facilities.json"
 PRESERVED_FACILITY_RECORD_PATH = "data/facilities.json"
 PUBLIC_PAGE_DATASET_ADDITIONS = {
     "diplomacy_mou": ("analysis.iran_messaging",),
+    "claims_sources": ("analysis.web_of_lies",),
 }
+WEB_OF_LIES_BUILDER_PATH = "scripts/build_web_of_lies.py"
+WEB_OF_LIES_FORENSIC_INPUT_PATH = web_of_lies_builder.FORENSIC_INPUT
+WEB_OF_LIES_GOVERNANCE_PATH = web_of_lies_builder.GOVERNANCE
+WEB_OF_LIES_CONTRACT_PATH = web_of_lies_builder.CONTRACT
 
 PUBLIC_PARTICIPANT_IDENTITIES = {
     "MMDA-BHR": ("ACT-BAHRAIN", "Bahrain", "state", "Bahrain", ["bahrain"]),
@@ -400,6 +406,22 @@ def build_current_foundation(root: Path = ROOT) -> dict[str, Any]:
     if canonical_json_bytes(rebuilt_canonical) != canonical_json_bytes(canonical):
         raise ValueError("Generated canonical v2 state is stale; rebuild it before the public model")
 
+    reader.text(WEB_OF_LIES_BUILDER_PATH, "WEB_OF_LIES_DERIVATION_GENERATOR")
+    web_of_lies_forensic_input = reader.json(
+        WEB_OF_LIES_FORENSIC_INPUT_PATH,
+        "WEB_OF_LIES_FORENSIC_INPUT",
+    )
+    web_of_lies_governance = reader.json(
+        WEB_OF_LIES_GOVERNANCE_PATH,
+        "WEB_OF_LIES_INFORMATION_FORENSICS_GOVERNANCE",
+    )
+    reader.text(WEB_OF_LIES_CONTRACT_PATH, "WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT")
+    web_of_lies_payload = web_of_lies_builder.build_registry(
+        canonical,
+        web_of_lies_forensic_input,
+        web_of_lies_governance,
+    )
+
     dataset_specs = [
         (item["key"], item["path"], item["role"])
         for item in registry.get("datasets") or []
@@ -549,6 +571,24 @@ def build_current_foundation(root: Path = ROOT) -> dict[str, Any]:
             copy.deepcopy(payload),
             "application/json",
         )
+
+    datasets["analysis.web_of_lies"] = dataset_record(
+        "analysis.web_of_lies",
+        CANONICAL_STATE_PATH,
+        "DERIVED_WEB_OF_LIES_FORENSIC_DATA",
+        copy.deepcopy(web_of_lies_payload),
+        "application/json",
+    )
+    datasets["analysis.web_of_lies"]["derivation"] = {
+        "kind": "WEB_OF_LIES_INFORMATION_FORENSICS_DERIVATION",
+        "input_paths": [
+            CANONICAL_STATE_PATH,
+            WEB_OF_LIES_FORENSIC_INPUT_PATH,
+            WEB_OF_LIES_GOVERNANCE_PATH,
+            WEB_OF_LIES_CONTRACT_PATH,
+            WEB_OF_LIES_BUILDER_PATH,
+        ],
+    }
 
     consumer_coverage = validate_consumer_coverage_config(
         registry.get("consumer_coverage"), datasets
