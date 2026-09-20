@@ -30,13 +30,14 @@
     {
       "event_id": "LOCKER-US-OFFICIALS-TWO-MQ1-LOSSES-20260917",
       "event_type": "US_UAS_LOSS_CORROBORATION",
-      "occurrence_time": "RECENT_DAYS_BEFORE_2026-09-17",
+      "occurrence_time": "2026-09-17",
       "public_available_time": "2026-09-17T17:07:00-04:00",
       "collection_time": "2026-09-19T00:02:32-04:00",
       "summary": "CBS reported U.S. officials said Iranian forces brought down at least two American MQ-1 unmanned aircraft in recent days. Location and variant were undisclosed. The reported type is MQ-1, not MQ-9, and cannot be mapped automatically to either Qeshm claim.",
       "sources": [
         "https://www.cbsnews.com/news/iran-downed-american-drones-us-officials/"
-      ]
+      ],
+      "occurrence_time_precision": "RECENT_DAYS_BEFORE_PUBLICATION"
     },
     {
       "event_id": "LOCKER-ITALY-REDSEA-NAVAL-MISSION-INTENT-20260918",
@@ -118,7 +119,7 @@
     {
       "claim_id": "CLM-IRGC-52-53-MQ9-TYPE-CONTEXT-20260918",
       "claimant": "IRGC / U.S.-official-source reporting",
-      "claim_time": "2026-09-16/17",
+      "claim_time": "2026-09-16/2026-09-17",
       "claim": "IRGC described Qeshm losses as the 52nd/53rd MQ-9, while separate U.S.-official-source reporting described at least two recent U.S. losses as MQ-1.",
       "adjudication": "CLAIM_DOMAIN_EVIDENCE_HANDOFF_EXISTING_CHAIN_CH-AIRCRAFT-KILL-AGGREGATES_NO_VERDICT_PROPAGATION",
       "summary": "Type-specific U.S. reporting is material context but does not identify the MQ-1 losses with either Qeshm occurrence.",
