@@ -35,8 +35,8 @@ for (const [index, update] of acceptedUpdates.entries()) {
   }
 }
 assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff, 'current status must remain distinct from the frozen Gate 2 boundary after accepted later evidence');
-assert.equal(ia.ROUTES.size, 25, 'Phase 4 must retain all accepted public routes');
-assert.equal(new Set([...ia.ROUTES.values()].map(route => route.owner)).size, 25, 'each route must retain one page owner');
+assert.equal(ia.ROUTES.size, 26, 'public route inventory must include Web of Lies');
+assert.equal(new Set([...ia.ROUTES.values()].map(route => route.owner)).size, 26, 'each route must retain one page owner');
 assert([...ia.ROUTES.values()].every(route => route.dataKeys.every(key => !key.startsWith('legacy.'))), 'a current route maps a legacy dataset');
 
 for (const phrase of [
@@ -102,4 +102,4 @@ assert.match(css, /@media \(max-width: 52rem\)/);
 assert.match(css, /@media \(max-width: 32rem\)/);
 assert.match(css, /prefers-reduced-motion/);
 
-console.log('public content redesign contract: PASS - narratives, evidence boundaries, Phase 10 effects framework, 25-route ownership, canonical current state, claims, casualties, maps/charts, and responsive foundations verified');
+console.log('public content redesign contract: PASS - narratives, evidence boundaries, Phase 10 effects framework, 26-route ownership, canonical current state, claims, casualties, maps/charts, and responsive foundations verified');
