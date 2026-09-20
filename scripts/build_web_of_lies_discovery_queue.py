@@ -20,6 +20,16 @@ ROOT = Path(__file__).resolve().parents[1]
 HANDOFF = "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json"
 SCHEMA = "schemas/web-of-lies-discovery-queue-v1.json"
 OUTPUT = "data/web-of-lies/discovery-queue.json"
+ROUTING = "data/evidence-integration/rook-catchup-claims-routing-20260920.json"
+sys.path.insert(0, str(ROOT / "scripts"))
+import build_web_of_lies_current_anchor_packets as current_anchors  # noqa: E402
+
+RESOLVED_EXISTING_CLAIM_SEQUENCES = {
+    "WOL-IN-ROOK-F15SA-20260920": {
+        "claim_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+        "chain_id": "CH-RSAF-F15SA-MARIB-20260916",
+    },
+}
 
 
 def load(root: Path, path: str) -> Any:
@@ -30,9 +40,37 @@ def canonical_bytes(value: Any) -> bytes:
     return (json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode("utf-8")
 
 
+def _routing_rows(value: Any) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+
+    def visit(node: Any) -> None:
+        if isinstance(node, list):
+            for child in node:
+                visit(child)
+            return
+        if not isinstance(node, dict):
+            return
+        if "intake_refs" in node or "existing_claim_refs" in node:
+            rows.append(node)
+        for child in node.values():
+            visit(child)
+
+    visit(value)
+    return rows
+
+
 def build_queue(root: Path) -> dict[str, Any]:
     handoff = load(root, HANDOFF)
+    routing = load(root, ROUTING)
+    records, _overlay = current_anchors.current_records(root)
+    record_pairs = {
+        (str(row.get("claim_id") or ""), str(row.get("chain_id") or ""))
+        for row in records
+    }
+    routing_rows = _routing_rows(routing)
+
     items = []
+    resolved = []
     for sequence in handoff.get("statement_sequences") or []:
         if sequence.get("claim_family_ref") is not None:
             continue
@@ -41,6 +79,33 @@ def build_queue(root: Path) -> dict[str, Any]:
         note = str(sequence.get("downstream_note") or "").strip()
         if not sequence_id or not observations or not note:
             raise ValueError(f"incomplete Web of Lies handoff sequence: {sequence!r}")
+
+        continuity = RESOLVED_EXISTING_CLAIM_SEQUENCES.get(sequence_id)
+        if continuity:
+            claim_id = continuity["claim_id"]
+            chain_id = continuity["chain_id"]
+            if (claim_id, chain_id) not in record_pairs:
+                raise ValueError(
+                    f"{sequence_id}: expected current claim continuity missing "
+                    f"{claim_id} / {chain_id}"
+                )
+            if not any(
+                claim_id in (row.get("existing_claim_refs") or [])
+                for row in routing_rows
+            ):
+                raise ValueError(
+                    f"{sequence_id}: Evidence Integration routing does not preserve "
+                    f"existing claim ref {claim_id}"
+                )
+            resolved.append({
+                "sequence_id": sequence_id,
+                "status": "EXISTING_CANONICAL_CLAIM_CONTINUITY",
+                "claim_id": claim_id,
+                "chain_id": chain_id,
+                "routing_path": ROUTING,
+            })
+            continue
+
         items.append({
             "discovery_id": sequence_id,
             "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
@@ -55,6 +120,7 @@ def build_queue(root: Path) -> dict[str, Any]:
             ),
         })
     items.sort(key=lambda row: row["discovery_id"])
+    resolved.sort(key=lambda row: row["sequence_id"])
     return {
         "schema_version": "1.0",
         "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
@@ -62,6 +128,7 @@ def build_queue(root: Path) -> dict[str, Any]:
         "source_handoff": HANDOFF,
         "as_of": handoff.get("as_of"),
         "items": items,
+        "resolved_existing_claim_sequences": resolved,
     }
 
 
@@ -92,12 +159,18 @@ def main() -> int:
     if args.check:
         if not output.is_file() or output.read_bytes() != serialized:
             raise SystemExit(f"FAIL stale {output}")
-        print(f"web-of-lies discovery queue: PASS items={len(queue['items'])}")
+        print(
+            f"web-of-lies discovery queue: PASS items={len(queue['items'])} "
+            f"resolved={len(queue['resolved_existing_claim_sequences'])}"
+        )
         return 0
 
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_bytes(serialized)
-    print(f"web-of-lies discovery queue: wrote {output} items={len(queue['items'])}")
+    print(
+        f"web-of-lies discovery queue: wrote {output} items={len(queue['items'])} "
+        f"resolved={len(queue['resolved_existing_claim_sequences'])}"
+    )
     return 0
 
 
