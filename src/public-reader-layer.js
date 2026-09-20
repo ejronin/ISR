@@ -99,6 +99,41 @@
     }
   }
 
+  function addDeferredEvidence(host, context, records, label) {
+    const rows = asArray(records).filter(Boolean);
+    const sourceIds = unique(rows.flatMap(sourceIdsFrom));
+    const urls = unique(rows.flatMap(directSourceUrls));
+    if (!sourceIds.length && !urls.length) return null;
+
+    const documentObject = host.ownerDocument || context.documentObject;
+    const placeholder = append(host, 'details', 'evidence-drawer reader-deferred-evidence');
+    placeholder.dataset.component = 'SharedEvidenceDrawer';
+    append(placeholder, 'summary', '', label || `Evidence (${sourceIds.length + urls.length})`);
+    append(placeholder, 'p', 'reader-deferred-evidence-note', 'Open to load the linked source record.');
+
+    let hydrated = false;
+    placeholder.addEventListener('toggle', () => {
+      if (!placeholder.open || hydrated) return;
+      hydrated = true;
+
+      const staging = documentObject.createElement('div');
+      addEvidence(staging, context, rows, label);
+      const rendered = [...staging.children];
+      if (!rendered.length) return;
+
+      rendered.forEach(node => {
+        node.querySelectorAll?.('.evidence-role-guide, .technical-record-metadata').forEach(child => child.remove());
+        if (node.tagName === 'DETAILS') node.open = true;
+      });
+
+      const primary = rendered.shift();
+      placeholder.replaceWith(primary);
+      if (rendered.length) primary.after(...rendered);
+    });
+
+    return placeholder;
+  }
+
   function cleanPublicText(value) {
     let result = text(value);
     result = result.replace(/\bROOK(?:'s)?\b/gi, 'the review');
@@ -586,7 +621,7 @@
       append(chainWhy, 'summary', '', 'How Atlas reached this finding');
       const chainExplanation = append(chainWhy, 'ul', 'reader-explanation-list');
       chainPlainEnglish(chain, records).forEach(value => append(chainExplanation, 'li', '', value));
-      addEvidence(chainWhy, context, records, 'Sources used across this chain');
+      addDeferredEvidence(chainWhy, context, records, 'Sources used across this chain');
 
       const logic = chain && chain.logic_graph;
       if (logic && asArray(logic.nodes).length) {
@@ -635,7 +670,7 @@
         append(why, 'summary', '', `Why this branch is ${adjudication.label.toLowerCase()}`);
         const explanation = append(why, 'ul', 'reader-explanation-list');
         howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
-        addEvidence(why, context, [main], 'Evidence for this branch');
+        addDeferredEvidence(why, context, [main], 'Evidence for this branch');
 
         const repeats = groupRecords.filter(record =>
           record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type))
@@ -649,7 +684,7 @@
             append(row, 'span', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · '));
             append(row, 'small', '', ` — ${publicAdjudication(record).label}`);
           });
-          addEvidence(details, context, repeats, 'Sources for repeats');
+          addDeferredEvidence(details, context, repeats, 'Sources for repeats');
         }
       });
 
