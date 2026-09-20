@@ -82,7 +82,7 @@ async function setRoute(cdp, routeKey) {
       sourceIndexBuilds: window.ATLAS_PUBLIC_EVIDENCE?.sourceIndexBuilds,
       rawModelExposed: Object.prototype.hasOwnProperty.call(window, 'ATLAS_PUBLIC_MODEL')
     }))()`);
-    assert.equal(contract.routes, 25);
+    assert.equal(contract.routes, 26);
     assert(contract.nuclear.includes('analysis.iran_messaging'));
     assert(contract.nuclear.includes('analysis.endgame_public_view'));
     assert(contract.resolverSize > 300, 'shared source index was not built once from the current model');
