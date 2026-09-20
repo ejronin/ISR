@@ -599,6 +599,8 @@
 
       const chainTitle = cleanPublicText(chain.public_title || chain.title || chain.reader_title || recordProposition(first));
       append(copy, 'h3', '', chainTitle || 'Narrative chain');
+      const traceLink = append(top, 'a', 'inline-route-link reader-wol-trace', 'TRACE');
+      traceLink.href = base.routeHref('evidence.web_of_lies', { claim_family: chain.chain_id || chain.narrative_family_id });
 
       const chainSummary = cleanPublicText(chain.plain_english_summary || chain.public_summary || chain.event_level_summary || '');
       if (chainSummary) append(copy, 'p', 'reader-chain-summary', chainSummary);
@@ -722,6 +724,11 @@
     search.addEventListener('input', draw);
     status.addEventListener('change', draw);
     draw();
+
+    const forensic = append(article, 'p', 'reader-method-link reader-wol-link');
+    forensic.append(documentObject.createTextNode('Want to see where these stories started, mutated, circulated, and collapsed? '));
+    const forensicLink = append(forensic, 'a', '', 'Open Web of Lies');
+    forensicLink.href = base.routeHref('evidence.web_of_lies');
 
     const methods = append(article, 'p', 'reader-method-link');
     methods.append(documentObject.createTextNode('Want the methodology behind these findings? '));
