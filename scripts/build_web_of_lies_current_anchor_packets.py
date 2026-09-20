@@ -80,21 +80,9 @@ def current_records(root: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     return records, overlay
 
 
-def rich_packet_refs(root: Path) -> set[str]:
-    refs: set[str] = set()
-    packet_root = root / PACKET_DIR
-    for path in sorted(packet_root.glob("*.json")):
-        if path.name.startswith(ANCHOR_PREFIX):
-            continue
-        packet = json.loads(path.read_text(encoding="utf-8"))
-        for event in packet.get("information_events") or []:
-            refs.update(str(value) for value in event.get("canonical_claim_refs") or [] if str(value))
-    return refs
-
-
 def actor_source_id(actor: str) -> str:
-    digest = hashlib.sha256(actor.encode("utf-8")).hexdigest()[:16].upper()
-    return f"WOL-SRC-CLAIMANT-{digest}"
+    token = safe_id(actor).upper()[:96] or "UNKNOWN"
+    return f"WOL-SRC-CLAIMANT-{token}"
 
 
 def receipt_ids(record: dict[str, Any]) -> list[str]:
@@ -136,12 +124,10 @@ def verdict(record: dict[str, Any]) -> str:
 def anchor_packet(
     chain_id: str,
     records: list[dict[str, Any]],
-    existing_refs: set[str],
 ) -> dict[str, Any]:
     events: list[dict[str, Any]] = []
     profiles: dict[str, dict[str, Any]] = {}
     public_total = 0
-    covered_by_rich = 0
     blocked_total = 0
 
     for record in sorted(records, key=lambda row: str(row.get("claim_instance_id") or "")):
@@ -153,10 +139,6 @@ def anchor_packet(
             blocked_total += 1
             continue
         public_total += 1
-
-        if instance_id in existing_refs:
-            covered_by_rich += 1
-            continue
 
         actor = str(record.get("actor") or "Unknown claimant").strip() or "Unknown claimant"
         source_id = actor_source_id(actor)
@@ -215,8 +197,8 @@ def anchor_packet(
 
     notes = (
         "Neutral current-ledger coverage anchor. "
-        f"public_ready={public_total}; covered_by_rich_lineage={covered_by_rich}; "
-        f"anchor_events={len(events)}; blocked_not_emitted={blocked_total}. "
+        f"public_ready={public_total}; anchor_events={len(events)}; "
+        f"blocked_not_emitted={blocked_total}. "
         "Anchor events are read-only Claims Forensics projections and never count as Hall incidents."
     )
     return {
@@ -237,7 +219,6 @@ def anchor_packet(
 
 def expected_packets(root: Path) -> dict[Path, dict[str, Any]]:
     records, overlay = current_records(root)
-    existing_refs = rich_packet_refs(root)
     active_chain_ids = sorted(set(overlay.get("chain_overrides") or {}))
     by_chain: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for record in records:
@@ -248,7 +229,7 @@ def expected_packets(root: Path) -> dict[Path, dict[str, Any]]:
     output: dict[Path, dict[str, Any]] = {}
     for chain_id in active_chain_ids:
         path = root / PACKET_DIR / f"{ANCHOR_PREFIX}{slug(chain_id)}.json"
-        output[path] = anchor_packet(chain_id, by_chain[chain_id], existing_refs)
+        output[path] = anchor_packet(chain_id, by_chain[chain_id])
     return output
 
 
