@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PROJECT-FREEDOM-BOATS-BASELINE-20260920",
+  "claim_family_id": "CH-PROJECT-FREEDOM-BOATS",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRANIAN-GOV-MILITARY-RESPONSE",
+      "display_name": "Iranian government / military response",
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-D8EEF03F1475"
+      ],
+      "behavior_classes": [
+        "OFFICIAL_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-PROJECT_FREEDOM_BOATS-0401-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "source_entity_type": "OUTLET",
+      "country_region": "United Kingdom",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-234330834C41",
+      "canonical_actor_id": "ACT-REUTERS",
+      "canonical_source_ids": [
+        "SRC-D8EEF03F1475"
+      ],
+      "behavior_classes": [
+        "JOURNALISTIC_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-PROJECT_FREEDOM_BOATS-0401-C"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PROJECT_FREEDOM_BOATS-0401-C",
+      "claim_family_id": "CH-PROJECT-FREEDOM-BOATS",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "REPORTS",
+      "published_at": "2026-05-04",
+      "first_observed_at": "2026-05-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Reuters carried the attributed claim: Iran denied that six Iranian small boats had been sunk during Project Freedom.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian government/military response as preserved by Reuters",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0401"
+      ],
+      "evidence_source_ids": [
+        "SRC-D8EEF03F1475"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [
+        "JOURNALISTIC_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying event is at least partly real, but the full claimed effect is not established. The lineage preserves that distinction."
+    },
+    {
+      "event_id": "WOL-EVT-PROJECT_FREEDOM_BOATS-0401-O",
+      "claim_family_id": "CH-PROJECT-FREEDOM-BOATS",
+      "source_id": "WOL-SRC-IRANIAN-GOV-MILITARY-RESPONSE",
+      "event_type": "REPORTS",
+      "published_at": null,
+      "first_observed_at": "2026-05-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran denied that six Iranian small boats had been sunk during Project Freedom.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian government/military response as preserved by Reuters",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0401"
+      ],
+      "evidence_source_ids": [
+        "SRC-D8EEF03F1475"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [
+        "OFFICIAL_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying event is at least partly real, but the full claimed effect is not established. The lineage preserves that distinction."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PROJECT_FREEDOM_BOATS-001",
+      "from_id": "WOL-EVT-PROJECT_FREEDOM_BOATS-0401-C",
+      "to_id": "WOL-EVT-PROJECT_FREEDOM_BOATS-0401-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-D8EEF03F1475"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PROJECT_FREEDOM_BOATS-002",
+      "from_id": "WOL-EVT-PROJECT_FREEDOM_BOATS-0401-C",
+      "to_id": "WOL-SRC-IRANIAN-GOV-MILITARY-RESPONSE",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-D8EEF03F1475"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
