@@ -1,0 +1,122 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-19T00:02:32-04:00",
+    "window_end": "2026-09-19T12:00:00-04:00",
+    "collection_time": "2026-09-19T11:57:48-04:00",
+    "evidence_horizon_time": "2026-09-19T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "boundary_rule": "Recovered from stale catch-up artifacts; original source windows/clocks remain in migration_provenance."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "source_branch_head": "a140d33114664c6b329adf696907870a0273eb93",
+    "stale_branch_policy": "EVIDENCE_INPUT_ONLY_NO_STALE_ARCHITECTURE_IMPORTED",
+    "source_artifacts": [
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260919T1200ET.json",
+        "commit": "652fcc4a48f9460d23dbd27181c8f2be89177a70",
+        "original_role": "APPEND_ONLY_EVIDENCE_INTEGRATION",
+        "original_window": {
+          "start": "2026-09-19T00:00:00-04:00",
+          "end": "2026-09-19T12:00:00-04:00"
+        }
+      }
+    ],
+    "normalization_note": "Normalized start forward by 152 seconds to eliminate stale overlap with the prior recovered sweep; original stale window remains preserved."
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-RIYADH-AIRPORT-AERIAL-THREAT-20260919",
+      "event_type": "HOSTILE_AERIAL_THREAT_AND_OBSERVED_FIRE",
+      "occurrence_time": "2026-09-19",
+      "public_available_time": "2026-09-19",
+      "collection_time": "2026-09-19T11:57:48-04:00",
+      "summary": "Saudi Civil Defence issued hostile-aerial-threat warnings for Riyadh and Al-Kharj; residents/reporters heard booms and observed flames/black smoke near King Khalid International Airport before an all-clear. At this horizon cause, weapon, precise impact point, BDA and casualties were unresolved.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sends-all-clear-after-danger-warning-capital-riyadh-2026-09-19/",
+        "https://apnews.com/article/mideast-roundup-news-september-19-2026-24211a3b34731a669f3e7ab93314afdf"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRAN-EXECUTION-PEDARAN-20260919",
+      "event_type": "IRAN_JUDICIAL_EXECUTION",
+      "occurrence_time": "2026-09-19",
+      "public_available_time": "2026-09-19",
+      "collection_time": "2026-09-19T11:57:48-04:00",
+      "summary": "Iran announced the execution of Hossein Pedaran after a judiciary conviction for spying for Mossad and supplying information on missile sites. The execution is a state-announced event; espionage conduct and motive remain state allegations/conviction findings rather than independently established intelligence facts.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-executes-man-convicted-spying-israels-mossad-judiciary-says-2026-09-19/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-US-FATALITY-DENOMINATOR-18-VS-22-20260919",
+      "updates_existing_ref": "CAS-US-OIG-KIA-RETRO-20260914",
+      "relationship": "COMPETING_PERIOD_FATALITY_DENOMINATOR",
+      "summary": "Reuters reported the Washington Post, citing five unidentified officials, counted at least 22 U.S. military fatalities during the Iran-war period, versus a Pentagon public figure of 18. Some additional deaths may not be directly combat-related; Defense Secretary Hegseth called the report false. Preserve both series until identities/circumstances and combat attribution are reconciled.",
+      "status": "OFFICIAL_18_COMPETING_22_PERIOD_COUNT_UNRESOLVED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-troop-deaths-iran-war-exceed-pentagon-count-by-least-four-washington-post-2026-09-18/"
+      ]
+    },
+    {
+      "update_id": "UPD-UNIFIL-TRANSITION-PLANNING-20260919",
+      "updates_existing_ref": "LEBANON_SECURITY_ARCHITECTURE",
+      "relationship": "LATER_SECURITY_ARCHITECTURE_UPDATE",
+      "summary": "UNIFIL leadership reported planning transfer of responsibilities before the mission's scheduled end-of-2026 withdrawal while coordinating with the Lebanese army and UN agencies. Israeli positions and stalled Hezbollah-disarmament efforts remained; no replacement mission was established.",
+      "status": "TRANSITION_PLANNING_ACTIVE_REPLACEMENT_MISSION_UNESTABLISHED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/un-peacekeeping-chief-lebanon-says-smooth-transition-is-critical-before-pull-out-2026-09-19/"
+      ]
+    },
+    {
+      "update_id": "UPD-HORMUZ-CENTCOM-SOME-PASSAGE-20260919",
+      "updates_existing_ref": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "relationship": "OFFICIAL_PASSAGE_STATEMENT_WITHOUT_NORMALIZATION",
+      "summary": "CENTCOM said successful oil shipments had moved through Hormuz. No newer in-window commercial daily transit dataset displaced the Kpler Thursday count; the statement supports continued passage, not normalized or unrestricted traffic.",
+      "status": "SOME_PASSAGE_CONFIRMED_NORMALIZATION_NOT_ESTABLISHED",
+      "sources": [
+        "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf"
+      ]
+    },
+    {
+      "update_id": "UPD-GAZA-STRIKES-20260919",
+      "updates_existing_ref": "GAZA_THEATER_CONTEXT",
+      "relationship": "RELATED_THEATER_EVENT",
+      "summary": "Reuters reported Israeli strikes killed at least three Palestinians on Sep.19. Israel said targets included militants; casualty identities and militant status remained contested.",
+      "status": "CASUALTY_OCCURRENCE_REPORTED_TARGET_STATUS_CONTESTED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-09-19/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "unresolved_questions": [
+    "Cause and weapon associated with observed Riyadh airport-area fire",
+    "Reconciliation of U.S. 18 official versus at-least-22 period fatalities",
+    "Replacement security mechanism after UNIFIL withdrawal",
+    "Latest independent Hormuz commercial transit count"
+  ],
+  "coverage": {
+    "material_results": [
+      "Riyadh threat, U.S. fatality denominator, Iran execution, UNIFIL and Hormuz passage status recovered."
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new Qeshm MQ-9, F-15SA, pipeline or China-pressure disposition change located in stale source artifact."
+    ],
+    "limitations": [
+      "Riyadh fire attribution was unresolved at this horizon.",
+      "Competing U.S. fatality totals use unresolved denominator/combat-status definitions."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_MIGRATED_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}

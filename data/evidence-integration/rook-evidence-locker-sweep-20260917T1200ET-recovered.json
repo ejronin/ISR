@@ -1,0 +1,183 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-16T19:30:00-04:00",
+    "window_end": "2026-09-17T12:00:45-04:00",
+    "collection_time": "2026-09-17T12:00:45-04:00",
+    "evidence_horizon_time": "2026-09-17T12:00:45-04:00",
+    "timezone": "America/New_York",
+    "boundary_rule": "Recovered from stale catch-up artifacts. Operational scope is normalized only to remove stale overlap/gap defects; every original stale window is preserved verbatim in migration_provenance."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "source_branch_head": "a140d33114664c6b329adf696907870a0273eb93",
+    "stale_branch_policy": "EVIDENCE_INPUT_ONLY_NO_STALE_ARCHITECTURE_IMPORTED",
+    "source_artifacts": [
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260917T0730ET.json",
+        "commit": "e0cdf85a2852313bd7cc4bc78a7c7e7e240232d9",
+        "original_role": "ROOK_FULL_EVIDENCE_LOCKER_12H_SWEEP",
+        "original_window": {
+          "start": "2026-09-16T19:30:00-04:00",
+          "end": "2026-09-17T07:30:00-04:00"
+        }
+      },
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260917T1200ET.json",
+        "commit": "c99908d45c074e928046e200327c319a26e3433c",
+        "original_role": "ROOK_FULL_EVIDENCE_LOCKER_12H_SWEEP",
+        "original_window": {
+          "start": "2026-09-17T00:00:45-04:00",
+          "end": "2026-09-17T12:00:45-04:00"
+        }
+      }
+    ],
+    "normalization_note": "Consolidates two heavily overlapping stale 12-hour sweeps into one non-overlapping current-contract interval. Items moved to earlier recovered windows by publication time are not duplicated."
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRGC-MQ9-QESHM-SECOND-CLAIM-20260917",
+      "event_type": "AIR_DEFENSE_LOSS_CLAIM",
+      "occurrence_time": "2026-09-17T10:12:00+03:30",
+      "public_available_time": "2026-09-17",
+      "collection_time": "2026-09-17T12:00:45-04:00",
+      "summary": "IRGC said it destroyed another U.S. MQ-9 over Qeshm Island at 10:12 Iran time and called it the 53rd MQ-9 destroyed in the conflict. No U.S. or independent confirmation was found by this evidence horizon.",
+      "sources": [
+        "https://www.aa.com.tr/en/middle-east/iran-says-another-us-mq-9-drone-downed-over-qeshm-island-near-strait-of-hormuz/4060222"
+      ]
+    },
+    {
+      "event_id": "LOCKER-TAIF-DRONE-DEBRIS-CASUALTIES-20260917",
+      "event_type": "HUMAN_IMPACT_AIR_DEFENSE_DEBRIS",
+      "occurrence_time": "2026-09-17",
+      "public_available_time": "2026-09-17",
+      "collection_time": "2026-09-17T12:00:45-04:00",
+      "summary": "Saudi civil defense said falling debris from an intercepted Houthi drone in Taif province killed one Yemeni and injured a Saudi citizen and a Pakistani national, with vehicle and building damage reported.",
+      "sources": [
+        "https://apnews.com/article/d29f7fb71331bea0098cbdb38d7577e0"
+      ]
+    },
+    {
+      "event_id": "LOCKER-UN-FFM-US-IRAN-FINDINGS-20260917",
+      "event_type": "HUMAN_RIGHTS_LEGAL_FINDING",
+      "occurrence_time": "2026-09-17",
+      "public_available_time": "2026-09-17",
+      "collection_time": "2026-09-17T12:00:45-04:00",
+      "summary": "A UN fact-finding mission reported reasonable grounds to believe specified U.S. strikes included war crimes and that Iranian authorities committed crimes against humanity in their response to protests. These remain findings of the mission, not judicial determinations.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/un-mission-finds-grounds-believe-us-committed-war-crimes-iran-tehran-crimes-2026-09-17/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-KPLER-THREE-TRANSITS-20260917",
+      "updates_existing_ref": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "relationship": "LATER_DAILY_TRAFFIC_OBSERVATION",
+      "summary": "Reuters reported preliminary Kpler data showing three commodity-vessel transits Wednesday, below the ten-day average; AIS-off traffic remained an explicit undercount risk.",
+      "status": "SEVERE_OBSERVABLE_DISRUPTION_CONTINUES",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/number-ships-transiting-strait-hormuz-falls-three-wednesday-data-shows-2026-09-17/"
+      ]
+    },
+    {
+      "update_id": "UPD-BAB-EL-MANDEB-21-TRANSITS-20260917",
+      "updates_existing_ref": "SHIP-BAB-EL-MANDEB-TRAFFIC-20260914",
+      "relationship": "LATER_DAILY_MARITIME_TRAFFIC_OBSERVATION",
+      "summary": "Kpler data reported 21 Bab el-Mandeb crossings Wednesday, down from 24 Tuesday. Traffic remained present despite territorial conflict and threats.",
+      "status": "21_REPORTED_CROSSINGS_WEDNESDAY",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/number-ships-transiting-strait-hormuz-falls-three-wednesday-data-shows-2026-09-17/"
+      ]
+    },
+    {
+      "update_id": "UPD-SAUDI-SOHAR-STS-MITIGATION-20260917",
+      "updates_existing_ref": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "relationship": "LATER_EXPORT_MITIGATION_DETAIL",
+      "summary": "Saudi Arabia offered additional crude to Asian buyers via ship-to-ship transfers off Sohar after Yanbu loadings halted. This is alternative-route mitigation, not physical East-West Pipeline restoration.",
+      "status": "SOHAR_STS_MITIGATION_EXPANDING_YANBU_LOADINGS_REPORTED_HALTED",
+      "sources": [
+        "https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-ASIA-LNG-DEMAND-DESTRUCTION-20260917",
+      "updates_existing_ref": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "relationship": "LATER_LNG_MARKET_IMPACT",
+      "summary": "Reuters analysis projected weak Asian LNG imports as high spot prices and reduced Qatari flows through Hormuz deterred buyers; forecasts remain separate from finalized monthly import data.",
+      "status": "QATAR_HORMUZ_DISRUPTION_MATERIALLY_AFFECTS_LNG_MARKET",
+      "sources": [
+        "https://www.reuters.com/commentary/reuters-open-interest/lng-spot-price-surge-deters-asian-buyers-saves-europe-2026-09-17/"
+      ]
+    },
+    {
+      "update_id": "UPD-HOUTHI-WEAPONS-RD-20260917",
+      "updates_existing_ref": "YEMEN_HOUTHI_REDSEA_ADVANCE_CHAIN",
+      "relationship": "LATER_TECHNICAL_CAPABILITY_EVIDENCE",
+      "summary": "Conflict Armament Research reporting described Iran-linked supply networks and Houthi indigenous experimentation. Proposed loitering-torpedo applications were technical assessments, not confirmed operational deployment.",
+      "status": "IRAN_LINKED_SUPPLY_AND_LOCAL_RD_EVIDENCE_ADDED_OPERATIONAL_STATUS_UNCONFIRMED",
+      "sources": [
+        "https://www.thenationalnews.com/news/mena/2026/09/17/houthis-experiment-with-weapons-no-other-armed-group-possesses/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-IRGC-MQ9-53RD-20260917",
+      "claimant": "IRGC",
+      "claim_time": "2026-09-17",
+      "claim": "The second Qeshm aircraft was the 53rd U.S. MQ-9 destroyed in the conflict.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_EXISTING_CHAIN_CH-AIRCRAFT-KILL-AGGREGATES",
+      "summary": "Route exact aggregate wording to Claims Forensics; ROOK does not propagate a verdict.",
+      "sources": [
+        "https://www.aa.com.tr/en/middle-east/iran-says-another-us-mq-9-drone-downed-over-qeshm-island-near-strait-of-hormuz/4060222"
+      ]
+    },
+    {
+      "claim_id": "CLM-HOUTHI-F15-SHOOTDOWN-CONTINUITY-20260917",
+      "claimant": "Houthis",
+      "claim_time": "2026-09-16",
+      "claim": "Houthis claimed they shot down a Saudi F-15 over Marib.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_NO_TRUTH_REWRITE_BY_ROOK",
+      "summary": "Claim repeated without independent confirmation at this horizon; later airframe evidence is handled as evidence update, not verdict propagation.",
+      "sources": [
+        "https://apnews.com/article/d29f7fb71331bea0098cbdb38d7577e0"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-OIL-PRICE-EASING-20260917",
+      "summary": "Oil prices eased as markets incorporated Saudi alternative-loading plans, while physical pipeline and chokepoint constraints remained unresolved.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-extend-losses-fears-middle-east-supply-disruptions-ease-2026-09-17/"
+      ]
+    }
+  ],
+  "unresolved_questions": [
+    "Independent confirmation of Qeshm MQ-9 claims and claimed aggregate",
+    "Current Hormuz AIS-dark share",
+    "East-West physical restart/full throughput/Yanbu normalization",
+    "Whether China applies private economic pressure beyond public diplomacy",
+    "Whether the Oman U.S.-Houthi channel produces operational restraint"
+  ],
+  "coverage": {
+    "material_results": [
+      "Sep.16 evening through Sep.17 noon material consolidated from overlapping stale sweeps."
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new B-2 loss evidence in recovered stale source set."
+    ],
+    "limitations": [
+      "No paid maritime terminal or classified ISR.",
+      "Some original sources carried date-only publication times; those clocks remain date-only rather than fabricated."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_MIGRATED_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}

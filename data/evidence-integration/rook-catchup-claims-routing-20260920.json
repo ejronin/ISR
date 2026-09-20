@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "EVIDENCE_INTEGRATION_CLAIM_DOMAIN_ROUTING",
+  "record_id": "EI-ROOK-CATCHUP-CLAIMS-20260920",
+  "as_of": "2026-09-20T15:48:00-04:00",
+  "authority_boundary": {
+    "owner": "EVIDENCE_INTEGRATION",
+    "downstream_analysis_owner": "CLAIMS_FORENSICS",
+    "semantic_mutations": "NONE",
+    "purpose": "Route recovered claimant-sourced propositions and later evidence to the existing claims authority without changing truth, knowledge, deception, denominator, chain, or Lie findings.",
+    "controlling_contract": "docs/LIE_LEDGER_EVIDENCE_ADJUDICATION_CONTRACT.md"
+  },
+  "routing": [
+    {
+      "intake_refs": [
+        "CLM-IRGC-MQ9-QESHM-20260916"
+      ],
+      "existing_claim_refs": [
+        "CLM-IRGC-QESHM-MQ9-LOSS-20260916"
+      ],
+      "existing_chain_ref": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "routing_disposition": "EXISTING_CLAIM_SOURCE_CONTINUITY_NO_EVIDENCE_INTEGRATION_SEMANTIC_CHANGE"
+    },
+    {
+      "intake_refs": [
+        "CLM-IRGC-52-MQ9-CUMULATIVE-20260916"
+      ],
+      "existing_claim_refs": [
+        "CLM-IRGC-QESHM-MQ9-52-20260916"
+      ],
+      "existing_chain_ref": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "routing_disposition": "EXISTING_CLAIM_SOURCE_CONTINUITY_NO_EVIDENCE_INTEGRATION_SEMANTIC_CHANGE"
+    },
+    {
+      "intake_refs": [
+        "CLM-IRGC-MQ9-53RD-20260917"
+      ],
+      "existing_claim_refs": [
+        "CLM-IRGC-QESHM-MQ9-53-20260917"
+      ],
+      "existing_chain_ref": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "routing_disposition": "EXISTING_CLAIM_SOURCE_CONTINUITY_NO_EVIDENCE_INTEGRATION_SEMANTIC_CHANGE"
+    },
+    {
+      "intake_refs": [
+        "CLM-HOUTHI-F15-SHOOTDOWN-20260916",
+        "CLM-HOUTHI-F15-SHOOTDOWN-CONTINUITY-20260917"
+      ],
+      "existing_claim_refs": [
+        "CLM-HOUTHI-F15SA-CAUSATION-20260916"
+      ],
+      "existing_chain_ref": null,
+      "routing_disposition": "EXISTING_CLAIM_RECEIVES_LATER_AIRFRAME_EVIDENCE_CAUSATION_AND_CREW_QUESTIONS_REMAIN_FOR_CLAIMS_AUTHORITY"
+    },
+    {
+      "intake_refs": [
+        "CLM-IRGC-TANKER-HORMUZ-20260917",
+        "CLM-TREND-TANKER-US-DIRECTION-20260918"
+      ],
+      "existing_claim_refs": [],
+      "existing_chain_ref": null,
+      "routing_disposition": "NEW_FAMILY_CANDIDATE_SPLIT_VESSEL_IDENTITY_PHYSICAL_EFFECT_CONTROL_AND_US_DIRECTION_PROPOSITIONS"
+    },
+    {
+      "intake_refs": [
+        "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918"
+      ],
+      "existing_claim_refs": [],
+      "existing_chain_ref": null,
+      "routing_disposition": "NEW_FAMILY_CANDIDATE_REGISTRATION_COUNT_AND_PROJECTION_PROPOSITIONS"
+    },
+    {
+      "intake_refs": [
+        "CLM-IRAN-SEVEN-SETTLEMENT-CONDITIONS-20260919",
+        "CLM-IRAN-SEVEN-CONDITIONS-SIX-PUBLIC-20260920"
+      ],
+      "existing_claim_refs": [],
+      "existing_chain_ref": null,
+      "routing_disposition": "CLAIM_DOMAIN_INTAKE_DIPLOMATIC_POSITION_CHRONOLOGY_THREE_DISCLOSED_THEN_SIX_DISCLOSED_OF_SEVEN_NO_ACCUSATION_IMPLIED"
+    },
+    {
+      "intake_refs": [
+        "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919"
+      ],
+      "existing_claim_refs": [],
+      "existing_chain_ref": null,
+      "routing_disposition": "NEW_FAMILY_CANDIDATE_CAPABILITY_TEST_EVENT_PROPOSITION"
+    },
+    {
+      "intake_refs": [
+        "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919"
+      ],
+      "existing_claim_refs": [],
+      "existing_chain_ref": null,
+      "routing_disposition": "NEW_FAMILY_CANDIDATE_EXACT_EXPORT_DENOMINATOR_PROPOSITION"
+    },
+    {
+      "intake_refs": [
+        "CLM-IRAN-PREPARED-US-ALLIED-ATTACK-INTEL-20260920"
+      ],
+      "existing_claim_refs": [],
+      "existing_chain_ref": null,
+      "routing_disposition": "NEW_FAMILY_CANDIDATE_FOREKNOWLEDGE_PROPOSITION"
+    },
+    {
+      "intake_refs": [
+        "UPD-RIYADH-FUEL-DEPOT-FIRE-20260919"
+      ],
+      "existing_claim_refs": [],
+      "existing_chain_ref": null,
+      "routing_disposition": "NEW_FAMILY_CANDIDATE_HOUTHI_RIYADH_YANBU_BDA_PROPOSITIONS_KEEP_OBSERVED_FIRE_SEPARATE_FROM_ATTRIBUTION"
+    }
+  ],
+  "evidence_inputs": [
+    {
+      "source": "https://www.cbsnews.com/news/iran-downed-american-drones-us-officials/",
+      "relevance": "U.S.-official-source report says at least two recent U.S. losses were MQ-1; location/identity not tied to either Qeshm claim."
+    },
+    {
+      "source": "https://www.janes.com/defence-intelligence-insights/defence-news/defence/houthis-claim-shooting-down-of-saudi-fighter-in-first-combat-loss-for-advanced-eagle",
+      "relevance": "Airframe identification supports one RSAF F-15SA physical loss while mechanism and crew disposition remain separate questions."
+    },
+    {
+      "source": "https://www.reuters.com/world/middle-east/saudi-civil-defence-sends-all-clear-after-danger-warning-capital-riyadh-2026-09-19/",
+      "relevance": "Observed Riyadh-area fire and Saudi interception account must remain separate from Houthi specific BDA claims."
+    }
+  ],
+  "handoff_status": "EVIDENCE_ROUTING_COMPLETE_CLAIMS_AUTHORITY_ACTION_NOT_PERFORMED"
+}

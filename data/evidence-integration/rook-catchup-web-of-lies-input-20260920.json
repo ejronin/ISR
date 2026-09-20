@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "EVIDENCE_INTEGRATION_SOURCE_PROVENANCE_RECORD",
+  "record_id": "EI-ROOK-CATCHUP-WOL-20260920",
+  "as_of": "2026-09-20T15:48:00-04:00",
+  "authority_boundary": {
+    "owner": "EVIDENCE_INTEGRATION",
+    "downstream_analysis_owner": "WEB_OF_LIES_INFORMATION_FORENSICS",
+    "semantic_mutations": "NONE",
+    "purpose": "Preserve source identity, statement chronology, correction/detail-expansion chronology, and claimant-versus-independent-source separation for downstream information-forensics analysis.",
+    "controlling_downstream_contract": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
+  },
+  "handoff_status": "EVIDENCE_RECORD_COMPLETE",
+  "statement_sequences": [
+    {
+      "sequence_id": "WOL-IN-ROOK-MQ9-52-53-20260920",
+      "claim_family_ref": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "observations": [
+        {
+          "date": "2026-09-16",
+          "source": "Tasnim/Anadolu carriage of IRGC statement",
+          "statement_identity": "52nd U.S. MQ-9 claim"
+        },
+        {
+          "date": "2026-09-17",
+          "source": "Anadolu carriage of IRGC statement",
+          "statement_identity": "53rd U.S. MQ-9 claim"
+        },
+        {
+          "date": "2026-09-17",
+          "source": "CBS reporting of U.S. officials",
+          "statement_identity": "At least two recent U.S. losses described as MQ-1, without locations"
+        }
+      ],
+      "downstream_note": "Type-specific external evidence is relevant to lineage and proposition testing but does not itself identify either MQ-1 loss with a Qeshm claim."
+    },
+    {
+      "sequence_id": "WOL-IN-ROOK-F15SA-20260920",
+      "claim_family_ref": null,
+      "observations": [
+        {
+          "date": "2026-09-16",
+          "source": "Houthi statement carried by AP",
+          "statement_identity": "Claimed Saudi F-15 shootdown"
+        },
+        {
+          "date": "2026-09-17",
+          "source": "Janes",
+          "statement_identity": "Wreckage identified as RSAF F-15SA; mechanism and crew status not established"
+        }
+      ],
+      "downstream_note": "Preserve claim propagation separately from later physical-airframe evidence."
+    },
+    {
+      "sequence_id": "WOL-IN-ROOK-TREND-20260920",
+      "claim_family_ref": null,
+      "observations": [
+        {
+          "date": "2026-09-17",
+          "source": "IRGC statement carried by Reuters",
+          "statement_identity": "Togo-flagged tanker hit/caught fire/stopped during unauthorized Hormuz passage"
+        },
+        {
+          "date": "2026-09-17",
+          "source": "Press TV",
+          "statement_identity": "Claimant-side vessel name Trend and U.S.-direction allegation"
+        },
+        {
+          "date": "2026-09-18",
+          "source": "UKMTO reporting summarized by Maritime Executive",
+          "statement_identity": "Independent maritime incident reporting involving an unknown projectile"
+        }
+      ],
+      "downstream_note": "Do not collapse independent incident existence into corroboration of every claimant proposition."
+    },
+    {
+      "sequence_id": "WOL-IN-ROOK-IRAN-CONDITIONS-20260920",
+      "claim_family_ref": null,
+      "observations": [
+        {
+          "date": "2026-09-19",
+          "source": "Rezaei / Al Jazeera",
+          "statement_identity": "Seven conditions asserted; three publicly enumerated in first recovered reporting"
+        },
+        {
+          "date": "2026-09-20",
+          "source": "Al Jazeera follow-on",
+          "statement_identity": "Six of seven conditions publicly enumerated; one remained undisclosed"
+        }
+      ],
+      "downstream_note": "Chronology is a detail expansion/correction opportunity. Earlier source state must not be silently rewritten as if six items were public on Sep.19."
+    },
+    {
+      "sequence_id": "WOL-IN-ROOK-RIYADH-20260920",
+      "claim_family_ref": null,
+      "observations": [
+        {
+          "date": "2026-09-19",
+          "source": "Saudi authorities / Reuters/AP",
+          "statement_identity": "Hostile threat/interception account and observed airport-area fire"
+        },
+        {
+          "date": "2026-09-19",
+          "source": "Houthi statements",
+          "statement_identity": "Claimed Riyadh sensitive-site and Yanbu Aramco attacks"
+        },
+        {
+          "date": "2026-09-20",
+          "source": "Reuters",
+          "statement_identity": "Observed plume localized to King Khalid airport fuel-storage area; weapon-to-damage attribution unresolved"
+        }
+      ],
+      "downstream_note": "Source-family separation is required before downstream propagation analysis."
+    }
+  ],
+  "downstream_handoff": {
+    "recipient": "WEB_OF_LIES_INFORMATION_FORENSICS",
+    "contract_path": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+    "package_character": "NEUTRAL_CANONICAL_EVIDENCE_INPUT"
+  }
+}
