@@ -346,11 +346,6 @@
       "key": "analysis.endgame_causal_graph",
       "path": "data/endgame-causal-map-r2.mmd",
       "role": "APPROVED_ANALYTICAL_TEXT"
-    },
-    {
-      "key": "analysis.web_of_lies",
-      "path": "data/web-of-lies/derived-registry.json",
-      "role": "DERIVED_WEB_OF_LIES_FORENSIC_DATA"
     }
   ],
   "consumer_coverage": {
@@ -617,8 +612,7 @@
       "analysis.influence_networks",
       "analysis.source_context",
       "analysis.media_bias_provider",
-      "archive.snapshot_index",
-      "analysis.web_of_lies"
+      "archive.snapshot_index"
     ],
     "diplomacy_mou": [
       "current.chronology",
