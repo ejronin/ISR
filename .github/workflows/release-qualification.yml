@@ -122,6 +122,7 @@ jobs:
           python scripts/validate_lie_ledger_v2.py
           python scripts/validate_claims_forensics_authority.py
           python tests/claims-forensics-authority-contract.test.py
+          python scripts/build_web_of_lies_discovery_queue.py --check
           python scripts/build_web_of_lies_baseline_packets.py --check
           python scripts/build_web_of_lies_forensic_input.py --check
           python scripts/validate_web_of_lies.py
