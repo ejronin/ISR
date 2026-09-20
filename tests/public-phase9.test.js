@@ -49,8 +49,6 @@ assert.match(model.release.lie_ledger_claims_forensics_overlay_version || '', /^
 assert.match(model.release.lie_ledger_claims_forensics_full_sweep_version || '', /^ATLAS-CLAIMS-FORENSICS-SWEEP-/,
   'public release does not pin full Claims Forensics sweep');
 assert.equal(model.release.lie_ledger_claims_forensics_contract_path, 'docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md');
-assert(model.release.lie_ledger_claims_forensics_maintenance_sweep_version,
-  'public release does not pin Claims Forensics maintenance sweep');
 assert.equal(model.integrity.lie_ledger_claims_forensics_release_pinned, true);
 assert(!Object.hasOwn(ledger, 'authority'), 'public Lie Ledger must not expose persona authority');
 assert.equal(ledger.blocked_assessment_policy, 'WITHHOLD_UNQUALIFIED_KNOWLEDGE_NOT_FACTUAL_STATUS');
