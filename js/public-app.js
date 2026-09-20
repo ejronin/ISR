@@ -302,7 +302,7 @@
     invariant(coverage && coverage.schema_version === '1.0', 'MODEL_INVALID', 'Public consumer-coverage policy is missing.');
     invariant(Array.isArray(coverage.route_data_waivers) && Array.isArray(coverage.dataset_waivers), 'MODEL_INVALID', 'Public consumer-coverage waivers are malformed.');
     const routeEntries = Object.entries(activeContracts);
-    invariant(routeEntries.length === 25, 'MODEL_INVALID', `Expected 25 public route consumer contracts; found ${routeEntries.length}.`);
+    invariant(routeEntries.length === 26, 'MODEL_INVALID', `Expected 26 public route consumer contracts; found ${routeEntries.length}.`);
     const observedRoutes = observed && observed.routeAccesses && typeof observed.routeAccesses === 'object' ? observed.routeAccesses : {};
     const sharedAccesses = new Set(observed && Array.isArray(observed.sharedAccesses) ? observed.sharedAccesses : []);
     const routeWaivers = new Map();
