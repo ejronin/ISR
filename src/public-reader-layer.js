@@ -480,7 +480,7 @@
   function chainPlainEnglish(chain, records) {
     const explicit = asArray(chain && (chain.how_we_know || chain.public_reasoning || chain.logic_summary))
       .map(cleanPublicText)
-      .filter(Boolean);
+      .filter(value => value && !INTERNAL_TEXT.test(value));
     if (explicit.length) return explicit;
 
     const findings = new Map();
