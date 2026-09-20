@@ -1,0 +1,212 @@
+{
+  "schema": "atlas-rook-evidence-locker-sweep-v1",
+  "run_id": "ROOK-20260920T0000ET",
+  "authority": "routine-upstream-collection",
+  "timezone": "America/New_York",
+  "window": {
+    "start": "2026-09-19T12:00:00-04:00",
+    "end": "2026-09-20T00:00:00-04:00",
+    "collection_time": "2026-09-19T23:59:23-04:00",
+    "evidence_horizon": "2026-09-20T00:00:00-04:00"
+  },
+  "parent_evidence_commit": "4cc51ff5048432f99e79f606e06843f6147ee212",
+  "immutability": {
+    "append_only": true,
+    "canonical_packet_bytes_rewritten": false,
+    "accepted_hashes_rewritten": false,
+    "generated_public_state_rewritten": false,
+    "signed_release_artifacts_rewritten": false,
+    "release_manifests_rewritten": false
+  },
+  "updates": [
+    {
+      "event_id": "RIYADH-AIRPORT-AERIAL-THREAT-20260919",
+      "disposition": "existing-event-update",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-19",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "Physical damage is now independently stronger than in the 16:40 ET drawer. An AFP journalist reported firefighters extinguished a blaze on an Aramco-branded fuel tank at a fuel depot near King Khalid International Airport. Reuters imagery/video independently established flames and heavy smoke near apparent fuel tanks. The Saudi coalition said it intercepted a Houthi ballistic missile aimed at Riyadh and thwarted attacks on Bish, Farasan, Taif and Yanbu. Houthis claimed missile/drone attacks on sensitive Riyadh sites and Aramco facilities at Yanbu. Preserve separately: fuel-depot fire is established; Houthi responsibility for that specific fire/weapon impact is not independently established by the available evidence; Yanbu damage remains unverified.",
+      "supersedes": "16:40 ET status that causal link and damage remained wholly unresolved",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sends-all-clear-after-danger-warning-capital-riyadh-2026-09-19/",
+        "https://www.dawn.com/news/2031137/houthis-say-targeted-sensitive-sites-in-riyadh-aramco-facilities-in-yanbu",
+        "https://apnews.com/article/b1286cad816dd3e553f50f6dd5205972"
+      ]
+    },
+    {
+      "event_id": "CENTCOM-HORMUZ-1B-BARRELS-20260919",
+      "disposition": "missed-prior-window-source-discovery",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-19T10:37:00-04:00",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "CENTCOM commander Adm. Brad Cooper stated U.S. forces had supported more than 1 billion barrels of Gulf-partner crude moving through Hormuz in the prior couple of months, assisted more than 2,000 commercial ship transits with coordinated protection, cleared mines from primary transit lanes, and that crude/cargo/LNG volume over the prior two weeks was the highest in six months. Cooper also claimed Iran exported zero barrels because of the U.S. blockade. AP explicitly cautioned that monitors still show shipping traffic well below prewar levels. Preserve CENTCOM's aggregate and zero-Iran-export statement as U.S. military claims; they do not supersede Kpler's narrower daily commodity-vessel counts and do not establish normalized freedom of navigation.",
+      "sources": [
+        "https://fortune.com/2026/09/19/central-command-us-military-transit-1-billion-barrels-oil-hormuz-iran-exports-naval-blockade/",
+        "https://www.timesofisrael.com/liveblog_entry/us-central-command-chief-1-billion-barrels-of-crude-oil-allowed-to-exit-through-hormuz-in-recent-months/",
+        "https://www.aa.com.tr/en/americas/us-military-says-over-1b-barrels-of-oil-shipped-through-strait-of-hormuz-under-us-blockade/4062037"
+      ],
+      "unresolved": [
+        "Independent denominator/methodology for CENTCOM's 1 billion barrels and 2,000 assisted transits",
+        "Independent verification of the zero-Iran-export claim",
+        "Latest Kpler daily commodity-vessel count after Thursday September 17"
+      ]
+    },
+    {
+      "event_id": "IRAN-QATAR-US-SETTLEMENT-CONDITIONS-20260919",
+      "disposition": "existing-event-update",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-19",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "Rezaei's public messaging contains a material precision issue: in a separate X post he said Iran had transmitted seven conditions for beginning negotiations, but in the Al Jazeera interview only three were publicly identified: end the war on all fronts, release frozen Iranian funds/assets, and end the U.S. naval blockade. The remaining four conditions were not publicly enumerated in sources located this run. Do not collapse 'seven conditions' into the three disclosed conditions or invent the other four. Rezaei also said Iran had not decided to leave the NPT, said its nuclear doctrine remained unchanged, rejected Iranian authority over Bab al-Mandeb as a Yemeni/Houthi matter, and said an Iran-Oman Hormuz framework had been close to announcement before being shelved and remained available subject to possible regional endorsement.",
+      "supersedes": "16:40 ET drawer's presentation of the three disclosed conditions as if they were necessarily the complete set",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/19/iran-says-conditions-to-re-engage-in-talks-end-war-sent-to-us-via-qatar",
+        "https://www.newindianexpress.com/world/2026/Sep/20/iran-sets-seven-conditions-for-talks-with-us-through-qatar-warns-of-decisive-war-if-trump-rejects-demands"
+      ],
+      "unresolved": [
+        "Identity and wording of four undisclosed conditions",
+        "Whether all seven are strict pre-talk prerequisites, settlement terms, or a mixed package",
+        "Whether Washington has formally responded"
+      ]
+    },
+    {
+      "event_id": "IRAN-ANTI-SHIP-MULTIWARHEAD-CLAIM-20260919",
+      "disposition": "new-claim-preservation",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-19/20",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "Mohsen Rezaei claimed Iran recently test-fired a multi-warhead anti-ship missile near a U.S. vessel or aircraft carrier and said future Iranian responses could target U.S. bases and commercial interests. No independent confirmation, U.S. acknowledgement, telemetry, imagery, NOTAM/NAVWARN, or weapon identification was located in this run. Preserve as claimant-sourced military claim, not established capability or event.",
+      "sources": [
+        "https://www.newindianexpress.com/world/2026/Sep/20/iran-sets-seven-conditions-for-talks-with-us-through-qatar-warns-of-decisive-war-if-trump-rejects-demands"
+      ]
+    },
+    {
+      "event_id": "LEBANON-ISRAEL-STRIKES-20260919",
+      "disposition": "existing-theater-event-update",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-19",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "Israel said it struck Hezbollah targets in several areas of southern Lebanon after two Israeli soldiers were wounded when their vehicle drove over what Israel described as a Hezbollah explosive device in Israeli-occupied southern Lebanon. Lebanon's NNA reported three strikes on Nabatiyeh al-Fawqa and said a third nearly hit responding paramedics; it reported no injuries there. Preserve Israeli attribution of the explosive device and target identities as claimant-sourced absent independent confirmation. UNIFIL withdrawal/transfer planning remains unchanged from the earlier drawer.",
+      "sources": [
+        "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf",
+        "https://www.reuters.com/world/middle-east/un-peacekeeping-chief-lebanon-says-smooth-transition-is-critical-before-pull-out-2026-09-19/"
+      ]
+    },
+    {
+      "event_id": "PAKISTAN-IRAN-MARITIME-SAFETY-CALL-20260919",
+      "disposition": "new-diplomatic-event",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-19",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "Pakistan's Foreign Ministry said FM Ishaq Dar discussed uninterrupted energy supplies and safe passage for commercial shipping with Iranian FM Abbas Araghchi, citing effects of disruption on developing countries and global supply chains. This is diplomatic pressure/engagement, not evidence of a new navigation agreement or Iranian concession.",
+      "sources": [
+        "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf"
+      ]
+    },
+    {
+      "event_id": "YEMEN-WEST-COAST-DISPLACEMENT-20260918",
+      "disposition": "prior-drawer-denominator-update",
+      "occurrence_time": "2026-09-01/17",
+      "publication_time": "2026-09-18",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "IOM DTM Update #6 reports approximately 114,498 individuals (19,083 households) displaced between September 1 and 17 in the West Coast escalation. Preserve this as the IOM DTM denominator/timebox; do not merge it arithmetically with OCHA/UN figures around 125,000-126,000, which use different coverage/cutoffs. This refines the prior IOM figure in the drawer rather than proving a contradiction.",
+      "sources": [
+        "https://dtm.iom.int/yemen",
+        "https://transcripts.un.org/en/sc/10222"
+      ]
+    },
+    {
+      "event_id": "GAZA-STRIKES-20260919",
+      "disposition": "existing-event-confirmation",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-19",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "No material change from the afternoon drawer: Israeli strikes killed at least three Palestinians according to Gaza medical officials. Israel said it targeted military/Hamas operatives. Preserve casualty occurrence separately from Israeli target-status claims.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-gaza-medics-say-2026-09-19/",
+        "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf"
+      ]
+    },
+    {
+      "event_id": "SYRIA-AYASH-ARMS-DEPOT-BLAST-20260918",
+      "disposition": "new-theater-event",
+      "occurrence_time": "2026-09-18",
+      "publication_time": "2026-09-19",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "evidence_horizon": "2026-09-20T00:00:00-04:00",
+      "assessment": "Syria's Defense Ministry held a funeral for 11 soldiers killed in a blast at Ayash in Deir el-Zour and said several others were wounded. The ministry did not state a cause; SOHR described the location as an arms depot at a military post. No evidence located this run links the blast to Iran-war action. Preserve cause as unresolved and do not attribute externally.",
+      "sources": [
+        "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf"
+      ]
+    }
+  ],
+  "prior_drawer_review": {
+    "material_updates": [
+      "Riyadh airport-area incident: physical Aramco-branded fuel-tank fire now independently observed; causal attribution still unresolved.",
+      "Iran-Qatar-US conditions: seven total conditions claimed by Rezaei, only three publicly disclosed; earlier drawer must not imply the three are exhaustive.",
+      "Hormuz: add missed CENTCOM aggregate claims (1B barrels, 2,000 assisted transits, primary lanes mine-cleared, zero Iranian exports) alongside—not in place of—commercial daily counts.",
+      "Yemen displacement: IOM DTM Update #6 provides 114,498 individuals / 19,083 households for Sep 1-17; retain OCHA/UN ~125k/126k as separate denominator.",
+      "Lebanon: add Sep19 Israeli strikes and claimed Hezbollah explosive-device precursor."
+    ],
+    "no_material_change_located": [
+      "Qeshm individual MQ-9 loss and IRGC 52/53 MQ-9 aggregate adjudication",
+      "RSAF F-15SA operator identification and unresolved loss mechanism/crew status",
+      "Saudi Petroline pumping-station damage/repair estimate",
+      "Trend tanker incident attribution/BDA beyond prior drawer",
+      "U.S. 18 official versus at-least-22 period-fatality reconciliation",
+      "UN Iran sanctions-monitoring mandate termination",
+      "H.R. 5334 signed-law status",
+      "South Korean Hormuz contribution intent",
+      "Turkey-Saudi defense-pact readiness"
+    ]
+  },
+  "coverage": {
+    "actors": ["Iran", "United States/CENTCOM", "Saudi Arabia", "Houthis/Yemen", "Israel", "Hezbollah/Lebanon", "Pakistan", "Qatar", "Oman", "Syria", "GCC"],
+    "source_classes": ["wire/AP/Reuters", "official military", "UN/IOM", "regional media", "claimant statements", "commercial-maritime secondary reporting"],
+    "domains": {
+      "military": "covered",
+      "maritime": "covered; latest independent paid-commercial daily denominator unavailable after Sep18 reporting",
+      "infrastructure": "covered",
+      "diplomacy": "covered",
+      "economy_sanctions_energy": "covered; no new OFAC action located after Sep17 BitBank action; HR5334 status unchanged",
+      "claims_corrections": "covered",
+      "human_impact": "covered",
+      "osint_commercial": "covered with limitations"
+    }
+  },
+  "unresolved_questions": [
+    "What are the four undisclosed items in Rezaei's seven-condition package?",
+    "What caused the Aramco-branded fuel-tank fire near King Khalid International Airport, and what weapon/effect reached the depot if Saudi forces intercepted the reported ballistic missile?",
+    "Was any Yanbu Aramco facility physically damaged in the Sep19 Houthi attack claim?",
+    "Can CENTCOM's 1B-barrel/2,000-transit aggregates and zero-Iran-export assertion be independently reconciled with Kpler/AIS/tanker-tracking data?",
+    "Is there independent evidence for Rezaei's claimed multi-warhead anti-ship missile test near a U.S. naval asset?",
+    "What is the latest Kpler commodity-vessel transit count after Thursday Sep17?",
+    "Can the Pentagon reconcile the public 18 U.S. fatalities with the at-least-22 period-fatality count reported from five U.S. officials?"
+  ],
+  "source_discovery_additions": [
+    "IOM Yemen DTM Update #6 for denominator-controlled displacement tracking",
+    "Rezaei Sep19 X statement quoted by multiple outlets distinguishing seven total conditions from three publicly disclosed",
+    "CENTCOM Sep19 commander video/secondary transcriptions for aggregate Hormuz claims",
+    "AFP on-scene observation of Aramco-branded fuel tank fire near Riyadh airport"
+  ],
+  "limitations": [
+    "No paid Kpler/MarineTraffic/Starboard/Planet/Maxar feed was directly available in this run.",
+    "Search indexing is not exhaustive and publication timestamps can lag occurrence time.",
+    "The direct Rezaei X post was not independently fetched; exact Persian text was preserved through multiple secondary reproductions.",
+    "Claimant statements are preserved as claims unless independently corroborated; absence of a newly indexed report is not evidence that an event did not occur."
+  ],
+  "completion": {
+    "status": "complete-with-explicit-source-limitations",
+    "append_only_artifact_written": true,
+    "downstream_approval_required": false,
+    "canonical_or_release_state_modified": false
+  }
+}
