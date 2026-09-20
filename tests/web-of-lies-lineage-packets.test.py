@@ -18,9 +18,17 @@ assembled = aggregator.build_forensic_input(ROOT)
 tracked = json.loads((ROOT / aggregator.OUTPUT).read_text(encoding="utf-8"))
 
 assert assembled == tracked, "tracked Web of Lies forensic input is stale relative to lineage packets"
-assert len(assembled["lineage_packets"]) == 13
-packet = next(row for row in assembled["lineage_packets"] if row["claim_family_id"] == "CH-F15E-CSAR-URANIUM")
-assert packet["packet_id"] == "WOL-PKT-F15E-CSAR-URANIUM-20260920"
+assert len(assembled["lineage_packets"]) == 59
+packet = next(
+    row for row in assembled["lineage_packets"]
+    if row["packet_id"] == "WOL-PKT-F15E-CSAR-URANIUM-20260920"
+)
+anchor_packet = next(
+    row for row in assembled["lineage_packets"]
+    if row["packet_id"] == "WOL-PKT-ANCHOR-CH_F15E_CSAR_URANIUM-20260920"
+)
+assert packet["claim_family_id"] == "CH-F15E-CSAR-URANIUM"
+assert anchor_packet["claim_family_id"] == "CH-F15E-CSAR-URANIUM"
 assert len(assembled["source_profiles"]) >= 11
 assert len(assembled["information_events"]) > 14
 assert len(assembled["relationships"]) > 18
@@ -28,11 +36,11 @@ assert len(assembled["relationships"]) > 18
 derived = wol.build_registry(canonical, assembled, governance)
 family = next(row for row in derived["claim_families"] if row["claim_family_id"] == "CH-F15E-CSAR-URANIUM")
 assert family["trace_status"] == "TRACED"
-assert len(family["information_event_ids"]) == 18
+assert len(family["information_event_ids"]) == 40
 assert len(family["relationship_ids"]) == 18
 
-# The F-15E packet remains unchanged even though additional families now
-# populate the Hall from multi-family evidence.
+# Rich F-15E lineage remains intact while neutral current Claims Forensics
+# anchors provide complete current-ledger coverage.
 hall_classes = set(derived["hall_of_shame"]["ranking_contract"]["hall_of_shame_classes"])
 assert "OFFICIAL_SOURCE" not in hall_classes
 assert "JOURNALISTIC_SOURCE" not in hall_classes
