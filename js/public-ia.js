@@ -52,7 +52,7 @@
 
     { key: 'evidence.claims', primary: 'evidence', slug: 'claims', label: 'Claim Checks', title: 'Claim Checks', owner: 'ClaimChecksPage', dataKeys: ['current.claims'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
     { key: 'evidence.information', primary: 'evidence', slug: 'information', label: 'Lie Ledger', title: 'Lie Ledger', owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability'], related: ['evidence.web_of_lies', 'evidence.claims', 'objectives.iran', 'evidence.method'] },
-    { key: 'evidence.web_of_lies', primary: 'evidence', slug: 'web-of-lies', label: 'Web of Lies', title: 'Web of Lies', owner: 'WebOfLiesPage', dataKeys: ['analysis.web_of_lies', 'gate3.lie_ledger', 'current.sources'], related: ['evidence.information', 'evidence.sources', 'evidence.method'] },
+    { key: 'evidence.web_of_lies', primary: 'evidence', slug: 'web-of-lies', label: 'Web of Lies', title: 'Web of Lies', owner: 'WebOfLiesPage', hiddenNav: true, dataKeys: ['analysis.web_of_lies', 'gate3.lie_ledger', 'current.sources'], related: ['evidence.information', 'evidence.sources', 'evidence.method'] },
     { key: 'evidence.sources', primary: 'evidence', slug: 'sources', label: 'Sources', title: 'Sources', owner: 'SourcesPage', dataKeys: ['current.sources'], related: ['evidence.method', 'evidence.claims'] },
     { key: 'evidence.method', primary: 'evidence', slug: 'method', label: 'How We Check the Evidence', title: 'How We Check the Evidence', owner: 'MethodPage', dataKeys: ['current.sources'], related: ['evidence.sources', 'evidence.claims', 'evidence.archive'] },
     { key: 'evidence.archive', primary: 'evidence', slug: 'archive', label: 'Archive', title: 'Archive', owner: 'ArchivePage', dataKeys: ['archive.snapshot_index'], related: ['evidence.method', 'start.overview'] }
@@ -352,7 +352,7 @@
   }
 
   function routesForPrimary(primaryId) {
-    return Array.from(ROUTES.values()).filter(route => route.primary === primaryId);
+    return Array.from(ROUTES.values()).filter(route => route.primary === primaryId && !route.hiddenNav);
   }
 
   function modelData(model, key) {
@@ -2398,7 +2398,17 @@
           append(why, 'p', '', whyText(metrics));
           const basis = append(card, 'details', 'wol-ranking-basis');
           append(basis, 'summary', '', 'View ranking basis');
-          const pre = append(basis, 'pre', 'technical-record'); pre.textContent = JSON.stringify({ score: row.score, metrics }, null, 2);
+          const basisList = append(basis, 'ul', 'method-list');
+          [
+            ['Documented score', row.score],
+            ['Claim families traced', metrics.claim_families_traced],
+            ['False / misleading findings connected', metrics.false_misleading_findings_connected],
+            ['Narrative mutations introduced', metrics.narrative_mutations_introduced],
+            ['Citation-laundering events', metrics.citation_laundering_events],
+            ['Recycled-media incidents', metrics.recycled_media_incidents],
+            ['Continued after correction', metrics.continued_after_correction_incidents],
+            ['Victim-exploitation incidents', metrics.victim_exploitation_incidents]
+          ].forEach(([label, value]) => append(basisList, 'li', '', `${label}: ${formatNumber(value)}`));
           const link = append(card, 'a', 'inline-route-link wol-forensic-link', 'VIEW FORENSIC RECORD');
           link.href = routeHref('evidence.web_of_lies', { source: profile.source_id });
         });
