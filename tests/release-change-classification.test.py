@@ -30,6 +30,10 @@ assert mod.classify_paths([
     ("A", "scripts/rook_intake_status.py"),
 ])["candidate_intake_only"] is False
 
+assert mod.classify_paths([
+    ("A", "data/web-of-lies/forensic-records.json"),
+])["candidate_intake_only"] is False, "Web of Lies forensic changes must remain release-affecting"
+
 workflow = (ROOT / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
 deploy_block = workflow.split("\n  deploy:\n", 1)[1].split("\n  attest:\n", 1)[0]
 assert "needs: [classify, qualify]" in deploy_block
