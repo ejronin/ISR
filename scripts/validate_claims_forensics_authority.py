@@ -492,12 +492,16 @@ def validate_state(
         "chain classification leaves an ambiguous accusation/control state",
     )
 
+    adjudicated = [
+        record for record in records
+        if record.get("adjudication_status") == "EVIDENCE_ADJUDICATED"
+    ]
     unique_ids = {
         str(record.get("proposition_id"))
-        for record in records
+        for record in adjudicated
         if record.get("counts_as_unique_proposition") and record.get("proposition_id")
     }
-    claim_keys = {claim_instance_key(record) for record in records}
+    claim_keys = {claim_instance_key(record) for record in adjudicated}
     derived = {
         "chains": len(chains),
         "accusation_chains": len(accusation),
