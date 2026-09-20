@@ -51,7 +51,8 @@
     { key: 'objectives.iran', primary: 'objectives', slug: 'iran-position', label: "How Iran's Position Changed", title: "How Iran's Position Changed", owner: 'IranMessagingPage', dataKeys: ['analysis.iran_messaging'], related: ['objectives.positions', 'talks.overview', 'evidence.information'] },
 
     { key: 'evidence.claims', primary: 'evidence', slug: 'claims', label: 'Claim Checks', title: 'Claim Checks', owner: 'ClaimChecksPage', dataKeys: ['current.claims'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
-    { key: 'evidence.information', primary: 'evidence', slug: 'information', label: 'Lie Ledger', title: 'Lie Ledger', owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability'], related: ['evidence.claims', 'objectives.iran', 'evidence.method'] },
+    { key: 'evidence.information', primary: 'evidence', slug: 'information', label: 'Lie Ledger', title: 'Lie Ledger', owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability'], related: ['evidence.web_of_lies', 'evidence.claims', 'objectives.iran', 'evidence.method'] },
+    { key: 'evidence.web_of_lies', primary: 'evidence', slug: 'web-of-lies', label: 'Web of Lies', title: 'Web of Lies', owner: 'WebOfLiesPage', dataKeys: ['analysis.web_of_lies', 'gate3.lie_ledger', 'current.sources'], related: ['evidence.information', 'evidence.sources', 'evidence.method'] },
     { key: 'evidence.sources', primary: 'evidence', slug: 'sources', label: 'Sources', title: 'Sources', owner: 'SourcesPage', dataKeys: ['current.sources'], related: ['evidence.method', 'evidence.claims'] },
     { key: 'evidence.method', primary: 'evidence', slug: 'method', label: 'How We Check the Evidence', title: 'How We Check the Evidence', owner: 'MethodPage', dataKeys: ['current.sources'], related: ['evidence.sources', 'evidence.claims', 'evidence.archive'] },
     { key: 'evidence.archive', primary: 'evidence', slug: 'archive', label: 'Archive', title: 'Archive', owner: 'ArchivePage', dataKeys: ['archive.snapshot_index'], related: ['evidence.method', 'start.overview'] }
@@ -111,6 +112,7 @@
     'analysis.iran_messaging': 'Iran position-change record',
     'analysis.information_war_claims': 'Information-war claim checks',
     'analysis.influence_networks': 'Influence networks',
+    'analysis.web_of_lies': 'Web of Lies propagation forensics',
     'analysis.source_context': 'Source context',
     'analysis.media_bias_provider': 'Source-rating context',
     'archive.snapshot_index': 'Archived public editions',
@@ -381,7 +383,7 @@
   }
 
   function validateRegistry(model) {
-    invariant(ROUTES.size === 25, `Expected 25 public routes; found ${ROUTES.size}`);
+    invariant(ROUTES.size === 26, `Expected 26 public routes; found ${ROUTES.size}`);
     invariant(ROUTE_BY_PATH.size === ROUTES.size, 'Public route paths must be unique');
     for (const route of ROUTES.values()) {
       invariant(PAGE_OWNERS[route.owner], `Missing page owner: ${route.owner}`);
@@ -2194,6 +2196,319 @@
     return null;
   }
 
+  function WebOfLiesPage(context) {
+    const frame = pageFrame(context, 'A claim can travel through dozens of accounts and still come from one source. Web of Lies traces where narratives started, who changed them, which apparent confirmations were circular, what happened after correction, and which sources keep showing up in the same failures.');
+    const data = modelData(context.model, 'analysis.web_of_lies') || {};
+    const profiles = asArray(data.source_profiles);
+    const events = asArray(data.information_events);
+    const relationships = asArray(data.relationships);
+    const families = asArray(data.claim_families);
+    const hall = data.hall_of_shame || {};
+    const contract = hall.ranking_contract || {};
+    const profileById = new Map(profiles.map(profile => [profile.source_id, profile]));
+    const familyById = new Map(families.map(family => [family.claim_family_id, family]));
+
+    const method = addSection(frame.article, 'Receipts first', 'content-section wol-method');
+    append(method, 'p', 'lead-copy', 'Web of Lies separates repetition from corroboration, a different outlet from an independent source, and a replacement story from a correction. Hall of Shame placement is computed from documented incident records. Nobody is hand-picked for a card.');
+    const direct = append(method, 'aside', 'scope-note wol-voice-note');
+    append(direct, 'strong', '', 'Direct verdict layer');
+    append(direct, 'p', '', 'The evidence record stays technical. Once a repeated pattern is established, this page does not hide that pattern behind euphemisms. Prove the pattern; then call the pattern what it is.');
+
+    const hallSection = addSection(frame.article, 'Hall of Shame', 'content-section wol-hall');
+    append(hallSection, 'p', 'section-note', 'Top three qualifying sources per behavior class. The same source may appear in multiple classes when the incident record supports it. Followers, fame and raw repost volume do not buy a better or worse rank.');
+    const controls = append(hallSection, 'form', 'wol-filter-controls');
+    controls.addEventListener('submit', event => event.preventDefault());
+
+    const addSelect = (labelText, values, emptyText) => {
+      const label = append(controls, 'label', '', labelText);
+      const select = append(label, 'select');
+      append(select, 'option', '', emptyText).value = '';
+      values.forEach(value => { const option = append(select, 'option', '', plainLabel(value)); option.value = value; });
+      return select;
+    };
+    const view = addSelect('View', ['ALL_TIME', 'CURRENT_PERIOD'], 'All time');
+    view.querySelector('option[value="ALL_TIME"]')?.remove();
+    const allOption = append(view, 'option', '', 'All time'); allOption.value = 'ALL_TIME';
+    const currentOption = append(view, 'option', '', 'Current period'); currentOption.value = 'CURRENT_PERIOD';
+    view.value = String(context.route.params.view || 'ALL_TIME').toUpperCase() === 'CURRENT_PERIOD' ? 'CURRENT_PERIOD' : 'ALL_TIME';
+    const countries = Array.from(new Set(profiles.map(row => row.country_region).filter(Boolean))).sort();
+    const platforms = Array.from(new Set(profiles.map(row => row.primary_platform).filter(Boolean))).sort();
+    const classes = Array.from(new Set(profiles.flatMap(row => asArray(row.behavior_classes)).filter(value => value && value !== 'UNKNOWN'))).sort();
+    const country = addSelect('Country / region', countries, 'All countries / regions');
+    const platform = addSelect('Platform', platforms, 'All platforms');
+    const sourceClass = addSelect('Source class', classes, 'All source classes');
+    const claimFamily = addSelect('Claim family', families.map(row => row.claim_family_id).filter(Boolean).sort(), 'All claim families');
+    claimFamily.value = context.route.params.claim_family || '';
+    const topicLabel = append(controls, 'label', '', 'Conflict / topic');
+    const topic = append(topicLabel, 'input'); topic.type = 'search'; topic.placeholder = 'Filter topic or conflict';
+    const fromLabel = append(controls, 'label', '', 'From date');
+    const fromDate = append(fromLabel, 'input'); fromDate.type = 'date';
+    const toLabel = append(controls, 'label', '', 'To date');
+    const toDate = append(toLabel, 'input'); toDate.type = 'date';
+    const resultCount = append(controls, 'p', 'filter-result-count'); resultCount.setAttribute('aria-live', 'polite');
+    const hallHost = append(hallSection, 'div', 'wol-hall-grid');
+
+    const eventMoment = event => {
+      const raw = event && (event.published_at || event.first_observed_at);
+      const moment = raw ? new Date(raw) : null;
+      return moment && !Number.isNaN(moment.valueOf()) ? moment : null;
+    };
+    const currentStart = () => {
+      const end = data.generated_at ? new Date(data.generated_at) : null;
+      if (!end || Number.isNaN(end.valueOf())) return null;
+      const start = new Date(end.valueOf());
+      start.setUTCDate(start.getUTCDate() - Number(hall.current_period_days || 30));
+      return start;
+    };
+    const eventMetricMap = contract.event_metric_map || {};
+    const scoreWeights = contract.score_weights || {};
+    const qualificationKeys = asArray(contract.qualification_metric_keys);
+    const lowerClasses = new Set(asArray(contract.lower_threshold_classes));
+
+    const metricsFor = sourceEvents => {
+      const metrics = {
+        claim_families_traced: new Set(sourceEvents.map(event => event.claim_family_id).filter(Boolean)).size,
+        false_misleading_findings_connected: 0,
+        narrative_mutations_introduced: 0,
+        citation_laundering_events: 0,
+        recycled_media_incidents: 0,
+        corrections_issued: 0,
+        continued_after_correction_incidents: 0,
+        failed_claims_deleted_or_abandoned: 0,
+        stealth_edits: 0,
+        victim_exploitation_incidents: 0,
+        unique_propagation_events: 0,
+        observed_downstream_propagation: null,
+        prediction_failures: 0,
+        prediction_corrections: 0
+      };
+      let downstream = 0, downstreamKnown = false;
+      sourceEvents.forEach(event => {
+        const key = eventMetricMap[event.event_type];
+        if (key && Object.prototype.hasOwnProperty.call(metrics, key)) metrics[key] = Number(metrics[key] || 0) + 1;
+        if (Number.isInteger(event.downstream_propagation_observed) && event.downstream_propagation_observed >= 0) {
+          downstream += event.downstream_propagation_observed; downstreamKnown = true;
+        }
+      });
+      if (downstreamKnown) metrics.observed_downstream_propagation = downstream;
+      return metrics;
+    };
+    const scoreFor = metrics => {
+      let score = 0;
+      Object.entries(scoreWeights).forEach(([key, weight]) => { score += Number(metrics[key] || 0) * Number(weight || 0); });
+      const downstream = Number(metrics.observed_downstream_propagation || 0);
+      if (downstream > 0) score += Math.min(Math.log2(downstream + 1), Number(contract.downstream_log2_cap || 0));
+      return Math.round(score * 1000) / 1000;
+    };
+    const qualifies = (className, metrics) => {
+      const eventCount = qualificationKeys.reduce((sum, key) => sum + Number(metrics[key] || 0), 0);
+      const lower = lowerClasses.has(className);
+      const minFamilies = Number(lower ? contract.lower_min_families : contract.default_min_families);
+      const minEvents = Number(lower ? contract.lower_min_events : contract.default_min_events);
+      return Number(metrics.claim_families_traced || 0) >= (Number.isFinite(minFamilies) ? minFamilies : 0)
+        && eventCount >= (Number.isFinite(minEvents) ? minEvents : 0);
+    };
+    const whyText = metrics => {
+      const rows = [
+        [metrics.claim_families_traced, 'traced claim family', 'traced claim families'],
+        [metrics.false_misleading_findings_connected, 'false/misleading finding', 'false/misleading findings'],
+        [metrics.narrative_mutations_introduced, 'unsupported narrative mutation', 'unsupported narrative mutations'],
+        [metrics.citation_laundering_events, 'citation-laundering event', 'citation-laundering events'],
+        [metrics.recycled_media_incidents, 'recycled-media incident', 'recycled-media incidents'],
+        [metrics.continued_after_correction_incidents, 'continued-after-correction incident', 'continued-after-correction incidents'],
+        [metrics.failed_claims_deleted_or_abandoned, 'failed claim deleted/abandoned without correction', 'failed claims deleted/abandoned without correction'],
+        [metrics.victim_exploitation_incidents, 'victim-exploitation incident', 'victim-exploitation incidents']
+      ].filter(([value]) => Number(value || 0) > 0).map(([value, one, many]) => `${value} ${Number(value) === 1 ? one : many}`);
+      return rows.length ? `Appears here based on ${rows.slice(0, 5).join(', ')}.` : 'No qualifying behavior is recorded in this evidence slice.';
+    };
+    const filters = () => ({
+      country: country.value,
+      platform: platform.value,
+      sourceClass: sourceClass.value,
+      claimFamily: claimFamily.value,
+      topic: topic.value.trim().toLowerCase(),
+      from: fromDate.value ? new Date(`${fromDate.value}T00:00:00Z`) : null,
+      to: toDate.value ? new Date(`${toDate.value}T23:59:59Z`) : null,
+      currentStart: view.value === 'CURRENT_PERIOD' ? currentStart() : null
+    });
+    const eventMatches = (event, state) => {
+      if (state.claimFamily && event.claim_family_id !== state.claimFamily) return false;
+      const moment = eventMoment(event);
+      if (state.currentStart && (!moment || moment < state.currentStart)) return false;
+      if (state.from && (!moment || moment < state.from)) return false;
+      if (state.to && (!moment || moment > state.to)) return false;
+      if (state.topic) {
+        const haystack = [event.topic, event.conflict, event.claim_family_id, event.event_type, event.exact_statement, event.translated_statement]
+          .filter(Boolean).join(' ').toLowerCase();
+        if (!haystack.includes(state.topic)) return false;
+      }
+      return true;
+    };
+    const profileMatches = (profile, state) =>
+      (!state.country || profile.country_region === state.country)
+      && (!state.platform || profile.primary_platform === state.platform)
+      && (!state.sourceClass || asArray(profile.behavior_classes).includes(state.sourceClass));
+
+    const drawHall = () => {
+      const state = filters();
+      const filteredEvents = events.filter(event => eventMatches(event, state));
+      const eventsBySource = new Map();
+      filteredEvents.forEach(event => {
+        if (!eventsBySource.has(event.source_id)) eventsBySource.set(event.source_id, []);
+        eventsBySource.get(event.source_id).push(event);
+      });
+      const categoryNames = state.sourceClass ? [state.sourceClass] : classes;
+      hallHost.replaceChildren();
+      let qualifyingSources = 0;
+      categoryNames.forEach(className => {
+        const candidates = profiles.filter(profile => profileMatches(profile, state) && asArray(profile.behavior_classes).includes(className)).map(profile => {
+          const metrics = metricsFor(eventsBySource.get(profile.source_id) || []);
+          return { profile, metrics, score: scoreFor(metrics) };
+        }).filter(row => qualifies(className, row.metrics))
+          .sort((a, b) => b.score - a.score || Number(b.metrics.claim_families_traced || 0) - Number(a.metrics.claim_families_traced || 0) || String(a.profile.source_id).localeCompare(String(b.profile.source_id)))
+          .slice(0, Number(hall.top_n_per_class || 3));
+        if (!candidates.length) return;
+        const category = append(hallHost, 'section', 'wol-category');
+        append(category, 'h3', '', plainLabel(className));
+        const cards = append(category, 'div', 'wol-card-grid');
+        candidates.forEach((row, index) => {
+          qualifyingSources += 1;
+          const profile = row.profile, metrics = row.metrics;
+          const card = append(cards, 'article', 'record-card wol-source-card');
+          card.dataset.sourceId = profile.source_id || '';
+          card.dataset.sourceClass = className;
+          append(card, 'p', 'card-kicker', `#${index + 1} · ${plainLabel(className)}`);
+          append(card, 'h4', '', publicNarrative(profile.display_name, profile.source_id));
+          addFactList(card, [
+            ['Country / region', publicNarrative(profile.country_region, 'Not characterized')],
+            ['Primary platform', publicNarrative(profile.primary_platform, 'Not characterized')],
+            ['Observed revenue model', asArray(profile.revenue_model).length ? asArray(profile.revenue_model).map(plainLabel).join(' · ') : 'Unknown'],
+            ['Claim families traced', formatNumber(metrics.claim_families_traced)],
+            ['False / misleading findings connected', formatNumber(metrics.false_misleading_findings_connected)],
+            ['Narrative mutations introduced', formatNumber(metrics.narrative_mutations_introduced)],
+            ['Citation-laundering events', formatNumber(metrics.citation_laundering_events)],
+            ['Recycled-media incidents', formatNumber(metrics.recycled_media_incidents)],
+            ['Corrections issued', formatNumber(metrics.corrections_issued)],
+            ['Continued-after-correction incidents', formatNumber(metrics.continued_after_correction_incidents)],
+            ['Failed claims deleted / abandoned', formatNumber(metrics.failed_claims_deleted_or_abandoned)],
+            ['Observed downstream propagation', metrics.observed_downstream_propagation === null ? 'Not established' : formatNumber(metrics.observed_downstream_propagation)]
+          ]);
+          const why = append(card, 'aside', 'scope-note wol-ranking-reason');
+          append(why, 'strong', '', 'Why this source appears here');
+          append(why, 'p', '', whyText(metrics));
+          const basis = append(card, 'details', 'wol-ranking-basis');
+          append(basis, 'summary', '', 'View ranking basis');
+          const pre = append(basis, 'pre', 'technical-record'); pre.textContent = JSON.stringify({ score: row.score, metrics }, null, 2);
+          const link = append(card, 'a', 'inline-route-link wol-forensic-link', 'VIEW FORENSIC RECORD');
+          link.href = routeHref('evidence.web_of_lies', { source: profile.source_id });
+        });
+      });
+      if (!qualifyingSources) {
+        const empty = append(hallHost, 'aside', 'scope-note wol-empty-state');
+        append(empty, 'strong', '', 'No qualifying source in this evidence slice');
+        append(empty, 'p', '', 'No source currently meets the documented qualification thresholds for the selected filters. That is a data result, not an editorial substitution.');
+      }
+      resultCount.textContent = `${qualifyingSources} qualifying Hall of Shame card${qualifyingSources === 1 ? '' : 's'} shown`;
+    };
+
+    const sourceId = context.route.params.source;
+    if (sourceId && profileById.has(sourceId)) {
+      const profile = profileById.get(sourceId);
+      const sourceSection = addSection(frame.article, `Forensic record — ${publicNarrative(profile.display_name, sourceId)}`, 'content-section wol-source-record');
+      append(sourceSection, 'p', 'section-note', 'This profile is the accumulated Web of Lies source record. Labels resolve to the incidents that support them.');
+      addFactList(sourceSection, [
+        ['Source ID', profile.source_id],
+        ['Behavior classes', asArray(profile.behavior_classes).map(plainLabel).join(' · ') || 'Unknown'],
+        ['Authenticity', plainLabel(profile.authenticity_class, 'Unknown')],
+        ['Country / region', publicNarrative(profile.country_region, 'Not characterized')],
+        ['Primary platform', publicNarrative(profile.primary_platform, 'Not characterized')],
+        ['Observed revenue model', asArray(profile.revenue_model).map(plainLabel).join(' · ') || 'Unknown']
+      ]);
+      const sourceEvents = events.filter(event => event.source_id === sourceId).sort((a, b) => String(a.published_at || a.first_observed_at || '').localeCompare(String(b.published_at || b.first_observed_at || '')));
+      const eventList = append(sourceSection, 'div', 'wol-source-events');
+      if (!sourceEvents.length) append(eventList, 'p', 'section-note', 'No information events are currently attached to this source profile.');
+      sourceEvents.forEach(event => {
+        const card = append(eventList, 'article', 'record-card wol-event-card');
+        append(card, 'p', 'card-kicker', [plainLabel(event.event_type), event.published_at || event.first_observed_at].filter(Boolean).join(' · '));
+        append(card, 'h4', '', publicNarrative(event.exact_statement || event.translated_statement, event.event_id));
+        addFactList(card, [
+          ['Claim family', event.claim_family_id],
+          ['Epistemic posture', plainLabel(event.epistemic_posture, 'Unknown')],
+          ['Behavior findings', asArray(event.behavior_findings).map(plainLabel).join(' · ') || 'None recorded'],
+          ['Revenue findings', asArray(event.revenue_findings).map(plainLabel).join(' · ') || 'None recorded'],
+          ['Evidence anchors', asArray(event.evidence_source_ids).join(' · ') || 'None recorded']
+        ]);
+        const trace = append(card, 'a', 'inline-route-link', 'VIEW CLAIM LINEAGE');
+        trace.href = routeHref('evidence.web_of_lies', { claim_family: event.claim_family_id });
+      });
+    }
+
+    const familySection = addSection(frame.article, 'Claim lineages', 'content-section wol-lineages');
+    append(familySection, 'p', 'section-note', `${families.length.toLocaleString()} canonical Lie Ledger claim families are registered for provenance tracing. UNTRACED means the canonical claim exists but Web of Lies has not yet reconstructed its propagation lineage.`);
+    const familyControls = append(familySection, 'form', 'wol-lineage-controls'); familyControls.addEventListener('submit', event => event.preventDefault());
+    const familySearchLabel = append(familyControls, 'label', '', 'Search claim families');
+    const familySearch = append(familySearchLabel, 'input'); familySearch.type = 'search'; familySearch.placeholder = 'Claim family, title or status';
+    const familyCount = append(familyControls, 'p', 'filter-result-count'); familyCount.setAttribute('aria-live', 'polite');
+    const familyHost = append(familySection, 'div', 'wol-family-list');
+    const drawFamilies = () => {
+      const query = familySearch.value.trim().toLowerCase();
+      const rows = families.filter(family => !query || JSON.stringify(family).toLowerCase().includes(query));
+      familyHost.replaceChildren();
+      rows.forEach(family => {
+        const card = append(familyHost, 'article', 'record-card wol-family-card');
+        append(card, 'p', 'card-kicker', `${plainLabel(family.trace_status, 'Untraced')} · ${family.claim_family_id}`);
+        append(card, 'h3', '', publicNarrative(family.title, family.claim_family_id));
+        addFactList(card, [
+          ['Current Lie Ledger adjudication', plainLabel(family.canonical_adjudication, 'See Lie Ledger')],
+          ['Information events', formatNumber(asArray(family.information_event_ids).length)],
+          ['Lineage relationships', formatNumber(asArray(family.relationship_ids).length)]
+        ]);
+        const link = append(card, 'a', 'inline-route-link', 'TRACE');
+        link.href = routeHref('evidence.web_of_lies', { claim_family: family.claim_family_id });
+      });
+      familyCount.textContent = `${rows.length} of ${families.length} claim families shown`;
+    };
+    familySearch.addEventListener('input', drawFamilies);
+    drawFamilies();
+
+    const selectedFamilyId = context.route.params.claim_family;
+    if (selectedFamilyId && familyById.has(selectedFamilyId)) {
+      const family = familyById.get(selectedFamilyId);
+      const traceSection = addSection(frame.article, `Trace — ${publicNarrative(family.title, selectedFamilyId)}`, 'content-section wol-trace');
+      const selectedEvents = events.filter(event => event.claim_family_id === selectedFamilyId)
+        .sort((a, b) => String(a.published_at || a.first_observed_at || '').localeCompare(String(b.published_at || b.first_observed_at || '')));
+      const eventIds = new Set(selectedEvents.map(event => event.event_id));
+      const selectedRelations = relationships.filter(relation => eventIds.has(relation.from_id) || eventIds.has(relation.to_id));
+      append(traceSection, 'p', 'section-note', `${selectedEvents.length} information event${selectedEvents.length === 1 ? '' : 's'} and ${selectedRelations.length} typed lineage relationship${selectedRelations.length === 1 ? '' : 's'} are currently reconstructed.`);
+      if (!selectedEvents.length) {
+        const empty = append(traceSection, 'aside', 'scope-note');
+        append(empty, 'strong', '', 'Trace not yet populated');
+        append(empty, 'p', '', 'The canonical Lie Ledger family exists, but Web of Lies has not yet added recoverable propagation events for this family.');
+      } else {
+        const timeline = append(traceSection, 'ol', 'wol-trace-timeline');
+        selectedEvents.forEach(event => {
+          const item = append(timeline, 'li', 'wol-trace-event');
+          append(item, 'p', 'card-kicker', [event.published_at || event.first_observed_at, plainLabel(event.event_type)].filter(Boolean).join(' · '));
+          append(item, 'strong', '', publicNarrative(profileById.get(event.source_id)?.display_name, event.source_id));
+          append(item, 'p', '', publicNarrative(event.exact_statement || event.translated_statement, 'Statement text not stored'));
+          append(item, 'small', '', `Epistemic posture: ${plainLabel(event.epistemic_posture, 'Unknown')}`);
+        });
+        if (selectedRelations.length) {
+          const relations = append(traceSection, 'details', 'wol-trace-relations');
+          append(relations, 'summary', '', 'Typed lineage relationships');
+          const list = append(relations, 'ul', 'method-list');
+          selectedRelations.forEach(relation => append(list, 'li', '', `${relation.from_id} → ${plainLabel(relation.relationship_type)} → ${relation.to_id}`));
+        }
+      }
+    }
+
+    [view, country, platform, sourceClass, claimFamily].forEach(control => control.addEventListener('change', drawHall));
+    [topic, fromDate, toDate].forEach(control => control.addEventListener('input', drawHall));
+    drawHall();
+    renderRelatedLinks(frame.article, context);
+    return frame.article;
+  }
+
   function SourcesDirectoryPage(context) {
     const frame = pageFrame(context, 'Browse the sources behind the current record by source type, origin and outlet. Search remains available, but you do not need to know a source ID to find the evidence.');
     const guide = addSection(frame.article, 'How source context works');
@@ -2272,7 +2587,7 @@
     const frame = pageFrame(context, 'Earlier public editions are preserved for historical reference. They do not change the current record.'); const section = addSection(frame.article, 'Archived editions'); const list = append(section, 'div', 'record-list'); recordArray(modelData(context.model, 'archive.snapshot_index')).forEach(snapshot => { const card = append(list, 'article', 'record-card'); append(card, 'h3', '', publicNarrative(snapshot.label, 'Archived edition')); append(card, 'p', '', snapshot.date || 'Date not stated'); append(card, 'p', '', 'Historical edition; not part of the current assessment.'); }); const note = append(frame.article, 'aside', 'scope-note'); append(note, 'strong', '', 'Historical reference boundary'); append(note, 'p', '', 'Earlier supporting records remain preserved for audit and historical reference. They do not populate current public pages.'); renderRelatedLinks(frame.article, context); return frame.article;
   }
 
-  const LOCAL_NAV_ROUTES = new Set(['military.campaigns', 'military.losses', 'military.imagery', 'hormuz.shipping', 'hormuz.economy', 'talks.overview', 'talks.mou', 'talks.regional', 'objectives.outcomes', 'objectives.positions', 'evidence.claims', 'evidence.information', 'evidence.sources']);
+  const LOCAL_NAV_ROUTES = new Set(['military.campaigns', 'military.losses', 'military.imagery', 'hormuz.shipping', 'hormuz.economy', 'talks.overview', 'talks.mou', 'talks.regional', 'objectives.outcomes', 'objectives.positions', 'evidence.claims', 'evidence.information', 'evidence.web_of_lies', 'evidence.sources']);
 
   function addPageLocalNavigation(article, context) {
   if (!LOCAL_NAV_ROUTES.has(context.route.key)) return;
@@ -2482,6 +2797,7 @@ function applyVisualSweep(article, context) {
     IranMessagingPage: preparePage(IranMessagingPage),
     ClaimChecksPage: preparePage(ClaimChecksPage),
     InformationEnvironmentPage: preparePage(InformationEnvironmentPage),
+    WebOfLiesPage: preparePage(WebOfLiesPage),
     SourcesPage: preparePage(SourcesDirectoryPage),
     MethodPage: preparePage(MethodPage),
     ArchivePage: preparePage(ArchivePage)
