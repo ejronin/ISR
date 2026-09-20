@@ -130,7 +130,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(coverageBoot.coverage, true, `consumer coverage runtime was not exposed: ${JSON.stringify(coverageBoot)}`);
 
     const expectedRoutes = [...ia.ROUTES.values()];
-    assert.equal(expectedRoutes.length, 25);
+    assert.equal(expectedRoutes.length, 26);
     for (const routeRecord of expectedRoutes) {
       await route(cdp, routeRecord);
       const owner = await cdp.eval(`document.querySelector('[data-page-owner]')?.dataset.pageOwner`);
@@ -156,7 +156,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(coverage.coveredDatasetCount, Object.keys(model.datasets).length + 2);
     assert.equal(coverage.datasetWaiverCount, model.consumer_coverage.dataset_waivers.length);
     assert.equal(coverage.routeWaiverCount, 0);
-    assert.equal(Object.keys(diagnostics.routeAccesses).length, 25);
+    assert.equal(Object.keys(diagnostics.routeAccesses).length, 26);
     assert.deepEqual(diagnostics.sharedAccesses, ['current.actors', 'current.locations', 'current.sources']);
 
     await routeKey(cdp, 'start.overview');
