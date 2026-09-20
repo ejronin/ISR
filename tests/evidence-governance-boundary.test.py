@@ -92,15 +92,12 @@ assert evidence_record["target_proposition_ids"] == [
     "CI-IR-CLM-0011-P02",
 ]
 assert evidence_record["authority_boundary"]["owner"] == "EVIDENCE_INTEGRATION"
-assert evidence_record["authority_boundary"]["downstream_analysis_owner"] == "FORENSICS"
+assert evidence_record["authority_boundary"]["downstream_analysis_owner"] == "WEB_OF_LIES_INFORMATION_FORENSICS"
 assert evidence_record["authority_boundary"]["semantic_mutations"] == "NONE"
 assert evidence_record["handoff_status"] == "EVIDENCE_RECORD_COMPLETE"
 
 for key in (
     "source_chronology",
-    "provenance_relationships",
-    "source_family_connections",
-    "correction_update_language",
     "physical_evidence_inventory",
     "nuclear_material_statement_inventory",
     "unresolved_provenance_gaps",
@@ -165,21 +162,24 @@ referenced_sources = set(evidence_record["canonical_source_additions"])
 referenced_sources.update(evidence_record["existing_canonical_sources_reused"])
 for row in evidence_record["source_chronology"]:
     referenced_sources.add(row["source_id"])
-for relationship in evidence_record["provenance_relationships"]:
-    referenced_sources.add(relationship["from_source_id"])
-    referenced_sources.add(relationship["to_source_id"])
-for row in evidence_record["source_family_connections"]:
-    referenced_sources.add(row["source_id"])
-for row in evidence_record["correction_update_language"]:
-    referenced_sources.add(row["source_id"])
 for collection in ("physical_evidence_inventory", "nuclear_material_statement_inventory"):
     for row in evidence_record[collection]:
         referenced_sources.update(row["source_ids"])
 
 unresolved_sources = referenced_sources - registered_sources
 assert not unresolved_sources, f"F-15E neutral evidence record has unresolved source IDs: {sorted(unresolved_sources)}"
-assert evidence_record["external_commentary_feedback_review"]["result"] == "NO_CHAIN_RELEVANT_FEEDBACK_PATH_IDENTIFIED"
-assert evidence_record["downstream_handoff"]["recipient"] == "FORENSICS"
-assert evidence_record["downstream_handoff"]["package_character"] == "NEUTRAL_EVIDENCE_INPUT"
+delegated_forensics_fields = {
+    "provenance_relationships",
+    "source_family_connections",
+    "correction_update_language",
+    "external_commentary_feedback_review",
+    "source_quality_metadata",
+}
+assert not delegated_forensics_fields.intersection(evidence_record), (
+    "Evidence Integration retained Web of Lies information-forensics fields"
+)
+assert evidence_record["downstream_handoff"]["recipient"] == "WEB_OF_LIES_INFORMATION_FORENSICS"
+assert evidence_record["downstream_handoff"]["contract_path"] == "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
+assert evidence_record["downstream_handoff"]["package_character"] == "NEUTRAL_CANONICAL_EVIDENCE_INPUT"
 
 print("evidence governance boundary: PASS - current production is neutral; historical persona-era material remains provenance only")
