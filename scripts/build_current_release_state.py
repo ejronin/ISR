@@ -33,11 +33,13 @@ def command(script: str, *args: str) -> tuple[str, ...]:
 BUILD_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/build_canonical_current_state_v2_final.py", "--output", CANONICAL_V2),
     command("scripts/validate_gate3_final.py"),
+    command("scripts/build_web_of_lies_baseline_packets.py"),
     command("scripts/build_web_of_lies_forensic_input.py"),
     command("scripts/build_web_of_lies.py"),
     command("scripts/validate_web_of_lies.py"),
     command("scripts/build_public_current_state_v2_hardened.py", "--output", PUBLIC_CURRENT),
     command("scripts/build_canonical_current_state_v2_final.py", "--check", "--output", CANONICAL_V2),
+    command("scripts/build_web_of_lies_baseline_packets.py", "--check"),
     command("scripts/build_web_of_lies_forensic_input.py", "--check"),
     command("scripts/build_web_of_lies.py", "--check"),
     command("scripts/validate_web_of_lies.py"),
@@ -48,6 +50,7 @@ BUILD_COMMANDS: tuple[tuple[str, ...], ...] = (
 CHECK_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/build_canonical_current_state_v2_final.py", "--check", "--output", CANONICAL_V2),
     command("scripts/validate_gate3_final.py"),
+    command("scripts/build_web_of_lies_baseline_packets.py", "--check"),
     command("scripts/build_web_of_lies_forensic_input.py", "--check"),
     command("scripts/build_web_of_lies.py", "--check"),
     command("scripts/validate_web_of_lies.py"),
