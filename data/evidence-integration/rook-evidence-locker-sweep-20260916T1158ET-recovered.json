@@ -58,13 +58,14 @@
     {
       "event_id": "LOCKER-US-HOUTHI-OMAN-DIRECT-MEETING-20260913",
       "event_type": "DIPLOMATIC_CONTACT",
-      "occurrence_time": "2026-09-12/13",
+      "occurrence_time": "2026-09-13",
       "public_available_time": "2026-09-16",
       "collection_time": "2026-09-16T10:52:00-04:00",
       "summary": "Reuters, citing five sources, reported U.S. officials and Houthi representatives met in Muscat with Omani facilitation. Sources described Houthi assurances regarding the 2025 U.S. ceasefire and American vessels; the State Department did not formally confirm the meeting.",
       "sources": [
         "https://www.reuters.com/world/middle-east/us-officials-met-iran-backed-houthis-oman-over-weekend-sources-say-2026-09-16/"
-      ]
+      ],
+      "occurrence_time_precision": "WEEKEND_DATE_RANGE_REPORTED_SEP12_13"
     },
     {
       "event_id": "LOCKER-IRAN-CHINA-WANG-ARAGHCHI-20260916",
