@@ -1,0 +1,579 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-AIRCRAFT-KILL-AGGREGATES-BASELINE-20260920",
+  "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRANIAN-ARMY",
+      "display_name": "Iranian Army",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-3969BF66615A",
+        "SRC-60BA56B2A294"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "OFFICIAL_SOURCE",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0601-O",
+        "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-IRANIAN-MILITARY",
+      "display_name": "Iranian military",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-DB900429D8BC",
+        "SRC-FDAC11893E4C"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "OFFICIAL_SOURCE",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0603-O",
+        "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-IRGC",
+      "canonical_source_ids": [
+        "SRC-AF8FAEEE34BC"
+      ],
+      "behavior_classes": [
+        "OFFICIAL_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0602-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-7B62913B395D",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-3969BF66615A",
+        "SRC-60BA56B2A294",
+        "SRC-AF8FAEEE34BC",
+        "SRC-DB900429D8BC",
+        "SRC-FDAC11893E4C"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
+        "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-C"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0601-C",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-07",
+      "first_observed_at": "2026-03-07T14:30",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Iran said it had downed 82 U.S. and Israeli drones.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0601"
+      ],
+      "evidence_source_ids": [
+        "SRC-3969BF66615A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0601-O",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-IRANIAN-ARMY",
+      "event_type": "REPORTS",
+      "published_at": null,
+      "first_observed_at": "2026-03-07T14:30",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran said it had downed 82 U.S. and Israeli drones.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0601"
+      ],
+      "evidence_source_ids": [
+        "SRC-3969BF66615A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [
+        "OFFICIAL_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0602-C",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-25",
+      "first_observed_at": "2026-03-25T16:45",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Iran said more than 130 enemy drones had been downed.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC/Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0602"
+      ],
+      "evidence_source_ids": [
+        "SRC-AF8FAEEE34BC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0602-O",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": null,
+      "first_observed_at": "2026-03-25T16:45",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran said more than 130 enemy drones had been downed.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC/Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0602"
+      ],
+      "evidence_source_ids": [
+        "SRC-AF8FAEEE34BC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [
+        "OFFICIAL_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0603-C",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "REPORTS",
+      "published_at": "2026-04-18",
+      "first_observed_at": "2026-04-18T15:47",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Iran said 170 enemy drones had been downed.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0603"
+      ],
+      "evidence_source_ids": [
+        "SRC-FDAC11893E4C"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0603-O",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-IRANIAN-MILITARY",
+      "event_type": "REPORTS",
+      "published_at": null,
+      "first_observed_at": "2026-04-18T15:47",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran said 170 enemy drones had been downed.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0603"
+      ],
+      "evidence_source_ids": [
+        "SRC-FDAC11893E4C"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [
+        "OFFICIAL_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": "2026-04-28",
+      "first_observed_at": "2026-04-28T16:26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Iran said more than 170 enemy aircraft had been hit, including 16 fighter jets.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army spokesman as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0604"
+      ],
+      "evidence_source_ids": [
+        "SRC-60BA56B2A294"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: ROOK ADJUDICATION HELD — PROPOSITION CORRECTED TO SOURCE WORDING; TRUTH UNRESOLVED."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-O",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-IRANIAN-ARMY",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": null,
+      "first_observed_at": "2026-04-28T16:26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran said more than 170 enemy aircraft had been hit, including 16 fighter jets.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army spokesman as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0604"
+      ],
+      "evidence_source_ids": [
+        "SRC-60BA56B2A294"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: ROOK ADJUDICATION HELD — PROPOSITION CORRECTED TO SOURCE WORDING; TRUTH UNRESOLVED."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-C",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": "2026-05-26",
+      "first_observed_at": "2026-05-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "POSSIBLE",
+      "exact_statement": "Press TV carried the attributed claim: Press TV’s headline says technology enabled Iran to “down 210 enemy aircraft,” while the body attributes language that Iran could “target around 210 enemy aircraft.”",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0605"
+      ],
+      "evidence_source_ids": [
+        "SRC-DB900429D8BC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: MINISTER QUOTE — UNRESOLVED TARGETING COUNT."
+    },
+    {
+      "event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-O",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-IRANIAN-MILITARY",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": null,
+      "first_observed_at": "2026-05-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "POSSIBLE",
+      "exact_statement": "Press TV’s headline says technology enabled Iran to “down 210 enemy aircraft,” while the body attributes language that Iran could “target around 210 enemy aircraft.”",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0605"
+      ],
+      "evidence_source_ids": [
+        "SRC-DB900429D8BC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: MINISTER QUOTE — UNRESOLVED TARGETING COUNT."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-001",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0601-C",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0601-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-3969BF66615A"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-002",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0601-C",
+      "to_id": "WOL-SRC-IRANIAN-ARMY",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-3969BF66615A"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-003",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0602-C",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0602-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-AF8FAEEE34BC"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-004",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0602-C",
+      "to_id": "WOL-SRC-IRGC",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-AF8FAEEE34BC"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-005",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0602-O",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0601-O",
+      "relationship_type": "REPEATS",
+      "evidence_source_ids": [
+        "SRC-AF8FAEEE34BC"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-006",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0603-C",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0603-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-FDAC11893E4C"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-007",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0603-C",
+      "to_id": "WOL-SRC-IRANIAN-MILITARY",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-FDAC11893E4C"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-008",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0603-O",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0602-O",
+      "relationship_type": "REPEATS",
+      "evidence_source_ids": [
+        "SRC-FDAC11893E4C"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-009",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-60BA56B2A294"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-010",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
+      "to_id": "WOL-SRC-IRANIAN-ARMY",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-60BA56B2A294"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-011",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0603-O",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-O",
+      "relationship_type": "MUTATES_INTO",
+      "evidence_source_ids": [
+        "SRC-60BA56B2A294"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-012",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-C",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-DB900429D8BC"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-013",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-C",
+      "to_id": "WOL-SRC-IRANIAN-MILITARY",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-DB900429D8BC"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-014",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-O",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-O",
+      "relationship_type": "MUTATES_INTO",
+      "evidence_source_ids": [
+        "SRC-DB900429D8BC"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
