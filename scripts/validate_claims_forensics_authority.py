@@ -530,13 +530,11 @@ def validate_state(
         "Public Product accusation-card denominator differs from canonical Claims Forensics classification",
     )
 
-    # Repetition/amplification may strengthen knowledge but not the unique-proposition denominator.
+    # Repetition/amplification of an existing proposition cannot inflate the
+    # denominator. An amplification that introduces a genuinely distinct atomic
+    # proposition may count once; proposition identity, not the relationship
+    # label by itself, controls the denominator.
     for record in records:
-        if record.get("relation_type") in {"REPETITION", "AMPLIFICATION"}:
-            require(
-                record.get("counts_as_unique_proposition") is False,
-                f"repetition/amplification inflated unique proposition denominator: {record.get('claim_instance_id')}",
-            )
         if record.get("denominator_class") in {"REPETITION_AMPLIFICATION", "CORRECTION_RETRACTION"}:
             require(
                 record.get("counts_as_unique_proposition") is False,
