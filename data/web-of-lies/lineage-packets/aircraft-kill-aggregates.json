@@ -1006,8 +1006,8 @@
     },
     {
       "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-015",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-C-2553A4",
-      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-O",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-C-2553A4",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-O",
       "relationship_type": "DERIVES_FROM",
       "evidence_source_ids": [
         "SRC-906AC32553A4"
@@ -1015,7 +1015,7 @@
     },
     {
       "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-016",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-C-2553A4",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-C-2553A4",
       "to_id": "WOL-SRC-IRGC",
       "relationship_type": "ATTRIBUTES_TO",
       "evidence_source_ids": [
@@ -1024,8 +1024,8 @@
     },
     {
       "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-017",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-C-D88EA4",
-      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-O",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-C-D88EA4",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-O",
       "relationship_type": "DERIVES_FROM",
       "evidence_source_ids": [
         "SRC-E8B81BD88EA4"
@@ -1033,7 +1033,7 @@
     },
     {
       "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-018",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-C-D88EA4",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-C-D88EA4",
       "to_id": "WOL-SRC-IRGC",
       "relationship_type": "ATTRIBUTES_TO",
       "evidence_source_ids": [
@@ -1042,60 +1042,6 @@
     },
     {
       "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-019",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-C-2553A4",
-      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-O",
-      "relationship_type": "DERIVES_FROM",
-      "evidence_source_ids": [
-        "SRC-906AC32553A4"
-      ]
-    },
-    {
-      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-020",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-C-2553A4",
-      "to_id": "WOL-SRC-IRGC",
-      "relationship_type": "ATTRIBUTES_TO",
-      "evidence_source_ids": [
-        "SRC-906AC32553A4"
-      ]
-    },
-    {
-      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-021",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-C-D88EA4",
-      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-O",
-      "relationship_type": "DERIVES_FROM",
-      "evidence_source_ids": [
-        "SRC-E8B81BD88EA4"
-      ]
-    },
-    {
-      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-022",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_52_20260916-C-D88EA4",
-      "to_id": "WOL-SRC-IRGC",
-      "relationship_type": "ATTRIBUTES_TO",
-      "evidence_source_ids": [
-        "SRC-E8B81BD88EA4"
-      ]
-    },
-    {
-      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-023",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260917-C-690F21",
-      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260917-O",
-      "relationship_type": "DERIVES_FROM",
-      "evidence_source_ids": [
-        "SRC-34163F690F21"
-      ]
-    },
-    {
-      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-024",
-      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260917-C-690F21",
-      "to_id": "WOL-SRC-IRGC",
-      "relationship_type": "ATTRIBUTES_TO",
-      "evidence_source_ids": [
-        "SRC-34163F690F21"
-      ]
-    },
-    {
-      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-025",
       "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_53_20260917-C-690F21",
       "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_53_20260917-O",
       "relationship_type": "DERIVES_FROM",
@@ -1104,8 +1050,62 @@
       ]
     },
     {
-      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-026",
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-020",
       "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_53_20260917-C-690F21",
+      "to_id": "WOL-SRC-IRGC",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-34163F690F21"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-021",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-C-2553A4",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-906AC32553A4"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-022",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-C-2553A4",
+      "to_id": "WOL-SRC-IRGC",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-906AC32553A4"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-023",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-C-D88EA4",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-E8B81BD88EA4"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-024",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260916-C-D88EA4",
+      "to_id": "WOL-SRC-IRGC",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-E8B81BD88EA4"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-025",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260917-C-690F21",
+      "to_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260917-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-34163F690F21"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-AIRCRAFT_KILL_AGGREGATES-026",
+      "from_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-CLM_IRGC_QESHM_MQ9_LOSS_20260917-C-690F21",
       "to_id": "WOL-SRC-IRGC",
       "relationship_type": "ATTRIBUTES_TO",
       "evidence_source_ids": [
