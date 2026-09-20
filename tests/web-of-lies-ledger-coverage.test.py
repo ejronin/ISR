@@ -40,8 +40,11 @@ assert not retired_path.exists(), "retired CH-FALSE-FLAG-REGIONAL packet returne
 # Reconstruct the exact current Claims Forensics record set used by production.
 current_records, overlay = anchors.current_records(ROOT)
 active_chain_ids = set(overlay["chain_overrides"])
-assert len(active_chain_ids) == 47, f"expected 47 active Claims Forensics chains, found {len(active_chain_ids)}"
-assert len(current_records) == 133, f"expected 133 current claim instances, found {len(current_records)}"
+record_chain_ids = {str(row.get("chain_id") or "") for row in current_records}
+assert active_chain_ids <= record_chain_ids, (
+    "active Claims Forensics chain missing from reconstructed current records: "
+    f"{sorted(active_chain_ids - record_chain_ids)}"
+)
 assert "CH-FALSE-FLAG-REGIONAL" not in active_chain_ids
 for split_chain in (
     "CH-ARAMCO-FALSE-FLAG-20260302",
@@ -52,7 +55,14 @@ for split_chain in (
 
 # One neutral anchor packet exists for every active current chain.
 anchor_expected = anchors.expected_packets(ROOT)
-assert len(anchor_expected) == 47
+anchor_family_ids = [packet["claim_family_id"] for packet in anchor_expected.values()]
+assert set(anchor_family_ids) == active_chain_ids, (
+    "current-anchor packet families differ from active Claims Forensics authority: "
+    f"missing={sorted(active_chain_ids - set(anchor_family_ids))} "
+    f"extra={sorted(set(anchor_family_ids) - active_chain_ids)}"
+)
+assert len(anchor_expected) == len(active_chain_ids)
+assert len(anchor_family_ids) == len(set(anchor_family_ids))
 for path, packet in anchor_expected.items():
     assert path.is_file(), f"missing current anchor packet {path.relative_to(ROOT)}"
     assert json.loads(path.read_text(encoding="utf-8")) == packet, (
@@ -81,15 +91,29 @@ blocked_records = [
     row for row in current_records
     if row.get("publication_status") != "PUBLIC_READY"
 ]
-assert len(anchor_events) == len(public_records) == 114
-for record in public_records:
-    assert record["claim_instance_id"] in anchor_refs, (
-        f"PUBLIC_READY current claim missing neutral anchor: {record['claim_instance_id']}"
-    )
-for record in blocked_records:
-    assert record["claim_instance_id"] not in anchor_refs, (
-        f"blocked current claim leaked into neutral anchor output: {record['claim_instance_id']}"
-    )
+assert len(anchor_events) == len(public_records)
+current_instance_ids = {
+    str(record["claim_instance_id"])
+    for record in current_records
+}
+public_instance_ids = {
+    str(record["claim_instance_id"])
+    for record in public_records
+}
+blocked_instance_ids = {
+    str(record["claim_instance_id"])
+    for record in blocked_records
+}
+anchor_instance_refs = anchor_refs.intersection(current_instance_ids)
+assert anchor_instance_refs == public_instance_ids, (
+    "neutral anchor instance coverage differs from PUBLIC_READY Claims Forensics records: "
+    f"missing={sorted(public_instance_ids - anchor_instance_refs)} "
+    f"extra={sorted(anchor_instance_refs - public_instance_ids)}"
+)
+assert not blocked_instance_ids.intersection(anchor_refs), (
+    "blocked current claim leaked into neutral anchor output: "
+    f"{sorted(blocked_instance_ids.intersection(anchor_refs))}"
+)
 
 # The Sep. 20 Evidence Integration handoff keeps only genuinely unassigned
 # sequences in discovery. F-15SA is continuity to an existing current claim.
@@ -122,7 +146,25 @@ assert packet_families == active_chain_ids, (
     f"missing={sorted(active_chain_ids - packet_families)} "
     f"extra={sorted(packet_families - active_chain_ids)}"
 )
-assert len(forensic["lineage_packets"]) >= len(active_chain_ids)
+manual_packet_paths = {
+    (Path(aggregate.PACKET_DIR) / f"{legacy.slug(chain_id)}.json").as_posix()
+    for chain_id in legacy.MANUAL_CHAIN_IDS
+}
+expected_packet_paths = {
+    path.relative_to(ROOT).as_posix()
+    for path in legacy_expected
+} | {
+    path.relative_to(ROOT).as_posix()
+    for path in anchor_expected
+} | manual_packet_paths
+forensic_packet_paths = {row["path"] for row in forensic["lineage_packets"]}
+assert forensic_packet_paths == expected_packet_paths, (
+    "aggregated Web of Lies packet inventory does not reconcile generated, manual, "
+    "and current-anchor populations: "
+    f"missing={sorted(expected_packet_paths - forensic_packet_paths)} "
+    f"extra={sorted(forensic_packet_paths - expected_packet_paths)}"
+)
+assert len(forensic["lineage_packets"]) == len(expected_packet_paths)
 
 # Current no-lie/unresolved Qeshm branches remain neutral in the rich lineage.
 qeshm_refs = {

@@ -9,6 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_web_of_lies as wol  # noqa: E402
+import build_web_of_lies_baseline_packets as legacy  # noqa: E402
+import build_web_of_lies_current_anchor_packets as anchors  # noqa: E402
 import build_web_of_lies_forensic_input as aggregator  # noqa: E402
 
 
@@ -18,7 +20,58 @@ assembled = aggregator.build_forensic_input(ROOT)
 tracked = json.loads((ROOT / aggregator.OUTPUT).read_text(encoding="utf-8"))
 
 assert assembled == tracked, "tracked Web of Lies forensic input is stale relative to lineage packets"
-assert len(assembled["lineage_packets"]) == 59
+
+# Packet topology is derived from authoritative packet compilers, not a frozen
+# cardinality from a particular Claims Forensics snapshot.
+expected_packet_paths = {
+    path.relative_to(ROOT).as_posix()
+    for path in legacy.expected_packets(ROOT)
+}
+expected_packet_paths.update(
+    path.relative_to(ROOT).as_posix()
+    for path in anchors.expected_packets(ROOT)
+)
+expected_packet_paths.update(
+    (Path(aggregator.PACKET_DIR) / f"{legacy.slug(chain_id)}.json").as_posix()
+    for chain_id in legacy.MANUAL_CHAIN_IDS
+)
+assembled_packet_paths = {row["path"] for row in assembled["lineage_packets"]}
+assert assembled_packet_paths == expected_packet_paths, (
+    "Web of Lies packet inventory differs from generated/manual/current-anchor authority: "
+    f"missing={sorted(expected_packet_paths - assembled_packet_paths)} "
+    f"extra={sorted(assembled_packet_paths - expected_packet_paths)}"
+)
+assert len(assembled["lineage_packets"]) == len(expected_packet_paths)
+
+packet_docs = [
+    json.loads((ROOT / path).read_text(encoding="utf-8"))
+    for path in sorted(expected_packet_paths)
+]
+expected_source_ids = {
+    row["source_id"]
+    for packet_doc in packet_docs
+    for row in packet_doc.get("source_profiles") or []
+}
+expected_event_ids = {
+    row["event_id"]
+    for packet_doc in packet_docs
+    for row in packet_doc.get("information_events") or []
+}
+expected_relationship_ids = {
+    row["relationship_id"]
+    for packet_doc in packet_docs
+    for row in packet_doc.get("relationships") or []
+}
+assembled_source_ids = {row["source_id"] for row in assembled["source_profiles"]}
+assembled_event_ids = {row["event_id"] for row in assembled["information_events"]}
+assembled_relationship_ids = {row["relationship_id"] for row in assembled["relationships"]}
+assert assembled_source_ids == expected_source_ids
+assert assembled_event_ids == expected_event_ids
+assert assembled_relationship_ids == expected_relationship_ids
+assert len(assembled["source_profiles"]) == len(expected_source_ids)
+assert len(assembled["information_events"]) == len(expected_event_ids)
+assert len(assembled["relationships"]) == len(expected_relationship_ids)
+
 packet = next(
     row for row in assembled["lineage_packets"]
     if row["packet_id"] == "WOL-PKT-F15E-CSAR-URANIUM-20260920"
@@ -36,8 +89,27 @@ assert len(assembled["relationships"]) > 18
 derived = wol.build_registry(canonical, assembled, governance)
 family = next(row for row in derived["claim_families"] if row["claim_family_id"] == "CH-F15E-CSAR-URANIUM")
 assert family["trace_status"] == "TRACED"
-assert len(family["information_event_ids"]) == 40
-assert len(family["relationship_ids"]) == 18
+
+# F-15E family topology follows the authoritative rich + current-anchor packets.
+# This stays exact across Claims Forensics maintenance without freezing a
+# pre-composition family cardinality.
+family_packet_docs = [
+    packet_doc
+    for packet_doc in packet_docs
+    if packet_doc["claim_family_id"] == "CH-F15E-CSAR-URANIUM"
+]
+expected_family_event_ids = {
+    event["event_id"]
+    for packet_doc in family_packet_docs
+    for event in packet_doc.get("information_events") or []
+}
+expected_family_relationship_ids = {
+    relationship["relationship_id"]
+    for packet_doc in family_packet_docs
+    for relationship in packet_doc.get("relationships") or []
+}
+assert set(family["information_event_ids"]) == expected_family_event_ids
+assert set(family["relationship_ids"]) == expected_family_relationship_ids
 
 # Rich F-15E lineage remains intact while neutral current Claims Forensics
 # anchors provide complete current-ledger coverage.
