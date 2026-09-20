@@ -22,7 +22,14 @@ const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
 const readerChains = lieLedgerModel.records.filter(chain => chain.public_include_in_accusation_count !== false);
 const expectedReaderChains = readerChains.length;
-const expectedParentFindings = readerChains.filter(chain => chain.public_finding || chain.event_level_finding || chain.chain_finding).length;
+const parentFindingLabel = chain => {
+  const raw = chain.public_finding || chain.event_level_finding || chain.chain_finding;
+  if (!raw) return '';
+  if (typeof raw === 'object') return String(raw.label || raw.public_label || raw.finding || '').trim();
+  return String(raw).trim();
+};
+const expectedParentFindingLabels = readerChains.map(parentFindingLabel).filter(Boolean);
+const expectedParentFindings = expectedParentFindingLabels.length;
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -216,7 +223,7 @@ async function route(cdp, hash, key) {
     assert.equal(ledger.cards, expectedReaderChains, 'reader Lie Ledger must render exactly one top-level card per narrative chain');
     assert(ledger.cards > 0, 'reader-facing chain ledger is empty');
     assert.equal(ledger.statuses.length, expectedParentFindings, 'reader chain-header findings must match explicit canonical parent findings only');
-    assert(ledger.statuses.every(value => ['Lie', 'Likely lie', 'False', 'Misleading', 'Partly true', 'Supported', 'Unresolved', 'Evidence review incomplete', 'Not yet assessed'].includes(value)), 'reader ledger exposes an unapproved parent finding label');
+    assert(ledger.statuses.every(value => expectedParentFindingLabels.includes(value)), 'reader chain header must preserve a canonical parent-finding label');
     assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
     assert(ledger.evidence && ledger.evidenceOpen, 'reader evidence drawer is not discoverable/openable');
     assert(ledger.controls.length >= 2 && ledger.controls.every(height => height >= 44), 'reader claim controls have a touch target below 44px');
