@@ -10,9 +10,10 @@
   ],
   "authority_boundary": {
     "owner": "EVIDENCE_INTEGRATION",
-    "downstream_analysis_owner": "FORENSICS",
+    "downstream_analysis_owner": "WEB_OF_LIES_INFORMATION_FORENSICS",
     "semantic_mutations": "NONE",
-    "purpose": "Source acquisition, provenance, chronology, objective textual relationships, physical-evidence inputs, and nuclear-material statement inventory only."
+    "purpose": "Canonical source acquisition/provenance, publication chronology, exact epistemic wording, direct attribution, physical-evidence inputs, nuclear-material statement inventory, and unresolved provenance gaps only.",
+    "controlling_downstream_contract": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
   },
   "handoff_status": "EVIDENCE_RECORD_COMPLETE",
   "source_chronology": [
@@ -33,7 +34,7 @@
         "60% enriched uranium"
       ],
       "bounded_excerpt": "Such a matter has fundamentally not been on the agenda.",
-      "relationship_to_earlier_claims": "PRE_EVENT_NUCLEAR_MATERIAL_CONTEXT"
+      "evidence_topic": "PRE_EVENT_NUCLEAR_MATERIAL_CONTEXT"
     },
     {
       "chronology_id": "F15E-EI-002",
@@ -51,7 +52,7 @@
         "stored"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "PRE_EVENT_LOCATION_CONTEXT"
+      "evidence_topic": "PRE_EVENT_NUCLEAR_MATERIAL_LOCATION_CONTEXT"
     },
     {
       "chronology_id": "F15E-EI-003",
@@ -70,7 +71,7 @@
         "60%-enriched"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "PRE_EVENT_LOCATION_CONTEXT"
+      "evidence_topic": "PRE_EVENT_NUCLEAR_MATERIAL_LOCATION_CONTEXT"
     },
     {
       "chronology_id": "F15E-EI-004",
@@ -89,7 +90,7 @@
         "specialized handling"
       ],
       "bounded_excerpt": "Approximately 1,000 pounds of 60 percent highly enriched uranium would need to be packaged, moved, and transported to a secure location.",
-      "relationship_to_earlier_claims": "PRE_EVENT_OPERATIONAL_REQUIREMENTS_CONTEXT"
+      "evidence_topic": "PRE_EVENT_URANIUM_SEIZURE_REQUIREMENTS_CONTEXT"
     },
     {
       "chronology_id": "F15E-EI-005",
@@ -108,7 +109,7 @@
         "could take weeks"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "PRE_EVENT_SEPARATE_CONTINGENCY_PLAN_CONTEXT"
+      "evidence_topic": "PRE_EVENT_SEPARATE_US_CONTINGENCY_PLAN_CONTEXT"
     },
     {
       "chronology_id": "F15E-EI-006",
@@ -128,7 +129,7 @@
         "peaceful"
       ],
       "bounded_excerpt": "Iran was forced to ramp up its uranium enrichment, but it remains nowhere close to weapons-grade.",
-      "relationship_to_earlier_claims": "PRE_EVENT_NUCLEAR_POLICY_CONTEXT"
+      "evidence_topic": "PRE_EVENT_NUCLEAR_POLICY_CONTEXT"
     },
     {
       "chronology_id": "F15E-EI-007",
@@ -147,7 +148,7 @@
         "fate ... unknown"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "INITIAL_AIRCRAFT_IDENTIFICATION"
+      "evidence_topic": "AIRCRAFT_IDENTIFICATION_REPORTING"
     },
     {
       "chronology_id": "F15E-EI-008",
@@ -166,7 +167,7 @@
         "some sources"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "AIRCREW_STATUS_SPECULATION"
+      "evidence_topic": "AIRCREW_STATUS_REPORTING"
     },
     {
       "chronology_id": "F15E-EI-009",
@@ -184,7 +185,7 @@
         "so far"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "EARLY_RESCUE_STATUS_REPORT"
+      "evidence_topic": "RESCUE_STATUS_REPORTING"
     },
     {
       "chronology_id": "F15E-EI-010",
@@ -203,7 +204,7 @@
         "detained"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "TEXTUAL_CONTRADICTION_TO_CAPTURE_SPECULATION"
+      "evidence_topic": "AIRCREW_STATUS_IRGC_DENIAL"
     },
     {
       "chronology_id": "F15E-EI-011",
@@ -223,7 +224,7 @@
         "destroyed"
       ],
       "bounded_excerpt": "two C-130 military transport planes and two Black Hawk helicopters were destroyed",
-      "relationship_to_earlier_claims": "RESCUE_OPERATION_AND_EQUIPMENT_ATTRIBUTION"
+      "evidence_topic": "RESCUE_EQUIPMENT_AND_OUTCOME_CLAIM"
     },
     {
       "chronology_id": "F15E-EI-012",
@@ -242,7 +243,7 @@
         "could not immediately verify"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "PARALLEL_REPORT_OF_IRANIAN_CLAIM_AND_US_RECOVERY"
+      "evidence_topic": "MULTISOURCE_RESCUE_REPORT"
     },
     {
       "chronology_id": "F15E-EI-013",
@@ -260,7 +261,7 @@
         "safely recovered"
       ],
       "bounded_excerpt": "successfully completed the rescues of two American service members from Iran",
-      "relationship_to_earlier_claims": "OFFICIAL_RESCUE_OUTCOME_STATEMENT"
+      "evidence_topic": "OFFICIAL_RESCUE_OUTCOME"
     },
     {
       "chronology_id": "F15E-EI-014",
@@ -279,7 +280,7 @@
         "destroyed ... rather than risk leaving"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "EQUIPMENT_LOSS_MECHANISM_AND_RESCUE_OUTCOME"
+      "evidence_topic": "OPERATIONAL_RECONSTRUCTION"
     },
     {
       "chronology_id": "F15E-EI-015",
@@ -297,7 +298,7 @@
         "F-15E"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "CORRECTION_OF_AIRCRAFT_IDENTIFICATION"
+      "evidence_topic": "AIRCRAFT_IDENTIFICATION_CORRECTION"
     },
     {
       "chronology_id": "F15E-EI-016",
@@ -316,7 +317,7 @@
         "should not be overlooked"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "INTRODUCTION_OF_URANIUM_THEORY_AS_POSSIBILITY"
+      "evidence_topic": "URANIUM_THEORY_OFFICIAL_STATEMENT"
     },
     {
       "chronology_id": "F15E-EI-017",
@@ -335,7 +336,7 @@
         "rescued"
       ],
       "bounded_excerpt": null,
-      "relationship_to_earlier_claims": "FOLLOW_UP_OPERATIONAL_DETAIL"
+      "evidence_topic": "FOLLOW_UP_OPERATIONAL_RECONSTRUCTION"
     },
     {
       "chronology_id": "F15E-EI-018",
@@ -355,7 +356,7 @@
         "real objective"
       ],
       "bounded_excerpt": "this operation had no connection to the claimed rescue ... the real objective was to infiltrate and attack one of Iran's nuclear facilities",
-      "relationship_to_earlier_claims": "MATERIALLY_DIFFERENT_MISSION_PURPOSE_DESCRIPTION"
+      "evidence_topic": "ISFAHAN_MISSION_PURPOSE_PRESS_TV_CLAIM"
     },
     {
       "chronology_id": "F15E-EI-019",
@@ -374,160 +375,8 @@
         "had there been any other operation"
       ],
       "bounded_excerpt": "This suggests a larger operation, and possibly undisclosed objectives.",
-      "relationship_to_earlier_claims": "RELATED_ANALYSIS_REFERENCING_PRIOR_PRESS_TV_EXCLUSIVE",
-      "attribution_note": "The page states that the views expressed do not necessarily reflect Press TV."
-    }
-  ],
-  "provenance_relationships": [
-    {
-      "relationship_id": "F15E-REL-001",
-      "from_source_id": "SRC-F8AA5DA10F47",
-      "to_source_id": "SRC-CC1AA98E096D",
-      "relationship_type": "CONTRADICTS_TEXTUALLY",
-      "basis": "Possible-capture reporting is followed by a reported provincial IRGC denial of capture/detention."
-    },
-    {
-      "relationship_id": "F15E-REL-002",
-      "from_source_id": "SRC-9AD0DC8629DD",
-      "to_source_id": "SRC-694207959BE5",
-      "relationship_type": "CONTRADICTS_TEXTUALLY",
-      "basis": "Early failed-recovery framing and later official U.S. statement of two successful recoveries describe different rescue outcomes."
-    },
-    {
-      "relationship_id": "F15E-REL-003",
-      "from_source_id": "SRC-CB6893671B1F",
-      "to_source_id": "SRC-694207959BE5",
-      "relationship_type": "CONTRADICTS_TEXTUALLY",
-      "basis": "Complete-failure characterization conflicts textually with CENTCOM's successful-recovery statement."
-    },
-    {
-      "relationship_id": "F15E-REL-004",
-      "from_source_id": "SRC-CB6893671B1F",
-      "to_source_id": "SRC-7471ECB26165",
-      "relationship_type": "CONTRADICTS_TEXTUALLY",
-      "basis": "Press TV attributed destruction of rescue transports/helicopters to Iranian forces; Reuters reported disabled aircraft/equipment were destroyed by U.S. troops."
-    },
-    {
-      "relationship_id": "F15E-REL-005",
-      "from_source_id": "SRC-CB6893671B1F",
-      "to_source_id": "SRC-7E2DE3FC127A",
-      "relationship_type": "CONTRADICTS_TEXTUALLY",
-      "basis": "April 5 reporting described a mission to retrieve the downed pilot; April 7 Press TV said the operation had no connection to that rescue."
-    },
-    {
-      "relationship_id": "F15E-REL-006",
-      "from_source_id": "SRC-0C0023C8A3BF",
-      "to_source_id": "SRC-739B61482DE5",
-      "relationship_type": "PARALLEL_CARRIER_SAME_OFFICIAL_STATEMENT",
-      "basis": "Both reports attribute the uranium/deception possibility to Foreign Ministry spokesman Esmaeil Baghaei."
-    },
-    {
-      "relationship_id": "F15E-REL-007",
-      "from_source_id": "SRC-7E2DE3FC127A",
-      "to_source_id": "SRC-03F069A69AAF",
-      "relationship_type": "REFERENCED_BY_LATER_ANALYSIS",
-      "basis": "The April 9 analysis embeds/references the April 7 Press TV exclusive while using more hedged language about additional objectives."
-    },
-    {
-      "relationship_id": "F15E-REL-008",
-      "from_source_id": "SRC-9AD88556FB4C",
-      "to_source_id": "SRC-481DC6A8E2DB",
-      "relationship_type": "CORRECTED_BY",
-      "basis": "Press TV later identified the earlier F-35 identification as a misidentification and identified the debris as F-15E."
-    },
-    {
-      "relationship_id": "F15E-REL-009",
-      "from_source_id": "SRC-98A42AC97EEA",
-      "to_source_id": "SRC-42F3F44BC6EE",
-      "relationship_type": "SAME_IAEA_MATERIAL_LOCATION_THREAD",
-      "basis": "Both Reuters reports relay IAEA information concerning 60%-enriched uranium at Isfahan."
-    },
-    {
-      "relationship_id": "F15E-REL-010",
-      "from_source_id": "SRC-D493B3396238",
-      "to_source_id": "SRC-7E2DE3FC127A",
-      "relationship_type": "SAME_OUTLET_PRIOR_TECHNICAL_CONTEXT",
-      "basis": "Press TV published operational requirements for a hypothetical uranium-seizure mission before its April 7 Isfahan mission-purpose report."
-    },
-    {
-      "relationship_id": "F15E-REL-011",
-      "from_source_id": "SRC-68993464F927",
-      "to_source_id": "SRC-7E2DE3FC127A",
-      "relationship_type": "SEPARATE_CONTINGENCY_PLAN_CONTEXT",
-      "basis": "The Post documented a separate U.S. uranium-seizure contingency plan before the April 7 Press TV claim; no source relationship establishes that the contingency plan was executed in the rescue."
-    }
-  ],
-  "source_family_connections": [
-    {
-      "connection_id": "F15E-FAM-001",
-      "source_id": "SRC-CB6893671B1F",
-      "connected_entity": "Khatam al-Anbiya Central Headquarters",
-      "connection_type": "DIRECT_ATTRIBUTION",
-      "basis": "Press TV directly quotes spokesman Ebrahim Zolfaqari."
-    },
-    {
-      "connection_id": "F15E-FAM-002",
-      "source_id": "SRC-7CDC817909BB",
-      "connected_entity": "Unified command of Iranian armed forces / Iranian Army / IRGC",
-      "connection_type": "DIRECT_ATTRIBUTION_BY_CARRIER",
-      "basis": "Reuters attributes specific aircraft-loss claims to those institutions."
-    },
-    {
-      "connection_id": "F15E-FAM-003",
-      "source_id": "SRC-0C0023C8A3BF",
-      "connected_entity": "Iranian Foreign Ministry / Esmaeil Baghaei",
-      "connection_type": "DIRECT_ATTRIBUTION_BY_CARRIER",
-      "basis": "Xinhua attributes the uranium/deception possibility to Baghaei."
-    },
-    {
-      "connection_id": "F15E-FAM-004",
-      "source_id": "SRC-739B61482DE5",
-      "connected_entity": "Iranian Foreign Ministry / Esmaeil Baghaei",
-      "connection_type": "DIRECT_ATTRIBUTION_BY_CARRIER",
-      "basis": "Anadolu carries the same official statement family."
-    },
-    {
-      "connection_id": "F15E-FAM-005",
-      "source_id": "SRC-7E2DE3FC127A",
-      "connected_entity": "Press TV",
-      "connection_type": "INSTITUTIONAL_EXCLUSIVE",
-      "basis": "The article repeatedly describes information/evidence as obtained, examined, or confirmed by Press TV; underlying sourcing is partly unnamed."
-    },
-    {
-      "connection_id": "F15E-FAM-006",
-      "source_id": "SRC-03F069A69AAF",
-      "connected_entity": "Mohammad Molaei",
-      "connection_type": "SIGNED_ANALYSIS",
-      "basis": "Named analyst byline; page includes an outlet disclaimer separating the author's views from Press TV."
-    },
-    {
-      "connection_id": "F15E-FAM-007",
-      "source_id": "SRC-F8AA5DA10F47",
-      "connected_entity": "Unspecified sources",
-      "connection_type": "ANONYMOUS_ATTRIBUTION",
-      "basis": "Tasnim presents capture as a possibility attributed to unspecified sources."
-    }
-  ],
-  "correction_update_language": [
-    {
-      "source_id": "SRC-481DC6A8E2DB",
-      "characteristic": "EXPLICIT_CORRECTION",
-      "note": "Press TV identifies the earlier F-35 identification as a misidentification."
-    },
-    {
-      "source_id": "SRC-CC1AA98E096D",
-      "characteristic": "EXPLICIT_DENIAL_BY_REPORTED_IRGC_SOURCE",
-      "note": "Provincial IRGC denial addresses capture/detention."
-    },
-    {
-      "source_id": "SRC-7E2DE3FC127A",
-      "characteristic": "MATERIALLY_DIFFERENT_ACCOUNT_WITHOUT_EXPLICIT_RETRACTION_OF_APRIL_5_PRESS_TV_ACCOUNT",
-      "note": "The April 7 article says the operation had no connection to the claimed F-15 rescue while linking to the April 5 feature; it does not label the earlier Press TV rescue-purpose report a correction."
-    },
-    {
-      "source_id": "SRC-03F069A69AAF",
-      "characteristic": "LATER_SIGNED_ANALYSIS_WITH_HEDGED_LANGUAGE",
-      "note": "The April 9 article uses possibility language and includes an author-view disclaimer."
+      "attribution_note": "The page states that the views expressed do not necessarily reflect Press TV.",
+      "evidence_topic": "LATER_SIGNED_ANALYSIS"
     }
   ],
   "physical_evidence_inventory": [
@@ -639,82 +488,6 @@
       "statement": "Press TV acknowledged increased Iranian enrichment while expressly distinguishing the material from weapons-grade and reiterating Iran's peaceful-program position."
     }
   ],
-  "external_commentary_feedback_review": {
-    "scope": [
-      "Ethan Levin",
-      "Valentino Videos",
-      "Jolly Good Ginger",
-      "other foreign/social-media citations directly connected to CH-F15E-CSAR-URANIUM"
-    ],
-    "result": "NO_CHAIN_RELEVANT_FEEDBACK_PATH_IDENTIFIED",
-    "method": [
-      "Repository text search for the named accounts",
-      "Targeted Press TV domain searches for the named accounts and F-15E/Isfahan context"
-    ],
-    "limitation": "This records the reviewed source universe only; it is not a claim that no such citation exists anywhere outside the reviewed corpus."
-  },
-  "source_quality_metadata": [
-    {
-      "source_id": "SRC-694207959BE5",
-      "source_type": "OFFICIAL_MILITARY",
-      "primary_secondary": "PRIMARY_OFFICIAL",
-      "attribution": "NAMED_INSTITUTION"
-    },
-    {
-      "source_id": "SRC-7471ECB26165",
-      "source_type": "WIRE_SERVICE",
-      "primary_secondary": "SECONDARY_WITH_DIRECT_OPERATIONAL_SOURCES",
-      "attribution": "MULTIPLE_ANONYMOUS_US_OFFICIAL_SOURCES"
-    },
-    {
-      "source_id": "SRC-E3DAD827ACAF",
-      "source_type": "WIRE_SERVICE",
-      "primary_secondary": "SECONDARY_WITH_NAMED_AND_OFFICIAL_SOURCES",
-      "attribution": "NAMED_US_OFFICIALS_AND_OPERATIONAL_DETAIL"
-    },
-    {
-      "source_id": "SRC-CB6893671B1F",
-      "source_type": "STATE_MEDIA",
-      "primary_secondary": "DIRECT_OFFICIAL_STATEMENT_RELAY",
-      "attribution": "NAMED_KHATAM_SPOKESMAN"
-    },
-    {
-      "source_id": "SRC-7E2DE3FC127A",
-      "source_type": "STATE_MEDIA",
-      "primary_secondary": "INSTITUTIONAL_EXCLUSIVE",
-      "attribution": "PARTLY_UNNAMED"
-    },
-    {
-      "source_id": "SRC-03F069A69AAF",
-      "source_type": "STATE_MEDIA",
-      "primary_secondary": "SIGNED_ANALYSIS",
-      "attribution": "NAMED_AUTHOR_WITH_OUTLET_DISCLAIMER"
-    },
-    {
-      "source_id": "SRC-0C0023C8A3BF",
-      "source_type": "NEWS_OUTLET",
-      "primary_secondary": "SECONDARY_OFFICIAL_STATEMENT_RELAY",
-      "attribution": "NAMED_IRANIAN_FOREIGN_MINISTRY_SPOKESMAN"
-    },
-    {
-      "source_id": "SRC-F8AA5DA10F47",
-      "source_type": "STATE_MEDIA",
-      "primary_secondary": "SECONDARY_REPORT",
-      "attribution": "UNSPECIFIED_SOURCES"
-    },
-    {
-      "source_id": "SRC-98A42AC97EEA",
-      "source_type": "WIRE_SERVICE",
-      "primary_secondary": "SECONDARY_REPORT_OF_IAEA_DOCUMENT",
-      "attribution": "IAEA_DOCUMENT"
-    },
-    {
-      "source_id": "SRC-42F3F44BC6EE",
-      "source_type": "WIRE_SERVICE",
-      "primary_secondary": "SECONDARY_REPORT_OF_NAMED_IAEA_OFFICIAL",
-      "attribution": "RAFAEL_GROSSI"
-    }
-  ],
   "unresolved_provenance_gaps": [
     {
       "gap_id": "F15E-GAP-001",
@@ -768,8 +541,9 @@
     "SRC-F8AA5DA10F47"
   ],
   "downstream_handoff": {
-    "recipient": "FORENSICS",
-    "package_character": "NEUTRAL_EVIDENCE_INPUT",
-    "note": "This artifact records sources, provenance, wording, chronology, textual conflicts, source-family links and physical/nuclear-material inputs. It makes no downstream analytical finding."
+    "recipient": "WEB_OF_LIES_INFORMATION_FORENSICS",
+    "contract_path": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+    "package_character": "NEUTRAL_CANONICAL_EVIDENCE_INPUT",
+    "note": "Evidence Integration stops at canonical source/provenance, chronology, exact wording, direct attribution, physical/nuclear inputs and unresolved provenance gaps. Information-lineage, source-family, propagation, contradiction-event, correction-propagation, feedback-loop and source-behavior analysis belong downstream."
   }
 }
