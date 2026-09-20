@@ -1,0 +1,787 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260920-ROOK-CATCHUP-CONVERGENCE",
+  "known_at": "2026-09-20T15:48:00-04:00",
+  "evidence_cutoff": "2026-09-20T12:28:00-04:00",
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20260916T1158ET-recovered.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260916T1930ET-gap-recovery.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260917T1200ET-recovered.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260918T0002ET-recovered.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260918T1200ET-recovered.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260919T0002ET-recovered.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260919T1200ET-recovered.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260920T0000ET-recovered.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260920T1200ET-recovered.json"
+    ],
+    "migration_source_head": "a140d33114664c6b329adf696907870a0273eb93",
+    "consumption_audit": "data/evidence-integration/rook-catchup-consumption-audit-20260920.json",
+    "claim_domain_handoff": "data/evidence-integration/rook-catchup-claims-routing-20260920.json",
+    "web_of_lies_handoff": "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json",
+    "note": "Retrospective Evidence Integration consumption of recovered routine ROOK sweeps. Claims Forensics and Web of Lies semantics are not mutated by this packet."
+  },
+  "summary": "Consumes the recovered Sep. 15-20 ROOK routine-intake sequence on current production architecture. Current state advances only where later evidence changes the accepted factual record; overlapping historical observations remain provenance, claims are routed without re-adjudication, and the production evidence cutoff remains 2026-09-20T12:28:00-04:00.",
+  "sources": [
+    {
+      "source_id": "SRC-5B3BA41453A8",
+      "url": "https://www.reuters.com/world/middle-east/us-officials-met-iran-backed-houthis-oman-over-weekend-sources-say-2026-09-16/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-7F8E69DB9121",
+      "url": "https://apnews.com/article/yemen-houthis-saudi-oil-red-sea-shipping-explainer-22e64e72775886625da676aee92edca2",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-C87D899ECFD9",
+      "url": "https://www.reuters.com/world/middle-east/us-treasury-gathers-global-financial-institutions-advance-iran-sanctions-2026-09-16/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-2F2324AD9654",
+      "url": "https://www.reuters.com/world/china/china-presses-iran-help-rein-houthis-after-saudi-appeal-sources-say-2026-09-17/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-B3E878837E66",
+      "url": "https://home.treasury.gov/news/press-releases/sb0632",
+      "source_role": "PRIMARY_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-74D672026ACE",
+      "url": "https://www.reuters.com/world/middle-east/us-sanctions-iranian-financiers-crypto-exchange-says-it-processes-hormuz-2026-09-17/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-4AF20C710DEB",
+      "url": "https://www.reuters.com/business/energy/three-pumping-stations-along-saudi-east-west-pipeline-were-hit-recent-attack-2026-09-17/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-B82FA8C138F4",
+      "url": "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-CD278496439E",
+      "url": "https://dtm.iom.int/yemen",
+      "source_role": "INTERGOVERNMENTAL_PRIMARY"
+    },
+    {
+      "source_id": "SRC-3C1E87E63037",
+      "url": "https://transcripts.un.org/en/sc/10222",
+      "source_role": "INTERGOVERNMENTAL_PRIMARY"
+    },
+    {
+      "source_id": "SRC-97467663226A",
+      "url": "https://apnews.com/article/7541f88490d17747537ee3fdbc119af8",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-CBC350AF4215",
+      "url": "https://www.cbsnews.com/news/iran-downed-american-drones-us-officials/",
+      "source_role": "NEWS_REPORT_US_OFFICIAL_SOURCES"
+    },
+    {
+      "source_id": "SRC-84780EE8C4F8",
+      "url": "https://www.reuters.com/world/middle-east/saudi-civil-defence-sends-all-clear-after-danger-warning-capital-riyadh-2026-09-19/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-455AE83B448A",
+      "url": "https://www.reuters.com/world/middle-east/saudi-gulf-stocks-fall-after-houthis-claim-riyadh-attacks-2026-09-20/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-255ED903C016",
+      "url": "https://www.aljazeera.com/news/2026/9/19/iran-says-conditions-to-re-engage-in-talks-end-war-sent-to-us-via-qatar",
+      "source_role": "REGIONAL_NEWS_REPORT_OF_IRANIAN_STATEMENT"
+    },
+    {
+      "source_id": "SRC-E1EBBF388878",
+      "url": "https://www.aljazeera.com/news/2026/9/20/what-are-irans-new-conditions-to-end-its-war-with-the-us",
+      "source_role": "REGIONAL_NEWS_REPORT_OF_IRANIAN_STATEMENT"
+    },
+    {
+      "source_id": "SRC-D9F35BD2A46C",
+      "url": "https://www.reuters.com/world/asia-pacific/iran-warns-against-new-escalation-by-us-allies-2026-09-20/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-35CDDF77A76C",
+      "url": "https://www.whitehouse.gov/briefings-statements/2026/09/congressional-bill-h-r-5334-signed-into-law/",
+      "source_role": "PRIMARY_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-5735473347DE",
+      "url": "https://www.reuters.com/world/us/trump-signs-russia-sanctions-bill-into-law-2026-09-18/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-FFD277292D41",
+      "url": "https://www.reuters.com/world/middle-east/un-peacekeeping-chief-lebanon-says-smooth-transition-is-critical-before-pull-out-2026-09-19/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-486FFC71B07D",
+      "url": "https://www.reuters.com/world/middle-east/us-troop-deaths-iran-war-exceed-pentagon-count-by-least-four-washington-post-2026-09-18/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-4E807D4B6999",
+      "url": "https://www.reuters.com/business/aerospace-defense/turkey-says-it-could-help-meet-saudi-military-needs-under-defence-pact-2026-09-19/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-23B3DC98BAF0",
+      "url": "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-6FED1D32FAAE",
+      "url": "https://www.reuters.com/world/middle-east/trump-hopes-iran-war-nearing-end-houthi-saudi-fighting-escalates-2026-09-17/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-D24B8F8BACB4",
+      "url": "https://maritime-executive.com/article/iran-exploits-attack-on-small-product-tanker-to-assert-hormuz-control",
+      "source_role": "MARITIME_TRADE_REPORT"
+    },
+    {
+      "source_id": "SRC-065504B261C6",
+      "url": "https://www.reuters.com/world/middle-east/un-mission-finds-grounds-believe-us-committed-war-crimes-iran-tehran-crimes-2026-09-17/",
+      "source_role": "WIRE_REPORT_OF_UN_FINDING"
+    },
+    {
+      "source_id": "SRC-CC1D99D10450",
+      "url": "https://www.reuters.com/world/middle-east/iranian-delegation-will-be-able-attend-un-general-assembly-us-says-2026-09-17/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-B75FAAE67C1D",
+      "url": "https://www.reuters.com/world/china/russia-china-end-mandate-independent-monitoring-un-sanctions-iran-2026-09-17/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-85F2B7AB1092",
+      "url": "https://www.reuters.com/world/middle-east/italys-minister-calls-more-ships-protect-red-sea-navigation-2026-09-18/",
+      "source_role": "WIRE_REPORT"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-US-HOUTHI-OMAN-DIRECT-CONTACT-20260913",
+      "event_date": "2026-09-13",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_HOUTHI_DIRECT_CONTACT",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Reuters, citing five sources, reported U.S. officials and Houthi representatives met in Muscat with Omani facilitation. AP later separately reported the meeting. Public evidence establishes a direct channel; exact understandings remain unresolved.",
+      "source_ids": [
+        "SRC-5B3BA41453A8",
+        "SRC-7F8E69DB9121"
+      ]
+    },
+    {
+      "event_id": "G3-US-FINCEN-OUTCAST-INSTITUTIONS-20260916",
+      "event_date": "2026-09-16",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "FINANCIAL_ENFORCEMENT_COORDINATION",
+      "public_available_time": "2026-09-16T13:42:23-04:00",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "FinCEN convened global financial institutions under Operation Economic Outcast and supplied information intended to disrupt Iranian revenue and procurement networks.",
+      "source_ids": [
+        "SRC-C87D899ECFD9"
+      ]
+    },
+    {
+      "event_id": "G3-CHINA-IRAN-HOUTHI-RESTRAINT-20260917",
+      "event_date": "2026-09-17",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "CHINA_PRIVATE_RESTRAINT_REQUEST",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Reuters, citing Iranian sources, reported China privately asked Tehran to use its influence to rein in the Houthis after a Saudi appeal. No Chinese economic ultimatum or verified Iranian compliance was established.",
+      "source_ids": [
+        "SRC-2F2324AD9654"
+      ]
+    },
+    {
+      "event_id": "G3-US-BITBANK-DESIGNATIONS-20260917",
+      "event_date": "2026-09-17",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_SANCTIONS_DESIGNATION",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "OFAC designated BitBank, its developer and three Zanjani associates. Treasury linked the network to sanctions evasion and Hormuz-related payments; transaction-level allegations remain U.S. government attribution.",
+      "source_ids": [
+        "SRC-B3E878837E66",
+        "SRC-74D672026ACE"
+      ]
+    },
+    {
+      "event_id": "G3-TAIF-DRONE-DEBRIS-CASUALTY-20260917",
+      "event_date": "2026-09-17",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "INTERCEPT_DEBRIS_CASUALTY",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Saudi civil defense reported falling debris from an intercepted Houthi drone in Taif province killed one Yemeni and injured a Saudi and a Pakistani national.",
+      "source_ids": [
+        "SRC-7F8E69DB9121"
+      ]
+    },
+    {
+      "event_id": "G3-UN-FFM-US-IRAN-FINDINGS-20260917",
+      "event_date": "2026-09-17",
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_type": "UN_FACT_FINDING_MISSION_FINDINGS",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "A UN fact-finding mission reported reasonable grounds to believe specified U.S. strikes included war crimes and that Iranian authorities committed crimes against humanity in their response to protests. These are mission findings, not judicial determinations.",
+      "source_ids": [
+        "SRC-065504B261C6"
+      ]
+    },
+    {
+      "event_id": "G3-HORMUZ-TANKER-INCIDENT-20260917",
+      "event_date": "2026-09-17",
+      "event_class": "CORE_WARTIME_EVENT",
+      "event_type": "HORMUZ_TANKER_ATTACK_INCIDENT",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "A tanker attack or projectile incident was reported in Hormuz. IRGC said a Togo-flagged tanker was hit, caught fire and stopped; later claimant reporting named Trend. Independent reporting supports an incident but does not establish every IRGC proposition, including U.S. direction.",
+      "source_ids": [
+        "SRC-6FED1D32FAAE",
+        "SRC-D24B8F8BACB4"
+      ]
+    },
+    {
+      "event_id": "G3-ITALY-REDSEA-NAVAL-INTENT-20260918",
+      "event_date": "2026-09-18",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "NAVAL_MISSION_INTENT",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Italy's defense minister called for more naval assets to protect Red Sea navigation and said Italy was preparing an independent naval mission. Intent does not establish deployment.",
+      "source_ids": [
+        "SRC-85F2B7AB1092"
+      ]
+    },
+    {
+      "event_id": "G3-US-HR5334-SIGNED-20260918",
+      "event_date": "2026-09-18",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "SANCTIONS_LEGISLATION_ENACTED",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "President Trump signed H.R. 5334, the Lindsey O. Graham Sanctioning Russia and Iran Act of 2026, superseding the prior passed-Congress status.",
+      "source_ids": [
+        "SRC-35CDDF77A76C",
+        "SRC-5735473347DE"
+      ]
+    },
+    {
+      "event_id": "G3-RIYADH-AIRPORT-THREAT-FIRE-20260919",
+      "event_date": "2026-09-19",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "HOSTILE_AERIAL_THREAT_AND_OBSERVED_FIRE",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Saudi authorities issued hostile-aerial-threat warnings and later an all-clear while reporters observed fire near King Khalid International Airport. Later Reuters reporting localized the visible plume to the airport fuel-storage area. The fire is supported; weapon-to-damage attribution and Yanbu BDA remain unresolved.",
+      "source_ids": [
+        "SRC-84780EE8C4F8",
+        "SRC-455AE83B448A"
+      ]
+    },
+    {
+      "event_id": "G3-IRAN-US-SETTLEMENT-CONDITIONS-20260919",
+      "event_date": "2026-09-19",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRANIAN_NEGOTIATION_CONDITIONS_POSITION",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Mohsen Rezaei said Iran transmitted seven conditions for beginning negotiations through Qatar. Follow-on reporting by Sep. 20 publicly enumerated six conditions while one remained undisclosed. This is an Iranian stated position, not agreed bilateral terms.",
+      "source_ids": [
+        "SRC-255ED903C016",
+        "SRC-E1EBBF388878"
+      ]
+    },
+    {
+      "event_id": "G3-PAKISTAN-IRAN-MARITIME-SAFETY-20260919",
+      "event_date": "2026-09-19",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "MARITIME_SAFETY_DIPLOMATIC_ENGAGEMENT",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Pakistan said its foreign minister discussed uninterrupted energy supplies and safe commercial passage with Iran's foreign minister. The exchange is diplomatic engagement, not a new navigation agreement.",
+      "source_ids": [
+        "SRC-23B3DC98BAF0"
+      ]
+    },
+    {
+      "event_id": "G3-UNIFIL-TRANSITION-PLANNING-20260919",
+      "event_date": "2026-09-19",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "UNIFIL_WITHDRAWAL_TRANSITION_PLANNING",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "UNIFIL leadership reported planning transfer of responsibilities ahead of the mission's scheduled end-of-2026 withdrawal. No replacement security mission was established by the recovered horizon.",
+      "source_ids": [
+        "SRC-FFD277292D41"
+      ]
+    },
+    {
+      "event_id": "G3-IRAN-HORMUZ-SEQUENCING-20260920",
+      "event_date": "2026-09-20",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRANIAN_HORMUZ_NEGOTIATION_SEQUENCING_POSITION",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Parliament Speaker Mohammad Bagher Ghalibaf said Iran would not return to prior negotiations or reopen Hormuz until Iranian conditions were met, rights recognized and U.S. commitments fulfilled. This is an Iranian official position, not an agreed term.",
+      "source_ids": [
+        "SRC-E1EBBF388878"
+      ]
+    },
+    {
+      "event_id": "G3-IRAN-ESCALATION-WARNING-20260920",
+      "event_date": "2026-09-20",
+      "event_class": "STATE_SNAPSHOT",
+      "event_type": "IRANIAN_ESCALATION_WARNING_AND_FOREKNOWLEDGE_CLAIM",
+      "game_knowledge_time": "2026-09-20T15:48:00-04:00",
+      "strike_countable": false,
+      "summary": "Iran's military central command warned that a major new U.S. or allied attack would trigger sustained retaliation and said it had information such an attack was being prepared. The warning is established as a statement; the claimed foreknowledge was not independently substantiated by the recovered evidence.",
+      "source_ids": [
+        "SRC-D9F35BD2A46C"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "observed_state": "Kpler preliminary data reported four commodity-vessel transits through Hormuz on Thursday Sep. 17, three inbound and one outbound, versus a ten-day average near 16. AIS-off traffic remains outside the observable count.",
+        "adjudication": "SEVERELY_DEPRESSED_OBSERVABLE_COMMODITY_TRAFFIC; NOT_PHYSICAL_CLOSURE; AIS_SCOPE_BOUND",
+        "latest_observable_metric": {
+          "provider": "Kpler via Reuters",
+          "day": "2026-09-17",
+          "commodity_vessel_transits": 4,
+          "inbound": 3,
+          "outbound": 1,
+          "ten_day_average_approx": 16,
+          "scope": "PRELIMINARY_OBSERVABLE_TRAFFIC",
+          "ais_dark_excluded": true
+        },
+        "source_ids": [
+          "SRC-B82FA8C138F4"
+        ]
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-BAB-EL-MANDEB-TRAFFIC-20260914",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "observed_state": "Kpler reported 23 Bab el-Mandeb crossings on Thursday Sep. 17 versus a ten-day average near 26. Traffic remained active despite Houthi territorial gains and threats.",
+        "adjudication": "GENERAL_TRAFFIC_CONTINUES; BELOW_RECENT_AVERAGE; GENERAL_CLOSURE_NOT_ESTABLISHED",
+        "latest_observable_metric": {
+          "provider": "Kpler via Reuters",
+          "day": "2026-09-17",
+          "crossings": 23,
+          "ten_day_average_approx": 26
+        },
+        "source_ids": [
+          "SRC-B82FA8C138F4"
+        ]
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "status": "THREE_PUMPING_STATIONS_DAMAGED; TEMPORARY_SHUTDOWN; PARTIAL_RESTART_POSSIBLE_BEFORE_FULL_REPAIR",
+        "disposition": "Reuters satellite analysis and three industry sources confirmed damage at three pumping stations. The pipeline temporarily shut; three sources estimated five to six weeks for repairs while another allowed earlier partial pumping. The pipeline body is not established as destroyed.",
+        "source_ids": [
+          "SRC-4AF20C710DEB"
+        ]
+      }
+    },
+    {
+      "entity_type": "gap",
+      "entity_id": "GAP-E2-SAUDI-EASTWEST-EXACT-BDA",
+      "mode": "update",
+      "record": {
+        "known_at": "2026-09-20T15:48:00-04:00",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "status": "PARTIALLY_RESOLVED_THREE_PUMPING_STATIONS_DAMAGED; PARTIAL_RESTART_AND_FULL_THROUGHPUT_UNRESOLVED",
+        "topic": "Exact East-West pipeline facilities damaged, repair duration and partial-restoration throughput",
+        "evidence": "Three pumping stations are independently supported as damaged and temporary shutdown is established. Full repair was estimated at five to six weeks by three sources, with possible earlier partial pumping. Current partial throughput, full-throughput restoration and Yanbu loading normalization remain unresolved.",
+        "source_ids": [
+          "SRC-4AF20C710DEB"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "reported_displaced_approx": 114498,
+        "reported_households": 19083,
+        "period_start": "2026-09-01",
+        "period_end": "2026-09-17",
+        "confidence": "HIGH_FOR_IOM_DTM_TIMEBOX",
+        "note": "IOM DTM Update #6 reported approximately 114,498 individuals in 19,083 households displaced Sep. 1-17. OCHA/UN and aid-agency estimates around 125,000 use different coverage or cutoffs and are preserved as parallel denominators rather than merged.",
+        "parallel_denominators": [
+          {
+            "source_family": "OCHA/UN or aid-agency reporting",
+            "reported_displaced_approx": 125000,
+            "rule": "DO_NOT_ARITHMETICALLY_MERGE_WITH_IOM_DTM"
+          }
+        ],
+        "source_ids": [
+          "SRC-CD278496439E",
+          "SRC-3C1E87E63037"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-WAR-COST-OFFICIAL-RETROSPECTIVE-20260914",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "date": "2026-09-03",
+        "metric": "Retrospective U.S. war cost estimate",
+        "observed_state": "AP reported a U.S. military estimate of $43.6 billion in war cost as of Sep. 3, including $28.1 billion in weapons expenditures.",
+        "adjudication": "OFFICIAL_ESTIMATE_REPORTED_BY_AP; COST_DATE_IS_SEP_3_AND_PUBLICATION_IS_LATER",
+        "source_ids": [
+          "SRC-97467663226A"
+        ]
+      }
+    },
+    {
+      "entity_type": "material_loss",
+      "entity_id": "MAT-US-MQ1-RECENT-20260917",
+      "mode": "add",
+      "record": {
+        "loss_id": "MAT-US-MQ1-RECENT-20260917",
+        "asset_class": "MQ-1",
+        "event_date": "2026-09-17",
+        "reported_minimum": 2,
+        "quantity": null,
+        "aggregation_type": "SOURCE_REPORTED_RECENT_PERIOD_MINIMUM",
+        "additive": false,
+        "status": "AT_LEAST_TWO_RECENT_US_MQ1_LOSSES_REPORTED_BY_US_OFFICIAL_SOURCES; LOCATION_AND_IDENTITY_UNRESOLVED",
+        "disposition": "CBS reported U.S. officials said Iranian forces brought down at least two American MQ-1 unmanned aircraft in recent days. The report did not locate or identify them and does not map them to the Qeshm MQ-9 claims.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-CBC350AF4215"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-TAIF-DRONE-DEBRIS-20260917",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-TAIF-DRONE-DEBRIS-20260917",
+        "event_date": "2026-09-17",
+        "event_ref": "G3-TAIF-DRONE-DEBRIS-CASUALTY-20260917",
+        "killed": 1,
+        "wounded": 2,
+        "confidence": "HIGH_FOR_SAUDI_REPORTED_CASUALTIES",
+        "note": "Saudi civil defense attributed the casualties and property damage to falling debris from an intercepted Houthi drone.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-7F8E69DB9121"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-US-WAR-PERIOD-FATALITIES-20260919",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-US-WAR-PERIOD-FATALITIES-20260919",
+        "event_date": "2026-09-19",
+        "aggregation_type": "CUMULATIVE_SNAPSHOT",
+        "cumulative_snapshot": true,
+        "additive": false,
+        "official_pentagon_public_total": 18,
+        "reported_period_minimum_from_five_us_officials": 22,
+        "confidence": "COMPETING_DENOMINATORS_UNRESOLVED",
+        "note": "Reuters reported the Washington Post, citing five U.S. officials, counted at least 22 U.S. military fatalities during the war period versus a Pentagon public figure of 18. Some additional deaths may not be directly combat-related. Do not sum either snapshot with event-level rows without reconciliation.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-486FFC71B07D"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-HOUTHI-OMAN-DIRECT-CONTACT-20260913",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-US-HOUTHI-OMAN-DIRECT-CONTACT-20260913",
+        "date": "2026-09-13",
+        "status": "DIRECT_CONTACT_MULTI_SOURCE_REPORTED; EXACT_UNDERSTANDINGS_UNRESOLVED",
+        "observed_state": "U.S. officials and Houthi representatives met in Muscat with Omani facilitation over the weekend. Reporting described discussion of the 2025 U.S.-Houthi ceasefire and American vessels; no formal new agreement is established here.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-5B3BA41453A8",
+          "SRC-7F8E69DB9121"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-CHINA-IRAN-HOUTHI-RESTRAINT-20260917",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-CHINA-IRAN-HOUTHI-RESTRAINT-20260917",
+        "date": "2026-09-17",
+        "status": "PRIVATE_CHINESE_REQUEST_REPORTED; IRANIAN_COMPLIANCE_AND_ECONOMIC_CONSEQUENCES_UNESTABLISHED",
+        "observed_state": "Reuters reported China privately asked Tehran to use its influence to rein in the Houthis after Saudi Arabia appealed to Beijing.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-2F2324AD9654"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-FINCEN-OUTCAST-20260916",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-US-FINCEN-OUTCAST-20260916",
+        "date": "2026-09-16",
+        "metric": "Operation Economic Outcast financial-enforcement coordination",
+        "observed_state": "FinCEN convened global financial institutions and supplied information intended to disrupt Iranian revenue and procurement networks.",
+        "adjudication": "CONFIRMED_US_FINANCIAL_ENFORCEMENT_ACTION; FOLLOW_ON_INSTITUTION_ACTIONS_NOT_INFERRED",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-C87D899ECFD9"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-BITBANK-DESIGNATIONS-20260917",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-US-BITBANK-DESIGNATIONS-20260917",
+        "date": "2026-09-17",
+        "metric": "OFAC BitBank sanctions action",
+        "observed_state": "OFAC designated BitBank, its developer and three Zanjani associates. Treasury attributed sanctions-evasion, IRGC-routing and Hormuz-payment functions to the network.",
+        "adjudication": "DESIGNATIONS_CONFIRMED; TRANSACTION_LEVEL_ALLEGATIONS_REMAIN_US_GOVERNMENT_ATTRIBUTION",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-B3E878837E66",
+          "SRC-74D672026ACE"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-US-HR5334-SIGNED-20260918",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-US-HR5334-SIGNED-20260918",
+        "date": "2026-09-18",
+        "metric": "Sanctions legislation status",
+        "observed_state": "President Trump signed H.R. 5334, the Lindsey O. Graham Sanctioning Russia and Iran Act of 2026.",
+        "adjudication": "SIGNED_LAW; SUPERSEDES_PASSED_CONGRESS_AWAITING_PRESIDENT_STATUS",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-35CDDF77A76C",
+          "SRC-5735473347DE"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-ITALY-REDSEA-NAVAL-INTENT-20260918",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-ITALY-REDSEA-NAVAL-INTENT-20260918",
+        "date": "2026-09-18",
+        "status": "INDEPENDENT_NAVAL_MISSION_PREPARATION_STATED; ADDITIONAL_DEPLOYMENT_NOT_ESTABLISHED",
+        "observed_state": "Italy's defense minister called for more ships to protect Red Sea navigation and said Italy was preparing an independent naval mission.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-85F2B7AB1092"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-UN-IRAN-SANCTIONS-MONITORING-END-20260917",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-UN-IRAN-SANCTIONS-MONITORING-END-20260917",
+        "date": "2026-09-17",
+        "status": "INDEPENDENT_MONITORING_MANDATE_ENDED; UNDERLYING_SANCTIONS_NOT_REMOVED",
+        "observed_state": "Russia and China vetoed extension of the independent UN monitoring mandate for Iran sanctions.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-B75FAAE67C1D"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-TURKEY-SAUDI-PACT-READINESS-20260919",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-TURKEY-SAUDI-PACT-READINESS-20260919",
+        "date": "2026-09-19",
+        "status": "TURKISH_READINESS_STATED; NO_SAUDI_REQUEST_DEPLOYMENT_OR_TRANSFER_CONFIRMED",
+        "observed_state": "Turkey's foreign minister said Turkey was ready to meet Saudi military and technical needs under the Mecca Joint Defence Agreement.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-4E807D4B6999"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-PAKISTAN-IRAN-MARITIME-SAFETY-20260919",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-PAKISTAN-IRAN-MARITIME-SAFETY-20260919",
+        "date": "2026-09-19",
+        "status": "DIPLOMATIC_ENGAGEMENT; NO_NEW_NAVIGATION_AGREEMENT_ESTABLISHED",
+        "observed_state": "Pakistan said its foreign minister discussed uninterrupted energy supplies and safe commercial passage with Iran's foreign minister.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-23B3DC98BAF0"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IRAN-US-SETTLEMENT-CONDITIONS-20260920",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-IRAN-US-SETTLEMENT-CONDITIONS-20260920",
+        "date": "2026-09-20",
+        "status": "IRANIAN_STATED_POSITION; SIX_OF_SEVEN_PUBLICLY_ENUMERATED; ONE_UNDISCLOSED; NOT_AGREED_TERMS",
+        "observed_state": "Rezaei said Iran transmitted seven conditions through Qatar. By Sep. 20 six were public: end the war on all fronts, release frozen Iranian funds, end the naval blockade, end U.S. interference in Iranian internal affairs, end U.S. cooperation with opponents of the revolution, and end U.S. attacks on Iranian territory. One condition remained undisclosed.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-255ED903C016",
+          "SRC-E1EBBF388878"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IRAN-HORMUZ-SEQUENCING-20260920",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-IRAN-HORMUZ-SEQUENCING-20260920",
+        "date": "2026-09-20",
+        "status": "IRANIAN_OFFICIAL_POSITION; NOT_AGREED_BILATERAL_TERM",
+        "observed_state": "Ghalibaf publicly linked reopening Hormuz and returning to prior negotiations to prior fulfillment of Iran's conditions, recognition of Iranian rights and U.S. commitments.",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-E1EBBF388878"
+        ]
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-TANKER-INCIDENT-20260917",
+      "mode": "add",
+      "record": {
+        "shipping_id": "SHIP-HORMUZ-TANKER-INCIDENT-20260917",
+        "date": "2026-09-17",
+        "observed_state": "A tanker projectile or attack incident was reported in Hormuz. IRGC said a Togo-flagged tanker was hit, burned and stopped; claimant reporting later named Trend. Independent incident reporting does not establish all IRGC causal or U.S.-direction propositions.",
+        "adjudication": "INCIDENT_SUPPORTED; VESSEL_IDENTITY_PARTLY_CLAIMANT_SOURCED; WEAPON_CAUSE_AND_US_DIRECTION_UNRESOLVED",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "source_ids": [
+          "SRC-6FED1D32FAAE",
+          "SRC-D24B8F8BACB4"
+        ]
+      }
+    },
+    {
+      "entity_type": "gap",
+      "entity_id": "GAP-E2-RIYADH-AIRPORT-FIRE-ATTRIBUTION-20260919",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E2-RIYADH-AIRPORT-FIRE-ATTRIBUTION-20260919",
+        "known_at": "2026-09-20T15:48:00-04:00",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "status": "UNRESOLVED",
+        "topic": "Cause and weapon associated with the Sep. 19 King Khalid airport fuel-storage-area fire and any related Yanbu BDA.",
+        "evidence": "Fire in the airport fuel-storage area is supported. Saudi interception reporting and Houthi attack claims coexist, but the recovered record does not independently link a specific Houthi weapon to the observed fire or establish Yanbu damage.",
+        "source_ids": [
+          "SRC-84780EE8C4F8",
+          "SRC-455AE83B448A"
+        ]
+      }
+    },
+    {
+      "entity_type": "gap",
+      "entity_id": "GAP-E2-US-WAR-FATALITY-DENOMINATOR-20260919",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E2-US-WAR-FATALITY-DENOMINATOR-20260919",
+        "known_at": "2026-09-20T15:48:00-04:00",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "status": "UNRESOLVED_COMPETING_DENOMINATORS",
+        "topic": "Reconcile the Pentagon public total of 18 U.S. fatalities with the at-least-22 period count reported from five U.S. officials.",
+        "evidence": "The competing counts may use different combat-status or period definitions. Identified names, circumstances and counting rules are required before arithmetic reconciliation.",
+        "source_ids": [
+          "SRC-486FFC71B07D"
+        ]
+      }
+    },
+    {
+      "entity_type": "gap",
+      "entity_id": "GAP-E2-IRAN-SEVENTH-NEGOTIATION-CONDITION-20260920",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E2-IRAN-SEVENTH-NEGOTIATION-CONDITION-20260920",
+        "known_at": "2026-09-20T15:48:00-04:00",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "status": "UNRESOLVED",
+        "topic": "Identity and wording of the seventh Iranian negotiation condition.",
+        "evidence": "Iranian messaging asserted seven conditions; six were publicly enumerated by Sep. 20.",
+        "source_ids": [
+          "SRC-255ED903C016",
+          "SRC-E1EBBF388878"
+        ]
+      }
+    },
+    {
+      "entity_type": "gap",
+      "entity_id": "GAP-E2-IRAN-ESCALATION-FOREKNOWLEDGE-20260920",
+      "mode": "add",
+      "record": {
+        "gap_id": "GAP-E2-IRAN-ESCALATION-FOREKNOWLEDGE-20260920",
+        "known_at": "2026-09-20T15:48:00-04:00",
+        "knowledge_time": "2026-09-20T15:48:00-04:00",
+        "status": "UNRESOLVED",
+        "topic": "Independent substantiation of Iran's claim that it possessed information a major U.S. or allied attack was being prepared.",
+        "evidence": "Reuters reported the Iranian military statement but no independent evidence for the claimed foreknowledge. A U.S. precautionary security alert does not independently prove the Iranian intelligence claim.",
+        "source_ids": [
+          "SRC-D9F35BD2A46C"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}
