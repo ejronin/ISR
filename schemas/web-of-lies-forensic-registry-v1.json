@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ejronin.github.io/ISR/schemas/web-of-lies-forensic-registry-v1.json",
+  "title": "Web of Lies derived forensic registry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_role",
+    "authority",
+    "contract_path",
+    "generated_from",
+    "claim_families",
+    "source_profiles",
+    "information_events",
+    "relationships",
+    "promotion_flags",
+    "hall_of_shame"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "artifact_role": { "const": "WEB_OF_LIES_DERIVED_FORENSIC_REGISTRY" },
+    "authority": { "const": "WEB_OF_LIES_INFORMATION_FORENSICS" },
+    "contract_path": { "const": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md" },
+    "generated_at": { "type": ["string", "null"] },
+    "generated_from": {
+      "type": "object",
+      "required": ["canonical_state_identity", "lie_ledger_chain_count"],
+      "properties": {
+        "canonical_state_identity": { "type": "string", "minLength": 1 },
+        "lie_ledger_chain_count": { "type": "integer", "minimum": 0 },
+        "forensic_input_version": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "claim_families": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim_family" }
+    },
+    "source_profiles": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source_profile" }
+    },
+    "information_events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/information_event" }
+    },
+    "relationships": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/relationship" }
+    },
+    "promotion_flags": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/promotion_flag" }
+    },
+    "hall_of_shame": {
+      "type": "object",
+      "required": ["algorithm_version", "top_n_per_class", "manual_selection", "all_time", "current_period"],
+      "properties": {
+        "algorithm_version": { "type": "string", "minLength": 1 },
+        "top_n_per_class": { "const": 3 },
+        "manual_selection": { "const": false },
+        "current_period_days": { "type": "integer", "minimum": 1 },
+        "all_time": { "$ref": "#/$defs/ranking_view" },
+        "current_period": { "$ref": "#/$defs/ranking_view" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "string_array": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "claim_family": {
+      "type": "object",
+      "required": ["claim_family_id", "canonical_chain_id", "title", "source_ids", "trace_status"],
+      "properties": {
+        "claim_family_id": { "type": "string", "minLength": 1 },
+        "canonical_chain_id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "canonical_adjudication": { "type": ["string", "null"] },
+        "source_ids": { "$ref": "#/$defs/string_array" },
+        "trace_status": { "enum": ["UNTRACED", "PARTIAL", "TRACED"] },
+        "information_event_ids": { "$ref": "#/$defs/string_array" },
+        "relationship_ids": { "$ref": "#/$defs/string_array" }
+      },
+      "additionalProperties": true
+    },
+    "source_profile": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "display_name",
+        "behavior_classes",
+        "authenticity_class",
+        "revenue_model",
+        "classification_basis_event_ids",
+        "revenue_basis_event_ids",
+        "metrics"
+      ],
+      "properties": {
+        "source_id": { "type": "string", "minLength": 1 },
+        "display_name": { "type": "string", "minLength": 1 },
+        "country_region": { "type": ["string", "null"] },
+        "primary_platform": { "type": ["string", "null"] },
+        "behavior_classes": { "$ref": "#/$defs/string_array" },
+        "authenticity_class": { "type": "string", "minLength": 1 },
+        "revenue_model": { "$ref": "#/$defs/string_array" },
+        "classification_basis_event_ids": { "$ref": "#/$defs/string_array" },
+        "revenue_basis_event_ids": { "$ref": "#/$defs/string_array" },
+        "metrics": {
+          "type": "object",
+          "required": [
+            "claim_families_traced",
+            "false_misleading_findings_connected",
+            "narrative_mutations_introduced",
+            "citation_laundering_events",
+            "recycled_media_incidents",
+            "corrections_issued",
+            "continued_after_correction_incidents",
+            "failed_claims_deleted_or_abandoned",
+            "stealth_edits",
+            "victim_exploitation_incidents",
+            "unique_propagation_events",
+            "prediction_failures",
+            "prediction_corrections"
+          ],
+          "properties": {
+            "claim_families_traced": { "type": "integer", "minimum": 0 },
+            "false_misleading_findings_connected": { "type": "integer", "minimum": 0 },
+            "narrative_mutations_introduced": { "type": "integer", "minimum": 0 },
+            "citation_laundering_events": { "type": "integer", "minimum": 0 },
+            "recycled_media_incidents": { "type": "integer", "minimum": 0 },
+            "corrections_issued": { "type": "integer", "minimum": 0 },
+            "continued_after_correction_incidents": { "type": "integer", "minimum": 0 },
+            "failed_claims_deleted_or_abandoned": { "type": "integer", "minimum": 0 },
+            "stealth_edits": { "type": "integer", "minimum": 0 },
+            "victim_exploitation_incidents": { "type": "integer", "minimum": 0 },
+            "unique_propagation_events": { "type": "integer", "minimum": 0 },
+            "observed_downstream_propagation": { "type": ["integer", "null"], "minimum": 0 },
+            "prediction_failures": { "type": "integer", "minimum": 0 },
+            "prediction_corrections": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "information_event": {
+      "type": "object",
+      "required": [
+        "event_id",
+        "claim_family_id",
+        "source_id",
+        "event_type",
+        "published_at",
+        "first_observed_at",
+        "epistemic_posture",
+        "canonical_claim_refs",
+        "evidence_source_ids"
+      ],
+      "properties": {
+        "event_id": { "type": "string", "minLength": 1 },
+        "claim_family_id": { "type": "string", "minLength": 1 },
+        "source_id": { "type": "string", "minLength": 1 },
+        "event_type": { "type": "string", "minLength": 1 },
+        "published_at": { "type": ["string", "null"] },
+        "first_observed_at": { "type": ["string", "null"] },
+        "epistemic_posture": { "type": "string", "minLength": 1 },
+        "exact_statement": { "type": ["string", "null"] },
+        "translated_statement": { "type": ["string", "null"] },
+        "canonical_claim_refs": { "$ref": "#/$defs/string_array" },
+        "evidence_source_ids": { "$ref": "#/$defs/string_array" },
+        "correction_state": { "type": ["string", "null"] },
+        "behavior_findings": { "$ref": "#/$defs/string_array" },
+        "revenue_findings": { "$ref": "#/$defs/string_array" },
+        "independently_sourced": { "type": ["boolean", "null"] },
+        "downstream_propagation_observed": { "type": ["integer", "null"], "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["relationship_id", "from_id", "to_id", "relationship_type", "evidence_source_ids"],
+      "properties": {
+        "relationship_id": { "type": "string", "minLength": 1 },
+        "from_id": { "type": "string", "minLength": 1 },
+        "to_id": { "type": "string", "minLength": 1 },
+        "relationship_type": { "type": "string", "minLength": 1 },
+        "evidence_source_ids": { "$ref": "#/$defs/string_array" }
+      },
+      "additionalProperties": true
+    },
+    "promotion_flag": {
+      "type": "object",
+      "required": ["flag_id", "flag_type", "subject_id", "reason"],
+      "properties": {
+        "flag_id": { "type": "string", "minLength": 1 },
+        "flag_type": {
+          "enum": [
+            "FORENSIC_DISCOVERY",
+            "EVIDENCE_PROMOTION_CANDIDATE",
+            "ADJUDICATION_REVIEW_CANDIDATE"
+          ]
+        },
+        "subject_id": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "evidence_source_ids": { "$ref": "#/$defs/string_array" }
+      },
+      "additionalProperties": true
+    },
+    "ranking_entry": {
+      "type": "object",
+      "required": ["rank", "source_id", "source_class", "score", "ranking_basis", "why_this_source_appears_here"],
+      "properties": {
+        "rank": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "source_id": { "type": "string", "minLength": 1 },
+        "source_class": { "type": "string", "minLength": 1 },
+        "score": { "type": "number" },
+        "ranking_basis": { "type": "object" },
+        "why_this_source_appears_here": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "ranking_view": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "maxItems": 3,
+        "items": { "$ref": "#/$defs/ranking_entry" }
+      }
+    }
+  }
+}

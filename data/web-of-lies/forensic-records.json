@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_FORENSIC_INPUT",
+  "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
+  "version": "WOL-FORENSIC-INPUT-20260920-v1",
+  "contract_path": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+  "evidence_cutoff": null,
+  "source_profiles": [],
+  "information_events": [],
+  "relationships": [],
+  "promotion_flags": []
+}

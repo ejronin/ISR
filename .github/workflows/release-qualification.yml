@@ -122,6 +122,8 @@ jobs:
           python scripts/validate_lie_ledger_v2.py
           python scripts/validate_claims_forensics_authority.py
           python tests/claims-forensics-authority-contract.test.py
+          python scripts/validate_web_of_lies.py
+          python tests/web-of-lies-foundation.test.py
           python scripts/validate_public_current_state_v2.py
           python scripts/build_public_release.py
           python scripts/build_public_release.py --check

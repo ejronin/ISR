@@ -33,6 +33,9 @@ assert build[0][1:] == (
     "data/canonical-current-state-v2.json",
 )
 assert (
+    "scripts/build_web_of_lies.py",
+) in [item[1:] for item in build]
+assert (
     "scripts/build_public_current_state_v2_hardened.py",
     "--output",
     "data/public-current-state.json",
@@ -40,6 +43,7 @@ assert (
 
 for validator in (
     "scripts/validate_gate3_final.py",
+    "scripts/validate_web_of_lies.py",
     "scripts/validate_public_current_state_v2.py",
 ):
     assert any(item[1] == validator for item in build), f"build contract omitted {validator}"
@@ -84,6 +88,8 @@ assert "BUILD_COMMANDS" in source and "CHECK_COMMANDS" in source
 assert "HISTORICAL_AUDIT_COMMANDS" in source and "--historical-audit" in source
 assert "TemporaryDirectory" not in source
 assert "current-v2 only" in source.lower()
+assert source.index('scripts/build_canonical_current_state_v2_final.py') < source.index('scripts/build_web_of_lies.py')
+assert source.index('scripts/build_web_of_lies.py') < source.index('scripts/build_public_current_state_v2_hardened.py')
 
 # Production public-foundation migration must be parity-qualified independently.
 subprocess.run(

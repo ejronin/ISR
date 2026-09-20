@@ -7,6 +7,10 @@ validated on every current release. Current production still preserves the
 sealed migration boundary and append-only accepted packets through the v2
 compiler and Gate 3 validators.
 
+Web of Lies is a derived read-only forensic consumer of the final canonical
+Lie Ledger. It is built and validated after canonical state and before public
+projection; it does not mutate canonical evidence or adjudication.
+
 No accepted evidence is owned or rewritten by this orchestration layer.
 """
 from __future__ import annotations
@@ -29,8 +33,12 @@ def command(script: str, *args: str) -> tuple[str, ...]:
 BUILD_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/build_canonical_current_state_v2_final.py", "--output", CANONICAL_V2),
     command("scripts/validate_gate3_final.py"),
+    command("scripts/build_web_of_lies.py"),
+    command("scripts/validate_web_of_lies.py"),
     command("scripts/build_public_current_state_v2_hardened.py", "--output", PUBLIC_CURRENT),
     command("scripts/build_canonical_current_state_v2_final.py", "--check", "--output", CANONICAL_V2),
+    command("scripts/build_web_of_lies.py", "--check"),
+    command("scripts/validate_web_of_lies.py"),
     command("scripts/build_public_current_state_v2_hardened.py", "--check", "--output", PUBLIC_CURRENT),
     command("scripts/validate_public_current_state_v2.py"),
 )
@@ -38,6 +46,8 @@ BUILD_COMMANDS: tuple[tuple[str, ...], ...] = (
 CHECK_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/build_canonical_current_state_v2_final.py", "--check", "--output", CANONICAL_V2),
     command("scripts/validate_gate3_final.py"),
+    command("scripts/build_web_of_lies.py", "--check"),
+    command("scripts/validate_web_of_lies.py"),
     command("scripts/build_public_current_state_v2_hardened.py", "--check", "--output", PUBLIC_CURRENT),
     command("scripts/validate_public_current_state_v2.py"),
 )
