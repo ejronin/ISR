@@ -13,6 +13,7 @@ import build_web_of_lies_baseline_packets as legacy  # noqa: E402
 import build_web_of_lies_current_anchor_packets as anchors  # noqa: E402
 import build_web_of_lies_discovery_queue as discovery_builder  # noqa: E402
 import build_web_of_lies_forensic_input as aggregate  # noqa: E402
+import build_web_of_lies_sep20_reconciliation_packets as sep20  # noqa: E402
 
 
 def load(path: str):
@@ -116,15 +117,12 @@ assert not blocked_instance_ids.intersection(anchor_refs), (
 )
 
 # The Sep. 20 Evidence Integration handoff keeps only genuinely unassigned
-# sequences in discovery. F-15SA is continuity to an existing current claim.
+# sequences in discovery. PR #161's Claims Forensics maintenance placements
+# deterministically resolve Trend, Riyadh/Yanbu and seven-condition chronology.
 discovery = discovery_builder.build_queue(ROOT)
 tracked_discovery = load(discovery_builder.OUTPUT)
 assert discovery == tracked_discovery
-assert {row["discovery_id"] for row in discovery["items"]} == {
-    "WOL-IN-ROOK-TREND-20260920",
-    "WOL-IN-ROOK-IRAN-CONDITIONS-20260920",
-    "WOL-IN-ROOK-RIYADH-20260920",
-}
+assert discovery["items"] == []
 assert discovery["resolved_existing_claim_sequences"] == [{
     "sequence_id": "WOL-IN-ROOK-F15SA-20260920",
     "status": "EXISTING_CANONICAL_CLAIM_CONTINUITY",
@@ -132,9 +130,35 @@ assert discovery["resolved_existing_claim_sequences"] == [{
     "chain_id": "CH-RSAF-F15SA-MARIB-20260916",
     "routing_path": "data/evidence-integration/rook-catchup-claims-routing-20260920.json",
 }]
-assert "WOL-IN-ROOK-MQ9-52-53-20260920" not in {
-    row["discovery_id"] for row in discovery["items"]
+resolved = {
+    row["sequence_id"]: row
+    for row in discovery["resolved_canonical_claim_sequences"]
 }
+assert {
+    key: (row["status"], row["claim_family_ref"], row["claims_forensics_disposition"])
+    for key, row in resolved.items()
+} == {
+    "WOL-IN-ROOK-TREND-20260920": (
+        "CANONICAL_CLAIM_FAMILY_ASSIGNED",
+        "CH-HORMUZ-TREND-TANKER-20260917",
+        "NEW_ACCUSATION_CHAIN_PUBLIC_READY",
+    ),
+    "WOL-IN-ROOK-RIYADH-20260920": (
+        "CANONICAL_CLAIM_FAMILY_ASSIGNED",
+        "CH-HOUTHI-RIYADH-YANBU-20260919",
+        "NEW_ACCUSATION_CHAIN_PUBLIC_READY",
+    ),
+    "WOL-IN-ROOK-IRAN-CONDITIONS-20260920": (
+        "EXISTING_CANONICAL_CLAIM_CHRONOLOGY_ADVANCE",
+        "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+        "EXISTING_CONTROL_CHAIN_CHRONOLOGY_ADVANCE",
+    ),
+}
+maintenance = discovery_builder._maintenance_routes(load(discovery_builder.CLAIMS_MAINTENANCE))
+assert discovery_builder.canonical_resolution(
+    "WOL-IN-UNASSIGNED-CANARY", maintenance, active_chain_ids
+) is None, "genuinely unassigned discovery must remain fail-closed"
+assert "WOL-IN-ROOK-MQ9-52-53-20260920" not in resolved
 
 # Aggregated packet family IDs must be a subset of and collectively cover the
 # active current Lie Ledger universe. Multiple packets per family are expected:
@@ -150,12 +174,21 @@ manual_packet_paths = {
     (Path(aggregate.PACKET_DIR) / f"{legacy.slug(chain_id)}.json").as_posix()
     for chain_id in legacy.MANUAL_CHAIN_IDS
 }
+sep20_expected = sep20.expected_packets(ROOT)
+for path, packet in sep20_expected.items():
+    assert path.is_file(), f"missing Sep. 20 lineage packet {path.relative_to(ROOT)}"
+    assert json.loads(path.read_text(encoding="utf-8")) == packet
+assert len(sep20_expected) == 3
+assert len({packet["claim_family_id"] for packet in sep20_expected.values()}) == 3
 expected_packet_paths = {
     path.relative_to(ROOT).as_posix()
     for path in legacy_expected
 } | {
     path.relative_to(ROOT).as_posix()
     for path in anchor_expected
+} | {
+    path.relative_to(ROOT).as_posix()
+    for path in sep20_expected
 } | manual_packet_paths
 forensic_packet_paths = {row["path"] for row in forensic["lineage_packets"]}
 assert forensic_packet_paths == expected_packet_paths, (
@@ -165,6 +198,52 @@ assert forensic_packet_paths == expected_packet_paths, (
     f"extra={sorted(forensic_packet_paths - expected_packet_paths)}"
 )
 assert len(forensic["lineage_packets"]) == len(expected_packet_paths)
+
+# Sep. 20 rich continuity is lineage-only and cannot inflate Hall metrics.
+sep20_event_ids = {
+    event["event_id"]
+    for packet in sep20_expected.values()
+    for event in packet["information_events"]
+}
+sep20_relationship_ids = {
+    relation["relationship_id"]
+    for packet in sep20_expected.values()
+    for relation in packet["relationships"]
+}
+assert sep20_event_ids
+for event in forensic["information_events"]:
+    if event["event_id"] in sep20_event_ids:
+        assert event["event_type"] == "REPORTS"
+        assert event["behavior_findings"] == []
+        assert event.get("correction_state") is None
+        assert event["event_type"] not in wol.ADVERSE_FAMILY_EVENT_TYPES
+
+sep20_relationships = {
+    row["relationship_id"]: row
+    for row in forensic["relationships"]
+    if row["relationship_id"] in sep20_relationship_ids
+}
+assert any(row["relationship_type"] == "DETAIL_EXPANDS" for row in sep20_relationships.values())
+condition_events = [
+    event for event in forensic["information_events"]
+    if event["event_id"] in sep20_event_ids
+    and event["claim_family_id"] == "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912"
+]
+assert condition_events and all(event["correction_state"] is None for event in condition_events)
+
+trend_independent = next(
+    event for event in forensic["information_events"]
+    if event["event_id"] == "WOL-EVT-SEP20-TREND-UKMTO-INDEPENDENT"
+)
+assert "CI-CLM-IRGC-TREND-TANKER-20260917-P01" in trend_independent["canonical_claim_refs"]
+assert "CI-CLM-TREND-US-DIRECTION-20260918-P01" not in trend_independent["canonical_claim_refs"]
+
+riyadh_location = next(
+    event for event in forensic["information_events"]
+    if event["event_id"] == "WOL-EVT-SEP20-RIYADH-REUTERS-LOCATION"
+)
+assert "CI-CLM-HOUTHI-RIYADH-YANBU-20260919-P02" in riyadh_location["canonical_claim_refs"]
+assert "CI-CLM-HOUTHI-RIYADH-YANBU-20260919-P03" not in riyadh_location["canonical_claim_refs"]
 
 # Current no-lie/unresolved Qeshm branches remain neutral in the rich lineage.
 qeshm_refs = {
@@ -246,6 +325,18 @@ assert not neutral_classes.intersection(hall), (
 for event in registry["information_events"]:
     if event["event_type"] == "CANONICAL_CLAIM_ANCHOR":
         assert event["behavior_findings"] == []
+
+# Removing all Sep. 20 lineage-only REPORTS events leaves every source's
+# Hall metric vector unchanged.
+all_events = registry["information_events"]
+without_sep20 = [event for event in all_events if event["event_id"] not in sep20_event_ids]
+affected_sources = {
+    event["source_id"] for event in all_events if event["event_id"] in sep20_event_ids
+}
+for source_id in affected_sources:
+    before = wol.metrics_for_events([event for event in without_sep20 if event["source_id"] == source_id])
+    after = wol.metrics_for_events([event for event in all_events if event["source_id"] == source_id])
+    assert before == after, f"Sep. 20 resolution changed Hall metrics for {source_id}: {before} != {after}"
 
 profiles = {row["source_id"]: row for row in registry["source_profiles"]}
 irgc = profiles.get("WOL-SRC-IRGC")
