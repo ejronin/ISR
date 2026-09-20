@@ -67,6 +67,7 @@ forensic["source_profiles"] = [
         "authenticity_class": "HUMAN_ACCOUNT",
         "revenue_model": ["PLATFORM_MONETIZED"],
         "classification_basis_event_ids": ["WOL-E1", "WOL-E2", "WOL-E3"],
+        "revenue_basis_event_ids": ["WOL-E1"],
         "follower_count": 999999999,
     },
     {
@@ -78,6 +79,7 @@ forensic["source_profiles"] = [
         "authenticity_class": "HUMAN_ACCOUNT",
         "revenue_model": ["PLATFORM_MONETIZED"],
         "classification_basis_event_ids": ["WOL-E4", "WOL-E5", "WOL-E6"],
+        "revenue_basis_event_ids": ["WOL-E4"],
         "follower_count": 1,
     },
 ]
@@ -92,6 +94,8 @@ forensic["information_events"] = [
         "epistemic_posture": "DEFINITIVE",
         "canonical_claim_refs": [],
         "evidence_source_ids": ["SRC-EVIDENCE-1"],
+        "behavior_findings": ["ACTIVIST_GRIFT", "NARRATIVE_MUTATION_OFFENDER"],
+        "revenue_findings": ["PLATFORM_MONETIZED"],
         "downstream_propagation_observed": 1000000,
     },
     {
@@ -126,6 +130,8 @@ forensic["information_events"] = [
         "epistemic_posture": "DEFINITIVE",
         "canonical_claim_refs": [],
         "evidence_source_ids": ["SRC-EVIDENCE-4"],
+        "behavior_findings": ["ACTIVIST_GRIFT"],
+        "revenue_findings": ["PLATFORM_MONETIZED"],
         "downstream_propagation_observed": 1,
     },
     {
@@ -178,6 +184,24 @@ except ValueError as exc:
     assert "another source's events" in str(exc)
 else:
     raise AssertionError("cross-source classification basis was accepted")
+
+unsupported_class = copy.deepcopy(forensic)
+unsupported_class["information_events"][0]["behavior_findings"] = ["NARRATIVE_MUTATION_OFFENDER"]
+try:
+    wol.build_registry(canonical, unsupported_class, governance)
+except ValueError as exc:
+    assert "class ACTIVIST_GRIFT is not supported" in str(exc)
+else:
+    raise AssertionError("source behavior class without incident support was accepted")
+
+unsupported_revenue = copy.deepcopy(forensic)
+unsupported_revenue["information_events"][0]["revenue_findings"] = []
+try:
+    wol.build_registry(canonical, unsupported_revenue, governance)
+except ValueError as exc:
+    assert "revenue class PLATFORM_MONETIZED is not supported" in str(exc)
+else:
+    raise AssertionError("source revenue class without incident support was accepted")
 
 recent = ranked["hall_of_shame"]["current_period"]["ACTIVIST_GRIFT"]
 assert len(recent) == 2
