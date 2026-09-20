@@ -1,0 +1,70 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260920-F15E-ISFAHAN-EVIDENCE",
+  "known_at": "2026-09-20T12:28:00-04:00",
+  "evidence_cutoff": "2026-09-20T12:28:00-04:00",
+  "summary": "Evidence Integration provenance completion for CH-F15E-CSAR-URANIUM. Adds three previously unregistered Press TV sources supplying Iranian nuclear-material context, pre-event uranium-seizure operational-requirement context, and April 2 nuclear-policy wording. This packet supplies evidence/provenance only and changes no Lie Ledger truth, knowledge, intent, deception, propaganda, narrative-substitution, or operational-plausibility semantics.",
+  "sources": [
+    {
+      "source_id": "SRC-08A3A77BCD81",
+      "url": "https://www.presstv.ir/Detail/2026/02/09/763781/Uranium-dilution-under-any-Iran-US-deal-depends-on-total-lifting-of-sanctions-AEOI-chief-says",
+      "source_role": "OFFICIAL_STATEMENT_RELAY|NUCLEAR_MATERIAL_CONTEXT",
+      "outlet": "Press TV",
+      "title": "Uranium dilution under any Iran-US deal depends on total lifting of sanctions: AEOI chief",
+      "published_date": "2026-02-09",
+      "publication_time": "16:02 (source display; timezone not specified)",
+      "originating_source": "Atomic Energy Organization of Iran head Mohammad Eslami",
+      "relevant_excerpt": "Such a matter has fundamentally not been on the agenda.",
+      "provenance_note": "Press TV relay of Eslami remarks; the same article describes an approximately 400 kg pre-strike stock of 60%-enriched uranium. Registered as evidence context only.",
+      "relevant_chain_ids": [
+        "CH-F15E-CSAR-URANIUM"
+      ],
+      "relevant_proposition_ids": [
+        "CI-IR-CLM-0011-P01",
+        "CI-IR-CLM-0011-P02"
+      ]
+    },
+    {
+      "source_id": "SRC-D493B3396238",
+      "url": "https://www.presstv.ir/Detail/2026/03/22/765701/explainer-why-boots-iranian-soil-become-strategic-catastrophe-us",
+      "source_role": "TECHNICAL_ANALYSIS|PHYSICAL_REQUIREMENTS",
+      "outlet": "Press TV",
+      "title": "Explainer: Why boots on Iranian soil would become strategic catastrophe for US",
+      "published_date": "2026-03-22",
+      "publication_time": "17:30 (source display; timezone not specified)",
+      "author": "Yousef Ramazani",
+      "relevant_excerpt": "Approximately 1,000 pounds of 60 percent highly enriched uranium would need to be packaged, moved, and transported to a secure location.",
+      "provenance_note": "Pre-event Press TV analysis describing manpower, ISR, air-cover, logistics and specialized-handling requirements for a hypothetical uranium-seizure operation. Registered as technical/source context only.",
+      "relevant_chain_ids": [
+        "CH-F15E-CSAR-URANIUM"
+      ],
+      "relevant_proposition_ids": [
+        "CI-IR-CLM-0011-P01",
+        "CI-IR-CLM-0011-P02"
+      ]
+    },
+    {
+      "source_id": "SRC-DBB8501159D4",
+      "url": "https://www.presstv.ir/Detail/2026/04/02/766202/fact-check-trump-speech-war-against-iran-claims-that-dont-hold-up",
+      "source_role": "NUCLEAR_POLICY_CONTEXT|STATE_MEDIA_ASSERTION",
+      "outlet": "Press TV",
+      "title": "Fact check: Trump's speech on war against Iran and familiar claims that don't hold up",
+      "published_date": "2026-04-02",
+      "publication_time": "06:58 (source display; updated 2026-04-03 08:29; timezone not specified)",
+      "author": "Press TV Website Staff",
+      "relevant_excerpt": "Iran was forced to ramp up its uranium enrichment, but it remains nowhere close to weapons-grade.",
+      "provenance_note": "Pre-event state-media wording about enrichment level and peaceful-program framing. Registered as evidence context only.",
+      "relevant_chain_ids": [
+        "CH-F15E-CSAR-URANIUM"
+      ],
+      "relevant_proposition_ids": [
+        "CI-IR-CLM-0011-P01",
+        "CI-IR-CLM-0011-P02"
+      ]
+    }
+  ],
+  "events": [],
+  "entities": [],
+  "narrative_claims": []
+}
