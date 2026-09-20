@@ -6,26 +6,6 @@
   "as_of": "2026-09-20T15:48:00-04:00",
   "items": [
     {
-      "discovery_id": "WOL-IN-ROOK-F15SA-20260920",
-      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
-      "claim_family_ref": null,
-      "observations": [
-        {
-          "date": "2026-09-16",
-          "source": "Houthi statement carried by AP",
-          "statement_identity": "Claimed Saudi F-15 shootdown"
-        },
-        {
-          "date": "2026-09-17",
-          "source": "Janes",
-          "statement_identity": "Wreckage identified as RSAF F-15SA; mechanism and crew status not established"
-        }
-      ],
-      "downstream_note": "Preserve claim propagation separately from later physical-airframe evidence.",
-      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
-    },
-    {
       "discovery_id": "WOL-IN-ROOK-IRAN-CONDITIONS-20260920",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
       "claim_family_ref": null,
@@ -94,6 +74,15 @@
       "downstream_note": "Do not collapse independent incident existence into corroboration of every claimant proposition.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
+    }
+  ],
+  "resolved_existing_claim_sequences": [
+    {
+      "sequence_id": "WOL-IN-ROOK-F15SA-20260920",
+      "status": "EXISTING_CANONICAL_CLAIM_CONTINUITY",
+      "claim_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+      "chain_id": "CH-RSAF-F15SA-MARIB-20260916",
+      "routing_path": "data/evidence-integration/rook-catchup-claims-routing-20260920.json"
     }
   ]
 }
