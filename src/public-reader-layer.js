@@ -138,6 +138,7 @@
     let result = text(value);
     result = result.replace(/\bROOK(?:'s)?\b/gi, 'the review');
     result = result.replace(/\bPR\/CI\b/gi, 'evidence review');
+    result = result.replace(/\bPARTLY_TRUE\b/g, 'partly true');
     result = result.replace(/\s{2,}/g, ' ').trim();
     return result;
   }
