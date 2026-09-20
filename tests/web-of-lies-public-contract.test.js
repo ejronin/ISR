@@ -37,6 +37,10 @@ assert(derived.hall_of_shame.ranking_contract, 'public ranking contract is missi
 assert(Object.keys(derived.hall_of_shame.ranking_contract.score_weights || {}).length > 0, 'ranking weights are missing');
 assert(Object.keys(derived.hall_of_shame.ranking_contract.event_metric_map || {}).length > 0, 'event-to-metric map is missing');
 assert(Array.isArray(derived.hall_of_shame.ranking_contract.qualification_metric_keys) && derived.hall_of_shame.ranking_contract.qualification_metric_keys.length > 0, 'qualification metrics are missing');
+const hallClasses = new Set(derived.hall_of_shame.ranking_contract.hall_of_shame_classes || []);
+assert(!hallClasses.has('OFFICIAL_SOURCE'), 'neutral official-source typing leaked into Hall ranking classes');
+assert(!hallClasses.has('JOURNALISTIC_SOURCE'), 'neutral journalistic-source typing leaked into Hall ranking classes');
+assert.match(iaSource, /Plain-English verdict/);
 
 const ledger = model.datasets['gate3.lie_ledger'].payload;
 const ledgerChains = Array.isArray(ledger.records) ? ledger.records.filter(row => row.public_include_in_accusation_count !== false) : [];
