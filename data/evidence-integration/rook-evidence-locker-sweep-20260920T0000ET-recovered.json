@@ -135,9 +135,8 @@
       "relationship": "THIRD_PARTY_SUPPORT_INTENT",
       "summary": "South Korea said it was willing to make a substantive contribution to restoring free Hormuz passage. No naval deployment or operational form was established.",
       "status": "SUPPORT_INTENT_RECORDED_OPERATIONAL_FORM_UNESTABLISHED",
-      "sources": [
-        "https://www.reuters.com/world/asia-pacific/"
-      ]
+      "sources": [],
+      "source_preservation_note": "The stale 16:40 ET delta preserved only the citation label 'Reuters Sep 18/19 Seoul Hormuz report' and no URL. Migration does not invent a replacement URL."
     },
     {
       "update_id": "UPD-LEBANON-ISRAEL-STRIKES-20260919",
