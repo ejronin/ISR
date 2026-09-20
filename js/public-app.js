@@ -279,7 +279,7 @@
   function validateRouteDependencies(model, contracts) {
     const activeContracts = contracts || ROUTE_DATA_DEPENDENCIES;
     const entries = Object.entries(activeContracts);
-    invariant(entries.length === 25, 'MODEL_INVALID', `Expected 25 public route dependency contracts; found ${entries.length}.`);
+    invariant(entries.length === 26, 'MODEL_INVALID', `Expected 26 public route dependency contracts; found ${entries.length}.`);
     for (const [routeKey, contract] of entries) {
       invariant(contract && typeof contract.modelPage === 'string', 'MODEL_INVALID', `Route ${routeKey} has no page-data owner.`);
       invariant(Array.isArray(contract.datasets), 'MODEL_INVALID', `Route ${routeKey} has no dataset contract.`);
