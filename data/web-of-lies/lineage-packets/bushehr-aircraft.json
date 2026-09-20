@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-BUSHEHR-AIRCRAFT-BASELINE-20260920",
+  "claim_family_id": "CH-BUSHEHR-AIRCRAFT",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRANIAN-STATE-TV-JAM",
+      "display_name": "Iranian state TV / Jam local official",
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-9E2E8200E299"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-BUSHEHR_AIRCRAFT-0801-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "source_entity_type": "OUTLET",
+      "country_region": "United Kingdom",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-234330834C41",
+      "canonical_actor_id": "ACT-REUTERS",
+      "canonical_source_ids": [
+        "SRC-9E2E8200E299"
+      ],
+      "behavior_classes": [
+        "JOURNALISTIC_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-BUSHEHR_AIRCRAFT-0801-C"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-BUSHEHR_AIRCRAFT-0801-C",
+      "claim_family_id": "CH-BUSHEHR-AIRCRAFT",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-05-28",
+      "first_observed_at": "2026-05-28",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Reuters carried the attributed claim: Iranian reporting said a U.S. aircraft had been destroyed near Bushehr/Jam.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian state TV / Jam local official as preserved by Reuters",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0801"
+      ],
+      "evidence_source_ids": [
+        "SRC-9E2E8200E299"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-4B96F4B7634C"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "JOURNALISTIC_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Web of Lies records who originated and carried it."
+    },
+    {
+      "event_id": "WOL-EVT-BUSHEHR_AIRCRAFT-0801-O",
+      "claim_family_id": "CH-BUSHEHR-AIRCRAFT",
+      "source_id": "WOL-SRC-IRANIAN-STATE-TV-JAM",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-05-28",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iranian reporting said a U.S. aircraft had been destroyed near Bushehr/Jam.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian state TV / Jam local official as preserved by Reuters",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0801"
+      ],
+      "evidence_source_ids": [
+        "SRC-9E2E8200E299"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-4B96F4B7634C"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Web of Lies records who originated and carried it."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-BUSHEHR_AIRCRAFT-001",
+      "from_id": "WOL-EVT-BUSHEHR_AIRCRAFT-0801-C",
+      "to_id": "WOL-EVT-BUSHEHR_AIRCRAFT-0801-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-9E2E8200E299"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-BUSHEHR_AIRCRAFT-002",
+      "from_id": "WOL-EVT-BUSHEHR_AIRCRAFT-0801-C",
+      "to_id": "WOL-SRC-IRANIAN-STATE-TV-JAM",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-9E2E8200E299"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
