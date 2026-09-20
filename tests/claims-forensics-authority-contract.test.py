@@ -219,14 +219,13 @@ def main() -> None:
             graph["generation_rule"] = "HAND_AUTHORED_FRONTEND_LOGIC"
     expect_rejected("frontend independently rewrites logic graph", baseline, hand_author_logic)
 
-    # 14. Publication-blocked knowledge stays withheld while factual falsity is
-    # still visible.
-    def leak_blocked_knowledge(c, p, g):
-        row = chain_record(public_chain(p, authority.F15_CHAIN_ID), "CI-IR-CLM-0011-P01")
-        row["knowledge_judgment"] = "LIKELY_KNEW_FALSE"
-        row["combined_assessment"] = "LIKELY LIE"
-        row["canonical_assessment_withheld"] = False
-    expect_rejected("blocked F-15E knowledge leaks publicly", baseline, leak_blocked_knowledge)
+    # 14. Public Product cannot collapse author-level uncertainty into the
+    # publisher-level institutional knowledge finding or vice versa.
+    def rewrite_publisher_knowledge(c, p, g):
+        row = chain_record(public_chain(p, authority.F15_CHAIN_ID), "CI-IR-CLM-0011-P03")
+        row["public_knowledge_judgment"] = "INSUFFICIENT_EVIDENCE"
+        row["public_combined_assessment"] = "FALSE — KNOWLEDGE NOT ESTABLISHED"
+    expect_rejected("publisher institutional knowledge is weakened downstream", baseline, rewrite_publisher_knowledge)
 
     # 15. Public Product cannot change the canonical chain-level Lie label.
     def rewrite_parent_label(c, p, g):
