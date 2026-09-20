@@ -650,42 +650,46 @@
         gaps.forEach(value => append(list, 'li', '', value));
       }
 
-      append(card, 'h4', 'reader-chain-claims-heading', 'What was claimed and how the story changed');
-      const timeline = append(card, 'ol', 'reader-chain-timeline');
-      groupEntries.forEach(([, groupRecords]) => {
-        const main = groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0];
-        if (!main) return;
+      const claimsDetail = append(card, 'details', 'reader-chain-claims-detail');
+      append(claimsDetail, 'summary', '', `What was claimed and how the story changed (${groupEntries.length})`);
+      append(claimsDetail, 'p', 'reader-deferred-claims-note', 'Open to load the chronological claim branches, corrections, repetitions, and evidence links.');
 
-        const adjudication = publicAdjudication(main);
-        const item = append(timeline, 'li', `reader-chain-branch finding-${adjudication.key}`);
-        const branchHead = append(item, 'div', 'reader-ledger-card-head');
-        const branchCopy = append(branchHead, 'div');
-        append(branchCopy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
-        append(branchCopy, 'h4', '', recordProposition(main));
-        const intentNote = intentReviewNote(main);
-        if (intentNote) append(branchCopy, 'p', 'reader-intent-note', intentNote);
-        append(branchHead, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
-
-        const why = append(item, 'details', 'reader-how-we-know reader-branch-how-we-know');
-        append(why, 'summary', '', `Why this branch is ${adjudication.label.toLowerCase()}`);
-        const explanation = append(why, 'ul', 'reader-explanation-list');
-        howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
-        addDeferredEvidence(why, context, [main], 'Evidence for this branch');
-
-        const repeats = groupRecords.filter(record =>
-          record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type))
-        );
-        if (repeats.length) {
-          const details = append(item, 'details', 'reader-repeated-by');
-          append(details, 'summary', '', `Repeated or amplified by (${repeats.length})`);
-          const list = append(details, 'ul', 'reader-claim-list');
-          repeats.forEach(record => {
-            const row = append(list, 'li');
-            append(row, 'span', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · '));
-            append(row, 'small', '', ` — ${publicAdjudication(record).label}`);
-          });
-          addDeferredEvidence(details, context, repeats, 'Sources for repeats');
-        }
+      let claimsHydrated = false;
+      claimsDetail.addEventListener('toggle', () => {
+        if (!claimsDetail.open || claimsHydrated) return;
+        claimsHydrated = true;
+        claimsDetail.querySelector('.reader-deferred-claims-note')?.remove();
+        const timeline = append(claimsDetail, 'ol', 'reader-chain-timeline');
+        groupEntries.forEach(([, groupRecords]) => {
+          const main = groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0];
+          if (!main) return;
+          const adjudication = publicAdjudication(main);
+          const item = append(timeline, 'li', `reader-chain-branch finding-${adjudication.key}`);
+          const branchHead = append(item, 'div', 'reader-ledger-card-head');
+          const branchCopy = append(branchHead, 'div');
+          append(branchCopy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
+          append(branchCopy, 'h4', '', recordProposition(main));
+          const intentNote = intentReviewNote(main);
+          if (intentNote) append(branchCopy, 'p', 'reader-intent-note', intentNote);
+          append(branchHead, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
+          const why = append(item, 'details', 'reader-how-we-know reader-branch-how-we-know');
+          append(why, 'summary', '', `Why this branch is ${adjudication.label.toLowerCase()}`);
+          const explanation = append(why, 'ul', 'reader-explanation-list');
+          howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
+          addDeferredEvidence(why, context, [main], 'Evidence for this branch');
+          const repeats = groupRecords.filter(record => record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type)));
+          if (repeats.length) {
+            const details = append(item, 'details', 'reader-repeated-by');
+            append(details, 'summary', '', `Repeated or amplified by (${repeats.length})`);
+            const list = append(details, 'ul', 'reader-claim-list');
+            repeats.forEach(record => {
+              const row = append(list, 'li');
+              append(row, 'span', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · '));
+              append(row, 'small', '', ` — ${publicAdjudication(record).label}`);
+            });
+            addDeferredEvidence(details, context, repeats, 'Sources for repeats');
+          }
+        });
       });
 
       cards.push(card);
