@@ -1,0 +1,322 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-F35-MAR19-BASELINE-20260920",
+  "claim_family_id": "CH-F35-MAR19",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-7B62913B395D",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-1447993730D6",
+        "SRC-3BE40AD42842",
+        "SRC-A139BB200FD8"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-F35_MAR19-0301-C",
+        "WOL-EVT-F35_MAR19-0302-O",
+        "WOL-EVT-F35_MAR19-0303-C"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-QALIBAF",
+      "display_name": "Mohammad Baqer Qalibaf",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-PER-MOHAMMAD-BAQER-QALIBAF",
+      "canonical_source_ids": [
+        "SRC-3BE40AD42842"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-F35_MAR19-0301-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-UNNAMED-IR-CLM-0303",
+      "display_name": "Unnamed Iranian military officer",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-A139BB200FD8"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-F35_MAR19-0303-O"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-F35_MAR19-0301-C",
+      "claim_family_id": "CH-F35-MAR19",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-03-20",
+      "first_observed_at": "2026-03-20T10:13",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Iran presented an F-35 combat hit as a shootdown/destruction and strategic demonstration.",
+      "translated_statement": null,
+      "originating_claimant": "Mohammad Bagher Qalibaf / IRGC claims as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0301"
+      ],
+      "evidence_source_ids": [
+        "SRC-3BE40AD42842"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-4A25C20F8AFD"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: FALSE — POSSIBLE KNOWLEDGE."
+    },
+    {
+      "event_id": "WOL-EVT-F35_MAR19-0301-O",
+      "claim_family_id": "CH-F35-MAR19",
+      "source_id": "WOL-SRC-QALIBAF",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-03-20T10:13",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran presented an F-35 combat hit as a shootdown/destruction and strategic demonstration.",
+      "translated_statement": null,
+      "originating_claimant": "Mohammad Bagher Qalibaf / IRGC claims as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0301"
+      ],
+      "evidence_source_ids": [
+        "SRC-3BE40AD42842"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-4A25C20F8AFD"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: FALSE — POSSIBLE KNOWLEDGE."
+    },
+    {
+      "event_id": "WOL-EVT-F35_MAR19-0302-O",
+      "claim_family_id": "CH-F35-MAR19",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-03-21T08:22",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "Press TV described the March 19 engagement as Iran having “downed” the F-35 and as shattering the aircraft’s claimed invincibility.",
+      "translated_statement": null,
+      "originating_claimant": "Press TV",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0302"
+      ],
+      "evidence_source_ids": [
+        "SRC-1447993730D6"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-4A25C20F8AFD"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: VERY LIKELY LIE."
+    },
+    {
+      "event_id": "WOL-EVT-F35_MAR19-0303-C",
+      "claim_family_id": "CH-F35-MAR19",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-04-19",
+      "first_observed_at": "2026-04-19T11:10",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Press TV described the officer as the “hunter” who downed the F-35; the officer said, “We completely destroyed a Lockheed Martin technology.”",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military officer as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0303"
+      ],
+      "evidence_source_ids": [
+        "SRC-A139BB200FD8"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-4A25C20F8AFD"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: VERY LIKELY LIE."
+    },
+    {
+      "event_id": "WOL-EVT-F35_MAR19-0303-O",
+      "claim_family_id": "CH-F35-MAR19",
+      "source_id": "WOL-SRC-UNNAMED-IR-CLM-0303",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-04-19T11:10",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV described the officer as the “hunter” who downed the F-35; the officer said, “We completely destroyed a Lockheed Martin technology.”",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military officer as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0303"
+      ],
+      "evidence_source_ids": [
+        "SRC-A139BB200FD8"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-4A25C20F8AFD"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: VERY LIKELY LIE."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-F35_MAR19-001",
+      "from_id": "WOL-EVT-F35_MAR19-0301-C",
+      "to_id": "WOL-EVT-F35_MAR19-0301-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-3BE40AD42842"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-F35_MAR19-002",
+      "from_id": "WOL-EVT-F35_MAR19-0301-C",
+      "to_id": "WOL-SRC-QALIBAF",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-3BE40AD42842"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-F35_MAR19-003",
+      "from_id": "WOL-EVT-F35_MAR19-0302-O",
+      "to_id": "WOL-EVT-F35_MAR19-0301-O",
+      "relationship_type": "REPEATS",
+      "evidence_source_ids": [
+        "SRC-1447993730D6"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-F35_MAR19-004",
+      "from_id": "WOL-EVT-F35_MAR19-0303-C",
+      "to_id": "WOL-EVT-F35_MAR19-0303-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-A139BB200FD8"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-F35_MAR19-005",
+      "from_id": "WOL-EVT-F35_MAR19-0303-C",
+      "to_id": "WOL-SRC-UNNAMED-IR-CLM-0303",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-A139BB200FD8"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-F35_MAR19-006",
+      "from_id": "WOL-EVT-F35_MAR19-0303-O",
+      "to_id": "WOL-EVT-F35_MAR19-0302-O",
+      "relationship_type": "REPEATS",
+      "evidence_source_ids": [
+        "SRC-A139BB200FD8"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
