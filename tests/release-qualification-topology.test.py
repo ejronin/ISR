@@ -52,6 +52,7 @@ for token in (
     "python scripts/validate_lie_ledger_v2.py",
     "python scripts/validate_web_of_lies.py",
     "python tests/web-of-lies-foundation.test.py",
+    "node tests/web-of-lies-public-contract.test.js",
     "python scripts/build_public_release.py",
     "python scripts/assemble_public_site.py --output _site",
     "node tests/public-reader-layer.test.js",
