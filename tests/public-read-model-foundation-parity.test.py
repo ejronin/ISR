@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_canonical_current_state as canonical_v1
 import build_public_current_state_v2 as public_v2
+import build_web_of_lies as web_of_lies
 import public_read_model_current_foundation as current
 import public_read_model_foundation as compatibility
 
@@ -119,6 +120,9 @@ def assert_facility_parity(new: dict[str, Any], old: dict[str, Any], canonical: 
 canonical_path = ROOT / current.CANONICAL_STATE_PATH
 assert canonical_path.is_file(), "build canonical-current-state-v2 before foundation parity"
 canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
+web_of_lies_forensic_input = json.loads((ROOT / web_of_lies.FORENSIC_INPUT).read_text(encoding="utf-8"))
+web_of_lies_governance = json.loads((ROOT / web_of_lies.GOVERNANCE).read_text(encoding="utf-8"))
+expected_web_of_lies = web_of_lies.build_registry(canonical, web_of_lies_forensic_input, web_of_lies_governance)
 legacy = canonical_v1_compatibility_foundation()
 direct = current.build_current_foundation(ROOT)
 
@@ -132,6 +136,7 @@ current_keys = {
     "current.claims",
     "current.material_losses",
     "current.relationships",
+    "analysis.web_of_lies",
 }
 for key, old_dataset in legacy["datasets"].items():
     if key in current_keys:
@@ -142,7 +147,13 @@ for key, old_dataset in legacy["datasets"].items():
     else:
         assert_same(direct["datasets"][key]["payload"], old_dataset["payload"], f"dataset payload {key}")
 
-assert_same(direct["page_data"], legacy["page_data"], "page-data ownership")
+direct_page_data_without_web_of_lies = copy.deepcopy(direct["page_data"])
+direct_page_data_without_web_of_lies["claims_sources"]["dataset_keys"] = [
+    key for key in direct_page_data_without_web_of_lies["claims_sources"]["dataset_keys"]
+    if key != "analysis.web_of_lies"
+]
+assert_same(direct_page_data_without_web_of_lies, legacy["page_data"], "page-data ownership outside current-only Web of Lies")
+assert "analysis.web_of_lies" in direct["page_data"]["claims_sources"]["dataset_keys"], "current claims page lost Web of Lies dataset ownership"
 assert_same(direct["consumer_coverage"], legacy["consumer_coverage"], "consumer coverage")
 assert_same(
     direct["datasets"]["current.actors"]["payload"],
@@ -176,6 +187,11 @@ assert_same(
     copy.deepcopy(canonical["entities"].get("relationships", [])),
     "current relationships",
 )
+assert_same(
+    direct["datasets"]["analysis.web_of_lies"]["payload"],
+    expected_web_of_lies,
+    "current-only Web of Lies forensic derivation",
+)
 assert_same(direct["chronology"], canonical["chronology"], "canonical chronology")
 assert_same(direct["sources"], canonical["sources"], "canonical sources")
 assert_same(direct["entities"], canonical["entities"], "canonical entities")
@@ -194,6 +210,7 @@ expected_payloads.update({
     "current.claims": {"schema_version": "2.0", "claims": records("claims")},
     "current.material_losses": {"schema_version": "2.0", "records": records("material_losses")},
     "current.relationships": copy.deepcopy(canonical["entities"].get("relationships", [])),
+    "analysis.web_of_lies": copy.deepcopy(expected_web_of_lies),
     "gate3.casualties": public_v2.entity_payload(canonical, "casualties"),
     "gate3.agreements": public_v2.entity_payload(canonical, "agreements"),
     "gate3.diplomacy": public_v2.entity_payload(canonical, "diplomacy"),
