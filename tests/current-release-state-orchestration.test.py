@@ -33,6 +33,9 @@ assert build[0][1:] == (
     "data/canonical-current-state-v2.json",
 )
 assert (
+    "scripts/build_web_of_lies_baseline_packets.py",
+) in [item[1:] for item in build]
+assert (
     "scripts/build_web_of_lies_forensic_input.py",
 ) in [item[1:] for item in build]
 assert (
@@ -82,6 +85,9 @@ assert all(
 assert all(
     "--check" in item or item[1].startswith("scripts/validate_") for item in check
 ), "check mode contains a write-capable builder"
+assert any(item[1:] == ("scripts/build_web_of_lies_baseline_packets.py", "--check") for item in check), (
+    "check contract omitted deterministic Web of Lies baseline packet generation"
+)
 assert any(item[1:] == ("scripts/build_web_of_lies_forensic_input.py", "--check") for item in check), (
     "check contract omitted deterministic Web of Lies lineage aggregation"
 )
@@ -94,7 +100,8 @@ assert "BUILD_COMMANDS" in source and "CHECK_COMMANDS" in source
 assert "HISTORICAL_AUDIT_COMMANDS" in source and "--historical-audit" in source
 assert "TemporaryDirectory" not in source
 assert "current-v2 only" in source.lower()
-assert source.index('scripts/build_canonical_current_state_v2_final.py') < source.index('scripts/build_web_of_lies_forensic_input.py')
+assert source.index('scripts/build_canonical_current_state_v2_final.py') < source.index('scripts/build_web_of_lies_baseline_packets.py')
+assert source.index('scripts/build_web_of_lies_baseline_packets.py') < source.index('scripts/build_web_of_lies_forensic_input.py')
 assert source.index('scripts/build_web_of_lies_forensic_input.py') < source.index('scripts/build_web_of_lies.py')
 assert source.index('scripts/build_web_of_lies.py') < source.index('scripts/build_public_current_state_v2_hardened.py')
 
