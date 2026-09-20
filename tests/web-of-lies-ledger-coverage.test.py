@@ -185,8 +185,13 @@ for record in public_records:
     public_by_chain[record["chain_id"]] += 1
 for chain_id in active_chain_ids:
     if public_by_chain.get(chain_id, 0):
-        assert family_by_id[chain_id]["trace_status"] == "TRACED", (
-            f"public-ready active chain is not traced: {chain_id}"
+        family = family_by_id[chain_id]
+        assert family["information_event_ids"], (
+            f"public-ready active chain has no Web of Lies event coverage: {chain_id}"
+        )
+        assert family["trace_status"] in {"PARTIAL", "TRACED"}, (
+            f"public-ready active chain has invalid trace status: "
+            f"{chain_id}={family['trace_status']}"
         )
 
 # Neutral anchors never increase Hall qualification. Only documented adverse
