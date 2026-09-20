@@ -1,0 +1,367 @@
+{
+  "artifact_role": "CLAIMS_FORENSICS_FULL_LEDGER_SWEEP",
+  "schema_version": "1.0",
+  "sweep_version": "ATLAS-CLAIMS-FORENSICS-SWEEP-20260919-3",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+  "evidence_cutoff": "2026-09-18T10:27:26-04:00",
+  "scope": {
+    "legacy_active_chain_count": 36,
+    "legacy_active_proposition_rows": 89,
+    "includes_post_sep9_intake_review": true,
+    "note": "This sweep records the disposition of every active Sep. 9 chain before post-cutoff claims are appended. It does not imply every chain required a verdict change."
+  },
+  "chains": [
+    {
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "disposition": "CORRECTED",
+      "actions": [
+        "restore missing-airman factual baseline",
+        "resolve capture proposition false on terminal record",
+        "fix capture-denial polarity",
+        "separate real rescue losses from causal attribution",
+        "separate uranium presence from mission theory",
+        "correction/substitution relationships",
+        "parent plain-English Lie finding"
+      ]
+    },
+    {
+      "chain_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "disposition": "CORRECTED_DENOMINATOR",
+      "actions": [
+        "keep real losses as context",
+        "count false Iranian causation as accusation propositions",
+        "preserve same-day fog-of-war as knowledge alternative"
+      ]
+    },
+    {
+      "chain_id": "CH-TURKEY-MISSILE-DENIAL",
+      "disposition": "CORRECTED",
+      "actions": [
+        "keep false launch denials",
+        "keep false-flag causal theory unsubstantiated",
+        "restore supported narrative-substitution chronology"
+      ]
+    },
+    {
+      "chain_id": "CH-F35-MAR19",
+      "disposition": "REVIEWED_NO_VERDICT_CHANGE",
+      "actions": [
+        "preserve real combat damage",
+        "preserve separate false destruction/downing escalation",
+        "single chain presentation"
+      ]
+    },
+    {
+      "chain_id": "CH-PROJECT-FREEDOM-BOATS",
+      "disposition": "REVIEWED_UNRESOLVED",
+      "actions": [
+        "exact six-boat count remains unresolved pending hull-level reconciliation",
+        "no automatic Lie finding"
+      ]
+    },
+    {
+      "chain_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "disposition": "CORRECTED_MEDIA_BRANCH_ADDED",
+      "actions": [
+        "official strike/BDA claim remains unsubstantiated",
+        "RIMPAC 2022 recycled footage added as separate FALSE MEDIA ARTIFACT",
+        "official origin not established; no verdict propagation to official strike claim"
+      ]
+    },
+    {
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "disposition": "CORRECTED",
+      "actions": [
+        "restore Apr. 28 count vs metric-integrity branches",
+        "remove duplicate proposition identity",
+        "separate 210 underlying assertion from publication act",
+        "ingest Sep. 16/17 MQ-9 individual and ordinal branches"
+      ]
+    },
+    {
+      "chain_id": "CH-QATAR-PILOTS",
+      "disposition": "CORRECTED",
+      "actions": [
+        "restore aircraft/aircrew loss baseline",
+        "separate false secret-custody claim",
+        "model access-obstruction as downstream substitution",
+        "preserve stronger knowledge finding only on obstruction branch"
+      ]
+    },
+    {
+      "chain_id": "CH-BUSHEHR-AIRCRAFT",
+      "disposition": "CORRECTED_DENOMINATOR",
+      "actions": [
+        "false aircraft-destruction proposition moved from non-accusation context to accusation denominator",
+        "knowledge remains unassessed"
+      ]
+    },
+    {
+      "chain_id": "CH-ALUDEID-BDA",
+      "disposition": "CORRECTED_CHAIN_MERGE_AND_FALSE_MEDIA_BRANCH",
+      "actions": [
+        "preserve real strike/damage and effect ladder",
+        "fold CHAIN-CL-ALUDEID shorthand into this event",
+        "add canonical AFP/Arab News AI-radar media artifact as a separate false-evidence branch",
+        "do not attribute the fake image to IRGC/government absent provenance",
+        "do not let false media erase real Al Udeid damage"
+      ]
+    },
+    {
+      "chain_id": "CH-FALSE-FLAG-REGIONAL",
+      "disposition": "RETIRED_AS_EVENT_CHAIN",
+      "actions": [
+        "split Aramco, Erbil/Kuwait, and Shahed-clone incidents",
+        "retain NF-FALSE-FLAG-REGIONAL narrative family"
+      ]
+    },
+    {
+      "chain_id": "CH-DENA-ADMISSION",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "admission-latency comparison only"
+      ]
+    },
+    {
+      "chain_id": "CH-TANGSIRI-ADMISSION",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "announcement/confirmation-latency comparison only"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-LINCOLN",
+      "disposition": "CORRECTED_MEDIA_BRANCH_ADDED",
+      "actions": [
+        "preserve strike/sinking and Mar. 13 non-operational/forced-retreat propositions separately",
+        "AFP false/AI Lincoln imagery added as MEDIA_ARTIFACT with official-origin boundary",
+        "later rotation narrative remains a separate later event/causal question rather than automatic continuation"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-KWI-PATRIOT",
+      "disposition": "SOURCE_COMPLETED_FALSE_ATTRIBUTION_NO_LIE_FINDING",
+      "actions": [
+        "separate physical airport damage from causal attribution",
+        "retain FALSE causal-attribution finding using canonical claim-origin and host-nation evidence",
+        "downgrade prior strong knowledge inference to POSSIBLE_KNOWLEDGE because impact-specific claimant access is not established",
+        "publish no Lie finding; innocent battlefield misidentification remains credible"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-200-US-DEAD",
+      "disposition": "SOURCE_COMPLETED_FALSE_COUNT_NO_LIE_FINDING",
+      "actions": [
+        "attach canonical IRNA claim origin",
+        "retain exact >200 casualty-count proposition as one unique proposition",
+        "use Reuters contemporaneous and AP later casualty accounting to adjudicate FALSE",
+        "do not backdate later AP evidence into statement-time knowledge",
+        "withhold Lie finding because the claimant's internal casualty-estimation basis is not canonical"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "disposition": "SOURCE_COMPLETED_ATOMIC_LINE_ITEM_DECOMPOSITION",
+      "actions": [
+        "replace the one-row PARTLY_TRUE blob with a non-denominator compound parent plus atomic line-item propositions",
+        "preserve IRNA count/effect wording, including destroyed-or-damaged language",
+        "independently test aircraft/helicopter, drone, F-15, P-8, C-17, tanker, heavy-helicopter, HIMARS, Patriot, command-center and MQ-9-hangar line items",
+        "retain exact line items as UNRESOLVED where the current canonical BDA does not reconcile count and destroy-versus-damage effect",
+        "do not convert absence of line-item corroboration into falsity",
+        "do not create a parent Lie finding"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-18TARGETS",
+      "disposition": "REVIEWED_UNRESOLVED_EXACT_COUNT",
+      "actions": [
+        "requires itemized target-success ledger"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-ERBIL-ALL",
+      "disposition": "SOURCE_COMPLETED_ATOMIC_SCALE_EFFECT_DECOMPOSITION_NO_LIE_FINDING",
+      "actions": [
+        "separate attack occurrence, physical-damage context, functional effect and near-total scale",
+        "preserve real attack/damage context",
+        "use later AP force-posture evidence to limit the broad operational-effect and near-total-destruction propositions",
+        "retain MISLEADING scale/effect findings rather than treating real damage as proof of near-total destruction",
+        "do not backdate later force-posture evidence into July 26 claimant knowledge",
+        "publish no Lie finding because contemporaneous claimant BDA/knowledge access remains incomplete"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-ALUDEID",
+      "disposition": "MERGED_INTO_CH-ALUDEID-BDA",
+      "actions": [
+        "not a separate physical event"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-HORMUZ-CONTROL",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "strategic multi-axis narrative case",
+        "not ordinary lie denominator"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-CL-PSAB-JUN8",
+      "disposition": "REVIEWED_FALSE_KNOWLEDGE_NOT_ASSESSABLE",
+      "actions": [
+        "preserve event-specific false report",
+        "do not contaminate real March PSAB damage"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-TRUMP-KHARG-AI-20260830",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "synthetic threat/projection",
+        "literal image false does not establish current Lie finding"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-US-NOT-WAR-SMALL-POTATOES-20260904",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "rhetorical/political characterization"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-PREEMPTIVE-DOCTRINE-20260904",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "prospective declaratory doctrine"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+      "disposition": "REVIEWED_FALSE",
+      "actions": [
+        "contradicted effect claim remains accusation proposition",
+        "knowledge possible only"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906",
+      "disposition": "REVIEWED_UNRESOLVED",
+      "actions": [
+        "occurrence/causation remains unresolved"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+      "disposition": "REVIEWED_UNRESOLVED_EXACT_COUNT",
+      "actions": [
+        "do not create six confirmed loss records"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+      "disposition": "REVIEWED_UNRESOLVED_EXACT_COUNT",
+      "actions": [
+        "requires impact ledger"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-PAKNEJAD-KHARG-CONTINUED-OPS-20260906",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "supported operating-capability context"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-QALIBAF-ESCALATION-DOCTRINE-20260906",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "declaratory doctrine / behavior test"
+      ]
+    },
+    {
+      "chain_id": "CH-TANF-JUL17",
+      "disposition": "REVIEWED_PRESERVE_ATOMIC_MODEL",
+      "actions": [
+        "current U.S. command-center",
+        "radar/helicopter destruction",
+        "mass U.S. casualties remain separate propositions"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+      "disposition": "REVIEWED_FALSE",
+      "actions": [
+        "contradicted physical/functional damage claim remains separate"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-DIVE-LD-CAPTURE-20260908",
+      "disposition": "CONTROL_EXCLUDED_FROM_ACCUSATION_COUNT",
+      "actions": [
+        "physical possession supported",
+        "cause of loss separate"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+      "disposition": "REVIEWED_UNRESOLVED_EXACT_COUNT",
+      "actions": [
+        "partial merchant corroboration does not establish exact ten"
+      ]
+    },
+    {
+      "chain_id": "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909",
+      "disposition": "REVIEWED_FALSE",
+      "actions": [
+        "contradicted U.S. military-vessel hit/damage claim remains accusation proposition"
+      ]
+    }
+  ],
+  "cross_cutting_findings": [
+    "One top-level public unit must equal one genuine event/evolving narrative chain; rhetorical similarity alone forms a narrative family, not an event chain.",
+    "Supported event facts inside deceptive chains must remain supported and must not inherit false/Lie labels.",
+    "Publication acts and asserted factual content are different propositions.",
+    "Exact counts require matching denominators; repetitions and evidentiary inferences must not inflate unique-proposition metrics.",
+    "Controls, rhetoric, declaratory policy, and supported context must not inflate accusation/Lie denominators.",
+    "The final sweep consumes the Sep. 19 canonical source-completion packet while preserving the sealed Sep. 9 adjudication artifact as historical input.",
+    "Source qualification clears provenance blockers only; it does not automatically satisfy the claimant-knowledge prong.",
+    "Later evidence may adjudicate earlier factual truth without being backdated into statement-time public or claimant knowledge."
+  ],
+  "remaining_integration_work": [
+    "Run exact-head cross-surface regression after the completed semantic overlay.",
+    "Preserve any knowledge finding that remains evidence-incomplete as public-safe no-Lie/withheld output rather than manufacturing source or claimant access."
+  ],
+  "post_cutoff_intake": {
+    "source_packets": [
+      "data/canonical-updates/UPD-20260913-ROOK-LOCKER.json",
+      "data/canonical-updates/UPD-20260914-ROOK-0000ET.json",
+      "data/canonical-updates/UPD-20260914-ROOK-1201ET.json",
+      "data/canonical-updates/UPD-20260915-ROOK-0001ET.json",
+      "data/canonical-updates/UPD-20260917-ISSUE132-EVIDENCE.json",
+      "data/canonical-updates/UPD-20260918-ISSUE140-READJUDICATION.json"
+    ],
+    "raw_claim_entities_reviewed": 19,
+    "accepted_overlay_corrections_reviewed": 7,
+    "routing": [
+      "Falsifiable event/attribution/BDA claims appended to current claim-domain state.",
+      "Repetitions share proposition identity and do not inflate unique-proposition counts.",
+      "Negotiation, legal-authority, private-diplomacy, rhetoric and declaratory-policy items are preserved as controls and excluded from ordinary accusation counts.",
+      "Sep. 18 re-adjudications update existing propositions rather than creating duplicate rows."
+    ]
+  },
+  "false_media_intake": {
+    "imported_from": "data/forensic-v1.3.2/media-forensics.json plus canonical source-completion packet",
+    "imported_media_ids": [
+      "MED-001",
+      "MED-002",
+      "MED-003",
+      "MED-004",
+      "MED-005",
+      "MED-006",
+      "MED-007"
+    ],
+    "rule": "FALSE media artifact findings remain separate from real physical-event findings and from official-origin/knowledge findings. No official attribution is manufactured where provenance is absent.",
+    "still_blocked": []
+  }
+}

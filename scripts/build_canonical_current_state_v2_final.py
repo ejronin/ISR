@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_canonical_current_state_v2_hardened as hardened
 import build_lie_ledger_evidence_adjudication as lie_ledger_pipeline
+import apply_claims_forensics_lie_ledger as claims_forensics
 
 OUT = "data/canonical-current-state-v2.json"
 CONFLICT_DAY_1 = date(2026, 2, 28)
@@ -124,6 +125,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
     # evidence, identity, temporal and denominator semantics and rejects any
     # persona-authority residue before returning generated canonical state.
     lie_ledger_pipeline.apply(state, root)
+    claims_forensics.apply(state, root)
     refresh_derived_counts(state)
 
     rows = war_daily_coverage(state)
@@ -157,6 +159,7 @@ def build_state(root: Path = ROOT) -> dict[str, Any]:
         "lie_ledger_historical_doctrine_version": historical.get("doctrine_version"),
         "lie_ledger_evidence_completion_version": state["release"].get("lie_ledger_evidence_completion_version"),
         "lie_ledger_current_claim_update_version": state["release"].get("lie_ledger_current_claim_update_version"),
+        "lie_ledger_claims_forensics_overlay_version": state["release"].get("lie_ledger_claims_forensics_overlay_version"),
         "lie_ledger_v2_records": state["counts"]["lie_ledger_v2_records"],
         "lie_ledger_v2_chains": state["counts"]["lie_ledger_v2_chains"],
         "lie_ledger_v2_claim_instances": state.get("lie_ledger_v2_metrics", {}).get("claim_instances"),
