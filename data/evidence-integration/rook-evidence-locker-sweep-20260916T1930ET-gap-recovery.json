@@ -1,0 +1,64 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-16T11:58:33-04:00",
+    "window_end": "2026-09-16T19:30:00-04:00",
+    "collection_time": "2026-09-17T07:30:00-04:00",
+    "evidence_horizon_time": "2026-09-17T07:30:00-04:00",
+    "timezone": "America/New_York",
+    "boundary_rule": "Recovered from stale catch-up artifacts. Operational scope is normalized only to remove stale overlap/gap defects; every original stale window is preserved verbatim in migration_provenance."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "source_branch_head": "a140d33114664c6b329adf696907870a0273eb93",
+    "stale_branch_policy": "EVIDENCE_INPUT_ONLY_NO_STALE_ARCHITECTURE_IMPORTED",
+    "source_artifacts": [
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260917T0730ET.json",
+        "commit": "e0cdf85a2852313bd7cc4bc78a7c7e7e240232d9",
+        "original_role": "ROOK_FULL_EVIDENCE_LOCKER_12H_SWEEP",
+        "original_window": {
+          "start": "2026-09-16T19:30:00-04:00",
+          "end": "2026-09-17T07:30:00-04:00"
+        },
+        "recovered_item_publication_time": "2026-09-16T13:42:23-04:00"
+      }
+    ],
+    "normalization_note": "Retrospective gap recovery. The stale scheduled packet began at 19:30 ET but carried a Reuters FinCEN item published at 13:42:23 ET, proving material public evidence existed inside the otherwise uncovered interval. The item is reassigned by publication time; the stale packet window itself is not rewritten."
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-FINCEN-OPERATION-ECONOMIC-OUTCAST-20260916",
+      "event_type": "SANCTIONS_FINANCIAL_ENFORCEMENT",
+      "occurrence_time": "2026-09-16",
+      "public_available_time": "2026-09-16T13:42:23-04:00",
+      "collection_time": "2026-09-17T07:30:00-04:00",
+      "summary": "FinCEN convened global financial institutions under Operation Economic Outcast and supplied information intended to disrupt Iranian revenue and procurement networks. This is an operational financial-enforcement step, not merely a sanctions-policy statement.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-treasury-gathers-global-financial-institutions-advance-iran-sanctions-2026-09-16/"
+      ]
+    }
+  ],
+  "existing_event_updates": [],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "unresolved_questions": [
+    "Whether participating financial institutions took specific follow-on actions attributable to the Sep.16 FinCEN meeting."
+  ],
+  "coverage": {
+    "material_results": [
+      "One material item reassigned into the historical gap by publication timestamp."
+    ],
+    "checked_no_material_new_event_in_window": [],
+    "limitations": [
+      "This is migration gap recovery from later stale collection, not a claim that the stale branch originally ran a modern sweep for this interval."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_MIGRATION_GAP_RECOVERY",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
