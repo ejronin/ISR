@@ -1,0 +1,253 @@
+{
+  "version": 1,
+  "effective_date": "2026-09-20",
+  "purpose": "Stable Web of Lies source identity resolution for generated baseline lineage packets. Exact claimant strings are deliberate; anonymous sources remain per-claim ephemeral nodes.",
+  "outlet_profiles": {
+    "OUTLET-7B62913B395D": {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_actor_id": null
+    },
+    "OUTLET-AA437F617622": {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_actor_id": null
+    },
+    "OUTLET-234330834C41": {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "source_entity_type": "OUTLET",
+      "country_region": "United Kingdom",
+      "primary_platform": "Web",
+      "canonical_actor_id": "ACT-REUTERS"
+    },
+    "OUTLET-A51B5D59B93F": {
+      "source_id": "WOL-SRC-IRAN-INTERNATIONAL",
+      "display_name": "Iran International",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_actor_id": null
+    }
+  },
+  "claimants": {
+    "Tasnim / Iranian military reporting": {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null
+    },
+    "Khatam al-Anbiya Central Headquarters as reported by Tasnim": {
+      "source_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "display_name": "Khatam al-Anbiya Central Headquarters",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Iranian Armed Forces as reported by Press TV": {
+      "source_id": "WOL-SRC-IRANIAN-ARMED-FORCES",
+      "display_name": "Iranian Armed Forces",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Abbas Araqchi, Iranian Foreign Minister": {
+      "source_id": "WOL-SRC-ARAGHCHI",
+      "display_name": "Abbas Araqchi",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Iranian Embassy / Iranian official messaging as reported by Press TV": {
+      "source_id": "WOL-SRC-IRANIAN-EMBASSY",
+      "display_name": "Iranian Embassy / official diplomatic messaging",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Abbas Araqchi as reported by Press TV": {
+      "source_id": "WOL-SRC-ARAGHCHI",
+      "display_name": "Abbas Araqchi",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Abbas Araqchi as reported by Tasnim": {
+      "source_id": "WOL-SRC-ARAGHCHI",
+      "display_name": "Abbas Araqchi",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Mohammad Bagher Qalibaf / IRGC claims as reported by Press TV": {
+      "source_id": "WOL-SRC-QALIBAF",
+      "display_name": "Mohammad Baqer Qalibaf",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-PER-MOHAMMAD-BAQER-QALIBAF"
+    },
+    "Press TV": {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-7B62913B395D",
+      "canonical_actor_id": null
+    },
+    "Iranian military officer as reported by Press TV": {
+      "source_id": "WOL-SRC-UNNAMED-IR-CLM-0303",
+      "display_name": "Unnamed Iranian military officer",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Iranian government/military response as preserved by Reuters": {
+      "source_id": "WOL-SRC-IRANIAN-GOV-MILITARY-RESPONSE",
+      "display_name": "Iranian government / military response",
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "IRGC as reported by Press TV": {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-IRGC"
+    },
+    "Iranian Army as reported by Press TV": {
+      "source_id": "WOL-SRC-IRANIAN-ARMY",
+      "display_name": "Iranian Army",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "IRGC/Iranian military as reported by Press TV": {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-IRGC"
+    },
+    "Iranian military as reported by Press TV": {
+      "source_id": "WOL-SRC-IRANIAN-MILITARY",
+      "display_name": "Iranian military",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Iranian Army spokesman as reported by Press TV": {
+      "source_id": "WOL-SRC-IRANIAN-ARMY",
+      "display_name": "Iranian Army",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Iranian official Bagherzadeh as reported by regional/international media": {
+      "source_id": "WOL-SRC-BAGHERZADEH",
+      "display_name": "Bagherzadeh",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Iranian authorities / Tasnim reporting": {
+      "source_id": "WOL-SRC-IRANIAN-AUTHORITIES",
+      "display_name": "Iranian authorities",
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Iranian state TV / Jam local official as preserved by Reuters": {
+      "source_id": "WOL-SRC-IRANIAN-STATE-TV-JAM",
+      "display_name": "Iranian state TV / Jam local official",
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Unnamed military source quoted by Tasnim": {
+      "anonymous_per_claim": true,
+      "display_name": "Unnamed military source quoted by Tasnim",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null
+    },
+    "Unnamed source quoted by Tasnim": {
+      "anonymous_per_claim": true,
+      "display_name": "Unnamed source quoted by Tasnim",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null
+    },
+    "Khatam al-Anbiya Central Headquarters as reported by Press TV": {
+      "source_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "display_name": "Khatam al-Anbiya Central Headquarters",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "Iranian authorities / memorialization context, corroborated by Reuters": {
+      "source_id": "WOL-SRC-IRANIAN-AUTHORITIES",
+      "display_name": "Iranian authorities",
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "IRGC / Iranian official statement as reported by Reuters": {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-IRGC"
+    }
+  }
+}
