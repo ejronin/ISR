@@ -9,7 +9,8 @@
     "authority",
     "source_handoff",
     "as_of",
-    "items"
+    "items",
+    "resolved_existing_claim_sequences"
   ],
   "properties": {
     "schema_version": {
@@ -75,6 +76,41 @@
           }
         },
         "additionalProperties": true
+      }
+    },
+    "resolved_existing_claim_sequences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sequence_id",
+          "status",
+          "claim_id",
+          "chain_id",
+          "routing_path"
+        ],
+        "properties": {
+          "sequence_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "const": "EXISTING_CANONICAL_CLAIM_CONTINUITY"
+          },
+          "claim_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "chain_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "routing_path": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
       }
     }
   },
