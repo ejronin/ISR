@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-TANGSIRI-ADMISSION-BASELINE-20260920",
+  "claim_family_id": "CH-TANGSIRI-ADMISSION",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-IRGC",
+      "canonical_source_ids": [
+        "SRC-B4933A0EA8F4"
+      ],
+      "behavior_classes": [
+        "OFFICIAL_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-TANGSIRI_ADMISSION-1201-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "source_entity_type": "OUTLET",
+      "country_region": "United Kingdom",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-234330834C41",
+      "canonical_actor_id": "ACT-REUTERS",
+      "canonical_source_ids": [
+        "SRC-B4933A0EA8F4"
+      ],
+      "behavior_classes": [
+        "JOURNALISTIC_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-TANGSIRI_ADMISSION-1201-C"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-TANGSIRI_ADMISSION-1201-C",
+      "claim_family_id": "CH-TANGSIRI-ADMISSION",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-30",
+      "first_observed_at": "2026-03-30",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Reuters carried the attributed claim: Iran confirmed IRGC Navy commander Alireza Tangsiri had died after severe injuries.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC / Iranian official statement as reported by Reuters",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-1201"
+      ],
+      "evidence_source_ids": [
+        "SRC-B4933A0EA8F4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [
+        "JOURNALISTIC_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is an acknowledgment/admission event. The current record does not establish a prior denial, so Web of Lies does not score the delay itself as misinformation."
+    },
+    {
+      "event_id": "WOL-EVT-TANGSIRI_ADMISSION-1201-O",
+      "claim_family_id": "CH-TANGSIRI-ADMISSION",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": null,
+      "first_observed_at": "2026-03-30",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran confirmed IRGC Navy commander Alireza Tangsiri had died after severe injuries.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC / Iranian official statement as reported by Reuters",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-1201"
+      ],
+      "evidence_source_ids": [
+        "SRC-B4933A0EA8F4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [
+        "OFFICIAL_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is an acknowledgment/admission event. The current record does not establish a prior denial, so Web of Lies does not score the delay itself as misinformation."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-TANGSIRI_ADMISSION-001",
+      "from_id": "WOL-EVT-TANGSIRI_ADMISSION-1201-C",
+      "to_id": "WOL-EVT-TANGSIRI_ADMISSION-1201-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-B4933A0EA8F4"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TANGSIRI_ADMISSION-002",
+      "from_id": "WOL-EVT-TANGSIRI_ADMISSION-1201-C",
+      "to_id": "WOL-SRC-IRGC",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-B4933A0EA8F4"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
