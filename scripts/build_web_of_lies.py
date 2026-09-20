@@ -201,6 +201,7 @@ def validate_forensic_input(
     allowed_authenticity = set(governance.get("authenticity_classes") or [])
     allowed_revenue = set(governance.get("revenue_classes") or [])
     allowed_correction = set(governance.get("correction_states") or [])
+    allowed_moral_findings = set(governance.get("moral_severity_findings") or [])
     allowed_flags = set((governance.get("authority") or {}).get("promotion_flags") or [])
 
     source_ids: set[str] = set()
@@ -213,6 +214,8 @@ def validate_forensic_input(
             raise ValueError(f"duplicate or missing source profile id: {source_id!r}")
         source_ids.add(source_id)
         classes = set(profile.get("behavior_classes") or [])
+        if not classes:
+            raise ValueError(f"source profile {source_id} must state at least one behavior class, including UNKNOWN when uncharacterized")
         unknown_classes = classes - allowed_classes
         if unknown_classes:
             raise ValueError(f"unknown source behavior classes for {source_id}: {sorted(unknown_classes)}")
@@ -220,16 +223,20 @@ def validate_forensic_input(
         if authenticity not in allowed_authenticity:
             raise ValueError(f"unknown authenticity class for {source_id}: {authenticity}")
         revenue = set(profile.get("revenue_model") or [])
+        if not revenue:
+            raise ValueError(f"source profile {source_id} must state a revenue model, including UNKNOWN_REVENUE_MODEL when unknown")
         if revenue - allowed_revenue:
             raise ValueError(f"unknown revenue class for {source_id}: {sorted(revenue - allowed_revenue)}")
 
     event_ids: set[str] = set()
+    events_by_id: dict[str, dict[str, Any]] = {}
     events_by_source: dict[str, set[str]] = defaultdict(set)
     for event in events:
         event_id = str(event.get("event_id") or "").strip()
         if not event_id or event_id in event_ids:
             raise ValueError(f"duplicate or missing information event id: {event_id!r}")
         event_ids.add(event_id)
+        events_by_id[event_id] = event
         source_id = str(event.get("source_id") or "").strip()
         if source_id not in source_ids:
             raise ValueError(f"information event {event_id} references unknown source profile {source_id}")
@@ -239,6 +246,14 @@ def validate_forensic_input(
         correction_state = event.get("correction_state")
         if correction_state and correction_state not in allowed_correction:
             raise ValueError(f"information event {event_id} has unknown correction state {correction_state}")
+        behavior_findings = set(event.get("behavior_findings") or [])
+        unsupported_behavior = behavior_findings - allowed_classes - allowed_moral_findings
+        if unsupported_behavior:
+            raise ValueError(f"information event {event_id} has unsupported behavior findings: {sorted(unsupported_behavior)}")
+        revenue_findings = set(event.get("revenue_findings") or [])
+        unsupported_revenue = revenue_findings - allowed_revenue
+        if unsupported_revenue:
+            raise ValueError(f"information event {event_id} has unsupported revenue findings: {sorted(unsupported_revenue)}")
         events_by_source[source_id].add(event_id)
 
     relationship_ids: set[str] = set()
@@ -271,8 +286,30 @@ def validate_forensic_input(
         foreign = basis - events_by_source[source_id]
         if foreign:
             raise ValueError(f"source profile {source_id} classification basis uses another source's events: {sorted(foreign)}")
-        if [c for c in profile.get("behavior_classes") or [] if c != "UNKNOWN"] and not basis:
+        substantive_classes = [value for value in profile.get("behavior_classes") or [] if value != "UNKNOWN"]
+        if substantive_classes and not basis:
             raise ValueError(f"source profile {source_id} has substantive behavior classes without classification-basis events")
+        for source_class in substantive_classes:
+            if not any(source_class in (events_by_id[event_id].get("behavior_findings") or []) for event_id in basis):
+                raise ValueError(
+                    f"source profile {source_id} class {source_class} is not supported by its classification-basis events"
+                )
+
+        revenue_basis = set(profile.get("revenue_basis_event_ids") or [])
+        missing_revenue = revenue_basis - event_ids
+        if missing_revenue:
+            raise ValueError(f"source profile {source_id} revenue basis references unknown events: {sorted(missing_revenue)}")
+        foreign_revenue = revenue_basis - events_by_source[source_id]
+        if foreign_revenue:
+            raise ValueError(f"source profile {source_id} revenue basis uses another source's events: {sorted(foreign_revenue)}")
+        substantive_revenue = [value for value in profile.get("revenue_model") or [] if value != "UNKNOWN_REVENUE_MODEL"]
+        if substantive_revenue and not revenue_basis:
+            raise ValueError(f"source profile {source_id} has observed revenue classes without revenue-basis events")
+        for revenue_class in substantive_revenue:
+            if not any(revenue_class in (events_by_id[event_id].get("revenue_findings") or []) for event_id in revenue_basis):
+                raise ValueError(
+                    f"source profile {source_id} revenue class {revenue_class} is not supported by its revenue-basis events"
+                )
 
 
 def empty_metrics() -> dict[str, int | None]:
@@ -401,6 +438,7 @@ def source_profiles_with_metrics(
         record["behavior_classes"] = unique_strings(record.get("behavior_classes"))
         record["revenue_model"] = unique_strings(record.get("revenue_model"))
         record["classification_basis_event_ids"] = unique_strings(record.get("classification_basis_event_ids"))
+        record["revenue_basis_event_ids"] = unique_strings(record.get("revenue_basis_event_ids"))
         record["metrics"] = metrics_for_events(by_source.get(str(record["source_id"]), []))
         output.append(record)
     return sorted(output, key=lambda item: item["source_id"])
