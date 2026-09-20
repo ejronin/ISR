@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Build the Web of Lies queue for evidence sequences without a canonical claim family.
+"""Build the Web of Lies discovery queue from current canonical claim placement.
 
 Evidence Integration may hand Web of Lies useful chronology before Claims
-Forensics has assigned a canonical Lie Ledger family. Those sequences must not
-be discarded, silently attached to a nearby family, or allowed into Hall
-metrics. This queue preserves them until the canonical claims lane resolves
-their family/adjudication placement.
+Forensics has assigned a canonical Lie Ledger family. Genuine unassigned
+sequences remain fail-closed. Once Claims Forensics supplies a current family
+placement, this compiler consumes that placement read-only and moves the
+sequence out of the unresolved queue without changing upstream adjudication.
 """
 from __future__ import annotations
 
@@ -22,15 +22,39 @@ HANDOFF = "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.jso
 SCHEMA = "schemas/web-of-lies-discovery-queue-v1.json"
 OUTPUT = "data/web-of-lies/discovery-queue.json"
 ROUTING = "data/evidence-integration/rook-catchup-claims-routing-20260920.json"
+CLAIMS_MAINTENANCE = "data/claims-forensics/lie-ledger-maintenance-sweep-20260920.json"
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_web_of_lies_current_anchor_packets as current_anchors  # noqa: E402
 
-RESOLVED_EXISTING_CLAIM_SEQUENCES = {
+# Discovery IDs are Evidence Integration provenance IDs. The intake references
+# are the stable bridge into the Claims Forensics maintenance sweep; chain IDs
+# are deliberately not hard-coded here.
+SEQUENCE_INTAKE_REFS = {
     "WOL-IN-ROOK-F15SA-20260920": {
-        "claim_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
-        "chain_id": "CH-RSAF-F15SA-MARIB-20260916",
+        "CLM-HOUTHI-F15-SHOOTDOWN-20260916",
+        "CLM-HOUTHI-F15-SHOOTDOWN-CONTINUITY-20260917",
+    },
+    "WOL-IN-ROOK-TREND-20260920": {
+        "CLM-IRGC-TANKER-HORMUZ-20260917",
+        "CLM-TREND-TANKER-US-DIRECTION-20260918",
+    },
+    "WOL-IN-ROOK-IRAN-CONDITIONS-20260920": {
+        "CLM-IRAN-SEVEN-SETTLEMENT-CONDITIONS-20260919",
+        "CLM-IRAN-SEVEN-CONDITIONS-SIX-PUBLIC-20260920",
+    },
+    "WOL-IN-ROOK-RIYADH-20260920": {
+        "UPD-RIYADH-FUEL-DEPOT-FIRE-20260919",
     },
 }
+
+RESOLVED_STATUS_BY_DISPOSITION = {
+    "NEW_ACCUSATION_CHAIN_PUBLIC_READY": "CANONICAL_CLAIM_FAMILY_ASSIGNED",
+    "EXISTING_CONTROL_CHAIN_CHRONOLOGY_ADVANCE": "EXISTING_CANONICAL_CLAIM_CHRONOLOGY_ADVANCE",
+}
+
+# F-15SA predates the Claims Forensics maintenance output shape used by the
+# three Sep. 20 family assignments. Preserve its established continuity row.
+F15_CANONICAL_CLAIM_ID = "CLM-HOUTHI-F15SA-CAUSATION-20260916"
 
 
 def load(root: Path, path: str) -> Any:
@@ -60,18 +84,78 @@ def _routing_rows(value: Any) -> list[dict[str, Any]]:
     return rows
 
 
+def _maintenance_routes(value: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = value.get("route_dispositions") or []
+    if not isinstance(rows, list):
+        raise ValueError("Claims Forensics maintenance route_dispositions must be a list")
+    return [row for row in rows if isinstance(row, dict)]
+
+
+def _matching_route(
+    sequence_id: str,
+    maintenance_routes: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    intake_refs = SEQUENCE_INTAKE_REFS.get(sequence_id)
+    if not intake_refs:
+        return None
+    matches = [
+        row
+        for row in maintenance_routes
+        if set(str(value) for value in (row.get("intake_refs") or [])) == intake_refs
+    ]
+    if len(matches) > 1:
+        raise ValueError(
+            f"ADJUDICATION_REVIEW_CANDIDATE {sequence_id}: multiple current Claims "
+            "Forensics routes match the same intake references"
+        )
+    return matches[0] if matches else None
+
+
+def canonical_resolution(
+    sequence_id: str,
+    maintenance_routes: list[dict[str, Any]],
+    active_chain_ids: set[str],
+) -> dict[str, Any] | None:
+    route = _matching_route(sequence_id, maintenance_routes)
+    if route is None:
+        return None
+
+    chain_id = str(route.get("chain_id") or "").strip()
+    if not chain_id:
+        return None
+    if chain_id not in active_chain_ids:
+        raise ValueError(
+            f"ADJUDICATION_REVIEW_CANDIDATE {sequence_id}: Claims Forensics route "
+            f"points to non-current chain {chain_id}"
+        )
+
+    disposition = str(route.get("disposition") or "").strip()
+    status = RESOLVED_STATUS_BY_DISPOSITION.get(disposition)
+    if status is None:
+        return None
+    return {
+        "chain_id": chain_id,
+        "claims_forensics_disposition": disposition,
+        "status": status,
+    }
+
+
 def build_queue(root: Path) -> dict[str, Any]:
     handoff = load(root, HANDOFF)
     routing = load(root, ROUTING)
-    records, _overlay = current_anchors.current_records(root)
+    maintenance = load(root, CLAIMS_MAINTENANCE)
+    records, overlay = current_anchors.current_records(root)
+    active_chain_ids = set(str(value) for value in (overlay.get("chain_overrides") or {}))
     record_pairs = {
         (str(row.get("claim_id") or ""), str(row.get("chain_id") or ""))
         for row in records
     }
     routing_rows = _routing_rows(routing)
+    maintenance_routes = _maintenance_routes(maintenance)
 
     items = []
-    resolved = []
+    resolved_existing = []
+    resolved_canonical = []
     for sequence in handoff.get("statement_sequences") or []:
         if sequence.get("claim_family_ref") is not None:
             continue
@@ -81,29 +165,49 @@ def build_queue(root: Path) -> dict[str, Any]:
         if not sequence_id or not observations or not note:
             raise ValueError(f"incomplete Web of Lies handoff sequence: {sequence!r}")
 
-        continuity = RESOLVED_EXISTING_CLAIM_SEQUENCES.get(sequence_id)
-        if continuity:
-            claim_id = continuity["claim_id"]
-            chain_id = continuity["chain_id"]
-            if (claim_id, chain_id) not in record_pairs:
+        route = _matching_route(sequence_id, maintenance_routes)
+        if sequence_id == "WOL-IN-ROOK-F15SA-20260920":
+            if route is None:
                 raise ValueError(
-                    f"{sequence_id}: expected current claim continuity missing "
-                    f"{claim_id} / {chain_id}"
+                    "ADJUDICATION_REVIEW_CANDIDATE WOL-IN-ROOK-F15SA-20260920: "
+                    "Claims Forensics continuity route disappeared"
+                )
+            chain_id = str(route.get("chain_id") or "").strip()
+            if (F15_CANONICAL_CLAIM_ID, chain_id) not in record_pairs:
+                raise ValueError(
+                    "ADJUDICATION_REVIEW_CANDIDATE WOL-IN-ROOK-F15SA-20260920: "
+                    f"expected current claim continuity missing {F15_CANONICAL_CLAIM_ID} / {chain_id}"
                 )
             if not any(
-                claim_id in (row.get("existing_claim_refs") or [])
+                F15_CANONICAL_CLAIM_ID in (row.get("existing_claim_refs") or [])
                 for row in routing_rows
             ):
                 raise ValueError(
-                    f"{sequence_id}: Evidence Integration routing does not preserve "
-                    f"existing claim ref {claim_id}"
+                    "WOL-IN-ROOK-F15SA-20260920: Evidence Integration routing does not "
+                    f"preserve existing claim ref {F15_CANONICAL_CLAIM_ID}"
                 )
-            resolved.append({
+            resolved_existing.append({
                 "sequence_id": sequence_id,
                 "status": "EXISTING_CANONICAL_CLAIM_CONTINUITY",
-                "claim_id": claim_id,
+                "claim_id": F15_CANONICAL_CLAIM_ID,
                 "chain_id": chain_id,
                 "routing_path": ROUTING,
+            })
+            continue
+
+        resolution = canonical_resolution(sequence_id, maintenance_routes, active_chain_ids)
+        if resolution:
+            resolved_canonical.append({
+                "sequence_id": sequence_id,
+                "status": resolution["status"],
+                "claim_family_ref": resolution["chain_id"],
+                "chain_id": resolution["chain_id"],
+                "claims_forensics_disposition": resolution["claims_forensics_disposition"],
+                "claims_forensics_path": CLAIMS_MAINTENANCE,
+                "source_handoff_path": HANDOFF,
+                "routing_path": ROUTING,
+                "observations": observations,
+                "downstream_note": note,
             })
             continue
 
@@ -116,12 +220,14 @@ def build_queue(root: Path) -> dict[str, Any]:
             "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
             "review_reason": (
                 "Evidence Integration supplied a source/chronology sequence for Web of Lies, "
-                "but no canonical Lie Ledger claim family is assigned. Preserve it outside "
-                "lineage/Hall scoring until Claims Forensics resolves family placement."
+                "but current Claims Forensics supplies no canonical Lie Ledger family. Preserve "
+                "it outside lineage/Hall scoring until Claims Forensics resolves family placement."
             ),
         })
+
     items.sort(key=lambda row: row["discovery_id"])
-    resolved.sort(key=lambda row: row["sequence_id"])
+    resolved_existing.sort(key=lambda row: row["sequence_id"])
+    resolved_canonical.sort(key=lambda row: row["sequence_id"])
     return {
         "schema_version": "1.0",
         "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
@@ -129,7 +235,8 @@ def build_queue(root: Path) -> dict[str, Any]:
         "source_handoff": HANDOFF,
         "as_of": handoff.get("as_of"),
         "items": items,
-        "resolved_existing_claim_sequences": resolved,
+        "resolved_existing_claim_sequences": resolved_existing,
+        "resolved_canonical_claim_sequences": resolved_canonical,
     }
 
 
@@ -141,6 +248,14 @@ def validate(root: Path, queue: dict[str, Any]) -> None:
         raise ValueError("duplicate Web of Lies discovery IDs")
     if any(row["claim_family_ref"] is not None for row in queue["items"]):
         raise ValueError("assigned-family sequence leaked into discovery queue")
+
+    resolved_ids = [
+        row["sequence_id"]
+        for row in queue["resolved_existing_claim_sequences"]
+        + queue["resolved_canonical_claim_sequences"]
+    ]
+    if len(resolved_ids) != len(set(resolved_ids)):
+        raise ValueError("duplicate resolved Web of Lies sequence IDs")
 
 
 def main() -> int:
@@ -162,7 +277,8 @@ def main() -> int:
             raise SystemExit(f"FAIL stale {output}")
         print(
             f"web-of-lies discovery queue: PASS items={len(queue['items'])} "
-            f"resolved={len(queue['resolved_existing_claim_sequences'])}"
+            f"resolved_existing={len(queue['resolved_existing_claim_sequences'])} "
+            f"resolved_canonical={len(queue['resolved_canonical_claim_sequences'])}"
         )
         return 0
 
@@ -170,7 +286,8 @@ def main() -> int:
     output.write_bytes(serialized)
     print(
         f"web-of-lies discovery queue: wrote {output} items={len(queue['items'])} "
-        f"resolved={len(queue['resolved_existing_claim_sequences'])}"
+        f"resolved_existing={len(queue['resolved_existing_claim_sequences'])} "
+        f"resolved_canonical={len(queue['resolved_canonical_claim_sequences'])}"
     )
     return 0
 

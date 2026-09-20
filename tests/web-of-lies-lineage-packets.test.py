@@ -12,6 +12,7 @@ import build_web_of_lies as wol  # noqa: E402
 import build_web_of_lies_baseline_packets as legacy  # noqa: E402
 import build_web_of_lies_current_anchor_packets as anchors  # noqa: E402
 import build_web_of_lies_forensic_input as aggregator  # noqa: E402
+import build_web_of_lies_sep20_reconciliation_packets as sep20  # noqa: E402
 
 
 canonical = json.loads((ROOT / wol.CANONICAL).read_text(encoding="utf-8"))
@@ -30,6 +31,10 @@ expected_packet_paths = {
 expected_packet_paths.update(
     path.relative_to(ROOT).as_posix()
     for path in anchors.expected_packets(ROOT)
+)
+expected_packet_paths.update(
+    path.relative_to(ROOT).as_posix()
+    for path in sep20.expected_packets(ROOT)
 )
 expected_packet_paths.update(
     (Path(aggregator.PACKET_DIR) / f"{legacy.slug(chain_id)}.json").as_posix()
@@ -71,6 +76,24 @@ assert assembled_relationship_ids == expected_relationship_ids
 assert len(assembled["source_profiles"]) == len(expected_source_ids)
 assert len(assembled["information_events"]) == len(expected_event_ids)
 assert len(assembled["relationships"]) == len(expected_relationship_ids)
+
+# The three Sep. 20 canonical placements each have one rich reconciliation
+# packet; the existing negotiating family is extended rather than duplicated
+# as a new Claims Forensics chain.
+sep20_packets = [
+    row for row in assembled["lineage_packets"]
+    if row["packet_id"] in {
+        "WOL-PKT-SEP20-TREND-TANKER",
+        "WOL-PKT-SEP20-RIYADH-YANBU",
+        "WOL-PKT-SEP20-IRAN-SEVEN-CONDITIONS",
+    }
+]
+assert len(sep20_packets) == 3
+assert {row["claim_family_id"] for row in sep20_packets} == {
+    "CH-HORMUZ-TREND-TANKER-20260917",
+    "CH-HOUTHI-RIYADH-YANBU-20260919",
+    "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+}
 
 packet = next(
     row for row in assembled["lineage_packets"]
