@@ -124,6 +124,20 @@ assert not any(
     for relation in aircraft_packet["relationships"]
 ), "CBS type-specific context was incorrectly wired as Qeshm corroboration/contradiction"
 
+discovery = load("data/web-of-lies/discovery-queue.json")
+assert discovery["artifact_role"] == "WEB_OF_LIES_DISCOVERY_QUEUE"
+assert {row["discovery_id"] for row in discovery["items"]} == {
+    "WOL-IN-ROOK-F15SA-20260920",
+    "WOL-IN-ROOK-TREND-20260920",
+    "WOL-IN-ROOK-IRAN-CONDITIONS-20260920",
+    "WOL-IN-ROOK-RIYADH-20260920",
+}
+assert all(row["claim_family_ref"] is None for row in discovery["items"])
+assert all(row["status"] == "AWAITING_CANONICAL_CLAIM_FAMILY" for row in discovery["items"])
+assert "WOL-IN-ROOK-MQ9-52-53-20260920" not in {
+    row["discovery_id"] for row in discovery["items"]
+}, "assigned aircraft-kill handoff was incorrectly left in the unassigned discovery queue"
+
 for control_chain in ("CH-DENA-ADMISSION", "CH-TANGSIRI-ADMISSION"):
     packet = next(row for row in packets if row["claim_family_id"] == control_chain)
     adverse = [
