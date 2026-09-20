@@ -32,6 +32,7 @@ SEMANTIC_HANDOFF_PATH = "data/evidence-integration/public-product-lie-ledger-sem
 ROOK_WOL_HANDOFF_PATH = "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json"
 PACKET_DIR = "data/web-of-lies/lineage-packets"
 MANUAL_CHAIN_IDS = {"CH-F15E-CSAR-URANIUM"}
+RETIRED_LEGACY_CHAIN_IDS = {"CH-FALSE-FLAG-REGIONAL"}
 AS_OF = "2026-09-20T17:55:00-04:00"
 
 FALSE_OR_MISLEADING_DISPOSITIONS = {
@@ -838,7 +839,7 @@ def expected_packets(root: Path) -> dict[Path, dict[str, Any]]:
     output: dict[Path, dict[str, Any]] = {}
     for chain in chains:
         chain_id = str(chain["chain_id"])
-        if chain_id in MANUAL_CHAIN_IDS:
+        if chain_id in MANUAL_CHAIN_IDS or chain_id in RETIRED_LEGACY_CHAIN_IDS:
             continue
         path = root / PACKET_DIR / f"{slug(chain_id)}.json"
         packet = packet_for_chain(chain, claims_by_id, source_by_id, identity_map, authority)
@@ -872,14 +873,20 @@ def main() -> int:
                 stale.append(f"stale {path.relative_to(root)}")
         if stale:
             raise SystemExit("FAIL " + "; ".join(stale))
-        print(f"web-of-lies baseline packets: PASS generated={len(packets)} manual={len(MANUAL_CHAIN_IDS)}")
+        print(
+            f"web-of-lies baseline packets: PASS generated={len(packets)} "
+            f"manual={len(MANUAL_CHAIN_IDS)} retired={len(RETIRED_LEGACY_CHAIN_IDS)}"
+        )
         return 0
 
     for path, packet in packets.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(canonical_bytes(packet))
         print(f"wrote {path.relative_to(root)}")
-    print(f"web-of-lies baseline packets: wrote generated={len(packets)} manual={len(MANUAL_CHAIN_IDS)}")
+    print(
+        f"web-of-lies baseline packets: wrote generated={len(packets)} "
+        f"manual={len(MANUAL_CHAIN_IDS)} retired={len(RETIRED_LEGACY_CHAIN_IDS)}"
+    )
     return 0
 
 
