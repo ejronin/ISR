@@ -2233,7 +2233,7 @@
     view.value = String(context.route.params.view || 'ALL_TIME').toUpperCase() === 'CURRENT_PERIOD' ? 'CURRENT_PERIOD' : 'ALL_TIME';
     const countries = Array.from(new Set(profiles.map(row => row.country_region).filter(Boolean))).sort();
     const platforms = Array.from(new Set(profiles.map(row => row.primary_platform).filter(Boolean))).sort();
-    const classes = Array.from(new Set(profiles.flatMap(row => asArray(row.behavior_classes)).filter(value => value && value !== 'UNKNOWN'))).sort();
+    const classes = asArray(contract.hall_of_shame_classes).slice().sort();
     const country = addSelect('Country / region', countries, 'All countries / regions');
     const platform = addSelect('Platform', platforms, 'All platforms');
     const sourceClass = addSelect('Source class', classes, 'All source classes');
