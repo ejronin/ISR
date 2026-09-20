@@ -56,6 +56,7 @@ CHECK_COMMANDS: tuple[tuple[str, ...], ...] = (
     command("scripts/validate_gate3_final.py"),
     command("scripts/build_web_of_lies_discovery_queue.py", "--check"),
     command("scripts/build_web_of_lies_baseline_packets.py", "--check"),
+    command("scripts/build_web_of_lies_current_anchor_packets.py", "--check"),
     command("scripts/build_web_of_lies_forensic_input.py", "--check"),
     command("scripts/build_web_of_lies.py", "--check"),
     command("scripts/validate_web_of_lies.py"),
