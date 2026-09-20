@@ -152,7 +152,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       console.error('Consumer coverage diagnostics:', JSON.stringify(diagnostics, null, 2));
       throw error;
     }
-    assert.equal(coverage.routeCount, 25);
+    assert.equal(coverage.routeCount, 26);
     assert.equal(coverage.coveredDatasetCount, Object.keys(model.datasets).length + 2);
     assert.equal(coverage.datasetWaiverCount, model.consumer_coverage.dataset_waivers.length);
     assert.equal(coverage.routeWaiverCount, 0);
@@ -353,7 +353,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     const externalResources = await cdp.eval(`performance.getEntriesByType('resource').map(entry => entry.name).filter(url => { try { return new URL(url).origin !== location.origin; } catch (_) { return true; } })`);
     assert.deepEqual(externalResources, [], `runtime made external requests: ${externalResources.join(', ')}`);
 
-    console.log('browser public parity Batch 3: PASS - 25 owners, enforceable consumer coverage, broad/record-driven geography, three corridor modes, GCC/Iran forecast context, Arctic boundary, 14-state alignment, strike effects, eight agreements, merchant cross-links, accessibility, and responsive behavior verified');
+    console.log('browser public parity Batch 3: PASS - 26 owners, enforceable consumer coverage, broad/record-driven geography, three corridor modes, GCC/Iran forecast context, Arctic boundary, 14-state alignment, strike effects, eight agreements, merchant cross-links, accessibility, and responsive behavior verified');
   } finally {
     cdp.close();
   }
