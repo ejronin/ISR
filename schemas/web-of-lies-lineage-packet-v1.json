@@ -16,18 +16,39 @@
     "promotion_flags"
   ],
   "properties": {
-    "schema_version": { "const": "1.0" },
-    "artifact_role": { "const": "WEB_OF_LIES_LINEAGE_PACKET" },
-    "packet_id": { "type": "string", "minLength": 1 },
-    "claim_family_id": { "type": "string", "minLength": 1 },
-    "as_of": { "type": "string", "minLength": 1 },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "artifact_role": {
+      "const": "WEB_OF_LIES_LINEAGE_PACKET"
+    },
+    "packet_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_family_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "as_of": {
+      "type": "string",
+      "minLength": 1
+    },
     "basis_paths": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "type": "string", "minLength": 1 }
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     },
-    "notes": { "type": ["string", "null"] },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "source_profiles": {
       "type": "array",
       "items": {
@@ -42,41 +63,92 @@
           "revenue_basis_event_ids"
         ],
         "properties": {
-          "source_id": { "type": "string", "minLength": 1 },
-          "display_name": { "type": "string", "minLength": 1 },
-          "source_entity_type": {
-            "enum": ["OUTLET", "ACCOUNT", "INSTITUTION", "PERSON", "OTHER", "UNKNOWN"]
+          "source_id": {
+            "type": "string",
+            "minLength": 1
           },
-          "country_region": { "type": ["string", "null"] },
-          "primary_platform": { "type": ["string", "null"] },
-          "canonical_outlet_profile_id": { "type": ["string", "null"] },
-          "canonical_actor_id": { "type": ["string", "null"] },
+          "display_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_entity_type": {
+            "enum": [
+              "OUTLET",
+              "ACCOUNT",
+              "INSTITUTION",
+              "PERSON",
+              "OTHER",
+              "UNKNOWN"
+            ]
+          },
+          "country_region": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "primary_platform": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "canonical_outlet_profile_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "canonical_actor_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "canonical_source_ids": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
           "behavior_classes": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
-          "authenticity_class": { "type": "string", "minLength": 1 },
+          "authenticity_class": {
+            "type": "string",
+            "minLength": 1
+          },
           "revenue_model": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
           "classification_basis_event_ids": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
           "revenue_basis_event_ids": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           }
         },
@@ -99,54 +171,154 @@
           "evidence_source_ids"
         ],
         "properties": {
-          "event_id": { "type": "string", "minLength": 1 },
-          "claim_family_id": { "type": "string", "minLength": 1 },
-          "source_id": { "type": "string", "minLength": 1 },
-          "event_type": { "type": "string", "minLength": 1 },
-          "published_at": { "type": ["string", "null"] },
-          "first_observed_at": { "type": ["string", "null"] },
-          "time_precision": { "type": ["string", "null"] },
-          "epistemic_posture": { "type": "string", "minLength": 1 },
-          "exact_statement": { "type": ["string", "null"] },
-          "translated_statement": { "type": ["string", "null"] },
+          "event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_family_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "event_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "published_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "first_observed_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "time_precision": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "epistemic_posture": {
+            "type": "string",
+            "minLength": 1
+          },
+          "exact_statement": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "translated_statement": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "lineage_roles": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
           "carrier_profile_ids": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
           "canonical_claim_refs": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
           "evidence_source_ids": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
           "contrary_evidence_source_ids": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
-          "correction_state": { "type": ["string", "null"] },
+          "correction_state": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "behavior_findings": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
           "revenue_findings": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           },
-          "independently_sourced": { "type": ["boolean", "null"] },
-          "plain_english_verdict": { "type": ["string", "null"] }
+          "independently_sourced": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "plain_english_verdict": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "originating_claimant": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "canonical_combined_assessment": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "provenance_limit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "context_scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
         "additionalProperties": true
       }
@@ -163,13 +335,28 @@
           "evidence_source_ids"
         ],
         "properties": {
-          "relationship_id": { "type": "string", "minLength": 1 },
-          "from_id": { "type": "string", "minLength": 1 },
-          "to_id": { "type": "string", "minLength": 1 },
-          "relationship_type": { "type": "string", "minLength": 1 },
+          "relationship_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "from_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relationship_type": {
+            "type": "string",
+            "minLength": 1
+          },
           "evidence_source_ids": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           }
         },
@@ -180,20 +367,44 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["flag_id", "flag_type", "subject_id", "reason"],
+        "required": [
+          "flag_id",
+          "flag_type",
+          "subject_id",
+          "reason"
+        ],
         "properties": {
-          "flag_id": { "type": "string", "minLength": 1 },
-          "flag_type": { "type": "string", "minLength": 1 },
-          "subject_id": { "type": "string", "minLength": 1 },
-          "reason": { "type": "string", "minLength": 1 },
+          "flag_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "flag_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "subject_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
           "evidence_source_ids": {
             "type": "array",
-            "items": { "type": "string", "minLength": 1 },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
             "uniqueItems": true
           }
         },
         "additionalProperties": true
       }
+    },
+    "generation_mode": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "additionalProperties": false

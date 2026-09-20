@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-KUWAIT-F15-FRIENDLY-FIRE-BASELINE-20260920",
+  "claim_family_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "display_name": "Khatam al-Anbiya Central Headquarters",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-6C64F6A3D5B7"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0102-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-6C64F6A3D5B7",
+        "SRC-FBB8378A0876"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0101-O",
+        "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0102-C"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0101-O",
+      "claim_family_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-03-02T14:00",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran claimed responsibility for downing a U.S. F-15 during the Kuwait fighting.",
+      "translated_statement": null,
+      "originating_claimant": "Tasnim / Iranian military reporting",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0101"
+      ],
+      "evidence_source_ids": [
+        "SRC-FBB8378A0876"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-040789CFC9C0",
+        "SRC-35FB02E8E973"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Web of Lies records who originated and carried it."
+    },
+    {
+      "event_id": "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0102-C",
+      "claim_family_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": "2026-03-02",
+      "first_observed_at": "2026-03-02T16:14",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Tasnim News Agency carried the attributed claim: Iran claimed three U.S. F-15 fighter jets were downed by Iranian action.",
+      "translated_statement": null,
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters as reported by Tasnim",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0102"
+      ],
+      "evidence_source_ids": [
+        "SRC-6C64F6A3D5B7"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-040789CFC9C0",
+        "SRC-35FB02E8E973"
+      ],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Web of Lies records the change without inventing a stronger truth or knowledge finding."
+    },
+    {
+      "event_id": "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0102-O",
+      "claim_family_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "source_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": null,
+      "first_observed_at": "2026-03-02T16:14",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran claimed three U.S. F-15 fighter jets were downed by Iranian action.",
+      "translated_statement": null,
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters as reported by Tasnim",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0102"
+      ],
+      "evidence_source_ids": [
+        "SRC-6C64F6A3D5B7"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-040789CFC9C0",
+        "SRC-35FB02E8E973"
+      ],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Web of Lies records the change without inventing a stronger truth or knowledge finding."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-KUWAIT_F15_FRIENDLY_FIRE-001",
+      "from_id": "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0102-C",
+      "to_id": "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0102-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-6C64F6A3D5B7"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-KUWAIT_F15_FRIENDLY_FIRE-002",
+      "from_id": "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0102-C",
+      "to_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-6C64F6A3D5B7"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-KUWAIT_F15_FRIENDLY_FIRE-003",
+      "from_id": "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0101-O",
+      "to_id": "WOL-EVT-KUWAIT_F15_FRIENDLY_FIRE-0102-O",
+      "relationship_type": "MUTATES_INTO",
+      "evidence_source_ids": [
+        "SRC-6C64F6A3D5B7"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

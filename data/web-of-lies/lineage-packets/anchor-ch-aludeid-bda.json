@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_ALUDEID_BDA-20260920",
+  "claim_family_id": "CH-ALUDEID-BDA",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=2; anchor_events=2; blocked_not_emitted=6. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "display_name": "Originator identified in claim text / source",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-TEHRAN_TIMES_SOCIAL_MEDIA_AMPLIFICATION_CREATOR_AND_OFFICIAL_MILITARY_GOVERNMENT_ORIGIN_NOT_ESTA",
+      "display_name": "Tehran Times / social-media amplification; creator and official military/government origin not established",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-81C038608946",
+        "SRC-B56BDBD8628F"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_ALUDEID",
+      "claim_family_id": "CH-ALUDEID-BDA",
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03 onward",
+      "first_observed_at": "2026-03 onward",
+      "time_precision": "DATE_OR_RANGE",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Social-media shorthand treats damage at Al Udeid as proof the entire base was destroyed or unusable.",
+      "translated_statement": null,
+      "originating_claimant": "Originator identified in claim text / source",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-ALUDEID",
+        "CL-ALUDEID",
+        "PROP-68CB24AC307C"
+      ],
+      "evidence_source_ids": [
+        "SRC-551A9C2DB97C"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: REAL MAJOR DAMAGE — EFFECTS MUST REMAIN LEVEL-SPECIFIC. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "REAL MAJOR DAMAGE — EFFECTS MUST REMAIN LEVEL-SPECIFIC"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_MEDIA_MED_007",
+      "claim_family_id": "CH-ALUDEID-BDA",
+      "source_id": "WOL-SRC-CLAIMANT-TEHRAN_TIMES_SOCIAL_MEDIA_AMPLIFICATION_CREATOR_AND_OFFICIAL_MILITARY_GOVERNMENT_ORIGIN_NOT_ESTA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-09",
+      "first_observed_at": "2026-03-09",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "A before/after satellite image was circulated as proof that U.S. radar equipment at a base in Qatar had been completely destroyed.",
+      "translated_statement": null,
+      "originating_claimant": "Tehran Times / social-media amplification; creator and official military/government origin not established",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-MEDIA-MED-007",
+        "MED-007",
+        "PROP-MEDIA-MED-007"
+      ],
+      "evidence_source_ids": [
+        "SRC-81C038608946",
+        "SRC-B56BDBD8628F"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE MEDIA ARTIFACT — REAL AL UDEID DAMAGE SEPARATE; OFFICIAL ORIGIN NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE MEDIA ARTIFACT — REAL AL UDEID DAMAGE SEPARATE; OFFICIAL ORIGIN NOT ESTABLISHED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

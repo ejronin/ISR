@@ -1,0 +1,963 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_F15E_CSAR_URANIUM-20260920",
+  "claim_family_id": "CH-F15E-CSAR-URANIUM",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=22; anchor_events=22; blocked_not_emitted=4. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ESMAIL_BAGHAEI_IRANIAN_FOREIGN_MINISTRY_SPOKESMAN_AS_REPORTED_BY_XINHUA",
+      "display_name": "Esmail Baghaei, Iranian Foreign Ministry spokesman, as reported by Xinhua",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-0C0023C8A3BF"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMED_FORCES_KHATAM_AL_ANBIYA_CLAIM_PRESERVED_BY_REUTERS",
+      "display_name": "Iranian Armed Forces / Khatam al-Anbiya claim preserved by Reuters",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-7CDC817909BB"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_KHATAM_AL_ANBIYA_CENTRAL_HEADQUARTERS_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "IRGC / Khatam al-Anbiya Central Headquarters as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-9AD88556FB4C"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ISLAMIC_REVOLUTIONARY_GUARD_CORPS_PUBLIC_RELATIONS_OFFICE",
+      "display_name": "Islamic Revolutionary Guard Corps Public Relations Office",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-78A57448DD47",
+        "SRC-E8925FA221DA"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-KHATAM_AL_ANBIYA_CENTRAL_HEADQUARTERS_SPOKESMAN_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Khatam al-Anbiya Central Headquarters spokesman, as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-CB6893671B1F"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-MOHAMMAD_BAGHER_QALIBAF_SPEAKER_OF_PARLIAMENT_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Mohammad Bagher Qalibaf, Speaker of Parliament, as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-2867CB793392"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "display_name": "Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-481DC6A8E2DB",
+        "SRC-7E2DE3FC127A"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-PROVINCIAL_IRGC_AS_REPORTED_BY_IRAN_INTERNATIONAL",
+      "display_name": "Provincial IRGC, as reported by Iran International",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-CC1AA98E096D"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-TASNIM_NEWS_AGENCY",
+      "display_name": "Tasnim News Agency",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-59F8B0ECCEC9",
+        "SRC-9AD0DC8629DD"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-TASNIM_NEWS_AGENCY_CITING_UNNAMED_SOURCES",
+      "display_name": "Tasnim News Agency citing unnamed sources",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-F8AA5DA10F47"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-THIRD_PARTY_SOCIAL_MEDIA_CIRCULATION_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "display_name": "Third-party / social-media circulation; official origin not established",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-00FF7E1E6EA4",
+        "SRC-5BC8070E8CD9",
+        "SRC-95219D950347",
+        "SRC-FADB5E0A4585"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0001_P02",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_KHATAM_AL_ANBIYA_CENTRAL_HEADQUARTERS_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-03",
+      "first_observed_at": "2026-04-03",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian air defenses downed a Lakenheath F-35 in central Iran.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC / Khatam al-Anbiya Central Headquarters as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0001-P02",
+        "IR-CLM-0001",
+        "PROP-4870DFEF4CC8"
+      ],
+      "evidence_source_ids": [
+        "SRC-9AD88556FB4C"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0002_P01",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-MOHAMMAD_BAGHER_QALIBAF_SPEAKER_OF_PARLIAMENT_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-03",
+      "first_observed_at": "2026-04-03",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Qalibaf publicly mocked the U.S. on the premise that another F-35 had been downed.",
+      "translated_statement": null,
+      "originating_claimant": "Mohammad Bagher Qalibaf, Speaker of Parliament, as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0002-P01",
+        "IR-CLM-0002",
+        "PROP-B0A7EF8A9B7F"
+      ],
+      "evidence_source_ids": [
+        "SRC-2867CB793392"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: LIKELY LIE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "LIKELY LIE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0003_P01",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-06",
+      "first_observed_at": "2026-04-06",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Press TV states the F-35 identification was a misidentification and debris showed an F-15E.",
+      "translated_statement": null,
+      "originating_claimant": "Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0003-P01",
+        "IR-CLM-0003",
+        "PROP-0B1B1F77C226"
+      ],
+      "evidence_source_ids": [
+        "SRC-481DC6A8E2DB"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED — KNOWLEDGE NOT ASSESSED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED — KNOWLEDGE NOT ASSESSED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0003_P02",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-06",
+      "first_observed_at": "2026-04-06",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Press TV states the F-35 identification was a misidentification and debris showed an F-15E.",
+      "translated_statement": null,
+      "originating_claimant": "Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0003-P02",
+        "IR-CLM-0003",
+        "PROP-9C76A4053091"
+      ],
+      "evidence_source_ids": [
+        "SRC-481DC6A8E2DB"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED — KNOWLEDGE NOT ASSESSED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED — KNOWLEDGE NOT ASSESSED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0004_P01",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-TASNIM_NEWS_AGENCY_CITING_UNNAMED_SOURCES",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-03",
+      "first_observed_at": "2026-04-03",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Reports suggested the missing American pilot may have been captured.",
+      "translated_statement": null,
+      "originating_claimant": "Tasnim News Agency citing unnamed sources",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0004-P01",
+        "IR-CLM-0004",
+        "PROP-D510FB467018"
+      ],
+      "evidence_source_ids": [
+        "SRC-F8AA5DA10F47"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED — AIRMAN WAS MISSING/EVADING AT PUBLICATION TIME. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED — AIRMAN WAS MISSING/EVADING AT PUBLICATION TIME"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0004_P02",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-TASNIM_NEWS_AGENCY_CITING_UNNAMED_SOURCES",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-03",
+      "first_observed_at": "2026-04-03",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Reports suggested the missing American pilot may have been captured.",
+      "translated_statement": null,
+      "originating_claimant": "Tasnim News Agency citing unnamed sources",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0004-P02",
+        "IR-CLM-0004",
+        "PROP-C4FA5F41A99F"
+      ],
+      "evidence_source_ids": [
+        "SRC-F8AA5DA10F47"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE — EARLY HEDGED CAPTURE REPORT; KNOWLEDGE NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE — EARLY HEDGED CAPTURE REPORT; KNOWLEDGE NOT ESTABLISHED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0005_P01",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-TASNIM_NEWS_AGENCY",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-03",
+      "first_observed_at": "2026-04-03",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Tasnim headlined that the U.S. effort to recover the pilot failed; the body said efforts had so far been futile.",
+      "translated_statement": null,
+      "originating_claimant": "Tasnim News Agency",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0005-P01",
+        "IR-CLM-0005",
+        "PROP-96B0EC47A871"
+      ],
+      "evidence_source_ids": [
+        "SRC-59F8B0ECCEC9",
+        "SRC-9AD0DC8629DD"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED — RECOVERY WAS STILL IN PROGRESS. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED — RECOVERY WAS STILL IN PROGRESS"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0005_P02",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-TASNIM_NEWS_AGENCY",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-03",
+      "first_observed_at": "2026-04-03",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Tasnim headlined that the U.S. effort to recover the pilot failed; the body said efforts had so far been futile.",
+      "translated_statement": null,
+      "originating_claimant": "Tasnim News Agency",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0005-P02",
+        "IR-CLM-0005",
+        "PROP-EF4816D9E197"
+      ],
+      "evidence_source_ids": [
+        "SRC-59F8B0ECCEC9",
+        "SRC-9AD0DC8629DD"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE OUTCOME CLAIM — PREMATURE AT PUBLICATION TIME. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE OUTCOME CLAIM — PREMATURE AT PUBLICATION TIME"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0006_P01",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-PROVINCIAL_IRGC_AS_REPORTED_BY_IRAN_INTERNATIONAL",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-04",
+      "first_observed_at": "2026-04-04",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The provincial IRGC denied that the second F-15E crewman was in Iranian custody.",
+      "translated_statement": null,
+      "originating_claimant": "Provincial IRGC, as reported by Iran International",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0006-P01",
+        "IR-CLM-0006",
+        "PROP-F15E-CAPTURE-DENIAL-20260404"
+      ],
+      "evidence_source_ids": [
+        "SRC-CC1AA98E096D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED CORRECTION — CAPTURE/DETENTION DENIED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED CORRECTION — CAPTURE/DETENTION DENIED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0007_P01",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-KHATAM_AL_ANBIYA_CENTRAL_HEADQUARTERS_SPOKESMAN_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian forces destroyed rescue aircraft and brought the rescue operation to complete failure.",
+      "translated_statement": null,
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters spokesman, as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0007-P01",
+        "IR-CLM-0007",
+        "PROP-7ACFDB111733"
+      ],
+      "evidence_source_ids": [
+        "SRC-CB6893671B1F"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED — REAL U.S. RESCUE-EQUIPMENT LOSSES. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED — REAL U.S. RESCUE-EQUIPMENT LOSSES"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0007_P02",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-KHATAM_AL_ANBIYA_CENTRAL_HEADQUARTERS_SPOKESMAN_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian forces destroyed rescue aircraft and brought the rescue operation to complete failure.",
+      "translated_statement": null,
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters spokesman, as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0007-P02",
+        "IR-CLM-0007",
+        "PROP-F9455442E729"
+      ],
+      "evidence_source_ids": [
+        "SRC-CB6893671B1F"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: LIKELY LIE — FALSE CAUSAL ATTRIBUTION. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "LIKELY LIE — FALSE CAUSAL ATTRIBUTION"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0007_P03",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-KHATAM_AL_ANBIYA_CENTRAL_HEADQUARTERS_SPOKESMAN_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian forces destroyed rescue aircraft and brought the rescue operation to complete failure.",
+      "translated_statement": null,
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters spokesman, as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0007-P03",
+        "IR-CLM-0007",
+        "PROP-4345BC3996C6"
+      ],
+      "evidence_source_ids": [
+        "SRC-CB6893671B1F"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE — PERSONNEL-RECOVERY MISSION DID NOT FAIL. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE — PERSONNEL-RECOVERY MISSION DID NOT FAIL"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0008_P02",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMED_FORCES_KHATAM_AL_ANBIYA_CLAIM_PRESERVED_BY_REUTERS",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran said its forces destroyed multiple U.S. rescue aircraft during the operation.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Armed Forces / Khatam al-Anbiya claim preserved by Reuters",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0008-P02",
+        "IR-CLM-0008",
+        "PROP-83EBA7624605"
+      ],
+      "evidence_source_ids": [
+        "SRC-7CDC817909BB"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE — IRAN DID NOT DESTROY ALL CLAIMED RESCUE AIRCRAFT. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE — IRAN DID NOT DESTROY ALL CLAIMED RESCUE AIRCRAFT"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0009_P01",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-ESMAIL_BAGHAEI_IRANIAN_FOREIGN_MINISTRY_SPOKESMAN_AS_REPORTED_BY_XINHUA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-06",
+      "first_observed_at": "2026-04-06",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Baghaei said the possibility the operation was a deception to steal enriched uranium should not be overlooked.",
+      "translated_statement": null,
+      "originating_claimant": "Esmail Baghaei, Iranian Foreign Ministry spokesman, as reported by Xinhua",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0009-P01",
+        "IR-CLM-0009",
+        "PROP-1A11B0C4FEEA"
+      ],
+      "evidence_source_ids": [
+        "SRC-0C0023C8A3BF"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED — NOT A LIE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED — NOT A LIE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0009_P02",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-ESMAIL_BAGHAEI_IRANIAN_FOREIGN_MINISTRY_SPOKESMAN_AS_REPORTED_BY_XINHUA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-06",
+      "first_observed_at": "2026-04-06",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Baghaei said the possibility the operation was a deception to steal enriched uranium should not be overlooked.",
+      "translated_statement": null,
+      "originating_claimant": "Esmail Baghaei, Iranian Foreign Ministry spokesman, as reported by Xinhua",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0009-P02",
+        "IR-CLM-0009",
+        "PROP-095027B291A3"
+      ],
+      "evidence_source_ids": [
+        "SRC-0C0023C8A3BF"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED CONTEXT — ENRICHED URANIUM WAS ASSOCIATED WITH ISFAHAN. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED CONTEXT — ENRICHED URANIUM WAS ASSOCIATED WITH ISFAHAN"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0010_P01",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-07",
+      "first_observed_at": "2026-04-07",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Press TV asserted the operation had no connection to pilot rescue and really targeted an Isfahan nuclear facility.",
+      "translated_statement": null,
+      "originating_claimant": "Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0010-P01",
+        "IR-CLM-0010",
+        "PROP-EC75ED64FE48"
+      ],
+      "evidence_source_ids": [
+        "SRC-7E2DE3FC127A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: VERY LIKELY LIE — CATEGORICAL MISSION SUBSTITUTION. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "VERY LIKELY LIE — CATEGORICAL MISSION SUBSTITUTION"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0010_P02",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-07",
+      "first_observed_at": "2026-04-07",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Press TV asserted the operation had no connection to pilot rescue and really targeted an Isfahan nuclear facility.",
+      "translated_statement": null,
+      "originating_claimant": "Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0010-P02",
+        "IR-CLM-0010",
+        "PROP-594D1D8DD8AF"
+      ],
+      "evidence_source_ids": [
+        "SRC-7E2DE3FC127A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: VERY LIKELY LIE — CATEGORICAL MISSION SUBSTITUTION. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "VERY LIKELY LIE — CATEGORICAL MISSION SUBSTITUTION"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_MEDIA_MED_001",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-THIRD_PARTY_SOCIAL_MEDIA_CIRCULATION_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04",
+      "first_observed_at": "2026-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Video circulated as captured U.S. F-15 pilot in Iran.",
+      "translated_statement": null,
+      "originating_claimant": "Third-party / social-media circulation; official origin not established",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-MEDIA-MED-001",
+        "MED-001",
+        "PROP-MEDIA-MED-001"
+      ],
+      "evidence_source_ids": [
+        "SRC-5BC8070E8CD9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_MEDIA_MED_002",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-THIRD_PARTY_SOCIAL_MEDIA_CIRCULATION_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04",
+      "first_observed_at": "2026-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Image circulated as captured American airman in Iran.",
+      "translated_statement": null,
+      "originating_claimant": "Third-party / social-media circulation; official origin not established",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-MEDIA-MED-002",
+        "MED-002",
+        "PROP-MEDIA-MED-002"
+      ],
+      "evidence_source_ids": [
+        "SRC-00FF7E1E6EA4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_MEDIA_MED_003",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-THIRD_PARTY_SOCIAL_MEDIA_CIRCULATION_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Image circulated as rescued U.S. airman connected to the F-15E rescue narrative.",
+      "translated_statement": null,
+      "originating_claimant": "Third-party / social-media circulation; official origin not established",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-MEDIA-MED-003",
+        "MED-003",
+        "PROP-MEDIA-MED-003"
+      ],
+      "evidence_source_ids": [
+        "SRC-95219D950347"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_MEDIA_MED_004",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-THIRD_PARTY_SOCIAL_MEDIA_CIRCULATION_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-03",
+      "first_observed_at": "2026-04-03",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Video circulated as proof of the April F-15E shootdown over Iran.",
+      "translated_statement": null,
+      "originating_claimant": "Third-party / social-media circulation; official origin not established",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-MEDIA-MED-004",
+        "MED-004",
+        "PROP-MEDIA-MED-004"
+      ],
+      "evidence_source_ids": [
+        "SRC-FADB5E0A4585"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_PROP_CSAR_US_REMAINS_EVIDENTIARY_PRESENTATION",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-CLAIMANT-ISLAMIC_REVOLUTIONARY_GUARD_CORPS_PUBLIC_RELATIONS_OFFICE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The IRGC Public Relations Office presented material from the destroyed-aircraft wreckage as remains believed to belong to a U.S. servicemember, including an image described through Iranian reporting as a skull linked to an American military member; the presentation was used as evidence of U.S. personnel loss and defeat.",
+      "translated_statement": null,
+      "originating_claimant": "Islamic Revolutionary Guard Corps Public Relations Office",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION",
+        "PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION",
+        "ROOK-CSAR-US-REMAINS-20260405"
+      ],
+      "evidence_source_ids": [
+        "SRC-78A57448DD47",
+        "SRC-E8925FA221DA"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: VERY LIKELY LIE — FALSE AMERICAN-REMAINS EVIDENTIARY PRESENTATION. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "VERY LIKELY LIE — FALSE AMERICAN-REMAINS EVIDENTIARY PRESENTATION"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_F35_MAR19-20260920",
+  "claim_family_id": "CH-F35-MAR19",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=3; anchor_events=3; blocked_not_emitted=2. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_MILITARY_OFFICER_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Iranian military officer as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-A139BB200FD8"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-MOHAMMAD_BAGHER_QALIBAF_IRGC_CLAIMS_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Mohammad Bagher Qalibaf / IRGC claims as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-3BE40AD42842"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "display_name": "Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-1447993730D6"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0301_P02",
+      "claim_family_id": "CH-F35-MAR19",
+      "source_id": "WOL-SRC-CLAIMANT-MOHAMMAD_BAGHER_QALIBAF_IRGC_CLAIMS_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-20",
+      "first_observed_at": "2026-03-20",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran presented an F-35 combat hit as a shootdown/destruction and strategic demonstration.",
+      "translated_statement": null,
+      "originating_claimant": "Mohammad Bagher Qalibaf / IRGC claims as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0301-P02",
+        "IR-CLM-0301",
+        "PROP-754FA7E5D27B"
+      ],
+      "evidence_source_ids": [
+        "SRC-3BE40AD42842"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0302_P01",
+      "claim_family_id": "CH-F35-MAR19",
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-21",
+      "first_observed_at": "2026-03-21",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Press TV described the March 19 engagement as Iran having “downed” the F-35 and as shattering the aircraft’s claimed invincibility.",
+      "translated_statement": null,
+      "originating_claimant": "Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0302-P01",
+        "IR-CLM-0302",
+        "PROP-2BE71299CBEF"
+      ],
+      "evidence_source_ids": [
+        "SRC-1447993730D6"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: VERY LIKELY LIE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "VERY LIKELY LIE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0303_P01",
+      "claim_family_id": "CH-F35-MAR19",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_MILITARY_OFFICER_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-19",
+      "first_observed_at": "2026-04-19",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Press TV described the officer as the “hunter” who downed the F-35; the officer said, “We completely destroyed a Lockheed Martin technology.”",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military officer as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0303-P01",
+        "IR-CLM-0303",
+        "PROP-BFA162933494"
+      ],
+      "evidence_source_ids": [
+        "SRC-A139BB200FD8"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: VERY LIKELY LIE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "VERY LIKELY LIE"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

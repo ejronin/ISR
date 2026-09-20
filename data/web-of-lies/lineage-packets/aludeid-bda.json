@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ALUDEID-BDA-BASELINE-20260920",
+  "claim_family_id": "CH-ALUDEID-BDA",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "config/web-of-lies-source-identities.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json",
+    "data/evidence-integration/public-product-lie-ledger-semantic-handoff-20260917.json",
+    "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "data/outlet-profiles.json",
+    "data/source-registry.json"
+  ],
+  "generation_mode": "BASELINE_PLUS_CURRENT_CLAIMS_FORENSICS_OVERLAY",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings. Current public-ready Claims Forensics extensions are merged read-only; unresolved Qeshm propositions remain no-lie/unresolved, and false media artifacts with unknown origin remain unattributed.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-IRGC",
+      "canonical_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-ALUDEID_BDA-0901-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-7B62913B395D",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-ALUDEID_BDA-0901-C"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-UNATTRIBUTED-MEDIA-MED-007",
+      "display_name": "Unattributed media circulation — MED-007",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-551A9C2DB97C",
+        "SRC-81C038608946",
+        "SRC-B56BDBD8628F"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ALUDEID_BDA-0901-C",
+      "claim_family_id": "CH-ALUDEID-BDA",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-03-04",
+      "first_observed_at": "2026-03-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: The IRGC claimed a major U.S. radar at Al Udeid had been dismantled/destroyed.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0901"
+      ],
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-3826CE7F7FBB",
+        "SRC-48D30EB0A3C7",
+        "SRC-551A9C2DB97C",
+        "SRC-7538CF574DDF",
+        "SRC-C623D3244404"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Web of Lies records who originated and carried it."
+    },
+    {
+      "event_id": "WOL-EVT-ALUDEID_BDA-0901-O",
+      "claim_family_id": "CH-ALUDEID-BDA",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-03-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "The IRGC claimed a major U.S. radar at Al Udeid had been dismantled/destroyed.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0901"
+      ],
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-3826CE7F7FBB",
+        "SRC-48D30EB0A3C7",
+        "SRC-551A9C2DB97C",
+        "SRC-7538CF574DDF",
+        "SRC-C623D3244404"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Web of Lies records who originated and carried it."
+    },
+    {
+      "event_id": "WOL-EVT-ALUDEID_BDA-MED_007-MEDIA",
+      "claim_family_id": "CH-ALUDEID-BDA",
+      "source_id": "WOL-SRC-UNATTRIBUTED-MEDIA-MED-007",
+      "event_type": "FALSE_MEDIA_ARTIFACT",
+      "published_at": "2026-03-09",
+      "first_observed_at": "2026-03-09",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "REPORTED",
+      "exact_statement": "A before/after satellite image was circulated as proof that U.S. radar equipment at a base in Qatar had been completely destroyed.",
+      "translated_statement": null,
+      "originating_claimant": "Tehran Times / social-media amplification; creator and official military/government origin not established",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "MED-007",
+        "CI-MEDIA-MED-007"
+      ],
+      "evidence_source_ids": [
+        "SRC-551A9C2DB97C",
+        "SRC-81C038608946",
+        "SRC-B56BDBD8628F"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "The media artifact is canonically FALSE. Claims Forensics records: FALSE MEDIA ARTIFACT — REAL AL UDEID DAMAGE SEPARATE; OFFICIAL ORIGIN NOT ESTABLISHED. Web of Lies does not assign the artifact to an official Iranian origin when that provenance is not established.",
+      "provenance_limit": "OFFICIAL_ORIGIN_NOT_ESTABLISHED"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-ALUDEID_BDA-001",
+      "from_id": "WOL-EVT-ALUDEID_BDA-0901-C",
+      "to_id": "WOL-EVT-ALUDEID_BDA-0901-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-ALUDEID_BDA-002",
+      "from_id": "WOL-EVT-ALUDEID_BDA-0901-C",
+      "to_id": "WOL-SRC-IRGC",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

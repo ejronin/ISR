@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-QATAR-PILOTS-BASELINE-20260920",
+  "claim_family_id": "CH-QATAR-PILOTS",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-BAGHERZADEH",
+      "display_name": "Bagherzadeh",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-QATAR_PILOTS-0701-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-IRAN-INTERNATIONAL",
+      "display_name": "Iran International",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-A51B5D59B93F",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-IRANIAN-AUTHORITIES",
+      "display_name": "Iranian authorities",
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-QATAR_PILOTS-0702-O"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-QATAR_PILOTS-0701-C",
+      "claim_family_id": "CH-QATAR-PILOTS",
+      "source_id": "WOL-SRC-IRAN-INTERNATIONAL",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": "2026-08-15",
+      "first_observed_at": "2026-08-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran International carried the attributed claim: Iran asserted that three missing Iranian pilots had been captured alive and were secretly held by Qatar.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian official Bagherzadeh as reported by regional/international media",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0701"
+      ],
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-5B933FF9C911",
+        "SRC-60B8CB78C1E5"
+      ],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: STRONGLY CONTRADICTED — POSSIBLE KNOWLEDGE."
+    },
+    {
+      "event_id": "WOL-EVT-QATAR_PILOTS-0701-O",
+      "claim_family_id": "CH-QATAR-PILOTS",
+      "source_id": "WOL-SRC-BAGHERZADEH",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": null,
+      "first_observed_at": "2026-08-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran asserted that three missing Iranian pilots had been captured alive and were secretly held by Qatar.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian official Bagherzadeh as reported by regional/international media",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-IRAN-INTERNATIONAL"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0701"
+      ],
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-5B933FF9C911",
+        "SRC-60B8CB78C1E5"
+      ],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: STRONGLY CONTRADICTED — POSSIBLE KNOWLEDGE."
+    },
+    {
+      "event_id": "WOL-EVT-QATAR_PILOTS-0702-C",
+      "claim_family_id": "CH-QATAR-PILOTS",
+      "source_id": "WOL-SRC-IRAN-INTERNATIONAL",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-08-15",
+      "first_observed_at": "2026-08-16",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran International carried the attributed claim: Iran subsequently accused Qatar of delaying or obstructing clarification of the pilots’ fate.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian authorities / Tasnim reporting",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0702"
+      ],
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-60B8CB78C1E5",
+        "SRC-CF8587C77F8D"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: LIKELY LIE — ACCESS-OBSTRUCTION CLAIM."
+    },
+    {
+      "event_id": "WOL-EVT-QATAR_PILOTS-0702-O",
+      "claim_family_id": "CH-QATAR-PILOTS",
+      "source_id": "WOL-SRC-IRANIAN-AUTHORITIES",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-08-16",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran subsequently accused Qatar of delaying or obstructing clarification of the pilots’ fate.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian authorities / Tasnim reporting",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-IRAN-INTERNATIONAL"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0702"
+      ],
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-60B8CB78C1E5",
+        "SRC-CF8587C77F8D"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: LIKELY LIE — ACCESS-OBSTRUCTION CLAIM."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-QATAR_PILOTS-001",
+      "from_id": "WOL-EVT-QATAR_PILOTS-0701-C",
+      "to_id": "WOL-EVT-QATAR_PILOTS-0701-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-QATAR_PILOTS-002",
+      "from_id": "WOL-EVT-QATAR_PILOTS-0701-C",
+      "to_id": "WOL-SRC-BAGHERZADEH",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-QATAR_PILOTS-003",
+      "from_id": "WOL-EVT-QATAR_PILOTS-0702-C",
+      "to_id": "WOL-EVT-QATAR_PILOTS-0702-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-QATAR_PILOTS-004",
+      "from_id": "WOL-EVT-QATAR_PILOTS-0702-C",
+      "to_id": "WOL-SRC-IRANIAN-AUTHORITIES",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-QATAR_PILOTS-005",
+      "from_id": "WOL-EVT-QATAR_PILOTS-0702-O",
+      "to_id": "WOL-EVT-QATAR_PILOTS-0701-O",
+      "relationship_type": "REPEATS",
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

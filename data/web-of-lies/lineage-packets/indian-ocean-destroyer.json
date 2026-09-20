@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-INDIAN-OCEAN-DESTROYER-BASELINE-20260920",
+  "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "config/web-of-lies-source-identities.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json",
+    "data/evidence-integration/public-product-lie-ledger-semantic-handoff-20260917.json",
+    "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "data/outlet-profiles.json",
+    "data/source-registry.json"
+  ],
+  "generation_mode": "BASELINE_PLUS_CURRENT_CLAIMS_FORENSICS_OVERLAY",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings. Current public-ready Claims Forensics extensions are merged read-only; unresolved Qeshm propositions remain no-lie/unresolved, and false media artifacts with unknown origin remain unattributed.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-IRGC",
+      "canonical_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "behavior_classes": [
+        "OFFICIAL_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-7B62913B395D",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-UNATTRIBUTED-MEDIA-MED-005",
+      "display_name": "Unattributed media circulation — MED-005",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-C",
+      "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-04",
+      "first_observed_at": "2026-03-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: The IRGC said missiles hit a U.S. destroyer and refueling vessel about 650 km from Iran, causing large fires.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0501"
+      ],
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-O",
+      "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": null,
+      "first_observed_at": "2026-03-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "The IRGC said missiles hit a U.S. destroyer and refueling vessel about 650 km from Iran, causing large fires.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0501"
+      ],
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "OFFICIAL_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-MED_005-MEDIA",
+      "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "source_id": "WOL-SRC-UNATTRIBUTED-MEDIA-MED-005",
+      "event_type": "FALSE_MEDIA_ARTIFACT",
+      "published_at": "2026-03",
+      "first_observed_at": "2026-03",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "REPORTED",
+      "exact_statement": "Video circulated as proof Iran struck a U.S. destroyer in the Indian Ocean.",
+      "translated_statement": null,
+      "originating_claimant": "Third-party / social-media circulation; official origin not established",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "MED-005",
+        "CI-MEDIA-MED-005"
+      ],
+      "evidence_source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "The media artifact is canonically FALSE. Claims Forensics records: FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED. Web of Lies does not assign the artifact to an official Iranian origin when that provenance is not established.",
+      "provenance_limit": "OFFICIAL_ORIGIN_NOT_ESTABLISHED"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-INDIAN_OCEAN_DESTROYER-001",
+      "from_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-C",
+      "to_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-INDIAN_OCEAN_DESTROYER-002",
+      "from_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-C",
+      "to_id": "WOL-SRC-IRGC",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

@@ -1,0 +1,477 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CHAIN_CL_IRGC_ASSET_LIST-20260920",
+  "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=13; anchor_events=13; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "display_name": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "display_name": "Originator identified in claim text / source",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_OR_RANGE",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC published a detailed 15-day list including 11 fighter aircraft/helicopters, 17 drones, eight aerial-refueling aircraft, Patriot complexes, HIMARS platforms, command centers and other assets allegedly destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "Originator identified in claim text / source",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-5BAF6D95B04E"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: COMPOUND SCORECARD DECOMPOSED — SEE ATOMIC LINE ITEMS; NO PARENT LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "COMPOUND SCORECARD DECOMPOSED — SEE ATOMIC LINE ITEMS; NO PARENT LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P01",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed 11 fighter aircraft and helicopters among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P01",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P01"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P02",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed 17 reconnaissance and operational drones, including eight brand-new drones among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P02",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P02"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P03",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed one F-15 fighter aircraft inside a shelter among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P03",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P03"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P04",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed one P-8 aircraft among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P04",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P04"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P05",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed one C-17 transport aircraft among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P05",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P05"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P06",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed eight aerial refueling aircraft among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P06",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P06"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P07",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed four heavy helicopters among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P07",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P07"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P08",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed four HIMARS missile platforms among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P08",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P08"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P09",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed four Patriot air-defense complexes among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P09",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P09"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P10",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed two command centers among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P10",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P10"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P11",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed six MQ-9 drone hangars among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P11",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P11"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_IRGC_ASSET_LIST_P12",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_SPOKESPERSON_HOSSEIN_MOHEBI_AS_REPORTED_BY_IRNA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC's 15-day scorecard listed one drone hangar containing eight brand-new unmanned aircraft among U.S. assets it said were destroyed or damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC spokesperson Hossein Mohebi as reported by IRNA",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST-P12",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-IRGC-ASSET-LIST-P12"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED EXACT TALLY — NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED EXACT TALLY — NO LIE FINDING"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

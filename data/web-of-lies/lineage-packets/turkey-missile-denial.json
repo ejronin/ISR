@@ -1,0 +1,619 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-TURKEY-MISSILE-DENIAL-BASELINE-20260920",
+  "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-ARAGHCHI",
+      "display_name": "Abbas Araqchi",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-733C755F8DC0",
+        "SRC-CC18DEA75017",
+        "SRC-D590DE3075A0"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-O",
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-O",
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-IRANIAN-ARMED-FORCES",
+      "display_name": "Iranian Armed Forces",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-D86835557005"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0201-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-IRANIAN-EMBASSY",
+      "display_name": "Iranian Embassy / official diplomatic messaging",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-82DCB357724B"
+      ],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-7B62913B395D",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-733C755F8DC0",
+        "SRC-82DCB357724B",
+        "SRC-D86835557005"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0201-C",
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-CC18DEA75017",
+        "SRC-D590DE3075A0"
+      ],
+      "behavior_classes": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-C",
+        "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-C"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0201-C",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-03-05",
+      "first_observed_at": "2026-03-05T07:44",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Iran said no Iranian missile had been fired toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Armed Forces as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0201"
+      ],
+      "evidence_source_ids": [
+        "SRC-D86835557005"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-2E51203B3913"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: LIKELY LIE."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0201-O",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-IRANIAN-ARMED-FORCES",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-03-05T07:44",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran said no Iranian missile had been fired toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Armed Forces as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0201"
+      ],
+      "evidence_source_ids": [
+        "SRC-D86835557005"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-2E51203B3913"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: LIKELY LIE."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-C",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-03-10",
+      "first_observed_at": "2026-03-10T15:03",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Tasnim News Agency carried the attributed claim: Araqchi said no projectiles had been fired from Iran toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi, Iranian Foreign Minister",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0202"
+      ],
+      "evidence_source_ids": [
+        "SRC-CC18DEA75017"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-2E51203B3913"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: VERY LIKELY LIE."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-O",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-ARAGHCHI",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-03-10T15:03",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Araqchi said no projectiles had been fired from Iran toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi, Iranian Foreign Minister",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0202"
+      ],
+      "evidence_source_ids": [
+        "SRC-CC18DEA75017"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-2E51203B3913"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: VERY LIKELY LIE."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-03-13",
+      "first_observed_at": "2026-03-13T18:54",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Iran again dismissed reports that it launched missiles toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Embassy / Iranian official messaging as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0203"
+      ],
+      "evidence_source_ids": [
+        "SRC-82DCB357724B"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-2E51203B3913"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: VERY LIKELY LIE."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-O",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-IRANIAN-EMBASSY",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": null,
+      "first_observed_at": "2026-03-13T18:54",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Iran again dismissed reports that it launched missiles toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Embassy / Iranian official messaging as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0203"
+      ],
+      "evidence_source_ids": [
+        "SRC-82DCB357724B"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-2E51203B3913"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The underlying proposition is false or misleading in the canonical record. Claims Forensics separately records: VERY LIKELY LIE."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": "2026-03-31",
+      "first_observed_at": "2026-03-31T15:17",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: Araqchi said reports that Iran fired a missile toward Turkey were completely baseless and warned of repeated false-flag operations by enemies of regional peace and friendship.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0204"
+      ],
+      "evidence_source_ids": [
+        "SRC-733C755F8DC0"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-2E51203B3913"
+      ],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: UNSUBSTANTIATED — KNOWLEDGE INSUFFICIENT."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-O",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-ARAGHCHI",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": null,
+      "first_observed_at": "2026-03-31T15:17",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Araqchi said reports that Iran fired a missile toward Turkey were completely baseless and warned of repeated false-flag operations by enemies of regional peace and friendship.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0204"
+      ],
+      "evidence_source_ids": [
+        "SRC-733C755F8DC0"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-2E51203B3913"
+      ],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: UNSUBSTANTIATED — KNOWLEDGE INSUFFICIENT."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-C",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": "2026-04-01",
+      "first_observed_at": "2026-04-01T09:31",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "POSSIBLE",
+      "exact_statement": "Tasnim News Agency carried the attributed claim: Tasnim repeated Araqchi’s categorical denial of an Iranian missile launch toward Turkey and his warning that false-flag operations could recur.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi as reported by Tasnim",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0205"
+      ],
+      "evidence_source_ids": [
+        "SRC-D590DE3075A0"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: UNSUBSTANTIATED — KNOWLEDGE INSUFFICIENT."
+    },
+    {
+      "event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-O",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-ARAGHCHI",
+      "event_type": "NARRATIVE_MUTATION",
+      "published_at": null,
+      "first_observed_at": "2026-04-01T09:31",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "POSSIBLE",
+      "exact_statement": "Tasnim repeated Araqchi’s categorical denial of an Iranian missile launch toward Turkey and his warning that false-flag operations could recur.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi as reported by Tasnim",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0205"
+      ],
+      "evidence_source_ids": [
+        "SRC-D590DE3075A0"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": "NARRATIVE_REPLACEMENT",
+      "behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "This is a documented narrative mutation or substitution. Claims Forensics separately records: UNSUBSTANTIATED — KNOWLEDGE INSUFFICIENT."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-001",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0201-C",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0201-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-D86835557005"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-002",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0201-C",
+      "to_id": "WOL-SRC-IRANIAN-ARMED-FORCES",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-D86835557005"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-003",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-C",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-CC18DEA75017"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-004",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-C",
+      "to_id": "WOL-SRC-ARAGHCHI",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-CC18DEA75017"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-005",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-O",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0201-O",
+      "relationship_type": "REPEATS",
+      "evidence_source_ids": [
+        "SRC-CC18DEA75017"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-006",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-82DCB357724B"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-007",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
+      "to_id": "WOL-SRC-IRANIAN-EMBASSY",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-82DCB357724B"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-008",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-O",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-O",
+      "relationship_type": "REPEATS",
+      "evidence_source_ids": [
+        "SRC-82DCB357724B"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-009",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-733C755F8DC0"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-010",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C",
+      "to_id": "WOL-SRC-ARAGHCHI",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-733C755F8DC0"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-011",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-O",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-O",
+      "relationship_type": "MUTATES_INTO",
+      "evidence_source_ids": [
+        "SRC-733C755F8DC0"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-012",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-C",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-D590DE3075A0"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-013",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-C",
+      "to_id": "WOL-SRC-ARAGHCHI",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-D590DE3075A0"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-TURKEY_MISSILE_DENIAL-014",
+      "from_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-O",
+      "to_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-O",
+      "relationship_type": "MUTATES_INTO",
+      "evidence_source_ids": [
+        "SRC-D590DE3075A0"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

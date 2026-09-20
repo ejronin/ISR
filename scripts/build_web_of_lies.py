@@ -39,6 +39,20 @@ METRIC_EVENT_TYPES = {
     "PREDICTION_CORRECTION": "prediction_corrections",
 }
 
+ADVERSE_FAMILY_EVENT_TYPES = {
+    "FALSE_OR_MISLEADING_CONNECTION",
+    "NARRATIVE_MUTATION",
+    "CITATION_LAUNDERING",
+    "RECYCLED_MEDIA",
+    "REPEAT_AFTER_CORRECTION",
+    "DELETE_WITHOUT_CORRECTION",
+    "FAILED_CLAIM_ABANDONED",
+    "STEALTH_EDIT",
+    "VICTIM_EXPLOITATION",
+    "UNIQUE_PROPAGATION",
+    "PREDICTION_FAILURE",
+}
+
 SCORE_WEIGHTS = {
     "claim_families_traced": 2.0,
     "false_misleading_findings_connected": 6.0,
@@ -373,7 +387,12 @@ def empty_metrics() -> dict[str, int | None]:
 
 def metrics_for_events(events: list[dict[str, Any]]) -> dict[str, int | None]:
     metrics = empty_metrics()
-    metrics["claim_families_traced"] = len({str(e["claim_family_id"]) for e in events})
+    adverse_families = {
+        str(event["claim_family_id"])
+        for event in events
+        if str(event.get("event_type") or "") in ADVERSE_FAMILY_EVENT_TYPES
+    }
+    metrics["claim_families_traced"] = len(adverse_families)
     downstream_values = []
     for event in events:
         metric_key = METRIC_EVENT_TYPES.get(str(event.get("event_type") or ""))

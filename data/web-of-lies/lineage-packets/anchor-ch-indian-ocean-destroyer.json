@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_INDIAN_OCEAN_DESTROYER-20260920",
+  "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=3; anchor_events=3; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "IRGC as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-THIRD_PARTY_SOCIAL_MEDIA_CIRCULATION_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "display_name": "Third-party / social-media circulation; official origin not established",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0501_P01",
+      "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-04",
+      "first_observed_at": "2026-03-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The IRGC said missiles hit a U.S. destroyer and refueling vessel about 650 km from Iran, causing large fires.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0501-P01",
+        "IR-CLM-0501",
+        "PROP-5FEE6B06CBE0"
+      ],
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0501_P02",
+      "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-04",
+      "first_observed_at": "2026-03-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The IRGC said missiles hit a U.S. destroyer and refueling vessel about 650 km from Iran, causing large fires.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0501-P02",
+        "IR-CLM-0501",
+        "PROP-B24AAD3B42E9"
+      ],
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_MEDIA_MED_005",
+      "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "source_id": "WOL-SRC-CLAIMANT-THIRD_PARTY_SOCIAL_MEDIA_CIRCULATION_OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03",
+      "first_observed_at": "2026-03",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Video circulated as proof Iran struck a U.S. destroyer in the Indian Ocean.",
+      "translated_statement": null,
+      "originating_claimant": "Third-party / social-media circulation; official origin not established",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-MEDIA-MED-005",
+        "MED-005",
+        "PROP-MEDIA-MED-005"
+      ],
+      "evidence_source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE MEDIA ARTIFACT — OFFICIAL ORIGIN NOT ESTABLISHED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

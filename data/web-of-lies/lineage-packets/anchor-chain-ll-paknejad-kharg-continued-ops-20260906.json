@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CHAIN_LL_PAKNEJAD_KHARG_CONTINUED_OPS_20260906-20260920",
+  "claim_family_id": "CHAIN-LL-PAKNEJAD-KHARG-CONTINUED-OPS-20260906",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=1; anchor_events=1; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRAN",
+      "display_name": "Iran",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-C340B7575832",
+        "SRC-E2269A4B499D"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_LL_PAKNEJAD_KHARG_CONTINUED_OPS_20260906",
+      "claim_family_id": "CHAIN-LL-PAKNEJAD-KHARG-CONTINUED-OPS-20260906",
+      "source_id": "WOL-SRC-CLAIMANT-IRAN",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-06",
+      "first_observed_at": "2026-09-06",
+      "time_precision": null,
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Paknejad said Kharg continued operating despite repeated strikes.",
+      "translated_statement": null,
+      "originating_claimant": "Iran",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-PAKNEJAD-KHARG-CONTINUED-OPS-20260906",
+        "LL-PAKNEJAD-KHARG-CONTINUED-OPS-20260906",
+        "PROP-0FF22237CCE6"
+      ],
+      "evidence_source_ids": [
+        "SRC-C340B7575832",
+        "SRC-E2269A4B499D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

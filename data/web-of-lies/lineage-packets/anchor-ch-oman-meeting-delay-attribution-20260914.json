@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_OMAN_MEETING_DELAY_ATTRIBUTION_20260914-20260920",
+  "claim_family_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=2; anchor_events=2; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_OFFICIALS",
+      "display_name": "Iranian officials",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-67F73A60AE22",
+        "SRC-C934F4D2622E",
+        "SRC-E36D08295EDC"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRAN_SAUDI_REQUESTED_OMAN_DELAY_20260914_P01",
+      "claim_family_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_OFFICIALS",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Saudi Arabia requested postponement of the planned Oman Gulf-Iran Hormuz meeting.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian officials",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914-P01",
+        "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+        "PROP-SAUDI-REQUESTED-OMAN-DELAY-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-67F73A60AE22",
+        "SRC-E36D08295EDC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED IRANIAN ATTRIBUTION — NO INDEPENDENT SAUDI/OMANI CONFIRMATION. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED IRANIAN ATTRIBUTION — NO INDEPENDENT SAUDI/OMANI CONFIRMATION"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRAN_SAUDI_REQUESTED_OMAN_DELAY_20260914PM_P01",
+      "claim_family_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_OFFICIALS",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Saudi Arabia requested postponement of the Oman Gulf-Iran Hormuz meeting.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian officials",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914PM-P01",
+        "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914PM",
+        "PROP-SAUDI-REQUESTED-OMAN-DELAY-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: REPETITION — UNDERLYING ATTRIBUTION REMAINS UNRESOLVED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "REPETITION — UNDERLYING ATTRIBUTION REMAINS UNRESOLVED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}
