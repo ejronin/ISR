@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_MAINTENANCE_SWEEP",
+  "maintenance_version": "ATLAS-CLAIMS-FORENSICS-MAINT-20260920-1",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+  "baseline_main_sha": "9eb78651d77d9e17d2273cf6cd37f013a6aaf162",
+  "evidence_cutoff": "2026-09-20T12:28:00-04:00",
+  "assessment_date": "2026-09-20",
+  "upstream_inputs": [
+    "data/evidence-integration/f15e-isfahan-source-provenance-20260920.json",
+    "data/evidence-integration/rook-catchup-claims-routing-20260920.json",
+    "data/evidence-integration/rook-catchup-consumption-audit-20260920.json",
+    "data/canonical-updates/UPD-20260920-ROOK-CATCHUP-CONVERGENCE.json"
+  ],
+  "rules_applied": [
+    "FALSE != LIE.",
+    "Institutional knowledge may be inferred from subject-matter nexus, control/custody of counterevidence, elapsed time, correction opportunity, repetition and the number of independent failures required by an innocent explanation.",
+    "Signed-author knowledge and publisher/institutional knowledge are separate questions.",
+    "Affiliation alone does not prove that a specific official dictated wording; direct institutional origin, control, adoption, repetition or correction opportunity may support organizational knowledge.",
+    "Claims lacking a promoted canonical claim-origin source are adjudicated for routing but are not inserted into the public Lie Ledger until source infrastructure is complete."
+  ],
+  "f15e_maintenance": {
+    "chain_id": "CH-F15E-CSAR-URANIUM",
+    "finding": "The Apr. 9 signed analysis must distinguish Mohammad Molaei as author from Press TV as publisher/amplifier.",
+    "author_disposition": {
+      "claimant": "Mohammad Molaei",
+      "truth": "FALSE",
+      "knowledge": "INSUFFICIENT_EVIDENCE",
+      "publication": "PUBLIC_READY",
+      "reason": "The signed article continues the false uranium-mission substitution, but the accepted record does not establish Molaei's personal access to the counterfacts required for a strong individual knowledge judgment."
+    },
+    "publisher_disposition": {
+      "claimant": "Press TV",
+      "role": "PUBLISHER_AND_INSTITUTIONAL_AMPLIFIER",
+      "truth": "FALSE",
+      "knowledge": "VERY_LIKELY_KNEW_FALSE",
+      "denominator": "REPETITION_AMPLIFICATION",
+      "counts_as_unique_proposition": false,
+      "reason": "By Apr. 9 Press TV had already carried the rescue-specific record, the Apr. 6 F-15E correction, the Apr. 7 categorical nuclear-mission substitution, and reporting that U.S. forces destroyed stranded rescue equipment themselves. Continued publication of the substitute explanation after those correction opportunities is better explained by institutional narrative preservation than by repeated independent information failure."
+    },
+    "blocker_effect": "The two legacy knowledge-access blockers close because they were attached to a generic Press TV actor record. The author-level rows become public with no personal-knowledge Lie finding; the publisher-level institutional amplification is separately evidence-supported."
+  },
+  "route_dispositions": [
+    {
+      "intake_refs": [
+        "CLM-IRGC-MQ9-QESHM-20260916",
+        "CLM-IRGC-52-MQ9-CUMULATIVE-20260916",
+        "CLM-IRGC-MQ9-53RD-20260917"
+      ],
+      "chain_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "disposition": "NO_SEMANTIC_CHANGE",
+      "result": "Sep. 16/17 Qeshm individual MQ-9 losses and exact 52nd/53rd ordinals remain unresolved/unsubstantiated. Later U.S.-official reporting of at least two recent MQ-1 losses does not identify them as the Qeshm aircraft and therefore does not resolve the claims."
+    },
+    {
+      "intake_refs": [
+        "CLM-HOUTHI-F15-SHOOTDOWN-20260916",
+        "CLM-HOUTHI-F15-SHOOTDOWN-CONTINUITY-20260917"
+      ],
+      "chain_id": "CH-RSAF-F15SA-MARIB-20260916",
+      "disposition": "NO_SEMANTIC_CHANGE",
+      "result": "One RSAF F-15SA physical loss is supported; Houthi missile causation remains unresolved."
+    },
+    {
+      "intake_refs": [
+        "CLM-IRGC-TANKER-HORMUZ-20260917",
+        "CLM-TREND-TANKER-US-DIRECTION-20260918"
+      ],
+      "chain_id": "CH-HORMUZ-TREND-TANKER-20260917",
+      "disposition": "NEW_ACCUSATION_CHAIN_PUBLIC_READY",
+      "result": "A Hormuz tanker projectile/attack incident is supported as event context. The exact IRGC account tying the incident to Trend and the proposition that U.S. forces directed an unauthorized passage remain unresolved."
+    },
+    {
+      "intake_refs": [
+        "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918"
+      ],
+      "chain_id": "CH-IRAN-MILITARY-TRAINING-20260918",
+      "disposition": "CONTROL_CASE_SOURCE_PROMOTION_REQUIRED",
+      "result": "The >600,000 registration figure is an exact factual count and remains unresolved without independent audit. The >1 million figure is a prospective projection and is not adjudicated as a present-tense lie.",
+      "source_blocker": "The AP claim-origin URL is present in the accepted locker but was not promoted as a canonical source object by the convergence packet."
+    },
+    {
+      "intake_refs": [
+        "CLM-IRAN-SEVEN-SETTLEMENT-CONDITIONS-20260919",
+        "CLM-IRAN-SEVEN-CONDITIONS-SIX-PUBLIC-20260920"
+      ],
+      "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "disposition": "EXISTING_CONTROL_CHAIN_CHRONOLOGY_ADVANCE",
+      "result": "Later statements repeat the seven-condition position and expand public detail from a partial list to six named conditions plus one undisclosed. The earlier partial public summary was incomplete, not retroactively false."
+    },
+    {
+      "intake_refs": [
+        "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919"
+      ],
+      "chain_id": "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919",
+      "disposition": "CONTROL_CASE_SOURCE_PROMOTION_REQUIRED",
+      "result": "The claimed recent multi-warhead anti-ship missile test near a U.S. vessel remains unsubstantiated/unresolved on the accepted record; no Lie finding is made.",
+      "source_blocker": "The New Indian Express claim-origin URL is present in the accepted locker but was not promoted as a canonical source object."
+    },
+    {
+      "intake_refs": [
+        "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919"
+      ],
+      "chain_id": "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "disposition": "EXACT_METRIC_SOURCE_PROMOTION_REQUIRED",
+      "result": "The exact zero-export proposition remains unresolved. An August Iranian central-bank statement also reported zero exports and visible supertanker traffic had been severely constrained, but a current-period independent tanker/customs reconciliation is absent.",
+      "source_blocker": "The Anadolu claim-origin URL is present in the accepted locker but was not promoted as a canonical source object."
+    },
+    {
+      "intake_refs": [
+        "CLM-IRAN-PREPARED-US-ALLIED-ATTACK-INTEL-20260920"
+      ],
+      "chain_id": "CH-IRAN-US-ATTACK-FOREKNOWLEDGE-20260920",
+      "disposition": "NEW_STRATEGIC_WARNING_CONTROL_PUBLIC_READY",
+      "result": "The warning is established as a statement; the claimed intelligence that a major U.S./allied attack was being prepared remains unresolved."
+    },
+    {
+      "intake_refs": [
+        "UPD-RIYADH-FUEL-DEPOT-FIRE-20260919"
+      ],
+      "chain_id": "CH-HOUTHI-RIYADH-YANBU-20260919",
+      "disposition": "NEW_ACCUSATION_CHAIN_PUBLIC_READY",
+      "result": "The Riyadh airport fuel-storage-area fire is supported. Attribution of that fire to a specific Houthi weapon and claimed Yanbu Aramco damage remain unresolved."
+    }
+  ],
+  "public_mutation_summary": {
+    "new_chains": [
+      "CH-HORMUZ-TREND-TANKER-20260917",
+      "CH-IRAN-US-ATTACK-FOREKNOWLEDGE-20260920",
+      "CH-HOUTHI-RIYADH-YANBU-20260919"
+    ],
+    "existing_chain_advanced": [
+      "CH-F15E-CSAR-URANIUM",
+      "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912"
+    ],
+    "deferred_source_promotion": [
+      "CH-IRAN-MILITARY-TRAINING-20260918",
+      "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919",
+      "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919"
+    ]
+  }
+}

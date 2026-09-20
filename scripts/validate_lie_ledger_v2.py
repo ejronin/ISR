@@ -234,8 +234,8 @@ def validate(root: Path = ROOT) -> None:
         if chain.get("classification") != "ACCUSATION_CHAIN"
         and chain.get("public_include_in_accusation_count") is False
     ]
-    require(len(accusation_chains) == 33, f"current accusation-chain denominator drifted: {len(accusation_chains)}")
-    require(len(control_chains) == 14, f"current control-chain denominator drifted: {len(control_chains)}")
+    require(len(accusation_chains) == 35, f"current accusation-chain denominator drifted: {len(accusation_chains)}")
+    require(len(control_chains) == 15, f"current control-chain denominator drifted: {len(control_chains)}")
     require(len(accusation_chains) + len(control_chains) == len(chains), "current Lie Ledger chain classification is incomplete")
 
     # Every chain must be independently reconstructable from canonical claim,
@@ -372,9 +372,8 @@ def validate(root: Path = ROOT) -> None:
     }
     require(global_blocker_keys == active_blocker_keys, "global publication-blocker registry is stale relative to active adjudications")
     require(
-        {blocker.get("claim_instance_id") for blocker in global_blockers}
-        == {"CI-IR-CLM-0011-P01", "CI-IR-CLM-0011-P02"},
-        "unexpected active publication-blocked case remains after Sep. 19 source completion",
+        not global_blockers,
+        "active publication-blocked case remains after Sep. 20 Claims Forensics maintenance",
     )
 
     remains = [record for record in records if record.get("proposition_id") == "PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION"]

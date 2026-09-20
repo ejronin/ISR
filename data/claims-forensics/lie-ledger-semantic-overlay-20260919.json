@@ -1,10 +1,10 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260919-8",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260920-9",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
-  "effective_date": "2026-09-19",
+  "effective_date": "2026-09-20",
   "purpose": "Apply the completed full-ledger Claims Forensics adjudication after source qualification, including source-faithful atomic decomposition of the IRGC 15-day asset scorecard, false-media provenance, and evidence-complete/no-Lie dispositions for formerly blocked cases.",
   "rules": {
     "top_level_unit": "NARRATIVE_CHAIN",
@@ -21,7 +21,7 @@
         "label": "Lie",
         "key": "lie"
       },
-      "plain_english_summary": "A real F-15E was lost and one airman was genuinely missing. The deceptive narrative was what Iranian official and state-media channels said happened next: the aircraft was first misidentified as an F-35; a capture story was promoted while Iranian authorities were still searching for the airman; rescue failure and Iranian-caused equipment losses were overstated; false remains evidence was presented; and, after both crew were recovered, the story shifted toward a nuclear/uranium mission explanation. Atlas keeps the real shootdown, the missing-airman period, the later F-15E correction, and real rescue-equipment losses as factual context rather than labeling those facts themselves as lies.",
+      "plain_english_summary": "A real F-15E was lost and one airman was genuinely missing. The deceptive narrative was what Iranian official and state-media channels said happened next: the aircraft was first misidentified as an F-35; a capture story was promoted while Iranian authorities were still searching for the airman; rescue failure and Iranian-caused equipment losses were overstated; false remains evidence was presented; and, after both crew were recovered, the story shifted toward a nuclear/uranium mission explanation. Atlas keeps the real shootdown, the missing-airman period, the later F-15E correction, and real rescue-equipment losses as factual context rather than labeling those facts themselves as lies. The Apr. 9 signed analysis is attributed to Mohammad Molaei as author, while Press TV's separate act of publishing and amplifying it is assessed at the institutional level.",
       "how_we_know": [
         "The underlying loss is real: a U.S. F-15E went down in Iran and one crew member remained missing while U.S. forces searched for him.",
         "The original F-35 identification was wrong. Iranian reporting later corrected the aircraft type to F-15E using recovered wreckage and debris.",
@@ -31,6 +31,8 @@
         "Iranian official channels also presented supposed U.S. remains as evidence; the Iranian broadcasting system acknowledged the image was inaccurate or incorrect the next day.",
         "Iran really did possess enriched uranium at Isfahan. That fact is not evidence that the observed rescue package was secretly a uranium-seizure mission. After the personnel-recovery outcome was established, later reporting substituted a nuclear/uranium mission narrative while preserving the same claimed Iranian victory.",
         "The Lie finding comes from the combined chronology: repeated contradictions, corrections available inside the same state information system, direct institutional access to wreckage and battle-damage information, and later outcome-preserving narrative substitution. It is not based merely on the absence of proof or on a U.S. denial.",
+        "The Apr. 9 page was signed by Mohammad Molaei and carried as Press TV analysis. Atlas therefore does not impute Press TV's institutional knowledge to Molaei personally. His individual knowledge remains insufficiently established.",
+        "Press TV's publisher-level knowledge is separately assessable. Before publishing the Apr. 9 continuation, the outlet had already carried the rescue-specific record, its Apr. 6 F-15E correction, the Apr. 7 categorical nuclear-mission substitution, and reporting that stranded rescue equipment was destroyed by U.S. forces. Repetition after those correction opportunities materially weakens repeated innocent institutional error.",
         "Several circulated images/videos tied to the pilot, rescue, and shootdown narrative are independently false or recycled. Atlas keeps those as separate media-artifact nodes because their official Iranian origin was not established; they support media-forensics conclusions, not automatic knowledge attribution to the IRGC or state officials."
       ],
       "branches": [
@@ -49,7 +51,8 @@
       "open_evidence_gaps": [
         "The current record does not establish that the early hedged Tasnim capture report was knowingly false when first published.",
         "Not every rescue-equipment loss has a fully public platform-by-platform causal reconstruction.",
-        "False third-party media tied to the pilot/rescue narrative is not attributed to an official Iranian origin absent authenticated provenance."
+        "False third-party media tied to the pilot/rescue narrative is not attributed to an official Iranian origin absent authenticated provenance.",
+        "Mohammad Molaei's individual access to the counterfacts behind his Apr. 9 signed analysis is not established; this does not erase the separately supported Press TV institutional-knowledge inference."
       ],
       "public_include_in_accusation_count": true
     },
@@ -478,6 +481,39 @@
     "CHAIN-LL-PAKNEJAD-KHARG-550-HITS-20260906": {
       "classification": "ACCUSATION_CHAIN",
       "public_include_in_accusation_count": true
+    },
+    "CH-HORMUZ-TREND-TANKER-20260917": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Trend tanker Hormuz incident and U.S.-direction attribution",
+      "public_include_in_accusation_count": true,
+      "event_title": "Sep. 17 Hormuz tanker incident",
+      "event_baseline": "A tanker projectile/attack incident occurred in Hormuz; independent reporting supports the incident but not every IRGC attribution.",
+      "terminal_event_state": "The incident is supported. Exact IRGC causation/effect details and the allegation of U.S. military direction remain unresolved.",
+      "open_evidence_gaps": [
+        "Independent confirmation of the vessel identity as Trend, exact weapon/effect reconstruction, and evidence for or against U.S. military direction."
+      ]
+    },
+    "CH-IRAN-US-ATTACK-FOREKNOWLEDGE-20260920": {
+      "classification": "STRATEGIC_WARNING_CONTROL",
+      "public_title": "Iranian warning of a prepared U.S./allied attack",
+      "public_include_in_accusation_count": false,
+      "event_title": "Iranian escalation warning and foreknowledge claim",
+      "event_baseline": "Iran's military central command publicly warned of a major new attack and said it possessed information that one was being prepared.",
+      "terminal_event_state": "The warning is established as a statement; the claimed intelligence basis remains independently unsubstantiated.",
+      "open_evidence_gaps": [
+        "Independent evidence confirming or falsifying the claimed foreknowledge."
+      ]
+    },
+    "CH-HOUTHI-RIYADH-YANBU-20260919": {
+      "classification": "ACCUSATION_CHAIN",
+      "public_title": "Houthi Riyadh/Yanbu attack and BDA claims",
+      "public_include_in_accusation_count": true,
+      "event_title": "Sep. 19 Houthi Riyadh/Yanbu attack claims",
+      "event_baseline": "Saudi authorities issued aerial-threat warnings and a fuel-storage-area fire was observed near King Khalid International Airport during the attack window.",
+      "terminal_event_state": "Attack activity and the Riyadh fuel-area fire are supported; Houthi weapon-to-fire causation and claimed Yanbu damage remain unresolved.",
+      "open_evidence_gaps": [
+        "Weapon-to-fire attribution for the Riyadh fuel-area fire and independent battle-damage confirmation at Yanbu."
+      ]
     }
   },
   "narrative_family_overrides": {
@@ -1120,6 +1156,46 @@
         "AP later reported U.S. troops and military equipment still present in Erbil during an organized drawdown.",
         "The canonical record lacks facility-by-facility July 26 BDA or the claimant's internal assessment."
       ]
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0011-P01",
+      "set": {
+        "actor": "Mohammad Molaei",
+        "claimant_type": "SIGNED_ANALYSIS_AUTHOR",
+        "actor_role": "AMPLIFIER",
+        "truth_adjudication": "FALSE",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "FALSE SIGNED ANALYSIS — AUTHOR KNOWLEDGE NOT ESTABLISHED",
+        "publication_status": "PUBLIC_READY",
+        "publication_blockers": [],
+        "truth_qualifier": "MISSION_SUBSTITUTION_CONTINUATION_AUTHOR_LEVEL"
+      },
+      "replace_observed_facts": [
+        "Mohammad Molaei's signed Apr. 9 analysis questioned the rescue account and advanced a larger or undisclosed-mission explanation after the personnel-recovery outcome was public.",
+        "The accepted record does not establish Molaei's personal access to the counterfacts needed for a strong individual knowledge judgment.",
+        "Publisher-level institutional knowledge is adjudicated separately from the author's individual knowledge."
+      ],
+      "rationale": "Correct claimant attribution from generic Press TV to signed author Mohammad Molaei. The proposition remains false, but the accepted evidence does not prove Molaei's personal knowledge of falsity."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0011-P02",
+      "set": {
+        "actor": "Mohammad Molaei",
+        "claimant_type": "SIGNED_ANALYSIS_AUTHOR",
+        "actor_role": "AMPLIFIER",
+        "truth_adjudication": "FALSE",
+        "knowledge_judgment": "INSUFFICIENT_EVIDENCE",
+        "combined_assessment": "FALSE OUTCOME-PRESERVING ANALYSIS — AUTHOR KNOWLEDGE NOT ESTABLISHED",
+        "publication_status": "PUBLIC_READY",
+        "publication_blockers": [],
+        "truth_qualifier": "MISSION_SUBSTITUTION_CONTINUATION_AUTHOR_LEVEL"
+      },
+      "replace_observed_facts": [
+        "Molaei's signed analysis preserved the possibility of a larger or undisclosed objective after the rescue outcome and U.S. self-destruction of stranded equipment were public.",
+        "That continuation does not establish Molaei's private knowledge state.",
+        "Press TV's institutional decision to publish and amplify the analysis is a separate knowledge event."
+      ],
+      "rationale": "Separate author-level knowledge from publisher-level institutional knowledge; the legacy generic Press TV blocker incorrectly collapsed the two."
     }
   ],
   "full_sweep_path": "data/claims-forensics/lie-ledger-full-sweep-20260919.json",
@@ -4026,6 +4102,705 @@
       "publication_status": "PUBLIC_READY",
       "publication_blockers": [],
       "rationale": "Atomic Erbil decomposition separates occurrence/damage context from functional effect and near-total scale."
+    },
+    {
+      "claim_instance_id": "CI-IR-CLM-0011-P03",
+      "claim_id": "IR-CLM-0011",
+      "original_claim_id": "IR-CLM-0011",
+      "proposition_id": "PROP-F15E-URANIUM-PRESS-TV-INSTITUTIONAL-20260409",
+      "chain_id": "CH-F15E-CSAR-URANIUM",
+      "actor": "Press TV",
+      "claimant_type": "STATE_MEDIA_PUBLISHER",
+      "actor_role": "AMPLIFIER",
+      "claim": "Press TV published and institutionally amplified the Apr. 9 analysis questioning the rescue account and preserving a uranium/undisclosed-mission explanation.",
+      "source_proposition": "The rescue account was a cover for a uranium-related or otherwise undisclosed mission.",
+      "proposition": "The rescue account was a cover for a uranium-related or otherwise undisclosed mission.",
+      "proposition_axis": "CAUSE",
+      "truth_adjudication": "FALSE",
+      "truth_qualifier": "INSTITUTIONAL_POST_CORRECTION_AMPLIFICATION",
+      "knowledge_judgment": "VERY_LIKELY_KNEW_FALSE",
+      "combined_assessment": "VERY LIKELY LIE — INSTITUTIONAL AMPLIFICATION AFTER CORRECTION OPPORTUNITY",
+      "denominator_class": "REPETITION_AMPLIFICATION",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Press TV published Molaei's signed Apr. 9 analysis after both F-15E crew members had been recovered.",
+        "Before Apr. 9 Press TV had already published the Apr. 6 F-15E correction and the Apr. 7 categorical nuclear-mission substitution.",
+        "The accepted record also contained rescue-specific reconstruction showing U.S. personnel destroyed disabled rescue equipment rather than leaving it behind.",
+        "Press TV's pre-event technical analysis described a uranium-seizure operation as requiring a much larger and more specialized force package than the observed rescue mission."
+      ],
+      "analytic_inference": "The publisher possessed and repeatedly carried claim-domain information materially inconsistent with the substitute mission explanation. Continued amplification after multiple correction opportunities is better explained by institutional narrative preservation than by a new independent information failure.",
+      "knowledge_indicators": [
+        {
+          "indicator": "DIRECT_INSTITUTIONAL_ACCESS",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "Press TV possessed its own prior F-15E correction and mission-narrative publications before the Apr. 9 amplification.",
+          "evidence_refs": [
+            "SRC-481DC6A8E2DB",
+            "SRC-7E2DE3FC127A"
+          ],
+          "available_at": "2026-04-09",
+          "temporal_role": "CONTEMPORANEOUS"
+        },
+        {
+          "indicator": "POST_CORRECTION_REPETITION",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "STRONG",
+          "summary": "The outlet continued the substitute explanation after the rescue outcome and correction opportunities were public.",
+          "evidence_refs": [
+            "SRC-694207959BE5",
+            "SRC-7471ECB26165",
+            "SRC-03F069A69AAF"
+          ],
+          "available_at": "2026-04-09",
+          "temporal_role": "CONTEMPORANEOUS"
+        },
+        {
+          "indicator": "INTERNAL_CONTRADICTION",
+          "direction": "SUPPORTS_KNOWLEDGE",
+          "strength": "MODERATE",
+          "summary": "Press TV's own pre-event uranium-seizure requirements were materially unlike the observed rescue package later recast as a uranium mission.",
+          "evidence_refs": [
+            "SRC-D493B3396238",
+            "SRC-03F069A69AAF"
+          ],
+          "available_at": "2026-04-09",
+          "temporal_role": "CONTEMPORANEOUS"
+        }
+      ],
+      "credible_alternatives": [
+        {
+          "alternative": "Press TV's editorial system continued relying on genuinely incorrect institutional intelligence despite its own contrary reporting and correction history.",
+          "comparative_weight": "LESS_PLAUSIBLE",
+          "basis": "Possible, but it requires repeated independent editorial/information failures across the outlet's own correction, rescue, equipment-loss and mission-purpose reporting."
+        }
+      ],
+      "comparative_assessment": "Institutional innocent error remains possible, but the number of required failures after accumulated contrary information makes deliberate outcome-preserving amplification materially more plausible.",
+      "narrative_function": "Institutional continuation/amplification of the substitute nuclear-mission narrative.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-03F069A69AAF"
+        ],
+        "factual_baseline": [
+          "SRC-694207959BE5",
+          "SRC-7471ECB26165"
+        ],
+        "contemporaneous_state": [
+          "SRC-481DC6A8E2DB",
+          "SRC-7E2DE3FC127A"
+        ],
+        "knowledge_access": [
+          "SRC-481DC6A8E2DB",
+          "SRC-7E2DE3FC127A",
+          "SRC-D493B3396238",
+          "SRC-694207959BE5",
+          "SRC-7471ECB26165"
+        ],
+        "knowledge_indicators": [
+          "SRC-481DC6A8E2DB",
+          "SRC-7E2DE3FC127A",
+          "SRC-D493B3396238"
+        ],
+        "contrary_evidence": [
+          "SRC-694207959BE5",
+          "SRC-7471ECB26165"
+        ],
+        "corrections": [
+          "SRC-481DC6A8E2DB"
+        ],
+        "repetitions": [
+          "SRC-03F069A69AAF"
+        ],
+        "credible_alternative": [],
+        "comparative_inference": [
+          "SRC-D493B3396238"
+        ],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-03F069A69AAF",
+        "SRC-481DC6A8E2DB",
+        "SRC-7E2DE3FC127A",
+        "SRC-D493B3396238",
+        "SRC-694207959BE5",
+        "SRC-7471ECB26165"
+      ],
+      "statement_date": "2026-04-09",
+      "event_time": "2026-04-09",
+      "relation_type": "AMPLIFICATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "Separate the signed author's personal knowledge from Press TV's publisher-level institutional knowledge and repetition responsibility."
+    },
+    {
+      "claim_instance_id": "CI-CLM-IRGC-TREND-TANKER-20260917-P01",
+      "claim_id": "CLM-IRGC-TANKER-HORMUZ-20260917",
+      "original_claim_id": "CLM-IRGC-TANKER-HORMUZ-20260917",
+      "proposition_id": "PROP-HORMUZ-TANKER-INCIDENT-20260917",
+      "chain_id": "CH-HORMUZ-TREND-TANKER-20260917",
+      "actor": "IRGC Navy / Iranian state media",
+      "claimant_type": "OFFICIAL_MILITARY_CLAIM",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC said a Togo-flagged tanker was hit, caught fire and stopped during an unauthorized Hormuz transit.",
+      "source_proposition": "A tanker projectile or attack incident occurred in Hormuz on Sep. 17.",
+      "proposition": "A tanker projectile or attack incident occurred in Hormuz on Sep. 17.",
+      "proposition_axis": "ATTACK_OCCURRENCE",
+      "truth_adjudication": "SUPPORTED",
+      "knowledge_judgment": "NOT_ASSESSED",
+      "combined_assessment": "SUPPORTED INCIDENT CONTEXT — SPECIFIC IRGC ATTRIBUTIONS SEPARATE",
+      "denominator_class": "NON_ACCUSATION_CONTEXT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Independent reporting supports a Hormuz tanker projectile/attack incident on Sep. 17.",
+        "The accepted record does not independently establish every IRGC detail about vessel identity, mechanism or U.S. direction."
+      ],
+      "analytic_inference": "The physical incident is real enough to preserve as context; claimant-specific causal and direction propositions require separate adjudication.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No deception inference attaches to the supported incident baseline.",
+      "narrative_function": "Physical-event baseline for the Trend tanker narrative.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-6FED1D32FAAE",
+          "SRC-D24B8F8BACB4"
+        ],
+        "factual_baseline": [
+          "SRC-6FED1D32FAAE",
+          "SRC-D24B8F8BACB4"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-6FED1D32FAAE",
+        "SRC-D24B8F8BACB4"
+      ],
+      "statement_date": "2026-09-17",
+      "event_time": "2026-09-17",
+      "relation_type": "ORIGINATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-IRGC-TREND-TANKER-20260917-P02",
+      "claim_id": "CLM-IRGC-TANKER-HORMUZ-20260917",
+      "original_claim_id": "CLM-IRGC-TANKER-HORMUZ-20260917",
+      "proposition_id": "PROP-HORMUZ-TREND-IRGC-EFFECT-20260917",
+      "chain_id": "CH-HORMUZ-TREND-TANKER-20260917",
+      "actor": "IRGC Navy / Iranian state media",
+      "claimant_type": "OFFICIAL_MILITARY_CLAIM",
+      "actor_role": "ORIGINATOR",
+      "claim": "IRGC said the Togo-flagged tanker later identified as Trend was struck, set ablaze and stopped.",
+      "source_proposition": "IRGC fire struck Trend and produced the claimed fire/stoppage effects.",
+      "proposition": "IRGC fire struck Trend and produced the claimed fire/stoppage effects.",
+      "proposition_axis": "CAUSAL_ATTRIBUTION_AND_EFFECT",
+      "truth_adjudication": "UNRESOLVED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED SPECIFIC IRGC CAUSATION/EFFECT — INCIDENT ITSELF SUPPORTED",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "A tanker incident is independently supported.",
+        "The convergence record says vessel identity remains partly claimant-sourced and weapon/cause details are unresolved."
+      ],
+      "analytic_inference": "Independent incident evidence does not by itself establish the full claimant account of who caused each physical effect.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "The independently observed incident may correspond to the IRGC account while some identity or effect details remain unverified.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "Accepted incident evidence is incomplete rather than affirmative counterevidence."
+        }
+      ],
+      "comparative_assessment": "Evidence is insufficient to choose between the full IRGC account and a narrower incident explanation.",
+      "narrative_function": "Specific causal/effect claim inside the Hormuz tanker incident.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-6FED1D32FAAE",
+          "SRC-D24B8F8BACB4"
+        ],
+        "factual_baseline": [
+          "SRC-6FED1D32FAAE",
+          "SRC-D24B8F8BACB4"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-6FED1D32FAAE",
+        "SRC-D24B8F8BACB4"
+      ],
+      "statement_date": "2026-09-17",
+      "event_time": "2026-09-17",
+      "relation_type": "ORIGINATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-TREND-US-DIRECTION-20260918-P01",
+      "claim_id": "CLM-TREND-TANKER-US-DIRECTION-20260918",
+      "original_claim_id": "CLM-IRGC-TANKER-HORMUZ-20260917",
+      "proposition_id": "PROP-HORMUZ-TREND-US-DIRECTION-20260917",
+      "chain_id": "CH-HORMUZ-TREND-TANKER-20260917",
+      "actor": "IRGC Navy / Iranian state media",
+      "claimant_type": "OFFICIAL_MILITARY_CLAIM",
+      "actor_role": "AMPLIFIER",
+      "claim": "IRGC said Trend attempted an unauthorized Hormuz passage at U.S. military direction.",
+      "source_proposition": "U.S. military forces directed Trend to make the unauthorized passage.",
+      "proposition": "U.S. military forces directed Trend to make the unauthorized passage.",
+      "proposition_axis": "THIRD_PARTY_DIRECTION_ATTRIBUTION",
+      "truth_adjudication": "UNRESOLVED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED U.S.-DIRECTION ATTRIBUTION",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The accepted evidence supports a tanker incident but does not independently establish U.S. military direction of the vessel."
+      ],
+      "analytic_inference": "Incident existence does not prove the separate command/direction allegation.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "The IRGC may have had nonpublic communications or surveillance evidence for U.S. direction.",
+          "comparative_weight": "UNRESOLVED",
+          "basis": "No such evidence is present in the accepted public record."
+        }
+      ],
+      "comparative_assessment": "The record does not materially favor truth or falsity of the U.S.-direction allegation.",
+      "narrative_function": "External-command attribution used to frame the Hormuz transit as U.S.-directed defiance.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-D24B8F8BACB4"
+        ],
+        "factual_baseline": [
+          "SRC-6FED1D32FAAE",
+          "SRC-D24B8F8BACB4"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [
+          "SRC-D24B8F8BACB4"
+        ],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-D24B8F8BACB4",
+        "SRC-6FED1D32FAAE"
+      ],
+      "statement_date": "2026-09-18",
+      "event_time": "2026-09-17",
+      "relation_type": "AMPLIFICATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-IRAN-SEVEN-CONDITIONS-20260919-P01",
+      "claim_id": "CLM-IRAN-SEVEN-SETTLEMENT-CONDITIONS-20260919",
+      "original_claim_id": "CLM-IRAN-SEVEN-CONDITIONS-20260912",
+      "proposition_id": "PROP-IRAN-SEVEN-CONDITIONS-REPETITION-20260919",
+      "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "actor": "Mohsen Rezaei / Iranian messaging",
+      "claimant_type": "OFFICIAL_OR_STATE_MESSAGING",
+      "actor_role": "AMPLIFIER",
+      "claim": "Rezaei said Iran had conveyed seven conditions for beginning negotiations through Qatar.",
+      "source_proposition": "Iran publicly repeated that it had seven conditions for beginning negotiations and said they were conveyed through Qatar.",
+      "proposition": "Iran publicly repeated that it had seven conditions for beginning negotiations and said they were conveyed through Qatar.",
+      "proposition_axis": "NEGOTIATING_POSITION",
+      "truth_adjudication": "SUPPORTED",
+      "knowledge_judgment": "NOT_ASSESSED",
+      "combined_assessment": "SUPPORTED REPETITION OF IRANIAN STATED POSITION — TRANSMISSION NOT INDEPENDENTLY CONFIRMED",
+      "denominator_class": "RHETORIC_DECLARATORY_POLICY",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Al Jazeera reported Rezaei's seven-condition statement and Qatar-channel description.",
+        "This supports the fact of the Iranian position; it does not independently prove receipt or acceptance by the United States."
+      ],
+      "analytic_inference": "A later public repetition strengthens chronology of the Iranian negotiating position without converting it into an agreed term.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No Lie inference is appropriate for a supported statement of position.",
+      "narrative_function": "Repetition of the seven-condition negotiating position.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-255ED903C016"
+        ],
+        "factual_baseline": [
+          "SRC-255ED903C016"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [
+          "SRC-255ED903C016"
+        ],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-255ED903C016"
+      ],
+      "statement_date": "2026-09-19",
+      "event_time": "2026-09-19",
+      "relation_type": "REPETITION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-IRAN-SEVEN-CONDITIONS-20260920-P01",
+      "claim_id": "CLM-IRAN-SEVEN-CONDITIONS-SIX-PUBLIC-20260920",
+      "original_claim_id": "CLM-IRAN-SEVEN-CONDITIONS-20260912",
+      "proposition_id": "PROP-IRAN-SEVEN-CONDITIONS-DETAIL-20260920",
+      "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "actor": "Mohsen Rezaei / Iranian officials",
+      "claimant_type": "OFFICIAL_OR_STATE_MESSAGING",
+      "actor_role": "AMPLIFIER",
+      "claim": "Iran still described seven conditions; by Sep. 20 six were publicly enumerated and one remained undisclosed.",
+      "source_proposition": "The public description expanded to six named conditions plus one undisclosed condition.",
+      "proposition": "The public description expanded to six named conditions plus one undisclosed condition.",
+      "proposition_axis": "NEGOTIATING_POSITION_DETAIL",
+      "truth_adjudication": "SUPPORTED",
+      "knowledge_judgment": "NOT_ASSESSED",
+      "combined_assessment": "SUPPORTED DETAIL AMPLIFICATION — EARLIER PARTIAL LIST NOT RETROACTIVELY FALSE",
+      "denominator_class": "RHETORIC_DECLARATORY_POLICY",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Follow-on reporting enumerated six conditions while preserving the stated total of seven.",
+        "The earlier three-condition public summary was partial rather than a contradictory claim that only three conditions existed."
+      ],
+      "analytic_inference": "Additional disclosed detail advances the chronology but is not a correction of a false earlier count.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No deception inference arises from progressively disclosing a previously stated seven-condition package.",
+      "narrative_function": "Detail amplification of the negotiating package.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-E1EBBF388878"
+        ],
+        "factual_baseline": [
+          "SRC-255ED903C016",
+          "SRC-E1EBBF388878"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [
+          "SRC-255ED903C016"
+        ],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-255ED903C016",
+        "SRC-E1EBBF388878"
+      ],
+      "statement_date": "2026-09-20",
+      "event_time": "2026-09-20",
+      "relation_type": "AMPLIFICATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-IRAN-PREPARED-US-ALLIED-ATTACK-20260920-P01",
+      "claim_id": "CLM-IRAN-PREPARED-US-ALLIED-ATTACK-INTEL-20260920",
+      "original_claim_id": "CLM-IRAN-PREPARED-US-ALLIED-ATTACK-INTEL-20260920",
+      "proposition_id": "PROP-IRAN-US-ATTACK-FOREKNOWLEDGE-20260920",
+      "chain_id": "CH-IRAN-US-ATTACK-FOREKNOWLEDGE-20260920",
+      "actor": "Iranian military central command",
+      "claimant_type": "OFFICIAL_MILITARY_CLAIM",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iran said it had information that a major new U.S. or allied attack was being prepared.",
+      "source_proposition": "Iran possessed information showing that a major new U.S. or allied attack was being prepared.",
+      "proposition": "Iran possessed information showing that a major new U.S. or allied attack was being prepared.",
+      "proposition_axis": "FOREKNOWLEDGE",
+      "truth_adjudication": "UNRESOLVED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED FOREKNOWLEDGE CLAIM — WARNING ITSELF ESTABLISHED",
+      "denominator_class": "STRATEGIC_NARRATIVE_CASE_FILE",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Reuters reported the Iranian military warning and claim of information about a prepared attack.",
+        "The accepted Evidence Integration gap says no independent substantiation of the claimed intelligence basis was recovered."
+      ],
+      "analytic_inference": "The statement and warning are established, but the existence and quality of the claimed intelligence remain unverified.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "Iran may possess nonpublic warning intelligence not available in the public record.",
+          "comparative_weight": "UNRESOLVED",
+          "basis": "The accepted record cannot test the asserted intelligence source."
+        }
+      ],
+      "comparative_assessment": "Neither independent confirmation nor affirmative falsification is present.",
+      "narrative_function": "Strategic warning and deterrence claim.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-D9F35BD2A46C"
+        ],
+        "factual_baseline": [
+          "SRC-D9F35BD2A46C"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-D9F35BD2A46C"
+      ],
+      "statement_date": "2026-09-20",
+      "event_time": "2026-09-20",
+      "relation_type": "ORIGINATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-HOUTHI-RIYADH-YANBU-20260919-P01",
+      "claim_id": "CLM-HOUTHI-RIYADH-YANBU-20260919",
+      "original_claim_id": "CLM-HOUTHI-RIYADH-YANBU-20260919",
+      "proposition_id": "PROP-HOUTHI-RIYADH-ATTACK-ACTIVITY-20260919",
+      "chain_id": "CH-HOUTHI-RIYADH-YANBU-20260919",
+      "actor": "Houthi military messaging",
+      "claimant_type": "NONSTATE_ARMED_GROUP",
+      "actor_role": "ORIGINATOR",
+      "claim": "Houthis claimed attacks on sensitive sites in Riyadh and Aramco facilities in Yanbu.",
+      "source_proposition": "Hostile aerial attack activity occurred around Riyadh on Sep. 19.",
+      "proposition": "Hostile aerial attack activity occurred around Riyadh on Sep. 19.",
+      "proposition_axis": "ATTACK_OCCURRENCE",
+      "truth_adjudication": "SUPPORTED",
+      "knowledge_judgment": "NOT_ASSESSED",
+      "combined_assessment": "SUPPORTED ATTACK/WARNING ACTIVITY — SPECIFIC DAMAGE ATTRIBUTION SEPARATE",
+      "denominator_class": "NON_ACCUSATION_CONTEXT",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "Saudi authorities issued hostile-aerial-threat warnings and later an all-clear.",
+        "Reuters observed and later localized a fire in the King Khalid International Airport fuel-storage area."
+      ],
+      "analytic_inference": "Attack/warning activity and a physical fire are supported; specific weapon-to-damage attribution remains separate.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [],
+      "comparative_assessment": "No Lie inference attaches to the supported event baseline.",
+      "narrative_function": "Physical-event baseline for Riyadh/Yanbu BDA claims.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-84780EE8C4F8",
+          "SRC-455AE83B448A"
+        ],
+        "factual_baseline": [
+          "SRC-84780EE8C4F8",
+          "SRC-455AE83B448A"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-84780EE8C4F8",
+        "SRC-455AE83B448A"
+      ],
+      "statement_date": "2026-09-19",
+      "event_time": "2026-09-19",
+      "relation_type": "ORIGINATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-HOUTHI-RIYADH-YANBU-20260919-P02",
+      "claim_id": "CLM-HOUTHI-RIYADH-YANBU-20260919",
+      "original_claim_id": "CLM-HOUTHI-RIYADH-YANBU-20260919",
+      "proposition_id": "PROP-HOUTHI-RIYADH-FUEL-FIRE-CAUSATION-20260919",
+      "chain_id": "CH-HOUTHI-RIYADH-YANBU-20260919",
+      "actor": "Houthi military messaging",
+      "claimant_type": "NONSTATE_ARMED_GROUP",
+      "actor_role": "ORIGINATOR",
+      "claim": "Houthis claimed Riyadh targets during the attack wave in which a fuel-storage-area fire was observed.",
+      "source_proposition": "A Houthi weapon caused the observed King Khalid airport fuel-storage-area fire.",
+      "proposition": "A Houthi weapon caused the observed King Khalid airport fuel-storage-area fire.",
+      "proposition_axis": "CAUSAL_ATTRIBUTION",
+      "truth_adjudication": "UNRESOLVED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED RIYADH FIRE ATTRIBUTION — FIRE ITSELF SUPPORTED",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The airport fuel-storage-area fire is supported.",
+        "Saudi reporting said a Houthi ballistic missile was intercepted and other attacks were foiled; the accepted record does not independently link a specific Houthi weapon to the fire."
+      ],
+      "analytic_inference": "Temporal proximity and a Houthi attack claim are not enough to assign the observed fire to a specific weapon without discriminating evidence.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "The fire may have resulted from a Houthi weapon despite incomplete public attribution evidence.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "Attack activity and the fire are contemporaneous, but causal linkage is unverified."
+        }
+      ],
+      "comparative_assessment": "Causation remains genuinely open.",
+      "narrative_function": "Specific Riyadh BDA attribution.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-84780EE8C4F8",
+          "SRC-455AE83B448A"
+        ],
+        "factual_baseline": [
+          "SRC-84780EE8C4F8",
+          "SRC-455AE83B448A"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-84780EE8C4F8",
+        "SRC-455AE83B448A"
+      ],
+      "statement_date": "2026-09-19",
+      "event_time": "2026-09-19",
+      "relation_type": "ORIGINATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-HOUTHI-RIYADH-YANBU-20260919-P03",
+      "claim_id": "CLM-HOUTHI-RIYADH-YANBU-20260919",
+      "original_claim_id": "CLM-HOUTHI-RIYADH-YANBU-20260919",
+      "proposition_id": "PROP-HOUTHI-YANBU-ARAMCO-BDA-20260919",
+      "chain_id": "CH-HOUTHI-RIYADH-YANBU-20260919",
+      "actor": "Houthi military messaging",
+      "claimant_type": "NONSTATE_ARMED_GROUP",
+      "actor_role": "ORIGINATOR",
+      "claim": "Houthis claimed Aramco facilities in Yanbu were targeted in the Sep. 19 attack wave.",
+      "source_proposition": "The claimed Yanbu Aramco facilities were successfully hit or damaged as asserted.",
+      "proposition": "The claimed Yanbu Aramco facilities were successfully hit or damaged as asserted.",
+      "proposition_axis": "BATTLE_DAMAGE_ASSESSMENT",
+      "truth_adjudication": "UNRESOLVED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED YANBU BDA",
+      "denominator_class": "UNIQUE_ATOMIC_PROPOSITION",
+      "counts_as_unique_proposition": true,
+      "observed_facts": [
+        "The accepted convergence gap expressly leaves Yanbu battle damage unresolved.",
+        "No independent physical confirmation in the accepted record establishes the claimed Yanbu effects."
+      ],
+      "analytic_inference": "Claimed targeting does not establish successful impact or damage.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "Damage may have occurred but remained unreported or unverified at the evidence cutoff.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "Absence of accepted BDA is not affirmative proof of no damage."
+        }
+      ],
+      "comparative_assessment": "The BDA proposition remains unresolved rather than false.",
+      "narrative_function": "Yanbu BDA claim.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Authenticated primary or independent evidence materially establishing the asserted proposition or showing the present attribution/knowledge inference is wrong."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-455AE83B448A"
+        ],
+        "factual_baseline": [
+          "SRC-455AE83B448A"
+        ],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-455AE83B448A"
+      ],
+      "statement_date": "2026-09-19",
+      "event_time": "2026-09-19",
+      "relation_type": "ORIGINATION",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": []
     }
-  ]
+  ],
+  "maintenance_sweep_path": "data/claims-forensics/lie-ledger-maintenance-sweep-20260920.json",
+  "maintenance_sweep_version": "ATLAS-CLAIMS-FORENSICS-MAINT-20260920-1"
 }

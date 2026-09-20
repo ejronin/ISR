@@ -52,13 +52,8 @@ assert.equal(model.release.lie_ledger_claims_forensics_contract_path, 'docs/LIE_
 assert.equal(model.integrity.lie_ledger_claims_forensics_release_pinned, true);
 assert(!Object.hasOwn(ledger, 'authority'), 'public Lie Ledger must not expose persona authority');
 assert.equal(ledger.blocked_assessment_policy, 'WITHHOLD_UNQUALIFIED_KNOWLEDGE_NOT_FACTUAL_STATUS');
-assert.equal(ledger.publication_blockers.length, 2,
-  'public/global blocker registry must contain only currently blocked adjudications');
-assert.deepEqual(
-  new Set(ledger.publication_blockers.map(blocker => blocker.claim_instance_id)),
-  new Set(['CI-IR-CLM-0011-P01', 'CI-IR-CLM-0011-P02']),
-  'stale source-completion blockers leaked into the public/global registry'
-);
+assert.equal(ledger.publication_blockers.length, 0,
+  'public/global blocker registry should be empty after Sep. 20 maintenance');
 assert.equal(ledger.records.length, model.counts.gate3_lie_ledger_chains);
 assert.equal(ledger.metrics.narrative_chains, ledger.records.length);
 const accusationChains = ledger.records.filter(chain =>
@@ -69,8 +64,8 @@ const controlChains = ledger.records.filter(chain =>
   chain.classification !== 'ACCUSATION_CHAIN' &&
   chain.public_include_in_accusation_count === false
 );
-assert.equal(accusationChains.length, 33, 'Lie Ledger accusation-chain denominator drifted');
-assert.equal(controlChains.length, 14, 'Lie Ledger control-chain denominator drifted');
+assert.equal(accusationChains.length, 35, 'Lie Ledger accusation-chain denominator drifted');
+assert.equal(controlChains.length, 15, 'Lie Ledger control-chain denominator drifted');
 assert.equal(accusationChains.length + controlChains.length, ledger.records.length,
   'every current Lie Ledger chain must be explicitly classified as accusation or control');
 
