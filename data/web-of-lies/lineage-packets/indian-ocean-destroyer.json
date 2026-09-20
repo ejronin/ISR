@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-INDIAN-OCEAN-DESTROYER-BASELINE-20260920",
+  "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+  "as_of": "2026-09-20T17:55:00-04:00",
+  "basis_paths": [
+    "data/forensic-v1.3.2/iranian-claim-evolution.json",
+    "data/forensic-v1.3.2/claim-chain-index.json",
+    "data/source-registry.json",
+    "data/outlet-profiles.json",
+    "data/lie-ledger-v2-rook-authority.json",
+    "config/web-of-lies-source-identities.json"
+  ],
+  "generation_mode": "BASELINE_FROM_EXISTING_FORENSIC_CORPUS",
+  "notes": "Generated baseline lineage from the existing adjudicated forensic claim corpus. It preserves origin/carrier separation and canonical dispositions; it does not create new truth or knowledge findings.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": "ACT-IRGC",
+      "canonical_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "behavior_classes": [
+        "OFFICIAL_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-O"
+      ],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-7B62913B395D",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-C",
+      "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-04",
+      "first_observed_at": "2026-03-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Press TV carried the attributed claim: The IRGC said missiles hit a U.S. destroyer and refueling vessel about 650 km from Iran, causing large fires.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC as reported by Press TV",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "IR-CLM-0501"
+      ],
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-O",
+      "claim_family_id": "CH-INDIAN-OCEAN-DESTROYER",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": null,
+      "first_observed_at": "2026-03-04",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "The IRGC said missiles hit a U.S. destroyer and refueling vessel about 650 km from Iran, causing large fires.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "IR-CLM-0501"
+      ],
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-744CF2CF4573"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "OFFICIAL_SOURCE"
+      ],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "plain_english_verdict": "The claim remains unsubstantiated. Web of Lies records its propagation without converting lack of proof into a lie finding."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-INDIAN_OCEAN_DESTROYER-001",
+      "from_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-C",
+      "to_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-O",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-INDIAN_OCEAN_DESTROYER-002",
+      "from_id": "WOL-EVT-INDIAN_OCEAN_DESTROYER-0501-C",
+      "to_id": "WOL-SRC-IRGC",
+      "relationship_type": "ATTRIBUTES_TO",
+      "evidence_source_ids": [
+        "SRC-760441289A12"
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
