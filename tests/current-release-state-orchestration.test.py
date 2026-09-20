@@ -39,6 +39,9 @@ assert (
     "scripts/build_web_of_lies_baseline_packets.py",
 ) in [item[1:] for item in build]
 assert (
+    "scripts/build_web_of_lies_current_anchor_packets.py",
+) in [item[1:] for item in build]
+assert (
     "scripts/build_web_of_lies_forensic_input.py",
 ) in [item[1:] for item in build]
 assert (
@@ -94,6 +97,9 @@ assert any(item[1:] == ("scripts/build_web_of_lies_discovery_queue.py", "--check
 assert any(item[1:] == ("scripts/build_web_of_lies_baseline_packets.py", "--check") for item in check), (
     "check contract omitted deterministic Web of Lies baseline packet generation"
 )
+assert any(item[1:] == ("scripts/build_web_of_lies_current_anchor_packets.py", "--check") for item in check), (
+    "check contract omitted deterministic Web of Lies current Claims Forensics anchors"
+)
 assert any(item[1:] == ("scripts/build_web_of_lies_forensic_input.py", "--check") for item in check), (
     "check contract omitted deterministic Web of Lies lineage aggregation"
 )
@@ -108,7 +114,8 @@ assert "TemporaryDirectory" not in source
 assert "current-v2 only" in source.lower()
 assert source.index('scripts/build_canonical_current_state_v2_final.py') < source.index('scripts/build_web_of_lies_discovery_queue.py')
 assert source.index('scripts/build_web_of_lies_discovery_queue.py') < source.index('scripts/build_web_of_lies_baseline_packets.py')
-assert source.index('scripts/build_web_of_lies_baseline_packets.py') < source.index('scripts/build_web_of_lies_forensic_input.py')
+assert source.index('scripts/build_web_of_lies_baseline_packets.py') < source.index('scripts/build_web_of_lies_current_anchor_packets.py')
+assert source.index('scripts/build_web_of_lies_current_anchor_packets.py') < source.index('scripts/build_web_of_lies_forensic_input.py')
 assert source.index('scripts/build_web_of_lies_forensic_input.py') < source.index('scripts/build_web_of_lies.py')
 assert source.index('scripts/build_web_of_lies.py') < source.index('scripts/build_public_current_state_v2_hardened.py')
 
