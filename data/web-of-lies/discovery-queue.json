@@ -1,14 +1,15 @@
 {
-  "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
-  "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "source_handoff": "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json",
   "as_of": "2026-09-20T15:48:00-04:00",
-  "items": [
+  "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
+  "items": [],
+  "resolved_canonical_claim_sequences": [
     {
-      "discovery_id": "WOL-IN-ROOK-IRAN-CONDITIONS-20260920",
-      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
-      "claim_family_ref": null,
+      "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "claim_family_ref": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "claims_forensics_disposition": "EXISTING_CONTROL_CHAIN_CHRONOLOGY_ADVANCE",
+      "claims_forensics_path": "data/claims-forensics/lie-ledger-maintenance-sweep-20260920.json",
+      "downstream_note": "Chronology is a detail expansion/correction opportunity. Earlier source state must not be silently rewritten as if six items were public on Sep.19.",
       "observations": [
         {
           "date": "2026-09-19",
@@ -21,14 +22,17 @@
           "statement_identity": "Six of seven conditions publicly enumerated; one remained undisclosed"
         }
       ],
-      "downstream_note": "Chronology is a detail expansion/correction opportunity. Earlier source state must not be silently rewritten as if six items were public on Sep.19.",
-      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
+      "routing_path": "data/evidence-integration/rook-catchup-claims-routing-20260920.json",
+      "sequence_id": "WOL-IN-ROOK-IRAN-CONDITIONS-20260920",
+      "source_handoff_path": "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json",
+      "status": "EXISTING_CANONICAL_CLAIM_CHRONOLOGY_ADVANCE"
     },
     {
-      "discovery_id": "WOL-IN-ROOK-RIYADH-20260920",
-      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
-      "claim_family_ref": null,
+      "chain_id": "CH-HOUTHI-RIYADH-YANBU-20260919",
+      "claim_family_ref": "CH-HOUTHI-RIYADH-YANBU-20260919",
+      "claims_forensics_disposition": "NEW_ACCUSATION_CHAIN_PUBLIC_READY",
+      "claims_forensics_path": "data/claims-forensics/lie-ledger-maintenance-sweep-20260920.json",
+      "downstream_note": "Source-family separation is required before downstream propagation analysis.",
       "observations": [
         {
           "date": "2026-09-19",
@@ -46,14 +50,17 @@
           "statement_identity": "Observed plume localized to King Khalid airport fuel-storage area; weapon-to-damage attribution unresolved"
         }
       ],
-      "downstream_note": "Source-family separation is required before downstream propagation analysis.",
-      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
+      "routing_path": "data/evidence-integration/rook-catchup-claims-routing-20260920.json",
+      "sequence_id": "WOL-IN-ROOK-RIYADH-20260920",
+      "source_handoff_path": "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json",
+      "status": "CANONICAL_CLAIM_FAMILY_ASSIGNED"
     },
     {
-      "discovery_id": "WOL-IN-ROOK-TREND-20260920",
-      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
-      "claim_family_ref": null,
+      "chain_id": "CH-HORMUZ-TREND-TANKER-20260917",
+      "claim_family_ref": "CH-HORMUZ-TREND-TANKER-20260917",
+      "claims_forensics_disposition": "NEW_ACCUSATION_CHAIN_PUBLIC_READY",
+      "claims_forensics_path": "data/claims-forensics/lie-ledger-maintenance-sweep-20260920.json",
+      "downstream_note": "Do not collapse independent incident existence into corroboration of every claimant proposition.",
       "observations": [
         {
           "date": "2026-09-17",
@@ -71,18 +78,21 @@
           "statement_identity": "Independent maritime incident reporting involving an unknown projectile"
         }
       ],
-      "downstream_note": "Do not collapse independent incident existence into corroboration of every claimant proposition.",
-      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
+      "routing_path": "data/evidence-integration/rook-catchup-claims-routing-20260920.json",
+      "sequence_id": "WOL-IN-ROOK-TREND-20260920",
+      "source_handoff_path": "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json",
+      "status": "CANONICAL_CLAIM_FAMILY_ASSIGNED"
     }
   ],
   "resolved_existing_claim_sequences": [
     {
-      "sequence_id": "WOL-IN-ROOK-F15SA-20260920",
-      "status": "EXISTING_CANONICAL_CLAIM_CONTINUITY",
-      "claim_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
       "chain_id": "CH-RSAF-F15SA-MARIB-20260916",
-      "routing_path": "data/evidence-integration/rook-catchup-claims-routing-20260920.json"
+      "claim_id": "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+      "routing_path": "data/evidence-integration/rook-catchup-claims-routing-20260920.json",
+      "sequence_id": "WOL-IN-ROOK-F15SA-20260920",
+      "status": "EXISTING_CANONICAL_CLAIM_CONTINUITY"
     }
-  ]
+  ],
+  "schema_version": "1.0",
+  "source_handoff": "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json"
 }
