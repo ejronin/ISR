@@ -1,0 +1,234 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-19T12:00:00-04:00",
+    "window_end": "2026-09-20T00:00:00-04:00",
+    "collection_time": "2026-09-19T23:59:23-04:00",
+    "evidence_horizon_time": "2026-09-20T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "boundary_rule": "Recovered from stale catch-up artifacts; original source windows/clocks remain in migration_provenance."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "source_branch_head": "a140d33114664c6b329adf696907870a0273eb93",
+    "stale_branch_policy": "EVIDENCE_INPUT_ONLY_NO_STALE_ARCHITECTURE_IMPORTED",
+    "source_artifacts": [
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-delta-20260919T1640ET.json",
+        "commit": "4cc51ff5048432f99e79f606e06843f6147ee212",
+        "original_role": "APPEND_ONLY_EVIDENCE_INTEGRATION_DELTA",
+        "original_window": {
+          "start": "2026-09-19T12:00:00-04:00",
+          "end": "2026-09-19T16:40:00-04:00"
+        }
+      },
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260920T0000ET.json",
+        "commit": "e53c2642dd37e0014b59bb772e41d730b662411c",
+        "original_role": "UNVERSIONED_ROUTINE_UPSTREAM_COLLECTION",
+        "original_window": {
+          "start": "2026-09-19T12:00:00-04:00",
+          "end": "2026-09-20T00:00:00-04:00"
+        }
+      }
+    ],
+    "normalization_note": "Consolidates an overlapping afternoon delta into the encompassing stale midnight sweep. Later midnight evidence supersedes the afternoon drawer where materially more specific."
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRAN-QATAR-US-SETTLEMENT-CONDITIONS-20260919",
+      "event_type": "DIPLOMATIC_CONDITIONS_TRANSMITTED_CLAIM",
+      "occurrence_time": "2026-09-19",
+      "public_available_time": "2026-09-19",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "summary": "Mohsen Rezaei said Iran had transmitted seven conditions for beginning negotiations to Washington via Qatar. At this horizon only three were publicly identified: end the war on all fronts, release frozen Iranian funds/assets, and end the U.S. naval blockade. Treat as Iranian stated position, not agreed bilateral terms.",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/19/iran-says-conditions-to-re-engage-in-talks-end-war-sent-to-us-via-qatar",
+        "https://www.newindianexpress.com/world/2026/Sep/20/iran-sets-seven-conditions-for-talks-with-us-through-qatar-warns-of-decisive-war-if-trump-rejects-demands"
+      ]
+    },
+    {
+      "event_id": "LOCKER-PAKISTAN-IRAN-MARITIME-SAFETY-CALL-20260919",
+      "event_type": "DIPLOMATIC_MARITIME_SAFETY_ENGAGEMENT",
+      "occurrence_time": "2026-09-19",
+      "public_available_time": "2026-09-19",
+      "collection_time": "2026-09-19T23:59:23-04:00",
+      "summary": "Pakistan's Foreign Ministry said Ishaq Dar discussed uninterrupted energy supplies and safe commercial passage with Abbas Araghchi. This is diplomatic engagement/pressure, not evidence of a new navigation agreement or Iranian concession.",
+      "sources": [
+        "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf"
+      ]
+    },
+    {
+      "event_id": "LOCKER-US-HR5334-SIGNED-20260918",
+      "event_type": "LEGISLATIVE_SANCTIONS_ENACTMENT",
+      "occurrence_time": "2026-09-18",
+      "public_available_time": "2026-09-18",
+      "collection_time": "2026-09-19T16:40:00-04:00",
+      "summary": "The White House confirmed President Trump signed H.R. 5334, the Lindsey O. Graham Sanctioning Russia and Iran Act of 2026. This supersedes the prior passed-Congress/awaiting-presidential-action state.",
+      "sources": [
+        "https://www.whitehouse.gov/briefings-statements/2026/09/congressional-bill-h-r-5334-signed-into-law/",
+        "https://www.reuters.com/world/us/trump-signs-russia-sanctions-bill-into-law-2026-09-18/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-UN-IRAN-SANCTIONS-MONITORING-MANDATE-END-20260917",
+      "event_type": "UN_SANCTIONS_MONITORING_STATUS",
+      "occurrence_time": "2026-09-17",
+      "public_available_time": "2026-09-17",
+      "collection_time": "2026-09-19T16:40:00-04:00",
+      "summary": "Russia and China vetoed extension of the independent UN monitoring mandate for Iran sanctions. This ends the monitoring mandate but does not remove the underlying sanctions.",
+      "sources": [
+        "https://www.reuters.com/world/china/russia-china-end-mandate-independent-monitoring-un-sanctions-iran-2026-09-17/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-RIYADH-FUEL-DEPOT-FIRE-20260919",
+      "updates_existing_ref": "LOCKER-RIYADH-AIRPORT-AERIAL-THREAT-20260919",
+      "relationship": "LATER_PHYSICAL_DAMAGE_OBSERVATION_AND_ATTRIBUTION_GUARDRAIL",
+      "summary": "Later reporting established a fire at an Aramco-branded fuel tank/depot near King Khalid International Airport while the Saudi coalition said it intercepted a Houthi ballistic missile and foiled other attacks. The fire is established; Houthi responsibility for that specific fire/weapon impact and Yanbu damage remained unresolved.",
+      "status": "FUEL_DEPOT_FIRE_ESTABLISHED_CAUSAL_ATTRIBUTION_UNRESOLVED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-civil-defence-sends-all-clear-after-danger-warning-capital-riyadh-2026-09-19/",
+        "https://www.dawn.com/news/2031137/houthis-say-targeted-sensitive-sites-in-riyadh-aramco-facilities-in-yanbu",
+        "https://apnews.com/article/b1286cad816dd3e553f50f6dd5205972"
+      ]
+    },
+    {
+      "update_id": "UPD-CENTCOM-HORMUZ-AGGREGATES-20260919",
+      "updates_existing_ref": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "relationship": "OFFICIAL_AGGREGATE_CLAIMS_ALONGSIDE_COMMERCIAL_DAILY_COUNTS",
+      "summary": "CENTCOM commander Adm. Brad Cooper said U.S. forces supported more than one billion barrels of Gulf-partner crude and more than 2,000 commercial transits in recent months, cleared mines from primary lanes and claimed zero Iranian oil exports. Preserve these as U.S. military aggregates/claims alongside narrower commercial daily counts; they do not establish normalized traffic.",
+      "status": "CENTCOM_AGGREGATES_RECORDED_METHOD_AND_ZERO_EXPORT_CLAIM_UNRESOLVED",
+      "sources": [
+        "https://fortune.com/2026/09/19/central-command-us-military-transit-1-billion-barrels-oil-hormuz-iran-exports-naval-blockade/",
+        "https://www.timesofisrael.com/liveblog_entry/us-central-command-chief-1-billion-barrels-of-crude-oil-allowed-to-exit-through-hormuz-in-recent-months/",
+        "https://www.aa.com.tr/en/americas/us-military-says-over-1b-barrels-of-oil-shipped-through-strait-of-hormuz-under-us-blockade/4062037"
+      ]
+    },
+    {
+      "update_id": "UPD-YEMEN-IOM-DTM-114498-20260919",
+      "updates_existing_ref": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "relationship": "LATER_IOM_DTM_DENOMINATOR",
+      "summary": "IOM DTM Update #6 reported about 114,498 people (19,083 households) displaced Sep.1-17. Preserve this IOM timebox separately from OCHA/UN ~125,000-126,000 series.",
+      "status": "IOM_DTM_CURRENT_TIMEBOX_114498_OTHER_SERIES_SEPARATE",
+      "sources": [
+        "https://dtm.iom.int/yemen",
+        "https://transcripts.un.org/en/sc/10222"
+      ]
+    },
+    {
+      "update_id": "UPD-TURKEY-SAUDI-DEFENCE-PACT-READINESS-20260919",
+      "updates_existing_ref": "SAUDI_TRILATERAL_DEFENCE_ARCHITECTURE",
+      "relationship": "ALLY_READINESS_STATEMENT",
+      "summary": "Turkish Foreign Minister Hakan Fidan said Turkey was ready to meet Saudi military/technical needs under the Mecca Joint Defence Agreement. No Saudi request, deployment or transfer was confirmed.",
+      "status": "TURKISH_READINESS_STATED_NO_DEPLOYMENT_CONFIRMED",
+      "sources": [
+        "https://www.reuters.com/business/aerospace-defense/turkey-says-it-could-help-meet-saudi-military-needs-under-defence-pact-2026-09-19/"
+      ]
+    },
+    {
+      "update_id": "UPD-SOUTH-KOREA-HORMUZ-CONTRIBUTION-20260919",
+      "updates_existing_ref": "HORMUZ_DIPLOMACY_TRACK",
+      "relationship": "THIRD_PARTY_SUPPORT_INTENT",
+      "summary": "South Korea said it was willing to make a substantive contribution to restoring free Hormuz passage. No naval deployment or operational form was established.",
+      "status": "SUPPORT_INTENT_RECORDED_OPERATIONAL_FORM_UNESTABLISHED",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/"
+      ]
+    },
+    {
+      "update_id": "UPD-LEBANON-ISRAEL-STRIKES-20260919",
+      "updates_existing_ref": "LEBANON_SECURITY_ARCHITECTURE",
+      "relationship": "RELATED_THEATER_EVENT_UPDATE",
+      "summary": "Israel said it struck Hezbollah targets in southern Lebanon after two Israeli soldiers were wounded by an explosive device Israel attributed to Hezbollah. Lebanese reporting documented strikes. Preserve Israeli attribution and target identities as claimant-sourced absent independent confirmation.",
+      "status": "STRIKES_REPORTED_PRECURSOR_ATTRIBUTION_CONTESTED",
+      "sources": [
+        "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf",
+        "https://www.reuters.com/world/middle-east/un-peacekeeping-chief-lebanon-says-smooth-transition-is-critical-before-pull-out-2026-09-19/"
+      ]
+    },
+    {
+      "update_id": "UPD-SYRIA-AYASH-ARMS-DEPOT-BLAST-20260919",
+      "updates_existing_ref": "SYRIA_RELATED_THEATER_CONTEXT",
+      "relationship": "NEW_RELATED_THEATER_EVENT",
+      "summary": "Syria's Defense Ministry said 11 soldiers were killed in an Ayash blast and several wounded. The ministry did not state a cause; no recovered evidence linked the blast to Iran-war action.",
+      "status": "BLAST_AND_CASUALTIES_REPORTED_CAUSE_UNRESOLVED",
+      "sources": [
+        "https://apnews.com/article/24211a3b34731a669f3e7ab93314afdf"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-IRAN-SEVEN-SETTLEMENT-CONDITIONS-20260919",
+      "claimant": "Mohsen Rezaei / Iranian messaging",
+      "claim_time": "2026-09-19",
+      "claim": "Iran conveyed seven conditions for beginning negotiations through Qatar.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_DIPLOMATIC_POSITION_NOT_AGREED_TERMS",
+      "summary": "At this horizon only three were publicly named; do not invent the remaining four or collapse seven into three.",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/19/iran-says-conditions-to-re-engage-in-talks-end-war-sent-to-us-via-qatar"
+      ]
+    },
+    {
+      "claim_id": "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919",
+      "claimant": "Mohsen Rezaei",
+      "claim_time": "2026-09-19",
+      "claim": "Iran recently test-fired a multi-warhead anti-ship missile near a U.S. vessel or aircraft carrier.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_NO_INDEPENDENT_CONFIRMATION_IN_RECOVERED_WINDOW",
+      "summary": "No telemetry, imagery, U.S. acknowledgement, NOTAM/NAVWARN or weapon identification was located in the stale sweep.",
+      "sources": [
+        "https://www.newindianexpress.com/world/2026/Sep/20/iran-sets-seven-conditions-for-talks-with-us-through-qatar-warns-of-decisive-war-if-trump-rejects-demands"
+      ]
+    },
+    {
+      "claim_id": "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "claimant": "U.S. Central Command / Adm. Brad Cooper",
+      "claim_time": "2026-09-19",
+      "claim": "Iran exported zero barrels under the U.S. blockade.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_METHOD_AND_INDEPENDENT_RECONCILIATION_UNRESOLVED",
+      "summary": "Keep separate from the independently supported proposition that some Gulf-partner passage continued.",
+      "sources": [
+        "https://www.aa.com.tr/en/americas/us-military-says-over-1b-barrels-of-oil-shipped-through-strait-of-hormuz-under-us-blockade/4062037"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-HR5334-SIGNED-20260918",
+      "summary": "H.R. 5334 moved from pending presidential action to signed law on Sep.18.",
+      "sources": [
+        "https://www.whitehouse.gov/briefings-statements/2026/09/congressional-bill-h-r-5334-signed-into-law/",
+        "https://www.reuters.com/world/us/trump-signs-russia-sanctions-bill-into-law-2026-09-18/"
+      ]
+    }
+  ],
+  "unresolved_questions": [
+    "Four undisclosed Iranian conditions at this horizon",
+    "Cause/weapon of Riyadh airport-area fuel fire and any Yanbu BDA",
+    "Methodology for CENTCOM 1B-barrel/2,000-transit aggregates and zero-Iran-export assertion",
+    "Independent evidence for multi-warhead anti-ship missile claim",
+    "Pentagon reconciliation of 18 versus at-least-22 fatalities"
+  ],
+  "coverage": {
+    "material_results": [
+      "Afternoon delta and midnight sweep consolidated; later evidence superseded afternoon drawer where more specific."
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new Qeshm MQ-9, F-15SA, Petroline repair, Trend tanker or U.S.-fatality reconciliation beyond existing state."
+    ],
+    "limitations": [
+      "No paid maritime/satellite feed.",
+      "Some third-party contribution intentions lack operational implementation details."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_MIGRATED_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
