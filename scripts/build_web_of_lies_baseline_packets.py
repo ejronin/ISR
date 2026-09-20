@@ -559,69 +559,70 @@ def merge_current_overlay_extras(
             f"actor={actor!r} qualifier={qualifier!r}"
         )
 
-    # Preserve the 52 -> 53 cumulative sequence without converting either
-    # unsupported exact ordinal into a lie or into independent corroboration.
-    fifty_two = qeshm_origin_events.get("CLM-IRGC-QESHM-MQ9-52-20260916")
-    fifty_three = qeshm_origin_events.get("CLM-IRGC-QESHM-MQ9-53-20260917")
-    if fifty_two and fifty_three:
-        relationships.append({
-            "relationship_id": relation_id(chain_id, rel_index),
-            "from_id": fifty_three,
-            "to_id": fifty_two,
-            "relationship_type": "REPEATS",
-            "evidence_source_ids": unique(
-                list(direct_sources.get("mq9_sep16") or [])
-                + list(direct_sources.get("mq9_sep17") or [])
-            ),
-        })
-        rel_index += 1
-
-    # Evidence Integration supplied recent U.S.-official-source reporting as
-    # type-specific context only. It does not identify either loss with Qeshm.
-    for sequence in rook_handoff.get("statement_sequences") or []:
-        if sequence.get("sequence_id") != "WOL-IN-ROOK-MQ9-52-53-20260920":
-            continue
-        cbs_receipt = "SRC-CBC350AF4215"
-        cbs_identity = current_carrier_identity(cbs_receipt, identity_map)
-        cbs_profile = profile_template(cbs_identity, cbs_receipt)
-        cbs_event_id = "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-MQ1-CONTEXT-20260917"
-        cbs_profile["behavior_classes"] = ["JOURNALISTIC_SOURCE"]
-        cbs_profile["classification_basis_event_ids"] = [cbs_event_id]
-        merge_local_profile(profiles, cbs_profile)
-        if cbs_event_id not in existing_event_ids:
-            events.append({
-                "event_id": cbs_event_id,
-                "claim_family_id": chain_id,
-                "source_id": cbs_identity["source_id"],
-                "event_type": "REPORTS",
-                "published_at": "2026-09-17",
-                "first_observed_at": "2026-09-17",
-                "time_precision": "DATE_ONLY",
-                "epistemic_posture": "SOURCES_SAY",
-                "exact_statement": (
-                    "CBS reported U.S. officials described at least two recent U.S. "
-                    "drone losses as MQ-1, without locations."
+    if chain_id == "CH-AIRCRAFT-KILL-AGGREGATES":
+        # Preserve the 52 -> 53 cumulative sequence without converting either
+        # unsupported exact ordinal into a lie or into independent corroboration.
+        fifty_two = qeshm_origin_events.get("CLM-IRGC-QESHM-MQ9-52-20260916")
+        fifty_three = qeshm_origin_events.get("CLM-IRGC-QESHM-MQ9-53-20260917")
+        if fifty_two and fifty_three:
+            relationships.append({
+                "relationship_id": relation_id(chain_id, rel_index),
+                "from_id": fifty_three,
+                "to_id": fifty_two,
+                "relationship_type": "REPEATS",
+                "evidence_source_ids": unique(
+                    list(direct_sources.get("mq9_sep16") or [])
+                    + list(direct_sources.get("mq9_sep17") or [])
                 ),
-                "translated_statement": None,
-                "originating_claimant": "U.S. officials reported by CBS News",
-                "lineage_roles": ["REPORTS"],
-                "carrier_profile_ids": [],
-                "canonical_claim_refs": [],
-                "evidence_source_ids": [cbs_receipt],
-                "contrary_evidence_source_ids": [],
-                "correction_state": None,
-                "behavior_findings": ["JOURNALISTIC_SOURCE"],
-                "revenue_findings": [],
-                "independently_sourced": True,
-                "plain_english_verdict": (
-                    "This is type-specific external context only. The record does not "
-                    "identify either reported MQ-1 loss with either Qeshm claim, so Web "
-                    "of Lies treats it as neither corroboration nor contradiction."
-                ),
-                "context_scope": "TYPE_SPECIFIC_EXTERNAL_CONTEXT_NOT_QESHM_IDENTIFICATION",
             })
-            existing_event_ids.add(cbs_event_id)
-        break
+            rel_index += 1
+
+        # Evidence Integration supplied recent U.S.-official-source reporting as
+        # type-specific context only. It does not identify either loss with Qeshm.
+        for sequence in rook_handoff.get("statement_sequences") or []:
+            if sequence.get("sequence_id") != "WOL-IN-ROOK-MQ9-52-53-20260920":
+                continue
+            cbs_receipt = "SRC-CBC350AF4215"
+            cbs_identity = current_carrier_identity(cbs_receipt, identity_map)
+            cbs_profile = profile_template(cbs_identity, cbs_receipt)
+            cbs_event_id = "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-MQ1-CONTEXT-20260917"
+            cbs_profile["behavior_classes"] = ["JOURNALISTIC_SOURCE"]
+            cbs_profile["classification_basis_event_ids"] = [cbs_event_id]
+            merge_local_profile(profiles, cbs_profile)
+            if cbs_event_id not in existing_event_ids:
+                events.append({
+                    "event_id": cbs_event_id,
+                    "claim_family_id": chain_id,
+                    "source_id": cbs_identity["source_id"],
+                    "event_type": "REPORTS",
+                    "published_at": "2026-09-17",
+                    "first_observed_at": "2026-09-17",
+                    "time_precision": "DATE_ONLY",
+                    "epistemic_posture": "SOURCES_SAY",
+                    "exact_statement": (
+                        "CBS reported U.S. officials described at least two recent U.S. "
+                        "drone losses as MQ-1, without locations."
+                    ),
+                    "translated_statement": None,
+                    "originating_claimant": "U.S. officials reported by CBS News",
+                    "lineage_roles": ["REPORTS"],
+                    "carrier_profile_ids": [],
+                    "canonical_claim_refs": [],
+                    "evidence_source_ids": [cbs_receipt],
+                    "contrary_evidence_source_ids": [],
+                    "correction_state": None,
+                    "behavior_findings": ["JOURNALISTIC_SOURCE"],
+                    "revenue_findings": [],
+                    "independently_sourced": True,
+                    "plain_english_verdict": (
+                        "This is type-specific external context only. The record does not "
+                        "identify either reported MQ-1 loss with either Qeshm claim, so Web "
+                        "of Lies treats it as neither corroboration nor contradiction."
+                    ),
+                    "context_scope": "TYPE_SPECIFIC_EXTERNAL_CONTEXT_NOT_QESHM_IDENTIFICATION",
+                })
+                existing_event_ids.add(cbs_event_id)
+            break
 
     packet["source_profiles"] = sorted(profiles.values(), key=lambda row: row["source_id"])
     packet["information_events"] = sorted(events, key=lambda row: row["event_id"])
