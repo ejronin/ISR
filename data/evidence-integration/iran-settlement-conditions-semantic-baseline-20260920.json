@@ -1,0 +1,36 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SEMANTIC_NOTE",
+  "schema_version": "1.0",
+  "authority": "routine upstream evidence integration; append-only semantic preservation; no canonical/release mutation",
+  "linked_event_id": "IRAN-QATAR-US-SETTLEMENT-CONDITIONS-20260919",
+  "linked_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260920T1200ET.json",
+  "created_date": "2026-09-20",
+  "subject": "Operational ambiguity in Iran's conditions: 'internal affairs', 'opponents of our revolution', and 'our revolution'",
+  "finding": "The publicly reported formulations 'end U.S. interference in Iran's internal affairs' and 'end U.S. cooperation with opponents of Iran's revolution' are presently operationally undefined in the preserved public record. Until Iran identifies the covered actors, conduct, geography, decision authority, duration, verification standard, and breach/remedy criteria, these phrases do not specify an objectively testable U.S. obligation. They should therefore be preserved as political/rhetorical formulations rather than silently normalized into narrower concrete demands.",
+  "analytic_caution": "Do not infer that the phrases mean Iranian dissidents only, banking/sanctions only, GCC partners, Israel, Hezbollah/Houthi opponents, or any other particular actor or activity absent claimant clarification. Plausible interpretations may be recorded as hypotheses/questions, not as Iran's established meaning.",
+  "unresolved_questions": [
+    "What specifically constitutes 'interference in Iran's internal affairs'?",
+    "Which U.S. actions must cease for that condition to be satisfied?",
+    "Does the phrase include sanctions, secondary sanctions, banking access restrictions, financial pressure on third-country institutions, covert activity, support to civil society/opposition groups, information operations, or some defined subset?",
+    "What does 'our revolution' mean in this condition: the 1979 Iranian revolution/domestic constitutional order, a broader transnational revolutionary project, or another defined concept?",
+    "Which states, organizations, movements, or individuals are 'opponents of our revolution'?",
+    "Does that category include actors opposing Iran-aligned armed groups or political movements in Lebanon, Yemen, Iraq, the Gulf, Israel, or elsewhere?",
+    "What constitutes prohibited U.S. 'cooperation' with a covered opponent: diplomatic relations, intelligence sharing, basing, arms sales, financing, training, sanctions coordination, political support, or another defined activity?",
+    "Is the set of covered 'opponents' closed at agreement/signature, or can Iran designate additional opponents later?",
+    "If additional opponents can be designated later, who has authority to designate them and what objective standard constrains designation?",
+    "What evidence would establish U.S. compliance or breach, and who adjudicates disputes?",
+    "If Iran later supplies a narrower or broader definition, when was that definition first stated, and does Iran characterize it as clarification of the original condition or a changed condition?"
+  ],
+  "temporal_preservation_rule": "Any later Iranian clarification must be stored as a subsequent statement-time interpretation. Do not rewrite the Sep. 20 baseline as though the later definition had been explicit originally. Compare later definitions against this undefined baseline for narrowing, expansion, substitution, or newly enumerated scope.",
+  "forensics_rule": "Ambiguity alone does not establish deception, bad faith, or a lie. However, a later claim that a specific meaning was always explicit should be tested against the preserved original wording and the chronology of any clarifications.",
+  "operational_assessment": "As currently reported, the phrases have insufficient specificity to function as measurable compliance terms. Their political or rhetorical significance may be substantial, but their concrete negotiating content remains indeterminate until defined.",
+  "editorial_boundary": "Characterizations such as 'childish', 'temper tantrum', 'filler', or judgments about whether a speaker is leader-like are not evidentiary findings and are not adopted by the evidence locker. The evidentiary proposition preserved here is the narrower, testable one: the terms presently lack sufficient definition to identify an objective obligation or compliance test.",
+  "completion": {
+    "status": "APPEND_ONLY_SEMANTIC_BASELINE_PRESERVED",
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false
+  }
+}
