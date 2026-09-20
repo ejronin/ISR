@@ -60,6 +60,19 @@ def sweep(start: str, end: str, event_id: str):
     }
 
 
+def validate_packet_provenance_schema():
+    schema = json.loads((REPO / "schemas" / "canonical-update-packet-v2.json").read_text(encoding="utf-8"))
+    provenance = schema["properties"].get("upstream_provenance")
+    assert provenance is not None
+    assert provenance["required"] == ["locker_artifacts"]
+    locker = provenance["properties"]["locker_artifacts"]
+    assert locker["minItems"] == 1
+    assert locker["uniqueItems"] is True
+
+
+validate_packet_provenance_schema()
+
+
 def configure(temp: Path):
     mod.ROOT = temp
     mod.EVIDENCE_DIR = temp / "data" / "evidence-integration"
