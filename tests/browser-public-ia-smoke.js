@@ -157,8 +157,9 @@ async function loadDirectRoute(cdp, route) {
     assert(webOfLiesDiscovery.landingLinks.some(href => href === '#/evidence/web-of-lies'), 'buried Web of Lies route is not discoverable from Lie Ledger');
     assert(webOfLiesDiscovery.traceLinks.length > 0, 'Lie Ledger exposes no claim-level TRACE links');
     assert(webOfLiesDiscovery.traceLinks.every(href => /^#\/evidence\/web-of-lies\?claim_family=/.test(href || '')), 'TRACE links do not resolve to claim-family Web of Lies views');
-    await cdp.call('Page.reload', { ignoreCache: true });
     const refreshRoute = [...ia.ROUTES.values()].at(-1);
+    await setRoute(cdp, refreshRoute);
+    await cdp.call('Page.reload', { ignoreCache: true });
     await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready' && window.ATLAS_PUBLIC_STATE?.routeKey === ${JSON.stringify(refreshRoute.key)}`);
     const refreshed = await routeView(cdp);
     assert.equal(refreshed.owner, refreshRoute.owner, 'direct route must retain its owner after refresh');
