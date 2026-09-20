@@ -249,5 +249,43 @@
       "canonical_outlet_profile_id": null,
       "canonical_actor_id": "ACT-IRGC"
     }
+  },
+  "current_source_carriers": {
+    "SRC-906AC32553A4": {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null
+    },
+    "SRC-E8B81BD88EA4": {
+      "source_id": "WOL-SRC-ANADOLU",
+      "display_name": "Anadolu Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": "Turkey",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "SRC-34163F690F21": {
+      "source_id": "WOL-SRC-ANADOLU",
+      "display_name": "Anadolu Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": "Turkey",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    },
+    "SRC-CBC350AF4215": {
+      "source_id": "WOL-SRC-CBS-NEWS",
+      "display_name": "CBS News",
+      "source_entity_type": "OUTLET",
+      "country_region": "United States",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null
+    }
   }
 }
