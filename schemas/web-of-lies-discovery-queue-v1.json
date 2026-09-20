@@ -10,28 +10,15 @@
     "source_handoff",
     "as_of",
     "items",
-    "resolved_existing_claim_sequences"
+    "resolved_existing_claim_sequences",
+    "resolved_canonical_claim_sequences"
   ],
   "properties": {
-    "schema_version": {
-      "const": "1.0"
-    },
-    "artifact_role": {
-      "const": "WEB_OF_LIES_DISCOVERY_QUEUE"
-    },
-    "authority": {
-      "const": "WEB_OF_LIES_INFORMATION_FORENSICS"
-    },
-    "source_handoff": {
-      "type": "string",
-      "minLength": 1
-    },
-    "as_of": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
+    "schema_version": { "const": "1.0" },
+    "artifact_role": { "const": "WEB_OF_LIES_DISCOVERY_QUEUE" },
+    "authority": { "const": "WEB_OF_LIES_INFORMATION_FORENSICS" },
+    "source_handoff": { "type": "string", "minLength": 1 },
+    "as_of": { "type": ["string", "null"] },
     "items": {
       "type": "array",
       "items": {
@@ -46,34 +33,17 @@
           "review_reason"
         ],
         "properties": {
-          "discovery_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "status": {
-            "const": "AWAITING_CANONICAL_CLAIM_FAMILY"
-          },
-          "claim_family_ref": {
-            "type": "null"
-          },
+          "discovery_id": { "type": "string", "minLength": 1 },
+          "status": { "const": "AWAITING_CANONICAL_CLAIM_FAMILY" },
+          "claim_family_ref": { "type": "null" },
           "observations": {
             "type": "array",
             "minItems": 1,
-            "items": {
-              "type": "object"
-            }
+            "items": { "type": "object" }
           },
-          "downstream_note": {
-            "type": "string",
-            "minLength": 1
-          },
-          "review_target": {
-            "const": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION"
-          },
-          "review_reason": {
-            "type": "string",
-            "minLength": 1
-          }
+          "downstream_note": { "type": "string", "minLength": 1 },
+          "review_target": { "const": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION" },
+          "review_reason": { "type": "string", "minLength": 1 }
         },
         "additionalProperties": true
       }
@@ -90,25 +60,51 @@
           "routing_path"
         ],
         "properties": {
-          "sequence_id": {
-            "type": "string",
-            "minLength": 1
-          },
+          "sequence_id": { "type": "string", "minLength": 1 },
+          "status": { "const": "EXISTING_CANONICAL_CLAIM_CONTINUITY" },
+          "claim_id": { "type": "string", "minLength": 1 },
+          "chain_id": { "type": "string", "minLength": 1 },
+          "routing_path": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "resolved_canonical_claim_sequences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sequence_id",
+          "status",
+          "claim_family_ref",
+          "chain_id",
+          "claims_forensics_disposition",
+          "claims_forensics_path",
+          "source_handoff_path",
+          "routing_path",
+          "observations",
+          "downstream_note"
+        ],
+        "properties": {
+          "sequence_id": { "type": "string", "minLength": 1 },
           "status": {
-            "const": "EXISTING_CANONICAL_CLAIM_CONTINUITY"
+            "enum": [
+              "CANONICAL_CLAIM_FAMILY_ASSIGNED",
+              "EXISTING_CANONICAL_CLAIM_CHRONOLOGY_ADVANCE"
+            ]
           },
-          "claim_id": {
-            "type": "string",
-            "minLength": 1
+          "claim_family_ref": { "type": "string", "minLength": 1 },
+          "chain_id": { "type": "string", "minLength": 1 },
+          "claims_forensics_disposition": { "type": "string", "minLength": 1 },
+          "claims_forensics_path": { "type": "string", "minLength": 1 },
+          "source_handoff_path": { "type": "string", "minLength": 1 },
+          "routing_path": { "type": "string", "minLength": 1 },
+          "observations": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "object" }
           },
-          "chain_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "routing_path": {
-            "type": "string",
-            "minLength": 1
-          }
+          "downstream_note": { "type": "string", "minLength": 1 }
         },
         "additionalProperties": false
       }
