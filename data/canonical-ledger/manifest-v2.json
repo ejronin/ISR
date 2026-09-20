@@ -175,11 +175,22 @@
       "previous_lineage_sha256": "614c534716be696ab7cc7c618f579b72fe0f4b5630e7ee615c99d1764e656e17",
       "sequence": 16,
       "sha256": "8227d0dc2eb4d5af932166046b599afbef1bfdd06733a523bcda258b73a72b94"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-09-20T12:28:00-04:00",
+      "known_at": "2026-09-20T12:28:00-04:00",
+      "lineage_sha256": "aa4937af5baa36a9d4b1acc8a63511bac8d14180ee77be20828cbb2cc7b72ac3",
+      "packet_id": "UPD-20260920-F15E-ISFAHAN-EVIDENCE",
+      "path": "data/canonical-updates/UPD-20260920-F15E-ISFAHAN-EVIDENCE.json",
+      "previous_lineage_sha256": "45b32b40f6a6c45f021a8a118032047b0b55ff9e578c40886cc21eaebd62ca35",
+      "sequence": 17,
+      "sha256": "190d3a27192eb98f353c3a4403c921980f35b392878878ba8271cec68bab9cab"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
   "base_manifest": "data/canonical-ledger/manifest.json",
-  "current_evidence_cutoff": "2026-09-18T10:27:26-04:00",
+  "current_evidence_cutoff": "2026-09-20T12:28:00-04:00",
   "gate2_evidence_cutoff": "2026-09-05T00:37:00-04:00",
   "lineage_genesis_sha256": "25952a5181f9f355c347e7c5b8b76d3b2fea0e4a1c04211b4121cbb72deebb07",
   "lineage_version": "1.0",
