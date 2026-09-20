@@ -1,0 +1,226 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-15T00:01:51-04:00",
+    "window_end": "2026-09-16T11:58:33-04:00",
+    "collection_time": "2026-09-16T11:58:33-04:00",
+    "evidence_horizon_time": "2026-09-16T11:58:33-04:00",
+    "timezone": "America/New_York",
+    "boundary_rule": "Recovered from stale catch-up artifacts. Operational scope is normalized only to remove stale overlap/gap defects; every original stale window is preserved verbatim in migration_provenance."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "source_branch_head": "a140d33114664c6b329adf696907870a0273eb93",
+    "stale_branch_policy": "EVIDENCE_INPUT_ONLY_NO_STALE_ARCHITECTURE_IMPORTED",
+    "source_artifacts": [
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-catchup-20260916T1052ET.json",
+        "commit": "387503e6d70c6f0d9c62468e70d37bc2b4a17f58",
+        "original_role": "ROOK_FULL_EVIDENCE_LOCKER_CATCHUP_SWEEP",
+        "original_window": {
+          "start": "2026-09-15T00:01:51-04:00",
+          "end": "2026-09-16T10:52:00-04:00"
+        }
+      },
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260916T1052ET.json",
+        "commit": "7d2d20a0a47b1cd3c92d0de7b45b30562c9374b2",
+        "original_role": "ROOK_EVIDENCE_LOCKER_INCREMENTAL_UPDATE",
+        "original_window": {
+          "start": "2026-09-16T10:52:00-04:00",
+          "end": "2026-09-16T10:52:00-04:00"
+        }
+      },
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260916T1158ET.json",
+        "commit": "a0d1fedf1549360b39ccc13683e432eae60d9828",
+        "original_role": "ROOK_FULL_EVIDENCE_LOCKER_12H_SWEEP",
+        "original_window": {
+          "start": "2026-09-15T23:58:33-04:00",
+          "end": "2026-09-16T11:58:33-04:00"
+        }
+      },
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260917T0730ET.json",
+        "commit": "e0cdf85a2852313bd7cc4bc78a7c7e7e240232d9",
+        "original_role": "ROOK_FULL_EVIDENCE_LOCKER_12H_SWEEP",
+        "original_window": {
+          "start": "2026-09-16T19:30:00-04:00",
+          "end": "2026-09-17T07:30:00-04:00"
+        },
+        "item_reassigned": "House passage published Sep 16 and belongs before 11:58 ET."
+      }
+    ],
+    "normalization_note": "Consolidates the stale catch-up, zero-duration incremental update and overlapping scheduled sweep. One later stale artifact contributed an item whose publication time belongs in this interval."
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-HOUTHI-OMAN-DIRECT-MEETING-20260913",
+      "event_type": "DIPLOMATIC_CONTACT",
+      "occurrence_time": "2026-09-12/13",
+      "public_available_time": "2026-09-16",
+      "collection_time": "2026-09-16T10:52:00-04:00",
+      "summary": "Reuters, citing five sources, reported U.S. officials and Houthi representatives met in Muscat with Omani facilitation. Sources described Houthi assurances regarding the 2025 U.S. ceasefire and American vessels; the State Department did not formally confirm the meeting.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/us-officials-met-iran-backed-houthis-oman-over-weekend-sources-say-2026-09-16/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRAN-CHINA-WANG-ARAGHCHI-20260916",
+      "event_type": "DIPLOMATIC_MEETING",
+      "occurrence_time": "2026-09-16",
+      "public_available_time": "2026-09-16T05:24:31-04:00",
+      "collection_time": "2026-09-16T10:52:00-04:00",
+      "summary": "Wang Yi urged Iran and the United States to return to the interim negotiating framework, conduct substantive consultations and take effective measures to reopen Hormuz early. Araghchi expressed openness to diplomacy while emphasizing Iranian rights and sovereignty.",
+      "sources": [
+        "https://www.reuters.com/world/china/chinas-top-diplomat-urges-iran-us-show-restraint-revive-talks-2026-09-16/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRGC-MQ9-QESHM-CLAIM-20260916",
+      "event_type": "AIR_DEFENSE_LOSS_CLAIM",
+      "occurrence_time": "2026-09-16T02:29:00+03:30",
+      "public_available_time": "2026-09-16",
+      "collection_time": "2026-09-16T11:58:33-04:00",
+      "summary": "IRGC said its air defenses destroyed a U.S. MQ-9 over Qeshm Island at 02:29 local time and called it the 52nd U.S. MQ-9 destroyed. No U.S. or independent confirmation was identified by the stale sweep horizon.",
+      "sources": [
+        "https://www.tasnimnews.ir/en/news/2026/09/16/3698072/irgc-downs-52nd-us-mq-9-drone-south-of-iran",
+        "https://www.aa.com.tr/en/middle-east/iran-says-it-shot-down-us-mq-9-drone-over-qeshm-island-/4058655"
+      ]
+    },
+    {
+      "event_id": "LOCKER-US-HOUSE-RUSSIA-IRAN-SANCTIONS-ACT-20260916",
+      "event_type": "LEGISLATIVE_SANCTIONS_ACTION",
+      "occurrence_time": "2026-09-16",
+      "public_available_time": "2026-09-16T06:04:00-04:00",
+      "collection_time": "2026-09-17T07:30:00-04:00",
+      "summary": "The U.S. House passed the Lindsey O. Graham Sanctioning Russia and Iran Act of 2026 by 262-159 and sent it to the president. Enactment was not yet complete at this horizon.",
+      "sources": [
+        "https://www.reuters.com/legal/government/us-house-takes-up-russia-sanctions-bill-backed-by-late-senator-graham-2026-09-16/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-TUESDAY-FOUR-TRANSITS-20260916",
+      "updates_existing_ref": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "relationship": "LATER_DAILY_TRAFFIC_OBSERVATION",
+      "summary": "Kpler preliminary data reported four Hormuz commodity-vessel transits Tuesday, well below the ten-day average; AIS-dark traffic remained an explicit undercount limitation.",
+      "status": "FOUR_TUESDAY_TRANSITS_REPORTED_LOW_TRAFFIC_CONTINUES",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/strait-hormuz-ship-crossings-remain-single-digits-data-shows-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-YEMEN-DISPLACEMENT-125K-OCHA-20260916",
+      "updates_existing_ref": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "relationship": "LATER_HUMANITARIAN_DENOMINATOR",
+      "summary": "Reporting citing OCHA said about 125,000 people had been displaced since the start of September and cited UN human-rights reporting of eight civilians killed and 32 injured from Sep. 1-14. Earlier exact IOM counts remain historical rather than overwritten.",
+      "status": "LATER_ROUNDED_DENOMINATOR_RECORDED_SEPARATELY",
+      "sources": [
+        "https://www.aa.com.tr/en/middle-east/at-least-125-000-displaced-by-escalating-fighting-in-yemen-this-month-un/4057876"
+      ]
+    },
+    {
+      "update_id": "UPD-HOUTHI-REDSEA-CONSOLIDATION-20260916",
+      "updates_existing_ref": "YEMEN_HOUTHI_REDSEA_ADVANCE_CHAIN",
+      "relationship": "LATER_STRATEGIC_DISPOSITION_DETAIL",
+      "summary": "Reuters reported Houthi gains around Bab el-Mandeb consolidated Red Sea coastline/island positions and that U.S.- and Saudi-supplied materiel was abandoned or captured; Western officials said direct Western backing for a counteroffensive was not prepared.",
+      "status": "TERRITORIAL_POSITION_STRENGTHENED_CAPTURED_MATERIEL_REPORTED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/houthi-blitz-leaves-saudi-arabia-exposed-iran-emboldened-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-MECCA-DRONE-REGIONAL-REACTION-20260916",
+      "updates_existing_ref": "REL-HOUTHI-SAUDI-THREAT-ALERTS-20260914",
+      "relationship": "LATER_ATTRIBUTION_AND_DIPLOMATIC_REACTION",
+      "summary": "Saudi Arabia said a drone intercepted south of Mecca represented an attempted Houthi attack on the holy city; Houthis denied targeting Mecca or religious sites. Regional diplomatic condemnations were recorded while intended aimpoint remained disputed.",
+      "status": "SAUDI_ATTRIBUTION_AND_HOUTHI_DENIAL_PRESERVED_AIMPOINT_UNRESOLVED",
+      "sources": [
+        "https://apnews.com/article/895320bde6dc589cebb628b63832c38a",
+        "https://www.reuters.com/world/middle-east/saudi-led-coalition-says-it-destroys-houthi-drone-south-mecca-2026-09-16/"
+      ]
+    },
+    {
+      "update_id": "UPD-SAUDI-EASTWEST-RESTART-DIVERGENCE-20260916",
+      "updates_existing_ref": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "relationship": "LATER_REPAIR_ESTIMATE_DIVERGENCE",
+      "summary": "Public estimates diverged between a U.S. expectation of flow within days and source estimates of weeks for repairs, with possible partial operation before full repair. Physical repair, partial flow, full throughput and Yanbu loading remain distinct states.",
+      "status": "NO_CONFIRMED_FULL_RESTART_ESTIMATES_DIVERGENT",
+      "sources": [
+        "https://www.reuters.com/business/energy/us-energy-chief-says-saudi-arabia-oil-pipeline-should-be-back-within-days-2026-09-15/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-IRGC-MQ9-QESHM-20260916",
+      "claimant": "IRGC",
+      "claim_time": "2026-09-16",
+      "claim": "Iranian air defenses shot down a U.S. MQ-9 over Qeshm Island at 02:29 local time.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_NO_TRUTH_REWRITE_BY_ROOK",
+      "summary": "Individual Qeshm MQ-9 loss claim; route to existing aircraft-loss claims authority.",
+      "sources": [
+        "https://www.tasnimnews.ir/en/news/2026/09/16/3698072/irgc-downs-52nd-us-mq-9-drone-south-of-iran"
+      ]
+    },
+    {
+      "claim_id": "CLM-IRGC-52-MQ9-CUMULATIVE-20260916",
+      "claimant": "IRGC",
+      "claim_time": "2026-09-16",
+      "claim": "The Qeshm aircraft was the 52nd U.S. MQ-9 destroyed during the conflict.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_EXISTING_CHAIN_CH-AIRCRAFT-KILL-AGGREGATES",
+      "summary": "Preserve exact MQ-9 denominator wording; no ROOK truth/deception adjudication.",
+      "sources": [
+        "https://www.tasnimnews.ir/en/news/2026/09/16/3698072/irgc-downs-52nd-us-mq-9-drone-south-of-iran"
+      ]
+    },
+    {
+      "claim_id": "CLM-HOUTHI-F15-SHOOTDOWN-20260916",
+      "claimant": "Houthis",
+      "claim_time": "2026-09-16",
+      "claim": "Houthis shot down a Saudi F-15.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_NO_TRUTH_REWRITE_BY_ROOK",
+      "summary": "Preserve as claim-domain intake; later physical-loss evidence and mechanism are separate.",
+      "sources": [
+        "https://apnews.com/article/895320bde6dc589cebb628b63832c38a"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-SAUDI-YANBU-ALTERNATE-EXPORTS-20260916",
+      "summary": "Yanbu disruption and alternative export/loadout reporting materially affected crude routing and market pricing; treat route mitigation separately from physical East-West Pipeline restoration.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/"
+      ]
+    }
+  ],
+  "unresolved_questions": [
+    "Independent/U.S. evidence for the Qeshm MQ-9 occurrence and aggregate",
+    "Exact Saudi East-West repair/partial-flow/full-throughput state",
+    "Mecca drone intended aimpoint",
+    "Independent verification of the Houthi Saudi F-15 loss mechanism",
+    "AIS-dark share of Hormuz traffic"
+  ],
+  "coverage": {
+    "material_results": [
+      "Catch-up evidence recovered through 11:58:33 ET Sep.16"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "B-2 shootdown recirculation: no new primary or independent evidence in recovered artifacts"
+    ],
+    "limitations": [
+      "Stale source artifacts overlapped and used incompatible roles; original windows are preserved in migration_provenance.",
+      "No privileged satellite, classified ISR or paid maritime terminal data was introduced during migration."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_MIGRATED_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
