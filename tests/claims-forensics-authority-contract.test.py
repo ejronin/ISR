@@ -177,10 +177,18 @@ def main() -> None:
 
     # 11. Repetition/amplification cannot become another unique proposition.
     def inflate_repetition(c, p, g):
+        rows = authority.canonical_records(c)
+        unique_propositions = {
+            row.get("proposition_id")
+            for row in rows
+            if row.get("counts_as_unique_proposition")
+        }
         target = next(
             row
-            for row in authority.canonical_records(c)
+            for row in rows
             if row.get("relation_type") in {"REPETITION", "AMPLIFICATION"}
+            and row.get("counts_as_unique_proposition") is False
+            and row.get("proposition_id") in unique_propositions
         )
         instance = target["claim_instance_id"]
         mutate_record_everywhere(
