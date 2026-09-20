@@ -28,7 +28,7 @@ assert len(assembled["relationships"]) > 18
 derived = wol.build_registry(canonical, assembled, governance)
 family = next(row for row in derived["claim_families"] if row["claim_family_id"] == "CH-F15E-CSAR-URANIUM")
 assert family["trace_status"] == "TRACED"
-assert len(family["information_event_ids"]) == 14
+assert len(family["information_event_ids"]) == 18
 assert len(family["relationship_ids"]) == 18
 
 # The F-15E packet remains unchanged even though additional families now
@@ -75,6 +75,13 @@ assert "narrative substitution" in substitution["plain_english_verdict"].lower()
 continued = events["WOL-EVT-F15E-014"]
 assert continued["source_id"] == "WOL-SRC-MOHAMMAD-MOLAEI"
 assert continued["correction_state"] == "REPEAT_AFTER_CORRECTION"
+
+for media_id in ("MED-001", "MED-002", "MED-003", "MED-004"):
+    media = events[f"WOL-EVT-F15E-{media_id}"]
+    assert media["event_type"] == "FALSE_MEDIA_ARTIFACT"
+    assert media["behavior_findings"] == []
+    assert media["provenance_limit"] == "OFFICIAL_ORIGIN_NOT_ESTABLISHED"
+    assert media["source_id"] == f"WOL-SRC-UNATTRIBUTED-MEDIA-{media_id}"
 
 relationships = {row["relationship_id"]: row for row in derived["relationships"]}
 published = relationships["WOL-REL-F15E-018"]
