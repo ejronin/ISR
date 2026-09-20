@@ -372,9 +372,8 @@ def validate(root: Path = ROOT) -> None:
     }
     require(global_blocker_keys == active_blocker_keys, "global publication-blocker registry is stale relative to active adjudications")
     require(
-        {blocker.get("claim_instance_id") for blocker in global_blockers}
-        == {"CI-IR-CLM-0011-P01", "CI-IR-CLM-0011-P02"},
-        "unexpected active publication-blocked case remains after Sep. 19 source completion",
+        not global_blockers,
+        "active publication-blocked case remains after Sep. 20 Claims Forensics maintenance",
     )
 
     remains = [record for record in records if record.get("proposition_id") == "PROP-CSAR-US-REMAINS-EVIDENTIARY-PRESENTATION"]
