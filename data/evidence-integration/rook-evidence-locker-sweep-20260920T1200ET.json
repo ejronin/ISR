@@ -1,0 +1,142 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-20T00:00:00-04:00",
+    "end": "2026-09-20T12:00:00-04:00",
+    "collection_time": "2026-09-20T12:00:36-04:00",
+    "evidence_horizon": "2026-09-20T12:00:00-04:00"
+  },
+  "lineage": {
+    "branch": "evidence/rook-catchup-20260919-0002",
+    "parent_commit_observed": "e53c264265700de60f03de10aa76a3575b26df04",
+    "previous_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260920T0000ET.json"
+  },
+  "updates": [
+    {
+      "event_id": "IRAN-QATAR-US-SETTLEMENT-CONDITIONS-20260919",
+      "update_type": "existing-event supersession / detail expansion",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-20",
+      "finding": "Follow-on reporting materially expands the previously public three-condition summary. Al Jazeera reports Rezaei publicly specified six conditions: end the war on all fronts (especially Lebanon); release frozen Iranian funds; end the naval blockade on Iranian ports; end U.S. interference in Iran's internal affairs; end U.S. cooperation with opponents of Iran's revolution; and end all U.S. attacks on Iranian territory. Rezaei separately says Iran conveyed seven conditions, leaving one condition undisclosed in the public list.",
+      "status": "SUPPORTED AS IRANIAN STATED POSITION; ONE OF SEVEN CONDITIONS STILL UNDISCLOSED",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/20/what-are-irans-new-conditions-to-end-its-war-with-the-us",
+        "https://www.presstv.co.uk/Detail/2026/09/20/776648/Iran-conditions-US-talks"
+      ],
+      "drawer_effect": "Supersede prior wording that only three conditions were publicly known. Preserve earlier reporting as statement-time state; current public list is six named conditions plus one undisclosed condition."
+    },
+    {
+      "event_id": "IRAN-HORMUZ-REOPENING-SEQUENCING-20260920",
+      "update_type": "new claim / sequencing clarification linked to Hormuz diplomacy drawer",
+      "occurrence_time": "2026-09-20",
+      "publication_time": "2026-09-20",
+      "finding": "Parliament Speaker Mohammad Bagher Ghalibaf said there would be no return to the previous negotiations or reopening of the Strait of Hormuz until Iran's conditions are met, Iranian rights recognized, and U.S. commitments fulfilled. This is materially stronger sequencing language than merely describing settlement conditions and should be preserved as an Iranian official position, not as an agreed bilateral term.",
+      "status": "SUPPORTED AS CLAIMANT POSITION; NOT AGREED TERMS",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/20/what-are-irans-new-conditions-to-end-its-war-with-the-us"
+      ],
+      "drawer_effect": "Update the Hormuz/negotiation drawer: Iranian public messaging now explicitly links reopening/return to negotiations to prior fulfillment of its conditions. Do not retroactively attribute this exact sequencing to Rezaei's earlier three-condition formulation."
+    },
+    {
+      "event_id": "IRAN-US-ESCALATION-WARNING-20260920",
+      "update_type": "new military warning / claim",
+      "occurrence_time": "2026-09-20",
+      "publication_time": "2026-09-20",
+      "finding": "Iran's military central command said it had information that a major new U.S./allied attack was being prepared and warned that any such attack would trigger sustained retaliation against U.S. bases and interests; U.S. regional allies would be treated as parties to the conflict. Reuters reported no elaboration or independent evidence supporting Iran's claimed foreknowledge. The U.S. State Department separately issued a security alert warning of possible unforeseen regional escalation, flight cancellations and airspace closures; this does not independently validate Iran's intelligence claim.",
+      "status": "WARNING CONFIRMED; FOREKNOWLEDGE CLAIM UNVERIFIED",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/iran-warns-against-new-escalation-by-us-allies-2026-09-20/"
+      ],
+      "drawer_effect": "Add to escalation/claims drawer with strict separation between Iranian claimed intelligence, Iranian declared retaliation policy, and independent U.S. precautionary alert."
+    },
+    {
+      "event_id": "RIYADH-AIRPORT-AERIAL-THREAT-20260919",
+      "update_type": "existing-event market-impact update",
+      "occurrence_time": "2026-09-19",
+      "publication_time": "2026-09-20",
+      "finding": "Reuters identified the visible plume as rising from the fuel-storage area at King Khalid International Airport. On Sep. 20 Saudi equities closed 0.3% lower and Qatar 1.1% lower amid the Houthi attack claims and regional risk. This adds market impact and location specificity but does not resolve weapon-to-damage attribution or independently establish the Houthi Yanbu BDA claim.",
+      "status": "VISIBLE AIRPORT FUEL-AREA FIRE SUPPORTED; CAUSAL ATTRIBUTION STILL UNRESOLVED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-gulf-stocks-fall-after-houthis-claim-riyadh-attacks-2026-09-20/"
+      ],
+      "drawer_effect": "Update existing Riyadh event rather than create a duplicate. Preserve Saudi interception account and Houthi strike claims separately from observed damage."
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "IRAN-QATAR-US-SETTLEMENT-CONDITIONS-20260919",
+      "action": "UPDATE",
+      "reason": "Six conditions are now publicly enumerated; one of the claimed seven remains undisclosed."
+    },
+    {
+      "drawer": "Hormuz reopening / June MoU / negotiation sequencing",
+      "action": "UPDATE",
+      "reason": "Ghalibaf now states explicit conditions-first sequencing for negotiations/reopening."
+    },
+    {
+      "drawer": "RIYADH-AIRPORT-AERIAL-THREAT-20260919",
+      "action": "UPDATE",
+      "reason": "Reuters location specificity and market reaction; attribution remains unresolved."
+    },
+    {
+      "drawer": "Qeshm MQ-9 / 52nd-53rd aggregate",
+      "action": "NO MATERIAL CHANGE FOUND",
+      "reason": "No new independent type-specific loss evidence located in this window."
+    },
+    {
+      "drawer": "RSAF F-15SA loss",
+      "action": "NO MATERIAL CHANGE FOUND",
+      "reason": "No new operator, crew-fate, or causation evidence located."
+    },
+    {
+      "drawer": "Saudi Petroline / Yanbu",
+      "action": "NO MATERIAL CHANGE FOUND",
+      "reason": "No new high-confidence repair-status or Yanbu strike BDA located beyond existing evidence."
+    },
+    {
+      "drawer": "U.S. fatalities 18 vs 22",
+      "action": "NO MATERIAL CHANGE FOUND",
+      "reason": "Sep. 20 republication repeats the existing discrepancy without resolving denominator/combat-status questions."
+    }
+  ],
+  "coverage": {
+    "military": "covered: Iran/U.S. escalation warning; Saudi/Houthi Riyadh event review",
+    "maritime": "covered: Hormuz diplomacy/sequencing; no newer reliable daily Kpler denominator found than existing drawer",
+    "infrastructure": "covered: Riyadh airport fuel-storage-area fire; Petroline/Yanbu prior drawer checked",
+    "diplomacy": "covered: Iran-Qatar-U.S. conditions and Ghalibaf sequencing",
+    "economy_sanctions_energy": "covered: Gulf market reaction; Treasury/OFAC checked with no new Sep. 20 action located by cutoff",
+    "claims_corrections": "covered: seven-vs-six disclosed Iranian conditions; claimed foreknowledge kept unverified",
+    "human_impact": "covered: no material new theater-wide casualty/displacement denominator located in-window that supersedes current drawers",
+    "osint_commercial": "covered with limitation: open commercial reporting reviewed; no direct paid Kpler/MarineTraffic/Planet/Maxar feed access used"
+  },
+  "unresolved_questions": [
+    "What is the seventh Iranian condition not publicly enumerated in the Sep. 20 reporting?",
+    "Does Washington formally respond to the seven-condition package, and if so which conditions are accepted/rejected/countered?",
+    "What weapon/event caused the observed King Khalid airport fuel-storage-area fire?",
+    "Is there independent BDA for the Houthi Yanbu attack claim?",
+    "What is the next independently sourced daily Hormuz commodity-vessel transit denominator after the existing Kpler Thursday count?",
+    "Does any independent evidence substantiate Iran's claim that it has intelligence of a prepared major U.S./allied attack?"
+  ],
+  "source_discovery_additions": [
+    "Al Jazeera Sep. 20 explainer enumerating six of Iran's seven stated conditions and Ghalibaf's sequencing language",
+    "Press TV Sep. 20 claimant-side record preserving Rezaei's seven-condition formulation",
+    "Reuters Sep. 20 Iran escalation-warning report",
+    "Reuters Sep. 20 Gulf-market report with Riyadh airport fuel-storage-area location description"
+  ],
+  "limitations": [
+    "No paid commercial maritime or satellite terminal was available in this run; public/open reporting was used.",
+    "Absence of a new report is not evidence of no event; no-change findings are scoped to sources located by the evidence horizon.",
+    "Claimant statements are preserved as claims unless independently corroborated."
+  ],
+  "completion": {
+    "status": "COMPLETE_WITH_EXPLICIT_SOURCE_LIMITATIONS",
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false
+  }
+}
