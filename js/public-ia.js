@@ -2446,8 +2446,14 @@
           ['Epistemic posture', plainLabel(event.epistemic_posture, 'Unknown')],
           ['Behavior findings', asArray(event.behavior_findings).map(plainLabel).join(' · ') || 'None recorded'],
           ['Revenue findings', asArray(event.revenue_findings).map(plainLabel).join(' · ') || 'None recorded'],
-          ['Evidence anchors', asArray(event.evidence_source_ids).join(' · ') || 'None recorded']
+          ['Evidence anchors', asArray(event.evidence_source_ids).join(' · ') || 'None recorded'],
+          ['Contrary evidence anchors', asArray(event.contrary_evidence_source_ids).join(' · ') || 'None recorded']
         ]);
+        if (event.plain_english_verdict) {
+          const verdict = append(card, 'aside', 'scope-note wol-plain-verdict');
+          append(verdict, 'strong', '', 'Plain-English verdict');
+          append(verdict, 'p', '', publicNarrative(event.plain_english_verdict));
+        }
         const trace = append(card, 'a', 'inline-route-link', 'VIEW CLAIM LINEAGE');
         trace.href = routeHref('evidence.web_of_lies', { claim_family: event.claim_family_id });
       });
@@ -2501,6 +2507,7 @@
           append(item, 'p', 'card-kicker', [event.published_at || event.first_observed_at, plainLabel(event.event_type)].filter(Boolean).join(' · '));
           append(item, 'strong', '', publicNarrative(profileById.get(event.source_id)?.display_name, event.source_id));
           append(item, 'p', '', publicNarrative(event.exact_statement || event.translated_statement, 'Statement text not stored'));
+          if (event.plain_english_verdict) append(item, 'p', 'wol-plain-verdict-text', publicNarrative(event.plain_english_verdict));
           append(item, 'small', '', `Epistemic posture: ${plainLabel(event.epistemic_posture, 'Unknown')}`);
         });
         if (selectedRelations.length) {
