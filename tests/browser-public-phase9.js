@@ -20,7 +20,9 @@ const records = key => {
 };
 const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
-const expectedReaderChains = lieLedgerModel.records.filter(chain => chain.public_include_in_accusation_count !== false).length;
+const readerChains = lieLedgerModel.records.filter(chain => chain.public_include_in_accusation_count !== false);
+const expectedReaderChains = readerChains.length;
+const expectedParentFindings = readerChains.filter(chain => chain.public_finding || chain.event_level_finding || chain.chain_finding).length;
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -188,7 +190,7 @@ async function route(cdp, hash, key) {
       if (evidenceSummary) evidenceSummary.click();
       const search = main.querySelector('.reader-ledger-controls input[type="search"]');
       const select = main.querySelector('.reader-ledger-controls select');
-      const statuses = cards.map(card => card.querySelector('.reader-claim-status')?.textContent.trim() || '');
+      const statuses = cards.map(card => card.querySelector(':scope > .reader-ledger-card-head .reader-claim-status')?.textContent.trim() || '').filter(Boolean);
       const internalSelectors = main.querySelectorAll('[data-claim-instance-id], [data-chain-id], [data-publication-status], [data-combined-assessment]').length;
       const technicalMetadata = main.querySelectorAll('.technical-record-metadata, .evidence-role-guide').length;
       const text = main.innerText || '';
@@ -213,7 +215,8 @@ async function route(cdp, hash, key) {
     })()`);
     assert.equal(ledger.cards, expectedReaderChains, 'reader Lie Ledger must render exactly one top-level card per narrative chain');
     assert(ledger.cards > 0, 'reader-facing chain ledger is empty');
-    assert(ledger.statuses.every(value => ['Lie', 'Likely lie', 'False', 'Misleading', 'Partly true', 'Supported', 'Unresolved', 'Evidence review incomplete', 'Not yet assessed'].includes(value)), 'reader ledger exposes an unapproved finding label');
+    assert.equal(ledger.statuses.length, expectedParentFindings, 'reader chain-header findings must match explicit canonical parent findings only');
+    assert(ledger.statuses.every(value => ['Lie', 'Likely lie', 'False', 'Misleading', 'Partly true', 'Supported', 'Unresolved', 'Evidence review incomplete', 'Not yet assessed'].includes(value)), 'reader ledger exposes an unapproved parent finding label');
     assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
     assert(ledger.evidence && ledger.evidenceOpen, 'reader evidence drawer is not discoverable/openable');
     assert(ledger.controls.length >= 2 && ledger.controls.every(height => height >= 44), 'reader claim controls have a touch target below 44px');
