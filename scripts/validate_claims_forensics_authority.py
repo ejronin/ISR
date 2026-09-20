@@ -369,15 +369,15 @@ def validate_f15_reference(chain: dict[str, Any]) -> None:
         "false F-35 identification is absent from the F-15E reference chain",
     )
 
-    causal = [
-        row
-        for row in rows.values()
-        if row.get("proposition_axis") == "CAUSAL_ATTRIBUTION"
-        or row.get("proposition_id") == "PROP-F15E-APR03-CSAR-LOSS-CAUSATION"
-    ]
-    require(causal, "F-15E rescue-equipment causal-attribution proposition is missing")
+    causal = rows.get("CI-IR-CLM-0007-P02") or {}
     require(
-        all(row.get("claim_instance_id") != "CI-IR-CLM-0007-P01" for row in causal),
+        causal.get("proposition_axis") in {"CAUSE", "CAUSAL_ATTRIBUTION"}
+        and causal.get("truth_adjudication") == "FALSE",
+        "F-15E rescue-equipment causal-attribution proposition is missing or no longer separately false",
+    )
+    require(
+        causal.get("proposition_id")
+        != rows.get("CI-IR-CLM-0007-P01", {}).get("proposition_id"),
         "real equipment-loss fact and causal-attribution proposition were collapsed",
     )
 
