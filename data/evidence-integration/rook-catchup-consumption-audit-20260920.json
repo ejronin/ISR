@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "EVIDENCE_INTEGRATION_ROOK_CATCHUP_CONSUMPTION_AUDIT",
+  "record_id": "EI-ROOK-CATCHUP-CONSUMPTION-20260920",
+  "as_of": "2026-09-20T15:48:00-04:00",
+  "authority_boundary": {
+    "owner": "EVIDENCE_INTEGRATION",
+    "rook_role": "UPSTREAM_COLLECTION_ONLY",
+    "claims_semantics": "DELEGATED",
+    "web_of_lies_semantics": "DELEGATED"
+  },
+  "rule": "Each recovered sweep is consumed chronologically. Later evidence updates stable events/entities instead of creating duplicate physical occurrences.",
+  "sweeps": [
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260916T1158ET-recovered.json",
+      "decisions": [
+        [
+          "LOCKER-US-HOUTHI-OMAN-DIRECT-MEETING-20260913",
+          "ADVANCE_CANONICAL"
+        ],
+        [
+          "LOCKER-IRAN-CHINA-WANG-ARAGHCHI-20260916",
+          "PROVENANCE_AND_DIPLOMATIC_CONTEXT"
+        ],
+        [
+          "LOCKER-IRGC-MQ9-QESHM-CLAIM-20260916",
+          "ALREADY_CANONICAL_BY_UPD_20260917_ISSUE132; CLAIM_HANDOFF"
+        ],
+        [
+          "LOCKER-US-HOUSE-RUSSIA-IRAN-SANCTIONS-ACT-20260916",
+          "HISTORICAL_STATE_SUPERSEDED_BY_SIGNED_LAW"
+        ],
+        [
+          "UPD-HORMUZ-TUESDAY-FOUR-TRANSITS-20260916",
+          "HISTORICAL_DAILY_METRIC_SUPERSEDED_BY_LATER_KPLER_COUNT"
+        ],
+        [
+          "UPD-SAUDI-EASTWEST-RESTART-DIVERGENCE-20260916",
+          "HISTORICAL_STATE_SUPERSEDED_BY_LATER_BDA"
+        ]
+      ]
+    },
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260916T1930ET-gap-recovery.json",
+      "decisions": [
+        [
+          "LOCKER-US-FINCEN-OPERATION-ECONOMIC-OUTCAST-20260916",
+          "ADVANCE_CANONICAL"
+        ]
+      ]
+    },
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260917T1200ET-recovered.json",
+      "decisions": [
+        [
+          "LOCKER-IRGC-MQ9-QESHM-SECOND-CLAIM-20260917",
+          "ALREADY_CANONICAL_BY_UPD_20260917_ISSUE132; CLAIM_HANDOFF"
+        ],
+        [
+          "LOCKER-TAIF-DRONE-DEBRIS-CASUALTIES-20260917",
+          "ADVANCE_CANONICAL_RELATED_THEATER"
+        ],
+        [
+          "LOCKER-UN-FFM-US-IRAN-FINDINGS-20260917",
+          "ADVANCE_CANONICAL_AS_MISSION_FINDING_NOT_JUDICIAL_DETERMINATION"
+        ],
+        [
+          "UPD-HORMUZ-KPLER-THREE-TRANSITS-20260917",
+          "HISTORICAL_DAILY_METRIC_SUPERSEDED_BY_THURSDAY_COUNT"
+        ],
+        [
+          "UPD-BAB-EL-MANDEB-21-TRANSITS-20260917",
+          "HISTORICAL_DAILY_METRIC_SUPERSEDED_BY_THURSDAY_COUNT"
+        ]
+      ]
+    },
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260918T0002ET-recovered.json",
+      "decisions": [
+        [
+          "LOCKER-US-TREASURY-BITBANK-20260917",
+          "ADVANCE_CANONICAL"
+        ],
+        [
+          "LOCKER-IRGC-TANKER-HORMUZ-CLAIM-20260917",
+          "ADVANCE_CANONICAL_INCIDENT_WITH_CLAIMANT_BOUNDARIES; CLAIM_HANDOFF"
+        ],
+        [
+          "UPD-CHINA-PRIVATE-HOUTHI-PRESSURE-20260917",
+          "ADVANCE_CANONICAL"
+        ],
+        [
+          "UPD-RSAF-F15SA-WRECKAGE-20260917",
+          "ALREADY_CANONICAL_BY_UPD_20260917_ISSUE132; SOURCE_PROVENANCE_ONLY"
+        ],
+        [
+          "UPD-YEMEN-IOM-DTM-104796-20260917",
+          "HISTORICAL_IOM_DENOMINATOR_SUPERSEDED_BY_UPDATE_6"
+        ],
+        [
+          "UPD-SAUDI-EASTWEST-KPLER-MULTISTATION-20260917",
+          "ADVANCE_CANONICAL_THEN_REFINED_BY_REUTERS_BDA"
+        ]
+      ]
+    },
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260918T1200ET-recovered.json",
+      "decisions": [
+        [
+          "UPD-HORMUZ-THURSDAY-FOUR-TRANSITS-20260918",
+          "ADVANCE_CANONICAL_CURRENT_DAILY_METRIC"
+        ],
+        [
+          "UPD-SAUDI-EASTWEST-THREE-STATIONS-REUTERS-20260918",
+          "ADVANCE_CANONICAL_CURRENT_BDA"
+        ],
+        [
+          "UPD-TREND-TANKER-NAME-CLAIMANT-20260918",
+          "PROVENANCE_TO_EXISTING_MARITIME_INCIDENT; CLAIM_HANDOFF"
+        ],
+        [
+          "UPD-YEMEN-DISPLACEMENT-DENOMINATOR-SERIES-20260918",
+          "DENOMINATOR_SERIES_PRESERVED; LATER_IOM_UPDATE_6_CONTROLS_IOM_CURRENT"
+        ],
+        [
+          "UPD-US-HOUTHI-OMAN-AP-CORROBORATION-20260918",
+          "SOURCE_PROVENANCE_TO_DIRECT_CONTACT_EVENT"
+        ]
+      ]
+    },
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260919T0002ET-recovered.json",
+      "decisions": [
+        [
+          "LOCKER-US-OFFICIALS-TWO-MQ1-LOSSES-20260917",
+          "ADVANCE_CANONICAL_MATERIAL_LOSS; CLAIM_HANDOFF_CONTEXT"
+        ],
+        [
+          "LOCKER-ITALY-REDSEA-NAVAL-MISSION-INTENT-20260918",
+          "ADVANCE_CANONICAL_AS_INTENT_NOT_DEPLOYMENT"
+        ],
+        [
+          "LOCKER-IRAN-TEHRAN-RALLY-20260918",
+          "CLAIMANT_ONLY_FOR_TRAINING_TOTALS; NO_CORE_CURRENT_STATE_MUTATION"
+        ],
+        [
+          "UPD-US-WAR-COST-43_6B-20260918",
+          "ADVANCE_CANONICAL_CURRENT_COST_SNAPSHOT"
+        ]
+      ]
+    },
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260919T1200ET-recovered.json",
+      "decisions": [
+        [
+          "LOCKER-RIYADH-AIRPORT-AERIAL-THREAT-20260919",
+          "ADVANCE_CANONICAL_THEN_UPDATED_BY_LATER_OBSERVATION"
+        ],
+        [
+          "LOCKER-IRAN-EXECUTION-PEDARAN-20260919",
+          "RELATED_DOMESTIC_EVENT_NO_CORE_CURRENT_STATE_MUTATION"
+        ],
+        [
+          "UPD-US-FATALITY-DENOMINATOR-18-VS-22-20260919",
+          "ADVANCE_CANONICAL_AS_NONADDITIVE_DENOMINATOR_GAP"
+        ],
+        [
+          "UPD-UNIFIL-TRANSITION-PLANNING-20260919",
+          "ADVANCE_CANONICAL_RELATED_THEATER_CONTEXT"
+        ]
+      ]
+    },
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260920T0000ET-recovered.json",
+      "decisions": [
+        [
+          "LOCKER-IRAN-QATAR-US-SETTLEMENT-CONDITIONS-20260919",
+          "ADVANCE_CANONICAL_THEN_UPDATED_BY_SEP20_DETAIL"
+        ],
+        [
+          "LOCKER-PAKISTAN-IRAN-MARITIME-SAFETY-CALL-20260919",
+          "ADVANCE_CANONICAL_DIPLOMATIC_CONTEXT"
+        ],
+        [
+          "LOCKER-US-HR5334-SIGNED-20260918",
+          "ADVANCE_CANONICAL_SUPERSEDES_HOUSE_PASSAGE"
+        ],
+        [
+          "LOCKER-UN-IRAN-SANCTIONS-MONITORING-MANDATE-END-20260917",
+          "ADVANCE_CANONICAL_POLICY_CONTEXT"
+        ],
+        [
+          "UPD-RIYADH-FUEL-DEPOT-FIRE-20260919",
+          "ADVANCE_EXISTING_RIYADH_EVENT_CAUSAL_ATTRIBUTION_OPEN"
+        ],
+        [
+          "UPD-CENTCOM-HORMUZ-AGGREGATES-20260919",
+          "SOURCE_CONTEXT_ONLY_DOES_NOT_SUPERSEDE_KPLER_DAILY_METRIC"
+        ],
+        [
+          "UPD-YEMEN-IOM-DTM-114498-20260919",
+          "ADVANCE_CANONICAL_CURRENT_IOM_DENOMINATOR"
+        ],
+        [
+          "UPD-TURKEY-SAUDI-DEFENCE-PACT-READINESS-20260919",
+          "ADVANCE_CANONICAL_AS_READINESS_STATEMENT_NOT_DEPLOYMENT"
+        ],
+        [
+          "UPD-SOUTH-KOREA-HORMUZ-CONTRIBUTION-20260919",
+          "SOURCE_PROVENANCE_ONLY_NO_OPERATIONAL_FORM; STALE_ARTIFACT_DID_NOT_PRESERVE_SOURCE_URL"
+        ]
+      ]
+    },
+    {
+      "path": "data/evidence-integration/rook-evidence-locker-sweep-20260920T1200ET-recovered.json",
+      "decisions": [
+        [
+          "LOCKER-IRAN-US-ESCALATION-WARNING-20260920",
+          "ADVANCE_CANONICAL_STATEMENT_AND_WARNING; FOREKNOWLEDGE_CLAIM_HANDOFF"
+        ],
+        [
+          "LOCKER-IRAN-HORMUZ-REOPENING-SEQUENCING-20260920",
+          "ADVANCE_CANONICAL_AS_IRANIAN_POSITION_NOT_AGREED_TERM"
+        ],
+        [
+          "UPD-IRAN-SEVEN-CONDITIONS-SIX-NAMED-20260920",
+          "ADVANCE_EXISTING_DIPLOMATIC_EVENT"
+        ],
+        [
+          "UPD-RIYADH-AIRPORT-FUEL-AREA-MARKET-20260920",
+          "ADVANCE_EXISTING_RIYADH_EVENT_LOCATION_SPECIFICITY_ATTRIBUTION_OPEN"
+        ],
+        [
+          "Qeshm MQ-9 / RSAF F-15SA / Petroline repair / U.S. fatality discrepancy no-change findings",
+          "NO_ADDITIONAL_CURRENT_STATE_CHANGE"
+        ]
+      ]
+    }
+  ],
+  "downstream_records": [
+    "data/evidence-integration/rook-catchup-claims-routing-20260920.json",
+    "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json"
+  ],
+  "completion": {
+    "all_recovered_sweeps_consumed": true,
+    "claims_semantics_rewritten": false,
+    "web_of_lies_semantics_performed": false
+  }
+}
