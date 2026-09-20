@@ -2226,8 +2226,8 @@
       values.forEach(value => { const option = append(select, 'option', '', plainLabel(value)); option.value = value; });
       return select;
     };
-    const view = addSelect('View', ['ALL_TIME', 'CURRENT_PERIOD'], 'All time');
-    view.querySelector('option[value="ALL_TIME"]')?.remove();
+    const viewLabel = append(controls, 'label', '', 'View');
+    const view = append(viewLabel, 'select');
     const allOption = append(view, 'option', '', 'All time'); allOption.value = 'ALL_TIME';
     const currentOption = append(view, 'option', '', 'Current period'); currentOption.value = 'CURRENT_PERIOD';
     view.value = String(context.route.params.view || 'ALL_TIME').toUpperCase() === 'CURRENT_PERIOD' ? 'CURRENT_PERIOD' : 'ALL_TIME';
