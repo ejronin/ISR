@@ -1,0 +1,139 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-20T00:00:00-04:00",
+    "window_end": "2026-09-20T12:00:00-04:00",
+    "collection_time": "2026-09-20T12:00:36-04:00",
+    "evidence_horizon_time": "2026-09-20T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "boundary_rule": "Recovered from stale catch-up artifacts; original source windows/clocks remain in migration_provenance."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "source_branch_head": "a140d33114664c6b329adf696907870a0273eb93",
+    "stale_branch_policy": "EVIDENCE_INPUT_ONLY_NO_STALE_ARCHITECTURE_IMPORTED",
+    "source_artifacts": [
+      {
+        "path": "data/evidence-integration/rook-evidence-locker-sweep-20260920T1200ET.json",
+        "commit": "a140d33114664c6b329adf696907870a0273eb93",
+        "original_role": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+        "original_window": {
+          "start": "2026-09-20T00:00:00-04:00",
+          "end": "2026-09-20T12:00:00-04:00"
+        }
+      }
+    ],
+    "normalization_note": "Re-expresses the stale generic artifact_type/window/updates packet in the current upstream contract without changing its original window or evidence horizon."
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRAN-US-ESCALATION-WARNING-20260920",
+      "event_type": "MILITARY_WARNING_AND_INTELLIGENCE_CLAIM",
+      "occurrence_time": "2026-09-20",
+      "public_available_time": "2026-09-20",
+      "collection_time": "2026-09-20T12:00:36-04:00",
+      "summary": "Iran's military central command said it had information that a major new U.S./allied attack was being prepared and warned of sustained retaliation against U.S. bases/interests and regional allies if attacked. Reuters reported no independent evidence for the foreknowledge claim. A separate U.S. security alert about possible escalation does not validate Iranian foreknowledge.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/iran-warns-against-new-escalation-by-us-allies-2026-09-20/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-IRAN-HORMUZ-REOPENING-SEQUENCING-20260920",
+      "event_type": "DIPLOMATIC_POSITION_AND_SEQUENCING",
+      "occurrence_time": "2026-09-20",
+      "public_available_time": "2026-09-20",
+      "collection_time": "2026-09-20T12:00:36-04:00",
+      "summary": "Parliament Speaker Mohammad Bagher Ghalibaf said there would be no return to prior negotiations or reopening of Hormuz until Iran's conditions were met, Iranian rights recognized and U.S. commitments fulfilled. This is an Iranian official position, not an agreed bilateral term.",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/20/what-are-irans-new-conditions-to-end-its-war-with-the-us"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-IRAN-SEVEN-CONDITIONS-SIX-NAMED-20260920",
+      "updates_existing_ref": "LOCKER-IRAN-QATAR-US-SETTLEMENT-CONDITIONS-20260919",
+      "relationship": "LATER_DETAIL_EXPANSION",
+      "summary": "Follow-on reporting publicly specified six of the seven conditions: end the war on all fronts (especially Lebanon); release frozen Iranian funds; end the naval blockade on Iranian ports; end U.S. interference in Iran's internal affairs; end U.S. cooperation with opponents of Iran's revolution; and end all U.S. attacks on Iranian territory. One condition remained undisclosed.",
+      "status": "SIX_OF_SEVEN_PUBLICLY_NAMED_AS_IRANIAN_POSITION_ONE_UNDISCLOSED",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/20/what-are-irans-new-conditions-to-end-its-war-with-the-us",
+        "https://www.presstv.co.uk/Detail/2026/09/20/776648/Iran-conditions-US-talks"
+      ]
+    },
+    {
+      "update_id": "UPD-RIYADH-AIRPORT-FUEL-AREA-MARKET-20260920",
+      "updates_existing_ref": "LOCKER-RIYADH-AIRPORT-AERIAL-THREAT-20260919",
+      "relationship": "LATER_LOCATION_SPECIFICITY_AND_MARKET_IMPACT",
+      "summary": "Reuters identified the visible plume as rising from the fuel-storage area at King Khalid International Airport and reported regional equity declines. Location specificity improved, but weapon-to-damage attribution and Houthi Yanbu BDA remained unresolved.",
+      "status": "AIRPORT_FUEL_AREA_FIRE_SUPPORTED_CAUSAL_ATTRIBUTION_UNRESOLVED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-gulf-stocks-fall-after-houthis-claim-riyadh-attacks-2026-09-20/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-IRAN-SEVEN-CONDITIONS-SIX-PUBLIC-20260920",
+      "claimant": "Mohsen Rezaei / Iranian officials",
+      "claim_time": "2026-09-20",
+      "claim": "Iran has seven conditions for beginning negotiations; six are now publicly enumerated and one remains undisclosed.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_DIPLOMATIC_POSITION_NOT_AGREED_TERMS",
+      "summary": "Preserve statement chronology: earlier three-condition public summary was incomplete, not retroactively false; current public list is six named plus one undisclosed.",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/20/what-are-irans-new-conditions-to-end-its-war-with-the-us"
+      ]
+    },
+    {
+      "claim_id": "CLM-IRAN-PREPARED-US-ALLIED-ATTACK-INTEL-20260920",
+      "claimant": "Iranian military central command",
+      "claim_time": "2026-09-20",
+      "claim": "Iran has information that a major new U.S./allied attack is being prepared.",
+      "adjudication": "CLAIM_DOMAIN_INTAKE_ONLY_FOREKNOWLEDGE_UNVERIFIED",
+      "summary": "Iranian warning is confirmed as a statement; its claimed intelligence basis is not independently established by the recovered sweep.",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/iran-warns-against-new-escalation-by-us-allies-2026-09-20/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-GULF-EQUITIES-RIYADH-RISK-20260920",
+      "summary": "Reuters reported Saudi equities closed 0.3% lower and Qatar 1.1% lower amid Houthi attack claims and regional risk. Market movement does not resolve physical attribution.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/saudi-gulf-stocks-fall-after-houthis-claim-riyadh-attacks-2026-09-20/"
+      ]
+    }
+  ],
+  "unresolved_questions": [
+    "Identity of the seventh Iranian condition",
+    "Whether Washington formally responds to the package and which terms it accepts/rejects/counters",
+    "Weapon/event causing the King Khalid airport fuel-area fire",
+    "Independent Yanbu BDA",
+    "Next independent daily Hormuz commodity-vessel denominator after Thursday",
+    "Independent evidence for Iran's claimed foreknowledge of a prepared U.S./allied attack"
+  ],
+  "coverage": {
+    "material_results": [
+      "Sep.20 morning conditions, Hormuz sequencing, escalation warning and Riyadh update recovered."
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new independent Qeshm MQ-9 evidence.",
+      "No new F-15SA operator/crew/causation evidence.",
+      "No new high-confidence Petroline repair/Yanbu status.",
+      "No resolution of U.S. 18-vs-22 fatality denominator."
+    ],
+    "limitations": [
+      "No paid commercial maritime or satellite terminal.",
+      "Absence of indexed reporting is not evidence of no event.",
+      "Claimant statements remain claims absent independent corroboration."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_MIGRATED_CURRENT_CONTRACT",
+    "material_delta": true,
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false
+  }
+}
