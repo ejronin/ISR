@@ -520,7 +520,11 @@ def build_registry(
 
     hall = governance.get("hall_of_shame") or {}
     period_days = int(hall.get("current_period_days") or 30)
-    supported_classes = list(governance.get("source_behavior_classes") or [])
+    allowed_classes = set(governance.get("source_behavior_classes") or [])
+    supported_classes = list(hall.get("hall_of_shame_classes") or [])
+    unknown_hall_classes = sorted(set(supported_classes) - allowed_classes)
+    if unknown_hall_classes:
+        raise ValueError(f"Hall of Shame contains unknown source classes: {unknown_hall_classes}")
 
     all_time = ranking_view(profiles, information_events, supported_classes)
     recent_events = current_period_events(information_events, canonical, period_days)
@@ -566,6 +570,7 @@ def build_registry(
                     "prediction_failures",
                 ],
                 "lower_threshold_classes": sorted(LOWER_THRESHOLD_CLASSES),
+                "hall_of_shame_classes": sorted(supported_classes),
                 "default_min_families": 2,
                 "default_min_events": 3,
                 "lower_min_families": 1,
