@@ -1,0 +1,147 @@
+{
+  "version": 1,
+  "effective_date": "2026-09-20",
+  "work_package_id": "web_of_lies_information_forensics",
+  "display_name": "Web of Lies — Information Forensics",
+  "parent_domain": "lie_ledger_claim_forensics",
+  "controlling_contract": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+  "canonical_inputs": {
+    "evidence": "Evidence Integration / canonical current state",
+    "claim_adjudication": "Information Claims & Forensic Adjudication / Lie Ledger v2"
+  },
+  "authority": {
+    "owns": [
+      "claim_origin_tracing",
+      "source_lineage",
+      "propagation_chains",
+      "cross_platform_migration",
+      "narrative_mutation",
+      "narrative_substitution_propagation_relationships",
+      "amplification",
+      "syndication",
+      "source_family_relationships",
+      "citation_laundering",
+      "circular_sourcing",
+      "false_independence_analysis",
+      "correction_retraction_propagation",
+      "source_behavior_profiles",
+      "source_incentive_profiles",
+      "account_authenticity_research",
+      "propagation_statistics",
+      "hall_of_shame_qualification_and_ranking",
+      "direct_verdict_and_appellation_layer"
+    ],
+    "must_not_overwrite": [
+      "canonical_evidence",
+      "canonical_source_provenance",
+      "truth_adjudication",
+      "knowledge_adjudication",
+      "deception_adjudication",
+      "canonical_lie_ledger_chain_semantics",
+      "canonical_lie_ledger_denominators"
+    ],
+    "promotion_flags": [
+      "FORENSIC_DISCOVERY",
+      "EVIDENCE_PROMOTION_CANDIDATE",
+      "ADJUDICATION_REVIEW_CANDIDATE"
+    ]
+  },
+  "source_behavior_classes": [
+    "JOURNALISTIC_SOURCE",
+    "OFFICIAL_SOURCE",
+    "SUBJECT_MATTER_ANALYST",
+    "PARTISAN_COMMENTATOR",
+    "ACTIVIST_COMMENTATOR",
+    "ENGAGEMENT_FARM",
+    "MONETIZED_INFLUENCER",
+    "ACTIVIST_GRIFT",
+    "NEWS_GRIFT",
+    "PSEUDO_ANALYST",
+    "CONTENT_AGGREGATOR",
+    "PROPAGANDA_SOURCE",
+    "AGITPROP_SOURCE",
+    "COORDINATED_INFLUENCE",
+    "CONFIRMED_BOT",
+    "SUSPECTED_AUTOMATION",
+    "FINANCIAL_SHILL",
+    "ORGANIZATIONAL_SHILL",
+    "IDEOLOGICAL_SHILL",
+    "PARTISAN_AMPLIFIER",
+    "CITATION_LAUNDERER",
+    "RECYCLED_MEDIA_OFFENDER",
+    "NARRATIVE_MUTATION_OFFENDER",
+    "STATE_OFFICIAL_MISINFORMATION_SOURCE",
+    "UNKNOWN"
+  ],
+  "authenticity_classes": [
+    "CONFIRMED_BOT",
+    "COORDINATED_INAUTHENTIC",
+    "SUSPECTED_AUTOMATION",
+    "HUMAN_ACCOUNT",
+    "UNKNOWN"
+  ],
+  "revenue_classes": [
+    "PLATFORM_MONETIZED",
+    "PAID_SUBSTACK",
+    "PAID_NEWSLETTER",
+    "PATREON",
+    "MEMBERSHIP",
+    "DONATIONS",
+    "AFFILIATE_REVENUE",
+    "SPONSORED_CONTENT",
+    "AD_SUPPORTED",
+    "CREATOR_PAYOUT",
+    "UNKNOWN_REVENUE_MODEL"
+  ],
+  "correction_states": [
+    "PROMPT_CORRECTION",
+    "VISIBLE_CORRECTION",
+    "QUIET_EDIT",
+    "STEALTH_EDIT",
+    "DELETE_WITHOUT_CORRECTION",
+    "IGNORE_CORRECTION",
+    "DOUBLE_DOWN",
+    "NARRATIVE_REPLACEMENT",
+    "ATTACK_THE_CORRECTOR",
+    "REPEAT_AFTER_CORRECTION"
+  ],
+  "moral_severity_findings": [
+    "EXPLOITATIVE",
+    "GROSSLY_RECKLESS",
+    "DECEPTIVE",
+    "PREDATORY",
+    "OPPORTUNISTIC",
+    "MORALLY_REPREHENSIBLE",
+    "TRAGEDY_GRIFT",
+    "DEATH_GRIFT",
+    "WAR_GRIFT",
+    "VICTIM_EXPLOITATION",
+    "FALSE_CHARITY_EXPLOITATION"
+  ],
+  "hall_of_shame": {
+    "top_n_per_class": 3,
+    "manual_selection_allowed": false,
+    "allow_cross_category_duplication": true,
+    "views": ["ALL_TIME", "CURRENT_PERIOD"],
+    "current_period_days": 30,
+    "prohibited_ranking_inputs": [
+      "follower_count",
+      "subscriber_count",
+      "general_fame",
+      "political_influence",
+      "ideological_alignment",
+      "nationality",
+      "raw_impressions"
+    ],
+    "raw_repost_volume_must_not_dominate": true,
+    "unknown_is_not_zero": true,
+    "same_information_event_deduplicated": true
+  },
+  "voice": {
+    "receipts_first": true,
+    "euphemism_required": false,
+    "profanity_allowed_as_emphasis": true,
+    "generic_insult_generation": false,
+    "principle": "PROVE_THE_PATTERN_THEN_CALL_THE_PATTERN_WHAT_IT_IS"
+  }
+}
