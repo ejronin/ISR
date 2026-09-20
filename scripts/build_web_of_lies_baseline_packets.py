@@ -27,6 +27,9 @@ SOURCE_REGISTRY_PATH = "data/source-registry.json"
 OUTLET_PROFILES_PATH = "data/outlet-profiles.json"
 AUTHORITY_PATH = "data/lie-ledger-v2-rook-authority.json"
 IDENTITY_MAP_PATH = "config/web-of-lies-source-identities.json"
+SEMANTIC_OVERLAY_PATH = "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+SEMANTIC_HANDOFF_PATH = "data/evidence-integration/public-product-lie-ledger-semantic-handoff-20260917.json"
+ROOK_WOL_HANDOFF_PATH = "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json"
 PACKET_DIR = "data/web-of-lies/lineage-packets"
 MANUAL_CHAIN_IDS = {"CH-F15E-CSAR-URANIUM"}
 AS_OF = "2026-09-20T17:55:00-04:00"
@@ -294,6 +297,349 @@ def observed_at(claim: dict[str, Any]) -> tuple[str | None, str | None]:
     return date, precision
 
 
+def collect_public_ready_instances(value: Any) -> list[dict[str, Any]]:
+    found: dict[str, dict[str, Any]] = {}
+
+    def visit(node: Any) -> None:
+        if isinstance(node, list):
+            for child in node:
+                visit(child)
+            return
+        if not isinstance(node, dict):
+            return
+        instance_id = node.get("claim_instance_id")
+        if instance_id and node.get("publication_status") == "PUBLIC_READY":
+            found[str(instance_id)] = node
+        for child in node.values():
+            visit(child)
+
+    visit(value)
+    return sorted(found.values(), key=lambda row: str(row["claim_instance_id"]))
+
+
+def current_overlay_extras(
+    overlay: dict[str, Any],
+    legacy_claim_ids: set[str],
+    indexed_chain_ids: set[str],
+) -> dict[str, list[dict[str, Any]]]:
+    extras: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in collect_public_ready_instances(overlay):
+        chain_id = str(row.get("chain_id") or "")
+        claim_id = str(row.get("claim_id") or "")
+        if chain_id not in indexed_chain_ids or claim_id in legacy_claim_ids:
+            continue
+        extras[chain_id].append(row)
+    return extras
+
+
+def current_carrier_identity(source_id: str, identity_map: dict[str, Any]) -> dict[str, Any]:
+    mapping = (identity_map.get("current_source_carriers") or {}).get(source_id)
+    if mapping is None:
+        raise ValueError(f"unmapped current Web of Lies carrier source: {source_id}")
+    return copy.deepcopy(mapping)
+
+
+def current_event_id(chain_id: str, claim_id: str, suffix: str) -> str:
+    family = slug(chain_id).upper().replace("-", "_")
+    claim = re.sub(r"[^A-Za-z0-9]+", "_", claim_id).strip("_")
+    return f"WOL-EVT-{family}-{claim}-{suffix}"
+
+
+def current_plain_verdict(instance: dict[str, Any]) -> str:
+    combined = str(instance.get("combined_assessment") or "").strip()
+    truth = str(instance.get("truth_adjudication") or "").strip()
+    qualifier = str(instance.get("truth_qualifier") or "").strip()
+    if "MEDIA_ARTIFACT" in qualifier:
+        return (
+            f"The media artifact is canonically {truth or 'adjudicated'}. "
+            f"Claims Forensics records: {combined}. Web of Lies does not assign "
+            "the artifact to an official Iranian origin when that provenance is not established."
+        )
+    if "NO LIE FINDING" in combined:
+        return (
+            f"Claims Forensics records: {combined}. Web of Lies preserves the exact "
+            "ordinal as unresolved and does not score it as an adverse misinformation incident."
+        )
+    if truth == "UNRESOLVED":
+        return (
+            f"Claims Forensics records: {combined or 'UNRESOLVED'}. Web of Lies preserves "
+            "the unresolved claim without converting insufficient confirmation into falsity."
+        )
+    return f"Claims Forensics records: {combined or truth}. Web of Lies does not alter that adjudication."
+
+
+def merge_current_overlay_extras(
+    packet: dict[str, Any],
+    instances: list[dict[str, Any]],
+    identity_map: dict[str, Any],
+    semantic_handoff: dict[str, Any],
+    rook_handoff: dict[str, Any],
+) -> dict[str, Any]:
+    if not instances:
+        return packet
+
+    chain_id = str(packet["claim_family_id"])
+    profiles = {str(row["source_id"]): copy.deepcopy(row) for row in packet["source_profiles"]}
+    events = [copy.deepcopy(row) for row in packet["information_events"]]
+    relationships = [copy.deepcopy(row) for row in packet["relationships"]]
+    existing_event_ids = {str(row["event_id"]) for row in events}
+
+    relation_numbers = []
+    for relation in relationships:
+        match = re.search(r"-(\d+)$", str(relation["relationship_id"]))
+        if match:
+            relation_numbers.append(int(match.group(1)))
+    rel_index = max(relation_numbers, default=0) + 1
+
+    direct_sources = semantic_handoff.get("evidence_sources") or {}
+    qeshm_origin_events: dict[str, str] = {}
+
+    for instance in instances:
+        claim_id = str(instance["claim_id"])
+        instance_id = str(instance["claim_instance_id"])
+        actor = str(instance.get("actor") or "")
+        qualifier = str(instance.get("truth_qualifier") or "")
+        statement_date = str(instance.get("statement_date") or "") or None
+
+        if actor == "IRGC":
+            irgc_identity = copy.deepcopy(
+                (identity_map.get("claimants") or {})["IRGC as reported by Press TV"]
+            )
+            o_event_id = current_event_id(chain_id, claim_id, "O")
+            if o_event_id in existing_event_ids:
+                raise ValueError(f"{chain_id}: duplicate current-overlay event {o_event_id}")
+            origin_profile = profile_template(irgc_identity)
+            origin_profile["behavior_classes"] = ["OFFICIAL_SOURCE"]
+            origin_profile["classification_basis_event_ids"] = [o_event_id]
+
+            if statement_date == "2026-09-16":
+                carrier_source_ids = list(direct_sources.get("mq9_sep16") or [])
+            elif statement_date == "2026-09-17":
+                carrier_source_ids = list(direct_sources.get("mq9_sep17") or [])
+            else:
+                raise ValueError(
+                    f"{chain_id}: current IRGC extension lacks direct-source mapping for {instance_id}"
+                )
+            if not carrier_source_ids:
+                raise ValueError(f"{chain_id}: no direct carrier receipts for {instance_id}")
+
+            carrier_profile_ids: list[str] = []
+            for receipt_id in carrier_source_ids:
+                carrier_identity = current_carrier_identity(str(receipt_id), identity_map)
+                carrier_profile = profile_template(carrier_identity, str(receipt_id))
+                merge_local_profile(profiles, carrier_profile)
+                carrier_profile_ids.append(str(carrier_profile["source_id"]))
+
+            origin_profile["canonical_source_ids"] = unique(
+                list(origin_profile.get("canonical_source_ids") or []) + carrier_source_ids
+            )
+            merge_local_profile(profiles, origin_profile)
+            events.append({
+                "event_id": o_event_id,
+                "claim_family_id": chain_id,
+                "source_id": "WOL-SRC-IRGC",
+                "event_type": "REPORTS",
+                "published_at": statement_date,
+                "first_observed_at": statement_date,
+                "time_precision": str(instance.get("statement_precision") or "DATE_ONLY"),
+                "epistemic_posture": "OFFICIAL",
+                "exact_statement": instance.get("claim"),
+                "translated_statement": None,
+                "originating_claimant": actor,
+                "lineage_roles": ["ORIGINATES"],
+                "carrier_profile_ids": unique(carrier_profile_ids),
+                "canonical_claim_refs": [claim_id, instance_id],
+                "evidence_source_ids": unique(carrier_source_ids),
+                "contrary_evidence_source_ids": [],
+                "correction_state": None,
+                "behavior_findings": ["OFFICIAL_SOURCE"],
+                "revenue_findings": [],
+                "independently_sourced": False,
+                "plain_english_verdict": current_plain_verdict(instance),
+                "canonical_combined_assessment": instance.get("combined_assessment"),
+            })
+            existing_event_ids.add(o_event_id)
+            qeshm_origin_events[claim_id] = o_event_id
+
+            for receipt_id in carrier_source_ids:
+                carrier_identity = current_carrier_identity(str(receipt_id), identity_map)
+                c_event_id = current_event_id(chain_id, claim_id, f"C-{receipt_id[-6:]}")
+                if c_event_id in existing_event_ids:
+                    raise ValueError(f"{chain_id}: duplicate current carrier event {c_event_id}")
+                events.append({
+                    "event_id": c_event_id,
+                    "claim_family_id": chain_id,
+                    "source_id": carrier_identity["source_id"],
+                    "event_type": "REPORTS",
+                    "published_at": statement_date,
+                    "first_observed_at": statement_date,
+                    "time_precision": str(instance.get("statement_precision") or "DATE_ONLY"),
+                    "epistemic_posture": "REPORTED",
+                    "exact_statement": (
+                        f"{carrier_identity['display_name']} carried the attributed IRGC claim: "
+                        f"{instance.get('claim')}"
+                    ),
+                    "translated_statement": None,
+                    "originating_claimant": actor,
+                    "lineage_roles": ["REPORTS"],
+                    "carrier_profile_ids": [],
+                    "canonical_claim_refs": [claim_id, instance_id],
+                    "evidence_source_ids": [str(receipt_id)],
+                    "contrary_evidence_source_ids": [],
+                    "correction_state": None,
+                    "behavior_findings": [],
+                    "revenue_findings": [],
+                    "independently_sourced": False,
+                    "plain_english_verdict": current_plain_verdict(instance),
+                })
+                existing_event_ids.add(c_event_id)
+                relationships.append({
+                    "relationship_id": relation_id(chain_id, rel_index),
+                    "from_id": c_event_id,
+                    "to_id": o_event_id,
+                    "relationship_type": "DERIVES_FROM",
+                    "evidence_source_ids": [str(receipt_id)],
+                })
+                rel_index += 1
+                relationships.append({
+                    "relationship_id": relation_id(chain_id, rel_index),
+                    "from_id": c_event_id,
+                    "to_id": "WOL-SRC-IRGC",
+                    "relationship_type": "ATTRIBUTES_TO",
+                    "evidence_source_ids": [str(receipt_id)],
+                })
+                rel_index += 1
+            continue
+
+        if "MEDIA_ARTIFACT" in qualifier:
+            source_id = f"WOL-SRC-UNATTRIBUTED-MEDIA-{claim_id}"
+            media_profile = profile_template({
+                "source_id": source_id,
+                "display_name": f"Unattributed media circulation — {claim_id}",
+                "source_entity_type": "OTHER",
+                "country_region": None,
+                "primary_platform": None,
+                "canonical_outlet_profile_id": None,
+                "canonical_actor_id": None,
+            })
+            media_profile["canonical_source_ids"] = unique(list(instance.get("source_ids") or []))
+            merge_local_profile(profiles, media_profile)
+            o_event_id = current_event_id(chain_id, claim_id, "MEDIA")
+            if o_event_id in existing_event_ids:
+                raise ValueError(f"{chain_id}: duplicate media-artifact event {o_event_id}")
+            events.append({
+                "event_id": o_event_id,
+                "claim_family_id": chain_id,
+                "source_id": source_id,
+                "event_type": "FALSE_MEDIA_ARTIFACT",
+                "published_at": statement_date,
+                "first_observed_at": statement_date,
+                "time_precision": str(instance.get("statement_precision") or "DATE_ONLY"),
+                "epistemic_posture": "REPORTED",
+                "exact_statement": instance.get("claim"),
+                "translated_statement": None,
+                "originating_claimant": actor,
+                "lineage_roles": ["REPORTS"],
+                "carrier_profile_ids": [],
+                "canonical_claim_refs": [claim_id, instance_id],
+                "evidence_source_ids": unique(list(instance.get("source_ids") or [])),
+                "contrary_evidence_source_ids": [],
+                "correction_state": None,
+                "behavior_findings": [],
+                "revenue_findings": [],
+                "independently_sourced": None,
+                "plain_english_verdict": current_plain_verdict(instance),
+                "provenance_limit": "OFFICIAL_ORIGIN_NOT_ESTABLISHED",
+            })
+            existing_event_ids.add(o_event_id)
+            continue
+
+        raise ValueError(
+            f"{chain_id}: unsupported current-overlay extension {instance_id} "
+            f"actor={actor!r} qualifier={qualifier!r}"
+        )
+
+    # Preserve the 52 -> 53 cumulative sequence without converting either
+    # unsupported exact ordinal into a lie or into independent corroboration.
+    fifty_two = qeshm_origin_events.get("CLM-IRGC-QESHM-MQ9-52-20260916")
+    fifty_three = qeshm_origin_events.get("CLM-IRGC-QESHM-MQ9-53-20260917")
+    if fifty_two and fifty_three:
+        relationships.append({
+            "relationship_id": relation_id(chain_id, rel_index),
+            "from_id": fifty_three,
+            "to_id": fifty_two,
+            "relationship_type": "REPEATS",
+            "evidence_source_ids": unique(
+                list(direct_sources.get("mq9_sep16") or [])
+                + list(direct_sources.get("mq9_sep17") or [])
+            ),
+        })
+        rel_index += 1
+
+    # Evidence Integration supplied recent U.S.-official-source reporting as
+    # type-specific context only. It does not identify either loss with Qeshm.
+    for sequence in rook_handoff.get("statement_sequences") or []:
+        if sequence.get("sequence_id") != "WOL-IN-ROOK-MQ9-52-53-20260920":
+            continue
+        cbs_receipt = "SRC-CBC350AF4215"
+        cbs_identity = current_carrier_identity(cbs_receipt, identity_map)
+        cbs_profile = profile_template(cbs_identity, cbs_receipt)
+        cbs_event_id = "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-MQ1-CONTEXT-20260917"
+        cbs_profile["behavior_classes"] = ["JOURNALISTIC_SOURCE"]
+        cbs_profile["classification_basis_event_ids"] = [cbs_event_id]
+        merge_local_profile(profiles, cbs_profile)
+        if cbs_event_id not in existing_event_ids:
+            events.append({
+                "event_id": cbs_event_id,
+                "claim_family_id": chain_id,
+                "source_id": cbs_identity["source_id"],
+                "event_type": "REPORTS",
+                "published_at": "2026-09-17",
+                "first_observed_at": "2026-09-17",
+                "time_precision": "DATE_ONLY",
+                "epistemic_posture": "SOURCES_SAY",
+                "exact_statement": (
+                    "CBS reported U.S. officials described at least two recent U.S. "
+                    "drone losses as MQ-1, without locations."
+                ),
+                "translated_statement": None,
+                "originating_claimant": "U.S. officials reported by CBS News",
+                "lineage_roles": ["REPORTS"],
+                "carrier_profile_ids": [],
+                "canonical_claim_refs": [],
+                "evidence_source_ids": [cbs_receipt],
+                "contrary_evidence_source_ids": [],
+                "correction_state": None,
+                "behavior_findings": ["JOURNALISTIC_SOURCE"],
+                "revenue_findings": [],
+                "independently_sourced": True,
+                "plain_english_verdict": (
+                    "This is type-specific external context only. The record does not "
+                    "identify either reported MQ-1 loss with either Qeshm claim, so Web "
+                    "of Lies treats it as neither corroboration nor contradiction."
+                ),
+                "context_scope": "TYPE_SPECIFIC_EXTERNAL_CONTEXT_NOT_QESHM_IDENTIFICATION",
+            })
+            existing_event_ids.add(cbs_event_id)
+        break
+
+    packet["source_profiles"] = sorted(profiles.values(), key=lambda row: row["source_id"])
+    packet["information_events"] = sorted(events, key=lambda row: row["event_id"])
+    packet["relationships"] = sorted(relationships, key=lambda row: row["relationship_id"])
+    packet["basis_paths"] = unique(
+        list(packet.get("basis_paths") or [])
+        + [SEMANTIC_OVERLAY_PATH, SEMANTIC_HANDOFF_PATH, ROOK_WOL_HANDOFF_PATH]
+    )
+    packet["generation_mode"] = "BASELINE_PLUS_CURRENT_CLAIMS_FORENSICS_OVERLAY"
+    packet["notes"] = (
+        str(packet.get("notes") or "").rstrip()
+        + " Current public-ready Claims Forensics extensions are merged read-only; "
+          "unresolved Qeshm propositions remain no-lie/unresolved, and false media "
+          "artifacts with unknown origin remain unattributed."
+    )
+    return packet
+
+
 def packet_for_chain(
     chain: dict[str, Any],
     claims_by_id: dict[str, dict[str, Any]],
@@ -471,12 +817,22 @@ def expected_packets(root: Path) -> dict[Path, dict[str, Any]]:
     load_json(root, OUTLET_PROFILES_PATH)  # fingerprinted basis; outlet identities are reviewed in config.
     authority = load_json(root, AUTHORITY_PATH)
     identity_map = load_json(root, IDENTITY_MAP_PATH)
+    semantic_overlay = load_json(root, SEMANTIC_OVERLAY_PATH)
+    semantic_handoff = load_json(root, SEMANTIC_HANDOFF_PATH)
+    rook_handoff = load_json(root, ROOK_WOL_HANDOFF_PATH)
 
     claims = rows(evolution, "claims", "records")
     chains = rows(chain_index, "chains", "records")
     sources = rows(registry, "sources", "records")
     claims_by_id = {str(row["claim_id"]): row for row in claims}
     source_by_id = {str(row["source_id"]): row for row in sources}
+    legacy_claim_ids = set(claims_by_id)
+    indexed_chain_ids = {str(row["chain_id"]) for row in chains}
+    extras_by_chain = current_overlay_extras(
+        semantic_overlay,
+        legacy_claim_ids,
+        indexed_chain_ids,
+    )
 
     output: dict[Path, dict[str, Any]] = {}
     for chain in chains:
@@ -484,7 +840,15 @@ def expected_packets(root: Path) -> dict[Path, dict[str, Any]]:
         if chain_id in MANUAL_CHAIN_IDS:
             continue
         path = root / PACKET_DIR / f"{slug(chain_id)}.json"
-        output[path] = packet_for_chain(chain, claims_by_id, source_by_id, identity_map, authority)
+        packet = packet_for_chain(chain, claims_by_id, source_by_id, identity_map, authority)
+        packet = merge_current_overlay_extras(
+            packet,
+            extras_by_chain.get(chain_id, []),
+            identity_map,
+            semantic_handoff,
+            rook_handoff,
+        )
+        output[path] = packet
     return output
 
 
