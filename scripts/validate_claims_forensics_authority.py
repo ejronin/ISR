@@ -30,13 +30,13 @@ STRONG_KNOWLEDGE = {
 # Current accepted state must reconcile exactly. The validator independently
 # derives each denominator below before checking the accepted baseline.
 ACCEPTED = {
-    "chains": 47,
-    "accusation_chains": 33,
-    "control_chains": 14,
-    "proposition_rows": 133,
-    "unique_propositions": 64,
-    "claim_instances": 82,
-    "publication_blockers": 2,
+    "chains": 50,
+    "accusation_chains": 35,
+    "control_chains": 15,
+    "proposition_rows": 143,
+    "unique_propositions": 68,
+    "claim_instances": 85,
+    "publication_blockers": 0,
 }
 
 CLAIMS_SEMANTIC_OWNERSHIP = {
@@ -397,18 +397,38 @@ def validate_f15_reference(chain: dict[str, Any]) -> None:
         "F-15E false media lost its official-origin/knowledge boundary",
     )
 
-    blocked = [
+    author_rows = [
         rows.get("CI-IR-CLM-0011-P01") or {},
         rows.get("CI-IR-CLM-0011-P02") or {},
     ]
     require(
         all(
-            row.get("truth_adjudication") == "FALSE"
-            and row.get("publication_status") == "BLOCKED_EVIDENCE_COMPLETION"
+            row.get("actor") == "Mohammad Molaei"
+            and row.get("truth_adjudication") == "FALSE"
+            and row.get("knowledge_judgment") == "INSUFFICIENT_EVIDENCE"
+            and row.get("publication_status") == "PUBLIC_READY"
             and row.get("counts_as_unique_proposition") is False
-            for row in blocked
+            for row in author_rows
         ),
-        "F-15E uranium amplification blockers no longer preserve false fact/non-unique/withheld-knowledge separation",
+        "F-15E Apr. 9 signed-author attribution/knowledge separation drifted",
+    )
+    publisher = rows.get("CI-IR-CLM-0011-P03") or {}
+    require(
+        publisher.get("actor") == "Press TV"
+        and publisher.get("truth_adjudication") == "FALSE"
+        and publisher.get("knowledge_judgment") == "VERY_LIKELY_KNEW_FALSE"
+        and publisher.get("publication_status") == "PUBLIC_READY"
+        and publisher.get("denominator_class") == "REPETITION_AMPLIFICATION"
+        and publisher.get("counts_as_unique_proposition") is False,
+        "F-15E publisher-level institutional amplification finding drifted",
+    )
+    publisher_indicators = {
+        str(item.get("indicator") or "")
+        for item in publisher.get("knowledge_indicators") or []
+    }
+    require(
+        {"DIRECT_INSTITUTIONAL_ACCESS", "POST_CORRECTION_REPETITION"} <= publisher_indicators,
+        "F-15E institutional knowledge finding lost access/correction-opportunity support",
     )
 
     truth_states = {row.get("truth_adjudication") for row in rows.values()}
@@ -438,8 +458,9 @@ def validate_state(
     )
     require(
         bool(governance.get("claims_forensics_overlay_version"))
-        and bool(governance.get("claims_forensics_full_sweep_version")),
-        "canonical state is not pinned to active Claims Forensics overlay/full-sweep versions",
+        and bool(governance.get("claims_forensics_full_sweep_version"))
+        and bool(governance.get("claims_forensics_maintenance_sweep_version")),
+        "canonical state is not pinned to active Claims Forensics overlay/full-sweep/maintenance versions",
     )
     require(
         governance.get("atomic_proposition_verdict_propagation") is False,
@@ -456,7 +477,9 @@ def validate_state(
         and release.get("lie_ledger_claims_forensics_overlay_version")
         == governance.get("claims_forensics_overlay_version")
         and release.get("lie_ledger_claims_forensics_full_sweep_version")
-        == governance.get("claims_forensics_full_sweep_version"),
+        == governance.get("claims_forensics_full_sweep_version")
+        and release.get("lie_ledger_claims_forensics_maintenance_sweep_version")
+        == governance.get("claims_forensics_maintenance_sweep_version"),
         "release identity is not pinned to the accepted Claims Forensics semantics",
     )
 
@@ -651,8 +674,15 @@ def validate_state(
         for item in canonical.get("lie_ledger_v2_publication_blockers") or []
     }
     require(
-        blockers == {"CI-IR-CLM-0011-P01", "CI-IR-CLM-0011-P02"},
-        "active publication-blocker identity drifted",
+        blockers == set(),
+        "active publication-blocker registry should be empty after Sep. 20 maintenance",
+    )
+
+    require(
+        cchains.get("CH-HORMUZ-TREND-TANKER-20260917", {}).get("classification") == "ACCUSATION_CHAIN"
+        and cchains.get("CH-HOUTHI-RIYADH-YANBU-20260919", {}).get("classification") == "ACCUSATION_CHAIN"
+        and cchains.get("CH-IRAN-US-ATTACK-FOREKNOWLEDGE-20260920", {}).get("public_include_in_accusation_count") is False,
+        "Sep. 20 maintenance chain classifications drifted",
     )
 
 
