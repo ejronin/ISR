@@ -122,7 +122,10 @@
     "top_n_per_class": 3,
     "manual_selection_allowed": false,
     "allow_cross_category_duplication": true,
-    "views": ["ALL_TIME", "CURRENT_PERIOD"],
+    "views": [
+      "ALL_TIME",
+      "CURRENT_PERIOD"
+    ],
     "current_period_days": 30,
     "prohibited_ranking_inputs": [
       "follower_count",
@@ -135,7 +138,25 @@
     ],
     "raw_repost_volume_must_not_dominate": true,
     "unknown_is_not_zero": true,
-    "same_information_event_deduplicated": true
+    "same_information_event_deduplicated": true,
+    "hall_of_shame_classes": [
+      "ACTIVIST_GRIFT",
+      "NEWS_GRIFT",
+      "PSEUDO_ANALYST",
+      "ENGAGEMENT_FARM",
+      "PROPAGANDA_SOURCE",
+      "AGITPROP_SOURCE",
+      "CITATION_LAUNDERER",
+      "RECYCLED_MEDIA_OFFENDER",
+      "NARRATIVE_MUTATION_OFFENDER",
+      "CONFIRMED_BOT",
+      "COORDINATED_INFLUENCE",
+      "STATE_OFFICIAL_MISINFORMATION_SOURCE",
+      "FINANCIAL_SHILL",
+      "ORGANIZATIONAL_SHILL",
+      "IDEOLOGICAL_SHILL",
+      "PARTISAN_AMPLIFIER"
+    ]
   },
   "voice": {
     "receipts_first": true,

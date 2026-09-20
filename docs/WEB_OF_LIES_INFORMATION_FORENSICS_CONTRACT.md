@@ -114,6 +114,8 @@ Supported relationship/event types include:
 `AMPLIFIES`  
 `SYNDICATES`  
 `ATTRIBUTES_TO`  
+`CARRIED_BY`  
+`PUBLISHED_BY`  
 `DERIVES_FROM`  
 `SHARES_OFFICIAL_SOURCE`  
 `MUTATES_INTO`  

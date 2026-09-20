@@ -27,6 +27,12 @@ canonical = {
         "canonical_state_identity_v2": "fixture-canonical",
         "current_osint_cutoff": "2026-09-20T12:00:00-04:00",
     },
+    "sources": {
+        "records": [
+            {"source_id": f"SRC-EVIDENCE-{index}"}
+            for index in range(1, 7)
+        ]
+    },
     "entities": {
         "lie_ledger_chains_v2": [
             wrapped("CHAIN-A", "Claim family A"),
@@ -54,6 +60,8 @@ assert all(row["trace_status"] == "UNTRACED" for row in built["claim_families"])
 assert built["hall_of_shame"]["all_time"] == {}
 assert built["hall_of_shame"]["current_period"] == {}
 assert built["hall_of_shame"]["manual_selection"] is False
+assert "OFFICIAL_SOURCE" not in built["hall_of_shame"]["ranking_contract"]["hall_of_shame_classes"]
+assert "JOURNALISTIC_SOURCE" not in built["hall_of_shame"]["ranking_contract"]["hall_of_shame_classes"]
 
 forensic = copy.deepcopy(empty)
 forensic["version"] = "fixture-ranked"
@@ -202,6 +210,22 @@ except ValueError as exc:
     assert "revenue class PLATFORM_MONETIZED is not supported" in str(exc)
 else:
     raise AssertionError("source revenue class without incident support was accepted")
+
+bad_receipt = copy.deepcopy(forensic)
+bad_receipt["information_events"][0]["evidence_source_ids"] = ["SRC-NOT-CANONICAL"]
+try:
+    wol.build_registry(canonical, bad_receipt, governance)
+except ValueError as exc:
+    assert "non-canonical source receipts" in str(exc)
+else:
+    raise AssertionError("non-canonical event receipt was accepted")
+
+neutral = copy.deepcopy(forensic)
+neutral["source_profiles"][0]["behavior_classes"] = ["OFFICIAL_SOURCE"]
+neutral["source_profiles"][0]["classification_basis_event_ids"] = ["WOL-E1"]
+neutral["information_events"][0]["behavior_findings"] = ["OFFICIAL_SOURCE"]
+neutral_ranked = wol.build_registry(canonical, neutral, governance)
+assert "OFFICIAL_SOURCE" not in neutral_ranked["hall_of_shame"]["all_time"]
 
 recent = ranked["hall_of_shame"]["current_period"]["ACTIVIST_GRIFT"]
 assert len(recent) == 2

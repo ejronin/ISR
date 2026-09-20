@@ -109,6 +109,17 @@ def parse_time(value: Any) -> datetime | None:
     return parsed
 
 
+def canonical_source_id_set(canonical: dict[str, Any]) -> set[str]:
+    records = ((canonical.get("sources") or {}).get("records") or [])
+    result: set[str] = set()
+    for item in records:
+        record = unwrap(item)
+        source_id = str(record.get("source_id") or item.get("source_id") or "").strip()
+        if source_id:
+            result.add(source_id)
+    return result
+
+
 def chain_adjudication(record: dict[str, Any]) -> str | None:
     for key in (
         "public_adjudication",
@@ -186,6 +197,7 @@ def validate_forensic_input(
     forensic: dict[str, Any],
     governance: dict[str, Any],
     claim_family_ids: set[str],
+    canonical_source_ids: set[str],
 ) -> None:
     if forensic.get("artifact_role") != "WEB_OF_LIES_FORENSIC_INPUT":
         raise ValueError("unexpected Web of Lies forensic input role")
@@ -222,6 +234,12 @@ def validate_forensic_input(
         authenticity = str(profile.get("authenticity_class") or "UNKNOWN")
         if authenticity not in allowed_authenticity:
             raise ValueError(f"unknown authenticity class for {source_id}: {authenticity}")
+        profile_receipts = set(profile.get("canonical_source_ids") or [])
+        missing_profile_receipts = profile_receipts - canonical_source_ids
+        if missing_profile_receipts:
+            raise ValueError(
+                f"source profile {source_id} references non-canonical source receipts: {sorted(missing_profile_receipts)}"
+            )
         revenue = set(profile.get("revenue_model") or [])
         if not revenue:
             raise ValueError(f"source profile {source_id} must state a revenue model, including UNKNOWN_REVENUE_MODEL when unknown")
@@ -250,6 +268,18 @@ def validate_forensic_input(
         unsupported_behavior = behavior_findings - allowed_classes - allowed_moral_findings
         if unsupported_behavior:
             raise ValueError(f"information event {event_id} has unsupported behavior findings: {sorted(unsupported_behavior)}")
+        carrier_ids = set(event.get("carrier_profile_ids") or [])
+        missing_carriers = carrier_ids - source_ids
+        if missing_carriers:
+            raise ValueError(
+                f"information event {event_id} references unknown carrier profiles: {sorted(missing_carriers)}"
+            )
+        receipt_ids = set(event.get("evidence_source_ids") or []) | set(event.get("contrary_evidence_source_ids") or [])
+        missing_receipts = receipt_ids - canonical_source_ids
+        if missing_receipts:
+            raise ValueError(
+                f"information event {event_id} references non-canonical source receipts: {sorted(missing_receipts)}"
+            )
         revenue_findings = set(event.get("revenue_findings") or [])
         unsupported_revenue = revenue_findings - allowed_revenue
         if unsupported_revenue:
@@ -267,6 +297,11 @@ def validate_forensic_input(
             value = str(relation.get(endpoint) or "").strip()
             if value not in graph_ids:
                 raise ValueError(f"relationship {rid} references unknown endpoint {value}")
+        missing_relation_receipts = set(relation.get("evidence_source_ids") or []) - canonical_source_ids
+        if missing_relation_receipts:
+            raise ValueError(
+                f"relationship {rid} references non-canonical source receipts: {sorted(missing_relation_receipts)}"
+            )
 
     flag_ids: set[str] = set()
     for flag in flags:
@@ -276,6 +311,11 @@ def validate_forensic_input(
         flag_ids.add(fid)
         if flag.get("flag_type") not in allowed_flags:
             raise ValueError(f"promotion flag {fid} has unsupported type {flag.get('flag_type')}")
+        missing_flag_receipts = set(flag.get("evidence_source_ids") or []) - canonical_source_ids
+        if missing_flag_receipts:
+            raise ValueError(
+                f"promotion flag {fid} references non-canonical source receipts: {sorted(missing_flag_receipts)}"
+            )
 
     for profile in profiles:
         source_id = profile["source_id"]
@@ -511,7 +551,8 @@ def build_registry(
 ) -> dict[str, Any]:
     initial_families = derive_claim_families(canonical, [], [])
     family_ids = {item["claim_family_id"] for item in initial_families}
-    validate_forensic_input(forensic, governance, family_ids)
+    canonical_source_ids = canonical_source_id_set(canonical)
+    validate_forensic_input(forensic, governance, family_ids, canonical_source_ids)
 
     information_events = [dict(item) for item in (forensic.get("information_events") or [])]
     relationships = [dict(item) for item in (forensic.get("relationships") or [])]
@@ -520,7 +561,11 @@ def build_registry(
 
     hall = governance.get("hall_of_shame") or {}
     period_days = int(hall.get("current_period_days") or 30)
-    supported_classes = list(governance.get("source_behavior_classes") or [])
+    allowed_classes = set(governance.get("source_behavior_classes") or [])
+    supported_classes = list(hall.get("hall_of_shame_classes") or [])
+    unknown_hall_classes = sorted(set(supported_classes) - allowed_classes)
+    if unknown_hall_classes:
+        raise ValueError(f"Hall of Shame contains unknown source classes: {unknown_hall_classes}")
 
     all_time = ranking_view(profiles, information_events, supported_classes)
     recent_events = current_period_events(information_events, canonical, period_days)
@@ -566,6 +611,7 @@ def build_registry(
                     "prediction_failures",
                 ],
                 "lower_threshold_classes": sorted(LOWER_THRESHOLD_CLASSES),
+                "hall_of_shame_classes": sorted(supported_classes),
                 "default_min_families": 2,
                 "default_min_events": 3,
                 "lower_min_families": 1,
