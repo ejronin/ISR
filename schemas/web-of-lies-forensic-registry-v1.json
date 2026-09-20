@@ -62,12 +62,13 @@
         "current_period_days": { "type": "integer", "minimum": 1 },
         "ranking_contract": {
           "type": "object",
-          "required": ["score_weights", "event_metric_map", "qualification_metric_keys", "lower_threshold_classes", "default_min_families", "default_min_events", "lower_min_families", "lower_min_events", "downstream_log2_cap"],
+          "required": ["score_weights", "event_metric_map", "qualification_metric_keys", "lower_threshold_classes", "hall_of_shame_classes", "default_min_families", "default_min_events", "lower_min_families", "lower_min_events", "downstream_log2_cap"],
           "properties": {
             "score_weights": { "type": "object", "additionalProperties": { "type": "number" } },
             "event_metric_map": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
             "qualification_metric_keys": { "$ref": "#/$defs/string_array" },
             "lower_threshold_classes": { "$ref": "#/$defs/string_array" },
+            "hall_of_shame_classes": { "$ref": "#/$defs/string_array" },
             "default_min_families": { "type": "integer", "minimum": 0 },
             "default_min_events": { "type": "integer", "minimum": 0 },
             "lower_min_families": { "type": "integer", "minimum": 0 },
