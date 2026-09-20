@@ -53,6 +53,77 @@ for chain_id, chain in indexed_chains.items():
     missing_claims = set(chain.get("claim_ids") or []) - claim_refs.get(chain_id, set())
     assert not missing_claims, f"{chain_id} missing Web of Lies claim refs: {sorted(missing_claims)}"
 
+# Current public-ready Claims Forensics propositions attached to these families
+# must also appear in Web of Lies, even when they post-date the legacy corpus.
+semantic_overlay = load(baseline.SEMANTIC_OVERLAY_PATH)
+legacy_claim_ids = {
+    str(row["claim_id"])
+    for row in baseline.rows(load(baseline.CLAIMS_PATH), "claims", "records")
+}
+current_extras = baseline.current_overlay_extras(
+    semantic_overlay,
+    legacy_claim_ids,
+    set(indexed_chains),
+)
+for chain_id, rows in current_extras.items():
+    for row in rows:
+        refs = claim_refs.get(chain_id, set())
+        assert row["claim_id"] in refs, f"{chain_id} missing current claim {row['claim_id']}"
+        assert row["claim_instance_id"] in refs, (
+            f"{chain_id} missing current claim instance {row['claim_instance_id']}"
+        )
+
+event_by_ref = {}
+for packet in packets:
+    for event in packet["information_events"]:
+        for ref in event.get("canonical_claim_refs") or []:
+            event_by_ref.setdefault(ref, []).append(event)
+
+for ref in (
+    "CI-CLM-IRGC-QESHM-MQ9-LOSS-20260916-P01",
+    "CI-CLM-IRGC-QESHM-MQ9-52-20260916-P01",
+    "CI-CLM-IRGC-QESHM-MQ9-LOSS-20260917-P01",
+    "CI-CLM-IRGC-QESHM-MQ9-53-20260917-P01",
+):
+    events = event_by_ref[ref]
+    assert events, f"missing Qeshm current-overlay lineage for {ref}"
+    assert all(event["event_type"] == "REPORTS" for event in events)
+    assert not any(event["event_type"] in wol.ADVERSE_FAMILY_EVENT_TYPES for event in events)
+    assert not any(
+        set(event.get("behavior_findings") or []).intersection(
+            set(load(wol.GOVERNANCE)["hall_of_shame"]["hall_of_shame_classes"])
+        )
+        for event in events
+    ), f"unresolved/no-lie Qeshm claim leaked into Hall behavior: {ref}"
+
+for ref in (
+    "CI-MEDIA-MED-001",
+    "CI-MEDIA-MED-002",
+    "CI-MEDIA-MED-003",
+    "CI-MEDIA-MED-004",
+    "CI-MEDIA-MED-005",
+    "CI-MEDIA-MED-007",
+):
+    events = event_by_ref[ref]
+    assert len(events) == 1, f"false-media artifact {ref} should have one unattributed event"
+    event = events[0]
+    assert event["event_type"] == "FALSE_MEDIA_ARTIFACT"
+    assert event["behavior_findings"] == []
+    assert event.get("provenance_limit") == "OFFICIAL_ORIGIN_NOT_ESTABLISHED"
+    assert event["source_id"].startswith("WOL-SRC-UNATTRIBUTED-MEDIA-")
+
+aircraft_packet = next(row for row in packets if row["claim_family_id"] == "CH-AIRCRAFT-KILL-AGGREGATES")
+cbs_context = next(
+    event for event in aircraft_packet["information_events"]
+    if event["event_id"] == "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-MQ1-CONTEXT-20260917"
+)
+assert cbs_context["context_scope"] == "TYPE_SPECIFIC_EXTERNAL_CONTEXT_NOT_QESHM_IDENTIFICATION"
+assert cbs_context["independently_sourced"] is True
+assert not any(
+    relation["from_id"] == cbs_context["event_id"] or relation["to_id"] == cbs_context["event_id"]
+    for relation in aircraft_packet["relationships"]
+), "CBS type-specific context was incorrectly wired as Qeshm corroboration/contradiction"
+
 for control_chain in ("CH-DENA-ADMISSION", "CH-TANGSIRI-ADMISSION"):
     packet = next(row for row in packets if row["claim_family_id"] == control_chain)
     adverse = [
