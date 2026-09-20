@@ -5,7 +5,7 @@ const boot = require('../js/public-app.js');
 const ia = require('../js/public-ia.js');
 const model = require('../data/public-current-state.json');
 
-assert.equal(Object.keys(boot.ROUTE_DATA_DEPENDENCIES).length, 25, 'all 25 routes declare dependencies');
+assert.equal(Object.keys(boot.ROUTE_DATA_DEPENDENCIES).length, 26, 'all 26 routes declare dependencies');
 assert.equal(boot.validatePageDataMappings(model), true);
 assert.equal(boot.validateRouteDependencies(model), true);
 

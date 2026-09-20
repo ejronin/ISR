@@ -54,12 +54,28 @@
     },
     "hall_of_shame": {
       "type": "object",
-      "required": ["algorithm_version", "top_n_per_class", "manual_selection", "all_time", "current_period"],
+      "required": ["algorithm_version", "top_n_per_class", "manual_selection", "ranking_contract", "all_time", "current_period"],
       "properties": {
         "algorithm_version": { "type": "string", "minLength": 1 },
         "top_n_per_class": { "const": 3 },
         "manual_selection": { "const": false },
         "current_period_days": { "type": "integer", "minimum": 1 },
+        "ranking_contract": {
+          "type": "object",
+          "required": ["score_weights", "event_metric_map", "qualification_metric_keys", "lower_threshold_classes", "default_min_families", "default_min_events", "lower_min_families", "lower_min_events", "downstream_log2_cap"],
+          "properties": {
+            "score_weights": { "type": "object", "additionalProperties": { "type": "number" } },
+            "event_metric_map": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
+            "qualification_metric_keys": { "$ref": "#/$defs/string_array" },
+            "lower_threshold_classes": { "$ref": "#/$defs/string_array" },
+            "default_min_families": { "type": "integer", "minimum": 0 },
+            "default_min_events": { "type": "integer", "minimum": 0 },
+            "lower_min_families": { "type": "integer", "minimum": 0 },
+            "lower_min_events": { "type": "integer", "minimum": 0 },
+            "downstream_log2_cap": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
         "all_time": { "$ref": "#/$defs/ranking_view" },
         "current_period": { "$ref": "#/$defs/ranking_view" }
       },

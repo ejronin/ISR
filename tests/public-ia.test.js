@@ -31,9 +31,9 @@ for (const [primary, labels] of Object.entries(expectedSecondary)) {
   assert.deepEqual(ia.routesForPrimary(primary).map(route => route.label), labels, `secondary navigation mismatch: ${primary}`);
 }
 
-assert.equal(ia.ROUTES.size, 25);
-assert.equal(Object.keys(ia.PAGE_OWNERS).length, 25);
-assert.equal(new Set([...ia.ROUTES.values()].map(route => route.path)).size, 25);
+assert.equal(ia.ROUTES.size, 26);
+assert.equal(Object.keys(ia.PAGE_OWNERS).length, 26);
+assert.equal(new Set([...ia.ROUTES.values()].map(route => route.path)).size, 26);
 for (const route of ia.ROUTES.values()) {
   const href = ia.routeHref(route.key, { record: 'EV-1' });
   const parsed = ia.parseRoute(href);
@@ -165,4 +165,4 @@ assert.match(css, /overflow-x:\s*hidden/);
 assert.match(css, /\.skip-link:focus/);
 assert.match(css, /:focus-visible/);
 
-console.log('public IA contract: PASS - 7 primary sections, 25 deterministic page owners, current-model-only mappings, actor/evidence boundaries, cross-links, and mobile/accessibility foundations verified');
+console.log('public IA contract: PASS - 7 primary sections, 26 deterministic page owners, current-model-only mappings, actor/evidence boundaries, cross-links, and mobile/accessibility foundations verified');

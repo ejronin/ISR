@@ -130,7 +130,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(coverageBoot.coverage, true, `consumer coverage runtime was not exposed: ${JSON.stringify(coverageBoot)}`);
 
     const expectedRoutes = [...ia.ROUTES.values()];
-    assert.equal(expectedRoutes.length, 25);
+    assert.equal(expectedRoutes.length, 26);
     for (const routeRecord of expectedRoutes) {
       await route(cdp, routeRecord);
       const owner = await cdp.eval(`document.querySelector('[data-page-owner]')?.dataset.pageOwner`);
@@ -152,11 +152,11 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
       console.error('Consumer coverage diagnostics:', JSON.stringify(diagnostics, null, 2));
       throw error;
     }
-    assert.equal(coverage.routeCount, 25);
+    assert.equal(coverage.routeCount, 26);
     assert.equal(coverage.coveredDatasetCount, Object.keys(model.datasets).length + 2);
     assert.equal(coverage.datasetWaiverCount, model.consumer_coverage.dataset_waivers.length);
     assert.equal(coverage.routeWaiverCount, 0);
-    assert.equal(Object.keys(diagnostics.routeAccesses).length, 25);
+    assert.equal(Object.keys(diagnostics.routeAccesses).length, 26);
     assert.deepEqual(diagnostics.sharedAccesses, ['current.actors', 'current.locations', 'current.sources']);
 
     await routeKey(cdp, 'start.overview');
@@ -353,7 +353,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     const externalResources = await cdp.eval(`performance.getEntriesByType('resource').map(entry => entry.name).filter(url => { try { return new URL(url).origin !== location.origin; } catch (_) { return true; } })`);
     assert.deepEqual(externalResources, [], `runtime made external requests: ${externalResources.join(', ')}`);
 
-    console.log('browser public parity Batch 3: PASS - 25 owners, enforceable consumer coverage, broad/record-driven geography, three corridor modes, GCC/Iran forecast context, Arctic boundary, 14-state alignment, strike effects, eight agreements, merchant cross-links, accessibility, and responsive behavior verified');
+    console.log('browser public parity Batch 3: PASS - 26 owners, enforceable consumer coverage, broad/record-driven geography, three corridor modes, GCC/Iran forecast context, Arctic boundary, 14-state alignment, strike effects, eight agreements, merchant cross-links, accessibility, and responsive behavior verified');
   } finally {
     cdp.close();
   }

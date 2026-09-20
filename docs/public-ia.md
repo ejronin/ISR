@@ -2,7 +2,7 @@
 
 The permanent public IA uses GitHub Pages-compatible hash routes. `#/military/facilities`, for example, is a direct link that survives refresh and does not require server rewrites. Ordinary anchors drive navigation; a single `hashchange` listener owned by `AppShell` handles back/forward updates from the already parsed current model.
 
-The seven primary sections and their secondary destinations are declared once in `js/public-ia.js`. Each of the 25 routes names one page owner. That owner creates the page's visible DOM and composes shared components; no other module rewrites or rearranges it after render.
+The seven primary sections and their secondary destinations are declared once in `js/public-ia.js`. Each of the 26 routes names one page owner. Web of Lies is intentionally routable but hidden from persistent secondary navigation; it is reached from Lie Ledger and claim-level Trace links. That owner creates the page's visible DOM and composes shared components; no other module rewrites or rearranges it after render.
 
 | Primary section | Secondary routes and owners |
 |---|---|

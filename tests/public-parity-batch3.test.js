@@ -15,8 +15,8 @@ assert.equal(model.counts.chronology_records, model.chronology.length);
 assert.equal(model.release.gate2_evidence_cutoff, '2026-09-05T00:37:00-04:00');
 assert.equal(model.release.current_osint_cutoff, canonicalManifest.current_evidence_cutoff);
 assert.notEqual(model.release.current_osint_cutoff, model.release.gate2_evidence_cutoff);
-assert.equal(ia.ROUTES.size, 25);
-assert.equal(Object.keys(app.ROUTE_DATA_DEPENDENCIES).length, 25);
+assert.equal(ia.ROUTES.size, 26);
+assert.equal(Object.keys(app.ROUTE_DATA_DEPENDENCIES).length, 26);
 for (const route of ia.ROUTES.values()) {
   const expected = new Set([...app.SHARED_DATASETS, ...route.dataKeys]);
   assert.deepEqual(new Set(app.ROUTE_DATA_DEPENDENCIES[route.key].datasets), expected, `route authorization drift: ${route.key}`);
@@ -103,7 +103,7 @@ const fullyObserved = {
   routeAccesses: Object.fromEntries(Object.entries(app.ROUTE_DATA_DEPENDENCIES).map(([routeKey, contract]) => [routeKey, contract.datasets.filter(key => !app.SHARED_DATASETS.includes(key))]))
 };
 const coverage = app.validateConsumerCoverage(model, app.ROUTE_DATA_DEPENDENCIES, fullyObserved);
-assert.equal(coverage.routeCount, 25);
+assert.equal(coverage.routeCount, 26);
 assert.equal(coverage.actualConsumerCount, new Set(Object.values(app.ROUTE_DATA_DEPENDENCIES).flatMap(contract => contract.datasets)).size);
 assert.equal(coverage.routeWaiverCount, 0);
 assert.equal(coverage.datasetWaiverCount, model.consumer_coverage.dataset_waivers.length);

@@ -428,7 +428,9 @@ a:hover { color: #e0f2ff; }
 .timeline-phase > .context-map { background: #0d161e; }
 .timeline-explorer { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .timeline-controls,
-.lie-ledger-controls {
+.lie-ledger-controls,
+.wol-filter-controls,
+.wol-lineage-controls {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
   gap: .7rem;
@@ -438,7 +440,9 @@ a:hover { color: #e0f2ff; }
   background: #0b131a;
 }
 .timeline-controls label,
-.lie-ledger-controls label {
+.lie-ledger-controls label,
+.wol-filter-controls label,
+.wol-lineage-controls label {
   display: grid;
   gap: .35rem;
   color: var(--muted);
@@ -448,7 +452,11 @@ a:hover { color: #e0f2ff; }
 .timeline-controls input,
 .timeline-controls select,
 .lie-ledger-controls input,
-.lie-ledger-controls select {
+.lie-ledger-controls select,
+.wol-filter-controls input,
+.wol-filter-controls select,
+.wol-lineage-controls input,
+.wol-lineage-controls select {
   width: 100%;
   min-height: 2.75rem;
   padding: .55rem .65rem;
@@ -927,6 +935,49 @@ a:hover { color: #e0f2ff; }
   font-size: .78rem;
 }
 
+.wol-hall-grid,
+.wol-family-list,
+.wol-source-events { display: grid; gap: 1rem; }
+.wol-category {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: #0b131a;
+}
+.wol-category > h3 { margin: 0 0 .8rem; }
+.wol-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: .8rem;
+}
+.wol-source-card,
+.wol-family-card,
+.wol-event-card { overflow-wrap: anywhere; }
+.wol-source-card h4,
+.wol-event-card h4 { margin: 0 0 .45rem; font-size: 1rem; line-height: 1.38; }
+.wol-ranking-reason { margin-top: .8rem; }
+.wol-ranking-basis { margin-top: .75rem; }
+.wol-trace-timeline {
+  display: grid;
+  gap: .8rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.wol-trace-event {
+  min-width: 0;
+  padding: .9rem 1rem;
+  border-left: .25rem solid #587f99;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--surface-2);
+}
+.wol-trace-event p { margin: .4rem 0 0; }
+.wol-trace-event small { display: block; margin-top: .45rem; color: var(--muted); }
+.wol-trace-relations { margin-top: 1rem; }
+.reader-wol-link { margin-top: 1rem; }
+.reader-wol-trace { align-self: flex-start; white-space: nowrap; }
+
 .ledger-group-heading { margin: 1.2rem 0 .7rem; font-size: 1rem; }
 .loss-side-group {
   margin-top: 1rem;
@@ -1170,6 +1221,8 @@ tbody tr:last-child td { border-bottom: 0; }
   .chronology-controls,
   .timeline-controls,
   .lie-ledger-controls,
+  .wol-filter-controls,
+  .wol-lineage-controls,
   .source-controls,
   .explore-grid,
   .definition-grid,
@@ -1762,6 +1815,8 @@ tbody tr:last-child td { border-bottom: 0; }
   .timeline-controls :is(input, select),
   .chronology-controls :is(input, select),
   .lie-ledger-controls :is(input, select),
+  .wol-filter-controls :is(input, select),
+  .wol-lineage-controls :is(input, select),
   .source-controls :is(input, select),
   .map-route-button,
   .map-imagery-button,

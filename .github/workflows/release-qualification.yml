@@ -135,6 +135,7 @@ jobs:
           node tests/public-current-state.test.js
           node tests/public-boot.test.js
           node tests/public-ia.test.js
+          node tests/web-of-lies-public-contract.test.js
           node tests/public-content-redesign.test.js
           node tests/public-evidence-phase5.test.js
           node tests/public-map-phase6.test.js
@@ -152,6 +153,7 @@ jobs:
           node --check src/public-reader-layer.js
           node --check src/public-reader-registry.js
           node --check tests/public-reader-registry.test.js
+          node --check tests/web-of-lies-public-contract.test.js
           node --check tests/browser-public-boot-smoke.js
           node --check tests/browser-public-final-polish.js
           node --check tests/browser-public-render-review.js

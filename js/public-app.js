@@ -69,6 +69,7 @@
     'objectives.iran': freezeContract('objectives_position_changes', ['analysis.iran_messaging']),
     'evidence.claims': freezeContract('claims_sources', ['current.claims']),
     'evidence.information': freezeContract('claims_sources', ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability']),
+    'evidence.web_of_lies': freezeContract('claims_sources', ['analysis.web_of_lies']),
     'evidence.sources': freezeContract('claims_sources', []),
     'evidence.method': freezeContract('claims_sources', []),
     'evidence.archive': freezeContract('claims_sources', ['archive.snapshot_index'])
@@ -97,6 +98,7 @@
     '#/objectives/iran': 'objectives.iran',
     '#/evidence': 'evidence.claims',
     '#/evidence/information': 'evidence.information',
+    '#/evidence/web-of-lies': 'evidence.web_of_lies',
     '#/evidence/sources': 'evidence.sources',
     '#/evidence/method': 'evidence.method',
     '#/evidence/archive': 'evidence.archive'
@@ -277,7 +279,7 @@
   function validateRouteDependencies(model, contracts) {
     const activeContracts = contracts || ROUTE_DATA_DEPENDENCIES;
     const entries = Object.entries(activeContracts);
-    invariant(entries.length === 25, 'MODEL_INVALID', `Expected 25 public route dependency contracts; found ${entries.length}.`);
+    invariant(entries.length === 26, 'MODEL_INVALID', `Expected 26 public route dependency contracts; found ${entries.length}.`);
     for (const [routeKey, contract] of entries) {
       invariant(contract && typeof contract.modelPage === 'string', 'MODEL_INVALID', `Route ${routeKey} has no page-data owner.`);
       invariant(Array.isArray(contract.datasets), 'MODEL_INVALID', `Route ${routeKey} has no dataset contract.`);
@@ -300,7 +302,7 @@
     invariant(coverage && coverage.schema_version === '1.0', 'MODEL_INVALID', 'Public consumer-coverage policy is missing.');
     invariant(Array.isArray(coverage.route_data_waivers) && Array.isArray(coverage.dataset_waivers), 'MODEL_INVALID', 'Public consumer-coverage waivers are malformed.');
     const routeEntries = Object.entries(activeContracts);
-    invariant(routeEntries.length === 25, 'MODEL_INVALID', `Expected 25 public route consumer contracts; found ${routeEntries.length}.`);
+    invariant(routeEntries.length === 26, 'MODEL_INVALID', `Expected 26 public route consumer contracts; found ${routeEntries.length}.`);
     const observedRoutes = observed && observed.routeAccesses && typeof observed.routeAccesses === 'object' ? observed.routeAccesses : {};
     const sharedAccesses = new Set(observed && Array.isArray(observed.sharedAccesses) ? observed.sharedAccesses : []);
     const routeWaivers = new Map();
