@@ -53,6 +53,21 @@ def _validated_overlay(root: Path) -> dict[str, Any]:
         raise ValueError("Claims Forensics full-sweep contract mismatch")
     if sweep.get("sweep_version") != sweep_version:
         raise ValueError("Claims Forensics full-sweep version pin mismatch")
+
+    maintenance_path = str(overlay.get("maintenance_sweep_path") or "")
+    maintenance_version = str(overlay.get("maintenance_sweep_version") or "")
+    if bool(maintenance_path) != bool(maintenance_version):
+        raise ValueError("Claims Forensics maintenance provenance is incomplete")
+    if maintenance_path:
+        maintenance = load(root, maintenance_path)
+        if maintenance.get("artifact_role") != "CLAIMS_FORENSICS_MAINTENANCE_SWEEP":
+            raise ValueError("Claims Forensics maintenance artifact role mismatch")
+        if maintenance.get("authority") != EXPECTED_AUTHORITY:
+            raise ValueError("Claims Forensics maintenance authority mismatch")
+        if maintenance.get("contract_path") != EXPECTED_CONTRACT:
+            raise ValueError("Claims Forensics maintenance contract mismatch")
+        if maintenance.get("maintenance_version") != maintenance_version:
+            raise ValueError("Claims Forensics maintenance version pin mismatch")
     return overlay
 
 
@@ -588,6 +603,8 @@ def apply(state: dict[str, Any], root: Path = ROOT) -> dict[str, Any]:
         "claims_forensics_overlay_version": overlay["overlay_version"],
         "claims_forensics_full_sweep_path": overlay.get("full_sweep_path"),
         "claims_forensics_full_sweep_version": overlay.get("full_sweep_version"),
+        "claims_forensics_maintenance_sweep_path": overlay.get("maintenance_sweep_path"),
+        "claims_forensics_maintenance_sweep_version": overlay.get("maintenance_sweep_version"),
         "post_cutoff_appended_record_count": len(overlay.get("append_records") or []),
         "top_level_public_unit": "NARRATIVE_CHAIN",
         "atomic_proposition_verdict_propagation": False,
@@ -597,6 +614,7 @@ def apply(state: dict[str, Any], root: Path = ROOT) -> dict[str, Any]:
     release["lie_ledger_claims_forensics_overlay_version"] = overlay["overlay_version"]
     release["lie_ledger_claims_forensics_contract_path"] = EXPECTED_CONTRACT
     release["lie_ledger_claims_forensics_full_sweep_version"] = overlay.get("full_sweep_version")
+    release["lie_ledger_claims_forensics_maintenance_sweep_version"] = overlay.get("maintenance_sweep_version")
 
     counts = state.setdefault("counts", {})
     counts["lie_ledger_v2_records"] = len(records)
