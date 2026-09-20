@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
+  "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
+  "source_handoff": "data/evidence-integration/rook-catchup-web-of-lies-input-20260920.json",
+  "as_of": "2026-09-20T15:48:00-04:00",
+  "items": [
+    {
+      "discovery_id": "WOL-IN-ROOK-F15SA-20260920",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
+      "claim_family_ref": null,
+      "observations": [
+        {
+          "date": "2026-09-16",
+          "source": "Houthi statement carried by AP",
+          "statement_identity": "Claimed Saudi F-15 shootdown"
+        },
+        {
+          "date": "2026-09-17",
+          "source": "Janes",
+          "statement_identity": "Wreckage identified as RSAF F-15SA; mechanism and crew status not established"
+        }
+      ],
+      "downstream_note": "Preserve claim propagation separately from later physical-airframe evidence.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
+    },
+    {
+      "discovery_id": "WOL-IN-ROOK-IRAN-CONDITIONS-20260920",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
+      "claim_family_ref": null,
+      "observations": [
+        {
+          "date": "2026-09-19",
+          "source": "Rezaei / Al Jazeera",
+          "statement_identity": "Seven conditions asserted; three publicly enumerated in first recovered reporting"
+        },
+        {
+          "date": "2026-09-20",
+          "source": "Al Jazeera follow-on",
+          "statement_identity": "Six of seven conditions publicly enumerated; one remained undisclosed"
+        }
+      ],
+      "downstream_note": "Chronology is a detail expansion/correction opportunity. Earlier source state must not be silently rewritten as if six items were public on Sep.19.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
+    },
+    {
+      "discovery_id": "WOL-IN-ROOK-RIYADH-20260920",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
+      "claim_family_ref": null,
+      "observations": [
+        {
+          "date": "2026-09-19",
+          "source": "Saudi authorities / Reuters/AP",
+          "statement_identity": "Hostile threat/interception account and observed airport-area fire"
+        },
+        {
+          "date": "2026-09-19",
+          "source": "Houthi statements",
+          "statement_identity": "Claimed Riyadh sensitive-site and Yanbu Aramco attacks"
+        },
+        {
+          "date": "2026-09-20",
+          "source": "Reuters",
+          "statement_identity": "Observed plume localized to King Khalid airport fuel-storage area; weapon-to-damage attribution unresolved"
+        }
+      ],
+      "downstream_note": "Source-family separation is required before downstream propagation analysis.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
+    },
+    {
+      "discovery_id": "WOL-IN-ROOK-TREND-20260920",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
+      "claim_family_ref": null,
+      "observations": [
+        {
+          "date": "2026-09-17",
+          "source": "IRGC statement carried by Reuters",
+          "statement_identity": "Togo-flagged tanker hit/caught fire/stopped during unauthorized Hormuz passage"
+        },
+        {
+          "date": "2026-09-17",
+          "source": "Press TV",
+          "statement_identity": "Claimant-side vessel name Trend and U.S.-direction allegation"
+        },
+        {
+          "date": "2026-09-18",
+          "source": "UKMTO reporting summarized by Maritime Executive",
+          "statement_identity": "Independent maritime incident reporting involving an unknown projectile"
+        }
+      ],
+      "downstream_note": "Do not collapse independent incident existence into corroboration of every claimant proposition.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Evidence Integration supplied a source/chronology sequence for Web of Lies, but no canonical Lie Ledger claim family is assigned. Preserve it outside lineage/Hall scoring until Claims Forensics resolves family placement."
+    }
+  ]
+}
