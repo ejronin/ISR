@@ -1,0 +1,549 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "EVIDENCE_INTEGRATION_SOURCE_PROVENANCE_RECORD",
+  "record_id": "EI-F15E-ISFAHAN-20260920",
+  "as_of": "2026-09-20T12:28:00-04:00",
+  "chain_id": "CH-F15E-CSAR-URANIUM",
+  "target_proposition_ids": [
+    "CI-IR-CLM-0011-P01",
+    "CI-IR-CLM-0011-P02"
+  ],
+  "authority_boundary": {
+    "owner": "EVIDENCE_INTEGRATION",
+    "downstream_analysis_owner": "WEB_OF_LIES_INFORMATION_FORENSICS",
+    "semantic_mutations": "NONE",
+    "purpose": "Canonical source acquisition/provenance, publication chronology, exact epistemic wording, direct attribution, physical-evidence inputs, nuclear-material statement inventory, and unresolved provenance gaps only.",
+    "controlling_downstream_contract": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
+  },
+  "handoff_status": "EVIDENCE_RECORD_COMPLETE",
+  "source_chronology": [
+    {
+      "chronology_id": "F15E-EI-001",
+      "publication_date": "2026-02-09",
+      "source_id": "SRC-08A3A77BCD81",
+      "outlet": "Press TV",
+      "originating_source": "Atomic Energy Organization of Iran head Mohammad Eslami",
+      "source_display_time": "16:02",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "OFFICIAL_STATEMENT_RELAY",
+      "proposition": "Eslami said removal of enriched uranium from Iran was not on the agenda; the article also described an approximately 400 kg pre-strike stock of 60%-enriched uranium.",
+      "epistemic_terms": [
+        "not on the agenda",
+        "could dilute",
+        "60% enriched uranium"
+      ],
+      "bounded_excerpt": "Such a matter has fundamentally not been on the agenda.",
+      "evidence_topic": "PRE_EVENT_NUCLEAR_MATERIAL_CONTEXT"
+    },
+    {
+      "chronology_id": "F15E-EI-002",
+      "publication_date": "2026-02-27",
+      "source_id": "SRC-98A42AC97EEA",
+      "outlet": "Reuters",
+      "originating_source": "IAEA report",
+      "source_display_time": null,
+      "source_timezone": null,
+      "time_precision": "DATE_ONLY",
+      "publication_type": "WIRE_REPORT_OF_IAEA_DOCUMENT",
+      "proposition": "Reuters reported that an IAEA report placed uranium enriched to 20% and 60% at the Isfahan tunnel complex immediately before the war.",
+      "epistemic_terms": [
+        "IAEA report says",
+        "stored"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "PRE_EVENT_NUCLEAR_MATERIAL_LOCATION_CONTEXT"
+    },
+    {
+      "chronology_id": "F15E-EI-003",
+      "publication_date": "2026-03-09",
+      "source_id": "SRC-42F3F44BC6EE",
+      "outlet": "Reuters",
+      "originating_source": "IAEA Director General Rafael Grossi",
+      "source_display_time": null,
+      "source_timezone": null,
+      "time_precision": "DATE_ONLY",
+      "publication_type": "WIRE_REPORT_OF_IAEA_DIRECTOR_STATEMENT",
+      "proposition": "Reuters reported Grossi saying a little over 200 kg of 60%-enriched uranium had been at Isfahan and was likely still there.",
+      "epistemic_terms": [
+        "likely",
+        "a little over 200 kg",
+        "60%-enriched"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "PRE_EVENT_NUCLEAR_MATERIAL_LOCATION_CONTEXT"
+    },
+    {
+      "chronology_id": "F15E-EI-004",
+      "publication_date": "2026-03-22",
+      "source_id": "SRC-D493B3396238",
+      "outlet": "Press TV",
+      "originating_source": "Press TV analysis by Yousef Ramazani",
+      "source_display_time": "17:30",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "ANALYSIS",
+      "proposition": "Press TV described a hypothetical operation to seize Iran's enriched-uranium stockpile as requiring a brigade-sized perimeter force, sustained air cover, ISR, logistics, packaging, transport, and specialized handling.",
+      "epistemic_terms": [
+        "would require",
+        "approximately",
+        "specialized handling"
+      ],
+      "bounded_excerpt": "Approximately 1,000 pounds of 60 percent highly enriched uranium would need to be packaged, moved, and transported to a secure location.",
+      "evidence_topic": "PRE_EVENT_URANIUM_SEIZURE_REQUIREMENTS_CONTEXT"
+    },
+    {
+      "chronology_id": "F15E-EI-005",
+      "publication_date": "2026-04-01",
+      "source_id": "SRC-68993464F927",
+      "outlet": "The Washington Post",
+      "originating_source": "U.S. officials and former defense/special-operations officials",
+      "source_display_time": null,
+      "source_timezone": null,
+      "time_precision": "DATE_ONLY",
+      "publication_type": "NEWS_REPORT_OF_CONTINGENCY_PLAN",
+      "proposition": "The Post reported a separate U.S. contingency plan to seize nearly 1,000 pounds of enriched uranium, involving excavation equipment, substantial forces, a runway/cargo-aircraft solution, and an operation potentially lasting weeks.",
+      "epistemic_terms": [
+        "plan",
+        "would involve",
+        "could take weeks"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "PRE_EVENT_SEPARATE_US_CONTINGENCY_PLAN_CONTEXT"
+    },
+    {
+      "chronology_id": "F15E-EI-006",
+      "publication_date": "2026-04-02",
+      "source_id": "SRC-DBB8501159D4",
+      "outlet": "Press TV",
+      "originating_source": "Press TV Website Staff",
+      "source_display_time": "06:58",
+      "source_update_time": "2026-04-03 08:29 (source display)",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "STATE_MEDIA_FACT_CHECK",
+      "proposition": "Press TV acknowledged Iran's increased uranium enrichment while distinguishing it from weapons-grade material and reiterating Iran's peaceful-program position.",
+      "epistemic_terms": [
+        "60 percent",
+        "nowhere close to weapons-grade",
+        "peaceful"
+      ],
+      "bounded_excerpt": "Iran was forced to ramp up its uranium enrichment, but it remains nowhere close to weapons-grade.",
+      "evidence_topic": "PRE_EVENT_NUCLEAR_POLICY_CONTEXT"
+    },
+    {
+      "chronology_id": "F15E-EI-007",
+      "publication_date": "2026-04-03",
+      "source_id": "SRC-9AD88556FB4C",
+      "outlet": "Press TV",
+      "originating_source": "IRGC / Khatam al-Anbiya Central Headquarters as reported by Press TV",
+      "source_display_time": "05:46",
+      "source_update_time": "07:01 (source display)",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "STATE_MEDIA_OFFICIAL_STATEMENT_RELAY",
+      "proposition": "Press TV reported the downed aircraft as a second F-35 and described the pilot's fate as unknown because of the aircraft's destruction.",
+      "epistemic_terms": [
+        "F-35",
+        "fate ... unknown"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "AIRCRAFT_IDENTIFICATION_REPORTING"
+    },
+    {
+      "chronology_id": "F15E-EI-008",
+      "publication_date": "2026-04-03",
+      "source_id": "SRC-F8AA5DA10F47",
+      "outlet": "Tasnim News Agency",
+      "originating_source": "Unspecified sources cited by Tasnim",
+      "source_display_time": "14:50",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "STATE_MEDIA_REPORT_WITH_UNNAMED_ATTRIBUTION",
+      "proposition": "Tasnim reported that the missing U.S. airman may have been captured and attributed the possibility to unspecified sources.",
+      "epistemic_terms": [
+        "possible capture",
+        "may have been captured",
+        "some sources"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "AIRCREW_STATUS_REPORTING"
+    },
+    {
+      "chronology_id": "F15E-EI-009",
+      "publication_date": "2026-04-03",
+      "source_id": "SRC-9AD0DC8629DD",
+      "outlet": "Tasnim News Agency",
+      "originating_source": "Tasnim reporting",
+      "source_display_time": "15:18",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "STATE_MEDIA_REPORT",
+      "proposition": "Tasnim's headline said the U.S. recovery effort failed while the body qualified that recovery efforts had so far been futile.",
+      "epistemic_terms": [
+        "fails",
+        "so far"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "RESCUE_STATUS_REPORTING"
+    },
+    {
+      "chronology_id": "F15E-EI-010",
+      "publication_date": "2026-04-04",
+      "source_id": "SRC-CC1AA98E096D",
+      "outlet": "Iran International",
+      "originating_source": "Provincial IRGC statement",
+      "source_display_time": "11:23",
+      "source_timezone": "GMT+1 (publisher display)",
+      "time_precision": "SOURCE_DISPLAY_TIME_WITH_PUBLISHER_TIMEZONE",
+      "publication_type": "NEWS_REPORT_OF_IRGC_STATEMENT",
+      "proposition": "Iran International reported a provincial IRGC denial that the second F-15 crew member had been captured or detained.",
+      "epistemic_terms": [
+        "denies",
+        "captured",
+        "detained"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "AIRCREW_STATUS_IRGC_DENIAL"
+    },
+    {
+      "chronology_id": "F15E-EI-011",
+      "publication_date": "2026-04-05",
+      "source_id": "SRC-CB6893671B1F",
+      "outlet": "Press TV",
+      "originating_source": "Khatam al-Anbiya Central Headquarters spokesman Lt. Col. Ebrahim Zolfaqari",
+      "source_display_time": "07:09",
+      "source_update_time": "10:55 (source display)",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "STATE_MEDIA_OFFICIAL_STATEMENT_RELAY",
+      "proposition": "Press TV reported that Iranian forces destroyed two C-130 transport planes and two Black Hawk helicopters during a mission described as retrieving the downed U.S. pilot; the spokesman characterized the operation as a complete failure.",
+      "epistemic_terms": [
+        "mission to retrieve",
+        "complete failure",
+        "destroyed"
+      ],
+      "bounded_excerpt": "two C-130 military transport planes and two Black Hawk helicopters were destroyed",
+      "evidence_topic": "RESCUE_EQUIPMENT_AND_OUTCOME_CLAIM"
+    },
+    {
+      "chronology_id": "F15E-EI-012",
+      "publication_date": "2026-04-05",
+      "source_id": "SRC-7CDC817909BB",
+      "outlet": "Reuters",
+      "originating_source": "Iranian unified command, Iranian army and IRGC statements; U.S. officials",
+      "source_display_time": "06:28:58",
+      "source_timezone": "UTC",
+      "time_precision": "WIRE_TIMESTAMP",
+      "publication_type": "WIRE_REPORT",
+      "proposition": "Reuters reported the Iranian claim that two C-130s and two Black Hawks were destroyed by Iranian forces and also reported U.S. officials saying the second F-15E airman had been rescued.",
+      "epistemic_terms": [
+        "Iranian officials said",
+        "U.S. officials told Reuters",
+        "could not immediately verify"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "MULTISOURCE_RESCUE_REPORT"
+    },
+    {
+      "chronology_id": "F15E-EI-013",
+      "publication_date": "2026-04-05",
+      "source_id": "SRC-694207959BE5",
+      "outlet": "U.S. Central Command",
+      "originating_source": "USCENTCOM",
+      "source_display_time": null,
+      "source_timezone": null,
+      "time_precision": "DATE_ONLY",
+      "publication_type": "OFFICIAL_MILITARY_RELEASE",
+      "proposition": "CENTCOM stated that two U.S. service members from the downed F-15E were safely recovered in separate search-and-rescue missions.",
+      "epistemic_terms": [
+        "successfully completed",
+        "safely recovered"
+      ],
+      "bounded_excerpt": "successfully completed the rescues of two American service members from Iran",
+      "evidence_topic": "OFFICIAL_RESCUE_OUTCOME"
+    },
+    {
+      "chronology_id": "F15E-EI-014",
+      "publication_date": "2026-04-05",
+      "source_id": "SRC-7471ECB26165",
+      "outlet": "Reuters",
+      "originating_source": "U.S. officials and sources familiar with the operation",
+      "source_display_time": "21:04:21",
+      "source_timezone": "UTC",
+      "time_precision": "WIRE_TIMESTAMP",
+      "publication_type": "WIRE_OPERATIONAL_RECONSTRUCTION",
+      "proposition": "Reuters reported that two MC-130 aircraft became unable to take off, the rescue force was extracted in stages, and U.S. troops destroyed the disabled MC-130s and four additional helicopters rather than leave sensitive equipment.",
+      "epistemic_terms": [
+        "mechanical failure",
+        "could not take off",
+        "destroyed ... rather than risk leaving"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "OPERATIONAL_RECONSTRUCTION"
+    },
+    {
+      "chronology_id": "F15E-EI-015",
+      "publication_date": "2026-04-06",
+      "source_id": "SRC-481DC6A8E2DB",
+      "outlet": "Press TV",
+      "originating_source": "Press TV",
+      "source_display_time": null,
+      "source_timezone": null,
+      "time_precision": "DATE_ONLY",
+      "publication_type": "STATE_MEDIA_CORRECTION",
+      "proposition": "Press TV identified the wreckage as F-15E rather than the F-35 identification carried in earlier Iranian reporting.",
+      "epistemic_terms": [
+        "misidentification",
+        "F-15E"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "AIRCRAFT_IDENTIFICATION_CORRECTION"
+    },
+    {
+      "chronology_id": "F15E-EI-016",
+      "publication_date": "2026-04-06",
+      "source_id": "SRC-0C0023C8A3BF",
+      "outlet": "Xinhua",
+      "originating_source": "Iranian Foreign Ministry spokesman Esmaeil Baghaei",
+      "source_display_time": "22:24",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "NEWS_REPORT_OF_OFFICIAL_STATEMENT",
+      "proposition": "Xinhua reported Baghaei raising the possibility that the rescue explanation could have been a deception connected to stealing enriched uranium.",
+      "epistemic_terms": [
+        "possibility",
+        "could have been",
+        "should not be overlooked"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "URANIUM_THEORY_OFFICIAL_STATEMENT"
+    },
+    {
+      "chronology_id": "F15E-EI-017",
+      "publication_date": "2026-04-06",
+      "source_id": "SRC-E3DAD827ACAF",
+      "outlet": "Associated Press",
+      "originating_source": "U.S. officials including President Trump, Gen. Dan Caine and CIA Director John Ratcliffe",
+      "source_display_time": "19:34:25",
+      "source_timezone": "UTC",
+      "time_precision": "WIRE_TIMESTAMP",
+      "publication_type": "WIRE_OPERATIONAL_RECONSTRUCTION",
+      "proposition": "AP reported a two-stage rescue using dozens of aircraft and hundreds of personnel; cargo aircraft and helicopters were left behind or destroyed after the second recovery.",
+      "epistemic_terms": [
+        "dozens of aircraft",
+        "hundreds of personnel",
+        "rescued"
+      ],
+      "bounded_excerpt": null,
+      "evidence_topic": "FOLLOW_UP_OPERATIONAL_RECONSTRUCTION"
+    },
+    {
+      "chronology_id": "F15E-EI-018",
+      "publication_date": "2026-04-07",
+      "source_id": "SRC-7E2DE3FC127A",
+      "outlet": "Press TV",
+      "originating_source": "Press TV exclusive information; unnamed/highly placed Tehran source also quoted",
+      "source_display_time": "11:24",
+      "source_update_time": "13:25 (source display)",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "STATE_MEDIA_EXCLUSIVE",
+      "proposition": "Press TV stated that the Isfahan operation was unrelated to the F-15 rescue and that its objective was to infiltrate and attack an Isfahan nuclear facility; the same article said U.S. forces later evacuated personnel and bombed their own abandoned equipment.",
+      "epistemic_terms": [
+        "it has now become clear",
+        "evidence examined and confirmed by Press TV",
+        "real objective"
+      ],
+      "bounded_excerpt": "this operation had no connection to the claimed rescue ... the real objective was to infiltrate and attack one of Iran's nuclear facilities",
+      "evidence_topic": "ISFAHAN_MISSION_PURPOSE_PRESS_TV_CLAIM"
+    },
+    {
+      "chronology_id": "F15E-EI-019",
+      "publication_date": "2026-04-09",
+      "source_id": "SRC-03F069A69AAF",
+      "outlet": "Press TV",
+      "originating_source": "Mohammad Molaei",
+      "source_display_time": "10:01",
+      "source_timezone": null,
+      "time_precision": "SOURCE_DISPLAY_TIME_NO_TIMEZONE",
+      "publication_type": "SIGNED_ANALYSIS_WITH_OUTLET_DISCLAIMER",
+      "proposition": "Molaei's article questioned the rescue account, described a larger operation and possibly undisclosed objectives, and acknowledged reporting that U.S. forces destroyed stranded equipment themselves.",
+      "epistemic_terms": [
+        "more likely scenario",
+        "possibly undisclosed objectives",
+        "had there been any other operation"
+      ],
+      "bounded_excerpt": "This suggests a larger operation, and possibly undisclosed objectives.",
+      "attribution_note": "The page states that the views expressed do not necessarily reflect Press TV.",
+      "evidence_topic": "LATER_SIGNED_ANALYSIS"
+    }
+  ],
+  "physical_evidence_inventory": [
+    {
+      "evidence_id": "F15E-PHYS-001",
+      "description": "Official U.S. statement that both F-15E service members were safely recovered in separate search-and-rescue missions.",
+      "source_ids": [
+        "SRC-694207959BE5",
+        "SRC-C7C20E33BFCA"
+      ],
+      "evidence_form": "OFFICIAL_STATEMENT_AND_WIRE_CORROBORATION"
+    },
+    {
+      "evidence_id": "F15E-PHYS-002",
+      "description": "Reuters reconstruction reporting two MC-130 aircraft unable to take off and U.S. destruction of the disabled transports and four additional helicopters before extraction.",
+      "source_ids": [
+        "SRC-7471ECB26165"
+      ],
+      "evidence_form": "MULTISOURCE_OPERATIONAL_RECONSTRUCTION"
+    },
+    {
+      "evidence_id": "F15E-PHYS-003",
+      "description": "AP reconstruction reporting dozens of aircraft, hundreds of personnel, delivery of small helicopters by cargo aircraft, and destruction of equipment left on the ground.",
+      "source_ids": [
+        "SRC-E3DAD827ACAF"
+      ],
+      "evidence_form": "MULTISOURCE_OPERATIONAL_RECONSTRUCTION"
+    },
+    {
+      "evidence_id": "F15E-PHYS-004",
+      "description": "Press TV April 7 description of C-130s, special forces, specialized vehicles, MH-6 helicopters and later U.S. bombing of abandoned equipment.",
+      "source_ids": [
+        "SRC-7E2DE3FC127A"
+      ],
+      "evidence_form": "CLAIMANT_OUTLET_DESCRIPTION"
+    },
+    {
+      "evidence_id": "F15E-PHYS-005",
+      "description": "Press TV April 9 analysis describes HC-130 aircraft on the ground, unloaded light helicopters and U.S. destruction of stranded assets as reported by American media.",
+      "source_ids": [
+        "SRC-03F069A69AAF"
+      ],
+      "evidence_form": "SIGNED_ANALYSIS_AND_MEDIA_REFERENCE"
+    },
+    {
+      "evidence_id": "F15E-PHYS-006",
+      "description": "Pre-event Press TV analysis stated a uranium-seizure mission would require a 3,000-4,000-person perimeter force, sustained air cover, ISR, extended logistics and specialized handling.",
+      "source_ids": [
+        "SRC-D493B3396238"
+      ],
+      "evidence_form": "PRE_EVENT_TECHNICAL_CONTEXT"
+    },
+    {
+      "evidence_id": "F15E-PHYS-007",
+      "description": "Pre-event Washington Post reporting on a separate uranium-seizure contingency plan described excavation equipment, runway/cargo-aircraft requirements, radiological protection and a weeks-scale operation.",
+      "source_ids": [
+        "SRC-68993464F927"
+      ],
+      "evidence_form": "PRE_EVENT_CONTINGENCY_PLAN_CONTEXT"
+    }
+  ],
+  "nuclear_material_statement_inventory": [
+    {
+      "statement_id": "F15E-NUC-001",
+      "date": "2026-02-09",
+      "source_ids": [
+        "SRC-08A3A77BCD81"
+      ],
+      "statement": "AEOI chief Mohammad Eslami said removal of enriched uranium from Iran was not on the agenda and linked possible dilution of 60% material to sanctions relief; Press TV described about 400 kg of highly enriched uranium before the prior strikes."
+    },
+    {
+      "statement_id": "F15E-NUC-002",
+      "date": "2026-02-27",
+      "source_ids": [
+        "SRC-98A42AC97EEA"
+      ],
+      "statement": "Reuters reported an IAEA report stating that uranium enriched to 20% and 60% had been stored at the Isfahan tunnel complex immediately before the war."
+    },
+    {
+      "statement_id": "F15E-NUC-003",
+      "date": "2026-03-09",
+      "source_ids": [
+        "SRC-42F3F44BC6EE"
+      ],
+      "statement": "Reuters reported Grossi saying a little over 200 kg of Iran's 60%-enriched uranium had been at Isfahan and likely remained there."
+    },
+    {
+      "statement_id": "F15E-NUC-004",
+      "date": "2026-03-22",
+      "source_ids": [
+        "SRC-D493B3396238"
+      ],
+      "statement": "Press TV's hypothetical seizure analysis described approximately 1,000 pounds of 60%-enriched uranium, Natanz/Isfahan as secured locations, and specialized handling/transport requirements."
+    },
+    {
+      "statement_id": "F15E-NUC-005",
+      "date": "2026-04-01",
+      "source_ids": [
+        "SRC-68993464F927"
+      ],
+      "statement": "The Washington Post reported a U.S. contingency plan concerning nearly 1,000 pounds of 60%-enriched uranium, with more than half described as stored outside Isfahan and the remainder at Natanz or other locations."
+    },
+    {
+      "statement_id": "F15E-NUC-006",
+      "date": "2026-04-02",
+      "source_ids": [
+        "SRC-DBB8501159D4"
+      ],
+      "statement": "Press TV acknowledged increased Iranian enrichment while expressly distinguishing the material from weapons-grade and reiterating Iran's peaceful-program position."
+    }
+  ],
+  "unresolved_provenance_gaps": [
+    {
+      "gap_id": "F15E-GAP-001",
+      "description": "A first-party Iranian Foreign Ministry publication or transcript for Baghaei's April 6 uranium/deception remarks was not recovered in the reviewed corpus; Xinhua and Anadolu are retained as parallel carriers."
+    },
+    {
+      "gap_id": "F15E-GAP-002",
+      "description": "The underlying sources for Press TV's April 7 'information obtained' and 'evidence examined and confirmed' language are not fully identified; the article also quotes an unnamed highly placed Tehran source."
+    },
+    {
+      "gap_id": "F15E-GAP-003",
+      "description": "Several Press TV and Tasnim pages expose clock times without an explicit timezone on the page; those times are preserved as source-display times and are not converted."
+    },
+    {
+      "gap_id": "F15E-GAP-004",
+      "description": "Embedded social-media imagery associated with the rescue-equipment wreckage is not separately canonicalized here when the underlying image origin cannot be independently identified."
+    },
+    {
+      "gap_id": "F15E-GAP-005",
+      "description": "No chain-relevant feedback path involving the specifically named foreign social-media accounts was identified in the current repository or targeted Press TV search."
+    },
+    {
+      "gap_id": "F15E-GAP-006",
+      "description": "The reviewed record does not contain an independently verified coordinate-level geolocation of the abandoned airstrip tied to the April 7 nuclear-site assertion."
+    }
+  ],
+  "canonical_source_additions": [
+    "SRC-08A3A77BCD81",
+    "SRC-D493B3396238",
+    "SRC-DBB8501159D4"
+  ],
+  "existing_canonical_sources_reused": [
+    "SRC-03F069A69AAF",
+    "SRC-0C0023C8A3BF",
+    "SRC-42F3F44BC6EE",
+    "SRC-481DC6A8E2DB",
+    "SRC-59F8B0ECCEC9",
+    "SRC-68993464F927",
+    "SRC-694207959BE5",
+    "SRC-739B61482DE5",
+    "SRC-7471ECB26165",
+    "SRC-7CDC817909BB",
+    "SRC-7E2DE3FC127A",
+    "SRC-98A42AC97EEA",
+    "SRC-9AD0DC8629DD",
+    "SRC-9AD88556FB4C",
+    "SRC-C7C20E33BFCA",
+    "SRC-CB6893671B1F",
+    "SRC-CC1AA98E096D",
+    "SRC-E3DAD827ACAF",
+    "SRC-F8AA5DA10F47"
+  ],
+  "downstream_handoff": {
+    "recipient": "WEB_OF_LIES_INFORMATION_FORENSICS",
+    "contract_path": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
+    "package_character": "NEUTRAL_CANONICAL_EVIDENCE_INPUT",
+    "note": "Evidence Integration stops at canonical source/provenance, chronology, exact wording, direct attribution, physical/nuclear inputs and unresolved provenance gaps. Information-lineage, source-family, propagation, contradiction-event, correction-propagation, feedback-loop and source-behavior analysis belong downstream."
+  }
+}
