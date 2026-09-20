@@ -20,10 +20,16 @@ const records = key => {
 };
 const lieLedgerModel = model.datasets['gate3.lie_ledger'].payload;
 const liePropositions = lieLedgerModel.records.flatMap(chain => chain.proposition_records || []);
-const expectedReaderClaims = lieLedgerModel.records.reduce((count, chain) => {
-  const keys = new Set((chain.proposition_records || []).map(record => record.proposition_id || record.proposition || record.source_proposition || record.claim).filter(Boolean));
-  return count + keys.size;
-}, 0);
+const readerChains = lieLedgerModel.records.filter(chain => chain.public_include_in_accusation_count !== false);
+const expectedReaderChains = readerChains.length;
+const parentFindingLabel = chain => {
+  const raw = chain.public_finding || chain.event_level_finding || chain.chain_finding;
+  if (!raw) return '';
+  if (typeof raw === 'object') return String(raw.label || raw.public_label || raw.finding || '').trim();
+  return String(raw).trim();
+};
+const expectedParentFindingLabels = readerChains.map(parentFindingLabel).filter(Boolean);
+const expectedParentFindings = expectedParentFindingLabels.length;
 
 class CDP {
   constructor(url) { this.url = url; this.id = 0; this.pending = new Map(); }
@@ -179,7 +185,7 @@ async function route(cdp, hash, key) {
     await route(cdp, '#/evidence/information', 'evidence.information');
     const ledger = await cdp.eval(`(() => {
       const main = document.querySelector('main');
-      const cards = [...main.querySelectorAll('[data-reader-finding]')];
+      const cards = [...main.querySelectorAll('.reader-ledger-chain-card')];
       const first = cards[0];
       const why = first?.querySelector('.reader-how-we-know');
       const whySummary = why?.querySelector(':scope > summary');
@@ -191,7 +197,7 @@ async function route(cdp, hash, key) {
       if (evidenceSummary) evidenceSummary.click();
       const search = main.querySelector('.reader-ledger-controls input[type="search"]');
       const select = main.querySelector('.reader-ledger-controls select');
-      const statuses = cards.map(card => card.querySelector('.reader-claim-status')?.textContent.trim() || '');
+      const statuses = cards.map(card => card.querySelector(':scope > .reader-ledger-card-head .reader-claim-status')?.textContent.trim() || '').filter(Boolean);
       const internalSelectors = main.querySelectorAll('[data-claim-instance-id], [data-chain-id], [data-publication-status], [data-combined-assessment]').length;
       const technicalMetadata = main.querySelectorAll('.technical-record-metadata, .evidence-role-guide').length;
       const text = main.innerText || '';
@@ -214,9 +220,10 @@ async function route(cdp, hash, key) {
         clocks: main.querySelectorAll('[data-component="EvidenceClocks"], .evidence-clocks, .evidence-clock-bar').length
       };
     })()`);
-    assert.equal(ledger.cards, expectedReaderClaims, 'reader claim population does not reconcile to unique propositions within each chain');
-    assert(ledger.cards > 0, 'reader-facing claim ledger is empty');
-    assert(ledger.statuses.every(value => ['Lie', 'Likely lie', 'False', 'Misleading', 'Partly true', 'Supported', 'Unresolved', 'Evidence review incomplete', 'Not yet assessed'].includes(value)), 'reader ledger exposes an unapproved finding label');
+    assert.equal(ledger.cards, expectedReaderChains, 'reader Lie Ledger must render exactly one top-level card per narrative chain');
+    assert(ledger.cards > 0, 'reader-facing chain ledger is empty');
+    assert.equal(ledger.statuses.length, expectedParentFindings, 'reader chain-header findings must match explicit canonical parent findings only');
+    assert(ledger.statuses.every(value => expectedParentFindingLabels.includes(value)), 'reader chain header must preserve a canonical parent-finding label');
     assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
     assert(ledger.evidence && ledger.evidenceOpen, 'reader evidence drawer is not discoverable/openable');
     assert(ledger.controls.length >= 2 && ledger.controls.every(height => height >= 44), 'reader claim controls have a touch target below 44px');
@@ -227,25 +234,25 @@ async function route(cdp, hash, key) {
     assert.equal(ledger.oldControls, 0, 'legacy forensic-workstation controls remain active');
     assert.equal(ledger.clocks, 0, 'evidence-clock machinery remains on the ordinary reader claim page');
     assert.doesNotMatch(ledger.text, /Combined ROOK assessment|ROOK verdict|PR\/CI|claim_instance_id|proposition_id|chain_id|publication blocker/i, 'internal authority/schema language leaked into reader claims');
-    assert.match(ledger.text, /Claims and findings/i);
-    assert.match(ledger.text, /How we know it is/i);
+    assert.match(ledger.text, /Narrative chains and findings/i);
+    assert.match(ledger.text, /How Atlas reached this finding/i);
 
     const filteredLedger = await cdp.eval(`(() => {
       const main = document.querySelector('main');
       const search = main.querySelector('.reader-ledger-controls input[type="search"]');
-      const first = main.querySelector('[data-reader-finding]');
+      const first = main.querySelector('.reader-ledger-chain-card');
       const term = first?.querySelector('h3')?.textContent.trim().split(/\s+/).find(word => word.length >= 5) || '';
       if (!search || !term) return null;
       search.value = term;
       search.dispatchEvent(new Event('input', { bubbles: true }));
       return {
         term,
-        visible: [...main.querySelectorAll('[data-reader-finding]')].filter(card => !card.hidden).length,
+        visible: [...main.querySelectorAll('.reader-ledger-chain-card')].filter(card => !card.hidden).length,
         count: main.querySelector('.reader-ledger-controls .filter-result-count')?.textContent.trim() || ''
       };
     })()`);
-    assert(filteredLedger && filteredLedger.visible > 0, 'reader claim search does not preserve matching claims');
-    assert.match(filteredLedger.count, /^\d+ of \d+ claims shown$/);
+    assert(filteredLedger && filteredLedger.visible > 0, 'reader chain search does not preserve matching chains');
+    assert.match(filteredLedger.count, /^\d+ of \d+ chains shown$/);
 
     const publicLanguageLeaks = [];
     for (const routeRecord of ia.ROUTES.values()) {

@@ -180,7 +180,10 @@ function addFinding(findings, routeKey, width, category, detail) {
     await route(cdp, 'evidence.information');
     const ledger = await cdp.eval(`(() => {
       const main = document.querySelector('main');
-      const card = main.querySelector('[data-reader-finding]');
+      const cards = [...main.querySelectorAll('.reader-ledger-chain-card')];
+      const card = cards.find(candidate =>
+        candidate.querySelector(':scope > .reader-ledger-card-head > .reader-claim-status')
+      ) || cards[0];
       const why = card?.querySelector('.reader-how-we-know');
       const summary = why?.querySelector(':scope > summary');
       if (summary) summary.focus();
@@ -201,7 +204,7 @@ function addFinding(findings, routeKey, width, category, detail) {
       };
     })()`);
     if (!ledger.card || !ledger.why || !ledger.focusable || !ledger.open) addFinding(findings, 'evidence.information', 390, 'disclosure', 'reader-finding-evidence-path-not-focusable-or-openable');
-    if (!ledger.status) addFinding(findings, 'evidence.information', 390, 'finding', 'reader-finding-status-missing');
+    if (!ledger.status) addFinding(findings, 'evidence.information', 390, 'finding', 'explicit-parent-finding-card-status-missing');
     if (!ledger.drawer || !ledger.drawerOpen) addFinding(findings, 'evidence.information', 390, 'evidence-drawer', 'reader-evidence-drawer-not-discoverable-or-openable');
 
     await route(cdp, 'military.imagery');

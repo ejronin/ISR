@@ -99,10 +99,46 @@
     }
   }
 
+  function addDeferredEvidence(host, context, records, label) {
+    const rows = asArray(records).filter(Boolean);
+    const sourceIds = unique(rows.flatMap(sourceIdsFrom));
+    const urls = unique(rows.flatMap(directSourceUrls));
+    if (!sourceIds.length && !urls.length) return null;
+
+    const documentObject = host.ownerDocument || context.documentObject;
+    const placeholder = append(host, 'details', 'evidence-drawer reader-deferred-evidence');
+    placeholder.dataset.component = 'SharedEvidenceDrawer';
+    append(placeholder, 'summary', '', label || `Evidence (${sourceIds.length + urls.length})`);
+    append(placeholder, 'p', 'reader-deferred-evidence-note', 'Open to load the linked source record.');
+
+    let hydrated = false;
+    placeholder.addEventListener('toggle', () => {
+      if (!placeholder.open || hydrated) return;
+      hydrated = true;
+
+      const staging = documentObject.createElement('div');
+      addEvidence(staging, context, rows, label);
+      const rendered = [...staging.children];
+      if (!rendered.length) return;
+
+      rendered.forEach(node => {
+        node.querySelectorAll?.('.evidence-role-guide, .technical-record-metadata').forEach(child => child.remove());
+        if (node.tagName === 'DETAILS') node.open = true;
+      });
+
+      const primary = rendered.shift();
+      placeholder.replaceWith(primary);
+      if (rendered.length) primary.after(...rendered);
+    });
+
+    return placeholder;
+  }
+
   function cleanPublicText(value) {
     let result = text(value);
     result = result.replace(/\bROOK(?:'s)?\b/gi, 'the review');
     result = result.replace(/\bPR\/CI\b/gi, 'evidence review');
+    result = result.replace(/\bPARTLY_TRUE\b/g, 'partly true');
     result = result.replace(/\s{2,}/g, ' ').trim();
     return result;
   }
@@ -391,21 +427,99 @@
 
   function howWeKnow(record, adjudication) {
     const facts = asArray(record && record.observed_facts).map(cleanPublicText).filter(Boolean);
-    const result = facts.slice(0, 4);
+    const result = facts.slice(0, 3);
+    const addUnique = value => {
+      const cleaned = cleanPublicText(value);
+      if (!cleaned || INTERNAL_TEXT.test(cleaned)) return;
+      if (!result.some(item => item.toLowerCase() === cleaned.toLowerCase())) result.push(cleaned);
+    };
+
+    // Always expose the reasoning step when it is public-safe. Facts answer
+    // "what evidence exists"; the inference answers "why that evidence changes
+    // the finding."
+    addUnique(record && record.analytic_inference);
+
     const knowledge = text(record && (record.public_knowledge_judgment || record.knowledge_judgment)).toUpperCase();
-    if (adjudication.key === 'lie' && !result.some(value => /knew|knowledge|access/i.test(value))) {
-      result.push('The evidence supports that the claimant had access to information contradicting the statement when it was made.');
-    } else if (adjudication.key === 'likely-lie' && !result.some(value => /knew|knowledge|access/i.test(value))) {
-      result.push('The evidence makes it more likely than not that the claimant had access to contradictory information at the time.');
+    const knowledgeSummaries = asArray(record && record.knowledge_indicators)
+      .map(item => cleanPublicText(item && item.summary))
+      .filter(value => value && !INTERNAL_TEXT.test(value));
+    knowledgeSummaries.slice(0, 2).forEach(addUnique);
+
+    if (['lie', 'likely-lie'].includes(adjudication.key)) {
+      addUnique(record && record.comparative_assessment);
+      if (!result.some(value => /knew|knowledge|access|possess|record|contradict/i.test(value))) {
+        addUnique(adjudication.key === 'lie'
+          ? 'The claim is false, and the evidence also establishes that the claimant possessed or had direct access to information contradicting it when the statement was made.'
+          : 'The claim is false, and the available access, chronology, repetition, or internal-contradiction evidence makes knowing falsity more likely than an innocent error.');
+      }
     } else if (knowledge === 'INSUFFICIENT_EVIDENCE' && adjudication.key === 'false') {
-      result.push('The claim is false on the available record, but the evidence does not establish that the claimant knew it was false when stated.');
+      addUnique('The claim is false on the completed record, but the evidence does not establish that the claimant knew it was false when stated. That is why this branch is labeled False rather than Lie.');
+    } else if (adjudication.key === 'unresolved') {
+      addUnique('The available evidence does not yet discriminate strongly enough between the live factual alternatives, so Atlas does not convert uncertainty into a falsehood finding.');
     }
-    if (!result.length) {
-      const inference = cleanPublicText(record && record.analytic_inference);
-      if (inference && !INTERNAL_TEXT.test(inference)) result.push(inference);
+
+    if (!result.length) result.push('The current evidence supports this finding; the source drawer below contains the underlying record.');
+    return result.slice(0, 7);
+  }
+
+  function chainPublicAdjudication(chain) {
+    const raw = chain && (chain.public_finding || chain.event_level_finding || chain.chain_finding);
+    if (!raw) return null;
+    if (typeof raw === 'object') {
+      const label = cleanPublicText(raw.label || raw.public_label || raw.finding || '');
+      const key = text(raw.key || raw.public_key || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      return label ? { label, key: key || 'chain-finding' } : null;
     }
-    if (!result.length) result.push('The current evidence supports this finding; open the sources below for the underlying record.');
-    return result;
+    const label = cleanPublicText(raw);
+    if (!label) return null;
+    return {
+      label,
+      key: label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'chain-finding'
+    };
+  }
+
+  function chainPlainEnglish(chain, records) {
+    const explicit = asArray(chain && (chain.how_we_know || chain.public_reasoning || chain.logic_summary))
+      .map(cleanPublicText)
+      .filter(value => value && !INTERNAL_TEXT.test(value));
+    if (explicit.length) return explicit;
+
+    const findings = new Map();
+    records.forEach(record => {
+      const finding = publicAdjudication(record).label;
+      findings.set(finding, (findings.get(finding) || 0) + 1);
+    });
+    const findingSummary = [...findings.entries()]
+      .map(([label, count]) => `${count} ${label.toLowerCase()}`)
+      .join(', ');
+
+    const explanation = [];
+    if (findingSummary) explanation.push(`This chain contains branch-specific findings: ${findingSummary}. A finding on one branch does not automatically apply to the others.`);
+
+    const seen = new Set();
+    const add = value => {
+      const cleaned = cleanPublicText(value);
+      if (!cleaned || INTERNAL_TEXT.test(cleaned)) return;
+      const key = cleaned.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        explanation.push(cleaned);
+      }
+    };
+    records.forEach(record => {
+      asArray(record && record.observed_facts).slice(0, 1).forEach(add);
+      add(record && record.analytic_inference);
+    });
+    return explanation.slice(0, 7).length
+      ? explanation.slice(0, 7)
+      : ['The branch findings below show the chronology, what changed, why each proposition received its finding, and the evidence supporting it.'];
+  }
+
+  function evidenceGapText(gap) {
+    if (typeof gap === 'string') return cleanPublicText(gap);
+    if (!gap || typeof gap !== 'object') return '';
+    const needed = asArray(gap.needed_evidence || gap.falsifier).map(cleanPublicText).filter(Boolean);
+    return needed.length ? needed.join(' ') : '';
   }
 
   function rebuildLieLedger(article, context) {
@@ -414,94 +528,200 @@
     const documentObject = article.ownerDocument;
     const header = article.querySelector('.page-intro');
     if (!header) return;
-    setPageIntro(article, 'Claims are grouped by what was actually asserted. Each entry shows the current finding, repeats or related claims when they matter, and the evidence that supports the result.');
+
+    setPageIntro(article, 'Each top-level card is one real event or evolving narrative. Claims, corrections, repetitions, and substitutions stay inside that chain so the reader can see what happened, what changed, and why Atlas reached each finding.');
     [...article.children].forEach(child => { if (child !== header) child.remove(); });
 
     const section = append(article, 'section', 'content-section reader-lie-ledger');
     section.dataset.readerLieLedger = VERSION;
-    append(section, 'h2', '', 'Claims and findings');
+    append(section, 'h2', '', 'Narrative chains and findings');
+
     const controls = append(section, 'form', 'reader-ledger-controls');
     controls.addEventListener('submit', event => event.preventDefault());
-    const searchLabel = append(controls, 'label', '', 'Search claims');
+    const searchLabel = append(controls, 'label', '', 'Search chains or claims');
     const search = append(searchLabel, 'input');
-    search.type = 'search'; search.placeholder = 'Search claim or claimant';
+    search.type = 'search';
+    search.placeholder = 'Search claim, claimant, or finding';
     const statusLabel = append(controls, 'label', '', 'Finding');
     const status = append(statusLabel, 'select');
     append(status, 'option', '', 'All findings').value = '';
+
     const statusKeys = new Map();
     const cards = [];
 
     chains.forEach(chain => {
+      if (chain && chain.public_include_in_accusation_count === false) return;
       const records = asArray(chain && chain.proposition_records);
+      if (!records.length) return;
+
       const groups = new Map();
       records.forEach(record => {
         const key = record.proposition_id || recordProposition(record).toLowerCase();
         if (!groups.has(key)) groups.set(key, []);
         groups.get(key).push(record);
       });
-      const groupEntries = [...groups.entries()];
-      groupEntries.forEach(([groupKey, groupRecords]) => {
-        const main = groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0];
-        if (!main) return;
-        const adjudication = publicAdjudication(main);
-        statusKeys.set(adjudication.key, adjudication.label);
-        const card = append(section, 'article', `reader-ledger-card finding-${adjudication.key}`);
-        card.dataset.readerFinding = adjudication.key;
-        card.dataset.readerSearch = `${recordProposition(main)} ${cleanPublicText(main.actor)} ${adjudication.label}`.toLowerCase();
-        const top = append(card, 'div', 'reader-ledger-card-head');
-        const copy = append(top, 'div');
-        append(copy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
-        append(copy, 'h3', '', recordProposition(main));
-        const intentNote = intentReviewNote(main);
-        if (intentNote) append(copy, 'p', 'reader-intent-note', intentNote);
-        append(top, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
 
-        const related = groupEntries.filter(([key]) => key !== groupKey).flatMap(([, rows]) => rows.filter(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION').slice(0, 1));
-        if (related.length) {
-          const details = append(card, 'details', 'reader-related-claims');
-          append(details, 'summary', '', `Related claims (${related.length})`);
-          const list = append(details, 'ul', 'reader-claim-list');
-          related.forEach(record => {
-            const item = append(list, 'li');
-            append(item, 'span', '', recordProposition(record));
-            append(item, 'small', '', ` — ${publicAdjudication(record).label}`);
+      const groupEntries = [...groups.entries()];
+      const branchMains = groupEntries.map(([, groupRecords]) =>
+        groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0]
+      ).filter(Boolean);
+      const first = branchMains[0] || records[0];
+      const chainFinding = chainPublicAdjudication(chain);
+      const branchFindings = branchMains.map(publicAdjudication);
+      branchFindings.forEach(item => statusKeys.set(item.key, item.label));
+      if (chainFinding) statusKeys.set(chainFinding.key, chainFinding.label);
+
+      const findingKeys = new Set(branchFindings.map(item => item.key));
+      if (chainFinding) findingKeys.add(chainFinding.key);
+
+      const card = append(section, 'article', 'reader-ledger-card reader-ledger-chain-card');
+      card.dataset.readerFindings = [...findingKeys].join(' ');
+      const searchText = [
+        chain.public_title,
+        chain.title,
+        chain.public_summary,
+        chain.plain_english_summary,
+        ...records.flatMap(record => [
+          recordProposition(record),
+          cleanPublicText(record.actor),
+          publicAdjudication(record).label
+        ])
+      ].filter(Boolean).join(' ').toLowerCase();
+      card.dataset.readerSearch = searchText;
+
+      const top = append(card, 'div', 'reader-ledger-card-head');
+      const copy = append(top, 'div');
+      const dates = records.map(statementDate).filter(Boolean);
+      const dateLabel = dates.length > 1 && dates[0] !== dates[dates.length - 1]
+        ? `${dates[0]} – ${dates[dates.length - 1]}`
+        : (dates[0] || '');
+      append(copy, 'p', 'card-kicker', ['Narrative chain', dateLabel].filter(Boolean).join(' · '));
+
+      const chainTitle = cleanPublicText(chain.public_title || chain.title || chain.reader_title || recordProposition(first));
+      append(copy, 'h3', '', chainTitle || 'Narrative chain');
+
+      const chainSummary = cleanPublicText(chain.plain_english_summary || chain.public_summary || chain.event_level_summary || '');
+      if (chainSummary) append(copy, 'p', 'reader-chain-summary', chainSummary);
+      if (chainFinding) append(top, 'strong', `reader-claim-status ${chainFinding.key}`, chainFinding.label);
+
+      const eventBaseline = cleanPublicText(chain.event_baseline || '');
+      if (eventBaseline) {
+        const baseline = append(card, 'section', 'reader-chain-baseline');
+        append(baseline, 'h4', '', 'What actually happened');
+        append(baseline, 'p', '', eventBaseline);
+      }
+
+      const terminalState = cleanPublicText(chain.terminal_event_state || '');
+      if (terminalState) {
+        const outcome = append(card, 'section', 'reader-chain-outcome');
+        append(outcome, 'h4', '', 'Adjudicated outcome');
+        append(outcome, 'p', '', terminalState);
+      }
+
+      const chainWhy = append(card, 'details', 'reader-how-we-know reader-chain-how-we-know');
+      append(chainWhy, 'summary', '', 'How Atlas reached this finding');
+      const chainExplanation = append(chainWhy, 'ul', 'reader-explanation-list');
+      chainPlainEnglish(chain, records).forEach(value => append(chainExplanation, 'li', '', value));
+      addDeferredEvidence(chainWhy, context, records, 'Sources used across this chain');
+
+      const logic = chain && chain.logic_graph;
+      if (logic && asArray(logic.nodes).length) {
+        const logicDetails = append(card, 'details', 'reader-chain-logic');
+        append(logicDetails, 'summary', '', 'How the logic works');
+        append(logicDetails, 'p', 'section-note',
+          `This trace is generated from canonical claim/evidence relationships: ${Number(logic.claim_node_count || 0)} proposition nodes, ${Number(logic.source_node_count || 0)} source nodes, and ${asArray(logic.edges).length} typed links.`);
+        const relationCounts = new Map();
+        asArray(logic.edges).forEach(edge => {
+          const relation = cleanPublicText(edge && edge.relation);
+          if (relation) relationCounts.set(relation, (relationCounts.get(relation) || 0) + 1);
+        });
+        if (relationCounts.size) {
+          const list = append(logicDetails, 'ul', 'reader-logic-relations');
+          [...relationCounts.entries()].sort((a, b) => a[0].localeCompare(b[0])).forEach(([relation, count]) => {
+            append(list, 'li', '', `${relation.replaceAll('_', ' ').toLowerCase()} — ${count}`);
           });
         }
+      }
 
-        const repeats = groupRecords.filter(record => record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type)));
-        if (repeats.length) {
-          const details = append(card, 'details', 'reader-repeated-by');
-          append(details, 'summary', '', `Repeated by (${repeats.length})`);
-          const list = append(details, 'ul', 'reader-claim-list');
-          repeats.forEach(record => append(list, 'li', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · ')));
-          addEvidence(details, context, repeats, 'Sources for repeats');
-        }
+      const gaps = asArray(chain && chain.open_evidence_gaps).map(evidenceGapText).filter(Boolean);
+      if (gaps.length) {
+        const unknown = append(card, 'details', 'reader-chain-open-gaps');
+        append(unknown, 'summary', '', 'What remains unknown');
+        const list = append(unknown, 'ul', 'reader-explanation-list');
+        gaps.forEach(value => append(list, 'li', '', value));
+      }
 
-        const why = append(card, 'details', 'reader-how-we-know');
-        append(why, 'summary', '', `How we know it is ${adjudication.label.toLowerCase()}`);
-        const explanation = append(why, 'ul', 'reader-explanation-list');
-        howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
-        addEvidence(why, context, [main], 'Evidence sources');
-        cards.push(card);
+      const claimsDetail = append(card, 'details', 'reader-chain-claims-detail');
+      append(claimsDetail, 'summary', '', `What was claimed and how the story changed (${groupEntries.length})`);
+      append(claimsDetail, 'p', 'reader-deferred-claims-note', 'Open to load the chronological claim branches, corrections, repetitions, and evidence links.');
+
+      let claimsHydrated = false;
+      claimsDetail.addEventListener('toggle', () => {
+        if (!claimsDetail.open || claimsHydrated) return;
+        claimsHydrated = true;
+        claimsDetail.querySelector('.reader-deferred-claims-note')?.remove();
+        const timeline = append(claimsDetail, 'ol', 'reader-chain-timeline');
+        groupEntries.forEach(([, groupRecords]) => {
+          const main = groupRecords.find(record => record.actor_role === 'ORIGINATOR' || record.relation_type === 'ORIGINATION') || groupRecords[0];
+          if (!main) return;
+          const adjudication = publicAdjudication(main);
+          const item = append(timeline, 'li', `reader-chain-branch finding-${adjudication.key}`);
+          const branchHead = append(item, 'div', 'reader-ledger-card-head');
+          const branchCopy = append(branchHead, 'div');
+          append(branchCopy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
+          append(branchCopy, 'h4', '', recordProposition(main));
+          const intentNote = intentReviewNote(main);
+          if (intentNote) append(branchCopy, 'p', 'reader-intent-note', intentNote);
+          append(branchHead, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
+          const why = append(item, 'details', 'reader-how-we-know reader-branch-how-we-know');
+          append(why, 'summary', '', `Why this branch is ${adjudication.label.toLowerCase()}`);
+          const explanation = append(why, 'ul', 'reader-explanation-list');
+          howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
+          addDeferredEvidence(why, context, [main], 'Evidence for this branch');
+          const repeats = groupRecords.filter(record => record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type)));
+          if (repeats.length) {
+            const details = append(item, 'details', 'reader-repeated-by');
+            append(details, 'summary', '', `Repeated or amplified by (${repeats.length})`);
+            const list = append(details, 'ul', 'reader-claim-list');
+            repeats.forEach(record => {
+              const row = append(list, 'li');
+              append(row, 'span', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · '));
+              append(row, 'small', '', ` — ${publicAdjudication(record).label}`);
+            });
+            addDeferredEvidence(details, context, repeats, 'Sources for repeats');
+          }
+        });
       });
+
+      cards.push(card);
     });
 
     [...statusKeys.entries()].sort((a, b) => a[1].localeCompare(b[1])).forEach(([key, label]) => {
-      const option = append(status, 'option', '', label); option.value = key;
+      const option = append(status, 'option', '', label);
+      option.value = key;
     });
+
     const resultCount = append(controls, 'p', 'filter-result-count');
     resultCount.setAttribute('aria-live', 'polite');
+
     const draw = () => {
       const query = search.value.trim().toLowerCase();
       let visible = 0;
       cards.forEach(card => {
-        const hidden = Boolean((query && !card.dataset.readerSearch.includes(query)) || (status.value && card.dataset.readerFinding !== status.value));
+        const findings = new Set((card.dataset.readerFindings || '').split(/\s+/).filter(Boolean));
+        const hidden = Boolean(
+          (query && !card.dataset.readerSearch.includes(query)) ||
+          (status.value && !findings.has(status.value))
+        );
         card.hidden = hidden;
         if (!hidden) visible += 1;
       });
-      resultCount.textContent = `${visible} of ${cards.length} claims shown`;
+      resultCount.textContent = `${visible} of ${cards.length} chains shown`;
     };
-    search.addEventListener('input', draw); status.addEventListener('change', draw); draw();
+
+    search.addEventListener('input', draw);
+    status.addEventListener('change', draw);
+    draw();
 
     const methods = append(article, 'p', 'reader-method-link');
     methods.append(documentObject.createTextNode('Want the methodology behind these findings? '));
