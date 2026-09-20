@@ -69,7 +69,7 @@
     'objectives.iran': freezeContract('objectives_position_changes', ['analysis.iran_messaging']),
     'evidence.claims': freezeContract('claims_sources', ['current.claims']),
     'evidence.information': freezeContract('claims_sources', ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability']),
-    'evidence.web_of_lies': freezeContract('claims_sources', ['analysis.web_of_lies', 'gate3.lie_ledger', 'current.sources']),
+    'evidence.web_of_lies': freezeContract('claims_sources', ['analysis.web_of_lies']),
     'evidence.sources': freezeContract('claims_sources', []),
     'evidence.method': freezeContract('claims_sources', []),
     'evidence.archive': freezeContract('claims_sources', ['archive.snapshot_index'])
