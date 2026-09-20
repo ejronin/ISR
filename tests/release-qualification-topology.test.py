@@ -50,6 +50,7 @@ for token in (
     "python scripts/build_current_release_state.py",
     "python scripts/build_current_release_state.py --check",
     "python scripts/validate_lie_ledger_v2.py",
+    "python scripts/build_web_of_lies_discovery_queue.py --check",
     "python scripts/build_web_of_lies_baseline_packets.py --check",
     "python scripts/build_web_of_lies_forensic_input.py --check",
     "python scripts/validate_web_of_lies.py",
