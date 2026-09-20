@@ -1,0 +1,535 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_AIRCRAFT_KILL_AGGREGATES-20260920",
+  "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=11; anchor_events=11; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Iranian Army as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-3969BF66615A"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_SPOKESMAN_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Iranian Army spokesman as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-60BA56B2A294"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_MILITARY_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Iranian military as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-DB900429D8BC",
+        "SRC-FDAC11893E4C"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRGC",
+      "display_name": "IRGC",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-1171DD00072E",
+        "SRC-1681BB9FE598",
+        "SRC-2C92CED64676",
+        "SRC-34163F690F21",
+        "SRC-37864A89695D",
+        "SRC-4DED0E4745D2",
+        "SRC-72F1D576AF3E",
+        "SRC-906AC32553A4",
+        "SRC-A07B03007000",
+        "SRC-AFBD0A43CE3E",
+        "SRC-DCAF6365D0E6",
+        "SRC-E8B81BD88EA4",
+        "SRC-FF6A20CEE01D"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_IRANIAN_MILITARY_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "IRGC/Iranian military as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-AF8FAEEE34BC"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "display_name": "Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-DB900429D8BC"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRGC_QESHM_MQ9_52_20260916_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-16",
+      "first_observed_at": "2026-09-16",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The Sep. 16 Qeshm aircraft was the 52nd U.S. MQ-9 destroyed during the conflict.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRGC-QESHM-MQ9-52-20260916-P01",
+        "CLM-IRGC-QESHM-MQ9-52-20260916",
+        "PROP-MQ9-CUMULATIVE-52-20260916"
+      ],
+      "evidence_source_ids": [
+        "SRC-1171DD00072E",
+        "SRC-1681BB9FE598",
+        "SRC-2C92CED64676",
+        "SRC-34163F690F21",
+        "SRC-37864A89695D",
+        "SRC-4DED0E4745D2",
+        "SRC-72F1D576AF3E",
+        "SRC-906AC32553A4",
+        "SRC-A07B03007000",
+        "SRC-AFBD0A43CE3E",
+        "SRC-DCAF6365D0E6",
+        "SRC-E8B81BD88EA4",
+        "SRC-FF6A20CEE01D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED EXACT COUNT — MATERIAL FALSITY NOT ESTABLISHED; NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED EXACT COUNT — MATERIAL FALSITY NOT ESTABLISHED; NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRGC_QESHM_MQ9_53_20260917_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-17",
+      "first_observed_at": "2026-09-17",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The Sep. 17 Qeshm aircraft was the 53rd U.S. MQ-9 downed by Iranian forces.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRGC-QESHM-MQ9-53-20260917-P01",
+        "CLM-IRGC-QESHM-MQ9-53-20260917",
+        "PROP-MQ9-CUMULATIVE-53-20260917"
+      ],
+      "evidence_source_ids": [
+        "SRC-1171DD00072E",
+        "SRC-1681BB9FE598",
+        "SRC-2C92CED64676",
+        "SRC-34163F690F21",
+        "SRC-37864A89695D",
+        "SRC-4DED0E4745D2",
+        "SRC-72F1D576AF3E",
+        "SRC-906AC32553A4",
+        "SRC-A07B03007000",
+        "SRC-AFBD0A43CE3E",
+        "SRC-DCAF6365D0E6",
+        "SRC-E8B81BD88EA4",
+        "SRC-FF6A20CEE01D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED EXACT COUNT — MATERIAL FALSITY NOT ESTABLISHED; NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED EXACT COUNT — MATERIAL FALSITY NOT ESTABLISHED; NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRGC_QESHM_MQ9_LOSS_20260916_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-16",
+      "first_observed_at": "2026-09-16",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "An American MQ-9 was shot down over Qeshm Island on Sep. 16.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRGC-QESHM-MQ9-LOSS-20260916-P01",
+        "CLM-IRGC-QESHM-MQ9-LOSS-20260916",
+        "PROP-QESHM-MQ9-LOSS-20260916"
+      ],
+      "evidence_source_ids": [
+        "SRC-906AC32553A4",
+        "SRC-E8B81BD88EA4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED / UNVERIFIED LOSS. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED / UNVERIFIED LOSS"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRGC_QESHM_MQ9_LOSS_20260917_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-17",
+      "first_observed_at": "2026-09-17",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Another American MQ-9 was shot down over Qeshm Island on Sep. 17.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRGC-QESHM-MQ9-LOSS-20260917-P01",
+        "CLM-IRGC-QESHM-MQ9-LOSS-20260917",
+        "PROP-QESHM-MQ9-LOSS-20260917"
+      ],
+      "evidence_source_ids": [
+        "SRC-34163F690F21"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED / UNVERIFIED LOSS. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED / UNVERIFIED LOSS"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0601_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-07",
+      "first_observed_at": "2026-03-07",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran said it had downed 82 U.S. and Israeli drones.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0601-P01",
+        "IR-CLM-0601",
+        "PROP-BBDF35C067CB"
+      ],
+      "evidence_source_ids": [
+        "SRC-3969BF66615A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED EXACT COUNT — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED EXACT COUNT — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0602_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRGC_IRANIAN_MILITARY_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-25",
+      "first_observed_at": "2026-03-25",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran said more than 130 enemy drones had been downed.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC/Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0602-P01",
+        "IR-CLM-0602",
+        "PROP-E976FEEC470C"
+      ],
+      "evidence_source_ids": [
+        "SRC-AF8FAEEE34BC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED EXACT COUNT — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED EXACT COUNT — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0603_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_MILITARY_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-18",
+      "first_observed_at": "2026-04-18",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran said 170 enemy drones had been downed.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0603-P01",
+        "IR-CLM-0603",
+        "PROP-EEE93777A033"
+      ],
+      "evidence_source_ids": [
+        "SRC-FDAC11893E4C"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED EXACT COUNT — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED EXACT COUNT — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0604_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_SPOKESMAN_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-28",
+      "first_observed_at": "2026-04-28",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran said more than 170 enemy aircraft had been hit, including 16 fighter jets.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army spokesman as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0604-P01",
+        "IR-CLM-0604",
+        "PROP-AIRCRAFT-16-FIGHTERS-HIT-20260428"
+      ],
+      "evidence_source_ids": [
+        "SRC-60BA56B2A294"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED EXACT HIT COUNT — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED EXACT HIT COUNT — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0604_P02",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_SPOKESMAN_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-28",
+      "first_observed_at": "2026-04-28",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran said more than 170 enemy aircraft had been hit, including 16 fighter jets.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army spokesman as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0604-P02",
+        "IR-CLM-0604",
+        "PROP-AIRCRAFT-AGGREGATE-METRIC-COMPARABILITY-20260428"
+      ],
+      "evidence_source_ids": [
+        "SRC-60BA56B2A294"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: MISLEADING — METRIC AND DENOMINATOR SHIFT. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "MISLEADING — METRIC AND DENOMINATOR SHIFT"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0605_P01",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_MILITARY_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-05-26",
+      "first_observed_at": "2026-05-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Press TV’s headline says technology enabled Iran to “down 210 enemy aircraft,” while the body attributes language that Iran could “target around 210 enemy aircraft.”",
+      "translated_statement": null,
+      "originating_claimant": "Iranian military as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0605-P01",
+        "IR-CLM-0605",
+        "PROP-AIRCRAFT-210-METRIC-INTEGRITY-20260526"
+      ],
+      "evidence_source_ids": [
+        "SRC-DB900429D8BC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: MISLEADING — SAME ARTICLE SHIFTS FROM DOWN 210 TO TARGET AROUND 210. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "MISLEADING — SAME ARTICLE SHIFTS FROM DOWN 210 TO TARGET AROUND 210"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_PROP_IR_210_DOWNED_HEADLINE",
+      "claim_family_id": "CH-AIRCRAFT-KILL-AGGREGATES",
+      "source_id": "WOL-SRC-CLAIMANT-PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-05-26",
+      "first_observed_at": "2026-05-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Press TV's headline said Iran had downed about 210 enemy aircraft.",
+      "translated_statement": null,
+      "originating_claimant": "Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-PROP-IR-210-DOWNED-HEADLINE",
+        "PROP-IR-210-DOWNED-ASSERTION",
+        "PROP-IR-210-DOWNED-HEADLINE"
+      ],
+      "evidence_source_ids": [
+        "SRC-DB900429D8BC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: LIE — KNOWING FALSEHOOD ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "LIE — KNOWING FALSEHOOD ESTABLISHED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

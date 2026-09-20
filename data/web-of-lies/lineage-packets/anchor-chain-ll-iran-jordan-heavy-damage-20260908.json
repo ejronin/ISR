@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CHAIN_LL_IRAN_JORDAN_HEAVY_DAMAGE_20260908-20260920",
+  "claim_family_id": "CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=1; anchor_events=1; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRAN",
+      "display_name": "Iran",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-ED2A30FC7E01"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_LL_IRAN_JORDAN_HEAVY_DAMAGE_20260908",
+      "claim_family_id": "CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+      "source_id": "WOL-SRC-CLAIMANT-IRAN",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": null,
+      "first_observed_at": null,
+      "time_precision": null,
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran claimed its ballistic-missile attack caused heavy damage at the U.S.-used base near Al Azraq, Jordan.",
+      "translated_statement": null,
+      "originating_claimant": "Iran",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+        "LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+        "PROP-CC11571E5427"
+      ],
+      "evidence_source_ids": [
+        "SRC-ED2A30FC7E01"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE/CONTRADICTED EFFECT CLAIM — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE/CONTRADICTED EFFECT CLAIM — POSSIBLE KNOWLEDGE"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

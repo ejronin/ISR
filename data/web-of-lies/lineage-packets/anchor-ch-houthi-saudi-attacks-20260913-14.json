@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_HOUTHI_SAUDI_ATTACKS_20260913_14-20260920",
+  "claim_family_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=4; anchor_events=4; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-HOUTHI_MILITARY_SPOKESMAN_YAHYA_SAREE",
+      "display_name": "Houthi military spokesman Yahya Saree",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-C934F4D2622E",
+        "SRC-D07884490630"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-HOUTHIS",
+      "display_name": "Houthis",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-37DB944DD69E",
+        "SRC-E87EAB53958A"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_HOUTHI_KING_KHALID_AIRBASE_BDA_20260914_P01",
+      "claim_family_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+      "source_id": "WOL-SRC-CLAIMANT-HOUTHI_MILITARY_SPOKESMAN_YAHYA_SAREE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Dozens of missiles and drones targeted aircraft hangars, radar systems, runways and ammunition depots at King Khalid Air Base in Khamis Mushait.",
+      "translated_statement": null,
+      "originating_claimant": "Houthi military spokesman Yahya Saree",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914-P01",
+        "CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914",
+        "PROP-HOUTHI-KING-KHALID-ATTACK-ACTIVITY-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E",
+        "SRC-D07884490630"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED ATTACK ACTIVITY — TARGET EFFECTS SEPARATE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED ATTACK ACTIVITY — TARGET EFFECTS SEPARATE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_HOUTHI_KING_KHALID_AIRBASE_BDA_20260914_P02",
+      "claim_family_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+      "source_id": "WOL-SRC-CLAIMANT-HOUTHI_MILITARY_SPOKESMAN_YAHYA_SAREE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Dozens of missiles and drones targeted aircraft hangars, radar systems, runways and ammunition depots at King Khalid Air Base in Khamis Mushait.",
+      "translated_statement": null,
+      "originating_claimant": "Houthi military spokesman Yahya Saree",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914-P02",
+        "CLM-HOUTHI-KING-KHALID-AIRBASE-BDA-20260914",
+        "PROP-HOUTHI-KING-KHALID-SPECIFIC-BDA-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E",
+        "SRC-D07884490630"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED SPECIFIC BDA — ATTACK ACTIVITY ITSELF SUPPORTED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED SPECIFIC BDA — ATTACK ACTIVITY ITSELF SUPPORTED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_HOUTHI_SAUDI_ATTACKS_20260913PM_P01",
+      "claim_family_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+      "source_id": "WOL-SRC-CLAIMANT-HOUTHIS",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-13",
+      "first_observed_at": "2026-09-13",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Houthis claimed drones and missiles against Saudi targets including a military base while Saudi authorities issued shelter warnings in Abha and Khamis Mushait.",
+      "translated_statement": null,
+      "originating_claimant": "Houthis",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-SAUDI-ATTACKS-20260913PM-P01",
+        "CLM-HOUTHI-SAUDI-ATTACKS-20260913PM",
+        "PROP-HOUTHI-SAUDI-ATTACKS-20260913PM"
+      ],
+      "evidence_source_ids": [
+        "SRC-E87EAB53958A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED SPECIFIC BDA — WARNING/THREAT ACTIVITY SUPPORTED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED SPECIFIC BDA — WARNING/THREAT ACTIVITY SUPPORTED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_HOUTHI_SHARURAH_BASE_20260913_P01",
+      "claim_family_id": "CH-HOUTHI-SAUDI-ATTACKS-20260913-14",
+      "source_id": "WOL-SRC-CLAIMANT-HOUTHIS",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-13",
+      "first_observed_at": "2026-09-13",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Houthis claimed a strike on a Saudi military base in Sharurah.",
+      "translated_statement": null,
+      "originating_claimant": "Houthis",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-SHARURAH-BASE-20260913-P01",
+        "CLM-HOUTHI-SHARURAH-BASE-20260913",
+        "PROP-HOUTHI-SHARURAH-STRIKE-20260913"
+      ],
+      "evidence_source_ids": [
+        "SRC-37DB944DD69E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED — SPECIFIC SHARURAH STRIKE EFFECT NOT INDEPENDENTLY ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED — SPECIFIC SHARURAH STRIKE EFFECT NOT INDEPENDENTLY ESTABLISHED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

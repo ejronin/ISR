@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_TURKEY_MISSILE_DENIAL-20260920",
+  "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=6; anchor_events=6; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ABBAS_ARAQCHI_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Abbas Araqchi as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-733C755F8DC0"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ABBAS_ARAQCHI_AS_REPORTED_BY_TASNIM",
+      "display_name": "Abbas Araqchi as reported by Tasnim",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-D590DE3075A0"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ABBAS_ARAQCHI_IRANIAN_FOREIGN_MINISTER",
+      "display_name": "Abbas Araqchi, Iranian Foreign Minister",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-CC18DEA75017"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMED_FORCES_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Iranian Armed Forces as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-D86835557005"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_EMBASSY_IRANIAN_OFFICIAL_MESSAGING_AS_REPORTED_BY_PRESS_TV",
+      "display_name": "Iranian Embassy / Iranian official messaging as reported by Press TV",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-82DCB357724B"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0201_P01",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMED_FORCES_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-05",
+      "first_observed_at": "2026-03-05",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran said no Iranian missile had been fired toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Armed Forces as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0201-P01",
+        "IR-CLM-0201",
+        "PROP-A8AB0D27A983"
+      ],
+      "evidence_source_ids": [
+        "SRC-D86835557005"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: LIKELY LIE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "LIKELY LIE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0202_P01",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-CLAIMANT-ABBAS_ARAQCHI_IRANIAN_FOREIGN_MINISTER",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-10",
+      "first_observed_at": "2026-03-10",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Araqchi said no projectiles had been fired from Iran toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi, Iranian Foreign Minister",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0202-P01",
+        "IR-CLM-0202",
+        "PROP-BC8510763B27"
+      ],
+      "evidence_source_ids": [
+        "SRC-CC18DEA75017"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: VERY LIKELY LIE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "VERY LIKELY LIE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0203_P01",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_EMBASSY_IRANIAN_OFFICIAL_MESSAGING_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-13",
+      "first_observed_at": "2026-03-13",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran again dismissed reports that it launched missiles toward Turkey.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Embassy / Iranian official messaging as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0203-P01",
+        "IR-CLM-0203",
+        "PROP-5302BF967200"
+      ],
+      "evidence_source_ids": [
+        "SRC-82DCB357724B"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: VERY LIKELY LIE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "VERY LIKELY LIE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0204_P01",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-CLAIMANT-ABBAS_ARAQCHI_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-31",
+      "first_observed_at": "2026-03-31",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Araqchi said reports that Iran fired a missile toward Turkey were completely baseless and warned of repeated false-flag operations by enemies of regional peace and friendship.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0204-P01",
+        "IR-CLM-0204",
+        "PROP-D50A953E870F"
+      ],
+      "evidence_source_ids": [
+        "SRC-733C755F8DC0"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED — KNOWLEDGE INSUFFICIENT. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED — KNOWLEDGE INSUFFICIENT"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0204_P02",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-CLAIMANT-ABBAS_ARAQCHI_AS_REPORTED_BY_PRESS_TV",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-31",
+      "first_observed_at": "2026-03-31",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Araqchi said reports that Iran fired a missile toward Turkey were completely baseless and warned of repeated false-flag operations by enemies of regional peace and friendship.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi as reported by Press TV",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0204-P02",
+        "IR-CLM-0204",
+        "PROP-TURKEY-NARRATIVE-SUBSTITUTION-20260331"
+      ],
+      "evidence_source_ids": [
+        "SRC-733C755F8DC0"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED NARRATIVE SUBSTITUTION — FALSE-FLAG CAUSAL THEORY REMAINS UNSUBSTANTIATED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED NARRATIVE SUBSTITUTION — FALSE-FLAG CAUSAL THEORY REMAINS UNSUBSTANTIATED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0205_P01",
+      "claim_family_id": "CH-TURKEY-MISSILE-DENIAL",
+      "source_id": "WOL-SRC-CLAIMANT-ABBAS_ARAQCHI_AS_REPORTED_BY_TASNIM",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-04-01",
+      "first_observed_at": "2026-04-01",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Tasnim repeated Araqchi’s categorical denial of an Iranian missile launch toward Turkey and his warning that false-flag operations could recur.",
+      "translated_statement": null,
+      "originating_claimant": "Abbas Araqchi as reported by Tasnim",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0205-P01",
+        "IR-CLM-0205",
+        "PROP-3AC0E89C6437"
+      ],
+      "evidence_source_ids": [
+        "SRC-D590DE3075A0"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNSUBSTANTIATED — KNOWLEDGE INSUFFICIENT. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNSUBSTANTIATED — KNOWLEDGE INSUFFICIENT"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

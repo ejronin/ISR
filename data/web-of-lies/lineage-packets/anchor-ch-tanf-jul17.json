@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_TANF_JUL17-20260920",
+  "claim_family_id": "CH-TANF-JUL17",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=3; anchor_events=3; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ISLAMIC_REVOLUTIONARY_GUARD_CORPS_IRGC_AEROSPACE_FORCE",
+      "display_name": "Islamic Revolutionary Guard Corps / IRGC Aerospace Force",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-A52F28BE68C6"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_PROP_TANF_20260717_CURRENT_US_COMMAND",
+      "claim_family_id": "CH-TANF-JUL17",
+      "source_id": "WOL-SRC-CLAIMANT-ISLAMIC_REVOLUTIONARY_GUARD_CORPS_IRGC_AEROSPACE_FORCE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-17",
+      "first_observed_at": "2026-07-17",
+      "time_precision": "SOURCE_PUBLICATION_TIME",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The July 17 IRGC statement asserted a current special-operations command center at al-Tanf, destruction of radar and several special-operations helicopters, and a large number of American deaths.",
+      "translated_statement": null,
+      "originating_claimant": "Islamic Revolutionary Guard Corps / IRGC Aerospace Force",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-PROP-TANF-20260717-CURRENT-US-COMMAND",
+        "PROP-TANF-20260717-CURRENT-US-COMMAND",
+        "ROOK-TANF-20260717-STATEMENT"
+      ],
+      "evidence_source_ids": [
+        "SRC-A52F28BE68C6"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: LIKELY LIE — FALSE CURRENT U.S. COMMAND-CENTER CLAIM. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "LIKELY LIE — FALSE CURRENT U.S. COMMAND-CENTER CLAIM"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_PROP_TANF_20260717_LARGE_US_CASUALTIES",
+      "claim_family_id": "CH-TANF-JUL17",
+      "source_id": "WOL-SRC-CLAIMANT-ISLAMIC_REVOLUTIONARY_GUARD_CORPS_IRGC_AEROSPACE_FORCE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-17",
+      "first_observed_at": "2026-07-17",
+      "time_precision": "SOURCE_PUBLICATION_TIME",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The July 17 IRGC statement asserted a current special-operations command center at al-Tanf, destruction of radar and several special-operations helicopters, and a large number of American deaths.",
+      "translated_statement": null,
+      "originating_claimant": "Islamic Revolutionary Guard Corps / IRGC Aerospace Force",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-PROP-TANF-20260717-LARGE-US-CASUALTIES",
+        "PROP-TANF-20260717-LARGE-US-CASUALTIES",
+        "ROOK-TANF-20260717-STATEMENT"
+      ],
+      "evidence_source_ids": [
+        "SRC-A52F28BE68C6"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: VERY LIKELY LIE — FALSE MASS U.S. CASUALTY CLAIM. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "VERY LIKELY LIE — FALSE MASS U.S. CASUALTY CLAIM"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_PROP_TANF_20260717_RADAR_HELICOPTERS",
+      "claim_family_id": "CH-TANF-JUL17",
+      "source_id": "WOL-SRC-CLAIMANT-ISLAMIC_REVOLUTIONARY_GUARD_CORPS_IRGC_AEROSPACE_FORCE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-17",
+      "first_observed_at": "2026-07-17",
+      "time_precision": "SOURCE_PUBLICATION_TIME",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The July 17 IRGC statement asserted a current special-operations command center at al-Tanf, destruction of radar and several special-operations helicopters, and a large number of American deaths.",
+      "translated_statement": null,
+      "originating_claimant": "Islamic Revolutionary Guard Corps / IRGC Aerospace Force",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-PROP-TANF-20260717-RADAR-HELICOPTERS",
+        "PROP-TANF-20260717-RADAR-HELICOPTERS",
+        "ROOK-TANF-20260717-STATEMENT"
+      ],
+      "evidence_source_ids": [
+        "SRC-A52F28BE68C6"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: LIKELY LIE — FALSE RADAR / HELICOPTER DESTRUCTION CLAIM. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "LIKELY LIE — FALSE RADAR / HELICOPTER DESTRUCTION CLAIM"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CHAIN_CL_HORMUZ_CONTROL-20260920",
+  "claim_family_id": "CHAIN-CL-HORMUZ-CONTROL",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=1; anchor_events=1; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "display_name": "Originator identified in claim text / source",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-B3FFD2E97368"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_HORMUZ_CONTROL",
+      "claim_family_id": "CHAIN-CL-HORMUZ-CONTROL",
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-08-13 to 2026-08-16",
+      "first_observed_at": "2026-08-13 to 2026-08-16",
+      "time_precision": "DATE_OR_RANGE",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Both Tehran and Washington have used maximal language about control of the Strait.",
+      "translated_statement": null,
+      "originating_claimant": "Originator identified in claim text / source",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-HORMUZ-CONTROL",
+        "CL-HORMUZ-CONTROL",
+        "PROP-47224BC8D471"
+      ],
+      "evidence_source_ids": [
+        "SRC-B3FFD2E97368"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: MISLEADING BINARY FRAMING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "MISLEADING BINARY FRAMING"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

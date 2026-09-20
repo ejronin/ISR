@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_KUWAIT_F15_FRIENDLY_FIRE-20260920",
+  "claim_family_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=2; anchor_events=2; blocked_not_emitted=2. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-KHATAM_AL_ANBIYA_CENTRAL_HEADQUARTERS_AS_REPORTED_BY_TASNIM",
+      "display_name": "Khatam al-Anbiya Central Headquarters as reported by Tasnim",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-6C64F6A3D5B7"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-TASNIM_IRANIAN_MILITARY_REPORTING",
+      "display_name": "Tasnim / Iranian military reporting",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-FBB8378A0876"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0101_P02",
+      "claim_family_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "source_id": "WOL-SRC-CLAIMANT-TASNIM_IRANIAN_MILITARY_REPORTING",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-02",
+      "first_observed_at": "2026-03-02",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran claimed responsibility for downing a U.S. F-15 during the Kuwait fighting.",
+      "translated_statement": null,
+      "originating_claimant": "Tasnim / Iranian military reporting",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0101-P02",
+        "IR-CLM-0101",
+        "PROP-FA84404D8C75"
+      ],
+      "evidence_source_ids": [
+        "SRC-FBB8378A0876"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE — KNOWLEDGE NOT ASSESSED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE — KNOWLEDGE NOT ASSESSED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0102_P02",
+      "claim_family_id": "CH-KUWAIT-F15-FRIENDLY-FIRE",
+      "source_id": "WOL-SRC-CLAIMANT-KHATAM_AL_ANBIYA_CENTRAL_HEADQUARTERS_AS_REPORTED_BY_TASNIM",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-03-02",
+      "first_observed_at": "2026-03-02",
+      "time_precision": "SOURCE_DISPLAY_TIME_ONLY; TIMEZONE_NOT_EXPLICIT",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran claimed three U.S. F-15 fighter jets were downed by Iranian action.",
+      "translated_statement": null,
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters as reported by Tasnim",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0102-P02",
+        "IR-CLM-0102",
+        "PROP-DC2CB81A6BC6"
+      ],
+      "evidence_source_ids": [
+        "SRC-6C64F6A3D5B7"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE — KNOWLEDGE NOT ASSESSED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE — KNOWLEDGE NOT ASSESSED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

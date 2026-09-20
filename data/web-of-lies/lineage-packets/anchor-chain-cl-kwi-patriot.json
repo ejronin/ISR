@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CHAIN_CL_KWI_PATRIOT-20260920",
+  "claim_family_id": "CHAIN-CL-KWI-PATRIOT",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=2; anchor_events=2; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-KUWAITI_AUTHORITIES_INDEPENDENT_REPORTING",
+      "display_name": "Kuwaiti authorities / independent reporting",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-67995288F15E",
+        "SRC-AB8D1A29D6A5"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "display_name": "Originator identified in claim text / source",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-67995288F15E"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_KWI_PATRIOT",
+      "claim_family_id": "CHAIN-CL-KWI-PATRIOT",
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-06-03",
+      "first_observed_at": "2026-06-03",
+      "time_precision": "DATE_OR_RANGE",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "IRGC/Tasnim said Kuwait International Airport terminal damage was caused by a U.S. Patriot interceptor error.",
+      "translated_statement": null,
+      "originating_claimant": "Originator identified in claim text / source",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-KWI-PATRIOT",
+        "CL-KWI-PATRIOT",
+        "PROP-07B75A8454CD"
+      ],
+      "evidence_source_ids": [
+        "SRC-67995288F15E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: FALSE CAUSAL ATTRIBUTION — KNOWLEDGE NOT ESTABLISHED; NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "FALSE CAUSAL ATTRIBUTION — KNOWLEDGE NOT ESTABLISHED; NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_KWI_PATRIOT_EVENT_P01",
+      "claim_family_id": "CHAIN-CL-KWI-PATRIOT",
+      "source_id": "WOL-SRC-CLAIMANT-KUWAITI_AUTHORITIES_INDEPENDENT_REPORTING",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-06-03",
+      "first_observed_at": "2026-06-03",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Kuwait International Airport passenger-terminal damage occurred during the June 3 Iranian missile-and-drone attack.",
+      "translated_statement": null,
+      "originating_claimant": "Kuwaiti authorities / independent reporting",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-KWI-PATRIOT-EVENT-P01",
+        "CL-KWI-PATRIOT-CONTEXT",
+        "PROP-KWI-AIRPORT-DAMAGE-OCCURRENCE"
+      ],
+      "evidence_source_ids": [
+        "SRC-67995288F15E",
+        "SRC-AB8D1A29D6A5"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED PHYSICAL EVENT CONTEXT. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED PHYSICAL EVENT CONTEXT"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_SHAHED_CLONE_FALSE_FLAG_20260315-20260920",
+  "claim_family_id": "CH-SHAHED-CLONE-FALSE-FLAG-20260315",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=0; anchor_events=0; blocked_not_emitted=1. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [],
+  "information_events": [],
+  "relationships": [],
+  "promotion_flags": []
+}

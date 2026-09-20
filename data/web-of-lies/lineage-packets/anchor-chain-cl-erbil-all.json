@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CHAIN_CL_ERBIL_ALL-20260920",
+  "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=5; anchor_events=5; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_SPOKESPERSON_MOHAMMAD_AKRAMINIA",
+      "display_name": "Iranian Army spokesperson Mohammad Akraminia",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "display_name": "Originator identified in claim text / source",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_ERBIL_ALL",
+      "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+      "source_id": "WOL-SRC-CLAIMANT-ORIGINATOR_IDENTIFIED_IN_CLAIM_TEXT_SOURCE",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_OR_RANGE",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed.",
+      "translated_statement": null,
+      "originating_claimant": "Originator identified in claim text / source",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-ERBIL-ALL",
+        "CL-ERBIL-ALL",
+        "PROP-959FCD5312AE"
+      ],
+      "evidence_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: COMPOUND ERBIL CLAIM DECOMPOSED — SEE ATOMIC EFFECT/SCALE FINDINGS; NO PARENT LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "COMPOUND ERBIL CLAIM DECOMPOSED — SEE ATOMIC EFFECT/SCALE FINDINGS; NO PARENT LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_ERBIL_ALL_P01",
+      "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_SPOKESPERSON_MOHAMMAD_AKRAMINIA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed and described broad loss of operational capability.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army spokesperson Mohammad Akraminia",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-ERBIL-ALL-P01",
+        "CL-ERBIL-ALL",
+        "PROP-ERBIL-ATTACK-OCCURRENCE"
+      ],
+      "evidence_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED ATTACK-OCCURRENCE CONTEXT. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED ATTACK-OCCURRENCE CONTEXT"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_ERBIL_ALL_P02",
+      "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_SPOKESPERSON_MOHAMMAD_AKRAMINIA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed and described broad loss of operational capability.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army spokesperson Mohammad Akraminia",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-ERBIL-ALL-P02",
+        "CL-ERBIL-ALL",
+        "PROP-ERBIL-PHYSICAL-DAMAGE"
+      ],
+      "evidence_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: REAL DAMAGE CONTEXT — EXTENT NOT RECONCILED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "REAL DAMAGE CONTEXT — EXTENT NOT RECONCILED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_ERBIL_ALL_P03",
+      "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_SPOKESPERSON_MOHAMMAD_AKRAMINIA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed and described broad loss of operational capability.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army spokesperson Mohammad Akraminia",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-ERBIL-ALL-P03",
+        "CL-ERBIL-ALL",
+        "PROP-ERBIL-FUNCTIONAL-EFFECT"
+      ],
+      "evidence_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: MISLEADING FUNCTIONAL-EFFECT CLAIM — KNOWLEDGE INSUFFICIENT; NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "MISLEADING FUNCTIONAL-EFFECT CLAIM — KNOWLEDGE INSUFFICIENT; NO LIE FINDING"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CL_ERBIL_ALL_P04",
+      "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_ARMY_SPOKESPERSON_MOHAMMAD_AKRAMINIA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iranian Army spokesperson Mohammad Akraminia said almost all U.S. infrastructure in Erbil had been destroyed and described broad loss of operational capability.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian Army spokesperson Mohammad Akraminia",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-ERBIL-ALL-P04",
+        "CL-ERBIL-ALL",
+        "PROP-ERBIL-NEARLY-ALL-INFRASTRUCTURE"
+      ],
+      "evidence_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: MISLEADING NEAR-TOTAL-DESTRUCTION CLAIM — KNOWLEDGE INSUFFICIENT; NO LIE FINDING. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "MISLEADING NEAR-TOTAL-DESTRUCTION CLAIM — KNOWLEDGE INSUFFICIENT; NO LIE FINDING"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

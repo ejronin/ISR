@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_REZAEI_NO_TALKS_20260914-20260920",
+  "claim_family_id": "CH-REZAEI-NO-TALKS-20260914",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=1; anchor_events=1; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-MOHSEN_REZAEI",
+      "display_name": "Mohsen Rezaei",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_REZAEI_NO_TALKS_UNTIL_CONDITIONS_20260914_P01",
+      "claim_family_id": "CH-REZAEI-NO-TALKS-20260914",
+      "source_id": "WOL-SRC-CLAIMANT-MOHSEN_REZAEI",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "No talks until Iran's conditions are met.",
+      "translated_statement": null,
+      "originating_claimant": "Mohsen Rezaei",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-REZAEI-NO-TALKS-UNTIL-CONDITIONS-20260914-P01",
+        "CLM-REZAEI-NO-TALKS-UNTIL-CONDITIONS-20260914",
+        "PROP-REZAEI-NO-TALKS-POSITION-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED PUBLIC POSITION — NOT AN ACCUSATION/LIE CASE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED PUBLIC POSITION — NOT AN ACCUSATION/LIE CASE"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

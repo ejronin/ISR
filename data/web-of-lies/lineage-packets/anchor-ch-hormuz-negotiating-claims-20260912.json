@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_HORMUZ_NEGOTIATING_CLAIMS_20260912-20260920",
+  "claim_family_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=3; anchor_events=3; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRAN_PERSIAN_GULF_STRAIT_AUTHORITY",
+      "display_name": "Iran / Persian Gulf Strait Authority",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-C1DA87E35B40"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_SOURCE_CLOSE_TO_NEGOTIATING_TEAM_VIA_TASNIM",
+      "display_name": "Iranian source close to negotiating team via Tasnim",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-C6346AAFE053"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_SOURCE_VIA_TASNIM",
+      "display_name": "Iranian source via Tasnim",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-A509B2C7C077",
+        "SRC-C6346AAFE053"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRAN_SEVEN_CONDITIONS_20260912_P01",
+      "claim_family_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_SOURCE_CLOSE_TO_NEGOTIATING_TEAM_VIA_TASNIM",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-12",
+      "first_observed_at": "2026-09-12",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran transmitted seven conditions to the United States for reopening Hormuz, said to have top-leadership approval.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian source close to negotiating team via Tasnim",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRAN-SEVEN-CONDITIONS-20260912-P01",
+        "CLM-IRAN-SEVEN-CONDITIONS-20260912",
+        "PROP-IRAN-SEVEN-CONDITIONS-20260912"
+      ],
+      "evidence_source_ids": [
+        "SRC-C6346AAFE053"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED ACTOR-REPORTED NEGOTIATION CLAIM. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED ACTOR-REPORTED NEGOTIATION CLAIM"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRAN_SOVEREIGNTY_HORMUZ_20260912_P01",
+      "claim_family_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_SOURCE_VIA_TASNIM",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-12",
+      "first_observed_at": "2026-09-12",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "The Iran-Oman understanding is a step toward Iran exercising sovereignty over the Strait of Hormuz and does not itself reopen the strait.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian source via Tasnim",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRAN-SOVEREIGNTY-HORMUZ-20260912-P01",
+        "CLM-IRAN-SOVEREIGNTY-HORMUZ-20260912",
+        "PROP-IRAN-HORMUZ-SOVEREIGNTY-POSITION-20260912"
+      ],
+      "evidence_source_ids": [
+        "SRC-A509B2C7C077",
+        "SRC-C6346AAFE053"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED AS IRANIAN NEGOTIATING POSITION — NOT ESTABLISHED AS AGREED LEGAL STATUS. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED AS IRANIAN NEGOTIATING POSITION — NOT ESTABLISHED AS AGREED LEGAL STATUS"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_IRAN_STRAIT_AUTHORITY_77_VESSELS_20260914_P01",
+      "claim_family_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",
+      "source_id": "WOL-SRC-CLAIMANT-IRAN_PERSIAN_GULF_STRAIT_AUTHORITY",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Seventy-seven vessels violated Iranian Hormuz protocols and may face fines, detention or confiscation; insurers and maritime service providers should not service them.",
+      "translated_statement": null,
+      "originating_claimant": "Iran / Persian Gulf Strait Authority",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914-P01",
+        "CLM-IRAN-STRAIT-AUTHORITY-77-VESSELS-20260914",
+        "PROP-IRAN-77-VESSEL-AUTHORITY-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-C1DA87E35B40"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED AS IRANIAN REGULATORY CLAIM — EXTERNAL LEGAL RECOGNITION NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED AS IRANIAN REGULATORY CLAIM — EXTERNAL LEGAL RECOGNITION NOT ESTABLISHED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_SAUDI_PIPELINE_ATTRIBUTION_20260912-20260920",
+  "claim_family_id": "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=1; anchor_events=1; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-DONALD_TRUMP",
+      "display_name": "Donald Trump",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-22C142A8ADBB",
+        "SRC-EF89596BCB8A"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_TRUMP_IRAN_PROBABLE_PIPELINE_20260912_P01",
+      "claim_family_id": "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912",
+      "source_id": "WOL-SRC-CLAIMANT-DONALD_TRUMP",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-12",
+      "first_observed_at": "2026-09-12",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran was probably responsible for the Saudi East-West pipeline attack.",
+      "translated_statement": null,
+      "originating_claimant": "Donald Trump",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912-P01",
+        "CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912",
+        "PROP-TRUMP-IRAN-PIPELINE-ATTRIBUTION-20260912"
+      ],
+      "evidence_source_ids": [
+        "SRC-22C142A8ADBB",
+        "SRC-EF89596BCB8A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED HEDGED ATTRIBUTION — IRANIAN COMMAND NOT ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED HEDGED ATTRIBUTION — IRANIAN COMMAND NOT ESTABLISHED"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

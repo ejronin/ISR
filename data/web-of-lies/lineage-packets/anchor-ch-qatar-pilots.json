@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_QATAR_PILOTS-20260920",
+  "claim_family_id": "CH-QATAR-PILOTS",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=4; anchor_events=4; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_AUTHORITIES_TASNIM_REPORTING",
+      "display_name": "Iranian authorities / Tasnim reporting",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-09C0C5E902E2"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_OFFICIAL_BAGHERZADEH_AS_REPORTED_BY_REGIONAL_INTERNATIONAL_MEDIA",
+      "display_name": "Iranian official Bagherzadeh as reported by regional/international media",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0701_P01",
+      "claim_family_id": "CH-QATAR-PILOTS",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_OFFICIAL_BAGHERZADEH_AS_REPORTED_BY_REGIONAL_INTERNATIONAL_MEDIA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-08-15",
+      "first_observed_at": "2026-08-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran asserted that three missing Iranian pilots had been captured alive and were secretly held by Qatar.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian official Bagherzadeh as reported by regional/international media",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0701-P01",
+        "IR-CLM-0701",
+        "PROP-684F9CA51002"
+      ],
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: SUPPORTED — IRANIAN AIRCRAFT/AIRCREW LOSS OR MISSING STATUS ESTABLISHED. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "SUPPORTED — IRANIAN AIRCRAFT/AIRCREW LOSS OR MISSING STATUS ESTABLISHED"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0701_P02",
+      "claim_family_id": "CH-QATAR-PILOTS",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_OFFICIAL_BAGHERZADEH_AS_REPORTED_BY_REGIONAL_INTERNATIONAL_MEDIA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-08-15",
+      "first_observed_at": "2026-08-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran asserted that three missing Iranian pilots had been captured alive and were secretly held by Qatar.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian official Bagherzadeh as reported by regional/international media",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0701-P02",
+        "IR-CLM-0701",
+        "PROP-9E17FEA2B6F1"
+      ],
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: STRONGLY CONTRADICTED — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "STRONGLY CONTRADICTED — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0701_P03",
+      "claim_family_id": "CH-QATAR-PILOTS",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_OFFICIAL_BAGHERZADEH_AS_REPORTED_BY_REGIONAL_INTERNATIONAL_MEDIA",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-08-15",
+      "first_observed_at": "2026-08-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Iran asserted that three missing Iranian pilots had been captured alive and were secretly held by Qatar.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian official Bagherzadeh as reported by regional/international media",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0701-P03",
+        "IR-CLM-0701",
+        "PROP-20DF59C0BD8A"
+      ],
+      "evidence_source_ids": [
+        "SRC-083C057F9F6B"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: STRONGLY CONTRADICTED — POSSIBLE KNOWLEDGE. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "STRONGLY CONTRADICTED — POSSIBLE KNOWLEDGE"
+    },
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_IR_CLM_0702_P01",
+      "claim_family_id": "CH-QATAR-PILOTS",
+      "source_id": "WOL-SRC-CLAIMANT-IRANIAN_AUTHORITIES_TASNIM_REPORTING",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-08-16",
+      "first_observed_at": "2026-08-16",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "Qatari authorities had repeatedly delayed or obstructed clarification of the pilots' fate and had left an Iranian Air Force expert/fact-finding team waiting for months for permission to enter Qatar.",
+      "translated_statement": null,
+      "originating_claimant": "Iranian authorities / Tasnim reporting",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0702-P01",
+        "IR-CLM-0702",
+        "PROP-5D07B361555A"
+      ],
+      "evidence_source_ids": [
+        "SRC-09C0C5E902E2"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: LIKELY LIE — ACCESS-OBSTRUCTION CLAIM. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "LIKELY LIE — ACCESS-OBSTRUCTION CLAIM"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}

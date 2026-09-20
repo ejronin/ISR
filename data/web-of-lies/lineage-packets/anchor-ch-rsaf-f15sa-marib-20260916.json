@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-ANCHOR-CH_RSAF_F15SA_MARIB_20260916-20260920",
+  "claim_family_id": "CH-RSAF-F15SA-MARIB-20260916",
+  "as_of": "2026-09-20T18:45:00-04:00",
+  "basis_paths": [
+    "data/lie-ledger-v2-evidence-adjudications.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "CURRENT_CLAIMS_FORENSICS_CANONICAL_ANCHOR",
+  "notes": "Neutral current-ledger coverage anchor. public_ready=1; anchor_events=1; blocked_not_emitted=0. Anchor events are read-only Claims Forensics projections and never count as Hall incidents.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-CLAIMANT-ANSAR_ALLAH_HOUTHI_MILITARY_SPOKESMAN",
+      "display_name": "Ansar Allah / Houthi military spokesman",
+      "source_entity_type": "UNKNOWN",
+      "country_region": null,
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-1B0B49B3F85E"
+      ],
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-ANCHOR-CI_CLM_HOUTHI_F15SA_CAUSATION_20260916_P01",
+      "claim_family_id": "CH-RSAF-F15SA-MARIB-20260916",
+      "source_id": "WOL-SRC-CLAIMANT-ANSAR_ALLAH_HOUTHI_MILITARY_SPOKESMAN",
+      "event_type": "CANONICAL_CLAIM_ANCHOR",
+      "published_at": "2026-09-16",
+      "first_observed_at": "2026-09-16",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CANONICAL_ADJUDICATION",
+      "exact_statement": "A locally made surface-to-air missile caused the loss of the Saudi F-15SA over Marib.",
+      "translated_statement": null,
+      "originating_claimant": "Ansar Allah / Houthi military spokesman",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-F15SA-CAUSATION-20260916-P01",
+        "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+        "PROP-HOUTHI-F15SA-CAUSATION-20260916"
+      ],
+      "evidence_source_ids": [
+        "SRC-1B0B49B3F85E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "plain_english_verdict": "Claims Forensics records: UNRESOLVED — PHYSICAL LOSS DOES NOT ESTABLISH HOUTHI MISSILE CAUSATION. Web of Lies preserves that adjudication as a canonical anchor and does not infer a stronger source-behavior, knowledge, or deception finding.",
+      "canonical_combined_assessment": "UNRESOLVED — PHYSICAL LOSS DOES NOT ESTABLISH HOUTHI MISSILE CAUSATION"
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}
