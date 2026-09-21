@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-NAMED-LEAD-OSINTDEFENDER-F15E-20260921",
+  "claim_family_id": "CH-F15E-CSAR-URANIUM",
+  "as_of": "2026-09-21T18:10:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-f15e-csar-uranium.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Named-lead control packet. Preserves OSINTdefender's attributed April 3 reporting while explicitly preventing an attributed search/capture appeal from becoming a factual capture assertion or carrier misconduct finding.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-OSINTDEFENDER",
+      "display_name": "OSINTdefender",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-OSINTDEFENDER-BRAND",
+      "identity_confidence": "HIGH"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-NAMED-OSINTDEFENDER-F15E-APR3",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-OSINTDEFENDER",
+      "event_type": "REPORTS",
+      "published_at": "2026-04-03",
+      "first_observed_at": "2026-04-03",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "OSINTdefender reported that Iran's state-run Mehr News Agency was calling on civilians to help capture the pilot and weapons officer of an American F-15E that was allegedly shot down over southern Iran.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-IR-CLM-0004-P01",
+        "IR-CLM-0004",
+        "PROP-D510FB467018"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "collection_surface": "X",
+      "osint_event_kind": "ATTRIBUTED_SOCIAL_CARRIER_CONTROL",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-OSINTDEFENDER-F15E-APR3-X",
+          "surface": "X",
+          "url": "https://x.com/sentdefender/status/2040043244524888251",
+          "archive_url": null,
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "account_handle": "@sentdefender",
+          "display_name": "OSINTdefender",
+          "original_verified": true,
+          "text_excerpt": "Iran’s state-run Mehr News Agency calls on Iranian civilians to help capture the pilot and weapons officer ... allegedly shot down..."
+        }
+      ],
+      "plain_english_verdict": "This is attributed, qualified reporting about an active search for missing aircrew. It does not assert that either airman had actually been captured and earns no adverse behavior finding.",
+      "originating_claimant": "Mehr News Agency / Iranian public capture appeal",
+      "canonical_combined_assessment": "SUPPORTED CONTEXT — AIRMAN WAS MISSING/EVADING AT PUBLICATION TIME; CARRIER DID NOT ASSERT CAPTURE AS FACT",
+      "provenance_limit": "The post establishes OSINTdefender's public wording and attribution. It does not independently establish every detail in Mehr's underlying report."
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}
