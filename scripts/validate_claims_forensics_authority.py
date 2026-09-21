@@ -30,12 +30,12 @@ STRONG_KNOWLEDGE = {
 # Current accepted state must reconcile exactly. The validator independently
 # derives each denominator below before checking the accepted baseline.
 ACCEPTED = {
-    "chains": 50,
+    "chains": 53,
     "accusation_chains": 35,
-    "control_chains": 15,
-    "proposition_rows": 143,
+    "control_chains": 18,
+    "proposition_rows": 147,
     "unique_propositions": 68,
-    "claim_instances": 85,
+    "claim_instances": 89,
     "publication_blockers": 0,
 }
 
