@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-SHAHED-CLONE-FALSE-FLAG-20260315",
+  "claim_family_id": "CH-SHAHED-CLONE-FALSE-FLAG-20260315",
+  "as_of": "2026-09-21T09:34:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-shahed-clone-false-flag-20260315.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Official-military false-flag mechanism claim. The existence of a lookalike/clone does not establish its operational use in the cited incidents. Canonical disposition remains unsubstantiated; no Lie finding is created.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "display_name": "Khatam al-Anbiya Central Headquarters",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_outlet_profile_id": null,
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-88034182D581"
+      ]
+    },
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-7B62913B395D",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-88034182D581"
+      ]
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-SHAHED-CLONE-FALSE-FLAG-ORIGIN",
+      "claim_family_id": "CH-SHAHED-CLONE-FALSE-FLAG-20260315",
+      "source_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-15",
+      "first_observed_at": "2026-03-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Khatam al-Anbiya Central Headquarters said a U.S.-made Shahed-type clone, called Lucas, was being used in regional false-flag attacks to frame Iran.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-IR-CLM-1003-P01",
+        "IR-CLM-1003"
+      ],
+      "evidence_source_ids": [
+        "SRC-88034182D581"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV",
+        "WOL-SRC-TASNIM"
+      ],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-SHAHED-CLONE-PRESSTV-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/03/15/765383/US-made-copy-of-Shahed-drone-used-to-stage-false-flag-attacks-on-region-Iran-Armed-Forces",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Khatam al-Anbiya Central Headquarters"
+        },
+        {
+          "receipt_id": "WOL-RCPT-SHAHED-CLONE-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/15/3541317/enemies-using-copies-of-iranian-drone-to-attack-regional-countries-spokesman-warns",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Khatam al-Anbiya spokesperson Ebrahim Zolfaqari"
+        }
+      ],
+      "canonical_combined_assessment": "UNSUBSTANTIATED MECHANISM/CAUSATION CLAIM — NO LIE FINDING",
+      "plain_english_verdict": "The official statement is established as a statement. The claimed operational use of the clone in specific false-flag incidents remains unsubstantiated."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-SHAHED-CLONE-FALSE-FLAG-PRESSTV",
+      "claim_family_id": "CH-SHAHED-CLONE-FALSE-FLAG-20260315",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-15",
+      "first_observed_at": "2026-03-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Press TV carried the Khatam al-Anbiya claim that a U.S.-made Shahed clone was used for false-flag attacks.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-IR-CLM-1003-P01",
+        "IR-CLM-1003"
+      ],
+      "evidence_source_ids": [
+        "SRC-88034182D581"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-SHAHED-CLONE-PRESSTV-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/03/15/765383/US-made-copy-of-Shahed-drone-used-to-stage-false-flag-attacks-on-region-Iran-Armed-Forces",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Khatam al-Anbiya Central Headquarters"
+        }
+      ],
+      "plain_english_verdict": "Press TV is a carrier of the official assertion; carrying it is not independent proof of the mechanism."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-SHAHED-CLONE-FALSE-FLAG-TASNIM",
+      "claim_family_id": "CH-SHAHED-CLONE-FALSE-FLAG-20260315",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-15",
+      "first_observed_at": "2026-03-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim separately carried a Khatam al-Anbiya spokesperson's warning that copied Iranian drones were being used to frame Iran.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-IR-CLM-1003-P01",
+        "IR-CLM-1003"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-SHAHED-CLONE-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/15/3541317/enemies-using-copies-of-iranian-drone-to-attack-regional-countries-spokesman-warns",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Khatam al-Anbiya spokesperson Ebrahim Zolfaqari"
+        }
+      ],
+      "plain_english_verdict": "A second outlet repeating the same institutional claim is a second carrier, not independent corroboration of operational use."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-SHAHED-CLONE-FALSE-FLAG-01",
+      "from_id": "WOL-EVT-PUB-SHAHED-CLONE-FALSE-FLAG-PRESSTV",
+      "to_id": "WOL-EVT-PUB-SHAHED-CLONE-FALSE-FLAG-ORIGIN",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-SHAHED-CLONE-FALSE-FLAG-01",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/03/15/765383/US-made-copy-of-Shahed-drone-used-to-stage-false-flag-attacks-on-region-Iran-Armed-Forces",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-SHAHED-CLONE-FALSE-FLAG-02",
+      "from_id": "WOL-EVT-PUB-SHAHED-CLONE-FALSE-FLAG-TASNIM",
+      "to_id": "WOL-EVT-PUB-SHAHED-CLONE-FALSE-FLAG-ORIGIN",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-SHAHED-CLONE-FALSE-FLAG-02",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/15/3541317/enemies-using-copies-of-iranian-drone-to-attack-regional-countries-spokesman-warns",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
