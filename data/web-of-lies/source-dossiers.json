@@ -895,11 +895,15 @@
       "seed_urls": [
         "https://t.me/ethanlevins",
         "https://t.me/s/presstv?before=181173",
-        "https://t.me/s/News_Articles_Analysis?before=65363"
+        "https://t.me/s/News_Articles_Analysis?before=65363",
+        "https://x.com/EthanLevins2/status/2034295775451021339",
+        "https://x.com/EthanLevins2/status/2034668106052764069",
+        "https://en.royanews.tv/news/68480",
+        "https://en.idi.org.il/articles/63856"
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Public Telegram/X identity plus Press TV quotation/hosting relationship established. A March 22 damage/missile-stockpile quotation is routed separately as an upstream adjudication-review candidate; no control or agency inference follows from Press TV reuse."
+      "notes": "Public Telegram/X identity plus Press TV quotation/hosting relationship established. A bounded March 18–28 source-behavior review now records six distinct qualifying information events: Netanyahu-death speculation stated as fact, the F-35/F-15E misidentification, a recycled 2020 Sara Netanyahu video used as current-condition evidence, the two-missile/all-damage causal claim, scope mutation of Trump's energy-plant pause plus an unsupported invasion-motive attribution, and a population-wide 'lost public support' conclusion contradicted by representative polling. These incidents are counted at publication-event level, not per atomic proposition. The deterministic Bullshitter award must be derived, not manually assigned."
     },
     {
       "lead_id": "LEAD-IRAN-MILITARY-UPDATE",
@@ -1445,6 +1449,276 @@
       "downstream_note": "Separate September incident; outside the July-August earning cluster but relevant to current source behavior.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Existing canonical training family should atomize registration, training participation, soldier status and invasion framing separately."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-18",
+      "first_observed_at": "2026-03-18",
+      "statement_identity": "Levins stated that Benjamin Netanyahu died on March 8, using Yair Netanyahu's seven-day X posting gap as evidence of Shiva mourning.",
+      "source_information_event_id": "ETHAN-X-2034295775451021339",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-NETANYAHU-DEAD-X",
+          "surface": "X",
+          "url": "https://x.com/EthanLevins2/status/2034295775451021339",
+          "published_at": "2026-03-18",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Netanyahu died on March 8th. This is why Yair took an unusual 7 day break on X, for the Jewish Shiva mourning period."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-NETANYAHU-DEAD-NDTV",
+          "surface": "WEBSITE",
+          "url": "https://www.ndtvprofit.com/trending/netanyahu-died-on-viral-posts-and-comments-build-strange-proof-theory-online-about-israeli-pm-benjamin-netanyahu-039-s-death-11237929",
+          "published_at": "2026-03-19",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "NDTV preserved the Levins death claim and identified the circulating death narrative as false."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NETANYAHU-FOX-20260322",
+          "surface": "WEBSITE",
+          "url": "https://www.foxnews.com/video/6391384501112",
+          "published_at": "2026-03-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Netanyahu appeared on camera in a March 22 Fox News interview, directly falsifying the March 8 death claim."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Levins' preserved March 18 claim, contemporaneous reporting on the rumor, and Netanyahu's subsequent public on-camera appearance.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A seven-day posting gap by Netanyahu's son does not establish death or Shiva mourning. Netanyahu appeared publicly afterward.",
+        "search_notes": "The claim was stated as a factual death conclusion from circumstantial social-media behavior and was contradicted by later direct proof of life.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "WOL source-behavior finding; any canonical death-rumor family remains separate.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Preserve source behavior independently from any canonical rumor-chain adjudication."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-F35-HIT-20260319",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-19",
+      "first_observed_at": "2026-03-19",
+      "statement_identity": "Levins stated that an American F-35 had been hit by Iranian air defenses for the first time in history.",
+      "source_information_event_id": "ETHAN-X-2034668106052764069",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-F35-X",
+          "surface": "X",
+          "url": "https://x.com/EthanLevins2/status/2034668106052764069",
+          "published_at": "2026-03-19",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "For the first time in HISTORY, an American F-35 jet has been hit. Iranian air defenses are hitting our best jets."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-F35-MIRROR",
+          "surface": "WEBSITE",
+          "url": "https://site.twstalker.com/EthanLevins2/status/2034668106052764069",
+          "published_at": "2026-03-19",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Public mirror preserves the exact Levins F-35 wording."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-F15E-REUTERS-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/us-rescues-airman-whose-f-15-was-downed-iran-us-officials-say-2026-04-05",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters identified the downed aircraft as an F-15E."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-F15E-PRESSTV-CORRECTION-20260406",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.ir/Detail/2026/04/06/766419/how-iran-air-defences-turned-april3-blackest-day-us-military-aviation-history",
+          "published_at": "2026-04-06",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Iranian state media itself later corrected the aircraft identification from F-35 to F-15E."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Levins' preserved post plus Reuters and Iranian-source aircraft-identification reporting used by the canonical F-15E/CSAR chain.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The real loss was an F-15E. The F-35 identification was a misidentification later corrected even by Iranian state media.",
+        "search_notes": "A real U.S. aircraft loss was converted into a false aircraft-type claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Maps to the established F-15E/F-35 correction substrate without rewriting Claims Forensics.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Source-behavior repetition of an aircraft-type falsehood in the canonical F-15E chain."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-SARA-RECYCLED-VIDEO-20260321",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-21",
+      "first_observed_at": "2026-03-21",
+      "statement_identity": "Levins presented a 2020 video of Sara Netanyahu as if it reflected her current condition and used it to imply a recent drugged/depressed state.",
+      "source_information_event_id": "ETHAN-X-SARA-NETANYAHU-20260321",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-SARA-ROYA",
+          "surface": "WEBSITE",
+          "url": "https://en.royanews.tv/news/68480",
+          "published_at": "2026-03-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Roya preserved Levins' March 21 wording and traced the video to November 3, 2020; it found no evidence supporting the drug-use implication."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Preserved Levins wording and the underlying video's provenance/date as reconstructed by Roya News.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The video was from 2020, not a recent wartime event, and the visual did not establish drug use.",
+        "search_notes": "The scored behavior is the decontextualized presentation and current-condition inference, not the subjective word 'depressed' standing alone.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One recycled/decontextualized media event; it is not split into separate recency and drug-state counts.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Preserve the recycled-media/current-condition proposition if a canonical family is later created."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-TWO-MISSILES-20260322",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-22",
+      "first_observed_at": "2026-03-22",
+      "statement_identity": "Levins asserted that all same-day damage in Israel was caused by exactly two missiles and used that assertion to amplify a claim that Iran retained thousands more missiles.",
+      "source_information_event_id": "ETHAN-MARCH22-TWO-MISSILES",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-TWO-MISSILES-PRESSTV",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/presstv?before=181173",
+          "published_at": "2026-03-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Press TV preserved the attributed wording: all the damage today in Israel is because of 2 missiles; Iran has thousands more."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-TWO-MISSILES-NEWSARTICLES",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/News_Articles_Analysis?before=65363",
+          "published_at": "2026-03-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Independent public relay preserved the same attributed Levins wording."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "The two preserved attributed quotations plus public reporting on same-day strike damage and missile activity; search looked for site-by-site evidence tying all cited damage to exactly two impactors and for evidence connecting that observation to a ready remaining stockpile in the thousands.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "Visible damage is a factual substrate, but the preserved statement supplies no site-by-site attribution proving exactly two missiles caused all of it, and damage observations do not establish the size/readiness/composition of the remaining missile inventory.",
+        "search_notes": "WOL does not need to prove that a different exact missile count caused the damage; the positive two-missile/all-damage causal assertion lacks the required evidentiary bridge.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Same publication event as existing discovery WOL-DISC-ETHAN-LEVINS-TWO-MISSILES-ALL-DAMAGE-20260322; count once despite two propositions.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Claims Forensics can still atomize causation and stockpile propositions separately."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-27",
+      "first_observed_at": "2026-03-27",
+      "statement_identity": "Levins said Trump announced a 10-day ceasefire on civilian infrastructure, that Israel broke it within four hours, and that Israel was prolonging the war on purpose to force an American invasion.",
+      "source_information_event_id": "ETHAN-X-CIVILIAN-INFRASTRUCTURE-20260327",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-CEASEFIRE-MIRROR",
+          "surface": "WEBSITE",
+          "url": "https://search.yahoo.co.jp/realtime/search?btid=MTkzMzMxNTM5ODIxODQ5NDMwMQ%3D%3D&fr=rts_bzmod_ytop_pc&p=%E3%82%A4%E3%82%B9%E3%83%A9%E3%82%A8%E3%83%AB%E3%81%8C%E3%82%A4%E3%83%A9%E3%83%B3%E3%82%92%E6%94%BB%E6%92%83&rkf=1",
+          "published_at": "2026-03-27",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Yahoo real-time preservation reproduces Levins' exact ceasefire/motive wording."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-ENERGY-PAUSE-TOI-20260326",
+          "surface": "WEBSITE",
+          "url": "https://www.timesofisrael.com/liveblog-march-26-2026/",
+          "published_at": "2026-03-26",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump's quoted language paused the period of energy-plant destruction by 10 days; it did not announce a general ceasefire on civilian infrastructure."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Levins' preserved March 27 statement and contemporaneous reporting quoting Trump's exact March 26 language about the ten-day pause.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump's statement concerned a pause in destruction of Iranian energy plants, not a general civilian-infrastructure ceasefire. The source statement then added an intent claim that Israel acted to force a U.S. invasion without supplying evidence for that motive.",
+        "search_notes": "One information event contains a scope mutation plus an unsupported intent attribution; it counts once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not split the false scope expansion and motive attribution into two award incidents.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical treatment may atomize ceasefire scope and intent separately."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-ISRAEL-LOST-PUBLIC-SUPPORT-20260328",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-28",
+      "first_observed_at": "2026-03-28",
+      "statement_identity": "Levins used anti-war demonstrations to conclude that Israel had lost public support for the Iran war.",
+      "source_information_event_id": "ETHAN-X-LOST-PUBLIC-SUPPORT-20260328",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-PUBLIC-SUPPORT-ANNAHAR",
+          "surface": "WEBSITE",
+          "url": "https://www.annahar.com/international/israeli-issues/293501/%D8%A8%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D9%88%D8%A7%D9%84%D8%B5%D9%88%D8%B1---%D8%AA%D8%B8%D8%A7%D9%87%D8%B1%D8%A7%D8%AA-%D8%B6%D8%AF-%D8%A7%D9%84%D8%AD%D8%B1%D8%A8-%D9%81%D9%8A-%D8%A5%D8%B3%D8%B1%D8%A7%D8%A6%D9%8A%D9%84-%D8%A7%D8%B9%D8%AA%D9%82%D8%A7%D9%84%D8%A7%D8%AA-%D9%88%D8%AA%D9%81%D8%B1%D9%8A%D9%82-%D8%B9%D9%86%D9%8A%D9%81-%D9%84%D9%84%D9%85%D8%AA%D8%B8%D8%A7%D9%87%D8%B1%D9%8A%D9%86",
+          "published_at": "2026-03-28",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Annahar preserved the exact Levins post and noted anti-war demonstrations were limited while most Israeli public opinion still supported the war."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IDI-MARCH-2026-SUPPORT",
+          "surface": "WEBSITE",
+          "url": "https://en.idi.org.il/articles/63856",
+          "published_at": "2026-03-27",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Israel Democracy Institute reported 68% support in the total sample and over three-quarters support among Jewish respondents for continuing the operation; opposition among Jewish respondents was 11.5%."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Levins' preserved March 28 statement, contemporaneous protest reporting, and the Israel Democracy Institute's representative late-March survey.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The existence of anti-war demonstrations did not establish loss of public support. Contemporaneous representative polling still showed majority support for continuing the operation.",
+        "search_notes": "The protest substrate was real; the population-wide conclusion was contradicted by the contemporaneous survey.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "This finding is about the factual generalization from protests to aggregate public support, not a judgment about the merits of the war.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any broader public-opinion narrative family remains upstream."
     }
   ]
 }
