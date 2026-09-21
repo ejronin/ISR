@@ -860,6 +860,7 @@
         "factual_substrate",
         "inferential_bridges",
         "conclusions",
+        "presentation",
         "decomposition_note"
       ],
       "properties": {
@@ -993,6 +994,60 @@
         "decomposition_note": {
           "type": "string",
           "minLength": 1
+        },
+        "presentation": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "statement",
+              "surface",
+              "relation_to_body",
+              "review_status"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string",
+                "minLength": 1
+              },
+              "surface": {
+                "enum": [
+                  "TITLE",
+                  "THUMBNAIL",
+                  "CAPTION",
+                  "CHYRON",
+                  "TEASER",
+                  "DESCRIPTION",
+                  "OTHER"
+                ]
+              },
+              "relation_to_body": {
+                "enum": [
+                  "MATCHES_BODY",
+                  "OVERSTATES_BODY",
+                  "UNDERSTATES_BODY",
+                  "DIFFERS_FROM_BODY",
+                  "BODY_NOT_CAPTURED",
+                  "UNRESOLVED"
+                ]
+              },
+              "review_status": {
+                "enum": [
+                  "UPSTREAM_ADJUDICATED",
+                  "UPSTREAM_REVIEW_REQUIRED",
+                  "RHETORICAL_ONLY",
+                  "NOT_APPLICABLE"
+                ]
+              },
+              "evidence_note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
         }
       },
       "additionalProperties": true
