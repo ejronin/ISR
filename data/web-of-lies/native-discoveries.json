@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_NATIVE_DISCOVERY_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T19:05:00-04:00",
+  "as_of": "2026-09-21T20:05:00-04:00",
   "items": [
     {
       "discovery_id": "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
@@ -99,6 +99,99 @@
       "downstream_note": "If Claims Forensics creates a canonical claim family for a specific Handala wartime hack/leak assertion, preserve the distinction between the public claim, independently verified compromise, released-material authenticity, and downstream repetition. Do not treat the DOJ infrastructure attribution as automatic verification of every claimed operation.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "This is a public-source information-operation actor discovery with strong organizational attribution but no current canonical Lie Ledger family. It belongs outside lineage/Hall scoring until Claims Forensics assigns a claim family or determines that no public claim adjudication is warranted."
+    },
+    {
+      "discovery_id": "WOL-DISC-MEIDAS-HORMUZ-TRAFFIC-COMPLETELY-SHUT-20260717",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "MeidasTouch assertion that traffic through the Strait of Hormuz was completely shut down",
+      "observations": [
+        {
+          "date": "2026-07-17",
+          "source": "MeidasTouch Podcast",
+          "observation_type": "ABSOLUTE_SHIPPING_TRAFFIC_ASSERTION",
+          "statement_identity": "The July 17 podcast introduction said, 'We already see traffic from the Strait of Hormuz completely shut down.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-MEIDAS-HORMUZ-SHUT-HAPPYSCRIBE-20260717",
+          "surface": "PODCAST",
+          "url": "https://podcasts.happyscribe.com/the-meidastouch-podcast/26-bb118efb-38d9-48e3-a6a9-f52a88576410",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "TRANSCRIPT_PRESERVATION",
+          "published_at": "2026-07-17",
+          "attribution": "MeidasTouch Podcast",
+          "text_excerpt": "The opening transcript uses the absolute formulation 'traffic from the Strait of Hormuz completely shut down.'"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_TRANSCRIPT_WORDING",
+      "attribution_scope": "The wording is an absolute traffic proposition. It is distinct from severe traffic collapse, tanker avoidance, route restrictions, a closed 'southern route,' or Iranian control/permission claims.",
+      "downstream_note": "Claims Forensics should compare the assertion to vessel-crossing data for the exact July 17 window. Public shipping reporting in the same period documents sharply reduced but nonzero traffic, so 'completely shut down' requires separate adjudication rather than being treated as synonymous with effective disruption or control.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The current Hormuz control family addresses competing-control framing, not this exact zero-traffic proposition."
+    },
+    {
+      "discovery_id": "WOL-DISC-MEIDAS-MOST-US-BASES-SERIOUSLY-DESTROYED-20260507",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "MeidasTouch assertion that most U.S. bases in the Middle East were seriously destroyed by Iran",
+      "observations": [
+        {
+          "date": "2026-05-07",
+          "source": "MeidasTouch / Ben Meiselas",
+          "observation_type": "BROAD_MULTI_BASE_BDA_GENERALIZATION",
+          "statement_identity": "In a May 7 transcript, Ben Meiselas said that 'most of America's bases in the Middle East' were not merely damaged but 'seriously destroyed by Iran.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-MEIDAS-MOST-BASES-HAPPYSCRIBE-20260507",
+          "surface": "PODCAST",
+          "url": "https://podcasts.happyscribe.com/the-meidastouch-podcast/2026-89c08e51-f49b-4894-88b4-71b56532da28",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "TRANSCRIPT_PRESERVATION",
+          "published_at": "2026-05-07",
+          "attribution": "MeidasTouch / Ben Meiselas",
+          "text_excerpt": "Transcript at approximately 00:38:19 preserves the broad 'most ... bases' / 'seriously destroyed' assertion."
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_TRANSCRIPT_WORDING; ORIGINAL_AUDIO_ID_NOT_YET_ATTACHED",
+      "attribution_scope": "The transcript establishes the broad generalization. It does not identify which bases count in the denominator, whether 'base' means an installation or damaged subfacility, or what operational threshold 'seriously destroyed' denotes.",
+      "downstream_note": "Claims Forensics should atomize installation-level physical damage, subfacility destruction, operational impairment, and the quantifier 'most.' Real damage at multiple U.S. facilities does not by itself establish that most U.S. bases in the Middle East were seriously destroyed.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Current Atlas BDA families adjudicate named facilities and specific effect claims. This cross-facility quantified generalization is broader than any one current canonical atom."
+    },
+    {
+      "discovery_id": "WOL-DISC-MEIDAS-US-BASE-DAMAGE-COVERUP-20260507",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "MeidasTouch allegation that severe U.S. base damage was covered up",
+      "observations": [
+        {
+          "date": "2026-05-07",
+          "source": "MeidasTouch / Ben Meiselas",
+          "observation_type": "BDA_CONCEALMENT_ALLEGATION",
+          "statement_identity": "Immediately after the broad base-destruction assertion, Ben Meiselas said the severe destruction 'was all covered up' and that nobody was talking about it."
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-MEIDAS-BASE-COVERUP-HAPPYSCRIBE-20260507",
+          "surface": "PODCAST",
+          "url": "https://podcasts.happyscribe.com/the-meidastouch-podcast/2026-89c08e51-f49b-4894-88b4-71b56532da28",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "TRANSCRIPT_PRESERVATION",
+          "published_at": "2026-05-07",
+          "attribution": "MeidasTouch / Ben Meiselas",
+          "text_excerpt": "Transcript at approximately 00:38:19 preserves the phrase that the alleged destruction 'was all covered up.'"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_TRANSCRIPT_WORDING; CONCEALMENT EVIDENCE NOT ADJUDICATED HERE",
+      "attribution_scope": "This receipt proves the concealment allegation was made. It does not establish who allegedly concealed what information, whether information was classified/delayed rather than concealed, or the truth of the underlying broad destruction claim.",
+      "downstream_note": "Treat concealment as a separate proposition from physical damage. A facility can be damaged without a cover-up; a delayed or incomplete public BDA release is not automatically deliberate concealment. Claims Forensics must identify the alleged actor, information withheld, time window and contrary disclosure record before WOL can score this claim.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "No current canonical family cleanly adjudicates this May 7 broad concealment allegation."
     },
     {
       "discovery_id": "WOL-DISC-MEIDASTOUCH-MULTIPLE-US-BASES-DESTROYED-20260712",
