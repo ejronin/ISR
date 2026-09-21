@@ -5049,7 +5049,7 @@
       "source_proposition": "Iran has exported zero barrels thanks to our ironclad blockade.",
       "proposition": "Iran exported zero barrels of oil in the blockade-period context asserted by Cooper; the source does not define an exact start/end time or a narrower measurement denominator.",
       "proposition_axis": "EXACT_EXPORT_COUNT",
-      "proposition_fidelity": "SOURCE_EQUIVALENT_WITH_EXPLICIT_SCOPE_LIMIT",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
       "truth_adjudication": "UNRESOLVED",
       "truth_qualifier": "EXACT_ZERO_TIME_WINDOW_AND_MEASUREMENT_DENOMINATOR_UNDEFINED",
       "knowledge_judgment": "NOT_ASSESSABLE",
