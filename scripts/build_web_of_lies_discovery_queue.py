@@ -282,7 +282,10 @@ def build_queue(root: Path) -> dict[str, Any]:
         "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
         "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
         "source_handoff": HANDOFF,
-        "as_of": handoff.get("as_of"),
+        "as_of": max(
+            str(handoff.get("as_of") or ""),
+            str(native.get("as_of") or ""),
+        ) or None,
         "items": items,
         "resolved_existing_claim_sequences": resolved_existing,
         "resolved_canonical_claim_sequences": resolved_canonical,
