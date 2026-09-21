@@ -150,6 +150,83 @@
               "minLength": 1
             },
             "uniqueItems": true
+          },
+          "stable_identity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "identity_confidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "aliases": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "platform_accounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "account_id",
+                "platform"
+              ],
+              "properties": {
+                "account_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "platform": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "handle": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "display_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "account_state": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "first_seen_at": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "last_seen_at": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
           }
         },
         "additionalProperties": true
@@ -318,6 +395,80 @@
               "string",
               "null"
             ]
+          },
+          "public_receipts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/public_receipt"
+            }
+          },
+          "independence_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "assertion_kind": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "epistemic_posture_before": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "epistemic_posture_after": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "corrects_event_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "subject_event_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "supersedes_event_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "collection_surface": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "osint_event_kind": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "correction_opportunity": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": true
+          },
+          "monetization_context": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": true
           }
         },
         "additionalProperties": true
@@ -358,6 +509,12 @@
               "minLength": 1
             },
             "uniqueItems": true
+          },
+          "public_receipts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/public_receipt"
+            }
           }
         },
         "additionalProperties": true
@@ -407,5 +564,139 @@
       "minLength": 1
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "public_receipt": {
+      "type": "object",
+      "required": [
+        "receipt_id",
+        "surface",
+        "provenance_status"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "archive_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revision_id": {
+          "type": [
+            "string",
+            "integer",
+            "null"
+          ]
+        },
+        "diff_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "talk_section_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "account_handle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "display_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "published_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "captured_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deletion_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "claim_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "capture_hash_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "original_verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "text_excerpt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "media_identity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "upstream_attribution": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  }
 }
