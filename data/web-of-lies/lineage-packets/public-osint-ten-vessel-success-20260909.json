@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-TEN-VESSEL-20260909",
+  "claim_family_id": "CHAIN-LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+  "as_of": "2026-09-21T09:40:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-ll-iran-ten-vessel-success-20260909.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Trace of the Sep. 9 ten-vessel success claim. Independent reporting establishes multiple merchant-vessel incidents but not the exact ten-vessel set; U.S.-vessel damage is separately denied. Canonical PARTIALLY CORROBORATED / EXACT TEN UNRESOLVED — NO LIE FINDING remains unchanged.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-TEN-VESSEL-0909-IRGC",
+      "claim_family_id": "CHAIN-LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-09T09:37:00+03:30",
+      "first_observed_at": "2026-09-09T09:37:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "The IRGC Navy said it targeted two U.S. vessels and eight oil tankers and inflicted heavy damage on them.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Navy",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+        "LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+        "PROP-BA105D1F7BAA"
+      ],
+      "evidence_source_ids": [
+        "SRC-821796480B53",
+        "SRC-BDBE308F68E2"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-TEN-VESSEL-0909-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/09/3692391/two-us-vessels-8-tankers-targeted-in-strait-of-hormuz-irgc",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Navy",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "PARTIALLY CORROBORATED / EXACT TEN UNRESOLVED — NO LIE FINDING",
+      "plain_english_verdict": "The IRGC made the ten-vessel/heavy-damage claim. Multiple merchant incidents do not by themselves establish this exact set or the claimed U.S.-vessel damage."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-TEN-VESSEL-0909-TASNIM",
+      "claim_family_id": "CHAIN-LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-09T09:37:00+03:30",
+      "first_observed_at": "2026-09-09T09:37:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim carried the IRGC Navy two-U.S.-vessels/eight-tankers claim.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Navy",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+        "LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+        "PROP-BA105D1F7BAA"
+      ],
+      "evidence_source_ids": [
+        "SRC-821796480B53",
+        "SRC-BDBE308F68E2"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-TEN-VESSEL-0909-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/09/3692391/two-us-vessels-8-tankers-targeted-in-strait-of-hormuz-irgc",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC Navy"
+        }
+      ],
+      "plain_english_verdict": "Tasnim is a carrier of the same tally, not a second independent source confirming ten successful attacks."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-TEN-VESSEL-0909-REUTERS-CONTEXT",
+      "claim_family_id": "CHAIN-LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-09",
+      "first_observed_at": "2026-09-09",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "INDEPENDENT_CONTEXT",
+      "exact_statement": "Reuters reported multiple merchant-vessel incidents around Hormuz while the exact Iranian ten-vessel success set remained unestablished and U.S.-vessel damage was denied.",
+      "translated_statement": null,
+      "originating_claimant": "Reuters independent reporting / cited authorities",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+        "LL-IRAN-TEN-VESSEL-SUCCESS-20260909",
+        "PROP-BA105D1F7BAA"
+      ],
+      "evidence_source_ids": [
+        "SRC-BDBE308F68E2"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": true,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-TEN-VESSEL-0909-REUTERS-CONTEXT",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-attacks-us-base-jordan-ships-near-hormuz-after-tankers-sunk-2026-09-09/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "This independently reported context supports that real merchant incidents occurred, but it is intentionally not counted as independent corroboration of the exact ten-vessel proposition."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-TEN-VESSEL-0909-01",
+      "from_id": "WOL-EVT-PUB-TEN-VESSEL-0909-TASNIM",
+      "to_id": "WOL-EVT-PUB-TEN-VESSEL-0909-IRGC",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-821796480B53"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-TEN-VESSEL-0909-01",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/09/3692391/two-us-vessels-8-tankers-targeted-in-strait-of-hormuz-irgc",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Navy"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
