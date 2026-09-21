@@ -630,6 +630,21 @@ def build_registry(
             [dict(item) for item in (forensic.get("promotion_flags") or [])],
             key=lambda item: item["flag_id"],
         ),
+        "external_assessments": sorted(
+            [dict(item) for item in (forensic.get("external_assessments") or [])],
+            key=lambda item: item["assessment_id"],
+        ),
+        "infrastructure_observations": sorted(
+            [
+                dict(item)
+                for item in (forensic.get("infrastructure_observations") or [])
+            ],
+            key=lambda item: item["observation_id"],
+        ),
+        "research_leads": sorted(
+            [dict(item) for item in (forensic.get("research_leads") or [])],
+            key=lambda item: item["lead_id"],
+        ),
         "network_analysis": network_analysis,
         "corpus_coverage": corpus_coverage,
         "incremental_rebuild_contract": {
