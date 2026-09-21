@@ -663,7 +663,7 @@
               "window_days",
               "minimum_qualifying_incidents",
               "qualifying_incident_count",
-              "qualifying_event_ids",
+              "qualifying_incident_ids",
               "as_of",
               "public_verdict"
             ],
@@ -687,9 +687,6 @@
                 "type": "integer",
                 "minimum": 1
               },
-              "qualifying_event_ids": {
-                "$ref": "#/$defs/string_array"
-              },
               "as_of": {
                 "type": [
                   "string",
@@ -699,6 +696,9 @@
               "public_verdict": {
                 "type": "string",
                 "minLength": 1
+              },
+              "qualifying_incident_ids": {
+                "$ref": "#/$defs/string_array"
               }
             },
             "additionalProperties": false
