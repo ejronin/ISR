@@ -46,9 +46,11 @@ assert "seven-vessel attack count" in incidents[
 assert "severe depletion" in incidents[
     "WOL-BS-MEIDAS-OUT-PATRIOT-THAAD-OBLITERATED-BASES-20260802"
 ]["evidentiary_support_review"]["claimant_basis_note"]
-assert "class-specific" in incidents[
+meidas_all_weapons_basis = incidents[
     "WOL-BS-MEIDAS-RAN-OUT-ALL-WEAPONS-20260807"
 ]["evidentiary_support_review"]["claimant_basis_note"]
+assert "serious shortages in specified systems" in meidas_all_weapons_basis
+assert "not exhaustion of all U.S. weapons" in meidas_all_weapons_basis
 assert "Bahrain logistics hub" in incidents[
     "WOL-BS-MEIDAS-US-BASES-ARE-DESTROYED-20260815"
 ]["evidentiary_support_review"]["claimant_basis_note"]
