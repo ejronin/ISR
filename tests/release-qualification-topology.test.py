@@ -53,6 +53,7 @@ for token in (
     "python scripts/build_web_of_lies_discovery_queue.py --check",
     "python scripts/build_web_of_lies_baseline_packets.py --check",
     "python scripts/build_web_of_lies_sep20_reconciliation_packets.py --check",
+    "python scripts/build_web_of_lies_source_promotion_control_packets.py --check",
     "python scripts/build_web_of_lies_current_anchor_packets.py --check",
     "python scripts/build_web_of_lies_forensic_input.py --check",
     "python scripts/validate_web_of_lies.py",
