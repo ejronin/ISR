@@ -14,6 +14,7 @@ import build_web_of_lies_current_anchor_packets as anchors  # noqa: E402
 import build_web_of_lies_discovery_queue as discovery_builder  # noqa: E402
 import build_web_of_lies_forensic_input as aggregate  # noqa: E402
 import build_web_of_lies_sep20_reconciliation_packets as sep20  # noqa: E402
+import build_web_of_lies_source_promotion_control_packets as controls  # noqa: E402
 
 
 def load(path: str):
@@ -180,6 +181,16 @@ for path, packet in sep20_expected.items():
     assert json.loads(path.read_text(encoding="utf-8")) == packet
 assert len(sep20_expected) == 3
 assert len({packet["claim_family_id"] for packet in sep20_expected.values()}) == 3
+
+control_expected = controls.expected_packets(ROOT)
+for path, packet in control_expected.items():
+    assert path.is_file(), f"missing source-promotion control packet {path.relative_to(ROOT)}"
+    assert json.loads(path.read_text(encoding="utf-8")) == packet
+    assert packet["generation_mode"] == "CLAIMS_FORENSICS_SOURCE_PROMOTION_CONTROL_LINEAGE"
+    assert all(event["event_type"] == "REPORTS" for event in packet["information_events"])
+    assert all(event["behavior_findings"] == [] for event in packet["information_events"])
+assert len(control_expected) == 3
+assert len({packet["claim_family_id"] for packet in control_expected.values()}) == 3
 expected_packet_paths = {
     path.relative_to(ROOT).as_posix()
     for path in legacy_expected
@@ -189,6 +200,9 @@ expected_packet_paths = {
 } | {
     path.relative_to(ROOT).as_posix()
     for path in sep20_expected
+} | {
+    path.relative_to(ROOT).as_posix()
+    for path in control_expected
 } | manual_packet_paths
 forensic_packet_paths = {row["path"] for row in forensic["lineage_packets"]}
 assert forensic_packet_paths == expected_packet_paths, (
