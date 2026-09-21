@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_NATIVE_DISCOVERY_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T19:05:00-04:00",
+  "as_of": "2026-09-21T19:40:00-04:00",
   "items": [
     {
       "discovery_id": "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
@@ -48,6 +48,51 @@
       "downstream_note": "Treat malware compromise, victim-data collection, leak-site publication, and narrative amplification as separate graph events. Do not merge this discovery with Handala solely because both involve Iranian state-linked cyber activity and public leak sites.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "This is a current public information-operation/cyber-propagation discovery with no canonical Lie Ledger family. Claims Forensics should decide whether any specific public assertion or leak-derived narrative warrants a claim family before Web of Lies scores propagation or source behavior."
+    },
+    {
+      "discovery_id": "WOL-DISC-ETHAN-LEVINS-TWO-MISSILES-ALL-DAMAGE-20260322",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Ethan Levins assertion that all damage in Israel that day came from two missiles and that Iran had thousands more",
+      "observations": [
+        {
+          "date": "2026-03-22",
+          "source": "Ethan Levins as quoted by Press TV and secondary Telegram preservation",
+          "observation_type": "DAMAGE_CAUSATION_SCALE_ASSERTION",
+          "statement_identity": "The quoted statement said all the damage that day in Israel was caused by two missiles."
+        },
+        {
+          "date": "2026-03-22",
+          "source": "Ethan Levins as quoted by Press TV and secondary Telegram preservation",
+          "observation_type": "MISSILE_STOCKPILE_SCALE_ASSERTION",
+          "statement_identity": "The quoted statement added that Iran had thousands more missiles."
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-ETHAN-TWO-MISSILES-PRESSTV-20260322",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/presstv?before=181173",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "PRESS_TV_QUOTATION_OF_ETHAN_LEVINS",
+          "published_at": "2026-03-22",
+          "attribution": "Press TV quoting Ethan Levins"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-ETHAN-TWO-MISSILES-NEWSARTICLES-20260322",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/News_Articles_Analysis?before=65363",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "SECONDARY_REPOST_OF_ATTRIBUTED_QUOTE",
+          "published_at": "2026-03-22",
+          "attribution": "News & Articles quoting Ethan Levins"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_QUOTED_WORDING_AND_SPEAKER_ATTRIBUTION; ORIGINAL_ETHAN_POST_URL_NOT_RECOVERED",
+      "attribution_scope": "Two independent public Telegram preservations reproduce the same attributed wording. The original Ethan Levins post URL was not recovered in this tranche, so the discovery preserves quotation provenance rather than claiming an original-post receipt.",
+      "downstream_note": "Claims Forensics should atomize the damage-causation claim separately from the missile-stockpile claim. WOL must not treat Press TV's quotation as independent corroboration of either proposition, nor infer control/agency from Press TV reuse.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "No current canonical family cleanly adjudicates the combined March 22 proposition about all same-day Israeli damage coming from two missiles plus a remaining Iranian stockpile in the thousands."
     },
     {
       "discovery_id": "WOL-DISC-HANDALA-MOIS-20260319",
