@@ -1,0 +1,107 @@
+{
+  "entities": [],
+  "events": [],
+  "evidence_cutoff": "2026-09-20T12:28:00-04:00",
+  "known_at": "2026-09-20T20:22:00-04:00",
+  "narrative_claims": [],
+  "packet_id": "UPD-20260920-CLAIMS-SOURCE-PROMOTIONS",
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "attribution_mode": "SECONDARY_MEDIA_REPORT_OF_DIRECT_OFFICIAL_STATEMENT",
+      "authors": [
+        "Nasser Karimi",
+        "Cara Anna",
+        "Lee Keath"
+      ],
+      "claim_components": [
+        {
+          "component": "CURRENT_REGISTRATION_COUNT",
+          "wording": "over 600,000 people had registered to participate"
+        },
+        {
+          "component": "PROSPECTIVE_PROJECTION",
+          "wording": "over 1 million expected to take part in the training"
+        }
+      ],
+      "locker_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260919T0002ET-recovered.json",
+      "originating_claimant": "Gen. Hassan Hassanzadeh",
+      "originating_organization": "Islamic Revolutionary Guard Corps / Greater Tehran command",
+      "originating_role": "Tehran Guard chief",
+      "outlet": "Associated Press",
+      "provenance_note": "AP attributes both figures to Hassanzadeh speaking to the state broadcaster. The accepted AP article supplies a publication date but no defensible origin publication time in the recovered Evidence record; syndicated affiliate timestamps are not substituted.",
+      "publication_time": null,
+      "published_date": "2026-09-18",
+      "relevant_chain_ids": [
+        "CH-IRAN-MILITARY-TRAINING-20260918"
+      ],
+      "relevant_claim_ids": [
+        "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918"
+      ],
+      "relevant_excerpt": "over 600,000 people had registered to participate, with over 1 million expected to take part in the training.",
+      "source_id": "SRC-61A4DB945FF2",
+      "source_role": "CLAIM_ORIGIN_CARRIER|WIRE_REPORT_OF_IRANIAN_OFFICIAL_STATEMENT",
+      "title": "Hundreds of thousands attend Iran's biggest government-organized rally since the war began",
+      "upstream_carrier": "Iranian state broadcaster",
+      "url": "https://apnews.com/article/03488b5cc4c13ecac1a27096b1641972"
+    },
+    {
+      "attribution_mode": "INDIRECT_MEDIA_REPORT_OF_REZAEI_CLAIM",
+      "author": null,
+      "carrier_credit": "With inputs from ANI",
+      "claim_time": "2026-09-19",
+      "locker_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260920T0000ET-recovered.json",
+      "originating_claimant": "Mohsen Rezaei",
+      "originating_organization": "Supreme National Security Council",
+      "originating_role": "Secretary",
+      "outlet": "The New Indian Express",
+      "provenance_note": "The accepted carrier reports Rezaei's assertion but supplies no telemetry, imagery, U.S. acknowledgement, NOTAM/NAVWARN, weapon identification, or other independent confirmation.",
+      "publication_display_time": "02:03 (source display; timezone not stated)",
+      "published_date": "2026-09-20",
+      "relevant_chain_ids": [
+        "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919"
+      ],
+      "relevant_claim_ids": [
+        "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919"
+      ],
+      "relevant_excerpt": "He claimed Iran had also recently test-fired a multi-warhead anti-ship missile near a US vessel or aircraft carrier.",
+      "source_id": "SRC-C5D731879E3B",
+      "source_role": "CLAIM_ORIGIN_CARRIER|SECONDARY_REPORT_OF_IRANIAN_OFFICIAL_CLAIM",
+      "title": "Iran sets seven conditions for talks with US through Qatar, warns of 'decisive war' if Trump rejects demands",
+      "upstream_attribution_context": "The article situates Rezaei's remarks in Al Jazeera interview coverage; it does not provide a direct primary source URL for the missile-test assertion.",
+      "url": "https://www.newindianexpress.com/world/2026/Sep/20/iran-sets-seven-conditions-for-talks-with-us-through-qatar-warns-of-decisive-war-if-trump-rejects-demands"
+    },
+    {
+      "attribution_mode": "SECONDARY_MEDIA_REPORT_OF_PRIMARY_CENTCOM_STATEMENT",
+      "author": "Berk Kutay Gokmen",
+      "claim_time": "2026-09-19",
+      "denominator_scope": "Iranian oil exports as stated by Cooper; the quoted zero-barrels clause does not explicitly narrow the denominator to observed loadings, Strait departures, sanctioned trade, or another measurement method.",
+      "locker_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260920T0000ET-recovered.json",
+      "originating_claimant": "Adm. Brad Cooper",
+      "originating_organization": "U.S. Central Command",
+      "originating_role": "Commander",
+      "outlet": "Anadolu Agency",
+      "primary_statement_carrier": "U.S. Central Command video statement released on X",
+      "provenance_note": "The accepted locker source is Anadolu. It directly attributes the zero-barrels statement to Cooper/CENTCOM remarks released on X. This promotion preserves that carrier-to-origin relationship and does not invent an unretained CENTCOM/X URL or a more specific measurement window.",
+      "publication_time": null,
+      "published_date": "2026-09-19",
+      "quantitative_subject": "Iranian oil exports",
+      "quantitative_unit": "barrels",
+      "quantitative_value": 0,
+      "relevant_chain_ids": [
+        "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919"
+      ],
+      "relevant_claim_ids": [
+        "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919"
+      ],
+      "relevant_excerpt": "Iran has exported zero barrels thanks to our ironclad blockade.",
+      "source_id": "SRC-229640C43A50",
+      "source_role": "CLAIM_ORIGIN_CARRIER|NEWS_REPORT_OF_OFFICIAL_MILITARY_STATEMENT",
+      "time_scope": "Blockade-period context; the quoted zero-barrels clause does not state an exact start or end date.",
+      "title": "US military says over 1B barrels of oil shipped through Strait of Hormuz under US blockade",
+      "url": "https://www.aa.com.tr/en/americas/us-military-says-over-1b-barrels-of-oil-shipped-through-strait-of-hormuz-under-us-blockade/4062037"
+    }
+  ],
+  "status": "ACCEPTED",
+  "summary": "Promotes three accepted locker-only claim-origin carriers into canonical Evidence Integration sources for the held military-training registration/projection, Mohsen Rezaei multi-warhead anti-ship missile-test, and CENTCOM exact zero-Iranian-oil-export claims. Locker provenance is retained per source without re-consuming already accepted ROOK sweeps. No events, entities, narrative claims, truth findings, knowledge findings, or downstream source-behavior semantics are added or changed."
+}

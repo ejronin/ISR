@@ -197,6 +197,17 @@
       "previous_lineage_sha256": "aa4937af5baa36a9d4b1acc8a63511bac8d14180ee77be20828cbb2cc7b72ac3",
       "sequence": 18,
       "sha256": "b939441951f74691c546dbb82e3e00a49f69e8ac3b0d30f3abcad862fe990006"
+    },
+    {
+      "acceptance_basis": "PACKET_STATUS_ACCEPTED",
+      "evidence_cutoff": "2026-09-20T12:28:00-04:00",
+      "known_at": "2026-09-20T20:22:00-04:00",
+      "lineage_sha256": "507f68f015983a305ba3ce40369d874f0a76ba4a9eab151d89d07887283c5088",
+      "packet_id": "UPD-20260920-CLAIMS-SOURCE-PROMOTIONS",
+      "path": "data/canonical-updates/UPD-20260920-CLAIMS-SOURCE-PROMOTIONS.json",
+      "previous_lineage_sha256": "00edac46a3fcab8c5722bac01138551fd8701815825c05ac4ccffe93bd603c3b",
+      "sequence": 19,
+      "sha256": "89caf5934f0fe3a56db172eadeafd2bc2287124cb18d1a86b64c2ad061ad94ff"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",
