@@ -903,7 +903,7 @@ information event.
 A correction does not erase the fact that the qualifying incident occurred.
 Corrections remain separately credited in the behavioral record and Hall metrics.
 
-The award must carry the qualifying incident count and event IDs. The public
+The award must carry the qualifying incident count and qualifying incident IDs. Those IDs may identify canonical information events or WOL-native source-behavior incidents. The public
 verdict may say, plainly:
 
 > **Bullshitter — N qualifying bullshit incidents in the rolling 30-day window.**
@@ -911,6 +911,32 @@ verdict may say, plainly:
 This award is a source-behavior finding. It does not rewrite Claims Forensics'
 canonical truth/knowledge/deception adjudications and does not make every other
 statement by that source false.
+
+
+
+### WOL-native source-behavior incidents
+
+An unsupported assertion does not need to wait for canonical claim-family placement
+before WOL can preserve the **source behavior** that occurred. Source dossiers may
+therefore contain WOL-native source-behavior incidents with:
+
+- a stable incident ID and source ID;
+- the exact asserted factual proposition or evasion;
+- publication/observation time;
+- original public receipt(s);
+- the documented evidentiary-search scope and cutoff;
+- the claimant's stated basis and why it fails to support the assertion; and
+- a downstream Claims Forensics handoff when canonical truth adjudication remains
+  appropriate.
+
+The permitted native incident types are
+UNSUPPORTED_FACTUAL_ASSERTION, UNSUPPORTED_INFERENTIAL_ASSERTION, and
+EVIDENTIARY_EVASION.
+
+These are evidentiary-support/source-behavior findings, not silent canonical FALSE
+findings. They may feed the Bullshitter award because that award measures repeated
+bullshit behavior, not merely the subset of bullshit already assigned to a
+canonical Lie Ledger family.
 
 The operating principle is:
 
