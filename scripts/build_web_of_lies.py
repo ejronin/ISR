@@ -225,6 +225,7 @@ def validate_forensic_input(
     events = forensic.get("information_events") or []
     relationships = forensic.get("relationships") or []
     flags = forensic.get("promotion_flags") or []
+    source_behavior_incidents = forensic.get("source_behavior_incidents") or []
 
     allowed_classes = set(governance.get("source_behavior_classes") or [])
     allowed_authenticity = set(governance.get("authenticity_classes") or [])
@@ -308,6 +309,34 @@ def validate_forensic_input(
         if unsupported_revenue:
             raise ValueError(f"information event {event_id} has unsupported revenue findings: {sorted(unsupported_revenue)}")
         events_by_source[source_id].add(event_id)
+
+    incident_ids: set[str] = set()
+    for incident in source_behavior_incidents:
+        incident_id = str(incident.get("incident_id") or "").strip()
+        if not incident_id or incident_id in incident_ids:
+            raise ValueError(
+                f"duplicate or missing source behavior incident id: {incident_id!r}"
+            )
+        incident_ids.add(incident_id)
+        source_id = str(incident.get("source_id") or "").strip()
+        if source_id not in source_ids:
+            raise ValueError(
+                f"source behavior incident {incident_id} references unknown source profile {source_id}"
+            )
+        event_type = str(incident.get("event_type") or "")
+        if event_type not in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
+            raise ValueError(
+                f"source behavior incident {incident_id} has unsupported event type {event_type}"
+            )
+        if not unsupported_evidence_gate_satisfied(incident, governance):
+            raise ValueError(
+                f"source behavior incident {incident_id} lacks the documented "
+                "no-support evidentiary review required for WOL-native scoring"
+            )
+        if not list(incident.get("public_receipts") or []):
+            raise ValueError(
+                f"source behavior incident {incident_id} has no public receipts"
+            )
 
     relationship_ids: set[str] = set()
     graph_ids = event_ids | source_ids
@@ -637,7 +666,7 @@ def bullshit_award_for_events(
     for event in events:
         if not bullshit_qualifying_event(event, governance):
             continue
-        event_id = str(event.get("event_id") or "").strip()
+        event_id = str(event.get("event_id") or event.get("incident_id") or "").strip()
         if not event_id:
             continue
         # Cross-platform captures of one publication may share an explicit
@@ -654,9 +683,9 @@ def bullshit_award_for_events(
         return None
 
     qualifying_event_ids = sorted(
-        str(event.get("event_id") or "")
+        str(event.get("event_id") or event.get("incident_id") or "")
         for event in distinct.values()
-        if str(event.get("event_id") or "")
+        if str(event.get("event_id") or event.get("incident_id") or "")
     )
     label = str(cfg.get("public_label") or "Bullshitter")
     return {
@@ -726,6 +755,9 @@ def build_registry(
     validate_forensic_input(forensic, governance, family_ids, canonical_source_ids)
 
     information_events = [dict(item) for item in (forensic.get("information_events") or [])]
+    source_behavior_incidents = [
+        dict(item) for item in (forensic.get("source_behavior_incidents") or [])
+    ]
     relationships = [dict(item) for item in (forensic.get("relationships") or [])]
     families = derive_claim_families(canonical, information_events, relationships)
     profiles = source_profiles_with_metrics(forensic.get("source_profiles") or [], information_events)
@@ -740,9 +772,12 @@ def build_registry(
 
     all_time = ranking_view(profiles, information_events, supported_classes)
     recent_events = current_period_events(information_events, canonical, period_days)
+    recent_behavior_incidents = current_period_events(
+        source_behavior_incidents, canonical, period_days
+    )
     profiles = attach_source_awards(
         profiles,
-        recent_events,
+        recent_events + recent_behavior_incidents,
         governance,
         as_of=(canonical.get("release") or {}).get("current_osint_cutoff"),
     )
@@ -772,6 +807,9 @@ def build_registry(
         "claim_families": families,
         "source_profiles": profiles,
         "information_events": sorted(information_events, key=lambda item: item["event_id"]),
+        "source_behavior_incidents": sorted(
+            source_behavior_incidents, key=lambda item: item["incident_id"]
+        ),
         "relationships": sorted(relationships, key=lambda item: item["relationship_id"]),
         "promotion_flags": sorted(
             [dict(item) for item in (forensic.get("promotion_flags") or [])],
