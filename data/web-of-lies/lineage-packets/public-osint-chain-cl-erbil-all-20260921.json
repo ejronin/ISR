@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-CHAIN-CL-ERBIL-ALL-20260921",
+  "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+  "as_of": "2026-09-21T09:34:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-erbil-all.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Atomic decomposition is preserved: attack occurrence and some physical damage are not scored as false; the functional-effect and near-total-destruction propositions are canonically misleading with knowledge insufficient for a Lie finding.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-MOHAMMAD-AKRAMINIA",
+      "display_name": "Brig. Gen. Mohammad Reza Akraminia",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "stable_identity_id": "WOL-ID-MOHAMMAD-REZA-AKRAMINIA",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-IRNA",
+      "display_name": "Islamic Republic News Agency (IRNA)",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ]
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-ERBIL-ALL-AKRAMINIA-CONTEXT",
+      "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+      "source_id": "WOL-SRC-MOHAMMAD-AKRAMINIA",
+      "event_type": "REPORTS",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "Army spokesperson Mohammad Reza Akraminia said Iranian operations had caused serious damage to U.S. infrastructure in Erbil.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-CL-ERBIL-ALL",
+        "CL-ERBIL-ALL",
+        "PROP-959FCD5312AE",
+        "CI-CL-ERBIL-ALL-P01",
+        "PROP-ERBIL-ATTACK-OCCURRENCE",
+        "CI-CL-ERBIL-ALL-P02",
+        "PROP-ERBIL-PHYSICAL-DAMAGE"
+      ],
+      "evidence_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Iranian Army spokesperson Mohammad Reza Akraminia",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-IRNA"
+      ],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ERBIL-ALL-IRNA-CONTEXT",
+          "surface": "WEBSITE",
+          "url": "https://en.irna.ir/news/86219451/Nearly-all-US-infrastructure-in-Erbil-destroyed-Iran-s-Army",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Mohammad Reza Akraminia"
+        }
+      ],
+      "canonical_combined_assessment": "SUPPORTED ATTACK-OCCURRENCE CONTEXT / REAL DAMAGE CONTEXT — EXTENT NOT RECONCILED",
+      "plain_english_verdict": "The attack/damage context is not collapsed into the later misleading scale/effect finding."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-ERBIL-ALL-AKRAMINIA-SCALE",
+      "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+      "source_id": "WOL-SRC-MOHAMMAD-AKRAMINIA",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "Akraminia said nearly all U.S. infrastructure in Erbil had been destroyed and that hostile groups there had effectively lost operational capability.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-CL-ERBIL-ALL-P03",
+        "CL-ERBIL-ALL",
+        "PROP-ERBIL-FUNCTIONAL-EFFECT",
+        "CI-CL-ERBIL-ALL-P04",
+        "PROP-ERBIL-NEARLY-ALL-INFRASTRUCTURE"
+      ],
+      "evidence_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Iranian Army spokesperson Mohammad Reza Akraminia",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-IRNA"
+      ],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ERBIL-ALL-IRNA-SCALE",
+          "surface": "WEBSITE",
+          "url": "https://en.irna.ir/news/86219451/Nearly-all-US-infrastructure-in-Erbil-destroyed-Iran-s-Army",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Mohammad Reza Akraminia"
+        },
+        {
+          "receipt_id": "WOL-RCPT-ERBIL-ALL-SHAFAQ-SCALE",
+          "surface": "WEBSITE",
+          "url": "https://shafaq.com/en/Kurdistan/Iran-US-infrastructure-in-Erbil-destroyed",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Mohammad Reza Akraminia"
+        }
+      ],
+      "canonical_combined_assessment": "MISLEADING FUNCTIONAL-EFFECT / NEAR-TOTAL-DESTRUCTION CLAIM — KNOWLEDGE INSUFFICIENT; NO LIE FINDING",
+      "plain_english_verdict": "Claims Forensics treats the near-total destruction and functional-effect scale as misleading. Web of Lies records that adverse proposition without converting insufficient knowledge into a Lie finding."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-ERBIL-ALL-IRNA",
+      "claim_family_id": "CHAIN-CL-ERBIL-ALL",
+      "source_id": "WOL-SRC-IRNA",
+      "event_type": "REPORTS",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "IRNA carried Akraminia's Erbil damage, operational-effect and near-total-destruction claims.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-CL-ERBIL-ALL",
+        "CL-ERBIL-ALL",
+        "PROP-959FCD5312AE",
+        "CI-CL-ERBIL-ALL-P01",
+        "PROP-ERBIL-ATTACK-OCCURRENCE",
+        "CI-CL-ERBIL-ALL-P02",
+        "PROP-ERBIL-PHYSICAL-DAMAGE",
+        "CI-CL-ERBIL-ALL-P03",
+        "PROP-ERBIL-FUNCTIONAL-EFFECT",
+        "CI-CL-ERBIL-ALL-P04",
+        "PROP-ERBIL-NEARLY-ALL-INFRASTRUCTURE"
+      ],
+      "evidence_source_ids": [
+        "SRC-F73E1BECC1A9"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Mohammad Reza Akraminia",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ERBIL-ALL-IRNA-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://en.irna.ir/news/86219451/Nearly-all-US-infrastructure-in-Erbil-destroyed-Iran-s-Army",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Mohammad Reza Akraminia"
+        }
+      ],
+      "plain_english_verdict": "IRNA is the carrier; accurate attribution does not make it an independent BDA source."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-ERBIL-ALL-01",
+      "from_id": "WOL-EVT-PUB-ERBIL-ALL-IRNA",
+      "to_id": "WOL-EVT-PUB-ERBIL-ALL-AKRAMINIA-CONTEXT",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-ERBIL-ALL-01",
+          "surface": "WEBSITE",
+          "url": "https://en.irna.ir/news/86219451/Nearly-all-US-infrastructure-in-Erbil-destroyed-Iran-s-Army",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-ERBIL-ALL-02",
+      "from_id": "WOL-EVT-PUB-ERBIL-ALL-IRNA",
+      "to_id": "WOL-EVT-PUB-ERBIL-ALL-AKRAMINIA-SCALE",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-ERBIL-ALL-02",
+          "surface": "WEBSITE",
+          "url": "https://en.irna.ir/news/86219451/Nearly-all-US-infrastructure-in-Erbil-destroyed-Iran-s-Army",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
