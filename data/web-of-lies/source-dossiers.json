@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T19:10:00-04:00",
+  "as_of": "2026-09-21T19:35:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -219,7 +219,8 @@
           "display_name": "Jolly Good Ginger",
           "account_state": "USER_SUPPLIED_PUBLIC_SEED"
         }
-      ]
+      ],
+      "identity_context": "Public reporting and Jolly Good Ginger's publication presence identify the creator as Russell Ellis. Identity resolution does not imply any behavior finding."
     },
     {
       "source_id": "WOL-SRC-KIM-JONG-UN-PARODY",
@@ -260,7 +261,8 @@
       "aliases": [
         "Lim Tean"
       ],
-      "platform_accounts": []
+      "platform_accounts": [],
+      "identity_context": "Public political/commentary identity confirmed. Sampled July Hormuz transit figures were cross-checked against independent maritime reporting and did not produce an adverse WOL finding."
     },
     {
       "source_id": "WOL-SRC-MEIDASTOUCH",
@@ -560,22 +562,24 @@
     },
     {
       "source_id": "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
-      "display_name": "Zach for the People",
-      "source_entity_type": "ACCOUNT",
+      "display_name": "Zach Metzger / Zach for the People",
+      "source_entity_type": "PERSON",
       "country_region": null,
       "primary_platform": "Facebook",
       "behavior_classes": [
         "UNKNOWN"
       ],
-      "authenticity_class": "UNKNOWN",
+      "authenticity_class": "HUMAN_ACCOUNT",
       "revenue_model": [
         "UNKNOWN_REVENUE_MODEL"
       ],
       "classification_basis_event_ids": [],
       "revenue_basis_event_ids": [],
-      "stable_identity_id": "WOL-ID-ZACH-FOR-THE-PEOPLE-UNRESOLVED",
-      "identity_confidence": "UNRESOLVED",
+      "stable_identity_id": "WOL-ID-ZACH-METZGER-ZACH-FOR-THE-PEOPLE",
+      "identity_confidence": "HIGH",
       "aliases": [
+        "@zachforthepeople",
+        "Zach Metzger",
         "Zach for the People"
       ],
       "platform_accounts": [
@@ -588,7 +592,7 @@
           "account_state": "USER_SUPPLIED_PUBLIC_SEED"
         }
       ],
-      "identity_context": "Account preserved without guessing a real-world identity."
+      "identity_context": "FOX 9 publicly identified the exact @zachforthepeople handle as Zach Metzger in reporting on footage he recorded in Minneapolis. This resolves the public account identity; it does not establish any Iran-war claim activity."
     }
   ],
   "source_relationships": [
@@ -883,48 +887,57 @@
       ],
       "current_disposition": "IDENTITY_UNRESOLVED",
       "identity_status": "IDENTITY_UNRESOLVED",
-      "notes": "Exact Facebook account preserved; no reliable public real-world identity resolution or claim incident yet."
+      "notes": "Exact Facebook account is preserved. Public indexing/search did not produce a reliable real-world identity resolution or a reproducible Iran-war claim receipt in the reviewed corpus, so the lead remains IDENTITY_UNRESOLVED rather than guessed."
     },
     {
       "lead_id": "LEAD-ETHAN-LEVINS",
       "display_name": "Ethan Levins",
       "seed_urls": [
-        "https://t.me/ethanlevins"
+        "https://t.me/ethanlevins",
+        "https://t.me/s/presstv?before=181173",
+        "https://t.me/s/News_Articles_Analysis?before=65363"
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
-      "identity_status": "PUBLIC_IDENTITY_PARTIALLY_RESOLVED",
-      "notes": "Public Telegram plus Press TV quotation/hosting relationship established; no control or agency inference."
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "Public Telegram/X identity plus Press TV quotation/hosting relationship established. A March 22 damage/missile-stockpile quotation is routed separately as an upstream adjudication-review candidate; no control or agency inference follows from Press TV reuse."
     },
     {
       "lead_id": "LEAD-IRAN-MILITARY-UPDATE",
       "display_name": "Iran Military Update",
       "seed_urls": [
-        "https://www.facebook.com/profile.php?id=61586393397492"
+        "https://www.facebook.com/profile.php?id=61586393397492",
+        "https://x.com/_IranMilitary_",
+        "https://www.timesofisrael.com/us-iran-exchange-strikes-amid-fragile-ceasefire-as-negotiations-to-end-war-stall/"
       ],
       "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
-      "identity_status": "SEED_ACCOUNT_ONLY",
-      "notes": "Public amplification account and X identity resolved; operator remains unknown and no adverse claim incident is assigned yet."
+      "identity_status": "CROSS_PLATFORM_ACCOUNT_RESOLVED_OPERATOR_UNKNOWN",
+      "notes": "Facebook seed and public X identity @_IranMilitary_ resolve to the same account brand. Indexed June war coverage preserves declaratory/amplification messaging, but the reviewed sample does not establish a claim-level adverse incident. Real-world operator remains unknown."
     },
     {
       "lead_id": "LEAD-JOLLY-GOOD-GINGER",
       "display_name": "Jolly Good Ginger",
       "seed_urls": [
         "https://www.facebook.com/profile.php?id=61574087741420",
-        "https://substack.com/@jollygoodginger"
+        "https://substack.com/@jollygoodginger",
+        "https://www.defiance.news/p/the-war-trump-cant-explain-with-jolly",
+        "https://www.aljazeera.com/news/2026/8/6/how-abdul-el-sayeds-extraordinary-win-stunned-pro-israel-establishment"
       ],
       "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
-      "identity_status": "PARTIALLY_RESOLVED_PUBLIC_IDENTITY",
-      "notes": "Iran-war commentary and Substack activity found, but no specific canonical Atlas misinformation incident established in this tranche."
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "Public identity resolves to Russell Ellis / Jolly Good Ginger. Iran-war commentary was found, including a March 2 DEFIANCE appearance, but the reviewed public material did not establish a specific canonical Atlas misinformation incident. Keep as LIMITED_RELEVANT_ACTIVITY unless later claim-first research produces an incident."
     },
     {
       "lead_id": "LEAD-LIM-TEAN",
       "display_name": "Lim Tean",
       "seed_urls": [
-        "https://en.wikipedia.org/wiki/Lim_Tean"
+        "https://en.wikipedia.org/wiki/Lim_Tean",
+        "https://asiapacificreport.nz/2026/07/20/lim-tean-you-cannot-bomb-a-strait-open-hormuz-chabahar-and-the-coming-battle-for-bab-el-mandeb/",
+        "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/071326-traffic-via-strait-of-hormuz-falls-to-11-ships-july-12-after-us-iran-attacks",
+        "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/"
       ],
       "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Hormuz commentary found; current sample is commentary/inference and not yet an adverse Atlas incident."
+      "notes": "Hormuz commentary is materially relevant, but sampled July shipping assertions were consistent with independent S&P Global/Reuters/Kpler reporting: roughly 130 prewar daily transits, 11 ships on July 12, and later three commodity crossings during renewed escalation. No adverse WOL incident is assigned from that sample."
     },
     {
       "lead_id": "LEAD-MEIDASTOUCH",
@@ -977,11 +990,12 @@
       "lead_id": "LEAD-ZACH-FOR-THE-PEOPLE",
       "display_name": "Zach for the People",
       "seed_urls": [
-        "https://www.facebook.com/zachforthepeople"
+        "https://www.facebook.com/zachforthepeople",
+        "https://www.fox9.com/news/stabbing-at-palestinian-support-rally-near-loring-park"
       ],
-      "current_disposition": "IDENTITY_UNRESOLVED",
-      "identity_status": "IDENTITY_UNRESOLVED",
-      "notes": "Exact Facebook account preserved; no reliable public real-world identity resolution or claim incident yet."
+      "current_disposition": "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND",
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "The exact public handle @zachforthepeople was identified by FOX 9 in 2023 as Zach Metzger, resolving the account identity. Current public searches did not surface material 2026 Iran-war claim activity tied to this handle; absence is bounded to the reviewed public corpus."
     }
   ]
 }
