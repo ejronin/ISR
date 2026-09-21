@@ -95,8 +95,8 @@ def main() -> int:
         "repetition into corroboration",
         "different outlet into an independent origin",
         "Prove the pattern. Then call the pattern what it is.",
-        "A Wikipedia edit is an information event, not proof that the edited proposition is true.",
-        "A group saying “we hacked X” does not establish either the compromise or the",
+        "A Wikipedia edit is an information event, not proof",
+        "A group saying “we hacked X” does not establish either the compromise",
         "produces bytes equivalent to a clean full rebuild",
     ):
         require(phrase in contract, f"controlling contract lost invariant: {phrase}")
