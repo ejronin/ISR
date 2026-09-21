@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-CHAIN-CL-KWI-PATRIOT-20260921",
+  "claim_family_id": "CHAIN-CL-KWI-PATRIOT",
+  "as_of": "2026-09-21T09:00:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-kwi-patriot.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Traces the IRGC Patriot-causation claim plus a fixed Wikipedia article revision and its June 4 Talk-page edit request. The Talk discussion is recorded as transparent editorial provenance, not manipulation or misconduct.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-HOSSEIN-MOHEBBI",
+      "display_name": "Hossein Mohebbi",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-HOSSEIN-MOHEBBI",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-WIKIPEDIA-KUWAIT",
+      "display_name": "Wikipedia — Kuwait in the 2026 Iran war",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": "Wikipedia",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WIKIPEDIA-ARTICLE-KUWAIT-2026-IRAN-WAR",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-WIKIPEDIA-TALK-KUWAIT",
+      "display_name": "Wikipedia Talk — Kuwait in the 2026 Iran war",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": "Wikipedia",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WIKIPEDIA-TALK-KUWAIT-2026-IRAN-WAR",
+      "identity_confidence": "CONFIRMED"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-KWI-PATRIOT-MOHEBBI",
+      "claim_family_id": "CHAIN-CL-KWI-PATRIOT",
+      "source_id": "WOL-SRC-HOSSEIN-MOHEBBI",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-06-03",
+      "first_observed_at": "2026-06-03",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "IRGC spokesman Hossein Mohebbi said the passenger-terminal damage at Kuwait International Airport was caused by a malfunctioning U.S.-made Patriot interceptor rather than an IRGC strike.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-KWI-PATRIOT",
+        "CL-KWI-PATRIOT",
+        "PROP-07B75A8454CD"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-KWI-PATRIOT-AA",
+          "surface": "WEBSITE",
+          "url": "https://www.aa.com.tr/en/middle-east/iran-says-damage-at-kuwait-airport-terminal-caused-by-us-patriot-missile-malfunction/3955764",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRIB / Hossein Mohebbi",
+          "original_verified": true
+        },
+        {
+          "receipt_id": "WOL-RCPT-KWI-PATRIOT-ALJAZEERA",
+          "surface": "WEBSITE",
+          "url": "https://www.aljazeera.com/news/2026/6/3/iranian-drone-hits-kuwaits-main-airport-after-us-strikes-qeshm-island",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRIB / Hossein Mohebbi",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "Claims Forensics records the Patriot causation as false; this event attributes the proposition to the IRGC spokesman without converting downstream reporting into independent corroboration."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-KWI-PATRIOT-WIKIPEDIA",
+      "claim_family_id": "CHAIN-CL-KWI-PATRIOT",
+      "source_id": "WOL-SRC-WIKIPEDIA-KUWAIT",
+      "event_type": "REPORTS",
+      "published_at": "2026-08-25T03:26:00Z",
+      "first_observed_at": "2026-09-21",
+      "time_precision": "REVISION_TIMESTAMP",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Wikipedia revision 1371192876 records the IRGC Patriot-malfunction denial while also stating that KUNA footage showed a Shahed-136 striking the airport.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-KWI-PATRIOT",
+        "CL-KWI-PATRIOT",
+        "PROP-07B75A8454CD"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "collection_surface": "WIKIPEDIA",
+      "osint_event_kind": "COLLABORATIVE_REFERENCE_CURRENT_REVISION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-KWI-PATRIOT-WIKI-1371192876",
+          "surface": "WIKIPEDIA",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1371192876&title=Kuwait_in_the_2026_Iran_war",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revision_id": "1371192876",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "The fixed article revision preserves both the attribution and contrary visual-source context; it is not treated as independent evidence of the underlying event."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-KWI-PATRIOT-WIKI-TALK",
+      "claim_family_id": "CHAIN-CL-KWI-PATRIOT",
+      "source_id": "WOL-SRC-WIKIPEDIA-TALK-KUWAIT",
+      "event_type": "REPORTS",
+      "published_at": "2026-06-04T07:49:00Z",
+      "first_observed_at": "2026-09-21",
+      "time_precision": "TALK_PAGE_TIMESTAMP",
+      "epistemic_posture": "EDITORIAL_DISCUSSION",
+      "exact_statement": "A June 4 protected-page edit request proposed adding the June 3 airport strike, the IRGC Patriot denial, and KUNA footage; another editor asked where the sources should be placed before the requester confirmed the proposed placement.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "DISCUSSES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-KWI-PATRIOT",
+        "CL-KWI-PATRIOT",
+        "PROP-07B75A8454CD"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "collection_surface": "WIKIPEDIA",
+      "osint_event_kind": "TALK_PAGE_EDIT_REQUEST",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-KWI-PATRIOT-WIKI-TALK-JUN4",
+          "surface": "WIKIPEDIA",
+          "url": "https://en.wikipedia.org/wiki/Talk:Kuwait_in_the_2026_Iran_war",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "talk_section_url": "https://en.wikipedia.org/wiki/Talk:Kuwait_in_the_2026_Iran_war#Extended-confirmed-protected_edit_request_on_4_June_20",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "This Talk-page record shows transparent source/edit discussion. It is not evidence of deceptive editing."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-KWI-PATRIOT-001",
+      "from_id": "WOL-EVT-PUB-KWI-PATRIOT-WIKIPEDIA",
+      "to_id": "WOL-EVT-PUB-KWI-PATRIOT-MOHEBBI",
+      "relationship_type": "REPORTS",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-KWI-PATRIOT-001",
+          "surface": "WIKIPEDIA",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1371192876&title=Kuwait_in_the_2026_Iran_war",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revision_id": "1371192876"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-KWI-PATRIOT-002",
+      "from_id": "WOL-EVT-PUB-KWI-PATRIOT-WIKI-TALK",
+      "to_id": "WOL-EVT-PUB-KWI-PATRIOT-WIKIPEDIA",
+      "relationship_type": "DISCUSSES",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-KWI-PATRIOT-002",
+          "surface": "WIKIPEDIA",
+          "url": "https://en.wikipedia.org/wiki/Talk:Kuwait_in_the_2026_Iran_war",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "talk_section_url": "https://en.wikipedia.org/wiki/Talk:Kuwait_in_the_2026_Iran_war#Extended-confirmed-protected_edit_request_on_4_June_20"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
