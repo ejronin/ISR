@@ -2,8 +2,53 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_NATIVE_DISCOVERY_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T09:45:00-04:00",
+  "as_of": "2026-09-21T18:15:00-04:00",
   "items": [
+    {
+      "discovery_id": "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
+      "discovery_type": "FORENSIC_DISCOVERY",
+      "claim_family_ref": null,
+      "subject": "CHOSEN BRICK Iranian-state cyber targeting and leak-site propagation",
+      "observations": [
+        {
+          "date": "2026-09-15",
+          "source": "UK National Cyber Security Centre with FBI and Netherlands AIVD",
+          "observation_type": "JOINT_GOVERNMENT_TECHNICAL_ADVISORY",
+          "statement_identity": "The joint advisory says CHOSEN BRICK malware has been used by Iranian state cyber actors to target dissidents, activists and journalists and can collect contacts, emails and social-media messages."
+        },
+        {
+          "date": "2026-09-15",
+          "source": "UK National Cyber Security Centre",
+          "observation_type": "LEAK_SITE_PROPAGATION_CONTEXT",
+          "statement_identity": "NCSC said personal details of some previous victims later appeared on pro-Iranian leak sites. The advisory does not identify every leak-site operator or equate those sites with Handala."
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-CHOSEN-BRICK-NCSC-NEWS-20260915",
+          "surface": "WEBSITE",
+          "url": "https://www.ncsc.gov.uk/news/uk-allies-expose-spyware-iranian-state-actors-target-dissidents-activists-journalists",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "JOINT_GOVERNMENT_ATTRIBUTION",
+          "published_at": "2026-09-15",
+          "attribution": "UK NCSC / U.S. FBI / Netherlands AIVD"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-CHOSEN-BRICK-NCSC-ADVISORY-20260915",
+          "surface": "WEBSITE",
+          "url": "https://www.ncsc.gov.uk/news/iranian-cyber-targeting-of-dissidents-activists-and-journalists",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "TECHNICAL_ADVISORY",
+          "published_at": "2026-09-15",
+          "attribution": "UK NCSC with allied technical reporting"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_IRANIAN_STATE_ACTOR_USE_OF_CHOSEN_BRICK_AS_STATED_BY_JOINT_ADVISORY",
+      "attribution_scope": "The advisory attributes CHOSEN BRICK activity to Iranian state cyber actors. It does not identify Handala as the malware operator, prove a common operator for every pro-Iranian leak site, or establish that every later leak-site publication originated from CHOSEN BRICK collection.",
+      "downstream_note": "Treat malware compromise, victim-data collection, leak-site publication, and narrative amplification as separate graph events. Do not merge this discovery with Handala solely because both involve Iranian state-linked cyber activity and public leak sites.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "This is a current public information-operation/cyber-propagation discovery with no canonical Lie Ledger family. Claims Forensics should decide whether any specific public assertion or leak-derived narrative warrants a claim family before Web of Lies scores propagation or source behavior."
+    },
     {
       "discovery_id": "WOL-DISC-HANDALA-MOIS-20260319",
       "discovery_type": "FORENSIC_DISCOVERY",
@@ -56,49 +101,94 @@
       "review_reason": "This is a public-source information-operation actor discovery with strong organizational attribution but no current canonical Lie Ledger family. It belongs outside lineage/Hall scoring until Claims Forensics assigns a claim family or determines that no public claim adjudication is warranted."
     },
     {
-      "discovery_id": "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
-      "discovery_type": "FORENSIC_DISCOVERY",
+      "discovery_id": "WOL-DISC-MEIDASTOUCH-MULTIPLE-US-BASES-DESTROYED-20260712",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
       "claim_family_ref": null,
-      "subject": "CHOSEN BRICK Iranian-state cyber targeting and leak-site propagation",
+      "subject": "MeidasTouch broad assertion that Iran was easily destroying multiple U.S. military bases in the Middle East",
       "observations": [
         {
-          "date": "2026-09-15",
-          "source": "UK National Cyber Security Centre with FBI and Netherlands AIVD",
-          "observation_type": "JOINT_GOVERNMENT_TECHNICAL_ADVISORY",
-          "statement_identity": "The joint advisory says CHOSEN BRICK malware has been used by Iranian state cyber actors to target dissidents, activists and journalists and can collect contacts, emails and social-media messages."
-        },
-        {
-          "date": "2026-09-15",
-          "source": "UK National Cyber Security Centre",
-          "observation_type": "LEAK_SITE_PROPAGATION_CONTEXT",
-          "statement_identity": "NCSC said personal details of some previous victims later appeared on pro-Iranian leak sites. The advisory does not identify every leak-site operator or equate those sites with Handala."
+          "date": "2026-07-12",
+          "source": "MeidasTouch / Ben Meiselas",
+          "observation_type": "BROAD_MULTI_BASE_DESTRUCTION_ASSERTION",
+          "statement_identity": "The MeidasTouch episode title said Iran 'INSTANTLY DESTROYS US BASES' and the publisher description said Iran was 'easily destroying multiple United States military bases in the Middle East.'"
         }
       ],
       "public_receipts": [
         {
-          "receipt_id": "WOL-DISC-RCPT-CHOSEN-BRICK-NCSC-NEWS-20260915",
-          "surface": "WEBSITE",
-          "url": "https://www.ncsc.gov.uk/news/uk-allies-expose-spyware-iranian-state-actors-target-dissidents-activists-journalists",
+          "receipt_id": "WOL-DISC-RCPT-MEIDAS-MULTIBASE-YT-20260712",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=-Dknga-nLtY",
           "provenance_status": "ORIGINAL_URL",
-          "claim_status": "JOINT_GOVERNMENT_ATTRIBUTION",
-          "published_at": "2026-09-15",
-          "attribution": "UK NCSC / U.S. FBI / Netherlands AIVD"
-        },
-        {
-          "receipt_id": "WOL-DISC-RCPT-CHOSEN-BRICK-NCSC-ADVISORY-20260915",
-          "surface": "WEBSITE",
-          "url": "https://www.ncsc.gov.uk/news/iranian-cyber-targeting-of-dissidents-activists-and-journalists",
-          "provenance_status": "ORIGINAL_URL",
-          "claim_status": "TECHNICAL_ADVISORY",
-          "published_at": "2026-09-15",
-          "attribution": "UK NCSC with allied technical reporting"
+          "claim_status": "PUBLISHER_TITLE_AND_DESCRIPTION",
+          "published_at": "2026-07-12",
+          "attribution": "MeidasTouch / Ben Meiselas"
         }
       ],
-      "attribution_confidence": "HIGH_FOR_IRANIAN_STATE_ACTOR_USE_OF_CHOSEN_BRICK_AS_STATED_BY_JOINT_ADVISORY",
-      "attribution_scope": "The advisory attributes CHOSEN BRICK activity to Iranian state cyber actors. It does not identify Handala as the malware operator, prove a common operator for every pro-Iranian leak site, or establish that every later leak-site publication originated from CHOSEN BRICK collection.",
-      "downstream_note": "Treat malware compromise, victim-data collection, leak-site publication, and narrative amplification as separate graph events. Do not merge this discovery with Handala solely because both involve Iranian state-linked cyber activity and public leak sites.",
+      "attribution_confidence": "HIGH_FOR_PUBLISHER_TITLE_AND_DESCRIPTION",
+      "attribution_scope": "The public YouTube publication supports that MeidasTouch used the broad destruction wording. This discovery does not decide which specific bases or subfacilities the episode discussed, whether the body qualified the headline, or the final truth disposition.",
+      "downstream_note": "Claims Forensics should atomize the broad plural-base destruction proposition against the facility/BDA record before Web of Lies assigns any falsehood, mutation, or behavioral finding. Do not collapse real severe subfacility damage into whole-base destruction or vice versa.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "This is a current public information-operation/cyber-propagation discovery with no canonical Lie Ledger family. Claims Forensics should decide whether any specific public assertion or leak-derived narrative warrants a claim family before Web of Lies scores propagation or source behavior."
+      "review_reason": "Current canonical families adjudicate named facilities and several specific BDA exaggerations, but no clean single canonical claim atom was found for this publisher's broad July 12 proposition that multiple U.S. military bases were destroyed."
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-31M-SOLDIERS-20260917",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos headline asserting Iran mobilized 31 million soldiers for a U.S. invasion",
+      "observations": [
+        {
+          "date": "2026-09-17",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "MILITARY_MOBILIZATION_SCALE_ASSERTION",
+          "statement_identity": "The public Valenti Videos channel listed a video titled 'Iran mobilizes 31 MILLION soldiers for the U.S invasion.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-31M-CHANNEL-20260921",
+          "surface": "YOUTUBE",
+          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "PUBLIC_VIDEO_TITLE_INDEX",
+          "published_at": "2026-09-17",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLIC_TITLE_IDENTITY; TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_scope": "The public channel index preserves the headline assertion. It does not establish whether the body later qualified '31 million' as registrations in a broader Janfada campaign, military/security volunteers, projected participants, or literal trained soldiers.",
+      "downstream_note": "Compare against the canonical Sep. 18 training family, which currently treats >600,000 registrations as unresolved and >1 million participants as a prospective projection. Claims Forensics should determine whether the 31-million-soldiers wording is a materially new proposition or a qualifier-stripping mutation before WOL scores it.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The existing canonical military-training family does not currently contain a 31-million-soldier proposition. WOL must not silently substitute the title for the >600,000 / >1 million canonical atoms."
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-US-BASES-COMPLETELY-DESTROYED-20260917",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos headline asserting leaked U.S. photos show Middle East bases completely destroyed",
+      "observations": [
+        {
+          "date": "2026-09-17",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "BROAD_WHOLE_BASE_DESTRUCTION_ASSERTION",
+          "statement_identity": "The public Valenti Videos channel listed a video titled 'U.S Soldiers LEAK PHOTOS of our bases in the Middle East; THEY'RE COMPLETELY DESTROYED!'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-BASES-DESTROYED-CHANNEL-20260921",
+          "surface": "YOUTUBE",
+          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "PUBLIC_VIDEO_TITLE_INDEX",
+          "published_at": "2026-09-17",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLIC_TITLE_IDENTITY; TRANSCRIPT_AND_REFERENCED_PHOTOS_NOT_YET_CAPTURED",
+      "attribution_scope": "The title supports a broad whole-base destruction assertion but does not identify the facilities, photos, dates, or whether the body narrows the claim to specific damaged subfacilities.",
+      "downstream_note": "Claims Forensics should identify the referenced facilities and atomize physical damage versus whole-base operational destruction. Real severe U.S. base damage is independently established in the war record; that fact neither proves nor disproves this broader title without facility-level matching.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The title does not cleanly map to one current canonical BDA family. It may span Al Udeid, Bahrain, Erbil, Jordan or other facilities and requires proposition-level assignment before Web of Lies behavior scoring."
     }
   ]
 }
