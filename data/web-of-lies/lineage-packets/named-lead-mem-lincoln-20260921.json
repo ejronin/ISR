@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-NAMED-LEAD-MEM-LINCOLN-20260921",
+  "claim_family_id": "CHAIN-CL-LINCOLN",
+  "as_of": "2026-09-21T18:10:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-lincoln.json",
+    "data/web-of-lies/lineage-packets/public-osint-chain-cl-lincoln-20260921.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Named-lead control packet. Middle East Monitor carried the Iranian Lincoln allegation with explicit attribution and CENTCOM's denial; this is carrier behavior, not independent corroboration or adoption.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-MIDDLE-EAST-MONITOR",
+      "display_name": "Middle East Monitor",
+      "source_entity_type": "OUTLET",
+      "country_region": "United Kingdom",
+      "primary_platform": "Web",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-MIDDLE-EAST-MONITOR",
+      "identity_confidence": "CONFIRMED"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-NAMED-MEM-LINCOLN-MAR1",
+      "claim_family_id": "CHAIN-CL-LINCOLN",
+      "source_id": "WOL-SRC-MIDDLE-EAST-MONITOR",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-01",
+      "first_observed_at": "2026-03-01",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Middle East Monitor reported the IRGC claim that USS Abraham Lincoln had been struck by four ballistic missiles and, in the same article, reported CENTCOM's denial that the missiles came close to the carrier.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-LINCOLN",
+        "CL-LINCOLN",
+        "PROP-7B4B511F4353"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "collection_surface": "WEBSITE",
+      "osint_event_kind": "ATTRIBUTED_NEWS_CARRIER_CONTROL",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-MEM-LINCOLN-MAR1",
+          "surface": "WEBSITE",
+          "url": "https://www.middleeastmonitor.com/20260301-us-denies-iranian-claim-uss-abraham-lincoln-was-struck-by-ballistic-missiles/",
+          "archive_url": null,
+          "published_at": "2026-03-01",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "text_excerpt": "US Central Command denied Iranian claims that USS Abraham Lincoln had been struck; the article preserves both the IRGC allegation and the U.S. denial."
+        }
+      ],
+      "plain_english_verdict": "An attributed carrier presented both the Iranian allegation and the U.S. denial. It is derivative reporting, not independent corroboration, and earns no misconduct finding.",
+      "originating_claimant": "Islamic Revolutionary Guard Corps",
+      "canonical_combined_assessment": "UNDERLYING LINCOLN HIT CLAIM FALSE/UNSUPPORTED; ATTRIBUTED CARRIER EVENT IS NOT MISCONDUCT",
+      "provenance_limit": "This event documents Middle East Monitor's publication behavior, not the truth of the underlying Iranian claim."
+    }
+  ],
+  "relationships": [],
+  "promotion_flags": []
+}
