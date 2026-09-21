@@ -178,7 +178,8 @@ mutation["relationships"] = [
 ]
 built_mutation = wol.build_registry(canonical, mutation, governance)
 assert built_mutation["network_analysis"]["summary"]["material_mutation_findings"] == 1
-assert built_mutation["source_profiles"][1]["metrics"]["narrative_mutations_introduced"] == 1
+mutation_profiles = {row["source_id"]: row for row in built_mutation["source_profiles"]}
+assert mutation_profiles["SRC-TIK"]["metrics"]["narrative_mutations_introduced"] == 1
 
 # Accurate attributed reporting does not inherit the underlying allegation as misconduct.
 carrier = copy.deepcopy(base)
