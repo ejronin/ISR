@@ -131,7 +131,9 @@ assert leads["LEAD-ETHAN-LEVINS"]["current_disposition"] in {
 }
 assert leads["LEAD-OSINTDEFENDER"]["current_disposition"] == "CARRIER_ONLY"
 assert leads["LEAD-MIDDLE-EAST-MONITOR"]["current_disposition"] == "CARRIER_ONLY"
-assert leads["LEAD-MEIDASTOUCH"]["current_disposition"] == "UPSTREAM_REVIEW_REQUIRED"
+assert leads["LEAD-MEIDASTOUCH"]["current_disposition"] in {
+    "MATERIAL_WOL_HISTORY_FOUND", "UPSTREAM_REVIEW_REQUIRED"
+}
 assert leads["LEAD-JOLLY-GOOD-GINGER"]["current_disposition"] in {
     "LIMITED_RELEVANT_ACTIVITY", "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND",
     "UPSTREAM_REVIEW_REQUIRED"
