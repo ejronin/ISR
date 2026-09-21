@@ -87,6 +87,15 @@ for suite in (
 ):
     assert f"node tests/{suite}" in browser_runner, f"browser qualification lost mandatory suite: {suite}"
 assert browser_runner.count("start_browser") >= 3, "browser qualification no longer isolates the exhaustive audit in a fresh process"
+assert "mktemp -d /tmp/atlas-chrome-profile.XXXXXX" in browser_runner, (
+    "browser qualification no longer uses a unique profile per browser launch"
+)
+assert 'pkill -TERM -f -- "--user-data-dir=$profile"' in browser_runner, (
+    "browser qualification no longer terminates profile-owned Chromium descendants"
+)
+assert "rm -rf /tmp/atlas-chrome-profile\n" not in browser_runner, (
+    "browser qualification reintroduced the fixed-profile cleanup race"
+)
 
 assert "uses: ./.github/workflows/release-qualification.yml" in primary, "PR validation bypasses reusable qualification"
 assert "pull_request:" in primary, "PR exact-head qualification trigger missing"

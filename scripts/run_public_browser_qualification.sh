@@ -9,6 +9,8 @@ SCREENSHOT_DIR="${ATLAS_SCREENSHOT_DIR:-audit-screens}"
 python -m http.server 8765 --bind 127.0.0.1 --directory "$SITE_ROOT" >/tmp/atlas-http.log 2>&1 &
 server_pid=$!
 browser_pid=''
+browser_profile=''
+profile_dirs=()
 
 process_is_running(){
   local pid="$1" state=''
@@ -35,9 +37,29 @@ terminate_process(){
   fi
 }
 
-cleanup(){
+terminate_browser(){
+  local profile="${browser_profile:-}" deadline
   terminate_process "$browser_pid" browser || true
+  browser_pid=''
+  if [ -n "$profile" ]; then
+    pkill -TERM -f -- "--user-data-dir=$profile" 2>/dev/null || true
+    deadline=$((SECONDS + 3))
+    while pgrep -f -- "--user-data-dir=$profile" >/dev/null 2>&1 && [ "$SECONDS" -lt "$deadline" ]; do
+      sleep 0.1
+    done
+    if pgrep -f -- "--user-data-dir=$profile" >/dev/null 2>&1; then
+      pkill -KILL -f -- "--user-data-dir=$profile" 2>/dev/null || true
+    fi
+  fi
+}
+
+cleanup(){
+  local profile
+  terminate_browser || true
   terminate_process "$server_pid" 'HTTP server' || true
+  for profile in "${profile_dirs[@]}"; do
+    rm -rf -- "$profile" 2>/dev/null || true
+  done
 }
 trap cleanup EXIT
 
@@ -46,13 +68,14 @@ mapfile -t browsers < <(for name in chromium google-chrome-stable google-chrome 
 
 start_browser(){
   local candidate deadline ready=0
-  terminate_process "$browser_pid" 'prior browser' || true
-  browser_pid=''
+  terminate_browser || true
+  browser_profile=''
   for candidate in "${browsers[@]}"; do
-    rm -rf /tmp/atlas-chrome-profile
+    browser_profile="$(mktemp -d /tmp/atlas-chrome-profile.XXXXXX)"
+    profile_dirs+=("$browser_profile")
     "$candidate" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --no-first-run --no-default-browser-check \
       --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --remote-allow-origins='*' \
-      --user-data-dir=/tmp/atlas-chrome-profile "${SITE_URL}#/start/overview" >/tmp/atlas-chrome.log 2>&1 &
+      --user-data-dir="$browser_profile" "${SITE_URL}#/start/overview" >/tmp/atlas-chrome.log 2>&1 &
     browser_pid=$!
     deadline=$((SECONDS + 15))
     while [ "$SECONDS" -lt "$deadline" ]; do
@@ -64,8 +87,8 @@ start_browser(){
       sleep 0.25
     done
     [ "$ready" -eq 1 ] && return 0
-    terminate_process "$browser_pid" 'browser candidate' || true
-    browser_pid=''
+    terminate_browser || true
+    browser_profile=''
   done
   cat /tmp/atlas-http.log >&2 || true
   cat /tmp/atlas-chrome.log >&2 || true
