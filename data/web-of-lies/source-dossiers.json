@@ -1,0 +1,592 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
+  "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
+  "as_of": "2026-09-21T16:40:00-04:00",
+  "basis_paths": [
+    "data/influence-networks.json",
+    "data/influence_networks_v2_7.json",
+    "data/information_war_claims_v2_7.json"
+  ],
+  "notes": "Tranche 1 migration of reproducible legacy influence-network research plus neutral research-lead intake. External assessments and public infrastructure/location observations are contextual and do not directly affect Hall scoring.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
+      "display_name": "BRICS4CLICKS",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-BRICS4CLICKS-NETWORK",
+      "identity_confidence": "CONFIRMED",
+      "aliases": []
+    },
+    {
+      "source_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "display_name": "Verified4War",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-VERIFIED4WAR-NETWORK",
+      "identity_confidence": "CONFIRMED",
+      "aliases": []
+    },
+    {
+      "source_id": "WOL-SRC-TIMES-OF-IRAN-NEWS",
+      "display_name": "Times of Iran News",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-TIMES-OF-IRAN-NEWS-ISD",
+      "identity_confidence": "HIGH",
+      "aliases": [],
+      "account_state_context": "ISD reported the account was removed from X shortly after its monitoring timeframe."
+    },
+    {
+      "source_id": "WOL-SRC-INN-IRAN-NATIONAL-NEWS",
+      "display_name": "INN Iran National News",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-INN-IRAN-NATIONAL-NEWS-ISD",
+      "identity_confidence": "HIGH",
+      "aliases": []
+    },
+    {
+      "source_id": "WOL-SRC-USA-ARMY-NEWS",
+      "display_name": "USA ARMY NEWS",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-USA-ARMY-NEWS-ISD",
+      "identity_confidence": "HIGH",
+      "aliases": []
+    },
+    {
+      "source_id": "WOL-SRC-US-DEFENCE-ARMY",
+      "display_name": "US DEFENCE ARMY",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-US-DEFENCE-ARMY-ISD",
+      "identity_confidence": "HIGH",
+      "aliases": []
+    },
+    {
+      "source_id": "WOL-SRC-MOJTABA-KHAMENEI-PARODY",
+      "display_name": "Mojtaba Khamenei Parody",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-MOJTABA-KHAMENEI-PARODY-ISD",
+      "identity_confidence": "HIGH",
+      "aliases": []
+    },
+    {
+      "source_id": "WOL-SRC-KIM-JONG-UN-PARODY",
+      "display_name": "Kim Jong Un Parody",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-KIM-JONG-UN-PARODY-ISD",
+      "identity_confidence": "HIGH",
+      "aliases": []
+    },
+    {
+      "source_id": "WOL-SRC-VLADIMIR-PUTIN-COMMENTARY",
+      "display_name": "Vladimir Putin Commentary",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-VLADIMIR-PUTIN-COMMENTARY-ISD",
+      "identity_confidence": "HIGH",
+      "aliases": []
+    },
+    {
+      "source_id": "WOL-SRC-NEWS-NOW-BRICS4CLICKS",
+      "display_name": "News Now",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-NEWS-NOW-BRICS4CLICKS-ISD",
+      "identity_confidence": "MEDIUM",
+      "aliases": [],
+      "identity_limit": "Generic display name; this profile refers only to the specific BRICS4CLICKS account observed by ISD and must not be merged with unrelated News Now entities."
+    },
+    {
+      "source_id": "WOL-SRC-CHINA-NEWS-BRICS4CLICKS",
+      "display_name": "China News",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-CHINA-NEWS-BRICS4CLICKS-ISD",
+      "identity_confidence": "MEDIUM",
+      "aliases": [],
+      "identity_limit": "Generic display name; this profile refers only to the specific BRICS4CLICKS account observed by ISD."
+    }
+  ],
+  "source_relationships": [
+    {
+      "relationship_id": "WOL-REL-TIMES-MEMBER-VERIFIED4WAR",
+      "from_id": "WOL-SRC-TIMES-OF-IRAN-NEWS",
+      "to_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-1",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-INN-MEMBER-VERIFIED4WAR",
+      "from_id": "WOL-SRC-INN-IRAN-NATIONAL-NEWS",
+      "to_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-2",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-USAARMY-MEMBER-VERIFIED4WAR",
+      "from_id": "WOL-SRC-USA-ARMY-NEWS",
+      "to_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-3",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-USDEFENCE-MEMBER-VERIFIED4WAR",
+      "from_id": "WOL-SRC-US-DEFENCE-ARMY",
+      "to_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-4",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-MOJTABA-MEMBER-VERIFIED4WAR",
+      "from_id": "WOL-SRC-MOJTABA-KHAMENEI-PARODY",
+      "to_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-5",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-KIM-MEMBER-VERIFIED4WAR",
+      "from_id": "WOL-SRC-KIM-JONG-UN-PARODY",
+      "to_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-6",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-VLADIMIR-MEMBER-VERIFIED4WAR",
+      "from_id": "WOL-SRC-VLADIMIR-PUTIN-COMMENTARY",
+      "to_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-7",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-NEWSNOW-MEMBER-BRICS4CLICKS",
+      "from_id": "WOL-SRC-NEWS-NOW-BRICS4CLICKS",
+      "to_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-8",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-CHINANEWS-MEMBER-BRICS4CLICKS",
+      "from_id": "WOL-SRC-CHINA-NEWS-BRICS4CLICKS",
+      "to_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
+      "relationship_type": "MEMBER_OF",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ISD-MEMBER-9",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "archive_url": null,
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ISD public research identifying the network/account and coordination indicators."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT"
+    }
+  ],
+  "external_assessments": [
+    {
+      "assessment_id": "WOL-EXT-ISD-BRICS4CLICKS-20260415",
+      "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
+      "assessor": "Institute for Strategic Dialogue (ISD)",
+      "assessor_url": "https://www.isdglobal.org/",
+      "publication_date": "2026-04-15",
+      "assessment_date": "2026-04-15",
+      "rating_classification": "COORDINATION_ESTABLISHED_BY_ASSESSOR",
+      "assessment_scope": "23-account BRICS4CLICKS sample on X during the first month of the Iran war",
+      "methodology_summary": "ISD analyzed account metadata, repost patterns, naming similarities, reported location/download metadata and shared content. It reported 82% of reposts were in-network and 80% of sampled accounts changed usernames at least once.",
+      "caveat": "External assessment only. It does not itself create an Atlas behavior class or Hall score. ISD reported no further evidence that the network was state-backed despite amplification by Iranian/Russian state-affiliated accounts.",
+      "retrieval_date": "2026-09-21",
+      "source_url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/"
+    },
+    {
+      "assessment_id": "WOL-EXT-ISD-VERIFIED4WAR-20260415",
+      "source_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "assessor": "Institute for Strategic Dialogue (ISD)",
+      "assessor_url": "https://www.isdglobal.org/",
+      "publication_date": "2026-04-15",
+      "assessment_date": "2026-04-15",
+      "rating_classification": "COORDINATION_ESTABLISHED_BY_ASSESSOR",
+      "assessment_scope": "18-account Verified4War sample on X during the first month of the Iran war",
+      "methodology_summary": "ISD analyzed account metadata, repost patterns, naming similarities, reported location/download metadata and shared content. It reported 91% of reposts were in-network; all sampled accounts changed usernames in March 2026.",
+      "caveat": "External assessment only. It does not itself create an Atlas behavior class or Hall score. ISD reported no further evidence that the network was state-backed despite amplification by Iranian/Russian-aligned actors.",
+      "retrieval_date": "2026-09-21",
+      "source_url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/"
+    },
+    {
+      "assessment_id": "WOL-EXT-ISD-TIMES-OF-IRAN-NEWS-20260415",
+      "source_id": "WOL-SRC-TIMES-OF-IRAN-NEWS",
+      "assessor": "Institute for Strategic Dialogue (ISD)",
+      "assessor_url": "https://www.isdglobal.org/",
+      "publication_date": "2026-04-15",
+      "assessment_date": "2026-04-15",
+      "rating_classification": "CENTRAL_VERIFIED4WAR_ACCOUNT_WITH_RENAME_CHURN",
+      "assessment_scope": "Times of Iran News account during ISD's Verified4War monitoring period",
+      "methodology_summary": "ISD reported the account was created in 2021, had changed its name 69 times, received roughly 40% of network views, 35% of likes and 27% of reposts, and was removed from X shortly after the monitoring period.",
+      "caveat": "Account centrality, rename history and removal are third-party research findings. Removal reason and operator identity are not inferred beyond ISD's report.",
+      "retrieval_date": "2026-09-21",
+      "source_url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/"
+    }
+  ],
+  "infrastructure_observations": [
+    {
+      "observation_id": "WOL-INFRA-ISD-BRICS4CLICKS-LOCATION-20260415",
+      "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
+      "observation_type": "PUBLIC_PLATFORM_LOCATION_METADATA",
+      "value": "ISD reported all sampled BRICS4CLICKS accounts as based in West Asia and said they first downloaded X through regional app stores or the web.",
+      "observation_date": "2026-04-15",
+      "source_url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+      "confidence": "THIRD_PARTY_RESEARCH_HIGH",
+      "inference_limit": "Platform-reported location/download metadata does not establish operator location. ISD explicitly warned the metadata could be skewed by VPN use.",
+      "operator_location_class": "OPERATOR_LOCATION_UNKNOWN",
+      "vpn_proxy_status": "VPN_OR_PROXY_POSSIBLE_NOT_ESTABLISHED"
+    },
+    {
+      "observation_id": "WOL-INFRA-ISD-VERIFIED4WAR-LOCATION-20260415",
+      "source_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
+      "observation_type": "PUBLIC_PLATFORM_LOCATION_METADATA",
+      "value": "ISD reported 14 of 18 sampled Verified4War accounts as based in South Asia or Southeast Asia and as having joined via regional app stores or the web.",
+      "observation_date": "2026-04-15",
+      "source_url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+      "confidence": "THIRD_PARTY_RESEARCH_HIGH",
+      "inference_limit": "Platform-reported location/download metadata does not establish operator location. ISD explicitly warned the metadata could be imprecise because of possible VPN use.",
+      "operator_location_class": "OPERATOR_LOCATION_UNKNOWN",
+      "vpn_proxy_status": "VPN_OR_PROXY_POSSIBLE_NOT_ESTABLISHED"
+    }
+  ],
+  "research_leads": [
+    {
+      "lead_id": "LEAD-IRAN-MILITARY-UPDATE",
+      "display_name": "Iran Military Update",
+      "seed_urls": [
+        "https://www.facebook.com/profile.php?id=61586393397492"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "SEED_ACCOUNT_ONLY",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-JOLLY-GOOD-GINGER",
+      "display_name": "Jolly Good Ginger",
+      "seed_urls": [
+        "https://www.facebook.com/profile.php?id=61574087741420",
+        "https://substack.com/@jollygoodginger"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "PARTIALLY_RESOLVED_PUBLIC_IDENTITY",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-ZACH-FOR-THE-PEOPLE",
+      "display_name": "Zach for the People",
+      "seed_urls": [
+        "https://www.facebook.com/zachforthepeople"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "IDENTITY_UNRESOLVED",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-EL-MARQUES-XD",
+      "display_name": "El Marques XD",
+      "seed_urls": [
+        "https://www.facebook.com/ElMarquesXD"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "IDENTITY_UNRESOLVED",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-OSINTDEFENDER",
+      "display_name": "OSINTdefender",
+      "seed_urls": [
+        "https://www.facebook.com/profile.php?id=61583311169520",
+        "https://linktr.ee/OSINTdefender"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "PARTIALLY_RESOLVED_CROSS_PLATFORM",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-VALENTI-VIDEOS",
+      "display_name": "Valenti.videos / Chris Valenti",
+      "seed_urls": [
+        "https://www.facebook.com/profile.php?id=61591466714871",
+        "https://www.youtube.com/@valentivideos"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-ETHAN-LEVINS",
+      "display_name": "Ethan Levins",
+      "seed_urls": [
+        "https://t.me/ethanlevins"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "PUBLIC_IDENTITY_PARTIALLY_RESOLVED",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-MEIDASTOUCH",
+      "display_name": "MeidasTouch",
+      "seed_urls": [
+        "https://www.meidastouch.com/"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "OUTLET_IDENTITY_RESOLVED",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-MIDDLE-EAST-MONITOR",
+      "display_name": "Middle East Monitor",
+      "seed_urls": [
+        "https://www.middleeastmonitor.com/"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "OUTLET_IDENTITY_RESOLVED",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    },
+    {
+      "lead_id": "LEAD-LIM-TEAN",
+      "display_name": "Lim Tean",
+      "seed_urls": [
+        "https://en.wikipedia.org/wiki/Lim_Tean"
+      ],
+      "current_disposition": "PENDING_CLAIM_FIRST_RESEARCH",
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "Research lead only. No adverse classification follows from inclusion in this queue."
+    }
+  ]
+}

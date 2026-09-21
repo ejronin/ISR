@@ -14,6 +14,9 @@
     "information_events",
     "relationships",
     "promotion_flags",
+    "external_assessments",
+    "infrastructure_observations",
+    "research_leads",
     "hall_of_shame",
     "network_analysis",
     "incremental_rebuild_contract",
@@ -391,6 +394,24 @@
         }
       },
       "additionalProperties": false
+    },
+    "external_assessments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/external_assessment"
+      }
+    },
+    "infrastructure_observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/infrastructure_observation"
+      }
+    },
+    "research_leads": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/research_lead"
+      }
     }
   },
   "additionalProperties": false,
@@ -1016,6 +1037,173 @@
         "original_verified": {
           "type": [
             "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "external_assessment": {
+      "type": "object",
+      "required": [
+        "assessment_id",
+        "source_id",
+        "assessor",
+        "assessor_url",
+        "publication_date",
+        "rating_classification",
+        "assessment_scope",
+        "methodology_summary",
+        "caveat",
+        "retrieval_date",
+        "source_url"
+      ],
+      "properties": {
+        "assessment_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assessor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assessor_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publication_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assessment_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rating_classification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assessment_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "methodology_summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "caveat": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retrieval_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_url": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "infrastructure_observation": {
+      "type": "object",
+      "required": [
+        "observation_id",
+        "source_id",
+        "observation_type",
+        "value",
+        "observation_date",
+        "source_url",
+        "confidence",
+        "inference_limit"
+      ],
+      "properties": {
+        "observation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observation_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observation_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inference_limit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operator_location_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "vpn_proxy_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "research_lead": {
+      "type": "object",
+      "required": [
+        "lead_id",
+        "display_name",
+        "seed_urls",
+        "current_disposition",
+        "identity_status"
+      ],
+      "properties": {
+        "lead_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "seed_urls": {
+          "$ref": "#/$defs/string_array"
+        },
+        "current_disposition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": [
+            "string",
             "null"
           ]
         }

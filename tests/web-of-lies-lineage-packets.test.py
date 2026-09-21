@@ -75,10 +75,16 @@ packet_docs = [
     json.loads((ROOT / path).read_text(encoding="utf-8"))
     for path in sorted(expected_packet_paths)
 ]
+source_dossier = json.loads(
+    (ROOT / aggregator.SOURCE_DOSSIER).read_text(encoding="utf-8")
+)
 expected_source_ids = {
     row["source_id"]
     for packet_doc in packet_docs
     for row in packet_doc.get("source_profiles") or []
+} | {
+    row["source_id"]
+    for row in source_dossier.get("source_profiles") or []
 }
 expected_event_ids = {
     row["event_id"]
@@ -89,6 +95,9 @@ expected_relationship_ids = {
     row["relationship_id"]
     for packet_doc in packet_docs
     for row in packet_doc.get("relationships") or []
+} | {
+    row["relationship_id"]
+    for row in source_dossier.get("source_relationships") or []
 }
 assembled_source_ids = {row["source_id"] for row in assembled["source_profiles"]}
 assembled_event_ids = {row["event_id"] for row in assembled["information_events"]}

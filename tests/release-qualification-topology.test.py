@@ -63,6 +63,7 @@ for token in (
     "python tests/web-of-lies-public-osint-batch2.test.py",
     "python tests/web-of-lies-public-osint-batch3.test.py",
     "python tests/web-of-lies-public-osint-batch4.test.py",
+    "python tests/web-of-lies-social-influence-tranche1.test.py",
     "python tests/web-of-lies-lineage-packets.test.py",
     "python tests/web-of-lies-ledger-coverage.test.py",
     "node tests/web-of-lies-public-contract.test.js",
