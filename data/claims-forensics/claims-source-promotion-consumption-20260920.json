@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_MAINTENANCE_SWEEP",
+  "maintenance_type": "CLAIMS_FORENSICS_SOURCE_PROMOTION_CONSUMPTION",
+  "maintenance_version": "ATLAS-CLAIMS-FORENSICS-MAINT-20260920-2",
+  "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+  "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
+  "baseline_main_sha": "9a04ea1d9e2881b58146692cd765df67129d1879",
+  "assessment_date": "2026-09-20",
+  "evidence_cutoff": "2026-09-20T12:28:00-04:00",
+  "upstream_source_promotion": {
+    "pr": 164,
+    "merge_sha": "9a04ea1d9e2881b58146692cd765df67129d1879",
+    "packet_id": "UPD-20260920-CLAIMS-SOURCE-PROMOTIONS",
+    "gate3_sequence": 19,
+    "directive": "SOURCE_PROMOTION_ONLY — NO CLAIMS FORENSICS SEMANTIC MUTATION"
+  },
+  "predecessor_maintenance": {
+    "path": "data/claims-forensics/lie-ledger-maintenance-sweep-20260920.json",
+    "version": "ATLAS-CLAIMS-FORENSICS-MAINT-20260920-1"
+  },
+  "rules_applied": [
+    "Source promotion establishes canonical provenance, not truth or claimant knowledge.",
+    "Preserve the Sep. 20 Claims Forensics disposition unless exact promoted wording materially changes the asserted proposition.",
+    "Absence of independent corroboration does not automatically establish falsity.",
+    "Prospective projections are not adjudicated as present-tense factual falsehoods.",
+    "Exact quantitative claims retain their affirmative evidentiary burden, but undefined time windows or measurement denominators are not silently invented.",
+    "Control cases remain outside the ordinary accusation-chain denominator."
+  ],
+  "targets": [
+    {
+      "chain_id": "CH-IRAN-MILITARY-TRAINING-20260918",
+      "claim_id": "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918",
+      "prior_disposition": "CONTROL_CASE_SOURCE_PROMOTION_REQUIRED",
+      "promoted_canonical_source_id": "SRC-61A4DB945FF2",
+      "exact_source_wording": {
+        "current_registration_count": "over 600,000 people had registered to participate",
+        "prospective_projection": "over 1 million expected to take part in the training"
+      },
+      "prior_source_blocker": "The AP claim-origin URL was present in the accepted locker but lacked a promoted canonical source object.",
+      "blocker_resolution_state": "RESOLVED_BY_PR_164_GATE3_SEQUENCE_19",
+      "truth_impact": "NONE",
+      "knowledge_impact": "NONE",
+      "denominator_impact": "CONTROL_CASE_ONLY; no accusation-chain or unique-proposition denominator increase.",
+      "public_eligibility": "PUBLIC_READY",
+      "final_semantic_disposition": "CONTROL_CASE_PUBLIC_READY_UNRESOLVED_COUNT_AND_PROJECTION",
+      "reason": "The promoted AP wording matches the basis used in the Sep. 20 maintenance sweep. The present >600,000 registration count remains unresolved absent independent audit; the >1 million statement remains a prospective projection and is not converted into a present-tense falsehood."
+    },
+    {
+      "chain_id": "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919",
+      "claim_id": "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919",
+      "prior_disposition": "CONTROL_CASE_SOURCE_PROMOTION_REQUIRED",
+      "promoted_canonical_source_id": "SRC-C5D731879E3B",
+      "exact_source_wording": "He claimed Iran had also recently test-fired a multi-warhead anti-ship missile near a US vessel or aircraft carrier.",
+      "prior_source_blocker": "The New Indian Express claim-origin URL was present in the accepted locker but lacked a promoted canonical source object.",
+      "blocker_resolution_state": "RESOLVED_BY_PR_164_GATE3_SEQUENCE_19",
+      "truth_impact": "NONE",
+      "knowledge_impact": "NONE",
+      "denominator_impact": "CONTROL_CASE_ONLY; no accusation-chain or unique-proposition denominator increase.",
+      "public_eligibility": "PUBLIC_READY",
+      "final_semantic_disposition": "CONTROL_CASE_PUBLIC_READY_UNRESOLVED",
+      "reason": "The promoted wording matches the prior basis and remains bounded to Rezaei's assertion. No accepted telemetry, imagery, U.S. acknowledgement, NAVWARN/NOTAM, weapon identification, or other independent corroboration establishes the claimed test; lack of corroboration is not treated as falsity and no Lie finding is made."
+    },
+    {
+      "chain_id": "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "claim_id": "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "prior_disposition": "EXACT_METRIC_SOURCE_PROMOTION_REQUIRED",
+      "promoted_canonical_source_id": "SRC-229640C43A50",
+      "exact_source_wording": "Iran has exported zero barrels thanks to our ironclad blockade.",
+      "prior_source_blocker": "The Anadolu claim-origin URL was present in the accepted locker but lacked a promoted canonical source object.",
+      "blocker_resolution_state": "RESOLVED_BY_PR_164_GATE3_SEQUENCE_19",
+      "truth_impact": "NONE",
+      "knowledge_impact": "NONE",
+      "denominator_impact": "CONTROL_CASE_ONLY; no accusation-chain or unique-proposition denominator increase.",
+      "public_eligibility": "PUBLIC_READY",
+      "final_semantic_disposition": "EXACT_METRIC_PUBLIC_READY_UNRESOLVED_SCOPE_AMBIGUITY",
+      "reason": "The exact zero-export proposition remains unresolved. The promoted source preserves blockade-period context but does not define a precise start/end window or narrow the measurement denominator to loadings, Hormuz departures, sanctioned exports, observed tanker movements, customs-cleared trade, or another category. Claims Forensics therefore preserves the exact wording and ambiguity rather than manufacturing a more testable proposition."
+    }
+  ],
+  "public_mutation_summary": {
+    "newly_public_chains": [
+      "CH-IRAN-MILITARY-TRAINING-20260918",
+      "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919",
+      "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919"
+    ],
+    "newly_public_proposition_rows": 4,
+    "newly_public_claim_instances": 4,
+    "unique_proposition_delta": 0,
+    "accusation_chain_delta": 0,
+    "control_chain_delta": 3,
+    "truth_changes": 0,
+    "knowledge_changes": 0,
+    "remaining_source_promotion_holds": 0
+  }
+}
