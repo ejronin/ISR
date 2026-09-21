@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_NATIVE_DISCOVERY_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T18:15:00-04:00",
+  "as_of": "2026-09-21T19:05:00-04:00",
   "items": [
     {
       "discovery_id": "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
@@ -145,6 +145,15 @@
       ],
       "public_receipts": [
         {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-31M-YOUTUBE-DIRECT-20260921",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=QfDgemtUt04",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE",
+          "published_at": null,
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
           "receipt_id": "WOL-DISC-RCPT-VALENTI-31M-CHANNEL-20260921",
           "surface": "YOUTUBE",
           "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
@@ -154,7 +163,7 @@
           "attribution": "Valenti Videos / Chris Valenti"
         }
       ],
-      "attribution_confidence": "HIGH_FOR_PUBLIC_TITLE_IDENTITY; TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_confidence": "HIGH_FOR_DIRECT_VIDEO_TITLE_IDENTITY; TRANSCRIPT_NOT_YET_CAPTURED",
       "attribution_scope": "The public channel index preserves the headline assertion. It does not establish whether the body later qualified '31 million' as registrations in a broader Janfada campaign, military/security volunteers, projected participants, or literal trained soldiers.",
       "downstream_note": "Compare against the canonical Sep. 18 training family, which currently treats >600,000 registrations as unresolved and >1 million participants as a prospective projection. Claims Forensics should determine whether the 31-million-soldiers wording is a materially new proposition or a qualifier-stripping mutation before WOL scores it.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
@@ -175,6 +184,15 @@
       ],
       "public_receipts": [
         {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-BASES-YOUTUBE-DIRECT-20260921",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=nqd977hHQfM",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE",
+          "published_at": null,
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
           "receipt_id": "WOL-DISC-RCPT-VALENTI-BASES-DESTROYED-CHANNEL-20260921",
           "surface": "YOUTUBE",
           "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
@@ -184,11 +202,89 @@
           "attribution": "Valenti Videos / Chris Valenti"
         }
       ],
-      "attribution_confidence": "HIGH_FOR_PUBLIC_TITLE_IDENTITY; TRANSCRIPT_AND_REFERENCED_PHOTOS_NOT_YET_CAPTURED",
+      "attribution_confidence": "HIGH_FOR_DIRECT_VIDEO_TITLE_IDENTITY; TRANSCRIPT_AND_REFERENCED_PHOTOS_NOT_YET_CAPTURED",
       "attribution_scope": "The title supports a broad whole-base destruction assertion but does not identify the facilities, photos, dates, or whether the body narrows the claim to specific damaged subfacilities.",
       "downstream_note": "Claims Forensics should identify the referenced facilities and atomize physical damage versus whole-base operational destruction. Real severe U.S. base damage is independently established in the war record; that fact neither proves nor disproves this broader title without facility-level matching.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "The title does not cleanly map to one current canonical BDA family. It may span Al Udeid, Bahrain, Erbil, Jordan or other facilities and requires proposition-level assignment before Web of Lies behavior scoring."
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-US-CASUALTY-COVERUP-20260721",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos allegation that the U.S. government was covering up a massive number of U.S. casualties",
+      "observations": [
+        {
+          "date": "2026-07-21",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "CASUALTY_CONCEALMENT_ALLEGATION",
+          "statement_identity": "The publisher titled a July 21 episode 'The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-CASUALTY-COVERUP-YOUTUBE-20260721",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE",
+          "published_at": "2026-07-21",
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-CASUALTY-COVERUP-SHORT-20260721",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/pACrjR30dLI",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_PROMOTIONAL_SHORT",
+          "published_at": "2026-07-21",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLISHER_TITLE_AND_DIRECT_VIDEO_ID; BODY_TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_scope": "The receipts establish a publisher-authored concealment allegation. They do not establish what casualty number the body asserted, what evidence was offered for concealment, or whether the episode distinguished killed, wounded, evacuated, contractor, diplomatic, and allied casualties.",
+      "downstream_note": "Claims Forensics should treat this as a concealment proposition distinct from CHAIN-CL-200-US-DEAD. A false or inflated casualty count and a claim that the government knowingly concealed casualties are separate atomic propositions with different evidence and knowledge requirements.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "No current canonical family cleanly adjudicates the July 21 concealment allegation itself. The existing 200-dead family concerns an IRGC casualty-count assertion, not whether U.S. authorities concealed a larger casualty total."
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-US-MILITARY-ALLOWED-IRAN-MISSILES-20260727",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos allegation that the U.S. military allowed Iranian missiles to hit U.S. bases",
+      "observations": [
+        {
+          "date": "2026-07-27",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "INTENTIONAL_NON_INTERCEPTION_CAUSATION_ALLEGATION",
+          "statement_identity": "The publisher listed an episode titled 'U.S Military ALLOWS IRANIAN MISSILES to hit our bases. Ukraine joins the Iran War.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-ALLOWS-MISSILES-YOUTUBE-20260727",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE_FROM_PUBLIC_CHANNEL_INDEX",
+          "published_at": null,
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-ALLOWS-MISSILES-SHORT-20260727",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/3xlpRA2vNVI",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_PROMOTIONAL_SHORT",
+          "published_at": "2026-07-27",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLISHER_TITLE_IDENTITY; BODY_TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_scope": "The receipts establish the intentional-allowance wording in the publisher title. They do not establish which bases, intercept systems, engagement windows, rules of engagement, or operational rationale the body discussed.",
+      "downstream_note": "Do not map this automatically to ordinary BDA or interception-failure families. 'Missiles hit bases' and 'the U.S. military intentionally allowed them to hit' are separate factual/causal propositions. Claims Forensics must atomize the alleged intentional non-interception before WOL can score it.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Current Atlas families distinguish physical damage, claimed effects, and some causal attributions, but no clean canonical atom was found for an intentional U.S. decision to permit Iranian missiles to strike U.S. bases."
     }
   ]
 }
