@@ -123,18 +123,30 @@ assert not blocked_instance_ids.intersection(anchor_refs), (
 discovery = discovery_builder.build_queue(ROOT)
 tracked_discovery = load(discovery_builder.OUTPUT)
 assert discovery == tracked_discovery
+native_input = load(discovery_builder.NATIVE_DISCOVERIES)
+native_input_by_id = {
+    row["discovery_id"]: row
+    for row in native_input["items"]
+}
 native_discoveries = {
     row["discovery_id"]: row
     for row in discovery["items"]
+    if row.get("source_handoff_path") == discovery_builder.NATIVE_DISCOVERIES
 }
-assert set(native_discoveries) == {
-    "WOL-DISC-HANDALA-MOIS-20260319",
-    "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
-}
-for row in native_discoveries.values():
+assert set(native_discoveries) == set(native_input_by_id), (
+    "derived discovery queue differs from governed native-discovery input: "
+    f"missing={sorted(set(native_input_by_id) - set(native_discoveries))} "
+    f"extra={sorted(set(native_discoveries) - set(native_input_by_id))}"
+)
+for discovery_id, row in native_discoveries.items():
     assert row["status"] == "AWAITING_CANONICAL_CLAIM_FAMILY"
     assert row["claim_family_ref"] is None
-    assert row["discovery_type"] == "FORENSIC_DISCOVERY"
+    assert row["discovery_type"] in {
+        "FORENSIC_DISCOVERY",
+        "EVIDENCE_PROMOTION_CANDIDATE",
+        "ADJUDICATION_REVIEW_CANDIDATE",
+    }
+    assert row["discovery_type"] == native_input_by_id[discovery_id]["discovery_type"]
     assert row["review_target"] == "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION"
     assert row["source_handoff_path"] == discovery_builder.NATIVE_DISCOVERIES
     assert row["public_receipts"]
@@ -150,7 +162,11 @@ assert any(
 chosen_brick = native_discoveries["WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915"]
 assert "does not identify Handala" in chosen_brick["attribution_scope"]
 assert "Do not merge this discovery with Handala" in chosen_brick["downstream_note"]
-assert discovery["as_of"] == "2026-09-21T09:45:00-04:00"
+handoff = load(discovery_builder.HANDOFF)
+assert discovery["as_of"] == max(
+    str(handoff.get("as_of") or ""),
+    str(native_input.get("as_of") or ""),
+)
 
 assert discovery["resolved_existing_claim_sequences"] == [{
     "sequence_id": "WOL-IN-ROOK-F15SA-20260920",
