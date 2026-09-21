@@ -160,7 +160,8 @@
             "review_status": "UPSTREAM_REVIEW_REQUIRED"
           }
         ],
-        "decomposition_note": "The visible-damage substrate and the causal/stockpile inference are separate propositions. A true observation about damage cannot validate either the exact two-missile attribution or the extrapolation to future strike capacity."
+        "decomposition_note": "The visible-damage substrate and the causal/stockpile inference are separate propositions. A true observation about damage cannot validate either the exact two-missile attribution or the extrapolation to future strike capacity.",
+        "presentation": []
       },
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
@@ -317,7 +318,8 @@
             "review_status": "UPSTREAM_REVIEW_REQUIRED"
           }
         ],
-        "decomposition_note": "The traffic-collapse numbers can be substantially correct while the claimed causal explanation remains unresolved or misleading. WOL therefore preserves the supported substrate and routes the causal bridge separately for Claims Forensics review."
+        "decomposition_note": "The traffic-collapse numbers can be substantially correct while the claimed causal explanation remains unresolved or misleading. WOL therefore preserves the supported substrate and routes the causal bridge separately for Claims Forensics review.",
+        "presentation": []
       },
       "attribution_confidence": "HIGH_FOR_PUBLICATION_TEXT_AND_TRANSIT_SUBSTRATE",
       "attribution_scope": "The full commentary supports attribution of the causal argument to Lim Tean. Independent maritime reporting supports the broad traffic decline but also supplies competing causes and measurement limits.",
