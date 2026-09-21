@@ -84,6 +84,7 @@ DISALLOWED_MANUAL_RANK_FIELDS = {
     "manual_rank",
     "manual_score",
     "featured_rank",
+    "source_awards",
 }
 
 
@@ -224,6 +225,7 @@ def validate_forensic_input(
     events = forensic.get("information_events") or []
     relationships = forensic.get("relationships") or []
     flags = forensic.get("promotion_flags") or []
+    source_behavior_incidents = forensic.get("source_behavior_incidents") or []
 
     allowed_classes = set(governance.get("source_behavior_classes") or [])
     allowed_authenticity = set(governance.get("authenticity_classes") or [])
@@ -284,6 +286,12 @@ def validate_forensic_input(
         unsupported_behavior = behavior_findings - allowed_classes - allowed_moral_findings
         if unsupported_behavior:
             raise ValueError(f"information event {event_id} has unsupported behavior findings: {sorted(unsupported_behavior)}")
+        event_type = str(event.get("event_type") or "")
+        if event_type in UNSUPPORTED_BULLSHIT_EVENT_TYPES and not unsupported_evidence_gate_satisfied(event, governance):
+            raise ValueError(
+                f"information event {event_id} cannot claim {event_type} without "
+                "a documented no-support evidentiary review"
+            )
         carrier_ids = set(event.get("carrier_profile_ids") or [])
         missing_carriers = carrier_ids - source_ids
         if missing_carriers:
@@ -301,6 +309,34 @@ def validate_forensic_input(
         if unsupported_revenue:
             raise ValueError(f"information event {event_id} has unsupported revenue findings: {sorted(unsupported_revenue)}")
         events_by_source[source_id].add(event_id)
+
+    incident_ids: set[str] = set()
+    for incident in source_behavior_incidents:
+        incident_id = str(incident.get("incident_id") or "").strip()
+        if not incident_id or incident_id in incident_ids:
+            raise ValueError(
+                f"duplicate or missing source behavior incident id: {incident_id!r}"
+            )
+        incident_ids.add(incident_id)
+        source_id = str(incident.get("source_id") or "").strip()
+        if source_id not in source_ids:
+            raise ValueError(
+                f"source behavior incident {incident_id} references unknown source profile {source_id}"
+            )
+        event_type = str(incident.get("event_type") or "")
+        if event_type not in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
+            raise ValueError(
+                f"source behavior incident {incident_id} has unsupported event type {event_type}"
+            )
+        if not unsupported_evidence_gate_satisfied(incident, governance):
+            raise ValueError(
+                f"source behavior incident {incident_id} lacks the documented "
+                "no-support evidentiary review required for WOL-native scoring"
+            )
+        if not list(incident.get("public_receipts") or []):
+            raise ValueError(
+                f"source behavior incident {incident_id} has no public receipts"
+            )
 
     relationship_ids: set[str] = set()
     graph_ids = event_ids | source_ids
@@ -557,6 +593,140 @@ def ranking_view(
     return result
 
 
+
+UNSUPPORTED_BULLSHIT_EVENT_TYPES = {
+    "UNSUPPORTED_FACTUAL_ASSERTION",
+    "UNSUPPORTED_INFERENTIAL_ASSERTION",
+    "EVIDENTIARY_EVASION",
+}
+
+
+def unsupported_evidence_gate_satisfied(
+    event: dict[str, Any],
+    governance: dict[str, Any],
+) -> bool:
+    """Require documented support review before an unsupported claim counts."""
+    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
+    gate = cfg.get("unsupported_evidence_gate") or {}
+    review = event.get("evidentiary_support_review") or {}
+    required_status = str(
+        gate.get("required_review_status") or "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+    )
+    if str(review.get("status") or "") != required_status:
+        return False
+    if gate.get("require_search_scope") and not str(review.get("search_scope") or "").strip():
+        return False
+    if gate.get("require_checked_at") and not str(review.get("checked_at") or "").strip():
+        return False
+    if gate.get("require_claimant_basis_review"):
+        claimant_basis = str(review.get("claimant_basis_status") or "").strip()
+        if claimant_basis not in {
+            "NONE_PROVIDED",
+            "CIRCULAR",
+            "DOES_NOT_SUPPORT_ASSERTION",
+            "ASSERTION_ONLY",
+            "SELF_SEALING",
+        }:
+            return False
+    return True
+
+
+def bullshit_qualifying_event(
+    event: dict[str, Any],
+    governance: dict[str, Any],
+) -> bool:
+    """Return whether one source information event qualifies for the Bullshitter award."""
+    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
+    event_type = str(event.get("event_type") or "")
+    assertion_kind = str(event.get("assertion_kind") or "")
+    if assertion_kind in {"OPINION", "QUESTION"}:
+        return False
+    if event_type == "REPORTS":
+        return False
+    if event_type in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
+        return unsupported_evidence_gate_satisfied(event, governance)
+    qualifying_types = set(cfg.get("qualifying_event_types") or [])
+    qualifying_findings = set(cfg.get("qualifying_behavior_findings") or [])
+    findings = set(event.get("behavior_findings") or [])
+    return event_type in qualifying_types or bool(findings & qualifying_findings)
+
+
+def bullshit_award_for_events(
+    events: list[dict[str, Any]],
+    governance: dict[str, Any],
+    *,
+    as_of: Any,
+) -> dict[str, Any] | None:
+    """Derive the rolling Bullshitter award from distinct qualifying incidents."""
+    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
+    if not cfg:
+        return None
+    minimum = int(cfg.get("minimum_qualifying_incidents") or 6)
+    distinct: dict[str, dict[str, Any]] = {}
+    for event in events:
+        if not bullshit_qualifying_event(event, governance):
+            continue
+        event_id = str(event.get("event_id") or event.get("incident_id") or "").strip()
+        if not event_id:
+            continue
+        # Cross-platform captures of one publication may share an explicit
+        # information-event key. Otherwise the canonical event_id is the
+        # deduplication boundary.
+        key = str(
+            event.get("information_event_group_id")
+            or event.get("source_information_event_id")
+            or event_id
+        ).strip()
+        distinct.setdefault(key, event)
+
+    if len(distinct) < minimum:
+        return None
+
+    qualifying_incident_ids = sorted(
+        str(event.get("event_id") or event.get("incident_id") or "")
+        for event in distinct.values()
+        if str(event.get("event_id") or event.get("incident_id") or "")
+    )
+    label = str(cfg.get("public_label") or "Bullshitter")
+    return {
+        "award_code": "BULLSHITTER",
+        "public_label": label,
+        "window_days": int(cfg.get("window_days") or 30),
+        "minimum_qualifying_incidents": minimum,
+        "qualifying_incident_count": len(distinct),
+        "qualifying_incident_ids": qualifying_incident_ids,
+        "as_of": as_of,
+        "public_verdict": (
+            f"{label} — {len(distinct)} qualifying bullshit incidents "
+            f"in the rolling {int(cfg.get('window_days') or 30)}-day window."
+        ),
+    }
+
+
+def attach_source_awards(
+    profiles: list[dict[str, Any]],
+    recent_events: list[dict[str, Any]],
+    governance: dict[str, Any],
+    *,
+    as_of: Any,
+) -> list[dict[str, Any]]:
+    by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for event in recent_events:
+        by_source[str(event.get("source_id") or "")].append(event)
+
+    output = []
+    for profile in profiles:
+        record = dict(profile)
+        award = bullshit_award_for_events(
+            by_source.get(str(record.get("source_id") or ""), []),
+            governance,
+            as_of=as_of,
+        )
+        record["source_awards"] = [award] if award is not None else []
+        output.append(record)
+    return sorted(output, key=lambda item: item["source_id"])
+
+
 def current_period_events(
     events: list[dict[str, Any]],
     canonical: dict[str, Any],
@@ -585,6 +755,9 @@ def build_registry(
     validate_forensic_input(forensic, governance, family_ids, canonical_source_ids)
 
     information_events = [dict(item) for item in (forensic.get("information_events") or [])]
+    source_behavior_incidents = [
+        dict(item) for item in (forensic.get("source_behavior_incidents") or [])
+    ]
     relationships = [dict(item) for item in (forensic.get("relationships") or [])]
     families = derive_claim_families(canonical, information_events, relationships)
     profiles = source_profiles_with_metrics(forensic.get("source_profiles") or [], information_events)
@@ -599,6 +772,15 @@ def build_registry(
 
     all_time = ranking_view(profiles, information_events, supported_classes)
     recent_events = current_period_events(information_events, canonical, period_days)
+    recent_behavior_incidents = current_period_events(
+        source_behavior_incidents, canonical, period_days
+    )
+    profiles = attach_source_awards(
+        profiles,
+        recent_events + recent_behavior_incidents,
+        governance,
+        as_of=(canonical.get("release") or {}).get("current_osint_cutoff"),
+    )
     current_period = ranking_view(profiles, recent_events, supported_classes)
     network_analysis = wol_network.derive_network_analysis(
         information_events,
@@ -625,6 +807,9 @@ def build_registry(
         "claim_families": families,
         "source_profiles": profiles,
         "information_events": sorted(information_events, key=lambda item: item["event_id"]),
+        "source_behavior_incidents": sorted(
+            source_behavior_incidents, key=lambda item: item["incident_id"]
+        ),
         "relationships": sorted(relationships, key=lambda item: item["relationship_id"]),
         "promotion_flags": sorted(
             [dict(item) for item in (forensic.get("promotion_flags") or [])],

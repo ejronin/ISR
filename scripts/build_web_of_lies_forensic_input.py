@@ -43,6 +43,7 @@ MANUAL_RANK_FIELDS = {
     "manual_rank",
     "manual_score",
     "featured_rank",
+    "source_awards",
 }
 
 
@@ -182,6 +183,7 @@ def validate_source_dossier(
         ("external_assessments", "assessment_id"),
         ("infrastructure_observations", "observation_id"),
         ("research_leads", "lead_id"),
+        ("source_behavior_incidents", "incident_id"),
     ):
         seen_ids: set[str] = set()
         for row in dossier.get(collection_name) or []:
@@ -190,7 +192,7 @@ def validate_source_dossier(
                 raise ValueError(f"{path}: duplicate {collection_name} id {row_id}")
             seen_ids.add(row_id)
             source_id = row.get("source_id")
-            if source_id and str(source_id) not in local_source_ids:
+            if source_id and str(source_id) not in allowed_source_ids:
                 raise ValueError(
                     f"{path}: {collection_name} {row_id} references undeclared source {source_id}"
                 )
@@ -215,6 +217,7 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
     external_assessments: dict[str, dict[str, Any]] = {}
     infrastructure_observations: dict[str, dict[str, Any]] = {}
     research_leads: dict[str, dict[str, Any]] = {}
+    source_behavior_incidents: dict[str, dict[str, Any]] = {}
     source_dossier_meta: dict[str, Any] | None = None
     latest_as_of: tuple[datetime, str] | None = None
     fingerprint_material: list[str] = []
@@ -338,6 +341,7 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
                 "observation_id",
             ),
             ("research_leads", research_leads, "lead_id"),
+            ("source_behavior_incidents", source_behavior_incidents, "incident_id"),
         ):
             for row in dossier.get(collection_name) or []:
                 row_id = str(row[id_field])
@@ -348,6 +352,14 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
                 target[row_id] = copy.deepcopy(row)
 
     all_source_ids = set(profiles)
+    for incident in source_behavior_incidents.values():
+        source_id = str(incident.get("source_id") or "")
+        if source_id not in all_source_ids:
+            raise ValueError(
+                f"source behavior incident {incident.get('incident_id')} references "
+                f"missing merged source profile {source_id}"
+            )
+
     all_event_ids = set(events)
     graph_ids = all_source_ids | all_event_ids
     for event in events.values():
@@ -396,6 +408,9 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
         ),
         "research_leads": sorted(
             research_leads.values(), key=lambda row: row["lead_id"]
+        ),
+        "source_behavior_incidents": sorted(
+            source_behavior_incidents.values(), key=lambda row: row["incident_id"]
         ),
     }
 
