@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "CLAIMS_FORENSICS_TO_WEB_OF_LIES_HANDOFF",
+  "handoff_id": "CF-WOL-SOURCE-PROMOTION-CONSUMPTION-20260920",
+  "as_of": "2026-09-20",
+  "authority_boundary": "Read-only downstream handoff. Web of Lies may consume canonical public-ready Claims Forensics state but must not reinterpret truth, knowledge, control/accusation classification, or source provenance.",
+  "source_promotion_basis": {
+    "packet_id": "UPD-20260920-CLAIMS-SOURCE-PROMOTIONS",
+    "gate3_sequence": 19,
+    "pr": 164
+  },
+  "items": [
+    {
+      "chain_id": "CH-IRAN-MILITARY-TRAINING-20260918",
+      "claim_ids": [
+        "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918"
+      ],
+      "proposition_ids": [
+        "PROP-IRAN-MILITARY-TRAINING-REGISTRATIONS-20260918",
+        "PROP-IRAN-MILITARY-TRAINING-PROJECTION-20260918"
+      ],
+      "claim_instance_ids": [
+        "CI-CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918-P01",
+        "CI-CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918-P02"
+      ],
+      "final_truth_state": "UNRESOLVED",
+      "final_knowledge_state": "NOT_ASSESSABLE",
+      "classification": "STRATEGIC_CLAIM_CONTROL",
+      "canonical_source_id": "SRC-61A4DB945FF2",
+      "public_ready": true
+    },
+    {
+      "chain_id": "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919",
+      "claim_ids": [
+        "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919"
+      ],
+      "proposition_ids": [
+        "PROP-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919"
+      ],
+      "claim_instance_ids": [
+        "CI-CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919-P01"
+      ],
+      "final_truth_state": "UNRESOLVED",
+      "final_knowledge_state": "NOT_ASSESSABLE",
+      "classification": "STRATEGIC_CLAIM_CONTROL",
+      "canonical_source_id": "SRC-C5D731879E3B",
+      "public_ready": true
+    },
+    {
+      "chain_id": "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "claim_ids": [
+        "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919"
+      ],
+      "proposition_ids": [
+        "PROP-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919"
+      ],
+      "claim_instance_ids": [
+        "CI-CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919-P01"
+      ],
+      "final_truth_state": "UNRESOLVED",
+      "final_knowledge_state": "NOT_ASSESSABLE",
+      "classification": "STRATEGIC_CLAIM_CONTROL",
+      "canonical_source_id": "SRC-229640C43A50",
+      "public_ready": true
+    }
+  ]
+}
