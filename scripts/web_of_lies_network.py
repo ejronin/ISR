@@ -480,6 +480,158 @@ def derive_network_analysis(
     }
 
 
+def derive_corpus_coverage(
+    claim_families: list[dict[str, Any]],
+    information_events: list[dict[str, Any]],
+    relationships: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Expose corpus-wide Web-of-Lies research coverage without claiming completeness."""
+    family_ids = sorted(
+        str(row.get("claim_family_id") or "").strip()
+        for row in claim_families
+        if str(row.get("claim_family_id") or "").strip()
+    )
+    event_by_id = {
+        str(event["event_id"]): event for event in information_events
+    }
+    events_by_family: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    relationships_by_family: dict[str, list[dict[str, Any]]] = defaultdict(list)
+
+    for event in information_events:
+        family_id = str(event.get("claim_family_id") or "").strip()
+        if family_id:
+            events_by_family[family_id].append(event)
+
+    for relation in relationships:
+        families: set[str] = set()
+        for endpoint in (str(relation.get("from_id") or ""), str(relation.get("to_id") or "")):
+            event = event_by_id.get(endpoint)
+            if event:
+                families.add(str(event.get("claim_family_id") or ""))
+        for family_id in families:
+            if family_id:
+                relationships_by_family[family_id].append(relation)
+
+    adverse_types = {
+        "FALSE_OR_MISLEADING_CONNECTION",
+        "NARRATIVE_MUTATION",
+        "CITATION_LAUNDERING",
+        "RECYCLED_MEDIA",
+        "REPEAT_AFTER_CORRECTION",
+        "DELETE_WITHOUT_CORRECTION",
+        "FAILED_CLAIM_ABANDONED",
+        "STEALTH_EDIT",
+        "VICTIM_EXPLOITATION",
+        "PREDICTION_FAILURE",
+    }
+    rows: list[dict[str, Any]] = []
+    status_counts: dict[str, int] = defaultdict(int)
+    families_with_public_receipts = 0
+
+    for family_id in family_ids:
+        events = events_by_family.get(family_id, [])
+        anchors = [
+            event
+            for event in events
+            if str(event.get("event_type") or "") == "CANONICAL_CLAIM_ANCHOR"
+        ]
+        non_anchor = [
+            event
+            for event in events
+            if str(event.get("event_type") or "") != "CANONICAL_CLAIM_ANCHOR"
+        ]
+        relations = relationships_by_family.get(family_id, [])
+        public_receipt_count = sum(
+            len(event.get("public_receipts") or []) for event in non_anchor
+        )
+        public_osint_events = sum(
+            1 for event in non_anchor if event.get("public_receipts")
+        )
+        origin_events = sum(
+            1
+            for event in non_anchor
+            if "ORIGINATES" in set(event.get("lineage_roles") or [])
+        )
+        carrier_events = sum(
+            1
+            for event in non_anchor
+            if set(event.get("lineage_roles") or []).intersection(
+                {"REPORTS", "REPEATS", "AMPLIFIES", "SYNDICATES"}
+            )
+        )
+        correction_events = sum(
+            1
+            for event in non_anchor
+            if str(event.get("event_type") or "") in CORRECTIVE_EVENT_TYPES
+            or event.get("correction_state")
+        )
+        adverse_events = sum(
+            1
+            for event in non_anchor
+            if str(event.get("event_type") or "") in adverse_types
+        )
+
+        if not events:
+            status = "CANONICAL_FAMILY_NO_LINEAGE"
+        elif not non_anchor:
+            status = "ANCHOR_ONLY"
+        elif relations:
+            status = "LINEAGE_TRACED"
+        else:
+            status = "LINEAGE_SEEDED"
+        status_counts[status] += 1
+
+        gaps: list[str] = []
+        if not non_anchor:
+            gaps.append("NO_NON_ANCHOR_LINEAGE")
+        if len(non_anchor) > 1 and not relations:
+            gaps.append("NO_DOCUMENTED_LINEAGE_EDGES")
+        if non_anchor and public_receipt_count == 0:
+            gaps.append("NO_WEB_OF_LIES_PUBLIC_OSINT_RECEIPTS")
+        if public_receipt_count:
+            families_with_public_receipts += 1
+
+        rows.append(
+            {
+                "claim_family_id": family_id,
+                "coverage_status": status,
+                "canonical_anchor_events": len(anchors),
+                "non_anchor_lineage_events": len(non_anchor),
+                "documented_relationships": len(relations),
+                "origin_events": origin_events,
+                "carrier_or_amplifier_events": carrier_events,
+                "correction_or_retraction_events": correction_events,
+                "adverse_behavior_events": adverse_events,
+                "public_osint_events": public_osint_events,
+                "public_receipt_count": public_receipt_count,
+                "research_gaps": gaps,
+            }
+        )
+
+    return {
+        "family_coverage": rows,
+        "summary": {
+            "canonical_claim_families": len(family_ids),
+            "status_counts": dict(sorted(status_counts.items())),
+            "families_with_non_anchor_lineage": sum(
+                1 for row in rows if row["non_anchor_lineage_events"] > 0
+            ),
+            "families_without_non_anchor_lineage": sum(
+                1 for row in rows if row["non_anchor_lineage_events"] == 0
+            ),
+            "families_with_public_osint_receipts": families_with_public_receipts,
+            "families_without_public_osint_receipts": (
+                len(family_ids) - families_with_public_receipts
+            ),
+        },
+        "completion_claim": "NONE",
+        "interpretation": (
+            "Coverage measures documented tracing already present in Web of Lies; "
+            "it does not assert that a family with lineage is exhaustively researched."
+        ),
+    }
+
+
 def merge_incremental_with_full_equivalence(
     full: dict[str, Any],
     previous_registry: dict[str, Any],
@@ -548,6 +700,30 @@ def merge_incremental_with_full_equivalence(
             else previous_network[family_id]
         )
         for family_id in sorted(full_network)
+    ]
+
+    previous_coverage = {
+        row["claim_family_id"]: row
+        for row in (
+            (previous_registry.get("corpus_coverage") or {}).get("family_coverage")
+            or []
+        )
+    }
+    full_coverage = {
+        row["claim_family_id"]: row
+        for row in (
+            (full.get("corpus_coverage") or {}).get("family_coverage") or []
+        )
+    }
+    candidate["corpus_coverage"] = dict(full["corpus_coverage"])
+    candidate["corpus_coverage"]["family_coverage"] = [
+        (
+            full_coverage[family_id]
+            if family_id in affected_family_ids
+            or family_id not in previous_coverage
+            else previous_coverage[family_id]
+        )
+        for family_id in sorted(full_coverage)
     ]
 
     if canonical_bytes(candidate) != canonical_bytes(full):
