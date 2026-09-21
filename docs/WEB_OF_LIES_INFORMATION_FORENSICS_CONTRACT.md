@@ -815,3 +815,73 @@ Repeated title/thumbnail sensationalization may become source-behavior evidence
 only when the underlying incidents are individually documented. Engagement
 motive is not inferred merely from sensational wording; monetization,
 engagement incentives and editorial strategy require their own receipts.
+
+## 32. Bullshitter award — repeated factual bullshit
+
+Web of Lies is permitted to use blunt ordinary language after the evidentiary threshold is met.
+It is not required to sanitize a demonstrated repeated pattern into euphemisms.
+
+The formal source-behavior award is:
+
+> **BULLSHITTER**
+
+Public label:
+
+> **Bullshitter**
+
+The award is deterministic. It is never manually assigned.
+
+A source earns the award when it has **more than five qualifying incidents in a
+rolling 30-day window**. The machine threshold is therefore six distinct
+qualifying information events.
+
+A qualifying incident is a source-authored or source-presented factual event in
+which the relevant proposition, presentation, inferential bridge, or factual
+conclusion has been established as false or materially misleading, or in which
+the source manufactures an unsupported factual bridge/conclusion from a real
+substrate and that bridge/conclusion is subsequently adjudicated adverse.
+
+Examples include:
+
+- real damage -> invented whole-base destruction;
+- real military capability -> unsupported claim that the capability was
+  actually deployed or armed;
+- real discussion/contingency planning -> invented decision/order/event;
+- real mobilization/registration activity -> unsupported conversion into an
+  asserted number of trained soldiers;
+- real casualty evidence -> unsupported concealment allegation;
+- real traffic counts -> an adverse causal claim presented as demonstrated fact;
+- repetition after correction of a proposition already established false or
+  materially misleading.
+
+The following do **not** qualify by themselves:
+
+- disagreement or opinion without a factual assertion;
+- an unresolved inference;
+- a prediction that merely fails;
+- a carrier accurately reporting someone else's allegation;
+- a dramatic but true title;
+- multiple screenshots, mirrors, embeds or cross-platform captures of the same
+  information event.
+
+The same underlying publication/event counts once. A later distinct republication
+or repetition may count as a new incident when it is separately preserved as an
+information event.
+
+A correction does not erase the fact that the qualifying incident occurred.
+Corrections remain separately credited in the behavioral record and Hall metrics.
+
+The award must carry the qualifying incident count and event IDs. The public
+verdict may say, plainly:
+
+> **Bullshitter — N qualifying bullshit incidents in the rolling 30-day window.**
+
+This award is a source-behavior finding. It does not rewrite Claims Forensics'
+canonical truth/knowledge/deception adjudications and does not make every other
+statement by that source false.
+
+The operating principle is:
+
+> **If the receipts prove somebody repeatedly turns facts into bullshit, Web of
+> Lies is allowed to call them a bullshitter.**
+
