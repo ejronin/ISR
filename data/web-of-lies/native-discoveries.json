@@ -524,16 +524,21 @@
         }
       ],
       "attribution_confidence": "HIGH_FOR_PUBLISHER_TITLE_IDENTITY; BODY_TRANSCRIPT_NOT_YET_CAPTURED",
-      "attribution_scope": "The receipts establish the intentional-allowance wording in the publisher title. They do not establish which bases, intercept systems, engagement windows, rules of engagement, or operational rationale the body discussed.",
-      "downstream_note": "Do not map this automatically to ordinary BDA or interception-failure families. 'Missiles hit bases' and 'the U.S. military intentionally allowed them to hit' are separate factual/causal propositions. Claims Forensics must atomize the alleged intentional non-interception before WOL can score it.",
+      "attribution_scope": "The publisher title establishes that Valenti said the U.S. military 'allows' Iranian missiles to hit bases. Subsequent evidence review shows the literal proposition that commanders sometimes deliberately declined interception of low-value trajectories is not inherently unsupported. The distinct body-level motive claim reported by project-owner direct review—that the U.S. did not care / permissively let strikes occur to provoke anger or political reaction—requires transcript/timestamp preservation before WOL scores it.",
+      "downstream_note": "Do not score the title alone as bullshit. Separate (1) documented interceptor rationing/threat-based non-interception from (2) the stronger alleged motive/permission theory in the spoken body. The latter remains a transcript-capture target.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Current Atlas families distinguish physical damage, claimed effects, and some causal attributions, but no clean canonical atom was found for an intentional U.S. decision to permit Iranian missiles to strike U.S. bases.",
+      "review_reason": "The title overlaps a supportable operational practice, while the reported body motive proposition is materially stronger and must be preserved from the spoken content before source-behavior scoring.",
       "content_body_evidence": {
         "medium": "AUDIO_VIDEO",
         "capture_status": "TITLE_DESCRIPTION_ONLY",
         "capture_scope": "Publisher title/description/video identity captured. Spoken-body transcript or timestamped direct review is not yet preserved, so no narrative/inference decomposition is permitted.",
         "transcript_receipts": [],
         "body_claims": []
+      },
+      "project_owner_direct_review": {
+        "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
+        "observation": "Project owner reports Valenti said the U.S. essentially did not care and permitted the strikes in order to anger other actors, not merely that defenses rationed interceptors against missiles expected to miss valuable targets.",
+        "evidentiary_limit": "Exact captions/timestamps are not yet machine-recovered, so this body-level motive proposition is not yet a scored WOL-native incident."
       }
     }
   ]
