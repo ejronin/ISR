@@ -695,3 +695,53 @@ knowledge attribution for every operator or post.
 
 The discovery queue cutoff is the newest reviewed cutoff across canonical
 Evidence Integration handoffs and native Web-of-Lies discovery intake.
+
+
+## 30. Source dossiers, external assessments and public infrastructure context
+
+Web of Lies may maintain review-controlled source dossiers for public identities,
+accounts, outlets, organizations and influence networks before a specific
+claim-family incident has been attached.
+
+A source dossier may preserve:
+
+- stable source identities and aliases;
+- account/network membership supported by public receipts;
+- research-lead status;
+- third-party credibility or coordination assessments;
+- public platform/account state;
+- public infrastructure/location observations with explicit inference limits.
+
+External assessments are context, not Atlas verdicts. A third-party rating,
+fact-check, network study, platform enforcement action or influence-operation
+report does not automatically assign an Atlas behavior class and does not add
+Hall of Shame score. Atlas behavior classes remain tied to documented incident
+records under this contract.
+
+Public infrastructure observations likewise do not score Hall behavior. Preserve
+the exact observation and the inference ceiling. In particular:
+
+- server or hosting country != operator country;
+- registrar country != publisher country;
+- shared CDN/hosting != common operator;
+- platform-reported location != verified personal geolocation;
+- possible VPN/proxy use != established VPN/proxy use;
+- public network metadata must not be converted into hidden-IP collection.
+
+Research leads are a non-adverse work queue. Inclusion means only that a public
+identity/account is worth claim-first investigation. Leads remain unscored until
+material Atlas claim activity is documented. Final lead dispositions are:
+
+- MATERIAL_WOL_HISTORY_FOUND;
+- LIMITED_RELEVANT_ACTIVITY;
+- CARRIER_ONLY;
+- NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND;
+- IDENTITY_UNRESOLVED;
+- UPSTREAM_REVIEW_REQUIRED.
+
+PENDING_CLAIM_FIRST_RESEARCH is permitted while a lead remains open.
+
+Legacy influence research may be migrated into source dossiers only when the
+underlying public research remains reproducible. Preserve the assessor's actual
+scope. If research establishes coordination but not state sponsorship, Atlas
+must preserve exactly that distinction.
