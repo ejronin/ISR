@@ -682,7 +682,7 @@ def bullshit_award_for_events(
     if len(distinct) < minimum:
         return None
 
-    qualifying_event_ids = sorted(
+    qualifying_incident_ids = sorted(
         str(event.get("event_id") or event.get("incident_id") or "")
         for event in distinct.values()
         if str(event.get("event_id") or event.get("incident_id") or "")
@@ -694,7 +694,7 @@ def bullshit_award_for_events(
         "window_days": int(cfg.get("window_days") or 30),
         "minimum_qualifying_incidents": minimum,
         "qualifying_incident_count": len(distinct),
-        "qualifying_event_ids": qualifying_event_ids,
+        "qualifying_incident_ids": qualifying_incident_ids,
         "as_of": as_of,
         "public_verdict": (
             f"{label} — {len(distinct)} qualifying bullshit incidents "
