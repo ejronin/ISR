@@ -652,3 +652,46 @@ Ledger families, evidence drawers or propagation ecosystems have been swept.
 
 The machine-readable completion claim remains NONE until a distinct,
 documented corpus-wide completion process exists.
+
+
+## 29. Native discovery intake
+
+Web of Lies may discover public information-operation, collaborative-reference,
+cyber, hacktivist or influence evidence before Claims Forensics has created or
+assigned a canonical Lie Ledger family.
+
+Those discoveries must not be forced into an unrelated claim family merely so
+they can enter the lineage graph.
+
+A native discovery is review-queue material, not a scored lineage event. It
+must carry:
+
+- a stable discovery ID;
+- one of FORENSIC_DISCOVERY, EVIDENCE_PROMOTION_CANDIDATE, or
+  ADJUDICATION_REVIEW_CANDIDATE;
+- a null canonical claim-family reference;
+- reproducible public receipts;
+- the observable statement/event identity;
+- attribution confidence and attribution scope;
+- explicit downstream handling notes;
+- the upstream review target and reason.
+
+Native discoveries are routed to Information Claims & Forensic Adjudication.
+Until that authority assigns a canonical family, the discovery cannot enter
+Hall of Shame scoring, claim-family propagation metrics, or direct-verdict
+generation.
+
+Cyber discoveries must preserve the distinction among actor attribution,
+claimed compromise, independently verified compromise, authenticity of
+released material, and downstream narrative use.
+
+Shared state affiliation, common ideology, similar personas, overlapping leak
+sites, or use of the same target class does not establish that two cyber actors
+or publication identities are the same entity.
+
+A government or court attribution is recorded at the scope actually supported
+by that source. Organizational attribution does not silently become personal
+knowledge attribution for every operator or post.
+
+The discovery queue cutoff is the newest reviewed cutoff across canonical
+Evidence Integration handoffs and native Web-of-Lies discovery intake.
