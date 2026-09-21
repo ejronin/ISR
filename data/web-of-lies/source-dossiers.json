@@ -984,7 +984,7 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Multiple Iran-war factual-claim surfaces are routed claim-by-claim. Title/thumbnail evidence may seed a discovery, but narrative findings require transcript or timestamped direct review. A dedicated body-capture queue now tracks nuclear, ground-invasion and related packaging claims. Existing July/Sep review candidates remain unscored pending upstream adjudication.",
+      "notes": "Multiple Iran-war/public-affairs factual-claim surfaces are routed claim-by-claim. WOL-native evidentiary review now records six distinct qualifying unsupported/misleading presentation incidents from July 22 through August 6, plus a September 17 31-million-soldiers generalization. The deterministic Bullshitter award is derived from those incident records rather than manually assigned. Body-level narrative remains transcript/timestamp gated where the behavior finding depends on spoken content.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1043,6 +1043,374 @@
       "current_disposition": "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
       "notes": "The exact public handle @zachforthepeople was identified by FOX 9 in 2023 as Zach Metzger, resolving the account identity. Current public searches did not surface material 2026 Iran-war claim activity tied to this handle; absence is bounded to the reviewed public corpus."
+    }
+  ],
+  "source_behavior_incidents": [
+    {
+      "incident_id": "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-07-22",
+      "first_observed_at": "2026-07-22",
+      "statement_identity": "Publisher headline stated that Trump gave Saudi Arabia nuclear weapons.",
+      "source_information_event_id": "VALENTI-YT-nqdb4mLOCEM",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-SAUDI-NUKES-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=nqdb4mLOCEM",
+          "published_at": "2026-07-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "BREAKING: Trump gives SAUDI ARABIA NUCLEAR WEAPONS"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-SAUDI-NUKES-PROMO",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/039w7hoz1Nc",
+          "published_at": "2026-07-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Publisher promotional short repeats the episode title."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-SAUDI-123-DOE-20260722",
+          "surface": "WEBSITE",
+          "url": "https://www.energy.gov/articles/united-states-and-saudi-arabia-reach-historic-nuclear-cooperation-agreement",
+          "published_at": "2026-07-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "DOE describes a peaceful civil nuclear cooperation agreement and safeguards framework."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-SAUDI-123-REUTERS-20260722",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/why-does-saudi-arabia-want-civil-nuclear-deal-with-us-2026-07-22/",
+          "published_at": "2026-07-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters describes civil nuclear cooperation and proliferation concerns, not a weapons transfer."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title/promo plus contemporaneous U.S. Department of Energy and Reuters coverage of the July 22 U.S.-Saudi nuclear agreement.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The observable factual substrate was a Section 123 civil nuclear cooperation and safeguards agreement. No reviewed source supported transfer of U.S. nuclear weapons to Saudi Arabia.",
+        "search_notes": "The title converts a civil nuclear-cooperation agreement into a literal nuclear-weapons transfer. The underlying agreement is real; the weapons-transfer conclusion is not supported by the reviewed record.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Presentation-level WOL behavior finding. Any canonical proposition about weapons transfer may still be routed to Claims Forensics separately.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Preserve canonical truth adjudication separately from WOL's source-behavior finding."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-07-23",
+      "first_observed_at": "2026-07-23",
+      "statement_identity": "Publisher headline stated that Trump sent nuclear-armed jets toward Iran.",
+      "source_information_event_id": "VALENTI-YT-b44N3cLIDrA",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-NUCLEAR-JETS-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=b44N3cLIDrA",
+          "published_at": "2026-07-23",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump sends NUCLEAR ARMED JETS towards Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-NUCLEAR-JETS-SECONDARY",
+          "surface": "THREADS",
+          "url": "https://www.threads.com/@leonoe1986/post/DbV0ykRkqT8",
+          "published_at": "2026-07-23",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Public repost preserves the Valenti title and July 23 publication timing."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-B1-PBS-20260723",
+          "surface": "WEBSITE",
+          "url": "https://www.pbs.org/wnet/amanpour-and-company/video/july-23-2026-n3owla/",
+          "published_at": "2026-07-23",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Contemporaneous analysis says the B-1 bombers heading to the region were no longer nuclear capable and carried conventional weapons."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher headline plus contemporaneous reporting/analysis on the bomber deployment and the aircraft's nuclear status.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The observable deployment involved B-1 bombers. Contemporaneous reporting explicitly identified those aircraft as formerly, not currently, nuclear capable and discussed conventional payloads.",
+        "search_notes": "A real bomber movement was converted into a claim that the aircraft were nuclear armed. No reviewed evidence supported nuclear weapons aboard the deployed aircraft.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Counts the title/presentation claim, not an inference about what the body later said.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical weapon/deployment truth remains upstream; WOL records the unsupported public presentation."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-07-30",
+      "first_observed_at": "2026-07-30",
+      "statement_identity": "Publisher headline presented a Russian missile incursion/crash as 'Russia Bombs Poland.'",
+      "source_information_event_id": "VALENTI-YT-Tj11SNKxGWg",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-RUSSIA-POLAND-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=Tj11SNKxGWg",
+          "published_at": "2026-07-30",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "BREAKING: Russia Bombs Poland ..."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-RUSSIA-POLAND-PROMO",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/bZyKBKOX08Y",
+          "published_at": "2026-07-30",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Publisher promotional short repeats the episode title."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-POLAND-TUSK-REUTERS-20260730",
+          "surface": "WEBSITE",
+          "url": "https://www.reutersconnect.com/item/pm-tusk-says-russian-missile-crashed-in-poland/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1ZBMjAyMzMwMDcyMDI2UlAx",
+          "published_at": "2026-07-30",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Poland said a Russian missile violated its airspace and crashed, with no reason to believe Poland was the target."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title/promo and contemporaneous Reuters preservation of Polish Prime Minister Donald Tusk's on-site assessment.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The supported substrate is a Russian missile crossing Polish airspace and crashing there during an attack on Ukraine. Poland's prime minister said there was no reason to believe Poland was the target.",
+        "search_notes": "The title upgrades a documented incursion/crash during an attack on Ukraine into 'Russia Bombs Poland.' The attack-on-Poland implication is not supported by the reviewed evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "The Russian origin and Polish impact are preserved as supported substrate; only the attack-on-Poland bridge is scored.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical NATO/Russia attack proposition remains an upstream truth-adjudication question."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-08-03",
+      "first_observed_at": "2026-08-03",
+      "statement_identity": "Publisher headline stated that Trump cancelled a nuclear strike on Iran.",
+      "source_information_event_id": "VALENTI-YT-0ZArFpj6zyA",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-CANCEL-NUCLEAR-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=0ZArFpj6zyA",
+          "published_at": "2026-08-03",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump CANCELS THE NUCLEAR STRIKE on Iran"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-CANCEL-NUCLEAR-PROMO",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/zAvTak9ydPE",
+          "published_at": "2026-08-03",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Publisher promotional short repeats the nuclear-strike title."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-CANCEL-ATTACK-REUTERS-20260803",
+          "surface": "WEBSITE",
+          "url": "https://theprint.in/world/iran-says-no-talks-are-under-way-with-united-states-after-trump-calls-off-attacks/3004132/",
+          "published_at": "2026-08-03",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Reuters reporting describes cancelled massive attacks/strikes, not use of a nuclear weapon."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title/promo plus contemporaneous Reuters reporting on the attack Trump said he had authorized and then called off.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Contemporaneous reporting supports that Trump called off planned massive attacks on Iran. The reviewed record did not support a planned nuclear-weapon strike.",
+        "search_notes": "If 'nuclear strike' was intended to mean a strike on nuclear-related targets, the title strips that object qualifier and presents a materially stronger proposition. If it meant nuclear-weapon use, no reviewed evidence supports it. Either reading leaves the public presentation unsupported at the strength stated.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "This is a presentation finding. Body-level narrative remains separately body-gated.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical attack-plan semantics remain upstream; WOL records the unsupported strength of the publisher headline."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-08-04",
+      "first_observed_at": "2026-08-04",
+      "statement_identity": "Publisher headline stated that the U.S. military was out of ammunition.",
+      "source_information_event_id": "VALENTI-YT-gk5CXHCQEOU",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-OUT-AMMO-20260804-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=gk5CXHCQEOU",
+          "published_at": "2026-08-04",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "BREAKING: The U.S military is OUT OF AMMO!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-MISSILE-STOCKS-REUTERS-20260804",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/us-has-used-virtually-all-its-long-range-precision-missiles-during-iran-war-2026-08-04/",
+          "published_at": "2026-08-04",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters reports severe depletion in specific long-range precision missile classes, not zero ammunition across the military."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher headline and contemporaneous Reuters reporting on U.S. ammunition and missile inventories.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The supported substrate was extreme depletion of ATACMS/PrSM and pressure on other selected munition stocks.",
+        "search_notes": "The title generalizes severe shortages in particular weapon classes into the entire U.S. military being 'out of ammo.' The reviewed evidence does not support that whole-force conclusion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "A genuine munitions-shortage story is preserved as the substrate; the whole-force zero-inventory generalization is the scored behavior.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical readiness/inventory propositions remain distinct from this source-presentation finding."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-08-06",
+      "first_observed_at": "2026-08-06",
+      "statement_identity": "Publisher headline stated that Trump admitted the United States was out of ammunition.",
+      "source_information_event_id": "VALENTI-YT-eTaqz-Wui18",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-ADMITS-AMMO-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=eTaqz-Wui18",
+          "published_at": "2026-08-06",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump ADMITS the U.S is OUT OF AMMO!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-ADMITS-AMMO-PROMO",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/pTXCYjHVYMY",
+          "published_at": "2026-08-06",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Publisher promotional short repeats the episode title."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-MUNITIONS-REUTERS-20260806",
+          "surface": "WEBSITE",
+          "url": "https://www.reutersconnect.com/item/trump-says-he-thinks-war-with-iran-will-end-pretty-soon/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1ZBMzc5MjA2MDgyMDI2UlAx",
+          "published_at": "2026-08-06",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump said some munition types were tighter but described overall supplies as massive and some as virtually unlimited."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title/promo and Reuters' August 6 video/transcript of Trump's direct answer about U.S. munitions supply.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump acknowledged some munition types were tighter while saying other types were in very large supply and that overall ammunition holdings were massive.",
+        "search_notes": "The title says Trump admitted the U.S. was out of ammo. The preserved direct statement says the opposite at whole-force level while acknowledging narrower shortages.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct August 6 republication/reframing; not deduplicated with the separate August 4 episode.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Direct quotation semantics support the WOL behavior finding without changing canonical readiness adjudication."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-31M-SOLDIERS-20260917",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-09-17",
+      "first_observed_at": "2026-09-17",
+      "statement_identity": "Publisher headline stated that Iran mobilized 31 million soldiers for a U.S. invasion.",
+      "source_information_event_id": "VALENTI-YT-QfDgemtUt04",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-31M-SOLDIERS-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=QfDgemtUt04",
+          "published_at": "2026-09-17",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Iran mobilizes 31 MILLION soldiers for the U.S invasion"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRAN-TRAINING-AP-20260918",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/03488b5cc4c13ecac1a27096b1641972",
+          "published_at": "2026-09-18",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "AP reports over 600,000 registered for military training, with over one million expected to participate."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-JANFADA-SCOPE-AJ-20260920",
+          "surface": "WEBSITE",
+          "url": "https://www.aljazeera.com/economy/2026/9/20/whats-behind-iranian-authorities-push-for-a-mass-mobilisation-campaign",
+          "published_at": "2026-09-20",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The broader campaign was not exclusively military; organizers said 26 percent selected military/security work."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-JANFADA-31M-IRAN-20260919",
+          "surface": "WEBSITE",
+          "url": "https://oananews.org/node/713030",
+          "published_at": "2026-09-19",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Iranian reporting describes 31 million as campaign registrations/readiness, not 31 million trained soldiers."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher headline, Iranian campaign reporting, AP rally/training reporting, and reporting on the campaign's military versus nonmilitary categories.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A roughly 31-million campaign registration/readiness claim exists, but the campaign includes nonmilitary roles; contemporaneous military-training registration was reported above 600,000 with more than one million expected.",
+        "search_notes": "The title converts a broad and disputed campaign-registration figure into 31 million soldiers mobilized for a U.S. invasion. The factual substrate does not support that conversion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Separate September incident; outside the July-August earning cluster but relevant to current source behavior.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Existing canonical training family should atomize registration, training participation, soldier status and invasion framing separately."
     }
   ]
 }
