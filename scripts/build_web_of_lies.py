@@ -16,6 +16,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 
+import web_of_lies_network as wol_network
+
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = "data/canonical-current-state-v2.json"
 FORENSIC_INPUT = "data/web-of-lies/forensic-records.json"
@@ -365,6 +367,8 @@ def validate_forensic_input(
                     f"source profile {source_id} revenue class {revenue_class} is not supported by its revenue-basis events"
                 )
 
+    wol_network.validate_extended_forensic_input(forensic, governance)
+
 
 def empty_metrics() -> dict[str, int | None]:
     return {
@@ -387,15 +391,21 @@ def empty_metrics() -> dict[str, int | None]:
 
 def metrics_for_events(events: list[dict[str, Any]]) -> dict[str, int | None]:
     metrics = empty_metrics()
+    corrected_targets = wol_network.corrected_target_ids(events)
     adverse_families = {
         str(event["claim_family_id"])
         for event in events
         if str(event.get("event_type") or "") in ADVERSE_FAMILY_EVENT_TYPES
+        and str(event.get("event_id") or "") not in corrected_targets
     }
     metrics["claim_families_traced"] = len(adverse_families)
     downstream_values = []
     for event in events:
-        metric_key = METRIC_EVENT_TYPES.get(str(event.get("event_type") or ""))
+        event_type = str(event.get("event_type") or "")
+        event_id = str(event.get("event_id") or "")
+        metric_key = METRIC_EVENT_TYPES.get(event_type)
+        if metric_key == "failed_claims_deleted_or_abandoned" and event_id in corrected_targets:
+            metric_key = None
         if metric_key:
             metrics[metric_key] = int(metrics[metric_key] or 0) + 1
         downstream = event.get("downstream_propagation_observed")
@@ -499,6 +509,7 @@ def source_profiles_with_metrics(
         record["classification_basis_event_ids"] = unique_strings(record.get("classification_basis_event_ids"))
         record["revenue_basis_event_ids"] = unique_strings(record.get("revenue_basis_event_ids"))
         record["metrics"] = metrics_for_events(by_source.get(str(record["source_id"]), []))
+        record["direct_verdict"] = wol_network.direct_verdict(record["metrics"])
         output.append(record)
     return sorted(output, key=lambda item: item["source_id"])
 
@@ -589,6 +600,11 @@ def build_registry(
     all_time = ranking_view(profiles, information_events, supported_classes)
     recent_events = current_period_events(information_events, canonical, period_days)
     current_period = ranking_view(profiles, recent_events, supported_classes)
+    network_analysis = wol_network.derive_network_analysis(
+        information_events,
+        relationships,
+        profiles,
+    )
 
     return {
         "schema_version": "1.0",
@@ -609,6 +625,14 @@ def build_registry(
             [dict(item) for item in (forensic.get("promotion_flags") or [])],
             key=lambda item: item["flag_id"],
         ),
+        "network_analysis": network_analysis,
+        "incremental_rebuild_contract": {
+            "affected_family_isolation": True,
+            "unaffected_family_state_preserved": True,
+            "source_profiles_and_hall_recomputed_when_affected": True,
+            "clean_full_build_equivalence_required": True,
+            "stale_previous_registry_fails_closed": True,
+        },
         "hall_of_shame": {
             "algorithm_version": "WOL-HOS-1",
             "top_n_per_class": 3,
@@ -641,6 +665,30 @@ def build_registry(
             "current_period": current_period,
         },
     }
+
+
+def build_registry_incremental(
+    canonical: dict[str, Any],
+    forensic: dict[str, Any],
+    governance: dict[str, Any],
+    previous_registry: dict[str, Any],
+    affected_family_ids: set[str],
+) -> dict[str, Any]:
+    full = build_registry(canonical, forensic, governance)
+    canonical_family_ids = {
+        row["claim_family_id"] for row in derive_claim_families(canonical, [], [])
+    }
+    canonical_identity = str(
+        (canonical.get("release") or {}).get("canonical_state_identity_v2") or "UNKNOWN"
+    )
+    return wol_network.merge_incremental_with_full_equivalence(
+        full,
+        previous_registry,
+        set(affected_family_ids),
+        canonical_family_ids,
+        canonical_identity,
+        canonical_bytes,
+    )
 
 
 def main() -> int:
