@@ -847,9 +847,24 @@ Public label:
 
 The award is deterministic. It is never manually assigned.
 
-A source earns the award when it has **more than five qualifying incidents in a
-rolling 30-day window**. The machine threshold is therefore six distinct
-qualifying information events.
+A source earns the award when it has **more than five qualifying incidents in any
+30-day window**. The machine threshold is therefore six distinct qualifying
+information events.
+
+The award is **earned and persistent**. Once a source has a documented qualifying
+30-day cluster, the award does not disappear merely because that cluster later
+falls outside the current 30-day window. WOL records the first qualifying window
+that earned the award and separately reports current-window activity.
+
+Current status is:
+
+- **ACTIVE_CURRENT_WINDOW** — the source also has at least six qualifying incidents
+  in the 30 days ending at the current evidence cutoff;
+- **EARNED_HISTORICAL** — the source earned the award previously but does not
+  currently meet the six-in-30-day threshold.
+
+Undated incidents cannot establish the time-bounded award, although they remain
+preserved elsewhere in the forensic record.
 
 A qualifying incident is a source-authored or source-presented factual event in
 which the relevant proposition, presentation, inferential bridge, or factual
@@ -903,10 +918,15 @@ information event.
 A correction does not erase the fact that the qualifying incident occurred.
 Corrections remain separately credited in the behavioral record and Hall metrics.
 
-The award must carry the qualifying incident count and qualifying incident IDs. Those IDs may identify canonical information events or WOL-native source-behavior incidents. The public
-verdict may say, plainly:
+The award must carry the earning-window start/end, the qualifying incident count
+and IDs, whether the award is currently active, and the current-window incident
+count/IDs. Those IDs may identify canonical information events or WOL-native
+source-behavior incidents.
 
-> **Bullshitter — N qualifying bullshit incidents in the rolling 30-day window.**
+The public verdict may say, plainly:
+
+> **Bullshitter — award earned [start] through [end] with N qualifying bullshit
+> incidents; M in the current 30-day window.**
 
 This award is a source-behavior finding. It does not rewrite Claims Forensics'
 canonical truth/knowledge/deception adjudications and does not make every other
