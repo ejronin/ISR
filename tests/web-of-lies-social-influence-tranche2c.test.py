@@ -201,6 +201,28 @@ assert all("TRANSCRIPT" in row["required_next_evidence"] for row in body_queue)
 assert any(row["url"].endswith("ESojA5kxiFY") for row in body_queue)
 assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
 
+nuke_jets = next(row for row in body_queue if row["research_item_id"] == "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026")
+assert nuke_jets["url"].endswith("b44N3cLIDrA")
+assert nuke_jets["publication_date"] == "2026-07-23"
+assert "nuclear warheads" in nuke_jets["project_owner_direct_review"]["observation"]
+assert nuke_jets["project_owner_direct_review"]["review_status"] == "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED"
+
+nuke_cancel = next(row for row in body_queue if row["research_item_id"] == "VALENTI-BODY-NUKE-CANCEL-20260803")
+assert "nuclear-warhead use" in nuke_cancel["project_owner_direct_review"]["observation"]
+
+allow_body = next(row for row in body_queue if row["research_item_id"] == "VALENTI-BODY-ALLOWS-MISSILES-20260727")
+assert allow_body["url"].endswith("H0BfiwKhoVs")
+assert "interceptor-triage" in allow_body["research_reason"]
+assert "provoke anger" in allow_body["research_reason"]
+assert "not care" in allow_body["project_owner_direct_review"]["observation"]
+assert "Exact transcript wording/timestamps remain required" in allow_body["project_owner_direct_review"]["evidentiary_limit"]
+
+# Project-owner body review resolves intended meaning for the nuclear items but
+# does not masquerade as a machine-recovered transcript.
+assert behavior_incidents["WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723"]["body_review_context"]["provenance"] == "PROJECT_OWNER_DIRECT_REVIEW"
+assert behavior_incidents["WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723"]["body_review_context"]["transcript_status"] == "NOT_MACHINE_RECOVERED"
+assert "nuclear-warhead use" in behavior_incidents["WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803"]["body_review_context"]["observation"]
+
 # Valenti now has a separate WOL-native source-behavior record. These findings
 # score the publisher-authored presentation itself; they do not bypass the
 # transcript gate for claims about what was said inside a video.
