@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T19:35:00-04:00",
+  "as_of": "2026-09-21T20:05:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -935,9 +935,9 @@
         "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/071326-traffic-via-strait-of-hormuz-falls-to-11-ships-july-12-after-us-iran-attacks",
         "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/"
       ],
-      "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
+      "current_disposition": "UPSTREAM_REVIEW_REQUIRED",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Hormuz commentary is materially relevant, but sampled July shipping assertions were consistent with independent S&P Global/Reuters/Kpler reporting: roughly 130 prewar daily transits, 11 ships on July 12, and later three commodity crossings during renewed escalation. No adverse WOL incident is assigned from that sample."
+      "notes": "The transit-count substrate in the July 20 Hormuz commentary is substantially supported, but the article makes a distinct causal claim that successive U.S. strikes were themselves producing the shutdown. That inferential bridge is routed upstream for adjudication; accurate counts do not validate the causal explanation."
     },
     {
       "lead_id": "LEAD-MEIDASTOUCH",
@@ -984,7 +984,54 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Multiple Iran-war factual-claim surfaces are being routed claim-by-claim. Direct-video review seeds now include the 31-million mobilization title, broad whole-base destruction title, U.S.-casualty concealment allegation, intentional non-interception allegation, and a July 20 '17 U.S. service members KIA' nearby comparator. The comparator is not an adverse finding merely because its wording is dramatic."
+      "notes": "Multiple Iran-war factual-claim surfaces are routed claim-by-claim. Title/thumbnail evidence may seed a discovery, but narrative findings require transcript or timestamped direct review. A dedicated body-capture queue now tracks nuclear, ground-invasion and related packaging claims. Existing July/Sep review candidates remain unscored pending upstream adjudication.",
+      "body_capture_queue": [
+        {
+          "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
+          "title": "Trump asked to nuke Iran...",
+          "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
+          "publication_date": "2026-04-21",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Determine what request/proposal is actually described in-body, who allegedly asked whom, and whether the title overstates discussion, contingency planning, advocacy, or an actual request."
+        },
+        {
+          "research_item_id": "VALENTI-BODY-NUKE-CANCEL-20260803",
+          "title": "Trump CANCELS THE NUCLEAR STRIKE on Iran",
+          "url": "https://www.youtube.com/watch?v=0ZArFpj6zyA",
+          "publication_date": "2026-08-03",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Determine whether the body establishes an authorized/planned nuclear strike that was cancelled, or whether the packaging converts discussion/contingency/rhetoric into an operational event."
+        },
+        {
+          "research_item_id": "VALENTI-BODY-GROUND-INVASION-2026",
+          "title": "Trump announces FULL SCALE GROUND INVASION of Iran",
+          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "publication_date": null,
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Determine what Trump actually announced versus what the creator inferred from force posture, rhetoric, planning, or third-party commentary."
+        },
+        {
+          "research_item_id": "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026",
+          "title": "Trump sends NUCLEAR ARMED JETS towards Iran.",
+          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "publication_date": null,
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Separate aircraft nuclear capability from evidence that the deployed aircraft were carrying nuclear weapons and from any claimed intent to use them."
+        },
+        {
+          "research_item_id": "VALENTI-BODY-SAUDI-NUCLEAR-WEAPONS-2026",
+          "title": "BREAKING: Trump gives SAUDI ARABIA NUCLEAR WEAPONS",
+          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "publication_date": null,
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Determine whether the body alleges literal transfer of nuclear weapons, nuclear-capable systems, extended deterrence, basing, planning, or some other proposition."
+        }
+      ]
     },
     {
       "lead_id": "LEAD-ZACH-FOR-THE-PEOPLE",
