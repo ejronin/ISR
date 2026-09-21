@@ -45,6 +45,42 @@ def main() -> int:
     derived_families = {row["claim_family_id"] for row in registry["claim_families"]}
     require(derived_families == canonical_families, "claim-family set differs from canonical Lie Ledger chains")
 
+    coverage = registry["corpus_coverage"]
+    coverage_rows = coverage["family_coverage"]
+    coverage_families = {row["claim_family_id"] for row in coverage_rows}
+    require(
+        coverage_families == canonical_families,
+        "corpus coverage does not span every canonical Lie Ledger family",
+    )
+    require(
+        coverage["completion_claim"] == "NONE",
+        "corpus coverage may not declare research completion",
+    )
+    coverage_summary = coverage["summary"]
+    require(
+        coverage_summary["canonical_claim_families"] == len(canonical_families),
+        "corpus coverage family count differs from canonical Lie Ledger",
+    )
+    require(
+        coverage_summary["families_with_non_anchor_lineage"]
+        + coverage_summary["families_without_non_anchor_lineage"]
+        == len(canonical_families),
+        "corpus coverage non-anchor partition is incomplete",
+    )
+    require(
+        coverage_summary["families_with_public_osint_receipts"]
+        + coverage_summary["families_without_public_osint_receipts"]
+        == len(canonical_families),
+        "corpus coverage public-OSINT partition is incomplete",
+    )
+    for row in coverage_rows:
+        if row["coverage_status"] == "ANCHOR_ONLY":
+            require(
+                row["non_anchor_lineage_events"] == 0
+                and "NO_NON_ANCHOR_LINEAGE" in row["research_gaps"],
+                f"anchor-only family {row['claim_family_id']} lacks an explicit research gap",
+            )
+
     network = registry["network_analysis"]
     summary = network["summary"]
     require(

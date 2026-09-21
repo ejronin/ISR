@@ -383,6 +383,58 @@ circular["relationships"] = [
 built_circular = wol.build_registry(canonical, circular, governance)
 assert built_circular["network_analysis"]["summary"]["circular_source_findings"] == 1
 
+# Corpus coverage must expose anchor-only families instead of treating a rich exemplar as completion.
+coverage = copy.deepcopy(base)
+coverage["source_profiles"] = [profile("SRC-COV-A"), profile("SRC-COV-B")]
+coverage["information_events"] = [
+    event(
+        "E-COV-A-ANCHOR",
+        "SRC-COV-A",
+        family="CHAIN-A",
+        event_type="CANONICAL_CLAIM_ANCHOR",
+        public_receipts=[],
+        evidence_source_ids=["SRC-CANON-1"],
+    ),
+    event(
+        "E-COV-B-ANCHOR",
+        "SRC-COV-B",
+        family="CHAIN-B",
+        event_type="CANONICAL_CLAIM_ANCHOR",
+        public_receipts=[],
+        evidence_source_ids=["SRC-CANON-1"],
+    ),
+    event(
+        "E-COV-B-TRACE",
+        "SRC-COV-B",
+        family="CHAIN-B",
+        event_type="REPORTS",
+        independence="DERIVATIVE",
+        public_receipts=[receipt("R-COV-B", "WIKIPEDIA", revision_id="987654")],
+    ),
+]
+coverage["relationships"] = [
+    {
+        "relationship_id": "REL-COV-B",
+        "from_id": "E-COV-B-TRACE",
+        "to_id": "E-COV-B-ANCHOR",
+        "relationship_type": "DERIVES_FROM",
+        "evidence_source_ids": [],
+        "public_receipts": [receipt("RR-COV-B", "WIKIPEDIA", revision_id="987654")],
+    }
+]
+built_coverage = wol.build_registry(canonical, coverage, governance)
+coverage_by_family = {
+    row["claim_family_id"]: row
+    for row in built_coverage["corpus_coverage"]["family_coverage"]
+}
+assert coverage_by_family["CHAIN-A"]["coverage_status"] == "ANCHOR_ONLY"
+assert coverage_by_family["CHAIN-A"]["non_anchor_lineage_events"] == 0
+assert "NO_NON_ANCHOR_LINEAGE" in coverage_by_family["CHAIN-A"]["research_gaps"]
+assert coverage_by_family["CHAIN-B"]["coverage_status"] == "LINEAGE_TRACED"
+assert coverage_by_family["CHAIN-B"]["public_receipt_count"] == 1
+assert built_coverage["corpus_coverage"]["summary"]["families_without_non_anchor_lineage"] == 1
+assert built_coverage["corpus_coverage"]["completion_claim"] == "NONE"
+
 # Incremental + preserved unaffected state must equal a clean full build.
 before = copy.deepcopy(base)
 before["source_profiles"] = [profile("SRC-INC-A"), profile("SRC-INC-B")]

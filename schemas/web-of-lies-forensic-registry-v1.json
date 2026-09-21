@@ -16,7 +16,8 @@
     "promotion_flags",
     "hall_of_shame",
     "network_analysis",
-    "incremental_rebuild_contract"
+    "incremental_rebuild_contract",
+    "corpus_coverage"
   ],
   "properties": {
     "schema_version": {
@@ -251,6 +252,145 @@
           "const": true
         }
       }
+    },
+    "corpus_coverage": {
+      "type": "object",
+      "required": [
+        "family_coverage",
+        "summary",
+        "completion_claim",
+        "interpretation"
+      ],
+      "properties": {
+        "family_coverage": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "claim_family_id",
+              "coverage_status",
+              "canonical_anchor_events",
+              "non_anchor_lineage_events",
+              "documented_relationships",
+              "origin_events",
+              "carrier_or_amplifier_events",
+              "correction_or_retraction_events",
+              "adverse_behavior_events",
+              "public_osint_events",
+              "public_receipt_count",
+              "research_gaps"
+            ],
+            "properties": {
+              "claim_family_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "coverage_status": {
+                "enum": [
+                  "CANONICAL_FAMILY_NO_LINEAGE",
+                  "ANCHOR_ONLY",
+                  "LINEAGE_SEEDED",
+                  "LINEAGE_TRACED"
+                ]
+              },
+              "canonical_anchor_events": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "non_anchor_lineage_events": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "documented_relationships": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "origin_events": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "carrier_or_amplifier_events": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "correction_or_retraction_events": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "adverse_behavior_events": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "public_osint_events": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "public_receipt_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "research_gaps": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "summary": {
+          "type": "object",
+          "required": [
+            "canonical_claim_families",
+            "status_counts",
+            "families_with_non_anchor_lineage",
+            "families_without_non_anchor_lineage",
+            "families_with_public_osint_receipts",
+            "families_without_public_osint_receipts"
+          ],
+          "properties": {
+            "canonical_claim_families": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "status_counts": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "families_with_non_anchor_lineage": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "families_without_non_anchor_lineage": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "families_with_public_osint_receipts": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "families_without_public_osint_receipts": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "completion_claim": {
+          "const": "NONE"
+        },
+        "interpretation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false,
