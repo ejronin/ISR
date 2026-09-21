@@ -1,0 +1,109 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-20T12:00:00-04:00",
+    "end": "2026-09-21T00:00:00-04:00",
+    "collection_time": "2026-09-20T23:57:23-04:00",
+    "evidence_horizon": "2026-09-21T00:00:00-04:00"
+  },
+  "lineage": {
+    "branch": "evidence/rook-catchup-20260919-0002",
+    "previous_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260920T1200ET.json"
+  },
+  "updates": [
+    {
+      "event_id": "HORMUZ-TRAFFIC-20260920-WEEKEND",
+      "update_type": "existing maritime drawer update / new commercial denominator",
+      "occurrence_time": "2026-09-19/2026-09-20",
+      "publication_time": "2026-09-20T22:36:00-04:00",
+      "finding": "Reuters/Kpler reported 12 trackable commodity-vessel transits through Hormuz over the weekend, down from 35 the prior weekend. Sunday comprised four exits and two entries; Saturday five exits and one entry. Reuters notes AIS-visible traffic understates dark transits. Prewar baseline cited was about 125 large commercial vessels daily.",
+      "status": "SUPPORTED COMMERCIAL-DATA DENOMINATOR; NOT NORMALIZED FREEDOM OF NAVIGATION",
+      "sources": ["https://www.reuters.com/world/middle-east/vessels-trickle-through-strait-hormuz-mideast-tension-persists-2026-09-21/"],
+      "drawer_effect": "Supersede the noon sweep's unresolved request for the next reliable Kpler denominator. Preserve prior daily counts as their own observation times."
+    },
+    {
+      "event_id": "SAUDI-OIL-EXPORT-REROUTING-20260920",
+      "update_type": "existing Saudi Petroline/Yanbu drawer update",
+      "occurrence_time": "2026-09-20",
+      "publication_time": "2026-09-20T22:36:00-04:00",
+      "finding": "Kpler provisional data reported Saudi crude exports recovered above 4 million bpd so far in September after 2.4 million bpd in August. Thirteen tankers carrying about 34 million barrels exited Hormuz in the week of Sep. 13; Saudi Arabia accounted for about half of exports and Iraq 35%. Reuters attributes the Saudi routing shift to attacks on the East-West pipeline and reduced Yanbu shipments.",
+      "status": "SUPPORTED COMMERCIAL-DATA FLOW UPDATE; PIPELINE REPAIR STATUS NOT RESOLVED",
+      "sources": ["https://www.reuters.com/world/middle-east/vessels-trickle-through-strait-hormuz-mideast-tension-persists-2026-09-21/","https://www.reuters.com/business/energy/oil-rises-after-houthi-attack-saudi-capital-2026-09-20/"],
+      "drawer_effect": "Update Saudi Petroline/Yanbu disposition with observed export rerouting and recovery; do not infer repaired pipeline or restored Yanbu capacity."
+    },
+    {
+      "event_id": "IRAN-US-DIPLOMACY-UNGA-20260920",
+      "update_type": "existing diplomacy drawer update",
+      "occurrence_time": "2026-09-20",
+      "publication_time": "2026-09-20",
+      "finding": "Reuters reported President Trump said he was open to meeting Iranian President Masoud Pezeshkian during UN General Assembly week while also issuing renewed threats if Iran did not make a deal. Iran simultaneously reiterated conditions-first Hormuz/negotiation sequencing. This is an expressed willingness to meet, not evidence of a scheduled meeting or agreed negotiating framework.",
+      "status": "SUPPORTED PUBLIC POSITION; NO MEETING OR AGREEMENT CONFIRMED",
+      "sources": ["https://www.reuters.com/world/asia-pacific/iran-warns-against-new-escalation-by-us-allies-2026-09-20/","https://www.reuters.com/business/energy/oil-rises-after-houthi-attack-saudi-capital-2026-09-20/"],
+      "drawer_effect": "Add U.S. meeting openness alongside Iranian conditions-first posture; preserve both without inferring convergence."
+    },
+    {
+      "event_id": "IRAN-US-ESCALATION-WARNING-20260920",
+      "update_type": "existing claim preservation",
+      "occurrence_time": "2026-09-20",
+      "publication_time": "2026-09-20",
+      "finding": "Reuters preserved Iran's military claim that it possessed information an attack was being prepared, but reported no elaboration. No independent evidence located in this sweep substantiates privileged Iranian foreknowledge. A subsequent attack, if one occurs, must not by itself validate the claimed intelligence provenance.",
+      "status": "FOREKNOWLEDGE CLAIM REMAINS UNVERIFIED",
+      "sources": ["https://www.reuters.com/world/asia-pacific/iran-warns-against-new-escalation-by-us-allies-2026-09-20/"],
+      "drawer_effect": "No adjudicative upgrade. Preserve warning, retaliation policy, and claimed intelligence provenance as separate propositions."
+    }
+  ],
+  "prior_drawer_review": [
+    {"drawer":"Hormuz vessel traffic","action":"UPDATE","reason":"New Kpler weekend denominator: 12 trackable commodity transits versus 35 prior weekend."},
+    {"drawer":"Saudi Petroline / Yanbu","action":"UPDATE","reason":"New Kpler export-flow evidence shows Saudi crude rerouting/recovery through Hormuz; repair status remains unresolved."},
+    {"drawer":"Iran-Qatar-U.S. settlement conditions / Hormuz sequencing","action":"UPDATE","reason":"U.S. public openness to a Pezeshkian meeting adds diplomatic posture but no agreed framework."},
+    {"drawer":"IRAN-US-ESCALATION-WARNING-20260920","action":"NO ADJUDICATIVE CHANGE","reason":"No independent evidence found supporting claimed privileged foreknowledge."},
+    {"drawer":"RIYADH-AIRPORT-AERIAL-THREAT-20260919","action":"NO MATERIAL ATTRIBUTION CHANGE FOUND","reason":"Observed fuel-area plume remains supported; weapon-to-damage attribution unresolved."},
+    {"drawer":"Qeshm MQ-9 / 52nd-53rd aggregate","action":"NO MATERIAL CHANGE FOUND","reason":"No new independent type-specific loss evidence located in-window."},
+    {"drawer":"RSAF F-15SA loss","action":"NO MATERIAL CHANGE FOUND","reason":"No new operator, crew-fate, or causation evidence located in-window."},
+    {"drawer":"U.S. fatalities 18 vs 22","action":"NO MATERIAL CHANGE FOUND","reason":"No authoritative reconciliation located in-window."},
+    {"drawer":"Lebanon / Hezbollah / UNIFIL transition","action":"NO MATERIAL CHANGE FOUND","reason":"No in-window evidence located that materially supersedes the Sep. 19 UNIFIL transition reporting."}
+  ],
+  "coverage": {
+    "military":"covered: Iran/U.S. escalation claim review; Saudi/Houthi prior event checked",
+    "maritime":"covered: new Reuters/Kpler Hormuz weekend denominator and dark-transit caveat",
+    "infrastructure":"covered: Saudi Petroline/Yanbu disposition reviewed; no repair-status resolution",
+    "diplomacy":"covered: U.S. meeting openness, Iranian conditions-first posture",
+    "economy_sanctions_energy":"covered: Saudi export recovery/rerouting and oil-market response; no new Treasury action located in-window",
+    "claims_corrections":"covered: Iranian foreknowledge claim held unverified; no false claim erased",
+    "human_impact":"covered with limitation: no material new authoritative casualty/displacement denominator located in-window",
+    "osint_commercial":"covered through open Reuters reporting of Kpler data; no direct paid Kpler, MarineTraffic, Planet, Maxar, or other commercial terminal access"
+  },
+  "unresolved_questions": [
+    "What is Iran's undisclosed seventh settlement condition?",
+    "Will Washington and Tehran actually schedule a UNGA-week meeting, and under what agenda/sequencing?",
+    "What precise conduct and actors are covered by Iran's undefined phrases 'interference in internal affairs', 'opponents of our revolution', 'our revolution', and 'cooperation'?",
+    "What is the next daily Hormuz commodity-vessel denominator after the Sep. 20 weekend series, including any defensible estimate of dark transits?",
+    "When will Saudi East-West pipeline pumping stations return to service, and what Yanbu export capacity remains impaired?",
+    "What weapon/event caused the King Khalid airport fuel-storage-area fire?",
+    "Is there independent BDA for the Houthi Yanbu attack claim?",
+    "Does independent evidence ever substantiate Iran's claimed advance intelligence of a prepared U.S./allied attack?",
+    "Can the U.S. military-fatality 18-vs-at-least-22 discrepancy be reconciled by denominator, date, and combat status?"
+  ],
+  "source_discovery_additions": [
+    "Reuters Sep. 21 Hormuz/Kpler weekend traffic report (published before midnight ET evidence horizon)",
+    "Reuters Sep. 21 oil-market/Saudi export-flow report (published before midnight ET evidence horizon)",
+    "Reuters Sep. 20 Iran/U.S. escalation and diplomacy report"
+  ],
+  "limitations": [
+    "No direct paid commercial maritime or satellite terminal was available; commercial figures are preserved as reported by Reuters from Kpler.",
+    "Search did not surface a new authoritative in-window casualty/displacement denominator or a new Treasury/OFAC designation after the noon sweep.",
+    "Absence of located reporting is not evidence that no event occurred.",
+    "Claimant statements remain claims unless independently corroborated."
+  ],
+  "completion": {
+    "status":"COMPLETE_WITH_EXPLICIT_SOURCE_LIMITATIONS",
+    "canonical_packet_bytes_modified":false,
+    "accepted_hashes_modified":false,
+    "generated_public_state_modified":false,
+    "signed_release_artifacts_modified":false,
+    "release_manifests_modified":false
+  }
+}
