@@ -29,7 +29,14 @@
       "account_authenticity_research",
       "propagation_statistics",
       "hall_of_shame_qualification_and_ranking",
-      "direct_verdict_and_appellation_layer"
+      "direct_verdict_and_appellation_layer",
+      "public_social_media_osint_collection",
+      "collaborative_reference_revision_forensics",
+      "public_cyber_actor_information_forensics",
+      "source_identity_resolution",
+      "epistemic_posture_transition_analysis",
+      "deletion_ephemeral_accounting",
+      "affected_family_incremental_rebuild_equivalence"
     ],
     "must_not_overwrite": [
       "canonical_evidence",
@@ -71,7 +78,8 @@
     "RECYCLED_MEDIA_OFFENDER",
     "NARRATIVE_MUTATION_OFFENDER",
     "STATE_OFFICIAL_MISINFORMATION_SOURCE",
-    "UNKNOWN"
+    "UNKNOWN",
+    "PROPAGANDA_AGITPROP"
   ],
   "authenticity_classes": [
     "CONFIRMED_BOT",
@@ -155,7 +163,8 @@
       "FINANCIAL_SHILL",
       "ORGANIZATIONAL_SHILL",
       "IDEOLOGICAL_SHILL",
-      "PARTISAN_AMPLIFIER"
+      "PARTISAN_AMPLIFIER",
+      "PROPAGANDA_AGITPROP"
     ]
   },
   "voice": {
@@ -164,5 +173,127 @@
     "profanity_allowed_as_emphasis": true,
     "generic_insult_generation": false,
     "principle": "PROVE_THE_PATTERN_THEN_CALL_THE_PATTERN_WHAT_IT_IS"
+  },
+  "osint_collection": {
+    "mission": "AFFIRMATIVE_PUBLIC_OSINT_COLLECTION",
+    "search_aggressively_conclude_conservatively": true,
+    "private_access_bypass_forbidden": true,
+    "surfaces": [
+      "X",
+      "TIKTOK",
+      "FACEBOOK",
+      "INSTAGRAM",
+      "YOUTUBE",
+      "TELEGRAM",
+      "REDDIT",
+      "THREADS",
+      "BLUESKY",
+      "DISCORD_PUBLIC",
+      "WEBSITE",
+      "BLOG",
+      "NEWSLETTER",
+      "SUBSTACK",
+      "PODCAST",
+      "WIKIPEDIA",
+      "HACKER_PUBLICATION",
+      "HACKTIVIST_PUBLICATION",
+      "CYBER_GROUP_PUBLICATION",
+      "GITHUB_PUBLIC",
+      "OTHER_PUBLIC"
+    ],
+    "provenance_statuses": [
+      "ORIGINAL_URL",
+      "ORIGINAL_WITH_ARCHIVE",
+      "ARCHIVED_ORIGINAL",
+      "PLATFORM_EMBED",
+      "REPOST_WITH_ORIGINAL_ID",
+      "SCREENSHOT_ONLY",
+      "SECONDARY_PRESERVATION",
+      "ORIGINAL_NOT_RECOVERED"
+    ],
+    "deletion_statuses": [
+      "AVAILABLE",
+      "POST_CONFIRMED_DELETED",
+      "POST_CURRENTLY_UNAVAILABLE",
+      "ORIGINAL_NOT_RECOVERED",
+      "DELETION_REASON_UNKNOWN"
+    ],
+    "independence_statuses": [
+      "INDEPENDENT",
+      "DERIVATIVE",
+      "COMMON_SOURCE",
+      "UNKNOWN",
+      "NOT_APPLICABLE"
+    ],
+    "assertion_kinds": [
+      "FACTUAL_ASSERTION",
+      "ATTRIBUTED_REPORT",
+      "PREDICTION",
+      "OPINION",
+      "QUESTION",
+      "CORRECTION",
+      "RETRACTION",
+      "MEDIA_PRESENTATION"
+    ],
+    "identity_confidence": [
+      "CONFIRMED",
+      "HIGH",
+      "MEDIUM",
+      "LOW",
+      "UNRESOLVED"
+    ],
+    "relationship_types": [
+      "ORIGINATES",
+      "REPORTS",
+      "REPEATS",
+      "AMPLIFIES",
+      "SYNDICATES",
+      "ATTRIBUTES_TO",
+      "CARRIED_BY",
+      "PUBLISHED_BY",
+      "DERIVES_FROM",
+      "SHARES_OFFICIAL_SOURCE",
+      "MUTATES_INTO",
+      "SUBSTITUTES_FOR",
+      "CONTRADICTS",
+      "CORRECTS",
+      "RETRACTS",
+      "ADMITS",
+      "CITES_AS_CORROBORATION",
+      "CIRCULARLY_DERIVED_FROM",
+      "LAUNDERS_PROVENANCE",
+      "REUSES_MEDIA_FROM",
+      "DISAPPEARS_WITHOUT_CORRECTION",
+      "MEMBER_OF",
+      "AFFILIATED_WITH",
+      "QUOTES",
+      "COMMON_SOURCE",
+      "CONTROLLED_BY",
+      "OFFICIAL_CHANNEL_OF",
+      "SAME_PERSON",
+      "PROBABLE_SAME_SOURCE",
+      "ACCOUNT_RENAME",
+      "PLATFORM_MIGRATION",
+      "MIRROR_ACCOUNT",
+      "FAN_REPOST_ACCOUNT",
+      "UNKNOWN_RELATIONSHIP",
+      "EDITED_BY",
+      "REVERTS",
+      "DISCUSSES",
+      "CITES",
+      "HOSTED_BY"
+    ],
+    "wikipedia": {
+      "revision_id_preferred": true,
+      "talk_page_receipts_allowed": true,
+      "ordinary_editorial_disagreement_is_not_misconduct": true,
+      "identity_must_not_be_inferred_from_similarity": true
+    },
+    "cyber_groups": {
+      "claimed_compromise_is_not_verified_compromise": true,
+      "private_group_infiltration_forbidden": true,
+      "malware_execution_forbidden": true,
+      "stolen_data_purchase_forbidden": true
+    }
   }
 }
