@@ -231,6 +231,12 @@ def validate_forensic_input(
     allowed_correction = set(governance.get("correction_states") or [])
     allowed_moral_findings = set(governance.get("moral_severity_findings") or [])
     allowed_flags = set((governance.get("authority") or {}).get("promotion_flags") or [])
+    receipt_backed_descriptive_classes = set(
+        (governance.get("profile_evidence") or {}).get(
+            "receipt_backed_descriptive_classes"
+        )
+        or []
+    )
 
     source_ids: set[str] = set()
     for profile in profiles:
@@ -342,13 +348,52 @@ def validate_forensic_input(
         foreign = basis - events_by_source[source_id]
         if foreign:
             raise ValueError(f"source profile {source_id} classification basis uses another source's events: {sorted(foreign)}")
-        substantive_classes = [value for value in profile.get("behavior_classes") or [] if value != "UNKNOWN"]
-        if substantive_classes and not basis:
-            raise ValueError(f"source profile {source_id} has substantive behavior classes without classification-basis events")
+        substantive_classes = [
+            value
+            for value in profile.get("behavior_classes") or []
+            if value != "UNKNOWN"
+        ]
+        classification_receipts = list(
+            profile.get("classification_basis_receipts") or []
+        )
+        receipt_classes = {
+            str(value)
+            for receipt in classification_receipts
+            for value in (receipt.get("behavior_classes") or [])
+        }
+        unsupported_receipt_classes = receipt_classes - allowed_classes
+        if unsupported_receipt_classes:
+            raise ValueError(
+                f"source profile {source_id} classification receipts use unknown classes: "
+                f"{sorted(unsupported_receipt_classes)}"
+            )
+        prohibited_receipt_classes = (
+            receipt_classes - receipt_backed_descriptive_classes
+        )
+        if prohibited_receipt_classes:
+            raise ValueError(
+                f"source profile {source_id} attempts to support incident-gated classes "
+                f"with profile receipts: {sorted(prohibited_receipt_classes)}"
+            )
+        if substantive_classes and not basis and not classification_receipts:
+            raise ValueError(
+                f"source profile {source_id} has substantive behavior classes without "
+                "classification-basis events or descriptive profile receipts"
+            )
         for source_class in substantive_classes:
-            if not any(source_class in (events_by_id[event_id].get("behavior_findings") or []) for event_id in basis):
+            event_supported = any(
+                source_class
+                in (events_by_id[event_id].get("behavior_findings") or [])
+                for event_id in basis
+            )
+            receipt_supported = (
+                source_class in receipt_classes
+                and source_class in receipt_backed_descriptive_classes
+            )
+            if not (event_supported or receipt_supported):
                 raise ValueError(
-                    f"source profile {source_id} class {source_class} is not supported by its classification-basis events"
+                    f"source profile {source_id} class {source_class} is not supported "
+                    "by incident events or permitted descriptive profile receipts"
                 )
 
         revenue_basis = set(profile.get("revenue_basis_event_ids") or [])
@@ -358,13 +403,39 @@ def validate_forensic_input(
         foreign_revenue = revenue_basis - events_by_source[source_id]
         if foreign_revenue:
             raise ValueError(f"source profile {source_id} revenue basis uses another source's events: {sorted(foreign_revenue)}")
-        substantive_revenue = [value for value in profile.get("revenue_model") or [] if value != "UNKNOWN_REVENUE_MODEL"]
-        if substantive_revenue and not revenue_basis:
-            raise ValueError(f"source profile {source_id} has observed revenue classes without revenue-basis events")
+        substantive_revenue = [
+            value
+            for value in profile.get("revenue_model") or []
+            if value != "UNKNOWN_REVENUE_MODEL"
+        ]
+        revenue_receipts = list(profile.get("revenue_basis_receipts") or [])
+        receipt_revenue_classes = {
+            str(value)
+            for receipt in revenue_receipts
+            for value in (receipt.get("revenue_classes") or [])
+        }
+        unsupported_receipt_revenue = receipt_revenue_classes - allowed_revenue
+        if unsupported_receipt_revenue:
+            raise ValueError(
+                f"source profile {source_id} revenue receipts use unknown classes: "
+                f"{sorted(unsupported_receipt_revenue)}"
+            )
+        if substantive_revenue and not revenue_basis and not revenue_receipts:
+            raise ValueError(
+                f"source profile {source_id} has observed revenue classes without "
+                "revenue-basis events or public profile receipts"
+            )
         for revenue_class in substantive_revenue:
-            if not any(revenue_class in (events_by_id[event_id].get("revenue_findings") or []) for event_id in revenue_basis):
+            event_supported = any(
+                revenue_class
+                in (events_by_id[event_id].get("revenue_findings") or [])
+                for event_id in revenue_basis
+            )
+            receipt_supported = revenue_class in receipt_revenue_classes
+            if not (event_supported or receipt_supported):
                 raise ValueError(
-                    f"source profile {source_id} revenue class {revenue_class} is not supported by its revenue-basis events"
+                    f"source profile {source_id} revenue class {revenue_class} is not "
+                    "supported by incident events or public profile receipts"
                 )
 
     wol_network.validate_extended_forensic_input(forensic, governance)
