@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ejronin.github.io/ISR/schemas/web-of-lies-native-discovery-v1.json",
+  "title": "Web of Lies native public-OSINT discovery input",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_role",
+    "authority",
+    "as_of",
+    "items"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "artifact_role": {
+      "const": "WEB_OF_LIES_NATIVE_DISCOVERY_INPUT"
+    },
+    "authority": {
+      "const": "WEB_OF_LIES_INFORMATION_FORENSICS"
+    },
+    "as_of": {
+      "type": "string",
+      "minLength": 1
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "discovery_id",
+          "discovery_type",
+          "claim_family_ref",
+          "subject",
+          "observations",
+          "public_receipts",
+          "attribution_confidence",
+          "attribution_scope",
+          "downstream_note",
+          "review_target",
+          "review_reason"
+        ],
+        "properties": {
+          "discovery_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "discovery_type": {
+            "enum": [
+              "FORENSIC_DISCOVERY",
+              "EVIDENCE_PROMOTION_CANDIDATE",
+              "ADJUDICATION_REVIEW_CANDIDATE"
+            ]
+          },
+          "claim_family_ref": {
+            "type": "null"
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "date",
+                "source",
+                "observation_type",
+                "statement_identity"
+              ],
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "observation_type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "statement_identity": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "public_receipts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "receipt_id",
+                "surface",
+                "url",
+                "provenance_status"
+              ],
+              "properties": {
+                "receipt_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "surface": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "provenance_status": {
+                  "enum": [
+                    "ORIGINAL_URL",
+                    "ORIGINAL_WITH_ARCHIVE",
+                    "ARCHIVED_ORIGINAL",
+                    "SECONDARY_PRESERVATION"
+                  ]
+                },
+                "claim_status": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "published_at": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "attribution": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "attribution_confidence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "attribution_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "downstream_note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "review_target": {
+            "const": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION"
+          },
+          "review_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

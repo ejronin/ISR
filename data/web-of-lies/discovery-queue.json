@@ -1,8 +1,109 @@
 {
   "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
-  "as_of": "2026-09-20T15:48:00-04:00",
+  "as_of": "2026-09-21T09:45:00-04:00",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "items": [],
+  "items": [
+    {
+      "attribution_confidence": "HIGH_FOR_IRANIAN_STATE_ACTOR_USE_OF_CHOSEN_BRICK_AS_STATED_BY_JOINT_ADVISORY",
+      "attribution_scope": "The advisory attributes CHOSEN BRICK activity to Iranian state cyber actors. It does not identify Handala as the malware operator, prove a common operator for every pro-Iranian leak site, or establish that every later leak-site publication originated from CHOSEN BRICK collection.",
+      "claim_family_ref": null,
+      "discovery_id": "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
+      "discovery_type": "FORENSIC_DISCOVERY",
+      "downstream_note": "Treat malware compromise, victim-data collection, leak-site publication, and narrative amplification as separate graph events. Do not merge this discovery with Handala solely because both involve Iranian state-linked cyber activity and public leak sites.",
+      "observations": [
+        {
+          "date": "2026-09-15",
+          "observation_type": "JOINT_GOVERNMENT_TECHNICAL_ADVISORY",
+          "source": "UK National Cyber Security Centre with FBI and Netherlands AIVD",
+          "statement_identity": "The joint advisory says CHOSEN BRICK malware has been used by Iranian state cyber actors to target dissidents, activists and journalists and can collect contacts, emails and social-media messages."
+        },
+        {
+          "date": "2026-09-15",
+          "observation_type": "LEAK_SITE_PROPAGATION_CONTEXT",
+          "source": "UK National Cyber Security Centre",
+          "statement_identity": "NCSC said personal details of some previous victims later appeared on pro-Iranian leak sites. The advisory does not identify every leak-site operator or equate those sites with Handala."
+        }
+      ],
+      "public_receipts": [
+        {
+          "attribution": "UK NCSC / U.S. FBI / Netherlands AIVD",
+          "claim_status": "JOINT_GOVERNMENT_ATTRIBUTION",
+          "provenance_status": "ORIGINAL_URL",
+          "published_at": "2026-09-15",
+          "receipt_id": "WOL-DISC-RCPT-CHOSEN-BRICK-NCSC-NEWS-20260915",
+          "surface": "WEBSITE",
+          "url": "https://www.ncsc.gov.uk/news/uk-allies-expose-spyware-iranian-state-actors-target-dissidents-activists-journalists"
+        },
+        {
+          "attribution": "UK NCSC with allied technical reporting",
+          "claim_status": "TECHNICAL_ADVISORY",
+          "provenance_status": "ORIGINAL_URL",
+          "published_at": "2026-09-15",
+          "receipt_id": "WOL-DISC-RCPT-CHOSEN-BRICK-NCSC-ADVISORY-20260915",
+          "surface": "WEBSITE",
+          "url": "https://www.ncsc.gov.uk/news/iranian-cyber-targeting-of-dissidents-activists-and-journalists"
+        }
+      ],
+      "review_reason": "This is a current public information-operation/cyber-propagation discovery with no canonical Lie Ledger family. Claims Forensics should decide whether any specific public assertion or leak-derived narrative warrants a claim family before Web of Lies scores propagation or source behavior.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
+      "subject": "CHOSEN BRICK Iranian-state cyber targeting and leak-site propagation"
+    },
+    {
+      "attribution_confidence": "HIGH_FOR_DOJ_ATTRIBUTION_OF_SEIZED_HANDALA_INFRASTRUCTURE_TO_MOIS",
+      "attribution_scope": "The public U.S. record supports attribution of the seized Handala domains and associated psychological-operations infrastructure to MOIS. It does not independently verify every hack claim published by the persona, authenticate every leaked file, or identify every individual operator behind each post.",
+      "claim_family_ref": null,
+      "discovery_id": "WOL-DISC-HANDALA-MOIS-20260319",
+      "discovery_type": "FORENSIC_DISCOVERY",
+      "downstream_note": "If Claims Forensics creates a canonical claim family for a specific Handala wartime hack/leak assertion, preserve the distinction between the public claim, independently verified compromise, released-material authenticity, and downstream repetition. Do not treat the DOJ infrastructure attribution as automatic verification of every claimed operation.",
+      "observations": [
+        {
+          "date": "2026-03-19",
+          "observation_type": "GOVERNMENT_ATTRIBUTION_WITH_COURT_AUTHORIZED_DOMAIN_SEIZURE",
+          "source": "U.S. Department of Justice",
+          "statement_identity": "DOJ said four seized domains, including Handala-hack.to and Handala-redwanted.to, were used by Iran's Ministry of Intelligence and Security for hacking-linked psychological operations, public hack claims, stolen-data publication, threats and transnational repression."
+        },
+        {
+          "date": "2026-03-11",
+          "observation_type": "CLAIMED_COMPROMISE",
+          "source": "Handala Hack claim preserved in DOJ seizure materials",
+          "statement_identity": "Handala Hack claimed a destructive malware attack against a U.S.-based multinational medical technologies firm. This is preserved as a claimed operation; the public claim does not by itself establish the technical facts of the compromise."
+        },
+        {
+          "date": "2026-03-06",
+          "observation_type": "PUBLIC_HACK_AND_LEAK_MESSAGING",
+          "source": "Handala Hack claims preserved in DOJ seizure materials",
+          "statement_identity": "DOJ documented Handala public posts claiming theft of data and publishing personal or confidential information. The seizure record establishes the messaging infrastructure and attributed operator relationship; authenticity of every released item remains a separate evidentiary question."
+        }
+      ],
+      "public_receipts": [
+        {
+          "attribution": "U.S. Department of Justice / FBI investigation and seizure affidavit",
+          "claim_status": "US_DOJ_MOIS_INFRASTRUCTURE_ATTRIBUTION",
+          "provenance_status": "ORIGINAL_URL",
+          "published_at": "2026-03-19",
+          "receipt_id": "WOL-DISC-RCPT-HANDALA-DOJ-20260319",
+          "surface": "WEBSITE",
+          "url": "https://www.justice.gov/opa/pr/justice-department-disrupts-iranian-cyber-enabled-psychological-operations"
+        },
+        {
+          "attribution": "U.S. District Court seizure-warrant affidavit",
+          "claim_status": "COURT_FILED_SEIZURE_AFFIDAVIT",
+          "provenance_status": "ORIGINAL_URL",
+          "published_at": "2026-03-19",
+          "receipt_id": "WOL-DISC-RCPT-HANDALA-AFFIDAVIT-20260319",
+          "surface": "WEBSITE",
+          "url": "https://www.justice.gov/opa/media/1431956/dl"
+        }
+      ],
+      "review_reason": "This is a public-source information-operation actor discovery with strong organizational attribution but no current canonical Lie Ledger family. It belongs outside lineage/Hall scoring until Claims Forensics assigns a claim family or determines that no public claim adjudication is warranted.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
+      "subject": "Handala Hack public cyber / psychological-operations infrastructure attributed by U.S. authorities to Iran's MOIS"
+    }
+  ],
   "resolved_canonical_claim_sequences": [
     {
       "chain_id": "CH-HORMUZ-NEGOTIATING-CLAIMS-20260912",

@@ -123,7 +123,35 @@ assert not blocked_instance_ids.intersection(anchor_refs), (
 discovery = discovery_builder.build_queue(ROOT)
 tracked_discovery = load(discovery_builder.OUTPUT)
 assert discovery == tracked_discovery
-assert discovery["items"] == []
+native_discoveries = {
+    row["discovery_id"]: row
+    for row in discovery["items"]
+}
+assert set(native_discoveries) == {
+    "WOL-DISC-HANDALA-MOIS-20260319",
+    "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
+}
+for row in native_discoveries.values():
+    assert row["status"] == "AWAITING_CANONICAL_CLAIM_FAMILY"
+    assert row["claim_family_ref"] is None
+    assert row["discovery_type"] == "FORENSIC_DISCOVERY"
+    assert row["review_target"] == "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION"
+    assert row["source_handoff_path"] == discovery_builder.NATIVE_DISCOVERIES
+    assert row["public_receipts"]
+    assert all(receipt["url"].startswith("https://") for receipt in row["public_receipts"])
+
+handala = native_discoveries["WOL-DISC-HANDALA-MOIS-20260319"]
+assert "does not independently verify every hack claim" in handala["attribution_scope"]
+assert any(
+    observation["observation_type"] == "CLAIMED_COMPROMISE"
+    for observation in handala["observations"]
+)
+
+chosen_brick = native_discoveries["WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915"]
+assert "does not identify Handala" in chosen_brick["attribution_scope"]
+assert "Do not merge this discovery with Handala" in chosen_brick["downstream_note"]
+assert discovery["as_of"] == "2026-09-21T09:45:00-04:00"
+
 assert discovery["resolved_existing_claim_sequences"] == [{
     "sequence_id": "WOL-IN-ROOK-F15SA-20260920",
     "status": "EXISTING_CANONICAL_CLAIM_CONTINUITY",

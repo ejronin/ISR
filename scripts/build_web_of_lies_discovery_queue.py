@@ -23,6 +23,8 @@ SCHEMA = "schemas/web-of-lies-discovery-queue-v1.json"
 OUTPUT = "data/web-of-lies/discovery-queue.json"
 ROUTING = "data/evidence-integration/rook-catchup-claims-routing-20260920.json"
 CLAIMS_MAINTENANCE = "data/claims-forensics/lie-ledger-maintenance-sweep-20260920.json"
+NATIVE_DISCOVERIES = "data/web-of-lies/native-discoveries.json"
+NATIVE_SCHEMA = "schemas/web-of-lies-native-discovery-v1.json"
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_web_of_lies_current_anchor_packets as current_anchors  # noqa: E402
 
@@ -144,6 +146,9 @@ def build_queue(root: Path) -> dict[str, Any]:
     handoff = load(root, HANDOFF)
     routing = load(root, ROUTING)
     maintenance = load(root, CLAIMS_MAINTENANCE)
+    native = load(root, NATIVE_DISCOVERIES)
+    native_schema = load(root, NATIVE_SCHEMA)
+    jsonschema.Draft202012Validator(native_schema).validate(native)
     records, overlay = current_anchors.current_records(root)
     active_chain_ids = set(str(value) for value in (overlay.get("chain_overrides") or {}))
     record_pairs = {
@@ -225,6 +230,50 @@ def build_queue(root: Path) -> dict[str, Any]:
             ),
         })
 
+    for discovery in native.get("items") or []:
+        discovery_id = str(discovery.get("discovery_id") or "").strip()
+        if not discovery_id:
+            raise ValueError("native Web of Lies discovery is missing discovery_id")
+        if discovery.get("claim_family_ref") is not None:
+            raise ValueError(
+                f"native discovery {discovery_id} already has a claim family; "
+                "route it through canonical lineage instead of the unassigned queue"
+            )
+        receipts = discovery.get("public_receipts") or []
+        if not receipts:
+            raise ValueError(
+                f"native discovery {discovery_id} has no public receipts"
+            )
+        for receipt in receipts:
+            if not str(receipt.get("url") or "").strip():
+                raise ValueError(
+                    f"native discovery {discovery_id} contains a receipt without a public URL"
+                )
+            if str(receipt.get("surface") or "") in {
+                "HACKER_PUBLICATION",
+                "HACKTIVIST_PUBLICATION",
+                "CYBER_GROUP_PUBLICATION",
+            } and not receipt.get("claim_status"):
+                raise ValueError(
+                    f"native cyber discovery {discovery_id} must distinguish "
+                    "claimed from verified compromise"
+                )
+        items.append({
+            "discovery_id": discovery_id,
+            "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
+            "claim_family_ref": None,
+            "discovery_type": str(discovery["discovery_type"]),
+            "subject": str(discovery["subject"]),
+            "observations": discovery["observations"],
+            "public_receipts": receipts,
+            "attribution_confidence": str(discovery["attribution_confidence"]),
+            "attribution_scope": str(discovery["attribution_scope"]),
+            "downstream_note": str(discovery["downstream_note"]),
+            "review_target": str(discovery["review_target"]),
+            "review_reason": str(discovery["review_reason"]),
+            "source_handoff_path": NATIVE_DISCOVERIES,
+        })
+
     items.sort(key=lambda row: row["discovery_id"])
     resolved_existing.sort(key=lambda row: row["sequence_id"])
     resolved_canonical.sort(key=lambda row: row["sequence_id"])
@@ -233,7 +282,10 @@ def build_queue(root: Path) -> dict[str, Any]:
         "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
         "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
         "source_handoff": HANDOFF,
-        "as_of": handoff.get("as_of"),
+        "as_of": max(
+            str(handoff.get("as_of") or ""),
+            str(native.get("as_of") or ""),
+        ) or None,
         "items": items,
         "resolved_existing_claim_sequences": resolved_existing,
         "resolved_canonical_claim_sequences": resolved_canonical,
