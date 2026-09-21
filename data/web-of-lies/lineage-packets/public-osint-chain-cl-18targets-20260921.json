@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-CHAIN-CL-18TARGETS-20260921",
+  "claim_family_id": "CHAIN-CL-18TARGETS",
+  "as_of": "2026-09-21T09:34:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-18targets.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Direct actor-origin recovery for the 18-target tally. Attack activity is real, but the exact 18-target success tally remains unverified; no 18-loss or 18-success records are inferred.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "canonical_actor_id": "ACT-IRGC"
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null
+    },
+    {
+      "source_id": "WOL-SRC-THE-NATIONAL",
+      "display_name": "The National",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": "United Arab Emirates",
+      "primary_platform": "Web"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-18TARGETS-IRGC",
+      "claim_family_id": "CHAIN-CL-18TARGETS",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": "2026-06-11",
+      "first_observed_at": "2026-06-11",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "The IRGC said coordinated Iranian forces attacked 18 American military targets across the region, including targets in Kuwait and Bahrain and a base in Erbil.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-CL-18TARGETS",
+        "CL-18TARGETS",
+        "PROP-6C7C8E2D167A"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Islamic Revolutionary Guard Corps",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM",
+        "WOL-SRC-THE-NATIONAL"
+      ],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-18TARGETS-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/06/11/3614172/iranian-missiles-hit-american-bases-in-jordan-kuwait-bahrain-with-precision/amp",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC / Iranian armed forces"
+        }
+      ],
+      "canonical_combined_assessment": "REAL ATTACKS — EXACT 18-TARGET SUCCESS TALLY UNVERIFIED",
+      "plain_english_verdict": "The origin statement is recoverable. It establishes that Iran claimed an 18-target operation; it does not establish 18 successful target effects."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-18TARGETS-TASNIM",
+      "claim_family_id": "CHAIN-CL-18TARGETS",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-06-11",
+      "first_observed_at": "2026-06-11",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim carried the Iranian 18-target attack tally.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-CL-18TARGETS",
+        "CL-18TARGETS",
+        "PROP-6C7C8E2D167A"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Islamic Revolutionary Guard Corps",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-18TARGETS-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/06/11/3614172/iranian-missiles-hit-american-bases-in-jordan-kuwait-bahrain-with-precision/amp",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC / Iranian armed forces"
+        }
+      ],
+      "plain_english_verdict": "Tasnim carries the tally and does not provide target-by-target independent BDA."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-18TARGETS-NATIONAL",
+      "claim_family_id": "CHAIN-CL-18TARGETS",
+      "source_id": "WOL-SRC-THE-NATIONAL",
+      "event_type": "REPORTS",
+      "published_at": "2026-06-11",
+      "first_observed_at": "2026-06-11",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "The National reported the IRGC's 18-target claim and stated that the claimed effects were not independently confirmed.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-CL-18TARGETS",
+        "CL-18TARGETS",
+        "PROP-6C7C8E2D167A"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Islamic Revolutionary Guard Corps",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-18TARGETS-NATIONAL",
+          "surface": "WEBSITE",
+          "url": "https://www.thenationalnews.com/news/mena/2026/06/11/us-strikes-iran-for-second-night-as-tehran-hits-back-at-american-bases/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC"
+        }
+      ],
+      "plain_english_verdict": "The National independently reports the existence of the claim, not independent confirmation that 18 target effects occurred."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-18TARGETS-01",
+      "from_id": "WOL-EVT-PUB-18TARGETS-TASNIM",
+      "to_id": "WOL-EVT-PUB-18TARGETS-IRGC",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-18TARGETS-01",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/06/11/3614172/iranian-missiles-hit-american-bases-in-jordan-kuwait-bahrain-with-precision/amp",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-18TARGETS-02",
+      "from_id": "WOL-EVT-PUB-18TARGETS-NATIONAL",
+      "to_id": "WOL-EVT-PUB-18TARGETS-IRGC",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-18TARGETS-02",
+          "surface": "WEBSITE",
+          "url": "https://www.thenationalnews.com/news/mena/2026/06/11/us-strikes-iran-for-second-night-as-tehran-hits-back-at-american-bases/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": [
+    {
+      "flag_id": "WOL-FLAG-18TARGETS-TASNIM-ORIGIN-PROMOTION",
+      "flag_type": "EVIDENCE_PROMOTION_CANDIDATE",
+      "subject_id": "WOL-EVT-PUB-18TARGETS-IRGC",
+      "reason": "The direct Tasnim page materially improves claim-origin provenance for CHAIN-CL-18TARGETS but is not yet a canonical Evidence Integration source object.",
+      "evidence_source_ids": []
+    }
+  ]
+}
