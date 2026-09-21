@@ -84,6 +84,7 @@ DISALLOWED_MANUAL_RANK_FIELDS = {
     "manual_rank",
     "manual_score",
     "featured_rank",
+    "source_awards",
 }
 
 
@@ -557,6 +558,101 @@ def ranking_view(
     return result
 
 
+
+def bullshit_qualifying_event(
+    event: dict[str, Any],
+    governance: dict[str, Any],
+) -> bool:
+    """Return whether one source information event qualifies for the Bullshitter award."""
+    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
+    event_type = str(event.get("event_type") or "")
+    assertion_kind = str(event.get("assertion_kind") or "")
+    if assertion_kind in {"OPINION", "QUESTION"}:
+        return False
+    if event_type == "REPORTS":
+        return False
+    qualifying_types = set(cfg.get("qualifying_event_types") or [])
+    qualifying_findings = set(cfg.get("qualifying_behavior_findings") or [])
+    findings = set(event.get("behavior_findings") or [])
+    return event_type in qualifying_types or bool(findings & qualifying_findings)
+
+
+def bullshit_award_for_events(
+    events: list[dict[str, Any]],
+    governance: dict[str, Any],
+    *,
+    as_of: Any,
+) -> dict[str, Any] | None:
+    """Derive the rolling Bullshitter award from distinct qualifying incidents."""
+    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
+    if not cfg:
+        return None
+    minimum = int(cfg.get("minimum_qualifying_incidents") or 6)
+    distinct: dict[str, dict[str, Any]] = {}
+    for event in events:
+        if not bullshit_qualifying_event(event, governance):
+            continue
+        event_id = str(event.get("event_id") or "").strip()
+        if not event_id:
+            continue
+        # Cross-platform captures of one publication may share an explicit
+        # information-event key. Otherwise the canonical event_id is the
+        # deduplication boundary.
+        key = str(
+            event.get("information_event_group_id")
+            or event.get("source_information_event_id")
+            or event_id
+        ).strip()
+        distinct.setdefault(key, event)
+
+    if len(distinct) < minimum:
+        return None
+
+    qualifying_event_ids = sorted(
+        str(event.get("event_id") or "")
+        for event in distinct.values()
+        if str(event.get("event_id") or "")
+    )
+    label = str(cfg.get("public_label") or "Bullshitter")
+    return {
+        "award_code": "BULLSHITTER",
+        "public_label": label,
+        "window_days": int(cfg.get("window_days") or 30),
+        "minimum_qualifying_incidents": minimum,
+        "qualifying_incident_count": len(distinct),
+        "qualifying_event_ids": qualifying_event_ids,
+        "as_of": as_of,
+        "public_verdict": (
+            f"{label} — {len(distinct)} qualifying bullshit incidents "
+            f"in the rolling {int(cfg.get('window_days') or 30)}-day window."
+        ),
+    }
+
+
+def attach_source_awards(
+    profiles: list[dict[str, Any]],
+    recent_events: list[dict[str, Any]],
+    governance: dict[str, Any],
+    *,
+    as_of: Any,
+) -> list[dict[str, Any]]:
+    by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for event in recent_events:
+        by_source[str(event.get("source_id") or "")].append(event)
+
+    output = []
+    for profile in profiles:
+        record = dict(profile)
+        award = bullshit_award_for_events(
+            by_source.get(str(record.get("source_id") or ""), []),
+            governance,
+            as_of=as_of,
+        )
+        record["source_awards"] = [award] if award is not None else []
+        output.append(record)
+    return sorted(output, key=lambda item: item["source_id"])
+
+
 def current_period_events(
     events: list[dict[str, Any]],
     canonical: dict[str, Any],
@@ -599,6 +695,12 @@ def build_registry(
 
     all_time = ranking_view(profiles, information_events, supported_classes)
     recent_events = current_period_events(information_events, canonical, period_days)
+    profiles = attach_source_awards(
+        profiles,
+        recent_events,
+        governance,
+        as_of=(canonical.get("release") or {}).get("current_osint_cutoff"),
+    )
     current_period = ranking_view(profiles, recent_events, supported_classes)
     network_analysis = wol_network.derive_network_analysis(
         information_events,
