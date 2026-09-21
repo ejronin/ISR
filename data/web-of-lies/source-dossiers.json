@@ -911,11 +911,12 @@
       "seed_urls": [
         "https://www.facebook.com/profile.php?id=61586393397492",
         "https://x.com/_IranMilitary_",
-        "https://www.timesofisrael.com/us-iran-exchange-strikes-amid-fragile-ceasefire-as-negotiations-to-end-war-stall/"
+        "https://www.timesofisrael.com/us-iran-exchange-strikes-amid-fragile-ceasefire-as-negotiations-to-end-war-stall/",
+        "https://www.palestinechronicle.com/millions-flood-tehran-symbolically-stone-trump-during-khamenei-funeral-procession/"
       ],
-      "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
+      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "CROSS_PLATFORM_ACCOUNT_RESOLVED_OPERATOR_UNKNOWN",
-      "notes": "Facebook seed and public X identity @_IranMilitary_ resolve to the same account brand. Indexed June war coverage preserves declaratory/amplification messaging, but the reviewed sample does not establish a claim-level adverse incident. Real-world operator remains unknown."
+      "notes": "Facebook and X resolve to the same Iran Military Update account brand; real-world operator remains unknown. One July 6 WOL-native behavior incident is established: a massive anti-Trump funeral crowd was generalized into 'The people of Iran hate Trump.' The crowd and anger are real; the population-wide conclusion is not established by a self-selected funeral/political crowd. No operator, state-control or IRGC-control inference follows. One incident does not earn a Bullshitter award."
     },
     {
       "lead_id": "LEAD-JOLLY-GOOD-GINGER",
@@ -928,7 +929,7 @@
       ],
       "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Public identity resolves to Russell Ellis / Jolly Good Ginger. Iran-war commentary was found, including a March 2 DEFIANCE appearance, but the reviewed public material did not establish a specific canonical Atlas misinformation incident. Keep as LIMITED_RELEVANT_ACTIVITY unless later claim-first research produces an incident."
+      "notes": "Public identity resolves to Russell Ellis / Jolly Good Ginger. Expanded Iran-war review found political/anti-war advocacy and commentary, but no preserved factual Iran-war assertion that currently satisfies the WOL no-support evidence gate. Advocacy, opinion and broad political rhetoric do not count merely because they are antagonistic or contestable. Keep unscored unless later claim-first research produces a receipts-backed factual incident."
     },
     {
       "lead_id": "LEAD-LIM-TEAN",
@@ -939,9 +940,9 @@
         "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/071326-traffic-via-strait-of-hormuz-falls-to-11-ships-july-12-after-us-iran-attacks",
         "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/"
       ],
-      "current_disposition": "UPSTREAM_REVIEW_REQUIRED",
+      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "The transit-count substrate in the July 20 Hormuz commentary is substantially supported, but the article makes a distinct causal claim that successive U.S. strikes were themselves producing the shutdown. That inferential bridge is routed upstream for adjudication; accurate counts do not validate the causal explanation."
+      "notes": "The July 20 Hormuz commentary contains one WOL-native unsupported causal-inference incident. Its transit-count substrate is substantially supported, but the observed sequence does not isolate successive U.S. strike waves as the demonstrated cause of the shipping shutdown amid Iranian vessel attacks, blockade/escalation risk, commercial insurance/crew decisions and incomplete AIS visibility. The existing causal proposition remains separately routed upstream. One incident does not earn a Bullshitter award."
     },
     {
       "lead_id": "LEAD-MEIDASTOUCH",
@@ -2040,6 +2041,99 @@
       "downstream_note": "Preserve Bahrain's severe/possibly mission-killing logistics damage separately from the blanket regional whole-base conclusion.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Facility-level BDA must remain granular."
+    },
+    {
+      "incident_id": "WOL-BS-LIM-TEAN-HORMUZ-CAUSALITY-20260720",
+      "source_id": "WOL-SRC-LIM-TEAN",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-20",
+      "first_observed_at": "2026-07-20",
+      "statement_identity": "Lim Tean used the real collapse in Hormuz transit counts to assert that successive U.S. strike waves were measurably producing and deepening the shipping shutdown.",
+      "source_information_event_id": "LIM-TEAN-COMMENTARY-HORMUZ-20260720",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-HORMUZ-COMMENTARY-20260720",
+          "surface": "WEBSITE",
+          "url": "https://www.radiofree.org/2026/07/20/lim-tean-you-cannot-bomb-a-strait-open-hormuz-chabahar-and-the-coming-battle-for-bab-el-mandeb/",
+          "published_at": "2026-07-20",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Full commentary preserves the 'more bombs, fewer ships' argument and the claim that strike waves were producing the shutdown."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-HORMUZ-SPGLOBAL-20260713",
+          "surface": "WEBSITE",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/071326-traffic-via-strait-of-hormuz-falls-to-11-ships-july-12-after-us-iran-attacks",
+          "published_at": "2026-07-13",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "S&P Global supports the sharp traffic-collapse substrate, including 11 transits on July 12, but does not isolate U.S. strikes as the sole or demonstrated cause."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-HORMUZ-REUTERS-20260717",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/",
+          "published_at": "2026-07-17",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters reports falling traffic amid reciprocal U.S.-Iran escalation, attacks on shipping and commercial-risk responses, with AIS-dark traffic limiting visible counts."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Full Lim Tean commentary plus contemporaneous S&P Global and Reuters reporting on Hormuz transit counts, attacks on commercial vessels, conflict escalation, insurance/crew risk and AIS visibility limits.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The traffic collapse is supported. The cited temporal sequence does not isolate U.S. strike waves as the demonstrated cause of the shutdown; contemporaneous evidence identifies multiple simultaneous causes, including Iranian attacks on vessels, blockade/escalation risk, insurer/charterer/crew decisions and incomplete AIS visibility.",
+        "search_notes": "WOL scores only the causal leap from supported traffic data to the claim that U.S. strikes themselves were measurably producing the shutdown. It does not dispute the traffic collapse or the proposition that kinetic activity generally raises war risk.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "The existing Lim Tean discovery remains routed upstream for canonical causal adjudication. This WOL-native incident records the narrower source-behavior failure: supported counts were presented as if they demonstrated a specific causal attribution they do not isolate.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Claims Forensics may separately adjudicate the Hormuz causal proposition; WOL can still record the unsupported evidentiary bridge."
+    },
+    {
+      "incident_id": "WOL-BS-IRAN-MILITARY-UPDATE-IRANIANS-HATE-TRUMP-20260706",
+      "source_id": "WOL-SRC-IRAN-MILITARY-UPDATE",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-06",
+      "first_observed_at": "2026-07-06",
+      "statement_identity": "Iran Military Update used a massive anti-Trump funeral crowd in Tehran to state: 'The people of Iran hate Trump.'",
+      "source_information_event_id": "IRAN-MILITARY-UPDATE-X-20260706-HATE-TRUMP",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-IMU-HATE-TRUMP-PC-20260706",
+          "surface": "WEBSITE",
+          "url": "https://www.palestinechronicle.com/millions-flood-tehran-symbolically-stone-trump-during-khamenei-funeral-procession/",
+          "published_at": "2026-07-06",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Palestine Chronicle embeds and attributes the Iran Military Update post: 'The people of Iran hate Trump.'"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IMU-FUNERAL-REUTERS-20260706",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/khamenei-mourners-fill-irans-streets-discontent-still-simmers-2026-07-06/",
+          "published_at": "2026-07-06",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters confirms massive funeral crowds and anti-U.S./anti-Trump anger while reporting that analysts and Iranian officials cautioned crowd size cannot be treated as broad popular endorsement."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Preserved Iran Military Update post plus contemporaneous Reuters reporting on the funeral crowd, participant motives, internal Iranian divisions and limits of treating rally attendance as a population-wide proxy.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The crowd clearly demonstrated intense anti-Trump sentiment among many attendees. A self-selected funeral/political crowd does not establish the attitude of 'the people of Iran' as a whole, and contemporaneous reporting explicitly cautioned against treating turnout as a population-wide referendum.",
+        "search_notes": "The scored behavior is the crowd-to-population generalization. WOL does not dispute the size of the funeral crowd or the anti-Trump sentiment displayed by many participants.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One population-generalization incident. It does not establish the real-world operator or any state/IRGC control relationship for the account.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "A canonical public-opinion proposition may be atomized upstream if required; WOL records the unsupported generalization from a selected crowd to an entire national population."
     }
   ]
 }
