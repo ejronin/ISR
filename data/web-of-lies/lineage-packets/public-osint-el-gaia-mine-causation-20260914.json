@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-EL-GAIA-MINE-CAUSATION-20260914",
+  "claim_family_id": "CH-EL-GAIA-MINE-CAUSATION-20260914",
+  "as_of": "2026-09-21T10:05:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-el-gaia-mine-causation-20260914.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Contested-causation trace. IRGC/Fars attributed the tanker damage to sea mines; CENTCOM offered an incompatible Iranian-missile account; IMO/UKMTO established damage/projectile context without resolving cause. Web of Lies records the contradiction, not a winner.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-USCENTCOM",
+      "display_name": "U.S. Central Command",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-EL-GAIA-IRGC-MINES",
+      "claim_family_id": "CH-EL-GAIA-MINE-CAUSATION-20260914",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "The IRGC Navy said El Gaia struck sea mines while transiting an Iranian-prohibited zone south of the Strait of Hormuz.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Navy via Fars",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "CI-CLM-IRGC-EL-GAIA-MINE-20260914-P01",
+        "CLM-IRGC-EL-GAIA-MINE-20260914",
+        "PROP-EL-GAIA-MINE-CAUSATION-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-EL-GAIA-REUTERS-IRGC",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/diplomacy-stumbles-with-postponement-meeting-strait-hormuz-proposal-2026-09-13/",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC via Fars",
+          "claim_status": "CLAIMED_CAUSATION",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "CONTESTED / UNRESOLVED CAUSATION",
+      "plain_english_verdict": "The IRGC mine-causation account is a public claim. The public record confirms vessel damage but not this causal mechanism."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-EL-GAIA-REUTERS",
+      "claim_family_id": "CH-EL-GAIA-MINE-CAUSATION-20260914",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "CONTESTED_REPORT",
+      "exact_statement": "Reuters reported the IRGC mine account, CENTCOM's incompatible missile account, IMO damage reporting and UKMTO projectile reporting, stating that the competing accounts could not be verified.",
+      "translated_statement": null,
+      "originating_claimant": "Multiple attributed sources",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRGC-EL-GAIA-MINE-20260914-P01",
+        "CLM-IRGC-EL-GAIA-MINE-20260914",
+        "PROP-EL-GAIA-MINE-CAUSATION-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-EL-GAIA-REUTERS-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/diplomacy-stumbles-with-postponement-meeting-strait-hormuz-proposal-2026-09-13/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "Reuters preserves the conflict between causal accounts; reporting the dispute is not adoption of either cause."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-EL-GAIA-CENTCOM",
+      "claim_family_id": "CH-EL-GAIA-MINE-CAUSATION-20260914",
+      "source_id": "WOL-SRC-USCENTCOM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL_COUNTERCLAIM",
+      "exact_statement": "CENTCOM said the IRGC mine report was false and that El Gaia had instead been struck by an Iranian missile the prior month and rendered inoperable.",
+      "translated_statement": null,
+      "originating_claimant": "U.S. Central Command",
+      "lineage_roles": [
+        "CONTRADICTS"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "CI-CLM-IRGC-EL-GAIA-MINE-20260914-P01",
+        "CLM-IRGC-EL-GAIA-MINE-20260914",
+        "PROP-EL-GAIA-MINE-CAUSATION-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-EL-GAIA-CENTCOM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/diplomacy-stumbles-with-postponement-meeting-strait-hormuz-proposal-2026-09-13/",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "U.S. Central Command",
+          "claim_status": "COMPETING_CAUSATION_CLAIM",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "This is a competing official causation account. Claims Forensics keeps causation unresolved, so Web of Lies does not treat CENTCOM's denial as final adjudication."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-EL-GAIA-01",
+      "from_id": "WOL-EVT-PUB-EL-GAIA-REUTERS",
+      "to_id": "WOL-EVT-PUB-EL-GAIA-IRGC-MINES",
+      "relationship_type": "REPORTS",
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-EL-GAIA-01",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/diplomacy-stumbles-with-postponement-meeting-strait-hormuz-proposal-2026-09-13/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-EL-GAIA-02",
+      "from_id": "WOL-EVT-PUB-EL-GAIA-CENTCOM",
+      "to_id": "WOL-EVT-PUB-EL-GAIA-IRGC-MINES",
+      "relationship_type": "CONTRADICTS",
+      "evidence_source_ids": [
+        "SRC-C934F4D2622E"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-EL-GAIA-02",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/diplomacy-stumbles-with-postponement-meeting-strait-hormuz-proposal-2026-09-13/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "U.S. Central Command"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
