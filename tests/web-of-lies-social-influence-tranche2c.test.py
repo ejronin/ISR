@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_web_of_lies as wol  # noqa: E402
 import build_web_of_lies_discovery_queue as discovery_builder  # noqa: E402
 import build_web_of_lies_forensic_input as aggregator  # noqa: E402
+import web_of_lies_network as network  # noqa: E402
 
 canonical = json.loads((ROOT / wol.CANONICAL).read_text(encoding="utf-8"))
 governance = json.loads((ROOT / wol.GOVERNANCE).read_text(encoding="utf-8"))
@@ -121,6 +122,71 @@ good["content_body_evidence"] = {
     }],
 }
 discovery_builder.validate_native_discovery_content(good)
+
+# Canonical lineage uses the same rule after family assignment. An unresolved
+# bridge may be preserved, but it cannot become an adverse behavior finding.
+canonical_probe = {
+    "event_id": "TEST-CANONICAL-INFERENCE",
+    "canonical_claim_refs": ["TEST-CLAIM"],
+    "behavior_findings": [],
+    "content_body_evidence": {
+        "medium": "TEXT_PUBLICATION",
+        "capture_status": "FULL_TEXT_CAPTURED",
+        "capture_scope": "test",
+        "transcript_receipts": [],
+        "body_claims": [{
+            "body_claim_id": "TEST-BODY",
+            "statement_identity": "test",
+            "speaker": "test",
+            "timestamp_start": None,
+            "timestamp_end": None,
+            "evidence_scope": "test",
+        }],
+    },
+    "analysis_decomposition": {
+        "factual_substrate": [{
+            "statement": "supported premise",
+            "evidence_status": "PUBLICLY_SUPPORTED",
+            "evidence_note": "test",
+            "evidence_receipt_ids": [],
+        }],
+        "inferential_bridges": [{
+            "statement": "unresolved causal bridge",
+            "bridge_type": "CAUSAL_ATTRIBUTION",
+            "review_status": "UPSTREAM_REVIEW_REQUIRED",
+            "evidentiary_issue": "test",
+            "competing_explanations": [],
+        }],
+        "conclusions": [],
+        "presentation": [],
+        "decomposition_note": "test",
+    },
+}
+network._validate_claim_construction(canonical_probe, governance)
+
+bad_canonical = copy.deepcopy(canonical_probe)
+bad_canonical["behavior_findings"] = ["NARRATIVE_MUTATION"]
+try:
+    network._validate_claim_construction(bad_canonical, governance)
+except ValueError as exc:
+    assert "cannot score adverse behavior" in str(exc)
+else:
+    raise AssertionError("unresolved inference was allowed to create adverse behavior")
+
+bad_video_lineage = copy.deepcopy(canonical_probe)
+bad_video_lineage["content_body_evidence"] = {
+    "medium": "AUDIO_VIDEO",
+    "capture_status": "TITLE_DESCRIPTION_ONLY",
+    "capture_scope": "title only",
+    "transcript_receipts": [],
+    "body_claims": [],
+}
+try:
+    network._validate_claim_construction(bad_video_lineage, governance)
+except ValueError as exc:
+    assert "title/description only" in str(exc)
+else:
+    raise AssertionError("canonical video inference from title-only evidence was accepted")
 
 # Valenti's long-form review queue tracks videos that need body capture rather
 # than treating nuclear/ground-invasion titles as complete narrative evidence.
