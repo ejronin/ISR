@@ -947,11 +947,17 @@
       "lead_id": "LEAD-MEIDASTOUCH",
       "display_name": "MeidasTouch",
       "seed_urls": [
-        "https://www.meidastouch.com/"
+        "https://www.meidastouch.com/",
+        "https://podcasts.happyscribe.com/the-meidastouch-podcast/26-bb118efb-38d9-48e3-a6a9-f52a88576410",
+        "https://podcasts.happyscribe.com/the-meidastouch-podcast/trump-publicly-reverses-course-on-iran",
+        "https://www.youtube.com/watch?v=25ZWpgzY5ps",
+        "https://podcastrex.com/shows/the-meidastouch-podcast/meidastouch-full-podcast-8726/transcript",
+        "https://www.youtube.com/watch?v=clOI8LN0TaM",
+        "https://podcasts.apple.com/us/podcast/trump-flees-to-nj-as-us-abandons-bases/id1510240831?i=1000783514342"
       ],
-      "current_disposition": "UPSTREAM_REVIEW_REQUIRED",
+      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "OUTLET_IDENTITY_RESOLVED",
-      "notes": "July 12 broad multiple-U.S.-bases-destroyed assertion does not cleanly map to one existing canonical claim atom."
+      "notes": "A bounded July 17–August 15 review now records six distinct qualifying MeidasTouch publication events. The recurring pattern preserves a severe factual substrate—Iranian vessel attacks, genuine U.S. munitions depletion, extensive base damage and Bahrain logistics disruption—while repeatedly converting that substrate into unsupported absolutes such as seven tankers destroyed, zero Patriot/THAAD inventory, the U.S. out of all weapons, and essentially all regional U.S. bases destroyed/obliterated. Repeated publications count separately; multiple atomic propositions inside one episode count once. The deterministic Bullshitter award must be derived rather than manually assigned. The older July 12 broad-base-destruction discovery remains separately queued for upstream canonical atomization and is not needed to earn the source-behavior award."
     },
     {
       "lead_id": "LEAD-MIDDLE-EAST-MONITOR",
@@ -1719,6 +1725,321 @@
       "downstream_note": "This finding is about the factual generalization from protests to aggregate public support, not a judgment about the merits of the war.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any broader public-opinion narrative family remains upstream."
+    },
+    {
+      "incident_id": "WOL-BS-MEIDAS-SEVEN-TANKERS-DESTROYED-20260717",
+      "source_id": "WOL-SRC-MEIDASTOUCH",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-17",
+      "first_observed_at": "2026-07-17",
+      "statement_identity": "Ben Meiselas stated that seven tankers had been destroyed by Iran in the preceding several days for using the U.S.-recommended southern route through Hormuz.",
+      "source_information_event_id": "MEIDAS-PODCAST-20260717-SEVEN-TANKERS",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0717-TRANSCRIPT",
+          "surface": "WEBSITE",
+          "url": "https://podcasts.happyscribe.com/the-meidastouch-podcast/26-bb118efb-38d9-48e3-a6a9-f52a88576410",
+          "published_at": "2026-07-17",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Transcript preserves the claim that seven tankers had been destroyed by Iran after using the U.S.-recommended southern route."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0717-REUTERS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-says-it-struck-us-air-base-jordan-us-military-ends-five-hours-attacks-2026-07-14/",
+          "published_at": "2026-07-14",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters reported the U.S. said Iran had attacked seven commercial ships in the prior week; two Emirati oil tankers were struck, and Iran claimed two supertankers hit and disabled."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Meidas July 17 transcript plus contemporaneous Reuters reporting on the seven-vessel attack count and identified tanker damage.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The contemporaneous seven figure described commercial ships attacked, not seven tankers destroyed. Reuters identified two Emirati oil tankers struck and separately reported an Iranian claim that two supertankers were hit and disabled.",
+        "search_notes": "A real seven-vessel attack count was converted into seven destroyed tankers. The event is scored at publication level once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not collapse attacked, hit, disabled and destroyed into one maritime-loss metric.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical maritime-loss accounting may atomize vessel identity and effect separately."
+    },
+    {
+      "incident_id": "WOL-BS-MEIDAS-OUT-PATRIOT-THAAD-OBLITERATED-BASES-20260802",
+      "source_id": "WOL-SRC-MEIDASTOUCH",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-08-02",
+      "first_observed_at": "2026-08-02",
+      "statement_identity": "Meiselas said the U.S. had run out of PAC-3 Patriot interceptors and THAAD interceptors, lacked the needed Navy destroyers, and that Iran had obliterated U.S. military bases in the region.",
+      "source_information_event_id": "MEIDAS-PODCAST-20260802-MUNITIONS-BASES",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0802-TRANSCRIPT",
+          "surface": "WEBSITE",
+          "url": "https://podcasts.happyscribe.com/the-meidastouch-podcast/trump-publicly-reverses-course-on-iran",
+          "published_at": "2026-08-02",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Transcript preserves the zero-inventory Patriot/THAAD language and 'obliterated these US military bases' wording."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0802-MUNITIONS-REUTERS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/us-has-used-virtually-all-its-long-range-precision-missiles-during-iran-war-2026-08-04/",
+          "published_at": "2026-08-04",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters reported severe but nonzero defensive inventories: about 65% of Patriot interceptors expended and THAAD stocks at least 38% lower; ATACMS/PrSM were the classes described as virtually all used."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0802-BASE-DAMAGE-AP",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/87cbe4e2ac208a849cd1554c4bb44bbf",
+          "published_at": "2026-09-14",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Pentagon watchdog accounting later described hundreds of buildings and structures damaged or destroyed at U.S. bases, preserving the distinction between installation damage and whole-base destruction."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Full Meidas episode transcript; Reuters inventory reporting based on internal U.S. data; later Pentagon-inspector-general accounting of regional base damage.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The underlying evidence supports severe depletion and severe facility damage. It does not support zero Patriot/THAAD inventory or a blanket conclusion that the regional U.S. bases were wholly obliterated.",
+        "search_notes": "This is one information event containing repeated scope/zero-inventory generalizations; count once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve severe depletion and real base damage as factual substrate; score only the absolute/generalized conclusions.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Inventory classes and facility-level BDA remain separate canonical propositions."
+    },
+    {
+      "incident_id": "WOL-BS-MEIDAS-OUT-PATRIOT-THAAD-DESTROYERS-20260804",
+      "source_id": "WOL-SRC-MEIDASTOUCH",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-08-04",
+      "first_observed_at": "2026-08-04",
+      "statement_identity": "Meiselas repeated that the U.S. was out of Patriot interceptors, out of THAAD interceptors and out of Navy destroyers, while saying regional bases had been abandoned and remaining undestroyed equipment moved to Israel.",
+      "source_information_event_id": "MEIDAS-PODCAST-20260804-OUT-INTERCEPTORS",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0804-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=25ZWpgzY5ps",
+          "published_at": "2026-08-04",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Original MeidasTouch episode identity for the August 4 full podcast."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0804-TRANSCRIPT",
+          "surface": "WEBSITE",
+          "url": "https://podcasts.happyscribe.com/the-meidastouch-podcast/26-da0c7165-a051-40a7-b440-27752469fd9d",
+          "published_at": "2026-08-04",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Transcript preserves repeated 'we're out of Patriot interceptors' and 'we're out of THAAD interceptors' wording."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0804-REUTERS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/us-has-used-virtually-all-its-long-range-precision-missiles-during-iran-war-2026-08-04/",
+          "published_at": "2026-08-04",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters reported approximately 65% Patriot expenditure and at least a 38% THAAD stock reduction, not zero stocks."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Original episode identity, full public transcript, and same-day Reuters reporting on U.S. missile/interceptor inventories.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Same-day reporting supports severe depletion but directly distinguishes that from zero Patriot or THAAD inventory.",
+        "search_notes": "This is a distinct later republication/repetition after the August 2 event and therefore counts separately under the repeated-publication rule.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct August 4 repetition; do not deduplicate with August 2.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical inventory readiness remains upstream; WOL scores the source's absolute presentation."
+    },
+    {
+      "incident_id": "WOL-BS-MEIDAS-RAN-OUT-ALL-WEAPONS-20260807",
+      "source_id": "WOL-SRC-MEIDASTOUCH",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-08-07",
+      "first_observed_at": "2026-08-07",
+      "statement_identity": "Meiselas said the United States was running out of all of its weapons, that Iranian ballistic missiles were hitting all their targets at U.S. bases, and that it was clear the U.S. had run out of interceptors and offensive weapons.",
+      "source_information_event_id": "MEIDAS-PODCAST-20260807-ALL-WEAPONS",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0807-TRANSCRIPT",
+          "surface": "WEBSITE",
+          "url": "https://podcastrex.com/shows/the-meidastouch-podcast/meidastouch-full-podcast-8726/transcript",
+          "published_at": "2026-08-07",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Full transcript preserves the 'runs out of all of its weapons,' 'all of its targets,' and 'run out of our interceptors and offensive weapons' claims."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0807-REUTERS-MUNITIONS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/us-has-used-virtually-all-its-long-range-precision-missiles-during-iran-war-2026-08-04/",
+          "published_at": "2026-08-04",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters documented class-specific severe depletion rather than all-weapons exhaustion."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0807-TRUMP-REUTERS",
+          "surface": "WEBSITE",
+          "url": "https://www.reutersconnect.com/item/trump-says-he-thinks-war-with-iran-will-end-pretty-soon/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1ZBMzc5MjA2MDgyMDI2UlAx",
+          "published_at": "2026-08-06",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump publicly acknowledged tighter supplies in some classes while describing other types as in very large supply; the statement does not validate an all-weapons-zero conclusion."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Full August 7 transcript, Reuters class-specific inventory reporting, and the direct August 6 presidential munitions statement.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Evidence supports serious shortages in specified systems, not exhaustion of all U.S. weapons or all interceptors/offensive weapons. The transcript's own reasoning infers zero inventory from observed non-interceptions.",
+        "search_notes": "The claim converts selective depletion and observed penetrations into universal inventory and interception conclusions.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Severe munitions shortfalls remain factual substrate; universal zero-inventory language is the scored bridge/conclusion.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Claims Forensics may separately adjudicate specific weapon-class inventories and specific missile engagements."
+    },
+    {
+      "incident_id": "WOL-BS-MEIDAS-RAN-OUT-WEAPONS-ABANDONED-BASES-20260811",
+      "source_id": "WOL-SRC-MEIDASTOUCH",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-08-11",
+      "first_observed_at": "2026-08-11",
+      "statement_identity": "Meiselas said objectively the United States ran out of weapons in roughly 40 days, had basically abandoned all Middle East bases other than Israel, and that Iran obliterated the listed bases.",
+      "source_information_event_id": "MEIDAS-PODCAST-20260811-RAN-OUT-ABANDONED",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0811-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=clOI8LN0TaM",
+          "published_at": "2026-08-11",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Original MeidasTouch episode identity for the August 11 full podcast."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0811-TRANSCRIPT",
+          "surface": "WEBSITE",
+          "url": "https://podscripts.co/podcasts/the-meidastouch-podcast/meidastouch-full-podcast-81126",
+          "published_at": "2026-08-11",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Transcript preserves 'objectively, the United States ran out of weapons,' 'basically abandoned all of the Middle East bases,' and 'Iran obliterated those bases.'"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0811-REUTERS-MUNITIONS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/us-has-used-virtually-all-its-long-range-precision-missiles-during-iran-war-2026-08-04/",
+          "published_at": "2026-08-04",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters' inventory reporting is severe but class-specific, not all-weapons exhaustion."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0811-AP-BASES",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/87cbe4e2ac208a849cd1554c4bb44bbf",
+          "published_at": "2026-09-14",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Pentagon watchdog accounting describes hundreds of structures damaged/destroyed at bases and logistics rerouting, rather than the blanket loss of essentially every regional base."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Original episode identity, full transcript, Reuters munitions reporting and the Pentagon-watchdog base-damage accounting later published by AP.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The evidence supports grave munitions shortages, extensive regional facility damage and logistics disruption. It does not establish that the U.S. literally ran out of weapons or that essentially every Middle East base except Israel was abandoned/obliterated.",
+        "search_notes": "One August 11 publication event; multiple absolute conclusions within it do not multiply the incident count.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Counts once despite weapon-inventory and whole-base generalizations appearing together.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical facility and inventory propositions remain independently atomizable."
+    },
+    {
+      "incident_id": "WOL-BS-MEIDAS-US-BASES-ARE-DESTROYED-20260815",
+      "source_id": "WOL-SRC-MEIDASTOUCH",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-08-15",
+      "first_observed_at": "2026-08-15",
+      "statement_identity": "Meiselas cited the real destruction of much of the Bahrain logistics base, then generalized across Bahrain, Kuwait, Qatar, Iraq, Jordan, UAE and surrounding areas: 'The U.S. bases are destroyed.'",
+      "source_information_event_id": "MEIDAS-PODCAST-20260815-BASES-DESTROYED",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0815-APPLE",
+          "surface": "WEBSITE",
+          "url": "https://podcasts.apple.com/us/podcast/trump-flees-to-nj-as-us-abandons-bases/id1510240831?i=1000783514342",
+          "published_at": "2026-08-15",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Official podcast-feed page preserves episode identity and description that the U.S. was shutting down bases and moving logistics to Diego Garcia."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0815-TRANSCRIPT",
+          "surface": "WEBSITE",
+          "url": "https://podcasts.happyscribe.com/the-meidastouch-podcast/trump-flees-to-nj-as-us-abandons-bases",
+          "published_at": "2026-08-15",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Transcript preserves the listed-country generalization and the sentence 'The U.S. bases are destroyed.'"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0815-NYT-BAHRAIN",
+          "surface": "WEBSITE",
+          "url": "https://www.nytimes.com/2026/08/14/us/politics/uss-abraham-lincoln-trump-supplies-diego-garcia.html",
+          "published_at": "2026-08-14",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The underlying report says Iran destroyed much of the Bahrain Navy base/logistics hub and forced Diego Garcia resupply; it does not say all listed regional bases were destroyed."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MEIDAS-0815-AP-IG",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/87cbe4e2ac208a849cd1554c4bb44bbf",
+          "published_at": "2026-09-14",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Pentagon-watchdog accounting describes hundreds of buildings and structures damaged or destroyed at bases across eight countries, preserving structure-level versus whole-installation scope."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Episode feed and full transcript, the underlying New York Times Bahrain logistics report cited in the episode, and the later Pentagon-watchdog regional damage accounting.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The cited/reporting substrate supports destruction of much of the Bahrain logistics hub and extensive damage across multiple installations. That does not establish the universal whole-base statement applied across the listed countries.",
+        "search_notes": "This is a real-damage-to-universal-destruction scope mutation, not a denial that Iran inflicted major U.S. base damage.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve Bahrain's severe/possibly mission-killing logistics damage separately from the blanket regional whole-base conclusion.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Facility-level BDA must remain granular."
     }
   ]
 }
