@@ -815,3 +815,39 @@ Repeated title/thumbnail sensationalization may become source-behavior evidence
 only when the underlying incidents are individually documented. Engagement
 motive is not inferred merely from sensational wording; monetization,
 engagement incentives and editorial strategy require their own receipts.
+
+
+## 32. Receipt-backed descriptive source profiles
+
+Source-profile facts do not need to masquerade as claim-family incidents.
+
+Public profile receipts may support only the neutral/descriptive source classes
+listed by governance, such as JOURNALISTIC_SOURCE, SUBJECT_MATTER_ANALYST,
+PARTISAN_COMMENTATOR, ACTIVIST_COMMENTATOR, MONETIZED_INFLUENCER and
+CONTENT_AGGREGATOR.
+
+A receipt-backed descriptive class must identify the class it supports and
+preserve the public URL/provenance used to support it.
+
+Adverse classes remain incident-gated. Profile pages, biographies,
+subscriptions, ideological self-description, collaborations, monetization or
+audience size cannot by themselves establish PSEUDO_ANALYST, NEWS_GRIFT,
+ACTIVIST_GRIFT, PROPAGANDA_SOURCE, PARTISAN_AMPLIFIER,
+NARRATIVE_MUTATION_OFFENDER, shill classes or Hall qualification.
+
+Public revenue channels may be supported by source-profile receipts rather than
+a synthetic claim event. Supported revenue evidence still records only the
+channel actually evidenced: PATREON, PAID_SUBSTACK, MEMBERSHIP, DONATIONS,
+SPONSORED_CONTENT, AFFILIATE_REVENUE, platform monetization, or another
+governed class. Monetized != grifter.
+
+Collaboration and hosting must preserve exact scope. Use relationships such as
+HOSTED_BY, QUOTES or PUBLISHED_BY for public appearances when that is what the
+receipt proves. A guest appearance, recurring co-hosting, quotation, paid
+platform presence, or republication does not establish CONTROLLED_BY,
+AFFILIATED_WITH, employment, agency, state direction, common ownership, or
+editorial control without separate evidence.
+
+This section complements the claim-construction decomposition above: source
+role, source incentive, source relationship, factual substrate, inferential
+bridge, conclusion and claim behavior are separate evidentiary axes.
