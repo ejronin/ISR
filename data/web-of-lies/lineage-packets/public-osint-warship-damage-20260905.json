@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-WARSHIP-DAMAGE-20260905",
+  "claim_family_id": "CHAIN-LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+  "as_of": "2026-09-21T09:40:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-ll-iran-us-warship-damage-20260905.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Origin/carrier/counter-record trace for the Sep. 5 U.S. warship damage-and-retreat proposition. Canonical FALSE/CONTRADICTED EFFECT CLAIM — POSSIBLE KNOWLEDGE is preserved read-only; the CENTCOM denial remains an opposing official account, not a new independent Web-of-Lies truth adjudication.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-USCENTCOM",
+      "display_name": "U.S. Central Command",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-WARSHIP-DAMAGE-0905-IRGC",
+      "claim_family_id": "CHAIN-LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-09-06T10:42:00+03:30",
+      "first_observed_at": "2026-09-06T10:42:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "The IRGC Aerospace Force said a U.S. aircraft carrier and destroyer sustained damage and were forced to flee the engagement area.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Aerospace Force",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+        "LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+        "PROP-1D986B0E298F"
+      ],
+      "evidence_source_ids": [
+        "SRC-D4D6B0EA7074"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-6A02B13B992D"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WARSHIP-DAMAGE-0905-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689747/irgc-strikes-us-warships-tankers-in-response-to-attacks-on-iranian-vessels",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Aerospace Force",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "FALSE/CONTRADICTED EFFECT CLAIM — POSSIBLE KNOWLEDGE",
+      "plain_english_verdict": "Atlas already adjudicates the damage-and-retreat effect proposition as false/contradicted with possible knowledge. This event records the IRGC origin and does not infer a stronger personal-knowledge finding."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-WARSHIP-DAMAGE-0905-TASNIM",
+      "claim_family_id": "CHAIN-LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-06T10:42:00+03:30",
+      "first_observed_at": "2026-09-06T10:42:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim carried the IRGC Aerospace Force claim that the two U.S. warships were damaged and forced to flee.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Aerospace Force",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+        "LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+        "PROP-1D986B0E298F"
+      ],
+      "evidence_source_ids": [
+        "SRC-D4D6B0EA7074"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-6A02B13B992D"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WARSHIP-DAMAGE-0905-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689747/irgc-strikes-us-warships-tankers-in-response-to-attacks-on-iranian-vessels",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC Aerospace Force"
+        }
+      ],
+      "plain_english_verdict": "Tasnim is a carrier of the IRGC proposition here; its publication does not create a second corroborating source."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-WARSHIP-DAMAGE-0905-CENTCOM",
+      "claim_family_id": "CHAIN-LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+      "source_id": "WOL-SRC-USCENTCOM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-05",
+      "first_observed_at": "2026-09-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL_COUNTERCLAIM",
+      "exact_statement": "CENTCOM said the U.S. aircraft carrier and destroyer successfully evaded multiple Iranian attacks and no U.S. personnel were harmed.",
+      "translated_statement": null,
+      "originating_claimant": "U.S. Central Command",
+      "lineage_roles": [
+        "CONTRADICTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+        "LL-IRAN-US-WARSHIP-DAMAGE-20260905",
+        "PROP-1D986B0E298F"
+      ],
+      "evidence_source_ids": [
+        "SRC-6A02B13B992D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WARSHIP-DAMAGE-0905-CENTCOM",
+          "surface": "WEBSITE",
+          "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4591744/centcom-destroys-3-irgc-oil-tankers-after-iran-targets-2-us-navy-warships/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "This is the opposing U.S. official account already consumed by Claims Forensics. Web of Lies records the contradiction rather than treating an official denial as independent corroboration."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-WARSHIP-DAMAGE-0905-01",
+      "from_id": "WOL-EVT-PUB-WARSHIP-DAMAGE-0905-TASNIM",
+      "to_id": "WOL-EVT-PUB-WARSHIP-DAMAGE-0905-IRGC",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-D4D6B0EA7074"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-WARSHIP-DAMAGE-0905-01",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689747/irgc-strikes-us-warships-tankers-in-response-to-attacks-on-iranian-vessels",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Aerospace Force"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-WARSHIP-DAMAGE-0905-02",
+      "from_id": "WOL-EVT-PUB-WARSHIP-DAMAGE-0905-CENTCOM",
+      "to_id": "WOL-EVT-PUB-WARSHIP-DAMAGE-0905-IRGC",
+      "relationship_type": "CONTRADICTS",
+      "evidence_source_ids": [
+        "SRC-6A02B13B992D"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-WARSHIP-DAMAGE-0905-02",
+          "surface": "WEBSITE",
+          "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4591744/centcom-destroys-3-irgc-oil-tankers-after-iran-targets-2-us-navy-warships/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
