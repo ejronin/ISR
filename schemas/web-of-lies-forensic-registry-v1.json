@@ -645,6 +645,57 @@
             "type": "object",
             "additionalProperties": true
           }
+        },
+        "source_awards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "award_code",
+              "public_label",
+              "window_days",
+              "minimum_qualifying_incidents",
+              "qualifying_incident_count",
+              "qualifying_event_ids",
+              "as_of",
+              "public_verdict"
+            ],
+            "properties": {
+              "award_code": {
+                "const": "BULLSHITTER"
+              },
+              "public_label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "window_days": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minimum_qualifying_incidents": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "qualifying_incident_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "qualifying_event_ids": {
+                "$ref": "#/$defs/string_array"
+              },
+              "as_of": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "public_verdict": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "additionalProperties": true
