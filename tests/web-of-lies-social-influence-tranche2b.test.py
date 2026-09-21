@@ -75,7 +75,9 @@ assert any(
     receipt["url"] == "https://www.youtube.com/watch?v=H0BfiwKhoVs"
     for receipt in allowance["public_receipts"]
 )
-assert "separate factual/causal propositions" in allowance["downstream_note"]
+assert "Do not score the title alone as bullshit" in allowance["downstream_note"]
+assert "interceptor rationing" in allowance["downstream_note"]
+assert "stronger alleged motive/permission theory" in allowance["downstream_note"]
 
 # Nearby control: a dramatic July 20 casualty headline remains research context,
 # not an adverse discovery solely because it came from the same publisher.
