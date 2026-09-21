@@ -285,6 +285,12 @@ def validate_forensic_input(
         unsupported_behavior = behavior_findings - allowed_classes - allowed_moral_findings
         if unsupported_behavior:
             raise ValueError(f"information event {event_id} has unsupported behavior findings: {sorted(unsupported_behavior)}")
+        event_type = str(event.get("event_type") or "")
+        if event_type in UNSUPPORTED_BULLSHIT_EVENT_TYPES and not unsupported_evidence_gate_satisfied(event, governance):
+            raise ValueError(
+                f"information event {event_id} cannot claim {event_type} without "
+                "a documented no-support evidentiary review"
+            )
         carrier_ids = set(event.get("carrier_profile_ids") or [])
         missing_carriers = carrier_ids - source_ids
         if missing_carriers:
@@ -559,6 +565,43 @@ def ranking_view(
 
 
 
+UNSUPPORTED_BULLSHIT_EVENT_TYPES = {
+    "UNSUPPORTED_FACTUAL_ASSERTION",
+    "UNSUPPORTED_INFERENTIAL_ASSERTION",
+    "EVIDENTIARY_EVASION",
+}
+
+
+def unsupported_evidence_gate_satisfied(
+    event: dict[str, Any],
+    governance: dict[str, Any],
+) -> bool:
+    """Require documented support review before an unsupported claim counts."""
+    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
+    gate = cfg.get("unsupported_evidence_gate") or {}
+    review = event.get("evidentiary_support_review") or {}
+    required_status = str(
+        gate.get("required_review_status") or "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+    )
+    if str(review.get("status") or "") != required_status:
+        return False
+    if gate.get("require_search_scope") and not str(review.get("search_scope") or "").strip():
+        return False
+    if gate.get("require_checked_at") and not str(review.get("checked_at") or "").strip():
+        return False
+    if gate.get("require_claimant_basis_review"):
+        claimant_basis = str(review.get("claimant_basis_status") or "").strip()
+        if claimant_basis not in {
+            "NONE_PROVIDED",
+            "CIRCULAR",
+            "DOES_NOT_SUPPORT_ASSERTION",
+            "ASSERTION_ONLY",
+            "SELF_SEALING",
+        }:
+            return False
+    return True
+
+
 def bullshit_qualifying_event(
     event: dict[str, Any],
     governance: dict[str, Any],
@@ -571,6 +614,8 @@ def bullshit_qualifying_event(
         return False
     if event_type == "REPORTS":
         return False
+    if event_type in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
+        return unsupported_evidence_gate_satisfied(event, governance)
     qualifying_types = set(cfg.get("qualifying_event_types") or [])
     qualifying_findings = set(cfg.get("qualifying_behavior_findings") or [])
     findings = set(event.get("behavior_findings") or [])
