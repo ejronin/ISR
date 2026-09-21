@@ -55,7 +55,7 @@ assert award is not None
 assert award["award_code"] == "BULLSHITTER"
 assert award["public_label"] == "Bullshitter"
 assert award["qualifying_incident_count"] == 6
-assert award["qualifying_event_ids"] == [f"E-{i}" for i in range(1, 7)]
+assert award["qualifying_incident_ids"] == [f"E-{i}" for i in range(1, 7)]
 assert "6 qualifying bullshit incidents" in award["public_verdict"]
 
 # Mirrors/cross-platform captures of one information event count once.
@@ -69,7 +69,7 @@ mirrored_award = wol.bullshit_award_for_events(
 )
 assert mirrored_award is not None
 assert mirrored_award["qualifying_incident_count"] == 6
-assert set(mirrored_award["qualifying_event_ids"]) == {
+assert set(mirrored_award["qualifying_incident_ids"]) == {
     "E-1", "E-2", "E-3", "E-4", "E-5", "E-6"
 }
 
@@ -126,6 +126,33 @@ genuinely_unresolved["evidentiary_support_review"] = {
     "claimant_basis_status": "ASSERTION_ONLY",
 }
 assert wol.bullshit_qualifying_event(genuinely_unresolved, governance) is False
+
+def native_incident(n: int) -> dict:
+    return {
+        "incident_id": f"N-{n}",
+        "source_id": "SRC-NATIVE",
+        "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+        "assertion_kind": "FACTUAL_ASSERTION",
+        "published_at": f"2026-09-{10+n:02d}",
+        "statement_identity": f"unsupported assertion {n}",
+        "public_receipts": [{"receipt_id": f"R-N-{n}", "surface": "YOUTUBE"}],
+        "evidentiary_support_review": {
+            "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+            "search_scope": "claimant basis plus public corroborating evidence",
+            "checked_at": "2026-09-21T15:30:00-04:00",
+            "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        },
+    }
+
+
+native_award = wol.bullshit_award_for_events(
+    [native_incident(i) for i in range(1, 7)],
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+)
+assert native_award is not None
+assert native_award["qualifying_incident_count"] == 6
+assert native_award["qualifying_incident_ids"] == [f"N-{i}" for i in range(1, 7)]
 
 # A source can qualify through repeated adverse narrative mutation / repetition
 # after correction, not only the base false/misleading event type.
