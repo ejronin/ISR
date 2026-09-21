@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-RSAF-F15SA-MARIB-20260916",
+  "claim_family_id": "CH-RSAF-F15SA-MARIB-20260916",
+  "as_of": "2026-09-21T10:05:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-rsaf-f15sa-marib-20260916.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Cause-of-loss trace only. Wreckage imagery establishes a Saudi F-15SA physical loss, but the locally made surface-to-air missile causation remains the Houthi account. Physical loss is not silently converted into missile-cause corroboration.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-YAHYA-SAREE",
+      "display_name": "Yahya Saree",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "PERSON",
+      "country_region": "Yemen",
+      "stable_identity_id": "WOL-ID-YAHYA-SAREE",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-JANES",
+      "display_name": "Janes",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-F15SA-MARIB-HOUTHI",
+      "claim_family_id": "CH-RSAF-F15SA-MARIB-20260916",
+      "source_id": "WOL-SRC-YAHYA-SAREE",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-16",
+      "first_observed_at": "2026-09-16",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "Yahya Saree said Houthi air defenses downed the Saudi F-15SA over Marib with a locally manufactured surface-to-air missile.",
+      "translated_statement": null,
+      "originating_claimant": "Ansar Allah / Yahya Saree",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-JANES"
+      ],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-F15SA-CAUSATION-20260916-P01",
+        "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+        "PROP-HOUTHI-F15SA-CAUSATION-20260916"
+      ],
+      "evidence_source_ids": [
+        "SRC-1B0B49B3F85E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-F15SA-MARIB-JANES-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.janes.com/defence-intelligence-insights/defence-news/defence/houthis-claim-shooting-down-of-saudi-fighter-in-first-combat-loss-for-advanced-eagle",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Yahya Saree / Ansar Allah",
+          "claim_status": "CLAIMED_CAUSATION",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "UNRESOLVED — PHYSICAL LOSS DOES NOT ESTABLISH HOUTHI MISSILE CAUSATION",
+      "plain_english_verdict": "The aircraft loss is physically supported, but the claimed missile mechanism remains unresolved. Web of Lies records the cause claim without treating the wreckage as proof of that cause."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-F15SA-MARIB-JANES",
+      "claim_family_id": "CH-RSAF-F15SA-MARIB-20260916",
+      "source_id": "WOL-SRC-JANES",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-16",
+      "first_observed_at": "2026-09-16",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Janes reported the Houthi missile-causation claim and independently identified the wreckage as a Saudi F-15SA, while describing the targeting footage as unverified.",
+      "translated_statement": null,
+      "originating_claimant": "Ansar Allah / Yahya Saree",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-F15SA-CAUSATION-20260916-P01",
+        "CLM-HOUTHI-F15SA-CAUSATION-20260916",
+        "PROP-HOUTHI-F15SA-CAUSATION-20260916"
+      ],
+      "evidence_source_ids": [
+        "SRC-1B0B49B3F85E"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-F15SA-MARIB-JANES-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.janes.com/defence-intelligence-insights/defence-news/defence/houthis-claim-shooting-down-of-saudi-fighter-in-first-combat-loss-for-advanced-eagle",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Ansar Allah"
+        }
+      ],
+      "plain_english_verdict": "Janes corroborates aircraft identity/loss from imagery, not the asserted missile causation. The distinction remains explicit."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-F15SA-MARIB-01",
+      "from_id": "WOL-EVT-PUB-F15SA-MARIB-JANES",
+      "to_id": "WOL-EVT-PUB-F15SA-MARIB-HOUTHI",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-1B0B49B3F85E"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-F15SA-MARIB-01",
+          "surface": "WEBSITE",
+          "url": "https://www.janes.com/defence-intelligence-insights/defence-news/defence/houthis-claim-shooting-down-of-saudi-fighter-in-first-combat-loss-for-advanced-eagle",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Ansar Allah"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
