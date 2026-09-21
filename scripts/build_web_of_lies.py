@@ -311,6 +311,9 @@ def validate_forensic_input(
         events_by_source[source_id].add(event_id)
 
     incident_ids: set[str] = set()
+    incidents_by_id: dict[str, dict[str, Any]] = {}
+    incidents_by_source: dict[str, set[str]] = defaultdict(set)
+    native_event_types = set(governance.get("native_source_behavior_event_types") or [])
     for incident in source_behavior_incidents:
         incident_id = str(incident.get("incident_id") or "").strip()
         if not incident_id or incident_id in incident_ids:
@@ -318,21 +321,40 @@ def validate_forensic_input(
                 f"duplicate or missing source behavior incident id: {incident_id!r}"
             )
         incident_ids.add(incident_id)
+        incidents_by_id[incident_id] = incident
         source_id = str(incident.get("source_id") or "").strip()
         if source_id not in source_ids:
             raise ValueError(
                 f"source behavior incident {incident_id} references unknown source profile {source_id}"
             )
+        incidents_by_source[source_id].add(incident_id)
+
         event_type = str(incident.get("event_type") or "")
-        if event_type not in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
+        behavior_findings = set(incident.get("behavior_findings") or [])
+        unsupported_behavior = behavior_findings - allowed_classes - allowed_moral_findings
+        if unsupported_behavior:
+            raise ValueError(
+                f"source behavior incident {incident_id} has unsupported behavior findings: "
+                f"{sorted(unsupported_behavior)}"
+            )
+
+        if event_type in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
+            if not unsupported_evidence_gate_satisfied(incident, governance):
+                raise ValueError(
+                    f"source behavior incident {incident_id} lacks the documented "
+                    "no-support evidentiary review required for WOL-native scoring"
+                )
+        elif event_type in NATIVE_BEHAVIOR_CLASS_EVENT_TYPES and event_type in native_event_types:
+            if not native_behavior_evidence_gate_satisfied(incident, governance):
+                raise ValueError(
+                    f"source behavior incident {incident_id} lacks affirmative "
+                    "public evidence required for native behavior classification"
+                )
+        else:
             raise ValueError(
                 f"source behavior incident {incident_id} has unsupported event type {event_type}"
             )
-        if not unsupported_evidence_gate_satisfied(incident, governance):
-            raise ValueError(
-                f"source behavior incident {incident_id} lacks the documented "
-                "no-support evidentiary review required for WOL-native scoring"
-            )
+
         if not list(incident.get("public_receipts") or []):
             raise ValueError(
                 f"source behavior incident {incident_id} has no public receipts"
@@ -378,13 +400,40 @@ def validate_forensic_input(
         foreign = basis - events_by_source[source_id]
         if foreign:
             raise ValueError(f"source profile {source_id} classification basis uses another source's events: {sorted(foreign)}")
+
+        native_basis = set(profile.get("classification_basis_incident_ids") or [])
+        missing_native = native_basis - incident_ids
+        if missing_native:
+            raise ValueError(
+                f"source profile {source_id} native classification basis references "
+                f"unknown incidents: {sorted(missing_native)}"
+            )
+        foreign_native = native_basis - incidents_by_source[source_id]
+        if foreign_native:
+            raise ValueError(
+                f"source profile {source_id} native classification basis uses another "
+                f"source's incidents: {sorted(foreign_native)}"
+            )
+
         substantive_classes = [value for value in profile.get("behavior_classes") or [] if value != "UNKNOWN"]
-        if substantive_classes and not basis:
-            raise ValueError(f"source profile {source_id} has substantive behavior classes without classification-basis events")
+        if substantive_classes and not (basis or native_basis):
+            raise ValueError(
+                f"source profile {source_id} has substantive behavior classes without "
+                "classification-basis events or native incidents"
+            )
         for source_class in substantive_classes:
-            if not any(source_class in (events_by_id[event_id].get("behavior_findings") or []) for event_id in basis):
+            canonical_support = any(
+                source_class in (events_by_id[event_id].get("behavior_findings") or [])
+                for event_id in basis
+            )
+            native_support = any(
+                source_class in (incidents_by_id[incident_id].get("behavior_findings") or [])
+                for incident_id in native_basis
+            )
+            if not (canonical_support or native_support):
                 raise ValueError(
-                    f"source profile {source_id} class {source_class} is not supported by its classification-basis events"
+                    f"source profile {source_id} class {source_class} is not supported "
+                    "by its classification-basis evidence"
                 )
 
         revenue_basis = set(profile.get("revenue_basis_event_ids") or [])
@@ -543,6 +592,7 @@ def source_profiles_with_metrics(
         record["behavior_classes"] = unique_strings(record.get("behavior_classes"))
         record["revenue_model"] = unique_strings(record.get("revenue_model"))
         record["classification_basis_event_ids"] = unique_strings(record.get("classification_basis_event_ids"))
+        record["classification_basis_incident_ids"] = unique_strings(record.get("classification_basis_incident_ids"))
         record["revenue_basis_event_ids"] = unique_strings(record.get("revenue_basis_event_ids"))
         record["metrics"] = metrics_for_events(by_source.get(str(record["source_id"]), []))
         record["direct_verdict"] = wol_network.direct_verdict(record["metrics"])
@@ -599,6 +649,34 @@ UNSUPPORTED_BULLSHIT_EVENT_TYPES = {
     "UNSUPPORTED_INFERENTIAL_ASSERTION",
     "EVIDENTIARY_EVASION",
 }
+
+NATIVE_BEHAVIOR_CLASS_EVENT_TYPES = {
+    "COORDINATED_INFLUENCE_OPERATION",
+}
+
+
+def native_behavior_evidence_gate_satisfied(
+    incident: dict[str, Any],
+    governance: dict[str, Any],
+) -> bool:
+    """Require affirmative public evidence before native source-class findings."""
+    cfg = governance.get("native_behavior_classification") or {}
+    if not cfg.get("allowed"):
+        return False
+    review = incident.get("evidentiary_support_review") or {}
+    if str(review.get("status") or "") != "PUBLIC_OSINT_ESTABLISHED":
+        return False
+    if not str(review.get("search_scope") or "").strip():
+        return False
+    if not str(review.get("checked_at") or "").strip():
+        return False
+    if review.get("supporting_evidence_found") is not True:
+        return False
+    if cfg.get("require_public_receipts") and not list(incident.get("public_receipts") or []):
+        return False
+    if cfg.get("require_behavior_findings") and not list(incident.get("behavior_findings") or []):
+        return False
+    return True
 
 
 def unsupported_evidence_gate_satisfied(
