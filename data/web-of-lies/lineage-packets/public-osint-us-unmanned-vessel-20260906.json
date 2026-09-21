@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-US-UNMANNED-20260906",
+  "claim_family_id": "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906",
+  "as_of": "2026-09-21T09:40:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-ll-iran-us-unmanned-vessel-20260906.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Opposed-actor trace. The IRGC claim and U.S. denial are both public; Claims Forensics keeps the technical outcome UNRESOLVED and Web of Lies does not convert contradiction into deception.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-USCENTCOM",
+      "display_name": "U.S. Central Command",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-AP",
+      "display_name": "Associated Press",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-US-UNMANNED-0906-IRGC",
+      "claim_family_id": "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-06T10:23:00+03:30",
+      "first_observed_at": "2026-09-06T10:23:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "The IRGC Navy said it targeted a U.S. Army remote-controlled vessel attempting to enter the protected zone of the Strait of Hormuz.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Navy",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-UNMANNED-VESSEL-20260906",
+        "LL-IRAN-US-UNMANNED-VESSEL-20260906",
+        "PROP-CBA988006BB8"
+      ],
+      "evidence_source_ids": [
+        "SRC-F53065520EA8"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-F53065520EA8"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-US-UNMANNED-0906-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689722/irgc-hits-us-remote-controlled-vessel",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Navy",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "UNRESOLVED",
+      "plain_english_verdict": "The IRGC claim is established as a public claim. The underlying strike outcome remains unresolved."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-US-UNMANNED-0906-TASNIM",
+      "claim_family_id": "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-06T10:23:00+03:30",
+      "first_observed_at": "2026-09-06T10:23:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim published the IRGC Navy remote-controlled-vessel strike claim.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Navy",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-UNMANNED-VESSEL-20260906",
+        "LL-IRAN-US-UNMANNED-VESSEL-20260906",
+        "PROP-CBA988006BB8"
+      ],
+      "evidence_source_ids": [
+        "SRC-F53065520EA8"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-US-UNMANNED-0906-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689722/irgc-hits-us-remote-controlled-vessel",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC Navy"
+        }
+      ],
+      "plain_english_verdict": "Tasnim is a derivative carrier, not a second technical confirmation."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-US-UNMANNED-0906-US-DENIAL",
+      "claim_family_id": "CHAIN-LL-IRAN-US-UNMANNED-VESSEL-20260906",
+      "source_id": "WOL-SRC-USCENTCOM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-06",
+      "first_observed_at": "2026-09-06",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL_COUNTERCLAIM",
+      "exact_statement": "The U.S. military denied the Iranian account of striking the U.S. unmanned vessel, as reported by the Associated Press.",
+      "translated_statement": null,
+      "originating_claimant": "U.S. military / U.S. Central Command",
+      "lineage_roles": [
+        "CONTRADICTS"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-AP"
+      ],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-UNMANNED-VESSEL-20260906",
+        "LL-IRAN-US-UNMANNED-VESSEL-20260906",
+        "PROP-CBA988006BB8"
+      ],
+      "evidence_source_ids": [
+        "SRC-F53065520EA8"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-US-UNMANNED-0906-AP-US-DENIAL",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/a52beec77dc90af3d040d0553837ad20",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "U.S. military",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "This is an opposing official account. Claims Forensics explicitly keeps the technical outcome unresolved, so Web of Lies does not promote the denial into a falsity or lie finding."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-US-UNMANNED-0906-01",
+      "from_id": "WOL-EVT-PUB-US-UNMANNED-0906-TASNIM",
+      "to_id": "WOL-EVT-PUB-US-UNMANNED-0906-IRGC",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-F53065520EA8"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-US-UNMANNED-0906-01",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689722/irgc-hits-us-remote-controlled-vessel",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Navy"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-US-UNMANNED-0906-02",
+      "from_id": "WOL-EVT-PUB-US-UNMANNED-0906-US-DENIAL",
+      "to_id": "WOL-EVT-PUB-US-UNMANNED-0906-IRGC",
+      "relationship_type": "CONTRADICTS",
+      "evidence_source_ids": [
+        "SRC-F53065520EA8"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-US-UNMANNED-0906-02",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/a52beec77dc90af3d040d0553837ad20",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "U.S. military"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
