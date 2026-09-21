@@ -85,6 +85,48 @@ assert not any(
     for row in nonqualifying
 )
 
+assert award_rule["unsupported_assertion_after_documented_search_counts"] is True
+assert award_rule["self_sealing_evasion_counts"] is True
+assert award_rule["incomplete_or_inaccessible_evidence_counts"] is False
+
+unsupported_without_review = event(
+    23, event_type="UNSUPPORTED_FACTUAL_ASSERTION"
+)
+assert wol.bullshit_qualifying_event(unsupported_without_review, governance) is False
+
+unsupported_with_review = event(
+    24, event_type="UNSUPPORTED_FACTUAL_ASSERTION"
+)
+unsupported_with_review["evidentiary_support_review"] = {
+    "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+    "search_scope": "source's cited material plus public primary/secondary evidence",
+    "checked_at": "2026-09-21T15:30:00-04:00",
+    "claimant_basis_status": "NONE_PROVIDED",
+}
+assert wol.bullshit_qualifying_event(unsupported_with_review, governance) is True
+
+self_sealing = event(
+    25, event_type="EVIDENTIARY_EVASION"
+)
+self_sealing["evidentiary_support_review"] = {
+    "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+    "search_scope": "original assertion and follow-on factual escape-hatch claim",
+    "checked_at": "2026-09-21T15:30:00-04:00",
+    "claimant_basis_status": "SELF_SEALING",
+}
+assert wol.bullshit_qualifying_event(self_sealing, governance) is True
+
+genuinely_unresolved = event(
+    26, event_type="UNSUPPORTED_INFERENTIAL_ASSERTION"
+)
+genuinely_unresolved["evidentiary_support_review"] = {
+    "status": "EVIDENCE_INCOMPLETE_OR_INACCESSIBLE",
+    "search_scope": "available public evidence",
+    "checked_at": "2026-09-21T15:30:00-04:00",
+    "claimant_basis_status": "ASSERTION_ONLY",
+}
+assert wol.bullshit_qualifying_event(genuinely_unresolved, governance) is False
+
 # A source can qualify through repeated adverse narrative mutation / repetition
 # after correction, not only the base false/misleading event type.
 mixed = [
