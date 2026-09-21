@@ -155,10 +155,15 @@ def validate_packet_refs(packet: dict[str, Any], path: str) -> None:
                 )
 
 
-def validate_source_dossier(dossier: dict[str, Any], path: str) -> None:
+def validate_source_dossier(
+    dossier: dict[str, Any],
+    path: str,
+    existing_source_ids: set[str] | None = None,
+) -> None:
     local_source_ids = {
         str(row["source_id"]) for row in dossier.get("source_profiles") or []
     }
+    allowed_source_ids = local_source_ids | set(existing_source_ids or set())
 
     seen_relationships: set[str] = set()
     for relation in dossier.get("source_relationships") or []:
@@ -168,7 +173,7 @@ def validate_source_dossier(dossier: dict[str, Any], path: str) -> None:
         seen_relationships.add(rid)
         for endpoint in ("from_id", "to_id"):
             value = str(relation[endpoint])
-            if value not in local_source_ids:
+            if value not in allowed_source_ids:
                 raise ValueError(
                     f"{path}: source relationship {rid} references undeclared profile {value}"
                 )
@@ -281,7 +286,7 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
         dossier = json.loads(dossier_raw.decode("utf-8"))
         dossier_schema = load_json(root / SOURCE_DOSSIER_SCHEMA)
         jsonschema.Draft202012Validator(dossier_schema).validate(dossier)
-        validate_source_dossier(dossier, dossier_relative)
+        validate_source_dossier(dossier, dossier_relative, set(profiles))
 
         dossier_hash = sha256_bytes(canonical_bytes(dossier))
         dossier_as_of = str(dossier["as_of"])
