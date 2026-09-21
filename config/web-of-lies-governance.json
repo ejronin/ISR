@@ -39,7 +39,8 @@
       "affected_family_incremental_rebuild_equivalence",
       "external_source_assessment_context",
       "public_source_infrastructure_provenance",
-      "research_lead_queue"
+      "research_lead_queue",
+      "media_analysis_decomposition"
     ],
     "must_not_overwrite": [
       "canonical_evidence",
@@ -305,6 +306,30 @@
       "server_location_is_not_operator_location": true,
       "shared_hosting_is_not_common_ownership": true,
       "possible_vpn_is_not_established_vpn": true
+    },
+    "media_analysis_review": {
+      "factual_substrate_is_not_inferential_validation": true,
+      "accurate_number_does_not_validate_causal_bridge": true,
+      "accurate_quote_does_not_validate_motive_or_control_inference": true,
+      "analysis_must_decompose": [
+        "FACTUAL_SUBSTRATE",
+        "INFERENTIAL_BRIDGE",
+        "CONCLUSION",
+        "EPISTEMIC_POSTURE"
+      ],
+      "reviewable_bridge_types": [
+        "CAUSAL_ATTRIBUTION",
+        "MOTIVE_ATTRIBUTION",
+        "INTENT_ATTRIBUTION",
+        "CONTROL_INFERENCE",
+        "SELECTIVE_CAUSATION",
+        "GENERALIZATION",
+        "MIND_READING",
+        "FALSE_EQUIVALENCE",
+        "COUNTERFACTUAL",
+        "OTHER"
+      ],
+      "upstream_adjudication_required_before_adverse_scoring": true
     }
   }
 }

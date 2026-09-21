@@ -1206,6 +1206,53 @@
             "string",
             "null"
           ]
+        },
+        "body_capture_queue": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "research_item_id",
+              "title",
+              "url",
+              "publication_date",
+              "capture_status",
+              "required_next_evidence",
+              "research_reason"
+            ],
+            "properties": {
+              "research_item_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": "string",
+                "minLength": 1
+              },
+              "publication_date": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "capture_status": {
+                "const": "TITLE_DESCRIPTION_ONLY"
+              },
+              "required_next_evidence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "research_reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": true
+          }
         }
       },
       "additionalProperties": true

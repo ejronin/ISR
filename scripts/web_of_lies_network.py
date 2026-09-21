@@ -129,6 +129,117 @@ def _validate_public_receipt(
             )
 
 
+def _validate_claim_construction(
+    event: dict[str, Any],
+    governance: dict[str, Any],
+) -> None:
+    event_id = str(event.get("event_id") or "")
+    body = event.get("content_body_evidence")
+    decomposition = event.get("analysis_decomposition")
+
+    if body is None:
+        if decomposition is not None:
+            raise ValueError(
+                f"information event {event_id} has analytical decomposition "
+                "without content-body evidence"
+            )
+        return
+
+    medium = str(body.get("medium") or "")
+    capture_status = str(body.get("capture_status") or "")
+    transcript_receipts = body.get("transcript_receipts") or []
+    body_claims = body.get("body_claims") or []
+
+    if medium == "AUDIO_VIDEO":
+        if capture_status == "TITLE_DESCRIPTION_ONLY":
+            if decomposition is not None:
+                raise ValueError(
+                    f"information event {event_id} attempts video narrative "
+                    "decomposition from title/description only"
+                )
+            if transcript_receipts or body_claims:
+                raise ValueError(
+                    f"information event {event_id} marks TITLE_DESCRIPTION_ONLY "
+                    "but also supplies transcript/body claims"
+                )
+        elif capture_status in {
+            "TRANSCRIPT_CAPTURED",
+            "PARTIAL_TRANSCRIPT_CAPTURED",
+            "TIMESTAMPED_DIRECT_REVIEW",
+        }:
+            if not transcript_receipts or not body_claims:
+                raise ValueError(
+                    f"information event {event_id} claims audio/video body capture "
+                    "without transcript/timestamp receipts and body claims"
+                )
+        elif capture_status == "UNAVAILABLE":
+            if decomposition is not None:
+                raise ValueError(
+                    f"information event {event_id} cannot decompose unavailable "
+                    "video body evidence"
+                )
+        else:
+            raise ValueError(
+                f"information event {event_id} has invalid audio/video body "
+                f"capture status {capture_status}"
+            )
+
+    if decomposition is None:
+        return
+
+    if not list(event.get("canonical_claim_refs") or []):
+        raise ValueError(
+            f"information event {event_id} claim-construction analysis lacks "
+            "canonical claim references"
+        )
+
+    if medium == "AUDIO_VIDEO" and capture_status not in {
+        "TRANSCRIPT_CAPTURED",
+        "PARTIAL_TRANSCRIPT_CAPTURED",
+        "TIMESTAMPED_DIRECT_REVIEW",
+    }:
+        raise ValueError(
+            f"information event {event_id} video inference analysis requires "
+            "transcript or timestamped direct review"
+        )
+    if medium in {"TEXT_PUBLICATION", "SOCIAL_POST", "WIKIPEDIA_REVISION"} and (
+        capture_status != "FULL_TEXT_CAPTURED"
+    ):
+        raise ValueError(
+            f"information event {event_id} textual inference analysis requires "
+            "full-text capture"
+        )
+
+    allowed_bridges = set(
+        ((governance.get("osint_collection") or {}).get("media_analysis_review") or {})
+        .get("reviewable_bridge_types") or []
+    )
+    unresolved = False
+    for bridge in decomposition.get("inferential_bridges") or []:
+        bridge_type = str(bridge.get("bridge_type") or "")
+        if allowed_bridges and bridge_type not in allowed_bridges:
+            raise ValueError(
+                f"information event {event_id} has unsupported inferential bridge "
+                f"type {bridge_type}"
+            )
+        if bridge.get("review_status") == "UPSTREAM_REVIEW_REQUIRED":
+            unresolved = True
+
+    for conclusion in decomposition.get("conclusions") or []:
+        if conclusion.get("review_status") == "UPSTREAM_REVIEW_REQUIRED":
+            unresolved = True
+
+    for presentation in decomposition.get("presentation") or []:
+        if presentation.get("review_status") == "UPSTREAM_REVIEW_REQUIRED":
+            unresolved = True
+
+    if unresolved and list(event.get("behavior_findings") or []):
+        raise ValueError(
+            f"information event {event_id} cannot score adverse behavior from an "
+            "unresolved inferential bridge, conclusion, or presentation claim"
+        )
+
+
 def validate_extended_forensic_input(
     forensic: dict[str, Any],
     governance: dict[str, Any],
@@ -279,6 +390,7 @@ def validate_extended_forensic_input(
 
     for event in events:
         event_id = str(event.get("event_id") or "")
+        _validate_claim_construction(event, governance)
         public_receipts = list(event.get("public_receipts") or [])
         native_osint = bool(
             public_receipts

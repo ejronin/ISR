@@ -81,7 +81,13 @@ assert "separate factual/causal propositions" in allowance["downstream_note"]
 # not an adverse discovery solely because it came from the same publisher.
 valenti_lead = leads["LEAD-VALENTI-VIDEOS"]
 assert "https://www.youtube.com/watch?v=IrZ6HEpHoIE" in valenti_lead["seed_urls"]
-assert "nearby comparator" in valenti_lead["notes"]
+comparator_url = "https://www.youtube.com/watch?v=IrZ6HEpHoIE"
+assert comparator_url in valenti_lead["seed_urls"]
+assert not any(
+    receipt.get("url") == comparator_url
+    for row in queue_items.values()
+    for receipt in row.get("public_receipts", [])
+)
 assert not any(
     "17-US" in discovery_id or "17_US" in discovery_id
     for discovery_id in queue_items

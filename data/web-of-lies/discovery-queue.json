@@ -1,6 +1,6 @@
 {
   "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
-  "as_of": "2026-09-21T19:05:00-04:00",
+  "as_of": "2026-09-21T19:55:00-04:00",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
   "items": [
     {
@@ -47,6 +47,122 @@
       "downstream_note": "Treat malware compromise, victim-data collection, leak-site publication, and narrative amplification as separate graph events. Do not merge this discovery with Handala solely because both involve Iranian state-linked cyber activity and public leak sites.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "This is a current public information-operation/cyber-propagation discovery with no canonical Lie Ledger family. Claims Forensics should decide whether any specific public assertion or leak-derived narrative warrants a claim family before Web of Lies scores propagation or source behavior.",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
+    },
+    {
+      "discovery_id": "WOL-DISC-ETHAN-LEVINS-TWO-MISSILES-ALL-DAMAGE-20260322",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Ethan Levins assertion that all damage in Israel that day came from two missiles and that Iran had thousands more",
+      "observations": [
+        {
+          "date": "2026-03-22",
+          "source": "Ethan Levins as quoted by Press TV and secondary Telegram preservation",
+          "observation_type": "DAMAGE_CAUSATION_SCALE_ASSERTION",
+          "statement_identity": "The quoted statement said all the damage that day in Israel was caused by two missiles."
+        },
+        {
+          "date": "2026-03-22",
+          "source": "Ethan Levins as quoted by Press TV and secondary Telegram preservation",
+          "observation_type": "MISSILE_STOCKPILE_SCALE_ASSERTION",
+          "statement_identity": "The quoted statement added that Iran had thousands more missiles."
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-ETHAN-TWO-MISSILES-PRESSTV-20260322",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/presstv?before=181173",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "PRESS_TV_QUOTATION_OF_ETHAN_LEVINS",
+          "published_at": "2026-03-22",
+          "attribution": "Press TV quoting Ethan Levins"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-ETHAN-TWO-MISSILES-NEWSARTICLES-20260322",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/News_Articles_Analysis?before=65363",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "SECONDARY_REPOST_OF_ATTRIBUTED_QUOTE",
+          "published_at": "2026-03-22",
+          "attribution": "News & Articles quoting Ethan Levins"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_QUOTED_WORDING_AND_SPEAKER_ATTRIBUTION; ORIGINAL_ETHAN_POST_URL_NOT_RECOVERED",
+      "attribution_scope": "Two independent public Telegram preservations reproduce the same attributed wording. The original Ethan Levins post URL was not recovered in this tranche, so the discovery preserves quotation provenance rather than claiming an original-post receipt.",
+      "downstream_note": "Claims Forensics should atomize the damage-causation claim separately from the missile-stockpile claim. WOL must not treat Press TV's quotation as independent corroboration of either proposition, nor infer control/agency from Press TV reuse.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "No current canonical family cleanly adjudicates the combined March 22 proposition about all same-day Israeli damage coming from two missiles plus a remaining Iranian stockpile in the thousands.",
+      "content_body_evidence": {
+        "medium": "SOCIAL_POST",
+        "capture_status": "FULL_TEXT_CAPTURED",
+        "capture_scope": "The complete quoted passage preserved by Press TV and a second public Telegram relay is available for the two propositions recorded here. The original Ethan post URL was not recovered, so analysis is limited to the preserved quotation.",
+        "transcript_receipts": [],
+        "body_claims": [
+          {
+            "body_claim_id": "ETHAN-20260322-DAMAGE-TWO-MISSILES",
+            "statement_identity": "All of the cited same-day damage in Israel was attributed to two missiles.",
+            "speaker": "Ethan Levins",
+            "timestamp_start": null,
+            "timestamp_end": null,
+            "evidence_scope": "Quoted passage preserved by two public Telegram surfaces."
+          },
+          {
+            "body_claim_id": "ETHAN-20260322-THOUSANDS-MORE",
+            "statement_identity": "Iran was said to retain thousands more missiles.",
+            "speaker": "Ethan Levins",
+            "timestamp_start": null,
+            "timestamp_end": null,
+            "evidence_scope": "Quoted passage preserved by two public Telegram surfaces."
+          }
+        ]
+      },
+      "analysis_decomposition": {
+        "factual_substrate": [
+          {
+            "statement": "The quoted passage points to visible same-day damage in Israel as the observable substrate.",
+            "evidence_status": "PUBLICLY_SUPPORTED",
+            "evidence_note": "Physical damage that day is independently observable; the decomposition does not treat the quote as proof of exact causation.",
+            "evidence_receipt_ids": [
+              "WOL-DISC-RCPT-ETHAN-TWO-MISSILES-PRESSTV-20260322",
+              "WOL-DISC-RCPT-ETHAN-TWO-MISSILES-NEWSARTICLES-20260322"
+            ]
+          }
+        ],
+        "inferential_bridges": [
+          {
+            "statement": "The passage attributes all referenced same-day damage to only two missiles.",
+            "bridge_type": "CAUSAL_ATTRIBUTION",
+            "review_status": "UPSTREAM_REVIEW_REQUIRED",
+            "evidentiary_issue": "Observed damage does not by itself establish that exactly two missiles caused all of it; site-by-site strike attribution is required.",
+            "competing_explanations": [
+              "More than two impactors contributed to the observed damage.",
+              "The quoted passage selected a subset of damage while presenting it as the whole.",
+              "Damage attribution may mix direct missile effects with secondary effects."
+            ]
+          },
+          {
+            "statement": "The visible damage is used rhetorically to imply a much larger remaining strike capacity because Iran allegedly has thousands more missiles.",
+            "bridge_type": "GENERALIZATION",
+            "review_status": "UPSTREAM_REVIEW_REQUIRED",
+            "evidentiary_issue": "Even if the damage attribution were correct, it does not establish the size, readiness, survivability or composition of Iran's remaining missile inventory.",
+            "competing_explanations": [
+              "Headline stockpile figures may include missiles unsuitable for the same target/effect.",
+              "Inventory estimates may not reflect launchers, readiness, survivability or expendable operational stock."
+            ]
+          }
+        ],
+        "conclusions": [
+          {
+            "statement": "The passage implies that the observed damage demonstrates a substantially larger latent Iranian ability to reproduce or scale those effects.",
+            "conclusion_type": "CAUSAL_CONCLUSION",
+            "review_status": "UPSTREAM_REVIEW_REQUIRED"
+          }
+        ],
+        "decomposition_note": "The visible-damage substrate and the causal/stockpile inference are separate propositions. A true observation about damage cannot validate either the exact two-missile attribution or the extrapolation to future strike capacity.",
+        "presentation": []
+      },
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     },
@@ -100,6 +216,116 @@
       "downstream_note": "If Claims Forensics creates a canonical claim family for a specific Handala wartime hack/leak assertion, preserve the distinction between the public claim, independently verified compromise, released-material authenticity, and downstream repetition. Do not treat the DOJ infrastructure attribution as automatic verification of every claimed operation.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "This is a public-source information-operation actor discovery with strong organizational attribution but no current canonical Lie Ledger family. It belongs outside lineage/Hall scoring until Claims Forensics assigns a claim family or determines that no public claim adjudication is warranted.",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
+    },
+    {
+      "discovery_id": "WOL-DISC-LIM-TEAN-HORMUZ-MORE-BOMBS-FEWER-SHIPS-20260720",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Lim Tean causal inference that renewed U.S. strikes were producing the opposite of reopening Hormuz",
+      "observations": [
+        {
+          "date": "2026-07-20",
+          "source": "Lim Tean commentary",
+          "observation_type": "SUPPORTED_TRANSIT_DATA_WITH_CAUSAL_INFERENCE",
+          "statement_identity": "The article accurately cited sharply reduced vessel transits and then argued that the sequence 'more bombs, fewer ships' showed U.S. strikes were themselves producing the shutdown rather than reopening the strait."
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-LIM-HORMUZ-RADIOFREE-20260720",
+          "surface": "WEBSITE",
+          "url": "https://www.radiofree.org/2026/07/20/lim-tean-you-cannot-bomb-a-strait-open-hormuz-chabahar-and-the-coming-battle-for-bab-el-mandeb/",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "FULL_COMMENTARY_TEXT",
+          "published_at": "2026-07-20",
+          "attribution": "Lim Tean"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-LIM-HORMUZ-SPGLOBAL-20260713",
+          "surface": "WEBSITE",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/071326-traffic-via-strait-of-hormuz-falls-to-11-ships-july-12-after-us-iran-attacks",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "INDEPENDENT_TRANSIT_DATA_CONTEXT",
+          "published_at": "2026-07-13",
+          "attribution": "S&P Global Commodities at Sea / Platts"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-LIM-HORMUZ-REUTERS-20260717",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "INDEPENDENT_CONFLICT_AND_TRANSIT_CONTEXT",
+          "published_at": "2026-07-17",
+          "attribution": "Reuters"
+        }
+      ],
+      "content_body_evidence": {
+        "medium": "TEXT_PUBLICATION",
+        "capture_status": "FULL_TEXT_CAPTURED",
+        "capture_scope": "The full published commentary is publicly readable, allowing separation of the transit-count substrate from the causal bridge and conclusion.",
+        "transcript_receipts": [],
+        "body_claims": [
+          {
+            "body_claim_id": "LIM-20260720-TRANSIT-COUNTS",
+            "statement_identity": "Hormuz vessel traffic was far below the prewar baseline, including 11 transits on July 12 and only a few commodity-vessel crossings later in the week.",
+            "speaker": "Lim Tean",
+            "timestamp_start": null,
+            "timestamp_end": null,
+            "evidence_scope": "Full-text commentary plus independent maritime reporting."
+          },
+          {
+            "body_claim_id": "LIM-20260720-US-STRIKES-CAUSE-SHUTDOWN",
+            "statement_identity": "The article concludes that successive U.S. strike waves were producing the opposite of their stated navigation objective and deepening the shutdown.",
+            "speaker": "Lim Tean",
+            "timestamp_start": null,
+            "timestamp_end": null,
+            "evidence_scope": "Full-text commentary."
+          }
+        ]
+      },
+      "analysis_decomposition": {
+        "factual_substrate": [
+          {
+            "statement": "Hormuz traffic fell drastically from roughly 125-130 daily prewar transits; independent reporting also recorded 11 ships on July 12 and very low subsequent traffic.",
+            "evidence_status": "PUBLICLY_SUPPORTED",
+            "evidence_note": "Independent S&P Global and Reuters reporting supports the broad traffic-collapse substrate while also warning that AIS-dark traffic makes raw visible counts incomplete.",
+            "evidence_receipt_ids": [
+              "WOL-DISC-RCPT-LIM-HORMUZ-SPGLOBAL-20260713",
+              "WOL-DISC-RCPT-LIM-HORMUZ-REUTERS-20260717"
+            ]
+          }
+        ],
+        "inferential_bridges": [
+          {
+            "statement": "Temporal correlation between renewed U.S. strike waves and lower visible ship counts is treated as evidence that the U.S. strikes themselves were producing the shutdown.",
+            "bridge_type": "CAUSAL_ATTRIBUTION",
+            "review_status": "UPSTREAM_REVIEW_REQUIRED",
+            "evidentiary_issue": "The sequence alone does not isolate U.S. strikes as the cause. Contemporary reporting also identifies renewed Iranian attacks on commercial vessels, blockade effects, insurer/crew risk, and AIS-dark transits as material contributors.",
+            "competing_explanations": [
+              "Renewed Iranian attacks on commercial vessels directly increased perceived transit risk.",
+              "The U.S. blockade and wider U.S.-Iran escalation jointly depressed commercial confidence.",
+              "Insurer, charterer and crew risk decisions reduced traffic independently of any single strike wave.",
+              "AIS-dark traffic means visible transits undercount some actual movement."
+            ]
+          }
+        ],
+        "conclusions": [
+          {
+            "statement": "The article concludes that U.S. military escalation was measurably producing the opposite of reopening Hormuz.",
+            "conclusion_type": "CAUSAL_CONCLUSION",
+            "review_status": "UPSTREAM_REVIEW_REQUIRED"
+          }
+        ],
+        "decomposition_note": "The traffic-collapse numbers can be substantially correct while the claimed causal explanation remains unresolved or misleading. WOL therefore preserves the supported substrate and routes the causal bridge separately for Claims Forensics review.",
+        "presentation": []
+      },
+      "attribution_confidence": "HIGH_FOR_PUBLICATION_TEXT_AND_TRANSIT_SUBSTRATE",
+      "attribution_scope": "The full commentary supports attribution of the causal argument to Lim Tean. Independent maritime reporting supports the broad traffic decline but also supplies competing causes and measurement limits.",
+      "downstream_note": "Claims Forensics should adjudicate the causal bridge, not merely the vessel counts. Do not mark the analysis sound solely because the underlying transit figures are accurate.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The current Hormuz control family addresses competing control framing, but this article adds a distinct causal proposition: that U.S. strikes themselves were producing the shipping shutdown. The supported substrate and causal conclusion must be adjudicated separately.",
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     },
@@ -173,6 +399,13 @@
       "downstream_note": "Compare against the canonical Sep. 18 training family, which currently treats >600,000 registrations as unresolved and >1 million participants as a prospective projection. Claims Forensics should determine whether the 31-million-soldiers wording is a materially new proposition or a qualifier-stripping mutation before WOL scores it.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "The existing canonical military-training family does not currently contain a 31-million-soldier proposition. WOL must not silently substitute the title for the >600,000 / >1 million canonical atoms.",
+      "content_body_evidence": {
+        "medium": "AUDIO_VIDEO",
+        "capture_status": "TITLE_DESCRIPTION_ONLY",
+        "capture_scope": "Publisher title/description/video identity captured. Spoken-body transcript or timestamped direct review is not yet preserved, so no narrative/inference decomposition is permitted.",
+        "transcript_receipts": [],
+        "body_claims": []
+      },
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     },
@@ -214,6 +447,13 @@
       "downstream_note": "Claims Forensics should identify the referenced facilities and atomize physical damage versus whole-base operational destruction. Real severe U.S. base damage is independently established in the war record; that fact neither proves nor disproves this broader title without facility-level matching.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "The title does not cleanly map to one current canonical BDA family. It may span Al Udeid, Bahrain, Erbil, Jordan or other facilities and requires proposition-level assignment before Web of Lies behavior scoring.",
+      "content_body_evidence": {
+        "medium": "AUDIO_VIDEO",
+        "capture_status": "TITLE_DESCRIPTION_ONLY",
+        "capture_scope": "Publisher title/description/video identity captured. Spoken-body transcript or timestamped direct review is not yet preserved, so no narrative/inference decomposition is permitted.",
+        "transcript_receipts": [],
+        "body_claims": []
+      },
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     },
@@ -255,6 +495,13 @@
       "downstream_note": "Claims Forensics should treat this as a concealment proposition distinct from CHAIN-CL-200-US-DEAD. A false or inflated casualty count and a claim that the government knowingly concealed casualties are separate atomic propositions with different evidence and knowledge requirements.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "No current canonical family cleanly adjudicates the July 21 concealment allegation itself. The existing 200-dead family concerns an IRGC casualty-count assertion, not whether U.S. authorities concealed a larger casualty total.",
+      "content_body_evidence": {
+        "medium": "AUDIO_VIDEO",
+        "capture_status": "TITLE_DESCRIPTION_ONLY",
+        "capture_scope": "Publisher title/description/video identity captured. Spoken-body transcript or timestamped direct review is not yet preserved, so no narrative/inference decomposition is permitted.",
+        "transcript_receipts": [],
+        "body_claims": []
+      },
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     },
@@ -296,6 +543,13 @@
       "downstream_note": "Do not map this automatically to ordinary BDA or interception-failure families. 'Missiles hit bases' and 'the U.S. military intentionally allowed them to hit' are separate factual/causal propositions. Claims Forensics must atomize the alleged intentional non-interception before WOL can score it.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Current Atlas families distinguish physical damage, claimed effects, and some causal attributions, but no clean canonical atom was found for an intentional U.S. decision to permit Iranian missiles to strike U.S. bases.",
+      "content_body_evidence": {
+        "medium": "AUDIO_VIDEO",
+        "capture_status": "TITLE_DESCRIPTION_ONLY",
+        "capture_scope": "Publisher title/description/video identity captured. Spoken-body transcript or timestamped direct review is not yet preserved, so no narrative/inference decomposition is permitted.",
+        "transcript_receipts": [],
+        "body_claims": []
+      },
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     }

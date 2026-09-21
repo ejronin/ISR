@@ -164,6 +164,348 @@
           "review_reason": {
             "type": "string",
             "minLength": 1
+          },
+          "analysis_decomposition": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "factual_substrate",
+              "inferential_bridges",
+              "conclusions",
+              "presentation",
+              "decomposition_note"
+            ],
+            "properties": {
+              "factual_substrate": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "statement",
+                    "evidence_status"
+                  ],
+                  "properties": {
+                    "statement": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidence_status": {
+                      "enum": [
+                        "PUBLICLY_SUPPORTED",
+                        "PARTIALLY_SUPPORTED",
+                        "CONTESTED",
+                        "UNRESOLVED"
+                      ]
+                    },
+                    "evidence_note": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidence_receipt_ids": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "inferential_bridges": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "statement",
+                    "bridge_type",
+                    "review_status",
+                    "evidentiary_issue"
+                  ],
+                  "properties": {
+                    "statement": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "bridge_type": {
+                      "enum": [
+                        "CAUSAL_ATTRIBUTION",
+                        "MOTIVE_ATTRIBUTION",
+                        "INTENT_ATTRIBUTION",
+                        "CONTROL_INFERENCE",
+                        "SELECTIVE_CAUSATION",
+                        "GENERALIZATION",
+                        "MIND_READING",
+                        "FALSE_EQUIVALENCE",
+                        "COUNTERFACTUAL",
+                        "OTHER"
+                      ]
+                    },
+                    "review_status": {
+                      "const": "UPSTREAM_REVIEW_REQUIRED"
+                    },
+                    "evidentiary_issue": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "competing_explanations": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "conclusions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "statement",
+                    "conclusion_type",
+                    "review_status"
+                  ],
+                  "properties": {
+                    "statement": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "conclusion_type": {
+                      "enum": [
+                        "FACTUAL_CONCLUSION",
+                        "CAUSAL_CONCLUSION",
+                        "MOTIVE_CONCLUSION",
+                        "CONTROL_CONCLUSION",
+                        "RHETORICAL_CONCLUSION",
+                        "OTHER"
+                      ]
+                    },
+                    "review_status": {
+                      "enum": [
+                        "UPSTREAM_REVIEW_REQUIRED",
+                        "NON_FALSIFIABLE_OPINION",
+                        "RHETORICAL_ONLY"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "decomposition_note": {
+                "type": "string",
+                "minLength": 1
+              },
+              "presentation": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "statement",
+                    "surface",
+                    "relation_to_body",
+                    "review_status"
+                  ],
+                  "properties": {
+                    "statement": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "surface": {
+                      "enum": [
+                        "TITLE",
+                        "THUMBNAIL",
+                        "CAPTION",
+                        "CHYRON",
+                        "TEASER",
+                        "DESCRIPTION",
+                        "OTHER"
+                      ]
+                    },
+                    "relation_to_body": {
+                      "enum": [
+                        "MATCHES_BODY",
+                        "OVERSTATES_BODY",
+                        "UNDERSTATES_BODY",
+                        "DIFFERS_FROM_BODY",
+                        "BODY_NOT_CAPTURED",
+                        "UNRESOLVED"
+                      ]
+                    },
+                    "review_status": {
+                      "enum": [
+                        "UPSTREAM_ADJUDICATED",
+                        "UPSTREAM_REVIEW_REQUIRED",
+                        "RHETORICAL_ONLY",
+                        "NOT_APPLICABLE"
+                      ]
+                    },
+                    "evidence_note": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            },
+            "additionalProperties": true
+          },
+          "content_body_evidence": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "medium",
+              "capture_status",
+              "capture_scope",
+              "transcript_receipts",
+              "body_claims"
+            ],
+            "properties": {
+              "medium": {
+                "enum": [
+                  "TEXT_PUBLICATION",
+                  "SOCIAL_POST",
+                  "AUDIO_VIDEO",
+                  "WIKIPEDIA_REVISION",
+                  "OTHER_PUBLIC"
+                ]
+              },
+              "capture_status": {
+                "enum": [
+                  "FULL_TEXT_CAPTURED",
+                  "TRANSCRIPT_CAPTURED",
+                  "PARTIAL_TRANSCRIPT_CAPTURED",
+                  "TIMESTAMPED_DIRECT_REVIEW",
+                  "TITLE_DESCRIPTION_ONLY",
+                  "UNAVAILABLE"
+                ]
+              },
+              "capture_scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "transcript_receipts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "receipt_id",
+                    "url",
+                    "provenance_status",
+                    "transcript_type"
+                  ],
+                  "properties": {
+                    "receipt_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "provenance_status": {
+                      "enum": [
+                        "ORIGINAL_URL",
+                        "ORIGINAL_WITH_ARCHIVE",
+                        "ARCHIVED_ORIGINAL",
+                        "SECONDARY_PRESERVATION"
+                      ]
+                    },
+                    "transcript_type": {
+                      "enum": [
+                        "PLATFORM_CAPTIONS",
+                        "PUBLISHER_TRANSCRIPT",
+                        "THIRD_PARTY_TRANSCRIPT",
+                        "MANUAL_TIMESTAMPED_REVIEW"
+                      ]
+                    },
+                    "language": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "timestamp_start": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "timestamp_end": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "scope_note": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "body_claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "body_claim_id",
+                    "statement_identity",
+                    "speaker",
+                    "evidence_scope"
+                  ],
+                  "properties": {
+                    "body_claim_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "statement_identity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "speaker": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "timestamp_start": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "timestamp_end": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidence_scope": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            },
+            "additionalProperties": true
           }
         },
         "additionalProperties": true
