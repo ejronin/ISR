@@ -1,0 +1,229 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-CHAIN-CL-200-US-DEAD-20260921",
+  "claim_family_id": "CHAIN-CL-200-US-DEAD",
+  "as_of": "2026-09-21T09:00:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-200-us-dead.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Public propagation trace. Preserves Claims Forensics' FALSE CASUALTY COUNT — KNOWLEDGE INSUFFICIENT; NO LIE FINDING. The claimant-origin event is adverse because the proposition is canonically false; attributed carrier events are not.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-HOSSEIN-MOHEBBI",
+      "display_name": "Hossein Mohebbi",
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-HOSSEIN-MOHEBBI",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-BDNEWS24",
+      "display_name": "bdnews24.com",
+      "source_entity_type": "OUTLET",
+      "country_region": "Bangladesh",
+      "primary_platform": "Web",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-200-US-DEAD-ORIGIN",
+      "claim_family_id": "CHAIN-CL-200-US-DEAD",
+      "source_id": "WOL-SRC-HOSSEIN-MOHEBBI",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-07-25T22:14:00+03:30",
+      "first_observed_at": "2026-07-25T22:14:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "IRGC spokesman Hossein Mohebbi said U.S. deaths in Operation Nasr II exceeded 200 and rejected the public U.S. casualty figures.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "CI-CL-200-US-DEAD",
+        "CL-200-US-DEAD",
+        "PROP-0C6798A11D3B"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-200-US-DEAD-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/07/25/3656203/irgc-spokesman-us-death-toll-after-violating-mou-exceeds-200",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Hossein Mohebbi in an exclusive Tasnim interview",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "Claims Forensics records the >200 U.S. deaths proposition as false, while knowledge remains insufficient for a lie finding. Web of Lies attributes the proposition to Mohebbi and does not transfer that finding to accurate carriers."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-200-US-DEAD-TASNIM",
+      "claim_family_id": "CHAIN-CL-200-US-DEAD",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-07-25T22:14:00+03:30",
+      "first_observed_at": "2026-07-25T22:14:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim published Mohebbi's >200 U.S. deaths claim as an attributed IRGC statement.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-200-US-DEAD",
+        "CL-200-US-DEAD",
+        "PROP-0C6798A11D3B"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-200-US-DEAD-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/07/25/3656203/irgc-spokesman-us-death-toll-after-violating-mou-exceeds-200",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "Accurate attribution of the IRGC claim is a carrier event, not independent corroboration."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-200-US-DEAD-BDNEWS24",
+      "claim_family_id": "CHAIN-CL-200-US-DEAD",
+      "source_id": "WOL-SRC-BDNEWS24",
+      "event_type": "REPORTS",
+      "published_at": "2026-07-27",
+      "first_observed_at": "2026-07-27",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "bdnews24 repeated the >200 U.S. deaths claim while explicitly attributing it to the IRGC/Tasnim account.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS",
+        "REPEATS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-200-US-DEAD",
+        "CL-200-US-DEAD",
+        "PROP-0C6798A11D3B"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-200-US-DEAD-BDNEWS24",
+          "surface": "WEBSITE",
+          "url": "https://bdnews24.com/middle-east/c6e6999b08d0",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Tasnim / Hossein Mohebbi"
+        }
+      ],
+      "plain_english_verdict": "This is downstream repetition of the same claim origin, not a second corroborating casualty source."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-200-US-DEAD-001",
+      "from_id": "WOL-EVT-PUB-200-US-DEAD-TASNIM",
+      "to_id": "WOL-EVT-PUB-200-US-DEAD-ORIGIN",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-200-US-DEAD-001",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/07/25/3656203/irgc-spokesman-us-death-toll-after-violating-mou-exceeds-200",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Hossein Mohebbi"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-200-US-DEAD-002",
+      "from_id": "WOL-EVT-PUB-200-US-DEAD-BDNEWS24",
+      "to_id": "WOL-EVT-PUB-200-US-DEAD-TASNIM",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-200-US-DEAD-002",
+          "surface": "WEBSITE",
+          "url": "https://bdnews24.com/middle-east/c6e6999b08d0",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Tasnim"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
