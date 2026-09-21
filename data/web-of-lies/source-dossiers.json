@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T18:05:00-04:00",
+  "as_of": "2026-09-21T19:10:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -962,11 +962,16 @@
       "display_name": "Valenti.videos / Chris Valenti",
       "seed_urls": [
         "https://www.facebook.com/profile.php?id=61591466714871",
-        "https://www.youtube.com/@valentivideos"
+        "https://www.youtube.com/@valentivideos",
+        "https://www.youtube.com/watch?v=QfDgemtUt04",
+        "https://www.youtube.com/watch?v=nqd977hHQfM",
+        "https://www.youtube.com/watch?v=dcPbU2XaSSo",
+        "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+        "https://www.youtube.com/watch?v=IrZ6HEpHoIE"
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Public channel contains multiple Iran-war factual-claim surfaces; exact propositions are being routed claim-by-claim."
+      "notes": "Multiple Iran-war factual-claim surfaces are being routed claim-by-claim. Direct-video review seeds now include the 31-million mobilization title, broad whole-base destruction title, U.S.-casualty concealment allegation, intentional non-interception allegation, and a July 20 '17 U.S. service members KIA' nearby comparator. The comparator is not an adverse finding merely because its wording is dramatic."
     },
     {
       "lead_id": "LEAD-ZACH-FOR-THE-PEOPLE",

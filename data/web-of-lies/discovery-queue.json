@@ -1,107 +1,107 @@
 {
   "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
-  "as_of": "2026-09-21T18:15:00-04:00",
+  "as_of": "2026-09-21T19:05:00-04:00",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
   "items": [
     {
-      "attribution_confidence": "HIGH_FOR_IRANIAN_STATE_ACTOR_USE_OF_CHOSEN_BRICK_AS_STATED_BY_JOINT_ADVISORY",
-      "attribution_scope": "The advisory attributes CHOSEN BRICK activity to Iranian state cyber actors. It does not identify Handala as the malware operator, prove a common operator for every pro-Iranian leak site, or establish that every later leak-site publication originated from CHOSEN BRICK collection.",
-      "claim_family_ref": null,
       "discovery_id": "WOL-DISC-CHOSEN-BRICK-IRAN-STATE-20260915",
       "discovery_type": "FORENSIC_DISCOVERY",
-      "downstream_note": "Treat malware compromise, victim-data collection, leak-site publication, and narrative amplification as separate graph events. Do not merge this discovery with Handala solely because both involve Iranian state-linked cyber activity and public leak sites.",
+      "claim_family_ref": null,
+      "subject": "CHOSEN BRICK Iranian-state cyber targeting and leak-site propagation",
       "observations": [
         {
           "date": "2026-09-15",
-          "observation_type": "JOINT_GOVERNMENT_TECHNICAL_ADVISORY",
           "source": "UK National Cyber Security Centre with FBI and Netherlands AIVD",
+          "observation_type": "JOINT_GOVERNMENT_TECHNICAL_ADVISORY",
           "statement_identity": "The joint advisory says CHOSEN BRICK malware has been used by Iranian state cyber actors to target dissidents, activists and journalists and can collect contacts, emails and social-media messages."
         },
         {
           "date": "2026-09-15",
-          "observation_type": "LEAK_SITE_PROPAGATION_CONTEXT",
           "source": "UK National Cyber Security Centre",
+          "observation_type": "LEAK_SITE_PROPAGATION_CONTEXT",
           "statement_identity": "NCSC said personal details of some previous victims later appeared on pro-Iranian leak sites. The advisory does not identify every leak-site operator or equate those sites with Handala."
         }
       ],
       "public_receipts": [
         {
-          "attribution": "UK NCSC / U.S. FBI / Netherlands AIVD",
-          "claim_status": "JOINT_GOVERNMENT_ATTRIBUTION",
-          "provenance_status": "ORIGINAL_URL",
-          "published_at": "2026-09-15",
           "receipt_id": "WOL-DISC-RCPT-CHOSEN-BRICK-NCSC-NEWS-20260915",
           "surface": "WEBSITE",
-          "url": "https://www.ncsc.gov.uk/news/uk-allies-expose-spyware-iranian-state-actors-target-dissidents-activists-journalists"
+          "url": "https://www.ncsc.gov.uk/news/uk-allies-expose-spyware-iranian-state-actors-target-dissidents-activists-journalists",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "JOINT_GOVERNMENT_ATTRIBUTION",
+          "published_at": "2026-09-15",
+          "attribution": "UK NCSC / U.S. FBI / Netherlands AIVD"
         },
         {
-          "attribution": "UK NCSC with allied technical reporting",
-          "claim_status": "TECHNICAL_ADVISORY",
-          "provenance_status": "ORIGINAL_URL",
-          "published_at": "2026-09-15",
           "receipt_id": "WOL-DISC-RCPT-CHOSEN-BRICK-NCSC-ADVISORY-20260915",
           "surface": "WEBSITE",
-          "url": "https://www.ncsc.gov.uk/news/iranian-cyber-targeting-of-dissidents-activists-and-journalists"
+          "url": "https://www.ncsc.gov.uk/news/iranian-cyber-targeting-of-dissidents-activists-and-journalists",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "TECHNICAL_ADVISORY",
+          "published_at": "2026-09-15",
+          "attribution": "UK NCSC with allied technical reporting"
         }
       ],
-      "review_reason": "This is a current public information-operation/cyber-propagation discovery with no canonical Lie Ledger family. Claims Forensics should decide whether any specific public assertion or leak-derived narrative warrants a claim family before Web of Lies scores propagation or source behavior.",
+      "attribution_confidence": "HIGH_FOR_IRANIAN_STATE_ACTOR_USE_OF_CHOSEN_BRICK_AS_STATED_BY_JOINT_ADVISORY",
+      "attribution_scope": "The advisory attributes CHOSEN BRICK activity to Iranian state cyber actors. It does not identify Handala as the malware operator, prove a common operator for every pro-Iranian leak site, or establish that every later leak-site publication originated from CHOSEN BRICK collection.",
+      "downstream_note": "Treat malware compromise, victim-data collection, leak-site publication, and narrative amplification as separate graph events. Do not merge this discovery with Handala solely because both involve Iranian state-linked cyber activity and public leak sites.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "This is a current public information-operation/cyber-propagation discovery with no canonical Lie Ledger family. Claims Forensics should decide whether any specific public assertion or leak-derived narrative warrants a claim family before Web of Lies scores propagation or source behavior.",
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
-      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
-      "subject": "CHOSEN BRICK Iranian-state cyber targeting and leak-site propagation"
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     },
     {
-      "attribution_confidence": "HIGH_FOR_DOJ_ATTRIBUTION_OF_SEIZED_HANDALA_INFRASTRUCTURE_TO_MOIS",
-      "attribution_scope": "The public U.S. record supports attribution of the seized Handala domains and associated psychological-operations infrastructure to MOIS. It does not independently verify every hack claim published by the persona, authenticate every leaked file, or identify every individual operator behind each post.",
-      "claim_family_ref": null,
       "discovery_id": "WOL-DISC-HANDALA-MOIS-20260319",
       "discovery_type": "FORENSIC_DISCOVERY",
-      "downstream_note": "If Claims Forensics creates a canonical claim family for a specific Handala wartime hack/leak assertion, preserve the distinction between the public claim, independently verified compromise, released-material authenticity, and downstream repetition. Do not treat the DOJ infrastructure attribution as automatic verification of every claimed operation.",
+      "claim_family_ref": null,
+      "subject": "Handala Hack public cyber / psychological-operations infrastructure attributed by U.S. authorities to Iran's MOIS",
       "observations": [
         {
           "date": "2026-03-19",
-          "observation_type": "GOVERNMENT_ATTRIBUTION_WITH_COURT_AUTHORIZED_DOMAIN_SEIZURE",
           "source": "U.S. Department of Justice",
+          "observation_type": "GOVERNMENT_ATTRIBUTION_WITH_COURT_AUTHORIZED_DOMAIN_SEIZURE",
           "statement_identity": "DOJ said four seized domains, including Handala-hack.to and Handala-redwanted.to, were used by Iran's Ministry of Intelligence and Security for hacking-linked psychological operations, public hack claims, stolen-data publication, threats and transnational repression."
         },
         {
           "date": "2026-03-11",
-          "observation_type": "CLAIMED_COMPROMISE",
           "source": "Handala Hack claim preserved in DOJ seizure materials",
+          "observation_type": "CLAIMED_COMPROMISE",
           "statement_identity": "Handala Hack claimed a destructive malware attack against a U.S.-based multinational medical technologies firm. This is preserved as a claimed operation; the public claim does not by itself establish the technical facts of the compromise."
         },
         {
           "date": "2026-03-06",
-          "observation_type": "PUBLIC_HACK_AND_LEAK_MESSAGING",
           "source": "Handala Hack claims preserved in DOJ seizure materials",
+          "observation_type": "PUBLIC_HACK_AND_LEAK_MESSAGING",
           "statement_identity": "DOJ documented Handala public posts claiming theft of data and publishing personal or confidential information. The seizure record establishes the messaging infrastructure and attributed operator relationship; authenticity of every released item remains a separate evidentiary question."
         }
       ],
       "public_receipts": [
         {
-          "attribution": "U.S. Department of Justice / FBI investigation and seizure affidavit",
-          "claim_status": "US_DOJ_MOIS_INFRASTRUCTURE_ATTRIBUTION",
-          "provenance_status": "ORIGINAL_URL",
-          "published_at": "2026-03-19",
           "receipt_id": "WOL-DISC-RCPT-HANDALA-DOJ-20260319",
           "surface": "WEBSITE",
-          "url": "https://www.justice.gov/opa/pr/justice-department-disrupts-iranian-cyber-enabled-psychological-operations"
+          "url": "https://www.justice.gov/opa/pr/justice-department-disrupts-iranian-cyber-enabled-psychological-operations",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "US_DOJ_MOIS_INFRASTRUCTURE_ATTRIBUTION",
+          "published_at": "2026-03-19",
+          "attribution": "U.S. Department of Justice / FBI investigation and seizure affidavit"
         },
         {
-          "attribution": "U.S. District Court seizure-warrant affidavit",
-          "claim_status": "COURT_FILED_SEIZURE_AFFIDAVIT",
-          "provenance_status": "ORIGINAL_URL",
-          "published_at": "2026-03-19",
           "receipt_id": "WOL-DISC-RCPT-HANDALA-AFFIDAVIT-20260319",
           "surface": "WEBSITE",
-          "url": "https://www.justice.gov/opa/media/1431956/dl"
+          "url": "https://www.justice.gov/opa/media/1431956/dl",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "COURT_FILED_SEIZURE_AFFIDAVIT",
+          "published_at": "2026-03-19",
+          "attribution": "U.S. District Court seizure-warrant affidavit"
         }
       ],
-      "review_reason": "This is a public-source information-operation actor discovery with strong organizational attribution but no current canonical Lie Ledger family. It belongs outside lineage/Hall scoring until Claims Forensics assigns a claim family or determines that no public claim adjudication is warranted.",
+      "attribution_confidence": "HIGH_FOR_DOJ_ATTRIBUTION_OF_SEIZED_HANDALA_INFRASTRUCTURE_TO_MOIS",
+      "attribution_scope": "The public U.S. record supports attribution of the seized Handala domains and associated psychological-operations infrastructure to MOIS. It does not independently verify every hack claim published by the persona, authenticate every leaked file, or identify every individual operator behind each post.",
+      "downstream_note": "If Claims Forensics creates a canonical claim family for a specific Handala wartime hack/leak assertion, preserve the distinction between the public claim, independently verified compromise, released-material authenticity, and downstream repetition. Do not treat the DOJ infrastructure attribution as automatic verification of every claimed operation.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "This is a public-source information-operation actor discovery with strong organizational attribution but no current canonical Lie Ledger family. It belongs outside lineage/Hall scoring until Claims Forensics assigns a claim family or determines that no public claim adjudication is warranted.",
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
-      "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
-      "subject": "Handala Hack public cyber / psychological-operations infrastructure attributed by U.S. authorities to Iran's MOIS"
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     },
     {
       "discovery_id": "WOL-DISC-MEIDASTOUCH-MULTIPLE-US-BASES-DESTROYED-20260712",
@@ -150,6 +150,15 @@
       ],
       "public_receipts": [
         {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-31M-YOUTUBE-DIRECT-20260921",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=QfDgemtUt04",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE",
+          "published_at": null,
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
           "receipt_id": "WOL-DISC-RCPT-VALENTI-31M-CHANNEL-20260921",
           "surface": "YOUTUBE",
           "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
@@ -159,7 +168,7 @@
           "attribution": "Valenti Videos / Chris Valenti"
         }
       ],
-      "attribution_confidence": "HIGH_FOR_PUBLIC_TITLE_IDENTITY; TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_confidence": "HIGH_FOR_DIRECT_VIDEO_TITLE_IDENTITY; TRANSCRIPT_NOT_YET_CAPTURED",
       "attribution_scope": "The public channel index preserves the headline assertion. It does not establish whether the body later qualified '31 million' as registrations in a broader Janfada campaign, military/security volunteers, projected participants, or literal trained soldiers.",
       "downstream_note": "Compare against the canonical Sep. 18 training family, which currently treats >600,000 registrations as unresolved and >1 million participants as a prospective projection. Claims Forensics should determine whether the 31-million-soldiers wording is a materially new proposition or a qualifier-stripping mutation before WOL scores it.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
@@ -182,6 +191,15 @@
       ],
       "public_receipts": [
         {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-BASES-YOUTUBE-DIRECT-20260921",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=nqd977hHQfM",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE",
+          "published_at": null,
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
           "receipt_id": "WOL-DISC-RCPT-VALENTI-BASES-DESTROYED-CHANNEL-20260921",
           "surface": "YOUTUBE",
           "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
@@ -191,11 +209,93 @@
           "attribution": "Valenti Videos / Chris Valenti"
         }
       ],
-      "attribution_confidence": "HIGH_FOR_PUBLIC_TITLE_IDENTITY; TRANSCRIPT_AND_REFERENCED_PHOTOS_NOT_YET_CAPTURED",
+      "attribution_confidence": "HIGH_FOR_DIRECT_VIDEO_TITLE_IDENTITY; TRANSCRIPT_AND_REFERENCED_PHOTOS_NOT_YET_CAPTURED",
       "attribution_scope": "The title supports a broad whole-base destruction assertion but does not identify the facilities, photos, dates, or whether the body narrows the claim to specific damaged subfacilities.",
       "downstream_note": "Claims Forensics should identify the referenced facilities and atomize physical damage versus whole-base operational destruction. Real severe U.S. base damage is independently established in the war record; that fact neither proves nor disproves this broader title without facility-level matching.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "The title does not cleanly map to one current canonical BDA family. It may span Al Udeid, Bahrain, Erbil, Jordan or other facilities and requires proposition-level assignment before Web of Lies behavior scoring.",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-US-CASUALTY-COVERUP-20260721",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos allegation that the U.S. government was covering up a massive number of U.S. casualties",
+      "observations": [
+        {
+          "date": "2026-07-21",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "CASUALTY_CONCEALMENT_ALLEGATION",
+          "statement_identity": "The publisher titled a July 21 episode 'The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-CASUALTY-COVERUP-YOUTUBE-20260721",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE",
+          "published_at": "2026-07-21",
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-CASUALTY-COVERUP-SHORT-20260721",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/pACrjR30dLI",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_PROMOTIONAL_SHORT",
+          "published_at": "2026-07-21",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLISHER_TITLE_AND_DIRECT_VIDEO_ID; BODY_TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_scope": "The receipts establish a publisher-authored concealment allegation. They do not establish what casualty number the body asserted, what evidence was offered for concealment, or whether the episode distinguished killed, wounded, evacuated, contractor, diplomatic, and allied casualties.",
+      "downstream_note": "Claims Forensics should treat this as a concealment proposition distinct from CHAIN-CL-200-US-DEAD. A false or inflated casualty count and a claim that the government knowingly concealed casualties are separate atomic propositions with different evidence and knowledge requirements.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "No current canonical family cleanly adjudicates the July 21 concealment allegation itself. The existing 200-dead family concerns an IRGC casualty-count assertion, not whether U.S. authorities concealed a larger casualty total.",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-US-MILITARY-ALLOWED-IRAN-MISSILES-20260727",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos allegation that the U.S. military allowed Iranian missiles to hit U.S. bases",
+      "observations": [
+        {
+          "date": "2026-07-27",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "INTENTIONAL_NON_INTERCEPTION_CAUSATION_ALLEGATION",
+          "statement_identity": "The publisher listed an episode titled 'U.S Military ALLOWS IRANIAN MISSILES to hit our bases. Ukraine joins the Iran War.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-ALLOWS-MISSILES-YOUTUBE-20260727",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_VIDEO_TITLE_FROM_PUBLIC_CHANNEL_INDEX",
+          "published_at": null,
+          "attribution": "Valenti Videos / Chris Valenti"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-ALLOWS-MISSILES-SHORT-20260727",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/3xlpRA2vNVI",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_PROMOTIONAL_SHORT",
+          "published_at": "2026-07-27",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLISHER_TITLE_IDENTITY; BODY_TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_scope": "The receipts establish the intentional-allowance wording in the publisher title. They do not establish which bases, intercept systems, engagement windows, rules of engagement, or operational rationale the body discussed.",
+      "downstream_note": "Do not map this automatically to ordinary BDA or interception-failure families. 'Missiles hit bases' and 'the U.S. military intentionally allowed them to hit' are separate factual/causal propositions. Claims Forensics must atomize the alleged intentional non-interception before WOL can score it.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Current Atlas families distinguish physical damage, claimed effects, and some causal attributions, but no clean canonical atom was found for an intentional U.S. decision to permit Iranian missiles to strike U.S. bases.",
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     }
