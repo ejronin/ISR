@@ -745,3 +745,73 @@ Legacy influence research may be migrated into source dossiers only when the
 underlying public research remains reproducible. Preserve the assessor's actual
 scope. If research establishes coordination but not state sponsorship, Atlas
 must preserve exactly that distinction.
+
+
+## 31. Claim-construction and inference decomposition
+
+Web of Lies must not treat a statement as sound merely because some or all of
+its factual substrate is accurate.
+
+For every source class — official, state media, journalist, outlet, analyst,
+commentator, influencer, social account, collaborative-reference editor,
+cyber actor or other public source — claim review must separate, where present:
+
+1. FACTUAL_SUBSTRATE — the observations, counts, quotes, documents or events
+   used as premises;
+2. INFERENTIAL_BRIDGE — the causal, motive, intent, control, generalization,
+   comparison or other relationship asserted between those premises;
+3. CONCLUSION — the proposition the source says follows;
+4. PRESENTATION — title, thumbnail, caption, chyron, teaser or other packaging
+   that may itself state or materially strengthen a proposition.
+
+Accuracy of the substrate does not validate the bridge.
+
+Examples:
+
+- accurate vessel-transit counts do not by themselves prove which actor or
+  policy caused the reduction;
+- accurate damage imagery does not by itself prove a whole base was destroyed,
+  rendered non-operational or intentionally left undefended;
+- an accurate quotation does not prove the source's motive attribution,
+  mind-reading, intent claim or control inference;
+- a true casualty count does not establish a separate concealment allegation;
+- a headline or thumbnail that states a stronger factual proposition than the
+  body supports is itself reviewable as a distinct public information event.
+
+Bridge review must preserve competing explanations when they are materially
+supported. It must not convert correlation, sequence, selection effects or
+common timing into causation without evidence.
+
+Common bridge types include:
+
+- CAUSAL_ATTRIBUTION;
+- MOTIVE_ATTRIBUTION;
+- INTENT_ATTRIBUTION;
+- CONTROL_INFERENCE;
+- SELECTIVE_CAUSATION;
+- GENERALIZATION;
+- MIND_READING;
+- FALSE_EQUIVALENCE;
+- COUNTERFACTUAL;
+- OTHER.
+
+A source may therefore have:
+
+- supported substrate + supported inference;
+- supported substrate + unresolved inference;
+- supported substrate + contradicted inference;
+- mixed substrate + misleading conclusion;
+- accurate body + overstated presentation;
+- inaccurate presentation + qualified body.
+
+Those states must not be collapsed.
+
+When Claims Forensics has not adjudicated the bridge or conclusion, Web of Lies
+must route the proposition as an ADJUDICATION_REVIEW_CANDIDATE rather than
+assigning a truth, knowledge, deception, behavior-class or Hall finding on its
+own.
+
+Repeated title/thumbnail sensationalization may become source-behavior evidence
+only when the underlying incidents are individually documented. Engagement
+motive is not inferred merely from sensational wording; monetization,
+engagement incentives and editorial strategy require their own receipts.
