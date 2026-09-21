@@ -1,0 +1,158 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-21T00:00:00-04:00",
+    "end": "2026-09-21T12:00:00-04:00",
+    "collection_time": "2026-09-21T12:00:34-04:00",
+    "evidence_horizon": "2026-09-21T12:00:00-04:00"
+  },
+  "lineage": {
+    "branch": "evidence/rook-catchup-20260919-0002",
+    "previous_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260921T0000ET.json",
+    "previous_blob_observed": "3e6decd8d5a7b47f5b5d7d3b60ed1d08611cdbcb"
+  },
+  "updates": [
+    {
+      "event_id": "HORMUZ-TRAFFIC-20260921-REUTERS-REVISION",
+      "update_type": "existing maritime drawer correction / source revision preservation",
+      "occurrence_time": "2026-09-19/2026-09-20",
+      "publication_time": "2026-09-21T02:36:00Z",
+      "finding": "Reuters' current Sep. 21 report gives 17 trackable commodity-vessel transits through Hormuz over the weekend, versus 37 the prior weekend. Sunday had five exits and two entries; Saturday had eight exits and two entries. This differs from the 12-versus-35 denominator preserved in the midnight sweep from an earlier Reuters/Kpler version. Preserve both publication-state observations and supersede the earlier denominator for current use rather than rewriting the prior artifact. Reuters also reports transponder-dark traffic.",
+      "status": "SUPPORTED REVISED COMMERCIAL-DATA DENOMINATOR; PRIOR REUTERS VERSION PRESERVED",
+      "sources": ["https://www.reuters.com/world/middle-east/vessels-trickle-through-strait-hormuz-mideast-tension-persists-2026-09-21/"],
+      "drawer_effect": "Supersede 12/35 as the current Reuters/Kpler weekend denominator with 17/37; retain the midnight artifact as evidence of the earlier published value."
+    },
+    {
+      "event_id": "HORMUZ-STS-SHUTTLE-NETWORK-20260921",
+      "update_type": "existing Hormuz energy-flow drawer update / commercial logistics adaptation",
+      "occurrence_time": "2026-09-01/2026-09-21",
+      "publication_time": "2026-09-21",
+      "finding": "Reuters energy analysis citing Kpler reports Hormuz oil exports around 6.5 million bpd so far in September, highest since the brief post-June-ceasefire spike. About 2.5 million bpd is expected to be loaded through ship-to-ship transfers in the Gulf of Oman in September versus 1.4 million bpd in August, roughly 40% of current Hormuz-moving volume. Shuttle tankers transit the strait, often dark, then transfer crude south of Hormuz to onward carriers. Reuters reports a narrow Omani-coast corridor under U.S. naval protection. VLCC Gulf-to-China freight exceeds $30/barrel in cited LSEG data.",
+      "status": "SUPPORTED COMMERCIAL-DATA ADAPTATION; NOT NORMALIZED FREEDOM OF NAVIGATION",
+      "sources": ["https://www.reuters.com/commentary/reuters-open-interest/hormuz-shuttles-keep-oil-flowing-high-cost-2026-09-21/"],
+      "drawer_effect": "Add logistics-mechanism evidence explaining why export volumes can recover while visible transit counts and normal navigation remain severely degraded. Treat Reuters Open Interest interpretation separately from underlying Kpler/LSEG figures."
+    },
+    {
+      "event_id": "SAUDI-OIL-REROUTING-YANBU-20260921",
+      "update_type": "existing Saudi Petroline/Yanbu drawer update",
+      "occurrence_time": "2026-09-13/2026-09-21",
+      "publication_time": "2026-09-21T02:36:00Z",
+      "finding": "Current Reuters/Kpler data reports 22 tankers carrying 42 million barrels exited Hormuz in the week of Sep. 13, with Saudi Arabia and Iraq each accounting for 43% of volume. Reuters reports no visible Saudi oil loadings at Yanbu since Sep. 16. A separate Reuters market report cites satellite data showing Saudi oil through Hormuz averaging 2.9 million bpd over the prior six days versus 0.7 million bpd in August.",
+      "status": "SUPPORTED REROUTING/DISPOSITION UPDATE; PIPELINE REPAIR NOT ESTABLISHED",
+      "sources": ["https://www.reuters.com/world/middle-east/vessels-trickle-through-strait-hormuz-mideast-tension-persists-2026-09-21/","https://www.reuters.com/business/energy/oil-rises-after-houthi-attack-saudi-capital-2026-09-20/"],
+      "drawer_effect": "Strengthen evidence of Saudi fallback to Hormuz and continuing Yanbu impairment; do not infer East-West pipeline repair from recovered exports."
+    },
+    {
+      "event_id": "QATAR-RAS-LAFFAN-LNG-BDA-20260921",
+      "update_type": "existing Qatar energy/infrastructure drawer BDA and repair-status update",
+      "occurrence_time": "pre-2026-09-21 damage; repair status current 2026-09-21",
+      "publication_time": "2026-09-21T11:12:00Z",
+      "finding": "QatarEnergy CEO Saad al-Kaabi said attacks on Ras Laffan wiped out 17% of Qatar LNG capacity, damaged two LNG trains whose repairs could take three years, and damaged one GTL plant expected to complete repairs in Q1 2027. He said QatarEnergy is producing very little LNG and that normal gas operations could resume within weeks after Hormuz reopens. Equipment for North Field East expansion remains unable to reach Qatar through disrupted Hormuz; later NFE trains may be delayed. Qatar rejected proposed pipeline alternatives through neighboring states on commercial and technical grounds.",
+      "status": "SUPPORTED OPERATOR-ATTRIBUTED BDA/REPAIR ESTIMATE; LONG-TERM PROJECT IMPACT CONDITIONAL",
+      "sources": ["https://www.reuters.com/business/energy/qatarenergy-says-hormuz-crisis-may-delay-lng-expansion-projects-2026-09-21/"],
+      "drawer_effect": "Update Ras Laffan BDA and repair horizons; separate operator repair estimate from independent physical BDA and separate current damage from conditional expansion delay."
+    },
+    {
+      "event_id": "YEMEN-HOUTHI-KAHBOUB-HIGHLANDS-20260921",
+      "update_type": "existing Yemen/Bab-el-Mandeb military drawer update",
+      "occurrence_time": "2026-09-21",
+      "publication_time": "2026-09-21T11:06:00Z",
+      "finding": "Five Yemeni military sources told Reuters Houthi forces were seeking the Kahboub Mountains in Taiz and Lahij, strategic heights separating their newly seized Red Sea coast from government-held southern areas. Fighting centered near Al-Wazi'iyah and Ras al-Ara. Reuters reports the Houthis already seized Yemen's Red Sea coast this month; Saudi strikes have not yet dislodged them from the described advance. The territorial push threatens to consolidate Houthi leverage around Bab el-Mandeb but does not by itself establish physical closure of the strait.",
+      "status": "SUPPORTED MULTI-SOURCE MILITARY DISPOSITION; STRAIT CLOSURE NOT ESTABLISHED",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-push-control-yemen-highlands-trump-reported-have-called-off-airstrikes-2026-09-21/"],
+      "drawer_effect": "Update Houthi territorial disposition and preserve distinction between control of adjacent terrain/islands and control or closure of international navigation."
+    },
+    {
+      "event_id": "YEMEN-HUMAN-IMPACT-20260921",
+      "update_type": "existing Yemen human-impact drawer denominator update",
+      "occurrence_time": "renewed Yemen fighting through 2026-09-21",
+      "publication_time": "2026-09-21T11:06:00Z",
+      "finding": "Reuters reports the United Nations now puts the renewed Yemen flare-up at nearly 700 killed, thousands injured, nearly 130,000 internally displaced, and more than 3,000 people fleeing by boat across the Red Sea to Africa. This supersedes the Sep. 15 UNHCR denominator of over 100,000 internally displaced for current use while preserving the earlier observation date.",
+      "status": "SUPPORTED UN-ATTRIBUTED HUMAN-IMPACT DENOMINATOR",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-push-control-yemen-highlands-trump-reported-have-called-off-airstrikes-2026-09-21/"],
+      "drawer_effect": "Supersede the prior displacement denominator for current status; retain earlier series for chronology."
+    },
+    {
+      "event_id": "US-YEMEN-DIRECT-INTERVENTION-20260921",
+      "update_type": "existing U.S.-Saudi-Yemen intervention-policy drawer update",
+      "occurrence_time": "2026-09-20",
+      "publication_time": "2026-09-21T11:06:00Z",
+      "finding": "Reuters reports Saudi-backed Yemeni president Rashad al-Alimi requested U.S. military help in a Sunday call with President Trump; two sources said Trump made no direct pledge. Reuters separately reports the New York Times claim that U.S. strikes on Houthis were prepared and called off at the last minute, but Reuters could not independently verify that strike-order/cancellation account and CENTCOM referred questions to the White House.",
+      "status": "SUPPORT REQUEST CORROBORATED; NO U.S. PLEDGE REPORTED; STRIKE-ORDER/CANCELLATION CLAIM UNVERIFIED BY REUTERS",
+      "sources": ["https://www.reuters.com/world/middle-east/houthis-push-control-yemen-highlands-trump-reported-have-called-off-airstrikes-2026-09-21/"],
+      "drawer_effect": "Add direct Yemeni request and reported non-commitment; preserve NYT strike-preparation story as attributed/unverified rather than fact."
+    },
+    {
+      "event_id": "IRAN-SETTLEMENT-SEMANTICS-20260921-NO-CLARIFICATION",
+      "update_type": "prior semantic-baseline review",
+      "occurrence_time": "2026-09-21T00:00:00-04:00/2026-09-21T12:00:00-04:00",
+      "publication_time": "2026-09-21",
+      "finding": "In-window source review located repetition of Mohsen Rezaei's conditions but no authoritative Iranian enumeration defining 'internal affairs', 'our revolution', 'opponents of our revolution', or the prohibited scope of 'cooperation'. No newly located source identifies the undisclosed seventh condition. The Sep. 20 semantic baseline therefore remains operative without backfilled meaning.",
+      "status": "NO SEMANTIC CLARIFICATION LOCATED; AMBIGUITY PRESERVED",
+      "sources": ["https://www.dawn.com/news/2031321","https://www.democracynow.org/2026/9/21/headlines"],
+      "drawer_effect": "No semantic upgrade. Continue requiring later definitions to be timestamped as subsequent clarification, narrowing, expansion, or substitution."
+    }
+  ],
+  "prior_drawer_review": [
+    {"drawer":"Hormuz vessel traffic","action":"CORRECT CURRENT DENOMINATOR","reason":"Reuters current article revised weekend figure from earlier 12/35 to 17/37; preserve both publication states."},
+    {"drawer":"Hormuz oil logistics / freedom of navigation","action":"UPDATE","reason":"Kpler/LSEG STS shuttle mechanism and 6.5m bpd September flow explain recovered export volume without normalized navigation."},
+    {"drawer":"Saudi Petroline / Yanbu","action":"UPDATE","reason":"No visible Yanbu oil loading since Sep. 16 and Saudi rerouting through Hormuz materially strengthen disposition evidence; repair remains unresolved."},
+    {"drawer":"Qatar Ras Laffan LNG damage","action":"UPDATE","reason":"Operator supplies 17% capacity-loss figure, two-train three-year repair estimate, GTL Q1 2027 repair horizon and expansion-equipment constraint."},
+    {"drawer":"Yemen / Bab el-Mandeb territorial control","action":"UPDATE","reason":"Houthi push for Kahboub heights could consolidate Red Sea gains; do not convert terrain control into strait closure."},
+    {"drawer":"Yemen human impact","action":"UPDATE","reason":"UN denominator rises to nearly 700 killed, nearly 130,000 internally displaced, >3,000 fled by sea."},
+    {"drawer":"U.S.-Saudi/Yemen intervention","action":"UPDATE","reason":"Alimi request corroborated; no direct Trump pledge reported; alleged prepared/cancelled U.S. strikes remain Reuters-unverified."},
+    {"drawer":"Iran settlement-condition semantics","action":"NO CLARIFICATION FOUND","reason":"Undefined terms and undisclosed seventh condition remain unresolved."},
+    {"drawer":"Iran claimed advance intelligence of U.S./allied attack","action":"NO ADJUDICATIVE CHANGE","reason":"No independent evidence located substantiating privileged foreknowledge."},
+    {"drawer":"Riyadh airport fuel-area fire","action":"NO MATERIAL ATTRIBUTION CHANGE FOUND","reason":"Houthi attack claim persists; weapon-to-observed-damage causal attribution remains unresolved."},
+    {"drawer":"Qeshm MQ-9 52nd/53rd aggregate","action":"NO MATERIAL CHANGE FOUND","reason":"No new independent type-specific loss evidence located in-window."},
+    {"drawer":"RSAF F-15SA loss","action":"NO MATERIAL CHANGE FOUND","reason":"No new crew-fate or causal evidence located in-window."},
+    {"drawer":"U.S. fatalities 18 vs >=22","action":"NO AUTHORITATIVE RECONCILIATION FOUND","reason":"Secondary reporting repeats discrepancy; no new Pentagon reconciliation located in-window."}
+  ],
+  "coverage": {
+    "military": "covered: Yemen territorial fighting, U.S.-intervention reporting, Iran escalation/foreknowledge recheck, prior aviation-loss drawers rechecked",
+    "maritime": "covered: revised Hormuz Kpler denominator, STS logistics, Bab el-Mandeb weekend traffic/disposition",
+    "infrastructure": "covered: Ras Laffan operator BDA/repair horizon, Saudi East-West/Yanbu disposition",
+    "diplomacy": "covered: U.S.-Yemen support request, UNGA/Iran settlement-language review; no agreed U.S.-Iran framework located",
+    "economy_sanctions_energy": "covered: Qatar LNG production/expansion, Saudi rerouting, STS costs, oil-market effects; no new Treasury designation located before horizon",
+    "claims_corrections": "covered: Reuters 12/35 -> 17/37 source revision explicitly preserved; NYT U.S.-strike report kept attributed/unverified; Iran foreknowledge claim unchanged",
+    "human_impact": "covered: new UN Yemen fatality/injury/displacement/refugee denominator",
+    "osint_commercial": "covered through Reuters reporting of Kpler/LSEG and satellite-derived market data; no direct paid Kpler, LSEG terminal, MarineTraffic, Planet or Maxar access"
+  },
+  "unresolved_questions": [
+    "What is Iran's undisclosed seventh settlement condition?",
+    "What precise actors and conduct are covered by 'internal affairs', 'our revolution', 'opponents of our revolution', and 'cooperation'?",
+    "Will a Trump-Pezeshkian meeting actually be scheduled during UNGA week and under what agenda/sequencing?",
+    "What is the next reliable daily Hormuz denominator, and how much dark traffic can be defensibly estimated?",
+    "When will Saudi East-West pipeline pumping resume partially or fully, and when will visible Yanbu loadings resume?",
+    "What is independent physical BDA for Ras Laffan beyond QatarEnergy's operator estimate?",
+    "Will Houthi control of Red Sea coastal terrain and Perim translate into materially tighter Bab el-Mandeb interdiction, or remain selective targeting?",
+    "Did the U.S. actually prepare and then cancel Sep. 20 Houthi strikes as reported by the New York Times?",
+    "What weapon/event caused the King Khalid airport fuel-storage-area fire?",
+    "Does independent evidence substantiate Iran's claimed advance intelligence of a prepared U.S./allied attack?",
+    "Can the U.S. military-fatality discrepancy be reconciled by denominator, date and combat status?"
+  ],
+  "source_discovery_additions": [
+    "Reuters Sep. 21 revised Hormuz/Kpler transit report",
+    "Reuters Sep. 21 Open Interest energy-logistics analysis carrying Kpler/LSEG STS data",
+    "Reuters Sep. 21 QatarEnergy Ras Laffan/North Field repair and expansion report",
+    "Reuters Sep. 21 Yemen highlands/Houthi advance and UN human-impact report",
+    "Dawn and Democracy Now reproductions of Rezaei condition wording used only for semantic-repetition check"
+  ],
+  "limitations": [
+    "No direct paid commercial maritime, financial-data, or satellite terminal was available; commercial figures are preserved as reported by Reuters from Kpler/LSEG or cited satellite analysis.",
+    "Reuters Open Interest is analysis/commentary; underlying Kpler/LSEG figures are preserved as reported data and the author's interpretations are not promoted to independent factual adjudications.",
+    "Search did not locate a new authoritative U.S. casualty reconciliation, Qeshm MQ-9 confirmation, RSAF F-15SA crew-fate update, or Iranian definition of the disputed settlement terms before the noon horizon.",
+    "Absence of located reporting is not evidence that no event occurred; claimant statements remain claims unless independently corroborated."
+  ],
+  "completion": {
+    "status": "COMPLETE_WITH_EXPLICIT_SOURCE_LIMITATIONS",
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false
+  }
+}
