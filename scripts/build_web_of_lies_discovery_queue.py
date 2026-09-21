@@ -142,6 +142,80 @@ def canonical_resolution(
     }
 
 
+def validate_native_discovery_content(discovery: dict[str, Any]) -> None:
+    discovery_id = str(discovery.get("discovery_id") or "").strip()
+    body = discovery.get("content_body_evidence")
+    decomposition = discovery.get("analysis_decomposition")
+
+    if body is None:
+        if decomposition is not None:
+            raise ValueError(
+                f"native discovery {discovery_id} has analytical decomposition "
+                "without content-body evidence"
+            )
+        return
+
+    medium = str(body.get("medium") or "")
+    capture_status = str(body.get("capture_status") or "")
+    transcript_receipts = body.get("transcript_receipts") or []
+    body_claims = body.get("body_claims") or []
+
+    if medium == "AUDIO_VIDEO":
+        if capture_status == "TITLE_DESCRIPTION_ONLY":
+            if decomposition is not None:
+                raise ValueError(
+                    f"native discovery {discovery_id} attempts video narrative "
+                    "decomposition from title/description only"
+                )
+            if transcript_receipts or body_claims:
+                raise ValueError(
+                    f"native discovery {discovery_id} marks TITLE_DESCRIPTION_ONLY "
+                    "but also supplies transcript/body claims"
+                )
+        elif capture_status in {
+            "TRANSCRIPT_CAPTURED",
+            "PARTIAL_TRANSCRIPT_CAPTURED",
+            "TIMESTAMPED_DIRECT_REVIEW",
+        }:
+            if not transcript_receipts:
+                raise ValueError(
+                    f"native discovery {discovery_id} claims body capture without "
+                    "a transcript/timestamp receipt"
+                )
+            if not body_claims:
+                raise ValueError(
+                    f"native discovery {discovery_id} claims body capture without "
+                    "body-level claims"
+                )
+        elif capture_status == "UNAVAILABLE":
+            if decomposition is not None:
+                raise ValueError(
+                    f"native discovery {discovery_id} cannot decompose unavailable "
+                    "video body evidence"
+                )
+        else:
+            raise ValueError(
+                f"native discovery {discovery_id} has invalid audio/video body "
+                f"capture status {capture_status}"
+            )
+
+    if decomposition is not None:
+        if medium == "AUDIO_VIDEO" and capture_status not in {
+            "TRANSCRIPT_CAPTURED",
+            "PARTIAL_TRANSCRIPT_CAPTURED",
+            "TIMESTAMPED_DIRECT_REVIEW",
+        }:
+            raise ValueError(
+                f"native discovery {discovery_id} video inference analysis requires "
+                "transcript or timestamped direct review"
+            )
+        if medium == "TEXT_PUBLICATION" and capture_status != "FULL_TEXT_CAPTURED":
+            raise ValueError(
+                f"native discovery {discovery_id} text inference analysis requires "
+                "full-text capture"
+            )
+
+
 def build_queue(root: Path) -> dict[str, Any]:
     handoff = load(root, HANDOFF)
     routing = load(root, ROUTING)
@@ -232,6 +306,7 @@ def build_queue(root: Path) -> dict[str, Any]:
 
     for discovery in native.get("items") or []:
         discovery_id = str(discovery.get("discovery_id") or "").strip()
+        validate_native_discovery_content(discovery)
         if not discovery_id:
             raise ValueError("native Web of Lies discovery is missing discovery_id")
         if discovery.get("claim_family_ref") is not None:
@@ -272,6 +347,16 @@ def build_queue(root: Path) -> dict[str, Any]:
             "review_target": str(discovery["review_target"]),
             "review_reason": str(discovery["review_reason"]),
             "source_handoff_path": NATIVE_DISCOVERIES,
+            **(
+                {"content_body_evidence": discovery["content_body_evidence"]}
+                if discovery.get("content_body_evidence") is not None
+                else {}
+            ),
+            **(
+                {"analysis_decomposition": discovery["analysis_decomposition"]}
+                if discovery.get("analysis_decomposition") is not None
+                else {}
+            ),
         })
 
     items.sort(key=lambda row: row["discovery_id"])
