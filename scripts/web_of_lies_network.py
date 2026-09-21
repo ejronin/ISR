@@ -154,7 +154,13 @@ def validate_extended_forensic_input(
     for event in events:
         event_id = str(event.get("event_id") or "")
         public_receipts = list(event.get("public_receipts") or [])
-        if not list(event.get("evidence_source_ids") or []) and not public_receipts:
+        native_osint = bool(
+            public_receipts
+            or event.get("collection_surface")
+            or event.get("osint_event_kind")
+            or event.get("provenance_mode") == "PUBLIC_OSINT"
+        )
+        if native_osint and not list(event.get("evidence_source_ids") or []) and not public_receipts:
             raise ValueError(
                 f"information event {event_id} needs a canonical evidence receipt "
                 "or a public OSINT receipt"
@@ -218,12 +224,17 @@ def validate_extended_forensic_input(
     for relation in relationships:
         rid = str(relation.get("relationship_id") or "")
         rtype = str(relation.get("relationship_type") or "")
-        if allowed_relationship_types and rtype not in allowed_relationship_types:
+        public_receipts = list(relation.get("public_receipts") or [])
+        native_osint = bool(
+            public_receipts
+            or relation.get("collection_surface")
+            or relation.get("provenance_mode") == "PUBLIC_OSINT"
+        )
+        if native_osint and allowed_relationship_types and rtype not in allowed_relationship_types:
             raise ValueError(
                 f"relationship {rid} has unsupported relationship type {rtype}"
             )
-        public_receipts = list(relation.get("public_receipts") or [])
-        if not list(relation.get("evidence_source_ids") or []) and not public_receipts:
+        if native_osint and not list(relation.get("evidence_source_ids") or []) and not public_receipts:
             raise ValueError(
                 f"relationship {rid} needs a canonical evidence receipt or a public OSINT receipt"
             )
