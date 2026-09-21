@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T19:45:00-04:00",
+  "as_of": "2026-09-21T20:10:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -1329,8 +1329,8 @@
         "https://t.me/ethanlevins"
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
-      "identity_status": "PUBLIC_IDENTITY_PARTIALLY_RESOLVED",
-      "notes": "Public Telegram plus Press TV quotation/hosting relationship established; no control or agency inference."
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "Public identity, direct Patreon and donation channels, an expressly paid-partnership post, repeated Press TV quotation/interview reuse, and recurring Rachel Blevins hosted appearances are documented. These establish monetization and media-ecosystem relationships, not state control, employment, agency, or shill status."
     },
     {
       "lead_id": "LEAD-IRAN-MILITARY-UPDATE",
@@ -1350,8 +1350,8 @@
         "https://substack.com/@jollygoodginger"
       ],
       "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
-      "identity_status": "PARTIALLY_RESOLVED_PUBLIC_IDENTITY",
-      "notes": "Iran-war commentary and Substack activity found, but no specific canonical Atlas misinformation incident established in this tranche."
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "Russell Ellis / Jolly Good Ginger is now documented as a paid Substack creator and activist commentator with recurring hosted appearances including Michael Cohen, Don Lemon and a paid DEFIANCE Iran-war episode. These are monetization/collaboration facts, not organizational affiliation or an adverse WOL claim incident."
     },
     {
       "lead_id": "LEAD-LIM-TEAN",
@@ -1361,7 +1361,7 @@
       ],
       "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Hormuz commentary found; current sample is commentary/inference and not yet an adverse Atlas incident."
+      "notes": "Public record supports genuine shipping/admiralty-law expertise, so Atlas treats him as a subject-matter analyst within that scope. Reviewed Hormuz traffic-number claims are substantially grounded in contemporaneous shipping reporting; broader geopolitical conclusions remain analysis unless a separate falsifiable proposition fails evidence review."
     },
     {
       "lead_id": "LEAD-MEIDASTOUCH",
@@ -1371,7 +1371,7 @@
       ],
       "current_disposition": "UPSTREAM_REVIEW_REQUIRED",
       "identity_status": "OUTLET_IDENTITY_RESOLVED",
-      "notes": "July 12 broad multiple-U.S.-bases-destroyed assertion does not cleanly map to one existing canonical claim atom."
+      "notes": "MeidasTouch is a membership/Patreon-funded news-media source. Transcript review found a recurring distinction between factual BDA/shipping substrate and broader conclusions. Separate upstream candidates now cover 'most U.S. bases seriously destroyed,' a distinct damage-coverup allegation, and 'Hormuz traffic completely shut down.' None is silently adjudicated in WOL."
     },
     {
       "lead_id": "LEAD-MIDDLE-EAST-MONITOR",
@@ -1408,7 +1408,7 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Multiple Iran-war factual-claim surfaces are being routed claim-by-claim. Direct-video review seeds now include the 31-million mobilization title, broad whole-base destruction title, U.S.-casualty concealment allegation, intentional non-interception allegation, and a July 20 '17 U.S. service members KIA' nearby comparator. The comparator is not an adverse finding merely because its wording is dramatic."
+      "notes": "Public identity and Patreon monetization are documented. Multiple Iran-war factual propositions remain routed claim-by-claim to Claims Forensics, including mobilization scale, whole-base destruction, casualty concealment, and intentional non-interception. The July 20 17-KIA comparator remains non-adverse because dramatic wording alone is not misconduct."
     },
     {
       "lead_id": "LEAD-ZACH-FOR-THE-PEOPLE",
