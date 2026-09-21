@@ -164,13 +164,15 @@ assert maintenance["public_mutation_summary"] == {
         "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
     ],
     "newly_public_proposition_rows": 4,
-    "newly_public_claim_instances": 4,
+    "newly_public_claim_instances": 3,
     "unique_proposition_delta": 0,
     "accusation_chain_delta": 0,
     "control_chain_delta": 3,
     "truth_changes": 0,
     "knowledge_changes": 0,
     "remaining_source_promotion_holds": 0,
+    "newly_public_proposition_instance_records": 4,
+    "claim_instance_metric_definition": "Unique underlying claim instances keyed by original_claim_id/claim_id; the two atomic military-training propositions share one claim instance.",
 }
 
 print("claims source-promotion consumption: PASS chains=3 rows=4 accusation_delta=0")
