@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-NAMED-LEADS-HORMUZ-CONTROL-20260921",
+  "claim_family_id": "CHAIN-CL-HORMUZ-CONTROL",
+  "as_of": "2026-09-21T20:15:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-hormuz-control.json",
+    "data/web-of-lies/source-dossiers.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Person/account-level propagation of the already-canonical Hormuz binary-control framing. Claims Forensics owns the MISLEADING BINARY FRAMING adjudication; WOL records downstream adoption without inferring deception, knowledge or state direction.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "display_name": "Ethan Levins",
+      "source_entity_type": "PERSON",
+      "country_region": null,
+      "primary_platform": "Telegram",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "HUMAN_ACCOUNT",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-ETHAN-LEVINS",
+      "identity_confidence": "HIGH"
+    },
+    {
+      "source_id": "WOL-SRC-MEIDASTOUCH",
+      "display_name": "MeidasTouch",
+      "source_entity_type": "OUTLET",
+      "country_region": "United States",
+      "primary_platform": "YouTube",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-MEIDASTOUCH",
+      "identity_confidence": "CONFIRMED"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-NAMED-ETHAN-HORMUZ-CONTROL-MAY8",
+      "claim_family_id": "CHAIN-CL-HORMUZ-CONTROL",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-05-08",
+      "first_observed_at": "2026-05-08",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "In a Press TV interview, Ethan Levins said that after the war Iran was now controlling the Strait of Hormuz and that every country would have to understand Iran was going to hold the Strait.",
+      "translated_statement": null,
+      "originating_claimant": "Ethan Levins",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "CI-CL-HORMUZ-CONTROL",
+        "CL-HORMUZ-CONTROL",
+        "PROP-47224BC8D471"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "collection_surface": "WEBSITE",
+      "osint_event_kind": "DOWNSTREAM_BINARY_CONTROL_ADOPTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ETHAN-HORMUZ-PRESSTV-MAY8",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/05/08/768246/US-naval-blockade-against-Iran-considered-a-war-crime",
+          "archive_url": null,
+          "published_at": "2026-05-08",
+          "captured_at": "2026-09-21",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Ethan Levins",
+          "text_excerpt": "Press TV preserves Levins' definitive statement that Iran is now controlling and will hold the Strait of Hormuz."
+        }
+      ],
+      "plain_english_verdict": "Claims Forensics already records absolute competing-control framing about Hormuz as misleading binary framing. This event records Levins adopting the Iran-controls-the-Strait side of that framing; it does not infer deception, personal knowledge, state direction or shill status.",
+      "canonical_combined_assessment": "MISLEADING BINARY FRAMING",
+      "provenance_limit": "Press TV is the public carrier of Levins' interview statement. The carrier relationship does not establish control or employment."
+    },
+    {
+      "event_id": "WOL-EVT-NAMED-MEIDAS-HORMUZ-CONTROL-MAY7",
+      "claim_family_id": "CHAIN-CL-HORMUZ-CONTROL",
+      "source_id": "WOL-SRC-MEIDASTOUCH",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-05-07",
+      "first_observed_at": "2026-05-07",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "In a May 7 scorecard-style argument about war aims, Ben Meiselas said, 'Iran's controlled the Strait of Hormuz. That's goal number one.'",
+      "translated_statement": null,
+      "originating_claimant": "MeidasTouch / Ben Meiselas",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-HORMUZ-CONTROL",
+        "CL-HORMUZ-CONTROL",
+        "PROP-47224BC8D471"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "collection_surface": "PODCAST",
+      "osint_event_kind": "DOWNSTREAM_BINARY_CONTROL_ADOPTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-MEIDAS-HORMUZ-HAPPYSCRIBE-MAY7",
+          "surface": "PODCAST",
+          "url": "https://podcasts.happyscribe.com/the-meidastouch-podcast/2026-89c08e51-f49b-4894-88b4-71b56532da28",
+          "archive_url": null,
+          "published_at": "2026-05-07",
+          "captured_at": "2026-09-21",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Transcript around 00:23:39-00:24:46 preserves the scorecard statement that Iran controlled the Strait."
+        }
+      ],
+      "plain_english_verdict": "Claims Forensics already records absolute competing-control framing about Hormuz as misleading binary framing. This event records MeidasTouch adopting the Iran-controls-the-Strait side of that framing; it does not by itself establish a broader source behavior class.",
+      "canonical_combined_assessment": "MISLEADING BINARY FRAMING",
+      "provenance_limit": "The transcript preserves the publisher statement; WOL does not treat the transcript host as an independent corroborator."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-ETHAN-HORMUZ-CARRIED-BY-PRESSTV",
+      "from_id": "WOL-EVT-NAMED-ETHAN-HORMUZ-CONTROL-MAY8",
+      "to_id": "WOL-SRC-PRESS-TV",
+      "relationship_type": "CARRIED_BY",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-ETHAN-HORMUZ-PRESSTV",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/05/08/768246/US-naval-blockade-against-Iran-considered-a-war-crime",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Ethan Levins"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
