@@ -25,6 +25,9 @@ discovery_builder.validate(ROOT, queue)
 items = {row["discovery_id"]: row for row in queue["items"]}
 leads = {row["lead_id"]: row for row in derived["research_leads"]}
 profiles = {row["source_id"]: row for row in derived["source_profiles"]}
+behavior_incidents = {
+    row["incident_id"]: row for row in derived["source_behavior_incidents"]
+}
 
 media_rule = governance["osint_collection"]["media_analysis_review"]
 assert media_rule["factual_substrate_is_not_inferential_validation"] is True
@@ -198,13 +201,58 @@ assert all("TRANSCRIPT" in row["required_next_evidence"] for row in body_queue)
 assert any(row["url"].endswith("ESojA5kxiFY") for row in body_queue)
 assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
 
+# Valenti now has a separate WOL-native source-behavior record. These findings
+# score the publisher-authored presentation itself; they do not bypass the
+# transcript gate for claims about what was said inside a video.
+valenti_incident_ids = {
+    "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+    "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+    "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+    "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+    "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
+    "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+    "WOL-BS-VALENTI-31M-SOLDIERS-20260917",
+}
+assert valenti_incident_ids <= set(behavior_incidents)
+for incident_id in valenti_incident_ids:
+    incident = behavior_incidents[incident_id]
+    assert incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
+    assert incident["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+    assert incident["evidentiary_support_review"]["supporting_evidence_found"] is False
+    assert incident["public_receipts"]
+
+valenti_awards = profiles["WOL-SRC-VALENTI-VIDEOS"]["source_awards"]
+assert len(valenti_awards) == 1
+valenti_award = valenti_awards[0]
+assert valenti_award["award_code"] == "BULLSHITTER"
+assert valenti_award["public_label"] == "Bullshitter"
+assert valenti_award["qualifying_window_start"] == "2026-07-22T00:00:00"
+assert valenti_award["qualifying_window_end"] == "2026-08-06T00:00:00"
+assert valenti_award["qualifying_incident_count"] == 6
+assert set(valenti_award["qualifying_incident_ids"]) == {
+    "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+    "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+    "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+    "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+    "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
+    "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+}
+assert valenti_award["current_window_status"] == "EARNED_HISTORICAL"
+assert valenti_award["currently_active"] is False
+assert valenti_award["current_window_incident_count"] == 1
+assert valenti_award["current_window_incident_ids"] == [
+    "WOL-BS-VALENTI-31M-SOLDIERS-20260917"
+]
+
 # Identity/relevance closure remains evidence-bounded.
 assert leads["LEAD-ZACH-FOR-THE-PEOPLE"]["identity_status"] == "PUBLIC_IDENTITY_RESOLVED"
 assert leads["LEAD-ZACH-FOR-THE-PEOPLE"]["current_disposition"] == "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND"
 assert profiles["WOL-SRC-ZACH-FOR-THE-PEOPLE-FB"]["identity_confidence"] == "HIGH"
 assert leads["LEAD-EL-MARQUES-XD"]["current_disposition"] == "IDENTITY_UNRESOLVED"
 
-# None of this workflow state itself creates behavior findings or Hall score.
+# The Bullshitter award is independent from legacy direct_verdict / Hall class
+# scoring. Valenti earns the award from WOL-native incidents while his
+# direct_verdict remains unset and the other research leads remain unscored.
 for source_id in (
     "WOL-SRC-VALENTI-VIDEOS",
     "WOL-SRC-ETHAN-LEVINS",
@@ -212,6 +260,9 @@ for source_id in (
     "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
 ):
     assert profiles[source_id]["direct_verdict"] is None
+assert profiles["WOL-SRC-ETHAN-LEVINS"]["source_awards"] == []
+assert profiles["WOL-SRC-LIM-TEAN"]["source_awards"] == []
+assert profiles["WOL-SRC-ZACH-FOR-THE-PEOPLE-FB"]["source_awards"] == []
 
 hall_ids = {
     entry["source_id"]
@@ -230,5 +281,5 @@ assert derived["corpus_coverage"]["completion_claim"] == "NONE"
 
 print(
     "web-of-lies social influence tranche2c: PASS "
-    "substrate_bridge_decomposition=2 video_body_gate=4 remaining_leads_closed=2"
+    "substrate_bridge_decomposition=2 video_body_gate=4 valenti_bullshitter=1 remaining_leads_closed=2"
 )
