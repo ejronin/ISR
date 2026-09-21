@@ -161,6 +161,21 @@ def validate_extended_forensic_input(
             raise ValueError(
                 f"source profile {source_id} has unsupported identity confidence {confidence}"
             )
+        for receipt in profile.get("classification_basis_receipts") or []:
+            _validate_public_receipt(
+                f"source profile {source_id} classification basis",
+                receipt,
+                governance,
+                seen_receipt_ids,
+            )
+        for receipt in profile.get("revenue_basis_receipts") or []:
+            _validate_public_receipt(
+                f"source profile {source_id} revenue basis",
+                receipt,
+                governance,
+                seen_receipt_ids,
+            )
+
         accounts = profile.get("platform_accounts") or []
         account_ids: set[str] = set()
         for account in accounts:
