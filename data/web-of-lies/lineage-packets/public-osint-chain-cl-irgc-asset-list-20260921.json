@@ -1,0 +1,230 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-CHAIN-CL-IRGC-ASSET-LIST-20260921",
+  "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+  "as_of": "2026-09-21T09:34:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-irgc-asset-list.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Compound IRGC scorecard provenance. The parent is decomposed into atomic line items and every exact tally remains unresolved on the current record; this packet does not instantiate claimed assets as verified losses.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-HOSSEIN-MOHEBBI",
+      "display_name": "Hossein Mohebbi",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "stable_identity_id": "WOL-ID-HOSSEIN-MOHEBBI",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-IRNA",
+      "display_name": "Islamic Republic News Agency (IRNA)",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "canonical_source_ids": [
+        "SRC-E7D3837B67C4"
+      ]
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-IRGC-ASSET-LIST-MOHEBBI",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-HOSSEIN-MOHEBBI",
+      "event_type": "REPORTS",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "IRGC spokesperson Hossein Mohebbi released a 15-day scorecard listing U.S. radars, logistics nodes, hangars, Patriot systems, HIMARS platforms, aircraft, drones, tankers and other assets said to have been destroyed or damaged.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-5BAF6D95B04E",
+        "CI-CL-IRGC-ASSET-LIST-P01",
+        "PROP-IRGC-ASSET-LIST-P01",
+        "CI-CL-IRGC-ASSET-LIST-P02",
+        "PROP-IRGC-ASSET-LIST-P02",
+        "CI-CL-IRGC-ASSET-LIST-P03",
+        "PROP-IRGC-ASSET-LIST-P03",
+        "CI-CL-IRGC-ASSET-LIST-P04",
+        "PROP-IRGC-ASSET-LIST-P04",
+        "CI-CL-IRGC-ASSET-LIST-P05",
+        "PROP-IRGC-ASSET-LIST-P05",
+        "CI-CL-IRGC-ASSET-LIST-P06",
+        "PROP-IRGC-ASSET-LIST-P06",
+        "CI-CL-IRGC-ASSET-LIST-P07",
+        "PROP-IRGC-ASSET-LIST-P07",
+        "CI-CL-IRGC-ASSET-LIST-P08",
+        "PROP-IRGC-ASSET-LIST-P08",
+        "CI-CL-IRGC-ASSET-LIST-P09",
+        "PROP-IRGC-ASSET-LIST-P09",
+        "CI-CL-IRGC-ASSET-LIST-P10",
+        "PROP-IRGC-ASSET-LIST-P10",
+        "CI-CL-IRGC-ASSET-LIST-P11",
+        "PROP-IRGC-ASSET-LIST-P11",
+        "CI-CL-IRGC-ASSET-LIST-P12",
+        "PROP-IRGC-ASSET-LIST-P12"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "IRGC spokesperson Hossein Mohebbi",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-IRNA"
+      ],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-IRGC-ASSET-LIST-IRNA-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://en.irna.ir/news/86219475/IRGC-releases-list-of-US-military-assets-heavily-damaged-in-Iranian",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Hossein Mohebbi / IRGC"
+        },
+        {
+          "receipt_id": "WOL-RCPT-IRGC-ASSET-LIST-MIRROR",
+          "surface": "WEBSITE",
+          "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/07/iran-260726-irna06.htm",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRNA / Hossein Mohebbi"
+        }
+      ],
+      "canonical_combined_assessment": "COMPOUND SCORECARD DECOMPOSED — ATOMIC EXACT TALLIES UNRESOLVED; NO LIE FINDING",
+      "plain_english_verdict": "The scorecard is established as an IRGC claim. Its line items remain unresolved exact tallies; none are converted into verified losses by repetition."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-IRGC-ASSET-LIST-IRNA",
+      "claim_family_id": "CHAIN-CL-IRGC-ASSET-LIST",
+      "source_id": "WOL-SRC-IRNA",
+      "event_type": "REPORTS",
+      "published_at": "2026-07-26",
+      "first_observed_at": "2026-07-26",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "IRNA published Mohebbi's detailed 15-day U.S.-asset damage scorecard.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-CL-IRGC-ASSET-LIST",
+        "CL-IRGC-ASSET-LIST",
+        "PROP-5BAF6D95B04E",
+        "CI-CL-IRGC-ASSET-LIST-P01",
+        "PROP-IRGC-ASSET-LIST-P01",
+        "CI-CL-IRGC-ASSET-LIST-P02",
+        "PROP-IRGC-ASSET-LIST-P02",
+        "CI-CL-IRGC-ASSET-LIST-P03",
+        "PROP-IRGC-ASSET-LIST-P03",
+        "CI-CL-IRGC-ASSET-LIST-P04",
+        "PROP-IRGC-ASSET-LIST-P04",
+        "CI-CL-IRGC-ASSET-LIST-P05",
+        "PROP-IRGC-ASSET-LIST-P05",
+        "CI-CL-IRGC-ASSET-LIST-P06",
+        "PROP-IRGC-ASSET-LIST-P06",
+        "CI-CL-IRGC-ASSET-LIST-P07",
+        "PROP-IRGC-ASSET-LIST-P07",
+        "CI-CL-IRGC-ASSET-LIST-P08",
+        "PROP-IRGC-ASSET-LIST-P08",
+        "CI-CL-IRGC-ASSET-LIST-P09",
+        "PROP-IRGC-ASSET-LIST-P09",
+        "CI-CL-IRGC-ASSET-LIST-P10",
+        "PROP-IRGC-ASSET-LIST-P10",
+        "CI-CL-IRGC-ASSET-LIST-P11",
+        "PROP-IRGC-ASSET-LIST-P11",
+        "CI-CL-IRGC-ASSET-LIST-P12",
+        "PROP-IRGC-ASSET-LIST-P12"
+      ],
+      "evidence_source_ids": [
+        "SRC-E7D3837B67C4"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Hossein Mohebbi / IRGC",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-IRGC-ASSET-LIST-IRNA-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://en.irna.ir/news/86219475/IRGC-releases-list-of-US-military-assets-heavily-damaged-in-Iranian",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Hossein Mohebbi / IRGC"
+        },
+        {
+          "receipt_id": "WOL-RCPT-IRGC-ASSET-LIST-MIRROR-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/07/iran-260726-irna06.htm",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRNA"
+        }
+      ],
+      "plain_english_verdict": "IRNA is the carrier. The detailed list is not independent target-by-target BDA."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-IRGC-ASSET-LIST-01",
+      "from_id": "WOL-EVT-PUB-IRGC-ASSET-LIST-IRNA",
+      "to_id": "WOL-EVT-PUB-IRGC-ASSET-LIST-MOHEBBI",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-IRGC-ASSET-LIST-01",
+          "surface": "WEBSITE",
+          "url": "https://en.irna.ir/news/86219475/IRGC-releases-list-of-US-military-assets-heavily-damaged-in-Iranian",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
