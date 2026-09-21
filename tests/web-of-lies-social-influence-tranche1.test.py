@@ -117,13 +117,35 @@ expected_leads = {
     "LEAD-LIM-TEAN",
 }
 assert expected_leads == set(leads)
-assert {
-    row["current_disposition"] for row in leads.values()
-} == {"PENDING_CLAIM_FIRST_RESEARCH"}
+allowed_lead_dispositions = {
+    "PENDING_CLAIM_FIRST_RESEARCH",
+    "MATERIAL_WOL_HISTORY_FOUND",
+    "LIMITED_RELEVANT_ACTIVITY",
+    "CARRIER_ONLY",
+    "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND",
+    "IDENTITY_UNRESOLVED",
+    "UPSTREAM_REVIEW_REQUIRED",
+}
 assert all(
-    "No adverse classification" in (row.get("notes") or "")
+    row["current_disposition"] in allowed_lead_dispositions
     for row in leads.values()
 )
+# Research-lead disposition is workflow state/context, not a behavior incident.
+assert all((row.get("notes") or "").strip() for row in leads.values())
+lead_source_ids = {
+    "WOL-SRC-VALENTI-VIDEOS",
+    "WOL-SRC-ETHAN-LEVINS",
+    "WOL-SRC-OSINTDEFENDER",
+    "WOL-SRC-MEIDASTOUCH",
+    "WOL-SRC-MIDDLE-EAST-MONITOR",
+    "WOL-SRC-JOLLY-GOOD-GINGER",
+    "WOL-SRC-IRAN-MILITARY-UPDATE",
+    "WOL-SRC-LIM-TEAN",
+    "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
+    "WOL-SRC-EL-MARQUES-XD-FB",
+}
+for source_id in lead_source_ids.intersection(profiles):
+    assert source_id not in hall_ids
 
 # Guardrail probes: external context cannot smuggle manual Hall scoring or turn
 # possible VPN use into an established operator-location claim.
