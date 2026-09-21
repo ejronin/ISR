@@ -984,7 +984,7 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Multiple Iran-war/public-affairs factual-claim surfaces are routed claim-by-claim. WOL-native evidentiary review now records six distinct qualifying unsupported/misleading presentation incidents from July 22 through August 6, plus a September 17 31-million-soldiers generalization. The deterministic Bullshitter award is derived from those incident records rather than manually assigned. Body-level narrative remains transcript/timestamp gated where the behavior finding depends on spoken content.",
+      "notes": "Multiple Iran-war/public-affairs factual-claim surfaces are routed claim-by-claim. WOL-native evidentiary review records six qualifying unsupported/misleading presentation incidents from July 22 through August 6, plus a September 17 31-million-soldiers generalization. Project-owner direct body review additionally reports that Valenti used 'nuclear strike' literally for nuclear-warhead use against Iran and, in the July 27 missile episode, went beyond real interceptor triage to an unsupported motive theory that the U.S. permissively let strikes occur to provoke anger. Those body observations remain explicitly non-transcript provenance until exact captions/timestamps are recovered.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1002,7 +1002,12 @@
           "publication_date": "2026-08-03",
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Determine whether the body establishes an authorized/planned nuclear strike that was cancelled, or whether the packaging converts discussion/contingency/rhetoric into an operational event."
+          "research_reason": "Determine whether the body establishes an authorized/planned nuclear strike that was cancelled, or whether the packaging converts discussion/contingency/rhetoric into an operational event.",
+          "project_owner_direct_review": {
+            "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
+            "observation": "Project owner reports Valenti used 'nuclear strike' literally as nuclear-warhead use against Iran, consistent with his repeated nuclear-armed-aircraft framing, not as shorthand for a conventional strike on nuclear facilities.",
+            "evidentiary_limit": "Automated/web retrieval has not recovered captions or timestamps. The already-recorded presentation incident remains independently supportable from the public title plus contemporaneous reporting; this note resolves the intended meaning only at project-review level."
+          }
         },
         {
           "research_item_id": "VALENTI-BODY-GROUND-INVASION-2026",
@@ -1016,11 +1021,16 @@
         {
           "research_item_id": "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026",
           "title": "Trump sends NUCLEAR ARMED JETS towards Iran.",
-          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
-          "publication_date": null,
+          "url": "https://www.youtube.com/watch?v=b44N3cLIDrA",
+          "publication_date": "2026-07-23",
           "capture_status": "TITLE_DESCRIPTION_ONLY",
-          "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Separate aircraft nuclear capability from evidence that the deployed aircraft were carrying nuclear weapons and from any claimed intent to use them."
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Preserve the spoken proposition that the deployed aircraft were armed with nuclear warheads for use against Iran, distinct from mere aircraft nuclear capability or strikes on nuclear facilities.",
+          "project_owner_direct_review": {
+            "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
+            "observation": "Project owner reports Valenti explicitly described aircraft carrying nuclear warheads and framed the deployment as preparation to nuke Iran.",
+            "evidentiary_limit": "Automated/web retrieval has not recovered the captions or timestamped spoken text. Do not label this as a machine-captured transcript until exact body wording/timestamps are preserved."
+          }
         },
         {
           "research_item_id": "VALENTI-BODY-SAUDI-NUCLEAR-WEAPONS-2026",
@@ -1030,6 +1040,20 @@
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
           "research_reason": "Determine whether the body alleges literal transfer of nuclear weapons, nuclear-capable systems, extended deterrence, basing, planning, or some other proposition."
+        },
+        {
+          "research_item_id": "VALENTI-BODY-ALLOWS-MISSILES-20260727",
+          "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases. Ukraine joins the Iran War.",
+          "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+          "publication_date": "2026-07-27",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Separate the supportable interceptor-triage proposition (commanders may deliberately decline interception of missiles expected to miss valuable targets) from the stronger motive claim that the United States did not care about the strikes / permissively let them occur in order to provoke anger or political reaction.",
+          "project_owner_direct_review": {
+            "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
+            "observation": "Project owner reports Valenti argued the United States essentially did not care, permitted the strikes to occur, and did so to make other actors angry; this is materially stronger than interceptor rationing or threat-based non-interception.",
+            "evidentiary_limit": "The public title alone does not prove this motive proposition. Exact transcript wording/timestamps remain required before this body-level motive claim is promoted into a scored WOL-native incident."
+          }
         }
       ]
     },
@@ -1155,7 +1179,12 @@
       },
       "downstream_note": "Counts the title/presentation claim, not an inference about what the body later said.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Canonical weapon/deployment truth remains upstream; WOL records the unsupported public presentation."
+      "review_reason": "Canonical weapon/deployment truth remains upstream; WOL records the unsupported public presentation.",
+      "body_review_context": {
+        "provenance": "PROJECT_OWNER_DIRECT_REVIEW",
+        "observation": "Valenti is reported to have explicitly described the aircraft as carrying nuclear warheads for use against Iran; the proposition is literal nuclear-weapon use, not merely nuclear-capable aircraft.",
+        "transcript_status": "NOT_MACHINE_RECOVERED"
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
@@ -1257,7 +1286,12 @@
       },
       "downstream_note": "This is a presentation finding. Body-level narrative remains separately body-gated.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Canonical attack-plan semantics remain upstream; WOL records the unsupported strength of the publisher headline."
+      "review_reason": "Canonical attack-plan semantics remain upstream; WOL records the unsupported strength of the publisher headline.",
+      "body_review_context": {
+        "provenance": "PROJECT_OWNER_DIRECT_REVIEW",
+        "observation": "Valenti is reported to have used 'nuclear strike' literally to mean nuclear-warhead use against Iran, not a conventional strike on nuclear facilities.",
+        "transcript_status": "NOT_MACHINE_RECOVERED"
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
