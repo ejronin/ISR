@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-SIX-VESSEL-20260905",
+  "claim_family_id": "CHAIN-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+  "as_of": "2026-09-21T09:40:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-ll-iran-six-vessel-success-20260905.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Neutral trace of the IRGC six-vessel success tally. The public IRGC/Tasnim wording establishes the claim lineage, not six independently verified losses; canonical status remains UNRESOLVED.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-SIX-VESSEL-0905-IRGC",
+      "claim_family_id": "CHAIN-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-05",
+      "first_observed_at": "2026-09-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "The IRGC Navy said it targeted three tankers traveling an unauthorized route through Hormuz and three U.S.-affiliated vessels elsewhere.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Navy",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+        "LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+        "PROP-E384BE3A3641"
+      ],
+      "evidence_source_ids": [
+        "SRC-D4D6B0EA7074",
+        "SRC-E2269A4B499D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-SIX-VESSEL-0905-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689747/irgc-strikes-us-warships-tankers-in-response-to-attacks-on-iranian-vessels",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Navy",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "UNRESOLVED — DO NOT CREATE SIX LOSS RECORDS",
+      "plain_english_verdict": "The public receipt confirms that the IRGC made the six-vessel targeting claim. It does not establish that all six claimed attacks produced distinct verified hits or losses."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-SIX-VESSEL-0905-TASNIM",
+      "claim_family_id": "CHAIN-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-06T10:42:00+03:30",
+      "first_observed_at": "2026-09-06T10:42:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim carried the IRGC Navy statement describing three unauthorized-route tankers and three U.S.-affiliated vessels as targets.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Navy",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+        "LL-IRAN-SIX-VESSEL-SUCCESS-20260905",
+        "PROP-E384BE3A3641"
+      ],
+      "evidence_source_ids": [
+        "SRC-D4D6B0EA7074",
+        "SRC-E2269A4B499D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-SIX-VESSEL-0905-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689747/irgc-strikes-us-warships-tankers-in-response-to-attacks-on-iranian-vessels",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC Navy"
+        }
+      ],
+      "plain_english_verdict": "This is derivative publication of the same IRGC tally, not independent confirmation of six successful attacks."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-SIX-VESSEL-0905-01",
+      "from_id": "WOL-EVT-PUB-SIX-VESSEL-0905-TASNIM",
+      "to_id": "WOL-EVT-PUB-SIX-VESSEL-0905-IRGC",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-D4D6B0EA7074"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-SIX-VESSEL-0905-01",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/06/3689747/irgc-strikes-us-warships-tankers-in-response-to-attacks-on-iranian-vessels",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Navy"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-PAKNEJAD-KHARG-550-20260906",
+  "claim_family_id": "CHAIN-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+  "as_of": "2026-09-21T09:40:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-ll-paknejad-kharg-550-hits-20260906.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Same-origin control pair from Paknejad's Kharg account. This packet preserves the canonical UNRESOLVED EXACT COUNT disposition and demonstrates that Web of Lies can record unresolved and supported propositions from the same claimant without source-level guilt by association.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-MOHSEN-PAKNEJAD",
+      "display_name": "Mohsen Paknejad",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "stable_identity_id": "WOL-ID-MOHSEN-PAKNEJAD",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-KHARG-550-PAKNEJAD",
+      "claim_family_id": "CHAIN-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+      "source_id": "WOL-SRC-MOHSEN-PAKNEJAD",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-06",
+      "first_observed_at": "2026-09-06",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "Paknejad said Kharg Island had been hit more than 550 times.",
+      "translated_statement": null,
+      "originating_claimant": "Mohsen Paknejad",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS",
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "CI-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+        "LL-PAKNEJAD-KHARG-550-HITS-20260906",
+        "PROP-997CAFA3DA6C"
+      ],
+      "evidence_source_ids": [
+        "SRC-E2269A4B499D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-KHARG-550-PRESSTV-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/09/07/775818/Iran-kept-oil-exports-flowing-during-war-despite-550-strikes-on-Kharg--Minister",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Mohsen Paknejad interview",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "UNRESOLVED EXACT COUNT",
+      "plain_english_verdict": "The public interview establishes Paknejad's >550-strikes assertion. Claims Forensics keeps the exact count unresolved; no adverse source-behavior finding is created from unresolved quantification."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-KHARG-550-REUTERS",
+      "claim_family_id": "CHAIN-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-06",
+      "first_observed_at": "2026-09-06",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Reuters reported Paknejad's Kharg statement: Paknejad said Kharg Island had been hit more than 550 times.",
+      "translated_statement": null,
+      "originating_claimant": "Mohsen Paknejad",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+        "LL-PAKNEJAD-KHARG-550-HITS-20260906",
+        "PROP-997CAFA3DA6C"
+      ],
+      "evidence_source_ids": [
+        "SRC-E2269A4B499D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-KHARG-550-REUTERS-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-tackle-economic-issues-says-further-attacks-will-be-more-painful-2026-09-06/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Mohsen Paknejad"
+        }
+      ],
+      "plain_english_verdict": "Reuters is a carrier of Paknejad's proposition here; the attribution does not create a second origin."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-KHARG-550-PRESSTV",
+      "claim_family_id": "CHAIN-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-07T06:39:00+03:30",
+      "first_observed_at": "2026-09-07T06:39:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Press TV reproduced Paknejad's Kharg statement: Paknejad said Kharg Island had been hit more than 550 times.",
+      "translated_statement": null,
+      "originating_claimant": "Mohsen Paknejad",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-PAKNEJAD-KHARG-550-HITS-20260906",
+        "LL-PAKNEJAD-KHARG-550-HITS-20260906",
+        "PROP-997CAFA3DA6C"
+      ],
+      "evidence_source_ids": [
+        "SRC-E2269A4B499D"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-KHARG-550-PRESSTV-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/09/07/775818/Iran-kept-oil-exports-flowing-during-war-despite-550-strikes-on-Kharg--Minister",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Mohsen Paknejad"
+        }
+      ],
+      "plain_english_verdict": "Press TV is another carrier of the same Paknejad interview, not independent corroboration by virtue of a different outlet."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-KHARG-550-01",
+      "from_id": "WOL-EVT-PUB-KHARG-550-REUTERS",
+      "to_id": "WOL-EVT-PUB-KHARG-550-PAKNEJAD",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-E2269A4B499D"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-KHARG-550-01",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-tackle-economic-issues-says-further-attacks-will-be-more-painful-2026-09-06/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Mohsen Paknejad"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-KHARG-550-02",
+      "from_id": "WOL-EVT-PUB-KHARG-550-PRESSTV",
+      "to_id": "WOL-EVT-PUB-KHARG-550-PAKNEJAD",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-E2269A4B499D"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-KHARG-550-02",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/09/07/775818/Iran-kept-oil-exports-flowing-during-war-despite-550-strikes-on-Kharg--Minister",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Mohsen Paknejad"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
