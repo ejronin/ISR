@@ -40,7 +40,8 @@
       "external_source_assessment_context",
       "public_source_infrastructure_provenance",
       "research_lead_queue",
-      "media_analysis_decomposition"
+      "media_analysis_decomposition",
+      "source_behavior_awards"
     ],
     "must_not_overwrite": [
       "canonical_evidence",
@@ -176,7 +177,9 @@
     "euphemism_required": false,
     "profanity_allowed_as_emphasis": true,
     "generic_insult_generation": false,
-    "principle": "PROVE_THE_PATTERN_THEN_CALL_THE_PATTERN_WHAT_IT_IS"
+    "principle": "PROVE_THE_PATTERN_THEN_CALL_THE_PATTERN_WHAT_IT_IS",
+    "deterministic_behavior_awards_allowed": true,
+    "award_language_must_describe_proven_behavior": true
   },
   "osint_collection": {
     "mission": "AFFIRMATIVE_PUBLIC_OSINT_COLLECTION",
@@ -330,6 +333,34 @@
         "OTHER"
       ],
       "upstream_adjudication_required_before_adverse_scoring": true
+    }
+  },
+  "source_awards": {
+    "BULLSHITTER": {
+      "public_label": "Bullshitter",
+      "description": "Repeatedly publishes factual claims, factual presentation, or factual conclusions that are adjudicated false/materially misleading, or manufactures unsupported factual bridges/conclusions from a real substrate.",
+      "window_days": 30,
+      "trigger_rule": "MORE_THAN_5_QUALIFYING_INCIDENTS",
+      "minimum_qualifying_incidents": 6,
+      "manual_assignment_allowed": false,
+      "same_information_event_deduplicated": true,
+      "cross_platform_mirrors_of_same_information_event_deduplicated": true,
+      "unresolved_inference_counts": false,
+      "carrier_only_reporting_counts": false,
+      "opinion_without_factual_assertion_counts": false,
+      "prediction_failure_alone_counts": false,
+      "qualifying_event_types": [
+        "FALSE_OR_MISLEADING_CONNECTION",
+        "NARRATIVE_MUTATION",
+        "REPEAT_AFTER_CORRECTION"
+      ],
+      "qualifying_behavior_findings": [
+        "NARRATIVE_MUTATION_OFFENDER",
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "correction_erases_incident": false,
+      "public_wording": "Bullshitter",
+      "evidence_rule": "Receipts first. The award is derived only from distinct qualifying information events inside the rolling window; it cannot be manually assigned."
     }
   }
 }
