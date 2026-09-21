@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-ERBIL-KUWAIT-FALSE-FLAG-20260315",
+  "claim_family_id": "CH-ERBIL-KUWAIT-FALSE-FLAG-20260315",
+  "as_of": "2026-09-21T09:34:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-erbil-kuwait-false-flag-20260315.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Incident-specific false-flag lineage. The unnamed Tasnim source is not merged with the Aramco unnamed source or with any named Iranian institution. Canonical disposition remains unsubstantiated.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-UNNAMED-MILITARY-ERBIL-KUWAIT-20260315",
+      "display_name": "Unnamed military source quoted by Tasnim — Erbil/Kuwait",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "identity_confidence": "UNRESOLVED"
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-1441BB878149"
+      ]
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-ERBIL-KUWAIT-FALSE-FLAG-ORIGIN",
+      "claim_family_id": "CH-ERBIL-KUWAIT-FALSE-FLAG-20260315",
+      "source_id": "WOL-SRC-UNNAMED-MILITARY-ERBIL-KUWAIT-20260315",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-15",
+      "first_observed_at": "2026-03-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "An unnamed source attributed the Lanaz refinery attack in Erbil and the Kuwait civilian-airport radar attack to U.S./Israeli deception.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-IR-CLM-1002-P01",
+        "IR-CLM-1002"
+      ],
+      "evidence_source_ids": [
+        "SRC-1441BB878149"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Unnamed source quoted by Tasnim",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ERBIL-KUWAIT-FALSE-FLAG-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/15/3540997/source-us-or-israel-behind-attack-on-erbil-s-lanaz-refinery",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "unnamed military source"
+        }
+      ],
+      "canonical_combined_assessment": "UNSUBSTANTIATED ATTRIBUTION — NO LIE FINDING",
+      "provenance_limit": "The unnamed claimant's identity and institutional authority are not established by the public receipt.",
+      "plain_english_verdict": "The attribution is canonically unsubstantiated. The source is not silently promoted into an identified IRGC or military-official identity."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-ERBIL-KUWAIT-FALSE-FLAG-TASNIM",
+      "claim_family_id": "CH-ERBIL-KUWAIT-FALSE-FLAG-20260315",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-15",
+      "first_observed_at": "2026-03-15",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim published the unnamed source's U.S./Israeli false-flag attribution for the Erbil and Kuwait incidents.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-IR-CLM-1002-P01",
+        "IR-CLM-1002"
+      ],
+      "evidence_source_ids": [
+        "SRC-1441BB878149"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Unnamed source quoted by Tasnim",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ERBIL-KUWAIT-FALSE-FLAG-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/15/3540997/source-us-or-israel-behind-attack-on-erbil-s-lanaz-refinery",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "unnamed military source"
+        }
+      ],
+      "plain_english_verdict": "Tasnim carries the allegation; it does not independently establish the asserted covert causation."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-ERBIL-KUWAIT-FALSE-FLAG-01",
+      "from_id": "WOL-EVT-PUB-ERBIL-KUWAIT-FALSE-FLAG-TASNIM",
+      "to_id": "WOL-EVT-PUB-ERBIL-KUWAIT-FALSE-FLAG-ORIGIN",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-ERBIL-KUWAIT-FALSE-FLAG-01",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/15/3540997/source-us-or-israel-behind-attack-on-erbil-s-lanaz-refinery",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
