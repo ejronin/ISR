@@ -1,0 +1,92 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_CLAIMS_SOURCE_PROMOTION_HANDOFF",
+  "as_of": "2026-09-20T20:22:00-04:00",
+  "authority_boundary": {
+    "downstream_owner": "CLAIMS_FORENSICS",
+    "owner": "EVIDENCE_INTEGRATION",
+    "purpose": "Clear canonical-source blockers only. Claim identity, chain placement, truth, knowledge, control/accusation status, denominators, and public insertion remain downstream Claims Forensics authority.",
+    "semantic_mutations": "NONE"
+  },
+  "canonical_packet_id": "UPD-20260920-CLAIMS-SOURCE-PROMOTIONS",
+  "completion": {
+    "blocked_target_count": 0,
+    "claims_forensics_overlay_modified": false,
+    "entities_added": 0,
+    "events_added": 0,
+    "narrative_claims_added": 0,
+    "promoted_source_count": 3,
+    "web_of_lies_semantics_modified": false
+  },
+  "directive": "SOURCE_PROMOTION_ONLY — NO CLAIMS FORENSICS SEMANTIC MUTATION",
+  "handoff_id": "EI-CLAIMS-SOURCE-PROMOTIONS-20260920",
+  "schema_version": "1.0",
+  "targets": [
+    {
+      "canonical_source_id": "SRC-61A4DB945FF2",
+      "carrier": "Associated Press",
+      "chain_id": "CH-IRAN-MILITARY-TRAINING-20260918",
+      "claim_id": "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918",
+      "claimant": "Gen. Hassan Hassanzadeh",
+      "claimant_organization": "Islamic Revolutionary Guard Corps / Greater Tehran command",
+      "provenance_limitations": [
+        "AP reports the statement through the Iranian state broadcaster rather than supplying a primary broadcaster transcript URL in the accepted locker.",
+        "No defensible AP origin publication time was retained; syndicated affiliate timestamps are not substituted."
+      ],
+      "publication_date": "2026-09-18",
+      "publication_time": null,
+      "relevant_wording": {
+        "current_registration_count": "over 600,000 people had registered to participate",
+        "prospective_projection": "over 1 million expected to take part in the training"
+      },
+      "source_blocker_status": "CLEARED_CANONICAL_SOURCE_PROMOTED",
+      "source_role": "CLAIM_ORIGIN_CARRIER|WIRE_REPORT_OF_IRANIAN_OFFICIAL_STATEMENT",
+      "source_url": "https://apnews.com/article/03488b5cc4c13ecac1a27096b1641972",
+      "upstream_carrier": "Iranian state broadcaster"
+    },
+    {
+      "canonical_source_id": "SRC-C5D731879E3B",
+      "carrier": "The New Indian Express",
+      "chain_id": "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919",
+      "claim_id": "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919",
+      "claimant": "Mohsen Rezaei",
+      "claimant_organization": "Supreme National Security Council",
+      "provenance_limitations": [
+        "The article situates Rezaei's remarks in Al Jazeera interview coverage but does not supply a direct primary source URL for the missile-test assertion.",
+        "No telemetry, imagery, U.S. acknowledgement, NOTAM/NAVWARN, or weapon identification is supplied by this carrier."
+      ],
+      "publication_date": "2026-09-20",
+      "publication_time": "02:03 (source display; timezone not stated)",
+      "relevant_wording": "He claimed Iran had also recently test-fired a multi-warhead anti-ship missile near a US vessel or aircraft carrier.",
+      "source_blocker_status": "CLEARED_CANONICAL_SOURCE_PROMOTED",
+      "source_role": "CLAIM_ORIGIN_CARRIER|SECONDARY_REPORT_OF_IRANIAN_OFFICIAL_CLAIM",
+      "source_url": "https://www.newindianexpress.com/world/2026/Sep/20/iran-sets-seven-conditions-for-talks-with-us-through-qatar-warns-of-decisive-war-if-trump-rejects-demands"
+    },
+    {
+      "canonical_source_id": "SRC-229640C43A50",
+      "carrier": "Anadolu Agency",
+      "chain_id": "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "claim_id": "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "claimant": "Adm. Brad Cooper",
+      "claimant_organization": "U.S. Central Command",
+      "primary_statement_carrier": "U.S. Central Command video statement released on X",
+      "provenance_limitations": [
+        "The accepted locker source is Anadolu and attributes the statement to Cooper/CENTCOM remarks released on X.",
+        "The recovered locker does not retain the underlying CENTCOM/X URL, so this handoff does not invent one.",
+        "The carrier does not specify the measurement methodology or a more exact zero-export timebox."
+      ],
+      "publication_date": "2026-09-19",
+      "publication_time": null,
+      "quantitative_scope": {
+        "denominator_language": "The quoted clause states Iranian oil exports; it does not explicitly narrow the denominator to observed loadings, Strait departures, sanctioned trade, or another measurement method.",
+        "subject": "Iranian oil exports",
+        "time_language": "Blockade-period context; the quoted zero-barrels clause does not state an exact start or end date.",
+        "unit": "barrels",
+        "value": 0
+      },
+      "relevant_wording": "Iran has exported zero barrels thanks to our ironclad blockade.",
+      "source_blocker_status": "CLEARED_CANONICAL_SOURCE_PROMOTED",
+      "source_role": "CLAIM_ORIGIN_CARRIER|NEWS_REPORT_OF_OFFICIAL_MILITARY_STATEMENT",
+      "source_url": "https://www.aa.com.tr/en/americas/us-military-says-over-1b-barrels-of-oil-shipped-through-strait-of-hormuz-under-us-blockade/4062037"
+    }
+  ]
+}
