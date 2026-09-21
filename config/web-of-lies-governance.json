@@ -338,7 +338,7 @@
   "source_awards": {
     "BULLSHITTER": {
       "public_label": "Bullshitter",
-      "description": "Repeatedly publishes factual claims, factual presentation, or factual conclusions that are adjudicated false/materially misleading, or manufactures unsupported factual bridges/conclusions from a real substrate.",
+      "description": "Repeatedly publishes false/materially misleading factual claims or presents unsupported factual assertions, inferential bridges, or self-sealing evasions as established fact.",
       "window_days": 30,
       "trigger_rule": "MORE_THAN_5_QUALIFYING_INCIDENTS",
       "minimum_qualifying_incidents": 6,
@@ -352,7 +352,10 @@
       "qualifying_event_types": [
         "FALSE_OR_MISLEADING_CONNECTION",
         "NARRATIVE_MUTATION",
-        "REPEAT_AFTER_CORRECTION"
+        "REPEAT_AFTER_CORRECTION",
+        "UNSUPPORTED_FACTUAL_ASSERTION",
+        "UNSUPPORTED_INFERENTIAL_ASSERTION",
+        "EVIDENTIARY_EVASION"
       ],
       "qualifying_behavior_findings": [
         "NARRATIVE_MUTATION_OFFENDER",
@@ -360,7 +363,18 @@
       ],
       "correction_erases_incident": false,
       "public_wording": "Bullshitter",
-      "evidence_rule": "Receipts first. The award is derived only from distinct qualifying information events inside the rolling window; it cannot be manually assigned."
+      "evidence_rule": "Receipts first. False/materially misleading incidents qualify when established. Unsupported asserted facts/bridges qualify when a documented public-evidence search finds no support and records the search scope and claimant basis. Mere inability to disprove a claim is insufficient.",
+      "unsupported_assertion_after_documented_search_counts": true,
+      "self_sealing_evasion_counts": true,
+      "mere_absence_of_disproof_is_not_support": true,
+      "incomplete_or_inaccessible_evidence_counts": false,
+      "unsupported_evidence_gate": {
+        "required_review_status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "require_search_scope": true,
+        "require_checked_at": true,
+        "require_claimant_basis_review": true,
+        "rule": "A positive factual assertion carries its own evidentiary burden. WOL may find it unsupported without proving the logical opposite, but may not convert incomplete/inaccessible evidence into an unsupported finding."
+      }
     }
   }
 }
