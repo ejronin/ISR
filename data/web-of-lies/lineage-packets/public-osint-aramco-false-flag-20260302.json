@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-ARAMCO-FALSE-FLAG-20260302",
+  "claim_family_id": "CH-ARAMCO-FALSE-FLAG-20260302",
+  "as_of": "2026-09-21T09:34:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-aramco-false-flag-20260302.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Incident-specific false-flag lineage. The claimant remains an unnamed military source quoted by Tasnim; the proposition is canonically unsubstantiated, not false and not a Lie finding. Shared rhetoric with other false-flag claims remains a narrative-family relationship only.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-UNNAMED-MILITARY-ARAMCO-20260302",
+      "display_name": "Unnamed military source quoted by Tasnim",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OTHER",
+      "country_region": "Iran",
+      "identity_confidence": "UNRESOLVED"
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [
+        "SRC-18B8DD710B5A"
+      ]
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-ARAMCO-FALSE-FLAG-ORIGIN",
+      "claim_family_id": "CH-ARAMCO-FALSE-FLAG-20260302",
+      "source_id": "WOL-SRC-UNNAMED-MILITARY-ARAMCO-20260302",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-02",
+      "first_observed_at": "2026-03-02",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "An informed military source told Tasnim that Israel carried out the Aramco attack as a false-flag operation.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-IR-CLM-1001-P01",
+        "IR-CLM-1001"
+      ],
+      "evidence_source_ids": [
+        "SRC-18B8DD710B5A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Unnamed military source quoted by Tasnim",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ARAMCO-FALSE-FLAG-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529692/military-source-says-israel-conducts-false-flag-attack-on-aramco",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "unnamed military source"
+        }
+      ],
+      "canonical_combined_assessment": "UNSUBSTANTIATED ATTRIBUTION — NO LIE FINDING",
+      "provenance_limit": "The public record does not establish the real-world identity of Tasnim's unnamed military source.",
+      "plain_english_verdict": "The false-flag attribution is unsubstantiated on the canonical record. Unknown claimant identity is preserved; it is not upgraded into an IRGC personal or institutional statement."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-ARAMCO-FALSE-FLAG-TASNIM",
+      "claim_family_id": "CH-ARAMCO-FALSE-FLAG-20260302",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-02",
+      "first_observed_at": "2026-03-02",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim published the unnamed military source's Israeli false-flag attribution concerning the Aramco incident.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "CI-IR-CLM-1001-P01",
+        "IR-CLM-1001"
+      ],
+      "evidence_source_ids": [
+        "SRC-18B8DD710B5A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "originating_claimant": "Unnamed military source quoted by Tasnim",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ARAMCO-FALSE-FLAG-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529692/military-source-says-israel-conducts-false-flag-attack-on-aramco",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "unnamed military source"
+        }
+      ],
+      "plain_english_verdict": "Tasnim is the carrier. Publication does not independently corroborate the covert-attribution proposition."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-ARAMCO-FALSE-FLAG-01",
+      "from_id": "WOL-EVT-PUB-ARAMCO-FALSE-FLAG-TASNIM",
+      "to_id": "WOL-EVT-PUB-ARAMCO-FALSE-FLAG-ORIGIN",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WOL-REL-PUB-ARAMCO-FALSE-FLAG-01",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/03/02/3529692/military-source-says-israel-conducts-false-flag-attack-on-aramco",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
