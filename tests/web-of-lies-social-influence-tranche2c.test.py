@@ -282,7 +282,42 @@ for source_id in (
     "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
 ):
     assert profiles[source_id]["direct_verdict"] is None
-assert profiles["WOL-SRC-ETHAN-LEVINS"]["source_awards"] == []
+ethan_incident_ids = {
+    "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
+    "WOL-BS-ETHAN-F35-HIT-20260319",
+    "WOL-BS-ETHAN-SARA-RECYCLED-VIDEO-20260321",
+    "WOL-BS-ETHAN-TWO-MISSILES-20260322",
+    "WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327",
+    "WOL-BS-ETHAN-ISRAEL-LOST-PUBLIC-SUPPORT-20260328",
+}
+assert ethan_incident_ids <= set(behavior_incidents)
+for incident_id in ethan_incident_ids:
+    incident = behavior_incidents[incident_id]
+    assert incident["source_id"] == "WOL-SRC-ETHAN-LEVINS"
+    assert incident["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+    assert incident["evidentiary_support_review"]["supporting_evidence_found"] is False
+    assert incident["public_receipts"]
+
+ethan_awards = profiles["WOL-SRC-ETHAN-LEVINS"]["source_awards"]
+assert len(ethan_awards) == 1
+ethan_award = ethan_awards[0]
+assert ethan_award["award_code"] == "BULLSHITTER"
+assert ethan_award["public_label"] == "Bullshitter"
+assert ethan_award["qualifying_window_start"] == "2026-03-18T00:00:00"
+assert ethan_award["qualifying_window_end"] == "2026-03-28T00:00:00"
+assert ethan_award["qualifying_incident_count"] == 6
+assert set(ethan_award["qualifying_incident_ids"]) == ethan_incident_ids
+assert ethan_award["current_window_status"] == "EARNED_HISTORICAL"
+assert ethan_award["currently_active"] is False
+assert ethan_award["current_window_incident_count"] == 0
+assert ethan_award["current_window_incident_ids"] == []
+
+# One publication event is one award incident even when it contains multiple
+# atomic propositions (e.g. March 22 causation + stockpile extrapolation).
+assert behavior_incidents["WOL-BS-ETHAN-TWO-MISSILES-20260322"]["source_information_event_id"] == "ETHAN-MARCH22-TWO-MISSILES"
+assert "count once" in behavior_incidents["WOL-BS-ETHAN-TWO-MISSILES-20260322"]["downstream_note"]
+assert "counts once" in behavior_incidents["WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327"]["evidentiary_support_review"]["search_notes"]
+
 assert profiles["WOL-SRC-LIM-TEAN"]["source_awards"] == []
 assert profiles["WOL-SRC-ZACH-FOR-THE-PEOPLE-FB"]["source_awards"] == []
 
@@ -303,5 +338,5 @@ assert derived["corpus_coverage"]["completion_claim"] == "NONE"
 
 print(
     "web-of-lies social influence tranche2c: PASS "
-    "substrate_bridge_decomposition=2 video_body_gate=4 valenti_bullshitter=1 remaining_leads_closed=2"
+    "substrate_bridge_decomposition=2 video_body_gate=4 valenti_bullshitter=1 ethan_bullshitter=1 remaining_leads_closed=2"
 )
