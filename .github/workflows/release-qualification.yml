@@ -131,6 +131,7 @@ jobs:
           python scripts/build_web_of_lies_forensic_input.py --check
           python scripts/validate_web_of_lies.py
           python tests/web-of-lies-foundation.test.py
+          python tests/web-of-lies-osint-network.test.py
           python tests/web-of-lies-lineage-packets.test.py
           python tests/web-of-lies-ledger-coverage.test.py
           python scripts/validate_public_current_state_v2.py
