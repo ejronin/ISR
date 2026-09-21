@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-CHAIN-CL-PSAB-JUN8-20260921",
+  "claim_family_id": "CHAIN-CL-PSAB-JUN8",
+  "as_of": "2026-09-21T09:00:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-psab-jun8.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Origin account remains unidentified. Secondary preservation proves that a targeting report circulated and that the Saudi Ministry of Defense publicly rejected it; no identity or motive is inferred.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-UNIDENTIFIED-PSAB-RUMOR",
+      "display_name": "Unidentified social-media circulation — Prince Sultan Air Base, June 8",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": "Social media",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "identity_confidence": "UNRESOLVED"
+    },
+    {
+      "source_id": "WOL-SRC-SAUDI-MOD",
+      "display_name": "Saudi Ministry of Defense",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Saudi Arabia",
+      "primary_platform": null,
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-SAUDI-MOD",
+      "identity_confidence": "CONFIRMED"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-PSAB-JUN8-RUMOR",
+      "claim_family_id": "CHAIN-CL-PSAB-JUN8",
+      "source_id": "WOL-SRC-UNIDENTIFIED-PSAB-RUMOR",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-06-08",
+      "first_observed_at": "2026-06-08",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "REPORTED",
+      "exact_statement": "Reports circulating on social media said Prince Sultan Air Base in Al-Kharj had been targeted on June 8.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-PSAB-JUN8",
+        "CL-PSAB-JUN8",
+        "PROP-957914D04603"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": null,
+      "independence_status": "UNKNOWN",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "provenance_limit": "The originating account/post has not been established; the circulation is preserved through later official denials.",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-PSAB-JUN8-RUMOR-AA",
+          "surface": "WEBSITE",
+          "url": "https://www.aa.com.tr/en/middle-east/riyadh-denies-attack-on-prince-sultan-air-base-after-sirens-sounded-early-monday/3960654",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "original_verified": false,
+          "upstream_attribution": "unidentified social-media reports"
+        }
+      ],
+      "plain_english_verdict": "Claims Forensics records the attack report as false. Web of Lies does not identify an origin that the available public receipt does not establish."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-PSAB-JUN8-CORRECTION",
+      "claim_family_id": "CHAIN-CL-PSAB-JUN8",
+      "source_id": "WOL-SRC-SAUDI-MOD",
+      "event_type": "CORRECTION",
+      "published_at": "2026-06-08T17:25:00+03:00",
+      "first_observed_at": "2026-06-08T17:25:00+03:00",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "OFFICIAL",
+      "exact_statement": "The Saudi Ministry of Defense said reports of an attack on Prince Sultan Air Base were untrue and that Al-Kharj sirens were precautionary after a ballistic missile launched from Yemen disappeared near the border.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "CORRECTS",
+        "CONTRADICTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-PSAB-JUN8",
+        "CL-PSAB-JUN8",
+        "PROP-957914D04603"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": "VISIBLE_CORRECTION",
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "CORRECTION",
+      "corrects_event_id": "WOL-EVT-PUB-PSAB-JUN8-RUMOR",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-PSAB-JUN8-CORRECTION-AA",
+          "surface": "WEBSITE",
+          "url": "https://www.aa.com.tr/en/middle-east/riyadh-denies-attack-on-prince-sultan-air-base-after-sirens-sounded-early-monday/3960654",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Saudi Ministry of Defense / Turki Al-Maliki",
+          "original_verified": true
+        },
+        {
+          "receipt_id": "WOL-RCPT-PSAB-JUN8-CORRECTION-ARABNEWS",
+          "surface": "WEBSITE",
+          "url": "https://www.arabnews.com/node/2646337/saudi-arabia",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Saudi Ministry of Defense",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "The correction is explicit and public; it does not establish who originated the earlier report."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-PSAB-JUN8-001",
+      "from_id": "WOL-EVT-PUB-PSAB-JUN8-CORRECTION",
+      "to_id": "WOL-EVT-PUB-PSAB-JUN8-RUMOR",
+      "relationship_type": "CORRECTS",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-PSAB-JUN8-001",
+          "surface": "WEBSITE",
+          "url": "https://www.aa.com.tr/en/middle-east/riyadh-denies-attack-on-prince-sultan-air-base-after-sirens-sounded-early-monday/3960654",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Saudi Ministry of Defense"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

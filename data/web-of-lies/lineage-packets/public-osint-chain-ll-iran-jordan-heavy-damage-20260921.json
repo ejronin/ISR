@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260921",
+  "claim_family_id": "CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+  "as_of": "2026-09-21T09:00:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-ll-iran-jordan-heavy-damage-20260908.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Traces the September Al-Azraq heavy-damage claim through public IRGC/state-media preservation, independent reporting, and a fixed Wikipedia revision. Canonical truth/knowledge assessment is unchanged.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-IRANWIRE",
+      "display_name": "IranWire",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-WIKIPEDIA-JORDAN",
+      "display_name": "Wikipedia — 2026 Iranian strikes on Jordan",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": "Wikipedia",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WIKIPEDIA-ARTICLE-2026-IRANIAN-STRIKES-JORDAN",
+      "identity_confidence": "CONFIRMED"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-JORDAN-HEAVY-DAMAGE-IRGC",
+      "claim_family_id": "CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-09-09",
+      "first_observed_at": "2026-09-09",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "The IRGC said ballistic missiles struck fighter-jet maintenance, preparation and deployment facilities and shelters at Al-Azraq, inflicting heavy damage.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+        "LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+        "PROP-CC11571E5427"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-JORDAN-HEAVY-DAMAGE-IRNA-MIRROR",
+          "surface": "WEBSITE",
+          "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/09/iran-260909-irna02.htm",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRNA / IRGC statement",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "Claims Forensics records the heavy-damage effect claim as false/contradicted with possible knowledge; this event preserves the IRGC origin without changing that adjudication."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-JORDAN-HEAVY-DAMAGE-IRANWIRE",
+      "claim_family_id": "CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+      "source_id": "WOL-SRC-IRANWIRE",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-09",
+      "first_observed_at": "2026-09-09",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "IranWire reported the IRGC heavy-damage claim and, in the same article, reported Jordan's statement that 18 of 20 missiles were intercepted and two landed in uninhabited areas with no casualties.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+        "LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+        "PROP-CC11571E5427"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-JORDAN-HEAVY-DAMAGE-IRANWIRE",
+          "surface": "WEBSITE",
+          "url": "https://iranwire.com/en/news/157372-irgc-fires-ballistic-missiles-at-al-azraq-air-base-in-jordan/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC statement and Jordanian military"
+        }
+      ],
+      "plain_english_verdict": "The report preserves the claim and contrary official account together; it is not a second source independently confirming heavy damage."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-JORDAN-HEAVY-DAMAGE-WIKIPEDIA",
+      "claim_family_id": "CHAIN-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+      "source_id": "WOL-SRC-WIKIPEDIA-JORDAN",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-20T08:46:00Z",
+      "first_observed_at": "2026-09-21",
+      "time_precision": "REVISION_TIMESTAMP",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Wikipedia revision 1375826662 records multiple Iranian damage claims alongside Jordanian interception/no-damage reports and separately summarizes satellite-confirmed damage from other dates.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+        "LL-IRAN-JORDAN-HEAVY-DAMAGE-20260908",
+        "PROP-CC11571E5427"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "collection_surface": "WIKIPEDIA",
+      "osint_event_kind": "COLLABORATIVE_REFERENCE_CURRENT_REVISION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-JORDAN-HEAVY-DAMAGE-WIKI-1375826662",
+          "surface": "WIKIPEDIA",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1375826662&title=2026_Iranian_strikes_on_Jordan",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revision_id": "1375826662",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "The fixed revision is a public propagation record with mixed attributed claims and independently sourced impact material; it does not itself re-adjudicate the September 8 proposition."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-JORDAN-HEAVY-DAMAGE-001",
+      "from_id": "WOL-EVT-PUB-JORDAN-HEAVY-DAMAGE-IRANWIRE",
+      "to_id": "WOL-EVT-PUB-JORDAN-HEAVY-DAMAGE-IRGC",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-JORDAN-HEAVY-DAMAGE-001",
+          "surface": "WEBSITE",
+          "url": "https://iranwire.com/en/news/157372-irgc-fires-ballistic-missiles-at-al-azraq-air-base-in-jordan/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC statement"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

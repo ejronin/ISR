@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-CHAIN-CL-LINCOLN-20260921",
+  "claim_family_id": "CHAIN-CL-LINCOLN",
+  "as_of": "2026-09-21T09:00:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-cl-lincoln.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Traces the March 5 official-origin claim through Press TV and a fixed Wikipedia revision. The Wikipedia event is neutral secondary preservation, not an editor-misconduct finding.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "display_name": "Khatam al-Anbiya Central Headquarters",
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iran",
+      "primary_platform": null,
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-PRESS-TV",
+      "display_name": "Press TV",
+      "source_entity_type": "OUTLET",
+      "country_region": "Iran",
+      "primary_platform": "Web",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-WIKIPEDIA-LINCOLN",
+      "display_name": "Wikipedia — USS Abraham Lincoln (CVN-72)",
+      "source_entity_type": "OTHER",
+      "country_region": null,
+      "primary_platform": "Wikipedia",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WIKIPEDIA-ARTICLE-USS-ABRAHAM-LINCOLN-CVN72",
+      "identity_confidence": "CONFIRMED"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-LINCOLN-MAR5-ORIGIN",
+      "claim_family_id": "CHAIN-CL-LINCOLN",
+      "source_id": "WOL-SRC-KHATAM-AL-ANBIYA",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-03-05",
+      "first_observed_at": "2026-03-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "A Khatam al-Anbiya spokesperson said IRGC drones successfully targeted USS Abraham Lincoln and forced the strike group into a rapid retreat.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-PRESS-TV"
+      ],
+      "canonical_claim_refs": [
+        "CI-CL-LINCOLN",
+        "CL-LINCOLN",
+        "PROP-7B4B511F4353"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-LINCOLN-MAR5-PRESSTV-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.ir/Detail/2026/03/05/765006/US-aircraft-carrier-flees-after-precision-strike-by-IRGC-drones-in-Sea-of-Oman",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Khatam al-Anbiya Central Headquarters spokesperson",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "Claims Forensics records the Lincoln hit/forced-retreat effect claim as false or unsupported; Web of Lies preserves the official origin separately from the outlet that carried it."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-LINCOLN-MAR5-PRESSTV",
+      "claim_family_id": "CHAIN-CL-LINCOLN",
+      "source_id": "WOL-SRC-PRESS-TV",
+      "event_type": "REPORTS",
+      "published_at": "2026-03-05T18:40:00+03:30",
+      "first_observed_at": "2026-03-05T18:40:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Press TV published the official claim that IRGC drones struck Lincoln and forced the strike group to retreat.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-LINCOLN",
+        "CL-LINCOLN",
+        "PROP-7B4B511F4353"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-LINCOLN-MAR5-PRESSTV-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.ir/Detail/2026/03/05/765006/US-aircraft-carrier-flees-after-precision-strike-by-IRGC-drones-in-Sea-of-Oman",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Khatam al-Anbiya Central Headquarters"
+        }
+      ],
+      "plain_english_verdict": "This carrier event is derivative of the official claim; publication does not become independent corroboration."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-LINCOLN-WIKIPEDIA",
+      "claim_family_id": "CHAIN-CL-LINCOLN",
+      "source_id": "WOL-SRC-WIKIPEDIA-LINCOLN",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-16T07:43:00Z",
+      "first_observed_at": "2026-09-21",
+      "time_precision": "REVISION_TIMESTAMP",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Wikipedia revision 1375181497 records the March 1, March 5, and March 25 Iranian strike claims and states that Lincoln was not harmed in those three cases.",
+      "translated_statement": null,
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CL-LINCOLN",
+        "CL-LINCOLN",
+        "PROP-7B4B511F4353"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "collection_surface": "WIKIPEDIA",
+      "osint_event_kind": "COLLABORATIVE_REFERENCE_CURRENT_REVISION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-LINCOLN-WIKIPEDIA-1375181497",
+          "surface": "WIKIPEDIA",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1375181497&title=USS_Abraham_Lincoln_%28CVN-72%29",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revision_id": "1375181497",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "The fixed revision is a reproducible secondary propagation record. No editor misconduct is inferred from this revision."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-LINCOLN-001",
+      "from_id": "WOL-EVT-PUB-LINCOLN-MAR5-PRESSTV",
+      "to_id": "WOL-EVT-PUB-LINCOLN-MAR5-ORIGIN",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-LINCOLN-001",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.ir/Detail/2026/03/05/765006/US-aircraft-carrier-flees-after-precision-strike-by-IRGC-drones-in-Sea-of-Oman",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Khatam al-Anbiya Central Headquarters"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

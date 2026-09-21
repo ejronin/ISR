@@ -191,6 +191,21 @@ for path, packet in control_expected.items():
     assert all(event["behavior_findings"] == [] for event in packet["information_events"])
 assert len(control_expected) == 3
 assert len({packet["claim_family_id"] for packet in control_expected.values()}) == 3
+manual_osint_paths = set()
+for path in sorted((ROOT / aggregate.PACKET_DIR).glob("*.json")):
+    packet = json.loads(path.read_text(encoding="utf-8"))
+    if packet.get("generation_mode") != "MANUAL_PUBLIC_OSINT_LINEAGE":
+        continue
+    relative = path.relative_to(ROOT).as_posix()
+    assert packet["claim_family_id"] in active_chain_ids, (
+        f"{relative}: manual public-OSINT packet targets non-canonical family"
+    )
+    events = packet.get("information_events") or []
+    assert events and any(event.get("public_receipts") for event in events), (
+        f"{relative}: manual public-OSINT packet lacks public receipt-backed events"
+    )
+    manual_osint_paths.add(relative)
+
 expected_packet_paths = {
     path.relative_to(ROOT).as_posix()
     for path in legacy_expected
@@ -203,7 +218,7 @@ expected_packet_paths = {
 } | {
     path.relative_to(ROOT).as_posix()
     for path in control_expected
-} | manual_packet_paths
+} | manual_packet_paths | manual_osint_paths
 forensic_packet_paths = {row["path"] for row in forensic["lineage_packets"]}
 assert forensic_packet_paths == expected_packet_paths, (
     "aggregated Web of Lies packet inventory does not reconcile generated, manual, "
