@@ -1,6 +1,6 @@
 {
   "artifact_role": "WEB_OF_LIES_DISCOVERY_QUEUE",
-  "as_of": "2026-09-21T09:45:00-04:00",
+  "as_of": "2026-09-21T18:15:00-04:00",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
   "items": [
     {
@@ -102,6 +102,102 @@
       "source_handoff_path": "data/web-of-lies/native-discoveries.json",
       "status": "AWAITING_CANONICAL_CLAIM_FAMILY",
       "subject": "Handala Hack public cyber / psychological-operations infrastructure attributed by U.S. authorities to Iran's MOIS"
+    },
+    {
+      "discovery_id": "WOL-DISC-MEIDASTOUCH-MULTIPLE-US-BASES-DESTROYED-20260712",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "MeidasTouch broad assertion that Iran was easily destroying multiple U.S. military bases in the Middle East",
+      "observations": [
+        {
+          "date": "2026-07-12",
+          "source": "MeidasTouch / Ben Meiselas",
+          "observation_type": "BROAD_MULTI_BASE_DESTRUCTION_ASSERTION",
+          "statement_identity": "The MeidasTouch episode title said Iran 'INSTANTLY DESTROYS US BASES' and the publisher description said Iran was 'easily destroying multiple United States military bases in the Middle East.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-MEIDAS-MULTIBASE-YT-20260712",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=-Dknga-nLtY",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "PUBLISHER_TITLE_AND_DESCRIPTION",
+          "published_at": "2026-07-12",
+          "attribution": "MeidasTouch / Ben Meiselas"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLISHER_TITLE_AND_DESCRIPTION",
+      "attribution_scope": "The public YouTube publication supports that MeidasTouch used the broad destruction wording. This discovery does not decide which specific bases or subfacilities the episode discussed, whether the body qualified the headline, or the final truth disposition.",
+      "downstream_note": "Claims Forensics should atomize the broad plural-base destruction proposition against the facility/BDA record before Web of Lies assigns any falsehood, mutation, or behavioral finding. Do not collapse real severe subfacility damage into whole-base destruction or vice versa.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Current canonical families adjudicate named facilities and several specific BDA exaggerations, but no clean single canonical claim atom was found for this publisher's broad July 12 proposition that multiple U.S. military bases were destroyed.",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-31M-SOLDIERS-20260917",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos headline asserting Iran mobilized 31 million soldiers for a U.S. invasion",
+      "observations": [
+        {
+          "date": "2026-09-17",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "MILITARY_MOBILIZATION_SCALE_ASSERTION",
+          "statement_identity": "The public Valenti Videos channel listed a video titled 'Iran mobilizes 31 MILLION soldiers for the U.S invasion.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-31M-CHANNEL-20260921",
+          "surface": "YOUTUBE",
+          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "PUBLIC_VIDEO_TITLE_INDEX",
+          "published_at": "2026-09-17",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLIC_TITLE_IDENTITY; TRANSCRIPT_NOT_YET_CAPTURED",
+      "attribution_scope": "The public channel index preserves the headline assertion. It does not establish whether the body later qualified '31 million' as registrations in a broader Janfada campaign, military/security volunteers, projected participants, or literal trained soldiers.",
+      "downstream_note": "Compare against the canonical Sep. 18 training family, which currently treats >600,000 registrations as unresolved and >1 million participants as a prospective projection. Claims Forensics should determine whether the 31-million-soldiers wording is a materially new proposition or a qualifier-stripping mutation before WOL scores it.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The existing canonical military-training family does not currently contain a 31-million-soldier proposition. WOL must not silently substitute the title for the >600,000 / >1 million canonical atoms.",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
+    },
+    {
+      "discovery_id": "WOL-DISC-VALENTI-US-BASES-COMPLETELY-DESTROYED-20260917",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Valenti Videos headline asserting leaked U.S. photos show Middle East bases completely destroyed",
+      "observations": [
+        {
+          "date": "2026-09-17",
+          "source": "Valenti Videos / Chris Valenti",
+          "observation_type": "BROAD_WHOLE_BASE_DESTRUCTION_ASSERTION",
+          "statement_identity": "The public Valenti Videos channel listed a video titled 'U.S Soldiers LEAK PHOTOS of our bases in the Middle East; THEY'RE COMPLETELY DESTROYED!'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-VALENTI-BASES-DESTROYED-CHANNEL-20260921",
+          "surface": "YOUTUBE",
+          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "claim_status": "PUBLIC_VIDEO_TITLE_INDEX",
+          "published_at": "2026-09-17",
+          "attribution": "Valenti Videos / Chris Valenti"
+        }
+      ],
+      "attribution_confidence": "HIGH_FOR_PUBLIC_TITLE_IDENTITY; TRANSCRIPT_AND_REFERENCED_PHOTOS_NOT_YET_CAPTURED",
+      "attribution_scope": "The title supports a broad whole-base destruction assertion but does not identify the facilities, photos, dates, or whether the body narrows the claim to specific damaged subfacilities.",
+      "downstream_note": "Claims Forensics should identify the referenced facilities and atomize physical damage versus whole-base operational destruction. Real severe U.S. base damage is independently established in the war record; that fact neither proves nor disproves this broader title without facility-level matching.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The title does not cleanly map to one current canonical BDA family. It may span Al Udeid, Bahrain, Erbil, Jordan or other facilities and requires proposition-level assignment before Web of Lies behavior scoring.",
+      "source_handoff_path": "data/web-of-lies/native-discoveries.json",
+      "status": "AWAITING_CANONICAL_CLAIM_FAMILY"
     }
   ],
   "resolved_canonical_claim_sequences": [
