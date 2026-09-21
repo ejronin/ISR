@@ -72,7 +72,7 @@ assert award["current_window_incident_ids"] == []
 # reach the threshold and therefore cannot be silently counted as a seventh
 # native incident without its own promotion.
 assert "WOL-BS-MEIDAS-MULTIPLE-US-BASES-DESTROYED-20260712" not in incidents
-assert leads["LEAD-MEIDASTOUCH"]["current_disposition"] == "UPSTREAM_REVIEW_REQUIRED"
+assert leads["LEAD-MEIDASTOUCH"]["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
 
 # Award remains independent of legacy direct-verdict/Hall scoring.
 meidas = profiles["WOL-SRC-MEIDASTOUCH"]
