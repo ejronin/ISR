@@ -278,6 +278,7 @@ assert leads["LEAD-EL-MARQUES-XD"]["current_disposition"] == "IDENTITY_UNRESOLVE
 for source_id in (
     "WOL-SRC-VALENTI-VIDEOS",
     "WOL-SRC-ETHAN-LEVINS",
+    "WOL-SRC-MEIDASTOUCH",
     "WOL-SRC-LIM-TEAN",
     "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
 ):
@@ -312,6 +313,45 @@ assert ethan_award["currently_active"] is False
 assert ethan_award["current_window_incident_count"] == 0
 assert ethan_award["current_window_incident_ids"] == []
 
+meidastouch_incident_ids = {
+    "WOL-BS-MEIDAS-SEVEN-TANKERS-DESTROYED-20260717",
+    "WOL-BS-MEIDAS-OUT-PATRIOT-THAAD-OBLITERATED-BASES-20260802",
+    "WOL-BS-MEIDAS-OUT-PATRIOT-THAAD-DESTROYERS-20260804",
+    "WOL-BS-MEIDAS-RAN-OUT-ALL-WEAPONS-20260807",
+    "WOL-BS-MEIDAS-RAN-OUT-WEAPONS-ABANDONED-BASES-20260811",
+    "WOL-BS-MEIDAS-US-BASES-ARE-DESTROYED-20260815",
+}
+assert meidastouch_incident_ids <= set(behavior_incidents)
+for incident_id in meidastouch_incident_ids:
+    incident = behavior_incidents[incident_id]
+    assert incident["source_id"] == "WOL-SRC-MEIDASTOUCH"
+    assert incident["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+    assert incident["evidentiary_support_review"]["supporting_evidence_found"] is False
+    assert incident["public_receipts"]
+
+meidastouch_awards = profiles["WOL-SRC-MEIDASTOUCH"]["source_awards"]
+assert len(meidastouch_awards) == 1
+meidastouch_award = meidastouch_awards[0]
+assert meidastouch_award["award_code"] == "BULLSHITTER"
+assert meidastouch_award["public_label"] == "Bullshitter"
+assert meidastouch_award["qualifying_window_start"] == "2026-07-17T00:00:00"
+assert meidastouch_award["qualifying_window_end"] == "2026-08-15T00:00:00"
+assert meidastouch_award["qualifying_incident_count"] == 6
+assert set(meidastouch_award["qualifying_incident_ids"]) == meidastouch_incident_ids
+assert meidastouch_award["current_window_status"] == "EARNED_HISTORICAL"
+assert meidastouch_award["currently_active"] is False
+assert meidastouch_award["current_window_incident_count"] == 0
+assert meidastouch_award["current_window_incident_ids"] == []
+
+# Repeated Meidas publications count separately, while multiple overstatements
+# inside one episode remain one incident.
+assert "Distinct August 4 repetition" in behavior_incidents[
+    "WOL-BS-MEIDAS-OUT-PATRIOT-THAAD-DESTROYERS-20260804"
+]["downstream_note"]
+assert "Counts once" in behavior_incidents[
+    "WOL-BS-MEIDAS-RAN-OUT-WEAPONS-ABANDONED-BASES-20260811"
+]["downstream_note"]
+
 # One publication event is one award incident even when it contains multiple
 # atomic propositions (e.g. March 22 causation + stockpile extrapolation).
 assert behavior_incidents["WOL-BS-ETHAN-TWO-MISSILES-20260322"]["source_information_event_id"] == "ETHAN-MARCH22-TWO-MISSILES"
@@ -330,6 +370,7 @@ hall_ids = {
 assert not {
     "WOL-SRC-VALENTI-VIDEOS",
     "WOL-SRC-ETHAN-LEVINS",
+    "WOL-SRC-MEIDASTOUCH",
     "WOL-SRC-LIM-TEAN",
     "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
 }.intersection(hall_ids)
@@ -338,5 +379,5 @@ assert derived["corpus_coverage"]["completion_claim"] == "NONE"
 
 print(
     "web-of-lies social influence tranche2c: PASS "
-    "substrate_bridge_decomposition=2 video_body_gate=4 valenti_bullshitter=1 ethan_bullshitter=1 remaining_leads_closed=2"
+    "substrate_bridge_decomposition=2 video_body_gate=4 valenti_bullshitter=1 ethan_bullshitter=1 meidastouch_bullshitter=1 remaining_leads_closed=2"
 )
