@@ -651,67 +651,146 @@ def bullshit_qualifying_event(
     return event_type in qualifying_types or bool(findings & qualifying_findings)
 
 
+def bullshit_incident_id(event: dict[str, Any]) -> str:
+    return str(event.get("event_id") or event.get("incident_id") or "").strip()
+
+
+def bullshit_incident_moment(event: dict[str, Any]) -> datetime | None:
+    return parse_time(event.get("published_at")) or parse_time(event.get("first_observed_at"))
+
+
+def deduplicated_qualifying_bullshit_events(
+    events: list[dict[str, Any]],
+    governance: dict[str, Any],
+    *,
+    as_of: Any = None,
+) -> list[tuple[datetime, dict[str, Any]]]:
+    """Return dated, deduplicated qualifying incidents in chronological order."""
+    cutoff = parse_time(as_of)
+    distinct: dict[str, tuple[datetime, dict[str, Any]]] = {}
+    for event in events:
+        if not bullshit_qualifying_event(event, governance):
+            continue
+        incident_id = bullshit_incident_id(event)
+        moment = bullshit_incident_moment(event)
+        if not incident_id or moment is None:
+            # A time-bounded award cannot be earned from an undated incident.
+            continue
+        if cutoff is not None and moment > cutoff:
+            continue
+        key = str(
+            event.get("information_event_group_id")
+            or event.get("source_information_event_id")
+            or incident_id
+        ).strip()
+        prior = distinct.get(key)
+        if prior is None or moment < prior[0]:
+            distinct[key] = (moment, event)
+    return sorted(
+        distinct.values(),
+        key=lambda row: (row[0], bullshit_incident_id(row[1])),
+    )
+
+
 def bullshit_award_for_events(
     events: list[dict[str, Any]],
     governance: dict[str, Any],
     *,
     as_of: Any,
 ) -> dict[str, Any] | None:
-    """Derive the rolling Bullshitter award from distinct qualifying incidents."""
+    """Derive a persistent award from the earliest qualifying 30-day cluster."""
     cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
     if not cfg:
         return None
     minimum = int(cfg.get("minimum_qualifying_incidents") or 6)
-    distinct: dict[str, dict[str, Any]] = {}
-    for event in events:
-        if not bullshit_qualifying_event(event, governance):
-            continue
-        event_id = str(event.get("event_id") or event.get("incident_id") or "").strip()
-        if not event_id:
-            continue
-        # Cross-platform captures of one publication may share an explicit
-        # information-event key. Otherwise the canonical event_id is the
-        # deduplication boundary.
-        key = str(
-            event.get("information_event_group_id")
-            or event.get("source_information_event_id")
-            or event_id
-        ).strip()
-        distinct.setdefault(key, event)
-
-    if len(distinct) < minimum:
+    window_days = int(cfg.get("window_days") or 30)
+    rows = deduplicated_qualifying_bullshit_events(
+        events,
+        governance,
+        as_of=as_of,
+    )
+    if len(rows) < minimum:
         return None
 
+    left = 0
+    earned_window: list[tuple[datetime, dict[str, Any]]] | None = None
+    for right in range(len(rows)):
+        while left <= right and rows[right][0] - rows[left][0] > timedelta(days=window_days):
+            left += 1
+        if right - left + 1 >= minimum:
+            earned_window = rows[left:right + 1]
+            break
+
+    if earned_window is None:
+        return None
+
+    earned_start = earned_window[0][0]
+    earned_end = earned_window[-1][0]
     qualifying_incident_ids = sorted(
-        str(event.get("event_id") or event.get("incident_id") or "")
-        for event in distinct.values()
-        if str(event.get("event_id") or event.get("incident_id") or "")
+        bullshit_incident_id(event)
+        for _moment, event in earned_window
+        if bullshit_incident_id(event)
     )
+
+    cutoff = parse_time(as_of)
+    current_rows: list[tuple[datetime, dict[str, Any]]] = []
+    if cutoff is not None:
+        current_start = cutoff - timedelta(days=window_days)
+        current_rows = [
+            row for row in rows
+            if current_start <= row[0] <= cutoff
+        ]
+    currently_active = len(current_rows) >= minimum
+    current_incident_ids = sorted(
+        bullshit_incident_id(event)
+        for _moment, event in current_rows
+        if bullshit_incident_id(event)
+    )
+
     label = str(cfg.get("public_label") or "Bullshitter")
+    if currently_active:
+        public_verdict = (
+            f"{label} — award earned {earned_start.isoformat()} through "
+            f"{earned_end.isoformat()}; {len(current_rows)} qualifying bullshit "
+            f"incidents in the current {window_days}-day window."
+        )
+        current_status = "ACTIVE_CURRENT_WINDOW"
+    else:
+        public_verdict = (
+            f"{label} — award earned {earned_start.isoformat()} through "
+            f"{earned_end.isoformat()} with {len(earned_window)} qualifying bullshit "
+            f"incidents; {len(current_rows)} in the current {window_days}-day window."
+        )
+        current_status = "EARNED_HISTORICAL"
+
     return {
         "award_code": "BULLSHITTER",
         "public_label": label,
-        "window_days": int(cfg.get("window_days") or 30),
+        "window_days": window_days,
         "minimum_qualifying_incidents": minimum,
-        "qualifying_incident_count": len(distinct),
+        "award_earned_at": earned_end.isoformat(),
+        "qualifying_window_start": earned_start.isoformat(),
+        "qualifying_window_end": earned_end.isoformat(),
+        "qualifying_incident_count": len(earned_window),
         "qualifying_incident_ids": qualifying_incident_ids,
+        "current_window_status": current_status,
+        "currently_active": currently_active,
+        "current_window_incident_count": len(current_rows),
+        "current_window_incident_ids": current_incident_ids,
         "as_of": as_of,
-        "public_verdict": (
-            f"{label} — {len(distinct)} qualifying bullshit incidents "
-            f"in the rolling {int(cfg.get('window_days') or 30)}-day window."
-        ),
+        "public_verdict": public_verdict,
     }
 
 
 def attach_source_awards(
     profiles: list[dict[str, Any]],
-    recent_events: list[dict[str, Any]],
+    all_events: list[dict[str, Any]],
     governance: dict[str, Any],
     *,
     as_of: Any,
 ) -> list[dict[str, Any]]:
     by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for event in recent_events:
+    for event in all_events:
         by_source[str(event.get("source_id") or "")].append(event)
 
     output = []
@@ -772,12 +851,9 @@ def build_registry(
 
     all_time = ranking_view(profiles, information_events, supported_classes)
     recent_events = current_period_events(information_events, canonical, period_days)
-    recent_behavior_incidents = current_period_events(
-        source_behavior_incidents, canonical, period_days
-    )
     profiles = attach_source_awards(
         profiles,
-        recent_events + recent_behavior_incidents,
+        information_events + source_behavior_incidents,
         governance,
         as_of=(canonical.get("release") or {}).get("current_osint_cutoff"),
     )

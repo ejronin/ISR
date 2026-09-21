@@ -662,8 +662,15 @@
               "public_label",
               "window_days",
               "minimum_qualifying_incidents",
+              "award_earned_at",
+              "qualifying_window_start",
+              "qualifying_window_end",
               "qualifying_incident_count",
               "qualifying_incident_ids",
+              "current_window_status",
+              "currently_active",
+              "current_window_incident_count",
+              "current_window_incident_ids",
               "as_of",
               "public_verdict"
             ],
@@ -698,6 +705,34 @@
                 "minLength": 1
               },
               "qualifying_incident_ids": {
+                "$ref": "#/$defs/string_array"
+              },
+              "award_earned_at": {
+                "type": "string",
+                "minLength": 1
+              },
+              "qualifying_window_start": {
+                "type": "string",
+                "minLength": 1
+              },
+              "qualifying_window_end": {
+                "type": "string",
+                "minLength": 1
+              },
+              "current_window_status": {
+                "enum": [
+                  "ACTIVE_CURRENT_WINDOW",
+                  "EARNED_HISTORICAL"
+                ]
+              },
+              "currently_active": {
+                "type": "boolean"
+              },
+              "current_window_incident_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "current_window_incident_ids": {
                 "$ref": "#/$defs/string_array"
               }
             },

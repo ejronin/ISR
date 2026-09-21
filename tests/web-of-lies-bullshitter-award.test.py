@@ -28,6 +28,7 @@ def event(
     event_type: str = "FALSE_OR_MISLEADING_CONNECTION",
     assertion_kind: str = "FACTUAL_ASSERTION",
     group_id: str | None = None,
+    published_at: str | None = "2026-09-15",
 ) -> dict:
     row = {
         "event_id": f"E-{n}",
@@ -35,6 +36,7 @@ def event(
         "event_type": event_type,
         "assertion_kind": assertion_kind,
         "behavior_findings": [],
+        "published_at": published_at,
     }
     if group_id is not None:
         row["information_event_group_id"] = group_id
@@ -57,6 +59,58 @@ assert award["public_label"] == "Bullshitter"
 assert award["qualifying_incident_count"] == 6
 assert award["qualifying_incident_ids"] == [f"E-{i}" for i in range(1, 7)]
 assert "6 qualifying bullshit incidents" in award["public_verdict"]
+
+assert award["currently_active"] is True
+assert award["current_window_status"] == "ACTIVE_CURRENT_WINDOW"
+assert award["current_window_incident_count"] == 6
+assert award["award_earned_at"] == "2026-09-15T00:00:00"
+
+# Once earned in any 30-day cluster, the award persists after that cluster ages
+# out of the current window.
+historical_cluster = [
+    event(101, published_at="2026-07-01"),
+    event(102, published_at="2026-07-05"),
+    event(103, published_at="2026-07-08"),
+    event(104, published_at="2026-07-12"),
+    event(105, published_at="2026-07-18"),
+    event(106, published_at="2026-07-25"),
+]
+historical_award = wol.bullshit_award_for_events(
+    historical_cluster,
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+)
+assert historical_award is not None
+assert historical_award["current_window_status"] == "EARNED_HISTORICAL"
+assert historical_award["currently_active"] is False
+assert historical_award["current_window_incident_count"] == 0
+assert historical_award["qualifying_window_start"] == "2026-07-01T00:00:00"
+assert historical_award["qualifying_window_end"] == "2026-07-25T00:00:00"
+assert historical_award["qualifying_incident_count"] == 6
+
+# Six qualifying incidents spread too far apart do not earn a 30-day award.
+spread_out = [
+    event(111, published_at="2026-01-01"),
+    event(112, published_at="2026-02-05"),
+    event(113, published_at="2026-03-12"),
+    event(114, published_at="2026-04-18"),
+    event(115, published_at="2026-05-24"),
+    event(116, published_at="2026-06-30"),
+]
+assert wol.bullshit_award_for_events(
+    spread_out,
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+) is None
+
+# Undated conduct may remain in the forensic record but cannot establish a
+# time-bounded award window.
+undated = [event(120 + i, published_at=None) for i in range(6)]
+assert wol.bullshit_award_for_events(
+    undated,
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+) is None
 
 # Mirrors/cross-platform captures of one information event count once.
 mirrored = [event(i) for i in range(1, 6)]
