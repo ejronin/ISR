@@ -25,6 +25,30 @@ PROVENANCE_EDGE_TYPES = {
 
 CORRECTIVE_EVENT_TYPES = {"CORRECTION", "RETRACTION", "PREDICTION_CORRECTION"}
 
+OPERATOR_LOCATION_CLASSES = {
+    "PUBLICLY_CONFIRMED_OPERATOR_COUNTRY",
+    "PUBLICLY_CONFIRMED_PLATFORM_LOCATION",
+    "DOMAIN_REGISTRANT_COUNTRY",
+    "HOSTING_INFRASTRUCTURE_COUNTRY",
+    "ASN_NETWORK_LOCATION",
+    "OPERATOR_LOCATION_UNKNOWN",
+}
+
+VPN_PROXY_STATUSES = {
+    "VPN_OR_PROXY_PUBLICLY_ESTABLISHED",
+    "VPN_OR_PROXY_POSSIBLE_NOT_ESTABLISHED",
+}
+
+RESEARCH_LEAD_DISPOSITIONS = {
+    "PENDING_CLAIM_FIRST_RESEARCH",
+    "MATERIAL_WOL_HISTORY_FOUND",
+    "LIMITED_RELEVANT_ACTIVITY",
+    "CARRIER_ONLY",
+    "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND",
+    "IDENTITY_UNRESOLVED",
+    "UPSTREAM_REVIEW_REQUIRED",
+}
+
 
 def governance_set(governance: dict[str, Any], key: str) -> set[str]:
     return set(((governance.get("osint_collection") or {}).get(key) or []))
@@ -113,6 +137,9 @@ def validate_extended_forensic_input(
     profiles = forensic.get("source_profiles") or []
     events = forensic.get("information_events") or []
     relationships = forensic.get("relationships") or []
+    external_assessments = forensic.get("external_assessments") or []
+    infrastructure_observations = forensic.get("infrastructure_observations") or []
+    research_leads = forensic.get("research_leads") or []
 
     allowed_independence = governance_set(governance, "independence_statuses")
     allowed_assertion_kinds = governance_set(governance, "assertion_kinds")
@@ -120,6 +147,7 @@ def validate_extended_forensic_input(
     allowed_relationship_types = governance_set(governance, "relationship_types")
 
     event_ids = {str(event.get("event_id") or "") for event in events}
+    profile_ids = {str(profile.get("source_id") or "") for profile in profiles}
     seen_receipt_ids: set[str] = set()
 
     for profile in profiles:
@@ -150,6 +178,104 @@ def validate_extended_forensic_input(
                 raise ValueError(
                     f"source profile {source_id} platform account {account_id} lacks handle/url"
                 )
+
+    seen_assessment_ids: set[str] = set()
+    for assessment in external_assessments:
+        assessment_id = str(assessment.get("assessment_id") or "").strip()
+        if not assessment_id or assessment_id in seen_assessment_ids:
+            raise ValueError(
+                f"duplicate or missing external assessment id {assessment_id!r}"
+            )
+        seen_assessment_ids.add(assessment_id)
+        source_id = str(assessment.get("source_id") or "").strip()
+        if source_id not in profile_ids:
+            raise ValueError(
+                f"external assessment {assessment_id} references unknown source {source_id}"
+            )
+        for field in (
+            "assessor",
+            "assessor_url",
+            "publication_date",
+            "rating_classification",
+            "assessment_scope",
+            "methodology_summary",
+            "caveat",
+            "retrieval_date",
+            "source_url",
+        ):
+            if not str(assessment.get(field) or "").strip():
+                raise ValueError(
+                    f"external assessment {assessment_id} lacks required {field}"
+                )
+        forbidden = {
+            "hall_of_shame_rank",
+            "hall_of_shame_score",
+            "manual_rank",
+            "manual_score",
+            "featured_rank",
+        }.intersection(assessment)
+        if forbidden:
+            raise ValueError(
+                f"external assessment {assessment_id} contains forbidden Hall fields "
+                f"{sorted(forbidden)}"
+            )
+
+    seen_observation_ids: set[str] = set()
+    for observation in infrastructure_observations:
+        observation_id = str(observation.get("observation_id") or "").strip()
+        if not observation_id or observation_id in seen_observation_ids:
+            raise ValueError(
+                f"duplicate or missing infrastructure observation id {observation_id!r}"
+            )
+        seen_observation_ids.add(observation_id)
+        source_id = str(observation.get("source_id") or "").strip()
+        if source_id not in profile_ids:
+            raise ValueError(
+                f"infrastructure observation {observation_id} references unknown source "
+                f"{source_id}"
+            )
+        for field in (
+            "observation_type",
+            "value",
+            "observation_date",
+            "source_url",
+            "confidence",
+            "inference_limit",
+        ):
+            if not str(observation.get(field) or "").strip():
+                raise ValueError(
+                    f"infrastructure observation {observation_id} lacks required {field}"
+                )
+        location_class = observation.get("operator_location_class")
+        if location_class and location_class not in OPERATOR_LOCATION_CLASSES:
+            raise ValueError(
+                f"infrastructure observation {observation_id} has unsupported "
+                f"operator_location_class {location_class}"
+            )
+        vpn_status = observation.get("vpn_proxy_status")
+        if vpn_status and vpn_status not in VPN_PROXY_STATUSES:
+            raise ValueError(
+                f"infrastructure observation {observation_id} has unsupported "
+                f"vpn_proxy_status {vpn_status}"
+            )
+
+    seen_lead_ids: set[str] = set()
+    for lead in research_leads:
+        lead_id = str(lead.get("lead_id") or "").strip()
+        if not lead_id or lead_id in seen_lead_ids:
+            raise ValueError(f"duplicate or missing research lead id {lead_id!r}")
+        seen_lead_ids.add(lead_id)
+        if not str(lead.get("display_name") or "").strip():
+            raise ValueError(f"research lead {lead_id} lacks display_name")
+        if not list(lead.get("seed_urls") or []):
+            raise ValueError(f"research lead {lead_id} lacks seed_urls")
+        disposition = str(lead.get("current_disposition") or "").strip()
+        if disposition not in RESEARCH_LEAD_DISPOSITIONS:
+            raise ValueError(
+                f"research lead {lead_id} has unsupported disposition {disposition}"
+            )
+        if not str(lead.get("identity_status") or "").strip():
+            raise ValueError(f"research lead {lead_id} lacks identity_status")
 
     for event in events:
         event_id = str(event.get("event_id") or "")
