@@ -58,6 +58,7 @@ for token in (
     "python scripts/build_web_of_lies_forensic_input.py --check",
     "python scripts/validate_web_of_lies.py",
     "python tests/web-of-lies-foundation.test.py",
+    "python tests/web-of-lies-osint-network.test.py",
     "python tests/web-of-lies-lineage-packets.test.py",
     "python tests/web-of-lies-ledger-coverage.test.py",
     "node tests/web-of-lies-public-contract.test.js",

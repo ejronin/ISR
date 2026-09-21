@@ -358,3 +358,262 @@ Triggers include:
 Reprocess only affected families where practical.
 
 Historical classifications and graph states remain recoverable when analytically material.
+
+
+## 16. Affirmative public-OSINT collection mission
+
+Web of Lies has an affirmative collection mission across the public information
+environment. It is not limited to sources already promoted by Evidence
+Integration or Claims Forensics.
+
+The research method is claim-first:
+
+1. begin from a canonical Atlas claim family;
+2. search outward for the originating statement and recoverable earlier forms;
+3. follow reposts, quotes, articles, video reactions, messaging-channel copies,
+   screenshots, mirrors, edits and later corrections;
+4. search backward for upstream provenance;
+5. search forward for mutation, laundering, monetization, deletion and
+   repetition after correction;
+6. preserve discoveries that could affect upstream truth/factual state as
+   promotion/review candidates rather than silently changing upstream records.
+
+Public collection may include X, TikTok, Facebook, Instagram, YouTube,
+Telegram, Reddit, Threads, Bluesky, public Discord material, websites, blogs,
+newsletters, Substack, podcasts, collaborative-reference systems, and public
+cyber/hacktivist publication surfaces.
+
+Search aggressively; conclude conservatively.
+
+Do not bypass authentication, infiltrate private groups, impersonate users,
+purchase stolen data, execute malware, or obtain non-public communications.
+Publicly accessible material that originated on an encrypted/private service
+may be documented only through a legitimate public receipt.
+
+## 17. Public OSINT receipt contract
+
+Web-of-Lies-native public evidence does not need to become canonical Evidence
+Integration material merely to document propagation behavior. A public receipt
+must be reproducible enough to identify the observed publication.
+
+Where available preserve:
+
+- platform/surface;
+- account/handle and display name;
+- stable source identity;
+- post/message/revision ID;
+- original URL;
+- archive URL;
+- publication time;
+- capture time;
+- text/caption excerpt sufficient to identify the proposition;
+- media identity;
+- upstream attribution;
+- original/repost/quote status;
+- deletion/availability status;
+- cryptographic hash and the scope of what was hashed.
+
+A screenshot by itself is not silently treated as a pristine original. When the
+original cannot be recovered, record that limitation explicitly.
+
+Public receipts establish that information was publicly observable. They do not
+automatically establish that the proposition was true.
+
+## 18. Independence, repetition and graph detection
+
+The derived registry must separately report:
+
+- independent corroboration;
+- derivative repetition;
+- common-source repetition;
+- unknown independence;
+- documented propagation edges;
+- citation-laundering findings;
+- circular-source components;
+- material mutation events.
+
+A hundred accounts repeating one source remain derivative repetition. Different
+platforms do not create independence. Multiple handles belonging to one stable
+identity do not create multiple independent sources.
+
+Circular sourcing is a graph property, not a rhetorical label. A circular
+finding requires a directed provenance cycle in documented relationships.
+
+Citation laundering requires evidence that the lineage materially obscures or
+inflates apparent provenance/independence. Ordinary citation or syndication is
+not laundering.
+
+## 19. Epistemic mutation
+
+For material changes preserve the prior and later posture where recoverable.
+
+Examples include:
+
+- CLAIM -> FACT;
+- REPORTED -> CONFIRMED;
+- POSSIBLE -> DEFINITIVE;
+- “Iran claims X” -> “X happened”;
+- one source -> “multiple reports confirm.”
+
+The semantic change belongs to the event where it occurred. Do not project it
+back onto the upstream source.
+
+A carrier accurately reporting “IRGC claims X” does not inherit the truth
+status or misconduct of X merely by carrying the attribution.
+
+## 20. Deleted and ephemeral material
+
+Deletion/availability states are distinct:
+
+- AVAILABLE;
+- POST_CONFIRMED_DELETED;
+- POST_CURRENTLY_UNAVAILABLE;
+- ORIGINAL_NOT_RECOVERED;
+- DELETION_REASON_UNKNOWN.
+
+Deletion alone is not concealment and does not establish motive.
+
+If a failed/deleted post is later visibly corrected or retracted, the derived
+metrics must not continue scoring the earlier event as “without correction.”
+
+## 21. Collaborative-reference / Wikipedia revision forensics
+
+Wikipedia and similar collaborative-reference systems are information
+propagation environments when an Atlas claim family materially appears there.
+
+Relevant public receipts include:
+
+- revision IDs and diffs;
+- edit summaries;
+- article Talk pages;
+- user Talk pages;
+- Requests for Comment;
+- noticeboard/dispute-resolution proceedings;
+- page-protection history;
+- public administrator actions;
+- public sockpuppet/coordination findings;
+- source additions/removals;
+- repeated restoration of disputed wording.
+
+Research behaviors can include qualifier removal, source substitution,
+citation-lineage obscuring, factual adoption of an attributed allegation, or
+continued restoration after correction.
+
+Ordinary editorial disagreement is not misconduct. A revert is not proof of
+deception. Similar usernames, avatars, timing, or edit style are not sufficient
+to merge real-world identities.
+
+Where the community or administrators publicly establish sockpuppetry,
+coordination or account relationships, preserve the public finding and its
+scope rather than independently expanding it.
+
+A Wikipedia edit is an information event, not proof that the edited proposition
+is true.
+
+## 22. Public hacker / hacktivist / cyber-group information forensics
+
+Publicly observable hacker, hacktivist, influence-operation, cybercrime or
+state-linked cyber publication surfaces may be researched when they materially
+participate in an Atlas claim family.
+
+Relevant open-source surfaces can include public websites, public Telegram/X
+accounts, public forums, leak-site announcement pages, public GitHub/code-hosting
+accounts used for messaging, public defacement announcements, vendor/CERT
+reporting, court records and public platform-enforcement records.
+
+Always separate:
+
+- CLAIMED_COMPROMISE;
+- INDEPENDENTLY_VERIFIED_COMPROMISE;
+- AUTHENTICITY_OF_RELEASED_MATERIAL;
+- DOWNSTREAM_REUSE_OF_THE_CLAIM_OR_MATERIAL.
+
+A group saying “we hacked X” does not establish either the compromise or the
+authenticity of claimed material.
+
+Do not obtain private communications, bypass access controls, purchase stolen
+material, execute malware, access compromised systems, or download non-public
+breached data merely because a group claims to possess it.
+
+## 23. Source identity and source families
+
+Profiles may preserve aliases, platform accounts and a stable identity ID.
+
+Supported identity relationships include:
+
+- SAME_PERSON;
+- PROBABLE_SAME_SOURCE;
+- ACCOUNT_RENAME;
+- PLATFORM_MIGRATION;
+- MIRROR_ACCOUNT;
+- FAN_REPOST_ACCOUNT;
+- UNKNOWN_RELATIONSHIP.
+
+Do not merge identities from superficial resemblance. When identity remains
+uncertain, preserve the unresolved account as its own source profile.
+
+Individual creators, accounts, publishers, organizations, state institutions,
+channels and networks remain distinct identities unless evidence supports a
+relationship. Wrongdoing and personal knowledge do not automatically transfer
+across an organization.
+
+## 24. Monetization and incentive evidence
+
+Monetization remains independent from misconduct.
+
+A revenue/incentive classification requires a public receipt tied to the source
+profile. Follower count is not revenue. Monetization by itself does not create
+a grift finding.
+
+Where revenue cannot be established, preserve UNKNOWN_REVENUE_MODEL rather than
+silently treating unknown as zero.
+
+## 25. Deterministic direct verdicts
+
+Direct-verdict output is downstream of documented incidents and source metrics.
+
+The derived registry may generate a blunt factual behavior summary from the
+incident record. It must not invent motive, coordination, knowledge, revenue or
+personal attribution not established by receipts.
+
+Severe appellations remain subject to their evidentiary trigger. A label never
+substitutes for the receipt chain.
+
+## 26. Incremental rebuild equivalence
+
+Affected-family rebuilds must fail closed.
+
+A valid incremental rebuild:
+
+1. requires the previous registry to match the same canonical-state identity;
+2. identifies the affected canonical claim-family IDs;
+3. preserves unaffected family/network records;
+4. rebuilds affected family/network records;
+5. recomputes globally coupled source-profile and Hall state where appropriate;
+6. produces bytes equivalent to a clean full rebuild from the same canonical
+   and forensic inputs.
+
+If preserved unaffected state diverges from a clean rebuild, the incremental
+operation fails rather than publishing mixed-generation derived data.
+
+## 27. Anti-bias / anti-drift controls
+
+The implementation must continue proving:
+
+- unknown != false;
+- false != Lie;
+- unresolved != misconduct;
+- carrier != claimant;
+- accurate attribution != adoption;
+- repetition != corroboration;
+- cross-platform != independent;
+- partisan != deceptive;
+- state media != automatically false;
+- monetized != grifter;
+- deleted != concealment;
+- correction != admission of intentional deception;
+- prediction != factual assertion;
+- institutional knowledge != personal knowledge.
+
+Wikipedia editor identity, cyber-group attribution and source-family membership
+are held to the same standard.

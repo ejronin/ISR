@@ -45,6 +45,21 @@ def main() -> int:
     derived_families = {row["claim_family_id"] for row in registry["claim_families"]}
     require(derived_families == canonical_families, "claim-family set differs from canonical Lie Ledger chains")
 
+    network = registry["network_analysis"]
+    summary = network["summary"]
+    require(
+        summary["documented_propagation_edges"] >= 0,
+        "network analysis has invalid propagation-edge count",
+    )
+    require(
+        summary["citation_laundering_findings"] >= 0
+        and summary["circular_source_findings"] >= 0
+        and summary["material_mutation_findings"] >= 0,
+        "network analysis has invalid forensic finding counts",
+    )
+    incremental = registry["incremental_rebuild_contract"]
+    require(all(incremental.values()), "incremental rebuild contract is not fail-closed/equivalent")
+
     hall = registry["hall_of_shame"]
     require(hall["manual_selection"] is False, "Hall of Shame permits manual selection")
     require(hall["top_n_per_class"] == 3, "Hall of Shame top-N changed from three")
@@ -80,6 +95,9 @@ def main() -> int:
         "repetition into corroboration",
         "different outlet into an independent origin",
         "Prove the pattern. Then call the pattern what it is.",
+        "A Wikipedia edit is an information event, not proof",
+        "A group saying “we hacked X” does not establish either the compromise",
+        "produces bytes equivalent to a clean full rebuild",
     ):
         require(phrase in contract, f"controlling contract lost invariant: {phrase}")
 

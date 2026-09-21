@@ -14,94 +14,299 @@
     "information_events",
     "relationships",
     "promotion_flags",
-    "hall_of_shame"
+    "hall_of_shame",
+    "network_analysis",
+    "incremental_rebuild_contract"
   ],
   "properties": {
-    "schema_version": { "const": "1.0" },
-    "artifact_role": { "const": "WEB_OF_LIES_DERIVED_FORENSIC_REGISTRY" },
-    "authority": { "const": "WEB_OF_LIES_INFORMATION_FORENSICS" },
-    "contract_path": { "const": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md" },
-    "generated_at": { "type": ["string", "null"] },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "artifact_role": {
+      "const": "WEB_OF_LIES_DERIVED_FORENSIC_REGISTRY"
+    },
+    "authority": {
+      "const": "WEB_OF_LIES_INFORMATION_FORENSICS"
+    },
+    "contract_path": {
+      "const": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
+    },
+    "generated_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "generated_from": {
       "type": "object",
-      "required": ["canonical_state_identity", "lie_ledger_chain_count"],
+      "required": [
+        "canonical_state_identity",
+        "lie_ledger_chain_count"
+      ],
       "properties": {
-        "canonical_state_identity": { "type": "string", "minLength": 1 },
-        "lie_ledger_chain_count": { "type": "integer", "minimum": 0 },
-        "forensic_input_version": { "type": "string", "minLength": 1 }
+        "canonical_state_identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lie_ledger_chain_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "forensic_input_version": {
+          "type": "string",
+          "minLength": 1
+        }
       },
       "additionalProperties": true
     },
     "claim_families": {
       "type": "array",
-      "items": { "$ref": "#/$defs/claim_family" }
+      "items": {
+        "$ref": "#/$defs/claim_family"
+      }
     },
     "source_profiles": {
       "type": "array",
-      "items": { "$ref": "#/$defs/source_profile" }
+      "items": {
+        "$ref": "#/$defs/source_profile"
+      }
     },
     "information_events": {
       "type": "array",
-      "items": { "$ref": "#/$defs/information_event" }
+      "items": {
+        "$ref": "#/$defs/information_event"
+      }
     },
     "relationships": {
       "type": "array",
-      "items": { "$ref": "#/$defs/relationship" }
+      "items": {
+        "$ref": "#/$defs/relationship"
+      }
     },
     "promotion_flags": {
       "type": "array",
-      "items": { "$ref": "#/$defs/promotion_flag" }
+      "items": {
+        "$ref": "#/$defs/promotion_flag"
+      }
     },
     "hall_of_shame": {
       "type": "object",
-      "required": ["algorithm_version", "top_n_per_class", "manual_selection", "ranking_contract", "all_time", "current_period"],
+      "required": [
+        "algorithm_version",
+        "top_n_per_class",
+        "manual_selection",
+        "ranking_contract",
+        "all_time",
+        "current_period"
+      ],
       "properties": {
-        "algorithm_version": { "type": "string", "minLength": 1 },
-        "top_n_per_class": { "const": 3 },
-        "manual_selection": { "const": false },
-        "current_period_days": { "type": "integer", "minimum": 1 },
+        "algorithm_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "top_n_per_class": {
+          "const": 3
+        },
+        "manual_selection": {
+          "const": false
+        },
+        "current_period_days": {
+          "type": "integer",
+          "minimum": 1
+        },
         "ranking_contract": {
           "type": "object",
-          "required": ["score_weights", "event_metric_map", "qualification_metric_keys", "lower_threshold_classes", "hall_of_shame_classes", "default_min_families", "default_min_events", "lower_min_families", "lower_min_events", "downstream_log2_cap"],
+          "required": [
+            "score_weights",
+            "event_metric_map",
+            "qualification_metric_keys",
+            "lower_threshold_classes",
+            "hall_of_shame_classes",
+            "default_min_families",
+            "default_min_events",
+            "lower_min_families",
+            "lower_min_events",
+            "downstream_log2_cap"
+          ],
           "properties": {
-            "score_weights": { "type": "object", "additionalProperties": { "type": "number" } },
-            "event_metric_map": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
-            "qualification_metric_keys": { "$ref": "#/$defs/string_array" },
-            "lower_threshold_classes": { "$ref": "#/$defs/string_array" },
-            "hall_of_shame_classes": { "$ref": "#/$defs/string_array" },
-            "default_min_families": { "type": "integer", "minimum": 0 },
-            "default_min_events": { "type": "integer", "minimum": 0 },
-            "lower_min_families": { "type": "integer", "minimum": 0 },
-            "lower_min_events": { "type": "integer", "minimum": 0 },
-            "downstream_log2_cap": { "type": "number", "minimum": 0 }
+            "score_weights": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number"
+              }
+            },
+            "event_metric_map": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "qualification_metric_keys": {
+              "$ref": "#/$defs/string_array"
+            },
+            "lower_threshold_classes": {
+              "$ref": "#/$defs/string_array"
+            },
+            "hall_of_shame_classes": {
+              "$ref": "#/$defs/string_array"
+            },
+            "default_min_families": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "default_min_events": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "lower_min_families": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "lower_min_events": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "downstream_log2_cap": {
+              "type": "number",
+              "minimum": 0
+            }
           },
           "additionalProperties": false
         },
-        "all_time": { "$ref": "#/$defs/ranking_view" },
-        "current_period": { "$ref": "#/$defs/ranking_view" }
+        "all_time": {
+          "$ref": "#/$defs/ranking_view"
+        },
+        "current_period": {
+          "$ref": "#/$defs/ranking_view"
+        }
       },
       "additionalProperties": true
+    },
+    "network_analysis": {
+      "type": "object",
+      "required": [
+        "family_analysis",
+        "summary"
+      ],
+      "properties": {
+        "family_analysis": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "claim_family_id",
+              "documented_propagation_edges",
+              "independent_corroboration_events",
+              "derivative_repetition_events",
+              "unknown_independence_events",
+              "citation_laundering_findings",
+              "circular_source_components",
+              "material_mutation_events",
+              "public_receipt_count"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "summary": {
+          "type": "object",
+          "required": [
+            "documented_propagation_edges",
+            "citation_laundering_findings",
+            "circular_source_findings",
+            "material_mutation_findings",
+            "social_platforms_represented",
+            "deletion_status_counts",
+            "correction_state_counts"
+          ],
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "incremental_rebuild_contract": {
+      "type": "object",
+      "required": [
+        "affected_family_isolation",
+        "unaffected_family_state_preserved",
+        "source_profiles_and_hall_recomputed_when_affected",
+        "clean_full_build_equivalence_required",
+        "stale_previous_registry_fails_closed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "affected_family_isolation": {
+          "const": true
+        },
+        "unaffected_family_state_preserved": {
+          "const": true
+        },
+        "source_profiles_and_hall_recomputed_when_affected": {
+          "const": true
+        },
+        "clean_full_build_equivalence_required": {
+          "const": true
+        },
+        "stale_previous_registry_fails_closed": {
+          "const": true
+        }
+      }
     }
   },
   "additionalProperties": false,
   "$defs": {
     "string_array": {
       "type": "array",
-      "items": { "type": "string", "minLength": 1 },
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true
     },
     "claim_family": {
       "type": "object",
-      "required": ["claim_family_id", "canonical_chain_id", "title", "source_ids", "trace_status"],
+      "required": [
+        "claim_family_id",
+        "canonical_chain_id",
+        "title",
+        "source_ids",
+        "trace_status"
+      ],
       "properties": {
-        "claim_family_id": { "type": "string", "minLength": 1 },
-        "canonical_chain_id": { "type": "string", "minLength": 1 },
-        "title": { "type": "string", "minLength": 1 },
-        "canonical_adjudication": { "type": ["string", "null"] },
-        "source_ids": { "$ref": "#/$defs/string_array" },
-        "trace_status": { "enum": ["UNTRACED", "PARTIAL", "TRACED"] },
-        "information_event_ids": { "$ref": "#/$defs/string_array" },
-        "relationship_ids": { "$ref": "#/$defs/string_array" }
+        "claim_family_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_chain_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_adjudication": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "trace_status": {
+          "enum": [
+            "UNTRACED",
+            "PARTIAL",
+            "TRACED"
+          ]
+        },
+        "information_event_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "relationship_ids": {
+          "$ref": "#/$defs/string_array"
+        }
       },
       "additionalProperties": true
     },
@@ -118,19 +323,63 @@
         "metrics"
       ],
       "properties": {
-        "source_id": { "type": "string", "minLength": 1 },
-        "display_name": { "type": "string", "minLength": 1 },
-        "country_region": { "type": ["string", "null"] },
-        "primary_platform": { "type": ["string", "null"] },
-        "source_entity_type": { "type": ["string", "null"] },
-        "canonical_outlet_profile_id": { "type": ["string", "null"] },
-        "canonical_actor_id": { "type": ["string", "null"] },
-        "canonical_source_ids": { "$ref": "#/$defs/string_array" },
-        "behavior_classes": { "$ref": "#/$defs/string_array" },
-        "authenticity_class": { "type": "string", "minLength": 1 },
-        "revenue_model": { "$ref": "#/$defs/string_array" },
-        "classification_basis_event_ids": { "$ref": "#/$defs/string_array" },
-        "revenue_basis_event_ids": { "$ref": "#/$defs/string_array" },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "country_region": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "primary_platform": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_entity_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "canonical_outlet_profile_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "canonical_actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "canonical_source_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "behavior_classes": {
+          "$ref": "#/$defs/string_array"
+        },
+        "authenticity_class": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revenue_model": {
+          "$ref": "#/$defs/string_array"
+        },
+        "classification_basis_event_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "revenue_basis_event_ids": {
+          "$ref": "#/$defs/string_array"
+        },
         "metrics": {
           "type": "object",
           "required": [
@@ -149,22 +398,92 @@
             "prediction_corrections"
           ],
           "properties": {
-            "claim_families_traced": { "type": "integer", "minimum": 0 },
-            "false_misleading_findings_connected": { "type": "integer", "minimum": 0 },
-            "narrative_mutations_introduced": { "type": "integer", "minimum": 0 },
-            "citation_laundering_events": { "type": "integer", "minimum": 0 },
-            "recycled_media_incidents": { "type": "integer", "minimum": 0 },
-            "corrections_issued": { "type": "integer", "minimum": 0 },
-            "continued_after_correction_incidents": { "type": "integer", "minimum": 0 },
-            "failed_claims_deleted_or_abandoned": { "type": "integer", "minimum": 0 },
-            "stealth_edits": { "type": "integer", "minimum": 0 },
-            "victim_exploitation_incidents": { "type": "integer", "minimum": 0 },
-            "unique_propagation_events": { "type": "integer", "minimum": 0 },
-            "observed_downstream_propagation": { "type": ["integer", "null"], "minimum": 0 },
-            "prediction_failures": { "type": "integer", "minimum": 0 },
-            "prediction_corrections": { "type": "integer", "minimum": 0 }
+            "claim_families_traced": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "false_misleading_findings_connected": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "narrative_mutations_introduced": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "citation_laundering_events": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "recycled_media_incidents": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "corrections_issued": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "continued_after_correction_incidents": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "failed_claims_deleted_or_abandoned": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "stealth_edits": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "victim_exploitation_incidents": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unique_propagation_events": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "observed_downstream_propagation": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "prediction_failures": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "prediction_corrections": {
+              "type": "integer",
+              "minimum": 0
+            }
           },
           "additionalProperties": false
+        },
+        "direct_verdict": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stable_identity_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity_confidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "platform_accounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
         }
       },
       "additionalProperties": true
@@ -183,47 +502,204 @@
         "evidence_source_ids"
       ],
       "properties": {
-        "event_id": { "type": "string", "minLength": 1 },
-        "claim_family_id": { "type": "string", "minLength": 1 },
-        "source_id": { "type": "string", "minLength": 1 },
-        "event_type": { "type": "string", "minLength": 1 },
-        "published_at": { "type": ["string", "null"] },
-        "first_observed_at": { "type": ["string", "null"] },
-        "time_precision": { "type": ["string", "null"] },
-        "epistemic_posture": { "type": "string", "minLength": 1 },
-        "exact_statement": { "type": ["string", "null"] },
-        "translated_statement": { "type": ["string", "null"] },
-        "lineage_roles": { "$ref": "#/$defs/string_array" },
-        "carrier_profile_ids": { "$ref": "#/$defs/string_array" },
-        "canonical_claim_refs": { "$ref": "#/$defs/string_array" },
-        "evidence_source_ids": { "$ref": "#/$defs/string_array" },
-        "contrary_evidence_source_ids": { "$ref": "#/$defs/string_array" },
-        "correction_state": { "type": ["string", "null"] },
-        "behavior_findings": { "$ref": "#/$defs/string_array" },
-        "revenue_findings": { "$ref": "#/$defs/string_array" },
-        "independently_sourced": { "type": ["boolean", "null"] },
-        "downstream_propagation_observed": { "type": ["integer", "null"], "minimum": 0 },
-        "plain_english_verdict": { "type": ["string", "null"] }
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_family_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "published_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "first_observed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "time_precision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "epistemic_posture": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exact_statement": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "translated_statement": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lineage_roles": {
+          "$ref": "#/$defs/string_array"
+        },
+        "carrier_profile_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "canonical_claim_refs": {
+          "$ref": "#/$defs/string_array"
+        },
+        "evidence_source_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "contrary_evidence_source_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "correction_state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "behavior_findings": {
+          "$ref": "#/$defs/string_array"
+        },
+        "revenue_findings": {
+          "$ref": "#/$defs/string_array"
+        },
+        "independently_sourced": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "downstream_propagation_observed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "plain_english_verdict": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_receipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/public_receipt"
+          }
+        },
+        "independence_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "assertion_kind": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "epistemic_posture_before": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "epistemic_posture_after": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "corrects_event_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subject_event_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "supersedes_event_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": true
     },
     "relationship": {
       "type": "object",
-      "required": ["relationship_id", "from_id", "to_id", "relationship_type", "evidence_source_ids"],
+      "required": [
+        "relationship_id",
+        "from_id",
+        "to_id",
+        "relationship_type",
+        "evidence_source_ids"
+      ],
       "properties": {
-        "relationship_id": { "type": "string", "minLength": 1 },
-        "from_id": { "type": "string", "minLength": 1 },
-        "to_id": { "type": "string", "minLength": 1 },
-        "relationship_type": { "type": "string", "minLength": 1 },
-        "evidence_source_ids": { "$ref": "#/$defs/string_array" }
+        "relationship_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "from_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_source_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "public_receipts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/public_receipt"
+          }
+        }
       },
       "additionalProperties": true
     },
     "promotion_flag": {
       "type": "object",
-      "required": ["flag_id", "flag_type", "subject_id", "reason"],
+      "required": [
+        "flag_id",
+        "flag_type",
+        "subject_id",
+        "reason"
+      ],
       "properties": {
-        "flag_id": { "type": "string", "minLength": 1 },
+        "flag_id": {
+          "type": "string",
+          "minLength": 1
+        },
         "flag_type": {
           "enum": [
             "FORENSIC_DISCOVERY",
@@ -231,22 +707,54 @@
             "ADJUDICATION_REVIEW_CANDIDATE"
           ]
         },
-        "subject_id": { "type": "string", "minLength": 1 },
-        "reason": { "type": "string", "minLength": 1 },
-        "evidence_source_ids": { "$ref": "#/$defs/string_array" }
+        "subject_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_source_ids": {
+          "$ref": "#/$defs/string_array"
+        }
       },
       "additionalProperties": true
     },
     "ranking_entry": {
       "type": "object",
-      "required": ["rank", "source_id", "source_class", "score", "ranking_basis", "why_this_source_appears_here"],
+      "required": [
+        "rank",
+        "source_id",
+        "source_class",
+        "score",
+        "ranking_basis",
+        "why_this_source_appears_here"
+      ],
       "properties": {
-        "rank": { "type": "integer", "minimum": 1, "maximum": 3 },
-        "source_id": { "type": "string", "minLength": 1 },
-        "source_class": { "type": "string", "minLength": 1 },
-        "score": { "type": "number" },
-        "ranking_basis": { "type": "object" },
-        "why_this_source_appears_here": { "type": "string", "minLength": 1 }
+        "rank": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_class": {
+          "type": "string",
+          "minLength": 1
+        },
+        "score": {
+          "type": "number"
+        },
+        "ranking_basis": {
+          "type": "object"
+        },
+        "why_this_source_appears_here": {
+          "type": "string",
+          "minLength": 1
+        }
       },
       "additionalProperties": false
     },
@@ -255,8 +763,124 @@
       "additionalProperties": {
         "type": "array",
         "maxItems": 3,
-        "items": { "$ref": "#/$defs/ranking_entry" }
+        "items": {
+          "$ref": "#/$defs/ranking_entry"
+        }
       }
+    },
+    "public_receipt": {
+      "type": "object",
+      "required": [
+        "receipt_id",
+        "surface",
+        "provenance_status"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "archive_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revision_id": {
+          "type": [
+            "string",
+            "integer",
+            "null"
+          ]
+        },
+        "diff_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "talk_section_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "account_handle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "display_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "published_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "captured_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deletion_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "claim_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "capture_hash_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "original_verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
     }
   }
 }
