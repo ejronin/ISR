@@ -605,6 +605,11 @@ def build_registry(
         relationships,
         profiles,
     )
+    corpus_coverage = wol_network.derive_corpus_coverage(
+        families,
+        information_events,
+        relationships,
+    )
 
     return {
         "schema_version": "1.0",
@@ -626,6 +631,7 @@ def build_registry(
             key=lambda item: item["flag_id"],
         ),
         "network_analysis": network_analysis,
+        "corpus_coverage": corpus_coverage,
         "incremental_rebuild_contract": {
             "affected_family_isolation": True,
             "unaffected_family_state_preserved": True,
