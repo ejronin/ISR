@@ -617,3 +617,38 @@ The implementation must continue proving:
 
 Wikipedia editor identity, cyber-group attribution and source-family membership
 are held to the same standard.
+
+
+## 28. Corpus-wide coverage accounting
+
+No exemplar claim family may stand in for corpus completion.
+
+The derived registry must publish a coverage row for every canonical Lie Ledger
+claim family, including families for which Web of Lies has only the neutral
+Claims Forensics anchor.
+
+Coverage states are descriptive:
+
+- CANONICAL_FAMILY_NO_LINEAGE — the canonical family exists but no Web-of-Lies
+  event is present;
+- ANCHOR_ONLY — Claims Forensics anchors are present but no independent
+  Web-of-Lies lineage event has been collected;
+- LINEAGE_SEEDED — at least one non-anchor lineage event exists but no
+  documented relationship edge is yet present;
+- LINEAGE_TRACED — non-anchor lineage events and at least one documented
+  relationship edge exist.
+
+These states are not quality grades and do not mean a traced family has been
+exhaustively researched.
+
+The registry must separately expose whether non-anchor lineage and
+Web-of-Lies-native public OSINT receipts exist for every canonical family.
+Missing research remains visible as a gap rather than being inferred away from
+the richness of another family.
+
+The F-15E/CSAR family is a regression exemplar only. Its depth, correctness or
+public-receipt coverage cannot be used as evidence that the remaining Lie
+Ledger families, evidence drawers or propagation ecosystems have been swept.
+
+The machine-readable completion claim remains NONE until a distinct,
+documented corpus-wide completion process exists.
