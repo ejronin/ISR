@@ -65,7 +65,7 @@ const controlChains = ledger.records.filter(chain =>
   chain.public_include_in_accusation_count === false
 );
 assert.equal(accusationChains.length, 35, 'Lie Ledger accusation-chain denominator drifted');
-assert.equal(controlChains.length, 15, 'Lie Ledger control-chain denominator drifted');
+assert.equal(controlChains.length, 18, 'Lie Ledger control-chain denominator drifted');
 assert.equal(accusationChains.length + controlChains.length, ledger.records.length,
   'every current Lie Ledger chain must be explicitly classified as accusation or control');
 

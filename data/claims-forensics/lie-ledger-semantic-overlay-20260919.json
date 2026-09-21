@@ -1,11 +1,11 @@
 {
   "artifact_role": "CLAIMS_FORENSICS_LIE_LEDGER_SEMANTIC_OVERLAY",
   "schema_version": "1.0",
-  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260920-9",
+  "overlay_version": "ATLAS-CLAIMS-FORENSICS-20260920-10",
   "authority": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
   "contract_path": "docs/LIE_LEDGER_LOGIC_AUTHORITY_CONTRACT.md",
   "effective_date": "2026-09-20",
-  "purpose": "Apply the completed full-ledger Claims Forensics adjudication after source qualification, including source-faithful atomic decomposition of the IRGC 15-day asset scorecard, false-media provenance, and evidence-complete/no-Lie dispositions for formerly blocked cases.",
+  "purpose": "Apply the completed full-ledger Claims Forensics adjudication after source qualification, including Sep. 20 source-promotion consumption for three previously held control cases, without reopening unrelated adjudications.",
   "rules": {
     "top_level_unit": "NARRATIVE_CHAIN",
     "atomic_propositions_remain_independent": true,
@@ -513,6 +513,44 @@
       "terminal_event_state": "Attack activity and the Riyadh fuel-area fire are supported; Houthi weapon-to-fire causation and claimed Yanbu damage remain unresolved.",
       "open_evidence_gaps": [
         "Weapon-to-fire attribution for the Riyadh fuel-area fire and independent battle-damage confirmation at Yanbu."
+      ]
+    },
+    "CH-IRAN-MILITARY-TRAINING-20260918": {
+      "classification": "STRATEGIC_CLAIM_CONTROL",
+      "public_title": "Iran civilian military-training registrations and participation projection",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false,
+      "event_title": "Sep. 18 Iranian civilian military-training registration and projection claim",
+      "event_baseline": "AP reported Gen. Hassan Hassanzadeh saying over 600,000 people had registered and over 1 million were expected to take part in the training.",
+      "terminal_event_state": "The >600,000 registration count remains unresolved absent independent audit. The >1 million statement remains a prospective projection and is not adjudicated as a present-tense falsehood.",
+      "open_evidence_gaps": [
+        "Independent registration records or audit capable of testing the >600,000 exact count.",
+        "Post-training participation evidence sufficient to assess the projected >1 million turnout without retroactively converting a projection into a contemporaneous factual claim."
+      ]
+    },
+    "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919": {
+      "classification": "STRATEGIC_CLAIM_CONTROL",
+      "public_title": "Rezaei multi-warhead anti-ship missile-test claim",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false,
+      "event_title": "Sep. 19 Rezaei multi-warhead anti-ship missile-test assertion",
+      "event_baseline": "The promoted carrier reports Mohsen Rezaei claiming Iran recently test-fired a multi-warhead anti-ship missile near a U.S. vessel or aircraft carrier.",
+      "terminal_event_state": "The claimed test remains unsubstantiated/unresolved on the accepted record. No Lie finding is made.",
+      "open_evidence_gaps": [
+        "Independent telemetry, imagery, U.S. acknowledgement, NAVWARN/NOTAM, weapon identification, or other evidence capable of confirming or falsifying the claimed test."
+      ]
+    },
+    "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919": {
+      "classification": "STRATEGIC_CLAIM_CONTROL",
+      "public_title": "CENTCOM exact zero-Iranian-oil-export blockade claim",
+      "lie_ledger_accusation": false,
+      "public_include_in_accusation_count": false,
+      "event_title": "Sep. 19 CENTCOM exact zero-export assertion",
+      "event_baseline": "Anadolu reports Adm. Brad Cooper/CENTCOM saying: “Iran has exported zero barrels thanks to our ironclad blockade.”",
+      "terminal_event_state": "The exact zero-export proposition remains unresolved because the accepted wording does not define a precise start/end window or a narrower measurement denominator beyond Iranian oil exports.",
+      "open_evidence_gaps": [
+        "Primary context defining the exact measurement window and denominator intended by the zero-barrels assertion.",
+        "Independent tanker, customs, loading, or other export reconciliation matched to that same defined scope."
       ]
     }
   },
@@ -4799,8 +4837,278 @@
       "relation_type": "ORIGINATION",
       "publication_status": "PUBLIC_READY",
       "publication_blockers": []
+    },
+    {
+      "claim_instance_id": "CI-CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918-P01",
+      "claim_id": "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918",
+      "original_claim_id": "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918",
+      "proposition_id": "PROP-IRAN-MILITARY-TRAINING-REGISTRATIONS-20260918",
+      "chain_id": "CH-IRAN-MILITARY-TRAINING-20260918",
+      "actor": "Gen. Hassan Hassanzadeh",
+      "claimant_type": "OFFICIAL_MILITARY_CLAIM",
+      "actor_role": "ORIGINATOR",
+      "claim": "Hassanzadeh said over 600,000 people had registered to participate, with over 1 million expected to take part in the training.",
+      "source_proposition": "over 600,000 people had registered to participate",
+      "proposition": "More than 600,000 people had registered to participate in the civilian military training.",
+      "proposition_axis": "PARTICIPATION_COUNT",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_COUNT_NOT_INDEPENDENTLY_AUDITED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT REGISTRATION COUNT — LACK OF INDEPENDENT AUDIT IS NOT FALSITY",
+      "denominator_class": "STRATEGIC_NARRATIVE_CASE_FILE",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The promoted Associated Press source attributes the >600,000 registration count to Hassanzadeh via the Iranian state broadcaster.",
+        "The accepted record contains no independent registration audit or other corroboration capable of validating the exact count."
+      ],
+      "analytic_inference": "Canonical provenance establishes what Hassanzadeh claimed, not that the exact registration count is independently verified. The claim remains unresolved rather than false.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "The reported registration count may be accurate but not independently auditable from the accepted public record.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "No affirmative counterevidence establishes that the count is false."
+        }
+      ],
+      "comparative_assessment": "The accepted evidence is insufficient to resolve the exact registration count and does not support a deception finding.",
+      "narrative_function": "Exact participation-registration count in a public mobilization/training claim.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent registration records, audit material, or other evidence capable of confirming or materially contradicting the >600,000 count."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-61A4DB945FF2"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-61A4DB945FF2"
+      ],
+      "statement_date": "2026-09-18",
+      "event_time": "2026-09-18",
+      "assessment_time": "2026-09-20",
+      "relation_type": "ORIGINATION",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "PR #164 cleared the source-provenance hold; the Sep. 20 exact-count disposition is preserved."
+    },
+    {
+      "claim_instance_id": "CI-CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918-P02",
+      "claim_id": "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918",
+      "original_claim_id": "CLM-IRAN-MILITARY-TRAINING-600K-1M-20260918",
+      "proposition_id": "PROP-IRAN-MILITARY-TRAINING-PROJECTION-20260918",
+      "chain_id": "CH-IRAN-MILITARY-TRAINING-20260918",
+      "actor": "Gen. Hassan Hassanzadeh",
+      "claimant_type": "OFFICIAL_MILITARY_CLAIM",
+      "actor_role": "ORIGINATOR",
+      "claim": "Hassanzadeh said over 600,000 people had registered to participate, with over 1 million expected to take part in the training.",
+      "source_proposition": "over 1 million expected to take part in the training",
+      "proposition": "More than 1 million people were expected to take part in the training.",
+      "proposition_axis": "PROSPECTIVE_PROJECTION",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "PROSPECTIVE_PROJECTION_NOT_PRESENT_TENSE_FACT",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "PROSPECTIVE PROJECTION — NOT ADJUDICATED AS A PRESENT-TENSE FALSEHOOD",
+      "denominator_class": "STRATEGIC_NARRATIVE_CASE_FILE",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The promoted Associated Press source uses prospective wording: over 1 million were expected to take part.",
+        "The source does not state that more than 1 million people had already participated at the time of publication."
+      ],
+      "analytic_inference": "The >1 million figure is a forecast/projection. Source promotion does not convert it into a present-tense factual count or a Lie finding.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "The projection may later prove accurate or inaccurate without showing that the speaker knowingly made a false present-tense statement.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "Forecast error and contemporaneous factual deception are different propositions."
+        }
+      ],
+      "comparative_assessment": "The source wording confirms the prior Claims Forensics distinction between a present registration count and a prospective turnout projection.",
+      "narrative_function": "Prospective participation projection attached to the military-training registration claim.",
+      "confidence": "HIGH",
+      "falsifier": [
+        "Primary source evidence showing the quoted wording was materially mistranslated or actually asserted >1 million present participants rather than a projection."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-61A4DB945FF2"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-61A4DB945FF2"
+      ],
+      "statement_date": "2026-09-18",
+      "event_time": "2026-09-18",
+      "assessment_time": "2026-09-20",
+      "relation_type": "ORIGINATION",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "PR #164 cleared the source-provenance hold and confirms the projection wording used by the Sep. 20 disposition."
+    },
+    {
+      "claim_instance_id": "CI-CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919-P01",
+      "claim_id": "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919",
+      "original_claim_id": "CLM-IRAN-ANTI-SHIP-MULTIWARHEAD-20260919",
+      "proposition_id": "PROP-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919",
+      "chain_id": "CH-IRAN-ANTISHIP-MULTIWARHEAD-TEST-20260919",
+      "actor": "Mohsen Rezaei",
+      "claimant_type": "PUBLIC_OFFICIAL",
+      "actor_role": "ORIGINATOR",
+      "claim": "Rezaei claimed Iran had recently test-fired a multi-warhead anti-ship missile near a U.S. vessel or aircraft carrier.",
+      "source_proposition": "Iran had recently test-fired a multi-warhead anti-ship missile near a U.S. vessel or aircraft carrier.",
+      "proposition": "Iran recently test-fired a multi-warhead anti-ship missile near a U.S. vessel or aircraft carrier.",
+      "proposition_axis": "WEAPON_TEST_OCCURRENCE",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "CLAIMANT_ASSERTION_LACKS_INDEPENDENT_CORROBORATION",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED MULTI-WARHEAD ANTI-SHIP TEST CLAIM — NO LIE FINDING",
+      "denominator_class": "STRATEGIC_NARRATIVE_CASE_FILE",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The promoted New Indian Express source attributes the assertion to Mohsen Rezaei.",
+        "The promoted source supplies no independent telemetry, imagery, U.S. acknowledgement, NAVWARN/NOTAM, weapon identification, or other corroboration for the claimed test."
+      ],
+      "analytic_inference": "Canonical provenance establishes the assertion and its claimant. The accepted record still cannot independently establish whether the claimed test occurred, so the proposition remains unresolved rather than false.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "A test may have occurred without public independent corroboration.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "Absence of accepted public confirmation is not affirmative evidence that no test occurred."
+        }
+      ],
+      "comparative_assessment": "The promoted wording does not materially change the prior proposition and provides no basis for a knowledge/deception finding.",
+      "narrative_function": "Iranian strategic weapon-test assertion.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Independent telemetry, imagery, U.S. acknowledgement, NAVWARN/NOTAM, weapon identification, or other evidence capable of confirming or falsifying the claimed test."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-C5D731879E3B"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-C5D731879E3B"
+      ],
+      "statement_date": "2026-09-19",
+      "event_time": "2026-09-19",
+      "assessment_time": "2026-09-20",
+      "relation_type": "ORIGINATION",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "PR #164 cleared the source-provenance hold; the Sep. 20 unresolved/no-Lie disposition is preserved."
+    },
+    {
+      "claim_instance_id": "CI-CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919-P01",
+      "claim_id": "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "original_claim_id": "CLM-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "proposition_id": "PROP-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "chain_id": "CH-CENTCOM-ZERO-IRAN-OIL-EXPORTS-20260919",
+      "actor": "Adm. Brad Cooper / U.S. Central Command",
+      "claimant_type": "OFFICIAL_MILITARY_CLAIM",
+      "actor_role": "ORIGINATOR",
+      "claim": "Iran has exported zero barrels thanks to our ironclad blockade.",
+      "source_proposition": "Iran has exported zero barrels thanks to our ironclad blockade.",
+      "proposition": "Iran exported zero barrels of oil in the blockade-period context asserted by Cooper; the source does not define an exact start/end time or a narrower measurement denominator.",
+      "proposition_axis": "EXACT_EXPORT_COUNT",
+      "proposition_fidelity": "SOURCE_EQUIVALENT",
+      "truth_adjudication": "UNRESOLVED",
+      "truth_qualifier": "EXACT_ZERO_TIME_WINDOW_AND_MEASUREMENT_DENOMINATOR_UNDEFINED",
+      "knowledge_judgment": "NOT_ASSESSABLE",
+      "combined_assessment": "UNRESOLVED EXACT ZERO-EXPORT CLAIM — PRECISE TEST WINDOW AND MEASUREMENT DENOMINATOR UNDEFINED",
+      "denominator_class": "STRATEGIC_NARRATIVE_CASE_FILE",
+      "counts_as_unique_proposition": false,
+      "observed_facts": [
+        "The promoted Anadolu source directly attributes the exact 'zero barrels' assertion to Adm. Brad Cooper/CENTCOM.",
+        "The promoted source preserves blockade-period context but does not state an exact start/end date for the zero claim.",
+        "The source does not redefine the denominator as loadings, Hormuz departures, sanctioned exports, observed tanker movements, customs-cleared trade, or another narrower quantitative category."
+      ],
+      "analytic_inference": "The zero claim carries an affirmative evidentiary burden, but the accepted wording is not precise enough to test against an invented time window or denominator. It therefore remains unresolved on the accepted record.",
+      "knowledge_indicators": [],
+      "credible_alternatives": [
+        {
+          "alternative": "Cooper may have been referring to a narrower internal operational measurement or time window not stated in the quoted clause.",
+          "comparative_weight": "PLAUSIBLE",
+          "basis": "The promoted source does not preserve enough primary-statement context to define the intended metric more narrowly."
+        },
+        {
+          "alternative": "The literal broad zero-export proposition may be testable if a matching blockade-period window and export dataset are independently established.",
+          "comparative_weight": "UNRESOLVED",
+          "basis": "The accepted record lacks a current-period tanker/customs reconciliation matched to a defined scope."
+        }
+      ],
+      "comparative_assessment": "The promoted source confirms the exact wording but does not resolve the material scope ambiguity identified by the Sep. 20 maintenance sweep.",
+      "narrative_function": "Exact quantitative blockade-effect claim.",
+      "confidence": "MODERATE",
+      "falsifier": [
+        "Primary CENTCOM context defining the exact time window and measurement denominator intended by the zero-barrels assertion, paired with independent export evidence covering the same scope."
+      ],
+      "evidence_support": {
+        "what_was_said": [
+          "SRC-229640C43A50"
+        ],
+        "factual_baseline": [],
+        "contemporaneous_state": [],
+        "knowledge_access": [],
+        "knowledge_indicators": [],
+        "contrary_evidence": [],
+        "corrections": [],
+        "repetitions": [],
+        "credible_alternative": [],
+        "comparative_inference": [],
+        "falsifier": []
+      },
+      "source_ids": [
+        "SRC-229640C43A50"
+      ],
+      "statement_date": "2026-09-19",
+      "event_time": "2026-09-19",
+      "assessment_time": "2026-09-20",
+      "relation_type": "ORIGINATION",
+      "adjudication_status": "EVIDENCE_ADJUDICATED",
+      "publication_status": "PUBLIC_READY",
+      "publication_blockers": [],
+      "rationale": "PR #164 cleared the source-provenance hold; exact zero wording and its undefined window/denominator are preserved without semantic sharpening."
     }
   ],
-  "maintenance_sweep_path": "data/claims-forensics/lie-ledger-maintenance-sweep-20260920.json",
-  "maintenance_sweep_version": "ATLAS-CLAIMS-FORENSICS-MAINT-20260920-1"
+  "maintenance_sweep_path": "data/claims-forensics/claims-source-promotion-consumption-20260920.json",
+  "maintenance_sweep_version": "ATLAS-CLAIMS-FORENSICS-MAINT-20260920-2"
 }

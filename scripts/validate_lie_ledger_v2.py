@@ -235,7 +235,7 @@ def validate(root: Path = ROOT) -> None:
         and chain.get("public_include_in_accusation_count") is False
     ]
     require(len(accusation_chains) == 35, f"current accusation-chain denominator drifted: {len(accusation_chains)}")
-    require(len(control_chains) == 15, f"current control-chain denominator drifted: {len(control_chains)}")
+    require(len(control_chains) == 18, f"current control-chain denominator drifted: {len(control_chains)}")
     require(len(accusation_chains) + len(control_chains) == len(chains), "current Lie Ledger chain classification is incomplete")
 
     # Every chain must be independently reconstructable from canonical claim,
