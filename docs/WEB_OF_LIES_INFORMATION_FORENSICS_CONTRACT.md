@@ -807,9 +807,25 @@ A source may therefore have:
 Those states must not be collapsed.
 
 When Claims Forensics has not adjudicated the bridge or conclusion, Web of Lies
-must route the proposition as an ADJUDICATION_REVIEW_CANDIDATE rather than
-assigning a truth, knowledge, deception, behavior-class or Hall finding on its
-own.
+must not invent a canonical truth, knowledge, or deception adjudication. It may,
+however, make a narrower **evidentiary-support behavior finding** when a speaker
+presents a positive factual assertion as established and a documented public
+evidence search finds no support for the asserted premise/bridge/conclusion.
+That finding is **UNSUPPORTED**, not a silent conversion to canonical FALSE.
+
+"Unresolved" and "unsupported" are different states:
+
+- **UNRESOLVED** — material evidence is conflicting, incomplete, inaccessible,
+  or genuinely insufficient to decide support;
+- **UNSUPPORTED** — the source asserted the proposition as fact, the source's
+  stated basis does not support it (or no basis was supplied), and a documented
+  public-evidence search found no evidentiary basis for the assertion.
+
+A claimant does not immunize an unsupported assertion by adding an
+unfalsifiable escape hatch. A follow-on statement whose function is to preserve
+the original claim without evidence (for example, "it happened/can happen but
+you cannot observe it because it chose not to") may be recorded as
+EVIDENTIARY_EVASION when the exact wording and evidentiary failure are preserved.
 
 Repeated title/thumbnail sensationalization may become source-behavior evidence
 only when the underlying incidents are individually documented. Engagement
@@ -837,9 +853,23 @@ qualifying information events.
 
 A qualifying incident is a source-authored or source-presented factual event in
 which the relevant proposition, presentation, inferential bridge, or factual
-conclusion has been established as false or materially misleading, or in which
-the source manufactures an unsupported factual bridge/conclusion from a real
-substrate and that bridge/conclusion is subsequently adjudicated adverse.
+conclusion is established as false/materially misleading **or is affirmatively
+unsupported after a documented evidentiary-support review**.
+
+For the Bullshitter award, WOL does not have to prove the logical opposite of a
+positive assertion. If a source says X happened, X exists, X caused Y, or actor
+A intentionally did B as an asserted fact, the source carries the burden of
+showing a basis for that assertion. WOL may count the incident as unsupported
+when:
+
+1. the exact asserted proposition is preserved;
+2. the source's stated evidentiary basis is absent, circular, self-sealing, or
+   does not support the asserted proposition;
+3. the public-evidence search scope and cutoff are recorded; and
+4. that search finds no supporting evidentiary basis.
+
+This does **not** mean "not disproved = false." It means "asserted as fact
+without evidentiary support = bullshit" for source-behavior purposes.
 
 Examples include:
 
@@ -857,7 +887,9 @@ Examples include:
 The following do **not** qualify by themselves:
 
 - disagreement or opinion without a factual assertion;
-- an unresolved inference;
+- a genuinely unresolved inference where material evidence is incomplete,
+  inaccessible, or conflicting;
+- mere absence of disproof without a documented support search;
 - a prediction that merely fails;
 - a carrier accurately reporting someone else's allegation;
 - a dramatic but true title;
@@ -882,6 +914,7 @@ statement by that source false.
 
 The operating principle is:
 
-> **If the receipts prove somebody repeatedly turns facts into bullshit, Web of
-> Lies is allowed to call them a bullshitter.**
+> **If the receipts prove somebody repeatedly turns facts into bullshit — or
+> repeatedly asserts factual bullshit with no evidentiary basis — Web of Lies is
+> allowed to call them a bullshitter.**
 
