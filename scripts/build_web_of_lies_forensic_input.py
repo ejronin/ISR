@@ -23,6 +23,8 @@ import jsonschema
 ROOT = Path(__file__).resolve().parents[1]
 PACKET_DIR = "data/web-of-lies/lineage-packets"
 PACKET_SCHEMA = "schemas/web-of-lies-lineage-packet-v1.json"
+SOURCE_DOSSIER = "data/web-of-lies/source-dossiers.json"
+SOURCE_DOSSIER_SCHEMA = "schemas/web-of-lies-source-dossier-v1.json"
 OUTPUT = "data/web-of-lies/forensic-records.json"
 CONTRACT = "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md"
 
@@ -153,6 +155,42 @@ def validate_packet_refs(packet: dict[str, Any], path: str) -> None:
                 )
 
 
+def validate_source_dossier(dossier: dict[str, Any], path: str) -> None:
+    local_source_ids = {
+        str(row["source_id"]) for row in dossier.get("source_profiles") or []
+    }
+
+    seen_relationships: set[str] = set()
+    for relation in dossier.get("source_relationships") or []:
+        rid = str(relation["relationship_id"])
+        if rid in seen_relationships:
+            raise ValueError(f"{path}: duplicate source relationship id {rid}")
+        seen_relationships.add(rid)
+        for endpoint in ("from_id", "to_id"):
+            value = str(relation[endpoint])
+            if value not in local_source_ids:
+                raise ValueError(
+                    f"{path}: source relationship {rid} references undeclared profile {value}"
+                )
+
+    for collection_name, id_field in (
+        ("external_assessments", "assessment_id"),
+        ("infrastructure_observations", "observation_id"),
+        ("research_leads", "lead_id"),
+    ):
+        seen_ids: set[str] = set()
+        for row in dossier.get(collection_name) or []:
+            row_id = str(row[id_field])
+            if row_id in seen_ids:
+                raise ValueError(f"{path}: duplicate {collection_name} id {row_id}")
+            seen_ids.add(row_id)
+            source_id = row.get("source_id")
+            if source_id and str(source_id) not in local_source_ids:
+                raise ValueError(
+                    f"{path}: {collection_name} {row_id} references undeclared source {source_id}"
+                )
+
+
 def build_forensic_input(root: Path) -> dict[str, Any]:
     packet_root = root / PACKET_DIR
     schema = load_json(root / PACKET_SCHEMA)
@@ -169,6 +207,10 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
     events: dict[str, dict[str, Any]] = {}
     relationships: dict[str, dict[str, Any]] = {}
     promotion_flags: dict[str, dict[str, Any]] = {}
+    external_assessments: dict[str, dict[str, Any]] = {}
+    infrastructure_observations: dict[str, dict[str, Any]] = {}
+    research_leads: dict[str, dict[str, Any]] = {}
+    source_dossier_meta: dict[str, Any] | None = None
     latest_as_of: tuple[datetime, str] | None = None
     fingerprint_material: list[str] = []
 
@@ -231,6 +273,75 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
                     )
                 target[row_id] = copy.deepcopy(row)
 
+    dossier_path = root / SOURCE_DOSSIER
+    dossier_hash = None
+    if dossier_path.is_file():
+        dossier_relative = dossier_path.relative_to(root).as_posix()
+        dossier_raw = dossier_path.read_bytes()
+        dossier = json.loads(dossier_raw.decode("utf-8"))
+        dossier_schema = load_json(root / SOURCE_DOSSIER_SCHEMA)
+        jsonschema.Draft202012Validator(dossier_schema).validate(dossier)
+        validate_source_dossier(dossier, dossier_relative)
+
+        dossier_hash = sha256_bytes(canonical_bytes(dossier))
+        dossier_as_of = str(dossier["as_of"])
+        parsed_dossier_as_of = parse_time(dossier_as_of)
+        if latest_as_of is None or parsed_dossier_as_of > latest_as_of[0]:
+            latest_as_of = (parsed_dossier_as_of, dossier_as_of)
+
+        source_dossier_meta = {
+            "path": dossier_relative,
+            "as_of": dossier_as_of,
+            "sha256": dossier_hash,
+            "basis_paths": sorted(
+                {str(value) for value in dossier.get("basis_paths") or []}
+            ),
+        }
+
+        for profile in dossier.get("source_profiles") or []:
+            source_id = str(profile["source_id"])
+            forbidden = MANUAL_RANK_FIELDS.intersection(profile)
+            if forbidden:
+                raise ValueError(
+                    f"{dossier_relative}: source profile {source_id} contains "
+                    f"forbidden manual Hall fields: {sorted(forbidden)}"
+                )
+            if source_id in profiles:
+                profiles[source_id] = merge_profile(profiles[source_id], profile)
+            else:
+                profiles[source_id] = copy.deepcopy(profile)
+                for field in MERGEABLE_LIST_FIELDS:
+                    if field in profiles[source_id]:
+                        profiles[source_id][field] = normalize_list(
+                            field, list(profiles[source_id].get(field) or [])
+                        )
+
+        for relation in dossier.get("source_relationships") or []:
+            row_id = str(relation["relationship_id"])
+            if row_id in relationships:
+                raise ValueError(
+                    f"{dossier_relative}: duplicate relationship id across "
+                    f"lineage/source-dossier inputs: {row_id}"
+                )
+            relationships[row_id] = copy.deepcopy(relation)
+
+        for collection_name, target, id_field in (
+            ("external_assessments", external_assessments, "assessment_id"),
+            (
+                "infrastructure_observations",
+                infrastructure_observations,
+                "observation_id",
+            ),
+            ("research_leads", research_leads, "lead_id"),
+        ):
+            for row in dossier.get(collection_name) or []:
+                row_id = str(row[id_field])
+                if row_id in target:
+                    raise ValueError(
+                        f"{dossier_relative}: duplicate {collection_name} id {row_id}"
+                    )
+                target[row_id] = copy.deepcopy(row)
+
     all_source_ids = set(profiles)
     all_event_ids = set(events)
     graph_ids = all_source_ids | all_event_ids
@@ -253,19 +364,34 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
                 )
 
     packet_set_sha = sha256_bytes("".join(fingerprint_material).encode("utf-8"))
+    input_identity_material = packet_set_sha
+    if dossier_hash:
+        input_identity_material += f"\n{dossier_hash}"
+    input_set_sha = sha256_bytes(input_identity_material.encode("utf-8"))
     return {
         "schema_version": "1.0",
         "artifact_role": "WEB_OF_LIES_FORENSIC_INPUT",
         "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-        "version": f"WOL-FORENSIC-INPUT-{packet_set_sha[:16]}",
+        "version": f"WOL-FORENSIC-INPUT-{input_set_sha[:16]}",
         "contract_path": CONTRACT,
         "evidence_cutoff": latest_as_of[1] if latest_as_of else None,
         "lineage_packet_set_sha256": packet_set_sha,
+        "forensic_input_set_sha256": input_set_sha,
+        "source_dossier": source_dossier_meta,
         "lineage_packets": sorted(packet_rows, key=lambda row: row["packet_id"]),
         "source_profiles": sorted(profiles.values(), key=lambda row: row["source_id"]),
         "information_events": sorted(events.values(), key=lambda row: row["event_id"]),
         "relationships": sorted(relationships.values(), key=lambda row: row["relationship_id"]),
         "promotion_flags": sorted(promotion_flags.values(), key=lambda row: row["flag_id"]),
+        "external_assessments": sorted(
+            external_assessments.values(), key=lambda row: row["assessment_id"]
+        ),
+        "infrastructure_observations": sorted(
+            infrastructure_observations.values(), key=lambda row: row["observation_id"]
+        ),
+        "research_leads": sorted(
+            research_leads.values(), key=lambda row: row["lead_id"]
+        ),
     }
 
 
