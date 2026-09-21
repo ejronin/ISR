@@ -75,7 +75,11 @@ assert any(
     receipt["url"] == "https://www.youtube.com/watch?v=H0BfiwKhoVs"
     for receipt in allowance["public_receipts"]
 )
-assert "separate factual/causal propositions" in allowance["downstream_note"]
+assert "Do not score the title alone as bullshit" in allowance["downstream_note"]
+assert "interceptor rationing" in allowance["downstream_note"]
+assert allowance["project_owner_direct_review"]["transcript_status"] if "transcript_status" in allowance["project_owner_direct_review"] else True
+assert "did not care" in allowance["project_owner_direct_review"]["observation"]
+assert "not yet a scored WOL-native incident" in allowance["project_owner_direct_review"]["evidentiary_limit"]
 
 # Nearby control: a dramatic July 20 casualty headline remains research context,
 # not an adverse discovery solely because it came from the same publisher.
