@@ -380,5 +380,19 @@
       "current_window_status_reported_separately": true,
       "undated_incidents_cannot_establish_window": true
     }
+  },
+  "native_source_behavior_event_types": [
+    "COORDINATED_INFLUENCE_OPERATION"
+  ],
+  "native_behavior_evidence_statuses": [
+    "PUBLIC_OSINT_ESTABLISHED"
+  ],
+  "native_behavior_classification": {
+    "allowed": true,
+    "manual_assignment_allowed": false,
+    "require_public_receipts": true,
+    "require_behavior_findings": true,
+    "rule": "WOL-native source-behavior incidents may support source behavior classes when the incident records public receipts and an affirmative evidentiary review. This does not authorize canonical truth/knowledge/deception findings.",
+    "state_affiliation_rule": "Amplification, quotation, or engagement by state-affiliated actors does not establish state control, direction, agency, or funding absent separate evidence."
   }
 }
