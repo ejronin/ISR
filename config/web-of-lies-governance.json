@@ -340,7 +340,7 @@
       "public_label": "Bullshitter",
       "description": "Repeatedly publishes false/materially misleading factual claims or presents unsupported factual assertions, inferential bridges, or self-sealing evasions as established fact.",
       "window_days": 30,
-      "trigger_rule": "MORE_THAN_5_QUALIFYING_INCIDENTS",
+      "trigger_rule": "MORE_THAN_5_QUALIFYING_INCIDENTS_IN_ANY_30_DAY_WINDOW",
       "minimum_qualifying_incidents": 6,
       "manual_assignment_allowed": false,
       "same_information_event_deduplicated": true,
@@ -374,7 +374,11 @@
         "require_checked_at": true,
         "require_claimant_basis_review": true,
         "rule": "A positive factual assertion carries its own evidentiary burden. WOL may find it unsupported without proving the logical opposite, but may not convert incomplete/inaccessible evidence into an unsupported finding."
-      }
+      },
+      "qualification_window_semantics": "ANY_30_DAY_CLUSTER",
+      "award_persists_after_earned": true,
+      "current_window_status_reported_separately": true,
+      "undated_incidents_cannot_establish_window": true
     }
   }
 }
