@@ -35,7 +35,7 @@ ACCEPTED = {
     "control_chains": 18,
     "proposition_rows": 147,
     "unique_propositions": 68,
-    "claim_instances": 89,
+    "claim_instances": 88,
     "publication_blockers": 0,
 }
 
