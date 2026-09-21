@@ -45,6 +45,24 @@ expected_packet_paths.update(
     (Path(aggregator.PACKET_DIR) / f"{legacy.slug(chain_id)}.json").as_posix()
     for chain_id in legacy.MANUAL_CHAIN_IDS
 )
+
+# Public-OSINT lineage packets are manual, review-controlled research artifacts.
+# They are allowed to grow without teaching a generated packet compiler about
+# every new research batch, but each must carry actual public receipts.
+manual_osint_paths = set()
+for path in sorted((ROOT / aggregator.PACKET_DIR).glob("*.json")):
+    packet_doc = json.loads(path.read_text(encoding="utf-8"))
+    if packet_doc.get("generation_mode") != "MANUAL_PUBLIC_OSINT_LINEAGE":
+        continue
+    relative = path.relative_to(ROOT).as_posix()
+    events = packet_doc.get("information_events") or []
+    assert events, f"{relative}: manual public-OSINT packet has no information events"
+    assert any(event.get("public_receipts") for event in events), (
+        f"{relative}: manual public-OSINT packet has no public receipts"
+    )
+    manual_osint_paths.add(relative)
+expected_packet_paths.update(manual_osint_paths)
+
 assembled_packet_paths = {row["path"] for row in assembled["lineage_packets"]}
 assert assembled_packet_paths == expected_packet_paths, (
     "Web of Lies packet inventory differs from generated/manual/current-anchor authority: "
