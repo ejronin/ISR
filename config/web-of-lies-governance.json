@@ -306,5 +306,19 @@
       "shared_hosting_is_not_common_ownership": true,
       "possible_vpn_is_not_established_vpn": true
     }
+  },
+  "profile_evidence": {
+    "receipt_backed_descriptive_classes": [
+      "JOURNALISTIC_SOURCE",
+      "SUBJECT_MATTER_ANALYST",
+      "PARTISAN_COMMENTATOR",
+      "ACTIVIST_COMMENTATOR",
+      "MONETIZED_INFLUENCER",
+      "CONTENT_AGGREGATOR"
+    ],
+    "adverse_classes_still_require_incident_events": true,
+    "monetization_may_be_supported_by_public_profile_receipts": true,
+    "profile_receipt_does_not_create_hall_score": true,
+    "collaboration_receipt_does_not_establish_control": true
   }
 }
