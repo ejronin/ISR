@@ -306,6 +306,151 @@
               }
             },
             "additionalProperties": true
+          },
+          "content_body_evidence": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "medium",
+              "capture_status",
+              "capture_scope",
+              "transcript_receipts",
+              "body_claims"
+            ],
+            "properties": {
+              "medium": {
+                "enum": [
+                  "TEXT_PUBLICATION",
+                  "SOCIAL_POST",
+                  "AUDIO_VIDEO",
+                  "WIKIPEDIA_REVISION",
+                  "OTHER_PUBLIC"
+                ]
+              },
+              "capture_status": {
+                "enum": [
+                  "FULL_TEXT_CAPTURED",
+                  "TRANSCRIPT_CAPTURED",
+                  "PARTIAL_TRANSCRIPT_CAPTURED",
+                  "TIMESTAMPED_DIRECT_REVIEW",
+                  "TITLE_DESCRIPTION_ONLY",
+                  "UNAVAILABLE"
+                ]
+              },
+              "capture_scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "transcript_receipts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "receipt_id",
+                    "url",
+                    "provenance_status",
+                    "transcript_type"
+                  ],
+                  "properties": {
+                    "receipt_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "provenance_status": {
+                      "enum": [
+                        "ORIGINAL_URL",
+                        "ORIGINAL_WITH_ARCHIVE",
+                        "ARCHIVED_ORIGINAL",
+                        "SECONDARY_PRESERVATION"
+                      ]
+                    },
+                    "transcript_type": {
+                      "enum": [
+                        "PLATFORM_CAPTIONS",
+                        "PUBLISHER_TRANSCRIPT",
+                        "THIRD_PARTY_TRANSCRIPT",
+                        "MANUAL_TIMESTAMPED_REVIEW"
+                      ]
+                    },
+                    "language": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "timestamp_start": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "timestamp_end": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "scope_note": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "body_claims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "body_claim_id",
+                    "statement_identity",
+                    "speaker",
+                    "evidence_scope"
+                  ],
+                  "properties": {
+                    "body_claim_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "statement_identity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "speaker": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "timestamp_start": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "timestamp_end": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidence_scope": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            },
+            "additionalProperties": true
           }
         },
         "additionalProperties": true
