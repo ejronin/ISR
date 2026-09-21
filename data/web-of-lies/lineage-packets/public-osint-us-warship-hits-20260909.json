@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-US-WARSHIP-HITS-20260909",
+  "claim_family_id": "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909",
+  "as_of": "2026-09-21T09:40:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-chain-ll-iran-us-warship-hits-20260909.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Trace of the Sep. 9 DDG-119/DDG-53 hit-and-damage claim and the U.S. denial. Canonical FALSE/CONTRADICTED EFFECT CLAIM — POSSIBLE KNOWLEDGE is preserved; no personal-knowledge inference is added.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-IRGC",
+      "display_name": "Islamic Revolutionary Guard Corps",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-USCENTCOM",
+      "display_name": "U.S. Central Command",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-WARSHIP-HITS-0909-IRGC",
+      "claim_family_id": "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909",
+      "source_id": "WOL-SRC-IRGC",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-09-09T08:47:00+03:30",
+      "first_observed_at": "2026-09-09T08:47:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "The IRGC said ballistic missiles struck U.S. destroyers DDG-119 and DDG-53 and significantly damaged both vessels.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC Public Relations Department / Aerospace Force",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-TASNIM"
+      ],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-WARSHIP-HITS-20260909",
+        "LL-IRAN-US-WARSHIP-HITS-20260909",
+        "PROP-7A62C2664F3E"
+      ],
+      "evidence_source_ids": [
+        "SRC-821796480B53",
+        "SRC-BDBE308F68E2"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-821796480B53",
+        "SRC-BDBE308F68E2"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WARSHIP-HITS-0909-TASNIM-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/09/3692367/american-warships-struck-with-powerfull-ballistic-missiles-irgc",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC Public Relations Department",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "FALSE/CONTRADICTED EFFECT CLAIM — POSSIBLE KNOWLEDGE",
+      "plain_english_verdict": "Atlas records the physical-hit/damage proposition as false/contradicted with possible knowledge. This event records the institutional origin without inventing personal knowledge."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-WARSHIP-HITS-0909-TASNIM",
+      "claim_family_id": "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-09T08:47:00+03:30",
+      "first_observed_at": "2026-09-09T08:47:00+03:30",
+      "time_precision": "PUBLISHER_TIMESTAMP_WITH_TIMEZONE",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Tasnim carried the IRGC assertion that DDG-119 and DDG-53 were struck and significantly damaged.",
+      "translated_statement": null,
+      "originating_claimant": "IRGC",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-WARSHIP-HITS-20260909",
+        "LL-IRAN-US-WARSHIP-HITS-20260909",
+        "PROP-7A62C2664F3E"
+      ],
+      "evidence_source_ids": [
+        "SRC-821796480B53",
+        "SRC-BDBE308F68E2"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WARSHIP-HITS-0909-TASNIM-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/09/3692367/american-warships-struck-with-powerfull-ballistic-missiles-irgc",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "IRGC"
+        }
+      ],
+      "plain_english_verdict": "The Tasnim publication is derivative of the IRGC statement and is not independent evidence that the destroyers were physically hit."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-WARSHIP-HITS-0909-US-DENIAL",
+      "claim_family_id": "CHAIN-LL-IRAN-US-WARSHIP-HITS-20260909",
+      "source_id": "WOL-SRC-USCENTCOM",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-09",
+      "first_observed_at": "2026-09-09",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL_COUNTERCLAIM",
+      "exact_statement": "CENTCOM denied that American warships were hit in the Sep. 8-9 retaliation wave; no independent U.S.-vessel damage evidence was established at the cutoff.",
+      "translated_statement": null,
+      "originating_claimant": "U.S. Central Command",
+      "lineage_roles": [
+        "CONTRADICTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-LL-IRAN-US-WARSHIP-HITS-20260909",
+        "LL-IRAN-US-WARSHIP-HITS-20260909",
+        "PROP-7A62C2664F3E"
+      ],
+      "evidence_source_ids": [
+        "SRC-821796480B53",
+        "SRC-BDBE308F68E2"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-WARSHIP-HITS-0909-REUTERS-US-DENIAL",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-attacks-us-base-jordan-ships-near-hormuz-after-tankers-sunk-2026-09-09/",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "U.S. Central Command",
+          "original_verified": true
+        },
+        {
+          "receipt_id": "WOL-RCPT-WARSHIP-HITS-0909-AP-US-DENIAL",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/ae03ad7a30b113a8acca045ea10ad8b2",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "U.S. Central Command",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "This is the opposing official account consumed by Claims Forensics; it is not silently counted as an independent corroborating source."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-WARSHIP-HITS-0909-01",
+      "from_id": "WOL-EVT-PUB-WARSHIP-HITS-0909-TASNIM",
+      "to_id": "WOL-EVT-PUB-WARSHIP-HITS-0909-IRGC",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-821796480B53"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-WARSHIP-HITS-0909-01",
+          "surface": "WEBSITE",
+          "url": "https://www.tasnimnews.ir/en/news/2026/09/09/3692367/american-warships-struck-with-powerfull-ballistic-missiles-irgc",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "IRGC"
+        }
+      ]
+    },
+    {
+      "relationship_id": "WOL-REL-PUB-WARSHIP-HITS-0909-02",
+      "from_id": "WOL-EVT-PUB-WARSHIP-HITS-0909-US-DENIAL",
+      "to_id": "WOL-EVT-PUB-WARSHIP-HITS-0909-IRGC",
+      "relationship_type": "CONTRADICTS",
+      "evidence_source_ids": [
+        "SRC-821796480B53",
+        "SRC-BDBE308F68E2"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-WARSHIP-HITS-0909-02",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-attacks-us-base-jordan-ships-near-hormuz-after-tankers-sunk-2026-09-09/",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "U.S. Central Command"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
