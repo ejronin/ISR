@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-HOUTHI-NAVIGATION-20260912",
+  "claim_family_id": "CH-HOUTHI-NAVIGATION-CLAIM-20260912",
+  "as_of": "2026-09-21T10:05:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-houthi-navigation-claim-20260912.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Safety-characterization trace. The statement is not treated as an ordinary lie-denominator case, but Atlas marks the blanket safety characterization misleading because independent maritime risk remained elevated.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-YAHYA-SAREE",
+      "display_name": "Yahya Saree",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "PERSON",
+      "country_region": "Yemen",
+      "stable_identity_id": "WOL-ID-YAHYA-SAREE",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-HOUTHI-NAV-SAREE",
+      "claim_family_id": "CH-HOUTHI-NAVIGATION-CLAIM-20260912",
+      "source_id": "WOL-SRC-YAHYA-SAREE",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-09-11",
+      "first_observed_at": "2026-09-11",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "Yahya Saree said maritime navigation remained safe for all shipping companies except Saudi vessels subject to the Houthi ban.",
+      "translated_statement": null,
+      "originating_claimant": "Yahya Saree / Ansar Allah",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-SAFE-NAVIGATION-EXCEPT-SAUDI-20260912-P01",
+        "CLM-HOUTHI-SAFE-NAVIGATION-EXCEPT-SAUDI-20260912",
+        "PROP-HOUTHI-SAFE-NAVIGATION-20260912"
+      ],
+      "evidence_source_ids": [
+        "SRC-594086EEF828"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-HOUTHI-NAV-REUTERS-PRESERVED",
+          "surface": "WEBSITE",
+          "url": "https://www.timesofisrael.com/liveblog_entry/houthis-say-shipping-safe-except-for-saudi-vessels-vow-further-escalation/",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Reuters / Yahya Saree",
+          "original_verified": true
+        },
+        {
+          "receipt_id": "WOL-RCPT-HOUTHI-NAV-ALJAZEERA",
+          "surface": "WEBSITE",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/9/11/houthis-declare-red-sea-shipping-safe-except-for-saudi-vessels",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Yahya Saree",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "MISLEADING SAFETY CHARACTERIZATION — NOT AN ORDINARY LIE-DENOMINATOR CASE",
+      "plain_english_verdict": "Atlas treats the blanket safety characterization as misleading in an independently elevated-risk maritime environment, while explicitly excluding it from the ordinary lie denominator."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-HOUTHI-NAV-REUTERS",
+      "claim_family_id": "CH-HOUTHI-NAVIGATION-CLAIM-20260912",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-11",
+      "first_observed_at": "2026-09-11",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Reuters carried Saree's safety characterization while reporting Houthi territorial advances and wider shipping-risk context.",
+      "translated_statement": null,
+      "originating_claimant": "Yahya Saree / Ansar Allah",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-HOUTHI-SAFE-NAVIGATION-EXCEPT-SAUDI-20260912-P01",
+        "CLM-HOUTHI-SAFE-NAVIGATION-EXCEPT-SAUDI-20260912",
+        "PROP-HOUTHI-SAFE-NAVIGATION-20260912"
+      ],
+      "evidence_source_ids": [
+        "SRC-594086EEF828"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-HOUTHI-NAV-REUTERS-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.timesofisrael.com/liveblog_entry/houthis-say-shipping-safe-except-for-saudi-vessels-vow-further-escalation/",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Yahya Saree",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "The attributed carrier does not inherit the misleading characterization as source misconduct merely by reporting it."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-HOUTHI-NAV-01",
+      "from_id": "WOL-EVT-PUB-HOUTHI-NAV-REUTERS",
+      "to_id": "WOL-EVT-PUB-HOUTHI-NAV-SAREE",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-594086EEF828"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-HOUTHI-NAV-01",
+          "surface": "WEBSITE",
+          "url": "https://www.timesofisrael.com/liveblog_entry/houthis-say-shipping-safe-except-for-saudi-vessels-vow-further-escalation/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Yahya Saree"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

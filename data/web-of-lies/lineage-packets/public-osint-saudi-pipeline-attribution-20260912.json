@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-SAUDI-PIPELINE-ATTRIBUTION-20260912",
+  "claim_family_id": "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912",
+  "as_of": "2026-09-21T10:05:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-saudi-pipeline-attribution-20260912.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Hedged attribution trace. Iraqi territorial launch origin is established in later evidence, but Iranian command is not; neither geographic origin nor Iranian participation in the inquiry is treated as proof of Trump's probable-responsibility attribution.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-DONALD-TRUMP",
+      "display_name": "Donald Trump",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "PERSON",
+      "country_region": "United States",
+      "stable_identity_id": "WOL-ID-DONALD-TRUMP",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-IRAQI-SECURITY-AUTHORITIES",
+      "display_name": "Iraqi security authorities",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Iraq"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-PIPELINE-ATTRIBUTION-TRUMP",
+      "claim_family_id": "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912",
+      "source_id": "WOL-SRC-DONALD-TRUMP",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-12",
+      "first_observed_at": "2026-09-12",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "HEDGED",
+      "exact_statement": "Donald Trump said Iran was probably responsible for the aerial attack that shut Saudi Arabia's East-West pipeline.",
+      "translated_statement": null,
+      "originating_claimant": "Donald Trump",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "CI-CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912-P01",
+        "CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912",
+        "PROP-TRUMP-IRAN-PIPELINE-ATTRIBUTION-20260912"
+      ],
+      "evidence_source_ids": [
+        "SRC-EF89596BCB8A"
+      ],
+      "contrary_evidence_source_ids": [
+        "SRC-22C142A8ADBB"
+      ],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-PIPELINE-ATTRIBUTION-REUTERS-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/trump-says-iran-probably-responsible-attack-saudi-pipeline-2026-09-12/",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Donald Trump",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "UNRESOLVED HEDGED ATTRIBUTION — IRANIAN COMMAND NOT ESTABLISHED",
+      "plain_english_verdict": "The statement is explicitly probabilistic. Later evidence establishes Iraqi territorial launch origin, not Iranian command, so the attribution remains unresolved rather than false or confirmed."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-PIPELINE-ATTRIBUTION-REUTERS",
+      "claim_family_id": "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-12",
+      "first_observed_at": "2026-09-12",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Reuters reported Trump's hedged attribution and separately reported Iraqi investigation into the launch origin.",
+      "translated_statement": null,
+      "originating_claimant": "Donald Trump",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912-P01",
+        "CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912",
+        "PROP-TRUMP-IRAN-PIPELINE-ATTRIBUTION-20260912"
+      ],
+      "evidence_source_ids": [
+        "SRC-EF89596BCB8A"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-PIPELINE-ATTRIBUTION-REUTERS-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/trump-says-iran-probably-responsible-attack-saudi-pipeline-2026-09-12/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Donald Trump"
+        }
+      ],
+      "plain_english_verdict": "Reuters is a carrier of the attribution, not an independent source confirming Iranian command."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-PIPELINE-ATTRIBUTION-IRAQ-CONTEXT",
+      "claim_family_id": "CH-SAUDI-PIPELINE-ATTRIBUTION-20260912",
+      "source_id": "WOL-SRC-IRAQI-SECURITY-AUTHORITIES",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-12",
+      "first_observed_at": "2026-09-12",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL_CONTEXT",
+      "exact_statement": "Iraqi authorities established that the drones were launched from Iraqi territory and pursued launcher/perpetrator investigation; the public record did not establish Iranian command.",
+      "translated_statement": null,
+      "originating_claimant": "Iraqi security authorities",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "CI-CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912-P01",
+        "CLM-TRUMP-IRAN-PROBABLE-PIPELINE-20260912",
+        "PROP-TRUMP-IRAN-PIPELINE-ATTRIBUTION-20260912"
+      ],
+      "evidence_source_ids": [
+        "SRC-22C142A8ADBB"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-PIPELINE-ATTRIBUTION-IRAQ-CONTEXT",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iraqi-military-commander-dismissed-after-drone-attacks-against-saudi-arabia-2026-09-11/",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Iraqi authorities"
+        }
+      ],
+      "plain_english_verdict": "This narrows launch geography but does not prove the command attribution. Geographic origin and command responsibility remain separate propositions."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-PIPELINE-ATTRIBUTION-01",
+      "from_id": "WOL-EVT-PUB-PIPELINE-ATTRIBUTION-REUTERS",
+      "to_id": "WOL-EVT-PUB-PIPELINE-ATTRIBUTION-TRUMP",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-EF89596BCB8A"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-PIPELINE-ATTRIBUTION-01",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/trump-says-iran-probably-responsible-attack-saudi-pipeline-2026-09-12/",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Donald Trump"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}

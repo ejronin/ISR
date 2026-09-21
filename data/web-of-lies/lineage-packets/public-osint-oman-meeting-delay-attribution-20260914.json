@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+  "claim_family_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+  "as_of": "2026-09-21T10:05:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/anchor-ch-oman-meeting-delay-attribution-20260914.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Attribution-vs-occurrence trace. Oman publicly confirmed the meeting was postponed but did not publicly identify Saudi Arabia as requester in the reviewed record. Iranian officials did. Meeting delay and requester identity remain distinct propositions.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-ESMAIL-BAQAEI",
+      "display_name": "Esmaeil Baqaei",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "PERSON",
+      "country_region": "Iran",
+      "stable_identity_id": "WOL-ID-ESMAIL-BAQAEI",
+      "identity_confidence": "CONFIRMED"
+    },
+    {
+      "source_id": "WOL-SRC-REUTERS",
+      "display_name": "Reuters",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": []
+    },
+    {
+      "source_id": "WOL-SRC-OMAN-FOREIGN-MINISTRY",
+      "display_name": "Oman Ministry of Foreign Affairs",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "source_entity_type": "INSTITUTION",
+      "country_region": "Oman"
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-OMAN-DELAY-BAQAEI",
+      "claim_family_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+      "source_id": "WOL-SRC-ESMAIL-BAQAEI",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "Iranian Foreign Ministry spokesperson Esmaeil Baqaei said Saudi Arabia requested that the planned Oman meeting between Tehran and Gulf powers not take place for the time being.",
+      "translated_statement": null,
+      "originating_claimant": "Esmaeil Baqaei / Iranian Foreign Ministry",
+      "lineage_roles": [
+        "ORIGINATES"
+      ],
+      "carrier_profile_ids": [
+        "WOL-SRC-REUTERS"
+      ],
+      "canonical_claim_refs": [
+        "CI-CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914-P01",
+        "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+        "PROP-SAUDI-REQUESTED-OMAN-DELAY-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-67F73A60AE22",
+        "SRC-E36D08295EDC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-OMAN-DELAY-REUTERS-ORIGIN",
+          "surface": "WEBSITE",
+          "url": "https://international.astroawani.com/global-news/saudi-arabia-asked-postponement-tehran-gcc-meeting-oman-iran-foreign-ministry-says",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Reuters / Esmaeil Baqaei",
+          "original_verified": true
+        }
+      ],
+      "canonical_combined_assessment": "UNRESOLVED IRANIAN ATTRIBUTION — NO INDEPENDENT SAUDI/OMANI CONFIRMATION",
+      "plain_english_verdict": "The Saudi-request attribution is preserved as an Iranian official assertion. The meeting's postponement is not evidence by itself of who requested it."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-OMAN-DELAY-REUTERS",
+      "claim_family_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+      "source_id": "WOL-SRC-REUTERS",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-14",
+      "first_observed_at": "2026-09-14",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "ATTRIBUTED",
+      "exact_statement": "Reuters reported Baqaei's statement that Saudi Arabia requested the postponement while separately reporting the postponement as an event.",
+      "translated_statement": null,
+      "originating_claimant": "Esmaeil Baqaei / Iranian Foreign Ministry",
+      "lineage_roles": [
+        "REPORTS",
+        "CARRIER"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914-P01",
+        "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+        "PROP-SAUDI-REQUESTED-OMAN-DELAY-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-67F73A60AE22",
+        "SRC-E36D08295EDC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "ATTRIBUTED_REPORT",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-OMAN-DELAY-REUTERS-CARRIER",
+          "surface": "WEBSITE",
+          "url": "https://international.astroawani.com/global-news/saudi-arabia-asked-postponement-tehran-gcc-meeting-oman-iran-foreign-ministry-says",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Esmaeil Baqaei"
+        }
+      ],
+      "plain_english_verdict": "Reuters is the carrier of the requester attribution, not an independent Saudi or Omani confirmation."
+    },
+    {
+      "event_id": "WOL-EVT-PUB-OMAN-DELAY-OMAN-CONTEXT",
+      "claim_family_id": "CH-OMAN-MEETING-DELAY-ATTRIBUTION-20260914",
+      "source_id": "WOL-SRC-OMAN-FOREIGN-MINISTRY",
+      "event_type": "REPORTS",
+      "published_at": "2026-09-13",
+      "first_observed_at": "2026-09-13",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "OFFICIAL_CONTEXT",
+      "exact_statement": "Oman announced that the regional meeting was postponed to create conditions conducive to constructive dialogue, without publicly naming Saudi Arabia as the requester in the reviewed statement.",
+      "translated_statement": null,
+      "originating_claimant": "Oman Ministry of Foreign Affairs",
+      "lineage_roles": [
+        "REPORTS"
+      ],
+      "carrier_profile_ids": [],
+      "canonical_claim_refs": [
+        "CI-CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914-P01",
+        "CLM-IRAN-SAUDI-REQUESTED-OMAN-DELAY-20260914",
+        "PROP-SAUDI-REQUESTED-OMAN-DELAY-20260914"
+      ],
+      "evidence_source_ids": [
+        "SRC-E36D08295EDC"
+      ],
+      "contrary_evidence_source_ids": [],
+      "correction_state": null,
+      "behavior_findings": [],
+      "revenue_findings": [],
+      "independently_sourced": false,
+      "independence_status": "NOT_APPLICABLE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-OMAN-DELAY-OMAN-CONTEXT",
+          "surface": "WEBSITE",
+          "url": "https://en.sedaily.com/international/2026/09/14/iran-gulf-talks-on-hormuz-shipping-postponed-at-last-minute",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Oman Foreign Minister Badr Albusaidi",
+          "original_verified": true
+        }
+      ],
+      "plain_english_verdict": "This confirms postponement, not requester identity. Occurrence and attribution remain separate."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-OMAN-DELAY-01",
+      "from_id": "WOL-EVT-PUB-OMAN-DELAY-REUTERS",
+      "to_id": "WOL-EVT-PUB-OMAN-DELAY-BAQAEI",
+      "relationship_type": "DERIVES_FROM",
+      "evidence_source_ids": [
+        "SRC-67F73A60AE22"
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-OMAN-DELAY-01",
+          "surface": "WEBSITE",
+          "url": "https://international.astroawani.com/global-news/saudi-arabia-asked-postponement-tehran-gcc-meeting-oman-iran-foreign-ministry-says",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "upstream_attribution": "Esmaeil Baqaei"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
