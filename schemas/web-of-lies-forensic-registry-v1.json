@@ -738,6 +738,9 @@
             },
             "additionalProperties": false
           }
+        },
+        "classification_basis_incident_ids": {
+          "$ref": "#/$defs/string_array"
         }
       },
       "additionalProperties": true
@@ -1375,13 +1378,15 @@
           "enum": [
             "UNSUPPORTED_FACTUAL_ASSERTION",
             "UNSUPPORTED_INFERENTIAL_ASSERTION",
-            "EVIDENTIARY_EVASION"
+            "EVIDENTIARY_EVASION",
+            "COORDINATED_INFLUENCE_OPERATION"
           ]
         },
         "assertion_kind": {
           "enum": [
             "FACTUAL_ASSERTION",
-            "MEDIA_PRESENTATION"
+            "MEDIA_PRESENTATION",
+            "NETWORK_BEHAVIOR"
           ]
         },
         "published_at": {
@@ -1424,12 +1429,14 @@
           "required": [
             "status",
             "search_scope",
-            "checked_at",
-            "claimant_basis_status"
+            "checked_at"
           ],
           "properties": {
             "status": {
-              "const": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+              "enum": [
+                "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+                "PUBLIC_OSINT_ESTABLISHED"
+              ]
             },
             "search_scope": {
               "type": "string",
@@ -1440,12 +1447,17 @@
               "minLength": 1
             },
             "claimant_basis_status": {
+              "type": [
+                "string",
+                "null"
+              ],
               "enum": [
                 "NONE_PROVIDED",
                 "CIRCULAR",
                 "DOES_NOT_SUPPORT_ASSERTION",
                 "ASSERTION_ONLY",
-                "SELF_SEALING"
+                "SELF_SEALING",
+                null
               ]
             },
             "claimant_basis_note": {
@@ -1461,7 +1473,7 @@
               ]
             },
             "supporting_evidence_found": {
-              "const": false
+              "type": "boolean"
             }
           },
           "additionalProperties": true
@@ -1483,6 +1495,9 @@
             "string",
             "null"
           ]
+        },
+        "behavior_findings": {
+          "$ref": "#/$defs/string_array"
         }
       },
       "additionalProperties": true
