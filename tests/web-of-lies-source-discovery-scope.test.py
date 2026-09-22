@@ -22,6 +22,12 @@ assert exclusive["external_lane_may_grant_or_deny_wol_outcome"] is False
 assert "No external Atlas lane may grant, deny, suppress, override, or require" in exclusive["rule"]
 assert "storage/authority boundary, not a veto" in authority["canonical_non_overwrite_rule"]
 
+media_review = GOV["osint_collection"]["media_analysis_review"]
+assert media_review["wol_evidence_gate_required_before_adverse_scoring"] is True
+assert media_review["upstream_promotion_is_separate_from_wol_scoring"] is True
+assert "cannot grant, deny, delay, or override" in media_review["rule"]
+assert "upstream_adjudication_required_before_adverse_scoring" not in media_review
+
 contract = (ROOT / GOV["controlling_contract"]).read_text(encoding="utf-8")
 assert "WOL may promote it" in contract
 assert "without waiting for Claims" in contract
