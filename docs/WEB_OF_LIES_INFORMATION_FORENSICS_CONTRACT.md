@@ -999,3 +999,31 @@ Source role, source incentive, source relationship, factual-claim behavior, and
 Bullshitter-award state are separate axes. A descriptive receipt cannot erase
 or manufacture an independently derived adverse incident or source award.
 
+## 34. Parody and satire are context, not blanket immunity
+
+A source label such as **parody**, **satire**, **commentary**, or **fan account** must be
+preserved as source context. It does not, by itself, decide whether a particular
+publication is a factual assertion.
+
+WOL applies the rule at the **publication level**:
+
+- clearly fictional, absurdist, joke, or satirical content presented as such does
+  not qualify merely because a third party later mistakes it for news;
+- a post that itself presents a specific real-world event, strike, casualty,
+  capture, deployment, quotation, or other falsifiable proposition as factual
+  news remains reviewable under the normal evidence gate, even when the account
+  profile carries a parody/satire label;
+- BREAKING-news presentation, documentary-looking synthetic media, or a factual
+  caption can therefore create an evidentiary-support incident when the asserted
+  real-world event has no supporting basis or the presented evidence is
+  fabricated;
+- the parody label does not prove deceptive intent, knowledge, state control,
+  impersonation motive, or coordination. Those require separate evidence.
+
+The question is not **"is this account called parody?"** The question is **"what
+did this particular publication present to the audience?"**
+
+A parody-labelled account can therefore have zero, one, or many qualifying
+source-behavior incidents. It earns no Bullshitter award unless the same
+six-in-30-day incident threshold is independently met.
+
