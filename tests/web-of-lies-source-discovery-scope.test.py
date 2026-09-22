@@ -18,8 +18,11 @@ assert set(scope["materiality_qualification_bases"]) == {
     "DOCUMENTED_DOWNSTREAM_AMPLIFICATION",
 }
 assert scope["arbitrary_numeric_follower_threshold_forbidden"] is True
-assert "own publication" in scope["amplifier_behavior_rule"]
-assert "never transfers automatically" in scope["no_guilt_by_network_rule"]
+assert "lightweight propagation evidence" in scope["amplifier_behavior_rule"]
+assert "Network membership alone proves nothing" in scope["no_guilt_by_network_rule"]
+assert scope["megaphone_roster_is_not_award_inheritance"] is True
+assert scope["megaphone_cross_awardee_overlap_is_graph_signal"] is True
+assert scope["bot_and_country_markers_require_receipts"] is True
 
 # Audience/reach can select a material source for review; it cannot improve or
 # worsen truth, deception, Bullshitter qualification, or Hall rank.
