@@ -340,8 +340,8 @@ and claim-level:
 `Trace`
 
 The primary Web of Lies surface is an **explorable compiled propagation graph**,
-not a list of source cards. Structured forensic data is authoritative; Mermaid is
-the presentation renderer.
+not a list of source cards. Structured forensic data is authoritative; Cytoscape.js is the current
+presentation renderer.
 
 The graph must:
 
@@ -370,7 +370,7 @@ second Claims Forensics workload for every repost.
 Claim-family TRACE views remain available as a secondary drill-down for the
 underlying lineage record.
 
-Mermaid or another graph renderer is presentation only. Structured forensic data is authoritative.
+Cytoscape.js (or a future replacement renderer) is presentation only. Structured forensic data is authoritative.
 
 ## 15. Incremental operation
 
