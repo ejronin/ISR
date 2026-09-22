@@ -138,7 +138,18 @@
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-INN-IRAN-NATIONAL-NEWS-ISD",
       "identity_confidence": "HIGH",
-      "aliases": []
+      "aliases": [],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-INN-IRAN-NATIONAL-NEWS-X",
+          "platform": "X",
+          "handle": "@INNewx",
+          "url": "https://x.com/INNewx",
+          "display_name": "INN Iran National News",
+          "account_state": "PUBLIC_ACCOUNT_OBSERVED"
+        }
+      ],
+      "identity_context": "Specific Verified4War account identified by ISD and independently linked to the March 30 media claim by AkhbarMeter. No state-control inference is made."
     },
     {
       "source_id": "WOL-SRC-IRAN-MILITARY-UPDATE",
@@ -440,7 +451,18 @@
       "stable_identity_id": "WOL-ID-TIMES-OF-IRAN-NEWS-ISD",
       "identity_confidence": "HIGH",
       "aliases": [],
-      "account_state_context": "ISD reported the account was removed from X shortly after its monitoring timeframe."
+      "account_state_context": "ISD reported the account was removed from X shortly after its monitoring timeframe.",
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-TIMES-OF-IRAN-X",
+          "platform": "X",
+          "handle": "@Timesofiraan",
+          "url": "https://x.com/Timesofiraan",
+          "display_name": "Times of Iran News",
+          "account_state": "REMOVED_REPORTED_BY_ISD"
+        }
+      ],
+      "identity_context": "Account identity is preserved from public post embeds and ISD's Verified4War research. Network membership does not imply state control or authorship of every network claim."
     },
     {
       "source_id": "WOL-SRC-US-DEFENCE-ARMY",
@@ -478,7 +500,18 @@
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-USA-ARMY-NEWS-ISD",
       "identity_confidence": "HIGH",
-      "aliases": []
+      "aliases": [],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-USA-ARMY-NEWS-X",
+          "platform": "X",
+          "handle": "@USAArmyNews",
+          "url": "https://x.com/USAArmyNews",
+          "display_name": "USA ARMY NEWS",
+          "account_state": "PUBLIC_ACCOUNT_OBSERVED"
+        }
+      ],
+      "identity_context": "Specific Verified4War account identified by ISD. Account-level claims are scored only when separately attributed; network membership does not transfer every network narrative to this profile."
     },
     {
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
@@ -2134,6 +2167,159 @@
       "downstream_note": "One population-generalization incident. It does not establish the real-world operator or any state/IRGC control relationship for the account.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "A canonical public-opinion proposition may be atomized upstream if required; WOL records the unsupported generalization from a selected crowd to an entire national population."
+    },
+    {
+      "incident_id": "WOL-BS-TIMES-OF-IRAN-NETANYAHU-RUMOR-LAUNDERING-20260301",
+      "source_id": "WOL-SRC-TIMES-OF-IRAN-NEWS",
+      "event_type": "EVIDENTIARY_EVASION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-01T20:53:47Z",
+      "first_observed_at": "2026-03-01T20:53:47Z",
+      "statement_identity": "Times of Iran News amplified the unsupported rumor that Benjamin Netanyahu had been killed by Iran while insulating the presentation with conditional 'if the rumor is true' wording.",
+      "source_information_event_id": "TIMES-OF-IRAN-X-2028212126591176861",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-TIMES-IRAN-NETANYAHU-X-20260301",
+          "surface": "X",
+          "url": "https://twitter.com/Timesofiraan/status/2028212126591176861",
+          "published_at": "2026-03-01T20:53:47Z",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Original post identity recovered from the embedded Times of Iran News post; the account conditionally amplified the rumor that Netanyahu had been killed by the Iranian Army."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TIMES-IRAN-NETANYAHU-ALBAWABA-20260302",
+          "surface": "WEBSITE",
+          "url": "https://www.albawaba.com/node/netanyahu-dead-rumors-flood-social-media-1623082",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Al Bawaba embeds the March 1 Times of Iran News post, preserves its conditional rumor wording, and reports no credible confirmation of Netanyahu's death."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TIMES-IRAN-NETANYAHU-ALMASRY-20260302",
+          "surface": "WEBSITE",
+          "url": "https://www.almasryalyoum.com/news/details/4211797",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Al Masry Al Youm reproduces the Times of Iran News post and reports Netanyahu's March 1 security meeting and subsequent statement, contradicting the circulated death rumor."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "The original Times of Iran News post identity, contemporaneous preserved copies, and same-day/next-day public evidence of Netanyahu's continued official activity.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "The source did not present evidence establishing the death rumor and instead circulated it through conditional language. Contemporaneous official/public activity showed Netanyahu alive.",
+        "search_notes": "This is scored as evidentiary evasion/rumor laundering, not rewritten as a categorical statement that the source explicitly said Netanyahu was definitely dead.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Keep the conditional wording intact. Network membership and coordination evidence do not substitute for this account-specific receipt.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "If a canonical Netanyahu-death rumor family is created, preserve the distinction between categorical false assertions and conditional rumor amplification."
+    },
+    {
+      "incident_id": "WOL-BS-USA-ARMY-NEWS-NETANYAHU-DEAD-20260318",
+      "source_id": "WOL-SRC-USA-ARMY-NEWS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-18T19:37:59Z",
+      "first_observed_at": "2026-03-18T19:37:59Z",
+      "statement_identity": "USA ARMY NEWS presented Benjamin Netanyahu's death as confirmed and official.",
+      "source_information_event_id": "USA-ARMY-NEWS-X-2034353641696735520",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-USA-ARMY-NEWS-NETANYAHU-X-20260318",
+          "surface": "X",
+          "url": "https://x.com/USAArmyNews/status/2034353641696735520",
+          "published_at": "2026-03-18T19:37:59Z",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Exact original post identity recovered; the publisher presented Netanyahu's death as confirmed by Israel."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-USA-ARMY-NEWS-NETANYAHU-MIRROR",
+          "surface": "WEBSITE",
+          "url": "https://mobile.twstalker.com/VasquezNetwork",
+          "published_at": "2026-03-18",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Public mirror preserves the USA ARMY NEWS death claim and its approximately 16.5 million view count."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-USA-ARMY-NEWS-ISD-20260415",
+          "surface": "WEBSITE",
+          "url": "https://www.isdglobal.org/digital-dispatch/how-pro-iran-networks-gained-a-billion-views-on-war-propaganda/",
+          "published_at": "2026-04-15",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "ISD identifies USA ARMY NEWS as publisher of Verified4War's most-viewed false Netanyahu-death post, with 16.5 million views."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-USA-ARMY-NEWS-NETANYAHU-REUTERS-20260319",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/fact-check/netanyahus-press-conference-dispels-death-rumours-2026-03-24/",
+          "published_at": "2026-03-24",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters fact-check documents Netanyahu appearing in person before journalists on March 19 and finds the circulating death claims false."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact USA ARMY NEWS post identity, public mirror, ISD's network research, and Reuters' direct-review fact-check of Netanyahu's March 19 in-person press conference.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The post presented a categorical confirmation of death. Netanyahu appeared in person at a press conference on March 19, directly falsifying the assertion.",
+        "search_notes": "ISD independently identifies this account's post as the network's most-viewed false Netanyahu-death item. The account-level incident does not attribute other Verified4War claims to USA ARMY NEWS.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One account-specific false death claim. Do not propagate network-wide claims to this account without separate receipts.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "A future canonical death-rumor family can consume the account-specific publication identity without treating network membership as authorship."
+    },
+    {
+      "incident_id": "WOL-BS-INN-AI-AMAN-STRIKE-VIDEO-20260330",
+      "source_id": "WOL-SRC-INN-IRAN-NATIONAL-NEWS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-30T16:57:31Z",
+      "first_observed_at": "2026-03-30T16:57:31Z",
+      "statement_identity": "INN Iran National News presented a video as showing an Iranian mass-missile strike on Israeli military-intelligence headquarters and paired it with an attributed IRGC casualty statement.",
+      "source_information_event_id": "INN-X-2038661912494559605",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-INN-AMAN-X-20260330",
+          "surface": "X",
+          "url": "https://x.com/INNewx/status/2038661912494559605",
+          "published_at": "2026-03-30T16:57:31Z",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Exact X post identity linked by the fact-check as an INN Iran National News claim source."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-INN-AMAN-AKHBARMETER-20260401",
+          "surface": "WEBSITE",
+          "url": "https://akhbarmeter.org/topics/2558",
+          "published_at": "2026-04-01",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "AkhbarMeter identifies INN as a claim source, dates circulation to March 30, finds the video likely AI-generated, and identifies a chronology problem in the attributed IRGC statement."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact INN post identity plus AkhbarMeter's media-forensics review, source tracing, chronology check and separate context for real Iranian claims concerning Israeli military-intelligence targets.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The presented video was assessed as highly likely AI-generated, its original source could not be established, and the accompanying statement was attributed to an IRGC spokesman reported killed ten days before the post circulated.",
+        "search_notes": "The adverse finding is the video/evidentiary presentation. It does not adjudicate that Iran never targeted any Aman or related military-intelligence facility; AkhbarMeter separately notes real Iranian claims about such targets without evidence tying this clip to them.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not convert this media-forensics finding into a blanket denial of every Iranian claim concerning military-intelligence targets.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical review, if created, should separate the visual-evidence claim, the attributed casualty statement, and any underlying strike claim."
     }
   ]
 }
