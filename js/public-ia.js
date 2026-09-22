@@ -2297,7 +2297,7 @@
     const reset = append(graphControls, 'button', 'action wol-graph-reset', 'Show whole network');
     reset.type = 'button';
 
-    const graphHost = append(graphSection, 'div', 'wol-mermaid-host');
+    const graphHost = append(graphSection, 'div', 'wol-cytoscape-host');
     graphHost.setAttribute('role', 'group');
     graphHost.setAttribute('aria-label', 'Interactive Web of Lies propagation graph');
     const graphStatus = append(graphSection, 'p', 'section-note wol-graph-status');
@@ -2306,13 +2306,6 @@
     const detailSection = addSection(frame.article, 'Selected node', 'content-section wol-node-detail');
     const detailHost = append(detailSection, 'div', 'wol-node-detail-host');
 
-    const mermaidText = value => String(value == null ? '' : value)
-      .replace(/[\r\n]+/g, ' ')
-      .replace(/["<>\[\]{}]/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .slice(0, 110);
-    const mermaidIdByNode = new Map(graphNodes.map((node, index) => [node.node_id, `woln${index}`]));
     const adjacencyFor = nodeId => {
       const ids = new Set();
       graphEdges.forEach(edge => {
@@ -2321,48 +2314,30 @@
       });
       return ids;
     };
-    const definitionFor = selectedNodeId => {
-      const lines = [
-        'flowchart LR',
-        'classDef bull fill:#3a171b,stroke:#e08a93,color:#fff,stroke-width:2px;',
-        'classDef meg fill:#102b3b,stroke:#76bfdc,color:#fff,stroke-width:1.5px;',
-        'classDef active fill:#51312b,stroke:#ffd27a,color:#fff,stroke-width:4px;',
-        'classDef connected stroke:#ffd27a,stroke-width:3px;',
-        'classDef dim opacity:0.22;'
-      ];
-      graphNodes.forEach(node => {
-        const id = mermaidIdByNode.get(node.node_id);
-        const marker = nodeMarker(node);
-        const count = node.node_type === 'MEGAPHONE' ? ` · ×${Number(node.bullshitter_source_count || 0)}` : '';
-        const kind = node.node_type === 'BULLSHITTER' ? 'BULLSHITTER' : 'MEGAPHONE';
-        const label = mermaidText([marker, node.display_name, kind + count].filter(Boolean).join(' · '));
-        lines.push(`  ${id}["${label}"]`);
-        lines.push(`  class ${id} ${node.node_type === 'BULLSHITTER' ? 'bull' : 'meg'}`);
-      });
-      graphEdges.forEach(edge => {
-        const from = mermaidIdByNode.get(edge.from_node_id);
-        const to = mermaidIdByNode.get(edge.to_node_id);
-        if (!from || !to) return;
-        lines.push(`  ${from} -->|"×${Number(edge.amplified_claim_count || 1)}"| ${to}`);
-      });
-      if (selectedNodeId && graphNodeById.has(selectedNodeId)) {
-        const neighbors = adjacencyFor(selectedNodeId);
-        graphNodes.forEach(node => {
-          const id = mermaidIdByNode.get(node.node_id);
-          if (node.node_id === selectedNodeId) lines.push(`  class ${id} active`);
-          else if (neighbors.has(node.node_id)) lines.push(`  class ${id} connected`);
-          else lines.push(`  class ${id} dim`);
-        });
-        const activeEdges = [], dimEdges = [];
-        graphEdges.forEach((edge, index) => {
-          if (edge.from_node_id === selectedNodeId || edge.to_node_id === selectedNodeId) activeEdges.push(index);
-          else dimEdges.push(index);
-        });
-        if (activeEdges.length) lines.push(`  linkStyle ${activeEdges.join(',')} stroke:#ffd27a,stroke-width:3px,opacity:1`);
-        if (dimEdges.length) lines.push(`  linkStyle ${dimEdges.join(',')} opacity:0.14`);
-      }
-      return lines.join('\n');
-    };
+    const cytoscapeElements = () => [
+      ...graphNodes.map(node => ({
+        group: 'nodes',
+        data: {
+          id: node.node_id,
+          node_type: node.node_type,
+          label: nodeLabel(node),
+          display_name: node.display_name,
+          bullshitter_source_count: Number(node.bullshitter_source_count || 0),
+          authenticity_class: node.authenticity_class || 'UNKNOWN',
+          country_code: node.country_code || ''
+        }
+      })),
+      ...graphEdges.map(edge => ({
+        group: 'edges',
+        data: {
+          id: edge.edge_id,
+          source: edge.from_node_id,
+          target: edge.to_node_id,
+          edge_label: `×${Number(edge.amplified_claim_count || 1)}`,
+          amplified_claim_count: Number(edge.amplified_claim_count || 1)
+        }
+      }))
+    ];
 
     const renderDetail = nodeId => {
       detailHost.replaceChildren();
@@ -2441,27 +2416,33 @@
     let selectedNodeId = context.route.params.source && graphNodeById.has(context.route.params.source)
       ? context.route.params.source
       : '';
-    let graphRenderSerial = 0;
-    const wireGraphNodes = () => {
-      const groups = Array.from(graphHost.querySelectorAll('g.node'));
-      graphNodes.forEach(node => {
-        const graphId = mermaidIdByNode.get(node.node_id);
-        const group = groups.find(candidate => String(candidate.id || '').includes(`-${graphId}-`));
-        if (!group) return;
-        group.classList.add('wol-clickable-node');
-        group.setAttribute('role', 'button');
-        group.setAttribute('tabindex', '0');
-        group.setAttribute('aria-label', `Focus ${nodeLabel(node)}`);
-        const activate = event => {
-          if (event && event.type === 'keydown' && !['Enter', ' '].includes(event.key)) return;
-          if (event && event.type === 'keydown') event.preventDefault();
-          selectNode(node.node_id);
-        };
-        group.addEventListener('click', activate);
-        group.addEventListener('keydown', activate);
+    let cyGraph = null;
+
+    const focusGraph = nodeId => {
+      if (!cyGraph) return;
+      cyGraph.elements().removeClass('dimmed focused connected');
+      if (!nodeId || !graphNodeById.has(nodeId)) {
+        cyGraph.fit(cyGraph.elements(), 42);
+        graphStatus.textContent = `Showing the full ${graphNodes.length}-node propagation network.`;
+        return;
+      }
+      const target = cyGraph.getElementById(nodeId);
+      if (!target || target.empty()) return;
+      const neighborhood = target.closedNeighborhood();
+      cyGraph.elements().not(neighborhood).addClass('dimmed');
+      target.addClass('focused');
+      target.neighborhood('node').addClass('connected');
+      target.connectedEdges().addClass('connected');
+      cyGraph.animate({
+        fit: { eles: neighborhood, padding: 72 },
+        duration: 240
       });
+      const connections = adjacencyFor(nodeId).size;
+      graphStatus.textContent =
+        `Focused on ${nodeLabel(graphNodeById.get(nodeId))}; ${connections} direct connection${connections === 1 ? '' : 's'} highlighted.`;
     };
-    const renderGraph = async () => {
+
+    const initializeGraph = () => {
       if (!graphNodes.length) {
         graphHost.replaceChildren();
         const empty = append(graphHost, 'aside', 'scope-note wol-empty-state');
@@ -2470,50 +2451,158 @@
         graphStatus.textContent = 'Graph has no nodes.';
         return;
       }
-      const mermaid = root && root.mermaid;
-      if (!mermaid || typeof mermaid.render !== 'function') {
+      const cytoscape = root && root.cytoscape;
+      if (typeof cytoscape !== 'function') {
         graphHost.replaceChildren();
         const failure = append(graphHost, 'aside', 'scope-note wol-empty-state');
         append(failure, 'strong', '', 'Graph renderer unavailable');
-        append(failure, 'p', '', 'The structured propagation graph is present, but the authorized Mermaid runtime did not initialize.');
-        graphStatus.textContent = 'Structured graph available; Mermaid renderer unavailable.';
+        append(failure, 'p', '', 'The structured propagation graph is present, but the authorized Cytoscape runtime did not initialize.');
+        graphStatus.textContent = 'Structured graph available; Cytoscape renderer unavailable.';
         return;
       }
-      const renderId = `wolPropagation_${++graphRenderSerial}`;
-      mermaid.initialize({
-        startOnLoad: false,
-        securityLevel: 'strict',
-        theme: 'dark',
-        htmlLabels: false,
-        flowchart: { htmlLabels: false, useMaxWidth: true, curve: 'basis', nodeSpacing: 36, rankSpacing: 62 }
+
+      graphHost.replaceChildren();
+      cyGraph = cytoscape({
+        container: graphHost,
+        elements: cytoscapeElements(),
+        minZoom: 0.25,
+        maxZoom: 2.6,
+        wheelSensitivity: 0.22,
+        boxSelectionEnabled: false,
+        autoungrabify: false,
+        style: [
+          {
+            selector: 'node',
+            style: {
+              'label': 'data(label)',
+              'text-wrap': 'wrap',
+              'text-max-width': 175,
+              'font-size': 11,
+              'font-weight': 650,
+              'text-valign': 'center',
+              'text-halign': 'center',
+              'color': '#eef5f8',
+              'background-color': '#143247',
+              'border-color': '#76bfdc',
+              'border-width': 2,
+              'width': 172,
+              'height': 58,
+              'padding': 8
+            }
+          },
+          {
+            selector: 'node[node_type = "BULLSHITTER"]',
+            style: {
+              'shape': 'round-rectangle',
+              'background-color': '#421b20',
+              'border-color': '#e08a93',
+              'width': 196,
+              'height': 64
+            }
+          },
+          {
+            selector: 'node[node_type = "MEGAPHONE"]',
+            style: {
+              'shape': 'ellipse',
+              'background-color': '#102b3b',
+              'border-color': '#76bfdc'
+            }
+          },
+          {
+            selector: 'edge',
+            style: {
+              'width': 1.8,
+              'line-color': '#55788d',
+              'target-arrow-color': '#55788d',
+              'target-arrow-shape': 'triangle',
+              'curve-style': 'bezier',
+              'label': 'data(edge_label)',
+              'font-size': 9,
+              'color': '#cbd9e2',
+              'text-background-color': '#071018',
+              'text-background-opacity': 0.85,
+              'text-background-padding': 2
+            }
+          },
+          {
+            selector: '.dimmed',
+            style: {
+              'opacity': 0.12,
+              'text-opacity': 0.12
+            }
+          },
+          {
+            selector: 'node.focused',
+            style: {
+              'border-color': '#ffd27a',
+              'border-width': 5,
+              'z-index': 20
+            }
+          },
+          {
+            selector: 'node.connected',
+            style: {
+              'border-color': '#ffd27a',
+              'border-width': 3
+            }
+          },
+          {
+            selector: 'edge.connected',
+            style: {
+              'line-color': '#ffd27a',
+              'target-arrow-color': '#ffd27a',
+              'width': 3.2,
+              'opacity': 1
+            }
+          }
+        ],
+        layout: { name: 'preset' }
       });
-      try {
-        const rendered = await mermaid.render(renderId, definitionFor(selectedNodeId));
-        if (!graphHost.isConnected) return;
-        graphHost.innerHTML = rendered.svg;
-        if (typeof rendered.bindFunctions === 'function') rendered.bindFunctions(graphHost);
-        wireGraphNodes();
-        graphStatus.textContent = selectedNodeId
-          ? `Focused on ${nodeLabel(graphNodeById.get(selectedNodeId))}; ${adjacencyFor(selectedNodeId).size} direct connection${adjacencyFor(selectedNodeId).size === 1 ? '' : 's'} highlighted.`
-          : `Showing the full ${graphNodes.length}-node propagation network.`;
-      } catch (error) {
-        graphHost.replaceChildren();
-        const failure = append(graphHost, 'aside', 'scope-note wol-empty-state');
-        append(failure, 'strong', '', 'Graph render failed');
-        append(failure, 'p', '', 'The structured WOL graph remains available in the signed dataset; the Mermaid presentation failed to render.');
-        graphStatus.textContent = 'Mermaid render failed.';
+
+      const roots = cyGraph.nodes('[node_type = "BULLSHITTER"]');
+      cyGraph.layout({
+        name: 'breadthfirst',
+        directed: true,
+        roots,
+        spacingFactor: 1.25,
+        padding: 42,
+        animate: false
+      }).run();
+
+      cyGraph.on('tap', 'node', event => {
+        selectNode(event.target.id());
+      });
+      cyGraph.on('tap', event => {
+        if (event.target === cyGraph) selectNode('');
+      });
+      cyGraph.on('mouseover', 'node', () => {
+        graphHost.classList.add('is-node-hover');
+      });
+      cyGraph.on('mouseout', 'node', () => {
+        graphHost.classList.remove('is-node-hover');
+      });
+
+      if (root && typeof root.ResizeObserver === 'function') {
+        const observer = new root.ResizeObserver(() => {
+          if (!cyGraph || !graphHost.isConnected) return;
+          cyGraph.resize();
+        });
+        observer.observe(graphHost);
       }
+
+      focusGraph(selectedNodeId);
     };
+
     const selectNode = nodeId => {
       selectedNodeId = nodeId && graphNodeById.has(nodeId) ? nodeId : '';
       picker.value = selectedNodeId;
       renderDetail(selectedNodeId);
-      void renderGraph();
+      focusGraph(selectedNodeId);
     };
     picker.addEventListener('change', () => selectNode(picker.value));
     reset.addEventListener('click', () => selectNode(''));
     renderDetail(selectedNodeId);
-    void renderGraph();
+    initializeGraph();
 
     const indexSection = addSection(frame.article, 'Hall of Shame index', 'content-section wol-hall-index');
     append(indexSection, 'p', 'section-note', 'The award is attached to the source that earned it. Megaphones remain visible in the network without inheriting the badge.');
