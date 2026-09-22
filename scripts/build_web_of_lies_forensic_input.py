@@ -160,6 +160,7 @@ def validate_source_dossier(
     dossier: dict[str, Any],
     path: str,
     existing_source_ids: set[str] | None = None,
+    existing_event_ids: set[str] | None = None,
 ) -> None:
     local_source_ids = {
         str(row["source_id"]) for row in dossier.get("source_profiles") or []
@@ -197,7 +198,7 @@ def validate_source_dossier(
                     f"{path}: {collection_name} {row_id} references undeclared source {source_id}"
                 )
 
-    incident_ids = {
+    qualifying_event_ids = set(existing_event_ids or set()) | {
         str(row["incident_id"])
         for row in dossier.get("source_behavior_incidents") or []
     }
@@ -214,7 +215,7 @@ def validate_source_dossier(
                 f"undeclared Bullshitter source {bullshitter_source_id}"
             )
         bullshitter_event_id = str(row.get("bullshitter_event_id") or "")
-        if bullshitter_event_id not in incident_ids:
+        if bullshitter_event_id not in qualifying_event_ids:
             raise ValueError(
                 f"{path}: amplification observation {observation_id} references "
                 f"unknown Bullshitter incident {bullshitter_event_id}"
@@ -317,7 +318,12 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
         dossier = json.loads(dossier_raw.decode("utf-8"))
         dossier_schema = load_json(root / SOURCE_DOSSIER_SCHEMA)
         jsonschema.Draft202012Validator(dossier_schema).validate(dossier)
-        validate_source_dossier(dossier, dossier_relative, set(profiles))
+        validate_source_dossier(
+            dossier,
+            dossier_relative,
+            set(profiles),
+            set(events),
+        )
 
         dossier_hash = sha256_bytes(canonical_bytes(dossier))
         dossier_as_of = str(dossier["as_of"])
