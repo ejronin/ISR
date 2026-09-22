@@ -631,7 +631,7 @@
         "required": [
           "observation_id",
           "bullshitter_source_id",
-          "bullshitter_incident_id",
+          "bullshitter_event_id",
           "amplifier_id",
           "amplifier_display_name",
           "observed_at",
@@ -646,7 +646,7 @@
             "type": "string",
             "minLength": 1
           },
-          "bullshitter_incident_id": {
+          "bullshitter_event_id": {
             "type": "string",
             "minLength": 1
           },
