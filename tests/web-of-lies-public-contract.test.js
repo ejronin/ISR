@@ -53,6 +53,17 @@ assert.match(readerSource, /Open Web of Lies/);
 assert.match(iaSource, /function WebOfLiesPage\(/);
 assert.match(iaSource, /No qualifying source in this evidence slice/);
 assert.match(iaSource, /Prove the pattern; then call the pattern what it is\./);
+assert.match(iaSource, /Explore the propagation graph/);
+assert.match(iaSource, /wol-mermaid-host/);
+assert.match(iaSource, /mermaid\.render/);
+assert.match(iaSource, /bullshitter_source_count/);
+assert.match(iaSource, /CONFIRMED_BOT/);
+assert.match(iaSource, /Touch a node/);
+assert.match(iaSource, /Observed megaphones/);
+assert.match(iaSource, /Bullshitter sources repeated/);
+assert(Array.isArray(derived.propagation_graph.nodes), 'compiled WOL graph nodes missing');
+assert(Array.isArray(derived.propagation_graph.edges), 'compiled WOL graph edges missing');
+assert.equal(derived.propagation_graph.graph_type, 'BULLSHITTER_MEGAPHONE_NETWORK');
 assert(!/manual_rank|manual_score|featured_rank/.test(iaSource), 'public Web of Lies renderer contains a manual ranking control');
 
 if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.information_events || []).length === 0) {
