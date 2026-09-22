@@ -626,7 +626,21 @@
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-MOJTABA-KHAMENEI-PARODY-ISD",
       "identity_confidence": "HIGH",
-      "aliases": []
+      "aliases": [
+        "@SupremeLeaderI",
+        "Tiwari Ankit"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-MOJTABA-PARODY-X",
+          "platform": "X",
+          "handle": "@SupremeLeaderI",
+          "url": "https://x.com/SupremeLeaderI",
+          "display_name": "Mojtaba Khamenei Parody",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "identity_context": "ISD identifies the Mojtaba Khamenei Parody account as a Verified4War member. Independent March 2026 fact-checking identifies the same @SupremeLeaderI account as the publisher of a B-2 shootdown/captured-crew fabrication. The account's parody label is preserved and does not imply official Iranian affiliation, state control, impersonation intent, or that every post is a factual assertion."
     },
     {
       "source_id": "WOL-SRC-NEWS-NOW-BRICS4CLICKS",
@@ -2757,6 +2771,75 @@
       "downstream_note": "Do not convert this media-forensics finding into a blanket denial of every Iranian claim concerning military-intelligence targets.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical review, if created, should separate the visual-evidence claim, the attributed casualty statement, and any underlying strike claim."
+    },
+    {
+      "incident_id": "WOL-BS-MOJTABA-PARODY-B2-CREW-20260309",
+      "source_id": "WOL-SRC-MOJTABA-KHAMENEI-PARODY",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-09",
+      "first_observed_at": "2026-03-09",
+      "statement_identity": "A March 9 post by @SupremeLeaderI presented an image as evidence that Iran shot down a U.S. B-2 bomber, captured its entire crew, and achieved a decisive victory.",
+      "source_information_event_id": "MOJTABA-SUPREMELEADERI-B2-CREW-20260309",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-MOJTABA-B2-FACTHUNTER-20260322",
+          "surface": "WEBSITE",
+          "url": "https://www.therealfacthunter.com/fact-check-image-claiming-iran-shot-down-a-u-s-b-2-bomber-and-captured-its-entire-crew-is-ai-generated/",
+          "published_at": "2026-03-22",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Fact Hunter identifies @SupremeLeaderI / Mojtaba Khamenei Parody as the March 9 publisher of the B-2 shootdown/captured-crew claim and assesses the image as AI-generated."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MOJTABA-B2-NEWTALK-20260311",
+          "surface": "WEBSITE",
+          "url": "https://newtalk.tw/news/view/2026-03-11/1023816",
+          "published_at": "2026-03-11",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Newtalk reproduces the fabricated B-2/captured-crew image and credits it to the @SupremeLeaderI X account."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MOJTABA-B2-MISBAR-20260308",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/08/image-claiming-iran-shot-down-b-2-bomber-fabricated",
+          "published_at": "2026-03-08",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Misbar independently finds the circulating B-2 shootdown/captured-crew image AI-generated and the claimed event unsupported."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MOJTABA-B2-FULLFACT-20260311",
+          "surface": "WEBSITE",
+          "url": "https://fullfact.org/conflict/fake-B-2-shot-down-image/",
+          "published_at": "2026-03-11",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Full Fact independently finds the image fake and reports no credible evidence that a U.S. B-2 was shot down or its crew captured."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-B2-USAF-FACTSHEET",
+          "surface": "WEBSITE",
+          "url": "https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104482/b-2-spirit/",
+          "published_at": null,
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "U.S. Air Force B-2 fact sheet: standard crew is two pilots; the fabricated image depicts three purported captives."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Account-specific attribution review using Fact Hunter and Newtalk, independent image/event verification by Misbar and Full Fact, and the U.S. Air Force B-2 fact sheet.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The post's documentary-looking image was assessed as AI-generated; the depicted crew count conflicts with the B-2's two-person standard crew; and reviewed credible reporting found no B-2 shootdown or captured crew.",
+        "search_notes": "The account is labeled parody, but this specific publication presented a falsifiable real-world combat event in breaking-news/evidentiary form. WOL scores the publication, not the label. The finding does not establish deceptive intent, state control, or that other posts by the account are factual claims.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One account-specific WOL-native incident. Network membership and parody labeling neither create nor erase the incident; the source remains below the six-in-30 Bullshitter threshold.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical B-2 loss/capture propositions may be handled upstream if needed; WOL preserves the account-specific unsupported evidentiary presentation."
     }
   ]
 }
