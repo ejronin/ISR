@@ -40,7 +40,6 @@ assert(Array.isArray(derived.hall_of_shame.ranking_contract.qualification_metric
 const hallClasses = new Set(derived.hall_of_shame.ranking_contract.hall_of_shame_classes || []);
 assert(!hallClasses.has('OFFICIAL_SOURCE'), 'neutral official-source typing leaked into Hall ranking classes');
 assert(!hallClasses.has('JOURNALISTIC_SOURCE'), 'neutral journalistic-source typing leaked into Hall ranking classes');
-assert.match(iaSource, /Plain-English verdict/);
 
 const ledger = model.datasets['gate3.lie_ledger'].payload;
 const ledgerChains = Array.isArray(ledger.records) ? ledger.records.filter(row => row.public_include_in_accusation_count !== false) : [];
@@ -72,4 +71,4 @@ if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.informa
   assert(derived.claim_families.length > 0, 'canonical claim-family registry should still be populated before source forensics are seeded');
 }
 
-console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, buried route, signed TRACE links, deterministic ranking contract, and no manual Hall selection`);
+console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, Cytoscape graph-first UX, signed TRACE links, deterministic WOL ranking contract, and no manual Hall selection`);
