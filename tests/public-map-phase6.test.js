@@ -66,7 +66,7 @@ assert.equal(locatedDamage.footprint, null, 'damage observation invented a footp
 assert.equal(ia.MapView.imageryDescriptor(unlocatedObservation, resolver, facilityRecords).tier, 'D', 'unlocated forensic observation should remain evidence-only');
 
 const releaseRoles = new Set(manifest.application.assets.map(asset => asset.role));
-const fixedRoles = ['map_runtime', 'base_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
+const fixedRoles = ['map_runtime', 'graph_runtime', 'base_runtime', 'reader_support', 'page_registry', 'map_stylesheet', 'stylesheet', 'reader_stylesheet', 'reference_geography', 'entrypoint'];
 for (const role of fixedRoles) assert(releaseRoles.has(role), `required release role missing: ${role}`);
 assert([...releaseRoles].every(role => [...fixedRoles, 'evidence_image', 'state_flag'].includes(role)), 'release contains an unsupported role');
 const byRole = Object.fromEntries(manifest.application.assets.filter(asset => fixedRoles.includes(asset.role)).map(asset => [asset.role, asset]));
