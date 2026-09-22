@@ -22,6 +22,7 @@ incidents = {row["incident_id"]: row for row in derived["source_behavior_inciden
 leads = {row["lead_id"]: row for row in derived["research_leads"]}
 
 lim_id = "WOL-BS-LIM-TEAN-HORMUZ-CAUSALITY-20260720"
+lim_toll_id = "WOL-BS-LIM-TEAN-TOLLS-WAR-CAUSE-20260714"
 imu_id = "WOL-BS-IRAN-MILITARY-UPDATE-IRANIANS-HATE-TRUMP-20260706"
 
 assert lim_id in incidents
@@ -33,6 +34,26 @@ assert lim["evidentiary_support_review"]["supporting_evidence_found"] is False
 assert "traffic collapse is supported" in lim["evidentiary_support_review"]["claimant_basis_note"]
 assert "does not isolate U.S. strike waves" in lim["evidentiary_support_review"]["claimant_basis_note"]
 assert lim["public_receipts"]
+
+assert lim_toll_id in incidents
+lim_toll = incidents[lim_toll_id]
+assert lim_toll["source_id"] == "WOL-SRC-LIM-TEAN"
+assert lim_toll["event_type"] == "UNSUPPORTED_INFERENTIAL_ASSERTION"
+assert lim_toll["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+assert lim_toll["evidentiary_support_review"]["supporting_evidence_found"] is False
+assert "war began on February 28" in lim_toll["evidentiary_support_review"]["claimant_basis_note"]
+assert "March 19" in lim_toll["evidentiary_support_review"]["claimant_basis_note"]
+assert "later U.S.-Iran dispute over Hormuz fees is real" in lim_toll["evidentiary_support_review"]["claimant_basis_note"]
+assert len(lim_toll["public_receipts"]) >= 4
+
+lim_incident_ids = {
+    row["incident_id"]
+    for row in incidents.values()
+    if row["source_id"] == "WOL-SRC-LIM-TEAN"
+}
+assert {lim_id, lim_toll_id} <= lim_incident_ids
+assert len(lim_incident_ids) == 2
+
 assert leads["LEAD-LIM-TEAN"]["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
 assert "broader pattern review" in profiles["WOL-SRC-LIM-TEAN"]["identity_context"]
 assert profiles["WOL-SRC-LIM-TEAN"]["source_awards"] == []
@@ -76,7 +97,7 @@ for source_id in (
     assert profiles[source_id]["source_awards"] == []
 
 # Native WOL incidents do not silently create legacy direct-verdict/Hall
-# findings, and one incident can never satisfy the six-in-30-days award rule.
+# findings, and two incidents still cannot satisfy the six-in-30-days award rule.
 for source_id in (
     "WOL-SRC-LIM-TEAN",
     "WOL-SRC-IRAN-MILITARY-UPDATE",
@@ -98,5 +119,5 @@ assert not {
 
 print(
     "web-of-lies social influence tranche2e: PASS "
-    "lim_incidents=1 lim_pattern_review=active iran_military_update_incidents=1 jgg=paywall_unable parody=excluded awards=0"
+    "lim_incidents=2 lim_pattern_review=active iran_military_update_incidents=1 jgg=paywall_unable parody=excluded awards=0"
 )
