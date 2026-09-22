@@ -326,7 +326,10 @@ assert behavior_incidents["WOL-BS-ETHAN-TWO-MISSILES-20260322"]["source_informat
 assert "count once" in behavior_incidents["WOL-BS-ETHAN-TWO-MISSILES-20260322"]["downstream_note"]
 assert "counts once" in behavior_incidents["WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327"]["evidentiary_support_review"]["search_notes"]
 
-assert profiles["WOL-SRC-LIM-TEAN"]["source_awards"] == []
+# Tranche 2C established Lim's substrate/bridge decomposition before the
+# later full pattern review. Do not freeze his award state here; tranche 2G owns
+# the completed six-event award invariant.
+assert profiles["WOL-SRC-LIM-TEAN"]["direct_verdict"] is None
 assert profiles["WOL-SRC-ZACH-FOR-THE-PEOPLE-FB"]["source_awards"] == []
 
 hall_ids = {
@@ -346,5 +349,5 @@ assert derived["corpus_coverage"]["completion_claim"] == "NONE"
 
 print(
     "web-of-lies social influence tranche2c: PASS "
-    "substrate_bridge_decomposition=2 video_body_gate=4 valenti_bullshitter=1 ethan_bullshitter=1 remaining_leads_closed=2"
+    "substrate_bridge_decomposition=2 video_body_gate=4 valenti_bullshitter=1 ethan_bullshitter=1 lim_award_state_deferred=1"
 )
