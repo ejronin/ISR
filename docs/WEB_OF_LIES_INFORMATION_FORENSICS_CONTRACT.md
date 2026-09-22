@@ -25,19 +25,30 @@ A different publisher is not automatically an independent source.
 
 Web of Lies may create a `FORENSIC_DISCOVERY`. Material discoveries may be flagged `EVIDENCE_PROMOTION_CANDIDATE`. Neither action rewrites the Evidence Locker.
 
-### Information Claims & Forensic Adjudication remains canonical for
+### Lie Ledger / Claims Forensics remains canonical for its own canonical record
 
-- truth adjudication;
-- misleading / unsupported / unresolved adjudication;
-- knowledge and deception findings;
-- Lie Ledger claim-chain semantics;
-- atomic proposition decomposition;
+- canonical Lie Ledger truth/knowledge/deception fields;
+- canonical claim-chain semantics;
+- canonical atomic proposition decomposition;
 - canonical claim relationships and denominators.
 
-Web of Lies consumes these read-only. New research that could change them is flagged `ADJUDICATION_REVIEW_CANDIDATE`.
+Those records are **evidence/context inputs to Web of Lies, not authority over Web of
+Lies outcomes**. No external Atlas lane may grant, deny, suppress, override, or
+require a WOL-native incident, behavior metric, source award, Hall result, or
+direct verdict.
 
-### Web of Lies owns
+WOL may flag evidence that should change a canonical Lie Ledger field as
+`ADJUDICATION_REVIEW_CANDIDATE`, but that handoff is separate from WOL's own
+adjudication. WOL does not wait for another lane's approval to apply its own
+published metric to evidence within WOL scope.
 
+### Web of Lies exclusively owns
+
+- WOL-native incident qualification and adjudication;
+- WOL behavior metrics and thresholds;
+- WOL source awards, including Bullshitter;
+- Hall of Shame qualification and ranking;
+- WOL direct verdicts and appellations;
 - claim origin tracing;
 - first-seen chronology;
 - source lineage;
@@ -329,7 +340,8 @@ Every severe characterization must link immediately to the incidents and metrics
 
 ## 14. Public product behavior
 
-Web of Lies remains subordinate to Lie Ledger.
+Web of Lies is linked from Lie Ledger, but WOL-native metrics, incidents, awards,
+Hall results, and direct verdicts are governed only by the Web of Lies contract.
 
 Access:
 
@@ -361,11 +373,11 @@ The graph must:
 - preserve neutral attributed reporting outside the megaphone network unless
   the publication actually rebroadcasts/adopts the qualifying message.
 
-A megaphone roster is propagation evidence, not a second truth adjudication.
-Once the upstream claim is adjudicated, the lightweight downstream record needs
-only to prove **who amplified that specific message, where, when, and with what
-public receipt**. This prevents the visualization layer from manufacturing a
-second Claims Forensics workload for every repost.
+A megaphone roster is propagation evidence, not a second WOL incident adjudication.
+Once WOL has qualified the upstream bullshit incident, the lightweight downstream
+record needs only to prove **who amplified that specific message, where, when,
+and with what public receipt**. The graph therefore reuses WOL's adjudicated
+incident instead of manufacturing a second full WOL adjudication for every repost.
 
 Claim-family TRACE views remain available as a secondary drill-down for the
 underlying lineage record.
@@ -692,23 +704,27 @@ assigned a canonical Lie Ledger family.
 Those discoveries must not be forced into an unrelated claim family merely so
 they can enter the lineage graph.
 
-A native discovery is review-queue material, not a scored lineage event. It
-must carry:
+A native discovery begins as review-queue material and must carry:
 
 - a stable discovery ID;
 - one of FORENSIC_DISCOVERY, EVIDENCE_PROMOTION_CANDIDATE, or
   ADJUDICATION_REVIEW_CANDIDATE;
-- a null canonical claim-family reference;
+- a canonical claim-family reference when one already exists, otherwise null;
 - reproducible public receipts;
 - the observable statement/event identity;
 - attribution confidence and attribution scope;
-- explicit downstream handling notes;
-- the upstream review target and reason.
+- explicit downstream handling notes.
 
-Native discoveries are routed to Information Claims & Forensic Adjudication.
-Until that authority assigns a canonical family, the discovery cannot enter
-Hall of Shame scoring, claim-family propagation metrics, or direct-verdict
-generation.
+If the discovery satisfies WOL's own incident evidence gate, WOL may promote it
+to a WOL-native source-behavior incident and use it in WOL metrics, awards, Hall
+qualification, and direct-verdict generation **without waiting for Claims
+Forensics or another lane to create a canonical family**.
+
+Canonical-family assignment is required only before the event is counted inside
+that Lie Ledger family's lineage/propagation metrics. If the discovery may also
+change canonical Atlas facts or Lie Ledger semantics, WOL separately emits the
+appropriate promotion/review flag. That handoff does not suspend the WOL-native
+finding.
 
 Cyber discoveries must preserve the distinction among actor attribution,
 claimed compromise, independently verified compromise, authenticity of
