@@ -14,13 +14,13 @@ assert "narrativeContract: null" in source
 assert "ATLAS_PRIVILEGED_NARRATIVE_RETIRED" in source
 assert "reader_support" in source
 assert "reader_stylesheet" in source
-assert "runtime.length === 4" in source
+assert "runtime.length === 5" in source
 assert "stylesheets.length === 3" in source
 
 builder = (ROOT / "scripts" / "build_public_release.py").read_text(encoding="utf-8")
 core_builder = (ROOT / "scripts" / "build_public_release_core.py").read_text(encoding="utf-8")
 assert "from build_public_release_core import *" in builder
-assert "2.5-authoritative-reader-direct" in core_builder
+assert "2.6-web-of-lies-mermaid-runtime" in core_builder
 assert core_builder.count('(\"reader_support\", \"public-reader-layer\", \"src/public-reader-layer.js\", \"js\")') == 1
 assert core_builder.count('(\"reader_stylesheet\", \"public-reader-layer\", \"src/public-reader-layer.css\", \"css\")') == 1
 assert 'assets_by_role[\"reader_support\"][\"path\"]' in core_builder
