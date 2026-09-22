@@ -1026,6 +1026,41 @@
         }
       ],
       "identity_context": "Public X account/display identity is repeatedly preserved in independent fact-checks and exact original-post URLs. The real-world operator, geographic location, organizational affiliation and state-control status are unknown and are not inferred from the account name or pro-Iran framing."
+    },
+    {
+      "source_id": "WOL-SRC-GP-PRESSS",
+      "display_name": "Iran Press / News Now / @GP_Presss",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-GP-PRESSS",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "Iran Press",
+        "News Now",
+        "@GP_Presss",
+        "GP_Presss"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-GP-PRESSS-X",
+          "platform": "X",
+          "handle": "@GP_Presss",
+          "url": "https://x.com/GP_Presss",
+          "display_name": "Iran Press / News Now",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "identity_context": "The public X handle @GP_Presss is repeatedly preserved by independent fact-checkers. Vishvas News documented that the account display name changed from Iran Press to News Now during March 2026. The branding does not establish Iranian state ownership, control, location or operator identity; those remain unknown."
     }
   ],
   "source_relationships": [
@@ -3569,6 +3604,273 @@
       "downstream_note": "Score the false location/event attribution, not a broader proposition about civilian reactions to Iranian strikes.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any real Eilat warning/impact/civilian-response events remain separate."
+    },
+    {
+      "incident_id": "WOL-BS-GP-SUPER-MISSILE-AI-20260309",
+      "source_id": "WOL-SRC-GP-PRESSS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-09",
+      "first_observed_at": "2026-03-09",
+      "statement_identity": "@GP_Presss published an AI-generated combat video as purported footage of an Iranian missile producing an unprecedented destructive effect.",
+      "source_information_event_id": "GP-X-SUPER-MISSILE-20260309",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-SUPER-MISSILE-X",
+          "surface": "X",
+          "url": null,
+          "published_at": "2026-03-09",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_EMBED_PRESERVATION",
+          "deletion_status": "ORIGINAL_STATUS_URL_NOT_RECOVERED_IN_INDEXED_CAPTURE",
+          "text_excerpt": "UPDATE: A video circulating online shows a missile reportedly used by Iran, with observers noting that they have never seen a missile with this effect before. No official confirmation exists regarding the missile’s designation."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-SUPER-MISSILE-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/11/ai-generated-video-claims-show-iranian-missile-unprecedented-destructive-power",
+          "published_at": "2026-03-11",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar preserves the @GP_Presss post and finds the video AI-generated rather than documentation of a real missile strike."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Misbar's preserved @GP_Presss post, synthetic-media analysis and cited contemporaneous conflict reporting.",
+        "checked_at": "2026-09-21T23:38:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The attached video was AI-generated and does not document a real Iranian missile strike or missile effect.",
+        "search_notes": "The qualifying behavior is presenting synthetic imagery as purported current-war missile footage. The caption's uncertainty about the missile designation is not itself scored as a false direct assertion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the synthetic-video-as-current-evidence presentation; do not infer that @GP_Presss created the video or that real Iranian missile capabilities are disproved.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical missile-capability proposition remains separate from this false media presentation."
+    },
+    {
+      "incident_id": "WOL-BS-GP-NETANYAHU-INJURED-AI-20260312",
+      "source_id": "WOL-SRC-GP-PRESSS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-12",
+      "first_observed_at": "2026-03-12",
+      "statement_identity": "@GP_Presss published AI-generated footage as purported evidence that Benjamin Netanyahu was seriously injured and taken to a secure military hospital after Iranian missile strikes.",
+      "source_information_event_id": "GP-X-NETANYAHU-INJURED-20260312",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-NETANYAHU-X",
+          "surface": "X",
+          "url": null,
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_EMBED_PRESERVATION",
+          "deletion_status": "ORIGINAL_STATUS_URL_NOT_RECOVERED_IN_INDEXED_CAPTURE",
+          "text_excerpt": "Urgent: According to a video circulating from China, Netanyahu sustained serious injuries and has been taken to a secure military hospital after Iranian missiles struck."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-NETANYAHU-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/13/video-does-not-show-benjamin-netanyahu-injured-after-iranian-missile-strike",
+          "published_at": "2026-03-13",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar preserves the @GP_Presss publication and finds the video AI-generated and not footage of Netanyahu injured in the war."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Misbar preservation of the source post and its visual/synthetic-media verification.",
+        "checked_at": "2026-09-21T23:38:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The attached video was AI-generated and does not show Netanyahu injured or hospitalized after an Iranian missile strike.",
+        "search_notes": "The qualifier 'according to a video' does not turn synthetic footage into probative evidence; WOL scores the false media presentation.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score publication of synthetic imagery as current injury evidence; do not infer who created the synthetic clip.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical Netanyahu-injury rumor family remains separately adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-GP-DELHI-DRONE-FACILITY-20260312",
+      "source_id": "WOL-SRC-GP-PRESSS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-12",
+      "first_observed_at": "2026-03-12",
+      "statement_identity": "@GP_Presss presented the Uttam Nagar/Matiala fish-market fire as destruction by Naxalites of an India-Israel facility producing Heron and Harop drones.",
+      "source_information_event_id": "GP-X-DELHI-DRONE-FACILITY-20260312",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-DELHI-X",
+          "surface": "X",
+          "url": null,
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_EMBED_PRESERVATION",
+          "deletion_status": "ORIGINAL_STATUS_URL_NOT_RECOVERED_IN_INDEXED_CAPTURE",
+          "text_excerpt": "DELHI BLAST 4.0 Multiple reports say the facility destroyed by Naxalites in Delhi was producing Heron & Harop drones for India, Israel & Afghanistan."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-DELHI-OPINDIA",
+          "surface": "WEBSITE",
+          "url": "https://www.opindia.com/news-updates/massive-fire-at-joint-india-israel-drone-manufacturing-facility-in-uttam-nagar-pakistani-bots-peddle-fake-news/",
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "The fact-check preserves the @GP_Presss post and identifies the incident as a fish-market/slum fire in Matiala near Uttam Nagar, not an India-Israel drone-production facility."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Preserved @GP_Presss wording plus contemporaneous reporting on the Matiala/Uttam Nagar fire and the location of the operational Adani-Elbit UAV facility.",
+        "checked_at": "2026-09-21T23:38:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The depicted fire occurred in a fish-market/slum area; the reviewed record did not support a joint India-Israel drone-production facility at that location or a Naxalite destruction event.",
+        "search_notes": "A real Delhi fire was recontextualized into a defense-facility attack claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real fire as factual substrate; score the facility identity, production role and attack attribution as unsupported presentation.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical India-related conflict-support proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-GP-INDIAN-SPY-AI-20260312",
+      "source_id": "WOL-SRC-GP-PRESSS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-12",
+      "first_observed_at": "2026-03-12",
+      "statement_identity": "@GP_Presss circulated an AI-generated video as purported evidence that an Indian citizen had been arrested in Tehran for providing sensitive information to Mossad.",
+      "source_information_event_id": "GP-X-INDIAN-SPY-20260312",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-INDIAN-SPY-X",
+          "surface": "X",
+          "url": null,
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_EMBED_PRESERVATION",
+          "deletion_status": "ORIGINAL_STATUS_URL_NOT_RECOVERED_IN_INDEXED_CAPTURE",
+          "text_excerpt": "Breaking: An Indian citizen has been arrested in Tehran on suspicion of espionage. According to reports, he was providing sensitive information to the Israeli intelligence agency Mossad."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-INDIAN-SPY-DH",
+          "surface": "WEBSITE",
+          "url": "https://www.deccanherald.com/technology/artificial-intelligence/fact-check-ai-generated-video-shared-as-indian-citizen-arrested-in-tehran-on-suspicion-of-espionage-3928890",
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Deccan Herald identifies the viral clip credited to X/@GP_Presss as fake and AI-generated."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Deccan Herald's preservation of the @GP_Presss media claim and its synthetic-media verification, plus search for corroborating arrest reporting.",
+        "checked_at": "2026-09-21T23:38:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The visual presented as support for the arrest/espionage story was AI-generated; the reviewed evidence did not establish the claimed arrest.",
+        "search_notes": "The qualifying behavior is synthetic media presented as current evidentiary support, not merely repeating that unnamed reports existed.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false evidentiary presentation; do not infer that @GP_Presss generated the video.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical India-Iran espionage claim remains upstream."
+    },
+    {
+      "incident_id": "WOL-BS-GP-INDIAN-TANKER-AI-20260313",
+      "source_id": "WOL-SRC-GP-PRESSS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-13",
+      "first_observed_at": "2026-03-13",
+      "statement_identity": "@GP_Presss published AI-generated footage as purported evidence of a heavy Iranian strike damaging an Indian oil tanker in the Strait of Hormuz.",
+      "source_information_event_id": "GP-X-INDIAN-TANKER-20260313",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-INDIAN-TANKER-X",
+          "surface": "X",
+          "url": null,
+          "published_at": "2026-03-13",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_EMBED_PRESERVATION",
+          "deletion_status": "ORIGINAL_STATUS_URL_NOT_RECOVERED_IN_INDEXED_CAPTURE",
+          "text_excerpt": "BREAKING — Indian Oil Tanker Attack: Reports claim that Iran launched a heavy strike on an Indian oil tanker, with footage allegedly showing significant damage to the vessel."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-INDIAN-TANKER-BOOM",
+          "surface": "WEBSITE",
+          "url": "https://www.boomlive.in/fact-check/fake-news-viral-video-iran-heavy-strike-on-an-indian-oil-tanker-ai-video-factcheck-30866",
+          "published_at": "2026-03-16",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "BOOM preserves the @GP_Presss post, finds the video AI-generated, and reports no credible evidence of the claimed Indian-tanker attack."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "BOOM's preserved source post, DeepFake-O-Meter/Hive results and search for corroborating Indian tanker attack reporting.",
+        "checked_at": "2026-09-21T23:38:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The attached tanker-damage video was synthetic and no credible reporting established the claimed Iranian strike on an Indian oil tanker.",
+        "search_notes": "The source hedged the text as reports/footage allegedly showing damage; WOL scores the synthetic footage being used as purported current-event evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Carrier-style wording does not itself qualify; the AI video presented as evidentiary footage does.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any real Hormuz vessel attack remains a separate event."
+    },
+    {
+      "incident_id": "WOL-BS-GP-LINCOLN-AI-20260317",
+      "source_id": "WOL-SRC-GP-PRESSS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-17",
+      "first_observed_at": "2026-03-17",
+      "statement_identity": "@GP_Presss attached/presented AI-generated carrier-damage footage while relaying claims that USS Abraham Lincoln had been struck by Iranian missiles and heavily damaged.",
+      "source_information_event_id": "GP-X-LINCOLN-AI-20260317",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-LINCOLN-X",
+          "surface": "X",
+          "url": null,
+          "published_at": "2026-03-17",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_EMBED_PRESERVATION",
+          "deletion_status": "ORIGINAL_STATUS_URL_NOT_RECOVERED_IN_INDEXED_CAPTURE",
+          "text_excerpt": "BREAKING – Circulating online: Reports circulating on social media claim that the U.S. warship USS Abraham Lincoln was reportedly struck by Iranian missiles, sustaining heavy damage, before allegedly returning to U.S. waters."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-LINCOLN-VISHVAS",
+          "surface": "WEBSITE",
+          "url": "https://www.vishvasnews.com/viral/fact-check-iran-missile-attack-video-claim-debunked-uss-abraham-lincoln-footage-is-ai-generated/",
+          "published_at": "2026-03-19",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Vishvas News preserves the Iran Press/News Now publication, traces the video to an Instagram creator who labeled it AI-made, and reports CENTCOM said Lincoln was not hit."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GP-LINCOLN-HK01",
+          "surface": "WEBSITE",
+          "url": "https://www.hk01.com/%E4%B8%96%E7%95%8C%E5%B0%88%E9%A1%8C/60331292/%E4%BC%8A%E6%9C%97%E6%88%B0%E7%88%AD-%E5%85%AD%E6%8C%87-%E5%85%A7%E5%A1%94%E5%B0%BC%E4%BA%9E%E8%83%A1%E7%96%91ai%E7%94%9F%E6%88%90-%E5%81%87%E8%B3%87%E8%A8%8A%E6%88%B0%E6%81%90%E5%88%B6%E5%B9%B3%E8%A1%8C%E6%99%82%E7%A9%BA",
+          "published_at": "2026-03-19",
+          "captured_at": "2026-09-21T23:38:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "HK01 preserves the exact @GP_Presss March 17 wording and discusses the AI carrier-damage footage in the broader Iran-war synthetic-media wave."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Vishvas News source tracing and AI analysis, HK01 preservation of the exact @GP_Presss post, and contemporaneous CENTCOM carrier-status evidence.",
+        "checked_at": "2026-09-21T23:38:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The attached carrier-damage video was AI-created and did not establish a strike on USS Abraham Lincoln; CENTCOM said the carrier was not hit.",
+        "search_notes": "The quoted text explicitly frames the strike as circulating reports, so carrier speech is not scored. The qualifying behavior is attaching/presenting synthetic carrier-damage imagery as purported current conflict evidence without identifying it as synthetic.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not score the mere existence/reporting of a rumor. Score the false media presentation only; do not infer that @GP_Presss created the AI clip.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical Lincoln strike claim remains separately adjudicable."
     }
   ]
 }
