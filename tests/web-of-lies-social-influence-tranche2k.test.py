@@ -86,7 +86,9 @@ assert "outdated" in tel_aviv["evidentiary_support_review"]["claimant_basis_note
 assert "not separately scored" in tel_aviv["evidentiary_support_review"]["search_notes"]
 
 krakow = incidents["WOL-BS-ZARDSI-KRAKOW-FLEEING-ISRAELIS-20260309"]
-assert "before the Iran war" in krakow["evidentiary_support_review"]["claimant_basis_note"]
+assert krakow["published_at"] == "2026-03-09"
+krakow_receipts = {row["receipt_id"]: row for row in krakow["public_receipts"]}
+assert krakow_receipts["WOL-BS-RCPT-ZARDSI-KRAKOW-ISRAELHAYOM"]["published_at"] == "2026-01-27"
 assert "return to Israel" in krakow["evidentiary_support_review"]["claimant_basis_note"]
 assert "harassment incident was real" in krakow["evidentiary_support_review"]["search_notes"]
 
