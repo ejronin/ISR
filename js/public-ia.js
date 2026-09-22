@@ -2240,7 +2240,10 @@
         if (sources > 0) roles.push(`Megaphone · ${sources} source${sources === 1 ? '' : 's'}`);
         return [marker, name, ...roles].filter(Boolean).join(' · ');
       }
-      return [marker, name, `Megaphone · ${sources} source${sources === 1 ? '' : 's'}`].filter(Boolean).join(' · ');
+      if (node.node_type === 'MEGAPHONE') {
+        return [marker, name, `Megaphone · ${sources} source${sources === 1 ? '' : 's'}`].filter(Boolean).join(' · ');
+      }
+      return [marker, name].filter(Boolean).join(' · ');
     };
     const appendNodeIdentity = (host, node, tagName = 'span', className = 'wol-node-identity') => {
       const wrapper = append(host, tagName, className);
