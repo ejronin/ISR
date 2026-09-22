@@ -213,11 +213,11 @@ def validate_source_dossier(
                 f"{path}: amplification observation {observation_id} references "
                 f"undeclared Bullshitter source {bullshitter_source_id}"
             )
-        bullshitter_incident_id = str(row.get("bullshitter_incident_id") or "")
-        if bullshitter_incident_id not in incident_ids:
+        bullshitter_event_id = str(row.get("bullshitter_event_id") or "")
+        if bullshitter_event_id not in incident_ids:
             raise ValueError(
                 f"{path}: amplification observation {observation_id} references "
-                f"unknown Bullshitter incident {bullshitter_incident_id}"
+                f"unknown Bullshitter incident {bullshitter_event_id}"
             )
         if not list(row.get("public_receipts") or []):
             raise ValueError(
