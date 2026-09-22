@@ -339,7 +339,36 @@ and claim-level:
 
 `Trace`
 
-Each claim family should ultimately provide a structured lineage graph with stable node IDs and node forensic cards.
+The primary Web of Lies surface is an **explorable compiled propagation graph**,
+not a list of source cards. Structured forensic data is authoritative; Mermaid is
+the presentation renderer.
+
+The graph must:
+
+- compile one stable source/megaphone network from the current WOL registry;
+- visibly distinguish Bullshitter awardees from downstream megaphones;
+- show a country flag marker when country is receipt-backed;
+- show a 🤖 marker only when bot status is established as `CONFIRMED_BOT`;
+- aggregate a megaphone that repeats multiple Bullshitter sources into one node
+  and expose the number of distinct Bullshitter sources it amplifies;
+- allow a user to select/touch a node and visually emphasize only that node and
+  its directly connected edges/nodes while de-emphasizing the rest;
+- repopulate the detail pane below the graph from the selected node;
+- for a Bullshitter node, list the qualifying bullshit incidents/claims and their
+  receipts plus observed downstream megaphones;
+- for a megaphone node, list each Bullshitter source/incident it amplified and
+  the amplifier-specific publication receipts;
+- preserve neutral attributed reporting outside the megaphone network unless
+  the publication actually rebroadcasts/adopts the qualifying message.
+
+A megaphone roster is propagation evidence, not a second truth adjudication.
+Once the upstream claim is adjudicated, the lightweight downstream record needs
+only to prove **who amplified that specific message, where, when, and with what
+public receipt**. This prevents the visualization layer from manufacturing a
+second Claims Forensics workload for every repost.
+
+Claim-family TRACE views remain available as a secondary drill-down for the
+underlying lineage record.
 
 Mermaid or another graph renderer is presentation only. Structured forensic data is authoritative.
 
@@ -1027,32 +1056,29 @@ Follower count, subscriber count, views, impressions, and repost volume are
 do not establish knowledge or deception, do not earn a Bullshitter award, and do
 not improve or worsen Hall-of-Shame rank.
 
-A smaller source can qualify through amplification. **Amplification itself is
-qualifying conduct when the amplifier republishes, reposts, repeats, embeds,
-quotes as factual support, or otherwise presents a qualifying bullshit claim to
-its own audience without meaningful corrective framing.** The amplifier does
-not have to invent, mutate, or independently originate the falsehood.
+A smaller source can qualify for **graph inclusion** through documented
+amplification even when it does not warrant a full source-behavior adjudication.
+The megaphone roster is intentionally lightweight: preserve the amplifier
+identity, country/authenticity metadata only when evidenced, the upstream
+Bullshitter source and incident, and the amplifier-specific public receipt.
 
-This is deliberately an easier evidentiary path than proving a new fabrication.
-The underlying claim can inherit the already-established WOL/Claims Forensics
-adjudication by reference. What must be newly proved is the amplifier-specific
-publication/amplification act and the absence of meaningful corrective framing.
+The upstream false/materially misleading claim does not need to be re-adjudicated
+for every repost. The downstream question is simply whether the account actually
+rebroadcast, repeated, embedded, or adopted that qualifying message.
 
-Network membership alone still proves nothing. A source does not inherit another
-source's badge merely because they are associated, ideologically aligned, or
-members of the same amplification network. But once a receipt shows that the
-source itself amplified the qualifying message, that publication is its own
-qualifying incident.
+Network membership alone still proves nothing. A source does not become a
+megaphone merely because it is associated, ideologically aligned, or part of the
+same community. A receipt must establish the publication/amplification act.
 
 Neutral attributed reporting remains distinct. A publication that clearly says
 "X claims Y," preserves Y as an allegation, and supplies meaningful contrary or
-corrective context does not qualify merely for mentioning the claim. A publication
-that simply rebroadcasts/adopts Y as factual content does.
+corrective context does not enter the megaphone roster merely for mentioning the
+claim.
 
-Repeated distinct publications of the same bullshit message can count separately
-for the amplifier, just as repeated publications by an originator can count
-separately. Cross-platform mirrors of the same information event remain
-deduplicated.
+Being listed as a megaphone does **not** inherit the upstream Bullshitter award.
+If the amplifier independently earns the award from its own adjudicated conduct,
+that award is derived through the ordinary Bullshitter rule. The graph may still
+show that the same account also amplified other Bullshitter sources.
 
 An account does not remain an active target merely because it was named once.
 A seed with no material 2026 Iran-war activity is removed from the active
