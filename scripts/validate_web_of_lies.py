@@ -105,7 +105,7 @@ def main() -> int:
         require(target["node_type"] == "MEGAPHONE", f"propagation edge {edge['edge_id']} does not terminate at a megaphone")
         require(not target.get("award_codes"), f"megaphone {target['node_id']} inherited an award from network position")
         require(edge["relationship_type"] == "AMPLIFIES_BULLSHIT", f"propagation edge {edge['edge_id']} has the wrong relationship type")
-        require(edge["amplified_claim_count"] == len(edge["bullshitter_incident_ids"]), f"propagation edge {edge['edge_id']} claim count is inconsistent")
+        require(edge["amplified_claim_count"] == len(edge["bullshitter_event_ids"]), f"propagation edge {edge['edge_id']} claim count is inconsistent")
         require(bool(edge.get("public_receipts")), f"propagation edge {edge['edge_id']} has no amplifier receipt")
     graph_summary = propagation["summary"]
     require(graph_summary["bullshitter_nodes"] == sum(1 for row in graph_nodes.values() if row["node_type"] == "BULLSHITTER"), "propagation Bullshitter node count is inconsistent")
