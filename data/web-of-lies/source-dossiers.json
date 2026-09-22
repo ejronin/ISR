@@ -1129,6 +1129,41 @@
         }
       ],
       "identity_context": "The public X identity Tactical Tribune / @TacticalTribun is repeatedly preserved by independent fact-check pages together with exact source-post links. Some secondary publications characterize the account as Pakistan-based or attach propaganda/network labels. WOL does not infer the real-world operator, nationality, geographic location, organizational affiliation, state direction, coordinated control or intelligence relationship from those secondary labels alone; those remain unknown."
+    },
+    {
+      "source_id": "WOL-SRC-PSYWAR-BUREAU",
+      "display_name": "PSYWAR Bureau / @PSYWAROPS",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-PSYWAR-BUREAU",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "PSYWAR Bureau",
+        "Psywar Bureau",
+        "@PSYWAROPS",
+        "PSYWAROPS"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-PSYWAR-BUREAU-X",
+          "platform": "X",
+          "handle": "@PSYWAROPS",
+          "url": "https://x.com/PSYWAROPS",
+          "display_name": "PSYWAR Bureau",
+          "account_state": "PUBLIC_IDENTITY_PRESERVED"
+        }
+      ],
+      "identity_context": "The public X identity PSYWAR Bureau / @PSYWAROPS is repeatedly preserved by independent DFRAC fact-check pages together with exact source-post links. DFRAC describes the handle as Pakistan-based, but WOL does not infer the real-world operator, nationality, geographic location, organizational affiliation, state direction, coordinated control or intelligence relationship from that secondary characterization alone; those remain unknown."
     }
   ],
   "source_relationships": [
@@ -4470,6 +4505,258 @@
       "downstream_note": "Preserve the real encounter substrate; score the unsupported casualty claim attached to the footage.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical casualty reconstruction remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-PSYWAR-CRPF-ASI-MILITANT-KILL-20250206",
+      "source_id": "WOL-SRC-PSYWAR-BUREAU",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-02-06",
+      "first_observed_at": "2025-02-07",
+      "statement_identity": "PSYWAR Bureau stated that Kashmiri fighters killed CRPF ASI Vishnu Prajapati in an assault on a CRPF position in Jammu and Kashmir.",
+      "source_information_event_id": "PSYWAR-X-CRPF-ASI-MILITANT-KILL-20250206",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-CRPF-ASI-X",
+          "surface": "X",
+          "url": "https://x.com/PSYWAROPS/status/1887579201211154689",
+          "published_at": "2025-02-06",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Kashmiri freedom fighters launched a deadly assault on a heavily guarded CRPF in Jammu and Kashmir, leaving CRPF ASI Vishnu Prajapati dead."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-CRPF-ASI-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/02/07/false-claim-alleging-crpf-asi-killed-by-militants-goes-viral/",
+          "published_at": "2025-02-07",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the PSYWAR Bureau post and found that CRPF ASI Vishnu Prajapati died of a heart attack while on duty, not in a militant assault."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact PSYWAR Bureau source post plus DFRAC's documented reverse-image/keyword review and contemporaneous reporting on Vishnu Prajapati's death.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The reviewed reporting identified Vishnu Prajapati's cause of death as a heart attack while on duty; it did not support a Kashmiri-militant assault killing him.",
+        "search_notes": "A real CRPF death was used as substrate for an unsupported militant-attack attribution.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real service-member death as substrate; score only the unsupported attack mechanism and perpetrator attribution.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical incident/cause-of-death family remains separate from this source-behavior finding."
+    },
+    {
+      "incident_id": "WOL-BS-PSYWAR-IAF-SIKH-PUSH-20250209",
+      "source_id": "WOL-SRC-PSYWAR-BUREAU",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-02-09",
+      "first_observed_at": "2025-02-10",
+      "statement_identity": "PSYWAR Bureau stated that an Indian Air Force Sikh Garud commando was pushed from an aircraft by Hindu fellow commandos and murdered because of communal hatred.",
+      "source_information_event_id": "PSYWAR-X-IAF-SIKH-PUSH-20250209",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-IAF-SIKH-X",
+          "surface": "X",
+          "url": "https://x.com/PSYWAROPS/status/1888597878006026579",
+          "published_at": "2025-02-09",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "An Indian Air Force Garud commando fell from a plane near Agra. Insider reports reveal he was a Sikh, and his fellow commandos pushed him off mid-air."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-IAF-SIKH-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/02/10/was-an-iaf-sikh-jawan-pushed-off-by-his-fellow-hindu-commandos-during-a-training-exercise/",
+          "published_at": "2025-02-10",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the PSYWAR Bureau claim and documented reporting that IAF warrant officer Manjunath died after his parachute failed to open during a training jump."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact PSYWAR Bureau post plus DFRAC's documented review of contemporaneous police/media reporting on the Agra parachute-training death.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Contemporaneous reporting said the IAF warrant officer died after his parachute failed to open; it did not support that fellow commandos pushed him or that a communal motive caused his death.",
+        "search_notes": "The real training death does not support the asserted homicide mechanism, religious identities or communal motive.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One publication event; do not split the unsupported homicide mechanism and motive into multiple award incidents.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical cause-of-death or communal-attribution adjudication remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-PSYWAR-NAGPUR-SBL-SIKH-MISSING-20250216",
+      "source_id": "WOL-SRC-PSYWAR-BUREAU",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2025-02-16",
+      "first_observed_at": "2025-02-17",
+      "statement_identity": "PSYWAR Bureau presented video of a Nagpur-area explosion as an SBL Energy defense-company blast and stated that two Sikh employees were missing.",
+      "source_information_event_id": "PSYWAR-X-NAGPUR-SBL-SIKH-MISSING-20250216",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-NAGPUR-X",
+          "surface": "X",
+          "url": "https://x.com/PSYWAROPS/status/1891173875083333986",
+          "published_at": "2025-02-16",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "A mysterious explosion hit SBL Energy, a defense company in Kottwalbudi, Nagpur, India. Multiple casualties have been reported. Notably, two Sikh employees remain missing."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-NAGPUR-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/02/17/facts-of-the-recent-nagpur-incident-have-been-manipulated/",
+          "published_at": "2025-02-17",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the post and documented that the explosion occurred at Asian Fireworks, not SBL Energy; SBL separately said its facility was unaffected, and no support was found for two Sikh employees being missing."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact PSYWAR Bureau source post, DFRAC reverse-image/news review and the SBL Energy statement identifying Asian Fireworks as the actual blast site.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The underlying explosion and casualties were real, but reviewed reporting placed the blast at Asian Fireworks rather than SBL Energy and did not support the claim that two Sikh SBL employees were missing.",
+        "search_notes": "A real explosion was converted into a false facility identity plus an unsupported communalized missing-person claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One media-presentation event; the site misidentification and missing-employees claim count once.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical Nagpur explosion reconstruction remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-PSYWAR-F35-AMCA-TRAP-20250220",
+      "source_id": "WOL-SRC-PSYWAR-BUREAU",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2025-02-20",
+      "first_observed_at": "2025-02-21",
+      "statement_identity": "PSYWAR Bureau attributed to an Indian Air Force officer a warning that the U.S. F-35 offer was a trap intended to sideline India's AMCA program.",
+      "source_information_event_id": "PSYWAR-X-F35-AMCA-TRAP-20250220",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-F35-AMCA-X",
+          "surface": "X",
+          "url": "https://x.com/PSYWAROPS/status/1892629076948418628",
+          "published_at": "2025-02-20",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "An Indian Air Force officer warns that America's F-35 offer is a trap to sideline India's AMCA program."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-F35-AMCA-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/02/21/is-americas-f-35-offer-a-trap-to-sideline-indias-amca-program/",
+          "published_at": "2025-02-21",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the attributed-warning claim and found no Indian Air Force statement or reporting supporting the quoted warning."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact PSYWAR Bureau post plus DFRAC's documented search for the attributed Indian Air Force warning and contemporaneous reporting on India's F-35/AMCA discussion.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The reviewed record contained discussion and expert opinion about possible F-35 acquisition effects, but no identified Indian Air Force officer statement supporting the attributed warning.",
+        "search_notes": "Real debate over F-35 acquisition and AMCA does not authenticate an invented or unsupported military-officer quotation.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the unsupported attributed statement, not the existence of legitimate policy debate over F-35 acquisition and AMCA.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical quotation/authorship proposition remains separately adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-PSYWAR-CANADA-TOP-THREAT-20250301",
+      "source_id": "WOL-SRC-PSYWAR-BUREAU",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-03-01",
+      "first_observed_at": "2025-03-03",
+      "statement_identity": "PSYWAR Bureau stated that Canada's Foreign Interference Commission had officially listed India as Canada's top national security threat.",
+      "source_information_event_id": "PSYWAR-X-CANADA-TOP-THREAT-20250301",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-CANADA-X",
+          "surface": "X",
+          "url": "https://x.com/PSYWAROPS/status/1895827230770807101",
+          "published_at": "2025-03-01",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Canada Foreign Interference Commission has officially listed India as its top national security threat, exposing its hostile covert operations against Canada."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-CANADA-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/03/03/has-canada-officially-listed-india-as-its-top-national-security-threat/",
+          "published_at": "2025-03-03",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC checked the Canadian Foreign Interference Commission material and found the PRC described as the most active perpetrator of state-based foreign interference, with India discussed separately rather than identified as Canada's top threat."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact PSYWAR Bureau post, DFRAC verification and the cited Government of Canada Foreign Interference Commission material.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The Canadian commission material identified the PRC as the most active perpetrator of state-based foreign interference targeting Canadian democratic institutions; it did not support the claim that India was officially listed as Canada's top national security threat.",
+        "search_notes": "The record supports serious Canadian concerns about Indian foreign interference, but not the stronger 'top national security threat' ranking asserted by the post.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real Canada-India foreign-interference concern; score only the unsupported official-ranking claim.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical foreign-interference ranking proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-PSYWAR-GWALIOR-RAW-DEPUTY-DIRECTOR-20250305",
+      "source_id": "WOL-SRC-PSYWAR-BUREAU",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-03-05",
+      "first_observed_at": "2025-03-06",
+      "statement_identity": "PSYWAR Bureau stated that a Gwalior residential explosion killed Avinash Shukla, whom it identified as a deputy director of India's R&AW.",
+      "source_information_event_id": "PSYWAR-X-GWALIOR-RAW-DEPUTY-DIRECTOR-20250305",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-GWALIOR-X",
+          "surface": "X",
+          "url": "https://x.com/PSYWAROPS/status/1897219692475113505",
+          "published_at": "2025-03-05",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "A powerful explosion in a residential building in Gwalior left 1 dead and 2 injured... sources claim Shukla was a Deputy Director of India's R&AW."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-PSYWAR-GWALIOR-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/03/06/fake-claim-alleging-the-death-of-indian-raampw-deputy-director-surfaces-after-gwalior-explosion-mishap/",
+          "published_at": "2025-03-06",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the PSYWAR Bureau claim and found contemporaneous reporting that two people were injured in the blast, with no Avinash Shukla death and no support for identifying such a person as a R&AW deputy director."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact PSYWAR Bureau post plus DFRAC's documented review of contemporaneous Gwalior blast reporting and searches for the claimed R&AW identity.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Reviewed reporting described two injured people and did not report an Avinash Shukla death; the claimed R&AW deputy-director identity was also not supported.",
+        "search_notes": "A real residential explosion was used as substrate for an unsupported fatality and intelligence-official identity claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One publication event; the unsupported death and R&AW identity are not double-counted.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical blast casualty or intelligence-official identity proposition remains separate."
     }
   ]
 }
