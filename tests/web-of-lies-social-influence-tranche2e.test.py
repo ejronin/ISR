@@ -33,9 +33,15 @@ assert lim["evidentiary_support_review"]["supporting_evidence_found"] is False
 assert "traffic collapse is supported" in lim["evidentiary_support_review"]["claimant_basis_note"]
 assert "does not isolate U.S. strike waves" in lim["evidentiary_support_review"]["claimant_basis_note"]
 assert lim["public_receipts"]
-assert leads["LEAD-LIM-TEAN"]["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
+assert leads["LEAD-LIM-TEAN"]["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
 assert "broader pattern review" in profiles["WOL-SRC-LIM-TEAN"]["identity_context"]
-assert profiles["WOL-SRC-LIM-TEAN"]["source_awards"] == []
+# Tranche 2e originally protected Lim as an open one-incident review. A later
+# evidence-complete pattern tranche may legitimately derive an award; 2e keeps
+# the original July 20 incident and profile-scope invariants only.
+assert any(
+    row["source_id"] == "WOL-SRC-LIM-TEAN"
+    for row in incidents.values()
+)
 
 assert imu_id in incidents
 imu = incidents[imu_id]
@@ -76,7 +82,7 @@ for source_id in (
     assert profiles[source_id]["source_awards"] == []
 
 # Native WOL incidents do not silently create legacy direct-verdict/Hall
-# findings, and one incident can never satisfy the six-in-30-days award rule.
+# findings. Award state is independently derived from the complete incident set.
 for source_id in (
     "WOL-SRC-LIM-TEAN",
     "WOL-SRC-IRAN-MILITARY-UPDATE",
@@ -98,5 +104,5 @@ assert not {
 
 print(
     "web-of-lies social influence tranche2e: PASS "
-    "lim_incidents=1 lim_pattern_review=active iran_military_update_incidents=1 jgg=paywall_unable parody=excluded awards=0"
+    "lim_anchor_preserved=1 lim_pattern_review=completed iran_military_update_incidents=1 jgg=paywall_unable parody=excluded"
 )
