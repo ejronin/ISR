@@ -390,6 +390,12 @@ def validate_forensic_input(
             raise ValueError(
                 f"amplification observation {observation_id} lacks amplifier_id"
             )
+        amplifier_source_id = str(observation.get("amplifier_source_id") or "").strip()
+        if amplifier_source_id and amplifier_source_id not in source_ids:
+            raise ValueError(
+                f"amplification observation {observation_id} references unknown "
+                f"amplifier source profile {amplifier_source_id}"
+            )
         authenticity = observation.get("amplifier_authenticity_class")
         if authenticity and authenticity not in allowed_authenticity:
             raise ValueError(
