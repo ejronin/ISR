@@ -147,6 +147,17 @@ async function loadDirectRoute(cdp, route) {
       } else {
         assert.equal(view.currentSecondary, expectedFinalReaderLabel(route, view.publicProductVersion), `secondary location not obvious for ${route.key}`);
       }
+      if (route.key === 'evidence.web_of_lies') {
+        await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
+        const wolGraph = await cdp.eval(`(() => ({
+          canvasCount: document.querySelectorAll('.wol-cytoscape-host canvas').length,
+          status: document.querySelector('.wol-graph-status')?.textContent || '',
+          nodes: document.querySelector('.wol-node-picker')?.options.length || 0
+        }))()`);
+        assert(wolGraph.canvasCount > 0, 'WOL Cytoscape graph did not create a canvas');
+        assert(wolGraph.nodes > 1, 'WOL graph exposes no selectable source nodes');
+        assert(/Showing the full|Focused on/.test(wolGraph.status), 'WOL graph status did not initialize');
+      }
     }
 
     await setRoute(cdp, ia.ROUTES.get('evidence.information'));

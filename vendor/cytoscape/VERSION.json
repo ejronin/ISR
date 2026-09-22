@@ -1,0 +1,8 @@
+{
+  "name": "cytoscape",
+  "version": "3.34.0",
+  "source_repository": "https://github.com/cytoscape/cytoscape.js",
+  "source_ref": "v3.34.0",
+  "source_path": "dist/cytoscape.min.js",
+  "license": "MIT"
+}

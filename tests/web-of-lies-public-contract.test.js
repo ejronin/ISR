@@ -40,7 +40,6 @@ assert(Array.isArray(derived.hall_of_shame.ranking_contract.qualification_metric
 const hallClasses = new Set(derived.hall_of_shame.ranking_contract.hall_of_shame_classes || []);
 assert(!hallClasses.has('OFFICIAL_SOURCE'), 'neutral official-source typing leaked into Hall ranking classes');
 assert(!hallClasses.has('JOURNALISTIC_SOURCE'), 'neutral journalistic-source typing leaked into Hall ranking classes');
-assert.match(iaSource, /Plain-English verdict/);
 
 const ledger = model.datasets['gate3.lie_ledger'].payload;
 const ledgerChains = Array.isArray(ledger.records) ? ledger.records.filter(row => row.public_include_in_accusation_count !== false) : [];
@@ -53,6 +52,17 @@ assert.match(readerSource, /Open Web of Lies/);
 assert.match(iaSource, /function WebOfLiesPage\(/);
 assert.match(iaSource, /No qualifying source in this evidence slice/);
 assert.match(iaSource, /Prove the pattern; then call the pattern what it is\./);
+assert.match(iaSource, /Explore the propagation graph/);
+assert.match(iaSource, /wol-cytoscape-host/);
+assert.match(iaSource, /root && root\.cytoscape/);
+assert.match(iaSource, /bullshitter_source_count/);
+assert.match(iaSource, /CONFIRMED_BOT/);
+assert.match(iaSource, /Touch a node/);
+assert.match(iaSource, /Observed megaphones/);
+assert.match(iaSource, /Bullshitter sources repeated/);
+assert(Array.isArray(derived.propagation_graph.nodes), 'compiled WOL graph nodes missing');
+assert(Array.isArray(derived.propagation_graph.edges), 'compiled WOL graph edges missing');
+assert.equal(derived.propagation_graph.graph_type, 'BULLSHITTER_MEGAPHONE_NETWORK');
 assert(!/manual_rank|manual_score|featured_rank/.test(iaSource), 'public Web of Lies renderer contains a manual ranking control');
 
 if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.information_events || []).length === 0) {
@@ -61,4 +71,4 @@ if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.informa
   assert(derived.claim_families.length > 0, 'canonical claim-family registry should still be populated before source forensics are seeded');
 }
 
-console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, buried route, signed TRACE links, deterministic ranking contract, and no manual Hall selection`);
+console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, Cytoscape graph-first UX, signed TRACE links, deterministic WOL ranking contract, and no manual Hall selection`);

@@ -129,7 +129,7 @@ def validate_repository(root: Path) -> dict[str, int]:
     current_package_support = set(inventory.get("current_package_support") or [])
     classified_support = archive_assets | current_package_support
     support_actual = set()
-    for pattern in ("assets/flags/*", "assets/icons/*", "legacy/*", "vendor/leaflet/**/*", "vendor/mermaid/**/*"):
+    for pattern in ("assets/flags/*", "assets/icons/*", "legacy/*", "vendor/leaflet/**/*", "vendor/mermaid/**/*", "vendor/cytoscape/**/*"):
         support_actual |= files_under(root, pattern)
     support_current = {path for path in current_paths if path.startswith("vendor/")}
     require_exact(support_actual, classified_support | support_current, "presentation support asset")

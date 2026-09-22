@@ -7,7 +7,7 @@
   "controlling_contract": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
   "canonical_inputs": {
     "evidence": "Evidence Integration / canonical current state",
-    "claim_adjudication": "Information Claims & Forensic Adjudication / Lie Ledger v2"
+    "claim_adjudication": "Lie Ledger / Claims Forensics may be consumed as read-only factual context; it is not authoritative over WOL-native incident qualification, source-behavior metrics, awards, Hall placement, or direct verdicts."
   },
   "authority": {
     "owns": [
@@ -41,7 +41,12 @@
       "public_source_infrastructure_provenance",
       "research_lead_queue",
       "media_analysis_decomposition",
-      "source_behavior_awards"
+      "source_behavior_awards",
+      "wol_native_incident_adjudication",
+      "wol_native_behavior_metric_adjudication",
+      "wol_native_award_adjudication",
+      "wol_native_hall_qualification",
+      "wol_native_direct_verdicts"
     ],
     "must_not_overwrite": [
       "canonical_evidence",
@@ -56,7 +61,17 @@
       "FORENSIC_DISCOVERY",
       "EVIDENCE_PROMOTION_CANDIDATE",
       "ADJUDICATION_REVIEW_CANDIDATE"
-    ]
+    ],
+    "exclusive_wol_authority": {
+      "incident_qualification": true,
+      "behavior_metrics": true,
+      "source_awards": true,
+      "hall_of_shame_qualification_and_ranking": true,
+      "direct_verdicts_and_appellations": true,
+      "external_lane_may_grant_or_deny_wol_outcome": false,
+      "rule": "No external Atlas lane may grant, deny, suppress, override, or require a WOL-native incident, behavior metric, source award, Hall result, or direct verdict. Other lanes may provide evidence or canonical factual context only."
+    },
+    "canonical_non_overwrite_rule": "WOL does not overwrite canonical Evidence/Lie-Ledger fields when making WOL-native findings. Non-overwrite is a storage/authority boundary, not a veto over WOL's own adjudication."
   },
   "source_behavior_classes": [
     "JOURNALISTIC_SOURCE",
@@ -332,7 +347,9 @@
         "COUNTERFACTUAL",
         "OTHER"
       ],
-      "upstream_adjudication_required_before_adverse_scoring": true
+      "wol_evidence_gate_required_before_adverse_scoring": true,
+      "upstream_promotion_is_separate_from_wol_scoring": true,
+      "rule": "Adverse WOL scoring is controlled by WOL's own evidentiary gate. Upstream Evidence/Lie-Ledger review may be requested for canonical synchronization but cannot grant, deny, delay, or override a WOL-native incident or award."
     }
   },
   "source_awards": {
@@ -398,6 +415,8 @@
   "source_discovery_scope": {
     "named_seed_accounts_are_examples_not_boundary": true,
     "actively_discover_new_publishers": true,
+    "conflict_scope": "IRAN_WAR_2026",
+    "active_corpus_rule": "Active Web-of-Lies source-behavior discovery is limited to publishers or amplifiers materially participating in factual or analytical claims about the 2026 Iran war. General misinformation history, unrelated regional propaganda, and pre-2026 claim behavior outside this conflict are out of scope and must not be retained in the active corpus merely to characterize a source.",
     "discovery_surfaces": [
       "YOUTUBE",
       "FACEBOOK",
@@ -407,12 +426,27 @@
       "PODCAST",
       "WEBSITE"
     ],
-    "materiality_rule": "Prioritize publishers with repeated or materially influential Iran-war factual/analytical content. A seed account with no material or recurring Iran-war activity may be removed from the active adjudication queue.",
+    "materiality_rule": "For non-official/non-canonical claim-first source discovery, Iran-war relevance is necessary but not sufficient. Retain a publisher only when public receipts establish either a large direct audience/reach or documented downstream amplification into a materially influential Iran-war information network. A seed account with no material 2026 Iran-war activity is removed from the active adjudication queue.",
+    "materiality_qualification_bases": [
+      "LARGE_DIRECT_AUDIENCE",
+      "DOCUMENTED_DOWNSTREAM_AMPLIFICATION"
+    ],
+    "qualification_receipts_required": true,
+    "arbitrary_numeric_follower_threshold_forbidden": true,
+    "reach_is_intake_only": "Follower/subscriber/view/repost evidence may establish source-selection materiality. It must not determine truth, deception, Bullshitter qualification, Hall-of-Shame score, or credibility.",
+    "amplification_intake_rule": "A smaller source may qualify when public evidence shows its Iran-war claims are materially amplified by other publishers/accounts or move through an established amplification network.",
+    "amplifier_behavior_rule": "Amplification is recorded as lightweight propagation evidence under the Bullshitter source/claim that was amplified. A megaphone does not require a second full truth adjudication when the underlying claim is already adjudicated; preserve the amplifier-specific publication receipt, identity metadata, and the upstream Bullshitter/incident reference.",
+    "no_guilt_by_network_rule": "Network membership alone proves nothing. A megaphone edge requires a proved publication, repost, repeat, embed, or adoption of the specific qualifying message. Neutral attributed reporting with meaningful corrective context is not a megaphone edge.",
+    "same_information_event_deduplication_applies_to_amplifiers": true,
+    "out_of_conflict_research_must_not_be_retained_in_active_corpus": true,
     "parody_accounts_excluded_from_adjudication": true,
-    "parody_rule": "Accounts explicitly presented as parody/satire are excluded from WOL factual-behavior adjudication and Bullshitter-award accumulation. Historical network membership/provenance may be retained, but parody accounts are not active adjudication targets.",
-    "inaccessible_relevant_content_rule": "When material Iran-war content is known to exist but the evidentiary body is inaccessible behind a paywall or equivalent access barrier, use an unable-to-adjudicate disposition. Do not convert inaccessible content into a clean/no-adverse finding.",
+    "parody_rule": "Accounts explicitly presented as parody/satire are excluded from WOL factual-behavior adjudication and Bullshitter-award accumulation. Historical network membership/provenance may be retained only when it is part of a material 2026 Iran-war propagation chain; parody accounts are not active adjudication targets.",
+    "inaccessible_relevant_content_rule": "When material 2026 Iran-war content is known to exist but the evidentiary body is inaccessible behind a paywall or equivalent access barrier, use an unable-to-adjudicate disposition. Do not convert inaccessible content into a clean/no-adverse finding.",
     "inaccessible_disposition": "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT",
     "ai_assistance_rule": "Use of AI is not itself adverse behavior. Score the published factual proposition, inferential bridge or evidentiary presentation. Record AI-assisted authorship only when independently evidenced and material to provenance.",
-    "inference_rule": "Repeated analytical overfitting can qualify when the publication presents a causal, control, motive, intent or strategic conclusion as established fact and the preserved evidence does not support that bridge. Mere disagreement or an unresolved inference does not qualify."
+    "inference_rule": "Repeated analytical overfitting can qualify when the publication presents a causal, control, motive, intent or strategic conclusion as established fact and the preserved evidence does not support that bridge. Mere disagreement or an unresolved inference does not qualify.",
+    "megaphone_roster_is_not_award_inheritance": true,
+    "megaphone_cross_awardee_overlap_is_graph_signal": true,
+    "bot_and_country_markers_require_receipts": true
   }
 }

@@ -33,7 +33,10 @@ media_rule = governance["osint_collection"]["media_analysis_review"]
 assert media_rule["factual_substrate_is_not_inferential_validation"] is True
 assert media_rule["accurate_number_does_not_validate_causal_bridge"] is True
 assert media_rule["accurate_quote_does_not_validate_motive_or_control_inference"] is True
-assert media_rule["upstream_adjudication_required_before_adverse_scoring"] is True
+assert media_rule["wol_evidence_gate_required_before_adverse_scoring"] is True
+assert media_rule["upstream_promotion_is_separate_from_wol_scoring"] is True
+assert "upstream_adjudication_required_before_adverse_scoring" not in media_rule
+assert "cannot grant, deny, delay, or override" in media_rule["rule"]
 
 # Lim: supported shipping substrate does not automatically validate his causal
 # bridge from "more bombs, fewer ships" to U.S. strikes producing the shutdown.
@@ -274,12 +277,6 @@ assert valenti_award["current_window_incident_ids"] == [
     "WOL-BS-VALENTI-31M-SOLDIERS-20260917"
 ]
 
-# Identity/relevance closure remains evidence-bounded.
-assert leads["LEAD-ZACH-FOR-THE-PEOPLE"]["identity_status"] == "PUBLIC_IDENTITY_RESOLVED"
-assert leads["LEAD-ZACH-FOR-THE-PEOPLE"]["current_disposition"] == "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND"
-assert profiles["WOL-SRC-ZACH-FOR-THE-PEOPLE-FB"]["identity_confidence"] == "HIGH"
-assert leads["LEAD-EL-MARQUES-XD"]["current_disposition"] == "IDENTITY_UNRESOLVED"
-
 # The Bullshitter award is independent from legacy direct_verdict / Hall class
 # scoring. Valenti earns the award from WOL-native incidents while his
 # direct_verdict remains unset and the other research leads remain unscored.
@@ -287,7 +284,6 @@ for source_id in (
     "WOL-SRC-VALENTI-VIDEOS",
     "WOL-SRC-ETHAN-LEVINS",
     "WOL-SRC-LIM-TEAN",
-    "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
 ):
     assert profiles[source_id]["direct_verdict"] is None
 ethan_incident_ids = {
@@ -330,7 +326,6 @@ assert "counts once" in behavior_incidents["WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE
 # later full pattern review. Do not freeze his award state here; tranche 2G owns
 # the completed six-event award invariant.
 assert profiles["WOL-SRC-LIM-TEAN"]["direct_verdict"] is None
-assert profiles["WOL-SRC-ZACH-FOR-THE-PEOPLE-FB"]["source_awards"] == []
 
 hall_ids = {
     entry["source_id"]

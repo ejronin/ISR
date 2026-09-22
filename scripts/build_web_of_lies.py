@@ -343,6 +343,75 @@ def validate_forensic_input(
                 f"source behavior incident {incident_id} has no public receipts"
             )
 
+    amplification_observations = forensic.get("amplification_observations") or []
+    amplification_ids: set[str] = set()
+    allowed_authenticity = set(governance.get("authenticity_classes") or [])
+    for observation in amplification_observations:
+        observation_id = str(observation.get("observation_id") or "").strip()
+        if not observation_id or observation_id in amplification_ids:
+            raise ValueError(
+                f"duplicate or missing amplification observation id: {observation_id!r}"
+            )
+        amplification_ids.add(observation_id)
+        bullshitter_source_id = str(observation.get("bullshitter_source_id") or "").strip()
+        bullshitter_event_id = str(observation.get("bullshitter_event_id") or "").strip()
+        if bullshitter_source_id not in source_ids:
+            raise ValueError(
+                f"amplification observation {observation_id} references unknown "
+                f"Bullshitter source {bullshitter_source_id}"
+            )
+        upstream_event = events_by_id.get(bullshitter_event_id)
+        if upstream_event is None:
+            upstream_event = next(
+                (
+                    incident
+                    for incident in source_behavior_incidents
+                    if str(incident.get("incident_id") or "") == bullshitter_event_id
+                ),
+                None,
+            )
+        if upstream_event is None:
+            raise ValueError(
+                f"amplification observation {observation_id} references unknown "
+                f"Bullshitter qualifying event {bullshitter_event_id}"
+            )
+        if str(upstream_event.get("source_id") or "") != bullshitter_source_id:
+            raise ValueError(
+                f"amplification observation {observation_id} event/source mismatch: "
+                f"{bullshitter_event_id} != {bullshitter_source_id}"
+            )
+        if not bullshit_qualifying_event(upstream_event, governance):
+            raise ValueError(
+                f"amplification observation {observation_id} references "
+                f"non-qualifying upstream event {bullshitter_event_id}"
+            )
+        amplifier_id = str(observation.get("amplifier_id") or "").strip()
+        if not amplifier_id:
+            raise ValueError(
+                f"amplification observation {observation_id} lacks amplifier_id"
+            )
+        amplifier_source_id = str(observation.get("amplifier_source_id") or "").strip()
+        if amplifier_source_id and amplifier_source_id not in source_ids:
+            raise ValueError(
+                f"amplification observation {observation_id} references unknown "
+                f"amplifier source profile {amplifier_source_id}"
+            )
+        authenticity = observation.get("amplifier_authenticity_class")
+        if authenticity and authenticity not in allowed_authenticity:
+            raise ValueError(
+                f"amplification observation {observation_id} has unsupported "
+                f"amplifier authenticity {authenticity}"
+            )
+        country_code = str(observation.get("amplifier_country_code") or "").strip()
+        if country_code and (len(country_code) != 2 or country_code.upper() != country_code):
+            raise ValueError(
+                f"amplification observation {observation_id} has invalid country code {country_code}"
+            )
+        if not list(observation.get("public_receipts") or []):
+            raise ValueError(
+                f"amplification observation {observation_id} has no public receipts"
+            )
+
     relationship_ids: set[str] = set()
     graph_ids = event_ids | source_ids
     for relation in relationships:
@@ -893,6 +962,307 @@ def current_period_events(
     return selected
 
 
+COUNTRY_CODE_BY_REGION = {
+    "Iran": "IR",
+    "Russia": "RU",
+    "United States": "US",
+    "United States of America": "US",
+    "India": "IN",
+    "China": "CN",
+    "Pakistan": "PK",
+    "Israel": "IL",
+    "United Kingdom": "GB",
+    "Saudi Arabia": "SA",
+    "United Arab Emirates": "AE",
+    "Iraq": "IQ",
+    "Yemen": "YE",
+}
+
+
+def profile_country_code(profile: dict[str, Any]) -> str | None:
+    explicit = str(profile.get("country_code") or "").strip().upper()
+    if len(explicit) == 2:
+        return explicit
+    return COUNTRY_CODE_BY_REGION.get(str(profile.get("country_region") or "").strip())
+
+
+def derive_award_propagation_graph(
+    profiles: list[dict[str, Any]],
+    qualifying_events: list[dict[str, Any]],
+    relationships: list[dict[str, Any]],
+    amplification_observations: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Compile the explorable Bullshitter -> megaphone graph from structured receipts.
+
+    Existing WOL lineage can contribute a megaphone edge only when the downstream
+    event itself is explicitly marked as amplification/repetition/syndication and
+    has a public receipt. Neutral REPORTS-only lineage is not auto-promoted.
+    """
+    profile_by_id = {str(row.get("source_id") or ""): row for row in profiles}
+    event_by_id = {
+        str(row.get("event_id") or row.get("incident_id") or ""): row
+        for row in qualifying_events
+        if str(row.get("event_id") or row.get("incident_id") or "")
+    }
+    award_event_ids_by_source: dict[str, set[str]] = {}
+    awardee_ids: set[str] = set()
+    for source_id, profile in profile_by_id.items():
+        awards = [
+            award
+            for award in profile.get("source_awards") or []
+            if str(award.get("award_code") or "") == "BULLSHITTER"
+        ]
+        if not awards:
+            continue
+        awardee_ids.add(source_id)
+        award_event_ids_by_source[source_id] = {
+            str(event_id)
+            for award in awards
+            for event_id in award.get("qualifying_incident_ids") or []
+            if str(event_id)
+        }
+
+    nodes: dict[str, dict[str, Any]] = {}
+    for source_id in sorted(awardee_ids):
+        profile = profile_by_id[source_id]
+        awards = [
+            dict(award)
+            for award in profile.get("source_awards") or []
+            if str(award.get("award_code") or "") == "BULLSHITTER"
+        ]
+        nodes[source_id] = {
+            "node_id": source_id,
+            "node_type": "BULLSHITTER",
+            "display_name": str(profile.get("display_name") or source_id),
+            "country_code": profile_country_code(profile),
+            "country_region": profile.get("country_region"),
+            "primary_platform": profile.get("primary_platform"),
+            "authenticity_class": str(profile.get("authenticity_class") or "UNKNOWN"),
+            "award_codes": ["BULLSHITTER"],
+            "award_incident_count": max(
+                [int(award.get("qualifying_incident_count") or 0) for award in awards] or [0]
+            ),
+        }
+
+    edge_groups: dict[tuple[str, str], dict[str, Any]] = {}
+    amplifier_awardees: dict[str, set[str]] = defaultdict(set)
+    amplifier_observations: dict[str, set[str]] = defaultdict(set)
+
+    def profiled_amplifier_node(source_id: str) -> str | None:
+        profile = profile_by_id.get(source_id)
+        if profile is None:
+            return None
+        if source_id not in nodes:
+            nodes[source_id] = {
+                "node_id": source_id,
+                "node_type": "MEGAPHONE",
+                "display_name": str(profile.get("display_name") or source_id),
+                "country_code": profile_country_code(profile),
+                "country_region": profile.get("country_region"),
+                "primary_platform": profile.get("primary_platform"),
+                "authenticity_class": str(profile.get("authenticity_class") or "UNKNOWN"),
+                "award_codes": [],
+            }
+        return source_id
+
+    def anonymous_amplifier_node(
+        amplifier_id: str,
+        display_name: str,
+        handle: Any,
+        platform: Any,
+        country_code: Any,
+        authenticity_class: Any,
+    ) -> str:
+        node_id = f"AMP::{amplifier_id}"
+        incoming = {
+            "node_id": node_id,
+            "node_type": "MEGAPHONE",
+            "amplifier_id": amplifier_id,
+            "display_name": display_name or amplifier_id,
+            "handle": handle,
+            "primary_platform": platform,
+            "country_code": country_code,
+            "country_region": None,
+            "authenticity_class": str(authenticity_class or "UNKNOWN"),
+            "award_codes": [],
+        }
+        prior = nodes.get(node_id)
+        if prior is None:
+            nodes[node_id] = incoming
+            return node_id
+        for field in (
+            "display_name",
+            "handle",
+            "primary_platform",
+            "country_code",
+            "authenticity_class",
+        ):
+            value = incoming.get(field)
+            if value not in (None, "") and prior.get(field) not in (None, "", value):
+                raise ValueError(
+                    f"amplifier {amplifier_id} conflicts on {field}: "
+                    f"{prior.get(field)!r} != {value!r}"
+                )
+            if prior.get(field) in (None, "") and value not in (None, ""):
+                prior[field] = value
+        return node_id
+
+    def add_edge(
+        *,
+        source_id: str,
+        event_id: str,
+        amplifier_node_id: str,
+        evidence_id: str,
+        public_receipts: list[dict[str, Any]],
+    ) -> None:
+        if source_id == amplifier_node_id:
+            return
+        amplifier_awardees[amplifier_node_id].add(source_id)
+        amplifier_observations[amplifier_node_id].add(evidence_id)
+        key = (source_id, amplifier_node_id)
+        group = edge_groups.setdefault(
+            key,
+            {
+                "edge_id": f"{source_id}::{amplifier_node_id}",
+                "from_node_id": source_id,
+                "to_node_id": amplifier_node_id,
+                "relationship_type": "AMPLIFIES_BULLSHIT",
+                "observation_ids": [],
+                "bullshitter_event_ids": [],
+                "public_receipts": [],
+            },
+        )
+        group["observation_ids"].append(evidence_id)
+        group["bullshitter_event_ids"].append(event_id)
+        group["public_receipts"].extend([dict(receipt) for receipt in public_receipts])
+
+    # Reuse already-proven WOL propagation where the downstream event is an
+    # explicit amplifier/repeater and a public receipt can be shown to the user.
+    for relation in relationships:
+        relation_type = str(relation.get("relationship_type") or "")
+        if relation_type not in {"AMPLIFIES", "REPEATS", "SYNDICATES", "DERIVES_FROM"}:
+            continue
+        downstream = event_by_id.get(str(relation.get("from_id") or ""))
+        upstream = event_by_id.get(str(relation.get("to_id") or ""))
+        if downstream is None or upstream is None:
+            continue
+        source_id = str(upstream.get("source_id") or "")
+        event_id = str(upstream.get("event_id") or upstream.get("incident_id") or "")
+        if (
+            source_id not in awardee_ids
+            or event_id not in award_event_ids_by_source.get(source_id, set())
+        ):
+            continue
+        downstream_source_id = str(downstream.get("source_id") or "")
+        if not downstream_source_id or downstream_source_id == source_id:
+            continue
+        downstream_roles = set(downstream.get("lineage_roles") or [])
+        if not downstream_roles.intersection({"AMPLIFIES", "REPEATS", "SYNDICATES"}):
+            continue
+        receipts = [
+            dict(receipt)
+            for receipt in (
+                list(downstream.get("public_receipts") or [])
+                + list(relation.get("public_receipts") or [])
+            )
+            if receipt.get("url") or receipt.get("archive_url")
+        ]
+        if not receipts:
+            continue
+        amplifier_node_id = profiled_amplifier_node(downstream_source_id)
+        if amplifier_node_id is None:
+            continue
+        add_edge(
+            source_id=source_id,
+            event_id=event_id,
+            amplifier_node_id=amplifier_node_id,
+            evidence_id=f"REL::{relation.get('relationship_id')}",
+            public_receipts=receipts,
+        )
+
+    # New discovery can add a megaphone without creating a full WOL source
+    # dossier or re-adjudicating the upstream claim.
+    for observation in amplification_observations:
+        source_id = str(observation.get("bullshitter_source_id") or "")
+        if source_id not in awardee_ids:
+            continue
+        event_id = str(observation.get("bullshitter_event_id") or "")
+        upstream_event = event_by_id.get(event_id)
+        if (
+            upstream_event is None
+            or str(upstream_event.get("source_id") or "") != source_id
+            or event_id not in award_event_ids_by_source.get(source_id, set())
+        ):
+            continue
+
+        amplifier_source_id = str(observation.get("amplifier_source_id") or "").strip()
+        amplifier_node_id = (
+            profiled_amplifier_node(amplifier_source_id)
+            if amplifier_source_id
+            else None
+        )
+        if amplifier_node_id is None:
+            amplifier_id = str(observation.get("amplifier_id") or "").strip()
+            if not amplifier_id:
+                continue
+            amplifier_node_id = anonymous_amplifier_node(
+                amplifier_id,
+                str(observation.get("amplifier_display_name") or amplifier_id),
+                observation.get("amplifier_handle"),
+                observation.get("amplifier_platform"),
+                observation.get("amplifier_country_code"),
+                observation.get("amplifier_authenticity_class"),
+            )
+        add_edge(
+            source_id=source_id,
+            event_id=event_id,
+            amplifier_node_id=amplifier_node_id,
+            evidence_id=str(observation.get("observation_id") or ""),
+            public_receipts=list(observation.get("public_receipts") or []),
+        )
+
+    for amplifier_node_id in sorted(amplifier_awardees):
+        meta = nodes[amplifier_node_id]
+        meta["bullshitter_source_count"] = len(amplifier_awardees[amplifier_node_id])
+        meta["amplification_observation_count"] = len(
+            amplifier_observations[amplifier_node_id]
+        )
+
+    edges = []
+    for key in sorted(edge_groups):
+        row = edge_groups[key]
+        row["observation_ids"] = sorted(set(row["observation_ids"]))
+        row["bullshitter_event_ids"] = sorted(set(row["bullshitter_event_ids"]))
+        unique_receipts: dict[str, dict[str, Any]] = {}
+        for receipt in row["public_receipts"]:
+            rid = str(receipt.get("receipt_id") or "")
+            unique_receipts[rid or json.dumps(receipt, sort_keys=True)] = receipt
+        row["public_receipts"] = [
+            unique_receipts[rid] for rid in sorted(unique_receipts)
+        ]
+        row["amplified_claim_count"] = len(row["bullshitter_event_ids"])
+        edges.append(row)
+
+    return {
+        "graph_type": "BULLSHITTER_MEGAPHONE_NETWORK",
+        "nodes": sorted(nodes.values(), key=lambda row: row["node_id"]),
+        "edges": edges,
+        "summary": {
+            "bullshitter_nodes": len(awardee_ids),
+            "megaphone_nodes": len(amplifier_awardees),
+            "amplification_edges": len(edges),
+            "cross_bullshitter_megaphones": sum(
+                1 for values in amplifier_awardees.values() if len(values) > 1
+            ),
+            "confirmed_bot_megaphones": sum(
+                1
+                for node_id in amplifier_awardees
+                if nodes[node_id].get("authenticity_class") == "CONFIRMED_BOT"
+            ),
+        },
+    }
+
+
 def build_registry(
     canonical: dict[str, Any],
     forensic: dict[str, Any],
@@ -908,6 +1278,9 @@ def build_registry(
         dict(item) for item in (forensic.get("source_behavior_incidents") or [])
     ]
     relationships = [dict(item) for item in (forensic.get("relationships") or [])]
+    amplification_observations = [
+        dict(item) for item in (forensic.get("amplification_observations") or [])
+    ]
     families = derive_claim_families(canonical, information_events, relationships)
     profiles = source_profiles_with_metrics(forensic.get("source_profiles") or [], information_events)
 
@@ -938,6 +1311,12 @@ def build_registry(
         information_events,
         relationships,
     )
+    propagation_graph = derive_award_propagation_graph(
+        profiles,
+        information_events + source_behavior_incidents,
+        relationships,
+        amplification_observations,
+    )
 
     return {
         "schema_version": "1.0",
@@ -956,6 +1335,10 @@ def build_registry(
         "source_behavior_incidents": sorted(
             source_behavior_incidents, key=lambda item: item["incident_id"]
         ),
+        "amplification_observations": sorted(
+            amplification_observations, key=lambda item: item["observation_id"]
+        ),
+        "propagation_graph": propagation_graph,
         "relationships": sorted(relationships, key=lambda item: item["relationship_id"]),
         "promotion_flags": sorted(
             [dict(item) for item in (forensic.get("promotion_flags") or [])],

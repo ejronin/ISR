@@ -25,19 +25,30 @@ A different publisher is not automatically an independent source.
 
 Web of Lies may create a `FORENSIC_DISCOVERY`. Material discoveries may be flagged `EVIDENCE_PROMOTION_CANDIDATE`. Neither action rewrites the Evidence Locker.
 
-### Information Claims & Forensic Adjudication remains canonical for
+### Lie Ledger / Claims Forensics remains canonical for its own canonical record
 
-- truth adjudication;
-- misleading / unsupported / unresolved adjudication;
-- knowledge and deception findings;
-- Lie Ledger claim-chain semantics;
-- atomic proposition decomposition;
+- canonical Lie Ledger truth/knowledge/deception fields;
+- canonical claim-chain semantics;
+- canonical atomic proposition decomposition;
 - canonical claim relationships and denominators.
 
-Web of Lies consumes these read-only. New research that could change them is flagged `ADJUDICATION_REVIEW_CANDIDATE`.
+Those records are **evidence/context inputs to Web of Lies, not authority over Web of
+Lies outcomes**. No external Atlas lane may grant, deny, suppress, override, or
+require a WOL-native incident, behavior metric, source award, Hall result, or
+direct verdict.
 
-### Web of Lies owns
+WOL may flag evidence that should change a canonical Lie Ledger field as
+`ADJUDICATION_REVIEW_CANDIDATE`, but that handoff is separate from WOL's own
+adjudication. WOL does not wait for another lane's approval to apply its own
+published metric to evidence within WOL scope.
 
+### Web of Lies exclusively owns
+
+- WOL-native incident qualification and adjudication;
+- WOL behavior metrics and thresholds;
+- WOL source awards, including Bullshitter;
+- Hall of Shame qualification and ranking;
+- WOL direct verdicts and appellations;
 - claim origin tracing;
 - first-seen chronology;
 - source lineage;
@@ -329,7 +340,8 @@ Every severe characterization must link immediately to the incidents and metrics
 
 ## 14. Public product behavior
 
-Web of Lies remains subordinate to Lie Ledger.
+Web of Lies is linked from Lie Ledger, but WOL-native metrics, incidents, awards,
+Hall results, and direct verdicts are governed only by the Web of Lies contract.
 
 Access:
 
@@ -339,9 +351,38 @@ and claim-level:
 
 `Trace`
 
-Each claim family should ultimately provide a structured lineage graph with stable node IDs and node forensic cards.
+The primary Web of Lies surface is an **explorable compiled propagation graph**,
+not a list of source cards. Structured forensic data is authoritative; Cytoscape.js is the current
+presentation renderer.
 
-Mermaid or another graph renderer is presentation only. Structured forensic data is authoritative.
+The graph must:
+
+- compile one stable source/megaphone network from the current WOL registry;
+- visibly distinguish Bullshitter awardees from downstream megaphones;
+- show a country flag marker when country is receipt-backed;
+- show a 🤖 marker only when bot status is established as `CONFIRMED_BOT`;
+- aggregate a megaphone that repeats multiple Bullshitter sources into one node
+  and expose the number of distinct Bullshitter sources it amplifies;
+- allow a user to select/touch a node and visually emphasize only that node and
+  its directly connected edges/nodes while de-emphasizing the rest;
+- repopulate the detail pane below the graph from the selected node;
+- for a Bullshitter node, list the qualifying bullshit incidents/claims and their
+  receipts plus observed downstream megaphones;
+- for a megaphone node, list each Bullshitter source/incident it amplified and
+  the amplifier-specific publication receipts;
+- preserve neutral attributed reporting outside the megaphone network unless
+  the publication actually rebroadcasts/adopts the qualifying message.
+
+A megaphone roster is propagation evidence, not a second WOL incident adjudication.
+Once WOL has qualified the upstream bullshit incident, the lightweight downstream
+record needs only to prove **who amplified that specific message, where, when,
+and with what public receipt**. The graph therefore reuses WOL's adjudicated
+incident instead of manufacturing a second full WOL adjudication for every repost.
+
+Claim-family TRACE views remain available as a secondary drill-down for the
+underlying lineage record.
+
+Cytoscape.js (or a future replacement renderer) is presentation only. Structured forensic data is authoritative.
 
 ## 15. Incremental operation
 
@@ -663,23 +704,27 @@ assigned a canonical Lie Ledger family.
 Those discoveries must not be forced into an unrelated claim family merely so
 they can enter the lineage graph.
 
-A native discovery is review-queue material, not a scored lineage event. It
-must carry:
+A native discovery begins as review-queue material and must carry:
 
 - a stable discovery ID;
 - one of FORENSIC_DISCOVERY, EVIDENCE_PROMOTION_CANDIDATE, or
   ADJUDICATION_REVIEW_CANDIDATE;
-- a null canonical claim-family reference;
+- a canonical claim-family reference when one already exists, otherwise null;
 - reproducible public receipts;
 - the observable statement/event identity;
 - attribution confidence and attribution scope;
-- explicit downstream handling notes;
-- the upstream review target and reason.
+- explicit downstream handling notes.
 
-Native discoveries are routed to Information Claims & Forensic Adjudication.
-Until that authority assigns a canonical family, the discovery cannot enter
-Hall of Shame scoring, claim-family propagation metrics, or direct-verdict
-generation.
+If the discovery satisfies WOL's own incident evidence gate, WOL may promote it
+to a WOL-native source-behavior incident and use it in WOL metrics, awards, Hall
+qualification, and direct-verdict generation **without waiting for Claims
+Forensics or another lane to create a canonical family**.
+
+Canonical-family assignment is required only before the event is counted inside
+that Lie Ledger family's lineage/propagation metrics. If the discovery may also
+change canonical Atlas facts or Lie Ledger semantics, WOL separately emits the
+appropriate promotion/review flag. That handoff does not suspend the WOL-native
+finding.
 
 Cyber discoveries must preserve the distinction among actor attribution,
 claimed compromise, independently verified compromise, authenticity of
@@ -999,16 +1044,63 @@ Source role, source incentive, source relationship, factual-claim behavior, and
 Bullshitter-award state are separate axes. A descriptive receipt cannot erase
 or manufacture an independently derived adverse incident or source award.
 
-## 34. Discovery scope, inaccessible evidence, and exclusions
+## 34. Discovery scope, audience materiality, inaccessible evidence, and exclusions
 
 Named accounts supplied during research are **seeds, not the corpus boundary**.
-Web of Lies must continue claim-first discovery across public media platforms and
-identify additional publishers with material or recurring Iran-war factual or
-analytical content.
+Web of Lies must continue claim-first discovery across public media platforms, but
+the active source-behavior corpus is bounded to the **2026 Iran war**.
 
-An account does not remain an active target merely because it was named once. A
-seed with no material or recurring Iran-war activity may be removed from the
-active adjudication queue.
+General political misinformation, unrelated regional propaganda, and pre-2026
+claim behavior outside this conflict are not active WOL source-behavior evidence.
+Do not keep that material merely because it demonstrates that an account has lied
+about something else.
+
+For non-official/non-canonical claim-first discovery, Iran-war relevance is
+necessary but not sufficient. A publisher enters or remains in the active corpus
+only when public receipts establish at least one of these materiality paths:
+
+- **large direct audience/reach**; or
+- **documented downstream amplification** into a materially influential Iran-war
+  information network.
+
+Do not invent a universal numeric follower threshold. Platform audiences are not
+directly comparable, and reach can be post-specific. Preserve the actual public
+receipt and state which materiality path it supports.
+
+Follower count, subscriber count, views, impressions, and repost volume are
+**intake materiality evidence only**. They do not make a claim truer or falser,
+do not establish knowledge or deception, do not earn a Bullshitter award, and do
+not improve or worsen Hall-of-Shame rank.
+
+A smaller source can qualify for **graph inclusion** through documented
+amplification even when it does not warrant a full source-behavior adjudication.
+The megaphone roster is intentionally lightweight: preserve the amplifier
+identity, country/authenticity metadata only when evidenced, the upstream
+Bullshitter source and incident, and the amplifier-specific public receipt.
+
+The upstream **WOL-qualified bullshit incident** does not need to be re-adjudicated
+for every repost. The downstream question is simply whether the account actually
+rebroadcast, repeated, embedded, or adopted that qualifying message.
+
+Network membership alone still proves nothing. A source does not become a
+megaphone merely because it is associated, ideologically aligned, or part of the
+same community. A receipt must establish the publication/amplification act.
+
+Neutral attributed reporting remains distinct. A publication that clearly says
+"X claims Y," preserves Y as an allegation, and supplies meaningful contrary or
+corrective context does not enter the megaphone roster merely for mentioning the
+claim.
+
+Being listed as a megaphone does **not** inherit the upstream Bullshitter award.
+If the amplifier independently earns the award from its own adjudicated conduct,
+that award is derived through the ordinary Bullshitter rule. The graph may still
+show that the same account also amplified other Bullshitter sources.
+
+An account does not remain an active target merely because it was named once.
+A seed with no material 2026 Iran-war activity is removed from the active
+adjudication queue. Out-of-conflict research accidentally collected during WOL
+discovery is deleted from the active corpus rather than preserved as character
+evidence.
 
 ### Inaccessible relevant content
 

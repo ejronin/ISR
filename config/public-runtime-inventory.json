@@ -8,35 +8,121 @@
     "build_test_support": "Repository-only build, validation, or test support; not deployable unless separately named as a current output."
   },
   "current_sources": [
-    { "role": "bootstrap", "path": "js/public-bootstrap.js" },
-    { "role": "map_runtime", "path": "vendor/leaflet/leaflet.js" },
-    { "role": "base_runtime", "path": "js/public-ia.js" },
-    { "role": "reader_support", "path": "src/public-reader-layer.js" },
-    { "role": "page_registry", "path": "src/public-reader-registry.js" },
-    { "role": "map_stylesheet", "path": "vendor/leaflet/leaflet.css" },
-    { "role": "stylesheet", "path": "css/public-shell.css" },
-    { "role": "reader_stylesheet", "path": "src/public-reader-layer.css" },
-    { "role": "reference_geography", "path": "assets/geography/atlas-reference-geography.geojson" },
-    { "role": "entrypoint", "path": "js/public-app.js" }
+    {
+      "role": "bootstrap",
+      "path": "js/public-bootstrap.js"
+    },
+    {
+      "role": "map_runtime",
+      "path": "vendor/leaflet/leaflet.js"
+    },
+    {
+      "role": "graph_runtime",
+      "path": "vendor/cytoscape/cytoscape.min.js"
+    },
+    {
+      "role": "base_runtime",
+      "path": "js/public-ia.js"
+    },
+    {
+      "role": "reader_support",
+      "path": "src/public-reader-layer.js"
+    },
+    {
+      "role": "page_registry",
+      "path": "src/public-reader-registry.js"
+    },
+    {
+      "role": "map_stylesheet",
+      "path": "vendor/leaflet/leaflet.css"
+    },
+    {
+      "role": "stylesheet",
+      "path": "css/public-shell.css"
+    },
+    {
+      "role": "reader_stylesheet",
+      "path": "src/public-reader-layer.css"
+    },
+    {
+      "role": "reference_geography",
+      "path": "assets/geography/atlas-reference-geography.geojson"
+    },
+    {
+      "role": "entrypoint",
+      "path": "js/public-app.js"
+    }
   ],
   "current_shell_sources": [
     "index.html",
     "templates/public-index.html"
   ],
   "current_service_owners": [
-    { "service": "public bootstrap", "path": "js/public-bootstrap.js", "symbol": "async function start" },
-    { "service": "public application", "path": "js/public-app.js", "symbol": "async function boot" },
-    { "service": "authoritative reader-first page registry and route lifecycle", "path": "src/public-reader-registry.js", "symbol": "function mount" },
-    { "service": "non-authoritative base rendering library", "path": "js/public-ia.js", "symbol": "PAGE_OWNERS" },
-    { "service": "non-authoritative reader support module module", "path": "src/public-reader-layer.js", "symbol": "READER_SUPPORT_VERSION" },
-    { "service": "shared evidence drawer", "path": "js/public-ia.js", "symbol": "EvidenceDrawer" },
-    { "service": "shared MapView", "path": "js/public-ia.js", "symbol": "MapView" },
-    { "service": "route data authorization", "path": "js/public-app.js", "symbol": "createRouteModelView" },
-    { "service": "shared source resolver", "path": "js/public-app.js", "symbol": "createSourceResolver" },
-    { "service": "canonical location resolver", "path": "js/public-app.js", "symbol": "createLocationResolver" },
-    { "service": "signed release builder", "path": "scripts/build_public_release_core.py", "symbol": "def build_manifest" },
-    { "service": "closed production artifact assembler", "path": "scripts/assemble_public_site.py", "symbol": "def expected_files" },
-    { "service": "runtime inventory validator", "path": "scripts/validate_public_runtime_inventory.py", "symbol": "def validate_repository" }
+    {
+      "service": "public bootstrap",
+      "path": "js/public-bootstrap.js",
+      "symbol": "async function start"
+    },
+    {
+      "service": "public application",
+      "path": "js/public-app.js",
+      "symbol": "async function boot"
+    },
+    {
+      "service": "authoritative reader-first page registry and route lifecycle",
+      "path": "src/public-reader-registry.js",
+      "symbol": "function mount"
+    },
+    {
+      "service": "non-authoritative base rendering library",
+      "path": "js/public-ia.js",
+      "symbol": "PAGE_OWNERS"
+    },
+    {
+      "service": "non-authoritative reader support module module",
+      "path": "src/public-reader-layer.js",
+      "symbol": "READER_SUPPORT_VERSION"
+    },
+    {
+      "service": "shared evidence drawer",
+      "path": "js/public-ia.js",
+      "symbol": "EvidenceDrawer"
+    },
+    {
+      "service": "shared MapView",
+      "path": "js/public-ia.js",
+      "symbol": "MapView"
+    },
+    {
+      "service": "route data authorization",
+      "path": "js/public-app.js",
+      "symbol": "createRouteModelView"
+    },
+    {
+      "service": "shared source resolver",
+      "path": "js/public-app.js",
+      "symbol": "createSourceResolver"
+    },
+    {
+      "service": "canonical location resolver",
+      "path": "js/public-app.js",
+      "symbol": "createLocationResolver"
+    },
+    {
+      "service": "signed release builder",
+      "path": "scripts/build_public_release_core.py",
+      "symbol": "def build_manifest"
+    },
+    {
+      "service": "closed production artifact assembler",
+      "path": "scripts/assemble_public_site.py",
+      "symbol": "def expected_files"
+    },
+    {
+      "service": "runtime inventory validator",
+      "path": "scripts/validate_public_runtime_inventory.py",
+      "symbol": "def validate_repository"
+    }
   ],
   "build_test_support": [
     "requirements-build.txt",
@@ -159,6 +245,8 @@
     "assets/flags/tr.svg",
     "assets/flags/us.svg",
     "assets/flags/ye.svg",
+    "vendor/cytoscape/LICENSE",
+    "vendor/cytoscape/VERSION.json",
     "vendor/leaflet/LICENSE",
     "vendor/leaflet/VERSION.json",
     "vendor/leaflet/images/layers-2x.png",

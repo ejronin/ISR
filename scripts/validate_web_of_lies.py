@@ -81,6 +81,57 @@ def main() -> int:
                 f"anchor-only family {row['claim_family_id']} lacks an explicit research gap",
             )
 
+    propagation = registry["propagation_graph"]
+    require(
+        propagation["graph_type"] == "BULLSHITTER_MEGAPHONE_NETWORK",
+        "public propagation graph has an unsupported graph type",
+    )
+    graph_nodes = {row["node_id"]: row for row in propagation["nodes"]}
+    require(
+        len(graph_nodes) == len(propagation["nodes"]),
+        "public propagation graph contains duplicate node ids",
+    )
+    graph_edges = propagation["edges"]
+    require(
+        len({row["edge_id"] for row in graph_edges}) == len(graph_edges),
+        "public propagation graph contains duplicate edge ids",
+    )
+    for edge in graph_edges:
+        source = graph_nodes.get(edge["from_node_id"])
+        target = graph_nodes.get(edge["to_node_id"])
+        require(source is not None and target is not None, f"propagation edge {edge['edge_id']} has a missing endpoint")
+        require(source["node_type"] == "BULLSHITTER", f"propagation edge {edge['edge_id']} does not originate at a Bullshitter")
+        require("BULLSHITTER" in source.get("award_codes", []), f"propagation source {source['node_id']} lacks the earned award")
+        require(
+            target["node_type"] in {"MEGAPHONE", "BULLSHITTER"},
+            f"propagation edge {edge['edge_id']} has an unsupported target node type",
+        )
+        if target["node_type"] == "MEGAPHONE":
+            require(
+                not target.get("award_codes"),
+                f"megaphone {target['node_id']} inherited an award from network position",
+            )
+        else:
+            require(
+                "BULLSHITTER" in target.get("award_codes", []),
+                f"dual-role target {target['node_id']} is marked Bullshitter without an independently earned award",
+            )
+        require(
+            int(target.get("bullshitter_source_count") or 0) >= 1,
+            f"propagation target {target['node_id']} is not marked as a megaphone role",
+        )
+        require(edge["relationship_type"] == "AMPLIFIES_BULLSHIT", f"propagation edge {edge['edge_id']} has the wrong relationship type")
+        require(edge["amplified_claim_count"] == len(edge["bullshitter_event_ids"]), f"propagation edge {edge['edge_id']} claim count is inconsistent")
+        require(bool(edge.get("public_receipts")), f"propagation edge {edge['edge_id']} has no amplifier receipt")
+    graph_summary = propagation["summary"]
+    require(graph_summary["bullshitter_nodes"] == sum(1 for row in graph_nodes.values() if row["node_type"] == "BULLSHITTER"), "propagation Bullshitter node count is inconsistent")
+    require(
+        graph_summary["megaphone_nodes"]
+        == sum(1 for row in graph_nodes.values() if int(row.get("bullshitter_source_count") or 0) >= 1),
+        "propagation megaphone-role node count is inconsistent",
+    )
+    require(graph_summary["amplification_edges"] == len(graph_edges), "propagation edge count is inconsistent")
+
     network = registry["network_analysis"]
     summary = network["summary"]
     require(

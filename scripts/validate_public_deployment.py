@@ -127,7 +127,7 @@ def main() -> int:
     application = manifest.get("application") or {}
     assets = application.get("assets") or []
     expected_roles = {
-        "map_runtime", "base_runtime", "reader_support", "page_registry",
+        "map_runtime", "graph_runtime", "base_runtime", "reader_support", "page_registry",
         "map_stylesheet", "stylesheet", "reader_stylesheet",
         "reference_geography", "entrypoint",
     }
@@ -137,6 +137,7 @@ def main() -> int:
     by_role = {asset["role"]: asset for asset in assets}
     validate_asset(site, bootstrap, "bootstrap", "js")
     validate_asset(site, by_role["map_runtime"], "map_runtime", "js")
+    validate_asset(site, by_role["graph_runtime"], "graph_runtime", "js")
     validate_asset(site, by_role["base_runtime"], "base_runtime", "js")
     validate_asset(site, by_role["reader_support"], "reader_support", "js")
     validate_asset(site, by_role["page_registry"], "page_registry", "js")
@@ -158,6 +159,7 @@ def main() -> int:
         validate_deployed_flag(site, asset)
     if application.get("runtime") != [
         by_role["map_runtime"].get("path"),
+        by_role["graph_runtime"].get("path"),
         by_role["base_runtime"].get("path"),
         by_role["reader_support"].get("path"),
         by_role["page_registry"].get("path"),

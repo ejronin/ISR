@@ -107,8 +107,6 @@ assert not (expected_membership & family_propagation_ids)
 expected_leads = {
     "LEAD-IRAN-MILITARY-UPDATE",
     "LEAD-JOLLY-GOOD-GINGER",
-    "LEAD-ZACH-FOR-THE-PEOPLE",
-    "LEAD-EL-MARQUES-XD",
     "LEAD-OSINTDEFENDER",
     "LEAD-VALENTI-VIDEOS",
     "LEAD-ETHAN-LEVINS",

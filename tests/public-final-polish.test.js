@@ -22,9 +22,10 @@ assert(!releaseBuilder.includes('_promote_reader_assets'), 'release wrapper stil
 assert(!releaseBuilder.includes('_rebind_release_identity'), 'release wrapper still recomputes release identity after core assembly');
 assert(!releaseBuilder.includes('materialize_asset('), 'release wrapper still materializes application assets');
 assert(releaseBuilder.includes('from build_public_release_core import *'), 'release wrapper is not a stable compatibility entrypoint over the core builder');
+assert(releaseCore.includes('graph_runtime') && releaseCore.includes('vendor/cytoscape/cytoscape.min.js'), 'single-pass core does not publish the Cytoscape graph runtime explicitly');
 assert(releaseCore.includes('reader_support') && releaseCore.includes('reader_stylesheet'), 'single-pass core does not publish reader assets explicitly');
 assert(releaseCore.includes('src/public-reader-layer.js') && releaseCore.includes('src/public-reader-layer.css'), 'single-pass core does not source the reader modules directly');
-assert(releaseCore.includes('2.5-authoritative-reader-direct'), 'authoritative reader registry generator contract is missing');
+assert(releaseCore.includes('2.6-web-of-lies-cytoscape-runtime'), 'authoritative reader registry generator contract is missing');
 assert(!releaseCore.includes('compose_reader_sources'), 'single-pass core still concatenates reader source into base assets');
 
 assert(!appSource.includes('ROOK_NARRATIVE_CURRENT'), 'tracked public entrypoint still contains persona narrative payload');
@@ -32,9 +33,10 @@ assert(!appSource.includes('FINAL_NARRATIVE_GATES'), 'tracked public entrypoint 
 assert(!appSource.includes('narrativeContract: FINAL_NARRATIVE_GATES'), 'tracked public entrypoint still supplies retired narrative contract');
 assert(appSource.includes('narrativeContract: null'), 'tracked public entrypoint does not explicitly disable the retired narrative hook');
 assert(appSource.includes('ATLAS_PRIVILEGED_NARRATIVE_RETIRED'), 'tracked public entrypoint lacks retirement marker');
+assert(appSource.includes("assetForRole(manifest, 'graph_runtime')"), 'tracked public entrypoint does not authorize graph runtime');
 assert(appSource.includes("assetForRole(manifest, 'reader_support')"), 'tracked public entrypoint does not authorize reader runtime');
 assert(appSource.includes("assetForRole(manifest, 'reader_stylesheet')"), 'tracked public entrypoint does not authorize reader stylesheet');
-assert(appSource.includes('authorization.runtimeAssets.length === 4'), 'tracked public entrypoint does not require all four runtime assets');
+assert(appSource.includes('authorization.runtimeAssets.length === 5'), 'tracked public entrypoint does not require all five runtime assets');
 assert(appSource.includes('authorization.stylesheetAssets.length === 3'), 'tracked public entrypoint does not require all three stylesheet assets');
 
 for (const phrase of [

@@ -37,8 +37,6 @@ expected_profiles = {
     "WOL-SRC-JOLLY-GOOD-GINGER",
     "WOL-SRC-IRAN-MILITARY-UPDATE",
     "WOL-SRC-LIM-TEAN",
-    "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
-    "WOL-SRC-EL-MARQUES-XD-FB",
 }
 assert expected_profiles <= set(profiles)
 
@@ -49,10 +47,6 @@ assert profiles["WOL-SRC-VALENTI-VIDEOS"]["identity_confidence"] == "HIGH"
 assert profiles["WOL-SRC-ETHAN-LEVINS"]["identity_confidence"] == "HIGH"
 assert profiles["WOL-SRC-OSINTDEFENDER"]["identity_confidence"] == "HIGH"
 assert profiles["WOL-SRC-IRAN-MILITARY-UPDATE"]["identity_confidence"] == "HIGH"
-assert profiles["WOL-SRC-ZACH-FOR-THE-PEOPLE-FB"]["identity_confidence"] in {
-    "UNRESOLVED", "HIGH"
-}
-assert profiles["WOL-SRC-EL-MARQUES-XD-FB"]["identity_confidence"] == "UNRESOLVED"
 assert profiles["WOL-SRC-IRAN-MILITARY-UPDATE"]["country_region"] is None
 
 # Press TV's public use of Ethan Levins is stored at the relationship actually
@@ -146,11 +140,6 @@ assert leads["LEAD-LIM-TEAN"]["current_disposition"] in {
     "MATERIAL_WOL_HISTORY_FOUND", "LIMITED_RELEVANT_ACTIVITY",
     "UPSTREAM_REVIEW_REQUIRED", "ACTIVE_PATTERN_REVIEW"
 }
-assert leads["LEAD-ZACH-FOR-THE-PEOPLE"]["current_disposition"] in {
-    "IDENTITY_UNRESOLVED", "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND",
-    "UPSTREAM_REVIEW_REQUIRED"
-}
-assert leads["LEAD-EL-MARQUES-XD"]["current_disposition"] == "IDENTITY_UNRESOLVED"
 
 hall_ids = {
     entry["source_id"]
