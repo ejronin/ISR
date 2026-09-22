@@ -536,6 +536,12 @@
     section.dataset.readerLieLedger = VERSION;
     append(section, 'h2', '', 'Narrative chains and findings');
 
+    const forensicEntry = append(section, 'aside', 'scope-note reader-wol-entry');
+    append(forensicEntry, 'strong', '', 'Web of Lies');
+    append(forensicEntry, 'p', '', 'Open the interactive propagation network to trace WOL-qualified Bullshitter sources, the accounts that amplified them, and the receipts supporting each observed connection.');
+    const forensicEntryLink = append(forensicEntry, 'a', 'inline-route-link', 'Open Web of Lies');
+    forensicEntryLink.href = base.routeHref('evidence.web_of_lies');
+
     const controls = append(section, 'form', 'reader-ledger-controls');
     controls.addEventListener('submit', event => event.preventDefault());
     const searchLabel = append(controls, 'label', '', 'Search chains or claims');
