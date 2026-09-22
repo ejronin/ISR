@@ -210,9 +210,6 @@
     "assets/icons/imagery.svg",
     "assets/icons/strike.svg",
     "legacy/phase1-public-runtime-reference.html",
-    "vendor/cytoscape/LICENSE",
-    "vendor/cytoscape/VERSION.json",
-    "vendor/cytoscape/cytoscape.min.js",
     "vendor/mermaid/LICENSE",
     "vendor/mermaid/VERSION.json",
     "vendor/mermaid/mermaid.min.js"
