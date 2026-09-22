@@ -112,7 +112,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   const readerSupport = app.assetForRole(manifest, 'reader_support');
   const pageRegistry = app.assetForRole(manifest, 'page_registry');
   const readerStylesheet = app.assetForRole(manifest, 'reader_stylesheet');
-  assert.equal(graphRuntime.source_path, 'vendor/mermaid/mermaid.min.js');
+  assert.equal(graphRuntime.source_path, 'vendor/cytoscape/cytoscape.min.js');
   assert.equal(baseRuntime.source_path, 'js/public-ia.js');
   assert.equal(readerSupport.source_path, 'src/public-reader-layer.js');
   assert.equal(pageRegistry.source_path, 'src/public-reader-registry.js');
