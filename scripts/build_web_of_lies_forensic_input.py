@@ -197,6 +197,33 @@ def validate_source_dossier(
                     f"{path}: {collection_name} {row_id} references undeclared source {source_id}"
                 )
 
+    incident_ids = {
+        str(row["incident_id"])
+        for row in dossier.get("source_behavior_incidents") or []
+    }
+    seen_amplification_ids: set[str] = set()
+    for row in dossier.get("amplification_observations") or []:
+        observation_id = str(row["observation_id"])
+        if observation_id in seen_amplification_ids:
+            raise ValueError(f"{path}: duplicate amplification observation id {observation_id}")
+        seen_amplification_ids.add(observation_id)
+        bullshitter_source_id = str(row.get("bullshitter_source_id") or "")
+        if bullshitter_source_id not in allowed_source_ids:
+            raise ValueError(
+                f"{path}: amplification observation {observation_id} references "
+                f"undeclared Bullshitter source {bullshitter_source_id}"
+            )
+        bullshitter_incident_id = str(row.get("bullshitter_incident_id") or "")
+        if bullshitter_incident_id not in incident_ids:
+            raise ValueError(
+                f"{path}: amplification observation {observation_id} references "
+                f"unknown Bullshitter incident {bullshitter_incident_id}"
+            )
+        if not list(row.get("public_receipts") or []):
+            raise ValueError(
+                f"{path}: amplification observation {observation_id} has no public receipts"
+            )
+
 
 def build_forensic_input(root: Path) -> dict[str, Any]:
     packet_root = root / PACKET_DIR
@@ -218,6 +245,7 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
     infrastructure_observations: dict[str, dict[str, Any]] = {}
     research_leads: dict[str, dict[str, Any]] = {}
     source_behavior_incidents: dict[str, dict[str, Any]] = {}
+    amplification_observations: dict[str, dict[str, Any]] = {}
     source_dossier_meta: dict[str, Any] | None = None
     latest_as_of: tuple[datetime, str] | None = None
     fingerprint_material: list[str] = []
@@ -342,6 +370,7 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
             ),
             ("research_leads", research_leads, "lead_id"),
             ("source_behavior_incidents", source_behavior_incidents, "incident_id"),
+            ("amplification_observations", amplification_observations, "observation_id"),
         ):
             for row in dossier.get(collection_name) or []:
                 row_id = str(row[id_field])
@@ -411,6 +440,9 @@ def build_forensic_input(root: Path) -> dict[str, Any]:
         ),
         "source_behavior_incidents": sorted(
             source_behavior_incidents.values(), key=lambda row: row["incident_id"]
+        ),
+        "amplification_observations": sorted(
+            amplification_observations.values(), key=lambda row: row["observation_id"]
         ),
     }
 
