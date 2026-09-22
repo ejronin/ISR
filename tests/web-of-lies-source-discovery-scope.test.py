@@ -30,7 +30,11 @@ prohibited = set(GOV["hall_of_shame"]["prohibited_ranking_inputs"])
 assert "follower_count" in prohibited
 assert "subscriber_count" in prohibited
 assert "raw_impressions" in prohibited
-assert "intake materiality evidence only" in scope["reach_is_intake_only"]
+reach_rule = scope["reach_is_intake_only"]
+assert "source-selection materiality" in reach_rule
+assert "must not determine truth" in reach_rule
+assert "Bullshitter qualification" in reach_rule
+assert "Hall-of-Shame score" in reach_rule
 
 profiles = {row["source_id"]: row for row in DOSSIER["source_profiles"]}
 incidents = DOSSIER.get("source_behavior_incidents") or []
