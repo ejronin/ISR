@@ -964,3 +964,38 @@ The operating principle is:
 > repeatedly asserts factual bullshit with no evidentiary basis — Web of Lies is
 > allowed to call them a bullshitter.**
 
+## 33. Receipt-backed descriptive source profiles
+
+Source-profile facts do not need to masquerade as claim-family incidents.
+
+Public profile receipts may support only the neutral/descriptive source classes
+listed by governance, including JOURNALISTIC_SOURCE, SUBJECT_MATTER_ANALYST,
+PARTISAN_COMMENTATOR, ACTIVIST_COMMENTATOR, MONETIZED_INFLUENCER, and
+CONTENT_AGGREGATOR.
+
+A receipt-backed descriptive class must identify the class it supports and
+preserve the public URL/provenance used to support it.
+
+Adverse classes remain incident-gated. Profile pages, biographies,
+subscriptions, ideological self-description, collaborations, monetization, or
+audience size cannot by themselves establish PSEUDO_ANALYST, NEWS_GRIFT,
+ACTIVIST_GRIFT, PROPAGANDA_SOURCE, PARTISAN_AMPLIFIER,
+NARRATIVE_MUTATION_OFFENDER, any shill class, or Hall qualification.
+
+Public revenue channels may be supported by source-profile receipts rather than
+a synthetic claim event. The record must name only the evidenced channel, such
+as PATREON, PAID_SUBSTACK, MEMBERSHIP, DONATIONS, SPONSORED_CONTENT,
+AFFILIATE_REVENUE, or another governed revenue class. **Monetized is not
+synonymous with grifter.**
+
+Collaboration and hosting must preserve exact scope. Use relationships such as
+HOSTED_BY, QUOTES, or PUBLISHED_BY when that is what the receipt proves. A guest
+appearance, recurring hosting, quotation, paid platform presence, or
+republication does not establish CONTROLLED_BY, AFFILIATED_WITH, employment,
+agency, state direction, common ownership, or editorial control without
+separate evidence.
+
+Source role, source incentive, source relationship, factual-claim behavior, and
+Bullshitter-award state are separate axes. A descriptive receipt cannot erase
+or manufacture an independently derived adverse incident or source award.
+
