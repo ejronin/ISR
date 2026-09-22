@@ -354,16 +354,36 @@ def validate_forensic_input(
             )
         amplification_ids.add(observation_id)
         bullshitter_source_id = str(observation.get("bullshitter_source_id") or "").strip()
-        bullshitter_incident_id = str(observation.get("bullshitter_incident_id") or "").strip()
+        bullshitter_event_id = str(observation.get("bullshitter_event_id") or "").strip()
         if bullshitter_source_id not in source_ids:
             raise ValueError(
                 f"amplification observation {observation_id} references unknown "
                 f"Bullshitter source {bullshitter_source_id}"
             )
-        if bullshitter_incident_id not in incident_ids:
+        upstream_event = events_by_id.get(bullshitter_event_id)
+        if upstream_event is None:
+            upstream_event = next(
+                (
+                    incident
+                    for incident in source_behavior_incidents
+                    if str(incident.get("incident_id") or "") == bullshitter_event_id
+                ),
+                None,
+            )
+        if upstream_event is None:
             raise ValueError(
                 f"amplification observation {observation_id} references unknown "
-                f"Bullshitter incident {bullshitter_incident_id}"
+                f"Bullshitter qualifying event {bullshitter_event_id}"
+            )
+        if str(upstream_event.get("source_id") or "") != bullshitter_source_id:
+            raise ValueError(
+                f"amplification observation {observation_id} event/source mismatch: "
+                f"{bullshitter_event_id} != {bullshitter_source_id}"
+            )
+        if not bullshit_qualifying_event(upstream_event, governance):
+            raise ValueError(
+                f"amplification observation {observation_id} references "
+                f"non-qualifying upstream event {bullshitter_event_id}"
             )
         amplifier_id = str(observation.get("amplifier_id") or "").strip()
         if not amplifier_id:
@@ -962,13 +982,15 @@ def profile_country_code(profile: dict[str, Any]) -> str | None:
 
 def derive_award_propagation_graph(
     profiles: list[dict[str, Any]],
-    source_behavior_incidents: list[dict[str, Any]],
+    qualifying_events: list[dict[str, Any]],
     amplification_observations: list[dict[str, Any]],
 ) -> dict[str, Any]:
     """Compile the explorable Bullshitter -> megaphone graph from structured receipts."""
     profile_by_id = {str(row.get("source_id") or ""): row for row in profiles}
-    incident_by_id = {
-        str(row.get("incident_id") or ""): row for row in source_behavior_incidents
+    event_by_id = {
+        str(row.get("event_id") or row.get("incident_id") or ""): row
+        for row in qualifying_events
+        if str(row.get("event_id") or row.get("incident_id") or "")
     }
     awardee_ids = {
         source_id
@@ -1010,9 +1032,9 @@ def derive_award_propagation_graph(
         source_id = str(observation.get("bullshitter_source_id") or "")
         if source_id not in awardee_ids:
             continue
-        incident_id = str(observation.get("bullshitter_incident_id") or "")
-        incident = incident_by_id.get(incident_id)
-        if incident is None or str(incident.get("source_id") or "") != source_id:
+        event_id = str(observation.get("bullshitter_event_id") or "")
+        upstream_event = event_by_id.get(event_id)
+        if upstream_event is None or str(upstream_event.get("source_id") or "") != source_id:
             continue
 
         amplifier_id = str(observation.get("amplifier_id") or "").strip()
@@ -1064,11 +1086,11 @@ def derive_award_propagation_graph(
             "to_node_id": amplifier_node_id,
             "relationship_type": "AMPLIFIES_BULLSHIT",
             "observation_ids": [],
-            "bullshitter_incident_ids": [],
+            "bullshitter_event_ids": [],
             "public_receipts": [],
         })
         group["observation_ids"].append(str(observation.get("observation_id") or ""))
-        group["bullshitter_incident_ids"].append(incident_id)
+        group["bullshitter_event_ids"].append(event_id)
         group["public_receipts"].extend(
             [dict(receipt) for receipt in observation.get("public_receipts") or []]
         )
@@ -1084,7 +1106,7 @@ def derive_award_propagation_graph(
     for key in sorted(edge_groups):
         row = edge_groups[key]
         row["observation_ids"] = sorted(set(row["observation_ids"]))
-        row["bullshitter_incident_ids"] = sorted(set(row["bullshitter_incident_ids"]))
+        row["bullshitter_event_ids"] = sorted(set(row["bullshitter_event_ids"]))
         unique_receipts: dict[str, dict[str, Any]] = {}
         for receipt in row["public_receipts"]:
             rid = str(receipt.get("receipt_id") or "")
@@ -1092,7 +1114,7 @@ def derive_award_propagation_graph(
         row["public_receipts"] = [
             unique_receipts[rid] for rid in sorted(unique_receipts)
         ]
-        row["amplified_claim_count"] = len(row["bullshitter_incident_ids"])
+        row["amplified_claim_count"] = len(row["bullshitter_event_ids"])
         edges.append(row)
 
     return {
@@ -1165,7 +1187,7 @@ def build_registry(
     )
     propagation_graph = derive_award_propagation_graph(
         profiles,
-        source_behavior_incidents,
+        information_events + source_behavior_incidents,
         amplification_observations,
     )
 
