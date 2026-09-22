@@ -982,29 +982,18 @@ a:hover { color: #e0f2ff; }
   background: #080f15;
   color: var(--text);
 }
-.wol-mermaid-host {
-  min-height: 24rem;
-  max-height: 70vh;
-  overflow: auto;
-  padding: 1rem;
+.wol-cytoscape-host {
+  width: 100%;
+  height: clamp(30rem, 68vh, 54rem);
+  min-height: 30rem;
+  overflow: hidden;
   border: 1px solid #35566a;
   border-radius: var(--radius);
   background: #071018;
-  scrollbar-color: var(--line) #071018;
+  touch-action: none;
 }
-.wol-mermaid-host svg {
-  display: block;
-  width: 100%;
-  min-width: 48rem;
-  height: auto;
-  margin: 0 auto;
-}
-.wol-mermaid-host .node { transition: opacity .12s ease, filter .12s ease; }
-.wol-mermaid-host .wol-clickable-node { cursor: pointer; }
-.wol-mermaid-host .wol-clickable-node:focus {
-  outline: 3px solid var(--atlas-focus-ring);
-  outline-offset: 3px;
-}
+.wol-cytoscape-host.is-node-hover { cursor: pointer; }
+.wol-cytoscape-host canvas { outline: 0; }
 .wol-graph-status { margin-top: .6rem; }
 
 .wol-node-detail-host,
@@ -1061,8 +1050,7 @@ a:hover { color: #e0f2ff; }
 }
 
 @media (max-width: 44rem) {
-  .wol-mermaid-host { min-height: 20rem; padding: .6rem; }
-  .wol-mermaid-host svg { min-width: 40rem; }
+  .wol-cytoscape-host { height: 28rem; min-height: 28rem; }
   .wol-graph-controls { align-items: stretch; }
   .wol-graph-reset { width: 100%; }
 }
