@@ -2228,8 +2228,12 @@
     const nodeLabel = node => {
       const marker = nodeMarker(node);
       const name = publicNarrative(node.display_name, node.node_id);
-      if (node.node_type === 'BULLSHITTER') return [marker, name, 'Bullshitter'].filter(Boolean).join(' · ');
       const sources = Number(node.bullshitter_source_count || 0);
+      if (node.node_type === 'BULLSHITTER') {
+        const roles = ['Bullshitter'];
+        if (sources > 0) roles.push(`Megaphone · ${sources} source${sources === 1 ? '' : 's'}`);
+        return [marker, name, ...roles].filter(Boolean).join(' · ');
+      }
       return [marker, name, `Megaphone · ${sources} source${sources === 1 ? '' : 's'}`].filter(Boolean).join(' · ');
     };
     const safeExternalHref = value => {
@@ -2392,8 +2396,10 @@
           append(row, 'p', '', `${formatNumber(edge.amplified_claim_count || 0)} qualifying claim${Number(edge.amplified_claim_count || 0) === 1 ? '' : 's'} carried from this Bullshitter.`);
           appendReceipts(row, edge.public_receipts);
         });
-      } else {
-        const incoming = graphEdges.filter(edge => edge.to_node_id === nodeId);
+      }
+
+      const incoming = graphEdges.filter(edge => edge.to_node_id === nodeId);
+      if (incoming.length || node.node_type === 'MEGAPHONE') {
         const repeated = append(detailHost, 'div', 'wol-selected-upstream');
         append(repeated, 'h4', '', `Bullshitter sources repeated (${incoming.length})`);
         if (!incoming.length) append(repeated, 'p', 'section-note', 'No upstream Bullshitter edge is recorded for this megaphone.');
@@ -2401,12 +2407,16 @@
           const source = graphNodeById.get(edge.from_node_id);
           const block = append(repeated, 'article', 'record-card wol-amplified-source');
           append(block, 'h4', '', nodeLabel(source || { display_name: edge.from_node_id, node_type: 'BULLSHITTER' }));
-          asArray(edge.bullshitter_event_ids).forEach(incidentId => {
-            const incident = qualifyingEventById.get(incidentId);
+          asArray(edge.bullshitter_event_ids).forEach(eventId => {
+            const incident = qualifyingEventById.get(eventId);
             if (!incident) return;
             const claim = append(block, 'div', 'wol-amplified-claim');
-            append(claim, 'strong', '', publicNarrative(incident.statement_identity, incidentId));
-            if (incident.published_at) append(claim, 'small', '', `Upstream publication: ${incident.published_at}`);
+            append(claim, 'strong', '', publicNarrative(
+              incident.statement_identity || incident.exact_statement || incident.translated_statement,
+              eventId
+            ));
+            const published = incident.published_at || incident.first_observed_at;
+            if (published) append(claim, 'small', '', `Upstream publication: ${published}`);
           });
           appendReceipts(block, edge.public_receipts);
         });
