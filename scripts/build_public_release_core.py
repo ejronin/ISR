@@ -26,7 +26,7 @@ PUBLIC_SHELL_SOURCE = "templates/public-index.html"
 APPLICATION_VERSION = "atlas-public-shell-v1"
 BOOTSTRAP_PROTOCOL = "atlas-release-bootstrap-v1"
 SCHEMA_VERSION = "1.0"
-GENERATOR_VERSION = "2.5-authoritative-reader-direct"
+GENERATOR_VERSION = "2.6-web-of-lies-mermaid-runtime"
 REQUIRED_PILLOW_VERSION = "12.3.0"
 EVIDENCE_MEDIA_ROOT = "assets/evidence"
 SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS = {
@@ -38,6 +38,7 @@ SUPPORTED_EVIDENCE_IMAGE_EXTENSIONS = {
 ASSET_SPECS = (
     ("bootstrap", "public-bootstrap", "js/public-bootstrap.js", "js"),
     ("map_runtime", "leaflet", "vendor/leaflet/leaflet.js", "js"),
+    ("graph_runtime", "mermaid", "vendor/mermaid/mermaid.min.js", "js"),
     ("base_runtime", "public-ia", "js/public-ia.js", "js"),
     ("reader_support", "public-reader-layer", "src/public-reader-layer.js", "js"),
     ("page_registry", "public-reader-registry", "src/public-reader-registry.js", "js"),
@@ -382,6 +383,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
     state_flags = [materialize_state_flag(root, code, label) for code, label in FLAG_ASSET_SPECS]
     application_assets = [
         assets_by_role["map_runtime"],
+        assets_by_role["graph_runtime"],
         assets_by_role["base_runtime"],
         assets_by_role["reader_support"],
         assets_by_role["page_registry"],
@@ -423,7 +425,7 @@ def build_manifest(root: Path = ROOT) -> dict[str, Any]:
         },
         "application": {
             "version": version,
-            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["base_runtime"]["path"], assets_by_role["reader_support"]["path"], assets_by_role["page_registry"]["path"]],
+            "runtime": [assets_by_role["map_runtime"]["path"], assets_by_role["graph_runtime"]["path"], assets_by_role["base_runtime"]["path"], assets_by_role["reader_support"]["path"], assets_by_role["page_registry"]["path"]],
             "entrypoint": assets_by_role["entrypoint"]["path"],
             "stylesheet": assets_by_role["stylesheet"]["path"],
             "stylesheets": [assets_by_role["map_stylesheet"]["path"], assets_by_role["stylesheet"]["path"], assets_by_role["reader_stylesheet"]["path"]],
