@@ -394,5 +394,14 @@
     "monetization_may_be_supported_by_public_profile_receipts": true,
     "profile_receipt_does_not_create_hall_score": true,
     "collaboration_receipt_does_not_establish_control": true
+  },
+  "parody_satire_handling": {
+    "parody_label_alone_is_not_immunity": true,
+    "clearly_fictional_or_satirical_content_counts": false,
+    "real_world_factual_presentation_is_reviewable": true,
+    "account_label_must_be_preserved": true,
+    "intent_not_required_for_source_behavior_finding": true,
+    "rule": "A parody/satire label does not immunize a post that itself presents a specific real-world event, casualty, strike, capture, deployment, quotation, or other falsifiable proposition as factual news. Clearly fictional, absurdist, or joke content that is presented as such does not qualify merely because someone later mistakes it for news.",
+    "evidence_rule": "Score the specific publication's presentation and receipts, not the account label alone. Preserve the parody/satire label as source context and do not infer impersonation intent, deception knowledge, state control, or motive without separate evidence."
   }
 }
