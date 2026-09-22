@@ -355,7 +355,8 @@
         "REPEAT_AFTER_CORRECTION",
         "UNSUPPORTED_FACTUAL_ASSERTION",
         "UNSUPPORTED_INFERENTIAL_ASSERTION",
-        "EVIDENTIARY_EVASION"
+        "EVIDENTIARY_EVASION",
+        "AMPLIFIES_QUALIFYING_BULLSHIT"
       ],
       "qualifying_behavior_findings": [
         "NARRATIVE_MUTATION_OFFENDER",
@@ -378,7 +379,14 @@
       "qualification_window_semantics": "ANY_30_DAY_CLUSTER",
       "award_persists_after_earned": true,
       "current_window_status_reported_separately": true,
-      "undated_incidents_cannot_establish_window": true
+      "undated_incidents_cannot_establish_window": true,
+      "amplification_counts": true,
+      "amplification_rule": "A distinct amplifier publication counts when it republishes/repeats/embeds/adopts a claim whose underlying event already qualifies as bullshit, provided the amplifier publication is receipt-backed and lacks meaningful corrective framing. The amplifier does not need to originate the claim or independently satisfy the underlying factual-evidence search again.",
+      "neutral_attributed_reporting_counts": false,
+      "amplification_requires_upstream_qualifying_reference": true,
+      "amplification_requires_publication_receipt": true,
+      "amplification_requires_adoption_without_meaningful_correction": true,
+      "same_claim_repeated_in_distinct_publications_counts_separately": true
     }
   },
   "profile_evidence": {
@@ -418,8 +426,8 @@
     "arbitrary_numeric_follower_threshold_forbidden": true,
     "reach_is_intake_only": "Follower/subscriber/view/repost evidence may establish source-selection materiality. It must not determine truth, deception, Bullshitter qualification, Hall-of-Shame score, or credibility.",
     "amplification_intake_rule": "A smaller source may qualify when public evidence shows its Iran-war claims are materially amplified by other publishers/accounts or move through an established amplification network.",
-    "amplifier_behavior_rule": "An amplifier is accountable only for its own publication/republication/amplification events. If an amplifier itself publishes qualifying false/materially misleading Iran-war factual content or qualifying unsupported assertions, those events may accumulate toward that amplifier's own Bullshitter award under the ordinary evidence and deduplication rules.",
-    "no_guilt_by_network_rule": "A source award, adverse behavior finding, or truth/knowledge finding never transfers automatically across an amplification edge, shared network, repost relationship, or ideological alignment. Each adverse source-behavior incident requires a specific publication event and receipts for that source.",
+    "amplifier_behavior_rule": "A publisher that republishes, reposts, repeats, embeds, quotes as factual support, or otherwise materially amplifies a qualifying bullshit claim without meaningful corrective framing creates its own qualifying source-behavior incident. It need not have originated or mutated the claim. The underlying claim adjudication may be inherited by reference; the amplifier-specific publication/amplification receipt must still be proved.",
+    "no_guilt_by_network_rule": "Network membership or association alone never transfers an award. Liability transfers only through a proved publication/amplification act: the amplifier must itself have published, reposted, repeated, embedded, or adopted the qualifying message. Neutral attributed reporting that preserves the claim as an allegation and supplies meaningful corrective/contrary context does not qualify merely for mentioning it.",
     "same_information_event_deduplication_applies_to_amplifiers": true,
     "out_of_conflict_research_must_not_be_retained_in_active_corpus": true,
     "parody_accounts_excluded_from_adjudication": true,
