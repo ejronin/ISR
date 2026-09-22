@@ -1414,11 +1414,16 @@
         "https://en.wikipedia.org/wiki/Lim_Tean",
         "https://asiapacificreport.nz/2026/07/20/lim-tean-you-cannot-bomb-a-strait-open-hormuz-chabahar-and-the-coming-battle-for-bab-el-mandeb/",
         "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/071326-traffic-via-strait-of-hormuz-falls-to-11-ships-july-12-after-us-iran-attacks",
-        "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/"
+        "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/",
+        "https://asiapacificreport.nz/2026/07/08/lim-tean-the-hormuz-bone-why-iran-will-not-let-go/",
+        "https://eveningreport.nz/2026/07/10/the-man-who-would-bomb-the-hormuz-actuaries-and-he-hasnt-got-a-clue/",
+        "https://22.frenchintelligence.org/2026/07/13/lim-tean-the-hormuz-guardian-turns-pirate-20-for-tribute-2/",
+        "https://asiapacificreport.nz/2026/07/23/the-illegal-us-war-on-iran-and-now-the-economic-consequences-shock/",
+        "https://www.radiofree.org/2026/08/02/when-trumps-iran-deal-isnt-a-deal-its-the-third-retreat-in-four-months/"
       ],
-      "current_disposition": "ACTIVE_PATTERN_REVIEW",
+      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Reopened for pattern review. Lim Tean publishes frequent Iran-war/Hormuz analysis across Facebook/Substack and mirrored outlets. WOL must test repeated causal/control/insurance/strategic claims publication-by-publication, preserving true shipping data while scoring only unsupported factual bridges or conclusions. The existing July 20 causal incident remains valid but is not treated as the full review."
+      "notes": "Expanded July 8–August 2 pattern review records six distinct qualifying WOL-native information events. The pattern is not that Lim's shipping data are generally false: much of the traffic, insurance and damage substrate is real. The recurring failure is converting that substrate into unsupported binary-control/causal conclusions, plus two hard factual failures: the self-contradictory 'not reopened for a single day' claim and a 4000-fold insurance multiplier that is arithmetically about 27–40-fold using his own percentages. The deterministic Bullshitter award must be derived from the six events rather than manually assigned."
     },
     {
       "lead_id": "LEAD-MEIDASTOUCH",
@@ -2763,6 +2768,234 @@
       "downstream_note": "Do not convert this media-forensics finding into a blanket denial of every Iranian claim concerning military-intelligence targets.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical review, if created, should separate the visual-evidence claim, the attributed casualty statement, and any underlying strike claim."
+    },
+    {
+      "incident_id": "WOL-BS-LIM-TEAN-BINARY-CONTROL-20260708",
+      "source_id": "WOL-SRC-LIM-TEAN",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-08",
+      "first_observed_at": "2026-07-08",
+      "statement_identity": "Lim Tean used attacks on vessels using the U.S.-sponsored southern Hormuz corridor to present an exclusive-control conclusion: that there was effectively 'no American route' and Iran would write the rules of passage.",
+      "source_information_event_id": "LIM-TEAN-HORMUZ-BONE-20260708",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0708-ARTICLE",
+          "surface": "WEBSITE",
+          "url": "https://asiapacificreport.nz/2026/07/08/lim-tean-the-hormuz-bone-why-iran-will-not-let-go/",
+          "published_at": "2026-07-08",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Full commentary preserves the real vessel attacks, the acknowledged U.S.-sponsored southern route, then the 'no American route' / Iran-writes-the-rules control conclusion."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0708-REUTERS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-targets-sites-bahrain-kuwait-after-wave-us-strikes-2026-07-08/",
+          "published_at": "2026-07-08",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters confirms renewed attacks and competing U.S./Iranian navigation-control claims; it does not establish exclusive Iranian control of all passage."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0715-TRANSITS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/iran-linked-vessels-pass-through-hormuz-ahead-us-blockade-2026-07-15/",
+          "published_at": "2026-07-15",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Kpler data showed 11 vessels transited on July 14, illustrating constrained, contested navigation rather than a simple exclusive-control binary."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Full July 8 Lim Tean commentary plus contemporaneous Reuters conflict/navigation reporting and subsequent tracked vessel transits.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Attacks on the southern corridor establish danger and Iranian coercive capacity. They do not by themselves establish that the U.S.-sponsored route ceased to exist or that Iran exclusively dictated passage through the entire strait.",
+        "search_notes": "The article itself acknowledges two rival corridors before collapsing that contested-control substrate into an exclusive-control conclusion. This is the same analytical failure Atlas treats elsewhere as misleading binary Hormuz-control framing.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real attacks and severe route risk. Score only the leap from contested navigation to exclusive control.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Maps semantically to the existing Hormuz competing-control / misleading-binary framing family without overwriting its canonical adjudication."
+    },
+    {
+      "incident_id": "WOL-BS-LIM-TEAN-NEVER-REOPENED-20260710",
+      "source_id": "WOL-SRC-LIM-TEAN",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-10",
+      "first_observed_at": "2026-07-10",
+      "statement_identity": "Lim Tean stated that 130 days of war had failed to reopen Hormuz 'for a single day' and that U.S. military operations did not restore freedom of navigation for a single day.",
+      "source_information_event_id": "LIM-TEAN-ACTUARIES-20260710",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0710-ARTICLE",
+          "surface": "WEBSITE",
+          "url": "https://eveningreport.nz/2026/07/10/the-man-who-would-bomb-the-hormuz-actuaries-and-he-hasnt-got-a-clue/",
+          "published_at": "2026-07-10",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The article says the war failed to reopen Hormuz 'for a single day' while later acknowledging the June 17 settlement briefly reopened it."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0618-REUTERS-REOPEN",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/three-saudi-flagged-supertankers-sail-through-hormuz-after-iran-deal-signed-data-2026-06-18/",
+          "published_at": "2026-06-18",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters recorded three Saudi supertankers carrying six million barrels plus other ships transiting Hormuz on June 18 after the agreement."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Full July 10 commentary and Reuters ship-tracking reporting from the June reopening period.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Tracked commercial ships, including three Saudi supertankers, transited after the June agreement. The article itself later says the settlement 'briefly cracked the Strait open.'",
+        "search_notes": "The absolute 'not for a single day' formulation is contradicted both by the article's own later sentence and by contemporaneous ship-tracking evidence. This does not imply traffic returned to normal; it did not.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinguish brief/partial reopening from normal prewar traffic. The scored failure is the absolute zero-day claim.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical Hormuz control framing remains upstream; this records a source-specific absolute contradicted by the observed transit record."
+    },
+    {
+      "incident_id": "WOL-BS-LIM-TEAN-WAR-TO-STOP-TOLLS-20260713",
+      "source_id": "WOL-SRC-LIM-TEAN",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-13",
+      "first_observed_at": "2026-07-13",
+      "statement_identity": "Lim Tean stated that the United States went to war to stop Iran charging tolls in the Strait of Hormuz.",
+      "source_information_event_id": "LIM-TEAN-GUARDIAN-PIRATE-20260713",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0713-ARTICLE",
+          "surface": "WEBSITE",
+          "url": "https://22.frenchintelligence.org/2026/07/13/lim-tean-the-hormuz-guardian-turns-pirate-20-for-tribute-2/",
+          "published_at": "2026-07-13",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Published Lim Tean commentary states that the United States went to war to stop Iran charging Hormuz tolls."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0324-BLOOMBERG-TOLLS",
+          "surface": "WEBSITE",
+          "url": "https://www.bloomberg.com/news/articles/2026-03-24/iran-charges-some-ships-hormuz-transit-fees-for-safe-passage",
+          "published_at": "2026-03-24",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Bloomberg reported Iran began charging some ships ad hoc Hormuz transit fees on March 24, weeks after the war began."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0505-REUTERS-OPERATIONS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/china/ten-civilian-sailors-have-died-strait-hormuz-rubio-says-2026-05-05/",
+          "published_at": "2026-05-05",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Rubio described the Feb. 28 Operation Epic Fury campaign and the later Project Freedom effort to secure Hormuz transit as distinct operations."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0713-REUTERS-US-FEE",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/trump-says-us-will-control-strait-hormuz-get-paid-it-2026-07-13/",
+          "published_at": "2026-07-13",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters confirms Trump announced a proposed 20% reimbursement/fee on July 13; WOL does not dispute that separate factual substrate."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Lim's July 13 commentary; reporting on when Iranian passage fees emerged; official-description reporting distinguishing the initial Iran campaign from the later Hormuz-navigation operation; and Reuters coverage of Trump's July 13 20% proposal.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The war began February 28. Public reporting places ad hoc Iranian passage fees weeks later, and U.S. officials later described the original campaign and the Hormuz navigation operation as distinct. The reviewed record does not support toll prevention as the reason the United States originally went to war.",
+        "search_notes": "The U.S. 20% announcement on July 13 was real and is not scored. The qualifying failure is the causal/motive claim about why the war began.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not convert disagreement with U.S. policy into a behavior finding; only the unsupported war-causation assertion is scored.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical war-aim/motive proposition remains separately adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-LIM-TEAN-INSURANCE-4000X-20260723",
+      "source_id": "WOL-SRC-LIM-TEAN",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-23",
+      "first_observed_at": "2026-07-23",
+      "statement_identity": "Lim Tean described a rise in war-risk insurance from roughly 0.1–0.15% of vessel value to 4% as a '4000-fold' increase.",
+      "source_information_event_id": "LIM-TEAN-ECONOMIC-CONSEQUENCES-20260723",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0723-ARTICLE",
+          "surface": "WEBSITE",
+          "url": "https://asiapacificreport.nz/2026/07/23/the-illegal-us-war-on-iran-and-now-the-economic-consequences-shock/",
+          "published_at": "2026-07-23",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The article gives the starting rate as 0.1–0.15%, the peak as 4%, and labels that change a 4000-fold multiple."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Full July 23 article and direct arithmetic using the percentages and dollar figures printed in the article itself.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "4% divided by 0.1% is 40-fold; 4% divided by 0.15% is about 26.7-fold. The article's own $150,000 to $5–7 million example is likewise roughly 33–47-fold, not 4000-fold.",
+        "search_notes": "The underlying insurance shock may be severe and the quoted rates may be accurate. The scored failure is the plainly incorrect multiplier attached to Lim's own numbers.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "This is a mathematical factual error, not an adjudication of the broader economic forecast.",
+      "review_target": "WEB_OF_LIES_SOURCE_BEHAVIOR",
+      "review_reason": "No upstream truth family is needed to establish the arithmetic contradiction."
+    },
+    {
+      "incident_id": "WOL-BS-LIM-TEAN-HORMUZ-NOT-OPEN-20260802",
+      "source_id": "WOL-SRC-LIM-TEAN",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-08-02",
+      "first_observed_at": "2026-08-02",
+      "statement_identity": "Lim Tean stated categorically that 'Hormuz is still not open' while using continued attacks and low traffic to frame the strait as a closed binary condition.",
+      "source_information_event_id": "LIM-TEAN-THIRD-RETREAT-20260802",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0802-ARTICLE",
+          "surface": "WEBSITE",
+          "url": "https://www.radiofree.org/2026/08/02/when-trumps-iran-deal-isnt-a-deal-its-the-third-retreat-in-four-months/",
+          "published_at": "2026-08-02",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Full commentary states 'Hormuz is still not open' and cites continued tanker attacks."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-0731-REUTERS-TRANSITS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/oil-price-rises-after-iran-says-it-stops-ships-hormuz-2026-07-31/",
+          "published_at": "2026-07-31",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters recorded two large oil tankers plus two other commodity vessels transiting Hormuz, while describing Iran as blocking most—not all—shipping."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Full August 2 Lim Tean commentary, contemporaneous Reuters tracked-transit reporting, and Atlas's existing Hormuz competing-control framing.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The strait was severely constrained and Iran blocked most traffic, but tracked commercial transits continued. Treating that condition as a simple open/closed binary erases the partial, selective and contested passage actually observed.",
+        "search_notes": "This is not a claim that Hormuz was normally open. WOL scores only the categorical binary presentation, consistent with the existing canonical MISLEADING BINARY FRAMING treatment.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Maps semantically to CHAIN-CL-HORMUZ-CONTROL; preserve severe restriction and selective passage as the factual substrate.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical control framing remains authoritative; WOL records the source-specific repetition."
     }
   ]
 }
