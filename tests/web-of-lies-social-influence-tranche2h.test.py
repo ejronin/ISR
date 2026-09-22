@@ -29,7 +29,7 @@ assert "LEAD-RKM-RKMTIMES" not in leads
 profile = profiles[source_id]
 assert profile["display_name"] == "RKM / @rkmtimes"
 assert profile["primary_platform"] == "X"
-assert profile["identity_confidence"] == "PUBLIC_ACCOUNT_RESOLVED_OPERATOR_UNKNOWN"
+assert profile["identity_confidence"] == "HIGH"
 assert profile["country_region"] is None
 assert profile["behavior_classes"] == ["UNKNOWN"]
 assert "real-world operator" in profile["identity_context"]
