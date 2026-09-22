@@ -13,8 +13,7 @@
     "source_relationships",
     "external_assessments",
     "infrastructure_observations",
-    "research_leads",
-    "amplification_observations"
+    "research_leads"
   ],
   "properties": {
     "schema_version": {
