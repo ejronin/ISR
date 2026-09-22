@@ -706,6 +706,13 @@
               "string",
               "null"
             ]
+          },
+          "amplifier_source_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
           }
         },
         "additionalProperties": true
