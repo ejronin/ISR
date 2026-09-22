@@ -2472,7 +2472,8 @@
       }
 
       graphHost.replaceChildren();
-      cyGraph = cytoscape({
+      try {
+        cyGraph = cytoscape({
         container: graphHost,
         elements: cytoscapeElements(),
         minZoom: 0.25,
@@ -2600,7 +2601,20 @@
         observer.observe(graphHost);
       }
 
-      focusGraph(selectedNodeId);
+        graphHost.dataset.graphState = 'ready';
+        focusGraph(selectedNodeId);
+      } catch (error) {
+        cyGraph = null;
+        graphHost.replaceChildren();
+        graphHost.dataset.graphState = 'error';
+        const failure = append(graphHost, 'aside', 'scope-note wol-empty-state');
+        append(failure, 'strong', '', 'Graph render failed');
+        append(failure, 'p', '', 'The structured WOL network remains available below, but the Cytoscape presentation failed to initialize.');
+        graphStatus.textContent = 'Structured graph available; Cytoscape initialization failed.';
+        if (root && root.console && typeof root.console.error === 'function') {
+          root.console.error('Web of Lies Cytoscape initialization failed', error);
+        }
+      }
     };
 
     const selectNode = nodeId => {
@@ -2612,7 +2626,24 @@
     picker.addEventListener('change', () => selectNode(picker.value));
     reset.addEventListener('click', () => selectNode(''));
     renderDetail(selectedNodeId);
-    initializeGraph();
+
+    const initializeGraphWhenMounted = attempt => {
+      if (graphHost.isConnected) {
+        initializeGraph();
+        return;
+      }
+      if (attempt >= 4) {
+        graphHost.dataset.graphState = 'mount-missed';
+        graphStatus.textContent = 'Structured graph available; graph host did not mount in time.';
+        return;
+      }
+      if (root && typeof root.requestAnimationFrame === 'function') {
+        root.requestAnimationFrame(() => initializeGraphWhenMounted(attempt + 1));
+      } else if (root && typeof root.setTimeout === 'function') {
+        root.setTimeout(() => initializeGraphWhenMounted(attempt + 1), 0);
+      }
+    };
+    initializeGraphWhenMounted(0);
 
     const indexSection = addSection(frame.article, 'Hall of Shame index', 'content-section wol-hall-index');
     append(indexSection, 'p', 'section-note', 'The award is attached to the source that earned it. Megaphones remain visible in the network without inheriting the badge.');
