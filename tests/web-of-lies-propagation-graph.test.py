@@ -21,6 +21,7 @@ profiles = [
         "source_awards": [{
             "award_code": "BULLSHITTER",
             "qualifying_incident_count": 6,
+            "qualifying_incident_ids": ["I-IR-1", "I-IR-2"],
         }],
     },
     {
@@ -32,6 +33,7 @@ profiles = [
         "source_awards": [{
             "award_code": "BULLSHITTER",
             "qualifying_incident_count": 7,
+            "qualifying_incident_ids": ["I-US-1"],
         }],
     },
     {
@@ -100,7 +102,8 @@ observations = [
     },
 ]
 
-graph = wol.derive_award_propagation_graph(profiles, incidents, observations)
+relationships = []
+graph = wol.derive_award_propagation_graph(profiles, incidents, relationships, observations)
 nodes = {row["node_id"]: row for row in graph["nodes"]}
 edges = {(row["from_node_id"], row["to_node_id"]): row for row in graph["edges"]}
 
