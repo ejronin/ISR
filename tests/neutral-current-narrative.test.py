@@ -20,8 +20,8 @@ assert "stylesheets.length === 3" in source
 builder = (ROOT / "scripts" / "build_public_release.py").read_text(encoding="utf-8")
 core_builder = (ROOT / "scripts" / "build_public_release_core.py").read_text(encoding="utf-8")
 assert "from build_public_release_core import *" in builder
-assert "2.6-web-of-lies-mermaid-runtime" in core_builder
-assert core_builder.count('("graph_runtime", "mermaid", "vendor/mermaid/mermaid.min.js", "js")') == 1
+assert "2.6-web-of-lies-cytoscape-runtime" in core_builder
+assert core_builder.count('("graph_runtime", "cytoscape", "vendor/cytoscape/cytoscape.min.js", "js")') == 1
 assert core_builder.count('(\"reader_support\", \"public-reader-layer\", \"src/public-reader-layer.js\", \"js\")') == 1
 assert core_builder.count('(\"reader_stylesheet\", \"public-reader-layer\", \"src/public-reader-layer.css\", \"css\")') == 1
 assert 'assets_by_role[\"reader_support\"][\"path\"]' in core_builder
