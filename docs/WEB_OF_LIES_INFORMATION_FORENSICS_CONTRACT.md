@@ -1078,7 +1078,7 @@ The megaphone roster is intentionally lightweight: preserve the amplifier
 identity, country/authenticity metadata only when evidenced, the upstream
 Bullshitter source and incident, and the amplifier-specific public receipt.
 
-The upstream false/materially misleading claim does not need to be re-adjudicated
+The upstream **WOL-qualified bullshit incident** does not need to be re-adjudicated
 for every repost. The downstream question is simply whether the account actually
 rebroadcast, repeated, embedded, or adopted that qualifying message.
 
