@@ -540,6 +540,123 @@
         "observation": "Project owner reports Valenti said the U.S. essentially did not care and permitted the strikes in order to anger other actors, not merely that defenses rationed interceptors against missiles expected to miss valuable targets.",
         "evidentiary_limit": "Exact captions/timestamps are not yet machine-recovered, so this body-level motive proposition is not yet a scored WOL-native incident."
       }
+    },
+    {
+      "discovery_id": "WOL-DISC-LIM-TEAN-HORMUZ-HAGGLING-RATE-20260715",
+      "discovery_type": "ADJUDICATION_REVIEW_CANDIDATE",
+      "claim_family_ref": null,
+      "subject": "Lim Tean inference that U.S. and Iran were literally haggling over a Hormuz toll rate",
+      "observations": [
+        {
+          "date": "2026-07-15",
+          "source": "Lim Tean commentary",
+          "observation_type": "REAL_PUBLIC_FEE_STATEMENTS_WITH_NEGOTIATION_INFERENCE",
+          "statement_identity": "After Trump proposed a 20% Hormuz cargo charge and Araghchi replied that 20% was too much and Iran would be fair, the article concluded that the two states were no longer disputing whether ships must pay and were 'haggling over the rate.'"
+        }
+      ],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-DISC-RCPT-LIM-HAGGLING-APR-20260715",
+          "surface": "WEBSITE",
+          "url": "https://asiapacificreport.nz/2026/07/15/the-toll-keeper-of-hormuz-how-the-us-just-buried-its-own-freedom-of-seas-doctrine/",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "FULL_COMMENTARY_TEXT",
+          "published_at": "2026-07-15",
+          "attribution": "Lim Tean"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-LIM-HAGGLING-REUTERS-US-FEE-20260713",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/trump-says-us-will-control-strait-hormuz-get-paid-it-2026-07-13/",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "INDEPENDENT_US_FEE_PROPOSAL_CONTEXT",
+          "published_at": "2026-07-13",
+          "attribution": "Reuters"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-LIM-HAGGLING-AP-ARAGHCHI-20260713",
+          "surface": "WEBSITE",
+          "url": "https://fortune.com/2026/07/13/us-strikes-iran-naval-blockade-trump-reversal-hormuz-fees/",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "INDEPENDENT_ARAGHCHI_TONE_AND_RESPONSE_CONTEXT",
+          "published_at": "2026-07-13",
+          "attribution": "Associated Press via Fortune"
+        },
+        {
+          "receipt_id": "WOL-DISC-RCPT-LIM-HAGGLING-AXIOS-20260713",
+          "surface": "WEBSITE",
+          "url": "https://www.axios.com/2026/07/13/trump-iran-blockade-strait-hormuz",
+          "provenance_status": "ORIGINAL_URL",
+          "claim_status": "INDEPENDENT_POLICY_RESPONSE_CONTEXT",
+          "published_at": "2026-07-13",
+          "attribution": "Axios"
+        }
+      ],
+      "content_body_evidence": {
+        "medium": "TEXT_PUBLICATION",
+        "capture_status": "FULL_TEXT_CAPTURED",
+        "capture_scope": "The full commentary and the underlying Trump/Araghchi public statements are readable, permitting review of whether parallel public fee positions establish a bilateral rate negotiation.",
+        "transcript_receipts": [],
+        "body_claims": [
+          {
+            "body_claim_id": "LIM-20260715-ARAGHCHI-RESPONSE",
+            "statement_identity": "Araghchi publicly said secure passage should be compensated, called Iran the true guardian, said 20% was too much, and said Iran would be fair.",
+            "speaker": "Lim Tean",
+            "timestamp_start": null,
+            "timestamp_end": null,
+            "evidence_scope": "Full-text commentary quoting the public Araghchi statement."
+          },
+          {
+            "body_claim_id": "LIM-20260715-HAGGLING-CONCLUSION",
+            "statement_identity": "The article concluded that the United States and Iran were 'haggling over the rate' for Hormuz passage.",
+            "speaker": "Lim Tean",
+            "timestamp_start": null,
+            "timestamp_end": null,
+            "evidence_scope": "Full-text commentary."
+          }
+        ]
+      },
+      "analysis_decomposition": {
+        "factual_substrate": [
+          {
+            "statement": "Trump publicly proposed a 20% cargo charge for U.S.-secured Hormuz passage, and Araghchi publicly answered that compensation for secure passage was appropriate, 20% was too much, and Iran would be fair.",
+            "evidence_status": "PUBLICLY_SUPPORTED",
+            "evidence_note": "Reuters/Axios support Trump's proposal and Araghchi's substantive response. AP and other contemporaneous reporting also described Araghchi's response as mocking or sarcastic.",
+            "evidence_receipt_ids": [
+              "WOL-DISC-RCPT-LIM-HAGGLING-REUTERS-US-FEE-20260713",
+              "WOL-DISC-RCPT-LIM-HAGGLING-AP-ARAGHCHI-20260713",
+              "WOL-DISC-RCPT-LIM-HAGGLING-AXIOS-20260713"
+            ]
+          }
+        ],
+        "inferential_bridges": [
+          {
+            "statement": "Parallel public statements about compensation and rate are treated as proof that the two governments were engaged in a bilateral negotiation over the toll rate.",
+            "bridge_type": "CONTROL_OR_COORDINATION",
+            "review_status": "UPSTREAM_REVIEW_REQUIRED",
+            "evidentiary_issue": "The public exchange establishes competing/parallel policy positions, but the reviewed record does not itself establish a bilateral negotiation or reciprocal bargaining process. Contemporary reporting differs on whether Araghchi's wording was mockery, substantive policy signaling, or both.",
+            "competing_explanations": [
+              "Araghchi was mocking the U.S. reversal while using it to legitimize Iran's own fee position.",
+              "Araghchi was substantively signaling Iran's own preferred compensation principle without negotiating directly with Washington.",
+              "The exchange could have had bargaining significance, but public statements alone do not establish an actual bilateral rate negotiation."
+            ]
+          }
+        ],
+        "conclusions": [
+          {
+            "statement": "The article concludes that Washington and Tehran were haggling over the Hormuz rate.",
+            "conclusion_type": "CONTROL_OR_COORDINATION_CONCLUSION",
+            "review_status": "UPSTREAM_REVIEW_REQUIRED"
+          }
+        ],
+        "decomposition_note": "WOL preserves the real public fee statements but does not treat them as self-proving evidence of bilateral bargaining. Because contemporaneous reporting supports multiple readings of Araghchi's tone and policy intent, this remains a review candidate rather than a scored WOL-native incident.",
+        "presentation": []
+      },
+      "attribution_confidence": "HIGH_FOR_PUBLICATION_TEXT_AND_PUBLIC_STATEMENTS",
+      "attribution_scope": "The full article supports attribution of the 'haggling' conclusion to Lim Tean. The underlying Trump and Araghchi statements are public; the existence of a bilateral rate negotiation is not established by those statements alone.",
+      "downstream_note": "Do not score this item as an adverse incident unless a documented support review establishes that the publication presented bilateral bargaining as fact without evidence of an actual negotiating process. Preserve the competing interpretation that Araghchi's post was mockery and/or unilateral policy signaling.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The factual substrate is supported; the disputed element is the inferential bridge from public rhetoric to an actual bilateral negotiation over price."
     }
   ]
 }
