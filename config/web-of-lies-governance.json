@@ -398,6 +398,8 @@
   "source_discovery_scope": {
     "named_seed_accounts_are_examples_not_boundary": true,
     "actively_discover_new_publishers": true,
+    "conflict_scope": "IRAN_WAR_2026",
+    "active_corpus_rule": "Active Web-of-Lies source-behavior discovery is limited to publishers or amplifiers materially participating in factual or analytical claims about the 2026 Iran war. General misinformation history, unrelated regional propaganda, and pre-2026 claim behavior outside this conflict are out of scope and must not be retained in the active corpus merely to characterize a source.",
     "discovery_surfaces": [
       "YOUTUBE",
       "FACEBOOK",
@@ -407,10 +409,22 @@
       "PODCAST",
       "WEBSITE"
     ],
-    "materiality_rule": "Prioritize publishers with repeated or materially influential Iran-war factual/analytical content. A seed account with no material or recurring Iran-war activity may be removed from the active adjudication queue.",
+    "materiality_rule": "For non-official/non-canonical claim-first source discovery, Iran-war relevance is necessary but not sufficient. Retain a publisher only when public receipts establish either a large direct audience/reach or documented downstream amplification into a materially influential Iran-war information network. A seed account with no material 2026 Iran-war activity is removed from the active adjudication queue.",
+    "materiality_qualification_bases": [
+      "LARGE_DIRECT_AUDIENCE",
+      "DOCUMENTED_DOWNSTREAM_AMPLIFICATION"
+    ],
+    "qualification_receipts_required": true,
+    "arbitrary_numeric_follower_threshold_forbidden": true,
+    "reach_is_intake_only": "Follower/subscriber/view/repost evidence may establish source-selection materiality. It must not determine truth, deception, Bullshitter qualification, Hall-of-Shame score, or credibility.",
+    "amplification_intake_rule": "A smaller source may qualify when public evidence shows its Iran-war claims are materially amplified by other publishers/accounts or move through an established amplification network.",
+    "amplifier_behavior_rule": "An amplifier is accountable only for its own publication/republication/amplification events. If an amplifier itself publishes qualifying false/materially misleading Iran-war factual content or qualifying unsupported assertions, those events may accumulate toward that amplifier's own Bullshitter award under the ordinary evidence and deduplication rules.",
+    "no_guilt_by_network_rule": "A source award, adverse behavior finding, or truth/knowledge finding never transfers automatically across an amplification edge, shared network, repost relationship, or ideological alignment. Each adverse source-behavior incident requires a specific publication event and receipts for that source.",
+    "same_information_event_deduplication_applies_to_amplifiers": true,
+    "out_of_conflict_research_must_not_be_retained_in_active_corpus": true,
     "parody_accounts_excluded_from_adjudication": true,
-    "parody_rule": "Accounts explicitly presented as parody/satire are excluded from WOL factual-behavior adjudication and Bullshitter-award accumulation. Historical network membership/provenance may be retained, but parody accounts are not active adjudication targets.",
-    "inaccessible_relevant_content_rule": "When material Iran-war content is known to exist but the evidentiary body is inaccessible behind a paywall or equivalent access barrier, use an unable-to-adjudicate disposition. Do not convert inaccessible content into a clean/no-adverse finding.",
+    "parody_rule": "Accounts explicitly presented as parody/satire are excluded from WOL factual-behavior adjudication and Bullshitter-award accumulation. Historical network membership/provenance may be retained only when it is part of a material 2026 Iran-war propagation chain; parody accounts are not active adjudication targets.",
+    "inaccessible_relevant_content_rule": "When material 2026 Iran-war content is known to exist but the evidentiary body is inaccessible behind a paywall or equivalent access barrier, use an unable-to-adjudicate disposition. Do not convert inaccessible content into a clean/no-adverse finding.",
     "inaccessible_disposition": "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT",
     "ai_assistance_rule": "Use of AI is not itself adverse behavior. Score the published factual proposition, inferential bridge or evidentiary presentation. Record AI-assisted authorship only when independently evidenced and material to provenance.",
     "inference_rule": "Repeated analytical overfitting can qualify when the publication presents a causal, control, motive, intent or strategic conclusion as established fact and the preserved evidence does not support that bridge. Mere disagreement or an unresolved inference does not qualify."
