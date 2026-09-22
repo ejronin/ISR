@@ -992,6 +992,40 @@
         }
       ],
       "identity_context": "Public X account/display identity is resolved from original-post URLs and independent fact-check preservation. The real-world operator, location, organizational affiliation and state-control status are unknown and are not inferred."
+    },
+    {
+      "source_id": "WOL-SRC-WMX-MEDIA",
+      "display_name": "الأحداث الإيرانية / @WMX_MEDIA",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-WMX-MEDIA",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "الأحداث الإيرانية",
+        "@WMX_MEDIA",
+        "WMX_MEDIA"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-WMX-MEDIA-X",
+          "platform": "X",
+          "handle": "@WMX_MEDIA",
+          "url": "https://x.com/WMX_MEDIA",
+          "display_name": "الأحداث الإيرانية",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "identity_context": "Public X account/display identity is repeatedly preserved in independent fact-checks and exact original-post URLs. The real-world operator, geographic location, organizational affiliation and state-control status are unknown and are not inferred from the account name or pro-Iran framing."
     }
   ],
   "source_relationships": [
@@ -3283,6 +3317,258 @@
       "downstream_note": "Score the false provenance/current-event attribution, not a blanket claim that Iranian missiles caused no damage in Tel Aviv.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Specific Tel Aviv BDA remains independently adjudicable upstream."
+    },
+    {
+      "incident_id": "WOL-BS-WMX-US-TANKER-IRANIAN-SHIP-20260309",
+      "source_id": "WOL-SRC-WMX-MEDIA",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-09",
+      "first_observed_at": "2026-03-09",
+      "statement_identity": "@WMX_MEDIA presented footage of a U.S. strike on an Iranian military vessel as an American oil tanker burning after an Iranian attack in the Strait of Hormuz.",
+      "source_information_event_id": "WMX-X-2031130533753745761",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-TANKER-X",
+          "surface": "X",
+          "url": "https://x.com/WMX_MEDIA/status/2031130533753745761",
+          "published_at": "2026-03-09",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Claimed an Iranian strike hit an American oil vessel attempting to transit Hormuz."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-TANKER-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/amp/factcheck/2026/03/11/%D9%87%D9%84-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D9%84%D9%86%D8%A7%D9%82%D9%84%D8%A9-%D9%86%D9%81%D8%B7-%D8%A3%D9%85%D9%8A%D8%B1%D9%83%D9%8A%D8%A9-%D8%AA%D8%AD%D8%AA%D8%B1%D9%82-%D8%A8%D8%B9%D8%AF-%D8%A7%D8%B3%D8%AA%D9%87%D8%AF%D8%A7%D9%81%D9%87%D8%A7-%D9%85%D9%86-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D9%81%D9%8A-%D9%85%D8%B6%D9%8A%D9%82-%D9%87%D8%B1%D9%85%D8%B2%D8%9F",
+          "published_at": "2026-03-11",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar traced the footage to a U.S. strike on an Iranian military ship, not an American oil tanker."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact original @WMX_MEDIA post identity plus Misbar reverse-video/source tracing and its cited maritime reporting.",
+        "checked_at": "2026-09-21T23:42:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The footage depicts an Iranian military vessel targeted by U.S. forces, not an American oil tanker struck by Iran.",
+        "search_notes": "Authentic conflict footage was assigned the opposite vessel identity, nationality and attacker/target relationship.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false media attribution; do not treat the existence of real maritime combat as support for the tanker claim.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical vessel-loss proposition remains separately atomizable."
+    },
+    {
+      "incident_id": "WOL-BS-WMX-US-BASE-EVACUATION-OLD-VIDEO-20260310",
+      "source_id": "WOL-SRC-WMX-MEDIA",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-10",
+      "first_observed_at": "2026-03-10",
+      "statement_identity": "@WMX_MEDIA presented a June 2025 video as current proof that Washington was emptying its Saudi/Gulf bases after Iranian strikes and that U.S. soldiers were leaving permanently.",
+      "source_information_event_id": "WMX-X-2031408003501482428",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-EVAC-X",
+          "surface": "X",
+          "url": "https://x.com/WMX_MEDIA/status/2031408003501482428",
+          "published_at": "2026-03-10",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Claimed Washington was emptying Saudi bases and soldiers were returning permanently."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-EVAC-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/factcheck/2026/03/13/%D9%87%D9%84-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D9%84%D8%A5%D8%AE%D9%84%D8%A7%D8%A1-%D9%88%D8%A7%D8%B4%D9%86%D8%B7%D9%86-%D9%82%D9%88%D8%A7%D8%B9%D8%AF%D9%87%D8%A7-%D9%81%D9%8A-%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC-%D8%B9%D9%82%D8%A8-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%87%D8%AF%D8%A7%D9%81-%D8%A7%D9%84%D8%A5%D9%8A%D8%B1%D8%A7%D9%86%D9%8A%D8%9F",
+          "published_at": "2026-03-13",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar found the video had already been published in June 2025, before the claimed March 2026 event."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact original post plus Misbar reverse-search/source chronology for the underlying video.",
+        "checked_at": "2026-09-21T23:42:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The video predates the March 2026 Iran-war claim by roughly nine months and cannot establish a current post-strike U.S. base evacuation.",
+        "search_notes": "Old footage was recontextualized as evidence of a current permanent military withdrawal.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false current-event attribution, not any separately documented U.S. force movement.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Specific base posture changes remain independently adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-WMX-UAE-SKYSCRAPER-AI-20260311",
+      "source_id": "WOL-SRC-WMX-MEDIA",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-11",
+      "first_observed_at": "2026-03-11",
+      "statement_identity": "@WMX_MEDIA presented AI-generated footage as an Iranian drone strike on a skyscraper in the United Arab Emirates.",
+      "source_information_event_id": "WMX-X-2031534118547157278",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-UAE-AI-X",
+          "surface": "X",
+          "url": "https://x.com/WMX_MEDIA/status/2031534118547157278",
+          "published_at": "2026-03-11",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Presented the clip as a drone strike on a skyscraper in the UAE."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-UAE-AI-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/factcheck/2026/03/11/%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D9%84%D9%8A%D8%B3-%D9%84%D8%A7%D8%B3%D8%AA%D9%87%D8%AF%D8%A7%D9%81-%D9%86%D8%A7%D8%B7%D8%AD%D8%A9-%D8%B3%D8%AD%D8%A7%D8%A8-%D9%81%D9%8A-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A8%D8%B7%D8%A7%D8%A6%D8%B1%D8%A7%D8%AA-%D9%85%D8%B3%D9%8A%D8%B1%D8%A9",
+          "published_at": "2026-03-11",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar classified the video as AI-generated rather than footage of a real UAE drone strike."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact original post and Misbar visual/source verification, including synthetic-media analysis and local-source comparison.",
+        "checked_at": "2026-09-21T23:42:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The presented video was assessed as AI-generated and does not document a real Iranian drone strike on a UAE skyscraper.",
+        "search_notes": "Synthetic imagery was presented as current battlefield evidence. WOL does not infer who generated the synthetic clip.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score publication of synthetic material as real evidence; do not infer that @WMX_MEDIA created the video.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any real UAE strike event remains separate from this false evidentiary presentation."
+    },
+    {
+      "incident_id": "WOL-BS-WMX-ISRAEL-INTEL-HQ-QUEENS-FIRE-20260312",
+      "source_id": "WOL-SRC-WMX-MEDIA",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-12",
+      "first_observed_at": "2026-03-12",
+      "statement_identity": "@WMX_MEDIA presented footage of a January 2026 Queens building fire as a current Iranian missile strike on an Israeli intelligence headquarters in Tel Aviv.",
+      "source_information_event_id": "WMX-X-2032139019014844791",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-INTEL-HQ-X",
+          "surface": "X",
+          "url": "https://x.com/WMX_MEDIA/status/2032139019014844791",
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Presented the footage as a strike on an Israeli intelligence building in Tel Aviv."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-INTEL-HQ-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/amp/en/factcheck/2026/03/14/outdated-video-falsely-shows-iranian-missile-attack-israeli-intelligence-hq",
+          "published_at": "2026-03-14",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar traced the clip to a January 2026 mixed-use building fire in Queens, New York."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact original post plus Misbar source tracing to the January Queens fire and local reporting cited by the fact-check.",
+        "checked_at": "2026-09-21T23:42:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The footage shows a tire-shop/mixed-use building fire in Queens, New York, not an Iranian missile strike on Israeli intelligence facilities.",
+        "search_notes": "Unrelated domestic fire footage was recontextualized as current Tel Aviv battle-damage evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score false provenance/current-event attribution; do not infer anything about separate real strikes on Israeli military/intelligence sites.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Specific Israeli facility BDA remains separately adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-WMX-WAR-THUNDER-MISSILE-20260314",
+      "source_id": "WOL-SRC-WMX-MEDIA",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-14",
+      "first_observed_at": "2026-03-14",
+      "statement_identity": "@WMX_MEDIA presented War Thunder simulation footage as a real Iranian cruise missile targeting U.S. warships while evading radar and sonar.",
+      "source_information_event_id": "WMX-X-2032623793202483393",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-WARTHUNDER-X",
+          "surface": "X",
+          "url": "https://x.com/WMX_MEDIA/status/2032623793202483393",
+          "published_at": "2026-03-14",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Presented a purported Iranian cruise missile targeting U.S. warships and evading detection."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-WARTHUNDER-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/15/video-does-not-show-iranian-cruise-missile-targeting-us-warships",
+          "published_at": "2026-03-15",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar traced the footage to the digital combat-simulation game War Thunder."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact original post plus Misbar source tracing of the footage to War Thunder simulation material.",
+        "checked_at": "2026-09-21T23:42:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The clip is game/simulation footage and therefore cannot establish a real Iranian cruise-missile engagement with U.S. warships.",
+        "search_notes": "Simulation footage was presented as real combat evidence and paired with real-world sensor-evasion claims.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the simulation-as-reality presentation; do not infer that Iranian cruise missiles lack any low-observable or sea-skimming capability.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Real missile capabilities remain separate from the false evidentiary presentation."
+    },
+    {
+      "incident_id": "WOL-BS-WMX-EILAT-DAYTONA-20260315",
+      "source_id": "WOL-SRC-WMX-MEDIA",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-15",
+      "first_observed_at": "2026-03-15",
+      "statement_identity": "@WMX_MEDIA presented Daytona Beach footage as a mass flight from an Eilat beach caused by Iranian missile launches.",
+      "source_information_event_id": "WMX-X-2033268504745419066",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-EILAT-X",
+          "surface": "X",
+          "url": "https://x.com/WMX_MEDIA/status/2033268504745419066",
+          "published_at": "2026-03-15",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Claimed a mass escape from Eilat beach after people heard Iranian missiles."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-WMX-EILAT-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/amp/en/factcheck/2026/03/16/video-falsely-shows-mass-evacuation-iranian-missiles-eilat",
+          "published_at": "2026-03-16",
+          "captured_at": "2026-09-21T23:42:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar geolocated the footage to Daytona Beach, Florida, not Eilat."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact original post plus Misbar geolocation/source verification using identifiable Daytona Grande Oceanfront Hotel landmarks and local reporting.",
+        "checked_at": "2026-09-21T23:42:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The video was filmed at Daytona Beach, Florida, and does not document civilians fleeing an Eilat beach because of Iranian missile launches.",
+        "search_notes": "Real crowd footage from Florida was repackaged as current Israeli civilian-reaction evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false location/event attribution, not a broader proposition about civilian reactions to Iranian strikes.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any real Eilat warning/impact/civilian-response events remain separate."
     }
   ]
 }
