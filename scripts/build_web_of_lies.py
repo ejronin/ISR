@@ -316,7 +316,6 @@ def validate_forensic_input(
         events_by_source[source_id].add(event_id)
 
     incident_ids: set[str] = set()
-    behavior_incidents_by_id: dict[str, dict[str, Any]] = {}
     for incident in source_behavior_incidents:
         incident_id = str(incident.get("incident_id") or "").strip()
         if not incident_id or incident_id in incident_ids:
@@ -324,48 +323,17 @@ def validate_forensic_input(
                 f"duplicate or missing source behavior incident id: {incident_id!r}"
             )
         incident_ids.add(incident_id)
-        behavior_incidents_by_id[incident_id] = incident
-
-    all_upstream_bullshit_events: dict[str, dict[str, Any]] = {
-        **events_by_id,
-        **behavior_incidents_by_id,
-    }
-
-    for incident in source_behavior_incidents:
-        incident_id = str(incident.get("incident_id") or "").strip()
         source_id = str(incident.get("source_id") or "").strip()
         if source_id not in source_ids:
             raise ValueError(
                 f"source behavior incident {incident_id} references unknown source profile {source_id}"
             )
         event_type = str(incident.get("event_type") or "")
-        if event_type not in UNSUPPORTED_BULLSHIT_EVENT_TYPES | {AMPLIFICATION_BULLSHIT_EVENT_TYPE}:
+        if event_type not in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
             raise ValueError(
                 f"source behavior incident {incident_id} has unsupported event type {event_type}"
             )
-        if event_type == AMPLIFICATION_BULLSHIT_EVENT_TYPE:
-            if not amplification_evidence_gate_satisfied(incident, governance):
-                raise ValueError(
-                    f"source behavior incident {incident_id} lacks the verified "
-                    "derivative-amplification review required for WOL-native scoring"
-                )
-            upstream_id = str(incident.get("upstream_qualifying_incident_id") or "").strip()
-            if upstream_id == incident_id:
-                raise ValueError(
-                    f"source behavior incident {incident_id} cannot amplify itself"
-                )
-            upstream = all_upstream_bullshit_events.get(upstream_id)
-            if upstream is None:
-                raise ValueError(
-                    f"source behavior incident {incident_id} references unknown "
-                    f"upstream qualifying incident {upstream_id}"
-                )
-            if not bullshit_qualifying_event(upstream, governance):
-                raise ValueError(
-                    f"source behavior incident {incident_id} references upstream "
-                    f"event {upstream_id} that is not qualifying bullshit"
-                )
-        elif not unsupported_evidence_gate_satisfied(incident, governance):
+        if not unsupported_evidence_gate_satisfied(incident, governance):
             raise ValueError(
                 f"source behavior incident {incident_id} lacks the documented "
                 "no-support evidentiary review required for WOL-native scoring"
@@ -373,6 +341,49 @@ def validate_forensic_input(
         if not list(incident.get("public_receipts") or []):
             raise ValueError(
                 f"source behavior incident {incident_id} has no public receipts"
+            )
+
+    amplification_observations = forensic.get("amplification_observations") or []
+    amplification_ids: set[str] = set()
+    allowed_authenticity = set(governance.get("authenticity_classes") or [])
+    for observation in amplification_observations:
+        observation_id = str(observation.get("observation_id") or "").strip()
+        if not observation_id or observation_id in amplification_ids:
+            raise ValueError(
+                f"duplicate or missing amplification observation id: {observation_id!r}"
+            )
+        amplification_ids.add(observation_id)
+        bullshitter_source_id = str(observation.get("bullshitter_source_id") or "").strip()
+        bullshitter_incident_id = str(observation.get("bullshitter_incident_id") or "").strip()
+        if bullshitter_source_id not in source_ids:
+            raise ValueError(
+                f"amplification observation {observation_id} references unknown "
+                f"Bullshitter source {bullshitter_source_id}"
+            )
+        if bullshitter_incident_id not in incident_ids:
+            raise ValueError(
+                f"amplification observation {observation_id} references unknown "
+                f"Bullshitter incident {bullshitter_incident_id}"
+            )
+        amplifier_id = str(observation.get("amplifier_id") or "").strip()
+        if not amplifier_id:
+            raise ValueError(
+                f"amplification observation {observation_id} lacks amplifier_id"
+            )
+        authenticity = observation.get("amplifier_authenticity_class")
+        if authenticity and authenticity not in allowed_authenticity:
+            raise ValueError(
+                f"amplification observation {observation_id} has unsupported "
+                f"amplifier authenticity {authenticity}"
+            )
+        country_code = str(observation.get("amplifier_country_code") or "").strip()
+        if country_code and (len(country_code) != 2 or country_code.upper() != country_code):
+            raise ValueError(
+                f"amplification observation {observation_id} has invalid country code {country_code}"
+            )
+        if not list(observation.get("public_receipts") or []):
+            raise ValueError(
+                f"amplification observation {observation_id} has no public receipts"
             )
 
     relationship_ids: set[str] = set()
@@ -701,7 +712,6 @@ UNSUPPORTED_BULLSHIT_EVENT_TYPES = {
     "UNSUPPORTED_INFERENTIAL_ASSERTION",
     "EVIDENTIARY_EVASION",
 }
-AMPLIFICATION_BULLSHIT_EVENT_TYPE = "AMPLIFIES_QUALIFYING_BULLSHIT"
 
 
 def unsupported_evidence_gate_satisfied(
@@ -734,35 +744,6 @@ def unsupported_evidence_gate_satisfied(
     return True
 
 
-def amplification_evidence_gate_satisfied(
-    event: dict[str, Any],
-    governance: dict[str, Any],
-) -> bool:
-    """Require a proved amplifier publication tied to already-qualifying bullshit."""
-    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
-    if not cfg.get("amplification_counts"):
-        return False
-    if str(event.get("event_type") or "") != AMPLIFICATION_BULLSHIT_EVENT_TYPE:
-        return False
-    if cfg.get("amplification_requires_upstream_qualifying_reference"):
-        if not str(event.get("upstream_qualifying_incident_id") or "").strip():
-            return False
-    if cfg.get("amplification_requires_publication_receipt"):
-        if not list(event.get("public_receipts") or []):
-            return False
-    review = event.get("amplification_review") or {}
-    if str(review.get("status") or "") != "VERIFIED_DERIVATIVE_AMPLIFICATION":
-        return False
-    if str(review.get("underlying_claim_status") or "") != "UPSTREAM_QUALIFYING_BULLSHIT_ESTABLISHED":
-        return False
-    if cfg.get("amplification_requires_adoption_without_meaningful_correction"):
-        if str(review.get("corrective_framing_status") or "") != "NO_MEANINGFUL_CORRECTIVE_FRAMING":
-            return False
-    if not str(review.get("amplification_mode") or "").strip():
-        return False
-    return True
-
-
 def bullshit_qualifying_event(
     event: dict[str, Any],
     governance: dict[str, Any],
@@ -775,8 +756,6 @@ def bullshit_qualifying_event(
         return False
     if event_type == "REPORTS":
         return False
-    if event_type == AMPLIFICATION_BULLSHIT_EVENT_TYPE:
-        return amplification_evidence_gate_satisfied(event, governance)
     if event_type in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
         return unsupported_evidence_gate_satisfied(event, governance)
     qualifying_types = set(cfg.get("qualifying_event_types") or [])
@@ -957,6 +936,185 @@ def current_period_events(
     return selected
 
 
+COUNTRY_CODE_BY_REGION = {
+    "Iran": "IR",
+    "Russia": "RU",
+    "United States": "US",
+    "United States of America": "US",
+    "India": "IN",
+    "China": "CN",
+    "Pakistan": "PK",
+    "Israel": "IL",
+    "United Kingdom": "GB",
+    "Saudi Arabia": "SA",
+    "United Arab Emirates": "AE",
+    "Iraq": "IQ",
+    "Yemen": "YE",
+}
+
+
+def profile_country_code(profile: dict[str, Any]) -> str | None:
+    explicit = str(profile.get("country_code") or "").strip().upper()
+    if len(explicit) == 2:
+        return explicit
+    return COUNTRY_CODE_BY_REGION.get(str(profile.get("country_region") or "").strip())
+
+
+def derive_award_propagation_graph(
+    profiles: list[dict[str, Any]],
+    source_behavior_incidents: list[dict[str, Any]],
+    amplification_observations: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Compile the explorable Bullshitter -> megaphone graph from structured receipts."""
+    profile_by_id = {str(row.get("source_id") or ""): row for row in profiles}
+    incident_by_id = {
+        str(row.get("incident_id") or ""): row for row in source_behavior_incidents
+    }
+    awardee_ids = {
+        source_id
+        for source_id, profile in profile_by_id.items()
+        if any(
+            str(award.get("award_code") or "") == "BULLSHITTER"
+            for award in profile.get("source_awards") or []
+        )
+    }
+
+    nodes: dict[str, dict[str, Any]] = {}
+    for source_id in sorted(awardee_ids):
+        profile = profile_by_id[source_id]
+        awards = [
+            dict(award)
+            for award in profile.get("source_awards") or []
+            if str(award.get("award_code") or "") == "BULLSHITTER"
+        ]
+        nodes[source_id] = {
+            "node_id": source_id,
+            "node_type": "BULLSHITTER",
+            "display_name": str(profile.get("display_name") or source_id),
+            "country_code": profile_country_code(profile),
+            "country_region": profile.get("country_region"),
+            "primary_platform": profile.get("primary_platform"),
+            "authenticity_class": str(profile.get("authenticity_class") or "UNKNOWN"),
+            "award_codes": ["BULLSHITTER"],
+            "award_incident_count": max(
+                [int(award.get("qualifying_incident_count") or 0) for award in awards] or [0]
+            ),
+        }
+
+    edge_groups: dict[tuple[str, str], dict[str, Any]] = {}
+    amplifier_awardees: dict[str, set[str]] = defaultdict(set)
+    amplifier_observations: dict[str, set[str]] = defaultdict(set)
+    amplifier_meta: dict[str, dict[str, Any]] = {}
+
+    for observation in amplification_observations:
+        source_id = str(observation.get("bullshitter_source_id") or "")
+        if source_id not in awardee_ids:
+            continue
+        incident_id = str(observation.get("bullshitter_incident_id") or "")
+        incident = incident_by_id.get(incident_id)
+        if incident is None or str(incident.get("source_id") or "") != source_id:
+            continue
+
+        amplifier_id = str(observation.get("amplifier_id") or "").strip()
+        if not amplifier_id:
+            continue
+        amplifier_node_id = f"AMP::{amplifier_id}"
+        meta = amplifier_meta.setdefault(amplifier_node_id, {
+            "node_id": amplifier_node_id,
+            "node_type": "MEGAPHONE",
+            "amplifier_id": amplifier_id,
+            "display_name": str(observation.get("amplifier_display_name") or amplifier_id),
+            "handle": observation.get("amplifier_handle"),
+            "primary_platform": observation.get("amplifier_platform"),
+            "country_code": observation.get("amplifier_country_code"),
+            "country_region": None,
+            "authenticity_class": str(
+                observation.get("amplifier_authenticity_class") or "UNKNOWN"
+            ),
+            "award_codes": [],
+        })
+        # Conflicting identity metadata fails closed instead of silently merging.
+        for field in (
+            "display_name", "handle", "primary_platform", "country_code",
+            "authenticity_class",
+        ):
+            incoming = observation.get({
+                "display_name": "amplifier_display_name",
+                "handle": "amplifier_handle",
+                "primary_platform": "amplifier_platform",
+                "country_code": "amplifier_country_code",
+                "authenticity_class": "amplifier_authenticity_class",
+            }[field])
+            if incoming not in (None, "") and meta.get(field) not in (None, "", incoming):
+                raise ValueError(
+                    f"amplifier {amplifier_id} conflicts on {field}: "
+                    f"{meta.get(field)!r} != {incoming!r}"
+                )
+            if meta.get(field) in (None, "") and incoming not in (None, ""):
+                meta[field] = incoming
+
+        amplifier_awardees[amplifier_node_id].add(source_id)
+        amplifier_observations[amplifier_node_id].add(
+            str(observation.get("observation_id") or "")
+        )
+        key = (source_id, amplifier_node_id)
+        group = edge_groups.setdefault(key, {
+            "edge_id": f"{source_id}::{amplifier_node_id}",
+            "from_node_id": source_id,
+            "to_node_id": amplifier_node_id,
+            "relationship_type": "AMPLIFIES_BULLSHIT",
+            "observation_ids": [],
+            "bullshitter_incident_ids": [],
+            "public_receipts": [],
+        })
+        group["observation_ids"].append(str(observation.get("observation_id") or ""))
+        group["bullshitter_incident_ids"].append(incident_id)
+        group["public_receipts"].extend(
+            [dict(receipt) for receipt in observation.get("public_receipts") or []]
+        )
+
+    for amplifier_node_id, meta in amplifier_meta.items():
+        meta["bullshitter_source_count"] = len(amplifier_awardees[amplifier_node_id])
+        meta["amplification_observation_count"] = len(
+            amplifier_observations[amplifier_node_id]
+        )
+        nodes[amplifier_node_id] = meta
+
+    edges = []
+    for key in sorted(edge_groups):
+        row = edge_groups[key]
+        row["observation_ids"] = sorted(set(row["observation_ids"]))
+        row["bullshitter_incident_ids"] = sorted(set(row["bullshitter_incident_ids"]))
+        unique_receipts: dict[str, dict[str, Any]] = {}
+        for receipt in row["public_receipts"]:
+            rid = str(receipt.get("receipt_id") or "")
+            unique_receipts[rid or json.dumps(receipt, sort_keys=True)] = receipt
+        row["public_receipts"] = [
+            unique_receipts[rid] for rid in sorted(unique_receipts)
+        ]
+        row["amplified_claim_count"] = len(row["bullshitter_incident_ids"])
+        edges.append(row)
+
+    return {
+        "graph_type": "BULLSHITTER_MEGAPHONE_NETWORK",
+        "nodes": sorted(nodes.values(), key=lambda row: row["node_id"]),
+        "edges": edges,
+        "summary": {
+            "bullshitter_nodes": len(awardee_ids),
+            "megaphone_nodes": len(amplifier_meta),
+            "amplification_edges": len(edges),
+            "cross_bullshitter_megaphones": sum(
+                1 for values in amplifier_awardees.values() if len(values) > 1
+            ),
+            "confirmed_bot_megaphones": sum(
+                1
+                for row in amplifier_meta.values()
+                if row.get("authenticity_class") == "CONFIRMED_BOT"
+            ),
+        },
+    }
+
+
 def build_registry(
     canonical: dict[str, Any],
     forensic: dict[str, Any],
@@ -972,6 +1130,9 @@ def build_registry(
         dict(item) for item in (forensic.get("source_behavior_incidents") or [])
     ]
     relationships = [dict(item) for item in (forensic.get("relationships") or [])]
+    amplification_observations = [
+        dict(item) for item in (forensic.get("amplification_observations") or [])
+    ]
     families = derive_claim_families(canonical, information_events, relationships)
     profiles = source_profiles_with_metrics(forensic.get("source_profiles") or [], information_events)
 
@@ -1002,6 +1163,11 @@ def build_registry(
         information_events,
         relationships,
     )
+    propagation_graph = derive_award_propagation_graph(
+        profiles,
+        source_behavior_incidents,
+        amplification_observations,
+    )
 
     return {
         "schema_version": "1.0",
@@ -1020,6 +1186,10 @@ def build_registry(
         "source_behavior_incidents": sorted(
             source_behavior_incidents, key=lambda item: item["incident_id"]
         ),
+        "amplification_observations": sorted(
+            amplification_observations, key=lambda item: item["observation_id"]
+        ),
+        "propagation_graph": propagation_graph,
         "relationships": sorted(relationships, key=lambda item: item["relationship_id"]),
         "promotion_flags": sorted(
             [dict(item) for item in (forensic.get("promotion_flags") or [])],
