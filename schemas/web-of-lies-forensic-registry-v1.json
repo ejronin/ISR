@@ -429,7 +429,7 @@
         "required": [
           "observation_id",
           "bullshitter_source_id",
-          "bullshitter_incident_id",
+          "bullshitter_event_id",
           "amplifier_id",
           "amplifier_display_name",
           "observed_at",
@@ -444,7 +444,7 @@
             "type": "string",
             "minLength": 1
           },
-          "bullshitter_incident_id": {
+          "bullshitter_event_id": {
             "type": "string",
             "minLength": 1
           },
@@ -612,7 +612,7 @@
               "to_node_id",
               "relationship_type",
               "observation_ids",
-              "bullshitter_incident_ids",
+              "bullshitter_event_ids",
               "public_receipts",
               "amplified_claim_count"
             ],
@@ -635,7 +635,7 @@
               "observation_ids": {
                 "$ref": "#/$defs/string_array"
               },
-              "bullshitter_incident_ids": {
+              "bullshitter_event_ids": {
                 "$ref": "#/$defs/string_array"
               },
               "public_receipts": {
