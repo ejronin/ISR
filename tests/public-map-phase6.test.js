@@ -73,7 +73,7 @@ const byRole = Object.fromEntries(manifest.application.assets.filter(asset => fi
 assert.equal(byRole.reader_support.source_path, 'src/public-reader-layer.js');
 assert.equal(byRole.reader_stylesheet.source_path, 'src/public-reader-layer.css');
 assert.equal(manifest.application.reference_geography, byRole.reference_geography.path);
-assert.deepEqual(manifest.application.runtime, [byRole.map_runtime.path, byRole.base_runtime.path, byRole.reader_support.path, byRole.page_registry.path]);
+assert.deepEqual(manifest.application.runtime, [byRole.map_runtime.path, byRole.graph_runtime.path, byRole.base_runtime.path, byRole.reader_support.path, byRole.page_registry.path]);
 assert.deepEqual(manifest.application.stylesheets, [byRole.map_stylesheet.path, byRole.stylesheet.path, byRole.reader_stylesheet.path]);
 assert.equal(manifest.application.stylesheet, byRole.stylesheet.path, 'reader CSS must augment rather than replace the primary shell stylesheet');
 
