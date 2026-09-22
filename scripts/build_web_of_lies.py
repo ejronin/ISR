@@ -974,6 +974,7 @@ COUNTRY_CODE_BY_REGION = {
     "United Kingdom": "GB",
     "Saudi Arabia": "SA",
     "United Arab Emirates": "AE",
+    "Singapore": "SG",
     "Iraq": "IQ",
     "Yemen": "YE",
 }
@@ -1300,6 +1301,10 @@ def build_registry(
         governance,
         as_of=(canonical.get("release") or {}).get("current_osint_cutoff"),
     )
+    for profile in profiles:
+        country_code = profile_country_code(profile)
+        if country_code:
+            profile["country_code"] = country_code
     current_period = ranking_view(profiles, recent_events, supported_classes)
     network_analysis = wol_network.derive_network_analysis(
         information_events,

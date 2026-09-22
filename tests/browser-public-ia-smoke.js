@@ -149,13 +149,30 @@ async function loadDirectRoute(cdp, route) {
       }
       if (route.key === 'evidence.web_of_lies') {
         await waitFor(cdp, `document.querySelector('.wol-cytoscape-host')?.dataset.graphState === 'ready'`);
-        const wolGraph = await cdp.eval(`(() => ({
-          canvasCount: document.querySelectorAll('.wol-cytoscape-host canvas').length,
-          status: document.querySelector('.wol-graph-status')?.textContent || '',
-          nodes: document.querySelector('.wol-node-picker')?.options.length || 0
-        }))()`);
+        const wolGraph = await cdp.eval(`(() => {
+          const host = document.querySelector('.wol-cytoscape-host');
+          const rect = host?.getBoundingClientRect();
+          return {
+            canvasCount: document.querySelectorAll('.wol-cytoscape-host canvas').length,
+            status: document.querySelector('.wol-graph-status')?.textContent || '',
+            nodes: document.querySelector('.wol-node-picker')?.options.length || 0,
+            renderedNodes: Number(host?.dataset.graphNodes || 0),
+            renderedEdges: Number(host?.dataset.graphEdges || 0),
+            width: rect?.width || 0,
+            height: rect?.height || 0,
+            flags: document.querySelectorAll('.wol-node-flag').length,
+            hallTitle: document.querySelector('.wol-hall-of-shame h2')?.textContent || '',
+            crowns: [...document.querySelectorAll('.wol-hall-rank')].filter(node => /👑/.test(node.textContent || '')).length
+          };
+        })()`);
         assert(wolGraph.canvasCount > 0, 'WOL Cytoscape graph did not create a canvas');
         assert(wolGraph.nodes > 1, 'WOL graph exposes no selectable source nodes');
+        assert(wolGraph.renderedNodes >= 16, 'WOL graph did not render the compiled awardee + megaphone network (dual-role identities must remain one node)');
+        assert(wolGraph.renderedEdges >= 9, 'WOL graph rendered no meaningful propagation web');
+        assert(wolGraph.width > 0 && wolGraph.height >= 480, 'WOL Cytoscape canvas has no usable rendered area');
+        assert(wolGraph.flags > 0, 'WOL rendered no receipt-backed country flag assets');
+        assert(/🏆 Hall of Shame/.test(wolGraph.hallTitle), 'WOL Hall of Shame trophy treatment is missing');
+        assert(wolGraph.crowns > 0, 'WOL Hall of Shame king crown treatment is missing');
         assert(/Showing the full|Focused on/.test(wolGraph.status), 'WOL graph status did not initialize');
       }
     }

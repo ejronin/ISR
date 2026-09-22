@@ -982,6 +982,19 @@ a:hover { color: #e0f2ff; }
   background: #080f15;
   color: var(--text);
 }
+.wol-cytoscape-host {
+  width: 100%;
+  height: clamp(30rem, 68vh, 54rem);
+  min-height: 30rem;
+  overflow: hidden;
+  border: 1px solid #35566a;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 50% 45%, rgb(50 91 117 / 16%), transparent 38rem),
+    #071018;
+}
+.wol-cytoscape-host.is-node-hover { cursor: pointer; }
+
 .wol-mermaid-host {
   min-height: 24rem;
   max-height: 70vh;
@@ -1039,6 +1052,74 @@ a:hover { color: #e0f2ff; }
 .wol-amplified-claim small { color: var(--muted); }
 .wol-receipt-list small { display: block; margin-top: .15rem; color: var(--muted); }
 
+.wol-hall-views { display: grid; gap: 1rem; }
+.wol-hall-view {
+  display: grid;
+  gap: .75rem;
+  padding: 1rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: #0a1219;
+}
+.wol-hall-view > h3 { margin: 0; font-size: 1rem; }
+.wol-hall-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: .75rem;
+}
+.wol-hall-category { padding: .9rem; }
+.wol-hall-category > h4 { margin: 0 0 .7rem; font-size: .88rem; }
+.wol-hall-podium {
+  display: grid;
+  gap: .55rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.wol-hall-entry {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: .35rem .65rem;
+  align-items: center;
+  padding: .7rem;
+  border: 1px solid var(--line-soft);
+  border-radius: .5rem;
+  background: #091219;
+}
+.wol-hall-rank {
+  min-width: 3.7rem;
+  color: var(--accent-strong);
+  font-size: .78rem;
+  font-weight: 800;
+}
+.wol-hall-king { color: #ffd27a; font-size: .9rem; }
+.wol-hall-score { color: var(--warn); font-size: .72rem; font-weight: 760; white-space: nowrap; }
+.wol-hall-reason {
+  grid-column: 2 / -1;
+  margin: 0;
+  color: var(--muted);
+  font-size: .72rem;
+  line-height: 1.45;
+}
+.wol-node-identity {
+  display: inline-flex !important;
+  min-width: 0;
+  align-items: center;
+  gap: .45rem;
+}
+.wol-node-flag {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 20px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 2px;
+  object-fit: cover;
+}
+.wol-node-identity-label { min-width: 0; }
+.wol-hall-source { color: var(--text); font-size: .8rem; }
+.wol-selected-node-identity { margin: 0; }
+.wol-awardee-identity { color: var(--text); }
+
 .wol-awardee-index {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
@@ -1061,6 +1142,7 @@ a:hover { color: #e0f2ff; }
 }
 
 @media (max-width: 44rem) {
+  .wol-cytoscape-host { height: 30rem; min-height: 30rem; }
   .wol-mermaid-host { min-height: 20rem; padding: .6rem; }
   .wol-mermaid-host svg { min-width: 40rem; }
   .wol-graph-controls { align-items: stretch; }

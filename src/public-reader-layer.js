@@ -534,7 +534,8 @@
 
     const section = append(article, 'section', 'content-section reader-lie-ledger');
     section.dataset.readerLieLedger = VERSION;
-    append(section, 'h2', '', 'Narrative chains and findings');
+    append(section, 'h2', '', 'Lie Ledger');
+    append(section, 'p', 'section-note', 'Narrative chains and findings are grouped here so claims, corrections, repetitions, substitutions, evidence, and adjudications remain inside the event or evolving story they belong to.');
 
     const forensicEntry = append(section, 'aside', 'scope-note reader-wol-entry');
     append(forensicEntry, 'strong', '', 'Web of Lies');

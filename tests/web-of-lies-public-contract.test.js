@@ -11,6 +11,7 @@ const derived = JSON.parse(fs.readFileSync(path.join(root, 'data', 'web-of-lies'
 const forensicInput = JSON.parse(fs.readFileSync(path.join(root, 'data', 'web-of-lies', 'forensic-records.json'), 'utf8'));
 const iaSource = fs.readFileSync(path.join(root, 'js', 'public-ia.js'), 'utf8');
 const readerSource = fs.readFileSync(path.join(root, 'src', 'public-reader-layer.js'), 'utf8');
+const shellSource = fs.readFileSync(path.join(root, 'css', 'public-shell.css'), 'utf8');
 
 const route = ia.ROUTES.get('evidence.web_of_lies');
 assert(route, 'Web of Lies route is missing');
@@ -49,6 +50,8 @@ for (const chain of ledgerChains) assert(familyIds.has(chain.chain_id), `Web of 
 assert.match(readerSource, /reader-wol-trace/);
 assert.match(readerSource, /routeHref\('evidence\.web_of_lies', \{ claim_family:/);
 assert.match(readerSource, /reader-wol-entry/);
+assert.match(readerSource, /append\(section, 'h2', '', 'Lie Ledger'\)/);
+assert.doesNotMatch(readerSource, /append\(section, 'h2', '', 'Narrative chains and findings'\)/);
 assert.match(readerSource, /Open the interactive propagation network/);
 assert.match(readerSource, /Open Web of Lies/);
 assert.match(iaSource, /function WebOfLiesPage\(/);
@@ -62,9 +65,23 @@ assert.match(iaSource, /CONFIRMED_BOT/);
 assert.match(iaSource, /Touch a node/);
 assert.match(iaSource, /Observed megaphones/);
 assert.match(iaSource, /Bullshitter sources repeated/);
+assert.match(iaSource, /🏆 Hall of Shame/);
+assert.match(iaSource, /👑 #1/);
+assert.match(iaSource, /node\[flag_path\]/);
+assert.match(shellSource, /\.wol-cytoscape-host\s*\{/);
+assert.match(shellSource, /height:\s*clamp\(30rem,\s*68vh,\s*54rem\)/);
+assert.match(shellSource, /\.wol-hall-podium\s*\{/);
 assert(Array.isArray(derived.propagation_graph.nodes), 'compiled WOL graph nodes missing');
 assert(Array.isArray(derived.propagation_graph.edges), 'compiled WOL graph edges missing');
 assert.equal(derived.propagation_graph.graph_type, 'BULLSHITTER_MEGAPHONE_NETWORK');
+assert(derived.propagation_graph.edges.length >= 9, 'production WOL graph must contain real receipt-backed propagation edges');
+assert(derived.propagation_graph.summary.megaphone_nodes >= 9, 'production WOL graph must contain real megaphone nodes');
+assert(derived.amplification_observations.length >= 9, 'production WOL input must publish receipt-backed amplification observations');
+const pressTvNode = derived.propagation_graph.nodes.find(node => node.node_id === 'WOL-SRC-PRESS-TV');
+assert(pressTvNode && pressTvNode.country_code === 'IR', 'Press TV graph node must carry its established Iran country code');
+assert(Number(pressTvNode.bullshitter_source_count || 0) >= 1, 'Press TV must render as a dual-role Bullshitter + megaphone when it rebroadcasts an award incident');
+const limTean = derived.source_profiles.find(profile => profile.source_id === 'WOL-SRC-LIM-TEAN');
+assert(limTean && limTean.country_code === 'SG', 'receipt-backed Singapore profile must compile to SG');
 assert(!/manual_rank|manual_score|featured_rank/.test(iaSource), 'public Web of Lies renderer contains a manual ranking control');
 
 if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.information_events || []).length === 0) {
@@ -73,4 +90,4 @@ if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.informa
   assert(derived.claim_families.length > 0, 'canonical claim-family registry should still be populated before source forensics are seeded');
 }
 
-console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, Cytoscape graph-first UX, signed TRACE links, deterministic WOL ranking contract, and no manual Hall selection`);
+console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, ${derived.propagation_graph.edges.length} real propagation edges, visible Cytoscape web, receipt-backed flags, trophy/crown Hall rendering, deterministic WOL ranking contract, and no manual Hall selection`);

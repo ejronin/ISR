@@ -14,6 +14,7 @@ const ROUTES = [
   'timeline.war',
   'evidence.sources',
   'evidence.information',
+  'evidence.web_of_lies',
   'military.campaigns',
   'military.losses',
   'hormuz.shipping',
@@ -28,6 +29,8 @@ const POLISH_FOCUS = [
   { routeKey: 'start.overview', label: 'start-opening-context', selector: '.historical-orientation' },
   { routeKey: 'start.overview', label: 'start-theater-map', selector: '.overview-theater-map' },
   { routeKey: 'evidence.information', label: 'claims-reader', selector: '[data-reader-lie-ledger]' },
+  { routeKey: 'evidence.web_of_lies', label: 'web-of-lies-network', selector: '.wol-network' },
+  { routeKey: 'evidence.web_of_lies', label: 'web-of-lies-hall', selector: '.wol-hall-of-shame' },
   { routeKey: 'military.facilities', label: 'facility-status-dashboard', selector: '[data-reader-facility-dashboard]' },
   { routeKey: 'military.campaigns', label: 'campaign-constituents', selector: '[data-reader-drilldown="event-constituents"]' },
   { routeKey: 'talks.overview', label: 'talks-current-state', selector: '[data-diplomatic-state="current"]' }
