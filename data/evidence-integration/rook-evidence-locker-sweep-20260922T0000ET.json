@@ -1,0 +1,170 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-21T12:00:00-04:00",
+    "end": "2026-09-22T00:00:00-04:00",
+    "collection_time": "2026-09-22T00:01:22-04:00",
+    "evidence_horizon": "2026-09-22T00:00:00-04:00"
+  },
+  "lineage": {
+    "branch": "evidence/rook-catchup-20260919-0002",
+    "previous_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260921T1200ET.json",
+    "previous_blob_observed": "759e05f9d4c9918a27f52dc3777b788579773bb3"
+  },
+  "updates": [
+    {
+      "event_id": "HORMUZ-TANKER-INCIDENTS-20260921",
+      "update_type": "maritime security / new incidents",
+      "occurrence_time": "2026-09-21",
+      "publication_time": "2026-09-21",
+      "finding": "Two separate commercial-vessel incidents were reported at Hormuz on Sep. 21. UKMTO reporting carried by AP said an inbound tanker was struck by an unknown projectile; two crew sustained minor injuries, the vessel remained under its own power, and no environmental impact was reported. Later reporting citing UKMTO described an outbound LPG tanker struck by debris from unknown projectiles; crew were reported safe and the vessel continued. Attribution is unresolved and neither incident is assigned to Iran, the United States, or another actor absent further evidence.",
+      "status": "INCIDENTS SUPPORTED; ATTRIBUTION UNRESOLVED",
+      "sources": [
+        "https://apnews.com/article/82714681bde58c6525c2d7a1bc587b25",
+        "https://www.iranintl.news/en/202609218925"
+      ],
+      "drawer_effect": "Append both incidents to the Hormuz maritime-threat chronology as separate events; do not merge with earlier Trend or other vessel attacks and do not infer perpetrator."
+    },
+    {
+      "event_id": "UK-SAUDI-REFUELLING-SUPPORT-20260921",
+      "update_type": "Saudi external-support / military disposition update",
+      "occurrence_time": "decision announced 2026-09-21; deployment forthcoming",
+      "publication_time": "2026-09-21T21:04:00Z",
+      "finding": "British Prime Minister Andy Burnham said the UK accepted a formal Saudi request for military support and will provide defensive air-to-air refuelling for a limited period. One RAF Voyager is to deploy in the coming days. This converts prior allied-support discussion into a confirmed UK commitment, but does not establish British participation in offensive targeting or strikes.",
+      "status": "CONFIRMED UK COMMITMENT; LIMITED ROLE",
+      "sources": [
+        "https://www.reuters.com/business/aerospace-defense/uks-burnham-agrees-saudi-request-refuelling-support-2026-09-21/"
+      ],
+      "drawer_effect": "Update Saudi external-support drawer: UK request accepted and asset commitment announced. Keep separate from U.S. refusal/non-commitment and French readiness statements."
+    },
+    {
+      "event_id": "US-SAUDI-YEMEN-HOUTHI-SUPPORT-POSTURE-20260921",
+      "update_type": "existing U.S.-Saudi-Yemen intervention-policy drawer consolidation",
+      "occurrence_time": "through 2026-09-21",
+      "publication_time": "2026-09-21",
+      "finding": "Reuters reports the United States has rebuffed repeated Saudi requests for direct military support against the Houthis. Separately, Yemeni President Rashad al-Alimi requested U.S. support in a Sep. 20 call; two Reuters sources said Trump made no direct pledge of military support. These are distinct dispositions: Saudi requests were rebuffed; the Yemeni request received no direct pledge in the reported call. Reuters could not independently verify the New York Times report that U.S. Houthi strikes were prepared and cancelled at the last minute.",
+      "status": "SAUDI REBUFF SUPPORTED; YEMEN REQUEST/NO-DIRECT-PLEDGE SUPPORTED; ALLEGED STRIKE CANCELLATION ATTRIBUTED/UNVERIFIED BY REUTERS",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/houthis-push-control-yemen-highlands-trump-reported-have-called-off-airstrikes-2026-09-21/",
+        "https://www.reuters.com/world/middle-east/trump-call-with-yemen-president-did-not-pledge-military-support-against-houthis-2026-09-21/"
+      ],
+      "drawer_effect": "Clarify language in existing drawer: do not describe Yemen as explicitly refused; record no direct pledge. Saudi request is separately reported as rebuffed."
+    },
+    {
+      "event_id": "IRAN-AVIATION-SECONDARY-SANCTIONS-IMPLEMENTATION-20260921",
+      "update_type": "economy/sanctions/aviation implementation update",
+      "occurrence_time": "2026-09-21 with announced 2026-09-23 enforcement horizon",
+      "publication_time": "2026-09-21",
+      "finding": "Treasury Secretary Scott Bessent said foreign airports, fuel suppliers, landing-service providers and ticket sellers serving sanctioned Iranian airlines risk exclusion from the dollar system and predicted Iranian airlines would be shut out internationally from Sep. 23. This is an enforcement threat/prediction, not proof that every Iranian carrier will cease worldwide operations. Iraq was reported preparing to suspend Iranian-carrier flights from Sep. 22; Georgian service by affected Iranian carriers was reported stopped from Sep. 21. Turkish Airlines separately told Iran International it had no Iran flights scheduled before March 2027; that is a foreign-carrier suspension, not direct proof of U.S. sanctions enforcement against Iranian carriers.",
+      "status": "U.S. ENFORCEMENT POSTURE CONFIRMED; GLOBAL SHUTDOWN OUTCOME NOT YET ESTABLISHED; PARTIAL THIRD-COUNTRY IMPLEMENTATION REPORTED",
+      "sources": [
+        "https://www.aljazeera.com/economy/2026/9/21/us-threatens-to-ground-iranian-airlines-worldwide-from-wednesday",
+        "https://home.treasury.gov/news/press-releases/sb0623",
+        "https://www.iranintl.com/en/202609214536",
+        "https://www.iranintl.com/en/202609212495"
+      ],
+      "drawer_effect": "Update Sep. 8 aviation-sanctions drawer with announced enforcement mechanism and first reported foreign implementation; verify actual Sep. 23 operating status in subsequent sweep."
+    },
+    {
+      "event_id": "G7-IRAN-HOUTHI-SUPPORT-STATEMENT-20260921",
+      "update_type": "diplomacy / multilateral attribution-position update",
+      "occurrence_time": "2026-09-21",
+      "publication_time": "2026-09-22 UTC",
+      "finding": "G7 foreign ministers meeting on the UN General Assembly sidelines called on Iran to end arming and support of the Houthis, condemned continuing Houthi strikes in Yemen and against Saudi Arabia, and called for an end to military actions, threats and attacks on civilian shipping and a return to the political process. This records the G7 position; it is not independent event-level proof for any particular weapons transfer or attack attribution.",
+      "status": "CONFIRMED MULTILATERAL POSITION; NOT EVENT-LEVEL ATTRIBUTION PROOF",
+      "sources": [
+        "https://www.reuters.com/world/americas/g7-foreign-ministers-call-iran-stop-arming-houthis-2026-09-22/"
+      ],
+      "drawer_effect": "Append to diplomacy and Iran-Houthi support-policy drawers while preserving evidentiary distinction between government attribution and independently demonstrated transfer chains."
+    },
+    {
+      "event_id": "YEMEN-HUMAN-IMPACT-20260921-EXACT-DENOMINATORS",
+      "update_type": "human-impact denominator refinement",
+      "occurrence_time": "renewed fighting through 2026-09-21",
+      "publication_time": "2026-09-21",
+      "finding": "AP reporting supplies more precise UN-linked figures for the Yemen escalation: 674 deaths, nearly 3,000 injuries and 129,438 displaced. These refine the noon Reuters shorthand of nearly 700 killed, thousands injured and nearly 130,000 internally displaced; the noon observation remains preserved rather than rewritten.",
+      "status": "DENOMINATOR REFINEMENT; PRIOR SHORTHAND PRESERVED",
+      "sources": [
+        "https://apnews.com/article/82714681bde58c6525c2d7a1bc587b25"
+      ],
+      "drawer_effect": "Use precise denominator for current human-impact status while retaining the earlier Reuters publication state and observation time."
+    },
+    {
+      "event_id": "IRGC-ESCALATION-WARNING-20260921",
+      "update_type": "claims / military signaling",
+      "occurrence_time": "2026-09-21",
+      "publication_time": "2026-09-21",
+      "finding": "Iran's Revolutionary Guard warned that renewed U.S. escalation would bring changes in Iranian weapons, tactics and targets and separately said forces were ready for a prolonged conflict. The statements establish Iranian military signaling, not demonstrated possession/use of any unspecified new weapon or proof of advance intelligence about U.S. attack plans.",
+      "status": "OFFICIAL IRANIAN WARNING CONFIRMED; CAPABILITY IMPLICATIONS UNADJUDICATED",
+      "sources": [
+        "https://apnews.com/article/82714681bde58c6525c2d7a1bc587b25",
+        "https://www.iranintl.com/en/202609214000"
+      ],
+      "drawer_effect": "Append rhetoric/signaling node; do not upgrade earlier Iranian foreknowledge or unspecified-new-weapons claims."
+    }
+  ],
+  "prior_drawer_review": [
+    {"drawer":"Hormuz maritime incidents","action":"UPDATE","reason":"Two Sep. 21 vessel incidents require separate chronology entries; attribution remains unresolved."},
+    {"drawer":"Saudi external military support","action":"UPDATE","reason":"UK accepted formal Saudi request and announced one-Voyager defensive refuelling commitment."},
+    {"drawer":"U.S.-Saudi/Yemen intervention","action":"CLARIFY","reason":"Saudi requests reported rebuffed; Yemen request received no direct pledge, which is not identical to an explicit refusal."},
+    {"drawer":"Iran aviation sanctions","action":"UPDATE / WATCH","reason":"Bessent announced Sep. 23 secondary-sanctions enforcement posture; early Iraq/Georgia implementation reported; worldwide shutdown outcome remains prospective."},
+    {"drawer":"Iran-Houthi support diplomacy","action":"UPDATE","reason":"G7 issued collective demand that Iran end arming/support; preserve as diplomatic attribution, not standalone transfer proof."},
+    {"drawer":"Yemen human impact","action":"REFINE","reason":"AP supplies exact 674 / nearly 3,000 / 129,438 figures refining Reuters shorthand."},
+    {"drawer":"Iran escalation / new-weapons rhetoric","action":"UPDATE CLAIM NODE ONLY","reason":"Official warning confirmed; no new capability evidence located."},
+    {"drawer":"Hormuz traffic 17/37 and STS shuttle network","action":"NO NEW DENOMINATOR CHANGE","reason":"No later authoritative Kpler daily denominator located before horizon."},
+    {"drawer":"Saudi Petroline / Yanbu","action":"NO REPAIR-STATUS CHANGE","reason":"No authoritative partial/full pumping restoration or new visible Yanbu loading located before horizon."},
+    {"drawer":"Qatar Ras Laffan","action":"NO BDA CHANGE","reason":"No independent physical BDA superseding QatarEnergy's 17% capacity-loss/repair estimate located."},
+    {"drawer":"Iran settlement conditions","action":"NO SEMANTIC CHANGE","reason":"No authoritative disclosure of seventh condition or definition of ambiguous terms located before horizon."},
+    {"drawer":"U.S. military fatalities 18 vs >=22","action":"NO RECONCILIATION FOUND","reason":"No new authoritative denominator reconciliation located."}
+  ],
+  "coverage": {
+    "military": "covered: Yemen/Saudi support posture, UK refuelling commitment, IRGC escalation signaling, prior loss/strike drawers rechecked",
+    "maritime": "covered: two Sep. 21 Hormuz tanker incidents, prior Kpler traffic/STS state rechecked, Bab el-Mandeb disposition reviewed",
+    "infrastructure": "covered: Petroline/Yanbu and Ras Laffan prior drawers rechecked; no material repair/BDA change found",
+    "diplomacy": "covered: G7 Iran-Houthi statement, Saudi/Yemen requests to U.S./UK, UNGA context; no new agreed U.S.-Iran framework found",
+    "economy_sanctions_energy": "covered: Iranian aviation enforcement posture/third-country response, oil/Hormuz state rechecked",
+    "claims_corrections": "covered: U.S. Yemen wording clarified; tanker attribution withheld; IRGC capability rhetoric preserved without promotion; strike-cancellation report remains attributed/unverified by Reuters",
+    "human_impact": "covered: Yemen exact denominator refinement; Gaza education/human-impact reporting reviewed but no conflict-casualty denominator change promoted in this artifact",
+    "osint_commercial": "covered through Reuters/AP and reported Kpler/LSEG/UKMTO material; no direct paid Kpler, LSEG terminal, MarineTraffic, Planet or Maxar access"
+  },
+  "unresolved_questions": [
+    "Who launched the projectile that struck the inbound tanker and what produced the debris that struck the outbound LPG tanker on Sep. 21?",
+    "Will the UK Voyager remain strictly defensive-refuelling support, and when does it arrive on station?",
+    "Will Washington alter its no-direct-commitment posture toward Saudi Arabia or Yemen after the latest Houthi advance?",
+    "Did the U.S. actually prepare and then cancel Sep. 20 Houthi strikes as reported by the New York Times?",
+    "How many Iranian airlines actually cease international operations on Sep. 23, and which foreign jurisdictions/services implement the U.S. secondary-sanctions warning?",
+    "What is the next reliable Hormuz daily transit denominator and defensible estimate of AIS-dark traffic?",
+    "When will Saudi East-West pipeline pumping and visible Yanbu oil loading resume?",
+    "What is Iran's undisclosed seventh settlement condition and how are its ambiguous political terms defined?",
+    "Can the U.S. military-fatality discrepancy be reconciled by denominator, date and combat status?"
+  ],
+  "source_discovery_additions": [
+    "Reuters Sep. 21 UK-Saudi defensive refuelling commitment",
+    "Reuters Sep. 21 U.S.-Yemen support-request/no-direct-pledge report",
+    "AP Sep. 21 regional developments / UKMTO tanker incident / Yemen exact human-impact figures",
+    "Reuters Sep. 22 G7 Iran-Houthi support statement",
+    "Treasury Sep. 8 aviation sanctions baseline plus Sep. 21 Bessent enforcement statement reporting",
+    "Iran International Sep. 21 Iraq/Georgia/Turkish aviation implementation reporting, retained with source-class caveat"
+  ],
+  "limitations": [
+    "No direct subscription access to paid Kpler, LSEG, MarineTraffic, Planet, Maxar or other commercial terminals; commercial figures are preserved through accessible reporting.",
+    "Direct UKMTO incident pages were not located in indexed web search during this run; UKMTO facts are therefore preserved through AP/secondary reporting and should be upgraded if the primary incident notices are retrieved.",
+    "Iranian state/IRGC claims are retained as claimant evidence unless independently corroborated; no claim is upgraded merely by repetition.",
+    "The collection horizon is strict at 2026-09-22T00:00:00-04:00; later-published evidence belongs to the next sweep even when it concerns an earlier occurrence."
+  ],
+  "completion_report": {
+    "status": "COMPLETE WITH EXPLICIT SOURCE-ACCESS LIMITATIONS",
+    "append_only": true,
+    "canonical_packet_bytes_modified": false,
+    "accepted_hashes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "material_updates": 7,
+    "prior_drawers_reviewed": 12,
+    "note": "Late-window sweep adds two Hormuz vessel incidents, confirmed UK refuelling support to Saudi Arabia, clarifies distinct U.S. dispositions toward Saudi and Yemeni support requests, adds aviation-sanctions implementation evidence, G7 Iran-Houthi diplomatic position, exact Yemen human-impact figures, and IRGC escalation signaling."
+  }
+}
