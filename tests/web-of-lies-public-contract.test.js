@@ -54,7 +54,7 @@ assert.match(iaSource, /function WebOfLiesPage\(/);
 assert.match(iaSource, /No qualifying source in this evidence slice/);
 assert.match(iaSource, /Prove the pattern; then call the pattern what it is\./);
 assert.match(iaSource, /Explore the propagation graph/);
-assert.match(iaSource, /wol-mermaid-host/);
+assert.match(iaSource, /wol-cytoscape-host/);
 assert.match(iaSource, /mermaid\.render/);
 assert.match(iaSource, /bullshitter_source_count/);
 assert.match(iaSource, /CONFIRMED_BOT/);
