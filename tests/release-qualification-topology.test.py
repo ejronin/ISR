@@ -78,6 +78,7 @@ for token in (
     "python tests/web-of-lies-social-influence-tranche2l.test.py",
     "python tests/web-of-lies-social-influence-tranche2m.test.py",
     "python tests/web-of-lies-social-influence-tranche2n.test.py",
+    "python tests/web-of-lies-social-influence-tranche2o.test.py",
     "python tests/web-of-lies-social-profile-evidence.test.py",
     "python tests/web-of-lies-bullshitter-award.test.py",
     "python tests/web-of-lies-lineage-packets.test.py",
