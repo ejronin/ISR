@@ -1164,6 +1164,40 @@
         }
       ],
       "identity_context": "The public X identity PSYWAR Bureau / @PSYWAROPS is repeatedly preserved by independent DFRAC fact-check pages together with exact source-post links. DFRAC describes the handle as Pakistan-based, but WOL does not infer the real-world operator, nationality, geographic location, organizational affiliation, state direction, coordinated control or intelligence relationship from that secondary characterization alone; those remain unknown."
+    },
+    {
+      "source_id": "WOL-SRC-KASHMIR-ENGLISH",
+      "display_name": "Kashmir English / @KashmirEng",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-KASHMIR-ENGLISH",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "Kashmir English",
+        "@KashmirEng",
+        "KashmirEng"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-KASHMIR-ENGLISH-X",
+          "platform": "X",
+          "handle": "@KashmirEng",
+          "url": "https://x.com/KashmirEng",
+          "display_name": "Kashmir English",
+          "account_state": "PUBLIC_IDENTITY_PRESERVED"
+        }
+      ],
+      "identity_context": "The public X identity Kashmir English / @KashmirEng is repeatedly preserved by independent DFRAC fact-check pages together with exact source-post links. Secondary sources variously characterize the account as Pakistan-based or South-Asia-based. WOL does not infer the real-world operator, nationality, geographic location, organizational affiliation, state direction, coordinated control or intelligence relationship from those characterizations alone; those remain unknown."
     }
   ],
   "source_relationships": [
@@ -4757,6 +4791,267 @@
       "downstream_note": "One publication event; the unsupported death and R&AW identity are not double-counted.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical blast casualty or intelligence-official identity proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-KASHMIRENG-BANGLADESH-VISAS-20250107",
+      "source_id": "WOL-SRC-KASHMIR-ENGLISH",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-01-07",
+      "first_observed_at": "2025-01-08",
+      "statement_identity": "Kashmir English stated that India had blocked visas for Bangladeshi citizens, using the categorical blocking premise to support broader political commentary.",
+      "source_information_event_id": "KASHMIRENG-X-BANGLADESH-VISAS-20250107",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-VISAS-X",
+          "surface": "X",
+          "url": "https://x.com/KashmirEng/status/1876734371559800980",
+          "published_at": "2025-01-07",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "India’s decision to block visas for Bangladesh citizens is a blatant violation of human rights, exposing its arrogance and failed attempts at regional dominance."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-VISAS-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/01/08/india-blocking-bangladeshi-visas-implying-human-rights-violated/",
+          "published_at": "2025-01-08",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Kashmir English post and documented that India continued issuing medical and emergency visas to Bangladeshi nationals despite restricted normal operations."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Kashmir English source post plus DFRAC's review of Indian MEA statements and contemporaneous reporting on Bangladesh visa operations.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Normal/full-scale visa operations were restricted, but medical and emergency visas continued to be issued; the reviewed evidence did not support a categorical claim that visas for Bangladeshi citizens were blocked.",
+        "search_notes": "WOL does not score the political/human-rights opinion. It scores only the categorical factual premise that India had blocked visas for Bangladeshi citizens.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real restriction of normal visa services; score the unsupported zero/blocked scope.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical India-Bangladesh visa-policy proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-KASHMIRENG-25000-DEPORTED-20250113",
+      "source_id": "WOL-SRC-KASHMIR-ENGLISH",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-01-13",
+      "first_observed_at": "2025-01-15",
+      "statement_identity": "Kashmir English stated that India had deported 25,000 Bangladeshis from Assam following a Guwahati High Court decision.",
+      "source_information_event_id": "KASHMIRENG-X-25000-DEPORTED-20250113",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-25000-X",
+          "surface": "X",
+          "url": "https://x.com/KashmirEng/status/1878916304532570123",
+          "published_at": "2025-01-13",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Following the Guwahati High Court’s decision, India has deported 25,000 Bangladeshis from Assam, a grave violation of global refugee laws."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-25000-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/01/15/has-india-deported-25000-bangladeshis-from-assam-following-the-guwahati-hcs-decision/",
+          "published_at": "2025-01-15",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the post and found that the referenced group had not been deported; the underlying legal ruling concerned citizenship/registration status."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Kashmir English post plus DFRAC's review of the court/citizenship reporting and contemporaneous reports cited in the fact-check.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The underlying legal dispute concerned citizenship and registration consequences; the reviewed evidence did not support that India had already deported 25,000 people from Assam.",
+        "search_notes": "A real legal/citizenship development was converted into a completed mass-deportation claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One publication event; do not count the legal-status substrate separately.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical deportation/citizenship proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-KASHMIRENG-RUSSIA-TRADE-HALT-20250115",
+      "source_id": "WOL-SRC-KASHMIR-ENGLISH",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-01-15",
+      "first_observed_at": "2025-01-16",
+      "statement_identity": "Kashmir English stated categorically that India had halted trade with Russian companies and oil tankers facing U.S. sanctions.",
+      "source_information_event_id": "KASHMIRENG-X-RUSSIA-TRADE-HALT-20250115",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-RUSSIA-X",
+          "surface": "X",
+          "url": "https://x.com/KashmirEng/status/1879537830864863294",
+          "published_at": "2025-01-15",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "India has halted trade with Russian companies and oil tankers facing U.S. sanctions."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-RUSSIA-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/01/16/has-india-halted-trade-with-russian-companies-and-oil-tankers-facing-u-s-sanctions/",
+          "published_at": "2025-01-16",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC documented that refiners stopped dealing with newly U.S.-sanctioned tankers/entities while a wind-down period remained and pre-January-10 booked cargoes could still unload."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Kashmir English post plus DFRAC's review of Reuters, Business Standard and other reporting on India's implementation of the U.S. sanctions.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "India restricted dealings with sanctioned tankers/entities, but the policy included a wind-down period and allowed previously booked Russian cargoes to unload; the reviewed evidence did not support an immediate blanket halt.",
+        "search_notes": "The real sanctions-compliance shift is preserved. WOL scores the qualifier-stripping conversion into a categorical trade-halt claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve real sanctions-related restrictions; score the blanket/immediate trade-halt generalization.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical sanctions/trade implementation proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-KASHMIRENG-PANNUN-SPECIAL-GUEST-20250122",
+      "source_id": "WOL-SRC-KASHMIR-ENGLISH",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2025-01-22",
+      "first_observed_at": "2025-01-23",
+      "statement_identity": "Kashmir English shared video of Gurpatwant Singh Pannun at a Trump inaugural ball while presenting him as a special guest at the official inaugural event.",
+      "source_information_event_id": "KASHMIRENG-X-PANNUN-SPECIAL-GUEST-20250122",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-PANNUN-X",
+          "surface": "X",
+          "url": "https://x.com/KashmirEng/status/1881985368880492686",
+          "published_at": "2025-01-22",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Kashmir English shared the Liberty Ball video with the claim that Pannun was a special guest at Trump's official inaugural event."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-PANNUN-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/01/23/was-khalistani-terrorist-pannu-the-special-guest-at-trumps-inaugural-ceremony/",
+          "published_at": "2025-01-23",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved Kashmir English as one of the accounts sharing the special-guest claim and reported that Pannun was not invited and had obtained a ticket through a contact."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Kashmir English source-post identity plus DFRAC's video/provenance review and cited contemporaneous reports about Pannun's presence at the Liberty Ball.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Pannun's presence at the ball was real, but reviewed reporting said he was not an invited special guest and obtained access through a ticket/contact.",
+        "search_notes": "Physical presence at an event does not establish official invitation or special-guest status.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real attendance/presence substrate; score the unsupported invitation/status claim.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical invitation/status proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-KASHMIRENG-ABVP-STALE-MANDATE-20250127",
+      "source_id": "WOL-SRC-KASHMIR-ENGLISH",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2025-01-27",
+      "first_observed_at": "2025-01-28",
+      "statement_identity": "Kashmir English presented the earlier Poonch school-participation directive in present-tense/current framing as students in J&K being forced to attend an ABVP rally, after the government had formally banned and reversed such directions on January 25.",
+      "source_information_event_id": "KASHMIRENG-X-ABVP-STALE-MANDATE-20250127",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-ABVP-X",
+          "surface": "X",
+          "url": "https://x.com/KashmirEng/status/1884008458728661307",
+          "published_at": "2025-01-27",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Forcing students in J&K to attend an ABVP rally is an abuse of education, using it for political propaganda..."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-ABVP-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/01/28/exposing-the-misleading-allegations-made-by-pak-based-handles-over-education-in-jk/",
+          "published_at": "2025-01-28",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Jan. 27 Kashmir English post and documented the Jan. 25 School Education Department ban on directions requiring student/staff participation in political rallies."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-ABVP-PTI",
+          "surface": "WEBSITE",
+          "url": "https://www.newindianexpress.com/amp/story/india/2025/Jan/25/jk-bans-education-department-from-ordering-students-to-attend-political-rallies",
+          "published_at": "2025-01-25",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "PTI/New Indian Express confirms both the earlier Poonch directive sending 40-50 students and two teachers and the January 25 government circular banning such directions."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Kashmir English Jan. 27 post, DFRAC preservation, and independent Jan. 25 reporting documenting both the earlier Poonch directive and the subsequent government-wide ban/reversal.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The earlier Poonch directive was real and did direct schools to send students and teachers. By January 25, however, the J&K government had formally banned such directions; the Jan. 27 post presented the superseded directive in current/present-tense framing without the reversal.",
+        "search_notes": "WOL does not claim the original directive was fabricated. The qualifying behavior is stale/current-status presentation after the governing order had been reversed.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the original forced-participation directive as true substrate and the Jan. 25 reversal as the controlling later state.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical chronology of the Poonch directive/reversal remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-KASHMIRENG-POONCH-FALSE-FLAG-YOUTHS-20250131",
+      "source_id": "WOL-SRC-KASHMIR-ENGLISH",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-01-31",
+      "first_observed_at": "2025-02-01",
+      "statement_identity": "Kashmir English stated that Indian forces killed two Kashmiri youths in a false-flag search operation in Poonch's Khari Karmara area.",
+      "source_information_event_id": "KASHMIRENG-X-POONCH-FALSE-FLAG-YOUTHS-20250131",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-POONCH-X",
+          "surface": "X",
+          "url": "https://x.com/KashmirEng/status/1885261329055048021",
+          "published_at": "2025-01-31",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Two Kashmiri youth were martyred in a false flag operation during a so-called search operation in Poonch’s Khari Karmara area near the LoC."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KASHMIRENG-POONCH-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/02/01/misleading-claim-alleging-the-killings-of-two-kashmiri-youths-in-poonch-goes-viral/",
+          "published_at": "2025-02-01",
+          "captured_at": "2026-09-22T10:26:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Kashmir English post and cited contemporaneous reporting that two heavily armed LeT-affiliated militants were killed during a firefight after an infiltration attempt was detected."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Kashmir English post plus DFRAC's review of contemporaneous Hindustan Times, Deccan Herald, Greater Kashmir and White Knight Corps reporting on the Poonch firefight.",
+        "checked_at": "2026-09-22T10:26:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The reviewed record supported a detected infiltration attempt and armed firefight in which two LeT-affiliated militants were killed; it did not support the characterization of the dead as noncombatant youths or the asserted false-flag operation.",
+        "search_notes": "WOL preserves the real deaths/firefight and scores the unsupported civilian-youth/false-flag characterization.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One publication event; the unsupported identity and false-flag mechanism are not double-counted.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical Poonch encounter/identity proposition remains separate."
     }
   ]
 }
