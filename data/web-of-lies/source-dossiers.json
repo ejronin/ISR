@@ -976,7 +976,7 @@
       "classification_basis_event_ids": [],
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-RKM-RKMTIMES",
-      "identity_confidence": "PUBLIC_ACCOUNT_RESOLVED_OPERATOR_UNKNOWN",
+      "identity_confidence": "HIGH",
       "aliases": [
         "RKM",
         "@rkmtimes"
