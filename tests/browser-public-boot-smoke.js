@@ -195,7 +195,7 @@ function base64(value) {
     assert.match(ready.currentRelease, /^public-current-v2-[a-f0-9]{16}$/);
     assert.equal(ready.authorization.release, ready.release);
     assert.equal(ready.authorization.entrypoint, entrypoint.path);
-    assert.deepEqual(ready.authorization.runtimes, [mapRuntime.path, baseRuntime.path, readerSupport.path, pageRegistry.path]);
+    assert.deepEqual(ready.authorization.runtimes, [mapRuntime.path, graphRuntime.path, baseRuntime.path, readerSupport.path, pageRegistry.path]);
     assert.deepEqual(ready.authorization.stylesheets, [mapStylesheet.path, stylesheet.path, readerStylesheet.path]);
     assert.equal(ready.authorization.stylesheet, stylesheet.path);
     assert.equal(ready.authorization.geography, referenceGeography.path);
