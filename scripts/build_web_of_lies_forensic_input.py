@@ -218,7 +218,13 @@ def validate_source_dossier(
         if bullshitter_event_id not in qualifying_event_ids:
             raise ValueError(
                 f"{path}: amplification observation {observation_id} references "
-                f"unknown Bullshitter incident {bullshitter_event_id}"
+                f"unknown Bullshitter event {bullshitter_event_id}"
+            )
+        amplifier_source_id = str(row.get("amplifier_source_id") or "")
+        if amplifier_source_id and amplifier_source_id not in allowed_source_ids:
+            raise ValueError(
+                f"{path}: amplification observation {observation_id} references "
+                f"undeclared amplifier source {amplifier_source_id}"
             )
         if not list(row.get("public_receipts") or []):
             raise ValueError(
