@@ -494,7 +494,6 @@
           "assertion_kind",
           "published_at",
           "statement_identity",
-          "evidentiary_support_review",
           "public_receipts"
         ],
         "properties": {
@@ -510,7 +509,8 @@
             "enum": [
               "UNSUPPORTED_FACTUAL_ASSERTION",
               "UNSUPPORTED_INFERENTIAL_ASSERTION",
-              "EVIDENTIARY_EVASION"
+              "EVIDENTIARY_EVASION",
+              "AMPLIFIES_QUALIFYING_BULLSHIT"
             ]
           },
           "assertion_kind": {
@@ -618,9 +618,125 @@
               "string",
               "null"
             ]
+          },
+          "upstream_qualifying_incident_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "upstream_source_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "amplification_review": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "status": {
+                "const": "VERIFIED_DERIVATIVE_AMPLIFICATION"
+              },
+              "amplification_mode": {
+                "enum": [
+                  "REPOST",
+                  "REPEAT",
+                  "QUOTE_AS_SUPPORT",
+                  "EMBED",
+                  "REPUBLISH",
+                  "OTHER_MATERIAL_AMPLIFICATION"
+                ]
+              },
+              "underlying_claim_status": {
+                "const": "UPSTREAM_QUALIFYING_BULLSHIT_ESTABLISHED"
+              },
+              "corrective_framing_status": {
+                "const": "NO_MEANINGFUL_CORRECTIVE_FRAMING"
+              },
+              "note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": true
           }
         },
-        "additionalProperties": true
+        "additionalProperties": true,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "event_type": {
+                  "const": "AMPLIFIES_QUALIFYING_BULLSHIT"
+                }
+              },
+              "required": [
+                "event_type"
+              ]
+            },
+            "then": {
+              "required": [
+                "upstream_qualifying_incident_id",
+                "amplification_review"
+              ],
+              "properties": {
+                "upstream_qualifying_incident_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "amplification_review": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "amplification_mode",
+                    "underlying_claim_status",
+                    "corrective_framing_status"
+                  ],
+                  "properties": {
+                    "status": {
+                      "const": "VERIFIED_DERIVATIVE_AMPLIFICATION"
+                    },
+                    "amplification_mode": {
+                      "enum": [
+                        "REPOST",
+                        "REPEAT",
+                        "QUOTE_AS_SUPPORT",
+                        "EMBED",
+                        "REPUBLISH",
+                        "OTHER_MATERIAL_AMPLIFICATION"
+                      ]
+                    },
+                    "underlying_claim_status": {
+                      "const": "UPSTREAM_QUALIFYING_BULLSHIT_ESTABLISHED"
+                    },
+                    "corrective_framing_status": {
+                      "const": "NO_MEANINGFUL_CORRECTIVE_FRAMING"
+                    },
+                    "note": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            },
+            "else": {
+              "required": [
+                "evidentiary_support_review"
+              ]
+            }
+          }
+        ]
       }
     }
   },
