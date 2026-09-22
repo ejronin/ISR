@@ -355,8 +355,7 @@
         "REPEAT_AFTER_CORRECTION",
         "UNSUPPORTED_FACTUAL_ASSERTION",
         "UNSUPPORTED_INFERENTIAL_ASSERTION",
-        "EVIDENTIARY_EVASION",
-        "AMPLIFIES_QUALIFYING_BULLSHIT"
+        "EVIDENTIARY_EVASION"
       ],
       "qualifying_behavior_findings": [
         "NARRATIVE_MUTATION_OFFENDER",
@@ -379,14 +378,7 @@
       "qualification_window_semantics": "ANY_30_DAY_CLUSTER",
       "award_persists_after_earned": true,
       "current_window_status_reported_separately": true,
-      "undated_incidents_cannot_establish_window": true,
-      "amplification_counts": true,
-      "amplification_rule": "A distinct amplifier publication counts when it republishes/repeats/embeds/adopts a claim whose underlying event already qualifies as bullshit, provided the amplifier publication is receipt-backed and lacks meaningful corrective framing. The amplifier does not need to originate the claim or independently satisfy the underlying factual-evidence search again.",
-      "neutral_attributed_reporting_counts": false,
-      "amplification_requires_upstream_qualifying_reference": true,
-      "amplification_requires_publication_receipt": true,
-      "amplification_requires_adoption_without_meaningful_correction": true,
-      "same_claim_repeated_in_distinct_publications_counts_separately": true
+      "undated_incidents_cannot_establish_window": true
     }
   },
   "profile_evidence": {
@@ -426,8 +418,8 @@
     "arbitrary_numeric_follower_threshold_forbidden": true,
     "reach_is_intake_only": "Follower/subscriber/view/repost evidence may establish source-selection materiality. It must not determine truth, deception, Bullshitter qualification, Hall-of-Shame score, or credibility.",
     "amplification_intake_rule": "A smaller source may qualify when public evidence shows its Iran-war claims are materially amplified by other publishers/accounts or move through an established amplification network.",
-    "amplifier_behavior_rule": "A publisher that republishes, reposts, repeats, embeds, quotes as factual support, or otherwise materially amplifies a qualifying bullshit claim without meaningful corrective framing creates its own qualifying source-behavior incident. It need not have originated or mutated the claim. The underlying claim adjudication may be inherited by reference; the amplifier-specific publication/amplification receipt must still be proved.",
-    "no_guilt_by_network_rule": "Network membership or association alone never transfers an award. Liability transfers only through a proved publication/amplification act: the amplifier must itself have published, reposted, repeated, embedded, or adopted the qualifying message. Neutral attributed reporting that preserves the claim as an allegation and supplies meaningful corrective/contrary context does not qualify merely for mentioning it.",
+    "amplifier_behavior_rule": "Amplification is recorded as lightweight propagation evidence under the Bullshitter source/claim that was amplified. A megaphone does not require a second full truth adjudication when the underlying claim is already adjudicated; preserve the amplifier-specific publication receipt, identity metadata, and the upstream Bullshitter/incident reference.",
+    "no_guilt_by_network_rule": "Network membership alone proves nothing. A megaphone edge requires a proved publication, repost, repeat, embed, or adoption of the specific qualifying message. Neutral attributed reporting with meaningful corrective context is not a megaphone edge.",
     "same_information_event_deduplication_applies_to_amplifiers": true,
     "out_of_conflict_research_must_not_be_retained_in_active_corpus": true,
     "parody_accounts_excluded_from_adjudication": true,
@@ -435,6 +427,9 @@
     "inaccessible_relevant_content_rule": "When material 2026 Iran-war content is known to exist but the evidentiary body is inaccessible behind a paywall or equivalent access barrier, use an unable-to-adjudicate disposition. Do not convert inaccessible content into a clean/no-adverse finding.",
     "inaccessible_disposition": "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT",
     "ai_assistance_rule": "Use of AI is not itself adverse behavior. Score the published factual proposition, inferential bridge or evidentiary presentation. Record AI-assisted authorship only when independently evidenced and material to provenance.",
-    "inference_rule": "Repeated analytical overfitting can qualify when the publication presents a causal, control, motive, intent or strategic conclusion as established fact and the preserved evidence does not support that bridge. Mere disagreement or an unresolved inference does not qualify."
+    "inference_rule": "Repeated analytical overfitting can qualify when the publication presents a causal, control, motive, intent or strategic conclusion as established fact and the preserved evidence does not support that bridge. Mere disagreement or an unresolved inference does not qualify.",
+    "megaphone_roster_is_not_award_inheritance": true,
+    "megaphone_cross_awardee_overlap_is_graph_signal": true,
+    "bot_and_country_markers_require_receipts": true
   }
 }
