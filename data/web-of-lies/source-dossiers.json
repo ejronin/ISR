@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-21T20:05:00-04:00",
+  "as_of": "2026-09-22T11:02:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -1198,6 +1198,40 @@
         }
       ],
       "identity_context": "The public X identity Kashmir English / @KashmirEng is repeatedly preserved by independent DFRAC fact-check pages together with exact source-post links. Secondary sources variously characterize the account as Pakistan-based or South-Asia-based. WOL does not infer the real-world operator, nationality, geographic location, organizational affiliation, state direction, coordinated control or intelligence relationship from those characterizations alone; those remain unknown."
+    },
+    {
+      "source_id": "WOL-SRC-IRONCLAD-NAVCOM24",
+      "display_name": "Ironclad / @NavCom24",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-IRONCLAD-NAVCOM24",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "Ironclad",
+        "@NavCom24",
+        "NavCom24"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-IRONCLAD-NAVCOM24-X",
+          "platform": "X",
+          "handle": "@NavCom24",
+          "url": "https://x.com/NavCom24",
+          "display_name": "Ironclad",
+          "account_state": "PUBLIC_IDENTITY_PRESERVED"
+        }
+      ],
+      "identity_context": "The public X identity Ironclad / @NavCom24 is repeatedly preserved by independent DFRAC fact-check pages together with exact source-post links. DFRAC characterizes the handle as Pakistan-based and places it in a broader anti-India misinformation network. WOL preserves those descriptions only as secondary-source context and does not infer the real-world operator, nationality, geographic location, organizational affiliation, state direction, coordinated control or intelligence relationship; those remain unknown."
     }
   ],
   "source_relationships": [
@@ -5052,6 +5086,276 @@
       "downstream_note": "One publication event; the unsupported identity and false-flag mechanism are not double-counted.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical Poonch encounter/identity proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-IRONCLAD-UDHAMPUR-NINE-COMMANDOS-20240428",
+      "source_id": "WOL-SRC-IRONCLAD-NAVCOM24",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2024-04-28",
+      "first_observed_at": "2024-04-29",
+      "statement_identity": "Ironclad stated that nine Indian special-forces commandos had been killed in Udhampur during a fight with Kashmiri fighters.",
+      "source_information_event_id": "IRONCLAD-X-UDHAMPUR-NINE-COMMANDOS-20240428",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-UDHAMPUR9-X",
+          "surface": "X",
+          "url": "https://x.com/NavCom24/status/1784589654907363745",
+          "published_at": "2024-04-28",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "09 Indian special forces commandos have been killed in Udhampur during a fight with #Kashmiri Freedom Fighters. The Hunt goes on…"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-UDHAMPUR9-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2024/04/29/fact-check-have-9-indian-special-forces-commandos-been-killed-in-the-ongoing-operation-in-jks-udhampur-heres-the-truth/",
+          "published_at": "2024-04-29",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the exact Ironclad post and cited contemporaneous reporting and Jammu police material identifying one Village Defence Guard member killed, not nine Indian special-forces commandos."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Ironclad source post plus DFRAC's documented review of contemporaneous NDTV, India TV, India.com and Jammu police reporting on the Udhampur operation.",
+        "checked_at": "2026-09-22T11:02:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A real Udhampur gunfight and fatality occurred, but reviewed contemporaneous reporting identified one Village Defence Guard member killed and did not support nine Indian special-forces commandos killed.",
+        "search_notes": "WOL preserves the real security incident and scores the unsupported casualty/unit conversion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One source publication; the real gunfight and unsupported nine-commando death claim are not split into multiple award incidents.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical Udhampur casualty reconstruction remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-IRONCLAD-UDHAMPUR-COLONEL-KIDNAPPED-20240429",
+      "source_id": "WOL-SRC-IRONCLAD-NAVCOM24",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2024-04-29",
+      "first_observed_at": "2024-04-30",
+      "statement_identity": "Ironclad stated that Indian Army Colonel Prakash Kumar, who was leading the Udhampur operation, had been kidnapped by Kashmiri fighters and that a massive Army/Special Forces search had been launched.",
+      "source_information_event_id": "IRONCLAD-X-UDHAMPUR-COLONEL-KIDNAPPED-20240429",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-COLONEL-X",
+          "surface": "X",
+          "url": "https://x.com/NavCom24/status/1784862867268776178",
+          "published_at": "2024-04-29",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "#BREAKING Indian Army Colonel Prakash Kumar, who was leading the operation, has been kidnapped by Kashmiri freedom fighters in Udhampur. A massive search operation has been launched by the Indian army and special forces"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-COLONEL-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2024/04/30/has-indian-colonel-been-abducted-by-terrorists-amid-ongoing-search-operation-in-jks-udhampur-fact-check-debunks-false-news/",
+          "published_at": "2024-04-30",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Ironclad post and documented contemporaneous reporting on the continuing Udhampur search operation but found no report or official update supporting an abducted Colonel Prakash Kumar."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Ironclad source post plus DFRAC's documented keyword review and contemporaneous ANI/News Mill reporting on the Udhampur search operation.",
+        "checked_at": "2026-09-22T11:02:00-04:00",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "The search operation was real, but the reviewed reporting and official-update search did not identify an abducted Colonel Prakash Kumar or support the asserted kidnapping.",
+        "search_notes": "A real ongoing security operation does not supply evidence for the positive officer-kidnapping assertion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real Udhampur operation; score the unsupported named-officer kidnapping claim.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical personnel-abduction proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-IRONCLAD-KULGAM-SIX-SOG-20240507",
+      "source_id": "WOL-SRC-IRONCLAD-NAVCOM24",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2024-05-07",
+      "first_observed_at": "2024-05-09",
+      "statement_identity": "Ironclad stated that at least six Indian SOG commandos had been gunned down by Kashmiri fighters in Kulgam and that 3–5 fighters had pinned down 600 Indian troops.",
+      "source_information_event_id": "IRONCLAD-X-KULGAM-SIX-SOG-20240507",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-KULGAM-X",
+          "surface": "X",
+          "url": "https://x.com/NavCom24/status/1787743197268988329",
+          "published_at": "2024-05-07",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "At least 06 Indian SOG commandos have been gunned down by Kashmiri fighters in Kulgam district... those 3 to 5 fighters have pinned down a force of 600 Indian troops"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-KULGAM-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2024/05/09/fact-check-have-6-indian-sog-commandos-killed-in-j-ks-kulgam-heres-the-truth/",
+          "published_at": "2024-05-09",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the exact post and cited Kashmir Police plus contemporaneous reporting that two militants were killed; no six-SOG-commando deaths were reported."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Ironclad source post plus DFRAC's documented review of Kashmir Police, Livemint, Times of India and NDTV reporting on the Kulgam encounter.",
+        "checked_at": "2026-09-22T11:02:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The Kulgam encounter was real, but reviewed reporting supported two militants killed and did not support six Indian SOG commandos killed or the asserted force-ratio conclusion.",
+        "search_notes": "One publication event contains multiple unsupported battlefield particulars and counts once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real Kulgam encounter; do not double-count the casualty and force-ratio clauses.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical encounter/casualty reconstruction remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-IRONCLAD-KASHMIR-FLAG-OLD-VIDEO-20240512",
+      "source_id": "WOL-SRC-IRONCLAD-NAVCOM24",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2024-05-12",
+      "first_observed_at": "2024-05-13",
+      "statement_identity": "Ironclad presented a video of an Indian flag being burned as 'latest visuals' from Jammu and Kashmir.",
+      "source_information_event_id": "IRONCLAD-X-KASHMIR-FLAG-OLD-VIDEO-20240512",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-FLAG-X",
+          "surface": "X",
+          "url": "https://x.com/NavCom24/status/1789569284663914804",
+          "published_at": "2024-05-12",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "#EXCLUSIVE: Latest visuals from Indian occupied Jammu & Kashmir. This is the ‘Aukat’ of India and its flag in the occupied valley"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-FLAG-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2024/05/13/fact-check-viral-video-of-burning-the-indian-tricolor-flag-is-the-latest-one-heres-the-truth/",
+          "published_at": "2024-05-13",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Ironclad post and reverse-searched the footage to a September 24, 2017 YouTube upload."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-FLAG-2017-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=T9BXhYVqj8U",
+          "published_at": "2017-09-24",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The same footage was publicly available years before Ironclad presented it as latest visuals."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Ironclad source post, DFRAC reverse-image/video review and the identified September 2017 source upload.",
+        "checked_at": "2026-09-22T11:02:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The flag-burning footage existed, but it was already online in September 2017 and therefore did not support the May 2024 'latest visuals' presentation.",
+        "search_notes": "WOL scores the stale/current media presentation, not the occurrence of the flag-burning event itself.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the authentic old footage; score only its false recency/context presentation.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical recycled-media family remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-IRONCLAD-BRIGADIER-MANSION-CORRUPTION-20240522",
+      "source_id": "WOL-SRC-IRONCLAD-NAVCOM24",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2024-05-22",
+      "first_observed_at": "2024-05-24",
+      "statement_identity": "Ironclad used a 2023 photograph of Indian Army leadership to claim an Army brigadier had been arrested for pension-program corruption and recently bought a roughly $43 million Los Angeles mansion.",
+      "source_information_event_id": "IRONCLAD-X-BRIGADIER-MANSION-CORRUPTION-20240522",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-BRIGADIER-X",
+          "surface": "X",
+          "url": "https://x.com/NavCom24/status/1793188180562207054",
+          "published_at": "2024-05-22",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "#BREAKING Indian Army Brigadier arrested for massive corruption in soldiers pension program. He recently bought a mansion for about $43 Million in Los Angeles, California"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-BRIGADIER-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2024/05/24/fact-check-image-from-2023-falsely-employed-with-baseless-claim-discover-the-truth-here/",
+          "published_at": "2024-05-24",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the post, traced the image to February 2023 reporting about Army Chief Gen. Manoj Pande visiting Northern Command, and found no reporting supporting the brigadier arrest/$43 million mansion claim."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-BRIGADIER-HT-20230223",
+          "surface": "WEBSITE",
+          "url": "https://www.hindustantimes.com/cities/chandigarh-news/army-chief-visits-northern-command-headquarters-reviews-operational-preparedness-101677097169500.html",
+          "published_at": "2023-02-23",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Hindustan Times identifies the reused image as Army Chief Gen. Manoj Pande's 2023 Northern Command visit in Udhampur."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Ironclad post, DFRAC reverse-image and keyword review, and the February 2023 Hindustan Times source for the reused photograph.",
+        "checked_at": "2026-09-22T11:02:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The attached image depicted a documented 2023 Army Chief visit and did not support a brigadier corruption arrest or a $43 million Los Angeles mansion; the documented search found no corroborating report for those assertions.",
+        "search_notes": "A real military photograph was attached to an unsupported corruption/arrest/property narrative.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One publication event; the arrest, corruption and mansion clauses are not split into multiple award incidents.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical corruption/personnel proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-IRONCLAD-PLA-CAPTURES-THREE-20240526",
+      "source_id": "WOL-SRC-IRONCLAD-NAVCOM24",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2024-05-26",
+      "first_observed_at": "2024-05-27",
+      "statement_identity": "Ironclad stated that China's PLA had captured three Indian soldiers near the Chushul sector of Ladakh.",
+      "source_information_event_id": "IRONCLAD-X-PLA-CAPTURES-THREE-20240526",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-PLA3-X",
+          "surface": "X",
+          "url": "https://x.com/NavCom24/status/1794718577045704978",
+          "published_at": "2024-05-26",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "#BREAKING: Chinese PLA has captured 03 Indian soldiers near Chushul sector of occupied Ladakh."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRONCLAD-PLA3-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2024/05/27/fact-check-have-chinese-pla-arressted-3-indian-soldiers-near-chusul-sector-of-ladakh-discover-the-facts-here/",
+          "published_at": "2024-05-27",
+          "captured_at": "2026-09-22T11:02:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Ironclad post and documented a search of contemporary reporting and the Indian Army's public updates that found no support for three soldiers captured near Chushul."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Ironclad post plus DFRAC's documented keyword review of contemporaneous reporting and Indian Army public updates concerning the Chushul/Ladakh claim.",
+        "checked_at": "2026-09-22T11:02:00-04:00",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "The positive capture claim was presented as breaking fact, but the documented contemporary media and Indian Army update search found no evidentiary support for three Indian soldiers captured near Chushul.",
+        "search_notes": "WOL records this as unsupported after documented search; it does not silently convert mere absence of disproof into proof of the logical opposite.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the unsupported positive capture assertion; any later contrary or corroborating evidence would require revision.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical India-China border personnel-status adjudication remains separate."
     }
   ]
 }
