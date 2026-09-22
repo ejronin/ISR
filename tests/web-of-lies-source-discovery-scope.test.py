@@ -10,6 +10,22 @@ GOV = json.loads((ROOT / "config/web-of-lies-governance.json").read_text(encodin
 DOSSIER = json.loads((ROOT / "data/web-of-lies/source-dossiers.json").read_text(encoding="utf-8"))
 
 scope = GOV["source_discovery_scope"]
+
+authority = GOV["authority"]
+exclusive = authority["exclusive_wol_authority"]
+assert exclusive["incident_qualification"] is True
+assert exclusive["behavior_metrics"] is True
+assert exclusive["source_awards"] is True
+assert exclusive["hall_of_shame_qualification_and_ranking"] is True
+assert exclusive["direct_verdicts_and_appellations"] is True
+assert exclusive["external_lane_may_grant_or_deny_wol_outcome"] is False
+assert "No external Atlas lane may grant, deny, suppress, override, or require" in exclusive["rule"]
+assert "storage/authority boundary, not a veto" in authority["canonical_non_overwrite_rule"]
+
+contract = (ROOT / GOV["controlling_contract"]).read_text(encoding="utf-8")
+assert "WOL may promote it" in contract
+assert "without waiting for Claims" in contract
+assert "No external Atlas lane may grant, deny, suppress, override, or" in contract
 assert scope["conflict_scope"] == "IRAN_WAR_2026"
 assert scope["out_of_conflict_research_must_not_be_retained_in_active_corpus"] is True
 assert scope["qualification_receipts_required"] is True
