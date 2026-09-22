@@ -33,7 +33,8 @@ assert lim["evidentiary_support_review"]["supporting_evidence_found"] is False
 assert "traffic collapse is supported" in lim["evidentiary_support_review"]["claimant_basis_note"]
 assert "does not isolate U.S. strike waves" in lim["evidentiary_support_review"]["claimant_basis_note"]
 assert lim["public_receipts"]
-assert leads["LEAD-LIM-TEAN"]["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
+assert leads["LEAD-LIM-TEAN"]["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
+assert "broader pattern review" in profiles["WOL-SRC-LIM-TEAN"]["identity_context"]
 assert profiles["WOL-SRC-LIM-TEAN"]["source_awards"] == []
 
 assert imu_id in incidents
@@ -49,15 +50,30 @@ assert imu["public_receipts"]
 assert leads["LEAD-IRAN-MILITARY-UPDATE"]["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
 assert profiles["WOL-SRC-IRAN-MILITARY-UPDATE"]["source_awards"] == []
 
-# Jolly Good Ginger remains unscored because the reviewed Iran-war material is
-# advocacy/commentary rather than a receipts-backed factual support failure.
-assert leads["LEAD-JOLLY-GOOD-GINGER"]["current_disposition"] == "LIMITED_RELEVANT_ACTIVITY"
-assert "no preserved factual Iran-war assertion" in leads["LEAD-JOLLY-GOOD-GINGER"]["notes"]
+# Known relevant Jolly Good Ginger Iran-war content is paywalled. Inaccessible
+# material is not converted into a clean/no-adverse finding.
+assert leads["LEAD-JOLLY-GOOD-GINGER"]["current_disposition"] == "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT"
+assert "Unable to adjudicate" in leads["LEAD-JOLLY-GOOD-GINGER"]["notes"]
+assert "paywalled" in leads["LEAD-JOLLY-GOOD-GINGER"]["notes"]
+assert profiles["WOL-SRC-JOLLY-GOOD-GINGER"]["adjudication_scope_status"] == "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT"
 assert not any(
     row["source_id"] == "WOL-SRC-JOLLY-GOOD-GINGER"
     for row in incidents.values()
 )
 assert profiles["WOL-SRC-JOLLY-GOOD-GINGER"]["source_awards"] == []
+
+scope = governance["source_discovery_scope"]
+assert scope["named_seed_accounts_are_examples_not_boundary"] is True
+assert scope["actively_discover_new_publishers"] is True
+assert scope["parody_accounts_excluded_from_adjudication"] is True
+assert scope["inaccessible_disposition"] == "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT"
+assert scope["inference_rule"].startswith("Repeated analytical overfitting")
+for source_id in (
+    "WOL-SRC-KIM-JONG-UN-PARODY",
+    "WOL-SRC-MOJTABA-KHAMENEI-PARODY",
+):
+    assert profiles[source_id]["adjudication_scope_status"] == "EXCLUDED_PARODY_ACCOUNT"
+    assert profiles[source_id]["source_awards"] == []
 
 # Native WOL incidents do not silently create legacy direct-verdict/Hall
 # findings, and one incident can never satisfy the six-in-30-days award rule.
@@ -82,5 +98,5 @@ assert not {
 
 print(
     "web-of-lies social influence tranche2e: PASS "
-    "lim_incidents=1 iran_military_update_incidents=1 jgg_incidents=0 awards=0"
+    "lim_incidents=1 lim_pattern_review=active iran_military_update_incidents=1 jgg=paywall_unable parody=excluded awards=0"
 )
