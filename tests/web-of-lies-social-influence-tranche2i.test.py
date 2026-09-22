@@ -89,7 +89,8 @@ assert "Queens, New York" in queens["evidentiary_support_review"]["claimant_basi
 
 war_thunder = incidents["WOL-BS-WMX-WAR-THUNDER-MISSILE-20260314"]
 assert "game/simulation footage" in war_thunder["evidentiary_support_review"]["claimant_basis_note"]
-assert "real missile capabilities" in war_thunder["downstream_note"]
+assert "do not infer" in war_thunder["downstream_note"]
+assert "low-observable or sea-skimming capability" in war_thunder["downstream_note"]
 
 eilat = incidents["WOL-BS-WMX-EILAT-DAYTONA-20260315"]
 assert "Daytona Beach, Florida" in eilat["evidentiary_support_review"]["claimant_basis_note"]
