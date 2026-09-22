@@ -959,6 +959,39 @@
         }
       ],
       "identity_context": "FOX 9 publicly identified the exact @zachforthepeople handle as Zach Metzger in reporting on footage he recorded in Minneapolis. This resolves the public account identity; it does not establish any Iran-war claim activity."
+    },
+    {
+      "source_id": "WOL-SRC-RKM-RKMTIMES",
+      "display_name": "RKM / @rkmtimes",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-RKM-RKMTIMES",
+      "identity_confidence": "PUBLIC_ACCOUNT_RESOLVED_OPERATOR_UNKNOWN",
+      "aliases": [
+        "RKM",
+        "@rkmtimes"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-RKM-X",
+          "platform": "X",
+          "handle": "@rkmtimes",
+          "url": "https://x.com/rkmtimes",
+          "display_name": "RKM",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "identity_context": "Public X account/display identity is resolved from original-post URLs and independent fact-check preservation. The real-world operator, location, organizational affiliation and state-control status are unknown and are not inferred."
     }
   ],
   "source_relationships": [
@@ -2996,6 +3029,260 @@
       "downstream_note": "Maps semantically to CHAIN-CL-HORMUZ-CONTROL; preserve severe restriction and selective passage as the factual substrate.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical control framing remains authoritative; WOL records the source-specific repetition."
+    },
+    {
+      "incident_id": "WOL-BS-RKM-LINCOLN-SUNK-20260301",
+      "source_id": "WOL-SRC-RKM-RKMTIMES",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-01",
+      "first_observed_at": "2026-03-01",
+      "statement_identity": "RKM presented a video as showing Iranian missiles sinking the USS Abraham Lincoln in the Persian Gulf.",
+      "source_information_event_id": "RKM-X-2028290914628849897",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-LINCOLN-X",
+          "surface": "X",
+          "url": "https://x.com/rkmtimes/status/2028290914628849897",
+          "published_at": "2026-03-01",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Iranian missiles have sunk USS Abraham Lincoln aircraft carrier in the Persian Gulf."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-LINCOLN-POLITIFACT",
+          "surface": "WEBSITE",
+          "url": "https://www.politifact.com/factchecks/2026/mar/02/social-media/uss-abraham-lincoln-fire-missile-iran/",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "PolitiFact preserves the RKM post and finds the videos do not show a strike on the USS Abraham Lincoln; CENTCOM said the carrier was not hit."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Original RKM post identity plus PolitiFact verification, contemporaneous CENTCOM denial and visual/source tracing summarized in the fact-check.",
+        "checked_at": "2026-09-21T22:41:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The video did not establish a current Iranian strike or sinking of USS Abraham Lincoln; no credible reporting supported the claimed loss and the U.S. military said the carrier was not hit.",
+        "search_notes": "The scored behavior is presenting synthetic/old or otherwise non-probative footage as proof of a specific current carrier sinking.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One publication event; do not treat separate fact-check reproductions as additional incidents.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical carrier-strike proposition remains upstream; WOL records the source-level false media presentation."
+    },
+    {
+      "incident_id": "WOL-BS-RKM-IRGC-NUCLEAR-TEST-20260303",
+      "source_id": "WOL-SRC-RKM-RKMTIMES",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-03",
+      "first_observed_at": "2026-03-03",
+      "statement_identity": "RKM presented 1957 Nevada nuclear-test footage as a current IRGC nuclear test in Iran and paired it with a magnitude-4.3 earthquake.",
+      "source_information_event_id": "RKM-X-2028786209175261504",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-NUCLEAR-TEST-X",
+          "surface": "X",
+          "url": "https://x.com/rkmtimes/status/2028786209175261504",
+          "archive_url": "https://web.archive.org/web/20260304172356/https://x.com/rkmtimes/status/2028786209175261504",
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_ARCHIVE",
+          "text_excerpt": "A nuclear test has carried out by Iranian IRGC ... magnitude 4.3 earthquake ... southern Fars province."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-NUCLEAR-TEST-LEADSTORIES",
+          "surface": "WEBSITE",
+          "url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-shows-1957-nuclear-test-in-us-not-in-iran.html",
+          "published_at": "2026-03-04",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Lead Stories traced the clip to the 1957 Operation Plumbbob Fizeau test in Nevada and found no evidence the Iranian earthquake was caused by a nuclear test."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Original/archived RKM post and Lead Stories reverse-image/source verification of the test footage and earthquake context.",
+        "checked_at": "2026-09-21T22:41:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The footage is from a 1957 U.S. nuclear test in Nevada. A real March 2026 earthquake does not make that archival footage evidence of an IRGC nuclear test.",
+        "search_notes": "Real earthquake data was coupled to unrelated archival nuclear-test footage to create a false current-event conclusion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the earthquake as factual substrate; score the nuclear-test attribution/presentation.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical nuclear-test allegations may be atomized upstream."
+    },
+    {
+      "incident_id": "WOL-BS-RKM-ISRAELIS-FLEEING-20260303",
+      "source_id": "WOL-SRC-RKM-RKMTIMES",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-03",
+      "first_observed_at": "2026-03-03",
+      "statement_identity": "RKM presented an older crowd/travel video as hundreds of Israelis leaving their 'Promised Land' because of Iranian missile and drone strikes.",
+      "source_information_event_id": "RKM-X-2028722395163554056",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-FLEEING-X",
+          "surface": "X",
+          "url": "https://x.com/rkmtimes/status/2028722395163554056",
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Hundreds of Israeli are leaving their 'Promised Land' due to Iranian missiles and drones strikes through Jordan, Syria and Egypt."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-FLEEING-AJ",
+          "surface": "WEBSITE",
+          "url": "https://www.aljazeera.net/news/2026/3/3/%D9%85%D8%A7-%D8%AD%D9%82%D9%8A%D9%82%D8%A9-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D8%A7%D9%84%D9%85%D8%AA%D8%AF%D8%A7%D9%88%D9%84-%D9%84%D9%87%D8%B1%D9%88%D8%A8-%D9%85%D8%A6%D8%A7%D8%AA",
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Al Jazeera's OSINT verification preserved the RKM post and traced the video to a 2025 local event unrelated to wartime flight from Israel."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Original RKM post identity and Al Jazeera OSINT reverse-search/tracing of the underlying video.",
+        "checked_at": "2026-09-21T22:41:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The footage predated the claimed event and was unrelated to Israelis fleeing because of Iranian strikes.",
+        "search_notes": "An authentic older crowd video was stripped of its original context and repackaged as current wartime evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false current-event attribution, not the mere existence of movement/crowds in the video.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Population-flight claims may be separately adjudicated upstream if needed."
+    },
+    {
+      "incident_id": "WOL-BS-RKM-USS-FITZGERALD-IRAN-MISSILES-20260304",
+      "source_id": "WOL-SRC-RKM-RKMTIMES",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-04",
+      "first_observed_at": "2026-03-04",
+      "statement_identity": "RKM presented 2017 USS Fitzgerald collision damage as a current American destroyer hit by four Iranian missiles near Cyprus.",
+      "source_information_event_id": "RKM-X-2029414852935204875",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-FITZGERALD-X",
+          "surface": "X",
+          "url": "https://x.com/rkmtimes/status/2029414852935204875",
+          "published_at": "2026-03-04",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "An American Destroyer attacked by 4 Iranian missiles in Cyprus territories and Mediterranean Sea."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-FITZGERALD-LEADSTORIES",
+          "surface": "WEBSITE",
+          "url": "https://leadstories.com/hoax-alert/2026/03/fact-check-video-does-not-show-us-destroyer-attacked-by-iranian-missiles-near-cyprus-its-2017-damage.html",
+          "published_at": "2026-03-05",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Lead Stories matched the footage to USS Fitzgerald after its 2017 collision with ACX Crystal off Japan, not an Iranian missile attack."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Original RKM post plus Lead Stories visual matching and NTSB-backed identification of the 2017 USS Fitzgerald collision damage.",
+        "checked_at": "2026-09-21T22:41:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The ship damage shown was from a 2017 collision off Japan; it was not evidence of a 2026 Iranian missile attack near Cyprus.",
+        "search_notes": "Old accident footage was presented as a specific current combat event.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "The real 2017 damage is not disputed; the current Iranian-strike attribution is the scored false presentation.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical U.S.-ship strike family remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-RKM-NETANYAHU-INJURED-AI-20260312",
+      "source_id": "WOL-SRC-RKM-RKMTIMES",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-12",
+      "first_observed_at": "2026-03-12",
+      "statement_identity": "RKM presented an AI-generated video as showing Benjamin Netanyahu badly injured and admitted to an underground military hospital after Iranian missile strikes.",
+      "source_information_event_id": "RKM-X-2031921818693476707",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-NETANYAHU-INJURED-X",
+          "surface": "X",
+          "url": "https://x.com/rkmtimes/status/2031921818693476707",
+          "archive_url": "https://archive.ph/vIiYD",
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_ARCHIVE",
+          "text_excerpt": "China leaked a video claims, Netanyahu is badly injured and admitted to underground military's hospital after Iranian missiles strikes."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-NETANYAHU-INJURED-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/13/video-does-not-show-benjamin-netanyahu-injured-after-iranian-missile-strike",
+          "published_at": "2026-03-13",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar identified rkmtimes among the publishers and found the video AI-generated; no credible reporting supported the claimed injury."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Archived original RKM post and Misbar's visual analysis plus contemporaneous-source check.",
+        "checked_at": "2026-09-21T22:41:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The video contains synthetic visual artifacts and was assessed as AI-generated; no credible reporting established the claimed wartime injury/hospitalization.",
+        "search_notes": "Synthetic media was presented as evidentiary footage of a specific real-world casualty event.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "This incident scores the false evidentiary presentation; it does not infer who generated the synthetic video.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical Netanyahu-injury rumor family remains upstream."
+    },
+    {
+      "incident_id": "WOL-BS-RKM-TEL-AVIV-UKRAINE-VIDEO-20260318",
+      "source_id": "WOL-SRC-RKM-RKMTIMES",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-18",
+      "first_observed_at": "2026-03-18",
+      "statement_identity": "RKM presented September 2025 Ukraine-strike footage as current Tel Aviv destruction exposing concealed Iranian missile damage.",
+      "source_information_event_id": "RKM-X-2034213771837898874",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-TELAVIV-X",
+          "surface": "X",
+          "url": "https://x.com/rkmtimes/status/2034213771837898874",
+          "published_at": "2026-03-18",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Israeli people and influencers are now exposing Netanyahu's lies about real Iranian missiles impact in Tel Aviv. Finally ... can't hide the damages."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-RKM-TELAVIV-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/04/07/video-does-not-depict-aftermath-recent-iranian-strike-tel-aviv",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-21T22:41:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar preserved the RKM post and traced the video to Russian strikes on Ukraine in September 2025, not current Tel Aviv missile damage."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Original RKM post identity and Misbar tracing of the underlying clip to September 2025 Russian strikes on Ukraine, including comparison to earlier source material.",
+        "checked_at": "2026-09-21T22:41:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The footage predates the claimed Tel Aviv event and depicts Russian strikes on Ukraine; it therefore cannot establish concealed current Iranian missile damage in Tel Aviv.",
+        "search_notes": "Old foreign-war footage was recontextualized as current Israel-Iran battle-damage evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false provenance/current-event attribution, not a blanket claim that Iranian missiles caused no damage in Tel Aviv.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Specific Tel Aviv BDA remains independently adjudicable upstream."
     }
   ]
 }
