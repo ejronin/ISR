@@ -1414,11 +1414,13 @@
         "https://en.wikipedia.org/wiki/Lim_Tean",
         "https://asiapacificreport.nz/2026/07/20/lim-tean-you-cannot-bomb-a-strait-open-hormuz-chabahar-and-the-coming-battle-for-bab-el-mandeb/",
         "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/071326-traffic-via-strait-of-hormuz-falls-to-11-ships-july-12-after-us-iran-attacks",
-        "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/"
+        "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/",
+        "https://eveningreport.nz/2026/07/14/lim-tean-the-hormuz-guardian-turns-pirate-20-for-tribute/",
+        "https://asiapacificreport.nz/2026/07/15/the-toll-keeper-of-hormuz-how-the-us-just-buried-its-own-freedom-of-seas-doctrine/"
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Reopened for pattern review. Lim Tean publishes frequent Iran-war/Hormuz analysis across Facebook/Substack and mirrored outlets. WOL must test repeated causal/control/insurance/strategic claims publication-by-publication, preserving true shipping data while scoring only unsupported factual bridges or conclusions. The existing July 20 causal incident remains valid but is not treated as the full review."
+      "notes": "Active pattern review. WOL now records two distinct unsupported inferential events: (1) July 14 back-projecting Iran's later Hormuz toll proposal into the initiating cause of a war that began before the proposal; and (2) July 20 using real traffic-collapse data as if it isolated U.S. strike waves as the demonstrated cause of the shutdown. Other Lim Tean shipping/insurance claims are being reviewed publication-by-publication; materially supported insurance-risk and Iran-Houthi coordination evidence is not scored adversely merely because the framing is forceful."
     },
     {
       "lead_id": "LEAD-MEIDASTOUCH",
@@ -2763,6 +2765,66 @@
       "downstream_note": "Do not convert this media-forensics finding into a blanket denial of every Iranian claim concerning military-intelligence targets.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical review, if created, should separate the visual-evidence claim, the attributed casualty statement, and any underlying strike claim."
+    },
+    {
+      "incident_id": "WOL-BS-LIM-TEAN-TOLLS-WAR-CAUSE-20260714",
+      "source_id": "WOL-SRC-LIM-TEAN",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-14",
+      "first_observed_at": "2026-07-14",
+      "statement_identity": "Lim Tean stated that the United States went to war to stop Iran charging tolls in the Strait of Hormuz.",
+      "source_information_event_id": "LIM-TEAN-COMMENTARY-HORMUZ-TOLLS-20260714",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-LIM-TOLLS-COMMENTARY-20260714",
+          "surface": "WEBSITE",
+          "url": "https://eveningreport.nz/2026/07/14/lim-tean-the-hormuz-guardian-turns-pirate-20-for-tribute/",
+          "published_at": "2026-07-14",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The commentary states: 'The United States went to war to stop Iran charging tolls in the Strait of Hormuz.'"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-IRAN-WAR-START-REUTERS-20260301",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/media-telecom/why-is-us-attacking-iran-2026-03-01/",
+          "published_at": "2026-03-01",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters records that U.S.-Israeli strikes began on February 28 and summarizes the stated U.S. war objectives; an Iranian Hormuz toll was not among the initiating objectives."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRAN-HORMUZ-TOLL-PROPOSAL-REUTERS-20260319",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-considers-levying-transit-fees-ships-hormuz-strait-lawmaker-says-2026-03-19/",
+          "published_at": "2026-03-19",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters reports on March 19 that Iran's parliament was considering a proposal to levy transit fees, after the war had already begun."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-HORMUZ-20PCT-REUTERS-20260713",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/trump-says-us-will-control-strait-hormuz-get-paid-it-2026-07-13/",
+          "published_at": "2026-07-13",
+          "captured_at": "2026-09-21T20:05:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters supports the later factual substrate that Trump announced a 20% cargo charge/reimbursement proposal for Hormuz passage."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Lim Tean's July 14 commentary plus contemporaneous Reuters chronology for the February 28 start of the U.S.-Israeli war, stated U.S. objectives, Iran's March 19 toll proposal, and Trump's later July 13 20% Hormuz charge announcement.",
+        "checked_at": "2026-09-21T20:05:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The later U.S.-Iran dispute over Hormuz fees is real. But the war began on February 28, while Iran's parliamentary toll proposal was reported on March 19. A policy dispute that arose after hostilities began cannot establish that stopping that toll proposal was the reason the United States entered the war.",
+        "search_notes": "WOL preserves the real later toll dispute and scores only the back-projected causal chronology. The finding does not claim tolls were irrelevant to later Hormuz escalation; it rejects toll prevention as the initiating cause of a war already underway before the toll proposal.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct July 14 publication event. It is separate from the July 20 shipping-causality incident: this event back-projects a later toll dispute into the cause of entering the war; the July 20 event assigns a specific cause to the later shipping collapse.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Claims Forensics may separately atomize war-causation rhetoric if desired; WOL records the unsupported chronology/causal bridge."
     }
   ]
 }
