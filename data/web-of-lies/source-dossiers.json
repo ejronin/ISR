@@ -1095,6 +1095,40 @@
         }
       ],
       "identity_context": "The public X handle @ZardSi / display identity Zard si Gana is repeatedly preserved by independent fact-checkers and exact public-document captures. Some secondary sources describe the account as Pakistan-based or attach propaganda labels, but WOL does not infer the real-world operator, nationality, organizational affiliation, state direction or geographic control from those descriptions alone; those remain unknown."
+    },
+    {
+      "source_id": "WOL-SRC-TACTICAL-TRIBUNE",
+      "display_name": "Tactical Tribune / @TacticalTribun",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-TACTICAL-TRIBUNE",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "Tactical Tribune",
+        "@TacticalTribun",
+        "TacticalTribun"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-TACTICAL-TRIBUNE-X",
+          "platform": "X",
+          "handle": "@TacticalTribun",
+          "url": "https://x.com/TacticalTribun",
+          "display_name": "Tactical Tribune",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "identity_context": "The public X identity Tactical Tribune / @TacticalTribun is repeatedly preserved by independent fact-check pages together with exact source-post links. Some secondary publications characterize the account as Pakistan-based or attach propaganda/network labels. WOL does not infer the real-world operator, nationality, geographic location, organizational affiliation, state direction, coordinated control or intelligence relationship from those secondary labels alone; those remain unknown."
     }
   ],
   "source_relationships": [
@@ -4184,6 +4218,258 @@
       "downstream_note": "Do not convert the real Dimona/Arad strike-damage context into support for the separate arrest proposition.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical strike-damage proposition remains separate from the unsupported arrest story."
+    },
+    {
+      "incident_id": "WOL-BS-TACTICAL-UDHAMPUR-MILITANT-CASUALTIES-20250219",
+      "source_id": "WOL-SRC-TACTICAL-TRIBUNE",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-02-19",
+      "first_observed_at": "2025-02-19",
+      "statement_identity": "Tactical Tribune stated that one Indian soldier was killed and three injured in a Kashmiri militant attack in Udhampur.",
+      "source_information_event_id": "TACTICAL-X-UDHAMPUR-MILITANT-CASUALTIES-20250219",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-UDHAMPUR-X",
+          "surface": "X",
+          "url": "https://x.com/TacticalTribun/status/1891882515293491272",
+          "published_at": "2025-02-19",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "1 Indian soldier killed, 3 injured during a Kashmiri Fighters attack in Udhampur"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-UDHAMPUR-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/02/19/has-one-soldier-been-killed-by-kashmiri-militants-in-udhampur/",
+          "published_at": "2025-02-19",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Tactical Tribune claim, found no reporting supporting the alleged militant attack casualties and found contemporaneous reporting that a CRPF jawan died by suicide in Udhampur."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Tactical Tribune source post plus DFRAC's documented search and contemporaneous reporting on the Udhampur death.",
+        "checked_at": "2026-09-22T09:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The reviewed contemporaneous reporting supported a CRPF jawan's death by suicide, not the asserted Kashmiri-militant attack killing one soldier and injuring three.",
+        "search_notes": "WOL scores the positive attack/casualty assertion. The existence of a real security-force death in Udhampur does not support the claimed militant attack mechanism or additional injuries.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real Udhampur death as substrate; score only the unsupported militant-attack/casualty presentation.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical Udhampur incident family remains separate from this source-behavior finding."
+    },
+    {
+      "incident_id": "WOL-BS-TACTICAL-FRANCE-METEOR-TURKEY-20250224",
+      "source_id": "WOL-SRC-TACTICAL-TRIBUNE",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-02-24",
+      "first_observed_at": "2025-02-24",
+      "statement_identity": "Tactical Tribune stated that France said it would provide Meteor missiles to Turkey while rejecting Greek and Indian requests.",
+      "source_information_event_id": "TACTICAL-X-FRANCE-METEOR-TURKEY-20250224",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-METEOR-X",
+          "surface": "X",
+          "url": "https://x.com/TacticalTribun/status/1893667614590730434",
+          "published_at": "2025-02-24",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "France says it'll provide Meteor missile to Turkey, rejecting Greece and Indian request"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-METEOR-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/02/24/did-france-say-itll-provide-meteor-missiles-to-turkey/",
+          "published_at": "2025-02-24",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Tactical Tribune post and documented the French defence minister's statement that France was not participating in the possible British-Turkish Meteor transaction."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Tactical Tribune post, DFRAC verification and the French defence minister's reported explanation of France's role in the possible Meteor sale.",
+        "checked_at": "2026-09-22T09:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "France's defence minister said France was not selling the Meteor missiles to Turkey and did not control British arms exports; the reviewed record did not support the claimed French offer or the asserted rejection comparison.",
+        "search_notes": "A real Turkish interest in Eurofighter/Meteor capability does not establish that France offered the missiles or rejected Greece and India in favor of Turkey.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real Eurofighter/Meteor procurement context; score the unsupported French-offer/rejection proposition.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical arms-sale proposition remains separately adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-TACTICAL-RAJOURI-CONVOY-CASUALTIES-20250226",
+      "source_id": "WOL-SRC-TACTICAL-TRIBUNE",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-02-26",
+      "first_observed_at": "2025-02-26",
+      "statement_identity": "Tactical Tribune stated that multiple Indian soldiers were killed and wounded after Kashmiri fighters attacked an Indian forces convoy in Sunderbani, Rajouri.",
+      "source_information_event_id": "TACTICAL-X-RAJOURI-CONVOY-CASUALTIES-20250226",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-RAJOURI-X",
+          "surface": "X",
+          "url": "https://x.com/TacticalTribun/status/1894728864988832090",
+          "published_at": "2025-02-26",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Multiple Indian soldiers killed and wounded after Kashmiri Fighters attacked Indian forces convoy in Sunderbani, Rajouri"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-RAJOURI-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/02/26/were-multiple-indian-soldiers-killed-after-militants-attacked-indian-forces-convoy-in-rajouri/",
+          "published_at": "2025-02-26",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Tactical Tribune claim and cited contemporaneous reporting that an Army vehicle was fired on but no casualties were reported."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Tactical Tribune source post, DFRAC fact-check and contemporaneous reporting on the Sunderbani vehicle attack.",
+        "checked_at": "2026-09-22T09:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The underlying firing incident was real, but contemporaneous reporting stated there were no immediate casualties; it did not support multiple soldiers killed and wounded.",
+        "search_notes": "WOL preserves the real attack substrate and scores the invented casualty outcome.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One publication event; the real attack and unsupported casualty outcome are not split into multiple award incidents.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical event/casualty reconstruction remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-TACTICAL-JAFFAR-INDIAN-BACKED-BLA-20250312",
+      "source_id": "WOL-SRC-TACTICAL-TRIBUNE",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2025-03-12",
+      "first_observed_at": "2025-03-12",
+      "statement_identity": "Tactical Tribune stated that Pakistan's special forces had rescued the Jaffar Express passengers and killed about four Indian-backed BLA terrorists.",
+      "source_information_event_id": "TACTICAL-X-JAFFAR-INDIAN-BACKED-BLA-20250312",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-JAFFAR-X",
+          "surface": "X",
+          "url": "https://x.com/TacticalTribun/status/1899495697059094730",
+          "published_at": "2025-03-12",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Pakistan's Special Forces have rescued the hijacked train and passengers. Around 4 Indian-backed BLA terrorists have been killed too"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-JAFFAR-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/03/12/have-4-indian-backed-bla-terrorists-been-killed-in-the-recent-balochistan-train-hijack-mishap/",
+          "published_at": "2025-03-12",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved the Tactical Tribune post, reviewed current reporting on the Jaffar Express operation and found no evidentiary support for identifying the killed militants as Indian-backed."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Tactical Tribune post plus DFRAC's review of contemporaneous Jaffar Express reporting and the evidentiary basis for the 'Indian-backed' attribution.",
+        "checked_at": "2026-09-22T09:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Security forces were fighting BLA militants and rescuing passengers, but the reviewed reporting did not establish that the specific killed militants were Indian-backed.",
+        "search_notes": "WOL scores the unsupported actor-affiliation assertion, not the real train hijacking, rescue operation or BLA involvement.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Keep the real Jaffar Express operation as substrate; do not count multiple clauses in this single post as separate award incidents.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical foreign-sponsorship proposition remains separately adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-TACTICAL-AMRITSAR-KHALISTANI-GRENADE-20250317",
+      "source_id": "WOL-SRC-TACTICAL-TRIBUNE",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2025-03-17",
+      "first_observed_at": "2025-03-17",
+      "statement_identity": "Tactical Tribune presented CCTV of an Amritsar grenade attack while stating that Khalistani rebels attacked an Indian colonel's residence.",
+      "source_information_event_id": "TACTICAL-X-AMRITSAR-KHALISTANI-GRENADE-20250317",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-AMRITSAR-X",
+          "surface": "X",
+          "url": "https://x.com/TacticalTribun/status/1900837716696219677",
+          "published_at": "2025-03-17",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Khalistani rebels conducted grenade attack on Indian Clonal's residence in Amritsar, Punjab"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-AMRITSAR-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/03/17/video-of-a-grenade-attack-falsely-shared-with-a-misleading-claim/",
+          "published_at": "2025-03-17",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved Tactical Tribune's post and found the CCTV showed two bike-borne miscreants throwing a grenade in Amritsar; the reviewed reporting did not support the asserted Khalistani-rebel attribution."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Tactical Tribune source post, reverse-image/video provenance and contemporaneous reporting on the Amritsar grenade incident.",
+        "checked_at": "2026-09-22T09:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The grenade attack itself was real, but the reviewed evidence identified bike-borne assailants under investigation and did not establish Tactical Tribune's asserted Khalistani-rebel attribution.",
+        "search_notes": "WOL preserves the real attack footage and scores the unsupported perpetrator identity attached to it.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One media-presentation event; do not convert the existence of the grenade attack into proof of the asserted actor.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical perpetrator attribution remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-TACTICAL-KUPWARA-FOUR-SOLDIERS-20250317",
+      "source_id": "WOL-SRC-TACTICAL-TRIBUNE",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2025-03-17",
+      "first_observed_at": "2025-03-17",
+      "statement_identity": "Tactical Tribune stated that four Indian soldiers were killed and multiple injured in an attack on their camp in Kupwara.",
+      "source_information_event_id": "TACTICAL-X-KUPWARA-FOUR-SOLDIERS-20250317",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-KUPWARA-X",
+          "surface": "X",
+          "url": "https://x.com/TacticalTribun/status/1901498069616566435",
+          "published_at": "2025-03-17",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "4 Indian soldiers killed, multiple injured during an attack on their camp in Kupwara, Jammu and Kashmir. Ambulances are seen in the area"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TACTICAL-KUPWARA-DFRAC",
+          "surface": "WEBSITE",
+          "url": "https://dfrac.org/en/2025/03/17/facts-of-recent-encounter-have-been-manipulated/",
+          "published_at": "2025-03-17",
+          "captured_at": "2026-09-22T09:55:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "DFRAC preserved Tactical Tribune's post and found contemporaneous reporting said one militant was killed and one police official injured; no Indian soldier was reported killed."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact Tactical Tribune source post, DFRAC verification and contemporaneous reporting on the ongoing Kupwara encounter.",
+        "checked_at": "2026-09-22T09:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The encounter was real, but contemporaneous reporting supported one militant killed and one police official injured, not four Indian soldiers killed and multiple others injured.",
+        "search_notes": "Visible ambulances and an active encounter do not establish the asserted soldier casualty count.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real encounter substrate; score the unsupported casualty claim attached to the footage.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical casualty reconstruction remains separate."
     }
   ]
 }
