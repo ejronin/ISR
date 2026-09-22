@@ -48,6 +48,8 @@ for (const chain of ledgerChains) assert(familyIds.has(chain.chain_id), `Web of 
 
 assert.match(readerSource, /reader-wol-trace/);
 assert.match(readerSource, /routeHref\('evidence\.web_of_lies', \{ claim_family:/);
+assert.match(readerSource, /reader-wol-entry/);
+assert.match(readerSource, /Open the interactive propagation network/);
 assert.match(readerSource, /Open Web of Lies/);
 assert.match(iaSource, /function WebOfLiesPage\(/);
 assert.match(iaSource, /No qualifying source in this evidence slice/);
