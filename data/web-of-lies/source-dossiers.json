@@ -397,7 +397,9 @@
       "public_role_context": [
         "Public interview bios describe Russell Ellis / Jolly Good Ginger as a social-media activist and former U.S. Army service member.",
         "Activism and monetization are descriptive context, not adverse WOL findings."
-      ]
+      ],
+      "adjudication_scope_status": "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT",
+      "adjudication_scope_note": "Relevant Iran-war content exists, but the identified March 2 DEFIANCE Daily episode is paywalled. Current public receipts do not expose enough of the body to adjudicate source-authored factual claims."
     },
     {
       "source_id": "WOL-SRC-KIM-JONG-UN-PARODY",
@@ -416,7 +418,9 @@
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-KIM-JONG-UN-PARODY-ISD",
       "identity_confidence": "HIGH",
-      "aliases": []
+      "aliases": [],
+      "adjudication_scope_status": "EXCLUDED_PARODY_ACCOUNT",
+      "adjudication_scope_note": "Excluded from WOL factual-behavior adjudication and Bullshitter-award accumulation because the account is explicitly presented as parody/satire. Historical network-membership provenance may remain recorded."
     },
     {
       "source_id": "WOL-SRC-LIM-TEAN",
@@ -439,7 +443,7 @@
         "Lim Tean"
       ],
       "platform_accounts": [],
-      "identity_context": "Public political/commentary identity confirmed. Sampled July Hormuz transit figures were cross-checked against independent maritime reporting and did not produce an adverse WOL finding.",
+      "identity_context": "Public political/commentary identity confirmed. Receipt-backed expertise is strongest in shipping/admiralty law; WOL is conducting a broader pattern review of his 2026 Iran-war analytical claims rather than treating accurate transit figures as validating his causal or strategic conclusions.",
       "classification_basis_receipts": [
         {
           "receipt_id": "WOL-PROFILE-LIM-SUBSTACK-ROLE-20260921",
@@ -626,7 +630,9 @@
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-MOJTABA-KHAMENEI-PARODY-ISD",
       "identity_confidence": "HIGH",
-      "aliases": []
+      "aliases": [],
+      "adjudication_scope_status": "EXCLUDED_PARODY_ACCOUNT",
+      "adjudication_scope_note": "Excluded from WOL factual-behavior adjudication and Bullshitter-award accumulation because the account is explicitly presented as parody/satire. Historical network-membership provenance may remain recorded."
     },
     {
       "source_id": "WOL-SRC-NEWS-NOW-BRICS4CLICKS",
@@ -1397,9 +1403,9 @@
         "https://www.defiance.news/p/the-war-trump-cant-explain-with-jolly",
         "https://www.aljazeera.com/news/2026/8/6/how-abdul-el-sayeds-extraordinary-win-stunned-pro-israel-establishment"
       ],
-      "current_disposition": "LIMITED_RELEVANT_ACTIVITY",
+      "current_disposition": "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Public identity resolves to Russell Ellis / Jolly Good Ginger. Expanded Iran-war review found political/anti-war advocacy and commentary, but no preserved factual Iran-war assertion that currently satisfies the WOL no-support evidence gate. Advocacy, opinion and broad political rhetoric do not count merely because they are antagonistic or contestable. Keep unscored unless later claim-first research produces a receipts-backed factual incident."
+      "notes": "Public identity resolves to Russell Ellis / Jolly Good Ginger. Material Iran-war participation is established, including the March 2, 2026 DEFIANCE Daily episode 'The War Trump Can’t Explain with Jolly Good Ginger,' but the full relevant episode body is paywalled. Publicly indexed material is insufficient to adjudicate his factual Iran-war propositions without guessing from a title/description. WOL therefore records 'Unable to adjudicate — behind a paywall' rather than treating inaccessible content as a clean/no-adverse review. Reopen if full transcripts, direct public video, or other inspectable receipts become available."
     },
     {
       "lead_id": "LEAD-LIM-TEAN",
@@ -1410,9 +1416,9 @@
         "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/071326-traffic-via-strait-of-hormuz-falls-to-11-ships-july-12-after-us-iran-attacks",
         "https://www.reuters.com/world/middle-east/strait-hormuz-transits-drop-us-iran-escalate-attacks-across-gulf-2026-07-17/"
       ],
-      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
+      "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "The July 20 Hormuz commentary contains one WOL-native unsupported causal-inference incident. Its transit-count substrate is substantially supported, but the observed sequence does not isolate successive U.S. strike waves as the demonstrated cause of the shipping shutdown amid Iranian vessel attacks, blockade/escalation risk, commercial insurance/crew decisions and incomplete AIS visibility. The existing causal proposition remains separately routed upstream. One incident does not earn a Bullshitter award."
+      "notes": "Reopened for pattern review. Lim Tean publishes frequent Iran-war/Hormuz analysis across Facebook/Substack and mirrored outlets. WOL must test repeated causal/control/insurance/strategic claims publication-by-publication, preserving true shipping data while scoring only unsupported factual bridges or conclusions. The existing July 20 causal incident remains valid but is not treated as the full review."
     },
     {
       "lead_id": "LEAD-MEIDASTOUCH",
