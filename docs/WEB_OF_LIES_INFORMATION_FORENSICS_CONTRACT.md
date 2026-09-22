@@ -999,3 +999,61 @@ Source role, source incentive, source relationship, factual-claim behavior, and
 Bullshitter-award state are separate axes. A descriptive receipt cannot erase
 or manufacture an independently derived adverse incident or source award.
 
+## 34. Discovery scope, inaccessible evidence, and exclusions
+
+Named accounts supplied during research are **seeds, not the corpus boundary**.
+Web of Lies must continue claim-first discovery across public media platforms and
+identify additional publishers with material or recurring Iran-war factual or
+analytical content.
+
+An account does not remain an active target merely because it was named once. A
+seed with no material or recurring Iran-war activity may be removed from the
+active adjudication queue.
+
+### Inaccessible relevant content
+
+**Inaccessible is not exonerated.** When material Iran-war content is known to
+exist but the body needed for adjudication is behind a paywall or equivalent
+access barrier, WOL records:
+
+> **Unable to adjudicate — behind a paywall**
+
+The machine disposition is
+`UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT`.
+
+A title, thumbnail, description, or teaser may establish relevance. It does not
+substitute for the inaccessible body when the factual proposition depends on
+what was actually said.
+
+### Parody and satire
+
+Accounts explicitly presented as parody or satire are excluded from WOL
+factual-behavior adjudication and Bullshitter-award accumulation. Historical
+network membership or provenance may remain in the research graph, but parody
+accounts are not active WOL adjudication targets.
+
+### Analytical overfitting
+
+WOL does not require a publisher to utter a simple false sentence such as
+"Iran destroyed X" before source behavior can qualify. A publication may qualify
+when it takes a real factual substrate and presents an unsupported causal,
+control, motive, intent, or strategic bridge as established fact.
+
+Examples include:
+
+- real transit decline -> unsupported claim that one actor demonstrably caused it;
+- real war-risk premiums -> unsupported claim that insurers or a government
+  therefore control the waterway;
+- real Iranian interdiction capability -> unsupported conclusion that Iran
+  possesses settled or exclusive control of Hormuz;
+- simultaneous Iranian/Houthi actions -> unsupported assertion of coordinated
+  command or a proved common operational plan.
+
+The evidentiary gate remains unchanged: preserve the exact publication,
+identify the supported substrate, document the search, and score only the
+unsupported bridge/conclusion.
+
+Use of AI to assist writing is not itself a WOL offense. If AI-assisted
+authorship is independently evidenced, it is provenance context. The published
+claims still stand or fall on their own evidentiary support.
+
