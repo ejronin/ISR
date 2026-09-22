@@ -7,7 +7,7 @@
   "controlling_contract": "docs/WEB_OF_LIES_INFORMATION_FORENSICS_CONTRACT.md",
   "canonical_inputs": {
     "evidence": "Evidence Integration / canonical current state",
-    "claim_adjudication": "Information Claims & Forensic Adjudication / Lie Ledger v2"
+    "claim_adjudication": "Lie Ledger / Claims Forensics may be consumed as read-only factual context; it is not authoritative over WOL-native incident qualification, source-behavior metrics, awards, Hall placement, or direct verdicts."
   },
   "authority": {
     "owns": [
@@ -41,7 +41,12 @@
       "public_source_infrastructure_provenance",
       "research_lead_queue",
       "media_analysis_decomposition",
-      "source_behavior_awards"
+      "source_behavior_awards",
+      "wol_native_incident_adjudication",
+      "wol_native_behavior_metric_adjudication",
+      "wol_native_award_adjudication",
+      "wol_native_hall_qualification",
+      "wol_native_direct_verdicts"
     ],
     "must_not_overwrite": [
       "canonical_evidence",
@@ -56,7 +61,17 @@
       "FORENSIC_DISCOVERY",
       "EVIDENCE_PROMOTION_CANDIDATE",
       "ADJUDICATION_REVIEW_CANDIDATE"
-    ]
+    ],
+    "exclusive_wol_authority": {
+      "incident_qualification": true,
+      "behavior_metrics": true,
+      "source_awards": true,
+      "hall_of_shame_qualification_and_ranking": true,
+      "direct_verdicts_and_appellations": true,
+      "external_lane_may_grant_or_deny_wol_outcome": false,
+      "rule": "No external Atlas lane may grant, deny, suppress, override, or require a WOL-native incident, behavior metric, source award, Hall result, or direct verdict. Other lanes may provide evidence or canonical factual context only."
+    },
+    "canonical_non_overwrite_rule": "WOL does not overwrite canonical Evidence/Lie-Ledger fields when making WOL-native findings. Non-overwrite is a storage/authority boundary, not a veto over WOL's own adjudication."
   },
   "source_behavior_classes": [
     "JOURNALISTIC_SOURCE",
