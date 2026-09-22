@@ -2221,9 +2221,15 @@
       return String.fromCodePoint(...Array.from(text).map(letter => 127397 + letter.charCodeAt(0)));
     };
     const nodeMarker = node => {
-      const flag = flagEmoji(node.country_code);
+      const code = String(node.country_code || '').trim().toUpperCase();
+      const flag = flagEmoji(code);
       const bot = node.authenticity_class === 'CONFIRMED_BOT' ? '🤖' : '';
-      return [flag, bot].filter(Boolean).join(' ');
+      return [flag, code ? `[${code}]` : '', bot].filter(Boolean).join(' ');
+    };
+    const nodeFlagAsset = node => {
+      const code = String(node && node.country_code || '').trim().toUpperCase();
+      if (!code || !context.services || !context.services.actorIdentity || typeof context.services.actorIdentity.flagFor !== 'function') return null;
+      return context.services.actorIdentity.flagFor(code) || null;
     };
     const nodeLabel = node => {
       const marker = nodeMarker(node);
@@ -2235,6 +2241,20 @@
         return [marker, name, ...roles].filter(Boolean).join(' · ');
       }
       return [marker, name, `Megaphone · ${sources} source${sources === 1 ? '' : 's'}`].filter(Boolean).join(' · ');
+    };
+    const appendNodeIdentity = (host, node, tagName = 'span', className = 'wol-node-identity') => {
+      const wrapper = append(host, tagName, className);
+      const asset = nodeFlagAsset(node);
+      if (asset) {
+        const flag = append(wrapper, 'img', 'wol-node-flag');
+        flag.src = asset.path;
+        flag.alt = `${publicNarrative(node.country_region, node.country_code)} flag`;
+        flag.width = 28;
+        flag.height = 20;
+        flag.decoding = 'async';
+      }
+      append(wrapper, 'span', 'wol-node-identity-label', nodeLabel(node));
+      return wrapper;
     };
     const safeExternalHref = value => {
       try {
@@ -2328,7 +2348,8 @@
           display_name: node.display_name,
           bullshitter_source_count: Number(node.bullshitter_source_count || 0),
           authenticity_class: node.authenticity_class || 'UNKNOWN',
-          country_code: node.country_code || ''
+          country_code: node.country_code || '',
+          ...(nodeFlagAsset(node) ? { flag_path: nodeFlagAsset(node).path } : {})
         }
       })),
       ...graphEdges.map(edge => ({
@@ -2354,7 +2375,7 @@
       const node = graphNodeById.get(nodeId);
       const heading = append(detailHost, 'div', 'wol-selected-heading');
       append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'MEGAPHONE');
-      append(heading, 'h3', '', nodeLabel(node));
+      appendNodeIdentity(heading, node, 'h3', 'wol-node-identity wol-selected-node-identity');
       addFactList(heading, [
         ['Country', node.country_code ? `${flagEmoji(node.country_code)} ${node.country_code}` : publicNarrative(node.country_region, 'Not established')],
         ['Platform', publicNarrative(node.primary_platform, 'Not established')],
@@ -2520,6 +2541,18 @@
             }
           },
           {
+            selector: 'node[flag_path]',
+            style: {
+              'background-image': 'data(flag_path)',
+              'background-fit': 'none',
+              'background-width': 28,
+              'background-height': 20,
+              'background-position-x': 12,
+              'background-position-y': 12,
+              'background-repeat': 'no-repeat'
+            }
+          },
+          {
             selector: 'edge',
             style: {
               'width': 1.8,
@@ -2647,14 +2680,56 @@
     };
     initializeGraphWhenMounted(0);
 
-    const indexSection = addSection(frame.article, 'Hall of Shame index', 'content-section wol-hall-index');
-    append(indexSection, 'p', 'section-note', 'The award is attached to the source that earned it. Megaphones remain visible in the network without inheriting the badge.');
+    const hall = data.hall_of_shame || {};
+    const hallSection = addSection(frame.article, '🏆 Hall of Shame', 'content-section wol-hall-of-shame');
+    append(hallSection, 'p', 'section-note', 'Hall placement is deterministic from the WOL behavior record. Reach, follower count, nationality, ideology and manual editorial selection do not affect rank.');
+    const hallViews = append(hallSection, 'div', 'wol-hall-views');
+    const renderHallView = (title, view, viewClass) => {
+      const wrapper = append(hallViews, 'section', `wol-hall-view ${viewClass}`);
+      append(wrapper, 'h3', '', title);
+      const categories = Object.entries(view || {}).filter(([, rows]) => asArray(rows).length);
+      if (!categories.length) {
+        append(wrapper, 'p', 'section-note', 'No source currently qualifies in this view.');
+        return;
+      }
+      const categoryGrid = append(wrapper, 'div', 'wol-hall-category-grid');
+      categories.forEach(([category, rows]) => {
+        const panel = append(categoryGrid, 'article', 'record-card wol-hall-category');
+        append(panel, 'h4', '', plainLabel(category));
+        const podium = append(panel, 'ol', 'wol-hall-podium');
+        asArray(rows).slice().sort((a, b) => Number(a.rank || 99) - Number(b.rank || 99)).forEach(row => {
+          const profile = profileById.get(row.source_id) || {};
+          const graphNode = graphNodeById.get(row.source_id) || {};
+          const identityNode = {
+            node_id: row.source_id,
+            display_name: profile.display_name || graphNode.display_name || row.source_id,
+            country_code: profile.country_code || graphNode.country_code || '',
+            country_region: profile.country_region || graphNode.country_region || '',
+            authenticity_class: profile.authenticity_class || graphNode.authenticity_class || 'UNKNOWN',
+            node_type: graphNode.node_type || 'SOURCE',
+            bullshitter_source_count: graphNode.bullshitter_source_count || 0
+          };
+          const item = append(podium, 'li', 'wol-hall-entry');
+          item.dataset.rank = String(row.rank || '');
+          const rank = Number(row.rank || 0);
+          append(item, 'span', `wol-hall-rank${rank === 1 ? ' wol-hall-king' : ''}`, rank === 1 ? '👑 #1' : rank === 2 ? '🥈 #2' : rank === 3 ? '🥉 #3' : `#${rank || '?'}`);
+          appendNodeIdentity(item, identityNode, 'strong', 'wol-node-identity wol-hall-source');
+          append(item, 'span', 'wol-hall-score', `Score ${formatNumber(row.score)}`);
+          append(item, 'p', 'wol-hall-reason', publicNarrative(row.why_this_source_appears_here, 'Ranking basis recorded in the WOL registry.'));
+        });
+      });
+    };
+    renderHallView('All-time', hall.all_time, 'wol-hall-all-time');
+    renderHallView(`Current ${formatNumber(hall.current_period_days || 30)}-day window`, hall.current_period, 'wol-hall-current');
+
+    const indexSection = addSection(frame.article, 'Bullshitter awardees', 'content-section wol-hall-index');
+    append(indexSection, 'p', 'section-note', 'The Bullshitter award is attached to the source that earned it. Megaphones remain visible in the network without automatically inheriting the award.');
     const awardees = graphNodes.filter(node => node.node_type === 'BULLSHITTER');
     const indexGrid = append(indexSection, 'div', 'wol-awardee-index');
     awardees.forEach(node => {
       const button = append(indexGrid, 'button', 'record-card wol-awardee-button');
       button.type = 'button';
-      append(button, 'strong', '', nodeLabel(node));
+      appendNodeIdentity(button, node, 'strong', 'wol-node-identity wol-awardee-identity');
       append(button, 'small', '', `${formatNumber(node.award_incident_count || 0)} qualifying award incidents`);
       button.addEventListener('click', () => selectNode(node.node_id));
     });
