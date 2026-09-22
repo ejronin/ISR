@@ -2638,6 +2638,8 @@
       }
 
         graphHost.dataset.graphState = 'ready';
+        graphHost.dataset.graphNodes = String(graphNodes.length);
+        graphHost.dataset.graphEdges = String(graphEdges.length);
         focusGraph(selectedNodeId);
       } catch (error) {
         cyGraph = null;
