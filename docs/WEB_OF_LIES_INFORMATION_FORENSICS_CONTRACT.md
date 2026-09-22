@@ -1027,18 +1027,32 @@ Follower count, subscriber count, views, impressions, and repost volume are
 do not establish knowledge or deception, do not earn a Bullshitter award, and do
 not improve or worsen Hall-of-Shame rank.
 
-A smaller source can qualify through amplification. That does **not** create
-guilt by network. An amplifier is accountable for its own publication,
-republication, or amplification events. If that amplifier itself publishes
-qualifying false/materially misleading Iran-war content, or qualifying
-unsupported factual/inferential assertions, those specific events can accumulate
-toward that amplifier's own Bullshitter award under the ordinary evidence gate.
+A smaller source can qualify through amplification. **Amplification itself is
+qualifying conduct when the amplifier republishes, reposts, repeats, embeds,
+quotes as factual support, or otherwise presents a qualifying bullshit claim to
+its own audience without meaningful corrective framing.** The amplifier does
+not have to invent, mutate, or independently originate the falsehood.
 
-A source's adverse finding never transfers automatically to another account
-because it reposted the source, shares an audience, belongs to the same network,
-or has the same ideology. Every adverse source-behavior incident requires a
-specific publication event and receipts for that source. Mirrors of the same
-information event remain deduplicated under the ordinary award rules.
+This is deliberately an easier evidentiary path than proving a new fabrication.
+The underlying claim can inherit the already-established WOL/Claims Forensics
+adjudication by reference. What must be newly proved is the amplifier-specific
+publication/amplification act and the absence of meaningful corrective framing.
+
+Network membership alone still proves nothing. A source does not inherit another
+source's badge merely because they are associated, ideologically aligned, or
+members of the same amplification network. But once a receipt shows that the
+source itself amplified the qualifying message, that publication is its own
+qualifying incident.
+
+Neutral attributed reporting remains distinct. A publication that clearly says
+"X claims Y," preserves Y as an allegation, and supplies meaningful contrary or
+corrective context does not qualify merely for mentioning the claim. A publication
+that simply rebroadcasts/adopts Y as factual content does.
+
+Repeated distinct publications of the same bullshit message can count separately
+for the amplifier, just as repeated publications by an originator can count
+separately. Cross-platform mirrors of the same information event remain
+deduplicated.
 
 An account does not remain an active target merely because it was named once.
 A seed with no material 2026 Iran-war activity is removed from the active
