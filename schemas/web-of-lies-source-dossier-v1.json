@@ -13,7 +13,8 @@
     "source_relationships",
     "external_assessments",
     "infrastructure_observations",
-    "research_leads"
+    "research_leads",
+    "amplification_observations"
   ],
   "properties": {
     "schema_version": {
@@ -494,6 +495,7 @@
           "assertion_kind",
           "published_at",
           "statement_identity",
+          "evidentiary_support_review",
           "public_receipts"
         ],
         "properties": {
@@ -509,8 +511,7 @@
             "enum": [
               "UNSUPPORTED_FACTUAL_ASSERTION",
               "UNSUPPORTED_INFERENTIAL_ASSERTION",
-              "EVIDENTIARY_EVASION",
-              "AMPLIFIES_QUALIFYING_BULLSHIT"
+              "EVIDENTIARY_EVASION"
             ]
           },
           "assertion_kind": {
@@ -618,125 +619,97 @@
               "string",
               "null"
             ]
-          },
-          "upstream_qualifying_incident_id": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "minLength": 1
-          },
-          "upstream_source_id": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "minLength": 1
-          },
-          "amplification_review": {
-            "type": [
-              "object",
-              "null"
-            ],
-            "properties": {
-              "status": {
-                "const": "VERIFIED_DERIVATIVE_AMPLIFICATION"
-              },
-              "amplification_mode": {
-                "enum": [
-                  "REPOST",
-                  "REPEAT",
-                  "QUOTE_AS_SUPPORT",
-                  "EMBED",
-                  "REPUBLISH",
-                  "OTHER_MATERIAL_AMPLIFICATION"
-                ]
-              },
-              "underlying_claim_status": {
-                "const": "UPSTREAM_QUALIFYING_BULLSHIT_ESTABLISHED"
-              },
-              "corrective_framing_status": {
-                "const": "NO_MEANINGFUL_CORRECTIVE_FRAMING"
-              },
-              "note": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              }
-            },
-            "additionalProperties": true
           }
         },
-        "additionalProperties": true,
-        "allOf": [
-          {
-            "if": {
-              "properties": {
-                "event_type": {
-                  "const": "AMPLIFIES_QUALIFYING_BULLSHIT"
-                }
-              },
-              "required": [
-                "event_type"
-              ]
-            },
-            "then": {
-              "required": [
-                "upstream_qualifying_incident_id",
-                "amplification_review"
-              ],
-              "properties": {
-                "upstream_qualifying_incident_id": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "amplification_review": {
-                  "type": "object",
-                  "required": [
-                    "status",
-                    "amplification_mode",
-                    "underlying_claim_status",
-                    "corrective_framing_status"
-                  ],
-                  "properties": {
-                    "status": {
-                      "const": "VERIFIED_DERIVATIVE_AMPLIFICATION"
-                    },
-                    "amplification_mode": {
-                      "enum": [
-                        "REPOST",
-                        "REPEAT",
-                        "QUOTE_AS_SUPPORT",
-                        "EMBED",
-                        "REPUBLISH",
-                        "OTHER_MATERIAL_AMPLIFICATION"
-                      ]
-                    },
-                    "underlying_claim_status": {
-                      "const": "UPSTREAM_QUALIFYING_BULLSHIT_ESTABLISHED"
-                    },
-                    "corrective_framing_status": {
-                      "const": "NO_MEANINGFUL_CORRECTIVE_FRAMING"
-                    },
-                    "note": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    }
-                  },
-                  "additionalProperties": true
-                }
-              }
-            },
-            "else": {
-              "required": [
-                "evidentiary_support_review"
-              ]
+        "additionalProperties": true
+      }
+    },
+    "amplification_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "observation_id",
+          "bullshitter_source_id",
+          "bullshitter_incident_id",
+          "amplifier_id",
+          "amplifier_display_name",
+          "observed_at",
+          "public_receipts"
+        ],
+        "properties": {
+          "observation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bullshitter_source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bullshitter_incident_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amplifier_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amplifier_display_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amplifier_handle": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "amplifier_platform": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "amplifier_country_code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[A-Z]{2}$"
+          },
+          "amplifier_authenticity_class": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "message_identity": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "public_receipts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/public_receipt"
             }
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
-        ]
+        },
+        "additionalProperties": true
       }
     }
   },
