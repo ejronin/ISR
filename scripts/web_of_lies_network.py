@@ -253,6 +253,7 @@ def validate_extended_forensic_input(
     external_assessments = forensic.get("external_assessments") or []
     infrastructure_observations = forensic.get("infrastructure_observations") or []
     research_leads = forensic.get("research_leads") or []
+    amplification_observations = forensic.get("amplification_observations") or []
 
     allowed_independence = governance_set(governance, "independence_statuses")
     allowed_assertion_kinds = governance_set(governance, "assertion_kinds")
@@ -475,6 +476,43 @@ def validate_extended_forensic_input(
                 raise ValueError(
                     f"information event {event_id} cannot target itself via {key}"
                 )
+
+    seen_amplification_ids: set[str] = set()
+    for observation in amplification_observations:
+        observation_id = str(observation.get("observation_id") or "").strip()
+        if not observation_id or observation_id in seen_amplification_ids:
+            raise ValueError(
+                f"duplicate or missing amplification observation id {observation_id!r}"
+            )
+        seen_amplification_ids.add(observation_id)
+        if not str(observation.get("bullshitter_source_id") or "").strip():
+            raise ValueError(
+                f"amplification observation {observation_id} lacks bullshitter_source_id"
+            )
+        if not str(observation.get("bullshitter_incident_id") or "").strip():
+            raise ValueError(
+                f"amplification observation {observation_id} lacks bullshitter_incident_id"
+            )
+        if not str(observation.get("amplifier_id") or "").strip():
+            raise ValueError(
+                f"amplification observation {observation_id} lacks amplifier_id"
+            )
+        if not str(observation.get("amplifier_display_name") or "").strip():
+            raise ValueError(
+                f"amplification observation {observation_id} lacks amplifier_display_name"
+            )
+        receipts = list(observation.get("public_receipts") or [])
+        if not receipts:
+            raise ValueError(
+                f"amplification observation {observation_id} lacks public receipts"
+            )
+        for receipt in receipts:
+            _validate_public_receipt(
+                f"amplification observation {observation_id}",
+                receipt,
+                governance,
+                seen_receipt_ids,
+            )
 
     for relation in relationships:
         rid = str(relation.get("relationship_id") or "")
