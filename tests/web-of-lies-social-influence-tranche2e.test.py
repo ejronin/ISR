@@ -34,7 +34,10 @@ assert "traffic collapse is supported" in lim["evidentiary_support_review"]["cla
 assert "does not isolate U.S. strike waves" in lim["evidentiary_support_review"]["claimant_basis_note"]
 assert lim["public_receipts"]
 assert leads["LEAD-LIM-TEAN"]["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
-assert "broader pattern review" in profiles["WOL-SRC-LIM-TEAN"]["identity_context"]
+lim_context = profiles["WOL-SRC-LIM-TEAN"]["identity_context"]
+assert "completed broader" in lim_context
+assert "shipping/admiralty" in lim_context
+assert "repeated unsupported causal/control conclusions" in lim_context
 # Tranche 2e originally protected Lim as an open one-incident review. A later
 # evidence-complete pattern tranche may legitimately derive an award; 2e keeps
 # the original July 20 incident and profile-scope invariants only.
