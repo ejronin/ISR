@@ -2208,7 +2208,10 @@
     const graphNodes = asArray(graph.nodes);
     const graphEdges = asArray(graph.edges);
     const profileById = new Map(profiles.map(profile => [profile.source_id, profile]));
-    const incidentById = new Map(incidents.map(incident => [incident.incident_id, incident]));
+    const qualifyingEventById = new Map([
+      ...events.map(event => [event.event_id, event]),
+      ...incidents.map(incident => [incident.incident_id, incident])
+    ]);
     const graphNodeById = new Map(graphNodes.map(node => [node.node_id, node]));
     const familyById = new Map(families.map(family => [family.claim_family_id, family]));
 
@@ -2381,10 +2384,13 @@
       ]);
 
       if (node.node_type === 'BULLSHITTER') {
-        const sourceIncidents = incidents.filter(incident => incident.source_id === nodeId)
-          .sort((a, b) => String(a.published_at || '').localeCompare(String(b.published_at || '')));
         const profile = profileById.get(nodeId) || {};
         const awards = asArray(profile.source_awards).filter(award => award.award_code === 'BULLSHITTER');
+        const awardEventIds = new Set(awards.flatMap(award => asArray(award.qualifying_incident_ids)));
+        const sourceIncidents = Array.from(awardEventIds)
+          .map(eventId => qualifyingEventById.get(eventId))
+          .filter(event => event && event.source_id === nodeId)
+          .sort((a, b) => String(a.published_at || a.first_observed_at || '').localeCompare(String(b.published_at || b.first_observed_at || '')));
         if (awards.length) {
           const award = append(detailHost, 'aside', 'scope-note wol-award-summary');
           append(award, 'strong', '', 'Bullshitter');
@@ -2395,9 +2401,9 @@
         if (!sourceIncidents.length) append(claimBlock, 'p', 'section-note', 'No WOL-native award incidents are attached to this source.');
         sourceIncidents.forEach(incident => {
           const card = append(claimBlock, 'article', 'record-card wol-event-card');
-          append(card, 'p', 'card-kicker', [incident.published_at, plainLabel(incident.event_type)].filter(Boolean).join(' · '));
-          append(card, 'h4', '', publicNarrative(incident.statement_identity, incident.incident_id));
-          appendReceipts(card, incident.public_receipts, 'No public receipt is stored for this incident.');
+          append(card, 'p', 'card-kicker', [incident.published_at || incident.first_observed_at, plainLabel(incident.event_type)].filter(Boolean).join(' · '));
+          append(card, 'h4', '', publicNarrative(incident.statement_identity || incident.exact_statement || incident.translated_statement, incident.incident_id || incident.event_id));
+          appendReceipts(card, incident.public_receipts, 'No public receipt URL is stored directly on this qualifying event.');
         });
 
         const outgoing = graphEdges.filter(edge => edge.from_node_id === nodeId);
@@ -2420,8 +2426,8 @@
           const source = graphNodeById.get(edge.from_node_id);
           const block = append(repeated, 'article', 'record-card wol-amplified-source');
           append(block, 'h4', '', nodeLabel(source || { display_name: edge.from_node_id, node_type: 'BULLSHITTER' }));
-          asArray(edge.bullshitter_incident_ids).forEach(incidentId => {
-            const incident = incidentById.get(incidentId);
+          asArray(edge.bullshitter_event_ids).forEach(incidentId => {
+            const incident = qualifyingEventById.get(incidentId);
             if (!incident) return;
             const claim = append(block, 'div', 'wol-amplified-claim');
             append(claim, 'strong', '', publicNarrative(incident.statement_identity, incidentId));
