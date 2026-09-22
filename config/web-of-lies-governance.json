@@ -347,7 +347,9 @@
         "COUNTERFACTUAL",
         "OTHER"
       ],
-      "upstream_adjudication_required_before_adverse_scoring": true
+      "wol_evidence_gate_required_before_adverse_scoring": true,
+      "upstream_promotion_is_separate_from_wol_scoring": true,
+      "rule": "Adverse WOL scoring is controlled by WOL's own evidentiary gate. Upstream Evidence/Lie-Ledger review may be requested for canonical synchronization but cannot grant, deny, delay, or override a WOL-native incident or award."
     }
   },
   "source_awards": {
