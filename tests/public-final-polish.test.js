@@ -24,7 +24,7 @@ assert(!releaseBuilder.includes('materialize_asset('), 'release wrapper still ma
 assert(releaseBuilder.includes('from build_public_release_core import *'), 'release wrapper is not a stable compatibility entrypoint over the core builder');
 assert(releaseCore.includes('reader_support') && releaseCore.includes('reader_stylesheet'), 'single-pass core does not publish reader assets explicitly');
 assert(releaseCore.includes('src/public-reader-layer.js') && releaseCore.includes('src/public-reader-layer.css'), 'single-pass core does not source the reader modules directly');
-assert(releaseCore.includes('2.5-authoritative-reader-direct'), 'authoritative reader registry generator contract is missing');
+assert(releaseCore.includes('2.6-web-of-lies-mermaid-runtime'), 'authoritative reader registry generator contract is missing');
 assert(!releaseCore.includes('compose_reader_sources'), 'single-pass core still concatenates reader source into base assets');
 
 assert(!appSource.includes('ROOK_NARRATIVE_CURRENT'), 'tracked public entrypoint still contains persona narrative payload');
@@ -34,7 +34,7 @@ assert(appSource.includes('narrativeContract: null'), 'tracked public entrypoint
 assert(appSource.includes('ATLAS_PRIVILEGED_NARRATIVE_RETIRED'), 'tracked public entrypoint lacks retirement marker');
 assert(appSource.includes("assetForRole(manifest, 'reader_support')"), 'tracked public entrypoint does not authorize reader runtime');
 assert(appSource.includes("assetForRole(manifest, 'reader_stylesheet')"), 'tracked public entrypoint does not authorize reader stylesheet');
-assert(appSource.includes('authorization.runtimeAssets.length === 4'), 'tracked public entrypoint does not require all four runtime assets');
+assert(appSource.includes('authorization.runtimeAssets.length === 5'), 'tracked public entrypoint does not require all five runtime assets');
 assert(appSource.includes('authorization.stylesheetAssets.length === 3'), 'tracked public entrypoint does not require all three stylesheet assets');
 
 for (const phrase of [
