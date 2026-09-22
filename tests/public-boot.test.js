@@ -107,11 +107,13 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
   assert.equal(applicationAssets.filter(asset => asset.role === 'state_flag').length, manifest.application.state_flags.length);
   assert(manifest.application.state_flags.length >= 3, 'closed state-flag inventory must be present');
   assert(applicationAssets.every(asset => fixedRoles.includes(asset.role) || ['evidence_image', 'state_flag'].includes(asset.role)));
-  const graphRuntime = app.assetForRole(manifest, 'graph_runtime');\n  const baseRuntime = app.assetForRole(manifest, 'base_runtime');
+  const graphRuntime = app.assetForRole(manifest, 'graph_runtime');
+  const baseRuntime = app.assetForRole(manifest, 'base_runtime');
   const readerSupport = app.assetForRole(manifest, 'reader_support');
   const pageRegistry = app.assetForRole(manifest, 'page_registry');
   const readerStylesheet = app.assetForRole(manifest, 'reader_stylesheet');
-  assert.equal(graphRuntime.source_path, 'vendor/mermaid/mermaid.min.js');\n  assert.equal(baseRuntime.source_path, 'js/public-ia.js');
+  assert.equal(graphRuntime.source_path, 'vendor/mermaid/mermaid.min.js');
+  assert.equal(baseRuntime.source_path, 'js/public-ia.js');
   assert.equal(readerSupport.source_path, 'src/public-reader-layer.js');
   assert.equal(pageRegistry.source_path, 'src/public-reader-registry.js');
   assert.equal(readerStylesheet.source_path, 'src/public-reader-layer.css');
