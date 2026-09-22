@@ -167,7 +167,7 @@ async function loadDirectRoute(cdp, route) {
         })()`);
         assert(wolGraph.canvasCount > 0, 'WOL Cytoscape graph did not create a canvas');
         assert(wolGraph.nodes > 1, 'WOL graph exposes no selectable source nodes');
-        assert(wolGraph.renderedNodes >= 17, 'WOL graph did not render the compiled awardee + megaphone network');
+        assert(wolGraph.renderedNodes >= 16, 'WOL graph did not render the compiled awardee + megaphone network (dual-role identities must remain one node)');
         assert(wolGraph.renderedEdges >= 9, 'WOL graph rendered no meaningful propagation web');
         assert(wolGraph.width > 0 && wolGraph.height >= 480, 'WOL Cytoscape canvas has no usable rendered area');
         assert(wolGraph.flags > 0, 'WOL rendered no receipt-backed country flag assets');
