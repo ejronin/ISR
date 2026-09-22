@@ -3860,5 +3860,205 @@
       "review_reason": "Any canonical strike-damage proposition remains separate from the unsupported arrest story."
     }
   ],
-  "amplification_observations": []
+  "amplification_observations": [
+    {
+      "observation_id": "WOL-AMP-ETHAN-PRESSTV-TWO-MISSILES-20260322",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-TWO-MISSILES-20260322",
+      "amplifier_id": "PRESS-TV-TELEGRAM",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-PRESSTV-TWO-MISSILES",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/presstv?before=181173",
+          "published_at": "2026-03-22",
+          "captured_at": "2026-09-21",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV preserved and rebroadcast the attributed Ethan Levins wording that all same-day damage in Israel came from two missiles and that Iran had thousands more."
+        }
+      ]
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-NEWSARTICLES-TWO-MISSILES-20260322",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-TWO-MISSILES-20260322",
+      "amplifier_id": "NEWS-ARTICLES-ANALYSIS-TELEGRAM",
+      "amplifier_display_name": "News & Articles",
+      "amplifier_handle": "@News_Articles_Analysis",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-NEWSARTICLES-TWO-MISSILES",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/News_Articles_Analysis?before=65363",
+          "published_at": "2026-03-22",
+          "captured_at": "2026-09-21",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Public relay preserved and repeated the same attributed Ethan Levins wording."
+        }
+      ]
+    },
+    {
+      "observation_id": "WOL-AMP-VALENTI-LEONOE1986-NUCLEAR-JETS-20260723",
+      "bullshitter_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "bullshitter_event_id": "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+      "amplifier_id": "THREADS-LEONOE1986",
+      "amplifier_display_name": "@leonoe1986",
+      "amplifier_handle": "@leonoe1986",
+      "amplifier_platform": "THREADS",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-VALENTI-LEONOE1986-NUCLEAR-JETS",
+          "surface": "THREADS",
+          "url": "https://www.threads.com/@leonoe1986/post/DbV0ykRkqT8",
+          "published_at": "2026-07-23",
+          "captured_at": "2026-09-21",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Public repost preserved and carried the Valenti nuclear-armed-jets claim."
+        }
+      ]
+    },
+    {
+      "observation_id": "WOL-AMP-RKM-GP-PRESS-NETANYAHU-AI-20260312",
+      "bullshitter_source_id": "WOL-SRC-RKM-RKMTIMES",
+      "bullshitter_event_id": "WOL-BS-RKM-NETANYAHU-INJURED-AI-20260312",
+      "amplifier_id": "X-GP_PRESSS",
+      "amplifier_display_name": "Iran Press / @GP_Presss",
+      "amplifier_handle": "@GP_Presss",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-RKM-GP-PRESS-NETANYAHU-AI",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/13/video-does-not-show-benjamin-netanyahu-injured-after-iranian-missile-strike",
+          "published_at": "2026-03-13",
+          "captured_at": "2026-09-22",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Misbar lists GP_Presss among the publishers of the same AI-generated Netanyahu-injury video also posted by rkmtimes."
+        }
+      ]
+    },
+    {
+      "observation_id": "WOL-AMP-RKM-ASIFALI-NETANYAHU-AI-20260312",
+      "bullshitter_source_id": "WOL-SRC-RKM-RKMTIMES",
+      "bullshitter_event_id": "WOL-BS-RKM-NETANYAHU-INJURED-AI-20260312",
+      "amplifier_id": "X-ASIFALI_HAIDER",
+      "amplifier_display_name": "@AsifAli_Haider",
+      "amplifier_handle": "@AsifAli_Haider",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-RKM-ASIFALI-NETANYAHU-AI",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/13/video-does-not-show-benjamin-netanyahu-injured-after-iranian-missile-strike",
+          "published_at": "2026-03-13",
+          "captured_at": "2026-09-22",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Misbar lists AsifAli_Haider among the publishers of the same AI-generated Netanyahu-injury video also posted by rkmtimes."
+        }
+      ]
+    },
+    {
+      "observation_id": "WOL-AMP-RKM-ALSHAYAKHLIU1-TELAVIV-20260318",
+      "bullshitter_source_id": "WOL-SRC-RKM-RKMTIMES",
+      "bullshitter_event_id": "WOL-BS-RKM-TEL-AVIV-UKRAINE-VIDEO-20260318",
+      "amplifier_id": "X-ALSHAYAKHLIU1",
+      "amplifier_display_name": "@alshayakhliu1",
+      "amplifier_handle": "@alshayakhliu1",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-RKM-ALSHAYAKHLIU1-TELAVIV",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/amp/en/factcheck/2026/04/07/video-does-not-depict-aftermath-recent-iranian-strike-tel-aviv",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-22",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Misbar lists alshayakhliu1 among publishers of the same outdated Ukraine footage presented as recent Tel Aviv strike aftermath."
+        }
+      ]
+    },
+    {
+      "observation_id": "WOL-AMP-RKM-ESFASSIE-TELAVIV-20260318",
+      "bullshitter_source_id": "WOL-SRC-RKM-RKMTIMES",
+      "bullshitter_event_id": "WOL-BS-RKM-TEL-AVIV-UKRAINE-VIDEO-20260318",
+      "amplifier_id": "X-ESFASSIE",
+      "amplifier_display_name": "@esfassie",
+      "amplifier_handle": "@esfassie",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-RKM-ESFASSIE-TELAVIV",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/amp/en/factcheck/2026/04/07/video-does-not-depict-aftermath-recent-iranian-strike-tel-aviv",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-22",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Misbar lists esfassie among publishers of the same outdated Ukraine footage presented as recent Tel Aviv strike aftermath."
+        }
+      ]
+    },
+    {
+      "observation_id": "WOL-AMP-WMX-TALIPBELGIUM-WARTHUNDER-20260314",
+      "bullshitter_source_id": "WOL-SRC-WMX-MEDIA",
+      "bullshitter_event_id": "WOL-BS-WMX-WAR-THUNDER-MISSILE-20260314",
+      "amplifier_id": "X-TALIPBELGIUM",
+      "amplifier_display_name": "@TalipBelgium",
+      "amplifier_handle": "@TalipBelgium",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-WMX-TALIPBELGIUM-WARTHUNDER",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/15/video-does-not-show-iranian-cruise-missile-targeting-us-warships",
+          "published_at": "2026-03-15",
+          "captured_at": "2026-09-22",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Misbar lists TalipBelgium among publishers of the same War Thunder footage presented as an Iranian cruise missile targeting U.S. warships."
+        }
+      ]
+    },
+    {
+      "observation_id": "WOL-AMP-WMX-ABORASD55-WARTHUNDER-20260314",
+      "bullshitter_source_id": "WOL-SRC-WMX-MEDIA",
+      "bullshitter_event_id": "WOL-BS-WMX-WAR-THUNDER-MISSILE-20260314",
+      "amplifier_id": "X-ABORASD55",
+      "amplifier_display_name": "@aborasd55",
+      "amplifier_handle": "@aborasd55",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-WMX-ABORASD55-WARTHUNDER",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/15/video-does-not-show-iranian-cruise-missile-targeting-us-warships",
+          "published_at": "2026-03-15",
+          "captured_at": "2026-09-22",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Misbar lists aborasd55 among publishers of the same War Thunder footage presented as an Iranian cruise missile targeting U.S. warships."
+        }
+      ]
+    }
+  ]
 }
