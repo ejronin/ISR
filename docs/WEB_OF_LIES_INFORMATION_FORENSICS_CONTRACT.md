@@ -999,16 +999,52 @@ Source role, source incentive, source relationship, factual-claim behavior, and
 Bullshitter-award state are separate axes. A descriptive receipt cannot erase
 or manufacture an independently derived adverse incident or source award.
 
-## 34. Discovery scope, inaccessible evidence, and exclusions
+## 34. Discovery scope, audience materiality, inaccessible evidence, and exclusions
 
 Named accounts supplied during research are **seeds, not the corpus boundary**.
-Web of Lies must continue claim-first discovery across public media platforms and
-identify additional publishers with material or recurring Iran-war factual or
-analytical content.
+Web of Lies must continue claim-first discovery across public media platforms, but
+the active source-behavior corpus is bounded to the **2026 Iran war**.
 
-An account does not remain an active target merely because it was named once. A
-seed with no material or recurring Iran-war activity may be removed from the
-active adjudication queue.
+General political misinformation, unrelated regional propaganda, and pre-2026
+claim behavior outside this conflict are not active WOL source-behavior evidence.
+Do not keep that material merely because it demonstrates that an account has lied
+about something else.
+
+For non-official/non-canonical claim-first discovery, Iran-war relevance is
+necessary but not sufficient. A publisher enters or remains in the active corpus
+only when public receipts establish at least one of these materiality paths:
+
+- **large direct audience/reach**; or
+- **documented downstream amplification** into a materially influential Iran-war
+  information network.
+
+Do not invent a universal numeric follower threshold. Platform audiences are not
+directly comparable, and reach can be post-specific. Preserve the actual public
+receipt and state which materiality path it supports.
+
+Follower count, subscriber count, views, impressions, and repost volume are
+**intake materiality evidence only**. They do not make a claim truer or falser,
+do not establish knowledge or deception, do not earn a Bullshitter award, and do
+not improve or worsen Hall-of-Shame rank.
+
+A smaller source can qualify through amplification. That does **not** create
+guilt by network. An amplifier is accountable for its own publication,
+republication, or amplification events. If that amplifier itself publishes
+qualifying false/materially misleading Iran-war content, or qualifying
+unsupported factual/inferential assertions, those specific events can accumulate
+toward that amplifier's own Bullshitter award under the ordinary evidence gate.
+
+A source's adverse finding never transfers automatically to another account
+because it reposted the source, shares an audience, belongs to the same network,
+or has the same ideology. Every adverse source-behavior incident requires a
+specific publication event and receipts for that source. Mirrors of the same
+information event remain deduplicated under the ordinary award rules.
+
+An account does not remain an active target merely because it was named once.
+A seed with no material 2026 Iran-war activity is removed from the active
+adjudication queue. Out-of-conflict research accidentally collected during WOL
+discovery is deleted from the active corpus rather than preserved as character
+evidence.
 
 ### Inaccessible relevant content
 
