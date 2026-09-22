@@ -46,9 +46,11 @@ assert lim_bridge["bridge_type"] == "CAUSAL_ATTRIBUTION"
 assert lim_bridge["review_status"] == "UPSTREAM_REVIEW_REQUIRED"
 assert "Iranian attacks" in " ".join(lim_bridge["competing_explanations"])
 assert leads["LEAD-LIM-TEAN"]["current_disposition"] in {
-    "MATERIAL_WOL_HISTORY_FOUND", "UPSTREAM_REVIEW_REQUIRED"
+    "MATERIAL_WOL_HISTORY_FOUND", "UPSTREAM_REVIEW_REQUIRED", "ACTIVE_PATTERN_REVIEW"
 }
-if leads["LEAD-LIM-TEAN"]["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND":
+if leads["LEAD-LIM-TEAN"]["current_disposition"] in {
+    "MATERIAL_WOL_HISTORY_FOUND", "ACTIVE_PATTERN_REVIEW"
+}:
     lim_native = behavior_incidents["WOL-BS-LIM-TEAN-HORMUZ-CAUSALITY-20260720"]
     assert lim_native["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
     assert lim_bridge["review_status"] == "UPSTREAM_REVIEW_REQUIRED"

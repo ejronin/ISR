@@ -125,6 +125,8 @@ allowed_lead_dispositions = {
     "NO_MATERIAL_ATLAS_CLAIM_ACTIVITY_FOUND",
     "IDENTITY_UNRESOLVED",
     "UPSTREAM_REVIEW_REQUIRED",
+    "ACTIVE_PATTERN_REVIEW",
+    "UNABLE_TO_ADJUDICATE_PAYWALLED_RELEVANT_CONTENT",
 }
 assert all(
     row["current_disposition"] in allowed_lead_dispositions
