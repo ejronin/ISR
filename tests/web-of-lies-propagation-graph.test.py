@@ -55,7 +55,7 @@ observations = [
     {
         "observation_id": "A-1",
         "bullshitter_source_id": "BS-IR",
-        "bullshitter_incident_id": "I-IR-1",
+        "bullshitter_event_id": "I-IR-1",
         "amplifier_id": "AMP-RU-BOT",
         "amplifier_display_name": "Example RU Bot",
         "amplifier_handle": "@ru_example",
@@ -67,7 +67,7 @@ observations = [
     {
         "observation_id": "A-2",
         "bullshitter_source_id": "BS-US",
-        "bullshitter_incident_id": "I-US-1",
+        "bullshitter_event_id": "I-US-1",
         "amplifier_id": "AMP-RU-BOT",
         "amplifier_display_name": "Example RU Bot",
         "amplifier_handle": "@ru_example",
@@ -79,7 +79,7 @@ observations = [
     {
         "observation_id": "A-3",
         "bullshitter_source_id": "BS-IR",
-        "bullshitter_incident_id": "I-IR-2",
+        "bullshitter_event_id": "I-IR-2",
         "amplifier_id": "AMP-RU-BOT",
         "amplifier_display_name": "Example RU Bot",
         "amplifier_handle": "@ru_example",
@@ -91,7 +91,7 @@ observations = [
     {
         "observation_id": "A-4",
         "bullshitter_source_id": "CLEAN",
-        "bullshitter_incident_id": "I-CLEAN-1",
+        "bullshitter_event_id": "I-CLEAN-1",
         "amplifier_id": "AMP-IGNORED",
         "amplifier_display_name": "Ignored",
         "amplifier_country_code": "IN",
@@ -127,12 +127,12 @@ assert megaphone["award_codes"] == []
 
 ir_edge = edges[("BS-IR", "AMP::AMP-RU-BOT")]
 assert ir_edge["amplified_claim_count"] == 2
-assert set(ir_edge["bullshitter_incident_ids"]) == {"I-IR-1", "I-IR-2"}
+assert set(ir_edge["bullshitter_event_ids"]) == {"I-IR-1", "I-IR-2"}
 assert len(ir_edge["public_receipts"]) == 2
 
 us_edge = edges[("BS-US", "AMP::AMP-RU-BOT")]
 assert us_edge["amplified_claim_count"] == 1
-assert us_edge["bullshitter_incident_ids"] == ["I-US-1"]
+assert us_edge["bullshitter_event_ids"] == ["I-US-1"]
 
 assert "CLEAN" not in nodes
 assert "AMP::AMP-IGNORED" not in nodes
