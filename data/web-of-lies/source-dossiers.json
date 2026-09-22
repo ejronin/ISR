@@ -1061,6 +1061,40 @@
         }
       ],
       "identity_context": "The public X handle @GP_Presss is repeatedly preserved by independent fact-checkers. Vishvas News documented that the account display name changed from Iran Press to News Now during March 2026. The branding does not establish Iranian state ownership, control, location or operator identity; those remain unknown."
+    },
+    {
+      "source_id": "WOL-SRC-ZARDSI",
+      "display_name": "Zard si Gana / @ZardSi",
+      "source_entity_type": "ACCOUNT",
+      "country_region": null,
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-ZARDSI",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "Zard si Gana",
+        "@ZardSi",
+        "ZardSi"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-ZARDSI-X",
+          "platform": "X",
+          "handle": "@ZardSi",
+          "url": "https://x.com/ZardSi",
+          "display_name": "Zard si Gana",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "identity_context": "The public X handle @ZardSi / display identity Zard si Gana is repeatedly preserved by independent fact-checkers and exact public-document captures. Some secondary sources describe the account as Pakistan-based or attach propaganda labels, but WOL does not infer the real-world operator, nationality, organizational affiliation, state direction or geographic control from those descriptions alone; those remain unknown."
     }
   ],
   "source_relationships": [
@@ -3871,6 +3905,285 @@
       "downstream_note": "Do not score the mere existence/reporting of a rumor. Score the false media presentation only; do not infer that @GP_Presss created the AI clip.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical Lincoln strike claim remains separately adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-ZARDSI-NETANYAHU-TALIBAN-DEEPFAKE-20260226",
+      "source_id": "WOL-SRC-ZARDSI",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-02-26",
+      "first_observed_at": "2026-02-26",
+      "statement_identity": "@ZardSi published a deepfake video purporting to show Benjamin Netanyahu announcing support for the Afghan Taliban government, recognizing Hibatullah Akhundzada as a partner and promising an aid package.",
+      "source_information_event_id": "ZARDSI-X-NETANYAHU-TALIBAN-20260226",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-TALIBAN-X",
+          "surface": "X",
+          "url": "https://x.com/ZardSi/status/2026762008234688753",
+          "published_at": "2026-02-26",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Israeli Prime Minister Benjamin Netanyahu announced full support for the Afghan Taliban government ... Israel and India stands shoulder to shoulder with Taliban."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-TALIBAN-SOCH",
+          "surface": "WEBSITE",
+          "url": "https://www.sochfactcheck.com/netanyahu-did-not-declare-support-for-afghan-taliban-in-recent-speech/",
+          "published_at": "2026-03-04",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Soch Fact Check preserved the ZardSi post, compared it with Netanyahu's full Knesset address and found the viral speech deepfaked; the original address contained no Taliban-support or Afghanistan-aid announcement."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Soch Fact Check's preserved source post, Netanyahu's full February 25 Knesset speech and multiple audio/video deepfake analyses described in the fact-check.",
+        "checked_at": "2026-09-22T09:27:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The attached Netanyahu speech was synthetically altered; the full original speech did not contain the claimed Taliban-partnership or Afghanistan-aid language.",
+        "search_notes": "The scored behavior is publication of manipulated speech as real evidence. WOL does not infer that @ZardSi created the deepfake.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false media presentation, not authorship of the synthetic clip or a broader conclusion about Israel-Afghanistan relations.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical diplomatic-support proposition remains separable from the source-behavior incident."
+    },
+    {
+      "incident_id": "WOL-BS-ZARDSI-NETANYAHU-BERLIN-20260302",
+      "source_id": "WOL-SRC-ZARDSI",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-02",
+      "first_observed_at": "2026-03-02",
+      "statement_identity": "@ZardSi claimed Netanyahu was hiding in Berlin and that hacked Mossad tracking-signal data confirmed he was in a German bunker.",
+      "source_information_event_id": "ZARDSI-X-NETANYAHU-BERLIN-20260302",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-BERLIN-X",
+          "surface": "X",
+          "url": "https://x.com/ZardSi/status/2028299614152012132",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Benjamin Netanyahu is reportedly hiding somewhere in Berlin, Germany. Latest tracking signal data ... confirms he is in some bunker in Germany."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-BERLIN-EURONEWS",
+          "surface": "WEBSITE",
+          "url": "https://www.euronews.com/my-europe/2026/03/03/no-netanyahu-did-not-flee-israel-for-berlin-amid-iran-war",
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Euronews identified @ZardSi among the accounts advancing the Berlin claim and found Netanyahu remained in Israel; only the official aircraft had been moved to Berlin."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-BERLIN-REUTERS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/aerospace-defense/israeli-government-plane-parked-berlin-safety-2026-03-01/",
+          "published_at": "2026-03-01",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Reuters reported that Israel's official aircraft was parked in Berlin for safety and that only crew members were aboard."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact ZardSi status, Reuters reporting on the state aircraft movement, Euronews verification of Netanyahu's subsequent public presence in Israel and search for the alleged hacked tracking data.",
+        "checked_at": "2026-09-22T09:27:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The observable substrate was the Wing of Zion aircraft in Berlin. Reporting said only crew were aboard; Netanyahu was publicly documented in Israel. No evidentiary basis was found for the claimed Mossad tracking-data confirmation.",
+        "search_notes": "The incident converts an aircraft relocation into a Netanyahu-location claim and adds unsupported hacked-database confirmation.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real aircraft movement as factual substrate; score the Netanyahu-in-Berlin and hacked-tracking conclusions.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical Netanyahu-location rumor family remains separately adjudicable."
+    },
+    {
+      "incident_id": "WOL-BS-ZARDSI-TELAVIV-OLD-VIDEO-20260305",
+      "source_id": "WOL-SRC-ZARDSI",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-05",
+      "first_observed_at": "2026-03-05",
+      "statement_identity": "@ZardSi presented outdated footage as current evidence of Iranian missile attacks on Tel Aviv on March 5.",
+      "source_information_event_id": "ZARDSI-X-TELAVIV-OLD-VIDEO-20260305",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-TELAVIV-X",
+          "surface": "X",
+          "url": "https://x.com/ZardSi/status/2029370088504062243",
+          "published_at": "2026-03-05",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "IRAN MISSILE ATTACKS ON ISRAEL TODAY!! ... targeting the Ministry of Defence in Israel and Israeli Defense Forces camps."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-TELAVIV-MISBAR",
+          "surface": "WEBSITE",
+          "url": "https://www.misbar.com/en/factcheck/2026/03/08/video-does-not-depict-recent-iranian-strike-tel-aviv",
+          "published_at": "2026-03-08",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Misbar preserved the March 5 ZardSi post and found the attached video outdated rather than footage of a current Iranian strike on Tel Aviv."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Misbar preservation of the exact March 5 post and its provenance review of the attached footage.",
+        "checked_at": "2026-09-22T09:27:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The attached footage was outdated and therefore did not document the claimed current March 5 attack.",
+        "search_notes": "The qualifying behavior is recycled footage presented as current-event evidence. Other numerical or target assertions in the caption are not separately scored by this incident unless independently adjudicated.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false temporal/media presentation only; do not use this incident to decide every other claim in the caption.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical March 5 strike count/target proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-ZARDSI-KRAKOW-FLEEING-ISRAELIS-20260309",
+      "source_id": "WOL-SRC-ZARDSI",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-09",
+      "first_observed_at": "2026-03-09",
+      "statement_identity": "@ZardSi recast January footage of Haredi travelers at Krakow airport as Israelis who had fled their homes for Poland because of Iranian missile attacks.",
+      "source_information_event_id": "ZARDSI-X-KRAKOW-FLEEING-20260309",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-KRAKOW-X",
+          "surface": "X",
+          "url": "https://x.com/ZardSi/status/2030770808919101570",
+          "published_at": "2026-03-09",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Israeli Jewish nationals who fled their homes in fear of Iranian missile attacks and went to Poland are reportedly being harassed by Polish nationals at airport."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-KRAKOW-ISRAELHAYOM",
+          "surface": "WEBSITE",
+          "url": "https://www.israelhayom.com/2026/01/27/haredi-jews-attacked-krakow-airport-poland/",
+          "published_at": "2026-01-27",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Contemporaneous January 27 reporting documented the Krakow incident before the Iran war and said the Haredi travelers were preparing to board a flight from Poland to Israel."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-KRAKOW-JSOC",
+          "surface": "WEBSITE",
+          "url": "https://www.gov.il/BlobFolder/reports/israel-and-us-strikes-in-iran-daily-status_9_3_26/en/mashlat_Roaring_Lion_israel-and-us-strikes-in-iran-daily-status_9_3_26.pdf",
+          "published_at": "2026-03-09",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "The public report preserves the exact @ZardSi post/status and identifies the recycled January Krakow footage in the Iran-war narrative."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact ZardSi status as preserved in a public-document capture plus contemporaneous January reporting on the underlying Krakow airport incident.",
+        "checked_at": "2026-09-22T09:27:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The footage predates the war and documented travelers preparing to return to Israel, not Israelis who had fled Israel because of Iranian missile attacks.",
+        "search_notes": "The underlying harassment incident was real; the war-refugee/fleeing context attached to it was false.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real Krakow harassment event; score only the false current-war/fleeing recontextualization.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any broader civilian-flight narrative remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-ZARDSI-DELHI-DEFENCE-FACILITY-20260312",
+      "source_id": "WOL-SRC-ZARDSI",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-12",
+      "first_observed_at": "2026-03-12",
+      "statement_identity": "@ZardSi presented footage of a Delhi market-area fire as a massive fire at a joint India-Israel defence facility and framed it as conflict-related.",
+      "source_information_event_id": "ZARDSI-X-DELHI-DEFENCE-FACILITY-20260312",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-DELHI-X",
+          "surface": "X",
+          "url": "https://x.com/ZardSi/status/2031854109528375670",
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Massive fire erupts at a joint India-Israel defence facility in Delhi, reportedly killing multiple workers from India and Israel. Indian media is blaming pro-Iran supporters in India for this."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-DELHI-ALTNEWS",
+          "surface": "WEBSITE",
+          "url": "https://www.altnews.in/footage-of-uttam-nagar-fish-market-fire-viral-as-explosion-in-india-israel-joint-defence-facility-in-delhi/",
+          "published_at": "2026-03-14",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Alt News traced the viral footage to a March 12 fire in the Uttam Nagar/Machhli Mandi market area and found it did not depict an India-Israel defence facility."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-DELHI-ASIANET",
+          "surface": "WEBSITE",
+          "url": "https://newsable.asianetnews.com/india/fact-check-viral-claim-of-fire-at-india-israel-defence-facility-in-delhi-debunked-articleshow-gro8pss",
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Asianet reported that India's MEA Fact Check unit said no such joint defence-facility fire occurred and linked the viral footage to an unrelated Delhi fire."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact @ZardSi status, Alt News reverse-image/provenance work, contemporaneous local reporting on the Uttam Nagar fire and additional reporting on the official denial.",
+        "checked_at": "2026-09-22T09:27:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The depicted event was a fire in the Uttam Nagar/Machhli Mandi market area, not a joint India-Israel defence installation.",
+        "search_notes": "The direct facility identity is scored. The hedged casualty wording and attributed claim about whom Indian media blamed are not separately counted as independent award incidents.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the false facility/event recontextualization; preserve the real Delhi fire as substrate.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical India-Israel facility or conflict-support proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-ZARDSI-DIMONA-INDIAN-ARREST-20260322",
+      "source_id": "WOL-SRC-ZARDSI",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-22",
+      "first_observed_at": "2026-03-22",
+      "statement_identity": "@ZardSi stated that Israeli police arrested an Indian man for filming widespread destruction near Dimona and Arad after an Iranian strike.",
+      "source_information_event_id": "ZARDSI-X-DIMONA-INDIAN-ARREST-20260322",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-DIMONA-X",
+          "surface": "X",
+          "url": "https://x.com/ZardSi/status/2035637014272626752",
+          "published_at": "2026-03-22",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Israeli police have arrested an Indian man for filming a video showing widespread destruction near the Dimona nuclear facility and Arad, Israel."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ZARDSI-DIMONA-ONLYFACT",
+          "surface": "WEBSITE",
+          "url": "https://onlyfact.in/claim-about-israeli-police-arresting-indian-man-for-showing-widespread-destruction-is-fake/",
+          "published_at": "2026-03-23",
+          "captured_at": "2026-09-22T09:27:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "OnlyFact preserved the ZardSi post and found no credible or official reporting supporting the claimed arrest while confirming real Iranian strike damage in southern Israeli cities."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Exact ZardSi post preserved by the fact-check plus searches of major international/Israeli reporting and official-source coverage for the alleged arrest.",
+        "checked_at": "2026-09-22T09:27:00-04:00",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "Real Iranian strike damage in southern Israel did not establish that Israeli police arrested an Indian worker for filming near Dimona/Arad; no corroborating arrest report was found.",
+        "search_notes": "WOL preserves the strike/damage substrate and scores the asserted arrest as unsupported. Absence of disproof alone would not be enough; the finding relies on the documented support search and lack of any corroborating arrest evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not convert the real Dimona/Arad strike-damage context into support for the separate arrest proposition.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical strike-damage proposition remains separate from the unsupported arrest story."
     }
   ]
 }
