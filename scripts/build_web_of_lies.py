@@ -316,6 +316,7 @@ def validate_forensic_input(
         events_by_source[source_id].add(event_id)
 
     incident_ids: set[str] = set()
+    behavior_incidents_by_id: dict[str, dict[str, Any]] = {}
     for incident in source_behavior_incidents:
         incident_id = str(incident.get("incident_id") or "").strip()
         if not incident_id or incident_id in incident_ids:
@@ -323,17 +324,48 @@ def validate_forensic_input(
                 f"duplicate or missing source behavior incident id: {incident_id!r}"
             )
         incident_ids.add(incident_id)
+        behavior_incidents_by_id[incident_id] = incident
+
+    all_upstream_bullshit_events: dict[str, dict[str, Any]] = {
+        **events_by_id,
+        **behavior_incidents_by_id,
+    }
+
+    for incident in source_behavior_incidents:
+        incident_id = str(incident.get("incident_id") or "").strip()
         source_id = str(incident.get("source_id") or "").strip()
         if source_id not in source_ids:
             raise ValueError(
                 f"source behavior incident {incident_id} references unknown source profile {source_id}"
             )
         event_type = str(incident.get("event_type") or "")
-        if event_type not in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
+        if event_type not in UNSUPPORTED_BULLSHIT_EVENT_TYPES | {AMPLIFICATION_BULLSHIT_EVENT_TYPE}:
             raise ValueError(
                 f"source behavior incident {incident_id} has unsupported event type {event_type}"
             )
-        if not unsupported_evidence_gate_satisfied(incident, governance):
+        if event_type == AMPLIFICATION_BULLSHIT_EVENT_TYPE:
+            if not amplification_evidence_gate_satisfied(incident, governance):
+                raise ValueError(
+                    f"source behavior incident {incident_id} lacks the verified "
+                    "derivative-amplification review required for WOL-native scoring"
+                )
+            upstream_id = str(incident.get("upstream_qualifying_incident_id") or "").strip()
+            if upstream_id == incident_id:
+                raise ValueError(
+                    f"source behavior incident {incident_id} cannot amplify itself"
+                )
+            upstream = all_upstream_bullshit_events.get(upstream_id)
+            if upstream is None:
+                raise ValueError(
+                    f"source behavior incident {incident_id} references unknown "
+                    f"upstream qualifying incident {upstream_id}"
+                )
+            if not bullshit_qualifying_event(upstream, governance):
+                raise ValueError(
+                    f"source behavior incident {incident_id} references upstream "
+                    f"event {upstream_id} that is not qualifying bullshit"
+                )
+        elif not unsupported_evidence_gate_satisfied(incident, governance):
             raise ValueError(
                 f"source behavior incident {incident_id} lacks the documented "
                 "no-support evidentiary review required for WOL-native scoring"
@@ -669,6 +701,7 @@ UNSUPPORTED_BULLSHIT_EVENT_TYPES = {
     "UNSUPPORTED_INFERENTIAL_ASSERTION",
     "EVIDENTIARY_EVASION",
 }
+AMPLIFICATION_BULLSHIT_EVENT_TYPE = "AMPLIFIES_QUALIFYING_BULLSHIT"
 
 
 def unsupported_evidence_gate_satisfied(
@@ -701,6 +734,35 @@ def unsupported_evidence_gate_satisfied(
     return True
 
 
+def amplification_evidence_gate_satisfied(
+    event: dict[str, Any],
+    governance: dict[str, Any],
+) -> bool:
+    """Require a proved amplifier publication tied to already-qualifying bullshit."""
+    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
+    if not cfg.get("amplification_counts"):
+        return False
+    if str(event.get("event_type") or "") != AMPLIFICATION_BULLSHIT_EVENT_TYPE:
+        return False
+    if cfg.get("amplification_requires_upstream_qualifying_reference"):
+        if not str(event.get("upstream_qualifying_incident_id") or "").strip():
+            return False
+    if cfg.get("amplification_requires_publication_receipt"):
+        if not list(event.get("public_receipts") or []):
+            return False
+    review = event.get("amplification_review") or {}
+    if str(review.get("status") or "") != "VERIFIED_DERIVATIVE_AMPLIFICATION":
+        return False
+    if str(review.get("underlying_claim_status") or "") != "UPSTREAM_QUALIFYING_BULLSHIT_ESTABLISHED":
+        return False
+    if cfg.get("amplification_requires_adoption_without_meaningful_correction"):
+        if str(review.get("corrective_framing_status") or "") != "NO_MEANINGFUL_CORRECTIVE_FRAMING":
+            return False
+    if not str(review.get("amplification_mode") or "").strip():
+        return False
+    return True
+
+
 def bullshit_qualifying_event(
     event: dict[str, Any],
     governance: dict[str, Any],
@@ -713,6 +775,8 @@ def bullshit_qualifying_event(
         return False
     if event_type == "REPORTS":
         return False
+    if event_type == AMPLIFICATION_BULLSHIT_EVENT_TYPE:
+        return amplification_evidence_gate_satisfied(event, governance)
     if event_type in UNSUPPORTED_BULLSHIT_EVENT_TYPES:
         return unsupported_evidence_gate_satisfied(event, governance)
     qualifying_types = set(cfg.get("qualifying_event_types") or [])
