@@ -18,7 +18,7 @@
     },
     {
       "role": "graph_runtime",
-      "path": "vendor/mermaid/mermaid.min.js"
+      "path": "vendor/cytoscape/cytoscape.min.js"
     },
     {
       "role": "base_runtime",
@@ -214,7 +214,8 @@
     "vendor/cytoscape/VERSION.json",
     "vendor/cytoscape/cytoscape.min.js",
     "vendor/mermaid/LICENSE",
-    "vendor/mermaid/VERSION.json"
+    "vendor/mermaid/VERSION.json",
+    "vendor/mermaid/mermaid.min.js"
   ],
   "current_package_support": [
     "assets/flags/ae.svg",
@@ -247,6 +248,8 @@
     "assets/flags/tr.svg",
     "assets/flags/us.svg",
     "assets/flags/ye.svg",
+    "vendor/cytoscape/LICENSE",
+    "vendor/cytoscape/VERSION.json",
     "vendor/leaflet/LICENSE",
     "vendor/leaflet/VERSION.json",
     "vendor/leaflet/images/layers-2x.png",
