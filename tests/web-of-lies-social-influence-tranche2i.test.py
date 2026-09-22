@@ -81,7 +81,8 @@ assert "predates the March 2026" in evacuation["evidentiary_support_review"]["cl
 
 uae_ai = incidents["WOL-BS-WMX-UAE-SKYSCRAPER-AI-20260311"]
 assert "AI-generated" in uae_ai["evidentiary_support_review"]["claimant_basis_note"]
-assert "does not infer" in uae_ai["downstream_note"]
+assert "do not infer" in uae_ai["downstream_note"]
+assert "@WMX_MEDIA created the video" in uae_ai["downstream_note"]
 
 queens = incidents["WOL-BS-WMX-ISRAEL-INTEL-HQ-QUEENS-FIRE-20260312"]
 assert "Queens, New York" in queens["evidentiary_support_review"]["claimant_basis_note"]
