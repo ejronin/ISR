@@ -489,9 +489,9 @@ def validate_extended_forensic_input(
             raise ValueError(
                 f"amplification observation {observation_id} lacks bullshitter_source_id"
             )
-        if not str(observation.get("bullshitter_incident_id") or "").strip():
+        if not str(observation.get("bullshitter_event_id") or "").strip():
             raise ValueError(
-                f"amplification observation {observation_id} lacks bullshitter_incident_id"
+                f"amplification observation {observation_id} lacks bullshitter_event_id"
             )
         if not str(observation.get("amplifier_id") or "").strip():
             raise ValueError(
@@ -500,6 +500,12 @@ def validate_extended_forensic_input(
         if not str(observation.get("amplifier_display_name") or "").strip():
             raise ValueError(
                 f"amplification observation {observation_id} lacks amplifier_display_name"
+            )
+        amplifier_source_id = str(observation.get("amplifier_source_id") or "").strip()
+        if amplifier_source_id and amplifier_source_id not in profile_ids:
+            raise ValueError(
+                f"amplification observation {observation_id} references unknown "
+                f"amplifier source profile {amplifier_source_id}"
             )
         receipts = list(observation.get("public_receipts") or [])
         if not receipts:
