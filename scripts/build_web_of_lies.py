@@ -974,6 +974,7 @@ COUNTRY_CODE_BY_REGION = {
     "United Kingdom": "GB",
     "Saudi Arabia": "SA",
     "United Arab Emirates": "AE",
+    "Singapore": "SG",
     "Iraq": "IQ",
     "Yemen": "YE",
 }
