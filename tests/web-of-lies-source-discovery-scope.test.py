@@ -83,5 +83,5 @@ assert all("coordination" not in r.get("evidence_value", "").lower() for r in za
 print(
     "web-of-lies source discovery scope: PASS "
     "conflict=IRAN_WAR_2026 retained_material_discoveries=3 "
-    "off_scope_sources_removed=7 amplifier_liability=own_events_only"
+    "off_scope_sources_removed=7 megaphones=propagation_only"
 )
