@@ -61,16 +61,17 @@ assert jgg["classification_basis_receipts"]
 assert jgg["revenue_basis_receipts"]
 assert jgg["source_awards"] == []
 
-# Expertise is bounded to what the receipts establish. Lim's one WOL-native
-# unsupported causal incident remains separate and does not become an award.
+# Expertise is bounded to what the receipts establish. Descriptive expertise
+# neither creates nor erases independently derived source-behavior awards.
 lim = profiles["WOL-SRC-LIM-TEAN"]
 assert lim["behavior_classes"] == ["SUBJECT_MATTER_ANALYST"]
 assert "shipping/admiralty" in lim["expertise_scope"]
 assert lim["classification_basis_receipts"]
-assert lim["source_awards"] == []
+assert [a["award_code"] for a in lim["source_awards"]] == ["BULLSHITTER"]
 lim_incidents = [row for row in incidents.values() if row["source_id"] == "WOL-SRC-LIM-TEAN"]
-assert len(lim_incidents) == 1
-assert lim_incidents[0]["event_type"] == "UNSUPPORTED_INFERENTIAL_ASSERTION"
+assert len(lim_incidents) == 6
+assert any(row["event_type"] == "UNSUPPORTED_INFERENTIAL_ASSERTION" for row in lim_incidents)
+assert any(row["event_type"] == "UNSUPPORTED_FACTUAL_ASSERTION" for row in lim_incidents)
 
 # Collaboration/quotation evidence preserves only the relationship actually
 # proved. It cannot silently mutate into affiliation, employment or control.
