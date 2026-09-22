@@ -54,7 +54,7 @@ assert.match(iaSource, /function WebOfLiesPage\(/);
 assert.match(iaSource, /No qualifying source in this evidence slice/);
 assert.match(iaSource, /Prove the pattern; then call the pattern what it is\./);
 assert.match(iaSource, /Explore the propagation graph/);
-assert.match(iaSource, /wol-cytoscape-host/);
+assert.match(iaSource, /wol-mermaid-host/);
 assert.match(iaSource, /mermaid\.render/);
 assert.match(iaSource, /bullshitter_source_count/);
 assert.match(iaSource, /CONFIRMED_BOT/);
@@ -72,4 +72,4 @@ if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.informa
   assert(derived.claim_families.length > 0, 'canonical claim-family registry should still be populated before source forensics are seeded');
 }
 
-console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, buried route, signed TRACE links, deterministic ranking contract, interactive Cytoscape graph, and no manual Hall selection`);
+console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, buried route, signed TRACE links, deterministic ranking contract, and no manual Hall selection`);
