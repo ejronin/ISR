@@ -8,7 +8,7 @@
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Tranche 1 legacy influence migration plus Tranche 2A named-lead identity resolution. Source dossiers remain contextual; claim-family incidents and native discoveries are scored/routed separately.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -50,6 +50,51 @@
       "identity_limit": "Generic display name; this profile refers only to the specific BRICS4CLICKS account observed by ISD."
     },
     {
+      "source_id": "WOL-SRC-DEFIANCE-DAILY",
+      "display_name": "DEFIANCE Daily",
+      "source_entity_type": "OUTLET",
+      "country_region": "United States",
+      "primary_platform": "Substack",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-DEFIANCE-DAILY",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "DEFIANCE.org",
+        "Defiance Daily"
+      ],
+      "platform_accounts": []
+    },
+    {
+      "source_id": "WOL-SRC-DON-LEMON-SHOW",
+      "display_name": "The Don Lemon Show",
+      "source_entity_type": "OUTLET",
+      "country_region": "United States",
+      "primary_platform": "Podcast",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-DON-LEMON-SHOW",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "Don Lemon Show"
+      ],
+      "platform_accounts": []
+    },
+    {
       "source_id": "WOL-SRC-EL-MARQUES-XD-FB",
       "display_name": "El Marques XD",
       "source_entity_type": "ACCOUNT",
@@ -88,11 +133,13 @@
       "country_region": null,
       "primary_platform": "Telegram",
       "behavior_classes": [
-        "UNKNOWN"
+        "MONETIZED_INFLUENCER"
       ],
       "authenticity_class": "HUMAN_ACCOUNT",
       "revenue_model": [
-        "UNKNOWN_REVENUE_MODEL"
+        "PATREON",
+        "DONATIONS",
+        "SPONSORED_CONTENT"
       ],
       "classification_basis_event_ids": [],
       "revenue_basis_event_ids": [],
@@ -119,7 +166,73 @@
           "account_state": "PUBLIC_HANDLE_REPORTED_BY_OWN_MEDIA_ECOSYSTEM"
         }
       ],
-      "identity_context": "Public Telegram identity plus recurring public media appearances; relationship to Press TV is modeled separately as a quoted-commentator edge."
+      "identity_context": "Public Telegram identity plus recurring public media appearances; relationship to Press TV is modeled separately as a quoted-commentator edge.",
+      "classification_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-ETHAN-PATREON-ROLE-20260921",
+          "surface": "WEBSITE",
+          "url": "https://www.patreon.com/EthanLevins/about",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "behavior_classes": [
+            "MONETIZED_INFLUENCER"
+          ],
+          "text_excerpt": "Ethan Levins publicly operates a Patreon under his own name as a political commentator with paid membership support."
+        }
+      ],
+      "revenue_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-ETHAN-PATREON-REVENUE-20260921",
+          "surface": "WEBSITE",
+          "url": "https://www.patreon.com/EthanLevins/about",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revenue_classes": [
+            "PATREON"
+          ],
+          "text_excerpt": "Public Patreon membership page for Ethan Levins."
+        },
+        {
+          "receipt_id": "WOL-PROFILE-ETHAN-DONATIONS-TELEGRAM-20260921",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/ethanlevins",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revenue_classes": [
+            "DONATIONS"
+          ],
+          "text_excerpt": "Official Telegram description links a PayPal donation page."
+        },
+        {
+          "receipt_id": "WOL-PROFILE-ETHAN-SPONSORED-TELEGRAM-20260921",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/ethanlevins",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revenue_classes": [
+            "SPONSORED_CONTENT"
+          ],
+          "text_excerpt": "Public Telegram includes a post expressly marked '~ Paid Partnership ~' for SweepFan."
+        }
+      ],
+      "public_role_context": [
+        "Own Patreon: political commentator.",
+        "Rachel Blevins Substack: independent journalist.",
+        "Press TV: US/geopolitical journalist.",
+        "Atlas preserves these public labels as context rather than selecting a stronger affiliation claim."
+      ]
     },
     {
       "source_id": "WOL-SRC-INN-IRAN-NATIONAL-NEWS",
@@ -188,11 +301,13 @@
       "country_region": "United States",
       "primary_platform": "Substack",
       "behavior_classes": [
-        "UNKNOWN"
+        "ACTIVIST_COMMENTATOR",
+        "MONETIZED_INFLUENCER"
       ],
       "authenticity_class": "HUMAN_ACCOUNT",
       "revenue_model": [
-        "UNKNOWN_REVENUE_MODEL"
+        "PAID_SUBSTACK",
+        "MEMBERSHIP"
       ],
       "classification_basis_event_ids": [],
       "revenue_basis_event_ids": [],
@@ -220,7 +335,58 @@
           "account_state": "USER_SUPPLIED_PUBLIC_SEED"
         }
       ],
-      "identity_context": "Public reporting and Jolly Good Ginger's publication presence identify the creator as Russell Ellis. Identity resolution does not imply any behavior finding."
+      "identity_context": "Public reporting and Jolly Good Ginger's publication presence identify the creator as Russell Ellis. Identity resolution does not imply any behavior finding.",
+      "classification_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-JGG-ACTIVIST-SUBSTACK-20260921",
+          "surface": "SUBSTACK",
+          "url": "https://substack.com/@jollygoodginger",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "behavior_classes": [
+            "ACTIVIST_COMMENTATOR"
+          ],
+          "text_excerpt": "Jolly Good Ginger's Substack self-description says he has chosen to be 'the voice of resistance.'"
+        },
+        {
+          "receipt_id": "WOL-PROFILE-JGG-MONETIZED-SUBSTACK-20260921",
+          "surface": "SUBSTACK",
+          "url": "https://jollygoodginger.substack.com/p/jan-21-2025-what-happened-whats-next",
+          "archive_url": null,
+          "published_at": "2025-01-23",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "behavior_classes": [
+            "MONETIZED_INFLUENCER"
+          ],
+          "text_excerpt": "Jolly Good Ginger publishes paid subscriber-only Substack episodes."
+        }
+      ],
+      "revenue_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-JGG-PAID-SUBSTACK-20260921",
+          "surface": "SUBSTACK",
+          "url": "https://jollygoodginger.substack.com/p/jan-21-2025-what-happened-whats-next",
+          "archive_url": null,
+          "published_at": "2025-01-23",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revenue_classes": [
+            "PAID_SUBSTACK",
+            "MEMBERSHIP"
+          ],
+          "text_excerpt": "The post is explicitly labeled a paid episode available to paid subscribers."
+        }
+      ],
+      "public_role_context": [
+        "Public interview bios describe Russell Ellis / Jolly Good Ginger as a social-media activist and former U.S. Army service member.",
+        "Activism and monetization are descriptive context, not adverse WOL findings."
+      ]
     },
     {
       "source_id": "WOL-SRC-KIM-JONG-UN-PARODY",
@@ -248,7 +414,7 @@
       "country_region": "Singapore",
       "primary_platform": "Web",
       "behavior_classes": [
-        "UNKNOWN"
+        "SUBJECT_MATTER_ANALYST"
       ],
       "authenticity_class": "HUMAN_ACCOUNT",
       "revenue_model": [
@@ -262,7 +428,39 @@
         "Lim Tean"
       ],
       "platform_accounts": [],
-      "identity_context": "Public political/commentary identity confirmed. Sampled July Hormuz transit figures were cross-checked against independent maritime reporting and did not produce an adverse WOL finding."
+      "identity_context": "Public political/commentary identity confirmed. Sampled July Hormuz transit figures were cross-checked against independent maritime reporting and did not produce an adverse WOL finding.",
+      "classification_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-LIM-SUBSTACK-ROLE-20260921",
+          "surface": "SUBSTACK",
+          "url": "https://substack.com/@limtean",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "behavior_classes": [
+            "SUBJECT_MATTER_ANALYST"
+          ],
+          "text_excerpt": "Lim Tean publicly describes himself as a lawyer and geopolitical analyst."
+        },
+        {
+          "receipt_id": "WOL-PROFILE-LIM-SHIPPING-LAW-EXPERTISE-20260921",
+          "surface": "WEBSITE",
+          "url": "https://v1.lawgazette.com.sg/2000-3/focus4.htm",
+          "archive_url": null,
+          "published_at": "2000",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "behavior_classes": [
+            "SUBJECT_MATTER_ANALYST"
+          ],
+          "text_excerpt": "Singapore Law Gazette identifies Lim Tean as a partner in a shipping-law department and quotes him on shipping-law practice."
+        }
+      ],
+      "revenue_basis_receipts": [],
+      "expertise_scope": "Receipt-backed expertise is strongest for shipping/admiralty law and commercial maritime practice. It does not automatically establish expertise in military intelligence, weapons performance, or every geopolitical topic."
     },
     {
       "source_id": "WOL-SRC-MEIDASTOUCH",
@@ -271,11 +469,12 @@
       "country_region": "United States",
       "primary_platform": "YouTube",
       "behavior_classes": [
-        "UNKNOWN"
+        "JOURNALISTIC_SOURCE"
       ],
       "authenticity_class": "UNKNOWN",
       "revenue_model": [
-        "UNKNOWN_REVENUE_MODEL"
+        "PATREON",
+        "MEMBERSHIP"
       ],
       "classification_basis_event_ids": [],
       "revenue_basis_event_ids": [],
@@ -299,6 +498,71 @@
           "handle": null,
           "url": "https://www.meidastouch.com/",
           "display_name": "MeidasTouch",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "classification_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-MEIDAS-JOURNALISTIC-ROLE-20260921",
+          "surface": "WEBSITE",
+          "url": "https://www.patreon.com/meidastouch/about",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "behavior_classes": [
+            "JOURNALISTIC_SOURCE"
+          ],
+          "text_excerpt": "MeidasTouch publicly describes itself as an independent news/media network combining news coverage and commentary."
+        }
+      ],
+      "revenue_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-MEIDAS-PATREON-REVENUE-20260921",
+          "surface": "WEBSITE",
+          "url": "https://www.patreon.com/meidastouch/about",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revenue_classes": [
+            "PATREON",
+            "MEMBERSHIP"
+          ],
+          "text_excerpt": "Public MeidasTouch Patreon offers paid membership tiers and exclusive content."
+        }
+      ],
+      "editorial_position_context": "The network publicly describes itself as unapologetically pro-democracy and explicitly rejects a 'both-sides' editorial posture. Atlas records that self-description without converting it into an adverse class."
+    },
+    {
+      "source_id": "WOL-SRC-MICHAEL-COHEN-SUBSTACK",
+      "display_name": "Michael Cohen Substack",
+      "source_entity_type": "PERSON",
+      "country_region": "United States",
+      "primary_platform": "Substack",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "HUMAN_ACCOUNT",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-MICHAEL-COHEN-SUBSTACK",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "Michael Cohen"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-MICHAEL-COHEN-SUBSTACK",
+          "platform": "SUBSTACK",
+          "handle": null,
+          "url": "https://therealmichaelcohen.substack.com/",
+          "display_name": "Michael Cohen",
           "account_state": "ACTIVE_PUBLIC"
         }
       ]
@@ -423,6 +687,37 @@
       "identity_context": "Cross-platform brand identity is public; no real-world operator identity is inferred."
     },
     {
+      "source_id": "WOL-SRC-RACHEL-BLEVINS",
+      "display_name": "Rachel Blevins",
+      "source_entity_type": "PERSON",
+      "country_region": "United States",
+      "primary_platform": "Substack",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "HUMAN_ACCOUNT",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-RACHEL-BLEVINS",
+      "identity_confidence": "HIGH",
+      "aliases": [
+        "Rachel Blevins"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-RACHEL-BLEVINS-SUBSTACK",
+          "platform": "SUBSTACK",
+          "handle": "@rachelblevins",
+          "url": "https://rachelblevins.substack.com/",
+          "display_name": "Rachel Blevins",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ]
+    },
+    {
       "source_id": "WOL-SRC-TIMES-OF-IRAN-NEWS",
       "display_name": "Times of Iran News",
       "source_entity_type": "ACCOUNT",
@@ -487,11 +782,11 @@
       "country_region": null,
       "primary_platform": "YouTube",
       "behavior_classes": [
-        "UNKNOWN"
+        "MONETIZED_INFLUENCER"
       ],
       "authenticity_class": "HUMAN_ACCOUNT",
       "revenue_model": [
-        "UNKNOWN_REVENUE_MODEL"
+        "PATREON"
       ],
       "classification_basis_event_ids": [],
       "revenue_basis_event_ids": [],
@@ -520,7 +815,39 @@
           "account_state": "USER_SUPPLIED_PUBLIC_SEED"
         }
       ],
-      "identity_context": "Public Valenti Videos channel identifies the creator as Chris Valenti; exact Facebook seed supplied by the project owner."
+      "identity_context": "Public Valenti Videos channel identifies the creator as Chris Valenti; exact Facebook seed supplied by the project owner.",
+      "classification_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-VALENTI-PATREON-ROLE-20260921",
+          "surface": "WEBSITE",
+          "url": "https://www.patreon.com/cw/ValentiVideos",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "behavior_classes": [
+            "MONETIZED_INFLUENCER"
+          ],
+          "text_excerpt": "Chris Valenti identifies the Patreon as ValentiVideos and asks viewers to support his content for bonus videos and livestreams."
+        }
+      ],
+      "revenue_basis_receipts": [
+        {
+          "receipt_id": "WOL-PROFILE-VALENTI-PATREON-REVENUE-20260921",
+          "surface": "WEBSITE",
+          "url": "https://www.patreon.com/cw/ValentiVideos",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "revenue_classes": [
+            "PATREON"
+          ],
+          "text_excerpt": "Public ValentiVideos Patreon membership page."
+        }
+      ]
     },
     {
       "source_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
@@ -618,6 +945,39 @@
       "provenance_mode": "PUBLIC_OSINT"
     },
     {
+      "relationship_id": "WOL-REL-ETHAN-HOSTED-BY-RACHEL-BLEVINS-2026",
+      "from_id": "WOL-SRC-ETHAN-LEVINS",
+      "to_id": "WOL-SRC-RACHEL-BLEVINS",
+      "relationship_type": "HOSTED_BY",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-ETHAN-RACHEL-JUL9-20260921",
+          "surface": "SUBSTACK",
+          "url": "https://rachelblevins.substack.com/p/russia-ukraine-fortress-belt-ethan-levins",
+          "archive_url": null,
+          "published_at": "2026-07-09",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Rachel Blevins published a transcript/episode featuring Ethan Levins and identifying him as an independent journalist."
+        },
+        {
+          "receipt_id": "WOL-RCPT-ETHAN-RACHEL-SEP1-20260921",
+          "surface": "SUBSTACK",
+          "url": "https://rachelblevins.substack.com/p/russia-ukraine-odessa-war-ethan-levins",
+          "archive_url": null,
+          "published_at": "2026-09-01",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "A second Rachel Blevins Substack episode again features Ethan Levins."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT",
+      "relationship_scope": "Recurring hosted appearances. Does not establish employment, common ownership, editorial control, agency or state direction."
+    },
+    {
       "relationship_id": "WOL-REL-INN-MEMBER-VERIFIED4WAR",
       "from_id": "WOL-SRC-INN-IRAN-NATIONAL-NEWS",
       "to_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
@@ -637,6 +997,72 @@
         }
       ],
       "provenance_mode": "PUBLIC_OSINT"
+    },
+    {
+      "relationship_id": "WOL-REL-JGG-HOSTED-BY-DEFIANCE-IRAN-20260302",
+      "from_id": "WOL-SRC-JOLLY-GOOD-GINGER",
+      "to_id": "WOL-SRC-DEFIANCE-DAILY",
+      "relationship_type": "HOSTED_BY",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-JGG-DEFIANCE-IRAN-MAR2-20260921",
+          "surface": "SUBSTACK",
+          "url": "https://www.defiance.news/p/the-war-trump-cant-explain-with-jolly",
+          "archive_url": null,
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "DEFIANCE Daily published a paid Iran-war episode featuring Russell 'Jolly Good Ginger' Ellis."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT",
+      "relationship_scope": "Paid-host publication and guest appearance; does not establish editorial control or organizational membership."
+    },
+    {
+      "relationship_id": "WOL-REL-JGG-HOSTED-BY-DON-LEMON-2026",
+      "from_id": "WOL-SRC-JOLLY-GOOD-GINGER",
+      "to_id": "WOL-SRC-DON-LEMON-SHOW",
+      "relationship_type": "HOSTED_BY",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-JGG-DON-LEMON-AUG22-20260921",
+          "surface": "PODCAST",
+          "url": "https://podcastrex.com/shows/the-don-lemon-show/dear-white-people-with-jolly-good-ginger/transcript",
+          "archive_url": null,
+          "published_at": "2026-08-22",
+          "captured_at": "2026-09-21",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Public transcript preserves a Don Lemon Show interview with Jolly Good Ginger."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT",
+      "relationship_scope": "Guest/host relationship only; no ownership or control inference."
+    },
+    {
+      "relationship_id": "WOL-REL-JGG-HOSTED-BY-MICHAEL-COHEN-2026",
+      "from_id": "WOL-SRC-JOLLY-GOOD-GINGER",
+      "to_id": "WOL-SRC-MICHAEL-COHEN-SUBSTACK",
+      "relationship_type": "HOSTED_BY",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-JGG-MICHAEL-COHEN-JAN16-20260921",
+          "surface": "SUBSTACK",
+          "url": "https://therealmichaelcohen.substack.com/p/live-with-michael-cohen-and-jolly-d5b",
+          "archive_url": null,
+          "published_at": "2026-01-16",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Michael Cohen's Substack published a live video with Jolly Good Ginger."
+        }
+      ],
+      "provenance_mode": "PUBLIC_OSINT",
+      "relationship_scope": "Public collaborative/hosted appearance only; no ownership or control inference."
     },
     {
       "relationship_id": "WOL-REL-KIM-MEMBER-VERIFIED4WAR",
@@ -718,10 +1144,21 @@
           "provenance_status": "ORIGINAL_URL",
           "deletion_status": "AVAILABLE",
           "text_excerpt": "Press TV publicly quoted Ethan Levins on Iran's missile capabilities."
+        },
+        {
+          "receipt_id": "WOL-RCPT-PRESSTV-ETHAN-MAY8-20260921",
+          "surface": "WEBSITE",
+          "url": "https://www.presstv.co.uk/Detail/2026/05/08/768246/US-naval-blockade-against-Iran-considered-a-war-crime",
+          "archive_url": null,
+          "published_at": "2026-05-08",
+          "captured_at": "2026-09-21",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV article quotes Ethan Levins at length and labels him a geopolitical journalist."
         }
       ],
       "provenance_mode": "PUBLIC_OSINT",
-      "relationship_scope": "Quoted/hosted commentary only; does not establish control, employment, agency or state direction."
+      "relationship_scope": "Repeated public quotation/interview reuse by Press TV. Does not establish control, employment, agency, common ownership or state direction."
     },
     {
       "relationship_id": "WOL-REL-TIMES-MEMBER-VERIFIED4WAR",
