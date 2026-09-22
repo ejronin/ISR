@@ -2639,8 +2639,10 @@
       }
       if (root && typeof root.requestAnimationFrame === 'function') {
         root.requestAnimationFrame(() => initializeGraphWhenMounted(attempt + 1));
-      } else if (root && typeof root.setTimeout === 'function') {
-        root.setTimeout(() => initializeGraphWhenMounted(attempt + 1), 0);
+      } else if (root && typeof root.queueMicrotask === 'function') {
+        root.queueMicrotask(() => initializeGraphWhenMounted(attempt + 1));
+      } else {
+        Promise.resolve().then(() => initializeGraphWhenMounted(attempt + 1));
       }
     };
     initializeGraphWhenMounted(0);
