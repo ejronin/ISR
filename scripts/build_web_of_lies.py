@@ -1249,9 +1249,7 @@ def derive_award_propagation_graph(
         "edges": edges,
         "summary": {
             "bullshitter_nodes": len(awardee_ids),
-            "megaphone_nodes": sum(
-                1 for row in nodes.values() if row.get("node_type") == "MEGAPHONE"
-            ),
+            "megaphone_nodes": len(amplifier_awardees),
             "amplification_edges": len(edges),
             "cross_bullshitter_megaphones": sum(
                 1 for values in amplifier_awardees.values() if len(values) > 1
