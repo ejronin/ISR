@@ -33,7 +33,10 @@ media_rule = governance["osint_collection"]["media_analysis_review"]
 assert media_rule["factual_substrate_is_not_inferential_validation"] is True
 assert media_rule["accurate_number_does_not_validate_causal_bridge"] is True
 assert media_rule["accurate_quote_does_not_validate_motive_or_control_inference"] is True
-assert media_rule["upstream_adjudication_required_before_adverse_scoring"] is True
+assert media_rule["wol_evidence_gate_required_before_adverse_scoring"] is True
+assert media_rule["upstream_promotion_is_separate_from_wol_scoring"] is True
+assert "upstream_adjudication_required_before_adverse_scoring" not in media_rule
+assert "cannot grant, deny, delay, or override" in media_rule["rule"]
 
 # Lim: supported shipping substrate does not automatically validate his causal
 # bridge from "more bombs, fewer ships" to U.S. strikes producing the shutdown.
