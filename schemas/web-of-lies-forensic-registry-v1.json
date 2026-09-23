@@ -975,6 +975,13 @@
               "qualifying_incident_ids": {
                 "$ref": "#/$defs/string_array"
               },
+              "documented_incident_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "documented_incident_ids": {
+                "$ref": "#/$defs/string_array"
+              },
               "award_earned_at": {
                 "type": "string",
                 "minLength": 1
