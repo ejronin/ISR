@@ -31,6 +31,13 @@ assert profile_rule["collaboration_receipt_does_not_establish_control"] is True
 # history. It neither creates nor erases the Bullshitter award.
 ethan = profiles["WOL-SRC-ETHAN-LEVINS"]
 assert ethan["behavior_classes"] == ["MONETIZED_INFLUENCER"]
+assert {row["role_code"] for row in ethan["claimed_roles"]} == {"ANALYST", "JOURNALIST"}
+assert {row["appellation_code"] for row in ethan["role_failure_appellations"]} == {
+    "FAKE_ANALYST", "YELLOW_JOURNALISM"
+}
+assert {row["public_label"] for row in ethan["role_failure_appellations"]} == {
+    "Fake analyst", "Yellow journalism"
+}
 assert set(ethan["revenue_model"]) == {"PATREON", "DONATIONS", "SPONSORED_CONTENT"}
 assert ethan["classification_basis_receipts"]
 assert {x for r in ethan["revenue_basis_receipts"] for x in r["revenue_classes"]} == {
@@ -106,6 +113,36 @@ for source_id in {
 }:
     assert source_id not in hall_ids
 
+
+# Role-failure appellations fail closed without the source's own role claim.
+no_roles = copy.deepcopy(assembled)
+no_roles_ethan = next(
+    row for row in no_roles["source_profiles"]
+    if row["source_id"] == "WOL-SRC-ETHAN-LEVINS"
+)
+no_roles_ethan["claimed_roles"] = []
+no_roles_derived = wol.build_registry(canonical, no_roles, governance)
+no_roles_profile = next(
+    row for row in no_roles_derived["source_profiles"]
+    if row["source_id"] == "WOL-SRC-ETHAN-LEVINS"
+)
+assert no_roles_profile["role_failure_appellations"] == []
+assert [a["award_code"] for a in no_roles_profile["source_awards"]] == ["BULLSHITTER"]
+
+# Role claim alone cannot create an adverse label. Remove incident tags but keep
+# the self-description and the independently earned Bullshitter award.
+no_failures = copy.deepcopy(assembled)
+for row in no_failures["source_behavior_incidents"]:
+    if row["source_id"] == "WOL-SRC-ETHAN-LEVINS":
+        row["role_failure_tags"] = []
+no_failures_derived = wol.build_registry(canonical, no_failures, governance)
+no_failures_profile = next(
+    row for row in no_failures_derived["source_profiles"]
+    if row["source_id"] == "WOL-SRC-ETHAN-LEVINS"
+)
+assert no_failures_profile["role_failure_appellations"] == []
+assert [a["award_code"] for a in no_failures_profile["source_awards"]] == ["BULLSHITTER"]
+
 # Fail closed: an adverse class cannot be smuggled in via a profile receipt.
 bad = copy.deepcopy(assembled)
 bad_ethan = next(row for row in bad["source_profiles"] if row["source_id"] == "WOL-SRC-ETHAN-LEVINS")
@@ -131,5 +168,5 @@ else:
 
 print(
     "web-of-lies social profile evidence: PASS "
-    "descriptive_receipts=1 adverse_isolation=1 award_orthogonality=1"
+    "descriptive_receipts=1 adverse_isolation=1 role_failure_gates=1 award_orthogonality=1"
 )
