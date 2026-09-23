@@ -1701,6 +1701,66 @@
   ],
   "source_behavior_incidents": [
     {
+      "incident_id": "WOL-BS-ETHAN-134-MERKAVA-804M-20260401",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-04-01",
+      "first_observed_at": "2026-04-01",
+      "statement_identity": "Levins said Hezbollah had struck 134 IDF Merkava tanks and converted that number into an $804 million running loss total.",
+      "source_information_event_id": "ETHAN-X-134-MERKAVA-804M-20260401",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-134-MERKAVA-TWSTALKER",
+          "surface": "WEBSITE",
+          "url": "https://ngntipkolamrenang.twstalker.com/ZoharYaell",
+          "published_at": "2026-04-01",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: 'Hezbollah has now struck 134 IDF Merkava tanks. That’s $804 MILLION so far hit.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CTP-MERKAVA-20260402",
+          "surface": "WEBSITE",
+          "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-april-2-2026",
+          "published_at": "2026-04-02",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "CTP/ISW documented six Hezbollah FPV-drone attacks against IDF armored vehicles between March 31 and April 1 plus individual ATGM/IED attacks; it did not substantiate a 134-Merkava count.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CTP-MERKAVA-20260406",
+          "surface": "WEBSITE",
+          "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-april-6-2026",
+          "published_at": "2026-04-06",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "CTP/ISW later summarized six FPV attacks on IDF armored vehicles between March 25 and April 3, again not substantiating the claimed 134-tank tally.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "The contemporaneous incident record supported a much smaller set of specifically documented armored-vehicle attacks and provided no basis for the exact 134-Merkava tally. The $804 million figure then treated the claimed hit count as a full-value loss ledger without vehicle-by-vehicle BDA.",
+        "search_notes": "Recovered from the completed Levins source audit. Publication-event deduplication applies; multiple bad propositions in one post count once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "A handful of documented Hezbollah vehicle attacks became exactly 134 Merkavas and an $804M loss counter. The arithmetic is presentation, not evidence."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-19-TANKS-2006-PHOTO-20260327",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -1967,6 +2027,56 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "Real photo, wrong event, wrong city, invented assassination, then invented IRGC penetration."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-BENGVIR-17-MEETINGS-DEAD-20260319",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-19",
+      "first_observed_at": "2026-03-19",
+      "statement_identity": "Levins said Itamar Ben Gvir had missed 17 straight cabinet security meetings and concluded that Ben Gvir and Netanyahu were either underground or dead.",
+      "source_information_event_id": "ETHAN-X-BENGVIR-17-MEETINGS-DEAD-20260319",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-BENGVIR-17-TELEGRAM",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/LasNoticiasDelMundo/52531?q=%23EthanLevins",
+          "published_at": "2026-03-19",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: Ben Gvir missed '17 STRAIGHT cabinet security meetings' and he and Netanyahu were 'either underground or DEAD.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-INN-BENGVIR-PROOF-LIFE-20260318",
+          "surface": "WEBSITE",
+          "url": "https://www.israelnationalnews.com/news/424177",
+          "published_at": "2026-03-18",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Ben Gvir publicly responded on March 18 to false Iranian reports that he had been assassinated.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "No evidentiary basis was identified for the exact '17 straight' meeting count, and the death inference was contradicted by Ben Gvir's public response to the assassination rumor the previous day.",
+        "search_notes": "Recovered from the completed Levins source audit. Publication-event deduplication applies; multiple bad propositions in one post count once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "A made-up “17 straight meetings” count fed a death/bunker theory even though Ben Gvir was publicly responding to the death rumor the day before."
     },
     {
       "incident_id": "WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327",
@@ -2319,6 +2429,66 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "A seven-day gap in somebody else’s posting became a death certificate. Netanyahu then appeared publicly alive."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-ONLY-ONE-SYNAGOGUE-ISRAEL-BOMBED-202606",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins said only one synagogue was bombed during the Iran war and that Israel bombed it in Tehran.",
+      "source_information_event_id": "ETHAN-X-ONLY-ONE-SYNAGOGUE-202606",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-ONLY-ONE-SYNAGOGUE-TWSTALKER",
+          "surface": "WEBSITE",
+          "url": "https://ngntipkolamrenang.twstalker.com/jhoudiey",
+          "published_at": null,
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: 'There was ONLY 1 synagogue bombed during the Iran war. Israel bombed it in Tehran.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-AMNESTY-BEIT-SHEMESH-SYNAGOGUE",
+          "surface": "WEBSITE",
+          "url": "https://www.amnesty.org/en/latest/news/2026/03/israel-irans-missile-strike-that-killed-nine-civilians-must-be-investigated-as-a-war-crime-new-investigation/",
+          "published_at": "2026-03-31",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Amnesty documented that an Iranian ballistic missile destroyed the Tiferet Israel synagogue in Beit Shemesh on March 1.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TOI-TEHRAN-SYNAGOGUE-COLLATERAL",
+          "surface": "WEBSITE",
+          "url": "https://www.timesofisrael.com/iran-claims-tehran-synagogue-badly-damaged-in-israeli-airstrike-israeli-official-we-dont-target-synagogues/",
+          "published_at": "2026-04-07",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The IDF acknowledged that an Israeli strike targeting an Iranian commander caused collateral damage to the Rafi Niya synagogue in Tehran.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "At least two synagogue strikes were documented in the conflict: Iran destroyed Tiferet Israel in Beit Shemesh and an Israeli strike damaged the Rafi Niya synagogue in Tehran.",
+        "search_notes": "Recovered from the completed Levins source audit. Publication-event deduplication applies; multiple bad propositions in one post count once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "There were at least two documented synagogue strikes in the war: Iran destroyed one in Beit Shemesh; Israel damaged one in Tehran. “ONLY 1” is just false counting."
     },
     {
       "incident_id": "WOL-BS-ETHAN-ONLY-US-TROOPS-MISSILE-PROGRAMS-20260320",
@@ -2677,6 +2847,116 @@
       "public_bullshit_summary": "Visible damage does not prove that exactly two missiles caused all of it, much less prove thousands of ready missiles remain."
     },
     {
+      "incident_id": "WOL-BS-ETHAN-UKRAINE-OPERATORS-DEFEND-ISRAEL-20260318",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-18",
+      "first_observed_at": "2026-03-18",
+      "statement_identity": "Levins said Ukraine was sending drone operators to the Middle East to defend Israel.",
+      "source_information_event_id": "ETHAN-X-UKRAINE-OPERATORS-DEFEND-ISRAEL-20260318",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-UKRAINE-ISRAEL-TELEGRAM",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/LasNoticiasDelMundo/52531?q=%23EthanLevins",
+          "published_at": "2026-03-18",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: 'Ukraine is sending drone operators to the Middle East to defend Israel.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-EURONEWS-UKRAINE-ISRAEL-DIALOGUE",
+          "surface": "WEBSITE",
+          "url": "https://www.euronews.com/2026/03/17/kyiv-open-to-discussing-drone-interception-expertise-with-netanyahu-zelenskyy-says",
+          "published_at": "2026-03-17",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Zelenskyy was open to talks with Netanyahu about drone interceptors and expertise; existing deployed teams were in Qatar, UAE, Saudi Arabia and at U.S. bases in Jordan.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-REUTERS-UKRAINE-US-BASE-JORDAN",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/ukraine-sent-drone-experts-protect-us-bases-jordan-zelenskiy-tells-nyt-2026-03-09/",
+          "published_at": "2026-03-09",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters reported Ukrainian drone experts and interceptor drones were sent to help defend U.S. bases in Jordan.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "At the time Levins published, Ukraine had dispatched specialists to Gulf states and a U.S. base in Jordan while direct assistance to Israel was still being discussed. That record does not support 'sending operators ... to defend Israel' as an accomplished deployment.",
+        "search_notes": "Recovered from the completed Levins source audit. Publication-event deduplication applies; multiple bad propositions in one post count once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Ukraine sent counter-drone specialists to Gulf states and a U.S. base in Jordan; Levins rewrote that as operators being sent “to defend Israel” while Israel cooperation was still being discussed."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-USS-LIBERTY-34-BURNED-ALIVE-20260609",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-06-09",
+      "first_observed_at": "2026-06-09",
+      "statement_identity": "Levins said Thomas Massie confirmed that all 34 Americans killed aboard USS Liberty were burned alive by Israeli napalm, adding that their skin boiled from their bodies.",
+      "source_information_event_id": "ETHAN-X-USS-LIBERTY-34-BURNED-ALIVE-20260609",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-LIBERTY-NAPALM-TWSTALKER",
+          "surface": "WEBSITE",
+          "url": "https://twstalker.com/blackjesus786",
+          "published_at": "2026-06-09",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: '34 Americans were burned alive, skin boiling from their bodies, after the IDF dropped Napalm on the unarmed ship.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CONGRESSIONAL-RECORD-LIBERTY-20260608",
+          "surface": "WEBSITE",
+          "url": "https://www.govinfo.gov/content/pkg/CREC-2026-06-08/pdf/CREC-2026-06-08.pdf",
+          "published_at": "2026-06-08",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Massie said napalm was dropped on the bridge, but separately said a torpedo killed 25 people instantly. The 34 figure was the total U.S. death toll from the attack, not the number burned alive by napalm.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Massie's remarks do not say all 34 dead were burned by napalm; he explicitly said 25 were killed instantly by a torpedo. The added 'skin boiling' description is not part of the cited congressional account.",
+        "search_notes": "Recovered from the completed Levins source audit. Publication-event deduplication applies; multiple bad propositions in one post count once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Massie said napalm was used and 34 Americans died in the whole attack; Levins mutated that into all 34 being burned alive by napalm, complete with invented “skin boiling” gore."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-USS-LIBERTY-FALSE-FLAG-CONFIRMED-20260609",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
@@ -2735,6 +3015,56 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "Massie confirmed recalled relief aircraft and demanded more records. Levins upgraded that into “false flag CONFIRMED.” Those are not the same claim."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-WITKOFF-KUSHNER-ISRAELI-ASSETS-CONFIRMED-20260318",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-18",
+      "first_observed_at": "2026-03-18",
+      "statement_identity": "Levins said diplomats from the Iran-U.S. talks confirmed that Steve Witkoff and Jared Kushner were Israeli assets, attributing the assertion to The Guardian.",
+      "source_information_event_id": "ETHAN-X-WITKOFF-KUSHNER-ISRAELI-ASSETS-20260318",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-WITKOFF-KUSHNER-TELEGRAM",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/LasNoticiasDelMundo/52531?q=%23EthanLevins",
+          "published_at": "2026-03-18",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: 'Diplomats from the Iranian-U.S. talks CONFIRM that Witkoff & Kushner were Israeli assets -The Guardian.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GUARDIAN-WITKOFF-KUSHNER-ASSETS",
+          "surface": "WEBSITE",
+          "url": "https://www.theguardian.com/world/2026/mar/18/ignorance-misunderstanding-obfuscation-iran-nuclear-talks-trump",
+          "published_at": "2026-03-18",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The Guardian attributed the 'Israeli assets' characterization to one Gulf diplomat with direct knowledge of the talks; it did not report plural diplomats confirming an established intelligence fact.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Levins converted one anonymous diplomat's characterization into plural 'diplomats CONFIRM' and presented an attributed opinion/allegation as a confirmed factual finding.",
+        "search_notes": "Recovered from the completed Levins source audit. Publication-event deduplication applies; multiple bad propositions in one post count once.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "One Gulf diplomat’s quoted characterization became “diplomats CONFIRM” a factual intelligence finding. That’s source laundering, not analysis."
     },
     {
       "incident_id": "WOL-BS-INN-AI-AMAN-STRIKE-VIDEO-20260330",
