@@ -211,6 +211,12 @@ assert all(row["capture_status"] == "TITLE_DESCRIPTION_ONLY" for row in body_que
 assert all("TRANSCRIPT" in row["required_next_evidence"] for row in body_queue)
 assert any(row["url"].endswith("ESojA5kxiFY") for row in body_queue)
 assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
+assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
+assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
+assert valenti_lead["review_completion"]["qualifying_incident_count"] == 9
+assert valenti_lead["review_completion"]["status"] == "CURRENT_SOURCE_PASS_COMPLETED_THROUGH_2026-09-23_WITH_BODY_GATED_QUEUE_RETAINED"
+assert valenti_lead["solicitation_review"]["fundraiser_destination_status"] == "NOT_INDEPENDENTLY_LOCATED_IN_REVIEWED_PUBLIC_LINKS"
+assert "does not establish" in valenti_lead["solicitation_review"]["inference_limit"]
 
 nuke_jets = next(row for row in body_queue if row["research_item_id"] == "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026")
 assert nuke_jets["url"].endswith("b44N3cLIDrA")
@@ -238,6 +244,8 @@ assert "nuclear-warhead use" in behavior_incidents["WOL-BS-VALENTI-CANCELS-NUCLE
 # score the publisher-authored presentation itself; they do not bypass the
 # transcript gate for claims about what was said inside a video.
 valenti_incident_ids = {
+    "WOL-BS-VALENTI-OFFICIAL-SURRENDER-20260618",
+    "WOL-BS-VALENTI-RUSSIAN-INVASION-POLAND-IMMINENT-20260703",
     "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
     "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
     "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
@@ -247,12 +255,20 @@ valenti_incident_ids = {
     "WOL-BS-VALENTI-31M-SOLDIERS-20260917",
 }
 assert valenti_incident_ids <= set(behavior_incidents)
+valenti_all_incident_ids = {
+    incident_id
+    for incident_id, incident in behavior_incidents.items()
+    if incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
+}
+assert valenti_all_incident_ids == valenti_incident_ids
+assert len(valenti_all_incident_ids) == 9
 for incident_id in valenti_incident_ids:
     incident = behavior_incidents[incident_id]
     assert incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
     assert incident["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
     assert incident["evidentiary_support_review"]["supporting_evidence_found"] is False
     assert incident["public_receipts"]
+    assert all(receipt.get("url") or receipt.get("archive_url") for receipt in incident["public_receipts"])
 
 valenti_awards = profiles["WOL-SRC-VALENTI-VIDEOS"]["source_awards"]
 assert len(valenti_awards) == 1
@@ -270,6 +286,8 @@ assert set(valenti_award["qualifying_incident_ids"]) == {
     "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
     "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
 }
+assert valenti_award["documented_incident_count"] == 9
+assert set(valenti_award["documented_incident_ids"]) == valenti_all_incident_ids
 assert valenti_award["current_window_status"] == "EARNED_HISTORICAL"
 assert valenti_award["currently_active"] is False
 assert valenti_award["current_window_incident_count"] == 1
