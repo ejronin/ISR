@@ -4635,6 +4635,62 @@
       "review_reason": "Existing canonical training family should atomize registration, training participation, soldier status and invasion framing separately."
     },
     {
+      "incident_id": "WOL-BS-VALENTI-BASES-COMPLETELY-DESTROYED-20260917",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-09-17",
+      "first_observed_at": "2026-09-17",
+      "statement_identity": "Valenti titled a video 'U.S Soldiers LEAK PHOTOS of our bases in the Middle East; THEY'RE COMPLETELY DESTROYED!'",
+      "source_information_event_id": "VALENTI-YT-nqd977hHQfM",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-BASES-DESTROYED-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=nqd977hHQfM",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": "2026-09-17",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "U.S Soldiers LEAK PHOTOS of our bases in the Middle East; THEY'RE COMPLETELY DESTROYED!",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CBS-US-BASE-DAMAGE-20260915",
+          "surface": "WEBSITE",
+          "url": "https://www.cbsnews.com/news/new-photos-damage-u-s-kuwait-saudi-arabia-iran-drone-missile-attacks/",
+          "published_at": "2026-09-15",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "CBS reported widespread damage and destruction of buildings and vehicles at multiple U.S. positions, not complete destruction of the bases themselves.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ABC-US-BASE-DAMAGE-20260916",
+          "surface": "WEBSITE",
+          "url": "https://ingest.abcnews.com/Politics/photos-show-extensive-damage-us-middle-east-bases/story?id=136507770",
+          "published_at": "2026-09-16",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "ABC reported severe damage at several facilities and hundreds of damaged structures across the region; it did not report that the bases were completely destroyed.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's public video title/preservation plus contemporaneous primary or independent reporting on the underlying event.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The leaked imagery and inspector-general reporting support severe, widespread damage at multiple U.S. positions. They do not support the whole-base absolute that the bases were 'completely destroyed.'",
+        "search_notes": "WOL scores the publisher-authored public proposition as presented. Where the surviving catalog page does not preserve an exact publication date, the date remains null rather than inferred from relative age.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct Valenti publication event; derivative clips repeating the same proposition do not inflate the denominator.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical proposition synchronization remains separate from the WOL-native source-behavior finding.",
+      "public_bullshit_summary": "Real leaked damage photos became “the bases are COMPLETELY DESTROYED.” Severe damage is not the same fucking thing as an entire base ceasing to exist."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -4691,6 +4747,108 @@
       }
     },
     {
+      "incident_id": "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION-202606",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Valenti titled a video 'Trump announces FULL SCALE GROUND INVASION of Iran.'",
+      "source_information_event_id": "VALENTI-YT-OzH543I4fZQ",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-GROUND-INVASION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=OzH543I4fZQ",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": null,
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump announces FULL SCALE GROUND INVASION of Iran",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-WAPO-GROUND-OPS-20260328",
+          "surface": "WEBSITE",
+          "url": "https://www.washingtonpost.com/national-security/2026/03/28/trump-iran-ground-troops-marines/",
+          "published_at": "2026-03-28",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Pentagon planning contemplated possible limited ground operations if approved and explicitly said such operations would fall short of a full-scale invasion.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-NO-BOOTS-20260603",
+          "surface": "WEBSITE",
+          "url": "https://www.dawn.com/news/2004908",
+          "published_at": "2026-06-03",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Trump said 'We don't need boots on the ground' and said the U.S. had not put troops on the ground in Iran.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's public video title/preservation plus contemporaneous primary or independent reporting on the underlying event.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The public record contained contingency planning, reinforcement and discussion of possible limited raids or future operations. That is not an announcement of a full-scale ground invasion.",
+        "search_notes": "WOL scores the publisher-authored public proposition as presented. Where the surviving catalog page does not preserve an exact publication date, the date remains null rather than inferred from relative age.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct Valenti publication event; derivative clips repeating the same proposition do not inflate the denominator.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical proposition synchronization remains separate from the WOL-native source-behavior finding.",
+      "public_bullshit_summary": "Possible raids, contingency planning and troop reinforcement became an announced “FULL SCALE GROUND INVASION.” Planning is not an invasion order."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG-202605",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Valenti titled a video 'Trump is planning a FALSE FLAG ATTACK ON KEY WEST!'",
+      "source_information_event_id": "VALENTI-YT-_jjBTsHcWhA",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-KEY-WEST-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=_jjBTsHcWhA",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": null,
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump is planning a FALSE FLAG ATTACK ON KEY WEST!",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-AXIOS-CUBA-DRONE-THREAT-20260517",
+          "surface": "WEBSITE",
+          "url": "https://www.axios.com/2026/05/17/us-military-drones-cuba",
+          "published_at": "2026-05-17",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Axios reported U.S. concern over Cuban military discussions of possible drone attacks, including Key West, while officials did not consider an attack imminent.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's public video title/preservation plus contemporaneous primary or independent reporting on the underlying event.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A reported foreign drone-threat concern does not establish that Trump or the U.S. government planned to stage the attack themselves as a false flag. No reviewed evidence supports that bridge.",
+        "search_notes": "WOL scores the publisher-authored public proposition as presented. Where the surviving catalog page does not preserve an exact publication date, the date remains null rather than inferred from relative age.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct Valenti publication event; derivative clips repeating the same proposition do not inflate the denominator.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical proposition synchronization remains separate from the WOL-native source-behavior finding.",
+      "public_bullshit_summary": "A reported Cuban drone threat became “Trump is planning a false flag on Key West.” The evidence points at a possible external threat; Valenti supplies the conspiracy himself."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -4745,6 +4903,62 @@
         "observation": "Valenti is reported to have explicitly described the aircraft as carrying nuclear warheads for use against Iran; the proposition is literal nuclear-weapon use, not merely nuclear-capable aircraft.",
         "transcript_status": "NOT_MACHINE_RECOVERED"
       }
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-ONE-TRILLION-TO-IRAN-202606",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Valenti titled a video 'Trump considers giving Iran ONE TRILLION DOLLARS as part of the American Surrender!'",
+      "source_information_event_id": "VALENTI-YT-2uC0ZbTXyfc",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRILLION-IRAN-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=2uC0ZbTXyfc",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": null,
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump considers giving Iran ONE TRILLION DOLLARS as part of the American Surrender!",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-FACTCHECK-IRAN-300B-20260623",
+          "surface": "WEBSITE",
+          "url": "https://www.factcheck.org/2026/06/how-trumps-preliminary-deal-with-iran-compares-with-his-rhetoric/",
+          "published_at": "2026-06-23",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The preliminary agreement called for at least $300 billion in reconstruction/economic-development financing; the administration said U.S. taxpayers would not provide the fund.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-G7-IRAN-DAMAGE-20260617",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-press-conference-g7-summit-evian-france-june-17-2026/",
+          "published_at": "2026-06-17",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump used trillion-dollar figures to describe claimed damage to Iran while discussing a separate $300 billion fund and saying the U.S. was not putting up the money.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's public video title/preservation plus contemporaneous primary or independent reporting on the underlying event.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The actual framework discussed a $300 billion reconstruction/economic-development plan, not a $1 trillion U.S. payment to Iran. Trillion-dollar figures in Trump's remarks referred to claimed damage, not a contemplated transfer.",
+        "search_notes": "WOL scores the publisher-authored public proposition as presented. Where the surviving catalog page does not preserve an exact publication date, the date remains null rather than inferred from relative age.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct Valenti publication event; derivative clips repeating the same proposition do not inflate the denominator.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical proposition synchronization remains separate from the WOL-native source-behavior finding.",
+      "public_bullshit_summary": "A $300B reconstruction framework plus Trump’s boast about trillion-dollar damage became “Trump considers giving Iran $1 TRILLION.” Wrong number, wrong direction of money."
     },
     {
       "incident_id": "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
