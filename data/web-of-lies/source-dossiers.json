@@ -4747,6 +4747,62 @@
       }
     },
     {
+      "incident_id": "WOL-BS-VALENTI-FOREVER-WAR-CANCEL-2028-ELECTION-202607",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Valenti titled a video 'Trump wants the Iran War to last FOREVER so he can cancel the 2028 election.'",
+      "source_information_event_id": "VALENTI-YT-2fpN42hV5As",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-FOREVER-WAR-2028-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=2fpN42hV5As",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": null,
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump wants the Iran War to last FOREVER so he can cancel the 2028 election",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CRS-ELECTION-POSTPONEMENT",
+          "surface": "WEBSITE",
+          "url": "https://www.congress.gov/crs_external_products/LSB/PDF/LSB10425/LSB10425.3.pdf",
+          "published_at": null,
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "CRS explains that neither the Constitution nor Congress gives the President power to postpone or cancel the federal election date outside Congress's legislative process, including during emergencies.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-REUTERS-TRUMP-ELECTION-SECURITY-20260717",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/legal/government/trump-puts-election-security-center-republicans-midterm-fight-2026-07-17/",
+          "published_at": "2026-07-17",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Contemporaneous Reuters coverage documented Trump's election-law agenda and claims about election security; it did not report a plan to use the Iran war to cancel the 2028 election.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti public title/preservation and contemporaneous reporting or primary legal material directly testing the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "No reviewed evidence supports the asserted motive that Trump wants the Iran war to continue in order to cancel the 2028 election, nor a presidential power to cancel that election because of war. The claim combines unsupported motive attribution with a legally defective mechanism.",
+        "search_notes": "The WOL finding is limited to the proposition Valenti published; it does not substitute an assessment of the political actor's unstated motives beyond noting that Valenti supplied no evidentiary basis for his attribution.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct publisher-authored publication event; derivative clips repeating the same proposition are not separately counted.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "WOL source-behavior finding; any canonical political or military proposition remains separately adjudicated.",
+      "public_bullshit_summary": "Valenti jumps from a long war to a secret motive to cancel 2028. No evidence for the motive, and a president does not get a wartime “cancel election” button."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION-202606",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -5010,6 +5066,61 @@
       "downstream_note": "The Russian origin and Polish impact are preserved as supported substrate; only the attack-on-Poland bridge is scored.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical NATO/Russia attack proposition remains an upstream truth-adjudication question."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-RUSSIA-INVASION-POLAND-IMMINENT-20260703",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-07-03",
+      "first_observed_at": "2026-07-03",
+      "statement_identity": "Valenti titled a video 'U.S warns NATO that a RUSSIAN INVASION OF POLAND is imminent.'",
+      "source_information_event_id": "VALENTI-YT-tdoYgjiOchc",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-RUSSIA-POLAND-INVASION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=tdoYgjiOchc",
+          "published_at": "2026-07-03",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "U.S warns NATO that a RUSSIAN INVASION OF POLAND is imminent",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CTP-RUSSIA-POLAND-PROVOCATION-20260703",
+          "surface": "WEBSITE",
+          "url": "https://www.criticalthreats.org/analysis/russian-offensive-campaign-assessment-july-3-2026",
+          "published_at": "2026-07-03",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reporting described a possible limited Russian military provocation against Poland/NATO in coming months; Polish sources said Russia would not launch a conventional full-scale invasion.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ANSA-RUSSIA-POLAND-PROVOCATION-20260703",
+          "surface": "WEBSITE",
+          "url": "https://www.ansa.it/nuova_europa/en/news/sections/news/2026/07/03/us-warns-poland-of-russian-armed-provocation-media_8f66eed0-7910-4dc8-bf93-c3968e826315.html",
+          "published_at": "2026-07-03",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "ANSA preserved the reported U.S. warning as an armed provocation intended to test NATO, with the prospect described as several months away.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti public title/preservation and contemporaneous reporting or primary legal material directly testing the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The underlying warning concerned possible limited provocations, hybrid actions, or localized kinetic incidents and was described as months away. It was not a U.S. warning that a full Russian invasion of Poland was imminent.",
+        "search_notes": "The WOL finding is limited to the proposition Valenti published; it does not substitute an assessment of the political actor's unstated motives beyond noting that Valenti supplied no evidentiary basis for his attribution.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct publisher-authored publication event; derivative clips repeating the same proposition are not separately counted.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "WOL source-behavior finding; any canonical political or military proposition remains separately adjudicated.",
+      "public_bullshit_summary": "A warning about a possible limited provocation months away became an “imminent Russian invasion of Poland.” Bigger war, shorter clock—neither supplied by the source."
     },
     {
       "incident_id": "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
