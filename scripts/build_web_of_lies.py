@@ -1162,7 +1162,11 @@ def derive_award_propagation_graph(
         award_event_ids_by_source[source_id] = {
             str(event_id)
             for award in awards
-            for event_id in award.get("qualifying_incident_ids") or []
+            for event_id in (
+                award.get("documented_incident_ids")
+                or award.get("qualifying_incident_ids")
+                or []
+            )
             if str(event_id)
         }
 
