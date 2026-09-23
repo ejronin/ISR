@@ -5239,6 +5239,61 @@
       "review_reason": "Preserve canonical truth adjudication separately from WOL's source-behavior finding."
     },
     {
+      "incident_id": "WOL-BS-VALENTI-STOLE-IRANIAN-OIL-20260610",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-06-10",
+      "first_observed_at": "2026-06-10",
+      "statement_identity": "Valenti titled a video 'The U.S claims it stole MILLIONS of barrels of Iranian Oil' after Trump described a secret mission moving oil-carrying vessels through Hormuz.",
+      "source_information_event_id": "VALENTI-YT-iaEoaR1NeEU",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-STOLE-IRANIAN-OIL-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=iaEoaR1NeEU",
+          "published_at": "2026-06-10",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The U.S claims it stole MILLIONS of barrels of Iranian Oil, while trump says \"I LOVE INFLATION!\""
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-REUTERS-HORMUZ-OIL-ESCORT-20260610",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/trump-iran-were-going-be-attacking-them-very-hard-2026-06-10/",
+          "published_at": "2026-06-10",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump said the U.S. military secretly escorted ships carrying more than 100 million barrels of oil through Hormuz; Energy Secretary Chris Wright said none of the escorted tankers were Iranian."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-HORMUZ-OIL-POST-20260610",
+          "surface": "WEBSITE",
+          "url": "https://www.followtrumpstruth.com/posts/9c089d39-858d-4cf2-b1cd-d20af8c285df",
+          "published_at": "2026-06-10",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump's preserved post says the mission supported oil tankers and commercial ships through Hormuz and put more than 100 million barrels into the open market; it does not call the oil Iranian or describe stealing it."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's direct YouTube publication, Reuters' contemporaneous report including the Energy Secretary's clarification, and a preserved copy of Trump's own June 10 post.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump described moving/escorting oil-carrying ships through the Strait of Hormuz. Reuters reported the Energy Secretary said none of the escorted tankers were Iranian. The record does not support Valenti's conversion into U.S. theft of Iranian oil.",
+        "search_notes": "This finding does not adjudicate whether Trump's claimed 100-million-barrel figure was accurate; it scores Valenti's added ownership/theft proposition.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One June 10 publication event; the inflation quote is not separately scored here.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical Hormuz transit/energy-flow claims remain separate.",
+      "public_bullshit_summary": "Trump bragged about escorting oil through Hormuz; his Energy Secretary said the tankers weren’t Iranian. Valenti turned that into the U.S. stealing Iranian oil. Wrong owner, wrong verb."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
