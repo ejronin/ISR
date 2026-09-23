@@ -5234,6 +5234,61 @@
       "review_reason": "Direct quotation semantics support the WOL behavior finding without changing canonical readiness adjudication."
     },
     {
+      "incident_id": "WOL-BS-VALENTI-TRUMP-ASKED-TO-NUKE-IRAN-20260421",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-04-21",
+      "first_observed_at": "2026-04-21",
+      "statement_identity": "Valenti titled a video 'Trump asked to nuke Iran...' while the circulating source allegation itself was unverified.",
+      "source_information_event_id": "VALENTI-YT-ESojA5kxiFY",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-ASKED-NUKE-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump asked to nuke Iran..."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LEADSTORIES-NUCLEAR-CODES-20260421",
+          "surface": "WEBSITE",
+          "url": "https://leadstories.com/hoax-alert/2026/04/fact-check-report-about-trump-nuclear-codes-not-verified-according-to-retired-cia-analyst-larry-johnson-who-mentioned-it-in-viral-video.html",
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Lead Stories found no credible verification; Larry Johnson later wrote that he had no confirmation the report was verified."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-REUTERS-TRUMP-NO-NUKE-20260423",
+          "surface": "WEBSITE",
+          "url": "https://www.reutersconnect.com/item/trump-says-he-wouldnt-use-a-nuclear-weapon-on-iran/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX1ZBNTA3NDIzMDQyMDI2UlAx",
+          "published_at": "2026-04-23",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump publicly said he would not use a nuclear weapon against Iran and said nuclear weapons should never be used."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's direct video title, contemporaneous fact-checking of the Larry Johnson allegation, and Trump's subsequent direct public statement on nuclear use against Iran.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The circulating source allegation was not independently verified, and Johnson later acknowledged he had no confirmation that the report was verified. Valenti's title removed that uncertainty and presented the alleged request as an event.",
+        "search_notes": "This finding is source-fidelity/presentation based. It does not claim proof that no private discussion ever occurred; it records that Valenti converted an explicitly unverified allegation into a declarative factual title.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Distinct April publication event; separate from Valenti's July nuclear-armed-jets and August cancelled-nuclear-strike publications.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical nuclear-use planning proposition remains separately adjudicated.",
+      "public_bullshit_summary": "An explicitly unverified nuclear-code rumor became “Trump asked to nuke Iran.” Valenti deleted the uncertainty and sold the allegation as the event."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
