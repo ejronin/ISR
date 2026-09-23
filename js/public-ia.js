@@ -2412,6 +2412,28 @@
           const claimedRoles = asArray(profile.claimed_roles).map(row => plainLabel(row.role_code, '')).filter(Boolean);
           if (claimedRoles.length) append(award, 'small', '', `Self-claimed roles on file: ${claimedRoles.join(' · ')}`);
         }
+
+        const roleFailures = asArray(profile.role_failure_appellations);
+        if (roleFailures.length) {
+          const roleBasis = append(detailHost, 'details', 'evidence-drawer wol-role-failure-basis');
+          append(roleBasis, 'summary', '', 'Why the role-failure labels apply');
+          const roleBody = append(roleBasis, 'div', 'evidence-drawer-body');
+          roleFailures.forEach(appellation => {
+            const block = append(roleBody, 'article', 'record-card wol-role-failure-card');
+            append(block, 'h4', '', publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code)));
+            append(block, 'p', '', `Self-claimed role: ${plainLabel(appellation.claimed_role, 'Recorded role')} · ${formatNumber(appellation.incident_count || 0)} qualifying basis incident${Number(appellation.incident_count || 0) === 1 ? '' : 's'}.`);
+            if (appellation.rule) append(block, 'p', 'section-note', publicNarrative(appellation.rule, ''));
+            const basisIds = asArray(appellation.basis_incident_ids);
+            if (basisIds.length) {
+              const basisDetails = append(block, 'details', 'wol-role-failure-incidents');
+              append(basisDetails, 'summary', '', `Basis incident IDs (${basisIds.length})`);
+              const list = append(basisDetails, 'ul', 'source-link-list');
+              basisIds.forEach(eventId => append(list, 'li', '', eventId));
+            }
+            appendReceipts(block, appellation.claimed_role_receipts, 'No self-claimed-role receipt is stored for this appellation.');
+          });
+        }
+
         const claimBlock = append(detailHost, 'div', 'wol-selected-claims');
         append(claimBlock, 'h4', '', 'Bullshit claims / presentations');
         if (!sourceIncidents.length) append(claimBlock, 'p', 'section-note', 'No WOL-native award incidents are attached to this source.');
