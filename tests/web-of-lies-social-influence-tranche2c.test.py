@@ -332,8 +332,10 @@ assert ethan_award["documented_incident_count"] == 34
 assert set(ethan_award["documented_incident_ids"]) == ethan_all_incident_ids
 assert ethan_award["current_window_status"] == "EARNED_HISTORICAL"
 assert ethan_award["currently_active"] is False
-assert ethan_award["current_window_incident_count"] == 0
-assert ethan_award["current_window_incident_ids"] == []
+assert ethan_award["current_window_incident_count"] == 1
+assert ethan_award["current_window_incident_ids"] == [
+    "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831"
+]
 
 # One publication event is one award incident even when it contains multiple
 # atomic propositions (e.g. March 22 causation + stockpile extrapolation).
