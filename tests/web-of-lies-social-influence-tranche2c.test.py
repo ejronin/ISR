@@ -286,21 +286,38 @@ for source_id in (
     "WOL-SRC-LIM-TEAN",
 ):
     assert profiles[source_id]["direct_verdict"] is None
-ethan_incident_ids = {
+ethan_legacy_incident_ids = {
     "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
-    "WOL-BS-ETHAN-F35-HIT-20260319",
+    "WOL-BS-ETHAN-19-TANKS-2006-PHOTO-20260327",
     "WOL-BS-ETHAN-SARA-RECYCLED-VIDEO-20260321",
     "WOL-BS-ETHAN-TWO-MISSILES-20260322",
     "WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327",
     "WOL-BS-ETHAN-ISRAEL-LOST-PUBLIC-SUPPORT-20260328",
 }
-assert ethan_incident_ids <= set(behavior_incidents)
-for incident_id in ethan_incident_ids:
+assert ethan_legacy_incident_ids <= set(behavior_incidents)
+for incident_id in ethan_legacy_incident_ids:
     incident = behavior_incidents[incident_id]
     assert incident["source_id"] == "WOL-SRC-ETHAN-LEVINS"
     assert incident["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
     assert incident["evidentiary_support_review"]["supporting_evidence_found"] is False
     assert incident["public_receipts"]
+
+ethan_all_incident_ids = {
+    incident_id
+    for incident_id, incident in behavior_incidents.items()
+    if incident["source_id"] == "WOL-SRC-ETHAN-LEVINS"
+}
+assert len(ethan_all_incident_ids) == 34
+assert all(behavior_incidents[incident_id]["public_receipts"] for incident_id in ethan_all_incident_ids)
+
+ethan_award_incident_ids = {
+    "WOL-BS-ETHAN-HOLY-SEPULCHRE-EASTER-CANCELED-20260318",
+    "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
+    "WOL-BS-ETHAN-UKRAINE-OPERATORS-DEFEND-ISRAEL-20260318",
+    "WOL-BS-ETHAN-WITKOFF-KUSHNER-ISRAELI-ASSETS-CONFIRMED-20260318",
+    "WOL-BS-ETHAN-BENGVIR-17-MEETINGS-DEAD-20260319",
+    "WOL-BS-ETHAN-ONLY-US-TROOPS-MISSILE-PROGRAMS-20260320",
+}
 
 ethan_awards = profiles["WOL-SRC-ETHAN-LEVINS"]["source_awards"]
 assert len(ethan_awards) == 1
@@ -308,13 +325,17 @@ ethan_award = ethan_awards[0]
 assert ethan_award["award_code"] == "BULLSHITTER"
 assert ethan_award["public_label"] == "Bullshitter"
 assert ethan_award["qualifying_window_start"] == "2026-03-18T00:00:00"
-assert ethan_award["qualifying_window_end"] == "2026-03-28T00:00:00"
+assert ethan_award["qualifying_window_end"] == "2026-03-20T00:00:00"
 assert ethan_award["qualifying_incident_count"] == 6
-assert set(ethan_award["qualifying_incident_ids"]) == ethan_incident_ids
+assert set(ethan_award["qualifying_incident_ids"]) == ethan_award_incident_ids
+assert ethan_award["documented_incident_count"] == 34
+assert set(ethan_award["documented_incident_ids"]) == ethan_all_incident_ids
 assert ethan_award["current_window_status"] == "EARNED_HISTORICAL"
 assert ethan_award["currently_active"] is False
-assert ethan_award["current_window_incident_count"] == 0
-assert ethan_award["current_window_incident_ids"] == []
+assert ethan_award["current_window_incident_count"] == 1
+assert ethan_award["current_window_incident_ids"] == [
+    "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831"
+]
 
 # One publication event is one award incident even when it contains multiple
 # atomic propositions (e.g. March 22 causation + stockpile extrapolation).

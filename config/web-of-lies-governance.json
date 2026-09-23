@@ -448,5 +448,25 @@
     "megaphone_roster_is_not_award_inheritance": true,
     "megaphone_cross_awardee_overlap_is_graph_signal": true,
     "bot_and_country_markers_require_receipts": true
+  },
+  "role_failure_appellations": {
+    "FAKE_ANALYST": {
+      "public_label": "Fake analyst",
+      "claimed_role": "ANALYST",
+      "requires_source_award": "BULLSHITTER",
+      "qualifying_incident_tag": "ANALYSIS_BRIDGE_FAILURE",
+      "minimum_tagged_incidents": 3,
+      "rule": "The source must publicly claim an analyst role. After the Bullshitter award is independently earned, at least three distinct qualifying WOL incidents must document unsupported analytical bridges, inference presented as fact, or verification failures in analysis. A profile claim or monetization alone can never trigger this label."
+    },
+    "YELLOW_JOURNALISM": {
+      "public_label": "Yellow journalism",
+      "claimed_role": "JOURNALIST",
+      "requires_source_award": "BULLSHITTER",
+      "qualifying_incident_tag": "JOURNALISTIC_VERIFICATION_FAILURE",
+      "minimum_tagged_incidents": 3,
+      "secondary_incident_tag": "SENSATIONALIZED_PRESENTATION",
+      "minimum_secondary_tagged_incidents": 2,
+      "rule": "The source must publicly claim a journalist role. After the Bullshitter award is independently earned, at least three distinct qualifying WOL incidents must document basic journalistic verification failures and at least two must document sensationalized or materially distorted presentation. A profile claim or monetization alone can never trigger this label."
+    }
   }
 }

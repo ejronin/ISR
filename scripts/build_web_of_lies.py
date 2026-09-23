@@ -798,6 +798,40 @@ def bullshit_incident_moment(event: dict[str, Any]) -> datetime | None:
     return parse_time(event.get("published_at")) or parse_time(event.get("first_observed_at"))
 
 
+def deduplicated_documented_bullshit_events(
+    events: list[dict[str, Any]],
+    governance: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Return every distinct receipt-backed qualifying incident, dated or not."""
+    distinct: dict[str, dict[str, Any]] = {}
+    for event in events:
+        if not bullshit_qualifying_event(event, governance):
+            continue
+        incident_id = bullshit_incident_id(event)
+        if not incident_id:
+            continue
+        key = str(
+            event.get("information_event_group_id")
+            or event.get("source_information_event_id")
+            or incident_id
+        ).strip()
+        prior = distinct.get(key)
+        if prior is None:
+            distinct[key] = event
+            continue
+        # Prefer the record with an actual publication timestamp when duplicate
+        # preservation paths exist for the same information event.
+        if bullshit_incident_moment(prior) is None and bullshit_incident_moment(event) is not None:
+            distinct[key] = event
+    return sorted(
+        distinct.values(),
+        key=lambda event: (
+            bullshit_incident_moment(event) or datetime.max,
+            bullshit_incident_id(event),
+        ),
+    )
+
+
 def deduplicated_qualifying_bullshit_events(
     events: list[dict[str, Any]],
     governance: dict[str, Any],
@@ -843,6 +877,10 @@ def bullshit_award_for_events(
         return None
     minimum = int(cfg.get("minimum_qualifying_incidents") or 6)
     window_days = int(cfg.get("window_days") or 30)
+    documented_rows = deduplicated_documented_bullshit_events(
+        events,
+        governance,
+    )
     rows = deduplicated_qualifying_bullshit_events(
         events,
         governance,
@@ -868,6 +906,11 @@ def bullshit_award_for_events(
     qualifying_incident_ids = sorted(
         bullshit_incident_id(event)
         for _moment, event in earned_window
+        if bullshit_incident_id(event)
+    )
+    documented_incident_ids = sorted(
+        bullshit_incident_id(event)
+        for event in documented_rows
         if bullshit_incident_id(event)
     )
 
@@ -912,6 +955,8 @@ def bullshit_award_for_events(
         "qualifying_window_end": earned_end.isoformat(),
         "qualifying_incident_count": len(earned_window),
         "qualifying_incident_ids": qualifying_incident_ids,
+        "documented_incident_count": len(documented_incident_ids),
+        "documented_incident_ids": documented_incident_ids,
         "current_window_status": current_status,
         "currently_active": currently_active,
         "current_window_incident_count": len(current_rows),
@@ -941,6 +986,104 @@ def attach_source_awards(
             as_of=as_of,
         )
         record["source_awards"] = [award] if award is not None else []
+        output.append(record)
+    return sorted(output, key=lambda item: item["source_id"])
+
+
+
+def derive_role_failure_appellations(
+    profile: dict[str, Any],
+    events: list[dict[str, Any]],
+    governance: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Derive adverse role-failure labels only from self-claimed roles + incident evidence."""
+    claimed_roles = {
+        str(row.get("role_code") or "").strip()
+        for row in (profile.get("claimed_roles") or [])
+        if str(row.get("role_code") or "").strip()
+        and (row.get("public_receipts") or [])
+    }
+    awards = {
+        str(row.get("award_code") or "").strip()
+        for row in (profile.get("source_awards") or [])
+        if str(row.get("award_code") or "").strip()
+    }
+    distinct: dict[str, dict[str, Any]] = {}
+    for event in events:
+        event_id = bullshit_incident_id(event)
+        if not event_id or not bullshit_qualifying_event(event, governance):
+            continue
+        key = str(
+            event.get("information_event_group_id")
+            or event.get("source_information_event_id")
+            or event_id
+        ).strip()
+        distinct.setdefault(key, event)
+
+    output: list[dict[str, Any]] = []
+    rules = governance.get("role_failure_appellations") or {}
+    for code, rule in sorted(rules.items()):
+        claimed_role = str(rule.get("claimed_role") or "").strip()
+        required_award = str(rule.get("requires_source_award") or "").strip()
+        if claimed_role not in claimed_roles:
+            continue
+        if required_award and required_award not in awards:
+            continue
+        primary_tag = str(rule.get("qualifying_incident_tag") or "").strip()
+        primary_events = [
+            event for event in distinct.values()
+            if primary_tag and primary_tag in set(event.get("role_failure_tags") or [])
+        ]
+        minimum = int(rule.get("minimum_tagged_incidents") or 1)
+        if len(primary_events) < minimum:
+            continue
+        secondary_tag = str(rule.get("secondary_incident_tag") or "").strip()
+        secondary_events = [
+            event for event in distinct.values()
+            if secondary_tag and secondary_tag in set(event.get("role_failure_tags") or [])
+        ]
+        secondary_minimum = int(rule.get("minimum_secondary_tagged_incidents") or 0)
+        if secondary_minimum and len(secondary_events) < secondary_minimum:
+            continue
+        basis_ids = sorted({
+            bullshit_incident_id(event)
+            for event in primary_events + secondary_events
+            if bullshit_incident_id(event)
+        })
+        role_receipts = [
+            dict(receipt)
+            for row in (profile.get("claimed_roles") or [])
+            if str(row.get("role_code") or "").strip() == claimed_role
+            for receipt in (row.get("public_receipts") or [])
+        ]
+        output.append({
+            "appellation_code": str(code),
+            "public_label": str(rule.get("public_label") or code),
+            "claimed_role": claimed_role,
+            "incident_count": len(basis_ids),
+            "basis_incident_ids": basis_ids,
+            "claimed_role_receipts": role_receipts,
+            "rule": str(rule.get("rule") or ""),
+        })
+    return output
+
+
+def attach_role_failure_appellations(
+    profiles: list[dict[str, Any]],
+    all_events: list[dict[str, Any]],
+    governance: dict[str, Any],
+) -> list[dict[str, Any]]:
+    by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for event in all_events:
+        by_source[str(event.get("source_id") or "")].append(event)
+    output = []
+    for profile in profiles:
+        record = dict(profile)
+        record["role_failure_appellations"] = derive_role_failure_appellations(
+            record,
+            by_source.get(str(record.get("source_id") or ""), []),
+            governance,
+        )
         output.append(record)
     return sorted(output, key=lambda item: item["source_id"])
 
@@ -1019,7 +1162,11 @@ def derive_award_propagation_graph(
         award_event_ids_by_source[source_id] = {
             str(event_id)
             for award in awards
-            for event_id in award.get("qualifying_incident_ids") or []
+            for event_id in (
+                award.get("documented_incident_ids")
+                or award.get("qualifying_incident_ids")
+                or []
+            )
             if str(event_id)
         }
 
@@ -1041,7 +1188,15 @@ def derive_award_propagation_graph(
             "authenticity_class": str(profile.get("authenticity_class") or "UNKNOWN"),
             "award_codes": ["BULLSHITTER"],
             "award_incident_count": max(
-                [int(award.get("qualifying_incident_count") or 0) for award in awards] or [0]
+                [
+                    int(
+                        award.get("documented_incident_count")
+                        or award.get("qualifying_incident_count")
+                        or 0
+                    )
+                    for award in awards
+                ]
+                or [0]
             ),
         }
 
@@ -1300,6 +1455,11 @@ def build_registry(
         information_events + source_behavior_incidents,
         governance,
         as_of=(canonical.get("release") or {}).get("current_osint_cutoff"),
+    )
+    profiles = attach_role_failure_appellations(
+        profiles,
+        information_events + source_behavior_incidents,
+        governance,
     )
     for profile in profiles:
         country_code = profile_country_code(profile)

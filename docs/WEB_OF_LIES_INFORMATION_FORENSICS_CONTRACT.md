@@ -338,6 +338,39 @@ Profanity may be used as emphasis for demonstrated deceptive, exploitative, reck
 
 Every severe characterization must link immediately to the incidents and metrics that earned it.
 
+## 13A. Claimed-role failure appellations
+
+Role nouns come from the source. WOL does not invent a profession in order to attack it.
+
+A source may have one or more **self-claimed roles** preserved with public receipts, for example:
+
+`ANALYST`  
+`JOURNALIST`
+
+Those role claims are descriptive facts about how the source markets or identifies its own work. They do not by themselves establish competence, credibility, misconduct, Hall placement, or an adverse label.
+
+WOL may derive an adverse **role-failure appellation** only when all of the following are true:
+
+1. the source publicly claims the corresponding role and WOL preserves that self-claim with a receipt;
+2. the source independently earns the required WOL behavior award, where the rule requires one;
+3. distinct qualifying WOL incidents document repeated failures of the evidentiary method expected of the claimed role;
+4. the configured incident threshold is satisfied.
+
+Current governed public appellations:
+
+- **Fake analyst** — requires a self-claimed analyst role, the independently earned Bullshitter award, and repeated incident-gated analytical-bridge failures.
+- **Yellow journalism** — requires a self-claimed journalist role, the independently earned Bullshitter award, repeated incident-gated journalistic verification failures, and repeated sensationalized/materially distorted presentation.
+
+The adverse modifier comes from the record; the role noun comes from the source.
+
+Monetization, Patreon, donations, sponsorship, audience size, ideology, political position, or profile biography alone cannot trigger either appellation.
+
+`Bullshitter` remains a separate deterministic behavior award. A source can earn Bullshitter without claiming to be an analyst or journalist.
+
+`GRIFTER` remains separately gated. Monetization plus bad work is not enough to infer fraudulent or knowingly exploitative intent.
+
+Every role-failure appellation must expose both its self-claimed-role receipts and the qualifying incident IDs that triggered it.
+
 ## 14. Public product behavior
 
 Web of Lies is linked from Lie Ledger, but WOL-native metrics, incidents, awards,

@@ -2389,16 +2389,51 @@
       if (node.node_type === 'BULLSHITTER') {
         const profile = profileById.get(nodeId) || {};
         const awards = asArray(profile.source_awards).filter(award => award.award_code === 'BULLSHITTER');
-        const awardEventIds = new Set(awards.flatMap(award => asArray(award.qualifying_incident_ids)));
+        const awardEventIds = new Set(awards.flatMap(award => asArray(
+          award.documented_incident_ids && award.documented_incident_ids.length
+            ? award.documented_incident_ids
+            : award.qualifying_incident_ids
+        )));
         const sourceIncidents = Array.from(awardEventIds)
           .map(eventId => qualifyingEventById.get(eventId))
           .filter(event => event && event.source_id === nodeId)
           .sort((a, b) => String(a.published_at || a.first_observed_at || '').localeCompare(String(b.published_at || b.first_observed_at || '')));
         if (awards.length) {
           const award = append(detailHost, 'aside', 'scope-note wol-award-summary');
-          append(award, 'strong', '', 'Bullshitter');
-          append(award, 'p', '', publicNarrative(awards[0].public_verdict, `${sourceIncidents.length} qualifying incidents are recorded.`));
+          const labels = [
+            'Bullshitter',
+            ...asArray(profile.role_failure_appellations).map(row => publicNarrative(row.public_label, '')).filter(Boolean)
+          ];
+          append(award, 'strong', '', labels.join(' · '));
+          append(award, 'p', '', publicNarrative(
+            awards[0].public_verdict,
+            `${sourceIncidents.length} documented qualifying incidents are recorded.`
+          ));
+          const claimedRoles = asArray(profile.claimed_roles).map(row => plainLabel(row.role_code, '')).filter(Boolean);
+          if (claimedRoles.length) append(award, 'small', '', `Self-claimed roles on file: ${claimedRoles.join(' · ')}`);
         }
+
+        const roleFailures = asArray(profile.role_failure_appellations);
+        if (roleFailures.length) {
+          const roleBasis = append(detailHost, 'details', 'evidence-drawer wol-role-failure-basis');
+          append(roleBasis, 'summary', '', 'Why the role-failure labels apply');
+          const roleBody = append(roleBasis, 'div', 'evidence-drawer-body');
+          roleFailures.forEach(appellation => {
+            const block = append(roleBody, 'article', 'record-card wol-role-failure-card');
+            append(block, 'h4', '', publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code)));
+            append(block, 'p', '', `Self-claimed role: ${plainLabel(appellation.claimed_role, 'Recorded role')} · ${formatNumber(appellation.incident_count || 0)} qualifying basis incident${Number(appellation.incident_count || 0) === 1 ? '' : 's'}.`);
+            if (appellation.rule) append(block, 'p', 'section-note', publicNarrative(appellation.rule, ''));
+            const basisIds = asArray(appellation.basis_incident_ids);
+            if (basisIds.length) {
+              const basisDetails = append(block, 'details', 'wol-role-failure-incidents');
+              append(basisDetails, 'summary', '', `Basis incident IDs (${basisIds.length})`);
+              const list = append(basisDetails, 'ul', 'source-link-list');
+              basisIds.forEach(eventId => append(list, 'li', '', eventId));
+            }
+            appendReceipts(block, appellation.claimed_role_receipts, 'No self-claimed-role receipt is stored for this appellation.');
+          });
+        }
+
         const claimBlock = append(detailHost, 'div', 'wol-selected-claims');
         append(claimBlock, 'h4', '', 'Bullshit claims / presentations');
         if (!sourceIncidents.length) append(claimBlock, 'p', 'section-note', 'No WOL-native award incidents are attached to this source.');
@@ -2406,6 +2441,9 @@
           const card = append(claimBlock, 'article', 'record-card wol-event-card');
           append(card, 'p', 'card-kicker', [incident.published_at || incident.first_observed_at, plainLabel(incident.event_type)].filter(Boolean).join(' · '));
           append(card, 'h4', '', publicNarrative(incident.statement_identity || incident.exact_statement || incident.translated_statement, incident.incident_id || incident.event_id));
+          if (incident.public_bullshit_summary) {
+            append(card, 'p', 'wol-bullshit-summary', publicNarrative(incident.public_bullshit_summary, ''));
+          }
           appendReceipts(card, incident.public_receipts, 'No public receipt URL is stored directly on this qualifying event.');
         });
 
