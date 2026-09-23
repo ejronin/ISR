@@ -1979,66 +1979,6 @@
       "public_bullshit_summary": "The blank labels were real; the claimed wartime deletion was not. Levins turned old Apple Maps coverage gaps into a fresh occupation plot."
     },
     {
-      "incident_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260731",
-      "source_id": "WOL-SRC-ETHAN-LEVINS",
-      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
-      "assertion_kind": "FACTUAL_ASSERTION",
-      "published_at": null,
-      "first_observed_at": null,
-      "statement_identity": "Levins said Israel had destroyed the historic Beaufort Castle in southern Lebanon.",
-      "source_information_event_id": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260731",
-      "public_receipts": [
-        {
-          "receipt_id": "WOL-BS-RCPT-ETHAN-BEAUFORT-SOTWE",
-          "surface": "WEBSITE",
-          "url": "https://www.sotwe.com/him_0000001?lang=en",
-          "published_at": null,
-          "provenance_status": "SECONDARY_PRESERVATION",
-          "text_excerpt": "Preserves Levins: 'Israel has destroyed the historic Beaufort Castle. Fulk, the King of Jerusalem, built it for the crusaders. Israel is an enemy to Christianity.'",
-          "captured_at": "2026-09-23",
-          "deletion_status": "AVAILABLE"
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-LBC-BEAUFORT-UNHARMED-20260731",
-          "surface": "WEBSITE",
-          "url": "https://www.lbcgroup.tv/news/lebanon-news/949904/lebanon-says-beaufort-castle-unharmed-after-israeli-blasts/en",
-          "published_at": "2026-07-31",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "Lebanon's Ministry of Culture said Beaufort Castle had not been destroyed; shockwaves might have caused damage and a precise assessment was pending.",
-          "captured_at": "2026-09-23",
-          "deletion_status": "AVAILABLE"
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-LORIENT-BEAUFORT-PERIMETER-20260731",
-          "surface": "WEBSITE",
-          "url": "https://today.lorientlejour.com/article/1543125/israeli-army-carries-out-massive-demolition-of-alleged-hezbollah-tunnels-in-beaufort-area.html",
-          "published_at": "2026-07-31",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "Contemporaneous reporting described major demolition around the Beaufort area and apparent perimeter damage, not destruction of the castle itself.",
-          "captured_at": "2026-09-23",
-          "deletion_status": "AVAILABLE"
-        }
-      ],
-      "evidentiary_support_review": {
-        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
-        "search_scope": "Recovered Levins publication/preservation plus the cited primary, technical, or independent record relevant to the proposition.",
-        "checked_at": "2026-09-23",
-        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
-        "claimant_basis_note": "The area was heavily struck and the monument may have sustained damage, but the Lebanese culture authority explicitly said the castle itself was not destroyed.",
-        "search_notes": "Recovered from the completed Levins source audit. Exact publication date is left null when the surviving carrier does not preserve it.",
-        "supporting_evidence_found": false
-      },
-      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained.",
-      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
-      "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
-        "JOURNALISTIC_VERIFICATION_FAILURE",
-        "SENSATIONALIZED_PRESENTATION"
-      ],
-      "public_bullshit_summary": "Heavy demolition around Beaufort became “the castle was destroyed.” Lebanon’s own culture ministry said the castle was not destroyed."
-    },
-    {
       "incident_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -3077,66 +3017,6 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "Confirmed hits/damage became three destroyed batteries, an invented $300M running total, and a fantasy of uninterrupted missile flight."
-    },
-    {
-      "incident_id": "WOL-BS-ETHAN-TWO-50-DOLLAR-DRONES-12M-TANKS-202604",
-      "source_id": "WOL-SRC-ETHAN-LEVINS",
-      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
-      "assertion_kind": "FACTUAL_ASSERTION",
-      "published_at": null,
-      "first_observed_at": null,
-      "statement_identity": "Levins said two $50 drones had destroyed $12 million worth of IDF tanks and said he had lost count of destroyed Merkavas.",
-      "source_information_event_id": "ETHAN-X-TWO-CHEAP-DRONES-12M-TANKS-202604",
-      "public_receipts": [
-        {
-          "receipt_id": "WOL-BS-RCPT-ETHAN-12M-TANKS-TWSTALKER",
-          "surface": "WEBSITE",
-          "url": "https://twstalker.com/NachoValle21",
-          "published_at": null,
-          "provenance_status": "SECONDARY_PRESERVATION",
-          "text_excerpt": "Preserves Levins: '$12M IDF Tanks destroyed by two $50 drones. I have lost count of destroyed Merkavas.'",
-          "captured_at": "2026-09-23",
-          "deletion_status": "AVAILABLE"
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-CTP-TWO-MERKAVA-ATTACKS-20260405",
-          "surface": "WEBSITE",
-          "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-april-5-2026",
-          "published_at": "2026-04-05",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "CTP/ISW documented Hezbollah footage claiming attacks on two Merkava tanks; the reporting described attacks/strikes, not verified destruction of both vehicles.",
-          "captured_at": "2026-09-23",
-          "deletion_status": "AVAILABLE"
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-IUS-FPV-HITS-NOT-DISABLE-20260501",
-          "surface": "WEBSITE",
-          "url": "https://insideunmannedsystems.com/fpv-drones-threaten-the-casevac-mission/",
-          "published_at": "2026-05-01",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "Technical reporting noted Hezbollah videos visibly landed hits on armored vehicles but rarely supplied follow-on evidence proving the vehicles were disabled.",
-          "captured_at": "2026-09-23",
-          "deletion_status": "AVAILABLE"
-        }
-      ],
-      "evidentiary_support_review": {
-        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
-        "search_scope": "Recovered Levins publication/preservation plus the cited primary, technical, or independent record relevant to the proposition.",
-        "checked_at": "2026-09-23",
-        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
-        "claimant_basis_note": "The preserved evidence supports attacks/hits, not the categorical destruction of two full-value Merkavas. The exact $50 drone-cost assertion also lacked a documented basis in the cited presentation.",
-        "search_notes": "Recovered from the completed Levins source audit. Exact publication date is left null when the surviving carrier does not preserve it.",
-        "supporting_evidence_found": false
-      },
-      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained.",
-      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
-      "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
-        "JOURNALISTIC_VERIFICATION_FAILURE",
-        "SENSATIONALIZED_PRESENTATION"
-      ],
-      "public_bullshit_summary": "Two visible drone hits became two destroyed tanks and a $12M loss total. Hits are not kills, and a sticker-price ledger is not BDA."
     },
     {
       "incident_id": "WOL-BS-ETHAN-TWO-50-DRONES-DESTROY-12M-TANKS-202604",
