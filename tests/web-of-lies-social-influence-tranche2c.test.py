@@ -288,7 +288,6 @@ for source_id in (
     assert profiles[source_id]["direct_verdict"] is None
 ethan_incident_ids = {
     "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
-    "WOL-BS-ETHAN-F35-HIT-20260319",
     "WOL-BS-ETHAN-SARA-RECYCLED-VIDEO-20260321",
     "WOL-BS-ETHAN-TWO-MISSILES-20260322",
     "WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327",
