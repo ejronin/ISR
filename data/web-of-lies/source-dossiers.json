@@ -1754,7 +1754,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -1802,7 +1801,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical loss accounting remains separate; WOL scores the source's unsupported current-loss presentation.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -1862,7 +1860,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2042,7 +2039,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2280,7 +2276,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2340,7 +2335,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2430,7 +2424,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2627,7 +2620,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2744,7 +2736,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2794,7 +2785,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2844,7 +2834,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -2884,7 +2873,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE"
       ],
       "public_bullshit_summary": "This one comes with its own confession: he called an Arrow battery a Patriot while the source image on his own screen said Arrow."
@@ -3092,7 +3080,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -3152,7 +3139,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -3259,7 +3245,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -3319,7 +3304,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -3369,7 +3353,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -3429,7 +3412,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
@@ -3479,7 +3461,6 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
       "role_failure_tags": [
-        "ANALYSIS_BRIDGE_FAILURE",
         "JOURNALISTIC_VERIFICATION_FAILURE",
         "SENSATIONALIZED_PRESENTATION"
       ],
