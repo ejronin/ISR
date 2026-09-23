@@ -5289,6 +5289,62 @@
       "public_bullshit_summary": "An explicitly unverified nuclear-code rumor became “Trump asked to nuke Iran.” Valenti deleted the uncertainty and sold the allegation as the event."
     },
     {
+      "incident_id": "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-09-23",
+      "first_observed_at": "2026-09-23",
+      "statement_identity": "Valenti titled his UN-speech video as being about 'NUKING IRAN,' converting Trump's threat to annihilate Iran into a nuclear-use proposition.",
+      "source_information_event_id": "VALENTI-YT-UN-NUKING-IRAN-20260923",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-UN-NUKING-INVIDIOUS",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/@valentivideos",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": "2026-09-23",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump's UN speech about NUKING IRAN, renaming AI to \"SUPER INTELLIGENCE\" and conquering Greenland"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-REUTERS-UN-ANNIHILATE-IRAN-20260922",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/americas/trump-set-whirlwind-un-meetings-with-wars-iran-ukraine-agenda-2026-09-22/",
+          "published_at": "2026-09-22",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump threatened to 'annihilate' Iran if a deal failed while separately insisting Iran must never obtain a nuclear weapon."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-AP-UN-IRAN-NUCLEAR-20260922",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/f7cb0b3ebc492446c0be97ed3a6843aa",
+          "published_at": "2026-09-22",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "AP described Trump's Iran threat and his nuclear discussion as preventing Iran from obtaining nuclear weapons; it did not report a U.S. nuclear-use threat."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's current channel title/preservation and contemporaneous Reuters/AP coverage of Trump's September 22 UN General Assembly remarks.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump threatened to annihilate Iran if negotiations failed, but the reviewed speech reporting does not establish that he threatened to use nuclear weapons. The nuclear discussion concerned preventing Iran from obtaining a nuclear weapon.",
+        "search_notes": "This finding does not minimize the explicit annihilation threat. It scores only Valenti's added nuclear-use mechanism. Exact direct-video ID remains to be promoted if/when the current channel listing exposes it.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Current public title preserved through the live channel index; direct video ID recovery remains a provenance upgrade, not a prerequisite for the title-level WOL finding.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical adjudication of Trump's UN threat remains separate from WOL's source-presentation finding.",
+      "public_bullshit_summary": "Trump threatened to “annihilate” Iran; Valenti upgraded that to a speech about NUKING Iran. Nuclear-use was his addition, not the quoted threat."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
