@@ -870,6 +870,11 @@ def bullshit_award_for_events(
         for _moment, event in earned_window
         if bullshit_incident_id(event)
     )
+    documented_incident_ids = sorted(
+        bullshit_incident_id(event)
+        for _moment, event in rows
+        if bullshit_incident_id(event)
+    )
 
     cutoff = parse_time(as_of)
     current_rows: list[tuple[datetime, dict[str, Any]]] = []
@@ -912,6 +917,8 @@ def bullshit_award_for_events(
         "qualifying_window_end": earned_end.isoformat(),
         "qualifying_incident_count": len(earned_window),
         "qualifying_incident_ids": qualifying_incident_ids,
+        "documented_incident_count": len(documented_incident_ids),
+        "documented_incident_ids": documented_incident_ids,
         "current_window_status": current_status,
         "currently_active": currently_active,
         "current_window_incident_count": len(current_rows),
@@ -1139,7 +1146,15 @@ def derive_award_propagation_graph(
             "authenticity_class": str(profile.get("authenticity_class") or "UNKNOWN"),
             "award_codes": ["BULLSHITTER"],
             "award_incident_count": max(
-                [int(award.get("qualifying_incident_count") or 0) for award in awards] or [0]
+                [
+                    int(
+                        award.get("documented_incident_count")
+                        or award.get("qualifying_incident_count")
+                        or 0
+                    )
+                    for award in awards
+                ]
+                or [0]
             ),
         }
 
