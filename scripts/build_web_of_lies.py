@@ -798,6 +798,40 @@ def bullshit_incident_moment(event: dict[str, Any]) -> datetime | None:
     return parse_time(event.get("published_at")) or parse_time(event.get("first_observed_at"))
 
 
+def deduplicated_documented_bullshit_events(
+    events: list[dict[str, Any]],
+    governance: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Return every distinct receipt-backed qualifying incident, dated or not."""
+    distinct: dict[str, dict[str, Any]] = {}
+    for event in events:
+        if not bullshit_qualifying_event(event, governance):
+            continue
+        incident_id = bullshit_incident_id(event)
+        if not incident_id:
+            continue
+        key = str(
+            event.get("information_event_group_id")
+            or event.get("source_information_event_id")
+            or incident_id
+        ).strip()
+        prior = distinct.get(key)
+        if prior is None:
+            distinct[key] = event
+            continue
+        # Prefer the record with an actual publication timestamp when duplicate
+        # preservation paths exist for the same information event.
+        if bullshit_incident_moment(prior) is None and bullshit_incident_moment(event) is not None:
+            distinct[key] = event
+    return sorted(
+        distinct.values(),
+        key=lambda event: (
+            bullshit_incident_moment(event) or datetime.max.replace(tzinfo=timezone.utc),
+            bullshit_incident_id(event),
+        ),
+    )
+
+
 def deduplicated_qualifying_bullshit_events(
     events: list[dict[str, Any]],
     governance: dict[str, Any],
@@ -843,6 +877,10 @@ def bullshit_award_for_events(
         return None
     minimum = int(cfg.get("minimum_qualifying_incidents") or 6)
     window_days = int(cfg.get("window_days") or 30)
+    documented_rows = deduplicated_documented_bullshit_events(
+        events,
+        governance,
+    )
     rows = deduplicated_qualifying_bullshit_events(
         events,
         governance,
@@ -872,7 +910,7 @@ def bullshit_award_for_events(
     )
     documented_incident_ids = sorted(
         bullshit_incident_id(event)
-        for _moment, event in rows
+        for event in documented_rows
         if bullshit_incident_id(event)
     )
 
