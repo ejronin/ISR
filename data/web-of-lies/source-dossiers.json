@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-23T15:28:00-04:00",
+  "as_of": "2026-09-23",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -915,7 +915,52 @@
           ],
           "text_excerpt": "Public ValentiVideos Patreon membership page."
         }
-      ]
+      ],
+      "claimed_roles": [
+        {
+          "role_code": "POLITICAL_COMMENTATOR",
+          "public_label": "Political Commentator",
+          "self_claimed": true,
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-ROLE-VALENTI-YT-COMMENTATOR-20260923",
+              "surface": "YOUTUBE",
+              "url": "https://www.youtube.com/@valentivideos",
+              "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "SECONDARY_PRESERVATION",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Channel description: 'Live every weekday at 2:30 ET / 11:30 PT. Political Commentator. Historian. Content Creator. Actor. Socialist. Patriot.'"
+            }
+          ]
+        },
+        {
+          "role_code": "HISTORIAN",
+          "public_label": "Historian",
+          "self_claimed": true,
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-ROLE-VALENTI-YT-HISTORIAN-20260923",
+              "surface": "YOUTUBE",
+              "url": "https://www.youtube.com/@valentivideos",
+              "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "SECONDARY_PRESERVATION",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Channel description self-identifies Chris Valenti as 'Political Commentator. Historian. Content Creator.'"
+            }
+          ]
+        }
+      ],
+      "publication_cadence": {
+        "source": "SELF_DESCRIBED_CHANNEL_METADATA",
+        "schedule": "Live every weekday at 2:30 ET / 11:30 PT",
+        "workflow_note": "A livestream and derivative clips are separate publication events only when they contain materially distinct propositions. Mere clipping/repackaging of the same proposition does not inflate the WOL incident denominator.",
+        "receipt_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+        "captured_at": "2026-09-23"
+      }
     },
     {
       "source_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
@@ -1695,6 +1740,26 @@
             "observation": "Project owner reports Valenti argued the United States essentially did not care, permitted the strikes to occur, and did so to make other actors angry; this is materially stronger than interceptor rationing or threat-based non-interception.",
             "evidentiary_limit": "The public title alone does not prove this motive proposition. Exact transcript wording/timestamps remain required before this body-level motive claim is promoted into a scored WOL-native incident."
           }
+        }
+      ],
+      "fundraising_review_queue": [
+        {
+          "research_item_id": "VALENTI-FUNDRAISING-GAZA-250K-20260923",
+          "public_claim": "Valenti has reportedly stated that his fundraising has raised approximately $250,000 for Gaza relief.",
+          "observation_provenance": "PROJECT_OWNER_DIRECT_REVIEW",
+          "capture_status": "CLAIM_REPORTED_EXACT_PUBLIC_RECEIPT_NOT_YET_RECOVERED",
+          "current_disposition": "UNVERIFIED_NOT_FALSE",
+          "required_next_evidence": [
+            "Exact public statement/video/timestamp for the $250,000 figure",
+            "Fundraiser or payment-platform page showing gross/net amount",
+            "Named recipient charity, fiscal sponsor, NGO, or implementing partner",
+            "Disbursement records or recipient acknowledgements",
+            "Explanation of how funds reach Gaza and what categories they fund",
+            "Any affiliations, employment, board, sponsorship, or financial relationship between Valenti and the recipient/partner"
+          ],
+          "research_note": "Do not infer theft, diversion, fraud, or grift from absent indexed documentation. The claim becomes adverse only if the amount, recipient, distribution, or partner representation is materially false, concealed after a relevant representation, or contradicted by documentary evidence.",
+          "search_status_as_of": "2026-09-23",
+          "indexed_search_result": "No public indexed source located in the reviewed search that identifies the $250,000 fundraiser, beneficiary, implementing partner, payment rail, or disbursement accounting."
         }
       ]
     }
