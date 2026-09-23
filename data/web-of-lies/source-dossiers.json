@@ -1749,6 +1749,56 @@
       "public_bullshit_summary": "A 2006 burned-tank photo became proof of 19 tanks destroyed that day and a $95M running loss total. Wrong year, unsupported count, bullshit receipt."
     },
     {
+      "incident_id": "WOL-BS-ETHAN-2026-INTERCEPTOR-ZERO-STOCKPILE-202608",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins inferred from an interceptor bearing a 2026 manufacture date that Israel was out of interceptor stockpiles.",
+      "source_information_event_id": "ETHAN-X-INTERCEPTOR-MADE-2026-OUT-STOCKPILE-202608",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-INTERCEPTORS-TWSTALKER",
+          "surface": "WEBSITE",
+          "url": "https://ww.twstalker.com/ammaarxo",
+          "published_at": null,
+          "text_excerpt": "Israel used interceptors made in 2026 today. They are OUT of stockpiles. Iran should immediately take advantage of this.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-REUTERS-PATRIOT-PRODUCTION-20260917",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/autos-transportation/lockheed-martin-gets-first-batch-patriot-interceptor-parts-general-motors-2026-09-17/",
+          "published_at": "2026-09-17",
+          "text_excerpt": "Reuters reported expanded interceptor production amid high demand; it did not report a zero-stockpile state.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A manufacture date on a used interceptor can show recent production entered inventory; it does not establish that every older interceptor was exhausted. No inventory evidence supporting the zero-stockpile conclusion was identified.",
+        "search_notes": "This is a lifetime WOL source-behavior incident. Surviving mirror timestamps are left null where the original publication date was not independently preserved.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained in the incident record.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "A 2026 manufacturing date became proof the entire stockpile was empty. That inference does not remotely follow."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
@@ -1797,6 +1847,56 @@
       "public_bullshit_summary": "A pause concerning energy-plant destruction became a blanket civilian-infrastructure ceasefire, then an unsupported invasion-motive claim."
     },
     {
+      "incident_id": "WOL-BS-ETHAN-F18-VIETNAM-ERA-202609",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins called the F/A-18 a Vietnam War-era aircraft and said its use meant the United States had 'resorted' to Vietnam-era aircraft.",
+      "source_information_event_id": "ETHAN-X-F18-VIETNAM-ERA-202609",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-F18-TWSTALKER",
+          "surface": "WEBSITE",
+          "url": "https://ww.twstalker.com/ThomBrady5",
+          "published_at": null,
+          "text_excerpt": "American F18 seen over southern Iran now. The U.S. has resorted to Vietnam War-era aircraft. Not a good sign.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NAVAIR-FA18-HISTORY",
+          "surface": "WEBSITE",
+          "url": "https://www.navair.navy.mil/product/FA-18-D-Hornet",
+          "published_at": null,
+          "text_excerpt": "NAVAIR states the F/A-18 first flew in 1978 and entered operational service in 1983/1984.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The Vietnam War ended years before the F/A-18 first flew or entered service; calling it Vietnam War-era is a straightforward chronology error.",
+        "search_notes": "This is a lifetime WOL source-behavior incident. Surviving mirror timestamps are left null where the original publication date was not independently preserved.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained in the incident record.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "The F/A-18 first flew in 1978 and entered service in the 1980s. Calling it “Vietnam War-era” is basic timeline malpractice."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-ISRAEL-LOST-PUBLIC-SUPPORT-20260328",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -1842,6 +1942,106 @@
         "JOURNALISTIC_VERIFICATION_FAILURE"
       ],
       "public_bullshit_summary": "Real protests became 'Israel lost public support' while contemporaneous representative polling still showed majority support."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-NABATIEH-NEVER-HEZBOLLAH-202609",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins said an anticipated Israeli move toward Nabatieh proved that 'it was never about Hezbollah.'",
+      "source_information_event_id": "ETHAN-X-NABATIEH-NEVER-HEZBOLLAH-202609",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-NABATIEH-SOTWE",
+          "surface": "WEBSITE",
+          "url": "https://www.sotwe.com/tur_ste",
+          "published_at": null,
+          "text_excerpt": "Israel is preparing to invade and occupy Nabatieh... It was never about Hezbollah.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-REUTERS-ALI-AL-TAHER-HEZBOLLAH-20260910",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/israel-says-it-destroyed-hezbollah-underground-complex-lebanons-ali-al-taher-2026-09-10/",
+          "published_at": "2026-09-10",
+          "text_excerpt": "Reuters documented the Israeli operation against a Hezbollah underground command/weapons complex at Ali al-Taher.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Whatever broader Israeli objectives may be, the documented record includes operations expressly directed at Hezbollah infrastructure; the categorical 'never about Hezbollah' motive claim does not follow.",
+        "search_notes": "This is a lifetime WOL source-behavior incident. Surviving mirror timestamps are left null where the original publication date was not independently preserved.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained in the incident record.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Documented Hezbollah targets somehow became proof it was “never about Hezbollah.” That absolute outruns the record."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-NAVY-COMMANDER-HIDDEN-DETAILS-20260703",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins called Cmdr. Gabriel Edwards' helicopter loss mysterious and said the United States had hidden all details.",
+      "source_information_event_id": "ETHAN-X-GABE-EDWARDS-HIDDEN-DETAILS-202607",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-GABE-EDWARDS-TWSTALKER",
+          "surface": "WEBSITE",
+          "url": "https://mobile.twstalker.com/Darth_Penguin_",
+          "published_at": null,
+          "text_excerpt": "TOP U.S. NAVY COMMANDER KILLED IN ARABIAN SEA... helicopter 'mysteriously' crashed... U.S. has hidden all details.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-USNI-MH60S-DITCHING-20260701",
+          "surface": "WEBSITE",
+          "url": "https://news.usni.org/2026/07/01/sailor-missing-after-helo-assigned-to-uss-george-h-w-bush-ditches-in-arabian-sea",
+          "published_at": "2026-07-01",
+          "text_excerpt": "USNI reported the July 1 emergency landing, four aboard, three recovered stable, one missing, active search, investigation, and no indication of hostile action.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The Navy/USNI record disclosed the occurrence, crew count and disposition, search, investigation status and lack of hostile-action indication on July 1; 'hidden all details' was false.",
+        "search_notes": "This is a lifetime WOL source-behavior incident. Surviving mirror timestamps are left null where the original publication date was not independently preserved.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained in the incident record.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "The Navy had already published the ditching, crew count, rescues, search and no-hostile-action assessment. “Hidden all details” was bullshit."
     },
     {
       "incident_id": "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
@@ -1901,6 +2101,166 @@
       "public_bullshit_summary": "A seven-day gap in somebody else’s posting became a death certificate. Netanyahu then appeared publicly alive."
     },
     {
+      "incident_id": "WOL-BS-ETHAN-ONLY-US-TROOPS-MISSILE-PROGRAMS-20260320",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-20",
+      "first_observed_at": "2026-03-20",
+      "statement_identity": "Levins said the only American soldiers in Israel were there to help run missile programs and that Israel allowed U.S. soldiers for no other purpose.",
+      "source_information_event_id": "ETHAN-PODCAST-ONLY-US-SOLDIERS-MISSILE-PROGRAMS-20260320",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-PODSCAN-US-TROOPS",
+          "surface": "PODCAST",
+          "url": "https://podscan.fm/podcasts/fight-back-with-jake-shields/episodes/ethan-levins-is-helping-iran-in-war-against-israel-fight-back-ep-171",
+          "published_at": "2026-03-20",
+          "text_excerpt": "The only American soldiers that are there are to help them run missile programs for Israel. They won't allow U.S. soldiers in Israel for any other purpose.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CENTCOM-CMCC",
+          "surface": "WEBSITE",
+          "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4325130/centcom-opens-civil-military-coordination-center-to-support-gaza-stabilization/",
+          "published_at": "2025-10-17",
+          "text_excerpt": "CENTCOM said approximately 200 U.S. service members with transportation, planning, security, logistics and engineering expertise established the CMCC in Israel.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A publicly acknowledged U.S. military presence in Kiryat Gat performed ceasefire monitoring, logistics, engineering, planning, security and humanitarian/stabilization coordination, directly contradicting the 'only missile programs' absolute.",
+        "search_notes": "This is a lifetime WOL source-behavior incident. Surviving mirror timestamps are left null where the original publication date was not independently preserved.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained in the incident record.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "About 200 publicly acknowledged U.S. troops were doing ceasefire, logistics, engineering and stabilization work. “Only missile programs” was already false."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-PALANTIR-ISRAELI-COMPANY-202604",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins described Palantir as an Israeli AI company.",
+      "source_information_event_id": "ETHAN-X-PALANTIR-ISRAELI-COMPANY-202604",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-PALANTIR-TWSTALKER",
+          "surface": "WEBSITE",
+          "url": "https://mobile.twstalker.com/akiko1818",
+          "published_at": null,
+          "text_excerpt": "Palantir is an Israeli AI company used to identify faces and kill them with drones.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-PALANTIR-COMPANY-BACKGROUND",
+          "surface": "WEBSITE",
+          "url": "https://www.palantir.com/assets/xrfr7uokpv1b/3kpEL64JsluKGumtngbnjB/d40a14a9f21babad3a9e4ce463ca9f1b/Palantir_2021_Type_2_SOC_3_Report.pdf",
+          "published_at": null,
+          "text_excerpt": "Palantir's own company background states it was founded in 2004 and is headquartered in Denver, Colorado.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Whatever Palantir's work with Israel, Palantir Technologies is a U.S.-headquartered company, not an Israeli company.",
+        "search_notes": "This is a lifetime WOL source-behavior incident. Surviving mirror timestamps are left null where the original publication date was not independently preserved.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained in the incident record.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Palantir’s work involving Israel became “Palantir is an Israeli company.” It isn’t."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-PICKAXE-FINAL-CHANCE-20260922",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-09-22",
+      "first_observed_at": "2026-09-22",
+      "statement_identity": "Levins called Pickaxe Mountain Iran's final chance to develop a nuclear weapon.",
+      "source_information_event_id": "ETHAN-X-PICKAXE-FINAL-CHANCE-20260922",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-PICKAXE-SOTWE",
+          "surface": "WEBSITE",
+          "url": "https://www.sotwe.com/EthanLevins2",
+          "published_at": "2026-09-22",
+          "text_excerpt": "Iran’s final chance to develop a nuclear weapon is at Pickaxe mountain.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ISIS-PICKAXE-20260714",
+          "surface": "WEBSITE",
+          "url": "https://isis-online.org/isis-reports/what-to-know-about-pickaxe-mountain",
+          "published_at": "2026-07-14",
+          "text_excerpt": "ISIS assessed the facility as nuclear-related and not yet operational; its precise future function remained uncertain.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CSIS-NUCLEAR-REBUILD-PATHS",
+          "surface": "WEBSITE",
+          "url": "https://www.csis.org/analysis/damage-irans-nuclear-program-can-it-rebuild",
+          "published_at": null,
+          "text_excerpt": "CSIS identified Pickaxe Mountain, the underground facility near Isfahan, existing enriched-uranium stocks and other underground/clandestine reconstitution pathways.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Evidence supports Pickaxe as an important suspected nuclear-related site, not as Iran's sole or 'final' remaining path to a weapon.",
+        "search_notes": "This is a lifetime WOL source-behavior incident. Surviving mirror timestamps are left null where the original publication date was not independently preserved.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained in the incident record.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "One suspected nuclear site became Iran’s sole remaining nuclear pathway. “Final chance” was invented."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-SARA-RECYCLED-VIDEO-20260321",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
@@ -1938,6 +2298,56 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "A 2020 clip was sold as current wartime evidence and then used to insinuate drug use without evidence."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-SYRIA-AIR-DEFENSES-PROTECT-ISRAEL-20260922",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-09-22",
+      "first_observed_at": "2026-09-22",
+      "statement_identity": "Levins stated that Syria had established air defenses to protect Israel.",
+      "source_information_event_id": "ETHAN-X-SYRIA-AIR-DEFENSES-PROTECT-ISRAEL-20260922",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-SYRIA-AIR-DEFENSES",
+          "surface": "WEBSITE",
+          "url": "https://site.twstalker.com/EthanLevins2",
+          "published_at": "2026-09-22",
+          "text_excerpt": "The resumption of war is coming very soon... Syria has established air defenses to protect Israel...",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-REUTERS-SYRIA-TURKEY-AIRBASE-20260820",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/syria-says-no-turkish-military-build-up-planned-airbase-struck-by-israel-2026-08-20/",
+          "published_at": "2026-08-20",
+          "text_excerpt": "Reuters documented Israeli concern over Turkish military/air-defense-related presence in Syria and Israeli strikes on a Syrian airbase; it did not establish Syrian air defenses as a system created to protect Israel.",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "Public reporting documents Israeli-Syrian-Turkish deconfliction and Israeli concern about air-defense constraints, not a Syrian air-defense role established to protect Israel.",
+        "search_notes": "This is a lifetime WOL source-behavior incident. Surviving mirror timestamps are left null where the original publication date was not independently preserved.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained in the incident record.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical claim-family synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Syria’s air-defense picture became a made-up Israeli protection service. No such Syrian role was established."
     },
     {
       "incident_id": "WOL-BS-ETHAN-TWO-MISSILES-20260322",
