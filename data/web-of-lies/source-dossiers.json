@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-22T11:59:00-04:00",
+  "as_of": "2026-09-23",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -200,7 +200,68 @@
         "Rachel Blevins Substack: independent journalist.",
         "Press TV: US/geopolitical journalist.",
         "Atlas preserves these public labels as context rather than selecting a stronger affiliation claim."
-      ]
+      ],
+      "claimed_roles": [
+        {
+          "role_code": "ANALYST",
+          "public_label": "Geopolitical Analyst",
+          "self_claimed": true,
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-ROLE-ETHAN-PAAGE-ANALYST-20260923",
+              "surface": "WEBSITE",
+              "url": "https://paa.ge/ethanlevins/en?tab=links",
+              "archive_url": null,
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "ORIGINAL_URL",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Ethan Levins — Independent Journalist and Geopolitical Analyst."
+            },
+            {
+              "receipt_id": "WOL-ROLE-ETHAN-TELEGRAM-ANALYSIS-20260923",
+              "surface": "TELEGRAM",
+              "url": "https://t.me/s/ethanlevins?before=3472",
+              "archive_url": null,
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "ORIGINAL_URL",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Official Telegram advertises live breaking news, important updates, and war analysis."
+            }
+          ]
+        },
+        {
+          "role_code": "JOURNALIST",
+          "public_label": "Independent Journalist",
+          "self_claimed": true,
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-ROLE-ETHAN-PAAGE-JOURNALIST-20260923",
+              "surface": "WEBSITE",
+              "url": "https://paa.ge/ethanlevins/en?tab=links",
+              "archive_url": null,
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "ORIGINAL_URL",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Ethan Levins — Independent Journalist and Geopolitical Analyst."
+            },
+            {
+              "receipt_id": "WOL-ROLE-ETHAN-XPROFILE-JOURNALIST-20260923",
+              "surface": "X",
+              "url": "https://x.com/EthanLevins2",
+              "archive_url": "https://site.twstalker.com/EthanLevins2",
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "SECONDARY_PRESERVATION",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Profile preserved as Geopolitical Analyst & Independent Journalist."
+            }
+          ]
+        }
+      ],
+      "role_claim_context": "Role nouns are self-claimed. WOL does not assign analyst/journalist status in order to criticize it; adverse role-failure appellations require these receipts plus incident-gated evidence."
     },
     {
       "source_id": "WOL-SRC-INN-IRAN-NATIONAL-NEWS",
@@ -2064,7 +2125,13 @@
       },
       "downstream_note": "WOL source-behavior finding; any canonical death-rumor family remains separate.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Preserve source behavior independently from any canonical rumor-chain adjudication."
+      "review_reason": "Preserve source behavior independently from any canonical rumor-chain adjudication.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "A seven-day gap in somebody else’s posting became a death certificate. Netanyahu then appeared publicly alive."
     },
     {
       "incident_id": "WOL-BS-ETHAN-F35-HIT-20260319",
@@ -2124,7 +2191,12 @@
       },
       "downstream_note": "Maps to the established F-15E/F-35 correction substrate without rewriting Claims Forensics.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Source-behavior repetition of an aircraft-type falsehood in the canonical F-15E chain."
+      "review_reason": "Source-behavior repetition of an aircraft-type falsehood in the canonical F-15E chain.",
+      "role_failure_tags": [
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "A real U.S. aircraft loss became a historic F-35 hit; the aircraft was an F-15E."
     },
     {
       "incident_id": "WOL-BS-ETHAN-SARA-RECYCLED-VIDEO-20260321",
@@ -2157,7 +2229,13 @@
       },
       "downstream_note": "One recycled/decontextualized media event; it is not split into separate recency and drug-state counts.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Preserve the recycled-media/current-condition proposition if a canonical family is later created."
+      "review_reason": "Preserve the recycled-media/current-condition proposition if a canonical family is later created.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "A 2020 clip was sold as current wartime evidence and then used to insinuate drug use without evidence."
     },
     {
       "incident_id": "WOL-BS-ETHAN-TWO-MISSILES-20260322",
@@ -2199,7 +2277,12 @@
       },
       "downstream_note": "Same publication event as existing discovery WOL-DISC-ETHAN-LEVINS-TWO-MISSILES-ALL-DAMAGE-20260322; count once despite two propositions.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Claims Forensics can still atomize causation and stockpile propositions separately."
+      "review_reason": "Claims Forensics can still atomize causation and stockpile propositions separately.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE"
+      ],
+      "public_bullshit_summary": "Visible damage does not prove that exactly two missiles caused all of it, much less prove thousands of ready missiles remain."
     },
     {
       "incident_id": "WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327",
@@ -2241,7 +2324,13 @@
       },
       "downstream_note": "Do not split the false scope expansion and motive attribution into two award incidents.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Canonical treatment may atomize ceasefire scope and intent separately."
+      "review_reason": "Canonical treatment may atomize ceasefire scope and intent separately.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "A pause concerning energy-plant destruction became a blanket civilian-infrastructure ceasefire, then an unsupported invasion-motive claim."
     },
     {
       "incident_id": "WOL-BS-ETHAN-ISRAEL-LOST-PUBLIC-SUPPORT-20260328",
@@ -2283,7 +2372,12 @@
       },
       "downstream_note": "This finding is about the factual generalization from protests to aggregate public support, not a judgment about the merits of the war.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Any broader public-opinion narrative family remains upstream."
+      "review_reason": "Any broader public-opinion narrative family remains upstream.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE"
+      ],
+      "public_bullshit_summary": "Real protests became 'Israel lost public support' while contemporaneous representative polling still showed majority support."
     },
     {
       "incident_id": "WOL-BS-MEIDAS-SEVEN-TANKERS-DESTROYED-20260717",
