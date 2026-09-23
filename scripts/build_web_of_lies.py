@@ -12,7 +12,7 @@ import argparse
 import json
 import math
 from collections import defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -826,7 +826,7 @@ def deduplicated_documented_bullshit_events(
     return sorted(
         distinct.values(),
         key=lambda event: (
-            bullshit_incident_moment(event) or datetime.max.replace(tzinfo=timezone.utc),
+            bullshit_incident_moment(event) or datetime.max,
             bullshit_incident_id(event),
         ),
     )
