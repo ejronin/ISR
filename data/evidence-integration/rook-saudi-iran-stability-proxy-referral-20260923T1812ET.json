@@ -1,0 +1,106 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_PROCESSING_REFERRAL",
+  "schema_version": "1.0",
+  "authority": "Evidence Integration upstream collection only; no Claims Forensics adjudication",
+  "collection_time": "2026-09-23T18:12:00-04:00",
+  "timezone": "America/New_York",
+  "topic": "Saudi/Gulf rebuttal to Iranian negotiation-and-stability narrative; proxy conduct; UNGA signaling",
+  "source_context": "UNGA 81 high-level week, September 2026",
+  "propositions_for_later_processing": [
+    {
+      "proposition_id": "SAUDI-IRAN-NEGOTIATION-INTENT-202609",
+      "claimant_class": "Saudi/Gulf official position",
+      "claim": "Iran's stated willingness to negotiate should be tested against its conduct and whether it actually pursues regional de-escalation.",
+      "status_here": "PRESERVED FOR CLAIMS FORENSICS; NOT ADJUDICATED",
+      "processing_questions": [
+        "Compare Iranian negotiation statements with contemporaneous military/proxy conduct.",
+        "Distinguish unwillingness to negotiate from negotiation on unacceptable or maximalist conditions.",
+        "Preserve changes in Iranian Hormuz conditions and speaker authority."
+      ]
+    },
+    {
+      "proposition_id": "SAUDI-IRAN-REGIONAL-STABILITY-CONDUCT-202609",
+      "claimant_class": "Saudi/Gulf official position",
+      "claim": "Iranian support for armed non-state actors is evidence inconsistent with Iranian claims of seeking regional stability.",
+      "status_here": "PRESERVED FOR CLAIMS FORENSICS; PARTLY TESTABLE FROM EXISTING EVIDENCE",
+      "processing_questions": [
+        "Separate support, arming, financing, training, strategic guidance, operational guidance and command/control.",
+        "Test each organization separately; do not generalize one proxy relationship to all.",
+        "Compare timing of Iranian diplomatic claims with contemporaneous supported-group operations."
+      ]
+    },
+    {
+      "proposition_id": "IRAN-HOUTHI-DIRECT-OPERATIONAL-INVOLVEMENT-202609",
+      "claimant_class": "multi-source reporting / Saudi relevance",
+      "claim": "Recent reporting places IRGC personnel in a more direct operational role with Houthi offensive activity than generic sponsorship or arms supply.",
+      "status_here": "EVIDENCE UPGRADE FOR EXISTING IRAN-HOUTHI DRAWER; FINAL ADJUDICATION DEFERRED",
+      "processing_questions": [
+        "Reconcile Reuters and AP multi-source reporting with prior evidence.",
+        "Identify exact IRGC functions: planning, front-line commander support, communications analysis, ISR/satellite support, weapons/funding.",
+        "Determine whether evidence supports operation-specific direction, broader campaign direction, or organization-wide command.",
+        "Do not infer Iranian control over every Houthi action."
+      ]
+    },
+    {
+      "proposition_id": "IRAN-HAMAS-SUPPORT-SEPARATE-202609",
+      "claimant_class": "Saudi/Gulf proxy argument",
+      "claim": "Hamas is cited alongside other Iranian-supported armed actors as evidence in the regional-instability argument.",
+      "status_here": "SEPARATE EVIDENTIARY TRACK REQUIRED",
+      "processing_questions": [
+        "Establish financing, weapons, training and strategic-support evidence independently.",
+        "Do not import the Houthi operational-control finding into Hamas.",
+        "Separate Iranian support from Iranian foreknowledge or command of specific Hamas operations."
+      ]
+    },
+    {
+      "proposition_id": "UNGA-WALKOUT-SIGNALING-202609",
+      "claimant_class": "observable diplomatic behavior",
+      "claim": "Delegation walkouts during UNGA speeches are symbolic diplomatic signaling and do not by themselves establish termination of substantive diplomatic contact.",
+      "status_here": "PROCESSING RULE / CONTEXT",
+      "processing_questions": [
+        "Record actor, timing, speaker and whether delegation fully or partially departed.",
+        "Cross-check simultaneous negotiations, mediation, ambassador recall, sanctions, treaty action or diplomatic rupture.",
+        "Do not promote walkout imagery into a substantive policy break without accompanying action."
+      ]
+    }
+  ],
+  "evidence_links": [
+    {
+      "source": "Saudi Press Agency",
+      "url": "https://www.spa.gov.sa/en/N2682990",
+      "relevance": "Saudi Arabia, Egypt, Pakistan and Turkiye jointly state dialogue and diplomacy are the only path to sustainable resolution and emphasize regional peace/security/stability."
+    },
+    {
+      "source": "Saudi Press Agency",
+      "url": "https://www.spa.gov.sa/en/N2682839",
+      "relevance": "Saudi cabinet statement condemns repeated Houthi targeting and records Saudi security framing."
+    },
+    {
+      "source": "AP",
+      "url": "https://apnews.com/article/f1ef966c0f89e8dd13806768e3af4a0f",
+      "relevance": "UNGA regional context, Gulf pressure on Iran regarding hostilities/navigation and contemporaneous Yemen/Houthi conflict."
+    }
+  ],
+  "cross_references": [
+    "data/evidence-integration/rook-hormuz-position-authority-lineage-20260922T0930ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260923T1200ET.json"
+  ],
+  "routing": {
+    "evidence_integration": "Retain source records, exact speakers, occurrence/publication/collection/evidence-horizon times and later corroboration/corrections.",
+    "claims_forensics": "Decompose and adjudicate the Saudi/Gulf propositions and Iranian counterclaims atomically; evaluate contradiction, support and temporal knowledge without allowing this artifact to pre-decide verdicts.",
+    "lie_ledger": "Only ingest later if Claims Forensics establishes the required falsehood/knowledge predicates under its canonical authority; do not infer deception merely from contradiction or policy inconsistency.",
+    "web_of_lies": "Downstream only after canonical Claims Forensics/Lie Ledger authority establishes eligible lineage; Evidence Integration must not generate narrative culpability.",
+    "public_product": "No direct publication authority from this artifact."
+  },
+  "unresolved_questions": [
+    "Locate and preserve the exact Saudi UNGA speech/statement containing the strongest formulation that Iran does not genuinely seek negotiations or regional stability.",
+    "Determine which Saudi official made each proposition and preserve exact wording rather than paraphrase.",
+    "Reconcile the new direct-IRGC/Houthi reporting with older Houthi autonomy assessments.",
+    "Identify any Iranian response to the Saudi accusations and process it as a competing proposition.",
+    "Determine whether Iranian diplomatic engagement produced any observable reduction in proxy operations during the same evidence horizon."
+  ],
+  "limitations": [
+    "The exact Saudi speech described by the user was not located in the primary-source search used for this append; the Saudi/Gulf position is therefore preserved as a collection lead/proposition, not quoted as verified wording.",
+    "No inference of Iranian motive, deception, or unified command is made by Evidence Integration."
+  ]
+}
