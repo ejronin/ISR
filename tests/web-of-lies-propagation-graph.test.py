@@ -22,6 +22,8 @@ profiles = [
             "award_code": "BULLSHITTER",
             "qualifying_incident_count": 7,
             "qualifying_incident_ids": ["I-IR-1", "I-IR-2", "E-IR-AUTO"],
+            "documented_incident_count": 4,
+            "documented_incident_ids": ["I-IR-1", "I-IR-2", "E-IR-AUTO", "I-IR-LATER"],
         }],
     },
     {
@@ -65,6 +67,7 @@ profiles = [
 incidents = [
     {"incident_id": "I-IR-1", "source_id": "BS-IR"},
     {"incident_id": "I-IR-2", "source_id": "BS-IR"},
+    {"incident_id": "I-IR-LATER", "source_id": "BS-IR"},
     {"incident_id": "I-US-1", "source_id": "BS-US"},
     {"incident_id": "I-CLEAN-1", "source_id": "CLEAN"},
     {"event_id": "E-IR-AUTO", "source_id": "BS-IR"},
@@ -124,6 +127,18 @@ observations = [
         "public_receipts": [{"receipt_id": "R-3", "surface": "X", "url": "https://example.test/r3", "provenance_status": "ORIGINAL_URL"}],
     },
     {
+        "observation_id": "A-5",
+        "bullshitter_source_id": "BS-IR",
+        "bullshitter_event_id": "I-IR-LATER",
+        "amplifier_id": "AMP-RU-BOT",
+        "amplifier_display_name": "Example RU Bot",
+        "amplifier_handle": "@ru_example",
+        "amplifier_platform": "X",
+        "amplifier_country_code": "RU",
+        "amplifier_authenticity_class": "CONFIRMED_BOT",
+        "public_receipts": [{"receipt_id": "R-5", "surface": "X", "url": "https://example.test/r5", "provenance_status": "ORIGINAL_URL"}],
+    },
+    {
         "observation_id": "A-4",
         "bullshitter_source_id": "CLEAN",
         "bullshitter_event_id": "I-CLEAN-1",
@@ -174,13 +189,13 @@ assert megaphone["node_type"] == "MEGAPHONE"
 assert megaphone["country_code"] == "RU"
 assert megaphone["authenticity_class"] == "CONFIRMED_BOT"
 assert megaphone["bullshitter_source_count"] == 2
-assert megaphone["amplification_observation_count"] == 3
+assert megaphone["amplification_observation_count"] == 4
 assert megaphone["award_codes"] == []
 
 ir_edge = edges[("BS-IR", "AMP::AMP-RU-BOT")]
-assert ir_edge["amplified_claim_count"] == 2
-assert set(ir_edge["bullshitter_event_ids"]) == {"I-IR-1", "I-IR-2"}
-assert len(ir_edge["public_receipts"]) == 2
+assert ir_edge["amplified_claim_count"] == 3
+assert set(ir_edge["bullshitter_event_ids"]) == {"I-IR-1", "I-IR-2", "I-IR-LATER"}
+assert len(ir_edge["public_receipts"]) == 3
 
 us_edge = edges[("BS-US", "AMP::AMP-RU-BOT")]
 assert us_edge["amplified_claim_count"] == 1
