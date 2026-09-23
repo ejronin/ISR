@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-23T15:28:00-04:00",
+  "as_of": "2026-09-23T18:43:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -1621,11 +1621,13 @@
         "https://www.youtube.com/watch?v=nqd977hHQfM",
         "https://www.youtube.com/watch?v=dcPbU2XaSSo",
         "https://www.youtube.com/watch?v=H0BfiwKhoVs",
-        "https://www.youtube.com/watch?v=IrZ6HEpHoIE"
+        "https://www.youtube.com/watch?v=IrZ6HEpHoIE",
+        "https://www.youtube.com/watch?v=TqTMaCKNMOQ",
+        "https://www.youtube.com/watch?v=tdoYgjiOchc"
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Multiple Iran-war/public-affairs factual-claim surfaces are routed claim-by-claim. WOL-native evidentiary review records six qualifying unsupported/misleading presentation incidents from July 22 through August 6, plus a September 17 31-million-soldiers generalization. Project-owner direct body review additionally reports that Valenti used 'nuclear strike' literally for nuclear-warhead use against Iran and, in the July 27 missile episode, went beyond real interceptor triage to an unsupported motive theory that the U.S. permissively let strikes occur to provoke anger. Those body observations remain explicitly non-transcript provenance until exact captions/timestamps are recovered.",
+      "notes": "Receipt-backed WOL review now records nine qualifying Valenti publication incidents through 2026-09-23. The lifetime register includes two additional conservative presentation findings: converting the June U.S.-Iran interim MOU into an 'official surrender,' and converting warnings about possible limited Russian provocations against Poland into an imminent Russian invasion. Existing body-gated items remain unscored where exact spoken propositions are not independently preserved. Sensational titles with a supported factual substrate are not counted merely for tone.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1653,7 +1655,7 @@
         {
           "research_item_id": "VALENTI-BODY-GROUND-INVASION-2026",
           "title": "Trump announces FULL SCALE GROUND INVASION of Iran",
-          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "url": "https://www.youtube.com/watch?v=OzH543I4fZQ",
           "publication_date": null,
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
@@ -1676,8 +1678,8 @@
         {
           "research_item_id": "VALENTI-BODY-SAUDI-NUCLEAR-WEAPONS-2026",
           "title": "BREAKING: Trump gives SAUDI ARABIA NUCLEAR WEAPONS",
-          "url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
-          "publication_date": null,
+          "url": "https://www.youtube.com/watch?v=nqdb4mLOCEM",
+          "publication_date": "2026-07-22",
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
           "research_reason": "Determine whether the body alleges literal transfer of nuclear weapons, nuclear-capable systems, extended deterrence, basing, planning, or some other proposition."
@@ -1696,7 +1698,30 @@
             "evidentiary_limit": "The public title alone does not prove this motive proposition. Exact transcript wording/timestamps remain required before this body-level motive claim is promoted into a scored WOL-native incident."
           }
         }
-      ]
+      ],
+      "solicitation_review": {
+        "checked_at": "2026-09-23T18:43:00-04:00",
+        "provenance": "PROJECT_OWNER_DIRECT_REVIEW_PLUS_PUBLIC_LINK_REVIEW",
+        "publisher_claim": "Valenti stated that 'the fundraiser is in the links.'",
+        "fundraiser_destination_status": "NOT_INDEPENDENTLY_LOCATED_IN_REVIEWED_PUBLIC_LINKS",
+        "verified_monetization": [
+          "PATREON",
+          "MERCHANDISE"
+        ],
+        "verified_public_support_language": "Video descriptions explicitly direct viewers to Patreon as the best way to support Valenti Videos and separately promote merchandise.",
+        "inference_limit": "Failure to locate a distinct fundraiser does not establish that the fundraiser is fake or nonexistent. Keep this as a solicitation/publication lead unless a destination is recovered or repeated absence from specifically advertised links is directly documented."
+      },
+      "review_completion": {
+        "status": "CURRENT_SOURCE_PASS_COMPLETED_THROUGH_2026-09-23_WITH_BODY_GATED_QUEUE_RETAINED",
+        "qualifying_incident_count": 9,
+        "completion_limit": "This is not a claim of exhaustive lifetime capture. It closes the current reviewed source pass while preserving unresolved body-dependent items for later evidence.",
+        "excluded_or_held_examples": [
+          "Apache shot down over Hormuz: underlying shootdown substantially supported; not counted merely because the headline is dramatic.",
+          "U.S./Saudi strikes in Iraq killing about 20: underlying strike/death report substantially supported; not counted merely because the headline is dramatic.",
+          "Casualty-coverup presentation: real nondisclosure reporting provides factual substrate; body-level overstatement remains unscored without a clean proposition.",
+          "Ground-invasion, Key West false-flag, Cuba/Iran, negotiating-team assassination and similar titles remain body-gated where the title alone cannot establish the exact factual proposition."
+        ]
+      }
     }
   ],
   "source_behavior_incidents": [
@@ -4682,6 +4707,53 @@
       }
     },
     {
+      "incident_id": "WOL-BS-VALENTI-OFFICIAL-SURRENDER-20260618",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-06-18",
+      "first_observed_at": "2026-06-18",
+      "statement_identity": "Publisher headline stated that the United States had officially surrendered to the Islamic Republic of Iran.",
+      "source_information_event_id": "VALENTI-YT-TqTMaCKNMOQ",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-OFFICIAL-SURRENDER-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=TqTMaCKNMOQ",
+          "archive_url": null,
+          "published_at": "2026-06-18",
+          "captured_at": "2026-09-23T18:43:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The United States of America has OFFICIALLY SURRENDERED to the Islamic Republic of Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-IRAN-MOU-REUTERS-20260618",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/white-house-sends-text-interim-us-iran-agreement-us-congress-2026-06-18/",
+          "archive_url": null,
+          "published_at": "2026-06-18",
+          "captured_at": "2026-09-23T18:43:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported the White House sent Congress the text of the interim U.S.-Iran Islamabad Memorandum of Understanding, which terminated military operations and opened a negotiation period; the document was an agreement between both states, not an instrument of U.S. surrender."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher headline and the contemporaneous Reuters reporting/text summary of the signed U.S.-Iran interim memorandum of understanding.",
+        "checked_at": "2026-09-23T18:43:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A real bilateral ceasefire/MOU ended current military operations and contained significant U.S. concessions. The reviewed agreement was not described or constituted as a formal U.S. surrender.",
+        "search_notes": "The headline converts a negotiated bilateral interim agreement into the factual status 'officially surrendered.' Political characterizations of the bargain can be argued; the formal-status claim is stronger and is not supported by the reviewed instrument.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score only the asserted official-surrender status. Do not convert this incident into a judgment about which side obtained the more favorable bargain.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical proposition about the terms or strategic effects of the June agreement remains upstream; WOL records the unsupported formal-status presentation.",
+      "public_bullshit_summary": "A real U.S.-Iran ceasefire/MOU became an 'official surrender.' The agreement ended military operations and set terms for further negotiations; it was not an instrument of U.S. surrender."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
@@ -4731,6 +4803,64 @@
       "downstream_note": "The Russian origin and Polish impact are preserved as supported substrate; only the attack-on-Poland bridge is scored.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical NATO/Russia attack proposition remains an upstream truth-adjudication question."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-RUSSIAN-INVASION-POLAND-IMMINENT-20260703",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-07-03",
+      "first_observed_at": "2026-07-03",
+      "statement_identity": "Publisher headline stated that the United States warned NATO that a Russian invasion of Poland was imminent.",
+      "source_information_event_id": "VALENTI-YT-tdoYgjiOchc",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-RUSSIA-POLAND-INVASION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=tdoYgjiOchc",
+          "archive_url": null,
+          "published_at": "2026-07-03",
+          "captured_at": "2026-09-23T18:43:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "U.S warns NATO that a RUSSIAN INVASION OF POLAND is imminent"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-POLAND-PROVOCATION-CTP-20260703",
+          "surface": "WEBSITE",
+          "url": "https://www.criticalthreats.org/analysis/russian-offensive-campaign-assessment-july-3-2026",
+          "archive_url": null,
+          "published_at": "2026-07-03",
+          "captured_at": "2026-09-23T18:43:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CTP/ISW reported that U.S. officials warned of a possible limited military provocation; cited Polish sources said Russia would not launch a conventional full-scale invasion and the timing/nature of any operation were unclear."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-POLAND-SABOTAGE-REUTERS-20260701",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/poland-warns-russia-seeks-exploit-ukraine-tensions-with-sabotage-operations-2026-07-01/",
+          "archive_url": null,
+          "published_at": "2026-07-01",
+          "captured_at": "2026-09-23T18:43:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Polish services preparing for Russian sabotage/provocation scenarios while saying authorities were not suggesting any specific plot was imminent."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher headline plus contemporaneous reporting on U.S./Polish intelligence warnings about possible Russian activity against Poland and NATO's eastern flank.",
+        "checked_at": "2026-09-23T18:43:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The supported substrate was a warning about possible limited kinetic or hybrid provocations. Contemporaneous reporting explicitly distinguished those scenarios from a conventional full-scale invasion and did not establish an imminent invasion.",
+        "search_notes": "The headline upgrades a possible limited provocation with unclear timing into an imminent Russian invasion of Poland. The underlying security warning was real; the invasion/imminence formulation was not supported at the strength stated.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve the real U.S./Polish warning as substrate; score only the unsupported escalation to imminent full-scale invasion.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical NATO/Russia threat proposition remains an upstream truth-adjudication question; WOL records the publisher-authored presentation.",
+      "public_bullshit_summary": "A real warning about possible limited Russian provocations became an imminent 'invasion of Poland.' Contemporary reporting explicitly said full-scale invasion was not the warned scenario and timing was unclear."
     },
     {
       "incident_id": "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
