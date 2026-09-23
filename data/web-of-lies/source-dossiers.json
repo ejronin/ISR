@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-23",
+  "as_of": "2026-09-23T15:28:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -2161,7 +2161,7 @@
         {
           "receipt_id": "WOL-BS-RCPT-ETHAN-TWO-DEATHS-HEROATL",
           "surface": "WEBSITE",
-          "url": "https://mobile.twstalker.com/HeroAtLast",
+          "url": "https://mobile.twstalker.com/EthanLevins2/status/2059458968804606231",
           "published_at": null,
           "provenance_status": "SECONDARY_PRESERVATION",
           "text_excerpt": "Preserves Levins: 'This is a direct hit on 2 Israelis inside the vehicle. If we don’t hear the news of 2 IDF deaths within 24 hours, it confirms Israel is hiding the true casualties.'",
