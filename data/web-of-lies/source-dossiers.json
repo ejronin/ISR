@@ -1749,6 +1749,66 @@
       "public_bullshit_summary": "A 2006 burned-tank photo became proof of 19 tanks destroyed that day and a $95M running loss total. Wrong year, unsupported count, bullshit receipt."
     },
     {
+      "incident_id": "WOL-BS-ETHAN-200M-RESCUE-HIDDEN-CASUALTIES-20260405",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "statement_identity": "Levins said $200 million was destroyed while rescuing a single pilot and asserted that the United States was hiding casualties.",
+      "source_information_event_id": "ETHAN-X-200M-HIDDEN-CASUALTIES-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-200M-BALATARIN",
+          "surface": "WEBSITE",
+          "url": "https://www.balatarin.com/permlink/2026/4/5/6447078",
+          "published_at": "2026-04-05",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: '$200M destroyed while rescuing a single pilot. They are hiding the U.S. casualties.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CENTCOM-F15E-RESCUE-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4451965/us-continues-strikes-into-iran-after-successful-rescue-of-f-15e-aircrew/",
+          "published_at": "2026-04-05",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "CENTCOM said two U.S. service members were safely recovered in separate search-and-rescue missions.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-AVIATIONWEEK-F15E-RESCUE-20260405",
+          "surface": "WEBSITE",
+          "url": "https://aviationweek.com/defense/budget-policy-operations/second-f-15e-crew-member-rescued-inside-iran",
+          "published_at": "2026-04-05",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Aviation Week reported the rescue was completed without an American killed or wounded, while multiple aircraft/equipment losses did occur.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "ASSERTION_ONLY",
+        "claimant_basis_note": "Real equipment losses occurred, but the exact $200 million figure was not established by the preserved basis and the concealment allegation supplied no evidence of hidden rescue casualties. Two aircrew were recovered in separate missions.",
+        "search_notes": "Recovered from the completed Levins source audit. One publication event counts once even when it contains multiple defective propositions.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Real rescue losses became an exact $200M bill plus hidden U.S. casualties without evidence. The public record said both aircrew were recovered and no Americans were killed or wounded in the rescue."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-2026-INTERCEPTOR-ZERO-STOCKPILE-202608",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
@@ -1797,6 +1857,116 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "A 2026 manufacturing date became proof the entire stockpile was empty. That inference does not remotely follow."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-APPLE-MAPS-REMOVED-LEBANON-20260412",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-04-12",
+      "first_observed_at": "2026-04-12",
+      "statement_identity": "Levins said Apple removed Lebanese village names from Apple Maps as Israel invaded and asserted that this was setting the stage to justify occupation.",
+      "source_information_event_id": "ETHAN-X-APPLE-MAPS-LEBANON-20260412",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-APPLE-MAPS-FRANCE24",
+          "surface": "WEBSITE",
+          "url": "https://malaysia.news.yahoo.com/no-south-lebanon-towns-haven-110457790.html",
+          "published_at": "2026-04-15",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "France 24 Observers preserved Levins' April 12 claim that Apple removed southern Lebanese village names to set the stage to justify occupation.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-APPLE-MAPS-FACTCHECK",
+          "surface": "WEBSITE",
+          "url": "https://www.crbcnews.com/articles/6a5d8f18d28a3db9472ab6f7",
+          "published_at": "2026-07-22",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Fact-check preservation reports archived screenshots predating the 2026 war showed the same missing labels and concludes the labels were not newly erased.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-APPLE-MAPS-RESPONSE",
+          "surface": "WEBSITE",
+          "url": "https://appleinsider.com/articles/26/04/13/apple-maps-did-not-erase-lebanon-towns-during-israeli-attacks-insists-apple",
+          "published_at": "2026-04-13",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Apple said the locations had not previously been listed in its map dataset for the region.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The missing labels were real, but preserved prewar map history and Apple's response do not support a wartime removal. The occupation-motive assertion adds an unsupported intent claim.",
+        "search_notes": "Recovered from the completed Levins source audit. One publication event counts once even when it contains multiple defective propositions.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "The blank labels were real; the claimed wartime deletion was not. Levins turned old Apple Maps coverage gaps into a fresh occupation plot."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-BEERSHEBA-IRGC-ASSASSINATION-20260601",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-06-01",
+      "first_observed_at": "2026-06-01",
+      "statement_identity": "Levins presented a real damaged-car photograph as an IDF officer assassination in Beersheba, then claimed the IRGC had deeply penetrated Israel.",
+      "source_information_event_id": "ETHAN-X-BEERSHEBA-IRGC-ASSASSINATION-20260601",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-BEERSHEBA-PRONEWS",
+          "surface": "WEBSITE",
+          "url": "https://www.pronews.gr/amyna-asfaleia/aksiomatikos-ton-idf-dolofonithike-sti-mpir-seva-apo-to-irgc-symfona-me-israilino-dimosiografo/",
+          "published_at": "2026-06-01",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Pronews preserved Levins' claim that an IDF officer was assassinated in Beersheba and that the IRGC had deeply penetrated Israel.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-BEERSHEBA-IMAGE-TRACE",
+          "surface": "WEBSITE",
+          "url": "https://honestreporting.com/how-a-terror-attack-photo-became-an-iranian-assassination-plot/",
+          "published_at": "2026-06-02",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "The image is traced to the May 31 Gush Etzion vehicular-ramming scene, not a Beersheba officer assassination.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The photograph was authentic but documented a different event in a different location. It cannot establish the claimed assassination or IRGC penetration.",
+        "search_notes": "Recovered from the completed Levins source audit. One publication event counts once even when it contains multiple defective propositions.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Real photo, wrong event, wrong city, invented assassination, then invented IRGC penetration."
     },
     {
       "incident_id": "WOL-BS-ETHAN-CIVILIAN-INFRASTRUCTURE-CEASEFIRE-20260327",
@@ -1895,6 +2065,56 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "The F/A-18 first flew in 1978 and entered service in the 1980s. Calling it “Vietnam War-era” is basic timeline malpractice."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-IRAN-REJECTS-CEASEFIRE-BECAUSE-WINNING-202604",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins said Iran was rejecting a ceasefire because it was winning and that Trump was being forced into a corner.",
+      "source_information_event_id": "ETHAN-X-IRAN-WINNING-CEASEFIRE-MOTIVE-202604",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-IRAN-WINNING-AZAADI",
+          "surface": "WEBSITE",
+          "url": "https://twstalker.com/azaadi1999",
+          "published_at": null,
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: 'Iran’s rejecting a ceasefire because they are winning. Trump is being forced into a corner.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-IRAN-WINNING-DYSTOPIAN",
+          "surface": "WEBSITE",
+          "url": "https://mobile.twstalker.com/DystopianTimes_",
+          "published_at": null,
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves the same Levins statement attached to a BRICS News post saying ceasefire talks had reached a dead end.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A report that talks reached a dead end does not establish Levins' asserted causal motive that Iran rejected a ceasefire because it was winning or that the U.S. president was thereby forced into a corner.",
+        "search_notes": "Recovered from the completed Levins source audit. One publication event counts once even when it contains multiple defective propositions.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "“Talks hit a dead end” became “Iran rejected peace because it’s winning.” That causal bridge came from Levins, not the cited report."
     },
     {
       "incident_id": "WOL-BS-ETHAN-ISRAEL-LOST-PUBLIC-SUPPORT-20260328",
@@ -2350,6 +2570,66 @@
       "public_bullshit_summary": "Syria’s air-defense picture became a made-up Israeli protection service. No such Syrian role was established."
     },
     {
+      "incident_id": "WOL-BS-ETHAN-THIRD-IRON-DOME-DESTROYED-300M-20260521",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-05-21",
+      "first_observed_at": "2026-05-21",
+      "statement_identity": "Levins said Hezbollah had destroyed a third Iron Dome battery, that $300 million had been destroyed so far, and that Iranian missiles would therefore fly uninterrupted when war resumed.",
+      "source_information_event_id": "ETHAN-X-THIRD-IRON-DOME-300M-20260521",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-IRON-DOME-MOA",
+          "surface": "WEBSITE",
+          "url": "https://www.moonofalabama.org/2026/05/iran-open-thread-2026-105.html",
+          "published_at": "2026-05-21",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins' wording: 'A 3RD IRON DOME HAS BEEN DESTROYED BY HEZBOLLAH! $300M so far destroyed! When the war resumes, Iranian missiles will fly uninterrupted.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRON-DOME-HIT-JPOST",
+          "surface": "WEBSITE",
+          "url": "https://www.jpost.com/israel-news/defense-news/article-895734",
+          "published_at": "2026-05-10",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Jerusalem Post reported a Hezbollah FPV drone struck an Iron Dome battery.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRON-DOME-NO-GAP",
+          "surface": "WEBSITE",
+          "url": "https://www.israelnationalnews.com/news/426889",
+          "published_at": "2026-05-11",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Military sources confirmed a hit but said it did not create an operational gap in Northern Command air defenses.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "A confirmed hit/damage event does not establish that three complete batteries had been destroyed, a $300 million destroyed-value total, or that Iranian missiles would thereafter fly uninterrupted.",
+        "search_notes": "Recovered from the completed Levins source audit. One publication event counts once even when it contains multiple defective propositions.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Confirmed hits/damage became three destroyed batteries, an invented $300M running total, and a fantasy of uninterrupted missile flight."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-TWO-MISSILES-20260322",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
@@ -2395,6 +2675,66 @@
         "JOURNALISTIC_VERIFICATION_FAILURE"
       ],
       "public_bullshit_summary": "Visible damage does not prove that exactly two missiles caused all of it, much less prove thousands of ready missiles remain."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-USS-LIBERTY-FALSE-FLAG-CONFIRMED-20260609",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-06-09",
+      "first_observed_at": "2026-06-09",
+      "statement_identity": "Levins said Thomas Massie had confirmed that recalled U.S. aircraft proved the USS Liberty attack was a confirmed false flag.",
+      "source_information_event_id": "ETHAN-X-USS-LIBERTY-FALSE-FLAG-20260609",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-USS-LIBERTY-SICEM",
+          "surface": "WEBSITE",
+          "url": "https://sicem365.com/forums/7/topics/158942/152",
+          "published_at": "2026-06-09",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: 'Thomas Massie CONFIRMS they PULLED BACK planes and ships that were coming to help the USS Liberty! This was a false flag CONFIRMED.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MASSIE-USS-LIBERTY-CREC",
+          "surface": "WEBSITE",
+          "url": "https://www.govinfo.gov/content/pkg/CREC-2026-06-08/pdf/CREC-2026-06-08-pt1-PgH3916-2.pdf",
+          "published_at": "2026-06-08",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Massie said relief aircraft were recalled and recounted views that the attack was intentional, including possible false-flag or concealment motives; he did not establish a false flag as confirmed fact.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MASSIE-USS-LIBERTY-RESOLUTION",
+          "surface": "WEBSITE",
+          "url": "https://massie.house.gov/news/documentsingle.aspx?DocumentID=395845",
+          "published_at": "2026-06-30",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Massie's later resolution urged declassification of records, consistent with an unresolved evidentiary demand rather than a congressional confirmation of a false-flag finding.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary or independent factual record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The recalled-aircraft fact and Massie's presentation of survivor/official allegations do not turn the disputed false-flag theory into a confirmed factual finding.",
+        "search_notes": "Recovered from the completed Levins source audit. One publication event counts once even when it contains multiple defective propositions.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; publication/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Massie confirmed recalled relief aircraft and demanded more records. Levins upgraded that into “false flag CONFIRMED.” Those are not the same claim."
     },
     {
       "incident_id": "WOL-BS-INN-AI-AMAN-STRIKE-VIDEO-20260330",
