@@ -1,0 +1,141 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-22T12:00:00-04:00",
+    "end": "2026-09-23T00:00:00-04:00",
+    "collection_time": "2026-09-23T00:00:00-04:00",
+    "evidence_horizon": "2026-09-23T00:00:00-04:00"
+  },
+  "lineage": {
+    "branch": "evidence/rook-catchup-20260919-0002",
+    "previous_sweep_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260922T1200ET.json",
+    "speaker_authority_lineage": "data/evidence-integration/rook-hormuz-position-authority-lineage-20260922T0930ET.json"
+  },
+  "updates": [
+    {
+      "event_id": "US-IRAN-UNGA-DIPLOMACY-20260922",
+      "update_type": "existing-event disposition update / diplomacy",
+      "occurrence_time": "2026-09-22 afternoon/evening ET",
+      "publication_time": "2026-09-22",
+      "collection_time": "2026-09-23T00:00:00-04:00",
+      "finding": "The noon state of reciprocal public openness/no scheduled meeting was superseded by actual U.S.-Iran engagement. Reuters reported Steve Witkoff saying lengthy indirect exchanges occurred through mediators during the day. AP separately reported President Trump saying U.S. and Iranian officials met for about three hours. The exact direct-versus-indirect format therefore requires source reconciliation; engagement itself is supported. No settlement or U.S. acceptance of Iran's Hormuz conditions was established at the evidence horizon.",
+      "status": "ENGAGEMENT SUPPORTED; FORMAT/CHANNEL REQUIRES RECONCILIATION; NO DEAL ESTABLISHED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/tehran-hints-hormuz-talks-with-us-leaders-gather-un-2026-09-22/",
+        "https://apnews.com/article/trump-united-nations-unga-iran-ai-f7cb0b3ebc492446c0be97ed3a6843aa"
+      ],
+      "drawer_effect": "Supersede noon disposition 'public openness/no meeting scheduled' with 'engagement occurred.' Preserve noon state historically. Do not collapse Trump's characterization of a three-hour meeting and Reuters/Witkoff characterization of indirect mediator exchanges until participant/channel details are reconciled."
+    },
+    {
+      "event_id": "IRAN-HORMUZ-REOPENING-OFFER-20260922",
+      "update_type": "existing claim-position lineage / consequence update",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22",
+      "collection_time": "2026-09-23T00:00:00-04:00",
+      "finding": "The reported two-condition Hormuz reopening offer was followed the same day by substantive U.S.-Iran diplomatic exchanges. This strengthens the evidentiary significance of the narrowing claim-position lineage but does not establish that Washington accepted the two conditions, that the other five previously reported conditions were formally abandoned, or that IRGCN received an order to reopen the Strait.",
+      "status": "OFFER FOLLOWED BY ENGAGEMENT; TERMS NOT ACCEPTED/IMPLEMENTED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-ready-reopen-strait-hormuz-if-us-eases-military-pressure-lifts-blockade-2026-09-22/",
+        "https://www.reuters.com/world/middle-east/tehran-hints-hormuz-talks-with-us-leaders-gather-un-2026-09-22/"
+      ],
+      "drawer_effect": "Cross-reference Hormuz speaker/authority lineage. Preserve sequence: maximalist adviser rhetoric -> seven-condition framework -> reported two-condition Hormuz offer -> same-day engagement. Classification remains material narrowing/apparent walkback, not formal retraction absent authoritative confirmation."
+    },
+    {
+      "event_id": "US-IRAN-COERCIVE-SIGNALING-20260922",
+      "update_type": "claims / diplomacy / military signaling",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22",
+      "collection_time": "2026-09-23T00:00:00-04:00",
+      "finding": "President Trump combined negotiations with a threat at UNGA that Iran could face destruction absent a deal and later said he expected an agreement eventually, while Iran's armed-forces messaging threatened more severe and unpredictable attacks if escalation resumed. These statements establish simultaneous coercive signaling alongside diplomacy; they do not by themselves establish new strike orders or Iranian operational escalation.",
+      "status": "BILATERAL COERCIVE SIGNALING CONFIRMED; NO NEW OPERATIONAL ORDER ESTABLISHED",
+      "sources": ["https://www.reuters.com/world/middle-east/tehran-hints-hormuz-talks-with-us-leaders-gather-un-2026-09-22/"],
+      "drawer_effect": "Keep diplomatic bargaining and military/public signaling as separate authority tracks. Do not infer that negotiation equals IRGC demobilization or that threats equal issued attack orders."
+    },
+    {
+      "event_id": "GULF-COMMON-SECURITY-FRAMEWORK-20260922",
+      "update_type": "diplomacy / regional security proposal",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22",
+      "collection_time": "2026-09-23T00:00:00-04:00",
+      "finding": "Qatar proposed a common regional security framework involving Iran and Arab Gulf states, including security guarantees and greater economic interdependence; Reuters reported Iran was reviewing the proposal. No adoption, treaty, or operational security arrangement was established.",
+      "status": "PROPOSAL REPORTED; IRAN REVIEWING; NO AGREEMENT",
+      "sources": ["https://www.reuters.com/world/middle-east/tehran-hints-hormuz-talks-with-us-leaders-gather-un-2026-09-22/"],
+      "drawer_effect": "Append as a distinct potential regional off-ramp; do not merge with bilateral U.S.-Iran talks or the proposed UNSC Hormuz mission."
+    },
+    {
+      "event_id": "SAUDI-YEMEN-EXTERNAL-SUPPORT-20260922",
+      "update_type": "diplomacy / support posture",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22",
+      "collection_time": "2026-09-23T00:00:00-04:00",
+      "finding": "Turkey, Egypt, Pakistan and Saudi Arabia issued a joint statement affirming Saudi Arabia's right of self-defense, supporting Yemen's government and emphasizing safe navigation while advocating diplomacy. This is political/diplomatic support and does not establish a new military commitment comparable to Britain's announced defensive refuelling support. Reuters continued to report that Washington had not resumed direct military action against the Houthis despite Saudi requests.",
+      "status": "MULTILATERAL POLITICAL SUPPORT; NO NEW MILITARY COMMITMENT ESTABLISHED",
+      "sources": [
+        "https://www.reuters.com/world/asia-pacific/turkey-saudi-arabia-pakistan-egypt-affirm-riyadhs-right-defend-itself-2026-09-22/",
+        "https://www.reuters.com/world/middle-east/putin-saudi-crown-prince-call-safe-passage-via-hormuz-bab-el-mandeb-2026-09-22/"
+      ],
+      "drawer_effect": "Update Saudi/Yemen external-support matrix: distinguish declarations of support from actual asset commitments and from U.S. non-intervention."
+    },
+    {
+      "event_id": "IRAN-AVIATION-SANCTIONS-IMPLEMENTATION-20260922",
+      "update_type": "sanctions / implementation watch",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22",
+      "collection_time": "2026-09-23T00:00:00-04:00",
+      "finding": "Ahead of the September 23 U.S. secondary-sanctions enforcement horizon, reporting indicated Iranian flights to Baghdad and Muscat were cancelled and Iraq had ordered suspension of Iranian flights to Baghdad beginning Wednesday. These are concrete partial implementation indicators, but do not establish the U.S. prediction that all Iranian airlines would be shut out globally.",
+      "status": "PARTIAL THIRD-COUNTRY EFFECTS REPORTED; GLOBAL SHUTDOWN NOT ESTABLISHED",
+      "sources": [
+        "https://www.aljazeera.com/news/2026/9/22/iran-flights-to-baghdad-muscat-cancelled-ahead-of-us-aviation-sanctions"
+      ],
+      "drawer_effect": "Supersede prior 'no observed regional implementation' posture only for documented routes/jurisdictions. Preserve Iran Air's earlier denial as a timestamped claim. Verify actual September 23 schedules, fuel/handling refusals and state directives in next sweep."
+    }
+  ],
+  "prior_drawer_review": [
+    {"drawer":"U.S.-Iran UNGA diplomacy","action":"UPDATE","reason":"Noon no-meeting status superseded by same-day engagement; direct/indirect format needs reconciliation."},
+    {"drawer":"Hormuz reopening prerequisites / speaker authority","action":"UPDATE","reason":"Same-day engagement follows the reported two-condition offer, increasing significance of the narrowing sequence without proving acceptance or formal abandonment of other terms."},
+    {"drawer":"Iranian coercive signaling / IRGC authority","action":"UPDATE","reason":"Military threats continued alongside diplomatic engagement; authority tracks must remain separate."},
+    {"drawer":"Saudi/Yemen external support","action":"UPDATE","reason":"New four-state political declaration but no additional military asset commitment established."},
+    {"drawer":"Iran aviation secondary sanctions","action":"UPDATE","reason":"First route-level cancellations/suspension reporting appears ahead of enforcement horizon; global grounding remains unproven."},
+    {"drawer":"Saudi East-West pipeline / Yanbu","action":"NO MATERIAL NEW EVIDENCE IN WINDOW","reason":"No higher-confidence throughput/full-repair update found beyond noon partial-restart state."},
+    {"drawer":"September 21 Hormuz tanker incidents","action":"NO MATERIAL NEW EVIDENCE IN WINDOW","reason":"No reliable new attribution or casualty/BDA revision found."},
+    {"drawer":"Yemen human impact","action":"NO MATERIAL NEW DENOMINATOR IN WINDOW","reason":"No stronger revised casualty/displacement denominator found beyond current UN-linked reporting."}
+  ],
+  "unresolved_questions": [
+    "Were the September 22 U.S.-Iran exchanges physically direct, entirely mediator-carried, or a combination? Identify participants and channel chronology.",
+    "Did Washington respond specifically to Iran's two stated Hormuz conditions?",
+    "Do the other five conditions remain requirements for a broader settlement even if only two apply to Hormuz reopening?",
+    "Has the SNSC, Supreme Leader, IRGC General Staff or IRGCN issued or acknowledged a conditional reopening instruction?",
+    "Does the Qatar regional-security proposal gain formal Iranian, Saudi, Emirati, Bahraini, Kuwaiti or Omani acceptance?",
+    "How broad is September 23 aviation-sanctions implementation in actual schedules, handling, fueling and ticketing?",
+    "Does Britain deploy the announced Voyager and what rules/mission set govern its Saudi support?"
+  ],
+  "coverage_accounting": {
+    "military":"covered through major wire/official reporting; no new independently verified theater-wide strike/BDA revision found",
+    "maritime":"covered through Reuters/public reporting; proprietary Kpler/Vortexa/MarineTraffic terminals unavailable directly",
+    "infrastructure_energy":"covered; no material post-noon Saudi pipeline BDA revision found",
+    "diplomacy":"covered; material U.S.-Iran engagement and Qatar proposal captured",
+    "economy_sanctions":"covered; aviation implementation indicators captured",
+    "claims_corrections":"covered; direct-vs-indirect talks characterization explicitly preserved for reconciliation",
+    "human_impact":"covered through available wire/UN-linked reporting; no material new denominator found",
+    "commercial_satellite":"unavailable as a direct proprietary tasking/data source",
+    "systematic_social_firehose_geolocation":"unavailable; no claim of exhaustive platform coverage",
+    "official_source_classes":"partially covered through indexed official/public reporting; absence of a source hit is not treated as proof of absence"
+  },
+  "source_discovery_additions": [
+    "AP reporting on Trump's characterization of a roughly three-hour U.S.-Iran meeting should be retained alongside Reuters/Witkoff mediator-channel reporting for format reconciliation.",
+    "September 23 route-level aviation schedules and airport service-provider notices become priority collection targets immediately after the enforcement horizon."
+  ],
+  "completion_report": {
+    "result":"COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+    "material_updates":6,
+    "canonical_packet_bytes_modified":false,
+    "accepted_hashes_modified":false,
+    "generated_public_state_modified":false,
+    "signed_release_artifacts_modified":false,
+    "release_manifests_modified":false,
+    "notes":"Append-only evidence artifact created on the existing evidence-integration branch. No downstream adjudication or release state was modified."
+  }
+}
