@@ -1979,6 +1979,66 @@
       "public_bullshit_summary": "The blank labels were real; the claimed wartime deletion was not. Levins turned old Apple Maps coverage gaps into a fresh occupation plot."
     },
     {
+      "incident_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260731",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins said Israel had destroyed the historic Beaufort Castle in southern Lebanon.",
+      "source_information_event_id": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260731",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-BEAUFORT-SOTWE",
+          "surface": "WEBSITE",
+          "url": "https://www.sotwe.com/him_0000001?lang=en",
+          "published_at": null,
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: 'Israel has destroyed the historic Beaufort Castle. Fulk, the King of Jerusalem, built it for the crusaders. Israel is an enemy to Christianity.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LBC-BEAUFORT-UNHARMED-20260731",
+          "surface": "WEBSITE",
+          "url": "https://www.lbcgroup.tv/news/lebanon-news/949904/lebanon-says-beaufort-castle-unharmed-after-israeli-blasts/en",
+          "published_at": "2026-07-31",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Lebanon's Ministry of Culture said Beaufort Castle had not been destroyed; shockwaves might have caused damage and a precise assessment was pending.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LORIENT-BEAUFORT-PERIMETER-20260731",
+          "surface": "WEBSITE",
+          "url": "https://today.lorientlejour.com/article/1543125/israeli-army-carries-out-massive-demolition-of-alleged-hezbollah-tunnels-in-beaufort-area.html",
+          "published_at": "2026-07-31",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Contemporaneous reporting described major demolition around the Beaufort area and apparent perimeter damage, not destruction of the castle itself.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary, technical, or independent record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The area was heavily struck and the monument may have sustained damage, but the Lebanese culture authority explicitly said the castle itself was not destroyed.",
+        "search_notes": "Recovered from the completed Levins source audit. Exact publication date is left null when the surviving carrier does not preserve it.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Heavy demolition around Beaufort became “the castle was destroyed.” Lebanon’s own culture ministry said the castle was not destroyed."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -2245,6 +2305,116 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "The F/A-18 first flew in 1978 and entered service in the 1980s. Calling it “Vietnam War-era” is basic timeline malpractice."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-HOLY-SEPULCHRE-EASTER-CANCELED-20260318",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-18",
+      "first_observed_at": "2026-03-18",
+      "statement_identity": "Levins said Israel had forcibly closed the Church of the Holy Sepulchre and canceled Easter services because of the war.",
+      "source_information_event_id": "ETHAN-X-HOLY-SEPULCHRE-EASTER-CANCELED-20260318",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-HOLY-SEPULCHRE-GOVIL",
+          "surface": "WEBSITE",
+          "url": "https://www.gov.il/BlobFolder/reports/israel-and-us-strikes-in-iran-daily-status_18_3_26/en/mashlat_Roaring_Lion_israel-and-us-strikes-in-iran-daily-status_18_3_26.pdf",
+          "published_at": "2026-03-18",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "The March 18 Israeli government daily-status document preserves Levins' post saying the church was closed and Easter services canceled.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CUSTODY-HOLY-SEPULCHRE-CLARIFICATION",
+          "surface": "WEBSITE",
+          "url": "https://zenit.org/2026/03/22/is-the-church-of-the-holy-sepulchre-closed-the-catholic-church-in-the-holy-land-issues-a-statement-in-response-to-rumors-on-social-media/",
+          "published_at": "2026-03-22",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "The Custody of the Holy Land clarified that access restrictions existed but prayers and liturgies had never ceased; Easter arrangements had not yet been determined.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-LPJ-EASTER-ARRANGEMENTS-20260330",
+          "surface": "WEBSITE",
+          "url": "https://www.lpj.org/en/news/joint-press-release-holy-monday-30-march-2026",
+          "published_at": "2026-03-30",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Church authorities later announced arrangements securing Holy Week and Easter liturgies and ceremonies.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary, technical, or independent record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Public-access restrictions were real, but 'Easter services canceled' was not established when Levins published and was contradicted by the later church record that liturgies continued and Easter arrangements proceeded.",
+        "search_notes": "Recovered from the completed Levins source audit. Exact publication date is left null when the surviving carrier does not preserve it.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "The access restriction was real. Levins added “Easter services canceled” before church authorities had even settled the arrangements; the services went ahead."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-IDF-IS-COLLAPSING-20260326",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-26",
+      "first_observed_at": "2026-03-26",
+      "statement_identity": "Levins changed the IDF chief's warning that the force would/could collapse under unresolved manpower pressure into a present-tense claim that the IDF 'is collapsing.'",
+      "source_information_event_id": "ETHAN-X-IDF-IS-COLLAPSING-20260326",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-IDF-COLLAPSING-BG",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/bgmilitary?before=65816",
+          "published_at": "2026-03-26",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins and the original X status: 'The head of the IDF told Netanyahu and leaders the military is collapsing. It was leaked to the public.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TOI-ZAMIR-COLLAPSE-WARNING",
+          "surface": "WEBSITE",
+          "url": "https://www.timesofisrael.com/zamir-said-to-warn-cabinet-that-idf-will-collapse-in-on-itself-amid-manpower-shortage/",
+          "published_at": "2026-03-26",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "The reported warning was conditional/future-facing: if the manpower problem was not addressed, the IDF was 'going to collapse in on itself' and the reserve system would not last.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary, technical, or independent record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The source material described a warning about impending/conditional institutional collapse from manpower shortages, not a finding that the IDF was already collapsing at that moment.",
+        "search_notes": "Recovered from the completed Levins source audit. Exact publication date is left null when the surviving carrier does not preserve it.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "“Could/will collapse if this keeps up” became “is collapsing.” Future conditional and present fact are not the same fucking tense."
     },
     {
       "incident_id": "WOL-BS-ETHAN-IRAN-REJECTS-CEASEFIRE-BECAUSE-WINNING-202604",
@@ -2661,6 +2831,45 @@
       "public_bullshit_summary": "Palantir’s work involving Israel became “Palantir is an Israeli company.” It isn’t."
     },
     {
+      "incident_id": "WOL-BS-ETHAN-PATRIOT-ARROW-MISIDENTIFICATION-202603",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins publicly acknowledged that in a prior viral video he called an Israeli Arrow system a Patriot system even though the on-screen source identified it as Arrow.",
+      "source_information_event_id": "ETHAN-TIKTOK-PATRIOT-ARROW-MISIDENTIFICATION-202603",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-PATRIOT-ARROW-ADMISSION",
+          "surface": "PODCAST",
+          "url": "https://podscan.fm/podcasts/fight-back-with-jake-shields/episodes/ethan-levins-is-helping-iran-in-war-against-israel-fight-back-ep-171",
+          "published_at": "2026-03-20",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Levins: 'one of my biggest problems is I misspoke in the video and I said it’s a patriot system. On the screen, it says ... Arrow system.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary, technical, or independent record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The source's own correction establishes the prior system-identification error. Under WOL governance, a later correction does not erase the qualifying publication incident.",
+        "search_notes": "Recovered from the completed Levins source audit. Exact publication date is left null when the surviving carrier does not preserve it.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE"
+      ],
+      "public_bullshit_summary": "This one comes with its own confession: he called an Arrow battery a Patriot while the source image on his own screen said Arrow."
+    },
+    {
       "incident_id": "WOL-BS-ETHAN-PICKAXE-FINAL-CHANCE-20260922",
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
@@ -2868,6 +3077,66 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "Confirmed hits/damage became three destroyed batteries, an invented $300M running total, and a fantasy of uninterrupted missile flight."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-TWO-50-DOLLAR-DRONES-12M-TANKS-202604",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Levins said two $50 drones had destroyed $12 million worth of IDF tanks and said he had lost count of destroyed Merkavas.",
+      "source_information_event_id": "ETHAN-X-TWO-CHEAP-DRONES-12M-TANKS-202604",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-12M-TANKS-TWSTALKER",
+          "surface": "WEBSITE",
+          "url": "https://twstalker.com/NachoValle21",
+          "published_at": null,
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "Preserves Levins: '$12M IDF Tanks destroyed by two $50 drones. I have lost count of destroyed Merkavas.'",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CTP-TWO-MERKAVA-ATTACKS-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.criticalthreats.org/analysis/iran-update-evening-special-report-april-5-2026",
+          "published_at": "2026-04-05",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "CTP/ISW documented Hezbollah footage claiming attacks on two Merkava tanks; the reporting described attacks/strikes, not verified destruction of both vehicles.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IUS-FPV-HITS-NOT-DISABLE-20260501",
+          "surface": "WEBSITE",
+          "url": "https://insideunmannedsystems.com/fpv-drones-threaten-the-casevac-mission/",
+          "published_at": "2026-05-01",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Technical reporting noted Hezbollah videos visibly landed hits on armored vehicles but rarely supplied follow-on evidence proving the vehicles were disabled.",
+          "captured_at": "2026-09-23",
+          "deletion_status": "AVAILABLE"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered Levins publication/preservation plus the cited primary, technical, or independent record relevant to the proposition.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The preserved evidence supports attacks/hits, not the categorical destruction of two full-value Merkavas. The exact $50 drone-cost assertion also lacked a documented basis in the cited presentation.",
+        "search_notes": "Recovered from the completed Levins source audit. Exact publication date is left null when the surviving carrier does not preserve it.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Recovered from the completed Levins source audit; claim/preservation URL retained.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical synchronization remains separate from WOL source-behavior scoring.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "Two visible drone hits became two destroyed tanks and a $12M loss total. Hits are not kills, and a sticker-price ledger is not BDA."
     },
     {
       "incident_id": "WOL-BS-ETHAN-TWO-50-DRONES-DESTROY-12M-TANKS-202604",
