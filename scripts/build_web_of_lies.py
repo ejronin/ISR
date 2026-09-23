@@ -945,6 +945,104 @@ def attach_source_awards(
     return sorted(output, key=lambda item: item["source_id"])
 
 
+
+def derive_role_failure_appellations(
+    profile: dict[str, Any],
+    events: list[dict[str, Any]],
+    governance: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Derive adverse role-failure labels only from self-claimed roles + incident evidence."""
+    claimed_roles = {
+        str(row.get("role_code") or "").strip()
+        for row in (profile.get("claimed_roles") or [])
+        if str(row.get("role_code") or "").strip()
+        and (row.get("public_receipts") or [])
+    }
+    awards = {
+        str(row.get("award_code") or "").strip()
+        for row in (profile.get("source_awards") or [])
+        if str(row.get("award_code") or "").strip()
+    }
+    distinct: dict[str, dict[str, Any]] = {}
+    for event in events:
+        event_id = bullshit_incident_id(event)
+        if not event_id or not bullshit_qualifying_event(event, governance):
+            continue
+        key = str(
+            event.get("information_event_group_id")
+            or event.get("source_information_event_id")
+            or event_id
+        ).strip()
+        distinct.setdefault(key, event)
+
+    output: list[dict[str, Any]] = []
+    rules = governance.get("role_failure_appellations") or {}
+    for code, rule in sorted(rules.items()):
+        claimed_role = str(rule.get("claimed_role") or "").strip()
+        required_award = str(rule.get("requires_source_award") or "").strip()
+        if claimed_role not in claimed_roles:
+            continue
+        if required_award and required_award not in awards:
+            continue
+        primary_tag = str(rule.get("qualifying_incident_tag") or "").strip()
+        primary_events = [
+            event for event in distinct.values()
+            if primary_tag and primary_tag in set(event.get("role_failure_tags") or [])
+        ]
+        minimum = int(rule.get("minimum_tagged_incidents") or 1)
+        if len(primary_events) < minimum:
+            continue
+        secondary_tag = str(rule.get("secondary_incident_tag") or "").strip()
+        secondary_events = [
+            event for event in distinct.values()
+            if secondary_tag and secondary_tag in set(event.get("role_failure_tags") or [])
+        ]
+        secondary_minimum = int(rule.get("minimum_secondary_tagged_incidents") or 0)
+        if secondary_minimum and len(secondary_events) < secondary_minimum:
+            continue
+        basis_ids = sorted({
+            bullshit_incident_id(event)
+            for event in primary_events + secondary_events
+            if bullshit_incident_id(event)
+        })
+        role_receipts = [
+            dict(receipt)
+            for row in (profile.get("claimed_roles") or [])
+            if str(row.get("role_code") or "").strip() == claimed_role
+            for receipt in (row.get("public_receipts") or [])
+        ]
+        output.append({
+            "appellation_code": str(code),
+            "public_label": str(rule.get("public_label") or code),
+            "claimed_role": claimed_role,
+            "incident_count": len(basis_ids),
+            "basis_incident_ids": basis_ids,
+            "claimed_role_receipts": role_receipts,
+            "rule": str(rule.get("rule") or ""),
+        })
+    return output
+
+
+def attach_role_failure_appellations(
+    profiles: list[dict[str, Any]],
+    all_events: list[dict[str, Any]],
+    governance: dict[str, Any],
+) -> list[dict[str, Any]]:
+    by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for event in all_events:
+        by_source[str(event.get("source_id") or "")].append(event)
+    output = []
+    for profile in profiles:
+        record = dict(profile)
+        record["role_failure_appellations"] = derive_role_failure_appellations(
+            record,
+            by_source.get(str(record.get("source_id") or ""), []),
+            governance,
+        )
+        output.append(record)
+    return sorted(output, key=lambda item: item["source_id"])
+
+
 def current_period_events(
     events: list[dict[str, Any]],
     canonical: dict[str, Any],
@@ -1300,6 +1398,11 @@ def build_registry(
         information_events + source_behavior_incidents,
         governance,
         as_of=(canonical.get("release") or {}).get("current_osint_cutoff"),
+    )
+    profiles = attach_role_failure_appellations(
+        profiles,
+        information_events + source_behavior_incidents,
+        governance,
     )
     for profile in profiles:
         country_code = profile_country_code(profile)
