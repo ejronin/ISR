@@ -4635,6 +4635,62 @@
       "review_reason": "Existing canonical training family should atomize registration, training participation, soldier status and invasion framing separately."
     },
     {
+      "incident_id": "WOL-BS-VALENTI-ASSASSINATE-ENTIRE-NEGOTIATING-TEAM-202606",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Valenti titled a video that Trump threatened to assassinate the entire Iranian negotiating team because Israel demanded no peace.",
+      "source_information_event_id": "VALENTI-YT-q-HSkbifk8I",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-ASSASSINATE-TEAM-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=q-HSkbifk8I",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": null,
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump threatens to ASSASSINATE the ENTIRE Iranian Negotiating Team because ISRAEL demands NO PEACE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-GUARDIAN-TRUMP-KIDNAP-TEAM-20260621",
+          "surface": "WEBSITE",
+          "url": "https://www.theguardian.com/world/2026/jun/21/us-iran-talks-jd-vance-switzerland-strait-of-hormuz-lebanon",
+          "published_at": "2026-06-21",
+          "captured_at": "2026-09-23",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Guardian reported Trump threatened to bomb Iran and kidnap the Iranian negotiating team unless Hormuz reopened."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NYT-ISRAEL-PLOT-NEGOTIATORS-20260703",
+          "surface": "WEBSITE",
+          "url": "https://www.inquirer.com/news/nation-world/israel-iran-us-plot-kill-iranian-negotiators-20260703.html",
+          "published_at": "2026-07-03",
+          "captured_at": "2026-09-23",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "New York Times reporting preserved by the Philadelphia Inquirer said U.S. officials feared Israel might target two top Iranian negotiators, Abbas Araghchi and Mohammad Bagher Ghalibaf."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's direct video title plus contemporaneous reporting on Trump's threat toward negotiators and later reporting on U.S. concern about a possible Israeli assassination effort.",
+        "checked_at": "2026-09-23",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump's reported threat was kidnapping, not assassination. Separate U.S. concern involved Israel potentially targeting two senior negotiators, not Trump threatening to assassinate the entire team. The 'Israel demands no peace' causal motive is also not established by those reports.",
+        "search_notes": "This finding preserves the real threatening rhetoric and real Israeli-assassination concern while scoring Valenti's fusion of actor, action, scope, and motive.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One publisher-authored publication event. The actor swap, action swap, scope inflation and motive claim are not counted separately.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical negotiations and Israeli targeting concerns remain separately adjudicated.",
+      "public_bullshit_summary": "Trump threatened kidnapping; officials separately feared Israel might target two negotiators. Valenti mashed that into Trump threatening to assassinate the entire team for Israel. Actor, action, scope—three mutations in one headline."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-BASES-COMPLETELY-DESTROYED-20260917",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
