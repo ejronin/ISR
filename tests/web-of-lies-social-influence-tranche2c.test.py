@@ -216,7 +216,7 @@ assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
 assert valenti_lead["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
 assert valenti_lead["review_progress"]["promoted_incident_count"] == 21
 assert valenti_lead["review_progress"]["corpus_completion_claim"] == "NONE"
-assert valenti_lead["review_progress"]["resolved_nonincident_count"] >= 7
+assert valenti_lead["review_progress"]["resolved_nonincident_count"] >= 10
 resolved_nonincidents = {
     row["review_id"]: row
     for row in valenti_lead["resolved_nonincident_reviews"]
@@ -229,6 +229,9 @@ for resolved_id in (
     "VALENTI-NONINCIDENT-IRAN-WAR-2029",
     "VALENTI-NONINCIDENT-LINCOLN-JUMPING-SHIP",
     "VALENTI-NONINCIDENT-JUL27-ALLOWS-MISSILES",
+    "VALENTI-NONINCIDENT-EUROPE-BASE-THREAT-202608",
+    "VALENTI-NONINCIDENT-GENERALS-TURN-AGAINST-EXTENSION-202608",
+    "VALENTI-NONINCIDENT-CATERING-DECOY-SAM-GOLF-202608",
 ):
     assert resolved_id in resolved_nonincidents
     assert resolved_nonincidents[resolved_id]["disposition"].startswith("NOT_PROMOTED")
