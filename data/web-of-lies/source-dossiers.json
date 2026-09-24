@@ -915,6 +915,36 @@
           ],
           "text_excerpt": "Public ValentiVideos Patreon membership page."
         }
+      ],
+      "claimed_roles": [
+        {
+          "role_code": "HISTORIAN",
+          "public_label": "Historian",
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-RCPT-VALENTI-HISTORIAN-SITE-20260923",
+              "surface": "WEBSITE",
+              "url": "https://www.valentivideos.com/",
+              "archive_url": null,
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "ORIGINAL_URL",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Chris Valenti is a Political Commentator. Historian. Content Creator. Modern Muckraker. Actor. Gamer. Comedian."
+            },
+            {
+              "receipt_id": "WOL-RCPT-VALENTI-HISTORIAN-YOUTUBE-20260923",
+              "surface": "YOUTUBE",
+              "url": "https://www.youtube.com/@valentivideos",
+              "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Channel description identifies Chris Valenti as a Political Commentator and Historian."
+            }
+          ]
+        }
       ]
     },
     {
@@ -1798,6 +1828,36 @@
           "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
           "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
         ]
+      },
+      "historian_role_review": {
+        "status": "ACTIVE_SOURCE_RECOVERY",
+        "self_claim_status": "PUBLICLY_VERIFIED",
+        "claimed_role": "HISTORIAN",
+        "self_claim_receipts": [
+          "https://www.valentivideos.com/",
+          "https://www.youtube.com/@valentivideos"
+        ],
+        "project_owner_reported_body_claims": [
+          {
+            "reported_claim": "Persia was never defeated.",
+            "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
+            "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "adjudication_note": "If exact wording is recovered as an unqualified factual claim, compare against well-established defeats/conquests of Persian states rather than arguing over modern-national continuity."
+          },
+          {
+            "reported_claim": "Iranians have been peaceful for 3000 years.",
+            "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
+            "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "adjudication_note": "If recovered as an unqualified factual claim, decompose peaceful-culture rhetoric from the testable historical proposition about Iranian/Persian states engaging in offensive war, conquest and interstate conflict."
+          },
+          {
+            "reported_claim": "Saudis are terrorists and always have been.",
+            "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
+            "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "adjudication_note": "If recovered, preserve the exact referent: Saudi state, Saudi rulers, Saudi nationals, Wahhabi movements or some other actor. Do not score an ambiguous collective label until the body fixes the referent."
+          }
+        ],
+        "role_failure_rule": "Do not infer historian-role failure from the self-claim alone. Require exact source recovery plus falsifiable historical propositions and documented contrary historical evidence. Repeated source-recovered historical verification failures may support a historian-specific role-failure finding."
       }
     }
   ],
