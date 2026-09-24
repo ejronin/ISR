@@ -860,6 +860,7 @@
       "classification_basis_event_ids": [
         "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
         "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+        "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
         "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
         "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
         "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
@@ -867,6 +868,7 @@
         "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
         "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
         "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+        "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
         "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
       ],
       "revenue_basis_event_ids": [],
@@ -964,6 +966,7 @@
         "basis_incident_ids": [
           "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
           "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+          "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
           "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
           "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
           "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
@@ -971,9 +974,10 @@
           "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
           "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
           "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+          "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
           "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
         ],
-        "promoted_valenti_incident_count": 16,
+        "promoted_valenti_incident_count": 18,
         "monetization_receipts": [
           "https://www.patreon.com/cw/ValentiVideos",
           "https://www.youtube.com/watch?v=0ZArFpj6zyA",
@@ -986,7 +990,7 @@
           "observed_description": "The scored nuclear-strike publication directly asks viewers to support Valenti Videos through Patreon and separately promotes merchandise.",
           "significance": "This directly links at least one qualifying unsupported/sensational publication to the creator's recurring support solicitation on the same publication surface."
         },
-        "pattern_summary": "Repeated unsupported or materially distorted current-events claims are packaged in sensational headline form by a monetized publisher that directly asks viewers to fund continued Valenti Videos output. The adverse class is incident-gated; Patreon, audience size and ideology are not themselves the basis.",
+        "pattern_summary": "Repeated unsupported or materially distorted current-events claims are packaged in sensational headline form by a monetized publisher that directly asks viewers to fund continued Valenti Videos output. The pattern now includes explicit posture inflation of an unverified nuclear-use rumor and repeated categorical claims that Israel had terminated an operative U.S.-Iran MOU. The adverse class is incident-gated; Patreon, audience size and ideology are not themselves the basis.",
         "excluded_inputs": [
           "political ideology",
           "subscriber/follower count",
@@ -1705,7 +1709,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. Sixteen incidents are currently promoted/scored, and additional distinct Iran-war/public-affairs and historian-role candidates remain under evidentiary review. The incident-gated NEWS_GRIFT pattern remains tied to repeated scored sensational current-events publications plus direct support solicitation; monetization alone is not the basis. Do not treat the promoted register as a completed lifetime corpus.",
+      "notes": "Valenti remains under active pattern review. Eighteen incidents are currently promoted/scored, and additional distinct Iran-war/public-affairs and historian-role candidates remain under evidentiary review. The source has an incident-gated NEWS_GRIFT pattern tied to repeated scored sensational current-events publications plus direct support solicitation; monetization alone is not the basis. Do not treat the promoted register as a completed lifetime corpus.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1805,7 +1809,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 16,
+        "promoted_incident_count": 18,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -1831,7 +1835,7 @@
             "research_item_id": "VALENTI-CANDIDATE-NUKE-ASK-20260421",
             "title": "Trump asked to nuke Iran...",
             "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
-            "status": "BODY_REVIEW_REQUIRED"
+            "status": "PROMOTED_WOL_INCIDENT"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-GROUND-INVASION-2026",
@@ -1868,6 +1872,13 @@
             "title": "Trump wants the Iran War to last FOREVER so he can cancel the 2028 election",
             "url": "https://www.youtube.com/watch?v=2fpN42hV5As",
             "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ISRAEL-TERMINATES-MOU-202606",
+            "title": "Israel terminated the Iran Peace Deal / Israel INSTANTLY terminated the MOU",
+            "url": "https://www.youtube.com/watch?v=l7iPKW1qpYE",
+            "secondary_url": "https://www.youtube.com/watch?v=Wac6iXa2Oms",
+            "status": "PROMOTED_WOL_INCIDENT_DEDUPLICATED_INFORMATION_EVENT"
           }
         ],
         "held_or_rejected_examples": [
@@ -5019,6 +5030,85 @@
       "public_bullshit_summary": "Trump really did joke about wartime and elections. The evidence reviewed does not show that he wanted the Iran war prolonged in order to cancel the 2028 election."
     },
     {
+      "incident_id": "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher repeatedly presented Israel as having terminated the U.S.-Iran peace deal / Islamabad MOU.",
+      "source_information_event_id": "VALENTI-INFOEVENT-ISRAEL-TERMINATES-US-IRAN-MOU",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "Two separate Valenti headlines converted Israeli military activity and disagreement with the U.S.-Iran agreement into the categorical status claim that Israel had terminated the peace deal/MOU.",
+          "inference_limit": "The finding does not deny that Israeli operations strained or may have violated ceasefire terms; it scores the stronger unsupported claim that Israel terminated the agreement."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-ISRAEL-TERMINATED-PEACE-DEAL-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=l7iPKW1qpYE",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=l7iPKW1qpYE",
+          "published_at": null,
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Israel terminated the Iran Peace Deal"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-ISRAEL-INSTANTLY-TERMINATED-MOU-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=Wac6iXa2Oms",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=Wac6iXa2Oms",
+          "published_at": null,
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Israel INSTANTLY terminated the MOU"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-IRAN-MOU-SIGNED-REUTERS-20260617",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/g7-leaders-demand-ceasefire-lebanon-welcome-iran-deal-2026-06-17/",
+          "archive_url": null,
+          "published_at": "2026-06-17",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported the U.S. and Iranian presidents signed the interim agreement and that it was in effect, while noting unresolved Lebanon/Israel tensions."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MOU-STRAINED-NOT-TERMINATED-REUTERS-20260619",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/israel-steps-up-lebanon-attacks-with-strikes-that-kill-15-2026-06-19/",
+          "archive_url": null,
+          "published_at": "2026-06-19",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters described Israel-Hezbollah fighting as sorely testing the U.S.-Iran interim deal; negotiators then arranged an Israel-Hezbollah ceasefire under the same agreement framework."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's two publication headlines, the signed U.S.-Iran MOU, and contemporaneous Reuters reporting on Israeli/Hezbollah fighting and the status of the agreement.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Israeli operations and objections materially strained the agreement and were alleged by Iran/Hezbollah to violate its terms, but contemporaneous reporting continued to treat the MOU as operative and as the framework under which negotiators sought implementation.",
+        "search_notes": "The two headlines are treated as one information event because they repeat the same categorical status claim with only 'peace deal' versus 'MOU' wording. Violation/strain is preserved as factual substrate; formal or effective termination by Israel was not established by the reviewed evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Deduplicate the two Valenti headlines as one underlying information event. Do not convert this incident into a finding that Israel fully complied with the agreement.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The categorical termination claim is separable from the supported evidence of Israeli military activity and disputes over implementation.",
+      "public_bullshit_summary": "Israel's operations strained the U.S.-Iran MOU and triggered accusations of violations, but contemporaneous reporting still treated the agreement as operative. Valenti twice upgraded that dispute into 'Israel terminated the peace deal/MOU.'"
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -5653,6 +5743,85 @@
           "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
         }
       }
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-04-21",
+      "first_observed_at": "2026-04-21",
+      "statement_identity": "Publisher headline stated as fact that Trump asked to nuke Iran.",
+      "source_information_event_id": "VALENTI-YT-ESojA5kxiFY",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication converted an unverified nuclear-use rumor into a declarative headline while the same Valenti publication template directly solicited Patreon support and merchandise purchases for continued output.",
+          "inference_limit": "The finding scores publication behavior and support solicitation, not the creator's unobservable private motive."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-ASKED-NUKE-YT-20260421",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
+          "archive_url": null,
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump asked to nuke Iran..."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-ASKED-NUKE-MONEY-YT-20260421",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
+          "archive_url": null,
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Description: 'Okay below is where I gotta make money' followed by Patreon as the best way to support Valenti Videos and a merchandise solicitation."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-NUCLEAR-CODES-LEADSTORIES-20260421",
+          "surface": "WEBSITE",
+          "url": "https://leadstories.com/hoax-alert/2026/04/fact-check-report-about-trump-nuclear-codes-not-verified-according-to-retired-cia-analyst-larry-johnson-who-mentioned-it-in-viral-video.html",
+          "archive_url": null,
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Lead Stories found no credible or verified report of the alleged nuclear-codes confrontation; Larry Johnson later acknowledged he had no confirmation that the report was verified."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-NUCLEAR-CODES-PAKMAN-20260421",
+          "surface": "PODCAST",
+          "url": "https://podcasts.apple.com/gb/podcast/reality-collapses-and-americans-are-noticing/id402050558?i=1000762936457",
+          "archive_url": null,
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Contemporaneous episode segment labeled the underlying item 'Unverified report says Trump wanted to nuke Iran.'"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti title/description; contemporaneous fact-checking and reporting tracing the nuclear-codes allegation to Larry Johnson; checks for independent corroboration or official confirmation.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The underlying viral allegation came from Larry Johnson citing an unnamed report. He later wrote that he had no confirmation it was verified, and contemporaneous fact-checking found no credible independent corroboration.",
+        "search_notes": "The WOL finding is posture inflation: a rumor explicitly lacking verification was republished by Valenti as a flat factual assertion that Trump asked to nuke Iran.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "This does not establish that nuclear-use discussions were impossible; it scores the unsupported declarative publication of the specific alleged request.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Preserve the rumor-origin chain separately from any canonical evidence about actual U.S. nuclear planning.",
+      "public_bullshit_summary": "An unverified nuclear-use rumor became 'Trump asked to nuke Iran' as a declarative headline, even though the rumor's own source later said he had no confirmation it was verified."
     },
     {
       "incident_id": "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
