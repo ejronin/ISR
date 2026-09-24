@@ -1,0 +1,33 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_TO_CLAIMS_FORENSICS_HANDOFF",
+  "authority": "FACTUAL_EVIDENCE_ROUTING_ONLY",
+  "as_of": "2026-09-24T16:46:00-04:00",
+  "basis": "data/evidence-integration/rook-evidence-locker-sweep-20260924T0000ET.json",
+  "rules": [
+    "Evidence Integration does not adjudicate deception, knowledge, Lie Ledger eligibility or Web of Lies lineage.",
+    "Preserve Pezeshkian's exact proposition before testing it.",
+    "Distinguish a claim of no civilian targeting, a claim of no attacks on civilian areas/populations, and a claim of no civilian casualties; they are not interchangeable."
+  ],
+  "referrals": [
+    {
+      "proposition_id": "IRAN-PEZESHKIAN-CIVILIAN-HARM-UNGA-20260923",
+      "topic": "Pezeshkian UNGA civilian-population claim",
+      "factual_context": [
+        "G3-IRAN-UNGA-PEZESHKIAN-SPEECH-20260923",
+        "documented civilian casualty evidence already present in canonical conflict records"
+      ],
+      "adjudication_requested": [
+        "establish exact quoted proposition and scope",
+        "distinguish civilian-targeting intent from civilian-area attack and civilian-casualty predicates",
+        "test truth status against source-bounded casualty evidence",
+        "adjudicate knowledge only if independently supported"
+      ],
+      "do_not_infer": [
+        "deception from falsity alone",
+        "intent to target civilians solely from the existence of civilian casualties"
+      ]
+    }
+  ],
+  "prior_referrals_retained_by_reference": "data/evidence-integration/rook-catchup-claims-routing-20260923.json",
+  "web_of_lies": "OUT_OF_SCOPE"
+}
