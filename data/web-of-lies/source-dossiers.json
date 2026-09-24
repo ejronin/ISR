@@ -850,13 +850,24 @@
       "country_region": null,
       "primary_platform": "YouTube",
       "behavior_classes": [
-        "MONETIZED_INFLUENCER"
+        "MONETIZED_INFLUENCER",
+        "NEWS_GRIFT"
       ],
       "authenticity_class": "HUMAN_ACCOUNT",
       "revenue_model": [
         "PATREON"
       ],
-      "classification_basis_event_ids": [],
+      "classification_basis_event_ids": [
+        "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+        "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+        "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+        "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+        "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
+        "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+        "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+        "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+        "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
+      ],
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-CHRIS-VALENTI",
       "identity_confidence": "HIGH",
@@ -945,7 +956,42 @@
             }
           ]
         }
-      ]
+      ],
+      "grift_pattern_review": {
+        "class_code": "NEWS_GRIFT",
+        "status": "INCIDENT_GATED_PATTERN_ESTABLISHED",
+        "basis_incident_ids": [
+          "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+          "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+          "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+          "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+          "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
+          "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+          "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+          "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+          "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
+        ],
+        "promoted_valenti_incident_count": 15,
+        "monetization_receipts": [
+          "https://www.patreon.com/cw/ValentiVideos",
+          "https://www.youtube.com/watch?v=0ZArFpj6zyA",
+          "https://beacons.ai/valentivideos",
+          "https://shop.valentivideos.com/"
+        ],
+        "same_publication_linkage": {
+          "incident_id": "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+          "url": "https://www.youtube.com/watch?v=0ZArFpj6zyA",
+          "observed_description": "The scored nuclear-strike publication directly asks viewers to support Valenti Videos through Patreon and separately promotes merchandise.",
+          "significance": "This directly links at least one qualifying unsupported/sensational publication to the creator's recurring support solicitation on the same publication surface."
+        },
+        "pattern_summary": "Repeated unsupported or materially distorted current-events claims are packaged in sensational headline form by a monetized publisher that directly asks viewers to fund continued Valenti Videos output. The adverse class is incident-gated; Patreon, audience size and ideology are not themselves the basis.",
+        "excluded_inputs": [
+          "political ideology",
+          "subscriber/follower count",
+          "estimated Patreon income",
+          "mere existence of monetization"
+        ]
+      }
     },
     {
       "source_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
@@ -1657,7 +1703,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. Nine incidents are currently promoted/scored, but the reviewed corpus contains additional distinct Iran-war/public-affairs candidates that remain under evidentiary review. Do not treat the nine-event promoted register as a completed lifetime corpus.",
+      "notes": "Valenti remains under active pattern review. Fifteen incidents are currently promoted/scored, and additional distinct Iran-war/public-affairs and historian-role candidates remain under evidentiary review. The source now also has an incident-gated NEWS_GRIFT pattern finding tied to repeated scored sensational current-events publications plus direct support solicitation; monetization alone is not the basis. Do not treat the promoted register as a completed lifetime corpus.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -4785,6 +4831,16 @@
         "provenance": "PROJECT_OWNER_DIRECT_REVIEW",
         "observation": "Valenti is reported to have used 'nuclear strike' literally to mean nuclear-warhead use against Iran, not a conventional strike on nuclear facilities.",
         "transcript_status": "NOT_MACHINE_RECOVERED"
+      },
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
       }
     },
     {
@@ -4890,7 +4946,17 @@
       "downstream_note": "Do not infer that no ground operation was contemplated. The scored proposition is the publisher's stronger claim that a full-scale invasion had been announced.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical force-posture and Kharg-operation propositions remain upstream; WOL scores the publisher-authored escalation in presentation.",
-      "public_bullshit_summary": "Trump had floated taking Kharg Island and other escalatory options. That is not the same thing as announcing a full-scale invasion of Iran."
+      "public_bullshit_summary": "Trump had floated taking Kharg Island and other escalatory options. That is not the same thing as announcing a full-scale invasion of Iran.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-IRAN-WAR-CANCEL-2028-ELECTION",
@@ -5006,7 +5072,17 @@
       "downstream_note": "Preserve both the reported Cuba-drone intelligence and Cuba's accusation as claims; neither independently validates the false-flag assertion.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "A false-flag operational-plan proposition is distinct from the underlying Cuba drone-threat intelligence.",
-      "public_bullshit_summary": "A real, contested U.S. intelligence story about possible Cuban drone threats to Key West became a factual claim that Trump was planning the attack himself as a false flag."
+      "public_bullshit_summary": "A real, contested U.S. intelligence story about possible Cuban drone threats to Key West became a factual claim that Trump was planning the attack himself as a false flag.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-NEGOTIATING-TEAM-ASSASSINATION",
@@ -5120,6 +5196,16 @@
         "provenance": "PROJECT_OWNER_DIRECT_REVIEW",
         "observation": "Valenti is reported to have explicitly described the aircraft as carrying nuclear warheads for use against Iran; the proposition is literal nuclear-weapon use, not merely nuclear-capable aircraft.",
         "transcript_status": "NOT_MACHINE_RECOVERED"
+      },
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
       }
     },
     {
@@ -5225,7 +5311,17 @@
       "downstream_note": "The separate 'American surrender' characterization is rhetorical/evaluative; the scored factual atom is the claimed contemplated $1 trillion U.S. payment.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Keep the payment proposition distinct from evaluative descriptions of the agreement.",
-      "public_bullshit_summary": "The trillion-dollar figure referred to estimated damage/investment context. Trump explicitly said the U.S. was not putting up money; Valenti repackaged that as Trump considering a $1 trillion payment to Iran."
+      "public_bullshit_summary": "The trillion-dollar figure referred to estimated damage/investment context. Trump explicitly said the U.S. was not putting up money; Valenti repackaged that as Trump considering a $1 trillion payment to Iran.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
@@ -5276,7 +5372,17 @@
       },
       "downstream_note": "The Russian origin and Polish impact are preserved as supported substrate; only the attack-on-Poland bridge is scored.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Any canonical NATO/Russia attack proposition remains an upstream truth-adjudication question."
+      "review_reason": "Any canonical NATO/Russia attack proposition remains an upstream truth-adjudication question.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-RUSSIAN-INVASION-POLAND-IMMINENT-20260703",
@@ -5394,7 +5500,17 @@
       },
       "downstream_note": "Presentation-level WOL behavior finding. Any canonical proposition about weapons transfer may still be routed to Claims Forensics separately.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Preserve canonical truth adjudication separately from WOL's source-behavior finding."
+      "review_reason": "Preserve canonical truth adjudication separately from WOL's source-behavior finding.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
@@ -5445,7 +5561,17 @@
       },
       "downstream_note": "Distinct August 6 republication/reframing; not deduplicated with the separate August 4 episode.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Direct quotation semantics support the WOL behavior finding without changing canonical readiness adjudication."
+      "review_reason": "Direct quotation semantics support the WOL behavior finding without changing canonical readiness adjudication.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
@@ -5487,7 +5613,17 @@
       },
       "downstream_note": "A genuine munitions-shortage story is preserved as the substrate; the whole-force zero-inventory generalization is the scored behavior.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Canonical readiness/inventory propositions remain distinct from this source-presentation finding."
+      "review_reason": "Canonical readiness/inventory propositions remain distinct from this source-presentation finding.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-WMX-EILAT-DAYTONA-20260315",
