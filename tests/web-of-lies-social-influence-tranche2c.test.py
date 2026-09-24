@@ -214,7 +214,7 @@ assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
 assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
 assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
 assert valenti_lead["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
-assert valenti_lead["review_progress"]["promoted_incident_count"] == 15
+assert valenti_lead["review_progress"]["promoted_incident_count"] == 16
 assert valenti_lead["review_progress"]["corpus_completion_claim"] == "NONE"
 assert len(valenti_lead["review_progress"]["currently_preserved_unscored_candidates"]) >= 9
 candidate_status = {
@@ -248,7 +248,7 @@ assert all(
 )
 
 news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
-assert len(news_grift_basis) == 9
+assert len(news_grift_basis) == 10
 assert news_grift_basis <= set(behavior_incidents)
 assert all(
     "NEWS_GRIFT" in behavior_incidents[incident_id].get("behavior_findings", [])
@@ -309,6 +309,7 @@ valenti_incident_ids = {
     "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
     "WOL-BS-VALENTI-CUBA-INVASION-IMMINENT",
     "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
+    "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
     "WOL-BS-VALENTI-RUSSIAN-INVASION-POLAND-IMMINENT-20260703",
     "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
     "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
@@ -325,7 +326,7 @@ valenti_all_incident_ids = {
     if incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
 }
 assert valenti_all_incident_ids == valenti_incident_ids
-assert len(valenti_all_incident_ids) == 15
+assert len(valenti_all_incident_ids) == 16
 for incident_id in valenti_incident_ids:
     incident = behavior_incidents[incident_id]
     assert incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
@@ -350,7 +351,7 @@ assert set(valenti_award["qualifying_incident_ids"]) == {
     "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
     "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
 }
-assert valenti_award["documented_incident_count"] == 15
+assert valenti_award["documented_incident_count"] == 16
 assert set(valenti_award["documented_incident_ids"]) == valenti_all_incident_ids
 assert valenti_award["current_window_status"] == "EARNED_HISTORICAL"
 assert valenti_award["currently_active"] is False
