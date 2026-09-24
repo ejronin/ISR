@@ -871,6 +871,7 @@
         "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
         "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
         "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+        "WOL-BS-VALENTI-TRUMP-TERMINATED-IRAN-TALKS-202606",
         "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
         "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
         "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
@@ -981,11 +982,12 @@
           "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
           "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
           "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+          "WOL-BS-VALENTI-TRUMP-TERMINATED-IRAN-TALKS-202606",
           "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
           "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
           "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
         ],
-        "promoted_valenti_incident_count": 22,
+        "promoted_valenti_incident_count": 21,
         "monetization_receipts": [
           "https://www.patreon.com/cw/ValentiVideos",
           "https://www.youtube.com/watch?v=0ZArFpj6zyA",
@@ -1717,7 +1719,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. 22 incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
+      "notes": "Valenti remains under active pattern review. Twenty-one incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1817,7 +1819,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 22,
+        "promoted_incident_count": 21,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -1890,6 +1892,12 @@
             "url": "https://www.youtube.com/watch?v=l7iPKW1qpYE",
             "secondary_url": "https://www.youtube.com/watch?v=Wac6iXa2Oms",
             "status": "PROMOTED_WOL_INCIDENT_DEDUPLICATED_INFORMATION_EVENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-TRUMP-TERMINATED-IRAN-TALKS-202606",
+            "title": "Trump TERMINATED the Peace Deal with Iran",
+            "url": "https://www.youtube.com/watch?v=79yEsPYT2MU",
+            "status": "PROMOTED_WOL_INCIDENT"
           }
         ],
         "held_or_rejected_examples": [
@@ -6102,6 +6110,85 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Preserve the rumor-origin chain separately from any canonical evidence about actual U.S. nuclear planning.",
       "public_bullshit_summary": "An unverified nuclear-use rumor became 'Trump asked to nuke Iran' as a declarative headline, even though the rumor's own source later said he had no confirmation it was verified."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-TRUMP-TERMINATED-IRAN-TALKS-202606",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump terminated the peace deal/talks with Iran.",
+      "source_information_event_id": "VALENTI-YT-79yEsPYT2MU",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication converts a real collapse/freeze in the diplomatic track into a categorical actor-attribution claim that Trump terminated the Iran peace deal.",
+          "inference_limit": "The finding does not deny that Trump publicly welcomed the possibility that talks were over or that the negotiating track was in serious jeopardy. It scores the unsupported categorical attribution of termination to Trump."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-TERMINATED-IRAN-TALKS-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=79yEsPYT2MU",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=79yEsPYT2MU",
+          "published_at": null,
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump TERMINATED the Peace Deal with Iran. Hasan is BANNED from the U.K. Terrorists MARCH in NYC!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRAN-FREEZES-TALKS-CNN-20260601",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/cnc/date/2026-06-01/segment/07",
+          "archive_url": null,
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN reported Tehran freezing negotiations with the United States after Israel's strikes in Lebanon."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRAN-FREEZES-TALKS-REUTERS-JPOST-20260601",
+          "surface": "WEBSITE",
+          "url": "https://www.jpost.com/middle-east/iran-news/article-898027",
+          "archive_url": null,
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters/Jerusalem Post reporting said Tehran had suspended indirect negotiations while Trump simultaneously said talks were continuing rapidly."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-COULDNT-CARE-LESS-GUARDIAN-20260601",
+          "surface": "WEBSITE",
+          "url": "https://www.theguardian.com/world/live/2026/jun/01/iran-war-live-news-updates-kuwait-missile-drone-attack-us-strikes-iran-radar-sites?page=with%3Ablock-6a1dc1ed8f08cd3a6a941909",
+          "archive_url": null,
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump said he 'couldn't care less' if talks were over after Iran halted mediated exchanges; he did not announce that he had formally terminated the talks."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti direct video title plus contemporaneous CNN, Reuters-carried, Guardian and Iran-state-linked reporting on the June 1 freeze/collapse in U.S.-Iran talks.",
+        "checked_at": "2026-09-24T00:34:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Contemporaneous reporting attributed the halt in mediated exchanges to Tehran after Israeli operations in Lebanon. Trump expressed indifference to whether talks continued, while also publicly saying talks were continuing. The reviewed record does not establish that Trump was the actor who terminated the talks.",
+        "search_notes": "The WOL finding is actor/causation substitution. The underlying collapse in diplomacy is preserved as real; the unsupported step is assigning termination to Trump as an established fact.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Keep separate from the later June signed MOU and from Valenti's later claims that Israel terminated that agreement. This incident concerns the earlier negotiating-track freeze.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The actor responsible for halting talks is a separable factual proposition from the broader fact that negotiations were deteriorating.",
+      "public_bullshit_summary": "The talks were in real trouble, but contemporaneous reporting said Iran froze the mediated exchanges. Trump said he did not care if they ended; Valenti turned that into 'Trump terminated the peace deal.'"
     },
     {
       "incident_id": "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
