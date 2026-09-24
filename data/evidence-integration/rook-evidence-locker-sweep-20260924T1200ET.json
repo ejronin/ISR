@@ -1,0 +1,176 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-24T00:00:00-04:00",
+    "end": "2026-09-24T12:00:00-04:00",
+    "collection_time": "2026-09-24T12:01:57-04:00",
+    "evidence_horizon": "2026-09-24T12:00:00-04:00"
+  },
+  "updates": [
+    {
+      "event_id": "IRAN-AVIATION-SECONDARY-SANCTIONS-20260924",
+      "update_type": "sanctions/aviation / major existing-drawer implementation update",
+      "finding": "The U.S. aviation secondary-sanctions pressure moved materially beyond the prior Baghdad/Muscat partial implementation. Reuters reported Iranian flights to Gulf neighbors including Dubai appeared cancelled on Thursday. The UAE General Civil Aviation Authority then officially announced suspension, effective Sep.24 until further notice, of flights operated by Iranian airlines to and from the UAE, explicitly citing the U.S. ban. This is state-level implementation by a major regional aviation hub, but still does not establish worldwide grounding of all Iranian international aviation.",
+      "status": "IMPLEMENTATION BROADENED MATERIALLY; UAE OFFICIAL SUSPENSION CONFIRMED; GLOBAL SHUTDOWN NOT ESTABLISHED",
+      "occurrence_time": "2026-09-24 (UAE local time; effective Thursday until further notice)",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon": "2026-09-24T12:00:00-04:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iranian-flights-cancelled-new-us-d-day-sanctions-take-effect-saudis-say-they-2026-09-24/",
+        "https://www.wam.ae/en/article/c2epfv7-general-civil-aviation-authority-announces"
+      ],
+      "drawer_effect": "SUPERSEDE the Sep.23 status 'partial observed implementation limited to Baghdad/Muscat examples' with broader regional implementation. Preserve individual state/airport compliance and continuing-route evidence; do not convert Treasury's stated worldwide objective into an accomplished global shutdown."
+    },
+    {
+      "event_id": "SAUDI-HOUTHI-MISSILE-INTERCEPTS-20260924",
+      "update_type": "military / Saudi-Houthi theater",
+      "finding": "The Saudi-led coalition said Saudi air defenses intercepted six ballistic missiles launched by the Houthis on Thursday, thwarting attacks directed at Taif and Yanbu. The coalition attribution and successful-intercept claim are official Saudi-led coalition claims at this horizon; independent weapon-by-weapon verification was not available in the sweep.",
+      "status": "SIX BALLISTIC-MISSILE INTERCEPTS CLAIMED BY SAUDI-LED COALITION; TARGET AREAS TAIF/YANBU; INDEPENDENT BDA LIMITED",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon": "2026-09-24T12:00:00-04:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemen-says-government-forces-repel-houthi-push-key-taiz-aden-route-2026-09-24/"
+      ],
+      "drawer_effect": "UPDATE Saudi-Houthi strike/intercept chronology and Yanbu threat drawer. Keep launch/target/intercept claims attributed to coalition unless independently corroborated; watch for debris, damage, casualty or Houthi target-claim updates."
+    },
+    {
+      "event_id": "YEMEN-TAIZ-ADEN-ROUTE-HOUTHI-PUSH-20260924",
+      "update_type": "military / Yemen ground campaign",
+      "finding": "Saudi-backed Yemeni government forces said they repelled multiple overnight Houthi attacks along the key Taiz-Aden supply route after hours of fighting. Reuters reported military-source confirmation from both sides that fighting occurred. The government success/disposition claim remains subject to later territorial and casualty corroboration.",
+      "status": "FIGHTING CORROBORATED; GOVERNMENT CLAIMS HOUTHI PUSH REPELLED; FINAL DISPOSITION/BDA PENDING",
+      "occurrence_time": "overnight 2026-09-23/24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon": "2026-09-24T12:00:00-04:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemen-says-government-forces-repel-houthi-push-key-taiz-aden-route-2026-09-24/"
+      ],
+      "drawer_effect": "UPDATE the existing Houthi Red Sea/South Taiz offensive drawer rather than create an isolated campaign narrative. Track whether the attack changed control of the logistics corridor and whether IRGC operational-support reporting can be tied to this specific action; do not infer that linkage without evidence."
+    },
+    {
+      "event_id": "YEMEN-HUMAN-IMPACT-20260924-OHCHR",
+      "update_type": "human impact / authoritative UN update",
+      "finding": "The UN human rights chief said civilians are bearing the brunt of the expanding Yemen fighting. This strengthens the existing humanitarian-impact drawer as hostilities expand across multiple fronts. It should be reconciled with the Sep.22 UNHCR observed displacement figure above 130,000, at least 110 reported casualties including 28 deaths, and the separate projection that displacement could exceed 230,000; observed counts and forecasts must remain separate denominators.",
+      "status": "UN CIVILIAN-IMPACT WARNING UPDATED; EXISTING OBSERVED/PROJECTED DENOMINATORS REMAIN SEPARATE",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon": "2026-09-24T12:00:00-04:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/un-rights-chief-says-civilians-are-bearing-brunt-fighting-yemen-2026-09-24/",
+        "https://transcripts.un.org/zh/briefing/geneva/2026-09-22"
+      ],
+      "drawer_effect": "UPDATE Yemen human-impact drawer with OHCHR warning; retain Sep.22 UNHCR actual displacement/casualty numbers and future displacement projection as distinct fields."
+    },
+    {
+      "event_id": "HORMUZ-TRAFFIC-20260924",
+      "update_type": "maritime / commercial-data correction and trend update",
+      "finding": "Public reporting based on Kpler data said 10 commodity vessels transited Hormuz on Wednesday, a marked rise from the previously published Tuesday/early-week figures but still below the constrained recent average. This is a partial traffic recovery, not restoration of normal prewar passage. Commercial AIS visibility and methodology limitations remain material.",
+      "status": "PARTIAL TRANSIT RECOVERY; STILL DEPRESSED; COMMERCIAL-DATA CAVEATS APPLY",
+      "occurrence_time": "2026-09-23",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon": "2026-09-24T12:00:00-04:00",
+      "sources": [
+        "https://sana.sy/en/international/2345549/",
+        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-23/"
+      ],
+      "drawer_effect": "UPDATE Hormuz transit trend and preserve prior published counts rather than silently rewrite them. Flag the Wednesday 10-vessel figure for direct Kpler/Reuters-primary corroboration when proprietary or full updated commercial feed becomes available."
+    },
+    {
+      "event_id": "US-IRAN-DIPLOMACY-MARKET-20260924",
+      "update_type": "diplomacy/economy / no-breakthrough confirmation",
+      "finding": "Reuters reported oil prices rose about 2% Thursday as U.S.-Iran diplomacy showed little sign of progress. This is market and diplomatic confirmation that the prior 'parties far apart/no agreement' status had not materially improved by this horizon; it is not evidence that talks ended.",
+      "status": "CONTACT CONTINUES; NO BREAKTHROUGH ESTABLISHED; MARKET PRICES PERSISTENT RISK",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon": "2026-09-24T12:00:00-04:00",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-prices-edge-lower-iran-says-it-is-open-diplomacy-end-war-2026-09-24/",
+        "https://www.reuters.com/world/middle-east/hope-progress-after-us-iran-hold-first-shuttle-talks-months-2026-09-23/"
+      ],
+      "drawer_effect": "UPDATE diplomatic-status drawer as no-breakthrough confirmation. Preserve contact-versus-agreement distinction and do not infer cessation of negotiations."
+    },
+    {
+      "event_id": "UK-IRAN-BANK-LICENSING-20260923-24",
+      "update_type": "sanctions/finance / source-discovery and pressure update",
+      "finding": "UK OFSI guidance published Sep.23 establishes an immediate presumption of denial for licence applications from Bank Sepah, Melli Bank plc, Bank Saderat, Persia International Bank and Bank Tejarat, except narrow legal/urgent circumstances. The existing general licence INT/2025/7628424 will not be renewed after Oct.22. The policy explicitly bars licences permitting UK-held funds to be remitted to Iran. This is a concrete tightening of financial access relevant to the existing frozen-assets/sanctions-pressure drawer.",
+      "status": "UK FINANCIAL-SANCTIONS LICENSING TIGHTENED; FIVE DESIGNATED BANKS IN SCOPE",
+      "occurrence_time": "effective immediately from publication 2026-09-23",
+      "publication_time": "2026-09-23",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon": "2026-09-24T12:00:00-04:00",
+      "sources": [
+        "https://www.gov.uk/government/publications/hmt-licensing-guidance-presumption-of-denial-of-licence-applications-for-designated-iranian-banks/presumption-of-denial-of-licence-applications-for-designated-iranian-banks"
+      ],
+      "drawer_effect": "UPDATE Iran sanctions/financial-access drawer. This strengthens restrictions on access/transactions but must not be described as confiscation or dissolution of Iranian assets. Track separately from U.S.-Iran bargaining over release of frozen assets."
+    }
+  ],
+  "prior_drawer_review": [
+    {"drawer":"Iran aviation secondary sanctions","action":"SUPERSEDE_STATUS","reason":"UAE GCAA official suspension materially broadens observed implementation beyond the Sep.23 Baghdad/Muscat examples; worldwide shutdown still not established."},
+    {"drawer":"Saudi-Houthi strike/intercept chronology","action":"UPDATE","reason":"Coalition reports six ballistic missiles intercepted on Sep.24 targeting Taif/Yanbu; independent BDA remains limited."},
+    {"drawer":"Houthi Red Sea/South Taiz offensive","action":"UPDATE","reason":"New overnight attacks on Taiz-Aden supply route; fighting corroborated, final disposition and casualty/BDA pending."},
+    {"drawer":"Yemen human impact","action":"UPDATE","reason":"OHCHR says civilians bearing brunt; preserve Sep.22 UNHCR actual counts separately from projected displacement."},
+    {"drawer":"Hormuz transit traffic","action":"UPDATE_AND_PRESERVE_PRIOR_PUBLICATIONS","reason":"Wednesday reported 10 commodity transits indicates partial recovery; earlier daily figures must remain provenance-preserved rather than overwritten."},
+    {"drawer":"US-Iran UNGA contacts","action":"NO_BREAKTHROUGH_UPDATE","reason":"Sep.24 diplomacy/market reporting continues to show little progress, consistent with prior far-apart assessment."},
+    {"drawer":"Iran financial sanctions/frozen-assets pressure","action":"UPDATE","reason":"UK OFSI immediate presumption-of-denial policy for five designated Iranian banks adds concrete financial-access restriction."},
+    {"drawer":"IRGC-Houthi direct field support","action":"WATCH_NO_NEW_SCOPE_INFERENCE","reason":"New Houthi operations occurred, but this sweep found no evidence tying IRGC advisers specifically to the Sep.24 Taiz-Aden attack; do not infer linkage."},
+    {"drawer":"Cape Dao Sep.23 vessel strike","action":"NO_MATERIAL_NEW_ATTRIBUTION_FOUND","reason":"No reliable new perpetrator attribution or final weapon identification established in this window."},
+    {"drawer":"Saudi East-West/Petroline restoration","action":"NO_MATERIAL_NEW_BDA_FOUND","reason":"No authoritative new engineering/throughput restoration update located in this window beyond prior partial-restart state."},
+    {"drawer":"QatarEnergy/Ras Laffan damage","action":"NO_MATERIAL_NEW_BDA_FOUND","reason":"No authoritative new physical repair-status change located in this window."}
+  ],
+  "unresolved_questions": [
+    "Which additional states/airports will implement the U.S. Iranian-airline pressure after the UAE decision, and which Iranian international routes remain operational?",
+    "Did any of the six Houthi missiles claimed intercepted over Saudi Arabia cause debris damage or casualties, and what targets do the Houthis themselves claim?",
+    "Did the Sep.24 Taiz-Aden attacks change territorial control, logistics access, or force disposition after the initial government repulse claim?",
+    "Can the Wednesday Hormuz 10-vessel count be directly reconciled against Kpler's final daily methodology and prior Tuesday count revisions?",
+    "Who attacked MV Cape Dao and with what weapon?",
+    "What substantive concessions, if any, emerge from continuing U.S.-Iran contacts?",
+    "How do Iran's seven-condition, three-condition and two-condition Hormuz formulations relate institutionally?",
+    "Does later evidence tie IRGC advisers to specific Sep.24 Houthi ground or missile operations rather than the broader campaign?",
+    "What is the current accessible-versus-nominal value of Iranian frozen assets by jurisdiction, and how would the new UK licensing posture affect actual usability?"
+  ],
+  "coverage": {
+    "actors": "Iranian government/SNSC, U.S., Saudi Arabia/Saudi-led coalition, Houthis, Yemeni government forces, UAE, UK, UN/OHCHR/UNHCR reviewed; Israel/Gaza/Lebanon searches produced no higher-confidence material change requiring a new drawer entry during this horizon.",
+    "military": "covered via Reuters, coalition-attributed reporting and cross-source review; no proprietary/classified ISR",
+    "maritime": "covered via public Reuters/commercial-data reporting; no direct proprietary Kpler/LSEG/MarineTraffic terminal",
+    "infrastructure": "reviewed; no authoritative new Petroline or Ras Laffan physical BDA/repair change found",
+    "diplomacy": "covered; no U.S.-Iran breakthrough established",
+    "economy_sanctions_energy": "covered; UAE aviation implementation, UK bank licensing tightening, oil-market response updated",
+    "claims_corrections": "covered; attribution boundaries retained; no new knowledge/deception adjudication performed",
+    "human_impact": "covered through OHCHR/UNHCR and military reporting; not an exhaustive casualty census",
+    "commercial_osint": "partial; public reporting of Kpler/market/flight information only",
+    "social_media_geolocation": "not systematically available; no firehose-level collection",
+    "commercial_satellite_tasking": "unavailable",
+    "proprietary_maritime_terminals": "unavailable",
+    "classified_isr": "unavailable and not claimed"
+  },
+  "source_discovery_additions": [
+    "UAE GCAA/WAM primary notice confirming Iranian-airline suspension",
+    "UK OFSI primary guidance establishing presumption of denial for five designated Iranian banks",
+    "Sep.24 Reuters Saudi-Houthi missile and Taiz-Aden ground-operation reporting",
+    "Sep.24 Reuters OHCHR Yemen civilian-impact reporting"
+  ],
+  "completion": {
+    "status": "COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+    "canonical_bytes_modified": false,
+    "generated_public_state_modified": false,
+    "release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "downstream_referrals": [
+      "Current-state integration: UAE aviation suspension materially supersedes prior partial-implementation status",
+      "Current-state integration: Sep.24 Saudi-Houthi missile/intercept chronology and Taiz-Aden fighting",
+      "Current-state integration: Yemen OHCHR human-impact update",
+      "Current-state integration: Hormuz Wednesday transit recovery with commercial-data caveat",
+      "Economics/sanctions: UK five-bank licensing presumption-of-denial update"
+    ],
+    "notes": "Append-only upstream evidence artifact. Existing drawers are updated/superseded by reference rather than duplicated. No canonical, generated-public, signed-release or manifest bytes were rewritten."
+  }
+}
