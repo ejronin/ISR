@@ -874,7 +874,8 @@
         "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
         "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
         "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
-        "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
+        "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
+        "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720"
       ],
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-CHRIS-VALENTI",
@@ -985,9 +986,10 @@
           "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
           "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
           "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
-          "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
+          "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
+          "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720"
         ],
-        "promoted_valenti_incident_count": 23,
+        "promoted_valenti_incident_count": 24,
         "monetization_receipts": [
           "https://www.patreon.com/cw/ValentiVideos",
           "https://www.youtube.com/watch?v=0ZArFpj6zyA",
@@ -1719,7 +1721,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. 23 distinct incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
+      "notes": "Valenti remains under active pattern review. 24 distinct incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The July 20 'runs out of ammo' publication is now preserved as the first recovered item in a three-publication munitions-depletion narrative chain through August 6. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1819,7 +1821,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 23,
+        "promoted_incident_count": 24,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -6203,7 +6205,9 @@
           "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
           "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
         }
-      }
+      },
+      "narrative_chain_id": "VALENTI-CHAIN-US-MUNITIONS-DEPLETION-20260720-20260806",
+      "narrative_chain_sequence": 3
     },
     {
       "incident_id": "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
@@ -6482,7 +6486,90 @@
           "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
           "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
         }
-      }
+      },
+      "narrative_chain_id": "VALENTI-CHAIN-US-MUNITIONS-DEPLETION-20260720-20260806",
+      "narrative_chain_sequence": 2
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-07-20",
+      "first_observed_at": "2026-07-20",
+      "statement_identity": "Publisher headline stated that the United States was running out of ammunition while accurately reporting 17 U.S. service members killed in action.",
+      "source_information_event_id": "VALENTI-YT-IrZ6HEpHoIE",
+      "narrative_chain_id": "VALENTI-CHAIN-US-MUNITIONS-DEPLETION-20260720-20260806",
+      "narrative_chain_sequence": 1,
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication paired an accurate U.S. casualty count with a categorical whole-force ammunition claim stronger than the contemporaneous evidence, which showed serious depletion in selected munitions rather than the United States being out of ammunition.",
+          "inference_limit": "The finding preserves the real and strategically important U.S. munitions shortage. It does not claim inventories were healthy or that no individual munition type was critically constrained."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-17-KIA-RUNS-OUT-AMMO-YT-20260720",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=IrZ6HEpHoIE",
+          "archive_url": null,
+          "published_at": "2026-07-20",
+          "captured_at": "2026-09-24T01:56:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "17 U.S service members KILLED IN ACTION as the U.S RUNS OUT OF AMMO!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-MUNITIONS-LOW-AJ-20260715",
+          "surface": "WEBSITE",
+          "url": "https://www.aljazeera.com/news/2026/7/15/as-the-us-restarts-war-on-iran-is-its-weapons-stockpile-running-low",
+          "archive_url": null,
+          "published_at": "2026-07-15",
+          "captured_at": "2026-09-24T01:56:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Contemporaneous reporting described significant depletion of selected U.S. munitions and asked whether stockpiles were running low; it did not establish a whole-force zero-ammunition condition."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-MUNITIONS-ENOUGH-CSIS-20260527",
+          "surface": "WEBSITE",
+          "url": "https://www.csis.org/analysis/rebuilding-us-missile-inventory-multiyear-project",
+          "archive_url": null,
+          "published_at": "2026-05-27",
+          "captured_at": "2026-09-24T01:56:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CSIS assessed that key inventories had been heavily depleted but that the United States still had enough munitions for plausible Iran-war scenarios, while facing replenishment and Pacific-readiness risks."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-17-KIA-CBS-20260720",
+          "surface": "WEBSITE",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-trump-strait-of-hormuz-attacks-persian-gulf/",
+          "archive_url": null,
+          "published_at": "2026-07-20",
+          "captured_at": "2026-09-24T01:56:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CBS reported 17 U.S. service members killed and more than 400 wounded while U.S. forces continued a ninth straight night of strikes, supporting the casualty figure but not a whole-force claim that the U.S. had run out of ammunition."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's July 20 headline; contemporaneous reporting on the 17 U.S. deaths and U.S. strike activity; pre-publication CSIS inventory analysis; reporting on depleted Patriot, THAAD and long-range precision-munition stocks.",
+        "checked_at": "2026-09-24T01:56:00-04:00",
+        "claimant_basis_status": "PARTIAL_SUBSTRATE_DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The 17-dead casualty number and severe depletion of selected munition categories were supported. The reviewed evidence did not establish that the United States or U.S. military as a whole had run out of ammunition.",
+        "search_notes": "This incident scores only the ammunition generalization. The accurate casualty count is explicitly preserved as factual substrate. The publication begins a later repeated Valenti narrative that escalates to 'U.S. military is out of ammo' on August 4 and 'Trump admits the U.S. is out of ammo' on August 6.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Treat as sequence 1 of the Valenti U.S.-munitions-depletion narrative chain; later August 4 and August 6 publications are distinct repetitions/reframings and remain separately documented.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical munitions-readiness facts remain upstream. WOL scores the publication's categorical whole-force generalization while preserving the real depletion substrate.",
+      "public_bullshit_summary": "The 17 U.S. deaths were real, and key missile inventories were badly depleted. But 'the U.S. runs out of ammo' generalized serious shortages in selected weapons into a whole-force zero-ammunition claim the evidence did not support."
     },
     {
       "incident_id": "WOL-BS-WMX-EILAT-DAYTONA-20260315",
