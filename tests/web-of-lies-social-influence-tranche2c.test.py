@@ -213,10 +213,12 @@ assert any(row["url"].endswith("ESojA5kxiFY") for row in body_queue)
 assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
 assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
 assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
-assert valenti_lead["review_completion"]["qualifying_incident_count"] == 9
-assert valenti_lead["review_completion"]["status"] == "CURRENT_SOURCE_PASS_COMPLETED_THROUGH_2026-09-23_WITH_BODY_GATED_QUEUE_RETAINED"
+assert valenti_lead["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
+assert valenti_lead["review_progress"]["promoted_incident_count"] == 9
+assert valenti_lead["review_progress"]["corpus_completion_claim"] == "NONE"
+assert len(valenti_lead["review_progress"]["currently_preserved_unscored_candidates"]) >= 9
 assert valenti_lead["solicitation_review"]["fundraiser_destination_status"] == "NOT_INDEPENDENTLY_LOCATED_IN_REVIEWED_PUBLIC_LINKS"
-assert "does not establish" in valenti_lead["solicitation_review"]["inference_limit"]
+assert "not proof" in valenti_lead["solicitation_review"]["inference_limit"]
 
 nuke_jets = next(row for row in body_queue if row["research_item_id"] == "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026")
 assert nuke_jets["url"].endswith("b44N3cLIDrA")
