@@ -1834,8 +1834,8 @@
             "research_item_id": "VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721",
             "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
             "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
-            "status": "TITLE_LEVEL_SUBSTANTIALLY_SUPPORTED_NOT_PROMOTED",
-            "disposition_note": "Subsequent and contemporaneous reporting documented materially delayed/inaccurate U.S. casualty releases, later count increases and reclassification/removal of deaths. The title's concealment allegation has substantial factual substrate; any narrower body proposition would require separate exact review."
+            "status": "RESOLVED_NOT_PROMOTED_REAL_DISCLOSURE_OPACITY_SUBSTRATE",
+            "disposition_note": "Reuters/AP and other contemporaneous reporting documented casualty undercounts, later wounded-count increases, and reclassification/removal of deaths. 'Massive' remains vague/sensational, but the title-level cover-up/transparency allegation has substantial factual substrate. Only a narrower body claim with a specific hidden toll would be separately adjudicable."
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727",
@@ -1900,7 +1900,7 @@
           "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
           "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
         ],
-        "resolved_nonincident_count": 16
+        "resolved_nonincident_count": 17
       },
       "historian_role_review": {
         "status": "ACTIVE_SOURCE_RECOVERY",
@@ -2060,6 +2060,13 @@
           "url": "https://www.youtube.com/watch?v=RqDZyuJkyk0",
           "disposition": "NOT_PROMOTED_GEOPOLITICAL_LABEL_NOT_ATOMIC_FACT",
           "basis": "Whether a multi-theater conflict constitutes 'World War III' is a contested geopolitical classification, not a sufficiently bounded factual proposition at title level. Do not score the label itself; review any narrower body claims separately if recovered."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-US-CASUALTY-COVERUP-20260721",
+          "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
+          "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
+          "disposition": "NOT_PROMOTED_REAL_CASUALTY_DISCLOSURE_OPACITY_AND_UNDERCOUNT_SUBSTRATE",
+          "basis": "Contemporaneous and later reporting documented materially incomplete or shifting Pentagon casualty disclosure: later increases in wounded counts, deaths removed/reclassified into a new category, and reporting that the actual military death toll exceeded the Pentagon's public count by at least four. The word 'massive' is sensational and vague, but the title-level concealment/transparency allegation has substantial factual substrate. Any body-level claim of a specific hidden death toll remains separately reviewable if recovered."
         }
       ]
     }
