@@ -863,6 +863,7 @@
         "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
         "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
         "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+        "WOL-BS-VALENTI-MAR3-NUCLEAR-WAR-20260303",
         "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
         "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
         "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
@@ -971,6 +972,7 @@
           "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
           "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
           "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+          "WOL-BS-VALENTI-MAR3-NUCLEAR-WAR-20260303",
           "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
           "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
           "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
@@ -981,7 +983,7 @@
           "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
           "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
         ],
-        "promoted_valenti_incident_count": 20,
+        "promoted_valenti_incident_count": 21,
         "monetization_receipts": [
           "https://www.patreon.com/cw/ValentiVideos",
           "https://www.youtube.com/watch?v=0ZArFpj6zyA",
@@ -1713,7 +1715,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. Twenty incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. Two newest September incidents are preserved from the public channel index pending direct-watch-ID receipt upgrades. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
+      "notes": "Valenti remains under active pattern review. Twenty-one incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1813,7 +1815,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 20,
+        "promoted_incident_count": 21,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -5262,6 +5264,96 @@
           "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
         }
       }
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-MAR3-NUCLEAR-WAR-20260303",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-03",
+      "first_observed_at": "2026-03-03",
+      "statement_identity": "Publisher headline stated that Trump threatened nuclear war as Iran struck back.",
+      "source_information_event_id": "VALENTI-YT-dUKjrU3G0m8",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication escalated Trump's conventional-war rationale about preventing an Iranian nuclear weapon into a headline saying he threatened nuclear war, while the same video description directly solicited Patreon support and merchandise purchases.",
+          "inference_limit": "The finding preserves Trump's explicit nuclear-program rhetoric and the conventional U.S.-Iran war. It scores the unsupported shift to a U.S. nuclear-war threat, not private motive."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-MAR3-NUCLEAR-WAR-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=dUKjrU3G0m8",
+          "archive_url": null,
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "IRAN STRIKES BACK! Trump threatens NUCLEAR WAR"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-MAR3-NUCLEAR-WAR-MONEY-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=dUKjrU3G0m8",
+          "archive_url": null,
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Video description: 'Okay below is where I gotta make money' followed by Patreon as the best way to support Valenti Videos and a merchandise solicitation."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-MAR3-MERZ-FACTBASE",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-remarks-bilat-friedrich-merz-germany-march-3-2026/",
+          "archive_url": null,
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump argued Iran would have obtained and used a nuclear weapon absent prior U.S. action; the preserved March 3 remarks do not contain a U.S. threat to use nuclear weapons against Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-MAR2-IRAN-REUTERS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/trump-says-he-ordered-iran-strikes-thwart-tehrans-missile-program-2026-03-02/",
+          "archive_url": null,
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump's stated objectives as preventing an Iranian nuclear weapon and destroying missile capabilities amid a conventional U.S.-Israeli air campaign."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-MAR3-NUCLEAR-CLAIMS-FACTCHECK",
+          "surface": "WEBSITE",
+          "url": "https://www.factcheck.org/2026/03/assessing-trumps-claims-on-irans-nuclear-and-missile-capabilities/",
+          "archive_url": null,
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "FactCheck.org documented Trump's rationale as preventing Iran from obtaining nuclear weapons and contestable claims about Iran's missile/nuclear capabilities; it did not document a Trump threat of U.S. nuclear weapon use."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Direct Valenti video title/description; Trump's preserved March 3 remarks; Reuters coverage of Trump's March 2 war rationale; contemporaneous FactCheck.org review of his nuclear and missile claims.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump publicly framed the conventional war as necessary to prevent Iran obtaining/using nuclear weapons and to degrade missile capabilities. The reviewed contemporaneous record does not show him threatening U.S. nuclear use or nuclear war against Iran.",
+        "search_notes": "The supported substrate is a conventional U.S.-Iran war justified partly through Iran's alleged nuclear threat. Valenti's headline converts that into a Trump nuclear-war threat.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the publisher headline's nuclear-war escalation while preserving Trump's genuine nuclear-program rhetoric and the active conventional war.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The nuclear-use/threat proposition is separable from the supported conventional-war and Iranian-nuclear-program propositions.",
+      "public_bullshit_summary": "Trump was using Iran's nuclear program as a rationale for conventional war. The reviewed March 2–3 record does not show him threatening U.S. nuclear use; Valenti turned that into 'Trump threatens NUCLEAR WAR.'"
     },
     {
       "incident_id": "WOL-BS-VALENTI-NEGOTIATING-TEAM-ASSASSINATION",
