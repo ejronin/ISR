@@ -1988,6 +1988,16 @@
             "status": "RESOLVED_NOT_PROMOTED_PREDICTION_OR_ANALYTICAL_JUDGMENT",
             "disposition_note": "Do not score solely from later outcome. The title is a prospective analytical/political prediction about war outcome; WOL governance does not count prediction failure alone as a Bullshitter incident. A separately recoverable false factual premise or unsupported factual bridge inside the body could still be adjudicated on its own.",
             "monetization_note": "The direct video description solicits Patreon support and merchandise purchases; retain as monetization-pattern context."
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-F15-PILOT-MISSING-20260403",
+            "title": "American Fighter Pilot MISSING after being SHOT DOWN IN IRAN",
+            "url": "https://www.youtube.com/watch?v=EK3vTZNfz3A",
+            "publication_date": "2026-04-03",
+            "status": "RESOLVED_NOT_PROMOTED_CORE_EVENT_SUPPORTED",
+            "disposition_note": "Do not score. The F-15E was genuinely shot down and one pilot remained in evasion/missing status at publication time. Preserve this publication because it establishes Valenti's April acceptance of the shootdown/pilot identity before his later September scare-quote skepticism about the same event.",
+            "monetization_note": "The direct video description says 'Okay below is where I gotta make money,' directs viewers to Patreon as the best way to support Valenti Videos, and promotes merchandise. This is incentive-pattern context, not adverse-incident evidence by itself.",
+            "chronology_note": "Source-behavior relevance: April 3 publication treats the F-15 shootdown and missing pilot as factual; September publication later places 'pilot' and 'shot down' in scare quotes. Do not treat the later posture shift as proof of deception without body evidence, but preserve the inconsistency."
           }
         ],
         "held_or_rejected_examples": [
@@ -2006,9 +2016,9 @@
           "May 5 'Trump tells children Iran wants to nuke them': rejected. Trump told children that an Iranian nuclear weapon could mean they would not be here and described catastrophic risks; the title imputes motive crudely but preserves substantial nuclear-threat substrate.",
           "April/June 'Ground Invasion...' items are not interchangeable. The April 1 watch-along title is too elliptical to score from title alone; contemporaneous coverage of Trump's address said he did not announce ground troops. It remains body-gated separately from the later scored full-scale-invasion announcement claim."
         ],
-        "resolved_nonincident_count": 19,
+        "resolved_nonincident_count": 20,
         "last_review_checkpoint": {
-          "checked_at": "2026-09-24T15:12:00-04:00",
+          "checked_at": "2026-09-24T16:46:00-04:00",
           "promoted_incident_count": 24,
           "newly_resolved_rejects": [
             "G7 nuclear-retaliation quote",
@@ -2027,7 +2037,8 @@
             "AMERICA IS UNDER ATTACK!!! — direct ID CdwEBSZBtP4, underlying attacker/event not recovered"
           ],
           "search_exhaustion_note": "Generic March-April indexed searches repeatedly collapse back to the same channel pages and already-reviewed direct videos. Continue through exact-title/direct-ID recovery and alternate public mirrors rather than claiming corpus completion.",
-          "continuation_rule": "Continue backward through Iran-war publications; preserve supported-but-sensational titles as reviewed rejects and score only distinct unsupported factual/inferential propositions."
+          "continuation_rule": "Continue backward through March-May via exact channel chronology; deduplicate existing nuclear/ground-invasion/ammo/peace-deal families and score only distinct unsupported factual or inferential propositions.",
+          "latest_reviewed_reject": "2026-04-03 F-15E pilot missing after shootdown — supported at publication time; preserved for later posture-reversal comparison"
         }
       },
       "historian_role_review": {
