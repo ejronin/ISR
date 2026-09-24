@@ -1906,6 +1906,46 @@
             "url": "https://www.youtube.com/watch?v=l7iPKW1qpYE",
             "secondary_url": "https://www.youtube.com/watch?v=Wac6iXa2Oms",
             "status": "PROMOTED_WOL_INCIDENT_DEDUPLICATED_INFORMATION_EVENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-DUDE44-PILOT-SKEPTICISM-20260920",
+            "title": "The “pilot” that was “shot down” over Iran claims he climbed a 7000 foot mountain with a broken back",
+            "url": "https://www.youtube.com/@valentivideos",
+            "status": "BODY_REQUIRED_SKEPTICAL_INSINUATION_NOT_PROMOTED",
+            "disposition_note": "Independent reporting strongly corroborates the F-15E shootdown, Bravo's broken back/arm/shoulder, roughly 50 hours of evasion, and movement up/toward a roughly 7,000-foot ridgeline. The publisher's scare quotes signal skepticism but the title itself does not cleanly assert that the shootdown or injuries were fabricated. Preserve for body review; do not score insinuation alone.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T01:56:00-04:00",
+              "supporting_public_sources": [
+                "https://www.stripes.com/branches/air_force/2026-09-14/iran-rescue-operation-22848006.html",
+                "https://taskandpurpose.com/news/f-15e-iran-rescue-interview/",
+                "https://transcripts.cnn.com/show/ctw/date/2026-09-14/segment/02"
+              ],
+              "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_BODY_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW"
+            }
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-LARGEST-ATTACK-WARSHIPS-202609",
+            "title": "Iran launches its LARGEST ATTACK YET on American WARSHIPS and bases in the Middle East",
+            "url": "https://www.youtube.com/@valentivideos",
+            "status": "RESOLVED_NOT_PROMOTED_SUBSTANTIAL_ATTACK_SCALE_SUBSTRATE",
+            "disposition_note": "Do not score from the title. CENTCOM and contemporaneous reporting document a concerted September series of ballistic-missile attacks on multiple U.S. Navy vessels plus attacks on regional U.S. positions, while Reuters described the shipping exchange as the biggest wave since the war began. Exact 'largest' metrics can vary by counting method, but the title has substantial contemporaneous scale substrate.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T01:56:00-04:00",
+              "supporting_public_sources": [
+                "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4591744/centcom-destroys-3-irgc-oil-tankers-after-iran-targets-2-us-navy-warships/",
+                "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4593050/us-destroys-5-irgc-tankers-after-iran-targets-another-american-warship/",
+                "https://www.reuters.com/world/middle-east/iran-attacks-us-base-jordan-ships-near-hormuz-after-tankers-sunk-2026-09-09/"
+              ],
+              "inference_limit": "This disposition does not validate every claimed target, hit, or Iranian BDA claim; it resolves only the broad title-level scale/attack proposition against the contemporaneous attack sequence."
+            }
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ANOTHER-FALSE-FLAG-202606",
+            "title": "ANOTHER FALSE FLAG ATTACK LMFAO",
+            "url": "https://www.youtube.com/watch?v=Zy6M8fxc970",
+            "status": "BODY_CONTEXT_REQUIRED_ATTACK_NOT_IDENTIFIED",
+            "disposition_note": "Direct Valenti watch ID recovered, but the public title does not identify which attack is alleged to be a false flag. Do not score until the body/description or a reliable mirror fixes the underlying event and factual proposition.",
+            "required_next_evidence": "TRANSCRIPT_DESCRIPTION_OR_TIMESTAMPED_DIRECT_REVIEW_IDENTIFYING_THE_ALLEGED_ATTACK"
           }
         ],
         "held_or_rejected_examples": [
