@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-23T18:43:00-04:00",
+  "as_of": "2026-09-23T20:13:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -1719,7 +1719,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 9,
+        "promoted_incident_count": 12,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -1757,13 +1757,13 @@
             "research_item_id": "VALENTI-CANDIDATE-NEGOTIATING-TEAM-ASSASSINATION-2026",
             "title": "Trump threatens to ASSASSINATE the ENTIRE Iranian Negotiating Team because ISRAEL demands NO PEACE",
             "url": "https://www.youtube.com/watch?v=q-HSkbifk8I",
-            "status": "DIRECT_QUOTE_AND_BODY_REVIEW_REQUIRED"
+            "status": "PROMOTED_WOL_INCIDENT"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-KEY-WEST-FALSE-FLAG-2026",
             "title": "Trump is planning a FALSE FLAG ATTACK ON KEY WEST!",
             "url": "https://www.youtube.com/watch?v=_jjBTsHcWhA",
-            "status": "FACTUAL_BASIS_AND_BODY_REVIEW_REQUIRED"
+            "status": "PROMOTED_WOL_INCIDENT"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-CUBA-IRAN-SIMULTANEOUS-2026",
@@ -1775,7 +1775,7 @@
             "research_item_id": "VALENTI-CANDIDATE-ONE-TRILLION-SURRENDER-2026",
             "title": "Trump considers giving Iran ONE TRILLION DOLLARS as part of the American Surrender!",
             "url": "https://www.youtube.com/watch?v=2uC0ZbTXyfc",
-            "status": "AMOUNT_AND_SURRENDER_FRAMING_REVIEW_REQUIRED"
+            "status": "PROMOTED_WOL_INCIDENT"
           }
         ],
         "held_or_rejected_examples": [
@@ -4714,6 +4714,122 @@
       }
     },
     {
+      "incident_id": "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump was planning a false-flag attack on Key West.",
+      "source_information_event_id": "VALENTI-YT-_jjBTsHcWhA",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-KEY-WEST-FALSE-FLAG-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=_jjBTsHcWhA",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=_jjBTsHcWhA",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump is planning a FALSE FLAG ATTACK ON KEY WEST!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CUBA-KEY-WEST-AXIOS-20260517",
+          "surface": "WEBSITE",
+          "url": "https://www.axios.com/2026/05/17/us-military-drones-cuba",
+          "archive_url": null,
+          "published_at": "2026-05-17",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Axios reported classified U.S. intelligence alleging Cuban discussions of possible drone attacks including Key West; U.S. officials did not describe an attack as imminent."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CUBA-FABRICATION-REUTERS-20260517",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/americas/us-assesses-drone-threat-cuba-axios-reports-2026-05-17/",
+          "archive_url": null,
+          "published_at": "2026-05-17",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Cuba's accusation that the U.S. was fabricating intelligence as Cuba's allegation; Reuters could not independently verify the underlying Axios intelligence."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title, Axios reporting on the alleged Cuban drone threat, Reuters coverage of the intelligence claim and Cuba's response, and contemporaneous public discussion of possible U.S. action against Cuba.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The factual substrate was an intelligence report alleging possible Cuban drone planning against U.S. targets including Key West. Cuba accused Washington of fabricating a pretext. Neither establishes that Trump was planning a U.S.-run false-flag attack on Key West.",
+        "search_notes": "The headline transforms a contested warning/pretext allegation into a concrete covert U.S. operational plan. No reviewed evidence supported that operational claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve both the reported Cuba-drone intelligence and Cuba's accusation as claims; neither independently validates the false-flag assertion.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "A false-flag operational-plan proposition is distinct from the underlying Cuba drone-threat intelligence.",
+      "public_bullshit_summary": "A real, contested U.S. intelligence story about possible Cuban drone threats to Key West became a factual claim that Trump was planning the attack himself as a false flag."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-NEGOTIATING-TEAM-ASSASSINATION",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump threatened to assassinate the entire Iranian negotiating team because Israel demanded no peace.",
+      "source_information_event_id": "VALENTI-YT-q-HSkbifk8I",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-NEGOTIATORS-ASSASSINATION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=q-HSkbifk8I",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=q-HSkbifk8I",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump threatens to ASSASSINATE the ENTIRE Iranian Negotiating Team because ISRAEL demands NO PEACE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NEGOTIATORS-KIDNAP-GUARDIAN-20260621",
+          "surface": "WEBSITE",
+          "url": "https://www.theguardian.com/world/2026/jun/21/us-iran-talks-jd-vance-switzerland-strait-of-hormuz-lebanon",
+          "archive_url": null,
+          "published_at": "2026-06-21",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Contemporaneous reporting described Trump's threat as kidnapping the Iranian negotiating team, alongside threats to bomb Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NEGOTIATORS-KIDNAP-IRISHTIMES-20260621",
+          "surface": "WEBSITE",
+          "url": "https://www.irishtimes.com/world/middle-east/2026/06/21/trump-and-iran-quarrel-on-social-media-while-peace-talks-proceed-in-switzerland/",
+          "archive_url": null,
+          "published_at": "2026-06-21",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reporting likewise described a threat to kidnap the negotiating team; it did not report a threat to assassinate the entire team."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title plus contemporaneous coverage of Trump's threats toward the Iranian negotiating team and Iran during the Switzerland talks.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The documented direct threat toward the team was described as kidnapping them, not assassinating the entire negotiating team. Reviewed reporting also did not establish the headline's causal motive that Israel demanded no peace.",
+        "search_notes": "A real and extraordinary threat toward Iranian negotiators is preserved as substrate. The publisher materially escalated kidnapping into assassination of the entire team and added an unsupported motive attribution.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the publisher-authored assassination and motive presentation; do not erase the supported fact that Trump threatened the negotiating team.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any atomic upstream proposition about the precise Trump statement remains separable from WOL's publication-level overstatement.",
+      "public_bullshit_summary": "A real Trump threat to kidnap Iran's negotiating team became a threat to assassinate the entire team, plus an unsupported claim that Israel demanded no peace."
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -4815,6 +4931,64 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical proposition about the terms or strategic effects of the June agreement remains upstream; WOL records the unsupported formal-status presentation.",
       "public_bullshit_summary": "A real U.S.-Iran ceasefire/MOU became an 'official surrender.' The agreement ended military operations and set terms for further negotiations; it was not an instrument of U.S. surrender."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump was considering giving Iran one trillion dollars as part of an American surrender.",
+      "source_information_event_id": "VALENTI-YT-2uC0ZbTXyfc",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-ONE-TRILLION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=2uC0ZbTXyfc",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=2uC0ZbTXyfc",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump considers giving Iran ONE TRILLION DOLLARS as part of the American Surrender!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-IRAN-NO-US-MONEY-20260617",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-press-conference-g7-summit-evian-france-june-17-2026/",
+          "archive_url": null,
+          "published_at": "2026-06-17",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump said the United States was not putting up money; he discussed outside investment and estimated more than $1 trillion in damage to Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VANCE-IRAN-TRILLION-DAMAGE-20260618",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-press-conference-briefing-jd-vance-june-18-2026/",
+          "archive_url": null,
+          "published_at": "2026-06-18",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Vance used roughly $1 trillion as an estimate of damage to Iran's industrial base while describing limited sanctions relief and oil sales, not a U.S. trillion-dollar payment."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title and contemporaneous Trump/Vance transcript records discussing Iranian reconstruction, damage estimates, sanctions relief and possible investment.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The trillion-dollar figures in the reviewed record referred to estimated damage and broader investment context. Trump explicitly said the United States was not putting up money.",
+        "search_notes": "The title turns discussion of damage, outside investment and sanctions relief into a contemplated U.S. transfer of $1 trillion to Iran. The reviewed primary transcript contradicts that transfer claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "The separate 'American surrender' characterization is rhetorical/evaluative; the scored factual atom is the claimed contemplated $1 trillion U.S. payment.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Keep the payment proposition distinct from evaluative descriptions of the agreement.",
+      "public_bullshit_summary": "The trillion-dollar figure referred to estimated damage/investment context. Trump explicitly said the U.S. was not putting up money; Valenti repackaged that as Trump considering a $1 trillion payment to Iran."
     },
     {
       "incident_id": "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
