@@ -871,6 +871,7 @@
         "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
         "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
         "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+        "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
         "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
         "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
       ],
@@ -980,6 +981,7 @@
           "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
           "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
           "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+          "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
           "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
           "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
         ],
@@ -6086,6 +6088,85 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Preserve the rumor-origin chain separately from any canonical evidence about actual U.S. nuclear planning.",
       "public_bullshit_summary": "An unverified nuclear-use rumor became 'Trump asked to nuke Iran' as a declarative headline, even though the rumor's own source later said he had no confirmation it was verified."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump terminated the peace deal with Iran.",
+      "source_information_event_id": "VALENTI-YT-79yEsPYT2MU",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication assigned termination of the U.S.-Iran peace process to Trump even though contemporaneous reporting identified Iran as the party that suspended talks over Israel's Lebanon campaign while Trump publicly said negotiations were continuing.",
+          "inference_limit": "The finding does not claim Trump had no role in hardening terms or slowing negotiations. It scores the categorical agency claim that he terminated the peace deal."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-TERMINATED-DEAL-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=79yEsPYT2MU",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=79yEsPYT2MU",
+          "published_at": null,
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump TERMINATED the Peace Deal with Iran. Hasan is BANNED from the U.K. Terrorists MARCH in NYC!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRAN-SUSPENDS-TALKS-CNN-20260601",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/tbwjs/date/2026-06-01/segment/01",
+          "archive_url": null,
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN reported Iran had suspended the peace talks over Israeli attacks in Lebanon while Trump said talks were continuing at a rapid pace."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRAN-SUSPENDS-TALKS-REUTERS-20260601",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-stops-indirect-talks-with-us-after-israels-lebanon-incursion-2026-06-01/",
+          "archive_url": "https://www.vijesti.me/svijet/globus/811246/iran-obustavlja-pregovore-sa-sad",
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_WITH_ARCHIVE",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported that Iran suspended indirect talks with the United States after Israel pushed deeper into Lebanon."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MOU-US-SEEKING-CHANGES-CNN-20260601",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/tbwjs/date/2026-06-01/segment/01",
+          "archive_url": null,
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN reported Trump had returned the draft MOU seeking tougher nuclear and Hormuz language; the latest known U.S. action was revision, not formal termination."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti direct video identity and channel index; contemporaneous CNN and Reuters reporting on the June 1 suspension of U.S.-Iran talks; reporting on Trump's requested MOU revisions and public statements that talks were continuing.",
+        "checked_at": "2026-09-24T00:34:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The documented immediate cause of the June 1 breakdown was Iran's suspension of talks over Israel's Lebanon operations. Trump had sought changes to the draft and could have affected negotiations, but reviewed evidence did not establish that he terminated the peace deal.",
+        "search_notes": "This is an agency-reversal finding. Hard bargaining or requested amendments are not equivalent to terminating negotiations, particularly where the other party publicly suspended them.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Keep separate from the later June signed MOU and from the distinct Valenti claim that Israel terminated the MOU.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The immediate negotiating-breakdown attribution is factually separable from broader judgments about responsibility for the conflict.",
+      "public_bullshit_summary": "Iran suspended the talks over Israel's Lebanon campaign while Trump said negotiations were still continuing. Valenti reassigned the breakdown to Trump and called it a terminated peace deal."
     },
     {
       "incident_id": "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
