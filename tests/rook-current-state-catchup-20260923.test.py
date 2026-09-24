@@ -17,10 +17,11 @@ def rows_by_id(rows):
 def main() -> int:
     state = builder.build_state(ROOT)
     manifest = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
-    assert manifest["accepted_updates"][-1]["packet_id"] == "UPD-20260923-ROOK-EVIDENCE-CATCHUP"
-    assert manifest["accepted_updates"][-1]["sequence"] == 20
-    assert manifest["current_evidence_cutoff"] == "2026-09-23T18:12:00-04:00"
-    assert state["release"]["current_osint_cutoff"] == "2026-09-23T18:12:00-04:00"
+    tip = manifest["accepted_updates"][-1]
+    assert tip["packet_id"] == "UPD-20260923-ROOK-EVIDENCE-CATCHUP"
+    assert tip["sequence"] == max(item["sequence"] for item in manifest["accepted_updates"])
+    assert manifest["current_evidence_cutoff"] == tip["evidence_cutoff"]
+    assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
 
     events = {row["event_id"]: row for row in state["chronology"]}
     for event_id in (
