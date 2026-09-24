@@ -292,7 +292,7 @@ assert valenti_lead["review_completion"]["unresolved_excluded_count"] == 7
 assert valenti_lead["review_completion"]["next_action"] == "NONE_UNLESS_NEW_EVIDENCE"
 
 news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
-assert len(news_grift_basis) == 17
+assert len(news_grift_basis) == 18
 assert news_grift_basis <= set(behavior_incidents)
 assert all(
     "NEWS_GRIFT" in behavior_incidents[incident_id].get("behavior_findings", [])
