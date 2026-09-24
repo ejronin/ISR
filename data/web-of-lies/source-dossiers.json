@@ -1974,7 +1974,7 @@
           "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
           "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
         ],
-        "resolved_nonincident_count": 17
+        "resolved_nonincident_count": 19
       },
       "historian_role_review": {
         "status": "ACTIVE_SOURCE_RECOVERY",
@@ -2029,64 +2029,21 @@
       ],
       "resolved_nonincident_reviews": [
         {
-          "review_id": "VALENTI-NONINCIDENT-PILOT-7000FT-202609",
-          "title": "The 'pilot' that was 'shot down' over Iran claims he climbed a 7000 foot mountain with a broken back",
-          "disposition": "NOT_PROMOTED_TITLE_SUBSTANTIALLY_SUPPORTED",
-          "basis": "CBS and Stars and Stripes reported the airman described a broken back/arm/shoulder and climbing a roughly 7,000-foot ridgeline. The headline accurately attributes the account as the pilot's claim. A body-level fabrication accusation, if any, would require separate recovery."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-G7-NUKED-SELLERS-202606",
-          "title": "If anyone gives them a nuclear weapon, they'll be NUKED THEMSELVES!: Trump PANICS at the G7 summit",
-          "url": "https://www.youtube.com/watch?v=9LiqV2UbnCY",
-          "disposition": "NOT_PROMOTED_CORE_QUOTE_SUPPORTED",
-          "basis": "Preserved G7 transcript records Trump saying a country that sells Iran a nuclear weapon would 'get nuked themselves.' Sensational framing does not make the quoted factual proposition false."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-KHAMENEI-ASSASSINATION-20260302",
-          "title": "ALL HELL BREAKS LOOSE after trump ASSASSINATED the Ayatollah of Iran",
-          "url": "https://www.youtube.com/watch?v=hsF8Hv8tKRQ",
-          "disposition": "NOT_PROMOTED_CORE_EVENT_SUPPORTED",
-          "basis": "Contemporaneous reporting attributed Khamenei's death to the joint U.S.-Israeli strike campaign. Personalizing the operation as 'Trump assassinated' is rhetorically compressed but not clean enough for an unsupported-publication finding."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-MAY5-CHILDREN-NUKE-20260505",
-          "title": "Trump tells a group of children that Iran wants to nuke them",
-          "url": "https://www.youtube.com/watch?v=3pAw7suysmU",
-          "disposition": "NOT_PROMOTED_CORE_NUCLEAR_THREAT_MESSAGE_SUPPORTED",
-          "basis": "Trump did tell children that if Iran obtained a nuclear weapon 'maybe we wouldn't all be here' and described catastrophic consequences. The headline crudely imputes intent, but the underlying nuclear-threat message was present."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-IRAN-WAR-2029",
-          "title": "The Iran War will last until 2029 according to the Iranians",
-          "disposition": "NOT_PROMOTED_IRANIAN_STRATEGIC_SUBSTRATE_SUPPORTED",
-          "basis": "Iranian advisory commentary contemplated prolonging the conflict into the next U.S. presidential term / waiting out Trump. The compressed headline has a real source substrate."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-LINCOLN-JUMPING-SHIP",
-          "title": "U.S. sailors jumping ship / Lincoln sailors",
-          "disposition": "NOT_PROMOTED_UNDERLYING_EVENTS_SUPPORTED",
-          "basis": "Military reporting documented multiple overboard/jump incidents or attempts associated with Lincoln sailors, including a sailor recovered after going overboard. Do not score the idiomatic framing alone."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-JUL27-ALLOWS-MISSILES",
-          "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases",
-          "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
-          "disposition": "NOT_PROMOTED_AT_TITLE_LEVEL_BODY_MOTIVE_REMAINS_OPEN",
-          "basis": "Independent reporting supports deliberate threat-based non-interception of some Iranian projectiles to conserve interceptors, including permitting strikes on empty U.S. bases. The stronger motive claim reported by the project owner remains transcript/timestamp gated."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-EUROPE-BASE-THREAT-202608",
-          "title": "Iran warns it will begin targeting U.S. bases in EUROPE as the war RAPIDLY ESCALATES!",
-          "url": "https://www.youtube.com/watch?v=MYg1edXHpCM",
-          "disposition": "NOT_PROMOTED_CORE_THREAT_SUPPORTED",
-          "basis": "Iranian officials warned countries aiding U.S. operations that their territory could become legitimate retaliatory targets, and Iranian-source reporting specifically discussed possible strikes on U.S. assets in southeastern Europe, including Bulgaria. The headline's core threat proposition is supported."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-GENERALS-TURN-AGAINST-EXTENSION-202608",
-          "title": "TRUMP REIGNITES THE IRAN WAR WHILE OUR TOP ADMIRALS AND GENERALS TURN AGAINST HIM!",
-          "url": "https://www.youtube.com/watch?v=ZVS9A-kXxHU",
-          "disposition": "NOT_PROMOTED_CORE_EVENTS_SUPPORTED",
-          "basis": "Direct U.S.-Iran military exchanges resumed, and leaders of U.S. European, Pacific and Southern Commands plus the Navy's top admiral formally non-concurred with extending forces supporting the Iran campaign. 'Turn against him' is rhetorical packaging over a real documented professional disagreement."
+          "review_id": "VALENTI-NONINCIDENT-ABRAHAM-ACCORDS-ARAB-WORLD-20260525",
+          "title": "MEMORIAL DAY MADNESS: Trump begs the Arab World to become ALLIES WITH ISRAEL",
+          "url": "https://www.youtube.com/watch?v=mM7MwCFrg5k",
+          "publication_date": "2026-05-25",
+          "disposition": "NOT_PROMOTED_CORE_NORMALIZATION_REQUEST_SUPPORTED",
+          "basis": "Contemporaneous Reuters/Axios/AP reporting confirms Trump pressed Saudi Arabia, Qatar, Pakistan, Turkey, Egypt and Jordan to join the Abraham Accords / normalize relations with Israel as part of the emerging Iran settlement. 'Begs' is loaded rhetoric, but the underlying request/pressure to become formal partners with Israel is real.",
+          "evidence_review": {
+            "checked_at": "2026-09-24T01:56:00-04:00",
+            "supporting_public_sources": [
+              "https://www.reuters.com/world/middle-east/trump-links-abraham-accords-iran-deal-2026-05-25/",
+              "https://www.axios.com/2026/05/24/trump-iran-war-israel-muslim-countries-abraham-accords",
+              "https://www.pbs.org/newshour/world/trump-says-iran-deal-should-include-additional-countries-joining-abraham-accords"
+            ],
+            "inference_limit": "This disposition resolves the title-level normalization request only; it does not validate Valenti's emotional characterization of Trump's posture."
+          }
         },
         {
           "review_id": "VALENTI-NONINCIDENT-CATERING-DECOY-SAM-GOLF-202608",
@@ -2096,10 +2053,51 @@
           "basis": "The Washington Post/CBS documented Trump's secret catering-truck transfer and Air Force One decoy operation after an Iranian threat. Separate contemporaneous imagery/reporting documented an Army Avenger surface-to-air missile system protecting Trump at Bedminster. The headline is sensational but its unusual factual components are supported."
         },
         {
+          "review_id": "VALENTI-NONINCIDENT-EUROPE-BASE-THREAT-202608",
+          "title": "Iran warns it will begin targeting U.S. bases in EUROPE as the war RAPIDLY ESCALATES!",
+          "url": "https://www.youtube.com/watch?v=MYg1edXHpCM",
+          "disposition": "NOT_PROMOTED_CORE_THREAT_SUPPORTED",
+          "basis": "Iranian officials warned countries aiding U.S. operations that their territory could become legitimate retaliatory targets, and Iranian-source reporting specifically discussed possible strikes on U.S. assets in southeastern Europe, including Bulgaria. The headline's core threat proposition is supported."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-G7-NUKED-SELLERS-202606",
+          "title": "If anyone gives them a nuclear weapon, they'll be NUKED THEMSELVES!: Trump PANICS at the G7 summit",
+          "url": "https://www.youtube.com/watch?v=9LiqV2UbnCY",
+          "disposition": "NOT_PROMOTED_CORE_QUOTE_SUPPORTED",
+          "basis": "Preserved G7 transcript records Trump saying a country that sells Iran a nuclear weapon would 'get nuked themselves.' Sensational framing does not make the quoted factual proposition false."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-GENERALS-TURN-AGAINST-EXTENSION-202608",
+          "title": "TRUMP REIGNITES THE IRAN WAR WHILE OUR TOP ADMIRALS AND GENERALS TURN AGAINST HIM!",
+          "url": "https://www.youtube.com/watch?v=ZVS9A-kXxHU",
+          "disposition": "NOT_PROMOTED_CORE_EVENTS_SUPPORTED",
+          "basis": "Direct U.S.-Iran military exchanges resumed, and leaders of U.S. European, Pacific and Southern Commands plus the Navy's top admiral formally non-concurred with extending forces supporting the Iran campaign. 'Turn against him' is rhetorical packaging over a real documented professional disagreement."
+        },
+        {
           "review_id": "VALENTI-NONINCIDENT-HOUTHI-MECCA-DRONE-CLAIM-202609",
           "title": "Saudi Arabia claims the Houthis launched a drone AT MECCA! $2.8B worth of U.S BOMBS headed to Israel",
           "disposition": "NOT_PROMOTED_ATTRIBUTED_MECCA_CLAIM_SUPPORTED",
           "basis": "Saudi authorities publicly said they intercepted a Houthi drone headed toward Mecca. The Houthis denied targeting the holy city. Valenti's title correctly attributes the Mecca proposition as a Saudi claim; the attribution is factual even though the underlying allegation remains contested."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-IRAN-WAR-2029",
+          "title": "The Iran War will last until 2029 according to the Iranians",
+          "disposition": "NOT_PROMOTED_IRANIAN_STRATEGIC_SUBSTRATE_SUPPORTED",
+          "basis": "Iranian advisory commentary contemplated prolonging the conflict into the next U.S. presidential term / waiting out Trump. The compressed headline has a real source substrate."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-JUL27-ALLOWS-MISSILES",
+          "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases",
+          "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+          "disposition": "NOT_PROMOTED_AT_TITLE_LEVEL_BODY_MOTIVE_REMAINS_OPEN",
+          "basis": "Independent reporting supports deliberate threat-based non-interception of some Iranian projectiles to conserve interceptors, including permitting strikes on empty U.S. bases. The stronger motive claim reported by the project owner remains transcript/timestamp gated."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-KHAMENEI-ASSASSINATION-20260302",
+          "title": "ALL HELL BREAKS LOOSE after trump ASSASSINATED the Ayatollah of Iran",
+          "url": "https://www.youtube.com/watch?v=hsF8Hv8tKRQ",
+          "disposition": "NOT_PROMOTED_CORE_EVENT_SUPPORTED",
+          "basis": "Contemporaneous reporting attributed Khamenei's death to the joint U.S.-Israeli strike campaign. Personalizing the operation as 'Trump assassinated' is rhetorically compressed but not clean enough for an unsupported-publication finding."
         },
         {
           "review_id": "VALENTI-NONINCIDENT-LARGEST-ATTACK-WARSHIPS-BASES-202609",
@@ -2108,11 +2106,39 @@
           "basis": "Contemporaneous Reuters/AP reporting documented ballistic-missile attacks on U.S. warships and a U.S. base within a major September escalation, with Reuters describing the wider shipping attack wave as the biggest since the war began. The comparative superlative is not clean enough to score as unsupported on the reviewed record."
         },
         {
-          "review_id": "VALENTI-NONINCIDENT-US-WILL-LOSE-20260305",
-          "title": "The United States will LOSE the war against Iran",
-          "url": "https://www.youtube.com/watch?v=fjqCXOIhaNY",
-          "disposition": "NOT_PROMOTED_PREDICTION_STRATEGIC_ASSESSMENT",
-          "basis": "The headline is a future strategic prediction/assessment, not a presently falsifiable factual assertion. WOL governance does not score prediction failure alone. The video remains relevant to monetized-pattern context because its description contains the recurring Patreon/merch support solicitation."
+          "review_id": "VALENTI-NONINCIDENT-LINCOLN-JUMPING-SHIP",
+          "title": "U.S. sailors jumping ship / Lincoln sailors",
+          "disposition": "NOT_PROMOTED_UNDERLYING_EVENTS_SUPPORTED",
+          "basis": "Military reporting documented multiple overboard/jump incidents or attempts associated with Lincoln sailors, including a sailor recovered after going overboard. Do not score the idiomatic framing alone."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-MAY5-CHILDREN-NUKE-20260505",
+          "title": "Trump tells a group of children that Iran wants to nuke them",
+          "url": "https://www.youtube.com/watch?v=3pAw7suysmU",
+          "disposition": "NOT_PROMOTED_CORE_NUCLEAR_THREAT_MESSAGE_SUPPORTED",
+          "basis": "Trump did tell children that if Iran obtained a nuclear weapon 'maybe we wouldn't all be here' and described catastrophic consequences. The headline crudely imputes intent, but the underlying nuclear-threat message was present."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-PILOT-7000FT-202609",
+          "title": "The 'pilot' that was 'shot down' over Iran claims he climbed a 7000 foot mountain with a broken back",
+          "disposition": "NOT_PROMOTED_TITLE_SUBSTANTIALLY_SUPPORTED",
+          "basis": "CBS and Stars and Stripes reported the airman described a broken back/arm/shoulder and climbing a roughly 7,000-foot ridgeline. The headline accurately attributes the account as the pilot's claim. A body-level fabrication accusation, if any, would require separate recovery."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-REFUSES-IRAN-DEAL-202605",
+          "title": "Trump is PANICKING and REFUSES to sign the Iran Peace Deal",
+          "url": "https://www.youtube.com/watch?v=qPdvCNLZvFQ",
+          "publication_date": null,
+          "disposition": "NOT_PROMOTED_CORE_WITHHOLDING_REJECTION_SUPPORTED",
+          "basis": "Contemporaneous reporting documents Trump rejecting Iranian proposals as inadequate, saying Iran wanted a deal but he did not accept the terms, imposing additional conditions, and later withholding final approval while making a final determination on an unsigned MOU. 'Panicking' is editorial framing; the refusal/withholding proposition has substantial factual substrate.",
+          "evidence_review": {
+            "checked_at": "2026-09-24T01:56:00-04:00",
+            "supporting_public_sources": [
+              "https://themarsad.com/",
+              "https://www.inkl.com/news/iran-us-war-latest-deal-to-extend-ceasefire-and-reopen-strait-of-hormuz-just-needs-trump-signature"
+            ],
+            "inference_limit": "This does not mean Trump permanently rejected diplomacy; it resolves the title-level claim that he was refusing/withholding signature or acceptance at that stage."
+          }
         },
         {
           "review_id": "VALENTI-NONINCIDENT-RUSSIA-JOINS-IRANIANS-20260306",
@@ -2122,6 +2148,13 @@
           "basis": "The 'U.S. losing' portion is strategic analysis. Contemporaneous reporting documented Russian intelligence/targeting support to Iran against U.S. forces, giving substantial factual substrate to Valenti's 'Russia joins the Iranians' description. Do not score 'world war' rhetoric absent a narrower false factual proposition."
         },
         {
+          "review_id": "VALENTI-NONINCIDENT-US-CASUALTY-COVERUP-20260721",
+          "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
+          "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
+          "disposition": "NOT_PROMOTED_REAL_CASUALTY_DISCLOSURE_OPACITY_AND_UNDERCOUNT_SUBSTRATE",
+          "basis": "Contemporaneous and later reporting documented materially incomplete or shifting Pentagon casualty disclosure: later increases in wounded counts, deaths removed/reclassified into a new category, and reporting that the actual military death toll exceeded the Pentagon's public count by at least four. The word 'massive' is sensational and vague, but the title-level concealment/transparency allegation has substantial factual substrate. Any body-level claim of a specific hidden death toll remains separately reviewable if recovered."
+        },
+        {
           "review_id": "VALENTI-NONINCIDENT-US-MILITARY-COLLAPSING-202609",
           "title": "The United States Military is literally collapsing in front of our very eyes",
           "url": "https://www.youtube.com/watch?v=xyPdC6KzRKg",
@@ -2129,18 +2162,18 @@
           "basis": "Current public evidence establishes severe Iran-war pressure on U.S. readiness and munitions stocks, including critical Patriot shortages in Europe and near-exhaustion of some long-range precision-missile inventories. 'Literally collapsing' is an elastic evaluative characterization rather than a sufficiently atomic factual proposition at title level. Retain for body review only if Valenti states narrower falsifiable capability claims."
         },
         {
+          "review_id": "VALENTI-NONINCIDENT-US-WILL-LOSE-20260305",
+          "title": "The United States will LOSE the war against Iran",
+          "url": "https://www.youtube.com/watch?v=fjqCXOIhaNY",
+          "disposition": "NOT_PROMOTED_PREDICTION_STRATEGIC_ASSESSMENT",
+          "basis": "The headline is a future strategic prediction/assessment, not a presently falsifiable factual assertion. WOL governance does not score prediction failure alone. The video remains relevant to monetized-pattern context because its description contains the recurring Patreon/merch support solicitation."
+        },
+        {
           "review_id": "VALENTI-NONINCIDENT-WW3-HAS-BEGUN-202607",
           "title": "WW3 has begun",
           "url": "https://www.youtube.com/watch?v=RqDZyuJkyk0",
           "disposition": "NOT_PROMOTED_GEOPOLITICAL_LABEL_NOT_ATOMIC_FACT",
           "basis": "Whether a multi-theater conflict constitutes 'World War III' is a contested geopolitical classification, not a sufficiently bounded factual proposition at title level. Do not score the label itself; review any narrower body claims separately if recovered."
-        },
-        {
-          "review_id": "VALENTI-NONINCIDENT-US-CASUALTY-COVERUP-20260721",
-          "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
-          "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
-          "disposition": "NOT_PROMOTED_REAL_CASUALTY_DISCLOSURE_OPACITY_AND_UNDERCOUNT_SUBSTRATE",
-          "basis": "Contemporaneous and later reporting documented materially incomplete or shifting Pentagon casualty disclosure: later increases in wounded counts, deaths removed/reclassified into a new category, and reporting that the actual military death toll exceeded the Pentagon's public count by at least four. The word 'massive' is sensational and vague, but the title-level concealment/transparency allegation has substantial factual substrate. Any body-level claim of a specific hidden death toll remains separately reviewable if recovered."
         }
       ]
     }
