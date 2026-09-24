@@ -1727,7 +1727,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 14,
+        "promoted_incident_count": 15,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -1783,6 +1783,12 @@
             "research_item_id": "VALENTI-CANDIDATE-ONE-TRILLION-SURRENDER-2026",
             "title": "Trump considers giving Iran ONE TRILLION DOLLARS as part of the American Surrender!",
             "url": "https://www.youtube.com/watch?v=2uC0ZbTXyfc",
+            "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-IRAN-WAR-CANCEL-2028",
+            "title": "Trump wants the Iran War to last FOREVER so he can cancel the 2028 election",
+            "url": "https://www.youtube.com/watch?v=2fpN42hV5As",
             "status": "PROMOTED_WOL_INCIDENT"
           }
         ],
@@ -4825,6 +4831,64 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical force-posture and Kharg-operation propositions remain upstream; WOL scores the publisher-authored escalation in presentation.",
       "public_bullshit_summary": "Trump had floated taking Kharg Island and other escalatory options. That is not the same thing as announcing a full-scale invasion of Iran."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-IRAN-WAR-CANCEL-2028-ELECTION",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump wanted the Iran war to last forever so that he could cancel the 2028 election.",
+      "source_information_event_id": "VALENTI-YT-2fpN42hV5As",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-IRAN-WAR-CANCEL-ELECTION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=2fpN42hV5As",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=2fpN42hV5As",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump wants the Iran War to last FOREVER so he can cancel the 2028 election"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-WARTIME-ELECTION-REUTERS-20250818",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/europe/zelenskiy-says-hes-open-election-ukraine-if-safe-2025-08-18/",
+          "archive_url": null,
+          "published_at": "2025-08-18",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters preserved Trump's joking wartime-election remark during an exchange about Ukrainian elections; it did not document an intent to prolong or start a war to cancel a U.S. election."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-WARTIME-ELECTION-PRESIDENCY-PROJECT-20250818",
+          "surface": "WEBSITE",
+          "url": "https://www.presidency.ucsb.edu/documents/remarks-prior-meeting-with-president-volodymyr-zelenskyy-ukraine-and-exchange-with-3",
+          "archive_url": null,
+          "published_at": "2025-08-18",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Transcript records Trump asking whether being at war would mean 'no more elections,' followed by laughter; no statement in the preserved exchange says he wants war to last in order to cancel 2028."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher headline plus the preserved 2025 Oval Office exchange and contemporaneous reporting about Trump's wartime-election remark.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump did make a public wartime-election quip, which is genuine factual substrate. The reviewed record does not support the stronger motive proposition that he wanted the Iran war prolonged so he could cancel the 2028 election.",
+        "search_notes": "The finding is not that Trump never discussed elections in wartime. The unsupported bridge is Valenti's asserted purpose and causal motive tying prolonged Iran war to cancellation of the 2028 election.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Keep the genuine wartime-election remark as substrate. Score only the unsubstantiated motive/causal bridge.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Motive attribution requires evidence beyond the fact that the underlying wartime-election remark exists.",
+      "public_bullshit_summary": "Trump really did joke about wartime and elections. The evidence reviewed does not show that he wanted the Iran war prolonged in order to cancel the 2028 election."
     },
     {
       "incident_id": "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
