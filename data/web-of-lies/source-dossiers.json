@@ -1834,8 +1834,22 @@
             "research_item_id": "VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721",
             "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
             "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
-            "status": "RESOLVED_NOT_PROMOTED_REAL_DISCLOSURE_OPACITY_SUBSTRATE",
-            "disposition_note": "Reuters/AP and other contemporaneous reporting documented casualty undercounts, later wounded-count increases, and reclassification/removal of deaths. 'Massive' remains vague/sensational, but the title-level cover-up/transparency allegation has substantial factual substrate. Only a narrower body claim with a specific hidden toll would be separately adjudicable."
+            "status": "RESOLVED_NOT_PROMOTED_CONTEMPORANEOUS_WITHHOLDING_SUBSTRATE",
+            "disposition_note": "Do not promote from the title. On July 21, NPR reported that a U.S. military official confirmed the Defense Department had been slow-walking casualty information; contemporaneous reporting also documented dozens of injuries not initially disclosed, and later Pentagon category changes/reclassifications further complicated the public tally. 'Massive' is vague/sensational, but a concealment/transparency allegation had substantial contemporaneous factual substrate. Reopen only for a narrower, source-recovered body proposition asserting a specific secretly hidden casualty total or a specific knowingly false official count.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T01:56:00-04:00",
+              "supporting_public_sources": [
+                {
+                  "url": "https://www.delawarepublic.org/npr-headlines/2026-07-21/defense-secretary-pete-hegseth-goes-to-the-hill-with-350b-funding-request",
+                  "finding": "NPR reported a U.S. military official confirmed the Defense Department had been slow-walking casualty information and noted almost 100 recent injuries."
+                },
+                {
+                  "url": "https://apnews.com/article/612099f7e3eda9c28625e8bfe7c5c6dd",
+                  "finding": "Later AP reporting documented Pentagon casualty-category reclassification and public-accounting disputes."
+                }
+              ],
+              "inference_limit": "Evidence of withholding/delay does not prove every stronger Valenti body claim. Only the title-level cover-up/transparency allegation is resolved here."
+            }
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727",
