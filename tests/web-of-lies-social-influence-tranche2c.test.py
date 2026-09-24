@@ -350,10 +350,21 @@ assert ethan_award["documented_incident_count"] == 34
 assert set(ethan_award["documented_incident_ids"]) == ethan_all_incident_ids
 assert ethan_award["current_window_status"] == "EARNED_HISTORICAL"
 assert ethan_award["currently_active"] is False
-assert ethan_award["current_window_incident_count"] == 1
-assert ethan_award["current_window_incident_ids"] == [
-    "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831"
-]
+# The award's current-window tail is intentionally derived from the canonical
+# current horizon. Ordinary Evidence Integration can advance that horizon
+# without changing any Web-of-Lies finding, so do not freeze a transient count.
+ethan_cutoff = wol.parse_time(ethan_award["as_of"])
+assert ethan_cutoff is not None
+ethan_current_start = ethan_cutoff - wol.timedelta(days=ethan_award["window_days"])
+ethan_expected_current_ids = sorted(
+    incident_id
+    for incident_id in ethan_all_incident_ids
+    if wol.bullshit_qualifying_event(behavior_incidents[incident_id], governance)
+    and (moment := wol.bullshit_incident_moment(behavior_incidents[incident_id])) is not None
+    and ethan_current_start <= moment <= ethan_cutoff
+)
+assert ethan_award["current_window_incident_count"] == len(ethan_expected_current_ids)
+assert ethan_award["current_window_incident_ids"] == ethan_expected_current_ids
 
 # One publication event is one award incident even when it contains multiple
 # atomic propositions (e.g. March 22 causation + stockpile extrapolation).
