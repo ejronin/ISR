@@ -316,6 +316,7 @@ def validate_forensic_input(
         events_by_source[source_id].add(event_id)
 
     incident_ids: set[str] = set()
+    incidents_by_id: dict[str, dict[str, Any]] = {}
     for incident in source_behavior_incidents:
         incident_id = str(incident.get("incident_id") or "").strip()
         if not incident_id or incident_id in incident_ids:
@@ -323,6 +324,7 @@ def validate_forensic_input(
                 f"duplicate or missing source behavior incident id: {incident_id!r}"
             )
         incident_ids.add(incident_id)
+        incidents_by_id[incident_id] = incident
         source_id = str(incident.get("source_id") or "").strip()
         if source_id not in source_ids:
             raise ValueError(
@@ -333,6 +335,13 @@ def validate_forensic_input(
             raise ValueError(
                 f"source behavior incident {incident_id} has unsupported event type {event_type}"
             )
+        behavior_findings = set(incident.get("behavior_findings") or [])
+        unsupported_behavior = behavior_findings - allowed_classes - allowed_moral_findings
+        if unsupported_behavior:
+            raise ValueError(
+                f"source behavior incident {incident_id} has unsupported behavior findings: "
+                f"{sorted(unsupported_behavior)}"
+            )
         if not unsupported_evidence_gate_satisfied(incident, governance):
             raise ValueError(
                 f"source behavior incident {incident_id} lacks the documented "
@@ -342,6 +351,10 @@ def validate_forensic_input(
             raise ValueError(
                 f"source behavior incident {incident_id} has no public receipts"
             )
+        events_by_source[source_id].add(incident_id)
+
+    classification_records_by_id = {**events_by_id, **incidents_by_id}
+    classification_record_ids = set(classification_records_by_id)
 
     amplification_observations = forensic.get("amplification_observations") or []
     amplification_ids: set[str] = set()
@@ -446,12 +459,18 @@ def validate_forensic_input(
     for profile in profiles:
         source_id = profile["source_id"]
         basis = set(profile.get("classification_basis_event_ids") or [])
-        missing = basis - event_ids
+        missing = basis - classification_record_ids
         if missing:
-            raise ValueError(f"source profile {source_id} classification basis references unknown events: {sorted(missing)}")
+            raise ValueError(
+                f"source profile {source_id} classification basis references unknown "
+                f"information events/source-behavior incidents: {sorted(missing)}"
+            )
         foreign = basis - events_by_source[source_id]
         if foreign:
-            raise ValueError(f"source profile {source_id} classification basis uses another source's events: {sorted(foreign)}")
+            raise ValueError(
+                f"source profile {source_id} classification basis uses another source's "
+                f"events/records: {sorted(foreign)}"
+            )
         substantive_classes = [
             value
             for value in profile.get("behavior_classes") or []
@@ -487,7 +506,7 @@ def validate_forensic_input(
         for source_class in substantive_classes:
             event_supported = any(
                 source_class
-                in (events_by_id[event_id].get("behavior_findings") or [])
+                in (classification_records_by_id[event_id].get("behavior_findings") or [])
                 for event_id in basis
             )
             receipt_supported = (

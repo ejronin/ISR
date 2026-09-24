@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-23T18:43:00-04:00",
+  "as_of": "2026-09-24T19:22:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -850,13 +850,33 @@
       "country_region": null,
       "primary_platform": "YouTube",
       "behavior_classes": [
-        "MONETIZED_INFLUENCER"
+        "MONETIZED_INFLUENCER",
+        "NEWS_GRIFT"
       ],
       "authenticity_class": "HUMAN_ACCOUNT",
       "revenue_model": [
         "PATREON"
       ],
-      "classification_basis_event_ids": [],
+      "classification_basis_event_ids": [
+        "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+        "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+        "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
+        "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+        "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
+        "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+        "WOL-BS-VALENTI-MAR3-NUCLEAR-WAR-20260303",
+        "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+        "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
+        "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
+        "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+        "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+        "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+        "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+        "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
+        "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
+        "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
+        "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720"
+      ],
       "revenue_basis_event_ids": [],
       "stable_identity_id": "WOL-ID-CHRIS-VALENTI",
       "identity_confidence": "HIGH",
@@ -915,7 +935,81 @@
           ],
           "text_excerpt": "Public ValentiVideos Patreon membership page."
         }
-      ]
+      ],
+      "claimed_roles": [
+        {
+          "role_code": "HISTORIAN",
+          "public_label": "Historian",
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-RCPT-VALENTI-HISTORIAN-SITE-20260923",
+              "surface": "WEBSITE",
+              "url": "https://www.valentivideos.com/",
+              "archive_url": null,
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "ORIGINAL_URL",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Chris Valenti is a Political Commentator. Historian. Content Creator. Modern Muckraker. Actor. Gamer. Comedian."
+            },
+            {
+              "receipt_id": "WOL-RCPT-VALENTI-HISTORIAN-YOUTUBE-20260923",
+              "surface": "YOUTUBE",
+              "url": "https://www.youtube.com/@valentivideos",
+              "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+              "published_at": null,
+              "captured_at": "2026-09-23",
+              "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Channel description identifies Chris Valenti as a Political Commentator and Historian."
+            }
+          ]
+        }
+      ],
+      "grift_pattern_review": {
+        "class_code": "NEWS_GRIFT",
+        "status": "INCIDENT_GATED_PATTERN_ESTABLISHED",
+        "basis_incident_ids": [
+          "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+          "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+          "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
+          "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+          "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
+          "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+          "WOL-BS-VALENTI-MAR3-NUCLEAR-WAR-20260303",
+          "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+          "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
+          "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
+          "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+          "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+          "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+          "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+          "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
+          "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
+          "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
+          "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720"
+        ],
+        "promoted_valenti_incident_count": 24,
+        "monetization_receipts": [
+          "https://www.patreon.com/cw/ValentiVideos",
+          "https://www.youtube.com/watch?v=0ZArFpj6zyA",
+          "https://beacons.ai/valentivideos",
+          "https://shop.valentivideos.com/"
+        ],
+        "same_publication_linkage": {
+          "incident_id": "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+          "url": "https://www.youtube.com/watch?v=0ZArFpj6zyA",
+          "observed_description": "The scored nuclear-strike publication directly asks viewers to support Valenti Videos through Patreon and separately promotes merchandise.",
+          "significance": "This directly links at least one qualifying unsupported/sensational publication to the creator's recurring support solicitation on the same publication surface."
+        },
+        "pattern_summary": "Repeated unsupported or materially distorted current-events claims are packaged in sensational headline form by a monetized publisher that directly asks viewers to fund continued Valenti Videos output. The pattern now includes explicit posture inflation of an unverified nuclear-use rumor and repeated categorical claims that Israel had terminated an operative U.S.-Iran MOU. The adverse class is incident-gated; Patreon, audience size and ideology are not themselves the basis.",
+        "excluded_inputs": [
+          "political ideology",
+          "subscriber/follower count",
+          "estimated Patreon income",
+          "mere existence of monetization"
+        ]
+      }
     },
     {
       "source_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
@@ -1627,7 +1721,7 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Receipt-backed WOL review now records nine qualifying Valenti publication incidents through 2026-09-23. The lifetime register includes two additional conservative presentation findings: converting the June U.S.-Iran interim MOU into an 'official surrender,' and converting warnings about possible limited Russian provocations against Poland into an imminent Russian invasion. Existing body-gated items remain unscored where exact spoken propositions are not independently preserved. Sensational titles with a supported factual substrate are not counted merely for tone.",
+      "notes": "Valenti review is closed for the currently recoverable 2026 Iran-war corpus at 24 promoted/scored WOL incidents. Twenty-two additional reviewed publications were resolved as non-incidents/rejects. Four current-events candidates and three project-owner-recalled historian statements remain explicitly excluded from the final count because the necessary body/source attribution was not recovered. Reopen only for genuinely new source evidence or a newly recovered exact body/clip; do not restart routine channel searching.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1636,7 +1730,8 @@
           "publication_date": "2026-04-21",
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Determine what request/proposal is actually described in-body, who allegedly asked whom, and whether the title overstates discussion, contingency planning, advocacy, or an actual request."
+          "research_reason": "Determine what request/proposal is actually described in-body, who allegedly asked whom, and whether the title overstates discussion, contingency planning, advocacy, or an actual request.",
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-NUKE-CANCEL-20260803",
@@ -1650,7 +1745,8 @@
             "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
             "observation": "Project owner reports Valenti used 'nuclear strike' literally as nuclear-warhead use against Iran, consistent with his repeated nuclear-armed-aircraft framing, not as shorthand for a conventional strike on nuclear facilities.",
             "evidentiary_limit": "Automated/web retrieval has not recovered captions or timestamps. The already-recorded presentation incident remains independently supportable from the public title plus contemporaneous reporting; this note resolves the intended meaning only at project-review level."
-          }
+          },
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-GROUND-INVASION-2026",
@@ -1659,7 +1755,8 @@
           "publication_date": null,
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Determine what Trump actually announced versus what the creator inferred from force posture, rhetoric, planning, or third-party commentary."
+          "research_reason": "Determine what Trump actually announced versus what the creator inferred from force posture, rhetoric, planning, or third-party commentary.",
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026",
@@ -1673,7 +1770,8 @@
             "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
             "observation": "Project owner reports Valenti explicitly described aircraft carrying nuclear warheads and framed the deployment as preparation to nuke Iran.",
             "evidentiary_limit": "Automated/web retrieval has not recovered the captions or timestamped spoken text. Do not label this as a machine-captured transcript until exact body wording/timestamps are preserved."
-          }
+          },
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-SAUDI-NUCLEAR-WEAPONS-2026",
@@ -1682,7 +1780,8 @@
           "publication_date": "2026-07-22",
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Determine whether the body alleges literal transfer of nuclear weapons, nuclear-capable systems, extended deterrence, basing, planning, or some other proposition."
+          "research_reason": "Determine whether the body alleges literal transfer of nuclear weapons, nuclear-capable systems, extended deterrence, basing, planning, or some other proposition.",
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-ALLOWS-MISSILES-20260727",
@@ -1696,11 +1795,36 @@
             "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
             "observation": "Project owner reports Valenti argued the United States essentially did not care, permitted the strikes to occur, and did so to make other actors angry; this is materially stronger than interceptor rationing or threat-based non-interception.",
             "evidentiary_limit": "The public title alone does not prove this motive proposition. Exact transcript wording/timestamps remain required before this body-level motive claim is promoted into a scored WOL-native incident."
-          }
+          },
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
+        },
+        {
+          "research_item_id": "VALENTI-BODY-GROUND-INVASION-20260401",
+          "title": "Ground Invasion...",
+          "url": "https://www.youtube.com/watch?v=zL3SFEAwn9U",
+          "publication_date": "2026-04-01",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Video description says this is Valenti's watch-along to Trump's April 1 Iran address. The primary address and contemporaneous AP/Reuters coverage did not announce ground troops. Recover the spoken body before deciding whether Valenti asserted an imminent/announced ground invasion or merely discussed the possibility.",
+          "comparison_sources": [
+            "https://www.presidency.ucsb.edu/documents/address-the-nation-united-states-military-operations-iran",
+            "https://www.reuters.com/world/us/trump-tell-wary-public-that-iran-war-goals-have-been-accomplished-prime-time-2026-04-01/"
+          ],
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
+        },
+        {
+          "research_item_id": "VALENTI-BODY-AMERICA-UNDER-ATTACK-202606",
+          "title": "AMERICA IS UNDER ATTACK!!!",
+          "url": "https://www.youtube.com/watch?v=CdwEBSZBtP4",
+          "publication_date": null,
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Direct watch ID recovered from the Valenti channel continuation page. The title is too vague to identify the alleged attacker, attack type, target or factual proposition. Do not score until the body/description fixes the underlying event and claim.",
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         }
       ],
       "solicitation_review": {
-        "checked_at": "2026-09-23T18:43:00-04:00",
+        "checked_at": "2026-09-23T20:13:00-04:00",
         "provenance": "PROJECT_OWNER_DIRECT_REVIEW_PLUS_PUBLIC_LINK_REVIEW",
         "publisher_claim": "Valenti stated that 'the fundraiser is in the links.'",
         "fundraiser_destination_status": "NOT_INDEPENDENTLY_LOCATED_IN_REVIEWED_PUBLIC_LINKS",
@@ -1709,18 +1833,491 @@
           "MERCHANDISE"
         ],
         "verified_public_support_language": "Video descriptions explicitly direct viewers to Patreon as the best way to support Valenti Videos and separately promote merchandise.",
-        "inference_limit": "Failure to locate a distinct fundraiser does not establish that the fundraiser is fake or nonexistent. Keep this as a solicitation/publication lead unless a destination is recovered or repeated absence from specifically advertised links is directly documented."
+        "inference_limit": "The current non-location result is evidence about discoverability/published links, not proof that a fundraiser is fake or never existed. Promote a solicitation incident only if a specific advertised-link mismatch can be directly preserved or a destination is identified and materially misrepresented.",
+        "current_public_surface_findings": [
+          "Official Patreon page is live and solicits support for ValentiVideos.",
+          "Official merchandise store is live.",
+          "Recent mirrored Valenti video descriptions direct viewers to Patreon as the best way to support Valenti Videos and separately promote merchandise.",
+          "No distinct ValentiVideos GoFundMe or other fundraiser destination was located in current targeted public searches."
+        ],
+        "patreon_scale_observation": {
+          "observed_by": "PROJECT_OWNER",
+          "observed_at": "2026-09-23",
+          "displayed_member_count_approx": 2200,
+          "paid_tier_price_usd_per_month": 5,
+          "gross_ceiling_if_all_displayed_members_paid_usd_per_month": 11000,
+          "evidentiary_limit": "Patreon exposes free-follow membership as well as a $5 paid subscription. The displayed member count has not been independently established here as paid-member count, so $11,000/month is a mathematical ceiling under the all-paid assumption, not verified revenue."
+        }
       },
+      "review_progress": {
+        "status": "CURRENT_REVIEWED_CORPUS_COMPLETE_2026-09-24",
+        "promoted_incident_count": 24,
+        "corpus_completion_claim": "CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS_REVIEWED",
+        "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
+        "currently_preserved_unscored_candidates": [
+          {
+            "research_item_id": "VALENTI-CANDIDATE-US-BASES-COMPLETELY-DESTROYED-20260917",
+            "title": "U.S Soldiers LEAK PHOTOS of our bases in the Middle East; THEY'RE COMPLETELY DESTROYED!",
+            "url": "https://www.youtube.com/watch?v=nqd977hHQfM",
+            "status": "EXCLUDED_PENDING_NEW_EVIDENCE",
+            "disposition_note": "Independent reporting establishes extensive destruction across multiple U.S. positions. Do not score the word 'completely' without mapping the referenced leaked photos to specific facilities and distinguishing destroyed subfacilities from whole-base operational destruction.",
+            "final_count_effect": "NOT_COUNTED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721",
+            "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
+            "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
+            "status": "RESOLVED_NOT_PROMOTED_CONTEMPORANEOUS_WITHHOLDING_SUBSTRATE",
+            "disposition_note": "Do not promote from the title. On July 21, NPR reported that a U.S. military official confirmed the Defense Department had been slow-walking casualty information; contemporaneous reporting also documented dozens of injuries not initially disclosed, and later Pentagon category changes/reclassifications further complicated the public tally. 'Massive' is vague/sensational, but a concealment/transparency allegation had substantial contemporaneous factual substrate. Reopen only for a narrower, source-recovered body proposition asserting a specific secretly hidden casualty total or a specific knowingly false official count.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T01:56:00-04:00",
+              "supporting_public_sources": [
+                {
+                  "url": "https://www.delawarepublic.org/npr-headlines/2026-07-21/defense-secretary-pete-hegseth-goes-to-the-hill-with-350b-funding-request",
+                  "finding": "NPR reported a U.S. military official confirmed the Defense Department had been slow-walking casualty information and noted almost 100 recent injuries."
+                },
+                {
+                  "url": "https://apnews.com/article/612099f7e3eda9c28625e8bfe7c5c6dd",
+                  "finding": "Later AP reporting documented Pentagon casualty-category reclassification and public-accounting disputes."
+                }
+              ],
+              "inference_limit": "Evidence of withholding/delay does not prove every stronger Valenti body claim. Only the title-level cover-up/transparency allegation is resolved here."
+            }
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727",
+            "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases. Ukraine joins the Iran War.",
+            "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+            "status": "EXCLUDED_PENDING_NEW_EVIDENCE",
+            "disposition_note": "Reporting independently supports deliberate non-interception of some Iranian projectiles, including allowing some to hit empty U.S. bases to conserve interceptors. Only the stronger project-owner-reported motive claim ('did not care' / permitted strikes to provoke anger) remains body-gated.",
+            "final_count_effect": "NOT_COUNTED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-NUKE-ASK-20260421",
+            "title": "Trump asked to nuke Iran...",
+            "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
+            "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-GROUND-INVASION-2026",
+            "title": "Trump announces FULL SCALE GROUND INVASION of Iran",
+            "url": "https://www.youtube.com/watch?v=OzH543I4fZQ",
+            "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-NEGOTIATING-TEAM-ASSASSINATION-2026",
+            "title": "Trump threatens to ASSASSINATE the ENTIRE Iranian Negotiating Team because ISRAEL demands NO PEACE",
+            "url": "https://www.youtube.com/watch?v=q-HSkbifk8I",
+            "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-KEY-WEST-FALSE-FLAG-2026",
+            "title": "Trump is planning a FALSE FLAG ATTACK ON KEY WEST!",
+            "url": "https://www.youtube.com/watch?v=_jjBTsHcWhA",
+            "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-CUBA-IRAN-SIMULTANEOUS-2026",
+            "title": "We are ABOUT to Invade Cuba, and bomb Iran AT THE SAME TIME",
+            "url": "https://www.youtube.com/watch?v=DNooOvyU6-g",
+            "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ONE-TRILLION-SURRENDER-2026",
+            "title": "Trump considers giving Iran ONE TRILLION DOLLARS as part of the American Surrender!",
+            "url": "https://www.youtube.com/watch?v=2uC0ZbTXyfc",
+            "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-IRAN-WAR-CANCEL-2028",
+            "title": "Trump wants the Iran War to last FOREVER so he can cancel the 2028 election",
+            "url": "https://www.youtube.com/watch?v=2fpN42hV5As",
+            "status": "PROMOTED_WOL_INCIDENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ISRAEL-TERMINATES-MOU-202606",
+            "title": "Israel terminated the Iran Peace Deal / Israel INSTANTLY terminated the MOU",
+            "url": "https://www.youtube.com/watch?v=l7iPKW1qpYE",
+            "secondary_url": "https://www.youtube.com/watch?v=Wac6iXa2Oms",
+            "status": "PROMOTED_WOL_INCIDENT_DEDUPLICATED_INFORMATION_EVENT"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-DUDE44-PILOT-SKEPTICISM-20260920",
+            "title": "The “pilot” that was “shot down” over Iran claims he climbed a 7000 foot mountain with a broken back",
+            "url": "https://www.youtube.com/@valentivideos",
+            "status": "EXCLUDED_PENDING_NEW_EVIDENCE",
+            "disposition_note": "Independent reporting strongly corroborates the F-15E shootdown, Bravo's broken back/arm/shoulder, roughly 50 hours of evasion, and movement up/toward a roughly 7,000-foot ridgeline. The publisher's scare quotes signal skepticism but the title itself does not cleanly assert that the shootdown or injuries were fabricated. Preserve for body review; do not score insinuation alone.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T01:56:00-04:00",
+              "supporting_public_sources": [
+                "https://www.stripes.com/branches/air_force/2026-09-14/iran-rescue-operation-22848006.html",
+                "https://taskandpurpose.com/news/f-15e-iran-rescue-interview/",
+                "https://transcripts.cnn.com/show/ctw/date/2026-09-14/segment/02"
+              ],
+              "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_BODY_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW"
+            },
+            "final_count_effect": "NOT_COUNTED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-LARGEST-ATTACK-WARSHIPS-202609",
+            "title": "Iran launches its LARGEST ATTACK YET on American WARSHIPS and bases in the Middle East",
+            "url": "https://www.youtube.com/@valentivideos",
+            "status": "RESOLVED_NOT_PROMOTED_SUBSTANTIAL_ATTACK_SCALE_SUBSTRATE",
+            "disposition_note": "Do not score from the title. CENTCOM and contemporaneous reporting document a concerted September series of ballistic-missile attacks on multiple U.S. Navy vessels plus attacks on regional U.S. positions, while Reuters described the shipping exchange as the biggest wave since the war began. Exact 'largest' metrics can vary by counting method, but the title has substantial contemporaneous scale substrate.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T01:56:00-04:00",
+              "supporting_public_sources": [
+                "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4591744/centcom-destroys-3-irgc-oil-tankers-after-iran-targets-2-us-navy-warships/",
+                "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4593050/us-destroys-5-irgc-tankers-after-iran-targets-another-american-warship/",
+                "https://www.reuters.com/world/middle-east/iran-attacks-us-base-jordan-ships-near-hormuz-after-tankers-sunk-2026-09-09/"
+              ],
+              "inference_limit": "This disposition does not validate every claimed target, hit, or Iranian BDA claim; it resolves only the broad title-level scale/attack proposition against the contemporaneous attack sequence."
+            }
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ANOTHER-FALSE-FLAG-202606",
+            "title": "ANOTHER FALSE FLAG ATTACK LMFAO",
+            "url": "https://www.youtube.com/watch?v=Zy6M8fxc970",
+            "status": "EXCLUDED_PENDING_NEW_EVIDENCE",
+            "disposition_note": "Direct Valenti watch ID recovered, but the public title does not identify which attack is alleged to be a false flag. Do not score until the body/description or a reliable mirror fixes the underlying event and factual proposition.",
+            "required_next_evidence": "TRANSCRIPT_DESCRIPTION_OR_TIMESTAMPED_DIRECT_REVIEW_IDENTIFYING_THE_ALLEGED_ATTACK",
+            "final_count_effect": "NOT_COUNTED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-KHAMENEI-ASSASSINATED-20260302",
+            "title": "ALL HELL BREAKS LOOSE after trump ASSASSINATED the Ayatollah of Iran",
+            "url": "https://www.youtube.com/watch?v=hsF8Hv8tKRQ",
+            "publication_date": "2026-03-02",
+            "status": "RESOLVED_NOT_PROMOTED_CORE_EVENT_SUPPORTED",
+            "disposition_note": "Do not score the title. Khamenei was killed in the opening U.S.-Israeli strikes and Trump publicly described close U.S.-Israeli coordination in targeting him. 'Assassinated' is rhetorically loaded but the title's core factual proposition—that Trump/U.S. action deliberately targeted and killed the Iranian supreme leader—has substantial contemporaneous support.",
+            "monetization_note": "The same direct video description solicits Patreon support as the best way to support Valenti Videos and separately promotes merchandise; retain as incentive-pattern context, not adverse-incident evidence by itself."
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-US-LOSE-IRAN-WAR-20260305",
+            "title": "The United States will LOSE the war against Iran",
+            "url": "https://www.youtube.com/watch?v=fjqCXOIhaNY",
+            "publication_date": "2026-03-05",
+            "status": "RESOLVED_NOT_PROMOTED_PREDICTION_OR_ANALYTICAL_JUDGMENT",
+            "disposition_note": "Do not score solely from later outcome. The title is a prospective analytical/political prediction about war outcome; WOL governance does not count prediction failure alone as a Bullshitter incident. A separately recoverable false factual premise or unsupported factual bridge inside the body could still be adjudicated on its own.",
+            "monetization_note": "The direct video description solicits Patreon support and merchandise purchases; retain as monetization-pattern context."
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-F15-PILOT-MISSING-20260403",
+            "title": "American Fighter Pilot MISSING after being SHOT DOWN IN IRAN",
+            "url": "https://www.youtube.com/watch?v=EK3vTZNfz3A",
+            "publication_date": "2026-04-03",
+            "status": "RESOLVED_NOT_PROMOTED_CORE_EVENT_SUPPORTED",
+            "disposition_note": "Do not score. The F-15E was genuinely shot down and one pilot remained in evasion/missing status at publication time. Preserve this publication because it establishes Valenti's April acceptance of the shootdown/pilot identity before his later September scare-quote skepticism about the same event.",
+            "monetization_note": "The direct video description says 'Okay below is where I gotta make money,' directs viewers to Patreon as the best way to support Valenti Videos, and promotes merchandise. This is incentive-pattern context, not adverse-incident evidence by itself.",
+            "chronology_note": "Source-behavior relevance: April 3 publication treats the F-15 shootdown and missing pilot as factual; September publication later places 'pilot' and 'shot down' in scare quotes. Do not treat the later posture shift as proof of deception without body evidence, but preserve the inconsistency."
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-RUSSIA-JOINS-IRANIANS-20260306",
+            "title": "Trump PANICS as U.S begins to LOSE THE WAR!",
+            "url": "https://www.youtube.com/watch?v=K8PzTdiPf6k",
+            "publication_date": "2026-03-06",
+            "status": "RESOLVED_NOT_PROMOTED_SUBSTANTIAL_RUSSIAN_INVOLVEMENT_SUBSTRATE",
+            "disposition_note": "Do not promote from the title/description. The evaluative 'PANICS', 'begins to lose' and 'world war' language is not a clean factual atom. The description's concrete 'Russia joins the Iranians' proposition had substantial contemporaneous substrate: U.S. intelligence reporting said Russia was providing Iran information useful for targeting U.S. military assets, described as Moscow's first known involvement in the conflict.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T16:46:00-04:00",
+              "supporting_public_sources": [
+                {
+                  "url": "https://apnews.com/article/35afae34198408d670941f971d383378",
+                  "finding": "AP reported, citing U.S. intelligence sources, that Russia supplied Iran information useful for targeting U.S. military assets and described it as Russia's first known involvement in the conflict."
+                }
+              ],
+              "inference_limit": "This does not establish a formal Russian entry into the war as a co-belligerent, but the wording is too grounded in actual Russian operational support to score the publication merely from 'joins the Iranians.'"
+            },
+            "monetization_note": "The same direct video description solicits Patreon support as the best way to support Valenti Videos and promotes merchandise. Preserve as NEWS_GRIFT incentive-pattern context, not as an adverse incident by itself."
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ULTIMATE-VICTORY-150-WOUNDED-20260311",
+            "title": "Trump declares ULTIMATE VICTORY in Iran: 150 U.S soldiers wounded",
+            "url": "https://www.youtube.com/watch?v=JvvxQvF6UKk",
+            "publication_date": "2026-03-11",
+            "status": "RESOLVED_NOT_PROMOTED_BOTH_TITLE_ATOMS_SUPPORTED",
+            "disposition_note": "Do not promote. The victory wording was grounded in Trump's own victory declarations, while contemporaneous Reuters reporting put total U.S. wounded at as many as 150 and the Pentagon later refined the figure to about 140. The title is sensational juxtaposition but its two factual atoms had contemporaneous support.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T16:46:00-04:00",
+              "supporting_public_sources": [
+                {
+                  "url": "https://www.reuters.com/world/middle-east/many-150-us-troops-wounded-so-far-iran-war-sources-say-2026-03-10/",
+                  "finding": "Reuters reported as many as 150 U.S. troops wounded and a Pentagon refinement to about 140."
+                }
+              ],
+              "inference_limit": "A separate false statement in the body could still qualify if recovered; title-level adjudication is resolved as non-incident."
+            }
+          }
+        ],
+        "held_or_rejected_examples": [
+          "17 U.S. service members killed: independently supported by AP; any WOL issue in that publication would have to arise from the separate 'runs out of ammo' proposition, not the casualty count.",
+          "Ro Khanna detained during West Bank visit: substantial factual substrate exists; do not score merely from compressed headline wording.",
+          "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
+          "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging.",
+          "June 17 G7 'whoever sells/gives Iran a nuclear weapon will get nuked themselves': rejected. The official Trump G7 transcript contains the underlying nuclear-retaliation threat essentially verbatim; sensational packaging does not create a WOL incident.",
+          "May 25 'Trump begs the Arab World to become allies with Israel': rejected. Reuters reported Trump asked Saudi Arabia, Qatar, Pakistan, Turkey, Egypt and Jordan to join the Abraham Accords and normalize relations with Israel as part of the Iran-deal push.",
+          "August catering-cart / Air Force One decoy: rejected. Major reporting substantiated the covert catering-truck movement and use of Air Force One as a decoy because of an Iran-related threat; bizarre-sounding facts are not scored merely for sounding bizarre.",
+          "September downed F-15E pilot / 7,000-foot mountain / broken back: rejected. Multiple military/news reports substantiate the shootdown, serious injuries and movement toward a roughly 7,000-foot ridgeline.",
+          "September 'largest attack yet' on U.S. warships/bases: rejected. Contemporaneous reporting supports a major new Iranian attack phase against multiple U.S. naval and land targets; 'largest yet' is sufficiently grounded not to score.",
+          "August/September 'top admirals and generals turn against' extension of Iran war: rejected as supported compression. Senior service chiefs/combatant commanders issued warnings and formal non-concurs over extending deployments.",
+          "August 'Iran war will last until 2029 according to the Iranians': rejected. Iranian advisers publicly discussed prolonging the conflict and waiting out Trump's term; the 2029 proposition has real Iranian-source substrate.",
+          "August 'U.S. sailors are jumping ship from USS Lincoln': rejected. Multiple overboard incidents and an actual recovered sailor give the headline substantial factual substrate.",
+          "May 5 'Trump tells children Iran wants to nuke them': rejected. Trump told children that an Iranian nuclear weapon could mean they would not be here and described catastrophic risks; the title imputes motive crudely but preserves substantial nuclear-threat substrate.",
+          "April/June 'Ground Invasion...' items are not interchangeable. The April 1 watch-along title is too elliptical to score from title alone; contemporaneous coverage of Trump's address said he did not announce ground troops. It remains body-gated separately from the later scored full-scale-invasion announcement claim."
+        ],
+        "resolved_nonincident_count": 22,
+        "last_review_checkpoint": {
+          "checked_at": "2026-09-24T16:46:00-04:00",
+          "promoted_incident_count": 24,
+          "newly_resolved_rejects": [
+            "G7 nuclear-retaliation quote",
+            "Arab states / Abraham Accords ask",
+            "catering-cart / Air Force One decoy",
+            "downed F-15E pilot recovery account",
+            "largest attack yet on U.S. warships/bases",
+            "senior-military opposition to extension",
+            "Iran-war-through-2029 Iranian-source framing",
+            "USS Lincoln overboard/jumping-ship framing",
+            "children/Iran nuclear-threat presentation",
+            "March 6 Russia-joins-Iranians / U.S. losing-war presentation — Russian targeting-intelligence support supplied substantial substrate; evaluative remainder not scored",
+            "March 11 ultimate-victory / 150-wounded presentation — both title atoms supported at publication time",
+            "April 3 F-15E shootdown / missing pilot — core event supported, preserved for later posture-reversal comparison"
+          ],
+          "newly_body_gated": [
+            "April 1 Ground Invasion watch-along",
+            "June ANOTHER FALSE FLAG ATTACK — direct ID Zy6M8fxc970, underlying attack not recovered",
+            "AMERICA IS UNDER ATTACK!!! — direct ID CdwEBSZBtP4, underlying attacker/event not recovered"
+          ],
+          "search_exhaustion_note": "Generic March-April indexed searches repeatedly collapse back to the same channel pages and already-reviewed direct videos. Continue through exact-title/direct-ID recovery and alternate public mirrors rather than claiming corpus completion.",
+          "continuation_rule": "Continue claim-family recovery across March-May major Iran-war events; deduplicate existing nuclear/ground-invasion/ammo/peace-deal chains and score only distinct unsupported factual/inferential propositions.",
+          "latest_reviewed_reject": "2026-04-03 F-15E pilot missing after shootdown — supported at publication time; preserved for later posture-reversal comparison"
+        },
+        "routine_search_status": "CLOSED",
+        "reopen_rule": "Reopen only when a genuinely new publication, exact transcript/timestamp, direct clip, or other source evidence is recovered. Do not repeat routine searches of already-reviewed channel surfaces.",
+        "excluded_pending_new_evidence_count": 4,
+        "historian_source_not_recovered_count": 3,
+        "final_accounting": {
+          "promoted_scored_incidents": 24,
+          "resolved_nonincidents": 22,
+          "excluded_current_events_pending_new_evidence": 4,
+          "excluded_historian_recollections_without_source_recovery": 3
+        }
+      },
+      "historian_role_review": {
+        "status": "CLOSED_PENDING_NEW_SOURCE_EVIDENCE",
+        "self_claim_status": "PUBLICLY_VERIFIED",
+        "claimed_role": "HISTORIAN",
+        "self_claim_receipts": [
+          "https://www.valentivideos.com/",
+          "https://www.youtube.com/@valentivideos"
+        ],
+        "project_owner_reported_body_claims": [
+          {
+            "reported_claim": "Persia was never defeated.",
+            "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
+            "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "adjudication_note": "If exact wording is recovered as an unqualified factual claim, compare against well-established defeats/conquests of Persian states rather than arguing over modern-national continuity.",
+            "final_pass_status": "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
+          },
+          {
+            "reported_claim": "Iranians have been peaceful for 3000 years.",
+            "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
+            "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "adjudication_note": "If recovered as an unqualified factual claim, decompose peaceful-culture rhetoric from the testable historical proposition about Iranian/Persian states engaging in offensive war, conquest and interstate conflict.",
+            "final_pass_status": "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
+          },
+          {
+            "reported_claim": "Saudis are terrorists and always have been.",
+            "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
+            "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "adjudication_note": "If recovered, preserve the exact referent: Saudi state, Saudi rulers, Saudi nationals, Wahhabi movements or some other actor. Do not score an ambiguous collective label until the body fixes the referent.",
+            "final_pass_status": "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
+          }
+        ],
+        "role_failure_rule": "Do not infer historian-role failure from the self-claim alone. Require exact source recovery plus falsifiable historical propositions and documented contrary historical evidence. Repeated source-recovered historical verification failures may support a historian-specific role-failure finding."
+      },
+      "direct_receipt_upgrade_queue": [
+        {
+          "research_item_id": "VALENTI-DIRECT-ID-UN-NUKING-20260923",
+          "title": "Trump's UN speech about NUKING IRAN, renaming AI to \"SUPER INTELLIGENCE\" and conquering Greenland",
+          "channel_index_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "status": "DIRECT_WATCH_ID_NOT_YET_RECOVERED"
+        },
+        {
+          "research_item_id": "VALENTI-DIRECT-ID-CHINA-NUCLEAR-WAR-20260922",
+          "title": "The Iran War escalates while Trump almost starts a NUCLEAR WAR with CHINA",
+          "channel_index_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "status": "DIRECT_WATCH_ID_NOT_YET_RECOVERED"
+        },
+        {
+          "research_item_id": "VALENTI-DIRECT-BODY-E6B-NUCLEAR-202609",
+          "title": "Original Chris Valenti E-6B / nuclear-war video identified by Ryan McBeth",
+          "url": "https://www.youtube.com/watch?v=dctkpvgsyw8",
+          "status": "ORIGINAL_ID_RECOVERED_PAGE_BODY_NOT_MACHINE_RECOVERED",
+          "required_next_evidence": "DIRECT_PAGE_OR_MIRROR_PLUS_CAPTION_OR_TIMESTAMPED_BODY"
+        }
+      ],
+      "resolved_nonincident_reviews": [
+        {
+          "review_id": "VALENTI-NONINCIDENT-ABRAHAM-ACCORDS-ARAB-WORLD-20260525",
+          "title": "MEMORIAL DAY MADNESS: Trump begs the Arab World to become ALLIES WITH ISRAEL",
+          "url": "https://www.youtube.com/watch?v=mM7MwCFrg5k",
+          "publication_date": "2026-05-25",
+          "disposition": "NOT_PROMOTED_CORE_NORMALIZATION_REQUEST_SUPPORTED",
+          "basis": "Contemporaneous Reuters/Axios/AP reporting confirms Trump pressed Saudi Arabia, Qatar, Pakistan, Turkey, Egypt and Jordan to join the Abraham Accords / normalize relations with Israel as part of the emerging Iran settlement. 'Begs' is loaded rhetoric, but the underlying request/pressure to become formal partners with Israel is real.",
+          "evidence_review": {
+            "checked_at": "2026-09-24T01:56:00-04:00",
+            "supporting_public_sources": [
+              "https://www.reuters.com/world/middle-east/trump-links-abraham-accords-iran-deal-2026-05-25/",
+              "https://www.axios.com/2026/05/24/trump-iran-war-israel-muslim-countries-abraham-accords",
+              "https://www.pbs.org/newshour/world/trump-says-iran-deal-should-include-additional-countries-joining-abraham-accords"
+            ],
+            "inference_limit": "This disposition resolves the title-level normalization request only; it does not validate Valenti's emotional characterization of Trump's posture."
+          }
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-CATERING-DECOY-SAM-GOLF-202608",
+          "title": "BREAKING: Trump hid in a CATERING CART and used Air Force 1 as a DECOY! Brought a SAM turret to golf",
+          "url": "https://www.youtube.com/watch?v=3H2Sv9Uz5Kc",
+          "disposition": "NOT_PROMOTED_COMPOSITE_FACTS_SUPPORTED",
+          "basis": "The Washington Post/CBS documented Trump's secret catering-truck transfer and Air Force One decoy operation after an Iranian threat. Separate contemporaneous imagery/reporting documented an Army Avenger surface-to-air missile system protecting Trump at Bedminster. The headline is sensational but its unusual factual components are supported."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-EUROPE-BASE-THREAT-202608",
+          "title": "Iran warns it will begin targeting U.S. bases in EUROPE as the war RAPIDLY ESCALATES!",
+          "url": "https://www.youtube.com/watch?v=MYg1edXHpCM",
+          "disposition": "NOT_PROMOTED_CORE_THREAT_SUPPORTED",
+          "basis": "Iranian officials warned countries aiding U.S. operations that their territory could become legitimate retaliatory targets, and Iranian-source reporting specifically discussed possible strikes on U.S. assets in southeastern Europe, including Bulgaria. The headline's core threat proposition is supported."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-G7-NUKED-SELLERS-202606",
+          "title": "If anyone gives them a nuclear weapon, they'll be NUKED THEMSELVES!: Trump PANICS at the G7 summit",
+          "url": "https://www.youtube.com/watch?v=9LiqV2UbnCY",
+          "disposition": "NOT_PROMOTED_CORE_QUOTE_SUPPORTED",
+          "basis": "Preserved G7 transcript records Trump saying a country that sells Iran a nuclear weapon would 'get nuked themselves.' Sensational framing does not make the quoted factual proposition false."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-GENERALS-TURN-AGAINST-EXTENSION-202608",
+          "title": "TRUMP REIGNITES THE IRAN WAR WHILE OUR TOP ADMIRALS AND GENERALS TURN AGAINST HIM!",
+          "url": "https://www.youtube.com/watch?v=ZVS9A-kXxHU",
+          "disposition": "NOT_PROMOTED_CORE_EVENTS_SUPPORTED",
+          "basis": "Direct U.S.-Iran military exchanges resumed, and leaders of U.S. European, Pacific and Southern Commands plus the Navy's top admiral formally non-concurred with extending forces supporting the Iran campaign. 'Turn against him' is rhetorical packaging over a real documented professional disagreement."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-HOUTHI-MECCA-DRONE-CLAIM-202609",
+          "title": "Saudi Arabia claims the Houthis launched a drone AT MECCA! $2.8B worth of U.S BOMBS headed to Israel",
+          "disposition": "NOT_PROMOTED_ATTRIBUTED_MECCA_CLAIM_SUPPORTED",
+          "basis": "Saudi authorities publicly said they intercepted a Houthi drone headed toward Mecca. The Houthis denied targeting the holy city. Valenti's title correctly attributes the Mecca proposition as a Saudi claim; the attribution is factual even though the underlying allegation remains contested."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-IRAN-WAR-2029",
+          "title": "The Iran War will last until 2029 according to the Iranians",
+          "disposition": "NOT_PROMOTED_IRANIAN_STRATEGIC_SUBSTRATE_SUPPORTED",
+          "basis": "Iranian advisory commentary contemplated prolonging the conflict into the next U.S. presidential term / waiting out Trump. The compressed headline has a real source substrate."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-JUL27-ALLOWS-MISSILES",
+          "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases",
+          "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+          "disposition": "NOT_PROMOTED_AT_TITLE_LEVEL_BODY_MOTIVE_REMAINS_OPEN",
+          "basis": "Independent reporting supports deliberate threat-based non-interception of some Iranian projectiles to conserve interceptors, including permitting strikes on empty U.S. bases. The stronger motive claim reported by the project owner remains transcript/timestamp gated."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-KHAMENEI-ASSASSINATION-20260302",
+          "title": "ALL HELL BREAKS LOOSE after trump ASSASSINATED the Ayatollah of Iran",
+          "url": "https://www.youtube.com/watch?v=hsF8Hv8tKRQ",
+          "disposition": "NOT_PROMOTED_CORE_EVENT_SUPPORTED",
+          "basis": "Contemporaneous reporting attributed Khamenei's death to the joint U.S.-Israeli strike campaign. Personalizing the operation as 'Trump assassinated' is rhetorically compressed but not clean enough for an unsupported-publication finding."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-LARGEST-ATTACK-WARSHIPS-BASES-202609",
+          "title": "Iran launches its LARGEST ATTACK YET on American WARSHIPS and bases in the Middle East",
+          "disposition": "NOT_PROMOTED_MAJOR_ESCALATION_SUBSTRATE_SUPPORTED",
+          "basis": "Contemporaneous Reuters/AP reporting documented ballistic-missile attacks on U.S. warships and a U.S. base within a major September escalation, with Reuters describing the wider shipping attack wave as the biggest since the war began. The comparative superlative is not clean enough to score as unsupported on the reviewed record."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-LINCOLN-JUMPING-SHIP",
+          "title": "U.S. sailors jumping ship / Lincoln sailors",
+          "disposition": "NOT_PROMOTED_UNDERLYING_EVENTS_SUPPORTED",
+          "basis": "Military reporting documented multiple overboard/jump incidents or attempts associated with Lincoln sailors, including a sailor recovered after going overboard. Do not score the idiomatic framing alone."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-MAY5-CHILDREN-NUKE-20260505",
+          "title": "Trump tells a group of children that Iran wants to nuke them",
+          "url": "https://www.youtube.com/watch?v=3pAw7suysmU",
+          "disposition": "NOT_PROMOTED_CORE_NUCLEAR_THREAT_MESSAGE_SUPPORTED",
+          "basis": "Trump did tell children that if Iran obtained a nuclear weapon 'maybe we wouldn't all be here' and described catastrophic consequences. The headline crudely imputes intent, but the underlying nuclear-threat message was present."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-PILOT-7000FT-202609",
+          "title": "The 'pilot' that was 'shot down' over Iran claims he climbed a 7000 foot mountain with a broken back",
+          "disposition": "NOT_PROMOTED_TITLE_SUBSTANTIALLY_SUPPORTED",
+          "basis": "CBS and Stars and Stripes reported the airman described a broken back/arm/shoulder and climbing a roughly 7,000-foot ridgeline. The headline accurately attributes the account as the pilot's claim. A body-level fabrication accusation, if any, would require separate recovery."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-REFUSES-IRAN-DEAL-202605",
+          "title": "Trump is PANICKING and REFUSES to sign the Iran Peace Deal",
+          "url": "https://www.youtube.com/watch?v=qPdvCNLZvFQ",
+          "publication_date": null,
+          "disposition": "NOT_PROMOTED_CORE_WITHHOLDING_REJECTION_SUPPORTED",
+          "basis": "Contemporaneous reporting documents Trump rejecting Iranian proposals as inadequate, saying Iran wanted a deal but he did not accept the terms, imposing additional conditions, and later withholding final approval while making a final determination on an unsigned MOU. 'Panicking' is editorial framing; the refusal/withholding proposition has substantial factual substrate.",
+          "evidence_review": {
+            "checked_at": "2026-09-24T01:56:00-04:00",
+            "supporting_public_sources": [
+              "https://themarsad.com/",
+              "https://www.inkl.com/news/iran-us-war-latest-deal-to-extend-ceasefire-and-reopen-strait-of-hormuz-just-needs-trump-signature"
+            ],
+            "inference_limit": "This does not mean Trump permanently rejected diplomacy; it resolves the title-level claim that he was refusing/withholding signature or acceptance at that stage."
+          }
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-RUSSIA-JOINS-IRANIANS-20260306",
+          "title": "Trump PANICS as U.S begins to LOSE THE WAR!",
+          "url": "https://www.youtube.com/watch?v=K8PzTdiPf6k",
+          "disposition": "NOT_PROMOTED_REAL_RUSSIAN_SUPPORT_SUBSTRATE_AND_ANALYSIS",
+          "basis": "The 'U.S. losing' portion is strategic analysis. Contemporaneous reporting documented Russian intelligence/targeting support to Iran against U.S. forces, giving substantial factual substrate to Valenti's 'Russia joins the Iranians' description. Do not score 'world war' rhetoric absent a narrower false factual proposition."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-US-CASUALTY-COVERUP-20260721",
+          "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
+          "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
+          "disposition": "NOT_PROMOTED_REAL_CASUALTY_DISCLOSURE_OPACITY_AND_UNDERCOUNT_SUBSTRATE",
+          "basis": "Contemporaneous and later reporting documented materially incomplete or shifting Pentagon casualty disclosure: later increases in wounded counts, deaths removed/reclassified into a new category, and reporting that the actual military death toll exceeded the Pentagon's public count by at least four. The word 'massive' is sensational and vague, but the title-level concealment/transparency allegation has substantial factual substrate. Any body-level claim of a specific hidden death toll remains separately reviewable if recovered."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-US-MILITARY-COLLAPSING-202609",
+          "title": "The United States Military is literally collapsing in front of our very eyes",
+          "url": "https://www.youtube.com/watch?v=xyPdC6KzRKg",
+          "disposition": "NOT_PROMOTED_EVALUATIVE_COLLAPSE_LABEL_OVER_REAL_READINESS_STRAIN",
+          "basis": "Current public evidence establishes severe Iran-war pressure on U.S. readiness and munitions stocks, including critical Patriot shortages in Europe and near-exhaustion of some long-range precision-missile inventories. 'Literally collapsing' is an elastic evaluative characterization rather than a sufficiently atomic factual proposition at title level. Retain for body review only if Valenti states narrower falsifiable capability claims."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-US-WILL-LOSE-20260305",
+          "title": "The United States will LOSE the war against Iran",
+          "url": "https://www.youtube.com/watch?v=fjqCXOIhaNY",
+          "disposition": "NOT_PROMOTED_PREDICTION_STRATEGIC_ASSESSMENT",
+          "basis": "The headline is a future strategic prediction/assessment, not a presently falsifiable factual assertion. WOL governance does not score prediction failure alone. The video remains relevant to monetized-pattern context because its description contains the recurring Patreon/merch support solicitation."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-WW3-HAS-BEGUN-202607",
+          "title": "WW3 has begun",
+          "url": "https://www.youtube.com/watch?v=RqDZyuJkyk0",
+          "disposition": "NOT_PROMOTED_GEOPOLITICAL_LABEL_NOT_ATOMIC_FACT",
+          "basis": "Whether a multi-theater conflict constitutes 'World War III' is a contested geopolitical classification, not a sufficiently bounded factual proposition at title level. Do not score the label itself; review any narrower body claims separately if recovered."
+        }
+      ],
       "review_completion": {
-        "status": "CURRENT_SOURCE_PASS_COMPLETED_THROUGH_2026-09-23_WITH_BODY_GATED_QUEUE_RETAINED",
-        "qualifying_incident_count": 9,
-        "completion_limit": "This is not a claim of exhaustive lifetime capture. It closes the current reviewed source pass while preserving unresolved body-dependent items for later evidence.",
-        "excluded_or_held_examples": [
-          "Apache shot down over Hormuz: underlying shootdown substantially supported; not counted merely because the headline is dramatic.",
-          "U.S./Saudi strikes in Iraq killing about 20: underlying strike/death report substantially supported; not counted merely because the headline is dramatic.",
-          "Casualty-coverup presentation: real nondisclosure reporting provides factual substrate; body-level overstatement remains unscored without a clean proposition.",
-          "Ground-invasion, Key West false-flag, Cuba/Iran, negotiating-team assassination and similar titles remain body-gated where the title alone cannot establish the exact factual proposition."
-        ]
+        "status": "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS",
+        "completed_at": "2026-09-24T19:22:00-04:00",
+        "documented_incident_count": 24,
+        "resolved_nonincident_count": 22,
+        "unresolved_excluded_count": 7,
+        "unresolved_breakdown": {
+          "current_events_body_or_facility_gate": 4,
+          "historian_attribution_gate": 3
+        },
+        "limitation": "This completion does not claim omniscient lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Valenti corpus has been reviewed to the point that remaining items lack the source evidence needed for responsible scoring.",
+        "next_action": "NONE_UNLESS_NEW_EVIDENCE"
       }
     }
   ],
@@ -4648,7 +5245,633 @@
         "provenance": "PROJECT_OWNER_DIRECT_REVIEW",
         "observation": "Valenti is reported to have used 'nuclear strike' literally to mean nuclear-warhead use against Iran, not a conventional strike on nuclear facilities.",
         "transcript_status": "NOT_MACHINE_RECOVERED"
+      },
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
       }
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-09-22",
+      "first_observed_at": "2026-09-22",
+      "statement_identity": "Publisher headline stated that Trump almost started a nuclear war with China during the Iran war.",
+      "source_information_event_id": "VALENTI-CHANNEL-INDEX-CHINA-NUCLEAR-WAR-20260922",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication upgrades reporting that a false AI-assisted intelligence report almost triggered an armed U.S.-China confrontation over alleged nuclear-program cargo into the stronger claim that Trump almost started a nuclear war with China.",
+          "inference_limit": "The finding preserves the genuine and serious risk of armed U.S.-China conflict. It scores only the unsupported escalation from 'war' to 'nuclear war.'"
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-CHINA-NUCLEAR-WAR-CHANNEL-20260922",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/@valentivideos",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": "2026-09-22",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Iran War escalates while Trump almost starts a NUCLEAR WAR with CHINA",
+          "receipt_limit": "Current channel index preserves title, publisher, relative publication time and runtime. Direct watch ID was not recovered in this collection pass and remains queued for receipt upgrade."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CNN-CHINA-WAR-AI-20260918",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/cnc/date/2026-09-18/segment/09",
+          "archive_url": null,
+          "published_at": "2026-09-18",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN reported an entirely false AI-assisted intelligence report about a Chinese ship carrying components of a nuclear weapons program; one source said the episode 'almost started a war.'"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CNN-CHINA-WAR-COOPER-20260918",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/acd/date/2026-09-18/segment/01",
+          "archive_url": null,
+          "published_at": "2026-09-18",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN described U.S. aircraft in the air and preparations to board a Chinese vessel before the false report was caught; its source said the report almost started a war, not a nuclear exchange."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti channel-index headline and CNN's original reporting/transcripts on the false AI-assisted intelligence report and planned Chinese-vessel interception.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "CNN's source said the episode almost started 'a war.' The nuclear component concerned the falsely alleged cargo—a nuclear-weapons-program component—not evidence that either side was preparing nuclear weapon use.",
+        "search_notes": "The WOL mutation is category escalation: nuclear-related cargo allegation becomes 'nuclear war.' The underlying near-military confrontation is preserved as genuine.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Direct Valenti watch ID should replace/supplement the channel-index receipt when recovered.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Separate the supported risk of armed U.S.-China conflict from an unsupported claim of near nuclear war.",
+      "public_bullshit_summary": "CNN reported that false AI-assisted intelligence nearly triggered an armed confrontation with China over alleged nuclear-program cargo. Valenti changed 'almost started a war' into 'almost starts a nuclear war with China.'"
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-CUBA-INVASION-IMMINENT",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that the United States was about to invade Cuba while bombing Iran.",
+      "source_information_event_id": "VALENTI-YT-DNooOvyU6-g",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-CUBA-INVASION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=DNooOvyU6-g",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=DNooOvyU6-g",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "We are ABOUT to Invade Cuba, and bomb Iran AT THE SAME TIME"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CUBA-NO-IMMINENT-ACTION-AP-2026",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/26b89fa6c057eb419d099a39e38d5b98",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "AP reported U.S. officials saying the administration was not looking at imminent military action against Cuba despite Trump's threats and coercive pressure."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title and contemporaneous AP reporting on U.S. Cuba policy, military-action planning, threats and whether action was imminent.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The United States was applying pressure to Cuba and military contingencies were part of the broader environment, but reviewed U.S.-official reporting said imminent military action was not planned.",
+        "search_notes": "The Iran-bombing component had an observable factual substrate and is not scored here. The WOL finding is limited to the asserted imminent Cuba invasion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score only the Cuba-invasion/imminence proposition. Do not use this incident to negate supported U.S. operations against Iran.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The Cuba invasion proposition is a separable factual claim from contemporaneous Iran operations.",
+      "public_bullshit_summary": "Washington was pressuring Cuba, but contemporaneous reporting said imminent U.S. military action was not planned. Valenti presented a Cuba invasion as about to happen."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": "2026-09-03",
+      "statement_identity": "Valenti publication argued that five airborne E-6B Mercury aircraft were evidence that the United States was preparing to use nuclear weapons against Iran.",
+      "source_information_event_id": "VALENTI-YT-dctkpvgsyw8",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "A routine/ambiguous strategic-aviation observation was connected to imminent or preparatory U.S. nuclear use against Iran without public evidence establishing that operational intent, within Valenti's broader monetized pattern of sensational unsupported Iran-war escalation claims.",
+          "inference_limit": "The E-6B is genuinely part of U.S. nuclear command-and-control infrastructure, and multiple aircraft were reportedly airborne. The finding scores the unsupported bridge from capability/flight activity to preparation for nuclear use against Iran; it does not claim the flights were meaningless or prove every aircraft was part of AMALGAM DART."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-E6B-ORIGINAL-ID-202609",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=dctkpvgsyw8",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_NOT_RECOVERED",
+          "deletion_status": "POST_CURRENTLY_UNAVAILABLE",
+          "text_excerpt": "Original Valenti video ID is preserved by Ryan McBeth's September 3 response; the Valenti page itself was not machine-retrievable in this review pass."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MCBETH-VALENTI-E6B-20260903",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=VBYZ8PyPe9k",
+          "archive_url": "https://ryanmcbeth.substack.com/p/chris-valenti-is-lying-about-nuclear",
+          "published_at": "2026-09-03",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Ryan McBeth identifies the original Chris Valenti video and describes Valenti's proposition as treating five E-6B Mercury 'doomsday planes' as proof the United States was preparing to use nuclear weapons against Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NORAD-AMALGAM-DART-ANNOUNCED-20260820",
+          "surface": "WEBSITE",
+          "url": "https://www.norad.mil/Newsroom/Press-Releases/Article/4578809/norad-and-usnorthcom-to-conduct-exercise-amalgam-dart/",
+          "archive_url": null,
+          "published_at": "2026-08-20",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "NORAD and USNORTHCOM announced AMALGAM DART in advance as a long-planned, routine defensive exercise across North America from August 24 through September 1."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NORAD-AMALGAM-DART-CONCLUDED-20260902",
+          "surface": "WEBSITE",
+          "url": "https://www.norad.mil/Newsroom/Press-Releases/Article/4588746/norad-and-usnorthcom-conclude-exercise-amalgam-dart/",
+          "archive_url": null,
+          "published_at": "2026-09-02",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "NORAD said the exercise concluded September 1 after integrated North American air-defense scenarios and described it as planned, routine and closely controlled."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Ryan McBeth's direct attribution and preserved original Valenti video ID; official NORAD AMALGAM DART announcement/conclusion; contemporaneous reporting on the E-6B sightings and CIA Director Ratcliffe's Moscow trip; searches for public confirmation of elevated U.S. nuclear alert or nuclear-use preparations against Iran.",
+        "checked_at": "2026-09-24T00:34:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Multiple E-6B aircraft were reportedly visible and the aircraft has genuine nuclear command-and-control functions. But public evidence did not establish that the flights represented preparation to use nuclear weapons against Iran. A preannounced large NORAD exercise overlapped the period, and no reviewed official source confirmed an extraordinary nuclear-use posture.",
+        "search_notes": "Do not overstate the countercase: official NORAD material does not itself prove every E-6B sortie was part of AMALGAM DART. The unsupported step is Valenti's asserted inference from observed strategic aircraft activity to U.S. preparation for nuclear use against Iran.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Upgrade the original Valenti receipt if the direct page, mirror, caption or timestamped body is recovered. The present incident is limited to the narrower proposition preserved by a directly linked response source.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Capability/flight activity and operational intent are distinct propositions; the latter requires evidence beyond temporal coincidence and aircraft type.",
+      "public_bullshit_summary": "Several E-6B nuclear-command aircraft really were visible during a tense week. That did not establish that the U.S. was preparing to use nuclear weapons against Iran; Valenti connected the flights to nuclear-use intent without evidence supporting that bridge."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump announced a full-scale ground invasion of Iran.",
+      "source_information_event_id": "VALENTI-YT-OzH543I4fZQ",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-GROUND-INVASION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=OzH543I4fZQ",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=OzH543I4fZQ",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump announces FULL SCALE GROUND INVASION of Iran"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KHARG-TAKE-REUTERS-20260611",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/trump-tells-fox-news-hed-like-take-irans-kharg-island-2026-06-11/",
+          "archive_url": null,
+          "published_at": "2026-06-11",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump saying he would like to take Kharg Island while questioning public appetite for further escalation; this was not a full-scale ground-invasion announcement."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NO-FULL-GROUND-ORDER-MILITARY-20260330",
+          "surface": "WEBSITE",
+          "url": "https://www.military.com/benefits/2026/03/30/us-ground-forces-arrive-middle-east-iran-conflict-escalates.html",
+          "archive_url": null,
+          "published_at": "2026-03-30",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Contemporaneous military reporting stated there had been no official announcement that U.S. ground troops entered Iran or that a full-scale ground invasion had been ordered."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title plus contemporaneous reporting on Trump's Kharg Island statements, force posture, and whether a full-scale invasion had been announced or ordered.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump publicly floated taking Kharg Island and other escalatory options, but the reviewed record did not establish an announcement or order for a full-scale ground invasion of Iran.",
+        "search_notes": "The headline converts a real discussion of possible limited seizure/ground operations into an announced full-scale invasion. The limited-ground-operation substrate is preserved; only the stronger announcement is scored.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not infer that no ground operation was contemplated. The scored proposition is the publisher's stronger claim that a full-scale invasion had been announced.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical force-posture and Kharg-operation propositions remain upstream; WOL scores the publisher-authored escalation in presentation.",
+      "public_bullshit_summary": "Trump had floated taking Kharg Island and other escalatory options. That is not the same thing as announcing a full-scale invasion of Iran.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-IRAN-WAR-CANCEL-2028-ELECTION",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump wanted the Iran war to last forever so that he could cancel the 2028 election.",
+      "source_information_event_id": "VALENTI-YT-2fpN42hV5As",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-IRAN-WAR-CANCEL-ELECTION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=2fpN42hV5As",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=2fpN42hV5As",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump wants the Iran War to last FOREVER so he can cancel the 2028 election"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-WARTIME-ELECTION-REUTERS-20250818",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/europe/zelenskiy-says-hes-open-election-ukraine-if-safe-2025-08-18/",
+          "archive_url": null,
+          "published_at": "2025-08-18",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters preserved Trump's joking wartime-election remark during an exchange about Ukrainian elections; it did not document an intent to prolong or start a war to cancel a U.S. election."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-WARTIME-ELECTION-PRESIDENCY-PROJECT-20250818",
+          "surface": "WEBSITE",
+          "url": "https://www.presidency.ucsb.edu/documents/remarks-prior-meeting-with-president-volodymyr-zelenskyy-ukraine-and-exchange-with-3",
+          "archive_url": null,
+          "published_at": "2025-08-18",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Transcript records Trump asking whether being at war would mean 'no more elections,' followed by laughter; no statement in the preserved exchange says he wants war to last in order to cancel 2028."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher headline plus the preserved 2025 Oval Office exchange and contemporaneous reporting about Trump's wartime-election remark.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump did make a public wartime-election quip, which is genuine factual substrate. The reviewed record does not support the stronger motive proposition that he wanted the Iran war prolonged so he could cancel the 2028 election.",
+        "search_notes": "The finding is not that Trump never discussed elections in wartime. The unsupported bridge is Valenti's asserted purpose and causal motive tying prolonged Iran war to cancellation of the 2028 election.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Keep the genuine wartime-election remark as substrate. Score only the unsubstantiated motive/causal bridge.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Motive attribution requires evidence beyond the fact that the underlying wartime-election remark exists.",
+      "public_bullshit_summary": "Trump really did joke about wartime and elections. The evidence reviewed does not show that he wanted the Iran war prolonged in order to cancel the 2028 election."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher repeatedly presented Israel as having terminated the U.S.-Iran peace deal / Islamabad MOU.",
+      "source_information_event_id": "VALENTI-INFOEVENT-ISRAEL-TERMINATES-US-IRAN-MOU",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "Two separate Valenti headlines converted Israeli military activity and disagreement with the U.S.-Iran agreement into the categorical status claim that Israel had terminated the peace deal/MOU.",
+          "inference_limit": "The finding does not deny that Israeli operations strained or may have violated ceasefire terms; it scores the stronger unsupported claim that Israel terminated the agreement."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-ISRAEL-TERMINATED-PEACE-DEAL-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=l7iPKW1qpYE",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=l7iPKW1qpYE",
+          "published_at": null,
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Israel terminated the Iran Peace Deal"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-ISRAEL-INSTANTLY-TERMINATED-MOU-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=Wac6iXa2Oms",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=Wac6iXa2Oms",
+          "published_at": null,
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Israel INSTANTLY terminated the MOU"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-IRAN-MOU-SIGNED-REUTERS-20260617",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/g7-leaders-demand-ceasefire-lebanon-welcome-iran-deal-2026-06-17/",
+          "archive_url": null,
+          "published_at": "2026-06-17",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported the U.S. and Iranian presidents signed the interim agreement and that it was in effect, while noting unresolved Lebanon/Israel tensions."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MOU-STRAINED-NOT-TERMINATED-REUTERS-20260619",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/israel-steps-up-lebanon-attacks-with-strikes-that-kill-15-2026-06-19/",
+          "archive_url": null,
+          "published_at": "2026-06-19",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters described Israel-Hezbollah fighting as sorely testing the U.S.-Iran interim deal; negotiators then arranged an Israel-Hezbollah ceasefire under the same agreement framework."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's two publication headlines, the signed U.S.-Iran MOU, and contemporaneous Reuters reporting on Israeli/Hezbollah fighting and the status of the agreement.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Israeli operations and objections materially strained the agreement and were alleged by Iran/Hezbollah to violate its terms, but contemporaneous reporting continued to treat the MOU as operative and as the framework under which negotiators sought implementation.",
+        "search_notes": "The two headlines are treated as one information event because they repeat the same categorical status claim with only 'peace deal' versus 'MOU' wording. Violation/strain is preserved as factual substrate; formal or effective termination by Israel was not established by the reviewed evidence.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Deduplicate the two Valenti headlines as one underlying information event. Do not convert this incident into a finding that Israel fully complied with the agreement.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The categorical termination claim is separable from the supported evidence of Israeli military activity and disputes over implementation.",
+      "public_bullshit_summary": "Israel's operations strained the U.S.-Iran MOU and triggered accusations of violations, but contemporaneous reporting still treated the agreement as operative. Valenti twice upgraded that dispute into 'Israel terminated the peace deal/MOU.'"
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump was planning a false-flag attack on Key West.",
+      "source_information_event_id": "VALENTI-YT-_jjBTsHcWhA",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-KEY-WEST-FALSE-FLAG-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=_jjBTsHcWhA",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=_jjBTsHcWhA",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump is planning a FALSE FLAG ATTACK ON KEY WEST!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CUBA-KEY-WEST-AXIOS-20260517",
+          "surface": "WEBSITE",
+          "url": "https://www.axios.com/2026/05/17/us-military-drones-cuba",
+          "archive_url": null,
+          "published_at": "2026-05-17",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Axios reported classified U.S. intelligence alleging Cuban discussions of possible drone attacks including Key West; U.S. officials did not describe an attack as imminent."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CUBA-FABRICATION-REUTERS-20260517",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/americas/us-assesses-drone-threat-cuba-axios-reports-2026-05-17/",
+          "archive_url": null,
+          "published_at": "2026-05-17",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Cuba's accusation that the U.S. was fabricating intelligence as Cuba's allegation; Reuters could not independently verify the underlying Axios intelligence."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title, Axios reporting on the alleged Cuban drone threat, Reuters coverage of the intelligence claim and Cuba's response, and contemporaneous public discussion of possible U.S. action against Cuba.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The factual substrate was an intelligence report alleging possible Cuban drone planning against U.S. targets including Key West. Cuba accused Washington of fabricating a pretext. Neither establishes that Trump was planning a U.S.-run false-flag attack on Key West.",
+        "search_notes": "The headline transforms a contested warning/pretext allegation into a concrete covert U.S. operational plan. No reviewed evidence supported that operational claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Preserve both the reported Cuba-drone intelligence and Cuba's accusation as claims; neither independently validates the false-flag assertion.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "A false-flag operational-plan proposition is distinct from the underlying Cuba drone-threat intelligence.",
+      "public_bullshit_summary": "A real, contested U.S. intelligence story about possible Cuban drone threats to Key West became a factual claim that Trump was planning the attack himself as a false flag.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-MAR3-NUCLEAR-WAR-20260303",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-03-03",
+      "first_observed_at": "2026-03-03",
+      "statement_identity": "Publisher headline stated that Trump threatened nuclear war as Iran struck back.",
+      "source_information_event_id": "VALENTI-YT-dUKjrU3G0m8",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication escalated Trump's conventional-war rationale about preventing an Iranian nuclear weapon into a headline saying he threatened nuclear war, while the same video description directly solicited Patreon support and merchandise purchases.",
+          "inference_limit": "The finding preserves Trump's explicit nuclear-program rhetoric and the conventional U.S.-Iran war. It scores the unsupported shift to a U.S. nuclear-war threat, not private motive."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-MAR3-NUCLEAR-WAR-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=dUKjrU3G0m8",
+          "archive_url": null,
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "IRAN STRIKES BACK! Trump threatens NUCLEAR WAR"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-MAR3-NUCLEAR-WAR-MONEY-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=dUKjrU3G0m8",
+          "archive_url": null,
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Video description: 'Okay below is where I gotta make money' followed by Patreon as the best way to support Valenti Videos and a merchandise solicitation."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-MAR3-MERZ-FACTBASE",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-remarks-bilat-friedrich-merz-germany-march-3-2026/",
+          "archive_url": null,
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump argued Iran would have obtained and used a nuclear weapon absent prior U.S. action; the preserved March 3 remarks do not contain a U.S. threat to use nuclear weapons against Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-MAR2-IRAN-REUTERS",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/trump-says-he-ordered-iran-strikes-thwart-tehrans-missile-program-2026-03-02/",
+          "archive_url": null,
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump's stated objectives as preventing an Iranian nuclear weapon and destroying missile capabilities amid a conventional U.S.-Israeli air campaign."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-MAR3-NUCLEAR-CLAIMS-FACTCHECK",
+          "surface": "WEBSITE",
+          "url": "https://www.factcheck.org/2026/03/assessing-trumps-claims-on-irans-nuclear-and-missile-capabilities/",
+          "archive_url": null,
+          "published_at": "2026-03-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "FactCheck.org documented Trump's rationale as preventing Iran from obtaining nuclear weapons and contestable claims about Iran's missile/nuclear capabilities; it did not document a Trump threat of U.S. nuclear weapon use."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Direct Valenti video title/description; Trump's preserved March 3 remarks; Reuters coverage of Trump's March 2 war rationale; contemporaneous FactCheck.org review of his nuclear and missile claims.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump publicly framed the conventional war as necessary to prevent Iran obtaining/using nuclear weapons and to degrade missile capabilities. The reviewed contemporaneous record does not show him threatening U.S. nuclear use or nuclear war against Iran.",
+        "search_notes": "The supported substrate is a conventional U.S.-Iran war justified partly through Iran's alleged nuclear threat. Valenti's headline converts that into a Trump nuclear-war threat.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the publisher headline's nuclear-war escalation while preserving Trump's genuine nuclear-program rhetoric and the active conventional war.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The nuclear-use/threat proposition is separable from the supported conventional-war and Iranian-nuclear-program propositions.",
+      "public_bullshit_summary": "Trump was using Iran's nuclear program as a rationale for conventional war. The reviewed March 2–3 record does not show him threatening U.S. nuclear use; Valenti turned that into 'Trump threatens NUCLEAR WAR.'"
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-NEGOTIATING-TEAM-ASSASSINATION",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump threatened to assassinate the entire Iranian negotiating team because Israel demanded no peace.",
+      "source_information_event_id": "VALENTI-YT-q-HSkbifk8I",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-NEGOTIATORS-ASSASSINATION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=q-HSkbifk8I",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=q-HSkbifk8I",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump threatens to ASSASSINATE the ENTIRE Iranian Negotiating Team because ISRAEL demands NO PEACE"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NEGOTIATORS-KIDNAP-GUARDIAN-20260621",
+          "surface": "WEBSITE",
+          "url": "https://www.theguardian.com/world/2026/jun/21/us-iran-talks-jd-vance-switzerland-strait-of-hormuz-lebanon",
+          "archive_url": null,
+          "published_at": "2026-06-21",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Contemporaneous reporting described Trump's threat as kidnapping the Iranian negotiating team, alongside threats to bomb Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NEGOTIATORS-KIDNAP-IRISHTIMES-20260621",
+          "surface": "WEBSITE",
+          "url": "https://www.irishtimes.com/world/middle-east/2026/06/21/trump-and-iran-quarrel-on-social-media-while-peace-talks-proceed-in-switzerland/",
+          "archive_url": null,
+          "published_at": "2026-06-21",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reporting likewise described a threat to kidnap the negotiating team; it did not report a threat to assassinate the entire team."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title plus contemporaneous coverage of Trump's threats toward the Iranian negotiating team and Iran during the Switzerland talks.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The documented direct threat toward the team was described as kidnapping them, not assassinating the entire negotiating team. Reviewed reporting also did not establish the headline's causal motive that Israel demanded no peace.",
+        "search_notes": "A real and extraordinary threat toward Iranian negotiators is preserved as substrate. The publisher materially escalated kidnapping into assassination of the entire team and added an unsupported motive attribution.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score the publisher-authored assassination and motive presentation; do not erase the supported fact that Trump threatened the negotiating team.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any atomic upstream proposition about the precise Trump statement remains separable from WOL's publication-level overstatement.",
+      "public_bullshit_summary": "A real Trump threat to kidnap Iran's negotiating team became a threat to assassinate the entire team, plus an unsupported claim that Israel demanded no peace."
     },
     {
       "incident_id": "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
@@ -4704,6 +5927,16 @@
         "provenance": "PROJECT_OWNER_DIRECT_REVIEW",
         "observation": "Valenti is reported to have explicitly described the aircraft as carrying nuclear warheads for use against Iran; the proposition is literal nuclear-weapon use, not merely nuclear-capable aircraft.",
         "transcript_status": "NOT_MACHINE_RECOVERED"
+      },
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
       }
     },
     {
@@ -4754,6 +5987,153 @@
       "public_bullshit_summary": "A real U.S.-Iran ceasefire/MOU became an 'official surrender.' The agreement ended military operations and set terms for further negotiations; it was not an instrument of U.S. surrender."
     },
     {
+      "incident_id": "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline paired Trump's real threat to bomb Oman with the factual assertion that Trump was planning a nuclear strike on Iran.",
+      "source_information_event_id": "VALENTI-YT-hx2m7gNESbg",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication preserves a real Trump threat toward Oman but adds an unsupported nuclear-strike-plan assertion in sensational current-events packaging. It forms part of the publisher's repeated scored pattern while Valenti Videos directly solicits recurring financial support for continued output.",
+          "inference_limit": "The finding does not infer private motive from monetization. The Oman threat itself is not scored adverse."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-OMAN-NUCLEAR-STRIKE-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=hx2m7gNESbg",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=hx2m7gNESbg",
+          "published_at": null,
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "\"Bomb the sh*t out of them\": Trump threatens to bomb OMAN while he plans a Nuclear Strike on Iran"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-OMAN-THREAT-REUTERS-20260817",
+          "surface": "WEBSITE",
+          "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/08/17/trump-says-iran-should-surrender-threatens-to-bomb-oman",
+          "archive_url": null,
+          "published_at": "2026-08-17",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "REUTERS_REPUBLICATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump's explicit threat to bomb Oman and his demand that Iran surrender; the reviewed report did not describe a planned U.S. nuclear strike on Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-NUCLEAR-WAR-MCBETH-20260903",
+          "surface": "WEBSITE",
+          "url": "https://ryanmcbeth.substack.com/p/chris-valenti-is-lying-about-nuclear",
+          "archive_url": null,
+          "published_at": "2026-09-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Ryan McBeth reviewed Valenti's nuclear-war narrative and found that the E-6B activity offered as nuclear-war evidence aligned with the publicly announced AMALGAM DART exercise rather than an emergency nuclear deployment."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-AMALGAM-DART-NORAD-20260820",
+          "surface": "WEBSITE",
+          "url": "https://www.norad.mil/Newsroom/Press-Releases/Article/4578809/norad-and-usnorthcom-to-conduct-exercise-amalgam-dart/",
+          "archive_url": null,
+          "published_at": "2026-08-20",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "NORAD publicly announced AMALGAM DART as a long-planned, routine and defensive exercise running Aug. 24-Sept. 1, 2026."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title; contemporaneous Reuters reporting on Trump's Oman/Iran statements and war posture; public NORAD AMALGAM DART release; Ryan McBeth's source-specific review of Valenti's nuclear-war/doomsday-plane claim.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump's threat to bomb Oman was real. The reviewed contemporaneous record did not establish that Trump had planned a nuclear strike on Iran. Valenti's related nuclear-war evidence was later traced by McBeth to unsupported inference from strategic-aircraft activity overlapping a preannounced routine NORAD exercise.",
+        "search_notes": "This incident deliberately preserves the supported Oman-threat half and scores only the stronger nuclear-strike-plan assertion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not score the Oman threat as false. Keep this distinct from other Valenti nuclear incidents unless later body capture proves the publications were merely mirrors of one identical information event.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "WOL scores the publisher-authored nuclear-strike-plan presentation; canonical Trump/Oman threat facts remain upstream.",
+      "public_bullshit_summary": "Trump really threatened to bomb Oman. The added claim that he was planning a nuclear strike on Iran was not established by the reviewed evidence."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump was considering giving Iran one trillion dollars as part of an American surrender.",
+      "source_information_event_id": "VALENTI-YT-2uC0ZbTXyfc",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-ONE-TRILLION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=2uC0ZbTXyfc",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=2uC0ZbTXyfc",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump considers giving Iran ONE TRILLION DOLLARS as part of the American Surrender!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-IRAN-NO-US-MONEY-20260617",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-press-conference-g7-summit-evian-france-june-17-2026/",
+          "archive_url": null,
+          "published_at": "2026-06-17",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump said the United States was not putting up money; he discussed outside investment and estimated more than $1 trillion in damage to Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VANCE-IRAN-TRILLION-DAMAGE-20260618",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-press-conference-briefing-jd-vance-june-18-2026/",
+          "archive_url": null,
+          "published_at": "2026-06-18",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Vance used roughly $1 trillion as an estimate of damage to Iran's industrial base while describing limited sanctions relief and oil sales, not a U.S. trillion-dollar payment."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title and contemporaneous Trump/Vance transcript records discussing Iranian reconstruction, damage estimates, sanctions relief and possible investment.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The trillion-dollar figures in the reviewed record referred to estimated damage and broader investment context. Trump explicitly said the United States was not putting up money.",
+        "search_notes": "The title turns discussion of damage, outside investment and sanctions relief into a contemplated U.S. transfer of $1 trillion to Iran. The reviewed primary transcript contradicts that transfer claim.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "The separate 'American surrender' characterization is rhetorical/evaluative; the scored factual atom is the claimed contemplated $1 trillion U.S. payment.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Keep the payment proposition distinct from evaluative descriptions of the agreement.",
+      "public_bullshit_summary": "The trillion-dollar figure referred to estimated damage/investment context. Trump explicitly said the U.S. was not putting up money; Valenti repackaged that as Trump considering a $1 trillion payment to Iran.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
@@ -4802,7 +6182,17 @@
       },
       "downstream_note": "The Russian origin and Polish impact are preserved as supported substrate; only the attack-on-Poland bridge is scored.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Any canonical NATO/Russia attack proposition remains an upstream truth-adjudication question."
+      "review_reason": "Any canonical NATO/Russia attack proposition remains an upstream truth-adjudication question.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-RUSSIAN-INVASION-POLAND-IMMINENT-20260703",
@@ -4920,7 +6310,17 @@
       },
       "downstream_note": "Presentation-level WOL behavior finding. Any canonical proposition about weapons transfer may still be routed to Claims Forensics separately.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Preserve canonical truth adjudication separately from WOL's source-behavior finding."
+      "review_reason": "Preserve canonical truth adjudication separately from WOL's source-behavior finding.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      }
     },
     {
       "incident_id": "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
@@ -4971,7 +6371,246 @@
       },
       "downstream_note": "Distinct August 6 republication/reframing; not deduplicated with the separate August 4 episode.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Direct quotation semantics support the WOL behavior finding without changing canonical readiness adjudication."
+      "review_reason": "Direct quotation semantics support the WOL behavior finding without changing canonical readiness adjudication.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      },
+      "narrative_chain_id": "VALENTI-CHAIN-US-MUNITIONS-DEPLETION-20260720-20260806",
+      "narrative_chain_sequence": 3
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-04-21",
+      "first_observed_at": "2026-04-21",
+      "statement_identity": "Publisher headline stated as fact that Trump asked to nuke Iran.",
+      "source_information_event_id": "VALENTI-YT-ESojA5kxiFY",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication converted an unverified nuclear-use rumor into a declarative headline while the same Valenti publication template directly solicited Patreon support and merchandise purchases for continued output.",
+          "inference_limit": "The finding scores publication behavior and support solicitation, not the creator's unobservable private motive."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-ASKED-NUKE-YT-20260421",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
+          "archive_url": null,
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump asked to nuke Iran..."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-ASKED-NUKE-MONEY-YT-20260421",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
+          "archive_url": null,
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Description: 'Okay below is where I gotta make money' followed by Patreon as the best way to support Valenti Videos and a merchandise solicitation."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-NUCLEAR-CODES-LEADSTORIES-20260421",
+          "surface": "WEBSITE",
+          "url": "https://leadstories.com/hoax-alert/2026/04/fact-check-report-about-trump-nuclear-codes-not-verified-according-to-retired-cia-analyst-larry-johnson-who-mentioned-it-in-viral-video.html",
+          "archive_url": null,
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Lead Stories found no credible or verified report of the alleged nuclear-codes confrontation; Larry Johnson later acknowledged he had no confirmation that the report was verified."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-NUCLEAR-CODES-PAKMAN-20260421",
+          "surface": "PODCAST",
+          "url": "https://podcasts.apple.com/gb/podcast/reality-collapses-and-americans-are-noticing/id402050558?i=1000762936457",
+          "archive_url": null,
+          "published_at": "2026-04-21",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Contemporaneous episode segment labeled the underlying item 'Unverified report says Trump wanted to nuke Iran.'"
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti title/description; contemporaneous fact-checking and reporting tracing the nuclear-codes allegation to Larry Johnson; checks for independent corroboration or official confirmation.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The underlying viral allegation came from Larry Johnson citing an unnamed report. He later wrote that he had no confirmation it was verified, and contemporaneous fact-checking found no credible independent corroboration.",
+        "search_notes": "The WOL finding is posture inflation: a rumor explicitly lacking verification was republished by Valenti as a flat factual assertion that Trump asked to nuke Iran.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "This does not establish that nuclear-use discussions were impossible; it scores the unsupported declarative publication of the specific alleged request.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Preserve the rumor-origin chain separately from any canonical evidence about actual U.S. nuclear planning.",
+      "public_bullshit_summary": "An unverified nuclear-use rumor became 'Trump asked to nuke Iran' as a declarative headline, even though the rumor's own source later said he had no confirmation it was verified."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump terminated the peace deal with Iran.",
+      "source_information_event_id": "VALENTI-YT-79yEsPYT2MU",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication assigned termination of the U.S.-Iran peace process to Trump even though contemporaneous reporting identified Iran as the party that suspended talks over Israel's Lebanon campaign while Trump publicly said negotiations were continuing.",
+          "inference_limit": "The finding does not claim Trump had no role in hardening terms or slowing negotiations. It scores the categorical agency claim that he terminated the peace deal."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-TRUMP-TERMINATED-DEAL-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=79yEsPYT2MU",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=79yEsPYT2MU",
+          "published_at": null,
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump TERMINATED the Peace Deal with Iran. Hasan is BANNED from the U.K. Terrorists MARCH in NYC!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRAN-SUSPENDS-TALKS-CNN-20260601",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/tbwjs/date/2026-06-01/segment/01",
+          "archive_url": null,
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN reported Iran had suspended the peace talks over Israeli attacks in Lebanon while Trump said talks were continuing at a rapid pace."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-IRAN-SUSPENDS-TALKS-REUTERS-20260601",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/iran-stops-indirect-talks-with-us-after-israels-lebanon-incursion-2026-06-01/",
+          "archive_url": "https://www.vijesti.me/svijet/globus/811246/iran-obustavlja-pregovore-sa-sad",
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_WITH_ARCHIVE",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported that Iran suspended indirect talks with the United States after Israel pushed deeper into Lebanon."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MOU-US-SEEKING-CHANGES-CNN-20260601",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/tbwjs/date/2026-06-01/segment/01",
+          "archive_url": null,
+          "published_at": "2026-06-01",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN reported Trump had returned the draft MOU seeking tougher nuclear and Hormuz language; the latest known U.S. action was revision, not formal termination."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti direct video identity and channel index; contemporaneous CNN and Reuters reporting on the June 1 suspension of U.S.-Iran talks; reporting on Trump's requested MOU revisions and public statements that talks were continuing.",
+        "checked_at": "2026-09-24T00:34:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The documented immediate cause of the June 1 breakdown was Iran's suspension of talks over Israel's Lebanon operations. Trump had sought changes to the draft and could have affected negotiations, but reviewed evidence did not establish that he terminated the peace deal.",
+        "search_notes": "This is an agency-reversal finding. Hard bargaining or requested amendments are not equivalent to terminating negotiations, particularly where the other party publicly suspended them.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Keep separate from the later June signed MOU and from the distinct Valenti claim that Israel terminated the MOU.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The immediate negotiating-breakdown attribution is factually separable from broader judgments about responsibility for the conflict.",
+      "public_bullshit_summary": "Iran suspended the talks over Israel's Lebanon campaign while Trump said negotiations were still continuing. Valenti reassigned the breakdown to Trump and called it a terminated peace deal."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-09-23",
+      "first_observed_at": "2026-09-23",
+      "statement_identity": "Publisher headline described Trump's September 22 UN speech as being about nuking Iran.",
+      "source_information_event_id": "VALENTI-CHANNEL-INDEX-UN-NUKING-IRAN-20260923",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication converts Trump's explicit annihilation threat and Iran nuclear-program discussion into a specific U.S. nuclear-use framing not present in the preserved speech transcript.",
+          "inference_limit": "The finding scores the publisher's specific 'nuking Iran' presentation. It does not minimize Trump's explicit threat to annihilate Iran or infer the absence of undisclosed nuclear planning."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-UN-NUKING-CHANNEL-20260923",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/@valentivideos",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": "2026-09-23",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump's UN speech about NUKING IRAN, renaming AI to \"SUPER INTELLIGENCE\" and conquering Greenland",
+          "receipt_limit": "Current channel index preserves title, publisher, relative publication time and runtime. Direct watch ID was not recovered in this collection pass and remains queued for receipt upgrade."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-UN-TRANSCRIPT-20260922",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-speech-81st-united-nations-general-assembly-september-22-2026/",
+          "archive_url": null,
+          "published_at": "2026-09-22",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The transcript records Trump threatening to 'annihilate the Islamic Republic' while separately saying Iran will never have a nuclear weapon; the reviewed speech does not state that the United States will use nuclear weapons against Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-UN-REUTERS-20260922",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/americas/trump-set-whirlwind-un-meetings-with-wars-iran-ukraine-agenda-2026-09-22/",
+          "archive_url": null,
+          "published_at": "2026-09-22",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump's threat to annihilate Iran if no deal is reached and his insistence Iran never obtain a nuclear weapon; it did not report a U.S. nuclear-use threat."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti channel-index headline, complete preserved UN speech transcript, Reuters/AP reporting and video summaries of the September 22 UN address.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump explicitly threatened to annihilate Iran and discussed Iran's nuclear program, but the preserved speech does not say he would nuke Iran or use U.S. nuclear weapons.",
+        "search_notes": "The factual substrate is extremely escalatory rhetoric. The unsupported mutation is the specific nuclear-use characterization.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Direct Valenti watch ID should replace/supplement the channel-index receipt when recovered. That receipt upgrade does not affect current publication-level adjudication.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Keep the nuclear-use proposition separate from the supported annihilation threat and Iran nuclear-program discussion.",
+      "public_bullshit_summary": "Trump threatened to annihilate Iran and vowed to prevent an Iranian nuclear weapon. The preserved UN speech does not say the U.S. would nuke Iran; Valenti's headline adds that specific nuclear-use claim."
     },
     {
       "incident_id": "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
@@ -5013,7 +6652,100 @@
       },
       "downstream_note": "A genuine munitions-shortage story is preserved as the substrate; the whole-force zero-inventory generalization is the scored behavior.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
-      "review_reason": "Canonical readiness/inventory propositions remain distinct from this source-presentation finding."
+      "review_reason": "Canonical readiness/inventory propositions remain distinct from this source-presentation finding.",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "This scored current-events publication is part of a repeated pattern of unsupported/materially distorted sensational news packaging by a publisher that directly solicits recurring Patreon support and merchandise purchases to sustain Valenti Videos.",
+          "inference_limit": "The finding does not infer the creator's private motive from revenue alone. It is based on repeated scored publication behavior plus direct public support solicitation for continued output."
+        }
+      },
+      "narrative_chain_id": "VALENTI-CHAIN-US-MUNITIONS-DEPLETION-20260720-20260806",
+      "narrative_chain_sequence": 2
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-07-20",
+      "first_observed_at": "2026-07-20",
+      "statement_identity": "Publisher headline stated that the United States was running out of ammunition while accurately reporting 17 U.S. service members killed in action.",
+      "source_information_event_id": "VALENTI-YT-IrZ6HEpHoIE",
+      "narrative_chain_id": "VALENTI-CHAIN-US-MUNITIONS-DEPLETION-20260720-20260806",
+      "narrative_chain_sequence": 1,
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication paired an accurate U.S. casualty count with a categorical whole-force ammunition claim stronger than the contemporaneous evidence, which showed serious depletion in selected munitions rather than the United States being out of ammunition.",
+          "inference_limit": "The finding preserves the real and strategically important U.S. munitions shortage. It does not claim inventories were healthy or that no individual munition type was critically constrained."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-17-KIA-RUNS-OUT-AMMO-YT-20260720",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=IrZ6HEpHoIE",
+          "archive_url": null,
+          "published_at": "2026-07-20",
+          "captured_at": "2026-09-24T01:56:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "17 U.S service members KILLED IN ACTION as the U.S RUNS OUT OF AMMO!"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-MUNITIONS-LOW-AJ-20260715",
+          "surface": "WEBSITE",
+          "url": "https://www.aljazeera.com/news/2026/7/15/as-the-us-restarts-war-on-iran-is-its-weapons-stockpile-running-low",
+          "archive_url": null,
+          "published_at": "2026-07-15",
+          "captured_at": "2026-09-24T01:56:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Contemporaneous reporting described significant depletion of selected U.S. munitions and asked whether stockpiles were running low; it did not establish a whole-force zero-ammunition condition."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-MUNITIONS-ENOUGH-CSIS-20260527",
+          "surface": "WEBSITE",
+          "url": "https://www.csis.org/analysis/rebuilding-us-missile-inventory-multiyear-project",
+          "archive_url": null,
+          "published_at": "2026-05-27",
+          "captured_at": "2026-09-24T01:56:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CSIS assessed that key inventories had been heavily depleted but that the United States still had enough munitions for plausible Iran-war scenarios, while facing replenishment and Pacific-readiness risks."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-US-17-KIA-CBS-20260720",
+          "surface": "WEBSITE",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-trump-strait-of-hormuz-attacks-persian-gulf/",
+          "archive_url": null,
+          "published_at": "2026-07-20",
+          "captured_at": "2026-09-24T01:56:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CBS reported 17 U.S. service members killed and more than 400 wounded while U.S. forces continued a ninth straight night of strikes, supporting the casualty figure but not a whole-force claim that the U.S. had run out of ammunition."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti's July 20 headline; contemporaneous reporting on the 17 U.S. deaths and U.S. strike activity; pre-publication CSIS inventory analysis; reporting on depleted Patriot, THAAD and long-range precision-munition stocks.",
+        "checked_at": "2026-09-24T01:56:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The 17-dead casualty number and severe depletion of selected munition categories were supported. The reviewed evidence did not establish that the United States or U.S. military as a whole had run out of ammunition.",
+        "search_notes": "This incident scores only the ammunition generalization. The accurate casualty count is explicitly preserved as factual substrate. The publication begins a later repeated Valenti narrative that escalates to 'U.S. military is out of ammo' on August 4 and 'Trump admits the U.S. is out of ammo' on August 6.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Treat as sequence 1 of the Valenti U.S.-munitions-depletion narrative chain; later August 4 and August 6 publications are distinct repetitions/reframings and remain separately documented.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical munitions-readiness facts remain upstream. WOL scores the publication's categorical whole-force generalization while preserving the real depletion substrate.",
+      "public_bullshit_summary": "The 17 U.S. deaths were real, and key missile inventories were badly depleted. But 'the U.S. runs out of ammo' generalized serious shortages in selected weapons into a whole-force zero-ammunition claim the evidence did not support."
     },
     {
       "incident_id": "WOL-BS-WMX-EILAT-DAYTONA-20260315",

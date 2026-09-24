@@ -213,10 +213,112 @@ assert any(row["url"].endswith("ESojA5kxiFY") for row in body_queue)
 assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
 assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
 assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
-assert valenti_lead["review_completion"]["qualifying_incident_count"] == 9
-assert valenti_lead["review_completion"]["status"] == "CURRENT_SOURCE_PASS_COMPLETED_THROUGH_2026-09-23_WITH_BODY_GATED_QUEUE_RETAINED"
+assert valenti_lead["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
+assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
+assert valenti_lead["review_progress"]["corpus_completion_claim"] == "CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS_REVIEWED"
+assert valenti_lead["review_progress"]["resolved_nonincident_count"] == 22
+resolved_nonincidents = {
+    row["review_id"]: row
+    for row in valenti_lead["resolved_nonincident_reviews"]
+}
+for resolved_id in (
+    "VALENTI-NONINCIDENT-PILOT-7000FT-202609",
+    "VALENTI-NONINCIDENT-G7-NUKED-SELLERS-202606",
+    "VALENTI-NONINCIDENT-KHAMENEI-ASSASSINATION-20260302",
+    "VALENTI-NONINCIDENT-MAY5-CHILDREN-NUKE-20260505",
+    "VALENTI-NONINCIDENT-IRAN-WAR-2029",
+    "VALENTI-NONINCIDENT-LINCOLN-JUMPING-SHIP",
+    "VALENTI-NONINCIDENT-JUL27-ALLOWS-MISSILES",
+    "VALENTI-NONINCIDENT-EUROPE-BASE-THREAT-202608",
+    "VALENTI-NONINCIDENT-GENERALS-TURN-AGAINST-EXTENSION-202608",
+    "VALENTI-NONINCIDENT-CATERING-DECOY-SAM-GOLF-202608",
+    "VALENTI-NONINCIDENT-HOUTHI-MECCA-DRONE-CLAIM-202609",
+    "VALENTI-NONINCIDENT-LARGEST-ATTACK-WARSHIPS-BASES-202609",
+):
+    assert resolved_id in resolved_nonincidents
+    assert resolved_nonincidents[resolved_id]["disposition"].startswith("NOT_PROMOTED")
+assert len(valenti_lead["review_progress"]["currently_preserved_unscored_candidates"]) >= 9
+candidate_status = {
+    row["research_item_id"]: row["status"]
+    for row in valenti_lead["review_progress"]["currently_preserved_unscored_candidates"]
+}
+assert candidate_status["VALENTI-CANDIDATE-US-BASES-COMPLETELY-DESTROYED-20260917"] == "EXCLUDED_PENDING_NEW_EVIDENCE"
+assert candidate_status["VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721"] == "RESOLVED_NOT_PROMOTED_CONTEMPORANEOUS_WITHHOLDING_SUBSTRATE"
+assert candidate_status["VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727"] == "EXCLUDED_PENDING_NEW_EVIDENCE"
+for promoted_candidate in (
+    "VALENTI-CANDIDATE-NEGOTIATING-TEAM-ASSASSINATION-2026",
+    "VALENTI-CANDIDATE-KEY-WEST-FALSE-FLAG-2026",
+    "VALENTI-CANDIDATE-ONE-TRILLION-SURRENDER-2026",
+    "VALENTI-CANDIDATE-GROUND-INVASION-2026",
+    "VALENTI-CANDIDATE-CUBA-IRAN-SIMULTANEOUS-2026",
+    "VALENTI-CANDIDATE-NUKE-ASK-20260421",
+):
+    assert candidate_status[promoted_candidate] == "PROMOTED_WOL_INCIDENT"
+assert candidate_status["VALENTI-CANDIDATE-ISRAEL-TERMINATES-MOU-202606"] == "PROMOTED_WOL_INCIDENT_DEDUPLICATED_INFORMATION_EVENT"
 assert valenti_lead["solicitation_review"]["fundraiser_destination_status"] == "NOT_INDEPENDENTLY_LOCATED_IN_REVIEWED_PUBLIC_LINKS"
-assert "does not establish" in valenti_lead["solicitation_review"]["inference_limit"]
+assert "not proof" in valenti_lead["solicitation_review"]["inference_limit"]
+assert valenti_lead["solicitation_review"]["patreon_scale_observation"]["displayed_member_count_approx"] == 2200
+assert valenti_lead["solicitation_review"]["patreon_scale_observation"]["gross_ceiling_if_all_displayed_members_paid_usd_per_month"] == 11000
+
+valenti_profile = profiles["WOL-SRC-VALENTI-VIDEOS"]
+assert set(valenti_profile["behavior_classes"]) == {"MONETIZED_INFLUENCER", "NEWS_GRIFT"}
+assert {row["role_code"] for row in valenti_profile["claimed_roles"]} == {"HISTORIAN"}
+historian_role = next(row for row in valenti_profile["claimed_roles"] if row["role_code"] == "HISTORIAN")
+assert len(historian_role["public_receipts"]) >= 2
+assert any("valentivideos.com" in row["url"] for row in historian_role["public_receipts"])
+assert len(valenti_lead["direct_receipt_upgrade_queue"]) >= 3
+direct_upgrade_status = {
+    row["research_item_id"]: row["status"]
+    for row in valenti_lead["direct_receipt_upgrade_queue"]
+}
+assert direct_upgrade_status["VALENTI-DIRECT-ID-UN-NUKING-20260923"] == "DIRECT_WATCH_ID_NOT_YET_RECOVERED"
+assert direct_upgrade_status["VALENTI-DIRECT-ID-CHINA-NUCLEAR-WAR-20260922"] == "DIRECT_WATCH_ID_NOT_YET_RECOVERED"
+assert direct_upgrade_status["VALENTI-DIRECT-BODY-E6B-NUCLEAR-202609"] == "ORIGINAL_ID_RECOVERED_PAGE_BODY_NOT_MACHINE_RECOVERED"
+assert valenti_lead["historian_role_review"]["self_claim_status"] == "PUBLICLY_VERIFIED"
+assert len(valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]) == 3
+assert valenti_lead["historian_role_review"]["status"] == "CLOSED_PENDING_NEW_SOURCE_EVIDENCE"
+assert all(
+    row["capture_status"] == "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED"
+    for row in valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]
+)
+assert all(
+    row["final_pass_status"] == "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
+    for row in valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]
+)
+assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
+assert valenti_lead["review_completion"]["documented_incident_count"] == 24
+assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22
+assert valenti_lead["review_completion"]["unresolved_excluded_count"] == 7
+assert valenti_lead["review_completion"]["next_action"] == "NONE_UNLESS_NEW_EVIDENCE"
+
+news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
+assert len(news_grift_basis) == 17
+assert news_grift_basis <= set(behavior_incidents)
+assert all(
+    "NEWS_GRIFT" in behavior_incidents[incident_id].get("behavior_findings", [])
+    for incident_id in news_grift_basis
+)
+assert valenti_profile["grift_pattern_review"]["status"] == "INCIDENT_GATED_PATTERN_ESTABLISHED"
+assert set(valenti_profile["grift_pattern_review"]["basis_incident_ids"]) == news_grift_basis
+assert valenti_profile["grift_pattern_review"]["same_publication_linkage"]["incident_id"] == "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803"
+assert "estimated Patreon income" in valenti_profile["grift_pattern_review"]["excluded_inputs"]
+
+# Monetization/profile receipts alone cannot sustain the incident-gated adverse
+# class. Removing NEWS_GRIFT from the scored basis incidents must invalidate
+# the profile classification.
+no_grift_incident_basis = copy.deepcopy(assembled)
+for row in no_grift_incident_basis["source_behavior_incidents"]:
+    if row["source_id"] == "WOL-SRC-VALENTI-VIDEOS":
+        row["behavior_findings"] = [
+            value for value in row.get("behavior_findings", [])
+            if value != "NEWS_GRIFT"
+        ]
+try:
+    wol.build_registry(canonical, no_grift_incident_basis, governance)
+except ValueError as exc:
+    assert "class NEWS_GRIFT is not supported" in str(exc)
+else:
+    raise AssertionError("Valenti NEWS_GRIFT survived after incident basis was removed")
 
 nuke_jets = next(row for row in body_queue if row["research_item_id"] == "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026")
 assert nuke_jets["url"].endswith("b44N3cLIDrA")
@@ -245,11 +347,26 @@ assert "nuclear-warhead use" in behavior_incidents["WOL-BS-VALENTI-CANCELS-NUCLE
 # transcript gate for claims about what was said inside a video.
 valenti_incident_ids = {
     "WOL-BS-VALENTI-OFFICIAL-SURRENDER-20260618",
+    "WOL-BS-VALENTI-NEGOTIATING-TEAM-ASSASSINATION",
+    "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
+    "WOL-BS-VALENTI-MAR3-NUCLEAR-WAR-20260303",
+    "WOL-BS-VALENTI-IRAN-WAR-CANCEL-2028-ELECTION",
+    "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+    "WOL-BS-VALENTI-CUBA-INVASION-IMMINENT",
+    "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
+    "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
+    "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+    "WOL-BS-VALENTI-TRUMP-TERMINATED-PEACE-DEAL-202606",
+    "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
+    "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
+    "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+    "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
     "WOL-BS-VALENTI-RUSSIAN-INVASION-POLAND-IMMINENT-20260703",
     "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
     "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
     "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
     "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+    "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720",
     "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
     "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
     "WOL-BS-VALENTI-31M-SOLDIERS-20260917",
@@ -260,8 +377,18 @@ valenti_all_incident_ids = {
     for incident_id, incident in behavior_incidents.items()
     if incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
 }
+ammo_chain = [
+    behavior_incidents["WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720"],
+    behavior_incidents["WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"],
+    behavior_incidents["WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806"],
+]
+assert [row["narrative_chain_sequence"] for row in ammo_chain] == [1, 2, 3]
+assert {row["narrative_chain_id"] for row in ammo_chain} == {
+    "VALENTI-CHAIN-US-MUNITIONS-DEPLETION-20260720-20260806"
+}
+
 assert valenti_all_incident_ids == valenti_incident_ids
-assert len(valenti_all_incident_ids) == 9
+assert len(valenti_all_incident_ids) == 24
 for incident_id in valenti_incident_ids:
     incident = behavior_incidents[incident_id]
     assert incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
@@ -286,7 +413,7 @@ assert set(valenti_award["qualifying_incident_ids"]) == {
     "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
     "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
 }
-assert valenti_award["documented_incident_count"] == 9
+assert valenti_award["documented_incident_count"] == 24
 assert set(valenti_award["documented_incident_ids"]) == valenti_all_incident_ids
 assert valenti_award["current_window_status"] == "EARNED_HISTORICAL"
 assert valenti_award["currently_active"] is False

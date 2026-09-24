@@ -118,7 +118,7 @@ assert profiles["WOL-SRC-VALENTI-VIDEOS"]["direct_verdict"] is None
 # may legitimately mature a disposition as more receipts are found; this older
 # tranche regression must not freeze an earlier research state.
 assert leads["LEAD-VALENTI-VIDEOS"]["current_disposition"] in {
-    "MATERIAL_WOL_HISTORY_FOUND", "UPSTREAM_REVIEW_REQUIRED"
+    "MATERIAL_WOL_HISTORY_FOUND", "UPSTREAM_REVIEW_REQUIRED", "ACTIVE_PATTERN_REVIEW"
 }
 assert leads["LEAD-ETHAN-LEVINS"]["current_disposition"] in {
     "MATERIAL_WOL_HISTORY_FOUND", "UPSTREAM_REVIEW_REQUIRED"
