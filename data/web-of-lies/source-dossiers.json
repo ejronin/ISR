@@ -1715,11 +1715,19 @@
           "Official merchandise store is live.",
           "Recent mirrored Valenti video descriptions direct viewers to Patreon as the best way to support Valenti Videos and separately promote merchandise.",
           "No distinct ValentiVideos GoFundMe or other fundraiser destination was located in current targeted public searches."
-        ]
+        ],
+        "patreon_scale_observation": {
+          "observed_by": "PROJECT_OWNER",
+          "observed_at": "2026-09-23",
+          "displayed_member_count_approx": 2200,
+          "paid_tier_price_usd_per_month": 5,
+          "gross_ceiling_if_all_displayed_members_paid_usd_per_month": 11000,
+          "evidentiary_limit": "Patreon exposes free-follow membership as well as a $5 paid subscription. The displayed member count has not been independently established here as paid-member count, so $11,000/month is a mathematical ceiling under the all-paid assumption, not verified revenue."
+        }
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 12,
+        "promoted_incident_count": 14,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -1751,7 +1759,7 @@
             "research_item_id": "VALENTI-CANDIDATE-GROUND-INVASION-2026",
             "title": "Trump announces FULL SCALE GROUND INVASION of Iran",
             "url": "https://www.youtube.com/watch?v=OzH543I4fZQ",
-            "status": "BODY_AND_ANNOUNCEMENT_PROPOSITION_REVIEW_REQUIRED"
+            "status": "PROMOTED_WOL_INCIDENT"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-NEGOTIATING-TEAM-ASSASSINATION-2026",
@@ -1769,7 +1777,7 @@
             "research_item_id": "VALENTI-CANDIDATE-CUBA-IRAN-SIMULTANEOUS-2026",
             "title": "We are ABOUT to Invade Cuba, and bomb Iran AT THE SAME TIME",
             "url": "https://www.youtube.com/watch?v=DNooOvyU6-g",
-            "status": "FACTUAL_BASIS_AND_BODY_REVIEW_REQUIRED"
+            "status": "PROMOTED_WOL_INCIDENT"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-ONE-TRILLION-SURRENDER-2026",
@@ -4712,6 +4720,111 @@
         "observation": "Valenti is reported to have used 'nuclear strike' literally to mean nuclear-warhead use against Iran, not a conventional strike on nuclear facilities.",
         "transcript_status": "NOT_MACHINE_RECOVERED"
       }
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-CUBA-INVASION-IMMINENT",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that the United States was about to invade Cuba while bombing Iran.",
+      "source_information_event_id": "VALENTI-YT-DNooOvyU6-g",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-CUBA-INVASION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=DNooOvyU6-g",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=DNooOvyU6-g",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "We are ABOUT to Invade Cuba, and bomb Iran AT THE SAME TIME"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CUBA-NO-IMMINENT-ACTION-AP-2026",
+          "surface": "WEBSITE",
+          "url": "https://apnews.com/article/26b89fa6c057eb419d099a39e38d5b98",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "AP reported U.S. officials saying the administration was not looking at imminent military action against Cuba despite Trump's threats and coercive pressure."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title and contemporaneous AP reporting on U.S. Cuba policy, military-action planning, threats and whether action was imminent.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The United States was applying pressure to Cuba and military contingencies were part of the broader environment, but reviewed U.S.-official reporting said imminent military action was not planned.",
+        "search_notes": "The Iran-bombing component had an observable factual substrate and is not scored here. The WOL finding is limited to the asserted imminent Cuba invasion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Score only the Cuba-invasion/imminence proposition. Do not use this incident to negate supported U.S. operations against Iran.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "The Cuba invasion proposition is a separable factual claim from contemporaneous Iran operations.",
+      "public_bullshit_summary": "Washington was pressuring Cuba, but contemporaneous reporting said imminent U.S. military action was not planned. Valenti presented a Cuba invasion as about to happen."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline stated that Trump announced a full-scale ground invasion of Iran.",
+      "source_information_event_id": "VALENTI-YT-OzH543I4fZQ",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-GROUND-INVASION-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=OzH543I4fZQ",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=OzH543I4fZQ",
+          "published_at": null,
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump announces FULL SCALE GROUND INVASION of Iran"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-KHARG-TAKE-REUTERS-20260611",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/trump-tells-fox-news-hed-like-take-irans-kharg-island-2026-06-11/",
+          "archive_url": null,
+          "published_at": "2026-06-11",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump saying he would like to take Kharg Island while questioning public appetite for further escalation; this was not a full-scale ground-invasion announcement."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NO-FULL-GROUND-ORDER-MILITARY-20260330",
+          "surface": "WEBSITE",
+          "url": "https://www.military.com/benefits/2026/03/30/us-ground-forces-arrive-middle-east-iran-conflict-escalates.html",
+          "archive_url": null,
+          "published_at": "2026-03-30",
+          "captured_at": "2026-09-23T20:13:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Contemporaneous military reporting stated there had been no official announcement that U.S. ground troops entered Iran or that a full-scale ground invasion had been ordered."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title plus contemporaneous reporting on Trump's Kharg Island statements, force posture, and whether a full-scale invasion had been announced or ordered.",
+        "checked_at": "2026-09-23T20:13:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump publicly floated taking Kharg Island and other escalatory options, but the reviewed record did not establish an announcement or order for a full-scale ground invasion of Iran.",
+        "search_notes": "The headline converts a real discussion of possible limited seizure/ground operations into an announced full-scale invasion. The limited-ground-operation substrate is preserved; only the stronger announcement is scored.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not infer that no ground operation was contemplated. The scored proposition is the publisher's stronger claim that a full-scale invasion had been announced.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical force-posture and Kharg-operation propositions remain upstream; WOL scores the publisher-authored escalation in presentation.",
+      "public_bullshit_summary": "Trump had floated taking Kharg Island and other escalatory options. That is not the same thing as announcing a full-scale invasion of Iran."
     },
     {
       "incident_id": "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
