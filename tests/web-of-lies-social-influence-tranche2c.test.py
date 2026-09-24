@@ -402,25 +402,28 @@ assert len(valenti_awards) == 1
 valenti_award = valenti_awards[0]
 assert valenti_award["award_code"] == "BULLSHITTER"
 assert valenti_award["public_label"] == "Bullshitter"
-assert valenti_award["qualifying_window_start"] == "2026-07-22T00:00:00"
-assert valenti_award["qualifying_window_end"] == "2026-08-06T00:00:00"
+assert valenti_award["qualifying_window_start"] == "2026-07-20T00:00:00"
+assert valenti_award["qualifying_window_end"] == "2026-08-04T00:00:00"
 assert valenti_award["qualifying_incident_count"] == 6
 assert set(valenti_award["qualifying_incident_ids"]) == {
+    "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720",
     "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
     "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
     "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
     "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
     "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
-    "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
 }
 assert valenti_award["documented_incident_count"] == 24
 assert set(valenti_award["documented_incident_ids"]) == valenti_all_incident_ids
 assert valenti_award["current_window_status"] == "EARNED_HISTORICAL"
 assert valenti_award["currently_active"] is False
-assert valenti_award["current_window_incident_count"] == 1
-assert valenti_award["current_window_incident_ids"] == [
-    "WOL-BS-VALENTI-31M-SOLDIERS-20260917"
-]
+assert valenti_award["current_window_incident_count"] == 4
+assert set(valenti_award["current_window_incident_ids"]) == {
+    "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
+    "WOL-BS-VALENTI-31M-SOLDIERS-20260917",
+    "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+    "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
+}
 
 # The Bullshitter award is independent from legacy direct_verdict / Hall class
 # scoring. Valenti earns the award from WOL-native incidents while his
