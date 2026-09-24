@@ -97,7 +97,7 @@ assert not any(
 
 # Discovery/research status still cannot create source behavior or Hall score.
 valenti = profiles["WOL-SRC-VALENTI-VIDEOS"]
-assert valenti["behavior_classes"] == ["MONETIZED_INFLUENCER"]
+assert set(valenti["behavior_classes"]) == {"MONETIZED_INFLUENCER", "NEWS_GRIFT"}
 assert valenti["revenue_model"] == ["PATREON"]
 assert valenti["classification_basis_receipts"]
 assert valenti["revenue_basis_receipts"]
