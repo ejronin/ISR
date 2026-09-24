@@ -1900,7 +1900,7 @@
           "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
           "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
         ],
-        "resolved_nonincident_count": 14
+        "resolved_nonincident_count": 16
       },
       "historian_role_review": {
         "status": "ACTIVE_SOURCE_RECOVERY",
@@ -2046,6 +2046,20 @@
           "url": "https://www.youtube.com/watch?v=K8PzTdiPf6k",
           "disposition": "NOT_PROMOTED_REAL_RUSSIAN_SUPPORT_SUBSTRATE_AND_ANALYSIS",
           "basis": "The 'U.S. losing' portion is strategic analysis. Contemporaneous reporting documented Russian intelligence/targeting support to Iran against U.S. forces, giving substantial factual substrate to Valenti's 'Russia joins the Iranians' description. Do not score 'world war' rhetoric absent a narrower false factual proposition."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-US-MILITARY-COLLAPSING-202609",
+          "title": "The United States Military is literally collapsing in front of our very eyes",
+          "url": "https://www.youtube.com/watch?v=xyPdC6KzRKg",
+          "disposition": "NOT_PROMOTED_EVALUATIVE_COLLAPSE_LABEL_OVER_REAL_READINESS_STRAIN",
+          "basis": "Current public evidence establishes severe Iran-war pressure on U.S. readiness and munitions stocks, including critical Patriot shortages in Europe and near-exhaustion of some long-range precision-missile inventories. 'Literally collapsing' is an elastic evaluative characterization rather than a sufficiently atomic factual proposition at title level. Retain for body review only if Valenti states narrower falsifiable capability claims."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-WW3-HAS-BEGUN-202607",
+          "title": "WW3 has begun",
+          "url": "https://www.youtube.com/watch?v=RqDZyuJkyk0",
+          "disposition": "NOT_PROMOTED_GEOPOLITICAL_LABEL_NOT_ATOMIC_FACT",
+          "basis": "Whether a multi-theater conflict constitutes 'World War III' is a contested geopolitical classification, not a sufficiently bounded factual proposition at title level. Do not score the label itself; review any narrower body claims separately if recovered."
         }
       ]
     }
