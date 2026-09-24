@@ -1898,7 +1898,7 @@
           "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
           "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
         ],
-        "resolved_nonincident_count": 12
+        "resolved_nonincident_count": 14
       },
       "historian_role_review": {
         "status": "ACTIVE_SOURCE_RECOVERY",
@@ -2023,6 +2023,20 @@
           "title": "Iran launches its LARGEST ATTACK YET on American WARSHIPS and bases in the Middle East",
           "disposition": "NOT_PROMOTED_MAJOR_ESCALATION_SUBSTRATE_SUPPORTED",
           "basis": "Contemporaneous Reuters/AP reporting documented ballistic-missile attacks on U.S. warships and a U.S. base within a major September escalation, with Reuters describing the wider shipping attack wave as the biggest since the war began. The comparative superlative is not clean enough to score as unsupported on the reviewed record."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-US-WILL-LOSE-20260305",
+          "title": "The United States will LOSE the war against Iran",
+          "url": "https://www.youtube.com/watch?v=fjqCXOIhaNY",
+          "disposition": "NOT_PROMOTED_PREDICTION_STRATEGIC_ASSESSMENT",
+          "basis": "The headline is a future strategic prediction/assessment, not a presently falsifiable factual assertion. WOL governance does not score prediction failure alone. The video remains relevant to monetized-pattern context because its description contains the recurring Patreon/merch support solicitation."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-RUSSIA-JOINS-IRANIANS-20260306",
+          "title": "Trump PANICS as U.S begins to LOSE THE WAR!",
+          "url": "https://www.youtube.com/watch?v=K8PzTdiPf6k",
+          "disposition": "NOT_PROMOTED_REAL_RUSSIAN_SUPPORT_SUBSTRATE_AND_ANALYSIS",
+          "basis": "The 'U.S. losing' portion is strategic analysis. Contemporaneous reporting documented Russian intelligence/targeting support to Iran against U.S. forces, giving substantial factual substrate to Valenti's 'Russia joins the Iranians' description. Do not score 'world war' rhetoric absent a narrower false factual proposition."
         }
       ]
     }
