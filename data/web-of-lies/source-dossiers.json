@@ -860,6 +860,7 @@
       "classification_basis_event_ids": [
         "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
         "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+        "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
         "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
         "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
         "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
@@ -970,6 +971,7 @@
         "basis_incident_ids": [
           "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
           "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+          "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
           "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
           "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
           "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
@@ -985,7 +987,7 @@
           "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
           "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
         ],
-        "promoted_valenti_incident_count": 22,
+        "promoted_valenti_incident_count": 23,
         "monetization_receipts": [
           "https://www.patreon.com/cw/ValentiVideos",
           "https://www.youtube.com/watch?v=0ZArFpj6zyA",
@@ -1717,7 +1719,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. Twenty-two distinct incidents are currently promoted/scored after same-information-event deduplication, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
+      "notes": "Valenti remains under active pattern review. 23 distinct incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1817,7 +1819,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 22,
+        "promoted_incident_count": 23,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -1942,6 +1944,13 @@
           "title": "The Iran War escalates while Trump almost starts a NUCLEAR WAR with CHINA",
           "channel_index_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
           "status": "DIRECT_WATCH_ID_NOT_YET_RECOVERED"
+        },
+        {
+          "research_item_id": "VALENTI-DIRECT-BODY-E6B-NUCLEAR-202609",
+          "title": "Original Chris Valenti E-6B / nuclear-war video identified by Ryan McBeth",
+          "url": "https://www.youtube.com/watch?v=dctkpvgsyw8",
+          "status": "ORIGINAL_ID_RECOVERED_PAGE_BODY_NOT_MACHINE_RECOVERED",
+          "required_next_evidence": "DIRECT_PAGE_OR_MIRROR_PLUS_CAPTION_OR_TIMESTAMPED_BODY"
         }
       ],
       "resolved_nonincident_reviews": [
@@ -5092,6 +5101,85 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "The Cuba invasion proposition is a separable factual claim from contemporaneous Iran operations.",
       "public_bullshit_summary": "Washington was pressuring Cuba, but contemporaneous reporting said imminent U.S. military action was not planned. Valenti presented a Cuba invasion as about to happen."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": "2026-09-03",
+      "statement_identity": "Valenti publication argued that five airborne E-6B Mercury aircraft were evidence that the United States was preparing to use nuclear weapons against Iran.",
+      "source_information_event_id": "VALENTI-YT-dctkpvgsyw8",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "A routine/ambiguous strategic-aviation observation was connected to imminent or preparatory U.S. nuclear use against Iran without public evidence establishing that operational intent, within Valenti's broader monetized pattern of sensational unsupported Iran-war escalation claims.",
+          "inference_limit": "The E-6B is genuinely part of U.S. nuclear command-and-control infrastructure, and multiple aircraft were reportedly airborne. The finding scores the unsupported bridge from capability/flight activity to preparation for nuclear use against Iran; it does not claim the flights were meaningless or prove every aircraft was part of AMALGAM DART."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-E6B-ORIGINAL-ID-202609",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=dctkpvgsyw8",
+          "archive_url": null,
+          "published_at": null,
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_NOT_RECOVERED",
+          "deletion_status": "POST_CURRENTLY_UNAVAILABLE",
+          "text_excerpt": "Original Valenti video ID is preserved by Ryan McBeth's September 3 response; the Valenti page itself was not machine-retrievable in this review pass."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-MCBETH-VALENTI-E6B-20260903",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=VBYZ8PyPe9k",
+          "archive_url": "https://ryanmcbeth.substack.com/p/chris-valenti-is-lying-about-nuclear",
+          "published_at": "2026-09-03",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Ryan McBeth identifies the original Chris Valenti video and describes Valenti's proposition as treating five E-6B Mercury 'doomsday planes' as proof the United States was preparing to use nuclear weapons against Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NORAD-AMALGAM-DART-ANNOUNCED-20260820",
+          "surface": "WEBSITE",
+          "url": "https://www.norad.mil/Newsroom/Press-Releases/Article/4578809/norad-and-usnorthcom-to-conduct-exercise-amalgam-dart/",
+          "archive_url": null,
+          "published_at": "2026-08-20",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "NORAD and USNORTHCOM announced AMALGAM DART in advance as a long-planned, routine defensive exercise across North America from August 24 through September 1."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-NORAD-AMALGAM-DART-CONCLUDED-20260902",
+          "surface": "WEBSITE",
+          "url": "https://www.norad.mil/Newsroom/Press-Releases/Article/4588746/norad-and-usnorthcom-conclude-exercise-amalgam-dart/",
+          "archive_url": null,
+          "published_at": "2026-09-02",
+          "captured_at": "2026-09-24T00:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "NORAD said the exercise concluded September 1 after integrated North American air-defense scenarios and described it as planned, routine and closely controlled."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Ryan McBeth's direct attribution and preserved original Valenti video ID; official NORAD AMALGAM DART announcement/conclusion; contemporaneous reporting on the E-6B sightings and CIA Director Ratcliffe's Moscow trip; searches for public confirmation of elevated U.S. nuclear alert or nuclear-use preparations against Iran.",
+        "checked_at": "2026-09-24T00:34:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Multiple E-6B aircraft were reportedly visible and the aircraft has genuine nuclear command-and-control functions. But public evidence did not establish that the flights represented preparation to use nuclear weapons against Iran. A preannounced large NORAD exercise overlapped the period, and no reviewed official source confirmed an extraordinary nuclear-use posture.",
+        "search_notes": "Do not overstate the countercase: official NORAD material does not itself prove every E-6B sortie was part of AMALGAM DART. The unsupported step is Valenti's asserted inference from observed strategic aircraft activity to U.S. preparation for nuclear use against Iran.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Upgrade the original Valenti receipt if the direct page, mirror, caption or timestamped body is recovered. The present incident is limited to the narrower proposition preserved by a directly linked response source.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Capability/flight activity and operational intent are distinct propositions; the latter requires evidence beyond temporal coincidence and aircraft type.",
+      "public_bullshit_summary": "Several E-6B nuclear-command aircraft really were visible during a tense week. That did not establish that the U.S. was preparing to use nuclear weapons against Iran; Valenti connected the flights to nuclear-use intent without evidence supporting that bridge."
     },
     {
       "incident_id": "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
