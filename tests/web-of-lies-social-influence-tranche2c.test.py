@@ -234,6 +234,48 @@ assert "not proof" in valenti_lead["solicitation_review"]["inference_limit"]
 assert valenti_lead["solicitation_review"]["patreon_scale_observation"]["displayed_member_count_approx"] == 2200
 assert valenti_lead["solicitation_review"]["patreon_scale_observation"]["gross_ceiling_if_all_displayed_members_paid_usd_per_month"] == 11000
 
+valenti_profile = profiles["WOL-SRC-VALENTI-VIDEOS"]
+assert set(valenti_profile["behavior_classes"]) == {"MONETIZED_INFLUENCER", "NEWS_GRIFT"}
+assert {row["role_code"] for row in valenti_profile["claimed_roles"]} == {"HISTORIAN"}
+historian_role = next(row for row in valenti_profile["claimed_roles"] if row["role_code"] == "HISTORIAN")
+assert len(historian_role["public_receipts"]) >= 2
+assert any("valentivideos.com" in row["url"] for row in historian_role["public_receipts"])
+assert valenti_lead["historian_role_review"]["self_claim_status"] == "PUBLICLY_VERIFIED"
+assert len(valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]) == 3
+assert all(
+    row["capture_status"] == "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED"
+    for row in valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]
+)
+
+news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
+assert len(news_grift_basis) == 9
+assert news_grift_basis <= set(behavior_incidents)
+assert all(
+    "NEWS_GRIFT" in behavior_incidents[incident_id].get("behavior_findings", [])
+    for incident_id in news_grift_basis
+)
+assert valenti_profile["grift_pattern_review"]["status"] == "INCIDENT_GATED_PATTERN_ESTABLISHED"
+assert set(valenti_profile["grift_pattern_review"]["basis_incident_ids"]) == news_grift_basis
+assert valenti_profile["grift_pattern_review"]["same_publication_linkage"]["incident_id"] == "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803"
+assert "estimated Patreon income" in valenti_profile["grift_pattern_review"]["excluded_inputs"]
+
+# Monetization/profile receipts alone cannot sustain the incident-gated adverse
+# class. Removing NEWS_GRIFT from the scored basis incidents must invalidate
+# the profile classification.
+no_grift_incident_basis = copy.deepcopy(assembled)
+for row in no_grift_incident_basis["source_behavior_incidents"]:
+    if row["source_id"] == "WOL-SRC-VALENTI-VIDEOS":
+        row["behavior_findings"] = [
+            value for value in row.get("behavior_findings", [])
+            if value != "NEWS_GRIFT"
+        ]
+try:
+    wol.build_registry(canonical, no_grift_incident_basis, governance)
+except ValueError as exc:
+    assert "class NEWS_GRIFT is not supported" in str(exc)
+else:
+    raise AssertionError("Valenti NEWS_GRIFT survived after incident basis was removed")
+
 nuke_jets = next(row for row in body_queue if row["research_item_id"] == "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026")
 assert nuke_jets["url"].endswith("b44N3cLIDrA")
 assert nuke_jets["publication_date"] == "2026-07-23"
