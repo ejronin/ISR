@@ -213,12 +213,12 @@
       "acceptance_basis": "PACKET_STATUS_ACCEPTED",
       "evidence_cutoff": "2026-09-23T18:12:00-04:00",
       "known_at": "2026-09-23T22:52:00-04:00",
-      "lineage_sha256": "84f27ea8c82d29b7a1fafd615ad08056c34fa41caeee15c6a0860b2e5ca3d69e",
+      "lineage_sha256": "b6f9a4b11c09904c005271a233b3f6edb7ae1d7d876b16ce000dd5fdc0419fbe",
       "packet_id": "UPD-20260923-ROOK-EVIDENCE-CATCHUP",
       "path": "data/canonical-updates/UPD-20260923-ROOK-EVIDENCE-CATCHUP.json",
       "previous_lineage_sha256": "507f68f015983a305ba3ce40369d874f0a76ba4a9eab151d89d07887283c5088",
       "sequence": 20,
-      "sha256": "8c177434fb4544c78ed383108861808f70364b16e602163389f14a060acd59e4"
+      "sha256": "297a6841a4fba32c0d4ed7a7d7b3c6fe852304c4508a460373d5faf83c9e8788"
     }
   ],
   "artifact_role": "APPEND_ONLY_CANONICAL_UPDATE_LEDGER_REGISTRY_V2",

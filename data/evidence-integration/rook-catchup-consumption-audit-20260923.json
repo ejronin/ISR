@@ -130,6 +130,12 @@
       "topic": "China/Taiwan bargaining report",
       "disposition": "WITHHOLD_FROM_ORDINARY_CURRENT_STATE",
       "note": "Reported negotiating possibility was not an Iran-Gulf operational development and no agreement/implementation was established."
+    },
+    {
+      "topic": "U.S./Iran coercive signaling",
+      "disposition": "PROMOTE_AS_SIGNALING_ONLY",
+      "target": "G3-US-IRAN-COERCIVE-SIGNALING-20260922",
+      "note": "Trump UNGA threat/expected-deal language and Iranian armed-forces/IRGC threat-and-negotiation framing are preserved as public signaling; no new strike order, operational escalation or demobilization inferred."
     }
   ],
   "deliberately_withheld": [

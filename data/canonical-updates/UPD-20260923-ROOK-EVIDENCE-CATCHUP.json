@@ -412,6 +412,24 @@
       ]
     },
     {
+      "event_id": "G3-US-IRAN-COERCIVE-SIGNALING-20260922",
+      "event_date": "2026-09-22",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_IRAN_COERCIVE_SIGNALING",
+      "game_knowledge_time": "2026-09-23T22:52:00-04:00",
+      "public_available_time": "2026-09-22T11:27:07Z",
+      "collection_time": "2026-09-23T00:00:00-04:00",
+      "evidence_horizon_time": "2026-09-23T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "President Trump paired UNGA negotiations with a threat that the Islamic Republic could face destruction without a deal and predicted an eventual agreement, while Iranian armed-forces/IRGC messaging warned of more severe or unpredictable attacks if escalation resumed and characterized negotiation as another arena of conflict while saying Iran could negotiate if national interests required. These are public coercive and negotiating signals; they do not establish new strike orders, operational escalation, or IRGC demobilization.",
+      "source_ids": [
+        "SRC-490F19EC972B",
+        "SRC-147F3EB0E6BC",
+        "SRC-1A15198F0C1F",
+        "SRC-40334FA85350"
+      ]
+    },
+    {
       "event_id": "G3-QATAR-GULF-SECURITY-FRAMEWORK-PROPOSAL-20260922",
       "event_date": "2026-09-22",
       "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
