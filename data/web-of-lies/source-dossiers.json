@@ -1823,19 +1823,22 @@
             "research_item_id": "VALENTI-CANDIDATE-US-BASES-COMPLETELY-DESTROYED-20260917",
             "title": "U.S Soldiers LEAK PHOTOS of our bases in the Middle East; THEY'RE COMPLETELY DESTROYED!",
             "url": "https://www.youtube.com/watch?v=nqd977hHQfM",
-            "status": "UPSTREAM_AND_BODY_REVIEW_REQUIRED"
+            "status": "HELD_FACILITY_LEVEL_MATCH_REQUIRED",
+            "disposition_note": "Independent reporting establishes extensive destruction across multiple U.S. positions. Do not score the word 'completely' without mapping the referenced leaked photos to specific facilities and distinguishing destroyed subfacilities from whole-base operational destruction."
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721",
             "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
             "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
-            "status": "BODY_AND_PROPOSITION_REVIEW_REQUIRED"
+            "status": "TITLE_LEVEL_SUBSTANTIALLY_SUPPORTED_NOT_PROMOTED",
+            "disposition_note": "Subsequent and contemporaneous reporting documented materially delayed/inaccurate U.S. casualty releases, later count increases and reclassification/removal of deaths. The title's concealment allegation has substantial factual substrate; any narrower body proposition would require separate exact review."
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727",
             "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases. Ukraine joins the Iran War.",
             "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
-            "status": "BODY_MOTIVE_PROPOSITION_REVIEW_REQUIRED"
+            "status": "TITLE_LEVEL_SUPPORTED_BODY_MOTIVE_REMAINS_GATED",
+            "disposition_note": "Reporting independently supports deliberate non-interception of some Iranian projectiles, including allowing some to hit empty U.S. bases to conserve interceptors. Only the stronger project-owner-reported motive claim ('did not care' / permitted strikes to provoke anger) remains body-gated."
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-NUKE-ASK-20260421",
@@ -1892,7 +1895,8 @@
           "Ro Khanna detained during West Bank visit: substantial factual substrate exists; do not score merely from compressed headline wording.",
           "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
           "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
-        ]
+        ],
+        "resolved_nonincident_count": 7
       },
       "historian_role_review": {
         "status": "ACTIVE_SOURCE_RECOVERY",
@@ -1936,6 +1940,54 @@
           "title": "The Iran War escalates while Trump almost starts a NUCLEAR WAR with CHINA",
           "channel_index_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
           "status": "DIRECT_WATCH_ID_NOT_YET_RECOVERED"
+        }
+      ],
+      "resolved_nonincident_reviews": [
+        {
+          "review_id": "VALENTI-NONINCIDENT-PILOT-7000FT-202609",
+          "title": "The 'pilot' that was 'shot down' over Iran claims he climbed a 7000 foot mountain with a broken back",
+          "disposition": "NOT_PROMOTED_TITLE_SUBSTANTIALLY_SUPPORTED",
+          "basis": "CBS and Stars and Stripes reported the airman described a broken back/arm/shoulder and climbing a roughly 7,000-foot ridgeline. The headline accurately attributes the account as the pilot's claim. A body-level fabrication accusation, if any, would require separate recovery."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-G7-NUKED-SELLERS-202606",
+          "title": "If anyone gives them a nuclear weapon, they'll be NUKED THEMSELVES!: Trump PANICS at the G7 summit",
+          "url": "https://www.youtube.com/watch?v=9LiqV2UbnCY",
+          "disposition": "NOT_PROMOTED_CORE_QUOTE_SUPPORTED",
+          "basis": "Preserved G7 transcript records Trump saying a country that sells Iran a nuclear weapon would 'get nuked themselves.' Sensational framing does not make the quoted factual proposition false."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-KHAMENEI-ASSASSINATION-20260302",
+          "title": "ALL HELL BREAKS LOOSE after trump ASSASSINATED the Ayatollah of Iran",
+          "url": "https://www.youtube.com/watch?v=hsF8Hv8tKRQ",
+          "disposition": "NOT_PROMOTED_CORE_EVENT_SUPPORTED",
+          "basis": "Contemporaneous reporting attributed Khamenei's death to the joint U.S.-Israeli strike campaign. Personalizing the operation as 'Trump assassinated' is rhetorically compressed but not clean enough for an unsupported-publication finding."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-MAY5-CHILDREN-NUKE-20260505",
+          "title": "Trump tells a group of children that Iran wants to nuke them",
+          "url": "https://www.youtube.com/watch?v=3pAw7suysmU",
+          "disposition": "NOT_PROMOTED_CORE_NUCLEAR_THREAT_MESSAGE_SUPPORTED",
+          "basis": "Trump did tell children that if Iran obtained a nuclear weapon 'maybe we wouldn't all be here' and described catastrophic consequences. The headline crudely imputes intent, but the underlying nuclear-threat message was present."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-IRAN-WAR-2029",
+          "title": "The Iran War will last until 2029 according to the Iranians",
+          "disposition": "NOT_PROMOTED_IRANIAN_STRATEGIC_SUBSTRATE_SUPPORTED",
+          "basis": "Iranian advisory commentary contemplated prolonging the conflict into the next U.S. presidential term / waiting out Trump. The compressed headline has a real source substrate."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-LINCOLN-JUMPING-SHIP",
+          "title": "U.S. sailors jumping ship / Lincoln sailors",
+          "disposition": "NOT_PROMOTED_UNDERLYING_EVENTS_SUPPORTED",
+          "basis": "Military reporting documented multiple overboard/jump incidents or attempts associated with Lincoln sailors, including a sailor recovered after going overboard. Do not score the idiomatic framing alone."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-JUL27-ALLOWS-MISSILES",
+          "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases",
+          "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+          "disposition": "NOT_PROMOTED_AT_TITLE_LEVEL_BODY_MOTIVE_REMAINS_OPEN",
+          "basis": "Independent reporting supports deliberate threat-based non-interception of some Iranian projectiles to conserve interceptors, including permitting strikes on empty U.S. bases. The stronger motive claim reported by the project owner remains transcript/timestamp gated."
         }
       ]
     }
