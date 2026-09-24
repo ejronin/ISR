@@ -214,7 +214,7 @@ assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
 assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
 assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
 assert valenti_lead["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
-assert valenti_lead["review_progress"]["promoted_incident_count"] == 23
+assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
 assert valenti_lead["review_progress"]["corpus_completion_claim"] == "NONE"
 assert valenti_lead["review_progress"]["resolved_nonincident_count"] >= 12
 resolved_nonincidents = {
@@ -356,6 +356,7 @@ valenti_incident_ids = {
     "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
     "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
     "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+    "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720",
     "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
     "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
     "WOL-BS-VALENTI-31M-SOLDIERS-20260917",
@@ -366,8 +367,18 @@ valenti_all_incident_ids = {
     for incident_id, incident in behavior_incidents.items()
     if incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
 }
+ammo_chain = [
+    behavior_incidents["WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720"],
+    behavior_incidents["WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"],
+    behavior_incidents["WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806"],
+]
+assert [row["narrative_chain_sequence"] for row in ammo_chain] == [1, 2, 3]
+assert {row["narrative_chain_id"] for row in ammo_chain} == {
+    "VALENTI-CHAIN-US-MUNITIONS-DEPLETION-20260720-20260806"
+}
+
 assert valenti_all_incident_ids == valenti_incident_ids
-assert len(valenti_all_incident_ids) == 23
+assert len(valenti_all_incident_ids) == 24
 for incident_id in valenti_incident_ids:
     incident = behavior_incidents[incident_id]
     assert incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
@@ -392,7 +403,7 @@ assert set(valenti_award["qualifying_incident_ids"]) == {
     "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
     "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
 }
-assert valenti_award["documented_incident_count"] == 23
+assert valenti_award["documented_incident_count"] == 24
 assert set(valenti_award["documented_incident_ids"]) == valenti_all_incident_ids
 assert valenti_award["current_window_status"] == "EARNED_HISTORICAL"
 assert valenti_award["currently_active"] is False
