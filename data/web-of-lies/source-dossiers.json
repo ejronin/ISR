@@ -859,6 +859,7 @@
       ],
       "classification_basis_event_ids": [
         "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+        "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
         "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
         "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
         "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
@@ -869,6 +870,7 @@
         "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
         "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
         "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+        "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
         "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
       ],
       "revenue_basis_event_ids": [],
@@ -965,6 +967,7 @@
         "status": "INCIDENT_GATED_PATTERN_ESTABLISHED",
         "basis_incident_ids": [
           "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+          "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
           "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
           "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
           "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
@@ -975,9 +978,10 @@
           "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
           "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
           "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+          "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
           "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
         ],
-        "promoted_valenti_incident_count": 18,
+        "promoted_valenti_incident_count": 20,
         "monetization_receipts": [
           "https://www.patreon.com/cw/ValentiVideos",
           "https://www.youtube.com/watch?v=0ZArFpj6zyA",
@@ -1709,7 +1713,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. Eighteen incidents are currently promoted/scored, and additional distinct Iran-war/public-affairs and historian-role candidates remain under evidentiary review. The source has an incident-gated NEWS_GRIFT pattern tied to repeated scored sensational current-events publications plus direct support solicitation; monetization alone is not the basis. Do not treat the promoted register as a completed lifetime corpus.",
+      "notes": "Valenti remains under active pattern review. Twenty incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. Two newest September incidents are preserved from the public channel index pending direct-watch-ID receipt upgrades. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1809,7 +1813,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 18,
+        "promoted_incident_count": 20,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -1917,7 +1921,21 @@
           }
         ],
         "role_failure_rule": "Do not infer historian-role failure from the self-claim alone. Require exact source recovery plus falsifiable historical propositions and documented contrary historical evidence. Repeated source-recovered historical verification failures may support a historian-specific role-failure finding."
-      }
+      },
+      "direct_receipt_upgrade_queue": [
+        {
+          "research_item_id": "VALENTI-DIRECT-ID-UN-NUKING-20260923",
+          "title": "Trump's UN speech about NUKING IRAN, renaming AI to \"SUPER INTELLIGENCE\" and conquering Greenland",
+          "channel_index_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "status": "DIRECT_WATCH_ID_NOT_YET_RECOVERED"
+        },
+        {
+          "research_item_id": "VALENTI-DIRECT-ID-CHINA-NUCLEAR-WAR-20260922",
+          "title": "The Iran War escalates while Trump almost starts a NUCLEAR WAR with CHINA",
+          "channel_index_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "status": "DIRECT_WATCH_ID_NOT_YET_RECOVERED"
+        }
+      ]
     }
   ],
   "source_behavior_incidents": [
@@ -4857,6 +4875,75 @@
       }
     },
     {
+      "incident_id": "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-09-22",
+      "first_observed_at": "2026-09-22",
+      "statement_identity": "Publisher headline stated that Trump almost started a nuclear war with China during the Iran war.",
+      "source_information_event_id": "VALENTI-CHANNEL-INDEX-CHINA-NUCLEAR-WAR-20260922",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication upgrades reporting that a false AI-assisted intelligence report almost triggered an armed U.S.-China confrontation over alleged nuclear-program cargo into the stronger claim that Trump almost started a nuclear war with China.",
+          "inference_limit": "The finding preserves the genuine and serious risk of armed U.S.-China conflict. It scores only the unsupported escalation from 'war' to 'nuclear war.'"
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-CHINA-NUCLEAR-WAR-CHANNEL-20260922",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/@valentivideos",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": "2026-09-22",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Iran War escalates while Trump almost starts a NUCLEAR WAR with CHINA",
+          "receipt_limit": "Current channel index preserves title, publisher, relative publication time and runtime. Direct watch ID was not recovered in this collection pass and remains queued for receipt upgrade."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CNN-CHINA-WAR-AI-20260918",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/cnc/date/2026-09-18/segment/09",
+          "archive_url": null,
+          "published_at": "2026-09-18",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN reported an entirely false AI-assisted intelligence report about a Chinese ship carrying components of a nuclear weapons program; one source said the episode 'almost started a war.'"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-CNN-CHINA-WAR-COOPER-20260918",
+          "surface": "WEBSITE",
+          "url": "https://transcripts.cnn.com/show/acd/date/2026-09-18/segment/01",
+          "archive_url": null,
+          "published_at": "2026-09-18",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "CNN described U.S. aircraft in the air and preparations to board a Chinese vessel before the false report was caught; its source said the report almost started a war, not a nuclear exchange."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti channel-index headline and CNN's original reporting/transcripts on the false AI-assisted intelligence report and planned Chinese-vessel interception.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "CNN's source said the episode almost started 'a war.' The nuclear component concerned the falsely alleged cargo—a nuclear-weapons-program component—not evidence that either side was preparing nuclear weapon use.",
+        "search_notes": "The WOL mutation is category escalation: nuclear-related cargo allegation becomes 'nuclear war.' The underlying near-military confrontation is preserved as genuine.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Direct Valenti watch ID should replace/supplement the channel-index receipt when recovered.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Separate the supported risk of armed U.S.-China conflict from an unsupported claim of near nuclear war.",
+      "public_bullshit_summary": "CNN reported that false AI-assisted intelligence nearly triggered an armed confrontation with China over alleged nuclear-program cargo. Valenti changed 'almost started a war' into 'almost starts a nuclear war with China.'"
+    },
+    {
       "incident_id": "WOL-BS-VALENTI-CUBA-INVASION-IMMINENT",
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
@@ -5822,6 +5909,75 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Preserve the rumor-origin chain separately from any canonical evidence about actual U.S. nuclear planning.",
       "public_bullshit_summary": "An unverified nuclear-use rumor became 'Trump asked to nuke Iran' as a declarative headline, even though the rumor's own source later said he had no confirmation it was verified."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": "2026-09-23",
+      "first_observed_at": "2026-09-23",
+      "statement_identity": "Publisher headline described Trump's September 22 UN speech as being about nuking Iran.",
+      "source_information_event_id": "VALENTI-CHANNEL-INDEX-UN-NUKING-IRAN-20260923",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication converts Trump's explicit annihilation threat and Iran nuclear-program discussion into a specific U.S. nuclear-use framing not present in the preserved speech transcript.",
+          "inference_limit": "The finding scores the publisher's specific 'nuking Iran' presentation. It does not minimize Trump's explicit threat to annihilate Iran or infer the absence of undisclosed nuclear planning."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-UN-NUKING-CHANNEL-20260923",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/@valentivideos",
+          "archive_url": "https://invidious.tiekoetter.com/channel/UC0FzjDUKWHjFFCEqQSljxXg",
+          "published_at": "2026-09-23",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trump's UN speech about NUKING IRAN, renaming AI to \"SUPER INTELLIGENCE\" and conquering Greenland",
+          "receipt_limit": "Current channel index preserves title, publisher, relative publication time and runtime. Direct watch ID was not recovered in this collection pass and remains queued for receipt upgrade."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-UN-TRANSCRIPT-20260922",
+          "surface": "WEBSITE",
+          "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-speech-81st-united-nations-general-assembly-september-22-2026/",
+          "archive_url": null,
+          "published_at": "2026-09-22",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_TRANSCRIPT_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The transcript records Trump threatening to 'annihilate the Islamic Republic' while separately saying Iran will never have a nuclear weapon; the reviewed speech does not state that the United States will use nuclear weapons against Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-TRUMP-UN-REUTERS-20260922",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/americas/trump-set-whirlwind-un-meetings-with-wars-iran-ukraine-agenda-2026-09-22/",
+          "archive_url": null,
+          "published_at": "2026-09-22",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump's threat to annihilate Iran if no deal is reached and his insistence Iran never obtain a nuclear weapon; it did not report a U.S. nuclear-use threat."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Valenti channel-index headline, complete preserved UN speech transcript, Reuters/AP reporting and video summaries of the September 22 UN address.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump explicitly threatened to annihilate Iran and discussed Iran's nuclear program, but the preserved speech does not say he would nuke Iran or use U.S. nuclear weapons.",
+        "search_notes": "The factual substrate is extremely escalatory rhetoric. The unsupported mutation is the specific nuclear-use characterization.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Direct Valenti watch ID should replace/supplement the channel-index receipt when recovered. That receipt upgrade does not affect current publication-level adjudication.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Keep the nuclear-use proposition separate from the supported annihilation threat and Iran nuclear-program discussion.",
+      "public_bullshit_summary": "Trump threatened to annihilate Iran and vowed to prevent an Iranian nuclear weapon. The preserved UN speech does not say the U.S. would nuke Iran; Valenti's headline adds that specific nuclear-use claim."
     },
     {
       "incident_id": "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
