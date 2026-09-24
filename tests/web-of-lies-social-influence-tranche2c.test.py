@@ -216,11 +216,30 @@ assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
 assert valenti_lead["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
 assert valenti_lead["review_progress"]["promoted_incident_count"] == 21
 assert valenti_lead["review_progress"]["corpus_completion_claim"] == "NONE"
+assert valenti_lead["review_progress"]["resolved_nonincident_count"] >= 7
+resolved_nonincidents = {
+    row["review_id"]: row
+    for row in valenti_lead["resolved_nonincident_reviews"]
+}
+for resolved_id in (
+    "VALENTI-NONINCIDENT-PILOT-7000FT-202609",
+    "VALENTI-NONINCIDENT-G7-NUKED-SELLERS-202606",
+    "VALENTI-NONINCIDENT-KHAMENEI-ASSASSINATION-20260302",
+    "VALENTI-NONINCIDENT-MAY5-CHILDREN-NUKE-20260505",
+    "VALENTI-NONINCIDENT-IRAN-WAR-2029",
+    "VALENTI-NONINCIDENT-LINCOLN-JUMPING-SHIP",
+    "VALENTI-NONINCIDENT-JUL27-ALLOWS-MISSILES",
+):
+    assert resolved_id in resolved_nonincidents
+    assert resolved_nonincidents[resolved_id]["disposition"].startswith("NOT_PROMOTED")
 assert len(valenti_lead["review_progress"]["currently_preserved_unscored_candidates"]) >= 9
 candidate_status = {
     row["research_item_id"]: row["status"]
     for row in valenti_lead["review_progress"]["currently_preserved_unscored_candidates"]
 }
+assert candidate_status["VALENTI-CANDIDATE-US-BASES-COMPLETELY-DESTROYED-20260917"] == "HELD_FACILITY_LEVEL_MATCH_REQUIRED"
+assert candidate_status["VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721"] == "TITLE_LEVEL_SUBSTANTIALLY_SUPPORTED_NOT_PROMOTED"
+assert candidate_status["VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727"] == "TITLE_LEVEL_SUPPORTED_BODY_MOTIVE_REMAINS_GATED"
 for promoted_candidate in (
     "VALENTI-CANDIDATE-NEGOTIATING-TEAM-ASSASSINATION-2026",
     "VALENTI-CANDIDATE-KEY-WEST-FALSE-FLAG-2026",
