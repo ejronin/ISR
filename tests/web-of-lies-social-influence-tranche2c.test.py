@@ -252,9 +252,9 @@ for promoted_candidate in (
     "VALENTI-CANDIDATE-GROUND-INVASION-2026",
     "VALENTI-CANDIDATE-CUBA-IRAN-SIMULTANEOUS-2026",
     "VALENTI-CANDIDATE-NUKE-ASK-20260421",
-    "VALENTI-CANDIDATE-ISRAEL-TERMINATES-MOU-202606",
 ):
     assert candidate_status[promoted_candidate] == "PROMOTED_WOL_INCIDENT"
+assert candidate_status["VALENTI-CANDIDATE-ISRAEL-TERMINATES-MOU-202606"] == "PROMOTED_WOL_INCIDENT_DEDUPLICATED_INFORMATION_EVENT"
 assert valenti_lead["solicitation_review"]["fundraiser_destination_status"] == "NOT_INDEPENDENTLY_LOCATED_IN_REVIEWED_PUBLIC_LINKS"
 assert "not proof" in valenti_lead["solicitation_review"]["inference_limit"]
 assert valenti_lead["solicitation_review"]["patreon_scale_observation"]["displayed_member_count_approx"] == 2200
