@@ -469,7 +469,7 @@ def validate_forensic_input(
         if foreign:
             raise ValueError(
                 f"source profile {source_id} classification basis uses another source's "
-                f"records: {sorted(foreign)}"
+                f"events/records: {sorted(foreign)}"
             )
         substantive_classes = [
             value
