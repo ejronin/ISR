@@ -213,10 +213,10 @@ assert any(row["url"].endswith("ESojA5kxiFY") for row in body_queue)
 assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
 assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
 assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
-assert valenti_lead["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
+assert valenti_lead["current_disposition"] == "MATERIAL_WOL_HISTORY_FOUND"
 assert valenti_lead["review_progress"]["promoted_incident_count"] == 24
-assert valenti_lead["review_progress"]["corpus_completion_claim"] == "NONE"
-assert valenti_lead["review_progress"]["resolved_nonincident_count"] >= 12
+assert valenti_lead["review_progress"]["corpus_completion_claim"] == "CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS_REVIEWED"
+assert valenti_lead["review_progress"]["resolved_nonincident_count"] == 22
 resolved_nonincidents = {
     row["review_id"]: row
     for row in valenti_lead["resolved_nonincident_reviews"]
@@ -242,9 +242,9 @@ candidate_status = {
     row["research_item_id"]: row["status"]
     for row in valenti_lead["review_progress"]["currently_preserved_unscored_candidates"]
 }
-assert candidate_status["VALENTI-CANDIDATE-US-BASES-COMPLETELY-DESTROYED-20260917"] == "HELD_FACILITY_LEVEL_MATCH_REQUIRED"
+assert candidate_status["VALENTI-CANDIDATE-US-BASES-COMPLETELY-DESTROYED-20260917"] == "EXCLUDED_PENDING_NEW_EVIDENCE"
 assert candidate_status["VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721"] == "RESOLVED_NOT_PROMOTED_CONTEMPORANEOUS_WITHHOLDING_SUBSTRATE"
-assert candidate_status["VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727"] == "TITLE_LEVEL_SUPPORTED_BODY_MOTIVE_REMAINS_GATED"
+assert candidate_status["VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727"] == "EXCLUDED_PENDING_NEW_EVIDENCE"
 for promoted_candidate in (
     "VALENTI-CANDIDATE-NEGOTIATING-TEAM-ASSASSINATION-2026",
     "VALENTI-CANDIDATE-KEY-WEST-FALSE-FLAG-2026",
@@ -276,10 +276,20 @@ assert direct_upgrade_status["VALENTI-DIRECT-ID-CHINA-NUCLEAR-WAR-20260922"] == 
 assert direct_upgrade_status["VALENTI-DIRECT-BODY-E6B-NUCLEAR-202609"] == "ORIGINAL_ID_RECOVERED_PAGE_BODY_NOT_MACHINE_RECOVERED"
 assert valenti_lead["historian_role_review"]["self_claim_status"] == "PUBLICLY_VERIFIED"
 assert len(valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]) == 3
+assert valenti_lead["historian_role_review"]["status"] == "CLOSED_PENDING_NEW_SOURCE_EVIDENCE"
 assert all(
     row["capture_status"] == "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED"
     for row in valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]
 )
+assert all(
+    row["final_pass_status"] == "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
+    for row in valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]
+)
+assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
+assert valenti_lead["review_completion"]["documented_incident_count"] == 24
+assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22
+assert valenti_lead["review_completion"]["unresolved_excluded_count"] == 7
+assert valenti_lead["review_completion"]["next_action"] == "NONE_UNLESS_NEW_EVIDENCE"
 
 news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
 assert len(news_grift_basis) == 17
