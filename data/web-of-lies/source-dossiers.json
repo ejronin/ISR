@@ -985,7 +985,7 @@
           "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
           "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
         ],
-        "promoted_valenti_incident_count": 21,
+        "promoted_valenti_incident_count": 22,
         "monetization_receipts": [
           "https://www.patreon.com/cw/ValentiVideos",
           "https://www.youtube.com/watch?v=0ZArFpj6zyA",
@@ -1717,7 +1717,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. Twenty-one incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
+      "notes": "Valenti remains under active pattern review. 22 incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1817,7 +1817,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 21,
+        "promoted_incident_count": 22,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
