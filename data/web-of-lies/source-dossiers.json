@@ -1625,9 +1625,9 @@
         "https://www.youtube.com/watch?v=TqTMaCKNMOQ",
         "https://www.youtube.com/watch?v=tdoYgjiOchc"
       ],
-      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
+      "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Receipt-backed WOL review now records nine qualifying Valenti publication incidents through 2026-09-23. The lifetime register includes two additional conservative presentation findings: converting the June U.S.-Iran interim MOU into an 'official surrender,' and converting warnings about possible limited Russian provocations against Poland into an imminent Russian invasion. Existing body-gated items remain unscored where exact spoken propositions are not independently preserved. Sensational titles with a supported factual substrate are not counted merely for tone.",
+      "notes": "Valenti remains under active pattern review. Nine incidents are currently promoted/scored, but the reviewed corpus contains additional distinct Iran-war/public-affairs candidates that remain under evidentiary review. Do not treat the nine-event promoted register as a completed lifetime corpus.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1700,7 +1700,7 @@
         }
       ],
       "solicitation_review": {
-        "checked_at": "2026-09-23T18:43:00-04:00",
+        "checked_at": "2026-09-23T20:13:00-04:00",
         "provenance": "PROJECT_OWNER_DIRECT_REVIEW_PLUS_PUBLIC_LINK_REVIEW",
         "publisher_claim": "Valenti stated that 'the fundraiser is in the links.'",
         "fundraiser_destination_status": "NOT_INDEPENDENTLY_LOCATED_IN_REVIEWED_PUBLIC_LINKS",
@@ -1709,17 +1709,80 @@
           "MERCHANDISE"
         ],
         "verified_public_support_language": "Video descriptions explicitly direct viewers to Patreon as the best way to support Valenti Videos and separately promote merchandise.",
-        "inference_limit": "Failure to locate a distinct fundraiser does not establish that the fundraiser is fake or nonexistent. Keep this as a solicitation/publication lead unless a destination is recovered or repeated absence from specifically advertised links is directly documented."
+        "inference_limit": "The current non-location result is evidence about discoverability/published links, not proof that a fundraiser is fake or never existed. Promote a solicitation incident only if a specific advertised-link mismatch can be directly preserved or a destination is identified and materially misrepresented.",
+        "current_public_surface_findings": [
+          "Official Patreon page is live and solicits support for ValentiVideos.",
+          "Official merchandise store is live.",
+          "Recent mirrored Valenti video descriptions direct viewers to Patreon as the best way to support Valenti Videos and separately promote merchandise.",
+          "No distinct ValentiVideos GoFundMe or other fundraiser destination was located in current targeted public searches."
+        ]
       },
-      "review_completion": {
-        "status": "CURRENT_SOURCE_PASS_COMPLETED_THROUGH_2026-09-23_WITH_BODY_GATED_QUEUE_RETAINED",
-        "qualifying_incident_count": 9,
-        "completion_limit": "This is not a claim of exhaustive lifetime capture. It closes the current reviewed source pass while preserving unresolved body-dependent items for later evidence.",
-        "excluded_or_held_examples": [
-          "Apache shot down over Hormuz: underlying shootdown substantially supported; not counted merely because the headline is dramatic.",
-          "U.S./Saudi strikes in Iraq killing about 20: underlying strike/death report substantially supported; not counted merely because the headline is dramatic.",
-          "Casualty-coverup presentation: real nondisclosure reporting provides factual substrate; body-level overstatement remains unscored without a clean proposition.",
-          "Ground-invasion, Key West false-flag, Cuba/Iran, negotiating-team assassination and similar titles remain body-gated where the title alone cannot establish the exact factual proposition."
+      "review_progress": {
+        "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
+        "promoted_incident_count": 9,
+        "corpus_completion_claim": "NONE",
+        "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
+        "currently_preserved_unscored_candidates": [
+          {
+            "research_item_id": "VALENTI-CANDIDATE-US-BASES-COMPLETELY-DESTROYED-20260917",
+            "title": "U.S Soldiers LEAK PHOTOS of our bases in the Middle East; THEY'RE COMPLETELY DESTROYED!",
+            "url": "https://www.youtube.com/watch?v=nqd977hHQfM",
+            "status": "UPSTREAM_AND_BODY_REVIEW_REQUIRED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721",
+            "title": "The U.S Government is COVERING UP the MASSIVE amount of U.S Casualties",
+            "url": "https://www.youtube.com/watch?v=dcPbU2XaSSo",
+            "status": "BODY_AND_PROPOSITION_REVIEW_REQUIRED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727",
+            "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases. Ukraine joins the Iran War.",
+            "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
+            "status": "BODY_MOTIVE_PROPOSITION_REVIEW_REQUIRED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-NUKE-ASK-20260421",
+            "title": "Trump asked to nuke Iran...",
+            "url": "https://www.youtube.com/watch?v=ESojA5kxiFY",
+            "status": "BODY_REVIEW_REQUIRED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-GROUND-INVASION-2026",
+            "title": "Trump announces FULL SCALE GROUND INVASION of Iran",
+            "url": "https://www.youtube.com/watch?v=OzH543I4fZQ",
+            "status": "BODY_AND_ANNOUNCEMENT_PROPOSITION_REVIEW_REQUIRED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-NEGOTIATING-TEAM-ASSASSINATION-2026",
+            "title": "Trump threatens to ASSASSINATE the ENTIRE Iranian Negotiating Team because ISRAEL demands NO PEACE",
+            "url": "https://www.youtube.com/watch?v=q-HSkbifk8I",
+            "status": "DIRECT_QUOTE_AND_BODY_REVIEW_REQUIRED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-KEY-WEST-FALSE-FLAG-2026",
+            "title": "Trump is planning a FALSE FLAG ATTACK ON KEY WEST!",
+            "url": "https://www.youtube.com/watch?v=_jjBTsHcWhA",
+            "status": "FACTUAL_BASIS_AND_BODY_REVIEW_REQUIRED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-CUBA-IRAN-SIMULTANEOUS-2026",
+            "title": "We are ABOUT to Invade Cuba, and bomb Iran AT THE SAME TIME",
+            "url": "https://www.youtube.com/watch?v=DNooOvyU6-g",
+            "status": "FACTUAL_BASIS_AND_BODY_REVIEW_REQUIRED"
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ONE-TRILLION-SURRENDER-2026",
+            "title": "Trump considers giving Iran ONE TRILLION DOLLARS as part of the American Surrender!",
+            "url": "https://www.youtube.com/watch?v=2uC0ZbTXyfc",
+            "status": "AMOUNT_AND_SURRENDER_FRAMING_REVIEW_REQUIRED"
+          }
+        ],
+        "held_or_rejected_examples": [
+          "17 U.S. service members killed: independently supported by AP; any WOL issue in that publication would have to arise from the separate 'runs out of ammo' proposition, not the casualty count.",
+          "Ro Khanna detained during West Bank visit: substantial factual substrate exists; do not score merely from compressed headline wording.",
+          "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
+          "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
         ]
       }
     }
