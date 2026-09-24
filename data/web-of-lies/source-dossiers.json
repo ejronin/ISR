@@ -1791,6 +1791,19 @@
             "observation": "Project owner reports Valenti argued the United States essentially did not care, permitted the strikes to occur, and did so to make other actors angry; this is materially stronger than interceptor rationing or threat-based non-interception.",
             "evidentiary_limit": "The public title alone does not prove this motive proposition. Exact transcript wording/timestamps remain required before this body-level motive claim is promoted into a scored WOL-native incident."
           }
+        },
+        {
+          "research_item_id": "VALENTI-BODY-GROUND-INVASION-20260401",
+          "title": "Ground Invasion...",
+          "url": "https://www.youtube.com/watch?v=zL3SFEAwn9U",
+          "publication_date": "2026-04-01",
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Video description says this is Valenti's watch-along to Trump's April 1 Iran address. The primary address and contemporaneous AP/Reuters coverage did not announce ground troops. Recover the spoken body before deciding whether Valenti asserted an imminent/announced ground invasion or merely discussed the possibility.",
+          "comparison_sources": [
+            "https://www.presidency.ucsb.edu/documents/address-the-nation-united-states-military-operations-iran",
+            "https://www.reuters.com/world/us/trump-tell-wary-public-that-iran-war-goals-have-been-accomplished-prime-time-2026-04-01/"
+          ]
         }
       ],
       "solicitation_review": {
@@ -1972,9 +1985,39 @@
           "17 U.S. service members killed: independently supported by AP; any WOL issue in that publication would have to arise from the separate 'runs out of ammo' proposition, not the casualty count.",
           "Ro Khanna detained during West Bank visit: substantial factual substrate exists; do not score merely from compressed headline wording.",
           "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
-          "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
+          "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging.",
+          "June 17 G7 'whoever sells/gives Iran a nuclear weapon will get nuked themselves': rejected. The official Trump G7 transcript contains the underlying nuclear-retaliation threat essentially verbatim; sensational packaging does not create a WOL incident.",
+          "May 25 'Trump begs the Arab World to become allies with Israel': rejected. Reuters reported Trump asked Saudi Arabia, Qatar, Pakistan, Turkey, Egypt and Jordan to join the Abraham Accords and normalize relations with Israel as part of the Iran-deal push.",
+          "August catering-cart / Air Force One decoy: rejected. Major reporting substantiated the covert catering-truck movement and use of Air Force One as a decoy because of an Iran-related threat; bizarre-sounding facts are not scored merely for sounding bizarre.",
+          "September downed F-15E pilot / 7,000-foot mountain / broken back: rejected. Multiple military/news reports substantiate the shootdown, serious injuries and movement toward a roughly 7,000-foot ridgeline.",
+          "September 'largest attack yet' on U.S. warships/bases: rejected. Contemporaneous reporting supports a major new Iranian attack phase against multiple U.S. naval and land targets; 'largest yet' is sufficiently grounded not to score.",
+          "August/September 'top admirals and generals turn against' extension of Iran war: rejected as supported compression. Senior service chiefs/combatant commanders issued warnings and formal non-concurs over extending deployments.",
+          "August 'Iran war will last until 2029 according to the Iranians': rejected. Iranian advisers publicly discussed prolonging the conflict and waiting out Trump's term; the 2029 proposition has real Iranian-source substrate.",
+          "August 'U.S. sailors are jumping ship from USS Lincoln': rejected. Multiple overboard incidents and an actual recovered sailor give the headline substantial factual substrate.",
+          "May 5 'Trump tells children Iran wants to nuke them': rejected. Trump told children that an Iranian nuclear weapon could mean they would not be here and described catastrophic risks; the title imputes motive crudely but preserves substantial nuclear-threat substrate.",
+          "April/June 'Ground Invasion...' items are not interchangeable. The April 1 watch-along title is too elliptical to score from title alone; contemporaneous coverage of Trump's address said he did not announce ground troops. It remains body-gated separately from the later scored full-scale-invasion announcement claim."
         ],
-        "resolved_nonincident_count": 19
+        "resolved_nonincident_count": 19,
+        "last_review_checkpoint": {
+          "checked_at": "2026-09-24T15:12:00-04:00",
+          "promoted_incident_count": 24,
+          "newly_resolved_rejects": [
+            "G7 nuclear-retaliation quote",
+            "Arab states / Abraham Accords ask",
+            "catering-cart / Air Force One decoy",
+            "downed F-15E pilot recovery account",
+            "largest attack yet on U.S. warships/bases",
+            "senior-military opposition to extension",
+            "Iran-war-through-2029 Iranian-source framing",
+            "USS Lincoln overboard/jumping-ship framing",
+            "children/Iran nuclear-threat presentation"
+          ],
+          "newly_body_gated": [
+            "April 1 Ground Invasion watch-along",
+            "June ANOTHER FALSE FLAG ATTACK remains target/body unresolved"
+          ],
+          "continuation_rule": "Continue backward through Iran-war publications; preserve supported-but-sensational titles as reviewed rejects and score only distinct unsupported factual/inferential propositions."
+        }
       },
       "historian_role_review": {
         "status": "ACTIVE_SOURCE_RECOVERY",
