@@ -1804,6 +1804,15 @@
             "https://www.presidency.ucsb.edu/documents/address-the-nation-united-states-military-operations-iran",
             "https://www.reuters.com/world/us/trump-tell-wary-public-that-iran-war-goals-have-been-accomplished-prime-time-2026-04-01/"
           ]
+        },
+        {
+          "research_item_id": "VALENTI-BODY-AMERICA-UNDER-ATTACK-202606",
+          "title": "AMERICA IS UNDER ATTACK!!!",
+          "url": "https://www.youtube.com/watch?v=CdwEBSZBtP4",
+          "publication_date": null,
+          "capture_status": "TITLE_DESCRIPTION_ONLY",
+          "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+          "research_reason": "Direct watch ID recovered from the Valenti channel continuation page. The title is too vague to identify the alleged attacker, attack type, target or factual proposition. Do not score until the body/description fixes the underlying event and claim."
         }
       ],
       "solicitation_review": {
@@ -2014,8 +2023,10 @@
           ],
           "newly_body_gated": [
             "April 1 Ground Invasion watch-along",
-            "June ANOTHER FALSE FLAG ATTACK remains target/body unresolved"
+            "June ANOTHER FALSE FLAG ATTACK — direct ID Zy6M8fxc970, underlying attack not recovered",
+            "AMERICA IS UNDER ATTACK!!! — direct ID CdwEBSZBtP4, underlying attacker/event not recovered"
           ],
+          "search_exhaustion_note": "Generic March-April indexed searches repeatedly collapse back to the same channel pages and already-reviewed direct videos. Continue through exact-title/direct-ID recovery and alternate public mirrors rather than claiming corpus completion.",
           "continuation_rule": "Continue backward through Iran-war publications; preserve supported-but-sensational titles as reviewed rejects and score only distinct unsupported factual/inferential propositions."
         }
       },
