@@ -1,0 +1,156 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-23T12:00:00-04:00",
+    "end": "2026-09-24T00:00:00-04:00",
+    "collection_time": "2026-09-24T00:00:00-04:00",
+    "evidence_horizon": "2026-09-24T00:00:00-04:00"
+  },
+  "updates": [
+    {
+      "event_id": "HORMUZ-VESSEL-STRIKE-20260923",
+      "update_type": "maritime security / existing-event identity and casualty update",
+      "finding": "The vessel previously reported by UKMTO as struck by an unknown projectile, on fire and evacuated is identified as Antigua-and-Barbuda-flagged bulk carrier MV Cape Dao, attacked off Oman's Musandam governorate while heading toward India. Oman's Maritime Security Center evacuated 27 crew. One Indian national was confirmed killed; 19 Indian nationals were among the crew. Attribution remains unresolved at evidence horizon.",
+      "status": "VESSEL IDENTIFIED; ONE FATALITY CONFIRMED; ATTRIBUTION UNRESOLVED",
+      "sources": [
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/23/one-indian-killed-in-attack-on-ship-heading-towards-india-indian-embassy-in-oman-says",
+        "https://gcaptain.com/seafarer-killed-in-hormuz-attack-as-trump-pushes-iran-deal-at-un/"
+      ],
+      "drawer_effect": "UPDATE the Sep.23 unknown-projectile incident rather than create a duplicate; add vessel identity, flag, Musandam location, evacuation and fatality. Do not adopt uncorroborated torpedo characterization or perpetrator attribution."
+    },
+    {
+      "event_id": "US-IRAN-UNGA-CONTACTS-20260922-23",
+      "update_type": "diplomacy / existing-event outcome clarification",
+      "finding": "A senior Iranian official told Reuters Iran and the United States remained far apart after the UNGA shuttle contacts but diplomacy should continue. Reuters continued to characterize Araqchi-Witkoff-Kushner communication as indirect through mediators, while Trump publicly described a roughly three-hour meeting more directly. No agreement or concession was established by the end of this evidence horizon.",
+      "status": "ENGAGEMENT ESTABLISHED; PARTIES FAR APART; FORMAT DISCREPANCY PRESERVED; NO AGREEMENT",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/hope-progress-after-us-iran-hold-first-shuttle-talks-months-2026-09-23/"
+      ],
+      "drawer_effect": "UPDATE prior UNGA-contact drawer with outcome assessment; retain direct-versus-indirect source discrepancy and do not convert contact into substantive settlement progress."
+    },
+    {
+      "event_id": "IRAN-UNGA-PEZESHKIAN-CLAIMS-20260923",
+      "update_type": "claims/corrections / new speech evidence",
+      "finding": "At UNGA President Masoud Pezeshkian said Iran had only defended itself, would not surrender, remained ready for dialogue/diplomacy without accepting force, and stated that Iran 'did not hit civilian populations.' AP explicitly identified the civilian-population statement as measurably false, citing civilians including mariners and migrant workers killed in Iranian attacks. The exact proposition and contrary evidence should be routed to Claims Forensics rather than converted upstream into a deception finding.",
+      "status": "SPEECH CONFIRMED; CIVILIAN-HARM PROPOSITION CONTRADICTED BY DOCUMENTED CASUALTIES; KNOWLEDGE/DECEPTION NOT ADJUDICATED HERE",
+      "sources": [
+        "https://apnews.com/article/iran-pezeshkian-united-nations-general-assembly-trump-war-210d432587bb8dc2d7303ca4c8ea67b6",
+        "https://www.reuters.com/world/middle-east/irans-president-says-tehran-will-not-surrender-war-with-us-but-believes-2026-09-23/"
+      ],
+      "drawer_effect": "CREATE/UPDATE Iranian UNGA claims drawer and refer atomic civilian-targeting/civilian-harm proposition to Claims Forensics; preserve distinction between intent to target civilians and civilian casualties caused by Iranian attacks."
+    },
+    {
+      "event_id": "IRAN-AVIATION-SECONDARY-SANCTIONS-20260923",
+      "update_type": "sanctions / existing-event implementation update",
+      "finding": "The threatened U.S. aviation secondary-sanctions regime produced observable but incomplete disruption. Reuters sources reported Iraq ordered Iranian flights to Baghdad suspended beginning Wednesday midnight and discussed possible diversion to Najaf. Iranian aviation authorities reported Tehran-Baghdad and Tehran-Muscat cancellations. Other international routes continued, so the evidence does not support a global grounding of Iranian aviation.",
+      "status": "PARTIAL OBSERVED IMPLEMENTATION; GLOBAL SHUTDOWN NOT ESTABLISHED",
+      "sources": [
+        "https://economictimes.indiatimes.com/news/international/world-news/iraq-suspends-iranian-flights-to-baghdad-after-us-sanctions-threat-sources-say/articleshow/134425460.cms",
+        "https://www.reuters.com/world/middle-east/iran-threatens-paralyse-airports-neighbouring-countries-if-they-stop-iranian-2026-09-23/"
+      ],
+      "drawer_effect": "UPDATE announced-enforcement drawer from prospective objective to partial observed implementation. Preserve continuing routes and distinguish airport/state compliance individually."
+    },
+    {
+      "event_id": "IRAN-AVIATION-RETALIATION-THREAT-20260923",
+      "update_type": "military/security signaling / authority clarification",
+      "finding": "SNSC secretary Mohsen Rezaei threatened that if neighboring states cooperated with U.S. pressure by stopping Iranian flights, Iran would ensure their airports could not function. No specific method, target execution, or demonstrated capability against an airport was established during the window.",
+      "status": "HIGH-AUTHORITY THREAT CONFIRMED; EXECUTION NOT ESTABLISHED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-threatens-paralyse-airports-neighbouring-countries-if-they-stop-iranian-2026-09-23/"
+      ],
+      "drawer_effect": "Retain as coercive signaling and watch for subsequent attacks/disruptions; do not infer an executed operation from the threat."
+    },
+    {
+      "event_id": "IRAN-IRGC-HOUTHI-FIELD-SUPPORT-20260923",
+      "update_type": "Yemen / existing-event corroboration and scope update",
+      "finding": "AP's multi-source reconstruction reported IRGC advisers helped the Houthis seize Yemen's Red Sea coast in less than 48 hours, with reported roles spanning tactical planning, front-line command support, communications analysis and satellite-intelligence support. This independently strengthens the existing drawer beyond generic Iranian sponsorship while still not proving Iranian command of every Houthi operation.",
+      "status": "MATERIAL MULTI-SOURCE SUPPORT FOR DIRECT FIELD/OPERATIONAL ASSISTANCE; ORGANIZATION-WIDE COMMAND NOT ESTABLISHED",
+      "sources": [
+        "https://apnews.com/article/yemen-houthis-iran-war-red-sea-battle-e32ed78eb9b528642d043d4303192927"
+      ],
+      "drawer_effect": "UPDATE older Iran-Houthi support assessments; distinguish support, operational assistance, operation-specific direction and command/control. Preserve earlier inference separately from later corroborating reporting."
+    },
+    {
+      "event_id": "YEMEN-HUMAN-IMPACT-20260922-23",
+      "update_type": "human impact / existing displacement drawer",
+      "finding": "UN reporting says renewed Yemen fighting is expected to displace tens of thousands more people, adding to the already large September displacement and cross-Red-Sea flight toward Djibouti. This is a forecast/update to the existing humanitarian drawer rather than a replacement denominator.",
+      "status": "UN HUMANITARIAN WARNING SUPPORTED; FUTURE DISPLACEMENT PROJECTION NOT YET OBSERVED",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/more-yemenis-expected-flee-upsurge-fighting-un-says-2026-09-22/"
+      ],
+      "drawer_effect": "UPDATE existing Yemen displacement drawer with projection separately from observed displaced-person counts; do not merge forecast and actual denominators."
+    },
+    {
+      "event_id": "GULF-GAS-MARKET-20260923",
+      "update_type": "economy/energy / market-duration assessment",
+      "finding": "Reuters reported global gas markets increasingly pricing tight supply conditions beyond the coming winter as Gulf disruptions persist. The assessment reflects market expectations rather than proof of a fixed physical outage duration.",
+      "status": "MARKET EXPECTATION SUPPORTED; PHYSICAL OUTAGE DURATION REMAINS ASSET-SPECIFIC",
+      "sources": [
+        "https://www.reuters.com/business/energy/global-gas-market-pricing-prolonged-tightness-due-iran-war-igu-executive-says-2026-09-23/"
+      ],
+      "drawer_effect": "UPDATE energy-market drawer; keep market pricing expectations separate from QatarEnergy engineering/BDA repair estimates."
+    },
+    {
+      "event_id": "GAZA-HAMAS-FINANCE-OFFICIAL-20260923",
+      "update_type": "Gaza/Hamas / military claim and human impact",
+      "finding": "Israeli strikes killed at least four Palestinians in Gaza according to local health officials. Israel said one strike killed a Hamas finance chief. The casualty count and Israeli identity/function claim require separate provenance; the latter remains an Israeli military attribution unless independently corroborated.",
+      "status": "STRIKES/CASUALTIES REPORTED; HAMAS ROLE ATTRIBUTED TO ISRAEL",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/israeli-fire-kills-two-people-gaza-medics-say-2026-09-23/"
+      ],
+      "drawer_effect": "Append to Gaza/Hamas theater drawer; preserve local-health casualty reporting separately from Israeli target-identification claim."
+    }
+  ],
+  "prior_drawer_review": [
+    {"drawer":"Sep.23 Hormuz unknown-projectile vessel incident","action":"UPDATE","reason":"Cape Dao identity, flag, crew evacuation and one confirmed Indian fatality now available; attribution remains unresolved."},
+    {"drawer":"US-Iran UNGA contacts","action":"UPDATE","reason":"Senior Iranian official says parties remain far apart; no agreement established; indirect/direct characterization discrepancy persists."},
+    {"drawer":"Iran aviation sanctions","action":"UPDATE","reason":"Observable Baghdad/Muscat disruption now supports partial implementation, while continuing routes refute a completed global grounding at this horizon."},
+    {"drawer":"Iran-Houthi support","action":"UPDATE","reason":"AP field reconstruction materially strengthens direct operational-assistance evidence but does not establish command over every Houthi action."},
+    {"drawer":"Iranian public claims / UNGA","action":"UPDATE_AND_REFER","reason":"Pezeshkian civilian-population statement is directly testable against documented civilian casualties and belongs in Claims Forensics."},
+    {"drawer":"Yemen human impact","action":"UPDATE","reason":"UN displacement projections should be added without replacing observed denominators."},
+    {"drawer":"Gulf energy markets","action":"UPDATE","reason":"Market now pricing prolonged tightness; keep separate from physical repair timelines."}
+  ],
+  "unresolved_questions": [
+    "Who attacked MV Cape Dao and with what weapon?",
+    "Were two casualties reported initially one fatality plus one injury, and what is the final injury status?",
+    "Will additional neighboring states implement the U.S. Iranian-airline secondary-sanctions threat, and which routes remain operational after Sep.24?",
+    "What exact substantive concessions, if any, emerged from the UNGA U.S.-Iran contacts?",
+    "How do Iran's seven-condition, three-condition and two-condition Hormuz formulations relate institutionally?",
+    "What independent evidence can identify the IRGC advisers and chain of command in the Houthi Red Sea offensive?",
+    "Does subsequent evidence establish Iranian command/control beyond operation-specific assistance?",
+    "What exact Iranian civilian-harm proposition is supportable: no deliberate civilian targeting, no attacks on civilian areas, or no civilian casualties? Preserve wording precisely before adjudication.",
+    "What is the independently corroborated identity/function of the Hamas finance official Israel says it killed?"
+  ],
+  "coverage": {
+    "military": "covered via Reuters/AP and official-attribution reporting; no proprietary military ISR",
+    "maritime": "covered via Reuters/AP/UKMTO/Oman MSC-derived reporting; no direct proprietary Kpler/LSEG/MarineTraffic terminal",
+    "infrastructure": "reviewed; no new authoritative physical BDA change beyond prior drawers captured in this 12-hour window",
+    "diplomacy": "covered; U.S.-Iran UNGA outcome and rhetoric updated",
+    "economy_sanctions_energy": "covered; aviation implementation and gas-market duration expectations updated",
+    "claims_corrections": "covered; Pezeshkian UNGA proposition added for downstream adjudication",
+    "human_impact": "covered for Yemen projection, Cape Dao fatality and Gaza strike casualties; no claim of exhaustive theater-wide casualty census",
+    "commercial_osint": "partial; publicly reported commercial/shipping/flight data only",
+    "social_media_geolocation": "not systematically available; no firehose-level collection",
+    "commercial_satellite_tasking": "unavailable",
+    "proprietary_maritime_terminals": "unavailable",
+    "classified_isr": "unavailable and not claimed"
+  },
+  "source_discovery_additions": [
+    "Reuters/Indian Embassy/Oman MSC reporting identifying MV Cape Dao and fatality",
+    "AP full UNGA Pezeshkian speech fact-check context",
+    "Reuters implementation reporting on Baghdad Iranian-flight suspension",
+    "Reuters gas-market duration assessment"
+  ],
+  "completion": {
+    "status": "COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+    "canonical_bytes_modified": false,
+    "generated_public_state_modified": false,
+    "release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "downstream_referrals": ["Claims Forensics: Pezeshkian civilian-population claim", "Current-state integration: all qualified factual updates after canonical processing"],
+    "notes": "Append-only upstream evidence artifact. Existing events updated by reference rather than duplicated where later evidence changed identity, casualty status, implementation status, or diplomatic outcome."
+  }
+}

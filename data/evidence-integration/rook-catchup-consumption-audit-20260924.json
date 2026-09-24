@@ -1,0 +1,144 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_CURRENT_STATE_CONSUMPTION_AUDIT",
+  "authority": "EVIDENCE_INTEGRATION",
+  "scope": "Ordinary ISR canonical/public current state only; Web of Lies excluded.",
+  "production_base": "c2471c435c18d4e29ca900deeb6e3b22b5fc452f",
+  "source_branch": "evidence/rook-catchup-20260919-0002",
+  "source_head": "c0131861478ce32307006aad9f0cf483a3b21def",
+  "canonical_packet": "UPD-20260924-ROOK-EVIDENCE-CATCHUP",
+  "evidence_cutoff": "2026-09-24T12:00:00-04:00",
+  "upstream_artifacts": [
+    "data/evidence-integration/rook-evidence-locker-sweep-20260924T0000ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260924T1200ET.json"
+  ],
+  "reconciliations": [
+    {
+      "topic": "Sep. 23 Hormuz vessel incident / MV Cape Dao",
+      "disposition": "UPDATE_EXISTING_SHIPPING_ENTITY_NO_DUPLICATE_OCCURRENCE",
+      "target": "SHIP-HORMUZ-UNKNOWN-VESSEL-20260923",
+      "note": "Add MV Cape Dao identity, Antigua and Barbuda flag, Musandam location, 27-person evacuation, 19 Indian crew and one confirmed Indian fatality. Perpetrator and final weapon attribution remain unresolved."
+    },
+    {
+      "topic": "U.S.-Iran UNGA contacts",
+      "disposition": "UPDATE_EXISTING_DIPLOMACY_ENTITY",
+      "target": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "note": "Parties reported far apart; diplomacy continues; direct-versus-indirect characterization discrepancy and no-agreement boundary remain."
+    },
+    {
+      "topic": "Pezeshkian UNGA wartime statements",
+      "disposition": "PROMOTE_SPEECH_EVENT_AND_REFER_EXACT_PROPOSITION",
+      "target": "G3-IRAN-UNGA-PEZESHKIAN-SPEECH-20260923",
+      "note": "Record the speech as a public policy/claims event. Route the 'did not hit civilian populations' proposition to Claims Forensics; Evidence Integration does not adjudicate deception or infer targeting intent from casualties."
+    },
+    {
+      "topic": "Sep. 23 aviation implementation",
+      "disposition": "ALREADY_CANONICAL_THEN_SUPERSEDED_BY_SEP24_STATUS",
+      "target": "ECON-IRAN-AVIATION-SECONDARY-SANCTIONS-20260923",
+      "note": "Baghdad/Muscat effects remain historical substrate; Sep. 24 UAE state-level suspension materially broadens implementation."
+    },
+    {
+      "topic": "Rezaei airport retaliation threat",
+      "disposition": "NO_NEW_CANONICAL_SCOPE_CHANGE",
+      "target": "G3-IRAN-AVIATION-RETALIATION-THREAT-20260923",
+      "note": "Existing threat-only treatment remains controlling; no execution or demonstrated airport-disruption capability established."
+    },
+    {
+      "topic": "IRGC-Houthi field support",
+      "disposition": "NO_NEW_SCOPE_INFERENCE",
+      "target": "REL-IRAN-HOUTHI-OPERATIONAL-SUPPORT-20260923",
+      "note": "Sep. 23 AP reporting is already canonical. No evidence in today's sweeps ties IRGC advisers specifically to the Sep. 24 Taiz-Aden attacks or Saudi missile launches."
+    },
+    {
+      "topic": "Yemen displacement projection",
+      "disposition": "PRESERVE_EXISTING_OBSERVED_VS_PROJECTED_SERIES",
+      "target": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "note": "Do not merge projections into observed displacement totals."
+    },
+    {
+      "topic": "Gulf gas market duration expectations",
+      "disposition": "PROMOTE_MARKET_EXPECTATION_SEPARATE_FROM_PHYSICAL_BDA",
+      "target": "ECON-GULF-GAS-MARKET-TIGHTNESS-20260923",
+      "note": "Longer tightness is a market expectation, not a fixed engineering outage duration or new QatarEnergy BDA."
+    },
+    {
+      "topic": "Gaza strikes / Hamas finance-role attribution",
+      "disposition": "PROMOTE_SOURCE_BOUNDED_RELATED_THEATER_CONTEXT",
+      "target": "G3-GAZA-ISRAELI-STRIKE-HAMAS-FINANCE-CLAIM-20260923",
+      "note": "Preserve casualty reporting separately from Israel's target identity/function claim; no independent promotion of the Hamas finance-role assertion."
+    },
+    {
+      "topic": "UAE Iranian-airline suspension",
+      "disposition": "SUPERSEDE_AVIATION_IMPLEMENTATION_STATUS_AND_CREATE_POLICY_EVENT",
+      "target": "ECON-IRAN-AVIATION-SECONDARY-SANCTIONS-20260923",
+      "note": "UAE GCAA state-level suspension materially broadens observed implementation; worldwide grounding remains unestablished."
+    },
+    {
+      "topic": "Saudi-Houthi missile interceptions",
+      "disposition": "CREATE_ATTRIBUTED_COMBAT_EVENT",
+      "target": "G3-SA-HOUTHI-MISSILE-INTERCEPTS-20260924",
+      "note": "Six ballistic-missile launches/intercepts and Taif/Yanbu target areas remain Saudi-led coalition claims at this horizon; independent weapon-by-weapon BDA is limited."
+    },
+    {
+      "topic": "Taiz-Aden route fighting",
+      "disposition": "CREATE_OCCURRENCE_AND_UPDATE_EXISTING_HOUTHI_CAMPAIGN_MOVEMENT",
+      "target": "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910",
+      "note": "Fighting is corroborated; government repulse/final disposition remains attributed and pending later territorial/casualty confirmation. No IRGC linkage inferred for this specific action."
+    },
+    {
+      "topic": "Yemen OHCHR/UNHCR civilian impact",
+      "disposition": "UPDATE_EXISTING_HUMAN_IMPACT_WITH_PARALLEL_SCOPED_DENOMINATOR",
+      "target": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "note": "Preserve prior 674-death/nearly-3,000-injury broader conflict series while separately retaining UNHCR's at-least-110-casualty/28-death civilian series and OHCHR warning."
+    },
+    {
+      "topic": "Hormuz traffic",
+      "disposition": "UPDATE_EXISTING_SHIPPING_ENTITY_AND_PRESERVE_HISTORY",
+      "target": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "note": "Advance latest observable commodity traffic to Wednesday Sep. 23=10 while preserving earlier published/revised daily figures and AIS/commercial-methodology caveats."
+    },
+    {
+      "topic": "U.S.-Iran diplomacy / oil-market response",
+      "disposition": "UPDATE_EXISTING_DIPLOMACY_AND_MARKET_ENTITIES",
+      "targets": [
+        "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+        "ECON-OIL-MARKET-SEP23-20260923"
+      ],
+      "note": "No breakthrough established; contacts are not treated as ended. Sep. 24 oil-price response remains a multifactor market observation."
+    },
+    {
+      "topic": "UK designated Iranian bank licensing",
+      "disposition": "PROMOTE_FINANCIAL_ACCESS_RESTRICTION",
+      "target": "ECON-UK-IRAN-BANK-LICENSING-20260923",
+      "note": "Record OFSI presumption of denial for five designated banks and Oct. 22 non-renewal of the general licence; do not describe the policy as confiscation or dissolution of Iranian assets."
+    },
+    {
+      "topic": "Saudi East-West/Petroline restoration",
+      "disposition": "NO_MATERIAL_NEW_BDA",
+      "target": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "note": "Prior partial-restart/reduced-rate and six-to-eight-week restoration state remains current."
+    },
+    {
+      "topic": "QatarEnergy/Ras Laffan",
+      "disposition": "NO_MATERIAL_NEW_BDA",
+      "target": "FAC-QAT-LNG-SYSTEM",
+      "note": "No authoritative new physical repair-status or North Field expansion change in today's qualified sweeps."
+    }
+  ],
+  "deliberately_withheld": [
+    "Perpetrator attribution and final weapon identification for the MV Cape Dao attack.",
+    "Worldwide grounding of Iranian international aviation; implementation is materially broader but still jurisdiction-specific.",
+    "Execution or demonstrated capability behind Mohsen Rezaei's threat against neighboring airports.",
+    "Independent weapon-by-weapon verification, debris damage or casualties for the six Saudi-claimed Houthi missile interceptions.",
+    "Final territorial disposition and casualty/BDA outcome from the Sep. 24 Taiz-Aden route fighting.",
+    "Any inference tying IRGC advisers specifically to the Sep. 24 Taiz-Aden attack or Saudi-directed missile launches.",
+    "A fixed physical Gulf gas outage duration inferred from market pricing expectations.",
+    "Independent establishment of the Hamas finance-role attribution in the Sep. 23 Gaza strike reporting, or reconciliation beyond the source-bounded casualty snapshot carried by the upstream artifact.",
+    "Any new Saudi East-West/Petroline engineering or normalized-throughput BDA absent qualified evidence.",
+    "Any new QatarEnergy/Ras Laffan physical BDA or unsupported North Field expansion delay.",
+    "A normalized Hormuz recovery or exact Kpler methodology beyond the public 10-vessel Wednesday observation.",
+    "Any U.S.-Iran agreement, substantive concession or end of talks.",
+    "Any deception, knowledge or intent finding concerning Pezeshkian's civilian-population statement."
+  ],
+  "claims_forensics_handoff": "data/evidence-integration/rook-catchup-claims-routing-20260924.json",
+  "web_of_lies": "OUT_OF_SCOPE_NO_FILES_OR_SEMANTICS_TO_CHANGE"
+}
