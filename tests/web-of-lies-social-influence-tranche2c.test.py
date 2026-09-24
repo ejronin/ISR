@@ -214,7 +214,7 @@ assert any(row["url"].endswith("0ZArFpj6zyA") for row in body_queue)
 assert any(row["url"].endswith("OzH543I4fZQ") for row in body_queue)
 assert any(row["url"].endswith("nqdb4mLOCEM") for row in body_queue)
 assert valenti_lead["current_disposition"] == "ACTIVE_PATTERN_REVIEW"
-assert valenti_lead["review_progress"]["promoted_incident_count"] == 18
+assert valenti_lead["review_progress"]["promoted_incident_count"] == 20
 assert valenti_lead["review_progress"]["corpus_completion_claim"] == "NONE"
 assert len(valenti_lead["review_progress"]["currently_preserved_unscored_candidates"]) >= 9
 candidate_status = {
@@ -242,6 +242,8 @@ assert {row["role_code"] for row in valenti_profile["claimed_roles"]} == {"HISTO
 historian_role = next(row for row in valenti_profile["claimed_roles"] if row["role_code"] == "HISTORIAN")
 assert len(historian_role["public_receipts"]) >= 2
 assert any("valentivideos.com" in row["url"] for row in historian_role["public_receipts"])
+assert len(valenti_lead["direct_receipt_upgrade_queue"]) >= 2
+assert {row["status"] for row in valenti_lead["direct_receipt_upgrade_queue"]} == {"DIRECT_WATCH_ID_NOT_YET_RECOVERED"}
 assert valenti_lead["historian_role_review"]["self_claim_status"] == "PUBLICLY_VERIFIED"
 assert len(valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]) == 3
 assert all(
@@ -250,7 +252,7 @@ assert all(
 )
 
 news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
-assert len(news_grift_basis) == 12
+assert len(news_grift_basis) == 14
 assert news_grift_basis <= set(behavior_incidents)
 assert all(
     "NEWS_GRIFT" in behavior_incidents[incident_id].get("behavior_findings", [])
@@ -314,6 +316,8 @@ valenti_incident_ids = {
     "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
     "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
     "WOL-BS-VALENTI-ISRAEL-TERMINATED-IRAN-MOU-202606",
+    "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
+    "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
     "WOL-BS-VALENTI-RUSSIAN-INVASION-POLAND-IMMINENT-20260703",
     "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
     "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
@@ -330,7 +334,7 @@ valenti_all_incident_ids = {
     if incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
 }
 assert valenti_all_incident_ids == valenti_incident_ids
-assert len(valenti_all_incident_ids) == 18
+assert len(valenti_all_incident_ids) == 20
 for incident_id in valenti_incident_ids:
     incident = behavior_incidents[incident_id]
     assert incident["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
@@ -355,7 +359,7 @@ assert set(valenti_award["qualifying_incident_ids"]) == {
     "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
     "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
 }
-assert valenti_award["documented_incident_count"] == 18
+assert valenti_award["documented_incident_count"] == 20
 assert set(valenti_award["documented_incident_ids"]) == valenti_all_incident_ids
 assert valenti_award["current_window_status"] == "EARNED_HISTORICAL"
 assert valenti_award["currently_active"] is False
