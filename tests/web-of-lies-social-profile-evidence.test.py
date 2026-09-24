@@ -53,7 +53,7 @@ assert role_failures["YELLOW_JOURNALISM"]["incident_count"] == 34
 assert len(role_failures["YELLOW_JOURNALISM"]["claimed_role_receipts"]) >= 1
 
 valenti = profiles["WOL-SRC-VALENTI-VIDEOS"]
-assert valenti["behavior_classes"] == ["MONETIZED_INFLUENCER"]
+assert set(valenti["behavior_classes"]) == {"MONETIZED_INFLUENCER", "NEWS_GRIFT"}
 assert valenti["revenue_model"] == ["PATREON"]
 assert valenti["classification_basis_receipts"]
 assert valenti["revenue_basis_receipts"]
