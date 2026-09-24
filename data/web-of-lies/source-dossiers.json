@@ -1896,7 +1896,7 @@
           "Trump says ceasefire is over: direct Trump statement supports the core headline proposition.",
           "Houthis ready to close Bab el-Mandeb: contemporaneous Reuters reporting supports a real Houthi/Iran closure threat and preparations; do not score merely for alarmist packaging."
         ],
-        "resolved_nonincident_count": 7
+        "resolved_nonincident_count": 10
       },
       "historian_role_review": {
         "status": "ACTIVE_SOURCE_RECOVERY",
@@ -1988,6 +1988,27 @@
           "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
           "disposition": "NOT_PROMOTED_AT_TITLE_LEVEL_BODY_MOTIVE_REMAINS_OPEN",
           "basis": "Independent reporting supports deliberate threat-based non-interception of some Iranian projectiles to conserve interceptors, including permitting strikes on empty U.S. bases. The stronger motive claim reported by the project owner remains transcript/timestamp gated."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-EUROPE-BASE-THREAT-202608",
+          "title": "Iran warns it will begin targeting U.S. bases in EUROPE as the war RAPIDLY ESCALATES!",
+          "url": "https://www.youtube.com/watch?v=MYg1edXHpCM",
+          "disposition": "NOT_PROMOTED_CORE_THREAT_SUPPORTED",
+          "basis": "Iranian officials warned countries aiding U.S. operations that their territory could become legitimate retaliatory targets, and Iranian-source reporting specifically discussed possible strikes on U.S. assets in southeastern Europe, including Bulgaria. The headline's core threat proposition is supported."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-GENERALS-TURN-AGAINST-EXTENSION-202608",
+          "title": "TRUMP REIGNITES THE IRAN WAR WHILE OUR TOP ADMIRALS AND GENERALS TURN AGAINST HIM!",
+          "url": "https://www.youtube.com/watch?v=ZVS9A-kXxHU",
+          "disposition": "NOT_PROMOTED_CORE_EVENTS_SUPPORTED",
+          "basis": "Direct U.S.-Iran military exchanges resumed, and leaders of U.S. European, Pacific and Southern Commands plus the Navy's top admiral formally non-concurred with extending forces supporting the Iran campaign. 'Turn against him' is rhetorical packaging over a real documented professional disagreement."
+        },
+        {
+          "review_id": "VALENTI-NONINCIDENT-CATERING-DECOY-SAM-GOLF-202608",
+          "title": "BREAKING: Trump hid in a CATERING CART and used Air Force 1 as a DECOY! Brought a SAM turret to golf",
+          "url": "https://www.youtube.com/watch?v=3H2Sv9Uz5Kc",
+          "disposition": "NOT_PROMOTED_COMPOSITE_FACTS_SUPPORTED",
+          "basis": "The Washington Post/CBS documented Trump's secret catering-truck transfer and Air Force One decoy operation after an Iranian threat. Separate contemporaneous imagery/reporting documented an Army Avenger surface-to-air missile system protecting Trump at Bedminster. The headline is sensational but its unusual factual components are supported."
         }
       ]
     }
