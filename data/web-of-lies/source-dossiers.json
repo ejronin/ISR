@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-23T20:13:00-04:00",
+  "as_of": "2026-09-24T19:22:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -1719,9 +1719,9 @@
         "https://www.youtube.com/watch?v=TqTMaCKNMOQ",
         "https://www.youtube.com/watch?v=tdoYgjiOchc"
       ],
-      "current_disposition": "ACTIVE_PATTERN_REVIEW",
+      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. 24 distinct incidents are currently promoted/scored, with additional Iran-war/public-affairs and historian-role candidates under evidentiary review. The July 20 'runs out of ammo' publication is now preserved as the first recovered item in a three-publication munitions-depletion narrative chain through August 6. The incident-gated NEWS_GRIFT finding remains tied to scored publication behavior plus direct support solicitation; monetization alone is not the basis.",
+      "notes": "Valenti review is closed for the currently recoverable 2026 Iran-war corpus at 24 promoted/scored WOL incidents. Twenty-two additional reviewed publications were resolved as non-incidents/rejects. Four current-events candidates and three project-owner-recalled historian statements remain explicitly excluded from the final count because the necessary body/source attribution was not recovered. Reopen only for genuinely new source evidence or a newly recovered exact body/clip; do not restart routine channel searching.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1730,7 +1730,8 @@
           "publication_date": "2026-04-21",
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Determine what request/proposal is actually described in-body, who allegedly asked whom, and whether the title overstates discussion, contingency planning, advocacy, or an actual request."
+          "research_reason": "Determine what request/proposal is actually described in-body, who allegedly asked whom, and whether the title overstates discussion, contingency planning, advocacy, or an actual request.",
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-NUKE-CANCEL-20260803",
@@ -1744,7 +1745,8 @@
             "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
             "observation": "Project owner reports Valenti used 'nuclear strike' literally as nuclear-warhead use against Iran, consistent with his repeated nuclear-armed-aircraft framing, not as shorthand for a conventional strike on nuclear facilities.",
             "evidentiary_limit": "Automated/web retrieval has not recovered captions or timestamps. The already-recorded presentation incident remains independently supportable from the public title plus contemporaneous reporting; this note resolves the intended meaning only at project-review level."
-          }
+          },
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-GROUND-INVASION-2026",
@@ -1753,7 +1755,8 @@
           "publication_date": null,
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Determine what Trump actually announced versus what the creator inferred from force posture, rhetoric, planning, or third-party commentary."
+          "research_reason": "Determine what Trump actually announced versus what the creator inferred from force posture, rhetoric, planning, or third-party commentary.",
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-NUCLEAR-ARMED-JETS-2026",
@@ -1767,7 +1770,8 @@
             "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
             "observation": "Project owner reports Valenti explicitly described aircraft carrying nuclear warheads and framed the deployment as preparation to nuke Iran.",
             "evidentiary_limit": "Automated/web retrieval has not recovered the captions or timestamped spoken text. Do not label this as a machine-captured transcript until exact body wording/timestamps are preserved."
-          }
+          },
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-SAUDI-NUCLEAR-WEAPONS-2026",
@@ -1776,7 +1780,8 @@
           "publication_date": "2026-07-22",
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Determine whether the body alleges literal transfer of nuclear weapons, nuclear-capable systems, extended deterrence, basing, planning, or some other proposition."
+          "research_reason": "Determine whether the body alleges literal transfer of nuclear weapons, nuclear-capable systems, extended deterrence, basing, planning, or some other proposition.",
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-ALLOWS-MISSILES-20260727",
@@ -1790,7 +1795,8 @@
             "review_status": "BODY_REVIEW_REPORTED_TRANSCRIPT_NOT_MACHINE_RECOVERED",
             "observation": "Project owner reports Valenti argued the United States essentially did not care, permitted the strikes to occur, and did so to make other actors angry; this is materially stronger than interceptor rationing or threat-based non-interception.",
             "evidentiary_limit": "The public title alone does not prove this motive proposition. Exact transcript wording/timestamps remain required before this body-level motive claim is promoted into a scored WOL-native incident."
-          }
+          },
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-GROUND-INVASION-20260401",
@@ -1803,7 +1809,8 @@
           "comparison_sources": [
             "https://www.presidency.ucsb.edu/documents/address-the-nation-united-states-military-operations-iran",
             "https://www.reuters.com/world/us/trump-tell-wary-public-that-iran-war-goals-have-been-accomplished-prime-time-2026-04-01/"
-          ]
+          ],
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         },
         {
           "research_item_id": "VALENTI-BODY-AMERICA-UNDER-ATTACK-202606",
@@ -1812,7 +1819,8 @@
           "publication_date": null,
           "capture_status": "TITLE_DESCRIPTION_ONLY",
           "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-          "research_reason": "Direct watch ID recovered from the Valenti channel continuation page. The title is too vague to identify the alleged attacker, attack type, target or factual proposition. Do not score until the body/description fixes the underlying event and claim."
+          "research_reason": "Direct watch ID recovered from the Valenti channel continuation page. The title is too vague to identify the alleged attacker, attack type, target or factual proposition. Do not score until the body/description fixes the underlying event and claim.",
+          "final_pass_status": "CLOSED_NO_FURTHER_ROUTINE_SEARCH"
         }
       ],
       "solicitation_review": {
@@ -1842,17 +1850,18 @@
         }
       },
       "review_progress": {
-        "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
+        "status": "CURRENT_REVIEWED_CORPUS_COMPLETE_2026-09-24",
         "promoted_incident_count": 24,
-        "corpus_completion_claim": "NONE",
+        "corpus_completion_claim": "CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS_REVIEWED",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
           {
             "research_item_id": "VALENTI-CANDIDATE-US-BASES-COMPLETELY-DESTROYED-20260917",
             "title": "U.S Soldiers LEAK PHOTOS of our bases in the Middle East; THEY'RE COMPLETELY DESTROYED!",
             "url": "https://www.youtube.com/watch?v=nqd977hHQfM",
-            "status": "HELD_FACILITY_LEVEL_MATCH_REQUIRED",
-            "disposition_note": "Independent reporting establishes extensive destruction across multiple U.S. positions. Do not score the word 'completely' without mapping the referenced leaked photos to specific facilities and distinguishing destroyed subfacilities from whole-base operational destruction."
+            "status": "EXCLUDED_PENDING_NEW_EVIDENCE",
+            "disposition_note": "Independent reporting establishes extensive destruction across multiple U.S. positions. Do not score the word 'completely' without mapping the referenced leaked photos to specific facilities and distinguishing destroyed subfacilities from whole-base operational destruction.",
+            "final_count_effect": "NOT_COUNTED"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-US-CASUALTY-COVERUP-20260721",
@@ -1879,8 +1888,9 @@
             "research_item_id": "VALENTI-CANDIDATE-ALLOWS-MISSILES-20260727",
             "title": "U.S Military ALLOWS IRANIAN MISSILES to hit our bases. Ukraine joins the Iran War.",
             "url": "https://www.youtube.com/watch?v=H0BfiwKhoVs",
-            "status": "TITLE_LEVEL_SUPPORTED_BODY_MOTIVE_REMAINS_GATED",
-            "disposition_note": "Reporting independently supports deliberate non-interception of some Iranian projectiles, including allowing some to hit empty U.S. bases to conserve interceptors. Only the stronger project-owner-reported motive claim ('did not care' / permitted strikes to provoke anger) remains body-gated."
+            "status": "EXCLUDED_PENDING_NEW_EVIDENCE",
+            "disposition_note": "Reporting independently supports deliberate non-interception of some Iranian projectiles, including allowing some to hit empty U.S. bases to conserve interceptors. Only the stronger project-owner-reported motive claim ('did not care' / permitted strikes to provoke anger) remains body-gated.",
+            "final_count_effect": "NOT_COUNTED"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-NUKE-ASK-20260421",
@@ -1935,7 +1945,7 @@
             "research_item_id": "VALENTI-CANDIDATE-DUDE44-PILOT-SKEPTICISM-20260920",
             "title": "The “pilot” that was “shot down” over Iran claims he climbed a 7000 foot mountain with a broken back",
             "url": "https://www.youtube.com/@valentivideos",
-            "status": "BODY_REQUIRED_SKEPTICAL_INSINUATION_NOT_PROMOTED",
+            "status": "EXCLUDED_PENDING_NEW_EVIDENCE",
             "disposition_note": "Independent reporting strongly corroborates the F-15E shootdown, Bravo's broken back/arm/shoulder, roughly 50 hours of evasion, and movement up/toward a roughly 7,000-foot ridgeline. The publisher's scare quotes signal skepticism but the title itself does not cleanly assert that the shootdown or injuries were fabricated. Preserve for body review; do not score insinuation alone.",
             "evidence_review": {
               "checked_at": "2026-09-24T01:56:00-04:00",
@@ -1945,7 +1955,8 @@
                 "https://transcripts.cnn.com/show/ctw/date/2026-09-14/segment/02"
               ],
               "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_BODY_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW"
-            }
+            },
+            "final_count_effect": "NOT_COUNTED"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-LARGEST-ATTACK-WARSHIPS-202609",
@@ -1967,9 +1978,10 @@
             "research_item_id": "VALENTI-CANDIDATE-ANOTHER-FALSE-FLAG-202606",
             "title": "ANOTHER FALSE FLAG ATTACK LMFAO",
             "url": "https://www.youtube.com/watch?v=Zy6M8fxc970",
-            "status": "BODY_CONTEXT_REQUIRED_ATTACK_NOT_IDENTIFIED",
+            "status": "EXCLUDED_PENDING_NEW_EVIDENCE",
             "disposition_note": "Direct Valenti watch ID recovered, but the public title does not identify which attack is alleged to be a false flag. Do not score until the body/description or a reliable mirror fixes the underlying event and factual proposition.",
-            "required_next_evidence": "TRANSCRIPT_DESCRIPTION_OR_TIMESTAMPED_DIRECT_REVIEW_IDENTIFYING_THE_ALLEGED_ATTACK"
+            "required_next_evidence": "TRANSCRIPT_DESCRIPTION_OR_TIMESTAMPED_DIRECT_REVIEW_IDENTIFYING_THE_ALLEGED_ATTACK",
+            "final_count_effect": "NOT_COUNTED"
           },
           {
             "research_item_id": "VALENTI-CANDIDATE-KHAMENEI-ASSASSINATED-20260302",
@@ -2079,10 +2091,20 @@
           "search_exhaustion_note": "Generic March-April indexed searches repeatedly collapse back to the same channel pages and already-reviewed direct videos. Continue through exact-title/direct-ID recovery and alternate public mirrors rather than claiming corpus completion.",
           "continuation_rule": "Continue claim-family recovery across March-May major Iran-war events; deduplicate existing nuclear/ground-invasion/ammo/peace-deal chains and score only distinct unsupported factual/inferential propositions.",
           "latest_reviewed_reject": "2026-04-03 F-15E pilot missing after shootdown — supported at publication time; preserved for later posture-reversal comparison"
+        },
+        "routine_search_status": "CLOSED",
+        "reopen_rule": "Reopen only when a genuinely new publication, exact transcript/timestamp, direct clip, or other source evidence is recovered. Do not repeat routine searches of already-reviewed channel surfaces.",
+        "excluded_pending_new_evidence_count": 4,
+        "historian_source_not_recovered_count": 3,
+        "final_accounting": {
+          "promoted_scored_incidents": 24,
+          "resolved_nonincidents": 22,
+          "excluded_current_events_pending_new_evidence": 4,
+          "excluded_historian_recollections_without_source_recovery": 3
         }
       },
       "historian_role_review": {
-        "status": "ACTIVE_SOURCE_RECOVERY",
+        "status": "CLOSED_PENDING_NEW_SOURCE_EVIDENCE",
         "self_claim_status": "PUBLICLY_VERIFIED",
         "claimed_role": "HISTORIAN",
         "self_claim_receipts": [
@@ -2094,19 +2116,22 @@
             "reported_claim": "Persia was never defeated.",
             "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
             "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-            "adjudication_note": "If exact wording is recovered as an unqualified factual claim, compare against well-established defeats/conquests of Persian states rather than arguing over modern-national continuity."
+            "adjudication_note": "If exact wording is recovered as an unqualified factual claim, compare against well-established defeats/conquests of Persian states rather than arguing over modern-national continuity.",
+            "final_pass_status": "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
           },
           {
             "reported_claim": "Iranians have been peaceful for 3000 years.",
             "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
             "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-            "adjudication_note": "If recovered as an unqualified factual claim, decompose peaceful-culture rhetoric from the testable historical proposition about Iranian/Persian states engaging in offensive war, conquest and interstate conflict."
+            "adjudication_note": "If recovered as an unqualified factual claim, decompose peaceful-culture rhetoric from the testable historical proposition about Iranian/Persian states engaging in offensive war, conquest and interstate conflict.",
+            "final_pass_status": "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
           },
           {
             "reported_claim": "Saudis are terrorists and always have been.",
             "capture_status": "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED",
             "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-            "adjudication_note": "If recovered, preserve the exact referent: Saudi state, Saudi rulers, Saudi nationals, Wahhabi movements or some other actor. Do not score an ambiguous collective label until the body fixes the referent."
+            "adjudication_note": "If recovered, preserve the exact referent: Saudi state, Saudi rulers, Saudi nationals, Wahhabi movements or some other actor. Do not score an ambiguous collective label until the body fixes the referent.",
+            "final_pass_status": "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
           }
         ],
         "role_failure_rule": "Do not infer historian-role failure from the self-claim alone. Require exact source recovery plus falsifiable historical propositions and documented contrary historical evidence. Repeated source-recovered historical verification failures may support a historian-specific role-failure finding."
@@ -2280,7 +2305,20 @@
           "disposition": "NOT_PROMOTED_GEOPOLITICAL_LABEL_NOT_ATOMIC_FACT",
           "basis": "Whether a multi-theater conflict constitutes 'World War III' is a contested geopolitical classification, not a sufficiently bounded factual proposition at title level. Do not score the label itself; review any narrower body claims separately if recovered."
         }
-      ]
+      ],
+      "review_completion": {
+        "status": "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS",
+        "completed_at": "2026-09-24T19:22:00-04:00",
+        "documented_incident_count": 24,
+        "resolved_nonincident_count": 22,
+        "unresolved_excluded_count": 7,
+        "unresolved_breakdown": {
+          "current_events_body_or_facility_gate": 4,
+          "historian_attribution_gate": 3
+        },
+        "limitation": "This completion does not claim omniscient lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Valenti corpus has been reviewed to the point that remaining items lack the source evidence needed for responsible scoring.",
+        "next_action": "NONE_UNLESS_NEW_EVIDENCE"
+      }
     }
   ],
   "source_behavior_incidents": [
