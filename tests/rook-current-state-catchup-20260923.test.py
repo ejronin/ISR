@@ -17,10 +17,13 @@ def rows_by_id(rows):
 def main() -> int:
     state = builder.build_state(ROOT)
     manifest = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
-    tip = manifest["accepted_updates"][-1]
-    assert tip["packet_id"] == "UPD-20260923-ROOK-EVIDENCE-CATCHUP"
-    assert tip["sequence"] == max(item["sequence"] for item in manifest["accepted_updates"])
-    assert manifest["current_evidence_cutoff"] == tip["evidence_cutoff"]
+    accepted = manifest["accepted_updates"]
+    sep23_entry = next(
+        item for item in accepted
+        if item["packet_id"] == "UPD-20260923-ROOK-EVIDENCE-CATCHUP"
+    )
+    assert sep23_entry["previous_lineage_sha256"] == accepted[accepted.index(sep23_entry) - 1]["lineage_sha256"]
+    assert manifest["current_evidence_cutoff"] == accepted[-1]["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
 
     events = {row["event_id"]: row for row in state["chronology"]}
@@ -46,10 +49,15 @@ def main() -> int:
 
     shipping = rows_by_id(state["entities"]["shipping"])
     hormuz = shipping["SHIP-HORMUZ-TRAFFIC-20260914"]["record"]
-    assert hormuz["latest_observable_metric"]["day"] == "2026-09-22"
-    assert hormuz["latest_observable_metric"]["commodity_vessel_transits"] == 3
-    assert hormuz["latest_observable_metric"]["inbound"] == 0
-    assert hormuz["latest_observable_metric"]["outbound"] == 3
+    sep23_packet = json.loads((ROOT / "data/canonical-updates/UPD-20260923-ROOK-EVIDENCE-CATCHUP.json").read_text(encoding="utf-8"))
+    sep23_hormuz = next(
+        row["record"] for row in sep23_packet["entities"]
+        if row["entity_id"] == "SHIP-HORMUZ-TRAFFIC-20260914"
+    )
+    assert sep23_hormuz["latest_observable_metric"]["day"] == "2026-09-22"
+    assert sep23_hormuz["latest_observable_metric"]["commodity_vessel_transits"] == 3
+    assert sep23_hormuz["latest_observable_metric"]["inbound"] == 0
+    assert sep23_hormuz["latest_observable_metric"]["outbound"] == 3
     hist = hormuz["denominator_revision_history"]
     assert [(row["reported_on"], row["commodity_vessel_transits"]) for row in hist] == [
         ("2026-09-22", 2), ("2026-09-23", 4)
