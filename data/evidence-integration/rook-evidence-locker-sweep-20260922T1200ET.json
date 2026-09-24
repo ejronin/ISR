@@ -1,0 +1,201 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-22T00:00:00-04:00",
+    "end": "2026-09-22T12:00:00-04:00",
+    "collection_time": "2026-09-22T12:00:10-04:00",
+    "evidence_horizon": "2026-09-22T12:00:00-04:00"
+  },
+  "lineage": {
+    "branch": "evidence/rook-catchup-20260919-0002",
+    "previous_sweep_artifact": "data/evidence-integration/rook-evidence-locker-sweep-20260922T0000ET.json",
+    "intervening_lineage_artifact": "data/evidence-integration/rook-hormuz-position-authority-lineage-20260922T0930ET.json",
+    "intervening_lineage_commit": "411ef658d5e63c2e62c336936dace839e26ddaec"
+  },
+  "updates": [
+    {
+      "event_id": "IRAN-HORMUZ-REOPENING-OFFER-20260922",
+      "update_type": "diplomacy / existing Hormuz position-lineage update",
+      "occurrence_time": "proposal reportedly delivered 2026-09-16; public disclosure 2026-09-22",
+      "publication_time": "2026-09-22T10:13:33Z",
+      "finding": "A senior Iranian official told Reuters Iran could reopen the Strait of Hormuz within seven days if the United States eases military pressure and lifts its blockade on Iranian ports. The official said Iran's UNGA delegation has full authority to revive diplomacy and that Tehran's proposal was delivered through mediators on September 16. President Masoud Pezeshkian was not expected to meet President Trump directly.",
+      "status": "REPORTED IRANIAN GOVERNMENT OFFER; SPEAKER UNNAMED; IMPLEMENTATION NOT YET OBSERVED",
+      "sources": ["https://www.reuters.com/world/middle-east/iran-ready-reopen-strait-hormuz-if-us-eases-military-pressure-lifts-blockade-2026-09-22/"],
+      "drawer_effect": "Cross-reference the dedicated speaker/authority lineage. This materially narrows the publicly reported Hormuz reopening prerequisites, but does not prove formal abandonment of all seven previously reported settlement conditions or that IRGCN has received an implementation order."
+    },
+    {
+      "event_id": "US-IRAN-UNGA-DIPLOMACY-20260922",
+      "update_type": "diplomacy / U.S. negotiating posture",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22T11:20:33Z",
+      "finding": "Secretary of State Marco Rubio said the United States is open to speaking with Iranian representatives at UNGA if talks could lead to a positive outcome, but said no meeting was scheduled. This creates reciprocal public openness to talks alongside Iran's reported Hormuz offer, without establishing that negotiations have begun.",
+      "status": "CONFIRMED U.S. PUBLIC OPENNESS; NO MEETING SCHEDULED",
+      "sources": ["https://www.reuters.com/world/middle-east/us-open-meeting-iran-un-no-meeting-scheduled-yet-rubio-says-2026-09-22/"],
+      "drawer_effect": "Update U.S.-Iran diplomacy drawer from unilateral Iranian overture to reciprocal public openness; preserve no-meeting/no-agreement status."
+    },
+    {
+      "event_id": "US-IRAN-UNGA-TRUMP-SPEECH-20260922",
+      "update_type": "diplomacy / coercive signaling",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22T11:27:07Z",
+      "finding": "President Trump told the UN General Assembly that the United States could destroy the Islamic Republic if no peace agreement is reached, while also predicting a deal after the November 3 U.S. midterm elections and calling for international economic isolation of Iran. The statement is coercive political signaling and a stated expectation, not evidence that a new strike decision has been made.",
+      "status": "CONFIRMED PRESIDENTIAL SIGNALING; NO NEW STRIKE ORDER ESTABLISHED",
+      "sources": ["https://www.reuters.com/world/americas/trump-set-whirlwind-un-meetings-with-wars-iran-ukraine-agenda-2026-09-22/"],
+      "drawer_effect": "Append to U.S. escalation/diplomacy chronology; do not convert rhetoric into an operational disposition."
+    },
+    {
+      "event_id": "HORMUZ-TRAFFIC-20260921-DAYCOUNT",
+      "update_type": "maritime / commercial traffic denominator update",
+      "occurrence_time": "2026-09-21",
+      "publication_time": "2026-09-22",
+      "finding": "Preliminary shipping data cited by Reuters counted only two commodity vessels crossing Hormuz on Monday September 21, down from ten Sunday and far below the pre-conflict benchmark of roughly 125 large commercial ships per day. AIS-dark traffic may not be captured. Reuters also identified the two September 21 attacked ships as LR Stephanie and Al Maryah; both continued without towing and attribution remained unresolved. Bab el-Mandeb traffic was reported at 26 crossings Monday.",
+      "status": "PRELIMINARY VISIBLE-TRAFFIC DENOMINATOR; AIS-DARK CAVEAT; ATTACK ATTRIBUTION UNRESOLVED",
+      "sources": ["https://www.reuters.com/world/middle-east/hormuz-vessel-traffic-falls-two-data-shows-2026-09-22/"],
+      "drawer_effect": "Supersede current visible daily Hormuz traffic status with Monday=2 while preserving weekend 17/37 and all prior daily observations. Add named-vessel identities to September 21 incidents without changing attribution."
+    },
+    {
+      "event_id": "SAUDI-EAST-WEST-PIPELINE-RESTART-20260922",
+      "update_type": "infrastructure / energy / repair-status update",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22",
+      "finding": "Saudi Arabia restarted its East-West oil pipeline at reduced rates after the September drone attack damaged three pumping stations. Reuters sources said Yanbu crude exports could resume September 22; restoration toward the pipeline's 7 million bpd full capacity may take roughly six to eight weeks. The restart restores partial Hormuz-bypass capacity but is not a full repair or full-capacity restoration.",
+      "status": "PARTIAL RESTART SUPPORTED; FULL RESTORATION PENDING",
+      "sources": ["https://www.reuters.com/business/energy/saudi-arabia-restarts-east-west-oil-pipeline-resume-exports-yanbu-sources-say-2026-09-22/"],
+      "drawer_effect": "Supersede pipeline disposition from shut/damaged to operating at reduced rate; retain original attack/BDA and repair chronology. Verify actual Yanbu loading and throughput in next sweep."
+    },
+    {
+      "event_id": "OIL-MARKET-RESPONSE-20260922",
+      "update_type": "economy / energy market reaction",
+      "occurrence_time": "2026-09-22 morning",
+      "publication_time": "2026-09-22",
+      "finding": "Brent fell to a two-week low below $100 as markets reacted to Iran's conditional Hormuz reopening signal and Saudi Arabia's partial East-West pipeline restart. This is market evidence of reduced near-term supply-risk pricing, not proof that Hormuz has reopened or Saudi bypass capacity is normalized.",
+      "status": "MARKET MOVE SUPPORTED; CAUSAL ATTRIBUTION REPORTED BY REUTERS",
+      "sources": ["https://www.reuters.com/business/energy/oil-rises-slightly-ahead-potential-us-iran-talks-2026-09-22/"],
+      "drawer_effect": "Append to energy/economic-effects drawer and cross-reference Hormuz diplomacy plus Saudi repair status."
+    },
+    {
+      "event_id": "FRANCE-US-UNSC-HORMUZ-MISSION-20260922",
+      "update_type": "diplomacy / maritime security initiative",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22T13:50:05Z",
+      "finding": "France began drafting, in coordination with the United States, a UN Security Council resolution for an international mission intended to restore commercial movement through Hormuz. Diplomats described a non-offensive framing centered on freedom of navigation. Earlier efforts failed amid Chinese and Russian objections; no resolution had yet been circulated or adopted at the evidence horizon.",
+      "status": "DRAFTING EFFORT SUPPORTED; NO UNSC AUTHORIZATION",
+      "sources": ["https://www.reuters.com/world/france-mulls-new-un-security-council-resolution-hormuz-diplomats-say-2026-09-22/"],
+      "drawer_effect": "Append as a new multilateral maritime-security pathway; do not characterize as an authorized mission until Security Council action occurs."
+    },
+    {
+      "event_id": "RUSSIA-SAUDI-CHOKEPOINT-DIPLOMACY-20260922",
+      "update_type": "diplomacy / maritime security",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22",
+      "finding": "President Vladimir Putin and Crown Prince Mohammed bin Salman discussed the Middle East and emphasized safe, unimpeded passage through both Hormuz and Bab el-Mandeb, while calling for a political settlement and cessation of Yemen hostilities.",
+      "status": "CONFIRMED DIPLOMATIC POSITION",
+      "sources": ["https://www.reuters.com/world/middle-east/putin-saudi-crown-prince-call-safe-passage-via-hormuz-bab-el-mandeb-2026-09-22/"],
+      "drawer_effect": "Append to Russia/Saudi diplomacy and dual-chokepoint risk drawers; this is a stated position, not an operational security commitment."
+    },
+    {
+      "event_id": "YEMEN-DISPLACEMENT-PROJECTION-20260922",
+      "update_type": "human impact / forecast denominator update",
+      "occurrence_time": "renewed fighting through 2026-09-22",
+      "publication_time": "2026-09-22",
+      "finding": "UNHCR said more than 130,000 people had already been displaced this month and projected another 100,000 could be displaced over the next three months. More than 3,000 had fled by sea to Africa, with arrivals potentially reaching 10,000 next month as sea conditions improve. UNHCR's Yemen response was less than 20% funded.",
+      "status": "UN HUMAN-IMPACT UPDATE; FUTURE FIGURES ARE PROJECTIONS",
+      "sources": ["https://www.reuters.com/world/middle-east/more-yemenis-expected-flee-upsurge-fighting-un-says-2026-09-22/"],
+      "drawer_effect": "Update humanitarian drawer while keeping observed displacement separate from projected additional displacement/refugee flows."
+    },
+    {
+      "event_id": "MOKHA-SAUDIOSTRIKE-CASUALTY-CLAIM-20260922",
+      "update_type": "military / human impact / claim preservation",
+      "occurrence_time": "2026-09-22 early morning",
+      "publication_time": "2026-09-22",
+      "finding": "Houthi-affiliated/state media reported Saudi-led coalition strikes on a residence in Mokha killed six civilians, including two children and a woman, and wounded eight. The casualty and civilian-target characterization originates from Houthi-run media and was not independently verified in the reviewed source set at collection time.",
+      "status": "HOUTHI-MEDIA CLAIM; CASUALTIES/OBJECT CHARACTERIZATION NOT INDEPENDENTLY VERIFIED",
+      "sources": ["https://www.straitstimes.com/world/middle-east/houthis-say-saudi-strike-kills-6-in-yemen-port-city-mokha"],
+      "drawer_effect": "Append as attributed claim; seek Saudi coalition statement, geolocation, imagery, hospital/UN corroboration and subsequent casualty revisions."
+    },
+    {
+      "event_id": "IRAN-AVIATION-SANCTIONS-IMPLEMENTATION-20260922",
+      "update_type": "sanctions / claims-corrections implementation check",
+      "occurrence_time": "2026-09-22",
+      "publication_time": "2026-09-22",
+      "finding": "Iran Air said it had not received an order from neighboring states banning its regional flights ahead of the September 23 U.S. secondary-sanctions enforcement horizon. This directly cautions against treating the U.S. prediction that Iranian airlines will be shut out internationally as an accomplished outcome before observed implementation.",
+      "status": "IRAN AIR DENIAL/STATUS CLAIM; GLOBAL SHUTDOWN NOT YET ESTABLISHED",
+      "sources": ["https://english.alarabiya.net/News/middle-east/2026/09/22/iran-air-says-not-received-any-regional-flight-ban-despite-us-sanctions-state-media", "https://www.reuters.com/business/aerospace-defense/us-issues-fresh-iran-related-sanctions-treasury-website-shows-2026-09-08/"],
+      "drawer_effect": "Preserve against prior U.S. global-grounding prediction; verify actual flight schedules, fueling/handling refusals and state directives after September 23."
+    },
+    {
+      "event_id": "IRAN-IRGC-NEGOTIATION-SIGNALING-20260922",
+      "update_type": "claims / speaker-authority / military signaling",
+      "occurrence_time": "statement reported 2026-09-22",
+      "publication_time": "2026-09-22",
+      "finding": "IRGC spokesperson Hossein Mohebbi characterized negotiations as another arena of conflict and said Iran could negotiate if national interests required while remaining prepared for combat. This coexists with the government's reported Hormuz offer and undercuts any simplistic inference that diplomatic engagement itself equals IRGC demobilization or acceptance of peace terms.",
+      "status": "IRGC SIGNALING; NO OPERATIONAL DEMOBILIZATION IMPLIED",
+      "sources": ["https://www.iranintl.com/en/202609227373", "https://www.tasnimnews.ir/en/news/2026/09/21/3701995/irgc-warns-of-wider-war-theater-if-iran-faces-new-aggression"],
+      "drawer_effect": "Cross-reference speaker/authority lineage. Keep IRGC rhetoric, government negotiating authority and IRGCN operational control as distinct layers."
+    },
+    {
+      "event_id": "CHINA-IRAN-TAIWAN-BARGAINING-REPORT-20260922",
+      "update_type": "diplomacy / great-power bargaining",
+      "occurrence_time": "pre-summit discussions before 2026-09-24",
+      "publication_time": "2026-09-22",
+      "finding": "Reuters reporting cited sources saying China may offer cooperation/pressure concerning Iran in discussions with Washington while seeking U.S. concessions on Taiwan arms sales. This is source-based pre-summit bargaining reporting, not a publicly concluded China-U.S. agreement or demonstrated Chinese pressure on Tehran.",
+      "status": "REPORTED NEGOTIATING POSSIBILITY; NO AGREEMENT/IMPLEMENTATION ESTABLISHED",
+      "sources": ["https://www.reuters.com/world/china/chinas-xi-expected-press-trump-halt-taiwan-arms-sales-under-1982-agreement-2026-09-22/"],
+      "drawer_effect": "Append to China/Iran/U.S. diplomacy; verify summit outcome and any observable Chinese enforcement or mediation action."
+    }
+  ],
+  "prior_drawer_review": [
+    {"drawer":"Hormuz reopening prerequisites / speaker authority","action":"UPDATE","reason":"September 22 reported two-condition reopening offer materially narrows public prerequisites; preserve Zolghadr, Ghalibaf/Rezaei and unnamed-official authority distinctions."},
+    {"drawer":"Hormuz commercial traffic","action":"UPDATE","reason":"Monday preliminary visible commodity-vessel count falls to two; AIS-dark caveat retained."},
+    {"drawer":"September 21 Hormuz tanker incidents","action":"UPDATE","reason":"Reuters supplies LR Stephanie and Al Maryah identities; attribution remains unresolved and both continued under own power."},
+    {"drawer":"Saudi East-West pipeline / Yanbu","action":"UPDATE","reason":"Disposition changes from shut/damaged to partial operation; full repair estimated in weeks and actual export resumption requires follow-up."},
+    {"drawer":"U.S.-Iran diplomacy","action":"UPDATE","reason":"Rubio publicly confirms U.S. openness to UNGA engagement while no meeting is scheduled; Iran separately reports authorized negotiating delegation."},
+    {"drawer":"Yemen humanitarian impact","action":"UPDATE","reason":"UNHCR adds forward displacement/refugee projections and funding deficit."},
+    {"drawer":"Iran aviation sanctions","action":"UPDATE","reason":"Iran Air says no neighboring-state regional ban received yet; preserve outcome uncertainty ahead of September 23 enforcement horizon."},
+    {"drawer":"Iran coercive-pressure sensitivity","action":"WATCH","reason":"Narrower Hormuz relief request is consistent with increasing relief-seeking, but causal claim that Iran cannot absorb further pressure remains an analytic hypothesis requiring economic/military trend correlation."},
+    {"drawer":"Iranian command/authority map","action":"WATCH","reason":"Continue distinguishing Supreme Leader/SNSC authority, presidency/FM negotiating execution, IRGC/IRGCN operational control and adviser/former-official signaling."}
+  ],
+  "unresolved_questions": [
+    "Did SNSC/Supreme Leader/IRGCN formally authorize the September 22 two-condition Hormuz reopening offer, and has any operational reopening order been issued?",
+    "Are the other previously reported Iranian settlement conditions abandoned, retained for a broader peace settlement, or merely omitted from the narrower Hormuz offer?",
+    "What is the identity and institutional office of Reuters' unnamed senior Iranian official?",
+    "Will U.S.-Iran representatives actually meet at UNGA, and through which mediator/channel?",
+    "Will France circulate a UNSC Hormuz resolution, and will China or Russia support, abstain or veto?",
+    "What throughput is the restarted Saudi East-West pipeline actually achieving, and do Yanbu loadings resume as expected?",
+    "Do September 23 aviation secondary sanctions produce observed service/fueling/ticketing refusals, and in which jurisdictions?",
+    "Can the Mokha casualty/target claim be independently corroborated and does the Saudi coalition acknowledge the strike?",
+    "Does visible Hormuz traffic remain near two per day after accounting for AIS-dark movements and ship-to-ship shuttle adaptations?",
+    "Does China's reported Iran/Taiwan bargaining translate into an agreement or observable pressure on Tehran?"
+  ],
+  "source_discovery_additions": [
+    "UNHCR Yemen displacement/response-plan releases for primary humanitarian denominators",
+    "Kpler/Vortexa/MarineTraffic daily Hormuz and Bab el-Mandeb counts where licensable/available",
+    "Saudi Aramco/Yanbu port notices and tanker fixtures for pipeline-restart verification",
+    "UN Security Council document system for any French Hormuz draft resolution",
+    "Iranian SNSC, presidency, foreign ministry, IRGC and IRGCN statements for speaker-authority reconciliation",
+    "Civil aviation authorities and live schedule data in Iraq, Turkey, Azerbaijan, Georgia, UAE, Oman and China for September 23 sanctions implementation"
+  ],
+  "coverage_accounting": {
+    "military":"covered: Iran/IRGC signaling; Yemen/Mokha attributed strike claim; no independently verified new U.S.-Iran strike disposition found in-window",
+    "maritime":"covered: Hormuz daily count, September 21 tanker identity update, Bab el-Mandeb comparison, prospective UNSC mission",
+    "infrastructure":"covered: Saudi East-West pipeline repair/restart; no new authoritative Qatar LNG BDA found in-window",
+    "diplomacy":"covered: Iran offer, Rubio openness, Trump UNGA signaling, France/UNSC, Russia-Saudi, China-U.S.-Iran bargaining",
+    "economy_sanctions_energy":"covered: oil reaction, Saudi bypass restoration, Iranian aviation implementation check",
+    "claims_corrections":"covered: Hormuz prerequisite lineage, aviation global-grounding prediction check, Mokha casualty attribution caveat",
+    "human_impact":"covered: Yemen displacement projections and Mokha attributed casualties",
+    "commercial_osint":"partial: Reuters-cited shipping data available; direct proprietary Kpler/Vortexa/MarineTraffic terminals unavailable in this run",
+    "primary_actor_sources":"partial: selected official/state-linked statements surfaced; no comprehensive authenticated archive/API for every actor was available",
+    "social_media_osint":"limited: no systematic platform firehose/geolocation pipeline available in this run; no unsupported social claim promoted",
+    "imagery_satellite":"limited: no dedicated commercial satellite tasking/feed available in this run"
+  },
+  "completion_report": {
+    "result":"COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+    "write_mode":"append-only new artifact",
+    "canonical_mutation":"none",
+    "release_artifact_mutation":"none",
+    "notes":"Existing-event updates were preferred where later evidence changed disposition, identity, traffic denominator, negotiation posture or repair status. Contradicted/unverified claims were preserved with attribution rather than deleted. Publication, occurrence, collection and evidence-horizon concepts remain distinct."
+  }
+}

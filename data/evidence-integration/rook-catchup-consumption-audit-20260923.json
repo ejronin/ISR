@@ -1,0 +1,155 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_CURRENT_STATE_CONSUMPTION_AUDIT",
+  "authority": "EVIDENCE_INTEGRATION",
+  "scope": "Ordinary ISR canonical/public current state only; Web of Lies excluded.",
+  "production_base": "ca091f227965cfb2ed793a8aab442dcf68193555",
+  "source_branch": "evidence/rook-catchup-20260919-0002",
+  "source_head": "9f444b1d80f3e35a9a04d2a22955fa0fe417ce68",
+  "canonical_packet": "UPD-20260923-ROOK-EVIDENCE-CATCHUP",
+  "evidence_cutoff": "2026-09-23T18:12:00-04:00",
+  "upstream_artifacts": [
+    "data/evidence-integration/rook-evidence-locker-sweep-20260922T0000ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260922T1200ET.json",
+    "data/evidence-integration/rook-hormuz-position-authority-lineage-20260922T0930ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260923T0000ET.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260923T1200ET.json",
+    "data/evidence-integration/rook-saudi-iran-stability-proxy-referral-20260923T1812ET.json"
+  ],
+  "reconciliations": [
+    {
+      "topic": "Hormuz traffic",
+      "disposition": "UPDATE_EXISTING_ENTITY",
+      "target": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "note": "Preserve Sep. 21 preliminary Monday=2, record later Kpler Monday=4 correction, advance latest daily metric to Tuesday Sep. 22=3 all outbound; AIS caveat retained."
+    },
+    {
+      "topic": "Bab el-Mandeb traffic",
+      "disposition": "UPDATE_EXISTING_ENTITY",
+      "target": "SHIP-BAB-EL-MANDEB-TRAFFIC-20260914",
+      "note": "Advance to Sep. 22=22 crossings, 14 northbound toward Red Sea and 8 southbound toward Gulf of Aden; 10-day average about 26."
+    },
+    {
+      "topic": "Sep. 21 Hormuz incidents",
+      "disposition": "CREATE_DISTINCT_EVENTS_AND_SHIPPING_RECORDS",
+      "targets": [
+        "G3-HORMUZ-LR-STEPHANIE-INCIDENT-20260921",
+        "G3-HORMUZ-AL-MARYAH-INCIDENT-20260921"
+      ],
+      "note": "Keep projectile/debris mechanisms and unresolved attribution separate."
+    },
+    {
+      "topic": "Sep. 23 Hormuz vessel incident",
+      "disposition": "CREATE_DISTINCT_EVENT_AND_SHIPPING_RECORD",
+      "target": "G3-HORMUZ-VESSEL-STRIKE-20260923",
+      "note": "Fire and crew evacuation supported; identity/attribution withheld."
+    },
+    {
+      "topic": "Iran Hormuz/settlement positions",
+      "disposition": "UPDATE_EXISTING_DIPLOMACY_ENTITY_AND_CREATE_OFFER_EVENT",
+      "target": "DIP-IRAN-US-SETTLEMENT-CONDITIONS-20260920",
+      "note": "Preserve Zolghadr maximalist rhetoric, Rezaei seven-condition framework, unnamed two-condition offer and Araqchi/state-media three-condition formulation by speaker authority; relation unresolved."
+    },
+    {
+      "topic": "Saudi East-West pipeline",
+      "disposition": "UPDATE_EXISTING_MATERIAL_LOSS_AND_GAP_PLUS_RESTART_EVENT",
+      "target": "MAT-SA-EASTWEST-PIPELINE-20260911",
+      "note": "Reduced-rate restart supported; six-to-eight-week full-capacity estimate; Yanbu export resumption expected but no specific VLCC loading promoted."
+    },
+    {
+      "topic": "UK/Saudi support",
+      "disposition": "PROMOTE",
+      "target": "DIP-UK-SAUDI-VOYAGER-SUPPORT-20260921",
+      "note": "One RAF Voyager defensive refuelling commitment; no offensive role inferred."
+    },
+    {
+      "topic": "U.S. Saudi/Yemen Houthi support posture",
+      "disposition": "PROMOTE_WITH_DISTINCT_DISPOSITIONS",
+      "target": "DIP-US-SAUDI-YEMEN-HOUTHI-SUPPORT-20260921",
+      "note": "Saudi direct-support requests rebuffed; Yemen request received no direct pledge; prepared/cancelled strike story remains attributed/unverified."
+    },
+    {
+      "topic": "Four-state Saudi/Yemen statement",
+      "disposition": "PROMOTE_AS_POLITICAL_SUPPORT",
+      "target": "DIP-TUR-EGY-PAK-KSA-JOINT-STATEMENT-20260922",
+      "note": "No new combined offensive commitment inferred."
+    },
+    {
+      "topic": "Yemen humanitarian state",
+      "disposition": "UPDATE_EXISTING_CASUALTY_ENTITY",
+      "target": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "note": "Preserve IOM 114,498, AP/UN 129,438 and UNHCR >130,000 as distinct source/timebox series; observed versus projected figures separated."
+    },
+    {
+      "topic": "Houthi Red Sea coast offensive",
+      "disposition": "UPDATE_CURRENT_MOVEMENT_AND_EXISTING_COMMAND_SCOPE_GAP",
+      "targets": [
+        "G3-HOUTHI-MOCHA-HANISH-ADVANCE-20260910",
+        "G3-HOUTHI-DHUBAB-PERIM-ADVANCE-20260911",
+        "GAP-E1-IRGC-HOUTHI-COMMAND",
+        "REL-IRAN-HOUTHI-OPERATIONAL-SUPPORT-20260923"
+      ],
+      "note": "Do not duplicate Sep. 10-11 occurrence events. AP field-adviser reporting upgrades reported operation-specific assistance; organization-wide command/control remains unestablished."
+    },
+    {
+      "topic": "Mokha casualty claim",
+      "disposition": "PROMOTE_AS_ATTRIBUTED_CLAIM_ONLY",
+      "target": "G3-MOKHA-STRIKE-CASUALTY-CLAIM-20260922",
+      "note": "Six killed/eight wounded and civilian-residence characterization remain Houthi-media claims without independent verification."
+    },
+    {
+      "topic": "U.S.-Iran UNGA engagement",
+      "disposition": "PROMOTE_WITH_SOURCE_DISCREPANCY",
+      "target": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "note": "Latest Reuters reconstruction supports indirect mediated contacts; AP/Trump direct-meeting characterization preserved; no deal."
+    },
+    {
+      "topic": "Qatar regional security framework",
+      "disposition": "PROMOTE_AS_PROPOSAL_ONLY",
+      "target": "DIP-QATAR-GULF-SECURITY-FRAMEWORK-20260922",
+      "note": "Iran reviewing; no agreement/adoption."
+    },
+    {
+      "topic": "France/U.S. UNSC Hormuz mission",
+      "disposition": "PROMOTE_AS_PROPOSED_ONLY",
+      "target": "DIP-FRANCE-US-UNSC-HORMUZ-MISSION-20260922",
+      "note": "Drafting effort only; no UNSC authorization."
+    },
+    {
+      "topic": "Aviation secondary sanctions",
+      "disposition": "PROMOTE_OBSERVED_IMPLEMENTATION_ONLY",
+      "target": "ECON-IRAN-AVIATION-SECONDARY-SANCTIONS-20260923",
+      "note": "Baghdad/Muscat cancellations and Iraq suspension supported; worldwide grounding not established; Rezaei airport warning remains threat."
+    },
+    {
+      "topic": "Ras Laffan/QatarEnergy",
+      "disposition": "NO_CANONICAL_CHANGE_EXISTING_RECORD_REMAINS_CURRENT",
+      "target": "FAC-QAT-LNG-SYSTEM",
+      "note": "No Sep. 22-23 independent BDA superseded the existing 12.8 mt/year affected-capacity, 3-5 year repair horizon, two-of-14 LNG trains and GTL facility unavailable state. No unsupported North Field expansion effect promoted."
+    },
+    {
+      "topic": "China/Taiwan bargaining report",
+      "disposition": "WITHHOLD_FROM_ORDINARY_CURRENT_STATE",
+      "note": "Reported negotiating possibility was not an Iran-Gulf operational development and no agreement/implementation was established."
+    },
+    {
+      "topic": "U.S./Iran coercive signaling",
+      "disposition": "PROMOTE_AS_SIGNALING_ONLY",
+      "target": "G3-US-IRAN-COERCIVE-SIGNALING-20260922",
+      "note": "Trump UNGA threat/expected-deal language and Iranian armed-forces/IRGC threat-and-negotiation framing are preserved as public signaling; no new strike order, operational escalation or demobilization inferred."
+    }
+  ],
+  "deliberately_withheld": [
+    "Perpetrator attribution for Sep. 21 LR Stephanie, Sep. 21 Al Maryah and Sep. 23 Hormuz vessel incidents.",
+    "Specific observed Yanbu VLCC loading and normalized East-West pipeline throughput after reduced-rate restart.",
+    "Any new Ras Laffan BDA or North Field expansion delay not supported by the reviewed Sep. 22-23 evidence.",
+    "Worldwide shutdown of Iranian airline operations; only partial third-country effects are observed.",
+    "Execution or demonstrated capability behind Rezaei's threat against neighboring airport operations.",
+    "Organization-wide Iranian command/control over the Houthis or control of every Houthi action.",
+    "Independent confirmation of the Sep. 22 Mokha casualty/civilian-target claim.",
+    "Formal abandonment of five of seven Iranian settlement conditions or formal adoption/retraction of Zolghadr's maximalist rhetoric.",
+    "UNSC authorization of the proposed Hormuz mission or adoption of Qatar's regional security framework.",
+    "The reported prepared/cancelled U.S. Houthi strike as established fact."
+  ],
+  "claims_forensics_handoff": "data/evidence-integration/rook-catchup-claims-routing-20260923.json",
+  "web_of_lies": "OUT_OF_SCOPE_NO_FILES_OR_SEMANTICS_TO_CHANGE"
+}

@@ -1,0 +1,85 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_TO_CLAIMS_FORENSICS_HANDOFF",
+  "authority": "FACTUAL_EVIDENCE_ROUTING_ONLY",
+  "as_of": "2026-09-23T22:52:00-04:00",
+  "basis": "data/evidence-integration/rook-saudi-iran-stability-proxy-referral-20260923T1812ET.json",
+  "rules": [
+    "Evidence Integration does not adjudicate deception, knowledge, Lie Ledger eligibility or Web of Lies lineage.",
+    "Keep Hamas and Houthi support propositions separate.",
+    "Distinguish support, weapons/funding, strategic guidance, operational assistance, operation-specific direction and organization-wide command/control."
+  ],
+  "referrals": [
+    {
+      "proposition_id": "SAUDI-IRAN-NEGOTIATION-INTENT-202609",
+      "topic": "Iran's claimed negotiation intent versus conduct",
+      "factual_context": [
+        "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+        "DIP-IRAN-US-SETTLEMENT-CONDITIONS-20260920"
+      ],
+      "adjudication_requested": [
+        "exact proposition identity",
+        "chronology",
+        "knowledge if relevant",
+        "truth/consistency predicates under Claims Forensics authority"
+      ],
+      "do_not_infer": [
+        "deception from policy inconsistency alone"
+      ]
+    },
+    {
+      "proposition_id": "SAUDI-IRAN-REGIONAL-STABILITY-CONDUCT-202609",
+      "topic": "Iran's regional-stability claims versus contemporaneous conduct",
+      "factual_context": [
+        "REL-IRAN-HOUTHI-OPERATIONAL-SUPPORT-20260923",
+        "DIP-G7-IRAN-HOUTHI-20260922"
+      ],
+      "adjudication_requested": [
+        "separate rhetoric from conduct",
+        "preserve actor and timebox",
+        "test each support proposition"
+      ],
+      "do_not_infer": [
+        "regional instability automatically proves deceptive intent"
+      ]
+    },
+    {
+      "proposition_id": "IRAN-HOUTHI-DIRECT-OPERATIONAL-INVOLVEMENT-202609",
+      "topic": "IRGC/Houthi operational involvement",
+      "factual_context": [
+        "G3-HOUTHI-MOCHA-HANISH-ADVANCE-20260910",
+        "G3-HOUTHI-DHUBAB-PERIM-ADVANCE-20260911",
+        "G3-IRGC-HOUTHI-FIELD-SUPPORT-REPORTING-20260923",
+        "REL-IRAN-HOUTHI-OPERATIONAL-SUPPORT-20260923",
+        "GAP-E1-IRGC-HOUTHI-COMMAND"
+      ],
+      "adjudication_requested": [
+        "reconcile Reuters and AP multi-source reporting",
+        "identify exact IRGC functions",
+        "distinguish operation-specific direction from broader campaign direction and organization-wide command"
+      ],
+      "do_not_infer": [
+        "Iranian control over every Houthi action",
+        "command/control solely from sponsorship"
+      ]
+    },
+    {
+      "proposition_id": "IRAN-HAMAS-SUPPORT-SEPARATE-202609",
+      "topic": "Iran/Hamas support",
+      "factual_context": [],
+      "adjudication_requested": [
+        "evaluate financing/weapons/training/strategic-support evidence separately from the Houthi relationship"
+      ],
+      "do_not_infer": [
+        "Houthi command findings transfer to Hamas",
+        "foreknowledge or command absent direct evidence"
+      ]
+    }
+  ],
+  "context_only": [
+    {
+      "proposition_id": "UNGA-WALKOUT-SIGNALING-202609",
+      "disposition": "NO_CLAIMS_FORENSICS_ADJUDICATION_REQUEST_FROM_EVIDENCE_INTEGRATION; retain only if a later exact proposition requires it."
+    }
+  ],
+  "web_of_lies": "OUT_OF_SCOPE"
+}

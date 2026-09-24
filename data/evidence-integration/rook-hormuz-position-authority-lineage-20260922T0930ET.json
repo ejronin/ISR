@@ -1,0 +1,77 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LINEAGE_APPEND",
+  "schema_version": "1.0",
+  "authority": "routine upstream evidence collection; append-only; no canonical/release mutation",
+  "collection_time": "2026-09-22T09:30:00-04:00",
+  "timezone": "America/New_York",
+  "topic": "Hormuz reopening prerequisite claim-position and speaker-authority lineage",
+  "event_id": "IRAN-HORMUZ-REOPENING-POSITION-LINEAGE-20260917-22",
+  "lineage": [
+    {
+      "position_time": "2026-09-17",
+      "speaker": "Mohammad Bagher Zolghadr",
+      "role_at_statement": "political adviser to Supreme Leader Mojtaba Khamenei; former SNSC secretary; former senior IRGC commander",
+      "statement": "Iranian fighters would not reopen the Strait of Hormuz until Donald Trump and Benjamin Netanyahu were removed from power.",
+      "authority_assessment": "HIGH-LEVEL REGIME/IRGC-CONNECTED SIGNALING; NOT ESTABLISHED AS CONTROLLING FORMAL NEGOTIATING CONDITION",
+      "authority_basis": "Zolghadr was a senior adviser to the Supreme Leader and former senior IRGC/SNSC official, but he had already been replaced as SNSC secretary by Mohsen Rezaei in August 2026. Evidence reviewed does not establish that this statement was adopted as a formal state negotiating prerequisite.",
+      "sources": [
+        "https://www.ibtimes.co.uk/iran-adviser-strait-hormuz-closed-trump-netanyahu-1820411",
+        "https://www.ft.com/content/ce343513-5514-4519-95c8-19832ed46d16",
+        "https://primarynewssource.org/sourcedocument/with-the-issuance-of-a-decree-from-his-eminence-ayatollah-seyyed-mojtaba-hosseini-khamenei-dr-mohammad-bagher-zolghadr-has-been-appointed-as-the-political-advisor-to-the-leader-of-the-revolution/"
+      ]
+    },
+    {
+      "position_time": "2026-09-19/20",
+      "speaker": "Mohsen Rezaei",
+      "role_at_statement": "Secretary of the Supreme National Security Council; Supreme Leader's representative to the SNSC; veteran former IRGC commander",
+      "statement": "Tehran had transmitted seven conditions to Washington through mediators for negotiations/ending the war; publicly emphasized conditions included ending fighting, release of frozen assets and ending the U.S. naval blockade.",
+      "authority_assessment": "FORMAL NATIONAL-SECURITY NEGOTIATING POSITION REPORTED BY THE SITTING SNSC SECRETARY; MATERIAL AUTHORITY GREATER THAN ZOLGHADR'S ADVISORY STATEMENT",
+      "authority_basis": "Rezaei was the incumbent secretary of Iran's top national-security coordinating body and Supreme Leader's representative to it. This supports treating his description of transmitted terms as substantially closer to operative state policy, while preserving uncertainty about undisclosed terms and exact legal/operational control.",
+      "sources": [
+        "https://www.ft.com/content/ce343513-5514-4519-95c8-19832ed46d16",
+        "https://www.iranintl.com/en/202609207151"
+      ]
+    },
+    {
+      "position_time": "2026-09-22",
+      "speaker": "unnamed senior Iranian official",
+      "role_at_statement": "senior Iranian government official speaking to Reuters/Kyodo; exact identity and institutional authority not public in reviewed reporting",
+      "statement": "Iran was ready to reopen Hormuz within seven days if the United States eased military pressure and lifted the blockade on Iranian ports; proposal reportedly transmitted through mediators on September 16.",
+      "authority_assessment": "CREDIBLE REPORTED GOVERNMENT OFFER BUT SPEAKER AUTHORITY NOT FULLY ATTRIBUTABLE; REQUIRES CORROBORATION AGAINST SNSC/SUPREME-LEADER/IRGC IMPLEMENTATION",
+      "authority_basis": "Reuters reports the offer from a senior Iranian official and says the Iranian UN delegation has authority to pursue negotiations, but the source is unnamed. Atlas must not infer that this official personally controls IRGC Navy implementation or that all earlier seven conditions were formally abandoned.",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/iran-ready-reopen-strait-hormuz-if-us-eases-military-pressure-lifts-blockade-2026-09-22/"
+      ]
+    }
+  ],
+  "position_delta": {
+    "observed_sequence": "Trump/Netanyahu removal rhetoric -> seven-condition formal negotiating framework -> reported two-condition Hormuz reopening offer",
+    "classification": "MATERIAL NARROWING / APPARENT WALKBACK IN PUBLICLY STATED PREREQUISITES; NOT YET A FORMAL RETRACTION",
+    "do_not_infer": [
+      "Do not state that Zolghadr's September 17 rhetoric was the controlling Iranian state policy without evidence of adoption.",
+      "Do not state that five of seven conditions were formally abandoned unless an authoritative Iranian decision-maker says so or implementation demonstrates it.",
+      "Do not state that the IRGC deliberately used a lower-authority speaker as an escape valve absent evidence of coordination or intent."
+    ]
+  },
+  "power_map": {
+    "supreme_leader": "Ultimate constitutional/political authority must be distinguished from public spokespeople and negotiators; verify current directives where available.",
+    "SNSC": "Primary national-security coordination and negotiating-policy node; incumbent secretary Mohsen Rezaei carries materially greater formal policy weight than an adviser speaking rhetorically.",
+    "IRGC_IRGCN": "Operational coercive power over military enforcement must be tracked separately from diplomatic authority. A diplomatic offer is not equivalent to demonstrated operational orders to reopen the Strait.",
+    "presidency_foreign_ministry": "Diplomatic execution/negotiation authority should be tracked separately from ultimate approval and military implementation.",
+    "advisers_former_officials": "Record as regime signaling with exact role and current authority; never automatically promote rhetoric to binding state policy."
+  },
+  "analytic_hypothesis": {
+    "hypothesis": "Senior IRGC-linked or advisory figures may provide maximalist rhetoric that permits later authoritative negotiating channels to retreat without a formal institutional retraction.",
+    "status": "HYPOTHESIS ONLY / NOT ESTABLISHED",
+    "test": "Look for coordinated timing, state-media amplification, subsequent SNSC/Supreme Leader adoption or disavowal, IRGC operational orders, internal statements describing bargaining roles, and repeated speaker-authority patterns across prior negotiations."
+  },
+  "unresolved_questions": [
+    "Did the Supreme Leader, SNSC, IRGC General Staff or IRGC Navy ever formally adopt Zolghadr's Trump/Netanyahu-removal prerequisite?",
+    "Are the September 22 two stated conditions sufficient specifically for Hormuz reopening while the other conditions remain part of a broader settlement?",
+    "What is the identity/office of the unnamed senior official behind the September 22 offer?",
+    "Has IRGC Navy received or acknowledged any conditional reopening order?",
+    "What happened to each of the seven conditions previously transmitted, including the undisclosed/ambiguously reported condition?",
+    "Is there evidence that the differing speakers were intentionally assigned maximalist versus negotiating roles?"
+  ],
+  "drawer_effect": "Append to Hormuz diplomacy, Iranian command/authority, claims-forensics lineage and IRGC signaling drawers. Cross-reference all three positions; supersede current-policy summaries only where later authoritative evidence warrants it. Preserve every prior statement and publication state."
+}

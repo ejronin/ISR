@@ -290,11 +290,18 @@ assert_promotion_only(held_packet)
 assert_promotion_only(held_handoff)
 
 manifest_v2 = json.loads((ROOT / "data/canonical-ledger/manifest-v2.json").read_text(encoding="utf-8"))
-promotion_entry = manifest_v2["accepted_updates"][-1]
+accepted_updates = manifest_v2["accepted_updates"]
+promotion_index = next(
+    index
+    for index, item in enumerate(accepted_updates)
+    if item["packet_id"] == held_packet["packet_id"]
+)
+promotion_entry = accepted_updates[promotion_index]
 assert promotion_entry["sequence"] == 19
 assert promotion_entry["packet_id"] == held_packet["packet_id"]
 assert promotion_entry["path"] == held_packet_path.relative_to(ROOT).as_posix()
-assert promotion_entry["previous_lineage_sha256"] == manifest_v2["accepted_updates"][-2]["lineage_sha256"]
+assert promotion_index > 0
+assert promotion_entry["previous_lineage_sha256"] == accepted_updates[promotion_index - 1]["lineage_sha256"]
 packet_bytes = held_packet_path.read_bytes().replace(b"\r\n", b"\n")
 assert promotion_entry["sha256"] == hashlib.sha256(packet_bytes).hexdigest()
 lineage_material = {
