@@ -1998,6 +1998,43 @@
             "disposition_note": "Do not score. The F-15E was genuinely shot down and one pilot remained in evasion/missing status at publication time. Preserve this publication because it establishes Valenti's April acceptance of the shootdown/pilot identity before his later September scare-quote skepticism about the same event.",
             "monetization_note": "The direct video description says 'Okay below is where I gotta make money,' directs viewers to Patreon as the best way to support Valenti Videos, and promotes merchandise. This is incentive-pattern context, not adverse-incident evidence by itself.",
             "chronology_note": "Source-behavior relevance: April 3 publication treats the F-15 shootdown and missing pilot as factual; September publication later places 'pilot' and 'shot down' in scare quotes. Do not treat the later posture shift as proof of deception without body evidence, but preserve the inconsistency."
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-RUSSIA-JOINS-IRANIANS-20260306",
+            "title": "Trump PANICS as U.S begins to LOSE THE WAR!",
+            "url": "https://www.youtube.com/watch?v=K8PzTdiPf6k",
+            "publication_date": "2026-03-06",
+            "status": "RESOLVED_NOT_PROMOTED_SUBSTANTIAL_RUSSIAN_INVOLVEMENT_SUBSTRATE",
+            "disposition_note": "Do not promote from the title/description. The evaluative 'PANICS', 'begins to lose' and 'world war' language is not a clean factual atom. The description's concrete 'Russia joins the Iranians' proposition had substantial contemporaneous substrate: U.S. intelligence reporting said Russia was providing Iran information useful for targeting U.S. military assets, described as Moscow's first known involvement in the conflict.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T16:46:00-04:00",
+              "supporting_public_sources": [
+                {
+                  "url": "https://apnews.com/article/35afae34198408d670941f971d383378",
+                  "finding": "AP reported, citing U.S. intelligence sources, that Russia supplied Iran information useful for targeting U.S. military assets and described it as Russia's first known involvement in the conflict."
+                }
+              ],
+              "inference_limit": "This does not establish a formal Russian entry into the war as a co-belligerent, but the wording is too grounded in actual Russian operational support to score the publication merely from 'joins the Iranians.'"
+            },
+            "monetization_note": "The same direct video description solicits Patreon support as the best way to support Valenti Videos and promotes merchandise. Preserve as NEWS_GRIFT incentive-pattern context, not as an adverse incident by itself."
+          },
+          {
+            "research_item_id": "VALENTI-CANDIDATE-ULTIMATE-VICTORY-150-WOUNDED-20260311",
+            "title": "Trump declares ULTIMATE VICTORY in Iran: 150 U.S soldiers wounded",
+            "url": "https://www.youtube.com/watch?v=JvvxQvF6UKk",
+            "publication_date": "2026-03-11",
+            "status": "RESOLVED_NOT_PROMOTED_BOTH_TITLE_ATOMS_SUPPORTED",
+            "disposition_note": "Do not promote. The victory wording was grounded in Trump's own victory declarations, while contemporaneous Reuters reporting put total U.S. wounded at as many as 150 and the Pentagon later refined the figure to about 140. The title is sensational juxtaposition but its two factual atoms had contemporaneous support.",
+            "evidence_review": {
+              "checked_at": "2026-09-24T16:46:00-04:00",
+              "supporting_public_sources": [
+                {
+                  "url": "https://www.reuters.com/world/middle-east/many-150-us-troops-wounded-so-far-iran-war-sources-say-2026-03-10/",
+                  "finding": "Reuters reported as many as 150 U.S. troops wounded and a Pentagon refinement to about 140."
+                }
+              ],
+              "inference_limit": "A separate false statement in the body could still qualify if recovered; title-level adjudication is resolved as non-incident."
+            }
           }
         ],
         "held_or_rejected_examples": [
@@ -2016,7 +2053,7 @@
           "May 5 'Trump tells children Iran wants to nuke them': rejected. Trump told children that an Iranian nuclear weapon could mean they would not be here and described catastrophic risks; the title imputes motive crudely but preserves substantial nuclear-threat substrate.",
           "April/June 'Ground Invasion...' items are not interchangeable. The April 1 watch-along title is too elliptical to score from title alone; contemporaneous coverage of Trump's address said he did not announce ground troops. It remains body-gated separately from the later scored full-scale-invasion announcement claim."
         ],
-        "resolved_nonincident_count": 20,
+        "resolved_nonincident_count": 22,
         "last_review_checkpoint": {
           "checked_at": "2026-09-24T16:46:00-04:00",
           "promoted_incident_count": 24,
@@ -2029,7 +2066,10 @@
             "senior-military opposition to extension",
             "Iran-war-through-2029 Iranian-source framing",
             "USS Lincoln overboard/jumping-ship framing",
-            "children/Iran nuclear-threat presentation"
+            "children/Iran nuclear-threat presentation",
+            "March 6 Russia-joins-Iranians / U.S. losing-war presentation — Russian targeting-intelligence support supplied substantial substrate; evaluative remainder not scored",
+            "March 11 ultimate-victory / 150-wounded presentation — both title atoms supported at publication time",
+            "April 3 F-15E shootdown / missing pilot — core event supported, preserved for later posture-reversal comparison"
           ],
           "newly_body_gated": [
             "April 1 Ground Invasion watch-along",
@@ -2037,7 +2077,7 @@
             "AMERICA IS UNDER ATTACK!!! — direct ID CdwEBSZBtP4, underlying attacker/event not recovered"
           ],
           "search_exhaustion_note": "Generic March-April indexed searches repeatedly collapse back to the same channel pages and already-reviewed direct videos. Continue through exact-title/direct-ID recovery and alternate public mirrors rather than claiming corpus completion.",
-          "continuation_rule": "Continue backward through March-May via exact channel chronology; deduplicate existing nuclear/ground-invasion/ammo/peace-deal families and score only distinct unsupported factual or inferential propositions.",
+          "continuation_rule": "Continue claim-family recovery across March-May major Iran-war events; deduplicate existing nuclear/ground-invasion/ammo/peace-deal chains and score only distinct unsupported factual/inferential propositions.",
           "latest_reviewed_reject": "2026-04-03 F-15E pilot missing after shootdown — supported at publication time; preserved for later posture-reversal comparison"
         }
       },
