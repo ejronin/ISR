@@ -1,0 +1,475 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260924-ROOK-EVIDENCE-CATCHUP",
+  "known_at": "2026-09-24T16:46:00-04:00",
+  "evidence_cutoff": "2026-09-24T12:00:00-04:00",
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20260924T0000ET.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260924T1200ET.json"
+    ],
+    "migration_source_branch": "evidence/rook-catchup-20260919-0002",
+    "migration_source_head": "c0131861478ce32307006aad9f0cf483a3b21def",
+    "consumption_audit": "data/evidence-integration/rook-catchup-consumption-audit-20260924.json",
+    "claim_domain_handoff": "data/evidence-integration/rook-catchup-claims-routing-20260924.json",
+    "web_of_lies": "OUT_OF_SCOPE_NO_HANDOFF_OR_SEMANTIC_MUTATION"
+  },
+  "summary": "Consumes the qualified Sep. 24 Evidence Integration sweeps into ordinary current state without importing the stale Evidence branch or changing Web of Lies or Claims Forensics semantics. It identifies MV Cape Dao and its confirmed fatality, broadens observed aviation-sanctions implementation through the UAE, records Saudi-Houthi missile and Taiz-Aden fighting, updates Yemen civilian-impact and Hormuz traffic state, preserves continuing U.S.-Iran diplomatic distance, and records UK bank-licensing and Gulf market developments with source and attribution boundaries intact.",
+  "sources": [
+    {
+      "source_id": "SRC-F3EA4569E3FA",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/23/one-indian-killed-in-attack-on-ship-heading-towards-india-indian-embassy-in-oman-says",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-49852DA6B8EA",
+      "url": "https://gcaptain.com/seafarer-killed-in-hormuz-attack-as-trump-pushes-iran-deal-at-un/",
+      "source_role": "MARITIME_NEWS_REPORT"
+    },
+    {
+      "source_id": "SRC-7249E79AC676",
+      "url": "https://apnews.com/article/iran-pezeshkian-united-nations-general-assembly-trump-war-210d432587bb8dc2d7303ca4c8ea67b6",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-A1B61D0B1B96",
+      "url": "https://www.reuters.com/world/middle-east/irans-president-says-tehran-will-not-surrender-war-with-us-but-believes-2026-09-23/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-25C0E481B824",
+      "url": "https://www.reuters.com/business/energy/global-gas-market-pricing-prolonged-tightness-due-iran-war-igu-executive-says-2026-09-23/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-1550F3437467",
+      "url": "https://www.reuters.com/world/middle-east/israeli-fire-kills-two-people-gaza-medics-say-2026-09-23/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-35290D936476",
+      "url": "https://www.reuters.com/world/middle-east/iranian-flights-cancelled-new-us-d-day-sanctions-take-effect-saudis-say-they-2026-09-24/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-D380C6451B15",
+      "url": "https://www.wam.ae/en/article/c2epfv7-general-civil-aviation-authority-announces",
+      "source_role": "PRIMARY_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-CFFBED54956E",
+      "url": "https://www.reuters.com/world/middle-east/yemen-says-government-forces-repel-houthi-push-key-taiz-aden-route-2026-09-24/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-79EAFC0264A9",
+      "url": "https://www.reuters.com/world/middle-east/un-rights-chief-says-civilians-are-bearing-brunt-fighting-yemen-2026-09-24/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-B3567A733014",
+      "url": "https://transcripts.un.org/zh/briefing/geneva/2026-09-22",
+      "source_role": "PRIMARY_UN_TRANSCRIPT"
+    },
+    {
+      "source_id": "SRC-CEB52EFD8564",
+      "url": "https://sana.sy/en/international/2345549/",
+      "source_role": "NEWS_REPORT_OF_COMMERCIAL_DATA"
+    },
+    {
+      "source_id": "SRC-3C3CB8B494AA",
+      "url": "https://www.reuters.com/business/energy/oil-prices-edge-lower-iran-says-it-is-open-diplomacy-end-war-2026-09-24/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-005349B0E90D",
+      "url": "https://www.gov.uk/government/publications/hmt-licensing-guidance-presumption-of-denial-of-licence-applications-for-designated-iranian-banks/presumption-of-denial-of-licence-applications-for-designated-iranian-banks",
+      "source_role": "PRIMARY_OFFICIAL"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-IRAN-UNGA-PEZESHKIAN-SPEECH-20260923",
+      "event_date": "2026-09-23",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRAN_UNGA_WARTIME_POLICY_SPEECH",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-23T23:59:59-04:00",
+      "collection_time": "2026-09-24T00:00:00-04:00",
+      "evidence_horizon_time": "2026-09-24T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "At the UN General Assembly, President Masoud Pezeshkian said Iran had only defended itself, would not surrender, remained ready for dialogue without accepting force, and stated that Iran did not hit civilian populations. The civilian-population statement is preserved as an exact proposition for Claims Forensics; Evidence Integration does not infer deception or targeting intent from casualty evidence.",
+      "source_ids": [
+        "SRC-7249E79AC676",
+        "SRC-A1B61D0B1B96"
+      ]
+    },
+    {
+      "event_id": "G3-GULF-GAS-MARKET-DURATION-20260923",
+      "event_date": "2026-09-23",
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_type": "GULF_GAS_MARKET_TIGHTNESS_EXPECTATION",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-23T23:59:59-04:00",
+      "collection_time": "2026-09-24T00:00:00-04:00",
+      "evidence_horizon_time": "2026-09-24T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Reuters reported gas-market participants increasingly pricing supply tightness beyond the coming winter as Gulf disruptions persisted. This records a market-duration expectation, not a fixed physical outage duration or new asset-level damage assessment.",
+      "source_ids": [
+        "SRC-25C0E481B824"
+      ]
+    },
+    {
+      "event_id": "G3-GAZA-ISRAELI-STRIKE-HAMAS-FINANCE-CLAIM-20260923",
+      "event_date": "2026-09-23",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "GAZA_STRIKE_CASUALTY_AND_TARGET_IDENTITY_REPORT",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-23T23:59:59-04:00",
+      "collection_time": "2026-09-24T00:00:00-04:00",
+      "evidence_horizon_time": "2026-09-24T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The upstream Reuters-based sweep recorded at least four Palestinians killed in Israeli strikes in Gaza according to local health officials. Israel separately said one strike killed a Hamas finance chief. The casualty report and Israeli target-identity/function claim remain separate source-bounded propositions.",
+      "source_ids": [
+        "SRC-1550F3437467"
+      ]
+    },
+    {
+      "event_id": "G3-UAE-IRAN-AIRLINE-SUSPENSION-20260924",
+      "event_date": "2026-09-24",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "UAE_IRANIAN_AIRLINE_SUSPENSION",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-24T12:00:00-04:00",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon_time": "2026-09-24T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The UAE General Civil Aviation Authority announced suspension, effective Sep. 24 until further notice, of flights operated by Iranian airlines to and from the UAE, citing the U.S. ban. This materially broadens observed regional implementation but does not establish worldwide grounding of Iranian international aviation.",
+      "source_ids": [
+        "SRC-35290D936476",
+        "SRC-D380C6451B15"
+      ]
+    },
+    {
+      "event_id": "G3-SA-HOUTHI-MISSILE-INTERCEPTS-20260924",
+      "event_date": "2026-09-24",
+      "event_class": "CORE_WARTIME_EVENT",
+      "event_type": "SAUDI_HOUTHI_BALLISTIC_MISSILE_INTERCEPT_CLAIM",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-24T12:00:00-04:00",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon_time": "2026-09-24T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The Saudi-led coalition said Saudi air defenses intercepted six ballistic missiles launched by the Houthis and directed at Taif and Yanbu. Launch, target and successful-intercept details remain attributed to the coalition at this horizon; independent weapon-by-weapon BDA was limited.",
+      "source_ids": [
+        "SRC-CFFBED54956E"
+      ]
+    },
+    {
+      "event_id": "G3-YEMEN-TAIZ-ADEN-FIGHTING-20260924",
+      "event_date": "2026-09-24",
+      "event_class": "CORE_WARTIME_EVENT",
+      "event_type": "YEMEN_TAIZ_ADEN_ROUTE_GROUND_FIGHTING",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-24T12:00:00-04:00",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon_time": "2026-09-24T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Military sources from both sides confirmed overnight fighting along the Taiz-Aden supply route. Saudi-backed Yemeni government forces said they repelled multiple Houthi attacks after hours of fighting; final territorial disposition and casualty/BDA outcomes remained pending.",
+      "source_ids": [
+        "SRC-CFFBED54956E"
+      ]
+    },
+    {
+      "event_id": "G3-YEMEN-OHCHR-CIVILIAN-IMPACT-20260924",
+      "event_date": "2026-09-24",
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_type": "YEMEN_OHCHR_CIVILIAN_IMPACT_UPDATE",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-24T12:00:00-04:00",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon_time": "2026-09-24T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The UN human rights chief said civilians were bearing the brunt of expanding Yemen fighting. The update is preserved alongside, not substituted for, earlier source-bounded displacement and casualty series.",
+      "source_ids": [
+        "SRC-79EAFC0264A9",
+        "SRC-B3567A733014"
+      ]
+    },
+    {
+      "event_id": "G3-UK-IRAN-BANK-LICENSING-20260923",
+      "event_date": "2026-09-23",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "UK_IRAN_BANK_LICENSING_RESTRICTION",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-23T23:59:59-04:00",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon_time": "2026-09-24T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "UK OFSI guidance established an immediate presumption of denial for licence applications involving five designated Iranian banks, except narrow circumstances, and said General Licence INT/2025/7628424 would not be renewed after Oct. 22. The policy restricts financial access; it is not recorded as asset confiscation.",
+      "source_ids": [
+        "SRC-005349B0E90D"
+      ]
+    },
+    {
+      "event_id": "G3-US-IRAN-DIPLOMACY-MARKET-20260924",
+      "event_date": "2026-09-24",
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_type": "US_IRAN_DIPLOMACY_NO_BREAKTHROUGH_MARKET_UPDATE",
+      "game_knowledge_time": "2026-09-24T16:46:00-04:00",
+      "public_available_time": "2026-09-24T12:00:00-04:00",
+      "collection_time": "2026-09-24T12:01:57-04:00",
+      "evidence_horizon_time": "2026-09-24T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Sep. 24 Reuters market and diplomatic reporting showed little sign of progress in U.S.-Iran diplomacy while oil prices rose about 2 percent. This is a no-breakthrough update, not evidence that contacts ended or that no later agreement is possible.",
+      "source_ids": [
+        "SRC-3C3CB8B494AA",
+        "SRC-6D4B41984CFD"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-UNKNOWN-VESSEL-20260923",
+      "mode": "update",
+      "record": {
+        "vessel": "MV Cape Dao",
+        "flag": "Antigua and Barbuda",
+        "location": "Off Musandam Governorate, Oman",
+        "voyage_context": "Heading toward India",
+        "incident": "Unknown-projectile strike followed by fire and crew evacuation; uncorroborated torpedo characterization is not adopted.",
+        "evacuation": {
+          "crew_evacuated": 27,
+          "indian_nationals_among_crew": 19
+        },
+        "fatalities_confirmed": 1,
+        "fatality_detail": "One Indian national confirmed killed.",
+        "attribution": "UNRESOLVED",
+        "weapon_identification": "UNRESOLVED_UNKNOWN_PROJECTILE",
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "source_ids": [
+          "SRC-5EF9557906C8",
+          "SRC-F3EA4569E3FA",
+          "SRC-49852DA6B8EA"
+        ]
+      }
+    },
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "observed_state": "Public reporting based on Kpler data put Wednesday Sep. 23 commodity-vessel transits through Hormuz at 10, a marked rise from the earlier constrained daily counts but still below normal recent traffic. Earlier published and revised figures remain preserved; AIS-dark and commercial-methodology limitations remain material.",
+        "adjudication": "PARTIAL_OBSERVABLE_TRANSIT_RECOVERY; STILL_DEPRESSED; NOT_NORMALIZED; COMMERCIAL_DATA_AND_AIS_SCOPE_BOUND",
+        "latest_observable_metric": {
+          "provider": "Kpler via public reporting",
+          "day": "2026-09-23",
+          "commodity_vessel_transits": 10,
+          "scope": "PRELIMINARY_OBSERVABLE_COMMODITY_TRAFFIC",
+          "directional_split": "NOT_ESTABLISHED_IN_REVIEWED_SOURCE",
+          "ais_dark_excluded": true
+        },
+        "daily_transit_history": [
+          {
+            "day": "2026-09-22",
+            "commodity_vessel_transits": 3,
+            "inbound": 0,
+            "outbound": 3,
+            "status": "PRIOR_CANONICAL_DAILY_OBSERVATION",
+            "source_id": "SRC-299907547E98"
+          },
+          {
+            "day": "2026-09-23",
+            "commodity_vessel_transits": 10,
+            "status": "LATEST_PUBLIC_KPLER_BASED_OBSERVATION",
+            "source_ids": [
+              "SRC-CEB52EFD8564",
+              "SRC-299907547E98"
+            ]
+          }
+        ],
+        "source_ids": [
+          "SRC-B82FA8C138F4",
+          "SRC-BC033E9E9418",
+          "SRC-299907547E98",
+          "SRC-CEB52EFD8564"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "current_human_impact_note": "OHCHR said civilians are bearing the brunt of expanding fighting. Existing broader conflict casualty/displacement series and the narrower UNHCR civilian casualty series remain separate source-bounded denominators.",
+        "scoped_civilian_impact_series": [
+          {
+            "source_family": "UNHCR / UN Geneva briefing",
+            "as_of": "2026-09-22",
+            "reported_casualties_at_least": 110,
+            "reported_deaths": 28,
+            "scope": "CIVILIAN_IMPACT_SOURCE_BOUNDED",
+            "source_id": "SRC-B3567A733014"
+          }
+        ],
+        "ohchr_warning": {
+          "as_of": "2026-09-24",
+          "status": "CIVILIANS_BEARING_BRUNT_OF_EXPANDING_FIGHTING",
+          "source_id": "SRC-79EAFC0264A9"
+        },
+        "source_ids": [
+          "SRC-CD278496439E",
+          "SRC-3C1E87E63037",
+          "SRC-0DBD6290A901",
+          "SRC-4445E7D5CB5C",
+          "SRC-B3567A733014",
+          "SRC-79EAFC0264A9"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "mode": "update",
+      "record": {
+        "status": "MEDIATED_ENGAGEMENT_CONFIRMED; INDIRECT_FORMAT_SUPPORTED_BY_LATEST_REUTERS_RECONSTRUCTION; COMPETING_PUBLIC_CHARACTERIZATION_PRESERVED; PARTIES_REPORTED_FAR_APART_AS_OF_SEP24; DIPLOMACY_CONTINUES; NO_AGREEMENT",
+        "observed_state": "Reuters reported that a senior Iranian official said Iran and the United States remained far apart after the UNGA shuttle contacts but diplomacy should continue. The direct-versus-indirect public characterization discrepancy remains preserved and no agreement or substantive concession is established at the Sep. 24 noon evidence horizon.",
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "source_ids": [
+          "SRC-F998CB101972",
+          "SRC-147F3EB0E6BC",
+          "SRC-25BB1B596B72",
+          "SRC-6D4B41984CFD",
+          "SRC-3C3CB8B494AA"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-IRAN-AVIATION-SECONDARY-SANCTIONS-20260923",
+      "mode": "update",
+      "record": {
+        "date": "2026-09-24",
+        "metric": "Observed implementation of U.S. aviation secondary-sanctions campaign",
+        "observed_state": "Previously observed Baghdad and Muscat disruptions were followed by materially broader Sep. 24 regional implementation. Reuters reported cancellations affecting Gulf destinations including Dubai, and the UAE General Civil Aviation Authority officially suspended flights operated by Iranian airlines to and from the UAE until further notice. Continuing-route and jurisdiction-by-jurisdiction evidence still does not establish worldwide grounding.",
+        "adjudication": "MATERIALLY_BROADER_REGIONAL_IMPLEMENTATION; UAE_STATE_LEVEL_SUSPENSION_CONFIRMED; GLOBAL_GROUNDING_NOT_ESTABLISHED; RETALIATION_THREAT_NOT_EXECUTED_IN_EVIDENCE_HORIZON",
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "source_ids": [
+          "SRC-57578B9B5643",
+          "SRC-12C9FD3FBFE1",
+          "SRC-912CB3796E2C",
+          "SRC-94EB47261CE3",
+          "SRC-6D4B41984CFD",
+          "SRC-35290D936476",
+          "SRC-D380C6451B15"
+        ]
+      }
+    },
+    {
+      "entity_type": "movement",
+      "entity_id": "MOV-HOUTHI-REDSEA-COAST-OFFENSIVE-20260910",
+      "mode": "update",
+      "record": {
+        "period_start": "2026-09-10",
+        "current_through": "2026-09-24",
+        "status": "HOUTHI_RED_SEA_COAST_ADVANCE_ESTABLISHED; APPROX_115_KM_OFFENSIVE_REPORTED_BY_AP; MOKHA_ENTERED_SEP10; DHUBAB_AND_PERIM_LATER_TAKEN; SEP24_TAIZ_ADEN_ROUTE_FIGHTING_CORROBORATED; GOVERNMENT_REPULSE_AND_FINAL_DISPOSITION_PENDING",
+        "observed_state": "Existing chronology records the Sep. 10-11 Red Sea coast advance. On Sep. 24, military sources from both sides confirmed fighting along the Taiz-Aden supply route; Saudi-backed government forces said they repelled the Houthi attacks. No evidence in the qualified Sep. 24 sweep ties IRGC advisers specifically to this action.",
+        "event_refs": [
+          "G3-HOUTHI-MOCHA-HANISH-ADVANCE-20260910",
+          "G3-HOUTHI-DHUBAB-PERIM-ADVANCE-20260911",
+          "G3-YEMEN-TAIZ-ADEN-FIGHTING-20260924"
+        ],
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "source_ids": [
+          "SRC-223F14998B32",
+          "SRC-636B266D1191",
+          "SRC-7D0C3F8572E5",
+          "SRC-CFFBED54956E"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OIL-MARKET-SEP23-20260923",
+      "mode": "update",
+      "record": {
+        "date": "2026-09-24",
+        "metric": "Oil market response to Gulf supply and U.S.-Iran diplomacy expectations",
+        "observed_state": "After prior easing on improving Gulf-supply and diplomacy expectations, Reuters reported oil prices rising about 2 percent on Sep. 24 as diplomacy showed little sign of progress. The reversal is a market observation and remains multifactor rather than proof of a physical Hormuz state or diplomatic outcome.",
+        "adjudication": "MARKET_OBSERVATION; CAUSAL_ATTRIBUTION_MULTIFACTOR; NO_DIPLOMATIC_BREAKTHROUGH_INFERRED",
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "source_ids": [
+          "SRC-3BA2A09AEFE3",
+          "SRC-788D0A59F1DF",
+          "SRC-3C3CB8B494AA"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-GAS-MARKET-TIGHTNESS-20260923",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-GULF-GAS-MARKET-TIGHTNESS-20260923",
+        "date": "2026-09-23",
+        "metric": "Market expectation for duration of Gulf-related gas supply tightness",
+        "observed_state": "Reuters reported global gas markets increasingly pricing tight supply conditions beyond the coming winter as Gulf disruptions persisted.",
+        "adjudication": "MARKET_EXPECTATION_SUPPORTED; PHYSICAL_OUTAGE_DURATION_REMAINS_ASSET_SPECIFIC; NO_NEW_QATARENERGY_BDA_INFERRED",
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "source_ids": [
+          "SRC-25C0E481B824"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-GAZA-STRIKES-20260923",
+      "mode": "add",
+      "record": {
+        "casualty_id": "CAS-GAZA-STRIKES-20260923",
+        "event_ref": "G3-GAZA-ISRAELI-STRIKE-HAMAS-FINANCE-CLAIM-20260923",
+        "date": "2026-09-23",
+        "reported_killed_at_least": 4,
+        "casualty_source": "LOCAL_HEALTH_OFFICIALS_AS_REPORTED_IN_UPSTREAM_REUTERS_BASED_SWEEP",
+        "target_identity_claim": "Israel said one strike killed a Hamas finance chief.",
+        "target_identity_status": "ATTRIBUTED_TO_ISRAEL_NOT_INDEPENDENTLY_ESTABLISHED",
+        "source_version_boundary": "Preserves the qualified upstream Sep. 24 0000ET sweep snapshot; later article revisions or incident-level reconciliation require a subsequent evidence update.",
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "source_ids": [
+          "SRC-1550F3437467"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-UK-IRAN-BANK-LICENSING-20260923",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-UK-IRAN-BANK-LICENSING-20260923",
+        "date": "2026-09-23",
+        "metric": "UK licensing posture for designated Iranian banks",
+        "status": "PRESUMPTION_OF_DENIAL_EFFECTIVE; FIVE_DESIGNATED_BANKS_IN_SCOPE; GENERAL_LICENCE_NOT_RENEWED_AFTER_2026_10_22",
+        "banks": [
+          "Bank Sepah",
+          "Melli Bank plc",
+          "Bank Saderat",
+          "Persia International Bank",
+          "Bank Tejarat"
+        ],
+        "general_licence": "INT/2025/7628424",
+        "general_licence_end": "2026-10-22",
+        "remittance_boundary": "Guidance bars licences permitting UK-held funds to be remitted to Iran, subject to the stated narrow exceptions.",
+        "adjudication": "FINANCIAL_ACCESS_RESTRICTION; NOT_ASSET_CONFISCATION_OR_DISSOLUTION",
+        "knowledge_time": "2026-09-24T16:46:00-04:00",
+        "source_ids": [
+          "SRC-005349B0E90D"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}
