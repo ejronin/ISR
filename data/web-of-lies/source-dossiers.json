@@ -862,6 +862,7 @@
         "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
         "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
         "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+        "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
         "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
         "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
         "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
@@ -965,13 +966,14 @@
           "WOL-BS-VALENTI-FULL-SCALE-GROUND-INVASION",
           "WOL-BS-VALENTI-KEY-WEST-FALSE-FLAG",
           "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
+          "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
           "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
           "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
           "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
           "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
           "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804"
         ],
-        "promoted_valenti_incident_count": 15,
+        "promoted_valenti_incident_count": 16,
         "monetization_receipts": [
           "https://www.patreon.com/cw/ValentiVideos",
           "https://www.youtube.com/watch?v=0ZArFpj6zyA",
@@ -1703,7 +1705,7 @@
       ],
       "current_disposition": "ACTIVE_PATTERN_REVIEW",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Valenti remains under active pattern review. Fifteen incidents are currently promoted/scored, and additional distinct Iran-war/public-affairs and historian-role candidates remain under evidentiary review. The source now also has an incident-gated NEWS_GRIFT pattern finding tied to repeated scored sensational current-events publications plus direct support solicitation; monetization alone is not the basis. Do not treat the promoted register as a completed lifetime corpus.",
+      "notes": "Valenti remains under active pattern review. Sixteen incidents are currently promoted/scored, and additional distinct Iran-war/public-affairs and historian-role candidates remain under evidentiary review. The incident-gated NEWS_GRIFT pattern remains tied to repeated scored sensational current-events publications plus direct support solicitation; monetization alone is not the basis. Do not treat the promoted register as a completed lifetime corpus.",
       "body_capture_queue": [
         {
           "research_item_id": "VALENTI-BODY-NUKE-ASK-20260421",
@@ -1803,7 +1805,7 @@
       },
       "review_progress": {
         "status": "ACTIVE_PATTERN_REVIEW_THROUGH_2026-09-23",
-        "promoted_incident_count": 15,
+        "promoted_incident_count": 16,
         "corpus_completion_claim": "NONE",
         "review_rule": "Continue claim-by-claim through the publisher corpus; a body gate retains a candidate for further capture and does not close the source pass.",
         "currently_preserved_unscored_candidates": [
@@ -5254,6 +5256,85 @@
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical proposition about the terms or strategic effects of the June agreement remains upstream; WOL records the unsupported formal-status presentation.",
       "public_bullshit_summary": "A real U.S.-Iran ceasefire/MOU became an 'official surrender.' The agreement ended military operations and set terms for further negotiations; it was not an instrument of U.S. surrender."
+    },
+    {
+      "incident_id": "WOL-BS-VALENTI-OMAN-NUCLEAR-STRIKE-PLAN",
+      "source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "MEDIA_PRESENTATION",
+      "published_at": null,
+      "first_observed_at": null,
+      "statement_identity": "Publisher headline paired Trump's real threat to bomb Oman with the factual assertion that Trump was planning a nuclear strike on Iran.",
+      "source_information_event_id": "VALENTI-YT-hx2m7gNESbg",
+      "behavior_findings": [
+        "NEWS_GRIFT"
+      ],
+      "behavior_finding_basis": {
+        "NEWS_GRIFT": {
+          "finding_scope": "INCIDENT_COMPONENT_OF_REPEATED_MONETIZED_SENSATIONAL_NEWS_PATTERN",
+          "basis": "The publication preserves a real Trump threat toward Oman but adds an unsupported nuclear-strike-plan assertion in sensational current-events packaging. It forms part of the publisher's repeated scored pattern while Valenti Videos directly solicits recurring financial support for continued output.",
+          "inference_limit": "The finding does not infer private motive from monetization. The Oman threat itself is not scored adverse."
+        }
+      },
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-OMAN-NUCLEAR-STRIKE-YT",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=hx2m7gNESbg",
+          "archive_url": "https://invidious.tiekoetter.com/watch?v=hx2m7gNESbg",
+          "published_at": null,
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_SECONDARY_INDEX_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "\"Bomb the sh*t out of them\": Trump threatens to bomb OMAN while he plans a Nuclear Strike on Iran"
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-OMAN-THREAT-REUTERS-20260817",
+          "surface": "WEBSITE",
+          "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/08/17/trump-says-iran-should-surrender-threatens-to-bomb-oman",
+          "archive_url": null,
+          "published_at": "2026-08-17",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "REUTERS_REPUBLICATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported Trump's explicit threat to bomb Oman and his demand that Iran surrender; the reviewed report did not describe a planned U.S. nuclear strike on Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-VALENTI-NUCLEAR-WAR-MCBETH-20260903",
+          "surface": "WEBSITE",
+          "url": "https://ryanmcbeth.substack.com/p/chris-valenti-is-lying-about-nuclear",
+          "archive_url": null,
+          "published_at": "2026-09-03",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Ryan McBeth reviewed Valenti's nuclear-war narrative and found that the E-6B activity offered as nuclear-war evidence aligned with the publicly announced AMALGAM DART exercise rather than an emergency nuclear deployment."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-AMALGAM-DART-NORAD-20260820",
+          "surface": "WEBSITE",
+          "url": "https://www.norad.mil/Newsroom/Press-Releases/Article/4578809/norad-and-usnorthcom-to-conduct-exercise-amalgam-dart/",
+          "archive_url": null,
+          "published_at": "2026-08-20",
+          "captured_at": "2026-09-23T22:51:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "NORAD publicly announced AMALGAM DART as a long-planned, routine and defensive exercise running Aug. 24-Sept. 1, 2026."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Publisher title; contemporaneous Reuters reporting on Trump's Oman/Iran statements and war posture; public NORAD AMALGAM DART release; Ryan McBeth's source-specific review of Valenti's nuclear-war/doomsday-plane claim.",
+        "checked_at": "2026-09-23T22:51:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump's threat to bomb Oman was real. The reviewed contemporaneous record did not establish that Trump had planned a nuclear strike on Iran. Valenti's related nuclear-war evidence was later traced by McBeth to unsupported inference from strategic-aircraft activity overlapping a preannounced routine NORAD exercise.",
+        "search_notes": "This incident deliberately preserves the supported Oman-threat half and scores only the stronger nuclear-strike-plan assertion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "Do not score the Oman threat as false. Keep this distinct from other Valenti nuclear incidents unless later body capture proves the publications were merely mirrors of one identical information event.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "WOL scores the publisher-authored nuclear-strike-plan presentation; canonical Trump/Oman threat facts remain upstream.",
+      "public_bullshit_summary": "Trump really threatened to bomb Oman. The added claim that he was planning a nuclear strike on Iran was not established by the reviewed evidence."
     },
     {
       "incident_id": "WOL-BS-VALENTI-ONE-TRILLION-IRAN-SURRENDER",
