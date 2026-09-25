@@ -2216,15 +2216,13 @@
     const graphEdgeById = new Map(graphEdges.map(edge => [edge.edge_id, edge]));
     const familyById = new Map(families.map(family => [family.claim_family_id, family]));
 
-    const flagEmoji = code => {
-      const text = String(code || '').trim().toUpperCase();
-      if (!/^[A-Z]{2}$/.test(text)) return '';
-      return String.fromCodePoint(...Array.from(text).map(letter => 127397 + letter.charCodeAt(0)));
+    const nodeFlagAsset = node => {
+      const code = String(node && node.country_code || '').trim().toUpperCase();
+      if (!code || !context.services || !context.services.actorIdentity || typeof context.services.actorIdentity.flagFor !== 'function') return null;
+      return context.services.actorIdentity.flagFor(code) || null;
     };
     const nodeMarkers = node => {
       const markers = [];
-      const flag = flagEmoji(node && node.country_code);
-      if (flag) markers.push(flag);
       if (node && node.authenticity_class === 'CONFIRMED_BOT') markers.push('🤖');
       if (asArray(node && node.award_codes).includes('BULLSHITTER')) markers.push('💩');
       if (asArray(node && node.node_roles).includes('AMPLIFIER')) markers.push('📣');
@@ -2240,6 +2238,15 @@
     const nodeLabel = node => [...nodeMarkers(node), nodeRoleLabel(node)].filter(Boolean).join(' ');
     const appendNodeIdentity = (host, node, tagName = 'span', className = 'wol-node-identity') => {
       const wrapper = append(host, tagName, className);
+      const asset = nodeFlagAsset(node);
+      if (asset) {
+        const flag = append(wrapper, 'img', 'wol-node-flag');
+        flag.src = asset.path;
+        flag.alt = `${publicNarrative(node.country_region, node.country_code || 'Country')} flag`;
+        flag.width = 28;
+        flag.height = 20;
+        flag.decoding = 'async';
+      }
       const markers = nodeMarkers(node);
       if (markers.length) append(wrapper, 'span', 'wol-node-markers', markers.join(' '));
       append(wrapper, 'span', 'wol-node-identity-label', nodeRoleLabel(node));
@@ -2253,7 +2260,7 @@
         return '';
       }
     };
-    const appendReceipts = (parent, receipts, emptyText = 'No public amplifier receipt is stored for this item.') => {
+    const appendReceipts = (parent, receipts, emptyText = 'No public link is available for this connection.') => {
       const usable = asArray(receipts).map(receipt => ({ receipt, href: safeExternalHref(receipt && (receipt.url || receipt.archive_url)) }))
         .filter(row => row.href);
       if (!usable.length) {
@@ -2324,7 +2331,7 @@
     graphStatus.setAttribute('aria-live', 'polite');
 
     const detailSection = append(workspace, 'aside', 'wol-node-detail');
-    append(detailSection, 'h3', '', 'Selected node');
+    append(detailSection, 'h3', '', 'Selection details');
     const detailHost = append(detailSection, 'div', 'wol-node-detail-host');
 
     const adjacencyFor = nodeId => {
@@ -2337,8 +2344,10 @@
     };
     const edgeDisplayLabel = edge => {
       const count = Number(edge && edge.amplified_claim_count || 1);
-      const verb = edge && edge.amplification_scope === 'SELF_AMPLIFICATION' ? 'Self-amplified' : 'Amplified by';
-      return count > 1 ? `${verb} · ${count} claims` : verb;
+      if (edge && edge.amplification_scope === 'SELF_AMPLIFICATION') {
+        return count > 1 ? `Reposted own claims · ${count}` : 'Reposted own claim';
+      }
+      return count > 1 ? `Carried ${count} claims` : 'Carried claim';
     };
     const cytoscapeElements = () => [
       ...graphNodes.map(node => ({
@@ -2350,7 +2359,8 @@
           display_name: node.display_name,
           bullshitter_source_count: Number(node.bullshitter_source_count || 0),
           authenticity_class: node.authenticity_class || 'UNKNOWN',
-          country_code: node.country_code || ''
+          country_code: node.country_code || '',
+          ...(nodeFlagAsset(node) ? { flag_path: nodeFlagAsset(node).path } : {})
         }
       })),
       ...graphEdges.map(edge => ({
@@ -2410,7 +2420,7 @@
             `${sourceIncidents.length} documented incident${sourceIncidents.length === 1 ? '' : 's'} support this award.`
           ));
           const claimedRoles = asArray(profile.claimed_roles).map(row => plainLabel(row.role_code, '')).filter(Boolean);
-          if (claimedRoles.length) append(award, 'small', '', `Self-claimed roles on file: ${claimedRoles.join(' · ')}`);
+          if (claimedRoles.length) append(award, 'small', '', `Claims to be: ${claimedRoles.join(' · ')}`);
         }
 
         const roleFailures = asArray(profile.role_failure_appellations);
@@ -2422,7 +2432,6 @@
             const block = append(roleBody, 'article', 'record-card wol-role-failure-card');
             append(block, 'h4', '', publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code)));
             append(block, 'p', '', `Self-claimed role: ${plainLabel(appellation.claimed_role, 'Recorded role')} · ${formatNumber(appellation.incident_count || 0)} documented incident${Number(appellation.incident_count || 0) === 1 ? '' : 's'} support this finding.`);
-            if (appellation.rule) append(block, 'p', 'section-note', publicNarrative(appellation.rule, ''));
             appendReceipts(block, appellation.claimed_role_receipts, 'No public role receipt is available for this finding.');
           });
         }
@@ -2495,8 +2504,7 @@
       append(route, 'span', 'wol-connection-arrow', '→');
       appendNodeIdentity(route, target || { display_name: 'Amplifier' }, 'div');
       addFactList(heading, [
-        ['Relationship', plainLabel(edge.relationship_type, 'Amplification')],
-        ['Scope', plainLabel(edge.amplification_scope, 'Amplification')],
+        ['Connection', edge.amplification_scope === 'SELF_AMPLIFICATION' ? 'Reposted its own claim' : 'Carried the source claim'],
         ['Documented claims', formatNumber(edge.amplified_claim_count || 0)],
         ['Receipts', formatNumber(asArray(edge.public_receipts).length)]
       ]);
@@ -2524,7 +2532,7 @@
         const record = graphEdgeById.get(edgeId);
         const source = graphNodeById.get(record.from_node_id);
         const target = graphNodeById.get(record.to_node_id);
-        graphStatus.textContent = `${nodeRoleLabel(source)} → ${nodeRoleLabel(target)} · ${edgeDisplayLabel(record)}.`;
+        graphStatus.textContent = record.amplification_scope === 'SELF_AMPLIFICATION'\n          ? `${nodeRoleLabel(source)} · reposted its own documented claim.`\n          : `${nodeRoleLabel(source)} → ${nodeRoleLabel(target)} · ${formatNumber(record.amplified_claim_count || 0)} documented claim${Number(record.amplified_claim_count || 0) === 1 ? '' : 's'} carried.`;
         return;
       }
       if (!nodeId || !graphNodeById.has(nodeId)) {
