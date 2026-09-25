@@ -2337,8 +2337,8 @@
     };
     const edgeDisplayLabel = edge => {
       const count = Number(edge && edge.amplified_claim_count || 1);
-      const verb = edge && edge.amplification_scope === 'SELF_AMPLIFICATION' ? 'Self-amplifies' : 'Amplifies';
-      return count > 1 ? `${verb} ×${count}` : verb;
+      const verb = edge && edge.amplification_scope === 'SELF_AMPLIFICATION' ? 'Self-amplified' : 'Amplified by';
+      return count > 1 ? `${verb} · ${count} claims` : verb;
     };
     const cytoscapeElements = () => [
       ...graphNodes.map(node => ({
@@ -2495,7 +2495,8 @@
       append(route, 'span', 'wol-connection-arrow', '→');
       appendNodeIdentity(route, target || { display_name: 'Amplifier' }, 'div');
       addFactList(heading, [
-        ['Relationship', edge.amplification_scope === 'SELF_AMPLIFICATION' ? 'Self-amplification' : 'Amplification'],
+        ['Relationship', plainLabel(edge.relationship_type, 'Amplification')],
+        ['Scope', plainLabel(edge.amplification_scope, 'Amplification')],
         ['Documented claims', formatNumber(edge.amplified_claim_count || 0)],
         ['Receipts', formatNumber(asArray(edge.public_receipts).length)]
       ]);
@@ -2812,7 +2813,7 @@
           append(item, 'span', `wol-hall-rank${rank === 1 ? ' wol-hall-king' : ''}`, rank === 1 ? '👑 #1' : rank === 2 ? '🥈 #2' : rank === 3 ? '🥉 #3' : `#${rank || '?'}`);
           appendNodeIdentity(item, identityNode, 'strong', 'wol-node-identity wol-hall-source');
           append(item, 'span', 'wol-hall-score', `Score ${formatNumber(row.score)}`);
-          append(item, 'p', 'wol-hall-reason', publicNarrative(row.why_this_source_appears_here, 'Ranking basis recorded in the WOL registry.'));
+          append(item, 'p', 'wol-hall-reason', publicNarrative(row.why_this_source_appears_here, 'Documented behavior supporting this placement is recorded.'));
         });
       });
     };
