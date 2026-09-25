@@ -1032,8 +1032,8 @@ a:hover { color: #e0f2ff; }
 }
 .wol-cytoscape-host {
   width: 100%;
-  height: clamp(34rem, 72vh, 58rem);
-  min-height: 34rem;
+  height: clamp(30rem, 60vh, 46rem);
+  min-height: 30rem;
   overflow: hidden;
   border: 1px solid #35566a;
   border-radius: var(--radius);
