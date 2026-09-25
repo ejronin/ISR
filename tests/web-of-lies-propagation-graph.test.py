@@ -139,6 +139,19 @@ observations = [
         "public_receipts": [{"receipt_id": "R-5", "surface": "X", "url": "https://example.test/r5", "provenance_status": "ORIGINAL_URL"}],
     },
     {
+        "observation_id": "A-SELF",
+        "bullshitter_source_id": "BS-IR",
+        "bullshitter_event_id": "I-IR-2",
+        "amplifier_id": "BS-IR-SELF-X",
+        "amplifier_source_id": "BS-IR",
+        "amplifier_display_name": "Iran source",
+        "amplifier_handle": "@iran_source",
+        "amplifier_platform": "X",
+        "amplifier_country_code": "IR",
+        "amplifier_authenticity_class": "HUMAN_ACCOUNT",
+        "public_receipts": [{"receipt_id": "R-SELF", "surface": "X", "url": "https://example.test/self", "provenance_status": "ORIGINAL_URL"}],
+    },
+    {
         "observation_id": "A-4",
         "bullshitter_source_id": "CLEAN",
         "bullshitter_event_id": "I-CLEAN-1",
@@ -171,14 +184,22 @@ edges = {(row["from_node_id"], row["to_node_id"]): row for row in graph["edges"]
 assert graph["graph_type"] == "BULLSHITTER_MEGAPHONE_NETWORK"
 assert graph["summary"] == {
     "bullshitter_nodes": 2,
-    "megaphone_nodes": 2,
-    "amplification_edges": 3,
+    "megaphone_nodes": 3,
+    "amplification_edges": 4,
+    "self_amplification_edges": 1,
+    "external_amplification_edges": 3,
+    "network_pattern_nodes": 0,
+    "high_density_hub_nodes": 0,
     "cross_bullshitter_megaphones": 1,
     "confirmed_bot_megaphones": 1,
 }
 
 assert nodes["BS-IR"]["node_type"] == "BULLSHITTER"
+assert nodes["BS-IR"]["node_roles"] == ["AMPLIFIER", "BULLSHITTER"]
 assert nodes["BS-IR"]["country_code"] == "IR"
+assert nodes["BS-IR"]["bullshitter_source_count"] == 1
+assert nodes["BS-IR"]["external_upstream_source_count"] == 0
+assert nodes["BS-IR"]["amplification_observation_count"] == 1
 assert nodes["BS-US"]["country_code"] == "US"
 assert nodes["AMP-IN"]["node_type"] == "MEGAPHONE"
 assert nodes["AMP-IN"]["country_code"] == "IN"
@@ -186,22 +207,33 @@ assert "NEWS" not in nodes
 
 megaphone = nodes["AMP::AMP-RU-BOT"]
 assert megaphone["node_type"] == "MEGAPHONE"
+assert megaphone["node_roles"] == ["AMPLIFIER"]
 assert megaphone["country_code"] == "RU"
 assert megaphone["authenticity_class"] == "CONFIRMED_BOT"
 assert megaphone["bullshitter_source_count"] == 2
+assert megaphone["external_upstream_source_count"] == 2
 assert megaphone["amplification_observation_count"] == 4
 assert megaphone["award_codes"] == []
 
+self_edge = edges[("BS-IR", "BS-IR")]
+assert self_edge["amplification_scope"] == "SELF_AMPLIFICATION"
+assert self_edge["amplified_claim_count"] == 1
+assert self_edge["bullshitter_event_ids"] == ["I-IR-2"]
+assert self_edge["observation_ids"] == ["A-SELF"]
+
 ir_edge = edges[("BS-IR", "AMP::AMP-RU-BOT")]
+assert ir_edge["amplification_scope"] == "EXTERNAL_AMPLIFICATION"
 assert ir_edge["amplified_claim_count"] == 3
 assert set(ir_edge["bullshitter_event_ids"]) == {"I-IR-1", "I-IR-2", "I-IR-LATER"}
 assert len(ir_edge["public_receipts"]) == 3
 
 us_edge = edges[("BS-US", "AMP::AMP-RU-BOT")]
+assert us_edge["amplification_scope"] == "EXTERNAL_AMPLIFICATION"
 assert us_edge["amplified_claim_count"] == 1
 assert us_edge["bullshitter_event_ids"] == ["I-US-1"]
 
 auto_edge = edges[("BS-IR", "AMP-IN")]
+assert auto_edge["amplification_scope"] == "EXTERNAL_AMPLIFICATION"
 assert auto_edge["amplified_claim_count"] == 1
 assert auto_edge["bullshitter_event_ids"] == ["E-IR-AUTO"]
 assert auto_edge["observation_ids"] == ["REL::REL-AUTO"]
@@ -212,5 +244,5 @@ assert all(row["node_type"] != "MEGAPHONE" or not row["award_codes"] for row in 
 
 print(
     "web-of-lies propagation graph: PASS "
-    "bullshitters=2 megaphones=2 cross_source_megaphone=1 confirmed_bot=1 neutral_reporting_excluded=1"
+    "bullshitters=2 megaphones=3 self_amplification=1 cross_source_megaphone=1 confirmed_bot=1 neutral_reporting_excluded=1"
 )
