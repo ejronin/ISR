@@ -1036,9 +1036,7 @@ a:hover { color: #e0f2ff; }
   overflow: hidden;
   border: 1px solid #35566a;
   border-radius: var(--radius);
-  background:
-    radial-gradient(circle at 50% 45%, rgb(50 91 117 / 16%), transparent 38rem),
-    #071018;
+  background: #071018;
 }
 .wol-cytoscape-host.is-node-hover { cursor: pointer; }
 
@@ -1154,15 +1152,30 @@ a:hover { color: #e0f2ff; }
   align-items: center;
   gap: .45rem;
 }
-.wol-node-flag {
+.wol-node-markers {
   flex: 0 0 auto;
-  width: 28px;
-  height: 20px;
-  border: 1px solid rgb(255 255 255 / 24%);
-  border-radius: 2px;
-  object-fit: cover;
+  white-space: nowrap;
+  font-size: .92rem;
+  line-height: 1;
 }
 .wol-node-identity-label { min-width: 0; }
+.wol-connection-route {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: .65rem;
+  align-items: center;
+  margin-top: .75rem;
+  padding: .75rem;
+  border: 1px solid var(--line-soft);
+  border-radius: .55rem;
+  background: #071018;
+}
+.wol-connection-route .wol-node-identity { display: flex !important; }
+.wol-connection-arrow {
+  color: var(--accent-strong);
+  font-size: 1.3rem;
+  font-weight: 900;
+}
 .wol-hall-source { color: var(--text); font-size: .8rem; }
 .wol-selected-node-identity { margin: 0; }
 .wol-awardee-identity { color: var(--text); }
@@ -1198,6 +1211,8 @@ a:hover { color: #e0f2ff; }
 @media (max-width: 44rem) {
   .forensic-companion-nav { display: flex; width: 100%; }
   .forensic-companion-link { flex: 1 1 0; justify-content: center; }
+  .wol-connection-route { grid-template-columns: 1fr; }
+  .wol-connection-arrow { transform: rotate(90deg); justify-self: center; }
   .wol-cytoscape-host { height: 30rem; min-height: 30rem; }
   .wol-mermaid-host { min-height: 20rem; padding: .6rem; }
   .wol-mermaid-host svg { min-width: 40rem; }
