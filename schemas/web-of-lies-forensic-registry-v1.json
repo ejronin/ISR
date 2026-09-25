@@ -529,6 +529,7 @@
             "required": [
               "node_id",
               "node_type",
+              "node_roles",
               "display_name",
               "authenticity_class",
               "award_codes"
@@ -597,6 +598,17 @@
               "amplification_observation_count": {
                 "type": "integer",
                 "minimum": 0
+              },
+              "node_roles": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "BULLSHITTER",
+                    "AMPLIFIER"
+                  ]
+                }
               }
             },
             "additionalProperties": true
@@ -611,6 +623,7 @@
               "from_node_id",
               "to_node_id",
               "relationship_type",
+              "amplification_scope",
               "observation_ids",
               "bullshitter_event_ids",
               "public_receipts",
@@ -647,6 +660,12 @@
               "amplified_claim_count": {
                 "type": "integer",
                 "minimum": 1
+              },
+              "amplification_scope": {
+                "enum": [
+                  "SELF_AMPLIFICATION",
+                  "EXTERNAL_AMPLIFICATION"
+                ]
               }
             },
             "additionalProperties": false
@@ -659,7 +678,11 @@
             "megaphone_nodes",
             "amplification_edges",
             "cross_bullshitter_megaphones",
-            "confirmed_bot_megaphones"
+            "confirmed_bot_megaphones",
+            "self_amplification_edges",
+            "external_amplification_edges",
+            "network_pattern_nodes",
+            "high_density_hub_nodes"
           ],
           "properties": {
             "bullshitter_nodes": {
@@ -679,6 +702,22 @@
               "minimum": 0
             },
             "confirmed_bot_megaphones": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "self_amplification_edges": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "external_amplification_edges": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "network_pattern_nodes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "high_density_hub_nodes": {
               "type": "integer",
               "minimum": 0
             }
