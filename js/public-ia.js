@@ -2228,14 +2228,15 @@
       if (asArray(node && node.node_roles).includes('AMPLIFIER')) markers.push('📣');
       return markers;
     };
+    const nodeName = node => publicNarrative(node && node.display_name, 'Unknown source');
     const nodeRoleLabel = node => {
-      const name = publicNarrative(node && node.display_name, 'Unknown source');
+      const name = nodeName(node);
       const roles = [];
       if (asArray(node && node.award_codes).includes('BULLSHITTER') || node && node.node_type === 'BULLSHITTER') roles.push('Bullshitter');
       if (asArray(node && node.node_roles).includes('AMPLIFIER') || node && node.node_type === 'MEGAPHONE') roles.push('Amplifier');
       return roles.length ? `${name} · ${roles.join(' + ')}` : name;
     };
-    const nodeLabel = node => [...nodeMarkers(node), nodeRoleLabel(node)].filter(Boolean).join(' ');
+    const nodeLabel = node => [...nodeMarkers(node), nodeName(node)].filter(Boolean).join(' ');
     const appendNodeIdentity = (host, node, tagName = 'span', className = 'wol-node-identity') => {
       const wrapper = append(host, tagName, className);
       const asset = nodeFlagAsset(node);
@@ -2392,7 +2393,7 @@
       addFactList(heading, [
         ['Country', publicNarrative(node.country_region, node.country_code || 'Not established')],
         ['Platform', publicNarrative(node.primary_platform, 'Not established')],
-        ['Authenticity', plainLabel(node.authenticity_class, 'Unknown')],
+        ['Account type', plainLabel(node.authenticity_class, 'Unknown')],
         ['Direct connections', formatNumber(adjacencyFor(nodeId).size)]
       ]);
 
