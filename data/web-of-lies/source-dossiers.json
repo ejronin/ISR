@@ -8317,13 +8317,13 @@
       "public_receipts": [
         {
           "receipt_id": "WOL-AMP-RCPT-PRESSTV-TRADE2WIN-F35-MYTH",
-          "surface": "FORUM",
+          "surface": "WEBSITE",
           "url": "https://www.trade2win.com/threads/iran-war-and-the-impact-on-oil.243817/page-8",
           "published_at": "2026-04-19",
           "captured_at": "2026-09-25",
           "provenance_status": "ORIGINAL_URL",
           "deletion_status": "AVAILABLE",
-          "text_excerpt": "Trade2Win user IlIlIlIlI embedded and circulated the Press TV 'Myth of US stealth fighters over' article in the Iran-war discussion."
+          "text_excerpt": "Trade2Win forum user IlIlIlIlI embedded and circulated the Press TV 'Myth of US stealth fighters over' article; receipt surface is WEBSITE while amplifier_platform preserves FORUM."
         }
       ],
       "observed_at": "2026-09-25"
