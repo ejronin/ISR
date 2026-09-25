@@ -8465,6 +8465,29 @@
         }
       ],
       "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-BURBUJA-RESCUE-FAILURE-20260403",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-F15E-005",
+      "amplifier_id": "FORUM-BURBUJA-UCHPA",
+      "amplifier_display_name": "uchpa / Burbuja.info",
+      "amplifier_handle": "uchpa",
+      "amplifier_platform": "FORUM",
+      "message_identity": "TASNIM-F15E-RESCUE-FAILURE-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-BURBUJA-RESCUE-FAILURE",
+          "surface": "WEBSITE",
+          "url": "https://www.burbuja.info/inmobiliaria/temas/fracasa-el-esfuerzo-estadounidense-para-recuperar-al-piloto-de-combate-f-35-derribado-por-el-cuerpo-de-la-guardia-revolucionaria-islamica-de-iran.2317326/",
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Burbuja.info user uchpa seeded a thread with Tasnim's failed-rescue article and headline/premise that the US recovery effort had failed."
+        }
+      ],
+      "observed_at": "2026-09-25"
     }
   ]
 }
