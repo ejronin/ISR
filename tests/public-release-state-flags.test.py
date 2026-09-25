@@ -46,4 +46,6 @@ for label, payload in unsafe.items():
 safe_internal_fragment = b'<svg xmlns="http://www.w3.org/2000/svg"><defs><path id="mark" d="M0 0h1v1H0z"/></defs><use href="#mark"/></svg>'
 release.validate_flag_svg("assets/flags/zz.svg", safe_internal_fragment)
 
-assert any(asset["code"] == "sg" for asset in flags)\n\nprint("public state flags: PASS - 31 closed content-addressed SVGs including Singapore; stylesheets, processing instructions, text/tail expressions, and active/external payloads rejected")
+assert any(asset["code"] == "sg" for asset in flags)
+
+print("public state flags: PASS - 31 closed content-addressed SVGs including Singapore; stylesheets, processing instructions, text/tail expressions, and active/external payloads rejected")
