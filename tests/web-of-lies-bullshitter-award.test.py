@@ -18,6 +18,11 @@ assert award_rule["public_label"] == "Bullshitter"
 assert award_rule["window_days"] == 30
 assert award_rule["minimum_qualifying_incidents"] == 6
 assert award_rule["manual_assignment_allowed"] is False
+network_rule = award_rule["network_assisted_qualification"]
+assert network_rule["enabled"] is True
+assert network_rule["minimum_distinct_upstream_wol_nodes"] == 5
+assert network_rule["minimum_qualifying_amplification_incidents"] == 6
+assert network_rule["message_identity_required_for_award_counting"] is True
 assert "source_awards" in wol.DISALLOWED_MANUAL_RANK_FIELDS
 
 
@@ -240,4 +245,148 @@ attached = {
 assert attached["SRC-A"]["source_awards"][0]["award_code"] == "BULLSHITTER"
 assert attached["SRC-B"]["source_awards"] == []
 
-print("web-of-lies Bullshitter award: PASS threshold=6 window=30d deterministic=1")
+# Network-assisted route: six distinct downstream amplification publications
+# from at least five independently awarded upstream WOL sources in 30 days.
+upstream_incidents = {
+    "BS-1": {"U-1"},
+    "BS-2": {"U-2"},
+    "BS-3": {"U-3"},
+    "BS-4": {"U-4"},
+    "BS-5": {"U-5"},
+}
+network_observations = [
+    {
+        "observation_id": "NA-1",
+        "bullshitter_source_id": "BS-1",
+        "bullshitter_event_id": "U-1",
+        "amplifier_source_id": "SRC-NET",
+        "amplifier_id": "SRC-NET-X",
+        "amplifier_display_name": "Network amplifier",
+        "observed_at": "2026-09-01",
+        "message_identity": "MSG-1",
+        "public_receipts": [{"receipt_id": "RNA-1", "surface": "X", "url": "https://example.test/na1"}],
+    },
+    {
+        "observation_id": "NA-2",
+        "bullshitter_source_id": "BS-2",
+        "bullshitter_event_id": "U-2",
+        "amplifier_source_id": "SRC-NET",
+        "amplifier_id": "SRC-NET-X",
+        "amplifier_display_name": "Network amplifier",
+        "observed_at": "2026-09-02",
+        "message_identity": "MSG-2",
+        "public_receipts": [{"receipt_id": "RNA-2", "surface": "X", "url": "https://example.test/na2"}],
+    },
+    {
+        "observation_id": "NA-3",
+        "bullshitter_source_id": "BS-3",
+        "bullshitter_event_id": "U-3",
+        "amplifier_source_id": "SRC-NET",
+        "amplifier_id": "SRC-NET-X",
+        "amplifier_display_name": "Network amplifier",
+        "observed_at": "2026-09-03",
+        "message_identity": "MSG-3",
+        "public_receipts": [{"receipt_id": "RNA-3", "surface": "X", "url": "https://example.test/na3"}],
+    },
+    {
+        "observation_id": "NA-4",
+        "bullshitter_source_id": "BS-4",
+        "bullshitter_event_id": "U-4",
+        "amplifier_source_id": "SRC-NET",
+        "amplifier_id": "SRC-NET-X",
+        "amplifier_display_name": "Network amplifier",
+        "observed_at": "2026-09-04",
+        "message_identity": "MSG-4",
+        "public_receipts": [{"receipt_id": "RNA-4", "surface": "X", "url": "https://example.test/na4"}],
+    },
+    {
+        "observation_id": "NA-5",
+        "bullshitter_source_id": "BS-5",
+        "bullshitter_event_id": "U-5",
+        "amplifier_source_id": "SRC-NET",
+        "amplifier_id": "SRC-NET-X",
+        "amplifier_display_name": "Network amplifier",
+        "observed_at": "2026-09-05",
+        "message_identity": "MSG-5",
+        "public_receipts": [{"receipt_id": "RNA-5", "surface": "X", "url": "https://example.test/na5"}],
+    },
+    {
+        "observation_id": "NA-6",
+        "bullshitter_source_id": "BS-1",
+        "bullshitter_event_id": "U-1",
+        "amplifier_source_id": "SRC-NET",
+        "amplifier_id": "SRC-NET-X",
+        "amplifier_display_name": "Network amplifier",
+        "observed_at": "2026-09-06",
+        "message_identity": "MSG-6",
+        "public_receipts": [{"receipt_id": "RNA-6", "surface": "X", "url": "https://example.test/na6"}],
+    },
+]
+network_award = wol.network_assisted_bullshit_award(
+    "SRC-NET",
+    network_observations,
+    upstream_incidents,
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+)
+assert network_award is not None
+assert network_award["award_code"] == "BULLSHITTER"
+assert network_award["qualification_route"] == "NETWORK_ASSISTED_AMPLIFICATION"
+assert network_award["qualifying_incident_count"] == 6
+assert network_award["qualifying_upstream_source_count"] == 5
+assert set(network_award["qualifying_upstream_source_ids"]) == set(upstream_incidents)
+assert network_award["currently_active"] is True
+
+# Five publications are insufficient even across five Bullshitters.
+assert wol.network_assisted_bullshit_award(
+    "SRC-NET",
+    network_observations[:5],
+    upstream_incidents,
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+) is None
+
+# Six publications sourced from only four distinct Bullshitters are insufficient.
+four_source_map = {key: value for key, value in upstream_incidents.items() if key != "BS-5"}
+four_source_observations = [
+    dict(row, bullshitter_source_id=("BS-4" if row["bullshitter_source_id"] == "BS-5" else row["bullshitter_source_id"]),
+         bullshitter_event_id=("U-4" if row["bullshitter_event_id"] == "U-5" else row["bullshitter_event_id"]))
+    for row in network_observations
+]
+assert wol.network_assisted_bullshit_award(
+    "SRC-NET",
+    four_source_observations,
+    four_source_map,
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+) is None
+
+# A cross-platform mirror with the same message identity does not create a
+# seventh qualifying incident.
+mirror = dict(network_observations[-1])
+mirror["observation_id"] = "NA-7-MIRROR"
+mirror["amplifier_id"] = "SRC-NET-TELEGRAM"
+mirror["observed_at"] = "2026-09-07"
+mirror["public_receipts"] = [{"receipt_id": "RNA-7", "surface": "TELEGRAM", "url": "https://example.test/na7"}]
+mirror_award = wol.network_assisted_bullshit_award(
+    "SRC-NET",
+    network_observations + [mirror],
+    upstream_incidents,
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+)
+assert mirror_award is not None
+assert mirror_award["qualifying_incident_count"] == 6
+
+# Missing message identity fails closed for award counting.
+no_identity = [dict(row) for row in network_observations]
+no_identity[0].pop("message_identity")
+assert wol.network_assisted_bullshit_award(
+    "SRC-NET",
+    no_identity,
+    upstream_incidents,
+    governance,
+    as_of="2026-09-21T15:30:00-04:00",
+) is None
+
+print("web-of-lies Bullshitter award: PASS threshold=6 window=30d network_assisted=1 deterministic=1")
