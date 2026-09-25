@@ -8,7 +8,7 @@
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -7977,6 +7977,238 @@
           "provenance_status": "ORIGINAL_URL",
           "deletion_status": "AVAILABLE",
           "text_excerpt": "Robin Westenra embedded Press TV's Isfahan 'major strategic defeat' post and linked the Press TV article in a supportive Substack post."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-TG-FALSEFLAG-20260331",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C",
+      "amplifier_id": "PRESS-TV-TELEGRAM",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@presstv",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-TURKEY-FALSE-FLAG-20260331",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-TG-FALSEFLAG",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/presstv/182946",
+          "published_at": "2026-03-31",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV Telegram promoted 'Iran warns of new false-flag attacks, denies reports of missile strike on Turkey.'"
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-TG-170AIRCRAFT-20260428",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
+      "amplifier_id": "PRESS-TV-TELEGRAM",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@presstv",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-170-AIRCRAFT-20260428",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-TG-170AIRCRAFT",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/presstv/187552",
+          "published_at": "2026-04-28",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV Telegram promoted the Army story containing the claim that more than 170 enemy aircraft were hit, including 16 fighter jets."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-X-170AIRCRAFT-20260428",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
+      "amplifier_id": "PRESS-TV-X",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@PressTV",
+      "amplifier_platform": "X",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-170-AIRCRAFT-20260428",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-X-170AIRCRAFT",
+          "surface": "X",
+          "url": "https://twitter.com/PressTV/status/2049173044560822711",
+          "published_at": "2026-04-28",
+          "captured_at": "2026-09-24",
+          "provenance_status": "PLATFORM_EMBED",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV's X post linked the April 28 Army story carrying the 170-plus aircraft / 16 fighters claim."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-PEOPLESVOICE-SECOND-F35-20260403",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-002",
+      "amplifier_id": "WEB-PEOPLES-VOICE",
+      "amplifier_display_name": "The People's Voice",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-SECOND-F35-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-PEOPLESVOICE-SECOND-F35",
+          "surface": "WEBSITE",
+          "url": "https://www.thepeoplesvoice.org/TPV3/Past-News.php/2026/04/03/iran-downs-two-advanced-us",
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The People's Voice republished Press TV's 'Iran downs two advanced US jets, including second F-35' and linked the Press TV original."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-ALMANAR-RESCUE-FAILURE-20260405",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-008",
+      "amplifier_id": "WEB-ALMANAR-TV",
+      "amplifier_display_name": "Al-Manar TV Lebanon",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-RESCUE-HUMILIATING-DEFEAT-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-ALMANAR-RESCUE-FAILURE",
+          "surface": "WEBSITE",
+          "url": "https://english.manartv.com.lb/article/51777/",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Al-Manar published 'Humiliating Defeat: Iran Shoots Down Multiple US Warplanes in Failed Pilot Rescue Mission' and explicitly credited Press TV."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-PANAFRICAN-F35-MYTH-20260419",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0303-C",
+      "amplifier_id": "BLOG-PANAFRICAN-NEWS-WIRE",
+      "amplifier_display_name": "Pan-African News Wire",
+      "amplifier_platform": "BLOG",
+      "message_identity": "PRESSTV-F35-MYTH-20260419",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-PANAFRICAN-F35-MYTH",
+          "surface": "BLOG",
+          "url": "https://panafricannews.blogspot.com/2026/04/myth-of-us-stealth-fighters-over.html",
+          "published_at": "2026-04-19",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Pan-African News Wire republished the Press TV article asserting the F-35 was downed/destroyed and that the stealth myth was over."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-HAJIJ-F35-MYTH-20260419",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0303-C",
+      "amplifier_id": "WEB-HAJIJ",
+      "amplifier_display_name": "Hajij",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-F35-MYTH-20260419",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-HAJIJ-F35-MYTH",
+          "surface": "WEBSITE",
+          "url": "https://hajij.com/en/articles/political-articles-analysis/item/3923-myth-of-us-stealth-fighters-over-iranian-hunter-of-us-f-35-jet-declares?print=1&tmpl=component",
+          "published_at": "2026-04-19",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Hajij republished the Press TV F-35 'myth of stealth fighters over' story, including the destroyed-F-35 framing."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-COSMOS-210AIRCRAFT-20260607",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-C",
+      "amplifier_id": "WEB-COSMOS-CHRONICLE",
+      "amplifier_display_name": "Cosmos Chronicle",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-210-AIRCRAFT-20260526",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-COSMOS-210AIRCRAFT",
+          "surface": "WEBSITE",
+          "url": "https://cosmoschronicle.com/technology-achieved-amid-gulf-war-enabled-iran-to-down-210-enemy-aircraft/",
+          "published_at": "2026-06-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Cosmos Chronicle republished the Press TV 210-aircraft story and credited PressTV / ABC Flash Point News 2026."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-ANTIDIPLOMATICO-SILENCE-F35-20260321",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0302-O",
+      "amplifier_id": "WEB-LANTIDIPLOMATICO",
+      "amplifier_display_name": "L'Antidiplomatico",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-SILENCE-STEALTH-F35-20260321",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-ANTIDIPLOMATICO-SILENCE-F35",
+          "surface": "WEBSITE",
+          "url": "https://www.lantidiplomatico.it/dettnews-liran_non__morto_a_morire_sono_la_credibilit_di_trump_e_il_mito_dellinvincibilit_usa/52961_65952/",
+          "published_at": "2026-03-21",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "L'Antidiplomatico embedded Press TV's 'Silence of the stealth' post and adopted the F-35 invincibility-collapse framing in a supportive article."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-STEELCITY-SILENCE-F35-20260326",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0302-O",
+      "amplifier_id": "BLOG-STEEL-CITY-SCRIBBLINGS",
+      "amplifier_display_name": "steel city scribblings",
+      "amplifier_platform": "BLOG",
+      "message_identity": "PRESSTV-SILENCE-STEALTH-F35-20260321",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-STEELCITY-SILENCE-F35",
+          "surface": "BLOG",
+          "url": "https://steelcityscribblings.uk/wp/2026/03/26/from-my-anti-imperial-scrap-book/",
+          "published_at": "2026-03-26",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "steel city scribblings quoted and carried Press TV's 'Silence of the stealth' narrative as part of a supportive post."
         }
       ],
       "observed_at": "2026-09-24"
