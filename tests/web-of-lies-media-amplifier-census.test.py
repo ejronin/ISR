@@ -125,6 +125,30 @@ assert {
     "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C",
 } <= covered_event_ids
 
+tasnim_rows = [
+    row
+    for row in (DOSSIER.get("amplification_observations") or [])
+    if row.get("bullshitter_source_id") == "WOL-SRC-TASNIM"
+]
+assert len(tasnim_rows) >= 4
+tasnim_by_platform: dict[str, set[str]] = {}
+for row in tasnim_rows:
+    platform = str(row.get("amplifier_platform") or "")
+    tasnim_by_platform.setdefault(platform, set()).add(str(row["amplifier_id"]))
+    assert row.get("message_identity"), row["observation_id"]
+    assert row.get("public_receipts"), row["observation_id"]
+
+assert {"TASNIM-X-EN"} <= tasnim_by_platform["X"]
+assert {"SUBSTACK-ROBIN-WESTENRA"} <= tasnim_by_platform["SUBSTACK"]
+assert {"WEB-ETIMES247"} <= tasnim_by_platform["WEBSITE"]
+assert {"BLOG-WIERNI-POLSCE-SUWERENNEJ"} <= tasnim_by_platform["BLOG"]
+
+# Cross-web topology: the same downstream identity must be reusable across
+# Bullshitter publisher webs rather than duplicated as unrelated leaves.
+press_amplifiers = {row["amplifier_id"] for row in press_rows}
+tasnim_amplifiers = {row["amplifier_id"] for row in tasnim_rows}
+assert "SUBSTACK-ROBIN-WESTENRA" in press_amplifiers & tasnim_amplifiers
+
 # Publisher-owned dissemination is intentionally retained as amplification.
 self_rows = [
     row
@@ -150,5 +174,7 @@ print(
     f"telegram_unique={len(by_platform.get('TELEGRAM', set()))} "
     f"website_unique={len(by_platform.get('WEBSITE', set()))} "
     f"forum_unique={len(by_platform.get('FORUM', set()))} "
+    f"tasnim_observations={len(tasnim_rows)} "
+    f"shared_press_tasnim={len(press_amplifiers & tasnim_amplifiers)} "
     "minimum_census=1 self_amplification=retained"
 )
