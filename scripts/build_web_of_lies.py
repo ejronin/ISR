@@ -985,27 +985,211 @@ def bullshit_award_for_events(
     }
 
 
+def network_assisted_bullshit_award(
+    source_id: str,
+    amplification_observations: list[dict[str, Any]],
+    upstream_award_incident_ids_by_source: dict[str, set[str]],
+    governance: dict[str, Any],
+    *,
+    as_of: Any,
+) -> dict[str, Any] | None:
+    """Derive a Bullshitter award from systematic receipt-backed amplification.
+
+    This route reuses already-qualified upstream bullshit incidents. The
+    downstream publication act is the target source's own conduct; stable
+    message_identity values prevent cross-platform mirrors from inflating the
+    threshold.
+    """
+    cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
+    network_cfg = cfg.get("network_assisted_qualification") or {}
+    if not network_cfg.get("enabled"):
+        return None
+
+    minimum_sources = int(
+        network_cfg.get("minimum_distinct_upstream_wol_nodes") or 5
+    )
+    minimum_incidents = int(
+        network_cfg.get("minimum_qualifying_amplification_incidents") or 6
+    )
+    window_days = int(network_cfg.get("window_days") or cfg.get("window_days") or 30)
+    require_message_identity = bool(
+        network_cfg.get("message_identity_required_for_award_counting", True)
+    )
+    cutoff = parse_time(as_of)
+
+    distinct: dict[str, tuple[datetime, dict[str, Any], str]] = {}
+    for observation in amplification_observations:
+        if str(observation.get("amplifier_source_id") or "").strip() != source_id:
+            continue
+        upstream_source_id = str(
+            observation.get("bullshitter_source_id") or ""
+        ).strip()
+        upstream_event_id = str(
+            observation.get("bullshitter_event_id") or ""
+        ).strip()
+        if not upstream_source_id or upstream_source_id == source_id:
+            continue
+        if upstream_event_id not in upstream_award_incident_ids_by_source.get(
+            upstream_source_id, set()
+        ):
+            continue
+        if not list(observation.get("public_receipts") or []):
+            continue
+        moment = parse_time(observation.get("observed_at"))
+        if moment is None or (cutoff is not None and moment > cutoff):
+            continue
+        message_identity = str(observation.get("message_identity") or "").strip()
+        if require_message_identity and not message_identity:
+            continue
+        key = message_identity or str(observation.get("observation_id") or "").strip()
+        if not key:
+            continue
+        prior = distinct.get(key)
+        if prior is None or moment < prior[0]:
+            distinct[key] = (moment, observation, upstream_source_id)
+
+    rows = sorted(
+        distinct.values(),
+        key=lambda row: (
+            row[0],
+            str(row[1].get("observation_id") or ""),
+        ),
+    )
+    if len(rows) < minimum_incidents:
+        return None
+
+    left = 0
+    earned_window: list[tuple[datetime, dict[str, Any], str]] | None = None
+    for right in range(len(rows)):
+        while (
+            left <= right
+            and rows[right][0] - rows[left][0] > timedelta(days=window_days)
+        ):
+            left += 1
+        window = rows[left:right + 1]
+        upstream_ids = {row[2] for row in window}
+        if len(window) >= minimum_incidents and len(upstream_ids) >= minimum_sources:
+            earned_window = window
+            break
+
+    if earned_window is None:
+        return None
+
+    earned_start = earned_window[0][0]
+    earned_end = earned_window[-1][0]
+    qualifying_incident_ids = sorted(
+        str(row[1].get("observation_id") or "")
+        for row in earned_window
+        if str(row[1].get("observation_id") or "")
+    )
+    qualifying_upstream_source_ids = sorted({row[2] for row in earned_window})
+    documented_incident_ids = sorted(
+        str(row[1].get("observation_id") or "")
+        for row in rows
+        if str(row[1].get("observation_id") or "")
+    )
+
+    current_rows: list[tuple[datetime, dict[str, Any], str]] = []
+    if cutoff is not None:
+        current_start = cutoff - timedelta(days=window_days)
+        current_rows = [
+            row for row in rows
+            if current_start <= row[0] <= cutoff
+        ]
+    current_upstream_ids = {row[2] for row in current_rows}
+    currently_active = (
+        len(current_rows) >= minimum_incidents
+        and len(current_upstream_ids) >= minimum_sources
+    )
+    current_incident_ids = sorted(
+        str(row[1].get("observation_id") or "")
+        for row in current_rows
+        if str(row[1].get("observation_id") or "")
+    )
+
+    label = str(cfg.get("public_label") or "Bullshitter")
+    current_status = (
+        "ACTIVE_CURRENT_WINDOW" if currently_active else "EARNED_HISTORICAL"
+    )
+    public_verdict = (
+        f"{label} — network-assisted award earned {earned_start.isoformat()} "
+        f"through {earned_end.isoformat()} from {len(earned_window)} qualifying "
+        f"amplification publications across {len(qualifying_upstream_source_ids)} "
+        f"distinct upstream WOL sources."
+    )
+    return {
+        "award_code": "BULLSHITTER",
+        "public_label": label,
+        "qualification_route": "NETWORK_ASSISTED_AMPLIFICATION",
+        "window_days": window_days,
+        "minimum_qualifying_incidents": minimum_incidents,
+        "minimum_distinct_upstream_wol_nodes": minimum_sources,
+        "award_earned_at": earned_end.isoformat(),
+        "qualifying_window_start": earned_start.isoformat(),
+        "qualifying_window_end": earned_end.isoformat(),
+        "qualifying_incident_count": len(earned_window),
+        "qualifying_incident_ids": qualifying_incident_ids,
+        "qualifying_upstream_source_count": len(qualifying_upstream_source_ids),
+        "qualifying_upstream_source_ids": qualifying_upstream_source_ids,
+        "documented_incident_count": len(documented_incident_ids),
+        "documented_incident_ids": documented_incident_ids,
+        "current_window_status": current_status,
+        "currently_active": currently_active,
+        "current_window_incident_count": len(current_rows),
+        "current_window_incident_ids": current_incident_ids,
+        "current_window_upstream_source_count": len(current_upstream_ids),
+        "as_of": as_of,
+        "public_verdict": public_verdict,
+    }
+
+
 def attach_source_awards(
     profiles: list[dict[str, Any]],
     all_events: list[dict[str, Any]],
     governance: dict[str, Any],
     *,
     as_of: Any,
+    amplification_observations: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for event in all_events:
         by_source[str(event.get("source_id") or "")].append(event)
 
     output = []
+    upstream_award_incident_ids_by_source: dict[str, set[str]] = {}
     for profile in profiles:
         record = dict(profile)
+        source_id = str(record.get("source_id") or "")
         award = bullshit_award_for_events(
-            by_source.get(str(record.get("source_id") or ""), []),
+            by_source.get(source_id, []),
             governance,
             as_of=as_of,
         )
         record["source_awards"] = [award] if award is not None else []
+        if award is not None:
+            upstream_award_incident_ids_by_source[source_id] = set(
+                award.get("documented_incident_ids")
+                or award.get("qualifying_incident_ids")
+                or []
+            )
         output.append(record)
+
+    observations = list(amplification_observations or [])
+    if observations:
+        for record in output:
+            if record.get("source_awards"):
+                continue
+            source_id = str(record.get("source_id") or "")
+            award = network_assisted_bullshit_award(
+                source_id,
+                observations,
+                upstream_award_incident_ids_by_source,
+                governance,
+                as_of=as_of,
+            )
+            if award is not None:
+                record["source_awards"] = [award]
+
     return sorted(output, key=lambda item: item["source_id"])
 
 
@@ -1510,6 +1694,7 @@ def build_registry(
         information_events + source_behavior_incidents,
         governance,
         as_of=(canonical.get("release") or {}).get("current_osint_cutoff"),
+        amplification_observations=amplification_observations,
     )
     profiles = attach_role_failure_appellations(
         profiles,
