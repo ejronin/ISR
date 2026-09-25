@@ -14,7 +14,7 @@ import build_public_release as release  # noqa: E402
 
 manifest = json.loads((ROOT / "data/public-release.json").read_text(encoding="utf-8"))
 flags = [asset for asset in manifest["application"]["assets"] if asset["role"] == "state_flag"]
-assert len(flags) == len(release.FLAG_ASSET_SPECS) == 30
+assert len(flags) == len(release.FLAG_ASSET_SPECS) == 31
 assert manifest["application"]["state_flags"] == flags
 assert len({asset["code"] for asset in flags}) == len(flags)
 for asset in flags:
@@ -46,4 +46,6 @@ for label, payload in unsafe.items():
 safe_internal_fragment = b'<svg xmlns="http://www.w3.org/2000/svg"><defs><path id="mark" d="M0 0h1v1H0z"/></defs><use href="#mark"/></svg>'
 release.validate_flag_svg("assets/flags/zz.svg", safe_internal_fragment)
 
-print("public state flags: PASS - 30 closed content-addressed SVGs; stylesheets, processing instructions, text/tail expressions, and active/external payloads rejected")
+assert any(asset["code"] == "sg" for asset in flags)
+
+print("public state flags: PASS - 31 closed content-addressed SVGs including Singapore; stylesheets, processing instructions, text/tail expressions, and active/external payloads rejected")

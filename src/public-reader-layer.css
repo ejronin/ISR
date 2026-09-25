@@ -200,10 +200,50 @@
 }
 
 .reader-ledger-card {
+  display: grid;
+  gap: .8rem;
   padding: 1rem;
   border: 1px solid var(--atlas-border, #263746);
   border-radius: .9rem;
   background: var(--atlas-surface-card, #0e1822);
+}
+
+.reader-chain-summary {
+  max-width: 78ch;
+  margin: .3rem 0 0;
+  line-height: 1.55;
+}
+
+.reader-chain-baseline,
+.reader-chain-outcome {
+  padding: .75rem .85rem;
+  border-left: 3px solid var(--atlas-border, #263746);
+  background: rgba(255,255,255,.018);
+}
+
+.reader-chain-baseline h4,
+.reader-chain-outcome h4 {
+  margin: 0 0 .25rem;
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .035em;
+}
+
+.reader-chain-baseline p,
+.reader-chain-outcome p { margin: 0; line-height: 1.5; }
+
+.reader-chain-claims-detail,
+.reader-chain-open-gaps {
+  border-top: 1px solid var(--atlas-border, #263746);
+  padding-top: .2rem;
+}
+
+.reader-chain-claims-detail > summary,
+.reader-chain-open-gaps > summary {
+  min-height: 2.75rem;
+  cursor: pointer;
+  padding: .7rem .15rem;
+  font-weight: 700;
 }
 
 .reader-ledger-card-head {

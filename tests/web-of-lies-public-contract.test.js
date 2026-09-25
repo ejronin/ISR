@@ -54,29 +54,42 @@ assert.match(readerSource, /routeHref\('evidence\.web_of_lies', \{ claim_family:
 assert.match(readerSource, /reader-wol-entry/);
 assert.match(readerSource, /append\(section, 'h2', '', 'Lie Ledger'\)/);
 assert.doesNotMatch(readerSource, /append\(section, 'h2', '', 'Narrative chains and findings'\)/);
-assert.match(readerSource, /Open the interactive propagation network/);
+assert.match(readerSource, /Open the connection network/);
 assert.match(readerSource, /Open Web of Lies/);
 assert.match(iaSource, /function WebOfLiesPage\(/);
-assert.match(iaSource, /No qualifying source in this evidence slice/);
-assert.match(iaSource, /Prove the pattern; then call the pattern what it is\./);
-assert.match(iaSource, /Explore the propagation graph/);
+assert.match(iaSource, /No documented network connections yet/);
+assert.doesNotMatch(iaSource, /Prove the pattern; then call the pattern what it is\./);
+assert.match(iaSource, /Explore the connection web/);
 assert.match(iaSource, /forensic-companion-nav/);
 assert.match(iaSource, /wol-graph-workspace/);
 assert.match(iaSource, /wol-cytoscape-host/);
 assert.match(iaSource, /root && root\.cytoscape/);
 assert.match(iaSource, /bullshitter_source_count/);
 assert.match(iaSource, /CONFIRMED_BOT/);
-assert.match(iaSource, /Touch a node/);
-assert.match(iaSource, /Observed megaphones/);
-assert.match(iaSource, /Bullshitter sources repeated/);
+assert.match(iaSource, /Select a person, outlet, or connection/);
+assert.match(iaSource, /Amplifiers/);
+assert.match(iaSource, /Upstream Bullshitter sources/);
 assert.match(iaSource, /🏆 Hall of Shame/);
 assert.match(iaSource, /👑 #1/);
+assert.match(iaSource, /const nodeFlagAsset = node =>/);
+assert.match(iaSource, /const nodeMarkers = node =>/);
+assert.match(iaSource, /markers\.push\('💩'\)/);
+assert.match(iaSource, /markers\.push\('📣'\)/);
 assert.match(iaSource, /node\[flag_path\]/);
+assert.doesNotMatch(iaSource, /\[\$\{code\}\]/);
 assert.match(shellSource, /\.wol-cytoscape-host\s*\{/);
-assert.match(shellSource, /height:\s*clamp\(34rem,\s*72vh,\s*58rem\)/);
+assert.match(shellSource, /height:\s*clamp\(30rem,\s*60vh,\s*46rem\)/);
 assert.match(shellSource, /\.wol-graph-workspace\s*\{/);
 assert.match(shellSource, /grid-template-columns:\s*minmax\(0,\s*2\.2fr\)\s*minmax\(18rem,\s*\.8fr\)/);
 assert.match(shellSource, /\.wol-hall-podium\s*\{/);
+assert.match(shellSource, /\.wol-node-flag\s*\{/);
+assert.match(shellSource, /\.wol-node-markers\s*\{/);
+assert.match(iaSource, /name:\s*'cose'/);
+assert.match(iaSource, /componentSpacing:\s*42/);
+assert.match(iaSource, /idealEdgeLength:\s*92/);
+assert.match(iaSource, /cyGraph\.on\('tap', 'edge'/);
+assert.match(iaSource, /renderEdgeDetail/);
+assert.match(iaSource, /mapData\(amplified_claim_count/);
 assert(Array.isArray(derived.propagation_graph.nodes), 'compiled WOL graph nodes missing');
 assert(Array.isArray(derived.propagation_graph.edges), 'compiled WOL graph edges missing');
 assert.equal(derived.propagation_graph.graph_type, 'BULLSHITTER_MEGAPHONE_NETWORK');
@@ -89,6 +102,25 @@ assert(Number(pressTvNode.bullshitter_source_count || 0) >= 1, 'Press TV must re
 const limTean = derived.source_profiles.find(profile => profile.source_id === 'WOL-SRC-LIM-TEAN');
 assert(limTean && limTean.country_code === 'SG', 'receipt-backed Singapore profile must compile to SG');
 assert(!/manual_rank|manual_score|featured_rank/.test(iaSource), 'public Web of Lies renderer contains a manual ranking control');
+[
+  'authorized Cytoscape runtime',
+  'Structured graph available',
+  'Basis incident IDs',
+  'WOL-native award incidents',
+  'deterministic from the WOL behavior record',
+  'typed lineage relationship',
+  'canonical claim/evidence relationships',
+  'Internal relationship codes'
+].forEach(text => {
+  assert(!iaSource.includes(text) && !readerSource.includes(text), `internal implementation language leaked into public copy: ${text}`);
+});
+const profileById = new Map((derived.source_profiles || []).map(profile => [profile.source_id, profile]));
+for (const node of derived.propagation_graph.nodes || []) {
+  const profile = profileById.get(node.node_id);
+  if (profile && profile.country_code) {
+    assert.equal(node.country_code, profile.country_code, `graph country marker drifted from source identity: ${node.node_id}`);
+  }
+}
 
 if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.information_events || []).length === 0) {
   assert.deepEqual(derived.hall_of_shame.all_time, {}, 'empty forensic input must not manufacture Hall of Shame placements');
@@ -96,4 +128,4 @@ if ((forensicInput.source_profiles || []).length === 0 && (forensicInput.informa
   assert(derived.claim_families.length > 0, 'canonical claim-family registry should still be populated before source forensics are seeded');
 }
 
-console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, ${derived.propagation_graph.edges.length} real propagation edges, visible Cytoscape web, receipt-backed flags, trophy/crown Hall rendering, deterministic WOL ranking contract, and no manual Hall selection`);
+console.log(`web-of-lies public contract: PASS - ${derived.claim_families.length} claim families, ${derived.propagation_graph.edges.length} real propagation edges, force-directed connection web, receipt-backed identity markers, edge inspection, trophy/crown Hall rendering, deterministic WOL ranking contract, and no manual Hall selection`);

@@ -546,7 +546,7 @@
 
     const forensicEntry = append(section, 'aside', 'scope-note reader-wol-entry');
     append(forensicEntry, 'strong', '', 'Web of Lies');
-    append(forensicEntry, 'p', '', 'Open the interactive propagation network to trace WOL-qualified Bullshitter sources, the accounts that amplified them, and the receipts supporting each observed connection.');
+    append(forensicEntry, 'p', '', 'Open the connection network to see who published each documented claim, who carried it outward, and the receipts behind those links.');
     const forensicEntryLink = append(forensicEntry, 'a', 'inline-route-link', 'Open Web of Lies');
     forensicEntryLink.href = base.routeHref('evidence.web_of_lies');
 
@@ -640,25 +640,6 @@
       chainPlainEnglish(chain, records).forEach(value => append(chainExplanation, 'li', '', value));
       addDeferredEvidence(chainWhy, context, records, 'Sources used across this chain');
 
-      const logic = chain && chain.logic_graph;
-      if (logic && asArray(logic.nodes).length) {
-        const logicDetails = append(card, 'details', 'reader-chain-logic');
-        append(logicDetails, 'summary', '', 'How the logic works');
-        append(logicDetails, 'p', 'section-note',
-          `This trace is generated from canonical claim/evidence relationships: ${Number(logic.claim_node_count || 0)} proposition nodes, ${Number(logic.source_node_count || 0)} source nodes, and ${asArray(logic.edges).length} typed links.`);
-        const relationCounts = new Map();
-        asArray(logic.edges).forEach(edge => {
-          const relation = cleanPublicText(edge && edge.relation);
-          if (relation) relationCounts.set(relation, (relationCounts.get(relation) || 0) + 1);
-        });
-        if (relationCounts.size) {
-          const list = append(logicDetails, 'ul', 'reader-logic-relations');
-          [...relationCounts.entries()].sort((a, b) => a[0].localeCompare(b[0])).forEach(([relation, count]) => {
-            append(list, 'li', '', `${relation.replaceAll('_', ' ').toLowerCase()} — ${count}`);
-          });
-        }
-      }
-
       const gaps = asArray(chain && chain.open_evidence_gaps).map(evidenceGapText).filter(Boolean);
       if (gaps.length) {
         const unknown = append(card, 'details', 'reader-chain-open-gaps');
@@ -669,7 +650,7 @@
 
       const claimsDetail = append(card, 'details', 'reader-chain-claims-detail');
       append(claimsDetail, 'summary', '', `What was claimed and how the story changed (${groupEntries.length})`);
-      append(claimsDetail, 'p', 'reader-deferred-claims-note', 'Open to load the chronological claim branches, corrections, repetitions, and evidence links.');
+      append(claimsDetail, 'p', 'reader-deferred-claims-note', 'Claims, corrections, repetitions, and evidence are shown in chronological order.');
 
       let claimsHydrated = false;
       claimsDetail.addEventListener('toggle', () => {

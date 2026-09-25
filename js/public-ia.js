@@ -2213,50 +2213,44 @@
       ...incidents.map(incident => [incident.incident_id, incident])
     ]);
     const graphNodeById = new Map(graphNodes.map(node => [node.node_id, node]));
+    const graphEdgeById = new Map(graphEdges.map(edge => [edge.edge_id, edge]));
     const familyById = new Map(families.map(family => [family.claim_family_id, family]));
 
-    const flagEmoji = code => {
-      const text = String(code || '').trim().toUpperCase();
-      if (!/^[A-Z]{2}$/.test(text)) return '';
-      return String.fromCodePoint(...Array.from(text).map(letter => 127397 + letter.charCodeAt(0)));
-    };
-    const nodeMarker = node => {
-      const code = String(node.country_code || '').trim().toUpperCase();
-      const flag = flagEmoji(code);
-      const bot = node.authenticity_class === 'CONFIRMED_BOT' ? '🤖' : '';
-      return [flag, code ? `[${code}]` : '', bot].filter(Boolean).join(' ');
-    };
     const nodeFlagAsset = node => {
       const code = String(node && node.country_code || '').trim().toUpperCase();
       if (!code || !context.services || !context.services.actorIdentity || typeof context.services.actorIdentity.flagFor !== 'function') return null;
       return context.services.actorIdentity.flagFor(code) || null;
     };
-    const nodeLabel = node => {
-      const marker = nodeMarker(node);
-      const name = publicNarrative(node.display_name, node.node_id);
-      const sources = Number(node.bullshitter_source_count || 0);
-      if (node.node_type === 'BULLSHITTER') {
-        const roles = ['Bullshitter'];
-        if (sources > 0) roles.push(`Megaphone · ${sources} source${sources === 1 ? '' : 's'}`);
-        return [marker, name, ...roles].filter(Boolean).join(' · ');
-      }
-      if (node.node_type === 'MEGAPHONE') {
-        return [marker, name, `Megaphone · ${sources} source${sources === 1 ? '' : 's'}`].filter(Boolean).join(' · ');
-      }
-      return [marker, name].filter(Boolean).join(' · ');
+    const nodeMarkers = node => {
+      const markers = [];
+      if (node && node.authenticity_class === 'CONFIRMED_BOT') markers.push('🤖');
+      if (asArray(node && node.award_codes).includes('BULLSHITTER')) markers.push('💩');
+      if (asArray(node && node.node_roles).includes('AMPLIFIER')) markers.push('📣');
+      return markers;
     };
+    const nodeName = node => publicNarrative(node && node.display_name, 'Unknown source');
+    const nodeRoleLabel = node => {
+      const name = nodeName(node);
+      const roles = [];
+      if (asArray(node && node.award_codes).includes('BULLSHITTER') || node && node.node_type === 'BULLSHITTER') roles.push('Bullshitter');
+      if (asArray(node && node.node_roles).includes('AMPLIFIER') || node && node.node_type === 'MEGAPHONE') roles.push('Amplifier');
+      return roles.length ? `${name} · ${roles.join(' + ')}` : name;
+    };
+    const nodeLabel = node => [...nodeMarkers(node), nodeName(node)].filter(Boolean).join(' ');
     const appendNodeIdentity = (host, node, tagName = 'span', className = 'wol-node-identity') => {
       const wrapper = append(host, tagName, className);
       const asset = nodeFlagAsset(node);
       if (asset) {
         const flag = append(wrapper, 'img', 'wol-node-flag');
         flag.src = asset.path;
-        flag.alt = `${publicNarrative(node.country_region, node.country_code)} flag`;
+        flag.alt = `${publicNarrative(asset.label, node.country_region || 'Country')} flag`;
         flag.width = 28;
         flag.height = 20;
         flag.decoding = 'async';
       }
-      append(wrapper, 'span', 'wol-node-identity-label', nodeLabel(node));
+      const markers = nodeMarkers(node);
+      if (markers.length) append(wrapper, 'span', 'wol-node-markers', markers.join(' '));
+      append(wrapper, 'span', 'wol-node-identity-label', nodeRoleLabel(node));
       return wrapper;
     };
     const safeExternalHref = value => {
@@ -2267,7 +2261,7 @@
         return '';
       }
     };
-    const appendReceipts = (parent, receipts, emptyText = 'No public amplifier receipt is stored for this item.') => {
+    const appendReceipts = (parent, receipts, emptyText = 'No public link is available for this connection.') => {
       const usable = asArray(receipts).map(receipt => ({ receipt, href: safeExternalHref(receipt && (receipt.url || receipt.archive_url)) }))
         .filter(row => row.href);
       if (!usable.length) {
@@ -2294,26 +2288,24 @@
     wolCurrent.setAttribute('aria-current', 'page');
 
     const intro = addSection(frame.article, 'Web of Lies network', 'content-section wol-method');
-    append(intro, 'p', 'lead-copy', 'The graph is the primary interface. Bullshitter nodes are sources that earned the evidence-defined award. Megaphone nodes are accounts with receipts showing that they carried a specific qualifying bullshit claim. A megaphone listing is propagation evidence, not automatic inheritance of the award.');
-    const direct = append(intro, 'aside', 'scope-note wol-voice-note');
-    append(direct, 'strong', '', 'Direct verdict layer');
-    append(direct, 'p', '', 'The evidence record stays technical. Once a repeated pattern is established, this page does not hide that pattern behind euphemisms. Prove the pattern; then call the pattern what it is.');
+    append(intro, 'p', 'lead-copy', 'This network shows who published a documented false or materially misleading claim and who carried it outward. Follow the arrows, select a person or outlet, and open the receipts behind each connection.');
 
-    const graphSection = addSection(frame.article, 'Explore the propagation graph', 'content-section wol-network');
+    const graphSection = addSection(frame.article, 'Explore the connection web', 'content-section wol-network');
     const summary = graph.summary || {};
     append(graphSection, 'p', 'section-note',
       `${formatNumber(summary.bullshitter_nodes || 0)} Bullshitter source${Number(summary.bullshitter_nodes || 0) === 1 ? '' : 's'} · ` +
-      `${formatNumber(summary.megaphone_nodes || 0)} megaphone${Number(summary.megaphone_nodes || 0) === 1 ? '' : 's'} · ` +
-      `${formatNumber(summary.amplification_edges || 0)} documented propagation edge${Number(summary.amplification_edges || 0) === 1 ? '' : 's'} · ` +
-      `${formatNumber(summary.cross_bullshitter_megaphones || 0)} megaphone${Number(summary.cross_bullshitter_megaphones || 0) === 1 ? '' : 's'} repeating multiple Bullshitters.`
+      `${formatNumber(summary.megaphone_nodes || 0)} amplifier${Number(summary.megaphone_nodes || 0) === 1 ? '' : 's'} · ` +
+      `${formatNumber(summary.amplification_edges || 0)} documented connection${Number(summary.amplification_edges || 0) === 1 ? '' : 's'} · ` +
+      `${formatNumber(summary.cross_bullshitter_megaphones || 0)} account${Number(summary.cross_bullshitter_megaphones || 0) === 1 ? '' : 's'} connected to multiple Bullshitter sources.`
     );
 
     const legend = append(graphSection, 'div', 'wol-graph-legend');
     [
-      ['Bullshitter', 'Source earned the deterministic award from its own incident record.'],
-      ['Megaphone', 'Account carried a qualifying bullshit message; no second truth adjudication is required.'],
-      ['🤖', 'Confirmed bot only. Suspected automation does not get the bot marker.'],
-      ['Flag', 'Country marker appears only when the graph record has receipt-backed country metadata.']
+      ['💩 Bullshitter', 'Source earned the Bullshitter award from its own documented publications.'],
+      ['📣 Amplifier', 'Account carried one of those documented claims outward.'],
+      ['→ Connection', 'Arrow direction shows the documented path from source to amplifier.'],
+      ['Country flag', 'Shown only when that identity or affiliation is supported by the record.'],
+      ['🤖 Bot', 'Shown only when bot status is confirmed.']
     ].forEach(([label, note]) => {
       const item = append(legend, 'span', 'wol-legend-item');
       append(item, 'strong', '', label);
@@ -2321,7 +2313,7 @@
     });
 
     const graphControls = append(graphSection, 'div', 'wol-graph-controls');
-    const pickerLabel = append(graphControls, 'label', '', 'Focus a node');
+    const pickerLabel = append(graphControls, 'label', '', 'Find a person or outlet');
     const picker = append(pickerLabel, 'select', 'wol-node-picker');
     append(picker, 'option', '', 'Whole network').value = '';
     graphNodes.slice().sort((a, b) => nodeLabel(a).localeCompare(nodeLabel(b))).forEach(node => {
@@ -2335,12 +2327,12 @@
     const graphColumn = append(workspace, 'div', 'wol-graph-column');
     const graphHost = append(graphColumn, 'div', 'wol-cytoscape-host');
     graphHost.setAttribute('role', 'group');
-    graphHost.setAttribute('aria-label', 'Interactive Web of Lies propagation graph');
+    graphHost.setAttribute('aria-label', 'Interactive Web of Lies connection network');
     const graphStatus = append(graphColumn, 'p', 'section-note wol-graph-status');
     graphStatus.setAttribute('aria-live', 'polite');
 
     const detailSection = append(workspace, 'aside', 'wol-node-detail');
-    append(detailSection, 'h3', '', 'Selected node');
+    append(detailSection, 'h3', '', 'Selection details');
     const detailHost = append(detailSection, 'div', 'wol-node-detail-host');
 
     const adjacencyFor = nodeId => {
@@ -2350,6 +2342,13 @@
         if (edge.to_node_id === nodeId) ids.add(edge.from_node_id);
       });
       return ids;
+    };
+    const edgeDisplayLabel = edge => {
+      const count = Number(edge && edge.amplified_claim_count || 1);
+      if (edge && edge.amplification_scope === 'SELF_AMPLIFICATION') {
+        return count > 1 ? `Reposted own claims · ${count}` : 'Reposted own claim';
+      }
+      return count > 1 ? `Carried ${count} claims` : 'Carried claim';
     };
     const cytoscapeElements = () => [
       ...graphNodes.map(node => ({
@@ -2371,7 +2370,9 @@
           id: edge.edge_id,
           source: edge.from_node_id,
           target: edge.to_node_id,
-          edge_label: `×${Number(edge.amplified_claim_count || 1)}`,
+          edge_label: edgeDisplayLabel(edge),
+          relationship_type: edge.relationship_type || '',
+          amplification_scope: edge.amplification_scope || '',
           amplified_claim_count: Number(edge.amplified_claim_count || 1)
         }
       }))
@@ -2381,18 +2382,18 @@
       detailHost.replaceChildren();
       if (!nodeId || !graphNodeById.has(nodeId)) {
         const prompt = append(detailHost, 'aside', 'scope-note wol-node-prompt');
-        append(prompt, 'strong', '', 'Touch a node');
-        append(prompt, 'p', '', 'Select a Bullshitter or megaphone to isolate its direct connections and populate the evidence below.');
+        append(prompt, 'strong', '', 'Select a person, outlet, or connection');
+        append(prompt, 'p', '', 'The network will isolate the selected path and show the supporting receipts here.');
         return;
       }
       const node = graphNodeById.get(nodeId);
       const heading = append(detailHost, 'div', 'wol-selected-heading');
-      append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'MEGAPHONE');
+      append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'AMPLIFIER');
       appendNodeIdentity(heading, node, 'h3', 'wol-node-identity wol-selected-node-identity');
       addFactList(heading, [
-        ['Country', node.country_code ? `${flagEmoji(node.country_code)} ${node.country_code}` : publicNarrative(node.country_region, 'Not established')],
+        ['Country', publicNarrative(node.country_region, nodeFlagAsset(node)?.label || 'Not established')],
         ['Platform', publicNarrative(node.primary_platform, 'Not established')],
-        ['Authenticity', plainLabel(node.authenticity_class, 'Unknown')],
+        ['Account type', plainLabel(node.authenticity_class, 'Unknown')],
         ['Direct connections', formatNumber(adjacencyFor(nodeId).size)]
       ]);
 
@@ -2417,10 +2418,10 @@
           append(award, 'strong', '', labels.join(' · '));
           append(award, 'p', '', publicNarrative(
             awards[0].public_verdict,
-            `${sourceIncidents.length} documented qualifying incidents are recorded.`
+            `${sourceIncidents.length} documented incident${sourceIncidents.length === 1 ? '' : 's'} support this award.`
           ));
           const claimedRoles = asArray(profile.claimed_roles).map(row => plainLabel(row.role_code, '')).filter(Boolean);
-          if (claimedRoles.length) append(award, 'small', '', `Self-claimed roles on file: ${claimedRoles.join(' · ')}`);
+          if (claimedRoles.length) append(award, 'small', '', `Claims to be: ${claimedRoles.join(' · ')}`);
         }
 
         const roleFailures = asArray(profile.role_failure_appellations);
@@ -2431,41 +2432,33 @@
           roleFailures.forEach(appellation => {
             const block = append(roleBody, 'article', 'record-card wol-role-failure-card');
             append(block, 'h4', '', publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code)));
-            append(block, 'p', '', `Self-claimed role: ${plainLabel(appellation.claimed_role, 'Recorded role')} · ${formatNumber(appellation.incident_count || 0)} qualifying basis incident${Number(appellation.incident_count || 0) === 1 ? '' : 's'}.`);
-            if (appellation.rule) append(block, 'p', 'section-note', publicNarrative(appellation.rule, ''));
-            const basisIds = asArray(appellation.basis_incident_ids);
-            if (basisIds.length) {
-              const basisDetails = append(block, 'details', 'wol-role-failure-incidents');
-              append(basisDetails, 'summary', '', `Basis incident IDs (${basisIds.length})`);
-              const list = append(basisDetails, 'ul', 'source-link-list');
-              basisIds.forEach(eventId => append(list, 'li', '', eventId));
-            }
-            appendReceipts(block, appellation.claimed_role_receipts, 'No self-claimed-role receipt is stored for this appellation.');
+            append(block, 'p', '', `Self-claimed role: ${plainLabel(appellation.claimed_role, 'Recorded role')} · ${formatNumber(appellation.incident_count || 0)} documented incident${Number(appellation.incident_count || 0) === 1 ? '' : 's'} support this finding.`);
+            appendReceipts(block, appellation.claimed_role_receipts, 'No public role receipt is available for this finding.');
           });
         }
 
         const claimBlock = append(detailHost, 'div', 'wol-selected-claims');
         append(claimBlock, 'h4', '', 'Bullshit claims / presentations');
-        if (!sourceIncidents.length) append(claimBlock, 'p', 'section-note', 'No WOL-native award incidents are attached to this source.');
+        if (!sourceIncidents.length) append(claimBlock, 'p', 'section-note', 'No documented incidents are attached to this source.');
         sourceIncidents.forEach(incident => {
           const card = append(claimBlock, 'article', 'record-card wol-event-card');
-          append(card, 'p', 'card-kicker', [incident.published_at || incident.first_observed_at, plainLabel(incident.event_type)].filter(Boolean).join(' · '));
-          append(card, 'h4', '', publicNarrative(incident.statement_identity || incident.exact_statement || incident.translated_statement, incident.incident_id || incident.event_id));
+          append(card, 'p', 'card-kicker', incident.published_at || incident.first_observed_at || 'Date not recorded');
+          append(card, 'h4', '', publicNarrative(incident.statement_identity || incident.exact_statement || incident.translated_statement, 'Statement text unavailable'));
           if (incident.public_bullshit_summary) {
             append(card, 'p', 'wol-bullshit-summary', publicNarrative(incident.public_bullshit_summary, ''));
           }
-          appendReceipts(card, incident.public_receipts, 'No public receipt URL is stored directly on this qualifying event.');
+          appendReceipts(card, incident.public_receipts, 'No public receipt is available for this publication.');
         });
 
         const outgoing = graphEdges.filter(edge => edge.from_node_id === nodeId);
         const ampBlock = append(detailHost, 'div', 'wol-selected-megaphones');
-        append(ampBlock, 'h4', '', `Observed megaphones (${outgoing.length})`);
-        if (!outgoing.length) append(ampBlock, 'p', 'section-note', 'No downstream megaphone receipts have been added to this awardee yet.');
+        append(ampBlock, 'h4', '', `Amplifiers (${outgoing.length})`);
+        if (!outgoing.length) append(ampBlock, 'p', 'section-note', 'No downstream amplifier receipt is documented for this source yet.');
         outgoing.forEach(edge => {
           const target = graphNodeById.get(edge.to_node_id);
           const row = append(ampBlock, 'article', 'record-card wol-megaphone-card');
-          append(row, 'h4', '', nodeLabel(target || { display_name: edge.to_node_id, node_type: 'MEGAPHONE' }));
-          append(row, 'p', '', `${formatNumber(edge.amplified_claim_count || 0)} qualifying claim${Number(edge.amplified_claim_count || 0) === 1 ? '' : 's'} carried from this Bullshitter.`);
+          append(row, 'h4', '', nodeLabel(target || { display_name: 'Amplifier', node_type: 'MEGAPHONE' }));
+          append(row, 'p', '', `${formatNumber(edge.amplified_claim_count || 0)} documented claim${Number(edge.amplified_claim_count || 0) === 1 ? '' : 's'} carried from this Bullshitter.`);
           appendReceipts(row, edge.public_receipts);
         });
       }
@@ -2473,12 +2466,12 @@
       const incoming = graphEdges.filter(edge => edge.to_node_id === nodeId);
       if (incoming.length || node.node_type === 'MEGAPHONE') {
         const repeated = append(detailHost, 'div', 'wol-selected-upstream');
-        append(repeated, 'h4', '', `Bullshitter sources repeated (${incoming.length})`);
-        if (!incoming.length) append(repeated, 'p', 'section-note', 'No upstream Bullshitter edge is recorded for this megaphone.');
+        append(repeated, 'h4', '', `Upstream Bullshitter sources (${incoming.length})`);
+        if (!incoming.length) append(repeated, 'p', 'section-note', 'No upstream Bullshitter connection is documented for this amplifier.');
         incoming.forEach(edge => {
           const source = graphNodeById.get(edge.from_node_id);
           const block = append(repeated, 'article', 'record-card wol-amplified-source');
-          append(block, 'h4', '', nodeLabel(source || { display_name: edge.from_node_id, node_type: 'BULLSHITTER' }));
+          append(block, 'h4', '', nodeLabel(source || { display_name: 'Source', node_type: 'BULLSHITTER' }));
           asArray(edge.bullshitter_event_ids).forEach(eventId => {
             const incident = qualifyingEventById.get(eventId);
             if (!incident) return;
@@ -2495,17 +2488,59 @@
       }
     };
 
+    const renderEdgeDetail = edgeId => {
+      detailHost.replaceChildren();
+      const edge = graphEdgeById.get(edgeId);
+      if (!edge) {
+        renderDetail('');
+        return;
+      }
+      const source = graphNodeById.get(edge.from_node_id);
+      const target = graphNodeById.get(edge.to_node_id);
+      const heading = append(detailHost, 'div', 'wol-selected-heading wol-connection-detail');
+      append(heading, 'p', 'card-kicker', 'DOCUMENTED CONNECTION');
+      append(heading, 'h3', '', edgeDisplayLabel(edge));
+      const route = append(heading, 'div', 'wol-connection-route');
+      appendNodeIdentity(route, source || { display_name: 'Source' }, 'div');
+      append(route, 'span', 'wol-connection-arrow', '→');
+      appendNodeIdentity(route, target || { display_name: 'Amplifier' }, 'div');
+      addFactList(heading, [
+        ['Connection', edge.amplification_scope === 'SELF_AMPLIFICATION' ? 'Reposted its own claim' : 'Carried the source claim'],
+        ['Documented claims', formatNumber(edge.amplified_claim_count || 0)],
+        ['Receipts', formatNumber(asArray(edge.public_receipts).length)]
+      ]);
+      appendReceipts(detailHost, edge.public_receipts, 'No public receipt is available for this connection.');
+    };
+
     let selectedNodeId = context.route.params.source && graphNodeById.has(context.route.params.source)
       ? context.route.params.source
       : '';
+    let selectedEdgeId = '';
     let cyGraph = null;
 
-    const focusGraph = nodeId => {
+    const focusGraph = (nodeId, edgeId) => {
       if (!cyGraph) return;
-      cyGraph.elements().removeClass('dimmed focused connected');
+      cyGraph.elements().removeClass('dimmed focused connected focused-link');
+      if (edgeId && graphEdgeById.has(edgeId)) {
+        const edge = cyGraph.getElementById(edgeId);
+        if (!edge || edge.empty()) return;
+        const endpoints = edge.connectedNodes();
+        const selection = edge.union(endpoints);
+        cyGraph.elements().not(selection).addClass('dimmed');
+        edge.addClass('connected focused-link');
+        endpoints.addClass('connected');
+        cyGraph.animate({ fit: { eles: selection, padding: 110 }, duration: 220 });
+        const record = graphEdgeById.get(edgeId);
+        const source = graphNodeById.get(record.from_node_id);
+        const target = graphNodeById.get(record.to_node_id);
+        graphStatus.textContent = record.amplification_scope === 'SELF_AMPLIFICATION'
+          ? `${nodeRoleLabel(source)} · reposted its own documented claim.`
+          : `${nodeRoleLabel(source)} → ${nodeRoleLabel(target)} · ${formatNumber(record.amplified_claim_count || 0)} documented claim${Number(record.amplified_claim_count || 0) === 1 ? '' : 's'} carried.`;
+        return;
+      }
       if (!nodeId || !graphNodeById.has(nodeId)) {
-        cyGraph.fit(cyGraph.elements(), 42);
-        graphStatus.textContent = `Showing the full ${graphNodes.length}-node propagation network.`;
+        cyGraph.fit(cyGraph.elements(), 48);
+        graphStatus.textContent = `Showing the full network: ${graphNodes.length} people/outlets and ${graphEdges.length} documented connections.`;
         return;
       }
       const target = cyGraph.getElementById(nodeId);
@@ -2516,30 +2551,30 @@
       target.neighborhood('node').addClass('connected');
       target.connectedEdges().addClass('connected');
       cyGraph.animate({
-        fit: { eles: neighborhood, padding: 72 },
-        duration: 240
+        fit: { eles: neighborhood, padding: 84 },
+        duration: 220
       });
       const connections = adjacencyFor(nodeId).size;
       graphStatus.textContent =
-        `Focused on ${nodeLabel(graphNodeById.get(nodeId))}; ${connections} direct connection${connections === 1 ? '' : 's'} highlighted.`;
+        `${nodeRoleLabel(graphNodeById.get(nodeId))} · ${connections} direct connection${connections === 1 ? '' : 's'}.`;
     };
 
     const initializeGraph = () => {
       if (!graphNodes.length) {
         graphHost.replaceChildren();
         const empty = append(graphHost, 'aside', 'scope-note wol-empty-state');
-        append(empty, 'strong', '', 'No qualifying source in this evidence slice');
-        append(empty, 'p', '', 'No Bullshitter awardee currently exists in the compiled propagation graph.');
-        graphStatus.textContent = 'Graph has no nodes.';
+        append(empty, 'strong', '', 'No documented network connections yet');
+        append(empty, 'p', '', 'This view has no people or outlets with a documented Web of Lies connection yet.');
+        graphStatus.textContent = 'No network connections are available.';
         return;
       }
       const cytoscape = root && root.cytoscape;
       if (typeof cytoscape !== 'function') {
         graphHost.replaceChildren();
         const failure = append(graphHost, 'aside', 'scope-note wol-empty-state');
-        append(failure, 'strong', '', 'Graph renderer unavailable');
-        append(failure, 'p', '', 'The structured propagation graph is present, but the authorized Cytoscape runtime did not initialize.');
-        graphStatus.textContent = 'Structured graph available; Cytoscape renderer unavailable.';
+        append(failure, 'strong', '', 'Interactive network unavailable');
+        append(failure, 'p', '', 'The network could not be drawn in this browser. The supporting records remain available on this page.');
+        graphStatus.textContent = 'Interactive network unavailable.';
         return;
       }
 
@@ -2559,8 +2594,8 @@
             style: {
               'label': 'data(label)',
               'text-wrap': 'wrap',
-              'text-max-width': 175,
-              'font-size': 11,
+              'text-max-width': 150,
+              'font-size': 12,
               'font-weight': 650,
               'text-valign': 'center',
               'text-halign': 'center',
@@ -2586,9 +2621,11 @@
           {
             selector: 'node[node_type = "MEGAPHONE"]',
             style: {
-              'shape': 'ellipse',
-              'background-color': '#102b3b',
-              'border-color': '#76bfdc'
+              'shape': 'round-rectangle',
+              'background-color': '#10222f',
+              'border-color': '#76bfdc',
+              'width': 172,
+              'height': 54
             }
           },
           {
@@ -2598,25 +2635,30 @@
               'background-fit': 'none',
               'background-width': 28,
               'background-height': 20,
-              'background-position-x': 12,
-              'background-position-y': 12,
+              'background-position-x': '10px',
+              'background-position-y': '8px',
               'background-repeat': 'no-repeat'
             }
           },
           {
             selector: 'edge',
             style: {
-              'width': 1.8,
+              'width': 'mapData(amplified_claim_count, 1, 8, 1.5, 4.5)',
               'line-color': '#55788d',
               'target-arrow-color': '#55788d',
               'target-arrow-shape': 'triangle',
+              'arrow-scale': 1.05,
               'curve-style': 'bezier',
               'label': 'data(edge_label)',
               'font-size': 9,
+              'font-weight': 650,
               'color': '#cbd9e2',
+              'text-rotation': 'autorotate',
+              'text-margin-y': -8,
               'text-background-color': '#071018',
-              'text-background-opacity': 0.85,
-              'text-background-padding': 2
+              'text-background-opacity': 0.9,
+              'text-background-padding': 3,
+              'opacity': 0.82
             }
           },
           {
@@ -2646,26 +2688,42 @@
             style: {
               'line-color': '#ffd27a',
               'target-arrow-color': '#ffd27a',
-              'width': 3.2,
+              'width': 3.6,
               'opacity': 1
+            }
+          },
+          {
+            selector: 'edge.focused-link',
+            style: {
+              'line-color': '#ffd27a',
+              'target-arrow-color': '#ffd27a',
+              'width': 4.5,
+              'z-index': 25
             }
           }
         ],
         layout: { name: 'preset' }
       });
 
-      const roots = cyGraph.nodes('[node_type = "BULLSHITTER"]');
       cyGraph.layout({
-        name: 'breadthfirst',
-        directed: true,
-        roots,
-        spacingFactor: 1.25,
-        padding: 42,
-        animate: false
+        name: 'cose',
+        animate: false,
+        fit: true,
+        padding: 28,
+        randomize: true,
+        componentSpacing: 42,
+        nodeRepulsion: 2800,
+        idealEdgeLength: 92,
+        edgeElasticity: 90,
+        gravity: 1.1,
+        numIter: 1400
       }).run();
 
       cyGraph.on('tap', 'node', event => {
         selectNode(event.target.id());
+      });
+      cyGraph.on('tap', 'edge', event => {
+        selectEdge(event.target.id());
       });
       cyGraph.on('tap', event => {
         if (event.target === cyGraph) selectNode('');
@@ -2688,26 +2746,34 @@
         graphHost.dataset.graphState = 'ready';
         graphHost.dataset.graphNodes = String(graphNodes.length);
         graphHost.dataset.graphEdges = String(graphEdges.length);
-        focusGraph(selectedNodeId);
+        focusGraph(selectedNodeId, selectedEdgeId);
       } catch (error) {
         cyGraph = null;
         graphHost.replaceChildren();
         graphHost.dataset.graphState = 'error';
         const failure = append(graphHost, 'aside', 'scope-note wol-empty-state');
-        append(failure, 'strong', '', 'Graph render failed');
-        append(failure, 'p', '', 'The structured WOL network remains available below, but the Cytoscape presentation failed to initialize.');
-        graphStatus.textContent = 'Structured graph available; Cytoscape initialization failed.';
+        append(failure, 'strong', '', 'Interactive network unavailable');
+        append(failure, 'p', '', 'The network could not be drawn. The supporting records remain available on this page.');
+        graphStatus.textContent = 'Interactive network unavailable.';
         if (root && root.console && typeof root.console.error === 'function') {
-          root.console.error('Web of Lies Cytoscape initialization failed', error);
+          root.console.error('Web of Lies network rendering failed', error);
         }
       }
     };
 
     const selectNode = nodeId => {
+      selectedEdgeId = '';
       selectedNodeId = nodeId && graphNodeById.has(nodeId) ? nodeId : '';
       picker.value = selectedNodeId;
       renderDetail(selectedNodeId);
-      focusGraph(selectedNodeId);
+      focusGraph(selectedNodeId, '');
+    };
+    const selectEdge = edgeId => {
+      selectedNodeId = '';
+      selectedEdgeId = edgeId && graphEdgeById.has(edgeId) ? edgeId : '';
+      picker.value = '';
+      renderEdgeDetail(selectedEdgeId);
+      focusGraph('', selectedEdgeId);
     };
     picker.addEventListener('change', () => selectNode(picker.value));
     reset.addEventListener('click', () => selectNode(''));
@@ -2720,7 +2786,7 @@
       }
       if (attempt >= 4) {
         graphHost.dataset.graphState = 'mount-missed';
-        graphStatus.textContent = 'Structured graph available; graph host did not mount in time.';
+        graphStatus.textContent = 'Interactive network unavailable.';
         return;
       }
       if (root && typeof root.requestAnimationFrame === 'function') {
@@ -2735,7 +2801,7 @@
 
     const hall = data.hall_of_shame || {};
     const hallSection = addSection(frame.article, '🏆 Hall of Shame', 'content-section wol-hall-of-shame');
-    append(hallSection, 'p', 'section-note', 'Hall placement is deterministic from the WOL behavior record. Reach, follower count, nationality, ideology and manual editorial selection do not affect rank.');
+    append(hallSection, 'p', 'section-note', 'Hall placement uses documented behavior in this record. Popularity, nationality and ideology do not affect rank.');
     const hallViews = append(hallSection, 'div', 'wol-hall-views');
     const renderHallView = (title, view, viewClass) => {
       const wrapper = append(hallViews, 'section', `wol-hall-view ${viewClass}`);
@@ -2760,6 +2826,8 @@
             country_region: profile.country_region || graphNode.country_region || '',
             authenticity_class: profile.authenticity_class || graphNode.authenticity_class || 'UNKNOWN',
             node_type: graphNode.node_type || 'SOURCE',
+            node_roles: graphNode.node_roles || [],
+            award_codes: graphNode.award_codes || [],
             bullshitter_source_count: graphNode.bullshitter_source_count || 0
           };
           const item = append(podium, 'li', 'wol-hall-entry');
@@ -2768,7 +2836,7 @@
           append(item, 'span', `wol-hall-rank${rank === 1 ? ' wol-hall-king' : ''}`, rank === 1 ? '👑 #1' : rank === 2 ? '🥈 #2' : rank === 3 ? '🥉 #3' : `#${rank || '?'}`);
           appendNodeIdentity(item, identityNode, 'strong', 'wol-node-identity wol-hall-source');
           append(item, 'span', 'wol-hall-score', `Score ${formatNumber(row.score)}`);
-          append(item, 'p', 'wol-hall-reason', publicNarrative(row.why_this_source_appears_here, 'Ranking basis recorded in the WOL registry.'));
+          append(item, 'p', 'wol-hall-reason', publicNarrative(row.why_this_source_appears_here, 'Documented behavior supporting this placement is recorded.'));
         });
       });
     };
@@ -2783,18 +2851,18 @@
       const button = append(indexGrid, 'button', 'record-card wol-awardee-button');
       button.type = 'button';
       appendNodeIdentity(button, node, 'strong', 'wol-node-identity wol-awardee-identity');
-      append(button, 'small', '', `${formatNumber(node.award_incident_count || 0)} qualifying award incidents`);
+      append(button, 'small', '', `${formatNumber(node.award_incident_count || 0)} documented incident${Number(node.award_incident_count || 0) === 1 ? '' : 's'}`);
       button.addEventListener('click', () => selectNode(node.node_id));
     });
 
-    const lineageSection = addSection(frame.article, 'Claim-family traces', 'content-section wol-lineages');
-    append(lineageSection, 'p', 'section-note', 'The source network is the primary WOL surface. Canonical Lie Ledger claim-family lineage remains available here for proposition-level tracing.');
+    const lineageSection = addSection(frame.article, 'Claim trails', 'content-section wol-lineages');
+    append(lineageSection, 'p', 'section-note', 'Open a claim trail to follow the publications and connections behind that story.');
     const familyControls = append(lineageSection, 'form', 'wol-lineage-controls');
     familyControls.addEventListener('submit', event => event.preventDefault());
-    const familySearchLabel = append(familyControls, 'label', '', 'Search claim families');
+    const familySearchLabel = append(familyControls, 'label', '', 'Search claim trails');
     const familySearch = append(familySearchLabel, 'input');
     familySearch.type = 'search';
-    familySearch.placeholder = 'Claim family, title or status';
+    familySearch.placeholder = 'Claim, story or status';
     const familyCount = append(familyControls, 'p', 'filter-result-count');
     familyCount.setAttribute('aria-live', 'polite');
     const familyHost = append(lineageSection, 'div', 'wol-family-list');
@@ -2804,12 +2872,12 @@
       familyHost.replaceChildren();
       rows.forEach(family => {
         const card = append(familyHost, 'article', 'record-card wol-family-card');
-        append(card, 'p', 'card-kicker', `${plainLabel(family.trace_status, 'Untraced')} · ${family.claim_family_id}`);
-        append(card, 'h3', '', publicNarrative(family.title, family.claim_family_id));
-        const link = append(card, 'a', 'inline-route-link', 'TRACE');
+        append(card, 'p', 'card-kicker', plainLabel(family.trace_status, 'Untraced'));
+        append(card, 'h3', '', publicNarrative(family.title, 'Untitled claim trail'));
+        const link = append(card, 'a', 'inline-route-link', 'Open trace');
         link.href = routeHref('evidence.web_of_lies', { claim_family: family.claim_family_id });
       });
-      familyCount.textContent = `${rows.length} of ${families.length} claim families shown`;
+      familyCount.textContent = `${rows.length} of ${families.length} claim trails shown`;
     };
     familySearch.addEventListener('input', drawFamilies);
     drawFamilies();
@@ -2817,22 +2885,32 @@
     const selectedFamilyId = context.route.params.claim_family;
     if (selectedFamilyId && familyById.has(selectedFamilyId)) {
       const family = familyById.get(selectedFamilyId);
-      const traceSection = addSection(frame.article, `Trace — ${publicNarrative(family.title, selectedFamilyId)}`, 'content-section wol-trace');
+      const traceSection = addSection(frame.article, `Trace — ${publicNarrative(family.title, 'Claim trail')}`, 'content-section wol-trace');
       const selectedEvents = events.filter(event => event.claim_family_id === selectedFamilyId)
         .sort((a, b) => String(a.published_at || a.first_observed_at || '').localeCompare(String(b.published_at || b.first_observed_at || '')));
       const eventIds = new Set(selectedEvents.map(event => event.event_id));
       const selectedRelations = relationships.filter(relation => eventIds.has(relation.from_id) || eventIds.has(relation.to_id));
-      append(traceSection, 'p', 'section-note', `${selectedEvents.length} information event${selectedEvents.length === 1 ? '' : 's'} and ${selectedRelations.length} typed lineage relationship${selectedRelations.length === 1 ? '' : 's'} are currently reconstructed.`);
+      append(traceSection, 'p', 'section-note', `${selectedEvents.length} publication${selectedEvents.length === 1 ? '' : 's'} and ${selectedRelations.length} documented connection${selectedRelations.length === 1 ? '' : 's'} are shown in this trail.`);
       if (!selectedEvents.length) {
         const empty = append(traceSection, 'aside', 'scope-note');
-        append(empty, 'strong', '', 'Trace not yet populated');
-        append(empty, 'p', '', 'The canonical Lie Ledger family exists, but Web of Lies has not yet added recoverable propagation events for this family.');
+        append(empty, 'strong', '', 'No trace yet');
+        append(empty, 'p', '', 'No recoverable propagation trail has been documented for this claim yet.');
       } else {
         const timeline = append(traceSection, 'ol', 'wol-trace-timeline');
         selectedEvents.forEach(event => {
           const item = append(timeline, 'li', 'wol-trace-event');
-          append(item, 'p', 'card-kicker', [event.published_at || event.first_observed_at, plainLabel(event.event_type)].filter(Boolean).join(' · '));
-          append(item, 'strong', '', publicNarrative(profileById.get(event.source_id)?.display_name, event.source_id));
+          append(item, 'p', 'card-kicker', event.published_at || event.first_observed_at || 'Date not recorded');
+          const eventProfile = profileById.get(event.source_id) || {};
+          const eventIdentity = graphNodeById.get(event.source_id) || {
+            node_id: event.source_id,
+            display_name: eventProfile.display_name || 'Source',
+            country_code: eventProfile.country_code || '',
+            country_region: eventProfile.country_region || '',
+            authenticity_class: eventProfile.authenticity_class || 'UNKNOWN',
+            node_roles: [],
+            award_codes: []
+          };
+          appendNodeIdentity(item, eventIdentity, 'strong', 'wol-node-identity wol-trace-source');
           append(item, 'p', '', publicNarrative(event.exact_statement || event.translated_statement, 'Statement text not stored'));
           if (event.plain_english_verdict) append(item, 'p', 'wol-plain-verdict-text', publicNarrative(event.plain_english_verdict));
         });

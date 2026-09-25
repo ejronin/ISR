@@ -26,14 +26,6 @@ const f15ModelChain = readerChains.find(chain => chain.chain_id === 'CH-F15E-CSA
 assert(f15ModelChain, 'canonical F-15E reference chain is missing from reader model');
 const expectedF15Title = f15ModelChain.public_title || f15ModelChain.title || f15ModelChain.reader_title || '';
 const expectedF15Reasons = f15ModelChain.how_we_know || [];
-const expectedF15RelationCounts = new Map();
-for (const edge of f15ModelChain.logic_graph?.edges || []) {
-  const relation = String(edge?.relation || '').trim();
-  if (relation) expectedF15RelationCounts.set(relation, (expectedF15RelationCounts.get(relation) || 0) + 1);
-}
-const expectedF15Relations = [...expectedF15RelationCounts.entries()]
-  .sort((a, b) => a[0].localeCompare(b[0]))
-  .map(([relation, count]) => `${relation.replaceAll('_', ' ').toLowerCase()} — ${count}`);
 const parentFindingLabel = chain => {
   const raw = chain.public_finding || chain.event_level_finding || chain.chain_finding;
   if (!raw) return '';
@@ -204,8 +196,6 @@ async function route(cdp, hash, key) {
       );
       const f15Why = f15Card?.querySelector('.reader-chain-how-we-know');
       if (f15Why) f15Why.open = true;
-      const f15Logic = f15Card?.querySelector('.reader-chain-logic');
-      if (f15Logic) f15Logic.open = true;
       const why = first?.querySelector('.reader-how-we-know');
       const whySummary = why?.querySelector(':scope > summary');
       if (whySummary) {
@@ -225,8 +215,7 @@ async function route(cdp, hash, key) {
         statuses,
         f15Found: Boolean(f15Card),
         f15Reasons: [...(f15Why?.querySelectorAll(':scope > .reader-explanation-list > li') || [])].map(node => node.textContent.trim()),
-        f15Relations: [...(f15Logic?.querySelectorAll('.reader-logic-relations > li') || [])].map(node => node.textContent.trim()),
-        f15LogicNote: f15Logic?.querySelector('.section-note')?.textContent.trim() || '',
+        logicInternals: main.querySelectorAll('.reader-chain-logic, .reader-logic-relations').length,
         why: Boolean(why),
         whyFocusable: !whySummary || document.activeElement === whySummary,
         whyOpen: Boolean(why?.open),
@@ -250,11 +239,8 @@ async function route(cdp, hash, key) {
     assert.equal(ledger.f15Found, true, 'reader lost the canonical F-15E reference chain');
     assert.deepEqual(ledger.f15Reasons, expectedF15Reasons,
       'How Atlas reached this finding must render canonical Claims Forensics reasoning without frontend rewriting');
-    assert.deepEqual(ledger.f15Relations, expectedF15Relations,
-      'public logic-flow relations must derive from canonical Claims Forensics logic-graph edges');
-    assert.match(ledger.f15LogicNote, new RegExp(
-      `${f15ModelChain.logic_graph.claim_node_count} proposition nodes, ${f15ModelChain.logic_graph.source_node_count} source nodes, and ${f15ModelChain.logic_graph.edges.length} typed links`
-    ), 'reader logic-flow summary does not reconcile to canonical graph cardinality');
+    assert.equal(ledger.logicInternals, 0,
+      'internal Claims Forensics logic-graph relations must not be rendered on the public Lie Ledger');
     assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
     assert(ledger.evidence && ledger.evidenceOpen, 'reader evidence drawer is not discoverable/openable');
     assert(ledger.controls.length >= 2 && ledger.controls.every(height => height >= 44), 'reader claim controls have a touch target below 44px');
@@ -264,7 +250,7 @@ async function route(cdp, hash, key) {
     assert.equal(ledger.scoreAttrs, 0, 'legacy deception score remains in active DOM state');
     assert.equal(ledger.oldControls, 0, 'legacy forensic-workstation controls remain active');
     assert.equal(ledger.clocks, 0, 'evidence-clock machinery remains on the ordinary reader claim page');
-    assert.doesNotMatch(ledger.text, /Combined ROOK assessment|ROOK verdict|PR\/CI|claim_instance_id|proposition_id|chain_id|publication blocker/i, 'internal authority/schema language leaked into reader claims');
+    assert.doesNotMatch(ledger.text, /Combined ROOK assessment|ROOK verdict|PR\/CI|claim_instance_id|proposition_id|chain_id|publication blocker|supports factual baseline|documents correction|typed links|proposition nodes/i, 'internal authority/schema language leaked into reader claims');
     assert.match(ledger.text, /Narrative chains and findings/i);
     assert.match(ledger.text, /How Atlas reached this finding/i);
 

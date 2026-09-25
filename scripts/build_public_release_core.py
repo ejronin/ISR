@@ -54,8 +54,8 @@ FLAG_ASSET_SPECS = (
     ("gb", "United Kingdom"), ("il", "Israel"), ("in", "India"), ("iq", "Iraq"), ("ir", "Iran"),
     ("jo", "Jordan"), ("jp", "Japan"), ("kw", "Kuwait"), ("lb", "Lebanon"), ("ng", "Nigeria"),
     ("om", "Oman"), ("pk", "Pakistan"), ("qa", "Qatar"), ("ru", "Russia"), ("sa", "Saudi Arabia"),
-    ("sd", "Sudan"), ("so", "Somalia"), ("sy", "Syria"), ("tr", "Türkiye"), ("us", "United States"),
-    ("ye", "Yemen"),
+    ("sd", "Sudan"), ("sg", "Singapore"), ("so", "Somalia"), ("sy", "Syria"), ("tr", "Türkiye"),
+    ("us", "United States"), ("ye", "Yemen"),
 )
 UNSAFE_SVG_EXPRESSION = re.compile(
     r"(?:url\s*\(|@\s*import\b|javascript\s*:|data\s*:|expression\s*\()",
