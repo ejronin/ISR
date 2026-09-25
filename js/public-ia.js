@@ -2594,8 +2594,8 @@
             style: {
               'label': 'data(label)',
               'text-wrap': 'wrap',
-              'text-max-width': 175,
-              'font-size': 11,
+              'text-max-width': 150,
+              'font-size': 12,
               'font-weight': 650,
               'text-valign': 'center',
               'text-halign': 'center',
@@ -2635,8 +2635,8 @@
               'background-fit': 'none',
               'background-width': 28,
               'background-height': 20,
-              'background-position-x': 10,
-              'background-position-y': 9,
+              'background-position-x': '10px',
+              'background-position-y': '8px',
               'background-repeat': 'no-repeat'
             }
           },
@@ -2709,14 +2709,14 @@
         name: 'cose',
         animate: false,
         fit: true,
-        padding: 56,
+        padding: 28,
         randomize: true,
-        componentSpacing: 110,
-        nodeRepulsion: 5200,
-        idealEdgeLength: 150,
-        edgeElasticity: 120,
-        gravity: 0.8,
-        numIter: 1200
+        componentSpacing: 42,
+        nodeRepulsion: 2800,
+        idealEdgeLength: 92,
+        edgeElasticity: 90,
+        gravity: 1.1,
+        numIter: 1400
       }).run();
 
       cyGraph.on('tap', 'node', event => {
