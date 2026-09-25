@@ -84,7 +84,9 @@ assert.match(shellSource, /grid-template-columns:\s*minmax\(0,\s*2\.2fr\)\s*minm
 assert.match(shellSource, /\.wol-hall-podium\s*\{/);
 assert.match(shellSource, /\.wol-node-flag\s*\{/);
 assert.match(shellSource, /\.wol-node-markers\s*\{/);
-assert.match(iaSource, /name:\s*'cose'/);\nassert.match(iaSource, /componentSpacing:\s*42/);\nassert.match(iaSource, /idealEdgeLength:\s*92/);
+assert.match(iaSource, /name:\s*'cose'/);
+assert.match(iaSource, /componentSpacing:\s*42/);
+assert.match(iaSource, /idealEdgeLength:\s*92/);
 assert.match(iaSource, /cyGraph\.on\('tap', 'edge'/);
 assert.match(iaSource, /renderEdgeDetail/);
 assert.match(iaSource, /mapData\(amplified_claim_count/);
