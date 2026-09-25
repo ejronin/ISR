@@ -1200,6 +1200,7 @@ def derive_award_propagation_graph(
         nodes[source_id] = {
             "node_id": source_id,
             "node_type": "BULLSHITTER",
+            "node_roles": ["BULLSHITTER"],
             "display_name": str(profile.get("display_name") or source_id),
             "country_code": profile_country_code(profile),
             "country_region": profile.get("country_region"),
@@ -1231,6 +1232,7 @@ def derive_award_propagation_graph(
             nodes[source_id] = {
                 "node_id": source_id,
                 "node_type": "MEGAPHONE",
+                "node_roles": ["AMPLIFIER"],
                 "display_name": str(profile.get("display_name") or source_id),
                 "country_code": profile_country_code(profile),
                 "country_region": profile.get("country_region"),
@@ -1252,6 +1254,7 @@ def derive_award_propagation_graph(
         incoming = {
             "node_id": node_id,
             "node_type": "MEGAPHONE",
+            "node_roles": ["AMPLIFIER"],
             "amplifier_id": amplifier_id,
             "display_name": display_name or amplifier_id,
             "handle": handle,
@@ -1290,8 +1293,11 @@ def derive_award_propagation_graph(
         evidence_id: str,
         public_receipts: list[dict[str, Any]],
     ) -> None:
-        if source_id == amplifier_node_id:
-            return
+        amplification_scope = (
+            "SELF_AMPLIFICATION"
+            if source_id == amplifier_node_id
+            else "EXTERNAL_AMPLIFICATION"
+        )
         amplifier_awardees[amplifier_node_id].add(source_id)
         amplifier_observations[amplifier_node_id].add(evidence_id)
         key = (source_id, amplifier_node_id)
@@ -1302,6 +1308,7 @@ def derive_award_propagation_graph(
                 "from_node_id": source_id,
                 "to_node_id": amplifier_node_id,
                 "relationship_type": "AMPLIFIES_BULLSHIT",
+                "amplification_scope": amplification_scope,
                 "observation_ids": [],
                 "bullshitter_event_ids": [],
                 "public_receipts": [],
@@ -1329,7 +1336,7 @@ def derive_award_propagation_graph(
         ):
             continue
         downstream_source_id = str(downstream.get("source_id") or "")
-        if not downstream_source_id or downstream_source_id == source_id:
+        if not downstream_source_id:
             continue
         downstream_roles = set(downstream.get("lineage_roles") or [])
         if not downstream_roles.intersection({"AMPLIFIES", "REPEATS", "SYNDICATES"}):
@@ -1398,7 +1405,16 @@ def derive_award_propagation_graph(
 
     for amplifier_node_id in sorted(amplifier_awardees):
         meta = nodes[amplifier_node_id]
-        meta["bullshitter_source_count"] = len(amplifier_awardees[amplifier_node_id])
+        roles = set(meta.get("node_roles") or [])
+        roles.add("AMPLIFIER")
+        if "BULLSHITTER" in set(meta.get("award_codes") or []):
+            roles.add("BULLSHITTER")
+        meta["node_roles"] = sorted(roles)
+        upstream_sources = set(amplifier_awardees[amplifier_node_id])
+        meta["bullshitter_source_count"] = len(upstream_sources)
+        meta["external_upstream_source_count"] = len(
+            upstream_sources - {amplifier_node_id}
+        )
         meta["amplification_observation_count"] = len(
             amplifier_observations[amplifier_node_id]
         )
@@ -1426,8 +1442,28 @@ def derive_award_propagation_graph(
             "bullshitter_nodes": len(awardee_ids),
             "megaphone_nodes": len(amplifier_awardees),
             "amplification_edges": len(edges),
+            "self_amplification_edges": sum(
+                1 for row in edges
+                if row.get("amplification_scope") == "SELF_AMPLIFICATION"
+            ),
+            "external_amplification_edges": sum(
+                1 for row in edges
+                if row.get("amplification_scope") == "EXTERNAL_AMPLIFICATION"
+            ),
+            "network_pattern_nodes": sum(
+                1
+                for node_id in amplifier_awardees
+                if int(nodes[node_id].get("external_upstream_source_count") or 0) >= 5
+            ),
+            "high_density_hub_nodes": sum(
+                1
+                for node_id in amplifier_awardees
+                if int(nodes[node_id].get("external_upstream_source_count") or 0) >= 10
+            ),
             "cross_bullshitter_megaphones": sum(
-                1 for values in amplifier_awardees.values() if len(values) > 1
+                1
+                for node_id, values in amplifier_awardees.items()
+                if len(values - {node_id}) > 1
             ),
             "confirmed_bot_megaphones": sum(
                 1
