@@ -2282,7 +2282,7 @@
     const intro = addSection(frame.article, 'Web of Lies network', 'content-section wol-method');
     append(intro, 'p', 'lead-copy', 'This network shows who published a documented false or materially misleading claim and who carried it outward. Follow the arrows, select a person or outlet, and open the receipts behind each connection.');
 
-    const graphSection = addSection(frame.article, 'Explore the propagation graph', 'content-section wol-network');
+    const graphSection = addSection(frame.article, 'Explore the connection web', 'content-section wol-network');
     const summary = graph.summary || {};
     append(graphSection, 'p', 'section-note',
       `${formatNumber(summary.bullshitter_nodes || 0)} Bullshitter source${Number(summary.bullshitter_nodes || 0) === 1 ? '' : 's'} · ` +
@@ -2319,7 +2319,7 @@
     const graphColumn = append(workspace, 'div', 'wol-graph-column');
     const graphHost = append(graphColumn, 'div', 'wol-cytoscape-host');
     graphHost.setAttribute('role', 'group');
-    graphHost.setAttribute('aria-label', 'Interactive Web of Lies propagation graph');
+    graphHost.setAttribute('aria-label', 'Interactive Web of Lies connection network');
     const graphStatus = append(graphColumn, 'p', 'section-note wol-graph-status');
     graphStatus.setAttribute('aria-live', 'polite');
 
@@ -2377,7 +2377,7 @@
       }
       const node = graphNodeById.get(nodeId);
       const heading = append(detailHost, 'div', 'wol-selected-heading');
-      append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'MEGAPHONE');
+      append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'AMPLIFIER');
       appendNodeIdentity(heading, node, 'h3', 'wol-node-identity wol-selected-node-identity');
       addFactList(heading, [
         ['Country', publicNarrative(node.country_region, node.country_code || 'Not established')],
@@ -2442,8 +2442,8 @@
 
         const outgoing = graphEdges.filter(edge => edge.from_node_id === nodeId);
         const ampBlock = append(detailHost, 'div', 'wol-selected-megaphones');
-        append(ampBlock, 'h4', '', `Observed megaphones (${outgoing.length})`);
-        if (!outgoing.length) append(ampBlock, 'p', 'section-note', 'No downstream megaphone receipts have been added to this awardee yet.');
+        append(ampBlock, 'h4', '', `Amplifiers (${outgoing.length})`);
+        if (!outgoing.length) append(ampBlock, 'p', 'section-note', 'No downstream amplifier receipt is documented for this source yet.');
         outgoing.forEach(edge => {
           const target = graphNodeById.get(edge.to_node_id);
           const row = append(ampBlock, 'article', 'record-card wol-megaphone-card');
@@ -2456,8 +2456,8 @@
       const incoming = graphEdges.filter(edge => edge.to_node_id === nodeId);
       if (incoming.length || node.node_type === 'MEGAPHONE') {
         const repeated = append(detailHost, 'div', 'wol-selected-upstream');
-        append(repeated, 'h4', '', `Bullshitter sources repeated (${incoming.length})`);
-        if (!incoming.length) append(repeated, 'p', 'section-note', 'No upstream Bullshitter edge is recorded for this megaphone.');
+        append(repeated, 'h4', '', `Upstream Bullshitter sources (${incoming.length})`);
+        if (!incoming.length) append(repeated, 'p', 'section-note', 'No upstream Bullshitter connection is documented for this amplifier.');
         incoming.forEach(edge => {
           const source = graphNodeById.get(edge.from_node_id);
           const block = append(repeated, 'article', 'record-card wol-amplified-source');
@@ -2869,7 +2869,7 @@
       append(traceSection, 'p', 'section-note', `${selectedEvents.length} publication${selectedEvents.length === 1 ? '' : 's'} and ${selectedRelations.length} documented connection${selectedRelations.length === 1 ? '' : 's'} are shown in this trail.`);
       if (!selectedEvents.length) {
         const empty = append(traceSection, 'aside', 'scope-note');
-        append(empty, 'strong', '', 'Trace not yet populated');
+        append(empty, 'strong', '', 'No trace yet');
         append(empty, 'p', '', 'No recoverable propagation trail has been documented for this claim yet.');
       } else {
         const timeline = append(traceSection, 'ol', 'wol-trace-timeline');
