@@ -130,7 +130,7 @@ tasnim_rows = [
     for row in (DOSSIER.get("amplification_observations") or [])
     if row.get("bullshitter_source_id") == "WOL-SRC-TASNIM"
 ]
-assert len(tasnim_rows) >= 4
+assert len(tasnim_rows) >= 5
 tasnim_by_platform: dict[str, set[str]] = {}
 for row in tasnim_rows:
     platform = str(row.get("amplifier_platform") or "")
@@ -142,6 +142,7 @@ assert {"TASNIM-X-EN"} <= tasnim_by_platform["X"]
 assert {"SUBSTACK-ROBIN-WESTENRA"} <= tasnim_by_platform["SUBSTACK"]
 assert {"WEB-ETIMES247"} <= tasnim_by_platform["WEBSITE"]
 assert {"BLOG-WIERNI-POLSCE-SUWERENNEJ"} <= tasnim_by_platform["BLOG"]
+assert {"FORUM-BURBUJA-UCHPA"} <= tasnim_by_platform["FORUM"]
 
 # Cross-web topology: the same downstream identity must be reusable across
 # Bullshitter publisher webs rather than duplicated as unrelated leaves.
