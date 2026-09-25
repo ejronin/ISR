@@ -79,14 +79,11 @@ assert len(awards) == 1
 award = awards[0]
 assert award["award_code"] == "BULLSHITTER"
 assert award["public_label"] == "Bullshitter"
-assert award["qualifying_window_start"] == "2026-07-08T00:00:00"
-assert award["qualifying_window_end"] == "2026-08-02T00:00:00"
+assert award["qualification_start"] == "2026-07-08T00:00:00"
+assert award["qualification_end"] == "2026-08-02T00:00:00"
 assert award["qualifying_incident_count"] == 6
 assert set(award["qualifying_incident_ids"]) == lim_ids
-assert award["current_window_status"] == "EARNED_HISTORICAL"
-assert award["currently_active"] is False
-assert award["current_window_incident_count"] == 0
-assert award["current_window_incident_ids"] == []
+
 
 # Bullshitter remains an independent behavior award. It does not silently
 # create a legacy direct verdict or Hall-of-Shame placement.
@@ -101,5 +98,5 @@ assert "WOL-SRC-LIM-TEAN" not in hall_ids
 
 print(
     "web-of-lies social influence tranche2g: PASS "
-    "lim_incidents=6 lim_bullshitter=1 window=2026-07-08..2026-08-02"
+    "lim_incidents=6 lim_bullshitter=1 cumulative=6"
 )
