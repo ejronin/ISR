@@ -30,7 +30,40 @@
       "classification_basis_event_ids": [
         "WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405"
       ],
-      "revenue_basis_event_ids": []
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-TASNIM",
+      "identity_confidence": "CONFIRMED",
+      "aliases": [
+        "Tasnim",
+        "Tasnim News"
+      ],
+      "canonical_collection_source_id": "CSU-IR-TASNIM",
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-TASNIM-WEB",
+          "platform": "WEBSITE",
+          "handle": null,
+          "url": "https://www.tasnimnews.ir/en",
+          "display_name": "Tasnim News Agency",
+          "account_state": "ACTIVE_PUBLIC"
+        },
+        {
+          "account_id": "WOL-ACCT-TASNIM-X-EN",
+          "platform": "X",
+          "handle": "@Tasnimnews_EN",
+          "url": "https://x.com/Tasnimnews_EN",
+          "display_name": "Tasnim News Agency",
+          "account_state": "ACTIVE_PUBLIC"
+        },
+        {
+          "account_id": "WOL-ACCT-TASNIM-TELEGRAM",
+          "platform": "TELEGRAM",
+          "handle": "@tasnimnews",
+          "url": "https://t.me/tasnimnews",
+          "display_name": "خبرگزاری تسنیم",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ]
     }
   ],
   "information_events": [
