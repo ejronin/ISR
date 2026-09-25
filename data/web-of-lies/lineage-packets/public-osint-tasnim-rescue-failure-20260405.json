@@ -226,23 +226,6 @@
       "plain_english_verdict": "Tasnim issued another distinct publication adopting the already-contradicted rescue-aircraft destruction narrative."
     }
   ],
-  "relationships": [
-    {
-      "relationship_id": "WOL-REL-PUB-TASNIM-RESCUE-FAILURE-TO-PRESSTV",
-      "from_id": "WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405",
-      "to_id": "WOL-EVT-F15E-008",
-      "relationship_type": "PARALLEL_RELAY_OF_SAME_OFFICIAL_CLAIM",
-      "evidence_source_ids": [],
-      "public_receipts": [
-        {
-          "receipt_id": "WOL-RCPT-REL-TASNIM-RESCUE-FAILURE-20260405",
-          "surface": "WEBSITE",
-          "url": "https://tasnimnews.ir/en/news/2026/04/05/3557293/iran-thwarts-us-rescue-mission-downs-multiple-aircraft-near-isfahan",
-          "provenance_status": "ORIGINAL_URL",
-          "deletion_status": "AVAILABLE"
-        }
-      ]
-    }
-  ],
+  "relationships": [],
   "promotion_flags": []
 }
