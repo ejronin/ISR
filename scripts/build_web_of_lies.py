@@ -857,7 +857,7 @@ def deduplicated_qualifying_bullshit_events(
     *,
     as_of: Any = None,
 ) -> list[tuple[datetime, dict[str, Any]]]:
-    """Return dated, deduplicated qualifying incidents in chronological order."""
+    """Return dated, deduplicated qualifying incidents in chronological order.\n\n    Dates establish deterministic earning chronology only; no recency window applies.\n    """
     cutoff = parse_time(as_of)
     distinct: dict[str, tuple[datetime, dict[str, Any]]] = {}
     for event in events:
@@ -866,7 +866,7 @@ def deduplicated_qualifying_bullshit_events(
         incident_id = bullshit_incident_id(event)
         moment = bullshit_incident_moment(event)
         if not incident_id or moment is None:
-            # A time-bounded award cannot be earned from an undated incident.
+            # Award earning chronology requires a dated incident; no recency window applies.
             continue
         if cutoff is not None and moment > cutoff:
             continue
@@ -890,12 +890,11 @@ def bullshit_award_for_events(
     *,
     as_of: Any,
 ) -> dict[str, Any] | None:
-    """Derive a persistent award from the earliest qualifying 30-day cluster."""
+    """Derive the persistent Bullshitter award from cumulative distinct incidents."""
     cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
     if not cfg:
         return None
     minimum = int(cfg.get("minimum_qualifying_incidents") or 6)
-    window_days = int(cfg.get("window_days") or 30)
     documented_rows = deduplicated_documented_bullshit_events(
         events,
         governance,
@@ -908,23 +907,14 @@ def bullshit_award_for_events(
     if len(rows) < minimum:
         return None
 
-    left = 0
-    earned_window: list[tuple[datetime, dict[str, Any]]] | None = None
-    for right in range(len(rows)):
-        while left <= right and rows[right][0] - rows[left][0] > timedelta(days=window_days):
-            left += 1
-        if right - left + 1 >= minimum:
-            earned_window = rows[left:right + 1]
-            break
-
-    if earned_window is None:
-        return None
-
-    earned_start = earned_window[0][0]
-    earned_end = earned_window[-1][0]
+    # No recency/timebox rule applies. The award is earned when the cumulative
+    # deduplicated qualifying record first reaches the configured threshold.
+    earning_rows = rows[:minimum]
+    earned_start = earning_rows[0][0]
+    earned_end = earning_rows[-1][0]
     qualifying_incident_ids = sorted(
         bullshit_incident_id(event)
-        for _moment, event in earned_window
+        for _moment, event in earning_rows
         if bullshit_incident_id(event)
     )
     documented_incident_ids = sorted(
@@ -933,54 +923,27 @@ def bullshit_award_for_events(
         if bullshit_incident_id(event)
     )
 
-    cutoff = parse_time(as_of)
-    current_rows: list[tuple[datetime, dict[str, Any]]] = []
-    if cutoff is not None:
-        current_start = cutoff - timedelta(days=window_days)
-        current_rows = [
-            row for row in rows
-            if current_start <= row[0] <= cutoff
-        ]
-    currently_active = len(current_rows) >= minimum
-    current_incident_ids = sorted(
-        bullshit_incident_id(event)
-        for _moment, event in current_rows
-        if bullshit_incident_id(event)
-    )
-
     label = str(cfg.get("public_label") or "Bullshitter")
-    if currently_active:
-        public_verdict = (
-            f"{label} — award earned {earned_start.isoformat()} through "
-            f"{earned_end.isoformat()}; {len(current_rows)} qualifying bullshit "
-            f"incidents in the current {window_days}-day window."
-        )
-        current_status = "ACTIVE_CURRENT_WINDOW"
-    else:
-        public_verdict = (
-            f"{label} — award earned {earned_start.isoformat()} through "
-            f"{earned_end.isoformat()} with {len(earned_window)} qualifying bullshit "
-            f"incidents; {len(current_rows)} in the current {window_days}-day window."
-        )
-        current_status = "EARNED_HISTORICAL"
+    public_verdict = (
+        f"{label} — award earned after {len(earning_rows)} cumulative qualifying "
+        f"bullshit incidents documented from {earned_start.isoformat()} through "
+        f"{earned_end.isoformat()}; {len(documented_incident_ids)} documented "
+        f"qualifying incidents total."
+    )
 
     return {
         "award_code": "BULLSHITTER",
         "public_label": label,
-        "qualification_route": "STANDARD_INCIDENT_WINDOW",
-        "window_days": window_days,
+        "qualification_route": "STANDARD_INCIDENT_COUNT",
+        "qualification_scope": "CUMULATIVE",
         "minimum_qualifying_incidents": minimum,
         "award_earned_at": earned_end.isoformat(),
-        "qualifying_window_start": earned_start.isoformat(),
-        "qualifying_window_end": earned_end.isoformat(),
-        "qualifying_incident_count": len(earned_window),
+        "qualification_start": earned_start.isoformat(),
+        "qualification_end": earned_end.isoformat(),
+        "qualifying_incident_count": len(earning_rows),
         "qualifying_incident_ids": qualifying_incident_ids,
         "documented_incident_count": len(documented_incident_ids),
         "documented_incident_ids": documented_incident_ids,
-        "current_window_status": current_status,
-        "currently_active": currently_active,
-        "current_window_incident_count": len(current_rows),
-        "current_window_incident_ids": current_incident_ids,
         "as_of": as_of,
         "public_verdict": public_verdict,
     }
@@ -994,12 +957,12 @@ def network_assisted_bullshit_award(
     *,
     as_of: Any,
 ) -> dict[str, Any] | None:
-    """Derive a Bullshitter award from systematic receipt-backed amplification.
+    """Derive a cumulative Bullshitter award from systematic amplification.
 
     This route reuses already-qualified upstream bullshit incidents. The
     downstream publication act is the target source's own conduct; stable
     message_identity values prevent cross-platform mirrors from inflating the
-    threshold.
+    threshold. No recency/timebox rule applies.
     """
     cfg = ((governance.get("source_awards") or {}).get("BULLSHITTER") or {})
     network_cfg = cfg.get("network_assisted_qualification") or {}
@@ -1012,7 +975,6 @@ def network_assisted_bullshit_award(
     minimum_incidents = int(
         network_cfg.get("minimum_qualifying_amplification_incidents") or 6
     )
-    window_days = int(network_cfg.get("window_days") or cfg.get("window_days") or 30)
     require_message_identity = bool(
         network_cfg.get("message_identity_required_for_award_counting", True)
     )
@@ -1059,86 +1021,56 @@ def network_assisted_bullshit_award(
     if len(rows) < minimum_incidents:
         return None
 
-    left = 0
-    earned_window: list[tuple[datetime, dict[str, Any], str]] | None = None
+    earning_rows: list[tuple[datetime, dict[str, Any], str]] | None = None
     for right in range(len(rows)):
-        while (
-            left <= right
-            and rows[right][0] - rows[left][0] > timedelta(days=window_days)
+        candidate = rows[:right + 1]
+        upstream_ids = {row[2] for row in candidate}
+        if (
+            len(candidate) >= minimum_incidents
+            and len(upstream_ids) >= minimum_sources
         ):
-            left += 1
-        window = rows[left:right + 1]
-        upstream_ids = {row[2] for row in window}
-        if len(window) >= minimum_incidents and len(upstream_ids) >= minimum_sources:
-            earned_window = window
+            earning_rows = candidate
             break
 
-    if earned_window is None:
+    if earning_rows is None:
         return None
 
-    earned_start = earned_window[0][0]
-    earned_end = earned_window[-1][0]
+    earned_start = earning_rows[0][0]
+    earned_end = earning_rows[-1][0]
     qualifying_incident_ids = sorted(
         str(row[1].get("observation_id") or "")
-        for row in earned_window
+        for row in earning_rows
         if str(row[1].get("observation_id") or "")
     )
-    qualifying_upstream_source_ids = sorted({row[2] for row in earned_window})
+    qualifying_upstream_source_ids = sorted({row[2] for row in earning_rows})
     documented_incident_ids = sorted(
         str(row[1].get("observation_id") or "")
         for row in rows
         if str(row[1].get("observation_id") or "")
     )
 
-    current_rows: list[tuple[datetime, dict[str, Any], str]] = []
-    if cutoff is not None:
-        current_start = cutoff - timedelta(days=window_days)
-        current_rows = [
-            row for row in rows
-            if current_start <= row[0] <= cutoff
-        ]
-    current_upstream_ids = {row[2] for row in current_rows}
-    currently_active = (
-        len(current_rows) >= minimum_incidents
-        and len(current_upstream_ids) >= minimum_sources
-    )
-    current_incident_ids = sorted(
-        str(row[1].get("observation_id") or "")
-        for row in current_rows
-        if str(row[1].get("observation_id") or "")
-    )
-
     label = str(cfg.get("public_label") or "Bullshitter")
-    current_status = (
-        "ACTIVE_CURRENT_WINDOW" if currently_active else "EARNED_HISTORICAL"
-    )
     public_verdict = (
-        f"{label} — network-assisted award earned {earned_start.isoformat()} "
-        f"through {earned_end.isoformat()} from {len(earned_window)} qualifying "
-        f"amplification publications across {len(qualifying_upstream_source_ids)} "
-        f"distinct upstream WOL sources."
+        f"{label} — network-assisted award earned after {len(earning_rows)} "
+        f"cumulative qualifying amplification publications across "
+        f"{len(qualifying_upstream_source_ids)} distinct upstream WOL sources."
     )
     return {
         "award_code": "BULLSHITTER",
         "public_label": label,
         "qualification_route": "NETWORK_ASSISTED_AMPLIFICATION",
-        "window_days": window_days,
+        "qualification_scope": "CUMULATIVE",
         "minimum_qualifying_incidents": minimum_incidents,
         "minimum_distinct_upstream_wol_nodes": minimum_sources,
         "award_earned_at": earned_end.isoformat(),
-        "qualifying_window_start": earned_start.isoformat(),
-        "qualifying_window_end": earned_end.isoformat(),
-        "qualifying_incident_count": len(earned_window),
+        "qualification_start": earned_start.isoformat(),
+        "qualification_end": earned_end.isoformat(),
+        "qualifying_incident_count": len(earning_rows),
         "qualifying_incident_ids": qualifying_incident_ids,
         "qualifying_upstream_source_count": len(qualifying_upstream_source_ids),
         "qualifying_upstream_source_ids": qualifying_upstream_source_ids,
         "documented_incident_count": len(documented_incident_ids),
         "documented_incident_ids": documented_incident_ids,
-        "current_window_status": current_status,
-        "currently_active": currently_active,
-        "current_window_incident_count": len(current_rows),
-        "current_window_incident_ids": current_incident_ids,
-        "current_window_upstream_source_count": len(current_upstream_ids),
         "as_of": as_of,
         "public_verdict": public_verdict,
     }
