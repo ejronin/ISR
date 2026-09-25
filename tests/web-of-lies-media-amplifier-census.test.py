@@ -130,7 +130,7 @@ tasnim_rows = [
     for row in (DOSSIER.get("amplification_observations") or [])
     if row.get("bullshitter_source_id") == "WOL-SRC-TASNIM"
 ]
-assert len(tasnim_rows) >= 5
+assert len(tasnim_rows) >= 6
 tasnim_by_platform: dict[str, set[str]] = {}
 for row in tasnim_rows:
     platform = str(row.get("amplifier_platform") or "")
@@ -148,7 +148,11 @@ assert {"FORUM-BURBUJA-UCHPA"} <= tasnim_by_platform["FORUM"]
 # Bullshitter publisher webs rather than duplicated as unrelated leaves.
 press_amplifiers = {row["amplifier_id"] for row in press_rows}
 tasnim_amplifiers = {row["amplifier_id"] for row in tasnim_rows}
-assert "SUBSTACK-ROBIN-WESTENRA" in press_amplifiers & tasnim_amplifiers
+shared_press_tasnim = press_amplifiers & tasnim_amplifiers
+assert {
+    "SUBSTACK-ROBIN-WESTENRA",
+    "WEB-LANTIDIPLOMATICO",
+} <= shared_press_tasnim
 
 # Publisher-owned dissemination is intentionally retained as amplification.
 self_rows = [
@@ -176,6 +180,6 @@ print(
     f"website_unique={len(by_platform.get('WEBSITE', set()))} "
     f"forum_unique={len(by_platform.get('FORUM', set()))} "
     f"tasnim_observations={len(tasnim_rows)} "
-    f"shared_press_tasnim={len(press_amplifiers & tasnim_amplifiers)} "
+    f"shared_press_tasnim={len(shared_press_tasnim)} "
     "minimum_census=1 self_amplification=retained"
 )
