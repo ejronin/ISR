@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-24T21:38:00-04:00",
+  "as_of": "2026-09-25T11:00:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -8212,6 +8212,121 @@
         }
       ],
       "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-TG-TURKEY-DENIAL-20260313",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
+      "amplifier_id": "PRESS-TV-TELEGRAM",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@presstv",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-TURKEY-DENIAL-20260313",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-TG-TURKEY-DENIAL-20260313",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/presstv?before=179818",
+          "published_at": "2026-03-13",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV's official Telegram channel published 'Iran dismisses reports of missile launch towards Turkey' and repeated the embassy denial."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-ALMASIRAH-WEB-ALUDEID-20260305",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-ALUDEID_BDA-0901-C",
+      "amplifier_id": "WEB-ALMASIRAH-EN",
+      "amplifier_display_name": "Almasirah English",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-ALUDEID-RADAR-DESTROYED-20260304",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-ALMASIRAH-WEB-ALUDEID",
+          "surface": "WEBSITE",
+          "url": "https://english.masirahtv.net/post/54260/IRGC-Says-Dismantled-US-Radar-in-Qatar%2C-Attacked-Destroyer-in-Indian-Ocean",
+          "published_at": "2026-03-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Almasirah republished the Press TV Al Udeid radar/destructor story and explicitly credited Press TV."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-GLOBALSECURITY-WEB-ALUDEID-20260304",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-ALUDEID_BDA-0901-C",
+      "amplifier_id": "WEB-GLOBALSECURITY-ORG",
+      "amplifier_display_name": "GlobalSecurity.org",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-ALUDEID-RADAR-DESTROYED-20260304",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-GLOBALSECURITY-WEB-ALUDEID",
+          "surface": "WEBSITE",
+          "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/03/iran-260304-presstv07.htm",
+          "published_at": "2026-03-04",
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "GlobalSecurity.org republished the Press TV article under its Iran WMD news archive without corrective context."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-GLOBALSECURITY-WEB-TURKEY-DENIAL-20260313",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
+      "amplifier_id": "WEB-GLOBALSECURITY-ORG",
+      "amplifier_display_name": "GlobalSecurity.org",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-TURKEY-DENIAL-20260313",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-GLOBALSECURITY-WEB-TURKEY-DENIAL",
+          "surface": "WEBSITE",
+          "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/03/iran-260313-presstv06.htm",
+          "published_at": "2026-03-13",
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "GlobalSecurity.org republished Press TV's March 13 Turkey-denial article without corrective context."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-TRADE2WIN-F35-MYTH-20260419",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0303-C",
+      "amplifier_id": "FORUM-TRADE2WIN-ILILILILI",
+      "amplifier_display_name": "IlIlIlIlI",
+      "amplifier_handle": "IlIlIlIlI",
+      "amplifier_platform": "FORUM",
+      "message_identity": "PRESSTV-F35-MYTH-20260419",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-TRADE2WIN-F35-MYTH",
+          "surface": "FORUM",
+          "url": "https://www.trade2win.com/threads/iran-war-and-the-impact-on-oil.243817/page-8",
+          "published_at": "2026-04-19",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Trade2Win user IlIlIlIlI embedded and circulated the Press TV 'Myth of US stealth fighters over' article in the Iran-war discussion."
+        }
+      ],
+      "observed_at": "2026-09-25"
     }
   ]
 }
