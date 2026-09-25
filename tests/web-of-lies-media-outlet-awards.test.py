@@ -39,7 +39,7 @@ assert award["award_code"] == "BULLSHITTER"
 assert award["qualification_route"] == "STANDARD_INCIDENT_COUNT"
 assert award["qualification_scope"] == "CUMULATIVE"
 assert award["qualifying_incident_count"] == 6
-assert award["documented_incident_count"] == 6
+assert award["documented_incident_count"] == 8
 
 expected = {
     "WOL-EVT-F15E-005",
@@ -50,7 +50,27 @@ expected = {
     "WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405",
 }
 assert set(award["qualifying_incident_ids"]) == expected
-assert set(award["documented_incident_ids"]) == expected
+assert expected <= set(award["documented_incident_ids"])
+assert {
+    "WOL-EVT-PUB-TASNIM-C130-DOWNED-20260405",
+    "WOL-EVT-PUB-TASNIM-IMAGES-DOWNED-AIRCRAFT-20260405",
+} <= set(award["documented_incident_ids"])
+
+publisher_sample = {
+    "WOL-EVT-TURKEY_MISSILE_DENIAL-0202-C",
+    "WOL-EVT-TURKEY_MISSILE_DENIAL-0205-C",
+    "WOL-EVT-F15E-005",
+    "WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405",
+    "WOL-EVT-PUB-TASNIM-C130-DOWNED-20260405",
+    "WOL-EVT-PUB-TASNIM-IMAGES-DOWNED-AIRCRAFT-20260405",
+}
+sample_dates = sorted(
+    wol.bullshit_incident_moment(events[event_id])
+    for event_id in publisher_sample
+)
+assert all(sample_dates)
+assert (sample_dates[-1] - sample_dates[0]).days <= 30
+assert len(publisher_sample) == publisher_rule["qualifying_incident_threshold"]
 
 sixth = events["WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405"]
 assert sixth["source_id"] == "WOL-SRC-TASNIM"
@@ -85,6 +105,6 @@ for event_id in neutral_ids:
 
 print(
     "web-of-lies media outlet awards: PASS "
-    "tasnim_bullshitter=1 incidents=6 neutral_carriage_excluded=1 "
+    "tasnim_bullshitter=1 documented_incidents=8 publisher_examples=6 neutral_carriage_excluded=1 "
     "publisher_review_stop=6_in_30 non_exhaustive=1"
 )
