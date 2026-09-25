@@ -68,6 +68,33 @@ assert {
 assert {"SUBSTACK-ROBIN-WESTENRA"} <= by_platform["SUBSTACK"]
 assert {"FORUM-TRADE2WIN-ILILILILI"} <= by_platform["FORUM"]
 
+# Minimum unique-node census by surface. Future discoveries may increase these.
+assert len(by_platform["X"]) >= 8
+assert len(by_platform["TELEGRAM"]) >= 4
+assert len(by_platform["YOUTUBE"]) >= 1
+assert len(by_platform["WEBSITE"]) >= 9
+assert len(by_platform["BLOG"]) >= 3
+assert len(by_platform["SUBSTACK"]) >= 1
+assert len(by_platform["FORUM"]) >= 1
+
+covered_event_ids = {
+    row["bullshitter_event_id"]
+    for row in press_rows
+}
+assert {
+    "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
+    "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0605-C",
+    "WOL-EVT-ALUDEID_BDA-0901-C",
+    "WOL-EVT-F15E-002",
+    "WOL-EVT-F15E-008",
+    "WOL-EVT-F15E-013",
+    "WOL-EVT-F35_MAR19-0301-C",
+    "WOL-EVT-F35_MAR19-0302-O",
+    "WOL-EVT-F35_MAR19-0303-C",
+    "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
+    "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C",
+} <= covered_event_ids
+
 # Publisher-owned dissemination is intentionally retained as amplification.
 self_rows = [
     row
