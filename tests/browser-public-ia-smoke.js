@@ -162,6 +162,11 @@ async function loadDirectRoute(cdp, route) {
             height: rect?.height || 0,
             flags: document.querySelectorAll('.wol-node-flag').length,
             markers: document.querySelectorAll('.wol-node-markers').length,
+            flagOrder: [...document.querySelectorAll('.wol-node-identity')].filter(node => node.querySelector('.wol-node-flag')).every(node => {
+              const flag = node.querySelector('.wol-node-flag');
+              const label = node.querySelector('.wol-node-identity-label');
+              return Boolean(flag && label && (flag.compareDocumentPosition(label) & Node.DOCUMENT_POSITION_FOLLOWING));
+            }),
             hallTitle: document.querySelector('.wol-hall-of-shame h2')?.textContent || '',
             crowns: [...document.querySelectorAll('.wol-hall-rank')].filter(node => /👑/.test(node.textContent || '')).length
           };
@@ -171,7 +176,7 @@ async function loadDirectRoute(cdp, route) {
         assert(wolGraph.renderedNodes >= 16, 'WOL graph did not render the compiled awardee + megaphone network (dual-role identities must remain one node)');
         assert(wolGraph.renderedEdges >= 9, 'WOL graph rendered no meaningful propagation web');
         assert(wolGraph.width > 0 && wolGraph.height >= 480, 'WOL Cytoscape canvas has no usable rendered area');
-        assert(wolGraph.flags > 0, 'WOL rendered no receipt-backed country flag assets');
+        assert(wolGraph.flags > 0, 'WOL rendered no receipt-backed country flag assets');\n        assert.equal(wolGraph.flagOrder, true, 'WOL country flags must precede identity text consistently');
         assert(wolGraph.markers > 0, 'WOL rendered no role/authenticity markers');
         assert(/🏆 Hall of Shame/.test(wolGraph.hallTitle), 'WOL Hall of Shame trophy treatment is missing');
         assert(wolGraph.crowns > 0, 'WOL Hall of Shame king crown treatment is missing');
