@@ -1019,15 +1019,15 @@ information event.
 A correction does not erase the fact that the qualifying incident occurred.
 Corrections remain separately credited in the behavioral record and Hall metrics.
 
-The award must carry the earning-window start/end, the qualifying incident count
-and IDs, whether the award is currently active, and the current-window incident
-count/IDs. Those IDs may identify canonical information events or WOL-native
-source-behavior incidents.
+The award must carry the cumulative qualification start/end, the threshold
+incident count and IDs, the date the sixth qualifying incident was reached, and
+the complete documented qualifying-incident history separately. Those IDs may
+identify canonical information events or WOL-native source-behavior incidents.
 
 The public verdict may say, plainly:
 
-> **Bullshitter — award earned [start] through [end] with N qualifying bullshit
-> incidents; M in the current 30-day window.**
+> **Bullshitter — award earned after six cumulative qualifying bullshit
+> incidents; N documented qualifying incidents total.**
 
 This award is a source-behavior finding. It does not rewrite Claims Forensics'
 canonical truth/knowledge/deception adjudications and does not make every other
