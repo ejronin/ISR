@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "artifact_role": "WEB_OF_LIES_LINEAGE_PACKET",
+  "packet_id": "WOL-PKT-PUBLIC-OSINT-TASNIM-RESCUE-FAILURE-20260405",
+  "claim_family_id": "CH-F15E-CSAR-URANIUM",
+  "as_of": "2026-09-25T18:55:00-04:00",
+  "basis_paths": [
+    "data/web-of-lies/lineage-packets/f15e-csar-uranium.json",
+    "data/claims-forensics/lie-ledger-semantic-overlay-20260919.json"
+  ],
+  "generation_mode": "MANUAL_PUBLIC_OSINT_LINEAGE",
+  "notes": "Source-behavior completion for Tasnim. This packet does not reopen the F-15E/CSAR truth adjudication: IR-CLM-0007 is already false/contradicted. It records Tasnim's distinct April 5 publication adopting the already-adjudicated rescue-failure and destroyed-rescue-aircraft narrative as factual headline/body framing.",
+  "source_profiles": [
+    {
+      "source_id": "WOL-SRC-TASNIM",
+      "display_name": "Tasnim News Agency",
+      "source_entity_type": "OUTLET",
+      "country_region": null,
+      "primary_platform": "Web",
+      "canonical_outlet_profile_id": "OUTLET-AA437F617622",
+      "canonical_actor_id": null,
+      "canonical_source_ids": [],
+      "behavior_classes": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [
+        "WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405"
+      ],
+      "revenue_basis_event_ids": []
+    }
+  ],
+  "information_events": [
+    {
+      "event_id": "WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405",
+      "claim_family_id": "CH-F15E-CSAR-URANIUM",
+      "source_id": "WOL-SRC-TASNIM",
+      "event_type": "FALSE_OR_MISLEADING_CONNECTION",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "time_precision": "DATE_ONLY",
+      "epistemic_posture": "DEFINITIVE",
+      "exact_statement": "Tasnim headlined that Iran thwarted the U.S. rescue mission and downed multiple rescue aircraft near Isfahan, and stated that two Black Hawk helicopters and a C-130 were destroyed while the recovery mission failed.",
+      "translated_statement": null,
+      "canonical_claim_refs": [
+        "IR-CLM-0007"
+      ],
+      "evidence_source_ids": [],
+      "contrary_evidence_source_ids": [
+        "SRC-694207959BE5",
+        "SRC-7471ECB26165"
+      ],
+      "correction_state": null,
+      "behavior_findings": [
+        "STATE_OFFICIAL_MISINFORMATION_SOURCE"
+      ],
+      "revenue_findings": [],
+      "originating_claimant": "Khatam al-Anbiya Central Headquarters spokesperson, adopted and published by Tasnim",
+      "lineage_roles": [
+        "REPORTS",
+        "AMPLIFIES"
+      ],
+      "carrier_profile_ids": [],
+      "independently_sourced": false,
+      "independence_status": "DERIVATIVE",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-TASNIM-RESCUE-FAILURE-20260405",
+          "surface": "WEBSITE",
+          "url": "https://tasnimnews.ir/en/news/2026/04/05/3557293/iran-thwarts-us-rescue-mission-downs-multiple-aircraft-near-isfahan",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Khatam al-Anbiya Central Headquarters spokesperson"
+        },
+        {
+          "receipt_id": "WOL-RCPT-TASNIM-RESCUE-IMAGES-20260405",
+          "surface": "WEBSITE",
+          "url": "https://tasnimnews.ir/en/news/2026/04/05/3557412/images-emerge-of-downed-us-aircraft-in-central-iran",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "original_verified": true,
+          "upstream_attribution": "Khatam al-Anbiya Central Headquarters spokesperson"
+        }
+      ],
+      "canonical_combined_assessment": "FALSE / CONTRADICTED RESCUE-FAILURE AND RESCUE-AIRCRAFT ATTRIBUTION",
+      "plain_english_verdict": "The same rescue operation later succeeded. Tasnim adopted and repeated the already-adjudicated claim that the rescue mission failed and that multiple U.S. rescue aircraft were destroyed."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "WOL-REL-PUB-TASNIM-RESCUE-FAILURE-TO-PRESSTV",
+      "from_id": "WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405",
+      "to_id": "WOL-EVT-F15E-008",
+      "relationship_type": "PARALLEL_RELAY_OF_SAME_OFFICIAL_CLAIM",
+      "evidence_source_ids": [],
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-RCPT-REL-TASNIM-RESCUE-FAILURE-20260405",
+          "surface": "WEBSITE",
+          "url": "https://tasnimnews.ir/en/news/2026/04/05/3557293/iran-thwarts-us-rescue-mission-downs-multiple-aircraft-near-isfahan",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE"
+        }
+      ]
+    }
+  ],
+  "promotion_flags": []
+}
