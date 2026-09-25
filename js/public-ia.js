@@ -52,7 +52,7 @@
 
     { key: 'evidence.claims', primary: 'evidence', slug: 'claims', label: 'Claim Checks', title: 'Claim Checks', owner: 'ClaimChecksPage', dataKeys: ['current.claims'], related: ['evidence.information', 'evidence.sources', 'timeline.chronology'] },
     { key: 'evidence.information', primary: 'evidence', slug: 'information', label: 'Lie Ledger', title: 'Lie Ledger', owner: 'InformationEnvironmentPage', dataKeys: ['analysis.information_war_claims', 'analysis.influence_networks', 'gate3.lie_ledger', 'gate3.narrative_families', 'gate3.information_chains', 'gate3.source_reliability'], related: ['evidence.web_of_lies', 'evidence.claims', 'objectives.iran', 'evidence.method'] },
-    { key: 'evidence.web_of_lies', primary: 'evidence', slug: 'web-of-lies', label: 'Web of Lies', title: 'Web of Lies', owner: 'WebOfLiesPage', hiddenNav: true, dataKeys: ['analysis.web_of_lies'], related: ['evidence.information', 'evidence.sources', 'evidence.method'] },
+    { key: 'evidence.web_of_lies', primary: 'evidence', slug: 'web-of-lies', label: 'Web of Lies', title: 'Web of Lies', owner: 'WebOfLiesPage', dataKeys: ['analysis.web_of_lies'], related: ['evidence.information', 'evidence.sources', 'evidence.method'] },
     { key: 'evidence.sources', primary: 'evidence', slug: 'sources', label: 'Sources', title: 'Sources', owner: 'SourcesPage', dataKeys: ['current.sources'], related: ['evidence.method', 'evidence.claims'] },
     { key: 'evidence.method', primary: 'evidence', slug: 'method', label: 'How We Check the Evidence', title: 'How We Check the Evidence', owner: 'MethodPage', dataKeys: ['current.sources'], related: ['evidence.sources', 'evidence.claims', 'evidence.archive'] },
     { key: 'evidence.archive', primary: 'evidence', slug: 'archive', label: 'Archive', title: 'Archive', owner: 'ArchivePage', dataKeys: ['archive.snapshot_index'], related: ['evidence.method', 'start.overview'] }
@@ -2286,6 +2286,13 @@
       });
     };
 
+    const companionNav = append(frame.article, 'nav', 'forensic-companion-nav');
+    companionNav.setAttribute('aria-label', 'Lie Ledger and Web of Lies');
+    const ledgerLink = append(companionNav, 'a', 'forensic-companion-link', 'Lie Ledger');
+    ledgerLink.href = routeHref('evidence.information');
+    const wolCurrent = append(companionNav, 'span', 'forensic-companion-link is-current', 'Web of Lies');
+    wolCurrent.setAttribute('aria-current', 'page');
+
     const intro = addSection(frame.article, 'Web of Lies network', 'content-section wol-method');
     append(intro, 'p', 'lead-copy', 'The graph is the primary interface. Bullshitter nodes are sources that earned the evidence-defined award. Megaphone nodes are accounts with receipts showing that they carried a specific qualifying bullshit claim. A megaphone listing is propagation evidence, not automatic inheritance of the award.');
     const direct = append(intro, 'aside', 'scope-note wol-voice-note');
@@ -2324,13 +2331,16 @@
     const reset = append(graphControls, 'button', 'action wol-graph-reset', 'Show whole network');
     reset.type = 'button';
 
-    const graphHost = append(graphSection, 'div', 'wol-cytoscape-host');
+    const workspace = append(graphSection, 'div', 'wol-graph-workspace');
+    const graphColumn = append(workspace, 'div', 'wol-graph-column');
+    const graphHost = append(graphColumn, 'div', 'wol-cytoscape-host');
     graphHost.setAttribute('role', 'group');
     graphHost.setAttribute('aria-label', 'Interactive Web of Lies propagation graph');
-    const graphStatus = append(graphSection, 'p', 'section-note wol-graph-status');
+    const graphStatus = append(graphColumn, 'p', 'section-note wol-graph-status');
     graphStatus.setAttribute('aria-live', 'polite');
 
-    const detailSection = addSection(frame.article, 'Selected node', 'content-section wol-node-detail');
+    const detailSection = append(workspace, 'aside', 'wol-node-detail');
+    append(detailSection, 'h3', '', 'Selected node');
     const detailHost = append(detailSection, 'div', 'wol-node-detail-host');
 
     const adjacencyFor = nodeId => {
