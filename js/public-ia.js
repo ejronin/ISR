@@ -2626,6 +2626,18 @@
             }
           },
           {
+            selector: 'node[flag_path]',
+            style: {
+              'background-image': 'data(flag_path)',
+              'background-fit': 'none',
+              'background-width': 28,
+              'background-height': 20,
+              'background-position-x': 10,
+              'background-position-y': 9,
+              'background-repeat': 'no-repeat'
+            }
+          },
+          {
             selector: 'edge',
             style: {
               'width': 'mapData(amplified_claim_count, 1, 8, 1.5, 4.5)',
@@ -2885,7 +2897,17 @@
         selectedEvents.forEach(event => {
           const item = append(timeline, 'li', 'wol-trace-event');
           append(item, 'p', 'card-kicker', event.published_at || event.first_observed_at || 'Date not recorded');
-          append(item, 'strong', '', publicNarrative(profileById.get(event.source_id)?.display_name, 'Source'));
+          const eventProfile = profileById.get(event.source_id) || {};
+          const eventIdentity = graphNodeById.get(event.source_id) || {
+            node_id: event.source_id,
+            display_name: eventProfile.display_name || 'Source',
+            country_code: eventProfile.country_code || '',
+            country_region: eventProfile.country_region || '',
+            authenticity_class: eventProfile.authenticity_class || 'UNKNOWN',
+            node_roles: [],
+            award_codes: []
+          };
+          appendNodeIdentity(item, eventIdentity, 'strong', 'wol-node-identity wol-trace-source');
           append(item, 'p', '', publicNarrative(event.exact_statement || event.translated_statement, 'Statement text not stored'));
           if (event.plain_english_verdict) append(item, 'p', 'wol-plain-verdict-text', publicNarrative(event.plain_english_verdict));
         });
