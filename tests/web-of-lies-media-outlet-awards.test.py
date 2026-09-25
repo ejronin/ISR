@@ -20,6 +20,17 @@ derived = wol.build_registry(canonical, assembled, governance)
 profiles = {row["source_id"]: row for row in derived["source_profiles"]}
 events = {row["event_id"]: row for row in derived["information_events"]}
 
+publisher_rule = governance["source_discovery_scope"]["publisher_review_sufficiency"]
+assert publisher_rule["applies_to_source_entity_types"] == ["OUTLET"]
+assert publisher_rule["qualifying_incident_threshold"] == 6
+assert publisher_rule["window_days"] == 30
+assert publisher_rule["purpose"] == "MEDIA_PUBLISHER_REVIEW_STOP_CONDITION"
+assert publisher_rule["non_exhaustive_corpus"] is True
+assert publisher_rule["more_incidents_may_exist"] is True
+assert publisher_rule["continue_amplifier_mapping_after_threshold"] is True
+assert publisher_rule["continue_cross_web_mapping_after_threshold"] is True
+assert publisher_rule["does_not_replace_global_bullshitter_award_semantics"] is True
+
 tasnim = profiles["WOL-SRC-TASNIM"]
 award_list = tasnim["source_awards"]
 assert len(award_list) == 1
@@ -74,5 +85,6 @@ for event_id in neutral_ids:
 
 print(
     "web-of-lies media outlet awards: PASS "
-    "tasnim_bullshitter=1 incidents=6 neutral_carriage_excluded=1"
+    "tasnim_bullshitter=1 incidents=6 neutral_carriage_excluded=1 "
+    "publisher_review_stop=6_in_30 non_exhaustive=1"
 )
