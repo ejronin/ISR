@@ -967,6 +967,7 @@ def bullshit_award_for_events(
     return {
         "award_code": "BULLSHITTER",
         "public_label": label,
+        "qualification_route": "STANDARD_INCIDENT_WINDOW",
         "window_days": window_days,
         "minimum_qualifying_incidents": minimum,
         "award_earned_at": earned_end.isoformat(),
