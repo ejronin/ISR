@@ -949,24 +949,23 @@ Public label:
 
 The award is deterministic. It is never manually assigned.
 
-A source earns the award when it has **more than five qualifying incidents in any
-30-day window**. The machine threshold is therefore six distinct qualifying
+A source earns the award when it has **more than five distinct qualifying
+incidents**. The machine threshold is therefore six distinct qualifying
 information events.
 
-The award is **earned and persistent**. Once a source has a documented qualifying
-30-day cluster, the award does not disappear merely because that cluster later
-falls outside the current 30-day window. WOL records the first qualifying window
-that earned the award and separately reports current-window activity.
+There is **no time window** on Bullshitter qualification. The six incidents are
+cumulative across the active WOL conflict corpus. An account does not evade the
+award because its sixth qualifying incident occurred more than 30 days after its
+first.
 
-Current status is:
+The award is **earned and persistent**. WOL records the first six chronological
+qualifying incidents that crossed the threshold, the date the sixth incident was
+reached, and the complete documented incident history separately.
 
-- **ACTIVE_CURRENT_WINDOW** — the source also has at least six qualifying incidents
-  in the 30 days ending at the current evidence cutoff;
-- **EARNED_HISTORICAL** — the source earned the award previously but does not
-  currently meet the six-in-30-day threshold.
-
-Undated incidents cannot establish the time-bounded award, although they remain
-preserved elsewhere in the forensic record.
+Incident dates are used only to establish deterministic chronology and the
+award-earned date. They are not a recency qualification rule. Undated incidents
+remain preserved in the forensic record but cannot establish the chronological
+award-earned point until their date is recovered.
 
 A qualifying incident is a source-authored or source-presented factual event in
 which the relevant proposition, presentation, inferential bridge, or factual
@@ -1151,8 +1150,8 @@ qualification:
 - the target node must itself publish qualifying amplification;
 - at least **5 distinct upstream WOL Bullshitter/qualifying-amplifier nodes** must
   be connected by receipt-backed qualifying propagation;
-- at least **6 qualifying amplification publications in any 30-day window** are
-  required;
+- at least **6 distinct qualifying amplification publications** are required;
+  the count is cumulative and has no time window;
 - self-amplification does not count as a distinct upstream node for this network
   threshold;
 - **10 or more distinct upstream WOL nodes** is a high-density hub signal;
