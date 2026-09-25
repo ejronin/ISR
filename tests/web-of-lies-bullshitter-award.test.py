@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression coverage for the deterministic rolling Bullshitter award."""
+"""Regression coverage for the deterministic cumulative Bullshitter award."""
 from __future__ import annotations
 
 import json
@@ -15,7 +15,8 @@ governance = json.loads((ROOT / wol.GOVERNANCE).read_text(encoding="utf-8"))
 award_rule = governance["source_awards"]["BULLSHITTER"]
 
 assert award_rule["public_label"] == "Bullshitter"
-assert award_rule["window_days"] == 30
+assert "window_days" not in award_rule
+assert award_rule["qualification_semantics"] == "CUMULATIVE_DISTINCT_QUALIFYING_INCIDENTS"
 assert award_rule["minimum_qualifying_incidents"] == 6
 assert award_rule["manual_assignment_allowed"] is False
 network_rule = award_rule["network_assisted_qualification"]
@@ -61,39 +62,17 @@ award = wol.bullshit_award_for_events(
 assert award is not None
 assert award["award_code"] == "BULLSHITTER"
 assert award["public_label"] == "Bullshitter"
+assert award["qualification_route"] == "STANDARD_INCIDENT_COUNT"
+assert award["qualification_scope"] == "CUMULATIVE"
 assert award["qualifying_incident_count"] == 6
 assert award["qualifying_incident_ids"] == [f"E-{i}" for i in range(1, 7)]
-assert "6 qualifying bullshit incidents" in award["public_verdict"]
-
-assert award["currently_active"] is True
-assert award["current_window_status"] == "ACTIVE_CURRENT_WINDOW"
-assert award["current_window_incident_count"] == 6
+assert "6 cumulative qualifying bullshit incidents" in award["public_verdict"]
 assert award["award_earned_at"] == "2026-09-15T00:00:00"
+assert award["qualification_start"] == "2026-09-15T00:00:00"
+assert award["qualification_end"] == "2026-09-15T00:00:00"
 
-# Once earned in any 30-day cluster, the award persists after that cluster ages
-# out of the current window.
-historical_cluster = [
-    event(101, published_at="2026-07-01"),
-    event(102, published_at="2026-07-05"),
-    event(103, published_at="2026-07-08"),
-    event(104, published_at="2026-07-12"),
-    event(105, published_at="2026-07-18"),
-    event(106, published_at="2026-07-25"),
-]
-historical_award = wol.bullshit_award_for_events(
-    historical_cluster,
-    governance,
-    as_of="2026-09-21T15:30:00-04:00",
-)
-assert historical_award is not None
-assert historical_award["current_window_status"] == "EARNED_HISTORICAL"
-assert historical_award["currently_active"] is False
-assert historical_award["current_window_incident_count"] == 0
-assert historical_award["qualifying_window_start"] == "2026-07-01T00:00:00"
-assert historical_award["qualifying_window_end"] == "2026-07-25T00:00:00"
-assert historical_award["qualifying_incident_count"] == 6
-
-# Six qualifying incidents spread too far apart do not earn a 30-day award.
+# Qualification is cumulative: six incidents earn the award regardless of how
+# far apart they are within the active conflict corpus.
 spread_out = [
     event(111, published_at="2026-01-01"),
     event(112, published_at="2026-02-05"),
@@ -102,14 +81,19 @@ spread_out = [
     event(115, published_at="2026-05-24"),
     event(116, published_at="2026-06-30"),
 ]
-assert wol.bullshit_award_for_events(
+spread_award = wol.bullshit_award_for_events(
     spread_out,
     governance,
     as_of="2026-09-21T15:30:00-04:00",
-) is None
+)
+assert spread_award is not None
+assert spread_award["qualification_scope"] == "CUMULATIVE"
+assert spread_award["qualification_start"] == "2026-01-01T00:00:00"
+assert spread_award["qualification_end"] == "2026-06-30T00:00:00"
+assert spread_award["qualifying_incident_count"] == 6
 
-# Undated conduct may remain in the forensic record but cannot establish a
-# time-bounded award window.
+# Undated conduct remains in the forensic record but cannot establish the
+# chronological award-earned point until its date is recovered.
 undated = [event(120 + i, published_at=None) for i in range(6)]
 assert wol.bullshit_award_for_events(
     undated,
@@ -246,7 +230,7 @@ assert attached["SRC-A"]["source_awards"][0]["award_code"] == "BULLSHITTER"
 assert attached["SRC-B"]["source_awards"] == []
 
 # Network-assisted route: six distinct downstream amplification publications
-# from at least five independently awarded upstream WOL sources in 30 days.
+# from at least five independently awarded upstream WOL sources, cumulatively.
 upstream_incidents = {
     "BS-1": {"U-1"},
     "BS-2": {"U-2"},
@@ -262,7 +246,7 @@ network_observations = [
         "amplifier_source_id": "SRC-NET",
         "amplifier_id": "SRC-NET-X",
         "amplifier_display_name": "Network amplifier",
-        "observed_at": "2026-09-01",
+        "observed_at": "2026-03-01",
         "message_identity": "MSG-1",
         "public_receipts": [{"receipt_id": "RNA-1", "surface": "X", "url": "https://example.test/na1"}],
     },
@@ -273,7 +257,7 @@ network_observations = [
         "amplifier_source_id": "SRC-NET",
         "amplifier_id": "SRC-NET-X",
         "amplifier_display_name": "Network amplifier",
-        "observed_at": "2026-09-02",
+        "observed_at": "2026-04-02",
         "message_identity": "MSG-2",
         "public_receipts": [{"receipt_id": "RNA-2", "surface": "X", "url": "https://example.test/na2"}],
     },
@@ -284,7 +268,7 @@ network_observations = [
         "amplifier_source_id": "SRC-NET",
         "amplifier_id": "SRC-NET-X",
         "amplifier_display_name": "Network amplifier",
-        "observed_at": "2026-09-03",
+        "observed_at": "2026-05-03",
         "message_identity": "MSG-3",
         "public_receipts": [{"receipt_id": "RNA-3", "surface": "X", "url": "https://example.test/na3"}],
     },
@@ -295,7 +279,7 @@ network_observations = [
         "amplifier_source_id": "SRC-NET",
         "amplifier_id": "SRC-NET-X",
         "amplifier_display_name": "Network amplifier",
-        "observed_at": "2026-09-04",
+        "observed_at": "2026-06-04",
         "message_identity": "MSG-4",
         "public_receipts": [{"receipt_id": "RNA-4", "surface": "X", "url": "https://example.test/na4"}],
     },
@@ -306,7 +290,7 @@ network_observations = [
         "amplifier_source_id": "SRC-NET",
         "amplifier_id": "SRC-NET-X",
         "amplifier_display_name": "Network amplifier",
-        "observed_at": "2026-09-05",
+        "observed_at": "2026-07-05",
         "message_identity": "MSG-5",
         "public_receipts": [{"receipt_id": "RNA-5", "surface": "X", "url": "https://example.test/na5"}],
     },
@@ -335,7 +319,9 @@ assert network_award["qualification_route"] == "NETWORK_ASSISTED_AMPLIFICATION"
 assert network_award["qualifying_incident_count"] == 6
 assert network_award["qualifying_upstream_source_count"] == 5
 assert set(network_award["qualifying_upstream_source_ids"]) == set(upstream_incidents)
-assert network_award["currently_active"] is True
+assert network_award["qualification_scope"] == "CUMULATIVE"
+assert network_award["qualification_start"] == "2026-03-01T00:00:00"
+assert network_award["qualification_end"] == "2026-09-06T00:00:00"
 
 # Five publications are insufficient even across five Bullshitters.
 assert wol.network_assisted_bullshit_award(
@@ -389,4 +375,4 @@ assert wol.network_assisted_bullshit_award(
     as_of="2026-09-21T15:30:00-04:00",
 ) is None
 
-print("web-of-lies Bullshitter award: PASS threshold=6 window=30d network_assisted=1 deterministic=1")
+print("web-of-lies Bullshitter award: PASS threshold=6 cumulative=1 network_assisted=1 deterministic=1")
