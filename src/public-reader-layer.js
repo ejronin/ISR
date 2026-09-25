@@ -537,6 +537,13 @@
     append(section, 'h2', '', 'Lie Ledger');
     append(section, 'p', 'section-note', 'Narrative chains and findings are grouped here so claims, corrections, repetitions, substitutions, evidence, and adjudications remain inside the event or evolving story they belong to.');
 
+    const companionNav = append(section, 'nav', 'forensic-companion-nav');
+    companionNav.setAttribute('aria-label', 'Lie Ledger and Web of Lies');
+    const ledgerCurrent = append(companionNav, 'span', 'forensic-companion-link is-current', 'Lie Ledger');
+    ledgerCurrent.setAttribute('aria-current', 'page');
+    const wolLink = append(companionNav, 'a', 'forensic-companion-link', 'Web of Lies');
+    wolLink.href = base.routeHref('evidence.web_of_lies');
+
     const forensicEntry = append(section, 'aside', 'scope-note reader-wol-entry');
     append(forensicEntry, 'strong', '', 'Web of Lies');
     append(forensicEntry, 'p', '', 'Open the interactive propagation network to trace WOL-qualified Bullshitter sources, the accounts that amplified them, and the receipts supporting each observed connection.');
@@ -606,7 +613,7 @@
 
       const chainTitle = cleanPublicText(chain.public_title || chain.title || chain.reader_title || recordProposition(first));
       append(copy, 'h3', '', chainTitle || 'Narrative chain');
-      const traceLink = append(top, 'a', 'inline-route-link reader-wol-trace', 'TRACE');
+      const traceLink = append(top, 'a', 'inline-route-link reader-wol-trace', 'View Web of Lies / Trace');
       traceLink.href = base.routeHref('evidence.web_of_lies', { claim_family: chain.chain_id || chain.narrative_family_id });
 
       const chainSummary = cleanPublicText(chain.plain_english_summary || chain.public_summary || chain.event_level_summary || '');
