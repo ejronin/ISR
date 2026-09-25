@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-25T11:00:00-04:00",
+  "as_of": "2026-09-25T13:25:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -1212,6 +1212,49 @@
           }
         ]
       }
+    },
+    {
+      "source_id": "WOL-SRC-ALMASIRAH",
+      "display_name": "Al Masirah / Almasirah English",
+      "source_entity_type": "OUTLET",
+      "country_region": "Yemen",
+      "primary_platform": "Web",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "UNKNOWN",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-ALMASIRAH",
+      "identity_confidence": "CONFIRMED",
+      "aliases": [
+        "Al Masirah",
+        "Almasirah English",
+        "Almasirah Media Network"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-ALMASIRAH-WEB",
+          "platform": "WEBSITE",
+          "handle": null,
+          "url": "https://english.masirahtv.net/",
+          "display_name": "Almasirah English",
+          "account_state": "ACTIVE_PUBLIC"
+        },
+        {
+          "account_id": "WOL-ACCT-ALMASIRAH-TELEGRAM",
+          "platform": "TELEGRAM",
+          "handle": "@Almasirah_En",
+          "url": "https://t.me/Almasirah_En",
+          "display_name": "Almasirah English",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "canonical_collection_source_id": "CSU-YE-ALMASIRAH",
+      "identity_basis_note": "Atlas Evidence Integration already tracks Al Masirah as a Yemen/Houthi-aligned state-aligned media source; WOL promotion here is identity normalization only and does not assign a Bullshitter award or new adverse behavior finding."
     }
   ],
   "source_relationships": [
@@ -7831,7 +7874,7 @@
       "bullshitter_event_id": "WOL-EVT-F15E-013",
       "amplifier_id": "TG-ALMASIRAH-EN",
       "amplifier_display_name": "Almasirah English",
-      "amplifier_handle": "@AlmasirahEnglish",
+      "amplifier_handle": "@Almasirah_En",
       "amplifier_platform": "TELEGRAM",
       "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
       "public_receipts": [
@@ -7846,7 +7889,8 @@
           "text_excerpt": "Almasirah English promoted its republication 'US Suffered Major Strategic Defeat in Failed Isfahan Operation,' explicitly sourcing the underlying account to Press TV."
         }
       ],
-      "observed_at": "2026-09-24"
+      "observed_at": "2026-09-24",
+      "amplifier_source_id": "WOL-SRC-ALMASIRAH"
     },
     {
       "observation_id": "WOL-AMP-PRESSTV-14MASSOOM-YT-ISFAHAN-20260407",
@@ -7891,7 +7935,8 @@
           "text_excerpt": "Almasirah republished the Press TV Isfahan account under the headline 'US Suffered Major Strategic Defeat in Failed Isfahan Operation.'"
         }
       ],
-      "observed_at": "2026-09-24"
+      "observed_at": "2026-09-24",
+      "amplifier_source_id": "WOL-SRC-ALMASIRAH"
     },
     {
       "observation_id": "WOL-AMP-PRESSTV-STRUGGLELALUCHA-ISFAHAN-20260408",
@@ -8259,7 +8304,8 @@
           "text_excerpt": "Almasirah republished the Press TV Al Udeid radar/destructor story and explicitly credited Press TV."
         }
       ],
-      "observed_at": "2026-09-25"
+      "observed_at": "2026-09-25",
+      "amplifier_source_id": "WOL-SRC-ALMASIRAH"
     },
     {
       "observation_id": "WOL-AMP-PRESSTV-GLOBALSECURITY-WEB-ALUDEID-20260304",

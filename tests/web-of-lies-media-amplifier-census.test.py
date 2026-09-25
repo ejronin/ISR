@@ -68,6 +68,36 @@ assert {
 assert {"SUBSTACK-ROBIN-WESTENRA"} <= by_platform["SUBSTACK"]
 assert {"FORUM-TRADE2WIN-ILILILILI"} <= by_platform["FORUM"]
 
+profiles = {
+    row["source_id"]: row
+    for row in (DOSSIER.get("source_profiles") or [])
+}
+almasirah = profiles["WOL-SRC-ALMASIRAH"]
+assert almasirah["source_entity_type"] == "OUTLET"
+assert almasirah["identity_confidence"] == "CONFIRMED"
+assert almasirah["canonical_collection_source_id"] == "CSU-YE-ALMASIRAH"
+assert {
+    (row["platform"], row.get("handle"))
+    for row in almasirah["platform_accounts"]
+} >= {
+    ("WEBSITE", None),
+    ("TELEGRAM", "@Almasirah_En"),
+}
+
+almasirah_rows = [
+    row
+    for row in press_rows
+    if row.get("amplifier_source_id") == "WOL-SRC-ALMASIRAH"
+]
+assert len(almasirah_rows) >= 3
+assert {row["amplifier_platform"] for row in almasirah_rows} >= {"WEBSITE", "TELEGRAM"}
+telegram_almasirah = [
+    row for row in almasirah_rows
+    if row["amplifier_platform"] == "TELEGRAM"
+]
+assert len(telegram_almasirah) >= 1
+assert all(row.get("amplifier_handle") == "@Almasirah_En" for row in telegram_almasirah)
+
 # Minimum unique-node census by surface. Future discoveries may increase these.
 assert len(by_platform["X"]) >= 8
 assert len(by_platform["TELEGRAM"]) >= 4
