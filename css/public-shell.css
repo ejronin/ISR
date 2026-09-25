@@ -1152,6 +1152,14 @@ a:hover { color: #e0f2ff; }
   align-items: center;
   gap: .45rem;
 }
+.wol-node-flag {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 20px;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 2px;
+  object-fit: cover;
+}
 .wol-node-markers {
   flex: 0 0 auto;
   white-space: nowrap;
