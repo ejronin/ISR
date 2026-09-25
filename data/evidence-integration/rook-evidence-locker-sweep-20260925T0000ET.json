@@ -1,0 +1,143 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-24T12:00:00-04:00",
+    "end": "2026-09-25T00:00:00-04:00",
+    "collection_time": "2026-09-25T00:00:00-04:00",
+    "evidence_horizon": "2026-09-25T00:00:00-04:00"
+  },
+  "updates": [
+    {
+      "event_id": "US-IRAN-HORMUZ-PHASED-TALKS-20260924",
+      "update_type": "diplomacy / existing-event current-state update",
+      "finding": "Reuters reported that U.S. and Iranian negotiators in New York were exploring a phased path out of the war involving Tehran reopening the Strait of Hormuz and Washington lifting its economic blockade, with possible Iranian access to frozen assets discussed. This establishes active negotiation of a phased arrangement, not an agreement, implemented concession, reopening, blockade termination, or asset release.",
+      "status": "ACTIVE PHASED NEGOTIATIONS REPORTED; AGREEMENT/IMPLEMENTATION NOT ESTABLISHED",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-25T00:00:00-04:00",
+      "evidence_horizon": "2026-09-25T00:00:00-04:00",
+      "sources": ["https://www.reuters.com/world/asia-pacific/us-iran-discuss-phased-deal-reopen-hormuz-end-us-blockade-sources-say-2026-09-24/"],
+      "drawer_effect": "SUPERSEDE earlier current-state wording limited to little progress/no breakthrough. Preserve prior evidence and distinguish negotiation terms from accepted or implemented terms."
+    },
+    {
+      "event_id": "HORMUZ-UN-80-COUNTRY-STATEMENT-20260924",
+      "update_type": "diplomacy / maritime",
+      "finding": "About 80 countries issued a UN-side statement demanding urgent reopening of the Strait of Hormuz and condemning Iranian and Houthi actions affecting navigation, trade and energy security. This is diplomatic evidence and does not itself establish an operational change in the strait.",
+      "status": "BROAD MULTILATERAL DIPLOMATIC PRESSURE CONFIRMED; OPERATIONAL REOPENING NOT ESTABLISHED",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-25T00:00:00-04:00",
+      "evidence_horizon": "2026-09-25T00:00:00-04:00",
+      "sources": ["Reuters report distributed Sep.24: At UN, 80 countries demand reopening of Hormuz, condemn Iran, Houthi attacks"],
+      "drawer_effect": "APPEND to Hormuz diplomacy drawer; do not treat diplomatic statement as physical control or traffic evidence."
+    },
+    {
+      "event_id": "HORMUZ-TRAFFIC-20260924",
+      "update_type": "maritime / commercial-data current-state",
+      "finding": "Reuters reported 10 observed commodity-vessel transits on Wednesday, versus seven Tuesday and a recent 10-day average around 17. The underlying tracking data exclude undetected dark-AIS crossings. Prewar large-commercial-vessel traffic was reported at roughly 125 per day.",
+      "status": "SEVERE DISRUPTION CONTINUES; NORMALIZATION NOT ESTABLISHED",
+      "occurrence_time": "2026-09-23 to 2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-25T00:00:00-04:00",
+      "evidence_horizon": "2026-09-25T00:00:00-04:00",
+      "sources": ["Reuters maritime/commodity traffic reporting collected Sep.24, 2026"],
+      "limitations": ["Observed commercial tracking is not exhaustive; dark-AIS crossings may be absent."],
+      "drawer_effect": "UPDATE existing Hormuz traffic series; preserve denominator/methodology and do not equate observed tracked traffic with all physical transits."
+    },
+    {
+      "event_id": "SAUDI-HOUTHI-MISSILE-INTERCEPTS-20260924",
+      "update_type": "military / claims-and-BDA update",
+      "finding": "Saudi Arabia maintained that it intercepted six Houthi ballistic missiles directed toward Taif and Yanbu. The Houthis subsequently claimed missile/drone attacks against a sensitive target in Riyadh and Saudi Aramco facilities in Yanbu. Reuters reported no immediate Saudi confirmation of the Riyadh claim and no established damage or casualties at Taif or Yanbu at this evidence horizon.",
+      "status": "SAUDI INTERCEPT CLAIM PRESERVED; HOUTHI TARGET-SUCCESS CLAIMS UNCONFIRMED",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-25T00:00:00-04:00",
+      "evidence_horizon": "2026-09-25T00:00:00-04:00",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/yemen-says-government-forces-repel-houthi-push-key-taiz-aden-route-2026-09-24/",
+        "https://www.reuters.com/world/middle-east/houthis-say-they-attacked-riyadh-aramco-facilities-yanbu-2026-09-24/"
+      ],
+      "drawer_effect": "UPDATE existing Saudi-Houthi event rather than duplicate it. Preserve both sides' attributed claims separately from independently established BDA."
+    },
+    {
+      "event_id": "YEMEN-HUMAN-IMPACT-20260924",
+      "update_type": "human impact / displacement",
+      "finding": "Reuters carried UN figures of more than 700 killed, thousands wounded, nearly 130,000 internally displaced, and more than 3,000 people fleeing across the Red Sea to Africa in the broader Yemen conflict context.",
+      "status": "UPDATED UN HUMAN-IMPACT SERIES",
+      "occurrence_time": "cumulative through 2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-25T00:00:00-04:00",
+      "evidence_horizon": "2026-09-25T00:00:00-04:00",
+      "sources": ["Reuters Yemen reporting collected Sep.24, 2026"],
+      "drawer_effect": "APPEND to broader-conflict human-impact series. Do not overwrite narrower civilian-only counts or projected-displacement denominators."
+    },
+    {
+      "event_id": "IRAN-AVIATION-SECONDARY-SANCTIONS-20260924",
+      "update_type": "sanctions/aviation / existing-drawer update",
+      "finding": "Regional implementation of restrictions on Iranian airlines broadened, including UAE and Oman restrictions, while Tehran schedules still showed international service involving Afghanistan, Armenia, China, Iraq, Pakistan, Tajikistan and Turkey. The evidence does not establish worldwide grounding.",
+      "status": "REGIONAL IMPLEMENTATION BROADENED; WORLDWIDE GROUNDING NOT ESTABLISHED",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-25T00:00:00-04:00",
+      "evidence_horizon": "2026-09-25T00:00:00-04:00",
+      "sources": ["Reuters aviation/sanctions reporting collected Sep.24, 2026"],
+      "drawer_effect": "SUPERSEDE narrower implementation status while preserving evidence of continuing routes and individual jurisdiction actions."
+    },
+    {
+      "event_id": "ENERGY-MARKETS-20260924",
+      "update_type": "economy / energy-market response",
+      "finding": "Brent settled at $106.60, up 3.4%, and WTI at $94.61, up 2.7%, amid Saudi attack risk. Prices retreated from session highs after reports of U.S.-Iran Hormuz negotiations.",
+      "status": "MARKET RESPONSE CONFIRMED; NOT PHYSICAL BDA",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-25T00:00:00-04:00",
+      "evidence_horizon": "2026-09-25T00:00:00-04:00",
+      "sources": ["Reuters oil-market reporting collected Sep.24, 2026"],
+      "drawer_effect": "APPEND to energy-market series; keep separate from infrastructure damage and physical supply BDA."
+    },
+    {
+      "event_id": "IRAN-PEZESHKIAN-WAR-POSITION-20260924",
+      "update_type": "diplomacy / public-position record",
+      "finding": "President Masoud Pezeshkian said in an interview aired Thursday that Iran did not wish to continue the war and placed the choice to end it on Washington. This establishes an attributed public position, not settlement acceptance.",
+      "status": "PUBLIC POSITION RECORDED; SETTLEMENT ACCEPTANCE NOT ESTABLISHED",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "collection_time": "2026-09-25T00:00:00-04:00",
+      "evidence_horizon": "2026-09-25T00:00:00-04:00",
+      "sources": ["Reuters reporting collected Sep.24, 2026"],
+      "drawer_effect": "APPEND attributed statement; do not infer acceptance of U.S. terms."
+    }
+  ],
+  "reviewed_existing_drawers_no_material_change": [
+    "Cape Dao perpetrator/weapon attribution",
+    "Saudi East-West/Petroline engineering restoration",
+    "QatarEnergy/Ras Laffan physical repair BDA",
+    "Lebanon/Hezbollah current state"
+  ],
+  "coverage_accounting": {
+    "covered": ["military", "maritime", "infrastructure review", "diplomacy", "economy/sanctions/energy", "claims/corrections", "human impact", "public OSINT/commercial-data reporting"],
+    "unavailable_or_limited": [
+      "No proprietary Kpler/LSEG/MarineTraffic terminal access",
+      "No commercial satellite tasking",
+      "No systematic social-media firehose/geolocation collection",
+      "No classified ISR"
+    ]
+  },
+  "unresolved_questions": [
+    "Whether phased U.S.-Iran negotiations produce a signed or implemented arrangement",
+    "Whether Hormuz traffic materially normalizes beyond the observed low-volume series",
+    "Independent BDA for Houthi claims concerning Riyadh/Yanbu/Aramco",
+    "Further jurisdiction-by-jurisdiction implementation of Iranian aviation restrictions"
+  ],
+  "completion": {
+    "sweep_complete": true,
+    "repository_append_requested": true,
+    "canonical_packet_bytes_modified": false,
+    "generated_public_state_modified": false,
+    "signed_release_artifacts_modified": false,
+    "release_manifests_modified": false
+  }
+}
