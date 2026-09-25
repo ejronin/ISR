@@ -96,6 +96,24 @@ def main() -> int:
         len({row["edge_id"] for row in graph_edges}) == len(graph_edges),
         "public propagation graph contains duplicate edge ids",
     )
+    for node in graph_nodes.values():
+        roles = set(node.get("node_roles") or [])
+        require(bool(roles), f"propagation node {node['node_id']} lacks explicit node roles")
+        if node["node_type"] == "BULLSHITTER":
+            require(
+                "BULLSHITTER" in roles,
+                f"Bullshitter node {node['node_id']} lacks Bullshitter role",
+            )
+        if int(node.get("bullshitter_source_count") or 0) >= 1:
+            require(
+                "AMPLIFIER" in roles,
+                f"propagation node {node['node_id']} has incoming bullshit but lacks amplifier role",
+            )
+        if node["node_type"] == "MEGAPHONE":
+            require(
+                roles == {"AMPLIFIER"},
+                f"megaphone {node['node_id']} has unsupported node roles {sorted(roles)}",
+            )
     for edge in graph_edges:
         source = graph_nodes.get(edge["from_node_id"])
         target = graph_nodes.get(edge["to_node_id"])
@@ -121,6 +139,15 @@ def main() -> int:
             f"propagation target {target['node_id']} is not marked as a megaphone role",
         )
         require(edge["relationship_type"] == "AMPLIFIES_BULLSHIT", f"propagation edge {edge['edge_id']} has the wrong relationship type")
+        expected_scope = (
+            "SELF_AMPLIFICATION"
+            if edge["from_node_id"] == edge["to_node_id"]
+            else "EXTERNAL_AMPLIFICATION"
+        )
+        require(
+            edge.get("amplification_scope") == expected_scope,
+            f"propagation edge {edge['edge_id']} has inconsistent amplification scope",
+        )
         require(edge["amplified_claim_count"] == len(edge["bullshitter_event_ids"]), f"propagation edge {edge['edge_id']} claim count is inconsistent")
         require(bool(edge.get("public_receipts")), f"propagation edge {edge['edge_id']} has no amplifier receipt")
     graph_summary = propagation["summary"]
@@ -131,6 +158,32 @@ def main() -> int:
         "propagation megaphone-role node count is inconsistent",
     )
     require(graph_summary["amplification_edges"] == len(graph_edges), "propagation edge count is inconsistent")
+    require(
+        graph_summary["self_amplification_edges"]
+        == sum(1 for row in graph_edges if row.get("amplification_scope") == "SELF_AMPLIFICATION"),
+        "propagation self-amplification edge count is inconsistent",
+    )
+    require(
+        graph_summary["external_amplification_edges"]
+        == sum(1 for row in graph_edges if row.get("amplification_scope") == "EXTERNAL_AMPLIFICATION"),
+        "propagation external-amplification edge count is inconsistent",
+    )
+    require(
+        graph_summary["network_pattern_nodes"]
+        == sum(
+            1 for row in graph_nodes.values()
+            if int(row.get("external_upstream_source_count") or 0) >= 5
+        ),
+        "propagation network-pattern node count is inconsistent",
+    )
+    require(
+        graph_summary["high_density_hub_nodes"]
+        == sum(
+            1 for row in graph_nodes.values()
+            if int(row.get("external_upstream_source_count") or 0) >= 10
+        ),
+        "propagation high-density hub count is inconsistent",
+    )
 
     network = registry["network_analysis"]
     summary = network["summary"]
