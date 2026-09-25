@@ -15,7 +15,7 @@ press_rows = [
     for row in (DOSSIER.get("amplification_observations") or [])
     if row.get("bullshitter_source_id") == "WOL-SRC-PRESS-TV"
 ]
-assert len(press_rows) >= 21
+assert len(press_rows) >= 31
 
 # This tranche is a recoverable minimum, not an assertion that every platform's
 # entire repost graph can be enumerated from the public web.
@@ -53,8 +53,17 @@ assert {
     "WEB-ALMASIRAH-EN",
     "WEB-STRUGGLE-LA-LUCHA",
     "WEB-TRUTHSEEKER",
+    "WEB-PEOPLES-VOICE",
+    "WEB-ALMANAR-TV",
+    "WEB-HAJIJ",
+    "WEB-COSMOS-CHRONICLE",
+    "WEB-LANTIDIPLOMATICO",
 } <= by_platform["WEBSITE"]
-assert {"BLOG-MOST-REVOLUTIONARY-ACT"} <= by_platform["BLOG"]
+assert {
+    "BLOG-MOST-REVOLUTIONARY-ACT",
+    "BLOG-PANAFRICAN-NEWS-WIRE",
+    "BLOG-STEEL-CITY-SCRIBBLINGS",
+} <= by_platform["BLOG"]
 assert {"SUBSTACK-ROBIN-WESTENRA"} <= by_platform["SUBSTACK"]
 
 # Publisher-owned dissemination is intentionally retained as amplification.
@@ -63,7 +72,7 @@ self_rows = [
     for row in press_rows
     if row.get("amplifier_source_id") == "WOL-SRC-PRESS-TV"
 ]
-assert len(self_rows) >= 5
+assert len(self_rows) >= 8
 assert {row["amplifier_platform"] for row in self_rows} >= {"X", "TELEGRAM"}
 
 # External census observations do not inherit a Bullshitter award merely by
@@ -73,7 +82,7 @@ external_rows = [
     for row in press_rows
     if row.get("amplifier_source_id") != "WOL-SRC-PRESS-TV"
 ]
-assert len(external_rows) >= 16
+assert len(external_rows) >= 23
 
 print(
     "web-of-lies media amplifier census: PASS "
