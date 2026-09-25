@@ -2532,7 +2532,9 @@
         const record = graphEdgeById.get(edgeId);
         const source = graphNodeById.get(record.from_node_id);
         const target = graphNodeById.get(record.to_node_id);
-        graphStatus.textContent = record.amplification_scope === 'SELF_AMPLIFICATION'\n          ? `${nodeRoleLabel(source)} · reposted its own documented claim.`\n          : `${nodeRoleLabel(source)} → ${nodeRoleLabel(target)} · ${formatNumber(record.amplified_claim_count || 0)} documented claim${Number(record.amplified_claim_count || 0) === 1 ? '' : 's'} carried.`;
+        graphStatus.textContent = record.amplification_scope === 'SELF_AMPLIFICATION'
+          ? `${nodeRoleLabel(source)} · reposted its own documented claim.`
+          : `${nodeRoleLabel(source)} → ${nodeRoleLabel(target)} · ${formatNumber(record.amplified_claim_count || 0)} documented claim${Number(record.amplified_claim_count || 0) === 1 ? '' : 's'} carried.`;
         return;
       }
       if (!nodeId || !graphNodeById.has(nodeId)) {
