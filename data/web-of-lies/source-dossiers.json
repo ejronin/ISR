@@ -8488,6 +8488,28 @@
         }
       ],
       "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-LANTIDIPLOMATICO-RESCUE-FAILURE-20260404",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-F15E-005",
+      "amplifier_id": "WEB-LANTIDIPLOMATICO",
+      "amplifier_display_name": "L'Antidiplomatico",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "TASNIM-F15E-RESCUE-FAILURE-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-LANTIDIPLOMATICO-RESCUE-FAILURE",
+          "surface": "WEBSITE",
+          "url": "https://www.lantidiplomatico.it/dettnews-in_aggiornamento__trump_conferma_il_salvataggio_pilota_f15_teheran_2missione_fallita/45289_65555/",
+          "published_at": "2026-04-04",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "L'Antidiplomatico directly cited and linked Tasnim's report that the Black Hawk/C-130 recovery effort had so far been futile, carrying the failed-rescue narrative."
+        }
+      ],
+      "observed_at": "2026-09-25"
     }
   ]
 }
