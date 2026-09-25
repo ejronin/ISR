@@ -2609,9 +2609,11 @@
           {
             selector: 'node[node_type = "MEGAPHONE"]',
             style: {
-              'shape': 'ellipse',
-              'background-color': '#102b3b',
-              'border-color': '#76bfdc'
+              'shape': 'round-rectangle',
+              'background-color': '#10222f',
+              'border-color': '#76bfdc',
+              'width': 172,
+              'height': 54
             }
           },
           {
