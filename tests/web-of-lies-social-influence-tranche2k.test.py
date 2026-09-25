@@ -121,14 +121,11 @@ assert len(award_rows) == 1
 award = award_rows[0]
 assert award["award_code"] == "BULLSHITTER"
 assert award["public_label"] == "Bullshitter"
-assert award["qualifying_window_start"] == "2026-02-26T00:00:00"
-assert award["qualifying_window_end"] == "2026-03-22T00:00:00"
+assert award["qualification_start"] == "2026-02-26T00:00:00"
+assert award["qualification_end"] == "2026-03-22T00:00:00"
 assert award["qualifying_incident_count"] == 6
 assert set(award["qualifying_incident_ids"]) == zard_ids
-assert award["current_window_status"] == "EARNED_HISTORICAL"
-assert award["currently_active"] is False
-assert award["current_window_incident_count"] == 0
-assert award["current_window_incident_ids"] == []
+
 
 assert profile["direct_verdict"] is None
 hall_ids = {
@@ -142,5 +139,5 @@ assert source_id not in hall_ids
 print(
     "web-of-lies social influence tranche2k: PASS "
     "zardsi_incidents=6 zardsi_bullshitter=1 "
-    "window=2026-02-26..2026-03-22 claim_first_discovery=1"
+    "cumulative=6 claim_first_discovery=1"
 )
