@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-24T19:22:00-04:00",
+  "as_of": "2026-09-24T21:38:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -7487,6 +7487,499 @@
         }
       ],
       "observed_at": "2026-09-22"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-X-QALIBAF-F35-20260320",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0301-C",
+      "amplifier_id": "PRESS-TV-X",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@PressTV",
+      "amplifier_platform": "X",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-F35-QALIBAF-20260320",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-X-QALIBAF-F35",
+          "surface": "X",
+          "url": "https://x.com/PressTV/status/2034951838047359224",
+          "published_at": "2026-03-20",
+          "captured_at": "2026-09-24",
+          "provenance_status": "PLATFORM_EMBED",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV's X post promoted the Qalibaf F-35 claim that Atlas already records in the qualifying Press TV incident."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-X-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "PRESS-TV-X",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@PressTV",
+      "amplifier_platform": "X",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-X-ISFAHAN",
+          "surface": "X",
+          "url": "https://x.com/PressTV/status/2041483359176823025",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "PLATFORM_EMBED",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV's X post promoted its Isfahan 'major strategic defeat' narrative; the tweet is embedded in Press TV's own article."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-TG-SILENCE-F35-20260321",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0302-O",
+      "amplifier_id": "PRESS-TV-TELEGRAM",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@presstv",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-SILENCE-STEALTH-F35-20260321",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-TG-SILENCE-F35",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/presstv/183478",
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV Telegram forwarded its 'Silence of the stealth' feature asserting successful destruction/downing of US F-35s."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-TG-SECOND-F35-20260403",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-002",
+      "amplifier_id": "PRESS-TV-TELEGRAM",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@presstv",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-SECOND-F35-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-TG-SECOND-F35",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/presstv/183480",
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV Telegram published 'Iran downs two advanced US jets, including second F-35.'"
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-SELF-TG-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "PRESS-TV-TELEGRAM",
+      "amplifier_source_id": "WOL-SRC-PRESS-TV",
+      "amplifier_display_name": "Press TV",
+      "amplifier_handle": "@presstv",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-SELF-TG-ISFAHAN",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/presstv/184263",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Press TV Telegram promoted the outlet's 'major strategic defeat' Isfahan narrative."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-NOTHIN-SILENCE-F35-20260321",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0302-O",
+      "amplifier_id": "X-NOTHIN-SOL",
+      "amplifier_display_name": "Malware INFO",
+      "amplifier_handle": "@nothin_sol",
+      "amplifier_platform": "X",
+      "message_identity": "PRESSTV-SILENCE-STEALTH-F35-20260321",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-NOTHIN-SILENCE-F35",
+          "surface": "WEBSITE",
+          "url": "https://www.twstalker.com/nothin_sol",
+          "published_at": "2026-03-21",
+          "captured_at": "2026-09-24",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves Malware INFO retweeting Press TV's 'Silence of the stealth' F-35 feature."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-GEOGR-SILENCE-F35-20260321",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F35_MAR19-0302-O",
+      "amplifier_id": "X-GEOGR-STRATEGY",
+      "amplifier_display_name": "Vasiliy",
+      "amplifier_handle": "@Geogr_strategy",
+      "amplifier_platform": "X",
+      "message_identity": "PRESSTV-SILENCE-STEALTH-F35-20260321",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-GEOGR-SILENCE-F35",
+          "surface": "WEBSITE",
+          "url": "https://twstalker.com/Geogr_strategy",
+          "published_at": "2026-03-21",
+          "captured_at": "2026-09-24",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @Geogr_strategy retweeting Press TV's 'Silence of the stealth' F-35 feature."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-NOBLE236-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "X-NOBLE236",
+      "amplifier_display_name": "CHUKWU ANTHONY UZOMA",
+      "amplifier_handle": "@noble236",
+      "amplifier_platform": "X",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-NOBLE236-ISFAHAN",
+          "surface": "WEBSITE",
+          "url": "https://twstalker.com/noble236",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @noble236 retweeting Press TV's Isfahan 'major strategic defeat' post and reenactment."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-M3IRANX-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "X-M3IRANX",
+      "amplifier_display_name": "@M3iranx",
+      "amplifier_handle": "@M3iranx",
+      "amplifier_platform": "X",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-M3IRANX-ISFAHAN",
+          "surface": "WEBSITE",
+          "url": "https://www.twstalker.com/M3iranx",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @M3iranx retweeting Press TV's Isfahan 'major strategic defeat' post and reenactment."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-MOAYYEDJAFRI-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "X-MOAYYEDJAFRI",
+      "amplifier_display_name": "Syed Moayyed Jafri",
+      "amplifier_handle": "@moayyedjafri",
+      "amplifier_platform": "X",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-MOAYYEDJAFRI-ISFAHAN",
+          "surface": "WEBSITE",
+          "url": "https://mobile.twstalker.com/moayyedjafri",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @moayyedjafri retweeting Press TV's Isfahan 'major strategic defeat' post and reenactment."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-OMARMOR-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "X-OMARMOR50175584",
+      "amplifier_display_name": "Omar Moreno",
+      "amplifier_handle": "@OmarMor50175584",
+      "amplifier_platform": "X",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-OMARMOR-ISFAHAN",
+          "surface": "WEBSITE",
+          "url": "https://twstalker.com/OmarMor50175584",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @OmarMor50175584 retweeting Press TV's Isfahan 'major strategic defeat' post and reenactment."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-QUEENDANDYPANTS-FALSEFLAG-20260331",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C",
+      "amplifier_id": "X-QUEENDANDYPANTS",
+      "amplifier_display_name": "Elizabeth Brady Sherry, America's Queen",
+      "amplifier_handle": "@queendandypants",
+      "amplifier_platform": "X",
+      "message_identity": "PRESSTV-TURKEY-FALSE-FLAG-20260331",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-QUEENDANDYPANTS-FALSEFLAG",
+          "surface": "WEBSITE",
+          "url": "https://www.sotwe.com/queendandypants",
+          "published_at": "2026-03-31",
+          "captured_at": "2026-09-24",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Sotwe preserves @queendandypants retweeting Press TV's false-flag/Turkey denial post and separately adopting the false-flag framing."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-LAURARU-SECOND-F35-20260403",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-002",
+      "amplifier_id": "TG-LAURARUHK",
+      "amplifier_display_name": "Laura Ru",
+      "amplifier_handle": "@LauraRuHK",
+      "amplifier_platform": "TELEGRAM",
+      "message_identity": "PRESSTV-SECOND-F35-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-LAURARU-SECOND-F35",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/LauraRuHK/11173",
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Laura Ru repeated that Iranian forces shot down two advanced US fighter jets, including a second F-35, and directly linked the Press TV Telegram post."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-PEPE-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "TG-ROCKNROLLGEOPOLITICS",
+      "amplifier_display_name": "Pepe Escobar",
+      "amplifier_handle": "@rocknrollgeopolitics",
+      "amplifier_platform": "TELEGRAM",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-PEPE-ISFAHAN",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/rocknrollgeopolitics/18650",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Pepe Escobar forwarded the Press TV Isfahan story, labeled it 'MUST READ', and said the report debunked other news."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-ALMASIRAH-TG-ISFAHAN-20260408",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "TG-ALMASIRAH-EN",
+      "amplifier_display_name": "Almasirah English",
+      "amplifier_handle": "@AlmasirahEnglish",
+      "amplifier_platform": "TELEGRAM",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-ALMASIRAH-TG-ISFAHAN",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/Almasirah_En/83614",
+          "published_at": "2026-04-08",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Almasirah English promoted its republication 'US Suffered Major Strategic Defeat in Failed Isfahan Operation,' explicitly sourcing the underlying account to Press TV."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-14MASSOOM-YT-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "YT-14MASSOOM",
+      "amplifier_display_name": "14Massoom",
+      "amplifier_handle": "14Massoom",
+      "amplifier_platform": "YOUTUBE",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-14MASSOOM-YT-ISFAHAN",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=GR7WaB2a00I",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "14Massoom reposted the Press TV Isfahan 'major strategic defeat' report as a YouTube video."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-ALMASIRAH-WEB-ISFAHAN-20260408",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "WEB-ALMASIRAH-EN",
+      "amplifier_display_name": "Almasirah English",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-ALMASIRAH-WEB-ISFAHAN",
+          "surface": "WEBSITE",
+          "url": "https://english.masirahtv.net/post/54972/",
+          "published_at": "2026-04-08",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Almasirah republished the Press TV Isfahan account under the headline 'US Suffered Major Strategic Defeat in Failed Isfahan Operation.'"
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-STRUGGLELALUCHA-ISFAHAN-20260408",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "WEB-STRUGGLE-LA-LUCHA",
+      "amplifier_display_name": "Struggle-La-Lucha",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-STRUGGLELALUCHA-ISFAHAN",
+          "surface": "WEBSITE",
+          "url": "https://www.struggle-la-lucha.org/2026/04/08/press-tv-exclusive-u-s-suffered-major-strategic-defeat-in-failed-isfahan-operation/",
+          "published_at": "2026-04-08",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Struggle-La-Lucha republished the Press TV Isfahan article under substantially the same headline and credited Press TV."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-TRUTHSEEKER-SECOND-F35-20260403",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-002",
+      "amplifier_id": "WEB-TRUTHSEEKER",
+      "amplifier_display_name": "The Truthseeker",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-SECOND-F35-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-TRUTHSEEKER-SECOND-F35",
+          "surface": "WEBSITE",
+          "url": "https://www.thetruthseeker.co.uk/?p=325655",
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Truthseeker republished Press TV's 'Iran downs two advanced US jets, including second F-35' article and embedded Press TV posts."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-REVOLUTIONARYACT-FALSEFLAG-20260331",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-TURKEY_MISSILE_DENIAL-0204-C",
+      "amplifier_id": "BLOG-MOST-REVOLUTIONARY-ACT",
+      "amplifier_display_name": "The Most Revolutionary Act",
+      "amplifier_platform": "BLOG",
+      "message_identity": "PRESSTV-TURKEY-FALSE-FLAG-20260331",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-REVOLUTIONARYACT-FALSEFLAG",
+          "surface": "BLOG",
+          "url": "https://stuartjeannebramhall.com/2026/03/",
+          "published_at": "2026-03-31",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Most Revolutionary Act republished the Press TV false-flag/Turkey denial story on March 31."
+        }
+      ],
+      "observed_at": "2026-09-24"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-WESTENRA-SUBSTACK-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "SUBSTACK-ROBIN-WESTENRA",
+      "amplifier_display_name": "Robin Westenra / On the eve of ARMAGEDDON",
+      "amplifier_platform": "SUBSTACK",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-WESTENRA-SUBSTACK-ISFAHAN",
+          "surface": "SUBSTACK",
+          "url": "https://seemorerocks.substack.com/p/on-the-eve-of-armageddon",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-24",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Robin Westenra embedded Press TV's Isfahan 'major strategic defeat' post and linked the Press TV article in a supportive Substack post."
+        }
+      ],
+      "observed_at": "2026-09-24"
     }
   ]
 }
