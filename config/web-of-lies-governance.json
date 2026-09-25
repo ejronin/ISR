@@ -358,8 +358,7 @@
     "BULLSHITTER": {
       "public_label": "Bullshitter",
       "description": "Repeatedly publishes false/materially misleading factual claims or presents unsupported factual assertions, inferential bridges, or self-sealing evasions as established fact.",
-      "window_days": 30,
-      "trigger_rule": "MORE_THAN_5_QUALIFYING_INCIDENTS_IN_ANY_30_DAY_WINDOW",
+      "trigger_rule": "MORE_THAN_5_DISTINCT_QUALIFYING_INCIDENTS",
       "minimum_qualifying_incidents": 6,
       "manual_assignment_allowed": false,
       "same_information_event_deduplicated": true,
@@ -394,10 +393,6 @@
         "require_claimant_basis_review": true,
         "rule": "A positive factual assertion carries its own evidentiary burden. WOL may find it unsupported without proving the logical opposite, but may not convert incomplete/inaccessible evidence into an unsupported finding."
       },
-      "qualification_window_semantics": "ANY_30_DAY_CLUSTER",
-      "award_persists_after_earned": true,
-      "current_window_status_reported_separately": true,
-      "undated_incidents_cannot_establish_window": true,
       "amplification_counts_as_source_conduct_when": "A downstream publisher/account republishes, repeats, embeds, quotes approvingly, or otherwise adopts a WOL-qualified false/materially misleading claim as factual. The upstream claim is not re-adjudicated; the downstream publication receipt establishes the amplifier's own conduct. Neutral attributed reporting with meaningful corrective context does not count.",
       "self_amplification_counts_as_amplifier_role": true,
       "self_amplification_rule": "A source may be both Bullshitter and amplifier. When a publisher/account propagates its own WOL-qualified bullshit through another publication, platform account, repost, embed, or syndication surface, record a SELF_AMPLIFICATION edge. Self-amplification does not create a second Bullshitter incident unless there is a distinct downstream publication event after ordinary same-information-event deduplication.",
@@ -405,7 +400,6 @@
         "enabled": true,
         "minimum_distinct_upstream_wol_nodes": 5,
         "minimum_qualifying_amplification_incidents": 6,
-        "window_days": 30,
         "high_density_hub_threshold_distinct_upstream_wol_nodes": 10,
         "upstream_node_classes": [
           "BULLSHITTER",
@@ -417,11 +411,12 @@
         "follows_mentions_interactions_do_not_count": true,
         "neutral_attributed_reporting_does_not_count": true,
         "network_position_alone_does_not_award": true,
-        "rule": "Network topology may contribute to Bullshitter qualification when the node itself repeatedly publishes qualifying bullshit amplification. A node with receipt-backed qualifying amplification from at least 5 distinct upstream WOL Bullshitters/qualifying bullshit amplifiers and at least 6 qualifying amplification publications in any 30-day window satisfies the network-assisted Bullshitter route. Ten or more distinct upstream WOL nodes is a high-density hub signal. Mere follows, mentions, replies, ideological affinity, shared audience, or other social adjacency never count; the target node's own publication conduct remains mandatory.",
+        "rule": "Network topology may contribute to Bullshitter qualification when the node itself repeatedly publishes qualifying bullshit amplification. A node with receipt-backed qualifying amplification from at least 5 distinct upstream WOL Bullshitters/qualifying bullshit amplifiers and at least 6 distinct qualifying amplification publications satisfies the network-assisted Bullshitter route. Ten or more distinct upstream WOL nodes is a high-density hub signal. Mere follows, mentions, replies, ideological affinity, shared audience, or other social adjacency never count; the target node's own publication conduct remains mandatory. No time window applies.",
         "message_identity_required_for_award_counting": true,
         "same_information_event_cross_platform_mirrors_deduplicated": true,
         "current_runtime_upstream_basis": "ROOT_BULLSHITTER_EVENT; preserve immediate qualifying amplifier when recoverable"
-      }
+      },
+      "qualification_semantics": "CUMULATIVE_DISTINCT_QUALIFYING_INCIDENTS"
     }
   },
   "profile_evidence": {
@@ -476,7 +471,7 @@
     "bot_and_country_markers_require_receipts": true,
     "self_amplification_rule": "Publishers/accounts may simultaneously be Bullshitters and amplifiers. Publisher-owned reposts, mirrors, embeds, cross-platform syndication, and other propagation of the publisher's own WOL-qualified bullshit are recorded as SELF_AMPLIFICATION rather than discarded as publisher plumbing.",
     "network_pattern_rule": "Receipt-backed propagation topology is behavioral evidence. Five or more distinct upstream WOL Bullshitter/qualifying-amplifier nodes is a systematic-network signal; ten or more is a high-density hub signal. Only publication/repost/repeat/embed/adoption edges count. Follows, mentions, replies, ideology, organizational proximity, or shared audiences do not.",
-    "network_assisted_bullshitter_rule": "Network position may assist Bullshitter qualification only when paired with the node's own qualifying publication conduct under source_awards.BULLSHITTER.network_assisted_qualification. Network adjacency by itself cannot confer an award."
+    "network_assisted_bullshitter_rule": "Network position may assist Bullshitter qualification only when paired with the node's own qualifying publication conduct under source_awards.BULLSHITTER.network_assisted_qualification. Six distinct qualifying incidents are cumulative; no time window applies. Network adjacency by itself cannot confer an award."
   },
   "role_failure_appellations": {
     "FAKE_ANALYST": {

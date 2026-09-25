@@ -59,8 +59,8 @@ assert "ten days before" in inn["evidentiary_support_review"]["claimant_basis_no
 assert "does not adjudicate that Iran never targeted" in inn["evidentiary_support_review"]["search_notes"]
 assert any("2038661912494559605" in (r.get("url") or "") for r in inn["public_receipts"])
 
-# One account-specific incident each is nowhere near the six-in-30 award
-# threshold. The network itself also does not inherit member incidents.
+# One account-specific incident each is nowhere near the six-incident cumulative
+# award threshold. The network itself also does not inherit member incidents.
 for source_id in (
     "WOL-SRC-TIMES-OF-IRAN-NEWS",
     "WOL-SRC-USA-ARMY-NEWS",

@@ -53,12 +53,15 @@ assert scope["bot_and_country_markers_require_receipts"] is True
 
 bullshitter = GOV["source_awards"]["BULLSHITTER"]
 assert bullshitter["self_amplification_counts_as_amplifier_role"] is True
+assert bullshitter["qualification_semantics"] == "CUMULATIVE_DISTINCT_QUALIFYING_INCIDENTS"
+assert "window_days" not in bullshitter
 assert "SELF_AMPLIFICATION" in bullshitter["self_amplification_rule"]
 network_award = bullshitter["network_assisted_qualification"]
 assert network_award["enabled"] is True
 assert network_award["minimum_distinct_upstream_wol_nodes"] == 5
 assert network_award["minimum_qualifying_amplification_incidents"] == 6
-assert network_award["window_days"] == 30
+assert "No time window applies" in network_award["rule"]
+assert "window_days" not in network_award
 assert network_award["high_density_hub_threshold_distinct_upstream_wol_nodes"] == 10
 assert network_award["distinct_upstream_count_excludes_self"] is True
 assert network_award["requires_receipt_backed_propagation_edges"] is True

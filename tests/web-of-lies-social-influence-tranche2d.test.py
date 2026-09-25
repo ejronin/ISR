@@ -61,14 +61,11 @@ assert len(award_list) == 1
 award = award_list[0]
 assert award["award_code"] == "BULLSHITTER"
 assert award["public_label"] == "Bullshitter"
-assert award["qualifying_window_start"] == "2026-07-17T00:00:00"
-assert award["qualifying_window_end"] == "2026-08-15T00:00:00"
+assert award["qualification_start"] == "2026-07-17T00:00:00"
+assert award["qualification_end"] == "2026-08-15T00:00:00"
 assert award["qualifying_incident_count"] == 6
 assert set(award["qualifying_incident_ids"]) == meidas_ids
-assert award["current_window_status"] == "EARNED_HISTORICAL"
-assert award["currently_active"] is False
-assert award["current_window_incident_count"] == 0
-assert award["current_window_incident_ids"] == []
+
 
 # The older Jul. 12 broad-destruction discovery is deliberately not needed to
 # reach the threshold and therefore cannot be silently counted as a seventh
@@ -89,5 +86,5 @@ assert "WOL-SRC-MEIDASTOUCH" not in hall_ids
 
 print(
     "web-of-lies social influence tranche2d: PASS "
-    "meidas_bullshitter=1 earning_incidents=6 window_days=29"
+    "meidas_bullshitter=1 earning_incidents=6 cumulative_threshold=6"
 )

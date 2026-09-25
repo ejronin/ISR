@@ -402,28 +402,20 @@ assert len(valenti_awards) == 1
 valenti_award = valenti_awards[0]
 assert valenti_award["award_code"] == "BULLSHITTER"
 assert valenti_award["public_label"] == "Bullshitter"
-assert valenti_award["qualifying_window_start"] == "2026-07-20T00:00:00"
-assert valenti_award["qualifying_window_end"] == "2026-08-04T00:00:00"
+assert valenti_award["qualification_scope"] == "CUMULATIVE"
+assert valenti_award["qualification_start"] == "2026-03-03T00:00:00"
+assert valenti_award["qualification_end"] == "2026-07-22T00:00:00"
 assert valenti_award["qualifying_incident_count"] == 6
 assert set(valenti_award["qualifying_incident_ids"]) == {
+    "WOL-BS-VALENTI-MAR3-NUCLEAR-WAR-20260303",
+    "WOL-BS-VALENTI-TRUMP-ASKED-NUKE-IRAN-20260421",
+    "WOL-BS-VALENTI-OFFICIAL-SURRENDER-20260618",
+    "WOL-BS-VALENTI-RUSSIAN-INVASION-POLAND-IMMINENT-20260703",
     "WOL-BS-VALENTI-US-RUNS-OUT-OF-AMMO-20260720",
     "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
-    "WOL-BS-VALENTI-NUCLEAR-ARMED-JETS-20260723",
-    "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
-    "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
-    "WOL-BS-VALENTI-US-MILITARY-OUT-OF-AMMO-20260804",
 }
 assert valenti_award["documented_incident_count"] == 24
 assert set(valenti_award["documented_incident_ids"]) == valenti_all_incident_ids
-assert valenti_award["current_window_status"] == "EARNED_HISTORICAL"
-assert valenti_award["currently_active"] is False
-assert valenti_award["current_window_incident_count"] == 4
-assert set(valenti_award["current_window_incident_ids"]) == {
-    "WOL-BS-VALENTI-E6B-IRAN-NUCLEAR-USE-202609",
-    "WOL-BS-VALENTI-31M-SOLDIERS-20260917",
-    "WOL-BS-VALENTI-CHINA-NUCLEAR-WAR-20260922",
-    "WOL-BS-VALENTI-UN-SPEECH-NUKING-IRAN-20260923",
-}
 
 # The Bullshitter award is independent from legacy direct_verdict / Hall class
 # scoring. Valenti earns the award from WOL-native incidents while his
@@ -472,29 +464,13 @@ assert len(ethan_awards) == 1
 ethan_award = ethan_awards[0]
 assert ethan_award["award_code"] == "BULLSHITTER"
 assert ethan_award["public_label"] == "Bullshitter"
-assert ethan_award["qualifying_window_start"] == "2026-03-18T00:00:00"
-assert ethan_award["qualifying_window_end"] == "2026-03-20T00:00:00"
+assert ethan_award["qualification_scope"] == "CUMULATIVE"
+assert ethan_award["qualification_start"] == "2026-03-18T00:00:00"
+assert ethan_award["qualification_end"] == "2026-03-20T00:00:00"
 assert ethan_award["qualifying_incident_count"] == 6
 assert set(ethan_award["qualifying_incident_ids"]) == ethan_award_incident_ids
 assert ethan_award["documented_incident_count"] == 34
 assert set(ethan_award["documented_incident_ids"]) == ethan_all_incident_ids
-assert ethan_award["current_window_status"] == "EARNED_HISTORICAL"
-assert ethan_award["currently_active"] is False
-# The award's current-window tail is intentionally derived from the canonical
-# current horizon. Ordinary Evidence Integration can advance that horizon
-# without changing any Web-of-Lies finding, so do not freeze a transient count.
-ethan_cutoff = wol.parse_time(ethan_award["as_of"])
-assert ethan_cutoff is not None
-ethan_current_start = ethan_cutoff - wol.timedelta(days=ethan_award["window_days"])
-ethan_expected_current_ids = sorted(
-    incident_id
-    for incident_id in ethan_all_incident_ids
-    if wol.bullshit_qualifying_event(behavior_incidents[incident_id], governance)
-    and (moment := wol.bullshit_incident_moment(behavior_incidents[incident_id])) is not None
-    and ethan_current_start <= moment <= ethan_cutoff
-)
-assert ethan_award["current_window_incident_count"] == len(ethan_expected_current_ids)
-assert ethan_award["current_window_incident_ids"] == ethan_expected_current_ids
 
 # One publication event is one award incident even when it contains multiple
 # atomic propositions (e.g. March 22 causation + stockpile extrapolation).
