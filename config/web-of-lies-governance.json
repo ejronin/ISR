@@ -417,7 +417,10 @@
         "follows_mentions_interactions_do_not_count": true,
         "neutral_attributed_reporting_does_not_count": true,
         "network_position_alone_does_not_award": true,
-        "rule": "Network topology may contribute to Bullshitter qualification when the node itself repeatedly publishes qualifying bullshit amplification. A node with receipt-backed qualifying amplification from at least 5 distinct upstream WOL Bullshitters/qualifying bullshit amplifiers and at least 6 qualifying amplification publications in any 30-day window satisfies the network-assisted Bullshitter route. Ten or more distinct upstream WOL nodes is a high-density hub signal. Mere follows, mentions, replies, ideological affinity, shared audience, or other social adjacency never count; the target node's own publication conduct remains mandatory."
+        "rule": "Network topology may contribute to Bullshitter qualification when the node itself repeatedly publishes qualifying bullshit amplification. A node with receipt-backed qualifying amplification from at least 5 distinct upstream WOL Bullshitters/qualifying bullshit amplifiers and at least 6 qualifying amplification publications in any 30-day window satisfies the network-assisted Bullshitter route. Ten or more distinct upstream WOL nodes is a high-density hub signal. Mere follows, mentions, replies, ideological affinity, shared audience, or other social adjacency never count; the target node's own publication conduct remains mandatory.",
+        "message_identity_required_for_award_counting": true,
+        "same_information_event_cross_platform_mirrors_deduplicated": true,
+        "current_runtime_upstream_basis": "ROOT_BULLSHITTER_EVENT; preserve immediate qualifying amplifier when recoverable"
       }
     }
   },
