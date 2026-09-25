@@ -71,7 +71,7 @@ assert.match(iaSource, /Amplifiers/);
 assert.match(iaSource, /Upstream Bullshitter sources/);
 assert.match(iaSource, /🏆 Hall of Shame/);
 assert.match(iaSource, /👑 #1/);
-assert.match(iaSource, /const nodeMarkers = node =>/);
+assert.match(iaSource, /const nodeFlagAsset = node =>/);\nassert.match(iaSource, /const nodeMarkers = node =>/);
 assert.match(iaSource, /markers\.push\('💩'\)/);
 assert.match(iaSource, /markers\.push\('📣'\)/);
 assert.doesNotMatch(iaSource, /node\[flag_path\]/);
@@ -105,7 +105,7 @@ assert(!/manual_rank|manual_score|featured_rank/.test(iaSource), 'public Web of 
   'WOL-native award incidents',
   'deterministic from the WOL behavior record',
   'typed lineage relationship',
-  'canonical claim/evidence relationships'
+  'canonical claim/evidence relationships',\n  'Internal relationship codes'
 ].forEach(text => {
   assert(!iaSource.includes(text) && !readerSource.includes(text), `internal implementation language leaked into public copy: ${text}`);
 });
