@@ -940,6 +940,53 @@ a:hover { color: #e0f2ff; }
 .wol-source-events { display: grid; gap: 1rem; }
 
 .wol-network { overflow: hidden; }
+.forensic-companion-nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin: 0 0 1rem;
+  padding: .3rem;
+  border: 1px solid var(--line-soft);
+  border-radius: .65rem;
+  background: #091219;
+}
+.forensic-companion-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: .55rem .8rem;
+  border-radius: .45rem;
+  color: var(--accent-strong);
+  font-weight: 760;
+  text-decoration: none;
+}
+.forensic-companion-link.is-current {
+  background: #20394d;
+  color: var(--text);
+}
+.forensic-companion-link:focus-visible {
+  outline: 3px solid var(--atlas-focus-ring);
+  outline-offset: 2px;
+}
+.wol-graph-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(18rem, .8fr);
+  gap: 1rem;
+  align-items: start;
+}
+.wol-graph-column { min-width: 0; }
+.wol-node-detail {
+  position: sticky;
+  top: 1rem;
+  min-width: 0;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: #091219;
+}
+.wol-node-detail > h3 { margin: 0 0 .8rem; }
 .wol-graph-legend {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
@@ -984,8 +1031,8 @@ a:hover { color: #e0f2ff; }
 }
 .wol-cytoscape-host {
   width: 100%;
-  height: clamp(30rem, 68vh, 54rem);
-  min-height: 30rem;
+  height: clamp(34rem, 72vh, 58rem);
+  min-height: 34rem;
   overflow: hidden;
   border: 1px solid #35566a;
   border-radius: var(--radius);
@@ -1141,7 +1188,16 @@ a:hover { color: #e0f2ff; }
   outline-offset: 2px;
 }
 
+@media (max-width: 70rem) {
+  .wol-graph-workspace { grid-template-columns: 1fr; }
+  .wol-node-detail {
+    position: static;
+    max-height: none;
+  }
+}
 @media (max-width: 44rem) {
+  .forensic-companion-nav { display: flex; width: 100%; }
+  .forensic-companion-link { flex: 1 1 0; justify-content: center; }
   .wol-cytoscape-host { height: 30rem; min-height: 30rem; }
   .wol-mermaid-host { min-height: 20rem; padding: .6rem; }
   .wol-mermaid-host svg { min-width: 40rem; }
@@ -1186,7 +1242,16 @@ a:hover { color: #e0f2ff; }
 .wol-trace-event small { display: block; margin-top: .45rem; color: var(--muted); }
 .wol-trace-relations { margin-top: 1rem; }
 .reader-wol-link { margin-top: 1rem; }
-.reader-wol-trace { align-self: flex-start; white-space: nowrap; }
+.reader-wol-trace {
+  align-self: flex-start;
+  min-height: 2.75rem;
+  padding: .6rem .8rem;
+  border: 1px solid var(--accent);
+  border-radius: .45rem;
+  background: #132a39;
+  white-space: nowrap;
+  font-weight: 800;
+}
 
 .ledger-group-heading { margin: 1.2rem 0 .7rem; font-size: 1rem; }
 .loss-side-group {
