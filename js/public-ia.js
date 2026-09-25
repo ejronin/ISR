@@ -2243,7 +2243,7 @@
       if (asset) {
         const flag = append(wrapper, 'img', 'wol-node-flag');
         flag.src = asset.path;
-        flag.alt = `${publicNarrative(node.country_region, node.country_code || 'Country')} flag`;
+        flag.alt = `${publicNarrative(asset.label, node.country_region || 'Country')} flag`;
         flag.width = 28;
         flag.height = 20;
         flag.decoding = 'async';
@@ -2304,7 +2304,7 @@
       ['💩 Bullshitter', 'Source earned the Bullshitter award from its own documented publications.'],
       ['📣 Amplifier', 'Account carried one of those documented claims outward.'],
       ['→ Connection', 'Arrow direction shows the documented path from source to amplifier.'],
-      ['🇺🇳 Flag', 'Country appears only when that identity or affiliation is supported by the record.'],
+      ['Country flag', 'Shown only when that identity or affiliation is supported by the record.'],
       ['🤖 Bot', 'Shown only when bot status is confirmed.']
     ].forEach(([label, note]) => {
       const item = append(legend, 'span', 'wol-legend-item');
@@ -2391,7 +2391,7 @@
       append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'AMPLIFIER');
       appendNodeIdentity(heading, node, 'h3', 'wol-node-identity wol-selected-node-identity');
       addFactList(heading, [
-        ['Country', publicNarrative(node.country_region, node.country_code || 'Not established')],
+        ['Country', publicNarrative(node.country_region, nodeFlagAsset(node)?.label || 'Not established')],
         ['Platform', publicNarrative(node.primary_platform, 'Not established')],
         ['Account type', plainLabel(node.authenticity_class, 'Unknown')],
         ['Direct connections', formatNumber(adjacencyFor(nodeId).size)]
@@ -2457,7 +2457,7 @@
         outgoing.forEach(edge => {
           const target = graphNodeById.get(edge.to_node_id);
           const row = append(ampBlock, 'article', 'record-card wol-megaphone-card');
-          append(row, 'h4', '', nodeLabel(target || { display_name: edge.to_node_id, node_type: 'MEGAPHONE' }));
+          append(row, 'h4', '', nodeLabel(target || { display_name: 'Amplifier', node_type: 'MEGAPHONE' }));
           append(row, 'p', '', `${formatNumber(edge.amplified_claim_count || 0)} documented claim${Number(edge.amplified_claim_count || 0) === 1 ? '' : 's'} carried from this Bullshitter.`);
           appendReceipts(row, edge.public_receipts);
         });
@@ -2471,7 +2471,7 @@
         incoming.forEach(edge => {
           const source = graphNodeById.get(edge.from_node_id);
           const block = append(repeated, 'article', 'record-card wol-amplified-source');
-          append(block, 'h4', '', nodeLabel(source || { display_name: edge.from_node_id, node_type: 'BULLSHITTER' }));
+          append(block, 'h4', '', nodeLabel(source || { display_name: 'Source', node_type: 'BULLSHITTER' }));
           asArray(edge.bullshitter_event_ids).forEach(eventId => {
             const incident = qualifyingEventById.get(eventId);
             if (!incident) return;
