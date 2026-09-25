@@ -988,21 +988,22 @@ a:hover { color: #e0f2ff; }
 }
 .wol-node-detail > h3 { margin: 0 0 .8rem; }
 .wol-graph-legend {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: .6rem;
-  margin: .8rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem 1rem;
+  margin: .7rem 0 .85rem;
+  padding: .65rem .75rem;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
 }
 .wol-legend-item {
-  display: grid;
-  gap: .2rem;
-  padding: .7rem .8rem;
-  border: 1px solid var(--line-soft);
-  border-radius: .5rem;
-  background: #0b131a;
+  display: inline-flex;
+  gap: .35rem;
+  align-items: baseline;
+  padding: 0;
 }
-.wol-legend-item strong { color: var(--text); font-size: .78rem; }
-.wol-legend-item small { color: var(--muted); font-size: .7rem; line-height: 1.45; }
+.wol-legend-item strong { color: var(--text); font-size: .76rem; white-space: nowrap; }
+.wol-legend-item small { color: var(--muted); font-size: .7rem; line-height: 1.4; }
 
 .wol-graph-controls {
   display: flex;
