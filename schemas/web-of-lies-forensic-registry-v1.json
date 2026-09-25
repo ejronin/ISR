@@ -1048,6 +1048,27 @@
               },
               "current_window_incident_ids": {
                 "$ref": "#/$defs/string_array"
+              },
+              "qualification_route": {
+                "enum": [
+                  "STANDARD_INCIDENT_WINDOW",
+                  "NETWORK_ASSISTED_AMPLIFICATION"
+                ]
+              },
+              "minimum_distinct_upstream_wol_nodes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "qualifying_upstream_source_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "qualifying_upstream_source_ids": {
+                "$ref": "#/$defs/string_array"
+              },
+              "current_window_upstream_source_count": {
+                "type": "integer",
+                "minimum": 0
               }
             },
             "additionalProperties": false
