@@ -404,13 +404,37 @@ The graph must:
 - for a megaphone node, list each Bullshitter source/incident it amplified and
   the amplifier-specific publication receipts;
 - preserve neutral attributed reporting outside the megaphone network unless
-  the publication actually rebroadcasts/adopts the qualifying message.
+  the publication actually rebroadcasts/adopts the qualifying message;
+- permit one node to hold **Bullshitter + amplifier** roles simultaneously;
+- retain publisher-owned propagation of the publisher's own qualifying material
+  as `SELF_AMPLIFICATION` rather than discarding it as publisher plumbing;
+- retain third-party propagation as `EXTERNAL_AMPLIFICATION`;
+- draw the immediate receipt-backed propagation relationship between nodes when
+  recoverable, while preserving the root Bullshitter incident lineage.
 
-A megaphone roster is propagation evidence, not a second WOL incident adjudication.
+A megaphone roster is propagation evidence, not automatic award inheritance.
 Once WOL has qualified the upstream bullshit incident, the lightweight downstream
 record needs only to prove **who amplified that specific message, where, when,
-and with what public receipt**. The graph therefore reuses WOL's adjudicated
-incident instead of manufacturing a second full WOL adjudication for every repost.
+and with what public receipt**. The upstream truth finding is reused rather than
+re-adjudicated.
+
+The downstream publication is nevertheless the amplifier's **own behavior**.
+If the account republishes, repeats, embeds, quotes approvingly, or otherwise
+adopts the WOL-qualified false/materially misleading proposition as factual, that
+publication may qualify toward the amplifier's own Bullshitter history. Neutral
+attributed reporting with meaningful corrective context remains excluded.
+
+A source may therefore be all of the following at once:
+
+- an originator of qualifying bullshit;
+- a Bullshitter awardee;
+- an amplifier of other Bullshitters;
+- an amplifier of its own qualifying material.
+
+Self-amplification is a graph edge even when the source and amplifier resolve to
+the same canonical node. It does not manufacture a second Bullshitter incident
+unless there is a distinct downstream publication event after ordinary
+same-information-event deduplication.
 
 Claim-family TRACE views remain available as a secondary drill-down for the
 underlying lineage record.
@@ -1116,18 +1140,38 @@ for every repost. The downstream question is simply whether the account actually
 rebroadcast, repeated, embedded, or adopted that qualifying message.
 
 Network membership alone still proves nothing. A source does not become a
-megaphone merely because it is associated, ideologically aligned, or part of the
-same community. A receipt must establish the publication/amplification act.
+megaphone merely because it is associated, ideologically aligned, follows,
+mentions, replies to, or shares an audience with another node. A receipt must
+establish the publication/amplification act.
+
+Network topology **can** become source-behavior evidence when the edges themselves
+are qualifying propagation conduct. For network-assisted Bullshitter
+qualification:
+
+- the target node must itself publish qualifying amplification;
+- at least **5 distinct upstream WOL Bullshitter/qualifying-amplifier nodes** must
+  be connected by receipt-backed qualifying propagation;
+- at least **6 qualifying amplification publications in any 30-day window** are
+  required;
+- self-amplification does not count as a distinct upstream node for this network
+  threshold;
+- **10 or more distinct upstream WOL nodes** is a high-density hub signal;
+- follows, mentions, replies, ideology, organizational proximity, and shared
+  audiences never count as qualifying edges.
+
+This is not guilt by association: the node's own publications are mandatory.
+The network pattern supplies evidence that the qualifying conduct is systematic
+and multi-source rather than an isolated repost.
 
 Neutral attributed reporting remains distinct. A publication that clearly says
 "X claims Y," preserves Y as an allegation, and supplies meaningful contrary or
 corrective context does not enter the megaphone roster merely for mentioning the
 claim.
 
-Being listed as a megaphone does **not** inherit the upstream Bullshitter award.
-If the amplifier independently earns the award from its own adjudicated conduct,
-that award is derived through the ordinary Bullshitter rule. The graph may still
-show that the same account also amplified other Bullshitter sources.
+Being listed as a megaphone does **not** automatically inherit the upstream
+Bullshitter award. A megaphone earns Bullshitter only through its own qualifying
+publication conduct, including the network-assisted route above. The graph may
+therefore show the same account as both Bullshitter and amplifier.
 
 An account does not remain an active target merely because it was named once.
 A seed with no material 2026 Iran-war activity is removed from the active

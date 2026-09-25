@@ -40,11 +40,34 @@ assert set(scope["materiality_qualification_bases"]) == {
     "DOCUMENTED_DOWNSTREAM_AMPLIFICATION",
 }
 assert scope["arbitrary_numeric_follower_threshold_forbidden"] is True
-assert "lightweight propagation evidence" in scope["amplifier_behavior_rule"]
+assert "receipt-backed propagation evidence" in scope["amplifier_behavior_rule"]
+assert "amplifier's own source behavior" in scope["amplifier_behavior_rule"]
+assert "SELF_AMPLIFICATION" in scope["self_amplification_rule"]
+assert "Five or more distinct upstream" in scope["network_pattern_rule"]
+assert "ten or more" in scope["network_pattern_rule"]
 assert "Network membership alone proves nothing" in scope["no_guilt_by_network_rule"]
+assert "node's own qualifying publication conduct" in scope["network_assisted_bullshitter_rule"]
 assert scope["megaphone_roster_is_not_award_inheritance"] is True
 assert scope["megaphone_cross_awardee_overlap_is_graph_signal"] is True
 assert scope["bot_and_country_markers_require_receipts"] is True
+
+bullshitter = GOV["source_awards"]["BULLSHITTER"]
+assert bullshitter["self_amplification_counts_as_amplifier_role"] is True
+assert "SELF_AMPLIFICATION" in bullshitter["self_amplification_rule"]
+network_award = bullshitter["network_assisted_qualification"]
+assert network_award["enabled"] is True
+assert network_award["minimum_distinct_upstream_wol_nodes"] == 5
+assert network_award["minimum_qualifying_amplification_incidents"] == 6
+assert network_award["window_days"] == 30
+assert network_award["high_density_hub_threshold_distinct_upstream_wol_nodes"] == 10
+assert network_award["distinct_upstream_count_excludes_self"] is True
+assert network_award["requires_receipt_backed_propagation_edges"] is True
+assert network_award["requires_amplifier_publication_conduct"] is True
+assert network_award["network_position_alone_does_not_award"] is True
+assert network_award["follows_mentions_interactions_do_not_count"] is True
+assert network_award["neutral_attributed_reporting_does_not_count"] is True
+assert "SYSTEMATIC_BULLSHIT_AMPLIFIER" in GOV["source_behavior_classes"]
+assert "SYSTEMATIC_BULLSHIT_AMPLIFIER" in GOV["hall_of_shame"]["hall_of_shame_classes"]
 
 # Audience/reach can select a material source for review; it cannot improve or
 # worsen truth, deception, Bullshitter qualification, or Hall rank.
@@ -109,5 +132,5 @@ assert all("coordination" not in r.get("evidence_value", "").lower() for r in za
 print(
     "web-of-lies source discovery scope: PASS "
     "conflict=IRAN_WAR_2026 retained_material_discoveries=3 "
-    "off_scope_sources_removed=7 megaphones=propagation_only"
+    "off_scope_sources_removed=7 megaphones=propagation_and_source_behavior dual_roles=self_amplification"
 )
