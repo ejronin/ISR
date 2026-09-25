@@ -25,7 +25,7 @@ const expectedSecondary = {
   hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Current Hormuz Talks'],
   talks: ['Talks & Agreements', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
   objectives: ['Objectives & Outcomes', 'Position Changes', "How Iran's Position Changed"],
-  evidence: ['Claim Checks', 'Lie Ledger', 'Sources', 'How We Check the Evidence', 'Archive']
+  evidence: ['Claim Checks', 'Lie Ledger', 'Web of Lies', 'Sources', 'How We Check the Evidence', 'Archive']
 };
 for (const [primary, labels] of Object.entries(expectedSecondary)) {
   assert.deepEqual(ia.routesForPrimary(primary).map(route => route.label), labels, `secondary navigation mismatch: ${primary}`);
