@@ -645,7 +645,7 @@
         const logicDetails = append(card, 'details', 'reader-chain-logic');
         append(logicDetails, 'summary', '', 'How the finding connects');
         append(logicDetails, 'p', 'section-note',
-          'Follow the claim, evidence, corrections, repetitions, and later developments that support this finding. Internal relationship codes are intentionally not shown in the public reader.');
+          'Follow the claim, evidence, corrections, repetitions, and later developments that support this finding.');
       }
 
       const gaps = asArray(chain && chain.open_evidence_gaps).map(evidenceGapText).filter(Boolean);
