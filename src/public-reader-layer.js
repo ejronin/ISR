@@ -643,20 +643,9 @@
       const logic = chain && chain.logic_graph;
       if (logic && asArray(logic.nodes).length) {
         const logicDetails = append(card, 'details', 'reader-chain-logic');
-        append(logicDetails, 'summary', '', 'How the logic works');
+        append(logicDetails, 'summary', '', 'How the finding connects');
         append(logicDetails, 'p', 'section-note',
-          'This view follows the evidence links used for the finding, including the claim, supporting or contrary evidence, corrections, and later developments.');
-        const relationCounts = new Map();
-        asArray(logic.edges).forEach(edge => {
-          const relation = cleanPublicText(edge && edge.relation);
-          if (relation) relationCounts.set(relation, (relationCounts.get(relation) || 0) + 1);
-        });
-        if (relationCounts.size) {
-          const list = append(logicDetails, 'ul', 'reader-logic-relations');
-          [...relationCounts.entries()].sort((a, b) => a[0].localeCompare(b[0])).forEach(([relation, count]) => {
-            append(list, 'li', '', `${relation.replaceAll('_', ' ').toLowerCase()} — ${count}`);
-          });
-        }
+          'Follow the claim, evidence, corrections, repetitions, and later developments that support this finding. Internal relationship codes are intentionally not shown in the public reader.');
       }
 
       const gaps = asArray(chain && chain.open_evidence_gaps).map(evidenceGapText).filter(Boolean);
