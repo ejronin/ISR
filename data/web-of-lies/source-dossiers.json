@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-25T22:15:00-04:00",
+  "as_of": "2026-09-25T22:55:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted. 2026-09-25 media-amplifier census pass 5: prioritized repeated downstream nodes over one-off leaves. Hajij is now receipt-backed across three distinct Press TV qualifying events, and The Truthseeker across two; no upstream truth/adjudication field is changed. Pass 5 follow-through: GlobalSecurity.org is now receipt-backed across five distinct Press TV qualifying events after recovering its April 3 second-F-35 and April 28 170-aircraft archive copies. 2026-09-25 Ethan/Valenti amplifier review: Ethan gains receipt-backed downstream Telegram/X relays, including a three-event repeat node at Las Noticias and a recoverable multi-account Beaufort retweet cluster. Valenti external search did not establish a second new independent downstream node beyond the existing @leonoe1986 receipt; four publisher-owned YouTube Shorts are recorded separately as SELF_AMPLIFICATION and must not be treated as independent support or independent amplifiers. Downstream appearance alone confers no adverse source class or award. 2026-09-25 comparative amplifier pass for RKM/@rkmtimes, @WMX_MEDIA and ZardSi: added only directionally proven embed/repost/adoption edges. Multiple same-claim publishers identified by fact-checks without recoverable source-order evidence (including TMT/SW News around the ZardSi Dimona claim and parallel WMX tanker publishers) are retained as co-propagation leads and are not forced into directional amplifier edges. No shared downstream identity across all three sources was established in this pass.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted. 2026-09-25 media-amplifier census pass 5: prioritized repeated downstream nodes over one-off leaves. Hajij is now receipt-backed across three distinct Press TV qualifying events, and The Truthseeker across two; no upstream truth/adjudication field is changed. Pass 5 follow-through: GlobalSecurity.org is now receipt-backed across five distinct Press TV qualifying events after recovering its April 3 second-F-35 and April 28 170-aircraft archive copies. 2026-09-25 Ethan/Valenti amplifier review: Ethan gains receipt-backed downstream Telegram/X relays, including a three-event repeat node at Las Noticias and a recoverable multi-account Beaufort retweet cluster. Valenti external search did not establish a second new independent downstream node beyond the existing @leonoe1986 receipt; four publisher-owned YouTube Shorts are recorded separately as SELF_AMPLIFICATION and must not be treated as independent support or independent amplifiers. Downstream appearance alone confers no adverse source class or award. 2026-09-25 comparative amplifier pass for RKM/@rkmtimes, @WMX_MEDIA and ZardSi: added only directionally proven embed/repost/adoption edges. Multiple same-claim publishers identified by fact-checks without recoverable source-order evidence (including TMT/SW News around the ZardSi Dimona claim and parallel WMX tanker publishers) are retained as co-propagation leads and are not forced into directional amplifier edges. No shared downstream identity across all three sources was established in this pass. 2026-09-25 Krassenstein/Meidas/Lim pass: Brian and Ed Krassenstein were reviewed separately from their joint Krassencast outlet; two Brian and one Ed qualifying individual-X incidents were promoted, below the deterministic Bullshitter threshold. Meidas podcast syndication/indexing was not misclassified as independent amplification. Lim correction-awareness review confirmed internal contradiction/persistent binary framing but found no public receipt sufficient for repeat-after-correction or intentional-deception promotion.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -1255,6 +1255,118 @@
       ],
       "canonical_collection_source_id": "CSU-YE-ALMASIRAH",
       "identity_basis_note": "Atlas Evidence Integration already tracks Al Masirah as a Yemen/Houthi-aligned state-aligned media source; WOL promotion here is identity normalization only and does not assign a Bullshitter award or new adverse behavior finding."
+    },
+    {
+      "source_id": "WOL-SRC-BRIAN-KRASSENSTEIN",
+      "display_name": "Brian Krassenstein",
+      "source_entity_type": "PERSON",
+      "country_region": "United States",
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "HUMAN_ACCOUNT",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-BRIAN-KRASSENSTEIN",
+      "identity_confidence": "CONFIRMED",
+      "aliases": [
+        "Brian Krassenstein",
+        "@krassenstein"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-BRIAN-KRASSENSTEIN-X",
+          "platform": "X",
+          "handle": "@krassenstein",
+          "url": "https://x.com/krassenstein",
+          "display_name": "Brian Krassenstein",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "identity_context": "Public identity and X account are resolved. Brian and Ed Krassenstein jointly operate the Krassencast publication, but WOL keeps each brother's individual social-media conduct separate from the joint outlet unless a specific joint publication is itself the information event.",
+      "public_role_context": [
+        "The joint Krassencast About page describes Brian and Ed Krassenstein as investigative journalists. WOL preserves that as a self-description rather than using it as an adverse classification."
+      ],
+      "claimed_roles": [
+        {
+          "role_code": "JOURNALIST",
+          "public_label": "Investigative Journalist",
+          "self_claimed": true,
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-ROLE-BRIAN-KRASSENCAST-JOURNALIST-20260925",
+              "surface": "WEBSITE",
+              "url": "https://krassencast.com/about",
+              "archive_url": null,
+              "published_at": null,
+              "captured_at": "2026-09-25",
+              "provenance_status": "ORIGINAL_URL",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Krassencast About identifies Ed and Brian Krassenstein and describes the twins as investigative journalists."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "WOL-SRC-ED-KRASSENSTEIN",
+      "display_name": "Ed Krassenstein",
+      "source_entity_type": "PERSON",
+      "country_region": "United States",
+      "primary_platform": "X",
+      "behavior_classes": [
+        "UNKNOWN"
+      ],
+      "authenticity_class": "HUMAN_ACCOUNT",
+      "revenue_model": [
+        "UNKNOWN_REVENUE_MODEL"
+      ],
+      "classification_basis_event_ids": [],
+      "revenue_basis_event_ids": [],
+      "stable_identity_id": "WOL-ID-ED-KRASSENSTEIN",
+      "identity_confidence": "CONFIRMED",
+      "aliases": [
+        "Ed Krassenstein",
+        "@EdKrassen"
+      ],
+      "platform_accounts": [
+        {
+          "account_id": "WOL-ACCT-ED-KRASSENSTEIN-X",
+          "platform": "X",
+          "handle": "@EdKrassen",
+          "url": "https://x.com/EdKrassen",
+          "display_name": "Ed Krassenstein",
+          "account_state": "ACTIVE_PUBLIC"
+        }
+      ],
+      "identity_context": "Public identity and X account are resolved. Brian and Ed Krassenstein jointly operate the Krassencast publication, but WOL keeps each brother's individual social-media conduct separate from the joint outlet unless a specific joint publication is itself the information event.",
+      "public_role_context": [
+        "The joint Krassencast About page describes Brian and Ed Krassenstein as investigative journalists. WOL preserves that as a self-description rather than using it as an adverse classification."
+      ],
+      "claimed_roles": [
+        {
+          "role_code": "JOURNALIST",
+          "public_label": "Investigative Journalist",
+          "self_claimed": true,
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-ROLE-ED-KRASSENCAST-JOURNALIST-20260925",
+              "surface": "WEBSITE",
+              "url": "https://krassencast.com/about",
+              "archive_url": null,
+              "published_at": null,
+              "captured_at": "2026-09-25",
+              "provenance_status": "ORIGINAL_URL",
+              "deletion_status": "AVAILABLE",
+              "text_excerpt": "Krassencast About identifies Ed and Brian Krassenstein and describes the twins as investigative journalists."
+            }
+          ]
+        }
+      ]
     }
   ],
   "source_relationships": [
@@ -1709,7 +1821,7 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Expanded July 8–August 2 pattern review records six distinct qualifying WOL-native information events. The pattern is not that Lim's shipping data are generally false: much of the traffic, insurance and damage substrate is real. The recurring failure is converting that substrate into unsupported binary-control/causal conclusions, plus two hard factual failures: the self-contradictory 'not reopened for a single day' claim and a 4000-fold insurance multiplier that is arithmetically about 27–40-fold using his own percentages. The deterministic Bullshitter award must be derived from the six events rather than manually assigned."
+      "notes": "Expanded July 8–August 2 pattern review records six distinct qualifying WOL-native information events. The pattern is not that Lim's shipping data are generally false: much of the traffic, insurance and damage substrate is real. The recurring failure is converting that substrate into unsupported binary-control/causal conclusions, plus two hard factual failures: the self-contradictory 'not reopened for a single day' claim and a 4000-fold insurance multiplier that is arithmetically about 27–40-fold using his own percentages. The deterministic Bullshitter award must be derived from the six events rather than manually assigned. A September 25 correction-awareness/intent follow-up found a stronger internal inconsistency but did not establish a public repeat-after-correction or intent finding: the July 10 commentary says the war failed to reopen Hormuz 'for a single day' while the same article later says the June settlement 'briefly cracked the Strait open,' and later commentary continued categorical open/closed framing. No recoverable public receipt was found showing Lim acknowledging an external correction and then knowingly repeating the corrected proposition. WOL therefore preserves the existing six incidents and Bullshitter award without promoting REPEAT_AFTER_CORRECTION, evidentiary-evasion, or deliberate-deception language."
     },
     {
       "lead_id": "LEAD-MEIDASTOUCH",
@@ -1725,7 +1837,7 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "OUTLET_IDENTITY_RESOLVED",
-      "notes": "A bounded July 17–August 15 review now records six distinct qualifying MeidasTouch publication events. The recurring pattern preserves a severe factual substrate—Iranian vessel attacks, genuine U.S. munitions depletion, extensive base damage and Bahrain logistics disruption—while repeatedly converting that substrate into unsupported absolutes such as seven tankers destroyed, zero Patriot/THAAD inventory, the U.S. out of all weapons, and essentially all regional U.S. bases destroyed/obliterated. Repeated publications count separately; multiple atomic propositions inside one episode count once. The deterministic Bullshitter award must be derived rather than manually assigned. The older July 12 broad-base-destruction discovery remains separately queued for upstream canonical atomization and is not needed to earn the source-behavior award."
+      "notes": "A bounded July 17–August 15 review now records six distinct qualifying MeidasTouch publication events. The recurring pattern preserves a severe factual substrate—Iranian vessel attacks, genuine U.S. munitions depletion, extensive base damage and Bahrain logistics disruption—while repeatedly converting that substrate into unsupported absolutes such as seven tankers destroyed, zero Patriot/THAAD inventory, the U.S. out of all weapons, and essentially all regional U.S. bases destroyed/obliterated. Repeated publications count separately; multiple atomic propositions inside one episode count once. The deterministic Bullshitter award must be derived rather than manually assigned. The older July 12 broad-base-destruction discovery remains separately queued for upstream canonical atomization and is not needed to earn the source-behavior award. Propagation-only sweep on September 25 found broad RSS/podcast/transcript redistribution of the scored episodes through Apple/iHeart and transcript/index services, but no clean independent downstream account adoption of the six scored propositions survived the directional-receipt standard. Neutral/automated podcast distribution is not promoted as an independent amplifier edge."
     },
     {
       "lead_id": "LEAD-MIDDLE-EAST-MONITOR",
@@ -2362,6 +2474,38 @@
         "limitation": "This completion does not claim omniscient lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Valenti corpus has been reviewed to the point that remaining items lack the source evidence needed for responsible scoring.",
         "next_action": "NONE_UNLESS_NEW_EVIDENCE"
       }
+    },
+    {
+      "lead_id": "LEAD-BRIAN-KRASSENSTEIN",
+      "display_name": "Brian Krassenstein",
+      "seed_urls": [
+        "https://x.com/krassenstein",
+        "https://krassencast.com/about",
+        "https://x.com/krassenstein/status/2028080377823215768",
+        "https://www.news24.com/world/oman-port-and-tanker-hit-as-iran-strikes-the-gulf-20260301-0770",
+        "https://www.reuters.com/business/energy/oil-tanker-hit-off-oman-coast-after-drones-strike-duqm-port-2026-03-01/",
+        "https://x.com/krassenstein/status/2040799063914741854",
+        "https://www.aljazeera.com/news/2026/4/6/trump-says-us-armed-iranian-dissidents-via-kurds-kurdish-groups-deny-claim",
+        "https://www.reuters.com/investigations/trumps-mixed-messages-irans-bombs-kept-kurds-out-war-2026-04-08/"
+      ],
+      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "Fresh September 25 Iran-war review found two qualifying individual-X information events after separating Brian's social feed from the more careful jointly authored Krassencast outlet. One post attached an unsupported ship-behavior explanation to the real Skylight attack; another converted Trump's hedged and disputed claim that Kurdish intermediaries kept guns meant for Iranian protesters into Brian's own categorical statement that Trump armed Kurds who refused to fight for the United States. Multiple other reviewed Brian publications were attributed, explicitly caveated, opinion/question framing, or substantially corroborated and were not promoted. Two incidents do not earn a Bullshitter award."
+    },
+    {
+      "lead_id": "LEAD-ED-KRASSENSTEIN",
+      "display_name": "Ed Krassenstein",
+      "seed_urls": [
+        "https://x.com/EdKrassen",
+        "https://krassencast.com/about",
+        "https://x.com/EdKrassen/status/2028443709977583769",
+        "https://en.as.com/latest_news/a-military-intelligence-experts-warning-if-you-cut-the-strait-of-hormuz-the-worlds-richest-neighbors-will-be-pissed-off-f202603-n/",
+        "https://www.reuters.com/business/energy/three-tankers-damaged-gulf-us-iran-conflict-escalates-2026-03-01/",
+        "https://www.ukmto.org/-/media/ukmto/products/update-026---jmic-advisory-note-31-mar_final.pdf"
+      ],
+      "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
+      "identity_status": "PUBLIC_IDENTITY_RESOLVED",
+      "notes": "Fresh September 25 Iran-war review found one qualifying individual-X information event after separating Ed's social feed from the jointly authored Krassencast outlet. Ed reported an 'American oil tanker' struck by an Iranian anti-ship missile near Oman; the contemporaneous/reconstructed maritime record identifies the plausible nearby events as non-U.S.-flagged tankers and does not support that weapon/identity combination. Other reviewed Ed posts were attributed, hedged, opinion, or later corroborated and were not promoted. One incident does not earn a Bullshitter award."
     }
   ],
   "source_behavior_incidents": [
@@ -7320,6 +7464,177 @@
       "downstream_note": "Score the false temporal/media presentation only; do not use this incident to decide every other claim in the caption.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Any canonical March 5 strike count/target proposition remains separate."
+    },
+    {
+      "incident_id": "WOL-BS-BRIAN-KRASSENSTEIN-SKYLIGHT-IGNORED-ORDER-20260301",
+      "source_id": "WOL-SRC-BRIAN-KRASSENSTEIN",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-01",
+      "first_observed_at": "2026-03-01",
+      "statement_identity": "Brian Krassenstein reported the real attack on tanker Skylight near Oman, then stated as fact that the attack occurred after the ship ignored Iran's order not to enter the Strait of Hormuz.",
+      "source_information_event_id": "BRIAN-KRASSENSTEIN-X-2028080377823215768",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-BRIAN-SKYLIGHT-X-20260301",
+          "surface": "X",
+          "url": "https://x.com/krassenstein/status/2028080377823215768",
+          "published_at": "2026-03-01",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "MASSIVE BREAKING: Iran has struck the oil tanker 'Skylight' near the Strait of Hormuz... The attack occurred after the ship ignored Iran's order not to enter the straight."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-BRIAN-SKYLIGHT-NEWS24-20260301",
+          "surface": "WEBSITE",
+          "url": "https://www.news24.com/world/oman-port-and-tanker-hit-as-iran-strikes-the-gulf-20260301-0770",
+          "published_at": "2026-03-01",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "News24 embedded and preserved Brian Krassenstein's March 1 post, including the claim that Skylight had ignored Iran's order not to enter the strait."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-BRIAN-SKYLIGHT-REUTERS-20260301",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/oil-tanker-hit-off-oman-coast-after-drones-strike-duqm-port-2026-03-01/",
+          "published_at": "2026-03-01",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters reported Skylight was Palau-flagged, had been anchored in the Musandam region since February 22, and that the exact nature of the March 1 attack was unspecified."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Brian's original/preserved post plus contemporaneous Reuters vessel identity, location and pre-attack movement reporting.",
+        "checked_at": "2026-09-25T22:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The tanker attack and four crew injuries were real, but Reuters reported Skylight had been anchored in the Musandam region since February 22. The reviewed record does not support Brian's added factual explanation that the vessel was attacked after ignoring an Iranian order not to enter the strait.",
+        "search_notes": "WOL preserves the real tanker attack and scores only the unsupported ship-behavior/causal circumstance appended to it. This does not infer Brian originated that explanation.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One unsupported circumstance attached to a real maritime attack; no intent finding follows.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical proposition about the Skylight attack remains upstream authority; WOL records Brian's unsupported presentation behavior."
+    },
+    {
+      "incident_id": "WOL-BS-BRIAN-KRASSENSTEIN-KURDS-KEPT-GUNS-20260405",
+      "source_id": "WOL-SRC-BRIAN-KRASSENSTEIN",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-04-05",
+      "first_observed_at": "2026-04-05",
+      "statement_identity": "Brian Krassenstein converted Donald Trump's disputed and explicitly hedged claim that Kurdish intermediaries may have kept guns intended for Iranian protesters into a categorical statement that Trump instead armed Kurds who refused to fight on the U.S. side.",
+      "source_information_event_id": "BRIAN-KRASSENSTEIN-X-2040799063914741854",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-BRIAN-KURDS-X-20260405",
+          "surface": "X",
+          "url": "https://x.com/krassenstein/status/2040799063914741854",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Trump sent guns to Iranian protestors, but they never got into the protestors' hands, instead he armed the Kurds who refused to fight on our side."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-BRIAN-KURDS-ALJAZEERA-20260406",
+          "surface": "WEBSITE",
+          "url": "https://www.aljazeera.com/news/2026/4/6/trump-says-us-armed-iranian-dissidents-via-kurds-kurdish-groups-deny-claim",
+          "published_at": "2026-04-06",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Al Jazeera reported Trump's wording as 'I think the Kurds kept them' and documented denials by Kurdish groups."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-BRIAN-KURDS-RUDAW-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.rudaw.net/english/categories/iran/948429",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Rudaw reported multiple Iranian Kurdish opposition groups denying that they had received U.S. weapons."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-BRIAN-KURDS-REUTERS-20260408",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/investigations/trumps-mixed-messages-irans-bombs-kept-kurds-out-war-2026-04-08/",
+          "published_at": "2026-04-08",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters' reconstruction found that no concrete U.S. support materialized for a Kurdish offensive and documented the confused U.S. signaling around possible Kurdish involvement."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Brian's original post; the source statement attributed to Trump; contemporaneous Kurdish denials; and Reuters reconstruction of U.S.-Kurdish war planning/support.",
+        "checked_at": "2026-09-25T22:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Trump's reported source statement was itself hedged—he said he thought Kurdish intermediaries kept the guns. Kurdish groups denied receiving them, and Reuters found no concrete support materialized for the contemplated Kurdish offensive. That record does not support Brian converting the disputed proposition into his own categorical statement that Trump armed Kurds who then refused to fight for the United States.",
+        "search_notes": "The scored conduct is posture inflation from a disputed, hedged source allegation to a categorical factual assertion. WOL does not resolve any still-classified covert-support question beyond the public evidentiary record.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "A disputed and hedged source allegation was stated categorically. Two total Brian incidents remain below the deterministic award threshold.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Any canonical proposition about covert U.S. support to Iranian opposition groups remains upstream authority; WOL records the source-presentation behavior."
+    },
+    {
+      "incident_id": "WOL-BS-ED-KRASSENSTEIN-AMERICAN-TANKER-MISSILE-20260302",
+      "source_id": "WOL-SRC-ED-KRASSENSTEIN",
+      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-03-02",
+      "first_observed_at": "2026-03-02",
+      "statement_identity": "Ed Krassenstein reported that an American oil tanker had been struck by an Iranian anti-ship missile near Oman while attempting to enter the Strait of Hormuz.",
+      "source_information_event_id": "ED-KRASSENSTEIN-X-2028443709977583769",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ED-TANKER-X-20260302",
+          "surface": "X",
+          "url": "https://x.com/EdKrassen/status/2028443709977583769",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "An American oil tanker was reportedly struck by an Iranian anti-ship missile near Oman while attempting to enter the Strait of Hormuz."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ED-TANKER-ASUSA-20260302",
+          "surface": "WEBSITE",
+          "url": "https://en.as.com/latest_news/a-military-intelligence-experts-warning-if-you-cut-the-strait-of-hormuz-the-worlds-richest-neighbors-will-be-pissed-off-f202603-n/",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "text_excerpt": "AS USA embedded Ed Krassenstein's March 2 post with the 'American oil tanker' and 'Iranian anti-ship missile' wording."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ED-TANKER-REUTERS-20260301",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/business/energy/three-tankers-damaged-gulf-us-iran-conflict-escalates-2026-03-01/",
+          "published_at": "2026-03-01",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "Reuters identified the nearby serious tanker casualties as Marshall Islands-flagged MKD VYOM and Palau-flagged Skylight; it did not establish the claimed American-tanker/anti-ship-missile combination."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ED-TANKER-JMIC-20260331",
+          "surface": "WEBSITE",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/update-026---jmic-advisory-note-31-mar_final.pdf",
+          "published_at": "2026-03-31",
+          "captured_at": "2026-09-25T22:55:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "text_excerpt": "JMIC's March incident ledger records Skylight as struck by a projectile while at anchor and MKD VYOM as struck by a USV while transiting northbound; neither vessel is listed as U.S.-flagged."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Ed's original/preserved post, contemporaneous Reuters tanker reporting and the JMIC/UKMTO March incident ledger.",
+        "checked_at": "2026-09-25T22:55:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The reviewed nearby tanker events do not match Ed's combined description. Skylight was Palau-flagged and at anchor when struck by a projectile; MKD VYOM was Marshall Islands-flagged and later recorded by JMIC as struck by an uncrewed surface vessel while transiting. The public record reviewed does not establish an American oil tanker struck by an Iranian anti-ship missile in the described incident.",
+        "search_notes": "Ed used 'reportedly,' so WOL preserves the hedge. The incident qualifies because the reported identity/weapon combination remained unsupported after documented review; it is not scored merely for being an attributed carrier.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One unsupported tanker identity/weapon presentation. One incident does not earn a Bullshitter award.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Canonical attribution and weapon identification for maritime attacks remain upstream authority; WOL records Ed's unsupported presentation."
     }
   ],
   "amplification_observations": [
