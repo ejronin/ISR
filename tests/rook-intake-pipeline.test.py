@@ -165,4 +165,106 @@ with tempfile.TemporaryDirectory() as name:
     assert any("window_end must be later" in item for item in bad_report["errors"])
     assert any("updates_existing_ref" in item for item in bad_report["errors"])
 
+
+with tempfile.TemporaryDirectory() as name:
+    temp = Path(name)
+    configure(temp)
+    legacy_path = "data/evidence-integration/rook-evidence-locker-sweep-legacy.json"
+    write_json(temp / legacy_path, {
+        "artifact_type": mod.LEGACY_SWEEP_TYPE,
+        "schema_version": "1.0",
+        "authority": "routine upstream collection; append-only; no canonical/release mutation",
+        "window": {
+            "timezone": "America/New_York",
+            "start": "2026-09-21T12:00:00-04:00",
+            "end": "2026-09-22T00:00:00-04:00",
+            "collection_time": "2026-09-22T00:01:00-04:00",
+            "evidence_horizon": "2026-09-22T00:00:00-04:00",
+        },
+        "updates": [],
+        "completion": {
+            "status": "COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+            "canonical_bytes_modified": False,
+            "generated_public_state_modified": False,
+            "release_artifacts_modified": False,
+            "release_manifests_modified": False,
+        },
+    })
+    packet_path = "data/canonical-updates/UPD-LEGACY.json"
+    accepted_packet(
+        temp / packet_path,
+        "UPD-LEGACY",
+        "2026-09-22T00:00:00-04:00",
+        legacy_path,
+    )
+    write_json(temp / "data/canonical-ledger/manifest-v2.json", {
+        "current_evidence_cutoff": "2026-09-22T00:00:00-04:00",
+        "accepted_updates": [{"path": packet_path}],
+    })
+    legacy_report = mod.validate_repository(as_of=datetime(2026, 9, 26, 23, 0, tzinfo=timezone.utc))
+    assert legacy_report["valid"], legacy_report["errors"]
+    assert len(legacy_report["completed_sweeps"]) == 1
+    assert legacy_report["completed_sweeps"][0]["consumed"] is True
+
+with tempfile.TemporaryDirectory() as name:
+    temp = Path(name)
+    configure(temp)
+    legacy_path = "data/evidence-integration/rook-evidence-locker-sweep-old.json"
+    modern_path = "data/evidence-integration/rook-evidence-locker-sweep-recovered.json"
+    write_json(temp / legacy_path, {
+        "artifact_type": mod.LEGACY_SWEEP_TYPE,
+        "schema_version": "1.0",
+        "authority": "routine upstream collection; append-only; no canonical/release mutation",
+        "window": {
+            "timezone": "America/New_York",
+            "start": "2026-09-25T00:00:00-04:00",
+            "end": "2026-09-25T12:00:00-04:00",
+            "collection_time": "2026-09-26T18:00:00-04:00",
+            "evidence_horizon": "2026-09-25T12:00:00-04:00",
+        },
+        "updates": [],
+        "completion": {"status": "COMPLETE"},
+    })
+    modern = sweep(
+        "2026-09-25T00:00:00-04:00",
+        "2026-09-25T12:00:00-04:00",
+        "LOCKER-RECOVERED",
+    )
+    modern["scope"]["collection_time"] = "2026-09-26T18:00:00-04:00"
+    modern["migration_provenance"] = {"legacy_backfill": legacy_path}
+    write_json(temp / modern_path, modern)
+    write_json(temp / "data/canonical-ledger/manifest-v2.json", {
+        "current_evidence_cutoff": "2026-09-24T12:00:00-04:00",
+        "accepted_updates": [],
+    })
+    alias_report = mod.validate_repository(as_of=datetime(2026, 9, 26, 23, 0, tzinfo=timezone.utc))
+    assert alias_report["valid"], alias_report["errors"]
+    assert [row["path"] for row in alias_report["completed_sweeps"]] == [modern_path]
+
+with tempfile.TemporaryDirectory() as name:
+    temp = Path(name)
+    configure(temp)
+    recovery_path = "data/evidence-integration/rook-evidence-locker-sweep-gap-recovery.json"
+    recovery = sweep(
+        "2026-09-20T12:00:00-04:00",
+        "2026-09-21T00:00:00-04:00",
+        "LOCKER-GAP",
+    )
+    recovery["scope"]["collection_time"] = "2026-09-26T18:00:00-04:00"
+    recovery["migration_provenance"] = {
+        "recovery_after_canonical_cutoff": True,
+        "recovery_reason": "Durable continuity audit found a historical collection gap.",
+    }
+    write_json(temp / recovery_path, recovery)
+    write_json(temp / "data/canonical-ledger/manifest-v2.json", {
+        "current_evidence_cutoff": "2026-09-24T12:00:00-04:00",
+        "accepted_updates": [],
+    })
+    gap_report = mod.validate_repository(as_of=datetime(2026, 9, 26, 23, 0, tzinfo=timezone.utc))
+    assert gap_report["valid"], gap_report["errors"]
+    assert len(gap_report["unconsumed_sweeps"]) == 1
+    assert gap_report["unconsumed_sweeps"][0]["retrospective_gap_recovery"] is True
+    assert any("awaits Evidence Integration consumption" in item for item in gap_report["warnings"])
+
+
 print("ROOK intake pipeline: PASS")

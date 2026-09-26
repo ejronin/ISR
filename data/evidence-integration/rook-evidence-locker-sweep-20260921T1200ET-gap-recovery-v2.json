@@ -1,0 +1,134 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-21T00:00:00-04:00",
+    "window_end": "2026-09-21T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-26T19:12:00-04:00",
+    "evidence_horizon_time": "2026-09-21T12:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260921T0000ET-gap-recovery-v2.json",
+    "boundary_rule": "Retrospective gap recovery discovered by durable intake continuity audit. Actor claims, occurrence time and later corroboration remain separate."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "recovery_after_canonical_cutoff": true,
+    "recovery_reason": "No durable ROOK sweep existed for Sep.21 00:00 ET through Sep.21 12:00 ET. Reconstructed from contemporaneous public reporting after canonical state had advanced beyond this horizon.",
+    "discovered_by": "scripts/rook_intake_status.py continuity audit after PR #242"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-IRGC-CHANGE-GEOGRAPHY-WARNING-20260921",
+      "event_type": "IRGC_ESCALATION_SIGNALING",
+      "occurrence_time": "2026-09-21",
+      "public_available_time": "2026-09-21T06:44:00-04:00",
+      "collection_time": "2026-09-26T19:12:00-04:00",
+      "actor": "IRGC / United States",
+      "summary": "IRGC spokesperson Hossein Mohebbi said the war was not over and warned that if the United States escalated, Iran would change its weapons, military tactics and targets and 'change the geography of the war.' He said Iran had prepared for a long war and had targets not yet struck. Preserve as high-authority escalation signaling; it does not establish a specific executable operation, target list or timing.",
+      "confidence": "HIGH_FOR_ATTRIBUTED_IRGC_STATEMENT; OPERATIONAL_EXECUTION_UNESTABLISHED",
+      "sources": [
+        "https://apnews.com/article/iran-us-yemen-saudi-houthis-hormuz-september-21-2026-82714681bde58c6525c2d7a1bc587b25"
+      ]
+    },
+    {
+      "event_id": "LOCKER-HORMUZ-UNKNOWN-PROJECTILE-TANKER-20260921",
+      "event_type": "MARITIME_SECURITY_VESSEL_STRIKE",
+      "occurrence_time": "2026-09-21",
+      "public_available_time": "2026-09-21T06:44:00-04:00",
+      "collection_time": "2026-09-26T19:12:00-04:00",
+      "actor": "Unidentified attacker / commercial tanker / UKMTO",
+      "summary": "UKMTO reported a tanker was struck by an unknown projectile while entering the Strait of Hormuz. Two crew members suffered minor injuries, the vessel continued under its own power and no environmental impact was reported at the time. Attribution and weapon type were unresolved.",
+      "confidence": "HIGH_FOR_UKMTO_REPORTED_STRIKE_AND_INJURIES; ATTRIBUTION_UNRESOLVED",
+      "sources": [
+        "https://apnews.com/article/iran-us-yemen-saudi-houthis-hormuz-september-21-2026-82714681bde58c6525c2d7a1bc587b25"
+      ]
+    },
+    {
+      "event_id": "LOCKER-UK-RAF-VOYAGER-SAUDI-SUPPORT-20260921",
+      "event_type": "UK_DEFENSIVE_MILITARY_SUPPORT_TO_SAUDI_ARABIA",
+      "occurrence_time": "2026-09-21",
+      "public_available_time": "2026-09-21T06:44:00-04:00",
+      "collection_time": "2026-09-26T19:12:00-04:00",
+      "actor": "United Kingdom / Saudi Arabia",
+      "summary": "British Prime Minister Andy Burnham said the United Kingdom would provide an RAF Voyager aircraft for limited air-to-air refueling support to Saudi defensive missions against Houthi attacks, initially for a matter of weeks subject to review. This establishes a bounded UK defensive-support commitment, not UK entry into offensive operations in Yemen.",
+      "confidence": "HIGH_FOR_PRIME_MINISTER_ANNOUNCEMENT; PRIMARY_MOD_NOTICE_FOLLOWED_SEP22",
+      "sources": [
+        "https://apnews.com/article/burnham-trump-meeting-unga-78aad1d7f8539927a33aa4d2bf59f935",
+        "https://www.gov.uk/government/news/uk-military-support-to-the-kingdom-of-saudi-arabia"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-YEMEN-HUMAN-IMPACT-WHO-IOM-20260921",
+      "updates_existing_ref": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "relationship": "LATER_WHO_CASUALTY_AND_IOM_DISPLACEMENT_DENOMINATORS",
+      "summary": "WHO said 164 people were killed and 516 injured between Sep.13 and Sep.18, bringing reported casualties since Aug.6 to 674 deaths and 2,998 injuries. IOM reported 129,438 displaced people across seven governorates. Preserve the timeboxes and agency denominators separately from earlier IOM/UNHCR counts and later revisions.",
+      "status": "WHO_164_KILLED_516_INJURED_SEP13_18; CUMULATIVE_674_DEATHS_2998_INJURIES_SINCE_AUG6; IOM_DISPLACED_129438",
+      "sources": [
+        "https://apnews.com/article/iran-us-yemen-saudi-houthis-hormuz-september-21-2026-82714681bde58c6525c2d7a1bc587b25"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-HOUTHI-END-AGGRESSION-BLOCKADE-CONDITIONS-20260921",
+      "claimant": "Abdul Malik al-Houthi",
+      "claim_time": "2026-09-21",
+      "claim": "Saudi aggression and the blockade must end; those demands are the legitimate rights of Yemenis.",
+      "adjudication": "ACTOR_POSITION_INTAKE_ONLY_NO_TRUTH_OR_LEGAL_ADJUDICATION_BY_ROOK",
+      "summary": "Preserve as Houthi negotiating/war-aim formulation and keep it separate from independently established blockade mechanics or legal conclusions.",
+      "sources": [
+        "https://apnews.com/article/iran-us-yemen-saudi-houthis-hormuz-september-21-2026-82714681bde58c6525c2d7a1bc587b25"
+      ]
+    }
+  ],
+  "economic_energy_updates": [],
+  "source_discovery_additions": [
+    {
+      "source_class": "UK_PRIMARY_DEFENCE",
+      "addition": "UK MOD primary notice confirming RAF Voyager defensive support to Saudi Arabia, published Sep.22 after the Sep.21 prime-minister announcement."
+    },
+    {
+      "source_class": "UN_WHO_IOM_HUMAN_IMPACT",
+      "addition": "WHO/IOM Sep.21 casualty and displacement denominators surfaced through AP; later UN primary publications can supersede while retaining this horizon."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "Add IRGC Sep.21 escalation warning as actor signaling only; no executable target/timing inference.",
+    "Create Sep.21 unknown-projectile Hormuz tanker incident with two minor injuries and unresolved attribution.",
+    "Add UK limited RAF Voyager refueling support to Saudi defensive missions.",
+    "Update Yemen human-impact drawer with WHO/IOM Sep.21 denominators while preserving later revisions separately."
+  ],
+  "unresolved_questions": [
+    "Who fired the Sep.21 projectile at the tanker and what weapon was used?",
+    "Did the IRGC warning precede any materially different target class or operation?",
+    "What precise missions did RAF Voyager support and did the commitment remain limited to defensive refueling?",
+    "How do later WHO/IOM/UNHCR Yemen denominators reconcile with the Sep.21 timebox?"
+  ],
+  "coverage": {
+    "material_results": [
+      "IRGC escalation signaling",
+      "Hormuz tanker strike",
+      "UK defensive support to Saudi Arabia",
+      "Yemen WHO/IOM humanitarian update",
+      "Houthi war-aim statement"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No verified new U.S.-Iran settlement",
+      "No attribution for Sep.21 tanker projectile"
+    ],
+    "limitations": [
+      "Retrospective recovery after canonical cutoff.",
+      "Some primary humanitarian data surfaced first through AP and should remain timebox/source-specific."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_RETROSPECTIVE_GAP_RECOVERY",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_RETROSPECTIVE_GAP_RECOVERY",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
