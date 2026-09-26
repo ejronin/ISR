@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-25T20:17:00-04:00",
+  "as_of": "2026-09-25T21:30:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted. 2026-09-25 media-amplifier census pass 5: prioritized repeated downstream nodes over one-off leaves. Hajij is now receipt-backed across three distinct Press TV qualifying events, and The Truthseeker across two; no upstream truth/adjudication field is changed. Pass 5 follow-through: GlobalSecurity.org is now receipt-backed across five distinct Press TV qualifying events after recovering its April 3 second-F-35 and April 28 170-aircraft archive copies.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted. 2026-09-25 media-amplifier census pass 5: prioritized repeated downstream nodes over one-off leaves. Hajij is now receipt-backed across three distinct Press TV qualifying events, and The Truthseeker across two; no upstream truth/adjudication field is changed. Pass 5 follow-through: GlobalSecurity.org is now receipt-backed across five distinct Press TV qualifying events after recovering its April 3 second-F-35 and April 28 170-aircraft archive copies. 2026-09-25 Ethan/Valenti amplifier review: Ethan gains receipt-backed downstream Telegram/X relays, including a three-event repeat node at Las Noticias and a recoverable multi-account Beaufort retweet cluster. Valenti external search did not establish a second new independent downstream node beyond the existing @leonoe1986 receipt; four publisher-owned YouTube Shorts are recorded separately as SELF_AMPLIFICATION and must not be treated as independent support or independent amplifiers. Downstream appearance alone confers no adverse source class or award.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -8733,6 +8733,505 @@
           "text_excerpt": "GlobalSecurity.org archived Press TV's April 28 Army story carrying the claim that more than 170 enemy aircraft had been hit, including 16 fighter jets."
         }
       ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-LASNOTICIAS-NETANYAHU-DEAD-20260318",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
+      "amplifier_id": "TG-LAS-NOTICIAS-DELMUNDO",
+      "amplifier_display_name": "Las Noticias",
+      "amplifier_handle": "@LasNoticiasDelMundo",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-2034295775451021339",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-LASNOTICIAS-NETANYAHU-DEAD-20260318",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/LasNoticiasDelMundo/52531?q=%23EthanLevins",
+          "published_at": "2026-03-18",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Las Noticias attributed the item to Ethan Levins and repeated his claim that Netanyahu died on March 8, including the seven-day Shiva/X-posting rationale."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-LASNOTICIAS-WITKOFF-KUSHNER-ASSETS-20260318",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-WITKOFF-KUSHNER-ISRAELI-ASSETS-CONFIRMED-20260318",
+      "amplifier_id": "TG-LAS-NOTICIAS-DELMUNDO",
+      "amplifier_display_name": "Las Noticias",
+      "amplifier_handle": "@LasNoticiasDelMundo",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-WITKOFF-KUSHNER-ISRAELI-ASSETS-20260318",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-LASNOTICIAS-WITKOFF-KUSHNER-ASSETS-20260318",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/LasNoticiasDelMundo/52531?q=%23EthanLevins",
+          "published_at": "2026-03-18",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Las Noticias attributed the item to Ethan Levins and repeated the claim that diplomats confirmed Witkoff and Kushner were Israeli assets."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-LASNOTICIAS-BENGVIR-DEAD-20260319",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BENGVIR-17-MEETINGS-DEAD-20260319",
+      "amplifier_id": "TG-LAS-NOTICIAS-DELMUNDO",
+      "amplifier_display_name": "Las Noticias",
+      "amplifier_handle": "@LasNoticiasDelMundo",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BENGVIR-17-MEETINGS-DEAD-20260319",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-LASNOTICIAS-BENGVIR-DEAD-20260319",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/LasNoticiasDelMundo/52531?q=%23EthanLevins",
+          "published_at": "2026-03-19",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Las Noticias attributed the item to Ethan Levins and repeated that Ben Gvir had missed 17 straight security meetings and that he and Netanyahu were either underground or dead."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-BGMILITARY-IDF-COLLAPSING-20260326",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-IDF-IS-COLLAPSING-20260326",
+      "amplifier_id": "TG-BGMILITARY",
+      "amplifier_display_name": "Bulgarian Military Union \"Vasil Levski\"",
+      "amplifier_handle": "@bgmilitary",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-IDF-IS-COLLAPSING-20260326",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-BGMILITARY-IDF-COLLAPSING-20260326",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/bgmilitary?before=65816",
+          "published_at": "2026-03-26",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Bulgarian Military Union Telegram channel translated/repeated Levins' present-tense claim that the IDF was collapsing and directly linked the Ethan Levins X post."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-ZOHARYAELL-134-MERKAVA-20260401",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-134-MERKAVA-804M-20260401",
+      "amplifier_id": "X-ZOHARYAELL",
+      "amplifier_display_name": "Yaell Zohar",
+      "amplifier_handle": "@ZoharYaell",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-134-MERKAVA-804M-20260401",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-ZOHARYAELL-134-MERKAVA-20260401",
+          "surface": "WEBSITE",
+          "url": "https://ngntipkolamrenang.twstalker.com/ZoharYaell",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @ZoharYaell retweeting Ethan Levins' claim that Hezbollah had struck 134 Merkava tanks for an $804 million loss total."
+        }
+      ],
+      "note": "Secondary profile preservation establishes the retweet; its relative timestamp is not converted to an exact publication time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-CAHITTUZ-NETANYAHU-DEAD-20260318",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
+      "amplifier_id": "X-CAHITTUZ",
+      "amplifier_display_name": "Cahit Tuz",
+      "amplifier_handle": "@CahitTuz",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-2034295775451021339",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-CAHITTUZ-NETANYAHU-DEAD-20260318",
+          "surface": "X",
+          "url": "https://x.com/CahitTuz/status/2034390131491119592",
+          "published_at": "2026-03-18",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Cahit Tuz quote-posted Levins, translated the March 8 death claim into Turkish, and adopted the concealment framing rather than merely reporting that Levins had made the claim."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-LAURIEGENX-NETANYAHU-DEAD-20260318",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
+      "amplifier_id": "X-LAURIEGENX",
+      "amplifier_display_name": "Laurie Patterson",
+      "amplifier_handle": "@LaurieGenX",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-2034295775451021339",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-LAURIEGENX-NETANYAHU-DEAD-20260318",
+          "surface": "WEBSITE",
+          "url": "https://twstalker.com/LaurieGenX",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @LaurieGenX retweeting Ethan Levins' 'Netanyahu died on March 8th' post."
+        }
+      ],
+      "note": "Secondary profile preservation establishes the retweet; its relative timestamp is not normalized.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-HIM0000001-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-HIM0000001",
+      "amplifier_display_name": "Un tal Hiram",
+      "amplifier_handle": "@him_0000001",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-HIM0000001-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://www.sotwe.com/him_0000001?lang=en",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Sotwe preserves @him_0000001 retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-NEWSTALK18-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-NEWSTALK18",
+      "amplifier_display_name": "NewsTalk",
+      "amplifier_handle": "@NewsTalk18",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-NEWSTALK18-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://ngntipkolamrenang.twstalker.com/NewsTalk18",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @NewsTalk18 retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-JACKIELYNN1968-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-JACKIELYNN1968",
+      "amplifier_display_name": "Mother of Cats",
+      "amplifier_handle": "@Jackielynn1968",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-JACKIELYNN1968-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://www.sotwe.com/Jackielynn1968?lang=en",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Sotwe preserves @Jackielynn1968 retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-ROBERTAMURDEN-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-ROBERTAMURDEN",
+      "amplifier_display_name": "robert a murden",
+      "amplifier_handle": "@robertamurden",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-ROBERTAMURDEN-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://ngntipkolamrenang.twstalker.com/robertamurden",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @robertamurden retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-KOLE-S-O-C-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-KOLE-S-O-C",
+      "amplifier_display_name": "Kole",
+      "amplifier_handle": "@Kole_S_O_C",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-KOLE-S-O-C-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://mobile.twstalker.com/Kole_S_O_C",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @Kole_S_O_C retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-MISSCANDICE777-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-MISSCANDICE777",
+      "amplifier_display_name": "Candice",
+      "amplifier_handle": "@MiSsCaNdIcE777",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-MISSCANDICE777-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://twstalker.com/MiSsCaNdIcE777",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @MiSsCaNdIcE777 retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-ITSMARCOSDIAZ-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-ITSMARCOSDIAZ",
+      "amplifier_display_name": "0xMgD the Indomitable",
+      "amplifier_handle": "@ItsMarcosDiaz",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-ITSMARCOSDIAZ-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://ww.twstalker.com/ItsMarcosDiaz",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @ItsMarcosDiaz retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-UBUNTU-DISCIPLE-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-UBUNTU-DISCIPLE",
+      "amplifier_display_name": "UBUNTU",
+      "amplifier_handle": "@ubuntu_disciple",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-UBUNTU-DISCIPLE-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://ngntipkolamrenang.twstalker.com/ubuntu_disciple",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @ubuntu_disciple retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ETHAN-E-PNEUMATIKE-BEAUFORT-20260831",
+      "bullshitter_source_id": "WOL-SRC-ETHAN-LEVINS",
+      "bullshitter_event_id": "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "amplifier_id": "X-E-PNEUMATIKE",
+      "amplifier_display_name": "無極",
+      "amplifier_handle": "@_e_pneumatike",
+      "amplifier_platform": "X",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ETHAN-X-BEAUFORT-CASTLE-DESTROYED-20260831",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ETHAN-E-PNEUMATIKE-BEAUFORT-20260831",
+          "surface": "WEBSITE",
+          "url": "https://ww.twstalker.com/_e_pneumatike",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "TwStalker preserves @_e_pneumatike retweeting Ethan Levins' Beaufort Castle destruction claim."
+        }
+      ],
+      "note": "Secondary public profile preservation establishes a retweet of the scored Ethan incident. Relative timestamps are not normalized to an exact time.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-VALENTI-SELF-SHORT-zAvTak9ydPE",
+      "bullshitter_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "bullshitter_event_id": "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+      "amplifier_id": "VALENTI-YOUTUBE-SHORTS",
+      "amplifier_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "amplifier_display_name": "Valenti Videos / YouTube Shorts",
+      "amplifier_handle": "@valentivideos",
+      "amplifier_platform": "YOUTUBE",
+      "amplifier_authenticity_class": "HUMAN_ACCOUNT",
+      "message_identity": "VALENTI-YT-0ZArFpj6zyA",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-VALENTI-SELF-SHORT-zAvTak9ydPE",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/zAvTak9ydPE",
+          "published_at": "2026-08-03",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Publisher promotional Short repeats the nuclear-strike title."
+        }
+      ],
+      "note": "SELF_AMPLIFICATION: this is Valenti's own promotional Shorts distribution and is not an independent external amplifier.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-VALENTI-SELF-SHORT-bZyKBKOX08Y",
+      "bullshitter_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "bullshitter_event_id": "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+      "amplifier_id": "VALENTI-YOUTUBE-SHORTS",
+      "amplifier_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "amplifier_display_name": "Valenti Videos / YouTube Shorts",
+      "amplifier_handle": "@valentivideos",
+      "amplifier_platform": "YOUTUBE",
+      "amplifier_authenticity_class": "HUMAN_ACCOUNT",
+      "message_identity": "VALENTI-YT-Tj11SNKxGWg",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-VALENTI-SELF-SHORT-bZyKBKOX08Y",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/bZyKBKOX08Y",
+          "published_at": "2026-07-30",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Publisher promotional Short repeats the 'Russia Bombs Poland' episode title."
+        }
+      ],
+      "note": "SELF_AMPLIFICATION: this is Valenti's own promotional Shorts distribution and is not an independent external amplifier.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-VALENTI-SELF-SHORT-039w7hoz1Nc",
+      "bullshitter_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "bullshitter_event_id": "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+      "amplifier_id": "VALENTI-YOUTUBE-SHORTS",
+      "amplifier_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "amplifier_display_name": "Valenti Videos / YouTube Shorts",
+      "amplifier_handle": "@valentivideos",
+      "amplifier_platform": "YOUTUBE",
+      "amplifier_authenticity_class": "HUMAN_ACCOUNT",
+      "message_identity": "VALENTI-YT-nqdb4mLOCEM",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-VALENTI-SELF-SHORT-039w7hoz1Nc",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/039w7hoz1Nc",
+          "published_at": "2026-07-22",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Publisher promotional Short repeats the 'Saudi Arabia nuclear weapons' episode title."
+        }
+      ],
+      "note": "SELF_AMPLIFICATION: this is Valenti's own promotional Shorts distribution and is not an independent external amplifier.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-VALENTI-SELF-SHORT-pTXCYjHVYMY",
+      "bullshitter_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "bullshitter_event_id": "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+      "amplifier_id": "VALENTI-YOUTUBE-SHORTS",
+      "amplifier_source_id": "WOL-SRC-VALENTI-VIDEOS",
+      "amplifier_display_name": "Valenti Videos / YouTube Shorts",
+      "amplifier_handle": "@valentivideos",
+      "amplifier_platform": "YOUTUBE",
+      "amplifier_authenticity_class": "HUMAN_ACCOUNT",
+      "message_identity": "VALENTI-YT-eTaqz-Wui18",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-VALENTI-SELF-SHORT-pTXCYjHVYMY",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/shorts/pTXCYjHVYMY",
+          "published_at": "2026-08-06",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Publisher promotional Short repeats the 'Trump admits the U.S. is out of ammo' episode title."
+        }
+      ],
+      "note": "SELF_AMPLIFICATION: this is Valenti's own promotional Shorts distribution and is not an independent external amplifier.",
       "observed_at": "2026-09-25"
     }
   ]

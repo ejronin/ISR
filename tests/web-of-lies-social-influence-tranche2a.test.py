@@ -25,6 +25,7 @@ events = {row["event_id"]: row for row in derived["information_events"]}
 relationships = {
     row["relationship_id"]: row for row in derived["relationships"]
 }
+amplification = derived["amplification_observations"]
 leads = {row["lead_id"]: row for row in derived["research_leads"]}
 queue_items = {row["discovery_id"]: row for row in queue["items"]}
 
@@ -141,6 +142,69 @@ assert leads["LEAD-LIM-TEAN"]["current_disposition"] in {
     "UPSTREAM_REVIEW_REQUIRED", "ACTIVE_PATTERN_REVIEW"
 }
 
+# Amplifier review: downstream publication/repost edges are graph evidence,
+# not automatic adverse classifications for the amplifier.
+ethan_amp = [
+    row for row in amplification
+    if row.get("bullshitter_source_id") == "WOL-SRC-ETHAN-LEVINS"
+]
+assert len(ethan_amp) >= 18
+ethan_amp_ids = {row["amplifier_id"] for row in ethan_amp}
+assert {
+    "PRESS-TV-TELEGRAM",
+    "NEWS-ARTICLES-ANALYSIS-TELEGRAM",
+    "TG-LAS-NOTICIAS-DELMUNDO",
+    "TG-BGMILITARY",
+    "X-ZOHARYAELL",
+    "X-CAHITTUZ",
+    "X-LAURIEGENX",
+} <= ethan_amp_ids
+
+las_noticias = [
+    row for row in ethan_amp
+    if row["amplifier_id"] == "TG-LAS-NOTICIAS-DELMUNDO"
+]
+assert len(las_noticias) >= 3
+assert {
+    "WOL-BS-ETHAN-NETANYAHU-DEAD-20260318",
+    "WOL-BS-ETHAN-WITKOFF-KUSHNER-ISRAELI-ASSETS-CONFIRMED-20260318",
+    "WOL-BS-ETHAN-BENGVIR-17-MEETINGS-DEAD-20260319",
+} <= {row["bullshitter_event_id"] for row in las_noticias}
+
+beaufort_rows = [
+    row for row in ethan_amp
+    if row["bullshitter_event_id"] == "WOL-BS-ETHAN-BEAUFORT-CASTLE-DESTROYED-20260831"
+]
+assert len({row["amplifier_id"] for row in beaufort_rows}) >= 9
+
+valenti_amp = [
+    row for row in amplification
+    if row.get("bullshitter_source_id") == "WOL-SRC-VALENTI-VIDEOS"
+]
+assert len(valenti_amp) >= 5
+valenti_external = [
+    row for row in valenti_amp
+    if row.get("amplifier_source_id") != "WOL-SRC-VALENTI-VIDEOS"
+]
+assert any(row["amplifier_id"] == "THREADS-LEONOE1986" for row in valenti_external)
+
+valenti_self = [
+    row for row in valenti_amp
+    if row.get("amplifier_source_id") == "WOL-SRC-VALENTI-VIDEOS"
+]
+assert len(valenti_self) >= 4
+assert {row["amplifier_id"] for row in valenti_self} == {"VALENTI-YOUTUBE-SHORTS"}
+assert {
+    "WOL-BS-VALENTI-CANCELS-NUCLEAR-STRIKE-20260803",
+    "WOL-BS-VALENTI-RUSSIA-BOMBS-POLAND-20260730",
+    "WOL-BS-VALENTI-SAUDI-NUCLEAR-WEAPONS-20260722",
+    "WOL-BS-VALENTI-TRUMP-ADMITS-OUT-OF-AMMO-20260806",
+} <= {row["bullshitter_event_id"] for row in valenti_self}
+assert all(
+    "SELF_AMPLIFICATION" in str(row.get("note") or "")
+    for row in valenti_self
+)
+
 hall_ids = {
     entry["source_id"]
     for view_name in ("all_time", "current_period")
@@ -152,5 +216,6 @@ assert derived["corpus_coverage"]["completion_claim"] == "NONE"
 
 print(
     "web-of-lies social influence tranche2a: PASS "
-    f"profiles={len(expected_profiles)} controls=2 review_candidates={len(new_discoveries)}"
+    f"profiles={len(expected_profiles)} controls=2 review_candidates={len(new_discoveries)} "
+    f"ethan_amp={len(ethan_amp)} valenti_amp={len(valenti_amp)}"
 )
