@@ -45,12 +45,12 @@ assert {x for r in ethan["revenue_basis_receipts"] for x in r["revenue_classes"]
     "PATREON", "DONATIONS", "SPONSORED_CONTENT"
 }
 assert [a["award_code"] for a in ethan["source_awards"]] == ["BULLSHITTER"]
-assert ethan["source_awards"][0]["documented_incident_count"] == 35
-assert len(ethan["source_awards"][0]["documented_incident_ids"]) == 35
+assert ethan["source_awards"][0]["documented_incident_count"] == 36
+assert len(ethan["source_awards"][0]["documented_incident_ids"]) == 36
 role_failures = {row["appellation_code"]: row for row in ethan["role_failure_appellations"]}
-assert role_failures["FAKE_ANALYST"]["incident_count"] == 16
+assert role_failures["FAKE_ANALYST"]["incident_count"] == 17
 assert len(role_failures["FAKE_ANALYST"]["claimed_role_receipts"]) >= 1
-assert role_failures["YELLOW_JOURNALISM"]["incident_count"] == 35
+assert role_failures["YELLOW_JOURNALISM"]["incident_count"] == 36
 assert len(role_failures["YELLOW_JOURNALISM"]["claimed_role_receipts"]) >= 1
 
 valenti = profiles["WOL-SRC-VALENTI-VIDEOS"]
