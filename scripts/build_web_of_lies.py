@@ -1156,6 +1156,30 @@ def derive_role_failure_appellations(
         ).strip()
         distinct.setdefault(key, event)
 
+    role_evidence_rule = governance.get("role_failure_evidence") or {}
+    required_role_evidence_status = str(
+        role_evidence_rule.get("qualification_status")
+        or "QUALIFIED_ROLE_FAILURE_EVIDENCE"
+    ).strip()
+    for evidence in profile.get("role_failure_evidence") or []:
+        if not isinstance(evidence, dict):
+            continue
+        evidence_id = str(
+            evidence.get("incident_id") or evidence.get("event_id") or ""
+        ).strip()
+        if not evidence_id:
+            continue
+        if str(evidence.get("qualification_status") or "").strip() != required_role_evidence_status:
+            continue
+        if not list(evidence.get("public_receipts") or []):
+            continue
+        key = str(
+            evidence.get("information_event_group_id")
+            or evidence.get("source_information_event_id")
+            or evidence_id
+        ).strip()
+        distinct.setdefault(f"ROLE_FAILURE::{key}", evidence)
+
     output: list[dict[str, Any]] = []
     rules = governance.get("role_failure_appellations") or {}
     for code, rule in sorted(rules.items()):

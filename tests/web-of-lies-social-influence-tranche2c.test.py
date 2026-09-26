@@ -276,7 +276,7 @@ assert direct_upgrade_status["VALENTI-DIRECT-ID-CHINA-NUCLEAR-WAR-20260922"] == 
 assert direct_upgrade_status["VALENTI-DIRECT-BODY-E6B-NUCLEAR-202609"] == "ORIGINAL_ID_RECOVERED_PAGE_BODY_NOT_MACHINE_RECOVERED"
 assert valenti_lead["historian_role_review"]["self_claim_status"] == "PUBLICLY_VERIFIED"
 assert len(valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]) == 3
-assert valenti_lead["historian_role_review"]["status"] == "REOPENED_TARGETED_SOURCE_RECOVERY"
+assert valenti_lead["historian_role_review"]["status"] == "QUALIFYING_PATTERN_ESTABLISHED"
 assert all(
     row["capture_status"] == "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED"
     for row in valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]
@@ -294,17 +294,27 @@ assert set(historian_targets) == {
     "VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607",
     "VALENTI-HISTORY-GERMANS-FASCISM-20250708",
 }
-assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["discovery_status"] == "DIRECT_VIDEO_ID_RECOVERED_BODY_NOT_RECOVERED"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["discovery_status"] == "SOURCE_RECOVERED_ADJUDICATED"
 assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["direct_video_id"] == "a3BBuM0bFV0"
 assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["direct_url"] == "https://www.youtube.com/watch?v=a3BBuM0bFV0"
-assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["required_next_evidence"] == "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW"
-assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["scoring_status"] == "NOT_SCORABLE_BODY_NOT_RECOVERED"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["source_capture_scope"] == "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["scoring_status"] == "QUALIFYING_HISTORIAN_FAILURES_RECORDED"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["qualifying_incident_ids"] == [
+    "WOL-ROLE-VALENTI-HIST-TONKIN-EVIDENCE-20260711"
+]
 assert "Vietnam War press access" in historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["candidate_topics"][0]
 assert historian_targets["VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607"]["scoring_status"] == "NOT_SCORABLE_TOPIC_NOT_RECOVERED"
 assert "urlebird.com" in historian_targets["VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607"]["source_surfaces"][0]
 assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["direct_video_id"] == "vLx-gAXUXZQ"
 assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["publication_date"] == "2025-07-08"
-assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["scoring_status"] == "NOT_SCORABLE_BODY_NOT_RECOVERED"
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["discovery_status"] == "SOURCE_RECOVERED_ADJUDICATED"
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["source_capture_scope"] == "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT"
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["scoring_status"] == "QUALIFYING_HISTORIAN_FAILURES_RECORDED"
+assert set(historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["qualifying_incident_ids"]) == {
+    "WOL-ROLE-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
+    "WOL-ROLE-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
+    "WOL-ROLE-VALENTI-HIST-HYPERINFLATION-1929-20250708",
+}
 assert "Dolchstoß Boils Over" in historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["preserved_chapters"]
 historian_controls = {
     row["review_id"]: row
@@ -319,6 +329,43 @@ assert len(liberty_control["verification_sources"]) >= 2
 assert any("history.navy.mil" in row["url"] for row in liberty_control["verification_sources"])
 assert any("nsa.gov" in row["url"] for row in liberty_control["verification_sources"])
 assert "does not adjudicate whether the attack was deliberate" in liberty_control["inference_limit"]
+
+assert valenti_lead["historian_role_review"]["adjudicated_failure_count"] == 4
+assert valenti_lead["historian_role_review"]["current_appellation_status"] == "FAKE_HISTORIAN_THRESHOLD_MET_BY_QUALIFIED_ROLE_FAILURE_EVIDENCE"
+role_evidence = valenti_profile["role_failure_evidence"]
+assert len(role_evidence) == 4
+assert {
+    row["incident_id"] for row in role_evidence
+} == {
+    "WOL-ROLE-VALENTI-HIST-TONKIN-EVIDENCE-20260711",
+    "WOL-ROLE-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
+    "WOL-ROLE-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
+    "WOL-ROLE-VALENTI-HIST-HYPERINFLATION-1929-20250708",
+}
+assert all(
+    row["qualification_status"] == "QUALIFIED_ROLE_FAILURE_EVIDENCE"
+    for row in role_evidence
+)
+assert all(
+    row["evidence_scope"] == "PROFESSIONAL_ROLE_APPELLATION_ONLY_OUTSIDE_ACTIVE_IRAN_WAR_CORPUS"
+    for row in role_evidence
+)
+assert all(row["incident_id"] not in behavior_incidents for row in role_evidence)
+fake_historian = next(
+    row for row in valenti_profile["role_failure_appellations"]
+    if row["appellation_code"] == "FAKE_HISTORIAN"
+)
+assert fake_historian["incident_count"] == 4
+assert set(fake_historian["basis_incident_ids"]) == {
+    row["incident_id"] for row in role_evidence
+}
+
+source_provided_history = {
+    row["title"]: row
+    for row in valenti_lead["historian_role_review"]["source_provided_transcript_queue"]
+}
+assert source_provided_history["Manufactured Consent / American Government war-pattern episode"]["scoring_status"] == "NOT_SCORED_DIRECT_VIDEO_ID_PENDING"
+assert source_provided_history["The American Way to Crush the Soviets"]["scoring_status"] == "NOT_SCORED_DIRECT_VIDEO_ID_PENDING"
 assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
 assert valenti_lead["review_completion"]["documented_incident_count"] == 24
 assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22

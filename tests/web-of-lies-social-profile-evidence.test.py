@@ -58,10 +58,36 @@ assert valenti["revenue_model"] == ["PATREON"]
 assert valenti["classification_basis_receipts"]
 assert valenti["revenue_basis_receipts"]
 assert [a["award_code"] for a in valenti["source_awards"]] == ["BULLSHITTER"]
+assert valenti["source_awards"][0]["documented_incident_count"] == 24
 assert {row["role_code"] for row in valenti["claimed_roles"]} == {"HISTORIAN"}
-assert "FAKE_HISTORIAN" not in {
-    row["appellation_code"] for row in valenti["role_failure_appellations"]
+valenti_role_failures = {
+    row["appellation_code"]: row
+    for row in valenti["role_failure_appellations"]
 }
+assert "FAKE_HISTORIAN" in valenti_role_failures
+fake_historian = valenti_role_failures["FAKE_HISTORIAN"]
+assert fake_historian["public_label"] == "Fake historian"
+assert fake_historian["incident_count"] == 4
+assert set(fake_historian["basis_incident_ids"]) == {
+    "WOL-ROLE-VALENTI-HIST-TONKIN-EVIDENCE-20260711",
+    "WOL-ROLE-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
+    "WOL-ROLE-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
+    "WOL-ROLE-VALENTI-HIST-HYPERINFLATION-1929-20250708",
+}
+assert len(fake_historian["claimed_role_receipts"]) >= 2
+assert len(valenti["role_failure_evidence"]) == 4
+assert all(
+    row["qualification_status"] == "QUALIFIED_ROLE_FAILURE_EVIDENCE"
+    for row in valenti["role_failure_evidence"]
+)
+assert all(
+    row["evidence_scope"] == "PROFESSIONAL_ROLE_APPELLATION_ONLY_OUTSIDE_ACTIVE_IRAN_WAR_CORPUS"
+    for row in valenti["role_failure_evidence"]
+)
+assert all(
+    row["incident_id"] not in incidents
+    for row in valenti["role_failure_evidence"]
+)
 
 historian_rule = governance["role_failure_appellations"]["FAKE_HISTORIAN"]
 assert historian_rule["claimed_role"] == "HISTORIAN"
@@ -74,15 +100,18 @@ assert historian_rule["incident_review_gate"]["required_status"] == "SOURCE_RECO
 assert historian_rule["incident_review_gate"]["require_exact_proposition"] is True
 assert historian_rule["incident_review_gate"]["require_contrary_evidence_sources"] is True
 
-# Historian role failure is fail-closed. Valenti's verified self-description and
-# existing Bullshitter award are insufficient without three distinct,
-# source-recovered historical verification failures.
+# Historian role failure remains fail-closed even though the current record now
+# earns the appellation. Strip the real role-only evidence and prove the gate
+# still requires three distinct source-recovered adjudications.
+synthetic_valenti = copy.deepcopy(valenti)
+synthetic_valenti["role_failure_evidence"] = []
+synthetic_valenti["role_failure_appellations"] = []
 valenti_events = [
     copy.deepcopy(row)
     for row in incidents.values()
     if row["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
 ]
-assert len(valenti_events) >= 3
+assert len(valenti_events) == 24
 for row in valenti_events:
     row["role_failure_tags"] = [
         tag for tag in row.get("role_failure_tags", [])
@@ -102,24 +131,60 @@ historian_probe_review = {
 for row in valenti_events[:2]:
     row.setdefault("role_failure_tags", []).append("HISTORICAL_VERIFICATION_FAILURE")
     row["historical_verification_review"] = copy.deepcopy(historian_probe_review)
-two_failure_labels = wol.derive_role_failure_appellations(valenti, valenti_events, governance)
-assert not any(row["appellation_code"] == "FAKE_HISTORIAN" for row in two_failure_labels)
+two_failure_labels = wol.derive_role_failure_appellations(
+    synthetic_valenti, valenti_events, governance
+)
+assert not any(
+    row["appellation_code"] == "FAKE_HISTORIAN"
+    for row in two_failure_labels
+)
 
 # A third tag without the source-recovered adjudication block still fails closed.
-valenti_events[2].setdefault("role_failure_tags", []).append("HISTORICAL_VERIFICATION_FAILURE")
-tag_only_labels = wol.derive_role_failure_appellations(valenti, valenti_events, governance)
-assert not any(row["appellation_code"] == "FAKE_HISTORIAN" for row in tag_only_labels)
+valenti_events[2].setdefault("role_failure_tags", []).append(
+    "HISTORICAL_VERIFICATION_FAILURE"
+)
+tag_only_labels = wol.derive_role_failure_appellations(
+    synthetic_valenti, valenti_events, governance
+)
+assert not any(
+    row["appellation_code"] == "FAKE_HISTORIAN"
+    for row in tag_only_labels
+)
 
-valenti_events[2]["historical_verification_review"] = copy.deepcopy(historian_probe_review)
-three_failure_labels = wol.derive_role_failure_appellations(valenti, valenti_events, governance)
-fake_historian = next(
+valenti_events[2]["historical_verification_review"] = copy.deepcopy(
+    historian_probe_review
+)
+three_failure_labels = wol.derive_role_failure_appellations(
+    synthetic_valenti, valenti_events, governance
+)
+synthetic_fake_historian = next(
     row for row in three_failure_labels
     if row["appellation_code"] == "FAKE_HISTORIAN"
 )
-assert fake_historian["public_label"] == "Fake historian"
-assert fake_historian["incident_count"] == 3
-assert len(fake_historian["basis_incident_ids"]) == 3
-assert len(fake_historian["claimed_role_receipts"]) >= 2
+assert synthetic_fake_historian["incident_count"] == 3
+
+# Isolation invariant: removing role-only historian evidence erases only the
+# professional-role appellation. It must not alter the independently earned
+# Bullshitter award or the 24-event Iran-war source-behavior corpus.
+without_historian = copy.deepcopy(assembled)
+without_historian_valenti = next(
+    row for row in without_historian["source_profiles"]
+    if row["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
+)
+without_historian_valenti["role_failure_evidence"] = []
+without_historian_derived = wol.build_registry(
+    canonical, without_historian, governance
+)
+without_historian_profile = next(
+    row for row in without_historian_derived["source_profiles"]
+    if row["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
+)
+assert "FAKE_HISTORIAN" not in {
+    row["appellation_code"]
+    for row in without_historian_profile["role_failure_appellations"]
+}
+assert without_historian_profile["source_awards"] == valenti["source_awards"]
+assert without_historian_profile["behavior_classes"] == valenti["behavior_classes"]
 
 meidas = profiles["WOL-SRC-MEIDASTOUCH"]
 assert meidas["behavior_classes"] == ["JOURNALISTIC_SOURCE"]
