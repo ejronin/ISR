@@ -19,6 +19,7 @@ derived = wol.build_registry(canonical, assembled, governance)
 
 profiles = {row["source_id"]: row for row in derived["source_profiles"]}
 incidents = {row["incident_id"]: row for row in derived["source_behavior_incidents"]}
+amplification = derived["amplification_observations"]
 leads = {row["lead_id"]: row for row in derived["research_leads"]}
 
 source_id = "WOL-SRC-ZARDSI"
@@ -127,6 +128,22 @@ assert award["qualifying_incident_count"] == 6
 assert set(award["qualifying_incident_ids"]) == zard_ids
 
 
+# Directional propagation requires an actual embed/repost/adoption receipt;
+# parallel same-claim publishers are not forced into ZardSi downstream edges.
+zard_amp = [
+    row for row in amplification
+    if row.get("bullshitter_source_id") == source_id
+]
+assert len(zard_amp) >= 2
+assert {
+    "FORUM-PAKPASSION-RANA",
+    "FORUM-PROJECTAVALON-RAVENLOCKE",
+} <= {row["amplifier_id"] for row in zard_amp}
+rana = next(row for row in zard_amp if row["amplifier_id"] == "FORUM-PAKPASSION-RANA")
+assert rana["bullshitter_event_id"] == "WOL-BS-ZARDSI-NETANYAHU-BERLIN-20260302"
+raven = next(row for row in zard_amp if row["amplifier_id"] == "FORUM-PROJECTAVALON-RAVENLOCKE")
+assert raven["bullshitter_event_id"] == "WOL-BS-ZARDSI-DELHI-DEFENCE-FACILITY-20260312"
+
 assert profile["direct_verdict"] is None
 hall_ids = {
     entry["source_id"]
@@ -139,5 +156,5 @@ assert source_id not in hall_ids
 print(
     "web-of-lies social influence tranche2k: PASS "
     "zardsi_incidents=6 zardsi_bullshitter=1 "
-    "cumulative=6 claim_first_discovery=1"
+    f"cumulative=6 claim_first_discovery=1 zard_amp={len(zard_amp)}"
 )
