@@ -293,10 +293,8 @@
 
   function information(stage, article) {
     article.querySelector('h1')?.replaceChildren('Claims, Falsehoods & Deception');
-    intro(article,'Claims are grouped by what was asserted. Each entry shows the current finding, what later evidence established and how the evidence supports it. False does not mean lie unless knowing falsehood is established.');
+    intro(article,'Documented false claims, misleading claims and lies, with the evidence behind each finding.');
     stage.querySelectorAll('a').forEach(a=>{if(txt(a.textContent)==='Lie Ledger')a.textContent='Claims, Falsehoods & Deception';});
-    article.querySelectorAll('.reader-ledger-card').forEach(c=>{if(c.dataset.readerFinding==='likely-lie'){c.dataset.readerFinding='false';const b=[...c.querySelectorAll('*')].find(x=>txt(x.textContent)==='Likely lie');if(b)b.textContent='False';}});
-    article.querySelectorAll('option').forEach(o=>{if(/likely lie/i.test(o.textContent)){o.textContent='False';o.value='false';}});
   }
 
   function finalizePublicProduct(stage, route, routeRuntime, doc) {
