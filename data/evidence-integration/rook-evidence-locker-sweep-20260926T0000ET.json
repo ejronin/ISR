@@ -1,0 +1,141 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "backfill": true,
+  "backfill_reason": "Scheduled 12-hour sweep artifact absent from repository; reconstructed on 2026-09-26 from contemporaneous public reporting while preserving the original evidence horizon.",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-25T12:00:00-04:00",
+    "end": "2026-09-26T00:00:00-04:00",
+    "collection_time": "2026-09-26T17:20:00-04:00",
+    "evidence_horizon": "2026-09-26T00:00:00-04:00"
+  },
+  "updates": [
+    {
+      "event_id": "IRAN-NUCLEAR-NO-CONCESSIONS-20260925",
+      "update_type": "diplomacy/nuclear / negotiating-position clarification",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25T13:08:00-04:00",
+      "finding": "A senior Iranian official told Reuters Iran would make no nuclear concessions even if the United States accepted Tehran's Hormuz proposal and said the waterway would remain closed until all Iranian conditions were met. The statement separated the Hormuz package from Iran's nuclear red lines.",
+      "status": "IRANIAN NO-FLEXIBILITY NUCLEAR POSITION REPORTED; ANONYMOUS SENIOR-OFFICIAL SOURCE; NO AGREEMENT",
+      "sources": [
+        "https://www.investing.com/news/world-news/iran-will-make-no-nuclear-concessions-iranian-official-says-4917912",
+        "https://www.marketscreener.com/news/iran-will-make-no-nuclear-concessions-iranian-official-says-ce785adfd18df421"
+      ],
+      "drawer_effect": "UPDATE U.S.-Iran negotiation drawer by separating Hormuz/war-ending conditions from Iran's stated nuclear position; retain anonymous-source provenance."
+    },
+    {
+      "event_id": "IRAN-SEVEN-DAY-HORMUZ-PLAN-20260925",
+      "update_type": "diplomacy / explicit Iranian proposal",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25T16:35:00-04:00",
+      "finding": "Foreign Minister Abbas Araqchi said Iran had given the United States a concrete seven-day plan under which the Strait of Hormuz could reopen and normal maritime passage could resume if U.S. actions already contemplated in the June MOU were taken. He placed the next move on Washington.",
+      "status": "SEVEN-DAY IRANIAN PROPOSAL PUBLICLY CONFIRMED BY FOREIGN MINISTER; U.S. ACCEPTANCE NOT ESTABLISHED AT STATEMENT TIME",
+      "sources": [
+        "https://www.investing.com/news/commodities-news/irans-araqchi-says-now-up-to-us-to-accept-7day-plan-4918113",
+        "https://www.forth.news/articles/CfQoTX2pLRyH55dJ48pNn"
+      ],
+      "drawer_effect": "SUPERSEDE the generic phased-framework description with the publicly stated Iranian seven-day proposal while preserving that this remained a proposal, not an agreement."
+    },
+    {
+      "event_id": "TRUMP-REJECTS-IRAN-HORMUZ-PROPOSAL-20260925",
+      "update_type": "diplomacy / U.S. response to Iranian proposal",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25T20:58:00-04:00",
+      "finding": "Reuters reported President Trump said he had rejected Iran's proposal to reopen the Strait of Hormuz and end regional fighting. Earlier reporting had cited the Wall Street Journal saying Trump privately rejected the proposal and considered renewed bombing likely after U.S. midterms; the direct public rejection superseded the earlier anonymous-source report as the stronger response record.",
+      "status": "U.S. PRESIDENTIAL REJECTION PUBLICLY STATED; IRANIAN SEVEN-DAY PROPOSAL NOT ACCEPTED",
+      "sources": [
+        "https://wixx.com/2026/09/25/iran-awaits-us-move-after-wsj-report-says-trump-rejects-peace-plan/",
+        "https://www.brecorder.com/news/40441358"
+      ],
+      "drawer_effect": "UPDATE U.S.-Iran negotiation outcome from pending response to public U.S. presidential rejection. Keep claims about future bombing plans separate unless independently confirmed."
+    },
+    {
+      "event_id": "MAKKAH-PACT-CHIEFS-MEETING-20260925",
+      "update_type": "military/diplomacy / alliance implementation outcome",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25",
+      "finding": "The military chiefs of Pakistan, Saudi Arabia and Turkey met in Riyadh and, according to Pakistan's military, discussed intelligence sharing, military coordination, capability integration and threats facing Saudi Arabia. The meeting turned the earlier planned consultation into an observed alliance-implementation step, while specific deployments or operational commitments were not established.",
+      "status": "MILITARY-CHIEFS MEETING CONFIRMED; COORDINATION AREAS ANNOUNCED; SPECIFIC DEPLOYMENTS/COMBAT COMMITMENTS NOT ESTABLISHED",
+      "sources": [
+        "https://www.timesofisrael.com/liveblog_entry/pakistani-saudi-and-turkish-military-chiefs-vow-to-actualize-defense-deal-during-meeting-in-riyadh/",
+        "https://www.turkishminute.com/2026/09/25/turkey-pakistan-and-saudi-arabia-hold-military-talks-after-houthi-attacks/"
+      ],
+      "drawer_effect": "UPDATE Makkah pact from planned crisis consultation to completed chiefs-level coordination meeting; do not infer troop deployment or combat participation."
+    },
+    {
+      "event_id": "OIL-MARKET-TRUCE-HOPES-20260925",
+      "update_type": "economy/energy / market response",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25T12:33:00-04:00",
+      "finding": "Reuters reported oil prices fell about 3% on Friday as hopes for a U.S.-Iran truce increased, while traders simultaneously priced supply risk from Houthi attacks on Saudi Arabia. The move reflected market expectations rather than proof of a diplomatic settlement.",
+      "status": "MARKET PRICED SOME TRUCE OPTIMISM; HOUTHI SUPPLY RISK REMAINED; NO SETTLEMENT IMPLIED",
+      "sources": [
+        "https://www.aol.com/articles/oil-prices-drop-about-3-as-us-iran-explore-path-out-of-war-010643000.html"
+      ],
+      "drawer_effect": "UPDATE market-sentiment drawer; preserve market pricing as expectation rather than evidence of agreement."
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "U.S.-Iran Hormuz negotiations",
+      "action": "UPDATE_AND_SUPERSEDE",
+      "reason": "Iran's seven-day proposal became explicit, then received a public rejection from President Trump within the window."
+    },
+    {
+      "drawer": "Iran nuclear negotiating position",
+      "action": "UPDATE",
+      "reason": "Senior Iranian official explicitly separated nuclear red lines from the Hormuz proposal."
+    },
+    {
+      "drawer": "Makkah Joint Defence Agreement",
+      "action": "UPDATE",
+      "reason": "The military chiefs' meeting occurred and announced coordination themes; no specific deployment was established."
+    },
+    {
+      "drawer": "Oil-market response",
+      "action": "UPDATE",
+      "reason": "Friday market pricing reflected truce optimism and simultaneous Houthi supply risk."
+    }
+  ],
+  "unresolved_questions": [
+    "Will Iran revise or withdraw the seven-day proposal after Trump's public rejection?",
+    "Will Washington articulate a counterproposal or specific nuclear conditions?",
+    "What concrete military assistance follows the Makkah-pact chiefs' meeting?",
+    "Are reported future U.S. bombing plans independently confirmed or merely anonymous-source reporting?"
+  ],
+  "coverage": {
+    "military": "covered through Makkah-pact implementation and Houthi/Saudi context",
+    "maritime": "reviewed via Hormuz proposal status; no new later daily tally promoted in this window",
+    "infrastructure": "reviewed; no new independently confirmed major BDA",
+    "diplomacy": "covered extensively for Iran proposal, nuclear position and U.S. rejection",
+    "economy_sanctions_energy": "covered through oil-market response; aviation implementation remained as prior state",
+    "claims_corrections": "covered with source hierarchy preserved between anonymous report and direct presidential statement",
+    "human_impact": "reviewed; no new broad casualty denominator promoted",
+    "commercial_osint": "partial public market/shipping reporting",
+    "social_media_geolocation": "not systematically available",
+    "commercial_satellite_tasking": "unavailable",
+    "proprietary_maritime_terminals": "unavailable",
+    "classified_isr": "unavailable and not claimed"
+  },
+  "source_discovery_additions": [
+    "Reuters direct Araqchi seven-day proposal",
+    "Reuters senior-official nuclear-position clarification",
+    "Reuters direct Trump rejection of Iranian proposal",
+    "Reuters/Pakistan military account of chiefs-level Makkah-pact meeting"
+  ],
+  "completion": {
+    "status": "BACKFILL COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+    "canonical_bytes_modified": false,
+    "generated_public_state_modified": false,
+    "release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "downstream_referrals": [
+      "Current-state integration: Iran seven-day Hormuz proposal and U.S. rejection",
+      "Current-state integration: Iran nuclear-position clarification",
+      "Current-state integration: Makkah-pact chiefs meeting"
+    ],
+    "notes": "Backfilled routine upstream evidence only. Proposal, response and market expectation remain separate predicates."
+  }
+}
