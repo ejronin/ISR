@@ -2370,9 +2370,8 @@
       const summary = append(card, 'summary', 'wol-award-evidence-summary');
       append(summary, 'span', 'card-kicker', observation.observed_at || 'Observation date not recorded');
       append(summary, 'strong', '', publicNarrative(
-        observation.message_identity,
-        upstream && (upstream.statement_identity || upstream.exact_statement || upstream.translated_statement)
-          || 'Documented amplification publication'
+        upstream && (upstream.statement_identity || upstream.exact_statement || upstream.translated_statement),
+        'Documented amplification publication'
       ));
       const body = append(card, 'div', 'wol-award-evidence-body');
       const route = append(body, 'section', 'wol-evidence-explainer');
