@@ -256,12 +256,12 @@ async function loadDirectRoute(cdp, route) {
         assert.match(valentiRoleEvidence.titleText, /WOL applies the Fake historian label because/);
         assert.match(valentiRoleEvidence.titleText, /wrong events, wrong offices, wrong chronology, and materially distorted historical context/);
         assert.match(valentiRoleEvidence.titleText, /Why Fake historian/);
-        assert.match(valentiRoleEvidence.titleText, /4 source-recovered historical failures support this title/);
+        assert.match(valentiRoleEvidence.titleText, /9 source-recovered historical failures support this title/);
         assert.match(valentiRoleEvidence.titleText, /These checks are separate from the Bullshitter award count below/);
-        assert.equal(valentiRoleEvidence.roleItems, 4, 'Fake historian must show all four visible historian failures');
-        assert.equal(valentiRoleEvidence.roleCards, 4, 'Fake historian must expose four claim-by-claim evidence cards');
+        assert.equal(valentiRoleEvidence.roleItems, 9, 'Fake historian must show all nine visible historian failures');
+        assert.equal(valentiRoleEvidence.roleCards, 9, 'Fake historian must expose nine claim-by-claim evidence cards');
         assert.equal(valentiRoleEvidence.bullshitterItems, 24, 'role-only historian evidence must not change Valenti Bullshitter incident count');
-        assert(valentiRoleEvidence.roleReceipts >= 8, 'historian evidence must expose direct-source and contrary-history receipts');
+        assert(valentiRoleEvidence.roleReceipts >= 18, 'historian evidence must expose direct-source and contrary-history receipts');
         assert(valentiRoleEvidence.roleTags.includes('Fake historian'), 'historian evidence is missing the Fake historian tag');
         assert(valentiRoleEvidence.roleTags.includes('Historical fact error'), 'historian evidence is missing historical fact-error tags');
         assert(valentiRoleEvidence.roleTags.includes('Historical context distortion'), 'historian evidence is missing context-distortion tags');
