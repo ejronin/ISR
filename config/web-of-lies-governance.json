@@ -471,7 +471,25 @@
     "bot_and_country_markers_require_receipts": true,
     "self_amplification_rule": "Publishers/accounts may simultaneously be Bullshitters and amplifiers. Publisher-owned reposts, mirrors, embeds, cross-platform syndication, and other propagation of the publisher's own WOL-qualified bullshit are recorded as SELF_AMPLIFICATION rather than discarded as publisher plumbing.",
     "network_pattern_rule": "Receipt-backed propagation topology is behavioral evidence. Five or more distinct upstream WOL Bullshitter/qualifying-amplifier nodes is a systematic-network signal; ten or more is a high-density hub signal. Only publication/repost/repeat/embed/adoption edges count. Follows, mentions, replies, ideology, organizational proximity, or shared audiences do not.",
-    "network_assisted_bullshitter_rule": "Network position may assist Bullshitter qualification only when paired with the node's own qualifying publication conduct under source_awards.BULLSHITTER.network_assisted_qualification. Six distinct qualifying incidents are cumulative; no time window applies. Network adjacency by itself cannot confer an award."
+    "network_assisted_bullshitter_rule": "Network position may assist Bullshitter qualification only when paired with the node's own qualifying publication conduct under source_awards.BULLSHITTER.network_assisted_qualification. Six distinct qualifying incidents are cumulative; no time window applies. Network adjacency by itself cannot confer an award.",
+    "publisher_review_sufficiency": {
+      "applies_to_source_entity_types": [
+        "OUTLET"
+      ],
+      "qualifying_incident_threshold": 6,
+      "window_days": 30,
+      "purpose": "MEDIA_PUBLISHER_REVIEW_STOP_CONDITION",
+      "rule": "For media publishers/outlets, six distinct WOL-qualifying bullshit stories within any 30-day span are sufficient to establish the publisher for WOL source-behavior purposes. Once that threshold is documented, source-review does not need to enumerate every additional qualifying story merely to prove the classification.",
+      "non_exhaustive_corpus": true,
+      "more_incidents_may_exist": true,
+      "do_not_infer_only_six_exist": true,
+      "continue_amplifier_mapping_after_threshold": true,
+      "continue_cross_web_mapping_after_threshold": true,
+      "neutral_carrier_reporting_excluded": true,
+      "same_information_event_deduplicated": true,
+      "cross_platform_mirrors_deduplicated": true,
+      "does_not_replace_global_bullshitter_award_semantics": true
+    }
   },
   "role_failure_appellations": {
     "FAKE_ANALYST": {

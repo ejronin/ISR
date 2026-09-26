@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-25T13:25:00-04:00",
+  "as_of": "2026-09-25T19:10:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -8370,6 +8370,143 @@
           "provenance_status": "ORIGINAL_URL",
           "deletion_status": "AVAILABLE",
           "text_excerpt": "Trade2Win forum user IlIlIlIlI embedded and circulated the Press TV 'Myth of US stealth fighters over' article; receipt surface is WEBSITE while amplifier_platform preserves FORUM."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-SELF-X-C130-20260405",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-PUB-TASNIM-RESCUE-FAILURE-20260405",
+      "amplifier_id": "TASNIM-X-EN",
+      "amplifier_source_id": "WOL-SRC-TASNIM",
+      "amplifier_display_name": "Tasnim News Agency",
+      "amplifier_handle": "@Tasnimnews_EN",
+      "amplifier_platform": "X",
+      "amplifier_country_code": "IR",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "TASNIM-RESCUE-AIRCRAFT-DOWNED-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-SELF-X-C130-20260405",
+          "surface": "X",
+          "url": "https://x.com/Tasnimnews_EN/status/2040751930251567185",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Tasnim's official English X account asserted that physical evidence proved the C-130 was shot down, reinforcing the same rescue-aircraft destruction narrative."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-WESTENRA-RESCUE-FAILURE-20260405",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-F15E-005",
+      "amplifier_id": "SUBSTACK-ROBIN-WESTENRA",
+      "amplifier_display_name": "Robin Westenra / On the eve of ARMAGEDDON",
+      "amplifier_platform": "SUBSTACK",
+      "message_identity": "TASNIM-F15E-RESCUE-FAILURE-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-WESTENRA-RESCUE-FAILURE",
+          "surface": "SUBSTACK",
+          "url": "https://seemorerocks.substack.com/p/the-iranians-have-caught-the-down",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Westenra linked Tasnim's April 3 failed-rescue article, contrasted it against the US rescue account, and adopted the Iranian capture/failure narrative."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-ETIMES247-IMAGES-DOWNED-AIRCRAFT-20260405",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-PUB-TASNIM-IMAGES-DOWNED-AIRCRAFT-20260405",
+      "amplifier_id": "WEB-ETIMES247",
+      "amplifier_display_name": "ETimes247",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "TASNIM-IMAGES-DOWNED-AIRCRAFT-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-ETIMES247-IMAGES-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.etimes247.ng/downed-us-aircraft-in-central-iran/",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "ETimes247 republished Tasnim's 'Images Emerge of Downed US Aircraft in Central Iran' narrative, including the claim that multiple US rescue aircraft were destroyed."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-WIERNI-POLSCE-IMAGES-DOWNED-AIRCRAFT-20260406",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-PUB-TASNIM-IMAGES-DOWNED-AIRCRAFT-20260405",
+      "amplifier_id": "BLOG-WIERNI-POLSCE-SUWERENNEJ",
+      "amplifier_display_name": "Wierni Polsce Suwerennej",
+      "amplifier_platform": "BLOG",
+      "message_identity": "TASNIM-IMAGES-DOWNED-AIRCRAFT-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-WIERNI-POLSCE-IMAGES-20260406",
+          "surface": "BLOG",
+          "url": "https://wiernipolsce1.wordpress.com/2026/04/06/wojskowa-fabryka-snow-d-trumpa-traci-blask/",
+          "published_at": "2026-04-06",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Wierni Polsce Suwerennej reproduced the Tasnim image story and direct Tasnim link while carrying the multiple-Black-Hawk/C-130 destruction claim."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-BURBUJA-RESCUE-FAILURE-20260403",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-F15E-005",
+      "amplifier_id": "FORUM-BURBUJA-UCHPA",
+      "amplifier_display_name": "uchpa / Burbuja.info",
+      "amplifier_handle": "uchpa",
+      "amplifier_platform": "FORUM",
+      "message_identity": "TASNIM-F15E-RESCUE-FAILURE-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-BURBUJA-RESCUE-FAILURE",
+          "surface": "WEBSITE",
+          "url": "https://www.burbuja.info/inmobiliaria/temas/fracasa-el-esfuerzo-estadounidense-para-recuperar-al-piloto-de-combate-f-35-derribado-por-el-cuerpo-de-la-guardia-revolucionaria-islamica-de-iran.2317326/",
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Burbuja.info user uchpa seeded a thread with Tasnim's failed-rescue article and headline/premise that the US recovery effort had failed."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-LANTIDIPLOMATICO-RESCUE-FAILURE-20260404",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-F15E-005",
+      "amplifier_id": "WEB-LANTIDIPLOMATICO",
+      "amplifier_display_name": "L'Antidiplomatico",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "TASNIM-F15E-RESCUE-FAILURE-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-LANTIDIPLOMATICO-RESCUE-FAILURE",
+          "surface": "WEBSITE",
+          "url": "https://www.lantidiplomatico.it/dettnews-in_aggiornamento__trump_conferma_il_salvataggio_pilota_f15_teheran_2missione_fallita/45289_65555/",
+          "published_at": "2026-04-04",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "L'Antidiplomatico directly cited and linked Tasnim's report that the Black Hawk/C-130 recovery effort had so far been futile, carrying the failed-rescue narrative."
         }
       ],
       "observed_at": "2026-09-25"

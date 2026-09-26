@@ -1016,6 +1016,26 @@ The same underlying publication/event counts once. A later distinct republicatio
 or repetition may count as a new incident when it is separately preserved as an
 information event.
 
+### Media-publisher review sufficiency
+
+For a media publisher/outlet, WOL does **not** require an exhaustive catalog of
+every bullshit story once a dense repeated pattern is established. Six distinct
+qualifying stories within any 30-day span are sufficient to establish the
+publisher for source-behavior review purposes.
+
+This is a **review stop condition**, not a claim that only six incidents exist
+and not a replacement for the cumulative Bullshitter award semantics above.
+When the six-in-30 publisher threshold is documented:
+
+- WOL may stop searching for additional stories merely to prove the publisher's
+  repeated behavior;
+- the public record should make clear that the six are documented examples and
+  that additional qualifying stories may exist;
+- neutral attributed carrier reporting still does not count;
+- mirrors/cross-platform copies of one information event still count once;
+- amplifier and cross-web collection **continues**, because downstream topology
+  is a separate analytical objective.
+
 A correction does not erase the fact that the qualifying incident occurred.
 Corrections remain separately credited in the behavioral record and Hall metrics.
 
