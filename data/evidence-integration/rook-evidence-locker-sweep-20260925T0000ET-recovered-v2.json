@@ -1,0 +1,107 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-24T12:00:00-04:00",
+    "window_end": "2026-09-25T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-26T18:45:00-04:00",
+    "evidence_horizon_time": "2026-09-25T00:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260924T1200ET.json",
+    "boundary_rule": "Recovered after a scheduler-to-repository gap. Occurrence/publication/collection/evidence-horizon times remain distinct; later evidence updates prior events rather than creating duplicate occurrences."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "recovery_reason": "The original scheduled sweep did not persist as a durable modern-contract ROOK artifact. The earlier Sep.26 backfill used a legacy unrecognized shape and is retained unchanged as audit lineage.",
+    "legacy_backfill": "data/evidence-integration/rook-evidence-locker-sweep-20260925T0000ET.json",
+    "normalization_note": "This recovery preserves the Sep.24 noon-to-midnight evidence horizon and does not claim contemporaneous collection."
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-US-IRAN-PHASED-HORMUZ-BLOCKADE-FRAMEWORK-20260924",
+      "event_type": "DIPLOMATIC_NEGOTIATION_FRAMEWORK_REPORTED",
+      "occurrence_time": "2026-09-24",
+      "public_available_time": "2026-09-24T12:17:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "actor": "United States / Iran / Qatar-mediated UNGA diplomacy",
+      "summary": "Reuters reported U.S. and Iranian negotiators were exploring a phased arrangement pairing reopening of the Strait of Hormuz with lifting the U.S. economic blockade. Multiple Iranian, regional and Western diplomatic sources described sequencing as the central obstacle. No agreement, accepted sequencing mechanism or implementation was established by this horizon.",
+      "confidence": "HIGH_FOR_REPORTED_NEGOTIATION_STRUCTURE; AGREEMENT_NOT_ESTABLISHED",
+      "sources": [
+        "https://www.investing.com/news/commodities-news/us-and-iran-discuss-phased-deal-to-reopen-hormuz-and-end-us-blockade-sources-say-4915884",
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/24/us-and-iran-discuss-phased-deal-to-reopen-hormuz-and-end-us-blockade-sources-say"
+      ]
+    },
+    {
+      "event_id": "LOCKER-MAKKAH-PACT-CHIEFS-MEETING-PLANNED-20260924",
+      "event_type": "DEFENCE_PACT_CRISIS_CONSULTATION_PLANNED",
+      "occurrence_time": "2026-09-24",
+      "public_available_time": "2026-09-24T21:54:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "actor": "Saudi Arabia / Pakistan / Turkiye",
+      "summary": "Reuters reported the Saudi, Pakistani and Turkish military chiefs were to meet urgently under the Makkah Joint Defence Agreement to discuss support for Saudi Arabia after escalating Houthi attacks. This established planned crisis consultation, not yet a completed meeting, deployment or combat commitment.",
+      "confidence": "HIGH_FOR_PLANNED_MEETING",
+      "sources": [
+        "https://www.marketscreener.com/news/allies-unite-behind-saudi-arabia-as-houthis-step-up-attacks-ce785adfdb8ff523"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HOUTHI-RIYADH-YANBU-TARGET-CLAIMS-20260924PM",
+      "updates_existing_ref": "SAUDI-HOUTHI-MISSILE-INTERCEPTS-20260924",
+      "relationship": "LATER_HOUTHI_TARGET_CLAIMS_WITHOUT_CONFIRMED_BDA",
+      "summary": "After the Saudi-led coalition said it had intercepted six Houthi ballistic missiles aimed at Taif and the Yanbu area, the Houthis separately claimed missile and drone attacks on a 'sensitive target' in Riyadh and Saudi Aramco facilities in Yanbu. Reuters reported no immediate Saudi confirmation of the Riyadh attack or damage/casualties at Taif or Yanbu.",
+      "status": "INTERCEPT_CLAIM_PREEXISTS; HOUTHI_RIYADH_AND_ARAMCO_TARGET_CLAIMS_RECORDED; BDA_UNCONFIRMED",
+      "sources": [
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/24/houthis-say-they-attacked-riyadh-and-aramco-facilities-in-yanbu",
+        "https://quews.news/saudi-arabia-says-it-2/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "source_discovery_additions": [
+    {
+      "source_class": "DIPLOMATIC_WIRE_REPORTING",
+      "addition": "Reuters multi-source reporting on a phased Hormuz/blockade sequencing framework."
+    },
+    {
+      "source_class": "REGIONAL_MILITARY_ALLIANCE_REPORTING",
+      "addition": "Reuters reporting of an urgent Makkah-pact chiefs consultation before the meeting occurred."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "Update U.S.-Iran UNGA contacts from generic engagement/no breakthrough to a reported phased Hormuz-versus-blockade framework; no agreement or implementation.",
+    "Update Sep.24 Saudi-Houthi strike chronology with later Houthi Riyadh/Yanbu target claims while keeping BDA unconfirmed.",
+    "Open a planned Makkah-pact crisis-consultation state that can later be superseded by the completed Sep.25 chiefs meeting."
+  ],
+  "unresolved_questions": [
+    "What sequencing, verification or simultaneity mechanism was proposed for the Hormuz/blockade exchange?",
+    "Did any Houthi projectile reach Riyadh or Saudi Aramco facilities at Yanbu and cause independently verified damage or casualties?",
+    "What concrete military assistance, if any, would the Makkah-pact chiefs discuss or approve?"
+  ],
+  "coverage": {
+    "material_results": [
+      "U.S.-Iran phased Hormuz/blockade framework",
+      "Houthi Riyadh/Yanbu target claims",
+      "planned Saudi-Pakistan-Turkiye chiefs consultation"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No independently verified new Yanbu/Aramco BDA",
+      "No newer qualified daily Kpler Hormuz count before the midnight horizon",
+      "No additional qualified Iran-aviation implementation beyond the Sep.24 state"
+    ],
+    "limitations": [
+      "Backfill reconstructed Sep.26 from contemporaneous public sources; not a claim of on-time collection.",
+      "No proprietary maritime feed, commercial satellite tasking or classified ISR."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_RECOVERED_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_RECOVERY_ARTIFACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
