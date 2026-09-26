@@ -2443,7 +2443,26 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Public Telegram/X identity plus Press TV quotation/hosting relationship established. A bounded March 18–28 source-behavior review now records six distinct qualifying information events: Netanyahu-death speculation stated as fact, the F-35/F-15E misidentification, a recycled 2020 Sara Netanyahu video used as current-condition evidence, the two-missile/all-damage causal claim, scope mutation of Trump's energy-plant pause plus an unsupported invasion-motive attribution, and a population-wide 'lost public support' conclusion contradicted by representative polling. These incidents are counted at publication-event level, not per atomic proposition. The deterministic Bullshitter award must be derived, not manually assigned."
+      "notes": "Public Telegram/X identity plus recurring public media appearances are established. The current production WOL source-behavior register contains 34 distinct receipt-backed Ethan Levins publication events across the recoverable 2026 Iran-war corpus. The earlier six-event March tranche was only the award-earning window and is superseded as a corpus summary. The current record derives 15 analysis-bridge failures for Fake analyst and 34 journalistic-verification failures for Yellow journalism, while preserving supported/attributed material outside the adverse register. A separate amplifier pass preserves 18 receipt-backed downstream observations across 16 downstream identities, including repeated Press TV and Las Noticias reuse. These counts describe the recoverable production record; they do not imply that every Levins statement is false or that downstream quotation proves affiliation, coordination, employment or state direction.",
+      "review_completion": {
+        "status": "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS",
+        "completed_at": "2026-09-25T21:15:40-04:00",
+        "documented_incident_count": 34,
+        "bullshitter_award_earning_incident_count": 6,
+        "bullshitter_award_earning_window": {
+          "start": "2026-03-18T00:00:00",
+          "end": "2026-03-20T00:00:00"
+        },
+        "fake_analyst_basis_incident_count": 15,
+        "yellow_journalism_basis_incident_count": 34,
+        "sensationalized_presentation_incident_count": 31,
+        "amplification_observation_count": 18,
+        "distinct_downstream_identity_count": 16,
+        "distinct_scored_events_with_recovered_amplification": 7,
+        "limitation": "This is not a claim of lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Ethan Levins corpus has been reviewed into a 34-event production register and the recoverable downstream amplifier pass has been completed under the directional-receipt standard.",
+        "reopen_rule": "Reopen only when a genuinely new Ethan publication, direct receipt, transcript, preserved post, or other source evidence is recovered. Do not re-count reposts as new Ethan publication events and do not treat amplifier appearance as independent corroboration.",
+        "next_action": "REOPEN_ONLY_ON_NEW_SOURCE_EVIDENCE"
+      }
     },
     {
       "lead_id": "LEAD-IRAN-MILITARY-UPDATE",
