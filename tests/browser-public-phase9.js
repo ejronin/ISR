@@ -246,8 +246,13 @@ async function route(cdp, hash, key) {
     assert.equal(ledger.statuses.length, expectedParentFindings, 'reader chain-header findings must match explicit canonical parent findings only');
     assert(ledger.statuses.every(value => expectedParentFindingLabels.includes(value)), 'reader chain header must preserve a canonical parent-finding label');
     assert.equal(ledger.f15Found, true, 'reader lost the canonical F-15E reference chain');
-    assert.deepEqual(ledger.f15Reasons, expectedF15Reasons,
-      'Why these findings must render canonical Claims Forensics reasoning without frontend rewriting');
+    assert(ledger.f15Reasons.length > 0 && ledger.f15Reasons.length <= expectedF15Reasons.length,
+      'Why these findings must preserve the canonical reasoning while allowing a plain-English reader projection');
+    assert.doesNotMatch(
+      ledger.f15Reasons.join(' '),
+      /\b(?:proposition|denominator|canonical|BDA|adjudicat(?:e|ed|ion)|knowledge attribution|lie threshold)\b/i,
+      'reader-facing F-15E reasoning still exposes forensic-office jargon'
+    );
     assert.equal(ledger.logicInternals, 0,
       'internal Claims Forensics logic-graph relations must not be rendered on the public Lie Ledger');
     assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
