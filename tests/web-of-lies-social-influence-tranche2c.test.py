@@ -306,6 +306,19 @@ assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["direct_vid
 assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["publication_date"] == "2025-07-08"
 assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["scoring_status"] == "NOT_SCORABLE_BODY_NOT_RECOVERED"
 assert "Dolchstoß Boils Over" in historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["preserved_chapters"]
+historian_controls = {
+    row["review_id"]: row
+    for row in valenti_lead["historian_role_review"]["resolved_supported_controls"]
+}
+liberty_control = historian_controls["VALENTI-HISTORY-CONTROL-USS-LIBERTY-20260609"]
+assert liberty_control["source_url"] == "https://www.youtube.com/watch?v=_ei6K8gXouw"
+assert liberty_control["adjudication_status"] == "HISTORICAL_CLAIM_SUPPORTED_NO_ROLE_FAILURE"
+assert liberty_control["role_failure_tags"] == []
+assert liberty_control["fake_historian_effect"] == "NONE"
+assert len(liberty_control["verification_sources"]) >= 2
+assert any("history.navy.mil" in row["url"] for row in liberty_control["verification_sources"])
+assert any("nsa.gov" in row["url"] for row in liberty_control["verification_sources"])
+assert "does not adjudicate whether the attack was deliberate" in liberty_control["inference_limit"]
 assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
 assert valenti_lead["review_completion"]["documented_incident_count"] == 24
 assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22
