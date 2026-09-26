@@ -192,7 +192,7 @@ async function loadDirectRoute(cdp, route) {
           const text = host?.innerText || '';
           const evidenceText = [...(host?.querySelectorAll('.wol-award-evidence-card') || [])]
             .map(node => node.textContent || '')
-            .join('\n');
+            .join('\\n');
           return {
             missing: false,
             pressed: button.getAttribute('aria-pressed'),
