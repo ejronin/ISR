@@ -8,10 +8,11 @@ const root = path.resolve(__dirname, '..');
 const reader = require('../src/public-reader-layer.js');
 const { assertCampaignEventCountSemanticBoundary } = require('./public-copy-semantics.js');
 
-assert.equal(reader.READER_SUPPORT_VERSION, 'atlas-reader-support-v1.2');
+assert.equal(reader.READER_SUPPORT_VERSION, 'atlas-reader-support-v1.3');
 
-const finding = (truth, knowledge, publication = 'PUBLIC_READY') => reader.readerPublicAdjudication({
+const finding = (truth, knowledge, publication = 'PUBLIC_READY', truthQualifier = '') => reader.readerPublicAdjudication({
   truth_adjudication: truth,
+  truth_qualifier: truthQualifier,
   knowledge_judgment: knowledge,
   public_knowledge_judgment: knowledge,
   publication_status: publication
@@ -23,6 +24,22 @@ assert.deepEqual(finding('FALSE', 'INSUFFICIENT_EVIDENCE'), { label: 'False', ke
 assert.deepEqual(finding('MISLEADING', 'NOT_ASSESSED'), { label: 'Misleading', key: 'misleading' });
 assert.deepEqual(finding('SUPPORTED', 'NOT_ASSESSED'), { label: 'Supported', key: 'supported' });
 assert.deepEqual(finding('UNRESOLVED', 'INSUFFICIENT_EVIDENCE'), { label: 'Unresolved', key: 'unresolved' });
+assert.deepEqual(
+  finding('UNRESOLVED', 'INSUFFICIENT_EVIDENCE', 'PUBLIC_READY', 'UNSUBSTANTIATED_EFFECT'),
+  { label: 'Unsupported', key: 'unsupported' }
+);
+assert.deepEqual(
+  finding('UNRESOLVED', 'NOT_ASSESSABLE', 'PUBLIC_READY', 'EXACT_COUNT_AND_EFFECT_NOT_INDEPENDENTLY_RECONCILED'),
+  { label: 'Unverified', key: 'unverified' }
+);
+assert.deepEqual(
+  finding('UNRESOLVED', 'INSUFFICIENT_EVIDENCE', 'PUBLIC_READY', 'PARTLY_CONFIRMED_EXACT_COUNT_UNRESOLVED'),
+  { label: 'Partly supported', key: 'partly-supported' }
+);
+assert.deepEqual(
+  finding('UNRESOLVED', 'INSUFFICIENT_EVIDENCE', 'PUBLIC_READY', 'CONTESTED_MINE_CAUSATION'),
+  { label: 'Unresolved', key: 'unresolved' }
+);
 
 // Publication qualification on the knowledge/intent axis must not erase the
 // independently supported factual finding or promote a withheld lie conclusion.
@@ -110,17 +127,18 @@ assert.match(readerSource, /What made up these monthly totals/);
 const campaignCountCopy = readerSource.match(/append\(details, 'p', 'section-note', '([^']*count of recorded military events[^']*)'\)/)?.[1] || '';
 assertCampaignEventCountSemanticBoundary(campaignCountCopy);
 assert.match(readerSource, /Facility status by actor/);
-assert.match(readerSource, /Repeated or amplified by \(\$\{repeats\.length\}\)/);
-assert.match(readerSource, /How Atlas reached this finding/);
-assert.match(readerSource, /Why this branch is/);
-assert.match(readerSource, /That is why this branch is labeled False rather than Lie/);
-assert.match(readerSource, /What actually happened/);
-assert.match(readerSource, /Adjudicated outcome/);
+assert.match(readerSource, /Repeated by \(\$\{repeats\.length\}\)/);
+assert.match(readerSource, /Why these findings/);
+assert.match(readerSource, /Why this is/);
+assert.doesNotMatch(readerSource, /That is why this branch is labeled False rather than Lie/);
+assert.match(readerSource, /What happened/);
+assert.match(readerSource, /Bottom line/);
 assert.doesNotMatch(readerSource, /How the logic works/);
-assert.match(readerSource, /What remains unknown/);
-assert.match(readerSource, /What was claimed and how the story changed/);
-assert.match(readerSource, /the inference answers "why that evidence changes/);
-assert.match(readerSource, /The separate knowledge\/intent assessment remains pending additional evidence/);
+assert.match(readerSource, /Open evidence questions/);
+assert.match(readerSource, /Claim history/);
+assert.doesNotMatch(readerSource, /const intentNote = intentReviewNote/);
+assert.match(readerSource, /readerSummaryText/);
+assert.match(readerSource, /appendLedgerActorKicker/);
 assert.match(readerSource, /const positiveDamage = !negativeDamage/);
 assert.doesNotMatch(readerCss, /technical-record-metadata[\s\S]*display\s*:\s*none/i, 'internal fields must be removed structurally, not hidden by CSS');
 
