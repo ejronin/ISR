@@ -67,15 +67,20 @@ valenti_role_failures = {
 assert "FAKE_HISTORIAN" in valenti_role_failures
 fake_historian = valenti_role_failures["FAKE_HISTORIAN"]
 assert fake_historian["public_label"] == "Fake historian"
-assert fake_historian["incident_count"] == 4
+assert fake_historian["incident_count"] == 9
 assert set(fake_historian["basis_incident_ids"]) == {
     "WOL-ROLE-VALENTI-HIST-TONKIN-EVIDENCE-20260711",
     "WOL-ROLE-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
     "WOL-ROLE-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
     "WOL-ROLE-VALENTI-HIST-HYPERINFLATION-1929-20250708",
+    "WOL-ROLE-VALENTI-HIST-WWI-FINANCE-GOVERNMENT-20260202",
+    "WOL-ROLE-VALENTI-HIST-CPI-NAME-20260202",
+    "WOL-ROLE-VALENTI-HIST-VON-BRAUN-NASA-HEAD-20250919",
+    "WOL-ROLE-VALENTI-HIST-VON-BRAUN-V1-20250919",
+    "WOL-ROLE-VALENTI-HIST-CHERNOBYL-BLACK-SEA-20250919",
 }
 assert len(fake_historian["claimed_role_receipts"]) >= 2
-assert len(valenti["role_failure_evidence"]) == 4
+assert len(valenti["role_failure_evidence"]) == 9
 assert all(
     row["qualification_status"] == "QUALIFIED_ROLE_FAILURE_EVIDENCE"
     for row in valenti["role_failure_evidence"]
