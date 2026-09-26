@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-26T09:02:00-04:00",
+  "as_of": "2026-09-26T09:24:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -1009,7 +1009,313 @@
           "estimated Patreon income",
           "mere existence of monetization"
         ]
-      }
+      },
+      "role_failure_evidence": [
+        {
+          "incident_id": "WOL-ROLE-VALENTI-HIST-TONKIN-EVIDENCE-20260711",
+          "source_id": "WOL-SRC-VALENTI-VIDEOS",
+          "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+          "assertion_kind": "FACTUAL_ASSERTION",
+          "published_at": "2026-07-11",
+          "first_observed_at": "2026-07-11",
+          "statement_identity": "In How America Created the \"Forever War,\" Valenti said that, with little to no evidence, the U.S. government claimed North Vietnamese forces had attacked American ships in the Gulf of Tonkin.",
+          "role_failure_tags": [
+            "HISTORICAL_VERIFICATION_FAILURE"
+          ],
+          "historical_verification_review": {
+            "status": "SOURCE_RECOVERED_ADJUDICATED",
+            "exact_proposition": "The U.S. claim that North Vietnamese forces attacked American ships in the Gulf of Tonkin generally rested on little to no evidence.",
+            "failure_type": "HISTORICAL_CONTEXT_DISTORTION",
+            "finding": "The presentation collapses the August 2 and August 4, 1964 incidents into one evidentiary claim. The August 2 attack on USS Maddox occurred; later doubt centered on the reported August 4 second attack.",
+            "contrary_evidence_sources": [
+              {
+                "source_name": "U.S. Department of State, Office of the Historian — Gulf of Tonkin, 1964",
+                "url": "https://history.state.gov/milestones/1961-1968/gulf-of-tonkin"
+              },
+              {
+                "source_name": "Foreign Relations of the United States, 1964–1968, Vol. I — August 4 NSC notes",
+                "url": "https://history.state.gov/historicaldocuments/frus1964-68v01/d278"
+              }
+            ]
+          },
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-BS-RCPT-VALENTI-HIST-TONKIN-YT",
+              "surface": "YOUTUBE",
+              "url": "https://www.youtube.com/watch?v=a3BBuM0bFV0",
+              "published_at": "2026-07-11",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
+              "text_excerpt": "3:24–3:40 — \"With little to no evidence, the United States government claimed that North Vietnamese forces had attacked American ships in the Gulf of Tonkin.\""
+            },
+            {
+              "receipt_id": "WOL-BS-RCPT-HIST-TONKIN-STATE",
+              "surface": "WEBSITE",
+              "url": "https://history.state.gov/milestones/1961-1968/gulf-of-tonkin",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL",
+              "text_excerpt": "The Office of the Historian records an August 2 attack and notes later doubts about whether the August 4 attack occurred."
+            },
+            {
+              "receipt_id": "WOL-BS-RCPT-HIST-TONKIN-FRUS",
+              "surface": "WEBSITE",
+              "url": "https://history.state.gov/historicaldocuments/frus1964-68v01/d278",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL",
+              "text_excerpt": "Contemporaneous NSC notes treated a second attack as reported on August 4; later historical review distinguishes the disputed second incident from the August 2 attack."
+            }
+          ],
+          "evidentiary_support_review": {
+            "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+            "search_scope": "Valenti's timestamped transcript was compared with the State Department Office of the Historian's Gulf of Tonkin overview and contemporaneous FRUS records.",
+            "checked_at": "2026-09-26T08:55:00-04:00",
+            "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+            "claimant_basis_note": "The historical record supports an actual August 2 North Vietnamese attack on USS Maddox. The disputed/no-attack question concerns the reported August 4 second attack.",
+            "search_notes": "The problem is not acknowledging controversy around Gulf of Tonkin; it is flattening two different incidents into a blanket little-to-no-evidence account.",
+            "supporting_evidence_found": false
+          },
+          "public_bullshit_summary": "Valenti flattened two different Gulf of Tonkin incidents into one “little to no evidence” story. North Vietnamese boats attacked USS Maddox on August 2; the later no-attack controversy concerns the reported August 4 second attack.",
+          "body_review_context": {
+            "provenance": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
+            "transcript_status": "SOURCE_RECOVERED",
+            "timestamp": "03:24-03:40",
+            "observation": "Exact spoken proposition preserved in the project-owner supplied transcript."
+          },
+          "review_target": "WEB_OF_LIES_ROLE_FAILURE_APPELLATION",
+          "review_reason": "Source-recovered falsifiable historical proposition materially distorts the evidentiary status of the two Gulf of Tonkin incidents.",
+          "qualification_status": "QUALIFIED_ROLE_FAILURE_EVIDENCE",
+          "evidence_scope": "PROFESSIONAL_ROLE_APPELLATION_ONLY_OUTSIDE_ACTIVE_IRAN_WAR_CORPUS",
+          "source_information_event_id": null
+        },
+        {
+          "incident_id": "WOL-ROLE-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
+          "source_id": "WOL-SRC-VALENTI-VIDEOS",
+          "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+          "assertion_kind": "FACTUAL_ASSERTION",
+          "published_at": "2025-07-08",
+          "first_observed_at": "2025-07-08",
+          "statement_identity": "In How the Germans fell for Fascism, Valenti said Germany unified in 1871 after the \"FrancoRussian War.\"",
+          "role_failure_tags": [
+            "HISTORICAL_VERIFICATION_FAILURE"
+          ],
+          "historical_verification_review": {
+            "status": "SOURCE_RECOVERED_ADJUDICATED",
+            "exact_proposition": "Germany unified in 1871 after the Franco-Russian War.",
+            "failure_type": "HISTORICAL_FACT_ERROR",
+            "finding": "The war tied directly to German unification in 1870–1871 was the Franco-Prussian War, not a Franco-Russian War.",
+            "contrary_evidence_sources": [
+              {
+                "source_name": "Library of Congress — Franco-Prussian War summary",
+                "url": "https://www.loc.gov/item/2021669315/"
+              },
+              {
+                "source_name": "U.S. Department of State, Office of the Historian — Germany",
+                "url": "https://history.state.gov/countries/germany"
+              }
+            ]
+          },
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-BS-RCPT-VALENTI-HIST-FRANCO-RUSSIAN-YT",
+              "surface": "YOUTUBE",
+              "url": "https://www.youtube.com/watch?v=vLx-gAXUXZQ",
+              "published_at": "2025-07-08",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
+              "text_excerpt": "0:32–0:46 — Germany unified \"after the FrancoRussian War\" under one flag."
+            },
+            {
+              "receipt_id": "WOL-BS-RCPT-HIST-FRANCO-PRUSSIAN-LOC",
+              "surface": "WEBSITE",
+              "url": "https://www.loc.gov/item/2021669315/",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL",
+              "text_excerpt": "Library of Congress identifies the Franco-Prussian War of 1870–1871 and describes Prussia under Bismarck using the war to advance German unification."
+            },
+            {
+              "receipt_id": "WOL-BS-RCPT-HIST-GERMANY-STATE-1871",
+              "surface": "WEBSITE",
+              "url": "https://history.state.gov/countries/germany",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL",
+              "text_excerpt": "Office of the Historian records establishment of the German Empire on January 18, 1871."
+            }
+          ],
+          "evidentiary_support_review": {
+            "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+            "search_scope": "Timestamped Valenti transcript compared with Library of Congress and State Department historical records for German unification in 1870–1871.",
+            "checked_at": "2026-09-26T08:55:00-04:00",
+            "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+            "claimant_basis_note": "The relevant conflict is the Franco-Prussian War. The transcript substitutes a different war name.",
+            "search_notes": "This is a bounded historical naming/fact error, not an interpretive dispute.",
+            "supporting_evidence_found": false
+          },
+          "public_bullshit_summary": "He named the wrong war. German unification in 1871 followed the Franco-Prussian War, not a “Franco-Russian War.”",
+          "body_review_context": {
+            "provenance": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
+            "transcript_status": "SOURCE_RECOVERED",
+            "timestamp": "00:32-00:46",
+            "observation": "Exact spoken proposition preserved in the project-owner supplied transcript."
+          },
+          "review_target": "WEB_OF_LIES_ROLE_FAILURE_APPELLATION",
+          "review_reason": "Source-recovered, falsifiable historical fact error.",
+          "qualification_status": "QUALIFIED_ROLE_FAILURE_EVIDENCE",
+          "evidence_scope": "PROFESSIONAL_ROLE_APPELLATION_ONLY_OUTSIDE_ACTIVE_IRAN_WAR_CORPUS",
+          "source_information_event_id": null
+        },
+        {
+          "incident_id": "WOL-ROLE-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
+          "source_id": "WOL-SRC-VALENTI-VIDEOS",
+          "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+          "assertion_kind": "FACTUAL_ASSERTION",
+          "published_at": "2025-07-08",
+          "first_observed_at": "2025-07-08",
+          "statement_identity": "In How the Germans fell for Fascism, Valenti identified Otto von Bismarck as the emperor under whom Germany unified.",
+          "role_failure_tags": [
+            "HISTORICAL_VERIFICATION_FAILURE"
+          ],
+          "historical_verification_review": {
+            "status": "SOURCE_RECOVERED_ADJUDICATED",
+            "exact_proposition": "Otto von Bismarck was the emperor of the newly unified German Empire in 1871.",
+            "failure_type": "HISTORICAL_FACT_ERROR",
+            "finding": "Wilhelm I was German Emperor. Otto von Bismarck was Chancellor of the German Empire.",
+            "contrary_evidence_sources": [
+              {
+                "source_name": "U.S. Department of State, Office of the Historian — Germany",
+                "url": "https://history.state.gov/countries/germany"
+              },
+              {
+                "source_name": "Foreign Relations of the United States, 1871 — Constitution of the German Empire",
+                "url": "https://history.state.gov/historicaldocuments/frus1871/d189"
+              }
+            ]
+          },
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-BS-RCPT-VALENTI-HIST-BISMARCK-EMPEROR-YT",
+              "surface": "YOUTUBE",
+              "url": "https://www.youtube.com/watch?v=vLx-gAXUXZQ",
+              "published_at": "2025-07-08",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
+              "text_excerpt": "0:39–0:46 — \"under one flag and one emperor, Otto von Bismar[ck].\""
+            },
+            {
+              "receipt_id": "WOL-BS-RCPT-HIST-GERMAN-EMPEROR-STATE",
+              "surface": "WEBSITE",
+              "url": "https://history.state.gov/countries/germany",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL",
+              "text_excerpt": "Office of the Historian identifies Wilhelm I as the new German Emperor in 1871."
+            },
+            {
+              "receipt_id": "WOL-BS-RCPT-HIST-GERMAN-CONSTITUTION-FRUS",
+              "surface": "WEBSITE",
+              "url": "https://history.state.gov/historicaldocuments/frus1871/d189",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL",
+              "text_excerpt": "The 1871 constitutional record identifies William as German Emperor and Bismarck as chancellor of the empire."
+            }
+          ],
+          "evidentiary_support_review": {
+            "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+            "search_scope": "Timestamped Valenti transcript compared with the U.S. diplomatic record and the 1871 German imperial constitution reproduced in FRUS.",
+            "checked_at": "2026-09-26T08:55:00-04:00",
+            "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+            "claimant_basis_note": "Wilhelm I held the imperial title; Bismarck held the chancellorship.",
+            "search_notes": "This is a direct office/title error in a dedicated history presentation.",
+            "supporting_evidence_found": false
+          },
+          "public_bullshit_summary": "He made Bismarck the emperor. Wilhelm I was German Emperor; Otto von Bismarck was the chancellor.",
+          "body_review_context": {
+            "provenance": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
+            "transcript_status": "SOURCE_RECOVERED",
+            "timestamp": "00:39-00:46",
+            "observation": "Exact spoken proposition preserved in the project-owner supplied transcript."
+          },
+          "review_target": "WEB_OF_LIES_ROLE_FAILURE_APPELLATION",
+          "review_reason": "Source-recovered, falsifiable historical office/title error.",
+          "qualification_status": "QUALIFIED_ROLE_FAILURE_EVIDENCE",
+          "evidence_scope": "PROFESSIONAL_ROLE_APPELLATION_ONLY_OUTSIDE_ACTIVE_IRAN_WAR_CORPUS",
+          "source_information_event_id": null
+        },
+        {
+          "incident_id": "WOL-ROLE-VALENTI-HIST-HYPERINFLATION-1929-20250708",
+          "source_id": "WOL-SRC-VALENTI-VIDEOS",
+          "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
+          "assertion_kind": "FACTUAL_ASSERTION",
+          "published_at": "2025-07-08",
+          "first_observed_at": "2025-07-08",
+          "statement_identity": "In How the Germans fell for Fascism, Valenti tied the 4.2-trillion-marks-per-dollar hyperinflation episode to the 1929 Great Depression.",
+          "role_failure_tags": [
+            "HISTORICAL_VERIFICATION_FAILURE"
+          ],
+          "historical_verification_review": {
+            "status": "SOURCE_RECOVERED_ADJUDICATED",
+            "exact_proposition": "The 1929 Great Depression produced the German hyperinflation in which one U.S. dollar equaled roughly 4.2 trillion marks.",
+            "failure_type": "HISTORICAL_FACT_ERROR",
+            "finding": "The 4.2-trillion-marks-per-dollar exchange rate was reached in November 1923. The Great Depression began in 1929, after German hyperinflation had already occurred.",
+            "contrary_evidence_sources": [
+              {
+                "source_name": "U.S. Holocaust Memorial Museum — The Weimar Republic",
+                "url": "https://encyclopedia.ushmm.org/content/en/article/the-weimar-republic"
+              },
+              {
+                "source_name": "U.S. Holocaust Memorial Museum — The Great Depression",
+                "url": "https://encyclopedia.ushmm.org/content/en/article/the-great-depression"
+              }
+            ]
+          },
+          "public_receipts": [
+            {
+              "receipt_id": "WOL-BS-RCPT-VALENTI-HIST-HYPERINFLATION-YT",
+              "surface": "YOUTUBE",
+              "url": "https://www.youtube.com/watch?v=vLx-gAXUXZQ",
+              "published_at": "2025-07-08",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
+              "text_excerpt": "5:40–6:06 — after saying \"1929, the Great Depression,\" Valenti says one U.S. dollar became 4.2 trillion German marks."
+            },
+            {
+              "receipt_id": "WOL-BS-RCPT-HIST-WEIMAR-HYPERINFLATION-USHMM",
+              "surface": "WEBSITE",
+              "url": "https://encyclopedia.ushmm.org/content/en/article/the-weimar-republic",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL",
+              "text_excerpt": "USHMM dates the 4.2 trillion marks per dollar exchange rate to November 1923."
+            },
+            {
+              "receipt_id": "WOL-BS-RCPT-HIST-GREAT-DEPRESSION-USHMM",
+              "surface": "WEBSITE",
+              "url": "https://encyclopedia.ushmm.org/content/en/article/the-great-depression",
+              "captured_at": "2026-09-26T08:55:00-04:00",
+              "provenance_status": "ORIGINAL_URL",
+              "text_excerpt": "USHMM states the Great Depression began in the United States in 1929 and later hit Germany."
+            }
+          ],
+          "evidentiary_support_review": {
+            "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+            "search_scope": "Timestamped Valenti transcript compared with USHMM chronology for Weimar hyperinflation and the Great Depression.",
+            "checked_at": "2026-09-26T08:55:00-04:00",
+            "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+            "claimant_basis_note": "The transcript fuses two separate crises six years apart: the 1923 hyperinflation and the Great Depression beginning in 1929.",
+            "search_notes": "The 4.2-trillion figure is real, but it is attached to the wrong historical crisis and year.",
+            "supporting_evidence_found": false
+          },
+          "public_bullshit_summary": "He moved Germany’s 1923 hyperinflation into the 1929 Great Depression. The 4.2-trillion-marks-per-dollar figure is from November 1923; the Depression began in 1929.",
+          "body_review_context": {
+            "provenance": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
+            "transcript_status": "SOURCE_RECOVERED",
+            "timestamp": "05:40-06:06",
+            "observation": "Exact spoken proposition preserved in the project-owner supplied transcript."
+          },
+          "review_target": "WEB_OF_LIES_ROLE_FAILURE_APPELLATION",
+          "review_reason": "Source-recovered historical chronology error that materially changes causation and sequence.",
+          "qualification_status": "QUALIFIED_ROLE_FAILURE_EVIDENCE",
+          "evidence_scope": "PROFESSIONAL_ROLE_APPELLATION_ONLY_OUTSIDE_ACTIVE_IRAN_WAR_CORPUS",
+          "source_information_event_id": null
+        }
+      ]
     },
     {
       "source_id": "WOL-SRC-VERIFIED4WAR-NETWORK",
@@ -2314,7 +2620,7 @@
             "recovery_note": "Project owner supplied a timestamped transcript on 2026-09-26. The Gulf of Tonkin proposition was atomized and adjudicated against State Department historical records.",
             "source_capture_scope": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
             "qualifying_incident_ids": [
-              "WOL-BS-VALENTI-HIST-TONKIN-EVIDENCE-20260711"
+              "WOL-ROLE-VALENTI-HIST-TONKIN-EVIDENCE-20260711"
             ]
           },
           {
@@ -2357,9 +2663,9 @@
             "scoring_status": "QUALIFYING_HISTORIAN_FAILURES_RECORDED",
             "source_capture_scope": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
             "qualifying_incident_ids": [
-              "WOL-BS-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
-              "WOL-BS-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
-              "WOL-BS-VALENTI-HIST-HYPERINFLATION-1929-20250708"
+              "WOL-ROLE-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
+              "WOL-ROLE-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
+              "WOL-ROLE-VALENTI-HIST-HYPERINFLATION-1929-20250708"
             ],
             "recovery_note": "Project owner supplied a timestamped transcript on 2026-09-26. Three bounded historical propositions were independently adjudicated as factual/chronology errors."
           }
@@ -2390,14 +2696,14 @@
           }
         ],
         "adjudicated_failure_incident_ids": [
-          "WOL-BS-VALENTI-HIST-TONKIN-EVIDENCE-20260711",
-          "WOL-BS-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
-          "WOL-BS-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
-          "WOL-BS-VALENTI-HIST-HYPERINFLATION-1929-20250708"
+          "WOL-ROLE-VALENTI-HIST-TONKIN-EVIDENCE-20260711",
+          "WOL-ROLE-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
+          "WOL-ROLE-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
+          "WOL-ROLE-VALENTI-HIST-HYPERINFLATION-1929-20250708"
         ],
         "adjudicated_failure_count": 4,
-        "current_appellation_status": "FAKE_HISTORIAN_THRESHOLD_MET_BY_SOURCE_RECOVERED_INCIDENTS",
-        "source_recovery_note": "Two direct Valenti history videos now have project-owner supplied timestamped transcripts. Four independently sourced historical verification failures are recorded; unrecovered remembered claims remain excluded.",
+        "current_appellation_status": "FAKE_HISTORIAN_THRESHOLD_MET_BY_QUALIFIED_ROLE_FAILURE_EVIDENCE",
+        "source_recovery_note": "Two direct Valenti history videos now have project-owner supplied timestamped transcripts. Four qualified historian-role evidence records are preserved outside the active Iran-war source-behavior corpus; remembered unrecovered claims remain excluded.",
         "source_provided_transcript_queue": [
           {
             "title": "Manufactured Consent / American Government war-pattern episode",
@@ -7765,298 +8071,6 @@
       "downstream_note": "One unsupported tanker identity/weapon presentation. One incident does not earn a Bullshitter award.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical attribution and weapon identification for maritime attacks remain upstream authority; WOL records Ed's unsupported presentation."
-    },
-    {
-      "incident_id": "WOL-BS-VALENTI-HIST-TONKIN-EVIDENCE-20260711",
-      "source_id": "WOL-SRC-VALENTI-VIDEOS",
-      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
-      "assertion_kind": "FACTUAL_ASSERTION",
-      "published_at": "2026-07-11",
-      "first_observed_at": "2026-07-11",
-      "statement_identity": "In How America Created the \"Forever War,\" Valenti said that, with little to no evidence, the U.S. government claimed North Vietnamese forces had attacked American ships in the Gulf of Tonkin.",
-      "role_failure_tags": [
-        "HISTORICAL_VERIFICATION_FAILURE"
-      ],
-      "historical_verification_review": {
-        "status": "SOURCE_RECOVERED_ADJUDICATED",
-        "exact_proposition": "The U.S. claim that North Vietnamese forces attacked American ships in the Gulf of Tonkin generally rested on little to no evidence.",
-        "failure_type": "HISTORICAL_CONTEXT_DISTORTION",
-        "finding": "The presentation collapses the August 2 and August 4, 1964 incidents into one evidentiary claim. The August 2 attack on USS Maddox occurred; later doubt centered on the reported August 4 second attack.",
-        "contrary_evidence_sources": [
-          {
-            "source_name": "U.S. Department of State, Office of the Historian — Gulf of Tonkin, 1964",
-            "url": "https://history.state.gov/milestones/1961-1968/gulf-of-tonkin"
-          },
-          {
-            "source_name": "Foreign Relations of the United States, 1964–1968, Vol. I — August 4 NSC notes",
-            "url": "https://history.state.gov/historicaldocuments/frus1964-68v01/d278"
-          }
-        ]
-      },
-      "public_receipts": [
-        {
-          "receipt_id": "WOL-BS-RCPT-VALENTI-HIST-TONKIN-YT",
-          "surface": "YOUTUBE",
-          "url": "https://www.youtube.com/watch?v=a3BBuM0bFV0",
-          "published_at": "2026-07-11",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
-          "text_excerpt": "3:24–3:40 — \"With little to no evidence, the United States government claimed that North Vietnamese forces had attacked American ships in the Gulf of Tonkin.\""
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-HIST-TONKIN-STATE",
-          "surface": "WEBSITE",
-          "url": "https://history.state.gov/milestones/1961-1968/gulf-of-tonkin",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "The Office of the Historian records an August 2 attack and notes later doubts about whether the August 4 attack occurred."
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-HIST-TONKIN-FRUS",
-          "surface": "WEBSITE",
-          "url": "https://history.state.gov/historicaldocuments/frus1964-68v01/d278",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "Contemporaneous NSC notes treated a second attack as reported on August 4; later historical review distinguishes the disputed second incident from the August 2 attack."
-        }
-      ],
-      "evidentiary_support_review": {
-        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
-        "search_scope": "Valenti's timestamped transcript was compared with the State Department Office of the Historian's Gulf of Tonkin overview and contemporaneous FRUS records.",
-        "checked_at": "2026-09-26T08:55:00-04:00",
-        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
-        "claimant_basis_note": "The historical record supports an actual August 2 North Vietnamese attack on USS Maddox. The disputed/no-attack question concerns the reported August 4 second attack.",
-        "search_notes": "The problem is not acknowledging controversy around Gulf of Tonkin; it is flattening two different incidents into a blanket little-to-no-evidence account.",
-        "supporting_evidence_found": false
-      },
-      "public_bullshit_summary": "Valenti flattened two different Gulf of Tonkin incidents into one “little to no evidence” story. North Vietnamese boats attacked USS Maddox on August 2; the later no-attack controversy concerns the reported August 4 second attack.",
-      "body_review_context": {
-        "provenance": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
-        "transcript_status": "SOURCE_RECOVERED",
-        "timestamp": "03:24-03:40",
-        "observation": "Exact spoken proposition preserved in the project-owner supplied transcript."
-      },
-      "review_target": "WEB_OF_LIES_HISTORIAN_ROLE_FAILURE",
-      "review_reason": "Source-recovered falsifiable historical proposition materially distorts the evidentiary status of the two Gulf of Tonkin incidents."
-    },
-    {
-      "incident_id": "WOL-BS-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
-      "source_id": "WOL-SRC-VALENTI-VIDEOS",
-      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
-      "assertion_kind": "FACTUAL_ASSERTION",
-      "published_at": "2025-07-08",
-      "first_observed_at": "2025-07-08",
-      "statement_identity": "In How the Germans fell for Fascism, Valenti said Germany unified in 1871 after the \"FrancoRussian War.\"",
-      "role_failure_tags": [
-        "HISTORICAL_VERIFICATION_FAILURE"
-      ],
-      "historical_verification_review": {
-        "status": "SOURCE_RECOVERED_ADJUDICATED",
-        "exact_proposition": "Germany unified in 1871 after the Franco-Russian War.",
-        "failure_type": "HISTORICAL_FACT_ERROR",
-        "finding": "The war tied directly to German unification in 1870–1871 was the Franco-Prussian War, not a Franco-Russian War.",
-        "contrary_evidence_sources": [
-          {
-            "source_name": "Library of Congress — Franco-Prussian War summary",
-            "url": "https://www.loc.gov/item/2021669315/"
-          },
-          {
-            "source_name": "U.S. Department of State, Office of the Historian — Germany",
-            "url": "https://history.state.gov/countries/germany"
-          }
-        ]
-      },
-      "public_receipts": [
-        {
-          "receipt_id": "WOL-BS-RCPT-VALENTI-HIST-FRANCO-RUSSIAN-YT",
-          "surface": "YOUTUBE",
-          "url": "https://www.youtube.com/watch?v=vLx-gAXUXZQ",
-          "published_at": "2025-07-08",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
-          "text_excerpt": "0:32–0:46 — Germany unified \"after the FrancoRussian War\" under one flag."
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-HIST-FRANCO-PRUSSIAN-LOC",
-          "surface": "WEBSITE",
-          "url": "https://www.loc.gov/item/2021669315/",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "Library of Congress identifies the Franco-Prussian War of 1870–1871 and describes Prussia under Bismarck using the war to advance German unification."
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-HIST-GERMANY-STATE-1871",
-          "surface": "WEBSITE",
-          "url": "https://history.state.gov/countries/germany",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "Office of the Historian records establishment of the German Empire on January 18, 1871."
-        }
-      ],
-      "evidentiary_support_review": {
-        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
-        "search_scope": "Timestamped Valenti transcript compared with Library of Congress and State Department historical records for German unification in 1870–1871.",
-        "checked_at": "2026-09-26T08:55:00-04:00",
-        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
-        "claimant_basis_note": "The relevant conflict is the Franco-Prussian War. The transcript substitutes a different war name.",
-        "search_notes": "This is a bounded historical naming/fact error, not an interpretive dispute.",
-        "supporting_evidence_found": false
-      },
-      "public_bullshit_summary": "He named the wrong war. German unification in 1871 followed the Franco-Prussian War, not a “Franco-Russian War.”",
-      "body_review_context": {
-        "provenance": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
-        "transcript_status": "SOURCE_RECOVERED",
-        "timestamp": "00:32-00:46",
-        "observation": "Exact spoken proposition preserved in the project-owner supplied transcript."
-      },
-      "review_target": "WEB_OF_LIES_HISTORIAN_ROLE_FAILURE",
-      "review_reason": "Source-recovered, falsifiable historical fact error."
-    },
-    {
-      "incident_id": "WOL-BS-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
-      "source_id": "WOL-SRC-VALENTI-VIDEOS",
-      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
-      "assertion_kind": "FACTUAL_ASSERTION",
-      "published_at": "2025-07-08",
-      "first_observed_at": "2025-07-08",
-      "statement_identity": "In How the Germans fell for Fascism, Valenti identified Otto von Bismarck as the emperor under whom Germany unified.",
-      "role_failure_tags": [
-        "HISTORICAL_VERIFICATION_FAILURE"
-      ],
-      "historical_verification_review": {
-        "status": "SOURCE_RECOVERED_ADJUDICATED",
-        "exact_proposition": "Otto von Bismarck was the emperor of the newly unified German Empire in 1871.",
-        "failure_type": "HISTORICAL_FACT_ERROR",
-        "finding": "Wilhelm I was German Emperor. Otto von Bismarck was Chancellor of the German Empire.",
-        "contrary_evidence_sources": [
-          {
-            "source_name": "U.S. Department of State, Office of the Historian — Germany",
-            "url": "https://history.state.gov/countries/germany"
-          },
-          {
-            "source_name": "Foreign Relations of the United States, 1871 — Constitution of the German Empire",
-            "url": "https://history.state.gov/historicaldocuments/frus1871/d189"
-          }
-        ]
-      },
-      "public_receipts": [
-        {
-          "receipt_id": "WOL-BS-RCPT-VALENTI-HIST-BISMARCK-EMPEROR-YT",
-          "surface": "YOUTUBE",
-          "url": "https://www.youtube.com/watch?v=vLx-gAXUXZQ",
-          "published_at": "2025-07-08",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
-          "text_excerpt": "0:39–0:46 — \"under one flag and one emperor, Otto von Bismar[ck].\""
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-HIST-GERMAN-EMPEROR-STATE",
-          "surface": "WEBSITE",
-          "url": "https://history.state.gov/countries/germany",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "Office of the Historian identifies Wilhelm I as the new German Emperor in 1871."
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-HIST-GERMAN-CONSTITUTION-FRUS",
-          "surface": "WEBSITE",
-          "url": "https://history.state.gov/historicaldocuments/frus1871/d189",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "The 1871 constitutional record identifies William as German Emperor and Bismarck as chancellor of the empire."
-        }
-      ],
-      "evidentiary_support_review": {
-        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
-        "search_scope": "Timestamped Valenti transcript compared with the U.S. diplomatic record and the 1871 German imperial constitution reproduced in FRUS.",
-        "checked_at": "2026-09-26T08:55:00-04:00",
-        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
-        "claimant_basis_note": "Wilhelm I held the imperial title; Bismarck held the chancellorship.",
-        "search_notes": "This is a direct office/title error in a dedicated history presentation.",
-        "supporting_evidence_found": false
-      },
-      "public_bullshit_summary": "He made Bismarck the emperor. Wilhelm I was German Emperor; Otto von Bismarck was the chancellor.",
-      "body_review_context": {
-        "provenance": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
-        "transcript_status": "SOURCE_RECOVERED",
-        "timestamp": "00:39-00:46",
-        "observation": "Exact spoken proposition preserved in the project-owner supplied transcript."
-      },
-      "review_target": "WEB_OF_LIES_HISTORIAN_ROLE_FAILURE",
-      "review_reason": "Source-recovered, falsifiable historical office/title error."
-    },
-    {
-      "incident_id": "WOL-BS-VALENTI-HIST-HYPERINFLATION-1929-20250708",
-      "source_id": "WOL-SRC-VALENTI-VIDEOS",
-      "event_type": "UNSUPPORTED_FACTUAL_ASSERTION",
-      "assertion_kind": "FACTUAL_ASSERTION",
-      "published_at": "2025-07-08",
-      "first_observed_at": "2025-07-08",
-      "statement_identity": "In How the Germans fell for Fascism, Valenti tied the 4.2-trillion-marks-per-dollar hyperinflation episode to the 1929 Great Depression.",
-      "role_failure_tags": [
-        "HISTORICAL_VERIFICATION_FAILURE"
-      ],
-      "historical_verification_review": {
-        "status": "SOURCE_RECOVERED_ADJUDICATED",
-        "exact_proposition": "The 1929 Great Depression produced the German hyperinflation in which one U.S. dollar equaled roughly 4.2 trillion marks.",
-        "failure_type": "HISTORICAL_FACT_ERROR",
-        "finding": "The 4.2-trillion-marks-per-dollar exchange rate was reached in November 1923. The Great Depression began in 1929, after German hyperinflation had already occurred.",
-        "contrary_evidence_sources": [
-          {
-            "source_name": "U.S. Holocaust Memorial Museum — The Weimar Republic",
-            "url": "https://encyclopedia.ushmm.org/content/en/article/the-weimar-republic"
-          },
-          {
-            "source_name": "U.S. Holocaust Memorial Museum — The Great Depression",
-            "url": "https://encyclopedia.ushmm.org/content/en/article/the-great-depression"
-          }
-        ]
-      },
-      "public_receipts": [
-        {
-          "receipt_id": "WOL-BS-RCPT-VALENTI-HIST-HYPERINFLATION-YT",
-          "surface": "YOUTUBE",
-          "url": "https://www.youtube.com/watch?v=vLx-gAXUXZQ",
-          "published_at": "2025-07-08",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
-          "text_excerpt": "5:40–6:06 — after saying \"1929, the Great Depression,\" Valenti says one U.S. dollar became 4.2 trillion German marks."
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-HIST-WEIMAR-HYPERINFLATION-USHMM",
-          "surface": "WEBSITE",
-          "url": "https://encyclopedia.ushmm.org/content/en/article/the-weimar-republic",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "USHMM dates the 4.2 trillion marks per dollar exchange rate to November 1923."
-        },
-        {
-          "receipt_id": "WOL-BS-RCPT-HIST-GREAT-DEPRESSION-USHMM",
-          "surface": "WEBSITE",
-          "url": "https://encyclopedia.ushmm.org/content/en/article/the-great-depression",
-          "captured_at": "2026-09-26T08:55:00-04:00",
-          "provenance_status": "ORIGINAL_URL",
-          "text_excerpt": "USHMM states the Great Depression began in the United States in 1929 and later hit Germany."
-        }
-      ],
-      "evidentiary_support_review": {
-        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
-        "search_scope": "Timestamped Valenti transcript compared with USHMM chronology for Weimar hyperinflation and the Great Depression.",
-        "checked_at": "2026-09-26T08:55:00-04:00",
-        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
-        "claimant_basis_note": "The transcript fuses two separate crises six years apart: the 1923 hyperinflation and the Great Depression beginning in 1929.",
-        "search_notes": "The 4.2-trillion figure is real, but it is attached to the wrong historical crisis and year.",
-        "supporting_evidence_found": false
-      },
-      "public_bullshit_summary": "He moved Germany’s 1923 hyperinflation into the 1929 Great Depression. The 4.2-trillion-marks-per-dollar figure is from November 1923; the Depression began in 1929.",
-      "body_review_context": {
-        "provenance": "PROJECT_OWNER_PROVIDED_TIMESTAMPED_TRANSCRIPT",
-        "transcript_status": "SOURCE_RECOVERED",
-        "timestamp": "05:40-06:06",
-        "observation": "Exact spoken proposition preserved in the project-owner supplied transcript."
-      },
-      "review_target": "WEB_OF_LIES_HISTORIAN_ROLE_FAILURE",
-      "review_reason": "Source-recovered historical chronology error that materially changes causation and sequence."
     }
   ],
   "amplification_observations": [
