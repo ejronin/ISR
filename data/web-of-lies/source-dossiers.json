@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-26T09:24:00-04:00",
+  "as_of": "2026-09-26T14:34:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -98,7 +98,7 @@
       "source_id": "WOL-SRC-ETHAN-LEVINS",
       "display_name": "Ethan Levins",
       "source_entity_type": "PERSON",
-      "country_region": null,
+      "country_region": "United States",
       "primary_platform": "Telegram",
       "behavior_classes": [
         "MONETIZED_INFLUENCER"
@@ -134,7 +134,7 @@
           "account_state": "PUBLIC_HANDLE_REPORTED_BY_OWN_MEDIA_ECOSYSTEM"
         }
       ],
-      "identity_context": "Public Telegram identity plus recurring public media appearances; relationship to Press TV is modeled separately as a quoted-commentator edge.",
+      "identity_context": "Public Telegram/X identity plus recurring public media appearances are established. Levins' public Patreon identifies him as USA/American; WOL records United States on that self-published basis and does not treat unsupported Russia, Canada, Lebanon, religion/ethnicity, intelligence-affiliation, or state-direction speculation as established identity. Relationship to Press TV is modeled separately as a quoted-commentator edge.",
       "classification_basis_receipts": [
         {
           "receipt_id": "WOL-PROFILE-ETHAN-PATREON-ROLE-20260921",
@@ -847,7 +847,7 @@
       "source_id": "WOL-SRC-VALENTI-VIDEOS",
       "display_name": "Valenti Videos / Chris Valenti",
       "source_entity_type": "PERSON",
-      "country_region": null,
+      "country_region": "United States",
       "primary_platform": "YouTube",
       "behavior_classes": [
         "MONETIZED_INFLUENCER",
@@ -903,7 +903,7 @@
           "account_state": "USER_SUPPLIED_PUBLIC_SEED"
         }
       ],
-      "identity_context": "Public Valenti Videos channel identifies the creator as Chris Valenti; exact Facebook seed supplied by the project owner.",
+      "identity_context": "Public Valenti Videos channel identifies the creator as Chris Valenti; the project-owner identity record places him in New York, United States. Exact Facebook seed supplied by the project owner.",
       "classification_basis_receipts": [
         {
           "receipt_id": "WOL-PROFILE-VALENTI-PATREON-ROLE-20260921",
@@ -2443,24 +2443,24 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Public Telegram/X identity plus recurring public media appearances are established. The current production WOL source-behavior register contains 34 distinct receipt-backed Ethan Levins publication events across the recoverable 2026 Iran-war corpus. The earlier six-event March tranche was only the award-earning window and is superseded as a corpus summary. The current record derives 15 analysis-bridge failures for Fake analyst and 34 journalistic-verification failures for Yellow journalism, while preserving supported/attributed material outside the adverse register. A separate amplifier pass preserves 18 receipt-backed downstream observations across 16 downstream identities, including repeated Press TV and Las Noticias reuse. These counts describe the recoverable production record; they do not imply that every Levins statement is false or that downstream quotation proves affiliation, coordination, employment or state direction.",
+      "notes": "Public Telegram/X identity plus recurring public media appearances are established. The current production WOL source-behavior register contains 35 distinct receipt-backed Ethan Levins publication events across the recoverable 2026 Iran-war corpus. The earlier six-event March tranche was only the award-earning window and is superseded as a corpus summary. The current record derives 16 analysis-bridge failures for Fake analyst and 35 journalistic-verification failures for Yellow journalism, while preserving supported/attributed material outside the adverse register. A separate amplifier pass preserves 18 receipt-backed downstream observations across 16 downstream identities, including repeated Press TV and Las Noticias reuse. These counts describe the recoverable production record; they do not imply that every Levins statement is false or that downstream quotation proves affiliation, coordination, employment or state direction.",
       "review_completion": {
         "status": "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS",
-        "completed_at": "2026-09-25T21:15:40-04:00",
-        "documented_incident_count": 34,
+        "completed_at": "2026-09-26T14:34:00-04:00",
+        "documented_incident_count": 35,
         "bullshitter_award_earning_incident_count": 6,
         "bullshitter_award_earning_window": {
           "start": "2026-03-18T00:00:00",
           "end": "2026-03-20T00:00:00"
         },
-        "fake_analyst_basis_incident_count": 15,
-        "yellow_journalism_basis_incident_count": 34,
-        "sensationalized_presentation_incident_count": 31,
+        "fake_analyst_basis_incident_count": 16,
+        "yellow_journalism_basis_incident_count": 35,
+        "sensationalized_presentation_incident_count": 32,
         "amplification_observation_count": 18,
         "distinct_downstream_identity_count": 16,
         "distinct_scored_events_with_recovered_amplification": 7,
-        "limitation": "This is not a claim of lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Ethan Levins corpus has been reviewed into a 34-event production register and the recoverable downstream amplifier pass has been completed under the directional-receipt standard.",
-        "reopen_rule": "Reopen only when a genuinely new Ethan publication, direct receipt, transcript, preserved post, or other source evidence is recovered. Do not re-count reposts as new Ethan publication events and do not treat amplifier appearance as independent corroboration.",
+        "limitation": "This is not a claim of lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Ethan Levins corpus has been reviewed into a 35-event production register and the recoverable downstream amplifier pass has been completed under the directional-receipt standard.",
+        "reopen_rule": "Reopen when genuinely new Ethan publications, direct receipts, transcripts, preserved posts, or other source evidence are recovered. One publication counts once even when it contains multiple atomic failures; reposts do not become new Ethan publication events and amplifier appearance is not independent corroboration.",
         "next_action": "REOPEN_ONLY_ON_NEW_SOURCE_EVIDENCE"
       }
     },
@@ -8526,6 +8526,96 @@
       "downstream_note": "One unsupported tanker identity/weapon presentation. One incident does not earn a Bullshitter award.",
       "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
       "review_reason": "Canonical attribution and weapon identification for maritime attacks remain upstream authority; WOL records Ed's unsupported presentation."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-SHARAA-ISIS-ELECTIONS-20260716",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-07-16",
+      "first_observed_at": "2026-07-16",
+      "statement_identity": "In his July 16 YouTube video about Ahmed al-Sharaa, Levins called al-Sharaa a former ISIS commander, said Abu Bakr al-Baghdadi appointed him leader of the Islamic State, declared there were no elections in Jordan, the Gulf or Egypt, and used those premises plus an unsupported CIA/Mossad-origin assertion about ISIS/al-Qaeda to conclude that al-Sharaa was an American/Israeli puppet.",
+      "source_information_event_id": "ETHAN-YOUTUBE-JOLANI-TO-SHARAA-20260716",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-SHARAA-YT-20260716",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=7CkVyqyVpsY",
+          "published_at": "2026-07-16",
+          "captured_at": "2026-09-26T14:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Project-owner timestamped transcript preserves the claims that al-Sharaa was the 'former ISIS commander in Syria,' was appointed 'leader of the Islamic State' by Baghdadi, that there are 'no elections in Jordan'/'the Gulf'/'Egypt,' and that ISIS/al-Qaeda are CIA/Mossad experiments."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-SHARAA-UN-2013",
+          "surface": "WEBSITE",
+          "url": "https://press.un.org/en/2013/sc11077.doc.htm",
+          "published_at": "2013-07-24",
+          "captured_at": "2026-09-26T14:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "UN Security Council sanctions notice identifies Abu Mohammed al-Jawlani as leader of Jabhat al-Nusrah and associated with al-Baghdadi/al-Qaeda."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-SHARAA-UN-2014",
+          "surface": "WEBSITE",
+          "url": "https://press.un.org/en/2014/sc11521.doc.htm",
+          "published_at": "2014-08-15",
+          "captured_at": "2026-09-26T14:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "UN record separately identifies al-Baghdadi as ISIL leader and al-Jawlani as al-Nusrah leader and describes attempts to mediate their dispute."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-JORDAN-ELECTION-2024",
+          "surface": "WEBSITE",
+          "url": "https://iec.jo/en/antkhabat-nyabyt/2024",
+          "published_at": null,
+          "captured_at": "2026-09-26T14:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Jordan's Independent Election Commission records parliamentary elections held September 10, 2024."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-EGYPT-ELECTION-2024",
+          "surface": "WEBSITE",
+          "url": "https://www.elections.eg/archive/pres-2024/pres-2024-result",
+          "published_at": null,
+          "captured_at": "2026-09-26T14:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Egypt's National Election Authority publishes the official 2024 presidential election result."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-KUWAIT-ELECTION-2024",
+          "surface": "WEBSITE",
+          "url": "https://www.reuters.com/world/middle-east/kuwait-holds-first-parliamentary-election-under-new-emir-2024-04-04/",
+          "published_at": "2024-04-04",
+          "captured_at": "2026-09-26T14:34:00-04:00",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters records Kuwait's April 4, 2024 parliamentary election, directly contradicting the categorical 'no elections in the Gulf' statement."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Project-owner timestamped transcript and recovered original YouTube publication compared with UN sanctions/history records and official/reliable election records for Jordan, Egypt and Gulf-state counterexamples.",
+        "checked_at": "2026-09-26T14:34:00-04:00",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "The UN record identifies al-Jawlani as leader of Jabhat al-Nusrah and separately identifies al-Baghdadi as ISIL leader during the groups' dispute. Jordan and Egypt held national elections, and Kuwait held a parliamentary election in 2024. No reliable evidence was found supporting the categorical claim that ISIS/al-Qaeda were CIA/Mossad experiments.",
+        "search_notes": "The review does not sanitize al-Sharaa's jihadist history: he had deep AQI/al-Qaeda ties and led al-Nusrah. The failure is the materially different claim that he was an ISIS commander/Islamic State leader and the use of false categorical election claims and an unsupported intelligence-origin premise to bridge to a puppet conclusion.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One YouTube publication event counts once for Bullshitter even though the transcript contains several atomic factual propositions. The analytical bridge from those propositions to the puppet conclusion independently qualifies the event for Fake analyst evidence.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Source-recovered current-geopolitics analysis contains multiple materially false or unsupported premises used to support a categorical geopolitical conclusion.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "A real jihadist/al-Qaeda history gets rewritten into 'former ISIS commander' and 'Baghdadi made him leader of the Islamic State,' then padded with plainly false 'no elections' claims and an unsupported CIA/Mossad-origin premise to prove a puppet theory."
     }
   ],
   "amplification_observations": [
