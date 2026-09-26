@@ -124,6 +124,23 @@ assert leads["LEAD-VALENTI-VIDEOS"]["current_disposition"] in {
 assert leads["LEAD-ETHAN-LEVINS"]["current_disposition"] in {
     "MATERIAL_WOL_HISTORY_FOUND", "UPSTREAM_REVIEW_REQUIRED"
 }
+ethan_completion = leads["LEAD-ETHAN-LEVINS"]["review_completion"]
+assert ethan_completion["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
+assert ethan_completion["documented_incident_count"] == 34
+assert ethan_completion["bullshitter_award_earning_incident_count"] == 6
+assert ethan_completion["bullshitter_award_earning_window"] == {
+    "start": "2026-03-18T00:00:00",
+    "end": "2026-03-20T00:00:00",
+}
+assert ethan_completion["fake_analyst_basis_incident_count"] == 15
+assert ethan_completion["yellow_journalism_basis_incident_count"] == 34
+assert ethan_completion["sensationalized_presentation_incident_count"] == 31
+assert ethan_completion["amplification_observation_count"] == 18
+assert ethan_completion["distinct_downstream_identity_count"] == 16
+assert ethan_completion["distinct_scored_events_with_recovered_amplification"] == 7
+assert ethan_completion["next_action"] == "REOPEN_ONLY_ON_NEW_SOURCE_EVIDENCE"
+assert "six-event March tranche was only the award-earning window" in leads["LEAD-ETHAN-LEVINS"]["notes"]
+assert "F-35/F-15E misidentification" not in leads["LEAD-ETHAN-LEVINS"]["notes"]
 assert leads["LEAD-OSINTDEFENDER"]["current_disposition"] == "CARRIER_ONLY"
 assert leads["LEAD-MIDDLE-EAST-MONITOR"]["current_disposition"] == "CARRIER_ONLY"
 assert leads["LEAD-MEIDASTOUCH"]["current_disposition"] in {
