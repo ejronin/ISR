@@ -293,7 +293,11 @@ assert set(historian_targets) == {
     "VALENTI-HISTORY-FOREVER-WAR-202607",
     "VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607",
 }
-assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["scoring_status"] == "NOT_SCORABLE_SECONDARY_POINTER_ONLY"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["discovery_status"] == "DIRECT_VIDEO_ID_RECOVERED_BODY_NOT_RECOVERED"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["direct_video_id"] == "a3BBuM0bFV0"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["direct_url"] == "https://www.youtube.com/watch?v=a3BBuM0bFV0"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["required_next_evidence"] == "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["scoring_status"] == "NOT_SCORABLE_BODY_NOT_RECOVERED"
 assert "Vietnam War press access" in historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["candidate_topics"][0]
 assert historian_targets["VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607"]["scoring_status"] == "NOT_SCORABLE_TOPIC_NOT_RECOVERED"
 assert "urlebird.com" in historian_targets["VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607"]["source_surfaces"][0]
