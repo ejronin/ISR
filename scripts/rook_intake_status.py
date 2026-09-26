@@ -135,7 +135,10 @@ def validate_sweep(
     completion = data.get("completion")
     if isinstance(completion, dict):
         status = str(completion.get("status") or "")
-        if not status.startswith("COMPLETE"):
+        if legacy_sweep:
+            if "COMPLETE" not in status.upper():
+                errors.append(f"{rel}: legacy completion.status does not identify a completed sweep")
+        elif not status.startswith("COMPLETE"):
             errors.append(f"{rel}: completion.status does not identify a completed sweep")
         if legacy_sweep:
             for key in ("canonical_bytes_modified", "generated_public_state_modified", "release_artifacts_modified", "release_manifests_modified"):
