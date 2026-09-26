@@ -2368,6 +2368,20 @@
       return 'They published a factual version of events that the documented record did not establish.';
     };
 
+    const roleFailureExplanation = (profile, appellation) => {
+      const name = publicNarrative(profile && profile.display_name, 'This source');
+      const code = String(appellation && appellation.appellation_code || '').toUpperCase();
+      if (code === 'FAKE_ANALYST') {
+        return `${name} publicly labels their work as analysis. WOL applies “Fake analyst” because the documented record repeatedly shows unsupported analytical leaps, inference presented as fact, or basic verification failures in that analysis.`;
+      }
+      if (code === 'YELLOW_JOURNALISM') {
+        return `${name} publicly labels their work as journalism. WOL applies “Yellow journalism” because the documented record repeatedly shows basic verification failures alongside sensationalized or materially distorted presentation.`;
+      }
+      const role = plainLabel(appellation && appellation.claimed_role, 'claimed role').toLowerCase();
+      const label = publicNarrative(appellation && appellation.public_label, plainLabel(code, 'this label'));
+      return `${name} publicly claims a ${role} role. WOL applies “${label}” because the documented incident record repeatedly shows the failure pattern that defines that label.`;
+    };
+
     const appendAwardIncidentCard = (parent, incident) => {
       const card = append(parent, 'details', 'record-card wol-award-evidence-card');
       const summary = append(card, 'summary', 'wol-award-evidence-summary');
@@ -2454,7 +2468,8 @@
       roleFailures.forEach(appellation => {
         const block = append(titleBlock, 'article', 'record-card wol-role-failure-card');
         append(block, 'h5', '', publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code)));
-        append(block, 'p', '', `The source publicly claims the role “${plainLabel(appellation.claimed_role, 'recorded role')}.” ${formatNumber(appellation.incident_count || 0)} documented incident${Number(appellation.incident_count || 0) === 1 ? '' : 's'} meet the governed failure pattern for this title.`);
+        append(block, 'p', '', roleFailureExplanation(profile, appellation));
+        append(block, 'small', 'section-note', 'The incident ledger below is the evidence behind this label.');
         appendReceipts(block, appellation.claimed_role_receipts, 'No public role receipt is available for this title.');
       });
 
