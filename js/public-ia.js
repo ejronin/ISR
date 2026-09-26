@@ -2381,7 +2381,7 @@
         return `${name} calls their work journalism. WOL rates the documented pattern as Yellow journalism.`;
       }
       if (code === 'FAKE_HISTORIAN') {
-        return `${name} calls himself a historian. WOL rates him Fake historian because his videos repeatedly present historical accounts as fact that conflict with well-documented history. The record below shows the errors: wrong events, wrong offices, wrong chronology, and materially distorted historical context.`;
+        return `${name} claims to be a historian. WOL applies the Fake historian label because the videos repeatedly present historical accounts as fact that conflict with well-documented history. The record below shows the errors: wrong events, wrong offices, wrong chronology, and materially distorted historical context.`;
       }
       const role = plainLabel(appellation && appellation.claimed_role, 'claimed role').toLowerCase();
       const label = publicNarrative(appellation && appellation.public_label, plainLabel(code, 'this label'));
