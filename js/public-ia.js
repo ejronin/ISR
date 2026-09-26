@@ -2312,6 +2312,9 @@
         profile,
         awards,
         roleFailures: asArray(profile.role_failure_appellations),
+        roleFailureEvidence: asArray(profile.role_failure_evidence)
+          .filter(row => String(row.qualification_status || '') === 'QUALIFIED_ROLE_FAILURE_EVIDENCE')
+          .sort((a, b) => String(a.published_at || a.first_observed_at || '').localeCompare(String(b.published_at || b.first_observed_at || ''))),
         sourceIncidents,
         amplificationEvidence
       };
@@ -2377,6 +2380,9 @@
       if (code === 'YELLOW_JOURNALISM') {
         return `${name} calls their work journalism. WOL rates the documented pattern as Yellow journalism.`;
       }
+      if (code === 'FAKE_HISTORIAN') {
+        return `${name} publicly uses the title “Historian.” WOL rates the documented pattern as Fake historian.`;
+      }
       const role = plainLabel(appellation && appellation.claimed_role, 'claimed role').toLowerCase();
       const label = publicNarrative(appellation && appellation.public_label, plainLabel(code, 'this label'));
       return `${name} claims a ${role} role. WOL rates the documented pattern as ${label}.`;
@@ -2417,6 +2423,86 @@
         return `${name} earned Bullshitter because WOL documented a repeated pattern of publishing or adopting already-qualified bullshit from multiple upstream WOL sources. The ${count} qualifying publication${count === 1 ? '' : 's'} in this award record are listed below.`;
       }
       return `${name} earned Bullshitter because WOL documented a repeated pattern of false, materially misleading, or unsupported factual publishing—not a one-off mistake. The ${count} qualifying incident${count === 1 ? '' : 's'} in this award record are listed below.`;
+    };
+
+    const roleFailureEvidenceForAppellation = (profile, appellation) => {
+      const basisIds = new Set(asArray(appellation && appellation.basis_incident_ids));
+      return asArray(profile && profile.role_failure_evidence)
+        .filter(row => (
+          String(row.qualification_status || '') === 'QUALIFIED_ROLE_FAILURE_EVIDENCE'
+          && basisIds.has(row.incident_id || row.event_id)
+        ))
+        .sort((a, b) => String(a.published_at || a.first_observed_at || '').localeCompare(String(b.published_at || b.first_observed_at || '')));
+    };
+
+    const roleFailureEvidenceTags = (appellation, record) => {
+      const review = record && record.historical_verification_review || {};
+      const label = publicNarrative(
+        appellation && appellation.public_label,
+        plainLabel(appellation && appellation.appellation_code, 'Role failure')
+      );
+      const failure = plainLabel(review.failure_type, '');
+      return [...new Set([label, failure].filter(Boolean))];
+    };
+
+    const appendRoleFailureEvidenceCard = (parent, appellation, record) => {
+      const review = record.historical_verification_review || {};
+      const support = record.evidentiary_support_review || {};
+      const card = append(parent, 'details', 'record-card wol-role-evidence-card');
+      const summary = append(card, 'summary', 'wol-role-evidence-summary');
+      append(summary, 'span', 'card-kicker', record.published_at || record.first_observed_at || 'Date not recorded');
+      append(summary, 'strong', '', publicNarrative(review.exact_proposition, incidentClaimText(record)));
+      appendIncidentTags(summary, roleFailureEvidenceTags(appellation, record));
+
+      const body = append(card, 'div', 'wol-role-evidence-body');
+      const claim = append(body, 'section', 'wol-evidence-explainer wol-evidence-claim');
+      append(claim, 'strong', '', 'Claim');
+      append(claim, 'p', '', publicNarrative(review.exact_proposition, incidentClaimText(record)));
+
+      const fact = append(body, 'section', 'wol-evidence-explainer wol-evidence-fact');
+      append(fact, 'strong', '', 'Fact');
+      append(fact, 'p', '', publicNarrative(review.finding, incidentFactText(record)));
+
+      const checked = append(body, 'section', 'wol-evidence-explainer wol-evidence-check');
+      append(checked, 'strong', '', 'How we checked');
+      append(checked, 'p', '', publicNarrative(
+        support.search_scope,
+        'We compared the source-recovered historical claim with reliable historical records.'
+      ));
+      if (support.checked_at) append(checked, 'small', '', `Checked: ${plainLabel(support.checked_at)}`);
+      append(checked, 'span', 'wol-evidence-sources-label', 'Sources used');
+      appendReceipts(checked, record.public_receipts, 'No public source link is available for this history check.');
+      return card;
+    };
+
+    const appendRoleFailureEvidenceSection = (host, profile, appellation) => {
+      const records = roleFailureEvidenceForAppellation(profile, appellation);
+      if (!records.length) return null;
+      const label = publicNarrative(
+        appellation.public_label,
+        plainLabel(appellation.appellation_code, 'this title')
+      );
+      const section = append(host, 'section', 'wol-role-failure-evidence');
+      append(section, 'h4', '', `Why ${label}`);
+      append(section, 'p', 'section-note', `${records.length} source-recovered historical failure${records.length === 1 ? '' : 's'} support this title. These checks are separate from the Bullshitter award count below.`);
+
+      const list = append(section, 'ul', 'wol-role-failure-list');
+      records.forEach(record => {
+        const review = record.historical_verification_review || {};
+        const item = append(list, 'li');
+        append(item, 'strong', '', publicNarrative(review.exact_proposition, incidentClaimText(record)));
+        appendIncidentTags(item, roleFailureEvidenceTags(appellation, record));
+        append(item, 'span', '', publicNarrative(
+          record.public_bullshit_summary,
+          publicNarrative(review.finding, '')
+        ));
+      });
+
+      const details = append(section, 'div', 'wol-role-evidence-list');
+      append(details, 'h5', '', 'Claim-by-claim evidence');
+      append(details, 'p', 'section-note', 'Open any claim for the corrected historical record and the sources used.');
+      records.forEach(record => appendRoleFailureEvidenceCard(details, appellation, record));
+      return section;
     };
 
     const appendAwardIncidentCard = (parent, profile, incident) => {
@@ -2484,7 +2570,7 @@
 
     const appendAwardEvidenceBlocks = (host, nodeId) => {
       const evidence = awardEvidenceForNode(nodeId);
-      const { profile, awards, roleFailures, sourceIncidents, amplificationEvidence } = evidence;
+      const { profile, awards, roleFailures, roleFailureEvidence, sourceIncidents, amplificationEvidence } = evidence;
       const titleBlock = append(host, 'section', 'wol-earned-titles');
       append(titleBlock, 'h4', '', 'Award and earned titles');
       const titleList = append(titleBlock, 'div', 'wol-earned-title-list');
@@ -2505,9 +2591,16 @@
         const block = append(titleBlock, 'article', 'record-card wol-role-failure-card');
         append(block, 'h5', '', publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code)));
         append(block, 'p', '', roleFailureExplanation(profile, appellation));
-        append(block, 'small', 'section-note', 'The incident ledger below is the evidence behind this label.');
+        const roleOnlyEvidence = roleFailureEvidenceForAppellation(profile, appellation);
+        append(block, 'small', 'section-note', roleOnlyEvidence.length
+          ? `The ${roleOnlyEvidence.length} source-recovered checks below are the evidence behind this title.`
+          : 'The incident ledger below is the evidence behind this label.');
         appendReceipts(block, appellation.claimed_role_receipts, 'No public role receipt is available for this title.');
       });
+
+      if (roleFailureEvidence.length) {
+        roleFailures.forEach(appellation => appendRoleFailureEvidenceSection(host, profile, appellation));
+      }
 
       const grift = profile.grift_pattern_review || {};
       if (String(grift.status || '') === 'INCIDENT_GATED_PATTERN_ESTABLISHED' && grift.pattern_summary) {
