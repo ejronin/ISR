@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-26T01:29:00-04:00",
+  "as_of": "2026-09-26T08:50:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -2351,6 +2351,31 @@
             "research_reason": "This is a dedicated history essay by Valenti and therefore a high-value historian-role review target. The title, description, chapter structure, and direct video identity are preserved, but the spoken historical propositions must be recovered before scoring.",
             "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
             "scoring_status": "NOT_SCORABLE_BODY_NOT_RECOVERED"
+          }
+        ],
+        "resolved_supported_controls": [
+          {
+            "review_id": "VALENTI-HISTORY-CONTROL-USS-LIBERTY-20260609",
+            "title": "\"THEY DROPPED NAPALM ON US!\" Thomas Massie SLAMS Israel for attacking the USS Liberty killing 34",
+            "publication_date": "2026-06-09",
+            "source_url": "https://www.youtube.com/watch?v=_ei6K8gXouw",
+            "source_capture_scope": "FIRST_PARTY_TITLE_AND_DESCRIPTION",
+            "exact_proposition": "Israeli forces attacked USS Liberty and the attack killed 34 U.S. personnel.",
+            "adjudication_status": "HISTORICAL_CLAIM_SUPPORTED_NO_ROLE_FAILURE",
+            "finding": "The bounded historical proposition in Valenti's title is supported. U.S. Navy and NSA historical records identify Israeli aircraft and torpedo boats as the attackers and record 34 U.S. deaths.",
+            "verification_sources": [
+              {
+                "source_name": "Naval History and Heritage Command — H-Gram 007",
+                "url": "https://www.history.navy.mil/about-us/leadership/director/directors-corner/h-grams/h-gram-007.html"
+              },
+              {
+                "source_name": "National Security Agency / National Cryptologic Museum — Cold War: U.S.S. Liberty",
+                "url": "https://www.nsa.gov/History/National-Cryptologic-Museum/Exhibits-Artifacts/Exhibit-View/Article/2718838/cold-war-uss-liberty/"
+              }
+            ],
+            "inference_limit": "This control adjudicates only the title-level proposition that Israeli forces attacked USS Liberty and 34 U.S. personnel were killed. It does not adjudicate whether the attack was deliberate or the result of mistaken identification; official and historical sources describe that intent question as contested.",
+            "role_failure_tags": [],
+            "fake_historian_effect": "NONE"
           }
         ]
       },
