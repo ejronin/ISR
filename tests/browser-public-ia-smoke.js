@@ -206,6 +206,8 @@ async function loadDirectRoute(cdp, route) {
         assert.equal(awardeeEvidence.bullshitItems, awardeeEvidence.cards, 'visible bullshit list and claim-by-claim evidence must cover the same award record');
         assert(awardeeEvidence.receipts > 0, 'selected WOL awardee evidence exposes no public receipts');
         assert.match(awardeeEvidence.text, /Award and earned titles/);
+        assert.match(awardeeEvidence.text, /earned Bullshitter because WOL documented a repeated pattern/);
+        assert.doesNotMatch(awardeeEvidence.text, /award earned after \d+ cumulative qualifying/i);
         assert.match(awardeeEvidence.text, /What was bullshit/);
         assert.match(awardeeEvidence.text, /What the evidence actually supports/);
         assert.match(awardeeEvidence.text, /What this record establishes/);
