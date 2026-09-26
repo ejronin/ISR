@@ -19,6 +19,7 @@ derived = wol.build_registry(canonical, assembled, governance)
 
 profiles = {row["source_id"]: row for row in derived["source_profiles"]}
 incidents = {row["incident_id"]: row for row in derived["source_behavior_incidents"]}
+amplification = derived["amplification_observations"]
 leads = {row["lead_id"]: row for row in derived["research_leads"]}
 
 source_id = "WOL-SRC-WMX-MEDIA"
@@ -106,6 +107,23 @@ assert award["qualifying_incident_count"] == 6
 assert set(award["qualifying_incident_ids"]) == wmx_ids
 
 
+# Downstream propagation is modeled independently from source-behavior scoring.
+wmx_amp = [
+    row for row in amplification
+    if row.get("bullshitter_source_id") == source_id
+]
+assert len(wmx_amp) >= 3
+assert {
+    "X-TALIPBELGIUM",
+    "X-ABORASD55",
+    "BLOG-GENKIMARU1",
+} <= {row["amplifier_id"] for row in wmx_amp}
+genkimaru = next(
+    row for row in wmx_amp
+    if row["amplifier_id"] == "BLOG-GENKIMARU1"
+)
+assert genkimaru["bullshitter_event_id"] == "WOL-BS-WMX-US-TANKER-IRANIAN-SHIP-20260309"
+
 # Behavior award does not create an operator identity, legacy direct verdict,
 # state-control finding, or Hall-of-Shame placement.
 assert profile["direct_verdict"] is None
@@ -120,5 +138,5 @@ assert source_id not in hall_ids
 print(
     "web-of-lies social influence tranche2i: PASS "
     "wmx_incidents=6 wmx_bullshitter=1 cumulative=6 "
-    "claim_first_discovery=1"
+    f"claim_first_discovery=1 wmx_amp={len(wmx_amp)}"
 )
