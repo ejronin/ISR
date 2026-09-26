@@ -373,7 +373,7 @@ Monetization, Patreon, donations, sponsorship, audience size, ideology, politica
 
 Every role-failure appellation must expose both its self-claimed-role receipts and the qualifying incident IDs that triggered it.
 
-Historian-specific adjudication is deliberately fail-closed. A self-description such as `HISTORIAN` is descriptive only. Before an incident may carry `HISTORICAL_VERIFICATION_FAILURE`, the exact source statement must be recovered, reduced to a falsifiable historical proposition, and compared against reliable historical evidence. WOL must not convert disagreement over a defensible interpretation into a factual failure.
+Historian-specific adjudication is deliberately fail-closed. A self-description such as `HISTORIAN` is descriptive only. Before an incident may count toward `FAKE_HISTORIAN`, the exact source statement must be recovered, reduced to a falsifiable historical proposition, and compared against reliable historical evidence. The incident must carry a `historical_verification_review` with status `SOURCE_RECOVERED_ADJUDICATED`, the exact proposition, an allowed failure type, and at least one identified contrary-evidence source with a public URL. A bare `HISTORICAL_VERIFICATION_FAILURE` tag does not qualify. WOL must not convert disagreement over a defensible interpretation into a factual failure.
 
 ## 14. Public product behavior
 
