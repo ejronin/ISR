@@ -113,6 +113,8 @@ expected_leads = {
     "LEAD-MEIDASTOUCH",
     "LEAD-MIDDLE-EAST-MONITOR",
     "LEAD-LIM-TEAN",
+    "LEAD-BRIAN-KRASSENSTEIN",
+    "LEAD-ED-KRASSENSTEIN",
 }
 assert expected_leads == set(leads)
 allowed_lead_dispositions = {
@@ -141,6 +143,8 @@ lead_source_ids = {
     "WOL-SRC-JOLLY-GOOD-GINGER",
     "WOL-SRC-IRAN-MILITARY-UPDATE",
     "WOL-SRC-LIM-TEAN",
+    "WOL-SRC-BRIAN-KRASSENSTEIN",
+    "WOL-SRC-ED-KRASSENSTEIN",
     "WOL-SRC-ZACH-FOR-THE-PEOPLE-FB",
     "WOL-SRC-EL-MARQUES-XD-FB",
 }
