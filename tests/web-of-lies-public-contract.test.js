@@ -147,7 +147,7 @@ const limTean = derived.source_profiles.find(profile => profile.source_id === 'W
 assert(limTean && limTean.country_code === 'SG', 'receipt-backed Singapore profile must compile to SG');
 const valenti = derived.source_profiles.find(profile => profile.source_id === 'WOL-SRC-VALENTI-VIDEOS');
 assert(valenti, 'Valenti WOL profile missing');
-assert.equal((valenti.role_failure_evidence || []).length, 4, 'Valenti historian role evidence did not compile');
+assert.equal((valenti.role_failure_evidence || []).length, 9, 'Valenti historian role evidence did not compile');
 assert((valenti.role_failure_appellations || []).some(row => row.appellation_code === 'FAKE_HISTORIAN'), 'Valenti Fake historian appellation missing from compiled WOL profile');
 assert(!/manual_rank|manual_score|featured_rank/.test(iaSource), 'public Web of Lies renderer contains a manual ranking control');
 [

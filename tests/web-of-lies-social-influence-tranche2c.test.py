@@ -330,10 +330,10 @@ assert any("history.navy.mil" in row["url"] for row in liberty_control["verifica
 assert any("nsa.gov" in row["url"] for row in liberty_control["verification_sources"])
 assert "does not adjudicate whether the attack was deliberate" in liberty_control["inference_limit"]
 
-assert valenti_lead["historian_role_review"]["adjudicated_failure_count"] == 4
+assert valenti_lead["historian_role_review"]["adjudicated_failure_count"] == 9
 assert valenti_lead["historian_role_review"]["current_appellation_status"] == "FAKE_HISTORIAN_THRESHOLD_MET_BY_QUALIFIED_ROLE_FAILURE_EVIDENCE"
 role_evidence = valenti_profile["role_failure_evidence"]
-assert len(role_evidence) == 4
+assert len(role_evidence) == 9
 assert {
     row["incident_id"] for row in role_evidence
 } == {
@@ -341,6 +341,11 @@ assert {
     "WOL-ROLE-VALENTI-HIST-FRANCO-RUSSIAN-20250708",
     "WOL-ROLE-VALENTI-HIST-BISMARCK-EMPEROR-20250708",
     "WOL-ROLE-VALENTI-HIST-HYPERINFLATION-1929-20250708",
+    "WOL-ROLE-VALENTI-HIST-WWI-FINANCE-GOVERNMENT-20260202",
+    "WOL-ROLE-VALENTI-HIST-CPI-NAME-20260202",
+    "WOL-ROLE-VALENTI-HIST-VON-BRAUN-NASA-HEAD-20250919",
+    "WOL-ROLE-VALENTI-HIST-VON-BRAUN-V1-20250919",
+    "WOL-ROLE-VALENTI-HIST-CHERNOBYL-BLACK-SEA-20250919",
 }
 assert all(
     row["qualification_status"] == "QUALIFIED_ROLE_FAILURE_EVIDENCE"
@@ -355,7 +360,7 @@ fake_historian = next(
     row for row in valenti_profile["role_failure_appellations"]
     if row["appellation_code"] == "FAKE_HISTORIAN"
 )
-assert fake_historian["incident_count"] == 4
+assert fake_historian["incident_count"] == 9
 assert set(fake_historian["basis_incident_ids"]) == {
     row["incident_id"] for row in role_evidence
 }
@@ -364,8 +369,28 @@ source_provided_history = {
     row["title"]: row
     for row in valenti_lead["historian_role_review"]["source_provided_transcript_queue"]
 }
-assert source_provided_history["Manufactured Consent / American Government war-pattern episode"]["scoring_status"] == "NOT_SCORED_DIRECT_VIDEO_ID_PENDING"
-assert source_provided_history["The American Way to Crush the Soviets"]["scoring_status"] == "NOT_SCORED_DIRECT_VIDEO_ID_PENDING"
+assert source_provided_history["Manufactured Consent / American Government war-pattern episode"]["scoring_status"] == "SOURCE_RECOVERED_ADJUDICATED"
+assert source_provided_history["The American Way to Crush the Soviets"]["scoring_status"] == "SOURCE_RECOVERED_ADJUDICATED"
+assert source_provided_history["Manufactured Consent / American Government war-pattern episode"]["direct_video_id"] == "kYnALvZ2Nus"
+assert source_provided_history["The American Way to Crush the Soviets"]["direct_video_id"] == "wxI-8Aclggw"
+assert set(source_provided_history["Manufactured Consent / American Government war-pattern episode"]["qualifying_incident_ids"]) == {
+    "WOL-ROLE-VALENTI-HIST-WWI-FINANCE-GOVERNMENT-20260202",
+    "WOL-ROLE-VALENTI-HIST-CPI-NAME-20260202",
+}
+assert set(source_provided_history["The American Way to Crush the Soviets"]["qualifying_incident_ids"]) == {
+    "WOL-ROLE-VALENTI-HIST-VON-BRAUN-NASA-HEAD-20250919",
+    "WOL-ROLE-VALENTI-HIST-VON-BRAUN-V1-20250919",
+    "WOL-ROLE-VALENTI-HIST-CHERNOBYL-BLACK-SEA-20250919",
+}
+zimmermann_control = historian_controls["VALENTI-HISTORY-CONTROL-ZIMMERMANN-20260202"]
+assert zimmermann_control["adjudication_status"] == "HISTORICAL_CLAIM_SUPPORTED_NO_ROLE_FAILURE"
+assert zimmermann_control["fake_historian_effect"] == "NONE"
+nonfailures = {
+    row["review_id"]: row
+    for row in valenti_lead["historian_role_review"]["resolved_nonfailure_reviews"]
+}
+assert nonfailures["VALENTI-HISTORY-NONFAILURE-VIETNAM-EMBEDDED-20260711"]["disposition"].startswith("NOT_QUALIFIED")
+assert nonfailures["VALENTI-HISTORY-NONFAILURE-SPUTNIK-STALIN-20250919"]["disposition"].startswith("NOT_QUALIFIED")
 assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
 assert valenti_lead["review_completion"]["documented_incident_count"] == 24
 assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22
