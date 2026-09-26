@@ -585,8 +585,8 @@
       "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
       "mode": "update",
       "record": {
-        "status": "MEDIATED_ENGAGEMENT_CONTINUED; PHASED_HORMUZ_BLOCKADE_FRAMEWORK_REPORTED; IRAN_SEVEN_DAY_PROPOSAL_PUBLICLY_STATED; WSJ_REPORTED_US_REJECTION_PRESERVED; DIRECT_TRUMP_REJECTION_CONFIRMED_SEP26; NO_ACCEPTED_SETTLEMENT",
-        "observed_state": "After Sep.24 multi-source reporting described a phased Hormuz/blockade framework, Araqchi publicly described a seven-day Iranian proposal on Sep.25. Late Friday reporting said Trump had privately rejected it while Iran still awaited an official response; on Sep.26 Trump directly confirmed rejection. These stages are preserved separately. Rejection of this proposal does not establish that all diplomatic channels ended.",
+        "status": "MEDIATED_ENGAGEMENT_CONFIRMED; INDIRECT_FORMAT_SUPPORTED_BY_LATEST_REUTERS_RECONSTRUCTION; COMPETING_PUBLIC_CHARACTERIZATION_PRESERVED; PARTIES_REPORTED_FAR_APART_AS_OF_SEP24; DIPLOMACY_CONTINUED; PHASED_HORMUZ_BLOCKADE_FRAMEWORK_REPORTED; IRAN_SEVEN_DAY_PROPOSAL_PUBLICLY_STATED; WSJ_REPORTED_US_REJECTION_PRESERVED; DIRECT_TRUMP_REJECTION_CONFIRMED_SEP26; NO_AGREEMENT; NO_ACCEPTED_SETTLEMENT",
+        "observed_state": "The prior mediated/indirect-contact reconstruction and competing public characterization remain preserved. After Sep.24 multi-source reporting described a phased Hormuz/blockade framework, Araqchi publicly described a seven-day Iranian proposal on Sep.25. Late Friday reporting said Trump had privately rejected it while Iran still awaited an official response; on Sep.26 Trump directly confirmed rejection. These stages are preserved separately. Rejection of this proposal does not establish that all diplomatic channels ended.",
         "knowledge_time": "2026-09-26T19:30:00-04:00",
         "source_ids": [
           "SRC-F998CB101972",
