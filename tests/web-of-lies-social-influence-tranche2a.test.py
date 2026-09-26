@@ -128,15 +128,15 @@ assert leads["LEAD-ETHAN-LEVINS"]["current_disposition"] in {
 }
 ethan_completion = leads["LEAD-ETHAN-LEVINS"]["review_completion"]
 assert ethan_completion["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
-assert ethan_completion["documented_incident_count"] == 35
+assert ethan_completion["documented_incident_count"] == 36
 assert ethan_completion["bullshitter_award_earning_incident_count"] == 6
 assert ethan_completion["bullshitter_award_earning_window"] == {
     "start": "2026-03-18T00:00:00",
     "end": "2026-03-20T00:00:00",
 }
-assert ethan_completion["fake_analyst_basis_incident_count"] == 16
-assert ethan_completion["yellow_journalism_basis_incident_count"] == 35
-assert ethan_completion["sensationalized_presentation_incident_count"] == 32
+assert ethan_completion["fake_analyst_basis_incident_count"] == 17
+assert ethan_completion["yellow_journalism_basis_incident_count"] == 36
+assert ethan_completion["sensationalized_presentation_incident_count"] == 33
 assert ethan_completion["amplification_observation_count"] == 18
 assert ethan_completion["distinct_downstream_identity_count"] == 16
 assert ethan_completion["distinct_scored_events_with_recovered_amplification"] == 7
