@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-25T22:55:00-04:00",
+  "as_of": "2026-09-26T01:10:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -2259,7 +2259,7 @@
         }
       },
       "historian_role_review": {
-        "status": "CLOSED_PENDING_NEW_SOURCE_EVIDENCE",
+        "status": "REOPENED_TARGETED_SOURCE_RECOVERY",
         "self_claim_status": "PUBLICLY_VERIFIED",
         "claimed_role": "HISTORIAN",
         "self_claim_receipts": [
@@ -2289,7 +2289,41 @@
             "final_pass_status": "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
           }
         ],
-        "role_failure_rule": "Do not infer historian-role failure from the self-claim alone. Require exact source recovery plus falsifiable historical propositions and documented contrary historical evidence. Repeated source-recovered historical verification failures may support a historian-specific role-failure finding."
+        "role_failure_rule": "Do not infer historian-role failure from the self-claim alone. Require exact source recovery plus falsifiable historical propositions and reliable contrary historical evidence. Repeated source-recovered historical verification failures may support FAKE_HISTORIAN under WOL governance; contested interpretation, opinion, ideology, immaterial omission, and unrecovered source material do not qualify.",
+        "targeted_source_recovery_candidates": [
+          {
+            "research_item_id": "VALENTI-HISTORY-FOREVER-WAR-202607",
+            "title": "How America Created the \"Forever War\"",
+            "discovery_status": "TITLE_CONFIRMED_BODY_NOT_RECOVERED",
+            "first_public_index_date": "2026-07-11",
+            "source_surfaces": [
+              "https://www.youtube.com/@valentivideos",
+              "https://www.reddit.com/r/videos/comments/1ut7ok0/how_america_created_the_forever_war/"
+            ],
+            "research_reason": "A contemporaneous public discussion specifically disputes the video's treatment of Vietnam-era war reporting, the Gulf War press system, and later embedded journalism. The discussion is a secondary lead only; do not attribute its paraphrased propositions to Valenti until the direct video body or transcript is recovered.",
+            "candidate_topics": [
+              "Vietnam War press access and whether reporters were formally embedded",
+              "when the U.S. military's modern embed system began",
+              "Gulf War press pools versus Iraq War embedded reporting"
+            ],
+            "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "scoring_status": "NOT_SCORABLE_SECONDARY_POINTER_ONLY"
+          },
+          {
+            "research_item_id": "VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607",
+            "title": "Valentified History series",
+            "discovery_status": "SERIES_CONFIRMED_EPISODE_TOPIC_NOT_RECOVERED",
+            "first_public_index_date": "2026-07",
+            "source_surfaces": [
+              "https://urlebird.com/user/valentivideos.alt.alt/",
+              "https://www.youtube.com/@valentivideos"
+            ],
+            "research_reason": "A public mirror of Valenti's alternate TikTok account advertises a clip from the latest episode of 'Valentified History'. Recover the specific episode/clip and its historical propositions for historian-role review.",
+            "candidate_topics": [],
+            "required_next_evidence": "DIRECT_CLIP_OR_EPISODE_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "scoring_status": "NOT_SCORABLE_TOPIC_NOT_RECOVERED"
+          }
+        ]
       },
       "direct_receipt_upgrade_queue": [
         {
@@ -2471,8 +2505,8 @@
           "current_events_body_or_facility_gate": 4,
           "historian_attribution_gate": 3
         },
-        "limitation": "This completion does not claim omniscient lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Valenti corpus has been reviewed to the point that remaining items lack the source evidence needed for responsible scoring.",
-        "next_action": "NONE_UNLESS_NEW_EVIDENCE"
+        "limitation": "This completion does not claim omniscient lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Valenti corpus has been reviewed to the point that remaining items lack the source evidence needed for responsible scoring. On 2026-09-26, two new historian-content source leads were identified ('How America Created the \"Forever War\"' and the 'Valentified History' series); these reopen only the targeted historian source-recovery lane and do not alter the completed Iran-war incident count.",
+        "next_action": "TARGETED_HISTORIAN_SOURCE_RECOVERY_ONLY"
       }
     },
     {
