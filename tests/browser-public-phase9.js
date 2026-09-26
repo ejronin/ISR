@@ -33,6 +33,7 @@ const parentFindingLabel = chain => {
     ? String(raw.label || raw.public_label || raw.finding || '')
     : String(raw)).trim();
   const normalized = label.toLowerCase();
+  if (/false custody claim.*likely lie/.test(normalized)) return 'False / likely lie';
   if (/false.*(?:no lie finding|knowledge not established)/.test(normalized)) return 'False';
   if (/(?:overstated|misleading).*(?:no lie finding|knowledge not established)/.test(normalized)) return 'Misleading';
   if (/(?:unresolved|exact line-item tally).*(?:no parent lie finding|no lie finding)/.test(normalized)) return 'Unverified';
