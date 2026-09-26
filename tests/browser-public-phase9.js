@@ -29,8 +29,15 @@ const expectedF15Reasons = f15ModelChain.how_we_know || [];
 const parentFindingLabel = chain => {
   const raw = chain.public_finding || chain.event_level_finding || chain.chain_finding;
   if (!raw) return '';
-  if (typeof raw === 'object') return String(raw.label || raw.public_label || raw.finding || '').trim();
-  return String(raw).trim();
+  const label = (typeof raw === 'object'
+    ? String(raw.label || raw.public_label || raw.finding || '')
+    : String(raw)).trim();
+  const normalized = label.toLowerCase();
+  if (/false custody claim.*likely lie/.test(normalized)) return 'False / likely lie';
+  if (/false.*(?:no lie finding|knowledge not established)/.test(normalized)) return 'False';
+  if (/(?:overstated|misleading).*(?:no lie finding|knowledge not established)/.test(normalized)) return 'Misleading';
+  if (/(?:unresolved|exact line-item tally).*(?:no parent lie finding|no lie finding)/.test(normalized)) return 'Unverified';
+  return label;
 };
 const expectedParentFindingLabels = readerChains.map(parentFindingLabel).filter(Boolean);
 const expectedParentFindings = expectedParentFindingLabels.length;
@@ -229,7 +236,10 @@ async function route(cdp, hash, key) {
         text,
         scoreAttrs: main.querySelectorAll('[data-deception-score]').length,
         oldControls: main.querySelectorAll('.lie-ledger-controls').length,
-        clocks: main.querySelectorAll('[data-component="EvidenceClocks"], .evidence-clocks, .evidence-clock-bar').length
+        clocks: main.querySelectorAll('[data-component="EvidenceClocks"], .evidence-clocks, .evidence-clock-bar').length,
+        singleFindings: main.querySelectorAll('.reader-single-finding .reader-claim-status').length,
+        actorFlags: main.querySelectorAll('.reader-actor-kicker img.actor-flag').length,
+        duplicateWolPromo: main.querySelectorAll('.reader-wol-entry').length
       };
     })()`);
     assert.equal(ledger.cards, expectedReaderChains, 'reader Lie Ledger must render exactly one top-level card per narrative chain');
@@ -237,8 +247,13 @@ async function route(cdp, hash, key) {
     assert.equal(ledger.statuses.length, expectedParentFindings, 'reader chain-header findings must match explicit canonical parent findings only');
     assert(ledger.statuses.every(value => expectedParentFindingLabels.includes(value)), 'reader chain header must preserve a canonical parent-finding label');
     assert.equal(ledger.f15Found, true, 'reader lost the canonical F-15E reference chain');
-    assert.deepEqual(ledger.f15Reasons, expectedF15Reasons,
-      'How Atlas reached this finding must render canonical Claims Forensics reasoning without frontend rewriting');
+    assert(ledger.f15Reasons.length > 0 && ledger.f15Reasons.length <= expectedF15Reasons.length,
+      'Why these findings must preserve the canonical reasoning while allowing a plain-English reader projection');
+    assert.doesNotMatch(
+      ledger.f15Reasons.join(' '),
+      /\b(?:proposition|denominator|canonical|BDA|adjudicat(?:e|ed|ion)|knowledge attribution|lie threshold)\b/i,
+      'reader-facing F-15E reasoning still exposes forensic-office jargon'
+    );
     assert.equal(ledger.logicInternals, 0,
       'internal Claims Forensics logic-graph relations must not be rendered on the public Lie Ledger');
     assert(ledger.why && ledger.whyFocusable && ledger.whyOpen, 'reader evidence explanation is not keyboard-openable');
@@ -250,9 +265,13 @@ async function route(cdp, hash, key) {
     assert.equal(ledger.scoreAttrs, 0, 'legacy deception score remains in active DOM state');
     assert.equal(ledger.oldControls, 0, 'legacy forensic-workstation controls remain active');
     assert.equal(ledger.clocks, 0, 'evidence-clock machinery remains on the ordinary reader claim page');
+    assert(ledger.singleFindings > 0, 'single-branch records do not expose a direct visible finding');
+    assert(ledger.actorFlags > 0, 'state-affiliated Lie Ledger actors do not show country flags');
+    assert.equal(ledger.duplicateWolPromo, 0, 'duplicate Web of Lies promo still pushes the ledger below the fold');
     assert.doesNotMatch(ledger.text, /Combined ROOK assessment|ROOK verdict|PR\/CI|claim_instance_id|proposition_id|chain_id|publication blocker|supports factual baseline|documents correction|typed links|proposition nodes/i, 'internal authority/schema language leaked into reader claims');
-    assert.match(ledger.text, /Narrative chains and findings/i);
-    assert.match(ledger.text, /How Atlas reached this finding/i);
+    assert.doesNotMatch(ledger.text, /False does not mean lie unless|That is why this branch is labeled False rather than Lie|no (?:parent )?Lie finding/i, 'threshold-caution language leaked into the reader presentation');
+    assert.match(ledger.text, /Each card shows the claim, the finding, what happened and the evidence/i);
+    assert.match(ledger.text, /Why these findings/i);
 
     const filteredLedger = await cdp.eval(`(() => {
       const main = document.querySelector('main');

@@ -48,13 +48,12 @@ const familyIds = new Set(derived.claim_families.map(row => row.claim_family_id)
 for (const chain of ledgerChains) assert(familyIds.has(chain.chain_id), `Web of Lies registry missing Lie Ledger chain ${chain.chain_id}`);
 
 assert.match(readerSource, /reader-wol-trace/);
-assert.match(readerSource, /View Web of Lies \/ Trace/);
+assert.match(readerSource, /Trace this claim/);
 assert.match(readerSource, /forensic-companion-nav/);
 assert.match(readerSource, /routeHref\('evidence\.web_of_lies', \{ claim_family:/);
-assert.match(readerSource, /reader-wol-entry/);
+assert.doesNotMatch(readerSource, /reader-wol-entry/);
 assert.match(readerSource, /append\(section, 'h2', '', 'Lie Ledger'\)/);
 assert.doesNotMatch(readerSource, /append\(section, 'h2', '', 'Narrative chains and findings'\)/);
-assert.match(readerSource, /Open the connection network/);
 assert.match(readerSource, /Open Web of Lies/);
 assert.match(iaSource, /function WebOfLiesPage\(/);
 assert.match(iaSource, /No documented network connections yet/);
