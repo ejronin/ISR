@@ -185,7 +185,7 @@ async function loadDirectRoute(cdp, route) {
 
         const awardeeEvidence = await cdp.eval(`(() => {
           const buttons = [...document.querySelectorAll('.wol-awardee-button')];
-          const button = buttons.find(node => /Ethan Levins|Valenti Videos/i.test(node.textContent || '')) || buttons[0];
+          const button = buttons.find(node => /Ethan Levins/i.test(node.textContent || '')) || buttons[0];
           if (!button) return { missing: true };
           button.click();
           const host = document.querySelector('.wol-awardee-evidence-host');
@@ -211,6 +211,11 @@ async function loadDirectRoute(cdp, route) {
         assert.match(awardeeEvidence.text, /What this record establishes/);
         assert.match(awardeeEvidence.text, /How we checked/);
         assert.match(awardeeEvidence.text, /Sources used/);
+        if (/Ethan Levins/i.test(awardeeEvidence.text)) {
+          assert.match(awardeeEvidence.text, /WOL applies “Fake analyst” because/);
+          assert.match(awardeeEvidence.text, /WOL applies “Yellow journalism” because/);
+          assert.doesNotMatch(awardeeEvidence.text, /minimum tagged|at least three distinct qualifying|at least two must document/i);
+        }
         assert.doesNotMatch(awardeeEvidence.text, /does not by itself prove what the publisher privately understood/i);
       }
     }
