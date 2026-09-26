@@ -14,6 +14,7 @@ EVIDENCE_DIR = ROOT / "data" / "evidence-integration"
 MANIFEST_PATH = ROOT / "data" / "canonical-ledger" / "manifest-v2.json"
 
 SWEEP_ROLE = "ROOK_FULL_EVIDENCE_LOCKER_SWEEP"
+LEGACY_SWEEP_TYPE = "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP"
 SOURCE_REGISTRY_ROLE = "ROOK_EVIDENCE_LOCKER_SOURCE_REGISTRY_DELTA"
 SOURCE_DISCOVERY_ROLE = "EVIDENCE_LOCKER_SOURCE_DISCOVERY_DELTA"
 INTAKE_ROLES = {SWEEP_ROLE, SOURCE_REGISTRY_ROLE, SOURCE_DISCOVERY_ROLE}
@@ -64,7 +65,10 @@ def iter_intake_artifacts() -> Iterable[tuple[Path, dict[str, Any]]]:
             value = json.loads(path.read_text(encoding="utf-8"))
         except Exception:
             continue
-        if isinstance(value, dict) and value.get("artifact_role") in INTAKE_ROLES:
+        if isinstance(value, dict) and (
+            value.get("artifact_role") in INTAKE_ROLES
+            or value.get("artifact_type") == LEGACY_SWEEP_TYPE
+        ):
             yield path, value
 
 
@@ -95,24 +99,27 @@ def validate_sweep(
     require_modern_contract: bool = False,
 ) -> Sweep | None:
     rel = relative(path)
-    if data.get("authority") != "ROOK_UPSTREAM_COLLECTION":
+    legacy_sweep = data.get("artifact_role") != SWEEP_ROLE and data.get("artifact_type") == LEGACY_SWEEP_TYPE
+    if not legacy_sweep and data.get("authority") != "ROOK_UPSTREAM_COLLECTION":
         errors.append(f"{rel}: authority must be ROOK_UPSTREAM_COLLECTION")
 
     canonical_boundary = data.get("canonical_boundary")
     legacy_policy = canonical_boundary.get("write_policy") if isinstance(canonical_boundary, dict) else None
     policy = data.get("write_policy") or legacy_policy
-    if policy != WRITE_POLICY:
+    if not legacy_sweep and policy != WRITE_POLICY:
         errors.append(f"{rel}: write_policy must preserve append-only upstream-only semantics")
     if require_modern_contract and data.get("write_policy") != WRITE_POLICY:
         errors.append(f"{rel}: newly appended sweep must carry top-level write_policy")
 
-    scope = data.get("scope")
+    scope = data.get("window") if legacy_sweep else data.get("scope")
     if not isinstance(scope, dict):
-        errors.append(f"{rel}: missing scope object")
+        errors.append(f"{rel}: missing {'window' if legacy_sweep else 'scope'} object")
         return None
+    start_key = "start" if legacy_sweep else "window_start"
+    end_key = "end" if legacy_sweep else "window_end"
     try:
-        start = parse_timestamp(scope.get("window_start"), f"{rel} scope.window_start")
-        end = parse_timestamp(scope.get("window_end"), f"{rel} scope.window_end")
+        start = parse_timestamp(scope.get(start_key), f"{rel} {'window' if legacy_sweep else 'scope'}.{start_key}")
+        end = parse_timestamp(scope.get(end_key), f"{rel} {'window' if legacy_sweep else 'scope'}.{end_key}")
     except ValueError as exc:
         errors.append(str(exc))
         return None
@@ -130,12 +137,17 @@ def validate_sweep(
         status = str(completion.get("status") or "")
         if not status.startswith("COMPLETE"):
             errors.append(f"{rel}: completion.status does not identify a completed sweep")
-        for key in ("canonical_or_public_artifacts_mutated", "accepted_packet_bytes_or_hashes_mutated"):
-            if completion.get(key) is not False:
-                errors.append(f"{rel}: completion.{key} must be false for upstream intake")
+        if legacy_sweep:
+            for key in ("canonical_bytes_modified", "generated_public_state_modified", "release_artifacts_modified", "release_manifests_modified"):
+                if completion.get(key) is True:
+                    errors.append(f"{rel}: legacy completion.{key} must not mutate canonical/public release state")
+        else:
+            for key in ("canonical_or_public_artifacts_mutated", "accepted_packet_bytes_or_hashes_mutated"):
+                if completion.get(key) is not False:
+                    errors.append(f"{rel}: completion.{key} must be false for upstream intake")
     elif require_modern_contract:
         errors.append(f"{rel}: newly appended sweep must carry completion metadata")
-    elif not (isinstance(canonical_boundary, dict) and legacy_policy == WRITE_POLICY):
+    elif not legacy_sweep and not (isinstance(canonical_boundary, dict) and legacy_policy == WRITE_POLICY):
         errors.append(f"{rel}: missing completion object and no recognized legacy canonical_boundary contract")
 
     ids: set[str] = set()
@@ -337,6 +349,19 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
             if cutoff:
                 discoveries.append({"path": rel, "cutoff": cutoff})
 
+    normalized_legacy_paths = {
+        str(sweep.data.get("migration_provenance", {}).get("legacy_backfill"))
+        for sweep in sweeps
+        if isinstance(sweep.data.get("migration_provenance"), dict)
+        and sweep.data.get("migration_provenance", {}).get("legacy_backfill")
+    }
+    sweeps = [
+        sweep for sweep in sweeps
+        if not (
+            sweep.data.get("artifact_type") == LEGACY_SWEEP_TYPE
+            and sweep.path in normalized_legacy_paths
+        )
+    ]
     sweeps.sort(key=lambda item: (item.start, item.end, item.path))
     by_window: dict[tuple[datetime, datetime], list[str]] = {}
     for sweep in sweeps:
@@ -397,11 +422,38 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
                 f"{sweep.path}: duplicate accepted consumption: "
                 + ", ".join(item["packet_id"] for item in consumers)
             )
+        provenance = sweep.data.get("migration_provenance")
+        retrospective_gap_recovery = (
+            isinstance(provenance, dict)
+            and provenance.get("recovery_after_canonical_cutoff") is True
+        )
         if not consumers and sweep.end <= latest_cutoff:
-            errors.append(
-                f"{sweep.path}: completed sweep ends at/before accepted canonical cutoff "
-                f"{latest_cutoff.isoformat()} but has no accepted ROOK packet provenance"
-            )
+            if retrospective_gap_recovery:
+                scope = sweep.data.get("scope")
+                collection_time = None
+                if isinstance(scope, dict):
+                    try:
+                        collection_time = parse_timestamp(
+                            scope.get("collection_time"),
+                            f"{sweep.path} scope.collection_time",
+                        )
+                    except ValueError as exc:
+                        errors.append(str(exc))
+                if collection_time is None or collection_time <= latest_cutoff:
+                    errors.append(
+                        f"{sweep.path}: retrospective gap recovery must have collection_time "
+                        f"after accepted canonical cutoff {latest_cutoff.isoformat()}"
+                    )
+                else:
+                    warnings.append(
+                        f"{sweep.path}: retrospective gap recovery predates accepted canonical cutoff "
+                        f"and awaits Evidence Integration consumption"
+                    )
+            else:
+                errors.append(
+                    f"{sweep.path}: completed sweep ends at/before accepted canonical cutoff "
+                    f"{latest_cutoff.isoformat()} but has no accepted ROOK packet provenance"
+                )
         sweep_rows.append({
             "path": sweep.path,
             "window_start": sweep.start.isoformat(),
@@ -409,6 +461,7 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
             "consumed": bool(consumers),
             "consumers": consumers,
             "unconsumed": not consumers,
+            "retrospective_gap_recovery": retrospective_gap_recovery,
         })
 
     return {
