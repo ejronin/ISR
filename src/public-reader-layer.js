@@ -160,8 +160,8 @@
     result = result.replace(/\badjudicated\b/gi, 'assessed');
     result = result.replace(/\badjudication\b/gi, 'finding');
     result = result.replace(/\bclaimant\b/gi, 'speaker');
-    result = result.replace(/\bknowledge attribution\b/gi, 'conclusion about what the source knew');
-    result = result.replace(/\bpublisher-level knowledge\b/gi, 'what the publisher likely knew');
+    result = result.replace(/\bknowledge attribution\b/gi, 'what the source knew');
+    result = result.replace(/\bpublisher-level knowledge\b/gi, 'publisher awareness');
     result = result.replace(/\bnodes\b/gi, 'records');
     result = result.replace(/\bpublication act\b/gi, 'publication');
     return result.replace(/\s{2,}/g, ' ').trim();
@@ -580,14 +580,15 @@
     return cleanPublicText((kept.length ? kept : sentences.slice(0, 1)).join(' '));
   }
 
-  function ledgerActorMatch(rawActor, context) {
+  function ledgerActorMatch(rawActor, context, record) {
     const raw = cleanPublicText(rawActor);
     const normalized = raw.toLowerCase();
     if (!normalized) return null;
     const payload = base.modelData(context.model, 'current.actors');
-    const candidates = base.recordArray(payload)
-      .map(item => item && item.record || item)
-      .filter(actor => actor && actor.parent_state && ['state', 'state-institution'].includes(text(actor.affiliation_type).toLowerCase()));
+    const allActors = base.recordArray(payload).map(item => item && item.record || item).filter(Boolean);
+    const candidates = allActors.filter(actor =>
+      actor.parent_state && ['state', 'state-institution'].includes(text(actor.affiliation_type).toLowerCase())
+    );
 
     let best = null;
     candidates.forEach(actor => {
@@ -600,14 +601,31 @@
         if (!best || needle.length > best.length) best = { actor, length: needle.length };
       });
     });
-    return best && best.actor || null;
+    if (best) return best.actor;
+
+    if (/originator identified|third-party|social-media circulation|unnamed|origin not established/i.test(raw)) return null;
+    const sourceIds = new Set(sourceIdsFrom(record));
+    const sourceRecords = asArray(context.model && context.model.sources && context.model.sources.records);
+    for (const source of sourceRecords) {
+      if (!sourceIds.has(source && source.source_id)) continue;
+      const profile = source && source.outlet_profile || {};
+      const outlet = cleanPublicText(profile.display_name || source && source.record && source.record.outlet);
+      const country = cleanPublicText(profile.country);
+      if (!outlet || !country || !normalized.includes(outlet.toLowerCase())) continue;
+      const stateActor = allActors.find(actor =>
+        text(actor.affiliation_type).toLowerCase() === 'state' &&
+        cleanPublicText(actor.parent_state || actor.canonical_name).toLowerCase() === country.toLowerCase()
+      );
+      if (stateActor) return stateActor;
+    }
+    return null;
   }
 
   function appendLedgerActorKicker(host, context, record) {
     const documentObject = host.ownerDocument;
     const kicker = append(host, 'p', 'card-kicker reader-actor-kicker');
     const actorText = cleanPublicText(record && record.actor);
-    const matched = ledgerActorMatch(actorText, context);
+    const matched = ledgerActorMatch(actorText, context, record);
     if (matched && context.services.actorIdentity && typeof context.services.actorIdentity.create === 'function') {
       const identity = context.services.actorIdentity.create(documentObject, matched.actor_id || matched.canonical_name);
       const flag = identity.querySelector('.actor-flag');
