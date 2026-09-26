@@ -306,6 +306,10 @@
   line-height: 1.2;
 }
 
+.reader-ledger-card-head > .reader-claim-status,
+.reader-ledger-card-head > .reader-single-finding { order: 1; }
+.reader-ledger-card-head > .reader-wol-trace { order: 2; }
+
 .reader-actor-kicker {
   display: flex;
   flex-wrap: wrap;
@@ -393,7 +397,8 @@
     width: fit-content;
     justify-self: start;
   }
-  .reader-ledger-card-head > .reader-claim-status {
+  .reader-ledger-card-head > .reader-claim-status,
+  .reader-ledger-card-head > .reader-single-finding {
     grid-column: 2;
     grid-row: 2;
     justify-self: end;
@@ -416,7 +421,8 @@
   .reader-ledger-card-head {
     grid-template-columns: 1fr;
   }
-  .reader-ledger-card-head > .reader-claim-status {
+  .reader-ledger-card-head > .reader-claim-status,
+  .reader-ledger-card-head > .reader-single-finding {
     grid-column: 1;
     grid-row: 2;
     justify-self: start;
@@ -428,7 +434,7 @@
     justify-self: stretch;
     text-align: center;
   }
-  .reader-ledger-card-head:not(:has(> .reader-claim-status)) > .reader-wol-trace {
+  .reader-ledger-card-head:not(:has(> .reader-claim-status)):not(:has(> .reader-single-finding)) > .reader-wol-trace {
     grid-row: 2;
   }
 }
