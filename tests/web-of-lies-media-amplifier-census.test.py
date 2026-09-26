@@ -15,7 +15,7 @@ press_rows = [
     for row in (DOSSIER.get("amplification_observations") or [])
     if row.get("bullshitter_source_id") == "WOL-SRC-PRESS-TV"
 ]
-assert len(press_rows) >= 36
+assert len(press_rows) >= 40
 
 # This tranche is a recoverable minimum, not an assertion that every platform's
 # entire repost graph can be enumerated from the public web.
@@ -59,11 +59,14 @@ assert {
     "WEB-COSMOS-CHRONICLE",
     "WEB-LANTIDIPLOMATICO",
     "WEB-GLOBALSECURITY-ORG",
+    "WEB-CORE-INSIGHTS-INTERNATIONAL",
+    "WEB-JANATA-WEEKLY",
 } <= by_platform["WEBSITE"]
 assert {
     "BLOG-MOST-REVOLUTIONARY-ACT",
     "BLOG-PANAFRICAN-NEWS-WIRE",
     "BLOG-STEEL-CITY-SCRIBBLINGS",
+    "BLOG-INTERNATIONALIST-360",
 } <= by_platform["BLOG"]
 assert {"SUBSTACK-ROBIN-WESTENRA"} <= by_platform["SUBSTACK"]
 assert {"FORUM-TRADE2WIN-ILILILILI"} <= by_platform["FORUM"]
@@ -102,8 +105,8 @@ assert all(row.get("amplifier_handle") == "@Almasirah_En" for row in telegram_al
 assert len(by_platform["X"]) >= 8
 assert len(by_platform["TELEGRAM"]) >= 4
 assert len(by_platform["YOUTUBE"]) >= 1
-assert len(by_platform["WEBSITE"]) >= 9
-assert len(by_platform["BLOG"]) >= 3
+assert len(by_platform["WEBSITE"]) >= 11
+assert len(by_platform["BLOG"]) >= 4
 assert len(by_platform["SUBSTACK"]) >= 1
 assert len(by_platform["FORUM"]) >= 1
 
@@ -130,7 +133,7 @@ tasnim_rows = [
     for row in (DOSSIER.get("amplification_observations") or [])
     if row.get("bullshitter_source_id") == "WOL-SRC-TASNIM"
 ]
-assert len(tasnim_rows) >= 6
+assert len(tasnim_rows) >= 7
 tasnim_by_platform: dict[str, set[str]] = {}
 for row in tasnim_rows:
     platform = str(row.get("amplifier_platform") or "")
@@ -140,7 +143,7 @@ for row in tasnim_rows:
 
 assert {"TASNIM-X-EN"} <= tasnim_by_platform["X"]
 assert {"SUBSTACK-ROBIN-WESTENRA"} <= tasnim_by_platform["SUBSTACK"]
-assert {"WEB-ETIMES247"} <= tasnim_by_platform["WEBSITE"]
+assert {"WEB-ETIMES247", "WEB-ISLAMTIMES"} <= tasnim_by_platform["WEBSITE"]
 assert {"BLOG-WIERNI-POLSCE-SUWERENNEJ"} <= tasnim_by_platform["BLOG"]
 assert {"FORUM-BURBUJA-UCHPA"} <= tasnim_by_platform["FORUM"]
 
@@ -153,6 +156,19 @@ assert {
     "SUBSTACK-ROBIN-WESTENRA",
     "WEB-LANTIDIPLOMATICO",
 } <= shared_press_tasnim
+
+# Reused downstream nodes should accumulate distinct-event degree rather than
+# being duplicated as unrelated leaves.
+globalsecurity_rows = [
+    row for row in press_rows
+    if row.get("amplifier_id") == "WEB-GLOBALSECURITY-ORG"
+]
+assert len(globalsecurity_rows) >= 3
+assert {
+    "WOL-EVT-ALUDEID_BDA-0901-C",
+    "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
+    "WOL-EVT-F15E-008",
+} <= {row["bullshitter_event_id"] for row in globalsecurity_rows}
 
 # Publisher-owned dissemination is intentionally retained as amplification.
 self_rows = [
