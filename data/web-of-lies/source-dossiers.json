@@ -8,7 +8,7 @@
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted. 2026-09-25 media-amplifier census pass 5: prioritized repeated downstream nodes over one-off leaves. Hajij is now receipt-backed across three distinct Press TV qualifying events, and The Truthseeker across two; no upstream truth/adjudication field is changed. Pass 5 follow-through: GlobalSecurity.org is now receipt-backed across five distinct Press TV qualifying events after recovering its April 3 second-F-35 and April 28 170-aircraft archive copies.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -8622,6 +8622,117 @@
         }
       ],
       "note": "Only the publication date is used for ordering. The displayed clock times on Tasnim and Islam Times are not assumed to share a timezone.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-HAJIJ-RESCUE-FAILURE-20260405",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-008",
+      "amplifier_id": "WEB-HAJIJ",
+      "amplifier_display_name": "Hajij",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-RESCUE-HUMILIATING-DEFEAT-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-HAJIJ-RESCUE-FAILURE-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.hajij.com/en/holy-prophets-wives/item/3822-humiliating-defeat-iran-destroys-several-us-warplanes-on-mission-to-retrieve-missing-pilot",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Hajij reproduced Press TV's April 5 story that Iranian forces destroyed several US aircraft during a failed pilot-rescue mission, including two Black Hawks and a C-130, and identified Press TV as the source."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-HAJIJ-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "WEB-HAJIJ",
+      "amplifier_display_name": "Hajij",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-HAJIJ-ISFAHAN-20260407",
+          "surface": "WEBSITE",
+          "url": "https://hajij.com/en/hajj-articles/hajj/itemlist/user/66-zarezadeh?start=220",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Hajij's dated archive reproduces Press TV's 'major strategic defeat' Isfahan account, including the claim that the operation targeted a nuclear facility rather than rescuing the F-15 pilot, and identifies Press TV's website as its source."
+        }
+      ],
+      "note": "The recoverable public receipt is Hajij's dated archive/listing containing the full copied item; a separate stable per-item URL was not recovered in this pass.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-TRUTHSEEKER-RESCUE-FAILURE-20260405",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-008",
+      "amplifier_id": "WEB-TRUTHSEEKER",
+      "amplifier_display_name": "The Truthseeker",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-RESCUE-HUMILIATING-DEFEAT-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-TRUTHSEEKER-RESCUE-FAILURE-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.thetruthseeker.co.uk/?p=325730",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Truthseeker republished Press TV's April 5 rescue-failure story, explicitly labeling it 'Press TV – April 5, 2026' and repeating the two-Black-Hawk/C-130 destruction claim."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-GLOBALSECURITY-SECOND-F35-20260403",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-002",
+      "amplifier_id": "WEB-GLOBALSECURITY-ORG",
+      "amplifier_display_name": "GlobalSecurity.org",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-SECOND-F35-20260403",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-GLOBALSECURITY-SECOND-F35-20260403",
+          "surface": "WEBSITE",
+          "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/04/iran-260403-presstv01.htm",
+          "published_at": "2026-04-03",
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "GlobalSecurity.org archived Press TV's April 3 'Iran downs two advanced US jets, including second F-35' story, preserving the outlet's claim that a second F-35 had been shot down and destroyed."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-GLOBALSECURITY-170AIRCRAFT-20260428",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
+      "amplifier_id": "WEB-GLOBALSECURITY-ORG",
+      "amplifier_display_name": "GlobalSecurity.org",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-170-AIRCRAFT-20260428",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-GLOBALSECURITY-170AIRCRAFT-20260428",
+          "surface": "WEBSITE",
+          "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/04/iran-260428-presstv09.htm",
+          "published_at": "2026-04-28",
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "GlobalSecurity.org archived Press TV's April 28 Army story carrying the claim that more than 170 enemy aircraft had been hit, including 16 fighter jets."
+        }
+      ],
       "observed_at": "2026-09-25"
     }
   ]
