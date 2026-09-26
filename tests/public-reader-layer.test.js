@@ -139,6 +139,11 @@ assert.match(readerSource, /Claim history/);
 assert.doesNotMatch(readerSource, /const intentNote = intentReviewNote/);
 assert.match(readerSource, /readerSummaryText/);
 assert.match(readerSource, /appendLedgerActorKicker/);
+assert.match(readerSource, /reader-ledger-single-actions/);
+assert.match(readerSource, /actionRow\.append\(traceLink\)/);
+assert.match(readerCss, /grid-template-columns:\s*minmax\(0,\s*1fr\)\s*auto/);
+assert.match(readerCss, /\.reader-ledger-card-head\s*>\s*\.reader-wol-trace[\s\S]*grid-row:\s*2/);
+assert.match(readerCss, /\.reader-ledger-card-head\s*>\s*\.reader-claim-status[\s\S]*grid-row:\s*2/);
 assert.match(readerSource, /const positiveDamage = !negativeDamage/);
 assert.doesNotMatch(readerCss, /technical-record-metadata[\s\S]*display\s*:\s*none/i, 'internal fields must be removed structurally, not hidden by CSS');
 
