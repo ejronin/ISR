@@ -2382,6 +2382,16 @@
       return `${name} publicly claims a ${role} role. WOL applies “${label}” because the documented incident record repeatedly shows the failure pattern that defines that label.`;
     };
 
+    const bullshitterExplanation = (profile, award, sourceIncidents, amplificationEvidence) => {
+      const name = publicNarrative(profile && profile.display_name, 'This source');
+      const count = sourceIncidents.length + amplificationEvidence.length;
+      const route = String(award && award.qualification_route || '').toUpperCase();
+      if (route === 'NETWORK_ASSISTED_AMPLIFICATION') {
+        return `${name} earned Bullshitter because WOL documented a repeated pattern of publishing or adopting already-qualified bullshit from multiple upstream WOL sources. The ${count} qualifying publication${count === 1 ? '' : 's'} in this award record are listed below.`;
+      }
+      return `${name} earned Bullshitter because WOL documented a repeated pattern of false, materially misleading, or unsupported factual publishing—not a one-off mistake. The ${count} qualifying incident${count === 1 ? '' : 's'} in this award record are listed below.`;
+    };
+
     const appendAwardIncidentCard = (parent, incident) => {
       const card = append(parent, 'details', 'record-card wol-award-evidence-card');
       const summary = append(card, 'summary', 'wol-award-evidence-summary');
@@ -2459,10 +2469,7 @@
       awards.forEach(award => {
         const block = append(titleBlock, 'article', 'scope-note wol-award-summary');
         append(block, 'strong', '', publicNarrative(award.public_label, 'Bullshitter'));
-        append(block, 'p', '', publicNarrative(
-          award.public_verdict,
-          `${sourceIncidents.length + amplificationEvidence.length} documented publication${sourceIncidents.length + amplificationEvidence.length === 1 ? '' : 's'} support this award.`
-        ));
+        append(block, 'p', '', bullshitterExplanation(profile, award, sourceIncidents, amplificationEvidence));
       });
 
       roleFailures.forEach(appellation => {
