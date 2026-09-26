@@ -1,0 +1,136 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_ROOK_CONSUMPTION_AUDIT",
+  "authority": "EVIDENCE_INTEGRATION_FACTUAL_ADJUDICATION",
+  "as_of": "2026-09-26T19:30:00-04:00",
+  "canonical_target_packet": "UPD-20260926-ROOK-EVIDENCE-CATCHUP",
+  "locker_artifacts": [
+    "data/evidence-integration/rook-evidence-locker-sweep-20260921T0000ET-gap-recovery-v2.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260921T1200ET-gap-recovery-v2.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260925T0000ET-recovered-v2.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260925T1200ET-recovered-v2.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260926T0000ET-recovered-v2.json",
+    "data/evidence-integration/rook-evidence-locker-sweep-20260926T1200ET-recovered-v2.json"
+  ],
+  "retrospective_reconciliation": [
+    {
+      "topic": "Houthi/U.S. indirect Oman-mediated contact and vessel non-targeting claim",
+      "disposition": "PROMOTE_AS_LATE_DISCOVERED_EVENT",
+      "target": "G3-HOUTHI-US-OMAN-INDIRECT-CONTACT-20260920",
+      "note": "Not found in accepted packets through sequence 21. Knowledge time remains Sep.26; occurrence/publication remains Sep.20."
+    },
+    {
+      "topic": "Sep.20 weekend Hormuz traffic and Saudi export adaptation",
+      "disposition": "UPDATE_EXISTING_SHIPPING_ENTITY",
+      "target": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "note": "Not previously represented at this specificity; preserve as historical metrics discovered Sep.26."
+    },
+    {
+      "topic": "IRGC Sep.21 escalation warning",
+      "disposition": "ALREADY_CANONICAL_NO_DUPLICATE",
+      "target": "G3-IRGC-ESCALATION-WARNING-20260921",
+      "note": "Already accepted in UPD-20260923-ROOK-EVIDENCE-CATCHUP."
+    },
+    {
+      "topic": "Sep.21 LR Stephanie unknown-projectile strike",
+      "disposition": "ALREADY_CANONICAL_NO_DUPLICATE",
+      "target": "G3-HORMUZ-LR-STEPHANIE-INCIDENT-20260921",
+      "note": "Already accepted in UPD-20260923-ROOK-EVIDENCE-CATCHUP."
+    },
+    {
+      "topic": "UK RAF Voyager defensive support",
+      "disposition": "ALREADY_CANONICAL_NO_DUPLICATE",
+      "target": "G3-UK-SAUDI-VOYAGER-SUPPORT-20260921",
+      "note": "Already accepted in UPD-20260923-ROOK-EVIDENCE-CATCHUP."
+    },
+    {
+      "topic": "Sep.21 WHO/IOM Yemen denominators",
+      "disposition": "ALREADY_CANONICAL_NO_DUPLICATE",
+      "target": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "note": "674 deaths, about 3,000 injuries and 129,438 displaced already represented in sequence 20; later Sep.25 UNICEF/IOM evidence is promoted separately."
+    }
+  ],
+  "current_state_promotions": [
+    {
+      "topic": "Sep.24 phased U.S.-Iran Hormuz/blockade framework",
+      "disposition": "PROMOTE",
+      "target": "G3-US-IRAN-PHASED-HORMUZ-BLOCKADE-20260924"
+    },
+    {
+      "topic": "Sep.24 Makkah chiefs meeting plan then Sep.25 meeting",
+      "disposition": "PROMOTE_CHRONOLOGY",
+      "targets": [
+        "G3-MAKKAH-PACT-CHIEFS-PLANNED-20260924",
+        "G3-MAKKAH-PACT-CHIEFS-MEETING-20260925"
+      ]
+    },
+    {
+      "topic": "Sep.24 Houthi Riyadh/Yanbu target claims",
+      "disposition": "PROMOTE_ATTRIBUTED_NO_BDA",
+      "target": "G3-HOUTHI-RIYADH-YANBU-TARGET-CLAIMS-20260924"
+    },
+    {
+      "topic": "Sep.24/25 Hormuz traffic, crude flow and Gulf of Oman STS constraint",
+      "disposition": "UPDATE_EXISTING_AND_ADD_ECONOMIC_ENTITY",
+      "targets": [
+        "SHIP-HORMUZ-TRAFFIC-20260914",
+        "ECON-GULF-OMAN-STS-CAPACITY-20260925"
+      ]
+    },
+    {
+      "topic": "Sep.25 Yemen humanitarian update",
+      "disposition": "UPDATE_EXISTING_CASUALTY_ENTITY",
+      "target": "CAS-YEMEN-DISPLACEMENT-20260913"
+    },
+    {
+      "topic": "Sep.25 Iranian seven-day proposal / nuclear positions / IAEA access",
+      "disposition": "PROMOTE_WITH_DISTINCT_SPEAKERS_AND_SCOPE",
+      "targets": [
+        "G3-IRAN-SEVEN-DAY-HORMUZ-PROPOSAL-20260925",
+        "G3-IRAN-NUCLEAR-NO-CONCESSIONS-20260925",
+        "G3-PEZESHKIAN-IAEA-INSPECTION-20260925"
+      ]
+    },
+    {
+      "topic": "Sep.25-26 U.S. response chronology",
+      "disposition": "PROMOTE_REPORTED_THEN_DIRECT",
+      "targets": [
+        "G3-US-IRAN-REJECTION-REPORTED-20260925",
+        "G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926"
+      ]
+    },
+    {
+      "topic": "Iran aviation sanctions implementation / waiver / retaliation clarification",
+      "disposition": "UPDATE_EXISTING_ECONOMIC_ENTITY_AND_PROMOTE_POLICY_EVENTS",
+      "target": "ECON-IRAN-AVIATION-SECONDARY-SANCTIONS-20260923"
+    },
+    {
+      "topic": "China / U.S.-China Gulf and Iran positions",
+      "disposition": "PROMOTE_WITH_PROVENANCE_SEPARATION",
+      "targets": [
+        "G3-TRUMP-XI-IRAN-SUPPORT-WARNING-20260925",
+        "G3-US-CHINA-NO-NUKE-NO-TOLLS-20260925",
+        "G3-CHINA-UN-GULF-SOVEREIGNTY-20260926"
+      ]
+    },
+    {
+      "topic": "Sep.26 Israeli Sejoud strike",
+      "disposition": "PROMOTE_STRIKE_WITH_TARGET_FUNCTION_ATTRIBUTED",
+      "target": "G3-ISRAEL-SEJOUD-STRIKE-20260926"
+    },
+    {
+      "topic": "Trump Sep.26 29-ship/total-control statement",
+      "disposition": "REFER_TO_CLAIMS_FORENSICS",
+      "target": "US-TRUMP-HORMUZ-29-SHIPS-TOTAL-CONTROL-20260926"
+    }
+  ],
+  "deliberately_withheld": [
+    "No inference that Makkah-pact consultation equals Turkish or Pakistani combat participation.",
+    "No inference that Pezeshkian's inspection-access statement establishes implemented IAEA access.",
+    "No substitution of Trump's 29-ship claim for Kpler/AIS commercial traffic denominators.",
+    "No independent confirmation of Houthi Riyadh/Yanbu BDA where source reporting lacked it.",
+    "No inference that China's White House-described position and Han Zheng's UN language are identical Chinese-authored commitments.",
+    "No inference of Hezbollah facility function at Sejoud beyond Israeli attribution.",
+    "No truth/deception finding for the Trump Hormuz count or control claim; routed to Claims Forensics."
+  ],
+  "web_of_lies": "OUT_OF_SCOPE_NO_FILES_OR_SEMANTICS_TO_CHANGE"
+}
