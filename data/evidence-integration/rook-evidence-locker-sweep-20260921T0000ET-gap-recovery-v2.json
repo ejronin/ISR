@@ -1,0 +1,112 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-20T12:00:00-04:00",
+    "window_end": "2026-09-21T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-26T19:12:00-04:00",
+    "evidence_horizon_time": "2026-09-21T00:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260920T1200ET-recovered.json",
+    "boundary_rule": "Retrospective gap recovery discovered by durable intake continuity audit. Publication time is bounded to the original window; collection time remains Sep.26."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "recovery_after_canonical_cutoff": true,
+    "recovery_reason": "No durable ROOK sweep existed for Sep.20 12:00 ET through Sep.21 00:00 ET. Reconstructed from contemporaneous public reporting after canonical state had advanced beyond this horizon.",
+    "discovered_by": "scripts/rook_intake_status.py continuity audit after PR #242"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-HOUTHI-US-INDIRECT-CONTACT-NONTARGETING-20260920",
+      "event_type": "HOUTHI_US_INDIRECT_CONTACT_AND_MARITIME_NONTARGETING_CLAIM",
+      "occurrence_time": "2026-09-20",
+      "public_available_time": "2026-09-20T13:01:00-04:00",
+      "collection_time": "2026-09-26T19:12:00-04:00",
+      "actor": "Houthis / United States / Oman",
+      "summary": "Houthi political bureau member Mohamed al-Bukhaiti told AP that Washington had contacted the Houthis indirectly through Oman after their west-coast advance and that the group had assured the Trump administration it would not target U.S. vessels or other countries' vessels in Bab el-Mandeb, except Saudi-linked targets. He said Houthi attacks on Saudi Arabia would continue until Riyadh ended its blockade and that the group remained open to negotiations. Preserve the non-targeting commitment and policy rationale as Houthi claims; the indirect-contact substrate was separately consistent with Trump's public statement that discussions occurred.",
+      "confidence": "HIGH_FOR_DIRECT_HOUTHI_INTERVIEW_AND_AP_CONTACT_REPORTING; FUTURE_COMPLIANCE_UNESTABLISHED",
+      "sources": [
+        "https://apnews.com/article/yemen-houthis-iran-saudi-arabia-red-sea-93dfe17125c63897b232f6461d81d85c"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-WEEKEND-TRAFFIC-17-20260920",
+      "updates_existing_ref": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "relationship": "LATER_WEEKEND_COMMERCIAL_TRAFFIC_METRIC",
+      "summary": "Reuters/Kpler reported 17 trackable commodity-vessel transits through Hormuz over the weekend, down from 37 the prior weekend and far below the prewar baseline. Sunday showed five tracked exits and two small oil-tanker entries. Reuters explicitly noted that Middle Eastern producers were also moving oil on vessels with transponders off.",
+      "status": "WEEKEND_TRACKABLE_TRANSITS_17; TRAFFIC_SEVERELY_DEPRESSED; AIS_DARK_CAVEAT",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/vessels-trickle-through-strait-hormuz-mideast-tension-persists-2026-09-21/"
+      ]
+    },
+    {
+      "update_id": "UPD-SAUDI-HORMUZ-EXPORT-RECOVERY-20260920",
+      "updates_existing_ref": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "relationship": "LATER_SAUDI_EXPORT_RATE_AND_ROUTE_ADAPTATION",
+      "summary": "Reuters reported Saudi Aramco had increased exports through Hormuz after East-West pipeline disruption. Tanker/satellite data indicated Saudi oil moving through Hormuz averaged about 2.9 million bpd over the previous six days, versus about 700,000 bpd in August, while seven supertankers loaded about 14 million barrels inside the Gulf on Sunday. This is an export-flow adaptation metric, not evidence of normalized commercial traffic.",
+      "status": "SAUDI_HORMUZ_EXPORT_FLOW_RECOVERING; NORMALIZED_STRAIT_TRAFFIC_NOT_ESTABLISHED",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-rises-after-houthi-attack-saudi-capital-2026-09-20/"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-OIL-DIPLOMACY-EXPECTATIONS-20260920",
+      "metric": "Oil market and Saudi export adaptation",
+      "public_available_time": "2026-09-20T18:10:00-04:00",
+      "observed_state": "Reuters reported Brent and WTI falling sharply as markets priced hope for U.S.-Iran diplomacy and partial recovery in Saudi exports. Treat the price move as market expectation, not proof of diplomatic progress.",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-rises-after-houthi-attack-saudi-capital-2026-09-20/"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "DIRECT_HOUTHI_INTERVIEW",
+      "addition": "AP Sep.20 interview with Mohamed al-Bukhaiti on U.S. indirect contacts, vessel-targeting policy and Saudi conditions."
+    },
+    {
+      "source_class": "COMMERCIAL_MARITIME_DATA",
+      "addition": "Reuters/Kpler weekend Hormuz traffic and Saudi crude-flow adaptation reporting."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "Add Houthi/U.S. indirect-contact and vessel non-targeting claim as a distinct diplomatic/maritime policy event; do not infer future compliance.",
+    "Update Hormuz traffic with 17 trackable weekend transits while retaining AIS-dark caveat.",
+    "Update Saudi export adaptation with higher Hormuz crude flow after East-West pipeline disruption; keep barrels/day separate from vessel-count normalization."
+  ],
+  "unresolved_questions": [
+    "Will Houthi forces continue honoring the claimed U.S./non-Saudi vessel non-targeting position?",
+    "How much weekend Hormuz traffic was AIS-dark and absent from Kpler's trackable-vessel count?",
+    "How sustainable is Saudi reliance on Hormuz and Gulf-of-Oman transfer workarounds while the East-West route remains constrained?"
+  ],
+  "coverage": {
+    "material_results": [
+      "Houthi-U.S. indirect-contact/non-targeting claim",
+      "Hormuz weekend traffic",
+      "Saudi Hormuz export adaptation",
+      "oil-market diplomacy expectations"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No new verified U.S.-Iran agreement",
+      "No independent evidence converting Houthi Saudi-target BDA claims into confirmed physical effects"
+    ],
+    "limitations": [
+      "Retrospective recovery after canonical cutoff.",
+      "Commercial maritime counts are public Reuters/Kpler reporting, not direct proprietary terminal access."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_RETROSPECTIVE_GAP_RECOVERY",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_RETROSPECTIVE_GAP_RECOVERY",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
