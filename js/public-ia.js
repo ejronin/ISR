@@ -2435,13 +2435,24 @@
         .sort((a, b) => String(a.published_at || a.first_observed_at || '').localeCompare(String(b.published_at || b.first_observed_at || '')));
     };
 
+    const historianFailureLabel = value => {
+      const code = String(value || '').toUpperCase();
+      return ({
+        HISTORICAL_FACT_ERROR: 'Historical fact error',
+        MATERIAL_HISTORICAL_OMISSION: 'Material historical omission',
+        HISTORICAL_CONTEXT_DISTORTION: 'Historical context distortion',
+        FALSE_HISTORICAL_CAUSATION: 'False historical causation',
+        ANACHRONISTIC_PRESENTATION: 'Anachronistic presentation'
+      })[code] || plainLabel(value, '');
+    };
+
     const roleFailureEvidenceTags = (appellation, record) => {
       const review = record && record.historical_verification_review || {};
       const label = publicNarrative(
         appellation && appellation.public_label,
         plainLabel(appellation && appellation.appellation_code, 'Role failure')
       );
-      const failure = plainLabel(review.failure_type, '');
+      const failure = historianFailureLabel(review.failure_type);
       return [...new Set([label, failure].filter(Boolean))];
     };
 
