@@ -565,7 +565,7 @@
         "date": "2026-09-26",
         "knowledge_time": "2026-09-26T19:30:00-04:00",
         "observed_state": "U.S. aviation secondary-sanctions pressure broadened from earlier Baghdad/Muscat/UAE disruption to suspension of Iranian flights at all four Iraqi airports then serving Iran. Baghdad subsequently opened direct waiver talks with Washington for humanitarian, medical, educational and religious travel. Rezaei said Iran would not use military retaliation over the restrictions and retained non-military options. No U.S. waiver or worldwide grounding was established by the cutoff.",
-        "adjudication": "IRAQ_ALL_FOUR_ACTIVE_IRAN_SERVICE_AIRPORTS_SUSPENDED; UAE_STATE_LEVEL_SUSPENSION_REMAINS; IRAQI_WAIVER_REQUEST_PENDING; IRAN_MILITARY_RETALIATION_DISAVOWED_BY_REZAEI; GLOBAL_GROUNDING_NOT_ESTABLISHED",
+        "adjudication": "MATERIALLY_BROADER_REGIONAL_IMPLEMENTATION; UAE_STATE_LEVEL_SUSPENSION_CONFIRMED; IRAQ_ALL_FOUR_ACTIVE_IRAN_SERVICE_AIRPORTS_SUSPENDED; IRAQI_WAIVER_REQUEST_PENDING; RETALIATION_THREAT_NOT_EXECUTED_IN_EVIDENCE_HORIZON; IRAN_MILITARY_RETALIATION_DISAVOWED_BY_REZAEI; GLOBAL_GROUNDING_NOT_ESTABLISHED",
         "source_ids": [
           "SRC-57578B9B5643",
           "SRC-12C9FD3FBFE1",
