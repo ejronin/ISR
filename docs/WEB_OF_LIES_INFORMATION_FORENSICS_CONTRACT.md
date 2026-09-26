@@ -360,6 +360,7 @@ Current governed public appellations:
 
 - **Fake analyst** — requires a self-claimed analyst role, the independently earned Bullshitter award, and repeated incident-gated analytical-bridge failures.
 - **Yellow journalism** — requires a self-claimed journalist role, the independently earned Bullshitter award, repeated incident-gated journalistic verification failures, and repeated sensationalized/materially distorted presentation.
+- **Fake historian** — requires a self-claimed historian role, the independently earned Bullshitter award, and repeated source-recovered historical verification failures. A qualifying incident must preserve an exact, falsifiable historical proposition and reliable contrary historical evidence showing a material factual error, material omission that changes the conclusion, context distortion, false causation, or anachronistic presentation. Contested interpretation, opinion, ideology, immaterial omission, or unrecovered source material does not qualify.
 
 The adverse modifier comes from the record; the role noun comes from the source.
 
@@ -370,6 +371,8 @@ Monetization, Patreon, donations, sponsorship, audience size, ideology, politica
 `GRIFTER` remains separately gated. Monetization plus bad work is not enough to infer fraudulent or knowingly exploitative intent.
 
 Every role-failure appellation must expose both its self-claimed-role receipts and the qualifying incident IDs that triggered it.
+
+Historian-specific adjudication is deliberately fail-closed. A self-description such as `HISTORIAN` is descriptive only. Before an incident may carry `HISTORICAL_VERIFICATION_FAILURE`, the exact source statement must be recovered, reduced to a falsifiable historical proposition, and compared against reliable historical evidence. WOL must not convert disagreement over a defensible interpretation into a factual failure.
 
 ## 14. Public product behavior
 
