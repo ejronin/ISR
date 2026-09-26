@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-25T21:30:00-04:00",
+  "as_of": "2026-09-25T22:15:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted. 2026-09-25 media-amplifier census pass 5: prioritized repeated downstream nodes over one-off leaves. Hajij is now receipt-backed across three distinct Press TV qualifying events, and The Truthseeker across two; no upstream truth/adjudication field is changed. Pass 5 follow-through: GlobalSecurity.org is now receipt-backed across five distinct Press TV qualifying events after recovering its April 3 second-F-35 and April 28 170-aircraft archive copies. 2026-09-25 Ethan/Valenti amplifier review: Ethan gains receipt-backed downstream Telegram/X relays, including a three-event repeat node at Las Noticias and a recoverable multi-account Beaufort retweet cluster. Valenti external search did not establish a second new independent downstream node beyond the existing @leonoe1986 receipt; four publisher-owned YouTube Shorts are recorded separately as SELF_AMPLIFICATION and must not be treated as independent support or independent amplifiers. Downstream appearance alone confers no adverse source class or award.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted. 2026-09-25 media-amplifier census pass 5: prioritized repeated downstream nodes over one-off leaves. Hajij is now receipt-backed across three distinct Press TV qualifying events, and The Truthseeker across two; no upstream truth/adjudication field is changed. Pass 5 follow-through: GlobalSecurity.org is now receipt-backed across five distinct Press TV qualifying events after recovering its April 3 second-F-35 and April 28 170-aircraft archive copies. 2026-09-25 Ethan/Valenti amplifier review: Ethan gains receipt-backed downstream Telegram/X relays, including a three-event repeat node at Las Noticias and a recoverable multi-account Beaufort retweet cluster. Valenti external search did not establish a second new independent downstream node beyond the existing @leonoe1986 receipt; four publisher-owned YouTube Shorts are recorded separately as SELF_AMPLIFICATION and must not be treated as independent support or independent amplifiers. Downstream appearance alone confers no adverse source class or award. 2026-09-25 comparative amplifier pass for RKM/@rkmtimes, @WMX_MEDIA and ZardSi: added only directionally proven embed/repost/adoption edges. Multiple same-claim publishers identified by fact-checks without recoverable source-order evidence (including TMT/SW News around the ZardSi Dimona claim and parallel WMX tanker publishers) are retained as co-propagation leads and are not forced into directional amplifier edges. No shared downstream identity across all three sources was established in this pass.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -9232,6 +9232,149 @@
         }
       ],
       "note": "SELF_AMPLIFICATION: this is Valenti's own promotional Shorts distribution and is not an independent external amplifier.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-RKM-KENYATALK-HNOHH-LINCOLN-20260302",
+      "bullshitter_source_id": "WOL-SRC-RKM-RKMTIMES",
+      "bullshitter_event_id": "WOL-BS-RKM-LINCOLN-SUNK-20260301",
+      "amplifier_id": "FORUM-KENYATALK-HNO-HH",
+      "amplifier_display_name": "Kenya Talk / Hno_Hh",
+      "amplifier_handle": "Hno_Hh",
+      "amplifier_platform": "FORUM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "RKM-X-2028290914628849897",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-RKM-KENYATALK-HNOHH-LINCOLN-20260302",
+          "surface": "WEBSITE",
+          "url": "https://kenyatalk.com/t/iranian-missiles-have-sunk-uss-abraham-lincoln-aircraft-carrier-in-the-persian-gulf/609076",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Kenya Talk user Hno_Hh opened a thread with RKM's exact USS Abraham Lincoln status embedded as the substantive claim; the thread title repeats that the carrier was sunk."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-RKM-AAMAWAAM-LINCOLN-20260302",
+      "bullshitter_source_id": "WOL-SRC-RKM-RKMTIMES",
+      "bullshitter_event_id": "WOL-BS-RKM-LINCOLN-SUNK-20260301",
+      "amplifier_id": "WEB-AAMAWAAM",
+      "amplifier_display_name": "AamAwaam",
+      "amplifier_platform": "WEBSITE",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "RKM-X-2028290914628849897",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-RKM-AAMAWAAM-LINCOLN-20260302",
+          "surface": "WEBSITE",
+          "url": "https://aamawaam.com/hezbollah-enters-war-us-casualties/",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "AamAwaam embedded RKM's exact March 2 USS Abraham Lincoln tweet inside its conflict article, reproducing the claim that Iranian missiles sank the carrier."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-RKM-ALLES-AUSSER-MAINSTREAM-LINCOLN-20260302",
+      "bullshitter_source_id": "WOL-SRC-RKM-RKMTIMES",
+      "bullshitter_event_id": "WOL-BS-RKM-LINCOLN-SUNK-20260301",
+      "amplifier_id": "TG-ALLES-AUSSER-MAINSTREAM",
+      "amplifier_display_name": "Alles Ausser Mainstream",
+      "amplifier_handle": "@AllesAusserMainstream",
+      "amplifier_platform": "TELEGRAM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "RKM-X-2028290914628849897",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-RKM-ALLES-AUSSER-MAINSTREAM-LINCOLN-20260302",
+          "surface": "TELEGRAM",
+          "url": "https://t.me/s/AllesAusserMainstream/51678",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The channel linked RKM's exact tweet and said the Abraham Lincoln was 'probably sunk,' while adding 'if true' and later noting the sinking was not yet confirmed."
+        }
+      ],
+      "note": "CAVEATED_AMPLIFICATION: the channel materially rebroadcast and provisionally adopted the RKM claim but also marked it unconfirmed. This edge is propagation evidence, not independent corroboration.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-WMX-GENKIMARU-TANKER-20260312",
+      "bullshitter_source_id": "WOL-SRC-WMX-MEDIA",
+      "bullshitter_event_id": "WOL-BS-WMX-US-TANKER-IRANIAN-SHIP-20260309",
+      "amplifier_id": "BLOG-GENKIMARU1",
+      "amplifier_display_name": "大摩邇（genkimaru1）",
+      "amplifier_platform": "BLOG",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "WMX-X-2031130533753745761",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-WMX-GENKIMARU-TANKER-20260312",
+          "surface": "WEBSITE",
+          "url": "https://genkimaru1.livedoor.blog/archives/2366248.html",
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Japanese blog directly linked WMX status 2031130533753745761 and reproduced the claim in Japanese that an Iranian attack struck an American oil tanker attempting to cross Hormuz."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ZARDSI-PAKPASSION-RANA-BERLIN-20260302",
+      "bullshitter_source_id": "WOL-SRC-ZARDSI",
+      "bullshitter_event_id": "WOL-BS-ZARDSI-NETANYAHU-BERLIN-20260302",
+      "amplifier_id": "FORUM-PAKPASSION-RANA",
+      "amplifier_display_name": "PakPassion / Rana",
+      "amplifier_handle": "Rana",
+      "amplifier_platform": "FORUM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ZARDSI-X-2028299614152012132",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ZARDSI-PAKPASSION-RANA-BERLIN-20260302",
+          "surface": "WEBSITE",
+          "url": "https://ppforum.pakpassion.net/threads/strait-of-hormuz-closed-again-iranian-state-media-says-update-post-9075.320713/page-16",
+          "published_at": "2026-03-02",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "PakPassion user Rana directly linked ZardSi status 2028299614152012132 and adopted the claim in his own text, saying Netanyahu was hiding in Berlin."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-ZARDSI-PROJECTAVALON-RAVENLOCKE-DELHI-20260312",
+      "bullshitter_source_id": "WOL-SRC-ZARDSI",
+      "bullshitter_event_id": "WOL-BS-ZARDSI-DELHI-DEFENCE-FACILITY-20260312",
+      "amplifier_id": "FORUM-PROJECTAVALON-RAVENLOCKE",
+      "amplifier_display_name": "Project Avalon / Ravenlocke",
+      "amplifier_handle": "Ravenlocke",
+      "amplifier_platform": "FORUM",
+      "amplifier_authenticity_class": "UNKNOWN",
+      "message_identity": "ZARDSI-X-2031854109528375670",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-ZARDSI-PROJECTAVALON-RAVENLOCKE-DELHI-20260312",
+          "surface": "WEBSITE",
+          "url": "https://projectavalon.net/forum4/showthread.php?122055-Israel-vs-Palestine-Lebanon-Iran-Yemen-Syria-a-New-Middle-East-War=&p=1705792",
+          "published_at": "2026-03-12",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Project Avalon user Ravenlocke embedded ZardSi's exact Delhi 'joint India-Israel defence facility' post in the Iran-war discussion and carried the claim forward alongside a second related Delhi-strike claim."
+        }
+      ],
       "observed_at": "2026-09-25"
     }
   ]

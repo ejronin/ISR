@@ -19,6 +19,7 @@ derived = wol.build_registry(canonical, assembled, governance)
 
 profiles = {row["source_id"]: row for row in derived["source_profiles"]}
 incidents = {row["incident_id"]: row for row in derived["source_behavior_incidents"]}
+amplification = derived["amplification_observations"]
 leads = {row["lead_id"]: row for row in derived["research_leads"]}
 
 source_id = "WOL-SRC-RKM-RKMTIMES"
@@ -108,6 +109,29 @@ assert award["qualifying_incident_count"] == 6
 assert set(award["qualifying_incident_ids"]) == rkm_ids
 
 
+# Propagation review is separate from incident scoring. Receipt-backed
+# downstream embeds/adoptions do not create new RKM incidents and do not confer
+# misconduct findings on the downstream carrier.
+rkm_amp = [
+    row for row in amplification
+    if row.get("bullshitter_source_id") == source_id
+]
+assert len(rkm_amp) >= 7
+lincoln_amp = [
+    row for row in rkm_amp
+    if row["bullshitter_event_id"] == "WOL-BS-RKM-LINCOLN-SUNK-20260301"
+]
+assert {
+    "FORUM-KENYATALK-HNO-HH",
+    "WEB-AAMAWAAM",
+    "TG-ALLES-AUSSER-MAINSTREAM",
+} <= {row["amplifier_id"] for row in lincoln_amp}
+alles = next(
+    row for row in lincoln_amp
+    if row["amplifier_id"] == "TG-ALLES-AUSSER-MAINSTREAM"
+)
+assert "CAVEATED_AMPLIFICATION" in (alles.get("note") or "")
+
 # Bullshitter is independently derived behavior. Discovery does not invent an
 # operator identity, legacy direct verdict, or Hall-of-Shame placement.
 assert profile["direct_verdict"] is None
@@ -122,5 +146,5 @@ assert source_id not in hall_ids
 print(
     "web-of-lies social influence tranche2h: PASS "
     "rkm_incidents=6 rkm_bullshitter=1 cumulative=6 "
-    "claim_first_discovery=1"
+    f"claim_first_discovery=1 rkm_amp={len(rkm_amp)}"
 )
