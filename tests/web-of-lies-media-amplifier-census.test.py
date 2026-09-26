@@ -15,7 +15,7 @@ press_rows = [
     for row in (DOSSIER.get("amplification_observations") or [])
     if row.get("bullshitter_source_id") == "WOL-SRC-PRESS-TV"
 ]
-assert len(press_rows) >= 43
+assert len(press_rows) >= 45
 
 # This tranche is a recoverable minimum, not an assertion that every platform's
 # entire repost graph can be enumerated from the public web.
@@ -163,11 +163,13 @@ globalsecurity_rows = [
     row for row in press_rows
     if row.get("amplifier_id") == "WEB-GLOBALSECURITY-ORG"
 ]
-assert len(globalsecurity_rows) >= 3
+assert len(globalsecurity_rows) >= 5
 assert {
     "WOL-EVT-ALUDEID_BDA-0901-C",
     "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
     "WOL-EVT-F15E-008",
+    "WOL-EVT-F15E-002",
+    "WOL-EVT-AIRCRAFT_KILL_AGGREGATES-0604-C",
 } <= {row["bullshitter_event_id"] for row in globalsecurity_rows}
 
 hajij_rows = [
