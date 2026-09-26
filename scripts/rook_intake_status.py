@@ -330,7 +330,7 @@ def validate_repository(as_of: datetime | None = None, compare_ref: str = "") ->
     for path, data in iter_intake_artifacts():
         role = data.get("artifact_role")
         rel = relative(path)
-        if role == SWEEP_ROLE:
+        if role == SWEEP_ROLE or data.get("artifact_type") == LEGACY_SWEEP_TYPE:
             sweep = validate_sweep(
                 path,
                 data,
