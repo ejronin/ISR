@@ -143,6 +143,30 @@
     return result;
   }
 
+  const LEDGER_CAUTION_TEXT = /\b(?:no (?:parent )?lie finding|knowledge insufficient for a lie finding|does not promote .*? to lie|does not meet .*?lie threshold|not automatically a false finding|withholds? .*?knowledge attribution|does not impute .*?knowledge|does not let .*?propagate|lie threshold)\b/i;
+
+  function plainLedgerText(value) {
+    let result = cleanPublicText(value);
+    result = result.replace(/\bpropositions\b/gi, 'claims');
+    result = result.replace(/\bproposition\b/gi, 'claim');
+    result = result.replace(/\bbranches\b/gi, 'claims');
+    result = result.replace(/\bbranch\b/gi, 'claim');
+    result = result.replace(/\bdenominators\b/gi, 'counting bases');
+    result = result.replace(/\bdenominator\b/gi, 'counting basis');
+    result = result.replace(/\bBDA\b/g, 'damage assessment');
+    result = result.replace(/\bcanonically\b/gi, 'directly in the record');
+    result = result.replace(/\bcanonical\b/gi, 'recorded');
+    result = result.replace(/\badjudicates\b/gi, 'settles');
+    result = result.replace(/\badjudicated\b/gi, 'assessed');
+    result = result.replace(/\badjudication\b/gi, 'finding');
+    result = result.replace(/\bclaimant\b/gi, 'speaker');
+    result = result.replace(/\bknowledge attribution\b/gi, 'conclusion about what the source knew');
+    result = result.replace(/\bpublisher-level knowledge\b/gi, 'what the publisher likely knew');
+    result = result.replace(/\bnodes\b/gi, 'records');
+    result = result.replace(/\bpublication act\b/gi, 'publication');
+    return result.replace(/\s{2,}/g, ' ').trim();
+  }
+
   function enforcePublicBoundary(article, routeKey) {
     article.querySelectorAll('.evidence-role-guide, .technical-record-metadata').forEach(node => node.remove());
     article.querySelectorAll('[data-phase5-chart-equivalent]').forEach(details => {
@@ -438,19 +462,21 @@
   }
 
   function howWeKnow(record, adjudication) {
-    const facts = asArray(record && record.observed_facts).map(cleanPublicText).filter(Boolean);
+    const facts = asArray(record && record.observed_facts)
+      .map(plainLedgerText)
+      .filter(value => value && !LEDGER_CAUTION_TEXT.test(value));
     const result = facts.slice(0, 3);
     const addUnique = value => {
-      const cleaned = cleanPublicText(value);
-      if (!cleaned || INTERNAL_TEXT.test(cleaned)) return;
+      const cleaned = plainLedgerText(value);
+      if (!cleaned || INTERNAL_TEXT.test(cleaned) || LEDGER_CAUTION_TEXT.test(cleaned)) return;
       if (!result.some(item => item.toLowerCase() === cleaned.toLowerCase())) result.push(cleaned);
     };
 
     addUnique(record && record.analytic_inference);
 
     const knowledgeSummaries = asArray(record && record.knowledge_indicators)
-      .map(item => cleanPublicText(item && item.summary))
-      .filter(value => value && !INTERNAL_TEXT.test(value));
+      .map(item => plainLedgerText(item && item.summary))
+      .filter(value => value && !INTERNAL_TEXT.test(value) && !LEDGER_CAUTION_TEXT.test(value));
     knowledgeSummaries.slice(0, 2).forEach(addUnique);
 
     if (['lie', 'likely-lie'].includes(adjudication.key)) {
@@ -503,8 +529,8 @@
 
   function chainPlainEnglish(chain, records) {
     const explicit = asArray(chain && (chain.how_we_know || chain.public_reasoning || chain.logic_summary))
-      .map(cleanPublicText)
-      .filter(value => value && !INTERNAL_TEXT.test(value));
+      .map(plainLedgerText)
+      .filter(value => value && !INTERNAL_TEXT.test(value) && !LEDGER_CAUTION_TEXT.test(value));
     if (explicit.length) return explicit;
 
     const findings = new Map();
@@ -521,8 +547,8 @@
 
     const seen = new Set();
     const add = value => {
-      const cleaned = cleanPublicText(value);
-      if (!cleaned || INTERNAL_TEXT.test(cleaned)) return;
+      const cleaned = plainLedgerText(value);
+      if (!cleaned || INTERNAL_TEXT.test(cleaned) || LEDGER_CAUTION_TEXT.test(cleaned)) return;
       const key = cleaned.toLowerCase();
       if (!seen.has(key)) {
         seen.add(key);
@@ -535,7 +561,7 @@
     });
     return explanation.slice(0, 7).length
       ? explanation.slice(0, 7)
-      : ['The branch findings below show the chronology, what changed, why each proposition received its finding, and the evidence supporting it.'];
+      : ['The findings below show what was claimed, what the evidence shows and why the claim received its finding.'];
   }
 
   function evidenceGapText(gap) {
@@ -546,10 +572,10 @@
   }
 
   function readerSummaryText(value) {
-    const source = cleanPublicText(value);
+    const source = plainLedgerText(value);
     if (!source) return '';
     const sentences = source.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [source];
-    const procedural = /\b(?:atlas (?:therefore|keeps|treats|separates|publishes)|no (?:parent )?lie finding|knowledge (?:is )?not established|knowledge insufficient for a lie finding|rather than a falsehood finding|does not automatically|should be counted as the accusation|claimant knowledge strongly enough for a lie finding)\b/i;
+    const procedural = /\b(?:atlas (?:therefore|keeps|treats|separates|publishes)|no (?:parent )?lie finding|knowledge (?:is )?not established|knowledge insufficient for a lie finding|rather than a falsehood finding|does not automatically|does not publish a lie finding|should be counted as the accusation|speaker knowledge strongly enough for a lie finding|adjudicated separately)\b/i;
     const kept = sentences.map(item => item.trim()).filter(item => item && !procedural.test(item));
     return cleanPublicText((kept.length ? kept : sentences.slice(0, 1)).join(' '));
   }
