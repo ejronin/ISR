@@ -292,6 +292,7 @@ historian_targets = {
 assert set(historian_targets) == {
     "VALENTI-HISTORY-FOREVER-WAR-202607",
     "VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607",
+    "VALENTI-HISTORY-GERMANS-FASCISM-20250708",
 }
 assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["discovery_status"] == "DIRECT_VIDEO_ID_RECOVERED_BODY_NOT_RECOVERED"
 assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["direct_video_id"] == "a3BBuM0bFV0"
@@ -301,6 +302,10 @@ assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["scoring_status"]
 assert "Vietnam War press access" in historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["candidate_topics"][0]
 assert historian_targets["VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607"]["scoring_status"] == "NOT_SCORABLE_TOPIC_NOT_RECOVERED"
 assert "urlebird.com" in historian_targets["VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607"]["source_surfaces"][0]
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["direct_video_id"] == "vLx-gAXUXZQ"
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["publication_date"] == "2025-07-08"
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["scoring_status"] == "NOT_SCORABLE_BODY_NOT_RECOVERED"
+assert "Dolchstoß Boils Over" in historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["preserved_chapters"]
 assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
 assert valenti_lead["review_completion"]["documented_incident_count"] == 24
 assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22
