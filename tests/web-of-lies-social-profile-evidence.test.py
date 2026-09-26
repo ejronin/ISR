@@ -30,6 +30,7 @@ assert profile_rule["collaboration_receipt_does_not_establish_control"] is True
 # Descriptive role/revenue evidence coexists with independently derived adverse
 # history. It neither creates nor erases the Bullshitter award.
 ethan = profiles["WOL-SRC-ETHAN-LEVINS"]
+assert ethan["country_region"] == "United States"
 assert ethan["behavior_classes"] == ["MONETIZED_INFLUENCER"]
 assert {row["role_code"] for row in ethan["claimed_roles"]} == {"ANALYST", "JOURNALIST"}
 assert {row["appellation_code"] for row in ethan["role_failure_appellations"]} == {
@@ -44,15 +45,16 @@ assert {x for r in ethan["revenue_basis_receipts"] for x in r["revenue_classes"]
     "PATREON", "DONATIONS", "SPONSORED_CONTENT"
 }
 assert [a["award_code"] for a in ethan["source_awards"]] == ["BULLSHITTER"]
-assert ethan["source_awards"][0]["documented_incident_count"] == 34
-assert len(ethan["source_awards"][0]["documented_incident_ids"]) == 34
+assert ethan["source_awards"][0]["documented_incident_count"] == 35
+assert len(ethan["source_awards"][0]["documented_incident_ids"]) == 35
 role_failures = {row["appellation_code"]: row for row in ethan["role_failure_appellations"]}
-assert role_failures["FAKE_ANALYST"]["incident_count"] == 15
+assert role_failures["FAKE_ANALYST"]["incident_count"] == 16
 assert len(role_failures["FAKE_ANALYST"]["claimed_role_receipts"]) >= 1
-assert role_failures["YELLOW_JOURNALISM"]["incident_count"] == 34
+assert role_failures["YELLOW_JOURNALISM"]["incident_count"] == 35
 assert len(role_failures["YELLOW_JOURNALISM"]["claimed_role_receipts"]) >= 1
 
 valenti = profiles["WOL-SRC-VALENTI-VIDEOS"]
+assert valenti["country_region"] == "United States"
 assert set(valenti["behavior_classes"]) == {"MONETIZED_INFLUENCER", "NEWS_GRIFT"}
 assert valenti["revenue_model"] == ["PATREON"]
 assert valenti["classification_basis_receipts"]
