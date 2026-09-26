@@ -58,6 +58,48 @@ assert valenti["revenue_model"] == ["PATREON"]
 assert valenti["classification_basis_receipts"]
 assert valenti["revenue_basis_receipts"]
 assert [a["award_code"] for a in valenti["source_awards"]] == ["BULLSHITTER"]
+assert {row["role_code"] for row in valenti["claimed_roles"]} == {"HISTORIAN"}
+assert "FAKE_HISTORIAN" not in {
+    row["appellation_code"] for row in valenti["role_failure_appellations"]
+}
+
+historian_rule = governance["role_failure_appellations"]["FAKE_HISTORIAN"]
+assert historian_rule["claimed_role"] == "HISTORIAN"
+assert historian_rule["requires_source_award"] == "BULLSHITTER"
+assert historian_rule["qualifying_incident_tag"] == "HISTORICAL_VERIFICATION_FAILURE"
+assert historian_rule["minimum_tagged_incidents"] == 3
+assert "SOURCE_NOT_RECOVERED" in historian_rule["exclusions"]
+assert "CONTESTED_HISTORICAL_INTERPRETATION" in historian_rule["exclusions"]
+
+# Historian role failure is fail-closed. Valenti's verified self-description and
+# existing Bullshitter award are insufficient without three distinct,
+# source-recovered historical verification failures.
+valenti_events = [
+    copy.deepcopy(row)
+    for row in incidents.values()
+    if row["source_id"] == "WOL-SRC-VALENTI-VIDEOS"
+]
+assert len(valenti_events) >= 3
+for row in valenti_events:
+    row["role_failure_tags"] = [
+        tag for tag in row.get("role_failure_tags", [])
+        if tag != "HISTORICAL_VERIFICATION_FAILURE"
+    ]
+for row in valenti_events[:2]:
+    row.setdefault("role_failure_tags", []).append("HISTORICAL_VERIFICATION_FAILURE")
+two_failure_labels = wol.derive_role_failure_appellations(valenti, valenti_events, governance)
+assert not any(row["appellation_code"] == "FAKE_HISTORIAN" for row in two_failure_labels)
+
+valenti_events[2].setdefault("role_failure_tags", []).append("HISTORICAL_VERIFICATION_FAILURE")
+three_failure_labels = wol.derive_role_failure_appellations(valenti, valenti_events, governance)
+fake_historian = next(
+    row for row in three_failure_labels
+    if row["appellation_code"] == "FAKE_HISTORIAN"
+)
+assert fake_historian["public_label"] == "Fake historian"
+assert fake_historian["incident_count"] == 3
+assert len(fake_historian["basis_incident_ids"]) == 3
+assert len(fake_historian["claimed_role_receipts"]) >= 2
 
 meidas = profiles["WOL-SRC-MEIDASTOUCH"]
 assert meidas["behavior_classes"] == ["JOURNALISTIC_SOURCE"]
@@ -175,5 +217,6 @@ else:
 
 print(
     "web-of-lies social profile evidence: PASS "
-    "descriptive_receipts=1 adverse_isolation=1 role_failure_gates=1 award_orthogonality=1"
+    "descriptive_receipts=1 adverse_isolation=1 role_failure_gates=1 "
+    "historian_fail_closed=1 award_orthogonality=1"
 )
