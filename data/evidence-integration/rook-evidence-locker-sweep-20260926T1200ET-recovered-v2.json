@@ -1,0 +1,172 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-26T00:00:00-04:00",
+    "window_end": "2026-09-26T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-26T18:52:00-04:00",
+    "evidence_horizon_time": "2026-09-26T12:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260926T0000ET-recovered-v2.json",
+    "boundary_rule": "Recovered after a scheduler-to-repository gap. Preserve source-time discrepancies and do not backdate post-noon developments."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "recovery_reason": "The original scheduled sweep did not persist under the durable ROOK contract. The earlier legacy backfill is retained unchanged for audit.",
+    "legacy_backfill": "data/evidence-integration/rook-evidence-locker-sweep-20260926T1200ET.json",
+    "normalization_note": "Corrects the legacy backfill by adding direct Trump rejection at its actual 11:12 ET public time, preserving Saudi salvo count discrepancies, and adding missed aviation, China and Lebanon updates."
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-TRUMP-DIRECTLY-REJECTS-IRAN-SEVEN-DAY-PROPOSAL-20260926",
+      "event_type": "US_PRESIDENTIAL_RESPONSE_TO_IRANIAN_PROPOSAL",
+      "occurrence_time": "2026-09-26",
+      "public_available_time": "2026-09-26T11:12:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "actor": "United States / President Donald Trump / Iran",
+      "summary": "President Trump publicly confirmed he was rejecting Iran's latest seven-day Hormuz proposal. This converts the prior window's WSJ-reported private rejection into a direct presidential response. It establishes rejection of that proposal, not the end of all diplomacy or a confirmed future bombing timetable.",
+      "confidence": "HIGH_FOR_DIRECT_PUBLIC_PRESIDENTIAL_STATEMENT",
+      "sources": [
+        "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-CHINA-UN-GULF-SOVEREIGNTY-POSITION-20260926",
+      "event_type": "CHINESE_UNGA_REGIONAL_SECURITY_POSITION",
+      "occurrence_time": "2026-09-26",
+      "public_available_time": "2026-09-26T10:51:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "actor": "China / Vice President Han Zheng",
+      "summary": "At the U.N. General Assembly, Han Zheng said major powers should uphold rules and that the sovereignty and security of Middle Eastern countries, including Gulf states, should be respected. He did not name the United States. This is a Chinese public sovereignty/security position and should be read alongside, not collapsed into, the White House account that Trump and Xi agreed on no Iranian nuclear weapon and no tolls on international waterways.",
+      "confidence": "HIGH_FOR_PUBLIC_UNGA_STATEMENT",
+      "sources": [
+        "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-ISRAEL-SEJOUD-LEBANON-STRIKE-20260926",
+      "event_type": "ISRAELI_STRIKE_SOUTHERN_LEBANON",
+      "occurrence_time": "2026-09-26",
+      "public_available_time": "2026-09-26T11:45:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "actor": "Israel / Hezbollah / Lebanon",
+      "summary": "Israel said it struck a facility in the Sejoud area of southern Lebanon that it identified as Hezbollah weapons storage used to support attacks on IDF soldiers in Israel's security zone. The strike itself is reported; facility identity, weapon storage and prior use remain Israeli military attribution absent independent corroboration.",
+      "confidence": "HIGH_FOR_ISRAELI_STRIKE_REPORT; TARGET_FUNCTION_ATTRIBUTED_TO_IDF",
+      "sources": [
+        "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-IRAN-AVIATION-RETALIATION-NONMILITARY-CLARIFICATION-20260926",
+      "updates_existing_ref": "IRAN-AVIATION-RETALIATION-THREAT-20260923",
+      "relationship": "LATER_HIGH_AUTHORITY_SCOPE_CLARIFICATION",
+      "summary": "SNSC secretary Mohsen Rezaei said Iran would not resort to military retaliation over U.S.-driven restrictions on Iranian airlines and said reporting of military action was false. He said negotiations with affected countries were continuing and that multiple non-military retaliatory options existed. Preserve the earlier ambiguous coercive threat and this later clarification chronologically rather than rewriting the earlier statement.",
+      "status": "MILITARY_RETALIATION_DISAVOWED_BY_REZAEI; NONMILITARY_OPTIONS_AND_NEGOTIATIONS_RETAINED",
+      "sources": [
+        "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/"
+      ]
+    },
+    {
+      "update_id": "UPD-IRAQ-IRAN-FLIGHT-WAIVER-REQUEST-20260926",
+      "updates_existing_ref": "UPD-IRAQ-IRAN-FLIGHTS-ALL-FOUR-AIRPORTS-20260925",
+      "relationship": "LATER_WAIVER_DIPLOMACY_WITH_RESTRICTIONS_STILL_IN_FORCE",
+      "summary": "The Iraqi prime minister's office said Baghdad was in direct talks with Washington seeking exemptions for some Iraqi airports from restrictions affecting Iranian airlines for humanitarian, medical, educational and religious travel. No exemption had been granted by the noon evidence horizon.",
+      "status": "IRAQI_WAIVER_REQUEST_CONFIRMED; RESTRICTIONS_STILL_IN_FORCE; US_EXEMPTION_NOT_GRANTED_BY_HORIZON",
+      "sources": [
+        "https://www.thenationalnews.com/news/mena/2026/09/26/iraq-seeks-us-sanctions-exemption-for-iranian-flights/",
+        "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/"
+      ]
+    },
+    {
+      "update_id": "UPD-SAUDI-HOUTHI-RIYADH-KHAMIS-SALVO-20260926",
+      "updates_existing_ref": "SAUDI-HOUTHI-MISSILE-INTERCEPTS-20260924",
+      "relationship": "LATER_SALVO_WITH_SOURCE_COUNT_DISCREPANCY",
+      "summary": "Reuters firmly reported the Saudi-led coalition said it intercepted two Houthi drones launched toward Riyadh. Coalition-derived reporting also said ballistic missile(s) were intercepted toward Khamis Mushait, but contemporaneous accounts differed between one and two ballistic missiles. Preserve the discrepancy rather than normalizing to a single count. No verified impact damage or casualties from intercepted weapons were established.",
+      "status": "TWO_DRONES_CONFIRMED_IN_REUTERS_COALITION_REPORT; BALLISTIC_MISSILE_COUNT_ONE_OR_TWO_ACROSS_CONTEMPORANEOUS_REPORTS; NO_VERIFIED_IMPACT_BDA",
+      "sources": [
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/26/saudi-says-it-intercepted-2-drones-launched-by-houthis-towards-riyadh",
+        "https://www.thenationalnews.com/news/gulf/2026/09/26/saudi-coalition-says-it-intercepted-houthi-drones-headed-for-riyadh/",
+        "https://saudigazette.com.sa/article/664868/saudi-arabia/saudi-arabia-intercepts-houthi-drones-ballistic-missile-targeting-riyadh-khamis-mushait"
+      ]
+    }
+  ],
+  "claims_and_corrections": [
+    {
+      "claim_id": "CLM-TRUMP-29-SHIPS-HORMUZ-20260926",
+      "claimant": "President Donald Trump",
+      "claim_time": "2026-09-26T11:12:00-04:00",
+      "claim": "Twenty-nine ships came out of the Strait of Hormuz the previous night and the United States has total control of the strait.",
+      "adjudication": "PRESIDENTIAL_CLAIM_RECORDED; DO_NOT_SUBSTITUTE_FOR_COMMERCIAL_KPLER_AIS_SERIES_OR_CENTCOM_AGGREGATE_WITHOUT_DENOMINATOR_RECONCILIATION",
+      "summary": "The 29-ship figure is preserved as Trump's claim. It is not automatically equivalent to Kpler commodity-vessel counts, total commercial transits, escorted ships or CENTCOM blockade statistics.",
+      "sources": [
+        "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/"
+      ]
+    }
+  ],
+  "economic_energy_updates": [],
+  "source_discovery_additions": [
+    {
+      "source_class": "DIRECT_US_PRESIDENTIAL",
+      "addition": "Sep.26 Trump direct rejection of Iran's seven-day proposal and separate 29-ship/total-control claims."
+    },
+    {
+      "source_class": "IRANIAN_SEMI_OFFICIAL_WITH_SNSC_ATTRIBUTION",
+      "addition": "ISNA-attributed Rezaei clarification that aviation retaliation would not be military."
+    },
+    {
+      "source_class": "CHINESE_UNGA_POSITION",
+      "addition": "Han Zheng Sep.26 Gulf sovereignty/security formulation."
+    },
+    {
+      "source_class": "LEBANON_STRIKE_REPORTING",
+      "addition": "Sep.26 Israeli Sejoud strike with target-function claim retained as IDF attribution."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "Supersede the prior WSJ-reported rejection state with Trump's direct 11:12 ET public rejection; do not backdate it into Sep.25.",
+    "Update Iran aviation-retaliation drawer with Rezaei's explicit non-military clarification while preserving the earlier threat wording.",
+    "Update Iraq aviation-sanctions drawer with an active waiver request; restrictions remain in force absent U.S. approval.",
+    "Update Saudi-Houthi chronology with Sep.26 drones/missile salvo while preserving the one-versus-two ballistic-missile discrepancy.",
+    "Add China's Sep.26 Gulf-sovereignty UN position separately from the White House Trump-Xi account.",
+    "Add Israel's Sep.26 Sejoud strike while keeping Hezbollah facility identity/function as Israeli attribution."
+  ],
+  "unresolved_questions": [
+    "Does Washington propose alternative terms after rejecting Iran's seven-day plan?",
+    "Can Trump's 29-ship figure be reconciled to a defined commercial/escort/blockade denominator?",
+    "Will Iran actually use non-military retaliation against airports, and what form would it take?",
+    "Will Iraq obtain aviation-sanctions waivers and for which airports/routes/purposes?",
+    "What is the finalized Saudi coalition count for ballistic missiles in the Sep.26 salvo?",
+    "Can the Sejoud facility's Hezbollah weapons-storage function be independently corroborated?"
+  ],
+  "coverage": {
+    "material_results": [
+      "Direct Trump rejection",
+      "Trump 29-ship claim",
+      "Rezaei non-military aviation clarification",
+      "Iraq waiver talks",
+      "Saudi-Houthi Sep.26 salvo",
+      "China Gulf-sovereignty UN position",
+      "Israel Sejoud strike"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No accepted U.S.-Iran counterproposal by noon",
+      "No independently reconciled commercial Hormuz count supporting Trump's 29 figure",
+      "No verified impact casualties from the Sep.26 intercepted Saudi salvo"
+    ],
+    "limitations": [
+      "Backfill reconstructed Sep.26 from contemporaneous public sources.",
+      "No proprietary AIS/Kpler terminal, commercial satellite tasking or classified ISR.",
+      "Some battlefield/target-function claims remain actor-attributed."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_RECOVERED_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_RECOVERY_ARTIFACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
