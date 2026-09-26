@@ -119,7 +119,7 @@ assert.match(shellSource, /\.wol-hall-podium\s*\{/);
 assert.match(shellSource, /\.wol-node-flag\s*\{/);
 assert.match(shellSource, /\.wol-node-markers\s*\{/);
 assert.match(shellSource, /\.wol-awardee-evidence\s*\{/);
-assert.match(shellSource, /\.wol-award-evidence-card\s*\{/);
+assert.match(shellSource, /\.wol-award-evidence-card,\s*\n\.wol-role-evidence-card\s*\{/);
 assert.match(shellSource, /\.wol-bullshit-list,/);
 assert.match(shellSource, /\.wol-role-failure-list\s*\{/);
 assert.match(shellSource, /\.wol-role-failure-evidence\s*\{/);
