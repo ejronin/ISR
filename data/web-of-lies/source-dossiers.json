@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-26T01:10:00-04:00",
+  "as_of": "2026-09-26T01:18:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
@@ -2294,9 +2294,10 @@
           {
             "research_item_id": "VALENTI-HISTORY-FOREVER-WAR-202607",
             "title": "How America Created the \"Forever War\"",
-            "discovery_status": "TITLE_CONFIRMED_BODY_NOT_RECOVERED",
+            "discovery_status": "DIRECT_VIDEO_ID_RECOVERED_BODY_NOT_RECOVERED",
             "first_public_index_date": "2026-07-11",
             "source_surfaces": [
+              "https://www.youtube.com/watch?v=a3BBuM0bFV0",
               "https://www.youtube.com/@valentivideos",
               "https://www.reddit.com/r/videos/comments/1ut7ok0/how_america_created_the_forever_war/"
             ],
@@ -2306,8 +2307,11 @@
               "when the U.S. military's modern embed system began",
               "Gulf War press pools versus Iraq War embedded reporting"
             ],
-            "required_next_evidence": "DIRECT_VIDEO_ID_PLUS_TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
-            "scoring_status": "NOT_SCORABLE_SECONDARY_POINTER_ONLY"
+            "required_next_evidence": "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW",
+            "scoring_status": "NOT_SCORABLE_BODY_NOT_RECOVERED",
+            "direct_video_id": "a3BBuM0bFV0",
+            "direct_url": "https://www.youtube.com/watch?v=a3BBuM0bFV0",
+            "recovery_note": "Exact Valenti video ID recovered from the public channel index. The direct body/captions remain unavailable in current public retrieval, so the Reddit dispute remains a secondary pointer only and no historical proposition is yet attributed or scored."
           },
           {
             "research_item_id": "VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607",
