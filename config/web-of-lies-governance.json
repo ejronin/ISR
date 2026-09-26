@@ -437,7 +437,7 @@
     "named_seed_accounts_are_examples_not_boundary": true,
     "actively_discover_new_publishers": true,
     "conflict_scope": "IRAN_WAR_2026",
-    "active_corpus_rule": "Active Web-of-Lies source-behavior discovery is limited to publishers or amplifiers materially participating in factual or analytical claims about the 2026 Iran war. General misinformation history, unrelated regional propaganda, and pre-2026 claim behavior outside this conflict are out of scope and must not be retained in the active corpus merely to characterize a source.",
+    "active_corpus_rule": "Active Web-of-Lies source-behavior discovery is limited to publishers or amplifiers materially participating in factual or analytical claims about the 2026 Iran war. General misinformation history, unrelated regional propaganda, and pre-2026 claim behavior outside this conflict are out of scope and must not be retained in the active corpus merely to characterize a source. Receipt-backed professional-role evidence may be retained outside this conflict scope only under source_profiles[].role_failure_evidence; it is appellation-only and cannot affect active-corpus scoring, source awards, Hall rank, propagation, behavior classes, or NEWS_GRIFT.",
     "discovery_surfaces": [
       "YOUTUBE",
       "FACEBOOK",
@@ -539,5 +539,18 @@
         "require_contrary_evidence_sources": true
       }
     }
+  },
+  "role_failure_evidence": {
+    "qualification_status": "QUALIFIED_ROLE_FAILURE_EVIDENCE",
+    "storage_field": "source_profiles[].role_failure_evidence",
+    "purpose": "Receipt-backed professional-role appellation evidence that is outside the active Iran-war source-behavior corpus.",
+    "may_be_outside_active_conflict_scope": true,
+    "requires_independently_earned_source_award": true,
+    "affects_source_awards": false,
+    "affects_hall_score": false,
+    "affects_propagation_graph": false,
+    "affects_behavior_classes": false,
+    "affects_news_grift": false,
+    "rule": "Role-failure-only evidence may establish a governed professional-role appellation after the required source award is independently earned, but it must never enter Bullshitter award counts, Hall scoring, propagation, NEWS_GRIFT scoring, or active Iran-war corpus totals."
   }
 }
