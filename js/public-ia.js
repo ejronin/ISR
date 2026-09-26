@@ -2882,6 +2882,7 @@
       picker.value = '';
       renderEdgeDetail(selectedEdgeId);
       focusGraph('', selectedEdgeId);
+      renderAwardeeSelection('');
     };
     picker.addEventListener('change', () => selectNode(picker.value));
     reset.addEventListener('click', () => selectNode(''));
@@ -2975,19 +2976,23 @@
     };
     renderAwardeeSelection = nodeId => {
       const node = graphNodeById.get(nodeId);
-      if (!node || node.node_type !== 'BULLSHITTER') return;
+      const isAwardee = Boolean(node && node.node_type === 'BULLSHITTER');
       [...indexGrid.querySelectorAll('.wol-awardee-button')].forEach(button => {
-        const active = button.dataset.sourceId === nodeId;
+        const active = isAwardee && button.dataset.sourceId === nodeId;
         button.classList.toggle('is-selected', active);
         button.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
+      if (!isAwardee) {
+        renderAwardeePrompt();
+        return;
+      }
       awardeeDetailHost.replaceChildren();
       const heading = append(awardeeDetailHost, 'header', 'wol-awardee-evidence-heading');
       append(heading, 'p', 'card-kicker', 'AWARD EVIDENCE');
       appendNodeIdentity(heading, node, 'h3', 'wol-node-identity wol-awardee-evidence-identity');
       appendAwardEvidenceBlocks(awardeeDetailHost, nodeId);
     };
-    renderAwardeePrompt();
+    renderAwardeeSelection(selectedNodeId);
 
     const lineageSection = addSection(frame.article, 'Claim trails', 'content-section wol-lineages');
     append(lineageSection, 'p', 'section-note', 'Open a claim trail to follow the publications and connections behind that story.');
