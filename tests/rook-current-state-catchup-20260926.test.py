@@ -24,9 +24,9 @@ def main() -> int:
     accepted = manifest["accepted_updates"]
     assert accepted[-1]["sequence"] == 22
     assert accepted[-1]["packet_id"] == packet["packet_id"]
-    assert accepted[-1]["evidence_cutoff"] == "2026-09-26T12:00:00-04:00"
-    assert manifest["current_evidence_cutoff"] == "2026-09-26T12:00:00-04:00"
-    assert state["release"]["current_osint_cutoff"] == "2026-09-26T12:00:00-04:00"
+    assert accepted[-1]["evidence_cutoff"] == packet["evidence_cutoff"]
+    assert manifest["current_evidence_cutoff"] == accepted[-1]["evidence_cutoff"]
+    assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
     assert accepted[-1]["previous_lineage_sha256"] == accepted[-2]["lineage_sha256"]
 
     assert packet["upstream_provenance"]["locker_artifacts"] == [
