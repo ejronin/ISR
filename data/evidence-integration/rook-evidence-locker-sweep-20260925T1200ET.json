@@ -1,0 +1,191 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "backfill": true,
+  "backfill_reason": "Scheduled 12-hour sweep artifact absent from repository; reconstructed on 2026-09-26 from contemporaneous public reporting while preserving the original evidence horizon.",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-25T00:00:00-04:00",
+    "end": "2026-09-25T12:00:00-04:00",
+    "collection_time": "2026-09-26T17:20:00-04:00",
+    "evidence_horizon": "2026-09-25T12:00:00-04:00"
+  },
+  "updates": [
+    {
+      "event_id": "GULF-OMAN-STS-CAPACITY-20260925",
+      "update_type": "maritime/economy / shipping-capacity constraint",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25T00:25:00-04:00",
+      "finding": "Reuters reported ship-to-ship crude transfers in the Gulf of Oman had reached capacity limits as Saudi Arabia rerouted exports through Hormuz after disruption to its Red Sea route. Saudi crude exports via Hormuz were on track for about 3.6 million bpd in September versus about 900,000 bpd in August, increasing VLCC demand and freight costs.",
+      "status": "STS CAPACITY CONSTRAINT SUPPORTED; SAUDI HORMUZ RELIANCE MATERIALLY INCREASED; FREIGHT PRESSURE CONFIRMED",
+      "sources": [
+        "https://www.fidelity.com/news/article/company-news/202609250025RTRSNEWSCOMBINED_L4N45E0N6_1",
+        "https://gcaptain.com/gulf-of-oman-ship-to-ship-oil-transfers-reach-limit-as-saudi-exports-surge/"
+      ],
+      "drawer_effect": "UPDATE Hormuz workaround and Gulf of Oman STS logistics; preserve transfer-capacity/freight effects separately from Strait vessel counts."
+    },
+    {
+      "event_id": "HORMUZ-TRANSITS-20260925",
+      "update_type": "maritime / daily traffic update",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-25",
+      "finding": "Reuters/Kpler preliminary data put Thursday Strait of Hormuz commodity-vessel transits at nine, down from 14 the previous day and below a 10-day average of 18. Eight of the nine were exits; AIS-dark traffic remained an explicit undercount caveat.",
+      "status": "THURSDAY SEP24=9 TRACKED COMMODITY TRANSITS; BELOW RECENT AVERAGE; AIS CAVEAT RETAINED",
+      "sources": [
+        "https://www.brecorder.com/news/amp/40441195",
+        "https://www.dawn.com/news/amp/2032547"
+      ],
+      "drawer_effect": "UPDATE existing Hormuz traffic series with Sep.24 preliminary count of nine while retaining prior daily figures and AIS caveat."
+    },
+    {
+      "event_id": "HORMUZ-CRUDE-FLOWS-WEEK-20260925",
+      "update_type": "maritime/energy / weekly crude-flow context",
+      "occurrence_time": "week beginning 2026-09-20",
+      "publication_time": "2026-09-25",
+      "finding": "Reuters/Kpler reported 33.7 million barrels of crude had exited Hormuz so far in the week beginning Sep.20 on 19 tankers, broadly on pace with the previous week's 49.2 million barrels by the time of publication. The flow was dominated by Saudi crude followed by Iraq.",
+      "status": "SUBSTANTIAL CRUDE EXPORT FLOW CONTINUES DESPITE LOW VISIBLE VESSEL COUNT; WEEKLY DENOMINATOR PRESERVED SEPARATELY",
+      "sources": [
+        "https://www.dawn.com/news/2032556"
+      ],
+      "drawer_effect": "UPDATE shipping/energy context without treating crude-barrel and vessel-count denominators as interchangeable."
+    },
+    {
+      "event_id": "SAUDI-TURKEY-PAKISTAN-DEFENCE-TALKS-20260925",
+      "update_type": "military/diplomacy / alliance implementation",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25",
+      "finding": "Reuters reported Saudi, Turkish and Pakistani military chiefs were to meet urgently under the Makkah Joint Defence Agreement to discuss support for Saudi Arabia amid Houthi attacks. Turkish parliamentary leadership separately said the pact still required Turkish parliamentary approval and was expected to be submitted after recess.",
+      "status": "URGENT MILITARY CONSULTATION CONFIRMED; TREATY IMPLEMENTATION STILL PROCEDURALLY INCOMPLETE IN TURKEY",
+      "sources": [
+        "https://www.arabnews.com/middle-east/allies-unite-behind-saudi-arabia-as-houthis-step-up-attacks-3003050",
+        "https://www.timesofisrael.com/liveblog_entry/turkish-parliament-will-take-up-pakistan-saudi-arabia-defense-pact-next-month-speaker-says/"
+      ],
+      "drawer_effect": "UPDATE Makkah pact from signed framework to active crisis consultation while preserving Turkish ratification status."
+    },
+    {
+      "event_id": "TURKEY-MAKKAH-PACT-IRAN-INCLUSION-20260925",
+      "update_type": "diplomacy / regional-security architecture statement",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25T06:00:00-04:00",
+      "finding": "Turkey's parliament speaker said the Saudi-Pakistan-Turkey defence pact could eventually broaden into a wider Muslim-world framework that includes Iran. This was a political possibility statement, not an invitation accepted by Iran or a treaty amendment.",
+      "status": "EXPANSION POSSIBILITY PUBLICLY STATED; IRANIAN MEMBERSHIP OR NEGOTIATION NOT ESTABLISHED",
+      "sources": [
+        "https://currently.att.yahoo.com/att/pact-saudi-pakistan-could-expand-100038950.html"
+      ],
+      "drawer_effect": "UPDATE regional-security architecture watch as a Turkish political signal only; do not treat Iran as a participant."
+    },
+    {
+      "event_id": "TRUMP-XI-IRAN-SUPPORT-WARNING-20260925",
+      "update_type": "diplomacy / China-Iran support constraint",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-25T09:09:00-04:00",
+      "finding": "The U.S. ambassador to China said President Trump reiterated to Xi Jinping that direct or indirect Chinese help to Iran, including intelligence, parts or military equipment, was unacceptable. The ambassador said Washington received assurances from Beijing; Reuters did not independently establish the scope or implementation of any Chinese commitment.",
+      "status": "U.S. WARNING AND REPORTED CHINESE ASSURANCE ESTABLISHED; MATERIAL CHANGE IN CHINESE SUPPORT NOT INDEPENDENTLY VERIFIED",
+      "sources": [
+        "https://www.investing.com/news/world-news/trump-told-xi-that-china-helping-iran-is-unacceptable-us-ambassador-says-4917599",
+        "https://currently.att.yahoo.com/att/trump-told-xi-china-helping-130801833.html"
+      ],
+      "drawer_effect": "UPDATE China-Iran support/diplomacy watch; keep U.S. characterization and reported assurance separate from observed Chinese behavior."
+    },
+    {
+      "event_id": "IRAQ-IRAN-FLIGHT-SUSPENSION-ALL-AIRPORTS-20260925",
+      "update_type": "sanctions/aviation / implementation expansion",
+      "occurrence_time": "2026-09-25",
+      "publication_time": "2026-09-25",
+      "finding": "Reuters reported Erbil and Sulaimaniya joined Baghdad and Najaf in suspending Iranian flights, meaning all four Iraqi airports then handling Iran service had halted those flights. This materially broadened observable implementation of U.S. aviation secondary-sanctions pressure.",
+      "status": "ALL FOUR ACTIVE IRAQI IRAN-SERVICE AIRPORTS SUSPENDED; IRAQ-WIDE IMPLEMENTATION FOR THOSE ROUTES ESTABLISHED",
+      "sources": [
+        "https://www.timesofisrael.com/liveblog_entry/all-4-iraqi-airports-that-hosted-flights-to-and-from-iran-have-suspended-them/",
+        "https://www.brecorder.com/news/amp/40441231"
+      ],
+      "drawer_effect": "SUPERSEDE prior Iraq partial suspension status with all four operating Iran-service airports suspended; do not infer worldwide grounding."
+    },
+    {
+      "event_id": "GAZA-HAMAS-FINANCE-ROLE-IDF-20260925",
+      "update_type": "Gaza/Hamas / target-identity follow-up",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-25",
+      "finding": "The IDF publicly named Jabr Moqbel as a Hamas-linked money-exchange operator and Hasan al-Batta as a Hamas sniper killed in separate Sep.24 Gaza strikes. The identities and roles remained Israeli military attributions at this horizon and were not independently established by the sweep.",
+      "status": "TARGET IDENTITIES/ROLES ATTRIBUTED TO IDF; INDEPENDENT CORROBORATION NOT ESTABLISHED",
+      "sources": [
+        "https://www.timesofisrael.com/liveblog_entry/idf-names-two-hamas-operatives-including-head-of-funding-mechanism-killed-in-gaza-strikes-yesterday/"
+      ],
+      "drawer_effect": "UPDATE existing Gaza/Hamas strike drawer with named Israeli attributions while preserving source-bounded status."
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "Hormuz traffic",
+      "action": "UPDATE",
+      "reason": "Thursday Sep.24 visible commodity transits=9; weekly crude-flow denominator also available and must remain separate."
+    },
+    {
+      "drawer": "Gulf of Oman STS workaround",
+      "action": "UPDATE",
+      "reason": "Transfer capacity limits and VLCC/freight pressure now explicitly reported."
+    },
+    {
+      "drawer": "Makkah Joint Defence Agreement",
+      "action": "UPDATE",
+      "reason": "Urgent military consultations triggered; Turkish parliamentary ratification remains outstanding."
+    },
+    {
+      "drawer": "China-Iran external support",
+      "action": "UPDATE",
+      "reason": "U.S. warning and reported Chinese assurance established; observed support change remains unverified."
+    },
+    {
+      "drawer": "Iran aviation sanctions",
+      "action": "UPDATE",
+      "reason": "All four Iraqi airports then serving Iran had suspended Iranian flights."
+    },
+    {
+      "drawer": "Gaza/Hamas finance-role attribution",
+      "action": "UPDATE",
+      "reason": "IDF supplied named role attribution; independent verification remains absent."
+    }
+  ],
+  "unresolved_questions": [
+    "Do Gulf of Oman STS capacity constraints persist or cause measurable cargo delays beyond higher freight rates?",
+    "What concrete military assistance, if any, follows the Saudi-Turkey-Pakistan chiefs' consultation?",
+    "Does Turkish parliament ratify the Makkah pact and does any formal expansion discussion include Iran?",
+    "Does Chinese behavior materially change after the Trump-Xi warning?",
+    "Do Iraqi airports seek or obtain sanctions waivers allowing Iranian service to resume?",
+    "Can the IDF Hamas finance-role attribution be independently corroborated?"
+  ],
+  "coverage": {
+    "military": "covered for alliance consultation and Saudi-Houthi context",
+    "maritime": "covered with Kpler daily transits, crude-flow series and STS capacity reporting",
+    "infrastructure": "reviewed; no new independently confirmed major physical BDA",
+    "diplomacy": "covered for Makkah pact, Turkey expansion signal and Trump-Xi Iran discussion",
+    "economy_sanctions_energy": "covered for aviation implementation, tanker capacity and crude flows",
+    "claims_corrections": "covered; attributed claims retained by source",
+    "human_impact": "reviewed; no new broad casualty denominator promoted",
+    "commercial_osint": "covered through public Kpler and shipping-market reporting",
+    "social_media_geolocation": "not systematically available",
+    "commercial_satellite_tasking": "unavailable",
+    "proprietary_maritime_terminals": "unavailable",
+    "classified_isr": "unavailable and not claimed"
+  },
+  "source_discovery_additions": [
+    "Reuters/Kpler Sep.25 Hormuz daily and weekly flow updates",
+    "Reuters Gulf of Oman STS capacity-limit reporting",
+    "Reuters Iraq-wide Iranian-flight suspension reporting",
+    "Reuters Makkah-pact consultation and Turkey ratification status"
+  ],
+  "completion": {
+    "status": "BACKFILL COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+    "canonical_bytes_modified": false,
+    "generated_public_state_modified": false,
+    "release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "downstream_referrals": [
+      "Current-state integration: Hormuz daily/weekly traffic",
+      "Current-state integration: Gulf of Oman STS capacity constraint",
+      "Current-state integration: Iraq aviation-sanctions implementation",
+      "Current-state integration: Makkah pact consultation and China-Iran diplomatic signal"
+    ],
+    "notes": "Backfilled routine upstream evidence only. Distinct denominators and source-attributed claims are preserved."
+  }
+}

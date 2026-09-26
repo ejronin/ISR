@@ -1,0 +1,139 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "backfill": true,
+  "backfill_reason": "Scheduled 12-hour sweep artifact absent from repository; reconstructed on 2026-09-26 from contemporaneous public reporting while preserving the original evidence horizon.",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-26T00:00:00-04:00",
+    "end": "2026-09-26T12:00:00-04:00",
+    "collection_time": "2026-09-26T17:20:00-04:00",
+    "evidence_horizon": "2026-09-26T12:00:00-04:00"
+  },
+  "updates": [
+    {
+      "event_id": "SAUDI-HOUTHI-DRONE-MISSILE-INTERCEPTS-20260926",
+      "update_type": "military / Saudi-Houthi strike chronology",
+      "occurrence_time": "early 2026-09-26",
+      "publication_time": "2026-09-26",
+      "finding": "The Saudi-led coalition said it intercepted two drones launched toward Riyadh and two ballistic missiles launched toward Khamis Mushait. Civil-defence alerts had been issued overnight for Khamis Mushait and Abha. No casualties or damage from the intercepted weapons were established in the reviewed reporting.",
+      "status": "TWO DRONES AND TWO BALLISTIC MISSILES REPORTED INTERCEPTED BY SAUDI-LED COALITION; DAMAGE/CASUALTIES NOT ESTABLISHED",
+      "sources": [
+        "https://www.businesstimes.com.sg/international/saudi-coalition-says-it-intercepts-houthi-missiles-drones/",
+        "https://www.straitstimes.com/world/middle-east/saudi-says-it-intercepted-2-drones-launched-by-houthis-towards-riyadh"
+      ],
+      "drawer_effect": "UPDATE Saudi-Houthi strike chronology with the Sep.26 early-morning salvo; preserve coalition attribution and absence of independent weapon-by-weapon verification."
+    },
+    {
+      "event_id": "YEMEN-GOVERNMENT-GENERAL-MOBILIZATION-20260926",
+      "update_type": "military/political / Yemen government mobilisation",
+      "occurrence_time": "2026-09-25/26",
+      "publication_time": "2026-09-26",
+      "finding": "Rashad al-Alimi, head of Yemen's internationally recognized Presidential Leadership Council, called for general mobilisation and urged Yemenis to join government armed and security forces through official channels. Reporting also said he announced a full pardon beginning Sep.26 for Houthi fighters and officials who defect to the government side.",
+      "status": "GENERAL MOBILIZATION CALL AND DEFECTION-AMNESTY OFFER PUBLICLY REPORTED; EFFECT ON MANPOWER OR TERRITORIAL CONTROL NOT YET OBSERVED",
+      "sources": [
+        "https://news.sbs.co.kr/english/endPagePrintPopup.do?news_id=N1008770287",
+        "https://www.thenationalnews.com/news/gulf/2026/09/26/saudi-coalition-says-it-intercepted-houthi-drones-headed-for-riyadh/"
+      ],
+      "drawer_effect": "CREATE/UPDATE Yemen government mobilisation drawer; do not infer actual recruitment, defections or battlefield effect without subsequent evidence."
+    },
+    {
+      "event_id": "IRAQ-US-IRAN-FLIGHT-WAIVER-TALKS-20260926",
+      "update_type": "sanctions/aviation / implementation and waiver diplomacy",
+      "occurrence_time": "2026-09-26",
+      "publication_time": "2026-09-26",
+      "finding": "The Iraqi prime minister's office said Baghdad was in direct talks with Washington seeking exemptions for some Iraqi airports from U.S. restrictions affecting Iranian airlines so humanitarian, medical, education and religious travel could resume. This confirmed Iraqi implementation pressure while opening a waiver track; no exemption had been granted by the evidence horizon.",
+      "status": "IRAQI WAIVER REQUEST CONFIRMED; FLIGHT RESTRICTIONS STILL IN FORCE; U.S. EXEMPTION NOT YET GRANTED",
+      "sources": [
+        "https://en.964media.com/53031/",
+        "https://www.arabnews.com/middle-east/iraq-seeks-exemption-from-us-ban-on-iran-airlines-3003229"
+      ],
+      "drawer_effect": "UPDATE Iraq aviation-sanctions drawer from full suspension only to full suspension plus active humanitarian-waiver request; do not treat talks as an exemption."
+    },
+    {
+      "event_id": "HOUTHI-ESCALATION-WARNING-20260926",
+      "update_type": "military/security signaling / Houthi actor claim",
+      "occurrence_time": "2026-09-26",
+      "publication_time": "2026-09-26T10:23:00-04:00",
+      "finding": "Houthi-aligned Sanaa military leaders publicly claimed their missile and drone forces were ready for further escalation and threatened strikes on enemy military and economic interests. They rejected Saudi allegations concerning holy sites. The statements are retained as actor signaling, not proof of a specific executable strike plan or target set.",
+      "status": "HIGH-LEVEL HOUTHI ESCALATION RHETORIC CONFIRMED AS ACTOR CLAIM; SPECIFIC OPERATION OR TARGET EXECUTION NOT ESTABLISHED",
+      "sources": [
+        "https://en.ypagency.net/406374"
+      ],
+      "drawer_effect": "UPDATE Houthi signaling watch; do not convert readiness rhetoric into a forecasted or confirmed operation."
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "Saudi-Houthi strike chronology",
+      "action": "UPDATE",
+      "reason": "Early Sep.26 coalition reports add two drones toward Riyadh and two ballistic missiles toward Khamis Mushait."
+    },
+    {
+      "drawer": "Yemen government campaign",
+      "action": "UPDATE",
+      "reason": "General mobilisation and defection-amnesty measures create a new political/manpower response to Houthi gains."
+    },
+    {
+      "drawer": "Iran aviation sanctions in Iraq",
+      "action": "UPDATE",
+      "reason": "All-airport suspension remains in force while Baghdad opens a humanitarian-waiver channel with Washington."
+    },
+    {
+      "drawer": "U.S.-Iran Hormuz negotiations",
+      "action": "NO_MATERIAL_NEW_AGREEMENT",
+      "reason": "Trump's rejection remained the operative U.S. response by the 12:00 ET horizon; no accepted counterproposal established."
+    },
+    {
+      "drawer": "Hormuz traffic",
+      "action": "NO_NEW_QUALIFIED_DAILY_TALLY",
+      "reason": "No newer authoritative Kpler daily count located before the 12:00 ET horizon."
+    },
+    {
+      "drawer": "Lebanon/Gaza",
+      "action": "NO_MATERIAL_NEW_QUALIFIED_CHANGE",
+      "reason": "No new evidence in this window displaced the prior source-bounded Lebanon/Gaza state."
+    }
+  ],
+  "unresolved_questions": [
+    "Will Saudi Arabia independently confirm any leakers, damage or casualties from the Sep.26 salvo?",
+    "Does Yemen's general mobilisation produce measurable recruitment or defections?",
+    "Will Washington grant Iraq an aviation-sanctions exemption and, if so, which airports or purposes qualify?",
+    "Does Houthi escalation rhetoric precede a materially different target set or attack volume?",
+    "Does Washington offer a counterproposal after rejecting Iran's seven-day Hormuz package?"
+  ],
+  "coverage": {
+    "military": "covered for Saudi-Houthi salvo, Yemen mobilisation and Houthi signaling",
+    "maritime": "reviewed; no newer qualified daily Hormuz tally before horizon",
+    "infrastructure": "reviewed; no new independently confirmed physical BDA",
+    "diplomacy": "reviewed; U.S. rejection remained operative and Iraq opened waiver talks",
+    "economy_sanctions_energy": "covered through Iraq aviation waiver request; no new major energy BDA",
+    "claims_corrections": "covered with Houthi readiness statements preserved as actor claims",
+    "human_impact": "reviewed; no new broad casualty denominator promoted",
+    "commercial_osint": "partial; public reporting only",
+    "social_media_geolocation": "not systematically available",
+    "commercial_satellite_tasking": "unavailable",
+    "proprietary_maritime_terminals": "unavailable",
+    "classified_isr": "unavailable and not claimed"
+  },
+  "source_discovery_additions": [
+    "Reuters Sep.26 Saudi drone/missile interception update",
+    "Iraqi PM-office waiver request reporting",
+    "Yemen government mobilisation/amnesty reporting",
+    "Houthi-aligned military leadership signaling source"
+  ],
+  "completion": {
+    "status": "BACKFILL COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+    "canonical_bytes_modified": false,
+    "generated_public_state_modified": false,
+    "release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "downstream_referrals": [
+      "Current-state integration: Sep.26 Saudi-Houthi salvo",
+      "Current-state integration: Yemen government general mobilisation",
+      "Current-state integration: Iraq aviation-waiver request"
+    ],
+    "notes": "Backfilled routine upstream evidence only. No canonical or public semantics mutated."
+  }
+}

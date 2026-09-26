@@ -1,0 +1,99 @@
+{
+  "artifact_type": "ATLAS_ISR_EVIDENCE_LOCKER_SWEEP",
+  "schema_version": "1.0",
+  "authority": "routine upstream collection; append-only; no canonical/release mutation",
+  "backfill": true,
+  "backfill_reason": "Scheduled 12-hour sweep artifact absent from repository; reconstructed on 2026-09-26 from contemporaneous public reporting while preserving the original evidence horizon.",
+  "window": {
+    "timezone": "America/New_York",
+    "start": "2026-09-24T12:00:00-04:00",
+    "end": "2026-09-25T00:00:00-04:00",
+    "collection_time": "2026-09-26T17:20:00-04:00",
+    "evidence_horizon": "2026-09-25T00:00:00-04:00"
+  },
+  "updates": [
+    {
+      "event_id": "US-IRAN-PHASED-HORMUZ-DEAL-20260924",
+      "update_type": "diplomacy / major negotiation-structure update",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24T12:17:00-04:00",
+      "finding": "Reuters reported U.S. and Iranian negotiators in New York were exploring a phased arrangement in which Iran would reopen the Strait of Hormuz and the United States would lift its economic blockade. Multiple Iranian, regional and Western diplomatic sources described sequencing as the central obstacle, with neither side willing to surrender leverage first.",
+      "status": "PHASED FRAMEWORK UNDER DISCUSSION; NO AGREEMENT OR IMPLEMENTATION ESTABLISHED",
+      "sources": [
+        "https://www.investing.com/news/commodities-news/us-and-iran-discuss-phased-deal-to-reopen-hormuz-and-end-us-blockade-sources-say-4915884",
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/24/us-and-iran-discuss-phased-deal-to-reopen-hormuz-and-end-us-blockade-sources-say"
+      ],
+      "drawer_effect": "UPDATE existing UNGA U.S.-Iran contacts/Hormuz negotiation drawer with source-bounded phased sequencing; do not infer agreement, concessions already granted, or implementation."
+    },
+    {
+      "event_id": "HOUTHI-RIYADH-YANBU-ATTACK-CLAIMS-20260924",
+      "update_type": "military / Saudi-Houthi strike chronology",
+      "occurrence_time": "2026-09-24",
+      "publication_time": "2026-09-24",
+      "finding": "After Saudi Arabia said it intercepted six Houthi ballistic missiles aimed at Taif and the Yanbu area, the Houthis separately claimed missile and drone attacks on a 'sensitive target' in Riyadh and Saudi Aramco facilities in Yanbu. Reuters reported no immediate Saudi confirmation of the Riyadh attack or damage/casualties at Taif or Yanbu.",
+      "status": "SAUDI INTERCEPT CLAIM RECORDED; HOUTHI RIYADH/ARAMCO STRIKE CLAIM UNCONFIRMED; DAMAGE/CASUALTIES NOT ESTABLISHED",
+      "sources": [
+        "https://www.internazionale.it/ultime-notizie-reuters/2026/09/24/houthis-say-they-attacked-riyadh-and-aramco-facilities-in-yanbu",
+        "https://quews.news/saudi-arabia-says-it-2/"
+      ],
+      "drawer_effect": "UPDATE Sep.24 Saudi-Houthi missile/intercept chronology; keep interception claims, target claims and independently observed BDA separate."
+    }
+  ],
+  "prior_drawer_review": [
+    {
+      "drawer": "U.S.-Iran UNGA contacts / Hormuz negotiations",
+      "action": "UPDATE",
+      "reason": "Phased sequencing is now source-reported; no deal established."
+    },
+    {
+      "drawer": "Saudi-Houthi strikes / Yanbu",
+      "action": "UPDATE",
+      "reason": "Houthi Riyadh/Aramco target claims follow the six-missile Saudi interception claim; no confirmed BDA."
+    },
+    {
+      "drawer": "Iran aviation sanctions",
+      "action": "NO_MATERIAL_CHANGE",
+      "reason": "Sep.24 UAE state-level suspension remains latest qualified implementation state inside this window."
+    },
+    {
+      "drawer": "Hormuz traffic",
+      "action": "NO_NEW_DAILY_TALLY_IN_WINDOW",
+      "reason": "No newer qualified Kpler daily count located before the 00:00 ET horizon."
+    }
+  ],
+  "unresolved_questions": [
+    "Did any Houthi projectile reach Riyadh or Saudi Aramco facilities at Yanbu and cause independently confirmed damage or casualties?",
+    "What sequencing or verification mechanism was actually discussed in the phased U.S.-Iran framework?",
+    "Did either side accept any element before the evidence horizon?"
+  ],
+  "coverage": {
+    "military": "covered; no independent weapon-by-weapon BDA",
+    "maritime": "reviewed; no newer qualified daily Hormuz tally",
+    "infrastructure": "reviewed; no independently confirmed new Yanbu/Aramco damage",
+    "diplomacy": "covered; phased Hormuz/blockade sequencing updated",
+    "economy_sanctions_energy": "reviewed; no new sanctions implementation beyond Sep.24 state",
+    "claims_corrections": "covered through attributed claims",
+    "human_impact": "no new independently confirmed casualty series identified",
+    "commercial_osint": "partial; public reporting only",
+    "social_media_geolocation": "not systematically available",
+    "commercial_satellite_tasking": "unavailable",
+    "proprietary_maritime_terminals": "unavailable",
+    "classified_isr": "unavailable and not claimed"
+  },
+  "source_discovery_additions": [
+    "Reuters phased U.S.-Iran Hormuz/blockade framework",
+    "Reuters Houthi Riyadh/Yanbu target-claim preservation"
+  ],
+  "completion": {
+    "status": "BACKFILL COMPLETE WITH EXPLICIT SOURCE-CLASS LIMITATIONS",
+    "canonical_bytes_modified": false,
+    "generated_public_state_modified": false,
+    "release_artifacts_modified": false,
+    "release_manifests_modified": false,
+    "downstream_referrals": [
+      "Current-state integration: phased U.S.-Iran negotiation structure",
+      "Current-state integration: Saudi-Houthi strike chronology"
+    ],
+    "notes": "Backfilled routine upstream evidence only. No canonical or public semantics mutated."
+  }
+}
