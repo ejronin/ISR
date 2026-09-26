@@ -227,6 +227,49 @@ async function loadDirectRoute(cdp, route) {
           assert.doesNotMatch(awardeeEvidence.text, /minimum tagged|at least three distinct qualifying|at least two must document/i);
         }
         assert.doesNotMatch(awardeeEvidence.text, /does not by itself prove what the publisher privately understood/i);
+
+        const valentiRoleEvidence = await cdp.eval(`(() => {
+          const buttons = [...document.querySelectorAll('.wol-awardee-button')];
+          const button = buttons.find(node => /Valenti/i.test(node.textContent || ''));
+          if (!button) return { missing: true };
+          button.click();
+          const host = document.querySelector('.wol-awardee-evidence-host');
+          const roleSection = host?.querySelector('.wol-role-failure-evidence');
+          const text = host?.innerText || '';
+          const roleText = [...(roleSection?.querySelectorAll('.wol-role-evidence-card') || [])]
+            .map(node => node.textContent || '')
+            .join('\\n');
+          return {
+            missing: false,
+            pressed: button.getAttribute('aria-pressed'),
+            titleText: text,
+            roleItems: roleSection?.querySelectorAll('.wol-role-failure-list li').length || 0,
+            roleCards: roleSection?.querySelectorAll('.wol-role-evidence-card').length || 0,
+            bullshitterItems: host?.querySelectorAll('.wol-bullshit-list li').length || 0,
+            roleTags: [...(roleSection?.querySelectorAll('.wol-incident-tag') || [])].map(node => node.textContent || ''),
+            roleReceipts: roleSection?.querySelectorAll('.wol-receipt-list a').length || 0,
+            roleText
+          };
+        })()`);
+        assert.equal(valentiRoleEvidence.missing, false, 'Valenti awardee control is missing');
+        assert.equal(valentiRoleEvidence.pressed, 'true', 'Valenti awardee selection is not exposed to assistive technology');
+        assert.match(valentiRoleEvidence.titleText, /WOL rates the documented pattern as Fake historian/);
+        assert.match(valentiRoleEvidence.titleText, /Why Fake historian/);
+        assert.match(valentiRoleEvidence.titleText, /4 source-recovered historical failures support this title/);
+        assert.match(valentiRoleEvidence.titleText, /These checks are separate from the Bullshitter award count below/);
+        assert.equal(valentiRoleEvidence.roleItems, 4, 'Fake historian must show all four visible historian failures');
+        assert.equal(valentiRoleEvidence.roleCards, 4, 'Fake historian must expose four claim-by-claim evidence cards');
+        assert.equal(valentiRoleEvidence.bullshitterItems, 24, 'role-only historian evidence must not change Valenti Bullshitter incident count');
+        assert(valentiRoleEvidence.roleReceipts >= 8, 'historian evidence must expose direct-source and contrary-history receipts');
+        assert(valentiRoleEvidence.roleTags.includes('Fake historian'), 'historian evidence is missing the Fake historian tag');
+        assert(valentiRoleEvidence.roleTags.includes('Historical fact error'), 'historian evidence is missing historical fact-error tags');
+        assert(valentiRoleEvidence.roleTags.includes('Historical context distortion'), 'historian evidence is missing context-distortion tags');
+        assert(!valentiRoleEvidence.roleTags.includes('Bullshitter'), 'role-only historian evidence must not masquerade as Bullshitter-award incidents');
+        assert.match(valentiRoleEvidence.roleText, /Claim/);
+        assert.match(valentiRoleEvidence.roleText, /Fact/);
+        assert.match(valentiRoleEvidence.roleText, /How we checked/);
+        assert.match(valentiRoleEvidence.roleText, /Sources used/);
+        assert.doesNotMatch(valentiRoleEvidence.titleText, /minimum tagged|at least three distinct qualifying|minimum.*incidents/i);
       }
     }
 
