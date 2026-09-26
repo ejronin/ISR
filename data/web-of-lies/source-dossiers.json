@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "artifact_role": "WEB_OF_LIES_SOURCE_DOSSIER_INPUT",
   "authority": "WEB_OF_LIES_INFORMATION_FORENSICS",
-  "as_of": "2026-09-25T19:10:00-04:00",
+  "as_of": "2026-09-25T20:17:00-04:00",
   "basis_paths": [
     "data/influence-networks.json",
     "data/influence_networks_v2_7.json",
     "data/information_war_claims_v2_7.json"
   ],
-  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded.",
+  "notes": "Legacy influence migration plus named-lead identity, relationship, descriptive-role and monetization evidence. Descriptive profile receipts do not create adverse classes, Bullshitter awards, or Hall score; adverse behavior remains incident-gated. 2026-09-22 scope correction: active social/source-behavior discovery is limited to material 2026 Iran-war publishers or amplifiers. Off-conflict India/Pakistan tranches and no-material-activity seed profiles were removed; reach/amplification qualification is recorded for retained post-seed discoveries. 2026-09-24 media-amplifier census: Press TV award findings remain frozen; downstream propagation is harvested as a minimum recoverable census. Publisher-owned X/Telegram propagation is retained as self-amplification under governance, while external X, Telegram, YouTube, website, blog and Substack copies are preserved as receipt-backed amplification without re-adjudicating the upstream claim. 2026-09-24 media-amplifier census pass 2: expanded Press TV propagation across additional qualifying incidents using exact-title/source-link matching; neutral/caveated reporting remains excluded. 2026-09-25 media-amplifier census pass 3: continued Press TV downstream census after cumulative Bullshitter qualification correction; added repeated amplifier-node reuse and additional publisher self-amplification while excluding corrective/neutral reporting. 2026-09-25 amplifier identity normalization: promoted the already-established Atlas Al Masirah/Almasirah English publisher identity into WOL and bound its website and Telegram propagation observations to one stable source node; corrected the Telegram channel handle to @Almasirah_En. 2026-09-25 media pass: Tasnim crosses the cumulative six-incident Bullshitter threshold via the already-adjudicated F-15E rescue-failure narrative; self-amplification and a cross-Bullshitter Robin Westenra amplification receipt are added without reopening truth findings. 2026-09-25 Tasnim amplifier census: after closing the six-in-30 publisher sample, downstream collection continues independently. Added receipt-backed external republications of the qualifying April 5 rescue-aircraft story; ambiguous debate-only pages remain excluded. 2026-09-25 media-amplifier census pass 4: added three newly recovered Press TV Isfahan downstream copies, a third distinct GlobalSecurity.org Press TV carry event, and a Tasnim C-130 republication at Islam Times. Ambiguous chronology is preserved as null/date-only rather than invented. Cross-web Press TV/Tasnim overlap remains receipt-gated; no third shared downstream identity is asserted.",
   "source_profiles": [
     {
       "source_id": "WOL-SRC-BRICS4CLICKS-NETWORK",
@@ -8509,6 +8509,119 @@
           "text_excerpt": "L'Antidiplomatico directly cited and linked Tasnim's report that the Black Hawk/C-130 recovery effort had so far been futile, carrying the failed-rescue narrative."
         }
       ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-INTERNATIONALIST360-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "BLOG-INTERNATIONALIST-360",
+      "amplifier_display_name": "Internationalist 360°",
+      "amplifier_platform": "BLOG",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-INTERNATIONALIST360-ISFAHAN-20260407",
+          "surface": "BLOG",
+          "url": "https://libya360.wordpress.com/2026/04/07/us-suffered-major-strategic-defeat-in-failed-isfahan-operation/",
+          "published_at": "2026-04-07",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Internationalist 360° republished Press TV's Isfahan 'major strategic defeat' account, retained Press TV attribution, and embedded Press TV posts carrying the same mission-substitution narrative."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-COREINSIGHTS-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "WEB-CORE-INSIGHTS-INTERNATIONAL",
+      "amplifier_display_name": "Core Insights International",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-COREINSIGHTS-ISFAHAN-20260407",
+          "surface": "WEBSITE",
+          "url": "https://www.coreinsightsintl.com/post/press-tv-exclusive-us-suffered-major-strategic-defeat-in-failed-isfahan-operation",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Core Insights International reproduced the Press TV Isfahan story under substantially the same headline and explicitly labeled Press TV as its source."
+        }
+      ],
+      "note": "The retrieved page exposes unstable relative-date metadata, so WOL records the downstream copy without inventing an exact publication timestamp.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-JANATA-ISFAHAN-20260407",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-013",
+      "amplifier_id": "WEB-JANATA-WEEKLY",
+      "amplifier_display_name": "Janata Weekly",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-ISFAHAN-MISSION-SUBSTITUTION-20260407",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-JANATA-ISFAHAN-20260407",
+          "surface": "WEBSITE",
+          "url": "https://janataweekly.org/articles/trumps-iran-war-a-miscalculation-that-let-tehran-claim-the-last-laugh-5-articles",
+          "published_at": null,
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Janata Weekly's five-article package reproduces the Press TV 'US Suffered Major Strategic Defeat in Failed Isfahan Operation' item and identifies Press TV as the source."
+        }
+      ],
+      "note": "The live Janata page displays an issue date that predates the incorporated April 7 Press TV item. The propagation edge is reproducible, but the exact insertion/publication time of the Press TV component is unresolved and is therefore left null.",
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-PRESSTV-GLOBALSECURITY-RESCUE-FAILURE-20260405",
+      "bullshitter_source_id": "WOL-SRC-PRESS-TV",
+      "bullshitter_event_id": "WOL-EVT-F15E-008",
+      "amplifier_id": "WEB-GLOBALSECURITY-ORG",
+      "amplifier_display_name": "GlobalSecurity.org",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "PRESSTV-RESCUE-HUMILIATING-DEFEAT-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-PRESSTV-GLOBALSECURITY-RESCUE-FAILURE-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.globalsecurity.org/wmd/library/news/iran/2026/04/iran-260405-presstv13.htm",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "GlobalSecurity.org archived Press TV's 'Mission failed' Isfahan rescue story, carrying the claim that Iranian forces destroyed US C-130s and Black Hawks and foiled the rescue."
+        }
+      ],
+      "observed_at": "2026-09-25"
+    },
+    {
+      "observation_id": "WOL-AMP-TASNIM-ISLAMTIMES-C130-20260405",
+      "bullshitter_source_id": "WOL-SRC-TASNIM",
+      "bullshitter_event_id": "WOL-EVT-PUB-TASNIM-C130-DOWNED-20260405",
+      "amplifier_id": "WEB-ISLAMTIMES",
+      "amplifier_display_name": "Islam Times",
+      "amplifier_platform": "WEBSITE",
+      "message_identity": "TASNIM-C130-DOWNED-20260405",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-AMP-RCPT-TASNIM-ISLAMTIMES-C130-20260405",
+          "surface": "WEBSITE",
+          "url": "https://www.islamtimes.com/en/news/1272814/c-130-downed-iran-show_cases-masterpiece-operation-in-crushing-us-intrusion",
+          "published_at": "2026-04-05",
+          "captured_at": "2026-09-25",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Islam Times carried a near-verbatim version of Tasnim's 'C-130 Downed' story, repeating the claimed Iranian destruction of the US transport aircraft during the rescue operation."
+        }
+      ],
+      "note": "Only the publication date is used for ordering. The displayed clock times on Tasnim and Islam Times are not assumed to share a timezone.",
       "observed_at": "2026-09-25"
     }
   ]
