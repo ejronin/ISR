@@ -412,7 +412,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
   .reader-ledger-card-head {
     grid-template-columns: 1fr;
   }
