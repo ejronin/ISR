@@ -553,7 +553,7 @@ ethan_all_incident_ids = {
     for incident_id, incident in behavior_incidents.items()
     if incident["source_id"] == "WOL-SRC-ETHAN-LEVINS"
 }
-assert len(ethan_all_incident_ids) == 35
+assert len(ethan_all_incident_ids) == 36
 assert all(behavior_incidents[incident_id]["public_receipts"] for incident_id in ethan_all_incident_ids)
 
 ethan_award_incident_ids = {
@@ -562,7 +562,7 @@ ethan_award_incident_ids = {
     "WOL-BS-ETHAN-UKRAINE-OPERATORS-DEFEND-ISRAEL-20260318",
     "WOL-BS-ETHAN-WITKOFF-KUSHNER-ISRAELI-ASSETS-CONFIRMED-20260318",
     "WOL-BS-ETHAN-BENGVIR-17-MEETINGS-DEAD-20260319",
-    "WOL-BS-ETHAN-ONLY-US-TROOPS-MISSILE-PROGRAMS-20260320",
+    "WOL-BS-ETHAN-US-IRAN-NEGOTIATIONS-NO-LONGER-20260227",
 }
 
 ethan_awards = profiles["WOL-SRC-ETHAN-LEVINS"]["source_awards"]
@@ -571,11 +571,11 @@ ethan_award = ethan_awards[0]
 assert ethan_award["award_code"] == "BULLSHITTER"
 assert ethan_award["public_label"] == "Bullshitter"
 assert ethan_award["qualification_scope"] == "CUMULATIVE"
-assert ethan_award["qualification_start"] == "2026-03-18T00:00:00"
-assert ethan_award["qualification_end"] == "2026-03-20T00:00:00"
+assert ethan_award["qualification_start"] == "2026-02-27T00:00:00"
+assert ethan_award["qualification_end"] == "2026-03-19T00:00:00"
 assert ethan_award["qualifying_incident_count"] == 6
 assert set(ethan_award["qualifying_incident_ids"]) == ethan_award_incident_ids
-assert ethan_award["documented_incident_count"] == 35
+assert ethan_award["documented_incident_count"] == 36
 assert set(ethan_award["documented_incident_ids"]) == ethan_all_incident_ids
 
 sharaa = behavior_incidents["WOL-BS-ETHAN-SHARAA-ISIS-ELECTIONS-20260716"]
@@ -586,6 +586,17 @@ assert "ANALYSIS_BRIDGE_FAILURE" in sharaa["role_failure_tags"]
 assert "JOURNALISTIC_VERIFICATION_FAILURE" in sharaa["role_failure_tags"]
 assert any(r["url"] == "https://www.youtube.com/watch?v=7CkVyqyVpsY" for r in sharaa["public_receipts"])
 assert "counts once" in sharaa["downstream_note"]
+
+negotiation_video = behavior_incidents["WOL-BS-ETHAN-US-IRAN-NEGOTIATIONS-NO-LONGER-20260227"]
+assert negotiation_video["source_information_event_id"] == "ETHAN-YOUTUBE-US-IRAN-UNREALISTIC-TERMS-20260227"
+assert negotiation_video["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+assert negotiation_video["evidentiary_support_review"]["supporting_evidence_found"] is False
+assert "ANALYSIS_BRIDGE_FAILURE" in negotiation_video["role_failure_tags"]
+assert "JOURNALISTIC_VERIFICATION_FAILURE" in negotiation_video["role_failure_tags"]
+assert "SENSATIONALIZED_PRESENTATION" in negotiation_video["role_failure_tags"]
+assert any(r["url"] == "https://www.youtube.com/watch?v=5CbY5c8bq3E" for r in negotiation_video["public_receipts"])
+assert any("defense.gov" in r["url"] for r in negotiation_video["public_receipts"])
+assert "counts once" in negotiation_video["downstream_note"]
 
 # One publication event is one award incident even when it contains multiple
 # atomic propositions (e.g. March 22 causation + stockpile extrapolation).

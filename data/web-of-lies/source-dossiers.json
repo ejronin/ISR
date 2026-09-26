@@ -2443,23 +2443,23 @@
       ],
       "current_disposition": "MATERIAL_WOL_HISTORY_FOUND",
       "identity_status": "PUBLIC_IDENTITY_RESOLVED",
-      "notes": "Public Telegram/X identity plus recurring public media appearances are established. The current production WOL source-behavior register contains 35 distinct receipt-backed Ethan Levins publication events across the recoverable 2026 Iran-war corpus. The earlier six-event March tranche was only the award-earning window and is superseded as a corpus summary. The current record derives 16 analysis-bridge failures for Fake analyst and 35 journalistic-verification failures for Yellow journalism, while preserving supported/attributed material outside the adverse register. A separate amplifier pass preserves 18 receipt-backed downstream observations across 16 downstream identities, including repeated Press TV and Las Noticias reuse. These counts describe the recoverable production record; they do not imply that every Levins statement is false or that downstream quotation proves affiliation, coordination, employment or state direction.",
+      "notes": "Public Telegram/X identity plus recurring public media appearances are established. The current production WOL source-behavior register contains 36 distinct receipt-backed Ethan Levins publication events across the recoverable 2026 Iran-war corpus. The earlier six-event March-only tranche was an incomplete earning chronology: recovery of the February 27 YouTube publication moves the cumulative six-incident earning span to February 27 through March 19 while leaving the six-incident threshold unchanged. The current record derives 17 analysis-bridge failures for Fake analyst and 36 journalistic-verification failures for Yellow journalism, while preserving supported/attributed material outside the adverse register. A separate amplifier pass preserves 18 receipt-backed downstream observations across 16 downstream identities, including repeated Press TV and Las Noticias reuse. These counts describe the recoverable production record; they do not imply that every Levins statement is false or that downstream quotation proves affiliation, coordination, employment or state direction.",
       "review_completion": {
         "status": "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS",
         "completed_at": "2026-09-26T14:34:00-04:00",
-        "documented_incident_count": 35,
+        "documented_incident_count": 36,
         "bullshitter_award_earning_incident_count": 6,
         "bullshitter_award_earning_window": {
-          "start": "2026-03-18T00:00:00",
-          "end": "2026-03-20T00:00:00"
+          "start": "2026-02-27T00:00:00",
+          "end": "2026-03-19T00:00:00"
         },
-        "fake_analyst_basis_incident_count": 16,
-        "yellow_journalism_basis_incident_count": 35,
-        "sensationalized_presentation_incident_count": 32,
+        "fake_analyst_basis_incident_count": 17,
+        "yellow_journalism_basis_incident_count": 36,
+        "sensationalized_presentation_incident_count": 33,
         "amplification_observation_count": 18,
         "distinct_downstream_identity_count": 16,
         "distinct_scored_events_with_recovered_amplification": 7,
-        "limitation": "This is not a claim of lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Ethan Levins corpus has been reviewed into a 35-event production register and the recoverable downstream amplifier pass has been completed under the directional-receipt standard.",
+        "limitation": "This is not a claim of lifetime exhaustiveness. It means the currently recoverable 2026 Iran-war Ethan Levins corpus has been reviewed into a 36-event production register and the recoverable downstream amplifier pass has been completed under the directional-receipt standard.",
         "reopen_rule": "Reopen when genuinely new Ethan publications, direct receipts, transcripts, preserved posts, or other source evidence are recovered. One publication counts once even when it contains multiple atomic failures; reposts do not become new Ethan publication events and amplifier appearance is not independent corroboration.",
         "next_action": "REOPEN_ONLY_ON_NEW_SOURCE_EVIDENCE"
       }
@@ -8616,6 +8616,76 @@
         "SENSATIONALIZED_PRESENTATION"
       ],
       "public_bullshit_summary": "A real jihadist/al-Qaeda history gets rewritten into 'former ISIS commander' and 'Baghdadi made him leader of the Islamic State,' then padded with plainly false 'no elections' claims and an unsupported CIA/Mossad-origin premise to prove a puppet theory."
+    },
+    {
+      "incident_id": "WOL-BS-ETHAN-US-IRAN-NEGOTIATIONS-NO-LONGER-20260227",
+      "source_id": "WOL-SRC-ETHAN-LEVINS",
+      "event_type": "UNSUPPORTED_INFERENTIAL_ASSERTION",
+      "assertion_kind": "FACTUAL_ASSERTION",
+      "published_at": "2026-02-27",
+      "first_observed_at": "2026-02-27",
+      "statement_identity": "In his February 27 YouTube video about U.S.-Iran negotiations, Levins said the talks were no longer negotiations and the sides were simply heading toward war, inflated reported U.S. demands into a requirement that Iran have no missiles, rockets or allies, and listed Afghanistan among current U.S. base locations surrounding Iran.",
+      "source_information_event_id": "ETHAN-YOUTUBE-US-IRAN-UNREALISTIC-TERMS-20260227",
+      "public_receipts": [
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-US-IRAN-TERMS-YT-20260227",
+          "surface": "YOUTUBE",
+          "url": "https://www.youtube.com/watch?v=5CbY5c8bq3E",
+          "published_at": "2026-02-27",
+          "captured_at": "2026-09-26",
+          "provenance_status": "ORIGINAL_URL_WITH_PROJECT_OWNER_TIMESTAMPED_TRANSCRIPT",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Project-owner timestamped transcript preserves Levins saying the talks were 'no longer negotiations,' that the U.S. wanted Iran to have 'no missiles, no cruise missiles, no rockets, and no allies,' and listing Afghanistan among current U.S. base locations around Iran."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-US-IRAN-TERMS-REUTERS-20260203",
+          "surface": "WEBSITE",
+          "url": "https://www.investing.com/news/world-news/israels-netanyahu-to-meet-us-envoy-witkoff-amid-revived-iran-nuclear-talks-4482334",
+          "published_at": "2026-02-03",
+          "captured_at": "2026-09-26",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported the U.S. conditions as zero enrichment, limits on Iran's ballistic-missile program, and ending support for regional proxies — not eliminating every Iranian missile, rocket or ally."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-US-IRAN-TALKS-REUTERS-20260226",
+          "surface": "WEBSITE",
+          "url": "https://www.investing.com/news/world-news/usiran-talks-end-with-no-deal-but-potential-signs-of-progress-4530402",
+          "published_at": "2026-02-26",
+          "captured_at": "2026-09-26",
+          "provenance_status": "SECONDARY_PRESERVATION",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "Reuters reported progress in the February 26 talks, plans to resume negotiations, and technical-level discussions scheduled for the following week."
+        },
+        {
+          "receipt_id": "WOL-BS-RCPT-ETHAN-AFGHANISTAN-DOD-20210830",
+          "surface": "WEBSITE",
+          "url": "https://www.defense.gov/News/Releases/release/article/2759181/statement-by-secretary-of-defense-lloyd-austin-iii-on-the-end-of-the-american-w/",
+          "published_at": "2021-08-30",
+          "captured_at": "2026-09-26",
+          "provenance_status": "ORIGINAL_URL",
+          "deletion_status": "AVAILABLE",
+          "text_excerpt": "The Department of Defense stated on August 30, 2021 that the United States had completed removal of all U.S. forces from Afghanistan."
+        }
+      ],
+      "evidentiary_support_review": {
+        "status": "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH",
+        "search_scope": "Recovered original YouTube publication and project-owner timestamped transcript compared with contemporaneous Reuters reporting on the negotiating terms and status, plus the Department of Defense record on the U.S. withdrawal from Afghanistan.",
+        "checked_at": "2026-09-26",
+        "claimant_basis_status": "DOES_NOT_SUPPORT_ASSERTION",
+        "claimant_basis_note": "Contemporaneous reporting supports a coercive U.S. military buildup and U.S. efforts to broaden negotiations to missiles and regional proxies, but it described limits on the ballistic-missile program and an end to proxy support rather than a demand for no missiles, rockets or allies. Reuters also reported the talks were continuing, with another round and technical discussions planned. DoD had removed all U.S. forces from Afghanistan in 2021.",
+        "search_notes": "The review preserves the real substrate: Washington was applying military pressure and seeking significant Iranian concessions. The failure is the categorical inflation of those demands and negotiating status, plus use of a defunct Afghanistan base premise to support the surrounding-Iran frame.",
+        "supporting_evidence_found": false
+      },
+      "downstream_note": "One YouTube publication event counts once for Bullshitter even though the transcript contains several atomic claims. The event also qualifies as Fake analyst evidence because materially distorted premises are used to support the categorical conclusion that diplomacy had ended and the U.S. was simply driving toward war.",
+      "review_target": "INFORMATION_CLAIMS_AND_FORENSIC_ADJUDICATION",
+      "review_reason": "Source-recovered geopolitical analysis materially inflates the documented negotiating terms, misstates the status of ongoing talks and uses an obsolete military-base premise in support of a categorical causal/motive conclusion.",
+      "role_failure_tags": [
+        "ANALYSIS_BRIDGE_FAILURE",
+        "JOURNALISTIC_VERIFICATION_FAILURE",
+        "SENSATIONALIZED_PRESENTATION"
+      ],
+      "public_bullshit_summary": "He turned missile limits and an end to proxy support into 'no missiles, no rockets, no allies,' declared negotiations effectively over while further talks were scheduled, and counted Afghanistan as a current U.S. base location years after all U.S. forces left."
     }
   ],
   "amplification_observations": [

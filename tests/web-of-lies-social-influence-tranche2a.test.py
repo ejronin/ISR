@@ -128,20 +128,20 @@ assert leads["LEAD-ETHAN-LEVINS"]["current_disposition"] in {
 }
 ethan_completion = leads["LEAD-ETHAN-LEVINS"]["review_completion"]
 assert ethan_completion["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
-assert ethan_completion["documented_incident_count"] == 35
+assert ethan_completion["documented_incident_count"] == 36
 assert ethan_completion["bullshitter_award_earning_incident_count"] == 6
 assert ethan_completion["bullshitter_award_earning_window"] == {
-    "start": "2026-03-18T00:00:00",
-    "end": "2026-03-20T00:00:00",
+    "start": "2026-02-27T00:00:00",
+    "end": "2026-03-19T00:00:00",
 }
-assert ethan_completion["fake_analyst_basis_incident_count"] == 16
-assert ethan_completion["yellow_journalism_basis_incident_count"] == 35
-assert ethan_completion["sensationalized_presentation_incident_count"] == 32
+assert ethan_completion["fake_analyst_basis_incident_count"] == 17
+assert ethan_completion["yellow_journalism_basis_incident_count"] == 36
+assert ethan_completion["sensationalized_presentation_incident_count"] == 33
 assert ethan_completion["amplification_observation_count"] == 18
 assert ethan_completion["distinct_downstream_identity_count"] == 16
 assert ethan_completion["distinct_scored_events_with_recovered_amplification"] == 7
 assert ethan_completion["next_action"] == "REOPEN_ONLY_ON_NEW_SOURCE_EVIDENCE"
-assert "six-event March tranche was only the award-earning window" in leads["LEAD-ETHAN-LEVINS"]["notes"]
+assert "six-event March-only tranche was an incomplete earning chronology" in leads["LEAD-ETHAN-LEVINS"]["notes"]
 assert "F-35/F-15E misidentification" not in leads["LEAD-ETHAN-LEVINS"]["notes"]
 assert leads["LEAD-OSINTDEFENDER"]["current_disposition"] == "CARRIER_ONLY"
 assert leads["LEAD-MIDDLE-EAST-MONITOR"]["current_disposition"] == "CARRIER_ONLY"
