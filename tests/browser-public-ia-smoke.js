@@ -190,6 +190,9 @@ async function loadDirectRoute(cdp, route) {
           button.click();
           const host = document.querySelector('.wol-awardee-evidence-host');
           const text = host?.innerText || '';
+          const evidenceText = [...(host?.querySelectorAll('.wol-award-evidence-card') || [])]
+            .map(node => node.textContent || '')
+            .join('\n');
           return {
             missing: false,
             pressed: button.getAttribute('aria-pressed'),
@@ -197,7 +200,8 @@ async function loadDirectRoute(cdp, route) {
             bullshitItems: host?.querySelectorAll('.wol-bullshit-list li').length || 0,
             receipts: host?.querySelectorAll('.wol-receipt-list a').length || 0,
             tags: [...(host?.querySelectorAll('.wol-incident-tag') || [])].map(node => node.textContent || ''),
-            text
+            text,
+            evidenceText
           };
         })()`);
         assert.equal(awardeeEvidence.missing, false, 'WOL exposes no Bullshitter awardee controls');
@@ -211,9 +215,9 @@ async function loadDirectRoute(cdp, route) {
         assert.doesNotMatch(awardeeEvidence.text, /award earned after \d+ cumulative qualifying/i);
         assert.match(awardeeEvidence.text, /What was bullshit/);
         assert.match(awardeeEvidence.text, /What the evidence actually supports/);
-        assert.match(awardeeEvidence.text, /What this record establishes/);
-        assert.match(awardeeEvidence.text, /How we checked/);
-        assert.match(awardeeEvidence.text, /Sources used/);
+        assert.match(awardeeEvidence.evidenceText, /What this record establishes/);
+        assert.match(awardeeEvidence.evidenceText, /How we checked/);
+        assert.match(awardeeEvidence.evidenceText, /Sources used/);
         if (/Ethan Levins/i.test(awardeeEvidence.text)) {
           assert.match(awardeeEvidence.text, /WOL rates the documented pattern as Fake analyst/);
           assert.match(awardeeEvidence.text, /WOL rates the documented pattern as Yellow journalism/);
