@@ -276,7 +276,7 @@ assert direct_upgrade_status["VALENTI-DIRECT-ID-CHINA-NUCLEAR-WAR-20260922"] == 
 assert direct_upgrade_status["VALENTI-DIRECT-BODY-E6B-NUCLEAR-202609"] == "ORIGINAL_ID_RECOVERED_PAGE_BODY_NOT_MACHINE_RECOVERED"
 assert valenti_lead["historian_role_review"]["self_claim_status"] == "PUBLICLY_VERIFIED"
 assert len(valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]) == 3
-assert valenti_lead["historian_role_review"]["status"] == "CLOSED_PENDING_NEW_SOURCE_EVIDENCE"
+assert valenti_lead["historian_role_review"]["status"] == "REOPENED_TARGETED_SOURCE_RECOVERY"
 assert all(
     row["capture_status"] == "PROJECT_OWNER_DIRECT_RECALL_NOT_YET_SOURCE_RECOVERED"
     for row in valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]
@@ -285,11 +285,32 @@ assert all(
     row["final_pass_status"] == "EXCLUDED_FROM_FINAL_COUNT_SOURCE_NOT_RECOVERED"
     for row in valenti_lead["historian_role_review"]["project_owner_reported_body_claims"]
 )
+historian_targets = {
+    row["research_item_id"]: row
+    for row in valenti_lead["historian_role_review"]["targeted_source_recovery_candidates"]
+}
+assert set(historian_targets) == {
+    "VALENTI-HISTORY-FOREVER-WAR-202607",
+    "VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607",
+    "VALENTI-HISTORY-GERMANS-FASCISM-20250708",
+}
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["discovery_status"] == "DIRECT_VIDEO_ID_RECOVERED_BODY_NOT_RECOVERED"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["direct_video_id"] == "a3BBuM0bFV0"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["direct_url"] == "https://www.youtube.com/watch?v=a3BBuM0bFV0"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["required_next_evidence"] == "TRANSCRIPT_OR_TIMESTAMPED_DIRECT_REVIEW"
+assert historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["scoring_status"] == "NOT_SCORABLE_BODY_NOT_RECOVERED"
+assert "Vietnam War press access" in historian_targets["VALENTI-HISTORY-FOREVER-WAR-202607"]["candidate_topics"][0]
+assert historian_targets["VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607"]["scoring_status"] == "NOT_SCORABLE_TOPIC_NOT_RECOVERED"
+assert "urlebird.com" in historian_targets["VALENTI-HISTORY-VALENTIFIED-HISTORY-SERIES-202607"]["source_surfaces"][0]
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["direct_video_id"] == "vLx-gAXUXZQ"
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["publication_date"] == "2025-07-08"
+assert historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["scoring_status"] == "NOT_SCORABLE_BODY_NOT_RECOVERED"
+assert "Dolchstoß Boils Over" in historian_targets["VALENTI-HISTORY-GERMANS-FASCISM-20250708"]["preserved_chapters"]
 assert valenti_lead["review_completion"]["status"] == "COMPLETE_FOR_CURRENTLY_RECOVERABLE_2026_IRAN_WAR_CORPUS"
 assert valenti_lead["review_completion"]["documented_incident_count"] == 24
 assert valenti_lead["review_completion"]["resolved_nonincident_count"] == 22
 assert valenti_lead["review_completion"]["unresolved_excluded_count"] == 7
-assert valenti_lead["review_completion"]["next_action"] == "NONE_UNLESS_NEW_EVIDENCE"
+assert valenti_lead["review_completion"]["next_action"] == "TARGETED_HISTORIAN_SOURCE_RECOVERY_ONLY"
 
 news_grift_basis = set(valenti_profile["classification_basis_event_ids"])
 assert len(news_grift_basis) == 18

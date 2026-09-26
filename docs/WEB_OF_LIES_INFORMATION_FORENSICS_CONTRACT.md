@@ -345,7 +345,8 @@ Role nouns come from the source. WOL does not invent a profession in order to at
 A source may have one or more **self-claimed roles** preserved with public receipts, for example:
 
 `ANALYST`  
-`JOURNALIST`
+`JOURNALIST`  
+`HISTORIAN`
 
 Those role claims are descriptive facts about how the source markets or identifies its own work. They do not by themselves establish competence, credibility, misconduct, Hall placement, or an adverse label.
 
@@ -360,6 +361,7 @@ Current governed public appellations:
 
 - **Fake analyst** — requires a self-claimed analyst role, the independently earned Bullshitter award, and repeated incident-gated analytical-bridge failures.
 - **Yellow journalism** — requires a self-claimed journalist role, the independently earned Bullshitter award, repeated incident-gated journalistic verification failures, and repeated sensationalized/materially distorted presentation.
+- **Fake historian** — requires a self-claimed historian role, the independently earned Bullshitter award, and repeated source-recovered historical verification failures. A qualifying incident must preserve an exact, falsifiable historical proposition and reliable contrary historical evidence showing a material factual error, material omission that changes the conclusion, context distortion, false causation, or anachronistic presentation. Contested interpretation, opinion, ideology, immaterial omission, or unrecovered source material does not qualify.
 
 The adverse modifier comes from the record; the role noun comes from the source.
 
@@ -370,6 +372,8 @@ Monetization, Patreon, donations, sponsorship, audience size, ideology, politica
 `GRIFTER` remains separately gated. Monetization plus bad work is not enough to infer fraudulent or knowingly exploitative intent.
 
 Every role-failure appellation must expose both its self-claimed-role receipts and the qualifying incident IDs that triggered it.
+
+Historian-specific adjudication is deliberately fail-closed. A self-description such as `HISTORIAN` is descriptive only. Before an incident may count toward `FAKE_HISTORIAN`, the exact source statement must be recovered, reduced to a falsifiable historical proposition, and compared against reliable historical evidence. The incident must carry a `historical_verification_review` with status `SOURCE_RECOVERED_ADJUDICATED`, the exact proposition, an allowed failure type, and at least one identified contrary-evidence source with a public URL. A bare `HISTORICAL_VERIFICATION_FAILURE` tag does not qualify. WOL must not convert disagreement over a defensible interpretation into a factual failure.
 
 ## 14. Public product behavior
 
