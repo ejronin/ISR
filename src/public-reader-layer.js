@@ -16,7 +16,7 @@
   );
   if (!base || typeof base.mount !== 'function') return;
 
-  const VERSION = 'atlas-reader-support-v1.2';
+  const VERSION = 'atlas-reader-support-v1.3';
   const INTERNAL_TEXT = /\b(?:ROOK|PR\/CI)\b|claim[_ -]?instance[_ -]?id|proposition[_ -]?id|chain[_ -]?id|publication[_ -]?blocker|knowledge[_ -]?basis[_ -]?support[_ -]?failure/i;
 
   const asArray = value => Array.isArray(value) ? value : [];
@@ -387,6 +387,18 @@
     }
   }
 
+  function unresolvedPublicAdjudication(record) {
+    const qualifier = text(record && record.truth_qualifier).toUpperCase();
+    if (
+      /PARTLY_CONFIRMED|PARTIAL_MERCHANT_CORROBORATION|THREAT_ACTIVITY_SUPPORTED_SPECIFIC_EFFECTS_UNVERIFIED/.test(qualifier)
+    ) return { label: 'Partly supported', key: 'partly-supported' };
+    if (/UNSUBSTANTIATED/.test(qualifier)) return { label: 'Unsupported', key: 'unsupported' };
+    if (
+      /UNVERIFIED|NOT_INDEPENDENTLY|INDEPENDENT_CONFIRMATION_INSUFFICIENT|NOT_CONFIRMED|NOT_ESTABLISHED|DOES_NOT_ESTABLISH|BURDEN_UNMET|NO_VERIFIED_UPPER_BOUND|EXACT_COUNT.*UNRESOLVED|EXACT_AGGREGATE|QUANTITATIVE_CLAIM|SPECIFIC_BDA/.test(qualifier)
+    ) return { label: 'Unverified', key: 'unverified' };
+    return { label: 'Unresolved', key: 'unresolved' };
+  }
+
   function publicAdjudication(record) {
     const publication = text(record && record.publication_status).toUpperCase();
     const truth = text(record && record.truth_adjudication).toUpperCase();
@@ -401,8 +413,8 @@
     if (truth === 'MISLEADING') return { label: 'Misleading', key: 'misleading' };
     if (truth === 'PARTLY_TRUE') return { label: 'Partly true', key: 'partly-true' };
     if (truth === 'SUPPORTED') return { label: 'Supported', key: 'supported' };
-    if (truth === 'UNRESOLVED') return { label: 'Unresolved', key: 'unresolved' };
-    if (!knowledgeQualified) return { label: 'Evidence review incomplete', key: 'pending' };
+    if (truth === 'UNRESOLVED') return unresolvedPublicAdjudication(record);
+    if (!knowledgeQualified) return { label: 'Review incomplete', key: 'pending' };
     return { label: 'Unresolved', key: 'unresolved' };
   }
 
@@ -434,12 +446,8 @@
       if (!result.some(item => item.toLowerCase() === cleaned.toLowerCase())) result.push(cleaned);
     };
 
-    // Always expose the reasoning step when it is public-safe. Facts answer
-    // "what evidence exists"; the inference answers "why that evidence changes
-    // the finding."
     addUnique(record && record.analytic_inference);
 
-    const knowledge = text(record && (record.public_knowledge_judgment || record.knowledge_judgment)).toUpperCase();
     const knowledgeSummaries = asArray(record && record.knowledge_indicators)
       .map(item => cleanPublicText(item && item.summary))
       .filter(value => value && !INTERNAL_TEXT.test(value));
@@ -449,33 +457,48 @@
       addUnique(record && record.comparative_assessment);
       if (!result.some(value => /knew|knowledge|access|possess|record|contradict/i.test(value))) {
         addUnique(adjudication.key === 'lie'
-          ? 'The claim is false, and the evidence also establishes that the claimant possessed or had direct access to information contradicting it when the statement was made.'
-          : 'The claim is false, and the available access, chronology, repetition, or internal-contradiction evidence makes knowing falsity more likely than an innocent error.');
+          ? 'The claim is false, and the evidence shows the claimant had access to information contradicting it when the statement was made.'
+          : 'The claim is false, and the access, chronology, repetition, or internal contradictions make knowing falsity more likely than an innocent error.');
       }
-    } else if (knowledge === 'INSUFFICIENT_EVIDENCE' && adjudication.key === 'false') {
-      addUnique('The claim is false on the completed record, but the evidence does not establish that the claimant knew it was false when stated. That is why this branch is labeled False rather than Lie.');
-    } else if (adjudication.key === 'unresolved') {
-      addUnique('The available evidence does not yet discriminate strongly enough between the live factual alternatives, so Atlas does not convert uncertainty into a falsehood finding.');
     }
 
-    if (!result.length) result.push('The current evidence supports this finding; the source drawer below contains the underlying record.');
+    if (!result.length) {
+      const fallback = {
+        false: 'The evidence contradicts the claim.',
+        misleading: 'The evidence shows the claim gives a materially distorted picture.',
+        unsupported: 'The available evidence does not support the claim.',
+        unverified: 'The available evidence does not independently verify the claim.',
+        unresolved: 'The available evidence does not settle the claim.',
+        'partly-supported': 'Part of the claim is supported, but the full claim is not verified.'
+      }[adjudication.key] || 'The evidence supports this finding.';
+      result.push(fallback);
+    }
     return result.slice(0, 7);
   }
 
   function chainPublicAdjudication(chain) {
     const raw = chain && (chain.public_finding || chain.event_level_finding || chain.chain_finding);
     if (!raw) return null;
-    if (typeof raw === 'object') {
-      const label = cleanPublicText(raw.label || raw.public_label || raw.finding || '');
-      const key = text(raw.key || raw.public_key || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      return label ? { label, key: key || 'chain-finding' } : null;
+    const rawLabel = typeof raw === 'object'
+      ? cleanPublicText(raw.label || raw.public_label || raw.finding || '')
+      : cleanPublicText(raw);
+    if (!rawLabel) return null;
+
+    const normalized = rawLabel.toLowerCase();
+    if (/false.*(?:no lie finding|knowledge not established)/.test(normalized)) {
+      return { label: 'False', key: 'false' };
     }
-    const label = cleanPublicText(raw);
-    if (!label) return null;
-    return {
-      label,
-      key: label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'chain-finding'
-    };
+    if (/(?:overstated|misleading).*(?:no lie finding|knowledge not established)/.test(normalized)) {
+      return { label: 'Misleading', key: 'misleading' };
+    }
+    if (/(?:unresolved|exact line-item tally).*(?:no parent lie finding|no lie finding)/.test(normalized)) {
+      return { label: 'Unverified', key: 'unverified' };
+    }
+
+    const key = typeof raw === 'object'
+      ? text(raw.key || raw.public_key || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+      : rawLabel.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return { label: rawLabel, key: key || 'chain-finding' };
   }
 
   function chainPlainEnglish(chain, records) {
@@ -494,7 +517,7 @@
       .join(', ');
 
     const explanation = [];
-    if (findingSummary) explanation.push(`This chain contains branch-specific findings: ${findingSummary}. A finding on one branch does not automatically apply to the others.`);
+    if (findingSummary) explanation.push(`Findings in this claim record: ${findingSummary}.`);
 
     const seen = new Set();
     const add = value => {
@@ -522,6 +545,57 @@
     return needed.length ? needed.join(' ') : '';
   }
 
+  function readerSummaryText(value) {
+    const source = cleanPublicText(value);
+    if (!source) return '';
+    const sentences = source.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [source];
+    const procedural = /\b(?:atlas (?:therefore|keeps|treats|separates|publishes)|no (?:parent )?lie finding|knowledge (?:is )?not established|knowledge insufficient for a lie finding|rather than a falsehood finding|does not automatically|should be counted as the accusation|claimant knowledge strongly enough for a lie finding)\b/i;
+    const kept = sentences.map(item => item.trim()).filter(item => item && !procedural.test(item));
+    return cleanPublicText((kept.length ? kept : sentences.slice(0, 1)).join(' '));
+  }
+
+  function ledgerActorMatch(rawActor, context) {
+    const raw = cleanPublicText(rawActor);
+    const normalized = raw.toLowerCase();
+    if (!normalized) return null;
+    const payload = base.modelData(context.model, 'current.actors');
+    const candidates = base.recordArray(payload)
+      .map(item => item && item.record || item)
+      .filter(actor => actor && actor.parent_state && ['state', 'state-institution'].includes(text(actor.affiliation_type).toLowerCase()));
+
+    let best = null;
+    candidates.forEach(actor => {
+      const names = unique([actor.canonical_name, ...asArray(actor.aliases)])
+        .map(value => cleanPublicText(value))
+        .filter(value => value.length >= 4);
+      names.forEach(name => {
+        const needle = name.toLowerCase();
+        if (!normalized.includes(needle)) return;
+        if (!best || needle.length > best.length) best = { actor, length: needle.length };
+      });
+    });
+    return best && best.actor || null;
+  }
+
+  function appendLedgerActorKicker(host, context, record) {
+    const documentObject = host.ownerDocument;
+    const kicker = append(host, 'p', 'card-kicker reader-actor-kicker');
+    const actorText = cleanPublicText(record && record.actor);
+    const matched = ledgerActorMatch(actorText, context);
+    if (matched && context.services.actorIdentity && typeof context.services.actorIdentity.create === 'function') {
+      const identity = context.services.actorIdentity.create(documentObject, matched.actor_id || matched.canonical_name);
+      const flag = identity.querySelector('.actor-flag');
+      if (flag) {
+        flag.classList.add('reader-actor-flag');
+        kicker.append(flag);
+      }
+    }
+    append(kicker, 'span', 'reader-actor-name', actorText || 'Source');
+    const date = statementDate(record);
+    if (date) append(kicker, 'span', 'reader-actor-date', date);
+    return kicker;
+  }
+
   function rebuildLieLedger(article, context) {
     const payload = base.modelData(context.model, 'gate3.lie_ledger') || {};
     const chains = asArray(payload.records).length ? asArray(payload.records) : base.recordArray(payload);
@@ -529,13 +603,14 @@
     const header = article.querySelector('.page-intro');
     if (!header) return;
 
-    setPageIntro(article, 'Each top-level card is one real event or evolving narrative. Claims, corrections, repetitions, and substitutions stay inside that chain so the reader can see what happened, what changed, and why Atlas reached each finding.');
+    setPageIntro(article, 'Documented false claims, misleading claims and lies, with the evidence behind each finding.');
     [...article.children].forEach(child => { if (child !== header) child.remove(); });
+    article.classList.add('reader-lie-ledger-page');
 
     const section = append(article, 'section', 'content-section reader-lie-ledger');
     section.dataset.readerLieLedger = VERSION;
     append(section, 'h2', '', 'Lie Ledger');
-    append(section, 'p', 'section-note', 'Narrative chains and findings are grouped here so claims, corrections, repetitions, substitutions, evidence, and adjudications remain inside the event or evolving story they belong to.');
+    append(section, 'p', 'section-note reader-ledger-lead', 'Each card shows the claim, the finding, what happened and the evidence.');
 
     const companionNav = append(section, 'nav', 'forensic-companion-nav');
     companionNav.setAttribute('aria-label', 'Lie Ledger and Web of Lies');
@@ -543,12 +618,6 @@
     ledgerCurrent.setAttribute('aria-current', 'page');
     const wolLink = append(companionNav, 'a', 'forensic-companion-link', 'Web of Lies');
     wolLink.href = base.routeHref('evidence.web_of_lies');
-
-    const forensicEntry = append(section, 'aside', 'scope-note reader-wol-entry');
-    append(forensicEntry, 'strong', '', 'Web of Lies');
-    append(forensicEntry, 'p', '', 'Open the connection network to see who published each documented claim, who carried it outward, and the receipts behind those links.');
-    const forensicEntryLink = append(forensicEntry, 'a', 'inline-route-link', 'Open Web of Lies');
-    forensicEntryLink.href = base.routeHref('evidence.web_of_lies');
 
     const controls = append(section, 'form', 'reader-ledger-controls');
     controls.addEventListener('submit', event => event.preventDefault());
@@ -609,48 +678,58 @@
       const dateLabel = dates.length > 1 && dates[0] !== dates[dates.length - 1]
         ? `${dates[0]} – ${dates[dates.length - 1]}`
         : (dates[0] || '');
-      append(copy, 'p', 'card-kicker', ['Narrative chain', dateLabel].filter(Boolean).join(' · '));
+      append(copy, 'p', 'card-kicker', ['Claim record', dateLabel].filter(Boolean).join(' · '));
 
       const chainTitle = cleanPublicText(chain.public_title || chain.title || chain.reader_title || recordProposition(first));
       append(copy, 'h3', '', chainTitle || 'Narrative chain');
-      const traceLink = append(top, 'a', 'inline-route-link reader-wol-trace', 'View Web of Lies / Trace');
+      const traceLink = append(top, 'a', 'inline-route-link reader-wol-trace', 'Trace this claim');
       traceLink.href = base.routeHref('evidence.web_of_lies', { claim_family: chain.chain_id || chain.narrative_family_id });
 
-      const chainSummary = cleanPublicText(chain.plain_english_summary || chain.public_summary || chain.event_level_summary || '');
+      const chainSummary = readerSummaryText(chain.plain_english_summary || chain.public_summary || chain.event_level_summary || '');
       if (chainSummary) append(copy, 'p', 'reader-chain-summary', chainSummary);
-      if (chainFinding) append(top, 'strong', `reader-claim-status ${chainFinding.key}`, chainFinding.label);
+      if (chainFinding) {
+        append(top, 'strong', `reader-claim-status ${chainFinding.key}`, chainFinding.label);
+        card.classList.add(`finding-${chainFinding.key}`);
+      } else if (branchFindings.length === 1) {
+        const directFinding = branchFindings[0];
+        const finding = append(card, 'div', `reader-single-finding finding-${directFinding.key}`);
+        append(finding, 'span', 'reader-single-finding-label', 'Finding');
+        append(finding, 'strong', `reader-claim-status ${directFinding.key}`, directFinding.label);
+        card.classList.add(`finding-${directFinding.key}`);
+      }
 
       const eventBaseline = cleanPublicText(chain.event_baseline || '');
       if (eventBaseline) {
         const baseline = append(card, 'section', 'reader-chain-baseline');
-        append(baseline, 'h4', '', 'What actually happened');
+        append(baseline, 'h4', '', 'What happened');
         append(baseline, 'p', '', eventBaseline);
       }
 
       const terminalState = cleanPublicText(chain.terminal_event_state || '');
       if (terminalState) {
         const outcome = append(card, 'section', 'reader-chain-outcome');
-        append(outcome, 'h4', '', 'Adjudicated outcome');
+        append(outcome, 'h4', '', 'Bottom line');
         append(outcome, 'p', '', terminalState);
       }
 
       const chainWhy = append(card, 'details', 'reader-how-we-know reader-chain-how-we-know');
-      append(chainWhy, 'summary', '', 'How Atlas reached this finding');
+      append(chainWhy, 'summary', '', 'Why these findings');
       const chainExplanation = append(chainWhy, 'ul', 'reader-explanation-list');
       chainPlainEnglish(chain, records).forEach(value => append(chainExplanation, 'li', '', value));
-      addDeferredEvidence(chainWhy, context, records, 'Sources used across this chain');
+      addDeferredEvidence(chainWhy, context, records, 'Sources');
 
       const gaps = asArray(chain && chain.open_evidence_gaps).map(evidenceGapText).filter(Boolean);
-      if (gaps.length) {
+      const openFindingKeys = new Set(branchFindings.map(item => item.key));
+      if (gaps.length && ['unresolved', 'unsupported', 'unverified', 'partly-supported', 'pending'].some(key => openFindingKeys.has(key))) {
         const unknown = append(card, 'details', 'reader-chain-open-gaps');
-        append(unknown, 'summary', '', 'What remains unknown');
+        append(unknown, 'summary', '', 'Open evidence questions');
         const list = append(unknown, 'ul', 'reader-explanation-list');
         gaps.forEach(value => append(list, 'li', '', value));
       }
 
       const claimsDetail = append(card, 'details', 'reader-chain-claims-detail');
-      append(claimsDetail, 'summary', '', `What was claimed and how the story changed (${groupEntries.length})`);
-      append(claimsDetail, 'p', 'reader-deferred-claims-note', 'Claims, corrections, repetitions, and evidence are shown in chronological order.');
+      append(claimsDetail, 'summary', '', `Claim history (${groupEntries.length})`);
+      append(claimsDetail, 'p', 'reader-deferred-claims-note', 'Claims and repetitions are shown in chronological order.');
 
       let claimsHydrated = false;
       claimsDetail.addEventListener('toggle', () => {
@@ -665,27 +744,25 @@
           const item = append(timeline, 'li', `reader-chain-branch finding-${adjudication.key}`);
           const branchHead = append(item, 'div', 'reader-ledger-card-head');
           const branchCopy = append(branchHead, 'div');
-          append(branchCopy, 'p', 'card-kicker', [cleanPublicText(main.actor), statementDate(main)].filter(Boolean).join(' · '));
+          appendLedgerActorKicker(branchCopy, context, main);
           append(branchCopy, 'h4', '', recordProposition(main));
-          const intentNote = intentReviewNote(main);
-          if (intentNote) append(branchCopy, 'p', 'reader-intent-note', intentNote);
           append(branchHead, 'strong', `reader-claim-status ${adjudication.key}`, adjudication.label);
           const why = append(item, 'details', 'reader-how-we-know reader-branch-how-we-know');
-          append(why, 'summary', '', `Why this branch is ${adjudication.label.toLowerCase()}`);
+          append(why, 'summary', '', `Why this is ${adjudication.label.toLowerCase()}`);
           const explanation = append(why, 'ul', 'reader-explanation-list');
           howWeKnow(main, adjudication).forEach(value => append(explanation, 'li', '', value));
-          addDeferredEvidence(why, context, [main], 'Evidence for this branch');
+          addDeferredEvidence(why, context, [main], 'Sources');
           const repeats = groupRecords.filter(record => record !== main && (record.actor_role === 'AMPLIFIER' || ['REPETITION', 'AMPLIFICATION'].includes(record.relation_type)));
           if (repeats.length) {
             const details = append(item, 'details', 'reader-repeated-by');
-            append(details, 'summary', '', `Repeated or amplified by (${repeats.length})`);
+            append(details, 'summary', '', `Repeated by (${repeats.length})`);
             const list = append(details, 'ul', 'reader-claim-list');
             repeats.forEach(record => {
               const row = append(list, 'li');
               append(row, 'span', '', [cleanPublicText(record.actor || 'Unknown outlet / actor'), statementDate(record)].filter(Boolean).join(' · '));
               append(row, 'small', '', ` — ${publicAdjudication(record).label}`);
             });
-            addDeferredEvidence(details, context, repeats, 'Sources for repeats');
+            addDeferredEvidence(details, context, repeats, 'Sources');
           }
         });
       });
@@ -720,14 +797,11 @@
     status.addEventListener('change', draw);
     draw();
 
-    const forensic = append(article, 'p', 'reader-method-link reader-wol-link');
-    forensic.append(documentObject.createTextNode('Want to see where these stories started, mutated, circulated, and collapsed? '));
-    const forensicLink = append(forensic, 'a', '', 'Open Web of Lies');
+    const footerLinks = append(article, 'nav', 'reader-ledger-footer-links');
+    footerLinks.setAttribute('aria-label', 'Lie Ledger related pages');
+    const forensicLink = append(footerLinks, 'a', 'inline-route-link', 'Open Web of Lies');
     forensicLink.href = base.routeHref('evidence.web_of_lies');
-
-    const methods = append(article, 'p', 'reader-method-link');
-    methods.append(documentObject.createTextNode('Want the methodology behind these findings? '));
-    const link = append(methods, 'a', '', 'How we check the evidence');
+    const link = append(footerLinks, 'a', 'inline-route-link', 'How we check the evidence');
     link.href = base.routeHref('evidence.method');
   }
 
