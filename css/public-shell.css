@@ -1030,6 +1030,7 @@ a:hover { color: #e0f2ff; }
   background: #080f15;
   color: var(--text);
 }
+.wol-graph-reset[hidden] { display: none; }
 .wol-cytoscape-host {
   width: 100%;
   height: clamp(30rem, 60vh, 46rem);
@@ -1184,6 +1185,26 @@ a:hover { color: #e0f2ff; }
   color: var(--accent-strong);
   font-size: 1.3rem;
   font-weight: 900;
+}
+.wol-hall-source-button {
+  min-width: 0;
+  padding: .2rem 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.wol-hall-source-button:hover .wol-node-identity-label,
+.wol-hall-source-button:focus-visible .wol-node-identity-label {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+.wol-hall-source-button:focus-visible {
+  outline: 2px solid var(--atlas-focus-ring);
+  outline-offset: 3px;
+  border-radius: .3rem;
 }
 .wol-hall-source { color: var(--text); font-size: .8rem; }
 .wol-selected-node-identity { margin: 0; }
@@ -1379,9 +1400,11 @@ a:hover { color: #e0f2ff; }
 @media (max-width: 70rem) {
   .wol-graph-workspace { grid-template-columns: 1fr; }
   .wol-node-detail {
+    order: -1;
     position: static;
     max-height: none;
   }
+  .wol-node-detail[data-selection-state="empty"] { display: none; }
   .wol-hall-category-grid { grid-template-columns: 1fr; }
   .wol-hall-entry {
     grid-template-columns: auto minmax(0, 1fr);
@@ -1403,13 +1426,28 @@ a:hover { color: #e0f2ff; }
   .wol-graph-controls { align-items: stretch; }
   .wol-graph-reset { width: 100%; }
   .wol-hall-entry {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
   }
-  .wol-hall-rank,
-  .wol-hall-score,
-  .wol-hall-reason {
+  .wol-hall-rank {
     grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    justify-self: start;
+  }
+  .wol-hall-score {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+  .wol-hall-source-button {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+  }
+  .wol-hall-reason {
+    grid-column: 1 / -1;
+    grid-row: 3;
     justify-self: start;
   }
   .wol-hall-source {
