@@ -345,7 +345,8 @@ Role nouns come from the source. WOL does not invent a profession in order to at
 A source may have one or more **self-claimed roles** preserved with public receipts, for example:
 
 `ANALYST`  
-`JOURNALIST`
+`JOURNALIST`  
+`HISTORIAN`
 
 Those role claims are descriptive facts about how the source markets or identifies its own work. They do not by themselves establish competence, credibility, misconduct, Hall placement, or an adverse label.
 
