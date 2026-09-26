@@ -562,7 +562,7 @@ ethan_award_incident_ids = {
     "WOL-BS-ETHAN-UKRAINE-OPERATORS-DEFEND-ISRAEL-20260318",
     "WOL-BS-ETHAN-WITKOFF-KUSHNER-ISRAELI-ASSETS-CONFIRMED-20260318",
     "WOL-BS-ETHAN-BENGVIR-17-MEETINGS-DEAD-20260319",
-    "WOL-BS-ETHAN-ONLY-US-TROOPS-MISSILE-PROGRAMS-20260320",
+    "WOL-BS-ETHAN-US-IRAN-NEGOTIATIONS-NO-LONGER-20260227",
 }
 
 ethan_awards = profiles["WOL-SRC-ETHAN-LEVINS"]["source_awards"]
@@ -571,8 +571,8 @@ ethan_award = ethan_awards[0]
 assert ethan_award["award_code"] == "BULLSHITTER"
 assert ethan_award["public_label"] == "Bullshitter"
 assert ethan_award["qualification_scope"] == "CUMULATIVE"
-assert ethan_award["qualification_start"] == "2026-03-18T00:00:00"
-assert ethan_award["qualification_end"] == "2026-03-20T00:00:00"
+assert ethan_award["qualification_start"] == "2026-02-27T00:00:00"
+assert ethan_award["qualification_end"] == "2026-03-19T00:00:00"
 assert ethan_award["qualifying_incident_count"] == 6
 assert set(ethan_award["qualifying_incident_ids"]) == ethan_award_incident_ids
 assert ethan_award["documented_incident_count"] == 36
