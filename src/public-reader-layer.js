@@ -624,7 +624,7 @@
     return null;
   }
 
-  function appendLedgerActorKicker(host, context, record) {
+  function appendLedgerActorKicker(host, context, record, includeDate = true) {
     const documentObject = host.ownerDocument;
     const kicker = append(host, 'p', 'card-kicker reader-actor-kicker');
     const actorText = cleanPublicText(record && record.actor);
@@ -638,7 +638,7 @@
       }
     }
     append(kicker, 'span', 'reader-actor-name', actorText || 'Source');
-    const date = statementDate(record);
+    const date = includeDate ? statementDate(record) : '';
     if (date) append(kicker, 'span', 'reader-actor-date', date);
     return kicker;
   }
@@ -728,7 +728,8 @@
       append(copy, 'p', 'card-kicker', ['Claim record', dateLabel].filter(Boolean).join(' · '));
 
       const chainTitle = cleanPublicText(chain.public_title || chain.title || chain.reader_title || recordProposition(first));
-      append(copy, 'h3', '', chainTitle || 'Narrative chain');
+      append(copy, 'h3', '', chainTitle || 'Claim record');
+      appendLedgerActorKicker(copy, context, first, false);
       const traceLink = append(top, 'a', 'inline-route-link reader-wol-trace', 'Trace this claim');
       traceLink.href = base.routeHref('evidence.web_of_lies', { claim_family: chain.chain_id || chain.narrative_family_id });
 
