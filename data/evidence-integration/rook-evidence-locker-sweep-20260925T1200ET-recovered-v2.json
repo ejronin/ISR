@@ -1,0 +1,158 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-25T00:00:00-04:00",
+    "window_end": "2026-09-25T12:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-26T18:45:00-04:00",
+    "evidence_horizon_time": "2026-09-25T12:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260925T0000ET-recovered-v2.json",
+    "boundary_rule": "Recovered after a scheduler-to-repository gap. Occurrence/publication/collection/evidence-horizon times remain distinct."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "migration_provenance": {
+    "recovery_reason": "The original scheduled sweep did not persist as a durable modern-contract ROOK artifact. The earlier Sep.26 backfill is retained unchanged as audit lineage.",
+    "legacy_backfill": "data/evidence-integration/rook-evidence-locker-sweep-20260925T1200ET.json"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-GULF-OMAN-STS-CAPACITY-LIMIT-20260925",
+      "event_type": "MARITIME_ENERGY_LOGISTICS_CAPACITY_CONSTRAINT",
+      "occurrence_time": "2026-09-25",
+      "public_available_time": "2026-09-25T00:25:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "actor": "Saudi Aramco / Gulf of Oman tanker market / Kpler",
+      "summary": "Reuters reported ship-to-ship crude transfers in the Gulf of Oman had reached capacity limits as Saudi Arabia shifted more exports through Hormuz after disruption to the Red Sea route. Kpler put Saudi crude exports via Hormuz on track for about 3.6 million bpd in September versus about 900,000 bpd in August, raising VLCC demand and freight costs.",
+      "confidence": "HIGH_FOR_REUTERS_KPLER_MARKET_REPORTING",
+      "sources": [
+        "https://www.fidelity.com/news/article/company-news/202609250025RTRSNEWSCOMBINED_L4N45E0N6_1",
+        "https://www.boursorama.com/bourse/actualites/les-transferts-de-petrole-de-navire-a-navire-dans-le-golfe-d-oman-atteignent-leurs-limites-alors-que-les-exportations-saoudiennes-s-envolent-19c05fd3dbb432f8ed53bd662552a351"
+      ]
+    },
+    {
+      "event_id": "LOCKER-TURKEY-MAKKAH-PACT-IRAN-EXPANSION-SIGNAL-20260925",
+      "event_type": "REGIONAL_SECURITY_ARCHITECTURE_POLITICAL_SIGNAL",
+      "occurrence_time": "2026-09-25",
+      "public_available_time": "2026-09-25T06:00:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "actor": "Turkiye / Saudi Arabia / Pakistan / Iran",
+      "summary": "Turkey's parliament speaker said the Saudi-Pakistan-Turkiye defence pact could eventually broaden into a wider Muslim-world framework that includes Iran. This was a political possibility statement, not an Iranian accession, formal invitation or treaty amendment.",
+      "confidence": "MEDIUM_HIGH_FOR_PUBLIC_POLITICAL_SIGNAL",
+      "sources": [
+        "https://currently.att.yahoo.com/att/pact-saudi-pakistan-could-expand-100038950.html"
+      ]
+    },
+    {
+      "event_id": "LOCKER-TRUMP-XI-IRAN-SUPPORT-WARNING-20260925",
+      "event_type": "US_CHINA_DIPLOMATIC_SIGNAL_ON_IRAN_SUPPORT",
+      "occurrence_time": "2026-09-24",
+      "public_available_time": "2026-09-25T09:09:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "actor": "United States / China / Iran",
+      "summary": "The U.S. ambassador to China said President Trump reiterated to Xi Jinping that direct or indirect Chinese help to Iran, including intelligence, parts or military equipment, was unacceptable and said Washington received assurances from Beijing. The scope and implementation of any Chinese commitment were not independently established at this horizon.",
+      "confidence": "HIGH_FOR_US_OFFICIAL_CHARACTERIZATION; IMPLEMENTATION_UNVERIFIED",
+      "sources": [
+        "https://www.investing.com/news/world-news/trump-told-xi-that-china-helping-iran-is-unacceptable-us-ambassador-says-4917599",
+        "https://currently.att.yahoo.com/att/trump-told-xi-china-helping-130801833.html"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-TRAFFIC-SEP24-NINE-20260925",
+      "updates_existing_ref": "HORMUZ-TRAFFIC-20260924",
+      "relationship": "LATER_DAILY_COMMERCIAL_TRAFFIC_METRIC",
+      "summary": "Reuters/Kpler preliminary data put Thursday Sep.24 Strait of Hormuz commodity-vessel transits at nine, down from 14 the previous day and below a 10-day average of 18. Eight of the nine were exits. AIS-dark traffic remained an explicit undercount caveat.",
+      "status": "SEP24_PRELIMINARY_TRACKED_COMMODITY_TRANSITS_NINE; BELOW_RECENT_AVERAGE; AIS_CAVEAT",
+      "sources": [
+        "https://www.brecorder.com/news/amp/40441195",
+        "https://www.dawn.com/news/amp/2032547"
+      ]
+    },
+    {
+      "update_id": "UPD-HORMUZ-WEEKLY-CRUDE-FLOW-20260925",
+      "updates_existing_ref": "HORMUZ-TRAFFIC-20260924",
+      "relationship": "SEPARATE_WEEKLY_BARREL_DENOMINATOR",
+      "summary": "Reuters/Kpler reported 33.7 million barrels of crude had exited Hormuz so far in the week beginning Sep.20 on 19 tankers. This weekly crude-volume series is retained separately from daily visible commodity-vessel counts.",
+      "status": "WEEKLY_CRUDE_FLOW_CONTINUES; DENOMINATOR_SEPARATE_FROM_DAILY_VESSEL_COUNT",
+      "sources": [
+        "https://www.dawn.com/news/2032556"
+      ]
+    },
+    {
+      "update_id": "UPD-YEMEN-HUMAN-IMPACT-UNICEF-20260925",
+      "updates_existing_ref": "YEMEN-HUMAN-IMPACT-20260924-OHCHR",
+      "relationship": "LATER_UNICEF_IOM_HUMANITARIAN_DENOMINATOR_AND_CHILD_IMPACT_UPDATE",
+      "summary": "UNICEF said nearly 130,000 people, including about 71,000 children, had been displaced over three weeks. Of nearly 2,900 children screened by mobile nutrition teams in accessible areas, more than one in four were acutely malnourished and over 200 had severe acute malnutrition. UNICEF had verified 15 children killed and 14 injured since Sep.3, with three reported missing. The agency also said 243 schools had closed or suspended learning, affecting more than 137,000 students. IOM described roughly 130,000 displaced; preserve agency/timebox differences rather than forcing a single denominator.",
+      "status": "UNICEF_IOM_HUMANITARIAN_UPDATE_MATERIAL; CHILD_MALNUTRITION_AND_DISPLACEMENT_WORSEN",
+      "sources": [
+        "https://www.ungeneva.org/en/news-media/press-briefing/2026/09/un-geneva-press-briefing-4",
+        "https://www.unicef.org/press-releases/hunger-and-malnutrition-stalking-yemens-children-violence-escalates",
+        "https://transcripts.un.org/en/briefing/geneva/2026-09-25"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [
+    {
+      "economic_id": "ECON-GULF-OMAN-STS-CAPACITY-20260925",
+      "metric": "Saudi Hormuz crude export rate and Gulf of Oman STS capacity",
+      "public_available_time": "2026-09-25T00:25:00-04:00",
+      "observed_state": "Kpler/Reuters said Saudi crude exports through Hormuz were on track for about 3.6 million bpd in September versus about 900,000 bpd in August, with Gulf of Oman STS capacity constraints and record freight pressure.",
+      "sources": [
+        "https://www.fidelity.com/news/article/company-news/202609250025RTRSNEWSCOMBINED_L4N45E0N6_1"
+      ]
+    }
+  ],
+  "source_discovery_additions": [
+    {
+      "source_class": "UN_HUMANITARIAN_PRIMARY",
+      "addition": "Sep.25 UN Geneva/UNICEF Yemen displacement, child casualty, school-closure and malnutrition denominators."
+    },
+    {
+      "source_class": "COMMERCIAL_MARITIME_DATA",
+      "addition": "Reuters/Kpler Sep.25 STS-capacity, Saudi Hormuz export and daily transit reporting."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "Update Hormuz traffic with Sep.24 preliminary count of nine; keep AIS-dark caveat and separate weekly crude-volume denominator.",
+    "Update Gulf of Oman STS workaround from expansion to capacity constraint/freight-pressure state.",
+    "Update Yemen human-impact drawer with Sep.25 UNICEF/IOM child and displacement evidence without collapsing agency/timebox denominators.",
+    "Add Turkish political signal about possible future Iran inclusion in a broader defence architecture; do not treat Iran as a participant.",
+    "Add U.S. account of Trump-Xi Iran-support warning; do not infer observed Chinese compliance from diplomatic assurance alone."
+  ],
+  "unresolved_questions": [
+    "Do Gulf of Oman STS capacity constraints cause measurable cargo delays beyond higher freight rates?",
+    "What is Kpler's finalized Sep.24 transit count after preliminary revisions and AIS-dark adjustments?",
+    "Will Turkey's parliament ratify the Makkah pact and does any formal expansion mechanism actually involve Iran?",
+    "Does observable Chinese support behavior change after the Trump-Xi warning?",
+    "How quickly are Yemen displacement, school closure and severe acute malnutrition indicators changing after Sep.25?"
+  ],
+  "coverage": {
+    "material_results": [
+      "Hormuz daily/weekly traffic",
+      "Gulf of Oman STS capacity",
+      "Yemen humanitarian deterioration",
+      "Turkiye pact-expansion signal",
+      "Trump-Xi Iran-support warning"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No independently confirmed new major Gulf infrastructure BDA",
+      "No completed U.S.-Iran settlement before noon",
+      "No new independently corroborated Gaza/Hamas command finding"
+    ],
+    "limitations": [
+      "Backfill reconstructed Sep.26 from contemporaneous public sources.",
+      "No direct subscription-only Kpler terminal, proprietary satellite tasking or classified ISR."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_RECOVERED_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_RECOVERY_ARTIFACT",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
