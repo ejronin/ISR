@@ -2684,7 +2684,7 @@
       append(item, 'small', '', note);
     });
 
-    append(graphSection, 'p', 'section-note wol-graph-tip', 'Tip: the whole-network view is an overview. Use the picker to isolate one person or outlet and read the receipts without the surrounding density.');
+    append(graphSection, 'p', 'section-note wol-graph-tip', 'The whole network is an overview. Choose a person or outlet to make labels readable, isolate its connections, and bring the supporting receipts into focus.');
     const graphControls = append(graphSection, 'div', 'wol-graph-controls');
     const pickerLabel = append(graphControls, 'label', '', 'Find a person or outlet');
     const picker = append(pickerLabel, 'select', 'wol-node-picker');
@@ -2693,8 +2693,9 @@
       const option = append(picker, 'option', '', nodeLabel(node));
       option.value = node.node_id;
     });
-    const reset = append(graphControls, 'button', 'action wol-graph-reset', 'Show whole network');
+    const reset = append(graphControls, 'button', 'action wol-graph-reset', 'Clear selection');
     reset.type = 'button';
+    reset.hidden = true;
 
     const workspace = append(graphSection, 'div', 'wol-graph-workspace');
     const graphColumn = append(workspace, 'div', 'wol-graph-column');
@@ -2754,11 +2755,13 @@
     const renderDetail = nodeId => {
       detailHost.replaceChildren();
       if (!nodeId || !graphNodeById.has(nodeId)) {
+        detailSection.dataset.selectionState = 'empty';
         const prompt = append(detailHost, 'aside', 'scope-note wol-node-prompt');
         append(prompt, 'strong', '', 'Select a person, outlet, or connection');
-        append(prompt, 'p', '', 'The network will isolate the selected path and show the supporting receipts here.');
+        append(prompt, 'p', '', 'Choose from the picker or click the graph. The network will isolate that path and show the supporting receipts here.');
         return;
       }
+      detailSection.dataset.selectionState = 'node';
       const node = graphNodeById.get(nodeId);
       const heading = append(detailHost, 'div', 'wol-selected-heading');
       append(heading, 'p', 'card-kicker', node.node_type === 'BULLSHITTER' ? 'BULLSHITTER AWARDEE' : 'AMPLIFIER');
@@ -2813,6 +2816,7 @@
 
     const renderEdgeDetail = edgeId => {
       detailHost.replaceChildren();
+      detailSection.dataset.selectionState = 'connection';
       const edge = graphEdgeById.get(edgeId);
       if (!edge) {
         renderDetail('');
@@ -2840,6 +2844,14 @@
       : '';
     let selectedEdgeId = '';
     let cyGraph = null;
+
+    const updateResetVisibility = () => {
+      reset.hidden = !(selectedNodeId || selectedEdgeId);
+    };
+    const revealSelectionDetail = () => {
+      if (!root || Number(root.innerWidth || 1440) > 1120 || typeof detailSection.scrollIntoView !== 'function') return;
+      detailSection.scrollIntoView({ block: 'start' });
+    };
 
     const focusGraph = (nodeId, edgeId) => {
       if (!cyGraph) return;
@@ -3044,9 +3056,11 @@
 
       cyGraph.on('tap', 'node', event => {
         selectNode(event.target.id());
+        revealSelectionDetail();
       });
       cyGraph.on('tap', 'edge', event => {
         selectEdge(event.target.id());
+        revealSelectionDetail();
       });
       cyGraph.on('tap', event => {
         if (event.target === cyGraph) selectNode('');
@@ -3092,6 +3106,7 @@
       picker.value = selectedNodeId;
       renderDetail(selectedNodeId);
       focusGraph(selectedNodeId, '');
+      updateResetVisibility();
       renderAwardeeSelection(selectedNodeId);
     };
     const selectEdge = edgeId => {
@@ -3100,11 +3115,13 @@
       picker.value = '';
       renderEdgeDetail(selectedEdgeId);
       focusGraph('', selectedEdgeId);
+      updateResetVisibility();
       renderAwardeeSelection('');
     };
     picker.addEventListener('change', () => selectNode(picker.value));
     reset.addEventListener('click', () => selectNode(''));
     renderDetail(selectedNodeId);
+    updateResetVisibility();
 
     const initializeGraphWhenMounted = attempt => {
       if (graphHost.isConnected) {
@@ -3130,6 +3147,7 @@
     const hallSection = addSection(frame.article, '🏆 Hall of Shame', 'content-section wol-hall-of-shame');
     append(hallSection, 'p', 'section-note', 'Hall placement uses documented behavior in this record. Popularity, nationality and ideology do not affect rank.');
     const hallViews = append(hallSection, 'div', 'wol-hall-views');
+    let awardEvidenceSection = null;
     const renderHallView = (title, view, viewClass) => {
       const wrapper = append(hallViews, 'section', `wol-hall-view ${viewClass}`);
       append(wrapper, 'h3', '', title);
@@ -3161,7 +3179,15 @@
           item.dataset.rank = String(row.rank || '');
           const rank = Number(row.rank || 0);
           append(item, 'span', `wol-hall-rank${rank === 1 ? ' wol-hall-king' : ''}`, rank === 1 ? '👑 #1' : rank === 2 ? '🥈 #2' : rank === 3 ? '🥉 #3' : `#${rank || '?'}`);
-          appendNodeIdentity(item, identityNode, 'strong', 'wol-node-identity wol-hall-source');
+          const sourceButton = append(item, 'button', 'wol-hall-source-button');
+          sourceButton.type = 'button';
+          sourceButton.dataset.sourceId = row.source_id;
+          sourceButton.setAttribute('aria-label', `Open evidence for ${publicNarrative(identityNode.display_name, row.source_id)}`);
+          appendNodeIdentity(sourceButton, identityNode, 'span', 'wol-node-identity wol-hall-source');
+          sourceButton.addEventListener('click', () => {
+            selectNode(row.source_id);
+            if (awardEvidenceSection && typeof awardEvidenceSection.scrollIntoView === 'function') awardEvidenceSection.scrollIntoView({ block: 'start' });
+          });
           append(item, 'span', 'wol-hall-score', `Score ${formatNumber(row.score)}`);
           append(item, 'p', 'wol-hall-reason', publicNarrative(row.why_this_source_appears_here, 'Documented behavior supporting this placement is recorded.'));
         });
@@ -3184,6 +3210,7 @@
       button.addEventListener('click', () => selectNode(node.node_id));
     });
     const awardeeDetail = append(indexSection, 'section', 'wol-awardee-evidence');
+    awardEvidenceSection = awardeeDetail;
     awardeeDetail.setAttribute('aria-live', 'polite');
     const awardeeDetailHost = append(awardeeDetail, 'div', 'wol-awardee-evidence-host');
     const renderAwardeePrompt = () => {
