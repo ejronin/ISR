@@ -97,6 +97,21 @@
       "sources": [
         "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/"
       ]
+    },
+    {
+      "event_id": "LOCKER-YEMEN-GENERAL-MOBILIZATION-AMNESTY-20260925",
+      "event_type": "YEMEN_GOVERNMENT_GENERAL_MOBILIZATION_AND_DEFECTION_AMNESTY",
+      "occurrence_time": "2026-09-25",
+      "public_available_time": "2026-09-25T21:29:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "actor": "Yemen Presidential Leadership Council / Rashad al-Alimi",
+      "summary": "Rashad al-Alimi called on Yemenis to engage in general mobilization and join government armed and security forces through official channels. He also offered a future general amnesty, effective from Sep.26, to Houthi fighters and affiliates who leave the group. The announcement establishes a mobilisation policy and defection incentive; it does not by itself establish new recruitment, defections or battlefield effect.",
+      "confidence": "HIGH_FOR_DIRECT_YEMEN_PRESIDENCY_AND_REUTERS_REPORTING",
+      "sources": [
+        "https://presidentalalimi.net/en/news2004.html",
+        "https://www.timesofisrael.com/liveblog_entry/yemens-president-urges-people-to-join-army-offers-future-amnesty-to-houthi-rebels-who-leave-group/",
+        "https://today.lorientlejour.com/article/1548702/yemens-president-calls-on-yemenis-to-mobilize.html"
+      ]
     }
   ],
   "existing_event_updates": [
@@ -168,14 +183,16 @@
     "Update Iraqi aviation implementation to all four active Iran-service airports suspended.",
     "Update Makkah pact from planned consultation to completed chiefs meeting with announced coordination topics but no deployment finding.",
     "Add White House account of Trump-Xi no-nuclear-weapon/no-waterway-tolls discussion with source attribution.",
-    "Correct legacy backfill chronology: by midnight Trump had not publicly rejected the proposal; only WSJ reporting existed and Iran awaited official U.S. response."
+    "Correct legacy backfill chronology: by midnight Trump had not publicly rejected the proposal; only WSJ reporting existed and Iran awaited official U.S. response.",
+    "Add Yemen government general mobilisation and Sep.26 defection-amnesty policy as a political/manpower measure; do not infer actual force growth or defections until observed."
   ],
   "unresolved_questions": [
     "What inspection scope, timing and access conditions would Iran accept in practice?",
     "Does Iran's anonymous no-concessions position reflect the final negotiating line after Pezeshkian's inspection-access statement?",
     "Will the U.S. respond publicly to the seven-day proposal and with what counterterms?",
     "What concrete military steps follow the Makkah chiefs meeting?",
-    "Does China publicly mirror the White House formulation on tolls and Iran's nuclear program?"
+    "Does China publicly mirror the White House formulation on tolls and Iran's nuclear program?",
+    "Does the Yemen mobilisation/amnesty announcement produce measurable enlistment, Houthi defections or changes in front-line force disposition?"
   ],
   "coverage": {
     "material_results": [
@@ -187,7 +204,8 @@
       "Makkah chiefs meeting",
       "White House Trump-Xi Iran/Hormuz account",
       "UNSC Houthi condemnation",
-      "late-Friday WSJ rejection report"
+      "late-Friday WSJ rejection report",
+      "Yemen government general mobilisation and defection-amnesty policy"
     ],
     "checked_no_material_new_event_in_window": [
       "No direct Trump public rejection before midnight",
