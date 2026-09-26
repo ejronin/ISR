@@ -196,6 +196,7 @@ async function loadDirectRoute(cdp, route) {
             cards: host?.querySelectorAll('.wol-award-evidence-card').length || 0,
             bullshitItems: host?.querySelectorAll('.wol-bullshit-list li').length || 0,
             receipts: host?.querySelectorAll('.wol-receipt-list a').length || 0,
+            tags: [...(host?.querySelectorAll('.wol-incident-tag') || [])].map(node => node.textContent || ''),
             text
           };
         })()`);
@@ -214,8 +215,11 @@ async function loadDirectRoute(cdp, route) {
         assert.match(awardeeEvidence.text, /How we checked/);
         assert.match(awardeeEvidence.text, /Sources used/);
         if (/Ethan Levins/i.test(awardeeEvidence.text)) {
-          assert.match(awardeeEvidence.text, /WOL applies “Fake analyst” because/);
-          assert.match(awardeeEvidence.text, /WOL applies “Yellow journalism” because/);
+          assert.match(awardeeEvidence.text, /WOL rates the documented pattern as Fake analyst/);
+          assert.match(awardeeEvidence.text, /WOL rates the documented pattern as Yellow journalism/);
+          assert(awardeeEvidence.tags.includes('Bullshitter'), 'award ledger incidents are missing Bullshitter tags');
+          assert(awardeeEvidence.tags.includes('Fake analyst'), 'Ethan award ledger is missing Fake analyst incident tags');
+          assert(awardeeEvidence.tags.includes('Yellow journalism'), 'Ethan award ledger is missing Yellow journalism incident tags');
           assert.doesNotMatch(awardeeEvidence.text, /minimum tagged|at least three distinct qualifying|at least two must document/i);
         }
         assert.doesNotMatch(awardeeEvidence.text, /does not by itself prove what the publisher privately understood/i);
