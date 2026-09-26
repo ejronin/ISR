@@ -15,7 +15,7 @@ press_rows = [
     for row in (DOSSIER.get("amplification_observations") or [])
     if row.get("bullshitter_source_id") == "WOL-SRC-PRESS-TV"
 ]
-assert len(press_rows) >= 40
+assert len(press_rows) >= 43
 
 # This tranche is a recoverable minimum, not an assertion that every platform's
 # entire repost graph can be enumerated from the public web.
@@ -169,6 +169,27 @@ assert {
     "WOL-EVT-TURKEY_MISSILE_DENIAL-0203-C",
     "WOL-EVT-F15E-008",
 } <= {row["bullshitter_event_id"] for row in globalsecurity_rows}
+
+hajij_rows = [
+    row for row in press_rows
+    if row.get("amplifier_id") == "WEB-HAJIJ"
+]
+assert len(hajij_rows) >= 3
+assert {
+    "WOL-EVT-F35_MAR19-0303-C",
+    "WOL-EVT-F15E-008",
+    "WOL-EVT-F15E-013",
+} <= {row["bullshitter_event_id"] for row in hajij_rows}
+
+truthseeker_rows = [
+    row for row in press_rows
+    if row.get("amplifier_id") == "WEB-TRUTHSEEKER"
+]
+assert len(truthseeker_rows) >= 2
+assert {
+    "WOL-EVT-F15E-002",
+    "WOL-EVT-F15E-008",
+} <= {row["bullshitter_event_id"] for row in truthseeker_rows}
 
 # Publisher-owned dissemination is intentionally retained as amplification.
 self_rows = [
