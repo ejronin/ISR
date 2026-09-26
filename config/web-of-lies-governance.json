@@ -509,6 +509,28 @@
       "secondary_incident_tag": "SENSATIONALIZED_PRESENTATION",
       "minimum_secondary_tagged_incidents": 2,
       "rule": "The source must publicly claim a journalist role. After the Bullshitter award is independently earned, at least three distinct qualifying WOL incidents must document basic journalistic verification failures and at least two must document sensationalized or materially distorted presentation. A profile claim or monetization alone can never trigger this label."
+    },
+    "FAKE_HISTORIAN": {
+      "public_label": "Fake historian",
+      "claimed_role": "HISTORIAN",
+      "requires_source_award": "BULLSHITTER",
+      "qualifying_incident_tag": "HISTORICAL_VERIFICATION_FAILURE",
+      "minimum_tagged_incidents": 3,
+      "qualifying_failure_types": [
+        "HISTORICAL_FACT_ERROR",
+        "MATERIAL_HISTORICAL_OMISSION",
+        "HISTORICAL_CONTEXT_DISTORTION",
+        "FALSE_HISTORICAL_CAUSATION",
+        "ANACHRONISTIC_PRESENTATION"
+      ],
+      "exclusions": [
+        "CONTESTED_HISTORICAL_INTERPRETATION",
+        "OPINION_OR_VALUE_JUDGMENT",
+        "IDEOLOGICAL_POSITION_ALONE",
+        "SOURCE_NOT_RECOVERED",
+        "IMMATERIAL_OMISSION"
+      ],
+      "rule": "The source must publicly claim a historian role. After the Bullshitter award is independently earned, at least three distinct qualifying WOL incidents must document source-recovered, falsifiable historical propositions that are materially contradicted by reliable historical evidence through factual error, material omission that changes the conclusion, context distortion, false causation, or anachronism. Contested interpretation, opinion, ideology, immaterial omission, or unrecovered source material cannot trigger this label."
     }
   }
 }
