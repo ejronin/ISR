@@ -70,6 +70,9 @@ assert historian_rule["qualifying_incident_tag"] == "HISTORICAL_VERIFICATION_FAI
 assert historian_rule["minimum_tagged_incidents"] == 3
 assert "SOURCE_NOT_RECOVERED" in historian_rule["exclusions"]
 assert "CONTESTED_HISTORICAL_INTERPRETATION" in historian_rule["exclusions"]
+assert historian_rule["incident_review_gate"]["required_status"] == "SOURCE_RECOVERED_ADJUDICATED"
+assert historian_rule["incident_review_gate"]["require_exact_proposition"] is True
+assert historian_rule["incident_review_gate"]["require_contrary_evidence_sources"] is True
 
 # Historian role failure is fail-closed. Valenti's verified self-description and
 # existing Bullshitter award are insufficient without three distinct,
@@ -85,12 +88,29 @@ for row in valenti_events:
         tag for tag in row.get("role_failure_tags", [])
         if tag != "HISTORICAL_VERIFICATION_FAILURE"
     ]
+historian_probe_review = {
+    "status": "SOURCE_RECOVERED_ADJUDICATED",
+    "exact_proposition": "Synthetic historian-gate probe proposition.",
+    "failure_type": "HISTORICAL_FACT_ERROR",
+    "contrary_evidence_sources": [
+        {
+            "source_name": "Synthetic authoritative historical source",
+            "url": "https://history.example/historian-gate-probe",
+        }
+    ],
+}
 for row in valenti_events[:2]:
     row.setdefault("role_failure_tags", []).append("HISTORICAL_VERIFICATION_FAILURE")
+    row["historical_verification_review"] = copy.deepcopy(historian_probe_review)
 two_failure_labels = wol.derive_role_failure_appellations(valenti, valenti_events, governance)
 assert not any(row["appellation_code"] == "FAKE_HISTORIAN" for row in two_failure_labels)
 
+# A third tag without the source-recovered adjudication block still fails closed.
 valenti_events[2].setdefault("role_failure_tags", []).append("HISTORICAL_VERIFICATION_FAILURE")
+tag_only_labels = wol.derive_role_failure_appellations(valenti, valenti_events, governance)
+assert not any(row["appellation_code"] == "FAKE_HISTORIAN" for row in tag_only_labels)
+
+valenti_events[2]["historical_verification_review"] = copy.deepcopy(historian_probe_review)
 three_failure_labels = wol.derive_role_failure_appellations(valenti, valenti_events, governance)
 fake_historian = next(
     row for row in three_failure_labels
