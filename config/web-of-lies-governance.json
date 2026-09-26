@@ -530,7 +530,14 @@
         "SOURCE_NOT_RECOVERED",
         "IMMATERIAL_OMISSION"
       ],
-      "rule": "The source must publicly claim a historian role. After the Bullshitter award is independently earned, at least three distinct qualifying WOL incidents must document source-recovered, falsifiable historical propositions that are materially contradicted by reliable historical evidence through factual error, material omission that changes the conclusion, context distortion, false causation, or anachronism. Contested interpretation, opinion, ideology, immaterial omission, or unrecovered source material cannot trigger this label."
+      "rule": "The source must publicly claim a historian role. After the Bullshitter award is independently earned, at least three distinct qualifying WOL incidents must document source-recovered, falsifiable historical propositions that are materially contradicted by reliable historical evidence through factual error, material omission that changes the conclusion, context distortion, false causation, or anachronism. Contested interpretation, opinion, ideology, immaterial omission, or unrecovered source material cannot trigger this label.",
+      "incident_review_gate": {
+        "review_field": "historical_verification_review",
+        "required_status": "SOURCE_RECOVERED_ADJUDICATED",
+        "require_exact_proposition": true,
+        "failure_type_field": "failure_type",
+        "require_contrary_evidence_sources": true
+      }
     }
   }
 }
