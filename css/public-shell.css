@@ -1210,12 +1210,105 @@ a:hover { color: #e0f2ff; }
   outline-offset: 2px;
 }
 
+.wol-awardee-button.is-selected,
+.wol-awardee-button[aria-pressed="true"] {
+  border-color: var(--accent-strong);
+  background: #102332;
+}
+.wol-awardee-evidence {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+}
+.wol-awardee-evidence-host {
+  display: grid;
+  gap: .9rem;
+}
+.wol-awardee-evidence-heading {
+  padding: .9rem 1rem;
+  border: 1px solid #3a596d;
+  border-radius: var(--radius);
+  background: #0b151d;
+}
+.wol-awardee-evidence-heading h3 { margin: 0; }
+.wol-earned-titles,
+.wol-award-evidence-list {
+  display: grid;
+  gap: .75rem;
+}
+.wol-earned-titles > h4,
+.wol-award-evidence-list > h4 { margin: 0; }
+.wol-earned-title-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+.wol-earned-title {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .35rem .6rem;
+  border: 1px solid #8d5a62;
+  border-radius: 999px;
+  background: #26151a;
+  color: var(--text);
+  font-size: .78rem;
+  font-weight: 800;
+}
+.wol-award-evidence-card {
+  overflow: hidden;
+  padding: 0;
+}
+.wol-award-evidence-summary {
+  display: grid;
+  gap: .25rem;
+  min-height: 3.5rem;
+  padding: .8rem .9rem;
+  cursor: pointer;
+}
+.wol-award-evidence-summary::marker { color: var(--accent-strong); }
+.wol-award-evidence-summary strong {
+  color: var(--text);
+  line-height: 1.4;
+}
+.wol-award-evidence-body {
+  display: grid;
+  gap: .75rem;
+  padding: 0 .9rem .9rem;
+}
+.wol-evidence-explainer {
+  padding: .75rem .8rem;
+  border-left: .22rem solid #587f99;
+  background: #091219;
+}
+.wol-evidence-explainer strong { color: var(--text); }
+.wol-evidence-explainer p {
+  margin: .35rem 0 0;
+  line-height: 1.55;
+}
+.wol-evidence-explainer small {
+  display: block;
+  margin-top: .35rem;
+  color: var(--muted);
+}
+.wol-knowledge-boundary { border-left-color: #b4905d; }
+.wol-evidence-receipts-heading { margin-top: .1rem; }
+
 @media (max-width: 70rem) {
   .wol-graph-workspace { grid-template-columns: 1fr; }
   .wol-node-detail {
     position: static;
     max-height: none;
   }
+  .wol-hall-category-grid { grid-template-columns: 1fr; }
+  .wol-hall-entry {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .wol-hall-score {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .wol-hall-reason { grid-column: 2; }
 }
 @media (max-width: 44rem) {
   .forensic-companion-nav { display: flex; width: 100%; }
@@ -1227,6 +1320,27 @@ a:hover { color: #e0f2ff; }
   .wol-mermaid-host svg { min-width: 40rem; }
   .wol-graph-controls { align-items: stretch; }
   .wol-graph-reset { width: 100%; }
+  .wol-hall-entry {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .wol-hall-rank,
+  .wol-hall-score,
+  .wol-hall-reason {
+    grid-column: 1;
+    justify-self: start;
+  }
+  .wol-hall-source {
+    display: flex !important;
+    width: 100%;
+  }
+  .wol-node-identity-label {
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+  .wol-award-evidence-summary { padding: .75rem; }
+  .wol-award-evidence-body { padding: 0 .75rem .75rem; }
 }
 .wol-category {
   min-width: 0;

@@ -182,6 +182,30 @@ async function loadDirectRoute(cdp, route) {
         assert(/🏆 Hall of Shame/.test(wolGraph.hallTitle), 'WOL Hall of Shame trophy treatment is missing');
         assert(wolGraph.crowns > 0, 'WOL Hall of Shame king crown treatment is missing');
         assert(/Showing the full network|direct connection|Amplifies/.test(wolGraph.status), 'WOL graph status did not initialize');
+
+        const awardeeEvidence = await cdp.eval(`(() => {
+          const buttons = [...document.querySelectorAll('.wol-awardee-button')];
+          const button = buttons.find(node => /Ethan Levins|Valenti Videos/i.test(node.textContent || '')) || buttons[0];
+          if (!button) return { missing: true };
+          button.click();
+          const host = document.querySelector('.wol-awardee-evidence-host');
+          const text = host?.innerText || '';
+          return {
+            missing: false,
+            pressed: button.getAttribute('aria-pressed'),
+            cards: host?.querySelectorAll('.wol-award-evidence-card').length || 0,
+            receipts: host?.querySelectorAll('.wol-receipt-list a').length || 0,
+            text
+          };
+        })()`);
+        assert.equal(awardeeEvidence.missing, false, 'WOL exposes no Bullshitter awardee controls');
+        assert.equal(awardeeEvidence.pressed, 'true', 'selected WOL awardee is not exposed to assistive technology');
+        assert(awardeeEvidence.cards > 0, 'selected WOL awardee did not populate evidence below the awardee list');
+        assert(awardeeEvidence.receipts > 0, 'selected WOL awardee evidence exposes no public receipts');
+        assert.match(awardeeEvidence.text, /Award and earned titles/);
+        assert.match(awardeeEvidence.text, /Evidence behind this award and title/);
+        assert.match(awardeeEvidence.text, /What this record establishes about their knowledge/);
+        assert.match(awardeeEvidence.text, /Evidence and receipts/);
       }
     }
 
