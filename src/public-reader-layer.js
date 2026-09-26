@@ -740,7 +740,7 @@
         card.classList.add(`finding-${chainFinding.key}`);
       } else if (branchFindings.length === 1) {
         const directFinding = branchFindings[0];
-        const finding = append(card, 'div', `reader-single-finding finding-${directFinding.key}`);
+        const finding = append(top, 'div', `reader-single-finding finding-${directFinding.key}`);
         append(finding, 'span', 'reader-single-finding-label', 'Finding');
         append(finding, 'strong', `reader-claim-status ${directFinding.key}`, directFinding.label);
         card.classList.add(`finding-${directFinding.key}`);
