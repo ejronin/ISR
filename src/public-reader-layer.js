@@ -511,6 +511,9 @@
     if (!rawLabel) return null;
 
     const normalized = rawLabel.toLowerCase();
+    if (/false custody claim.*likely lie/.test(normalized)) {
+      return { label: 'False / likely lie', key: 'likely-lie' };
+    }
     if (/false.*(?:no lie finding|knowledge not established)/.test(normalized)) {
       return { label: 'False', key: 'false' };
     }
@@ -575,7 +578,7 @@
     const source = plainLedgerText(value);
     if (!source) return '';
     const sentences = source.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [source];
-    const procedural = /\b(?:atlas (?:therefore|keeps|treats|separates|publishes)|no (?:parent )?lie finding|knowledge (?:is )?not established|knowledge insufficient for a lie finding|rather than a falsehood finding|does not automatically|does not publish a lie finding|should be counted as the accusation|speaker knowledge strongly enough for a lie finding|adjudicated separately)\b/i;
+    const procedural = /\b(?:atlas (?:therefore|keeps|treats|separates|publishes)|no (?:parent )?lie finding|knowledge (?:is )?not established|knowledge insufficient for a lie finding|rather than a falsehood finding|does not automatically|does not publish a lie finding|should be counted as the accusation|speaker knowledge strongly enough for a lie finding|adjudicated separately|assessed separately|remains unresolved unless)\b/i;
     const kept = sentences.map(item => item.trim()).filter(item => item && !procedural.test(item));
     return cleanPublicText((kept.length ? kept : sentences.slice(0, 1)).join(' '));
   }
