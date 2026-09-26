@@ -2273,7 +2273,14 @@
       const list = append(parent, 'ul', 'source-link-list wol-receipt-list');
       usable.forEach(({ receipt, href }, index) => {
         const item = append(list, 'li');
-        const link = append(item, 'a', '', publicNarrative(receipt.display_name || receipt.account_handle, `Receipt ${index + 1}`));
+        let hostLabel = '';
+        try {
+          hostLabel = new URL(href).hostname.replace(/^www\./, '');
+        } catch (_) {}
+        const link = append(item, 'a', '', publicNarrative(
+          receipt.display_name || receipt.account_handle || hostLabel,
+          `Source ${index + 1}`
+        ));
         link.href = href;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
@@ -2310,86 +2317,168 @@
       };
     };
 
-    const knowledgeBoundaryText = review => {
-      const status = String(review && review.claimant_basis_status || '').toUpperCase();
-      if (status === 'DOES_NOT_SUPPORT_ASSERTION') {
-        return 'The documented basis did not support the assertion. That establishes an evidentiary failure; it does not by itself prove what the publisher privately understood.';
-      }
-      if (status === 'ASSERTION_ONLY' || status === 'NONE_PROVIDED') {
-        return 'No supporting basis was established for the assertion. That shows an unsupported publication, not a separate finding about the publisher’s private knowledge.';
-      }
-      if (status === 'CIRCULAR') {
-        return 'The documented basis was circular rather than independent support. That establishes the sourcing defect; it does not by itself prove subjective knowledge.';
-      }
-      if (status === 'SELF_SEALING') {
-        return 'The documented basis was self-sealing rather than independently testable. That establishes the evidentiary defect; it does not by itself prove subjective knowledge.';
-      }
-      return 'No separate personal-knowledge finding is attached to this WOL incident. WOL does not treat public availability of contrary evidence as proof that the publisher personally saw it.';
+    const incidentClaimText = incident => publicNarrative(
+      incident && (incident.statement_identity || incident.exact_statement || incident.translated_statement),
+      'Statement text unavailable'
+    );
+
+    const incidentFactText = incident => {
+      const review = incident && incident.evidentiary_support_review || {};
+      return publicNarrative(
+        incident && incident.public_bullshit_summary,
+        publicNarrative(review.claimant_basis_note, 'The documented evidence did not support the claim as published.')
+      );
     };
 
-    const appendAwardIncidentCard = (parent, incident, index = 0) => {
+    const incidentConductText = incident => {
+      const eventType = String(incident && incident.event_type || '').toUpperCase();
+      const correction = String(incident && incident.correction_state || '').toUpperCase();
+      const findings = new Set(asArray(incident && incident.behavior_findings).map(value => String(value).toUpperCase()));
+      const tags = new Set(asArray(incident && incident.role_failure_tags).map(value => String(value).toUpperCase()));
+      const review = incident && incident.evidentiary_support_review || {};
+      const basisStatus = String(review.claimant_basis_status || '').toUpperCase();
+
+      if (eventType === 'REPEAT_AFTER_CORRECTION' || correction === 'REPEAT_AFTER_CORRECTION') {
+        return 'They repeated the claim after the record already contained a correction or contrary evidence.';
+      }
+      if (eventType === 'NARRATIVE_MUTATION' || findings.has('NARRATIVE_MUTATION_OFFENDER')) {
+        return 'They changed the underlying record into a materially different factual story.';
+      }
+      if (findings.has('NEWS_GRIFT')) {
+        return 'This publication is part of WOL’s established pattern of repeated unsupported or materially distorted sensational news packaging tied to a monetized publishing operation.';
+      }
+      if (tags.has('JOURNALISTIC_VERIFICATION_FAILURE') && tags.has('SENSATIONALIZED_PRESENTATION')) {
+        return 'They published a sensational version that failed basic verification against the contemporaneous record.';
+      }
+      if (tags.has('ANALYSIS_BRIDGE_FAILURE')) {
+        return 'They presented an analytical leap as fact without evidence for the bridge they asserted.';
+      }
+      if (basisStatus === 'CIRCULAR') {
+        return 'They used circular sourcing as if it were independent support.';
+      }
+      if (basisStatus === 'SELF_SEALING') {
+        return 'They used a self-sealing claim instead of independently testable evidence.';
+      }
+      if (basisStatus === 'ASSERTION_ONLY' || basisStatus === 'NONE_PROVIDED') {
+        return 'They published the claim as fact without an established factual basis.';
+      }
+      if (basisStatus === 'DOES_NOT_SUPPORT_ASSERTION') {
+        return 'The documented basis did not support the version of events they published.';
+      }
+      return 'They published a factual version of events that the documented record did not establish.';
+    };
+
+    const roleFailureExplanation = (profile, appellation) => {
+      const name = publicNarrative(profile && profile.display_name, 'This source');
+      const code = String(appellation && appellation.appellation_code || '').toUpperCase();
+      if (code === 'FAKE_ANALYST') {
+        return `${name} calls their work analysis. WOL rates the documented pattern as Fake analyst.`;
+      }
+      if (code === 'YELLOW_JOURNALISM') {
+        return `${name} calls their work journalism. WOL rates the documented pattern as Yellow journalism.`;
+      }
+      const role = plainLabel(appellation && appellation.claimed_role, 'claimed role').toLowerCase();
+      const label = publicNarrative(appellation && appellation.public_label, plainLabel(code, 'this label'));
+      return `${name} claims a ${role} role. WOL rates the documented pattern as ${label}.`;
+    };
+
+    const incidentLabelTags = (profile, incidentId, extra = []) => {
+      const tags = ['Bullshitter'];
+      asArray(profile && profile.role_failure_appellations).forEach(appellation => {
+        if (asArray(appellation.basis_incident_ids).includes(incidentId)) {
+          const label = publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code, ''));
+          if (label) tags.push(label);
+        }
+      });
+      const grift = profile && profile.grift_pattern_review || {};
+      if (
+        String(grift.status || '') === 'INCIDENT_GATED_PATTERN_ESTABLISHED'
+        && asArray(grift.basis_incident_ids).includes(incidentId)
+      ) {
+        tags.push(plainLabel(grift.class_code, 'News grift'));
+      }
+      extra.forEach(label => {
+        if (label) tags.push(label);
+      });
+      return [...new Set(tags)];
+    };
+
+    const appendIncidentTags = (parent, tags) => {
+      const row = append(parent, 'div', 'wol-incident-tags');
+      tags.forEach(tag => append(row, 'span', 'wol-incident-tag', tag));
+      return row;
+    };
+
+    const bullshitterExplanation = (profile, award, sourceIncidents, amplificationEvidence) => {
+      const name = publicNarrative(profile && profile.display_name, 'This source');
+      const count = sourceIncidents.length + amplificationEvidence.length;
+      const route = String(award && award.qualification_route || '').toUpperCase();
+      if (route === 'NETWORK_ASSISTED_AMPLIFICATION') {
+        return `${name} earned Bullshitter because WOL documented a repeated pattern of publishing or adopting already-qualified bullshit from multiple upstream WOL sources. The ${count} qualifying publication${count === 1 ? '' : 's'} in this award record are listed below.`;
+      }
+      return `${name} earned Bullshitter because WOL documented a repeated pattern of false, materially misleading, or unsupported factual publishing—not a one-off mistake. The ${count} qualifying incident${count === 1 ? '' : 's'} in this award record are listed below.`;
+    };
+
+    const appendAwardIncidentCard = (parent, profile, incident) => {
       const card = append(parent, 'details', 'record-card wol-award-evidence-card');
-      if (index === 0) card.open = true;
       const summary = append(card, 'summary', 'wol-award-evidence-summary');
       append(summary, 'span', 'card-kicker', incident.published_at || incident.first_observed_at || 'Date not recorded');
-      append(summary, 'strong', '', publicNarrative(
-        incident.statement_identity || incident.exact_statement || incident.translated_statement,
-        'Statement text unavailable'
-      ));
+      append(summary, 'strong', '', incidentClaimText(incident));
+      appendIncidentTags(summary, incidentLabelTags(profile, incident.incident_id || incident.event_id));
       const body = append(card, 'div', 'wol-award-evidence-body');
-      if (incident.public_bullshit_summary) {
-        const bullshit = append(body, 'section', 'wol-evidence-explainer');
-        append(bullshit, 'strong', '', 'What was bullshit');
-        append(bullshit, 'p', '', publicNarrative(incident.public_bullshit_summary, ''));
-      }
+
+      const claim = append(body, 'section', 'wol-evidence-explainer wol-evidence-claim');
+      append(claim, 'strong', '', 'Claim');
+      append(claim, 'p', '', incidentClaimText(incident));
+
+      const fact = append(body, 'section', 'wol-evidence-explainer wol-evidence-fact');
+      append(fact, 'strong', '', 'Fact');
+      append(fact, 'p', '', incidentFactText(incident));
+
+      const conduct = append(body, 'section', 'wol-evidence-explainer wol-evidence-conduct');
+      append(conduct, 'strong', '', 'What this record establishes');
+      append(conduct, 'p', '', incidentConductText(incident));
+
       const review = incident.evidentiary_support_review || {};
-      if (review.claimant_basis_note) {
-        const basis = append(body, 'section', 'wol-evidence-explainer');
-        append(basis, 'strong', '', 'What the evidence actually supports');
-        append(basis, 'p', '', publicNarrative(review.claimant_basis_note, ''));
-      }
-      const knowledge = append(body, 'section', 'wol-evidence-explainer wol-knowledge-boundary');
-      append(knowledge, 'strong', '', 'What this record establishes about their knowledge');
-      append(knowledge, 'p', '', knowledgeBoundaryText(review));
-      if (review.search_scope) {
-        const checked = append(body, 'section', 'wol-evidence-explainer');
-        append(checked, 'strong', '', 'How we checked');
-        append(checked, 'p', '', publicNarrative(review.search_scope, ''));
-        if (review.checked_at) append(checked, 'small', '', `Checked: ${plainLabel(review.checked_at)}`);
-      }
-      append(body, 'strong', 'wol-evidence-receipts-heading', 'Evidence and receipts');
-      appendReceipts(body, incident.public_receipts, 'No public receipt is available for this publication.');
+      const checked = append(body, 'section', 'wol-evidence-explainer wol-evidence-check');
+      append(checked, 'strong', '', 'How we checked');
+      append(checked, 'p', '', publicNarrative(
+        review.search_scope,
+        'We compared the published claim with the contemporaneous record and the public sources preserved below.'
+      ));
+      if (review.checked_at) append(checked, 'small', '', `Checked: ${plainLabel(review.checked_at)}`);
+      append(checked, 'span', 'wol-evidence-sources-label', 'Sources used');
+      appendReceipts(checked, incident.public_receipts, 'No public source link is available for this publication.');
       return card;
     };
 
-    const appendAmplificationAwardCard = (parent, observation, index = 0) => {
+    const appendAmplificationAwardCard = (parent, profile, observation) => {
       const upstream = qualifyingEventById.get(observation.bullshitter_event_id);
       const upstreamNode = graphNodeById.get(observation.bullshitter_source_id);
       const card = append(parent, 'details', 'record-card wol-award-evidence-card wol-amplification-award-card');
-      if (index === 0) card.open = true;
       const summary = append(card, 'summary', 'wol-award-evidence-summary');
       append(summary, 'span', 'card-kicker', observation.observed_at || 'Observation date not recorded');
-      append(summary, 'strong', '', publicNarrative(
-        upstream && (upstream.statement_identity || upstream.exact_statement || upstream.translated_statement),
-        'Documented amplification publication'
-      ));
+      append(summary, 'strong', '', incidentClaimText(upstream));
+      appendIncidentTags(summary, incidentLabelTags(profile, observation.observation_id, ['Amplification']));
       const body = append(card, 'div', 'wol-award-evidence-body');
-      const route = append(body, 'section', 'wol-evidence-explainer');
-      append(route, 'strong', '', 'What they amplified');
-      append(route, 'p', '', `A claim from ${nodeName(upstreamNode || { display_name: observation.bullshitter_source_id || 'an upstream source' })} was republished or adopted in this documented publication.`);
-      if (upstream && upstream.public_bullshit_summary) {
-        const bullshit = append(body, 'section', 'wol-evidence-explainer');
-        append(bullshit, 'strong', '', 'What was bullshit');
-        append(bullshit, 'p', '', publicNarrative(upstream.public_bullshit_summary, ''));
-      }
-      const counted = append(body, 'section', 'wol-evidence-explainer');
-      append(counted, 'strong', '', 'Why this counted toward the award');
-      append(counted, 'p', '', 'The receipt establishes this source’s own publication of an already-qualified upstream bullshit incident. Amplification does not automatically inherit an award; only the source’s documented qualifying publications count.');
-      const knowledge = append(body, 'section', 'wol-evidence-explainer wol-knowledge-boundary');
-      append(knowledge, 'strong', '', 'What this record establishes about their knowledge');
-      append(knowledge, 'p', '', 'The receipt establishes publication and propagation. It does not, by itself, establish what the amplifier privately knew about the claim’s truth.');
-      append(body, 'strong', 'wol-evidence-receipts-heading', 'Evidence and receipts');
-      appendReceipts(body, observation.public_receipts, 'No public receipt is available for this amplification.');
+
+      const claim = append(body, 'section', 'wol-evidence-explainer wol-evidence-claim');
+      append(claim, 'strong', '', 'Claim');
+      append(claim, 'p', '', `${nodeName(upstreamNode || { display_name: observation.bullshitter_source_id || 'An upstream source' })}: ${incidentClaimText(upstream)}`);
+
+      const fact = append(body, 'section', 'wol-evidence-explainer wol-evidence-fact');
+      append(fact, 'strong', '', 'Fact');
+      append(fact, 'p', '', incidentFactText(upstream));
+
+      const conduct = append(body, 'section', 'wol-evidence-explainer wol-evidence-conduct');
+      append(conduct, 'strong', '', 'What this record establishes');
+      append(conduct, 'p', '', 'This source republished or adopted an already-qualified bullshit claim as factual. The publication itself is the conduct that counted.');
+
+      const checked = append(body, 'section', 'wol-evidence-explainer wol-evidence-check');
+      append(checked, 'strong', '', 'How we checked');
+      append(checked, 'p', '', 'We matched this publication to the already-qualified upstream claim and preserved the publication receipt showing who carried it, where, and when.');
+      append(checked, 'span', 'wol-evidence-sources-label', 'Sources used');
+      appendReceipts(checked, observation.public_receipts, 'No public source link is available for this amplification.');
       return card;
     };
 
@@ -2409,28 +2498,53 @@
       awards.forEach(award => {
         const block = append(titleBlock, 'article', 'scope-note wol-award-summary');
         append(block, 'strong', '', publicNarrative(award.public_label, 'Bullshitter'));
-        append(block, 'p', '', publicNarrative(
-          award.public_verdict,
-          `${sourceIncidents.length + amplificationEvidence.length} documented publication${sourceIncidents.length + amplificationEvidence.length === 1 ? '' : 's'} support this award.`
-        ));
+        append(block, 'p', '', bullshitterExplanation(profile, award, sourceIncidents, amplificationEvidence));
       });
 
       roleFailures.forEach(appellation => {
         const block = append(titleBlock, 'article', 'record-card wol-role-failure-card');
         append(block, 'h5', '', publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code)));
-        append(block, 'p', '', `The source publicly claims the role “${plainLabel(appellation.claimed_role, 'recorded role')}.” ${formatNumber(appellation.incident_count || 0)} documented incident${Number(appellation.incident_count || 0) === 1 ? '' : 's'} meet the governed failure pattern for this title.`);
-        if (appellation.rule) append(block, 'p', 'section-note', publicNarrative(appellation.rule, ''));
+        append(block, 'p', '', roleFailureExplanation(profile, appellation));
+        append(block, 'small', 'section-note', 'The incident ledger below is the evidence behind this label.');
         appendReceipts(block, appellation.claimed_role_receipts, 'No public role receipt is available for this title.');
       });
 
-      const evidenceBlock = append(host, 'section', 'wol-award-evidence-list');
-      append(evidenceBlock, 'h4', '', 'Evidence behind this award and title');
-      append(evidenceBlock, 'p', 'section-note', 'Each entry shows the publication, what failed, what the documented basis actually supports, the limit on any knowledge inference, and the receipts used to check it.');
-      if (!sourceIncidents.length && !amplificationEvidence.length) {
-        append(evidenceBlock, 'p', 'section-note', 'No public incident detail is available for this award route.');
+      const grift = profile.grift_pattern_review || {};
+      if (String(grift.status || '') === 'INCIDENT_GATED_PATTERN_ESTABLISHED' && grift.pattern_summary) {
+        const pattern = append(host, 'section', 'scope-note wol-pattern-finding');
+        append(pattern, 'strong', '', 'Established pattern');
+        append(pattern, 'p', '', publicNarrative(grift.pattern_summary, ''));
+        const linkage = grift.same_publication_linkage || {};
+        if (linkage.significance) append(pattern, 'p', 'section-note', publicNarrative(linkage.significance, ''));
       }
-      sourceIncidents.forEach((incident, index) => appendAwardIncidentCard(evidenceBlock, incident, index));
-      amplificationEvidence.forEach((observation, index) => appendAmplificationAwardCard(evidenceBlock, observation, sourceIncidents.length ? index + 1 : index));
+
+      const bullshitBlock = append(host, 'section', 'wol-bullshit-ledger');
+      append(bullshitBlock, 'h4', '', 'What was bullshit');
+      append(bullshitBlock, 'p', 'section-note', `${sourceIncidents.length + amplificationEvidence.length} documented qualifying publication${sourceIncidents.length + amplificationEvidence.length === 1 ? '' : 's'} in this award record.`);
+      const bullshitList = append(bullshitBlock, 'ul', 'wol-bullshit-list');
+      sourceIncidents.forEach(incident => {
+        const item = append(bullshitList, 'li');
+        append(item, 'strong', '', incidentClaimText(incident));
+        appendIncidentTags(item, incidentLabelTags(profile, incident.incident_id || incident.event_id));
+        const summary = incidentFactText(incident);
+        if (summary) append(item, 'span', '', summary);
+      });
+      amplificationEvidence.forEach(observation => {
+        const upstream = qualifyingEventById.get(observation.bullshitter_event_id);
+        const item = append(bullshitList, 'li');
+        append(item, 'strong', '', incidentClaimText(upstream));
+        appendIncidentTags(item, incidentLabelTags(profile, observation.observation_id, ['Amplification']));
+        append(item, 'span', '', 'Republished or adopted as factual by this source.');
+      });
+      if (!sourceIncidents.length && !amplificationEvidence.length) {
+        append(bullshitBlock, 'p', 'section-note', 'No public incident detail is available for this award route.');
+      }
+
+      const evidenceBlock = append(host, 'section', 'wol-award-evidence-list');
+      append(evidenceBlock, 'h4', '', 'What the evidence actually supports');
+      append(evidenceBlock, 'p', 'section-note', 'Open any claim for the fact check, what the record establishes about the publication, and the sources used.');
+      sourceIncidents.forEach(incident => appendAwardIncidentCard(evidenceBlock, profile, incident));
+      amplificationEvidence.forEach(observation => appendAmplificationAwardCard(evidenceBlock, profile, observation));
       return evidence;
     };
 

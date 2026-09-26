@@ -1291,8 +1291,64 @@ a:hover { color: #e0f2ff; }
   margin-top: .35rem;
   color: var(--muted);
 }
-.wol-knowledge-boundary { border-left-color: #b4905d; }
-.wol-evidence-receipts-heading { margin-top: .1rem; }
+.wol-evidence-claim { border-left-color: #b46f78; }
+.wol-evidence-fact { border-left-color: #68a884; }
+.wol-evidence-conduct { border-left-color: #c0965c; }
+.wol-evidence-check { border-left-color: #587f99; }
+.wol-evidence-sources-label {
+  display: block;
+  margin-top: .7rem;
+  color: var(--text);
+  font-size: .76rem;
+  font-weight: 800;
+}
+.wol-pattern-finding {
+  border-left: 4px solid #c0965c;
+}
+.wol-bullshit-ledger {
+  display: grid;
+  gap: .65rem;
+}
+.wol-bullshit-ledger > h4 { margin: 0; }
+.wol-bullshit-list {
+  display: grid;
+  gap: .55rem;
+  margin: 0;
+  padding-left: 1.35rem;
+}
+.wol-bullshit-list li {
+  padding-left: .15rem;
+  line-height: 1.45;
+}
+.wol-bullshit-list strong,
+.wol-bullshit-list span {
+  display: block;
+}
+.wol-bullshit-list strong { color: var(--text); }
+.wol-bullshit-list span {
+  margin-top: .18rem;
+  color: var(--muted);
+  font-size: .76rem;
+}
+.wol-incident-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  margin-top: .4rem;
+}
+.wol-incident-tag {
+  display: inline-flex !important;
+  width: auto;
+  margin: 0 !important;
+  padding: .18rem .42rem;
+  border: 1px solid #6d5660;
+  border-radius: 999px;
+  background: #20141a;
+  color: #f0c9cf !important;
+  font-size: .68rem !important;
+  font-weight: 800;
+  line-height: 1.25;
+}
 
 @media (max-width: 70rem) {
   .wol-graph-workspace { grid-template-columns: 1fr; }

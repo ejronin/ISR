@@ -185,27 +185,48 @@ async function loadDirectRoute(cdp, route) {
 
         const awardeeEvidence = await cdp.eval(`(() => {
           const buttons = [...document.querySelectorAll('.wol-awardee-button')];
-          const button = buttons.find(node => /Ethan Levins|Valenti Videos/i.test(node.textContent || '')) || buttons[0];
+          const button = buttons.find(node => /Ethan Levins/i.test(node.textContent || '')) || buttons[0];
           if (!button) return { missing: true };
           button.click();
           const host = document.querySelector('.wol-awardee-evidence-host');
           const text = host?.innerText || '';
+          const evidenceText = [...(host?.querySelectorAll('.wol-award-evidence-card') || [])]
+            .map(node => node.textContent || '')
+            .join('\\n');
           return {
             missing: false,
             pressed: button.getAttribute('aria-pressed'),
             cards: host?.querySelectorAll('.wol-award-evidence-card').length || 0,
+            bullshitItems: host?.querySelectorAll('.wol-bullshit-list li').length || 0,
             receipts: host?.querySelectorAll('.wol-receipt-list a').length || 0,
-            text
+            tags: [...(host?.querySelectorAll('.wol-incident-tag') || [])].map(node => node.textContent || ''),
+            text,
+            evidenceText
           };
         })()`);
         assert.equal(awardeeEvidence.missing, false, 'WOL exposes no Bullshitter awardee controls');
         assert.equal(awardeeEvidence.pressed, 'true', 'selected WOL awardee is not exposed to assistive technology');
-        assert(awardeeEvidence.cards > 0, 'selected WOL awardee did not populate evidence below the awardee list');
+        assert(awardeeEvidence.cards > 1, 'selected WOL awardee must expose the full multi-incident evidence record, not one example');
+        assert(awardeeEvidence.bullshitItems > 1, 'selected WOL awardee must show a visible list of qualifying bullshit');
+        assert.equal(awardeeEvidence.bullshitItems, awardeeEvidence.cards, 'visible bullshit list and claim-by-claim evidence must cover the same award record');
         assert(awardeeEvidence.receipts > 0, 'selected WOL awardee evidence exposes no public receipts');
         assert.match(awardeeEvidence.text, /Award and earned titles/);
-        assert.match(awardeeEvidence.text, /Evidence behind this award and title/);
-        assert.match(awardeeEvidence.text, /What this record establishes about their knowledge/);
-        assert.match(awardeeEvidence.text, /Evidence and receipts/);
+        assert.match(awardeeEvidence.text, /earned Bullshitter because WOL documented a repeated pattern/);
+        assert.doesNotMatch(awardeeEvidence.text, /award earned after \d+ cumulative qualifying/i);
+        assert.match(awardeeEvidence.text, /What was bullshit/);
+        assert.match(awardeeEvidence.text, /What the evidence actually supports/);
+        assert.match(awardeeEvidence.evidenceText, /What this record establishes/);
+        assert.match(awardeeEvidence.evidenceText, /How we checked/);
+        assert.match(awardeeEvidence.evidenceText, /Sources used/);
+        if (/Ethan Levins/i.test(awardeeEvidence.text)) {
+          assert.match(awardeeEvidence.text, /WOL rates the documented pattern as Fake analyst/);
+          assert.match(awardeeEvidence.text, /WOL rates the documented pattern as Yellow journalism/);
+          assert(awardeeEvidence.tags.includes('Bullshitter'), 'award ledger incidents are missing Bullshitter tags');
+          assert(awardeeEvidence.tags.includes('Fake analyst'), 'Ethan award ledger is missing Fake analyst incident tags');
+          assert(awardeeEvidence.tags.includes('Yellow journalism'), 'Ethan award ledger is missing Yellow journalism incident tags');
+          assert.doesNotMatch(awardeeEvidence.text, /minimum tagged|at least three distinct qualifying|at least two must document/i);
+        }
+        assert.doesNotMatch(awardeeEvidence.text, /does not by itself prove what the publisher privately understood/i);
       }
     }
 
