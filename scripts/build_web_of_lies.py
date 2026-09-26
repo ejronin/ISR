@@ -1166,9 +1166,51 @@ def derive_role_failure_appellations(
         if required_award and required_award not in awards:
             continue
         primary_tag = str(rule.get("qualifying_incident_tag") or "").strip()
+        review_gate = rule.get("incident_review_gate") or {}
+        allowed_failure_types = {
+            str(value).strip()
+            for value in (rule.get("qualifying_failure_types") or [])
+            if str(value).strip()
+        }
+
+        def passes_incident_review_gate(event: dict[str, Any]) -> bool:
+            if not review_gate:
+                return True
+            review_field = str(review_gate.get("review_field") or "").strip()
+            review = event.get(review_field) if review_field else None
+            if not isinstance(review, dict):
+                return False
+            required_status = str(review_gate.get("required_status") or "").strip()
+            if required_status and str(review.get("status") or "").strip() != required_status:
+                return False
+            if bool(review_gate.get("require_exact_proposition")) and not str(
+                review.get("exact_proposition") or ""
+            ).strip():
+                return False
+            failure_type_field = str(
+                review_gate.get("failure_type_field") or "failure_type"
+            ).strip()
+            failure_type = str(review.get(failure_type_field) or "").strip()
+            if allowed_failure_types and failure_type not in allowed_failure_types:
+                return False
+            if bool(review_gate.get("require_contrary_evidence_sources")):
+                contrary = review.get("contrary_evidence_sources") or []
+                if not isinstance(contrary, list) or not contrary:
+                    return False
+                if any(
+                    not isinstance(source, dict)
+                    or not str(source.get("url") or "").strip()
+                    or not str(source.get("source_name") or "").strip()
+                    for source in contrary
+                ):
+                    return False
+            return True
+
         primary_events = [
             event for event in distinct.values()
-            if primary_tag and primary_tag in set(event.get("role_failure_tags") or [])
+            if primary_tag
+            and primary_tag in set(event.get("role_failure_tags") or [])
+            and passes_incident_review_gate(event)
         ]
         minimum = int(rule.get("minimum_tagged_incidents") or 1)
         if len(primary_events) < minimum:
