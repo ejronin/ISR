@@ -553,7 +553,7 @@ ethan_all_incident_ids = {
     for incident_id, incident in behavior_incidents.items()
     if incident["source_id"] == "WOL-SRC-ETHAN-LEVINS"
 }
-assert len(ethan_all_incident_ids) == 34
+assert len(ethan_all_incident_ids) == 35
 assert all(behavior_incidents[incident_id]["public_receipts"] for incident_id in ethan_all_incident_ids)
 
 ethan_award_incident_ids = {
@@ -575,8 +575,17 @@ assert ethan_award["qualification_start"] == "2026-03-18T00:00:00"
 assert ethan_award["qualification_end"] == "2026-03-20T00:00:00"
 assert ethan_award["qualifying_incident_count"] == 6
 assert set(ethan_award["qualifying_incident_ids"]) == ethan_award_incident_ids
-assert ethan_award["documented_incident_count"] == 34
+assert ethan_award["documented_incident_count"] == 35
 assert set(ethan_award["documented_incident_ids"]) == ethan_all_incident_ids
+
+sharaa = behavior_incidents["WOL-BS-ETHAN-SHARAA-ISIS-ELECTIONS-20260716"]
+assert sharaa["source_information_event_id"] == "ETHAN-YOUTUBE-JOLANI-TO-SHARAA-20260716"
+assert sharaa["evidentiary_support_review"]["status"] == "NO_SUPPORT_FOUND_AFTER_DOCUMENTED_SEARCH"
+assert sharaa["evidentiary_support_review"]["supporting_evidence_found"] is False
+assert "ANALYSIS_BRIDGE_FAILURE" in sharaa["role_failure_tags"]
+assert "JOURNALISTIC_VERIFICATION_FAILURE" in sharaa["role_failure_tags"]
+assert any(r["url"] == "https://www.youtube.com/watch?v=7CkVyqyVpsY" for r in sharaa["public_receipts"])
+assert "counts once" in sharaa["downstream_note"]
 
 # One publication event is one award incident even when it contains multiple
 # atomic propositions (e.g. March 22 causation + stockpile extrapolation).
