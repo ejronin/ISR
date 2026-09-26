@@ -78,6 +78,13 @@ assert.match(iaSource, /Sources used/);
 assert.match(iaSource, /Established pattern/);
 assert.match(iaSource, /WOL rates the documented pattern as Fake analyst/);
 assert.match(iaSource, /WOL rates the documented pattern as Yellow journalism/);
+assert.match(iaSource, /WOL rates the documented pattern as Fake historian/);
+assert.match(iaSource, /roleFailureEvidenceForAppellation/);
+assert.match(iaSource, /QUALIFIED_ROLE_FAILURE_EVIDENCE/);
+assert.match(iaSource, /Why \${label}/);
+assert.match(iaSource, /These checks are separate from the Bullshitter award count below/);
+assert.match(iaSource, /wol-role-failure-list/);
+assert.match(iaSource, /wol-role-evidence-card/);
 assert.match(iaSource, /earned Bullshitter because WOL documented a repeated pattern/);
 assert.match(iaSource, /false, materially misleading, or unsupported factual publishing—not a one-off mistake/);
 assert.match(iaSource, /publishing or adopting already-qualified bullshit from multiple upstream WOL sources/);
@@ -112,7 +119,10 @@ assert.match(shellSource, /\.wol-node-flag\s*\{/);
 assert.match(shellSource, /\.wol-node-markers\s*\{/);
 assert.match(shellSource, /\.wol-awardee-evidence\s*\{/);
 assert.match(shellSource, /\.wol-award-evidence-card\s*\{/);
-assert.match(shellSource, /\.wol-bullshit-list\s*\{/);
+assert.match(shellSource, /\.wol-bullshit-list,/);
+assert.match(shellSource, /\.wol-role-failure-list\s*\{/);
+assert.match(shellSource, /\.wol-role-failure-evidence\s*\{/);
+assert.match(shellSource, /\.wol-role-evidence-card/);
 assert.match(shellSource, /\.wol-evidence-conduct\s*\{/);
 assert.match(shellSource, /\.wol-incident-tags\s*\{/);
 assert.match(shellSource, /\.wol-incident-tag\s*\{/);
@@ -134,6 +144,10 @@ assert(pressTvNode && pressTvNode.country_code === 'IR', 'Press TV graph node mu
 assert(Number(pressTvNode.bullshitter_source_count || 0) >= 1, 'Press TV must render as a dual-role Bullshitter + megaphone when it rebroadcasts an award incident');
 const limTean = derived.source_profiles.find(profile => profile.source_id === 'WOL-SRC-LIM-TEAN');
 assert(limTean && limTean.country_code === 'SG', 'receipt-backed Singapore profile must compile to SG');
+const valenti = derived.source_profiles.find(profile => profile.source_id === 'WOL-SRC-VALENTI-VIDEOS');
+assert(valenti, 'Valenti WOL profile missing');
+assert.equal((valenti.role_failure_evidence || []).length, 4, 'Valenti historian role evidence did not compile');
+assert((valenti.role_failure_appellations || []).some(row => row.appellation_code === 'FAKE_HISTORIAN'), 'Valenti Fake historian appellation missing from compiled WOL profile');
 assert(!/manual_rank|manual_score|featured_rank/.test(iaSource), 'public Web of Lies renderer contains a manual ranking control');
 [
   'authorized Cytoscape runtime',
