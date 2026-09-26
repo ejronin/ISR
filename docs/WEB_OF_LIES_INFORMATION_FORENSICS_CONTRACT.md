@@ -354,8 +354,8 @@ WOL may derive an adverse **role-failure appellation** only when all of the foll
 
 1. the source publicly claims the corresponding role and WOL preserves that self-claim with a receipt;
 2. the source independently earns the required WOL behavior award, where the rule requires one;
-3. distinct qualifying WOL incidents document repeated failures of the evidentiary method expected of the claimed role;
-4. the configured incident threshold is satisfied.
+3. distinct qualifying WOL incidents or explicitly isolated role-failure evidence records document repeated failures of the evidentiary method expected of the claimed role;
+4. the configured evidence threshold is satisfied.
 
 Current governed public appellations:
 
@@ -373,7 +373,9 @@ Monetization, Patreon, donations, sponsorship, audience size, ideology, politica
 
 Every role-failure appellation must expose both its self-claimed-role receipts and the qualifying incident IDs that triggered it.
 
-Historian-specific adjudication is deliberately fail-closed. A self-description such as `HISTORIAN` is descriptive only. Before an incident may count toward `FAKE_HISTORIAN`, the exact source statement must be recovered, reduced to a falsifiable historical proposition, and compared against reliable historical evidence. The incident must carry a `historical_verification_review` with status `SOURCE_RECOVERED_ADJUDICATED`, the exact proposition, an allowed failure type, and at least one identified contrary-evidence source with a public URL. A bare `HISTORICAL_VERIFICATION_FAILURE` tag does not qualify. WOL must not convert disagreement over a defensible interpretation into a factual failure.
+Historian-specific adjudication is deliberately fail-closed. A self-description such as `HISTORIAN` is descriptive only. Before evidence may count toward `FAKE_HISTORIAN`, the exact source statement must be recovered, reduced to a falsifiable historical proposition, and compared against reliable historical evidence. The record must carry a `historical_verification_review` with status `SOURCE_RECOVERED_ADJUDICATED`, the exact proposition, an allowed failure type, and at least one identified contrary-evidence source with a public URL. A bare `HISTORICAL_VERIFICATION_FAILURE` tag does not qualify. WOL must not convert disagreement over a defensible interpretation into a factual failure.
+
+Professional-role evidence may be retained outside the active Iran-war corpus only as `source_profiles[].role_failure_evidence`. This exception exists solely to adjudicate a role the source publicly claims. It cannot add Bullshitter incidents, change the source-award earning chronology, increase Hall score, create propagation edges, add NEWS_GRIFT basis, or alter active Iran-war corpus counts. The required Bullshitter award must already be independently earned from ordinary WOL-qualified source behavior.
 
 ## 14. Public product behavior
 
