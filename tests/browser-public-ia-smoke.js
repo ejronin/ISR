@@ -253,7 +253,8 @@ async function loadDirectRoute(cdp, route) {
         })()`);
         assert.equal(valentiRoleEvidence.missing, false, 'Valenti awardee control is missing');
         assert.equal(valentiRoleEvidence.pressed, 'true', 'Valenti awardee selection is not exposed to assistive technology');
-        assert.match(valentiRoleEvidence.titleText, /WOL rates the documented pattern as Fake historian/);
+        assert.match(valentiRoleEvidence.titleText, /WOL applies the Fake historian label because/);
+        assert.match(valentiRoleEvidence.titleText, /wrong events, wrong offices, wrong chronology, and materially distorted historical context/);
         assert.match(valentiRoleEvidence.titleText, /Why Fake historian/);
         assert.match(valentiRoleEvidence.titleText, /4 source-recovered historical failures support this title/);
         assert.match(valentiRoleEvidence.titleText, /These checks are separate from the Bullshitter award count below/);
