@@ -2372,14 +2372,41 @@
       const name = publicNarrative(profile && profile.display_name, 'This source');
       const code = String(appellation && appellation.appellation_code || '').toUpperCase();
       if (code === 'FAKE_ANALYST') {
-        return `${name} publicly labels their work as analysis. WOL applies “Fake analyst” because the documented record repeatedly shows unsupported analytical leaps, inference presented as fact, or basic verification failures in that analysis.`;
+        return `${name} calls their work analysis. WOL rates the documented pattern as Fake analyst.`;
       }
       if (code === 'YELLOW_JOURNALISM') {
-        return `${name} publicly labels their work as journalism. WOL applies “Yellow journalism” because the documented record repeatedly shows basic verification failures alongside sensationalized or materially distorted presentation.`;
+        return `${name} calls their work journalism. WOL rates the documented pattern as Yellow journalism.`;
       }
       const role = plainLabel(appellation && appellation.claimed_role, 'claimed role').toLowerCase();
       const label = publicNarrative(appellation && appellation.public_label, plainLabel(code, 'this label'));
-      return `${name} publicly claims a ${role} role. WOL applies “${label}” because the documented incident record repeatedly shows the failure pattern that defines that label.`;
+      return `${name} claims a ${role} role. WOL rates the documented pattern as ${label}.`;
+    };
+
+    const incidentLabelTags = (profile, incidentId, extra = []) => {
+      const tags = ['Bullshitter'];
+      asArray(profile && profile.role_failure_appellations).forEach(appellation => {
+        if (asArray(appellation.basis_incident_ids).includes(incidentId)) {
+          const label = publicNarrative(appellation.public_label, plainLabel(appellation.appellation_code, ''));
+          if (label) tags.push(label);
+        }
+      });
+      const grift = profile && profile.grift_pattern_review || {};
+      if (
+        String(grift.status || '') === 'INCIDENT_GATED_PATTERN_ESTABLISHED'
+        && asArray(grift.basis_incident_ids).includes(incidentId)
+      ) {
+        tags.push(plainLabel(grift.class_code, 'News grift'));
+      }
+      extra.forEach(label => {
+        if (label) tags.push(label);
+      });
+      return [...new Set(tags)];
+    };
+
+    const appendIncidentTags = (parent, tags) => {
+      const row = append(parent, 'div', 'wol-incident-tags');
+      tags.forEach(tag => append(row, 'span', 'wol-incident-tag', tag));
+      return row;
     };
 
     const bullshitterExplanation = (profile, award, sourceIncidents, amplificationEvidence) => {
@@ -2392,11 +2419,12 @@
       return `${name} earned Bullshitter because WOL documented a repeated pattern of false, materially misleading, or unsupported factual publishing—not a one-off mistake. The ${count} qualifying incident${count === 1 ? '' : 's'} in this award record are listed below.`;
     };
 
-    const appendAwardIncidentCard = (parent, incident) => {
+    const appendAwardIncidentCard = (parent, profile, incident) => {
       const card = append(parent, 'details', 'record-card wol-award-evidence-card');
       const summary = append(card, 'summary', 'wol-award-evidence-summary');
       append(summary, 'span', 'card-kicker', incident.published_at || incident.first_observed_at || 'Date not recorded');
       append(summary, 'strong', '', incidentClaimText(incident));
+      appendIncidentTags(summary, incidentLabelTags(profile, incident.incident_id || incident.event_id));
       const body = append(card, 'div', 'wol-award-evidence-body');
 
       const claim = append(body, 'section', 'wol-evidence-explainer wol-evidence-claim');
@@ -2424,13 +2452,14 @@
       return card;
     };
 
-    const appendAmplificationAwardCard = (parent, observation) => {
+    const appendAmplificationAwardCard = (parent, profile, observation) => {
       const upstream = qualifyingEventById.get(observation.bullshitter_event_id);
       const upstreamNode = graphNodeById.get(observation.bullshitter_source_id);
       const card = append(parent, 'details', 'record-card wol-award-evidence-card wol-amplification-award-card');
       const summary = append(card, 'summary', 'wol-award-evidence-summary');
       append(summary, 'span', 'card-kicker', observation.observed_at || 'Observation date not recorded');
       append(summary, 'strong', '', incidentClaimText(upstream));
+      appendIncidentTags(summary, incidentLabelTags(profile, observation.observation_id, ['Amplification']));
       const body = append(card, 'div', 'wol-award-evidence-body');
 
       const claim = append(body, 'section', 'wol-evidence-explainer wol-evidence-claim');
@@ -2496,6 +2525,7 @@
       sourceIncidents.forEach(incident => {
         const item = append(bullshitList, 'li');
         append(item, 'strong', '', incidentClaimText(incident));
+        appendIncidentTags(item, incidentLabelTags(profile, incident.incident_id || incident.event_id));
         const summary = incidentFactText(incident);
         if (summary) append(item, 'span', '', summary);
       });
@@ -2503,6 +2533,7 @@
         const upstream = qualifyingEventById.get(observation.bullshitter_event_id);
         const item = append(bullshitList, 'li');
         append(item, 'strong', '', incidentClaimText(upstream));
+        appendIncidentTags(item, incidentLabelTags(profile, observation.observation_id, ['Amplification']));
         append(item, 'span', '', 'Republished or adopted as factual by this source.');
       });
       if (!sourceIncidents.length && !amplificationEvidence.length) {
@@ -2512,8 +2543,8 @@
       const evidenceBlock = append(host, 'section', 'wol-award-evidence-list');
       append(evidenceBlock, 'h4', '', 'What the evidence actually supports');
       append(evidenceBlock, 'p', 'section-note', 'Open any claim for the fact check, what the record establishes about the publication, and the sources used.');
-      sourceIncidents.forEach(incident => appendAwardIncidentCard(evidenceBlock, incident));
-      amplificationEvidence.forEach(observation => appendAmplificationAwardCard(evidenceBlock, observation));
+      sourceIncidents.forEach(incident => appendAwardIncidentCard(evidenceBlock, profile, incident));
+      amplificationEvidence.forEach(observation => appendAmplificationAwardCard(evidenceBlock, profile, observation));
       return evidence;
     };
 
