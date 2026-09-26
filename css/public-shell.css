@@ -1255,23 +1255,28 @@ a:hover { color: #e0f2ff; }
   font-size: .78rem;
   font-weight: 800;
 }
-.wol-award-evidence-card {
+.wol-award-evidence-card,
+.wol-role-evidence-card {
   overflow: hidden;
   padding: 0;
 }
-.wol-award-evidence-summary {
+.wol-award-evidence-summary,
+.wol-role-evidence-summary {
   display: grid;
   gap: .25rem;
   min-height: 3.5rem;
   padding: .8rem .9rem;
   cursor: pointer;
 }
-.wol-award-evidence-summary::marker { color: var(--accent-strong); }
-.wol-award-evidence-summary strong {
+.wol-award-evidence-summary::marker,
+.wol-role-evidence-summary::marker { color: var(--accent-strong); }
+.wol-award-evidence-summary strong,
+.wol-role-evidence-summary strong {
   color: var(--text);
   line-height: 1.4;
 }
-.wol-award-evidence-body {
+.wol-award-evidence-body,
+.wol-role-evidence-body {
   display: grid;
   gap: .75rem;
   padding: 0 .9rem .9rem;
@@ -1305,31 +1310,52 @@ a:hover { color: #e0f2ff; }
 .wol-pattern-finding {
   border-left: 4px solid #c0965c;
 }
-.wol-bullshit-ledger {
+.wol-bullshit-ledger,
+.wol-role-failure-evidence {
   display: grid;
   gap: .65rem;
 }
-.wol-bullshit-ledger > h4 { margin: 0; }
-.wol-bullshit-list {
+.wol-bullshit-ledger > h4,
+.wol-role-failure-evidence > h4 { margin: 0; }
+.wol-role-failure-evidence {
+  padding: .9rem 1rem;
+  border: 1px solid #72545d;
+  border-left: 4px solid #b46f78;
+  border-radius: var(--radius);
+  background: #100f14;
+}
+.wol-bullshit-list,
+.wol-role-failure-list {
   display: grid;
   gap: .55rem;
   margin: 0;
   padding-left: 1.35rem;
 }
-.wol-bullshit-list li {
+.wol-bullshit-list li,
+.wol-role-failure-list li {
   padding-left: .15rem;
   line-height: 1.45;
 }
 .wol-bullshit-list strong,
-.wol-bullshit-list span {
+.wol-bullshit-list span,
+.wol-role-failure-list strong,
+.wol-role-failure-list span {
   display: block;
 }
-.wol-bullshit-list strong { color: var(--text); }
-.wol-bullshit-list span {
+.wol-bullshit-list strong,
+.wol-role-failure-list strong { color: var(--text); }
+.wol-bullshit-list span,
+.wol-role-failure-list span {
   margin-top: .18rem;
   color: var(--muted);
   font-size: .76rem;
 }
+.wol-role-evidence-list {
+  display: grid;
+  gap: .55rem;
+  margin-top: .25rem;
+}
+.wol-role-evidence-list > h5 { margin: .2rem 0 0; }
 .wol-incident-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1395,8 +1421,10 @@ a:hover { color: #e0f2ff; }
     word-break: normal;
     hyphens: none;
   }
-  .wol-award-evidence-summary { padding: .75rem; }
-  .wol-award-evidence-body { padding: 0 .75rem .75rem; }
+  .wol-award-evidence-summary,
+  .wol-role-evidence-summary { padding: .75rem; }
+  .wol-award-evidence-body,
+  .wol-role-evidence-body { padding: 0 .75rem .75rem; }
 }
 .wol-category {
   min-width: 0;
