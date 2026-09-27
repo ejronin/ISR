@@ -300,14 +300,34 @@ async function route(cdp, hash, key) {
           .flatMap(node => [node.getAttribute('aria-label'), node.getAttribute('title'), node.tagName === 'OPTION' ? node.textContent : ''])
           .filter(Boolean).join(' ');
         return {
+          visible,
+          labels,
           machine: [...new Set((visible + ' ' + labels).match(/\\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\\b/g) || [])],
           internal: ['Do not add the headline categories', 'No machine-readable footprint/damage polygons were supplied', 'Do not create polygons or percentages from prose'].filter(phrase => visible.includes(phrase))
         };
       })()`);
       publicLanguageLeaks.push(...leaks.machine.map(token => `${routeRecord.key}:${token}`));
       publicLanguageLeaks.push(...leaks.internal.map(phrase => `${routeRecord.key}:${phrase}`));
+      if (!['start.overview', 'evidence.information', 'evidence.web_of_lies'].includes(routeRecord.key)) {
+        const jargon = [
+          'Current qualification',
+          'analyst position',
+          'canonical material-loss records',
+          'material-loss records',
+          'Evidence / BDA',
+          'operational-status denominator',
+          'Quantitative boundary',
+          'Current evidence cutoff',
+          'Frozen review cutoff',
+          'Accounting class',
+          'Stable strike record ID',
+          'Stable corridor ID',
+          'Source ID:'
+        ].filter(phrase => (leaks.visible || '').includes(phrase) || (leaks.labels || '').includes(phrase));
+        publicLanguageLeaks.push(...jargon.map(phrase => `${routeRecord.key}:${phrase}`));
+      }
     }
-    assert.deepEqual(publicLanguageLeaks, [], 'raw machine taxonomy or implementation instructions leaked into public language');
+    assert.deepEqual(publicLanguageLeaks, [], 'raw machine taxonomy, implementation instructions, or internal reader jargon leaked into public language');
 
     await route(cdp, '#/military/campaigns', 'military.campaigns');
     const technicalRecord = await cdp.eval(`(() => {
