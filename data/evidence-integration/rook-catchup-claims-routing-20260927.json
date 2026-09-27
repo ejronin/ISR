@@ -1,0 +1,18 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_TO_CLAIMS_FORENSICS_HANDOFF",
+  "authority": "FACTUAL_EVIDENCE_ROUTING_ONLY",
+  "as_of": "2026-09-27T00:19:48-04:00",
+  "basis": "data/evidence-integration/rook-evidence-locker-sweep-20260927T0000ET.json",
+  "rules": [
+    "Evidence Integration does not adjudicate deception, knowledge, Lie Ledger eligibility or Web of Lies lineage.",
+    "No new claim in this window requires truth/knowledge adjudication beyond preserving public policy statements with source attribution.",
+    "The Sep.26 Trump Hormuz 29-ship/total-control referral remains active under the prior handoff."
+  ],
+  "referrals": [],
+  "prior_referrals_retained_by_reference": [
+    "data/evidence-integration/rook-catchup-claims-routing-20260923.json",
+    "data/evidence-integration/rook-catchup-claims-routing-20260924.json",
+    "data/evidence-integration/rook-catchup-claims-routing-20260926.json"
+  ],
+  "web_of_lies": "OUT_OF_SCOPE"
+}
