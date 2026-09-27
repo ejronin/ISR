@@ -302,7 +302,10 @@
 
   function objectives(article, context) {
     intro(article,'These are the goals each side publicly set, whether the current record shows they got them, and why. The two sides are shown together so the present result is easy to compare. A later, narrower goal does not erase an earlier unmet goal.');
-    const sourceData=modelData(context.model,'analysis.endgame_us_objectives')||{}, corrections=modelData(context.model,'analysis.endgame_objective_corrections')||{};
+    const sourceData=modelData(context.model,'analysis.endgame_us_objectives')||{}, corrections=modelData(context.model,'analysis.endgame_objective_corrections')||{}, currentPositionData=modelData(context.model,'analysis.endgame_current_aug25')||{};
+    const localPositionSources={...(sourceData.sources||{}),...(currentPositionData.sources||{})}; const publicSources=records(context.model,'sources');
+    const resolvePositionSource=id=>{const local=localPositionSources[id]||{};const registered=publicSources.find(source=>local.url&&source.url===local.url)||{};return {...local,title:registered.title||local.title||local.publisher||id};};
+    const sourceAttribution=id=>{const source=resolvePositionSource(id), haystack=txt(source.title)+' '+txt(source.supports); if(/Pezeshkian/i.test(haystack))return 'Masoud Pezeshkian — President of Iran'; if(/Aref/i.test(haystack))return 'Aref — Iranian vice president'; return /FOREIGN MINISTRY|Foreign Ministry/i.test(haystack)?'Iranian Foreign Ministry':'Iranian public / official position';};
     const applyOverrides=(records,overrides)=>records.map(record=>{const correction=(overrides||[]).find(item=>objectiveKey(record.objective).includes(objectiveKey(item.match)));return correction?{...record,...correction,objective:record.objective}:record;});
     const accepted=[
       ...applyOverrides(sourceData.us_objectives||[],corrections.us_overrides||[]).map(record=>({...record,actor:'United States'})),
