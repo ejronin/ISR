@@ -158,31 +158,10 @@ function base64(value) {
       'ATLAS TIMELINE ANALYSIS MOU SOURCES'
     ]) assert(!loading.text.toUpperCase().includes(forbidden), `cold shell revealed stale content: ${forbidden}`);
     assert.match(loading.text, /Loading current evidence record/i);
-    const diagnosticInstalled = await cdp.eval(`(() => {
-      const ia = window.AtlasPublicIA;
-      if (!ia || typeof ia.mount !== 'function') return false;
-      const originalMount = ia.mount.bind(ia);
-      const pack = error => error ? {
-        name: error.name || '',
-        code: error.code || '',
-        message: error.message || '',
-        stack: error.stack || '',
-        cause: error.cause ? pack(error.cause) : null
-      } : null;
-      window.AtlasPublicIA = Object.freeze({
-        ...ia,
-        mount(options) {
-          try { return originalMount(options); }
-          catch (error) { window.__ATLAS_MOUNT_ERROR = pack(error); throw error; }
-        }
-      });
-      return true;
-    })()`);
-    assert.equal(diagnosticInstalled, true, 'cold-boot diagnostic wrapper was not installed');
     await cdp.call('Fetch.continueRequest', { requestId: paused.requestId });
     await cdp.call('Fetch.disable');
     await waitFor(cdp, `['ready','error'].includes(window.ATLAS_PUBLIC_STATE?.status)`);
-    const bootState = await cdp.eval(`({status:window.ATLAS_PUBLIC_STATE?.status,code:window.ATLAS_PUBLIC_STATE?.code,rootStatus:document.getElementById('atlas-root')?.dataset.status,text:document.getElementById('atlas-root')?.innerText||'',mountError:window.__ATLAS_MOUNT_ERROR||null})`);
+    const bootState = await cdp.eval(`({status:window.ATLAS_PUBLIC_STATE?.status,code:window.ATLAS_PUBLIC_STATE?.code,rootStatus:document.getElementById('atlas-root')?.dataset.status,text:document.getElementById('atlas-root')?.innerText||''})`);
     assert.equal(bootState.status, 'ready', `cold boot failed: ${JSON.stringify(bootState)}`);
     const ready = await cdp.eval(`(() => ({
       status: document.getElementById('atlas-root')?.dataset.status,
