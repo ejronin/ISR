@@ -78,6 +78,11 @@ assert(source.includes("network.dataset.shippingMapView = 'network'"), 'Shipping
 assert(source.includes("details.dataset.aggregation = 'record-count-only'"), 'loss summaries are not explicitly record-count-only');
 assert(source.includes('details.dataset.contributingRecordIds'), 'loss summary aggregation does not expose contributing stable IDs');
 assert(source.includes("section.dataset.interpolation = 'none'"), 'economy view does not explicitly prohibit interpolation');
+assert(source.includes("section.dataset.futureScenario = 'no-new-change-flat'"), 'economy view lacks an explicit no-change future scenario boundary');
+assert(source.includes("const electionDate = '2026-11-03'"), 'economy view lacks the Nov. 3 midterm reference date');
+assert(source.includes('timing alone does not prove that a sanction caused a forecast change'), 'economy view lacks the sanctions/causation boundary');
+assert(source.includes("new EventCtor('input'"), 'timeline density selection does not drive the same input contract as the date controls');
+assert(source.includes("button.dataset.count = String(bin.count)"), 'timeline density selection does not carry its selected record count');
 assert(source.includes("section.dataset.agreementBalance = 'existing-position-derived'"), 'MOU balance does not declare its existing analytical source');
 assert(source.includes('No supported balance finding'), 'MOU non-scorable fallback is absent');
 
