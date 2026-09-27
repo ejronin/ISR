@@ -1,0 +1,688 @@
+{
+  "schema_version": "2.0",
+  "status": "ACCEPTED",
+  "packet_id": "UPD-20260926-ROOK-EVIDENCE-CATCHUP",
+  "known_at": "2026-09-26T19:30:00-04:00",
+  "evidence_cutoff": "2026-09-26T12:00:00-04:00",
+  "upstream_provenance": {
+    "locker_artifacts": [
+      "data/evidence-integration/rook-evidence-locker-sweep-20260921T0000ET-gap-recovery-v2.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260921T1200ET-gap-recovery-v2.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260925T0000ET-recovered-v2.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260925T1200ET-recovered-v2.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260926T0000ET-recovered-v2.json",
+      "data/evidence-integration/rook-evidence-locker-sweep-20260926T1200ET-recovered-v2.json"
+    ],
+    "consumption_audit": "data/evidence-integration/rook-catchup-consumption-audit-20260926.json",
+    "claim_domain_handoff": "data/evidence-integration/rook-catchup-claims-routing-20260926.json",
+    "retrospective_boundary": "Sep.20-21 recovery facts already present in sequences 20-21 are not duplicated; genuinely absent late-discovered facts carry Sep.26 knowledge time.",
+    "web_of_lies": "OUT_OF_SCOPE_NO_HANDOFF_OR_SEMANTIC_MUTATION"
+  },
+  "summary": "Consumes the six validator-recognized pending ROOK sweeps through Sep.26 noon. It reconciles the two retrospective Sep.20-21 recovery windows against already-accepted later evidence without duplicating canonical events, promotes the missing Houthi/U.S. Oman-mediated contact, advances Hormuz traffic and Gulf of Oman transfer constraints, records the phased then rejected U.S.-Iran proposal chronology, updates Iran aviation-sanctions implementation and waiver diplomacy, expands Yemen humanitarian and mobilisation state, records Makkah-pact implementation and China/U.S.-China positions, and preserves claims/BDA/denominator boundaries.",
+  "sources": [
+    {
+      "source_id": "SRC-8A05A32FD735",
+      "url": "https://apnews.com/article/yemen-houthis-iran-saudi-arabia-red-sea-93dfe17125c63897b232f6461d81d85c",
+      "source_role": "WIRE_REPORT_DIRECT_INTERVIEW"
+    },
+    {
+      "source_id": "SRC-CB088CAC01BD",
+      "url": "https://www.reuters.com/world/middle-east/vessels-trickle-through-strait-hormuz-mideast-tension-persists-2026-09-21/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-7E91E2EBB50F",
+      "url": "https://www.reuters.com/business/energy/oil-rises-after-houthi-attack-saudi-capital-2026-09-20/",
+      "source_role": "WIRE_REPORT"
+    },
+    {
+      "source_id": "SRC-B63B1CFF1B21",
+      "url": "https://www.investing.com/news/commodities-news/us-and-iran-discuss-phased-deal-to-reopen-hormuz-and-end-us-blockade-sources-say-4915884",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-8903FF3CD3B5",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/24/houthis-say-they-attacked-riyadh-and-aramco-facilities-in-yanbu",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-A63BC8E65741",
+      "url": "https://www.fidelity.com/news/article/company-news/202609250025RTRSNEWSCOMBINED_L4N45E0N6_1",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-0F923DD4E393",
+      "url": "https://www.brecorder.com/news/amp/40441195",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-EC8F54249895",
+      "url": "https://www.dawn.com/news/2032556",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-0408EA0B2324",
+      "url": "https://www.ungeneva.org/en/news-media/press-briefing/2026/09/un-geneva-press-briefing-4",
+      "source_role": "PRIMARY_UN_BRIEFING"
+    },
+    {
+      "source_id": "SRC-D7EC14856A62",
+      "url": "https://www.unicef.org/press-releases/hunger-and-malnutrition-stalking-yemens-children-violence-escalates",
+      "source_role": "PRIMARY_UNICEF"
+    },
+    {
+      "source_id": "SRC-3C208621FC7E",
+      "url": "https://transcripts.un.org/en/briefing/geneva/2026-09-25",
+      "source_role": "PRIMARY_UN_TRANSCRIPT"
+    },
+    {
+      "source_id": "SRC-2730DF148B33",
+      "url": "https://currently.att.yahoo.com/att/pact-saudi-pakistan-could-expand-100038950.html",
+      "source_role": "NEWS_SYNDICATION"
+    },
+    {
+      "source_id": "SRC-7F15EA41D122",
+      "url": "https://www.investing.com/news/world-news/trump-told-xi-that-china-helping-iran-is-unacceptable-us-ambassador-says-4917599",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-F98CA0A64F09",
+      "url": "https://www.investing.com/news/commodities-news/irans-araqchi-says-now-up-to-us-to-accept-7day-plan-4918113",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-67BF900A1BB6",
+      "url": "https://www.investing.com/news/world-news/iran-will-make-no-nuclear-concessions-iranian-official-says-4917912",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-F989A81D60B3",
+      "url": "https://www.cbsnews.com/news/iran-president-masoud-pezeshkian-proposal-trump-strait-of-hormuz-war/",
+      "source_role": "DIRECT_INTERVIEW_REPORT"
+    },
+    {
+      "source_id": "SRC-6D37BC3A72EE",
+      "url": "https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-advances-a-fair-and-reciprocal-relationship-with-china-while-hosting-historic-state-visit/",
+      "source_role": "PRIMARY_US_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-1B36B3ADA485",
+      "url": "https://presidentalalimi.net/en/news2004.html",
+      "source_role": "PRIMARY_YEMEN_PRESIDENCY"
+    },
+    {
+      "source_id": "SRC-73BFC2E7963E",
+      "url": "https://www.brecorder.com/news/amp/40441231",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-C296B7DA62ED",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/25/pakistan-saudi-turkish-chiefs-discuss-closer-military-ties",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-BE3466904600",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/26/iran-awaits-us-move-after-wsj-report-says-trump-rejects-peace-plan",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-E48C2BF4BA86",
+      "url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-7-day-proposal/",
+      "source_role": "LIVE_NEWS_REPORT"
+    },
+    {
+      "source_id": "SRC-EE8EBA9E6145",
+      "url": "https://www.thenationalnews.com/news/mena/2026/09/26/iraq-seeks-us-sanctions-exemption-for-iranian-flights/",
+      "source_role": "REGIONAL_NEWS_REPORT"
+    },
+    {
+      "source_id": "SRC-757CA2AFCE4A",
+      "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/26/saudi-says-it-intercepted-2-drones-launched-by-houthis-towards-riyadh",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    },
+    {
+      "source_id": "SRC-5FC4ABD11C6C",
+      "url": "https://www.thenationalnews.com/news/gulf/2026/09/26/saudi-coalition-says-it-intercepted-houthi-drones-headed-for-riyadh/",
+      "source_role": "REGIONAL_NEWS_REPORT"
+    },
+    {
+      "source_id": "SRC-F7BC8A8C0999",
+      "url": "https://saudigazette.com.sa/article/664868/saudi-arabia/saudi-arabia-intercepts-houthi-drones-ballistic-missile-targeting-riyadh-khamis-mushait",
+      "source_role": "SAUDI_NEWS_REPORT"
+    },
+    {
+      "source_id": "SRC-93FB5B57EF3A",
+      "url": "https://www.aol.com/articles/oil-prices-drop-about-3-as-us-iran-explore-path-out-of-war-010643000.html",
+      "source_role": "WIRE_REPORT_SYNDICATED"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "G3-HOUTHI-US-OMAN-INDIRECT-CONTACT-20260920",
+      "event_date": "2026-09-20",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "HOUTHI_US_INDIRECT_CONTACT_AND_MARITIME_NONTARGETING_CLAIM",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-20T13:01:00-04:00",
+      "collection_time": "2026-09-26T19:12:00-04:00",
+      "evidence_horizon_time": "2026-09-21T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "AP reported Houthi political bureau member Mohamed al-Bukhaiti said Washington contacted the Houthis indirectly through Oman after their west-coast advance and that the group said it would not target U.S. or other non-Saudi vessels in Bab el-Mandeb. The contact and policy formulation are preserved as reported Houthi statements; future compliance is not established.",
+      "source_ids": [
+        "SRC-8A05A32FD735"
+      ]
+    },
+    {
+      "event_id": "G3-US-IRAN-PHASED-HORMUZ-BLOCKADE-20260924",
+      "event_date": "2026-09-24",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_IRAN_PHASED_HORMUZ_BLOCKADE_FRAMEWORK_REPORTED",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-24T12:17:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "evidence_horizon_time": "2026-09-25T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Reuters reported U.S. and Iranian negotiators were exploring a phased arrangement pairing reopening Hormuz with lifting the U.S. economic blockade. Multiple diplomatic sources described sequencing as the central obstacle; no agreement or implementation was established.",
+      "source_ids": [
+        "SRC-B63B1CFF1B21"
+      ]
+    },
+    {
+      "event_id": "G3-HOUTHI-RIYADH-YANBU-TARGET-CLAIMS-20260924",
+      "event_date": "2026-09-24",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "HOUTHI_RIYADH_YANBU_TARGET_CLAIMS",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-24T23:00:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "evidence_horizon_time": "2026-09-25T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The Houthis claimed missile and drone attacks on a sensitive target in Riyadh and Saudi Aramco facilities in Yanbu after Saudi interception claims. Reuters reported no immediate Saudi confirmation of the Riyadh attack or independently confirmed damage/casualties at the claimed targets.",
+      "source_ids": [
+        "SRC-8903FF3CD3B5"
+      ]
+    },
+    {
+      "event_id": "G3-GULF-OMAN-STS-CAPACITY-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_type": "GULF_OMAN_STS_CAPACITY_CONSTRAINT",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T00:25:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "evidence_horizon_time": "2026-09-25T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Reuters/Kpler reported Gulf of Oman ship-to-ship crude transfer capacity was reaching limits as Saudi exports shifted through Hormuz, with higher VLCC demand and freight costs. This is a logistics constraint, not a physical closure of the Strait.",
+      "source_ids": [
+        "SRC-A63BC8E65741"
+      ]
+    },
+    {
+      "event_id": "G3-YEMEN-UNICEF-HUMAN-IMPACT-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "PERIOD_ASSESSMENT",
+      "event_type": "YEMEN_UNICEF_IOM_HUMANITARIAN_UPDATE",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T10:00:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "evidence_horizon_time": "2026-09-25T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "UN/UNICEF reporting described roughly 130,000 displaced in three weeks, about 71,000 of them children; more than one in four of nearly 2,900 screened children were acutely malnourished, over 200 severely; 15 children were verified killed and 14 injured since Sep.3; and 243 schools had closed or suspended learning. Agency and timebox denominators remain separate.",
+      "source_ids": [
+        "SRC-0408EA0B2324",
+        "SRC-D7EC14856A62",
+        "SRC-3C208621FC7E"
+      ]
+    },
+    {
+      "event_id": "G3-TURKEY-MAKKAH-IRAN-EXPANSION-SIGNAL-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "MAKKAH_PACT_IRAN_EXPANSION_POLITICAL_SIGNAL",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T06:00:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "evidence_horizon_time": "2026-09-25T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Turkey's parliament speaker said the Saudi-Pakistan-Turkiye defence pact could eventually broaden into a wider Muslim-world framework including Iran. This was a political possibility statement, not Iranian accession, a formal invitation or a treaty amendment.",
+      "source_ids": [
+        "SRC-2730DF148B33"
+      ]
+    },
+    {
+      "event_id": "G3-TRUMP-XI-IRAN-SUPPORT-WARNING-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_CHINA_IRAN_SUPPORT_WARNING",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T09:09:00-04:00",
+      "collection_time": "2026-09-26T18:45:00-04:00",
+      "evidence_horizon_time": "2026-09-25T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The U.S. ambassador to China said President Trump told Xi Jinping that direct or indirect Chinese help to Iran was unacceptable and said Washington received assurances from Beijing. The scope and implementation of any Chinese commitment were not independently established.",
+      "source_ids": [
+        "SRC-7F15EA41D122"
+      ]
+    },
+    {
+      "event_id": "G3-IRAN-SEVEN-DAY-HORMUZ-PROPOSAL-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRAN_PUBLIC_SEVEN_DAY_HORMUZ_PROPOSAL",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T16:35:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "evidence_horizon_time": "2026-09-26T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Foreign Minister Abbas Araqchi said Iran had given the United States a concrete seven-day plan under which Hormuz could reopen and normal maritime passage resume if specified U.S. actions were taken. It was a proposal, not an accepted agreement.",
+      "source_ids": [
+        "SRC-F98CA0A64F09"
+      ]
+    },
+    {
+      "event_id": "G3-IRAN-NUCLEAR-NO-CONCESSIONS-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRAN_ANONYMOUS_NUCLEAR_NEGOTIATING_POSITION",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T13:08:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "evidence_horizon_time": "2026-09-26T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "An anonymous senior Iranian official told Reuters Iran would show no flexibility over enrichment rights or shipping highly enriched uranium abroad even if Washington accepted the Hormuz proposal. This is a source-attributed negotiating position, not a bilateral agreement.",
+      "source_ids": [
+        "SRC-67BF900A1BB6"
+      ]
+    },
+    {
+      "event_id": "G3-PEZESHKIAN-CBS-NUCLEAR-DECISION-POSITION-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRAN_PRESIDENTIAL_NUCLEAR_INSPECTION_AND_DECISION_PROCESS_POSITION",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T21:10:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "evidence_horizon_time": "2026-09-26T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "In a CBS interview, President Masoud Pezeshkian said Iran would allow U.N./IAEA inspectors under arrangements that could be negotiated and described a six-member coordinating process spanning government, security organizations and parliament. The statements establish his public position and self-description, not implementation of inspection access or the formal legal authority of that group.",
+      "source_ids": [
+        "SRC-F989A81D60B3"
+      ]
+    },
+    {
+      "event_id": "G3-US-CHINA-NO-NUKE-NO-TOLLS-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_ACCOUNT_TRUMP_XI_IRAN_NUCLEAR_AND_WATERWAY_POSITION",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T18:00:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "evidence_horizon_time": "2026-09-26T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "A White House fact sheet said Trump and Xi agreed Iran can never have a nuclear weapon and that no country or institution should impose tolls on international waterways. This is a U.S. official account of the leaders' discussion; an identical Chinese-authored formulation was not established in the upstream sweep.",
+      "source_ids": [
+        "SRC-6D37BC3A72EE"
+      ]
+    },
+    {
+      "event_id": "G3-UNSC-HOUTHI-SAUDI-ATTACKS-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "UNSC_HOUTHI_ATTACKS_COLLECTIVE_POSITION",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T13:50:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "evidence_horizon_time": "2026-09-26T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The U.N. Security Council collectively condemned continuing Houthi attacks affecting civilians and civilian/energy infrastructure in Saudi Arabia, called for an end to escalation and stressed navigation rights. The statement is a collective diplomatic position, not independent adjudication of every strike attribution or BDA claim.",
+      "source_ids": [
+        "SRC-E48C2BF4BA86"
+      ]
+    },
+    {
+      "event_id": "G3-YEMEN-GENERAL-MOBILIZATION-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "YEMEN_GOVERNMENT_GENERAL_MOBILIZATION_AND_AMNESTY",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T21:29:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "evidence_horizon_time": "2026-09-26T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Yemen's Presidential Leadership Council called for general mobilisation and urged enlistment through official channels while offering amnesty from Sep.26 to Houthi fighters and affiliates who defect. The policy does not by itself establish recruitment, defections or battlefield effect.",
+      "source_ids": [
+        "SRC-1B36B3ADA485"
+      ]
+    },
+    {
+      "event_id": "G3-MAKKAH-PACT-CHIEFS-MEETING-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "MAKKAH_PACT_CHIEFS_COORDINATION_MEETING",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T18:00:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "evidence_horizon_time": "2026-09-26T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The military chiefs of Pakistan, Saudi Arabia and Turkiye met in Riyadh. Pakistan's military said they discussed intelligence sharing, military coordination, capability integration and threats facing Saudi Arabia. No specific troop deployment or combat commitment was established.",
+      "source_ids": [
+        "SRC-C296B7DA62ED"
+      ]
+    },
+    {
+      "event_id": "G3-US-IRAN-REJECTION-REPORTED-20260925",
+      "event_date": "2026-09-25",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "MEDIA_REPORTED_US_REJECTION_AWAITING_DIRECT_CONFIRMATION",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-25T21:52:00-04:00",
+      "collection_time": "2026-09-26T18:48:00-04:00",
+      "evidence_horizon_time": "2026-09-26T00:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Reuters preserved Wall Street Journal reporting that President Trump had privately rejected Iran's latest proposal, while noting Iran still awaited an official U.S. response at the midnight evidence horizon. The later direct presidential rejection is not backdated into this event.",
+      "source_ids": [
+        "SRC-BE3466904600"
+      ]
+    },
+    {
+      "event_id": "G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "US_PRESIDENTIAL_REJECTION_OF_IRANIAN_PROPOSAL",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-26T11:12:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "evidence_horizon_time": "2026-09-26T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "President Trump publicly confirmed he was rejecting Iran's latest seven-day Hormuz proposal. This establishes rejection of that proposal, not the end of all diplomacy or a confirmed future bombing timetable.",
+      "source_ids": [
+        "SRC-E48C2BF4BA86"
+      ]
+    },
+    {
+      "event_id": "G3-CHINA-UN-GULF-SOVEREIGNTY-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "CHINA_UNGA_GULF_SOVEREIGNTY_POSITION",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-26T10:51:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "evidence_horizon_time": "2026-09-26T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "At the U.N. General Assembly, Vice President Han Zheng said major powers should uphold rules and that the sovereignty and security of Middle Eastern countries, including Gulf states, should be respected. He did not name the United States.",
+      "source_ids": [
+        "SRC-E48C2BF4BA86"
+      ]
+    },
+    {
+      "event_id": "G3-ISRAEL-SEJOUD-STRIKE-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "ISRAELI_STRIKE_SOUTHERN_LEBANON",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-26T11:45:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "evidence_horizon_time": "2026-09-26T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Israel said it struck a facility in the Sejoud area of southern Lebanon and identified it as Hezbollah weapons storage used to support attacks on IDF soldiers. The strike is reported; facility function and prior use remain Israeli military attribution absent independent corroboration.",
+      "source_ids": [
+        "SRC-E48C2BF4BA86"
+      ]
+    },
+    {
+      "event_id": "G3-IRAN-AVIATION-NONMILITARY-CLARIFICATION-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRAN_AVIATION_RETALIATION_SCOPE_CLARIFICATION",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-26T09:30:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "evidence_horizon_time": "2026-09-26T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "SNSC secretary Mohsen Rezaei said Iran would not resort to military retaliation over restrictions on Iranian airlines, called reporting of military action false and said negotiations plus non-military retaliatory options remained. The clarification is preserved chronologically rather than rewriting the earlier ambiguous threat.",
+      "source_ids": [
+        "SRC-E48C2BF4BA86"
+      ]
+    },
+    {
+      "event_id": "G3-IRAQ-AVIATION-WAIVER-REQUEST-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "DIPLOMATIC_OR_POLICY_EVENT",
+      "event_type": "IRAQ_IRANIAN_AIRLINE_SANCTIONS_WAIVER_REQUEST",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-26T08:00:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "evidence_horizon_time": "2026-09-26T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "Iraq said it was in direct talks with Washington seeking limited exemptions from restrictions on Iranian airlines for humanitarian, medical, educational and religious travel. No waiver had been granted by the noon evidence horizon.",
+      "source_ids": [
+        "SRC-EE8EBA9E6145"
+      ]
+    },
+    {
+      "event_id": "G3-SA-HOUTHI-RIYADH-KHAMIS-SALVO-20260926",
+      "event_date": "2026-09-26",
+      "event_class": "RELATED_THEATER_CONTEXT",
+      "event_type": "SAUDI_HOUTHI_DRONE_MISSILE_INTERCEPT_UPDATE",
+      "game_knowledge_time": "2026-09-26T19:30:00-04:00",
+      "public_available_time": "2026-09-26T06:00:00-04:00",
+      "collection_time": "2026-09-26T18:52:00-04:00",
+      "evidence_horizon_time": "2026-09-26T12:00:00-04:00",
+      "strike_countable": false,
+      "summary": "The Saudi-led coalition said it intercepted two Houthi drones toward Riyadh. Contemporaneous coalition-derived reports differed between one and two ballistic missiles toward Khamis Mushait. The discrepancy is preserved; no verified impact BDA or casualties from intercepted weapons were established.",
+      "source_ids": [
+        "SRC-757CA2AFCE4A",
+        "SRC-5FC4ABD11C6C",
+        "SRC-F7BC8A8C0999"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_type": "shipping",
+      "entity_id": "SHIP-HORMUZ-TRAFFIC-20260914",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "observed_state": "Commercial reporting showed continuing but highly constrained and volatile Hormuz traffic. Retrospectively recovered Reuters/Kpler data put 17 trackable commodity-vessel transits over the Sep.20 weekend; Sep.24 preliminary traffic was nine, eight outbound. Weekly crude-flow and Saudi export-adaptation metrics show substantial energy movement despite depressed visible vessel counts. AIS-dark traffic remains a material undercount caveat.",
+        "adjudication": "TRAFFIC_CONTINUES_BUT_NOT_NORMALIZED; SEP24_PRELIMINARY_COMMODITY_TRANSITS_9; WEEKLY_CRUDE_AND_SAUDI_EXPORT_DENOMINATORS_SEPARATE; AIS_DARK_CAVEAT",
+        "latest_observable_metric": {
+          "provider": "Kpler via public reporting",
+          "day": "2026-09-24",
+          "commodity_vessel_transits": 9,
+          "inbound": 1,
+          "outbound": 8,
+          "scope": "PRELIMINARY_OBSERVABLE_COMMODITY_TRAFFIC",
+          "ais_dark_excluded": true
+        },
+        "retrospective_weekend_metric": {
+          "period": "2026-09-20 weekend",
+          "trackable_commodity_vessel_transits": 17,
+          "prior_weekend_comparison": 37,
+          "status": "LATE_DISCOVERED_HISTORICAL_METRIC"
+        },
+        "weekly_crude_flow": {
+          "week_start": "2026-09-20",
+          "crude_barrels_exited_so_far": 33700000,
+          "tankers": 19,
+          "status": "SEPARATE_BARREL_DENOMINATOR"
+        },
+        "saudi_export_adaptation": {
+          "september_hormuz_crude_bpd_on_track": 3600000,
+          "august_hormuz_crude_bpd": 900000,
+          "status": "ROUTE_ADAPTATION_NOT_TRAFFIC_NORMALIZATION"
+        },
+        "source_ids": [
+          "SRC-B82FA8C138F4",
+          "SRC-BC033E9E9418",
+          "SRC-299907547E98",
+          "SRC-CEB52EFD8564",
+          "SRC-CB088CAC01BD",
+          "SRC-7E91E2EBB50F",
+          "SRC-0F923DD4E393",
+          "SRC-EC8F54249895",
+          "SRC-A63BC8E65741"
+        ]
+      }
+    },
+    {
+      "entity_type": "casualty",
+      "entity_id": "CAS-YEMEN-DISPLACEMENT-20260913",
+      "mode": "update",
+      "record": {
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "current_human_impact_note": "Sep.25 UN/UNICEF reporting showed worsening displacement, child malnutrition, verified child casualties and school closures. Earlier WHO/IOM/UNHCR series remain separately timeboxed rather than overwritten.",
+        "sep25_unicef_iom_update": {
+          "displaced_approx": 130000,
+          "children_displaced_approx": 71000,
+          "children_screened_nearly": 2900,
+          "acute_malnutrition_share": "MORE_THAN_ONE_IN_FOUR",
+          "severe_acute_malnutrition_over": 200,
+          "children_killed_verified": 15,
+          "children_injured_verified": 14,
+          "children_missing_reported": 3,
+          "schools_closed_or_suspended": 243,
+          "students_affected_over": 137000
+        },
+        "source_ids": [
+          "SRC-CD278496439E",
+          "SRC-3C1E87E63037",
+          "SRC-0DBD6290A901",
+          "SRC-4445E7D5CB5C",
+          "SRC-B3567A733014",
+          "SRC-79EAFC0264A9",
+          "SRC-0408EA0B2324",
+          "SRC-D7EC14856A62",
+          "SRC-3C208621FC7E"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-IRAN-AVIATION-SECONDARY-SANCTIONS-20260923",
+      "mode": "update",
+      "record": {
+        "date": "2026-09-26",
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "observed_state": "U.S. aviation secondary-sanctions pressure broadened from earlier Baghdad/Muscat/UAE disruption to suspension of Iranian flights at all four Iraqi airports then serving Iran. Baghdad subsequently opened direct waiver talks with Washington for humanitarian, medical, educational and religious travel. Rezaei said Iran would not use military retaliation over the restrictions and retained non-military options. No U.S. waiver or worldwide grounding was established by the cutoff.",
+        "adjudication": "MATERIALLY_BROADER_REGIONAL_IMPLEMENTATION; UAE_STATE_LEVEL_SUSPENSION_CONFIRMED; IRAQ_ALL_FOUR_ACTIVE_IRAN_SERVICE_AIRPORTS_SUSPENDED; IRAQI_WAIVER_REQUEST_PENDING; RETALIATION_THREAT_NOT_EXECUTED_IN_EVIDENCE_HORIZON; IRAN_MILITARY_RETALIATION_DISAVOWED_BY_REZAEI; GLOBAL_GROUNDING_NOT_ESTABLISHED",
+        "source_ids": [
+          "SRC-57578B9B5643",
+          "SRC-12C9FD3FBFE1",
+          "SRC-912CB3796E2C",
+          "SRC-94EB47261CE3",
+          "SRC-6D4B41984CFD",
+          "SRC-35290D936476",
+          "SRC-D380C6451B15",
+          "SRC-73BFC2E7963E",
+          "SRC-EE8EBA9E6145",
+          "SRC-E48C2BF4BA86"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "mode": "update",
+      "record": {
+        "status": "MEDIATED_ENGAGEMENT_CONFIRMED; INDIRECT_FORMAT_SUPPORTED_BY_LATEST_REUTERS_RECONSTRUCTION; COMPETING_PUBLIC_CHARACTERIZATION_PRESERVED; PARTIES_REPORTED_FAR_APART_AS_OF_SEP24; DIPLOMACY_CONTINUED; PHASED_HORMUZ_BLOCKADE_FRAMEWORK_REPORTED; IRAN_SEVEN_DAY_PROPOSAL_PUBLICLY_STATED; WSJ_REPORTED_US_REJECTION_PRESERVED; DIRECT_TRUMP_REJECTION_CONFIRMED_SEP26; NO_AGREEMENT; NO_ACCEPTED_SETTLEMENT",
+        "observed_state": "The prior mediated/indirect-contact reconstruction and competing public characterization remain preserved. After Sep.24 multi-source reporting described a phased Hormuz/blockade framework, Araqchi publicly described a seven-day Iranian proposal on Sep.25. Late Friday reporting said Trump had privately rejected it while Iran still awaited an official response; on Sep.26 Trump directly confirmed rejection. These stages are preserved separately. Rejection of this proposal does not establish that all diplomatic channels ended.",
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "source_ids": [
+          "SRC-F998CB101972",
+          "SRC-147F3EB0E6BC",
+          "SRC-25BB1B596B72",
+          "SRC-6D4B41984CFD",
+          "SRC-3C3CB8B494AA",
+          "SRC-B63B1CFF1B21",
+          "SRC-F98CA0A64F09",
+          "SRC-BE3466904600",
+          "SRC-E48C2BF4BA86"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-GULF-OMAN-STS-CAPACITY-20260925",
+      "mode": "add",
+      "record": {
+        "economic_id": "ECON-GULF-OMAN-STS-CAPACITY-20260925",
+        "date": "2026-09-25",
+        "metric": "Gulf of Oman ship-to-ship crude transfer capacity and Saudi route adaptation",
+        "observed_state": "Reuters/Kpler reported STS transfer capacity constraints as Saudi Arabia pushed more crude through Hormuz, raising VLCC demand and freight costs.",
+        "adjudication": "LOGISTICS_CAPACITY_CONSTRAINT_SUPPORTED; NOT_PHYSICAL_STRAIT_CLOSURE",
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "source_ids": [
+          "SRC-A63BC8E65741"
+        ]
+      }
+    },
+    {
+      "entity_type": "economic",
+      "entity_id": "ECON-OIL-MARKET-SEP23-20260923",
+      "mode": "update",
+      "record": {
+        "date": "2026-09-25",
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "observed_state": "Reuters reported oil prices fell around 3% on Sep.25 as markets priced increased hopes of U.S.-Iran diplomacy while continuing to price Houthi-related Saudi supply risk. The move is a market-expectation signal, not proof of settlement.",
+        "adjudication": "MARKET_EXPECTATION_SIGNAL; NO_DIPLOMATIC_SETTLEMENT_INFERRED",
+        "source_ids": [
+          "SRC-3BA2A09AEFE3",
+          "SRC-788D0A59F1DF",
+          "SRC-3C3CB8B494AA",
+          "SRC-93FB5B57EF3A"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-MAKKAH-PACT-IMPLEMENTATION-20260925",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-MAKKAH-PACT-IMPLEMENTATION-20260925",
+        "date": "2026-09-25",
+        "status": "CHIEFS_MEETING_CONFIRMED; INTELLIGENCE_SHARING_MILITARY_COORDINATION_AND_CAPABILITY_INTEGRATION_DISCUSSED; SPECIFIC_DEPLOYMENT_OR_COMBAT_COMMITMENT_NOT_ESTABLISHED",
+        "observed_state": "Saudi, Pakistani and Turkish military chiefs met in Riyadh under the Makkah Joint Defence Agreement. Separate Turkish political language raised possible future broader participation including Iran, but no Iranian accession or formal invitation was established.",
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "source_ids": [
+          "SRC-C296B7DA62ED",
+          "SRC-2730DF148B33"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-IRAN-NUCLEAR-POSITIONS-20260925",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-IRAN-NUCLEAR-POSITIONS-20260925",
+        "date": "2026-09-25",
+        "status": "PEZESHKIAN_PUBLICLY_ACCEPTS_INSPECTOR_RETURN_IN_NEGOTIATED_ARRANGEMENT; ANONYMOUS_SENIOR_OFFICIAL_REPORTS_NO_FLEXIBILITY_ON_ENRICHMENT_OR_URANIUM_EXPORT; IMPLEMENTATION_UNESTABLISHED",
+        "observed_state": "Pezeshkian publicly said Iran would allow U.N./IAEA inspectors under negotiated arrangements. An anonymous senior Iranian official separately told Reuters Iran would make no concession on enrichment rights or shipping highly enriched uranium abroad. The speaker difference and scope are preserved rather than reconciled into a single position.",
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "source_ids": [
+          "SRC-F989A81D60B3",
+          "SRC-67BF900A1BB6"
+        ]
+      }
+    },
+    {
+      "entity_type": "diplomacy",
+      "entity_id": "DIP-US-CHINA-IRAN-HORMUZ-20260925",
+      "mode": "add",
+      "record": {
+        "diplomacy_id": "DIP-US-CHINA-IRAN-HORMUZ-20260925",
+        "date": "2026-09-25",
+        "status": "US_ACCOUNT_OF_TRUMP_XI_NO_IRAN_NUKE_NO_WATERWAY_TOLLS; US_AMBASSADOR_REPORTS_CHINESE_ASSURANCE_ON_SUPPORT; CHINA_SEPARATELY_STRESSES_GULF_SOVEREIGNTY_AT_UN",
+        "observed_state": "U.S. official accounts described Trump-Xi alignment against an Iranian nuclear weapon, tolls on international waterways and Chinese assistance to Iran. China separately used sovereignty/security language at the U.N. The statements are preserved by speaker and source rather than treated as one joint policy text.",
+        "knowledge_time": "2026-09-26T19:30:00-04:00",
+        "source_ids": [
+          "SRC-7F15EA41D122",
+          "SRC-6D37BC3A72EE",
+          "SRC-E48C2BF4BA86"
+        ]
+      }
+    }
+  ],
+  "narrative_claims": []
+}

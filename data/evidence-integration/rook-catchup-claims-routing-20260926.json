@@ -1,0 +1,38 @@
+{
+  "artifact_role": "EVIDENCE_INTEGRATION_TO_CLAIMS_FORENSICS_HANDOFF",
+  "authority": "FACTUAL_EVIDENCE_ROUTING_ONLY",
+  "as_of": "2026-09-26T19:30:00-04:00",
+  "basis": "data/evidence-integration/rook-evidence-locker-sweep-20260926T1200ET-recovered-v2.json",
+  "rules": [
+    "Evidence Integration does not adjudicate deception, knowledge, Lie Ledger eligibility or Web of Lies lineage.",
+    "Keep Trump's overnight ship-count proposition separate from the broader 'total control' proposition.",
+    "Do not equate commercial Kpler/AIS counts, all-vessel traffic, escorted vessels and CENTCOM aggregates without denominator reconciliation."
+  ],
+  "referrals": [
+    {
+      "proposition_id": "US-TRUMP-HORMUZ-29-SHIPS-TOTAL-CONTROL-20260926",
+      "topic": "Trump Sep.26 Hormuz traffic/control claims",
+      "factual_context": [
+        "SHIP-HORMUZ-TRAFFIC-20260914",
+        "G3-TRUMP-REJECTS-IRAN-PROPOSAL-20260926",
+        "commercial Kpler/AIS series and previously preserved CENTCOM aggregate claims"
+      ],
+      "adjudication_requested": [
+        "atomize '29 ships came out the previous night' from 'United States has total control of the strait'",
+        "identify the denominator and time window underlying the 29-ship statement if independently recoverable",
+        "compare against source-bounded commercial traffic series without conflating vessel classes",
+        "adjudicate truth and knowledge only under Claims Forensics authority"
+      ],
+      "do_not_infer": [
+        "29 means 29 Kpler commodity-vessel transits",
+        "total control follows from any single traffic count",
+        "deception from denominator mismatch alone"
+      ]
+    }
+  ],
+  "prior_referrals_retained_by_reference": [
+    "data/evidence-integration/rook-catchup-claims-routing-20260923.json",
+    "data/evidence-integration/rook-catchup-claims-routing-20260924.json"
+  ],
+  "web_of_lies": "OUT_OF_SCOPE"
+}
