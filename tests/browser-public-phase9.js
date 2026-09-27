@@ -339,6 +339,14 @@ async function route(cdp, hash, key) {
     })()`);
     assert(!/Stable strike record(?: ID)?:/i.test(technicalRecord.before), 'internal strike ID is visible on the reader surface');
     assert(!/Stable strike record(?: ID)?:/i.test(technicalRecord.after), 'internal strike ID leaks through ordinary evidence expansion');
+    const strikeMapPath = await cdp.eval(`(() => {
+      const card = document.querySelector('[data-strike-effect-id]');
+      const button = card?.querySelector('[data-map-record-link]');
+      if (!button) return { button: false, selected: false };
+      button.click();
+      return { button: true, selected: Boolean(document.querySelector('.context-map .map-selection-card:not([hidden])')) };
+    })()`);
+    assert.deepEqual(strikeMapPath, { button: true, selected: true }, 'mapped strike evidence does not open its matching map record');
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
