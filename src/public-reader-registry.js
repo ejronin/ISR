@@ -324,14 +324,33 @@
       const counts=Object.fromEntries(['not-yet','partial','success','failure'].map(key=>[key,families.filter(value=>value===key).length]));
       const summary=add(g,'p','objective-actor-summary');summary.textContent=[counts.success&&`${counts.success} achieved`,counts.partial&&`${counts.partial} partial`,counts['not-yet']&&`${counts['not-yet']} open`,counts.failure&&`${counts.failure} not achieved`].filter(Boolean).join(' · ');
       if(actor==='Iran'){
-        const walkbacks=sourceData.iran_walkbacks||[];
+        const walkbacks=(sourceData.iran_walkbacks||[]).slice();
         const original=walkbacks.find(item=>/ORIGINAL BENCHMARK/i.test(txt(item.type)));
-        const narrowed=walkbacks.find(item=>/OBJECTIVE DOWNGRADE/i.test(txt(item.type)));
-        if(original&&narrowed){
-          const shift=add(g,'aside','objective-shift-summary');add(shift,'strong','','How the stated end goal changed');
-          const dl=add(shift,'dl','objective-shift-list');add(dl,'dt','','Original benchmark');add(dl,'dd','',txt(original.from));add(dl,'dt','','Later narrower benchmark');add(dl,'dd','',txt(narrowed.to));
-          if(narrowed.assessment){add(dl,'dt','','What changed');add(dl,'dd','',txt(narrowed.assessment));}
-          evidence(shift,context,{source_ids:[...(original.source_ids||[]),...(narrowed.source_ids||[])]},'Sources for this shift',sourceData.sources||{});
+        const currentNode=(currentPositionData.node_evidence||[]).find(item=>item.node_id==='Q0');
+        const chain=add(g,'aside','objective-position-history'); chain.dataset.positionHistory='iran';
+        add(chain,'h4','','Iran’s stated position — current to original');
+        add(chain,'p','section-note','This runs backward from the current public position to earlier positions. Each change keeps the accepted finding attached to the source that supports it; a later position does not erase the earlier objective.');
+        const list=add(chain,'ol','objective-position-chain');
+        const addPositionSource=(host,id,fallbackDate)=>{const source=resolvePositionSource(id);if(!source.url)return;const meta=add(host,'p','objective-position-source');add(meta,'strong','',sourceAttribution(id));meta.append(context.documentObject.createTextNode(' · '+(source.date||fallbackDate||'')+' · '));const link=add(meta,'a','',source.title||source.publisher||id);link.href=source.url;link.target='_blank';link.rel='noopener noreferrer';};
+        if(currentNode){
+          const item=add(list,'li','objective-position-step current'); item.dataset.positionStep='current';
+          add(item,'span','objective-position-marker','Current position');
+          add(item,'p','objective-position-copy',txt(currentNode.claim));
+          (currentNode.source_ids||[]).forEach(id=>addPositionSource(item,id,''));
+        }
+        walkbacks.filter(item=>!/ORIGINAL BENCHMARK/i.test(txt(item.type))).slice().reverse().forEach(step=>{
+          const item=add(list,'li','objective-position-step change'); item.dataset.positionStep=objectiveKey(step.type);
+          add(item,'span','objective-position-marker',plain(step.type).replace(/verified /i,''));
+          const move=add(item,'p','objective-position-copy'); add(move,'strong','','Moved from: '); move.append(context.documentObject.createTextNode(txt(step.from)));
+          const now=add(item,'p','objective-position-copy'); add(now,'strong','','To: '); now.append(context.documentObject.createTextNode(txt(step.to)));
+          if(step.assessment)add(item,'p','objective-position-why',txt(step.assessment));
+          (step.source_ids||[]).slice(0,3).forEach(id=>addPositionSource(item,id,step.date));
+        });
+        if(original){
+          const item=add(list,'li','objective-position-step original'); item.dataset.positionStep='original';
+          add(item,'span','objective-position-marker','Original claim / objective');
+          add(item,'p','objective-position-copy',txt(original.from));
+          (original.source_ids||[]).forEach(id=>addPositionSource(item,id,original.date));
         }
       }
       const l=add(g,'div','objective-card-list');
