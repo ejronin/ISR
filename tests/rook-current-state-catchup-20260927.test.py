@@ -55,7 +55,7 @@ def main() -> int:
 
     assert packet["narrative_claims"] == []
     assert routing["referrals"] == []
-    assert "rook-catchup-claims-routing-20260926.json" in routing["prior_referrals_retained_by_reference"]
+    assert "data/evidence-integration/rook-catchup-claims-routing-20260926.json" in routing["prior_referrals_retained_by_reference"]
     assert audit["claims_forensics"].startswith("NO_NEW_REFERRALS")
     assert audit["web_of_lies"] == "OUT_OF_SCOPE_NO_FILES_OR_SEMANTICS_TO_CHANGE"
     assert packet["upstream_provenance"]["web_of_lies"] == "OUT_OF_SCOPE_NO_HANDOFF_OR_SEMANTIC_MUTATION"
