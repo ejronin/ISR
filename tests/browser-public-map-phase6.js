@@ -80,7 +80,7 @@ const PRESERVED_FACILITY_IDS = [
     assert.equal(local.leaflet, '1.9.4');
     assert.equal(local.role, 'PRESENTATION_REFERENCE_GEOGRAPHY');
     assert.equal(local.version, '5.1.1');
-    assert.deepEqual(new Set(local.layers), new Set(['regional_50m', 'hormuz_10m']));
+    assert.deepEqual(new Set(local.layers), new Set(['western_context_110m', 'regional_50m', 'hormuz_10m']));
     assert.equal(local.map, true);
     assert(local.coastPaths >= 4, 'Hormuz map lacks detailed local coast/country geometry');
     assert.equal(local.filledLand, true, 'reference geography renders only outlines instead of visible land masses');
