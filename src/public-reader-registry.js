@@ -20,6 +20,7 @@
 
   const VERSION = 'atlas-reader-registry-v1';
   const PRODUCT_VERSION = 'sep14-reader-convergence-v1';
+  const PROTECTED_LAYOUT_ROUTES = new Set(['start.overview','evidence.information','evidence.web_of_lies']);
   const INTERNAL_TEXT = /(?<![\w./-])ROOK(?![\w./-])|\bPR\/CI\b|claim[_ -]?instance[_ -]?id|proposition[_ -]?id|chain[_ -]?id|publication[_ -]?blocker|knowledge[_ -]?basis[_ -]?support[_ -]?failure|\bcommit\s+SHA\b|\bmerge\s+SHA\b|\bpull request\b|\bGitHub Actions\b|\bworkflow run\b|\bcanonical material-loss records\b|\bcurrent qualification\b|\banalyst position\b|\bEvidence\s*\/\s*BDA\b/i;
 
   class ReaderRegistryError extends Error {
@@ -405,7 +406,7 @@
         stagedState.routeKey=route.key;stagedState.pageOwner=route.owner;stagedState.primarySection=route.primaryLabel;stagedState.secondaryPage=route.label;doc.title=`${route.title} · Iran War Evidence Atlas`;
         readerSupportRuntime.projectShell(shell.app,context);
         finalizePublicProduct(stage,route,routeRuntime,doc);
-        const finalized=validateFinalizedStage(stage,readerSupportRuntime);finalized.app.dataset.readerAuthority=VERSION;
+        const finalized=validateFinalizedStage(stage,readerSupportRuntime);finalized.app.dataset.readerAuthority=VERSION;finalized.app.dataset.routeKey=route.key;finalized.app.dataset.layoutScope=PROTECTED_LAYOUT_ROUTES.has(route.key)?'protected':'adaptive-wide';
         previousVisible.forEach(quiesceMaps);rootElement.replaceChildren(finalized.app);retireVisibleNodes(doc,rootElement,previousVisible);stage.remove();
         rootElement.className='atlas-ready';rootElement.dataset.status='ready';rootElement.setAttribute('aria-busy','false');copyRouteState(state,stagedState);delete state.readerError;
         if(focusHeading&&previousRouteKey&&previousRouteKey!==route.key)finalized.heading.focus?.();previousRouteKey=route.key;return route;
