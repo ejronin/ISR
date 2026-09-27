@@ -20,8 +20,8 @@ assert.deepEqual(ia.PRIMARY_SECTIONS.map(section => section.label), expectedPrim
 
 const expectedSecondary = {
   start: ['Overview', "Who's Involved"],
-  timeline: ['War Timeline', 'Detailed Chronology'],
-  military: ['Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Imagery'],
+  timeline: ['War Timeline', 'All Events'],
+  military: ['Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Images'],
   hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Current Hormuz Talks'],
   talks: ['Talks & Deals', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
   objectives: ['Goals & Results', 'Position Changes', "How Iran's Position Changed"],
