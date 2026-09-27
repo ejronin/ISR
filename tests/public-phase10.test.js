@@ -44,7 +44,7 @@ for (const phrase of [
   'Observation', 'Actor claim', 'Source reporting', 'Independent corroboration', 'Atlas assessment', 'Competing explanation', 'Confidence & limits',
   'Factual status and knowledge are separate assessments.', 'A false statement is not automatically a deliberate lie.',
   'Knowledge judgment', 'Combined ROOK assessment', 'EVIDENCE COMPLETION REQUIRED',
-  'From damage to strategic effect', 'A confirmed hit does not by itself establish destroyed capability or strategic effect.',
+  'From damage to war results', 'A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.',
   'Physical damage', 'Asset lost', 'Subsystem degraded', 'Function degraded', 'Local operational effect', 'Theater operational effect', 'Strategic consequence',
   'Unknown ≠ zero.', 'Claimed ≠ verified.', 'Reported ≠ established.', 'Unsupported ≠ false.', 'Disputed ≠ false.',
   'IRGC claim: six vessel successes. Verified loss count not established.',
