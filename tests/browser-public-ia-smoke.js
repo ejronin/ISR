@@ -447,13 +447,13 @@ async function loadDirectRoute(cdp, route) {
       return document.querySelector('main')?.innerText || '';
     })()`);
     assert.match(losses, /18\s+Total military dead/);
-    assert.match(losses, /757\s+WIA/);
-    assert.match(losses, /1\s+MIA/);
+    assert.match(losses, /757\s+Wounded in action/i);
+    assert.match(losses, /1\s+Missing in action/i);
     assert.match(losses, /2,008\s+military-death subtotal/);
     const expectedMaterialLossRecords = await cdp.eval(`fetch('./data/public-current-state.json', { cache: 'no-store' }).then(response => response.json()).then(model => model.counts.material_loss_records)`);
-    assert.match(losses, new RegExp(`${expectedMaterialLossRecords}\\s+material-loss records`));
+    assert.match(losses, new RegExp(`${expectedMaterialLossRecords}\\s+loss records`));
     assert(!/\b\d[\d,]*\s+total casualties\b/i.test(losses), 'loss page displays an invalid unique-person grand total');
-    assert.match(losses, /does not calculate [“"]total casualties\s*=\s*dead/i, 'loss page omits the approved anti-double-counting warning');
+    assert.match(losses, /does not add dead\s*\+\s*wounded\s*\+\s*missing/i, 'loss page omits the anti-double-counting warning');
 
     await setRoute(cdp, ia.ROUTES.get('talks.mou'));
     const mou = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
