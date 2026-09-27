@@ -114,7 +114,7 @@ async function loadDirectRoute(cdp, route) {
     assert.equal(direct.owner, 'FacilitiesPage');
     assert.equal(direct.h1, 'Bases & Infrastructure');
     assert(direct.navs.includes('Primary'));
-    assert(direct.navs.includes('Military Record pages'));
+    assert(direct.navs.includes('War & Losses pages'));
     assert.equal(direct.tabs, 0, 'global navigation must not use tab semantics');
     assert.equal(direct.skipTag, 'BUTTON', 'skip control must not enter the hash-router namespace');
     assert.equal(direct.skipHref, null, 'skip control must not create a fragment route');
