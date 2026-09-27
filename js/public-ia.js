@@ -1213,10 +1213,12 @@
         const hormuzOnly = viewport[0][0] >= 22.4 && viewport[1][0] <= 28.9 && viewport[0][1] >= 50.8 && viewport[1][1] <= 60.8;
         const detailLayer = hormuzOnly ? 'hormuz_10m' : 'regional_50m';
         const features = geography.features.filter(feature => feature.properties && feature.properties.layer === detailLayer);
-        L.geoJSON({ type: 'FeatureCollection', features }, {
+        const referenceLand = L.geoJSON({ type: 'FeatureCollection', features }, {
           pane: 'atlas-reference', interactive: false,
-          style: { color: '#587082', weight: detailLayer === 'hormuz_10m' ? 1.2 : .8, fillColor: '#172732', fillOpacity: .92 }
+          style: { color: '#78909d', weight: detailLayer === 'hormuz_10m' ? 1.25 : .9, opacity: .95, fillColor: '#263f4d', fillOpacity: 1 }
         }).addTo(map);
+        section.dataset.mapReferenceSurface = 'filled-land';
+        referenceLand.eachLayer(layer => { const path = layer.getElement && layer.getElement(); if (path) path.classList.add('atlas-reference-land'); });
         if (selectedCountryFeatures.length) {
           L.geoJSON({ type: 'FeatureCollection', features: selectedCountryFeatures }, {
             pane: 'atlas-evidence', interactive: false,
