@@ -83,6 +83,8 @@ assert(!/L\.tileLayer|tile\.openstreetmap|api\.mapbox|maps\.google/i.test(mapSou
 assert(mapSource.includes('_atlasHasRecord'), 'MapView does not expose generic record-to-map matching');
 assert(mapSource.includes('_atlasFocusRecord'), 'MapView does not expose generic selected-record focus');
 assert(mapSource.includes('Where recorded losses occurred'), 'loss reader has no evidence-linked map view');
+assert(mapSource.includes("section.dataset.mapReferenceSurface = 'filled-land'"), 'MapView does not explicitly render filled reference land');
+assert(mapSource.includes("fillOpacity: 1"), 'reference land is not rendered as an opaque surface');
 for (const forbiddenPath of ['data/bda-map-data.json', 'data/map-source-index.json']) assert(!fs.existsSync(path.join(root, forbiddenPath)), `separate map pipeline artifact exists: ${forbiddenPath}`);
 
 console.log('public map Phase 6: PASS - local geography, explicit route authority, polyline flow, generic imagery tiers, canonical precedence, and explicit signed reader assets verified');
