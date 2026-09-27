@@ -1212,10 +1212,14 @@
         });
         const hormuzOnly = viewport[0][0] >= 22.4 && viewport[1][0] <= 28.9 && viewport[0][1] >= 50.8 && viewport[1][1] <= 60.8;
         const detailLayer = hormuzOnly ? 'hormuz_10m' : 'regional_50m';
-        const features = geography.features.filter(feature => feature.properties && feature.properties.layer === detailLayer);
+        const visibleReferenceLayers = hormuzOnly ? new Set(['hormuz_10m']) : new Set(['western_context_110m', 'regional_50m']);
+        const features = geography.features.filter(feature => feature.properties && visibleReferenceLayers.has(feature.properties.layer));
         const referenceLand = L.geoJSON({ type: 'FeatureCollection', features }, {
           pane: 'atlas-reference', interactive: false,
-          style: { color: '#78909d', weight: detailLayer === 'hormuz_10m' ? 1.25 : .9, opacity: .95, fillColor: '#263f4d', fillOpacity: 1, className: 'atlas-reference-land' }
+          style: feature => {
+            const contextLayer = feature && feature.properties && feature.properties.layer === 'western_context_110m';
+            return { color: contextLayer ? '#5d7482' : '#78909d', weight: contextLayer ? .65 : detailLayer === 'hormuz_10m' ? 1.25 : .9, opacity: contextLayer ? .8 : .95, fillColor: contextLayer ? '#203541' : '#263f4d', fillOpacity: 1, className: 'atlas-reference-land' };
+          }
         }).addTo(map);
         section.dataset.mapReferenceSurface = 'filled-land';
         if (selectedCountryFeatures.length) {
