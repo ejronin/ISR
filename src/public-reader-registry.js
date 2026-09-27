@@ -200,7 +200,7 @@
     const all=[...records(context.model,'ledger.facilities'),...records(context.model,'gate3.facilities')], map=new Map();
     all.forEach(r=>{const id=r.facility_id||r.id||r.name;if(id)map.set(id,{...(map.get(id)||{}),...r,facility_id:id});});
     const s=node(article.ownerDocument,'section','content-section reader-facility-dashboard'); s.dataset.readerFacilityDashboard='evidence-predicates';
-    add(s,'h2','','Current facility status'); add(s,'p','lead-copy',`${map.size} named facilities are tracked in the current public record. That is the denominator here; it is not every facility in the theater.`);
+    add(s,'h2','','Current facility status'); add(s,'p','lead-copy',`${map.size} named facilities are tracked in the current public record. That is the number shown here; it does not represent every facility in the theater.`);
     const order=['destroyed','damaged_not_operating','damaged_operating','operating','unknown','administrative'], groups=new Map(order.map(k=>[k,[]]));
     map.forEach((r,id)=>{const p=FACILITY[id]||['unknown','Facility','The current record does not support a more specific operating-status label.']; groups.get(p[0]).push([id,r,p]);});
     const active=order.slice(0,5).reduce((n,k)=>n+groups.get(k).length,0), bar=add(s,'div','reader-facility-status-bar');
@@ -229,7 +229,7 @@
 
   function imagery(article) {
     intro(article,'Start with what the imagery shows: the site, comparison date and visible physical change. Geolocation precision and interpretation limits come after the observation.');
-    const m=[...article.querySelectorAll(':scope > section')].find(x=>/precision|tier|geolocat/i.test(x.querySelector('h2')?.textContent||''));if(m)collapse(m,'How imagery precision is graded');
+    const m=[...article.querySelectorAll(':scope > section')].find(x=>/precision|tier|geolocat/i.test(x.querySelector('h2')?.textContent||''));if(m)collapse(m,'How map location accuracy works');
     const a=findSection(article,/claims about these facilities hold up|facility assessments/i);
     if(a){
       const h=a.querySelector(':scope > h2'); if(h) h.textContent='Facility claim evidence';
@@ -262,7 +262,7 @@
   function hormuzTalks(article) {
     intro(article,'Oman publicly confirmed the planned Gulf-Iran Hormuz meeting and then postponed it. No signed reopening agreement or agreed sovereignty, route or fee terms resulted from that meeting.');
     const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent='Iran moved from claiming it would control and manage the Strait to a shared negotiating process with Oman and Gulf states. The confirmed meeting was postponed; substantive route, fee, sovereignty and reopening terms remain unresolved.';
-    if(s)add(s,'p','scope-note','Saudi amendments were source-reported through a Gulf official; their detailed contents are not established through a public Saudi primary text.');
+    if(s)add(s,'p','scope-note','A Gulf official reported Saudi amendments. Saudi Arabia has not published a public document with the full details.');
   }
 
   function diplomacy(article) {
