@@ -1,0 +1,162 @@
+{
+  "artifact_role": "ROOK_FULL_EVIDENCE_LOCKER_SWEEP",
+  "authority": "ROOK_UPSTREAM_COLLECTION",
+  "scope": {
+    "window_start": "2026-09-26T12:00:00-04:00",
+    "window_end": "2026-09-27T00:00:00-04:00",
+    "timezone": "America/New_York",
+    "collection_time": "2026-09-27T00:08:00-04:00",
+    "evidence_horizon_time": "2026-09-27T00:00:00-04:00",
+    "prior_drawer_reviewed": "data/evidence-integration/rook-evidence-locker-sweep-20260926T1200ET-recovered-v2.json",
+    "boundary_rule": "Routine scheduled window repaired after the midnight automation created its branch but failed before persistence. Only evidence public by the 00:00 ET horizon is admitted; pre-noon events already captured in the prior sweep are not duplicated."
+  },
+  "write_policy": "APPEND_ONLY_EVIDENCE_LOCKER_NO_CANONICAL_OR_PUBLIC_MUTATION",
+  "recovery_context": {
+    "scheduler_run_time": "2026-09-26T23:59:42-04:00",
+    "stranded_branch": "evidence/rook-sweep-20260927T0000ET",
+    "recovery_reason": "The scheduled run created the target branch but did not persist a sweep artifact or commit.",
+    "canonical_cutoff_at_collection": "2026-09-26T12:00:00-04:00"
+  },
+  "new_events": [
+    {
+      "event_id": "LOCKER-SAUDI-UNGA-NAVIGATION-NO-TOLLS-20260926",
+      "event_type": "SAUDI_UNGA_FREEDOM_OF_NAVIGATION_POSITION",
+      "occurrence_time": "2026-09-26",
+      "public_available_time": "2026-09-26T22:52:00-04:00",
+      "collection_time": "2026-09-27T00:08:00-04:00",
+      "actor": "Saudi Arabia / Foreign Minister Faisal bin Farhan",
+      "summary": "At the U.N. General Assembly, Saudi Foreign Minister Faisal bin Farhan called for protection of freedom of navigation through the Strait of Hormuz, Bab al-Mandab, Red Sea and Gulf of Aden. He called for Hormuz conditions to return to the pre-Feb. 28 state without fees or taxes and rejected use of vital waterways as tools of pressure or threat.",
+      "confidence": "HIGH_FOR_PUBLIC_UNGA_POLICY_STATEMENT",
+      "sources": [
+        "https://gulfnews.com/world/gulf/saudi/at-un-saudi-fm-warns-world-failing-to-protect-gulf-shipping-1.500689091",
+        "https://english.ahram.org.eg/UI/Front/Inner.aspx?NewsContentID=577586"
+      ]
+    },
+    {
+      "event_id": "LOCKER-OMAN-IRAN-HORMUZ-NAVIGATION-MEETING-20260926",
+      "event_type": "OMAN_IRAN_HORMUZ_DIPLOMATIC_ENGAGEMENT",
+      "occurrence_time": "2026-09-26",
+      "public_available_time": "2026-09-26T23:59:59-04:00",
+      "collection_time": "2026-09-27T00:08:00-04:00",
+      "actor": "Oman / Iran / Foreign Ministers Badr Albusaidi and Abbas Araghchi",
+      "summary": "Oman's Foreign Ministry said Badr Albusaidi and Abbas Araghchi met in New York and discussed regional divisions, confidence-building, practical solutions to outstanding issues, safety of navigation in the Strait of Hormuz and ensuring freedom of passage in support of international trade and energy supplies.",
+      "confidence": "HIGH_FOR_PRIMARY_OMANI_READOUT",
+      "sources": [
+        "https://www.fm.gov.om/en/57813/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-OMAN-US-DEESCALATION-NAVIGATION-MEETING-20260926",
+      "event_type": "OMAN_US_REGIONAL_DEESCALATION_AND_NAVIGATION_ENGAGEMENT",
+      "occurrence_time": "2026-09-26",
+      "public_available_time": "2026-09-26T23:59:59-04:00",
+      "collection_time": "2026-09-27T00:08:00-04:00",
+      "actor": "Oman / United States / Foreign Minister Badr Albusaidi / Assistant Secretary Donald Blome",
+      "summary": "Oman's Foreign Ministry said Albusaidi and U.S. Assistant Secretary of State Donald Blome discussed containing escalation, maintaining communication channels, conditions for continued diplomacy, regional security and maritime navigation. The Omani readout said the U.S. delegation commended Oman's mediation and facilitation role.",
+      "confidence": "HIGH_FOR_PRIMARY_OMANI_READOUT; US_PRAISE_RETAINED_AS_OMANI_ACCOUNT_OF_MEETING",
+      "sources": [
+        "https://www.fm.gov.om/en/57718/"
+      ]
+    },
+    {
+      "event_id": "LOCKER-RUSSIA-LAVROV-HORMUZ-SECURITY-ARCHITECTURE-20260926",
+      "event_type": "RUSSIAN_UNGA_GULF_SECURITY_PROPOSAL",
+      "occurrence_time": "2026-09-26",
+      "public_available_time": "2026-09-26T12:59:00-04:00",
+      "collection_time": "2026-09-27T00:08:00-04:00",
+      "actor": "Russia / Foreign Minister Sergei Lavrov",
+      "summary": "At the U.N. General Assembly, Lavrov said Russia was ready to help stabilize the Strait of Hormuz and wider Gulf and argued for trust between Gulf Arab states and Iran within a stable regional security architecture. The statement establishes a Russian diplomatic offer and policy position, not a defined mechanism, deployment or material security commitment.",
+      "confidence": "HIGH_FOR_PUBLIC_UNGA_STATEMENT; IMPLEMENTATION_OR_MECHANISM_UNESTABLISHED",
+      "sources": [
+        "https://sharjah24.ae/en/Articles/2026/09/26/Lavrov-at-UN-Russia-ready-to-help-on-Strait-of-Hormuz",
+        "https://www.moneycontrol.com/world/russia-offers-to-help-stabilise-strait-of-hormuz-lavrov-accuses-europe-of-blocking-ukraine-talks-article-14039011.html"
+      ]
+    }
+  ],
+  "existing_event_updates": [
+    {
+      "update_id": "UPD-HORMUZ-DIPLOMATIC-ARCHITECTURE-MULTIACTOR-20260926-PM",
+      "updates_existing_ref": "DIP-US-IRAN-UNGA-CONTACTS-20260922",
+      "relationship": "LATER_REGIONAL_AND_EXTERNAL_POLICY_POSITIONING_AFTER_US_REJECTION",
+      "summary": "After Trump's direct rejection of Iran's seven-day proposal, Saudi Arabia publicly hardened the regional navigation baseline around pre-Feb.28 conditions and no fees, Oman continued separate Iran and U.S. mediation/navigation contacts, and Russia offered to contribute to a broader Gulf security architecture. These are distinct actor positions and do not establish a common framework or renewed U.S.-Iran agreement.",
+      "status": "MULTIACTOR_DIPLOMATIC_POSITIONING_ACTIVE; NO_COMMON_FRAMEWORK_OR_NEW_US_IRAN_AGREEMENT_ESTABLISHED",
+      "sources": [
+        "https://gulfnews.com/world/gulf/saudi/at-un-saudi-fm-warns-world-failing-to-protect-gulf-shipping-1.500689091",
+        "https://www.fm.gov.om/en/57813/",
+        "https://www.fm.gov.om/en/57718/",
+        "https://sharjah24.ae/en/Articles/2026/09/26/Lavrov-at-UN-Russia-ready-to-help-on-Strait-of-Hormuz"
+      ]
+    }
+  ],
+  "claims_and_corrections": [],
+  "economic_energy_updates": [],
+  "source_discovery_additions": [
+    {
+      "source_class": "PRIMARY_OMANI_DIPLOMACY",
+      "addition": "Sep.26 Omani readouts of separate meetings with Iran and the U.S. on Hormuz navigation, communication and de-escalation."
+    },
+    {
+      "source_class": "SAUDI_UNGA_POLICY",
+      "addition": "Sep.26 Saudi UNGA demand for pre-Feb.28 Hormuz conditions without fees or taxes."
+    },
+    {
+      "source_class": "RUSSIAN_UNGA_POLICY",
+      "addition": "Sep.26 Lavrov offer to contribute to a Gulf security architecture and Hormuz stabilization."
+    }
+  ],
+  "prior_drawer_reconciliation": [
+    "Update Hormuz regional-position drawer: Saudi Arabia now states an explicit pre-Feb.28/no-fee baseline after the U.S. rejected Iran's seven-day proposal.",
+    "Update Oman mediation drawer: Oman separately engaged Iran and the United States on navigation, communication, de-escalation and practical solutions; no new signed navigation arrangement was announced.",
+    "Create/update Russia Gulf-security drawer: Lavrov offered Russian diplomatic contribution to a stable Gulf security architecture; no operational mechanism or commitment was identified.",
+    "Do not duplicate China's Sep.26 Gulf-sovereignty UN statement or Israel's Sejoud strike; both were already public before the prior noon cutoff and are captured there.",
+    "No newer qualified Kpler/LSEG daily Hormuz traffic figure was located inside this window; do not replace the commercial transit series with political statements or Trump's earlier 29-ship claim."
+  ],
+  "unresolved_questions": [
+    "Does Saudi Arabia's explicit no-fee/pre-Feb.28 position become a coordinated GCC negotiating baseline or remain a Saudi national formulation?",
+    "Do Oman's Sep.26 contacts produce a revised corridor, sequencing proposal or renewed U.S.-Iran exchange after Trump's rejection?",
+    "Does Russia propose a concrete Gulf-security mechanism, participants or guarantees beyond Lavrov's general offer?",
+    "Is there a new independently defined commercial Hormuz traffic count for Sep.26 that can be reconciled with political and military claims?"
+  ],
+  "coverage": {
+    "material_results": [
+      "Saudi UNGA freedom-of-navigation/no-fee position",
+      "Oman-Iran Hormuz navigation meeting",
+      "Oman-U.S. de-escalation/navigation meeting",
+      "Lavrov Gulf-security/Hormuz stabilization offer"
+    ],
+    "checked_no_material_new_event_in_window": [
+      "No accepted replacement U.S.-Iran agreement after Trump's rejection",
+      "No new qualified daily Kpler/LSEG Hormuz transit count located",
+      "No new independently confirmed Saudi/Houthi impact BDA beyond the pre-noon salvo",
+      "No post-noon evidence superseding the already captured China Gulf-sovereignty position",
+      "No post-noon evidence changing the already captured Sejoud strike target-attribution boundary"
+    ],
+    "actor_source_families_checked": [
+      "Iran political/diplomatic leadership",
+      "United States",
+      "Saudi Arabia/GCC",
+      "Oman",
+      "Yemen/Houthis",
+      "Israel/Lebanon/Hezbollah",
+      "China",
+      "Russia",
+      "UN/UNGA",
+      "maritime/navigation reporting",
+      "sanctions/aviation",
+      "energy/shipping public reporting"
+    ],
+    "limitations": [
+      "No proprietary AIS/Kpler/LSEG terminal access.",
+      "No commercial satellite tasking or classified ISR.",
+      "Some UNGA timing is bounded by public publication time rather than exact speech-minute metadata."
+    ]
+  },
+  "completion": {
+    "status": "COMPLETE_ROUTINE_CURRENT_CONTRACT",
+    "material_delta": true,
+    "repository_write": "APPEND_ONLY_SCHEDULED_SWEEP_RECOVERY",
+    "canonical_or_public_artifacts_mutated": false,
+    "accepted_packet_bytes_or_hashes_mutated": false,
+    "signed_release_artifacts_or_manifests_mutated": false
+  }
+}
