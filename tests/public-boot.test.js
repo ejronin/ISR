@@ -222,7 +222,7 @@ function fakeAuthorizedRuntime(sourceManifest = manifest) {
     'id="primaryNav"',
     'id="map"'
   ]) assert(!index.includes(forbidden), `initial document exposes legacy state: ${forbidden}`);
-  assert(index.includes('Loading current evidence record…'));
+  assert(index.includes('Loading the latest Atlas data…'));
   assert(index.includes('The Atlas will not display an older or unvalidated release as current'));
   assert(!index.includes('snapshots/'), 'current shell must not link to repository-only snapshots');
   assert(!read('js/public-bootstrap.js').includes('snapshots/'), 'current bootstrap must not link to repository-only snapshots');
