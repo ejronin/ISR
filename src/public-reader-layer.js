@@ -856,7 +856,7 @@
   }
 
   function dedupeWeapons(article) {
-    const headings = ['Related durable-loss records', 'Aviation reconciliation'];
+    const headings = ['Related equipment losses', 'Aircraft loss cross-check'];
     let anchor = null;
     headings.forEach(title => {
       const section = findSection(article, title);
@@ -928,10 +928,10 @@
   }
 
   function simplifyLosses(article) {
-    const duplicateCharts = findSection(article, 'Two views of the material-loss record');
+    const duplicateCharts = findSection(article, 'Losses by status and type');
     if (duplicateCharts && article.querySelector('[data-loss-comparison]')) duplicateCharts.remove();
     const comparison = article.querySelector('[data-loss-comparison] .section-note');
-    if (comparison) comparison.textContent = 'These summaries count material-loss records by side and type. Open a category to see the records that make up the count. Unknown quantities remain unknown.';
+    if (comparison) comparison.textContent = 'These summaries count loss records by side and type. Open a category to see the records that make up the count. Unknown quantities remain unknown.';
   }
 
   function applyReaderLayer(rootElement, options, context) {
