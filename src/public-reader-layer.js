@@ -386,7 +386,7 @@
           if (date) append(card, 'p', 'card-kicker', `Status supported through ${date}`);
           const effect = cleanPublicText(record.assessment || record.effect || record.note || record.continuity || 'No broader effect is stated beyond the recorded status.');
           if (effect) append(card, 'p', '', effect);
-          addEvidence(card, context, [record], 'Evidence / BDA');
+          addEvidence(card, context, [record], 'Damage evidence');
         });
       });
       const admin = buckets.get('administrative');
