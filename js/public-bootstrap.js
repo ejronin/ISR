@@ -245,16 +245,13 @@
     section.className = 'error-state';
     const kicker = documentObject.createElement('p');
     kicker.className = 'boot-kicker';
-    kicker.textContent = 'Current record unavailable';
+    kicker.textContent = 'Current site unavailable';
     const title = documentObject.createElement('h1');
-    title.textContent = 'The current evidence record could not be loaded.';
+    title.textContent = 'The latest Atlas data could not be loaded.';
     const detail = documentObject.createElement('p');
     detail.textContent = error && error.code === 'RELEASE_MISMATCH'
-      ? 'The application and evidence record did not resolve to one release.'
-      : 'The authorized application release is unavailable or did not pass integrity validation.';
-    const code = documentObject.createElement('p');
-    code.className = 'error-code';
-    code.textContent = `Error code: ${error && error.code || 'BOOTSTRAP_FAILED'}`;
+      ? 'The site and its latest data did not load together.'
+      : 'The latest verified Atlas data is unavailable.';
     const actions = documentObject.createElement('div');
     actions.className = 'error-actions';
     const retryButton = documentObject.createElement('button');
@@ -262,7 +259,7 @@
     retryButton.textContent = 'Retry';
     retryButton.addEventListener('click', retry || (() => root.location.reload()));
     actions.append(retryButton);
-    section.append(kicker, title, detail, code, actions);
+    section.append(kicker, title, detail, actions);
     host.append(section);
     root.ATLAS_PUBLIC_STATE = { status: 'error', code: error && error.code || 'BOOTSTRAP_FAILED' };
     root.ATLAS_BOOTSTRAP_STATE = { status: 'error', code: error && error.code || 'BOOTSTRAP_FAILED' };
