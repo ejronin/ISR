@@ -1055,11 +1055,11 @@
   function mapRecordKeys(record) {
     if (!record || typeof record !== 'object') return [];
     const nested = record.event && typeof record.event === 'object' ? record.event : {};
-    return unique([
+    return [...new Set([
       record.event_id, record.facility_id, record.loss_id, record.shipping_id, record.economic_id,
       record.observation_id, record.overlay_id, record.casualty_id, record.movement_id, record.id,
       nested.event_id, nested.id
-    ].filter(Boolean).map(String));
+    ].filter(Boolean).map(String))];
   }
 
   function evidenceEnvelope(record) {
