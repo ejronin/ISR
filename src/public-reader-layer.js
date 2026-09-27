@@ -251,7 +251,7 @@
         if (date) append(row, 'small', '', ` ${date}`);
       });
     });
-    collapseSection(article, 'From damage to strategic effect', 'How damage and operational effect are separated');
+    collapseSection(article, 'From damage to war results', 'How damage and operating results are kept separate');
   }
 
   function normalizeActor(record) {
@@ -383,7 +383,7 @@
           const card = append(list, 'article', 'reader-facility-card');
           append(card, 'h4', '', cleanPublicText(record.name || record.facility_id || record.id));
           const date = facilityDate(record);
-          if (date) append(card, 'p', 'card-kicker', `Status supported through ${date}`);
+          if (date) append(card, 'p', 'card-kicker', `Evidence through ${date}`);
           const effect = cleanPublicText(record.assessment || record.effect || record.note || record.continuity || 'No broader effect is stated beyond the recorded status.');
           if (effect) append(card, 'p', '', effect);
           addEvidence(card, context, [record], 'Damage evidence');
@@ -393,7 +393,7 @@
       if (admin.length) {
         const details = append(panel, 'details', 'reader-facility-drawer administrative');
         append(details, 'summary', '', `${FACILITY_STATUS.administrative.label} (${admin.length})`);
-        append(details, 'p', 'section-note', 'These records are kept outside the operational-status denominator. Administrative closure, transfer or withdrawal is not physical destruction.');
+        append(details, 'p', 'section-note', 'These records are not included in the current operating-status totals. Closure, transfer or withdrawal is not physical destruction.');
         const list = append(details, 'ul', 'reader-constituent-list');
         admin.forEach(record => append(list, 'li', '', cleanPublicText(record.name || record.facility_id || record.id)));
       }
