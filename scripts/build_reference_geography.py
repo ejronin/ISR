@@ -25,9 +25,14 @@ SOURCE_10M = {
     "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.1/geojson/ne_10m_admin_0_countries.geojson",
     "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
 }
+SOURCE_110M_LAND = {
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.1/geojson/ne_110m_land.geojson",
+    "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+}
 SOURCE_FILENAMES = {
     "1:50m": "ne_50m_admin_0_countries.v5.1.1.geojson",
     "1:10m": "ne_10m_admin_0_countries.v5.1.1.geojson",
+    "1:110m land": "ne_110m_land.v5.1.1.geojson",
 }
 REGIONAL_COUNTRIES = {
     "Afghanistan", "Bahrain", "Bangladesh", "China", "Djibouti", "Egypt", "Eritrea",
@@ -37,6 +42,7 @@ REGIONAL_COUNTRIES = {
 }
 HORMUZ_COUNTRIES = {"Bahrain", "Iran", "Oman", "Qatar", "Saudi Arabia", "United Arab Emirates"}
 REGIONAL_BBOX = [2.0, -2.0, 110.0, 57.0]
+WESTERN_CONTEXT_BBOX = [-90.0, -5.0, 15.0, 65.0]
 HORMUZ_BBOX = [50.8, 22.4, 60.8, 28.9]
 REFERENCE_LABELS = [
     {"label": "Iran", "lat": 32.4, "lon": 53.7, "kind": "country"},
@@ -193,10 +199,31 @@ def subset(payload: dict[str, Any], names: set[str], layer: str, scale: str, cli
     return sorted(output, key=lambda item: (item["properties"]["layer"], item["properties"]["name"]))
 
 
-def build(source_50m: Path, source_10m: Path) -> dict[str, Any]:
+def land_subset(payload: dict[str, Any], layer: str, scale: str, clip_bbox: list[float]) -> list[dict[str, Any]]:
+    output: list[dict[str, Any]] = []
+    for index, feature in enumerate(payload.get("features") or []):
+        geometry = transform_geometry(feature.get("geometry") or {}, clip_bbox)
+        if not geometry:
+            continue
+        output.append({
+            "type": "Feature",
+            "properties": {
+                "name": f"Western context {index + 1}",
+                "iso_a3": None,
+                "layer": layer,
+                "scale": scale,
+            },
+            "geometry": geometry,
+        })
+    return output
+
+
+def build(source_50m: Path, source_10m: Path, source_110m_land: Path) -> dict[str, Any]:
     regional = read_source(source_50m, SOURCE_50M)
     detailed = read_source(source_10m, SOURCE_10M)
+    western_land = read_source(source_110m_land, SOURCE_110M_LAND)
     features = [
+        *land_subset(western_land, "western_context_110m", "1:110m", WESTERN_CONTEXT_BBOX),
         *subset(regional, REGIONAL_COUNTRIES, "regional_50m", "1:50m", REGIONAL_BBOX),
         *subset(detailed, HORMUZ_COUNTRIES, "hormuz_10m", "1:10m", HORMUZ_BBOX),
     ]
@@ -207,7 +234,7 @@ def build(source_50m: Path, source_10m: Path) -> dict[str, Any]:
         "name": "Atlas regional reference geography",
         "bbox": REGIONAL_BBOX,
         "metadata": {
-            "source": "Natural Earth Admin-0 Countries",
+            "source": "Natural Earth Admin-0 Countries + Land",
             "version": NATURAL_EARTH_VERSION,
             "license": "Natural Earth public domain",
             "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
@@ -215,8 +242,10 @@ def build(source_50m: Path, source_10m: Path) -> dict[str, Any]:
             "source_files": [
                 {"scale": "1:50m", **SOURCE_50M},
                 {"scale": "1:10m", **SOURCE_10M},
+                {"scale": "1:110m land", **SOURCE_110M_LAND},
             ],
             "layers": {
+                "western_context_110m": {"scale": "1:110m", "bbox": WESTERN_CONTEXT_BBOX},
                 "regional_50m": {"scale": "1:50m", "bbox": REGIONAL_BBOX},
                 "hormuz_10m": {"scale": "1:10m", "bbox": HORMUZ_BBOX},
             },
@@ -234,6 +263,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-50m")
     parser.add_argument("--source-10m")
+    parser.add_argument("--source-110m-land")
     parser.add_argument(
         "--fetch-source-dir",
         help="Fetch exact versioned Natural Earth inputs into this build-only directory and verify both pinned SHA-256 values",
@@ -241,29 +271,33 @@ def main() -> int:
     parser.add_argument("--output", default=OUTPUT)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    explicit_sources = bool(args.source_50m or args.source_10m)
+    explicit_sources = bool(args.source_50m or args.source_10m or args.source_110m_land)
     if args.fetch_source_dir and explicit_sources:
-        parser.error("use either --fetch-source-dir or both explicit source paths, not both")
-    if explicit_sources and not (args.source_50m and args.source_10m):
-        parser.error("--source-50m and --source-10m must be supplied together")
+        parser.error("use either --fetch-source-dir or all explicit source paths, not both")
+    if explicit_sources and not (args.source_50m and args.source_10m and args.source_110m_land):
+        parser.error("--source-50m, --source-10m and --source-110m-land must be supplied together")
     if args.fetch_source_dir:
         source_directory = Path(args.fetch_source_dir).resolve()
         source_50m = obtain_pinned_source(source_directory, "1:50m", SOURCE_50M)
         source_10m = obtain_pinned_source(source_directory, "1:10m", SOURCE_10M)
-    elif args.source_50m and args.source_10m:
+        source_110m_land = obtain_pinned_source(source_directory, "1:110m land", SOURCE_110M_LAND)
+    elif args.source_50m and args.source_10m and args.source_110m_land:
         source_50m = Path(args.source_50m)
         source_10m = Path(args.source_10m)
+        source_110m_land = Path(args.source_110m_land)
     else:
-        parser.error("provide --fetch-source-dir or both --source-50m and --source-10m")
+        parser.error("provide --fetch-source-dir or all explicit source paths")
 
     # These reads are intentional even though build() reads again: the command
     # reports each independently verified pin before deterministic generation.
     read_source(source_50m, SOURCE_50M)
     read_source(source_10m, SOURCE_10M)
+    read_source(source_110m_land, SOURCE_110M_LAND)
     print(f"reference-geography: verified 1:50m source SHA-256 {SOURCE_50M['sha256']}")
     print(f"reference-geography: verified 1:10m source SHA-256 {SOURCE_10M['sha256']}")
+    print(f"reference-geography: verified 1:110m land source SHA-256 {SOURCE_110M_LAND['sha256']}")
     output = ROOT / args.output
-    generated = stable_bytes(build(source_50m, source_10m))
+    generated = stable_bytes(build(source_50m, source_10m, source_110m_land))
     if args.check:
         if not output.is_file() or output.read_bytes() != generated:
             raise SystemExit(f"FAIL: reference geography is stale: {args.output}")
