@@ -22,12 +22,13 @@ def main() -> int:
     routing = json.loads((ROOT / "data/evidence-integration/rook-catchup-claims-routing-20260926.json").read_text(encoding="utf-8"))
 
     accepted = manifest["accepted_updates"]
-    assert accepted[-1]["sequence"] == 22
-    assert accepted[-1]["packet_id"] == packet["packet_id"]
-    assert accepted[-1]["evidence_cutoff"] == packet["evidence_cutoff"]
+    entry = next(item for item in accepted if item["packet_id"] == packet["packet_id"])
+    index = accepted.index(entry)
+    assert entry["sequence"] == 22
+    assert entry["evidence_cutoff"] == packet["evidence_cutoff"]
+    assert entry["previous_lineage_sha256"] == accepted[index - 1]["lineage_sha256"]
     assert manifest["current_evidence_cutoff"] == accepted[-1]["evidence_cutoff"]
     assert state["release"]["current_osint_cutoff"] == manifest["current_evidence_cutoff"]
-    assert accepted[-1]["previous_lineage_sha256"] == accepted[-2]["lineage_sha256"]
 
     assert packet["upstream_provenance"]["locker_artifacts"] == [
         "data/evidence-integration/rook-evidence-locker-sweep-20260921T0000ET-gap-recovery-v2.json",
