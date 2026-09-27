@@ -811,10 +811,10 @@
   }
 
   function failureDetail(error) {
-    if (error && error.code === 'RELEASE_MISMATCH') return 'The application and evidence record did not resolve to one release.';
-    if (error && error.code === 'MODEL_INVALID') return 'The downloaded evidence record did not pass structural validation.';
-    if (error && error.code === 'UNDECLARED_DATA_DEPENDENCY') return 'A public page attempted to use evidence data outside its declared route contract.';
-    return 'The evidence record is unavailable or did not pass integrity validation.';
+    if (error && error.code === 'RELEASE_MISMATCH') return 'The site and its latest data did not load together.';
+    if (error && error.code === 'MODEL_INVALID') return 'The latest Atlas data could not be read.';
+    if (error && error.code === 'UNDECLARED_DATA_DEPENDENCY') return 'This page could not load its supporting data.';
+    return 'The latest verified Atlas data is unavailable.';
   }
 
   function renderFailure(rootElement, error, retry) {
@@ -828,10 +828,9 @@
       section.append(node);
       return node;
     };
-    appendText('p', 'boot-kicker', 'Current record unavailable');
-    appendText('h1', '', 'The current evidence record could not be loaded.');
+    appendText('p', 'boot-kicker', 'Current site unavailable');
+    appendText('h1', '', 'The latest Atlas data could not be loaded.');
     appendText('p', '', failureDetail(error));
-    if (error && error.code) appendText('p', 'error-code', `Error code: ${error.code}`);
     const actions = documentObject.createElement('div');
     actions.className = 'error-actions';
     const retryButton = documentObject.createElement('button');
