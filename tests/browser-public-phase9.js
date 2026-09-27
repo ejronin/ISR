@@ -450,7 +450,7 @@ async function route(cdp, hash, key) {
     assert.equal(objectivesView.panels, 2, 'Goals & Results is not a two-sided comparison');
     assert.equal(objectivesView.us, true);
     assert.equal(objectivesView.iran, true);
-    for (const label of ['Not yet','Partial','Success','Failure']) assert(objectivesView.statuses.includes(label), 'Goals & Results is missing status label ' + label);
+    for (const label of ['Unresolved','Partly achieved','Achieved','Not achieved']) assert(objectivesView.statuses.includes(label), 'Goals & Results is missing status label ' + label);
     assert(objectivesView.chain.length >= 3, 'Iran position history does not run from current position back to the original objective');
     assert.equal(objectivesView.chain[0].step, 'current', 'Iran position history must lead with the current position');
     assert.equal(objectivesView.chain[objectivesView.chain.length - 1].step, 'original', 'Iran position history must end at the original claim / objective');
