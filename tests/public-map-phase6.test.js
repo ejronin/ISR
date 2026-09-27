@@ -80,6 +80,9 @@ assert.equal(manifest.application.stylesheet, byRole.stylesheet.path, 'reader CS
 const mapSource = fs.readFileSync(path.join(root, 'js/public-ia.js'), 'utf8');
 for (const forbidden of ['bda-map-data.json', 'map-only source index', 'image_id ===', 'facility ===']) assert(!mapSource.includes(forbidden), `map runtime contains a separate or record-specific path: ${forbidden}`);
 assert(!/L\.tileLayer|tile\.openstreetmap|api\.mapbox|maps\.google/i.test(mapSource), 'current MapView depends on an external tile or map API');
+assert(mapSource.includes('_atlasHasRecord'), 'MapView does not expose generic record-to-map matching');
+assert(mapSource.includes('_atlasFocusRecord'), 'MapView does not expose generic selected-record focus');
+assert(mapSource.includes('Where recorded losses occurred'), 'loss reader has no evidence-linked map view');
 for (const forbiddenPath of ['data/bda-map-data.json', 'data/map-source-index.json']) assert(!fs.existsSync(path.join(root, forbiddenPath)), `separate map pipeline artifact exists: ${forbiddenPath}`);
 
 console.log('public map Phase 6: PASS - local geography, explicit route authority, polyline flow, generic imagery tiers, canonical precedence, and explicit signed reader assets verified');
