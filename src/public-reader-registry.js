@@ -336,9 +336,9 @@
     if (['start.overview','evidence.information','evidence.web_of_lies'].includes(routeKey)) return;
     const maps=[...article.querySelectorAll('.context-map')].filter(map=>typeof map._atlasHasRecord==='function'&&typeof map._atlasFocusRecord==='function');
     if(!maps.length)return;
-    const cards=[...article.querySelectorAll('[data-facility-id],[data-loss-id],[data-damage-observation-id],[data-casualty-id],[data-movement-id]')];
+    const cards=[...article.querySelectorAll('[data-facility-id],[data-loss-id],[data-damage-observation-id],[data-casualty-id],[data-movement-id],[data-strike-effect-id]')];
     cards.forEach(card=>{
-      const key=card.dataset.facilityId||card.dataset.lossId||card.dataset.damageObservationId||card.dataset.casualtyId||card.dataset.movementId;
+      const key=card.dataset.facilityId||card.dataset.lossId||card.dataset.damageObservationId||card.dataset.casualtyId||card.dataset.movementId||card.dataset.strikeEffectId;
       if(!key)return;
       const map=maps.find(candidate=>candidate._atlasHasRecord(key));if(!map)return;
       let actions=card.querySelector(':scope > .record-actions');if(!actions)actions=add(card,'div','record-actions');
