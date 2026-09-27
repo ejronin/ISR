@@ -160,7 +160,9 @@ function base64(value) {
     assert.match(loading.text, /Loading current evidence record/i);
     await cdp.call('Fetch.continueRequest', { requestId: paused.requestId });
     await cdp.call('Fetch.disable');
-    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready'`);
+    await waitFor(cdp, `['ready','error'].includes(window.ATLAS_PUBLIC_STATE?.status)`);
+    const bootState = await cdp.eval(`({status:window.ATLAS_PUBLIC_STATE?.status,code:window.ATLAS_PUBLIC_STATE?.code,rootStatus:document.getElementById('atlas-root')?.dataset.status,text:document.getElementById('atlas-root')?.innerText||''})`);
+    assert.equal(bootState.status, 'ready', `cold boot failed: ${JSON.stringify(bootState)}`);
     const ready = await cdp.eval(`(() => ({
       status: document.getElementById('atlas-root')?.dataset.status,
       count: window.ATLAS_PUBLIC_STATE.chronologyCount,
