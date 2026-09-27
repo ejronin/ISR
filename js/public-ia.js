@@ -1215,10 +1215,9 @@
         const features = geography.features.filter(feature => feature.properties && feature.properties.layer === detailLayer);
         const referenceLand = L.geoJSON({ type: 'FeatureCollection', features }, {
           pane: 'atlas-reference', interactive: false,
-          style: { color: '#78909d', weight: detailLayer === 'hormuz_10m' ? 1.25 : .9, opacity: .95, fillColor: '#263f4d', fillOpacity: 1 }
+          style: { color: '#78909d', weight: detailLayer === 'hormuz_10m' ? 1.25 : .9, opacity: .95, fillColor: '#263f4d', fillOpacity: 1, className: 'atlas-reference-land' }
         }).addTo(map);
         section.dataset.mapReferenceSurface = 'filled-land';
-        referenceLand.eachLayer(layer => { const path = layer.getElement && layer.getElement(); if (path) path.classList.add('atlas-reference-land'); });
         if (selectedCountryFeatures.length) {
           L.geoJSON({ type: 'FeatureCollection', features: selectedCountryFeatures }, {
             pane: 'atlas-evidence', interactive: false,
