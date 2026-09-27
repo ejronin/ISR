@@ -50,8 +50,8 @@ for (const phrase of [
   'Unknown does not mean zero.'
 ]) assert(source.includes(phrase), `required public explanation missing: ${phrase}`);
 
-assert(source.includes('From damage to strategic effect'), 'Phase 10 military-effects framework is missing its reader-facing heading');
-assert(source.includes('A confirmed hit does not by itself establish destroyed capability or strategic effect.'), 'Phase 10 military-effects guardrail is missing');
+assert(source.includes('From damage to war results'), 'Phase 10 military-effects framework is missing its reader-facing heading');
+assert(source.includes('A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.'), 'Phase 10 military-effects guardrail is missing');
 for (const effect of [
   'Physical damage',
   'Asset lost',
