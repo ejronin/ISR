@@ -183,8 +183,8 @@ async function route(cdp, hash, key) {
     assert.equal(weapons.expenditures, 9);
     assert.equal(weapons.aviation, 0, 'Weapons duplicates the aviation incident inventory instead of linking to the loss page');
     assert.equal(weapons.lossCrosslink, true, 'Weapons does not link readers to the canonical Casualties & Losses inventory');
-    assert.match(weapons.text, /Neutralized does not mean destroyed/);
-    assert.match(weapons.text, /route-level aggregate.*interception.*impact.*known-target hit/i);
+    assert.match(weapons.text, /Neutralized.? does not mean destroyed/);
+    assert.match(weapons.text, /one combined total.*interceptions.*impacts.*known-target hits/i);
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
