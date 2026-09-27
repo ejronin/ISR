@@ -162,7 +162,7 @@
 
   function timeline(article, context) {
     const counts=context.model.counts||{}, chronologyCount=Number(counts.chronology_records)||0, conflictDays=Number(counts.gate3_daily_coverage_days)||0;
-    intro(article,`The conflict is easiest to follow in phases. Use this orientation first, then narrow the interactive timeline by date, actor or topic. Detailed Chronology contains all ${chronologyCount} records. ${conflictDays} conflict days are represented in the wartime coverage record.`);
+    intro(article,`The conflict is easiest to follow in phases. Use this orientation first, then narrow the interactive timeline by date, actor or topic. All Events contains all ${chronologyCount} records. ${conflictDays} conflict days are represented in the wartime coverage record.`);
     const s=section(article,'Conflict phases','The phase guide is orientation, not a replacement for the exhaustive chronology.'), g=add(s,'div','orientation-grid');
     card(g,'Opening strikes and regional expansion','Direct attacks quickly spread across bases, air-defense sites, maritime routes and aligned armed groups.','FEB–MAR');
     card(g,'Sustained strikes and mounting losses','Repeated strikes, interceptions and infrastructure damage accumulated through the spring and summer.','SPRING–SUMMER');
