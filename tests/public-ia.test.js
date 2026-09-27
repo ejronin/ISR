@@ -164,5 +164,7 @@ assert.match(css, /min-width:\s*20rem/);
 assert.match(css, /overflow-x:\s*hidden/);
 assert.match(css, /\.skip-link:focus/);
 assert.match(css, /:focus-visible/);
+assert.match(css, /\.atlas-app\[data-layout-scope="adaptive-wide"\]/, 'wide desktop layout must remain opt-in');
+assert.match(css, /@media \(min-width: 80rem\)/, 'wide desktop layout breakpoint is missing');
 
 console.log('public IA contract: PASS - 7 primary sections, 26 deterministic page owners, current-model-only mappings, actor/evidence boundaries, cross-links, and mobile/accessibility foundations verified');
