@@ -2387,3 +2387,69 @@ tbody tr:last-child td { border-bottom: 0; }
   :where(button, input, select, a, summary),
   :where(.mobile-navigation, .ux-disclosure, .evidence-drawer, .evidence-clock-help, .evidence-role-guide, .loss-category-drilldown, .economic-numeric-equivalent, .agreement-term-detail, .source-outlet, .section-index-disclosure, .prewar-context, .merchant-loss-details) > summary::after { transition: none !important; }
 }
+
+
+/* Sep. 27 reader sweep: wide layouts are opt-in and never alter the protected
+   Start Here, Lie Ledger, or Web of Lies page layouts. */
+.record-actions button.inline-map-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: .58rem .78rem;
+  border: 1px solid var(--line);
+  border-radius: .45rem;
+  background: #172734;
+  color: var(--accent-strong);
+  cursor: pointer;
+  font-size: .82rem;
+  font-weight: 650;
+}
+.record-actions button.inline-map-link:hover {
+  background: #20394d;
+  color: var(--text);
+}
+
+.actor-section-heading,
+.objective-actor-heading {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+.actor-section-heading .actor-identity,
+.objective-actor-heading .actor-identity {
+  font: inherit;
+}
+
+.objective-actor-group {
+  min-width: 0;
+  margin-top: .9rem;
+  padding: 1rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: #0c151d;
+}
+.objective-actor-group > h3 { margin-top: 0; }
+
+@media (min-width: 80rem) {
+  .atlas-app[data-layout-scope="adaptive-wide"] :is(.header-inner, .primary-nav, .mobile-navigation, .app-grid, .page-footer) {
+    width: calc(100% - clamp(1.5rem, 2.5vw, 3.5rem));
+    max-width: none;
+  }
+
+  .atlas-app[data-layout-scope="adaptive-wide"] .app-grid {
+    grid-template-columns: minmax(15rem, 18rem) minmax(0, 1fr);
+    gap: clamp(1.4rem, 2vw, 2.4rem);
+  }
+
+  .atlas-app[data-layout-scope="adaptive-wide"] .two-column-list {
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  }
+
+  .atlas-app[data-layout-scope="adaptive-wide"] .loss-comparison-grid {
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  }
+
+  .atlas-app[data-layout-scope="adaptive-wide"] .context-map .atlas-leaflet-map {
+    min-height: clamp(30rem, 52vh, 44rem);
+  }
+}
