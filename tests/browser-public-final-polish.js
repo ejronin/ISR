@@ -35,6 +35,7 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
       const start = await cdp.eval(`(() => {
         const article = document.querySelector('.overview-page');
         const current = article?.querySelector('[data-current-state-summary]');
+        const positionSummary = article?.querySelector('[data-overview-current-position]');
         const clocks = article?.querySelector('.evidence-clock-bar, [data-component="EvidenceClocks"]');
         const narratives = article?.querySelector('[data-narrative-gates]');
         const historical = article?.querySelector('.historical-orientation');
@@ -47,6 +48,11 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
         return {
           currentIndex: position(current), clockIndex: position(clocks), narrativeIndex: position(narratives), historicalIndex: position(historical), latestIndex: position(latest),
           domains, focusOutline: focusStyle?.outlineStyle || '',
+          positionIndex: position(positionSummary),
+          positionText: positionSummary?.textContent || '',
+          positionEvidence: [...(positionSummary?.querySelectorAll('.orientation-card') || [])].map(card => card.querySelectorAll('details.evidence-drawer, [data-component="EvidenceDrawer"]').length),
+          positionRoute: positionSummary?.querySelector(':scope > a')?.getAttribute('href'),
+          currentText: current?.textContent || '',
           narrativeContractNull: window.ATLAS_PUBLIC_STATE?.narrativeContract === null,
           retiredNarrativeCount: article?.querySelectorAll('[data-war-in-90-seconds],[data-objective-orientation],[data-us-war-rationale],[data-hormuz-trajectory]').length || 0,
           internalPersonaText: /\\bROOK\\b|PR\\/CI/.test(articleText),
@@ -55,6 +61,13 @@ async function route(cdp, routeKey) { await cdp.eval(`location.hash=${JSON.strin
         };
       })()`);
       assert.equal(start.domains.length, 4, `Start Here does not expose four current-state domains at ${width}px`);
+      assert(start.positionIndex >= 0 && start.positionIndex < start.currentIndex, `present position must lead domain detail at ${width}px`);
+      assert.equal(start.positionEvidence.length, 3, `objective/result/why account missing at ${width}px`);
+      assert(start.positionEvidence.every(count => count > 0), `position account lacks one-interaction evidence at ${width}px`);
+      assert.equal(start.positionRoute, ia.routeHref('hormuz.talks'), `current talks link is unresolved at ${width}px`);
+      assert(/hasn't capitulated/.test(start.positionText) && /best deal/.test(start.positionText), `negotiating retreat must remain distinct from capitulation at ${width}px`);
+      assert(/September 26/.test(start.positionText) && /Saudi Arabia/.test(start.positionText) && /no agreement/i.test(start.positionText), `current position omits rejection, regional response or settlement status at ${width}px`);
+      assert(!/leverage|residual capability|strategic optionality|escalation pathways|force posture|coercive options|lateral escalation|might still|could still/i.test(start.positionText + start.currentText), `current condition contains analyst jargon or hypothetical counterweight at ${width}px`);
       assert.deepEqual(start.domains.map(item => item.domain).sort(), ['diplomacy', 'economy', 'hormuz', 'military']);
       assert(start.currentIndex >= 0 && start.clockIndex === -1 && start.narrativeIndex === -1 && start.historicalIndex > start.currentIndex && start.latestIndex > start.historicalIndex, `Start Here reader order is not current state -> opening context -> latest evidence at ${width}px`);
       assert(start.domains.every(item => /^#\//.test(item.href)), `Start Here drill-down link is unresolved at ${width}px`);
