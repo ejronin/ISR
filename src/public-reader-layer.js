@@ -251,7 +251,7 @@
         if (date) append(row, 'small', '', ` ${date}`);
       });
     });
-    collapseSection(article, 'From damage to strategic effect', 'How damage and operational effect are separated');
+    collapseSection(article, 'From damage to war results', 'How damage and operating results are kept separate');
   }
 
   function normalizeActor(record) {
@@ -273,8 +273,8 @@
   const FACILITY_STATUS = Object.freeze({
     destroyed: { label: 'Destroyed', className: 'destroyed' },
     damaged_inoperable: { label: 'Damaged — inoperable', className: 'damaged-inoperable' },
-    damaged_operational: { label: 'Damaged — operational', className: 'damaged-operational' },
-    operational: { label: 'Operational', className: 'operational' },
+    damaged_operational: { label: 'Damaged — operating', className: 'damaged-operational' },
+    operational: { label: 'Operating', className: 'operational' },
     unknown: { label: 'Unknown', className: 'unknown' },
     administrative: { label: 'Closed / withdrawn / transferred', className: 'administrative' }
   });
@@ -383,17 +383,17 @@
           const card = append(list, 'article', 'reader-facility-card');
           append(card, 'h4', '', cleanPublicText(record.name || record.facility_id || record.id));
           const date = facilityDate(record);
-          if (date) append(card, 'p', 'card-kicker', `Status supported through ${date}`);
+          if (date) append(card, 'p', 'card-kicker', `Evidence through ${date}`);
           const effect = cleanPublicText(record.assessment || record.effect || record.note || record.continuity || 'No broader effect is stated beyond the recorded status.');
           if (effect) append(card, 'p', '', effect);
-          addEvidence(card, context, [record], 'Evidence / BDA');
+          addEvidence(card, context, [record], 'Damage evidence');
         });
       });
       const admin = buckets.get('administrative');
       if (admin.length) {
         const details = append(panel, 'details', 'reader-facility-drawer administrative');
         append(details, 'summary', '', `${FACILITY_STATUS.administrative.label} (${admin.length})`);
-        append(details, 'p', 'section-note', 'These records are kept outside the operational-status denominator. Administrative closure, transfer or withdrawal is not physical destruction.');
+        append(details, 'p', 'section-note', 'These records are not included in the current operating-status totals. Closure, transfer or withdrawal is not physical destruction.');
         const list = append(details, 'ul', 'reader-constituent-list');
         admin.forEach(record => append(list, 'li', '', cleanPublicText(record.name || record.facility_id || record.id)));
       }
@@ -856,7 +856,7 @@
   }
 
   function dedupeWeapons(article) {
-    const headings = ['Related durable-loss records', 'Aviation reconciliation'];
+    const headings = ['Related equipment losses', 'Aircraft loss cross-check'];
     let anchor = null;
     headings.forEach(title => {
       const section = findSection(article, title);
@@ -894,7 +894,7 @@
 
   function simplifyPositionChanges(article) {
     setPageIntro(article, 'This page shows what an actor said earlier, what happened next, and what it later said or did. A change is called a walkback only when the record supports a real retreat from the earlier position.');
-    const scope = [...article.querySelectorAll(':scope > aside.scope-note')].find(node => /walkback is an analytical classification/i.test(node.textContent || ''));
+    const scope = [...article.querySelectorAll(':scope > aside.scope-note')].find(node => /walkback.*(?:analytical classification|means here)/i.test(node.textContent || ''));
     if (scope) {
       const details = el(article.ownerDocument, 'details', 'secondary-context reader-method-detail');
       append(details, 'summary', '', 'How we use “walkback”');
@@ -928,10 +928,10 @@
   }
 
   function simplifyLosses(article) {
-    const duplicateCharts = findSection(article, 'Two views of the material-loss record');
+    const duplicateCharts = findSection(article, 'Losses by status and type');
     if (duplicateCharts && article.querySelector('[data-loss-comparison]')) duplicateCharts.remove();
     const comparison = article.querySelector('[data-loss-comparison] .section-note');
-    if (comparison) comparison.textContent = 'These summaries count material-loss records by side and type. Open a category to see the records that make up the count. Unknown quantities remain unknown.';
+    if (comparison) comparison.textContent = 'These summaries count loss records by side and type. Open a category to see the records that make up the count. Unknown quantities remain unknown.';
   }
 
   function applyReaderLayer(rootElement, options, context) {

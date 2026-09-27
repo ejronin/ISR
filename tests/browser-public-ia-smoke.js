@@ -114,7 +114,7 @@ async function loadDirectRoute(cdp, route) {
     assert.equal(direct.owner, 'FacilitiesPage');
     assert.equal(direct.h1, 'Bases & Infrastructure');
     assert(direct.navs.includes('Primary'));
-    assert(direct.navs.includes('Military Record pages'));
+    assert(direct.navs.includes('War & Losses pages'));
     assert.equal(direct.tabs, 0, 'global navigation must not use tab semantics');
     assert.equal(direct.skipTag, 'BUTTON', 'skip control must not enter the hash-router namespace');
     assert.equal(direct.skipHref, null, 'skip control must not create a fragment route');
@@ -323,7 +323,7 @@ async function loadDirectRoute(cdp, route) {
     assert.equal(timeline.map, true, 'active timeline window must expose spatial context');
     assert(timeline.controls.every(height => height >= 44), 'timeline controls must retain 44px touch targets');
     assert.equal(timeline.prewar, 'distinct', 'prewar context must remain distinct from wartime duration');
-    assert(timeline.text.includes(`Detailed Chronology contains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
+    assert(timeline.text.includes(`All Events contains all ${expectedTimelineCount} records.`), 'timeline copy does not match the current model count');
 
     const narrowedTimeline = await cdp.eval(`(() => {
       const clickCluster = () => document.querySelector('.timeline-marker.cluster')?.click();
@@ -375,7 +375,7 @@ async function loadDirectRoute(cdp, route) {
       return { count: model.counts.chronology_records, text };
     })()`);
     assert(
-      changedModelTimeline.text.includes(`Detailed Chronology contains all ${changedModelTimeline.count} records.`),
+      changedModelTimeline.text.includes(`All Events contains all ${changedModelTimeline.count} records.`),
       `timeline copy does not advance when the supplied model count changes: ${JSON.stringify(changedModelTimeline)}`
     );
 
@@ -447,13 +447,13 @@ async function loadDirectRoute(cdp, route) {
       return document.querySelector('main')?.innerText || '';
     })()`);
     assert.match(losses, /18\s+Total military dead/);
-    assert.match(losses, /757\s+WIA/);
-    assert.match(losses, /1\s+MIA/);
+    assert.match(losses, /757\s+Wounded in action/i);
+    assert.match(losses, /1\s+Missing in action/i);
     assert.match(losses, /2,008\s+military-death subtotal/);
     const expectedMaterialLossRecords = await cdp.eval(`fetch('./data/public-current-state.json', { cache: 'no-store' }).then(response => response.json()).then(model => model.counts.material_loss_records)`);
-    assert.match(losses, new RegExp(`${expectedMaterialLossRecords}\\s+material-loss records`));
+    assert.match(losses, new RegExp(`${expectedMaterialLossRecords}\\s+loss records`));
     assert(!/\b\d[\d,]*\s+total casualties\b/i.test(losses), 'loss page displays an invalid unique-person grand total');
-    assert.match(losses, /does not calculate [“"]total casualties\s*=\s*dead/i, 'loss page omits the approved anti-double-counting warning');
+    assert.match(losses, /does not add dead\s*\+\s*wounded\s*\+\s*missing/i, 'loss page omits the anti-double-counting warning');
 
     await setRoute(cdp, ia.ROUTES.get('talks.mou'));
     const mou = await cdp.eval(`document.querySelector('main')?.innerText || ''`);
@@ -467,7 +467,7 @@ async function loadDirectRoute(cdp, route) {
     assert.match(positions, /What Iran said/);
     assert.match(positions, /What happened/);
     assert.match(positions, /What Iran said or did later/);
-    assert.match(positions, /Assessment/i);
+    assert.match(positions, /Finding/i);
 
     await setRoute(cdp, ia.ROUTES.get('evidence.claims'));
     const evidence = await cdp.eval(`(() => ({

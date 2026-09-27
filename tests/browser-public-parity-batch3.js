@@ -317,7 +317,7 @@ async function routeKey(cdp, key) { return route(cdp, ia.ROUTES.get(key)); }
     assert.equal(campaigns.facilityLinks, 4);
     assert.match(campaigns.text, /Attack occurrence/);
     assert.match(campaigns.text, /Physical effect/);
-    assert.match(campaigns.text, /Operational effect/);
+    assert.match(campaigns.text, /Operating effect/);
     assert.match(campaigns.text, /Unresolved unless separately established/);
 
     await routeKey(cdp, 'talks.overview');

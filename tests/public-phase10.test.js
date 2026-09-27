@@ -38,17 +38,17 @@ assert.equal(ia.materialAssetClass({ military_platform: false }), 'Commercial / 
 assert.equal(ia.materialAssetClass({ military_platform: true }), 'Military');
 
 for (const phrase of [
-  'Frozen review cutoff', 'Current evidence cutoff',
-  'Historical evaluation uses only evidence available by this time.',
-  'Current Atlas evidence includes material incorporated through this time.',
-  'Observation', 'Actor claim', 'Source reporting', 'Independent corroboration', 'Atlas assessment', 'Competing explanation', 'Confidence & limits',
-  'Factual status and knowledge are separate assessments.', 'A false statement is not automatically a deliberate lie.',
+  'Historical evidence through', 'Current evidence through',
+  'Historical pages use only evidence available by this time.',
+  'Current Atlas evidence includes material added through this time.',
+  'Observation', 'Actor claim', 'Source reporting', 'Independent confirmation', 'Atlas finding', 'Competing explanation', 'Certainty & limits',
+  'Factual status and knowledge are separate findings.', 'A false statement is not automatically a deliberate lie.',
   'Knowledge judgment', 'Combined ROOK assessment', 'EVIDENCE COMPLETION REQUIRED',
-  'From damage to strategic effect', 'A confirmed hit does not by itself establish destroyed capability or strategic effect.',
-  'Physical damage', 'Asset lost', 'Subsystem degraded', 'Function degraded', 'Local operational effect', 'Theater operational effect', 'Strategic consequence',
+  'From damage to war results', 'A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.',
+  'Physical damage', 'Asset lost', 'Subsystem damaged or lost', 'Function reduced', 'Local effect', 'Wider military effect', 'Effect on war goals',
   'Unknown ≠ zero.', 'Claimed ≠ verified.', 'Reported ≠ established.', 'Unsupported ≠ false.', 'Disputed ≠ false.',
   'IRGC claim: six vessel successes. Verified loss count not established.',
-  'Attribution strengthened by later evidence. Existing event retained.',
+  'A later source may make an existing event clearer or stronger. It remains the same event rather than appearing as a second event.',
   'Outcome against original objective', 'Outcome against revised objective'
 ]) assert(source.includes(phrase), `missing Phase 10 public language: ${phrase}`);
 
@@ -79,7 +79,7 @@ assert(source.includes("details.dataset.aggregation = 'record-count-only'"), 'lo
 assert(source.includes('details.dataset.contributingRecordIds'), 'loss summary aggregation does not expose contributing stable IDs');
 assert(source.includes("section.dataset.interpolation = 'none'"), 'economy view does not explicitly prohibit interpolation');
 assert(source.includes("section.dataset.agreementBalance = 'existing-position-derived'"), 'MOU balance does not declare its existing analytical source');
-assert(source.includes('Balance not adjudicated'), 'MOU non-scorable fallback is absent');
+assert(source.includes('No supported balance finding'), 'MOU non-scorable fallback is absent');
 
 const oilRoutePayload = model.datasets['analysis.oil_routes'].payload;
 assert(Array.isArray(oilRoutePayload.routes) && oilRoutePayload.routes.length >= 4, 'supported oil/shipping route geometry is unavailable');

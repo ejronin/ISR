@@ -183,7 +183,7 @@ def main() -> int:
         fail("public release entrypoint pointer mismatch")
 
     index = canonical_text_bytes(site / "index.html").decode("utf-8")
-    if 'id="atlas-root"' not in index or "Loading current evidence record…" not in index:
+    if 'id="atlas-root"' not in index or "Loading the latest Atlas data…" not in index:
         fail("minimal current-record loading shell is missing")
     if any(token in index for token in FORBIDDEN_INITIAL_CONTENT):
         fail("obsolete current content remains in the initial public document")

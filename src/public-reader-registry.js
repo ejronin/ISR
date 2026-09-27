@@ -20,7 +20,8 @@
 
   const VERSION = 'atlas-reader-registry-v1';
   const PRODUCT_VERSION = 'sep14-reader-convergence-v1';
-  const INTERNAL_TEXT = /(?<![\w./-])ROOK(?![\w./-])|\bPR\/CI\b|claim[_ -]?instance[_ -]?id|proposition[_ -]?id|chain[_ -]?id|publication[_ -]?blocker|knowledge[_ -]?basis[_ -]?support[_ -]?failure/i;
+  const PROTECTED_LAYOUT_ROUTES = new Set(['start.overview','evidence.information','evidence.web_of_lies']);
+  const INTERNAL_TEXT = /(?<![\w./-])ROOK(?![\w./-])|\bPR\/CI\b|claim[_ -]?instance[_ -]?id|proposition[_ -]?id|chain[_ -]?id|publication[_ -]?blocker|knowledge[_ -]?basis[_ -]?support[_ -]?failure|\bcommit\s+SHA\b|\bmerge\s+SHA\b|\bpull request\b|\bGitHub Actions\b|\bworkflow run\b|\bcanonical material-loss records\b|\bcurrent qualification\b|\banalyst position\b|\bEvidence\s*\/\s*BDA\b/i;
 
   class ReaderRegistryError extends Error {
     constructor(code, message, cause) { super(message); this.name = 'ReaderRegistryError'; this.code = code; if (cause) this.cause = cause; }
@@ -75,26 +76,26 @@
   }
 
   const FACILITY = Object.freeze({
-    'US-ALUDEID':['damaged_not_operating','Combined Air Operations Center','The CAOC was reported inoperable and campaign command shifted to Shaw. Whole-base incapacity is not established.'],
-    'FAC-UAE-BARAKAH':['unknown','Plant/system','A generator was hit and one reactor shut down automatically. Current restart status and whole-plant operating effect remain unresolved.'],
+    'US-ALUDEID':['damaged_not_operating','Combined Air Operations Center','The CAOC was reported inoperable and campaign command shifted to Shaw. A shutdown of the whole base is not established.'],
+    'FAC-UAE-BARAKAH':['unknown','Plant/system','A generator was hit and one reactor shut down automatically. Current restart status and operation of the whole plant remain unresolved.'],
     'FAC-KWT-KUWAIT-INTERNATIONAL-AIRPORT':['damaged_operating','Airport','Terminal damage and disruption were established while Terminal 4 flight activity continued.'],
     'FAC-IRN-KHONDAB-HEAVY-WATER':['damaged_not_operating','Facility','The IAEA reported severe damage and that the facility was no longer operational; repair or restart remains unresolved.'],
     'FAC-QAT-LNG-SYSTEM':['damaged_operating','Qatar LNG system','The wider LNG system continued operating while two of 14 LNG trains and a GTL facility remained unavailable.'],
     'US-NSA-BHR':['administrative','Fifth Fleet headquarters function','The headquarters function relocated to MacDill after extensive damage; this does not establish cessation of every local NSA Bahrain function.'],
-    'US-ARIFJAN':['unknown','Facility','Damage was verified and U.S. troops were later reported present. Presence does not establish operating status.'],
-    'US-ALISALEM':['unknown','Facility','Substantial localized damage was verified; current whole-base operating status is not affirmatively established.'],
-    'US-BUEHRING':['unknown','Facility','Power-plant and other damage was verified; current whole-site operating status is not affirmatively established.'],
+    'US-ARIFJAN':['unknown','Facility','Damage was confirmed and U.S. troops were later reported present. Their presence does not show whether the facility was operating.'],
+    'US-ALISALEM':['unknown','Facility','Substantial localized damage was confirmed; current whole-base operating status is not established.'],
+    'US-BUEHRING':['unknown','Facility','Power-plant and other damage was confirmed; current whole-site operating status is not established.'],
     'US-SHUAIBA-TOC':['destroyed','U.S. tactical operations center / outpost','The specific TOC was destroyed. This does not establish destruction of Camp Arifjan or the wider regional network.'],
-    'US-CAMPDOHA':['unknown','Position','A U.S. troop position was reported, while the Iranian damage claim was not independently corroborated; operating effect remains unknown.'],
+    'US-CAMPDOHA':['unknown','Position','A U.S. troop position was reported, while the Iranian damage claim was not independently confirmed; operating effect remains unknown.'],
     'US-BUBIYAN':['unknown','Position','A relocated U.S. position was reported. Permanence and operating effect are not established.'],
-    'US-ALDHAFRA':['unknown','Facility','Damage and continued U.S. presence are established. Presence and the absence of a shutdown report do not prove full operation.'],
+    'US-ALDHAFRA':['unknown','Facility','Damage and continued U.S. presence are established. Presence and the lack of a shutdown report do not show full operation.'],
     'US-JEBELALI':['unknown','Access site','Port-area damage and fire were established. No whole-access-site shutdown or isolated destroyed U.S. naval asset is established.'],
     'US-ERBIL':['administrative','Drawdown state','Damage was reported while the broader U.S. Iraq drawdown was underway; this is not a stable permanent-base operating state.'],
     'US-AINASAD':['administrative','Drawdown state','U.S. forces fully withdrew by Jan. 17, 2026; it was not an active U.S. base for the war baseline.'],
-    'US-PRINCESULTAN':['unknown','Facility','Aircraft/base damage and later U.S. presence were reported. Current whole-base operating status is not affirmatively established.'],
-    'US-MUWAFFAQ':['unknown','Facility','Earlier THAAD damage and Sep. 8 aircraft damage are established. Exact BDA and whole-base operating effect remain unresolved.'],
-    'US-INCIRLIK':['operating','Facility','Affirmative U.S. wing activity is documented and no reviewed damage report was found.'],
-    'US-ISA':['unknown','Facility','Patriot/base damage was established; current whole-site operating status is not affirmatively established.'],
+    'US-PRINCESULTAN':['unknown','Facility','Aircraft/base damage and later U.S. presence were reported. Current whole-base operating status is not established.'],
+    'US-MUWAFFAQ':['unknown','Facility','Earlier THAAD damage and Sep. 8 aircraft damage are established. Exact damage details and whole-base operating effect remain unresolved.'],
+    'US-INCIRLIK':['operating','Facility','U.S. wing activity is documented, and no damage report was found in the reviewed sources.'],
+    'US-ISA':['unknown','Facility','Patriot/base damage was established; current whole-site operating status is not established.'],
     'US-RMELAN':['administrative','Drawdown state','Later current presence was not refreshed after drawdown reporting; stale presence is not current operation.'],
     'US-QASRAK':['administrative','Drawdown state','Withdrawal began during the February drawdown; a current operating U.S. presence is not established.'],
     'US-TANF':['administrative','Drawdown state','U.S. withdrawal was completed Feb. 12, 2026; no later re-entry evidence establishes an active garrison.']
@@ -107,18 +108,18 @@
 
   const OBJECTIVES = [
     ['United States','Deny Iran a nuclear weapon','UNRESOLVED','No Iranian nuclear weapon is established, but no durable controlling nuclear settlement exists and the safeguards dispute has escalated.'],
-    ['United States','Break offensive military power projection','PARTLY ACHIEVED','Substantial attrition and degradation are established, but Iran still uses missiles, drones and maritime coercive capability.'],
-    ['United States','Reduce Iran’s ability to arm and sustain proxies','PARTLY ACHIEVED','Some proxy/network degradation is established, while the Houthi force remains operationally capable and made major Sep. 10–11 territorial gains.'],
+    ['United States','Break offensive military power projection','PARTLY ACHIEVED','Iran suffered substantial losses and damage, but it continues missile and drone attacks and maritime coercion.'],
+    ['United States','Reduce Iran’s ability to arm and sustain proxies','PARTLY ACHIEVED','Some proxy and network losses are established. Houthi forces remain active and made major Sep. 10–11 territorial gains.'],
     ['United States','Restore usable navigation through Hormuz','NOT ACHIEVED','Physical transit continues, but observable traffic remains severely depressed and no normalized navigation regime controls.'],
-    ['United States','Use economic isolation to narrow Tehran’s options','PARTLY ACHIEVED','Severe trade, export and financial pressure is established; Iran remains able to trade and conduct coercive action.'],
+    ['United States','Use economic isolation to narrow Tehran’s options','PARTLY ACHIEVED','Severe trade, export and financial pressure is established. Iran still trades and continues coercive action.'],
     ['Iran','War damages / reparations paid','NOT ACHIEVED','Payment is not established.'],
     ['Iran','Frozen / blocked Iranian assets returned','NOT ACHIEVED','Return of the demanded assets is not established.'],
     ['Iran','U.S. naval blockade terminated','NOT ACHIEVED','Termination of the demanded blockade is not established.'],
     ['Iran','Full / verifiable sanctions relief','NOT ACHIEVED','Full or verifiable sanctions relief is not established.'],
     ['Iran','U.S. withdrawal from bases surrounding Iran','NOT ACHIEVED','Some pre-existing drawdowns occurred, but the broad demanded regional withdrawal is not established.'],
     ['Iran','Protection / non-aggression toward Axis allies','NOT ACHIEVED','No durable protection or non-aggression guarantee exists.'],
-    ['Iran','Permanent Iranian Hormuz sovereignty / management / fees','NOT ACHIEVED','Iran retains coercive leverage, but recognized exclusive sovereignty, management and compulsory fee rights are not established.'],
-    ['Iran','No concessions on nuclear, missiles, defense or regional architecture','PARTLY ACHIEVED','Important capabilities and red lines remain, but mediated/shared maritime arrangements are inconsistent with the earlier categorical posture.']
+    ['Iran','Permanent Iranian Hormuz sovereignty / management / fees','NOT ACHIEVED','Iran continues to disrupt Hormuz traffic, but recognized exclusive sovereignty, management and compulsory fee rights are not established.'],
+    ['Iran','No concessions on nuclear, missiles, defense or regional architecture','PARTLY ACHIEVED','Iran has not accepted every U.S. demand, but mediated and shared maritime arrangements are inconsistent with its earlier categorical position.']
   ];
 
   function overview(article, context) {
@@ -161,10 +162,10 @@
 
   function timeline(article, context) {
     const counts=context.model.counts||{}, chronologyCount=Number(counts.chronology_records)||0, conflictDays=Number(counts.gate3_daily_coverage_days)||0;
-    intro(article,`The conflict is easiest to follow in phases. Use this orientation first, then narrow the interactive timeline by date, actor or topic. Detailed Chronology contains all ${chronologyCount} records. ${conflictDays} conflict days are represented in the wartime coverage record.`);
+    intro(article,`The conflict is easiest to follow in phases. Use this orientation first, then narrow the interactive timeline by date, actor or topic. All Events contains all ${chronologyCount} records. ${conflictDays} conflict days are represented in the wartime coverage record.`);
     const s=section(article,'Conflict phases','The phase guide is orientation, not a replacement for the exhaustive chronology.'), g=add(s,'div','orientation-grid');
     card(g,'Opening strikes and regional expansion','Direct attacks quickly spread across bases, air-defense sites, maritime routes and aligned armed groups.','FEB–MAR');
-    card(g,'Sustained strike and attrition campaign','Repeated strikes, interceptions and infrastructure damage accumulated while both sides tried to preserve leverage.','SPRING–SUMMER');
+    card(g,'Sustained strikes and mounting losses','Repeated strikes, interceptions and infrastructure damage accumulated through the spring and summer.','SPRING–SUMMER');
     card(g,'Hormuz coercion and interim bargain','Iran used maritime disruption as leverage; the June MOU temporarily structured behavior but did not become a final settlement.','JUNE–AUGUST');
     card(g,'Renewed pressure and regional spillover','By September, Hormuz remained badly disrupted, Yemen fighting intensified, Saudi energy infrastructure was hit and talks were unsettled.','SEPTEMBER');
   }
@@ -181,13 +182,13 @@
     const s=section(article,'Current campaign results','Recent fighting changed infrastructure and geography, while several attribution and operating-status questions remain open.'), g=add(s,'div','orientation-grid');
     card(g,'Saudi energy route hit','The Sep. 11 Iraqi-origin attack damaged the East-West pipeline. Later reporting puts it mostly out of service for roughly three to five weeks; the responsible group and ordering authority remain unresolved.','EFFECT ESTABLISHED');
     card(g,'Houthi west-coast gains','Greater and Lesser Hanish and Perim/Mayun improve the Houthi position around Bab el-Mandeb. They do not establish total control of commercial passage.','TERRITORIAL GAIN');
-    card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. They do not establish additional successful impacts or BDA without separate evidence.','EVIDENCE BOUNDARY');
+    card(g,'Threat activity is not damage','Saudi alerts and Houthi launch claims establish threat activity. Additional successful impacts require separate damage evidence.','EVIDENCE BOUNDARY');
     routeLink(s,'military.facilities','See authoritative facility status');
     const m=findSection(article,/^At a glance$/i); if(m) collapse(m,'Record coverage');
     const f=findSection(article,/^What did the damage change\?$/i);
     if(f){
       const h=f.querySelector(':scope > h2'); if(h) h.textContent='Attack and effect evidence';
-      add(f,'p','scope-note','These records preserve attack occurrence, physical effect and operational-effect evidence. They do not independently adjudicate current facility status.');
+      add(f,'p','scope-note','These records show the attack, physical damage and operating effect separately. Current facility status is shown on the facility page.');
       routeLink(f,'military.facilities','Open Bases & Infrastructure for authoritative current facility status');
     }
     article.querySelectorAll('[data-reader-drilldown="event-constituents"] .section-note').forEach(n=>n.textContent='This is a count of recorded military events, not combat intensity or weapon quantity. Open a month to inspect the records behind the count.');
@@ -199,7 +200,7 @@
     const all=[...records(context.model,'ledger.facilities'),...records(context.model,'gate3.facilities')], map=new Map();
     all.forEach(r=>{const id=r.facility_id||r.id||r.name;if(id)map.set(id,{...(map.get(id)||{}),...r,facility_id:id});});
     const s=node(article.ownerDocument,'section','content-section reader-facility-dashboard'); s.dataset.readerFacilityDashboard='evidence-predicates';
-    add(s,'h2','','Current facility status'); add(s,'p','lead-copy',`${map.size} named facilities are tracked in the current public record. That is the denominator here; it is not every facility in the theater.`);
+    add(s,'h2','','Current facility status'); add(s,'p','lead-copy',`${map.size} named facilities are tracked in the current public record. That is the number shown here; it does not represent every facility in the theater.`);
     const order=['destroyed','damaged_not_operating','damaged_operating','operating','unknown','administrative'], groups=new Map(order.map(k=>[k,[]]));
     map.forEach((r,id)=>{const p=FACILITY[id]||['unknown','Facility','The current record does not support a more specific operating-status label.']; groups.get(p[0]).push([id,r,p]);});
     const active=order.slice(0,5).reduce((n,k)=>n+groups.get(k).length,0), bar=add(s,'div','reader-facility-status-bar');
@@ -207,40 +208,40 @@
     order.slice(0,5).forEach(k=>{const n=groups.get(k).length;if(!n)return;const z=add(bar,'span',`reader-facility-segment ${FSTAT[k][1]}`);z.style.width=`${active?n/active*100:0}%`;z.title=`${FSTAT[k][0]}: ${n}`;});
     const panels=add(s,'div','reader-facility-panels');
     order.forEach(k=>{const rows=groups.get(k);if(!rows.length)return;const d=add(panels,'details',`reader-facility-drawer ${FSTAT[k][1]}`);add(d,'summary','',`${FSTAT[k][0]} (${rows.length})`);const list=add(d,'div','reader-facility-list');
-      rows.sort((a,b)=>txt(a[1].name||a[0]).localeCompare(txt(b[1].name||b[0]))).forEach(([id,r,p])=>{const c=add(list,'article','reader-facility-card');add(c,'h4','',txt(r.name||r.facility_name||id));add(c,'p','card-kicker',`Status scope: ${p[1]}`);const dates=[r.last_reviewed,r.assessment_date,r.date,...(r.damage_evidence_dates||[])].filter(Boolean).map(String).sort();if(dates.length)add(c,'p','card-kicker',`Status supported through ${dates.at(-1)}`);add(c,'strong','','Current qualification');add(c,'p','',p[2]);evidence(c,context,r,'Why this status is supported');});});
+      rows.sort((a,b)=>txt(a[1].name||a[0]).localeCompare(txt(b[1].name||b[0]))).forEach(([id,r,p])=>{const c=add(list,'article','reader-facility-card');c.dataset.facilityId=id;add(c,'h4','',txt(r.name||r.facility_name||id));add(c,'p','card-kicker',`What this status covers: ${p[1]}`);const dates=[r.last_reviewed,r.assessment_date,r.date,...(r.damage_evidence_dates||[])].filter(Boolean).map(String).sort();if(dates.length)add(c,'p','card-kicker',`Evidence through ${dates.at(-1)}`);add(c,'strong','','Current status');add(c,'p','',p[2]);evidence(c,context,r,'Why this status is supported');});});
     const m=article.querySelector(':scope > .context-map'); if(m) article.insertBefore(s,m); else article.querySelector('.page-intro')?.after(s);
     const full=article.querySelector('.reader-full-facility-records')||findSection(article,/^Facility assessments$/i); if(full) collapse(full,`Browse full facility records (${map.size})`);
   }
 
   function losses(article) {
-    intro(article,'Casualties and physical losses are separate questions. The record supports some exact or minimum quantities, but it does not support one honest theater-wide equipment-loss total.');
-    const s=section(article,'No defensible total available','There is no defensible all-platform or all-actor physical-loss total. Only compatible, deduplicated physical quantities may be added; claim-only, approximate, mixed and unknown quantities stay outside the total.');
-    const g=add(s,'div','orientation-grid'); card(g,'Known quantities','Exact sourced quantities may be summed only within compatible asset classes and statuses.','SUMMABLE WITHIN CLASS');card(g,'Unknown quantities','A damage or loss event can be established even when the number of physical assets is unknown.','KEEP UNKNOWN');card(g,'Actor claims','Reported target or loss counts are not converted into physical totals unless independently established.','NOT A PHYSICAL TOTAL');
-    const c=article.querySelector('[data-loss-comparison]'); if(c){const h=c.querySelector('h2');if(h)h.textContent='Evidence records by category';const n=c.querySelector('.section-note');if(n)n.textContent='This comparison counts canonical material-loss records; it does not count physical losses. Unknown quantities remain unknown rather than becoming zero. Open a category to inspect the records behind the count.';c.classList.add('secondary-context');}
+    intro(article,'Casualties and equipment losses are separate. Some numbers are exact or minimum counts, but the evidence does not support one reliable equipment-loss total for the whole war.');
+    const s=section(article,'No single reliable total','There is no reliable single number covering every side and every kind of equipment loss. Only matching, non-duplicate physical counts are added. Claims, estimates, mixed categories and unknown quantities stay separate.');
+    const g=add(s,'div','orientation-grid'); card(g,'Known numbers','Exact sourced counts are added only when they describe the same kind of asset and loss status.','ADD LIKE WITH LIKE');card(g,'Unknown numbers','A loss event and an exact quantity are separate findings. When the number is unknown, it stays unknown.','KEEP UNKNOWN');card(g,'Actor claims','Reported target or loss counts stay claims unless separate evidence establishes the physical losses.','CLAIM ONLY');
+    const c=article.querySelector('[data-loss-comparison]'); if(c){const h=c.querySelector('h2');if(h)h.textContent='Loss records by side and type';const n=c.querySelector('.section-note');if(n)n.textContent='These totals count loss records, not individual destroyed or damaged items when the quantity is unknown. Unknown quantities stay unknown. Open a category to see the records behind the total.';c.classList.add('secondary-context');}
   }
 
   function weapons(article) {
-    intro(article,'Read weapons through event-level chains: what was used, what was intercepted or reached a target, and what effect was established. The record does not support a single whole-war effectiveness percentage.');
-    const s=section(article,'No compatible whole-war denominator','Launches, interceptions, penetrations, impacts and damage come from different incidents, sources, time windows and counting universes.');
+    intro(article,'Read weapons by incident: what was launched, what was intercepted or reached a target, and what damage followed. The evidence does not support one whole-war effectiveness percentage.');
+    const s=section(article,'No single whole-war percentage','Launches, interceptions, penetrations, impacts and damage come from different incidents, sources and time periods. Those numbers are not one shared total.');
     card(s,'Sep. 8 Jordan-base attack','Jordan reported 20 ballistic missiles launched and 18 intercepted; it initially said two fell in unpopulated areas. Later U.S.-sourced reporting established real aircraft damage, so this is not a clean 18-of-20 interception-to-zero-hit chain.','EVENT-LEVEL CHAIN');
     const m=findSection(article,/^What counts mean$/i);if(m)collapse(m,'How weapon counts are kept compatible');
   }
 
   function imagery(article) {
     intro(article,'Start with what the imagery shows: the site, comparison date and visible physical change. Geolocation precision and interpretation limits come after the observation.');
-    const m=[...article.querySelectorAll(':scope > section')].find(x=>/precision|tier|geolocat/i.test(x.querySelector('h2')?.textContent||''));if(m)collapse(m,'How imagery precision is graded');
+    const m=[...article.querySelectorAll(':scope > section')].find(x=>/precision|tier|geolocat/i.test(x.querySelector('h2')?.textContent||''));if(m)collapse(m,'How map location accuracy works');
     const a=findSection(article,/claims about these facilities hold up|facility assessments/i);
     if(a){
       const h=a.querySelector(':scope > h2'); if(h) h.textContent='Facility claim evidence';
-      add(a,'p','scope-note','These audits test specific claims against imagery and reporting; they do not independently adjudicate each facility’s current operating status.');
+      add(a,'p','scope-note','These checks compare specific claims with imagery and reporting. The facility page shows the current operating status.');
       routeLink(a,'military.facilities','Open Bases & Infrastructure for authoritative current facility status');
     }
   }
 
   function shipping(article, context) {
     intro(article,'Hormuz traffic remains severely depressed, but physical closure is not established. Bab el-Mandeb traffic continued near its recent observable average despite Houthi territorial gains.');
-    const s=section(article,'Current maritime condition','Provider-observable traffic, physical navigability and legal or commercial recognition are different questions.'),g=add(s,'div','orientation-grid'), rows=records(context.model,'gate3.shipping');
-    const h=card(g,'Hormuz: severely depressed','Reuters preliminary tracking counted four commodity vessels exiting and ten entering the Gulf over the weekend. AIS-dark vessels may be absent; this does not establish physical closure.','PRELIMINARY OBSERVATION');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-HORMUZ-TRAFFIC-20260914'));
+    const s=section(article,'Current maritime picture','Tracked traffic, physical passage and commercial or legal acceptance are separate facts.'),g=add(s,'div','orientation-grid'), rows=records(context.model,'gate3.shipping');
+    const h=card(g,'Hormuz: severely depressed','Reuters preliminary tracking counted four commodity vessels exiting and ten entering the Gulf over the weekend. AIS-dark vessels are outside these tracked counts. The evidence does not show a complete physical closure.','PRELIMINARY OBSERVATION');evidence(h,context,rows.find(r=>r.shipping_id==='SHIP-HORMUZ-TRAFFIC-20260914'));
     const b=card(g,'Bab el-Mandeb: general traffic continues','Reuters counted 24 transits Saturday and 27 Sunday, approximately in line with the recent 10-day average. Houthi territorial gains do not establish general closure.','OBSERVED TRAFFIC');evidence(b,context,rows.find(r=>r.shipping_id==='SHIP-BAB-EL-MANDEB-TRAFFIC-20260914'));
     const a=card(g,'Iran’s 77-vessel list','Iran announced possible fines, detention or confiscation and warned maritime service providers. External legal recognition, enforceability and insurer/P&I/classification-society compliance are not established.','IRANIAN ANNOUNCEMENT');evidence(a,context,rows.find(r=>r.shipping_id==='SHIP-IRAN-STRAIT-AUTHORITY-LIST-20260914'));
     const m=findSection(article,/How to read the traffic observations/i);if(m)collapse(m,'How provider and AIS traffic data should be read');
@@ -249,19 +250,19 @@
   function economy(article, context) {
     intro(article,'Iran and the Gulf are under severe wartime economic pressure. The current picture comes from sanctions, trade and oil-flow evidence, damaged energy infrastructure, freight costs and shipping disruption—not one forecast chart.');
     const s=section(article,'Current economic condition','Sanctions and war disruption materially constrain Iran and raise regional energy and freight costs, while trade and production continue unevenly rather than stopping altogether.'),g=add(s,'div','orientation-grid');
-    const p=card(g,'Iran’s own assessment','President Masoud Pezeshkian acknowledged material sanctions and war effects and reported roughly a 35% fall in foreign trade. The percentage is an Iranian presidential self-assessment, not an independently audited statistic.','AUG. 28');evidence(p,context,{ source_ids: ['SRC-F550DDD51246','SRC-5D32C7182EFF'] });
+    const p=card(g,'Iran’s own figure','President Masoud Pezeshkian acknowledged sanctions and war effects and reported roughly a 35% fall in foreign trade. The percentage comes from the Iranian president and is not an independently audited figure.','AUG. 28');evidence(p,context,{ source_ids: ['SRC-F550DDD51246','SRC-5D32C7182EFF'] });
     const er=records(context.model,'gate3.economics');
     const o=card(g,'Oil market','Reuters reported Brent at $109.29/bbl and WTI at $104.26/bbl at 10:15 a.m. EDT Sep. 14, both up more than 4%. This is a dated snapshot.','SEP. 14');evidence(o,context,er.find(r=>r.economic_id==='ECON-OIL-MARKET-OPEN-20260914'));
-    const f=card(g,'Freight and crude logistics','Reuters reported expectations of tighter sour crude, at least one delayed Saudi loading, record Gulf-to-Asia tanker rates and some AIS-dark Red Sea-loading vessels. This does not mean all Saudi deliveries were disrupted.','SOURCE-REPORTED');evidence(f,context,er.find(r=>r.economic_id==='ECON-ASIA-REFINERS-20260914'));
+    const f=card(g,'Freight and crude logistics','Reuters reported tighter sour-crude expectations, at least one delayed Saudi loading, record Gulf-to-Asia tanker rates and some AIS-dark Red Sea-loading vessels. The reporting showed disruption and higher costs, not a stop to all Saudi deliveries.','SOURCE-REPORTED');evidence(f,context,er.find(r=>r.economic_id==='ECON-ASIA-REFINERS-20260914'));
     card(g,'Saudi East-West pipeline','Later reporting says the line is expected to remain mostly out of service for roughly three to five weeks. Yanbu inventories and delivery timing are therefore material.','DAMAGED / MOSTLY OUT OF SERVICE');
-    card(g,'Announced bank sanction','The announced large-bank U.S. sanction remained pending at the Sep. 14 12:01 ET cutoff. No bank is named because no Treasury/OFAC enactment identifying it was established.','NOT ENACTED');
+    card(g,'Announced bank sanction','As of Sep. 14 at 12:01 p.m. ET, the announced U.S. sanction on a large bank had not been enacted. Treasury/OFAC had not publicly named the bank.','NOT ENACTED');
     const m=findSection(article,/economic pressure: comparable snapshots|growth forecasts|comparable forecast/i);if(m)collapse(m,'Forecast context — does not interpolate values between observations');
   }
 
   function hormuzTalks(article) {
-    intro(article,'Oman publicly confirmed the planned Gulf-Iran Hormuz meeting existed and then postponed it. That resolves whether the meeting was real; it does not establish a signed reopening agreement or agreed sovereignty, route or fee terms.');
+    intro(article,'Oman publicly confirmed the planned Gulf-Iran Hormuz meeting and then postponed it. No signed reopening agreement or agreed sovereignty, route or fee terms resulted from that meeting.');
     const s=findSection(article,/^What is being negotiated now$/i),p=s?.querySelector('.lead-copy, p');if(p)p.textContent='Iran moved from claiming it would control and manage the Strait to a shared negotiating process with Oman and Gulf states. The confirmed meeting was postponed; substantive route, fee, sovereignty and reopening terms remain unresolved.';
-    if(s)add(s,'p','scope-note','Saudi amendments were source-reported through a Gulf official; their detailed contents are not established through a public Saudi primary text.');
+    if(s)add(s,'p','scope-note','A Gulf official reported Saudi amendments. Saudi Arabia has not published a public document with the full details.');
   }
 
   function diplomacy(article) {
@@ -284,22 +285,22 @@
   }
 
   function regional(article) {
-    intro(article,'Regional diplomacy is easiest to read through what actually changed—meetings held, proposals made, alignments tested and arrangements accepted or rejected. Participation rosters and causal interpretation come afterward.');
+    intro(article,'Regional diplomacy is easiest to read through what actually changed—meetings held, proposals made, alignments tested and arrangements accepted or rejected. Participant lists and evidence about why those changes happened come afterward.');
     const introBlock=article.querySelector('.page-intro');
     if(introBlock)add(introBlock,'p','scope-note','The participant-state map identifies supporting states only; it does not identify capitals, headquarters, command nodes, deployments, or operating areas.');
     const r=findSection(article,/14-state maritime support|roster/i);if(r)collapse(r,'Regional participation and roster detail');
   }
 
-  function objectives(article) {
-    intro(article,'Objectives are assessed one at a time. There is no composite victory score: each stated objective is compared with the current result and the reason for that result.');
-    const s=node(article.ownerDocument,'section','content-section objective-reader-results');s.dataset.publicObjectiveResults='true';add(s,'h2','','Objectives and current results');
-    ['United States','Iran'].forEach(actor=>{const g=add(s,'section','objective-actor-group');add(g,'h3','',actor);const l=add(g,'div','record-list');OBJECTIVES.filter(o=>o[0]===actor).forEach(o=>{const c=add(l,'article','provenance-card objective-result');add(c,'p','card-kicker',o[2]);add(c,'h4','',o[1]);add(c,'strong','','Why');add(c,'p','',o[3]);});});
+  function objectives(article, context) {
+    intro(article,'Each stated goal is shown on its own: original goal, current result, why, and the supporting evidence. There is no combined victory score.');
+    const s=node(article.ownerDocument,'section','content-section objective-reader-results');s.dataset.publicObjectiveResults='true';add(s,'h2','','Goals and current results');
+    ['United States','Iran'].forEach(actor=>{const g=add(s,'section','objective-actor-group');const heading=add(g,'h3','objective-actor-heading');heading.append(context.services.actorIdentity.create(context.documentObject,actor));const l=add(g,'div','record-list');OBJECTIVES.filter(o=>o[0]===actor).forEach(o=>{const c=add(l,'article','provenance-card objective-result');add(c,'p','card-kicker',o[2]);add(c,'h4','',o[1]);add(c,'strong','','Why');add(c,'p','',o[3]);});});
     article.querySelector('.page-intro')?.after(s);
     for(const t of [/^Original and wartime objectives$/i,/^Negotiating demands and later changes$/i,/^Outcomes by level$/i]){const x=findSection(article,t);if(x)collapse(x,'Supporting objective and position evidence');}
   }
 
   function positions(article) {
-    intro(article,'This is the before-and-after record of diplomatic and negotiating positions: what an actor demanded earlier, what changed, and what it later accepted, proposed or did. Objective success is assessed separately.');
+    intro(article,'This is the before-and-after record of negotiating positions: what each side demanded earlier, what changed, and what it later accepted, proposed or did. Goal results are shown separately.');
     const m=findSection(article,/^What changed$/i);if(m)collapse(m,'Messaging context related to these position changes');
   }
 
@@ -326,8 +327,25 @@
     if(k==='military.campaigns')campaigns(article); if(k==='military.facilities')facilities(article,context); if(k==='military.losses')losses(article); if(k==='military.weapons')weapons(article); if(k==='military.imagery')imagery(article);
     if(k==='hormuz.shipping')shipping(article,context); if(k==='hormuz.economy')economy(article,context); if(k==='hormuz.talks')hormuzTalks(article);
     if(k==='talks.overview')diplomacy(article); if(k==='talks.mou')mou(article); if(k==='talks.nuclear')nuclear(article); if(k==='talks.regional')regional(article);
-    if(k==='objectives.outcomes')objectives(article); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
+    if(k==='objectives.outcomes')objectives(article,context); if(k==='objectives.positions')positions(article); if(k==='objectives.iran')iranMessaging(stage,article);
     if(k==='evidence.claims')claimChecks(article); if(k==='evidence.information')information(stage,article);
+    connectMappedCards(article,k);
+  }
+
+  function connectMappedCards(article, routeKey) {
+    if (['start.overview','evidence.information','evidence.web_of_lies'].includes(routeKey)) return;
+    const maps=[...article.querySelectorAll('.context-map')].filter(map=>typeof map._atlasHasRecord==='function'&&typeof map._atlasFocusRecord==='function');
+    if(!maps.length)return;
+    const cards=[...article.querySelectorAll('[data-facility-id],[data-loss-id],[data-damage-observation-id],[data-casualty-id],[data-movement-id],[data-strike-effect-id]')];
+    cards.forEach(card=>{
+      const key=card.dataset.facilityId||card.dataset.lossId||card.dataset.damageObservationId||card.dataset.casualtyId||card.dataset.movementId||card.dataset.strikeEffectId;
+      if(!key)return;
+      const map=maps.find(candidate=>candidate._atlasHasRecord(key));if(!map)return;
+      let actions=card.querySelector(':scope > .record-actions');if(!actions)actions=add(card,'div','record-actions');
+      if(actions.querySelector?.('[data-map-record-link]'))return;
+      const button=add(actions,'button','inline-map-link','Show on map');button.type='button';button.dataset.mapRecordLink=key;
+      button.addEventListener('click',()=>{map.scrollIntoView?.({behavior:'smooth',block:'start'});map._atlasFocusRecord(key);});
+    });
   }
 
   function quiesceMaps(node) {
@@ -383,19 +401,19 @@
         shell.aside.replaceChildren(baseRuntime.PublicNavigation.renderSecondary(doc,route));
         const owner=baseRuntime.PAGE_OWNERS[route.owner];invariant(typeof owner==='function','READER_PAGE_OWNER_MISSING',`Reader page owner is unavailable: ${route.owner}`);
         const page=owner(context);shell.main.replaceChildren(page);
-        shell.footer.replaceChildren();add(shell.footer,'span','',`Evidence current through ${access.model?.release?.current_osint_cutoff_display||access.model?.release?.current_osint_cutoff||'the current review cutoff'}. `);
+        shell.footer.replaceChildren();add(shell.footer,'span','',`Evidence current through ${access.model?.release?.current_osint_cutoff_display||access.model?.release?.current_osint_cutoff||'the latest evidence date'}. `);
         const archive=add(shell.footer,'a','','Archive');archive.href=baseRuntime.routeHref('evidence.archive');
         stagedState.routeKey=route.key;stagedState.pageOwner=route.owner;stagedState.primarySection=route.primaryLabel;stagedState.secondaryPage=route.label;doc.title=`${route.title} · Iran War Evidence Atlas`;
         readerSupportRuntime.projectShell(shell.app,context);
         finalizePublicProduct(stage,route,routeRuntime,doc);
-        const finalized=validateFinalizedStage(stage,readerSupportRuntime);finalized.app.dataset.readerAuthority=VERSION;
+        const finalized=validateFinalizedStage(stage,readerSupportRuntime);finalized.app.dataset.readerAuthority=VERSION;finalized.app.dataset.routeKey=route.key;finalized.app.dataset.layoutScope=PROTECTED_LAYOUT_ROUTES.has(route.key)?'protected':'adaptive-wide';
         previousVisible.forEach(quiesceMaps);rootElement.replaceChildren(finalized.app);retireVisibleNodes(doc,rootElement,previousVisible);stage.remove();
         rootElement.className='atlas-ready';rootElement.dataset.status='ready';rootElement.setAttribute('aria-busy','false');copyRouteState(state,stagedState);delete state.readerError;
         if(focusHeading&&previousRouteKey&&previousRouteKey!==route.key)finalized.heading.focus?.();previousRouteKey=route.key;return route;
       } catch(error) {
         stage.remove();doc.title=previousTitle;
         const failure=error instanceof ReaderRegistryError?error:new ReaderRegistryError(error?.code||'READER_FINALIZATION_FAILED','Reader rendering or finalization failed.',error);
-        if(hasQualified){emitRouteFailure(win,state,failure);if(propagateFailure)throw failure;return null;} throw failure;
+        if(hasQualified){emitRouteFailure(win,state,failure);if(propagateFailure)throw failure;return null;} root.console?.error?.('Atlas initial reader finalization failed', failure, failure.cause || error); throw failure;
       }
     };
     const onHashChange=()=>stageRoute(true,false);win?.addEventListener?.('hashchange',onHashChange);let initialRoute;

@@ -123,7 +123,7 @@ async function route(cdp, hash, key) {
     assert.equal(timeline.map, true, 'active temporal window lacks contextual map state');
     assert.equal(timeline.prewar, 'distinct');
     assert(timeline.controls.every(height => height >= 44), 'timeline has a touch target below 44px');
-    assert(timeline.copy.includes(`Detailed Chronology contains all ${model.counts.chronology_records} records.`));
+    assert(timeline.copy.includes(`All Events contains all ${model.counts.chronology_records} records.`));
     assert(timeline.copy.includes(`${model.counts.gate3_daily_coverage_days} conflict days are represented`));
     assert(timeline.densityBins > 0, 'full-conflict density overview is absent');
     assert.match(timeline.densityText, /not greater strategic importance/i, 'timeline density implies analytical importance');
@@ -300,14 +300,34 @@ async function route(cdp, hash, key) {
           .flatMap(node => [node.getAttribute('aria-label'), node.getAttribute('title'), node.tagName === 'OPTION' ? node.textContent : ''])
           .filter(Boolean).join(' ');
         return {
+          visible,
+          labels,
           machine: [...new Set((visible + ' ' + labels).match(/\\b[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+\\b/g) || [])],
           internal: ['Do not add the headline categories', 'No machine-readable footprint/damage polygons were supplied', 'Do not create polygons or percentages from prose'].filter(phrase => visible.includes(phrase))
         };
       })()`);
       publicLanguageLeaks.push(...leaks.machine.map(token => `${routeRecord.key}:${token}`));
       publicLanguageLeaks.push(...leaks.internal.map(phrase => `${routeRecord.key}:${phrase}`));
+      if (!['start.overview', 'evidence.information', 'evidence.web_of_lies'].includes(routeRecord.key)) {
+        const jargon = [
+          'Current qualification',
+          'analyst position',
+          'canonical material-loss records',
+          'material-loss records',
+          'Evidence / BDA',
+          'operational-status denominator',
+          'Quantitative boundary',
+          'Current evidence cutoff',
+          'Frozen review cutoff',
+          'Accounting class',
+          'Stable strike record ID',
+          'Stable corridor ID',
+          'Source ID:'
+        ].filter(phrase => (leaks.visible || '').includes(phrase) || (leaks.labels || '').includes(phrase));
+        publicLanguageLeaks.push(...jargon.map(phrase => `${routeRecord.key}:${phrase}`));
+      }
     }
-    assert.deepEqual(publicLanguageLeaks, [], 'raw machine taxonomy or implementation instructions leaked into public language');
+    assert.deepEqual(publicLanguageLeaks, [], 'raw machine taxonomy, implementation instructions, or internal reader jargon leaked into public language');
 
     await route(cdp, '#/military/campaigns', 'military.campaigns');
     const technicalRecord = await cdp.eval(`(() => {
@@ -319,6 +339,14 @@ async function route(cdp, hash, key) {
     })()`);
     assert(!/Stable strike record(?: ID)?:/i.test(technicalRecord.before), 'internal strike ID is visible on the reader surface');
     assert(!/Stable strike record(?: ID)?:/i.test(technicalRecord.after), 'internal strike ID leaks through ordinary evidence expansion');
+    const strikeMapPath = await cdp.eval(`(() => {
+      const card = document.querySelector('[data-strike-effect-id]');
+      const button = card?.querySelector('[data-map-record-link]');
+      if (!button) return { button: false, selected: false };
+      button.click();
+      return { button: true, selected: Boolean(document.querySelector('.context-map .map-selection-card:not([hidden])')) };
+    })()`);
+    assert.deepEqual(strikeMapPath, { button: true, selected: true }, 'mapped strike evidence does not open its matching map record');
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });
@@ -342,9 +370,9 @@ async function route(cdp, hash, key) {
       drilldown: document.querySelector('[data-reader-drilldown="event-constituents"]')?.textContent || ''
     }))()`);
     assert.equal(phase10Effects.cards, 7);
-    assert.match(phase10Effects.text, /How damage and operational effect are separated/);
-    assert.match(phase10Effects.text, /Attack occurrence, physical effect and operational consequence are separate/i);
-    assert.match(phase10Effects.text, /does not automatically prove a mission kill, destroyed platform or whole-site shutdown/i);
+    assert.match(phase10Effects.text, /How damage and operating results are kept separate/);
+    assert.match(phase10Effects.text, /The attack, the physical damage and what it changed are separate findings/i);
+    assert.match(phase10Effects.text, /does not automatically show that a platform or whole site stopped operating or was destroyed/i);
     assertCampaignEventCountSemanticBoundary(phase10Effects.drilldown);
 
     await route(cdp, '#/military/losses', 'military.losses');

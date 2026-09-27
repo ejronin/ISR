@@ -89,6 +89,8 @@ async function route(cdp, hash, key) {
         damagedText: damaged?.innerText || '',
         comparisonText: comparison?.innerText || '',
         comparisonGroups: comparison?.querySelectorAll('[data-loss-summary-group]').length || 0,
+        comparisonStateFlags: ['us-coalition','iran-aligned'].every(key => Boolean(comparison?.querySelector('[data-loss-summary-group="'+key+'"] img.actor-flag'))),
+        detailStateFlags: ['us-coalition','iran-aligned'].every(key => Boolean(document.querySelector('[data-loss-side-group="'+key+'"] img.actor-flag'))),
         comparisonContributors: comparisonDetails.flatMap(node => (node.dataset.contributingRecordIds || '').split(',').filter(Boolean)).sort(),
         cardIds: cards.map(card => card.dataset.lossId).sort(),
         assets: document.querySelectorAll('[data-asset-category-id]').length,
@@ -112,6 +114,8 @@ async function route(cdp, hash, key) {
     assert.match(losses.unknownText, /Unknown does not mean zero/i, 'unknown-quantity guardrail is absent');
     assert.doesNotMatch(losses.unknownText, /Quantity:\s*0(?:\D|$)/i, 'unresolved quantity was rendered as numeric zero');
     assert(losses.comparisonGroups >= 3, 'reader loss comparison collapsed actor/commercial grouping');
+    assert.equal(losses.comparisonStateFlags, true, 'loss comparison group headings are missing state attribution flags');
+    assert.equal(losses.detailStateFlags, true, 'detailed loss group headings are missing state attribution flags');
     assert.deepEqual(losses.comparisonContributors, losses.cardIds, 'reader loss comparison does not reconcile exactly to canonical material-loss records');
     assertLossRecordDenominator(losses.comparisonText, { requirePhysicalLossExclusion: Boolean(losses.publicProduct) });
     assert.match(losses.comparisonText, /Unknown does not mean zero|unknown quantities/i, 'reader loss comparison permits unknown-to-zero semantics');
@@ -179,8 +183,8 @@ async function route(cdp, hash, key) {
     assert.equal(weapons.expenditures, 9);
     assert.equal(weapons.aviation, 0, 'Weapons duplicates the aviation incident inventory instead of linking to the loss page');
     assert.equal(weapons.lossCrosslink, true, 'Weapons does not link readers to the canonical Casualties & Losses inventory');
-    assert.match(weapons.text, /Neutralized does not mean destroyed/);
-    assert.match(weapons.text, /route-level aggregate.*interception.*impact.*known-target hit/i);
+    assert.match(weapons.text, /Neutralized.? does not mean destroyed/);
+    assert.match(weapons.text, /one combined total.*interceptions.*impacts.*known-target hits/i);
 
     for (const width of [320, 390]) {
       await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true });

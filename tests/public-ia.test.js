@@ -10,21 +10,21 @@ const model = JSON.parse(fs.readFileSync(path.join(root, 'data', 'public-current
 const expectedPrimary = [
   'Start Here',
   'Timeline',
-  'Military Record',
+  'War & Losses',
   'Hormuz & Economy',
-  'Talks & Agreements',
-  'Objectives & Outcomes',
+  'Talks & Deals',
+  'Goals & Results',
   'Claims & Evidence'
 ];
 assert.deepEqual(ia.PRIMARY_SECTIONS.map(section => section.label), expectedPrimary);
 
 const expectedSecondary = {
   start: ['Overview', "Who's Involved"],
-  timeline: ['War Timeline', 'Detailed Chronology'],
-  military: ['Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Imagery'],
+  timeline: ['War Timeline', 'All Events'],
+  military: ['Campaigns & Strikes', 'Bases & Infrastructure', 'Air, Missiles & Drones', 'Casualties & Losses', 'Damage Images'],
   hormuz: ['Why Hormuz Matters', 'Shipping & Trade', 'Oil & Economic Effects', 'Current Hormuz Talks'],
-  talks: ['Talks & Agreements', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
-  objectives: ['Objectives & Outcomes', 'Position Changes', "How Iran's Position Changed"],
+  talks: ['Talks & Deals', 'June MOU', 'Nuclear Talks', 'Regional Diplomacy'],
+  objectives: ['Goals & Results', 'Position Changes', "How Iran's Position Changed"],
   evidence: ['Claim Checks', 'Lie Ledger', 'Web of Lies', 'Sources', 'How We Check the Evidence', 'Archive']
 };
 for (const [primary, labels] of Object.entries(expectedSecondary)) {
@@ -164,5 +164,7 @@ assert.match(css, /min-width:\s*20rem/);
 assert.match(css, /overflow-x:\s*hidden/);
 assert.match(css, /\.skip-link:focus/);
 assert.match(css, /:focus-visible/);
+assert.match(css, /\.atlas-app\[data-layout-scope="adaptive-wide"\]/, 'wide desktop layout must remain opt-in');
+assert.match(css, /@media \(min-width: 80rem\)/, 'wide desktop layout breakpoint is missing');
 
 console.log('public IA contract: PASS - 7 primary sections, 26 deterministic page owners, current-model-only mappings, actor/evidence boundaries, cross-links, and mobile/accessibility foundations verified');

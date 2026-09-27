@@ -8,10 +8,11 @@ function assertLossRecordDenominator(text, options = {}) {
   const clauses = normalized.split(/(?<=[.!?;])\s+/);
 
   const recordDenominator = clauses.some(clause => {
-    const active = /\bcount(?:s|ed|ing)?\b[^.!?;]{0,80}\b(?:canonical\s+)?material-loss\s+records\b/i.test(clause);
-    const passive = /\b(?:canonical\s+)?material-loss\s+records\b[^.!?;]{0,80}\b(?:are|were|is|was|be|being)\s+counted\b/i.test(clause);
+    const recordPhrase = '(?:(?:canonical\\s+)?material-loss|loss)\\s+records';
+    const active = new RegExp(`\\bcount(?:s|ed|ing)?\\b[^.!?;]{0,80}\\b${recordPhrase}\\b`, 'i').test(clause);
+    const passive = new RegExp(`\\b${recordPhrase}\\b[^.!?;]{0,80}\\b(?:are|were|is|was|be|being)\\s+counted\\b`, 'i').test(clause);
     const negatedActive = /\b(?:not|never)\b[^.!?;]{0,30}\bcount(?:s|ed|ing)?\b/i.test(clause);
-    const negatedPassive = /\b(?:canonical\s+)?material-loss\s+records\b[^.!?;]{0,40}\b(?:are|were|is|was|be|being)\s+(?:not|never)\s+counted\b/i.test(clause);
+    const negatedPassive = new RegExp(`\\b${recordPhrase}\\b[^.!?;]{0,40}\\b(?:are|were|is|was|be|being)\\s+(?:not|never)\\s+counted\\b`, 'i').test(clause);
     return (active && !negatedActive) || (passive && !negatedPassive);
   });
 
@@ -21,6 +22,8 @@ function assertLossRecordDenominator(text, options = {}) {
     || /\b(?:is|are|was|were)\s+not\s+(?:a\s+)?physical-loss\s+(?:count|quantity|total)\b/i.test(clause)
     || /\b(?:rather than|instead of)\s+(?:counting\s+)?physical\s+loss(?:es)?\b/i.test(clause)
     || /,\s*not\s+(?:counting\s+)?physical\s+loss(?:es)?\b/i.test(clause)
+    || /\bcount(?:s|ed|ing)?\s+loss\s+records\b[^.!?;]{0,100}\bnot\s+(?:the\s+)?(?:number\s+of\s+)?(?:individual\s+)?(?:destroyed|damaged|lost)[^.!?;]{0,40}\b(?:items?|assets?|platforms?|equipment)\b/i.test(clause)
+    || /\bcount(?:s|ed|ing)?\s+loss\s+records\b[^.!?;]{0,120}\bnot\s+(?:individual\s+)?destroyed\s+or\s+damaged\s+items\b/i.test(clause)
   ));
 
   assert(recordDenominator, 'reader loss comparison does not identify material-loss records as the counted denominator');
@@ -35,7 +38,8 @@ function runLossRecordDenominatorFixtures() {
     'This comparison counts canonical material-loss records; it does not count physical losses.',
     'This comparison is counting canonical material-loss records, not physical losses.',
     'Canonical material-loss records are counted here rather than physical losses.',
-    'This comparison counted material-loss records instead of physical losses.'
+    'This comparison counted material-loss records instead of physical losses.',
+    'These totals count loss records, not individual destroyed or damaged items when the quantity is unknown.'
   ]) {
     assert.doesNotThrow(() => assertLossRecordDenominator(text, fullContract), `equivalent denominator wording was rejected: ${text}`);
   }
@@ -43,7 +47,8 @@ function runLossRecordDenominatorFixtures() {
   for (const text of [
     'This comparison counts physical losses.',
     'This comparison does not count physical losses.',
-    'This comparison counts canonical material-loss records.'
+    'This comparison counts canonical material-loss records.',
+    'This comparison counts loss records.'
   ]) {
     assert.throws(() => assertLossRecordDenominator(text, fullContract), `invalid denominator wording was accepted: ${text}`);
   }

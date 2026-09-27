@@ -157,10 +157,12 @@ function base64(value) {
       'OVERVIEW OPERATIONS EFFECTS INFORMATION EVIDENCE',
       'ATLAS TIMELINE ANALYSIS MOU SOURCES'
     ]) assert(!loading.text.toUpperCase().includes(forbidden), `cold shell revealed stale content: ${forbidden}`);
-    assert.match(loading.text, /Loading current evidence record/i);
+    assert.match(loading.text, /Loading the latest Atlas data/i);
     await cdp.call('Fetch.continueRequest', { requestId: paused.requestId });
     await cdp.call('Fetch.disable');
-    await waitFor(cdp, `window.ATLAS_PUBLIC_STATE?.status === 'ready'`);
+    await waitFor(cdp, `['ready','error'].includes(window.ATLAS_PUBLIC_STATE?.status)`);
+    const bootState = await cdp.eval(`({status:window.ATLAS_PUBLIC_STATE?.status,code:window.ATLAS_PUBLIC_STATE?.code,rootStatus:document.getElementById('atlas-root')?.dataset.status,text:document.getElementById('atlas-root')?.innerText||''})`);
+    assert.equal(bootState.status, 'ready', `cold boot failed: ${JSON.stringify(bootState)}`);
     const ready = await cdp.eval(`(() => ({
       status: document.getElementById('atlas-root')?.dataset.status,
       count: window.ATLAS_PUBLIC_STATE.chronologyCount,
@@ -213,7 +215,7 @@ function base64(value) {
       requestId: failedRequest.requestId,
       responseCode: 503,
       responseHeaders: [{ name: 'Content-Type', value: 'text/plain; charset=utf-8' }],
-      body: base64('current record unavailable')
+      body: base64('current site unavailable')
     });
     await cdp.call('Fetch.disable');
     await waitFor(cdp, `document.getElementById('atlas-root')?.dataset.status === 'error'`);
@@ -223,7 +225,7 @@ function base64(value) {
       archive: Boolean(document.querySelector('.error-actions a')),
       old: Boolean(document.getElementById('primaryNav') || document.getElementById('map'))
     }))()`);
-    assert.match(failure.text, /The current evidence record could not be loaded/i);
+    assert.match(failure.text, /The latest Atlas data could not be loaded/i);
     assert.equal(failure.retry, true);
     assert.equal(failure.archive, false, 'failure state must not link to a repository-only snapshot');
     assert.equal(failure.old, false, 'failure state must not reveal the old dashboard');

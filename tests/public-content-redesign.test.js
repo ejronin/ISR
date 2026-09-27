@@ -50,20 +50,20 @@ for (const phrase of [
   'Unknown does not mean zero.'
 ]) assert(source.includes(phrase), `required public explanation missing: ${phrase}`);
 
-assert(source.includes('From damage to strategic effect'), 'Phase 10 military-effects framework is missing its reader-facing heading');
-assert(source.includes('A confirmed hit does not by itself establish destroyed capability or strategic effect.'), 'Phase 10 military-effects guardrail is missing');
+assert(source.includes('From damage to war results'), 'Phase 10 military-effects framework is missing its reader-facing heading');
+assert(source.includes('A confirmed hit establishes a hit. Destruction and broader war effects require their own evidence.'), 'Phase 10 military-effects guardrail is missing');
 for (const effect of [
   'Physical damage',
   'Asset lost',
-  'Subsystem degraded',
-  'Function degraded',
-  'Local operational effect',
-  'Theater operational effect',
-  'Strategic consequence'
+  'Subsystem damaged or lost',
+  'Function reduced',
+  'Local effect',
+  'Wider military effect',
+  'Effect on war goals'
 ]) assert(source.includes(effect), `Phase 10 military-effects category missing: ${effect}`);
-assert(source.includes('This is an effects framework, not an automatic severity staircase.'), 'Phase 10 military-effects framework must reject automatic progression');
-assert(source.includes('Asset loss and functional degradation are independent analytical dimensions'), 'Phase 10 military-effects framework must keep asset loss and function degradation independent');
-assert(source.includes('A launch does not prove penetration, impact or damage.'), 'method page no longer preserves the launch/effect distinction');
+assert(source.includes('This is not a severity ladder.'), 'Phase 10 military-effects framework must reject automatic progression');
+assert(source.includes('Physical loss, operating effect and effect on war goals are separate findings.'), 'Phase 10 military-effects framework must keep loss, function and war-goal effects separate');
+assert(source.includes('A launch establishes a launch. Penetration, impact and damage require their own evidence.'), 'method page no longer preserves the launch/effect distinction');
 
 for (const forbidden of [
   'window.ATLAS_CURRENT_UPDATE',
