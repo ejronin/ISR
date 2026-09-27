@@ -229,7 +229,7 @@ function addFinding(findings, routeKey, width, category, detail) {
       const count = document.querySelector('.filter-result-count')?.textContent.trim() || '';
       return { filter:true, visible, count };
     })()`);
-    if (!losses.filter || !losses.visible || !/^\d+ of \d+ material-loss records shown$/.test(losses.count)) addFinding(findings, 'military.losses', 390, 'filter', losses.count || 'filter-not-operational');
+    if (!losses.filter || !losses.visible || !/^\d+ of \d+ loss records shown$/.test(losses.count)) addFinding(findings, 'military.losses', 390, 'filter', losses.count || 'filter-not-operational');
 
     await route(cdp, 'military.campaigns');
     const mapInteraction = await cdp.eval(`(() => {
