@@ -273,8 +273,8 @@
   const FACILITY_STATUS = Object.freeze({
     destroyed: { label: 'Destroyed', className: 'destroyed' },
     damaged_inoperable: { label: 'Damaged — inoperable', className: 'damaged-inoperable' },
-    damaged_operational: { label: 'Damaged — operational', className: 'damaged-operational' },
-    operational: { label: 'Operational', className: 'operational' },
+    damaged_operational: { label: 'Damaged — operating', className: 'damaged-operational' },
+    operational: { label: 'Operating', className: 'operational' },
     unknown: { label: 'Unknown', className: 'unknown' },
     administrative: { label: 'Closed / withdrawn / transferred', className: 'administrative' }
   });
