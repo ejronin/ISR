@@ -894,7 +894,7 @@
 
   function simplifyPositionChanges(article) {
     setPageIntro(article, 'This page shows what an actor said earlier, what happened next, and what it later said or did. A change is called a walkback only when the record supports a real retreat from the earlier position.');
-    const scope = [...article.querySelectorAll(':scope > aside.scope-note')].find(node => /walkback is an analytical classification/i.test(node.textContent || ''));
+    const scope = [...article.querySelectorAll(':scope > aside.scope-note')].find(node => /walkback.*(?:analytical classification|means here)/i.test(node.textContent || ''));
     if (scope) {
       const details = el(article.ownerDocument, 'details', 'secondary-context reader-method-detail');
       append(details, 'summary', '', 'How we use “walkback”');
